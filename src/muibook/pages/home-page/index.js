@@ -8,7 +8,7 @@ class HomePage extends HTMLElement {
 
     const intro = /*html*/ `
       <mui-body class="introduction" size="small" weight="bold">
-        Michael UI is a design system built consists of native Web Components. It promotes clean, composable patterns that help others write less code.
+        Michael UI is a design system that consists of native Web Components. It promotes clean, composable patterns that help others write less code.
       </mui-body>
     `;
 
