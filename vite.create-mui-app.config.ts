@@ -4,7 +4,7 @@ import path from "path";
 
 export default defineConfig({
   root: path.resolve(__dirname, "src/create-mui-app"),
-  base: "/create-mui-app/", // needed for GitHub Pages
+  base: "/",
   build: {
     outDir: path.resolve(__dirname, "dist/create-mui-app"),
     rollupOptions: {
