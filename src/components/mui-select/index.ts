@@ -1,0 +1,286 @@
+import { getPartMap } from "../../utils/part-map";
+
+class muiSelect extends HTMLElement {
+  partMap = "";
+
+  static get observedAttributes() {
+    return [
+      "name",
+      "value",
+      "id",
+      "label",
+      "options",
+      "disabled",
+      "hide-label",
+      "variant",
+    ];
+  }
+
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    await this.waitForPartMap();
+    this.partMap = getPartMap("text", "visual");
+    this.render();
+    this.setupListener();
+  }
+
+  attributeChangedCallback(name: string, newValue: string | null) {
+    if (!this.shadowRoot) return;
+
+    const selectEl = /** @type {HTMLSelectElement | null} */ this.shadowRoot.querySelector(
+      "select"
+    );
+
+    if (name === "value" && selectEl) {
+      selectEl.value = newValue || "";
+    }
+
+    if (name === "disabled" && selectEl) {
+      if (newValue === null || newValue === "false") {
+        selectEl.removeAttribute("disabled");
+      } else {
+        selectEl.setAttribute("disabled", "");
+      }
+    }
+
+    if (["options", "label", "hide-label"].includes(name)) {
+      this.render();
+      this.setupListener();
+    }
+  }
+
+  setupListener() {
+    if (!this.shadowRoot) return;
+    const selectEl = this.shadowRoot.querySelector("select");
+    if (selectEl) {
+      // Remove previous event listener to prevent duplicates
+      const newSelectEl = selectEl.cloneNode(true);
+      if (selectEl.parentNode) {
+        selectEl.parentNode.replaceChild(newSelectEl, selectEl);
+      }
+
+      newSelectEl.addEventListener("change", (e: Event) => {
+        const target = e.target as HTMLSelectElement | null;
+        if (target) {
+          this.dispatchEvent(
+            new CustomEvent("change", {
+              detail: { value: target.value },
+              bubbles: true,
+              composed: true,
+            })
+          );
+        }
+      });
+    }
+  }
+
+  render() {
+    if (!this.shadowRoot) return;
+
+    const name = this.getAttribute("name") || "";
+    const id =
+      this.getAttribute("id") ||
+      `mui-select-${Math.random()
+        .toString(36)
+        .substr(2, 9)}`;
+    const label = this.getAttribute("label") || "";
+    const value = this.getAttribute("value") || "";
+    const hideLabel = this.hasAttribute("hide-label");
+    const disabled = this.hasAttribute("disabled");
+    const optionsAttr = this.getAttribute("options") || "[]";
+    const ariaLabel = this.getAttribute("aria-label") || "";
+
+    const variant = this.getAttribute("variant") || "";
+    const variantClass = variant ? variant : "";
+
+    // Accessibility warning for mui-select: 'hide-label' is set but no 'label' is provided
+    if (hideLabel && !label) {
+      console.warn(
+        "mui-select Accessibility warning: When using 'hide-label', please provide a 'label' attribute so an 'aria-label' can be generated for screen reader support."
+      );
+    }
+
+    // Accessibility warning for mui-select: No 'label' or 'aria-label' provided
+    if (!label && !ariaLabel) {
+      console.warn(
+        "mui-select Accessibility warning: A 'label' or 'aria-label' attribute is required for screen reader accessibility."
+      );
+    }
+
+    // Here, we directly use the ariaLabel logic as in the 'input' component
+    const ariaLabelAttr = hideLabel && label ? `aria-label="${label}"` : "";
+
+    type SelectOption = { value: string; label: string };
+
+    let options: SelectOption[] = [];
+    try {
+      options = JSON.parse(optionsAttr);
+    } catch (e) {
+      console.error("Invalid JSON in options attribute", e);
+    }
+
+    const optionsHTML = options
+      .map(
+        (opt) =>
+          `<option value="${opt.value}" ${
+            opt.value === value ? "selected" : ""
+          }>${opt.label}</option>`
+      )
+      .join("");
+
+    const html = /*html*/ `
+      <style>
+        :host {
+          display: inline-block;
+          width: 100%;
+        }
+        label {
+          font-size: var(--text-font-size);
+          font-weight: var(--font-weight-medium);
+          margin-bottom: var(--space-100);
+          color: var(--text-color);
+          display: block;
+        }
+        select {
+          min-height: 4.4rem;
+          line-height: var(--text-line-height);
+          padding: var(--space-200) var(--space-300);
+          font-size: var(--text-font-size);
+          border: var(--border-thin);
+          border-color: var(--form-default-border-color);
+          border-radius: var(--radius-100);
+          color: var(--text-color);
+          background: var(--input-background);
+          width: 100%;
+          box-sizing: border-box;
+          appearance: none;
+          background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path fill="%23666" d="M0 0l5 5 5-5z"/></svg>');
+          background-repeat: no-repeat;
+          background-position: right var(--space-300) center;
+          background-size: 10px 5px;
+        }
+        select:hover {
+          border-color: var(--form-default-border-color-hover);
+        }
+        select:focus {
+          outline: var(--outline-thick);
+        }
+        select:disabled {
+          opacity: 0.4;
+          background-color: var(--input-background-disabled);
+          cursor: not-allowed;
+        }
+        select.success {
+          color: var(--form-success-text-color);
+          border-color: var(--form-success-border-color);
+          box-shadow: 0 0 0 2px var(--form-success-border-color);
+        }
+        select.warning {
+          color: var(--form-warning-text-color);
+          border-color: var(--form-warning-border-color);
+          box-shadow: 0 0 0 2px var(--form-warning-border-color);
+        }
+        select.error {
+          color: var(--form-error-text-color);
+          border-color: var(--form-error-border-color);
+          box-shadow: 0 0 0 2px var(--form-error-border-color);
+        }
+        select.success:hover {
+          color: var(--form-success-text-color-hover);
+          border-color: var(--form-success-border-color-hover);
+          box-shadow: 0 0 0 2px var(--form-success-border-color-hover);
+        }
+        select.warning:hover {
+          color: var(--form-warning-text-color-hover);
+          border-color: var(--form-warning-border-color-hover);
+          box-shadow: 0 0 0 2px var(--form-warning-border-color-hover);
+        }
+        select.error:hover {
+          color: var(--form-error-text-color-hover);
+          border-color: var(--form-error-border-color-hover);
+          box-shadow: 0 0 0 2px var(--form-error-border-color-hover);
+        }
+        .vh {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
+        }
+
+        /* ========================================================================== */
+        /* STYLE ADJUSTMENTS WHEN SELECT IS SLOTTED WITHIN INPUT                      */
+        /* Related styles unique to this usage is found in the mui-input/index.js     */
+        /* ========================================================================== */
+
+        /* ========================================================================== */
+        /* BEFORE: When a SELECT has slot="before" applied to host for INPUT usage    */
+        /* ========================================================================== */
+
+            :host([slot="before"]) select {
+              border-right: none;
+              border-top-right-radius: var(--radius-000);
+              border-bottom-right-radius: var(--radius-000);
+            }
+
+        /* ========================================================================== */
+        /* AFTER: When a SELECT has slot="after" applied to host for INPUT usage      */
+        /* ========================================================================== */
+
+            :host([slot="after"]) select {
+              border-left: none;
+              border-top-left-radius: var(--radius-000);
+              border-bottom-left-radius: var(--radius-000);
+            }
+
+            /* Ensure feedback styles appear above INPUT */
+            select.success,
+            select.warning,
+            select.error {
+              z-index: 1;
+            }
+
+        /* ========================================================================== */
+
+      </style>
+      ${
+        label
+          ? /*html*/ `<label for="${id}" class="${
+              hideLabel ? "vh" : ""
+            }">${label}</label>`
+          : ""
+      }
+    <select class="${variantClass}" part="${this.partMap ||
+      ""}" name="${name}" id="${id}" ${ariaLabelAttr} ${
+      disabled ? "disabled" : ""
+    } >
+        ${optionsHTML}
+      </select>
+    `;
+
+    this.shadowRoot.innerHTML = html;
+  }
+  waitForPartMap(): Promise<void> {
+    return new Promise((resolve) => {
+      if (typeof getPartMap === "function") return resolve();
+      const check = () => {
+        if (typeof getPartMap === "function") {
+          resolve();
+        } else {
+          requestAnimationFrame(check);
+        }
+      };
+      check();
+    });
+  }
+}
+
+customElements.define("mui-select", muiSelect);

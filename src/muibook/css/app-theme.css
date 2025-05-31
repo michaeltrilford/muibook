@@ -1,0 +1,123 @@
+/* ==================== */
+/*   __  __ _   _ ___   */
+/*  |  \/  | | | |_ _|  */
+/*  | |\/| | | | || |   */
+/*  | |  | | |_| || |   */
+/*  |_|  |_|\___/|___|  */
+/*                      */
+/*   michael.ui.system  */
+/* ==================== */
+
+/* =============================================================================== */
+/*   Theme Storefront: MUI                                                         */
+/*   Component theme alignment across storefront                                   */
+/* =============================================================================== */
+html[data-theme="light"] {
+  --app-logo-color: var(--grey-800);
+  --app-nav-accent: var(--black);
+  --app-theme-toggle-bg: var(--black);
+  --app-story-snippet-code-bg: var(--mui-brand-300);
+  --app-story-snippet-code-text: var(--black);
+  --app-story-banner-gradient-start: var(--black-opacity-10);
+  --app-story-banner-gradient-end: var(--white-opacity-20);
+  --app-story-banner-border-color: var(--black-opacity-40);
+  --app-story-icon-grid-background: var(--white);
+  --app-story-icon-grid-text: var(--grey-900);
+  --app-story-icon-grid-text-inverted: var(--grey-100);
+  --app-story-icon-grid-background-inverted: var(--grey-900);
+}
+html[data-theme="dark"] {
+  --app-logo-color: var(--mui-brand-300);
+  --app-nav-accent: var(--mui-brand-300);
+  --app-theme-toggle-bg: var(--mui-brand-300);
+  --app-story-snippet-code-bg: var(--mui-brand-300);
+  --app-story-snippet-code-text: var(--black);
+  --app-story-banner-gradient-start: var(--white-opacity-10);
+  --app-story-banner-gradient-end: var(--black-opacity-20);
+  --app-story-banner-border-color: var(--white-opacity-20);
+  --app-story-icon-grid-background: var(--black);
+  --app-story-icon-grid-text: var(--grey-100);
+  --app-story-icon-grid-text-inverted: var(--grey-900);
+  --app-story-icon-grid-background-inverted: var(--grey-200);
+}
+
+/* =============================================================================== */
+/*   Theme Storefront: JAL                                                         */
+/*   Component theme alignment across storefront                                   */
+/* =============================================================================== */
+html[data-brand="jal"][data-theme="light"] {
+  --app-logo-color: var(--jal-red-400);
+  --app-nav-accent: var(--jal-red-600);
+  --app-theme-toggle-bg: var(--jal-grey-200);
+  --app-story-snippet-code-bg: var(--jal-red-300);
+  --app-story-snippet-code-text: var(--jal-white);
+}
+
+html[data-brand="jal"][data-theme="dark"] {
+  --app-logo-color: var(--jal-red-300);
+  --app-nav-accent: var(--jal-red-200);
+  --app-theme-toggle-bg: var(--jal-red-200);
+  --app-story-snippet-code-bg: var(--jal-red-300);
+  --app-story-snippet-code-text: var(--jal-white);
+}
+
+/* =============================================================================== */
+/*   Theme Storefront: ANA                                                         */
+/*   Component theme alignment across storefront                                   */
+/* =============================================================================== */
+html[data-brand="ana"][data-theme="light"] {
+  --app-logo-color: var(--ana-blue-500);
+  --app-nav-accent: var(--ana-blue-600);
+  --app-theme-toggle-bg: var(--ana-grey-200);
+  --app-story-snippet-code-bg: var(--ana-blue-500);
+  --app-story-snippet-code-text: var(--ana-white);
+}
+
+html[data-brand="ana"][data-theme="dark"] {
+  --app-logo-color: var(--ana-blue-300);
+  --app-nav-accent: var(--ana-blue-200);
+  --app-theme-toggle-bg: var(--ana-blue-200);
+  --app-story-snippet-code-bg: var(--ana-blue-500);
+  --app-story-snippet-code-text: var(--ana-white);
+}
+
+/* =============================================================================== */
+/*   Theme Storefront: Plain                                                       */
+/*   Component theme alignment across storefront                                   */
+/* =============================================================================== */
+html[data-brand="mono"][data-theme="light"] {
+  --app-logo-color: var(--mono-grey-700);
+  --app-nav-accent: var(--mono-black);
+  --app-theme-toggle-bg: var(--mono-grey-200);
+  --app-story-snippet-code-bg: var(--mono-grey-200);
+  --app-story-snippet-code-text: var(--mono-black);
+}
+
+html[data-brand="mono"][data-theme="dark"] {
+  --app-logo-color: var(--mono-grey-100);
+  --app-nav-accent: var(--mono-white);
+  --app-theme-toggle-bg: var(--mono-grey-200);
+  --app-story-snippet-code-bg: var(--mono-white);
+  --app-story-snippet-code-text: var(--mono-black);
+}
+
+/* =============================================================================== */
+/*   Theme Storefront: Create App                                                  */
+/*   Component theme alignment across storefront                                   */
+/* =============================================================================== */
+
+html[data-brand="modern"][data-theme="light"] {
+  --app-logo-color: var(--black);
+  --app-nav-accent: var(--black);
+  --app-theme-toggle-bg: var(--grey-300);
+  --app-story-snippet-code-bg: var(--grey-200);
+  --app-story-snippet-code-text: var(--black);
+}
+
+html[data-brand="modern"][data-theme="dark"] {
+  --app-logo-color: var(--white);
+  --app-nav-accent: var(--white);
+  --app-theme-toggle-bg: var(--grey-300);
+  --app-story-snippet-code-bg: var(--white);
+  --app-story-code-text: var(--black);
+}

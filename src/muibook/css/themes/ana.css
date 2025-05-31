@@ -1,0 +1,370 @@
+/* ==================== */
+/*   __  __ _   _ ___   */
+/*  |  \/  | | | |_ _|  */
+/*  | |\/| | | | || |   */
+/*  | |  | | |_| || |   */
+/*  |_|  |_|\___/|___|  */
+/*                      */
+/*   michael.ui.system  */
+/* ==================== */
+
+/* ANA BRAND */
+/* =============================================================================== */
+/* 1. BRAND PRIMITIVES                                                             */
+/* =============================================================================== */
+html[data-brand='ana'] {
+  --font-family: 'Myriad Pro', 'Segoe UI', Helvetica, Arial, Verdana, Roboto, 'Droid Sans', 'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN', HiraKakuProN-W3, 'Hiragino Kaku Gothic Pro', HiraKakuPro-W3, 'Noto Sans CJK JP', Meiryo,
+    Osaka, 'MS PGothic', 'sans-serif';
+
+  /* Neutral Greys */
+  --ana-grey-50: #f9f9f9;
+  --ana-grey-100: #f0f0f0;
+  --ana-grey-200: #dedede;
+  --ana-grey-300: #bdbdbd;
+  --ana-grey-400: #9e9e9e;
+  --ana-grey-500: #7e7e7e;
+  --ana-grey-600: #5e5e5e;
+  --ana-grey-700: #3e3e3e;
+  --ana-grey-800: #2b2b2b;
+  --ana-grey-900: #141414;
+
+  /* ANA Blue Scale (based on ANA corporate branding) */
+  --ana-blue-50: #e8f0fb;
+  --ana-blue-100: #c6dbf6;
+  --ana-blue-200: #91bdf0;
+  --ana-blue-300: #569ce8;
+  --ana-blue-400: #1d81e5;
+  --ana-blue-500: #005bac; /* Previous ANA corporate blue */
+  --ana-blue-600: #004299;
+  --ana-blue-700: #002f84;
+  --ana-blue-750: #001f75;
+  --ana-blue-800: #00146e; /* NEW primary button base */
+  --ana-blue-900: #000d4a; /* Deepest tone for contrast/hover */
+
+  --ana-green-50: #e8f5e9;
+  --ana-green-100: #c8e6c9;
+  --ana-green-300: #81c784;
+  --ana-green-500: #4caf50;
+  --ana-green-600: #388e3c;
+  --ana-green-700: #2e7d32;
+
+  --ana-orange-50: #fff8e1;
+  --ana-orange-100: #fff3e0;
+  --ana-orange-300: #ffcc80;
+  --ana-orange-500: #ff6f00;
+  --ana-orange-600: #ffa000;
+  --ana-orange-700: #e65100;
+
+  --ana-red-50: #fcebea;
+  --ana-red-100: #fce4ec;
+  --ana-red-300: #f06292;
+  --ana-red-400: #d81b60;
+  --ana-red-500: #880e4f;
+  --ana-red-600: #ad1457;
+  --ana-red-700: #6a1b4d;
+
+  /* White & Black */
+  --ana-white: #ffffff;
+  --ana-black: #000000;
+}
+
+/* =============================================================================== */
+/* 2. LIGHT MODE                                                                   */
+/* =============================================================================== */
+html[data-brand='ana'][data-theme='light'] {
+  /* Feedback */
+  --feedback-plain-border-color: var(--ana-grey-300);
+  --feedback-neutral-border-color: var(--ana-grey-200);
+  --feedback-positive-border-color: var(--ana-green-300);
+  --feedback-info-border-color: var(--ana-blue-200);
+  --feedback-warning-border-color: var(--ana-orange-300);
+  --feedback-attention-border-color: var(--ana-red-300);
+
+  --feedback-plain-background: var(--ana-grey-50);
+  --feedback-neutral-background: var(--ana-grey-50);
+  --feedback-positive-background: var(--ana-green-50);
+  --feedback-info-background: var(--ana-blue-50);
+  --feedback-warning-background: var(--ana-orange-50);
+  --feedback-attention-background: var(--ana-red-50);
+
+  --feedback-plain-icon: var(--ana-grey-500);
+  --feedback-neutral-icon: var(--ana-grey-500);
+  --feedback-positive-icon: var(--ana-green-500);
+  --feedback-info-icon: var(--ana-blue-500);
+  --feedback-warning-icon: var(--ana-orange-700);
+  --feedback-attention-icon: var(--ana-red-600);
+  --feedback-plain-text: var(--ana-grey-700);
+  --feedback-neutral-text: var(--ana-grey-700);
+  --feedback-positive-text: var(--ana-green-700);
+  --feedback-info-text: var(--ana-blue-700);
+  --feedback-warning-text: var(--ana-orange-700);
+  --feedback-attention-text: var(--ana-red-600);
+
+  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
+  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-500);
+  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-500);
+  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-500);
+  --action-primary-background: var(--ana-blue-400);
+  --action-primary-background-hover: var(--ana-blue-400);
+  --action-primary-background-focus: var(--ana-blue-400);
+  --action-primary-background-disabled: var(--ana-grey-400);
+  --action-primary-text-color: var(--ana-white);
+  --action-primary-text-color-hover: var(--ana-white);
+  --action-primary-text-color-focus: var(--ana-white);
+  --action-primary-text-color-disabled: var(--ana-white);
+
+  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
+  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
+  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
+  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--ana-grey-200);
+  --action-secondary-background-focus: var(--ana-grey-200);
+  --action-secondary-background-disabled: var(--ana-grey-200);
+  --action-secondary-text-color: var(--ana-blue-400);
+  --action-secondary-text-color-hover: var(--ana-blue-400);
+  --action-secondary-text-color-focus: var(--ana-blue-400);
+  --action-secondary-text-color-disabled: var(--ana-blue-400);
+
+  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-background: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--ana-grey-200);
+  --action-tertiary-background-focus: var(--ana-grey-200);
+  --action-tertiary-background-disabled: var(--ana-grey-200);
+  --action-tertiary-text-color: var(--ana-blue-400);
+  --action-tertiary-text-color-hover: var(--ana-blue-400);
+  --action-tertiary-text-color-focus: var(--ana-blue-400);
+  --action-tertiary-text-color-disabled: var(--ana-blue-400);
+
+  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--ana-red-400);
+  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-red-500);
+  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--ana-red-500);
+  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--ana-red-500);
+  --action-attention-background: var(--ana-red-400);
+  --action-attention-background-hover: var(--ana-red-400);
+  --action-attention-background-focus: var(--ana-red-400);
+  --action-attention-background-disabled: var(--ana-red-400);
+  --action-attention-text-color: var(--ana-white);
+  --action-attention-text-color-hover: var(--ana-white);
+  --action-attention-text-color-focus: var(--ana-white);
+  --action-attention-text-color-disabled: var(--ana-white);
+
+  /* Badge */
+  --badge-text-color: var(--ana-white);
+  --badge-background-neutral: var(--ana-grey-500);
+  --badge-background-positive: var(--ana-green-500);
+  --badge-background-warning: var(--ana-orange-500);
+  --badge-background-attention: var(--ana-red-500);
+
+  /* Outline (Focus) */
+  --outline-color: var(--ana-blue-300);
+
+  /* Icon */
+  --icon-color-default: var(--ana-blue-600);
+  --icon-color-inverted: var(--ana-white);
+
+  /* Type */
+  --text-color: var(--ana-grey-900);
+  --heading-text-color: var(--ana-blue-600);
+
+  /* Input */
+  --input-background: var(--ana-white);
+
+  /* Border */
+  --border-color: var(--black-opacity-20);
+
+  /* Surface */
+  --surface: var(--ana-grey-200);
+  --surface-elevated-alpha: var(--white-opacity-50);
+  --surface-elevated-100: var(--white);
+  --surface-elevated-200: var(--ana-grey-100);
+  --surface-recessed-alpha: var(--black-opacity-10);
+  --surface-recessed-100: var(--ana-grey-300);
+  --surface-recessed-200: var(--ana-grey-400);
+
+  /* Switch */
+  --switch-track-background: var(--ana-grey-300);
+  --switch-track-background-checked: var(--ana-blue-400);
+
+  /* Tabs */
+  --tab-border-color: var(--ana-blue-300);
+
+  --tab-background: var(--ana-blue-50);
+  --tab-icon: var(--ana-blue-500);
+  --tab-text-color: var(--ana-blue-500);
+
+  --tab-background-active: var(--ana-blue-500);
+  --tab-icon-active: var(--ana-blue-50);
+  --tab-text-color-active: var(--ana-blue-50);
+  --tab-shadow-active: var(--black-opacity-10);
+
+  /* Carousel */
+  --carousel-background: var(--ana-grey-100);
+}
+
+/* =============================================================================== */
+/* 3. DARK MODE                                                                    */
+/* =============================================================================== */
+html[data-brand='ana'][data-theme='dark'] {
+  /* Feedback */
+  --feedback-plain-border-color: var(--ana-grey-600);
+  --feedback-neutral-border-color: var(--ana-grey-600);
+  --feedback-positive-border-color: var(--ana-green-300);
+  --feedback-info-border-color: var(--ana-blue-400);
+  --feedback-warning-border-color: var(--ana-orange-300);
+  --feedback-attention-border-color: var(--ana-red-300);
+
+  --feedback-plain-background: var(--ana-grey-900);
+  --feedback-neutral-background: var(--ana-grey-900);
+  --feedback-positive-background: var(--ana-green-700);
+  --feedback-info-background: var(--ana-blue-700);
+  --feedback-warning-background: var(--ana-orange-700);
+  --feedback-attention-background: var(--ana-red-600);
+
+  --feedback-plain-icon: var(--ana-grey-100);
+  --feedback-neutral-icon: var(--ana-grey-100);
+  --feedback-positive-icon: var(--ana-green-100);
+  --feedback-info-icon: var(--ana-blue-100);
+  --feedback-warning-icon: var(--ana-orange-100);
+  --feedback-attention-icon: var(--ana-red-100);
+  --feedback-plain-text: var(--ana-grey-100);
+  --feedback-neutral-text: var(--ana-grey-100);
+  --feedback-positive-text: var(--ana-green-100);
+  --feedback-info-text: var(--ana-blue-100);
+  --feedback-warning-text: var(--ana-orange-100);
+  --feedback-attention-text: var(--ana-red-100);
+
+  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
+  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-300);
+  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-300);
+  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-300);
+  --action-primary-background: var(--ana-blue-400);
+  --action-primary-background-hover: var(--ana-blue-400);
+  --action-primary-background-focus: var(--ana-blue-400);
+  --action-primary-background-disabled: var(--ana-grey-400);
+  --action-primary-text-color: var(--ana-white);
+  --action-primary-text-color-hover: var(--ana-white);
+  --action-primary-text-color-focus: var(--ana-white);
+  --action-primary-text-color-disabled: var(--ana-white);
+
+  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-200);
+  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-100);
+  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-100);
+  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-100);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--ana-grey-800);
+  --action-secondary-background-focus: var(--ana-grey-800);
+  --action-secondary-background-disabled: var(--ana-grey-600);
+  --action-secondary-text-color: var(--ana-blue-200);
+  --action-secondary-text-color-hover: var(--ana-blue-100);
+  --action-secondary-text-color-focus: var(--ana-blue-100);
+  --action-secondary-text-color-disabled: var(--ana-blue-100);
+
+  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-background: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--ana-grey-800);
+  --action-tertiary-background-focus: var(--ana-grey-800);
+  --action-tertiary-background-disabled: var(--ana-grey-600);
+  --action-tertiary-text-color: var(--ana-blue-200);
+  --action-tertiary-text-color-hover: var(--ana-blue-100);
+  --action-tertiary-text-color-focus: var(--ana-blue-100);
+  --action-tertiary-text-color-disabled: var(--ana-blue-100);
+
+  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--ana-red-400);
+  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-red-300);
+  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--ana-red-300);
+  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--ana-red-300);
+  --action-attention-background: var(--ana-red-400);
+  --action-attention-background-hover: var(--ana-red-400);
+  --action-attention-background-focus: var(--ana-red-400);
+  --action-attention-background-disabled: var(--ana-red-400);
+  --action-attention-text-color: var(--ana-white);
+  --action-attention-text-color-hover: var(--ana-white);
+  --action-attention-text-color-focus: var(--ana-white);
+  --action-attention-text-color-disabled: var(--ana-white);
+
+  /* Badge */
+  --badge-text-color: var(--ana-white);
+  --badge-background-neutral: var(--ana-grey-600);
+  --badge-background-positive: var(--ana-green-700);
+  --badge-background-warning: var(--ana-orange-700);
+  --badge-background-attention: var(--ana-red-500);
+
+  /* Outline (Focus) */
+  --outline-color: var(--ana-blue-200);
+
+  /* Icon */
+  --icon-color-default: var(--ana-blue-300);
+  --icon-color-inverted: var(--ana-white);
+
+  /* Type */
+  --text-color: var(--ana-grey-100);
+  --heading-text-color: var(--ana-blue-200);
+
+  /* Input */
+  --input-background: var(--ana-grey-800);
+
+  /* Border */
+  --border-color: var(--white-opacity-20);
+
+  /* Surface */
+  --surface: var(--ana-grey-800);
+  --surface-elevated-alpha: var(--white-opacity-10);
+  --surface-elevated-100: var(--ana-grey-700);
+  --surface-elevated-200: var(--ana-grey-800);
+  --surface-recessed-alpha: var(--black-opacity-30);
+  --surface-recessed-100: var(--ana-grey-900);
+  --surface-recessed-200: var(--ana-grey-1000);
+
+  /* Switch */
+  --switch-track-background: var(--ana-grey-700);
+  --switch-track-background-checked: var(--ana-blue-400);
+
+  /* Tabs */
+  --tab-border-color: var(--ana-blue-500);
+
+  --tab-background: var(--ana-blue-800);
+  --tab-icon: var(--ana-blue-100);
+  --tab-text-color: var(--ana-blue-100);
+
+  --tab-background-active: var(--ana-blue-100);
+  --tab-icon-active: var(--ana-blue-800);
+  --tab-text-color-active: var(--ana-blue-800);
+  --tab-shadow-active: var(--black-opacity-10);
+
+  /* Carousel */
+  --carousel-background: var(--ana-grey-800);
+}
+
+/* ================================================================= */
+/* 4. SET THE FOUNDATION                                             */
+/* Map tokens to semantic or component contexts .                    */
+/* ================================================================= */
+html[data-brand='ana'] {
+  --action-padding: var(--space-200) var(--space-500);
+  --action-icon-only-padding: var(--space-000);
+  --action-radius: var(--radius-400);
+  --action-font-size: var(--text-font-size);
+  --action-line-height: var(--text-line-height);
+  --action-font-weight: var(--font-weight-bold);
+
+  /* Feedback • Alerts, Messages, Notifciations */
+  --feedback-plain-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-plain-border-color);
+  --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
+  --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
+  --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);
+  --feedback-warning-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-warning-border-color);
+  --feedback-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-attention-border-color);
+
+  /* Card */
+  --card-radius: var(--radius-150);
+  /* Tab */
+  --tab-radius: var(--radius-400);
+}

@@ -1,0 +1,29 @@
+/* =============================================================================== */
+/*   Author Styles: Your custom styles                                             */
+/* =============================================================================== */
+
+html[data-theme="light"] {
+  --app-background: var(--grey-100);
+  --logo-color: var(--grey-800);
+}
+
+html[data-theme="dark"] {
+  --app-background: var(--grey-1000);
+  --logo-color: #ffeb3b;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background-color: var(--surface);
+}
+
+.content {
+  text-align: center;
+  max-width: 38ch;
+}
+
+.introduction {
+  max-width: 36ch;
+}

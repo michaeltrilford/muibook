@@ -1,0 +1,375 @@
+/* ==================== */
+/*   __  __ _   _ ___   */
+/*  |  \/  | | | |_ _|  */
+/*  | |\/| | | | || |   */
+/*  | |  | | |_| || |   */
+/*  |_|  |_|\___/|___|  */
+/*                      */
+/*   michael.ui.system  */
+/* ==================== */
+
+/* =============================================================================== */
+/* 1. BRAND PRIMITIVES                                                             */
+/* =============================================================================== */
+html[data-brand='modern'] {
+  --font-family: 'Golos Text', sans-serif;
+
+  /* Grey scale – cooler, slightly more saturated tones */
+  --grey-100: #f0f0f5;
+  --grey-200: #d9d9e0;
+  --grey-300: #bfbfcc;
+  --grey-400: #a5a5b3;
+  --grey-500: #8c8c99;
+  --grey-600: #737380;
+  --grey-700: #595966;
+  --grey-800: #40404d;
+  --grey-900: #2e2e3a;
+  --grey-1000: #1f1f29;
+
+  /* Red scale – stronger, punchier */
+  --red-100: #ffe2e2;
+  --red-200: #ffbaba;
+  --red-300: #ff8f8f;
+  --red-400: #ff5e5e;
+  --red-500: #ff2e2e;
+  --red-600: #e60026;
+  --red-700: #cc0022;
+  --red-800: #b3001e;
+  --red-900: #99001a;
+  --red-1000: #660012;
+
+  /* Orange scale – richer, deeper tones */
+  --orange-100: #fff1d6;
+  --orange-200: #ffd9a0;
+  --orange-300: #ffc266;
+  --orange-400: #ffaa33;
+  --orange-500: #ff8c00;
+  --orange-600: #e67600;
+  --orange-700: #cc6600;
+  --orange-800: #b35900;
+  --orange-900: #994d00;
+  --orange-1000: #803f00;
+
+  /* Green scale – fresher, more vibrant */
+  --green-100: #d8fce0;
+  --green-200: #aafac2;
+  --green-300: #7cf8a4;
+  --green-400: #4ef686;
+  --green-500: #1ce661;
+  --green-600: #00cc4c;
+  --green-700: #00b33f;
+  --green-800: #009933;
+  --green-900: #00802a;
+  --green-1000: #00661f;
+
+  /* Blue scale – more saturation and contrast */
+  --blue-100: #e0f0ff;
+  --blue-200: #b3dbff;
+  --blue-300: #80c3ff;
+  --blue-400: #4daaff;
+  --blue-500: #1a92ff;
+  --blue-600: #0075e0;
+  --blue-700: #0066cc;
+  --blue-800: #0055b3;
+  --blue-900: #004499;
+  --blue-1000: #003380;
+
+  --white: #ffffff;
+  --black: #000000;
+}
+
+/* =============================================================================== */
+/* 2. LIGHT MODE                                                                   */
+/* =============================================================================== */
+html[data-brand='modern'][data-theme='light'] {
+  /* Feedback */
+  --feedback-plain-border-color: var(--black-opacity-50);
+  --feedback-neutral-border-color: var(--grey-600);
+  --feedback-positive-border-color: var(--green-600);
+  --feedback-info-border-color: var(--blue-600);
+  --feedback-warning-border-color: var(--orange-600);
+  --feedback-attention-border-color: var(--red-600);
+  --feedback-plain-background: var(--white-opacity-20);
+  --feedback-neutral-background: var(--grey-100);
+  --feedback-positive-background: var(--green-100);
+  --feedback-info-background: var(--blue-100);
+  --feedback-warning-background: var(--orange-100);
+  --feedback-attention-background: var(--red-100);
+  --feedback-plain-icon: var(--black);
+  --feedback-neutral-icon: var(--grey-600);
+  --feedback-positive-icon: var(--green-600);
+  --feedback-info-icon: var(--blue-600);
+  --feedback-warning-icon: var(--orange-600);
+  --feedback-attention-icon: var(--red-600);
+  --feedback-plain-text: var(--black);
+  --feedback-neutral-text: var(--grey-900);
+  --feedback-positive-text: var(--green-900);
+  --feedback-info-text: var(--blue-900);
+  --feedback-warning-text: var(--orange-900);
+  --feedback-attention-text: var(--red-900);
+
+  /* Buttons */
+  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-background: var(--black);
+  --action-primary-background-hover: var(--grey-900);
+  --action-primary-background-focus: var(--grey-900);
+  --action-primary-background-disabled: var(--grey-200);
+  --action-primary-text-color: var(--white);
+  --action-primary-text-color-hover: var(--white);
+  --action-primary-text-color-focus: var(--white);
+  --action-primary-text-color-disabled: var(--grey-400);
+
+  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
+  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
+  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
+  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--white-opacity-50);
+  --action-secondary-background-focus: var(--white-opacity-50);
+  --action-secondary-background-disabled: var(--grey-100);
+  --action-secondary-text-color: var(--grey-900);
+  --action-secondary-text-color-hover: var(--grey-1000);
+  --action-secondary-text-color-focus: var(--grey-1000);
+  --action-secondary-text-color-disabled: var(--grey-400);
+
+  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-background: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--white-opacity-50);
+  --action-tertiary-background-focus: var(--white-opacity-50);
+  --action-tertiary-background-disabled: var(--white-opacity-50);
+  --action-tertiary-text-color: var(--grey-900);
+  --action-tertiary-text-color-hover: var(--grey-1000);
+  --action-tertiary-text-color-focus: var(--grey-1000);
+  --action-tertiary-text-color-disabled: var(--grey-400);
+
+  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-background: var(--red-500);
+  --action-attention-background-hover: var(--red-600);
+  --action-attention-background-focus: var(--red-600);
+  --action-attention-background-disabled: var(--red-100);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--red-300);
+
+  /* Badge */
+  --badge-text-color: var(--white);
+  --badge-background-neutral: var(--grey-400);
+  --badge-background-positive: var(--green-700);
+  --badge-background-warning: var(--orange-800);
+  --badge-background-attention: var(--red-500);
+
+  /* Outline (Focus) */
+  --outline-color: var(--blue-500);
+
+  /* Icon */
+  --icon-color-default: var(--black);
+  --icon-color-inverted: var(--white);
+
+  /* Type */
+  --text-color: var(--grey-900);
+  --heading-text-color: var(--grey-1000);
+
+  /* Input */
+  --input-background: var(--red-50);
+
+  /* Border */
+  --border-color: var(--black-opacity-20);
+
+  /* Surface */
+  --surface: var(--grey-200);
+  --surface-elevated-alpha: var(--white-opacity-50);
+  --surface-elevated-100: var(--white);
+  --surface-elevated-200: var(--grey-100);
+  --surface-recessed-alpha: var(--black-opacity-10);
+  --surface-recessed-100: var(--grey-300);
+  --surface-recessed-200: var(--grey-400);
+
+  /* Switch */
+  --switch-track-background: var(--grey-300);
+  --switch-track-background-checked: var(--grey-300);
+
+  /* Tabs */
+  --tab-border-color: var(--grey-500);
+
+  --tab-background: var(--grey-100);
+  --tab-icon: var(--grey-900);
+  --tab-text-color: var(--grey-900);
+
+  --tab-background-active: var(--grey-900);
+  --tab-icon-active: var(--grey-100);
+  --tab-text-color-active: var(--grey-100);
+  --tab-shadow-active: var(--grey-200);
+
+  /* Carousel */
+  --carousel-background: var(--grey-100);
+}
+
+/* =============================================================================== */
+/* 3. DARK MODE                                                                    */
+/* =============================================================================== */
+html[data-brand='modern'][data-theme='dark'] {
+  /* Feedback */
+  --feedback-plain-border-color: var(--white-opacity-50);
+  --feedback-neutral-border-color: var(--grey-400);
+  --feedback-positive-border-color: var(--green-400);
+  --feedback-info-border-color: var(--blue-400);
+  --feedback-warning-border-color: var(--orange-400);
+  --feedback-attention-border-color: var(--red-400);
+  --feedback-plain-background: var(--white-opacity-10);
+  --feedback-neutral-background: var(--grey-800);
+  --feedback-positive-background: var(--green-800);
+  --feedback-info-background: var(--blue-800);
+  --feedback-warning-background: var(--orange-800);
+  --feedback-attention-background: var(--red-800);
+  --feedback-plain-icon: var(--white);
+  --feedback-neutral-icon: var(--grey-300);
+  --feedback-positive-icon: var(--green-300);
+  --feedback-info-icon: var(--blue-300);
+  --feedback-warning-icon: var(--orange-300);
+  --feedback-attention-icon: var(--red-300);
+  --feedback-plain-text: var(--white);
+  --feedback-neutral-text: var(--grey-100);
+  --feedback-positive-text: var(--green-100);
+  --feedback-info-text: var(--blue-100);
+  --feedback-warning-text: var(--orange-100);
+  --feedback-attention-text: var(--red-100);
+
+  /* Action */
+  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-background: var(--white);
+  --action-primary-background-hover: var(--grey-100);
+  --action-primary-background-focus: var(--grey-100);
+  --action-primary-background-disabled: var(--grey-100);
+  --action-primary-text-color: var(--grey-900);
+  --action-primary-text-color-hover: var(--grey-900);
+  --action-primary-text-color-focus: var(--grey-900);
+  --action-primary-text-color-disabled: var(--grey-400);
+
+  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
+  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
+  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
+  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
+  --action-secondary-background: var(--black-opacity-0);
+  --action-secondary-background-hover: var(--black-opacity-20);
+  --action-secondary-background-focus: var(--black-opacity-20);
+  --action-secondary-background-disabled: var(--black-opacity-20);
+  --action-secondary-text-color: var(--grey-100);
+  --action-secondary-text-color-hover: var(--grey-100);
+  --action-secondary-text-color-focus: var(--grey-100);
+  --action-secondary-text-color-disabled: var(--grey-600);
+
+  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-tertiary-background: transparent;
+  --action-tertiary-background-hover: var(--black-opacity-20);
+  --action-tertiary-background-focus: var(--black-opacity-20);
+  --action-tertiary-background-disabled: var(--black-opacity-20);
+  --action-tertiary-text-color: var(--grey-100);
+  --action-tertiary-text-color-hover: var(--grey-100);
+  --action-tertiary-text-color-focus: var(--grey-100);
+  --action-tertiary-text-color-disabled: var(--grey-600);
+
+  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-background: var(--red-600);
+  --action-attention-background-hover: var(--red-700);
+  --action-attention-background-focus: var(--red-700);
+  --action-attention-background-disabled: var(--red-900);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--red-300);
+
+  /* Badge */
+  --badge-text-color: var(--white);
+  --badge-background-neutral: var(--grey-600);
+  --badge-background-positive: var(--green-900);
+  --badge-background-warning: var(--orange-900);
+  --badge-background-attention: var(--red-700);
+
+  /* Outline (Focus) */
+  --outline-color: var(--blue-500);
+
+  /* Icon */
+  --icon-color-default: var(--white);
+  --icon-color-inverted: var(--black);
+
+  /* Type */
+  --text-color: var(--grey-100);
+  --heading-text-color: var(--grey-200);
+
+  /* Input */
+  --input-background: var(--grey-800);
+
+  /* Border */
+  --border-color: var(--white-opacity-20);
+
+  /* Surface */
+  --surface: var(--grey-800);
+  --surface-elevated-alpha: var(--white-opacity-10);
+  --surface-elevated-100: var(--grey-600);
+  --surface-elevated-200: var(--grey-700);
+  --surface-recessed-alpha: var(--black-opacity-30);
+  --surface-recessed-100: var(--grey-800);
+  --surface-recessed-200: var(--grey-900);
+
+  /* Switch */
+  --switch-track-background: var(--grey-300);
+  --switch-track-background-checked: var(--grey-300);
+
+  /* Tabs */
+  --tab-border-color: var(--grey-700);
+
+  --tab-background: var(--grey-800);
+  --tab-icon: var(--grey-100);
+  --tab-text-color: var(--grey-100);
+
+  --tab-background-active: var(--grey-100);
+  --tab-icon-active: var(--grey-800);
+  --tab-text-color-active: var(--grey-800);
+  --tab-shadow-active: var(--grey-900);
+
+  /* Carousel */
+  --carousel-background: var(--grey-700);
+}
+
+/* ================================================================= */
+/* 4. SET THE FOUNDATION                                             */
+/* Map tokens to semantic or component contexts .                    */
+/* ================================================================= */
+html[data-brand='modern'] {
+  --action-padding: var(--space-200) var(--space-500);
+  --action-icon-only-padding: var(--space-000);
+  --action-radius: var(--radius-100);
+  --action-font-size: var(--text-font-size);
+  --action-line-height: var(--text-line-height);
+  --action-font-weight: var(--font-weight-bold);
+
+  /* Feedback • Alerts, Messages, Notifciations */
+  --feedback-plain-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-plain-border-color);
+  --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
+  --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
+  --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);
+  --feedback-warning-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-warning-border-color);
+  --feedback-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-attention-border-color);
+
+  /* Card */
+  --card-radius: var(--radius-400);
+}

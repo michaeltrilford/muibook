@@ -1,0 +1,381 @@
+/* ==================== */
+/*   __  __ _   _ ___   */
+/*  |  \/  | | | |_ _|  */
+/*  | |\/| | | | || |   */
+/*  | |  | | |_| || |   */
+/*  |_|  |_|\___/|___|  */
+/*                      */
+/*   michael.ui.system  */
+/* ==================== */
+
+/* JAL */
+/* =============================================================================== */
+/* 1. BRAND PRIMITIVES                                                             */
+/* =============================================================================== */
+html[data-brand='jal'] {
+  --font-family: 'Noto Sans JP', 'メイリオ', sans-serif;
+  /* Neutral Greys */
+  --jal-grey-50: #fafafa;
+  --jal-grey-100: #f4f4f4;
+  --jal-grey-200: #e0e0e0;
+  --jal-grey-300: #c2c2c2;
+  --jal-grey-400: #a3a3a3;
+  --jal-grey-500: #8a8a8a;
+  --jal-grey-600: #707070;
+  --jal-grey-700: #494949;
+  --jal-grey-800: #3a3a3a;
+  --jal-grey-900: #1a1a1a;
+  --jal-grey-1000: #0b0b0b;
+  /* Brand Red Scale */
+  --jal-red-50: #fcebec;
+  --jal-red-100: #f3d6db;
+  --jal-red-200: #ffb2b9;
+  --jal-red-300: #d34856;
+  --jal-red-400: #c32c3b;
+  --jal-red-500: #b11b24;
+  --jal-red-600: #9e1b32;
+  --jal-red-700: #801528;
+  --jal-red-800: #6a0c21;
+  --jal-red-900: #4a0b11;
+  /* Brand Blue Scale */
+  --jal-blue-50: #e5f3fc;
+  --jal-blue-100: #cfe9f9;
+  --jal-blue-200: #a2d4f2;
+  --jal-blue-300: #74b8ec;
+  --jal-blue-400: #4184e2;
+  --jal-blue-500: #2567b7;
+  --jal-blue-600: #1e549c;
+  --jal-blue-700: #163f7d;
+  --jal-blue-800: #0e2a5f;
+  --jal-blue-900: #001a44;
+  /* Brand Green Scale */
+  --jal-green-50: #e8f5e9;
+  --jal-green-100: #c8e6c9;
+  --jal-green-200: #a5d6a7;
+  --jal-green-300: #81c784;
+  --jal-green-400: #66bb6a;
+  --jal-green-500: #4caf50;
+  --jal-green-600: #43a047;
+  --jal-green-700: #388e3c;
+  --jal-green-800: #2c6e2f;
+  --jal-green-900: #1b4c1d;
+  /* Brand Yellow Scale */
+  --jal-yellow-50: #fff9e5;
+  --jal-yellow-100: #fff2cc;
+  --jal-yellow-200: #ffeb99;
+  --jal-yellow-300: #ffe066;
+  --jal-yellow-400: #ffd32b;
+  --jal-yellow-500: #ffc107;
+  --jal-yellow-600: #ffb300;
+  --jal-yellow-700: #ffa000;
+  --jal-yellow-800: #ff8f00;
+  --jal-yellow-900: #ff6f00;
+  /* Brand Gold Scale */
+  --brand-gold-50: #fdf9ec;
+  --brand-gold-100: #f9f0d0;
+  --brand-gold-200: #f0dd9f;
+  --brand-gold-300: #e6c96d;
+  --brand-gold-400: #dcb23e;
+  --brand-gold-500: #c39a1e;
+  --brand-gold-600: #a8821a;
+  --brand-gold-700: #8d6b16;
+  --brand-gold-800: #735614;
+  --brand-gold-900: #5a4210;
+  /* White & Black */
+  --jal-white: #ffffff;
+  --jal-black: #000000;
+}
+
+/* =============================================================================== */
+/* 2. LIGHT MODE                                                                   */
+/* =============================================================================== */
+html[data-brand='jal'][data-theme='light'] {
+  /* Feedback */
+  --feedback-plain-border-color: var(--black-opacity-20);
+  --feedback-neutral-border-color: var(--jal-grey-100);
+  --feedback-positive-border-color: var(--jal-green-100);
+  --feedback-info-border-color: var(--jal-blue-100);
+  --feedback-warning-border-color: var(--jal-yellow-100);
+  --feedback-attention-border-color: var(--jal-red-100);
+  --feedback-plain-background: var(--white-opacity-10);
+  --feedback-neutral-background: var(--jal-grey-50);
+  --feedback-positive-background: var(--jal-green-50);
+  --feedback-info-background: var(--jal-blue-50);
+  --feedback-warning-background: var(--jal-yellow-50);
+  --feedback-attention-background: var(--jal-red-50);
+  --feedback-plain-icon: var(--jal-grey-700);
+  --feedback-neutral-icon: var(--jal-grey-500);
+  --feedback-positive-icon: var(--jal-green-500);
+  --feedback-info-icon: var(--jal-blue-500);
+  --feedback-warning-icon: var(--jal-yellow-500);
+  --feedback-attention-icon: var(--jal-red-500);
+  --feedback-plain-text: var(--jal-grey-700);
+  --feedback-neutral-text: var(--jal-grey-700);
+  --feedback-positive-text: var(--jal-green-700);
+  --feedback-info-text: var(--jal-blue-700);
+  --feedback-warning-text: var(--jal-yellow-700);
+  --feedback-attention-text: var(--jal-red-700);
+
+  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-background: var(--jal-red-500);
+  --action-primary-background-hover: var(--jal-red-400);
+  --action-primary-background-focus: var(--jal-red-400);
+  --action-primary-background-disabled: var(--jal-red-400);
+  --action-primary-text-color: var(--jal-white);
+  --action-primary-text-color-hover: var(--jal-white);
+  --action-primary-text-color-focus: var(--jal-white);
+  --action-primary-text-color-disabled: var(--jal-white);
+
+  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-300);
+  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-300);
+  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-300);
+  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-300);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--white-opacity-40);
+  --action-secondary-background-focus: var(--white-opacity-40);
+  --action-secondary-background-disabled: var(--white-opacity-40);
+  --action-secondary-text-color: var(--jal-red-300);
+  --action-secondary-text-color-hover: var(--jal-red-300);
+  --action-secondary-text-color-focus: var(--jal-red-300);
+  --action-secondary-text-color-disabled: var(--jal-red-300);
+
+  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-background: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--white-opacity-40);
+  --action-tertiary-background-focus: var(--white-opacity-40);
+  --action-tertiary-background-disabled: var(--white-opacity-40);
+  --action-tertiary-text-color: var(--jal-red-300);
+  --action-tertiary-text-color-hover: var(--jal-red-300);
+  --action-tertiary-text-color-focus: var(--jal-red-300);
+  --action-tertiary-text-color-disabled: var(--jal-red-300);
+
+  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
+  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-700);
+  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-700);
+  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-700);
+  --action-attention-background: var(--jal-red-300);
+  --action-attention-background-hover: var(--jal-red-500);
+  --action-attention-background-focus: var(--jal-red-500);
+  --action-attention-background-disabled: var(--jal-red-500);
+  --action-attention-text-color: var(--jal-white);
+  --action-attention-text-color-hover: var(--jal-white);
+  --action-attention-text-color-focus: var(--jal-white);
+  --action-attention-text-color-disabled: var(--jal-white);
+
+  /* Badge */
+  --badge-text-color: var(--jal-white);
+  --badge-background-neutral: var(--jal-grey-500);
+  --badge-background-positive: var(--jal-green-700);
+  --badge-background-warning: var(--jal-yellow-900);
+  --badge-background-attention: var(--jal-red-500);
+
+  /* Outline (Focus) */
+  --outline-color: var(--jal-red-300);
+
+  /* Icon */
+  --icon-color-default: var(--jal-red-300);
+  --icon-color-inverted: var(--jal-white);
+
+  /* Type */
+  --text-color: var(--jal-grey-900);
+  --heading-text-color: var(--jal-red-500);
+
+  /* Input */
+  --input-background: var(--jal-white);
+
+  /* Border */
+  --border-color: var(--black-opacity-20);
+
+  /* Surface */
+  --surface: var(--jal-grey-200);
+  --surface-elevated-alpha: var(--white-opacity-50);
+  --surface-elevated-100: var(--white);
+  --surface-elevated-200: var(--jal-grey-100);
+  --surface-recessed-alpha: var(--black-opacity-10);
+  --surface-recessed-100: var(--jal-grey-300);
+  --surface-recessed-200: var(--jal-grey-400);
+
+  /* Switch */
+  --switch-track-background: var(--jal-grey-300);
+  --switch-track-background-checked: var(--jal-red-400);
+
+  /* Tabs */
+  --tab-border-color: var(--jal-red-800);
+
+  --tab-background: var(--jal-red-500);
+  --tab-icon: var(--jal-white);
+  --tab-text-color: var(--jal-white);
+
+  --tab-background-active: var(--jal-white);
+  --tab-icon-active: var(--jal-red-500);
+  --tab-text-color-active: var(--jal-red-500);
+  --tab-shadow-active: var(--jal-red-600);
+
+  /* Carousel */
+  --carousel-background: var(--jal-grey-100);
+}
+
+/* =============================================================================== */
+/* 3. DARK MODE                                                                    */
+/* =============================================================================== */
+html[data-brand='jal'][data-theme='dark'] {
+  /* Feedback */
+  --feedback-plain-border-color: var(--white-opacity-20);
+  --feedback-neutral-border-color: var(--jal-grey-800);
+  --feedback-positive-border-color: var(--jal-green-800);
+  --feedback-info-border-color: var(--jal-blue-800);
+  --feedback-warning-border-color: var(--jal-yellow-800);
+  --feedback-attention-border-color: var(--jal-red-800);
+  --feedback-plain-background: var(--white-opacity-10);
+  --feedback-neutral-background: var(--jal-grey-900);
+  --feedback-positive-background: var(--jal-green-900);
+  --feedback-info-background: var(--jal-blue-900);
+  --feedback-warning-background: var(--jal-yellow-900);
+  --feedback-attention-background: var(--jal-red-900);
+  --feedback-plain-icon: var(--jal-grey-300);
+  --feedback-neutral-icon: var(--jal-grey-300);
+  --feedback-positive-icon: var(--jal-green-300);
+  --feedback-info-icon: var(--jal-blue-300);
+  --feedback-warning-icon: var(--jal-yellow-300);
+  --feedback-attention-icon: var(--jal-red-300);
+  --feedback-plain-text: var(--jal-grey-100);
+  --feedback-neutral-text: var(--jal-grey-100);
+  --feedback-positive-text: var(--jal-green-100);
+  --feedback-info-text: var(--jal-blue-100);
+  --feedback-warning-text: var(--jal-yellow-100);
+  --feedback-attention-text: var(--jal-red-100);
+
+  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-background: var(--jal-red-300);
+  --action-primary-background-hover: var(--jal-red-400);
+  --action-primary-background-focus: var(--jal-red-400);
+  --action-primary-background-disabled: var(--jal-red-400);
+  --action-primary-text-color: var(--jal-white);
+  --action-primary-text-color-hover: var(--jal-white);
+  --action-primary-text-color-focus: var(--jal-white);
+  --action-primary-text-color-disabled: var(--jal-white);
+
+  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-200);
+  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-200);
+  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-200);
+  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-200);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--black-opacity-20);
+  --action-secondary-background-focus: var(--black-opacity-20);
+  --action-secondary-background-disabled: var(--black-opacity-20);
+  --action-secondary-text-color: var(--jal-red-200);
+  --action-secondary-text-color-hover: var(--jal-red-200);
+  --action-secondary-text-color-focus: var(--jal-red-200);
+  --action-secondary-text-color-disabled: var(--jal-red-200);
+
+  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-background: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--black-opacity-20);
+  --action-tertiary-background-focus: var(--black-opacity-20);
+  --action-tertiary-background-disabled: var(--black-opacity-20);
+  --action-tertiary-text-color: var(--jal-red-200);
+  --action-tertiary-text-color-hover: var(--jal-red-200);
+  --action-tertiary-text-color-focus: var(--jal-red-200);
+  --action-tertiary-text-color-disabled: var(--jal-red-200);
+
+  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
+  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
+  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
+  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
+  --action-attention-background: var(--jal-red-500);
+  --action-attention-background-hover: var(--jal-red-700);
+  --action-attention-background-focus: var(--jal-red-700);
+  --action-attention-background-disabled: var(--jal-red-100);
+  --action-attention-text-color: var(--jal-white);
+  --action-attention-text-color-hover: var(--jal-white);
+  --action-attention-text-color-focus: var(--jal-white);
+  --action-attention-text-color-disabled: var(--jal-white);
+
+  /* Badge */
+  --badge-text-color: var(--jal-white);
+  --badge-background-neutral: var(--jal-grey-600);
+  --badge-background-positive: var(--jal-green-600);
+  --badge-background-warning: var(--jal-yellow-800);
+  --badge-background-attention: var(--jal-red-400);
+
+  /* Outline (Focus) */
+  --outline-color: var(--jal-red-200);
+
+  /* Icon */
+  --icon-color-default: var(--jal-red-200);
+  --icon-color-inverted: var(--jal-black);
+
+  /* Type */
+  --text-color: var(--jal-grey-200);
+  --heading-text-color: var(--jal-red-200);
+
+  /* Input */
+  --input-background: var(--jal-grey-800);
+
+  /* Border */
+  --border-color: var(--white-opacity-10);
+
+  /* Surface */
+  --surface: var(--jal-grey-900);
+  --surface-elevated-alpha: var(--white-opacity-10);
+  --surface-elevated-100: var(--jal-grey-700);
+  --surface-elevated-200: var(--jal-grey-800);
+  --surface-recessed-alpha: var(--black-opacity-30);
+  --surface-recessed-100: var(--jal-grey-900);
+  --surface-recessed-200: var(--jal-grey-1000);
+
+  /* Switch */
+  --switch-track-background: var(--jal-grey-500);
+  --switch-track-background-checked: var(--jal-red-300);
+
+  /* Tabs */
+  --tab-border-color: var(--jal-red-800);
+
+  --tab-background: var(--jal-red-900);
+  --tab-icon: var(--jal-white);
+  --tab-text-color: var(--jal-white);
+
+  --tab-background-active: var(--jal-red-500);
+  --tab-icon-active: var(--jal-white);
+  --tab-text-color-active: var(--jal-white);
+  --tab-shadow-active: var(--black-opacity-20);
+
+  /* Carousel */
+  --carousel-background: var(--jal-grey-900);
+}
+
+/* ================================================================= */
+/* 4. SET THE FOUNDATION                                             */
+/* Map tokens to semantic or component contexts .                    */
+/* ================================================================= */
+html[data-brand='jal'] {
+  --action-padding: var(--space-200) var(--space-500);
+  --action-icon-only-padding: var(--space-000);
+  --action-radius: var(--radius-100);
+  --action-font-size: var(--text-font-size);
+  --action-line-height: var(--text-line-height);
+  --action-font-weight: var(--font-weight-bold);
+
+  /* Feedback • Alerts, Messages, Notifciations */
+  --feedback-plain-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-plain-border-color);
+  --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
+  --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
+  --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);
+  --feedback-warning-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-warning-border-color);
+  --feedback-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-attention-border-color);
+
+  /* Card */
+  --card-radius: var(--radius-400);
+}

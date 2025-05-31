@@ -1,0 +1,44 @@
+/* ==================== */
+/*   __  __ _   _ ___   */
+/*  |  \/  | | | |_ _|  */
+/*  | |\/| | | | || |   */
+/*  | |  | | |_| || |   */
+/*  |_|  |_|\___/|___|  */
+/*                      */
+/*   michael.ui.system  */
+/* ==================== */
+
+/* =============================================================================== */
+/*   Theme Storefront: MUI (DEFAULT)                                               */
+/*   Component theme alignment across storefront                                   */
+/* =============================================================================== */
+:where(html) {
+  --mui-brand-100: #fffde7;
+  --mui-brand-200: #fff59d;
+  --mui-brand-300: #ffeb3b;
+  --mui-brand-400: #ffd600;
+  --mui-brand-500: #ffbb00;
+  --mui-brand-600: #ffa500;
+  --mui-brand-700: #ff9800;
+
+  /* APP Background */
+  background: var(--surface);
+}
+
+::view-transition-old(body),
+::view-transition-new(body) {
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: 1fr 7.6rem;
+  min-height: 100vh;
+}
+@media (min-width: 960px) {
+  #app {
+    grid-template-rows: 1fr;
+    grid-template-columns: 26rem 1fr;
+  }
+}

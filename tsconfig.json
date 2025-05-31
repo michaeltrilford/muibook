@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    // Output files
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "outDir": "./dist/esm",
+    "emitDeclarationOnly": false,
+
+    // Module resolution
+    "moduleResolution": "bundler",
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+
+    // Linting
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+
+    // Enable output
+    "noEmit": false
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,632 @@
+/* ==================== */
+/*   __  __ _   _ ___   */
+/*  |  \/  | | | |_ _|  */
+/*  | |\/| | | | || |   */
+/*  | |  | | |_| || |   */
+/*  |_|  |_|\___/|___|  */
+/*                      */
+/*   michael.ui.system  */
+/* ==================== */
+
+/* ==================================================================================================== */
+/* 1. BRAND PRIMITIVES                                                                                  */
+/* ==================================================================================================== */
+:where(html) {
+  /* Font-family */
+  --font-family: system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+
+  /* ================================================================================================== */
+  /*  Typography on the Web • Orchestrating Vertical Rhythm                                             */
+  /* ================================================================================================== */
+  /*  An introduction to baseline grids and vertical rhythm in web typography.                          */
+  /*  The video below explores the history of type through letterpress and how these                    */
+  /*  traditional principles can guide modern decisions.                                                */
+  /* ================================================================================================== */
+  /*  Watch: https://youtu.be/FFGSy0EfA9Y by Michael Trilford                                           */
+  /* ================================================================================================== */
+
+  /* ================================================================================================== */
+  /*                                         Type Scale                                                 */
+  /* -------------------------------------------------------------------------------------------------- */
+  /*   6px |  7px |  8px |  9px | 10px |  11px |  12px |  14px |  16px |  18px |  21px |  24px |  36px  */
+  /*  48px | 60px | 72px | 84px | 96px | 108px | 120px | 132px | 144px | 156px | 168px | 180px | 192px  */
+  /* ================================================================================================== */
+
+  /* Font-size */
+  --font-size-15: 1.1rem;
+  --font-size-25: 1.2rem;
+  --font-size-50: 1.4rem;
+  --font-size-100: 1.6rem;
+  --font-size-200: 1.8rem;
+  --font-size-300: 2.1rem;
+  --font-size-400: 2.4rem;
+  --font-size-500: 3.6rem;
+  --font-size-600: 4.8rem;
+  --font-size-700: 6rem;
+  --font-size-800: 7.2rem;
+  --font-size-900: 8.4rem;
+  --font-size-1000: 9.6rem;
+
+  /* ================================================================================================= */
+  /*                                           Leading Scale                                           */
+  /* ------------------------------------------------------------------------------------------------- */
+  /* ======================================= 18 / 11  =  1.636 ======================================= */
+  /* ======================================= 18 / 12  =  1.500 ======================================= */
+  /* ======================================= 21 / 14  =  1.500 ======================================= */
+  /* ======================================= 24 / 16  =  1.500 ======================================= */
+  /* ======================================= 24 / 18  =  1.333 ======================================= */
+  /* ======================================= 24 / 21  =  1.143 ======================================= */
+  /* ======================================= 36 / 24  =  1.500 ======================================= */
+  /* ======================================= 48 / 36  =  1.333 ======================================= */
+  /* ======================================= 60 / 48  =  1.250 ======================================= */
+  /* ======================================= 72 / 60  =  1.200 ======================================= */
+  /* ======================================= 84 / 72  =  1.167 ======================================= */
+  /* ======================================= 96 / 84  =  1.143 ======================================= */
+  /* ====================================== 108 / 96  =  1.125 ======================================= */
+  /* ================================================================================================= */
+
+  /* Line-height */
+  --line-height-15: 1.63636364;
+  --line-height-25: 1.5;
+  --line-height-50: 1.5;
+  --line-height-100: 1.5;
+  --line-height-200: 1.33333333;
+  --line-height-300: 1.14285714;
+  --line-height-400: 1.5;
+  --line-height-500: 1.33333333;
+  --line-height-600: 1.25;
+  --line-height-700: 1.2;
+  --line-height-800: 1.16666667;
+  --line-height-900: 1.14285714;
+  --line-height-1000: 1.125;
+  /* Font Weight */
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  /* Black */
+  --black: black;
+  --black-opacity-0: hsla(0, 0%, 0%, 0);
+  --black-opacity-10: hsla(0, 0%, 0%, 0.1);
+  --black-opacity-20: hsla(0, 0%, 0%, 0.2);
+  --black-opacity-30: hsla(0, 0%, 0%, 0.3);
+  --black-opacity-40: hsla(0, 0%, 0%, 0.4);
+  --black-opacity-50: hsla(0, 0%, 0%, 0.5);
+  --black-opacity-60: hsla(0, 0%, 0%, 0.6);
+  --black-opacity-70: hsla(0, 0%, 0%, 0.7);
+  --black-opacity-80: hsla(0, 0%, 0%, 0.8);
+  --black-opacity-90: hsla(0, 0%, 0%, 0.9);
+  --black-opacity-100: hsla(0, 0%, 0%, 1);
+  /* White */
+  --white: #ffffff;
+  --white-opacity-0: hsla(0, 0%, 100%, 0);
+  --white-opacity-10: hsla(0, 0%, 100%, 0.1);
+  --white-opacity-20: hsla(0, 0%, 100%, 0.2);
+  --white-opacity-30: hsla(0, 0%, 100%, 0.3);
+  --white-opacity-40: hsla(0, 0%, 100%, 0.4);
+  --white-opacity-50: hsla(0, 0%, 100%, 0.5);
+  --white-opacity-60: hsla(0, 0%, 100%, 0.6);
+  --white-opacity-70: hsla(0, 0%, 100%, 0.7);
+  --white-opacity-80: hsla(0, 0%, 100%, 0.8);
+  --white-opacity-90: hsla(0, 0%, 100%, 0.9);
+  --white-opacity-100: hsla(0, 0%, 100%, 1);
+  /* Grey scale */
+  --grey-100: #f5f5f5;
+  --grey-200: #e5e5e5;
+  --grey-300: #ccc;
+  --grey-400: #aaa;
+  --grey-500: #888;
+  --grey-600: #666;
+  --grey-700: #555;
+  --grey-800: #444;
+  --grey-900: #333;
+  --grey-1000: #222;
+  --grey-1100: #111;
+  /* Red scale */
+  --red-100: #ffe5e5;
+  --red-200: #fbbcbc;
+  --red-300: #f79494;
+  --red-400: #f36b6b;
+  --red-500: #f74e4e;
+  --red-600: #e04343;
+  --red-700: #c23c3c;
+  --red-800: #a43535;
+  --red-900: #862e2e;
+  --red-1000: #6a2323;
+  /* Orange scale */
+  --orange-100: #fff2cc;
+  --orange-200: #ffe0a3;
+  --orange-300: #ffcc80;
+  --orange-400: #ffb84d;
+  --orange-500: #ffa500;
+  --orange-600: #e59400;
+  --orange-700: #cc8300;
+  --orange-800: #b37300;
+  --orange-900: #996200;
+  --orange-1000: #805100;
+  /* Green scale */
+  --green-100: #e5f9e5;
+  --green-200: #c6f3c6;
+  --green-300: #a6eda6;
+  --green-400: #86e786;
+  --green-500: #00bd00;
+  --green-600: #00a800;
+  --green-700: #009400;
+  --green-800: #007f00;
+  --green-900: #006b00;
+  --green-1000: #005700;
+  /* Blue scale */
+  --blue-100: #e6f2ff;
+  --blue-200: #cce4ff;
+  --blue-300: #99caff;
+  --blue-400: #85bffb;
+  --blue-500: #62b7fb;
+  --blue-600: #338fe0;
+  --blue-700: #3396eb;
+  --blue-800: #1a86e3;
+  --blue-900: #0076db;
+  --blue-1000: #005fb1;
+  /* Radius */
+  --radius-000: 0;
+  --radius-100: 4px;
+  --radius-150: 6px;
+  --radius-200: 8px;
+  --radius-300: 16px;
+  --radius-400: 24px;
+  /* Spacing */
+  --space-000: 0;
+  --space-025: 0.2rem;
+  --space-050: 0.4rem;
+  --space-100: 0.6rem;
+  --space-200: 0.8rem;
+  --space-300: 1.2rem;
+  --space-400: 1.6rem;
+  --space-500: 2.4rem;
+  --space-600: 3.6rem;
+  --space-700: 4.8rem;
+  --space-800: 6rem;
+  /* Stroke */
+  --stroke-size-100: 1px;
+  --stroke-size-200: 2px;
+  --stroke-size-300: 3px;
+  --stroke-size-400: 4px;
+  --stroke-size-500: 5px;
+  --stroke-solid: solid;
+  --stroke-outset: outset;
+  /* Animation */
+  --speed-100: 0.1s;
+  --speed-200: 0.2s;
+  --speed-300: 0.3s;
+  --speed-400: 0.4s;
+}
+
+/* ==================================================================================================== */
+/* 2. LIGHT MODE                                                                                        */
+/* ==================================================================================================== */
+html[data-theme='light'] {
+  /* ================================================================================================== */
+  /* Semantic                                                                                           */
+  /* ================================================================================================== */
+  /* Form */
+  --form-default-text-color: var(--grey-500);
+  --form-success-text-color: var(--green-700);
+  --form-warning-text-color: var(--orange-700);
+  --form-error-text-color: var(--red-700);
+  --form-default-text-color-hover: var(--grey-600);
+  --form-success-text-color-hover: var(--green-800);
+  --form-warning-text-color-hover: var(--orange-800);
+  --form-error-text-color-hover: var(--red-800);
+  --form-default-border-color: var(--grey-300);
+  --form-success-border-color: var(--green-600);
+  --form-warning-border-color: var(--orange-600);
+  --form-error-border-color: var(--red-600);
+  --form-default-border-color-hover: var(--grey-400);
+  --form-success-border-color-hover: var(--green-700);
+  --form-warning-border-color-hover: var(--orange-700);
+  --form-error-border-color-hover: var(--red-700);
+  /* Feedback - Border (Alerts & Messages) */
+  --feedback-plain-border-color: var(--black-opacity-50);
+  --feedback-neutral-border-color: var(--grey-600);
+  --feedback-positive-border-color: var(--green-600);
+  --feedback-info-border-color: var(--blue-600);
+  --feedback-warning-border-color: var(--orange-600);
+  --feedback-attention-border-color: var(--red-600);
+  /* Feedback - Background (Alerts & Messages) */
+  --feedback-plain-background: var(--white-opacity-20);
+  --feedback-neutral-background: var(--grey-100);
+  --feedback-positive-background: var(--green-100);
+  --feedback-info-background: var(--blue-100);
+  --feedback-warning-background: var(--orange-100);
+  --feedback-attention-background: var(--red-100);
+  /* Feedback - Icon (Alerts & Messages) */
+  --feedback-plain-icon: var(--black);
+  --feedback-neutral-icon: var(--grey-600);
+  --feedback-positive-icon: var(--green-600);
+  --feedback-info-icon: var(--blue-600);
+  --feedback-warning-icon: var(--orange-600);
+  --feedback-attention-icon: var(--red-600);
+  /* Feedback - Text (Alerts & Messages) */
+  --feedback-plain-text: var(--black);
+  --feedback-neutral-text: var(--grey-900);
+  --feedback-positive-text: var(--green-900);
+  --feedback-info-text: var(--blue-900);
+  --feedback-warning-text: var(--orange-900);
+  --feedback-attention-text: var(--red-900);
+  /* Action - Primary (Button & Link) */
+  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-background: var(--grey-900);
+  --action-primary-background-hover: var(--grey-1000);
+  --action-primary-background-focus: var(--grey-1000);
+  --action-primary-background-disabled: var(--grey-200);
+  --action-primary-text-color: var(--white);
+  --action-primary-text-color-hover: var(--white);
+  --action-primary-text-color-focus: var(--white);
+  --action-primary-text-color-disabled: var(--grey-400);
+  /* Action - Secondary (Button & Link) */
+  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
+  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
+  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
+  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--grey-100);
+  --action-secondary-background-focus: var(--grey-100);
+  --action-secondary-background-disabled: var(--grey-100);
+  --action-secondary-text-color: var(--grey-900);
+  --action-secondary-text-color-hover: var(--grey-1000);
+  --action-secondary-text-color-focus: var(--grey-1000);
+  --action-secondary-text-color-disabled: var(--grey-400);
+  /* Action - Tertiary (Button & Link) */
+  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-background: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--black-opacity-10);
+  --action-tertiary-background-focus: var(--black-opacity-10);
+  --action-tertiary-background-disabled: var(--grey-100);
+  --action-tertiary-text-color: var(--grey-900);
+  --action-tertiary-text-color-hover: var(--grey-1000);
+  --action-tertiary-text-color-focus: var(--grey-1000);
+  --action-tertiary-text-color-disabled: var(--grey-400);
+  /* Action - Attention (Button & Link) */
+  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-background: var(--red-500);
+  --action-attention-background-hover: var(--red-600);
+  --action-attention-background-focus: var(--red-600);
+  --action-attention-background-disabled: var(--red-100);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--red-300);
+  /* ================================================================================================== */
+  /* Contextual                                                                                         */
+  /* ================================================================================================== */
+  --surface: var(--grey-200);
+  --surface-elevated-alpha: var(--white-opacity-50);
+  --surface-elevated-100: var(--white);
+  --surface-elevated-200: var(--grey-100);
+  --surface-recessed-alpha: var(--black-opacity-10);
+  --surface-recessed-100: var(--grey-300);
+  --surface-recessed-200: var(--grey-400);
+
+  --outline-color: var(--blue-500);
+  --border-color: var(--black-opacity-20);
+
+  --optional-text-color: var(--grey-600);
+
+  --text-color: var(--grey-900);
+  --text-color-success: var(--green-600);
+  --text-color-warning: var(--orange-600);
+  --text-color-error: var(--red-600);
+
+  /* ================================================================================================== */
+  /* Components                                                                                         */
+  /* ================================================================================================== */
+  /* Switch */
+  --switch-track-background: var(--grey-300);
+  --switch-track-background-checked: var(--green-500);
+  --switch-thumb-bg: var(--white);
+  --switch-icon: var(--icon-color-default);
+  /* Icon */
+  --icon-color-default: var(--black);
+  --icon-color-inverted: var(--white);
+  /* Badge */
+  --badge-text-color: var(--grey-100);
+  --badge-background-neutral: var(--grey-600);
+  --badge-background-positive: var(--green-600);
+  --badge-background-warning: var(--orange-600);
+  --badge-background-attention: var(--red-600);
+  /* Heading */
+  --heading-text-color: var(--grey-1000);
+  /* Link */
+  --link-text-color-default: var(--grey-900);
+  --link-text-color-default-hover: var(--grey-1000);
+  --link-text-color-default-focus: var(--grey-1000);
+  --link-text-color-default-disabled: var(--grey-800);
+  /* Input */
+  --input-background: var(--white);
+  --input-background-disabled: var(--grey-100);
+  /* Addon */
+  --addon-background: var(--grey-100);
+  /* Tabs */
+  --tab-border-color: var(--grey-300);
+
+  --tab-background: var(--grey-200);
+  --tab-icon: var(--grey-900);
+  --tab-text-color: var(--grey-900);
+
+  --tab-background-active: var(--white);
+  --tab-icon-active: var(--black);
+  --tab-text-color-active: var(--black);
+  --tab-shadow-active: var(--black-opacity-10);
+
+  /* Carousel */
+  --carousel-background: var(--white);
+}
+
+/* ==================================================================================================== */
+/* 3. DARK MODE                                                                                         */
+/* ==================================================================================================== */
+html[data-theme='dark'] {
+  /* ================================================================================================== */
+  /* Semantic                                                                                           */
+  /* ================================================================================================== */
+  /* Form */
+  --form-default-text-color: var(--grey-500);
+  --form-success-text-color: var(--green-400);
+  --form-warning-text-color: var(--orange-400);
+  --form-error-text-color: var(--red-400);
+  --form-default-text-color-hover: var(--grey-400);
+  --form-success-text-color-hover: var(--green-300);
+  --form-warning-text-color-hover: var(--orange-300);
+  --form-error-text-color-hover: var(--red-300);
+  --form-default-border-color: var(--grey-600);
+  --form-success-border-color: var(--green-400);
+  --form-warning-border-color: var(--orange-400);
+  --form-error-border-color: var(--red-400);
+  --form-default-border-color-hover: var(--grey-500);
+  --form-success-border-color-hover: var(--green-300);
+  --form-warning-border-color-hover: var(--orange-300);
+  --form-error-border-color-hover: var(--red-300);
+  /* Feedback - Border (Alerts & Messages) */
+  --feedback-plain-border-color: var(--white-opacity-50);
+  --feedback-neutral-border-color: var(--grey-400);
+  --feedback-positive-border-color: var(--green-400);
+  --feedback-info-border-color: var(--blue-400);
+  --feedback-warning-border-color: var(--orange-400);
+  --feedback-attention-border-color: var(--red-400);
+  /* Feedback - Background (Alerts & Messages) */
+  --feedback-plain-background: var(--white-opacity-10);
+  --feedback-neutral-background: var(--grey-800);
+  --feedback-positive-background: var(--green-800);
+  --feedback-info-background: var(--blue-800);
+  --feedback-warning-background: var(--orange-800);
+  --feedback-attention-background: var(--red-800);
+  /* Feedback - Icon (Alerts & Messages) */
+  --feedback-plain-icon: var(--white);
+  --feedback-neutral-icon: var(--grey-300);
+  --feedback-positive-icon: var(--green-300);
+  --feedback-info-icon: var(--blue-300);
+  --feedback-warning-icon: var(--orange-300);
+  --feedback-attention-icon: var(--red-300);
+  /* Feedback - Text (Alerts & Messages) */
+  --feedback-plain-text: var(--white);
+  --feedback-neutral-text: var(--grey-100);
+  --feedback-positive-text: var(--green-100);
+  --feedback-info-text: var(--blue-100);
+  --feedback-warning-text: var(--orange-100);
+  --feedback-attention-text: var(--red-100);
+  /* Action - Primary (Button & Link) */
+  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-background: var(--grey-200);
+  --action-primary-background-hover: var(--grey-100);
+  --action-primary-background-focus: var(--grey-100);
+  --action-primary-background-disabled: var(--grey-800);
+  --action-primary-text-color: var(--grey-900);
+  --action-primary-text-color-hover: var(--grey-900);
+  --action-primary-text-color-focus: var(--grey-900);
+  --action-primary-text-color-disabled: var(--grey-400);
+  /* Action - Secondary (Button & Link) */
+  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
+  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
+  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
+  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
+  --action-secondary-background: var(--black-opacity-0);
+  --action-secondary-background-hover: var(--grey-800);
+  --action-secondary-background-focus: var(--grey-800);
+  --action-secondary-background-disabled: var(--grey-900);
+  --action-secondary-text-color: var(--grey-100);
+  --action-secondary-text-color-hover: var(--grey-100);
+  --action-secondary-text-color-focus: var(--grey-100);
+  --action-secondary-text-color-disabled: var(--grey-600);
+  /* Action - Tertiary (Button & Link) */
+  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-tertiary-background: transparent;
+  --action-tertiary-background-hover: var(--white-opacity-10);
+  --action-tertiary-background-focus: var(--white-opacity-10);
+  --action-tertiary-background-disabled: var(--grey-900);
+  --action-tertiary-text-color: var(--grey-100);
+  --action-tertiary-text-color-hover: var(--grey-100);
+  --action-tertiary-text-color-focus: var(--grey-100);
+  --action-tertiary-text-color-disabled: var(--grey-600);
+  /* Action - Attention (Button & Link) */
+  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-background: var(--red-600);
+  --action-attention-background-hover: var(--red-700);
+  --action-attention-background-focus: var(--red-700);
+  --action-attention-background-disabled: var(--red-900);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--red-300);
+  /* ================================================================================================== */
+  /* Contextual                                                                                         */
+  /* ================================================================================================== */
+  --surface: var(--grey-1000);
+  --surface-elevated-alpha: var(--white-opacity-10);
+  --surface-elevated-100: var(--grey-800);
+  --surface-elevated-200: var(--grey-900);
+  --surface-recessed-alpha: var(--black-opacity-30);
+  --surface-recessed-100: var(--grey-1000);
+  --surface-recessed-200: var(--grey-1100);
+
+  --outline-color: var(--blue-300);
+  --border-color: var(--white-opacity-20);
+
+  --optional-text-color: var(--grey-300);
+
+  --text-color: var(--grey-200);
+  --text-color-success: var(--green-400);
+  --text-color-warning: var(--orange-400);
+  --text-color-error: var(--red-400);
+  /* ================================================================================================== */
+  /* Components                                                                                         */
+  /* ================================================================================================== */
+  /* Switch */
+  --switch-track-background: var(--grey-600);
+  --switch-track-background-checked: var(--green-500);
+  --switch-thumb-bg: var(--black);
+  --switch-icon: var(--icon-color-default);
+  /* Icon */
+  --icon-color-default: var(--white);
+  --icon-color-inverted: var(--black);
+  /* Badge */
+  --badge-text-color: var(--grey-900);
+  --badge-background-neutral: var(--grey-400);
+  --badge-background-positive: var(--green-400);
+  --badge-background-warning: var(--orange-400);
+  --badge-background-attention: var(--red-400);
+  /* Heading */
+  --heading-text-color: var(--grey-100);
+  /* Link */
+  --link-text-color-default: var(--grey-200);
+  --link-text-color-default-hover: var(--grey-100);
+  --link-text-color-default-focus: var(--grey-100);
+  --link-text-color-default-disabled: var(--grey-600);
+  /* Input */
+  --input-background: var(--grey-900);
+  --input-background-disabled: var(--grey-800);
+  /* Addon */
+  --addon-background: var(--grey-1000);
+  /* Tabs */
+  --tab-border-color: var(--grey-800);
+
+  --tab-background: var(--grey-1100);
+  --tab-icon: var(--grey-400);
+  --tab-text-color: var(--grey-400);
+
+  --tab-background-active: var(--grey-700);
+  --tab-icon-active: var(--white);
+  --tab-text-color-active: var(--white);
+  --tab-shadow-active: var(--black-opacity-40);
+
+  /* Carousel */
+  --carousel-background: var(--grey-700);
+}
+
+/* ==================================================================================================== */
+/* 4. SET THE FOUNDATION                                                                                */
+/* ==================================================================================================== */
+:where(html) {
+  /* ================================================================================================== */
+  /* Semantic                                                                                           */
+  /* ================================================================================================== */
+  /* Feedback - Border (Alerts & Messages) */
+  --feedback-plain-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-plain-border-color);
+  --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
+  --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
+  --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);
+  --feedback-warning-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-warning-border-color);
+  --feedback-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-attention-border-color);
+  /* Action (Button & Link) */
+  --action-padding: var(--space-200) var(--space-500);
+  --action-icon-only-padding: var(--space-000);
+  --action-radius: var(--radius-100);
+  --action-font-size: var(--text-font-size);
+  --action-line-height: var(--text-line-height);
+  --action-font-weight: var(--font-weight-medium);
+  /* ================================================================================================== */
+  /* Contextual                                                                                         */
+  /* ================================================================================================== */
+  /* Text */
+  --text-line-height-xs: var(--line-height-25);
+  --text-line-height-s: var(--line-height-50);
+  --text-line-height-m: var(--line-height-100);
+  --text-line-height-l: var(--line-height-200);
+  --text-font-size-xs: var(--font-size-25);
+  --text-font-size-s: var(--font-size-50);
+  --text-font-size-m: var(--font-size-100);
+  --text-font-size-l: var(--font-size-200);
+  --text-font-size: var(--text-font-size-m);
+  --text-line-height: var(--text-line-height-m);
+  /* Font-Weight */
+  --font-weight-regular: var(--font-weight-400);
+  --font-weight-medium: var(--font-weight-500);
+  --font-weight-semi-bold: var(--font-weight-600);
+  --font-weight-bold: var(--font-weight-700);
+  /* Border */
+  --border-thin: var(--stroke-size-100) var(--stroke-solid) var(--border-color);
+  --border-thick: var(--stroke-size-200) var(--stroke-solid) var(--border-color);
+  /* Outline */
+  --outline-thin: var(--stroke-size-100) var(--stroke-outset) var(--outline-color);
+  --outline-medium: var(--stroke-size-300) var(--stroke-outset) var(--outline-color);
+  --outline-thick: var(--stroke-size-500) var(--stroke-outset) var(--outline-color);
+  /* ================================================================================================== */
+  /* Components                                                                                         */
+  /* ================================================================================================== */
+  /* Switch */
+  --switch-offset: 1px;
+  --switch-thumb-size: 3.6rem;
+  --switch-width: calc(var(--switch-height) * 1.6);
+  --switch-height: calc(var(--switch-thumb-size) + (var(--switch-offset) * 2));
+  /* Card */
+  --card-radius: var(--radius-150);
+  /* Badge */
+  --badge-radius: var(--radius-300);
+  --badge-font-weight: var(--font-weight-bold);
+  /* Heading */
+  --heading-font-weight: var(--font-weight-bold);
+  --heading-font-size-100: var(--font-size-600);
+  --heading-font-size-200: var(--font-size-500);
+  --heading-font-size-300: var(--font-size-400);
+  --heading-font-size-400: var(--font-size-300);
+  --heading-font-size-500: var(--font-size-200);
+  --heading-font-size-600: var(--font-size-100);
+  --heading-line-height-100: var(--line-height-600);
+  --heading-line-height-200: var(--line-height-500);
+  --heading-line-height-300: var(--line-height-400);
+  --heading-line-height-400: var(--line-height-300);
+  --heading-line-height-500: var(--line-height-200);
+  --heading-line-height-600: var(--line-height-100);
+  /* Alert */
+  --alert-radius: var(--radius-100);
+  --alert-padding: var(--space-400);
+  --alert-gap-horizontal-mobile: var(--space-300);
+  --alert-gap-horizontal-desktop: var(--space-100);
+  /* Messages */
+  --message-radius: var(--radius-150);
+  --message-padding: var(--space-400);
+  --message-gap-horizontal: var(--space-300);
+  --message-gap-vertical: var(--space-100);
+  /* Tab */
+  --tab-radius: var(--radius-200);
+  /* Carousel */
+  --carousel-radius: var(--radius-300);
+  --carousel-tab-position: var(--space-400);
+  --carousel-tab-offset: calc(4.4rem + var(--carousel-tab-position)); /* Tab Height */
+}
