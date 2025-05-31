@@ -13,8 +13,7 @@ class storyAddon extends HTMLElement {
         type: "HTML attribute",
         options: "mui-body, mui-icons-[name], elements",
         default: "",
-        description:
-          "Slot in text, icons or other appropriate micro compositions to support form experiences.",
+        description: "Slot in text, icons or other appropriate micro compositions to support form experiences.",
       },
     ];
 
@@ -64,7 +63,7 @@ class storyAddon extends HTMLElement {
       <story-template 
         title="Add On"
         description="Enhance form inputs by using mui-addon to display supplementary information like units, prefixes, or suffixes."
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-addon/index.js"
+        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-addon/index.ts"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=133-588&t=a1UUlxRE4ZIJUKwJ-1"
       >
 

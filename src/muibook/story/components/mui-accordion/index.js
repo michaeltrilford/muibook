@@ -28,8 +28,7 @@ class storyAccordion extends HTMLElement {
         type: "HTML attribute",
         options: "slot=“detail”",
         default: "",
-        description:
-          "Hides the label but it is still present for screen readers",
+        description: "Hides the label but it is still present for screen readers",
       },
       {
         name: "class",
@@ -87,7 +86,7 @@ class storyAccordion extends HTMLElement {
       <story-template 
         title="Accordion"
         description="The Accordion is a component stores content underneath a collapsible heading, revealing it through progressive disclosure in the user interface."
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-accordion"
+        github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-accordion"
         accessibility="
           Accordion summary uses role='button' and tabindex='0' for keyboard access.;
           Supports Enter and Space keys for toggling.;

@@ -62,8 +62,7 @@ class storyStack extends HTMLElement {
         type: "string",
         options: "var(--space-100) etc...",
         default: "var(--space-500)",
-        description:
-          "Apply a design tokens to apply a gap between slotted elements",
+        description: "Apply a design tokens to apply a gap between slotted elements",
       },
       {
         name: "alignX",
@@ -92,16 +91,14 @@ class storyStack extends HTMLElement {
         type: "string",
         options: "Valid CSS",
         default: "",
-        description:
-          "You are able to use styles to add layout based CSS to the host element.",
+        description: "You are able to use styles to add layout based CSS to the host element.",
       },
       {
         name: "class",
         type: "string",
         options: "Valid CSS",
         default: "",
-        description:
-          "You are able to use add a classname to add layout based CSS to the host element.",
+        description: "You are able to use add a classname to add layout based CSS to the host element.",
       },
     ];
 
@@ -111,8 +108,7 @@ class storyStack extends HTMLElement {
         type: "string",
         options: "var(--space-100) etc...",
         default: "var(--space-500)",
-        description:
-          "Apply a design tokens to apply a gap between slotted elements",
+        description: "Apply a design tokens to apply a gap between slotted elements",
       },
       {
         name: "slot",
@@ -127,16 +123,14 @@ class storyStack extends HTMLElement {
         type: "string",
         options: "Valid CSS",
         default: "",
-        description:
-          "You are able to use styles to add layout based CSS to the host element.",
+        description: "You are able to use styles to add layout based CSS to the host element.",
       },
       {
         name: "class",
         type: "string",
         options: "Valid CSS",
         default: "",
-        description:
-          "You are able to use add a classname to add layout based CSS to the host element.",
+        description: "You are able to use add a classname to add layout based CSS to the host element.",
       },
     ];
 
@@ -158,8 +152,7 @@ class storyStack extends HTMLElement {
     const accordionsHStack = propItemsHStack
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild =
-          index === propItemsHStack.length - 1 ? "last-child" : "";
+        const isLastChild = index === propItemsHStack.length - 1 ? "last-child" : "";
 
         return /*html*/ `
           <mui-accordion-block 
@@ -198,8 +191,7 @@ class storyStack extends HTMLElement {
     const accordionsVStack = propItemsVStack
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild =
-          index === propItemsVStack.length - 1 ? "last-child" : "";
+        const isLastChild = index === propItemsVStack.length - 1 ? "last-child" : "";
 
         return /*html*/ `
           <mui-accordion-block 
@@ -226,7 +218,7 @@ class storyStack extends HTMLElement {
       <story-template 
         title="Stacks" 
         description="A layout component that arranges its children in a horizontal or vertical flow"
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-stack"
+        github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-stack"
       >
 
       <mui-v-stack space="var(--space-700)">

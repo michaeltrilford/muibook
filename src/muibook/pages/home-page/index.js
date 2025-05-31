@@ -204,10 +204,10 @@ class HomePage extends HTMLElement {
               <mui-link 
                 class="github-link" 
                 target="_blank" 
-                href="https://github.com/michaeltrilford/michaeltrilford.github.io"
+                href="https://github.com/michaeltrilford/create-mui-app"
                 variant="primary" 
                 rounded>
-                Fork on GitHub
+                Create Mui App
               </mui-link>
 
               <mui-v-stack class="actions__secondary" space="var(--space-000)">
@@ -234,9 +234,9 @@ class HomePage extends HTMLElement {
                 <mui-link 
                   class="github-link" 
                   target="_blank" 
-                  href="https://github.com/michaeltrilford/michaeltrilford.github.io" 
+                  href="https://github.com/michaeltrilford/create-mui-app" 
                   variant="primary">
-                  Fork on GitHub
+                  Create Mui App
                 </mui-link>
                 <mui-v-stack class="actions__secondary" space="var(--space-050)">
                   <mui-body size="small" weight="medium">

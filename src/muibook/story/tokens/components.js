@@ -24,21 +24,21 @@ class tokensComponents extends HTMLElement {
         title="Components"
         description="Tokens mapped to specific UI components and their states, bridging global tokens with practical implementation for consistency and scalability."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/css/mui-tokens.css"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/css/mui-tokens.css"
       >
         <mui-v-stack space="var(--space-700)">
 
-          <spec-card title="Icon" github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-icons">
+          <spec-card title="Icon" github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-icons">
             <story-token-slat slot="body" token="--icon-color-default" variant="color" output="var(--black)"></story-token-slat>
             <story-token-slat slot="body" token="--icon-color-inverted" variant="color" output="var(--white)"></story-token-slat>
           </spec-card>
 
-          <spec-card title="Card" github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-card">
+          <spec-card title="Card" github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-card">
             <story-token-slat slot="body" token="--card-radius" variant="radius" output="var(--radius-150)"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/surface-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="Badge" github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-badge/index.js">
+          <spec-card title="Badge" github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-badge/index.ts">
             <story-token-slat slot="body" token="--badge-radius" variant="radius" output="var(--radius-100)"></story-token-slat>
 
             <story-token-slat slot="body" token="--badge-text-color" variant="text-color" output="var(--white)"></story-token-slat>
@@ -50,46 +50,46 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--badge-background-attention" variant="color" output="var(--red-600)"></story-token-slat>
           </spec-card>
 
-          <spec-card title="Table" github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-table">
+          <spec-card title="Table" github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-table">
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Border Contextual</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="Image" github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-table">
+          <spec-card title="Image" github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-image/index.ts">
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Text Contextual</mui-link> tokens</mui-body>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/surface-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="Code" github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-code/index.js">
+          <spec-card title="Code" github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-code/index.ts">
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Text Contextual</mui-link> tokens</mui-body>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/surface-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="Alert" github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-alert/index.js">
+          <spec-card title="Alert" github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-alert/index.ts">
             <story-token-slat slot="body" token="--alert-radius" variant="radius" output="var(--radius-100)"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Feedback Semantic</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="Message" github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-message/index.js">
+          <spec-card title="Message" github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-message/index.ts">
             <story-token-slat slot="body" token="--message-radius" variant="radius" output="var(--radius-150)"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Feedback Semantic</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="Button" description="Button uses the 'Action' tokens to define the visual behavior of call-to-action button elements." github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-button/index.js">
+          <spec-card title="Button" description="Button uses the 'Action' tokens to define the visual behavior of call-to-action button elements." github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-button/index.ts">
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Action Semantic</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="Link Button" description="Link button uses the 'Action' tokens to define the visual behavior of call-to-action button elements." github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-link/index.js">
+          <spec-card title="Link Button" description="Link button uses the 'Action' tokens to define the visual behavior of call-to-action button elements." github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-link/index.ts">
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Action Semantic</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="Link Default" github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-link/index.js">
+          <spec-card title="Link Default" github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-link/index.ts">
             <story-token-slat slot="body" token="--link-text-color-default" variant="text-color" output="var(--grey-900)"></story-token-slat>
             <story-token-slat slot="body" token="--link-text-color-default-hover" variant="text-color" output="var(--grey-1000)"></story-token-slat>
             <story-token-slat slot="body" token="--link-text-color-default-focus" variant="text-color" output="var(--grey-1000)"></story-token-slat>
             <story-token-slat slot="body" token="--link-text-color-default-disabled" variant="text-color" output="var(--grey-800)"></story-token-slat>
           </spec-card>
 
-          <spec-card title="Heading" github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-heading/index.js">
+          <spec-card title="Heading" github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-heading/index.ts">
             <story-token-slat slot="body" token="--heading-text-color" variant="text-color" output="var(--grey-1000)"></story-token-slat>
             <story-token-slat slot="body" token="--heading-font-weight" variant="font-weight" output="var(--font-weight-bold)"></story-token-slat>
 
@@ -108,15 +108,15 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--heading-line-height-600" variant="line-height" font-size="--heading-font-size-600" font-weight="--heading-font-weight" output="var(--line-height-100)"></story-token-slat>
           </spec-card>
 
-          <spec-card title="Body" github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-body/index.js">
+          <spec-card title="Body" github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-card/body/index.ts">
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Text Contextual</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="Label" github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-input/index.js">
+          <spec-card title="Label" github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-input/index.ts">
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Text Contextual</mui-link> tokens</mui-body>
           </spec-card>
 
-          <spec-card title="List" github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-list">
+          <spec-card title="List" github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-list">
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Text Contextual</mui-link> tokens</mui-body>
           </spec-card>
 

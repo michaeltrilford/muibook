@@ -37,8 +37,7 @@ class storyTabBar extends HTMLElement {
     const tabBarControllerAccordions = propItemsController
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild =
-          index === propItemsController.length - 1 ? "last-child" : "";
+        const isLastChild = index === propItemsController.length - 1 ? "last-child" : "";
 
         return /*html*/ `
       <mui-accordion-block
@@ -96,8 +95,7 @@ class storyTabBar extends HTMLElement {
     const tabBarAccordions = propItemsTabBar
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild =
-          index === propItemsTabBar.length - 1 ? "last-child" : "";
+        const isLastChild = index === propItemsTabBar.length - 1 ? "last-child" : "";
 
         return /*html*/ `
             <mui-accordion-block
@@ -148,8 +146,7 @@ class storyTabBar extends HTMLElement {
         type: "string",
         options: "any",
         default: "",
-        description:
-          "Unique identifier for the tab item. Used to link the tab with its corresponding panel.",
+        description: "Unique identifier for the tab item. Used to link the tab with its corresponding panel.",
       },
     ];
 
@@ -171,16 +168,14 @@ class storyTabBar extends HTMLElement {
     const tabItemAccordions = propItemsTabItem
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild =
-          index === propItemsTabItem.length - 1 ? "last-child" : "";
+        const isLastChild = index === propItemsTabItem.length - 1 ? "last-child" : "";
 
         return /*html*/ `
               <mui-accordion-block
                 class="card-slot"
                 style="position: relative; z-index: 1;" 
                 size="medium" 
-                heading=${prop.name.charAt(0).toUpperCase() +
-                  prop.name.slice(1)} 
+                heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
                 ${isLastChild}>
                 <story-type-slat
                   slot="detail"
@@ -227,8 +222,7 @@ class storyTabBar extends HTMLElement {
     const panelAccordions = propItemsPanel
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild =
-          index === propItemsPanel.length - 1 ? "last-child" : "";
+        const isLastChild = index === propItemsPanel.length - 1 ? "last-child" : "";
 
         return /*html*/ `
           <mui-accordion-block
@@ -268,7 +262,7 @@ class storyTabBar extends HTMLElement {
       <story-template
         title="Tab Bar"
         description="Allow users to switch between views or content sections by selecting from a group of tabs."
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-tabs"
+        github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-tabs"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1"
         accessibility="
           Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.; 

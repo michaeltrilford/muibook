@@ -43,8 +43,7 @@ class storyInput extends HTMLElement {
         type: "boolean",
         options: "hide-label",
         default: "",
-        description:
-          "Hides the label but it is still present for screen readers",
+        description: "Hides the label but it is still present for screen readers",
       },
       {
         name: "disabled",
@@ -122,7 +121,7 @@ class storyInput extends HTMLElement {
       <story-template 
         title="Input"
         description="An input component for capturing user text, styled for consistency across your UI."
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-input/index.js"
+        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-input/index.ts"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1"
         accessibility="
           A label is required for screen reader support to describe the input’s purpose.;

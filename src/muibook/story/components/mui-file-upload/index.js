@@ -68,6 +68,7 @@ class storyFileUpload extends HTMLElement {
       <story-template
         title="File Upload"
         description="A simple file input that displays the selected file name and emits a file-upload event."
+        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-file-upload/index.ts"
       >
 
         <mui-v-stack space="var(--space-700)">

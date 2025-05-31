@@ -32,8 +32,7 @@ class storySmartCard extends HTMLElement {
         type: "number",
         options: "",
         default: "",
-        description:
-          "Only the last 4 digits are shown (no full card number for security)",
+        description: "Only the last 4 digits are shown (no full card number for security)",
       },
       {
         name: "state",
@@ -75,8 +74,7 @@ class storySmartCard extends HTMLElement {
         type: "string",
         options: "Debit, Credit, etc",
         default: "",
-        description:
-          "Used to visually or semantically describe the card’s usage.",
+        description: "Used to visually or semantically describe the card’s usage.",
       },
       {
         name: "bg-color",
@@ -146,7 +144,7 @@ class storySmartCard extends HTMLElement {
       <story-template title="Smart Card" 
         description="A dynamic card component for wallets, dashboards, spend tools, or reward programs—designed to represent digital or physical cards in modern, digital-first experiences."
         figma="" 
-        github=""
+        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-smart-card/index.ts"
       >
 
       <mui-v-stack space="var(--space-700)">

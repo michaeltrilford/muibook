@@ -17,7 +17,7 @@ class storyCards extends HTMLElement {
         title="Card" 
         description="The Card provides the ability to group items or components." 
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-861&t=fSFYVey9aCoE5oQa-1"
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-card"
+        github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-card"
       >
 
       <mui-v-stack space="var(--space-700)">

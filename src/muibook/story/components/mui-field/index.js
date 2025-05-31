@@ -28,8 +28,7 @@ class storyField extends HTMLElement {
         type: "boolean",
         options: "hide-label",
         default: "",
-        description:
-          "Hides the label but it is still present for screen readers",
+        description: "Hides the label but it is still present for screen readers",
       },
       {
         name: "message",
@@ -86,7 +85,7 @@ class storyField extends HTMLElement {
       <story-template 
         title="Field"
         description="The mui-field component only renders a validation message if the message attribute is set. Showing/hiding the message is controlled by the form logic, or application state. This keeps mui-field simple, declarative, and reactive to the attributes it’s given."
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/5d2b94eca423f3eeb832f126cf05f43f418bd757/mui-field/index.js"
+        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-field/index.ts"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=112-620&t=GMqx21isUVAMpLJp-1"
         accessibility="
           A label is required for screen reader support to describe the input’s purpose.;
@@ -390,8 +389,7 @@ class storyField extends HTMLElement {
       if (!button) return;
 
       const targetId = button.getAttribute("data-toggle");
-      const message =
-        button.getAttribute("data-message") || "Password strength is strong";
+      const message = button.getAttribute("data-message") || "Password strength is strong";
       const variant = button.getAttribute("data-variant");
       const field = this.shadowRoot.getElementById(targetId);
       if (!field) return;

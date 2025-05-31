@@ -12,7 +12,7 @@ class partsLayout extends HTMLElement {
       <story-template 
         title="Layout Parts"
         description="Allows flexible styling overrides with customisable part names, supporting trusted customisation and scoped CSS in MUI web components."
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-parts/index.js"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/utils/part-map/index.ts"
         >
         <mui-v-stack space="var(--space-700)">
 

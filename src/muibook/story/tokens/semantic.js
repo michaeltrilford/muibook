@@ -13,7 +13,7 @@ class tokensSemantic extends HTMLElement {
         title="Semantic"
         description="Express meaning or state without tying it to a specific implementation."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/css/mui-tokens.css"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/css/mui-tokens.css"
       >
         <mui-v-stack space="var(--space-700)">
   

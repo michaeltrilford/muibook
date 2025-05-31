@@ -12,7 +12,7 @@ class storyCode extends HTMLElement {
       <story-template 
         title="Code"
         description="The component defines a code view."
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-code/index.js"
+        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-code/index.ts"
       >
 
       <mui-v-stack space="var(--space-700)">

@@ -98,7 +98,7 @@ class compAgentUI extends HTMLElement {
           <div class="avatar">
             <mui-logo-mobile style="width: 100%; height: auto;"></mui-logo-mobile>
           </div>
-          <mui-body size="small">Review my website <mui-link size="small" href="https://michaeltrilford.github.io/" target="_blank">michaeltrilford.github.io</mui-link></mui-body>
+          <mui-body size="small">Review my website <mui-link size="small" href="https://muibook.com" target="_blank">muibook.com</mui-link></mui-body>
         </mui-h-stack>
       </div>
     `;

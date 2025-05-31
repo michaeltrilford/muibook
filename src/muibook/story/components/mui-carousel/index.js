@@ -105,8 +105,7 @@ class storyCarousel extends HTMLElement {
     const accordionsController = propItemsController
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild =
-          index === propItemsController.length - 1 ? "last-child" : "";
+        const isLastChild = index === propItemsController.length - 1 ? "last-child" : "";
 
         return /*html*/ `
       <mui-accordion-block 
@@ -141,8 +140,7 @@ class storyCarousel extends HTMLElement {
       {
         name: "controlsPosition",
         type: "string",
-        options:
-          "top, right, bottom, left, top-right, top-left, bottom-right, bottom-left",
+        options: "top, right, bottom, left, top-right, top-left, bottom-right, bottom-left",
         default: "bottom",
         description: "Define the position of the controls for the Carousel",
       },
@@ -166,8 +164,7 @@ class storyCarousel extends HTMLElement {
     const accordionsTabBar = propItemsTabBar
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild =
-          index === propItemsTabBar.length - 1 ? "last-child" : "";
+        const isLastChild = index === propItemsTabBar.length - 1 ? "last-child" : "";
 
         return /*html*/ `
           <mui-accordion-block 
@@ -197,8 +194,7 @@ class storyCarousel extends HTMLElement {
         type: "HTML attribute",
         options: "slot=&#8220;item&#8221;",
         default: "",
-        description:
-          "Places the individual panel in the correct slot within the Carousel",
+        description: "Places the individual panel in the correct slot within the Carousel",
       },
       {
         name: "item",
@@ -228,8 +224,7 @@ class storyCarousel extends HTMLElement {
     const accordionsPanel = propItemsPanel
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild =
-          index === propItemsPanel.length - 1 ? "last-child" : "";
+        const isLastChild = index === propItemsPanel.length - 1 ? "last-child" : "";
 
         return /*html*/ `
           <mui-accordion-block 
@@ -301,7 +296,7 @@ class storyCarousel extends HTMLElement {
       <story-template
         title="Carousel"
         description="A carousel component with tab-based navigation, enabling users to switch between views or content sections with ease."
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/1f82bea661d34805fb37bff2607e82bfcee91cf6/mui-carousel"
+        github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-carousel"
         figma=""
         accessibility="
           Left/Right arrows, Home and End keys let keyboard users navigate between carousel items.; 
@@ -350,7 +345,7 @@ class storyCarousel extends HTMLElement {
         <story-card 
           title="Default"
           description="A flexible, composable carousel that gives you full control over the content and internal layout."
-          github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/1f82bea661d34805fb37bff2607e82bfcee91cf6/mui-carousel/story.js"
+          github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/muibook/story/components/mui-carousel/index.js"
           usage="
             Carousel controls are set to bottom-center by default.;
             Internal padding is required.;
@@ -435,7 +430,7 @@ class storyCarousel extends HTMLElement {
         <story-card 
           title="Custom Layout" 
           description="Demonstrates how to add custom compositions and layouts within the carousel panels."
-          github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/1f82bea661d34805fb37bff2607e82bfcee91cf6/mui-carousel/story.js"  
+          github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/muibook/story/components/mui-carousel/index.js"  
         >
           <mui-carousel-controller slot="body">
             <mui-tab-bar slot="controls" controlsPosition="bottom-right">
@@ -530,7 +525,7 @@ class storyCarousel extends HTMLElement {
         <story-card 
           title="Map Data" 
           description="Map dynamic data to generate carousel tabs and panels."
-          github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/1f82bea661d34805fb37bff2607e82bfcee91cf6/mui-carousel/story.js"  
+          github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/muibook/story/components/mui-carousel/index.js"  
         >
           <mui-carousel-controller slot="body">
             <mui-tab-bar slot="controls" controlsPosition="bottom-right">

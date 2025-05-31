@@ -33,7 +33,7 @@ class storyLink extends HTMLElement {
         title="Links"
         description="The mui-link defines a hyperlink, which is used to link from one page to another."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-663&t=fSFYVey9aCoE5oQa-1"
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-link/index.js"
+        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-link/index.ts"
       >
 
       <mui-v-stack space="var(--space-700)">

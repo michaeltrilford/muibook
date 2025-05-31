@@ -85,7 +85,7 @@ class storyAlert extends HTMLElement {
         description="Alerts are to surface meaningful system messages related to the users' current task or action."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-4444&t=ZA9uH4LK37tSuk6r-1"
         guides
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-alert/index.js"
+        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-alert/index.ts"
 
         accessibility="
           ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.; 

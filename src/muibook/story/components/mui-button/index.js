@@ -34,24 +34,21 @@ class storyButton extends HTMLElement {
         type: "string",
         options: "Valid CSS",
         default: "",
-        description:
-          "You are able to use styles to add layout based CSS to the host element.",
+        description: "You are able to use styles to add layout based CSS to the host element.",
       },
       {
         name: "class",
         type: "CSS",
         options: "Valid CSS",
         default: "",
-        description:
-          "You are able to use add a classname to add layout based CSS to the host element.",
+        description: "You are able to use add a classname to add layout based CSS to the host element.",
       },
       {
         name: "part",
         type: "CSS",
         options: "E.g. mui-link::part(display)",
         default: "",
-        description:
-          "Controlled trust-based customisation for modifying internal aspects of a button.",
+        description: "Controlled trust-based customisation for modifying internal aspects of a button.",
       },
     ];
 
@@ -100,7 +97,7 @@ class storyButton extends HTMLElement {
       <story-template title="Buttons" 
         description="Buttons are essential UI elements that trigger actions when clicked or tapped. They should be easily recognisable, provide clear feedback, and be accessible to all users."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-570&t=fSFYVey9aCoE5oQa-1" 
-        github="https://github.com/michaeltrilford/michaeltrilford.github.io/blob/master/mui-button/index.js"
+        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-button/index.ts"
       >
 
       <mui-v-stack space="var(--space-700)">
