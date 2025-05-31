@@ -30,18 +30,18 @@ This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to pr
 
 - Serves the minified Muibook build locally for previewing the compiled output
 
-## Build Create-App
+## Build Create Mui App
 
-`npm run build:create-app`
+`npm run build:create-mui-app`
 
-- Builds the Create-App package using a custom Vite config (vite.create-app.config.ts)
+- Builds the create-mui-app package using a custom Vite config (vite.create-mui-app.config.ts)
 - Produces a minified CSS and JS build for documentation
 
-## Preview Create-App Build
+## Preview Create Mui App Build
 
-`npm run preview:create-app`
+`npm run preview:create-mui-app`
 
-- Serves the minified Create-App build locally for previewing the compiled output
+- Serves the minified create-mui-app build locally for previewing the compiled output
 
 Setup
 

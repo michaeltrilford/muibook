@@ -37,7 +37,7 @@ export class AppContainer extends HTMLElement {
 
       "/design-guidelines": "design-guidelines",
       "/theme-setup": "theme-setup",
-      "/create-app": "create-app",
+      "/create-mui-app": "create-mui-app",
 
       "/base-design-tokens": "tokens-base",
       "/semantic-design-tokens": "tokens-semantic",
@@ -94,7 +94,7 @@ export class AppContainer extends HTMLElement {
 
     const importMap = {
       "home-page": () => import("../pages/home-page/index.js"),
-      "create-app": () => import("../pages/create-app/index.js"),
+      "create-mui-app": () => import("../pages/create-mui-app/index.js"),
       "theme-setup": () => import("../pages/theme-setup/index.js"),
       "design-guidelines": () => import("../pages/design-guidelines/index.js"),
 

@@ -18,7 +18,7 @@ import "../components/mui-stack/vstack";
 import "./author.css";
 
 // Assets
-import "./assets/create-app-logo.js";
+import "./assets/logo.js";
 
 // Author Components
 import "./components/dark-mode/index.js";
@@ -26,7 +26,7 @@ import "./components/dark-mode/index.js";
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   <mui-container small>
     <mui-v-stack space="var(--space-600)" alignX="center">
-      <create-app-logo color="var(--logo-color)"></create-app-logo>
+      <create-mui-app-logo color="var(--logo-color)"></create-mui-app-logo>
       <mui-body weight="medium" class="introduction">
         Create fast, accessible, and themeable components with MUI styling,
         without the need for React or other dependencies.
@@ -34,7 +34,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
       <mui-h-stack space="var(--space-300)">
         <mui-link
           variant="primary"
-          href="https://michaeltrilford.github.io/"
+          href="https://muibook.com"
           target="_blank"
         >
           View Docs
@@ -42,7 +42,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
         <mui-link
           class="github-link"
           variant="secondary"
-          href="https://github.com/michaeltrilford/michaeltrilford.github.io/tree/master/mui-create-app"
+          href="#"
           target="_blank"
         >
           View Github

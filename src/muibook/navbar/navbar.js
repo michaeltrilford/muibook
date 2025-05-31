@@ -78,7 +78,7 @@ class appNavbar extends HTMLElement {
 
     const Resources = /*html*/ `
       <app-navbar-group id="resources" groupname="Resources">
-        <app-navbar-link link="#/create-app" title="Create App"></app-navbar-link>
+        <app-navbar-link link="#/create-mui-app" title="Create Mui App"></app-navbar-link>
         <app-navbar-link link="#/theme-setup" title="Theme Setup"></app-navbar-link>
         <app-navbar-link link="#/design-guidelines" title="Design Guidelines"></app-navbar-link>
         <app-navbar-link link="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=5A8fWmORS1XTiPBQ-1" title="MUI Kit"></app-navbar-link>
@@ -215,9 +215,7 @@ class appNavbar extends HTMLElement {
     });
 
     // Close mobile menu when a home link is clicked
-    const homeLinks = this.shadowRoot.querySelectorAll(
-      "mui-link[data-close-menu]"
-    );
+    const homeLinks = this.shadowRoot.querySelectorAll("mui-link[data-close-menu]");
 
     homeLinks.forEach((link) => {
       link.addEventListener("click", () => {

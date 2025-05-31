@@ -1,11 +1,11 @@
-class createAppLogo extends HTMLElement {
+class createMuiAppLogo extends HTMLElement {
   static get observedAttributes() {
-    return ['color'];
+    return ["color"];
   }
 
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
@@ -13,13 +13,13 @@ class createAppLogo extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'color' && oldValue !== newValue) {
+    if (name === "color" && oldValue !== newValue) {
       this.render();
     }
   }
 
   render() {
-    const rawColor = this.getAttribute('color'); // Raw color
+    const rawColor = this.getAttribute("color"); // Raw color
 
     // Resolve color based on the provided variant or color attribute
     let iconColor = rawColor;
@@ -58,4 +58,4 @@ class createAppLogo extends HTMLElement {
   }
 }
 
-customElements.define('create-app-logo', createAppLogo);
+customElements.define("create-mui-app-logo", createMuiAppLogo);
