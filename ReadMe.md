@@ -55,7 +55,7 @@ Optionally, install Node.js types for TypeScript:
 
 ## VS Code Plug-in
 
-Install (es6-string-html)[https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html]
+Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html)
 
 Notes
 
