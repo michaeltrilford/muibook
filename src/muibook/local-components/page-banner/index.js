@@ -1,5 +1,5 @@
-import Image from "../../images/hero.png";
-import "../../images/guides";
+import Image from "../../images/guru/hero-guides.png";
+import "../../images/guides-logo";
 
 class pageBanner extends HTMLElement {
   constructor() {

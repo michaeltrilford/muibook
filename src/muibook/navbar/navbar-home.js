@@ -20,6 +20,7 @@ class appNavbarHome extends HTMLElement {
         z-index: 2;
         top: 92px;
         margin-bottom: -1px;
+        background: var(--app-navbar-surface);
       }
 
       mui-link {
@@ -54,20 +55,14 @@ class appNavbarHome extends HTMLElement {
       } 
 
       /* Visual Parts */
-      mui-link::part(background) {
-        background: var(--surface-elevated-100);
-      }
-
       mui-link:hover::part(background) {
-        background: var(--surface-elevated-200);
+        background: var(--app-navbar-surface-100);
       }
 
 
     </style>
 
-    <mui-link href="${this.getAttribute("link")}">${this.getAttribute(
-      "title"
-    )}</mui-link>
+    <mui-link href="${this.getAttribute("link")}">${this.getAttribute("title")}</mui-link>
 
     `;
 

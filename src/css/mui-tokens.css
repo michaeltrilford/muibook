@@ -13,7 +13,7 @@
 /* ==================================================================================================== */
 :where(html) {
   /* Font-family */
-  --font-family: system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --font-family: system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 
   /* ================================================================================================== */
   /*  Typography on the Web • Orchestrating Vertical Rhythm                                             */
@@ -203,7 +203,7 @@
 /* ==================================================================================================== */
 /* 2. LIGHT MODE                                                                                        */
 /* ==================================================================================================== */
-html[data-theme='light'] {
+html[data-theme="light"] {
   /* ================================================================================================== */
   /* Semantic                                                                                           */
   /* ================================================================================================== */
@@ -225,28 +225,24 @@ html[data-theme='light'] {
   --form-warning-border-color-hover: var(--orange-700);
   --form-error-border-color-hover: var(--red-700);
   /* Feedback - Border (Alerts & Messages) */
-  --feedback-plain-border-color: var(--black-opacity-50);
-  --feedback-neutral-border-color: var(--grey-600);
+  --feedback-neutral-border-color: var(--black-opacity-20);
   --feedback-positive-border-color: var(--green-600);
   --feedback-info-border-color: var(--blue-600);
   --feedback-warning-border-color: var(--orange-600);
   --feedback-attention-border-color: var(--red-600);
   /* Feedback - Background (Alerts & Messages) */
-  --feedback-plain-background: var(--white-opacity-20);
-  --feedback-neutral-background: var(--grey-100);
+  --feedback-neutral-background: var(--white);
   --feedback-positive-background: var(--green-100);
   --feedback-info-background: var(--blue-100);
   --feedback-warning-background: var(--orange-100);
   --feedback-attention-background: var(--red-100);
   /* Feedback - Icon (Alerts & Messages) */
-  --feedback-plain-icon: var(--black);
   --feedback-neutral-icon: var(--grey-600);
   --feedback-positive-icon: var(--green-600);
   --feedback-info-icon: var(--blue-600);
   --feedback-warning-icon: var(--orange-600);
   --feedback-attention-icon: var(--red-600);
   /* Feedback - Text (Alerts & Messages) */
-  --feedback-plain-text: var(--black);
   --feedback-neutral-text: var(--grey-900);
   --feedback-positive-text: var(--green-900);
   --feedback-info-text: var(--blue-900);
@@ -373,7 +369,7 @@ html[data-theme='light'] {
 /* ==================================================================================================== */
 /* 3. DARK MODE                                                                                         */
 /* ==================================================================================================== */
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   /* ================================================================================================== */
   /* Semantic                                                                                           */
   /* ================================================================================================== */
@@ -395,28 +391,24 @@ html[data-theme='dark'] {
   --form-warning-border-color-hover: var(--orange-300);
   --form-error-border-color-hover: var(--red-300);
   /* Feedback - Border (Alerts & Messages) */
-  --feedback-plain-border-color: var(--white-opacity-50);
-  --feedback-neutral-border-color: var(--grey-400);
+  --feedback-neutral-border-color: var(--white-opacity-20);
   --feedback-positive-border-color: var(--green-400);
   --feedback-info-border-color: var(--blue-400);
   --feedback-warning-border-color: var(--orange-400);
   --feedback-attention-border-color: var(--red-400);
   /* Feedback - Background (Alerts & Messages) */
-  --feedback-plain-background: var(--white-opacity-10);
   --feedback-neutral-background: var(--grey-800);
   --feedback-positive-background: var(--green-800);
   --feedback-info-background: var(--blue-800);
   --feedback-warning-background: var(--orange-800);
   --feedback-attention-background: var(--red-800);
   /* Feedback - Icon (Alerts & Messages) */
-  --feedback-plain-icon: var(--white);
   --feedback-neutral-icon: var(--grey-300);
   --feedback-positive-icon: var(--green-300);
   --feedback-info-icon: var(--blue-300);
   --feedback-warning-icon: var(--orange-300);
   --feedback-attention-icon: var(--red-300);
   /* Feedback - Text (Alerts & Messages) */
-  --feedback-plain-text: var(--white);
   --feedback-neutral-text: var(--grey-100);
   --feedback-positive-text: var(--green-100);
   --feedback-info-text: var(--blue-100);
@@ -547,7 +539,6 @@ html[data-theme='dark'] {
   /* Semantic                                                                                           */
   /* ================================================================================================== */
   /* Feedback - Border (Alerts & Messages) */
-  --feedback-plain-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-plain-border-color);
   --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
   --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
   --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);

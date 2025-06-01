@@ -12,7 +12,7 @@ class appNavbarToggle extends HTMLElement {
       :host {
         width: 100%;
         margin-bottom: 0;
-        background: var(--surface-elevated-100);
+        background: var(--app-navbar-surface);
         box-shadow: inset 0 1px 0 0 var(--border-color);
         padding: var(--space-400) var(--space-500);
         display: flex;

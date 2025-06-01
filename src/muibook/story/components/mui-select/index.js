@@ -143,7 +143,7 @@ class storySelect extends HTMLElement {
                 {"value": "default", "label": "Mui"},
                 {"value": "jal", "label": "JAL"},
                 {"value": "ana", "label": "ANA"},
-                {"value": "plain", "label": "Plain"}
+                {"value": "mono", "label": "Mono"}
               ]'>
             </mui-select>
           </div>
@@ -158,7 +158,7 @@ class storySelect extends HTMLElement {
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;{"value": "ana", "label": "ANA"},
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;{"value": "plain", "label": "Plain"}
+                &nbsp;&nbsp;&nbsp;&nbsp;{"value": "mono", "label": "Mono"}
                 <br />
               &nbsp;&nbsp;]'&gt;
               <br />

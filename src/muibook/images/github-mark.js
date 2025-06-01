@@ -1,6 +1,6 @@
 class githubMark extends HTMLElement {
   static get observedAttributes() {
-    return ["color", "variant"];
+    return ["color"];
   }
 
   constructor() {
@@ -13,14 +13,13 @@ class githubMark extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if ((name === "color" || name === "variant") && oldValue !== newValue) {
+    if (name === "color" && oldValue !== newValue) {
       this.render();
     }
   }
 
   render() {
     const rawColor = this.getAttribute("color"); // Raw color
-    const variant = this.getAttribute("variant"); // Variant name
 
     // Color map for predefined color options
     const colorMap = {
@@ -28,20 +27,10 @@ class githubMark extends HTMLElement {
       inverted: "var(--icon-color-inverted)",
     };
 
-    // Variant-to-color map for variants
-    const variantColorMap = {
-      primary: "var(--icon-color-inverted)",
-      secondary: "var(--icon-color-default)",
-      tertiary: "var(--icon-color-default)",
-      attention: "var(--icon-color-inverted)",
-    };
+    // Resolve color based on the color attribute
+    let iconColor = colorMap[rawColor] || rawColor || "var(--icon-color-default)";
 
-    // Resolve color based on the provided variant or color attribute
-    let iconColor =
-      variantColorMap[variant] ||
-      colorMap[rawColor] ||
-      rawColor ||
-      "var(--icon-color-default)";
+    this.classList.add("mui-icon");
 
     this.shadowRoot.innerHTML = `
       <style>

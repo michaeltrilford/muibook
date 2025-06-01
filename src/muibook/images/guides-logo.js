@@ -1,6 +1,6 @@
 class guidesLogo extends HTMLElement {
   static get observedAttributes() {
-    return ["size", "color", "variant"];
+    return ["size", "color"];
   }
 
   constructor() {
@@ -13,10 +13,7 @@ class guidesLogo extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (
-      (name === "size" || name === "color" || name === "variant") &&
-      oldValue !== newValue
-    ) {
+    if ((name === "size" || name === "color") && oldValue !== newValue) {
       this.render();
     }
   }
@@ -24,7 +21,6 @@ class guidesLogo extends HTMLElement {
   render() {
     const size = this.getAttribute("size") || "small"; // Default size
     const rawColor = this.getAttribute("color"); // Raw color
-    const variant = this.getAttribute("variant"); // Variant name
 
     // Color map for predefined color options
     const colorMap = {
@@ -32,20 +28,8 @@ class guidesLogo extends HTMLElement {
       inverted: "var(--icon-color-inverted)",
     };
 
-    // Variant-to-color map for variants
-    const variantColorMap = {
-      primary: "var(--icon-color-inverted)",
-      secondary: "var(--icon-color-default)",
-      tertiary: "var(--icon-color-default)",
-      attention: "var(--icon-color-inverted)",
-    };
-
     // Resolve color based on the provided variant or color attribute
-    let iconColor =
-      variantColorMap[variant] ||
-      colorMap[rawColor] ||
-      rawColor ||
-      "var(--icon-color-default)";
+    let iconColor = colorMap[rawColor] || rawColor || "var(--icon-color-default)";
 
     // Map size to actual values
     const sizeMap = {

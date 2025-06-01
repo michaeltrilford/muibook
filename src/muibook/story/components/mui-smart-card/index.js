@@ -1,8 +1,8 @@
 import VisaWhite from "../../../images/networks/visa-white.svg";
 import VisaBlack from "../../../images/networks/visa-black.svg";
 import Mastercard from "../../../images/networks/mastercard.svg";
-import Guides from "../../../images/card/guides.svg";
-import Mui from "../../../images/card/mui.svg";
+import Guides from "../../../images/guru/guides.svg";
+import Mui from "../../../images/mui/mui.svg";
 import Butter from "../../../images/mesh/buttercup.png";
 
 import JalCrystal from "../../../images/jal/crystal.png";
@@ -268,7 +268,7 @@ class storySmartCard extends HTMLElement {
               /* Max-Height: 126px */<br>
               <br>
               &lt;mui-smart-card<br>
-              &nbsp;&nbsp;logo="./images/card/guides.svg"<br>
+              &nbsp;&nbsp;logo="./images/guru/guides.svg"<br>
               &nbsp;&nbsp;logo-height="80"<br>
               &nbsp;&nbsp;...<br>
               &gt;&lt;/mui-smart-card&gt;

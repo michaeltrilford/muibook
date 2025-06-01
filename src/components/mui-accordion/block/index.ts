@@ -51,15 +51,20 @@ class muiAccordionBlock extends HTMLElement {
         outline: var(--outline-thick);
       }
 
-      .accordion-summary:hover mui-icon-down-chevron {
+      .accordion-summary:hover .icon {
         background: var(--surface-elevated-200);
+      }
+
+      .icon {
+        padding: var(--space-200);
+        box-sizing: border-box;
+        display: flex;
+        border-radius: var(--radius-200);
       }
 
       mui-icon-down-chevron {
         transition: transform var(--speed-200) ease-in-out;
         transform: rotate(0deg);
-        padding: var(--space-200);
-        border-radius: var(--radius-200);
       }
 
       mui-heading {
@@ -90,7 +95,7 @@ class muiAccordionBlock extends HTMLElement {
       }
 
       .size-small-summary {
-        padding: var(--space-300) var(--space-400);
+        padding: var(--space-300) var(--space-500);
       }
       .size-medium-summary {
         padding: var(--space-400) var(--space-500);
@@ -100,7 +105,7 @@ class muiAccordionBlock extends HTMLElement {
       }
         
       .size-small-detail {
-        padding: var(--space-400);
+        padding: var(--space-500);
       }
       .size-medium-detail {
         padding: var(--space-500);
@@ -145,7 +150,9 @@ class muiAccordionBlock extends HTMLElement {
       aria-controls="${this.accordionId}"
     >
       <mui-heading size="6" level="${headingLevel}">${headingText}</mui-heading>
-      <mui-icon-down-chevron size="small"></mui-icon-down-chevron>
+      <div class="icon">
+        <mui-icon-down-chevron size="x-small"></mui-icon-down-chevron>
+      </div>
     </div>
 
     <div id="${this.accordionId}" class="accordion-detail">

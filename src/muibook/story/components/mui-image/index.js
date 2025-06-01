@@ -1,4 +1,4 @@
-import Image from "../../../images/image-1080.png";
+import Image from "../../../images/story/image-1080.png";
 
 class storyImage extends HTMLElement {
   constructor() {

@@ -12,7 +12,7 @@ class appNavbarTheme extends HTMLElement {
         padding: var(--space-500);
         box-shadow: 0 1px 0 0 var(--border-color);
         margin-bottom: -1px;
-        background: var(--surface-elevated-100);
+        background: var(--app-navbar-surface);
         z-index: 3;
         position: sticky;
         top: 0;

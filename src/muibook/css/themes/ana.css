@@ -12,10 +12,10 @@
 /* =============================================================================== */
 /* 1. BRAND PRIMITIVES                                                             */
 /* =============================================================================== */
-html[data-brand='ana'] {
-  --font-family: 'Myriad Pro', 'Segoe UI', Helvetica, Arial, Verdana, Roboto, 'Droid Sans', 'Hiragino Sans',
-    'Hiragino Kaku Gothic ProN', HiraKakuProN-W3, 'Hiragino Kaku Gothic Pro', HiraKakuPro-W3, 'Noto Sans CJK JP', Meiryo,
-    Osaka, 'MS PGothic', 'sans-serif';
+html[data-brand="ana"] {
+  --font-family: "Myriad Pro", "Segoe UI", Helvetica, Arial, Verdana, Roboto, "Droid Sans", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", HiraKakuProN-W3, "Hiragino Kaku Gothic Pro", HiraKakuPro-W3, "Noto Sans CJK JP", Meiryo,
+    Osaka, "MS PGothic", "sans-serif";
 
   /* Neutral Greys */
   --ana-grey-50: #f9f9f9;
@@ -72,29 +72,26 @@ html[data-brand='ana'] {
 /* =============================================================================== */
 /* 2. LIGHT MODE                                                                   */
 /* =============================================================================== */
-html[data-brand='ana'][data-theme='light'] {
+html[data-brand="ana"][data-theme="light"] {
   /* Feedback */
-  --feedback-plain-border-color: var(--ana-grey-300);
-  --feedback-neutral-border-color: var(--ana-grey-200);
+  --feedback-neutral-border-color: var(--black-opacity-20);
   --feedback-positive-border-color: var(--ana-green-300);
   --feedback-info-border-color: var(--ana-blue-200);
   --feedback-warning-border-color: var(--ana-orange-300);
   --feedback-attention-border-color: var(--ana-red-300);
 
-  --feedback-plain-background: var(--ana-grey-50);
-  --feedback-neutral-background: var(--ana-grey-50);
+  --feedback-neutral-background: var(--ana-white);
   --feedback-positive-background: var(--ana-green-50);
   --feedback-info-background: var(--ana-blue-50);
   --feedback-warning-background: var(--ana-orange-50);
   --feedback-attention-background: var(--ana-red-50);
 
-  --feedback-plain-icon: var(--ana-grey-500);
   --feedback-neutral-icon: var(--ana-grey-500);
   --feedback-positive-icon: var(--ana-green-500);
   --feedback-info-icon: var(--ana-blue-500);
   --feedback-warning-icon: var(--ana-orange-700);
   --feedback-attention-icon: var(--ana-red-600);
-  --feedback-plain-text: var(--ana-grey-700);
+
   --feedback-neutral-text: var(--ana-grey-700);
   --feedback-positive-text: var(--ana-green-700);
   --feedback-info-text: var(--ana-blue-700);
@@ -115,26 +112,26 @@ html[data-brand='ana'][data-theme='light'] {
   --action-primary-text-color-disabled: var(--ana-white);
 
   --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
-  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
-  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
-  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
+  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-500);
+  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-500);
+  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-200);
   --action-secondary-background: var(--white-opacity-0);
-  --action-secondary-background-hover: var(--ana-grey-200);
-  --action-secondary-background-focus: var(--ana-grey-200);
-  --action-secondary-background-disabled: var(--ana-grey-200);
+  --action-secondary-background-hover: var(--ana-white);
+  --action-secondary-background-focus: var(--ana-white);
+  --action-secondary-background-disabled: var(--ana-white);
   --action-secondary-text-color: var(--ana-blue-400);
-  --action-secondary-text-color-hover: var(--ana-blue-400);
-  --action-secondary-text-color-focus: var(--ana-blue-400);
-  --action-secondary-text-color-disabled: var(--ana-blue-400);
+  --action-secondary-text-color-hover: var(--ana-blue-500);
+  --action-secondary-text-color-focus: var(--ana-blue-500);
+  --action-secondary-text-color-disabled: var(--ana-blue-200);
 
   --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
   --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
   --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
   --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
   --action-tertiary-background: var(--white-opacity-0);
-  --action-tertiary-background-hover: var(--ana-grey-200);
-  --action-tertiary-background-focus: var(--ana-grey-200);
-  --action-tertiary-background-disabled: var(--ana-grey-200);
+  --action-tertiary-background-hover: var(--ana-white);
+  --action-tertiary-background-focus: var(--ana-white);
+  --action-tertiary-background-disabled: var(--ana-white);
   --action-tertiary-text-color: var(--ana-blue-400);
   --action-tertiary-text-color-hover: var(--ana-blue-400);
   --action-tertiary-text-color-focus: var(--ana-blue-400);
@@ -164,12 +161,12 @@ html[data-brand='ana'][data-theme='light'] {
   --outline-color: var(--ana-blue-300);
 
   /* Icon */
-  --icon-color-default: var(--ana-blue-600);
+  --icon-color-default: var(--ana-blue-400);
   --icon-color-inverted: var(--ana-white);
 
   /* Type */
   --text-color: var(--ana-grey-900);
-  --heading-text-color: var(--ana-blue-600);
+  --heading-text-color: var(--ana-blue-400);
 
   /* Input */
   --input-background: var(--ana-white);
@@ -209,29 +206,26 @@ html[data-brand='ana'][data-theme='light'] {
 /* =============================================================================== */
 /* 3. DARK MODE                                                                    */
 /* =============================================================================== */
-html[data-brand='ana'][data-theme='dark'] {
+html[data-brand="ana"][data-theme="dark"] {
   /* Feedback */
-  --feedback-plain-border-color: var(--ana-grey-600);
-  --feedback-neutral-border-color: var(--ana-grey-600);
+  --feedback-neutral-border-color: var(--white-opacity-20);
   --feedback-positive-border-color: var(--ana-green-300);
   --feedback-info-border-color: var(--ana-blue-400);
   --feedback-warning-border-color: var(--ana-orange-300);
   --feedback-attention-border-color: var(--ana-red-300);
 
-  --feedback-plain-background: var(--ana-grey-900);
-  --feedback-neutral-background: var(--ana-grey-900);
+  --feedback-neutral-background: var(--ana-grey-700);
   --feedback-positive-background: var(--ana-green-700);
   --feedback-info-background: var(--ana-blue-700);
   --feedback-warning-background: var(--ana-orange-700);
   --feedback-attention-background: var(--ana-red-600);
 
-  --feedback-plain-icon: var(--ana-grey-100);
   --feedback-neutral-icon: var(--ana-grey-100);
   --feedback-positive-icon: var(--ana-green-100);
   --feedback-info-icon: var(--ana-blue-100);
   --feedback-warning-icon: var(--ana-orange-100);
   --feedback-attention-icon: var(--ana-red-100);
-  --feedback-plain-text: var(--ana-grey-100);
+
   --feedback-neutral-text: var(--ana-grey-100);
   --feedback-positive-text: var(--ana-green-100);
   --feedback-info-text: var(--ana-blue-100);
@@ -301,7 +295,7 @@ html[data-brand='ana'][data-theme='dark'] {
   --outline-color: var(--ana-blue-200);
 
   /* Icon */
-  --icon-color-default: var(--ana-blue-300);
+  --icon-color-default: var(--ana-blue-200);
   --icon-color-inverted: var(--ana-white);
 
   /* Type */
@@ -347,7 +341,7 @@ html[data-brand='ana'][data-theme='dark'] {
 /* 4. SET THE FOUNDATION                                             */
 /* Map tokens to semantic or component contexts .                    */
 /* ================================================================= */
-html[data-brand='ana'] {
+html[data-brand="ana"] {
   --action-padding: var(--space-200) var(--space-500);
   --action-icon-only-padding: var(--space-000);
   --action-radius: var(--radius-400);
@@ -356,7 +350,6 @@ html[data-brand='ana'] {
   --action-font-weight: var(--font-weight-bold);
 
   /* Feedback • Alerts, Messages, Notifciations */
-  --feedback-plain-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-plain-border-color);
   --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
   --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
   --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);

@@ -34,7 +34,7 @@ class storyMessage extends HTMLElement {
       {
         name: "variant",
         type: "string",
-        options: "plain, neutral, positive, info, warning, attention",
+        options: "neutral, positive, info, warning, attention",
         default: "neutral",
         description: "Describe the intent or mood of a message",
       },
@@ -195,52 +195,6 @@ class storyMessage extends HTMLElement {
           <mui-message slot="body" icon="mui-icon-accessibility"></mui-message>
           <mui-code slot="footer">
             &lt;mui-message icon="mui-icon-accessibility"&gt;...&lt;/mui-message&gt;
-          </mui-code>
-        </story-card>
-
-        <story-card 
-          title="Variant: Plain" 
-          description="A subtle, transparent style suited for vibrant backgrounds where minimal visual impact is preferred."
-          accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
-          usage="Use for passive messages such as accessibility notes system status or routine updates.; Best for non-critical information that doesn’t require immediate attention or user action."
-        >
-          <mui-message heading="Accessibility Notes" slot="body" icon="mui-icon-accessibility" variant="plain">
-            <mui-list as="ul">
-              <mui-list-item size="small">ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.</mui-list-item>
-              <mui-list-item size="small">The role is set to ALERT for immediate screen reader feedback.</mui-list-item>
-            </mui-list>
-          </mui-message>
-          <mui-code slot="footer">
-            &lt;mui-message
-            <br />
-            &nbsp;&nbsp;heading="Accessibility Notes" 
-            <br />
-            &nbsp;&nbsp;variant="plain" 
-            <br />
-            &nbsp;&nbsp;icon="mui-icon-accessibility"
-            <br />
-            &gt;
-            <br />
-            <br />
-            &nbsp;&nbsp;&lt;mui-list as="ul"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-list-item size="small"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARIA-live is built in...
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-list-item&gt;
-            <br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-list-item size="small"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The role is set to...
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-list-item&gt;
-            <br />
-            &nbsp;&nbsp;&lt;/mui-list&gt;
-            <br />
-            <br />
-            &lt;/mui-message&gt;
           </mui-code>
         </story-card>
 

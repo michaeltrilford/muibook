@@ -12,8 +12,8 @@
 /* =============================================================================== */
 /* 1. BRAND PRIMITIVES                                                             */
 /* =============================================================================== */
-html[data-brand='jal'] {
-  --font-family: 'Noto Sans JP', 'メイリオ', sans-serif;
+html[data-brand="jal"] {
+  --font-family: "Noto Sans JP", "メイリオ", sans-serif;
   /* Neutral Greys */
   --jal-grey-50: #fafafa;
   --jal-grey-100: #f4f4f4;
@@ -89,27 +89,26 @@ html[data-brand='jal'] {
 /* =============================================================================== */
 /* 2. LIGHT MODE                                                                   */
 /* =============================================================================== */
-html[data-brand='jal'][data-theme='light'] {
+html[data-brand="jal"][data-theme="light"] {
   /* Feedback */
-  --feedback-plain-border-color: var(--black-opacity-20);
-  --feedback-neutral-border-color: var(--jal-grey-100);
+  --feedback-neutral-border-color: var(--black-opacity-20);
   --feedback-positive-border-color: var(--jal-green-100);
   --feedback-info-border-color: var(--jal-blue-100);
   --feedback-warning-border-color: var(--jal-yellow-100);
   --feedback-attention-border-color: var(--jal-red-100);
-  --feedback-plain-background: var(--white-opacity-10);
-  --feedback-neutral-background: var(--jal-grey-50);
+
+  --feedback-neutral-background: var(--jal-white);
   --feedback-positive-background: var(--jal-green-50);
   --feedback-info-background: var(--jal-blue-50);
   --feedback-warning-background: var(--jal-yellow-50);
   --feedback-attention-background: var(--jal-red-50);
-  --feedback-plain-icon: var(--jal-grey-700);
+
   --feedback-neutral-icon: var(--jal-grey-500);
   --feedback-positive-icon: var(--jal-green-500);
   --feedback-info-icon: var(--jal-blue-500);
   --feedback-warning-icon: var(--jal-yellow-500);
   --feedback-attention-icon: var(--jal-red-500);
-  --feedback-plain-text: var(--jal-grey-700);
+
   --feedback-neutral-text: var(--jal-grey-700);
   --feedback-positive-text: var(--jal-green-700);
   --feedback-info-text: var(--jal-blue-700);
@@ -224,27 +223,27 @@ html[data-brand='jal'][data-theme='light'] {
 /* =============================================================================== */
 /* 3. DARK MODE                                                                    */
 /* =============================================================================== */
-html[data-brand='jal'][data-theme='dark'] {
+html[data-brand="jal"][data-theme="dark"] {
   /* Feedback */
-  --feedback-plain-border-color: var(--white-opacity-20);
-  --feedback-neutral-border-color: var(--jal-grey-800);
+
+  --feedback-neutral-border-color: var(--white-opacity-30);
   --feedback-positive-border-color: var(--jal-green-800);
   --feedback-info-border-color: var(--jal-blue-800);
   --feedback-warning-border-color: var(--jal-yellow-800);
   --feedback-attention-border-color: var(--jal-red-800);
-  --feedback-plain-background: var(--white-opacity-10);
-  --feedback-neutral-background: var(--jal-grey-900);
+
+  --feedback-neutral-background: var(--jal-grey-700);
   --feedback-positive-background: var(--jal-green-900);
   --feedback-info-background: var(--jal-blue-900);
   --feedback-warning-background: var(--jal-yellow-900);
   --feedback-attention-background: var(--jal-red-900);
-  --feedback-plain-icon: var(--jal-grey-300);
+
   --feedback-neutral-icon: var(--jal-grey-300);
   --feedback-positive-icon: var(--jal-green-300);
   --feedback-info-icon: var(--jal-blue-300);
   --feedback-warning-icon: var(--jal-yellow-300);
   --feedback-attention-icon: var(--jal-red-300);
-  --feedback-plain-text: var(--jal-grey-100);
+
   --feedback-neutral-text: var(--jal-grey-100);
   --feedback-positive-text: var(--jal-green-100);
   --feedback-info-text: var(--jal-blue-100);
@@ -325,7 +324,7 @@ html[data-brand='jal'][data-theme='dark'] {
   --input-background: var(--jal-grey-800);
 
   /* Border */
-  --border-color: var(--white-opacity-10);
+  --border-color: var(--white-opacity-30);
 
   /* Surface */
   --surface: var(--jal-grey-900);
@@ -360,7 +359,7 @@ html[data-brand='jal'][data-theme='dark'] {
 /* 4. SET THE FOUNDATION                                             */
 /* Map tokens to semantic or component contexts .                    */
 /* ================================================================= */
-html[data-brand='jal'] {
+html[data-brand="jal"] {
   --action-padding: var(--space-200) var(--space-500);
   --action-icon-only-padding: var(--space-000);
   --action-radius: var(--radius-100);
@@ -369,7 +368,6 @@ html[data-brand='jal'] {
   --action-font-weight: var(--font-weight-bold);
 
   /* Feedback • Alerts, Messages, Notifciations */
-  --feedback-plain-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-plain-border-color);
   --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
   --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
   --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);

@@ -1,37 +1,16 @@
-type MessageVariant =
-  | "plain"
-  | "neutral"
-  | "positive"
-  | "info"
-  | "warning"
-  | "attention";
+type MessageVariant = "neutral" | "positive" | "info" | "warning" | "attention";
 
-const MESSAGE_VARIANTS: MessageVariant[] = [
-  "plain",
-  "neutral",
-  "positive",
-  "info",
-  "warning",
-  "attention",
-];
+const MESSAGE_VARIANTS: MessageVariant[] = ["neutral", "positive", "info", "warning", "attention"];
 
 const variantStyles: Record<MessageVariant, string> = {
-  plain:
-    "background-color: var(--feedback-plain-background); border: var(--feedback-plain-border);",
-  neutral:
-    "background-color: var(--feedback-neutral-background); border: var(--feedback-neutral-border);",
-  positive:
-    "background-color: var(--feedback-positive-background); border: var(--feedback-positive-border);",
-  info:
-    "background-color: var(--feedback-info-background); border: var(--feedback-info-border);",
-  warning:
-    "background-color: var(--feedback-warning-background); border: var(--feedback-warning-border);",
-  attention:
-    "background-color: var(--feedback-attention-background); border: var(--feedback-attention-border);",
+  neutral: "background-color: var(--feedback-neutral-background); border: var(--feedback-neutral-border);",
+  positive: "background-color: var(--feedback-positive-background); border: var(--feedback-positive-border);",
+  info: "background-color: var(--feedback-info-background); border: var(--feedback-info-border);",
+  warning: "background-color: var(--feedback-warning-background); border: var(--feedback-warning-border);",
+  attention: "background-color: var(--feedback-attention-background); border: var(--feedback-attention-border);",
 };
 
 const ariaLiveMap: Record<MessageVariant, "polite" | "assertive"> = {
-  plain: "polite",
   neutral: "polite",
   positive: "polite",
   info: "polite",
@@ -40,7 +19,6 @@ const ariaLiveMap: Record<MessageVariant, "polite" | "assertive"> = {
 };
 
 const roleMap: Record<MessageVariant, "status" | "alert"> = {
-  plain: "status",
   neutral: "status",
   positive: "status",
   info: "status",
@@ -49,7 +27,6 @@ const roleMap: Record<MessageVariant, "status" | "alert"> = {
 };
 
 const iconColors: Record<MessageVariant, string> = {
-  plain: "--feedback-plain-icon",
   neutral: "--feedback-neutral-icon",
   positive: "--feedback-positive-icon",
   info: "--feedback-info-icon",
@@ -58,7 +35,6 @@ const iconColors: Record<MessageVariant, string> = {
 };
 
 const headingColors: Record<MessageVariant, string> = {
-  plain: "color: var(--feedback-plain-text);",
   neutral: "color: var(--feedback-neutral-text);",
   positive: "color: var(--feedback-positive-text);",
   info: "color: var(--feedback-info-text);",
@@ -67,7 +43,6 @@ const headingColors: Record<MessageVariant, string> = {
 };
 
 const iconTags: Record<MessageVariant, string> = {
-  plain: "mui-icon-message",
   neutral: "mui-icon-message",
   positive: "mui-icon-check",
   info: "mui-icon-info",
@@ -84,9 +59,7 @@ class muiMessage extends HTMLElement {
 
   connectedCallback() {
     const rawVariant = this.getAttribute("variant") || "neutral";
-    const variant: MessageVariant = MESSAGE_VARIANTS.includes(
-      rawVariant as MessageVariant
-    )
+    const variant: MessageVariant = MESSAGE_VARIANTS.includes(rawVariant as MessageVariant)
       ? (rawVariant as MessageVariant)
       : "neutral";
 

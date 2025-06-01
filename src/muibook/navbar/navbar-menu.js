@@ -11,7 +11,7 @@ class appNavbarMenu extends HTMLElement {
         display: block;
         overflow-x: hidden;
         overflow-y: scroll;
-        background: var(--surface-elevated-100);
+        background: var(--app-navbar-surface);
         position: fixed;
         bottom: 0;
         top: 0;

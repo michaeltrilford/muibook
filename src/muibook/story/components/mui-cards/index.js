@@ -1,4 +1,4 @@
-import Image from "../../../images/image-1080.png";
+import Image from "../../../images/story/image-1080.png";
 
 class storyCards extends HTMLElement {
   constructor() {
@@ -127,7 +127,7 @@ class storyCards extends HTMLElement {
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-image&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img slot="image" src="images/image-1080.png" alt="image-1080" /&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img slot="image" src="images/story/image-1080.png" alt="image-1080" /&gt;
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-image&gt;
             <br />

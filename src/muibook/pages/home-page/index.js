@@ -1,5 +1,5 @@
-import "../../images/mui-logo-mobile";
-import "../../images/mui-logo";
+import "../../images/mui/mui-logo-mobile";
+import "../../images/mui/mui-logo";
 
 class HomePage extends HTMLElement {
   constructor() {
@@ -7,15 +7,7 @@ class HomePage extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
 
     const intro = /*html*/ `
-      <mui-body class="introduction" size="small" weight="bold">
-        Michael UI is a design system that consists of native Web Components. It promotes clean, composable patterns that help others write less code.
-      </mui-body>
-    `;
-
-    const subcontent = /*html*/ `
-      <mui-body class="subcontent" size="small" weight="bold">
-        Built with Vanilla JS, HTML, and scoped CSS, it started as small experiments on <mui-link target="_blank" href="https://codepen.io/trilm/" size="small" weight="bold">Codepen</mui-link> and grew into a reliable system.
-      </mui-body>
+      Muibook is the home of the Mui Design System <span style="opacity: 0.5;">(MichaelUI)</span>  — native Web Components with clean, composable patterns that help you write less code
     `;
 
     const styles = /*css*/ `
@@ -125,47 +117,49 @@ class HomePage extends HTMLElement {
         .introduction {
           grid-column: 5 / 13;
           grid-row: 2 / 3;
+          text-align: right;
         }
       }
 
       @media (min-width: 1100px) {
         .introduction {
-          grid-column: 5 / 9;
           grid-row: initial;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .introduction {
+        }
+      }
+
+      @media (min-width: 1300px) {
+        .introduction {
+          grid-column: 6 / 13;
         }
       }
 
       @media (min-width: 1400px) {
         .introduction {
-          grid-column: 6 / 9;
+          grid-column: 6 / 12;
         }
       }
 
-      @media (min-width: 961px) {
-        .subcontent {
-          grid-column: 5 / 13;
-          grid-row: 3 / 4;
+      @media (min-width: 1700px) {
+        .introduction {
+          grid-column: 7 / 12;
         }
       }
 
-      @media (min-width: 1100px) {
-        .subcontent {
-          grid-column: 9 / 13;
-          grid-row: initial;
-        }
-      }
-
-      @media (min-width: 1400px) {
-        .subcontent {
-          grid-column: 9 / 12;
+      @media (min-width: 1800px) {
+        .introduction {
+          grid-column: 8 / 12;
         }
       }
 
       /* END - Grid */
 
       .logo,
-      .introduction,
-      .subcontent {
+      .introduction {
         margin-bottom: 0;
       }
 
@@ -212,12 +206,13 @@ class HomePage extends HTMLElement {
 
               <mui-v-stack class="actions__secondary" space="var(--space-000)">
                 <mui-body size="small" weight="medium">
-                  <mui-link target="_blank" href="https://michaeltrilford.co.nz">michaeltrilford.co.nz</mui-link>
+                  <mui-link href="#/create-mui-app">View Documentation</mui-link>
                 </mui-body>
               </mui-v-stack>
             </mui-v-stack>
-            ${intro}
-            ${subcontent}
+            <mui-body class="introduction" size="medium" weight="bold">
+              ${intro}
+            </mui-body> 
           </main>
 
           <!-- Main content below -->
@@ -227,8 +222,9 @@ class HomePage extends HTMLElement {
                 <mui-logo-mobile color="var(--app-logo-color)"></mui-logo-mobile>
               </div>
               <mui-v-stack space="var(--space-500)" style="max-width: 31rem; padding-left: var(--space-300); padding-right: var(--space-300);">
-                ${intro}
-                ${subcontent}
+                <mui-body class="introduction" size="small" weight="bold">
+                  ${intro}
+                </mui-body> 
               </mui-v-stack>
               <mui-v-stack class="actions" space="var(--space-300)">
                 <mui-link 
@@ -240,7 +236,7 @@ class HomePage extends HTMLElement {
                 </mui-link>
                 <mui-v-stack class="actions__secondary" space="var(--space-050)">
                   <mui-body size="small" weight="medium">
-                    <mui-link target="_blank" href="https://michaeltrilford.co.nz">michaeltrilford.co.nz</mui-link>
+                    <mui-link href="#/create-mui-app">View Documentation</mui-link>
                   </mui-body>
                 </mui-v-stack>
               </mui-v-stack>

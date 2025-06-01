@@ -21,8 +21,8 @@
   --mui-brand-600: #ffa500;
   --mui-brand-700: #ff9800;
 
-  /* APP Background */
-  background: var(--surface);
+  /* App Surface */
+  background: var(--app-container-surface);
 }
 
 ::view-transition-old(body),

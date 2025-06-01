@@ -1,4 +1,4 @@
-import Image from "../../images/create-mui-app.jpg";
+import Image from "../../images/pages/create-mui-app.jpg";
 
 class CreateMuiApp extends HTMLElement {
   constructor() {

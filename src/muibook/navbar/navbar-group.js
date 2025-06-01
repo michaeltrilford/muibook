@@ -16,7 +16,7 @@ class appNavbarGroup extends HTMLElement {
       :host(:last-of-type) { padding-bottom: 6rem; }
     </style>
 
-    <mui-accordion-block heading="${this.getAttribute("groupname")}">
+    <mui-accordion-block size="small" heading="${this.getAttribute("groupname")}">
       <slot slot="detail"></slot>
     </mui-accordion-block>
     

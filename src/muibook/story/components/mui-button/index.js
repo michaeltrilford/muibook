@@ -10,10 +10,11 @@ class storyButton extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "node",
+        type: "HTML attribute",
         options: "{text}, mui-icon-[name]",
         default: "",
-        description: "Slot in text or icon for the call-to-action",
+        description:
+          "Add text or an icon for the call-to-action. If using a custom icon, ensure it includes the mui-icon class to inherit styling.",
       },
       {
         name: "variant",

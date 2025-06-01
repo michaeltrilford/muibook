@@ -11,8 +11,8 @@
 /* =============================================================================== */
 /* 1. BRAND PRIMITIVES                                                             */
 /* =============================================================================== */
-html[data-brand='modern'] {
-  --font-family: 'Golos Text', sans-serif;
+html[data-brand="modern"] {
+  --font-family: "Golos Text", sans-serif;
 
   /* Grey scale – cooler, slightly more saturated tones */
   --grey-100: #f0f0f5;
@@ -81,27 +81,23 @@ html[data-brand='modern'] {
 /* =============================================================================== */
 /* 2. LIGHT MODE                                                                   */
 /* =============================================================================== */
-html[data-brand='modern'][data-theme='light'] {
+html[data-brand="modern"][data-theme="light"] {
   /* Feedback */
-  --feedback-plain-border-color: var(--black-opacity-50);
-  --feedback-neutral-border-color: var(--grey-600);
+  --feedback-neutral-border-color: var(--black-opacity-20);
   --feedback-positive-border-color: var(--green-600);
   --feedback-info-border-color: var(--blue-600);
   --feedback-warning-border-color: var(--orange-600);
   --feedback-attention-border-color: var(--red-600);
-  --feedback-plain-background: var(--white-opacity-20);
-  --feedback-neutral-background: var(--grey-100);
+  --feedback-neutral-background: var(--white);
   --feedback-positive-background: var(--green-100);
   --feedback-info-background: var(--blue-100);
   --feedback-warning-background: var(--orange-100);
   --feedback-attention-background: var(--red-100);
-  --feedback-plain-icon: var(--black);
   --feedback-neutral-icon: var(--grey-600);
   --feedback-positive-icon: var(--green-600);
   --feedback-info-icon: var(--blue-600);
   --feedback-warning-icon: var(--orange-600);
   --feedback-attention-icon: var(--red-600);
-  --feedback-plain-text: var(--black);
   --feedback-neutral-text: var(--grey-900);
   --feedback-positive-text: var(--green-900);
   --feedback-info-text: var(--blue-900);
@@ -217,27 +213,23 @@ html[data-brand='modern'][data-theme='light'] {
 /* =============================================================================== */
 /* 3. DARK MODE                                                                    */
 /* =============================================================================== */
-html[data-brand='modern'][data-theme='dark'] {
+html[data-brand="modern"][data-theme="dark"] {
   /* Feedback */
-  --feedback-plain-border-color: var(--white-opacity-50);
-  --feedback-neutral-border-color: var(--grey-400);
+  --feedback-neutral-border-color: var(--white-opacity-30);
   --feedback-positive-border-color: var(--green-400);
   --feedback-info-border-color: var(--blue-400);
   --feedback-warning-border-color: var(--orange-400);
   --feedback-attention-border-color: var(--red-400);
-  --feedback-plain-background: var(--white-opacity-10);
-  --feedback-neutral-background: var(--grey-800);
+  --feedback-neutral-background: var(--grey-700);
   --feedback-positive-background: var(--green-800);
   --feedback-info-background: var(--blue-800);
   --feedback-warning-background: var(--orange-800);
   --feedback-attention-background: var(--red-800);
-  --feedback-plain-icon: var(--white);
   --feedback-neutral-icon: var(--grey-300);
   --feedback-positive-icon: var(--green-300);
   --feedback-info-icon: var(--blue-300);
   --feedback-warning-icon: var(--orange-300);
   --feedback-attention-icon: var(--red-300);
-  --feedback-plain-text: var(--white);
   --feedback-neutral-text: var(--grey-100);
   --feedback-positive-text: var(--green-100);
   --feedback-info-text: var(--blue-100);
@@ -319,16 +311,16 @@ html[data-brand='modern'][data-theme='dark'] {
   --input-background: var(--grey-800);
 
   /* Border */
-  --border-color: var(--white-opacity-20);
+  --border-color: var(--white-opacity-30);
 
   /* Surface */
-  --surface: var(--grey-800);
+  --surface: var(--grey-900);
   --surface-elevated-alpha: var(--white-opacity-10);
-  --surface-elevated-100: var(--grey-600);
-  --surface-elevated-200: var(--grey-700);
+  --surface-elevated-100: var(--grey-700);
+  --surface-elevated-200: var(--grey-800);
   --surface-recessed-alpha: var(--black-opacity-30);
-  --surface-recessed-100: var(--grey-800);
-  --surface-recessed-200: var(--grey-900);
+  --surface-recessed-100: var(--grey-900);
+  --surface-recessed-200: var(--grey-1000);
 
   /* Switch */
   --switch-track-background: var(--grey-300);
@@ -354,7 +346,7 @@ html[data-brand='modern'][data-theme='dark'] {
 /* 4. SET THE FOUNDATION                                             */
 /* Map tokens to semantic or component contexts .                    */
 /* ================================================================= */
-html[data-brand='modern'] {
+html[data-brand="modern"] {
   --action-padding: var(--space-200) var(--space-500);
   --action-icon-only-padding: var(--space-000);
   --action-radius: var(--radius-100);
@@ -363,7 +355,6 @@ html[data-brand='modern'] {
   --action-font-weight: var(--font-weight-bold);
 
   /* Feedback • Alerts, Messages, Notifciations */
-  --feedback-plain-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-plain-border-color);
   --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
   --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
   --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);

@@ -1,4 +1,4 @@
-import Image from "../../images/author-tokens.jpg";
+import Image from "../../images/pages/author-tokens.jpg";
 
 class ThemeSetup extends HTMLElement {
   constructor() {

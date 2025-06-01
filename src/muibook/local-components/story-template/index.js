@@ -5,15 +5,7 @@ import "../../images/guides-mark";
 
 class StoryTemplate extends HTMLElement {
   static get observedAttributes() {
-    return [
-      "title",
-      "description",
-      "accessibility",
-      "demo",
-      "github",
-      "figma",
-      "guides",
-    ];
+    return ["title", "description", "accessibility", "demo", "github", "figma", "guides"];
   }
 
   constructor() {
@@ -62,25 +54,18 @@ class StoryTemplate extends HTMLElement {
       : "";
 
     try {
-      const sanitizedItems = accessibilityItems
-        ? accessibilityItems.replace(/(['"])(?=\w)(.*?)(?=\w)\1/g, "$2")
-        : "";
+      const sanitizedItems = accessibilityItems ? accessibilityItems.replace(/(['"])(?=\w)(.*?)(?=\w)\1/g, "$2") : "";
       accessibilityArray = sanitizedItems ? JSON.parse(sanitizedItems) : [];
     } catch (e) {
-      accessibilityArray = accessibilityItems
-        ? accessibilityItems.split(";")
-        : [];
+      accessibilityArray = accessibilityItems ? accessibilityItems.split(";") : [];
     }
 
     const accessibilitySection = accessibilityArray.length
       ? /*html*/ `
-        <mui-message heading="Accessibility Notes" icon="mui-icon-accessibility" variant="plain">
+        <mui-message heading="Accessibility Notes" icon="mui-icon-accessibility">
             <mui-list as="ul">
               ${accessibilityArray
-                .map(
-                  (item) =>
-                    `<mui-list-item size="small" weight="medium">${item.trim()}</mui-list-item>`
-                )
+                .map((item) => `<mui-list-item size="small" weight="medium">${item.trim()}</mui-list-item>`)
                 .join("")}
             </mui-list>
         </mui-message> 

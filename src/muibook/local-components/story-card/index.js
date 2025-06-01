@@ -13,9 +13,7 @@ class storyCard extends HTMLElement {
       :host { display: block; }
 
       mui-card {
-        box-shadow:
-          6px 6px 16px var(--black-opacity-10),
-          -6px -6px 14px var(--black-opacity-10);
+        border: var(--border-thick);
       }
 
       .story-body {
@@ -76,9 +74,7 @@ class storyCard extends HTMLElement {
 
     const title = this.getAttribute("title") || "";
     const description = this.hasAttribute("description")
-      ? /*html*/ `<mui-body style="max-width: 86ch;">${this.getAttribute(
-          "description"
-        )}</mui-body>`
+      ? /*html*/ `<mui-body style="max-width: 86ch;">${this.getAttribute("description")}</mui-body>`
       : "";
 
     const githubLink = this.getAttribute("github");
@@ -91,9 +87,7 @@ class storyCard extends HTMLElement {
     let usageArray = [];
 
     try {
-      const sanitizedItems = usageItems
-        ? usageItems.replace(/(['"])(?=\w)(.*?)(?=\w)\1/g, "$2")
-        : "";
+      const sanitizedItems = usageItems ? usageItems.replace(/(['"])(?=\w)(.*?)(?=\w)\1/g, "$2") : "";
       usageArray = sanitizedItems ? JSON.parse(sanitizedItems) : [];
     } catch (e) {
       usageArray = usageItems ? usageItems.split(";") : [];
@@ -120,15 +114,11 @@ class storyCard extends HTMLElement {
 
     try {
       // Try parse JSON (after cleaning quotes)
-      const sanitizedItems = accessibilityItems
-        ? accessibilityItems.replace(/(['"])(?=\w)(.*?)(?=\w)\1/g, "$2")
-        : "";
+      const sanitizedItems = accessibilityItems ? accessibilityItems.replace(/(['"])(?=\w)(.*?)(?=\w)\1/g, "$2") : "";
       accessibilityArray = sanitizedItems ? JSON.parse(sanitizedItems) : [];
     } catch (e) {
       // Fallback split by semicolon
-      accessibilityArray = accessibilityItems
-        ? accessibilityItems.split(";")
-        : [];
+      accessibilityArray = accessibilityItems ? accessibilityItems.split(";") : [];
     }
 
     const accessibilityContent = accessibilityArray.length

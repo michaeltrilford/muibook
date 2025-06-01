@@ -1,4 +1,4 @@
-import "../../../images/mui-logo-mobile";
+import "../../../images/mui/mui-logo-mobile";
 
 class compAgentUI extends HTMLElement {
   constructor() {

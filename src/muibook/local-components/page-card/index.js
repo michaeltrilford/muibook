@@ -1,41 +1,35 @@
 class pageCard extends HTMLElement {
   static get observedAttributes() {
-    return ['title', 'description', 'orderedList', 'unorderedList'];
+    return ["title", "description", "orderedList", "unorderedList"];
   }
 
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: 'open' });
+    const shadowRoot = this.attachShadow({ mode: "open" });
 
     const styles = /*css*/ `
       :host { display: block; }
 
       mui-card {
-        box-shadow:
-          6px 6px 16px var(--black-opacity-10),
-          -6px -6px 14px var(--black-opacity-10);
+        border: var(--border-thick);
       }
 
     `;
 
-    const title = this.getAttribute('title') || '';
-    const description = this.hasAttribute('description')
-      ? /*html*/ `<mui-body style="max-width: 86ch;">${this.getAttribute(
-          'description',
-        )}</mui-body>`
-      : '';
+    const title = this.getAttribute("title") || "";
+    const description = this.hasAttribute("description")
+      ? /*html*/ `<mui-body style="max-width: 86ch;">${this.getAttribute("description")}</mui-body>`
+      : "";
 
     // Handle orderedList
-    const orderedListAttr = this.getAttribute('orderedList');
+    const orderedListAttr = this.getAttribute("orderedList");
     let orderedListItems = [];
 
     if (orderedListAttr) {
       try {
         orderedListItems = JSON.parse(orderedListAttr);
       } catch {
-        orderedListItems = orderedListAttr
-          .split(',')
-          .map((orderedList) => orderedList.trim());
+        orderedListItems = orderedListAttr.split(",").map((orderedList) => orderedList.trim());
       }
     }
 
@@ -45,24 +39,22 @@ class pageCard extends HTMLElement {
           ${orderedListItems
             .map(
               (orderedList) =>
-                /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${orderedList}</mui-list-item>`,
+                /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${orderedList}</mui-list-item>`
             )
-            .join('')}
+            .join("")}
         </mui-list>
       `
-      : '';
+      : "";
 
     // Handle accessibility list
-    const unorderedListAttr = this.getAttribute('unorderedList');
+    const unorderedListAttr = this.getAttribute("unorderedList");
     let unorderedListItems = [];
 
     if (unorderedListAttr) {
       try {
         unorderedListItems = JSON.parse(unorderedListAttr);
       } catch {
-        unorderedListItems = unorderedListAttr
-          .split(',')
-          .map((unorderedList) => unorderedList.trim());
+        unorderedListItems = unorderedListAttr.split(",").map((unorderedList) => unorderedList.trim());
       }
     }
 
@@ -72,19 +64,19 @@ class pageCard extends HTMLElement {
           ${unorderedListItems
             .map(
               (unorderedList) =>
-                `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${unorderedList}</mui-list-item>`,
+                `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${unorderedList}</mui-list-item>`
             )
-            .join('')}
+            .join("")}
         </mui-list>
       `
-      : '';
+      : "";
 
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <mui-card>
         ${
-          this.hasAttribute('noheader')
-            ? ''
+          this.hasAttribute("noheader")
+            ? ""
             : `
           <mui-card-header>
             <mui-heading size="3" level="2">${title}</mui-heading>
@@ -106,4 +98,4 @@ class pageCard extends HTMLElement {
   }
 }
 
-customElements.define('page-card', pageCard);
+customElements.define("page-card", pageCard);
