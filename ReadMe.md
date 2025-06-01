@@ -1,4 +1,4 @@
-# Mui Project
+# Muibook
 
 This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to provide a fast, modern development experience for building and previewing web components.
 
