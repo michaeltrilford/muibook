@@ -37,7 +37,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
           href="https://muibook.com"
           target="_blank"
         >
-          View Docs
+          View Mui Docs
         </mui-link>
         <mui-link
           class="github-link"
@@ -45,7 +45,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
           href="https://github.com/michaeltrilford/create-mui-app"
           target="_blank"
         >
-          View Github
+          Get Started
         </mui-link>
       </mui-h-stack>
       <mui-h-stack space="var(--space-300)" alignY="center">
