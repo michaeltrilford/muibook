@@ -110,6 +110,13 @@ class HomePage extends HTMLElement {
       @media (min-width: 1100px) {
         .actions {
           grid-row: initial;
+          padding-left: var(--space-200);
+        }
+      }
+
+      @media (min-width: 1400px) {
+        .actions {
+          padding-left: var(--space-800);
         }
       }
 
