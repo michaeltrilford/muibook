@@ -102,13 +102,6 @@ class HomePage extends HTMLElement {
       @media (min-width: 1100px) {
         .actions {
           grid-row: initial;
-          padding-left: var(--space-200);
-        }
-      }
-
-      @media (min-width: 1400px) {
-        .actions {
-          padding-left: var(--space-800);
         }
       }
 
@@ -123,11 +116,6 @@ class HomePage extends HTMLElement {
       @media (min-width: 1100px) {
         .introduction {
           grid-row: initial;
-        }
-      }
-
-      @media (min-width: 1200px) {
-        .introduction {
         }
       }
 
@@ -171,10 +159,16 @@ class HomePage extends HTMLElement {
         .actions {
           text-align: left;
           margin-top: var(--space-000);
+          padding-left: var(--space-200);
         }
         .actions__secondary {
           margin-top: var(--space-200);
-          padding-left: var(--space-200);
+        }
+      }
+
+      @media (min-width: 1400px) {
+        .actions {
+          padding-left: var(--space-600);
         }
       }
 
@@ -193,21 +187,24 @@ class HomePage extends HTMLElement {
               <mui-logo color="var(--app-logo-color)"></mui-logo>
             </div>
 
-            <mui-v-stack class="actions" space="var(--space-050)">
-              <mui-link 
-                class="github-link" 
-                target="_blank" 
-                href="https://github.com/michaeltrilford/create-mui-app"
-                variant="primary" 
-                rounded>
-                Create Mui App
-              </mui-link>
+            <mui-v-stack class="actions" space="var(--space-050)" alignX="start">
 
-              <mui-v-stack class="actions__secondary" space="var(--space-000)">
-                <mui-body size="small" weight="medium">
-                  <mui-link href="#/create-mui-app">View Documentation</mui-link>
-                </mui-body>
-              </mui-v-stack>
+              <div style="text-align: center;" >
+                <mui-link 
+                  class="github-link" 
+                  target="_blank" 
+                  href="https://github.com/michaeltrilford/create-mui-app"
+                  variant="primary" 
+                  rounded>
+                  Get Started
+                </mui-link>
+                <mui-v-stack class="actions__secondary" space="var(--space-000)">
+                  <mui-body size="small" weight="medium">
+                    <mui-link href="#/create-mui-app">Documentation</mui-link>
+                  </mui-body>
+                </mui-v-stack>
+              </div>
+              
             </mui-v-stack>
             <mui-body class="introduction" size="medium" weight="bold">
               ${intro}
@@ -226,18 +223,18 @@ class HomePage extends HTMLElement {
                 </mui-body> 
               </mui-v-stack>
               <mui-v-stack class="actions" space="var(--space-300)">
-                <mui-link 
-                  class="github-link" 
-                  target="_blank" 
-                  href="https://github.com/michaeltrilford/create-mui-app" 
-                  variant="primary">
-                  Create Mui App
-                </mui-link>
-                <mui-v-stack class="actions__secondary" space="var(--space-050)">
-                  <mui-body size="small" weight="medium">
-                    <mui-link href="#/create-mui-app">View Documentation</mui-link>
-                  </mui-body>
-                </mui-v-stack>
+                  <mui-link 
+                    class="github-link" 
+                    target="_blank" 
+                    href="https://github.com/michaeltrilford/create-mui-app" 
+                    variant="primary">
+                    Get Started
+                  </mui-link>
+                  <mui-v-stack class="actions__secondary" space="var(--space-050)">
+                    <mui-body size="small" weight="medium">
+                      <mui-link href="#/create-mui-app">Documentation</mui-link>
+                    </mui-body>
+                  </mui-v-stack>
               </mui-v-stack>
             </mui-v-stack>
           </main>
