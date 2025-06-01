@@ -40,7 +40,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
           Mui Docs
         </mui-link>
         <mui-link
-          class="github-link"
           variant="secondary"
           href="https://github.com/michaeltrilford/create-mui-app"
           target="_blank"

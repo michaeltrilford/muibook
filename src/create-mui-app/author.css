@@ -3,12 +3,12 @@
 /* =============================================================================== */
 
 html[data-theme="light"] {
-  --app-background: var(--grey-100);
+  --app-container-surface: var(--white);
   --logo-color: var(--grey-800);
 }
 
 html[data-theme="dark"] {
-  --app-background: var(--grey-1000);
+  --app-container-surface: var(--grey-1000);
   --logo-color: #ffeb3b;
 }
 
@@ -16,12 +16,7 @@ body {
   display: grid;
   place-items: center;
   text-align: center;
-  background-color: var(--surface);
-}
-
-.content {
-  text-align: center;
-  max-width: 38ch;
+  background-color: var(--app-container-surface);
 }
 
 .introduction {

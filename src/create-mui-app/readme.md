@@ -1,5 +1,9 @@
 # Create Mui App
 
-The purpose of this repo is for the showcasing the demo site.
+Build for the Create.Muibook.com
 
-- The starterkit repository is available here: [AddLink]
+- (create.muibook.com)[https://create.muibook.com/]
+
+Github Repository is available here:
+
+- (github.com)[https://github.com/michaeltrilford/create-mui-app]

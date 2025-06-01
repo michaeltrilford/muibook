@@ -53,6 +53,10 @@ Optionally, install Node.js types for TypeScript:
 
 `npm install --save-dev @types/node`
 
+## VS Code Plug-in
+
+Install (es6-string-html)[https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html]
+
 Notes
 
 - Add any new components to `vite.config.ts` to include them in builds
