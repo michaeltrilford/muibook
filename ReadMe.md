@@ -2,6 +2,8 @@
 
 This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to provide a fast, modern development experience for building and previewing web components.
 
+---
+
 ## Start Development Server
 
 `npm run dev`
@@ -10,12 +12,16 @@ This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to pr
 - Opens the app at http://localhost:5173 (or next available port)
 - Supports hot module replacement (HMR) for fast feedback
 
+---
+
 ## Build Project
 
 `npm run build`
 
 - Compiles and bundles the project for production
 - Outputs optimized files into the dist/ directory
+
+---
 
 ## Build Muibook
 
@@ -24,11 +30,15 @@ This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to pr
 - Builds the Muibook package using a custom Vite config (vite.muibook.config.ts)
 - Produces a minified CSS and JS build for documentation
 
+---
+
 ## Preview Muibook Build
 
 `npm run preview:muibook`
 
 - Serves the minified Muibook build locally for previewing the compiled output
+
+---
 
 ## Build Create Mui App
 
@@ -36,6 +46,8 @@ This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to pr
 
 - Builds the create-mui-app package using a custom Vite config (vite.create-mui-app.config.ts)
 - Produces a minified CSS and JS build for documentation
+
+---
 
 ## Preview Create Mui App Build
 
@@ -53,11 +65,15 @@ Optionally, install Node.js types for TypeScript:
 
 `npm install --save-dev @types/node`
 
+---
+
 ## VS Code Plug-in
 
 Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html)
 
-Notes
+---
+
+## Notes
 
 - Add any new components to `vite.config.ts` to include them in builds
 - The dist/ folder is published, while source code and src/muibook are excluded
