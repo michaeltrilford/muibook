@@ -55,13 +55,15 @@ This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to pr
 
 - Serves the minified create-mui-app build locally for previewing the compiled output
 
-Setup
+---
+
+## Setup
 
 Install dependencies:
 
 `npm install`
 
-Optionally, install Node.js types for TypeScript:
+TypeScript Support:
 
 `npm install --save-dev @types/node`
 
