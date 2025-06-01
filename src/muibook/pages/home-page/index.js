@@ -15,14 +15,6 @@ class HomePage extends HTMLElement {
         display: flex; 
         width: 100%;
         align-items: stretch;
-
-      }
-
-      @media (max-height: 932px) and (max-width: 430px) {
-        :host { 
-          padding-top: var(--space-800);
-          align-items: start;
-        }
       }
 
       mui-responsive {
