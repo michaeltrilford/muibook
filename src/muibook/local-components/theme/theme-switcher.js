@@ -22,8 +22,7 @@ class ThemeSwitcher extends HTMLElement {
         },
         {
           rel: "stylesheet",
-          href:
-            "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap",
         },
       ],
       modern: [
@@ -35,8 +34,7 @@ class ThemeSwitcher extends HTMLElement {
         },
         {
           rel: "stylesheet",
-          href:
-            "https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap",
         },
       ],
     };
@@ -63,6 +61,9 @@ class ThemeSwitcher extends HTMLElement {
           clip: rect(0 0 0 0);
           white-space: nowrap;
           border: 0;
+        }
+        mui-select::part(background) {
+          background-color: var(--app-navbar-surface-100);
         }
       </style>
       <mui-grid class="grid" col="1fr" space="var(--space-100)">
@@ -128,9 +129,7 @@ class ThemeSwitcher extends HTMLElement {
     const links = this.brandFontLinks[brand];
     if (!links) return;
 
-    const alreadyInjected = links.some((link) =>
-      document.head.querySelector(`link[href="${link.href}"]`)
-    );
+    const alreadyInjected = links.some((link) => document.head.querySelector(`link[href="${link.href}"]`));
     if (alreadyInjected) return;
 
     links.forEach(({ rel, href, crossOrigin }) => {
