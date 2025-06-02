@@ -105,10 +105,15 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   <app-container />
 `;
 
-self.addEventListener("install", () => {
-  console.log("Service worker installed.");
-});
-
-self.addEventListener("activate", () => {
-  console.log("Service worker activated.");
-});
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration: ServiceWorkerRegistration) => {
+        console.log("ServiceWorker registered with scope:", registration.scope);
+      })
+      .catch((error: Error) => {
+        console.error("ServiceWorker registration failed:", error);
+      });
+  });
+}
