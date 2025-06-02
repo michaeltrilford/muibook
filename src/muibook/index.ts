@@ -106,7 +106,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
 `;
 
 const surfaceColor = getComputedStyle(document.documentElement)
-  .getPropertyValue("--surface")
+  .getPropertyValue("--app-container-surface")
   .trim();
 setStatusBarColor(surfaceColor);
 
