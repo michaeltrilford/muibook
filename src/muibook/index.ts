@@ -105,10 +105,13 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   <app-container />
 `;
 
-const surfaceColor = getComputedStyle(document.documentElement)
-  .getPropertyValue("--app-container-surface")
-  .trim();
-setStatusBarColor(surfaceColor);
+function setStatusBarColorFromCSSVar(cssVarName: string) {
+  const color = getComputedStyle(document.documentElement)
+    .getPropertyValue(cssVarName)
+    .trim();
+
+  setStatusBarColor(color);
+}
 
 function setStatusBarColor(color: string) {
   let meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null;
@@ -121,3 +124,16 @@ function setStatusBarColor(color: string) {
 
   meta.content = color;
 }
+
+// Initial set
+setStatusBarColorFromCSSVar("--app-container-surface");
+
+// Watch for data-theme changes
+const observer = new MutationObserver(() => {
+  setStatusBarColorFromCSSVar("--app-container-surface");
+});
+
+observer.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ["data-theme"],
+});
