@@ -1,0 +1,20 @@
+{
+  "short_name": "Muibook",
+  "name": "MUI is an experimental UI built with native Web Components using Vanilla JS, HTML, and scoped CSS",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "/favicon.ico"
+    },
+    {
+      "src": "/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "var(--surface)",
+  "background_color": "var(--surface)"
+}
