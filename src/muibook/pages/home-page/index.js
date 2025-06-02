@@ -135,8 +135,6 @@ class HomePage extends HTMLElement {
                 ${intro}
               </mui-body> 
               <mui-link 
-                class="github-link" 
-                target="_blank" 
                 href="/#/create-mui-app"
                 variant="primary" 
                 rounded>
@@ -158,8 +156,6 @@ class HomePage extends HTMLElement {
                 </mui-body> 
               </mui-v-stack>
               <mui-link 
-                class="github-link" 
-                target="_blank" 
                 href="/#/create-mui-app" 
                 variant="primary">
                 Get Started
