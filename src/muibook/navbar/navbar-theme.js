@@ -15,7 +15,7 @@ class appNavbarTheme extends HTMLElement {
         background: var(--app-navbar-surface);
         z-index: 3;
         position: sticky;
-        top: 0;
+        top: env(safe-area-inset-top);
       }
 
       mui-grid::part(align-items) {
