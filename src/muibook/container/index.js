@@ -10,6 +10,8 @@ export class AppContainer extends HTMLElement {
     style.textContent = /*css*/ `
       :host {
         display: grid;
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-top);
       }
 
       :host(.focused) {

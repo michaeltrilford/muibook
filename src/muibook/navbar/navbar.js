@@ -51,7 +51,7 @@ class appNavbar extends HTMLElement {
       #mobile[open] {
         opacity: 1;
         transform: translate(0, 0);
-        transition: transform 200ms ease-in, width 200ms ease-in, opacity 200ms ease-in; 
+        transition: transform 200ms ease-in, width 200ms ease-in, opacity 200ms ease-in;
       }
 
       mui-link::part(color),
