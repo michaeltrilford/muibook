@@ -20,6 +20,7 @@ class appNavbarToggle extends HTMLElement {
         z-index: 2;
         box-sizing: border-box;
         align-items: center;
+        padding-bottom: calc(var(--space-400) + env(safe-area-inset-bottom));
 
         @media (min-width: 961px) {
           display: none;
