@@ -4,16 +4,7 @@ class muiSelect extends HTMLElement {
   partMap = "";
 
   static get observedAttributes() {
-    return [
-      "name",
-      "value",
-      "id",
-      "label",
-      "options",
-      "disabled",
-      "hide-label",
-      "variant",
-    ];
+    return ["name", "value", "id", "label", "options", "disabled", "hide-label", "variant"];
   }
 
   constructor() {
@@ -31,9 +22,7 @@ class muiSelect extends HTMLElement {
   attributeChangedCallback(name: string, newValue: string | null) {
     if (!this.shadowRoot) return;
 
-    const selectEl = /** @type {HTMLSelectElement | null} */ this.shadowRoot.querySelector(
-      "select"
-    );
+    const selectEl = /** @type {HTMLSelectElement | null} */ this.shadowRoot.querySelector("select");
 
     if (name === "value" && selectEl) {
       selectEl.value = newValue || "";
@@ -124,12 +113,7 @@ class muiSelect extends HTMLElement {
     }
 
     const optionsHTML = options
-      .map(
-        (opt) =>
-          `<option value="${opt.value}" ${
-            opt.value === value ? "selected" : ""
-          }>${opt.label}</option>`
-      )
+      .map((opt) => `<option value="${opt.value}" ${opt.value === value ? "selected" : ""}>${opt.label}</option>`)
       .join("");
 
     const html = /*html*/ `
@@ -137,6 +121,7 @@ class muiSelect extends HTMLElement {
         :host {
           display: inline-block;
           width: 100%;
+          position: relative;
         }
         label {
           font-size: var(--text-font-size);
@@ -158,10 +143,6 @@ class muiSelect extends HTMLElement {
           width: 100%;
           box-sizing: border-box;
           appearance: none;
-          background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path fill="%23666" d="M0 0l5 5 5-5z"/></svg>');
-          background-repeat: no-repeat;
-          background-position: right var(--space-300) center;
-          background-size: 10px 5px;
         }
         select:hover {
           border-color: var(--form-default-border-color-hover);
@@ -215,6 +196,18 @@ class muiSelect extends HTMLElement {
           white-space: nowrap;
           border: 0;
         }
+        .chevron {
+          position: absolute; 
+          right: var(--space-300);
+          top: 50%;
+          transform: translateY(-50%);
+          padding: var(--space-300);
+          padding-left: var(--space-000);
+          padding-right: var(--space-000);
+          background: var(--input-background);
+          box-shadow: -4px 0 4px 0 var(--input-background);
+          pointer-events: none;
+        }
 
         /* ========================================================================== */
         /* STYLE ADJUSTMENTS WHEN SELECT IS SLOTTED WITHIN INPUT                      */
@@ -251,19 +244,13 @@ class muiSelect extends HTMLElement {
         /* ========================================================================== */
 
       </style>
-      ${
-        label
-          ? /*html*/ `<label for="${id}" class="${
-              hideLabel ? "vh" : ""
-            }">${label}</label>`
-          : ""
-      }
-    <select class="${variantClass}" part="${this.partMap ||
-      ""}" name="${name}" id="${id}" ${ariaLabelAttr} ${
+      ${label ? /*html*/ `<label for="${id}" class="${hideLabel ? "vh" : ""}">${label}</label>` : ""}
+    <select class="${variantClass}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} ${
       disabled ? "disabled" : ""
     } >
         ${optionsHTML}
       </select>
+      <mui-icon-down-chevron class="chevron" size="x-small"></mui-icon-down-chevron>
     `;
 
     this.shadowRoot.innerHTML = html;

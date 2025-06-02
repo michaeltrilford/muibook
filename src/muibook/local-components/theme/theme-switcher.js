@@ -62,9 +62,10 @@ class ThemeSwitcher extends HTMLElement {
           white-space: nowrap;
           border: 0;
         }
-        mui-select::part(background) {
-          background-color: var(--app-navbar-surface-100);
+        mui-select {
+          --input-background: var(--app-navbar-surface-100);
         }
+        
       </style>
       <mui-grid class="grid" col="1fr" space="var(--space-100)">
         <mui-select

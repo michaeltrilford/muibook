@@ -102,9 +102,5 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   <app-navbar>
     <app-navbar-skip slot="skip"></app-navbar-skip>
   </app-navbar>
-  <app-container>
-    <h1>Welcome to Muibook</h1>
-    <mui-icon-add></mui-icon-add>
-  </app-container>
-
+  <app-container />
 `;
