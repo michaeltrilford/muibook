@@ -137,7 +137,7 @@ class HomePage extends HTMLElement {
               <mui-link 
                 class="github-link" 
                 target="_blank" 
-                href="https://github.com/michaeltrilford/create-mui-app"
+                href="/#/create-mui-app"
                 variant="primary" 
                 rounded>
                 Get Started
@@ -160,7 +160,7 @@ class HomePage extends HTMLElement {
               <mui-link 
                 class="github-link" 
                 target="_blank" 
-                href="https://github.com/michaeltrilford/create-mui-app" 
+                href="/#/create-mui-app" 
                 variant="primary">
                 Get Started
               </mui-link>
