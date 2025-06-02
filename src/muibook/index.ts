@@ -110,19 +110,6 @@ const surfaceColor = getComputedStyle(document.documentElement)
   .trim();
 setStatusBarColor(surfaceColor);
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/service-worker.js")
-      .then((registration: ServiceWorkerRegistration) => {
-        console.log("ServiceWorker registered with scope:", registration.scope);
-      })
-      .catch((error: Error) => {
-        console.error("ServiceWorker registration failed:", error);
-      });
-  });
-}
-
 function setStatusBarColor(color: string) {
   let meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null;
 
