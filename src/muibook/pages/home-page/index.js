@@ -131,7 +131,7 @@ class HomePage extends HTMLElement {
               <mui-logo color="var(--app-logo-color)"></mui-logo>
             </div>
             <mui-grid class="introduction" col="1fr auto" space="var(--space-600)">
-              <mui-body size="medium" weight="bold" style="max-width: 65ch;">
+              <mui-body size="medium" weight="bold" style="max-width: 72ch;">
                 ${intro}
               </mui-body> 
               <mui-link 
