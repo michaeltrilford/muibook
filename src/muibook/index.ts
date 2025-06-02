@@ -105,6 +105,11 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   <app-container />
 `;
 
+const surfaceColor = getComputedStyle(document.documentElement)
+  .getPropertyValue("--surface")
+  .trim();
+setStatusBarColor(surfaceColor);
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
@@ -116,4 +121,16 @@ if ("serviceWorker" in navigator) {
         console.error("ServiceWorker registration failed:", error);
       });
   });
+}
+
+function setStatusBarColor(color: string) {
+  let meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null;
+
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.name = "theme-color";
+    document.head.appendChild(meta);
+  }
+
+  meta.content = color;
 }
