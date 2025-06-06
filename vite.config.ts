@@ -6,7 +6,10 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
+        // FALLBACK ENTRY POINT
+        index: path.resolve(__dirname, "src/index.ts"),
         // ACCORDION
+        "mui-accordion": path.resolve(__dirname, "src/components/mui-accordion"),
         "mui-accordion/group": path.resolve(__dirname, "src/components/mui-accordion/group"),
         "mui-accordion/inline": path.resolve(__dirname, "src/components/mui-accordion/inline"),
         "mui-accordion/block": path.resolve(__dirname, "src/components/mui-accordion/block"),
@@ -23,11 +26,13 @@ export default defineConfig({
         // BUTTON GROUP
         "mui-button-group": path.resolve(__dirname, "src/components/mui-button-group"),
         // CARD
+        "mui-card": path.resolve(__dirname, "src/components/mui-card"),
         "mui-card/card": path.resolve(__dirname, "src/components/mui-card/card"),
         "mui-card/header": path.resolve(__dirname, "src/components/mui-card/header"),
         "mui-card/body": path.resolve(__dirname, "src/components/mui-card/body"),
         "mui-card/footer": path.resolve(__dirname, "src/components/mui-card/footer"),
         // CAROUSEL
+        "mui-carousel": path.resolve(__dirname, "src/components/mui-carousel"),
         "mui-carousel/controller": path.resolve(__dirname, "src/components/mui-carousel/controller"),
         "mui-carousel/panel": path.resolve(__dirname, "src/components/mui-carousel/panel"),
         // CODE
@@ -38,6 +43,7 @@ export default defineConfig({
         "mui-grid": path.resolve(__dirname, "src/components/mui-grid"),
         "mui-heading": path.resolve(__dirname, "src/components/mui-heading"),
         // ICONS
+        "mui-icons": path.resolve(__dirname, "src/components/mui-icons"),
         "mui-icons/accessibility": path.resolve(__dirname, "src/components/mui-icons/accessibility.ts"),
         "mui-icons/attention": path.resolve(__dirname, "src/components/mui-icons/attention.ts"),
         "mui-icons/add": path.resolve(__dirname, "src/components/mui-icons/add.ts"),
@@ -66,6 +72,7 @@ export default defineConfig({
         "mui-input": path.resolve(__dirname, "src/components/mui-input"),
         "mui-link": path.resolve(__dirname, "src/components/mui-link"),
         // LIST
+        "mui-list": path.resolve(__dirname, "src/components/mui-list"),
         "mui-list/item": path.resolve(__dirname, "src/components/mui-list/item"),
         "mui-list/list": path.resolve(__dirname, "src/components/mui-list/list"),
         // Message
@@ -83,16 +90,19 @@ export default defineConfig({
         // SMART CARD
         "mui-smart-card": path.resolve(__dirname, "src/components/mui-smart-card"),
         // STACK
+        "mui-stack": path.resolve(__dirname, "src/components/mui-stack"),
         "mui-stack/hstack": path.resolve(__dirname, "src/components/mui-stack/hstack"),
         "mui-stack/vstack": path.resolve(__dirname, "src/components/mui-stack/vstack"),
         // SWITCH
         "mui-switch": path.resolve(__dirname, "src/components/mui-switch"),
         // TABLE
+        "mui-table": path.resolve(__dirname, "src/components/mui-table"),
         "mui-table/table": path.resolve(__dirname, "src/components/mui-table/table"),
         "mui-table/cell": path.resolve(__dirname, "src/components/mui-table/cell"),
         "mui-table/row": path.resolve(__dirname, "src/components/mui-table/row"),
         "mui-table/row-group": path.resolve(__dirname, "src/components/mui-table/row-group"),
         // TAB BAR
+        "mui-tabs": path.resolve(__dirname, "src/components/mui-tabs"),
         "mui-tabs/controller": path.resolve(__dirname, "src/components/mui-tabs/controller"),
         "mui-tabs/item": path.resolve(__dirname, "src/components/mui-tabs/item"),
         "mui-tabs/panel": path.resolve(__dirname, "src/components/mui-tabs/panel"),

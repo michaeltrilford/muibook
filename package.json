@@ -1,8 +1,319 @@
 {
-  "name": "mui-vite",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "muibook",
+  "version": "1.0.0",
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    "./mui-utils": {
+      "import": "./dist/esm/mui-utils/part-map/index.js",
+      "types": "./dist/types/utils/mui-utils/part-map/index.d.ts"
+    },
+    "./mui-accordion": {
+      "import": "./dist/esm/mui-accordion/index.js",
+      "types": "./dist/types/components/mui-accordion/index.d.ts"
+    },
+    "./mui-accordion/block": {
+      "import": "./dist/esm/mui-accordion/block/index.js",
+      "types": "./dist/types/components/mui-accordion/block/index.d.ts"
+    },
+    "./mui-accordion/group": {
+      "import": "./dist/esm/mui-accordion/group/index.js",
+      "types": "./dist/types/components/mui-accordion/group/index.d.ts"
+    },
+    "./mui-accordion/inline": {
+      "import": "./dist/esm/mui-accordion/inline/index.js",
+      "types": "./dist/types/components/mui-accordion/inline/index.d.ts"
+    },
+    "./mui-addon": {
+      "import": "./dist/esm/mui-addon/index.js",
+      "types": "./dist/types/components/mui-addon/index.d.ts"
+    },
+    "./mui-alert": {
+      "import": "./dist/esm/mui-alert/index.js",
+      "types": "./dist/types/components/mui-alert/index.d.ts"
+    },
+    "./mui-badge": {
+      "import": "./dist/esm/mui-badge/index.js",
+      "types": "./dist/types/components/mui-badge/index.d.ts"
+    },
+    "./mui-body": {
+      "import": "./dist/esm/mui-body/index.js",
+      "types": "./dist/types/components/mui-body/index.d.ts"
+    },
+    "./mui-button": {
+      "import": "./dist/esm/mui-button/index.js",
+      "types": "./dist/types/components/mui-button/index.d.ts"
+    },
+    "./mui-button-group": {
+      "import": "./dist/esm/mui-button-group/index.js",
+      "types": "./dist/types/components/mui-button-group/index.d.ts"
+    },
+    "./mui-card": {
+      "import": "./dist/esm/mui-card/index.js",
+      "types": "./dist/types/components/mui-card/index.d.ts"
+    },
+    "./mui-card/body": {
+      "import": "./dist/esm/mui-card/body/index.js",
+      "types": "./dist/types/components/mui-card/body/index.d.ts"
+    },
+    "./mui-card/card": {
+      "import": "./dist/esm/mui-card/card/index.js",
+      "types": "./dist/types/components/mui-card/card/index.d.ts"
+    },
+    "./mui-card/footer": {
+      "import": "./dist/esm/mui-card/footer/index.js",
+      "types": "./dist/types/components/mui-card/footer/index.d.ts"
+    },
+    "./mui-card/header": {
+      "import": "./dist/esm/mui-card/header/index.js",
+      "types": "./dist/types/components/mui-card/header/index.d.ts"
+    },
+    "./mui-carousel": {
+      "import": "./dist/esm/mui-carousel/index.js",
+      "types": "./dist/types/components/mui-carousel/index.d.ts"
+    },
+    "./mui-carousel/controller": {
+      "import": "./dist/esm/mui-carousel/controller/index.js",
+      "types": "./dist/types/components/mui-carousel/controller/index.d.ts"
+    },
+    "./mui-carousel/panel": {
+      "import": "./dist/esm/mui-carousel/panel/index.js",
+      "types": "./dist/types/components/mui-carousel/panel/index.d.ts"
+    },
+    "./mui-code": {
+      "import": "./dist/esm/mui-code/index.js",
+      "types": "./dist/types/components/mui-code/index.d.ts"
+    },
+    "./mui-container": {
+      "import": "./dist/esm/mui-container/index.js",
+      "types": "./dist/types/components/mui-container/index.d.ts"
+    },
+    "./mui-field": {
+      "import": "./dist/esm/mui-field/index.js",
+      "types": "./dist/types/components/mui-field/index.d.ts"
+    },
+    "./mui-file-upload": {
+      "import": "./dist/esm/mui-file-upload/index.js",
+      "types": "./dist/types/components/mui-file-upload/index.d.ts"
+    },
+    "./mui-grid": {
+      "import": "./dist/esm/mui-grid/index.js",
+      "types": "./dist/types/components/mui-grid/index.d.ts"
+    },
+    "./mui-heading": {
+      "import": "./dist/esm/mui-heading/index.js",
+      "types": "./dist/types/components/mui-heading/index.d.ts"
+    },
+    "./mui-icons": {
+      "import": "./dist/esm/mui-icons/index.js",
+      "types": "./dist/types/components/mui-icons/index.d.ts"
+    },
+    "./mui-icons/accessibility": {
+      "import": "./dist/esm/mui-icons/accessibility/index.js",
+      "types": "./dist/types/components/mui-icons/accessibility/index.d.ts"
+    },
+    "./mui-icons/add": {
+      "import": "./dist/esm/mui-icons/add/index.js",
+      "types": "./dist/types/components/mui-icons/add/index.d.ts"
+    },
+    "./mui-icons/attention": {
+      "import": "./dist/esm/mui-icons/attention/index.js",
+      "types": "./dist/types/components/mui-icons/attention/index.d.ts"
+    },
+    "./mui-icons/check": {
+      "import": "./dist/esm/mui-icons/check/index.js",
+      "types": "./dist/types/components/mui-icons/check/index.d.ts"
+    },
+    "./mui-icons/close": {
+      "import": "./dist/esm/mui-icons/close/index.js",
+      "types": "./dist/types/components/mui-icons/close/index.d.ts"
+    },
+    "./mui-icons/down-chevron": {
+      "import": "./dist/esm/mui-icons/down-chevron/index.js",
+      "types": "./dist/types/components/mui-icons/down-chevron/index.d.ts"
+    },
+    "./mui-icons/globe": {
+      "import": "./dist/esm/mui-icons/globe/index.js",
+      "types": "./dist/types/components/mui-icons/globe/index.d.ts"
+    },
+    "./mui-icons/grid": {
+      "import": "./dist/esm/mui-icons/grid/index.js",
+      "types": "./dist/types/components/mui-icons/grid/index.d.ts"
+    },
+    "./mui-icons/info": {
+      "import": "./dist/esm/mui-icons/info/index.js",
+      "types": "./dist/types/components/mui-icons/info/index.d.ts"
+    },
+    "./mui-icons/left-arrow": {
+      "import": "./dist/esm/mui-icons/left-arrow/index.js",
+      "types": "./dist/types/components/mui-icons/left-arrow/index.d.ts"
+    },
+    "./mui-icons/left-chevron": {
+      "import": "./dist/esm/mui-icons/left-chevron/index.js",
+      "types": "./dist/types/components/mui-icons/left-chevron/index.d.ts"
+    },
+    "./mui-icons/menu": {
+      "import": "./dist/esm/mui-icons/menu/index.js",
+      "types": "./dist/types/components/mui-icons/menu/index.d.ts"
+    },
+    "./mui-icons/message": {
+      "import": "./dist/esm/mui-icons/message/index.js",
+      "types": "./dist/types/components/mui-icons/message/index.d.ts"
+    },
+    "./mui-icons/moon": {
+      "import": "./dist/esm/mui-icons/moon/index.js",
+      "types": "./dist/types/components/mui-icons/moon/index.d.ts"
+    },
+    "./mui-icons/notification": {
+      "import": "./dist/esm/mui-icons/notification/index.js",
+      "types": "./dist/types/components/mui-icons/notification/index.d.ts"
+    },
+    "./mui-icons/right-chevron": {
+      "import": "./dist/esm/mui-icons/right-chevron/index.js",
+      "types": "./dist/types/components/mui-icons/right-chevron/index.d.ts"
+    },
+    "./mui-icons/stop": {
+      "import": "./dist/esm/mui-icons/stop/index.js",
+      "types": "./dist/types/components/mui-icons/stop/index.d.ts"
+    },
+    "./mui-icons/subtract": {
+      "import": "./dist/esm/mui-icons/subtract/index.js",
+      "types": "./dist/types/components/mui-icons/subtract/index.d.ts"
+    },
+    "./mui-icons/sun": {
+      "import": "./dist/esm/mui-icons/sun/index.js",
+      "types": "./dist/types/components/mui-icons/sun/index.d.ts"
+    },
+    "./mui-icons/toggle": {
+      "import": "./dist/esm/mui-icons/toggle/index.js",
+      "types": "./dist/types/components/mui-icons/toggle/index.d.ts"
+    },
+    "./mui-icons/up-arrow": {
+      "import": "./dist/esm/mui-icons/up-arrow/index.js",
+      "types": "./dist/types/components/mui-icons/up-arrow/index.d.ts"
+    },
+    "./mui-icons/up-chevron": {
+      "import": "./dist/esm/mui-icons/up-chevron/index.js",
+      "types": "./dist/types/components/mui-icons/up-chevron/index.d.ts"
+    },
+    "./mui-icons/warning": {
+      "import": "./dist/esm/mui-icons/warning/index.js",
+      "types": "./dist/types/components/mui-icons/warning/index.d.ts"
+    },
+    "./mui-image": {
+      "import": "./dist/esm/mui-image/index.js",
+      "types": "./dist/types/components/mui-image/index.d.ts"
+    },
+    "./mui-input": {
+      "import": "./dist/esm/mui-input/index.js",
+      "types": "./dist/types/components/mui-input/index.d.ts"
+    },
+    "./mui-link": {
+      "import": "./dist/esm/mui-link/index.js",
+      "types": "./dist/types/components/mui-link/index.d.ts"
+    },
+    "./mui-list": {
+      "import": "./dist/esm/mui-list/index.js",
+      "types": "./dist/types/components/mui-list/index.d.ts"
+    },
+    "./mui-list/item": {
+      "import": "./dist/esm/mui-list/item/index.js",
+      "types": "./dist/types/components/mui-list/item/index.d.ts"
+    },
+    "./mui-list/list": {
+      "import": "./dist/esm/mui-list/list/index.js",
+      "types": "./dist/types/components/mui-list/list/index.d.ts"
+    },
+    "./mui-message": {
+      "import": "./dist/esm/mui-message/index.js",
+      "types": "./dist/types/components/mui-message/index.d.ts"
+    },
+    "./mui-quote": {
+      "import": "./dist/esm/mui-quote/index.js",
+      "types": "./dist/types/components/mui-quote/index.d.ts"
+    },
+    "./mui-responsive": {
+      "import": "./dist/esm/mui-responsive/index.js",
+      "types": "./dist/types/components/mui-responsive/index.d.ts"
+    },
+    "./mui-rule": {
+      "import": "./dist/esm/mui-rule/index.js",
+      "types": "./dist/types/components/mui-rule/index.d.ts"
+    },
+    "./mui-select": {
+      "import": "./dist/esm/mui-select/index.js",
+      "types": "./dist/types/components/mui-select/index.d.ts"
+    },
+    "./mui-slat": {
+      "import": "./dist/esm/mui-slat/index.js",
+      "types": "./dist/types/components/mui-slat/index.d.ts"
+    },
+    "./mui-smart-card": {
+      "import": "./dist/esm/mui-smart-card/index.js",
+      "types": "./dist/types/components/mui-smart-card/index.d.ts"
+    },
+    "./mui-stack": {
+      "import": "./dist/esm/mui-stack/index.js",
+      "types": "./dist/types/components/mui-stack/index.d.ts"
+    },
+    "./mui-stack/hstack": {
+      "import": "./dist/esm/mui-stack/hstack/index.js",
+      "types": "./dist/types/components/mui-stack/hstack/index.d.ts"
+    },
+    "./mui-stack/vstack": {
+      "import": "./dist/esm/mui-stack/hvtack/index.js",
+      "types": "./dist/types/components/mui-stack/vstack/index.d.ts"
+    },
+    "./mui-switch": {
+      "import": "./dist/esm/mui-switch/index.js",
+      "types": "./dist/types/components/mui-switch/index.d.ts"
+    },
+    "./mui-table": {
+      "import": "./dist/esm/mui-table/index.js",
+      "types": "./dist/types/components/mui-table/index.d.ts"
+    },
+    "./mui-table/cell": {
+      "import": "./dist/esm/mui-table/cell/index.js",
+      "types": "./dist/types/components/mui-table/cell/index.d.ts"
+    },
+    "./mui-table/row": {
+      "import": "./dist/esm/mui-table/row/index.js",
+      "types": "./dist/types/components/mui-table/row/index.d.ts"
+    },
+    "./mui-table/row-group": {
+      "import": "./dist/esm/mui-table/row-group/index.js",
+      "types": "./dist/types/components/mui-table/row-group/index.d.ts"
+    },
+    "./mui-table/table": {
+      "import": "./dist/esm/mui-table/table/index.js",
+      "types": "./dist/types/components/mui-table/table/index.d.ts"
+    },
+    "./mui-tabs": {
+      "import": "./dist/esm/mui-tabs/index.js",
+      "types": "./dist/types/components/mui-tabs/index.d.ts"
+    },
+    "./mui-tabs/controller": {
+      "import": "./dist/esm/mui-tabs/controller/index.js",
+      "types": "./dist/types/components/mui-tabs/controller/index.d.ts"
+    },
+    "./mui-tabs/item": {
+      "import": "./dist/esm/mui-tabs/item/index.js",
+      "types": "./dist/types/components/mui-tabs/item/index.d.ts"
+    },
+    "./mui-tabs/panel": {
+      "import": "./dist/esm/mui-tabs/panel/index.js",
+      "types": "./dist/types/components/mui-tabs/panel/index.d.ts"
+    },
+    "./mui-tabs/tab-bar": {
+      "import": "./dist/esm/mui-tabs/tab-bar/index.js",
+      "types": "./dist/types/components/mui-tabs/tab-bar/index.d.ts"
+    },
+    ".": {
+      "import": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
