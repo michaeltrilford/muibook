@@ -1,5 +1,4 @@
-/* Mui Quote */
-class muiQuote extends HTMLElement {
+class MuiQuote extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -25,4 +24,4 @@ class muiQuote extends HTMLElement {
   }
 }
 
-customElements.define("mui-quote", muiQuote);
+customElements.define("mui-quote", MuiQuote);

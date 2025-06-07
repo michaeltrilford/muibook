@@ -1,4 +1,4 @@
-class CarouselPanel extends HTMLElement {
+class MuiCarouselPanel extends HTMLElement {
   static get observedAttributes() {
     return ["item"];
   }
@@ -30,13 +30,9 @@ class CarouselPanel extends HTMLElement {
     }
   }
 
-  attributeChangedCallback(
-    _name: string,
-    _oldValue: string | null,
-    _newValue: string | null
-  ) {
+  attributeChangedCallback(_name: string, _oldValue: string | null, _newValue: string | null) {
     // No-op for now
   }
 }
 
-customElements.define("mui-carousel-panel", CarouselPanel);
+customElements.define("mui-carousel-panel", MuiCarouselPanel);

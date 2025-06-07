@@ -1,16 +1,6 @@
-class muiInput extends HTMLElement {
+class MuiInput extends HTMLElement {
   static get observedAttributes() {
-    return [
-      "type",
-      "name",
-      "value",
-      "placeholder",
-      "id",
-      "label",
-      "disabled",
-      "hide-label",
-      "variant",
-    ];
+    return ["type", "name", "value", "placeholder", "id", "label", "disabled", "hide-label", "variant"];
   }
 
   constructor() {
@@ -23,14 +13,8 @@ class muiInput extends HTMLElement {
     this.setupListener();
   }
 
-  attributeChangedCallback(
-    name: string,
-    _oldValue: string | null,
-    newValue: string | null
-  ): void {
-    const inputEl = this.shadowRoot?.querySelector(
-      "input"
-    ) as HTMLInputElement | null;
+  attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null): void {
+    const inputEl = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
     if (!inputEl) return;
 
     if (name === "value") {
@@ -45,21 +29,14 @@ class muiInput extends HTMLElement {
       }
     }
 
-    if (
-      name === "type" ||
-      name === "placeholder" ||
-      name === "label" ||
-      name === "hide-label"
-    ) {
+    if (name === "type" || name === "placeholder" || name === "label" || name === "hide-label") {
       this.render();
       this.setupListener();
     }
   }
 
   setupListener(): void {
-    const oldInputEl = this.shadowRoot?.querySelector(
-      "input"
-    ) as HTMLInputElement | null;
+    const oldInputEl = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
     if (!oldInputEl) return;
 
     const newInputEl = oldInputEl.cloneNode(true) as HTMLInputElement;
@@ -89,17 +66,7 @@ class muiInput extends HTMLElement {
   }
 
   render() {
-    const allowedTypes = [
-      "text",
-      "password",
-      "email",
-      "number",
-      "search",
-      "tel",
-      "url",
-      "date",
-      "time",
-    ];
+    const allowedTypes = ["text", "password", "email", "number", "search", "tel", "url", "date", "time"];
 
     const rawType = this.getAttribute("type") || "text";
     const type = allowedTypes.includes(rawType) ? rawType : "text";
@@ -122,13 +89,7 @@ class muiInput extends HTMLElement {
     // ADD-ON
     const hasBefore = this.querySelector('[slot="before"]') !== null;
     const hasAfter = this.querySelector('[slot="after"]') !== null;
-    const inputClasses = [
-      variantClass,
-      hasBefore ? "before" : "",
-      hasAfter ? "after" : "",
-    ]
-      .filter(Boolean)
-      .join(" ");
+    const inputClasses = [variantClass, hasBefore ? "before" : "", hasAfter ? "after" : ""].filter(Boolean).join(" ");
 
     if (hideLabel && !label) {
       console.warn(
@@ -279,13 +240,7 @@ class muiInput extends HTMLElement {
         
 
       </style>
-      ${
-        label
-          ? `<label for="${id}" class="${
-              hideLabel ? "vh" : ""
-            }">${label}</label>`
-          : ""
-      }
+      ${label ? `<label for="${id}" class="${hideLabel ? "vh" : ""}">${label}</label>` : ""}
     <div class="input-wrapper">
       <slot name="before"></slot>
       <input
@@ -308,4 +263,4 @@ class muiInput extends HTMLElement {
   }
 }
 
-customElements.define("mui-input", muiInput);
+customElements.define("mui-input", MuiInput);

@@ -1,7 +1,7 @@
 import { getPartMap } from "../../utils/part-map";
 
 /* Mui Button */
-class muiButton extends HTMLElement {
+class MuiButton extends HTMLElement {
   static get observedAttributes() {
     return ["onclick", "type", "aria-label", "disabled", "variant"];
   }
@@ -279,6 +279,30 @@ class muiButton extends HTMLElement {
     `;
 
     this.shadowRoot.innerHTML = html;
+
+    // Wait for slot content to be assigned
+    await customElements.whenDefined("mui-button"); // optional, extra safety
+
+    requestAnimationFrame(() => {
+      const slot = this.shadowRoot?.querySelector("slot");
+      const assignedNodes = slot?.assignedNodes({ flatten: true }) || [];
+
+      const iconOnly = assignedNodes.every((node) => {
+        // check if it's an svg or an element with .mui-icon
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          const el = node as HTMLElement;
+          return el.tagName.toLowerCase() === "svg" || el.classList.contains("mui-icon");
+        }
+        // Ignore text nodes (e.g. whitespace)
+        return node.nodeType === Node.TEXT_NODE && !node.textContent?.trim();
+      });
+
+      if (iconOnly) {
+        this.setAttribute("icon-only", "");
+      } else {
+        this.removeAttribute("icon-only");
+      }
+    });
   }
 
   waitForPartMap(): Promise<void> {
@@ -296,4 +320,4 @@ class muiButton extends HTMLElement {
   }
 }
 
-customElements.define("mui-button", muiButton);
+customElements.define("mui-button", MuiButton);

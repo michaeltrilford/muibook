@@ -1,4 +1,4 @@
-class TabItem extends HTMLElement {
+class MuiTabItem extends HTMLElement {
   private iconEl?: HTMLElement;
   constructor() {
     super();
@@ -9,11 +9,7 @@ class TabItem extends HTMLElement {
     return ["active"];
   }
 
-  attributeChangedCallback(
-    name: string,
-    _oldValue: string | null,
-    _newValue: string | null
-  ): void {
+  attributeChangedCallback(name: string, _oldValue: string | null, _newValue: string | null): void {
     if (name === "active") {
       this.updateActiveState();
     }
@@ -89,12 +85,9 @@ class TabItem extends HTMLElement {
 
     if (this.iconEl) {
       // Pass the CSS variable itself, not computed values
-      this.iconEl.setAttribute(
-        "color",
-        isActive ? "var(--tab-icon-active)" : "var(--tab-icon)"
-      );
+      this.iconEl.setAttribute("color", isActive ? "var(--tab-icon-active)" : "var(--tab-icon)");
     }
   }
 }
 
-customElements.define("mui-tab-item", TabItem);
+customElements.define("mui-tab-item", MuiTabItem);

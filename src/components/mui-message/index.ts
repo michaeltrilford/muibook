@@ -51,7 +51,7 @@ const iconTags: Record<MessageVariant, string> = {
 };
 
 /* Mui Message */
-class muiMessage extends HTMLElement {
+class MuiMessage extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -119,4 +119,4 @@ class muiMessage extends HTMLElement {
   }
 }
 
-customElements.define("mui-message", muiMessage);
+customElements.define("mui-message", MuiMessage);

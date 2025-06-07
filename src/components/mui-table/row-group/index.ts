@@ -1,5 +1,4 @@
-/* Mui Rule */
-class muiRowGroup extends HTMLElement {
+class MuiRowGroup extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -26,4 +25,4 @@ class muiRowGroup extends HTMLElement {
   }
 }
 
-customElements.define("mui-row-group", muiRowGroup);
+customElements.define("mui-row-group", MuiRowGroup);

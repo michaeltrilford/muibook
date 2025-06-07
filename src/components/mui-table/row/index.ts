@@ -1,5 +1,4 @@
-/* Mui Rule */
-class muiRow extends HTMLElement {
+class MuiRow extends HTMLElement {
   static get observedAttributes() {
     return ["columns"];
   }
@@ -29,4 +28,4 @@ class muiRow extends HTMLElement {
   }
 }
 
-customElements.define("mui-row", muiRow);
+customElements.define("mui-row", MuiRow);

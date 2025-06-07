@@ -1,5 +1,5 @@
 /* Mui Card Header */
-class muiCardHeader extends HTMLElement {
+class MuiCardHeader extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -27,4 +27,4 @@ class muiCardHeader extends HTMLElement {
   }
 }
 
-customElements.define("mui-card-header", muiCardHeader);
+customElements.define("mui-card-header", MuiCardHeader);

@@ -2,7 +2,7 @@ interface AccordionBlockElement extends HTMLElement {
   closeAccordion: () => void;
 }
 
-class muiAccordionGroup extends HTMLElement {
+class MuiAccordionGroup extends HTMLElement {
   private accordions: AccordionBlockElement[];
   constructor() {
     super();
@@ -22,8 +22,7 @@ class muiAccordionGroup extends HTMLElement {
 
       this.accordions = assignedElements.filter(
         (el): el is AccordionBlockElement =>
-          el.tagName === "MUI-ACCORDION-BLOCK" &&
-          typeof (el as any).closeAccordion === "function"
+          el.tagName === "MUI-ACCORDION-BLOCK" && typeof (el as any).closeAccordion === "function"
       );
 
       // Clear existing attributes
@@ -35,10 +34,7 @@ class muiAccordionGroup extends HTMLElement {
       // Add attributes to the first and last accordion blocks
       if (this.accordions.length > 0) {
         this.accordions[0].setAttribute("first-child", "");
-        this.accordions[this.accordions.length - 1].setAttribute(
-          "last-child",
-          ""
-        );
+        this.accordions[this.accordions.length - 1].setAttribute("last-child", "");
       }
 
       // Handle exclusive opening
@@ -57,4 +53,4 @@ class muiAccordionGroup extends HTMLElement {
   }
 }
 
-customElements.define("mui-accordion-group", muiAccordionGroup);
+customElements.define("mui-accordion-group", MuiAccordionGroup);

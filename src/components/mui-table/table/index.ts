@@ -1,5 +1,4 @@
-/* Mui Rule */
-class muiTable extends HTMLElement {
+class MuiTable extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -23,4 +22,4 @@ class muiTable extends HTMLElement {
   }
 }
 
-customElements.define("mui-table", muiTable);
+customElements.define("mui-table", MuiTable);

@@ -1,5 +1,4 @@
-/* Mui Rule */
-class muiSlat extends HTMLElement {
+class MuiSlat extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -24,4 +23,4 @@ class muiSlat extends HTMLElement {
   }
 }
 
-customElements.define("mui-slat", muiSlat);
+customElements.define("mui-slat", MuiSlat);

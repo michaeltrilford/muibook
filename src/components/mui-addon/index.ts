@@ -12,11 +12,7 @@ class MuiAddon extends HTMLElement {
     this.render();
   }
 
-  attributeChangedCallback(
-    name: string,
-    oldVal: string | null,
-    newVal: string | null
-  ): void {
+  attributeChangedCallback(name: string, oldVal: string | null, newVal: string | null): void {
     if (name === "slot" && oldVal !== newVal) {
       this.render();
     }

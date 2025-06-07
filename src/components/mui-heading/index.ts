@@ -1,4 +1,4 @@
-class muiHeading extends HTMLElement {
+class MuiHeading extends HTMLElement {
   static get observedAttributes() {
     return ["size", "level"];
   }
@@ -41,4 +41,4 @@ class muiHeading extends HTMLElement {
   }
 }
 
-customElements.define("mui-heading", muiHeading);
+customElements.define("mui-heading", MuiHeading);

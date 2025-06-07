@@ -1,5 +1,5 @@
 /* Mui List Item */
-class muiListItem extends HTMLElement {
+class MuiListItem extends HTMLElement {
   static get observedAttributes() {
     return ["variant", "size", "weight"];
   }
@@ -77,4 +77,4 @@ class muiListItem extends HTMLElement {
   }
 }
 
-customElements.define("mui-list-item", muiListItem);
+customElements.define("mui-list-item", MuiListItem);

@@ -1,4 +1,4 @@
-class TabPanel extends HTMLElement {
+class MuiTabPanel extends HTMLElement {
   static get observedAttributes(): string[] {
     return ["item"];
   }
@@ -35,13 +35,9 @@ class TabPanel extends HTMLElement {
     }
   }
 
-  attributeChangedCallback(
-    _name: string,
-    _oldValue: string | null,
-    _newValue: string | null
-  ): void {
+  attributeChangedCallback(_name: string, _oldValue: string | null, _newValue: string | null): void {
     // You can expand this if you want to react to item changes
   }
 }
 
-customElements.define("mui-tab-panel", TabPanel);
+customElements.define("mui-tab-panel", MuiTabPanel);

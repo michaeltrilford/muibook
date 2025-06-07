@@ -1,4 +1,4 @@
-class FileUpload extends HTMLElement {
+class MuiFileUpload extends HTMLElement {
   acceptedFileTypes: string;
   currentFileName: string;
   selectedFileName: string | null;
@@ -104,9 +104,7 @@ class FileUpload extends HTMLElement {
     this.wrapper = this.shadowRoot.querySelector(".wrapper") as HTMLDivElement;
     this.label = this.shadowRoot.querySelector(".label") as HTMLSpanElement;
     this.button = this.shadowRoot.querySelector(".button") as HTMLElement;
-    this.input = this.shadowRoot.querySelector(
-      'input[type="file"]'
-    ) as HTMLInputElement;
+    this.input = this.shadowRoot.querySelector('input[type="file"]') as HTMLInputElement;
   }
 
   attachEvents() {
@@ -134,4 +132,4 @@ class FileUpload extends HTMLElement {
   }
 }
 
-customElements.define("mui-file-upload", FileUpload);
+customElements.define("mui-file-upload", MuiFileUpload);

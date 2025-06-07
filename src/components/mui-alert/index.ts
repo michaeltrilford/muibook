@@ -7,7 +7,7 @@ function isVariant(value: string): value is Variant {
   return ["positive", "info", "warning", "attention"].includes(value);
 }
 
-class muiAlert extends HTMLElement {
+class MuiAlert extends HTMLElement {
   static get observedAttributes() {
     return ["variant"];
   }
@@ -139,4 +139,4 @@ class muiAlert extends HTMLElement {
   }
 }
 
-customElements.define("mui-alert", muiAlert);
+customElements.define("mui-alert", MuiAlert);

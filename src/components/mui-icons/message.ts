@@ -1,4 +1,4 @@
-class muiIconMessage extends HTMLElement {
+class MuiIconMessage extends HTMLElement {
   static get observedAttributes() {
     return ["size", "color"];
   }
@@ -12,22 +12,14 @@ class muiIconMessage extends HTMLElement {
     this.render();
   }
 
-  attributeChangedCallback(
-    name: string,
-    oldValue: string | null,
-    newValue: string | null
-  ): void {
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
     if ((name === "size" || name === "color") && oldValue !== newValue) {
       this.render();
     }
   }
 
   render(): void {
-    const size = (this.getAttribute("size") || "small") as
-      | "x-small"
-      | "small"
-      | "medium"
-      | "large";
+    const size = (this.getAttribute("size") || "small") as "x-small" | "small" | "medium" | "large";
     const rawColor = this.getAttribute("color");
 
     // Color map for predefined color options
@@ -37,10 +29,7 @@ class muiIconMessage extends HTMLElement {
     };
 
     // Resolve color based on the provided variant or color attribute
-    const iconColor: string =
-      (rawColor && colorMap[rawColor]) ||
-      rawColor ||
-      "var(--icon-color-default)";
+    const iconColor: string = (rawColor && colorMap[rawColor]) || rawColor || "var(--icon-color-default)";
 
     // Map size to actual values
     const sizeMap: Record<"x-small" | "small" | "medium" | "large", string> = {
@@ -87,4 +76,4 @@ class muiIconMessage extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-message", muiIconMessage);
+customElements.define("mui-icon-message", MuiIconMessage);

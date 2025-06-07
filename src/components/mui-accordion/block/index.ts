@@ -2,7 +2,7 @@ import "../../mui-icons/down-chevron";
 import "../../../components/mui-heading";
 
 /* Mui Accordion */
-class muiAccordionBlock extends HTMLElement {
+class MuiAccordionBlock extends HTMLElement {
   private summaryEl: HTMLElement | null = null;
   private detailEl: HTMLElement | null = null;
   private chevronEl: HTMLElement | null = null;
@@ -221,4 +221,4 @@ class muiAccordionBlock extends HTMLElement {
   }
 }
 
-customElements.define("mui-accordion-block", muiAccordionBlock);
+customElements.define("mui-accordion-block", MuiAccordionBlock);

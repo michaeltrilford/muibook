@@ -1,5 +1,5 @@
 /* Mui Card */
-class muiCard extends HTMLElement {
+class MuiCard extends HTMLElement {
   static get observedAttributes() {
     return ["footer"];
   }
@@ -36,12 +36,8 @@ class muiCard extends HTMLElement {
     if (slot) {
       slot.addEventListener("slotchange", () => {
         const nodes = slot.assignedElements();
-        const hasHeader = nodes.some(
-          (node) => node.tagName?.toLowerCase() === "mui-card-header"
-        );
-        const body = nodes.find(
-          (node) => node.tagName?.toLowerCase() === "mui-card-body"
-        );
+        const hasHeader = nodes.some((node) => node.tagName?.toLowerCase() === "mui-card-header");
+        const body = nodes.find((node) => node.tagName?.toLowerCase() === "mui-card-body");
 
         if (body) {
           if (hasHeader) {
@@ -55,4 +51,4 @@ class muiCard extends HTMLElement {
   }
 }
 
-customElements.define("mui-card", muiCard);
+customElements.define("mui-card", MuiCard);

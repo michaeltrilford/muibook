@@ -1,6 +1,6 @@
 import { getPartMap } from "../../utils/part-map";
 
-class muiSelect extends HTMLElement {
+class MuiSelect extends HTMLElement {
   partMap = "";
 
   static get observedAttributes() {
@@ -270,4 +270,4 @@ class muiSelect extends HTMLElement {
   }
 }
 
-customElements.define("mui-select", muiSelect);
+customElements.define("mui-select", MuiSelect);

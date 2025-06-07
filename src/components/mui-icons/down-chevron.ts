@@ -1,4 +1,4 @@
-class muiIconDownChevron extends HTMLElement {
+class MuiIconDownChevron extends HTMLElement {
   static get observedAttributes() {
     return ["size", "color"];
   }
@@ -76,4 +76,4 @@ class muiIconDownChevron extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-down-chevron", muiIconDownChevron);
+customElements.define("mui-icon-down-chevron", MuiIconDownChevron);

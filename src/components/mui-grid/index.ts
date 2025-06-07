@@ -1,6 +1,6 @@
 import { getPartMap } from "../../utils/part-map";
 
-class muiGrid extends HTMLElement {
+class MuiGrid extends HTMLElement {
   static get observedAttributes() {
     return ["col", "space"];
   }
@@ -52,4 +52,4 @@ class muiGrid extends HTMLElement {
   }
 }
 
-customElements.define("mui-grid", muiGrid);
+customElements.define("mui-grid", MuiGrid);

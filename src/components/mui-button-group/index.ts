@@ -1,5 +1,5 @@
 /* Mui ButtonGroup */
-class muiButtonGroup extends HTMLElement {
+class MuiButtonGroup extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -21,4 +21,4 @@ class muiButtonGroup extends HTMLElement {
   }
 }
 
-customElements.define("mui-button-group", muiButtonGroup);
+customElements.define("mui-button-group", MuiButtonGroup);

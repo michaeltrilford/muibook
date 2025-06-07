@@ -1,4 +1,4 @@
-class TabBar extends HTMLElement {
+class MuiTabBar extends HTMLElement {
   private _resizeTimeout: number | null;
   private _activeTab: HTMLElement | null;
   private _observedTab: HTMLElement | null;
@@ -175,16 +175,12 @@ class TabBar extends HTMLElement {
 
     // Initial highlight positioning with requestAnimationFrame for smoother initialization
     requestAnimationFrame(() => {
-      const highlight = this.shadowRoot!.querySelector(
-        ".highlight"
-      ) as HTMLElement;
+      const highlight = this.shadowRoot!.querySelector(".highlight") as HTMLElement;
       highlight.style.transition = "none";
 
       // Find the active tab or use the first tab
       const active =
-        (children.find((el) => el.hasAttribute("active")) as
-          | HTMLElement
-          | undefined) || (children[0] as HTMLElement);
+        (children.find((el) => el.hasAttribute("active")) as HTMLElement | undefined) || (children[0] as HTMLElement);
 
       if (active) {
         this._activeTab = active;
@@ -244,9 +240,7 @@ class TabBar extends HTMLElement {
         }
       });
     }
-    const highlight = this.shadowRoot!.querySelector(
-      ".highlight"
-    ) as HTMLElement;
+    const highlight = this.shadowRoot!.querySelector(".highlight") as HTMLElement;
     if (!highlight) return;
 
     // Temporarily pause transitions during resize for better performance
@@ -265,9 +259,7 @@ class TabBar extends HTMLElement {
   }
 
   private _updateHighlight(el: HTMLElement): void {
-    const highlight = this.shadowRoot!.querySelector(
-      ".highlight"
-    ) as HTMLElement;
+    const highlight = this.shadowRoot!.querySelector(".highlight") as HTMLElement;
     const elRect = el.getBoundingClientRect();
     const barRect = this.getBoundingClientRect();
     const borderWidth = parseFloat(getComputedStyle(this).borderWidth) || 0;
@@ -296,9 +288,7 @@ class TabBar extends HTMLElement {
       this._updateHighlight(el);
     } else {
       // Handle first initialization
-      const highlight = this.shadowRoot!.querySelector(
-        ".highlight"
-      ) as HTMLElement;
+      const highlight = this.shadowRoot!.querySelector(".highlight") as HTMLElement;
       highlight.style.transition = "none";
       this._updateHighlight(el);
 
@@ -318,4 +308,4 @@ class TabBar extends HTMLElement {
   }
 }
 
-customElements.define("mui-tab-bar", TabBar);
+customElements.define("mui-tab-bar", MuiTabBar);

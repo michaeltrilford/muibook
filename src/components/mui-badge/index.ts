@@ -1,6 +1,6 @@
 type Variant = "neutral" | "positive" | "warning" | "attention";
 
-class muiBadge extends HTMLElement {
+class MuiBadge extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -60,4 +60,4 @@ class muiBadge extends HTMLElement {
   }
 }
 
-customElements.define("mui-badge", muiBadge);
+customElements.define("mui-badge", MuiBadge);

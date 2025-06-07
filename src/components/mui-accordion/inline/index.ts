@@ -1,7 +1,7 @@
 import "../../mui-icons/right-chevron";
 import "../../../components/mui-heading";
 
-class muiAccordionInline extends HTMLElement {
+class MuiAccordionInline extends HTMLElement {
   private summaryEl!: HTMLElement | null;
   private detailEl!: HTMLElement | null;
   private chevronEl!: HTMLElement | null;
@@ -129,4 +129,4 @@ class muiAccordionInline extends HTMLElement {
   }
 }
 
-customElements.define("mui-accordion-inline", muiAccordionInline);
+customElements.define("mui-accordion-inline", MuiAccordionInline);

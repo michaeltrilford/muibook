@@ -1,6 +1,6 @@
 import { getPartMap } from "../../../utils/part-map";
 
-class muiVStack extends HTMLElement {
+class MuiVStack extends HTMLElement {
   static get observedAttributes() {
     return ["space", "alignX", "alignY"];
   }
@@ -55,12 +55,9 @@ class muiVStack extends HTMLElement {
     const slot = this.shadowRoot.querySelector("slot");
 
     if (slot) {
-      if (name === "space")
-        slot.style.setProperty("--space", newValue || this.space);
-      if (name === "alignX")
-        slot.style.setProperty("--alignX", newValue || this.alignX);
-      if (name === "alignY")
-        slot.style.setProperty("--alignY", newValue || this.alignY);
+      if (name === "space") slot.style.setProperty("--space", newValue || this.space);
+      if (name === "alignX") slot.style.setProperty("--alignX", newValue || this.alignX);
+      if (name === "alignY") slot.style.setProperty("--alignY", newValue || this.alignY);
     }
   }
 
@@ -79,4 +76,4 @@ class muiVStack extends HTMLElement {
   }
 }
 
-customElements.define("mui-v-stack", muiVStack);
+customElements.define("mui-v-stack", MuiVStack);

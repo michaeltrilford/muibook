@@ -24,13 +24,6 @@ class storyButton extends HTMLElement {
         description: "Describe the intent or mood of a message",
       },
       {
-        name: "icon-only",
-        type: "boolean",
-        options: "icon-only",
-        default: "",
-        description: "Utilise a compact button with a mui-icon option.",
-      },
-      {
         name: "style",
         type: "string",
         options: "Valid CSS",
@@ -177,27 +170,27 @@ class storyButton extends HTMLElement {
 
         <story-card title="Primary Icon-Only">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-button variant="primary" icon-only>
+            <mui-button variant="primary">
               <mui-icon-add></mui-icon-add>
             </mui-button>
-            <mui-button variant="primary" icon-only>
+            <mui-button variant="primary">
               <mui-icon-subtract></mui-icon-subtract>
             </mui-button>
-            <mui-button variant="primary" icon-only>
+            <mui-button variant="primary">
               <mui-icon-grid></mui-icon-grid>
             </mui-button>
-            <mui-button variant="primary" icon-only>
+            <mui-button variant="primary">
               <mui-icon-notification></mui-icon-notification>
             </mui-button>
-            <mui-button variant="primary" icon-only>
+            <mui-button variant="primary">
               <mui-icon-menu></mui-icon-menu>
             </mui-button>
-            <mui-button variant="primary" icon-only>
+            <mui-button variant="primary">
               <mui-icon-message></mui-icon-message>
             </mui-button>
           </mui-h-stack>
           <mui-code slot="footer">
-            &lt;mui-button variant="primary" icon-only&gt;
+            &lt;mui-button variant="primary"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
             <br />
@@ -207,27 +200,27 @@ class storyButton extends HTMLElement {
 
         <story-card title="Secondary Icon-Only">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-button variant="secondary" icon-only>
+            <mui-button variant="secondary">
               <mui-icon-add variant="secondary" size="small"></mui-icon-add>
             </mui-button>
-            <mui-button variant="secondary" icon-only>
+            <mui-button variant="secondary">
               <mui-icon-subtract></mui-icon-subtract>
             </mui-button>
-            <mui-button variant="secondary" icon-only>
+            <mui-button variant="secondary">
               <mui-icon-grid></mui-icon-grid>
             </mui-button>
-            <mui-button variant="secondary" icon-only>
+            <mui-button variant="secondary">
               <mui-icon-notification></mui-icon-notification>
             </mui-button>
-            <mui-button variant="secondary" icon-only>
+            <mui-button variant="secondary">
               <mui-icon-menu></mui-icon-menu>
             </mui-button>
-            <mui-button variant="secondary" icon-only>
+            <mui-button variant="secondary">
               <mui-icon-message></mui-icon-message>
             </mui-button>
           </mui-h-stack>
           <mui-code slot="footer">
-            &lt;mui-button variant="secondary" icon-only&gt;
+            &lt;mui-button variant="secondary"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
             <br />
@@ -237,27 +230,27 @@ class storyButton extends HTMLElement {
 
         <story-card title="Tertiary Icon-Only">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-button variant="tertiary" icon-only>
+            <mui-button variant="tertiary">
               <mui-icon-add></mui-icon-add>
             </mui-button>
-            <mui-button variant="tertiary" icon-only>
+            <mui-button variant="tertiary">
               <mui-icon-subtract></mui-icon-subtract>
             </mui-button>
-            <mui-button variant="tertiary" icon-only>
+            <mui-button variant="tertiary">
               <mui-icon-grid></mui-icon-grid>
             </mui-button>
-            <mui-button variant="tertiary" icon-only>
+            <mui-button variant="tertiary">
               <mui-icon-notification></mui-icon-notification>
             </mui-button>
-            <mui-button variant="tertiary" icon-only>
+            <mui-button variant="tertiary">
               <mui-icon-menu></mui-icon-menu>
             </mui-button>
-            <mui-button variant="tertiary" icon-only>
+            <mui-button variant="tertiary">
               <mui-icon-message></mui-icon-message>
             </mui-button>
           </mui-h-stack>
           <mui-code slot="footer">
-            &lt;mui-button variant="tertiary" icon-only&gt;
+            &lt;mui-button variant="tertiary"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
             <br />
@@ -267,27 +260,27 @@ class storyButton extends HTMLElement {
 
         <story-card title="Attention Icon-Only">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-button variant="attention" icon-only>
+            <mui-button variant="attention">
               <mui-icon-add></mui-icon-add>
             </mui-button>
-            <mui-button variant="attention" icon-only>
+            <mui-button variant="attention">
               <mui-icon-subtract></mui-icon-subtract>
             </mui-button>
-            <mui-button variant="attention" icon-only>
+            <mui-button variant="attention">
               <mui-icon-grid></mui-icon-grid>
             </mui-button>
-            <mui-button variant="attention" icon-only>
+            <mui-button variant="attention">
               <mui-icon-notification></mui-icon-notification>
             </mui-button>
-            <mui-button variant="attention" icon-only>
+            <mui-button variant="attention">
               <mui-icon-menu></mui-icon-menu>
             </mui-button>
-            <mui-button variant="attention" icon-only>
+            <mui-button variant="attention">
               <mui-icon-message></mui-icon-message>
             </mui-button>
           </mui-h-stack>
           <mui-code slot="footer">
-            &lt;mui-button variant="attention" icon-only&gt;
+            &lt;mui-button variant="attention"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
             <br />

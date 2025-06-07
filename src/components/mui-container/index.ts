@@ -1,5 +1,5 @@
 /* Mui Wrapper */
-class muiContainer extends HTMLElement {
+class MuiContainer extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -55,4 +55,4 @@ class muiContainer extends HTMLElement {
   }
 }
 
-customElements.define("mui-container", muiContainer);
+customElements.define("mui-container", MuiContainer);

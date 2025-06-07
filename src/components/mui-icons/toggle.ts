@@ -1,4 +1,4 @@
-class muiIconToggle extends HTMLElement {
+class MuiIconToggle extends HTMLElement {
   static get observedAttributes() {
     return ["variant"];
   }
@@ -12,9 +12,7 @@ class muiIconToggle extends HTMLElement {
 
       // Blur the button after click to remove persistent focus
       if (!this.shadowRoot) return;
-      const button = this.shadowRoot.querySelector(
-        "mui-button"
-      ) as HTMLElement | null;
+      const button = this.shadowRoot.querySelector("mui-button") as HTMLElement | null;
       if (button) {
         button.blur();
         requestAnimationFrame(() => {
@@ -38,11 +36,7 @@ class muiIconToggle extends HTMLElement {
     this.render();
   }
 
-  attributeChangedCallback(
-    name: string,
-    oldValue: string | null,
-    newValue: string | null
-  ) {
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
     if (name === "variant" && oldValue !== newValue) {
       this.render();
     }
@@ -92,7 +86,7 @@ class muiIconToggle extends HTMLElement {
 
       </style>
 
-     <mui-button icon-only ${variant ? `variant="${variant}"` : ""}>
+      <mui-button ${variant ? `variant="${variant}"` : ""}>
         <slot name="start"></slot>
         <slot name="end"></slot>
       </mui-button>
@@ -100,4 +94,4 @@ class muiIconToggle extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-toggle", muiIconToggle);
+customElements.define("mui-icon-toggle", MuiIconToggle);

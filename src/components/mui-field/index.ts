@@ -1,4 +1,4 @@
-class muiField extends HTMLElement {
+class MuiField extends HTMLElement {
   static get observedAttributes() {
     return ["variant", "message"];
   }
@@ -16,11 +16,7 @@ class muiField extends HTMLElement {
     this.passAttributesToChild();
   }
 
-  attributeChangedCallback(
-    name: string,
-    _oldValue: string | null,
-    _newValue: string | null
-  ) {
+  attributeChangedCallback(name: string, _oldValue: string | null, _newValue: string | null) {
     if (name === "variant" || name === "message") {
       this.render();
       this.passAttributesToChild();
@@ -60,13 +56,9 @@ class muiField extends HTMLElement {
       </style>
 
       <slot></slot>
-      ${
-        message
-          ? `<mui-body size="small" variant="${variant}">${message}</mui-body>`
-          : ""
-      }
+      ${message ? `<mui-body size="small" variant="${variant}">${message}</mui-body>` : ""}
     `;
   }
 }
 
-customElements.define("mui-field", muiField);
+customElements.define("mui-field", MuiField);

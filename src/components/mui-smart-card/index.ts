@@ -1,4 +1,4 @@
-class SmartCard extends HTMLElement {
+class MuiSmartCard extends HTMLElement {
   static get observedAttributes() {
     return [
       "state",
@@ -41,9 +41,7 @@ class SmartCard extends HTMLElement {
     const partner = this.getAttribute("partner") || "";
     const logoHeightAttr = this.getAttribute("logo-height");
     const logoHeight =
-      logoHeightAttr && !isNaN(parseInt(logoHeightAttr, 10))
-        ? parseInt(logoHeightAttr, 10)
-        : undefined;
+      logoHeightAttr && !isNaN(parseInt(logoHeightAttr, 10)) ? parseInt(logoHeightAttr, 10) : undefined;
 
     if (logoHeight && logoHeight > 126) {
       console.warn(
@@ -168,11 +166,7 @@ class SmartCard extends HTMLElement {
         .type,
         .card-number::part(display) {
           color: ${inverted ? "var(--white)" : "var(--black)"};
-          text-shadow: ${
-            inverted
-              ? "0 0px 8px rgb(0 0 0 / 12%);"
-              : "0 0px 8px rgb(255 255 255 / 12%);"
-          };
+          text-shadow: ${inverted ? "0 0px 8px rgb(0 0 0 / 12%);" : "0 0px 8px rgb(255 255 255 / 12%);"};
         }
 
         img { 
@@ -400,4 +394,4 @@ class SmartCard extends HTMLElement {
   }
 }
 
-customElements.define("mui-smart-card", SmartCard);
+customElements.define("mui-smart-card", MuiSmartCard);

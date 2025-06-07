@@ -1,4 +1,4 @@
-class TabController extends HTMLElement {
+class MuiTabController extends HTMLElement {
   constructor() {
     super();
     this.handleTabChange = this.handleTabChange.bind(this);
@@ -32,4 +32,4 @@ class TabController extends HTMLElement {
   }
 }
 
-customElements.define("mui-tab-controller", TabController);
+customElements.define("mui-tab-controller", MuiTabController);

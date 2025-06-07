@@ -1,5 +1,5 @@
 /* Mui Image */
-class muiImage extends HTMLElement {
+class MuiImage extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -48,4 +48,4 @@ class muiImage extends HTMLElement {
   }
 }
 
-customElements.define("mui-image", muiImage);
+customElements.define("mui-image", MuiImage);

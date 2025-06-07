@@ -1,5 +1,4 @@
-/* Mui Rule */
-class muiCell extends HTMLElement {
+class MuiCell extends HTMLElement {
   static get observedAttributes() {
     return ["align-y"];
   }
@@ -61,4 +60,4 @@ class muiCell extends HTMLElement {
   }
 }
 
-customElements.define("mui-cell", muiCell);
+customElements.define("mui-cell", MuiCell);

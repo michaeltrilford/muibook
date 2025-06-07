@@ -1,6 +1,6 @@
 import { getPartMap } from "../../utils/part-map";
 
-class muiBody extends HTMLElement {
+class MuiBody extends HTMLElement {
   static get observedAttributes() {
     return ["size", "weight", "variant"];
   }
@@ -96,4 +96,4 @@ class muiBody extends HTMLElement {
   }
 }
 
-customElements.define("mui-body", muiBody);
+customElements.define("mui-body", MuiBody);

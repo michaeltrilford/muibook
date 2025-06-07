@@ -1,7 +1,7 @@
 import { getPartMap } from "../../../utils/part-map";
 
 /* Mui H Stack */
-class muiHStack extends HTMLElement {
+class MuiHStack extends HTMLElement {
   static get observedAttributes() {
     return ["space", "alignY", "alignX"];
   }
@@ -56,12 +56,9 @@ class muiHStack extends HTMLElement {
     const slot = this.shadowRoot.querySelector("slot");
 
     if (slot) {
-      if (name === "space")
-        slot.style.setProperty("--space", newValue || this.space);
-      if (name === "alignY")
-        slot.style.setProperty("--alignY", newValue || this.alignY);
-      if (name === "alignX")
-        slot.style.setProperty("--alignX", newValue || this.alignX);
+      if (name === "space") slot.style.setProperty("--space", newValue || this.space);
+      if (name === "alignY") slot.style.setProperty("--alignY", newValue || this.alignY);
+      if (name === "alignX") slot.style.setProperty("--alignX", newValue || this.alignX);
     }
   }
 
@@ -80,4 +77,4 @@ class muiHStack extends HTMLElement {
   }
 }
 
-customElements.define("mui-h-stack", muiHStack);
+customElements.define("mui-h-stack", MuiHStack);

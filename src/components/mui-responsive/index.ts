@@ -1,4 +1,4 @@
-class muiR extends HTMLElement {
+class MuiR extends HTMLElement {
   static get observedAttributes() {
     return ["breakpoint"];
   }
@@ -40,4 +40,4 @@ class muiR extends HTMLElement {
   }
 }
 
-customElements.define("mui-responsive", muiR);
+customElements.define("mui-responsive", MuiR);

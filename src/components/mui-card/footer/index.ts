@@ -1,4 +1,4 @@
-class muiCardFooter extends HTMLElement {
+class MuiCardFooter extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -40,16 +40,13 @@ class muiCardFooter extends HTMLElement {
 
     requestAnimationFrame(() => {
       if (!this.shadowRoot) return;
-      const slot = this.shadowRoot.querySelector(
-        "slot"
-      ) as HTMLSlotElement | null;
+      const slot = this.shadowRoot.querySelector("slot") as HTMLSlotElement | null;
       if (!slot) return;
       const nodes = slot.assignedNodes({ flatten: true });
 
       const visibleNodes = nodes.filter((node) => {
         if (node.nodeType === Node.ELEMENT_NODE) return true;
-        if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim() !== "")
-          return true;
+        if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim() !== "") return true;
         return false;
       });
 
@@ -77,4 +74,4 @@ class muiCardFooter extends HTMLElement {
   }
 }
 
-customElements.define("mui-card-footer", muiCardFooter);
+customElements.define("mui-card-footer", MuiCardFooter);

@@ -1,4 +1,4 @@
-class CarouselController extends HTMLElement {
+class MuiCarouselController extends HTMLElement {
   private shadow: ShadowRoot;
   constructor() {
     super();
@@ -125,13 +125,9 @@ class CarouselController extends HTMLElement {
 
   updatePanels(activeId: string) {
     const panels = this.querySelectorAll("mui-carousel-panel");
-    const track = this.shadow.querySelector(
-      ".carousel-track"
-    ) as HTMLElement | null;
+    const track = this.shadow.querySelector(".carousel-track") as HTMLElement | null;
 
-    const index = Array.from(panels).findIndex(
-      (panel) => panel.getAttribute("item") === activeId
-    );
+    const index = Array.from(panels).findIndex((panel) => panel.getAttribute("item") === activeId);
 
     if (index === -1) return;
 
@@ -139,4 +135,4 @@ class CarouselController extends HTMLElement {
   }
 }
 
-customElements.define("mui-carousel-controller", CarouselController);
+customElements.define("mui-carousel-controller", MuiCarouselController);

@@ -48,7 +48,7 @@ class compWallet extends HTMLElement {
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-close slot="end"></mui-icon-close>
               </mui-icon-toggle>
-              <mui-button variant="tertiary" icon-only>
+              <mui-button variant="tertiary" >
                 <mui-icon-globe></mui-icon-globe>
               </mui-button>
             </mui-h-stack>

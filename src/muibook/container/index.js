@@ -84,6 +84,7 @@ export class AppContainer extends HTMLElement {
 
       "/agent": "comp-agent-ui",
       "/wallet": "comp-wallet",
+      "/gyro": "comp-gyro",
     };
 
     // ✨ NEW CHECK ✨

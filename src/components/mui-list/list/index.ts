@@ -1,4 +1,4 @@
-class muiList extends HTMLElement {
+class MuiList extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -32,4 +32,4 @@ class muiList extends HTMLElement {
   }
 }
 
-customElements.define("mui-list", muiList);
+customElements.define("mui-list", MuiList);

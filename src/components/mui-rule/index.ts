@@ -1,4 +1,4 @@
-class muiRule extends HTMLElement {
+class MuiRule extends HTMLElement {
   static get observedAttributes() {
     return ["length", "weight", "direction"];
   }
@@ -33,4 +33,4 @@ class muiRule extends HTMLElement {
   }
 }
 
-customElements.define("mui-rule", muiRule);
+customElements.define("mui-rule", MuiRule);

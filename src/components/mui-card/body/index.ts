@@ -1,4 +1,4 @@
-class muiCardBody extends HTMLElement {
+class MuiCardBody extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -28,9 +28,7 @@ class muiCardBody extends HTMLElement {
 
     requestAnimationFrame(() => {
       if (!this.shadowRoot) return;
-      const slot = this.shadowRoot.querySelector(
-        "slot"
-      ) as HTMLSlotElement | null;
+      const slot = this.shadowRoot.querySelector("slot") as HTMLSlotElement | null;
       if (!slot) return;
       const nodes = slot.assignedNodes({ flatten: true });
 
@@ -41,11 +39,8 @@ class muiCardBody extends HTMLElement {
           const element = node as HTMLElement;
 
           // Check for <mui-accordion-group>
-          const isAccordion =
-            element.tagName.toLowerCase() === "mui-accordion-group";
-          const accordion = isAccordion
-            ? element
-            : element.querySelector("mui-accordion-group");
+          const isAccordion = element.tagName.toLowerCase() === "mui-accordion-group";
+          const accordion = isAccordion ? element : element.querySelector("mui-accordion-group");
 
           if (accordion instanceof HTMLElement) {
             const blocks = accordion.querySelectorAll("mui-accordion-block");
@@ -78,4 +73,4 @@ class muiCardBody extends HTMLElement {
   }
 }
 
-customElements.define("mui-card-body", muiCardBody);
+customElements.define("mui-card-body", MuiCardBody);

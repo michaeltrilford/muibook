@@ -1,5 +1,5 @@
 /* Mui Code */
-class muiCode extends HTMLElement {
+class MuiCode extends HTMLElement {
   static get observedAttributes() {
     return ["size"];
   }
@@ -56,4 +56,4 @@ class muiCode extends HTMLElement {
   }
 }
 
-customElements.define("mui-code", muiCode);
+customElements.define("mui-code", MuiCode);

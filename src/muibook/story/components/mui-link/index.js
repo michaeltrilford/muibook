@@ -151,27 +151,27 @@ class storyLink extends HTMLElement {
 
         <story-card title="Primary Icon-Only">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-link variant="primary" icon-only>
+            <mui-link variant="primary" >
               <mui-icon-add></mui-icon-add>
             </mui-link>
-            <mui-link variant="primary" icon-only>
+            <mui-link variant="primary" >
               <mui-icon-subtract></mui-icon-subtract>
             </mui-link>
-            <mui-link variant="primary" icon-only>
+            <mui-link variant="primary" >
               <mui-icon-grid></mui-icon-grid>
             </mui-link>
-            <mui-link variant="primary" icon-only>
+            <mui-link variant="primary" >
               <mui-icon-notification></mui-icon-notification>
             </mui-link>
-            <mui-link variant="primary" icon-only>
+            <mui-link variant="primary" >
               <mui-icon-menu></mui-icon-menu>
             </mui-link>
-            <mui-link variant="primary" icon-only>
+            <mui-link variant="primary" >
               <mui-icon-message></mui-icon-message>
             </mui-link>
           </mui-h-stack>
           <mui-code slot="footer">
-            &lt;mui-link variant="primary" icon-only&gt;
+            &lt;mui-link variant="primary" &gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
             <br />
@@ -181,27 +181,27 @@ class storyLink extends HTMLElement {
 
         <story-card title="Secondary Icon-Only">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-link variant="secondary" icon-only>
+            <mui-link variant="secondary" >
               <mui-icon-add variant="secondary" size="small"></mui-icon-add>
             </mui-link>
-            <mui-link variant="secondary" icon-only>
+            <mui-link variant="secondary" >
               <mui-icon-subtract></mui-icon-subtract>
             </mui-link>
-            <mui-link variant="secondary" icon-only>
+            <mui-link variant="secondary" >
               <mui-icon-grid></mui-icon-grid>
             </mui-link>
-            <mui-link variant="secondary" icon-only>
+            <mui-link variant="secondary" >
               <mui-icon-notification></mui-icon-notification>
             </mui-link>
-            <mui-link variant="secondary" icon-only>
+            <mui-link variant="secondary" >
               <mui-icon-menu></mui-icon-menu>
             </mui-link>
-            <mui-link variant="secondary" icon-only>
+            <mui-link variant="secondary" >
               <mui-icon-message></mui-icon-message>
             </mui-link>
           </mui-h-stack>
           <mui-code slot="footer">
-            &lt;mui-link variant="secondary" icon-only&gt;
+            &lt;mui-link variant="secondary" &gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
             <br />
@@ -211,27 +211,27 @@ class storyLink extends HTMLElement {
 
         <story-card title="Tertiary Icon-Only">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-link variant="tertiary" icon-only>
+            <mui-link variant="tertiary" >
               <mui-icon-add></mui-icon-add>
             </mui-link>
-            <mui-link variant="tertiary" icon-only>
+            <mui-link variant="tertiary" >
               <mui-icon-subtract></mui-icon-subtract>
             </mui-link>
-            <mui-link variant="tertiary" icon-only>
+            <mui-link variant="tertiary" >
               <mui-icon-grid></mui-icon-grid>
             </mui-link>
-            <mui-link variant="tertiary" icon-only>
+            <mui-link variant="tertiary" >
               <mui-icon-notification></mui-icon-notification>
             </mui-link>
-            <mui-link variant="tertiary" icon-only>
+            <mui-link variant="tertiary" >
               <mui-icon-menu></mui-icon-menu>
             </mui-link>
-            <mui-link variant="tertiary" icon-only>
+            <mui-link variant="tertiary" >
               <mui-icon-message></mui-icon-message>
             </mui-link>
           </mui-h-stack>
           <mui-code slot="footer">
-            &lt;mui-link variant="tertiary" icon-only&gt;
+            &lt;mui-link variant="tertiary" &gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
             <br />
@@ -241,27 +241,27 @@ class storyLink extends HTMLElement {
 
         <story-card title="Attention Icon-Only">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-link variant="attention" icon-only>
+            <mui-link variant="attention" >
               <mui-icon-add></mui-icon-add>
             </mui-link>
-            <mui-link variant="attention" icon-only>
+            <mui-link variant="attention" >
               <mui-icon-subtract></mui-icon-subtract>
             </mui-link>
-            <mui-link variant="attention" icon-only>
+            <mui-link variant="attention" >
               <mui-icon-grid></mui-icon-grid>
             </mui-link>
-            <mui-link variant="attention" icon-only>
+            <mui-link variant="attention" >
               <mui-icon-notification></mui-icon-notification>
             </mui-link>
-            <mui-link variant="attention" icon-only>
+            <mui-link variant="attention" >
               <mui-icon-menu></mui-icon-menu>
             </mui-link>
-            <mui-link variant="attention" icon-only>
+            <mui-link variant="attention" >
               <mui-icon-message></mui-icon-message>
             </mui-link>
           </mui-h-stack>
           <mui-code slot="footer">
-            &lt;mui-link variant="attention" icon-only&gt;
+            &lt;mui-link variant="attention" &gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
             <br />

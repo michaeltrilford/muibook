@@ -1,7 +1,7 @@
 import { getPartMap } from "../../utils/part-map";
 
 /* Mui Link */
-class muiLink extends HTMLElement {
+class MuiLink extends HTMLElement {
   static get observedAttributes() {
     return ["target", "href", "variant", "weight", "size"];
   }
@@ -247,6 +247,30 @@ class muiLink extends HTMLElement {
     `;
 
     this.shadowRoot.innerHTML = html;
+
+    // Wait for slot content to be assigned
+    await customElements.whenDefined("mui-link"); // optional, extra safety
+
+    requestAnimationFrame(() => {
+      const slot = this.shadowRoot?.querySelector("slot");
+      const assignedNodes = slot?.assignedNodes({ flatten: true }) || [];
+
+      const iconOnly = assignedNodes.every((node) => {
+        // check if it's an svg or an element with .mui-icon
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          const el = node as HTMLElement;
+          return el.tagName.toLowerCase() === "svg" || el.classList.contains("mui-icon");
+        }
+        // Ignore text nodes (e.g. whitespace)
+        return node.nodeType === Node.TEXT_NODE && !node.textContent?.trim();
+      });
+
+      if (iconOnly) {
+        this.setAttribute("icon-only", "");
+      } else {
+        this.removeAttribute("icon-only");
+      }
+    });
   }
   waitForPartMap(): Promise<void> {
     return new Promise<void>((resolve) => {
@@ -263,4 +287,4 @@ class muiLink extends HTMLElement {
   }
 }
 
-customElements.define("mui-link", muiLink);
+customElements.define("mui-link", MuiLink);
