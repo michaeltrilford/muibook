@@ -1,19 +1,15 @@
 {
-  "name": "@michaeltrilford/muibook",
+  "name": "@muibook/components",
   "version": "1.0.0",
   "description": "A library of MUI-based design system components.",
   "author": "Michael Trilford",
-  "homepage": "https://github.com/michaeltrilford/muibook",
+  "homepage": "https://muibook.com",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/michaeltrilford/muibook.git"
-  },
   "bugs": {
     "url": "https://github.com/michaeltrilford/muibook/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "main": "./dist/esm/index.js",
   "module": "./dist/esm/index.js",
@@ -276,7 +272,7 @@
       "types": "./dist/types/components/mui-stack/hstack/index.d.ts"
     },
     "./mui-stack/vstack": {
-      "import": "./dist/esm/mui-stack/hvtack/index.js",
+      "import": "./dist/esm/mui-stack/vstack/index.js",
       "types": "./dist/types/components/mui-stack/vstack/index.d.ts"
     },
     "./mui-switch": {
