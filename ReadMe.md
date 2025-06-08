@@ -1,6 +1,30 @@
 # Muibook
 
-This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to provide a fast, modern development experience for building and previewing web components.
+## Muibook/Components (NPM)
+
+A library of reusable vanilla Web Components designed with the MichaelUI design language. Perfect for building consistent, framework-agnostic design systems inspired by MichaelUI’s principles.
+
+- 📦 View on [npmjs.com](https://www.npmjs.com/package/@muibook/components?activeTab=readme)
+- 🔌 Framework-agnostic: works in any modern JavaScript environment
+- 🎨 Styled and structured according to MichaelUI guidelines
+- ✨ Lightweight, fast, and customisable
+- 🧱 Built for scalable and maintainable design systems
+
+---
+
+## Create Mui App
+
+- Kickstart your project with a lightweight scaffold built on Vite. It comes preloaded with foundational CSS resets, a solid base structure, and design tokens ready to be customised for your brand.
+- Access a curated set of MUI Components, wrapped in a clean layout that highlights the Design System’s core building blocks—so you can start designing and building immediately.
+- Learn more at [Muibook.com](https://muibook.com/#/create-mui-app)
+
+---
+
+## Muibook Documentation
+
+- Muibook is the home of the Mui Design System (MichaelUI) — native Web Components with clean, composable patterns that help you write less code
+- Learn more about [Muibook.com](https://muibook.com)
+- This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to provide a fast, modern development experience for building and previewing web components.
 
 ---
 
