@@ -73,6 +73,12 @@ class storyFileUpload extends HTMLElement {
 
         <mui-v-stack space="var(--space-700)">
 
+          <spec-card title="Import">
+            <mui-code slot="footer" size="small">
+              import "@muibook/components/mui-file-upload";<br>
+            </mui-code>
+          </spec-card>
+
           <spec-card title="Props">
             <mui-responsive breakpoint="768" slot="body">
               <story-type-table slot="showAbove">

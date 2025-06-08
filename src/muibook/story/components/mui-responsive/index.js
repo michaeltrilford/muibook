@@ -99,6 +99,12 @@ class storyResponsive extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
       
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-responsive";<br>
+          </mui-code>
+        </spec-card>
+
         <story-card title="Basic">
           <mui-responsive slot="body" breakpoint="600">
             <mui-heading slot="showBelow" size="6">Mobile / Below 600</mui-heading>

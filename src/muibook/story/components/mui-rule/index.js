@@ -19,6 +19,12 @@ class storyRule extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-rule";<br>
+          </mui-code>
+        </spec-card>
+
         <story-card title="Horizontal">
           <div slot="body">
             <mui-rule direction="horizontal" length="100%" style="margin: var(--space-700) 0;"></mui-rule>

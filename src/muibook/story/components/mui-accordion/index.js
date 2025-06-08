@@ -99,6 +99,11 @@ class storyAccordion extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-accordion";<br>
+          </mui-code>
+        </spec-card>
 
         <spec-card title="Props: Accordion Block">
           <mui-responsive breakpoint="767" slot="body">

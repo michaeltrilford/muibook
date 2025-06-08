@@ -309,6 +309,12 @@ class storyCarousel extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-carousel";<br>
+          </mui-code>
+        </spec-card>
+
         <spec-card title="Props: Carousel Controller" description="The carousel-controller handles layout and transitions. Slotted children like tab-bar and carousel-panel must include the correct slot attributes to integrate properly.">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">

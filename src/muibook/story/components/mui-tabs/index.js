@@ -275,6 +275,12 @@ class storyTabBar extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-tabs";<br>
+          </mui-code>
+        </spec-card>
+
         <spec-card title="Props: Tab Controller">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">

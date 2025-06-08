@@ -17,6 +17,12 @@ class storyCode extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-code";<br>
+          </mui-code>
+        </spec-card>
+
         <story-card title="Large">
           <div slot="body">
             <mui-code size="large">

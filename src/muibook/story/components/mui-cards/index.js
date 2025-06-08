@@ -22,6 +22,12 @@ class storyCards extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-card";<br>
+          </mui-code>
+        </spec-card>
+
         <story-card title="Card">
           <div slot="body">
             <mui-card>

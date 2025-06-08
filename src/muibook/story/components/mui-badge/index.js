@@ -17,6 +17,12 @@ class storyBadge extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-badge";<br>
+          </mui-code>
+        </spec-card>
+
         <story-card title="Default">
           <div slot="body">
             <mui-badge>New</mui-badge>

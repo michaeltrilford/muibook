@@ -123,6 +123,12 @@ class storySelect extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-select";<br>
+          </mui-code>
+        </spec-card>
+
         <spec-card title="Props">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
