@@ -85,6 +85,10 @@ Version Patch
 
 `npm version patch`
 
+Dry run
+
+`npm pack --dry-run`
+
 ---
 
 ## Notes
