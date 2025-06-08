@@ -111,7 +111,7 @@ export default defineConfig({
         "utils/part-map": path.resolve(__dirname, "src/utils/part-map"),
       },
       formats: ["es"],
-      fileName: (_, entryName) => `${entryName}/index.js`,
+      fileName: (_, entryName) => (entryName === "index" ? "index.js" : `${entryName}/index.js`),
     },
     outDir: "dist/esm",
     rollupOptions: {
