@@ -75,6 +75,18 @@ Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=To
 
 ---
 
+## Packages
+
+Publish
+
+`npm publish`
+
+Version Patch
+
+`npm version patch`
+
+---
+
 ## Notes
 
 - Add any new components to `vite.config.ts` to include them in builds
