@@ -80,3 +80,5 @@ Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=To
 - Add any new components to `vite.config.ts` to include them in builds
 - The dist/ folder is published, while source code and src/muibook are excluded
 - Use the preview scripts to verify production builds before deployment
+
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
