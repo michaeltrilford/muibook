@@ -1,6 +1,6 @@
 # Muibook
 
-## @muibook/components NPM Package
+## 📖 NPM Package: @muibook/components
 
 Reusable vanilla Web Components built with the Mui (MichaelUI) Design System. Framework-agnostic, accessible, and customisable.
 
@@ -12,16 +12,12 @@ npm install @muibook/components
 
 ### 📖 Usage in Your Project
 
-Import All
-
 ```javascript
-import "@muibook/components";
+import "@muibook/components"; // All
 ```
 
-Import Individually
-
 ```javascript
-import "@muibook/components/mui-body";
+import "@muibook/components/mui-body"; // Individual
 ```
 
 ### 🔗 Links
