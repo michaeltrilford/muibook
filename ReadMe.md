@@ -1,14 +1,14 @@
-# 📦 NPM Package: @muibook/components
+# NPM Package 📦 – @muibook/components
 
 Reusable vanilla Web Components built with the Mui (MichaelUI) Design System. Framework-agnostic, accessible, and customisable.
 
-### 🚀 Installation
+### Installation 🚀
 
 ```bash
 npm install @muibook/components
 ```
 
-### 📖 Usage in Your Project
+### Usage in Your Project 📖
 
 ```javascript
 import "@muibook/components"; // All
@@ -18,7 +18,7 @@ import "@muibook/components"; // All
 import "@muibook/components/mui-body"; // Individual
 ```
 
-### 🔗 Links
+### Links 🔗
 
 [npmjs.com](https://www.npmjs.com/package/@muibook/components?activeTab=readme) •
 [Docs](https://muibook.com) •
@@ -41,7 +41,7 @@ Learn more at [Muibook.com](https://muibook.com/#/create-mui-app)
 
 ---
 
-# Muibook Wesbite
+# Muibook Repository
 
 Muibook is the home of the Mui Design System (MichaelUI) — native Web Components with clean, composable patterns that help you write less code.
 
@@ -54,7 +54,7 @@ Learn more about [Muibook.com](https://muibook.com)
 
 ---
 
-## Start Development Server
+### Start Development Server
 
 This project is powered by [Vite](https://vitejs.dev/) and uses TypeScript to provide a fast, modern development experience for building and previewing web components.
 
@@ -68,7 +68,7 @@ npm run dev
 
 ---
 
-## Build Project
+### Build Project
 
 ```bash
 npm run build
@@ -79,7 +79,7 @@ npm run build
 
 ---
 
-## Build Muibook
+### Build Muibook
 
 ```bash
 npm run build:muibook
@@ -90,7 +90,7 @@ npm run build:muibook
 
 ---
 
-## Preview Muibook Build
+### Preview Muibook Build
 
 ```bash
 npm run preview:muibook
@@ -100,7 +100,7 @@ npm run preview:muibook
 
 ---
 
-## Build Create Mui App
+### Build Create Mui App
 
 ```bash
 npm run build:create-mui-app
@@ -111,7 +111,7 @@ npm run build:create-mui-app
 
 ---
 
-## Preview Create Mui App Build
+### Preview Create Mui App Build
 
 ```bash
 npm run preview:create-mui-app
@@ -121,15 +121,15 @@ npm run preview:create-mui-app
 
 ---
 
-## Setup
+### Setup
 
-### Install dependencies:
+#### Install dependencies:
 
 ```bash
 npm install
 ```
 
-### TypeScript Support:
+#### TypeScript Support:
 
 ```bash
 npm install --save-dev @types/node
@@ -137,21 +137,21 @@ npm install --save-dev @types/node
 
 ---
 
-## VS Code Plug-in
+### VS Code Plug-in
 
 Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) for better HTML template literal syntax highlighting.
 
 ---
 
-## Publishing
+### Publishing
 
-### Publish to NPM
+#### Publish to NPM
 
 ```bash
 npm publish
 ```
 
-### Version Management
+#### Version Management
 
 ```bash
 npm version patch  # Increment patch version
@@ -159,7 +159,7 @@ npm version minor  # Increment minor version
 npm version major  # Increment major version
 ```
 
-### Test Before Publishing
+#### Test Before Publishing
 
 ```bash
 npm pack --dry-run  # Preview what will be published
@@ -167,7 +167,7 @@ npm pack --dry-run  # Preview what will be published
 
 ---
 
-## Development Notes
+### Development Notes
 
 - Add any new components to `vite.config.ts` to include them in builds
 - The dist/ folder is published, while source code and src/muibook are excluded
@@ -176,7 +176,7 @@ npm pack --dry-run  # Preview what will be published
 
 ---
 
-## License
+### License
 
 - ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 - MIT License - see LICENSE file for details.
