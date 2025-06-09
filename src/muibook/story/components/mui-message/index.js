@@ -97,7 +97,7 @@ class storyMessage extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Messages"
+        title="Message"
         description="The message component provides persistent, non-dismissible notifications that remain visible until the system determines they should be suspended."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=9-1053&t=ZA9uH4LK37tSuk6r-1"
         guides

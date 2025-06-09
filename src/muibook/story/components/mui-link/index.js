@@ -30,13 +30,19 @@ class storyLink extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Links"
+        title="Link"
         description="The mui-link defines a hyperlink, which is used to link from one page to another."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-663&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-link/index.ts"
       >
 
       <mui-v-stack space="var(--space-700)">
+
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-link";<br>
+          </mui-code>
+        </spec-card>
 
         <story-card title="Sizes">
 

@@ -17,6 +17,12 @@ class storyList extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-list";<br>
+          </mui-code>
+        </spec-card>
+
         <story-card title="Sizes">
 
             <div slot="body">

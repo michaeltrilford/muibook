@@ -18,6 +18,12 @@ class storyHeading extends HTMLElement {
         
         <mui-v-stack space="var(--space-700)">
         
+          <spec-card title="Import">
+            <mui-code slot="footer" size="small">
+              import "@muibook/components/mui-heading";<br>
+            </mui-code>
+          </spec-card>
+
           <story-card noHeader>
             <div slot="body">
               <mui-heading size="1">Heading 1</mui-heading>

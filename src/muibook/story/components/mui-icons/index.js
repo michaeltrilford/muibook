@@ -51,6 +51,12 @@ class storyIcon extends HTMLElement {
 
         <mui-v-stack space="var(--space-700)">
 
+          <spec-card title="Import">
+            <mui-code slot="footer" size="small">
+              import "@muibook/components/mui-icons";<br>
+            </mui-code>
+          </spec-card>
+
           <story-card title="Default" description="Icons are set to size 'small' by default." >
 
             <mui-grid space="var(--space-400)" slot="body">

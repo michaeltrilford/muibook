@@ -21,6 +21,12 @@ class storyGrid extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
       
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-grid";<br>
+          </mui-code>
+        </spec-card>
+
         <story-card title="Default">
         
           <mui-grid slot="body" space="var(--space-200)">

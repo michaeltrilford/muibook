@@ -88,7 +88,7 @@ class storyButton extends HTMLElement {
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template title="Buttons" 
+      <story-template title="Button" 
         description="Buttons are essential UI elements that trigger actions when clicked or tapped. They should be easily recognisable, provide clear feedback, and be accessible to all users."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-570&t=fSFYVey9aCoE5oQa-1" 
         github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-button/index.ts"

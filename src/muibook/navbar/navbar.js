@@ -116,17 +116,17 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
         <app-navbar-link link="#/select" title="Select"></app-navbar-link>  
         <app-navbar-link link="#/switch" title="Switch"></app-navbar-link>  
-        <app-navbar-link link="#/alerts" title="Alerts"></app-navbar-link>
-        <app-navbar-link link="#/messages" title="Messages"></app-navbar-link>
+        <app-navbar-link link="#/alert" title="Alert"></app-navbar-link>
+        <app-navbar-link link="#/message" title="Message"></app-navbar-link>
         <app-navbar-link link="#/badge" title="Badge"></app-navbar-link>
-        <app-navbar-link link="#/buttons" title="Buttons"></app-navbar-link>
-        <app-navbar-link link="#/links" title="Links"></app-navbar-link>
+        <app-navbar-link link="#/button" title="Button"></app-navbar-link>
+        <app-navbar-link link="#/link" title="Link"></app-navbar-link>
         <app-navbar-link link="#/responsive" title="Responsive"></app-navbar-link>
-        <app-navbar-link link="#/stacks" title="Stacks"></app-navbar-link>
+        <app-navbar-link link="#/stack" title="Stack"></app-navbar-link>
         <app-navbar-link link="#/grid" title="Grid"></app-navbar-link>
-        <app-navbar-link link="#/cards" title="Cards"></app-navbar-link>
+        <app-navbar-link link="#/card" title="Card"></app-navbar-link>
         <app-navbar-link link="#/container" title="Container"></app-navbar-link>
-        <app-navbar-link link="#/headings" title="Headings"></app-navbar-link>
+        <app-navbar-link link="#/heading" title="Heading"></app-navbar-link>
         <app-navbar-link link="#/body" title="Body"></app-navbar-link>
         <app-navbar-link link="#/image" title="Image"></app-navbar-link>
         <app-navbar-link link="#/list" title="List"></app-navbar-link>

@@ -216,12 +216,18 @@ class storyStack extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Stacks" 
+        title="Stack" 
         description="A layout component that arranges its children in a horizontal or vertical flow"
         github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-stack"
       >
 
       <mui-v-stack space="var(--space-700)">
+
+        <spec-card title="Import">
+          <mui-code slot="footer" size="small">
+            import "@muibook/components/mui-stack";<br>
+          </mui-code>
+        </spec-card>
 
         <spec-card title="Props: HStack">
           <mui-responsive breakpoint="767" slot="body">
