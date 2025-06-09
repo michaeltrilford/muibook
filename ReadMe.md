@@ -2,9 +2,15 @@
 
 ## @muibook/components NPM Package
 
+A comprehensive library of reusable vanilla Web Components built with the MichaelUI design language. Perfect for adding consistent, professional UI components to any web project.
+
+### 🚀 Installation
+
 ```bash
 npm install @muibook/components
 ```
+
+### 📖 Usage in Your Project
 
 Import All
 
@@ -188,5 +194,6 @@ npm pack --dry-run  # Preview what will be published
 ---
 
 License
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-MIT License - see LICENSE file for details.
+
+- ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+- MIT License - see LICENSE file for details.
