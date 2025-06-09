@@ -2,13 +2,13 @@
 
 Reusable vanilla Web Components built with the Mui (MichaelUI) Design System. Framework-agnostic, accessible, and customisable.
 
-### Installation 🚀
+### Installation
 
 ```bash
 npm install @muibook/components
 ```
 
-### Usage in Your Project 📖
+### Usage in Your Project
 
 ```javascript
 import "@muibook/components"; // All
