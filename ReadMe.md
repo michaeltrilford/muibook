@@ -18,7 +18,7 @@ Import Individually
 import "@muibook/components/mui-body";
 ```
 
-✨ Key Features
+### ✨ Key Features
 
 - 🔌 Framework-agnostic: Works seamlessly with React, Vue, Angular, Svelte, or vanilla JavaScript
 - 🎨 MUI Design System: Consistent styling and behavior across all components
@@ -29,12 +29,12 @@ import "@muibook/components/mui-body";
 - ⚡ Lightweight: Tree-shakeable with minimal bundle impact
 - 🧱 Composable: Mix and match components to build complex interfaces
 
-🔗 Links
+### 🔗 Links
 
-📦 View on [npmjs.com](https://www.npmjs.com/package/@muibook/components?activeTab=readme)
-📚 [Full Documentation](https://muibook.com)
-🎮 [Interactive Examples](https://muibook.com)
-📦 [View Components](https://muibook.com)
+- 📦 View on [npmjs.com](https://www.npmjs.com/package/@muibook/components?activeTab=readme)
+- 📚 [Full Documentation](https://muibook.com)
+- 🎮 [Interactive Examples](https://muibook.com)
+- 📦 [View Components](https://muibook.com)
 
 ---
 
