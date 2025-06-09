@@ -2,7 +2,7 @@
 
 ## @muibook/components NPM Package
 
-A comprehensive library of reusable vanilla Web Components built with the Mui (MichaelUI) Design System. Perfect for adding consistent, professional UI components to any web project.
+Reusable vanilla Web Components built with the Mui (MichaelUI) Design System. Framework-agnostic, accessible, and customisable.
 
 ### 🚀 Installation
 
@@ -24,23 +24,12 @@ Import Individually
 import "@muibook/components/mui-body";
 ```
 
-### ✨ Key Features
-
-- 🔌 Framework-agnostic: Works seamlessly with React, Vue, Angular, Svelte, or vanilla JavaScript
-- 🎨 MUI Design System: Consistent styling and behavior across all components
-- ♿ Accessible by default: Built with ARIA standards and keyboard navigation
-- 🎯 TypeScript support: Full type definitions included
-- 📱 Responsive: Mobile-first design with flexible layouts
-- 🎨 Customizable: CSS custom properties for easy theming
-- ⚡ Lightweight: Tree-shakeable with minimal bundle impact
-- 🧱 Composable: Mix and match components to build complex interfaces
-
 ### 🔗 Links
 
-- 📦 View on [npmjs.com](https://www.npmjs.com/package/@muibook/components?activeTab=readme)
-- 📚 [Full Documentation](https://muibook.com)
-- 🎮 [Interactive Examples](https://muibook.com)
-- 📦 [View Components](https://muibook.com)
+[npmjs.com](https://www.npmjs.com/package/@muibook/components?activeTab=readme) •
+[Docs](https://muibook.com) •
+[Usage](https://muibook.com) •
+[Components](https://muibook.com)
 
 ---
 
