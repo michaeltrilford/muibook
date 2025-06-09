@@ -144,7 +144,7 @@ class storySmartCard extends HTMLElement {
       <story-template title="Smart Card" 
         description="A dynamic card component for wallets, dashboards, spend tools, or reward programs—designed to represent digital or physical cards in modern, digital-first experiences."
         figma="" 
-        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-smart-card/index.ts"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-smart-card/index.ts"
       >
 
       <mui-v-stack space="var(--space-700)">

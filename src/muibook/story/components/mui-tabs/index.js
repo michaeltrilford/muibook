@@ -262,7 +262,7 @@ class storyTabBar extends HTMLElement {
       <story-template
         title="Tab Bar"
         description="Allow users to switch between views or content sections by selecting from a group of tabs."
-        github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-tabs"
+        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1"
         accessibility="
           Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.; 

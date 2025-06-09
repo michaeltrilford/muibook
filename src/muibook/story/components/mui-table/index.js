@@ -80,7 +80,7 @@ class storyTable extends HTMLElement {
       <story-template 
         title="Table"
         description="An HTML table consists of one table element and one or more tr, th, and td elements."
-        github="https://github.com/michaeltrilford/muibook/tree/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-table"
+        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table"
       >
 
         <mui-v-stack space="var(--space-700)">
