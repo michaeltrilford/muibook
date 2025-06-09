@@ -2,7 +2,7 @@
 
 ## @muibook/components NPM Package
 
-A comprehensive library of reusable vanilla Web Components built with the MichaelUI design language. Perfect for adding consistent, professional UI components to any web project.
+A comprehensive library of reusable vanilla Web Components built with the Mui (MichaelUI) Design System. Perfect for adding consistent, professional UI components to any web project.
 
 ### 🚀 Installation
 
@@ -140,13 +140,13 @@ npm run preview:create-mui-app
 
 ## Setup
 
-Install dependencies:
+### Install dependencies:
 
 ```bash
 npm install
 ```
 
-TypeScript Support:
+### TypeScript Support:
 
 ```bash
 npm install --save-dev @types/node
@@ -162,13 +162,13 @@ Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=To
 
 ## Publishing
 
-Publish to NPM
+### Publish to NPM
 
 ```bash
 npm publish
 ```
 
-Version Management
+### Version Management
 
 ```bash
 npm version patch  # Increment patch version
@@ -176,7 +176,7 @@ npm version minor  # Increment minor version
 npm version major  # Increment major version
 ```
 
-Test Before Publishing
+### Test Before Publishing
 
 ```bash
 npm pack --dry-run  # Preview what will be published
@@ -193,7 +193,7 @@ npm pack --dry-run  # Preview what will be published
 
 ---
 
-License
+## License
 
 - ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 - MIT License - see LICENSE file for details.
