@@ -15,8 +15,7 @@ import "@muibook/components"; // All
 import "@muibook/components/mui-body"; // Individual
 ```
 
-### Links 🔗
-
+Links 🔗 •
 [npmjs.com](https://www.npmjs.com/package/@muibook/components?activeTab=readme) •
 [Docs](https://muibook.com) •
 [Usage](https://muibook.com) •
