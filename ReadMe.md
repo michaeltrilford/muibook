@@ -12,9 +12,6 @@ npm install @muibook/components
 
 ```javascript
 import "@muibook/components"; // All
-```
-
-```javascript
 import "@muibook/components/mui-body"; // Individual
 ```
 
