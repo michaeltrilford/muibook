@@ -1,6 +1,4 @@
-# Muibook
-
-## 📖 NPM Package: @muibook/components
+# 📦 NPM Package: @muibook/components
 
 Reusable vanilla Web Components built with the Mui (MichaelUI) Design System. Framework-agnostic, accessible, and customisable.
 
@@ -29,7 +27,7 @@ import "@muibook/components/mui-body"; // Individual
 
 ---
 
-## Create Mui App
+# Create Mui App
 
 Kickstart your project with a lightweight scaffold built on Vite. It comes preloaded with foundational CSS resets, a solid base structure, and design tokens ready to be customised for your brand.
 
@@ -43,7 +41,7 @@ Learn more at [Muibook.com](https://muibook.com/#/create-mui-app)
 
 ---
 
-## Muibook Documentation
+# Muibook Wesbite
 
 Muibook is the home of the Mui Design System (MichaelUI) — native Web Components with clean, composable patterns that help you write less code.
 
