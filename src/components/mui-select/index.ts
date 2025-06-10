@@ -121,7 +121,6 @@ class MuiSelect extends HTMLElement {
         :host {
           display: inline-block;
           width: 100%;
-          position: relative;
         }
         label {
           font-size: var(--text-font-size);
@@ -245,12 +244,13 @@ class MuiSelect extends HTMLElement {
 
       </style>
       ${label ? /*html*/ `<label for="${id}" class="${hideLabel ? "vh" : ""}">${label}</label>` : ""}
-    <select class="${variantClass}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} ${
-      disabled ? "disabled" : ""
-    } >
-        ${optionsHTML}
-      </select>
-      <mui-icon-down-chevron class="chevron" size="x-small"></mui-icon-down-chevron>
+      <div style="position: relative;">
+        <select class="${variantClass}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} 
+        ${disabled ? "disabled" : ""}>
+          ${optionsHTML}
+        </select>
+        <mui-icon-down-chevron class="chevron" size="x-small"></mui-icon-down-chevron>
+      </div>
     `;
 
     this.shadowRoot.innerHTML = html;
