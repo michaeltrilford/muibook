@@ -263,6 +263,41 @@ class appNavbar extends HTMLElement {
       }
     });
   }
+
+  connectedCallback() {
+    const mobileNav = this.shadowRoot.querySelector("#mobile");
+
+    const setOverflowHidden = (shouldHide) => {
+      document.documentElement.style.overflow = shouldHide ? "hidden" : "";
+      document.body.style.overflow = shouldHide ? "hidden" : "";
+    };
+
+    const checkAndUpdateOverflow = () => {
+      const isOpen = mobileNav.hasAttribute("open");
+      const isHovered = this._isHovered;
+      setOverflowHidden(isOpen || isHovered);
+    };
+
+    // Track hover state
+    this._isHovered = false;
+    this.addEventListener("mouseenter", () => {
+      this._isHovered = true;
+      checkAndUpdateOverflow();
+    });
+    this.addEventListener("mouseleave", () => {
+      this._isHovered = false;
+      checkAndUpdateOverflow();
+    });
+
+    // Observe "open" attribute on mobile nav
+    const observer = new MutationObserver(() => checkAndUpdateOverflow());
+    observer.observe(mobileNav, { attributes: true, attributeFilter: ["open"] });
+
+    this._mobileNavObserver = observer;
+
+    // Initial state check
+    checkAndUpdateOverflow();
+  }
 }
 
 customElements.define("app-navbar", appNavbar);

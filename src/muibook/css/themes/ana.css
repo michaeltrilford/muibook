@@ -52,9 +52,9 @@ html[data-brand="ana"] {
   --ana-orange-50: #fff8e1;
   --ana-orange-100: #fff3e0;
   --ana-orange-300: #ffcc80;
-  --ana-orange-500: #ff6f00;
-  --ana-orange-600: #ffa000;
-  --ana-orange-700: #e65100;
+  --ana-orange-500: #ffa000;
+  --ana-orange-600: #ff6f00;
+  --ana-orange-700: #d14a00;
 
   --ana-red-50: #fcebea;
   --ana-red-100: #fce4ec;
@@ -87,7 +87,7 @@ html[data-brand="ana"][data-theme="light"] {
   --feedback-attention-background: var(--ana-red-50);
 
   --feedback-neutral-icon: var(--ana-grey-500);
-  --feedback-positive-icon: var(--ana-green-500);
+  --feedback-positive-icon: var(--ana-green-600);
   --feedback-info-icon: var(--ana-blue-500);
   --feedback-warning-icon: var(--ana-orange-700);
   --feedback-attention-icon: var(--ana-red-600);

@@ -69,7 +69,7 @@ html[data-brand="jal"] {
   --jal-yellow-600: #ffb300;
   --jal-yellow-700: #ffa000;
   --jal-yellow-800: #ff8f00;
-  --jal-yellow-900: #ff6f00;
+  --jal-yellow-900: #c87100;
   /* Brand Gold Scale */
   --brand-gold-50: #fdf9ec;
   --brand-gold-100: #f9f0d0;
@@ -92,10 +92,10 @@ html[data-brand="jal"] {
 html[data-brand="jal"][data-theme="light"] {
   /* Feedback */
   --feedback-neutral-border-color: var(--black-opacity-20);
-  --feedback-positive-border-color: var(--jal-green-100);
-  --feedback-info-border-color: var(--jal-blue-100);
-  --feedback-warning-border-color: var(--jal-yellow-100);
-  --feedback-attention-border-color: var(--jal-red-100);
+  --feedback-positive-border-color: var(--jal-green-500);
+  --feedback-info-border-color: var(--jal-blue-400);
+  --feedback-warning-border-color: var(--jal-yellow-800);
+  --feedback-attention-border-color: var(--jal-red-300);
 
   --feedback-neutral-background: var(--jal-white);
   --feedback-positive-background: var(--jal-green-50);
@@ -105,15 +105,15 @@ html[data-brand="jal"][data-theme="light"] {
 
   --feedback-neutral-icon: var(--jal-grey-500);
   --feedback-positive-icon: var(--jal-green-500);
-  --feedback-info-icon: var(--jal-blue-500);
-  --feedback-warning-icon: var(--jal-yellow-500);
-  --feedback-attention-icon: var(--jal-red-500);
+  --feedback-info-icon: var(--jal-blue-400);
+  --feedback-warning-icon: var(--jal-yellow-900);
+  --feedback-attention-icon: var(--jal-red-400);
 
   --feedback-neutral-text: var(--jal-grey-700);
   --feedback-positive-text: var(--jal-green-700);
-  --feedback-info-text: var(--jal-blue-700);
-  --feedback-warning-text: var(--jal-yellow-700);
-  --feedback-attention-text: var(--jal-red-700);
+  --feedback-info-text: var(--jal-blue-500);
+  --feedback-warning-text: var(--jal-yellow-900);
+  --feedback-attention-text: var(--jal-red-400);
 
   --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
   --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
@@ -227,22 +227,22 @@ html[data-brand="jal"][data-theme="dark"] {
   /* Feedback */
 
   --feedback-neutral-border-color: var(--white-opacity-30);
-  --feedback-positive-border-color: var(--jal-green-800);
-  --feedback-info-border-color: var(--jal-blue-800);
-  --feedback-warning-border-color: var(--jal-yellow-800);
-  --feedback-attention-border-color: var(--jal-red-800);
+  --feedback-positive-border-color: var(--jal-green-700);
+  --feedback-info-border-color: var(--jal-blue-500);
+  --feedback-warning-border-color: var(--jal-yellow-500);
+  --feedback-attention-border-color: var(--jal-red-500);
 
   --feedback-neutral-background: var(--jal-grey-700);
   --feedback-positive-background: var(--jal-green-900);
-  --feedback-info-background: var(--jal-blue-900);
+  --feedback-info-background: var(--jal-blue-800);
   --feedback-warning-background: var(--jal-yellow-900);
-  --feedback-attention-background: var(--jal-red-900);
+  --feedback-attention-background: var(--jal-red-800);
 
   --feedback-neutral-icon: var(--jal-grey-300);
-  --feedback-positive-icon: var(--jal-green-300);
-  --feedback-info-icon: var(--jal-blue-300);
-  --feedback-warning-icon: var(--jal-yellow-300);
-  --feedback-attention-icon: var(--jal-red-300);
+  --feedback-positive-icon: var(--jal-green-100);
+  --feedback-info-icon: var(--jal-blue-100);
+  --feedback-warning-icon: var(--jal-yellow-100);
+  --feedback-attention-icon: var(--jal-red-100);
 
   --feedback-neutral-text: var(--jal-grey-100);
   --feedback-positive-text: var(--jal-green-100);
