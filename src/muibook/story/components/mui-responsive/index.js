@@ -35,16 +35,16 @@ class storyResponsive extends HTMLElement {
       </div>
     `;
 
-    const ProgressTableColumns = `1fr 1fr 1fr 106px`;
+    const ProgressTableColumns = `1fr 1fr 1fr 126px`;
 
     const ProgressTableView = /*html*/ `
       <mui-table> 
         <mui-row-group heading> 
           <mui-row columns="${ProgressTableColumns}"> 
-            <mui-cell heading>File</mui-cell> 
-            <mui-cell heading>Due date</mui-cell> 
-            <mui-cell heading>Status</mui-cell> 
-            <mui-cell heading>Automation</mui-cell> 
+            <mui-cell>File</mui-cell> 
+            <mui-cell>Due date</mui-cell> 
+            <mui-cell>Status</mui-cell> 
+            <mui-cell>Automation</mui-cell> 
           </mui-row> 
         </mui-row-group> 
         <mui-row-group> 

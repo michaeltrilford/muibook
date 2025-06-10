@@ -21,6 +21,7 @@ class MuiRow extends HTMLElement {
         padding: var(--space-300) var(--space-000);
         border-top: var(--border-thin);
         align-items: center;
+        min-height: 4.4rem;
       }
     </style>
     <slot></slot>

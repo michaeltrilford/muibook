@@ -14,8 +14,8 @@ class MuiRowGroup extends HTMLElement {
       }
       :host([heading]) {
         display: block;
+        font-weight: var(--font-weight-bold);
       }
-
       :host([heading]) ::slotted(mui-row) {
         border: none;
       }

@@ -13,12 +13,13 @@ class MuiCell extends HTMLElement {
       justify-content: space-between;
       align-self: ${this.getAttribute("align-y") || "initial"};
       text-align: left;
+
     }
     :host(*:first-of-type) {
-      padding-left: var(--space-600);
+      padding-left: var(--space-400);
     }
     :host(*:last-of-type) {
-      padding-right: var(--space-600);
+      padding-right: var(--space-400);
     }
 
     /* Card Slot (Supports: Table Cell, Accordion Block) */
@@ -29,6 +30,12 @@ class MuiCell extends HTMLElement {
       padding-right: var(--space-500);
     }
     @media (min-width: 768px) {
+      :host(*:first-of-type) {
+        padding-left: var(--space-600);
+      }
+      :host(*:last-of-type) {
+        padding-right: var(--space-600);
+      }
       :host(.card-slot:first-of-type) {
         padding-left: var(--space-600);
       }
@@ -39,17 +46,11 @@ class MuiCell extends HTMLElement {
 
     :host([checkbox]) {
       width: auto;
-      padding: 0;
       text-align: center;
     }
     :host([action]) {
       width: 4.4rem;
       height: 4.4rem;
-      padding: 0;
-      padding-right: var(--space-300);
-    }
-    :host([heading]) {
-      font-weight: bold;
     }
   `;
 
