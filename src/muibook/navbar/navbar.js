@@ -265,6 +265,7 @@ class appNavbar extends HTMLElement {
   }
 
   connectedCallback() {
+    const desktopNav = this.shadowRoot.querySelector("#desktop");
     const mobileNav = this.shadowRoot.querySelector("#mobile");
 
     const setOverflowHidden = (shouldHide) => {
@@ -273,29 +274,45 @@ class appNavbar extends HTMLElement {
     };
 
     const checkAndUpdateOverflow = () => {
-      const isOpen = mobileNav.hasAttribute("open");
       const isHovered = this._isHovered;
-      setOverflowHidden(isOpen || isHovered);
+      const isMobileOpen = mobileNav?.hasAttribute("open");
+      setOverflowHidden(isHovered || isMobileOpen);
     };
 
-    // Track hover state
+    // Track hover state for desktop
     this._isHovered = false;
-    this.addEventListener("mouseenter", () => {
+
+    const handleMouseEnter = () => {
       this._isHovered = true;
       checkAndUpdateOverflow();
-    });
-    this.addEventListener("mouseleave", () => {
+    };
+
+    const handleMouseLeave = () => {
       this._isHovered = false;
       checkAndUpdateOverflow();
-    });
+    };
 
-    // Observe "open" attribute on mobile nav
-    const observer = new MutationObserver(() => checkAndUpdateOverflow());
-    observer.observe(mobileNav, { attributes: true, attributeFilter: ["open"] });
+    if (desktopNav) {
+      desktopNav.addEventListener("mouseenter", handleMouseEnter);
+      desktopNav.addEventListener("mouseleave", handleMouseLeave);
+    }
 
-    this._mobileNavObserver = observer;
+    // Observe mobile 'open' attribute
+    let observer = null;
+    if (mobileNav) {
+      observer = new MutationObserver(checkAndUpdateOverflow);
+      observer.observe(mobileNav, { attributes: true, attributeFilter: ["open"] });
+    }
 
-    // Initial state check
+    // Save references for cleanup
+    this._cleanup = () => {
+      if (desktopNav) {
+        desktopNav.removeEventListener("mouseenter", handleMouseEnter);
+        desktopNav.removeEventListener("mouseleave", handleMouseLeave);
+      }
+      if (observer) observer.disconnect();
+    };
+
     checkAndUpdateOverflow();
   }
 }
