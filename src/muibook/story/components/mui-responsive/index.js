@@ -37,7 +37,7 @@ class storyResponsive extends HTMLElement {
 
     const ProgressTableColumns = `1fr 1fr 1fr 126px`;
 
-    const ProgressTableView = /*html*/ `
+    const ProgressDesktopView = /*html*/ `
       <mui-table> 
         <mui-row-group heading> 
           <mui-row columns="${ProgressTableColumns}"> 
@@ -58,7 +58,7 @@ class storyResponsive extends HTMLElement {
       </mui-table>
     `;
 
-    const ProgressSlatView = /*html*/ `
+    const ProgressMobileView = /*html*/ `
         <mui-v-stack space="var(--space-400)">
           ${LocalRing}
           <mui-heading 
@@ -121,14 +121,14 @@ class storyResponsive extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Table to Mobile Layout">
+        <story-card title="Table: Desktop to Mobile">
 
           <mui-responsive slot="body" breakpoint="1080">
             <mui-h-stack slot="showAbove" space="16px" alignY="center">
-              ${ProgressTableView}
+              ${ProgressDesktopView}
             </mui-h-stack>
             <div slot="showBelow">
-              ${ProgressSlatView}
+              ${ProgressMobileView}
             </div>
           </mui-responsive>
 
@@ -136,16 +136,26 @@ class storyResponsive extends HTMLElement {
             &lt;mui-responsive breakpoint="600"&gt;
             <br />
             <br />
+            &nbsp;&nbsp;// Desktop Composition
+            <br>
+            &nbsp;&nbsp;/////////////////////////////////////
+            <br>
+            <br>
             &nbsp;&nbsp;&lt;div slot="showAbove"&gt;
             <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&#x24;{ProgressTableView}
+              &nbsp;&nbsp;&nbsp;&nbsp;&#x24;{ProgressDesktopView}
             <br />
             &nbsp;&nbsp;&lt;/div&gt;
             <br />
             <br />
+            &nbsp;&nbsp;// Mobile Composition
+            <br>
+            &nbsp;&nbsp;/////////////////////////////////////
+            <br>
+            <br>
             &nbsp;&nbsp;&lt;div slot="showBelow"&gt;
             <br />
-             &nbsp;&nbsp;&nbsp;&nbsp; &#x24;{ProgressSlatView}
+             &nbsp;&nbsp;&nbsp;&nbsp; &#x24;{ProgressMobileView}
             <br />
             &nbsp;&nbsp;&lt;/div&gt;
             <br />

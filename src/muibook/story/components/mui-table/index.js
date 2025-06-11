@@ -28,16 +28,62 @@ class storyTable extends HTMLElement {
       }
     `;
 
-    const Columns = `1fr 1fr auto`;
-
-    const propItems = [
+    const tablePropItems = [
       {
-        name: "text",
+        name: "slot",
         required: true,
-        type: "string",
-        options: "{text}",
+        type: "HTML attribute",
+        options: "mui-row-group",
+        default: "(required)",
+        description: "Houses the table content",
+      },
+    ];
+
+    const rowGroupPropItems = [
+      {
+        name: "slot",
+        required: true,
+        type: "HTML attribute",
+        options: "mui-row",
+        default: "(required)",
+        description: "Houses the table rows",
+      },
+      {
+        name: "header",
+        type: "boolean",
+        options: "header",
         default: "",
-        description: "Provides the text for the cell element",
+        description: "Defines the table header",
+      },
+    ];
+
+    const rowPropItems = [
+      {
+        name: "slot",
+        required: true,
+        type: "HTML attribute",
+        options: "mui-cell",
+        default: "(required)",
+        description: "Populate the table rows",
+      },
+      {
+        name: "columns",
+        type: "string",
+        options: "1fr 1fr 1fr, 1fr 1fr auto, ...",
+        default: "",
+        description:
+          "Define the overall table layout using the grid-template-columns CSS property. Any valid grid-template-columns value can be used to control column sizing and distribution.",
+      },
+    ];
+
+    const cellPropItems = [
+      {
+        name: "slot",
+        required: true,
+        type: "HTML attribute",
+        options: "text, elements",
+        default: "(required)",
+        description: "Provides the content for the cell element",
       },
       {
         name: "heading",
@@ -47,16 +93,32 @@ class storyTable extends HTMLElement {
         description: "Define the heading styles for the table",
       },
       {
-        name: "class",
-        type: "CSS class",
-        options: "card-slot",
+        name: "action",
+        type: "boolean",
+        options: "action",
         default: "",
         description:
-          "By default, when Table is slotted into the mui-card, padding is automatically added. However, if the mui-accordion is nested within a shadow dom, you have to apply the class for correct padding",
+          "When a single action is added—typically in the last column—use the action boolean to apply it to both the cell and its header. Set the corresponding column width on the row to auto to ensure proper sizing.",
+      },
+      {
+        name: "checkbox",
+        type: "boolean",
+        options: "checkbox",
+        default: "",
+        description:
+          "When a checkbox is added—typically in the first column—use the checkbox boolean to apply it to both the cell and its header. Set the corresponding column width on the row to auto to ensure proper sizing.",
+      },
+      {
+        name: "class",
+        type: "CSS class",
+        options: "",
+        default: "",
+        description:
+          "An alternative to using the action boolean when adding custom elements to a column. Allows for more control by applying a custom CSS class to style the table. Not limited to the last column.",
       },
     ];
 
-    const rows = propItems
+    const cellRows = cellPropItems
       .map(
         (prop) => /*html*/ `
           <story-type-row
@@ -71,10 +133,130 @@ class storyTable extends HTMLElement {
       )
       .join("");
 
-    const accordions = propItems
+    const cellAccordions = cellPropItems
       .map((prop, index) => {
         // Check if it's the last item in the array
-        const isLastChild = index === propItems.length - 1 ? "last-child" : "";
+        const isLastChild = index === cellPropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+            <mui-accordion-block
+              style="position: relative; z-index: 1;" 
+              size="medium" 
+              heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+              ${isLastChild}>
+              <story-type-slat
+                slot="detail"
+                ${prop.required ? "required" : ""}
+                name="${prop.name}"
+                type="${prop.type}" 
+                options="${prop.options || ""}"
+                default="${prop.default || ""}"
+                description="${prop.description}">
+              </story-type-slat>
+            </mui-accordion-block>
+          `;
+      })
+      .join("");
+
+    const rowRows = rowPropItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const rowAccordions = rowPropItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === rowPropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+            <mui-accordion-block
+              style="position: relative; z-index: 1;" 
+              size="medium" 
+              heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+              ${isLastChild}>
+              <story-type-slat
+                slot="detail"
+                ${prop.required ? "required" : ""}
+                name="${prop.name}"
+                type="${prop.type}" 
+                options="${prop.options || ""}"
+                default="${prop.default || ""}"
+                description="${prop.description}">
+              </story-type-slat>
+            </mui-accordion-block>
+          `;
+      })
+      .join("");
+
+    const rowGroupRows = rowGroupPropItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const rowGroupAccordions = rowGroupPropItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === rowGroupPropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+            <mui-accordion-block
+              style="position: relative; z-index: 1;" 
+              size="medium" 
+              heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+              ${isLastChild}>
+              <story-type-slat
+                slot="detail"
+                ${prop.required ? "required" : ""}
+                name="${prop.name}"
+                type="${prop.type}" 
+                options="${prop.options || ""}"
+                default="${prop.default || ""}"
+                description="${prop.description}">
+              </story-type-slat>
+            </mui-accordion-block>
+          `;
+      })
+      .join("");
+
+    const tableRows = tablePropItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const tableAccordions = tablePropItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === tablePropItems.length - 1 ? "last-child" : "";
 
         return /*html*/ `
             <mui-accordion-block
@@ -112,12 +294,14 @@ class storyTable extends HTMLElement {
       </div>
     `;
 
-    const ProgressTableColumns = `1fr 1fr 1fr 126px`;
+    const Columns = `1fr 1fr 1fr`;
+    const Columns_Action = `1fr 1fr auto`;
+    const Columns_ProgressTable = `1fr 1fr 1fr 126px`;
 
-    const ProgressTableView = /*html*/ `
+    const ProgressDesktopView = /*html*/ `
       <mui-table> 
         <mui-row-group heading> 
-          <mui-row columns="${ProgressTableColumns}"> 
+          <mui-row columns="${Columns_ProgressTable}"> 
             <mui-cell>File</mui-cell> 
             <mui-cell>Due date</mui-cell> 
             <mui-cell>Status</mui-cell> 
@@ -125,7 +309,7 @@ class storyTable extends HTMLElement {
           </mui-row> 
         </mui-row-group> 
         <mui-row-group> 
-          <mui-row columns="${ProgressTableColumns}"> 
+          <mui-row columns="${Columns_ProgressTable}"> 
             <mui-cell align-y="center"><mui-body size="small">Alison Max</mui-body></mui-cell> 
             <mui-cell align-y="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-badge>Quarterly</mui-badge></mui-v-stack></mui-cell> 
             <mui-cell align-y="center"><mui-badge>Unlodged</mui-badge></mui-cell> 
@@ -135,7 +319,7 @@ class storyTable extends HTMLElement {
       </mui-table>
     `;
 
-    const ProgressSlatView = /*html*/ `
+    const ProgressMobileView = /*html*/ `
         <mui-v-stack space="var(--space-400)">
           ${LocalRing}
           <mui-heading 
@@ -165,6 +349,29 @@ class storyTable extends HTMLElement {
         </mui-v-stack>
     `;
 
+    const TableData = [
+      {
+        name: "Figma",
+        billed: "Monthly",
+        cost: "$20.00",
+      },
+      {
+        name: "Sketch",
+        billed: "Monthly",
+        cost: "$12.00",
+      },
+    ];
+
+    const TableRow = TableData.map(
+      (prop) => /*html*/ `
+        <mui-row columns="${Columns}">
+          <mui-cell>${prop.name}</mui-cell>
+          <mui-cell><mui-badge>${prop.billed}</mui-badge></mui-cell>
+          <mui-cell>${prop.cost}</mui-cell>
+        </mui-row>
+      `
+    ).join("");
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -182,22 +389,142 @@ class storyTable extends HTMLElement {
             </mui-code>
           </spec-card>
 
-        <spec-card title="Props: Cell">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+          <spec-card title="Props: Table">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${tableRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${tableAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </spec-card>
+
+          <spec-card title="Props: RowGroup">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rowGroupRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${rowGroupAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </spec-card>
+
+          <spec-card title="Props: Row">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rowRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${rowAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </spec-card>
+
+          <spec-card title="Props: Cell">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${cellRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${cellAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </spec-card>
 
           <story-card title="Table">
             <div class="canvas" slot="body">
               <mui-table>
                 <mui-row-group heading>
-                  <mui-row columns="1fr 1fr auto">
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Col One</mui-cell>
+                    <mui-cell>Col Two</mui-cell>
+                    <mui-cell>Col Three</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Col One</mui-cell>
+                    <mui-cell>Col Two</mui-cell>
+                    <mui-cell>Col Three</mui-cell>
+                  </mui-row>
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Col One</mui-cell>
+                    <mui-cell>Col Two</mui-cell>
+                    <mui-cell>Col Three</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <mui-code slot="footer">
+              const Columns = &#96;1fr 1fr 1fr&#96;;<br>
+              <br>
+              &lt;mui-table&gt;
+              <br />
+              <br />
+              &nbsp;&nbsp;// Table Header
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br />
+              <br />
+              &nbsp;&nbsp;&lt;mui-row-group heading&gt;
+              <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
+                <br />
+              &nbsp;&nbsp;&lt;/mui-row-group&gt;
+              <br />
+              <br />
+              &nbsp;&nbsp;// Table Body
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br />
+              <br />
+              &nbsp;&nbsp;&lt;mui-row-group&gt;
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
+                <br />
+              &nbsp;&nbsp;&lt;/mui-row-group&gt;
+              <br />
+              <br />
+              &lt;/mui-table&gt;
+            </mui-code>
+          </story-card>
+
+          <story-card 
+            title="Table w/ Action"
+            description="When a single action is added, it is usually placed in the last column. Use the action boolean to apply it to both the cell and its header. Set the corresponding column width on the row to auto to ensure proper sizing."          
+          >
+            <div class="canvas" slot="body">
+              <mui-table>
+                <mui-row-group heading>
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Office</mui-cell>
                     <mui-cell>Cost</mui-cell>
                     <mui-cell action>
@@ -205,14 +532,14 @@ class storyTable extends HTMLElement {
                   </mui-row>
                 </mui-row-group>
                 <mui-row-group>
-                  <mui-row columns="1fr 1fr auto">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
                       <mui-button variant="tertiary" > <mui-icon-add></mui-icon-add></mui-button>
                     </mui-cell>
                   </mui-row>
-                  <mui-row columns="1fr 1fr auto">
+                  <mui-row columns="${Columns_Action}">
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
@@ -223,11 +550,19 @@ class storyTable extends HTMLElement {
               </mui-table>
             </div>
             <mui-code slot="footer">
+              const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
+              <br>
               &lt;mui-table&gt;
+              <br />
+              <br />
+              &nbsp;&nbsp;// Table Header
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br />
               <br />
               &nbsp;&nbsp;&lt;mui-row-group heading&gt;
               <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="1fr 1fr auto"&gt;
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;
                   <br />
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
                   <br />
@@ -238,10 +573,26 @@ class storyTable extends HTMLElement {
                 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
                 <br />
               &nbsp;&nbsp;&lt;/mui-row-group&gt;
+              <br />
+              <br />
+              &nbsp;&nbsp;// Table Body
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br />
               <br />
               &nbsp;&nbsp;&lt;mui-row-group&gt;
-              <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="1fr 1fr auto"&gt;
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;...&lt;/mui-cell&gt;
+                  <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;
                   <br />
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
                   <br />
@@ -252,19 +603,117 @@ class storyTable extends HTMLElement {
                 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
                 <br />
               &nbsp;&nbsp;&lt;/mui-row-group&gt;
+              <br />
               <br />
               &lt;/mui-table&gt;
             </mui-code>
           </story-card>
 
-          <story-card title="Responsive table">
+          <story-card 
+            title="Mapping Data"
+            description="Use the .map() method to dynamically inject rows into your table based on your data set."
+          >
+            <div class="canvas" slot="body">
+              <mui-table>
+                <mui-row-group heading>
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Name</mui-cell>
+                    <mui-cell>Billed</mui-cell>
+                    <mui-cell>Cost</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  ${TableRow}
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <mui-code slot="footer">
+              <br />
+              <br />
+              &nbsp;&nbsp;// Table Data
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br />
+              <br />
+              &nbsp;&nbsp;const TableData = [<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: &quot;Figma&quot;,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;billed: &quot;Monthly&quot;,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cost: &quot;$20.00&quot;,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: &quot;Sketch&quot;,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;billed: &quot;Monthly&quot;,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cost: &quot;$12.00&quot;,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+              &nbsp;&nbsp;];<br>
+              <br />
+              <br />
+              &nbsp;&nbsp;// Map Data to Component
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br />
+              <br />
+              &nbsp;&nbsp;const TableRow = TableData.map(<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;(prop) =&gt; /*html*/ &#96;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns=&quot;\${Columns}&quot;&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;\${prop.name}&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge&gt;\${prop.billed}&lt;/mui-badge&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;\${prop.cost}&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&#96;<br>
+              &nbsp;&nbsp;).join(&quot;&quot;);<br>
+              <br>
+              <br>
+              &lt;mui-table&gt;
+              <br />
+              <br />
+              &nbsp;&nbsp;// Table Header
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br />
+              <br />
+              &nbsp;&nbsp;&lt;mui-row-group heading&gt;
+              <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Name&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Billed&lt;/mui-cell&gt;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Cost&lt;/mui-cell&gt;
+                  <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
+                <br />
+              &nbsp;&nbsp;&lt;/mui-row-group&gt;
+              <br />
+              <br />
+              &nbsp;&nbsp;// Table Body
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br />
+              <br />
+              &nbsp;&nbsp;&lt;mui-row-group&gt;
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp; &#x24;{TableRow}
+              <br />
+              &nbsp;&nbsp;&lt;/mui-row-group&gt;
+              <br />
+              <br />
+              &lt;/mui-table&gt;
+            </mui-code>
+          </story-card>
+
+          <story-card title="Responsive Table" github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-table/index.js">
             <div class="canvas" slot="body">
               <mui-responsive breakpoint="1080">
                 <mui-h-stack slot="showAbove" space="16px" alignY="center">
-                  ${ProgressTableView}
+                  ${ProgressDesktopView}
                 </mui-h-stack>
                 <div slot="showBelow">
-                  ${ProgressSlatView}
+                  ${ProgressMobileView}
                 </div>
               </mui-responsive>
             </div>
@@ -272,16 +721,27 @@ class storyTable extends HTMLElement {
               &lt;mui-responsive breakpoint="600"&gt;
               <br />
               <br />
+
+              &nbsp;&nbsp;// Desktop Composition
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br>
+              <br>
               &nbsp;&nbsp;&lt;div slot="showAbove"&gt;
               <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&#x24;{ProgressTableView}
+                &nbsp;&nbsp;&nbsp;&nbsp;&#x24;{ProgressDesktopView}
               <br />
               &nbsp;&nbsp;&lt;/div&gt;
               <br />
               <br />
+              &nbsp;&nbsp;// Mobile Composition
+              <br>
+              &nbsp;&nbsp;/////////////////////////////////////
+              <br>
+              <br>
               &nbsp;&nbsp;&lt;div slot="showBelow"&gt;
               <br />
-              &nbsp;&nbsp;&nbsp;&nbsp; &#x24;{ProgressSlatView}
+              &nbsp;&nbsp;&nbsp;&nbsp; &#x24;{ProgressMobileView}
               <br />
               &nbsp;&nbsp;&lt;/div&gt;
               <br />
@@ -290,156 +750,189 @@ class storyTable extends HTMLElement {
             </mui-code>
           </story-card>
 
-        <story-card title="Card w/ Table">
-          <div slot="body">
-            <mui-card>
-              <mui-card-body>
-                <mui-table>
-                  <mui-row-group heading>
-                    <mui-row columns="${Columns}">
-                      <mui-cell>Office</mui-cell>
-                      <mui-cell>Cost</mui-cell>
-                      <mui-cell action></mui-cell>
-                    </mui-row>
-                  </mui-row-group>
-                  <mui-row-group>
-                    <mui-row columns="${Columns}">
-                      <mui-cell>Whalen</mui-cell>
-                      <mui-cell>$1,100.00</mui-cell>
-                      <mui-cell action>
-                        <mui-button variant="tertiary" > <mui-icon-add></mui-icon-add></mui-button>
-                      </mui-cell>
-                    </mui-row>
-                    <mui-row columns="${Columns}">
-                      <mui-cell>Whalen</mui-cell>
-                      <mui-cell>$1,100.00</mui-cell>
-                      <mui-cell action>
-                        <mui-button variant="tertiary"> <mui-icon-add></mui-icon-add></mui-button>
-                      </mui-cell>
-                    </mui-row>
-                  </mui-row-group>
-                </mui-table>
-              </mui-card-body>
-            </mui-card>
-          </div>
-          <mui-code slot="footer">
-            const Columns = &#96;1fr 1fr auto&#96;;<br>
-            <br>
-            &lt;mui-card&gt;<br>
-            &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-table&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group heading&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-table&gt;<br>
-            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
-            &lt;/mui-card&gt;
-          </mui-code>
-        </story-card>
+          <story-card 
+            title="Card with Table"
+            description="When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout."
+          >
+            <div slot="body">
+              <mui-card>
+                <mui-card-body>
+                  <mui-table>
+                    <mui-row-group heading>
+                      <mui-row columns="${Columns_Action}">
+                        <mui-cell>Office</mui-cell>
+                        <mui-cell>Cost</mui-cell>
+                        <mui-cell action></mui-cell>
+                      </mui-row>
+                    </mui-row-group>
+                    <mui-row-group>
+                      <mui-row columns="${Columns_Action}">
+                        <mui-cell>Whalen</mui-cell>
+                        <mui-cell>$1,100.00</mui-cell>
+                        <mui-cell action>
+                          <mui-button variant="tertiary" > <mui-icon-add></mui-icon-add></mui-button>
+                        </mui-cell>
+                      </mui-row>
+                      <mui-row columns="${Columns_Action}">
+                        <mui-cell>Whalen</mui-cell>
+                        <mui-cell>$1,100.00</mui-cell>
+                        <mui-cell action>
+                          <mui-button variant="tertiary"> <mui-icon-add></mui-icon-add></mui-button>
+                        </mui-cell>
+                      </mui-row>
+                    </mui-row-group>
+                  </mui-table>
+                </mui-card-body>
+              </mui-card>
+            </div>
+            <mui-code slot="footer">
+              const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
+              <br>
+              &lt;mui-card&gt;<br>
+              &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-table&gt;
+              <br />
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Table Header
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/////////////////////////////////////
+              <br />
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group heading&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;
+              <br />
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Table Body
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/////////////////////////////////////
+              <br />
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-table&gt;<br>
+              &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
+              &lt;/mui-card&gt;
+            </mui-code>
+          </story-card>
 
-        <story-card title="Card Header w/ Table" description="You can add in a mui-rule to help add a division between the header and body of the card">
-          <div slot="body">
-            <mui-card>
-              <mui-card-header>
-                <mui-heading size="3">Title</mui-heading>
-              </mui-card-header>
-              <mui-rule></mui-rule>
-              <mui-card-body>
-                <mui-table>
-                  <mui-row-group heading>
-                    <mui-row columns="${Columns}">
-                      <mui-cell>Office</mui-cell>
-                      <mui-cell>Cost</mui-cell>
-                      <mui-cell action>
-                      </mui-cell>
-                    </mui-row>
-                  </mui-row-group>
-                  <mui-row-group>
-                    <mui-row columns="${Columns}">
-                      <mui-cell data-label="Office:">Whalen</mui-cell>
-                      <mui-cell data-label="Cost:">$1,100.00</mui-cell>
-                      <mui-cell data-label="" action>
-                        <mui-button variant="tertiary" > <mui-icon-add></mui-icon-add></mui-button>
-                      </mui-cell>
-                    </mui-row>
-                    <mui-row columns="${Columns}">
-                      <mui-cell data-label="Office:">Whalen</mui-cell>
-                      <mui-cell data-label="Cost:">$1,100.00</mui-cell>
-                      <mui-cell data-label="" action>
-                        <mui-button variant="tertiary" > <mui-icon-add></mui-icon-add></mui-button>
-                      </mui-cell>
-                    </mui-row>
-                  </mui-row-group>
-                </mui-table>
-              </mui-card-body>
-            </mui-card>
-          </div>
-          <mui-code slot="footer">
-            const Columns = &#96;1fr 1fr auto&#96;;<br>
-            <br>
-            &lt;mui-card&gt;<br>
-            &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;Title&lt;/mui-heading&gt;<br>
-            &nbsp;&nbsp;&lt;/mui-card-header&gt;<br>
-            &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
-            &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-table&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group heading&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-table&gt;<br>
-            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
-            &lt;/mui-card&gt;
-          </mui-code>
-        </story-card>
+          <story-card title="Card Header w/ Table" description="You can add in a mui-rule to help add a division between the header and body of the card">
+            <div slot="body">
+              <mui-card>
+                <mui-card-header>
+                  <mui-heading size="3">Title</mui-heading>
+                </mui-card-header>
+                <mui-rule></mui-rule>
+                <mui-card-body>
+                  <mui-table>
+                    <mui-row-group heading>
+                      <mui-row columns="${Columns_Action}">
+                        <mui-cell>Office</mui-cell>
+                        <mui-cell>Cost</mui-cell>
+                        <mui-cell action>
+                        </mui-cell>
+                      </mui-row>
+                    </mui-row-group>
+                    <mui-row-group>
+                      <mui-row columns="${Columns_Action}">
+                        <mui-cell data-label="Office:">Whalen</mui-cell>
+                        <mui-cell data-label="Cost:">$1,100.00</mui-cell>
+                        <mui-cell data-label="" action>
+                          <mui-button variant="tertiary" ><mui-icon-add></mui-icon-add></mui-button>
+                        </mui-cell>
+                      </mui-row>
+                      <mui-row columns="${Columns_Action}">
+                        <mui-cell data-label="Office:">Whalen</mui-cell>
+                        <mui-cell data-label="Cost:">$1,100.00</mui-cell>
+                        <mui-cell data-label="" action>
+                          <mui-button variant="tertiary" ><mui-icon-add></mui-icon-add></mui-button>
+                        </mui-cell>
+                      </mui-row>
+                    </mui-row-group>
+                  </mui-table>
+                </mui-card-body>
+              </mui-card>
+            </div>
+            <mui-code slot="footer">
+              const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
+              <br>
+              &lt;mui-card&gt;<br>
+              &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;Title&lt;/mui-heading&gt;<br>
+              &nbsp;&nbsp;&lt;/mui-card-header&gt;<br>
+              &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+              &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-table&gt;
+              <br />
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Table Header
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/////////////////////////////////////
+              <br />
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group heading&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
+              <br />
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Table Body
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/////////////////////////////////////             
+              <br />
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-table&gt;<br>
+              &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
+              &lt;/mui-card&gt;
+            </mui-code>
+          </story-card>
 
         </mui-v-stack>
 
