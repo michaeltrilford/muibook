@@ -377,8 +377,15 @@ class storyTable extends HTMLElement {
 
       <story-template 
         title="Table"
-        description="An HTML table consists of one table element and one or more tr, th, and td elements."
+        description="Unlike traditional HTML tables that use table, tr, th, and td elements, this system uses custom elements designed for greater flexibility and styling control. It leverages CSS Grid to give developers more control over column layout and spacing."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table"
+        accessibility="
+          mui-table uses role='table';
+          mui-row-group uses role='rowgroup';
+          mui-row uses role='row';
+          mui-cell uses role='cell';
+          Follows table semantics for screen reader support
+        "
       >
 
         <mui-v-stack space="var(--space-700)">
