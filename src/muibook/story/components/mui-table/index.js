@@ -865,16 +865,16 @@ class storyTable extends HTMLElement {
                     </mui-row-group>
                     <mui-row-group>
                       <mui-row columns="${Columns_Action}">
-                        <mui-cell data-label="Office:">Whalen</mui-cell>
-                        <mui-cell data-label="Cost:">$1,100.00</mui-cell>
-                        <mui-cell data-label="" action>
+                        <mui-cell>Whalen</mui-cell>
+                        <mui-cell>$1,100.00</mui-cell>
+                        <mui-cell action>
                           <mui-button variant="tertiary" ><mui-icon-add></mui-icon-add></mui-button>
                         </mui-cell>
                       </mui-row>
                       <mui-row columns="${Columns_Action}">
-                        <mui-cell data-label="Office:">Whalen</mui-cell>
-                        <mui-cell data-label="Cost:">$1,100.00</mui-cell>
-                        <mui-cell data-label="" action>
+                        <mui-cell>Whalen</mui-cell>
+                        <mui-cell>$1,100.00</mui-cell>
+                        <mui-cell action>
                           <mui-button variant="tertiary" ><mui-icon-add></mui-icon-add></mui-button>
                         </mui-cell>
                       </mui-row>

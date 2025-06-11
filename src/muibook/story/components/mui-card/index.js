@@ -159,18 +159,18 @@ class storyCards extends HTMLElement {
                   </mui-row-group>
                   <mui-row-group>
                     <mui-row columns="${Columns}">
-                      <mui-cell data-label="Office:">Whalen</mui-cell>
-                      <mui-cell data-label="Revenue:">$4,400.00</mui-cell>
-                      <mui-cell data-label="Cost:">$1,100.00</mui-cell>
-                      <mui-cell data-label="" action>
+                      <mui-cell>Whalen</mui-cell>
+                      <mui-cell>$4,400.00</mui-cell>
+                      <mui-cell>$1,100.00</mui-cell>
+                      <mui-cell action>
                         <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
                       </mui-cell>
                     </mui-row>
                     <mui-row columns="${Columns}">
-                      <mui-cell data-label="Office:">Whalen</mui-cell>
-                      <mui-cell data-label="Revenue:">$4,400.00</mui-cell>
-                      <mui-cell data-label="Cost:">$1,100.00</mui-cell>
-                      <mui-cell data-label="" action>
+                      <mui-cell>Whalen</mui-cell>
+                      <mui-cell>$4,400.00</mui-cell>
+                      <mui-cell>$1,100.00</mui-cell>
+                      <mui-cell action>
                         <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
                       </mui-cell>
                     </mui-row>
@@ -195,20 +195,20 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Office:"&gt;Whalen&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Revenue:"&gt;$4,400.00&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Cost:"&gt;$1,100.00&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="" action&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Whalen&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$4,400.00&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add size="small"&gt;&lt;/mui-icon-add&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Office:"&gt;Whalen&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Revenue:"&gt;$4,400.00&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Cost:"&gt;$1,100.00&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="" action&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Whalen&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$4,400.00&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add size="small"&gt;&lt;/mui-icon-add&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
@@ -244,18 +244,18 @@ class storyCards extends HTMLElement {
                   </mui-row-group>
                   <mui-row-group>
                     <mui-row columns="${Columns}">
-                      <mui-cell data-label="Office:">Whalen</mui-cell>
-                      <mui-cell data-label="Revenue:">$4,400.00</mui-cell>
-                      <mui-cell data-label="Cost:">$1,100.00</mui-cell>
-                      <mui-cell data-label="" action>
+                      <mui-cell>Whalen</mui-cell>
+                      <mui-cell>$4,400.00</mui-cell>
+                      <mui-cell>$1,100.00</mui-cell>
+                      <mui-cell action>
                         <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
                       </mui-cell>
                     </mui-row>
                     <mui-row columns="${Columns}">
-                      <mui-cell data-label="Office:">Whalen</mui-cell>
-                      <mui-cell data-label="Revenue:">$4,400.00</mui-cell>
-                      <mui-cell data-label="Cost:">$1,100.00</mui-cell>
-                      <mui-cell data-label="" action>
+                      <mui-cell>Whalen</mui-cell>
+                      <mui-cell>$4,400.00</mui-cell>
+                      <mui-cell>$1,100.00</mui-cell>
+                      <mui-cell action>
                         <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
                       </mui-cell>
                     </mui-row>
@@ -284,20 +284,20 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Office:"&gt;Whalen&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Revenue:"&gt;$4,400.00&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Cost:"&gt;$1,100.00&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="" action&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Whalen&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell"&gt;$4,400.00&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add size="small"&gt;&lt;/mui-icon-add&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Office:"&gt;Whalen&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Revenue:"&gt;$4,400.00&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="Cost:"&gt;$1,100.00&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell data-label="" action&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Whalen&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$4,400.00&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add size="small"&gt;&lt;/mui-icon-add&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
