@@ -118,6 +118,7 @@ class appNavbar extends HTMLElement {
 
     const Components = /*html*/ `
       <app-navbar-group id="web-components" groupname="Components">
+      
         <mui-body class="first" weight="bold">Inputs</mui-body>
         <app-navbar-link link="#/field" title="Field"></app-navbar-link> 
         <app-navbar-link link="#/file-upload" title="File Upload"></app-navbar-link> 
@@ -125,7 +126,11 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
         <app-navbar-link link="#/select" title="Select"></app-navbar-link>  
         <app-navbar-link link="#/switch" title="Switch"></app-navbar-link>  
+
         <mui-body weight="bold">Content</mui-body>
+        <app-navbar-link link="#/table" title="Table"></app-navbar-link>
+        <app-navbar-link link="#/slat" title="Slat"></app-navbar-link>
+        <app-navbar-link link="#/accordion" title="Accordion"></app-navbar-link>
         <app-navbar-link link="#/heading" title="Heading"></app-navbar-link>
         <app-navbar-link link="#/body" title="Body"></app-navbar-link>
         <app-navbar-link link="#/list" title="List"></app-navbar-link>
@@ -134,6 +139,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/image" title="Image"></app-navbar-link>
         <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>   
         <app-navbar-link link="#/icons" title="Icons"></app-navbar-link>
+
         <mui-body weight="bold">Layout</mui-body>
         <app-navbar-link link="#/stack" title="Stack"></app-navbar-link>
         <app-navbar-link link="#/grid" title="Grid"></app-navbar-link>
@@ -141,11 +147,6 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/container" title="Container"></app-navbar-link>
         <app-navbar-link link="#/rule" title="Rule"></app-navbar-link>
         <app-navbar-link link="#/card" title="Card"></app-navbar-link>
-
-        <mui-body weight="bold">Data Display</mui-body>
-        <app-navbar-link link="#/table" title="Table"></app-navbar-link>
-        <app-navbar-link link="#/slat" title="Slat"></app-navbar-link>
-        <app-navbar-link link="#/accordion" title="Accordion"></app-navbar-link>
         
         <mui-body weight="bold">Feedback</mui-body>
         <app-navbar-link link="#/alert" title="Alert"></app-navbar-link>
