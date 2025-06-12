@@ -1,6 +1,6 @@
 import Image from "../../images/pages/react-wrapper.jpg";
 
-class ReactWrappers extends HTMLElement {
+class TypedWrapper extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
@@ -33,8 +33,8 @@ class ReactWrappers extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Typed React Wrappers"
-        description="Typed React wrappers for clean, safe web component usage."
+        title="Typed Wrapper (React)"
+        description="Typed wrappers for clean, safe web component usage."
       >
 
 
@@ -47,22 +47,31 @@ class ReactWrappers extends HTMLElement {
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="large">Wrapping web components in React makes them easier to use in JSX while bringing the benefits of TypeScript. By defining typed props, you gain autocompletion, compile-time checks, and a smoother developer experience when working with custom elements inside React.</mui-body>
-                <mui-body size="large">This approach also lets you handle prop-to-attribute mapping, boolean flags, and any React-specific logic without modifying the original component. It keeps your code clean, predictable, and maintainable—while still leveraging lightweight, framework-agnostic web components.</mui-body>
+                <mui-body size="large">This approach wraps a custom element in a React component, allowing you to define typed props and encapsulate logic using familiar React patterns like props, children, and event handling.</mui-body>
+                <mui-body size="large">It improves the developer experience with better autocompletion, compile-time type checking, and cleaner JSX syntax—bridging the gap between custom elements and the React ecosystem.</mui-body>
+              </mui-v-stack>
+
+             <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Wrap the web component</mui-heading>
+                <mui-body size="medium">Create a React wrapper that defines a typed interface for the custom element’s props, then pass those props to the underlying element.</mui-body>
+              </mui-v-stack>
+             <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Import and use</mui-heading>
+                <mui-body size="medium">Use the wrapper in your React app like any other component—now with full type safety, validation, and editor support.</mui-body>
               </mui-v-stack>
 
             </mui-v-stack>
 
             <mui-image>
-              <img slot="image" src="${Image}" alt="Create Mui App Code" />
+              <img slot="image" src="${Image}" alt="Create Wrapped Component" />
               <figcaption slot="caption">components/mui-container.tsx</figcaption>
             </mui-image> 
           </mui-grid>
 
-                    <mui-rule slot="footer"></mui-rule>
+          <mui-rule slot="footer"></mui-rule>
 
           <mui-code slot="footer">
-            // WRAP THE COMPONENT (mui-container.tsx)
+            // 🛠️ Create Wrapped Component
             <br />
             <br />
             import React from &quot;react&quot;;<br><br>
@@ -80,7 +89,7 @@ class ReactWrappers extends HTMLElement {
           <mui-rule slot="footer"></mui-rule>
 
           <mui-code slot="footer">
-            // IMPORT THE COMPONENT (App.tsx)
+            // 📦 Usage (App.tsx)
             <br>
             <br>
             import MuiContainer from "./components/mui-container";
@@ -103,4 +112,4 @@ class ReactWrappers extends HTMLElement {
   }
 }
 
-customElements.define("react-wrappers", ReactWrappers);
+customElements.define("typed-wrapper", TypedWrapper);

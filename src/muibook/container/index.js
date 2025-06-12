@@ -40,7 +40,8 @@ export class AppContainer extends HTMLElement {
       "/design-guidelines": "design-guidelines",
       "/theme-setup": "theme-setup",
       "/create-mui-app": "create-mui-app",
-      "/react-wrappers": "react-wrappers",
+      "/typed-components": "typed-components",
+      "/typed-wrapper": "typed-wrapper",
 
       "/base-design-tokens": "tokens-base",
       "/semantic-design-tokens": "tokens-semantic",
@@ -101,7 +102,8 @@ export class AppContainer extends HTMLElement {
       "create-mui-app": () => import("../pages/create-mui-app/index.js"),
       "theme-setup": () => import("../pages/theme-setup/index.js"),
       "design-guidelines": () => import("../pages/design-guidelines/index.js"),
-      "react-wrappers": () => import("../pages/react-wrappers/index.js"),
+      "typed-components": () => import("../pages/typed-components/index.js"),
+      "typed-wrapper": () => import("../pages/typed-wrapper/index.js"),
 
       "tokens-base": () => import("../story/tokens/base.js"),
       "tokens-semantic": () => import("../story/tokens/semantic.js"),
