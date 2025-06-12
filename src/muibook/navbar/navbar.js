@@ -93,6 +93,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/create-mui-app" title="Create Mui App"></app-navbar-link>
         <app-navbar-link link="#/theme-setup" title="Theme Setup"></app-navbar-link>
         <app-navbar-link link="#/design-guidelines" title="Design Guidelines"></app-navbar-link>
+        <app-navbar-link link="#/react-wrappers" title="React Wrappers"></app-navbar-link>
         <app-navbar-link link="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=5A8fWmORS1XTiPBQ-1" title="MUI Kit"></app-navbar-link>
       </app-navbar-group>
     `;
