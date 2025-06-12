@@ -97,7 +97,19 @@ class ThemeSetup extends HTMLElement {
 
           <mui-code slot="footer">
             <br />
-            THEME STRUCTURE:
+            HTML: DATA-THEME (REQUIRED)
+            <br />
+            <br />
+            &lt;html lang="en" data-theme="light"&gt;
+            <br />
+            &nbsp;&nbsp;...
+            <br />
+            &lt;/html&gt;
+            <br />
+            <br />
+            <br />
+            <br />
+            CSS: THEME STRUCTURE
             <br />
             <br />
             &#47;* ===================================== *&#47;<br />
