@@ -73,7 +73,7 @@ class CreateMuiApp extends HTMLElement {
                 <mui-heading level="3" size="5">Quick local setup</mui-heading>
                 <mui-body size="medium">
                   The project runs locally with Vite, a fast build tool and dev server. Follow the <mui-link 
-                    size="small" 
+                    size="medium" 
                     weight="medium" 
                     target="_blank" 
                     href="https://github.com/michaeltrilford/create-mui-app">
