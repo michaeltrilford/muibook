@@ -71,10 +71,28 @@ class TypedWrapper extends HTMLElement {
           <mui-rule slot="footer"></mui-rule>
 
           <mui-code slot="footer">
+            // 🛠️ Define Typed Components
+            <br />
+            <br />
+            import&nbsp;*&nbsp;as&nbsp;React&nbsp;from&nbsp;"react";<br><br>
+            declare&nbsp;module&nbsp;"react"&nbsp;{<br>
+            &nbsp;&nbsp;namespace&nbsp;JSX&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;interface&nbsp;IntrinsicElements&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mui-container":&nbsp;React.DetailedHTMLProps&lt;React.HTMLAttributes&lt;HTMLElement&gt;,&nbsp;HTMLElement&gt;;<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;...&nbsp;other&nbsp;custom&nbsp;elements<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;}<br>
+            }
+          </mui-code>
+
+          <mui-rule slot="footer"></mui-rule>
+
+          <mui-code slot="footer">
             // 🛠️ Create Wrapped Component
             <br />
             <br />
-            import React from &quot;react&quot;;<br><br>
+            import React from &quot;react&quot;;<br>
+            import "@muibook/components/mui-container";<br><br>
             type Size = &quot;small&quot; | &quot;medium&quot; | &quot;large&quot; | &quot;fluid&quot;;<br><br>
             interface MuiContainerProps extends React.HTMLAttributes&lt;HTMLElement&gt; {<br>
             &nbsp;&nbsp;size?: Size;<br>
