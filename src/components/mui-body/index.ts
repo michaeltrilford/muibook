@@ -9,10 +9,10 @@ class MuiBody extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
 
-    // Set defaults
     const size = this.getAttribute("size") || "medium";
     const weight = this.getAttribute("weight") || "regular";
     const variant = this.getAttribute("variant") || "default";
+
     this.setAttribute("size", size);
     this.setAttribute("variant", variant);
     this.setAttribute("weight", weight);
@@ -20,10 +20,22 @@ class MuiBody extends HTMLElement {
 
   async connectedCallback() {
     await this.waitForPartMap();
+    this.render();
+  }
+
+  attributeChangedCallback(_name: string, oldValue: string | null, newValue: string | null) {
+    if (oldValue !== newValue && this.shadowRoot) {
+      this.render();
+    }
+  }
+
+  render() {
+    const root = this.shadowRoot;
+    if (!root || root.children.length > 0) return;
 
     const partMap = getPartMap("spacing", "layout", "visual");
 
-    let html = /*html*/ `
+    root.innerHTML = /*html*/ `
     <style>
       :host { display: block; }
 
@@ -75,12 +87,9 @@ class MuiBody extends HTMLElement {
     </style>
     
     <p part="${partMap}"><slot></slot></p>
-
     `;
-    if (!this.shadowRoot) return;
-
-    this.shadowRoot.innerHTML = html;
   }
+
   waitForPartMap(): Promise<void> {
     return new Promise<void>((resolve) => {
       if (typeof getPartMap === "function") return resolve();
