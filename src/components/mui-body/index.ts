@@ -8,17 +8,13 @@ class MuiBody extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-
-    const size = this.getAttribute("size") || "medium";
-    const weight = this.getAttribute("weight") || "regular";
-    const variant = this.getAttribute("variant") || "default";
-
-    this.setAttribute("size", size);
-    this.setAttribute("variant", variant);
-    this.setAttribute("weight", weight);
   }
 
   async connectedCallback() {
+    if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
+    if (!this.hasAttribute("weight")) this.setAttribute("weight", "regular");
+    if (!this.hasAttribute("variant")) this.setAttribute("variant", "default");
+
     await this.waitForPartMap();
     this.render();
   }
@@ -30,12 +26,11 @@ class MuiBody extends HTMLElement {
   }
 
   render() {
-    const root = this.shadowRoot;
-    if (!root || root.children.length > 0) return;
+    if (!this.shadowRoot) return;
 
     const partMap = getPartMap("spacing", "layout", "visual");
 
-    root.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
     <style>
       :host { display: block; }
 
