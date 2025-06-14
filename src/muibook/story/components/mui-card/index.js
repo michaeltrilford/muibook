@@ -79,7 +79,7 @@ class storyCards extends HTMLElement {
             </mui-card>
           </div>
           <mui-code slot="footer">
-            &lt;mui-card footer&gt;
+            &lt;mui-card&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card-header&gt;
             <br />
@@ -121,7 +121,7 @@ class storyCards extends HTMLElement {
             </mui-card>
           </div>
           <mui-code slot="footer">
-            &lt;mui-card footer&gt;
+            &lt;mui-card&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card-header&gt;
             <br />
