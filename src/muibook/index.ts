@@ -24,6 +24,7 @@ import "../components/mui-icons/globe";
 import "../components/mui-icons/grid";
 import "../components/mui-icons/info";
 import "../components/mui-icons/left-arrow";
+import "../components/mui-icons/left-sidebar";
 import "../components/mui-icons/left-chevron";
 import "../components/mui-icons/menu";
 import "../components/mui-icons/message";

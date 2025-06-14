@@ -87,6 +87,11 @@ class storyIcon extends HTMLElement {
               </story-icon-grid>
 
               <story-icon-grid center>              
+                <mui-icon-left-sidebar slot="body"></mui-icon-left-sidebar>
+                <mui-code slot="footer">mui-icon-left-sidebar</mui-code>
+              </story-icon-grid>
+
+              <story-icon-grid center>              
                 <mui-icon-left-chevron slot="body"></mui-icon-left-chevron>
                 <mui-code slot="footer">mui-icon-left-chevron</mui-code>
               </story-icon-grid>

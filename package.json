@@ -159,6 +159,10 @@
       "import": "./dist/esm/components/mui-icons/left-arrow/index.js",
       "types": "./dist/types/components/mui-icons/left-arrow/index.d.ts"
     },
+    "./mui-icons/left-sidebar": {
+      "import": "./dist/esm/components/mui-icons/left-sidebar/index.js",
+      "types": "./dist/types/components/mui-icons/left-sidebar/index.d.ts"
+    },
     "./mui-icons/left-chevron": {
       "import": "./dist/esm/components/mui-icons/left-chevron/index.js",
       "types": "./dist/types/components/mui-icons/left-chevron/index.d.ts"

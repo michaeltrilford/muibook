@@ -9,6 +9,7 @@ import "./globe";
 import "./grid";
 import "./info";
 import "./left-arrow";
+import "./left-sidebar";
 import "./left-chevron";
 import "./menu";
 import "./message";

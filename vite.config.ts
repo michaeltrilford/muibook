@@ -54,6 +54,7 @@ export default defineConfig({
         "components/mui-icons/grid": path.resolve(__dirname, "src/components/mui-icons/grid.ts"),
         "components/mui-icons/info": path.resolve(__dirname, "src/components/mui-icons/info.ts"),
         "components/mui-icons/left-arrow": path.resolve(__dirname, "src/components/mui-icons/left-arrow.ts"),
+        "components/mui-icons/left-sidebar": path.resolve(__dirname, "src/components/mui-icons/left-sidebar.ts"),
         "components/mui-icons/left-chevron": path.resolve(__dirname, "src/components/mui-icons/left-chevron.ts"),
         "components/mui-icons/menu": path.resolve(__dirname, "src/components/mui-icons/menu.ts"),
         "components/mui-icons/message": path.resolve(__dirname, "src/components/mui-icons/message.ts"),

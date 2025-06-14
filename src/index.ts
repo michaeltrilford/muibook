@@ -36,6 +36,7 @@ export * from "./components/mui-icons/globe";
 export * from "./components/mui-icons/grid";
 export * from "./components/mui-icons/info";
 export * from "./components/mui-icons/left-arrow";
+export * from "./components/mui-icons/left-sidebar";
 export * from "./components/mui-icons/left-chevron";
 export * from "./components/mui-icons/menu";
 export * from "./components/mui-icons/message";
