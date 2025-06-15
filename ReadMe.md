@@ -16,16 +16,16 @@ import "@muibook/components/mui-body"; // Individual
 #### CSS Usage
 
 ```javascript
-import "@muibook/components/dist/esm/css/mui-tokens.css";
-import "@muibook/components/dist/esm/css/mui-reset.css";
-import "@muibook/components/dist/esm/css/mui-base.css";
+import "@muibook/components/css/mui-tokens.css";
+import "@muibook/components/css/mui-base.css";
+import "@muibook/components/css/mui-reset.css";
 ```
 
 #### Agent Usage
 
 ```javascript
-import "@muibook/components/dist/esm/agent/prompts";
-import "@muibook/components/dist/esm/agent/keywords";
+import "@muibook/components/agent/prompts";
+import "@muibook/components/agent/keywords";
 ```
 
 Links •
