@@ -1,7 +1,7 @@
 // Mui CSS
-import "../css/mui-tokens.css";
-import "../css/mui-reset.css";
-import "../css/mui-base.css";
+import "../../public/css/mui-tokens.css";
+import "../../public/css/mui-reset.css";
+import "../../public/css/mui-base.css";
 
 // Mui Components
 import "../components/mui-icons/sun";

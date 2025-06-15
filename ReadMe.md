@@ -6,11 +6,26 @@ Leverage reusable vanilla Web Components built with the Mui (MichaelUI) Design S
 npm install @muibook/components
 ```
 
-#### Usage
+#### Component Usage
 
 ```javascript
 import "@muibook/components"; // All
 import "@muibook/components/mui-body"; // Individual
+```
+
+#### CSS Usage
+
+```javascript
+import "@muibook/components/dist/esm/css/mui-tokens.css";
+import "@muibook/components/dist/esm/css/mui-reset.css";
+import "@muibook/components/dist/esm/css/mui-base.css";
+```
+
+#### Agent Usage
+
+```javascript
+import "@muibook/components/dist/esm/agent/prompts";
+import "@muibook/components/dist/esm/agent/keywords";
 ```
 
 Links •

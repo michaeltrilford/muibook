@@ -1,6 +1,6 @@
-import "../css/mui-tokens.css";
-import "../css/mui-reset.css";
-import "../css/mui-base.css";
+import "../../public/css/mui-tokens.css";
+import "../../public/css/mui-reset.css";
+import "../../public/css/mui-base.css";
 import "./css/app.css";
 import "./css/themes/jal.css";
 import "./css/themes/ana.css";
