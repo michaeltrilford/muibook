@@ -334,7 +334,10 @@
     "./agent/keywords": {
       "import": "./dist/esm/agent/keywords/index.js",
       "types": "./dist/types/agent/keywords/index.d.ts"
-    }
+    },
+    "./css/mui-tokens.css": "./dist/esm/css/mui-tokens.css",
+    "./css/mui-reset.css": "./dist/esm/css/mui-reset.css",
+    "./css/mui-base.css": "./dist/esm/css/mui-base.css"
   },
   "scripts": {
     "dev": "vite",
