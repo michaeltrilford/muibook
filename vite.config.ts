@@ -110,6 +110,13 @@ export default defineConfig({
         "components/mui-tabs/tab-bar": path.resolve(__dirname, "src/components/mui-tabs/tab-bar"),
         // UTILS
         "utils/part-map": path.resolve(__dirname, "src/utils/part-map"),
+        // CSS
+        "css/mui-reset.css": path.resolve(__dirname, "src/css/mui-reset.css"),
+        "css/mui-base.css": path.resolve(__dirname, "src/css/mui-base.css"),
+        "css/mui-tokens.css": path.resolve(__dirname, "src/css/mui-tokens.css"),
+        // AGENT
+        "agent/keywords": path.resolve(__dirname, "src/agent/keywords"),
+        "agent/prompts": path.resolve(__dirname, "src/agent/prompts"),
       },
       formats: ["es"],
       fileName: (_, entryName) => (entryName === "index" ? "index.js" : `${entryName}/index.js`),

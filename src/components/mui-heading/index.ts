@@ -18,7 +18,6 @@ class MuiHeading extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
-        @import url("./css/mui-reset.css");
         :host { display: block; }
 
         h1, h2, h3, h4, h5, h6 {

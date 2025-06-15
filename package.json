@@ -326,6 +326,17 @@
     ".": {
       "import": "./dist/esm/index.js",
       "types": "./dist/types/index.d.ts"
+    },
+    "./css/mui-reset.css": "./dist/esm/css/mui-reset.css",
+    "./css/mui-base.css": "./dist/esm/css/mui-base.css",
+    "./css/mui-tokens.css": "./dist/esm/css/mui-tokens.css",
+    "./agent/prompts": {
+      "import": "./dist/esm/agent/prompts/index.js",
+      "types": "./dist/types/agent/prompts/index.d.ts"
+    },
+    "./agent/keywords": {
+      "import": "./dist/esm/agent/keywords/index.js",
+      "types": "./dist/types/agent/keywords/index.d.ts"
     }
   },
   "scripts": {
@@ -341,9 +352,13 @@
     "dist/esm/index.js",
     "dist/esm/components",
     "dist/esm/utils",
+    "dist/esm/agent",
+    "dist/esm/css",
     "dist/types/index.d.ts",
     "dist/types/components",
-    "dist/types/utils"
+    "dist/types/utils",
+    "dist/types/agent",
+    "dist/types/css"
   ],
   "devDependencies": {
     "@types/node": "^22.15.24",

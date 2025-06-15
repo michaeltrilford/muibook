@@ -6,7 +6,6 @@ class MuiQuote extends HTMLElement {
   connectedCallback() {
     let html = /*html*/ `
     <style>
-      @import url("./css/mui-reset.css");
       :host { display: block; }
       blockquote {
         border-left: var(--border-thick);
