@@ -38,10 +38,12 @@ export class AppContainer extends HTMLElement {
       "/home": "home-page",
 
       "/design-guidelines": "design-guidelines",
+      "/muiplay": "muiplay-app",
       "/theme-setup": "theme-setup",
       "/create-mui-app": "create-mui-app",
       "/typed-components": "typed-components",
       "/typed-wrapper": "typed-wrapper",
+      "/muikit": "muikit-page",
 
       "/base-design-tokens": "tokens-base",
       "/semantic-design-tokens": "tokens-semantic",
@@ -99,11 +101,13 @@ export class AppContainer extends HTMLElement {
 
     const importMap = {
       "home-page": () => import("../pages/home-page/index.js"),
+      "muiplay-app": () => import("../pages/muiplay/index.js"),
       "create-mui-app": () => import("../pages/create-mui-app/index.js"),
       "theme-setup": () => import("../pages/theme-setup/index.js"),
       "design-guidelines": () => import("../pages/design-guidelines/index.js"),
       "typed-components": () => import("../pages/typed-components/index.js"),
       "typed-wrapper": () => import("../pages/typed-wrapper/index.js"),
+      "muikit-page": () => import("../pages/muikit/index.js"),
 
       "tokens-base": () => import("../story/tokens/base.js"),
       "tokens-semantic": () => import("../story/tokens/semantic.js"),
