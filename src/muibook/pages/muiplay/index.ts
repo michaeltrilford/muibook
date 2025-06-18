@@ -35,7 +35,7 @@ class MuiplayApp extends HTMLElement {
       <story-template 
         title="Muiplay"
         description="The AI-powered playground for generating MUI layouts—instantly"
-        demo="https://play.muibook.com"
+        website="https://play.muibook.com"
       >
 
 

@@ -5,7 +5,7 @@ import "../../images/guides-mark";
 
 class StoryTemplate extends HTMLElement {
   static get observedAttributes() {
-    return ["title", "description", "accessibility", "demo", "github", "figma", "guides"];
+    return ["title", "description", "accessibility", "website", "demo", "github", "figma", "guides"];
   }
 
   constructor() {
@@ -36,6 +36,11 @@ class StoryTemplate extends HTMLElement {
     const demoLink = this.getAttribute("demo");
     const demoContent = demoLink
       ? /*html*/ `<mui-link class="resources" href="${demoLink}" target="_blank" rel="noopener" variant="secondary">Demo<mui-icon-globe></mui-icon-globe></mui-link>`
+      : "";
+
+    const websiteLink = this.getAttribute("website");
+    const websiteContent = websiteLink
+      ? /*html*/ `<mui-link class="resources" href="${websiteLink}" target="_blank" rel="noopener" variant="secondary">Try Now<mui-icon-globe></mui-icon-globe></mui-link>`
       : "";
 
     const githubLink = this.getAttribute("github");
@@ -83,6 +88,7 @@ class StoryTemplate extends HTMLElement {
                   <mui-heading size="1" weight="800">${title}</mui-heading>
                   <mui-h-stack space="var(--space-100)">
                     ${demoContent}
+                    ${websiteContent}
                     ${guidesContent}
                     ${figmaContent}
                     ${githubContent}
@@ -92,6 +98,7 @@ class StoryTemplate extends HTMLElement {
                   <mui-heading size="1" weight="800">${title}</mui-heading>
                   <mui-h-stack space="var(--space-100)">
                     ${demoContent}
+                    ${websiteContent}
                     ${guidesContent}
                     ${figmaContent}
                     ${githubContent}
