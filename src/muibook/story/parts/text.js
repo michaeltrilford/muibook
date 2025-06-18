@@ -17,7 +17,7 @@ class partsText extends HTMLElement {
         <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Color">
-            <story-part-slat slot="body" token="part(color)" usage="Links, Buttons, Select" output="Defines the color of the element." ></story-part-slat>
+            <story-part-slat slot="body" token="part(color)" usage="Link, Button, Select" output="Defines the color of the element." ></story-part-slat>
             <mui-code slot="footer">
               mui-link::part(color) {
               <br />
@@ -35,7 +35,7 @@ class partsText extends HTMLElement {
           </spec-card>
 
           <spec-card title="Font Family">
-            <story-part-slat slot="body" token="part(font-family)" usage="Links, Buttons, Select" output="Defines the font family of the element."></story-part-slat>
+            <story-part-slat slot="body" token="part(font-family)" usage="Link, Button, Select" output="Defines the font family of the element."></story-part-slat>
             <mui-code slot="footer">
               mui-link::part(font-family) {
               <br />
@@ -46,7 +46,7 @@ class partsText extends HTMLElement {
           </spec-card>
 
           <spec-card title="Font Size">
-            <story-part-slat slot="body" token="part(font-size)" usage="Links, Buttons, Select" output="Defines the font size of the element."></story-part-slat>
+            <story-part-slat slot="body" token="part(font-size)" usage="Link, Button, Select" output="Defines the font size of the element."></story-part-slat>
             <mui-code slot="footer">
               mui-link::part(font-size) {
               <br />
@@ -57,7 +57,7 @@ class partsText extends HTMLElement {
           </spec-card>
 
           <spec-card title="Font Weight">
-            <story-part-slat slot="body" token="part(font-weight)" usage="Links, Buttons, Select" output="Defines the font weight of the element."></story-part-slat>
+            <story-part-slat slot="body" token="part(font-weight)" usage="Link, Button, Select" output="Defines the font weight of the element."></story-part-slat>
             <mui-code slot="footer">
               mui-link::part(font-weight) {
               <br />
@@ -68,7 +68,7 @@ class partsText extends HTMLElement {
           </spec-card>
 
           <spec-card title="Letter Spacing">
-            <story-part-slat slot="body" token="part(letter-spacing)" usage="Links, Buttons, Select" output="Defines the letter-spacing of the element."></story-part-slat>
+            <story-part-slat slot="body" token="part(letter-spacing)" usage="Link, Button, Select" output="Defines the letter-spacing of the element."></story-part-slat>
             <mui-code slot="footer">
               mui-link::part(letter-spacing) {
               <br />
@@ -79,7 +79,7 @@ class partsText extends HTMLElement {
           </spec-card>
 
           <spec-card title="Line Height">
-            <story-part-slat slot="body" token="part(line-height)" usage="Links, Buttons, Select" output="Defines the line-height of the element."></story-part-slat>
+            <story-part-slat slot="body" token="part(line-height)" usage="Link, Button, Select" output="Defines the line-height of the element."></story-part-slat>
             <mui-code slot="footer">
               mui-link::part(line-height) {
               <br />
@@ -90,7 +90,7 @@ class partsText extends HTMLElement {
           </spec-card>
 
           <spec-card title="Text Transform">
-            <story-part-slat slot="body" token="part(text-transform)" usage="Links, Buttons, Select" output="Defines the case of the element."></story-part-slat>
+            <story-part-slat slot="body" token="part(text-transform)" usage="Link, Button, Select" output="Defines the case of the element."></story-part-slat>
             <mui-code slot="footer">
               mui-link::part(text-transform) {
               <br />
@@ -101,7 +101,7 @@ class partsText extends HTMLElement {
           </spec-card>
 
           <spec-card title="Text Decoration">
-            <story-part-slat slot="body" token="part(text-decoration)" usage="Links, Buttons, Select" output="Controls the text decoration style (e.g., underline, none)."></story-part-slat>
+            <story-part-slat slot="body" token="part(text-decoration)" usage="Link, Button, Select" output="Controls the text decoration style (e.g., underline, none)."></story-part-slat>
             <mui-code slot="footer">
               mui-link::part(text-decoration) {
               <br />
@@ -120,7 +120,7 @@ class partsText extends HTMLElement {
           </spec-card>
 
           <spec-card title="Text Align">
-            <story-part-slat slot="body" token="part(text-align)" usage="Links, Buttons, Select" output="Defines the horizontal alignment of the element."></story-part-slat>
+            <story-part-slat slot="body" token="part(text-align)" usage="Link, Button, Select" output="Defines the horizontal alignment of the element."></story-part-slat>
             <mui-code slot="footer">
               mui-link::part(text-align) {
               <br />
