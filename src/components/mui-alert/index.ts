@@ -80,7 +80,8 @@ class MuiAlert extends HTMLElement {
     const styles = /*css*/ `
       :host {
         border-radius: var(--alert-radius);
-        padding: var(--alert-padding);
+        padding-left: var(--alert-padding);
+        padding-right: var(--alert-padding);
         background: var(--white);
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
         display: grid;
@@ -90,20 +91,31 @@ class MuiAlert extends HTMLElement {
         box-sizing: border-box;
       }
 
-     @media (min-width: 600px) {
-        :host {
-          gap: var(--alert-gap-horizontal-desktop);
-        }
+      .icon,
+      mui-body {
+        padding-top: var(--alert-padding);
+        padding-bottom: var(--alert-padding);
       }
 
+      :host([has-action]) {
+        padding-right: var(--space-100);
+        grid-template-columns: auto 1fr auto;
+      }
+
+      ::slotted(mui-button[slot="action"]),
+      ::slotted(mui-link[slot="action"]) { padding-top: var(--space-100); }
+
+
       @media (min-width: 600px) {
-        .icon {
-          margin-top: var(--space-000);
-        }
+        :host { gap: var(--alert-gap-horizontal-desktop); }
+        :host([has-action]) { padding-right: var(--space-100); }
+        ::slotted(mui-button[slot="action"]),
+        ::slotted(mui-link[slot="action"]) { align-self: center; padding-top: var(--space-000); }
       }
 
       .label {
-        color: var(${labelColor}); font-weight: var(--font-weight-bold);
+        color: var(${labelColor}); 
+        font-weight: var(--font-weight-bold);
       }
 
       mui-body::part(display) {
@@ -135,7 +147,38 @@ class MuiAlert extends HTMLElement {
         <span class="label">${labelText}</span>
         <slot></slot>
       </mui-body>
+      <slot name="action"></slot>
     `;
+
+    const actionSlot = this.shadowRoot?.querySelector('slot[name="action"]') as HTMLSlotElement | null;
+
+    if (actionSlot) {
+      const checkForAction = () => {
+        const assigned = actionSlot.assignedElements();
+        let hasAction = false;
+
+        assigned.forEach((el: Element) => {
+          const tag = el.tagName;
+
+          const isActionComponent = tag === "MUI-BUTTON" || tag === "MUI-LINK";
+
+          if (isActionComponent) {
+            hasAction = true;
+
+            el.setAttribute("variant", "tertiary");
+          }
+        });
+
+        if (hasAction) {
+          this.setAttribute("has-action", "");
+        } else {
+          this.removeAttribute("has-action");
+        }
+      };
+
+      actionSlot.addEventListener("slotchange", checkForAction);
+      requestAnimationFrame(checkForAction); // Run once on init
+    }
   }
 }
 

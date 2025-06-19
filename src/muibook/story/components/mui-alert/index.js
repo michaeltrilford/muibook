@@ -6,6 +6,17 @@ class storyAlert extends HTMLElement {
       :host { display: block; }
     `;
 
+    const actionPropItems = [
+      {
+        name: "slot",
+        required: true,
+        type: "HTML attribute",
+        options: "slot=&#8220;action&#8221;",
+        default: "",
+        description: "Slot a mui-button or mui-link into the Alert component for dismissing or tasks.",
+      },
+    ];
+
     const propItems = [
       {
         name: "variant",
@@ -77,6 +88,45 @@ class storyAlert extends HTMLElement {
       })
       .join("");
 
+    const actionRows = actionPropItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const actionAccordions = actionPropItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === actionPropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+          <mui-accordion-block 
+            size="medium" 
+            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+            ${isLastChild}>
+            <story-type-slat
+              slot="detail"
+              ${prop.required ? "required" : ""}
+              name="${prop.name}"
+              type="${prop.type}" 
+              options="${prop.options || ""}"
+              default="${prop.default || ""}"
+              description="${prop.description}">
+            </story-type-slat>
+          </mui-accordion-block>
+        `;
+      })
+      .join("");
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -101,13 +151,24 @@ class storyAlert extends HTMLElement {
             </mui-code>
           </spec-card>
 
-          <spec-card title="Props">
+          <spec-card title="Props: Alert">
             <mui-responsive breakpoint="768" slot="body">
               <story-type-table slot="showAbove">
                 ${rows}
               </story-type-table>
               <mui-accordion-group exclusive slot="showBelow">
                 ${accordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </spec-card>
+
+          <spec-card title="Props: Button/Link">
+            <mui-responsive breakpoint="768" slot="body">
+              <story-type-table slot="showAbove">
+                ${actionRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${actionAccordions}
               </mui-accordion-group>
             </mui-responsive>
           </spec-card>
@@ -182,6 +243,57 @@ class storyAlert extends HTMLElement {
             <br />
             &lt;/mui-alert&gt;
           </mui-code>
+          </story-card>
+
+          <story-card 
+            title="Action / Close button" 
+            description="Optional action to help dismiss or action a task" 
+          >
+            <div slot="body">
+
+              <mui-alert variant="error">
+                Please read the comments carefully. <mui-link href="#">Learn more</mui-link>
+                <mui-button slot="action">
+                  <mui-icon-close></mui-icon-close>
+                </mui-button>
+              </mui-alert>
+            </div>
+            <mui-code slot="footer">
+              &lt;mui-alert variant="error"&gt;
+              <br />
+              &nbsp;&nbsp;&lt;mui-button slot="action"&gt;
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-close&gt;&lt;/mui-icon-close&gt;
+              <br />
+              &nbsp;&nbsp;&lt;/mui-button&gt;
+              <br />
+              &lt;/mui-alert&gt;
+            </mui-code>
+          </story-card>
+
+          <story-card 
+            title="Action / Undo" 
+            description="Optional action to for tasks like undoing an action." 
+          >
+            <div slot="body">
+              <mui-alert variant="success">
+                Your message has been sent successfully.
+                <mui-button slot="action">
+                  Undo
+                </mui-button>
+              </mui-alert>
+            </div>
+            <mui-code slot="footer">
+              &lt;mui-alert variant="success"&gt;
+              <br />
+              &nbsp;&nbsp;&lt;mui-button slot="action"&gt;
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Undo
+              <br />
+              &nbsp;&nbsp;&lt;/mui-button&gt;
+              <br />
+              &lt;/mui-alert&gt;
+            </mui-code>
           </story-card>
 
         </mui-v-stack>
