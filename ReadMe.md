@@ -183,6 +183,23 @@ npm pack --dry-run  # Preview what will be published
 - Use the preview scripts to verify production builds before deployment
 - Follow semantic versioning for releases
 
+### Slot Implementation Approach (MUI Design System)
+
+When implementing slots in MUI components, we use a consistent approach for styling and interaction:
+
+#### Children Concerns
+
+- We use JavaScript to query and manage slotted elements.
+- To apply styles to a slotted item, we append a class in the format: [parent-component]-slot.
+- The slotted component detects this class via :host(.parent-component) and applies the relevant styles.
+
+#### Parent Concerns
+
+- If the parent component needs to react to the presence of a specific slotted item, we add an attribute like has-[slottedComponentName] to the host.
+- The parent component can then target this via :host([has-slottedComponentName]) for conditional styling.
+
+This method keeps slot behavior declarative and styles predictable across components.
+
 ---
 
 ### License
