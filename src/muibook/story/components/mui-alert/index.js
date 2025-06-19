@@ -296,6 +296,32 @@ class storyAlert extends HTMLElement {
             </mui-code>
           </story-card>
 
+
+          <story-card 
+            title="Action / Link" 
+            description="Optional action to for tasks like undoing an action." 
+          >
+            <div slot="body">
+              <mui-alert variant="warning">
+                Your subscription will expire today.
+                <mui-button slot="action">
+                  Upgrade Now
+                </mui-button>
+              </mui-alert>
+            </div>
+            <mui-code slot="footer">
+              &lt;mui-alert variant="warning"&gt;
+              <br />
+              &nbsp;&nbsp;&lt;mui-link slot="action"&gt;
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Upgrade Now
+              <br />
+              &nbsp;&nbsp;&lt;/mui-link&gt;
+              <br />
+              &lt;/mui-alert&gt;
+            </mui-code>
+          </story-card>
+
         </mui-v-stack>
 
       </story-template>

@@ -105,7 +105,7 @@ class MuiLink extends HTMLElement {
       }
 
       :host([variant="primary"]) a:focus,
-      :host([variant="tertiary"]) a:focus-visible {
+      :host([variant="primary"]) a:focus-visible {
         background: var(--action-primary-background-focus); 
         color: var(--action-primary-text-color-focus);
         border: var(--action-primary-stroke-focus);
@@ -234,6 +234,10 @@ class MuiLink extends HTMLElement {
       }
       /* ===================================== */
 
+      :host(.alert-slot) a:hover,
+      :host(.alert-slot) a:focus-visible {
+        background: var(--surface-recessed-alpha);
+      }
 
     </style>
 

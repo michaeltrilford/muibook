@@ -47,14 +47,14 @@ class MuiButton extends HTMLElement {
     }
 
     // Turned back on for focus-visible
-    button:focus, button:active, button:hover { outline: var(--space-000); }
+    button:focus-visible, button:active, button:hover { outline: var(--space-000); }
 
     button:hover {
       background: var(--action-primary-background-hover);
       color: var(--action-primary-text-color-hover);
     }
 
-    button:focus {
+    button:focus-visible {
       background: var(--action-primary-background-focus);
       color: var(--action-primary-text-color-focus);
     }
@@ -84,7 +84,7 @@ class MuiButton extends HTMLElement {
       border: var(--action-primary-stroke-hover);
     }
 
-    :host([variant="primary"]) button:focus {
+    :host([variant="primary"]) button:focus-visible {
       background: var(--action-primary-background-focus);
       color: var(--action-primary-text-color-focus);
       border: var(--action-primary-stroke-focus);
@@ -99,7 +99,7 @@ class MuiButton extends HTMLElement {
 
     :host([variant="primary"]) button ::slotted(.mui-icon) { fill: var(--action-primary-text-color); }
     :host([variant="primary"]) button:hover ::slotted(.mui-icon) { fill: var(--action-primary-text-color-hover); }
-    :host([variant="primary"]) button:focus ::slotted(.mui-icon) { fill: var(--action-primary-text-color-focus); }
+    :host([variant="primary"]) button:focus-visible ::slotted(.mui-icon) { fill: var(--action-primary-text-color-focus); }
     :host([variant="primary"]) button:disabled ::slotted(.mui-icon) { fill: var(--action-primary-text-color-disabled); }
 
     /* Secondary
@@ -117,7 +117,7 @@ class MuiButton extends HTMLElement {
       border: var(--action-secondary-stroke-hover); 
     }
 
-    :host([variant="secondary"]) button:focus {
+    :host([variant="secondary"]) button:focus-visible {
       background: var(--action-secondary-background-focus);
       color: var(--action-secondary-text-color-focus);
       border: var(--action-secondary-stroke-focus); 
@@ -132,7 +132,7 @@ class MuiButton extends HTMLElement {
 
     :host([variant="secondary"]) button ::slotted(.mui-icon) { fill: var(--action-secondary-text-color); }
     :host([variant="secondary"]) button:hover ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-hover); }
-    :host([variant="secondary"]) button:focus ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-focus); }
+    :host([variant="secondary"]) button:focus-visible ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-focus); }
     :host([variant="secondary"]) button:disabled ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-disabled); }
 
     /* Tertiary
@@ -150,7 +150,7 @@ class MuiButton extends HTMLElement {
       border: var(--action-tertiary-stroke-hover);
     }
 
-    :host([variant="tertiary"]) button:focus {
+    :host([variant="tertiary"]) button:focus-visible {
       background: var(--action-tertiary-background-focus);
       color: var(--action-tertiary-text-color-focus);
       border: var(--action-tertiary-stroke-focus);
@@ -165,7 +165,7 @@ class MuiButton extends HTMLElement {
 
     :host([variant="tertiary"]) button ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color); }
     :host([variant="tertiary"]) button:hover ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-hover); }
-    :host([variant="tertiary"]) button:focus ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-focus); }
+    :host([variant="tertiary"]) button:focus-visible ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-focus); }
     :host([variant="tertiary"]) button:disabled ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-disabled); }
 
     /* Attention
@@ -182,7 +182,7 @@ class MuiButton extends HTMLElement {
       border: var(--action-attention-stroke-hover);
     }
 
-    :host([variant="attention"]) button:focus {
+    :host([variant="attention"]) button:focus-visible {
       background: var(--action-attention-background-focus);
       color: var(--action-attention-text-color-focus);
       border: var(--action-attention-stroke-focus);
@@ -197,7 +197,7 @@ class MuiButton extends HTMLElement {
 
     :host([variant="attention"]) button ::slotted(.mui-icon) { fill: var(--action-attention-text-color); }
     :host([variant="attention"]) button:hover ::slotted(.mui-icon) { fill: var(--action-attention-text-color-hover); }
-    :host([variant="attention"]) button:focus ::slotted(.mui-icon) { fill: var(--action-attention-text-color-focus); }
+    :host([variant="attention"]) button:focus-visible ::slotted(.mui-icon) { fill: var(--action-attention-text-color-focus); }
     :host([variant="attention"]) button:disabled ::slotted(.mui-icon) { fill: var(--action-attention-text-color-disabled); }
 
     /* Icon only
@@ -255,7 +255,7 @@ class MuiButton extends HTMLElement {
         }
 
         :host([slot="after"]) button:hover,
-        :host([slot="after"]) button:focus {
+        :host([slot="after"]) button:focus-visible {
           background: var(--action-secondary-background-hover);
           color: var(--action-secondary-text-color-hover);
           border-color: var(--form-default-border-color-hover);
@@ -263,6 +263,10 @@ class MuiButton extends HTMLElement {
 
     /* ========================================================================== */
 
+      :host(.alert-slot) button:hover,
+      :host(.alert-slot) button:focus-visible {
+        background: var(--surface-recessed-alpha);
+      }
 
     </style>
 
