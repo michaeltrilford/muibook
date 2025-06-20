@@ -90,13 +90,17 @@ class appNavbar extends HTMLElement {
 
     const Resources = /*html*/ `
       <app-navbar-group id="resources" groupname="Resources">
-      <app-navbar-link link="#/create-mui-app" title="Create Mui App"></app-navbar-link>
-      <app-navbar-link link="#/muikit" title="Muikit"></app-navbar-link>
-      <app-navbar-link link="#/muiplay" title="Muiplay"></app-navbar-link>
-      <app-navbar-link link="#/theme-setup" title="Theme Setup"></app-navbar-link>
-      <app-navbar-link link="#/design-guidelines" title="Design Guidelines"></app-navbar-link>
-      <app-navbar-link link="#/typed-components" title="Typed Components"></app-navbar-link>
-      <app-navbar-link link="#/typed-wrapper" title="Typed Wrapper"></app-navbar-link>
+        <mui-body class="first" weight="bold">Get Started</mui-body>
+        <app-navbar-link link="#/create-mui-app" title="Create Mui App"></app-navbar-link>
+        <app-navbar-link link="#/theme-setup" title="Theme Setup"></app-navbar-link>
+        <mui-body weight="bold">Playground</mui-body>
+        <app-navbar-link link="#/muiplay" title="Muiplay"></app-navbar-link>
+        <mui-body weight="bold">Design</mui-body>
+        <app-navbar-link link="#/muikit" title="Figma MUI Kit"></app-navbar-link>
+        <app-navbar-link link="#/design-guidelines" title="Design Guidelines"></app-navbar-link>
+        <mui-body weight="bold">React</mui-body>
+        <app-navbar-link link="#/typed-components" title="Typed Components"></app-navbar-link>
+        <app-navbar-link link="#/typed-wrapper" title="Typed Wrapper"></app-navbar-link>
       </app-navbar-group>
     `;
 
