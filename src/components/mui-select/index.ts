@@ -200,7 +200,7 @@ class MuiSelect extends HTMLElement {
           right: var(--space-300);
           top: 50%;
           transform: translateY(-50%);
-          padding: var(--space-300);
+          padding: var(--space-200);
           padding-left: var(--space-000);
           padding-right: var(--space-000);
           background: var(--input-background);
