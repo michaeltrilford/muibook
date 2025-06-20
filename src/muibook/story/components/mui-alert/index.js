@@ -249,7 +249,28 @@ class storyAlert extends HTMLElement {
             title="Action / Close button" 
             description="Optional action to help dismiss or action a task" 
           >
-            <div slot="body">
+            <mui-v-stack slot="body" space="var(--space-200)">
+
+              <mui-alert variant="success">
+                Please read the comments carefully. <mui-link href="#">Learn more</mui-link>
+                <mui-button slot="action">
+                  <mui-icon-close></mui-icon-close>
+                </mui-button>
+              </mui-alert>
+
+              <mui-alert variant="info">
+                Please read the comments carefully. <mui-link href="#">Learn more</mui-link>
+                <mui-button slot="action">
+                  <mui-icon-close></mui-icon-close>
+                </mui-button>
+              </mui-alert>
+
+              <mui-alert variant="warning">
+                Please read the comments carefully. <mui-link href="#">Learn more</mui-link>
+                <mui-button slot="action">
+                  <mui-icon-close></mui-icon-close>
+                </mui-button>
+              </mui-alert>
 
               <mui-alert variant="error">
                 Please read the comments carefully. <mui-link href="#">Learn more</mui-link>
@@ -257,7 +278,8 @@ class storyAlert extends HTMLElement {
                   <mui-icon-close></mui-icon-close>
                 </mui-button>
               </mui-alert>
-            </div>
+            </mui-v-stack>
+
             <mui-code slot="footer">
               &lt;mui-alert variant="error"&gt;
               <br />
@@ -275,14 +297,36 @@ class storyAlert extends HTMLElement {
             title="Action / Undo" 
             description="Optional action to for tasks like undoing an action." 
           >
-            <div slot="body">
+            <mui-v-stack slot="body" space="var(--space-200)">
               <mui-alert variant="success">
                 Your message has been sent successfully.
                 <mui-button slot="action">
                   Undo
                 </mui-button>
               </mui-alert>
-            </div>
+
+              <mui-alert variant="info">
+                Your message has been sent successfully.
+                <mui-button slot="action">
+                  Undo
+                </mui-button>
+              </mui-alert>
+
+              <mui-alert variant="warning">
+                Your message has been sent successfully.
+                <mui-button slot="action">
+                  Undo
+                </mui-button>
+              </mui-alert>
+
+              <mui-alert variant="error">
+                Your message has been sent successfully.
+                <mui-button slot="action">
+                  Undo
+                </mui-button>
+              </mui-alert>
+            </mui-v-stack>
+
             <mui-code slot="footer">
               &lt;mui-alert variant="success"&gt;
               <br />
@@ -304,9 +348,9 @@ class storyAlert extends HTMLElement {
             <div slot="body">
               <mui-alert variant="warning">
                 Your subscription will expire today.
-                <mui-button slot="action">
-                  Upgrade Now
-                </mui-button>
+                <mui-link slot="action">
+                  Upgrade
+                </mui-link>
               </mui-alert>
             </div>
             <mui-code slot="footer">
@@ -314,7 +358,7 @@ class storyAlert extends HTMLElement {
               <br />
               &nbsp;&nbsp;&lt;mui-link slot="action"&gt;
               <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;Upgrade Now
+              &nbsp;&nbsp;&nbsp;&nbsp;Upgrade
               <br />
               &nbsp;&nbsp;&lt;/mui-link&gt;
               <br />

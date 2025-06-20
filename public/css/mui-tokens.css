@@ -248,6 +248,13 @@ html[data-theme="light"] {
   --feedback-info-text: var(--blue-900);
   --feedback-warning-text: var(--orange-900);
   --feedback-attention-text: var(--red-900);
+  /* Feedback - Action (Button & Link) */
+  --feedback-neutral-action-background: var(--grey-200);
+  --feedback-positive-action-background: var(--green-200);
+  --feedback-info-action-background: var(--blue-200);
+  --feedback-warning-action-background: var(--orange-200);
+  --feedback-attention-action-background: var(--red-200);
+
   /* Action - Primary (Button & Link) */
   --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
   --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
@@ -403,17 +410,23 @@ html[data-theme="dark"] {
   --feedback-warning-background: var(--orange-800);
   --feedback-attention-background: var(--red-800);
   /* Feedback - Icon (Alerts & Messages) */
-  --feedback-neutral-icon: var(--grey-300);
-  --feedback-positive-icon: var(--green-300);
-  --feedback-info-icon: var(--blue-300);
-  --feedback-warning-icon: var(--orange-300);
-  --feedback-attention-icon: var(--red-300);
+  --feedback-neutral-icon: var(--grey-200);
+  --feedback-positive-icon: var(--green-200);
+  --feedback-info-icon: var(--blue-200);
+  --feedback-warning-icon: var(--orange-200);
+  --feedback-attention-icon: var(--red-200);
   /* Feedback - Text (Alerts & Messages) */
   --feedback-neutral-text: var(--grey-100);
   --feedback-positive-text: var(--green-100);
   --feedback-info-text: var(--blue-100);
   --feedback-warning-text: var(--orange-100);
   --feedback-attention-text: var(--red-100);
+  /* Feedback - Action (Button & Link) */
+  --feedback-neutral-action-background: var(--grey-900);
+  --feedback-positive-action-background: var(--green-900);
+  --feedback-info-action-background: var(--blue-900);
+  --feedback-warning-action-background: var(--orange-900);
+  --feedback-attention-action-background: var(--red-900);
   /* Action - Primary (Button & Link) */
   --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
   --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);

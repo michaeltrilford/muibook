@@ -53,6 +53,12 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--feedback-warning-text" variant="text-color" output="var(--orange-900)"></story-token-slat>
             <story-token-slat slot="body" token="--feedback-attention-text" variant="text-color" output="var(--red-900)"></story-token-slat>
 
+            <story-token-slat slot="body" token="--feedback-neutral-action-background" variant="color" output="var(--grey-200)"></story-token-slat>
+            <story-token-slat slot="body" token="--feedback-positive-action-background" variant="color" output="var(--green-200)"></story-token-slat>
+            <story-token-slat slot="body" token="--feedback-info-action-background" variant="color" output="var(--blue-200)"></story-token-slat>
+            <story-token-slat slot="body" token="--feedback-warning-action-background" variant="color" output="var(--orange-200)"></story-token-slat>
+            <story-token-slat slot="body" token="--feedback-attention-action-background" variant="color" output="var(--red-200)"></story-token-slat>
+
           </spec-card>
 
           <spec-card title="Action" description="Action tokens define the visual behavior of call-to-action button and link button elements.">

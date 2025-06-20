@@ -165,7 +165,7 @@ class MuiAlert extends HTMLElement {
           if (isActionComponent) {
             hasAction = true;
             el.setAttribute("variant", "tertiary");
-            el.classList.add("alert-slot");
+            el.classList.add("alert-slot", `alert-${variant}-slot`);
           }
         });
 

@@ -77,7 +77,7 @@ html[data-brand="ana"][data-theme="light"] {
   --feedback-neutral-border-color: var(--black-opacity-20);
   --feedback-positive-border-color: var(--ana-green-300);
   --feedback-info-border-color: var(--ana-blue-200);
-  --feedback-warning-border-color: var(--ana-orange-300);
+  --feedback-warning-border-color: var(--ana-orange-500);
   --feedback-attention-border-color: var(--ana-red-300);
 
   --feedback-neutral-background: var(--ana-white);
@@ -97,6 +97,12 @@ html[data-brand="ana"][data-theme="light"] {
   --feedback-info-text: var(--ana-blue-700);
   --feedback-warning-text: var(--ana-orange-700);
   --feedback-attention-text: var(--ana-red-600);
+
+  --feedback-neutral-action-background: var(--ana-grey-100);
+  --feedback-positive-action-background: var(--ana-green-100);
+  --feedback-info-action-background: var(--ana-blue-100);
+  --feedback-warning-action-background: var(--ana-orange-100);
+  --feedback-attention-action-background: var(--ana-red-100);
 
   --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
   --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-500);
@@ -218,7 +224,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --feedback-positive-background: var(--ana-green-700);
   --feedback-info-background: var(--ana-blue-700);
   --feedback-warning-background: var(--ana-orange-700);
-  --feedback-attention-background: var(--ana-red-600);
+  --feedback-attention-background: var(--ana-red-700);
 
   --feedback-neutral-icon: var(--ana-grey-100);
   --feedback-positive-icon: var(--ana-green-100);
@@ -231,6 +237,12 @@ html[data-brand="ana"][data-theme="dark"] {
   --feedback-info-text: var(--ana-blue-100);
   --feedback-warning-text: var(--ana-orange-100);
   --feedback-attention-text: var(--ana-red-100);
+
+  --feedback-neutral-action-background: var(--ana-grey-600);
+  --feedback-positive-action-background: var(--ana-green-600);
+  --feedback-info-action-background: var(--ana-blue-600);
+  --feedback-warning-action-background: var(--ana-orange-600);
+  --feedback-attention-action-background: var(--ana-red-600);
 
   --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-400);
   --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--ana-blue-300);

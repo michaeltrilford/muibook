@@ -234,9 +234,45 @@ class MuiLink extends HTMLElement {
       }
       /* ===================================== */
 
+      :host(.alert-positive-slot) {
+        --alert-text: var(--feedback-positive-text);
+        --alert-icon: var(--feedback-positive-icon);
+        --alert-bg-hover: var(--feedback-positive-action-background);
+      }
+
+      :host(.alert-info-slot) {
+        --alert-text: var(--feedback-info-text);
+        --alert-icon: var(--feedback-info-icon);
+        --alert-bg-hover: var(--feedback-info-action-background);
+      }
+
+      :host(.alert-warning-slot) {
+        --alert-text: var(--feedback-warning-text);
+        --alert-icon: var(--feedback-warning-icon);
+        --alert-bg-hover: var(--feedback-warning-action-background);
+      }
+
+      :host(.alert-attention-slot) {
+        --alert-text: var(--feedback-attention-text);
+        --alert-icon: var(--feedback-attention-icon);
+        --alert-bg-hover: var(--feedback-attention-action-background);
+      }
+
+      :host(.alert-slot) a {
+        font-weight: var(--font-weight-semi-bold);
+        color: var(--alert-text);
+      }
+
       :host(.alert-slot) a:hover,
       :host(.alert-slot) a:focus-visible {
-        background: var(--surface-recessed-alpha);
+        background: var(--alert-bg-hover);
+        color: var(--alert-text);
+      }
+
+      :host(.alert-slot) ::slotted(.mui-icon),
+      :host(.alert-slot):hover ::slotted(.mui-icon),
+      :host(.alert-slot):focus-visible ::slotted(.mui-icon) {
+        fill: var(--alert-icon);
       }
 
     </style>

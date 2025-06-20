@@ -103,6 +103,11 @@ html[data-brand="modern"][data-theme="light"] {
   --feedback-info-text: var(--blue-900);
   --feedback-warning-text: var(--orange-900);
   --feedback-attention-text: var(--red-900);
+  --feedback-neutral-action-background: var(--grey-200);
+  --feedback-positive-action-background: var(--green-200);
+  --feedback-info-action-background: var(--blue-200);
+  --feedback-warning-action-background: var(--orange-200);
+  --feedback-attention-action-background: var(--red-200);
 
   /* Buttons */
   --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
@@ -235,6 +240,11 @@ html[data-brand="modern"][data-theme="dark"] {
   --feedback-info-text: var(--blue-100);
   --feedback-warning-text: var(--orange-100);
   --feedback-attention-text: var(--red-100);
+  --feedback-neutral-action-background: var(--grey-900);
+  --feedback-positive-action-background: var(--green-900);
+  --feedback-info-action-background: var(--blue-900);
+  --feedback-warning-action-background: var(--orange-900);
+  --feedback-attention-action-background: var(--red-900);
 
   /* Action */
   --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);

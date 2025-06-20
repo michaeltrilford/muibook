@@ -59,6 +59,12 @@ html[data-brand="mono"][data-theme="light"] {
   --feedback-warning-text: var(--mono-black);
   --feedback-attention-text: var(--mono-black);
 
+  --feedback-neutral-action-background: var(--mono-grey-200);
+  --feedback-positive-action-background: var(--mono-grey-200);
+  --feedback-info-action-background: var(--mono-grey-200);
+  --feedback-warning-action-background: var(--mono-grey-200);
+  --feedback-attention-action-background: var(--mono-grey-200);
+
   --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-700);
   --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-900);
   --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-900);
@@ -192,6 +198,12 @@ html[data-brand="mono"][data-theme="dark"] {
   --feedback-info-text: var(--mono-white);
   --feedback-warning-text: var(--mono-white);
   --feedback-attention-text: var(--mono-white);
+
+  --feedback-neutral-action-background: var(--mono-grey-800);
+  --feedback-positive-action-background: var(--mono-grey-800);
+  --feedback-info-action-background: var(--mono-grey-800);
+  --feedback-warning-action-background: var(--mono-grey-800);
+  --feedback-attention-action-background: var(--mono-grey-800);
 
   --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-200);
   --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-100);
