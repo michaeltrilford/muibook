@@ -114,11 +114,49 @@ class storyButton extends HTMLElement {
         </spec-card>
 
         <story-card title="Primary">
-        <mui-button variant="primary" slot="body">Submit</mui-button>
+          <mui-button variant="primary" slot="body">Submit</mui-button>
           <mui-code slot="footer">
             &lt;mui-button variant="primary"&gt;
             <br />
             &nbsp;&nbsp;...
+            <br />
+            &lt;/mui-button&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card title="Icon Slots">
+
+          <mui-v-stack slot="body" space="var(--space-200)">
+
+            <mui-button 
+              variant="primary">
+                Add New
+                <mui-icon-add slot="before"></mui-icon-add>
+            </mui-button>
+
+            <mui-button 
+              variant="primary">
+                More
+                <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
+            </mui-button>
+
+          </mui-v-stack>
+          
+          <mui-code slot="footer">
+            &lt;mui-button variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;Add New
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-add slot="before"&gt;&lt;/mui-icon-add&gt;
+            <br />
+            &lt;/mui-button&gt;
+            <br>
+            <br>
+            &lt;mui-button variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;More
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-add slot="after"&gt;&lt;/mui-icon-add&gt;
             <br />
             &lt;/mui-button&gt;
           </mui-code>
@@ -206,7 +244,7 @@ class storyButton extends HTMLElement {
         <story-card title="Secondary Icon-Only">
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-button variant="secondary">
-              <mui-icon-add variant="secondary" size="small"></mui-icon-add>
+              <mui-icon-add variant="secondary"></mui-icon-add>
             </mui-button>
             <mui-button variant="secondary">
               <mui-icon-subtract></mui-icon-subtract>

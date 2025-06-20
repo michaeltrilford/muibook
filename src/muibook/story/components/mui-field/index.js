@@ -151,7 +151,7 @@ class storyField extends HTMLElement {
             style="margin-bottom: var(--space-500)"
             slot="body" 
             data-toggle="field-success-toggle" 
-            data-message="✓ Password strength: Strong"
+            data-message="Password strength: Strong"
             data-variant="success"
           >
             Test Validation
@@ -192,14 +192,14 @@ class storyField extends HTMLElement {
             style="margin-bottom: var(--space-500)"
             slot="body" 
             data-toggle="field-warning-toggle" 
-            data-message="&#9888; Please double-check your email address for typos"
+            data-message="Please double-check your email address for typos"
             data-variant="warning"
           >
             Test Validation
           </mui-button>
 
           <mui-field id="field-warning-toggle" label="Email" slot="body">
-            <mui-input placeholder="you@example.com" value="michael.mui.com"></mui-input>
+            <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
           </mui-field>
 
           <mui-code slot="footer">
@@ -217,7 +217,7 @@ class storyField extends HTMLElement {
             <br />
             &lt;mui-field&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="mui#mui.com"&gt;&lt;/mui-input&gt;
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;
             <br />
             &lt;/mui-field&gt;
           </mui-code>
@@ -238,7 +238,7 @@ class storyField extends HTMLElement {
           </mui-button>
 
           <mui-field id="field-error-toggle" label="Email" slot="body">
-            <mui-input placeholder="you@example.com" value="michael.mui.com"></mui-input>
+            <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
           </mui-field>
 
           <mui-code slot="footer">
@@ -256,7 +256,7 @@ class storyField extends HTMLElement {
             <br />
             &lt;mui-field&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael.mui.com"&gt;&lt;/mui-input&gt;
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;
             <br />
             &lt;/mui-field&gt;
           </mui-code>

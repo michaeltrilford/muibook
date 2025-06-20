@@ -271,6 +271,34 @@ class MuiLink extends HTMLElement {
         fill: var(--alert-icon);
       }
 
+      /* Before & After Icon
+      ========================================= */
+      :host(.has-after) a,
+      :host(.has-before) a,
+      :host(.has-after.has-before) a { 
+        display: grid; 
+        align-items: center; 
+        gap: var(--space-100);
+      }
+      
+      :host(.has-after.has-before) a {
+        grid-template-columns: auto 1fr auto;
+        padding-right: var(--space-300);
+        padding-left: var(--space-300);
+      }
+
+      :host(.has-after) a {
+        grid-template-columns: 1fr auto;
+        padding-right: var(--space-300);
+        padding-left: var(--space-400);
+      }
+
+      :host(.has-before) a {
+        grid-template-columns: auto 1fr;
+        padding-right: var(--space-400);
+        padding-left: var(--space-300);
+      }
+
     </style>
 
     <a
@@ -278,7 +306,9 @@ class MuiLink extends HTMLElement {
       target="${this.getAttribute("target") || "_self"}" 
       href="${this.getAttribute("href") || "#"}"
       >
+      <slot name="before"></slot>
       <slot></slot>
+      <slot name="after"></slot>
     </a>
     `;
 
@@ -288,16 +318,35 @@ class MuiLink extends HTMLElement {
     await customElements.whenDefined("mui-link"); // optional, extra safety
 
     requestAnimationFrame(() => {
-      const slot = this.shadowRoot?.querySelector("slot");
-      const assignedNodes = slot?.assignedNodes({ flatten: true }) || [];
+      const shadow = this.shadowRoot;
+      if (!shadow) return;
 
-      const iconOnly = assignedNodes.every((node) => {
-        // check if it's an svg or an element with .mui-icon
+      const slotDefault = shadow.querySelector("slot:not([name]") as HTMLSlotElement | null;
+      const slotBefore = shadow.querySelector('slot[name="before"]') as HTMLSlotElement | null;
+      const slotAfter = shadow.querySelector('slot[name="after"]') as HTMLSlotElement | null;
+
+      const hasAssignedContent = (slot: HTMLSlotElement | null): boolean => {
+        if (!slot) return false;
+        return slot.assignedNodes({ flatten: true }).some((node: Node) => {
+          return (
+            node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim())
+          );
+        });
+      };
+
+      const hasBefore = hasAssignedContent(slotBefore);
+      const hasAfter = hasAssignedContent(slotAfter);
+
+      this.classList.toggle("has-before", hasBefore);
+      this.classList.toggle("has-after", hasAfter);
+
+      const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
+
+      const iconOnly = assignedNodes.every((node: Node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
           const el = node as HTMLElement;
           return el.tagName.toLowerCase() === "svg" || el.classList.contains("mui-icon");
         }
-        // Ignore text nodes (e.g. whitespace)
         return node.nodeType === Node.TEXT_NODE && !node.textContent?.trim();
       });
 

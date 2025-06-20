@@ -79,6 +79,19 @@ class MuiBody extends HTMLElement {
         color: var(--text-color-error);
       }
 
+      :host([variant="default"]) ::slotted(.mui-icon) {
+        fill: var(--text-color);
+      }
+      :host([variant="success"]) ::slotted(.mui-icon) {
+        fill: var(--text-color-success);
+      }
+      :host([variant="warning"]) ::slotted(.mui-icon) {
+        fill: var(--text-color-warning);
+      }
+      :host([variant="error"]) ::slotted(.mui-icon) {
+        fill: var(--text-color-error);
+      }
+
     </style>
     
     <p part="${partMap}"><slot></slot></p>

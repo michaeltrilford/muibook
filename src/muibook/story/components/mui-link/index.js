@@ -128,6 +128,44 @@ class storyLink extends HTMLElement {
           </mui-code>
         </story-card>
 
+        <story-card title="Icon Slots">
+
+          <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
+
+            <mui-link 
+              variant="primary">
+                Add New
+                <mui-icon-add slot="before"></mui-icon-add>
+            </mui-link>
+
+            <mui-link 
+              variant="primary">
+                More
+                <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
+            </mui-link>
+
+          </mui-v-stack>
+          
+          <mui-code slot="footer">
+            &lt;mui-button variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;Add New
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-add slot="before"&gt;&lt;/mui-icon-add&gt;
+            <br />
+            &lt;/mui-button&gt;
+            <br>
+            <br>
+            &lt;mui-button variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;More
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-add slot="after"&gt;&lt;/mui-icon-add&gt;
+            <br />
+            &lt;/mui-button&gt;
+          </mui-code>
+        </story-card>
+
         <story-card title="Secondary Link">
           <div slot="body">
             <mui-link target="_blank" variant="secondary">View report</mui-link>

@@ -44,6 +44,12 @@ class MuiField extends HTMLElement {
     const message = this.getAttribute("message");
     const variant = this.getAttribute("variant");
     if (!this.shadowRoot) return;
+
+    let icon = "";
+    if (variant === "success") icon = "check";
+    else if (variant === "warning") icon = "warning";
+    else if (variant === "error") icon = "attention";
+
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
         :host {
@@ -51,12 +57,29 @@ class MuiField extends HTMLElement {
         }
 
         mui-body {
-          margin-top: var(--space-100);
+          margin-top: var(--space-200);
+        }
+        mui-body::part(display) {
+          display: flex;
+        }
+        mui-body::part(align-items) {
+          align-items: center;
+        }
+        mui-body::part(gap) {
+          gap: var(--space-100);
         }
       </style>
 
       <slot></slot>
-      ${message ? `<mui-body size="small" variant="${variant}">${message}</mui-body>` : ""}
+      ${
+        message
+          ? `
+        <mui-body size="small" variant="${variant}">
+          ${icon ? `<mui-icon-${icon}></mui-icon-${icon}>` : ""}
+          ${message}
+        </mui-body>`
+          : ""
+      }
     `;
   }
 }
