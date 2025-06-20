@@ -345,14 +345,37 @@ class storyAlert extends HTMLElement {
             title="Action / Link" 
             description="Optional action to for tasks like undoing an action." 
           >
-            <div slot="body">
+            <mui-v-stack slot="body" space="var(--space-200)">
+
+              <mui-alert variant="success">
+                Your subscription will expire today.
+                <mui-link slot="action">
+                  Upgrade
+                </mui-link>
+              </mui-alert>
+
+              <mui-alert variant="info">
+                Your subscription will expire today.
+                <mui-link slot="action">
+                  Upgrade
+                </mui-link>
+              </mui-alert>
+
               <mui-alert variant="warning">
                 Your subscription will expire today.
                 <mui-link slot="action">
                   Upgrade
                 </mui-link>
               </mui-alert>
-            </div>
+
+              <mui-alert variant="error">
+                Your subscription will expire today.
+                <mui-link slot="action">
+                  Upgrade
+                </mui-link>
+              </mui-alert>
+            </mui-v-stack>
+
             <mui-code slot="footer">
               &lt;mui-alert variant="warning"&gt;
               <br />
