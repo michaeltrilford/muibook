@@ -44,6 +44,8 @@ export class AppContainer extends HTMLElement {
       "/typed-components": "typed-components",
       "/typed-wrapper": "typed-wrapper",
       "/muikit": "muikit-page",
+      "/keywords": "agent-keywords-page",
+      "/prompts": "agent-prompts-page",
 
       "/base-design-tokens": "tokens-base",
       "/semantic-design-tokens": "tokens-semantic",
@@ -108,6 +110,8 @@ export class AppContainer extends HTMLElement {
       "typed-components": () => import("../pages/typed-components/index.js"),
       "typed-wrapper": () => import("../pages/typed-wrapper/index.js"),
       "muikit-page": () => import("../pages/muikit/index.js"),
+      "agent-keywords-page": () => import("../pages/agent-keywords/index.js"),
+      "agent-prompts-page": () => import("../pages/agent-prompts/index.js"),
 
       "tokens-base": () => import("../story/tokens/base.js"),
       "tokens-semantic": () => import("../story/tokens/semantic.js"),

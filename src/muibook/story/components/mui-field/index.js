@@ -85,7 +85,7 @@ class storyField extends HTMLElement {
       <story-template 
         title="Field"
         description="The mui-field component only renders a validation message if the message attribute is set. Showing/hiding the message is controlled by the form logic, or application state. This keeps mui-field simple, declarative, and reactive to the attributes it’s given."
-        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-field/index.ts"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-field/index.ts"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=112-620&t=GMqx21isUVAMpLJp-1"
         accessibility="
           A label is required for screen reader support to describe the input’s purpose.;

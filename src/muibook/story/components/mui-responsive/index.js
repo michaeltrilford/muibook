@@ -94,7 +94,7 @@ class storyResponsive extends HTMLElement {
       <story-template 
         title="Responsive"
         description="Dynamically render UI based on viewport size"
-        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-responsive/index.ts"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts"
       >
 
       <mui-v-stack space="var(--space-700)">

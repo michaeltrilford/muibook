@@ -101,6 +101,9 @@ class appNavbar extends HTMLElement {
         <mui-body weight="bold">React</mui-body>
         <app-navbar-link link="#/typed-components" title="Typed Components"></app-navbar-link>
         <app-navbar-link link="#/typed-wrapper" title="Typed Wrapper"></app-navbar-link>
+        <mui-body weight="bold">Artifical Intelligence</mui-body>
+        <app-navbar-link link="#/keywords" title="Keywords"></app-navbar-link>
+        <app-navbar-link link="#/prompts" title="Prompts"></app-navbar-link>
       </app-navbar-group>
     `;
 

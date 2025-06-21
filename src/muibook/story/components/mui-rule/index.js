@@ -14,7 +14,7 @@ class storyRule extends HTMLElement {
       <story-template 
         title="Rule"
         description="A horizontal rule to divide a page"
-        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-rule/index.ts"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-rule/index.ts"
       >
 
       <mui-v-stack space="var(--space-700)">

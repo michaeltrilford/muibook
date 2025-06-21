@@ -109,7 +109,7 @@ class storySelect extends HTMLElement {
       <story-template
         title="Select" 
         description="A versatile dropdown component for selecting from a list of options, supporting customisable styles and accessibility features."
-        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-select/index.ts"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-select/index.ts"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=117-2068&t=GMqx21isUVAMpLJp-1"
         accessibility="
           A label is required for screen reader support, describing the purpose of the select.;

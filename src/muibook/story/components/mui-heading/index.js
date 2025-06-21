@@ -13,7 +13,7 @@ class storyHeading extends HTMLElement {
         title="Heading" 
         description="The Heading component includes six levels (H1–H6) for structured heading usage, supporting a range of hierarchies in text presentation."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1120&t=fSFYVey9aCoE5oQa-1"
-        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-heading/index.ts"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-heading/index.ts"
       >
         
         <mui-v-stack space="var(--space-700)">

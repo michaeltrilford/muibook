@@ -92,7 +92,7 @@ class storySwitch extends HTMLElement {
       <story-template
         title="Switch"
         description="A component that allows users to switch a setting on or off with immediate effect."
-        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-switch/index.ts"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts"
         accessibility="
           A label is required and applied as aria-label to describe the switch’s purpose.;
           Uses role="switch" and updates aria-checked for assistive tech.;

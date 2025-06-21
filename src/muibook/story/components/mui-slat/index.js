@@ -12,7 +12,7 @@ class storySlat extends HTMLElement {
       <story-template 
         title="Slat"
         description="Slat is a composable component designed to display table data on mobile devices. It provides flexible start and end slots, enabling consumers to tailor how data is presented in a mobile-friendly, stacked format. Slat is ideal for adapting complex table layouts into a clearer, more accessible experience on smaller screens."
-        github="https://github.com/michaeltrilford/muibook/blob/b060f2c788d521abd1f16889a460822d0cf8da3d/src/components/mui-slat/index.ts"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts"
       >
 
       <mui-v-stack space="var(--space-700)">

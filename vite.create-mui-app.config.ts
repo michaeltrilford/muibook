@@ -4,6 +4,7 @@ import path from "path";
 
 export default defineConfig({
   root: path.resolve(__dirname, "src/create-mui-app"),
+  publicDir: path.resolve(__dirname, "public"),
   base: "/",
   build: {
     outDir: path.resolve(__dirname, "dist/create-mui-app"),
