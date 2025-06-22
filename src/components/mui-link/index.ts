@@ -33,13 +33,16 @@ class MuiLink extends HTMLElement {
         justify-content: center;
         cursor: pointer;
         box-sizing: border-box;
+        text-decoration: underline;
+        text-underline-offset: var(--space-050);
+        text-decoration-color: color-mix(in srgb, var(--text-color) 50%, transparent);
       }
 
       /* Turned back on for focus-visible */
       a:focus, a:active, a:hover { outline: var(--space-000); }
-      a:hover { color: var(--link-text-color-default-hover); }
-      a:focus { color: var(--link-text-color-default-focus); }
-      a:disabled { color: var(--link-text-color-default-disabled); cursor: not-allowed; }
+      a:hover { color: var(--link-text-color-default-hover); text-decoration-color: color-mix(in srgb, var(--link-text-color-default-hover) 80%, transparent); }
+      a:focus { color: var(--link-text-color-default-focus); text-decoration-color: color-mix(in srgb, var(--link-text-color-default-focus) 80%, transparent); }
+      a:disabled { color: var(--link-text-color-default-disabled); text-decoration-color: color-mix(in srgb, var(--link-text-color-default-disabled) 80%, transparent); cursor: not-allowed; }
       a, a:before, a:after {box-sizing: border-box;}
       a:focus-visible { outline: var(--outline-thick); }
 
@@ -283,21 +286,32 @@ class MuiLink extends HTMLElement {
       
       :host(.has-after.has-before) a {
         grid-template-columns: auto 1fr auto;
-        padding-right: var(--space-300);
-        padding-left: var(--space-300);
       }
 
       :host(.has-after) a {
         grid-template-columns: 1fr auto;
-        padding-right: var(--space-300);
-        padding-left: var(--space-400);
       }
 
       :host(.has-before) a {
         grid-template-columns: auto 1fr;
+      }
+
+      :host(.has-after.has-before[variant]) a {
+        padding-right: var(--space-300);
+        padding-left: var(--space-300);
+      }
+
+      :host(.has-after[variant]) a {
+        padding-right: var(--space-300);
+        padding-left: var(--space-400);
+      }
+
+      :host(.has-before[variant]) a {
         padding-right: var(--space-400);
         padding-left: var(--space-300);
       }
+
+
 
     </style>
 

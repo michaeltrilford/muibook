@@ -40,12 +40,12 @@ class tokensSurface extends HTMLElement {
         usage: "Page background",
       },
       {
-        token: "--surface-elevated-*",
+        token: "--surface-elevated-[alpha, 100, 200]",
         description: "Lighter/brighter",
         usage: "Cards, dialogs",
       },
       {
-        token: "--surface-recessed-*",
+        token: "--surface-recessed-[alpha, 100, 200]",
         description: "Darker/deeper",
         usage: "insets, sidebar tracks",
       },

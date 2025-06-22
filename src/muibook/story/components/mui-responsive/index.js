@@ -105,15 +105,34 @@ class storyResponsive extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <story-card title="Basic">
+        <story-card title="Single Breakpoint">
           <mui-responsive slot="body" breakpoint="600">
-            <mui-heading slot="showBelow" size="6">Mobile / Below 600</mui-heading>
-            <mui-heading slot="showAbove" size="6">Desktop / Above 600</mui-heading>
+            <mui-heading slot="showBelow" size="5" level="3">Mobile / Below 600</mui-heading>
+            <mui-heading slot="showAbove" size="3" level="3">Desktop / Above 600</mui-heading>
           </mui-responsive>
           <mui-code slot="footer">
             &lt;mui-responsive breakpoint="600"&gt;
             <br />
             &nbsp;&nbsp;&lt;div slot="showAbove"&gt;...&lt;/div&gt;
+            <br />
+            &nbsp;&nbsp;&lt;div slot="showBelow"&gt;...&lt;/div&gt;
+            <br />
+            &lt;/mui-responsive&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card title="Dual Breakpoint">
+          <mui-responsive slot="body" breakpoint-low="600" breakpoint-high="1024">
+            <mui-heading slot="showBelow" size="5" level="3">Mobile / Below 600</mui-heading>
+            <mui-heading slot="showMiddle" size="4" level="3">Tablet / Between 600-1200</mui-heading>
+            <mui-heading slot="showAbove" size="3" level="3">Desktop / Above 1200</mui-heading>
+          </mui-responsive>
+          <mui-code slot="footer">
+            &lt;mui-responsive breakpoint-low="599" breakpoint-high="1024"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;div slot="showAbove"&gt;...&lt;/div&gt;
+            <br />
+            &nbsp;&nbsp;&lt;div slot="showMiddle"&gt;...&lt;/div&gt;
             <br />
             &nbsp;&nbsp;&lt;div slot="showBelow"&gt;...&lt;/div&gt;
             <br />

@@ -74,12 +74,23 @@ class storyCard extends HTMLElement {
 
     const title = this.getAttribute("title") || "";
     const description = this.hasAttribute("description")
-      ? /*html*/ `<mui-body style="max-width: 86ch;">${this.getAttribute("description")}</mui-body>`
+      ? /*html*/ `<mui-body style="max-width: 86ch; margin-top: var(--space-200);" size="small">${this.getAttribute(
+          "description"
+        )}</mui-body>`
       : "";
 
     const githubLink = this.getAttribute("github");
     const githubContent = githubLink
-      ? /*html*/ `<mui-link class="github" href="${githubLink}" target="_blank" rel="noopener" variant="tertiary">View Usage<github-mark></github-mark></mui-link>`
+      ? /*html*/ `
+        <mui-link 
+          class="github" 
+          href="${githubLink}" 
+          target="_blank" 
+          rel="noopener">
+          Usage
+          <github-mark slot="after"></github-mark>
+        </mui-link>
+      `
       : "";
 
     // Handle usage list

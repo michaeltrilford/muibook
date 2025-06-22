@@ -98,9 +98,6 @@ class storyLink extends HTMLElement {
 
         </story-card>
 
-
-
-
         <story-card title="URL">
           <div slot="body">
             <mui-link target="_blank" href="links.html">Unsubscribe</mui-link>
@@ -128,7 +125,55 @@ class storyLink extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Icon Slots">
+        <story-card title="Icon Slots / Link Style">
+
+          <mui-v-stack slot="body" space="var(--space-400)" alignX="start">
+
+            <mui-link>
+              Add New
+              <mui-icon-add slot="before" size="x-small"></mui-icon-add>
+            </mui-link>
+
+            <mui-link>
+              Learn More
+              <mui-icon-right-chevron slot="after" size="x-small"></mui-icon-right-chevron>
+            </mui-link>
+
+          </mui-v-stack>
+          
+          <mui-code slot="footer">
+            &lt;mui-button variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;Add New
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-add 
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;slot="before" 
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;size="x-small"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;/mui-icon-add&gt;
+            <br />
+            &lt;/mui-button&gt;
+            <br>
+            <br>
+            &lt;mui-button variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;More
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-right-chevron 
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;slot="after"
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;size="x-small"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;/mui-icon-right-chevron&gt;
+            <br />
+            &lt;/mui-button&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card title="Icon Slots / Button Style">
 
           <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
 
@@ -160,7 +205,7 @@ class storyLink extends HTMLElement {
             <br />
             &nbsp;&nbsp;More
             <br>
-            &nbsp;&nbsp;&lt;mui-icon-add slot="after"&gt;&lt;/mui-icon-add&gt;
+            &nbsp;&nbsp;&lt;mui-icon-down-chevron slot="after"&gt;&lt;/mui-icon-down-chevron&gt;
             <br />
             &lt;/mui-button&gt;
           </mui-code>

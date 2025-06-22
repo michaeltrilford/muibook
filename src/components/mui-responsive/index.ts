@@ -1,10 +1,56 @@
+// class MuiR extends HTMLElement {
+//   static get observedAttributes() {
+//     return ["breakpoint"];
+//   }
+
+//   private slotEl: HTMLSlotElement | null = null;
+//   private mql: MediaQueryList | null = null;
+
+//   constructor() {
+//     super();
+//     const shadowRoot = this.attachShadow({ mode: "open" });
+
+//     const styles = /*css*/ `
+//       :host { display: block; }
+//     `;
+
+//     shadowRoot.innerHTML = `
+//       <style>${styles}</style>
+//       <slot></slot>
+//     `;
+
+//     this.slotEl = shadowRoot.querySelector("slot");
+//   }
+
+//   connectedCallback() {
+//     const breakpoint = this.getAttribute("breakpoint");
+//     if (!breakpoint || !this.slotEl) return;
+
+//     this.mql = window.matchMedia(`(max-width: ${breakpoint}px)`);
+
+//     const updateSlotName = (matches: boolean) => {
+//       this.slotEl!.setAttribute("name", matches ? "showBelow" : "showAbove");
+//     };
+
+//     updateSlotName(this.mql.matches);
+
+//     this.mql.addEventListener("change", (e) => {
+//       updateSlotName(e.matches);
+//     });
+//   }
+// }
+
+// customElements.define("mui-responsive", MuiR);
+
 class MuiR extends HTMLElement {
   static get observedAttributes() {
-    return ["breakpoint"];
+    return ["breakpoint", "breakpoint-low", "breakpoint-high"];
   }
 
   private slotEl: HTMLSlotElement | null = null;
-  private mql: MediaQueryList | null = null;
+  private mqlLow: MediaQueryList | null = null;
+  private mqlHigh: MediaQueryList | null = null;
+  private mqlSingle: MediaQueryList | null = null;
 
   constructor() {
     super();
@@ -24,19 +70,43 @@ class MuiR extends HTMLElement {
 
   connectedCallback() {
     const breakpoint = this.getAttribute("breakpoint");
-    if (!breakpoint || !this.slotEl) return;
+    const low = this.getAttribute("breakpoint-low");
+    const high = this.getAttribute("breakpoint-high");
 
-    this.mql = window.matchMedia(`(max-width: ${breakpoint}px)`);
+    if (!this.slotEl) return;
 
-    const updateSlotName = (matches: boolean) => {
-      this.slotEl!.setAttribute("name", matches ? "showBelow" : "showAbove");
-    };
+    if (low && high) {
+      const lowVal = parseInt(low);
+      const highVal = parseInt(high);
+      this.mqlLow = window.matchMedia(`(max-width: ${lowVal}px)`);
+      this.mqlHigh = window.matchMedia(`(min-width: ${highVal}px)`);
 
-    updateSlotName(this.mql.matches);
+      const updateSlotName = () => {
+        const isBelow = this.mqlLow!.matches;
+        const isAbove = this.mqlHigh!.matches;
+        const slotName = isBelow ? "showBelow" : isAbove ? "showAbove" : "showMiddle";
 
-    this.mql.addEventListener("change", (e) => {
-      updateSlotName(e.matches);
-    });
+        this.slotEl!.setAttribute("name", slotName);
+      };
+
+      updateSlotName();
+
+      this.mqlLow.addEventListener("change", updateSlotName);
+      this.mqlHigh.addEventListener("change", updateSlotName);
+    } else if (breakpoint) {
+      const bpVal = parseInt(breakpoint);
+      this.mqlSingle = window.matchMedia(`(max-width: ${bpVal}px)`);
+
+      const updateSlotName = (matches: boolean) => {
+        this.slotEl!.setAttribute("name", matches ? "showBelow" : "showAbove");
+      };
+
+      updateSlotName(this.mqlSingle.matches);
+
+      this.mqlSingle.addEventListener("change", (e) => {
+        updateSlotName(e.matches);
+      });
+    }
   }
 }
 
