@@ -20,13 +20,11 @@ class appNavbarLink extends HTMLElement {
       mui-link {
         transition: opacity 400ms ease-in, transform 100ms ease-in;
         opacity: 1;
-        display: block;
+        display: inline-block;
+        width: 100%;
       }
 
-      mui-link:hover { 
-        opacity: 1; 
-      }
-
+      mui-link:hover,
       mui-link:focus { 
         opacity: 1; 
       }
@@ -44,25 +42,14 @@ class appNavbarLink extends HTMLElement {
 
       /* Spacing Parts */
       mui-link::part(padding) {
-        padding: var(--space-200) var(--space-000);
+        padding: var(--space-200) var(--space-500);
       }
       mui-link::part(margin) {
         margin: var(--space-000);
       }
-      mui-link::part(width) {
-        width: 100%;
-      }
-
-      /* Layout Parts */
-      mui-link::part(display) {
-        display: block;
-      } 
-
     </style>
 
-    <mui-link  href="${this.getAttribute("link")}">${this.getAttribute(
-      "title"
-    )}</mui-link> 
+    <mui-link  href="${this.getAttribute("link")}">${this.getAttribute("title")}</mui-link> 
 
     `;
 

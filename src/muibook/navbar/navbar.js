@@ -71,12 +71,16 @@ class appNavbar extends HTMLElement {
       mui-body::part(color) {
         color: var(--app-nav-accent);
       }
+      mui-body::part(padding) {
+        padding-left: var(--space-500);
+        padding-right: var(--space-500);
+      }
       mui-body::part(margin) {
         margin-top: var(--space-400);
         margin-bottom: var(--space-200);
       }
       mui-body.first::part(margin) {
-        margin-top: var(--space-000);
+        margin-top: var(--space-200);
       }
     `;
 

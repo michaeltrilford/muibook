@@ -25,7 +25,7 @@ class MuiLink extends HTMLElement {
     let html = /*html*/ `
     <style>
 
-      :host { display: inline-flex; }
+      :host { display: inline-flex; width: auto; text-align: initial }
 
       a {
         color: var(--link-text-color-default);
@@ -36,6 +36,8 @@ class MuiLink extends HTMLElement {
         text-decoration: underline;
         text-underline-offset: var(--space-050);
         text-decoration-color: color-mix(in srgb, var(--text-color) 50%, transparent);
+        width: inherit;
+        display: inherit;
       }
 
       /* Turned back on for focus-visible */
@@ -74,11 +76,18 @@ class MuiLink extends HTMLElement {
       /* Button  
       ========================================= */
 
+      :host([variant="primary"]),
+      :host([variant="secondary"]),
+      :host([variant="tertiary"]),
+      :host([variant="attention"]) { display: inline-block; text-align: center; }
+
       :host([variant="primary"]) a,
       :host([variant="secondary"]) a,
       :host([variant="tertiary"]) a,
       :host([variant="attention"]) a {
-        display: inline-block;
+        display: inherit;
+        text-align: inherit;
+        width: 100%;
         text-decoration: none;
         padding: var(--space-200) var(--space-500);
         border-radius: var(--action-radius);
@@ -87,10 +96,7 @@ class MuiLink extends HTMLElement {
         line-height: var(--action-line-height);
       }
 
-      :host([variant="primary"]),
-      :host([variant="secondary"])
-      :host([variant="tertiary"]),
-      :host([variant="attention"]) { display: inline-block; }
+
 
       /* Button Primary 
       ========================================= */

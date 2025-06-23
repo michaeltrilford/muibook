@@ -33,6 +33,8 @@ class MuiAccordionBlock extends HTMLElement {
     const headingText = this.getAttribute("heading") || "Heading...";
     const size = this.getAttribute("size") || "medium";
     const headingLevel = this.getAttribute("level") || "3";
+    const detailSpace = this.getAttribute("detail-space");
+    const detailSpaceClass = detailSpace ? `detail-space-${detailSpace}` : "";
 
     let html = /*html*/ `
     <style>
@@ -114,6 +116,10 @@ class MuiAccordionBlock extends HTMLElement {
         padding: var(--space-600);
       }
 
+      .detail-space-none {
+        padding: 0;
+      }
+
       :host([first-child]) .accordion-summary {
         border-top: none;
       }
@@ -156,7 +162,7 @@ class MuiAccordionBlock extends HTMLElement {
     </div>
 
     <div id="${this.accordionId}" class="accordion-detail">
-      <div class="accordion-detail-inner size-${size}-detail" inert>
+      <div class="accordion-detail-inner size-${size}-detail ${detailSpaceClass}" inert>
         <slot name="detail">Insert Content</slot>
       </div>
     </div>

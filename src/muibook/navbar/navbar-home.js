@@ -16,8 +16,8 @@ class appNavbarHome extends HTMLElement {
       :host { 
         display: block;
         position: sticky; 
-        box-shadow: 0 1px 0 0 var(--border-color);
-        z-index: 2;
+        box-shadow: 0 1px 0 0 var(--border-color), 0 -1px 0 0 var(--border-color);
+        z-index: 3;
         top: 92px;
         margin-bottom: -1px;
         background: var(--app-navbar-surface);

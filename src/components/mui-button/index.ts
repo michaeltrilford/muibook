@@ -24,17 +24,19 @@ class MuiButton extends HTMLElement {
 
     :host {
       display: inline-block;
+      width: auto;
+      text-align: center;
     }
     button {
       vertical-align: baseline;
       border: none;
       cursor: pointer;
-      width: auto;
+      width: 100%;
       border-radius: var(--action-radius);
       padding: var(--action-padding);
       text-decoration: none;
       line-height: var(--action-line-height);
-      display: inline-block;
+      display: inherit;
       text-transform: none;
       overflow: visible;
       -webkit-appearance: button;
@@ -43,7 +45,8 @@ class MuiButton extends HTMLElement {
       font-weight: var(--action-font-weight);
       background: var(--action-primary-background);
       color: var(--action-primary-text-color);
-      border: var(--action-primary-stroke); 
+      border: var(--action-primary-stroke);
+      text-align: inherit;
     }
 
     // Turned back on for focus-visible

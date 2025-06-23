@@ -4,6 +4,11 @@ class storyAccordion extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
     const styles = /*css*/ `
       :host { display: block; }
+
+      .nav-link {
+        width: 100%;
+        text-align: left;
+      }
     `;
 
     const propItems = [
@@ -21,6 +26,13 @@ class storyAccordion extends HTMLElement {
         options: "small, medium, large",
         default: "medium",
         description: "Adjust the size of the Accordion",
+      },
+      {
+        name: "detail-space",
+        type: "string",
+        options: "none",
+        default: "",
+        description: "Turn off padding inside the detail section",
       },
       {
         name: "slot",
@@ -273,6 +285,36 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-accordion-block&gt;
             <br />
             &lt;mui-accordion-group&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card 
+          title="Detail Space: None" 
+          description="In accordion-block, you are able to turn off the space within the detail section."
+          usage="Ideal for using the accordion block to contain navigation items; Support full-bleed content such as images or documents."
+        >
+          <mui-accordion-block heading="Design Tokens" detail-space="none" slot="body" style="width: 26rem;">
+            <mui-v-stack slot="detail" space="var(--space-000)" style="padding: var(--space-100)">
+              <mui-link variant="tertiary" class="nav-link">Primitive</mui-link>
+              <mui-link variant="tertiary" class="nav-link">Semantic</mui-link>
+              <mui-link variant="tertiary" class="nav-link">Contextual</mui-link>
+            </mui-v-stack>
+          </mui-accordion-block>
+          <mui-code slot="footer">
+            const styles = &#96;<br>
+            &nbsp;&nbsp;.nav-link {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;text-align: left;<br>
+            &nbsp;&nbsp;}<br>
+            &#96;<br><br>
+
+            &lt;mui-accordion-block heading="Design Tokens" detail-space="none" style="width: 26rem;"&gt;<br>
+            &nbsp;&nbsp;&lt;mui-v-stack slot="detail" space="var(--space-000)" style="padding: var(--space-100)"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link variant="tertiary" class="nav-link"&gt;Primitive&lt;/mui-link&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link variant="tertiary" class="nav-link"&gt;Semantic&lt;/mui-link&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link variant="tertiary" class="nav-link"&gt;Contextual&lt;/mui-link&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &lt;/mui-accordion-block&gt;
           </mui-code>
         </story-card>
 
