@@ -97,7 +97,7 @@ class HomePage extends HTMLElement {
 
           <!-- Main content below -->
           <main slot="showBelow">
-            <mui-v-stack space="var(--space-600)" style="text-align: center;">
+            <mui-v-stack space="var(--space-600)" style="text-align: center;" alignX="center">
               <div class="logo-wrapper">
               <mui-responsive breakpoint="420">
                 <mui-logo-mobile color="var(--app-logo-color)" slot="showBelow"></mui-logo-mobile>
@@ -109,11 +109,13 @@ class HomePage extends HTMLElement {
                   ${intro}
                 </mui-body> 
               </mui-v-stack>
+       
               <mui-link 
                 href="/#/create-mui-app" 
                 variant="primary">
                 Get Started
               </mui-link>
+         
             </mui-v-stack>
           </main>
 
