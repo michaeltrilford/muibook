@@ -29,27 +29,27 @@ class StoryTemplate extends HTMLElement {
 
     const demoLink = this.getAttribute("demo");
     const demoContent = demoLink
-      ? /*html*/ `<mui-link  href="${demoLink}" rel="noopener" variant="secondary">Demo<mui-icon-globe slot="after"></mui-icon-globe></mui-link>`
+      ? /*html*/ `<mui-link target="_blank" href="${demoLink}" rel="noopener" variant="secondary">Demo<mui-icon-globe slot="after"></mui-icon-globe></mui-link>`
       : "";
 
     const websiteLink = this.getAttribute("website");
     const websiteContent = websiteLink
-      ? /*html*/ `<mui-link  href="${websiteLink}" rel="noopener" variant="secondary">Try Now<mui-icon-globe slot="after"></mui-icon-globe></mui-link>`
+      ? /*html*/ `<mui-link target="_blank" href="${websiteLink}" rel="noopener" variant="secondary">Try Now<mui-icon-globe slot="after"></mui-icon-globe></mui-link>`
       : "";
 
     const githubLink = this.getAttribute("github");
     const githubContent = githubLink
-      ? /*html*/ `<mui-link  href="${githubLink}" rel="noopener" variant="secondary">Github<github-mark slot="after"></github-mark></mui-link>`
+      ? /*html*/ `<mui-link target="_blank" href="${githubLink}" rel="noopener" variant="secondary">Github<github-mark slot="after"></github-mark></mui-link>`
       : "";
 
     const figmaLink = this.getAttribute("figma");
     const figmaContent = figmaLink
-      ? /*html*/ `<mui-link  href="${figmaLink}" rel="noopener" variant="secondary">Figma<figma-mark slot="after"></figma-mark></mui-link>`
+      ? /*html*/ `<mui-link target="_blank" href="${figmaLink}" rel="noopener" variant="secondary">Figma<figma-mark slot="after"></figma-mark></mui-link>`
       : "";
 
     const guidesLink = this.hasAttribute("guides");
     const guidesContent = guidesLink
-      ? /*html*/ `<mui-link href="/#/design-guidelines" rel="noopener" variant="secondary">Guides<guides-mark slot="after"></guides-mark></mui-link>`
+      ? /*html*/ `<mui-link target="_blank" href="/#/design-guidelines" rel="noopener" variant="secondary">Guides<guides-mark slot="after"></guides-mark></mui-link>`
       : "";
 
     try {
