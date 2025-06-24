@@ -13,7 +13,7 @@ class tokensContextual extends HTMLElement {
         title="Contextual"
         description="Apply a base or semantic token to a specific use case or UI context."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/css/mui-tokens.css"
+        github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
         <mui-v-stack space="var(--space-700)">
 

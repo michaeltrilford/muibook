@@ -90,7 +90,7 @@ class tokensSurface extends HTMLElement {
       <story-template 
         title="Surface"
         description="Surface tokens set the background layers of the interface. They create depth, support elevation, and provide structure across contexts. Dark mode is not a simple inversion. It is curated to maintain clarity and hierarchy across all surfaces."
-        figma="https://github.com/michaeltrilford/muibook/blob/main/src/css/mui-tokens.css"
+        github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
         <mui-v-stack space="var(--space-700)">
 
