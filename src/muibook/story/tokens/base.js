@@ -11,7 +11,7 @@ class tokensBase extends HTMLElement {
 
       <story-template 
         title="Base"
-        description="Raw values for core attributes like color, typography, spacing, and size."
+        description="Base values for core attributes such as color, typography, spacing, and size. These tokens don’t carry meaning or intent — they exist solely to define the brand’s visual foundation."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >

@@ -11,7 +11,12 @@ class tokensContextual extends HTMLElement {
 
       <story-template 
         title="Contextual"
-        description="Apply a base or semantic token to a specific use case or UI context."
+        description=
+        "
+          We add meaning and intent to <mui-link href='/#/base-design-tokens'>base tokens</mui-link> by naming them for specific use cases or UI contexts. Components and custom patterns then reuse these shared tokens for consistency.
+          <br><br>
+          Theming can be applied at this layer, allowing for light/dark mode or branding variations as we avoid tightly coupling base tokens to individual components. 
+        "
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >

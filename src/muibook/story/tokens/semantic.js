@@ -11,7 +11,12 @@ class tokensSemantic extends HTMLElement {
 
       <story-template 
         title="Semantic"
-        description="Express meaning or state without tying it to a specific implementation."
+        description=
+          "
+          Semantic tokens capture design intent and support consistent theming and behavior across related components. They represent purpose such as feedback, interaction, or state rather than specific components. 
+          <br><br>
+          Theming can be applied at this layer, allowing for light/dark mode or branding variations as we avoid tightly coupling base tokens to individual components.        
+          "
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
@@ -61,14 +66,14 @@ class tokensSemantic extends HTMLElement {
 
           </spec-card>
 
-          <spec-card title="Action" description="Action tokens define the visual behavior of call-to-action button and link button elements.">
+          <spec-card title="Action" description="Defines the visual style and interaction behavior of elements like buttons and links, reflecting their intended purpose.">
             <story-token-slat slot="body" token="--action-font-size" variant="text-size" output="var(--text-font-size)"></story-token-slat>
             <story-token-slat slot="body" token="--action-line-height" variant="line-height" output="var(--text-line-height)"></story-token-slat>
             <story-token-slat slot="body" token="--action-font-weight" variant="font-weight" output="var(--font-weight-medium)"></story-token-slat>
             <story-token-slat slot="body" token="--action-radius" variant="radius" output="var(--radius-100)"></story-token-slat>
           </spec-card>
 
-          <spec-card title="Action / Primary" description="Action tokens define the visual behavior of call-to-action button and link button elements.">
+          <spec-card title="Action / Primary" description="Used for the most important action on a page or UI surface.">
             <story-token-slat slot="body" token="--action-primary-stroke" variant="border-color" output="var(--black-opacity-0)"></story-token-slat>
             <story-token-slat slot="body" token="--action-primary-background" variant="color" output="var(--grey-900)"></story-token-slat>
             <story-token-slat slot="body" token="--action-primary-background-hover" variant="color" output="var(--grey-1000)"></story-token-slat>
@@ -81,7 +86,7 @@ class tokensSemantic extends HTMLElement {
           </spec-card>
 
 
-          <spec-card title="Action / Secondary" description="Action tokens define the visual behavior of call-to-action button and link button elements.">
+          <spec-card title="Action / Secondary" description="Used for supporting actions that aren’t the main focus but are still important.">
             <story-token-slat slot="body" token="--action-secondary-stroke" variant="border-color" output="var(--grey-800)"></story-token-slat>
             <story-token-slat slot="body" token="--action-secondary-background" variant="color" output="var(--white)"></story-token-slat>
             <story-token-slat slot="body" token="--action-secondary-background-hover" variant="color" output="var(--grey-100)"></story-token-slat>
@@ -93,7 +98,7 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--action-secondary-text-color-disabled" variant="text-color" output="var(--grey-400)"></story-token-slat>
           </spec-card>
 
-          <spec-card title="Action / Tertiary" description="Action tokens define the visual behavior of call-to-action button and link button elements.">
+          <spec-card title="Action / Tertiary" description="Minimal styling — usually text-only — used where subtlety is preferred.">
             <story-token-slat slot="body" token="--action-tertiary-stroke" variant="border-color" output="var(--white-opacity-0)"></story-token-slat>
             <story-token-slat slot="body" token="--action-tertiary-background" variant="color" output="var(--white-opacity-0)"></story-token-slat>
             <story-token-slat slot="body" token="--action-tertiary-background-hover" variant="color" output="var(--black-opacity-10)"></story-token-slat>
@@ -105,7 +110,7 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--action-tertiary-text-color-disabled" variant="text-color" output="var(--grey-400)"></story-token-slat>
           </spec-card>
 
-          <spec-card title="Action / Attention" description="Action tokens define the visual behavior of call-to-action button and link button elements.">
+          <spec-card title="Action / Attention" description="High-visibility actions that require caution, often associated with risk or disruption.">
             <story-token-slat slot="body" token="--action-attention-stroke" variant="border-color" output="var(--black-opacity-0)"></story-token-slat>
             <story-token-slat slot="body" token="--action-attention-background" variant="color" output="var(--red-500)"></story-token-slat>
             <story-token-slat slot="body" token="--action-attention-background-hover" variant="color" output="var(--red-600)"></story-token-slat>

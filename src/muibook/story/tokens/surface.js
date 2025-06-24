@@ -89,7 +89,12 @@ class tokensSurface extends HTMLElement {
 
       <story-template 
         title="Surface"
-        description="Surface tokens set the background layers of the interface. They create depth, support elevation, and provide structure across contexts. Dark mode is not a simple inversion. It is curated to maintain clarity and hierarchy across all surfaces."
+        description=
+        "
+          Surface tokens define the background layers of the interface. They create depth, support elevation, and provide consistent structure across different contexts. Dark mode is not just a simple inverted color; it is carefully curated to maintain clarity and hierarchy across all surfaces.
+          <br><br>
+          These tokens belong to the contextual family, applying base values to specific UI layers and use cases.
+        "
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
         <mui-v-stack space="var(--space-700)">
