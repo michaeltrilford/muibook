@@ -12,7 +12,7 @@ class storySwitch extends HTMLElement {
         required: true,
         type: "string",
         options: "{text}",
-        default: "",
+        default: "(required)",
         description:
           "Provide the switch with a unique label. If without, a console warning will remind you to add label.",
       },
@@ -31,16 +31,16 @@ class storySwitch extends HTMLElement {
         description: "On / Off state",
       },
       {
-        name: "slot (off)",
-        type: "string",
-        options: "off-icon",
+        name: "slot=&#8220;on-icon&#8221;",
+        type: "slot (named)",
+        options: "mui-icon-[name]",
         default: "",
-        description: "Slot an icon in for the off state",
+        description: "Slot an icon in for the on state",
       },
       {
-        name: "slot (on)",
-        type: "string",
-        options: "on-icon",
+        name: "slot=&#8220;off-icon&#8221;",
+        type: "slot (named)",
+        options: "mui-icon-[name]",
         default: "",
         description: "Slot an icon in for the off state",
       },
@@ -95,7 +95,7 @@ class storySwitch extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts"
         accessibility="
           A label is required and applied as aria-label to describe the switch’s purpose.;
-          Uses role="switch" and updates aria-checked for assistive tech.;
+          Uses role='switch' and updates aria-checked for assistive tech.;
           The label isn’t shown visually—context is provided through icons or nearby text.;
           disabled sets aria-disabled and blocks interaction.;
           Supports keyboard navigation with visible focus styles.;

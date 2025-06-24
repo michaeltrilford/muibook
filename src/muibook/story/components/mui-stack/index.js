@@ -81,9 +81,9 @@ class storyStack extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "elements",
-        default: "",
+        default: "(required)",
         description: "Slot in any elements",
       },
       {
@@ -127,9 +127,9 @@ class storyStack extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "elements",
-        default: "",
+        default: "(required)",
         description: "Slot in any elements",
       },
       {

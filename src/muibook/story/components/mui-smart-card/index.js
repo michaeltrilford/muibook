@@ -31,7 +31,7 @@ class storySmartCard extends HTMLElement {
         required: true,
         type: "number",
         options: "",
-        default: "",
+        default: "(required)",
         description: "Only the last 4 digits are shown (no full card number for security)",
       },
       {

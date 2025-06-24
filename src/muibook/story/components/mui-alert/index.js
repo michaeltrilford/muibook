@@ -6,17 +6,6 @@ class storyAlert extends HTMLElement {
       :host { display: block; }
     `;
 
-    const actionPropItems = [
-      {
-        name: "slot",
-        required: true,
-        type: "HTML attribute",
-        options: "slot=&#8220;action&#8221;",
-        default: "",
-        description: "Slot a mui-button or mui-link into the Alert component for dismissing or tasks.",
-      },
-    ];
-
     const propItems = [
       {
         name: "variant",
@@ -28,9 +17,9 @@ class storyAlert extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "{text}, mui-links",
-        default: "",
+        default: "(required)",
         description: "Content placed inside the component. Can include mui-links and text nodes, or both.",
       },
       {
@@ -46,6 +35,13 @@ class storyAlert extends HTMLElement {
         options: "Valid CSS",
         default: "",
         description: "You are able to use add a classname to add layout based CSS to the host element.",
+      },
+      {
+        name: "slot=&#8220;action&#8221;",
+        type: "slot (named)",
+        options: "mui-button, mui-link",
+        default: "",
+        description: "Slot a mui-button or mui-link into the Alert component for dismissing or tasks.",
       },
     ];
 
@@ -68,45 +64,6 @@ class storyAlert extends HTMLElement {
       .map((prop, index) => {
         // Check if it's the last item in the array
         const isLastChild = index === propItems.length - 1 ? "last-child" : "";
-
-        return /*html*/ `
-          <mui-accordion-block 
-            size="medium" 
-            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
-            ${isLastChild}>
-            <story-type-slat
-              slot="detail"
-              ${prop.required ? "required" : ""}
-              name="${prop.name}"
-              type="${prop.type}" 
-              options="${prop.options || ""}"
-              default="${prop.default || ""}"
-              description="${prop.description}">
-            </story-type-slat>
-          </mui-accordion-block>
-        `;
-      })
-      .join("");
-
-    const actionRows = actionPropItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            ${prop.required ? "required" : ""}
-            name="${prop.name}"
-            type="${prop.type}" 
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `
-      )
-      .join("");
-
-    const actionAccordions = actionPropItems
-      .map((prop, index) => {
-        // Check if it's the last item in the array
-        const isLastChild = index === actionPropItems.length - 1 ? "last-child" : "";
 
         return /*html*/ `
           <mui-accordion-block 
@@ -158,17 +115,6 @@ class storyAlert extends HTMLElement {
               </story-type-table>
               <mui-accordion-group exclusive slot="showBelow">
                 ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </spec-card>
-
-          <spec-card title="Props: Button/Link">
-            <mui-responsive breakpoint="768" slot="body">
-              <story-type-table slot="showAbove">
-                ${actionRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${actionAccordions}
               </mui-accordion-group>
             </mui-responsive>
           </spec-card>

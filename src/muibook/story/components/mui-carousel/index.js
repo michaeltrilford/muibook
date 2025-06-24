@@ -79,9 +79,9 @@ class storyCarousel extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "mui-tab-bar, mui-carousel-panel",
-        default: "",
+        default: "(required)",
         description:
           "Assigns the element to a named slot in the Carousel Controller. Required for light DOM content like tabs and panels.",
       },
@@ -129,11 +129,11 @@ class storyCarousel extends HTMLElement {
     // TAB BAR
     const propItemsTabBar = [
       {
-        name: "slot",
+        name: "slot=&#8220;controls&#8221;",
         required: true,
-        type: "HTML attribute",
-        options: "slot=&#8220;controls&#8221;",
-        default: "",
+        type: "slot (named)",
+        options: "controls",
+        default: "(required)",
         description:
           "Used when placing mui-tab-bar inside carousel-controller. Required to inject this element into the controls slot.",
       },
@@ -189,11 +189,11 @@ class storyCarousel extends HTMLElement {
 
     const propItemsPanel = [
       {
-        name: "slot",
+        name: "slot=&#8220;item&#8221;",
         required: true,
-        type: "HTML attribute",
-        options: "slot=&#8220;item&#8221;",
-        default: "",
+        type: "slot (named)",
+        options: "item",
+        default: "(required)",
         description: "Places the individual panel in the correct slot within the Carousel",
       },
       {

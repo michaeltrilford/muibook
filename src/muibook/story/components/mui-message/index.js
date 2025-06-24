@@ -13,15 +13,15 @@ class storyMessage extends HTMLElement {
         required: true,
         type: "string",
         options: "{text}",
-        default: "Heading...",
+        default: "(required)",
         description: "Main header for message",
       },
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "mui-body, mui-list, elements",
-        default: "Body content...",
+        default: "(required)",
         description: "Slot in body, list or custom elements",
       },
       {

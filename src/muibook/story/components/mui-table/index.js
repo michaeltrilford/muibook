@@ -32,7 +32,7 @@ class storyTable extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "mui-row-group",
         default: "(required)",
         description: "Houses the table content",
@@ -43,7 +43,7 @@ class storyTable extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "mui-row",
         default: "(required)",
         description: "Houses the table rows",
@@ -61,7 +61,7 @@ class storyTable extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "mui-cell",
         default: "(required)",
         description: "Populate the table rows",
@@ -80,7 +80,7 @@ class storyTable extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "text, elements",
         default: "(required)",
         description: "Provides the content for the cell element",

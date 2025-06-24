@@ -12,7 +12,7 @@ class storySelect extends HTMLElement {
         required: true,
         type: "array",
         options: "[{...}]",
-        default: "",
+        default: "(required)",
         description:
           "A JSON-encoded string representing the options for the select dropdown. Each option has a value and label.",
       },
@@ -29,7 +29,7 @@ class storySelect extends HTMLElement {
         required: true,
         type: "string",
         options: "{text}",
-        default: "",
+        default: "(required)",
         description:
           "Provide the input with a unique label. If without, a console warning will remind you to add label.",
       },

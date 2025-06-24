@@ -34,7 +34,7 @@ class storyInput extends HTMLElement {
         required: true,
         type: "string",
         options: "{text}",
-        default: "",
+        default: "(required)",
         description:
           "Provide the input with a unique label.  If without, a console warning will remind you to add label.",
       },
@@ -72,6 +72,20 @@ class storyInput extends HTMLElement {
         options: "{text}",
         default: "",
         description: "You want the input to start with pre-filled content.",
+      },
+      {
+        name: "slot=&#8220;before&#8221;",
+        type: "slot (named)",
+        options: "mui-addon, mui-select, mui-button",
+        default: "",
+        description: "Primary content slot for a slat layout.",
+      },
+      {
+        name: "slot=&#8220;after&#8221;",
+        type: "slot (named)",
+        options: "mui-addon, mui-select, mui-button",
+        default: "",
+        description: "Slot in elements to appear flush next to the input",
       },
     ];
 

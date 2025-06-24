@@ -17,8 +17,16 @@ class storyAccordion extends HTMLElement {
         required: true,
         type: "string",
         options: "{text}",
-        default: "",
+        default: "(required)",
         description: "Provides the accordion element with a heading",
+      },
+      {
+        name: "slot=&#8220;detail&#8221;",
+        required: true,
+        type: "slot (named)",
+        options: "mui-list, mui-body, elements, etc",
+        default: "(required)",
+        description: "Define the detail content for the expanded section within the Accordion.",
       },
       {
         name: "size",
@@ -33,14 +41,6 @@ class storyAccordion extends HTMLElement {
         options: "none",
         default: "",
         description: "Turn off padding inside the detail section",
-      },
-      {
-        name: "slot",
-        required: true,
-        type: "HTML attribute",
-        options: "slot=“detail”",
-        default: "",
-        description: "Hides the label but it is still present for screen readers",
       },
       {
         name: "class",

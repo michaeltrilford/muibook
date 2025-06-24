@@ -11,9 +11,9 @@ class storyTabBar extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "mui-tab-bar, mui-tab-panel",
-        default: "",
+        default: "(required)",
         description:
           "Assigns the elements to a named slot in the Carousel Controller. Required for light DOM content like tabs and panels.",
       },
@@ -63,9 +63,9 @@ class storyTabBar extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "tab-item",
-        default: "",
+        default: "(required)",
         description: "Pass in the tab-item element",
       },
       {
@@ -122,9 +122,9 @@ class storyTabBar extends HTMLElement {
       {
         name: "slot",
         required: true,
-        type: "HTML attribute",
+        type: "slot (default)",
         options: "{text}",
-        default: "Required",
+        default: "(required)",
         description: "Pass in text to the tab item",
       },
       {

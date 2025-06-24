@@ -8,6 +8,14 @@ class storyField extends HTMLElement {
 
     const propItems = [
       {
+        name: "slot",
+        required: true,
+        type: "slot (default)",
+        options: "mui-input, mui-select",
+        default: "(required)",
+        description: "Slot in text, icons or other appropriate micro compositions to support form experiences.",
+      },
+      {
         name: "variant",
         type: "string",
         options: "default, success, warning, error",
@@ -19,7 +27,7 @@ class storyField extends HTMLElement {
         required: true,
         type: "string",
         options: "{text}",
-        default: "",
+        default: "(required)",
         description:
           "Provides the form element with a unique label.  If without, a console warning will remind you to add label.",
       },
@@ -175,7 +183,7 @@ class storyField extends HTMLElement {
             }
             <br />
             <br />
-            &lt;mui-field&gt;
+            &lt;mui-field label="Password"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-input type="password" value="••••••••"&gt;&lt;/mui-input&gt;
             <br />
@@ -215,7 +223,7 @@ class storyField extends HTMLElement {
             }
             <br />
             <br />
-            &lt;mui-field&gt;
+            &lt;mui-field label="Email"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;
             <br />
@@ -254,7 +262,7 @@ class storyField extends HTMLElement {
             }
             <br />
             <br />
-            &lt;mui-field&gt;
+            &lt;mui-field label="Email"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;
             <br />
@@ -301,9 +309,9 @@ class storyField extends HTMLElement {
             }
             <br />
             <br />
-            &lt;mui-field&gt;
+            &lt;mui-field label="Brand"&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael.mui.com"&gt;&lt;/mui-input&gt;
+            &nbsp;&nbsp;&lt;mui-select options='[{...}]'&gt;&lt;/mui-select&gt;
             <br />
             &lt;/mui-field&gt;
           </mui-code>
