@@ -256,10 +256,10 @@ html[data-theme="light"] {
   --feedback-attention-action-background: var(--red-200);
 
   /* Action - Primary (Button & Link) */
-  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-border-color: var(--black-opacity-0);
+  --action-primary-border-color-hover: var(--black-opacity-0);
+  --action-primary-border-color-focus: var(--black-opacity-0);
+  --action-primary-border-color-disabled: var(--black-opacity-0);
   --action-primary-background: var(--grey-900);
   --action-primary-background-hover: var(--grey-1000);
   --action-primary-background-focus: var(--grey-1000);
@@ -269,10 +269,10 @@ html[data-theme="light"] {
   --action-primary-text-color-focus: var(--white);
   --action-primary-text-color-disabled: var(--grey-400);
   /* Action - Secondary (Button & Link) */
-  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
-  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
-  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
-  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--grey-800);
+  --action-secondary-border-color: var(--grey-800);
+  --action-secondary-border-color-hover: var(--grey-800);
+  --action-secondary-border-color-focus: var(--grey-800);
+  --action-secondary-border-color-disabled: var(--grey-800);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--grey-100);
   --action-secondary-background-focus: var(--grey-100);
@@ -282,10 +282,10 @@ html[data-theme="light"] {
   --action-secondary-text-color-focus: var(--grey-1000);
   --action-secondary-text-color-disabled: var(--grey-400);
   /* Action - Tertiary (Button & Link) */
-  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-border-color: var(--black-opacity-0);
+  --action-tertiary-border-color-hover: var(--black-opacity-0);
+  --action-tertiary-border-color-focus: var(--black-opacity-0);
+  --action-tertiary-border-color-disabled: var(--black-opacity-0);
   --action-tertiary-background: var(--white-opacity-0);
   --action-tertiary-background-hover: var(--black-opacity-10);
   --action-tertiary-background-focus: var(--black-opacity-10);
@@ -295,10 +295,10 @@ html[data-theme="light"] {
   --action-tertiary-text-color-focus: var(--grey-1000);
   --action-tertiary-text-color-disabled: var(--grey-400);
   /* Action - Attention (Button & Link) */
-  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-border-color: var(--black-opacity-0);
+  --action-attention-border-color-hover: var(--black-opacity-0);
+  --action-attention-border-color-focus: var(--black-opacity-0);
+  --action-attention-border-color-disabled: var(--black-opacity-0);
   --action-attention-background: var(--red-500);
   --action-attention-background-hover: var(--red-600);
   --action-attention-background-focus: var(--red-600);
@@ -428,10 +428,10 @@ html[data-theme="dark"] {
   --feedback-warning-action-background: var(--orange-900);
   --feedback-attention-action-background: var(--red-900);
   /* Action - Primary (Button & Link) */
-  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-border-color: var(--black-opacity-0);
+  --action-primary-border-color-hover: var(--black-opacity-0);
+  --action-primary-border-color-focus: var(--black-opacity-0);
+  --action-primary-border-color-disabled: var(--black-opacity-0);
   --action-primary-background: var(--grey-200);
   --action-primary-background-hover: var(--grey-100);
   --action-primary-background-focus: var(--grey-100);
@@ -441,10 +441,10 @@ html[data-theme="dark"] {
   --action-primary-text-color-focus: var(--grey-900);
   --action-primary-text-color-disabled: var(--grey-400);
   /* Action - Secondary (Button & Link) */
-  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
-  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
-  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
-  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--grey-200);
+  --action-secondary-border-color: var(--grey-200);
+  --action-secondary-border-color-hover: var(--grey-200);
+  --action-secondary-border-color-focus: var(--grey-200);
+  --action-secondary-border-color-disabled: var(--grey-200);
   --action-secondary-background: var(--black-opacity-0);
   --action-secondary-background-hover: var(--grey-800);
   --action-secondary-background-focus: var(--grey-800);
@@ -454,11 +454,11 @@ html[data-theme="dark"] {
   --action-secondary-text-color-focus: var(--grey-100);
   --action-secondary-text-color-disabled: var(--grey-600);
   /* Action - Tertiary (Button & Link) */
-  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-tertiary-background: transparent;
+  --action-tertiary-border-color: var(--black-opacity-0);
+  --action-tertiary-border-color-hover: var(--black-opacity-0);
+  --action-tertiary-border-color-focus: var(--black-opacity-0);
+  --action-tertiary-border-color-disabled: var(--black-opacity-0);
+  --action-tertiary-background: var(--black-opacity-0);
   --action-tertiary-background-hover: var(--white-opacity-10);
   --action-tertiary-background-focus: var(--white-opacity-10);
   --action-tertiary-background-disabled: var(--grey-900);
@@ -467,10 +467,10 @@ html[data-theme="dark"] {
   --action-tertiary-text-color-focus: var(--grey-100);
   --action-tertiary-text-color-disabled: var(--grey-600);
   /* Action - Attention (Button & Link) */
-  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-attention-border-color: var(--black-opacity-0);
+  --action-attention-border-color-hover: var(--black-opacity-0);
+  --action-attention-border-color-focus: var(--black-opacity-0);
+  --action-attention-border-color-disabled: var(--black-opacity-0);
   --action-attention-background: var(--red-600);
   --action-attention-background-hover: var(--red-700);
   --action-attention-background-focus: var(--red-700);
@@ -558,6 +558,26 @@ html[data-theme="dark"] {
   --feedback-warning-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-warning-border-color);
   --feedback-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-attention-border-color);
   /* Action (Button & Link) */
+  --action-primary-border: var(--stroke-size-200) var(--stroke-solid) var(--action-primary-border-color);
+  --action-primary-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-primary-border-color-hover);
+  --action-primary-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-primary-border-color-focus);
+  --action-primary-border-disabled: var(--stroke-size-200) var(--stroke-solid)
+    var(--action-primary-border-color-disabled);
+  --action-secondary-border: var(--stroke-size-200) var(--stroke-solid) var(--action-secondary-border-color);
+  --action-secondary-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-secondary-border-color-hover);
+  --action-secondary-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-secondary-border-color-focus);
+  --action-secondary-border-disabled: var(--stroke-size-200) var(--stroke-solid)
+    var(--action-secondary-border-color-disabled);
+  --action-tertiary-border: var(--stroke-size-200) var(--stroke-solid) var(--action-tertiary-border-color);
+  --action-tertiary-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-tertiary-border-color-hover);
+  --action-tertiary-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-tertiary-border-color-focus);
+  --action-tertiary-border-disabled: var(--stroke-size-200) var(--stroke-solid)
+    var(--action-tertiary-border-color-disabled);
+  --action-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color);
+  --action-attention-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color-hover);
+  --action-attention-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color-focus);
+  --action-attention-border-disabled: var(--stroke-size-200) var(--stroke-solid)
+    var(--action-attention-border-color-disabled);
   --action-padding: var(--space-200) var(--space-500);
   --action-icon-only-padding: var(--space-000);
   --action-radius: var(--radius-100);

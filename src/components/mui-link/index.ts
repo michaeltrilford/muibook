@@ -104,25 +104,25 @@ class MuiLink extends HTMLElement {
       :host([variant="primary"]) a {
         background: var(--action-primary-background);
         color: var(--action-primary-text-color);
-        border: var(--action-primary-stroke);
+        border: var(--action-primary-border);
       }
 
       :host([variant="primary"]) a:hover {
         background: var(--action-primary-background-hover);
         color: var(--action-primary-text-color-hover);
-        border: var(--action-primary-stroke-hover);
+        border: var(--action-primary-border-hover);
       }
 
       :host([variant="primary"]) a:focus-visible {
         background: var(--action-primary-background-focus); 
         color: var(--action-primary-text-color-focus);
-        border: var(--action-primary-stroke-focus);
+        border: var(--action-primary-border-focus);
       }
 
       :host([variant="primary"]) a:disabled {
         background: var(--action-primary-background-disabled); 
         color: var(--action-primary-text-color-disabled);
-        border: var(--action-primary-stroke-disabled);
+        border: var(--action-primary-border-disabled);
         cursor: not-allowed;
       }
 
@@ -136,25 +136,25 @@ class MuiLink extends HTMLElement {
       :host([variant="secondary"]) a {
         background: var(--action-secondary-background);
         color: var(--action-secondary-text-color);
-        border: var(--action-secondary-stroke); 
+        border: var(--action-secondary-border); 
       }
 
       :host([variant="secondary"]) a:hover {
         background: var(--action-secondary-background-hover);
         color: var(--action-secondary-text-color-hover);
-        border: var(--action-secondary-stroke-hover); 
+        border: var(--action-secondary-border-hover); 
       }
 
       :host([variant="secondary"]) a:focus-visible {
         background: var(--action-secondary-background-focus);
         color: var(--action-secondary-text-color-focus);
-        border: var(--action-secondary-stroke-focus); 
+        border: var(--action-secondary-border-focus); 
       }
 
       :host([variant="secondary"]) a:disabled {
         background: var(--action-secondary-background-disabled);
         color: var(--action-secondary-text-color-disabled);
-        border: var(--action-secondary-stroke-disabled); 
+        border: var(--action-secondary-border-disabled); 
         cursor: not-allowed;
       }
 
@@ -168,25 +168,25 @@ class MuiLink extends HTMLElement {
       :host([variant="tertiary"]) a {
         background: var(--action-tertiary-background);
         color: var(--action-tertiary-text-color);
-        border: var(--action-tertiary-stroke);
+        border: var(--action-tertiary-border);
       }
 
       :host([variant="tertiary"]) a:hover {
         color: var(--action-tertiary-text-color-hover);
         background: var(--action-tertiary-background-hover);
-        border: var(--action-tertiary-stroke-hover);
+        border: var(--action-tertiary-border-hover);
       }
 
       :host([variant="tertiary"]) a:focus-visible {
         color: var(--action-tertiary-text-color-focus);
         background: var(--action-tertiary-background-focus); 
-        border: var(--action-tertiary-stroke-focus);
+        border: var(--action-tertiary-border-focus);
       }
 
       :host([variant="tertiary"]) a:disabled {
         background: var(--action-tertiary-background-disabled);
         color: var(--action-tertiary-text-color-disabled);
-        border: var(--action-tertiary-stroke-disabled);
+        border: var(--action-tertiary-border-disabled);
         cursor: not-allowed;
       }
 
@@ -200,25 +200,25 @@ class MuiLink extends HTMLElement {
       :host([variant="attention"]) a {
         background: var(--action-attention-background);
         color: var(--action-attention-text-color);
-        border: var(--action-attention-stroke);
+        border: var(--action-attention-border);
       }
 
       :host([variant="attention"]) a:hover {
         background: var(--action-attention-background-hover);
         color: var(--action-attention-text-color-hover);
-        border: var(--action-attention-stroke-hover);
+        border: var(--action-attention-border-hover);
       }
 
       :host([variant="attention"]) a:focus-visible  {
         background: var(--action-attention-background-focus);
         color: var(--action-attention-text-color-focus);
-        border: var(--action-attention-stroke-focus);
+        border: var(--action-attention-border-focus);
       }
 
       :host([variant="attention"]) a:disabled {
         background: var(--action-attention-background-disabled);
         color: var(--action-attention-text-color-disabled);
-        border: var(--action-attention-stroke-disabled);
+        border: var(--action-attention-border-disabled);
         cursor: not-allowed;
       }
 

@@ -65,10 +65,10 @@ html[data-brand="mono"][data-theme="light"] {
   --feedback-warning-action-background: var(--mono-grey-200);
   --feedback-attention-action-background: var(--mono-grey-200);
 
-  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-700);
-  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-900);
-  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-900);
-  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-900);
+  --action-primary-border-color: var(--mono-grey-700);
+  --action-primary-border-color-hover: var(--mono-grey-900);
+  --action-primary-border-color-focus: var(--mono-grey-900);
+  --action-primary-border-color-disabled: var(--mono-grey-900);
   --action-primary-background: var(--mono-grey-700);
   --action-primary-background-hover: var(--mono-grey-900);
   --action-primary-background-focus: var(--mono-grey-900);
@@ -78,10 +78,10 @@ html[data-brand="mono"][data-theme="light"] {
   --action-primary-text-color-focus: var(--mono-white);
   --action-primary-text-color-disabled: var(--mono-white);
 
-  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-600);
-  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-900);
-  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-900);
-  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-900);
+  --action-secondary-border-color: var(--mono-grey-600);
+  --action-secondary-border-color-hover: var(--mono-grey-900);
+  --action-secondary-border-color-focus: var(--mono-grey-900);
+  --action-secondary-border-color-disabled: var(--mono-grey-900);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--white-opacity-0);
   --action-secondary-background-focus: var(--white-opacity-0);
@@ -91,10 +91,10 @@ html[data-brand="mono"][data-theme="light"] {
   --action-secondary-text-color-focus: var(--mono-grey-900);
   --action-secondary-text-color-disabled: var(--mono-grey-900);
 
-  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-tertiary-border-color: var(--black-opacity-0);
+  --action-tertiary-border-color-hover: var(--black-opacity-0);
+  --action-tertiary-border-color-focus: var(--black-opacity-0);
+  --action-tertiary-border-color-disabled: var(--black-opacity-0);
   --action-tertiary-background: var(--white-opacity-0);
   --action-tertiary-background-hover: var(--mono-grey-100);
   --action-tertiary-background-focus: var(--mono-grey-100);
@@ -104,10 +104,10 @@ html[data-brand="mono"][data-theme="light"] {
   --action-tertiary-text-color-focus: var(--mono-grey-900);
   --action-tertiary-text-color-disabled: var(--mono-grey-900);
 
-  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--mono-black);
-  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--mono-black);
-  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--mono-black);
-  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--mono-black);
+  --action-attention-border-color: var(--mono-black);
+  --action-attention-border-color-hover: var(--mono-black);
+  --action-attention-border-color-focus: var(--mono-black);
+  --action-attention-border-color-disabled: var(--mono-black);
   --action-attention-background: var(--mono-black);
   --action-attention-background-hover: var(--mono-grey-900);
   --action-attention-background-focus: var(--mono-grey-900);
@@ -205,10 +205,10 @@ html[data-brand="mono"][data-theme="dark"] {
   --feedback-warning-action-background: var(--mono-grey-800);
   --feedback-attention-action-background: var(--mono-grey-800);
 
-  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-200);
-  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-100);
-  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-100);
-  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-100);
+  --action-primary-border-color: var(--mono-grey-200);
+  --action-primary-border-color-hover: var(--mono-grey-100);
+  --action-primary-border-color-focus: var(--mono-grey-100);
+  --action-primary-border-color-disabled: var(--mono-grey-100);
   --action-primary-background: var(--mono-grey-200);
   --action-primary-background-hover: var(--mono-grey-100);
   --action-primary-background-focus: var(--mono-grey-100);
@@ -218,10 +218,10 @@ html[data-brand="mono"][data-theme="dark"] {
   --action-primary-text-color-focus: var(--mono-black);
   --action-primary-text-color-disabled: var(--mono-black);
 
-  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-200);
-  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-100);
-  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-100);
-  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--mono-grey-100);
+  --action-secondary-border-color: var(--mono-grey-200);
+  --action-secondary-border-color-hover: var(--mono-grey-100);
+  --action-secondary-border-color-focus: var(--mono-grey-100);
+  --action-secondary-border-color-disabled: var(--mono-grey-100);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--white-opacity-0);
   --action-secondary-background-focus: var(--white-opacity-0);
@@ -231,10 +231,10 @@ html[data-brand="mono"][data-theme="dark"] {
   --action-secondary-text-color-focus: var(--mono-grey-100);
   --action-secondary-text-color-disabled: var(--mono-grey-100);
 
-  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-border-color: var(--white-opacity-0);
+  --action-tertiary-border-color-hover: var(--white-opacity-0);
+  --action-tertiary-border-color-focus: var(--white-opacity-0);
+  --action-tertiary-border-color-disabled: var(--white-opacity-0);
   --action-tertiary-background: var(--white-opacity-0);
   --action-tertiary-background-hover: var(--mono-grey-800);
   --action-tertiary-background-focus: var(--mono-grey-800);
@@ -244,10 +244,10 @@ html[data-brand="mono"][data-theme="dark"] {
   --action-tertiary-text-color-focus: var(--mono-grey-100);
   --action-tertiary-text-color-disabled: var(--mono-grey-100);
 
-  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--mono-white);
-  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--mono-white);
-  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--mono-white);
-  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--mono-white);
+  --action-attention-border-color: var(--mono-white);
+  --action-attention-border-color-hover: var(--mono-white);
+  --action-attention-border-color-focus: var(--mono-white);
+  --action-attention-border-color-disabled: var(--mono-white);
   --action-attention-background: var(--mono-white);
   --action-attention-background-hover: var(--mono-grey-100);
   --action-attention-background-focus: var(--mono-grey-100);
@@ -314,21 +314,10 @@ html[data-brand="mono"][data-theme="dark"] {
 /* 4. SET THE FOUNDATION                                             */
 /* Map tokens to semantic or component contexts .                    */
 /* ================================================================= */
+/* If you have a base token file already, you only need to include   */
+/* any changes you wish to make                                      */
+/* ================================================================= */
 html[data-brand="mono"] {
-  --action-padding: var(--space-200) var(--space-500);
-  --action-icon-only-padding: var(--space-000);
-  --action-radius: var(--radius-100);
-  --action-font-size: var(--text-font-size);
-  --action-line-height: var(--text-line-height);
-  --action-font-weight: var(--font-weight-bold);
-
-  /* Feedback • Alerts, Messages, Notifciations */
-  --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
-  --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
-  --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);
-  --feedback-warning-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-warning-border-color);
-  --feedback-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-attention-border-color);
-
   /* Card */
-  --card-radius: var(--radius-150);
+  --card-radius: var(--radius-400);
 }

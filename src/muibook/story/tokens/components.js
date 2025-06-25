@@ -29,25 +29,25 @@ class tokensComponents extends HTMLElement {
         <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Icon" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-icons">
-            <story-token-slat slot="body" token="--icon-color-default" variant="color" output="var(--black)"></story-token-slat>
-            <story-token-slat slot="body" token="--icon-color-inverted" variant="color" output="var(--white)"></story-token-slat>
+            <story-token-slat slot="body" token="--icon-color-default" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--icon-color-inverted" variant="color"></story-token-slat>
           </spec-card>
 
           <spec-card title="Card" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-card">
-            <story-token-slat slot="body" token="--card-radius" variant="radius" output="var(--radius-150)"></story-token-slat>
+            <story-token-slat slot="body" token="--card-radius" variant="radius"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/surface-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card title="Badge" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts">
-            <story-token-slat slot="body" token="--badge-radius" variant="radius" output="var(--radius-100)"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-radius" variant="radius"></story-token-slat>
 
-            <story-token-slat slot="body" token="--badge-text-color" variant="text-color" output="var(--white)"></story-token-slat>
-            <story-token-slat slot="body" token="--badge-font-weight" variant="font-weight" output="var(--font-weight-bold)"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-font-weight" variant="font-weight"></story-token-slat>
 
-            <story-token-slat slot="body" token="--badge-background-neutral" variant="color" output="var(--grey-600)"></story-token-slat>
-            <story-token-slat slot="body" token="--badge-background-positive" variant="color" output="var(--green-600)"></story-token-slat>
-            <story-token-slat slot="body" token="--badge-background-warning" variant="color" output="var(--orange-600)"></story-token-slat>
-            <story-token-slat slot="body" token="--badge-background-attention" variant="color" output="var(--red-600)"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-neutral" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-positive" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-warning" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-attention" variant="color"></story-token-slat>
           </spec-card>
 
           <spec-card title="Table" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table">
@@ -65,12 +65,12 @@ class tokensComponents extends HTMLElement {
           </spec-card>
 
           <spec-card title="Alert" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts">
-            <story-token-slat slot="body" token="--alert-radius" variant="radius" output="var(--radius-100)"></story-token-slat>
+            <story-token-slat slot="body" token="--alert-radius" variant="radius"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Feedback Semantic</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card title="Message" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-message/index.ts">
-            <story-token-slat slot="body" token="--message-radius" variant="radius" output="var(--radius-150)"></story-token-slat>
+            <story-token-slat slot="body" token="--message-radius" variant="radius"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Feedback Semantic</mui-link> tokens</mui-body>
           </spec-card>
 
@@ -83,29 +83,29 @@ class tokensComponents extends HTMLElement {
           </spec-card>
 
           <spec-card title="Link Default" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-link/index.ts">
-            <story-token-slat slot="body" token="--link-text-color-default" variant="text-color" output="var(--grey-900)"></story-token-slat>
-            <story-token-slat slot="body" token="--link-text-color-default-hover" variant="text-color" output="var(--grey-1000)"></story-token-slat>
-            <story-token-slat slot="body" token="--link-text-color-default-focus" variant="text-color" output="var(--grey-1000)"></story-token-slat>
-            <story-token-slat slot="body" token="--link-text-color-default-disabled" variant="text-color" output="var(--grey-800)"></story-token-slat>
+            <story-token-slat slot="body" token="--link-text-color-default" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--link-text-color-default-hover" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--link-text-color-default-focus" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--link-text-color-default-disabled" variant="text-color"></story-token-slat>
           </spec-card>
 
           <spec-card title="Heading" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-heading/index.ts">
-            <story-token-slat slot="body" token="--heading-text-color" variant="text-color" output="var(--grey-1000)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-font-weight" variant="font-weight" output="var(--font-weight-bold)"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-font-weight" variant="font-weight"></story-token-slat>
 
-            <story-token-slat slot="body" token="--heading-font-size-100" variant="text-size" line-height="--heading-line-height-100" font-weight="--heading-font-weight" output="var(--font-size-600)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-font-size-200" variant="text-size" line-height="--heading-line-height-200" font-weight="--heading-font-weight" output="var(--font-size-500)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-font-size-300" variant="text-size" line-height="--heading-line-height-300" font-weight="--heading-font-weight" output="var(--font-size-400)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-font-size-400" variant="text-size" line-height="--heading-line-height-400" font-weight="--heading-font-weight" output="var(--font-size-300)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-font-size-500" variant="text-size" line-height="--heading-line-height-500" font-weight="--heading-font-weight" output="var(--font-size-200)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-font-size-600" variant="text-size" line-height="--heading-line-height-600" font-weight="--heading-font-weight" output="var(--font-size-100)"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-font-size-100" variant="text-size" line-height="--heading-line-height-100" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-font-size-200" variant="text-size" line-height="--heading-line-height-200" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-font-size-300" variant="text-size" line-height="--heading-line-height-300" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-font-size-400" variant="text-size" line-height="--heading-line-height-400" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-font-size-500" variant="text-size" line-height="--heading-line-height-500" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-font-size-600" variant="text-size" line-height="--heading-line-height-600" font-weight="--heading-font-weight"></story-token-slat>
 
-            <story-token-slat slot="body" token="--heading-line-height-100" variant="line-height" font-size="--heading-font-size-100" font-weight="--heading-font-weight" output="var(--line-height-600)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-line-height-200" variant="line-height" font-size="--heading-font-size-200" font-weight="--heading-font-weight" output="var(--line-height-500)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-line-height-300" variant="line-height" font-size="--heading-font-size-300" font-weight="--heading-font-weight" output="var(--line-height-400)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-line-height-400" variant="line-height" font-size="--heading-font-size-400" font-weight="--heading-font-weight" output="var(--line-height-300)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-line-height-500" variant="line-height" font-size="--heading-font-size-500" font-weight="--heading-font-weight" output="var(--line-height-200)"></story-token-slat>
-            <story-token-slat slot="body" token="--heading-line-height-600" variant="line-height" font-size="--heading-font-size-600" font-weight="--heading-font-weight" output="var(--line-height-100)"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-line-height-100" variant="line-height" font-size="--heading-font-size-100" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-line-height-200" variant="line-height" font-size="--heading-font-size-200" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-line-height-300" variant="line-height" font-size="--heading-font-size-300" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-line-height-400" variant="line-height" font-size="--heading-font-size-400" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-line-height-500" variant="line-height" font-size="--heading-font-size-500" font-weight="--heading-font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--heading-line-height-600" variant="line-height" font-size="--heading-font-size-600" font-weight="--heading-font-weight"></story-token-slat>
           </spec-card>
 
           <spec-card title="Body" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-card/body/index.ts">

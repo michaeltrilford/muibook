@@ -121,10 +121,10 @@ html[data-brand="jal"][data-theme="light"] {
   --feedback-warning-action-background: var(--jal-yellow-100);
   --feedback-attention-action-background: var(--jal-red-100);
 
-  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-border-color: var(--black-opacity-0);
+  --action-primary-border-color-hover: var(--black-opacity-0);
+  --action-primary-border-color-focus: var(--black-opacity-0);
+  --action-primary-border-color-disabled: var(--black-opacity-0);
   --action-primary-background: var(--jal-red-500);
   --action-primary-background-hover: var(--jal-red-400);
   --action-primary-background-focus: var(--jal-red-400);
@@ -134,10 +134,10 @@ html[data-brand="jal"][data-theme="light"] {
   --action-primary-text-color-focus: var(--jal-white);
   --action-primary-text-color-disabled: var(--jal-white);
 
-  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-300);
-  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-300);
-  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-300);
-  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-300);
+  --action-secondary-border-color: var(--jal-red-300);
+  --action-secondary-border-color-hover: var(--jal-red-300);
+  --action-secondary-border-color-focus: var(--jal-red-300);
+  --action-secondary-border-color-disabled: var(--jal-red-300);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--white-opacity-40);
   --action-secondary-background-focus: var(--white-opacity-40);
@@ -147,10 +147,10 @@ html[data-brand="jal"][data-theme="light"] {
   --action-secondary-text-color-focus: var(--jal-red-300);
   --action-secondary-text-color-disabled: var(--jal-red-300);
 
-  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-border-color: var(--white-opacity-0);
+  --action-tertiary-border-color-hover: var(--white-opacity-0);
+  --action-tertiary-border-color-focus: var(--white-opacity-0);
+  --action-tertiary-border-color-disabled: var(--white-opacity-0);
   --action-tertiary-background: var(--white-opacity-0);
   --action-tertiary-background-hover: var(--white-opacity-40);
   --action-tertiary-background-focus: var(--white-opacity-40);
@@ -160,10 +160,10 @@ html[data-brand="jal"][data-theme="light"] {
   --action-tertiary-text-color-focus: var(--jal-red-300);
   --action-tertiary-text-color-disabled: var(--jal-red-300);
 
-  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
-  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-700);
-  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-700);
-  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-700);
+  --action-attention-border-color: var(--jal-red-500);
+  --action-attention-border-color-hover: var(--jal-red-700);
+  --action-attention-border-color-focus: var(--jal-red-700);
+  --action-attention-border-color-disabled: var(--jal-red-700);
   --action-attention-background: var(--jal-red-300);
   --action-attention-background-hover: var(--jal-red-500);
   --action-attention-background-focus: var(--jal-red-500);
@@ -262,10 +262,10 @@ html[data-brand="jal"][data-theme="dark"] {
   --feedback-warning-action-background: var(--jal-yellow-800);
   --feedback-attention-action-background: var(--jal-red-800);
 
-  --action-primary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
-  --action-primary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--black-opacity-0);
+  --action-primary-border-color: var(--black-opacity-0);
+  --action-primary-border-color-hover: var(--black-opacity-0);
+  --action-primary-border-color-focus: var(--black-opacity-0);
+  --action-primary-border-color-disabled: var(--black-opacity-0);
   --action-primary-background: var(--jal-red-300);
   --action-primary-background-hover: var(--jal-red-400);
   --action-primary-background-focus: var(--jal-red-400);
@@ -275,10 +275,10 @@ html[data-brand="jal"][data-theme="dark"] {
   --action-primary-text-color-focus: var(--jal-white);
   --action-primary-text-color-disabled: var(--jal-white);
 
-  --action-secondary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-200);
-  --action-secondary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-200);
-  --action-secondary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-200);
-  --action-secondary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-200);
+  --action-secondary-border-color: var(--jal-red-200);
+  --action-secondary-border-color-hover: var(--jal-red-200);
+  --action-secondary-border-color-focus: var(--jal-red-200);
+  --action-secondary-border-color-disabled: var(--jal-red-200);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--black-opacity-20);
   --action-secondary-background-focus: var(--black-opacity-20);
@@ -288,10 +288,10 @@ html[data-brand="jal"][data-theme="dark"] {
   --action-secondary-text-color-focus: var(--jal-red-200);
   --action-secondary-text-color-disabled: var(--jal-red-200);
 
-  --action-tertiary-stroke: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
-  --action-tertiary-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--white-opacity-0);
+  --action-tertiary-border-color: var(--white-opacity-0);
+  --action-tertiary-border-color-hover: var(--white-opacity-0);
+  --action-tertiary-border-color-focus: var(--white-opacity-0);
+  --action-tertiary-border-color-disabled: var(--white-opacity-0);
   --action-tertiary-background: var(--white-opacity-0);
   --action-tertiary-background-hover: var(--black-opacity-20);
   --action-tertiary-background-focus: var(--black-opacity-20);
@@ -301,10 +301,10 @@ html[data-brand="jal"][data-theme="dark"] {
   --action-tertiary-text-color-focus: var(--jal-red-200);
   --action-tertiary-text-color-disabled: var(--jal-red-200);
 
-  --action-attention-stroke: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
-  --action-attention-stroke-hover: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
-  --action-attention-stroke-focus: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
-  --action-attention-stroke-disabled: var(--stroke-size-200) var(--stroke-solid) var(--jal-red-500);
+  --action-attention-border-color: var(--jal-red-500);
+  --action-attention-border-color-hover: var(--jal-red-500);
+  --action-attention-border-color-focus: var(--jal-red-500);
+  --action-attention-border-color-disabled: var(--jal-red-500);
   --action-attention-background: var(--jal-red-500);
   --action-attention-background-hover: var(--jal-red-700);
   --action-attention-background-focus: var(--jal-red-700);
@@ -371,21 +371,10 @@ html[data-brand="jal"][data-theme="dark"] {
 /* 4. SET THE FOUNDATION                                             */
 /* Map tokens to semantic or component contexts .                    */
 /* ================================================================= */
+/* If you have a base token file already, you only need to include   */
+/* any changes you wish to make                                      */
+/* ================================================================= */
 html[data-brand="jal"] {
-  --action-padding: var(--space-200) var(--space-500);
-  --action-icon-only-padding: var(--space-000);
-  --action-radius: var(--radius-100);
-  --action-font-size: var(--text-font-size);
-  --action-line-height: var(--text-line-height);
-  --action-font-weight: var(--font-weight-bold);
-
-  /* Feedback • Alerts, Messages, Notifciations */
-  --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
-  --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
-  --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);
-  --feedback-warning-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-warning-border-color);
-  --feedback-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-attention-border-color);
-
   /* Card */
-  --card-radius: var(--radius-400);
+  --card-radius: var(--radius-200);
 }

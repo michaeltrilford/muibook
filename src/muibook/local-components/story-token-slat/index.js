@@ -1,27 +1,44 @@
 class storyTokenSlat extends HTMLElement {
   static get observedAttributes() {
-    return [
-      'token',
-      'output',
-      'variant',
-      'font-size',
-      'line-height',
-      'font-weight',
-    ];
+    return ["token", "variant", "font-size", "line-height", "font-weight"];
   }
 
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
-    const token = this.getAttribute('token');
-    const output = this.getAttribute('output');
-    const variant = this.getAttribute('variant');
-    const fontSize = this.getAttribute('font-size');
-    const lineHeight = this.getAttribute('line-height');
-    const fontWeight = this.getAttribute('font-weight');
+    this.update();
+
+    // Observe data-theme changes
+    this.themeObserver = new MutationObserver(() => {
+      this.update();
+    });
+
+    this.themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+  }
+
+  disconnectedCallback() {
+    if (this.themeObserver) {
+      this.themeObserver.disconnect();
+    }
+  }
+
+  update() {
+    const token = this.getAttribute("token");
+    const variant = this.getAttribute("variant");
+    const fontSize = this.getAttribute("font-size");
+    const lineHeight = this.getAttribute("line-height");
+    const fontWeight = this.getAttribute("font-weight");
+
+    const computed = getComputedStyle(document.documentElement);
+    const resolvedToken = computed.getPropertyValue(token)?.trim();
+
+    const output = resolvedToken;
 
     const styles = /*css*/ `
       :host {
@@ -81,63 +98,63 @@ class storyTokenSlat extends HTMLElement {
     `;
 
     // Create preview element depending on variant
-    let visualPreview = '';
+    let visualPreview = "";
     switch (variant) {
-      case 'color':
-        visualPreview = /*html*/ `<div class="swatch" style="background: ${output};"></div>`;
+      case "color":
+        visualPreview = /*html*/ `<div class="swatch" style="background: var(${token});"></div>`;
         break;
-      case 'text-color':
-        visualPreview = /*html*/ `<div class="text-preview" style="color: ${output};">Aa</div>`;
+      case "text-color":
+        visualPreview = /*html*/ `<div class="text-preview" style="color: var(${token});">Aa</div>`;
         break;
-      case 'text-size':
+      case "text-size":
         visualPreview = /*html*/ `
             <div 
               class="text-preview" 
-              style="font-size: ${output}; line-height: var(${lineHeight}); font-weight: var(${fontWeight});"
+              style="font-size: var(${token}); line-height: var(${lineHeight}); font-weight: var(${fontWeight});"
             >
               Aa
             </div>`;
         break;
 
-      case 'line-height':
+      case "line-height":
         visualPreview = /*html*/ `
             <div 
               class="line-height-preview" 
-              style="line-height: ${output}; font-size: var(${fontSize}); font-weight: var(${fontWeight});"
+              style="line-height: var(${token}); font-size: var(${fontSize}); font-weight: var(${fontWeight});"
             >
               Aa
             </div>`;
         break;
 
-      case 'font-weight':
-        visualPreview = /*html*/ `<div class="text-preview" style="font-weight: ${output};">Aa</div>`;
+      case "font-weight":
+        visualPreview = /*html*/ `<div class="text-preview" style="font-weight: var(${token});">Aa</div>`;
         break;
-      case 'font-family':
-        visualPreview = /*html*/ `<div class="text-preview" style="font-family: ${output};">Aa</div>`;
+      case "font-family":
+        visualPreview = /*html*/ `<div class="text-preview" style="font-family: var(${token});">Aa</div>`;
         break;
-      case 'size':
-        visualPreview = /*html*/ `<div class="spacer" style="height: ${output}; width: ${output};"></div>`;
+      case "size":
+        visualPreview = /*html*/ `<div class="spacer" style="height: ${output}; width: var(${token});"></div>`;
         break;
-      case 'radius':
-        visualPreview = /*html*/ `<div class="radius-preview" style="border-radius: ${output};"></div>`;
+      case "radius":
+        visualPreview = /*html*/ `<div class="radius-preview" style="border-radius: var(${token});"></div>`;
         break;
-      case 'border-width':
-        visualPreview = /*html*/ `<div class="border-preview" style="border: var(--border-thin); border-width: ${output};"></div>`;
+      case "border-width":
+        visualPreview = /*html*/ `<div class="border-preview" style="border: var(--border-thin); border-width: var(${token});"></div>`;
         break;
-      case 'border-color':
-        visualPreview = /*html*/ `<div class="border-preview" style="border: var(--border-thin); border-color: ${output};"></div>`;
+      case "border-color":
+        visualPreview = /*html*/ `<div class="border-preview" style="border: var(--border-thin); border-color: var(${token});"></div>`;
         break;
-      case 'border':
-        visualPreview = /*html*/ `<div class="border-preview" style="border: ${output};"></div>`;
+      case "border":
+        visualPreview = /*html*/ `<div class="border-preview" style="border: var(${token});"></div>`;
         break;
-      case 'outline-width':
-        visualPreview = /*html*/ `<div class="outline-preview" style="outline: var(--outline-thin); outline-width: ${output};"></div>`;
+      case "outline-width":
+        visualPreview = /*html*/ `<div class="outline-preview" style="outline: var(--outline-thin); outline-width: var(${token});"></div>`;
         break;
-      case 'outline-color':
-        visualPreview = /*html*/ `<div class="outline-preview" style="outline: var(--outline-thin); outline-color: ${output};"></div>`;
+      case "outline-color":
+        visualPreview = /*html*/ `<div class="outline-preview" style="outline: var(--outline-thin); outline-color: var(${token});"></div>`;
         break;
-      case 'outline':
-        visualPreview = /*html*/ `<div class="outline-preview" style="outline: ${output};"></div>`;
+      case "outline":
+        visualPreview = /*html*/ `<div class="outline-preview" style="outline: var(${token});"></div>`;
         break;
     }
 
@@ -174,4 +191,4 @@ class storyTokenSlat extends HTMLElement {
   }
 }
 
-customElements.define('story-token-slat', storyTokenSlat);
+customElements.define("story-token-slat", storyTokenSlat);

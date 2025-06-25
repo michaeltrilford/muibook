@@ -102,6 +102,7 @@ class StoryTemplate extends HTMLElement {
               ${description}
             </mui-v-stack>
             ${accessibilitySection}
+            <slot name="message"></slot>
           </mui-v-stack>
           <div>
             <slot></slot>

@@ -45,7 +45,7 @@ class MuiButton extends HTMLElement {
       font-weight: var(--action-font-weight);
       background: var(--action-primary-background);
       color: var(--action-primary-text-color);
-      border: var(--action-primary-stroke);
+      border: var(--action-primary-border);
       text-align: inherit;
     }
 
@@ -78,25 +78,25 @@ class MuiButton extends HTMLElement {
     :host([variant="primary"]) button {
       background: var(--action-primary-background);
       color: var(--action-primary-text-color);
-      border: var(--action-primary-stroke);
+      border: var(--action-primary-border);
     }
 
     :host([variant="primary"]) button:hover {
       background: var(--action-primary-background-hover);
       color: var(--action-primary-text-color-hover);
-      border: var(--action-primary-stroke-hover);
+      border: var(--action-primary-border-hover);
     }
 
     :host([variant="primary"]) button:focus-visible {
       background: var(--action-primary-background-focus);
       color: var(--action-primary-text-color-focus);
-      border: var(--action-primary-stroke-focus);
+      border: var(--action-primary-border-focus);
     }
 
     :host([variant="primary"]) button:disabled {
       background: var(--action-primary-background-disabled);
       color: var(--action-primary-text-color-disabled);
-      border: var(--action-primary-stroke-disabled);
+      border: var(--action-primary-border-disabled);
       cursor: not-allowed;
     }
 
@@ -111,25 +111,25 @@ class MuiButton extends HTMLElement {
     :host([variant="secondary"]) button {
       background: var(--action-secondary-background);
       color: var(--action-secondary-text-color);
-      border: var(--action-secondary-stroke); 
+      border: var(--action-secondary-border); 
     }
 
     :host([variant="secondary"]) button:hover {
       background: var(--action-secondary-background-hover);
       color: var(--action-secondary-text-color-hover);
-      border: var(--action-secondary-stroke-hover); 
+      border: var(--action-secondary-border-hover); 
     }
 
     :host([variant="secondary"]) button:focus-visible {
       background: var(--action-secondary-background-focus);
       color: var(--action-secondary-text-color-focus);
-      border: var(--action-secondary-stroke-focus); 
+      border: var(--action-secondary-border-focus); 
     }
 
     :host([variant="secondary"]) button:disabled {
       background: var(--action-secondary-background-disabled);
       color: var(--action-secondary-text-color-disabled);
-      border: var(--action-secondary-stroke-disabled); 
+      border: var(--action-secondary-border-disabled); 
       cursor: not-allowed;
     }
 
@@ -144,25 +144,25 @@ class MuiButton extends HTMLElement {
     :host([variant="tertiary"]) button {
       background: var(--action-tertiary-background);
       color: var(--action-tertiary-text-color);
-      border: var(--action-tertiary-stroke);
+      border: var(--action-tertiary-border);
     }
 
     :host([variant="tertiary"]) button:hover {
       background: var(--action-tertiary-background-hover);
       color: var(--action-tertiary-text-color-hover);
-      border: var(--action-tertiary-stroke-hover);
+      border: var(--action-tertiary-border-hover);
     }
 
     :host([variant="tertiary"]) button:focus-visible {
       background: var(--action-tertiary-background-focus);
       color: var(--action-tertiary-text-color-focus);
-      border: var(--action-tertiary-stroke-focus);
+      border: var(--action-tertiary-border-focus);
     }
 
     :host([variant="tertiary"]) button:disabled {
       background: var(--action-tertiary-background-disabled);
       color: var(--action-tertiary-text-color-disabled);
-      border: var(--action-tertiary-stroke-disabled);
+      border: var(--action-tertiary-border-disabled);
       cursor: not-allowed;
     }
 
@@ -176,25 +176,25 @@ class MuiButton extends HTMLElement {
     :host([variant="attention"]) button {
       background: var(--action-attention-background);
       color: var(--action-attention-text-color);
-      border: var(--action-attention-stroke);
+      border: var(--action-attention-border);
     }
 
     :host([variant="attention"]) button:hover {
       background: var(--action-attention-background-hover);
       color: var(--action-attention-text-color-hover);
-      border: var(--action-attention-stroke-hover);
+      border: var(--action-attention-border-hover);
     }
 
     :host([variant="attention"]) button:focus-visible {
       background: var(--action-attention-background-focus);
       color: var(--action-attention-text-color-focus);
-      border: var(--action-attention-stroke-focus);
+      border: var(--action-attention-border-focus);
     }
 
     :host([variant="attention"]) button:disabled {
       background: var(--action-attention-background-disabled);
       color: var(--action-attention-text-color-disabled);
-      border: var(--action-attention-stroke-disabled);
+      border: var(--action-attention-border-disabled);
       cursor: not-allowed;
     }
 
