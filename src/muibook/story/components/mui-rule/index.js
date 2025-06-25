@@ -6,7 +6,68 @@ class storyRule extends HTMLElement {
       :host { display: block; }
     `;
 
-    const TableColumns = `1fr 1fr`;
+    const propItems = [
+      {
+        name: "direction",
+        type: "string",
+        options: "horizontal, vertical",
+        default: "horizontal",
+        description: "Direction of the rule",
+      },
+      {
+        name: "length",
+        type: "string",
+        options: "100px, 100%, etc",
+        default: "",
+        description: "Easily add a length of the line.",
+      },
+      {
+        name: "weight",
+        type: "string",
+        options: "1px, 4px, etc",
+        default: "",
+        description: "Easily add a weight of the line.",
+      },
+    ];
+
+    const rows = propItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const accordions = propItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === propItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+          <mui-accordion-block 
+            size="medium" 
+            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+            ${isLastChild}>
+            <story-type-slat
+              slot="detail"
+              ${prop.required ? "required" : ""}
+              name="${prop.name}"
+              type="${prop.type}" 
+              options="${prop.options || ""}"
+              default="${prop.default || ""}"
+              description="${prop.description}">
+            </story-type-slat>
+          </mui-accordion-block>
+        `;
+      })
+      .join("");
 
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
@@ -23,6 +84,17 @@ class storyRule extends HTMLElement {
           <mui-code slot="footer" size="small">
             import "@muibook/components/mui-rule";<br>
           </mui-code>
+        </spec-card>
+
+        <spec-card title="Props">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${rows}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${accordions}
+            </mui-accordion-group>
+          </mui-responsive>
         </spec-card>
 
         <story-card title="Horizontal">
@@ -87,31 +159,6 @@ class storyRule extends HTMLElement {
             <br />
             &lt;/mui-rule&gt;
           </mui-code>
-        </story-card>
-
-        <story-card title="Props">
-          <mui-table slot="body"> 
-            <mui-row-group heading> 
-              <mui-row columns="${TableColumns}"> 
-                <mui-cell heading>Prop</mui-cell> 
-                <mui-cell heading>Default</mui-cell> 
-              </mui-row> 
-            </mui-row-group> 
-            <mui-row-group> 
-              <mui-row columns="${TableColumns}"> 
-                <mui-cell align-y="center"><mui-body size="small">direction</mui-body></mui-cell> 
-                <mui-cell align-y="center"><mui-body size="small">"horizontal"</mui-body></mui-cell> 
-              </mui-row> 
-              <mui-row columns="${TableColumns}"> 
-                <mui-cell align-y="center"><mui-body size="small">length</mui-body></mui-cell> 
-                <mui-cell align-y="center"><mui-body size="small">"100%"</mui-body></mui-cell> 
-              </mui-row> 
-              <mui-row columns="${TableColumns}"> 
-                <mui-cell align-y="center"><mui-body size="small">weight</mui-body></mui-cell> 
-                <mui-cell align-y="center"><mui-body size="small">"1px"</mui-body></mui-cell> 
-              </mui-row> 
-            </mui-row-group> 
-          </mui-table>
         </story-card>
 
       </mui-v-stack>

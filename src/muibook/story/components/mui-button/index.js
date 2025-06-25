@@ -14,14 +14,28 @@ class storyButton extends HTMLElement {
         options: "{text}, mui-icon-[name]",
         default: "(required)",
         description:
-          "Add text or an icon for the call-to-action. If using a custom icon, ensure it includes the mui-icon class to inherit styling.",
+          "Add text or a single icon to the call-to-action. If using a custom icon, ensure it includes the mui-icon class to inherit styling.",
+      },
+      {
+        name: "slot=&#8220;before&#8221;",
+        type: "slot (named)",
+        options: "mui-icons-[name]",
+        default: "",
+        description: "Slot in an icon to appear before the text inside a button.",
+      },
+      {
+        name: "slot=&#8220;after&#8221;",
+        type: "slot (named)",
+        options: "mui-icons-[name]",
+        default: "",
+        description: "Slot in an icon to appear after the text inside a button.",
       },
       {
         name: "variant",
         type: "string",
         options: "primary, secondary, tertiary, attention",
         default: "primary",
-        description: "Describe the intent or mood of a message",
+        description: "Describe the intent or mood of the action.",
       },
       {
         name: "style",
@@ -40,9 +54,10 @@ class storyButton extends HTMLElement {
       {
         name: "part",
         type: "CSS",
-        options: "E.g. mui-link::part(display)",
+        options: "mui-button::part(add-css-selector)",
         default: "",
-        description: "Controlled trust-based customisation for modifying internal aspects of a button.",
+        description:
+          "Controlled trust-based customisation for modifying internal aspects of a button. <mui-link href='/#/text-part-selectors' size='x-small'>Learn more</mui-link>",
       },
     ];
 
@@ -126,20 +141,17 @@ class storyButton extends HTMLElement {
 
         <story-card title="Icon Slots">
 
-          <mui-v-stack slot="body" space="var(--space-200)">
-
+          <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
             <mui-button 
               variant="primary">
                 Add New
                 <mui-icon-add slot="before"></mui-icon-add>
             </mui-button>
-
             <mui-button 
               variant="primary">
                 More
                 <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
             </mui-button>
-
           </mui-v-stack>
           
           <mui-code slot="footer">

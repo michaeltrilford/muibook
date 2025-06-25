@@ -23,6 +23,13 @@ class storyAlert extends HTMLElement {
         description: "Content placed inside the component. Can include mui-links and text nodes, or both.",
       },
       {
+        name: "slot=&#8220;action&#8221;",
+        type: "slot (named)",
+        options: "mui-button, mui-link",
+        default: "",
+        description: "Slot a mui-button or mui-link into the Alert component for dismissing or tasks.",
+      },
+      {
         name: "style",
         type: "string",
         options: "Valid CSS",
@@ -35,13 +42,6 @@ class storyAlert extends HTMLElement {
         options: "Valid CSS",
         default: "",
         description: "You are able to use add a classname to add layout based CSS to the host element.",
-      },
-      {
-        name: "slot=&#8220;action&#8221;",
-        type: "slot (named)",
-        options: "mui-button, mui-link",
-        default: "",
-        description: "Slot a mui-button or mui-link into the Alert component for dismissing or tasks.",
       },
     ];
 

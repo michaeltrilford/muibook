@@ -10,6 +10,211 @@ class storyCards extends HTMLElement {
 
     const Columns = `1fr 1fr 1fr auto`;
 
+    // Card
+    const propItemsCard = [
+      {
+        name: "slot",
+        required: true,
+        type: "slot (default)",
+        options: "mui-card-header, mui-card-body, mui-card-footer",
+        default: "(required)",
+        description: "This component will apply special styles depending on slotted items.",
+      },
+    ];
+
+    const rowsCard = propItemsCard
+      .map(
+        (prop) => /*html*/ `
+      <story-type-row
+        ${prop.required ? "required" : ""}
+        name="${prop.name}"
+        type="${prop.type}" 
+        options="${prop.options || ""}"
+        default="${prop.default || ""}"
+        description="${prop.description}">
+      </story-type-row>
+    `
+      )
+      .join("");
+
+    const accordionsCard = propItemsCard
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === propItemsCard.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+      <mui-accordion-block 
+        size="medium" 
+        heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+        ${isLastChild}>
+        <story-type-slat
+          slot="detail"
+          ${prop.required ? "required" : ""}
+          name="${prop.name}"
+          type="${prop.type}" 
+          options="${prop.options || ""}"
+          default="${prop.default || ""}"
+          description="${prop.description}">
+        </story-type-slat>
+      </mui-accordion-block>
+    `;
+      })
+      .join("");
+
+    // Header
+    const propItemsCardHeader = [
+      {
+        name: "slot",
+        required: true,
+        type: "slot (default)",
+        options: "mui-heading, mui-body, mui-button, mui-link, etc",
+        default: "(required)",
+        description: "Add items inside the card header.",
+      },
+    ];
+
+    const rowsCardHeader = propItemsCardHeader
+      .map(
+        (prop) => /*html*/ `
+      <story-type-row
+        ${prop.required ? "required" : ""}
+        name="${prop.name}"
+        type="${prop.type}" 
+        options="${prop.options || ""}"
+        default="${prop.default || ""}"
+        description="${prop.description}">
+      </story-type-row>
+    `
+      )
+      .join("");
+
+    const accordionsCardHeader = propItemsCardHeader
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === propItemsCardHeader.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+      <mui-accordion-block 
+        size="medium" 
+        heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+        ${isLastChild}>
+        <story-type-slat
+          slot="detail"
+          ${prop.required ? "required" : ""}
+          name="${prop.name}"
+          type="${prop.type}" 
+          options="${prop.options || ""}"
+          default="${prop.default || ""}"
+          description="${prop.description}">
+        </story-type-slat>
+      </mui-accordion-block>
+    `;
+      })
+      .join("");
+
+    // Body
+    const propItemsCardBody = [
+      {
+        name: "slot",
+        required: true,
+        type: "slot (default)",
+        options: "mui-image, mui-table, mui-slat, mui-accordion-group, etc",
+        default: "(required)",
+        description:
+          "Add items inside the card body. Some MUI components, like Accordion or Table, automatically style slotted content to optimise space.",
+      },
+    ];
+
+    const rowsCardBody = propItemsCardBody
+      .map(
+        (prop) => /*html*/ `
+      <story-type-row
+        ${prop.required ? "required" : ""}
+        name="${prop.name}"
+        type="${prop.type}" 
+        options="${prop.options || ""}"
+        default="${prop.default || ""}"
+        description="${prop.description}">
+      </story-type-row>
+    `
+      )
+      .join("");
+
+    const accordionsCardBody = propItemsCardBody
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === propItemsCardBody.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+      <mui-accordion-block 
+        size="medium" 
+        heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+        ${isLastChild}>
+        <story-type-slat
+          slot="detail"
+          ${prop.required ? "required" : ""}
+          name="${prop.name}"
+          type="${prop.type}" 
+          options="${prop.options || ""}"
+          default="${prop.default || ""}"
+          description="${prop.description}">
+        </story-type-slat>
+      </mui-accordion-block>
+    `;
+      })
+      .join("");
+
+    // Footer
+    const propItemsCardFooter = [
+      {
+        name: "slot",
+        required: true,
+        type: "slot (default)",
+        options: "mui-button-group, mui-button, mui-link, mui-code, etc",
+        default: "(required)",
+        description: "Append items after the main body of the card.",
+      },
+    ];
+
+    const rowsCardFooter = propItemsCardFooter
+      .map(
+        (prop) => /*html*/ `
+      <story-type-row
+        ${prop.required ? "required" : ""}
+        name="${prop.name}"
+        type="${prop.type}" 
+        options="${prop.options || ""}"
+        default="${prop.default || ""}"
+        description="${prop.description}">
+      </story-type-row>
+    `
+      )
+      .join("");
+
+    const accordionsCardFooter = propItemsCardFooter
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === propItemsCardFooter.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+      <mui-accordion-block 
+        size="medium" 
+        heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+        ${isLastChild}>
+        <story-type-slat
+          slot="detail"
+          ${prop.required ? "required" : ""}
+          name="${prop.name}"
+          type="${prop.type}" 
+          options="${prop.options || ""}"
+          default="${prop.default || ""}"
+          description="${prop.description}">
+        </story-type-slat>
+      </mui-accordion-block>
+    `;
+      })
+      .join("");
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -26,6 +231,50 @@ class storyCards extends HTMLElement {
           <mui-code slot="footer" size="small">
             import "@muibook/components/mui-card";<br>
           </mui-code>
+        </spec-card>
+
+        <spec-card title="Props: Card" description="The mui-card houses the header, body and footer.">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${rowsCard}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${accordionsCard}
+            </mui-accordion-group>
+          </mui-responsive>
+        </spec-card>
+
+        <spec-card title="Props: Card Header" description="The mui-card-header will house suitable mui components or other relevant elements.">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${rowsCardHeader}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${accordionsCardHeader}
+            </mui-accordion-group>
+          </mui-responsive>
+        </spec-card>
+
+        <spec-card title="Props: Card Body" description="The mui-card-body will house suitable mui components or other relevant elements.">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${rowsCardBody}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${accordionsCardBody}
+            </mui-accordion-group>
+          </mui-responsive>
+        </spec-card>
+
+        <spec-card title="Props: Card Footer" description="The mui-card-footer will house actions or other relevant elements.">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${rowsCardFooter}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${accordionsCardFooter}
+            </mui-accordion-group>
+          </mui-responsive>
         </spec-card>
 
         <story-card title="Card">
