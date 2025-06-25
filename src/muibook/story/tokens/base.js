@@ -4,6 +4,15 @@ class tokensBase extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
     const styles = /*css*/ `
       :host { display: block; }
+
+      .message-primary {
+        display: none;
+      }
+      @media (min-width: 960px) {
+        .message-primary {
+          display: inline;
+        }
+      }
     `;
 
     shadowRoot.innerHTML = /*html*/ `
@@ -11,15 +20,20 @@ class tokensBase extends HTMLElement {
 
       <story-template 
         title="Base"
-        description=
-          "
-            Base values for core attributes such as color, typography, spacing, and size. These tokens don’t carry meaning or intent — they exist solely to define the brand’s visual foundation.
-        
-          "
+        description="Base values for core attributes such as color, typography, spacing, and size. These tokens don’t carry meaning or intent — they exist solely to define the brand’s visual foundation."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
-        <mui-message slot="message" variant="warning" heading="Base Token Preview Behavior"><mui-body>The theme selector (top left) won’t affect colors here, as this page reflects the core (Mui) theme. Other token pages do reflect theme changes, showing how base tokens can be swapped without modifying the higher-level <mui-link href="/#/semantic-design-tokens">Semantic</mui-link>, <mui-link href="/#/contextual-design-tokens">Contextual</mui-link>, <mui-link href="/#/surface-design-tokens">Surface</mui-link>, and <mui-link href="/#/components-design-tokens">Component</mui-link> tiers.</mui-body></mui-message>
+        <mui-message slot="message" variant="info" heading="Theme Behavior on This Page">
+          <mui-body>The theme select <span class="message-primary">(top left)</span> will not affect the colors on this page, as it displays tokens from the core <strong>Mui</strong> theme only.</mui-body>
+          <mui-body>
+            <mui-link href="/#/semantic-design-tokens">Semantic</mui-link>, 
+            <mui-link href="/#/contextual-design-tokens">Contextual</mui-link>, 
+            <mui-link href="/#/surface-design-tokens">Surface</mui-link>, and 
+            <mui-link href="/#/components-design-tokens">Components</mui-link> 
+            pages WILL reflect theme examples if selected, since base tokens are mapped to these higher tiers.
+          </mui-body>
+        </mui-message>
 
         <mui-v-stack space="var(--space-700)">
 
