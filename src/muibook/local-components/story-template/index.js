@@ -81,27 +81,27 @@ class StoryTemplate extends HTMLElement {
                 <mui-v-stack slot="showBelow" space="var(--space-300)">
                   <mui-heading size="1" weight="800">${title}</mui-heading>
                   <mui-h-stack space="var(--space-100)">
-                    ${demoContent}
-                    ${websiteContent}
-                    ${guidesContent}
-                    ${figmaContent}
-                    ${githubContent}
+                  ${demoContent}
+                  ${websiteContent}
+                  ${guidesContent}
+                  ${figmaContent}
+                  ${githubContent}
                   </mui-h-stack>
-                </mui-v-stack>
-                <mui-h-stack slot="showAbove" alignX="space-between" alignY="center">
+                  </mui-v-stack>
+                  <mui-h-stack slot="showAbove" alignX="space-between" alignY="center">
                   <mui-heading size="1" weight="800">${title}</mui-heading>
                   <mui-h-stack space="var(--space-100)">
-                    ${demoContent}
-                    ${websiteContent}
-                    ${guidesContent}
-                    ${figmaContent}
-                    ${githubContent}
+                  ${demoContent}
+                  ${websiteContent}
+                  ${guidesContent}
+                  ${figmaContent}
+                  ${githubContent}
                   </mui-h-stack>
-                </mui-h-stack>
-              </mui-responsive>
-              ${description}
-            </mui-v-stack>
-            ${accessibilitySection}
+                  </mui-h-stack>
+                  </mui-responsive>
+                  ${description}
+                  </mui-v-stack>
+                  ${accessibilitySection}
             <slot name="message"></slot>
           </mui-v-stack>
           <div>

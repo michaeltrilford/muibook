@@ -113,10 +113,9 @@ class appNavbar extends HTMLElement {
 
     const Required = /*html*/ `
       <app-navbar-group id="design-tokens" groupname="Design Tokens">
-        <app-navbar-link link="#/base-design-tokens" title="Base"></app-navbar-link>
+        <app-navbar-link link="#/brand-design-tokens" title="Brand"></app-navbar-link>
         <app-navbar-link link="#/semantic-design-tokens" title="Semantic"></app-navbar-link>
         <app-navbar-link link="#/contextual-design-tokens" title="Contextual"></app-navbar-link>
-        <app-navbar-link link="#/surface-design-tokens" title="Surface"></app-navbar-link>
         <app-navbar-link link="#/components-design-tokens" title="Components"></app-navbar-link>
       </app-navbar-group>
     `;

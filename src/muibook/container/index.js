@@ -47,10 +47,9 @@ export class AppContainer extends HTMLElement {
       "/keywords": "agent-keywords-page",
       "/prompts": "agent-prompts-page",
 
-      "/base-design-tokens": "tokens-base",
+      "/brand-design-tokens": "tokens-brand",
       "/semantic-design-tokens": "tokens-semantic",
       "/contextual-design-tokens": "tokens-contextual",
-      "/surface-design-tokens": "tokens-surface",
       "/components-design-tokens": "tokens-components",
       "/text-part-selectors": "parts-text",
       "/spacing-part-selectors": "parts-spacing",
@@ -113,10 +112,9 @@ export class AppContainer extends HTMLElement {
       "agent-keywords-page": () => import("../pages/agent-keywords/index.js"),
       "agent-prompts-page": () => import("../pages/agent-prompts/index.js"),
 
-      "tokens-base": () => import("../story/tokens/base.js"),
+      "tokens-brand": () => import("../story/tokens/brand.js"),
       "tokens-semantic": () => import("../story/tokens/semantic.js"),
       "tokens-contextual": () => import("../story/tokens/contextual.js"),
-      "tokens-surface": () => import("../story/tokens/surface.js"),
       "tokens-components": () => import("../story/tokens/components.js"),
 
       "parts-text": () => import("../story/parts/text.js"),

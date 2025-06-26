@@ -10,7 +10,7 @@ class specCard extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
 
     const styles = /*css*/ `
-      :host { display: block; }
+      :host { display: block; scroll-margin-top: var(--space-600); }
 
       mui-card {
         border: var(--border-thick);

@@ -4,6 +4,12 @@ class tokensSemantic extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
     const styles = /*css*/ `
       :host { display: block; }
+
+      .token-item-menu::part(flex-wrap) {
+        flex-wrap: wrap;
+        column-gap: var(--space-300);
+        row-gap: var(--space-100);
+      }
     `;
 
     shadowRoot.innerHTML = /*html*/ `
@@ -11,18 +17,22 @@ class tokensSemantic extends HTMLElement {
 
       <story-template 
         title="Semantic"
-        description=
-          "
-          Semantic tokens capture design intent and support consistent theming and behavior across related components. They represent purpose such as feedback, interaction, or state rather than specific components. 
-          <br><br>
-          Theming can be applied at this layer, allowing for light/dark mode or branding variations as we avoid tightly coupling base tokens to individual components.        
-          "
+        description="Semantic tokens capture design intent and represent purposes like feedback, interaction, or state — rather than tying to specific components."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
+
+        <mui-message heading="Quicklinks" slot="message">
+          <mui-h-stack class="token-item-menu" alignY="center">
+            <mui-link data-scroll-link="feedback">Feedback</mui-link>
+            <mui-link data-scroll-link="form">Form</mui-link>
+            <mui-link data-scroll-link="action">Action</mui-link>
+          </mui-h-stack>
+        </mui-message>
+
         <mui-v-stack space="var(--space-700)">
   
-          <spec-card title="Feedback States" description="User feedback (alerts, messages, forms etc.)">
+          <spec-card id="feedback" title="Feedback" description="User feedback (alerts, messages)">
             <story-token-slat slot="body" token="--feedback-neutral-border-color" variant="color"></story-token-slat>  
             <story-token-slat slot="body" token="--feedback-positive-border-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--feedback-info-border-color" variant="color"></story-token-slat>
@@ -61,7 +71,26 @@ class tokensSemantic extends HTMLElement {
 
           </spec-card>
 
-          <spec-card title="Action" description="Defines the visual style and interaction behavior of elements like buttons and links, reflecting their intended purpose.">
+          <spec-card id="form" title="Form" description="Tokens for form feedback include default styles, message states, and validation indicators.">
+            <story-token-slat slot="body" token="--form-default-text-color" variant="text-color"></story-token-slat>  
+            <story-token-slat slot="body" token="--form-success-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-warning-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="---form-error-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-default-text-color-hover" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-success-text-color-hover" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-warning-text-color-hover" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="---form-error-text-color-hover" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-default-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-success-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-warning-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-error-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-default-border-color-hover" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-success-border-color-hover" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-warning-border-color-hover" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-error-border-color-hover" variant="border-color"></story-token-slat>
+          </spec-card>
+
+          <spec-card id="action" title="Action" description="Defines the visual style and interaction behavior of elements like buttons and links, reflecting their intended purpose.">
             <story-token-slat slot="body" token="--action-font-size" variant="text-size"></story-token-slat>
             <story-token-slat slot="body" token="--action-line-height" variant="line-height"></story-token-slat>
             <story-token-slat slot="body" token="--action-font-weight" variant="font-weight"></story-token-slat>
@@ -153,6 +182,24 @@ class tokensSemantic extends HTMLElement {
 
       </story-template>
     `;
+
+    // Spec Card - Minimal scroll-to handler
+    // The common href with hash could not be used because of the hash navigation
+    // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
+    shadowRoot.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-scroll-link]");
+      if (!trigger) return;
+
+      event.preventDefault();
+
+      const targetId = trigger.getAttribute("data-scroll-link");
+      if (!targetId) return;
+
+      const targetEl = shadowRoot.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+      }
+    });
   }
 }
 

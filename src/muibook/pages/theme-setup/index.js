@@ -35,7 +35,7 @@ class ThemeSetup extends HTMLElement {
       <story-template 
         title="Theme Setup"
         description="Connect your theme — token-powered, brand-ready, and dark mode friendly."
-        github="https://github.com/michaeltrilford/create-mui-app/blob/main/src/mui-styles/mui-tokens.css"
+        github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
 
 
@@ -56,10 +56,9 @@ class ThemeSetup extends HTMLElement {
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Design tokens</mui-heading>
                 <mui-body size="medium">
-                  <mui-link size="medium" href="#/base-design-tokens">Base</mui-link>, 
+                  <mui-link size="medium" href="#/brand-design-tokens">Brand</mui-link>, 
                   <mui-link size="medium" href="#/semantic-design-tokens">Semantic</mui-link>, 
-                  <mui-link size="medium" href="#/contextual-design-tokens">Contextual</mui-link>, 
-                  <mui-link size="medium" href="#/surface-design-tokens">Surface</mui-link> and 
+                  <mui-link size="medium" href="#/contextual-design-tokens">Contextual</mui-link> and 
                   <mui-link size="medium" href="#/components-design-tokens">Component</mui-link> tokens.</mui-body>
               </mui-v-stack>
 
@@ -85,6 +84,20 @@ class ThemeSetup extends HTMLElement {
                 <mui-heading level="3" size="5">Set the foundation</mui-heading>
                 <mui-body size="medium">Establish consistency across your product by using the template to unify 
                 theming across all modes. Fork the repository and start customizing your theme today.</mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Demo Theme</mui-heading>
+                <mui-body size="medium">
+                  See how 
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/jal.css" target="_blank">JAL</mui-link>, 
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/ana.css" target="_blank">ANA</mui-link>, 
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/modern.css" target="_blank">Modern</mui-link>, 
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/mono.css" target="_blank">Mono</mui-link> 
+                  build on the core MUI theme. Only override the values you need; everything else falls back to the  
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css" target="_blank">mui-tokens</mui-link> 
+                  theme.
+                </mui-body>
               </mui-v-stack>
 
             </mui-v-stack>
