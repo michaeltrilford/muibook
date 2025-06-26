@@ -1,12 +1,12 @@
 class storyTypeTable extends HTMLElement {
   static get observedAttributes() {
-    return ['type', 'name', 'options', 'required', 'description', 'default'];
+    return ["type", "name", "options", "required", "description", "default"];
   }
 
   constructor() {
     super();
 
-    const shadowRoot = this.attachShadow({ mode: 'open' });
+    const shadowRoot = this.attachShadow({ mode: "open" });
 
     const styles = /*css*/ `
       :host { 
@@ -19,7 +19,7 @@ class storyTypeTable extends HTMLElement {
 
       <mui-table>  
         <mui-row-group heading>
-          <mui-row columns="minmax(12rem, 0.5fr) minmax(10rem, 1fr) minmax(10rem, 2fr) minmax(5rem, 0.5fr) 2fr">
+          <mui-row columns="minmax(13rem, 0.5fr) minmax(10rem, 1fr) minmax(10rem, 2fr) minmax(5rem, 0.5fr) 2fr">
             <mui-cell class="card-slot" heading>Name</mui-cell>
             <mui-cell class="card-slot" heading>Default</mui-cell>
             <mui-cell class="card-slot" heading>Options</mui-cell>
@@ -34,4 +34,4 @@ class storyTypeTable extends HTMLElement {
   }
 }
 
-customElements.define('story-type-table', storyTypeTable);
+customElements.define("story-type-table", storyTypeTable);

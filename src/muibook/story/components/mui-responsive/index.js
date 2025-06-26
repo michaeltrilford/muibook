@@ -19,6 +19,100 @@ class storyResponsive extends HTMLElement {
       }
     `;
 
+    const propItems = [
+      {
+        name: "slot",
+        type: "slot (default)",
+        options: "{mui-elements}, {elements}",
+        default: "{required}",
+        description: "Slot in content into the items to be toggled based on breakpoints.",
+      },
+      {
+        name: "breakpoint",
+        type: "number",
+        options: "768, 1024, 1200, etc",
+        default: "",
+        description:
+          "Only use with 'showBelow' & 'showAbove' named slots. A number that represents a single breakpoint that switches between two 'showAbove' | 'showBelow' views. You are able to nest, so you can be creative.",
+      },
+      {
+        name: "breakpoint-low",
+        type: "number",
+        options: "599, etc",
+        default: "",
+        description:
+          "Only use with 'showBelow', 'showMiddle' & 'showAbove' named slots. A number that represents the breakpoint that switches to the 'showMiddle' view from the 'showBelow' view.",
+      },
+      {
+        name: "breakpoint-high",
+        type: "number",
+        options: "1024, etc",
+        default: "",
+        description:
+          "Only use with 'showBelow', 'showMiddle' & 'showAbove' named slots. A number that represents the breakpoint that switches from the 'showMiddle' view to the 'showAbove' view.",
+      },
+      {
+        name: "slot=&#8220;showAbove&#8221;",
+        type: "slot (named)",
+        options: "{mui-elements}, {elements}",
+        default: "",
+        description: "Slot in an icon to appear before the text inside a button.",
+      },
+      {
+        name: "slot=&#8220;showMiddle&#8221;",
+        type: "slot (named)",
+        options: "{mui-elements}, {elements}",
+        default: "",
+        description: "Slot in an icon to appear before the text inside a button.",
+      },
+      {
+        name: "slot=&#8220;showBelow&#8221;",
+        type: "slot (named)",
+        options: "{mui-elements}, {elements}",
+        default: "",
+        description: "Slot in an icon to appear after the text inside a button.",
+      },
+    ];
+
+    const rows = propItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const accordions = propItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === propItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+          <mui-accordion-block 
+            size="medium" 
+            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+            ${isLastChild}>
+            <story-type-slat
+              slot="detail"
+              ${prop.required ? "required" : ""}
+              name="${prop.name}"
+              type="${prop.type}" 
+              options="${prop.options || ""}"
+              default="${prop.default || ""}"
+              description="${prop.description}">
+            </story-type-slat>
+          </mui-accordion-block>
+        `;
+      })
+      .join("");
+
     const LocalRing = /*html*/ `
       <div class="local-ring">
         <svg 
@@ -103,6 +197,17 @@ class storyResponsive extends HTMLElement {
           <mui-code slot="footer" size="small">
             import "@muibook/components/mui-responsive";<br>
           </mui-code>
+        </spec-card>
+
+        <spec-card title="Props">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${rows}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${accordions}
+            </mui-accordion-group>
+          </mui-responsive>
         </spec-card>
 
         <story-card title="Single Breakpoint">

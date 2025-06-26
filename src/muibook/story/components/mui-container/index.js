@@ -10,6 +10,14 @@ class storyContainer extends HTMLElement {
 
     const propItems = [
       {
+        name: "slot",
+        required: true,
+        type: "slot (default)",
+        options: "{mui-elements}, {elements}",
+        default: "{required}",
+        description: "Slot in content to be displayed within the container.",
+      },
+      {
         name: "size",
         type: "boolean",
         options: "small, medium, large, fluid",
