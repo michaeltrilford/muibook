@@ -1,7 +1,7 @@
 class DesignGuidelines extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: 'open' });
+    const shadowRoot = this.attachShadow({ mode: "open" });
     const styles = /*css*/ `
       :host { display: block; }
       .panel {
@@ -32,6 +32,7 @@ class DesignGuidelines extends HTMLElement {
       <story-template 
         title="Design Guidelines"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=dSPmUahUSkrLxFYS-1"
+        guides="https://guides.gurusuite.xyz/"
       >
 
 
@@ -44,7 +45,7 @@ class DesignGuidelines extends HTMLElement {
 
             <mui-v-stack space="var(--space-400)">        
 
-              <mui-input label="Email" id="email-input" name="email" value="mui-web-components@proton.me">
+              <mui-input label="Email" id="email-input" name="email" value="muibook@proton.me">
                 <mui-button slot="after">Copy</mui-button>
               </mui-input>
               <mui-input label="Password" id="password-input" name="password" value="muikit">
@@ -79,25 +80,25 @@ class DesignGuidelines extends HTMLElement {
 
     // Wait for the DOM to render
     requestAnimationFrame(() => {
-      const copyButtons = shadowRoot.querySelectorAll('mui-button');
+      const copyButtons = shadowRoot.querySelectorAll("mui-button");
 
       copyButtons.forEach((button) => {
-        button.addEventListener('click', async () => {
-          const parentInput = button.closest('mui-input');
-          const value = parentInput?.getAttribute('value');
+        button.addEventListener("click", async () => {
+          const parentInput = button.closest("mui-input");
+          const value = parentInput?.getAttribute("value");
 
           if (value) {
             try {
               await navigator.clipboard.writeText(value);
-              button.innerText = 'Copied!';
+              button.innerText = "Copied!";
               setTimeout(() => {
-                button.innerText = 'Copy';
+                button.innerText = "Copy";
               }, 1500);
             } catch (err) {
-              console.error('Failed to copy text: ', err);
-              button.innerText = 'Error';
+              console.error("Failed to copy text: ", err);
+              button.innerText = "Error";
               setTimeout(() => {
-                button.innerText = 'Copy';
+                button.innerText = "Copy";
               }, 1500);
             }
           }
@@ -107,4 +108,4 @@ class DesignGuidelines extends HTMLElement {
   }
 }
 
-customElements.define('design-guidelines', DesignGuidelines);
+customElements.define("design-guidelines", DesignGuidelines);
