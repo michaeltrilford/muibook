@@ -10,14 +10,14 @@ class storyFileUpload extends HTMLElement {
       {
         name: "acceptedFileTypes",
         type: "string",
-        options: "Any",
+        options: "any",
         default: "",
         description: "Comma-separated list of accepted file types (.jpg, .pdf)",
       },
       {
         name: "currentFileName",
         type: "string",
-        options: "Any",
+        options: "any",
         default: "",
         description: "Initial text to display when no file has been selected.",
       },

@@ -20,7 +20,7 @@ class storyMessage extends HTMLElement {
         name: "slot",
         required: true,
         type: "slot (default)",
-        options: "mui-body, mui-list, elements",
+        options: "mui-body, mui-list, {elements}",
         default: "(required)",
         description: "Slot in body, list or custom elements",
       },

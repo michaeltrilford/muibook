@@ -69,7 +69,7 @@ class storyTable extends HTMLElement {
       {
         name: "columns",
         type: "string",
-        options: "1fr 1fr 1fr, 1fr 1fr auto, ...",
+        options: "1fr 1fr 1fr, 1fr 1fr auto, etc...",
         default: "",
         description:
           "Define the overall table layout using the grid-template-columns CSS property. Any valid grid-template-columns value can be used to control column sizing and distribution.",
@@ -81,7 +81,7 @@ class storyTable extends HTMLElement {
         name: "slot",
         required: true,
         type: "slot (default)",
-        options: "text, elements",
+        options: "{text}, {elements}",
         default: "(required)",
         description: "Provides the content for the cell element",
       },

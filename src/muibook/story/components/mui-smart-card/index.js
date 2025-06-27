@@ -72,16 +72,16 @@ class storySmartCard extends HTMLElement {
       {
         name: "type",
         type: "string",
-        options: "Debit, Credit, etc",
+        options: "Debit, Credit, etc...",
         default: "",
         description: "Used to visually or semantically describe the card’s usage.",
       },
       {
         name: "bg-color",
         type: "CSS",
-        options: "",
+        options: "Valid CSS",
         default: "",
-        description: "Add a logo to the card",
+        description: "Add a color code to the background",
       },
       {
         name: "bg-image",

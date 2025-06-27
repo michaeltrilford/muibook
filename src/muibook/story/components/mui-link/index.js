@@ -38,14 +38,14 @@ class storyLink extends HTMLElement {
       {
         name: "slot=&#8220;before&#8221;",
         type: "slot (named)",
-        options: "mui-icons-[name]",
+        options: "mui-icon-[name]",
         default: "",
         description: "Slot in an icon to appear before the text on a link or link button.",
       },
       {
         name: "slot=&#8220;after&#8221;",
         type: "slot (named)",
-        options: "mui-icons-[name]",
+        options: "mui-icon-[name]",
         default: "",
         description: "Slot in an icon to appear after the text inside a link or link button.",
       },

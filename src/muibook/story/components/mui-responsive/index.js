@@ -24,13 +24,13 @@ class storyResponsive extends HTMLElement {
         name: "slot",
         type: "slot (default)",
         options: "{mui-elements}, {elements}",
-        default: "{required}",
+        default: "(required)",
         description: "Slot in content into the items to be toggled based on breakpoints.",
       },
       {
         name: "breakpoint",
         type: "number",
-        options: "768, 1024, 1200, etc",
+        options: "768, 1024, 1200, etc...",
         default: "",
         description:
           "Only use with 'showBelow' & 'showAbove' named slots. A number that represents a single breakpoint that switches between two 'showAbove' | 'showBelow' views. You are able to nest, so you can be creative.",
@@ -38,7 +38,7 @@ class storyResponsive extends HTMLElement {
       {
         name: "breakpoint-low",
         type: "number",
-        options: "599, etc",
+        options: "599, etc...",
         default: "",
         description:
           "Only use with 'showBelow', 'showMiddle' & 'showAbove' named slots. A number that represents the breakpoint that switches to the 'showMiddle' view from the 'showBelow' view.",
@@ -46,7 +46,7 @@ class storyResponsive extends HTMLElement {
       {
         name: "breakpoint-high",
         type: "number",
-        options: "1024, etc",
+        options: "1024, etc...",
         default: "",
         description:
           "Only use with 'showBelow', 'showMiddle' & 'showAbove' named slots. A number that represents the breakpoint that switches from the 'showMiddle' view to the 'showAbove' view.",

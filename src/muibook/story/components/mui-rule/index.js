@@ -17,14 +17,14 @@ class storyRule extends HTMLElement {
       {
         name: "length",
         type: "string",
-        options: "100px, 100%, etc",
+        options: "100px, 100%, etc...",
         default: "",
         description: "Easily add a length of the line.",
       },
       {
         name: "weight",
         type: "string",
-        options: "1px, 4px, etc",
+        options: "1px, 4px, etc...",
         default: "",
         description: "Easily add a weight of the line.",
       },

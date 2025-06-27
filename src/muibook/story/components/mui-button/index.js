@@ -19,14 +19,14 @@ class storyButton extends HTMLElement {
       {
         name: "slot=&#8220;before&#8221;",
         type: "slot (named)",
-        options: "mui-icons-[name]",
+        options: "mui-icon-[name]",
         default: "",
         description: "Slot in an icon to appear before the text inside a button.",
       },
       {
         name: "slot=&#8220;after&#8221;",
         type: "slot (named)",
-        options: "mui-icons-[name]",
+        options: "mui-icon-[name]",
         default: "",
         description: "Slot in an icon to appear after the text inside a button.",
       },

@@ -14,7 +14,7 @@ class storyContainer extends HTMLElement {
         required: true,
         type: "slot (default)",
         options: "{mui-elements}, {elements}",
-        default: "{required}",
+        default: "(required)",
         description: "Slot in content to be displayed within the container.",
       },
       {

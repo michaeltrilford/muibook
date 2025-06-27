@@ -18,7 +18,7 @@ class storyAlert extends HTMLElement {
         name: "slot",
         required: true,
         type: "slot (default)",
-        options: "{text}, mui-links",
+        options: "{text}, mui-link",
         default: "(required)",
         description: "Content placed inside the component. Can include mui-links and text nodes, or both.",
       },

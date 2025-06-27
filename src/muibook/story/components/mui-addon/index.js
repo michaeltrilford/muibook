@@ -11,7 +11,7 @@ class storyAddon extends HTMLElement {
         name: "slot",
         required: true,
         type: "slot (default)",
-        options: "mui-body, mui-icons-[name], elements",
+        options: "mui-body, mui-icon-[name], {elements}",
         default: "(required)",
         description: "Slot in text, icons or other appropriate micro compositions to support form experiences.",
       },

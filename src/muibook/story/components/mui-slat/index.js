@@ -10,14 +10,14 @@ class storySlat extends HTMLElement {
       {
         name: "slot=&#8220;start&#8221;",
         type: "slot (named)",
-        options: "mui-heading, mui-body, elements, etc",
+        options: "{mui-elements}, {elements}",
         default: "",
         description: "Primary content slot for a slat layout.",
       },
       {
         name: "slot=&#8220;end&#8221;",
         type: "slot (named)",
-        options: "mui-heading, mui-body, elements, etc",
+        options: "{mui-elements}, {elements}",
         default: "",
         description: "Secondary content slot for a slat layout.",
       },

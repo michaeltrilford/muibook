@@ -40,6 +40,128 @@ class storyIcon extends HTMLElement {
 
     `;
 
+    const propItems = [
+      {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "small",
+        description: "Set the size of the body text.",
+      },
+      {
+        name: "color",
+        type: "string",
+        options: "Valid CSS, inverted",
+        default: "--icon-color-default",
+        description: "Set the size of the body text.",
+      },
+    ];
+
+    const rows = propItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const accordions = propItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === propItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+          <mui-accordion-block 
+            size="medium" 
+            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+            ${isLastChild}>
+            <story-type-slat
+              slot="detail"
+              ${prop.required ? "required" : ""}
+              name="${prop.name}"
+              type="${prop.type}" 
+              options="${prop.options || ""}"
+              default="${prop.default || ""}"
+              description="${prop.description}">
+            </story-type-slat>
+          </mui-accordion-block>
+        `;
+      })
+      .join("");
+
+    const IconTogglePropItems = [
+      {
+        name: "slot=&#8220;start&#8221;",
+        type: "slot (named)",
+        options: "mui-icon-[name]",
+        default: "",
+        description: "Use to slot in the default icon shown before the toggle is activated.",
+      },
+      {
+        name: "slot=&#8220;aend&#8221;",
+        type: "slot (named)",
+        options: "mui-icon-[name]",
+        default: "",
+        description: "Use to slot in the icon shown after the toggle is activated.",
+      },
+      {
+        name: "variant",
+        type: "string",
+        options: "primary, secondary, tertiary, attention",
+        default: "primary",
+        description: "Describe the intent or mood of the toggle.",
+      },
+      {
+        name: "rotate",
+        type: "boolean",
+        options: "rotate",
+        default: "-",
+        description: "Change the transition to include a rotating effect.",
+      },
+    ];
+
+    const IconToggleRows = IconTogglePropItems.map(
+      (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+    ).join("");
+
+    const IconToggleAccordions = IconTogglePropItems.map((prop, index) => {
+      // Check if it's the last item in the array
+      const isLastChild = index === propItems.length - 1 ? "last-child" : "";
+
+      return /*html*/ `
+          <mui-accordion-block 
+            size="medium" 
+            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+            ${isLastChild}>
+            <story-type-slat
+              slot="detail"
+              ${prop.required ? "required" : ""}
+              name="${prop.name}"
+              type="${prop.type}" 
+              options="${prop.options || ""}"
+              default="${prop.default || ""}"
+              description="${prop.description}">
+            </story-type-slat>
+          </mui-accordion-block>
+        `;
+    }).join("");
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -55,6 +177,29 @@ class storyIcon extends HTMLElement {
             <mui-code slot="footer" size="small">
               import "@muibook/components/mui-icons";<br>
             </mui-code>
+          </spec-card>
+
+
+          <spec-card title="Props: Icon">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </spec-card>
+
+          <spec-card title="Props: Icon Toggle" description="A visual alternative to a button, used to control views with a persistent open/close state — such as menus or drawers. Unlike standard buttons, this component is purpose-built for toggling visibility and should not replace buttons used for general actions.">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${IconToggleRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${IconToggleAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
           </spec-card>
 
           <story-card title="Default" description="Icons are set to size 'small' by default." >

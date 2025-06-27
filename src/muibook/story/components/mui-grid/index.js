@@ -9,13 +9,13 @@ class storyGrid extends HTMLElement {
         name: "slot",
         type: "slot (default)",
         options: "{mui-elements}, {elements}",
-        default: "{required}",
+        default: "(required)",
         description: "Slot in content to be displayed in a grid format.",
       },
       {
         name: "col",
         type: "string",
-        options: "1fr, 1fr 1fr, etc",
+        options: "1fr, 1fr 1fr, etc...",
         default: "",
         description:
           "Only use with 'showBelow' & 'showAbove' named slots. A number that represents a single breakpoint that switches between two 'showAbove' | 'showBelow' views. You are able to nest, so you can be creative.",
