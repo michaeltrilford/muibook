@@ -24,7 +24,7 @@ class storyAccordion extends HTMLElement {
         name: "slot=&#8220;detail&#8221;",
         required: true,
         type: "slot (named)",
-        options: "mui-list, mui-body, elements, etc",
+        options: "mui-list, mui-body, {elements}, etc",
         default: "(required)",
         description: "Define the detail content for the expanded section within the Accordion.",
       },
