@@ -22,7 +22,7 @@ class DesignGuidelines extends HTMLElement {
     const websiteContent = /*html*/ `
       <mui-v-stack space="var(--space-200)" class="panel">
         <mui-heading size="4" level="4">Website</mui-heading>
-        <mui-body size="medium">Visit <mui-link size="medium" weight="bold" href="https://guides.gurusuite.xyz/" target="_blank">guides.gurusuite.xyz</mui-link> and view Mui Guides in-browser.</mui-body>
+        <mui-body size="medium">Visit <mui-link size="medium" weight="bold" href="https://guides.muibook.com" target="_blank">guides.gurusuite.xyz</mui-link> and view Mui Guides in-browser.</mui-body>
       </mui-v-stack>
     `;
 
@@ -32,7 +32,7 @@ class DesignGuidelines extends HTMLElement {
       <story-template 
         title="Design Guidelines"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=dSPmUahUSkrLxFYS-1"
-        guides="https://guides.gurusuite.xyz/"
+        guides="https://guides.muibook.com"
       >
 
 
