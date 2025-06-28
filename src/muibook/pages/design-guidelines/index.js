@@ -16,7 +16,7 @@ class DesignGuidelines extends HTMLElement {
     const figmaContent = /*html*/ `
       <mui-v-stack space="var(--space-200)" class="panel">
         <mui-heading size="4" level="4">Figma Plugin</mui-heading>  
-        <mui-body size="medium">Install via <mui-link size="medium" weight="bold" href="https://www.figma.com/community/plugin/1471341082690554711/guru-guides" target="_blank">Figma</mui-link> and login to access MUI Guides directly in Figma.</mui-body>
+        <mui-body size="medium">Install via <mui-link size="medium" weight="bold" href="https://www.figma.com/community/plugin/1471341082690554711/guru-guides" target="_blank">Figma</mui-link> and login to access MUI Guidelines in Figma.</mui-body>
       </mui-v-stack>
     `;
     const websiteContent = /*html*/ `
@@ -30,7 +30,7 @@ class DesignGuidelines extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Design Guidelines"
+        title="Usage Guidelines"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=dSPmUahUSkrLxFYS-1"
         website="https://guides.muibook.com"
       >
