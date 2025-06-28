@@ -91,7 +91,7 @@ class storyAlert extends HTMLElement {
         title="Alert"
         description="Alerts are to surface meaningful system messages related to the users' current task or action."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-4444&t=ZA9uH4LK37tSuk6r-1"
-        guides
+        guides="https://guides.muibook.com/alerts"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts"
 
         accessibility="

@@ -32,7 +32,7 @@ class DesignGuidelines extends HTMLElement {
       <story-template 
         title="Usage Guidelines"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=dSPmUahUSkrLxFYS-1"
-        website="https://guides.muibook.com"
+        guides="https://guides.muibook.com"
       >
 
 

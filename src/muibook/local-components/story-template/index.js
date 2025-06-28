@@ -47,9 +47,9 @@ class StoryTemplate extends HTMLElement {
       ? /*html*/ `<mui-link target="_blank" href="${figmaLink}" rel="noopener" variant="secondary">Figma<figma-mark slot="after"></figma-mark></mui-link>`
       : "";
 
-    const guidesLink = this.hasAttribute("guides");
+    const guidesLink = this.getAttribute("guides");
     const guidesContent = guidesLink
-      ? /*html*/ `<mui-link target="_blank" href="/#/design-guidelines" rel="noopener" variant="secondary">Guides<guides-mark slot="after"></guides-mark></mui-link>`
+      ? /*html*/ `<mui-link target="_blank" href="${guidesLink}" rel="noopener" variant="secondary">Guides<guides-mark slot="after"></guides-mark></mui-link>`
       : "";
 
     try {
