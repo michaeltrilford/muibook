@@ -16,13 +16,13 @@ class DesignGuidelines extends HTMLElement {
     const figmaContent = /*html*/ `
       <mui-v-stack space="var(--space-200)" class="panel">
         <mui-heading size="4" level="4">Figma Plugin</mui-heading>  
-        <mui-body size="medium">Install via <mui-link size="medium" weight="bold" href="https://www.figma.com/community/plugin/1471341082690554711/guru-guides" target="_blank">Figma</mui-link> and access MUI Guides directly in Figma.</mui-body>
+        <mui-body size="medium">Install via <mui-link size="medium" weight="bold" href="https://www.figma.com/community/plugin/1471341082690554711/guru-guides" target="_blank">Figma</mui-link> and login to access MUI Guides directly in Figma.</mui-body>
       </mui-v-stack>
     `;
     const websiteContent = /*html*/ `
       <mui-v-stack space="var(--space-200)" class="panel">
         <mui-heading size="4" level="4">Website</mui-heading>
-        <mui-body size="medium">Visit <mui-link size="medium" weight="bold" href="https://guides.muibook.com" target="_blank">guides.gurusuite.xyz</mui-link> and view Mui Guides in-browser.</mui-body>
+        <mui-body size="medium">Visit <mui-link size="medium" weight="bold" href="https://guides.muibook.com" target="_blank">guides.muibook.com</mui-link> and view Mui Guides in-browser.</mui-body>
       </mui-v-stack>
     `;
 
