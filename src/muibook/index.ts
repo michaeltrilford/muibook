@@ -83,6 +83,7 @@ import "../components/mui-input";
 import "./container";
 import "./navbar";
 import "./local-components/theme";
+import "./local-components/page-banner-browser";
 import "./local-components/page-banner";
 import "./local-components/page-card";
 import "./local-components/spec-card";
