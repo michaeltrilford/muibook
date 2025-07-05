@@ -128,7 +128,7 @@ class storySwitch extends HTMLElement {
             <mui-switch label="Unchecked"></mui-switch>
           </div>
           <mui-code slot="footer">
-            &lt;mui-switch label="Unchecked"&gt;&lt;mui-switch&gt;
+            &lt;mui-switch label="Unchecked"&gt;&lt;/mui-switch&gt;
           </mui-code>
         </story-card>
 
@@ -137,7 +137,7 @@ class storySwitch extends HTMLElement {
             <mui-switch label="On Example" checked></mui-switch>
           </div>
           <mui-code slot="footer">
-            &lt;mui-switch checked label="On Example"&gt;&lt;mui-switch&gt;
+            &lt;mui-switch checked label="On Example"&gt;&lt;/mui-switch&gt;
           </mui-code>
         </story-card>
 
@@ -146,7 +146,7 @@ class storySwitch extends HTMLElement {
             <mui-switch label="Unchecked w/ Disabled" disabled></mui-switch>
           </div>
           <mui-code slot="footer">
-            &lt;mui-switch label="Unchecked w/ Disabled"&gt;&lt;mui-switch&gt;
+            &lt;mui-switch label="Unchecked w/ Disabled"&gt;&lt;/mui-switch&gt;
           </mui-code>
         </story-card>
 
@@ -155,7 +155,7 @@ class storySwitch extends HTMLElement {
             <mui-switch disabled label="Checked w/ Disabled" checked></mui-switch>
           </div>
           <mui-code slot="footer">
-            &lt;mui-switch checked disabled label="Checked w/ Disabled"&gt;&lt;mui-switch&gt;
+            &lt;mui-switch checked disabled label="Checked w/ Disabled"&gt;&lt;/mui-switch&gt;
           </mui-code>
         </story-card>
 
@@ -167,13 +167,13 @@ class storySwitch extends HTMLElement {
             </mui-switch>
           </div>
           <mui-code slot="footer">
-            &lt;mui-switch label="Dark mode toggle" &gt;
+            &lt;mui-switch label="Dark mode toggle"&gt;
               <br />
               &nbsp;&nbsp;&lt;mui-icon-sun slot="off-icon"&gt;&lt;/mui-icon-sun&gt;
               <br />
               &nbsp;&nbsp;&lt;mui-icon-moon slot="on-icon"&gt;&lt;/mui-icon-moon&gt;
               <br />
-            &lt;mui-switch&gt;
+            &lt;/mui-switch&gt;
           </mui-code>
         </story-card>
 
@@ -191,7 +191,7 @@ class storySwitch extends HTMLElement {
               <br />
               &nbsp;&nbsp;&lt;mui-icon-moon slot="on-icon"&gt;&lt;/mui-icon-moon&gt;
               <br />
-            &lt;mui-switch&gt;
+            &lt;/mui-switch&gt;
           </mui-code>
         </story-card>
 

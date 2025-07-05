@@ -154,12 +154,6 @@ Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=To
 
 ### Publishing
 
-#### Publish to NPM
-
-```bash
-npm publish
-```
-
 #### Version Management
 
 ```bash
@@ -172,6 +166,12 @@ npm version major  # Increment major version
 
 ```bash
 npm pack --dry-run  # Preview what will be published
+```
+
+#### Publish to NPM
+
+```bash
+npm publish
 ```
 
 ---

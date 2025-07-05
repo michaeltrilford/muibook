@@ -198,9 +198,15 @@ class storyMessage extends HTMLElement {
           title="Slot: Icon" 
           description="Icon is customised via the icon property, which accepts any mui-icon-[name] from the mui icon-set."
         >
-          <mui-message slot="body" icon="mui-icon-accessibility"></mui-message>
+          <mui-message slot="body" heading="Accessibility" icon="mui-icon-accessibility">
+            <mui-body>Body content...</mui-body>
+          </mui-message>
           <mui-code slot="footer">
-            &lt;mui-message icon="mui-icon-accessibility"&gt;...&lt;/mui-message&gt;
+            &lt;mui-message heading="Accessibility" icon="mui-icon-accessibility"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-body&gt;Body content...&lt;/mui-body&gt;
+            <br />
+            &lt;/mui-message&gt;
           </mui-code>
         </story-card>
 

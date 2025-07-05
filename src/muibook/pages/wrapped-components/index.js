@@ -1,6 +1,6 @@
 import Image from "../../images/pages/react-wrapper.jpg";
 
-class TypedWrapper extends HTMLElement {
+class WrappedComponents extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
@@ -33,8 +33,9 @@ class TypedWrapper extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Typed Wrapper (React)"
+        title="Wrapped Components"
         description="Typed wrappers for clean, safe web component usage."
+        github="https://github.com/michaeltrilford/muibook/tree/main/src/types/react/wrapped-components"
       >
 
 
@@ -64,7 +65,7 @@ class TypedWrapper extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Create Wrapped Component" />
-              <figcaption slot="caption">components/mui-container.tsx</figcaption>
+              <figcaption slot="caption">components/MuiContainer.tsx</figcaption>
             </mui-image> 
           </mui-grid>
 
@@ -130,4 +131,4 @@ class TypedWrapper extends HTMLElement {
   }
 }
 
-customElements.define("typed-wrapper", TypedWrapper);
+customElements.define("wrapped-components", WrappedComponents);

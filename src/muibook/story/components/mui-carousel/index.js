@@ -311,7 +311,9 @@ class storyCarousel extends HTMLElement {
 
         <spec-card title="Import">
           <mui-code slot="footer" size="small">
-            import "@muibook/components/mui-carousel";<br>
+            import "@muibook/components/mui-carousel";<br><br>
+            // Required:<br>
+            import "@muibook/components/mui-tabs";<br>
           </mui-code>
         </spec-card>
 

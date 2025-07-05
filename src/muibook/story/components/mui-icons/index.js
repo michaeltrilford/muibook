@@ -253,7 +253,7 @@ class storyIcon extends HTMLElement {
 
               <story-icon-grid center>              
                 <mui-icon-left-arrow slot="body"></mui-icon-left-arrow>
-                <mui-code slot="footer">mui-icon-left-arrow-arrow</mui-code>
+                <mui-code slot="footer">mui-icon-left-arrow</mui-code>
               </story-icon-grid>      
 
               <story-icon-grid center>              

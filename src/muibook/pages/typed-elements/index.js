@@ -1,6 +1,6 @@
 import Image from "../../images/pages/typed-components.jpg";
 
-class TypedComponents extends HTMLElement {
+class TypedElements extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
@@ -33,8 +33,9 @@ class TypedComponents extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Typed Components (React)"
+        title="Typed Elements"
         description="Directly type custom elements via JSX intrinsic elements augmentation."
+        github="https://github.com/michaeltrilford/muibook/tree/main/src/types/react/typed-elements"
       >
 
 
@@ -83,7 +84,7 @@ class TypedComponents extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Typed Components" />
-              <figcaption slot="caption">types/mui-components.d.ts</figcaption>
+              <figcaption slot="caption">types/typed-elements/index.d.ts</figcaption>
             </mui-image>  
           </mui-grid>
 
@@ -127,4 +128,4 @@ class TypedComponents extends HTMLElement {
   }
 }
 
-customElements.define("typed-components", TypedComponents);
+customElements.define("typed-elements", TypedElements);

@@ -49,9 +49,9 @@ class storyTable extends HTMLElement {
         description: "Houses the table rows",
       },
       {
-        name: "header",
+        name: "heading",
         type: "boolean",
-        options: "header",
+        options: "heading",
         default: "",
         description: "Defines the table header",
       },
@@ -84,13 +84,6 @@ class storyTable extends HTMLElement {
         options: "{text}, {elements}",
         default: "(required)",
         description: "Provides the content for the cell element",
-      },
-      {
-        name: "heading",
-        type: "boolean",
-        options: "",
-        default: "",
-        description: "Define the heading styles for the table",
       },
       {
         name: "action",

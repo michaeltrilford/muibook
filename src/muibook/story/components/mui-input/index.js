@@ -174,7 +174,7 @@ class storyInput extends HTMLElement {
             <mui-input label="Default"></mui-input>
           </div>
           <mui-code slot="footer">
-            &lt;mui-input label="Default"&gt;&lt;mui-input&gt;
+            &lt;mui-input label="Default"&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>
@@ -184,7 +184,7 @@ class storyInput extends HTMLElement {
             <mui-input variant="success"  value="value" type="password" label="Password"></mui-input>
           </div>
           <mui-code slot="footer">
-            &lt;mui-input variant="success" value="value" type="password" label="Password"&gt;&lt;mui-input&gt;
+            &lt;mui-input variant="success" value="value" type="password" label="Password"&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>
@@ -194,7 +194,7 @@ class storyInput extends HTMLElement {
             <mui-input variant="warning" value="michael.mui.com" label="Email"></mui-input>
           </div>
           <mui-code slot="footer">
-            &lt;mui-input variant="warning" value="michael.mui.com" label="Email"&gt;&lt;mui-input&gt;
+            &lt;mui-input variant="warning" value="michael.mui.com" label="Email"&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>
@@ -204,7 +204,7 @@ class storyInput extends HTMLElement {
             <mui-input variant="error" value="michael.mui.com" label="Email"></mui-input>
           </div>
           <mui-code slot="footer">
-            &lt;mui-input variant="error" value="michael.mui.com" label="Email"&gt;&lt;mui-input&gt;
+            &lt;mui-input variant="error" value="michael.mui.com" label="Email"&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>
@@ -214,7 +214,7 @@ class storyInput extends HTMLElement {
             <mui-input label="Hide Label" hide-label></mui-input>
           </div>
           <mui-code slot="footer">
-            &lt;mui-input label="Hide Label" hide-label&gt;&lt;mui-input&gt;
+            &lt;mui-input label="Hide Label" hide-label&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>
@@ -224,7 +224,7 @@ class storyInput extends HTMLElement {
             <mui-input label="Disabled" disabled></mui-input>
           </div>
           <mui-code slot="footer">
-            &lt;mui-input label="Disabled" disabled&gt;&lt;mui-input&gt;
+            &lt;mui-input label="Disabled" disabled&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>
@@ -240,12 +240,12 @@ class storyInput extends HTMLElement {
 
             &nbsp;&nbsp;&lt;mui-addon slot="before"&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-addon&gt;
+            &nbsp;&nbsp;&lt;/mui-addon&gt;
             <br />            
 
-            &lt;mui-input&gt;
+            &lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>
@@ -261,12 +261,12 @@ class storyInput extends HTMLElement {
 
             &nbsp;&nbsp;&lt;mui-addon slot="after"&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-addon&gt;
+            &nbsp;&nbsp;&lt;/mui-addon&gt;
             <br />            
 
-            &lt;mui-input&gt;
+            &lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>
@@ -414,7 +414,7 @@ class storyInput extends HTMLElement {
             <br />
             &nbsp;&nbsp;value="abcde1234"
             <br />
-            &gt;&lt;mui-input&gt;
+            &gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>

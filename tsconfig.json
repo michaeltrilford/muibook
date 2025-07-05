@@ -25,5 +25,6 @@
     // Enable output
     "noEmit": false
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/types/react/typed-elements", "src/types/react/wrapped-components"]
 }

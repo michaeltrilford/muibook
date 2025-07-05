@@ -350,7 +350,7 @@ class storyCards extends HTMLElement {
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-card-footer&gt;
+            &nbsp;&nbsp;&lt;/mui-card-footer&gt;
             <br />
             &lt;/mui-card&gt;
           </mui-code>

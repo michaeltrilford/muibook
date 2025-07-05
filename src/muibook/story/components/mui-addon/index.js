@@ -97,12 +97,12 @@ class storyAddon extends HTMLElement {
 
             &nbsp;&nbsp;&lt;mui-addon slot="before"&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-addon&gt;
+            &nbsp;&nbsp;&lt;/mui-addon&gt;
             <br />            
 
-            &lt;mui-input&gt;
+            &lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>
@@ -118,12 +118,12 @@ class storyAddon extends HTMLElement {
 
             &nbsp;&nbsp;&lt;mui-addon slot="after"&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-addon&gt;
+            &nbsp;&nbsp;&lt;/mui-addon&gt;
             <br />            
 
-            &lt;mui-input&gt;
+            &lt;/mui-input&gt;
             <br />
           </mui-code>
         </story-card>

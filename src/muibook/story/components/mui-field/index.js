@@ -131,9 +131,9 @@ class storyField extends HTMLElement {
           <mui-code slot="footer">
             &lt;mui-field label="Email"&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-input type="email" placeholder="you@example.com"&gt;&lt;mui-input&gt;
+            &nbsp;&nbsp;&lt;mui-input type="email" placeholder="you@example.com"&gt;&lt;/mui-input&gt;
             <br />
-            &lt;mui-field&gt;
+            &lt;/mui-field&gt;
             <br />
           </mui-code>
         </story-card>
@@ -145,9 +145,9 @@ class storyField extends HTMLElement {
           <mui-code slot="footer">
             &lt;mui-field label="Name" message="This field doesn't accept special characters"&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-input&gt;&lt;mui-input&gt;
+            &nbsp;&nbsp;&lt;mui-input&gt;&lt;/mui-input&gt;
             <br />
-            &lt;mui-field&gt;
+            &lt;/mui-field&gt;
             <br />
           </mui-code>
         </story-card>
