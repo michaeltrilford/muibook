@@ -35,7 +35,7 @@ class TypedElements extends HTMLElement {
       <story-template 
         title="Typed Elements"
         description="Directly type custom elements via JSX intrinsic elements augmentation."
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/types/react/typed-elements"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts"
       >
 
 
@@ -49,7 +49,6 @@ class TypedElements extends HTMLElement {
 
               <mui-v-stack space="var(--space-400)">
                 <mui-body size="large">This approach directly types custom elements by augmenting React's JSX IntrinsicElements, enabling use of your web components with typed props in JSX.</mui-body>
-                <mui-body size="large">It enhances developer experience with autocompletion, compile-time type checking, and cleaner JSX—bridging the gap between custom elements and React without additional wrappers.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
@@ -84,7 +83,7 @@ class TypedElements extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Typed Components" />
-              <figcaption slot="caption">types/typed-elements/index.d.ts</figcaption>
+              <figcaption slot="caption">types/typed-elements</figcaption>
             </mui-image>  
           </mui-grid>
 
@@ -92,11 +91,15 @@ class TypedElements extends HTMLElement {
           <mui-rule slot="footer"></mui-rule>
 
           <mui-code slot="footer">
+            <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts" target="_blank">👨‍💻 View file on Github</mui-link>
+            <br />
+            <br />
+            <br />
             // 🛠️ Define Typed Components
             <br />
             <br />
-            import&nbsp;*&nbsp;as&nbsp;React&nbsp;from&nbsp;"react";<br><br>
-            declare&nbsp;module&nbsp;"react"&nbsp;{<br>
+            import&nbsp;React&nbsp;from&nbsp;"react";<br><br>
+            declare&nbsp;global&nbsp;{<br>
             &nbsp;&nbsp;namespace&nbsp;JSX&nbsp;{<br>
             &nbsp;&nbsp;&nbsp;&nbsp;interface&nbsp;IntrinsicElements&nbsp;{<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mui-container":&nbsp;React.DetailedHTMLProps&lt;React.HTMLAttributes&lt;HTMLElement&gt;,&nbsp;HTMLElement&gt;&nbsp;&{<br>

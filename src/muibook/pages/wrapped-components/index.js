@@ -49,7 +49,6 @@ class WrappedComponents extends HTMLElement {
 
               <mui-v-stack space="var(--space-400)">
                 <mui-body size="large">This approach wraps a custom element in a React component, allowing you to define typed props and encapsulate logic using familiar React patterns like props, children, and event handling.</mui-body>
-                <mui-body size="large">It improves the developer experience with better autocompletion, compile-time type checking, and cleaner JSX syntax—bridging the gap between custom elements and the React ecosystem.</mui-body>
               </mui-v-stack>
 
              <mui-v-stack space="var(--space-300)">
@@ -65,13 +64,18 @@ class WrappedComponents extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Create Wrapped Component" />
-              <figcaption slot="caption">components/MuiContainer.tsx</figcaption>
+              <figcaption slot="caption">components/mui-container</figcaption>
             </mui-image> 
           </mui-grid>
 
           <mui-rule slot="footer"></mui-rule>
 
           <mui-code slot="footer">
+
+            <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts" target="_blank">👨‍💻 View file on Github</mui-link>
+            <br />
+            <br />
+            <br />
             // 🛠️ Define Typed Components
             <br />
             <br />
@@ -89,6 +93,10 @@ class WrappedComponents extends HTMLElement {
           <mui-rule slot="footer"></mui-rule>
 
           <mui-code slot="footer">
+            <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/wrapped-components/MuiContainer.tsx" target="_blank">👨‍💻 View file on Github</mui-link>
+            <br />
+            <br />
+            <br />
             // 🛠️ Create Wrapped Component
             <br />
             <br />
