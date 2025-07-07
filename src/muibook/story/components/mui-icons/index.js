@@ -346,25 +346,25 @@ class storyIcon extends HTMLElement {
 
         <story-card title="Icon Toggle: Default">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="primary">  
+            <mui-button variant="primary">  
               <mui-icon-toggle>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
             </mui-button>
-            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="secondary">  
+            <mui-button variant="secondary">  
               <mui-icon-toggle>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
             </mui-button>
-            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="tertiary">  
+            <mui-button variant="tertiary">  
               <mui-icon-toggle>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
             </mui-button>
-            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="attention">  
+            <mui-button variant="attention">  
               <mui-icon-toggle>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
@@ -373,7 +373,7 @@ class storyIcon extends HTMLElement {
           </mui-h-stack>
           <mui-code slot="footer">
             const btn = document.getElementById('btn');<br />
-            const toggle = document.getElementById('toggle');<br />
+            const toggle = btn.querySelector('mui-icon-toggle');<br />
             <br />
             btn.addEventListener('click', () =&gt; {<br />
             &nbsp;&nbsp;toggle.toggle = !toggle.toggle;<br />
@@ -382,7 +382,7 @@ class storyIcon extends HTMLElement {
             <br />
             <br />
             &lt;mui-button id="btn" variant="primary"&gt;<br />
-            &nbsp;&nbsp;&lt;mui-icon-toggle id="toggle"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-icon-toggle&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br />
             &nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br />
@@ -392,25 +392,25 @@ class storyIcon extends HTMLElement {
 
         <story-card title="Icon Toggle: Rotate">
           <mui-h-stack slot="body" space="var(--space-100)">
-            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="primary">  
+            <mui-button variant="primary">  
               <mui-icon-toggle rotate>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
             </mui-button>
-            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="secondary">  
+            <mui-button variant="secondary">  
               <mui-icon-toggle rotate>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
             </mui-button>
-            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="tertiary">  
+            <mui-button variant="tertiary">  
               <mui-icon-toggle rotate>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
             </mui-button>
-            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="attention">  
+            <mui-button variant="attention">  
               <mui-icon-toggle rotate>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
@@ -419,7 +419,7 @@ class storyIcon extends HTMLElement {
           </mui-h-stack>
           <mui-code slot="footer">
             const btn = document.getElementById('btn');<br />
-            const toggle = document.getElementById('toggle');<br />
+            const toggle = btn.querySelector('mui-icon-toggle');<br />
             <br />
             btn.addEventListener('click', () =&gt; {<br />
             &nbsp;&nbsp;toggle.toggle = !toggle.toggle;<br />
@@ -428,7 +428,7 @@ class storyIcon extends HTMLElement {
             <br />
             <br />
             &lt;mui-button id="btn" variant="primary"&gt;<br />
-            &nbsp;&nbsp;&lt;mui-icon-toggle id="toggle" rotate&gt;<br />
+            &nbsp;&nbsp;&lt;mui-icon-toggle rotate&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br />
             &nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br />
@@ -441,6 +441,18 @@ class storyIcon extends HTMLElement {
       </story-template>
 
     `;
+
+    const buttons = this.shadowRoot.querySelectorAll("mui-button");
+
+    buttons.forEach((btn) => {
+      const toggle = btn.querySelector("mui-icon-toggle");
+      if (!toggle) return;
+
+      btn.addEventListener("click", () => {
+        toggle.toggle = !toggle.toggle;
+        toggle.setAttribute("aria-pressed", toggle.toggle);
+      });
+    });
   }
 }
 

@@ -47,7 +47,7 @@ class compAgentUI extends HTMLElement {
               </mui-button>
             </mui-h-stack>
             <mui-h-stack space="var(--space-200)">
-              <mui-button variant="tertiary" onclick="this.querySelector('mui-icon-toggle').toggle ^= 1">
+              <mui-button variant="tertiary" id="submitBtn">
                 <mui-icon-toggle id="toggle" rotate>
                   <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
                   <mui-icon-stop slot="end"></mui-icon-stop>
@@ -185,6 +185,14 @@ class compAgentUI extends HTMLElement {
 
       </story-template>
     `;
+
+    const submitBtn = shadowRoot.querySelector("#submitBtn");
+    const toggle = submitBtn?.querySelector("mui-icon-toggle");
+
+    submitBtn?.addEventListener("click", () => {
+      toggle.toggle = !toggle.toggle;
+      toggle.setAttribute("aria-pressed", toggle.toggle);
+    });
   }
 }
 

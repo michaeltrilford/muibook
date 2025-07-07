@@ -210,7 +210,7 @@ class appNavbar extends HTMLElement {
       </app-navbar-menu>
 
       <app-navbar-toggle>
-        <mui-button variant="tertiary" onclick="this.querySelector('mui-icon-toggle').toggle ^= 1">
+        <mui-button variant="tertiary">
           <mui-icon-toggle rotate>
             <mui-icon-menu class="color-icon" slot="start"></mui-icon-menu>
             <mui-icon-close class="color-icon" slot="end"></mui-icon-close>
@@ -221,6 +221,14 @@ class appNavbar extends HTMLElement {
         <mui-link slot="home-link" data-close-menu link="#/home-page">muibook.com</mui-link>
       </app-navbar-toggle>
     `;
+
+    const btn = shadowRoot.querySelector("mui-button");
+    const toggle = shadowRoot.querySelector("mui-icon-toggle");
+
+    btn.addEventListener("click", () => {
+      toggle.toggle = !toggle.toggle;
+      toggle.setAttribute("aria-pressed", toggle.toggle);
+    });
 
     // Query elements
     this.menuIconEl = this.shadowRoot.querySelector("mui-button");
