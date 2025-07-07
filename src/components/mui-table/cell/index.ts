@@ -5,9 +5,21 @@ class MuiCell extends HTMLElement {
 
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  connectedCallback() {
     this.setAttribute("role", "cell");
-    const styles = /*css*/ `
+    this.render();
+  }
+
+  attributeChangedCallback() {
+    this.render();
+  }
+
+  render() {
+    this.shadowRoot!.innerHTML = /*html*/ `
+    <style>
     :host {
       display: flex;
       justify-content: space-between;
@@ -52,11 +64,8 @@ class MuiCell extends HTMLElement {
       width: 4.4rem;
       height: 4.4rem;
     }
-  `;
-
-    shadowRoot.innerHTML = /*html*/ `
-    <style>${styles}</style>
-    <slot></slot>
+    </style>
+     <slot></slot>
   `;
   }
 }

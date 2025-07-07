@@ -1,13 +1,34 @@
 class MuiCarouselController extends HTMLElement {
   private shadow: ShadowRoot;
+
   constructor() {
     super();
+    this.shadow = this.attachShadow({ mode: "open" });
+    this.handleTabChange = this.handleTabChange.bind(this);
+  }
+
+  connectedCallback() {
+    // Set default attribute if missing
     if (!this.hasAttribute("direction")) {
       this.setAttribute("direction", "horizontal");
     }
-    this.handleTabChange = this.handleTabChange.bind(this);
-    this.shadow = this.attachShadow({ mode: "open" });
 
+    // Render template and styles
+    this.render();
+
+    this.addEventListener("tab-change", this.handleTabChange);
+
+    // Show the initially active panel (based on tab-bar)
+    const tabBar = this.querySelector("tab-bar");
+    if (tabBar) {
+      const activeTab = tabBar.querySelector("tab-item[active]");
+      if (activeTab) {
+        this.updatePanels(activeTab.id);
+      }
+    }
+  }
+
+  render() {
     this.shadow.innerHTML = /*html*/ `
     <style>
       :host {
@@ -103,19 +124,6 @@ class MuiCarouselController extends HTMLElement {
       </div>
     </div>
   `;
-  }
-
-  connectedCallback() {
-    this.addEventListener("tab-change", this.handleTabChange);
-
-    // Show the initially active panel (based on tab-bar)
-    const tabBar = this.querySelector("tab-bar");
-    if (tabBar) {
-      const activeTab = tabBar.querySelector("tab-item[active]");
-      if (activeTab) {
-        this.updatePanels(activeTab.id);
-      }
-    }
   }
 
   handleTabChange(event: Event) {

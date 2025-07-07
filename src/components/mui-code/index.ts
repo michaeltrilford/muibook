@@ -6,11 +6,22 @@ class MuiCode extends HTMLElement {
 
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
 
-    // Set defaults
-    const size = this.getAttribute("size") || "x-small";
-    this.setAttribute("size", size);
+  connectedCallback() {
+    if (!this.hasAttribute("size")) {
+      this.setAttribute("size", "x-small");
+    }
+    this.render();
+  }
+
+  attributeChangedCallback() {
+    this.render();
+  }
+
+  render() {
+    if (!this.shadowRoot) return;
 
     const styles = /*css*/ `
       :host {
@@ -49,7 +60,7 @@ class MuiCode extends HTMLElement {
       }
 
     `;
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <code><slot></slot></code>
   `;

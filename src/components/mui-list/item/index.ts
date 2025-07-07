@@ -7,17 +7,13 @@ class MuiListItem extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+  }
+
+  connectedCallback() {
     this.setAttribute("role", "listitem");
-
-    // Set default attributes if they’re not provided
-    if (!this.hasAttribute("size")) {
-      this.setAttribute("size", "medium");
-    }
-
-    if (!this.hasAttribute("weight")) {
-      this.setAttribute("weight", "regular");
-    }
-
+    this.hasAttribute("size") || this.setAttribute("size", "medium");
+    this.hasAttribute("weight") || this.setAttribute("weight", "regular");
+    this.hasAttribute("variant") || this.setAttribute("variant", "default");
     this.render();
   }
 

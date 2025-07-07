@@ -4,11 +4,18 @@ class MuiBadge extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.render();
   }
 
   static get observedAttributes() {
     return ["variant"];
+  }
+
+  connectedCallback() {
+    if (!this.hasAttribute("variant")) {
+      this.setAttribute("variant", "neutral");
+    }
+    this.setAttribute("role", "status");
+    this.render();
   }
 
   attributeChangedCallback() {

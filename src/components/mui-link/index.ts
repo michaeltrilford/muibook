@@ -9,20 +9,61 @@ class MuiLink extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-
-    // Set defaults
-    const size = this.getAttribute("size") || "medium";
-    const weight = this.getAttribute("weight") || "regular";
-    this.setAttribute("size", size);
-    this.setAttribute("weight", weight);
   }
 
   async connectedCallback() {
-    if (!this.shadowRoot) return;
+    if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
+    if (!this.hasAttribute("weight")) this.setAttribute("weight", "regular");
+    if (!this.hasAttribute("variant")) this.setAttribute("variant", "default");
+
     await this.waitForPartMap();
+
+    this.render();
+
+    requestAnimationFrame(() => this.updateSlotState());
+  }
+
+  private updateSlotState() {
+    const shadow = this.shadowRoot!;
+    const slotDefault = shadow.querySelector("slot:not([name])") as HTMLSlotElement | null;
+    const slotBefore = shadow.querySelector('slot[name="before"]') as HTMLSlotElement | null;
+    const slotAfter = shadow.querySelector('slot[name="after"]') as HTMLSlotElement | null;
+
+    const hasAssignedContent = (slot: HTMLSlotElement | null): boolean =>
+      !!slot &&
+      slot
+        .assignedNodes({ flatten: true })
+        .some(
+          (node) =>
+            node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim())
+        );
+
+    const hasBefore = hasAssignedContent(slotBefore);
+    const hasAfter = hasAssignedContent(slotAfter);
+
+    this.classList.toggle("has-before", hasBefore);
+    this.classList.toggle("has-after", hasAfter);
+
+    const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
+
+    const iconOnly =
+      assignedNodes.length > 0 &&
+      assignedNodes.every((node) =>
+        node.nodeType === Node.ELEMENT_NODE
+          ? (node as HTMLElement).classList.contains("mui-icon") ||
+            (node as HTMLElement).tagName.toLowerCase() === "svg"
+          : !node.textContent?.trim()
+      );
+
+    this.toggleAttribute("icon-only", iconOnly);
+  }
+
+  render() {
+    if (!this.shadowRoot) return;
+
     const partMap = getPartMap("text", "spacing", "layout", "visual");
 
-    let html = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
     <style>
 
       :host { display: inline-flex; width: auto; text-align: initial }
@@ -331,52 +372,8 @@ class MuiLink extends HTMLElement {
       <slot name="after"></slot>
     </a>
     `;
-
-    this.shadowRoot.innerHTML = html;
-
-    // Wait for slot content to be assigned
-    await customElements.whenDefined("mui-link"); // optional, extra safety
-
-    requestAnimationFrame(() => {
-      const shadow = this.shadowRoot;
-      if (!shadow) return;
-
-      const slotDefault = shadow.querySelector("slot:not([name]") as HTMLSlotElement | null;
-      const slotBefore = shadow.querySelector('slot[name="before"]') as HTMLSlotElement | null;
-      const slotAfter = shadow.querySelector('slot[name="after"]') as HTMLSlotElement | null;
-
-      const hasAssignedContent = (slot: HTMLSlotElement | null): boolean => {
-        if (!slot) return false;
-        return slot.assignedNodes({ flatten: true }).some((node: Node) => {
-          return (
-            node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim())
-          );
-        });
-      };
-
-      const hasBefore = hasAssignedContent(slotBefore);
-      const hasAfter = hasAssignedContent(slotAfter);
-
-      this.classList.toggle("has-before", hasBefore);
-      this.classList.toggle("has-after", hasAfter);
-
-      const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
-
-      const iconOnly = assignedNodes.every((node: Node) => {
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          const el = node as HTMLElement;
-          return el.tagName.toLowerCase() === "svg" || el.classList.contains("mui-icon");
-        }
-        return node.nodeType === Node.TEXT_NODE && !node.textContent?.trim();
-      });
-
-      if (iconOnly) {
-        this.setAttribute("icon-only", "");
-      } else {
-        this.removeAttribute("icon-only");
-      }
-    });
   }
+
   waitForPartMap(): Promise<void> {
     return new Promise<void>((resolve) => {
       if (typeof getPartMap === "function") return resolve();

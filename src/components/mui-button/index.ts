@@ -362,7 +362,7 @@ class MuiButton extends HTMLElement {
       const shadow = this.shadowRoot;
       if (!shadow) return;
 
-      const slotDefault = shadow.querySelector("slot:not([name]") as HTMLSlotElement | null;
+      const slotDefault = shadow.querySelector("slot:not([name])") as HTMLSlotElement | null;
       const slotBefore = shadow.querySelector('slot[name="before"]') as HTMLSlotElement | null;
       const slotAfter = shadow.querySelector('slot[name="after"]') as HTMLSlotElement | null;
 

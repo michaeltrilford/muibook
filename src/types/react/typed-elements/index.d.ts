@@ -205,7 +205,7 @@ declare global {
         slot?: string;
         size?: MuiIconSize | string;
         variant?: "primary" | "secondary" | "tertiary" | "attention" | string;
-        style?: React.CSSProperties;
+        style?: React.CSSProperties & { [key: `--${string}`]: string | undefined };
         class?: string;
         part?: string;
       };
@@ -225,6 +225,7 @@ declare global {
 
       "mui-tab-bar": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         speed?: string;
+        controlsPosition?: "top" | "right" | "bottom" | "left" | "top-right" | "top-left" | "bottom-right" | "bottom-left";
       };
 
       // CAROUSEL
