@@ -210,16 +210,20 @@ class appNavbar extends HTMLElement {
       </app-navbar-menu>
 
       <app-navbar-toggle>
-        <mui-icon-toggle variant="tertiary" rotate>
-          <mui-icon-menu class="color-icon" slot="start"></mui-icon-menu>
-          <mui-icon-close class="color-icon" slot="end"></mui-icon-close>
-        </mui-icon-toggle>
+        <mui-button variant="tertiary" onclick="this.querySelector('mui-icon-toggle').toggle ^= 1">
+          <mui-icon-toggle rotate>
+            <mui-icon-menu class="color-icon" slot="start"></mui-icon-menu>
+            <mui-icon-close class="color-icon" slot="end"></mui-icon-close>
+          </mui-icon-toggle>
+        </mui-button>
+
+        
         <mui-link slot="home-link" data-close-menu link="#/home-page">muibook.com</mui-link>
       </app-navbar-toggle>
     `;
 
     // Query elements
-    this.menuIconEl = this.shadowRoot.querySelector("mui-icon-toggle");
+    this.menuIconEl = this.shadowRoot.querySelector("mui-button");
     this.navbarEl = this.shadowRoot.getElementById("mobile");
 
     // Helper method to update tabindex

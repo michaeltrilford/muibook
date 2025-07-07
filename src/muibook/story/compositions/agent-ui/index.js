@@ -47,10 +47,12 @@ class compAgentUI extends HTMLElement {
               </mui-button>
             </mui-h-stack>
             <mui-h-stack space="var(--space-200)">
-              <mui-icon-toggle rotate variant="tertiary">
-                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end"></mui-icon-stop>
-              </mui-icon-toggle>
+              <mui-button variant="tertiary" onclick="this.querySelector('mui-icon-toggle').toggle ^= 1">
+                <mui-icon-toggle id="toggle" rotate>
+                  <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
+                  <mui-icon-stop slot="end"></mui-icon-stop>
+                </mui-icon-toggle>
+              </mui-button>
             </mui-h-stack>
           </mui-h-stack>
         </mui-v-stack>

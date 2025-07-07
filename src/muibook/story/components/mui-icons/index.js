@@ -105,18 +105,19 @@ class storyIcon extends HTMLElement {
         description: "Use to slot in the default icon shown before the toggle is activated.",
       },
       {
-        name: "slot=&#8220;aend&#8221;",
+        name: "slot=&#8220;end&#8221;",
         type: "slot (named)",
         options: "mui-icon-[name]",
         default: "",
         description: "Use to slot in the icon shown after the toggle is activated.",
       },
       {
-        name: "variant",
-        type: "string",
-        options: "primary, secondary, tertiary, attention",
-        default: "primary",
-        description: "Describe the intent or mood of the toggle.",
+        name: "toggle",
+        type: "boolean",
+        options: "toggle",
+        default: "-",
+        description:
+          "Toggle is meant to be controlled with state to switch the visible icon, typically used inside a button.",
       },
       {
         name: "rotate",
@@ -343,150 +344,97 @@ class storyIcon extends HTMLElement {
 
           </story-card>
 
-          <story-card title="Icon Toggle: Default" description="Transition between two icons with a scale effect." >
-            <mui-grid col="1fr" space="var(--space-400)" slot="body">
-              <story-icon-grid>            
-                <mui-icon-toggle slot="body">
-                  <mui-icon-add slot="start"></mui-icon-add>
-                  <mui-icon-subtract slot="end"></mui-icon-subtract>
-                </mui-icon-toggle>
-                <mui-body size="x-small" weight="bold" class="title" slot="body">Add / Subtract</mui-body>
-                <mui-code slot="footer">
-                  &lt;mui-icon-toggle&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;
-                  <br />
-                  &lt;/mui-icon-toggle&gt;
-                </mui-code>
-              </story-icon-grid>
+        <story-card title="Icon Toggle: Default">
+          <mui-h-stack slot="body" space="var(--space-100)">
+            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="primary">  
+              <mui-icon-toggle>
+                <mui-icon-add slot="start"></mui-icon-add>
+                <mui-icon-subtract slot="end"></mui-icon-subtract>
+              </mui-icon-toggle>
+            </mui-button>
+            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="secondary">  
+              <mui-icon-toggle>
+                <mui-icon-add slot="start"></mui-icon-add>
+                <mui-icon-subtract slot="end"></mui-icon-subtract>
+              </mui-icon-toggle>
+            </mui-button>
+            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="tertiary">  
+              <mui-icon-toggle>
+                <mui-icon-add slot="start"></mui-icon-add>
+                <mui-icon-subtract slot="end"></mui-icon-subtract>
+              </mui-icon-toggle>
+            </mui-button>
+            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="attention">  
+              <mui-icon-toggle>
+                <mui-icon-add slot="start"></mui-icon-add>
+                <mui-icon-subtract slot="end"></mui-icon-subtract>
+              </mui-icon-toggle>
+            </mui-button>
+          </mui-h-stack>
+          <mui-code slot="footer">
+            const btn = document.getElementById('btn');<br />
+            const toggle = document.getElementById('toggle');<br />
+            <br />
+            btn.addEventListener('click', () =&gt; {<br />
+            &nbsp;&nbsp;toggle.toggle = !toggle.toggle;<br />
+            &nbsp;&nbsp;toggle.setAttribute('aria-pressed', toggle.toggle);<br />
+            });
+            <br />
+            <br />
+            &lt;mui-button id="btn" variant="primary"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-icon-toggle id="toggle"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br />
+            &lt;/mui-button&gt;
+          </mui-code>
+        </story-card>
 
-              <story-icon-grid>            
-                <mui-icon-toggle variant="secondary" slot="body">
-                  <mui-icon-add slot="start"></mui-icon-add>
-                  <mui-icon-subtract slot="end"></mui-icon-subtract>
-                </mui-icon-toggle>
-                <mui-body size="x-small" weight="bold" class="title" slot="body">Add / Subtract</mui-body>
-                <mui-code slot="footer">
-                  &lt;mui-icon-toggle variant="secondary"&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;
-                  <br />
-                  &lt;/mui-icon-toggle&gt;
-                </mui-code>
-              </story-icon-grid>
-
-              <story-icon-grid>            
-                <mui-icon-toggle variant="tertiary" slot="body">
-                  <mui-icon-add slot="start"></mui-icon-add>
-                  <mui-icon-subtract slot="end"></mui-icon-subtract>
-                </mui-icon-toggle>
-                <mui-body size="x-small" weight="bold" class="title" slot="body">Add / Subtract</mui-body>
-                <mui-code slot="footer">
-                  &lt;mui-icon-toggle variant="tertiary"&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;
-                  <br />
-                  &lt;/mui-icon-toggle&gt;
-                </mui-code>
-              </story-icon-grid>
-
-              <story-icon-grid>            
-                <mui-icon-toggle variant="attention" slot="body">
-                  <mui-icon-add slot="start"></mui-icon-add>
-                  <mui-icon-subtract slot="end"></mui-icon-subtract>
-                </mui-icon-toggle>
-                <mui-body size="x-small" weight="bold" class="title" slot="body">Add / Subtract</mui-body>
-                <mui-code slot="footer">
-                  &lt;mui-icon-toggle variant="attention"&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;
-                  <br />
-                  &lt;/mui-icon-toggle&gt;
-                </mui-code>
-              </story-icon-grid>
-
-            </mui-grid> 
-          </story-card>
-
-          <story-card title="Icon Toggle: Rotate" description="Transition between two icons with a rotation effect." >
-            <mui-grid col="1fr" space="var(--space-400)" slot="body">
-              <story-icon-grid>            
-                <mui-icon-toggle rotate slot="body">
-                  <mui-icon-add slot="start"></mui-icon-add>
-                  <mui-icon-subtract slot="end"></mui-icon-subtract>
-                </mui-icon-toggle>
-                <mui-body size="x-small" weight="bold" class="title" slot="body">Add / Subtract</mui-body>
-                <mui-code slot="footer">
-                  &lt;mui-icon-toggle rotate&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;
-                  <br />
-                  &lt;/mui-icon-toggle&gt;
-                </mui-code>
-              </story-icon-grid>
-
-              <story-icon-grid>            
-                <mui-icon-toggle rotate variant="secondary" slot="body">
-                  <mui-icon-add slot="start"></mui-icon-add>
-                  <mui-icon-subtract slot="end"></mui-icon-subtract>
-                </mui-icon-toggle>
-                <mui-body size="x-small" weight="bold" class="title" slot="body">Add / Subtract</mui-body>
-                <mui-code slot="footer">
-                  &lt;mui-icon-toggle rotate variant="secondary"&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;
-                  <br />
-                  &lt;/mui-icon-toggle&gt;
-                </mui-code>
-              </story-icon-grid>
-
-              <story-icon-grid>            
-                <mui-icon-toggle rotate variant="tertiary" slot="body">
-                  <mui-icon-add slot="start"></mui-icon-add>
-                  <mui-icon-subtract slot="end"></mui-icon-subtract>
-                </mui-icon-toggle>
-                <mui-body size="x-small" weight="bold" class="title" slot="body">Add / Subtract</mui-body>
-                <mui-code slot="footer">
-                  &lt;mui-icon-toggle rotate variant="tertiary"&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;
-                  <br />
-                  &lt;/mui-icon-toggle&gt;
-                </mui-code>
-              </story-icon-grid>
-
-              <story-icon-grid>            
-                <mui-icon-toggle rotate variant="attention" slot="body">
-                  <mui-icon-add slot="start"></mui-icon-add>
-                  <mui-icon-subtract slot="end"></mui-icon-subtract>
-                </mui-icon-toggle>
-                <mui-body size="x-small" weight="bold" class="title" slot="body">Add / Subtract</mui-body>
-                <mui-code slot="footer">
-                  &lt;mui-icon-toggle rotate variant="attention"&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;
-                  <br />
-                  &nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;
-                  <br />
-                  &lt;/mui-icon-toggle&gt;
-                </mui-code>
-              </story-icon-grid>
-            </mui-grid> 
-          </story-card>
+        <story-card title="Icon Toggle: Rotate">
+          <mui-h-stack slot="body" space="var(--space-100)">
+            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="primary">  
+              <mui-icon-toggle rotate>
+                <mui-icon-add slot="start"></mui-icon-add>
+                <mui-icon-subtract slot="end"></mui-icon-subtract>
+              </mui-icon-toggle>
+            </mui-button>
+            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="secondary">  
+              <mui-icon-toggle rotate>
+                <mui-icon-add slot="start"></mui-icon-add>
+                <mui-icon-subtract slot="end"></mui-icon-subtract>
+              </mui-icon-toggle>
+            </mui-button>
+            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="tertiary">  
+              <mui-icon-toggle rotate>
+                <mui-icon-add slot="start"></mui-icon-add>
+                <mui-icon-subtract slot="end"></mui-icon-subtract>
+              </mui-icon-toggle>
+            </mui-button>
+            <mui-button onclick="this.querySelector('mui-icon-toggle').toggle ^= 1" variant="attention">  
+              <mui-icon-toggle rotate>
+                <mui-icon-add slot="start"></mui-icon-add>
+                <mui-icon-subtract slot="end"></mui-icon-subtract>
+              </mui-icon-toggle>
+            </mui-button>
+          </mui-h-stack>
+          <mui-code slot="footer">
+            const btn = document.getElementById('btn');<br />
+            const toggle = document.getElementById('toggle');<br />
+            <br />
+            btn.addEventListener('click', () =&gt; {<br />
+            &nbsp;&nbsp;toggle.toggle = !toggle.toggle;<br />
+            &nbsp;&nbsp;toggle.setAttribute('aria-pressed', toggle.toggle);<br />
+            });
+            <br />
+            <br />
+            &lt;mui-button id="btn" variant="primary"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-icon-toggle id="toggle" rotate&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br />
+            &lt;/mui-button&gt;
+          </mui-code>
+        </story-card>
 
         </mui-v-stack>
 

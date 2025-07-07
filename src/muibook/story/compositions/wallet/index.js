@@ -12,57 +12,6 @@ class compWallet extends HTMLElement {
       }
     `;
 
-    const AgentPrompt = /*html*/ `
-
-      <style>
-        .canvas {
-          background: var(--surface);
-          padding: var(--space-400);
-          margin-top: calc(var(--space-400) * -1);
-          margin-bottom: calc(var(--space-400) * -1);
-          margin-left: calc(var(--space-400) * -1);
-          margin-right: calc(var(--space-400) * -1);
-        }
-
-        .prompt-input { 
-          padding: var(--space-400);
-          padding-bottom: var(--space-200);
-          background: var(--surface-elevated-alpha);
-          border: var(--border-thin);
-          border-color: var(--form-default-border-color);
-          border-radius: var(--radius-300);
-        }
-
-        .prompt-toolbar::part(justify-content) {
-          justify-content: space-between;
-        }
-      </style>
-
-      <div class="canvas">
-        <mui-v-stack class="prompt-input" space="var(--space-200)">
-          <mui-input label="Default" hide-label placeholder="Reply to Mui..."></mui-input>
-
-          <mui-h-stack class="prompt-toolbar" space="var(--space-200)">
-            <mui-h-stack space="var(--space-000)">
-              <mui-icon-toggle rotate variant="tertiary">
-                <mui-icon-add slot="start"></mui-icon-add>
-                <mui-icon-close slot="end"></mui-icon-close>
-              </mui-icon-toggle>
-              <mui-button variant="tertiary" >
-                <mui-icon-globe></mui-icon-globe>
-              </mui-button>
-            </mui-h-stack>
-            <mui-h-stack space="var(--space-200)">
-              <mui-icon-toggle rotate variant="tertiary">
-                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-h-stack>
-          </mui-h-stack>
-        </mui-v-stack>
-      </div>
-    `;
-
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 

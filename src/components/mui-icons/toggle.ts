@@ -1,63 +1,75 @@
 class MuiIconToggle extends HTMLElement {
   static get observedAttributes() {
-    return ["variant"];
+    return ["toggle", "rotate"];
   }
 
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-
-    this.addEventListener("click", () => {
-      this.toggleAttribute("toggle");
-
-      // Blur the button after click to remove persistent focus
-      if (!this.shadowRoot) return;
-      const button = this.shadowRoot.querySelector("mui-button") as HTMLElement | null;
-      if (button) {
-        button.blur();
-        requestAnimationFrame(() => {
-          button.focus({ preventScroll: true });
-        });
-      }
-    });
-
-    this.addEventListener("keydown", (e) => {
-      if (e.code === "Space") {
-        e.preventDefault();
-        this.click(); // triggers toggle on Space key press
-      }
-    });
   }
 
   connectedCallback() {
-    if (!this.hasAttribute("variant")) {
-      this.setAttribute("variant", "primary");
-    }
-    this.render();
+    this.classList.add("mui-icon");
+
+    if (!this.shadowRoot!.innerHTML) this.render();
+
+    // Set size="small" on current children
+    this.applySmallSize();
+
+    // Also react to future slot changes
+    const startSlot = this.shadowRoot!.querySelector('slot[name="start"]') as HTMLSlotElement;
+    const endSlot = this.shadowRoot!.querySelector('slot[name="end"]') as HTMLSlotElement;
+
+    startSlot.addEventListener("slotchange", () => this.applySmallSize());
+    endSlot.addEventListener("slotchange", () => this.applySmallSize());
   }
 
-  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
-    if (name === "variant" && oldValue !== newValue) {
-      this.render();
-    }
+  attributeChangedCallback() {
+    // No re-render needed, attributes drive styling via CSS
+  }
+
+  get toggle() {
+    return this.hasAttribute("toggle");
+  }
+  set toggle(val: boolean) {
+    this.toggleAttribute("toggle", !!val);
+  }
+
+  get rotate() {
+    return this.hasAttribute("rotate");
+  }
+  set rotate(val: boolean) {
+    this.toggleAttribute("rotate", !!val);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* PRIVATE: force size="small" on all assigned elements               */
+  /* ------------------------------------------------------------------ */
+  private applySmallSize() {
+    const slots = this.shadowRoot!.querySelectorAll("slot");
+    slots.forEach((slot) => {
+      slot.assignedElements({ flatten: true }).forEach((el) => {
+        // Always overwrite – user cannot override
+        (el as HTMLElement).setAttribute("size", "small");
+      });
+    });
   }
 
   render() {
-    const variant = this.getAttribute("variant") || "primary";
-    if (!this.shadowRoot) return;
-
-    this.shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot!.innerHTML = /*html*/ `
       <style>
         :host {
           display: inline-flex;
+          position: relative;
+          height: 2.4rem;
+          width: 2.4rem;
         }
 
         ::slotted(*) {
           position: absolute;
-          top: auto;
-          left: auto;
           transform-origin: 50% 50%;
           transition: var(--speed-200) ease-in-out;
+          fill: currentColor; 
         }
 
         ::slotted([slot="start"]) {
@@ -76,20 +88,13 @@ class MuiIconToggle extends HTMLElement {
           transform: scale(1);
         }
 
-        :host([rotate]) ::slotted([slot="end"]) {
-          transform: scale(0) rotate(0deg);
-        }
-
-        :host([toggle][rotate]) ::slotted([slot="end"]) {
+        :host([rotate][toggle]) ::slotted([slot="end"]) {
           transform: scale(1) rotate(-360deg);
         }
-
       </style>
 
-      <mui-button ${variant ? `variant="${variant}"` : ""}>
-        <slot name="start"></slot>
-        <slot name="end"></slot>
-      </mui-button>
+      <slot name="start"></slot>
+      <slot name="end"></slot>
     `;
   }
 }
