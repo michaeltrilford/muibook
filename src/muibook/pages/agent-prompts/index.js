@@ -98,8 +98,8 @@ class AgentPromptsPage extends HTMLElement {
           &nbsp;&nbsp;&#123; role: &quot;user&quot;, content: &quot;[layout] Create a medium container&quot; &#125;,<br>
           &nbsp;&nbsp;&#123; role: &quot;assistant&quot;, content: &quot;&lt;mui-container medium&gt;...&lt;/mui-container&gt;&quot; &#125;,<br>
           &nbsp;&nbsp;<br>
-          &nbsp;&nbsp;&#46;&#46;&#46; View the <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/agent/prompts.ts" target="_blank" rel="noopener noreferrer">Github for full example</mui-link> &#46;&#46;&#46; <br>
-            <br>
+          &nbsp;&nbsp;&#46;&#46;&#46; View the <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/agent/prompts/index.ts" target="_blank" rel="noopener noreferrer">Github for full example</mui-link> &#46;&#46;&#46; <br>
+          <br>
           ];<br>
           </mui-code>
 

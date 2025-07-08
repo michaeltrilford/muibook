@@ -35,7 +35,7 @@ class AgentKeywordsPage extends HTMLElement {
       <story-template 
         title="Agent Keywords"
         description="Structured terms for parsing intent or triggering logic."
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/agent/keywords" 
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/agent/keywords/index.ts" 
       >
 
 
@@ -92,6 +92,8 @@ class AgentKeywordsPage extends HTMLElement {
           &nbsp;&nbsp;body: [&quot;body&quot;, &quot;text&quot;, &quot;paragraph&quot;, &quot;copy&quot;],<br>
           &nbsp;&nbsp;list: [&quot;list&quot;, &quot;items&quot;, &quot;ul&quot;, &quot;li&quot;]<br>
           &#125;;<br>
+          &nbsp;&nbsp;&#46;&#46;&#46; View the <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/agent/keywords/index.ts" target="_blank" rel="noopener noreferrer">Github for full example</mui-link> &#46;&#46;&#46; <br>
+          <br>
           </mui-code>
 
         </page-card>
