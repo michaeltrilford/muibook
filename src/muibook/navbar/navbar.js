@@ -258,8 +258,9 @@ class appNavbar extends HTMLElement {
           this.updateTabIndexForMenuLinks(this.navbarEl, false);
 
           // 3. Reset the menu icon toggle state
-          this.menuIconEl.toggle = false;
-          this.menuIconEl.removeAttribute("toggle"); // <-- clear the attribute too if necessary
+          toggle.toggle = false;
+          toggle.removeAttribute("aria-pressed");
+          toggle.removeAttribute("toggle");
         }
       });
     });
@@ -277,8 +278,9 @@ class appNavbar extends HTMLElement {
           this.updateTabIndexForMenuLinks(this.navbarEl, false);
 
           // 3. Reset the menu icon toggle state
-          this.menuIconEl.toggle = false;
-          this.menuIconEl.removeAttribute("toggle"); // <-- clear the attribute too if necessary
+          toggle.toggle = false;
+          toggle.removeAttribute("aria-pressed");
+          toggle.removeAttribute("toggle");
         }
       });
     });
