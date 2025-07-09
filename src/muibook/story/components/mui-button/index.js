@@ -59,6 +59,13 @@ class storyButton extends HTMLElement {
         description:
           "Controlled trust-based customisation for modifying internal aspects of a button. <mui-link href='/#/text-part-selectors' size='x-small'>Learn more</mui-link>",
       },
+      {
+        name: "aria-label",
+        type: "string",
+        default: "",
+        description:
+          "Provides an accessible name for the button when no visible text is present. Required for icon-only buttons to ensure screen reader compatibility.",
+      },
     ];
 
     const rows = propItems
