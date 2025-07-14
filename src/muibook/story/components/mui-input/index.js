@@ -136,8 +136,7 @@ class storyInput extends HTMLElement {
         title="Input"
         description="An input component for capturing user text, styled for consistency across your UI."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts"
-
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts"
+        guides="https://guides.muibook.com/input"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1"
         accessibility="
           A label is required for screen reader support to describe the input’s purpose.;

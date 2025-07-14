@@ -93,6 +93,8 @@ class storySwitch extends HTMLElement {
         title="Switch"
         description="A component that allows users to switch a setting on or off with immediate effect."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts"
+        guides="https://guides.muibook.com/switch"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=147-1003&t=FSv3FEahG8VQW1FZ-1"
         accessibility="
           A label is required and applied as aria-label to describe the switch’s purpose.;
           Uses role='switch' and updates aria-checked for assistive tech.;

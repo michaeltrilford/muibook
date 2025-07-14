@@ -74,6 +74,7 @@ class storyImage extends HTMLElement {
         title="Image"
         description="Displays an image with a caption using named slots for clear structure and accessibility."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-image/index.ts"
+        guides="https://guides.muibook.com/image"
         accessibility="
           Use meaningful alt text that describes the image’s purpose.;
           Use alt=&#8220;&#8221; for decorative images that don’t convey information.;

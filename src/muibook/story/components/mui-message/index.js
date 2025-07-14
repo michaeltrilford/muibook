@@ -214,6 +214,7 @@ class storyMessage extends HTMLElement {
           title="Variant: Neutral" 
           description="A calm, balanced tone for non-critical, persistent messages." 
           usage="Use on settings or system pages to display non-urgent information.; Suitable for background status like sync confirmation or feature explanations."
+          usageLink="https://guides.muibook.com/message"
           accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
         >
           <mui-message heading="Sync Settings" slot="body" variant="neutral">
@@ -240,6 +241,7 @@ class storyMessage extends HTMLElement {
           title="Variant: Positive" 
           description="The Positive state conveys successful actions, achievements, or confirmations, fostering a sense of accomplishment and satisfaction." 
           usage="Indicate successful form submissions or completed tasks.; Acknowledge user achievements or milestones."
+          usageLink="https://guides.muibook.com/message"
           accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
         >
           <mui-message heading="Report Ready for Download" slot="body" variant="positive">
@@ -267,6 +269,7 @@ class storyMessage extends HTMLElement {
           title="Variant: Info" 
           description="The Info state provides informative messages that help users understand system status or feature updates, guiding them without urgency." 
           usage="Use to announce new features | enhancements | system changes.; Appropriate for onboarding tips or contextual help."
+          usageLink="https://guides.muibook.com/message"
           accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
         >
           <mui-message heading="New Feature Available" slot="body" variant="info">
@@ -294,6 +297,7 @@ class storyMessage extends HTMLElement {
           title="Variant: Warning"
           description="The Warning state alerts users to potential issues that may require attention, helping prevent errors or misunderstandings." 
           usage="Notify users of actions that could lead to undesirable outcomes; like unsaved changes.; Warn about system limitations or upcoming expirations."
+          usageLink="https://guides.muibook.com/message"
           accessibility="ARIA-live of ASSERTIVE is set on this variant.; Role of ALERT is set on this variant."
         >
           <mui-message heading="Password Expiry Warning" slot="body" variant="warning">
@@ -321,6 +325,7 @@ class storyMessage extends HTMLElement {
           title="Variant: Attention"
           description="The Attention state demands immediate user focus, highlighting critical issues that require prompt action." 
           usage='Alert users to urgent problems; such as system errors or security breaches.; Use for time-sensitive notifications that impact user experience.'
+          usageLink="https://guides.muibook.com/message"
           accessibility="ARIA-live of ASSERTIVE is set on this variant.; Role of ALERT is set on this variant."
         >
           <mui-message heading="Scheduled Maintenance" slot="body" variant="attention">

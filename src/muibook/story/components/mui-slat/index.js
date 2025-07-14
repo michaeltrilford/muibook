@@ -73,6 +73,7 @@ class storySlat extends HTMLElement {
         accessibility="
           mui-slat uses role='table'
         "
+        guides="https://guides.muibook.com/slat"
       >
 
       <mui-v-stack space="var(--space-700)">

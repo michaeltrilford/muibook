@@ -68,6 +68,10 @@ export default defineConfig({
         "components/mui-icons/up-arrow": path.resolve(__dirname, "src/components/mui-icons/up-arrow.ts"),
         "components/mui-icons/up-chevron": path.resolve(__dirname, "src/components/mui-icons/up-chevron.ts"),
         "components/mui-icons/warning": path.resolve(__dirname, "src/components/mui-icons/warning.ts"),
+        "components/mui-icons/down-arrow-circle": path.resolve(
+          __dirname,
+          "src/components/mui-icons/down-arrow-circle.ts"
+        ),
         // IMAGE
         "components/mui-image": path.resolve(__dirname, "src/components/mui-image"),
         "components/mui-input": path.resolve(__dirname, "src/components/mui-input"),

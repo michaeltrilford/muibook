@@ -170,6 +170,7 @@ class storyIcon extends HTMLElement {
         title="Icons"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-311&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-icons"
+        guides="https://guides.muibook.com/icons"
       >
 
         <mui-v-stack space="var(--space-700)">
@@ -311,6 +312,11 @@ class storyIcon extends HTMLElement {
                 <mui-icon-stop slot="body"></mui-icon-stop>
                 <mui-code slot="footer">mui-icon-stop</mui-code>
               </story-icon-grid>
+
+              <story-icon-grid center>              
+                <mui-icon-down-arrow-circle slot="body"></mui-icon-down-arrow-circle>
+                <mui-code slot="footer">mui-icon-down-arrow-circle</mui-code>
+              </story-icon-grid>              
 
 
 

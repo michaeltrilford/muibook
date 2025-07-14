@@ -216,6 +216,10 @@
       "import": "./dist/esm/components/mui-icons/warning/index.js",
       "types": "./dist/types/components/mui-icons/warning/index.d.ts"
     },
+    "./mui-icons/down-arrow-circle": {
+      "import": "./dist/esm/components/mui-icons/down-arrow-circle/index.js",
+      "types": "./dist/types/components/mui-icons/down-arrow-circle/index.d.ts"
+    },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"

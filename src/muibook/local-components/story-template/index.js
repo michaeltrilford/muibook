@@ -39,17 +39,32 @@ class StoryTemplate extends HTMLElement {
 
     const githubLink = this.getAttribute("github");
     const githubContent = githubLink
-      ? /*html*/ `<mui-link target="_blank" href="${githubLink}" rel="noopener" variant="secondary">Github<github-mark slot="after"></github-mark></mui-link>`
+      ? /*html*/ `
+        <mui-responsive breakpoint="1000">
+          <mui-link slot="showAbove" target="_blank" href="${githubLink}" rel="noopener" variant="secondary">Github<github-mark slot="after"></github-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${githubLink}" rel="noopener" variant="secondary"><github-mark></github-mark></mui-link>
+        </mui-responsive>
+      `
       : "";
 
     const figmaLink = this.getAttribute("figma");
     const figmaContent = figmaLink
-      ? /*html*/ `<mui-link target="_blank" href="${figmaLink}" rel="noopener" variant="secondary">Figma<figma-mark slot="after"></figma-mark></mui-link>`
+      ? /*html*/ `
+        <mui-responsive breakpoint="1000">
+         <mui-link slot="showAbove" target="_blank" href="${figmaLink}" rel="noopener" variant="secondary">Figma<figma-mark slot="after"></figma-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${figmaLink}" rel="noopener" variant="secondary"><figma-mark></figma-mark></mui-link>
+        </mui-responsive>
+      `
       : "";
 
     const guidesLink = this.getAttribute("guides");
     const guidesContent = guidesLink
-      ? /*html*/ `<mui-link target="_blank" href="${guidesLink}" rel="noopener" variant="secondary">Guides<guides-mark slot="after"></guides-mark></mui-link>`
+      ? /*html*/ `
+        <mui-responsive breakpoint="1000">
+          <mui-link slot="showAbove" target="_blank" href="${guidesLink}" rel="noopener" variant="secondary">Guides<guides-mark slot="after"></guides-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" icon-only href="${guidesLink}" rel="noopener" variant="secondary"><guides-mark></guides-mark></mui-link>
+        </mui-responsive>
+      `
       : "";
 
     try {
@@ -78,30 +93,30 @@ class StoryTemplate extends HTMLElement {
           <mui-v-stack space="var(--space-600)">
             <mui-v-stack space="var(--space-400)">
               <mui-responsive breakpoint="768">
-                <mui-v-stack slot="showBelow" space="var(--space-300)">
-                  <mui-heading size="1" weight="800">${title}</mui-heading>
+                <mui-h-stack slot="showBelow" alignX="space-between" alignY="center">
+                  <mui-heading size="2" level="1">${title}</mui-heading>
                   <mui-h-stack space="var(--space-100)">
-                  ${demoContent}
-                  ${websiteContent}
-                  ${guidesContent}
-                  ${figmaContent}
-                  ${githubContent}
+                    ${demoContent}
+                    ${websiteContent}
+                    ${guidesContent}
+                    ${figmaContent}
+                    ${githubContent}
                   </mui-h-stack>
-                  </mui-v-stack>
-                  <mui-h-stack slot="showAbove" alignX="space-between" alignY="center">
-                  <mui-heading size="1" weight="800">${title}</mui-heading>
+                </mui-h-stack>
+                <mui-h-stack slot="showAbove" alignX="space-between" alignY="center">
+                  <mui-heading size="1"level="1">${title}</mui-heading>
                   <mui-h-stack space="var(--space-100)">
-                  ${demoContent}
-                  ${websiteContent}
-                  ${guidesContent}
-                  ${figmaContent}
-                  ${githubContent}
+                    ${demoContent}
+                    ${websiteContent}
+                    ${guidesContent}
+                    ${figmaContent}
+                    ${githubContent}
                   </mui-h-stack>
-                  </mui-h-stack>
-                  </mui-responsive>
-                  ${description}
-                  </mui-v-stack>
-                  ${accessibilitySection}
+                </mui-h-stack>
+              </mui-responsive>
+              ${description}
+            </mui-v-stack>
+            ${accessibilitySection}
             <slot name="message"></slot>
           </mui-v-stack>
           <div>

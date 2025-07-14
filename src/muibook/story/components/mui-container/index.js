@@ -79,6 +79,7 @@ class storyContainer extends HTMLElement {
         title="Container" 
         description="The Container is a layout helper to provide the base page structure for a web experience."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-container/index.ts"
+        guides="https://guides.muibook.com/container"
       >
 
         <mui-v-stack space="var(--space-700)">

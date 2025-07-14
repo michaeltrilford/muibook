@@ -99,6 +99,7 @@ class storyAccordion extends HTMLElement {
         title="Accordion"
         description="The Accordion is a component stores content underneath a collapsible heading, revealing it through progressive disclosure in the user interface."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-accordion"
+        guides="https://guides.muibook.com/accordion"
         accessibility="
           Accordion summary uses role='button' and tabindex='0' for keyboard access.;
           Supports Enter and Space keys for toggling.;
@@ -292,6 +293,7 @@ class storyAccordion extends HTMLElement {
           title="Detail Space: None" 
           description="In accordion-block, you are able to turn off the space within the detail section."
           usage="Ideal for using the accordion block to contain navigation items; Support full-bleed content such as images or documents."
+          usageLink="https://guides.muibook.com/accordion"
         >
           <mui-accordion-block heading="Design Tokens" detail-space="none" slot="body" style="width: 26rem;">
             <mui-v-stack slot="detail" space="var(--space-000)" style="padding: var(--space-100)">

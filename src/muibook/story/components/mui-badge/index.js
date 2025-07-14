@@ -83,6 +83,8 @@ class storyBadge extends HTMLElement {
         title="Badge"
         description="Badges are non-interactive and indicate counts or statuses."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts"
+        guides="https://guides.muibook.com/badge"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1108&t=FSv3FEahG8VQW1FZ-1"
       >
 
       <mui-v-stack space="var(--space-700)">

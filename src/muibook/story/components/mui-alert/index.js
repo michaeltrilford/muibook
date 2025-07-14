@@ -123,6 +123,7 @@ class storyAlert extends HTMLElement {
             title="Success" 
             description="Indicates that an operation or action has been completed successfully." 
             usage="Form submissions that have been processed without errors.;Successful data updates or saves.;Confirmation of completed tasks or actions."
+            usageLink="https://guides.muibook.com/alert"
             accessibility="ARIA-live of POLITE is set on this variant."
           >
             <div slot="body">
@@ -141,6 +142,7 @@ class storyAlert extends HTMLElement {
             title="Info"
             description="Provides general information or updates that are helpful but not critical."
             usage="Announcing new features or updates.; Providing contextual information or tips.; Informing users about non-urgent system statuses."
+            usageLink="https://guides.muibook.com/alert"
             accessibility="ARIA-live of POLITE is set on this variant."
           >
             <div slot="body">
@@ -177,6 +179,7 @@ class storyAlert extends HTMLElement {
             title="Error"
             description="Indicates that an error has occurred, requiring user attention or action."
             usage="Form validation errors.; System failures or exceptions.; Failed operations or transactions."
+            usageLink="https://guides.muibook.com/alert"
             accessibility="ARIA-live of ASSERTIVE is set on this variant."
           >
             <div slot="body">

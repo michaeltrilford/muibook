@@ -114,6 +114,7 @@ class storyButton extends HTMLElement {
         description="Buttons are essential UI elements that trigger actions when clicked or tapped. They should be easily recognisable, provide clear feedback, and be accessible to all users."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-570&t=fSFYVey9aCoE5oQa-1" 
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-button/index.ts"
+        guides="https://guides.muibook.com/button"
       >
 
       <mui-v-stack space="var(--space-700)">
@@ -146,43 +147,8 @@ class storyButton extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Icon Slots">
-
-          <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
-            <mui-button 
-              variant="primary">
-                Add New
-                <mui-icon-add slot="before"></mui-icon-add>
-            </mui-button>
-            <mui-button 
-              variant="primary">
-                More
-                <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
-            </mui-button>
-          </mui-v-stack>
-          
-          <mui-code slot="footer">
-            &lt;mui-button variant="primary"&gt;
-            <br />
-            &nbsp;&nbsp;Add New
-            <br>
-            &nbsp;&nbsp;&lt;mui-icon-add slot="before"&gt;&lt;/mui-icon-add&gt;
-            <br />
-            &lt;/mui-button&gt;
-            <br>
-            <br>
-            &lt;mui-button variant="primary"&gt;
-            <br />
-            &nbsp;&nbsp;More
-            <br>
-            &nbsp;&nbsp;&lt;mui-icon-add slot="after"&gt;&lt;/mui-icon-add&gt;
-            <br />
-            &lt;/mui-button&gt;
-          </mui-code>
-        </story-card>
-
         <story-card title="Secondary">
-        <mui-button variant="secondary" slot="body">Cancel</mui-button>
+          <mui-button variant="secondary" slot="body">Cancel</mui-button>
           <mui-code slot="footer">
             &lt;mui-button variant="secondary"&gt;
             <br />
@@ -214,7 +180,43 @@ class storyButton extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Button Group">
+        <story-card 
+          title="Header: Button-Group" 
+          description="Example of actions that are present at the top of a page or card use."
+          usage='
+            Use small size icon when it is paired with text or the icon-only action is used in a button group;
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
+          '
+          usageLink="https://guides.muibook.com/button"
+        >
+          <mui-button-group right slot="body">
+            <mui-button variant="secondary">
+              Import
+              <mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron>
+              </mui-button>
+            <mui-button variant="secondary">
+              Export
+              <mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-button variant="primary">
+                New Report
+              </mui-button>
+          </mui-button-group>
+          <mui-code slot="footer">
+            &lt;mui-button-group right&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;...&lt;/mui-button&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-button variant="primary"&gt;...&lt;/mui-button&gt;
+            <br />
+            &lt;/mui-button-group&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card 
+          title="Footer: Button-Group" 
+          description="Example of actions in a card, dialog or drawer."
+        >
           <mui-button-group right slot="body">
             <mui-button variant="secondary">Cancel</mui-button>
             <mui-button variant="primary">Submit</mui-button>
@@ -230,7 +232,54 @@ class storyButton extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Primary Icon-Only">
+        <story-card title="Icon (Before & After)"
+          usage='
+            Use small size icon when it is paired with text or the icon-only action is used in a button group;
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
+          '
+          usageLink="https://guides.muibook.com/button"
+        >
+
+          <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
+            <mui-button 
+              variant="primary">
+                Add New
+                <mui-icon-add slot="before" size="x-small"></mui-icon-add>
+            </mui-button>
+            <mui-button 
+              variant="primary">
+                More
+                <mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron>
+            </mui-button>
+          </mui-v-stack>
+          
+          <mui-code slot="footer">
+            &lt;mui-button variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;Add New
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-add slot="before" size="x-small"&gt;&lt;/mui-icon-add&gt;
+            <br />
+            &lt;/mui-button&gt;
+            <br>
+            <br>
+            &lt;mui-button variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;More
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-add slot="after" size="x-small"&gt;&lt;/mui-icon-add&gt;
+            <br />
+            &lt;/mui-button&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card title="Primary: Icon-Only"
+          usage='
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
+            Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          '
+          usageLink="https://guides.muibook.com/button"
+        >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-button variant="primary">
               <mui-icon-add></mui-icon-add>
@@ -260,7 +309,13 @@ class storyButton extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Secondary Icon-Only">
+        <story-card title="Secondary: Icon-Only"
+          usage='
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
+            Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          '
+          usageLink="https://guides.muibook.com/button"
+        >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-button variant="secondary">
               <mui-icon-add variant="secondary"></mui-icon-add>
@@ -290,7 +345,14 @@ class storyButton extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Tertiary Icon-Only">
+        <story-card 
+          title="Tertiary: Icon-Only" 
+          usage='
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
+            Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          '
+          usageLink="https://guides.muibook.com/button"
+        >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-button variant="tertiary">
               <mui-icon-add></mui-icon-add>
@@ -320,7 +382,13 @@ class storyButton extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Attention Icon-Only">
+        <story-card title="Attention: Icon-Only"
+          usage='
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
+            Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          '
+          usageLink="https://guides.muibook.com/button"
+        >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-button variant="attention">
               <mui-icon-add></mui-icon-add>

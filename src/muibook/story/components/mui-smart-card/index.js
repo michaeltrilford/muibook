@@ -143,8 +143,9 @@ class storySmartCard extends HTMLElement {
 
       <story-template title="Smart Card" 
         description="A dynamic card component for wallets, dashboards, spend tools, or reward programs—designed to represent digital or physical cards in modern, digital-first experiences."
-        figma="" 
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=440-1250&t=FSv3FEahG8VQW1FZ-1" 
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-smart-card/index.ts"
+        guides="https://guides.muibook.com/smart-card"
       >
 
       <mui-v-stack space="var(--space-700)">
@@ -248,7 +249,9 @@ class storySmartCard extends HTMLElement {
             Set the logo-height to an appropriate size no larger than 126px; 
             If your SVG is at intended height, then logo-height isn't required; 
             When using a 2x/3x PNGs and resize with logo-height
-          ">
+          "
+          usageLink="https://guides.muibook.com/smart-card"
+        >
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"

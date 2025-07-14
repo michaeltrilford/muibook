@@ -321,20 +321,18 @@ class MuiButton extends HTMLElement {
       
       :host(.has-after.has-before) button {
         grid-template-columns: auto 1fr auto;
-        padding-right: var(--space-300);
-        padding-left: var(--space-300);
+        padding-right: var(--action-after-slot-padding);
+        padding-left: var(--action-before-slot-padding);
       }
 
       :host(.has-after) button {
         grid-template-columns: 1fr auto;
-        padding-right: var(--space-300);
-        padding-left: var(--space-400);
+        padding-right: var(--action-after-slot-padding);
       }
 
       :host(.has-before) button {
         grid-template-columns: auto 1fr;
-        padding-right: var(--space-400);
-        padding-left: var(--space-300);
+        padding-left: var(--action-before-slot-padding);
       }
 
     </style>

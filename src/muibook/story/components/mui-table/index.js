@@ -372,6 +372,7 @@ class storyTable extends HTMLElement {
         title="Table"
         description="This system uses custom elements designed for flexibility and styling control. It leverages CSS Grid to give developers precise control over column layout, spacing, and responsiveness, while maintaining alignment with screen reader expectations."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table"
+        guides="https://guides.muibook.com/table"
         accessibility="
           mui-table uses role='table';
           mui-row-group uses role='rowgroup';

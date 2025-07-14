@@ -183,6 +183,25 @@ npm publish
 - Use the preview scripts to verify production builds before deployment
 - Follow semantic versioning for releases
 
+#### Adding new components
+
+When adding new components, there are a couple of areas in the build we need to update.
+
+1. vite.config.ts
+   Add the new component’s entry point to the build configuration so it’s bundled into the final output.
+
+2. package.json
+   Ensure the new component is added to the exports field so it can be imported by consumers. If you’re using a files field, include the component path there too.
+
+3. src/index.ts (Central export file)
+   Add an export \* from "./components/..."; line pointing to your new component’s file or directory. This makes it available through your library’s main entry point.
+
+4. src/muibook/index.ts: (Demo Site)
+   If the component relies on global styles or JS utilities for behavior or preview (e.g., for documentation or dev environments), make sure relevant styles or setup files are imported here.
+
+🔍 Note:
+If the component uses an internal index.ts to re-export multiple parts (e.g., mui-icons/index.ts), you only need to reference the directory in your central export:
+
 ### Slot Implementation Approach (MUI Design System)
 
 When implementing slots in MUI components, we use a consistent approach for styling and interaction:

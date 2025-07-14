@@ -297,6 +297,7 @@ class storyCarousel extends HTMLElement {
         title="Carousel"
         description="A carousel component with tab-based navigation, enabling users to switch between views or content sections with ease."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-carousel"
+        guides="https://guides.muibook.com/carousel"
         figma=""
         accessibility="
           Left/Right arrows, Home and End keys let keyboard users navigate between carousel items.; 
@@ -359,7 +360,8 @@ class storyCarousel extends HTMLElement {
             Internal padding is required.;
             The var(--carousel-tab-offset) is available to help with control spacing - though, not required.;
             You will need knowledge of CSS to add your specific custom content.
-          "  
+          "
+          usageLink="https://guides.muibook.com/carousel"
         >
           <mui-carousel-controller slot="body">
             <mui-tab-bar slot="controls">

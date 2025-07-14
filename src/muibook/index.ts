@@ -35,6 +35,7 @@ import "../components/mui-icons/toggle";
 import "../components/mui-icons/up-arrow";
 import "../components/mui-icons/up-chevron";
 import "../components/mui-icons/warning";
+import "../components/mui-icons/down-arrow-circle";
 import "../components/mui-link";
 import "../components/mui-button";
 import "../components/mui-button-group";

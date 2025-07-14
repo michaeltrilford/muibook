@@ -576,7 +576,9 @@ html[data-theme="dark"] {
   --action-attention-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color-focus);
   --action-attention-border-disabled: var(--stroke-size-200) var(--stroke-solid)
     var(--action-attention-border-color-disabled);
-  --action-padding: var(--space-200) var(--space-500);
+  --action-padding: var(--space-200) calc(var(--space-300) + var(--space-100));
+  --action-before-slot-padding: var(--space-300);
+  --action-after-slot-padding: var(--space-300);
   --action-icon-only-padding: var(--space-000);
   --action-radius: var(--radius-100);
   --action-font-size: var(--text-font-size);

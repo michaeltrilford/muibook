@@ -2,7 +2,7 @@ import "../../images/github-mark";
 
 class storyCard extends HTMLElement {
   static get observedAttributes() {
-    return ["title", "description", "usage", "accessibility", "github"];
+    return ["title", "description", "usage", "usageLink", "accessibility", "github"];
   }
 
   constructor() {
@@ -70,6 +70,14 @@ class storyCard extends HTMLElement {
         gap: var(--space-200);
         padding: var(--space-200) var(--space-300);
       }
+
+      .details {
+        text-transform: uppercase;
+        --heading-font-size-600: var(--font-size-50);
+        margin-top: var(--space-400); 
+        margin-bottom: var(--space-050);
+      }
+
     `;
 
     const title = this.getAttribute("title") || "";
@@ -95,6 +103,7 @@ class storyCard extends HTMLElement {
 
     // Handle usage list
     const usageItems = this.getAttribute("usage");
+    const usageLink = this.getAttribute("usageLink");
     let usageArray = [];
 
     try {
@@ -104,19 +113,47 @@ class storyCard extends HTMLElement {
       usageArray = usageItems ? usageItems.split(";") : [];
     }
 
-    const usageContent = usageArray.length
-      ? /*html*/ `
-        <mui-heading size="6" level="3" style="margin-top: var(--space-300); margin-bottom: var(--space-050);">Usage details</mui-heading>
+    const usageContent =
+      usageArray.length || usageLink
+        ? /*html*/ `
+      <mui-heading class="details" size="6" level="3">Usage details</mui-heading>
+      ${
+        usageArray.length
+          ? /*html*/ `
         <mui-list as="ul" style="max-width: 65ch;">
           ${usageArray
             .map(
-              (usage) =>
-                /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${usage.trim()}</mui-list-item>`
+              (usage) => /*html*/ `
+              <mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">
+                ${usage.trim()}
+              </mui-list-item>`
             )
             .join("")}
         </mui-list>
       `
-      : "";
+          : ""
+      }
+      ${
+        usageLink
+          ? /*html*/ `
+        <mui-link
+          href="${usageLink}"
+          target="_blank"
+          size="small"
+          rel="noopener noreferrer"
+          weight="bold"
+          style="
+            margin-top: var(--space-200);
+            margin-bottom: var(--space-200);
+          "
+        >
+          View UX guidelines ↗
+        </mui-link>
+      `
+          : ""
+      }
+    `
+        : "";
 
     // Handle accessibility list
     const accessibilityItems = this.getAttribute("accessibility");
@@ -134,7 +171,7 @@ class storyCard extends HTMLElement {
 
     const accessibilityContent = accessibilityArray.length
       ? /*html*/ `
-    <mui-heading size="6" level="3" style="margin-top: var(--space-300); margin-bottom: var(--space-050);">Accessibility details</mui-heading>
+    <mui-heading class="details" size="6" level="3">Accessibility details</mui-heading>
     <mui-list as="ul" style="max-width: 65ch;">
       ${accessibilityArray
         .map(

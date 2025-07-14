@@ -50,6 +50,7 @@ export * from "./components/mui-icons/toggle";
 export * from "./components/mui-icons/up-arrow";
 export * from "./components/mui-icons/up-chevron";
 export * from "./components/mui-icons/warning";
+export * from "./components/mui-icons/down-arrow-circle";
 
 // Layout
 export * from "./components/mui-stack/hstack";

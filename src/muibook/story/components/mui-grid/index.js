@@ -104,6 +104,7 @@ class storyGrid extends HTMLElement {
         title="Grid"
         description="Layout component to enable grid layouts"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-grid/index.ts"
+        guides="https://guides.muibook.com/grid"
       >
 
       <mui-v-stack space="var(--space-700)">

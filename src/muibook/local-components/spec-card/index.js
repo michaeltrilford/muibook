@@ -20,6 +20,13 @@ class specCard extends HTMLElement {
         padding: 0;
       }
 
+      .details {
+        text-transform: uppercase;
+        --heading-font-size-600: var(--font-size-50);
+        margin-top: var(--space-400); 
+        margin-bottom: var(--space-050);
+      }
+
     `;
 
     const title = this.getAttribute("title") || "";
@@ -56,7 +63,7 @@ class specCard extends HTMLElement {
 
     const usageContent = usageArray.length
       ? /*html*/ `
-        <mui-heading size="6" level="3" style="margin-top: var(--space-300); margin-bottom: var(--space-050);">Usage details</mui-heading>
+        <mui-heading class="details" size="6" level="3">Usage details</mui-heading>
         <mui-list as="ul" style="max-width: 65ch;">
           ${usageArray
             .map(
@@ -84,7 +91,7 @@ class specCard extends HTMLElement {
 
     const accessibilityContent = accessibilityArray.length
       ? /*html*/ `
-    <mui-heading size="6" level="3" style="margin-top: var(--space-300); margin-bottom: var(--space-050);">Accessibility details</mui-heading>
+    <mui-heading class="details" size="6" level="3">Accessibility details</mui-heading>
     <mui-list as="ul" style="max-width: 65ch;">
       ${accessibilityArray
         .map(

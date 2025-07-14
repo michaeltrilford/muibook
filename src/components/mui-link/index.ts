@@ -130,7 +130,7 @@ class MuiLink extends HTMLElement {
         text-align: inherit;
         width: 100%;
         text-decoration: none;
-        padding: var(--space-200) var(--space-500);
+        padding: var(--action-padding);
         border-radius: var(--action-radius);
         font-size: var(--action-font-size);
         font-weight: var(--action-font-weight);
@@ -344,21 +344,17 @@ class MuiLink extends HTMLElement {
       }
 
       :host(.has-after.has-before[variant]) a {
-        padding-right: var(--space-300);
-        padding-left: var(--space-300);
+        padding-right: var(--action-after-slot-padding);
+        padding-left: var(--action-before-slot-padding);
       }
 
       :host(.has-after[variant]) a {
-        padding-right: var(--space-300);
-        padding-left: var(--space-400);
+        padding-right: var(--action-after-slot-padding);
       }
 
       :host(.has-before[variant]) a {
-        padding-right: var(--space-400);
-        padding-left: var(--space-300);
+        padding-left: var(--action-before-slot-padding);
       }
-
-
 
     </style>
 

@@ -148,6 +148,7 @@ class storyList extends HTMLElement {
         title="List"
         description="The component defines an ordered or unordered list."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-list"
+        guides="https://guides.muibook.com/list"
       >
 
       <mui-v-stack space="var(--space-700)">

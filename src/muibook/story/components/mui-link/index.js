@@ -135,6 +135,7 @@ class storyLink extends HTMLElement {
         description="The mui-link defines a hyperlink, which is used to link from one page to another."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-663&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-link/index.ts"
+        guides="https://guides.muibook.com/link"
       >
 
       <mui-v-stack space="var(--space-700)">
@@ -156,7 +157,7 @@ class storyLink extends HTMLElement {
           </mui-responsive>
         </spec-card>
 
-        <story-card title="Sizes">
+        <story-card title="Sizes" description="Link sizes should match the surrounding body text size when nested within a paragraph.">
 
             <div slot="body">
               <mui-v-stack space="var(--space-500)">
@@ -228,54 +229,6 @@ class storyLink extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Icon Slots / Link Style">
-
-          <mui-v-stack slot="body" space="var(--space-400)" alignX="start">
-
-            <mui-link>
-              Add New
-              <mui-icon-add slot="before" size="x-small"></mui-icon-add>
-            </mui-link>
-
-            <mui-link>
-              Learn More
-              <mui-icon-right-chevron slot="after" size="x-small"></mui-icon-right-chevron>
-            </mui-link>
-
-          </mui-v-stack>
-          
-          <mui-code slot="footer">
-            &lt;mui-button variant="primary"&gt;
-            <br />
-            &nbsp;&nbsp;Add New
-            <br>
-            &nbsp;&nbsp;&lt;mui-icon-add 
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;slot="before" 
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;size="x-small"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;/mui-icon-add&gt;
-            <br />
-            &lt;/mui-button&gt;
-            <br>
-            <br>
-            &lt;mui-button variant="primary"&gt;
-            <br />
-            &nbsp;&nbsp;More
-            <br>
-            &nbsp;&nbsp;&lt;mui-icon-right-chevron 
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;slot="after"
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;size="x-small"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;/mui-icon-right-chevron&gt;
-            <br />
-            &lt;/mui-button&gt;
-          </mui-code>
-        </story-card>
-
         <story-card title="Primary Link">
           <div slot="body">
             <mui-link target="_blank" variant="primary">Fork Github</mui-link>
@@ -312,45 +265,112 @@ class storyLink extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Icon Slots / Button Style">
+        <story-card 
+          title="Icon: Link (Before & After)"
+          usage='
+            Use small size icon when it is paired with text or the icon-only action is used in a button group;
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
+          '
+          usageLink="https://guides.muibook.com/link"        
+        >
 
-          <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
+          <mui-v-stack slot="body" space="var(--space-400)" alignX="start">
 
-            <mui-link 
-              variant="primary">
-                Add New
-                <mui-icon-add slot="before"></mui-icon-add>
+            <mui-link>
+              Download
+              <mui-icon-down-arrow-circle slot="before" size="x-small"></mui-icon-down-arrow-circle>
             </mui-link>
 
-            <mui-link 
-              variant="primary">
-                More
-                <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
+            <mui-link>
+              View more
+              <mui-icon-right-chevron slot="after" size="x-small"></mui-icon-right-chevron>
             </mui-link>
 
           </mui-v-stack>
           
           <mui-code slot="footer">
-            &lt;mui-button variant="primary"&gt;
+            &lt;mui-link&gt;
             <br />
-            &nbsp;&nbsp;Add New
+            &nbsp;&nbsp;Download
             <br>
-            &nbsp;&nbsp;&lt;mui-icon-add slot="before"&gt;&lt;/mui-icon-add&gt;
+            &nbsp;&nbsp;&lt;mui-icon-down-arrow-circle
             <br />
-            &lt;/mui-button&gt;
-            <br>
-            <br>
-            &lt;mui-button variant="primary"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;slot="before" 
             <br />
-            &nbsp;&nbsp;More
-            <br>
-            &nbsp;&nbsp;&lt;mui-icon-down-chevron slot="after"&gt;&lt;/mui-icon-down-chevron&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;size="x-small"&gt;
             <br />
-            &lt;/mui-button&gt;
+            &nbsp;&nbsp;&lt;/mui-icon-down-arrow-circle&gt;
+            <br />
+            &lt;/mui-link&gt;
+            <br>
+            <br>
+            &lt;mui-link&gt;
+            <br />
+            &nbsp;&nbsp;View more
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-right-chevron 
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;slot="after"
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;size="x-small"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;/mui-icon-right-chevron&gt;
+            <br />
+            &lt;/mui-link&gt;
           </mui-code>
         </story-card>
 
-        <story-card title="Primary Icon-Only">
+        <story-card 
+          title="Icon: Button (Before & After)"
+          usage='
+            Use small size icon when it is paired with text or the icon-only action is used in a button group;
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
+          '  
+        >
+
+          <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
+
+            <mui-link 
+              variant="primary">
+                Download
+                <mui-icon-down-arrow-circle slot="before" size="x-small"></mui-icon-down-arrow-circle>
+            </mui-link>
+
+            <mui-link 
+              variant="primary">
+                View more
+                <mui-icon-right-chevron slot="after" size="x-small"></mui-icon-right-chevron>
+            </mui-link>
+
+          </mui-v-stack>
+          
+          <mui-code slot="footer">
+            &lt;mui-link variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;Download
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-down-arrow-circle slot="before" size="x-small"&gt;&lt;/mui-icon-down-arrow-circle&gt;
+            <br />
+            &lt;/mui-link&gt;
+            <br>
+            <br>
+            &lt;mui-link variant="primary"&gt;
+            <br />
+            &nbsp;&nbsp;View more
+            <br>
+            &nbsp;&nbsp;&lt;mui-icon-right-chevron slot="after" size="x-small"&gt;&lt;/mui-icon-right-chevron&gt;
+            <br />
+            &lt;/mui-link&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card 
+          title="Primary: Icon-Only"
+          usage='
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
+            Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          '  
+        >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-link variant="primary" >
               <mui-icon-add></mui-icon-add>
@@ -380,7 +400,13 @@ class storyLink extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Secondary Icon-Only">
+        <story-card 
+          title="Secondary: Icon-Only"
+          usage='
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
+            Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          '
+        >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-link variant="secondary" >
               <mui-icon-add variant="secondary" size="small"></mui-icon-add>
@@ -410,7 +436,13 @@ class storyLink extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Tertiary Icon-Only">
+        <story-card 
+          title="Tertiary: Icon-Only"
+          usage='
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
+            Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          '  
+        >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-link variant="tertiary" >
               <mui-icon-add></mui-icon-add>
@@ -440,7 +472,13 @@ class storyLink extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Attention Icon-Only">
+        <story-card 
+          title="Attention: Icon-Only"
+          usage='
+            Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
+            Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          '
+        >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-link variant="attention" >
               <mui-icon-add></mui-icon-add>

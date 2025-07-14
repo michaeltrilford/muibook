@@ -95,6 +95,7 @@ class storyField extends HTMLElement {
         description="The mui-field component only renders a validation message if the message attribute is set. Showing/hiding the message is controlled by the form logic, or application state. This keeps mui-field simple, declarative, and reactive to the attributes it’s given."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-field/index.ts"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=112-620&t=GMqx21isUVAMpLJp-1"
+        guides="https://guides.muibook.com/field"
         accessibility="
           A label is required for screen reader support to describe the input’s purpose.;
           If hide-label is used, the label is visually hidden but accessible via aria-label.;
@@ -327,6 +328,7 @@ class storyField extends HTMLElement {
             Grouped but semantically separate: While it’s next to the input, it’s not part of the input’s value;
             Validation usually targets primary fields like text, email, number — not auxiliary UI.
           "
+          usageLink="https://guides.muibook.com/field"
 
         >
           <!-- Change here: remove onclick, add data-toggle attribute -->

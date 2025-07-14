@@ -70,6 +70,7 @@ class storyCode extends HTMLElement {
         title="Code"
         description="The component defines a code view."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-code/index.ts"
+        guides="https://guides.muibook.com/code"
       >
 
       <mui-v-stack space="var(--space-700)">
