@@ -325,7 +325,8 @@ class storyLink extends HTMLElement {
           usage='
             Use small size icon when it is paired with text or the icon-only action is used in a button group;
             Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
-          '  
+          '
+          usageLink="https://guides.muibook.com/link"
         >
 
           <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
@@ -369,7 +370,8 @@ class storyLink extends HTMLElement {
           usage='
             Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
             Use small size icon when it is paired with text or the icon-only action is used in a button group.
-          '  
+          '
+          usageLink="https://guides.muibook.com/link"  
         >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-link variant="primary" >
@@ -406,6 +408,7 @@ class storyLink extends HTMLElement {
             Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
             Use small size icon when it is paired with text or the icon-only action is used in a button group.
           '
+          usageLink="https://guides.muibook.com/link"    
         >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-link variant="secondary" >
@@ -441,7 +444,8 @@ class storyLink extends HTMLElement {
           usage='
             Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
             Use small size icon when it is paired with text or the icon-only action is used in a button group.
-          '  
+          '
+          usageLink="https://guides.muibook.com/link"    
         >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-link variant="tertiary" >
@@ -478,6 +482,7 @@ class storyLink extends HTMLElement {
             Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
             Use small size icon when it is paired with text or the icon-only action is used in a button group.
           '
+          usageLink="https://guides.muibook.com/link"    
         >
           <mui-h-stack slot="body" space="var(--space-100)">
             <mui-link variant="attention" >
