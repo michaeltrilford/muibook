@@ -15,7 +15,7 @@ class DesignGuidelines extends HTMLElement {
 
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-      <story-template title="UX Guidelines" description="Access the UX Guidelines in browser or direct within Figma, powered by <mui-link href='https://gurusuite.xyz/home'>Guru Guides</mui-link>." guides="https://guides.muibook.com">
+      <story-template title="Guidelines" description="Access the UX Guidelines in browser or direct within Figma, powered by <mui-link href='https://gurusuite.xyz/home'>Guru Guides</mui-link>." guides="https://guides.muibook.com">
         <mui-v-stack space="var(--space-700)">
           <page-banner-browser></page-banner-browser>
           <page-banner></page-banner>    

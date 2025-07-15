@@ -96,13 +96,13 @@ class appNavbar extends HTMLElement {
       <app-navbar-group id="resources" groupname="Resources">
         <mui-body class="first" weight="bold">Get Started</mui-body>
         <app-navbar-link link="#/create-mui-app" title="Create App"></app-navbar-link>
-        <mui-body class="first" weight="bold">Theming</mui-body>
-        <app-navbar-link link="#/base-theme" title="Base Theme"></app-navbar-link>
-        <app-navbar-link link="#/multi-brand-theme" title="Multi-Brand Theme"></app-navbar-link>
         <mui-body weight="bold">Design</mui-body>
         <app-navbar-link link="#/design-guidelines" title="UX Guidelines"></app-navbar-link>
-        <app-navbar-link link="#/muikit" title="Figma MUI Kit"></app-navbar-link>
-        <app-navbar-link link="#/muiplay" title="Mui Playground"></app-navbar-link>
+        <app-navbar-link link="#/muikit" title="Mui Kit"></app-navbar-link>
+        <app-navbar-link link="#/muiplay" title="Muiplay"></app-navbar-link>
+        <mui-body weight="bold">Theming</mui-body>
+        <app-navbar-link link="#/base-theme" title="Base Theme"></app-navbar-link>
+        <app-navbar-link link="#/multi-brand-theme" title="Multi-Brand Theme"></app-navbar-link>
         <mui-body weight="bold">React Helpers</mui-body>
         <app-navbar-link link="#/typed-elements" title="Typed Elements"></app-navbar-link>
         <app-navbar-link link="#/wrapped-components" title="Wrapped Components"></app-navbar-link>
