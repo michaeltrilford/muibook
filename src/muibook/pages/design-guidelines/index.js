@@ -13,27 +13,12 @@ class DesignGuidelines extends HTMLElement {
     
     `;
 
-    const figmaContent = /*html*/ `
-      <mui-v-stack space="var(--space-200)" class="panel">
-        <mui-heading size="4" level="4">Figma Plugin</mui-heading>  
-        <mui-body size="medium">Install via <mui-link size="medium" weight="bold" href="https://www.figma.com/community/plugin/1471341082690554711/guru-guides" target="_blank">Figma</mui-link> and login to access MUI Guidelines in Figma.</mui-body>
-      </mui-v-stack>
-    `;
-    const websiteContent = /*html*/ `
-      <mui-v-stack space="var(--space-200)" class="panel">
-        <mui-heading size="4" level="4">Website</mui-heading>
-        <mui-body size="medium">Visit <mui-link size="medium" weight="bold" href="https://guides.muibook.com" target="_blank">guides.muibook.com</mui-link> and view Mui Guides in-browser.</mui-body>
-      </mui-v-stack>
-    `;
-
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-      <story-template title="Design Guidelines" guides="https://guides.muibook.com">
+      <story-template title="UX Guidelines" description="Access the UX Guidelines in browser or direct within Figma, powered by <mui-link href='https://gurusuite.xyz/home'>Guru Guides</mui-link>." guides="https://guides.muibook.com">
         <mui-v-stack space="var(--space-700)">
-          <mui-v-stack space="var(--space-500)">
-            <page-banner-browser></page-banner-browser>
-            <page-banner></page-banner>
-          </mui-v-stack>        
+          <page-banner-browser></page-banner-browser>
+          <page-banner></page-banner>    
         </mui-v-stack>
       </story-template>
     `;

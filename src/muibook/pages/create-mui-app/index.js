@@ -33,7 +33,7 @@ class CreateMuiApp extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Create Mui App"
+        title="Create App"
         description="Build with MUI’s Web Components — lightweight, React-free, framework-agnostic."
         demo="https://create.muibook.com"
         github="https://github.com/michaeltrilford/create-mui-app"
