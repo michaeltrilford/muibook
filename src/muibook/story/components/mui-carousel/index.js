@@ -647,7 +647,7 @@ class storyCarousel extends HTMLElement {
             <br />
             &lt;mui-carousel-controller&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-tab-bar slot="controls"&gt;
+            &nbsp;&nbsp;&lt;mui-tab-bar slot="controls" controlsPosition="bottom-right"&gt;
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&#36;{carouselTabItems}
             <br />
