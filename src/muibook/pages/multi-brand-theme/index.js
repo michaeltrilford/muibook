@@ -33,7 +33,7 @@ class MultiBrandTheme extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Multi-Brand Theme"
+        title="Multi-Brand"
         description="Connect alternative brands via the design tokens."
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
