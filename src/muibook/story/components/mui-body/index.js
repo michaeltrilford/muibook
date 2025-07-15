@@ -118,7 +118,7 @@ class storyBody extends HTMLElement {
         <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Import">
-            <mui-code slot="footer" size="small">
+            <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-body";<br>
             </mui-code>
           </spec-card>
@@ -140,7 +140,7 @@ class storyBody extends HTMLElement {
             <mui-body>Risus Mollis Dapibus</mui-body>
           </div>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-body&gt; ... &lt;/mui-body&gt;
           </mui-code>
 
@@ -169,7 +169,7 @@ class storyBody extends HTMLElement {
               </mui-v-stack>
             </div>
 
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-body size="x-small"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body size="small"&gt; ... &lt;/mui-body&gt;
@@ -200,7 +200,7 @@ class storyBody extends HTMLElement {
               </mui-v-stack>
             </div>
 
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-body variant="success"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body variant="warning"&gt; ... &lt;/mui-body&gt;
@@ -229,7 +229,7 @@ class storyBody extends HTMLElement {
               </mui-v-stack>
             </div>
 
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
 
               &lt;style&gt;
                 <br>

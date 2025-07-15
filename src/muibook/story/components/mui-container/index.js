@@ -85,7 +85,7 @@ class storyContainer extends HTMLElement {
         <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Import">
-            <mui-code slot="footer" size="small">
+            <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-container";<br>
             </mui-code>
           </spec-card>
@@ -105,7 +105,7 @@ class storyContainer extends HTMLElement {
             <mui-container small slot="body">
               <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
             </mui-container>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-container small&gt;...&lt;/mui-container&gt;
             </mui-code>
           </story-card>
@@ -114,7 +114,7 @@ class storyContainer extends HTMLElement {
           <mui-container medium slot="body">
             <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
           </mui-container>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-container medium&gt;...&lt;/mui-container&gt;
             </mui-code>
           </story-card>
@@ -123,7 +123,7 @@ class storyContainer extends HTMLElement {
             <mui-container large slot="body">
               <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
             </mui-container>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-container large&gt;...&lt;/mui-container&gt;
             </mui-code>
           </story-card>
@@ -132,7 +132,7 @@ class storyContainer extends HTMLElement {
             <mui-container fluid slot="body">
               <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
             </mui-container>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-container fluid&gt;...&lt;/mui-container&gt;
             </mui-code>
           </story-card>
@@ -141,7 +141,7 @@ class storyContainer extends HTMLElement {
             <mui-container small center slot="body">
               <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
             </mui-container>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-container center&gt;...&lt;/mui-container&gt;
             </mui-code>
           </story-card>

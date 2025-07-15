@@ -113,7 +113,7 @@ class storyMessage extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
       
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scalable>
             import "@muibook/components/mui-message";<br>
           </mui-code>
         </spec-card>
@@ -135,7 +135,7 @@ class storyMessage extends HTMLElement {
           accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
         >
           <mui-message slot="body"></mui-message>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-message&gt;...&lt;/mui-message&gt;
           </mui-code>
         </story-card>
@@ -147,7 +147,7 @@ class storyMessage extends HTMLElement {
           <mui-message heading="Message heading" slot="body">
             <mui-body>This is an informational message about updates.</mui-body>
           </mui-message>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-message heading="Message heading"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-body&gt;...&lt;/mui-body&gt;
@@ -168,7 +168,7 @@ class storyMessage extends HTMLElement {
             </mui-list>
           </mui-message>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-message heading="Message heading"&gt;
             <br />
             <br />
@@ -201,7 +201,7 @@ class storyMessage extends HTMLElement {
           <mui-message slot="body" heading="Accessibility" icon="mui-icon-accessibility">
             <mui-body>Body content...</mui-body>
           </mui-message>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-message heading="Accessibility" icon="mui-icon-accessibility"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-body&gt;Body content...&lt;/mui-body&gt;
@@ -220,7 +220,7 @@ class storyMessage extends HTMLElement {
           <mui-message heading="Sync Settings" slot="body" variant="neutral">
               <mui-body size="small">Your preferences are backed up and synced across devices.</mui-body>
           </mui-message>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-message
             <br />
             &nbsp;&nbsp;heading="Sync Settings" 
@@ -248,7 +248,7 @@ class storyMessage extends HTMLElement {
             <mui-body>The report has been generated and is ready for download.</mui-body>
             <mui-link>Download Your Report</mui-link>
           </mui-message>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-message 
             <br />
             &nbsp;&nbsp;heading="Message heading" 
@@ -276,7 +276,7 @@ class storyMessage extends HTMLElement {
             <mui-body>A new dashboard layout is now available. Explore the enhanced features.</mui-body>
             <mui-link>Try the New Layout</mui-link>
           </mui-message>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-message 
             <br />
             &nbsp;&nbsp;heading="Message heading" 
@@ -304,7 +304,7 @@ class storyMessage extends HTMLElement {
             <mui-body>Your password will expire in 3 days. Please update it to maintain account security.</mui-body>
             <mui-link>Update Your Password</mui-link>
           </mui-message>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-message 
             <br />
             &nbsp;&nbsp;heading="Message heading" 
@@ -332,7 +332,7 @@ class storyMessage extends HTMLElement {
             <mui-body>Our website will be undergoing maintenance on [Date] from [Time] to [Time]. Some features may be unavailable during this period.</mui-body>
             <mui-link>View Maintenance Schedule</mui-link>
           </mui-message>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-message 
             <br />
             &nbsp;&nbsp;heading="Message heading" 

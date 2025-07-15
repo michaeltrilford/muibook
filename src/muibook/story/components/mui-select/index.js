@@ -125,7 +125,7 @@ class storySelect extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-select";<br>
           </mui-code>
         </spec-card>
@@ -154,7 +154,7 @@ class storySelect extends HTMLElement {
               ]'>
             </mui-select>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-select label="Default"
               <br />
               &nbsp;&nbsp;&nbsp;&nbsp;options='[
@@ -185,7 +185,7 @@ class storySelect extends HTMLElement {
               ]'>
             </mui-select>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-select
             <br />
               &nbsp;&nbsp;label="Brand"
@@ -218,7 +218,7 @@ class storySelect extends HTMLElement {
               ]'>
             </mui-select>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-select
             <br />
               &nbsp;&nbsp;label="Brand"
@@ -250,7 +250,7 @@ class storySelect extends HTMLElement {
               ]'>
             </mui-select>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-select
 
             <br />
@@ -288,7 +288,7 @@ class storySelect extends HTMLElement {
                 ]'>
               </mui-select>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input type="search" label="Search"&gt;<br>
             &nbsp;&nbsp;&lt;mui-select<br>
             &nbsp;&nbsp;&nbsp;&nbsp;slot="before"<br>
@@ -319,7 +319,7 @@ class storySelect extends HTMLElement {
                 ]'>
               </mui-select>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input type="number" label="Amount to transfer"&gt;<br>
             &nbsp;&nbsp;&lt;mui-select<br>
             &nbsp;&nbsp;&nbsp;&nbsp;slot="after"<br>

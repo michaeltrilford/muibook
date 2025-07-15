@@ -70,7 +70,7 @@ class AgentPromptsPage extends HTMLElement {
 
           <mui-rule slot="footer"></mui-rule>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer"  scrollable>
           export const muiPrompts = [
           <br>
           &nbsp;&nbsp;&#123;<br>

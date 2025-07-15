@@ -239,7 +239,7 @@ class storyStack extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-stack";<br>
           </mui-code>
         </spec-card>
@@ -257,7 +257,7 @@ class storyStack extends HTMLElement {
 
         <story-card title="Horizontal: Default">
           ${DefaultHStack}
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-h-stack&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
@@ -281,7 +281,7 @@ class storyStack extends HTMLElement {
 
         <story-card title="Vertical: Default">
           ${DefaultVStack}
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-v-stack&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
@@ -294,7 +294,7 @@ class storyStack extends HTMLElement {
 
       <story-card title="Horizontal: Custom Space">
         ${HStackSpace}
-        <mui-code slot="footer">
+        <mui-code slot="footer" scrollable>
           &lt;mui-h-stack space="var(--space-400)"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
@@ -307,7 +307,7 @@ class storyStack extends HTMLElement {
 
       <story-card title="Vertical: Custom Space">
         ${VStackSpace}
-        <mui-code slot="footer">
+        <mui-code slot="footer" scrollable>
           &lt;mui-v-stack space="var(--space-400)"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;

@@ -70,8 +70,8 @@ class WrappedComponents extends HTMLElement {
 
           <mui-rule slot="footer"></mui-rule>
 
-          <mui-code slot="footer">
-
+          <mui-code slot="footer" scrollable>
+            <br />
             <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts" target="_blank">👨‍💻 View file on Github</mui-link>
             <br />
             <br />
@@ -88,11 +88,12 @@ class WrappedComponents extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;}<br>
             &nbsp;&nbsp;}<br>
             }
-          </mui-code>
-
-          <mui-rule slot="footer"></mui-rule>
-
-          <mui-code slot="footer">
+            <br />
+            <br />
+            <br />
+            <mui-rule></mui-rule>
+            <br />
+            <br />
             <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/wrapped-components/MuiContainer.tsx" target="_blank">👨‍💻 View file on Github</mui-link>
             <br />
             <br />
@@ -111,11 +112,12 @@ class WrappedComponents extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-container {...rest} {...(size ? { [size]: true } : {})} {...(center ? { center: true } : {})} /&gt;<br>
             );<br><br>
             export default MuiContainer;
-          </mui-code>
-
-          <mui-rule slot="footer"></mui-rule>
-
-          <mui-code slot="footer">
+            <br />
+            <br />
+            <br />
+            <mui-rule></mui-rule>
+            <br />
+            <br />
             // 📦 Usage (App.tsx)
             <br>
             <br>
@@ -127,9 +129,9 @@ class WrappedComponents extends HTMLElement {
             &nbsp;&nbsp;...
             <br>
             &lt;/MuiContainer&gt;
-
+            <br />
+            <br />
           </mui-code>
-
         </page-card>
 
       </mui-v-stack>

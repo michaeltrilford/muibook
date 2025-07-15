@@ -103,7 +103,7 @@ class storyAlert extends HTMLElement {
         <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Import">
-            <mui-code slot="footer" size="small">
+            <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-alert";<br>
             </mui-code>
           </spec-card>
@@ -129,7 +129,7 @@ class storyAlert extends HTMLElement {
             <div slot="body">
               <mui-alert variant="success">Your message has been sent successfully.</mui-alert>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-alert variant="success"&gt;
               <br />
               &nbsp;&nbsp;...
@@ -148,7 +148,7 @@ class storyAlert extends HTMLElement {
             <div slot="body">
               <mui-alert variant="info">Please read the comments carefully.</mui-alert>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
             &lt;mui-alert variant="info"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -166,7 +166,7 @@ class storyAlert extends HTMLElement {
             <div slot="body">
               <mui-alert variant="warning">There was a problem with your network connection. <mui-link href="#">Learn more</mui-link></mui-alert>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
             &lt;mui-alert variant="warning"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -185,7 +185,7 @@ class storyAlert extends HTMLElement {
             <div slot="body">
               <mui-alert variant="error">Please read the comments carefully. <mui-link href="#">Learn more</mui-link></mui-alert>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
             &lt;mui-alert variant="error"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -229,7 +229,7 @@ class storyAlert extends HTMLElement {
               </mui-alert>
             </mui-v-stack>
 
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-alert variant="error"&gt;
               <br />
               &nbsp;&nbsp;&lt;mui-button slot="action"&gt;
@@ -276,7 +276,7 @@ class storyAlert extends HTMLElement {
               </mui-alert>
             </mui-v-stack>
 
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-alert variant="success"&gt;
               <br />
               &nbsp;&nbsp;&lt;mui-button slot="action"&gt;
@@ -325,7 +325,7 @@ class storyAlert extends HTMLElement {
               </mui-alert>
             </mui-v-stack>
 
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-alert variant="warning"&gt;
               <br />
               &nbsp;&nbsp;&lt;mui-link slot="action"&gt;

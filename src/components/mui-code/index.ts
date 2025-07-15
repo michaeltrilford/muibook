@@ -1,7 +1,7 @@
 /* Mui Code */
 class MuiCode extends HTMLElement {
   static get observedAttributes() {
-    return ["size"];
+    return ["size", "scrollable"];
   }
 
   constructor() {
@@ -23,9 +23,11 @@ class MuiCode extends HTMLElement {
   render() {
     if (!this.shadowRoot) return;
 
+    const isScrollable = this.hasAttribute("scrollable");
+
     const styles = /*css*/ `
       :host {
-        display: block;
+        display: grid;
       }
       :host([size="x-small"]) code {
         font-size: var(--text-font-size-xs);
@@ -51,6 +53,9 @@ class MuiCode extends HTMLElement {
         background: var(--surface-elevated-200);
         padding: var(--space-400) var(--space-500);
         box-sizing: border-box;
+        width: 100%;
+        overflow-x: ${isScrollable ? "auto" : "visible"};
+        white-space: ${isScrollable ? "nowrap" : "wrap"};
       }
 
       @media (min-width: 600px) {

@@ -76,10 +76,10 @@ class partsVisual extends HTMLElement {
 
           <spec-card title="Transition">
             <story-part-slat slot="body" token="part(transition)" usage="Link, Button, Select" output="Defines the transition of the element when animation is used."></story-part-slat>
-            <mui-code slot="footer">
+            <mui-code slot="footer"  scrollable>
               mui-link::part(transition) {
               <br />
-              &nbsp;&nbsp;transition: opacity 400ms ease-in, transform 100ms ease-in;;
+              &nbsp;&nbsp;transition: opacity 400ms ease-in, transform 100ms ease-in;
               <br />
               }
             </mui-code>

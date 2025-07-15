@@ -82,7 +82,7 @@ class storyRule extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-rule";<br>
           </mui-code>
         </spec-card>
@@ -102,7 +102,7 @@ class storyRule extends HTMLElement {
           <div slot="body">
             <mui-rule direction="horizontal" length="100%" style="margin: var(--space-700) 0;"></mui-rule>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-rule
             <br />
             &nbsp;&nbsp;direction="horizontal"
@@ -117,7 +117,7 @@ class storyRule extends HTMLElement {
           <div slot="body">
             <mui-rule direction="vertical" length="100px"></mui-rule>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-rule
             <br />
             &nbsp;&nbsp;direction="vertical"
@@ -132,7 +132,7 @@ class storyRule extends HTMLElement {
           <div slot="body">
             <mui-rule direction="horizontal" length="100%" weight="2px" style="margin: var(--space-700) 0;"></mui-rule>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-rule
             <br />
             &nbsp;&nbsp;direction="horizontal"
@@ -149,7 +149,7 @@ class storyRule extends HTMLElement {
           <div slot="body">
             <mui-rule direction="vertical" length="100px" weight="2px"></mui-rule>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-rule
             <br />
             &nbsp;&nbsp;direction="vertical"

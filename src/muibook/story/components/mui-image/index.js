@@ -85,7 +85,7 @@ class storyImage extends HTMLElement {
         <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Import">
-            <mui-code slot="footer" size="small">
+            <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-image";<br>
             </mui-code>
           </spec-card>
@@ -107,7 +107,7 @@ class storyImage extends HTMLElement {
                 <img slot="image" src="${Image}" alt="Spacing scale illustration" />
               </mui-image>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-image&gt;
               <br />
               &nbsp;&nbsp;&lt;img slot="image" src="..." alt="Spacing scale illustration" /&gt;
@@ -123,7 +123,7 @@ class storyImage extends HTMLElement {
                 <figcaption slot="caption">Example image</figcaption>
               </mui-image>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-image&gt;
               <br />
               &nbsp;&nbsp;&lt;img slot="image" src="..." alt="Spacing scale illustration" /&gt;

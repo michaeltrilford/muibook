@@ -70,7 +70,7 @@ class AgentKeywordsPage extends HTMLElement {
 
           <mui-rule slot="footer"></mui-rule>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
           // 🛠️ Keywords<br><br>
           export const muiKeywords: Record&lt;string, string[]&gt; = &#123;<br>
           &nbsp;&nbsp;alert: [&quot;alert&quot;, &quot;success&quot;, &quot;info&quot;, &quot;warning&quot;, &quot;error&quot;, &quot;message&quot;, &quot;banner&quot;, &quot;notification&quot;],<br>

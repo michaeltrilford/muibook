@@ -277,7 +277,7 @@ class storyTabBar extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-tabs";<br>
           </mui-code>
         </spec-card>
@@ -333,7 +333,7 @@ class storyTabBar extends HTMLElement {
             <mui-tab-item id="item2">Item 2</mui-tab-item>
             <mui-tab-item id="item3">Item 3</mui-tab-item>
           </mui-tab-bar>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-tab-bar&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-tab-item active id="item1"&gt;Item One&lt;/mui-tab-item&gt;
@@ -359,7 +359,7 @@ class storyTabBar extends HTMLElement {
             <mui-tab-panel item="item3">Content 3</mui-tab-panel>
           </mui-tab-controller>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-tab-controller&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-tab-bar&gt;<br />
@@ -378,7 +378,7 @@ class storyTabBar extends HTMLElement {
           <mui-tab-bar slot="body" speed="500">
             ${tabItemsHTML}
           </mui-tab-bar>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             const tabData = [
             <br />
             &nbsp;&nbsp;{ id: 'item1', label: 'Message', icon: 'mui-icon-message', active: true },
@@ -413,7 +413,7 @@ class storyTabBar extends HTMLElement {
           <mui-tab-bar slot="body">
             ${tabItemsHTML}
           </mui-tab-bar>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             const tabData = [
             <br />
             &nbsp;&nbsp;{ id: 'item1', label: 'Message', icon: 'mui-icon-message', active: true },
@@ -449,7 +449,7 @@ class storyTabBar extends HTMLElement {
             ${tabItemsHTML}
           </mui-tab-bar>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             const tabData = [
             <br />
             &nbsp;&nbsp;{ id: 'item1', label: 'Message', icon: 'mui-icon-message', active: true },

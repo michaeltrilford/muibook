@@ -79,7 +79,7 @@ class storySlat extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-slat";<br>
           </mui-code>
         </spec-card>
@@ -104,7 +104,7 @@ class storySlat extends HTMLElement {
             </mui-h-stack>
           </mui-slat>
           
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-slat&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-heading slot="start" size="5"&gt;...&lt;/mui-heading&gt;

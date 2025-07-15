@@ -108,7 +108,7 @@ class storySwitch extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-switch";<br>
           </mui-code>
         </spec-card>
@@ -129,7 +129,7 @@ class storySwitch extends HTMLElement {
           <div slot="body">
             <mui-switch label="Unchecked"></mui-switch>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-switch label="Unchecked"&gt;&lt;/mui-switch&gt;
           </mui-code>
         </story-card>
@@ -138,7 +138,7 @@ class storySwitch extends HTMLElement {
           <div slot="body">
             <mui-switch label="On Example" checked></mui-switch>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-switch checked label="On Example"&gt;&lt;/mui-switch&gt;
           </mui-code>
         </story-card>
@@ -147,7 +147,7 @@ class storySwitch extends HTMLElement {
           <div slot="body">
             <mui-switch label="Unchecked w/ Disabled" disabled></mui-switch>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-switch label="Unchecked w/ Disabled"&gt;&lt;/mui-switch&gt;
           </mui-code>
         </story-card>
@@ -156,7 +156,7 @@ class storySwitch extends HTMLElement {
           <div slot="body">
             <mui-switch disabled label="Checked w/ Disabled" checked></mui-switch>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-switch checked disabled label="Checked w/ Disabled"&gt;&lt;/mui-switch&gt;
           </mui-code>
         </story-card>
@@ -168,7 +168,7 @@ class storySwitch extends HTMLElement {
               <mui-icon-moon slot="on-icon"></mui-icon-moon>
             </mui-switch>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-switch label="Dark mode toggle"&gt;
               <br />
               &nbsp;&nbsp;&lt;mui-icon-sun slot="off-icon"&gt;&lt;/mui-icon-sun&gt;
@@ -186,7 +186,7 @@ class storySwitch extends HTMLElement {
               <mui-icon-moon slot="on-icon"></mui-icon-moon>
             </mui-switch>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-switch label="Dark mode toggle" checked&gt;
               <br />
               &nbsp;&nbsp;&lt;mui-icon-sun slot="off-icon"&gt;&lt;/mui-icon-sun&gt;

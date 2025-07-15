@@ -120,7 +120,7 @@ class storyButton extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Import">
-            <mui-code slot="footer" size="small">
+            <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-button";<br>
             </mui-code>
           </spec-card>
@@ -138,7 +138,7 @@ class storyButton extends HTMLElement {
 
         <story-card title="Primary">
           <mui-button variant="primary" slot="body">Submit</mui-button>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button variant="primary"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -149,7 +149,7 @@ class storyButton extends HTMLElement {
 
         <story-card title="Secondary">
           <mui-button variant="secondary" slot="body">Cancel</mui-button>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button variant="secondary"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -160,7 +160,7 @@ class storyButton extends HTMLElement {
 
         <story-card title="Tertiary">
          <mui-button variant="tertiary" slot="body">Cancel</mui-button>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button variant="tertiary"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -171,7 +171,7 @@ class storyButton extends HTMLElement {
 
         <story-card title="Attention">
           <mui-button variant="attention" slot="body">Delete</mui-button>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button variant="attention"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -202,7 +202,7 @@ class storyButton extends HTMLElement {
                 New Report
               </mui-button>
           </mui-button-group>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button-group right&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;...&lt;/mui-button&gt;
@@ -221,7 +221,7 @@ class storyButton extends HTMLElement {
             <mui-button variant="secondary">Cancel</mui-button>
             <mui-button variant="primary">Submit</mui-button>
           </mui-button-group>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button-group right&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;...&lt;/mui-button&gt;
@@ -253,7 +253,7 @@ class storyButton extends HTMLElement {
             </mui-button>
           </mui-v-stack>
           
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button variant="primary"&gt;
             <br />
             &nbsp;&nbsp;Add New
@@ -300,7 +300,7 @@ class storyButton extends HTMLElement {
               <mui-icon-message></mui-icon-message>
             </mui-button>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button variant="primary"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
@@ -336,7 +336,7 @@ class storyButton extends HTMLElement {
               <mui-icon-message></mui-icon-message>
             </mui-button>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button variant="secondary"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
@@ -373,7 +373,7 @@ class storyButton extends HTMLElement {
               <mui-icon-message></mui-icon-message>
             </mui-button>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button variant="tertiary"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
@@ -409,7 +409,7 @@ class storyButton extends HTMLElement {
               <mui-icon-message></mui-icon-message>
             </mui-button>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-button variant="attention"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
@@ -445,7 +445,7 @@ class storyButton extends HTMLElement {
               </mui-icon-toggle>
             </mui-button>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             const btn = document.getElementById('btn');<br />
             const toggle = btn.querySelector('mui-icon-toggle');<br />
             <br />
@@ -491,7 +491,7 @@ class storyButton extends HTMLElement {
               </mui-icon-toggle>
             </mui-button>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             const btn = document.getElementById('btn');<br />
             const toggle = btn.querySelector('mui-icon-toggle');<br />
             <br />

@@ -71,7 +71,7 @@ class compWallet extends HTMLElement {
 
           </mui-v-stack>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
           &lt;mui-v-stack<br>
           &nbsp;&nbsp;alignX="stretch"<br>
           &nbsp;&nbsp;style="<br>

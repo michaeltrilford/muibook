@@ -151,7 +151,7 @@ class storyInput extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Import">
-            <mui-code slot="footer" size="small">
+            <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-input";<br>
             </mui-code>
           </spec-card>
@@ -172,7 +172,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Default"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input label="Default"&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
@@ -182,7 +182,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input variant="success"  value="value" type="password" label="Password"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input variant="success" value="value" type="password" label="Password"&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
@@ -192,7 +192,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input variant="warning" value="michael.mui.com" label="Email"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input variant="warning" value="michael.mui.com" label="Email"&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
@@ -202,7 +202,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input variant="error" value="michael.mui.com" label="Email"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input variant="error" value="michael.mui.com" label="Email"&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
@@ -212,7 +212,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Hide Label" hide-label></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input label="Hide Label" hide-label&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
@@ -222,7 +222,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Disabled" disabled></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input label="Disabled" disabled&gt;&lt;/mui-input&gt;
             <br />
           </mui-code>
@@ -233,7 +233,7 @@ class storyInput extends HTMLElement {
             <mui-input label="Enter amount">
               <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input label="Enter amount"&gt;
             <br />
 
@@ -254,7 +254,7 @@ class storyInput extends HTMLElement {
             <mui-input label="Enter amount">
               <mui-addon slot="after"><mui-body>USD</mui-body></mui-input></mui-addon>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input label="Enter amount"&gt;
             <br />
 
@@ -285,7 +285,7 @@ class storyInput extends HTMLElement {
                 ]'>
               </mui-select>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input type="search" label="Search"&gt;<br>
             &nbsp;&nbsp;&lt;mui-select<br>
             &nbsp;&nbsp;&nbsp;&nbsp;slot="before"<br>
@@ -316,7 +316,7 @@ class storyInput extends HTMLElement {
                 ]'>
               </mui-select>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input type="number" label="Amount to transfer"&gt;<br>
             &nbsp;&nbsp;&lt;mui-select<br>
             &nbsp;&nbsp;&nbsp;&nbsp;slot="after"<br>
@@ -338,7 +338,7 @@ class storyInput extends HTMLElement {
               <mui-button slot="after">Copy</mui-button>
             </mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;type="email" 
@@ -358,7 +358,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Name" type="text" id="name-input" name="name" value="John Doe"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;label="Name"
@@ -379,7 +379,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Email" type="email" id="email-input" name="email" value="user@example.com"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;label="Email"
@@ -400,7 +400,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Password" type="password" id="password-input" name="password" value="abcde1234"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;label="Password"
@@ -422,7 +422,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Age" type="number" id="age-input" name="age" value="30"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;label="Age"
@@ -443,7 +443,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Website" type="url" id="url-input" name="website" value="https://example.com"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;label="Website"
@@ -464,7 +464,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Phone" type="tel" id="phone-input" name="phone" value="+1234567890"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;label="Phone"
@@ -485,7 +485,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Search" type="search" id="search-input" name="search" value="Query"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;label="Search"
@@ -506,7 +506,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Birthdate" type="date" id="birthdate-input" name="birthdate" value="1990-01-01"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;label="Birthdate"
@@ -527,7 +527,7 @@ class storyInput extends HTMLElement {
           <div slot="body">
             <mui-input label="Meeting Time" type="time" id="meeting-time-input" name="meetingTime" value="14:30"></mui-input>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input 
             <br />
             &nbsp;&nbsp;label="Meeting Time"

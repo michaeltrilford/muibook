@@ -385,7 +385,7 @@ class storyTable extends HTMLElement {
         <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Import">
-            <mui-code slot="footer" size="small">
+            <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-table";<br>
             </mui-code>
           </spec-card>
@@ -439,26 +439,26 @@ class storyTable extends HTMLElement {
               <mui-table>
                 <mui-row-group heading>
                   <mui-row columns="${Columns}">
-                    <mui-cell>Col One</mui-cell>
-                    <mui-cell>Col Two</mui-cell>
-                    <mui-cell>Col Three</mui-cell>
+                    <mui-cell>One</mui-cell>
+                    <mui-cell>Two</mui-cell>
+                    <mui-cell>Three</mui-cell>
                   </mui-row>
                 </mui-row-group>
                 <mui-row-group>
                   <mui-row columns="${Columns}">
-                    <mui-cell>Col One</mui-cell>
-                    <mui-cell>Col Two</mui-cell>
-                    <mui-cell>Col Three</mui-cell>
+                    <mui-cell>One</mui-cell>
+                    <mui-cell>Two</mui-cell>
+                    <mui-cell>Three</mui-cell>
                   </mui-row>
                   <mui-row columns="${Columns}">
-                    <mui-cell>Col One</mui-cell>
-                    <mui-cell>Col Two</mui-cell>
-                    <mui-cell>Col Three</mui-cell>
+                    <mui-cell>One</mui-cell>
+                    <mui-cell>Two</mui-cell>
+                    <mui-cell>Three</mui-cell>
                   </mui-row>
                 </mui-row-group>
               </mui-table>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               const Columns = &#96;1fr 1fr 1fr&#96;;<br>
               <br>
               &lt;mui-table&gt;
@@ -550,7 +550,7 @@ class storyTable extends HTMLElement {
                 </mui-row-group>
               </mui-table>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
               <br>
               &lt;mui-table&gt;
@@ -628,7 +628,7 @@ class storyTable extends HTMLElement {
                 </mui-row-group>
               </mui-table>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               <br />
               <br />
               &nbsp;&nbsp;// Table Data
@@ -718,7 +718,7 @@ class storyTable extends HTMLElement {
                 </div>
               </mui-responsive>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-responsive breakpoint="600"&gt;
               <br />
               <br />
@@ -786,7 +786,7 @@ class storyTable extends HTMLElement {
                 </mui-card-body>
               </mui-card>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
               <br>
               &lt;mui-card&gt;<br>
@@ -877,7 +877,7 @@ class storyTable extends HTMLElement {
                 </mui-card-body>
               </mui-card>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
               <br>
               &lt;mui-card&gt;<br>

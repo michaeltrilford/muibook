@@ -90,7 +90,7 @@ class storyBadge extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-badge";<br>
           </mui-code>
         </spec-card>
@@ -110,7 +110,7 @@ class storyBadge extends HTMLElement {
           <div slot="body">
             <mui-badge>New</mui-badge>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-badge&gt;
             <br />
             &nbsp;&nbsp;...
@@ -123,7 +123,7 @@ class storyBadge extends HTMLElement {
           <div slot="body">
             <mui-badge variant="neutral">Offline</mui-badge>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-badge variant="neutral"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -136,7 +136,7 @@ class storyBadge extends HTMLElement {
           <div slot="body">
             <mui-badge variant="positive">Paid</mui-badge>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-badge variant="positive"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -149,7 +149,7 @@ class storyBadge extends HTMLElement {
           <div slot="body">
             <mui-badge variant="warning">Busy</mui-badge>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-badge variant="warning"&gt;
             <br />
             &nbsp;&nbsp;...
@@ -162,7 +162,7 @@ class storyBadge extends HTMLElement {
           <div slot="body">
             <mui-badge variant="attention">Urgent</mui-badge>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-badge variant="attention"&gt;
             <br />
             &nbsp;&nbsp;...

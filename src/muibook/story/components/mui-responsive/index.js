@@ -195,7 +195,7 @@ class storyResponsive extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
       
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-responsive";<br>
           </mui-code>
         </spec-card>
@@ -216,7 +216,7 @@ class storyResponsive extends HTMLElement {
             <mui-heading slot="showBelow" size="5" level="3">Mobile / Below 600</mui-heading>
             <mui-heading slot="showAbove" size="3" level="3">Desktop / Above 600</mui-heading>
           </mui-responsive>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-responsive breakpoint="600"&gt;
             <br />
             &nbsp;&nbsp;&lt;div slot="showAbove"&gt;...&lt;/div&gt;
@@ -233,7 +233,7 @@ class storyResponsive extends HTMLElement {
             <mui-heading slot="showMiddle" size="4" level="3">Tablet / Between 600-1200</mui-heading>
             <mui-heading slot="showAbove" size="3" level="3">Desktop / Above 1200</mui-heading>
           </mui-responsive>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-responsive breakpoint-low="599" breakpoint-high="1024"&gt;
             <br />
             &nbsp;&nbsp;&lt;div slot="showAbove"&gt;...&lt;/div&gt;
@@ -257,7 +257,7 @@ class storyResponsive extends HTMLElement {
             </div>
           </mui-responsive>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-responsive breakpoint="600"&gt;
             <br />
             <br />

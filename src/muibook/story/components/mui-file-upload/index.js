@@ -75,7 +75,7 @@ class storyFileUpload extends HTMLElement {
         <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Import">
-            <mui-code slot="footer" size="small">
+            <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-file-upload";<br>
             </mui-code>
           </spec-card>
@@ -98,7 +98,7 @@ class storyFileUpload extends HTMLElement {
               acceptedFileTypes=".pdf,.jpg"
               currentFileName="No file selected"
             ></mui-file-upload>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-file-upload<br />
               &nbsp;&nbsp;acceptedFileTypes=".pdf,.jpg"<br />
               &nbsp;&nbsp;currentFileName="No file selected"<br />

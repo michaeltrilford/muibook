@@ -99,7 +99,7 @@ class storyHeading extends HTMLElement {
         <mui-v-stack space="var(--space-700)">
         
           <spec-card title="Import">
-            <mui-code slot="footer" size="small">
+            <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-heading";<br>
             </mui-code>
           </spec-card>
@@ -119,7 +119,7 @@ class storyHeading extends HTMLElement {
             <div slot="body">
               <mui-heading size="1">Heading 1</mui-heading>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-heading size="1"&gt; ... &lt;/mui-heading&gt;
             </mui-code>
           </story-card>
@@ -128,7 +128,7 @@ class storyHeading extends HTMLElement {
             <div slot="body">
               <mui-heading size="2">Heading 2</mui-heading>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-heading size="2"&gt; ... &lt;/mui-heading&gt;
             </mui-code>
           </story-card>
@@ -137,7 +137,7 @@ class storyHeading extends HTMLElement {
             <div slot="body">
               <mui-heading size="3">Heading 3</mui-heading>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-heading size="3"&gt; ... &lt;/mui-heading&gt;
             </mui-code>
           </story-card>
@@ -146,7 +146,7 @@ class storyHeading extends HTMLElement {
             <div slot="body">
               <mui-heading size="4">Heading 4</mui-heading>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-heading size="4"&gt; ... &lt;/mui-heading&gt;
             </mui-code>
           </story-card>
@@ -155,7 +155,7 @@ class storyHeading extends HTMLElement {
             <div slot="body">
               <mui-heading size="5">Heading 5</mui-heading>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-heading size="5"&gt; ... &lt;/mui-heading&gt;
             </mui-code>
           </story-card>
@@ -164,7 +164,7 @@ class storyHeading extends HTMLElement {
             <div slot="body">
               <mui-heading size="6">Heading 6</mui-heading>
             </div>
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-heading size="6"&gt; ... &lt;/mui-heading&gt;
             </mui-code>
           </story-card>

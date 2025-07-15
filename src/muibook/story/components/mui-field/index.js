@@ -109,7 +109,7 @@ class storyField extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-field";<br>
           </mui-code>
         </spec-card>
@@ -129,7 +129,7 @@ class storyField extends HTMLElement {
           <mui-field label="Email" slot="body">
             <mui-input type="email" placeholder="you@example.com"></mui-input>
           </mui-field>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-field label="Email"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-input type="email" placeholder="you@example.com"&gt;&lt;/mui-input&gt;
@@ -143,7 +143,7 @@ class storyField extends HTMLElement {
           <mui-field label="Name" slot="body" message="This field doesn't accept special characters">
             <mui-input></mui-input>
           </mui-field>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-field label="Name" message="This field doesn't accept special characters"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-input&gt;&lt;/mui-input&gt;
@@ -171,7 +171,7 @@ class storyField extends HTMLElement {
           </mui-field>
 
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             <br />
             {
             <br />
@@ -211,7 +211,7 @@ class storyField extends HTMLElement {
             <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
           </mui-field>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             <br />
             {
             <br />
@@ -250,7 +250,7 @@ class storyField extends HTMLElement {
             <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
           </mui-field>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             <br />
             {
             <br />
@@ -297,7 +297,7 @@ class storyField extends HTMLElement {
             </mui-select>
           </mui-field>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             <br />
             {
             <br />
@@ -358,7 +358,7 @@ class storyField extends HTMLElement {
             </mui-input>
           </mui-field>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             <br />
             {
             <br />

@@ -71,7 +71,7 @@ class storyAddon extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-addon";<br>
           </mui-code>
         </spec-card>
@@ -92,7 +92,7 @@ class storyAddon extends HTMLElement {
             <mui-input label="Enter amount">
               <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input label="Enter amount"&gt;
             <br />
 
@@ -113,7 +113,7 @@ class storyAddon extends HTMLElement {
             <mui-input label="Enter amount">
               <mui-addon slot="after"><mui-body>USD</mui-body></mui-input></mui-addon>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-input label="Enter amount"&gt;
             <br />
 

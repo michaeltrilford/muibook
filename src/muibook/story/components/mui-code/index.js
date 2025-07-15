@@ -22,6 +22,13 @@ class storyCode extends HTMLElement {
         default: "x-small",
         description: "Set the size of the code text.",
       },
+      {
+        name: "scrollable",
+        type: "boolean",
+        options: "scrollable",
+        default: "",
+        description: "Ensure the content is horizontally scrollable.",
+      },
     ];
 
     const rows = propItems
@@ -76,7 +83,7 @@ class storyCode extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-code";<br>
           </mui-code>
         </spec-card>
@@ -96,13 +103,10 @@ class storyCode extends HTMLElement {
         <story-card title="Large">
           <div slot="body">
             <mui-code size="large">
-            Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis
-            euismod. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu
-            leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Cum
-            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </mui-code>
+              A tooltip drifted so far from its anchor it was officially lost at sea.
+            </mui-code>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-code size="large"&gt;...&lt;/mui-code&gt;
           </mui-code>
         </story-card>
@@ -110,13 +114,10 @@ class storyCode extends HTMLElement {
        <story-card title="Medium">
           <div slot="body">
             <mui-code size="medium">
-            Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis
-            euismod. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu
-            leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Cum
-            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </mui-code>
+              The modal refused to close, holding focus hostage forever.
+            </mui-code>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-code size="medium"&gt;...&lt;/mui-code&gt;
           </mui-code>
         </story-card>
@@ -124,13 +125,10 @@ class storyCode extends HTMLElement {
         <story-card title="Small">
           <div slot="body">
             <mui-code size="small">
-            Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis
-            euismod. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu
-            leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Cum
-            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </mui-code>
+              The fox tried to tab into a hidden element, but focus was trapped in a loop.
+            </mui-code>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-code size="small"&gt;...&lt;/mui-code&gt;
           </mui-code>
         </story-card>
@@ -138,14 +136,30 @@ class storyCode extends HTMLElement {
         <story-card title="X-Small">
           <div slot="body">
             <mui-code size="x-small">
-            Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis
-            euismod. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu
-            leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Cum
-            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          </mui-code>
+              A rogue component ignored the theme and styled itself in pure chaos.
+            </mui-code>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-code size="x-small"&gt;...&lt;/mui-code&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card title="Scrollable" 
+          description="When using the scrollable option, you’re likely displaying large code examples. Please ensure your content is properly formatted with line breaks and spacing. This component provides minimal formatting support, so you’ll need to handle this yourself or consider using a more advanced third-party code viewer." 
+          usage="
+             Line wrapping is disabled when scrollable is set;
+              Use the nbsp element to insert non-breaking spaces;
+              Use br element to manually add line breaks;
+              Structure and format your code manually to ensure readability
+          "
+          >
+          <div slot="body">
+            <mui-code size="large" scrollable>
+              A tooltip drifted so far from its anchor it was officially lost at sea.
+            </mui-code>
+          </div>
+          <mui-code slot="footer" scrollable>
+            &lt;mui-code size="large" scrollable&gt;...&lt;/mui-code&gt;
           </mui-code>
         </story-card>
 

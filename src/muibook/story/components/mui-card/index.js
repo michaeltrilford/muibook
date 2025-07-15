@@ -8,7 +8,7 @@ class storyCards extends HTMLElement {
       :host { display: block; }
     `;
 
-    const Columns = `1fr 1fr 1fr auto`;
+    const Columns = `1fr 1fr auto`;
 
     // Card
     const propItemsCard = [
@@ -229,7 +229,7 @@ class storyCards extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-card";<br>
           </mui-code>
         </spec-card>
@@ -292,7 +292,7 @@ class storyCards extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-card&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card-header&gt;
@@ -328,7 +328,7 @@ class storyCards extends HTMLElement {
               </mui-card-footer>
             </mui-card>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-card&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card-header&gt;
@@ -370,7 +370,7 @@ class storyCards extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-card&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card-header&gt;
@@ -401,7 +401,6 @@ class storyCards extends HTMLElement {
                   <mui-row-group heading>
                     <mui-row columns="${Columns}">
                       <mui-cell heading>Office</mui-cell>
-                      <mui-cell heading>Revenue</mui-cell>
                       <mui-cell heading>Cost</mui-cell>
                       <mui-cell heading action>
                       </mui-cell>
@@ -410,7 +409,6 @@ class storyCards extends HTMLElement {
                   <mui-row-group>
                     <mui-row columns="${Columns}">
                       <mui-cell>Whalen</mui-cell>
-                      <mui-cell>$4,400.00</mui-cell>
                       <mui-cell>$1,100.00</mui-cell>
                       <mui-cell action>
                         <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
@@ -418,7 +416,6 @@ class storyCards extends HTMLElement {
                     </mui-row>
                     <mui-row columns="${Columns}">
                       <mui-cell>Whalen</mui-cell>
-                      <mui-cell>$4,400.00</mui-cell>
                       <mui-cell>$1,100.00</mui-cell>
                       <mui-cell action>
                         <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
@@ -429,8 +426,8 @@ class storyCards extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <mui-code slot="footer">
-            const Columns = &#96;1fr 1fr 1fr auto&#96;;<br>
+          <mui-code slot="footer" scrollable>
+            const Columns = &#96;1fr 1fr auto&#96;;<br>
             <br>
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
@@ -438,7 +435,6 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group heading&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell heading&gt;Office&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell heading&gt;Revenue&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell heading&gt;Cost&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell heading action&gt;&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -446,7 +442,6 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Whalen&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$4,400.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
@@ -456,7 +451,6 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Whalen&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$4,400.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
@@ -486,7 +480,6 @@ class storyCards extends HTMLElement {
                   <mui-row-group heading>
                     <mui-row columns="${Columns}">
                       <mui-cell heading>Office</mui-cell>
-                      <mui-cell heading>Revenue</mui-cell>
                       <mui-cell heading>Cost</mui-cell>
                       <mui-cell heading action>
                       </mui-cell>
@@ -495,7 +488,6 @@ class storyCards extends HTMLElement {
                   <mui-row-group>
                     <mui-row columns="${Columns}">
                       <mui-cell>Whalen</mui-cell>
-                      <mui-cell>$4,400.00</mui-cell>
                       <mui-cell>$1,100.00</mui-cell>
                       <mui-cell action>
                         <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
@@ -503,7 +495,6 @@ class storyCards extends HTMLElement {
                     </mui-row>
                     <mui-row columns="${Columns}">
                       <mui-cell>Whalen</mui-cell>
-                      <mui-cell>$4,400.00</mui-cell>
                       <mui-cell>$1,100.00</mui-cell>
                       <mui-cell action>
                         <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
@@ -514,8 +505,8 @@ class storyCards extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <mui-code slot="footer">
-            const Columns = &#96;1fr 1fr 1fr auto&#96;;<br>
+          <mui-code slot="footer" scrollable>
+            const Columns = &#96;1fr 1fr auto&#96;;<br>
             <br>
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
@@ -527,7 +518,6 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group heading&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell heading&gt;Office&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell heading&gt;Revenue&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell heading&gt;Cost&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell heading action&gt;&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -535,7 +525,6 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Whalen&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell"&gt;$4,400.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
@@ -545,7 +534,6 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Whalen&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$4,400.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
@@ -579,7 +567,7 @@ class storyCards extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-group exclusive&gt;<br>
@@ -622,7 +610,7 @@ class storyCards extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;Title&lt;/mui-heading&gt;<br>

@@ -141,7 +141,7 @@ class storyLink extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-link";<br>
           </mui-code>
         </spec-card>
@@ -180,7 +180,7 @@ class storyLink extends HTMLElement {
               </mui-v-stack>
             </div>
 
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-link size="x-small"&gt;
               <br />
               &nbsp;&nbsp;Link text
@@ -215,7 +215,7 @@ class storyLink extends HTMLElement {
           <div slot="body">
             <mui-link target="_blank" href="links.html">Unsubscribe</mui-link>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link href="links.html"&gt;...&lt;/mui-link&gt;
           </mui-code>
         </story-card>
@@ -224,7 +224,7 @@ class storyLink extends HTMLElement {
           <div slot="body">
             <mui-link target="_blank">Unsubscribe</mui-link>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link target="_blank" href="links.html"&gt;...&lt;/mui-link&gt;
           </mui-code>
         </story-card>
@@ -233,7 +233,7 @@ class storyLink extends HTMLElement {
           <div slot="body">
             <mui-link target="_blank" variant="primary">Fork Github</mui-link>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link variant="primary" href="links.html"&gt;...&lt;/mui-link&gt;
           </mui-code>
         </story-card>
@@ -242,7 +242,7 @@ class storyLink extends HTMLElement {
           <div slot="body">
             <mui-link target="_blank" variant="secondary">View report</mui-link>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link variant="secondary" href="links.html"&gt;...&lt;/mui-link&gt;
           </mui-code>
         </story-card>
@@ -251,7 +251,7 @@ class storyLink extends HTMLElement {
           <div slot="body">
             <mui-link target="_blank" variant="tertiary">View report</mui-link>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link variant="tertiary" href="links.html"&gt;...&lt;/mui-link&gt;
           </mui-code>
         </story-card>
@@ -260,7 +260,7 @@ class storyLink extends HTMLElement {
           <div slot="body">
             <mui-link target="_blank" variant="attention">Fork Github</mui-link>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link variant="attention" href="links.html"&gt;...&lt;/mui-link&gt;
           </mui-code>
         </story-card>
@@ -288,7 +288,7 @@ class storyLink extends HTMLElement {
 
           </mui-v-stack>
           
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link&gt;
             <br />
             &nbsp;&nbsp;Download
@@ -345,7 +345,7 @@ class storyLink extends HTMLElement {
 
           </mui-v-stack>
           
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link variant="primary"&gt;
             <br />
             &nbsp;&nbsp;Download
@@ -393,7 +393,7 @@ class storyLink extends HTMLElement {
               <mui-icon-message></mui-icon-message>
             </mui-link>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link variant="primary"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
@@ -430,7 +430,7 @@ class storyLink extends HTMLElement {
               <mui-icon-message></mui-icon-message>
             </mui-link>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link variant="secondary"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
@@ -467,7 +467,7 @@ class storyLink extends HTMLElement {
               <mui-icon-message></mui-icon-message>
             </mui-link>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link variant="tertiary"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
@@ -504,7 +504,7 @@ class storyLink extends HTMLElement {
               <mui-icon-message></mui-icon-message>
             </mui-link>
           </mui-h-stack>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-link variant="attention"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;
@@ -517,7 +517,7 @@ class storyLink extends HTMLElement {
           <div slot="body">
             <mui-link class="custom-wc" target="_blank" href="links.html">Unsubscribe</mui-link>
           </div>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
       
             // Scoped CSS (Web component)
             <br />

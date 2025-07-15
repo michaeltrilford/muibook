@@ -90,7 +90,7 @@ class TypedElements extends HTMLElement {
 
           <mui-rule slot="footer"></mui-rule>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts" target="_blank">👨‍💻 View file on Github</mui-link>
             <br />
             <br />
@@ -102,30 +102,14 @@ class TypedElements extends HTMLElement {
             declare&nbsp;global&nbsp;{<br>
             &nbsp;&nbsp;namespace&nbsp;JSX&nbsp;{<br>
             &nbsp;&nbsp;&nbsp;&nbsp;interface&nbsp;IntrinsicElements&nbsp;{<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mui-container":
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;React.DetailedHTMLProps
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;React.HTMLAttributes
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;HTMLElement&gt;,&nbsp;HTMLElement&gt;&nbsp;
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mui-container":&nbsp;React.DetailedHTMLProps&lt;React.HTMLAttributes&lt;HTMLElement&gt;,&nbsp;HTMLElement&gt;&nbsp;&&nbsp;{<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;small?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;medium?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;large?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fluid?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;center?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mui-input":
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;React.DetailedHTMLProps
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;React.InputHTMLAttributes
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;HTMLInputElement&gt;,&nbsp;HTMLInputElement&gt;&nbsp;
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mui-input":&nbsp;React.DetailedHTMLProps&lt;React.InputHTMLAttributes&lt;HTMLInputElement&gt;,&nbsp;HTMLInputElement&gt;&nbsp;&&nbsp;{<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant?:&nbsp;"default"&nbsp;|&nbsp;"success"&nbsp;|&nbsp;"warning"&nbsp;|&nbsp;"error";<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type?:&nbsp;"text"&nbsp;|&nbsp;"password"&nbsp;|&nbsp;"email"&nbsp;|&nbsp;"number"&nbsp;|&nbsp;"search"&nbsp;|&nbsp;"tel"&nbsp;|&nbsp;"url"&nbsp;|&nbsp;"date"&nbsp;|&nbsp;"time";<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id?:&nbsp;string;<br>

@@ -311,7 +311,7 @@ class storyCarousel extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-carousel";<br><br>
             // Required:<br>
             import "@muibook/components/mui-tabs";<br>
@@ -408,7 +408,7 @@ class storyCarousel extends HTMLElement {
             </mui-carousel-panel>
           </mui-carousel-controller>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-carousel-controller&gt;<br />
             &nbsp;&nbsp;&lt;mui-tab-bar slot="controls"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active id="one"&gt;1&lt;/mui-tab-item&gt;
@@ -448,7 +448,7 @@ class storyCarousel extends HTMLElement {
             </mui-tab-bar>
             ${carouselItems}
           </mui-carousel-controller>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             /* === Author Styles ================= */
             <br />
             <br />
@@ -543,7 +543,7 @@ class storyCarousel extends HTMLElement {
             </mui-tab-bar>
             ${carouselItems}
           </mui-carousel-controller>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             /* === Carousel Data =================== */
             <br />
             <br />

@@ -110,7 +110,7 @@ class storyGrid extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
       
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-grid";<br>
           </mui-code>
         </spec-card>
@@ -133,7 +133,7 @@ class storyGrid extends HTMLElement {
             ${Box}
           </mui-grid>
           
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-grid col="1fr 1fr" space="var(--space-200)"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
@@ -150,7 +150,7 @@ class storyGrid extends HTMLElement {
             ${Box}
             ${Box}
           </mui-grid>
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-grid col="1fr 1fr 1fr" space="var(--space-200)"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;

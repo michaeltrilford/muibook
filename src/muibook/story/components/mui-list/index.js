@@ -154,7 +154,7 @@ class storyList extends HTMLElement {
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
-          <mui-code slot="footer" size="small">
+          <mui-code slot="footer" size="small" scalable>
             import "@muibook/components/mui-list";<br>
           </mui-code>
         </spec-card>
@@ -228,7 +228,7 @@ class storyList extends HTMLElement {
               </mui-v-stack>
             </div>
 
-            <mui-code slot="footer">
+            <mui-code slot="footer" scrollable>
               &lt;mui-list-item size="x-small"&gt;
               <br />
               &nbsp;&nbsp;{text}
@@ -270,7 +270,7 @@ class storyList extends HTMLElement {
           </mui-list>
           </div>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-list as="ol"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
@@ -294,7 +294,7 @@ class storyList extends HTMLElement {
             </mui-list>
           </div>
 
-          <mui-code slot="footer">
+          <mui-code slot="footer" scrollable>
             &lt;mui-list as="ul"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
