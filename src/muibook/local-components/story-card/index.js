@@ -113,47 +113,36 @@ class storyCard extends HTMLElement {
       usageArray = usageItems ? usageItems.split(";") : [];
     }
 
-    const usageContent =
-      usageArray.length || usageLink
-        ? /*html*/ `
-      <mui-heading class="details" size="6" level="3">Usage details</mui-heading>
-      ${
-        usageArray.length
-          ? /*html*/ `
+    const usageContent = usageArray.length
+      ? /*html*/ `
+        <mui-heading class="details" size="6" level="3">Usage details</mui-heading>
         <mui-list as="ul" style="max-width: 65ch;">
           ${usageArray
             .map(
               (usage) => /*html*/ `
-              <mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">
-                ${usage.trim()}
-              </mui-list-item>`
+            <mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">
+              ${usage.trim()}
+            </mui-list-item>`
             )
             .join("")}
         </mui-list>
       `
-          : ""
-      }
-      ${
-        usageLink
-          ? /*html*/ `
-        <mui-link
-          href="${usageLink}"
-          target="_blank"
-          size="small"
-          rel="noopener noreferrer"
-          weight="bold"
-          style="
-            margin-top: var(--space-200);
-            margin-bottom: var(--space-200);
-          "
-        >
-          View UX guidelines ↗
-        </mui-link>
-      `
-          : ""
-      }
-    `
-        : "";
+      : "";
+
+    const usageLinkContent = usageLink
+      ? /*html*/ `
+          <mui-link
+            href="${usageLink}"
+            target="_blank"
+            size="small"
+            rel="noopener noreferrer"
+            weight="bold"
+            style="margin-top: var(--space-200); margin-bottom: var(--space-200);"
+          >
+            View UX guidelines ↗
+          </mui-link>
+        `
+      : "";
 
     // Handle accessibility list
     const accessibilityItems = this.getAttribute("accessibility");
@@ -198,6 +187,7 @@ class storyCard extends HTMLElement {
             <mui-v-stack space="var(--space-100)">
               ${description}
               ${usageContent}
+              ${usageLinkContent}
               ${accessibilityContent}
             </mui-v-stack>
 

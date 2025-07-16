@@ -208,6 +208,12 @@ class MuiSelect extends HTMLElement {
           pointer-events: none;
         }
 
+        select:disabled + .chevron {
+          background: transparent;
+          box-shadow: none;
+          opacity: 0.4;
+        }
+
         /* ========================================================================== */
         /* STYLE ADJUSTMENTS WHEN SELECT IS SLOTTED WITHIN INPUT                      */
         /* Related styles unique to this usage is found in the mui-input/index.js     */

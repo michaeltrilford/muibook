@@ -142,7 +142,11 @@ class storySelect extends HTMLElement {
         </spec-card>
 
 
-        <story-card title="Default" description="A select requires a list of options.">
+        <story-card 
+          title="Default" 
+          description="Use for common form inputs where users must choose a single value from a clear and limited set." 
+          usageLink="https://guides.muibook.com/select"
+        >
           <div slot="body">
             <mui-select
               label="Default"
@@ -174,7 +178,11 @@ class storySelect extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Hide Label" description="Ensures the label is accessible to screen readers while visually hiding it to avoid redundancy.">
+        <story-card 
+          title="Hide Label" 
+          description="Ensures the label is accessible to screen readers while visually hiding it to avoid redundancy."
+          usageLink="https://guides.muibook.com/select"
+        >
           <div slot="body">
             <mui-select 
               label="Density"
@@ -206,7 +214,10 @@ class storySelect extends HTMLElement {
         </story-card>
 
 
-        <story-card title="Value" description="Define which option is selected by default.">
+        <story-card 
+          title="Value" 
+          description="Define which option is selected by default."
+        >
           <div slot="body">
             <mui-select
               value="compact"
@@ -238,7 +249,11 @@ class storySelect extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Disabled">
+        <story-card
+          title="Disabled"
+          description="Use when options are not currently applicable but should still be visible for context."
+          usageLink="https://guides.muibook.com/select"
+        >
           <div slot="body">
             <mui-select
               disabled
@@ -273,7 +288,11 @@ class storySelect extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Before: Select">
+        <story-card
+          title="Before: Select"
+          description="The Select component is placed before the input area; use for supporting context like filter type. Select width should be defined in code to ensure layout consistency."
+          usageLink="https://guides.muibook.com/select"
+        >
           <div slot="body">
             <mui-input type="search" label="Search">
               <mui-select
@@ -305,7 +324,11 @@ class storySelect extends HTMLElement {
           </<mui-code>
         </story-card>
 
-        <story-card title="After: Select">
+        <story-card 
+          title="After: Select"
+          description="The Select component is placed after the input area; use for complementary context like currency type. Select width should be defined in code to ensure layout consistency."
+          usageLink="https://guides.muibook.com/select"
+        >
           <div slot="body">
             <mui-input type="number" label="Amount to transfer">
               <mui-select
