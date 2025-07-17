@@ -130,56 +130,9 @@ class storyAccordion extends HTMLElement {
         </spec-card>
 
         <story-card 
-          title="Tab Scenarios: Button" 
-          description="The inline accordion is typically used within a block layout as a secondary UI element to a block element."
-        >
-          <div slot="body">
-            <mui-accordion-inline heading="Heading">
-              <div slot="detail">
-                <mui-button variant="primary">Focus on Open</mui-button>
-              </div>
-            </mui-accordion-inline>
-          </div>
-          <mui-code slot="footer" scrollable>
-            &lt;mui-accordion-inline heading="Heading"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;...
-            <br />
-            &nbsp;&nbsp;&lt;/mui-list&gt;
-            <br />
-            &lt;/mui-accordion-inline&gt;
-          </mui-code>
-        </story-card>
-
-        <story-card 
-          title="Tab Scenarios: Link" 
-          description="The inline accordion is typically used within a block layout as a secondary UI element to a block element."
-        >
-          <div slot="body">
-            <mui-accordion-inline heading="Heading">
-              <div slot="detail">
-                <mui-link variant="primary">Focus on Open</mui-link>
-              </div>
-            </mui-accordion-inline>
-          </div>
-          <mui-code slot="footer" scrollable>
-            &lt;mui-accordion-inline heading="Heading"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;...
-            <br />
-            &nbsp;&nbsp;&lt;/mui-list&gt;
-            <br />
-            &lt;/mui-accordion-inline&gt;
-          </mui-code>
-        </story-card>
-
-        <story-card 
           title="Accordion Inline" 
           description="The inline accordion is typically used within a block layout as a secondary UI element to a block element."
+          usageLink="https://guides.muibook.com/accordion"
         >
           <div slot="body">
             <mui-accordion-inline heading="Heading">
@@ -206,6 +159,7 @@ class storyAccordion extends HTMLElement {
         <story-card 
           title="Accordion Group & Block" 
           description="The block accordion is typically used within a page layout full-width to the parent container."
+          usageLink="https://guides.muibook.com/accordion"
         >
           <mui-accordion-group slot="body">
             <mui-accordion-block heading="Heading">
@@ -249,6 +203,7 @@ class storyAccordion extends HTMLElement {
         <story-card 
           title="Accordion Group & Block: Exclusive" 
           description="The block accordion is typically used within a page layout full-width to the parent container."
+          usageLink="https://guides.muibook.com/accordion"
         >
           <mui-accordion-group exclusive slot="body">
             <mui-accordion-block heading="Heading">
@@ -286,6 +241,54 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-accordion-block&gt;
             <br />
             &lt;mui-accordion-group&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card 
+          title="Tab Example: Button" 
+          description="A demo showcasing how a nested button will be ignored by the tabbing functionality if collapsed."
+        >
+          <div slot="body">
+            <mui-accordion-inline heading="Heading">
+              <div slot="detail">
+                <mui-button variant="primary">Focus on Open</mui-button>
+              </div>
+            </mui-accordion-inline>
+          </div>
+          <mui-code slot="footer" scrollable>
+            &lt;mui-accordion-inline heading="Heading"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;...
+            <br />
+            &nbsp;&nbsp;&lt;/mui-list&gt;
+            <br />
+            &lt;/mui-accordion-inline&gt;
+          </mui-code>
+        </story-card>
+
+        <story-card 
+          title="Tab Example: Link" 
+          description="A demo showcasing how a nested link will be ignored by the tabbing functionality if collapsed."
+        >
+          <div slot="body">
+            <mui-accordion-inline heading="Heading">
+              <div slot="detail">
+                <mui-link variant="primary">Focus on Open</mui-link>
+              </div>
+            </mui-accordion-inline>
+          </div>
+          <mui-code slot="footer" scrollable>
+            &lt;mui-accordion-inline heading="Heading"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;...
+            <br />
+            &nbsp;&nbsp;&lt;/mui-list&gt;
+            <br />
+            &lt;/mui-accordion-inline&gt;
           </mui-code>
         </story-card>
 

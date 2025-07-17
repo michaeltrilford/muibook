@@ -168,7 +168,9 @@ class storyInput extends HTMLElement {
         </spec-card>
 
 
-        <story-card title="Default" description="The label is required, if not set there will be a console warning.">
+        <story-card title="Default" description="The label is required, if not set there will be a console warning."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Default"></mui-input>
           </div>
@@ -178,7 +180,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Variant: Success" description="The label is required, if not set there will be a console warning.">
+        <story-card title="Variant: Success" description="The label is required, if not set there will be a console warning."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input variant="success"  value="value" type="password" label="Password"></mui-input>
           </div>
@@ -188,7 +192,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Variant: Warning" description="The label is required, if not set there will be a console warning.">
+        <story-card title="Variant: Warning" description="The label is required, if not set there will be a console warning."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input variant="warning" value="michael.mui.com" label="Email"></mui-input>
           </div>
@@ -198,7 +204,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Variant: Error" description="The label is required, if not set there will be a console warning.">
+        <story-card title="Variant: Error" description="The label is required, if not set there will be a console warning."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input variant="error" value="michael.mui.com" label="Email"></mui-input>
           </div>
@@ -208,7 +216,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Hide Label" description="The visible label is hidden and an aria-label is generated from the label to maintain screen reader support.">
+        <story-card title="Hide Label" description="The visible label is hidden and an aria-label is generated from the label to maintain screen reader support."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Hide Label" hide-label></mui-input>
           </div>
@@ -218,7 +228,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Disabled">
+        <story-card title="Disabled"
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Disabled" disabled></mui-input>
           </div>
@@ -228,7 +240,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Before: Add On">
+        <story-card title="Before: Add On"
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Enter amount">
               <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
@@ -249,7 +263,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="After: Add On">
+        <story-card title="After: Add On"
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Enter amount">
               <mui-addon slot="after"><mui-body>USD</mui-body></mui-input></mui-addon>
@@ -270,7 +286,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Before: Select">
+        <story-card title="Before: Select"
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input type="search" label="Search">
               <mui-select
@@ -302,7 +320,9 @@ class storyInput extends HTMLElement {
           </<mui-code>
         </story-card>
 
-        <story-card title="After: Select">
+        <story-card title="After: Select"
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input type="number" label="Amount to transfer">
               <mui-select
@@ -332,7 +352,9 @@ class storyInput extends HTMLElement {
           </<mui-code>
         </story-card>
 
-        <story-card title="After: Button">
+        <story-card title="After: Button" 
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input type="email" label="Email" value="mui-web-components@proton.me">
               <mui-button slot="after">Copy</mui-button>
@@ -354,7 +376,9 @@ class storyInput extends HTMLElement {
           </<mui-code>
         </story-card>
 
-        <story-card title="Type: Text" description="The default input type for plain text.">
+        <story-card title="Type: Text" description="The default input type for plain text."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Name" type="text" id="name-input" name="name" value="John Doe"></mui-input>
           </div>
@@ -375,7 +399,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Type: Email" description="Ensures the entered value follows email format.">
+        <story-card title="Type: Email" description="Ensures the entered value follows email format."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Email" type="email" id="email-input" name="email" value="user@example.com"></mui-input>
           </div>
@@ -396,7 +422,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Type: Password" description="Using type password masks the user-filled content.">
+        <story-card title="Type: Password" description="Using type password masks the user-filled content."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Password" type="password" id="password-input" name="password" value="abcde1234"></mui-input>
           </div>
@@ -418,7 +446,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Type: Number" description="Restricts input to numeric values.">
+        <story-card title="Type: Number" description="Restricts input to numeric values."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Age" type="number" id="age-input" name="age" value="30"></mui-input>
           </div>
@@ -439,7 +469,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Type: URL" description="Validates URL format.">
+        <story-card title="Type: URL" description="Validates URL format."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Website" type="url" id="url-input" name="website" value="https://example.com"></mui-input>
           </div>
@@ -460,7 +492,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Type: Tel" description="Input for telephone numbers, no formatting enforced.">
+        <story-card title="Type: Tel" description="Input for telephone numbers, no formatting enforced."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Phone" type="tel" id="phone-input" name="phone" value="+1234567890"></mui-input>
           </div>
@@ -481,7 +515,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Type: Search" description="Styled and optimized for search fields.">
+        <story-card title="Type: Search" description="Styled and optimized for search fields."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Search" type="search" id="search-input" name="search" value="Query"></mui-input>
           </div>
@@ -502,7 +538,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Type: Date" description="Allows the user to pick a calendar date.">
+        <story-card title="Type: Date" description="Allows the user to pick a calendar date."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Birthdate" type="date" id="birthdate-input" name="birthdate" value="1990-01-01"></mui-input>
           </div>
@@ -523,7 +561,9 @@ class storyInput extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Type: Time" description="Provides a time picker for hour and minute selection.">
+        <story-card title="Type: Time" description="Provides a time picker for hour and minute selection."
+          usageLink="https://guides.muibook.com/input"
+        >
           <div slot="body">
             <mui-input label="Meeting Time" type="time" id="meeting-time-input" name="meetingTime" value="14:30"></mui-input>
           </div>

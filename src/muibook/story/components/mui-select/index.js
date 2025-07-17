@@ -217,6 +217,7 @@ class storySelect extends HTMLElement {
         <story-card 
           title="Value" 
           description="Define which option is selected by default."
+          usageLink="https://guides.muibook.com/select"
         >
           <div slot="body">
             <mui-select

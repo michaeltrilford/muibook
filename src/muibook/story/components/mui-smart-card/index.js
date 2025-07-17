@@ -168,7 +168,10 @@ class storySmartCard extends HTMLElement {
           </mui-responsive>
         </spec-card>
 
-        <story-card title="Plain">
+        <story-card title="Plain"
+          description="An example of composing a light coloured payment card."
+          usageLink="https://guides.muibook.com/smart-card"
+        >
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
           <mui-smart-card
             type="Debit"
@@ -191,7 +194,10 @@ class storySmartCard extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Plain / Inverted">
+        <story-card title="Plain / Inverted"
+          description="An example of composing a dark coloured payment card."
+          usageLink="https://guides.muibook.com/smart-card"
+        >
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
           <mui-smart-card
             inverted
@@ -216,7 +222,10 @@ class storySmartCard extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Animated">
+        <story-card title="Animated"
+          description="Use animation to bring vibrancy and life to what is often a static representation of a digital card."
+          usageLink="https://guides.muibook.com/smart-card"
+        >
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
           <mui-smart-card
             variant="animated"
@@ -284,7 +293,10 @@ class storySmartCard extends HTMLElement {
             </mui-code>
         </story-card>
 
-        <story-card title="Frozen">
+        <story-card title="Frozen"
+          description="Use the frozen state to clearly indicate when a card is inactive or temporarily disabled."
+          usageLink="https://guides.muibook.com/smart-card"
+        >
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               partner="${VisaBlack}"
@@ -306,7 +318,11 @@ class storySmartCard extends HTMLElement {
         </story-card>
 
 
-        <story-card title="Background-Image" description="Add a unique background image or an alternative to logo placement">
+        <story-card 
+          title="Background-Image" 
+          description="Add a unique background image or an alternative to logo placement"
+          usageLink="https://guides.muibook.com/smart-card"
+        >
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"
@@ -350,7 +366,9 @@ class storySmartCard extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Background-Color">
+        <story-card title="Background-Color" 
+          description="Apply a background colour that aligns with your organisation’s brand."
+          usageLink="https://guides.muibook.com/smart-card">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"
@@ -398,7 +416,9 @@ class storySmartCard extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Payment Networks" description="Use the partner prop to slot in other payment networks">
+        <story-card title="Payment Networks" description="Use the partner prop to slot in other payment networks"
+          usageLink="https://guides.muibook.com/smart-card"
+        >
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"
@@ -423,7 +443,10 @@ class storySmartCard extends HTMLElement {
         </story-card>
 
 
-        <story-card title="Reward Cards" description="Utilising the provided props to create bespoke digital cards.">
+        <story-card title="Reward Cards" 
+          description="Utilising the provided props to create bespoke digital cards."
+          usageLink="https://guides.muibook.com/smart-card"
+        >
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
           <mui-smart-card
             inverted

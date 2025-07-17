@@ -125,7 +125,9 @@ class storySwitch extends HTMLElement {
         </spec-card>
 
 
-        <story-card title="Unchecked">
+        <story-card title="Unchecked"
+          usageLink="https://guides.muibook.com/switch"
+        >
           <div slot="body">
             <mui-switch label="Unchecked"></mui-switch>
           </div>
@@ -134,7 +136,9 @@ class storySwitch extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Checked">
+        <story-card title="Checked"
+          usageLink="https://guides.muibook.com/switch"
+        >
           <div slot="body">
             <mui-switch label="On Example" checked></mui-switch>
           </div>
@@ -143,7 +147,9 @@ class storySwitch extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Disabled w/ Unchecked">
+        <story-card title="Disabled w/ Unchecked"
+          usageLink="https://guides.muibook.com/switch"
+        >
           <div slot="body">
             <mui-switch label="Unchecked w/ Disabled" disabled></mui-switch>
           </div>
@@ -152,7 +158,9 @@ class storySwitch extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Disabled w/ Checked">
+        <story-card title="Disabled w/ Checked"
+          usageLink="https://guides.muibook.com/switch"
+        >
           <div slot="body">
             <mui-switch disabled label="Checked w/ Disabled" checked></mui-switch>
           </div>
@@ -161,7 +169,9 @@ class storySwitch extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Icons: Off">
+        <story-card title="Icons: Off"
+          usageLink="https://guides.muibook.com/switch"
+        >
           <div slot="body">
             <mui-switch label="Dark mode toggle">
               <mui-icon-sun slot="off-icon"></mui-icon-sun>
@@ -179,7 +189,9 @@ class storySwitch extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Icons: On">
+        <story-card title="Icons: On"
+          usageLink="https://guides.muibook.com/switch"
+        >
           <div slot="body">
             <mui-switch label="Dark mode toggle" checked>
               <mui-icon-sun slot="off-icon"></mui-icon-sun>

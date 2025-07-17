@@ -87,7 +87,10 @@ class storyAddon extends HTMLElement {
           </mui-responsive>
         </spec-card>
 
-        <story-card title="Before: Add On">
+        <story-card title="Before: Add On"
+          description="Use for units, currency, or short static labels."
+          usageLink="https://guides.muibook.com/add-on"
+        >
           <div slot="body">
             <mui-input label="Enter amount">
               <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
@@ -108,7 +111,10 @@ class storyAddon extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="After: Add On">
+        <story-card title="After: Add On"
+          description="Use for units, currency, or short static labels."
+          usageLink="https://guides.muibook.com/add-on"
+        >
           <div slot="body">
             <mui-input label="Enter amount">
               <mui-addon slot="after"><mui-body>USD</mui-body></mui-input></mui-addon>

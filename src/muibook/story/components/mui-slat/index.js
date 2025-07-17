@@ -95,7 +95,10 @@ class storySlat extends HTMLElement {
           </mui-responsive>
         </spec-card>
 
-        <story-card title="Slat">
+        <story-card 
+          title="Slat" 
+          description="Slats offer flexibility to surface key content and support custom layouts, stacking, or expansion of additional details." 
+          usageLink="https://guides.muibook.com/slat">
 
           <mui-slat slot="body">
             <mui-heading slot="start" size="5">Heading</mui-heading>

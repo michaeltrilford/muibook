@@ -92,7 +92,9 @@ class storyFileUpload extends HTMLElement {
           </spec-card>
 
           <story-card 
-            title="Default" 
+            title="Default"
+            description="A simple file input that displays the selected file name and emits a file-upload event."
+            usageLink="https://guides.muibook.com/file-upload"
           >
             <mui-file-upload slot="body"
               acceptedFileTypes=".pdf,.jpg"

@@ -161,6 +161,7 @@ class storyAlert extends HTMLElement {
             title="Warning"
             description="Alerts users to potential issues or situations that require caution."
             usage="Notifying about unsaved changes.; Indicating deprecated features or upcoming changes.; Highlighting actions that may have unintended consequences."
+            usageLink="https://guides.muibook.com/alert"
             accessibility="ARIA-live of ASSERTIVE is set on this variant."
           >
             <div slot="body">
@@ -196,7 +197,8 @@ class storyAlert extends HTMLElement {
 
           <story-card 
             title="Action / Close button" 
-            description="Optional action to help dismiss or action a task" 
+            description="Optional action to help dismiss or action a task"
+            usageLink="https://guides.muibook.com/alert"
           >
             <mui-v-stack slot="body" space="var(--space-200)">
 
@@ -244,7 +246,8 @@ class storyAlert extends HTMLElement {
 
           <story-card 
             title="Action / Undo" 
-            description="Optional action to for tasks like undoing an action." 
+            description="Optional action to for tasks like undoing an action."
+            usageLink="https://guides.muibook.com/alert"
           >
             <mui-v-stack slot="body" space="var(--space-200)">
               <mui-alert variant="success">
@@ -292,7 +295,8 @@ class storyAlert extends HTMLElement {
 
           <story-card 
             title="Action / Link" 
-            description="Optional action to for tasks like undoing an action." 
+            description="Optional action to for tasks like undoing an action."
+            usageLink="https://guides.muibook.com/alert"
           >
             <mui-v-stack slot="body" space="var(--space-200)">
 

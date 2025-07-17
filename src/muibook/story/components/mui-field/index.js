@@ -125,7 +125,11 @@ class storyField extends HTMLElement {
           </mui-responsive>
         </spec-card>
 
-        <story-card title="Input: Default" description="The label prop is forwarded from the parent field to the input element to associate the label with the input correctly.">
+        <story-card 
+          title="Input: Default" 
+          description="The label prop is forwarded from the parent field to the input element to associate the label with the input correctly."
+          usageLink="https://guides.muibook.com/field"
+        >
           <mui-field label="Email" slot="body">
             <mui-input type="email" placeholder="you@example.com"></mui-input>
           </mui-field>
@@ -139,7 +143,9 @@ class storyField extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Input: Default w/ Message" description="You are able to pass in a message that stays static on the page.">
+        <story-card title="Input: Default w/ Message" description="You are able to pass in a message that stays static on the page."
+          usageLink="https://guides.muibook.com/field"
+        >
           <mui-field label="Name" slot="body" message="This field doesn't accept special characters">
             <mui-input></mui-input>
           </mui-field>
@@ -153,7 +159,9 @@ class storyField extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Input: Success w/ Message" description="The form logic will inject the success message onto the field component and render">
+        <story-card title="Input: Success w/ Message" description="The form logic will inject the success message onto the field component and render"
+          usageLink="https://guides.muibook.com/field"
+        >
           <!-- Change here: remove onclick, add data-toggle attribute -->
           <mui-button
             variant="secondary"
@@ -193,7 +201,9 @@ class storyField extends HTMLElement {
         </story-card>
 
 
-        <story-card title="Input: Warning w/ Message" description="The form logic will inject the warning message onto the field component and render">
+        <story-card title="Input: Warning w/ Message" description="The form logic will inject the warning message onto the field component and render"
+          usageLink="https://guides.muibook.com/field"
+        >
 
           <!-- Change here: remove onclick, add data-toggle attribute -->
           <mui-button
@@ -232,7 +242,9 @@ class storyField extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Input: Error w/ Message" description="The form logic will inject the error message onto the field component and render">
+        <story-card title="Input: Error w/ Message" description="The form logic will inject the error message onto the field component and render"
+          usageLink="https://guides.muibook.com/field"
+        >
 
           <!-- Change here: remove onclick, add data-toggle attribute -->
           <mui-button
@@ -271,7 +283,9 @@ class storyField extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Select: Error w/ Message" description="The form logic will inject the error message onto the field component and render">
+        <story-card title="Select: Error w/ Message" description="The form logic will inject the error message onto the field component and render"
+          usageLink="https://guides.muibook.com/field"
+        >
 
           <!-- Change here: remove onclick, add data-toggle attribute -->
           <mui-button
