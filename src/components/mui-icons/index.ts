@@ -24,3 +24,4 @@ import "./up-arrow";
 import "./up-chevron";
 import "./warning";
 import "./down-arrow-circle";
+import "./ellipsis";

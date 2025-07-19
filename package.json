@@ -220,6 +220,10 @@
       "import": "./dist/esm/components/mui-icons/down-arrow-circle/index.js",
       "types": "./dist/types/components/mui-icons/down-arrow-circle/index.d.ts"
     },
+    "./mui-icons/ellipsis": {
+      "import": "./dist/esm/components/mui-icons/ellipsis/index.js",
+      "types": "./dist/types/components/mui-icons/ellipsis/index.d.ts"
+    },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"

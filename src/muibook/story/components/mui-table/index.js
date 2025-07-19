@@ -537,14 +537,14 @@ class storyTable extends HTMLElement {
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
-                      <mui-button variant="tertiary" > <mui-icon-add></mui-icon-add></mui-button>
+                      <mui-button variant="tertiary" > <mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                     </mui-cell>
                   </mui-row>
                   <mui-row columns="${Columns_Action}">
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
-                      <mui-button variant="tertiary" > <mui-icon-add></mui-icon-add></mui-button>
+                      <mui-button variant="tertiary" > <mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                     </mui-cell>
                   </mui-row>
                 </mui-row-group>
@@ -771,14 +771,14 @@ class storyTable extends HTMLElement {
                         <mui-cell>Whalen</mui-cell>
                         <mui-cell>$1,100.00</mui-cell>
                         <mui-cell action>
-                          <mui-button variant="tertiary" > <mui-icon-add></mui-icon-add></mui-button>
+                          <mui-button variant="tertiary" > <mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                         </mui-cell>
                       </mui-row>
                       <mui-row columns="${Columns_Action}">
                         <mui-cell>Whalen</mui-cell>
                         <mui-cell>$1,100.00</mui-cell>
                         <mui-cell action>
-                          <mui-button variant="tertiary"> <mui-icon-add></mui-icon-add></mui-button>
+                          <mui-button variant="tertiary"> <mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                         </mui-cell>
                       </mui-row>
                     </mui-row-group>
@@ -819,7 +819,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -828,7 +828,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -862,14 +862,14 @@ class storyTable extends HTMLElement {
                         <mui-cell>Whalen</mui-cell>
                         <mui-cell>$1,100.00</mui-cell>
                         <mui-cell action>
-                          <mui-button variant="tertiary" ><mui-icon-add></mui-icon-add></mui-button>
+                          <mui-button variant="tertiary" ><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                         </mui-cell>
                       </mui-row>
                       <mui-row columns="${Columns_Action}">
                         <mui-cell>Whalen</mui-cell>
                         <mui-cell>$1,100.00</mui-cell>
                         <mui-cell action>
-                          <mui-button variant="tertiary" ><mui-icon-add></mui-icon-add></mui-button>
+                          <mui-button variant="tertiary" ><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                         </mui-cell>
                       </mui-row>
                     </mui-row-group>
@@ -914,7 +914,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -923,7 +923,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>

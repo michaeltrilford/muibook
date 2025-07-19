@@ -204,6 +204,34 @@ class storyIcon extends HTMLElement {
             </mui-responsive>
           </spec-card>
 
+          <story-card title="Sizes" description="The default size of the icon is size: small">
+
+            <mui-grid col="1fr 1fr" space="var(--space-400)" slot="body">
+
+              <story-icon-grid center>              
+                <mui-icon-add slot="body" size="x-small"></mui-icon-add>
+                <mui-code slot="footer" scrollable>mui-icon-add size="x-small"</mui-code>
+              </story-icon-grid>
+
+              <story-icon-grid center>              
+                <mui-icon-add slot="body" size="small"></mui-icon-add>
+                <mui-code slot="footer" scrollable>mui-icon-add size="small"</mui-code>
+              </story-icon-grid>
+
+              <story-icon-grid center>              
+                <mui-icon-add slot="body" size="medium"></mui-icon-add>
+                <mui-code slot="footer" scrollable>mui-icon-add size="medium"</mui-code>
+              </story-icon-grid>
+
+              <story-icon-grid center>              
+                <mui-icon-add slot="body" size="large"></mui-icon-add>
+                <mui-code slot="footer" scrollable>mui-icon-add size="large"</mui-code>
+              </story-icon-grid>
+
+            </mui-grid> 
+
+          </story-card>
+
           <story-card title="Default" description="Icons are set to size 'small' by default." >
 
             <mui-grid space="var(--space-400)" slot="body">
@@ -316,7 +344,12 @@ class storyIcon extends HTMLElement {
               <story-icon-grid center>              
                 <mui-icon-down-arrow-circle slot="body"></mui-icon-down-arrow-circle>
                 <mui-code slot="footer" scrollable>mui-icon-down-arrow-circle</mui-code>
-              </story-icon-grid>              
+              </story-icon-grid>  
+              
+              <story-icon-grid center>              
+                <mui-icon-ellipsis slot="body"></mui-icon-ellipsis>
+                <mui-code slot="footer" scrollable>mui-icon-ellipsis</mui-code>
+              </story-icon-grid>  
 
 
 
