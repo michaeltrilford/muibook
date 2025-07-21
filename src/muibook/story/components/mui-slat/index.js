@@ -226,6 +226,13 @@ class storySlat extends HTMLElement {
           </mui-slat>
           
           <mui-code slot="footer" scrollable>
+            // ⚠️ Important
+            <br />
+            » &lt;mui-button&gt; is used internally, ensure it is imported.
+            <br />
+            <br />
+            <br />
+
             &lt;mui-slat&gt;
             <br />
             <br />
