@@ -111,6 +111,7 @@ class compAgentUI extends HTMLElement {
           System a view of how the system is working and 
           where it needs flexibility.
         "
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/agent-ui/index.js"
       >
 
       <mui-v-stack space="var(--space-700)">
