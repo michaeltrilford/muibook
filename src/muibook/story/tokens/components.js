@@ -50,6 +50,7 @@ class tokensComponents extends HTMLElement {
               <mui-link data-scroll-link="body">Body</mui-link>
               <mui-link data-scroll-link="label">Label</mui-link>
               <mui-link data-scroll-link="list">List</mui-link>
+              <mui-link data-scroll-link="slat">Slat</mui-link>
             </mui-h-stack>
           </mui-message>
 
@@ -145,6 +146,16 @@ class tokensComponents extends HTMLElement {
 
           <spec-card id="list" title="List" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-list">
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Text Contextual</mui-link> tokens</mui-body>
+          </spec-card>
+
+          <spec-card 
+            id="slat"
+            title="Slat"
+            description="These tokens are exposed so consumers can tailor background color states to fit their brand."
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts"
+          >
+            <story-token-slat slot="body" token="--slat-action-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-action-background-hover" variant="color"></story-token-slat>
           </spec-card>
 
 

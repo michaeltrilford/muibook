@@ -16,27 +16,6 @@ class compWallet extends HTMLElement {
         padding-right: var(--space-400);
       }
 
-      .title {
-        padding-left: var(--space-400);
-        padding-right: var(--space-400);
-        padding-bottom: var(--space-200);
-      }
-
-
-      .statement {
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        width: 100%;
-        text-align: left;
-      }
-
-      .action {
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        width: 100%;
-        text-align: left;
-      }
-
       mui-button::part(padding) {
         border: 0;
         padding: var(--space-400) var(--space-400);
@@ -76,117 +55,87 @@ class compWallet extends HTMLElement {
 
             <mui-tab-controller>
 
-            <mui-v-stack alignX="stretch" style="max-width: 100%;">
+              <mui-v-stack alignX="stretch" style="max-width: 100%;">
 
-              <mui-tab-bar>
-                <mui-tab-item active id="item1">Transactions</mui-tab-item>
-                <mui-tab-item id="item2">Statements</mui-tab-item>
-              </mui-tab-bar>
+                <mui-tab-bar>
+                  <mui-tab-item active id="item1">Transactions</mui-tab-item>
+                  <mui-tab-item id="item2">Statements</mui-tab-item>
+                </mui-tab-bar>
 
-              <mui-tab-panel item="item1">
-                <mui-v-stack alignX="stretch" space="var(--space-400)">
-                  <mui-slat class="slat">
-                    <mui-v-stack slot="start" space="0">
-                      <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
-                      <mui-body size="small">Food & Drink</mui-body>
-                    </mui-v-stack>
-                    <mui-v-stack space="0" slot="end" alignX="end">
-                      <mui-body size="small">Pending</mui-body>
-                      <mui-body size="small">-$8.12</mui-body>
-                    </mui-v-stack>
-                  </mui-slat>
+                <mui-tab-panel item="item1">
+                  <mui-v-stack alignX="stretch" space="var(--space-000)">
+                    <mui-slat variant="row">
+                      <mui-v-stack slot="start" space="0">
+                        <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
+                        <mui-body size="small">Food & Drink</mui-body>
+                      </mui-v-stack>
+                      <mui-v-stack space="0" slot="end" alignX="end">
+                        <mui-body size="small">Pending</mui-body>
+                        <mui-body size="small">-$8.12</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
 
-                  <mui-slat class="slat">
-                    <mui-v-stack slot="start" space="0">
-                      <mui-body size="medium" weight="bold">Apple App Store</mui-body>
-                      <mui-body size="small">Entertainment</mui-body>
-                    </mui-v-stack>
-                    <mui-v-stack space="0" slot="end" alignX="end">
-                      <mui-body size="small">Pending</mui-body>
-                      <mui-body size="small">-$4.99</mui-body>
-                    </mui-v-stack>
-                  </mui-slat>
+                    <mui-slat variant="row">
+                      <mui-v-stack slot="start" space="0">
+                        <mui-body size="medium" weight="bold">Apple App Store</mui-body>
+                        <mui-body size="small">Entertainment</mui-body>
+                      </mui-v-stack>
+                      <mui-v-stack space="0" slot="end" alignX="end">
+                        <mui-body size="small">Pending</mui-body>
+                        <mui-body size="small">-$4.99</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
 
-                  <mui-slat class="slat">
-                    <mui-v-stack slot="start" space="0">
-                      <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
-                      <mui-body size="small">Groceries</mui-body>
-                    </mui-v-stack>
-                    <mui-v-stack space="0" slot="end" alignX="end">
-                      <mui-body size="small">Pending</mui-body>
-                      <mui-body size="medium">-$26.89</mui-body>
-                    </mui-v-stack>
-                  </mui-slat>
-                </mui-v-stack>
-              </mui-tab-panel>
+                    <mui-slat variant="row">
+                      <mui-v-stack slot="start" space="0">
+                        <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
+                        <mui-body size="small">Groceries</mui-body>
+                      </mui-v-stack>
+                      <mui-v-stack space="0" slot="end" alignX="end">
+                        <mui-body size="small">Pending</mui-body>
+                        <mui-body size="medium">-$26.89</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
+                  </mui-v-stack>
+                </mui-tab-panel>
 
-              <mui-tab-panel item="item2">
-
-                <mui-v-stack alignX="stretch" space="var(--space-500)">
-
-                  <mui-v-stack space="var(--space-025)">
-                    <mui-v-stack alignX="stretch" space="var(--space-100)">
-                      <mui-heading size="6" class="title">Recents</mui-heading>
-                    </mui-v-stack>
-                    <mui-button variant="tertiary">
-                      <mui-slat class="action">
-                        <mui-v-stack slot="start" space="0">
+                <mui-tab-panel item="item2">
+                  <mui-v-stack alignX="stretch" space="var(--space-500)">
+                    <mui-v-stack space="var(--space-025)">
+                      <mui-slat variant="header">
+                        <mui-heading size="6" slot="start">Recents</mui-heading>
+                      </mui-slat>
+                      <mui-slat variant="action">
+                        <mui-v-stack space="0" slot="start">
                           <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
                           <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
                         </mui-v-stack>
-                        <mui-v-stack space="0" slot="end" alignX="end">
-                          <mui-icon-right-chevron size="x-small"></mui-icon-right-chevron>
-                        </mui-v-stack>
+                        <mui-icon-right-chevron slot="end" size="x-small"></mui-icon-right-chevron>
                       </mui-slat>
-                    </mui-button>
-                    <mui-button variant="tertiary">
-                      <mui-slat class="action">
-                        <mui-v-stack slot="start" space="0">
-                          <mui-body size="medium" weight="bold">21 Mar 2025</mui-body>
-                        </mui-v-stack>
-                        <mui-v-stack space="0" slot="end" alignX="end">
-                          <mui-icon-right-chevron size="x-small"></mui-icon-right-chevron>
-                        </mui-v-stack>
+                      <mui-slat variant="action">
+                        <mui-body size="medium" weight="bold" slot="start">21 Mar 2025</mui-body>
+                        <mui-icon-right-chevron slot="end" size="x-small"></mui-icon-right-chevron>
                       </mui-slat>
-                    </mui-button>
-                  </mui-v-stack>
-                  
-                  <mui-v-stack space="var(--space-025)">
-                    <mui-v-stack alignX="stretch" space="var(--space-100)">
-                      <mui-heading size="6" class="title">All</mui-heading>
                     </mui-v-stack>
-                    <mui-button variant="tertiary">
-                      <mui-slat class="action">
-                        <mui-v-stack slot="start" space="0">
-                          <mui-body size="medium" weight="bold">2025</mui-body>
-                        </mui-v-stack>
-                        <mui-v-stack space="0" slot="end" alignX="end">
-                          <mui-icon-right-chevron size="x-small"></mui-icon-right-chevron>
-                        </mui-v-stack>
+                    <mui-v-stack space="var(--space-025)">
+                      <mui-slat variant="header">
+                        <mui-heading size="6" slot="start">All</mui-heading>
                       </mui-slat>
-                    </mui-button>
-                    <mui-button variant="tertiary">
-                      <mui-slat class="action">
-                        <mui-v-stack slot="start" space="0">
-                          <mui-body size="medium" weight="bold">2025</mui-body>
-                        </mui-v-stack>
-                        <mui-v-stack space="0" slot="end" alignX="end">
-                          <mui-icon-right-chevron size="x-small"></mui-icon-right-chevron>
-                        </mui-v-stack>
+                      <mui-slat variant="action">
+                        <mui-body size="medium" weight="bold" slot="start">2025</mui-body>
+                        <mui-icon-right-chevron slot="end" size="x-small"></mui-icon-right-chevron>
                       </mui-slat>
-                    </mui-button>
+                      <mui-slat variant="action">
+                        <mui-body size="medium" weight="bold" slot="start">2024</mui-body>
+                        <mui-icon-right-chevron slot="end" size="x-small"></mui-icon-right-chevron>
+                      </mui-slat>
+                    </mui-v-stack>
                   </mui-v-stack>
-
-                </mui-v-stack>
-
-               
-              </mui-tab-panel>
+                </mui-tab-panel>
 
               </mui-v-stack>
+
             </mui-tab-controller>
-
-
-
 
           </mui-v-stack>
 

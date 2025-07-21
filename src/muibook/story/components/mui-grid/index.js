@@ -17,16 +17,14 @@ class storyGrid extends HTMLElement {
         type: "string",
         options: "1fr, 1fr 1fr, etc...",
         default: "",
-        description:
-          "Only use with 'showBelow' & 'showAbove' named slots. A number that represents a single breakpoint that switches between two 'showAbove' | 'showBelow' views. You are able to nest, so you can be creative.",
+        description: "Adjust the column rules.",
       },
       {
         name: "space",
         type: "string",
         options: "var(--space-xxx)",
         default: "",
-        description:
-          "Only use with 'showBelow' & 'showAbove' named slots. A number that represents a single breakpoint that switches between two 'showAbove' | 'showBelow' views. You are able to nest, so you can be creative.",
+        description: "Adjust the gap between columns.",
       },
       {
         name: "style",
