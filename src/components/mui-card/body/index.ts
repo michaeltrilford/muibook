@@ -12,6 +12,7 @@ class MuiCardBody extends HTMLElement {
           display: block;
           box-sizing: border-box;
         }
+        
         :host(.inner-space) {
           padding: var(--space-500);
         }
@@ -51,6 +52,18 @@ class MuiCardBody extends HTMLElement {
             hasLayoutComponent = true;
           }
 
+          // Check for all <mui-slat> elements
+          const slats =
+            element.tagName.toLowerCase() === "mui-slat" ? [element] : Array.from(element.querySelectorAll("mui-slat"));
+
+          slats.forEach((slat) => {
+            const variant = slat.getAttribute("variant");
+            if (variant === "action" || variant === "row") {
+              slat.classList.add("card-slot");
+              // Slats do not count as layout components
+            }
+          });
+
           // Check for <mui-table>
           const isTable = element.tagName.toLowerCase() === "mui-table";
           const table = isTable ? element : element.querySelector("mui-table");
@@ -66,7 +79,7 @@ class MuiCardBody extends HTMLElement {
         }
       });
 
-      if (!hasLayoutComponent) {
+      if (!hasLayoutComponent && !this.hasAttribute("condensed")) {
         this.classList.add("inner-space");
       }
     });

@@ -123,6 +123,14 @@ class storyCards extends HTMLElement {
         description:
           "Add items inside the card body. Some MUI components, like Accordion or Table, automatically style slotted content to optimise space.",
       },
+      {
+        name: "condensed",
+        required: false,
+        type: "boolean",
+        options: "condensed",
+        default: "",
+        description: "Turn off the padding",
+      },
     ];
 
     const rowsCardBody = propItemsCardBody

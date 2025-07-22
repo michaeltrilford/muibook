@@ -377,4 +377,6 @@ html[data-brand="jal"][data-theme="dark"] {
 html[data-brand="jal"] {
   /* Card */
   --card-radius: var(--radius-200);
+  /* Slat [Action] */
+  --slat-radius: var(--radius-000);
 }

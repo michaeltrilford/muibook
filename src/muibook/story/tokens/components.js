@@ -154,8 +154,11 @@ class tokensComponents extends HTMLElement {
             description="These tokens are exposed so consumers can tailor background color states to fit their brand."
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts"
           >
-            <story-token-slat slot="body" token="--slat-action-background" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--slat-action-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-card-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-card-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-radius" variant="radius"></story-token-slat>
           </spec-card>
 
 

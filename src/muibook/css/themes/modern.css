@@ -362,4 +362,6 @@ html[data-brand="modern"][data-theme="dark"] {
 html[data-brand="modern"] {
   /* Card */
   --card-radius: var(--radius-400);
+  /* Slat [Action] */
+  --slat-radius: var(--radius-100);
 }

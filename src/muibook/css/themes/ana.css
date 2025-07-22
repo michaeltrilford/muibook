@@ -362,4 +362,6 @@ html[data-brand="ana"] {
   --card-radius: var(--radius-400);
   /* Tab */
   --tab-radius: var(--radius-400);
+  /* Slat [Action] */
+  --slat-radius: var(--radius-200);
 }

@@ -43,20 +43,20 @@ class MuiSlat extends HTMLElement {
       :host {
         display: grid;
         grid-template-columns: ${col};
+        align-items: center;
         gap: ${space};
         box-sizing: border-box;
       }
 
       :host([variant="row"]) {
-        padding-left: var(--space-400);
-        padding-right: var(--space-400);
-        padding-bottom: var(--space-400);
+        padding: var(--space-300) var(--space-400);
+         background: var(--slat-background);
+         border-radius: var(--slat-radius);
       }
 
       :host([variant="header"]) {
-        padding-left: var(--space-400);
-        padding-right: var(--space-400);
-        padding-bottom: var(--space-200);
+        padding: var(--space-200) var(--space-400);
+        padding-top: var(--space-400);
       }
 
       :host([variant="action"]) {
@@ -75,7 +75,7 @@ class MuiSlat extends HTMLElement {
       }
 
       .action::part(padding) {
-        padding: var(--space-400);
+        padding: var(--space-300) var(--space-400);
       }
 
       .action::part(border) {
@@ -83,11 +83,27 @@ class MuiSlat extends HTMLElement {
       }
 
       .action::part(background) {
-        background: var(--slat-action-background);
+        background: var(--slat-background);
       }
 
       .action:hover::part(background) {
-        background: var(--slat-action-background-hover);
+        background: var(--slat-background-hover);
+      }
+
+      .action::part(border-radius) {
+        border-radius: var(--slat-radius);
+      }
+
+      .end {
+        display: flex;
+        align-items: center;
+        gap: var(--space-300);
+        text-align: right;
+      }
+      
+      :host(.card-slot) {
+        --slat-background: var(--slat-card-background);
+        --slat-background-hover: var(--slat-card-background-hover);
       }
 
     `;
@@ -97,7 +113,11 @@ class MuiSlat extends HTMLElement {
         <style>${styles}</style>
         <mui-button variant="tertiary" class="action">
           <slot name="start"></slot>
-          <slot name="end" slot="after"></slot>
+          <div class="end" slot="after">
+            <slot name="end"></slot>
+            <mui-icon-right-chevron size="x-small"></mui-icon-right-chevron>
+          </div>
+          
         </mui-button>
       `
       : /*html*/ `

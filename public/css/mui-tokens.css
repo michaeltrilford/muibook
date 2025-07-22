@@ -370,6 +370,12 @@ html[data-theme="light"] {
 
   /* Carousel */
   --carousel-background: var(--white);
+
+  /* Slat */
+  --slat-background: var(--white-opacity-60);
+  --slat-background-hover: var(--white-opacity-90);
+  --slat-card-background: var(--surface-elevated-100);
+  --slat-card-background-hover: var(--surface-elevated-200);
 }
 
 /* ==================================================================================================== */
@@ -540,6 +546,12 @@ html[data-theme="dark"] {
 
   /* Carousel */
   --carousel-background: var(--grey-700);
+
+  /* Slat */
+  --slat-background: var(--black-opacity-20);
+  --slat-background-hover: var(--black-opacity-50);
+  --slat-card-background: var(--surface-elevated-100);
+  --slat-card-background-hover: var(--surface-elevated-200);
 }
 
 /* ==================================================================================================== */
@@ -654,6 +666,5 @@ html[data-theme="dark"] {
   --carousel-tab-position: var(--space-400);
   --carousel-tab-offset: calc(4.4rem + var(--carousel-tab-position)); /* Tab Height */
   /* Slat [Action] */
-  --slat-action-background: var(--surface-elevated-100);
-  --slat-action-background-hover: var(--surface-elevated-100);
+  --slat-radius: var(--radius-100);
 }
