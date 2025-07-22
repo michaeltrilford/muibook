@@ -427,6 +427,14 @@ class storySlat extends HTMLElement {
           </mui-card>
           
           <mui-code slot="footer" scrollable>
+            // ⚠️ Button required
+            <br />
+            <br />
+            import "@muibook/components/mui-button";
+            <br />
+            import "@muibook/components/mui-slat";
+            <br />
+            <br />
             &lt;mui-card&gt;<br />
             &nbsp;&nbsp;&lt;mui-card-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
@@ -554,6 +562,14 @@ class storySlat extends HTMLElement {
           </mui-card>
           
           <mui-code slot="footer" scrollable>
+            // ⚠️ Button required
+            <br />
+            <br />
+            import "@muibook/components/mui-button";
+            <br />
+            import "@muibook/components/mui-slat";
+            <br />
+            <br />
             &lt;mui-card&gt;<br />
             &nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
@@ -683,6 +699,14 @@ class storySlat extends HTMLElement {
           </mui-card>
           
           <mui-code slot="footer" scrollable>
+            // ⚠️ Button required
+            <br />
+            <br />
+            import "@muibook/components/mui-button";
+            <br />
+            import "@muibook/components/mui-slat";
+            <br />
+            <br />
             &lt;mui-card&gt;<br />
             &nbsp;&nbsp;&lt;mui-card-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
