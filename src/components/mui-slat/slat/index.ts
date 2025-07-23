@@ -1,5 +1,6 @@
 import "../../mui-button";
 import "../../mui-icons/right-chevron";
+import "../../mui-stack";
 
 class MuiSlat extends HTMLElement {
   static get observedAttributes() {
@@ -37,10 +38,16 @@ class MuiSlat extends HTMLElement {
     });
   }
 
+  hasAccessorySlot(): boolean {
+    const accessorySlot = this.querySelector('[slot="accessory"]');
+    return accessorySlot !== null;
+  }
+
   render() {
     const isAction = this.variant === "action";
     const col = this.getAttribute("col") || "1fr 1fr";
     const space = this.getAttribute("space") || "var(--space-500)";
+    const hasAccessory = this.hasAccessorySlot();
 
     const styles = /*css*/ `
       :host {
@@ -109,13 +116,31 @@ class MuiSlat extends HTMLElement {
         --slat-background-hover: var(--slat-card-background-hover);
       }
 
+      :host(.condensed-slot)::part(border-radius) {
+        border-radius: 0; 
+      }
+
+      :host(.condensed-slot:last-of-type)::part(border-radius) {
+        border-bottom-left-radius: var(--card-radius); 
+        border-bottom-right-radius: var(--card-radius); 
+      }
+
     `;
+
+    const startSlotMarkup = hasAccessory
+      ? `
+        <mui-h-stack alignY="center" space="var(--space-400)">
+          <slot name="accessory"></slot>
+          <slot name="start"></slot>
+        </mui-h-stack>
+      `
+      : `<slot name="start"></slot>`;
 
     this.shadowRoot!.innerHTML = isAction
       ? /*html*/ `
         <style>${styles}</style>
         <mui-button variant="tertiary" class="action">
-          <slot name="start"></slot>
+          ${startSlotMarkup}
           <div class="end" slot="after">
             <slot name="end"></slot>
             <mui-icon-right-chevron size="x-small"></mui-icon-right-chevron>
@@ -125,7 +150,7 @@ class MuiSlat extends HTMLElement {
       `
       : /*html*/ `
         <style>${styles}</style>
-        <slot name="start"></slot>
+        ${startSlotMarkup}
         <slot name="end"></slot>
       `;
 

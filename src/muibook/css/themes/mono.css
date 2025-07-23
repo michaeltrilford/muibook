@@ -320,6 +320,4 @@ html[data-brand="mono"][data-theme="dark"] {
 html[data-brand="mono"] {
   /* Card */
   --card-radius: var(--radius-400);
-  /* Slat [Action] */
-  --slat-radius: var(--radius-000);
 }

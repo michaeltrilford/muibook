@@ -60,6 +60,9 @@ class MuiCardBody extends HTMLElement {
             const variant = slat.getAttribute("variant");
             if (variant === "action" || variant === "row") {
               slat.classList.add("card-slot");
+              if (this.hasAttribute("condensed")) {
+                slat.classList.add("condensed-slot");
+              }
               // Slats do not count as layout components
             }
           });

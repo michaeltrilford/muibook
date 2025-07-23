@@ -668,5 +668,5 @@ html[data-theme="dark"] {
   --carousel-tab-position: var(--space-400);
   --carousel-tab-offset: calc(4.4rem + var(--carousel-tab-position)); /* Tab Height */
   /* Slat [Action] */
-  --slat-radius: var(--radius-100);
+  --slat-radius: var(--radius-200);
 }
