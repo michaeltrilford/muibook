@@ -1,3 +1,5 @@
+import "../mui-button";
+
 class MuiFileUpload extends HTMLElement {
   acceptedFileTypes: string;
   currentFileName: string;
@@ -132,4 +134,6 @@ class MuiFileUpload extends HTMLElement {
   }
 }
 
-customElements.define("mui-file-upload", MuiFileUpload);
+if (!customElements.get("mui-file-upload")) {
+  customElements.define("mui-file-upload", MuiFileUpload);
+}

@@ -91,18 +91,6 @@ class MuiInput extends HTMLElement {
     const hasAfter = this.querySelector('[slot="after"]') !== null;
     const inputClasses = [variantClass, hasBefore ? "before" : "", hasAfter ? "after" : ""].filter(Boolean).join(" ");
 
-    if (hideLabel && !label) {
-      console.warn(
-        "mui-input Accessibility warning: When using 'hide-label', please provide a 'label' attribute so an 'aria-label' can be generated for screen reader support."
-      );
-    }
-
-    if (!label && !ariaLabel) {
-      console.warn(
-        "mui-input Accessibility warning: A 'label' or 'aria-label' attribute is required for screen reader accessibility."
-      );
-    }
-
     const html = /*html*/ `
       <style>
         :host {
@@ -263,4 +251,6 @@ class MuiInput extends HTMLElement {
   }
 }
 
-customElements.define("mui-input", MuiInput);
+if (!customElements.get("mui-input")) {
+  customElements.define("mui-input", MuiInput);
+}

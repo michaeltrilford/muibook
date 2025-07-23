@@ -76,4 +76,6 @@ class MuiIconMoon extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-moon", MuiIconMoon);
+if (!customElements.get("mui-icon-moon")) {
+  customElements.define("mui-icon-moon", MuiIconMoon);
+}

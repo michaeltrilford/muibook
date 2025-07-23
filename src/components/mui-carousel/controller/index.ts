@@ -143,4 +143,6 @@ class MuiCarouselController extends HTMLElement {
   }
 }
 
-customElements.define("mui-carousel-controller", MuiCarouselController);
+if (!customElements.get("mui-carousel-controller")) {
+  customElements.define("mui-carousel-controller", MuiCarouselController);
+}

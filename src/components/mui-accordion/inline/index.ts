@@ -1,5 +1,5 @@
 import "../../mui-icons/right-chevron";
-import "../../../components/mui-heading";
+import "../../mui-heading";
 
 class MuiAccordionInline extends HTMLElement {
   private summaryEl!: HTMLElement | null;
@@ -12,18 +12,6 @@ class MuiAccordionInline extends HTMLElement {
   }
 
   connectedCallback() {
-    if (!customElements.get("mui-icon-right-chevron")) {
-      console.warn(
-        "mui-accordion-block requires <mui-icon-right-chevron> to be defined. Please ensure it is imported and registered."
-      );
-    }
-
-    if (!customElements.get("mui-heading")) {
-      console.warn(
-        "[mui-accordion-block] Warning: <mui-heading> is not registered. Please import it to ensure proper functionality."
-      );
-    }
-
     if (!this.shadowRoot) return;
     const headingText = this.getAttribute("heading") || "Heading...";
     const headingLevel = this.getAttribute("level") || "3";
@@ -129,4 +117,6 @@ class MuiAccordionInline extends HTMLElement {
   }
 }
 
-customElements.define("mui-accordion-inline", MuiAccordionInline);
+if (!customElements.get("mui-accordion-inline")) {
+  customElements.define("mui-accordion-inline", MuiAccordionInline);
+}

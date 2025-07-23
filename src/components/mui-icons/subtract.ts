@@ -76,4 +76,6 @@ class MuiIconSubtract extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-subtract", MuiIconSubtract);
+if (!customElements.get("mui-icon-subtract")) {
+  customElements.define("mui-icon-subtract", MuiIconSubtract);
+}

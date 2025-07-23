@@ -21,4 +21,6 @@ class MuiButtonGroup extends HTMLElement {
   }
 }
 
-customElements.define("mui-button-group", MuiButtonGroup);
+if (!customElements.get("mui-button-group")) {
+  customElements.define("mui-button-group", MuiButtonGroup);
+}

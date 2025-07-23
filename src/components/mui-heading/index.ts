@@ -40,4 +40,6 @@ class MuiHeading extends HTMLElement {
   }
 }
 
-customElements.define("mui-heading", MuiHeading);
+if (!customElements.get("mui-heading")) {
+  customElements.define("mui-heading", MuiHeading);
+}

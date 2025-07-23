@@ -1,3 +1,6 @@
+import "../mui-body";
+import "../mui-badge";
+
 class MuiSmartCard extends HTMLElement {
   static get observedAttributes() {
     return [
@@ -42,12 +45,6 @@ class MuiSmartCard extends HTMLElement {
     const logoHeightAttr = this.getAttribute("logo-height");
     const logoHeight =
       logoHeightAttr && !isNaN(parseInt(logoHeightAttr, 10)) ? parseInt(logoHeightAttr, 10) : undefined;
-
-    if (logoHeight && logoHeight > 126) {
-      console.warn(
-        `[mui-smart-card] The logo height (${logoHeight}px) exceeds the recommended maximum of 126px. This may affect vertical alignment or visual consistency.`
-      );
-    }
 
     let cardClass = "card";
     let surfaceStyle = "";
@@ -394,4 +391,6 @@ class MuiSmartCard extends HTMLElement {
   }
 }
 
-customElements.define("mui-smart-card", MuiSmartCard);
+if (!customElements.get("mui-smart-card")) {
+  customElements.define("mui-smart-card", MuiSmartCard);
+}

@@ -1,3 +1,7 @@
+import "../mui-icons/check";
+import "../mui-icons/warning";
+import "../mui-icons/attention";
+
 class MuiField extends HTMLElement {
   static get observedAttributes() {
     return ["variant", "message"];
@@ -84,4 +88,6 @@ class MuiField extends HTMLElement {
   }
 }
 
-customElements.define("mui-field", MuiField);
+if (!customElements.get("mui-field")) {
+  customElements.define("mui-field", MuiField);
+}

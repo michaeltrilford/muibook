@@ -76,4 +76,6 @@ class MuiIconSun extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-sun", MuiIconSun);
+if (!customElements.get("mui-icon-sun")) {
+  customElements.define("mui-icon-sun", MuiIconSun);
+}

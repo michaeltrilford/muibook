@@ -48,4 +48,6 @@ class MuiImage extends HTMLElement {
   }
 }
 
-customElements.define("mui-image", MuiImage);
+if (!customElements.get("mui-image")) {
+  customElements.define("mui-image", MuiImage);
+}

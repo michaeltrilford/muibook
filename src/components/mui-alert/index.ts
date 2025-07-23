@@ -1,3 +1,9 @@
+import "../mui-body";
+import "../mui-icons/check";
+import "../mui-icons/info";
+import "../mui-icons/warning";
+import "../mui-icons/attention";
+
 // Type definitions
 type Variant = "positive" | "info" | "warning" | "attention";
 type VariantAlias = "success" | "error";
@@ -182,4 +188,6 @@ class MuiAlert extends HTMLElement {
   }
 }
 
-customElements.define("mui-alert", MuiAlert);
+if (!customElements.get("mui-alert")) {
+  customElements.define("mui-alert", MuiAlert);
+}

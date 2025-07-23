@@ -33,4 +33,6 @@ class MuiRule extends HTMLElement {
   }
 }
 
-customElements.define("mui-rule", MuiRule);
+if (!customElements.get("mui-rule")) {
+  customElements.define("mui-rule", MuiRule);
+}

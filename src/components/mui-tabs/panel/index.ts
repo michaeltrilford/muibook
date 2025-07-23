@@ -40,4 +40,6 @@ class MuiTabPanel extends HTMLElement {
   }
 }
 
-customElements.define("mui-tab-panel", MuiTabPanel);
+if (!customElements.get("mui-tab-panel")) {
+  customElements.define("mui-tab-panel", MuiTabPanel);
+}

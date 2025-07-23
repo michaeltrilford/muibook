@@ -23,4 +23,6 @@ class MuiQuote extends HTMLElement {
   }
 }
 
-customElements.define("mui-quote", MuiQuote);
+if (!customElements.get("mui-quote")) {
+  customElements.define("mui-quote", MuiQuote);
+}

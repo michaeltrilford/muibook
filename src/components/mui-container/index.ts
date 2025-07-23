@@ -55,4 +55,6 @@ class MuiContainer extends HTMLElement {
   }
 }
 
-customElements.define("mui-container", MuiContainer);
+if (!customElements.get("mui-container")) {
+  customElements.define("mui-container", MuiContainer);
+}

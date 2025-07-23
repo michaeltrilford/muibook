@@ -76,4 +76,6 @@ class MuiIconStop extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-stop", MuiIconStop);
+if (!customElements.get("mui-icon-stop")) {
+  customElements.define("mui-icon-stop", MuiIconStop);
+}

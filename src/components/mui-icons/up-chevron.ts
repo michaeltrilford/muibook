@@ -76,4 +76,6 @@ class MuiIconUpChevron extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-up-chevron", MuiIconUpChevron);
+if (!customElements.get("mui-icon-up-chevron")) {
+  customElements.define("mui-icon-up-chevron", MuiIconUpChevron);
+}

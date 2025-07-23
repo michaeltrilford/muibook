@@ -76,4 +76,6 @@ class MuiIconEllipsis extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-ellipsis", MuiIconEllipsis);
+if (!customElements.get("mui-icon-ellipsis")) {
+  customElements.define("mui-icon-ellipsis", MuiIconEllipsis);
+}

@@ -67,4 +67,6 @@ class MuiBadge extends HTMLElement {
   }
 }
 
-customElements.define("mui-badge", MuiBadge);
+if (!customElements.get("mui-badge")) {
+  customElements.define("mui-badge", MuiBadge);
+}

@@ -32,4 +32,6 @@ class MuiList extends HTMLElement {
   }
 }
 
-customElements.define("mui-list", MuiList);
+if (!customElements.get("mui-list")) {
+  customElements.define("mui-list", MuiList);
+}

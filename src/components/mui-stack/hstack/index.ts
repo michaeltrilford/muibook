@@ -77,4 +77,6 @@ class MuiHStack extends HTMLElement {
   }
 }
 
-customElements.define("mui-h-stack", MuiHStack);
+if (!customElements.get("mui-h-stack")) {
+  customElements.define("mui-h-stack", MuiHStack);
+}

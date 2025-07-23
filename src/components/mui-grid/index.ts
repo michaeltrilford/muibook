@@ -52,4 +52,6 @@ class MuiGrid extends HTMLElement {
   }
 }
 
-customElements.define("mui-grid", MuiGrid);
+if (!customElements.get("mui-grid")) {
+  customElements.define("mui-grid", MuiGrid);
+}

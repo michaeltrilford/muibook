@@ -22,4 +22,6 @@ class MuiTable extends HTMLElement {
   }
 }
 
-customElements.define("mui-table", MuiTable);
+if (!customElements.get("mui-table")) {
+  customElements.define("mui-table", MuiTable);
+}

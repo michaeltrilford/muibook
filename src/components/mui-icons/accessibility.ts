@@ -76,4 +76,6 @@ class MuiIconAccessibility extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-accessibility", MuiIconAccessibility);
+if (!customElements.get("mui-icon-accessibility")) {
+  customElements.define("mui-icon-accessibility", MuiIconAccessibility);
+}

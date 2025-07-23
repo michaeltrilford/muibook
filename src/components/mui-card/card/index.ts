@@ -51,4 +51,6 @@ class MuiCard extends HTMLElement {
   }
 }
 
-customElements.define("mui-card", MuiCard);
+if (!customElements.get("mui-card")) {
+  customElements.define("mui-card", MuiCard);
+}

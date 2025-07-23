@@ -76,4 +76,6 @@ class MuiIconAdd extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-add", MuiIconAdd);
+if (!customElements.get("mui-icon-add")) {
+  customElements.define("mui-icon-add", MuiIconAdd);
+}

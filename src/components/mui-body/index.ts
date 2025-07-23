@@ -113,4 +113,6 @@ class MuiBody extends HTMLElement {
   }
 }
 
-customElements.define("mui-body", MuiBody);
+if (!customElements.get("mui-body")) {
+  customElements.define("mui-body", MuiBody);
+}

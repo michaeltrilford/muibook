@@ -134,9 +134,15 @@ class storyMessage extends HTMLElement {
           description="The default uses the neutral state offers a subtle, neutral tone, ideal for conveying general information without drawing undue attention."
           accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
         >
-          <mui-message slot="body"></mui-message>
+          <mui-message slot="body">
+            <mui-body>Body content...</mui-body>
+          </mui-message>
           <mui-code slot="footer" scrollable>
-            &lt;mui-message&gt;...&lt;/mui-message&gt;
+            &lt;mui-message&gt;
+            <br>
+            &nbsp;&nbsp;&lt;mui-body&gt;Body content...&lt;/mui-body&gt;
+            <br>
+            &lt;/mui-message&gt;
           </mui-code>
         </story-card>
 
@@ -150,7 +156,7 @@ class storyMessage extends HTMLElement {
           <mui-code slot="footer" scrollable>
             &lt;mui-message heading="Message heading"&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-body&gt;...&lt;/mui-body&gt;
+            &nbsp;&nbsp;&lt;mui-body&gt;This is an informational message about updates.&lt;/mui-body&gt;
             <br />
             &lt;/mui-message&gt;
           </mui-code>

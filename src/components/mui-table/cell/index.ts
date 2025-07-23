@@ -70,4 +70,6 @@ class MuiCell extends HTMLElement {
   }
 }
 
-customElements.define("mui-cell", MuiCell);
+if (!customElements.get("mui-cell")) {
+  customElements.define("mui-cell", MuiCell);
+}

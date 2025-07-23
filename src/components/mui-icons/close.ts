@@ -76,4 +76,6 @@ class MuiIconClose extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-close", MuiIconClose);
+if (!customElements.get("mui-icon-close")) {
+  customElements.define("mui-icon-close", MuiIconClose);
+}

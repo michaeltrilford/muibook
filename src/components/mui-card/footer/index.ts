@@ -74,4 +74,6 @@ class MuiCardFooter extends HTMLElement {
   }
 }
 
-customElements.define("mui-card-footer", MuiCardFooter);
+if (!customElements.get("mui-card-footer")) {
+  customElements.define("mui-card-footer", MuiCardFooter);
+}

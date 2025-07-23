@@ -385,4 +385,6 @@ class MuiLink extends HTMLElement {
   }
 }
 
-customElements.define("mui-link", MuiLink);
+if (!customElements.get("mui-link")) {
+  customElements.define("mui-link", MuiLink);
+}

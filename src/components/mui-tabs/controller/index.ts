@@ -32,4 +32,6 @@ class MuiTabController extends HTMLElement {
   }
 }
 
-customElements.define("mui-tab-controller", MuiTabController);
+if (!customElements.get("mui-tab-controller")) {
+  customElements.define("mui-tab-controller", MuiTabController);
+}

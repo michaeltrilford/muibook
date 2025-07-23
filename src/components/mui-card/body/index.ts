@@ -86,4 +86,6 @@ class MuiCardBody extends HTMLElement {
   }
 }
 
-customElements.define("mui-card-body", MuiCardBody);
+if (!customElements.get("mui-card-body")) {
+  customElements.define("mui-card-body", MuiCardBody);
+}

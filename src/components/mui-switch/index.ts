@@ -36,11 +36,7 @@ class MuiSwitch extends HTMLElement {
     return ["label", "disabled", "checked"];
   }
 
-  attributeChangedCallback(
-    name: string,
-    oldValue: string | null,
-    newValue: string | null
-  ) {
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
     if (name === "checked") {
       // oldValue is null if attribute was not present before
       // newValue is null if attribute was removed
@@ -99,12 +95,8 @@ class MuiSwitch extends HTMLElement {
   }
 
   _updateIcons() {
-    const onIcon = this.shadowRoot!.querySelector(
-      'slot[name="on-icon"]'
-    ) as HTMLSlotElement | null;
-    const offIcon = this.shadowRoot!.querySelector(
-      'slot[name="off-icon"]'
-    ) as HTMLSlotElement | null;
+    const onIcon = this.shadowRoot!.querySelector('slot[name="on-icon"]') as HTMLSlotElement | null;
+    const offIcon = this.shadowRoot!.querySelector('slot[name="off-icon"]') as HTMLSlotElement | null;
     if (onIcon) {
       onIcon.assignedElements().forEach((el) => {
         (el as HTMLElement).style.display = this._checked ? "inline" : "none";
@@ -120,11 +112,6 @@ class MuiSwitch extends HTMLElement {
 
   render() {
     const label = this.getAttribute("label");
-    if (!label) {
-      console.warn(
-        "mui-switch Accessibility warning: Provide a 'label' to ensure the switch is described for assistive technologies."
-      );
-    }
 
     this.shadowRoot!.innerHTML = /*html*/ `
       <style>
@@ -216,4 +203,6 @@ class MuiSwitch extends HTMLElement {
   }
 }
 
-customElements.define("mui-switch", MuiSwitch);
+if (!customElements.get("mui-switch")) {
+  customElements.define("mui-switch", MuiSwitch);
+}

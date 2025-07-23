@@ -76,4 +76,6 @@ class MuiIconRightChevron extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-right-chevron", MuiIconRightChevron);
+if (!customElements.get("mui-icon-right-chevron")) {
+  customElements.define("mui-icon-right-chevron", MuiIconRightChevron);
+}

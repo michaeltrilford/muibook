@@ -99,4 +99,6 @@ class MuiIconToggle extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-toggle", MuiIconToggle);
+if (!customElements.get("mui-icon-toggle")) {
+  customElements.define("mui-icon-toggle", MuiIconToggle);
+}

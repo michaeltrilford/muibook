@@ -76,4 +76,6 @@ class MuiIconInfo extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-info", MuiIconInfo);
+if (!customElements.get("mui-icon-info")) {
+  customElements.define("mui-icon-info", MuiIconInfo);
+}

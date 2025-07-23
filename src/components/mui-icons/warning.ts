@@ -76,4 +76,6 @@ class MuiIconWarning extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-warning", MuiIconWarning);
+if (!customElements.get("mui-icon-warning")) {
+  customElements.define("mui-icon-warning", MuiIconWarning);
+}

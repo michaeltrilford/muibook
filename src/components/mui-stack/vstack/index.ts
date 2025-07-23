@@ -76,4 +76,6 @@ class MuiVStack extends HTMLElement {
   }
 }
 
-customElements.define("mui-v-stack", MuiVStack);
+if (!customElements.get("mui-v-stack")) {
+  customElements.define("mui-v-stack", MuiVStack);
+}

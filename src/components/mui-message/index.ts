@@ -1,3 +1,10 @@
+import "../mui-stack/index";
+import "../mui-icons/message";
+import "../mui-icons/check";
+import "../mui-icons/info";
+import "../mui-icons/warning";
+import "../mui-icons/attention";
+
 type MessageVariant = "neutral" | "positive" | "info" | "warning" | "attention";
 
 const MESSAGE_VARIANTS: MessageVariant[] = ["neutral", "positive", "info", "warning", "attention"];
@@ -109,9 +116,7 @@ class MuiMessage extends HTMLElement {
           </div>
           <mui-v-stack space="var(--message-gap-vertical)">
             <div class="heading" id="message-heading">${headingText}</div>
-            <slot>
-              <mui-body>Body content...</mui-body>
-            </slot>
+            <slot></slot>
           </mui-v-stack>
         </mui-h-stack>
       </section>
@@ -119,4 +124,6 @@ class MuiMessage extends HTMLElement {
   }
 }
 
-customElements.define("mui-message", MuiMessage);
+if (!customElements.get("mui-message")) {
+  customElements.define("mui-message", MuiMessage);
+}

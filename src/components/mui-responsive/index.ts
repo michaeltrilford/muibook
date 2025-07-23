@@ -110,4 +110,6 @@ class MuiR extends HTMLElement {
   }
 }
 
-customElements.define("mui-responsive", MuiR);
+if (!customElements.get("mui-responsive")) {
+  customElements.define("mui-responsive", MuiR);
+}

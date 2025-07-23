@@ -76,4 +76,6 @@ class MuiIconNotification extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-notification", MuiIconNotification);
+if (!customElements.get("mui-icon-notification")) {
+  customElements.define("mui-icon-notification", MuiIconNotification);
+}

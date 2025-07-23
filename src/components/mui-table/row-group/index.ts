@@ -25,4 +25,6 @@ class MuiRowGroup extends HTMLElement {
   }
 }
 
-customElements.define("mui-row-group", MuiRowGroup);
+if (!customElements.get("mui-row-group")) {
+  customElements.define("mui-row-group", MuiRowGroup);
+}

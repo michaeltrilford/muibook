@@ -51,4 +51,6 @@ class MuiAddon extends HTMLElement {
   }
 }
 
-customElements.define("mui-addon", MuiAddon);
+if (!customElements.get("mui-addon")) {
+  customElements.define("mui-addon", MuiAddon);
+}

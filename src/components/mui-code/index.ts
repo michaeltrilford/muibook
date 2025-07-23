@@ -72,4 +72,6 @@ class MuiCode extends HTMLElement {
   }
 }
 
-customElements.define("mui-code", MuiCode);
+if (!customElements.get("mui-code")) {
+  customElements.define("mui-code", MuiCode);
+}

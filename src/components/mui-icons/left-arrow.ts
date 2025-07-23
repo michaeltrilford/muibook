@@ -76,4 +76,6 @@ class MuiIconLeftArrow extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-left-arrow", MuiIconLeftArrow);
+if (!customElements.get("mui-icon-left-arrow")) {
+  customElements.define("mui-icon-left-arrow", MuiIconLeftArrow);
+}

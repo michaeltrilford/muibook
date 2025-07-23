@@ -412,4 +412,6 @@ class MuiButton extends HTMLElement {
   }
 }
 
-customElements.define("mui-button", MuiButton);
+if (!customElements.get("mui-button")) {
+  customElements.define("mui-button", MuiButton);
+}

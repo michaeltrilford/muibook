@@ -7,6 +7,7 @@ declare global {
     interface MuiIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
       size?: MuiIconSize;
       color?: string;
+      slot?: "on-icon" | "off-icon";
     }
 
     interface IntrinsicElements {
@@ -132,7 +133,12 @@ declare global {
       };
 
       "mui-card": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      "mui-card-body": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "mui-card-body": React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      > & {
+        condensed?: boolean;
+      };
       "mui-card-footer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
       "mui-card-header": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
@@ -190,6 +196,9 @@ declare global {
 
       "mui-slat": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         slot?: "start" | "end";
+        variant?: "default" | "header" | "row" | "action";
+        col?: string;
+        space?: string;
       };
 
       // ACTIONS
@@ -264,14 +273,15 @@ declare global {
       "mui-icon-left-sidebar": MuiIconProps;
       "mui-icon-menu": MuiIconProps;
       "mui-icon-message": MuiIconProps;
-      "mui-icon-moon": MuiIconProps & { slot?: "on-icon" | "off-icon" };
       "mui-icon-right-chevron": MuiIconProps;
       "mui-icon-stop": MuiIconProps;
       "mui-icon-subtract": MuiIconProps;
-      "mui-icon-sun": MuiIconProps & { slot?: "on-icon" | "off-icon" };
+      "mui-icon-moon": MuiIconProps;
+      "mui-icon-sun": MuiIconProps;
       "mui-icon-up-arrow": MuiIconProps;
       "mui-icon-up-chevron": MuiIconProps;
       "mui-icon-warning": MuiIconProps;
+      "mui-icon-ellipsis": MuiIconProps;
 
       // ADD LOCAL TYPES
       // E.g. 

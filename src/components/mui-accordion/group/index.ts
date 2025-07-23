@@ -53,4 +53,6 @@ class MuiAccordionGroup extends HTMLElement {
   }
 }
 
-customElements.define("mui-accordion-group", MuiAccordionGroup);
+if (!customElements.get("mui-accordion-group")) {
+  customElements.define("mui-accordion-group", MuiAccordionGroup);
+}

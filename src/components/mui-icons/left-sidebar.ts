@@ -76,4 +76,6 @@ class MuiIconLeftSidebar extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-left-sidebar", MuiIconLeftSidebar);
+if (!customElements.get("mui-icon-left-sidebar")) {
+  customElements.define("mui-icon-left-sidebar", MuiIconLeftSidebar);
+}

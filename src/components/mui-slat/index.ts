@@ -1,3 +1,6 @@
+import "../mui-button";
+import "../mui-icons/right-chevron";
+
 class MuiSlat extends HTMLElement {
   static get observedAttributes() {
     return ["variant", "col", "space"];
@@ -130,4 +133,6 @@ class MuiSlat extends HTMLElement {
   }
 }
 
-customElements.define("mui-slat", MuiSlat);
+if (!customElements.get("mui-slat")) {
+  customElements.define("mui-slat", MuiSlat);
+}

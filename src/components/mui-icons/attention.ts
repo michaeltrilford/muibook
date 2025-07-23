@@ -76,4 +76,6 @@ class MuiIconAttention extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-attention", MuiIconAttention);
+if (!customElements.get("mui-icon-attention")) {
+  customElements.define("mui-icon-attention", MuiIconAttention);
+}

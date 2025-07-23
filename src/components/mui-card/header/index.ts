@@ -27,4 +27,6 @@ class MuiCardHeader extends HTMLElement {
   }
 }
 
-customElements.define("mui-card-header", MuiCardHeader);
+if (!customElements.get("mui-card-header")) {
+  customElements.define("mui-card-header", MuiCardHeader);
+}

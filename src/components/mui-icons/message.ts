@@ -76,4 +76,6 @@ class MuiIconMessage extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-message", MuiIconMessage);
+if (!customElements.get("mui-icon-message")) {
+  customElements.define("mui-icon-message", MuiIconMessage);
+}

@@ -76,4 +76,6 @@ class MuiIconGrid extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-grid", MuiIconGrid);
+if (!customElements.get("mui-icon-grid")) {
+  customElements.define("mui-icon-grid", MuiIconGrid);
+}

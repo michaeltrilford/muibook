@@ -76,4 +76,6 @@ class MuiIconUpArrow extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-up-arrow", MuiIconUpArrow);
+if (!customElements.get("mui-icon-up-arrow")) {
+  customElements.define("mui-icon-up-arrow", MuiIconUpArrow);
+}

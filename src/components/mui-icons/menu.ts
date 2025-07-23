@@ -76,4 +76,6 @@ class MuiIconMenu extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-menu", MuiIconMenu);
+if (!customElements.get("mui-icon-menu")) {
+  customElements.define("mui-icon-menu", MuiIconMenu);
+}

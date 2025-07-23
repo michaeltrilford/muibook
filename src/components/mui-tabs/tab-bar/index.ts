@@ -308,4 +308,6 @@ class MuiTabBar extends HTMLElement {
   }
 }
 
-customElements.define("mui-tab-bar", MuiTabBar);
+if (!customElements.get("mui-tab-bar")) {
+  customElements.define("mui-tab-bar", MuiTabBar);
+}

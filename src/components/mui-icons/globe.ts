@@ -76,4 +76,6 @@ class MuiIconGlobe extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-globe", MuiIconGlobe);
+if (!customElements.get("mui-icon-globe")) {
+  customElements.define("mui-icon-globe", MuiIconGlobe);
+}

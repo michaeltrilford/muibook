@@ -76,4 +76,6 @@ class MuiIconCheck extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-check", MuiIconCheck);
+if (!customElements.get("mui-icon-check")) {
+  customElements.define("mui-icon-check", MuiIconCheck);
+}

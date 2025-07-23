@@ -24,7 +24,7 @@ class MuiTabItem extends HTMLElement {
     this.shadowRoot.innerHTML = "";
 
     const style = document.createElement("style");
-    style.textContent = /*html*/ `
+    style.textContent = /*css*/ `
       :host {
         user-select: none;
         display: flex;
@@ -90,4 +90,6 @@ class MuiTabItem extends HTMLElement {
   }
 }
 
-customElements.define("mui-tab-item", MuiTabItem);
+if (!customElements.get("mui-tab-item")) {
+  customElements.define("mui-tab-item", MuiTabItem);
+}

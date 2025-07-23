@@ -76,4 +76,6 @@ class MuiIconDownArrowCircle extends HTMLElement {
   }
 }
 
-customElements.define("mui-icon-down-arrow-circle", MuiIconDownArrowCircle);
+if (!customElements.get("mui-icon-down-arrow-circle")) {
+  customElements.define("mui-icon-down-arrow-circle", MuiIconDownArrowCircle);
+}
