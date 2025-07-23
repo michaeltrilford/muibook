@@ -111,6 +111,56 @@ class storySlat extends HTMLElement {
       })
       .join("");
 
+    const accessoryPropItems = [
+      {
+        name: "slot",
+        type: "slot (default)",
+        options: "mui-icon-[name], {elements}",
+        default: "",
+        description: "Add an icon or other suitable elements for the minimal space available and experience.",
+      },
+    ];
+
+    const accessoryRows = accessoryPropItems
+      .map(
+        (prop) => `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const accessoryAccordions = accessoryPropItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === accessoryPropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+            <mui-accordion-block
+              style="position: relative; z-index: 1;" 
+              size="medium" 
+              heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+              ${isLastChild}>
+              <story-type-slat
+                slot="detail"
+                ${prop.required ? "required" : ""}
+                name="${prop.name}"
+                type="${prop.type}" 
+                options="${prop.options || ""}"
+                default="${prop.default || ""}"
+                description="${prop.description}">
+              </story-type-slat>
+            </mui-accordion-block>
+          `;
+      })
+      .join("");
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -130,6 +180,7 @@ class storySlat extends HTMLElement {
               <mui-link data-scroll-link="default">Default</mui-link>    
               <mui-link data-scroll-link="header">Header</mui-link>  
               <mui-link data-scroll-link="row">Row</mui-link>  
+              <mui-link data-scroll-link="row-accessory">Row Accessory</mui-link>
               <mui-link data-scroll-link="action">Action</mui-link>
               <mui-link data-scroll-link="action-accessory">Action Accessory</mui-link>
               <mui-link data-scroll-link="card-desktop">Card: Desktop</mui-link>
@@ -149,13 +200,24 @@ class storySlat extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props">
+        <spec-card title="Props: Slat">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
             </story-type-table>
             <mui-accordion-group exclusive slot="showBelow">
               ${accordions}
+            </mui-accordion-group>
+          </mui-responsive>
+        </spec-card>
+
+        <spec-card title="Props: Accessory">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${accessoryRows}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${accessoryAccordions}
             </mui-accordion-group>
           </mui-responsive>
         </spec-card>
@@ -304,24 +366,114 @@ class storySlat extends HTMLElement {
         </story-card>
 
         <story-card 
-          id="action-accessory"
-          title="Action Accessory" 
+          id="row-accessory"
+          title="Row: Accessory" 
           description="Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout."
           usage="Use with Row and Header variants where required."
           usageLink="https://guides.muibook.com/slat">
 
-          <mui-slat slot="body" variant="action">
-            <mui-v-stack space="0" slot="start">
-              <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
-              <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
-            </mui-v-stack>
+          <mui-slat slot="body" variant="row">
+            <mui-h-stack slot="start" alignY="center" space="var(--space-400)">
+              <mui-slat-accessory>
+                <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+              </mui-slat-accessory>
+              <mui-v-stack space="0">
+                <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
+                <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
+              </mui-v-stack>
+            </mui-h-stack>
 
-            <mui-v-stack space="0" slot="end">
+            <mui-v-stack space="0" alignX="end" slot="end">
               <mui-body size="x-small">Pending</mui-body>
               <mui-body size="small" weight="bold">-$8.12</mui-body>
             </mui-v-stack>
 
           </mui-slat>
+          
+          <mui-code slot="footer" scrollable>
+            // ⚠️ Button required
+            <br />
+            <br />
+            import "@muibook/components/mui-button";
+            <br />
+            import "@muibook/components/mui-slat";
+            <br />
+            <br />
+            &lt;mui-slat variant="action"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-v-stack slot="start"&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;...&lt;/mui-body&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
+            <br />
+            &nbsp;&nbsp;&lt;/mui-v-stack&gt;
+            <br />
+            <br />
+            &nbsp;&nbsp;&lt;mui-v-stack alignX="end" slot="end"&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;...&lt;/mui-body&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" weight="bold"&gt;...&lt;/mui-body&gt;
+            <br />
+            &nbsp;&nbsp;&lt;/mui-v-stack&gt;
+            <br />
+            &lt;/mui-slat&gt;
+          </mui-code>
+
+        </story-card>
+
+        <story-card 
+          id="action-accessory"
+          title="Action: Accessory" 
+          description="Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout."
+          usage="Use with Row and Header variants where required."
+          usageLink="https://guides.muibook.com/slat">
+
+          <mui-v-stack slot="body" >
+
+            <mui-slat variant="action">
+              <mui-h-stack slot="start" alignY="center" space="var(--space-400)">
+                <mui-slat-accessory>
+                  <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+                </mui-slat-accessory>
+                <mui-v-stack space="0">
+                  <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
+                  <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
+                </mui-v-stack>
+              </mui-h-stack>
+              <mui-v-stack space="0" slot="end">
+                <mui-body size="x-small">Pending</mui-body>
+                <mui-body size="small" weight="bold">-$8.12</mui-body>
+              </mui-v-stack>
+            </mui-slat>
+
+            <mui-card>
+              <mui-card-body>
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Today</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">22 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-rule></mui-rule>
+                <mui-v-stack space="var(--space-000)" style="margin-top: var(--space-200)">
+                  <mui-slat variant="action">
+                    <mui-h-stack slot="start" alignY="center" space="var(--space-400)">
+                      <mui-slat-accessory>
+                        <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+                      </mui-slat-accessory>
+                      <mui-v-stack space="0">
+                        <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
+                        <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
+                      </mui-v-stack>
+                    </mui-h-stack>
+                  </mui-slat>
+                </mui-v-stack>
+              </mui-card-body>          
+            </mui-card>
+
+          </mui-v-stack>
           
           <mui-code slot="footer" scrollable>
             // ⚠️ Button required

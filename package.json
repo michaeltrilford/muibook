@@ -272,6 +272,14 @@
       "import": "./dist/esm/components/mui-slat/index.js",
       "types": "./dist/types/components/mui-slat/index.d.ts"
     },
+    "./mui-slat/slat": {
+      "import": "./dist/esm/components/mui-slat/slat/index.js",
+      "types": "./dist/types/components/mui-slat/slat/index.d.ts"
+    },
+    "./mui-slat/accessory": {
+      "import": "./dist/esm/components/mui-slat/accessory/index.js",
+      "types": "./dist/types/components/mui-slat/accessory/index.d.ts"
+    },
     "./mui-smart-card": {
       "import": "./dist/esm/components/mui-smart-card/index.js",
       "types": "./dist/types/components/mui-smart-card/index.d.ts"

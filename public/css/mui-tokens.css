@@ -376,6 +376,7 @@ html[data-theme="light"] {
   --slat-background-hover: var(--white-opacity-90);
   --slat-card-background: var(--surface-elevated-100);
   --slat-card-background-hover: var(--surface-elevated-200);
+  --slat-accessory-background: var(--black-opacity-10);
 }
 
 /* ==================================================================================================== */
@@ -552,6 +553,7 @@ html[data-theme="dark"] {
   --slat-background-hover: var(--black-opacity-50);
   --slat-card-background: var(--surface-elevated-100);
   --slat-card-background-hover: var(--surface-elevated-200);
+  --slat-accessory-background: var(--white-opacity-10);
 }
 
 /* ==================================================================================================== */
