@@ -46,7 +46,7 @@ class MuiFileUpload extends HTMLElement {
           border-color: var(--form-default-border-color);
           color: var(--text-color);
           background: var(--input-background);
-          min-height: 4.2rem;
+          min-height: 4.4rem;
         }
         .wrapper:hover {
           border-color: var(--form-default-border-color-hover);
@@ -73,12 +73,12 @@ class MuiFileUpload extends HTMLElement {
           }
         }
 
-        mui-button::part(height) {
+        mui-button {
           margin-right: 0.1rem;
         }
 
         mui-button::part(height) {
-          height: calc(4.2rem - 0.4rem);
+          height: calc(4.2rem - 0.2rem);
           padding: var(--space-400);
           padding-top: var(--space-000);
           padding-bottom: var(--space-000);
