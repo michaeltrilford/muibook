@@ -60,8 +60,8 @@ class MuiSlat extends HTMLElement {
 
       :host([variant="row"]) {
         padding: var(--space-300) var(--space-400);
-         background: var(--slat-background);
-         border-radius: var(--slat-radius);
+        background: var(--slat-background);
+        border-radius: var(--slat-radius);
       }
 
       :host([variant="header"]) {

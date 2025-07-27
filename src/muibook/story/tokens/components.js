@@ -35,6 +35,7 @@ class tokensComponents extends HTMLElement {
 
           <mui-message heading="Quicklinks" slot="message">
             <mui-h-stack class="token-item-menu" alignY="center">
+              <mui-link data-scroll-link="switch">Switch</mui-link>  
               <mui-link data-scroll-link="icon">Icon</mui-link>
               <mui-link data-scroll-link="card">Card</mui-link>
               <mui-link data-scroll-link="badge">Badge</mui-link>
@@ -50,11 +51,29 @@ class tokensComponents extends HTMLElement {
               <mui-link data-scroll-link="body">Body</mui-link>
               <mui-link data-scroll-link="label">Label</mui-link>
               <mui-link data-scroll-link="list">List</mui-link>
+              <mui-link data-scroll-link="input">Input</mui-link>
+              <mui-link data-scroll-link="addon">Add On</mui-link>
+              <mui-link data-scroll-link="tab">Tab Bar</mui-link>
+              <mui-link data-scroll-link="carousel">Carousel</mui-link>
               <mui-link data-scroll-link="slat">Slat</mui-link>
             </mui-h-stack>
           </mui-message>
 
         <mui-v-stack space="var(--space-700)">
+
+          <spec-card 
+            id="switch"
+            title="Switch"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts"
+            description="The width and height is determined by the switch offset and thumb size."
+          >
+            <story-token-slat slot="body" token="--switch-track-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--switch-track-background-checked" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--switch-thumb-bg" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--switch-icon" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--switch-offset" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--switch-thumb-size" variant="size"></story-token-slat>
+          </spec-card>
 
           <spec-card id="icon" title="Icon" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-icons">
             <story-token-slat slot="body" token="--icon-color-default" variant="color"></story-token-slat>
@@ -149,6 +168,50 @@ class tokensComponents extends HTMLElement {
           </spec-card>
 
           <spec-card 
+            id="input"
+            title="Input"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts"
+          >
+            <story-token-slat slot="body" token="--input-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--input-background-disabled" variant="color"></story-token-slat>
+          </spec-card>
+
+          <spec-card 
+            id="addon"
+            title="Add On"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-addon/index.ts"
+          >
+            <story-token-slat slot="body" token="--addon-background" variant="color"></story-token-slat>
+          </spec-card>
+
+          <spec-card 
+            id="tab"
+            title="Tab Bar"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-tabs"
+          >
+            <story-token-slat slot="body" token="--tab-border-color" variant="border"></story-token-slat>  
+            <story-token-slat slot="body" token="--tab-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-background-active" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-icon" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-icon-active" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-text-color-active" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-shadow-active" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-radius" variant="radius"></story-token-slat>
+          </spec-card>
+
+          <spec-card 
+            id="carousel"
+            title="Carousel"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-carousel"
+          >
+            <story-token-slat slot="body" token="--carousel-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--carousel-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--carousel-tab-position" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--carousel-tab-offset" variant="size"></story-token-slat>
+          </spec-card>
+
+          <spec-card 
             id="slat"
             title="Slat"
             description="These tokens are exposed so consumers can tailor background color states to fit their brand."
@@ -161,6 +224,12 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--slat-radius" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--slat-accessory-background" variant="color"></story-token-slat>
           </spec-card>
+
+        </mui-v-stack>
+
+
+
+
 
 
 
