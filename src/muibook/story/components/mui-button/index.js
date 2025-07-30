@@ -139,7 +139,7 @@ class storyButton extends HTMLElement {
         <story-card title="Form submissions" description="Unfortunately, Web Components can’t rely on type='submit' to handle form submissions due to Shadow DOM boundaries. Instead, manual submission logic needs to be applied to ensure expected behavior.">
           <mui-button variant="primary" slot="body">Sign up</mui-button>
           <mui-code slot="footer" scrollable>
-          <mui-link size="x-small" href="/#/sign-up">👨‍💻 View working file</mui-link>
+          <mui-link size="x-small" href="/#/onboarding">👨‍💻 View working file</mui-link>
           <br>
           <br>
           const&nbsp;signUpButton&nbsp;=&nbsp;this.shadowRoot.querySelector("mui-button");<br /><br />
