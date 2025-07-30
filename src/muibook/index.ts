@@ -81,6 +81,7 @@ import "../components/mui-tabs/panel";
 import "../components/mui-list/list";
 import "../components/mui-list/item";
 import "../components/mui-input";
+import "../components/mui-checkbox";
 
 // Muibook Components
 import "./container";

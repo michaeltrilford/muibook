@@ -354,6 +354,16 @@ html[data-theme="light"] {
   /* Input */
   --input-background: var(--white);
   --input-background-disabled: var(--grey-100);
+
+  /* Checkbox */
+  --checkbox-background: var(--white);
+  --checkbox-background-checked: var(--grey-900);
+  --checkbox-icon-color-checked: var(--grey-200);
+
+  --checkbox-background-disabled: var(--grey-100);
+  --checkbox-background-checked-disabled: var(--grey-800);
+  --checkbox-icon-color-checked-disabled: var(--grey-100);
+
   /* Addon */
   --addon-background: var(--grey-100);
   /* Tabs */
@@ -531,6 +541,13 @@ html[data-theme="dark"] {
   /* Input */
   --input-background: var(--grey-900);
   --input-background-disabled: var(--grey-800);
+  /* Checkbox */
+  --checkbox-background: var(--grey-900);
+  --checkbox-background-checked: var(--grey-200);
+  --checkbox-icon-color-checked: var(--grey-900);
+  --checkbox-background-disabled: var(--grey-800);
+  --checkbox-background-checked-disabled: var(--grey-500);
+  --checkbox-icon-color-checked-disabled: var(--grey-900);
   /* Addon */
   --addon-background: var(--grey-1000);
   /* Tabs */
@@ -669,4 +686,6 @@ html[data-theme="dark"] {
   --carousel-tab-offset: calc(4.4rem + var(--carousel-tab-position)); /* Tab Height */
   /* Slat [Action] */
   --slat-radius: var(--radius-200);
+  /* Checkbox */
+  --checkbox-radius: var(--radius-100);
 }

@@ -6,6 +6,7 @@ export * from "./components/mui-field";
 export * from "./components/mui-file-upload";
 export * from "./components/mui-addon";
 export * from "./components/mui-input";
+export * from "./components/mui-checkbox";
 export * from "./components/mui-select";
 export * from "./components/mui-switch";
 

@@ -9,28 +9,6 @@ class Onboarding extends HTMLElement {
       :host { 
         display: block;
       }
-      input[type="checkbox"] {
-        all: unset; /* resets browser default styles */
-        margin: 0;
-        border: var(--border-thin);
-        padding: var(--space-200);
-        border-radius: 4px;
-        display: inline-block;
-        vertical-align: middle;
-        cursor: pointer;
-        appearance: none;
-      }
-
-      input[type="checkbox"]:checked {
-        background-color: var(--action-primary-background);
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-
-      input[type="checkbox"]:focus {
-        outline: var(--outline-thick);
-      }
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -70,12 +48,7 @@ class Onboarding extends HTMLElement {
                       <mui-input type="password" />
                     </mui-field>
                     <mui-field id="termsField">
-                      <label>
-                        <mui-h-stack alignY="center" space="var(--space-100)">
-                          <input type="checkbox" id="agreeTerms" />
-                          <mui-body size="medium">I agree to the terms and conditions</mui-body>
-                        </mui-h-stack>
-                      </label>
+                      <mui-checkbox id="agreeTerms">I agree to the <mui-link href="/terms">terms and conditions</mui-link></mui-checkbox>
                     </mui-field>
                     <mui-button-group right>
                       <mui-button variant="primary">Sign up</mui-button>

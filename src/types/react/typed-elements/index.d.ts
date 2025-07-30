@@ -38,6 +38,18 @@ declare global {
         placeholder?: string;
       };
 
+      "mui-checkbox": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        id?: string;
+        checked?: boolean;
+        disabled?: boolean;
+        name?: string;
+        value?: string;
+        // Optional: hides the label for screen-readers only
+        "hide-label"?: boolean;
+        // Custom property to pass a string label if using attribute instead of slot
+        label?: string;
+      };
+
       "mui-select": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         options: string;
         id?: string;

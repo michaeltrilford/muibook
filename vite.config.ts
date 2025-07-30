@@ -75,7 +75,11 @@ export default defineConfig({
         "components/mui-icons/ellipsis": path.resolve(__dirname, "src/components/mui-icons/ellipsis.ts"),
         // IMAGE
         "components/mui-image": path.resolve(__dirname, "src/components/mui-image"),
+        // INPUT
         "components/mui-input": path.resolve(__dirname, "src/components/mui-input"),
+        // CHECKBOX
+        "components/mui-checkbox": path.resolve(__dirname, "src/components/mui-checkbox"),
+        // LINK
         "components/mui-link": path.resolve(__dirname, "src/components/mui-link"),
         // LIST
         "components/mui-list": path.resolve(__dirname, "src/components/mui-list"),

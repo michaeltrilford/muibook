@@ -232,6 +232,10 @@
       "import": "./dist/esm/components/mui-input/index.js",
       "types": "./dist/types/components/mui-input/index.d.ts"
     },
+    "./mui-checkbox": {
+      "import": "./dist/esm/components/mui-checkbox/index.js",
+      "types": "./dist/types/components/mui-checkbox/index.d.ts"
+    },
     "./mui-link": {
       "import": "./dist/esm/components/mui-link/index.js",
       "types": "./dist/types/components/mui-link/index.d.ts"
