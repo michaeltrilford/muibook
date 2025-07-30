@@ -772,12 +772,7 @@ export const muiPrompts = [
             <mui-input type="password" />
           </mui-field>
           <mui-field id="termsField">
-            <label>
-              <mui-h-stack alignY="center" space="var(--space-100)">
-                <input type="checkbox" id="agreeTerms" />
-                <mui-body size="medium">I agree to the terms and conditions</mui-body>
-              </mui-h-stack>
-            </label>
+            <mui-checkbox id="agreeTerms">I agree to the <mui-link href="/terms">terms and conditions</mui-link></mui-checkbox>
           </mui-field>
           <mui-button-group right>
             <mui-button variant="primary">Sign up</mui-button>
