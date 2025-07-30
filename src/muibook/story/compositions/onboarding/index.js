@@ -1,0 +1,281 @@
+class Onboarding extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  connectedCallback() {
+    const styles = /*css*/ `
+      :host { 
+        display: block;
+      }
+      input[type="checkbox"] {
+        all: unset; /* resets browser default styles */
+        margin: 0;
+        border: var(--border-thin);
+        padding: var(--space-200);
+        border-radius: 4px;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        appearance: none;
+      }
+
+      input[type="checkbox"]:checked {
+        background-color: var(--action-primary-background);
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      input[type="checkbox"]:focus {
+        outline: var(--outline-thick);
+      }
+    `;
+
+    this.shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
+
+      <story-template 
+        title="Onboarding"
+        description="Creating compositions provide the Design System a view of how the system is working and where it needs flexibility."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/wallet/index.js"
+      >
+
+      <mui-v-stack space="var(--space-700)">
+
+        <story-card title="Sign Up" description="This composition demonstrates how foundational components can be arranged to create a sign-up form. Due to Shadow DOM boundaries, native form submission via type='submit' doesn’t behave as expected. Instead, manual logic is applied to ensure proper submission — a pattern often required when working with Web Components.">
+
+          <mui-container small center slot="body">
+            <mui-card>
+              <mui-card-header>
+                <mui-heading size="3">Sign up for our product!</mui-heading>
+              </mui-card-header>
+              <mui-card-body>
+                <form>
+                  <mui-v-stack space="var(--space-400)">
+                    <mui-field id="firstNameField" label="First Name">
+                      <mui-input type="text" placeholder="John" />
+                    </mui-field>
+                    <mui-field id="lastNameField" label="Last Name">
+                      <mui-input type="text" placeholder="Doe" />
+                    </mui-field>
+                    <mui-field id="emailField" label="Email">
+                      <mui-input type="email" placeholder="john@example.com" />
+                    </mui-field>
+                    <mui-field id="passwordField" label="Password">
+                      <mui-input type="password" />
+                    </mui-field>
+                    <mui-field id="confirmPasswordField" label="Confirm Password">
+                      <mui-input type="password" />
+                    </mui-field>
+                    <mui-field id="termsField">
+                      <label>
+                        <mui-h-stack alignY="center" space="var(--space-100)">
+                          <input type="checkbox" id="agreeTerms" />
+                          <mui-body size="medium">I agree to the terms and conditions</mui-body>
+                        </mui-h-stack>
+                      </label>
+                    </mui-field>
+                    <mui-button-group right>
+                      <mui-button variant="primary">Sign up</mui-button>
+                    </mui-button-group>
+                  </mui-v-stack>
+                </form>
+              </mui-card-body>
+            </mui-card>
+          </mui-container>
+
+          <mui-code slot="footer" scrollable>
+            <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/sign-up/index.js">👨‍💻 View submit logic on Github</mui-link>
+            <br>
+            <br>
+            const&nbsp;signUpButton&nbsp;=&nbsp;this.shadowRoot.querySelector("mui-button");<br /><br />
+            if&nbsp;(signUpButton)&nbsp;{<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;signUpButton.addEventListener("click",&nbsp;()&nbsp;=&gt;&nbsp;this.handleSubmit());<br />
+            }<br /><br />
+            &lt;mui-container&nbsp;small&nbsp;center&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-header&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading&nbsp;size="3"&gt;Sign&nbsp;up&nbsp;for&nbsp;our&nbsp;product!&lt;/mui-heading&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-header&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-body&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&nbsp;space="var(--space-400)"&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="firstNameField"&nbsp;label="First&nbsp;Name"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="text"&nbsp;placeholder="John"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="lastNameField"&nbsp;label="Last&nbsp;Name"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="text"&nbsp;placeholder="Doe"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="emailField"&nbsp;label="Email"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="email"&nbsp;placeholder="john@example.com"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="passwordField"&nbsp;label="Password"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="password"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="confirmPasswordField"&nbsp;label="Confirm&nbsp;Password"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="password"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- 🚧 Checkbox support w/ Label is not yet in system --&gt;<br /><br />
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="termsField"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack&nbsp;alignY="center"&nbsp;space="var(--space-100)"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="checkbox"&nbsp;id="agreeTerms"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&nbsp;size="medium"&gt;I&nbsp;agree&nbsp;to&nbsp;the&nbsp;terms&nbsp;and&nbsp;conditions&lt;/mui-body&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/label&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group&nbsp;right&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&nbsp;variant="primary"&gt;Sign&nbsp;up&lt;/mui-button&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-card&gt;<br />
+            &lt;/mui-container&gt;
+            </mui-code>
+      
+
+        </story-card>
+
+      </mui-v-stack>
+
+      </story-template>
+    `;
+
+    const signUpButton = this.shadowRoot.querySelector("mui-button");
+    if (signUpButton) {
+      signUpButton.addEventListener("click", () => this.handleSubmit());
+    }
+  }
+
+  async _getShadowInputValue(selector) {
+    const el = this.shadowRoot.querySelector(selector);
+    if (!el) return "";
+    await customElements.whenDefined(el.tagName.toLowerCase());
+    const inner = el.shadowRoot?.querySelector("input, textarea");
+    return inner?.value.trim() || "";
+  }
+
+  async getInputValue(field) {
+    if (!field) return "";
+    return this._getShadowInputValue(`#${field.id} mui-input`);
+  }
+
+  async getCheckboxChecked(field) {
+    if (!field) return false;
+    const checkbox = field.querySelector("mui-checkbox");
+    if (!checkbox) return false;
+    await customElements.whenDefined("mui-checkbox");
+    const inner = checkbox.shadowRoot?.querySelector("input[type='checkbox']");
+    return inner?.checked ?? false;
+  }
+
+  async handleSubmit(event) {
+    if (event && typeof event.preventDefault === "function") event.preventDefault();
+
+    const values = await this._gatherFormValues();
+    this._clearValidation();
+
+    const errors = this._validate(values);
+
+    if (Object.keys(errors).length) {
+      this._showValidationErrors(errors);
+      return;
+    }
+
+    console.log("Form submitted:", values);
+  }
+
+  async _gatherFormValues() {
+    const getField = (id) => this.shadowRoot.getElementById(id);
+
+    const fields = {
+      firstName: getField("firstNameField"),
+      lastName: getField("lastNameField"),
+      email: getField("emailField"),
+      password: getField("passwordField"),
+      confirmPassword: getField("confirmPasswordField"),
+      terms: getField("termsField"),
+    };
+
+    return {
+      firstName: await this.getInputValue(fields.firstName),
+      lastName: await this.getInputValue(fields.lastName),
+      email: await this.getInputValue(fields.email),
+      password: await this.getInputValue(fields.password),
+      confirmPassword: await this.getInputValue(fields.confirmPassword),
+      agreed: fields.terms?.querySelector("input[type='checkbox']")?.checked ?? false,
+      fields, // keep for validation display
+    };
+  }
+
+  _clearValidation() {
+    const getField = (id) => this.shadowRoot.getElementById(id);
+    ["firstNameField", "lastNameField", "emailField", "passwordField", "confirmPasswordField", "termsField"].forEach(
+      (id) => {
+        const field = getField(id);
+        if (field) {
+          field.removeAttribute("message");
+          field.removeAttribute("variant");
+        }
+      }
+    );
+  }
+
+  _validate(values) {
+    const errors = {};
+
+    if (!values.email.includes("@")) {
+      errors.email = "Enter a valid email to proceed";
+    }
+    if (!values.password || values.password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
+    }
+    if (values.password !== values.confirmPassword) {
+      errors.confirmPassword = "Passwords do not match";
+    }
+    if (!values.agreed) {
+      errors.terms = "You must agree to the terms and conditions";
+    }
+    return errors;
+  }
+
+  _showValidationErrors(errors) {
+    const getField = (id) => this.shadowRoot.getElementById(id);
+
+    if (errors.email) {
+      const field = getField("emailField");
+      if (field) {
+        field.setAttribute("message", errors.email);
+        field.setAttribute("variant", "error");
+      }
+    }
+    if (errors.password) {
+      const field = getField("passwordField");
+      if (field) {
+        field.setAttribute("message", errors.password);
+        field.setAttribute("variant", "error");
+      }
+    }
+    if (errors.confirmPassword) {
+      const field = getField("confirmPasswordField");
+      if (field) {
+        field.setAttribute("message", errors.confirmPassword);
+        field.setAttribute("variant", "error");
+      }
+    }
+    if (errors.terms) {
+      const field = getField("termsField");
+      if (field) {
+        field.setAttribute("message", errors.terms);
+        field.setAttribute("variant", "error");
+      }
+    }
+  }
+}
+
+customElements.define("comp-onboarding", Onboarding);

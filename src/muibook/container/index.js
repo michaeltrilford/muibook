@@ -90,7 +90,7 @@ export class AppContainer extends HTMLElement {
 
       "/agent": "comp-agent-ui",
       "/wallet": "comp-wallet",
-      "/gyro": "comp-gyro",
+      "/onboarding": "comp-onboarding",
     };
 
     // ✨ NEW CHECK ✨
@@ -126,6 +126,7 @@ export class AppContainer extends HTMLElement {
 
       "comp-agent-ui": () => import("../story/compositions/agent-ui"),
       "comp-wallet": () => import("../story/compositions/wallet"),
+      "comp-onboarding": () => import("../story/compositions/onboarding/index.js"),
 
       "story-button": () => import("../story/components/mui-button"),
       "story-link": () => import("../story/components/mui-link"),

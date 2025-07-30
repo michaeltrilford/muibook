@@ -1,8 +1,38 @@
 export const muiPrompts = [
   {
     role: "system",
-    content:
-      "You are an assistant that converts UI prompts into MUI-style web components using custom tags like <mui-v-stack> and <mui-button>. Each user message may include tags like [button], [card], etc. Use these to help determine intent.",
+    content: `
+      You are an assistant that converts UI prompts into MUI-style web components using custom tags.
+
+      Each user message may include tags like [button], [card], etc. Use these to help determine intent.
+
+      Here is the full list of supported components:
+      <mui-field>, <mui-file-upload>, <mui-addon>, <mui-input>, <mui-select>, <mui-switch>, 
+      <mui-table>, <mui-table-cell>, <mui-table-row>, <mui-table-row-group>, 
+      <mui-slat>, <mui-slat-accessory>, 
+      <mui-accordion-group>, <mui-accordion-inline>, <mui-accordion-block>, 
+      <mui-heading>, <mui-body>, <mui-quote>, <mui-code>, <mui-image>, 
+      <mui-smart-card>, 
+      <mui-list>, <mui-list-item>, 
+      <mui-icon-accessibility>, <mui-icon-add>, <mui-icon-attention>, <mui-icon-check>, 
+      <mui-icon-close>, <mui-icon-down-chevron>, <mui-icon-globe>, <mui-icon-grid>, 
+      <mui-icon-info>, <mui-icon-left-arrow>, <mui-icon-left-sidebar>, <mui-icon-left-chevron>, 
+      <mui-icon-menu>, <mui-icon-message>, <mui-icon-moon>, <mui-icon-notification>, 
+      <mui-icon-right-chevron>, <mui-icon-stop>, <mui-icon-subtract>, <mui-icon-sun>, 
+      <mui-icon-toggle>, <mui-icon-up-arrow>, <mui-icon-up-chevron>, <mui-icon-warning>, 
+      <mui-icon-down-arrow-circle>, <mui-icon-ellipsis>, 
+      <mui-h-stack>, <mui-v-stack>, <mui-grid>, <mui-responsive>, <mui-container>, <mui-rule>, 
+      <mui-card>, <mui-card-header>, <mui-card-body>, <mui-card-footer>, 
+      <mui-alert>, <mui-message>, <mui-badge>, 
+      <mui-button>, <mui-button-group>, <mui-link>, 
+      <mui-tabs-controller>, <mui-tabs-item>, <mui-tabs-panel>, <mui-tabs-tab-bar>, 
+      <mui-carousel-controller>, <mui-carousel-panel>
+
+      Use only these components when constructing UIs. When helpful, you may suggest new components, but clearly mark them with a comment like:
+      <!-- 🚧 Not yet in system, consider adding -->
+
+      Structure layouts using primitives like <mui-v-stack>, <mui-h-stack>, <mui-grid> or <mui-card-body> when composing forms or groups of fields.
+    `,
   },
 
   // FIELD
@@ -22,12 +52,14 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-slat>
-  <mui-heading slot="start" size="5">...</mui-heading>
-  <mui-h-stack slot="end">
-    <mui-body>...</mui-body>
-  </mui-h-stack>
-</mui-slat>`,
+    content: `
+      <mui-slat>
+        <mui-heading slot="start" size="5">...</mui-heading>
+        <mui-h-stack slot="end">
+          <mui-body>...</mui-body>
+        </mui-h-stack>
+      </mui-slat>
+    `,
   },
   {
     role: "user",
@@ -708,5 +740,52 @@ export const muiPrompts = [
     </mui-v-stack>
   </mui-tab-controller>
 </mui-v-stack>`,
+  },
+  {
+    role: "user",
+    content:
+      "[composition] Create a sign-up form with fields for first name, last name, email, password, confirm password, a checkbox to agree to terms, and a submit button.",
+  },
+  {
+    role: "assistant",
+    content: `<mui-container small center>
+  <mui-card>
+    <mui-card-header>
+      <mui-heading size="3">Sign up for our product!</mui-heading>
+    </mui-card-header>
+    <mui-card-body>
+      <form>
+        <mui-v-stack space="var(--space-400)">
+          <mui-field id="firstNameField" label="First Name">
+            <mui-input type="text" placeholder="John" />
+          </mui-field>
+          <mui-field id="lastNameField" label="Last Name">
+            <mui-input type="text" placeholder="Doe" />
+          </mui-field>
+          <mui-field id="emailField" label="Email">
+            <mui-input type="email" placeholder="john@example.com" />
+          </mui-field>
+          <mui-field id="passwordField" label="Password">
+            <mui-input type="password" />
+          </mui-field>
+          <mui-field id="confirmPasswordField" label="Confirm Password">
+            <mui-input type="password" />
+          </mui-field>
+          <mui-field id="termsField">
+            <label>
+              <mui-h-stack alignY="center" space="var(--space-100)">
+                <input type="checkbox" id="agreeTerms" />
+                <mui-body size="medium">I agree to the terms and conditions</mui-body>
+              </mui-h-stack>
+            </label>
+          </mui-field>
+          <mui-button-group right>
+            <mui-button variant="primary">Sign up</mui-button>
+          </mui-button-group>
+        </mui-v-stack>
+      </form>
+    </mui-card-body>
+  </mui-card>
+</mui-container>`,
   },
 ];
