@@ -60,7 +60,7 @@ class Onboarding extends HTMLElement {
           </mui-container>
 
           <mui-code slot="footer" scrollable>
-            <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/sign-up/index.js">👨‍💻 View submit logic on Github</mui-link>
+            <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/onboarding/index.js">👨‍💻 View submit logic on Github</mui-link>
             <br>
             <br>
             const&nbsp;signUpButton&nbsp;=&nbsp;this.shadowRoot.querySelector("mui-button");<br /><br />
