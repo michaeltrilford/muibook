@@ -72,6 +72,10 @@ class MuiField extends HTMLElement {
         mui-body::part(gap) {
           gap: var(--space-100);
         }
+
+        ::slotted(mui-checkbox) {
+          padding-left: var(--space-025);
+        }
       </style>
 
       <slot></slot>
