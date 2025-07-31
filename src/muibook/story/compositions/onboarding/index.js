@@ -22,6 +22,19 @@ class Onboarding extends HTMLElement {
 
       <mui-v-stack space="var(--space-700)">
 
+          <mui-message id="colors" variant="info" heading="Working with Web Components and Shadow DOM">
+            <mui-v-stack space="var(--space-200)">
+              <mui-body size="small">
+                Accessing internal input values and handling actions requires awareness of Shadow DOM boundaries.
+                </mui-body>
+                <mui-list as="ul">
+                  <mui-list-item size="small">Use shadowRoot.querySelector(...) to target elements inside Web Components.</mui-list-item>
+                  <mui-list-item size="small">Use await to ensure components are defined and their internal state (like .value or .checked) is ready.</mui-list-item>
+                  <mui-list-item size="small">Ensures accurate state reading and avoids race conditions during form logic or validation.</mui-list-item>
+                </mui-list>
+            </mui-v-stack>
+          </mui-message>
+
         <story-card title="Sign Up" description="This composition demonstrates how foundational components can be arranged to create a sign-up form. Due to Shadow DOM boundaries, native form submission via type='submit' doesn’t behave as expected. Instead, manual logic is applied to ensure proper submission — a pattern often required when working with Web Components.">
 
           <mui-container small center slot="body">
@@ -60,13 +73,37 @@ class Onboarding extends HTMLElement {
           </mui-container>
 
           <mui-code slot="footer" scrollable>
-            <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/onboarding/index.js">👨‍💻 View submit logic on Github</mui-link>
-            <br>
-            <br>
+            <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/onboarding/index.js">👨‍💻 View full code on Github</mui-link>
+            <br /><br /><br /><br />
+            // Example: Submit Logic<br />
+            ///////////////////////////////////// <br /><br />
             const&nbsp;signUpButton&nbsp;=&nbsp;this.shadowRoot.querySelector("mui-button");<br /><br />
             if&nbsp;(signUpButton)&nbsp;{<br />
             &nbsp;&nbsp;&nbsp;&nbsp;signUpButton.addEventListener("click",&nbsp;()&nbsp;=&gt;&nbsp;this.handleSubmit());<br />
-            }<br /><br />
+            }<br /><br /><br /><br />
+
+            // Example: Validation Query<br />
+            ///////////////////////////////////// <br /><br />
+            async _gatherFormValues() {<br />
+              &nbsp;&nbsp;const getField = (id) => this.shadowRoot.getElementById(id);<br /><br />
+
+              &nbsp;&nbsp;const fields = {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;firstName: getField("firstNameField"),<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;lastName: getField("lastNameField"),<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;...<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;terms: getField("termsField"),<br />
+              &nbsp;&nbsp;};<br /><br />
+
+              &nbsp;&nbsp;return {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;firstName: await this.getInputValue(fields.firstName),<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;lastName: await this.getInputValue(fields.lastName),<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;...<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;agreed: await this.getCheckboxChecked(fields.terms),<br />
+              &nbsp;&nbsp;};<br />
+            }<br /><br /><br /><br />
+
+            // Sign Up Form<br />
+            ///////////////////////////////////// <br /><br />
             &lt;mui-container&nbsp;small&nbsp;center&gt;<br />
             &nbsp;&nbsp;&lt;mui-card&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-header&gt;<br />
@@ -112,6 +149,17 @@ class Onboarding extends HTMLElement {
 
       </story-template>
     `;
+
+    const agree = this.shadowRoot.querySelector("#agreeTerms");
+    if (agree) {
+      agree.addEventListener("change", () => {
+        const termsField = this.shadowRoot.getElementById("termsField");
+        if (termsField) {
+          termsField.removeAttribute("message");
+          termsField.removeAttribute("variant");
+        }
+      });
+    }
 
     const signUpButton = this.shadowRoot.querySelector("mui-button");
     if (signUpButton) {
@@ -175,7 +223,7 @@ class Onboarding extends HTMLElement {
       email: await this.getInputValue(fields.email),
       password: await this.getInputValue(fields.password),
       confirmPassword: await this.getInputValue(fields.confirmPassword),
-      agreed: fields.terms?.querySelector("input[type='checkbox']")?.checked ?? false,
+      agreed: await this.getCheckboxChecked(fields.terms),
       fields, // keep for validation display
     };
   }
