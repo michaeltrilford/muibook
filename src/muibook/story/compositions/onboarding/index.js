@@ -17,7 +17,7 @@ class Onboarding extends HTMLElement {
       <story-template 
         title="Onboarding"
         description="Creating compositions provide the Design System a view of how the system is working and where it needs flexibility."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/wallet/index.js"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/onboarding/index.js"
       >
 
       <mui-v-stack space="var(--space-700)">
