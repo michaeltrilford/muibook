@@ -291,8 +291,8 @@ export const muiPrompts = [
       <mui-smart-card
         number="1234"
         type="Debit"
-        logo="https://muibook.com/assets/image-220.png"
-        partner="https://muibook.com/assets/visa-black.svg"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
         variant="plain"
       />`,
   },
@@ -304,8 +304,8 @@ export const muiPrompts = [
         inverted
         number="1234"
         type="Debit"
-        logo="https://muibook.com/assets/image-220.png"
-        partner="https://muibook.com/assets/visa-white.svg"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-white.svg"
         variant="plain"
       />`,
   },
@@ -317,9 +317,9 @@ export const muiPrompts = [
       <mui-smart-card
         number="1234"
         type="Debit"
-        bg-image="https://muibook.com/assets/buttercup.png"
-        logo="https://muibook.com/assets/image-220.png"
-        partner="https://muibook.com/assets/visa-black.svg"
+        bg-image="https://muibook.com/images/buttercup.png"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
         variant="animated"
       />`,
   },
@@ -329,7 +329,7 @@ export const muiPrompts = [
     role: "assistant",
     content: `
       <mui-smart-card
-        logo="https://muibook.com/assets/guides.svg"
+        logo="https://muibook.com/images/guides.svg"
         logo-height="80"
       />`,
   },
@@ -342,8 +342,8 @@ export const muiPrompts = [
         state="frozen"
         number="1234"
         type="Debit"
-        logo="https://muibook.com/assets/image-220.png"
-        partner="https://muibook.com/assets/visa-black.svg"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
         variant="plain"
       />`,
   },
@@ -357,8 +357,8 @@ export const muiPrompts = [
         bg-color="#a4fc67"
         number="1234"
         type="Debit"
-        logo="https://muibook.com/assets/image-220.png"
-        partner="https://muibook.com/assets/visa-black.svg"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
       />`,
   },
 
@@ -368,11 +368,11 @@ export const muiPrompts = [
     content: `
       <mui-smart-card
         variant="plain"
-        bg-image="https://muibook.com/assets/image-395.png"
+        bg-image="https://muibook.com/images/image-395.png"
         number="1234"
         type="Debit"
-        logo="https://muibook.com/assets/image-220.png"
-        partner="https://muibook.com/assets/visa-black.svg"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
       />`,
   },
 
@@ -382,8 +382,8 @@ export const muiPrompts = [
     content: `
       <mui-smart-card
         type="Premier"
-        partner="https://muibook.com/assets/emerald.svg"
-        bg-image="https://muibook.com/assets/premier.png"
+        partner="https://muibook.com/images/emerald.svg"
+        bg-image="https://muibook.com/images/premier.png"
       />`,
   },
 
@@ -394,8 +394,8 @@ export const muiPrompts = [
       <mui-smart-card
         inverted
         type="Diamond"
-        partner="https://muibook.com/assets/emerald.svg"
-        bg-image="https://muibook.com/assets/diamond.png"
+        partner="https://muibook.com/images/emerald.svg"
+        bg-image="https://muibook.com/images/diamond.png"
       />`,
   },
 
