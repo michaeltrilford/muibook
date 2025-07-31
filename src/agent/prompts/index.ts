@@ -152,29 +152,22 @@ export const muiPrompts = [
   // TABLE
   {
     role: "user",
-    content: "[table] Show a table with 3 columns and 2 rows",
+    content: "[table] Add a table",
   },
   {
     role: "assistant",
     content: `
       <mui-table>
         <mui-row-group heading>
-          <mui-row columns="1fr 1fr 1fr">
+          <mui-row columns="1fr 1fr">
             <mui-cell>Heading 1</mui-cell>
             <mui-cell>Heading 2</mui-cell>
-            <mui-cell>Heading 3</mui-cell>
           </mui-row>
         </mui-row-group>
         <mui-row-group>
-          <mui-row columns="1fr 1fr 1fr">
+          <mui-row columns="1fr 1fr">
             <mui-cell>Row 1</mui-cell>
             <mui-cell>Row 1</mui-cell>
-            <mui-cell>Row 1</mui-cell>
-          </mui-row>
-          <mui-row columns="1fr 1fr 1fr">
-            <mui-cell>Row 2</mui-cell>
-            <mui-cell>Row 2</mui-cell>
-            <mui-cell>Row 2</mui-cell>
           </mui-row>
         </mui-row-group>
       </mui-table>`,
@@ -199,74 +192,8 @@ export const muiPrompts = [
   },
 
   // ICONS
-  { role: "user", content: "[icon] Add an accessibility icon" },
-  { role: "assistant", content: "<mui-icon-accessibility></mui-icon-accessibility>" },
-
-  { role: "user", content: "[icon] Add an add icon" },
-  { role: "assistant", content: "<mui-icon-add></mui-icon-add>" },
-
-  { role: "user", content: "[icon] Add a close icon" },
-  { role: "assistant", content: "<mui-icon-close></mui-icon-close>" },
-
-  { role: "user", content: "[icon] Add an up chevron icon" },
-  { role: "assistant", content: "<mui-icon-up-chevron></mui-icon-up-chevron>" },
-
-  { role: "user", content: "[icon] Add a down chevron icon" },
-  { role: "assistant", content: "<mui-icon-down-chevron></mui-icon-down-chevron>" },
-
-  { role: "user", content: "[icon] Add a left sidebar icon" },
-  { role: "assistant", content: "<mui-icon-left-sidebar></mui-icon-left-sidebar>" },
-
-  { role: "user", content: "[icon] Add a left chevron icon" },
-  { role: "assistant", content: "<mui-icon-left-chevron></mui-icon-left-chevron>" },
-
-  { role: "user", content: "[icon] Add a right chevron icon" },
-  { role: "assistant", content: "<mui-icon-right-chevron></mui-icon-right-chevron>" },
-
-  { role: "user", content: "[icon] Add a grid icon" },
-  { role: "assistant", content: "<mui-icon-grid></mui-icon-grid>" },
-
-  { role: "user", content: "[icon] Add a left arrow icon" },
-  { role: "assistant", content: "<mui-icon-left-arrow></mui-icon-left-arrow>" },
-
-  { role: "user", content: "[icon] Add a menu icon" },
-  { role: "assistant", content: "<mui-icon-menu></mui-icon-menu>" },
-
-  { role: "user", content: "[icon] Add a message icon" },
-  { role: "assistant", content: "<mui-icon-message></mui-icon-message>" },
-
-  { role: "user", content: "[icon] Add a moon icon" },
-  { role: "assistant", content: "<mui-icon-moon></mui-icon-moon>" },
-
-  { role: "user", content: "[icon] Add a sun icon" },
-  { role: "assistant", content: "<mui-icon-sun></mui-icon-sun>" },
-
-  { role: "user", content: "[icon] Add a subtract icon" },
-  { role: "assistant", content: "<mui-icon-subtract></mui-icon-subtract>" },
-
-  { role: "user", content: "[icon] Add a check icon" },
-  { role: "assistant", content: "<mui-icon-check></mui-icon-check>" },
-
-  { role: "user", content: "[icon] Add an info icon" },
-  { role: "assistant", content: "<mui-icon-info></mui-icon-info>" },
-
-  { role: "user", content: "[icon] Add a warning icon" },
-  { role: "assistant", content: "<mui-icon-warning></mui-icon-warning>" },
-
-  { role: "user", content: "[icon] Add an attention icon" },
-  { role: "assistant", content: "<mui-icon-attention></mui-icon-attention>" },
-
-  { role: "user", content: "[icon] Add a globe icon" },
-  { role: "assistant", content: "<mui-icon-globe></mui-icon-globe>" },
-
-  { role: "user", content: "[icon] Add a stop icon" },
-  { role: "assistant", content: "<mui-icon-stop></mui-icon-stop>" },
-
-  { role: "user", content: "[icon] Add a down arrow circle icon" },
-  { role: "assistant", content: "<mui-icon-down-arrow-circle></mui-icon-down-arrow-circle>" },
-
-  { role: "user", content: "[icon] Add an ellipsis icon" },
-  { role: "assistant", content: "<mui-icon-ellipsis></mui-icon-ellipsis>" },
+  { role: "user", content: "[icon] Add an icon" },
+  { role: "assistant", content: "<mui-icon-{name}></mui-icon-{name}]>" },
 
   // IMAGE
   {
@@ -280,123 +207,6 @@ export const muiPrompts = [
         <img slot="image" src="..." alt="Descriptive alt text" />
         <figcaption slot="caption">This is a caption</figcaption>
       </mui-image>`,
-  },
-
-  // SMART CARD
-
-  { role: "user", content: "[smart-card] Basic plain card with number and logo" },
-  {
-    role: "assistant",
-    content: `
-      <mui-smart-card
-        number="1234"
-        type="Debit"
-        logo="https://muibook.com/images/image-220.png"
-        partner="https://muibook.com/images/visa-black.svg"
-        variant="plain"
-      />`,
-  },
-  { role: "user", content: "[smart-card] Plain card with inverted style" },
-  {
-    role: "assistant",
-    content: `
-      <mui-smart-card
-        inverted
-        number="1234"
-        type="Debit"
-        logo="https://muibook.com/images/image-220.png"
-        partner="https://muibook.com/images/visa-white.svg"
-        variant="plain"
-      />`,
-  },
-
-  { role: "user", content: "[smart-card] Animated card with background image" },
-  {
-    role: "assistant",
-    content: `
-      <mui-smart-card
-        number="1234"
-        type="Debit"
-        bg-image="https://muibook.com/images/buttercup.png"
-        logo="https://muibook.com/images/image-220.png"
-        partner="https://muibook.com/images/visa-black.svg"
-        variant="animated"
-      />`,
-  },
-
-  { role: "user", content: "[smart-card] Card with custom logo size" },
-  {
-    role: "assistant",
-    content: `
-      <mui-smart-card
-        logo="https://muibook.com/images/guides.svg"
-        logo-height="80"
-      />`,
-  },
-
-  { role: "user", content: "[smart-card] Frozen card state" },
-  {
-    role: "assistant",
-    content: `
-      <mui-smart-card
-        state="frozen"
-        number="1234"
-        type="Debit"
-        logo="https://muibook.com/images/image-220.png"
-        partner="https://muibook.com/images/visa-black.svg"
-        variant="plain"
-      />`,
-  },
-
-  { role: "user", content: "[smart-card] Card with background color" },
-  {
-    role: "assistant",
-    content: `
-      <mui-smart-card
-        variant="plain"
-        bg-color="#a4fc67"
-        number="1234"
-        type="Debit"
-        logo="https://muibook.com/images/image-220.png"
-        partner="https://muibook.com/images/visa-black.svg"
-      />`,
-  },
-
-  { role: "user", content: "[smart-card] Card with background image (non-animated)" },
-  {
-    role: "assistant",
-    content: `
-      <mui-smart-card
-        variant="plain"
-        bg-image="https://muibook.com/images/image-395.png"
-        number="1234"
-        type="Debit"
-        logo="https://muibook.com/images/image-220.png"
-        partner="https://muibook.com/images/visa-black.svg"
-      />`,
-  },
-
-  { role: "user", content: "[smart-card] Premier reward card" },
-  {
-    role: "assistant",
-    content: `
-      <mui-smart-card
-        type="Premier"
-        partner="https://muibook.com/images/emerald.svg"
-        bg-image="https://muibook.com/images/premier.png"
-      />`,
-  },
-
-  { role: "user", content: "[smart-card] Diamond reward card (inverted)" },
-  {
-    role: "assistant",
-    content: `
-      <mui-smart-card
-        inverted
-        type="Diamond"
-        partner="https://muibook.com/images/emerald.svg"
-        bg-image="https://muibook.com/images/diamond.png"
-      />`,
   },
 
   // STACK
@@ -654,6 +464,123 @@ export const muiPrompts = [
       </mui-carousel-controller>`,
   },
 
+  // SMART CARD
+
+  { role: "user", content: "[smart-card] Basic plain card with number and logo" },
+  {
+    role: "assistant",
+    content: `
+      <mui-smart-card
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
+        variant="plain"
+      />`,
+  },
+  { role: "user", content: "[smart-card] Plain card with inverted style" },
+  {
+    role: "assistant",
+    content: `
+      <mui-smart-card
+        inverted
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-white.svg"
+        variant="plain"
+      />`,
+  },
+
+  { role: "user", content: "[smart-card] Animated card with background image" },
+  {
+    role: "assistant",
+    content: `
+      <mui-smart-card
+        number="1234"
+        type="Debit"
+        bg-image="https://muibook.com/images/buttercup.png"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
+        variant="animated"
+      />`,
+  },
+
+  { role: "user", content: "[smart-card] Card with custom logo size" },
+  {
+    role: "assistant",
+    content: `
+      <mui-smart-card
+        logo="https://muibook.com/images/guides.svg"
+        logo-height="80"
+      />`,
+  },
+
+  { role: "user", content: "[smart-card] Frozen card state" },
+  {
+    role: "assistant",
+    content: `
+      <mui-smart-card
+        state="frozen"
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
+        variant="plain"
+      />`,
+  },
+
+  { role: "user", content: "[smart-card] Card with background color" },
+  {
+    role: "assistant",
+    content: `
+      <mui-smart-card
+        variant="plain"
+        bg-color="#a4fc67"
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
+      />`,
+  },
+
+  { role: "user", content: "[smart-card] Card with background image (non-animated)" },
+  {
+    role: "assistant",
+    content: `
+      <mui-smart-card
+        variant="plain"
+        bg-image="https://muibook.com/images/image-395.png"
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/images/image-220.png"
+        partner="https://muibook.com/images/visa-black.svg"
+      />`,
+  },
+
+  { role: "user", content: "[smart-card] Premier reward card" },
+  {
+    role: "assistant",
+    content: `
+      <mui-smart-card
+        type="Premier"
+        partner="https://muibook.com/images/emerald.svg"
+        bg-image="https://muibook.com/images/premier.png"
+      />`,
+  },
+
+  { role: "user", content: "[smart-card] Diamond reward card (inverted)" },
+  {
+    role: "assistant",
+    content: `
+      <mui-smart-card
+        inverted
+        type="Diamond"
+        partner="https://muibook.com/images/emerald.svg"
+        bg-image="https://muibook.com/images/diamond.png"
+      />`,
+  },
+
   // COMPOSITION: WALLET
   {
     role: "user",
@@ -665,12 +592,12 @@ export const muiPrompts = [
       <mui-v-stack alignX="stretch" slot="body" style="max-width: 365px; margin: 0 auto; padding-top: var(--space-700); padding-bottom: var(--space-700)">
         <mui-smart-card
           variant="animated"
-          partner="\${Visa}"
+          partner="https://muibook.com/images/visa-black.svg"
           type="Debit"
           number="1234"
-          logo="\${Mui}"
-          logo-height="100"
-          bg-image="\${Snow}"
+          logo="https://muibook.com/images/guides.svg"
+          logo-height="80"
+          bg-image="https://muibook.com/images/buttercup.png"
         ></mui-smart-card>
 
         <mui-tab-controller>
@@ -700,37 +627,8 @@ export const muiPrompts = [
                       <mui-body size="small">-$8.12</mui-body>
                     </mui-v-stack>
                   </mui-slat>
-                  <mui-slat variant="row">
-                    <mui-v-stack slot="start" space="0">
-                      <mui-body size="medium" weight="bold">Apple App Store</mui-body>
-                      <mui-body size="small">Entertainment</mui-body>
-                    </mui-v-stack>
-                    <mui-v-stack space="0" slot="end" alignX="end">
-                      <mui-body size="small">Pending</mui-body>
-                      <mui-body size="small">-$4.99</mui-body>
-                    </mui-v-stack>
-                  </mui-slat>
                 </mui-v-stack>
 
-                <mui-slat variant="header">
-                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
-                  <mui-h-stack slot="end" alignX="end">
-                    <mui-body size="small">21 July 2025</mui-body>
-                  </mui-h-stack>
-                </mui-slat>
-
-                <mui-v-stack space="var(--space-025)">
-                  <mui-slat variant="row">
-                    <mui-v-stack slot="start" space="0">
-                      <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
-                      <mui-body size="small">Groceries</mui-body>
-                    </mui-v-stack>
-                    <mui-v-stack space="0" slot="end" alignX="end">
-                      <mui-body size="small">Pending</mui-body>
-                      <mui-body size="medium">-$26.89</mui-body>
-                    </mui-v-stack>
-                  </mui-slat>
-                </mui-v-stack>
               </mui-v-stack>
             </mui-tab-panel>
 
@@ -746,21 +644,6 @@ export const muiPrompts = [
                       <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
                     </mui-v-stack>
                   </mui-slat>
-                  <mui-slat variant="action">
-                    <mui-body size="medium" weight="bold" slot="start">21 Mar 2025</mui-body>
-                  </mui-slat>
-                </mui-v-stack>
-                <mui-slat variant="header">
-                  <mui-heading size="6" slot="start">All</mui-heading>
-                </mui-slat>
-                <mui-v-stack space="var(--space-025)">
-                  <mui-slat variant="action">
-                    <mui-body size="medium" weight="bold" slot="start">2025</mui-body>
-                  </mui-slat>
-                  <mui-slat variant="action">
-                    <mui-body size="medium" weight="bold" slot="start">2024</mui-body>
-                  </mui-slat>
-                </mui-v-stack>
               </mui-v-stack>
             </mui-tab-panel>
           </mui-v-stack>
@@ -784,12 +667,6 @@ export const muiPrompts = [
           <mui-card-body>
             <form>
               <mui-v-stack space="var(--space-400)">
-                <mui-field id="firstNameField" label="First Name">
-                  <mui-input type="text" placeholder="John" />
-                </mui-field>
-                <mui-field id="lastNameField" label="Last Name">
-                  <mui-input type="text" placeholder="Doe" />
-                </mui-field>
                 <mui-field id="emailField" label="Email">
                   <mui-input type="email" placeholder="john@example.com" />
                 </mui-field>
@@ -810,79 +687,5 @@ export const muiPrompts = [
           </mui-card-body>
         </mui-card>
       </mui-container>`,
-  },
-  // Shadow DOM Logic
-  {
-    role: "user",
-    content: "[logic] Show how to gather values from text inputs and checkboxes inside a Shadow DOM form.",
-  },
-  {
-    role: "assistant",
-    content: `
-      async _gatherFormValues() {
-        const getField = (id) => this.shadowRoot.getElementById(id);
-
-        const fields = {
-          email: getField("emailField"),
-          password: getField("passwordField"),
-          terms: getField("termsField"),
-        };
-
-        return {
-          email: await this.getInputValue(fields.email),
-          password: await this.getInputValue(fields.password),
-          agreed: await this.getCheckboxChecked(fields.terms),
-          fields, // keep for validation display
-        };
-      }`,
-  },
-  {
-    role: "user",
-    content: "[logic] Write helper to get input value from a Web Component’s Shadow DOM.",
-  },
-  {
-    role: "assistant",
-    content: `
-      async function getInputValue(field) {
-        if (!field) return "";
-        await customElements.whenDefined("mui-input");
-        const inner = field.querySelector("mui-input")?.shadowRoot?.querySelector("input, textarea");
-        return inner?.value?.trim() || "";
-      }`,
-  },
-  {
-    role: "user",
-    content: "[logic] Write helper to check if a checkbox inside Shadow DOM is selected.",
-  },
-  {
-    role: "assistant",
-    content: `
-      async function getCheckboxChecked(field) {
-        if (!field) return false;
-        const checkbox = field.querySelector("mui-checkbox");
-        if (!checkbox) return false;
-
-        await customElements.whenDefined("mui-checkbox");
-        const input = checkbox.shadowRoot?.querySelector("input[type='checkbox']");
-        return input?.checked ?? false;
-      }`,
-  },
-  {
-    role: "user",
-    content: "[logic] Show how to clear validation messages when a checkbox is clicked inside Shadow DOM.",
-  },
-  {
-    role: "assistant",
-    content: `
-      const agree = this.shadowRoot.querySelector("#agreeTerms");
-      if (agree) {
-        agree.addEventListener("change", () => {
-          const termsField = this.shadowRoot.getElementById("termsField");
-          if (termsField) {
-            termsField.removeAttribute("message");
-            termsField.removeAttribute("variant");
-          }
-        });
-      }`,
   },
 ];
