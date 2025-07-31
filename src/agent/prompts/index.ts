@@ -67,12 +67,13 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-slat variant="header">
-  <mui-heading slot="start" size="6">Heading</mui-heading>
-  <mui-h-stack slot="end" alignX="end">
-    <mui-body size="small">End slot</mui-body>
-  </mui-h-stack>
-</mui-slat>`,
+    content: `
+      <mui-slat variant="header">
+        <mui-heading slot="start" size="6">Heading</mui-heading>
+        <mui-h-stack slot="end" alignX="end">
+          <mui-body size="small">End slot</mui-body>
+        </mui-h-stack>
+      </mui-slat>`,
   },
   {
     role: "user",
@@ -80,16 +81,17 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-slat variant="row">
-  <mui-v-stack slot="start">
-    <mui-body size="medium" weight="bold">...</mui-body>
-    <mui-body size="small">...</mui-body>
-  </mui-v-stack>
-  <mui-v-stack slot="end" alignX="end">
-    <mui-body size="small">...</mui-body>
-    <mui-body size="small">...</mui-body>
-  </mui-v-stack>
-</mui-slat>`,
+    content: `
+      <mui-slat variant="row">
+        <mui-v-stack slot="start">
+          <mui-body size="medium" weight="bold">...</mui-body>
+          <mui-body size="small">...</mui-body>
+        </mui-v-stack>
+        <mui-v-stack slot="end" alignX="end">
+          <mui-body size="small">...</mui-body>
+          <mui-body size="small">...</mui-body>
+        </mui-v-stack>
+      </mui-slat>`,
   },
   {
     role: "user",
@@ -97,37 +99,8 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-slat variant="row">
-  <mui-slat-accessory slot="accessory">
-    <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
-  </mui-slat-accessory>
-  <mui-v-stack slot="start" space="0">
-    <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
-    <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
-  </mui-v-stack>
-  <mui-v-stack slot="end" space="0" alignX="end">
-    <mui-body size="x-small">Pending</mui-body>
-    <mui-body size="small" weight="bold">-$8.12</mui-body>
-  </mui-v-stack>
-</mui-slat>`,
-  },
-  {
-    role: "user",
-    content: "[card] Create a card with a slat header and action rows",
-  },
-  {
-    role: "assistant",
-    content: `<mui-card>
-  <mui-card-body>
-    <mui-slat variant="header">
-      <mui-heading slot="start" size="6">Today</mui-heading>
-      <mui-h-stack slot="end" alignX="end">
-        <mui-body size="small">22 July 2025</mui-body>
-      </mui-h-stack>
-    </mui-slat>
-    <mui-rule></mui-rule>
-    <mui-v-stack space="var(--space-000)" style="margin-top: var(--space-200)">
-      <mui-slat variant="action">
+    content: `
+      <mui-slat variant="row">
         <mui-slat-accessory slot="accessory">
           <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
         </mui-slat-accessory>
@@ -135,14 +108,45 @@ export const muiPrompts = [
           <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
           <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
         </mui-v-stack>
-        <mui-v-stack slot="end" space="0">
+        <mui-v-stack slot="end" space="0" alignX="end">
           <mui-body size="x-small">Pending</mui-body>
           <mui-body size="small" weight="bold">-$8.12</mui-body>
         </mui-v-stack>
-      </mui-slat>
-    </mui-v-stack>
-  </mui-card-body>
-</mui-card>`,
+      </mui-slat>`,
+  },
+  {
+    role: "user",
+    content: "[card] Create a card with a slat header and action rows",
+  },
+  {
+    role: "assistant",
+    content: `
+      <mui-card>
+        <mui-card-body>
+          <mui-slat variant="header">
+            <mui-heading slot="start" size="6">Today</mui-heading>
+            <mui-h-stack slot="end" alignX="end">
+              <mui-body size="small">22 July 2025</mui-body>
+            </mui-h-stack>
+          </mui-slat>
+          <mui-rule></mui-rule>
+          <mui-v-stack space="var(--space-000)" style="margin-top: var(--space-200)">
+            <mui-slat variant="action">
+              <mui-slat-accessory slot="accessory">
+                <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+              </mui-slat-accessory>
+              <mui-v-stack slot="start" space="0">
+                <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
+                <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
+              </mui-v-stack>
+              <mui-v-stack slot="end" space="0">
+                <mui-body size="x-small">Pending</mui-body>
+                <mui-body size="small" weight="bold">-$8.12</mui-body>
+              </mui-v-stack>
+            </mui-slat>
+          </mui-v-stack>
+        </mui-card-body>
+      </mui-card>`,
   },
 
   // TABLE
@@ -152,27 +156,28 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-table>
-  <mui-row-group heading>
-    <mui-row columns="1fr 1fr 1fr">
-      <mui-cell>Heading 1</mui-cell>
-      <mui-cell>Heading 2</mui-cell>
-      <mui-cell>Heading 3</mui-cell>
-    </mui-row>
-  </mui-row-group>
-  <mui-row-group>
-    <mui-row columns="1fr 1fr 1fr">
-      <mui-cell>Row 1</mui-cell>
-      <mui-cell>Row 1</mui-cell>
-      <mui-cell>Row 1</mui-cell>
-    </mui-row>
-    <mui-row columns="1fr 1fr 1fr">
-      <mui-cell>Row 2</mui-cell>
-      <mui-cell>Row 2</mui-cell>
-      <mui-cell>Row 2</mui-cell>
-    </mui-row>
-  </mui-row-group>
-</mui-table>`,
+    content: `
+      <mui-table>
+        <mui-row-group heading>
+          <mui-row columns="1fr 1fr 1fr">
+            <mui-cell>Heading 1</mui-cell>
+            <mui-cell>Heading 2</mui-cell>
+            <mui-cell>Heading 3</mui-cell>
+          </mui-row>
+        </mui-row-group>
+        <mui-row-group>
+          <mui-row columns="1fr 1fr 1fr">
+            <mui-cell>Row 1</mui-cell>
+            <mui-cell>Row 1</mui-cell>
+            <mui-cell>Row 1</mui-cell>
+          </mui-row>
+          <mui-row columns="1fr 1fr 1fr">
+            <mui-cell>Row 2</mui-cell>
+            <mui-cell>Row 2</mui-cell>
+            <mui-cell>Row 2</mui-cell>
+          </mui-row>
+        </mui-row-group>
+      </mui-table>`,
   },
 
   // ACCORDION
@@ -182,14 +187,15 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-accordion-group>
-  <mui-accordion-block heading="Section A">
-    <div slot="detail">Details A</div>
-  </mui-accordion-block>
-  <mui-accordion-block heading="Section B">
-    <div slot="detail">Details B</div>
-  </mui-accordion-block>
-</mui-accordion-group>`,
+    content: `
+      <mui-accordion-group>
+        <mui-accordion-block heading="Section A">
+          <div slot="detail">Details A</div>
+        </mui-accordion-block>
+        <mui-accordion-block heading="Section B">
+          <div slot="detail">Details B</div>
+        </mui-accordion-block>
+      </mui-accordion-group>`,
   },
 
   // ICONS
@@ -269,10 +275,11 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-image>
-  <img slot="image" src="..." alt="Descriptive alt text" />
-  <figcaption slot="caption">This is a caption</figcaption>
-</mui-image>`,
+    content: `
+      <mui-image>
+        <img slot="image" src="..." alt="Descriptive alt text" />
+        <figcaption slot="caption">This is a caption</figcaption>
+      </mui-image>`,
   },
 
   // SMART CARD
@@ -280,107 +287,116 @@ export const muiPrompts = [
   { role: "user", content: "[smart-card] Basic plain card with number and logo" },
   {
     role: "assistant",
-    content: `<mui-smart-card
-  number="1234"
-  type="Debit"
-  logo="./images/card/image-220.png"
-  partner="./images/networks/visa-black.svg"
-  variant="plain"
-/>`,
+    content: `
+      <mui-smart-card
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/assets/image-220.png"
+        partner="https://muibook.com/assets/visa-black.svg"
+        variant="plain"
+      />`,
   },
   { role: "user", content: "[smart-card] Plain card with inverted style" },
   {
     role: "assistant",
-    content: `<mui-smart-card
-  inverted
-  number="1234"
-  type="Debit"
-  logo="./images/card/image-220.png"
-  partner="./images/card/visa-white.svg"
-  variant="plain"
-/>`,
+    content: `
+      <mui-smart-card
+        inverted
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/assets/image-220.png"
+        partner="https://muibook.com/assets/visa-white.svg"
+        variant="plain"
+      />`,
   },
 
   { role: "user", content: "[smart-card] Animated card with background image" },
   {
     role: "assistant",
-    content: `<mui-smart-card
-  number="1234"
-  type="Debit"
-  bg-image="./images/mesh/buttercup.png"
-  logo="./images/card/image-220.png"
-  partner="./images/networks/visa-black.svg"
-  variant="animated"
-/>`,
+    content: `
+      <mui-smart-card
+        number="1234"
+        type="Debit"
+        bg-image="https://muibook.com/assets/buttercup.png"
+        logo="https://muibook.com/assets/image-220.png"
+        partner="https://muibook.com/assets/visa-black.svg"
+        variant="animated"
+      />`,
   },
 
   { role: "user", content: "[smart-card] Card with custom logo size" },
   {
     role: "assistant",
-    content: `<mui-smart-card
-  logo="./images/guru/guides.svg"
-  logo-height="80"
-/>`,
+    content: `
+      <mui-smart-card
+        logo="https://muibook.com/assets/guides.svg"
+        logo-height="80"
+      />`,
   },
 
   { role: "user", content: "[smart-card] Frozen card state" },
   {
     role: "assistant",
-    content: `<mui-smart-card
-  state="frozen"
-  number="1234"
-  type="Debit"
-  logo="./images/card/image-220.png"
-  partner="./images/networks/visa-black.svg"
-  variant="plain"
-/>`,
+    content: `
+      <mui-smart-card
+        state="frozen"
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/assets/image-220.png"
+        partner="https://muibook.com/assets/visa-black.svg"
+        variant="plain"
+      />`,
   },
 
   { role: "user", content: "[smart-card] Card with background color" },
   {
     role: "assistant",
-    content: `<mui-smart-card
-  variant="plain"
-  bg-color="#a4fc67"
-  number="1234"
-  type="Debit"
-  logo="./images/card/image-220.png"
-  partner="./images/networks/visa-black.svg"
-/>`,
+    content: `
+      <mui-smart-card
+        variant="plain"
+        bg-color="#a4fc67"
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/assets/image-220.png"
+        partner="https://muibook.com/assets/visa-black.svg"
+      />`,
   },
 
   { role: "user", content: "[smart-card] Card with background image (non-animated)" },
   {
     role: "assistant",
-    content: `<mui-smart-card
-  variant="plain"
-  bg-image="./images/card/image-395.png"
-  number="1234"
-  type="Debit"
-  logo="./images/card/image-220.png"
-  partner="./images/networks/visa-black.svg"
-/>`,
+    content: `
+      <mui-smart-card
+        variant="plain"
+        bg-image="https://muibook.com/assets/image-395.png"
+        number="1234"
+        type="Debit"
+        logo="https://muibook.com/assets/image-220.png"
+        partner="https://muibook.com/assets/visa-black.svg"
+      />`,
   },
 
   { role: "user", content: "[smart-card] Premier reward card" },
   {
     role: "assistant",
-    content: `<mui-smart-card
-  type="Premier"
-  partner="/emerald.svg"
-  bg-image="./images/jal/premier.png"
-/>`,
+    content: `
+      <mui-smart-card
+        type="Premier"
+        partner="https://muibook.com/assets/emerald.svg"
+        bg-image="https://muibook.com/assets/premier.png"
+      />`,
   },
 
   { role: "user", content: "[smart-card] Diamond reward card (inverted)" },
   {
     role: "assistant",
-    content: `<mui-smart-card
-  inverted
-  type="Diamond"
-  partner="/emerald.svg"
-  bg-image="./images/jal/diamond.png"
-/>`,
+    content: `
+      <mui-smart-card
+        inverted
+        type="Diamond"
+        partner="https://muibook.com/assets/emerald.svg"
+        bg-image="https://muibook.com/assets/diamond.png"
+      />`,
   },
 
   // STACK
@@ -467,18 +483,19 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-card>
-  <mui-card-header>
-    <mui-heading size="3">...</mui-heading>
-  </mui-card-header>
-  <mui-card-body>...</mui-card-body>
-  <mui-card-footer>
-    <mui-button-group right>
-      <mui-button variant="secondary">Cancel</mui-button>
-      <mui-button variant="primary">Submit</mui-button>
-    </mui-button-group>
-  </mui-card-footer>
-</mui-card>`,
+    content: `
+      <mui-card>
+        <mui-card-header>
+          <mui-heading size="3">...</mui-heading>
+        </mui-card-header>
+        <mui-card-body>...</mui-card-body>
+        <mui-card-footer>
+          <mui-button-group right>
+            <mui-button variant="secondary">Cancel</mui-button>
+            <mui-button variant="primary">Submit</mui-button>
+          </mui-button-group>
+        </mui-card-footer>
+      </mui-card>`,
   },
 
   {
@@ -487,36 +504,37 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-card>
-  <mui-card-header>
-    <mui-heading size="3">Title</mui-heading>
-  </mui-card-header>
-  <mui-rule></mui-rule>
-  <mui-card-body>
-    <mui-table>
-      <mui-row-group heading>
-        <mui-row columns="1fr 1fr 1fr auto">
-          <mui-cell heading>Office</mui-cell>
-          <mui-cell heading>Revenue</mui-cell>
-          <mui-cell heading>Cost</mui-cell>
-          <mui-cell heading action></mui-cell>
-        </mui-row>
-      </mui-row-group>
-      <mui-row-group>
-        <mui-row columns="1fr 1fr 1fr auto">
-          <mui-cell>Whalen</mui-cell>
-          <mui-cell>$4,400.00</mui-cell>
-          <mui-cell>$1,100.00</mui-cell>
-          <mui-cell action>
-            <mui-button variant="tertiary">
-              <mui-icon-add size="small"></mui-icon-add>
-            </mui-button>
-          </mui-cell>
-        </mui-row>
-      </mui-row-group>
-    </mui-table>
-  </mui-card-body>
-</mui-card>`,
+    content: `
+      <mui-card>
+        <mui-card-header>
+          <mui-heading size="3">Title</mui-heading>
+        </mui-card-header>
+        <mui-rule></mui-rule>
+        <mui-card-body>
+          <mui-table>
+            <mui-row-group heading>
+              <mui-row columns="1fr 1fr 1fr auto">
+                <mui-cell heading>Office</mui-cell>
+                <mui-cell heading>Revenue</mui-cell>
+                <mui-cell heading>Cost</mui-cell>
+                <mui-cell heading action></mui-cell>
+              </mui-row>
+            </mui-row-group>
+            <mui-row-group>
+              <mui-row columns="1fr 1fr 1fr auto">
+                <mui-cell>Whalen</mui-cell>
+                <mui-cell>$4,400.00</mui-cell>
+                <mui-cell>$1,100.00</mui-cell>
+                <mui-cell action>
+                  <mui-button variant="tertiary">
+                    <mui-icon-add size="small"></mui-icon-add>
+                  </mui-button>
+                </mui-cell>
+              </mui-row>
+            </mui-row-group>
+          </mui-table>
+        </mui-card-body>
+      </mui-card>`,
   },
   {
     role: "system",
@@ -535,29 +553,32 @@ export const muiPrompts = [
   { role: "user", content: "[message] Create an info message with heading and body" },
   {
     role: "assistant",
-    content: `<mui-message heading="Message heading" variant="info">
-  <mui-body>...</mui-body>
-</mui-message>`,
+    content: `
+      <mui-message heading="Message heading" variant="info">
+        <mui-body>...</mui-body>
+      </mui-message>`,
   },
 
   { role: "user", content: "[message] Create a positive message with link" },
   {
     role: "assistant",
-    content: `<mui-message heading="Message heading" variant="positive">
-  <mui-body>The report has been...</mui-body>
-  <mui-link>Download Your Report</mui-link>
-</mui-message>`,
+    content: `
+      <mui-message heading="Message heading" variant="positive">
+        <mui-body>The report has been...</mui-body>
+        <mui-link>Download Your Report</mui-link>
+      </mui-message>`,
   },
 
   { role: "user", content: "[message] Create a message with a list" },
   {
     role: "assistant",
-    content: `<mui-message heading="Message heading">
-  <mui-list as="ul">
-    <mui-list-item size="small">Item 1</mui-list-item>
-    <mui-list-item size="small">Item 2</mui-list-item>
-  </mui-list>
-</mui-message>`,
+    content: `
+      <mui-message heading="Message heading">
+        <mui-list as="ul">
+          <mui-list-item size="small">Item 1</mui-list-item>
+          <mui-list-item size="small">Item 2</mui-list-item>
+        </mui-list>
+      </mui-message>`,
   },
 
   // BADGES
@@ -571,18 +592,20 @@ export const muiPrompts = [
   { role: "user", content: "[button-group] Create a right-aligned button group with cancel and submit" },
   {
     role: "assistant",
-    content: `<mui-button-group right>
-  <mui-button variant="secondary">Cancel</mui-button>
-  <mui-button variant="primary">Submit</mui-button>
-</mui-button-group>`,
+    content: `
+      <mui-button-group right>
+        <mui-button variant="secondary">Cancel</mui-button>
+        <mui-button variant="primary">Submit</mui-button>
+      </mui-button-group>`,
   },
 
   { role: "user", content: "[button] Create a tertiary button with add icon" },
   {
     role: "assistant",
-    content: `<mui-button variant="tertiary">
-  <mui-icon-add></mui-icon-add>
-</mui-button>`,
+    content: `
+      <mui-button variant="tertiary">
+        <mui-icon-add></mui-icon-add>
+      </mui-button>`,
   },
 
   // LINK
@@ -596,151 +619,155 @@ export const muiPrompts = [
   { role: "user", content: "[tab] Create a tab controller with three tabs" },
   {
     role: "assistant",
-    content: `<mui-tab-controller>
-  <mui-tab-bar>
-    <mui-tab-item active id="item1">Item 1</mui-tab-item>
-    <mui-tab-item id="item2">Item 2</mui-tab-item>
-    <mui-tab-item id="item3">Item 3</mui-tab-item>
-  </mui-tab-bar>
-  <mui-tab-panel item="item1">Content 1</mui-tab-panel>
-  <mui-tab-panel item="item2">Content 2</mui-tab-panel>
-  <mui-tab-panel item="item3">Content 3</mui-tab-panel>
-</mui-tab-controller>`,
+    content: `
+      <mui-tab-controller>
+        <mui-tab-bar>
+          <mui-tab-item active id="item1">Item 1</mui-tab-item>
+          <mui-tab-item id="item2">Item 2</mui-tab-item>
+          <mui-tab-item id="item3">Item 3</mui-tab-item>
+        </mui-tab-bar>
+        <mui-tab-panel item="item1">Content 1</mui-tab-panel>
+        <mui-tab-panel item="item2">Content 2</mui-tab-panel>
+        <mui-tab-panel item="item3">Content 3</mui-tab-panel>
+      </mui-tab-controller>`,
   },
 
   // CAROUSEL
   { role: "user", content: "[carousel] Create a carousel controller with tabs and panels" },
   {
     role: "assistant",
-    content: `<mui-carousel-controller>
-  <mui-tab-bar slot="controls">
-    <mui-tab-item active id="one">1</mui-tab-item>
-    <!-- Add other tabs -->
-  </mui-tab-bar>
-  <mui-carousel-panel slot="item" item="one">
-    <mui-grid col="1fr" style="padding-bottom: var(--carousel-tab-offset);">
-      <mui-v-stack style="padding: var(--space-500) var(--space-600);">
-        <mui-heading level="3" size="2">Item 1</mui-heading>
-        <mui-body>Content...</mui-body>
-      </mui-v-stack>
-    </mui-grid>
-  </mui-carousel-panel>
-  <!-- Add other panels -->
-</mui-carousel-controller>`,
+    content: `
+      <mui-carousel-controller>
+        <mui-tab-bar slot="controls">
+          <mui-tab-item active id="one">1</mui-tab-item>
+          <!-- Add other tabs -->
+        </mui-tab-bar>
+        <mui-carousel-panel slot="item" item="one">
+          <mui-grid col="1fr" style="padding-bottom: var(--carousel-tab-offset);">
+            <mui-v-stack style="padding: var(--space-500) var(--space-600);">
+              <mui-heading level="3" size="2">Item 1</mui-heading>
+              <mui-body>Content...</mui-body>
+            </mui-v-stack>
+          </mui-grid>
+        </mui-carousel-panel>
+        <!-- Add other panels -->
+      </mui-carousel-controller>`,
   },
 
-  // WALLET COMPOSITION
+  // COMPOSITION: WALLET
   {
     role: "user",
     content: "[wallet] Create a wallet layout with a smart card and tabbed transactions",
   },
   {
     role: "assistant",
-    content: `<mui-v-stack alignX="stretch" slot="body" style="max-width: 365px; margin: 0 auto; padding-top: var(--space-700); padding-bottom: var(--space-700)">
-  <mui-smart-card
-    variant="animated"
-    partner="\${Visa}"
-    type="Debit"
-    number="1234"
-    logo="\${Mui}"
-    logo-height="100"
-    bg-image="\${Snow}"
-  ></mui-smart-card>
+    content: `
+      <mui-v-stack alignX="stretch" slot="body" style="max-width: 365px; margin: 0 auto; padding-top: var(--space-700); padding-bottom: var(--space-700)">
+        <mui-smart-card
+          variant="animated"
+          partner="\${Visa}"
+          type="Debit"
+          number="1234"
+          logo="\${Mui}"
+          logo-height="100"
+          bg-image="\${Snow}"
+        ></mui-smart-card>
 
-  <mui-tab-controller>
-    <mui-v-stack alignX="stretch" style="max-width: 100%;" space="var(--space-300)">
-      <mui-tab-bar>
-        <mui-tab-item active id="item1">Transactions</mui-tab-item>
-        <mui-tab-item id="item2">Statements</mui-tab-item>
-      </mui-tab-bar>
+        <mui-tab-controller>
+          <mui-v-stack alignX="stretch" style="max-width: 100%;" space="var(--space-300)">
+            <mui-tab-bar>
+              <mui-tab-item active id="item1">Transactions</mui-tab-item>
+              <mui-tab-item id="item2">Statements</mui-tab-item>
+            </mui-tab-bar>
 
-      <mui-tab-panel item="item1">
-        <mui-v-stack alignX="stretch" space="var(--space-000)">
-          <mui-slat variant="header">
-            <mui-heading slot="start" size="6">Today</mui-heading>
-            <mui-h-stack slot="end" alignX="end">
-              <mui-body size="small">22 July 2025</mui-body>
-            </mui-h-stack>
-          </mui-slat>
+            <mui-tab-panel item="item1">
+              <mui-v-stack alignX="stretch" space="var(--space-000)">
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Today</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">22 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
 
-          <mui-v-stack space="var(--space-025)">
-            <mui-slat variant="row">
-              <mui-v-stack slot="start" space="0">
-                <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
-                <mui-body size="small">Food & Drink</mui-body>
+                <mui-v-stack space="var(--space-025)">
+                  <mui-slat variant="row">
+                    <mui-v-stack slot="start" space="0">
+                      <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
+                      <mui-body size="small">Food & Drink</mui-body>
+                    </mui-v-stack>
+                    <mui-v-stack space="0" slot="end" alignX="end">
+                      <mui-body size="small">Pending</mui-body>
+                      <mui-body size="small">-$8.12</mui-body>
+                    </mui-v-stack>
+                  </mui-slat>
+                  <mui-slat variant="row">
+                    <mui-v-stack slot="start" space="0">
+                      <mui-body size="medium" weight="bold">Apple App Store</mui-body>
+                      <mui-body size="small">Entertainment</mui-body>
+                    </mui-v-stack>
+                    <mui-v-stack space="0" slot="end" alignX="end">
+                      <mui-body size="small">Pending</mui-body>
+                      <mui-body size="small">-$4.99</mui-body>
+                    </mui-v-stack>
+                  </mui-slat>
+                </mui-v-stack>
+
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">21 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+
+                <mui-v-stack space="var(--space-025)">
+                  <mui-slat variant="row">
+                    <mui-v-stack slot="start" space="0">
+                      <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
+                      <mui-body size="small">Groceries</mui-body>
+                    </mui-v-stack>
+                    <mui-v-stack space="0" slot="end" alignX="end">
+                      <mui-body size="small">Pending</mui-body>
+                      <mui-body size="medium">-$26.89</mui-body>
+                    </mui-v-stack>
+                  </mui-slat>
+                </mui-v-stack>
               </mui-v-stack>
-              <mui-v-stack space="0" slot="end" alignX="end">
-                <mui-body size="small">Pending</mui-body>
-                <mui-body size="small">-$8.12</mui-body>
+            </mui-tab-panel>
+
+            <mui-tab-panel item="item2">
+              <mui-v-stack alignX="stretch" space="var(--space-000)">
+                <mui-slat variant="header">
+                  <mui-heading size="6" slot="start">Recents</mui-heading>
+                </mui-slat>
+                <mui-v-stack space="var(--space-025)">
+                  <mui-slat variant="action">
+                    <mui-v-stack space="0" slot="start">
+                      <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
+                      <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
+                    </mui-v-stack>
+                  </mui-slat>
+                  <mui-slat variant="action">
+                    <mui-body size="medium" weight="bold" slot="start">21 Mar 2025</mui-body>
+                  </mui-slat>
+                </mui-v-stack>
+                <mui-slat variant="header">
+                  <mui-heading size="6" slot="start">All</mui-heading>
+                </mui-slat>
+                <mui-v-stack space="var(--space-025)">
+                  <mui-slat variant="action">
+                    <mui-body size="medium" weight="bold" slot="start">2025</mui-body>
+                  </mui-slat>
+                  <mui-slat variant="action">
+                    <mui-body size="medium" weight="bold" slot="start">2024</mui-body>
+                  </mui-slat>
+                </mui-v-stack>
               </mui-v-stack>
-            </mui-slat>
-            <mui-slat variant="row">
-              <mui-v-stack slot="start" space="0">
-                <mui-body size="medium" weight="bold">Apple App Store</mui-body>
-                <mui-body size="small">Entertainment</mui-body>
-              </mui-v-stack>
-              <mui-v-stack space="0" slot="end" alignX="end">
-                <mui-body size="small">Pending</mui-body>
-                <mui-body size="small">-$4.99</mui-body>
-              </mui-v-stack>
-            </mui-slat>
+            </mui-tab-panel>
           </mui-v-stack>
-
-          <mui-slat variant="header">
-            <mui-heading slot="start" size="6">Yesterday</mui-heading>
-            <mui-h-stack slot="end" alignX="end">
-              <mui-body size="small">21 July 2025</mui-body>
-            </mui-h-stack>
-          </mui-slat>
-
-          <mui-v-stack space="var(--space-025)">
-            <mui-slat variant="row">
-              <mui-v-stack slot="start" space="0">
-                <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
-                <mui-body size="small">Groceries</mui-body>
-              </mui-v-stack>
-              <mui-v-stack space="0" slot="end" alignX="end">
-                <mui-body size="small">Pending</mui-body>
-                <mui-body size="medium">-$26.89</mui-body>
-              </mui-v-stack>
-            </mui-slat>
-          </mui-v-stack>
-        </mui-v-stack>
-      </mui-tab-panel>
-
-      <mui-tab-panel item="item2">
-        <mui-v-stack alignX="stretch" space="var(--space-000)">
-          <mui-slat variant="header">
-            <mui-heading size="6" slot="start">Recents</mui-heading>
-          </mui-slat>
-          <mui-v-stack space="var(--space-025)">
-            <mui-slat variant="action">
-              <mui-v-stack space="0" slot="start">
-                <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
-                <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
-              </mui-v-stack>
-            </mui-slat>
-            <mui-slat variant="action">
-              <mui-body size="medium" weight="bold" slot="start">21 Mar 2025</mui-body>
-            </mui-slat>
-          </mui-v-stack>
-          <mui-slat variant="header">
-            <mui-heading size="6" slot="start">All</mui-heading>
-          </mui-slat>
-          <mui-v-stack space="var(--space-025)">
-            <mui-slat variant="action">
-              <mui-body size="medium" weight="bold" slot="start">2025</mui-body>
-            </mui-slat>
-            <mui-slat variant="action">
-              <mui-body size="medium" weight="bold" slot="start">2024</mui-body>
-            </mui-slat>
-          </mui-v-stack>
-        </mui-v-stack>
-      </mui-tab-panel>
-    </mui-v-stack>
-  </mui-tab-controller>
-</mui-v-stack>`,
+        </mui-tab-controller>
+      </mui-v-stack>`,
   },
+  // COMPOSITION: SIGN UP
   {
     role: "user",
     content:
@@ -748,39 +775,114 @@ export const muiPrompts = [
   },
   {
     role: "assistant",
-    content: `<mui-container small center>
-  <mui-card>
-    <mui-card-header>
-      <mui-heading size="3">Sign up for our product!</mui-heading>
-    </mui-card-header>
-    <mui-card-body>
-      <form>
-        <mui-v-stack space="var(--space-400)">
-          <mui-field id="firstNameField" label="First Name">
-            <mui-input type="text" placeholder="John" />
-          </mui-field>
-          <mui-field id="lastNameField" label="Last Name">
-            <mui-input type="text" placeholder="Doe" />
-          </mui-field>
-          <mui-field id="emailField" label="Email">
-            <mui-input type="email" placeholder="john@example.com" />
-          </mui-field>
-          <mui-field id="passwordField" label="Password">
-            <mui-input type="password" />
-          </mui-field>
-          <mui-field id="confirmPasswordField" label="Confirm Password">
-            <mui-input type="password" />
-          </mui-field>
-          <mui-field id="termsField">
-            <mui-checkbox id="agreeTerms">I agree to the <mui-link href="/terms">terms and conditions</mui-link></mui-checkbox>
-          </mui-field>
-          <mui-button-group right>
-            <mui-button variant="primary">Sign up</mui-button>
-          </mui-button-group>
-        </mui-v-stack>
-      </form>
-    </mui-card-body>
-  </mui-card>
-</mui-container>`,
+    content: `
+      <mui-container small center>
+        <mui-card>
+          <mui-card-header>
+            <mui-heading size="3">Sign up for our product!</mui-heading>
+          </mui-card-header>
+          <mui-card-body>
+            <form>
+              <mui-v-stack space="var(--space-400)">
+                <mui-field id="firstNameField" label="First Name">
+                  <mui-input type="text" placeholder="John" />
+                </mui-field>
+                <mui-field id="lastNameField" label="Last Name">
+                  <mui-input type="text" placeholder="Doe" />
+                </mui-field>
+                <mui-field id="emailField" label="Email">
+                  <mui-input type="email" placeholder="john@example.com" />
+                </mui-field>
+                <mui-field id="passwordField" label="Password">
+                  <mui-input type="password" />
+                </mui-field>
+                <mui-field id="confirmPasswordField" label="Confirm Password">
+                  <mui-input type="password" />
+                </mui-field>
+                <mui-field id="termsField">
+                  <mui-checkbox id="agreeTerms">I agree to the <mui-link href="/terms">terms and conditions</mui-link></mui-checkbox>
+                </mui-field>
+                <mui-button-group right>
+                  <mui-button variant="primary">Sign up</mui-button>
+                </mui-button-group>
+              </mui-v-stack>
+            </form>
+          </mui-card-body>
+        </mui-card>
+      </mui-container>`,
+  },
+  // Shadow DOM Logic
+  {
+    role: "user",
+    content: "[logic] Show how to gather values from text inputs and checkboxes inside a Shadow DOM form.",
+  },
+  {
+    role: "assistant",
+    content: `
+      async _gatherFormValues() {
+        const getField = (id) => this.shadowRoot.getElementById(id);
+
+        const fields = {
+          email: getField("emailField"),
+          password: getField("passwordField"),
+          terms: getField("termsField"),
+        };
+
+        return {
+          email: await this.getInputValue(fields.email),
+          password: await this.getInputValue(fields.password),
+          agreed: await this.getCheckboxChecked(fields.terms),
+          fields, // keep for validation display
+        };
+      }`,
+  },
+  {
+    role: "user",
+    content: "[logic] Write helper to get input value from a Web Component’s Shadow DOM.",
+  },
+  {
+    role: "assistant",
+    content: `
+      async function getInputValue(field) {
+        if (!field) return "";
+        await customElements.whenDefined("mui-input");
+        const inner = field.querySelector("mui-input")?.shadowRoot?.querySelector("input, textarea");
+        return inner?.value?.trim() || "";
+      }`,
+  },
+  {
+    role: "user",
+    content: "[logic] Write helper to check if a checkbox inside Shadow DOM is selected.",
+  },
+  {
+    role: "assistant",
+    content: `
+      async function getCheckboxChecked(field) {
+        if (!field) return false;
+        const checkbox = field.querySelector("mui-checkbox");
+        if (!checkbox) return false;
+
+        await customElements.whenDefined("mui-checkbox");
+        const input = checkbox.shadowRoot?.querySelector("input[type='checkbox']");
+        return input?.checked ?? false;
+      }`,
+  },
+  {
+    role: "user",
+    content: "[logic] Show how to clear validation messages when a checkbox is clicked inside Shadow DOM.",
+  },
+  {
+    role: "assistant",
+    content: `
+      const agree = this.shadowRoot.querySelector("#agreeTerms");
+      if (agree) {
+        agree.addEventListener("change", () => {
+          const termsField = this.shadowRoot.getElementById("termsField");
+          if (termsField) {
+            termsField.removeAttribute("message");
+            termsField.removeAttribute("variant");
+          }
+        });
+      }`,
   },
 ];

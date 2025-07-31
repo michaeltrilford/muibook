@@ -63,7 +63,6 @@ class AgentKeywordsPage extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Agent Keywords" />
-              <figcaption slot="caption">agent/keywords/index.ts</figcaption>
             </mui-image>  
           </mui-grid>
 

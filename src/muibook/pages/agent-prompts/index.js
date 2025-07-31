@@ -63,7 +63,6 @@ class AgentPromptsPage extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Agent Prompts" />
-              <figcaption slot="caption">agent/prompts/index.ts</figcaption>
             </mui-image>  
           </mui-grid>
 
