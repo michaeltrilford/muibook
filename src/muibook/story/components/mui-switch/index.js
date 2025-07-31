@@ -100,8 +100,7 @@ class storySwitch extends HTMLElement {
           Uses role='switch' and updates aria-checked for assistive tech.;
           The label isn’t shown visually—context is provided through icons or nearby text.;
           disabled sets aria-disabled and blocks interaction.;
-          Supports keyboard navigation with visible focus styles.;
-          Logs a console warning if no label is provided.
+          Supports keyboard navigation with visible focus styles.
         "
       >
 

@@ -143,8 +143,7 @@ class storyInput extends HTMLElement {
           If hide-label is used, the label is visually hidden but accessible via aria-label.;
           The label and input are linked via for and id. If no id is provided, one is generated.;
           Clear focus styles are shown for keyboard users.;
-          The native disabled attribute is fully supported by assistive tech.;
-          Logs a console warning if no label is provided.
+          The native disabled attribute is fully supported by assistive tech.
         "
       >
 

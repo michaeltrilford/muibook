@@ -63,6 +63,7 @@ export class AppContainer extends HTMLElement {
       "/carousel": "story-carousel",
       "/addon": "story-addon",
       "/input": "story-input",
+      "/checkbox": "story-checkbox",
       "/select": "story-select",
       "/switch": "story-switch",
       "/file-upload": "story-file-upload",
@@ -158,6 +159,7 @@ export class AppContainer extends HTMLElement {
       "story-tab-bar": () => import("../story/components/mui-tabs"),
       "story-list": () => import("../story/components/mui-list"),
       "story-input": () => import("../story/components/mui-input"),
+      "story-checkbox": () => import("../story/components/mui-checkbox"),
     };
 
     await (importMap[tagName]?.() ?? Promise.resolve());

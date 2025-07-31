@@ -138,6 +138,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/file-upload" title="File Upload"></app-navbar-link> 
         <app-navbar-link link="#/addon" title="Add On"></app-navbar-link>   
         <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
+        <app-navbar-link link="#/checkbox" title="Checkbox"></app-navbar-link>  
         <app-navbar-link link="#/select" title="Select"></app-navbar-link>  
         <app-navbar-link link="#/switch" title="Switch"></app-navbar-link>  
 

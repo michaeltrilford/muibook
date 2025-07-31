@@ -117,8 +117,7 @@ class storySelect extends HTMLElement {
           If hide-label is used, the label is visually hidden but still accessible via aria-label.;
           The label and select are linked using for and id attributes. If no id is provided, one is generated.;
           Keyboard users see a clear focus style when navigating.;
-          The disabled attribute is native and fully supported by assistive tech.;
-          Logs a console warning if no label is provided.
+          The disabled attribute is native and fully supported by assistive tech.
         "
       >
 

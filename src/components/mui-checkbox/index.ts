@@ -1,6 +1,8 @@
+import "../mui-body";
+
 class MuiCheckbox extends HTMLElement {
   static get observedAttributes() {
-    return ["label", "checked", "disabled", "id"];
+    return ["checked", "disabled", "id", "indeterminate"];
   }
 
   constructor() {
@@ -26,7 +28,20 @@ class MuiCheckbox extends HTMLElement {
       input.disabled = newValue !== null;
     }
 
-    if (["label", "id"].includes(name)) {
+    if (name === "indeterminate") {
+      const input = this.shadowRoot?.querySelector("input") as HTMLInputElement;
+      if (!input) return;
+
+      const isIndeterminate = newValue !== null;
+      input.indeterminate = isIndeterminate;
+
+      if (isIndeterminate) {
+        input.checked = true;
+        this.setAttribute("checked", "");
+      }
+    }
+
+    if ("id".includes(name)) {
       this.render();
       this.setupListener();
     }
@@ -47,6 +62,28 @@ class MuiCheckbox extends HTMLElement {
       );
 
       // Sync attribute
+      if (target.checked) {
+        this.setAttribute("checked", "");
+      } else {
+        this.removeAttribute("checked");
+      }
+    });
+
+    input.indeterminate = this.hasAttribute("indeterminate");
+
+    input.addEventListener("change", (e: Event) => {
+      const target = e.target as HTMLInputElement;
+
+      this.dispatchEvent(
+        new CustomEvent("change", {
+          detail: { checked: target.checked },
+          bubbles: true,
+          composed: true,
+        })
+      );
+
+      this.removeAttribute("indeterminate"); // clear indeterminate on interaction
+
       if (target.checked) {
         this.setAttribute("checked", "");
       } else {
@@ -80,38 +117,46 @@ class MuiCheckbox extends HTMLElement {
       </svg>
     `;
 
-    // const IndeterminateIcon = `
-    //   <svg
-    //     xmlns="http://www.w3.org/2000/svg"
-    //     width="16"
-    //     height="16"
-    //     fill="none"
-    //     viewBox="0 0 16 16"
-    //   >
-    //     <path
-    //       fill="currentColor"
-    //       d="m12.5 7 .102.005a1 1 0 0 1 0 1.99L12.5 9h-9a1 1 0 0 1 0-2z"
-    //     ></path>
-    //   </svg>
-    // `;
+    const indeterminate = this.hasAttribute("indeterminate");
+
+    const IndeterminateIcon = `
+      <svg
+        class="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="none"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill="currentColor"
+          d="m12.5 7 .102.005a1 1 0 0 1 0 1.99L12.5 9h-9a1 1 0 0 1 0-2z"
+        ></path>
+      </svg>
+    `;
+
+    const icon = indeterminate ? IndeterminateIcon : CheckIcon;
+
+    // Check if slotted content exists
+    const hasContent = this.innerHTML.trim().length > 0;
 
     this.shadowRoot!.innerHTML = /*html*/ `
       <style>
         :host {
-          display: block;
+          display: flex;
         }
 
         label {
           display: flex;
-          align-items: center;
-          gap: var(--space-100);
+          align-items: start;
+          gap: var(--space-200);
           cursor: pointer;
         }
 
         input[type="checkbox"] {
           all: unset;
-          width: 18px;
-          height: 18px;
+          width: 19px;
+          height: 19px;
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
           border-radius: var(--checkbox-radius);
@@ -128,6 +173,10 @@ class MuiCheckbox extends HTMLElement {
         }
 
         input[type="checkbox"]:checked {
+          background-color: var(--checkbox-background-checked);
+        }
+
+        input[type="checkbox"]:indeterminate {
           background-color: var(--checkbox-background-checked);
         }
 
@@ -161,14 +210,24 @@ class MuiCheckbox extends HTMLElement {
           display: block;
         }
 
+        .checkbox-wrapper input:indeterminate + .icon {
+          display: block;
+        }
+
       </style>
 
       <label>
         <span class="checkbox-wrapper">
-          <input type="checkbox" id="${id}" ${checked ? "checked" : ""} ${disabled ? "disabled" : ""} />
-          ${CheckIcon}
+          <input 
+            type="checkbox" 
+            id="${id}" 
+            ${indeterminate ? "indeterminate" : ""}
+            ${indeterminate || checked ? "checked" : ""}
+            ${disabled ? "disabled" : ""} 
+          />
+          ${icon}
         </span>
-        <mui-body size="medium"><slot></slot></mui-body>
+        ${hasContent ? `<mui-body size="small"><slot></slot></mui-body>` : ""}
       </label>
     `;
   }
