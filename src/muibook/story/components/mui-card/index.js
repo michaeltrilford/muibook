@@ -6,6 +6,13 @@ class storyCards extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
     const styles = /*css*/ `
       :host { display: block; }
+
+      .token-item-menu::part(flex-wrap) {
+        flex-wrap: wrap;
+        column-gap: var(--space-300);
+        row-gap: var(--space-100);
+      }
+
     `;
 
     const Columns = `1fr 1fr auto`;
@@ -234,6 +241,20 @@ class storyCards extends HTMLElement {
         guides="https://guides.muibook.com/card"
       >
 
+          <mui-message heading="Quicklinks" slot="message">
+            <mui-h-stack class="token-item-menu" alignY="center">
+              <mui-link data-scroll-link="card">Card</mui-link>
+              <mui-link data-scroll-link="card-footer">Card: Footer</mui-link>
+              <mui-link data-scroll-link="card-image">Card: Image</mui-link>
+              <mui-link data-scroll-link="card-table">Card: Table</mui-link>
+              <mui-link data-scroll-link="card-header-table">Card: Header & Table</mui-link>
+              <mui-link data-scroll-link="slat-group">Slat Group</mui-link>
+              <mui-link data-scroll-link="slat-group-divider">Slat Group: Dividers</mui-link>
+              <mui-link data-scroll-link="card-accordion">Card: Accordion</mui-link>
+              <mui-link data-scroll-link="card-header-accordion">Card: Header & Accordion</mui-link>
+            </mui-h-stack>
+          </mui-message>
+
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
@@ -286,7 +307,7 @@ class storyCards extends HTMLElement {
           </mui-responsive>
         </spec-card>
 
-        <story-card title="Card">
+        <story-card id="card" title="Card">
           <div slot="body">
             <mui-card>
               <mui-card-header>
@@ -316,7 +337,7 @@ class storyCards extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Card w/ footer actions">
+        <story-card id="card-footer" title="Card: Footer">
           <div slot="body">
             <mui-card>
               <mui-card-header>
@@ -365,7 +386,7 @@ class storyCards extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Card w/ image">
+        <story-card id="card-image" title="Card: Image">
           <div slot="body">
             <mui-card>
               <mui-card-header>
@@ -401,7 +422,9 @@ class storyCards extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Card w/ Table">
+        <story-card
+          id="card-table"
+          title="Card: Table">
           <div slot="body">
             <mui-card>
               <mui-card-body>
@@ -476,7 +499,9 @@ class storyCards extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Card Header w/ Table">
+        <story-card 
+          id="card-header-table"
+          title="Card: Header & Table">
           <div slot="body">
             <mui-card>
               <mui-card-header>
@@ -557,7 +582,8 @@ class storyCards extends HTMLElement {
         </story-card>
 
         <story-card 
-          title="Card Header & Slat: Default"
+          id="slat-group"
+          title="Slat Group"
           description="
             If a mui-slat is slotted directly into the mui-card-body, 
             if will automatically align the slats with the heading to ensure consistent alignment within a card.
@@ -624,24 +650,30 @@ class storyCards extends HTMLElement {
           </mui-card>
         </story-card>
 
-        <story-card
-          title="Card Header & Slat: Bespoke"
+        <story-card 
+          id="slat-group-divider"
+          title="Slat Group: Dividers" 
+          description="
+            If a mui-slat is slotted directly into the mui-card-body, 
+            if will automatically align the slats with the heading to ensure consistent alignment within a card.
+          "
           usage="
             mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
-            Applied padding-bottom of var(--space-500) on the mui-card-body to tighten space.;
-            Applied margin-top of var(--space-500) on the mui-rule divider;
+            Place slats directly inside mui-card-body to inherit alignment.;
             Use this layout only for cards with limited width. For wider layouts, consider using a table.
           "
         >
           <mui-card slot="body">
+
             <mui-card-header>
               <mui-heading size="3">Account Activity</mui-heading>
               <mui-body>Here’s a summary of recent actions on your account.</mui-body>
             </mui-card-header>
-            <mui-rule></mui-rule>
-            <mui-card-body style="padding-bottom: var(--space-500);">
+
+            <mui-card-body>
+              <!-- Today -->
               <mui-slat-group variant="inset">
-                <!-- Today -->
+                <mui-rule></mui-rule>
                 <mui-slat variant="header">
                   <mui-heading slot="start" size="6">Today</mui-heading>
                   <mui-h-stack slot="end" alignX="end">
@@ -666,7 +698,7 @@ class storyCards extends HTMLElement {
                     <mui-body size="x-small">08:47 AM</mui-body>
                   </mui-v-stack>
                 </mui-slat>
-                <mui-rule style="margin-top: var(--space-500)"></mui-rule>
+                <mui-rule></mui-rule>
                 <!-- Yesterday -->
                 <mui-slat variant="header">
                   <mui-heading slot="start" size="6">Yesterday</mui-heading>
@@ -684,11 +716,15 @@ class storyCards extends HTMLElement {
                   </mui-v-stack>
                 </mui-slat>
               </mui-slat-group>
-            </mui-card-body>    
+            </mui-card-body>
+            
           </mui-card>
         </story-card>
 
-        <story-card title="Card w/ Accordion">
+        <story-card
+          id="card-accordion"
+          title="Card: Accordion"
+        >
           <div slot="body">
             <mui-card>
               <mui-card-body>
@@ -727,7 +763,10 @@ class storyCards extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Card Header w/ Accordion">
+        <story-card
+          id="card-header-accordion"
+          title="Card: Header & Accordion"
+        >
           <div slot="body">
             <mui-card>
               <mui-card-header>
@@ -778,6 +817,24 @@ class storyCards extends HTMLElement {
 
       </story-template>
     `;
+
+    // Spec Card - Minimal scroll-to handler
+    // The common href with hash could not be used because of the hash navigation
+    // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
+    shadowRoot.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-scroll-link]");
+      if (!trigger) return;
+
+      event.preventDefault();
+
+      const targetId = trigger.getAttribute("data-scroll-link");
+      if (!targetId) return;
+
+      const targetEl = shadowRoot.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+      }
+    });
   }
 }
 

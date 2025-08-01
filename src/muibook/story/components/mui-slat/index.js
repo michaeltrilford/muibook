@@ -241,9 +241,8 @@ class storySlat extends HTMLElement {
               <mui-link data-scroll-link="row-accessory">Row Accessory</mui-link>
               <mui-link data-scroll-link="action">Action</mui-link>
               <mui-link data-scroll-link="action-accessory">Action Accessory</mui-link>
-              <mui-link data-scroll-link="card-desktop">Card: No Header</mui-link>
-              <mui-link data-scroll-link="card-slat-default">Default Card & Slat </mui-link>
-              <mui-link data-scroll-link="card-slat-bespoke">Bespoke Card & Slat </mui-link>
+              <mui-link data-scroll-link="slat-group">Slat Group</mui-link>
+              <mui-link data-scroll-link="slat-group-divider">Slat Group: Dividers</mui-link>
               <mui-link data-scroll-link="card-condensed">Card: Condensed</mui-link>
             </mui-h-stack>
           </mui-message>
@@ -506,18 +505,19 @@ class storySlat extends HTMLElement {
             </mui-slat>
 
             <mui-card>
+              <mui-card-header>
+                <mui-heading size="3">Transactions</mui-heading>
+                <mui-body>Here’s a summary of recent transactions on your account.</mui-body>
+              </mui-card-header>
               <mui-card-body>
-
-                <mui-slat variant="header">
-                  <mui-heading slot="start" size="6">Today</mui-heading>
-                  <mui-h-stack slot="end" alignX="end">
-                    <mui-body size="small">22 July 2025</mui-body>
-                  </mui-h-stack>
-                </mui-slat>
-
-                <mui-rule></mui-rule>
-
-                <mui-v-stack space="var(--space-000)" style="margin-top: var(--space-200)">
+                <mui-slat-group variant="inset">
+                  <mui-rule></mui-rule>
+                  <mui-slat variant="header">
+                    <mui-heading slot="start" size="6">Today</mui-heading>
+                    <mui-h-stack slot="end" alignX="end">
+                      <mui-body size="small">22 July 2025</mui-body>
+                    </mui-h-stack>
+                  </mui-slat>
                   <mui-slat variant="action">
                     <mui-slat-accessory slot="accessory">
                       <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
@@ -527,8 +527,7 @@ class storySlat extends HTMLElement {
                       <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
                     </mui-v-stack>
                   </mui-slat>
-                </mui-v-stack>
-
+                </mui-slat-group>
               </mui-card-body>          
             </mui-card>
 
@@ -630,30 +629,105 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card 
-          id="card-desktop"
-          title="Card: No Header" 
-          description="Use Card with card-body when composing full-page views on desktop. This allows you to apply a max-width to the inner content, helping constrain layout elements like Slats or grouped sections into manageable columns. The Slat is intentionally flexible, so thoughtful layout and design decisions are still required. See the <mui-link size='small' href='#/wallet'>View the Wallet composition</mui-link> for an example of page-level usage."
+
+        <story-card
+          id="slat-group"
+          title="Slat Group"
+          description="
+            If a mui-slat is slotted directly into the mui-card-body, 
+            if will automatically align the slats with the heading to ensure consistent alignment within a card.
+          "
           usage="
-            Use mui-slat directly inside mui-card-body for simple page layouts.;
-            Use mui-slat-group with offset if a heading is present or when tighter alignment is needed with surrounding elements.
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
+            Place slats directly inside mui-card-body to inherit alignment.;
+            Use this layout only for cards with limited width. For wider layouts, consider using a table.
+          "
+        >
+          <mui-card slot="body">
+            <mui-card-header>
+              <mui-heading size="3">Account Activity</mui-heading>
+              <mui-body>Here’s a summary of recent actions on your account.</mui-body>
+            </mui-card-header>
+            <mui-card-body>
+              <!-- Today -->
+              <mui-slat-group variant="inset">
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Today</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">22 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Signed in from new device</mui-body>
+                    <mui-body size="x-small">Location: Sydney, Australia</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">10:32 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Password changed</mui-body>
+                    <mui-body size="x-small">Security settings updated</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">08:47 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <!-- Yesterday -->
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">21 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">2FA code sent</mui-body>
+                    <mui-body size="x-small">Method: SMS</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">04:19 PM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+              </mui-slat-group>
+            </mui-card-body>
+            
+          </mui-card>
+        </story-card>
+
+
+        <story-card 
+          id="slat-group-divider"
+          title="Slat Group: Dividers" 
+          description="
+            If a mui-slat is slotted directly into the mui-card-body, 
+            if will automatically align the slats with the heading to ensure consistent alignment within a card.
+          "
+          usage="
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
+            Place slats directly inside mui-card-body to inherit alignment.;
+            Use this layout only for cards with limited width. For wider layouts, consider using a table.
           "
           usageLink="https://guides.muibook.com/slat"
           github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-slat/index.js"
           >
 
           <mui-card slot="body">
+            <mui-card-header>
+              <mui-heading size="3">Transactions</mui-heading>
+              <mui-body>Here’s a summary of recent transactions on your account.</mui-body>
+            </mui-card-header>
             <mui-card-body>
-              <mui-slat variant="header">
-                <mui-heading slot="start" size="6">Today</mui-heading>
-                <mui-h-stack slot="end" alignX="end">
-                  <mui-body size="small">22 July 2025</mui-body>
-                </mui-h-stack>
-              </mui-slat>
-
-              <mui-rule></mui-rule>
-
-              <mui-v-stack space="var(--space-000)" style="margin-top: var(--space-200)">
+              <mui-slat-group variant="inset">
+                <mui-rule></mui-rule>
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Today</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">22 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
                 <mui-slat variant="action">
                   <mui-v-stack slot="start" space="0">
                     <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
@@ -674,20 +748,13 @@ class storySlat extends HTMLElement {
                     <mui-body size="small">-$4.99</mui-body>
                   </mui-v-stack>
                 </mui-slat>
-              </mui-v-stack>
-
-             
-
-              <mui-slat variant="header">
-                <mui-heading slot="start" size="6">Yesterday</mui-heading>
-                <mui-h-stack slot="end" alignX="end">
-                  <mui-body size="small">21 July 2025</mui-body>
-                </mui-h-stack>
-              </mui-slat>
-
-              <mui-rule></mui-rule>
-
-              <mui-v-stack space="var(--space-000)" style="margin-top: var(--space-200)">
+                <mui-rule></mui-rule>
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">21 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
                 <mui-slat variant="action">
                   <mui-v-stack slot="start" space="0">
                     <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
@@ -698,8 +765,7 @@ class storySlat extends HTMLElement {
                     <mui-body size="medium">-$26.89</mui-body>
                   </mui-v-stack>
                 </mui-slat>
-              </mui-v-stack>
-
+              </mui-slat-group>
             </mui-card-body>          
           </mui-card>
           
@@ -762,142 +828,8 @@ class storySlat extends HTMLElement {
         </story-card>
 
         <story-card 
-          id="card-slat-default"
-          title="Card Header & Slat: Default"
-          description="
-            If a mui-slat is slotted directly into the mui-card-body, 
-            if will automatically align the slats with the heading to ensure consistent alignment within a card.
-          "
-          usage="
-            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
-            Place slats directly inside mui-card-body to inherit alignment.;
-            Use this layout only for cards with limited width. For wider layouts, consider using a table.
-          "
-        >
-          <mui-card slot="body">
-
-            <mui-card-header>
-              <mui-heading size="3">Account Activity</mui-heading>
-              <mui-body>Here’s a summary of recent actions on your account.</mui-body>
-            </mui-card-header>
-
-            <mui-card-body>
-              <!-- Today -->
-              <mui-slat-group variant="inset">
-                <mui-slat variant="header">
-                  <mui-heading slot="start" size="6">Today</mui-heading>
-                  <mui-h-stack slot="end" alignX="end">
-                    <mui-body size="small">22 July 2025</mui-body>
-                  </mui-h-stack>
-                </mui-slat>
-                <mui-slat variant="action">
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="small" weight="bold">Signed in from new device</mui-body>
-                    <mui-body size="x-small">Location: Sydney, Australia</mui-body>
-                  </mui-v-stack>
-                  <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-body size="x-small">10:32 AM</mui-body>
-                  </mui-v-stack>
-                </mui-slat>
-                <mui-slat variant="action">
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="small" weight="bold">Password changed</mui-body>
-                    <mui-body size="x-small">Security settings updated</mui-body>
-                  </mui-v-stack>
-                  <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-body size="x-small">08:47 AM</mui-body>
-                  </mui-v-stack>
-                </mui-slat>
-                <!-- Yesterday -->
-                <mui-slat variant="header">
-                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
-                  <mui-h-stack slot="end" alignX="end">
-                    <mui-body size="small">21 July 2025</mui-body>
-                  </mui-h-stack>
-                </mui-slat>
-                <mui-slat variant="action">
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="small" weight="bold">2FA code sent</mui-body>
-                    <mui-body size="x-small">Method: SMS</mui-body>
-                  </mui-v-stack>
-                  <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-body size="x-small">04:19 PM</mui-body>
-                  </mui-v-stack>
-                </mui-slat>
-              </mui-slat-group>
-            </mui-card-body>
-            
-          </mui-card>
-        </story-card>
-
-        <story-card
-          id="card-slat-bespoke"
-          title="Card Header & Slat: Bespoke"
-          usage="
-            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
-            Applied padding-bottom of var(--space-500) on the mui-card-body to tighten space.;
-            Applied margin-top of var(--space-500) on the mui-rule divider;
-            Use this layout only for cards with limited width. For wider layouts, consider using a table.
-          "
-        >
-          <mui-card slot="body">
-            <mui-card-header>
-              <mui-heading size="3">Account Activity</mui-heading>
-              <mui-body>Here’s a summary of recent actions on your account.</mui-body>
-            </mui-card-header>
-            <mui-rule></mui-rule>
-            <mui-card-body style="padding-bottom: var(--space-500);">
-              <mui-slat-group variant="inset">
-                <!-- Today -->
-                <mui-slat variant="header">
-                  <mui-heading slot="start" size="6">Today</mui-heading>
-                  <mui-h-stack slot="end" alignX="end">
-                    <mui-body size="small">22 July 2025</mui-body>
-                  </mui-h-stack>
-                </mui-slat>
-                <mui-slat variant="action">
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="small" weight="bold">Signed in from new device</mui-body>
-                    <mui-body size="x-small">Location: Sydney, Australia</mui-body>
-                  </mui-v-stack>
-                  <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-body size="x-small">10:32 AM</mui-body>
-                  </mui-v-stack>
-                </mui-slat>
-                <mui-slat variant="action">
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="small" weight="bold">Password changed</mui-body>
-                    <mui-body size="x-small">Security settings updated</mui-body>
-                  </mui-v-stack>
-                  <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-body size="x-small">08:47 AM</mui-body>
-                  </mui-v-stack>
-                </mui-slat>
-                <mui-rule style="margin-top: var(--space-500)"></mui-rule>
-                <!-- Yesterday -->
-                <mui-slat variant="header">
-                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
-                  <mui-h-stack slot="end" alignX="end">
-                    <mui-body size="small">21 July 2025</mui-body>
-                  </mui-h-stack>
-                </mui-slat>
-                <mui-slat variant="action">
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="small" weight="bold">2FA code sent</mui-body>
-                    <mui-body size="x-small">Method: SMS</mui-body>
-                  </mui-v-stack>
-                  <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-body size="x-small">04:19 PM</mui-body>
-                  </mui-v-stack>
-                </mui-slat>
-              </mui-slat-group>
-            </mui-card-body>    
-          </mui-card>
-        </story-card>
-
-        <story-card 
           id="card-condensed"
-          title="Card: Condensed Usage" 
+          title="Card: Condensed" 
           description="For tighter layouts on desktop or <mui-link size='small' href='#/responsive'>mobile responsive views</mui-link>, apply condensed boolean to the card-body. Slats are already condensed, so edge-to-edge layouts work well as the viewport narrows. Again, the Slat is intentionally flexible — good design decisions are still important."
           usage=""
           usageLink="https://guides.muibook.com/slat"

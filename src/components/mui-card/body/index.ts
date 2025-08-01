@@ -21,6 +21,16 @@ class MuiCardBody extends HTMLElement {
             padding: var(--space-600);
           }
         }
+
+        :host(.has-slat-group) {
+          padding-bottom: var(--space-200);
+        }
+        @media (min-width: 768px) {
+        :host(.has-slat-group) {
+          padding-bottom: var(--space-500);
+        }
+        }
+        
       </style>
       <slot></slot>
     `;
@@ -77,6 +87,15 @@ class MuiCardBody extends HTMLElement {
               (cell as HTMLElement).classList.add("card-slot");
             });
 
+            hasLayoutComponent = true;
+          }
+
+          // Check for <mui-slat-group>
+          const isSlatGroup = element.tagName.toLowerCase() === "mui-slat-group";
+          const slatGroup = isSlatGroup ? element : element.querySelector("mui-slat-group");
+
+          if (slatGroup instanceof HTMLElement) {
+            this.classList.add("inner-space", "has-slat-group");
             hasLayoutComponent = true;
           }
         }

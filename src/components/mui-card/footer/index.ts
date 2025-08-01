@@ -32,6 +32,12 @@ class MuiCardFooter extends HTMLElement {
           border-bottom-right-radius: calc(var(--card-radius) - 1px);
           border-bottom-left-radius: calc(var(--card-radius) - 1px);
         }
+
+:host(.has-button-group) {
+  padding-top: 0;
+}
+
+
       </style>
       <slot></slot>
     `;
@@ -56,6 +62,7 @@ class MuiCardFooter extends HTMLElement {
       }
 
       let hasCode = false;
+      let hasButtonGroup = false;
       visibleNodes.forEach((node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
           const element = node as HTMLElement;
@@ -64,11 +71,19 @@ class MuiCardFooter extends HTMLElement {
           if (tag === "mui-code" || element.querySelector?.("mui-code")) {
             hasCode = true;
           }
+
+          if (tag === "mui-button-group" || element.querySelector?.("mui-button-group")) {
+            hasButtonGroup = true;
+          }
         }
       });
 
       if (!hasCode) {
         this.classList.add("inner-space");
+      }
+
+      if (hasButtonGroup) {
+        this.classList.add("has-button-group");
       }
     });
   }
