@@ -60,6 +60,7 @@ import "../components/mui-grid";
 import "../components/mui-switch";
 import "../components/mui-slat/slat";
 import "../components/mui-slat/accessory";
+import "../components/mui-slat/group";
 import "../components/mui-body";
 import "../components/mui-rule";
 import "../components/mui-quote";

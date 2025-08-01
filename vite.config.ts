@@ -99,6 +99,7 @@ export default defineConfig({
         "components/mui-slat": path.resolve(__dirname, "src/components/mui-slat"),
         "components/mui-slat/slat": path.resolve(__dirname, "src/components/mui-slat/slat"),
         "components/mui-slat/accessory": path.resolve(__dirname, "src/components/mui-slat/accessory"),
+        "components/mui-slat/group": path.resolve(__dirname, "src/components/mui-slat/group"),
         // SMART CARD
         "components/mui-smart-card": path.resolve(__dirname, "src/components/mui-smart-card"),
         // STACK

@@ -17,6 +17,7 @@ export * from "./components/mui-table/row";
 export * from "./components/mui-table/row-group";
 export * from "./components/mui-slat/slat";
 export * from "./components/mui-slat/accessory";
+export * from "./components/mui-slat/group";
 export * from "./components/mui-accordion/group";
 export * from "./components/mui-accordion/inline";
 export * from "./components/mui-accordion/block";

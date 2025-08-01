@@ -365,7 +365,7 @@ class storyCards extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Card with image">
+        <story-card title="Card w/ image">
           <div slot="body">
             <mui-card>
               <mui-card-header>
@@ -419,14 +419,14 @@ class storyCards extends HTMLElement {
                       <mui-cell>Whalen</mui-cell>
                       <mui-cell>$1,100.00</mui-cell>
                       <mui-cell action>
-                        <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
+                        <mui-button variant="tertiary" > <mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
                       </mui-cell>
                     </mui-row>
                     <mui-row columns="${Columns}">
                       <mui-cell>Whalen</mui-cell>
                       <mui-cell>$1,100.00</mui-cell>
                       <mui-cell action>
-                        <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
+                        <mui-button variant="tertiary" > <mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
                       </mui-cell>
                     </mui-row>
                   </mui-row-group>
@@ -453,7 +453,7 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add size="small"&gt;&lt;/mui-icon-add&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="small"&gt;&lt;/mui-icon-ellipsis&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -462,7 +462,7 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add size="small"&gt;&lt;/mui-icon-add&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="small"&gt;&lt;/mui-icon-ellipsis&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -498,14 +498,14 @@ class storyCards extends HTMLElement {
                       <mui-cell>Whalen</mui-cell>
                       <mui-cell>$1,100.00</mui-cell>
                       <mui-cell action>
-                        <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
+                        <mui-button variant="tertiary" > <mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
                       </mui-cell>
                     </mui-row>
                     <mui-row columns="${Columns}">
                       <mui-cell>Whalen</mui-cell>
                       <mui-cell>$1,100.00</mui-cell>
                       <mui-cell action>
-                        <mui-button variant="tertiary" > <mui-icon-add size="small"></mui-icon-add></mui-button>
+                        <mui-button variant="tertiary" > <mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
                       </mui-cell>
                     </mui-row>
                   </mui-row-group>
@@ -536,7 +536,7 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add size="small"&gt;&lt;/mui-icon-add&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="small"&gt;&lt;/mui-icon-ellipsis&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -545,7 +545,7 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;$1,100.00&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" &gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add size="small"&gt;&lt;/mui-icon-add&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="small"&gt;&lt;/mui-icon-ellipsis&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -554,6 +554,138 @@ class storyCards extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
           </mui-code>
+        </story-card>
+
+        <story-card 
+          title="Card Header & Slat: Default"
+          description="
+            If a mui-slat is slotted directly into the mui-card-body, 
+            if will automatically align the slats with the heading to ensure consistent alignment within a card.
+          "
+          usage="
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
+            Place slats directly inside mui-card-body to inherit alignment.;
+            Use this layout only for cards with limited width. For wider layouts, consider using a table.
+          "
+        >
+          <mui-card slot="body">
+
+            <mui-card-header>
+              <mui-heading size="3">Account Activity</mui-heading>
+              <mui-body>Here’s a summary of recent actions on your account.</mui-body>
+            </mui-card-header>
+
+            <mui-card-body>
+              <!-- Today -->
+              <mui-slat-group variant="inset">
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Today</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">22 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Signed in from new device</mui-body>
+                    <mui-body size="x-small">Location: Sydney, Australia</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">10:32 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Password changed</mui-body>
+                    <mui-body size="x-small">Security settings updated</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">08:47 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <!-- Yesterday -->
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">21 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">2FA code sent</mui-body>
+                    <mui-body size="x-small">Method: SMS</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">04:19 PM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+              </mui-slat-group>
+            </mui-card-body>
+            
+          </mui-card>
+        </story-card>
+
+        <story-card
+          title="Card Header & Slat: Bespoke"
+          usage="
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
+            Applied padding-bottom of var(--space-500) on the mui-card-body to tighten space.;
+            Applied margin-top of var(--space-500) on the mui-rule divider;
+            Use this layout only for cards with limited width. For wider layouts, consider using a table.
+          "
+        >
+          <mui-card slot="body">
+            <mui-card-header>
+              <mui-heading size="3">Account Activity</mui-heading>
+              <mui-body>Here’s a summary of recent actions on your account.</mui-body>
+            </mui-card-header>
+            <mui-rule></mui-rule>
+            <mui-card-body style="padding-bottom: var(--space-500);">
+              <mui-slat-group variant="inset">
+                <!-- Today -->
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Today</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">22 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Signed in from new device</mui-body>
+                    <mui-body size="x-small">Location: Sydney, Australia</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">10:32 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Password changed</mui-body>
+                    <mui-body size="x-small">Security settings updated</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">08:47 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-rule style="margin-top: var(--space-500)"></mui-rule>
+                <!-- Yesterday -->
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">21 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">2FA code sent</mui-body>
+                    <mui-body size="x-small">Method: SMS</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">04:19 PM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+              </mui-slat-group>
+            </mui-card-body>    
+          </mui-card>
         </story-card>
 
         <story-card title="Card w/ Accordion">

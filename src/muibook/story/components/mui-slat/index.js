@@ -161,6 +161,64 @@ class storySlat extends HTMLElement {
       })
       .join("");
 
+    const groupPropItems = [
+      {
+        name: "slot",
+        type: "slot (default)",
+        options: "mui-slat, mui-rule",
+        default: "",
+        description:
+          "Use within a mui-card-body to align slat items with the card heading. mui-rule will span edge to edge.",
+      },
+      {
+        name: "variant",
+        type: "string",
+        options: "inset",
+        default: "",
+        description: "Applies the correct inset for use within mui-card-body to align slats and rules.",
+      },
+    ];
+
+    const groupRows = groupPropItems
+      .map(
+        (prop) => `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const groupAccordions = groupPropItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === groupPropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+            <mui-accordion-block
+              style="position: relative; z-index: 1;" 
+              size="medium" 
+              heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+              ${isLastChild}>
+              <story-type-slat
+                slot="detail"
+                ${prop.required ? "required" : ""}
+                name="${prop.name}"
+                type="${prop.type}" 
+                options="${prop.options || ""}"
+                default="${prop.default || ""}"
+                description="${prop.description}">
+              </story-type-slat>
+            </mui-accordion-block>
+          `;
+      })
+      .join("");
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -183,11 +241,10 @@ class storySlat extends HTMLElement {
               <mui-link data-scroll-link="row-accessory">Row Accessory</mui-link>
               <mui-link data-scroll-link="action">Action</mui-link>
               <mui-link data-scroll-link="action-accessory">Action Accessory</mui-link>
-              <mui-link data-scroll-link="card-desktop">Card: Desktop</mui-link>
-              <mui-link data-scroll-link="card-desktop">Card: Responsive</mui-link>
-              <mui-link data-scroll-link="card-desktop">Card: Custom</mui-link>
-              <mui-link data-scroll-link="custom-row">Custom Row</mui-link>
-              <mui-link data-scroll-link="custom-action">Custom Action</mui-link>
+              <mui-link data-scroll-link="card-desktop">Card: No Header</mui-link>
+              <mui-link data-scroll-link="card-slat-default">Default Card & Slat </mui-link>
+              <mui-link data-scroll-link="card-slat-bespoke">Bespoke Card & Slat </mui-link>
+              <mui-link data-scroll-link="card-condensed">Card: Condensed</mui-link>
             </mui-h-stack>
           </mui-message>
 
@@ -218,6 +275,17 @@ class storySlat extends HTMLElement {
             </story-type-table>
             <mui-accordion-group exclusive slot="showBelow">
               ${accessoryAccordions}
+            </mui-accordion-group>
+          </mui-responsive>
+        </spec-card>
+
+        <spec-card title="Props: Group">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${groupRows}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${groupAccordions}
             </mui-accordion-group>
           </mui-responsive>
         </spec-card>
@@ -564,9 +632,12 @@ class storySlat extends HTMLElement {
 
         <story-card 
           id="card-desktop"
-          title="Card: Desktop Usage" 
+          title="Card: No Header" 
           description="Use Card with card-body when composing full-page views on desktop. This allows you to apply a max-width to the inner content, helping constrain layout elements like Slats or grouped sections into manageable columns. The Slat is intentionally flexible, so thoughtful layout and design decisions are still required. See the <mui-link size='small' href='#/wallet'>View the Wallet composition</mui-link> for an example of page-level usage."
-          usage=""
+          usage="
+            Use mui-slat directly inside mui-card-body for simple page layouts.;
+            Use mui-slat-group with offset if a heading is present or when tighter alignment is needed with surrounding elements.
+          "
           usageLink="https://guides.muibook.com/slat"
           github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-slat/index.js"
           >
@@ -690,6 +761,139 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
+        <story-card 
+          id="card-slat-default"
+          title="Card Header & Slat: Default"
+          description="
+            If a mui-slat is slotted directly into the mui-card-body, 
+            if will automatically align the slats with the heading to ensure consistent alignment within a card.
+          "
+          usage="
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
+            Place slats directly inside mui-card-body to inherit alignment.;
+            Use this layout only for cards with limited width. For wider layouts, consider using a table.
+          "
+        >
+          <mui-card slot="body">
+
+            <mui-card-header>
+              <mui-heading size="3">Account Activity</mui-heading>
+              <mui-body>Here’s a summary of recent actions on your account.</mui-body>
+            </mui-card-header>
+
+            <mui-card-body>
+              <!-- Today -->
+              <mui-slat-group variant="inset">
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Today</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">22 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Signed in from new device</mui-body>
+                    <mui-body size="x-small">Location: Sydney, Australia</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">10:32 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Password changed</mui-body>
+                    <mui-body size="x-small">Security settings updated</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">08:47 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <!-- Yesterday -->
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">21 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">2FA code sent</mui-body>
+                    <mui-body size="x-small">Method: SMS</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">04:19 PM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+              </mui-slat-group>
+            </mui-card-body>
+            
+          </mui-card>
+        </story-card>
+
+        <story-card
+          id="card-slat-bespoke"
+          title="Card Header & Slat: Bespoke"
+          usage="
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
+            Applied padding-bottom of var(--space-500) on the mui-card-body to tighten space.;
+            Applied margin-top of var(--space-500) on the mui-rule divider;
+            Use this layout only for cards with limited width. For wider layouts, consider using a table.
+          "
+        >
+          <mui-card slot="body">
+            <mui-card-header>
+              <mui-heading size="3">Account Activity</mui-heading>
+              <mui-body>Here’s a summary of recent actions on your account.</mui-body>
+            </mui-card-header>
+            <mui-rule></mui-rule>
+            <mui-card-body style="padding-bottom: var(--space-500);">
+              <mui-slat-group variant="inset">
+                <!-- Today -->
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Today</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">22 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Signed in from new device</mui-body>
+                    <mui-body size="x-small">Location: Sydney, Australia</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">10:32 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Password changed</mui-body>
+                    <mui-body size="x-small">Security settings updated</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">08:47 AM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-rule style="margin-top: var(--space-500)"></mui-rule>
+                <!-- Yesterday -->
+                <mui-slat variant="header">
+                  <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                  <mui-h-stack slot="end" alignX="end">
+                    <mui-body size="small">21 July 2025</mui-body>
+                  </mui-h-stack>
+                </mui-slat>
+                <mui-slat variant="action">
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">2FA code sent</mui-body>
+                    <mui-body size="x-small">Method: SMS</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">04:19 PM</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+              </mui-slat-group>
+            </mui-card-body>    
+          </mui-card>
+        </story-card>
 
         <story-card 
           id="card-condensed"
@@ -812,337 +1016,6 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
             &lt;/mui-card&gt;
-          </mui-code>
-
-        </story-card>
-
-
-
-        <story-card 
-          id="card-custom"
-          title="Card: Custom Row & Spacing" 
-          description="When using Slats inside a Card, you can style the rows as needed. Use your own CSS and the Rule component to add dividers or spacing where appropriate. This gives you control to align with your layout or visual hierarchy."
-          usage="Use CSS or target the --slat-radius token to turn off radius on the slat; Then map the local component within the card."
-          usageLink="https://guides.muibook.com/slat"
-          github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-slat/index.js"
-          >
-
-          <mui-card slot="body">
-            <mui-card-body>
-              <mui-slat variant="header">
-                <mui-heading slot="start" size="6">Today</mui-heading>
-                <mui-h-stack slot="end" alignX="end">
-                  <mui-body size="small">22 July 2025</mui-body>
-                </mui-h-stack>
-              </mui-slat>
-
-              <mui-rule></mui-rule>
-
-              <mui-v-stack space="var(--space-000)">
-                <mui-slat variant="action" style="--slat-radius: 0;">
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
-                    <mui-body size="small">Food & Drink</mui-body>
-                  </mui-v-stack>
-                  <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-body size="small">Pending</mui-body>
-                    <mui-body size="small">-$8.12</mui-body>
-                  </mui-v-stack>
-                </mui-slat>
-                <mui-slat variant="action" style="--slat-radius: 0;">
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="medium" weight="bold">Apple App Store</mui-body>
-                    <mui-body size="small">Entertainment</mui-body>
-                  </mui-v-stack>
-                  <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-body size="small">Pending</mui-body>
-                    <mui-body size="small">-$4.99</mui-body>
-                  </mui-v-stack>
-                </mui-slat>
-              </mui-v-stack>
-
-            
-
-              <mui-slat variant="header">
-                <mui-heading slot="start" size="6">Yesterday</mui-heading>
-                <mui-h-stack slot="end" alignX="end">
-                  <mui-body size="small">21 July 2025</mui-body>
-                </mui-h-stack>
-              </mui-slat>
-
-              <mui-rule></mui-rule>
-
-              <mui-v-stack space="var(--space-000)">
-                <mui-slat variant="action" style="--slat-radius: 0;">
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
-                    <mui-body size="small">Groceries</mui-body>
-                  </mui-v-stack>
-                  <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-body size="small">Pending</mui-body>
-                    <mui-body size="medium">-$26.89</mui-body>
-                  </mui-v-stack>
-                </mui-slat>
-              </mui-v-stack>
-
-            </mui-card-body>          
-          </mui-card>
-          
-          <mui-code slot="footer" scrollable>
-            &lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&lt;mui-card-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Today&lt;/mui-heading&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="end" alignX="end"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;22 July 2025&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" style="--slat-radius: 0;"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;Espresso Bar&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Food &amp; Drink&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="0" slot="end" alignX="end"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Pending&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;-$8.12&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" style="--slat-radius: 0;"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;Apple App Store&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Entertainment&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="0" slot="end" alignX="end"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Pending&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;-$4.99&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Yesterday&lt;/mui-heading&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="end" alignX="end"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;21 July 2025&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" style="--slat-radius: 0;"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;IGA South Yarra&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Groceries&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="0" slot="end" alignX="end"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Pending&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium"&gt;-$26.89&lt;/mui-body&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
-            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
-            &lt;/mui-card&gt;
-          </mui-code>
-
-        </story-card>
-
-
-        <story-card 
-          id="custom-row"
-          title="Custom Row" 
-          description="You can customise the Row variant by overriding design tokens, adding custom styles, or using layout helpers like the Rule component. When composing your experience in your framework with our components, you will be creating local modular components in your app for reuse and should use the styling approach that suits your setup, such as CSS Modules, Shadow DOM styles or another method."
-          usage="
-            Redefine the provided design tokens under components with values that suit your visual style.;
-            In our case, we added a class and mapped the tokens to styles that matched the design.
-          "
-          usageLink="https://guides.muibook.com/slat">
-
-          <div slot="body">
-            <mui-slat variant="row" class="slat">
-              <mui-v-stack space="0" slot="start">
-                <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
-                <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
-              </mui-v-stack>
-            </mui-slat>
-            <mui-slat  variant="row" class="slat">
-              <mui-v-stack space="0" slot="start">
-                <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
-                <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
-              </mui-v-stack>
-            </mui-slat>
-          </div>
-          
-          <mui-code slot="footer" scrollable>
-            // CSS Only Approach
-            <br />
-            /* =================================== */
-            <br />
-            <br />
-            .slat {
-            <br />
-            &nbsp;&nbsp;--slat-background: var(--black-opacity-0);
-            <br />
-            &nbsp;&nbsp;--slat-radius: var(--radius-000);
-            <br />
-            &nbsp;&nbsp;border-bottom: var(--border-thin);
-            <br />
-            }
-            <br />
-            .slat:last-of-type {
-            <br />
-            &nbsp;&nbsp;border-bottom: none;
-            <br />
-            }
-            <br />
-            <br />
-            &lt;mui-slat variant="row" class="slat"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-v-stack slot="start"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&lt;/mui-v-stack&gt;
-            <br />
-            &lt;/mui-slat&gt;
-            <br />
-            <br />
-            &lt;mui-slat variant="row" class="slat"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-v-stack slot="start"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&lt;/mui-v-stack&gt;
-            <br />
-            &lt;/mui-slat&gt;
-            <br />
-            <br />
-            <br />
-            // CSS & Supporting Components
-            <br />
-            /* =================================== */
-            <br />
-            <br />
-            // ⚠️ Rule required
-            <br />
-            <br />
-            import "@muibook/components/mui-rule";
-            <br />
-            <br />
-            .slat {
-            <br />
-            &nbsp;&nbsp;--slat-background: var(--black-opacity-0);
-            <br />
-            &nbsp;&nbsp;--slat-radius: var(--radius-000);
-            }
-            <br />
-            <br />
-            // Slat
-            <br />
-            <br />
-            &lt;mui-slat variant="row" class="slat"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-v-stack slot="start"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&lt;/mui-v-stack&gt;
-            <br />
-            &lt;/mui-slat&gt;
-            <br />
-            <br />
-            &lt;mui-rule&gt;&lt;/mui-rule&gt;
-            <br />
-            <br />
-            &lt;mui-slat variant="row" class="slat"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-v-stack slot="start"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&lt;/mui-v-stack&gt;
-            <br />
-            &lt;/mui-slat&gt;
-            <br />
-            <br />
-            <br />
-          </mui-code>
-
-        </story-card>
-
-        <story-card 
-          id="custom-action"
-          title="Custom Action" 
-          description="You can customise actions in a few different ways. This includes using design tokens, composing the default Slat within a Button, or adding your own event handlers and accessibility roles. The last option gives you more control but requires more effort."
-          usage="
-            Redefine the provided design tokens under components with values that suit your visual style.;
-            In our case, we added a class and mapped the tokens to styles that matched the design.
-          "
-          usageLink="https://guides.muibook.com/slat">
-
-          <mui-slat slot="body" variant="action" class="slat">
-            <mui-v-stack space="0" slot="start">
-              <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
-              <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
-            </mui-v-stack>
-          </mui-slat>
-          <mui-slat slot="body" variant="action" class="slat">
-            <mui-v-stack space="0" slot="start">
-              <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
-              <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
-            </mui-v-stack>
-          </mui-slat>
-
-          
-          <mui-code slot="footer" scrollable>
-            // Bespoke styles
-            <br />
-            <br />
-            .slat {
-            <br />
-            &nbsp;&nbsp;--slat-background: var(--black-opacity-0);
-            <br />
-            &nbsp;&nbsp;--slat-radius: var(--radius-000);
-            <br />
-            &nbsp;&nbsp;--slat-background-hover: var(--surface-recessed-alpha);
-            <br />
-            &nbsp;&nbsp;border-bottom: var(--border-thin);
-            <br />
-            }
-            <br />
-            .slat:last-of-type {
-            <br />
-            &nbsp;&nbsp;border-bottom: none;
-            <br />
-            }
-            <br />
-            <br />
-            // Slat
-            <br />
-            <br />
-            &lt;mui-slat variant="action" class="slat"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-v-stack slot="start"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
-            <br />
-            &nbsp;&nbsp;&lt;/mui-v-stack&gt;
-            <br />
-            &lt;/mui-slat&gt;
           </mui-code>
 
         </story-card>
