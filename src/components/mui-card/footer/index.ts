@@ -33,9 +33,9 @@ class MuiCardFooter extends HTMLElement {
           border-bottom-left-radius: calc(var(--card-radius) - 1px);
         }
 
-:host(.has-button-group) {
-  padding-top: 0;
-}
+        :host(.has-button-group) {
+          padding-top: 0;
+        }
 
 
       </style>
