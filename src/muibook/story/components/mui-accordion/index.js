@@ -9,6 +9,12 @@ class storyAccordion extends HTMLElement {
         width: 100%;
         text-align: left;
       }
+
+      .token-item-menu::part(flex-wrap) {
+        flex-wrap: wrap;
+        column-gap: var(--space-300);
+        row-gap: var(--space-100);
+      }
     `;
 
     const propItems = [
@@ -110,6 +116,21 @@ class storyAccordion extends HTMLElement {
         "
       >
 
+          <mui-message heading="Quicklinks" slot="message">
+            <mui-h-stack class="token-item-menu" alignY="center">
+              <mui-link data-scroll-link="accordion-inline">Inline</mui-link>
+              <mui-link data-scroll-link="accordion-group-and-block">Group & Block</mui-link>
+              <mui-link data-scroll-link="accordion-group-and-block-exclusive">Group & Block: Exclusive</mui-link>
+              <mui-link data-scroll-link="tab-behaviour-button">Tab Behaviour: Button</mui-link>
+              <mui-link data-scroll-link="tab-behaviour-link">Tab Behaviour: Link</mui-link>
+              <mui-link data-scroll-link="detail-space-none">Detail Space: None</mui-link>
+              <mui-link data-scroll-link="card-accordion">Card: Accordion</mui-link>
+              <mui-link data-scroll-link="card-header-accordion">Card Header: Accordion</mui-link>
+              <mui-link data-scroll-link="accordion-slat-detect">Accordion: Slat Detection</mui-link>
+              <mui-link data-scroll-link="card-slat-detect">Card: Slat Detection</mui-link>              
+            </mui-h-stack>
+          </mui-message>
+
       <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
@@ -129,7 +150,8 @@ class storyAccordion extends HTMLElement {
           </mui-responsive>
         </spec-card>
 
-        <story-card 
+        <story-card
+          id="accordion-inline"
           title="Accordion Inline" 
           description="The inline accordion is typically used within a block layout as a secondary UI element to a block element."
           usageLink="https://guides.muibook.com/accordion"
@@ -156,7 +178,8 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card 
+        <story-card
+          id="accordion-group-and-block"
           title="Accordion Group & Block" 
           description="The block accordion is typically used within a page layout full-width to the parent container."
           usageLink="https://guides.muibook.com/accordion"
@@ -200,7 +223,8 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card 
+        <story-card
+          id="accordion-group-and-block-exclusive"
           title="Accordion Group & Block: Exclusive" 
           description="The block accordion is typically used within a page layout full-width to the parent container."
           usageLink="https://guides.muibook.com/accordion"
@@ -244,8 +268,9 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card 
-          title="Tab Example: Button" 
+        <story-card
+          id="tab-behaviour-button"
+          title="Tab Behaviour: Button" 
           description="A demo showcasing how a nested button will be ignored by the tabbing functionality if collapsed."
         >
           <div slot="body">
@@ -268,8 +293,9 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card 
-          title="Tab Example: Link" 
+        <story-card
+          id="tab-behaviour-link"
+          title="Tab Behaviour: Link" 
           description="A demo showcasing how a nested link will be ignored by the tabbing functionality if collapsed."
         >
           <div slot="body">
@@ -292,7 +318,8 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card 
+        <story-card
+          id="detail-space-none"
           title="Detail Space: None" 
           description="In accordion-block, you are able to turn off the space within the detail section."
           usage="Ideal for using the accordion block to contain navigation items; Support full-bleed content such as images or documents."
@@ -323,7 +350,7 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Card w/ Accordion">
+        <story-card id="card-accordion" title="Card w/ Accordion">
           <div slot="body">
             <mui-card>
               <mui-card-body>
@@ -362,7 +389,7 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </story-card>
 
-        <story-card title="Card Header w/ Accordion" description="You can add in a mui-rule to help add a division between the header and body of the card">
+        <story-card id="card-header-accordion" title="Card Header w/ Accordion" description="You can add in a mui-rule to help add a division between the header and body of the card">
           <div slot="body">
             <mui-card>
               <mui-card-header>
@@ -373,12 +400,12 @@ class storyAccordion extends HTMLElement {
                 <mui-accordion-group exclusive>
                   <mui-accordion-block heading="Heading">
                     <div slot="detail">
-                        Content
+                      Content
                     </div>
                   </mui-accordion-block>
                   <mui-accordion-block heading="Heading">
                     <div slot="detail">
-                        Content
+                      Content
                     </div>
                   </mui-accordion-block>
                 </mui-accordion-group>
@@ -409,10 +436,338 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </story-card>
 
+        <story-card
+          id="accordion-slat-detect"
+          title="Accordion: Slat Detection"
+          usage="When an accordion is used with mui-slat-group, the attribute of usage='accordion' is applied automatically.; Opt-out by not using the mui-slat-group, but you will have to craft your own layout."
+        >
+          <div slot="body">
+            <mui-accordion-group exclusive>
+              <mui-accordion-block heading="Default">
+                <mui-v-stack slot="detail">
+                  <mui-body>Use the mui-slat-group and when placed inside of a mui-card, the usage=“card” attribute is automatically applied for consistent styling.</mui-body>
+                  <mui-slat-group>
+                    <mui-slat variant="header">
+                      <mui-heading slot="start" size="6">Today</mui-heading>
+                      <mui-h-stack slot="end" alignX="end">
+                        <mui-body size="small">22 July 2025</mui-body>
+                      </mui-h-stack>
+                    </mui-slat>
+                    <mui-slat variant="action">
+                      <mui-v-stack slot="start" space="0">
+                        <mui-body size="small" weight="bold">Signed in from new device</mui-body>
+                        <mui-body size="x-small">Location: Sydney, Australia</mui-body>
+                      </mui-v-stack>
+                      <mui-v-stack space="0" slot="end" alignX="end">
+                        <mui-body size="x-small">10:32 AM</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
+                    <mui-slat variant="action">
+                      <mui-v-stack slot="start" space="0">
+                        <mui-body size="small" weight="bold">Password changed</mui-body>
+                        <mui-body size="x-small">Security settings updated</mui-body>
+                      </mui-v-stack>
+                      <mui-v-stack space="0" slot="end" alignX="end">
+                        <mui-body size="x-small">08:47 AM</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
+                    <mui-rule></mui-rule>
+                    <!-- Yesterday -->
+                    <mui-slat variant="header">
+                      <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                      <mui-h-stack slot="end" alignX="end">
+                        <mui-body size="small">21 July 2025</mui-body>
+                      </mui-h-stack>
+                    </mui-slat>
+                    <mui-slat variant="action">
+                      <mui-v-stack slot="start" space="0">
+                        <mui-body size="small" weight="bold">2FA code sent</mui-body>
+                        <mui-body size="x-small">Method: SMS</mui-body>
+                      </mui-v-stack>
+                      <mui-v-stack space="0" slot="end" alignX="end">
+                        <mui-body size="x-small">04:19 PM</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
+                  </mui-slat-group>
+                </mui-v-stack>
+      
+              </mui-accordion-block>
+              <mui-accordion-block heading="Opt-out">
+                <mui-v-stack slot="detail" space="var(--space-200)" style="max-width: 400px; margin: var(--space-200) auto 0;">
+                  <mui-body style="padding-left: var(--space-400); padding-right: var(--space-400)">Opt-out by simply not using the mui-slat-group helper, however extra effort is required to craft the layout.</mui-body>
+                  <mui-v-stack space="var(--space-000)">
+                    <mui-slat variant="header">
+                      <mui-heading slot="start" size="6">Today</mui-heading>
+                      <mui-h-stack slot="end" alignX="end">
+                        <mui-body size="small">22 July 2025</mui-body>
+                      </mui-h-stack>
+                    </mui-slat>
+                    <mui-v-stack space="var(--space-050)">
+                      <mui-slat variant="action">
+                        <mui-v-stack slot="start" space="0">
+                          <mui-body size="small" weight="bold">Signed in from new device</mui-body>
+                          <mui-body size="x-small">Location: Sydney, Australia</mui-body>
+                        </mui-v-stack>
+                        <mui-v-stack space="0" slot="end" alignX="end">
+                          <mui-body size="x-small">10:32 AM</mui-body>
+                        </mui-v-stack>
+                      </mui-slat>
+                      <mui-slat variant="action">
+                        <mui-v-stack slot="start" space="0">
+                          <mui-body size="small" weight="bold">Password changed</mui-body>
+                          <mui-body size="x-small">Security settings updated</mui-body>
+                        </mui-v-stack>
+                        <mui-v-stack space="0" slot="end" alignX="end">
+                          <mui-body size="x-small">08:47 AM</mui-body>
+                        </mui-v-stack>
+                      </mui-slat>
+                    </mui-v-stack>
+                    <mui-rule style="margin-top: var(--space-300)"></mui-rule>
+                    <!-- Yesterday -->
+                    <mui-slat variant="header">
+                      <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                      <mui-h-stack slot="end" alignX="end">
+                        <mui-body size="small">21 July 2025</mui-body>
+                      </mui-h-stack>
+                    </mui-slat>
+                    <mui-v-stack space="var(--space-050)">
+                      <mui-slat variant="action">
+                        <mui-v-stack slot="start" space="0">
+                          <mui-body size="small" weight="bold">2FA code sent</mui-body>
+                          <mui-body size="x-small">Method: SMS</mui-body>
+                        </mui-v-stack>
+                        <mui-v-stack space="0" slot="end" alignX="end">
+                          <mui-body size="x-small">04:19 PM</mui-body>
+                        </mui-v-stack>
+                      </mui-slat>
+                    </mui-v-stack>
+                  </mui-v-stack>
+                </mui-v-stack>
+              </mui-accordion-block>
+            </mui-accordion-group>
+          </div>
+          <mui-code slot="footer" scrollable>
+            &nbsp;&nbsp;&lt;mui-accordion-group exclusive&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-block heading="Default"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="detail"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;Use the mui-slat-group and when placed inside of a mui-card, the usage=“card” attribute is automatically applied for consistent styling.&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Today&lt;/mui-heading&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="end" alignX="end"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;22 July 2025&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" weight="bold"&gt;Signed in from new device&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;Location: Sydney, Australia&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="0" slot="end" alignX="end"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;10:32 AM&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" weight="bold"&gt;Password changed&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;Security settings updated&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="0" slot="end" alignX="end"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;08:47 AM&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-block&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-block heading="Opt-out"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="detail" space="var(--space-200)" style="max-width: 400px; margin: var(--space-200) auto 0;"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-block&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
+          </mui-code>
+        </story-card>
+
+        <story-card
+          id="card-slat-detect"
+          title="Card: Slat Detection"
+          usage="When a card and accordion is used togther with mui-slat-group, the attribute of usage='card' is applied automatically.; Opt-out by not using the mui-slat-group, but you will have to craft your own layout."
+        >
+          <div slot="body">
+            <mui-card>
+              <mui-card-body>
+                <mui-accordion-group exclusive>
+                  <mui-accordion-block heading="Default">
+                    <mui-v-stack slot="detail">
+                      <mui-body>Use the mui-slat-group and when placed inside of a mui-card, the usage=“card” attribute is automatically applied for consistent styling.</mui-body>
+                      <mui-slat-group>
+                        <mui-slat variant="header">
+                          <mui-heading slot="start" size="6">Today</mui-heading>
+                          <mui-h-stack slot="end" alignX="end">
+                            <mui-body size="small">22 July 2025</mui-body>
+                          </mui-h-stack>
+                        </mui-slat>
+                        <mui-slat variant="action">
+                          <mui-v-stack slot="start" space="0">
+                            <mui-body size="small" weight="bold">Signed in from new device</mui-body>
+                            <mui-body size="x-small">Location: Sydney, Australia</mui-body>
+                          </mui-v-stack>
+                          <mui-v-stack space="0" slot="end" alignX="end">
+                            <mui-body size="x-small">10:32 AM</mui-body>
+                          </mui-v-stack>
+                        </mui-slat>
+                        <mui-slat variant="action">
+                          <mui-v-stack slot="start" space="0">
+                            <mui-body size="small" weight="bold">Password changed</mui-body>
+                            <mui-body size="x-small">Security settings updated</mui-body>
+                          </mui-v-stack>
+                          <mui-v-stack space="0" slot="end" alignX="end">
+                            <mui-body size="x-small">08:47 AM</mui-body>
+                          </mui-v-stack>
+                        </mui-slat>
+                        <mui-rule></mui-rule>
+                        <!-- Yesterday -->
+                        <mui-slat variant="header">
+                          <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                          <mui-h-stack slot="end" alignX="end">
+                            <mui-body size="small">21 July 2025</mui-body>
+                          </mui-h-stack>
+                        </mui-slat>
+                        <mui-slat variant="action">
+                          <mui-v-stack slot="start" space="0">
+                            <mui-body size="small" weight="bold">2FA code sent</mui-body>
+                            <mui-body size="x-small">Method: SMS</mui-body>
+                          </mui-v-stack>
+                          <mui-v-stack space="0" slot="end" alignX="end">
+                            <mui-body size="x-small">04:19 PM</mui-body>
+                          </mui-v-stack>
+                        </mui-slat>
+                      </mui-slat-group>
+                    </mui-v-stack>
+          
+                  </mui-accordion-block>
+                  <mui-accordion-block heading="Opt-out">
+                    <mui-v-stack slot="detail" space="var(--space-200)" style="max-width: 400px; margin: var(--space-200) auto 0;">
+                      <mui-body style="padding-left: var(--space-400); padding-right: var(--space-400)">Opt-out by simply not using the mui-slat-group helper, however extra effort is required to craft the layout.</mui-body>
+                      <mui-v-stack space="var(--space-000)">
+                        <mui-slat variant="header">
+                          <mui-heading slot="start" size="6">Today</mui-heading>
+                          <mui-h-stack slot="end" alignX="end">
+                            <mui-body size="small">22 July 2025</mui-body>
+                          </mui-h-stack>
+                        </mui-slat>
+                        <mui-slat variant="action">
+                          <mui-v-stack slot="start" space="0">
+                            <mui-body size="small" weight="bold">Signed in from new device</mui-body>
+                            <mui-body size="x-small">Location: Sydney, Australia</mui-body>
+                          </mui-v-stack>
+                          <mui-v-stack space="0" slot="end" alignX="end">
+                            <mui-body size="x-small">10:32 AM</mui-body>
+                          </mui-v-stack>
+                        </mui-slat>
+                        <mui-slat variant="action">
+                          <mui-v-stack slot="start" space="0">
+                            <mui-body size="small" weight="bold">Password changed</mui-body>
+                            <mui-body size="x-small">Security settings updated</mui-body>
+                          </mui-v-stack>
+                          <mui-v-stack space="0" slot="end" alignX="end">
+                            <mui-body size="x-small">08:47 AM</mui-body>
+                          </mui-v-stack>
+                        </mui-slat>
+                        <mui-rule style="margin-top: var(--space-300)"></mui-rule>
+                        <!-- Yesterday -->
+                        <mui-slat variant="header">
+                          <mui-heading slot="start" size="6">Yesterday</mui-heading>
+                          <mui-h-stack slot="end" alignX="end">
+                            <mui-body size="small">21 July 2025</mui-body>
+                          </mui-h-stack>
+                        </mui-slat>
+                        <mui-slat variant="action">
+                          <mui-v-stack slot="start" space="0">
+                            <mui-body size="small" weight="bold">2FA code sent</mui-body>
+                            <mui-body size="x-small">Method: SMS</mui-body>
+                          </mui-v-stack>
+                          <mui-v-stack space="0" slot="end" alignX="end">
+                            <mui-body size="x-small">04:19 PM</mui-body>
+                          </mui-v-stack>
+                        </mui-slat>
+                      </mui-v-stack>
+                    </mui-v-stack>
+                  </mui-accordion-block>
+                </mui-accordion-group>
+              </mui-card-body>
+            </mui-card>
+          </div>
+          <mui-code slot="footer" scrollable>
+            &lt;mui-card&gt;<br>
+            &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-group exclusive&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-block heading="Default"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="detail"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;Use the mui-slat-group and when placed inside of a mui-card, the usage=“card” attribute is automatically applied for consistent styling.&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Today&lt;/mui-heading&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="end" alignX="end"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;22 July 2025&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" weight="bold"&gt;Signed in from new device&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;Location: Sydney, Australia&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="0" slot="end" alignX="end"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;10:32 AM&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" weight="bold"&gt;Password changed&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;Security settings updated&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="0" slot="end" alignX="end"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;08:47 AM&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-block&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-block heading="Opt-out"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="detail" space="var(--space-200)" style="max-width: 400px; margin: var(--space-200) auto 0;"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-block&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
+            &lt;/mui-card&gt;
+          </mui-code>
+        </story-card>
+
       </mui-v-stack>
 
       </story-template>
     `;
+
+    // Spec Card - Minimal scroll-to handler
+    // The common href with hash could not be used because of the hash navigation
+    // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
+    shadowRoot.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-scroll-link]");
+      if (!trigger) return;
+
+      event.preventDefault();
+
+      const targetId = trigger.getAttribute("data-scroll-link");
+      if (!targetId) return;
+
+      const targetEl = shadowRoot.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+      }
+    });
   }
 }
 

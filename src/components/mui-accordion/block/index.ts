@@ -159,6 +159,28 @@ class MuiAccordionBlock extends HTMLElement {
 
     this.shadowRoot.innerHTML = html;
 
+    // Auto-assign usage="card" to slat-groups inside the detail slot
+    requestAnimationFrame(() => {
+      const slot = this.shadowRoot!.querySelector('slot[name="detail"]') as HTMLSlotElement;
+
+      if (slot) {
+        const slottedNodes = slot.assignedElements({ flatten: true });
+
+        slottedNodes.forEach((node) => {
+          const slatGroups =
+            node.tagName?.toLowerCase() === "mui-slat-group"
+              ? [node]
+              : Array.from(node.querySelectorAll?.("mui-slat-group") || []);
+
+          slatGroups.forEach((slatGroup) => {
+            if (!slatGroup.hasAttribute("usage")) {
+              slatGroup.setAttribute("usage", "accordion");
+            }
+          });
+        });
+      }
+    });
+
     this.summaryEl = this.shadowRoot.querySelector(".accordion-summary");
     this.detailEl = this.shadowRoot.querySelector(".accordion-detail");
     this.chevronEl = this.shadowRoot.querySelector("mui-icon-down-chevron");

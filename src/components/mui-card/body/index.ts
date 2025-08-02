@@ -22,11 +22,11 @@ class MuiCardBody extends HTMLElement {
           }
         }
 
-        :host(.has-slat-group) {
+        :host(.has-card-slat-group) {
           padding-bottom: var(--space-200);
         }
         @media (min-width: 768px) {
-        :host(.has-slat-group) {
+        :host(.has-card-slat-group) {
           padding-bottom: var(--space-500);
         }
         }
@@ -92,11 +92,24 @@ class MuiCardBody extends HTMLElement {
 
           // Check for <mui-slat-group>
           const isSlatGroup = element.tagName.toLowerCase() === "mui-slat-group";
-          const slatGroup = isSlatGroup ? element : element.querySelector("mui-slat-group");
+          const slatGroups = isSlatGroup ? [element] : Array.from(element.querySelectorAll("mui-slat-group"));
 
-          if (slatGroup instanceof HTMLElement) {
-            this.classList.add("inner-space", "has-slat-group");
+          if (slatGroups.length) {
             hasLayoutComponent = true;
+
+            slatGroups.forEach((slatGroup) => {
+              // Always set usage to "card"
+              slatGroup.setAttribute("usage", "card");
+
+              // Detect if inside an accordion block
+              const insideAccordion = slatGroup.closest("mui-accordion-block");
+
+              if (insideAccordion) {
+                this.classList.add("has-accordion-slat-group");
+              } else {
+                this.classList.add("inner-space", "has-card-slat-group");
+              }
+            });
           }
         }
       });

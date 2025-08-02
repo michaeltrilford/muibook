@@ -63,89 +63,78 @@ class compWallet extends HTMLElement {
                 </mui-tab-bar>
 
                 <mui-tab-panel item="item1">
-                  <mui-v-stack alignX="stretch" space="var(--space-000)">
 
+                  <mui-slat-group>
                     <mui-slat variant="header">
                       <mui-heading slot="start" size="6">Today</mui-heading>
                       <mui-h-stack slot="end" alignX="end">
                         <mui-body size="small">22 July 2025</mui-body>
                       </mui-h-stack>
                     </mui-slat>
-
-                    <mui-v-stack space="var(--space-025)">
-                      <mui-slat variant="row">
-                        <mui-v-stack slot="start" space="0">
-                          <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
-                          <mui-body size="small">Food & Drink</mui-body>
-                        </mui-v-stack>
-                        <mui-v-stack space="0" slot="end" alignX="end">
-                          <mui-body size="small">Pending</mui-body>
-                          <mui-body size="small">-$8.12</mui-body>
-                        </mui-v-stack>
-                      </mui-slat>
-                      <mui-slat variant="row">
-                        <mui-v-stack slot="start" space="0">
-                          <mui-body size="medium" weight="bold">Apple App Store</mui-body>
-                          <mui-body size="small">Entertainment</mui-body>
-                        </mui-v-stack>
-                        <mui-v-stack space="0" slot="end" alignX="end">
-                          <mui-body size="small">Pending</mui-body>
-                          <mui-body size="small">-$4.99</mui-body>
-                        </mui-v-stack>
-                      </mui-slat>
-                    </mui-v-stack>
-
+                    <mui-slat variant="row">
+                      <mui-v-stack slot="start" space="0">
+                        <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
+                        <mui-body size="small">Food & Drink</mui-body>
+                      </mui-v-stack>
+                      <mui-v-stack space="0" slot="end" alignX="end">
+                        <mui-body size="small">Pending</mui-body>
+                        <mui-body size="small">-$8.12</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
+                    <mui-slat variant="row">
+                      <mui-v-stack slot="start" space="0">
+                        <mui-body size="medium" weight="bold">Apple App Store</mui-body>
+                        <mui-body size="small">Entertainment</mui-body>
+                      </mui-v-stack>
+                      <mui-v-stack space="0" slot="end" alignX="end">
+                        <mui-body size="small">Pending</mui-body>
+                        <mui-body size="small">-$4.99</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
                     <mui-slat variant="header">
                       <mui-heading slot="start" size="6">Yesterday</mui-heading>
                       <mui-h-stack slot="end" alignX="end">
                         <mui-body size="small">21 July 2025</mui-body>
                       </mui-h-stack>
                     </mui-slat>
+                    <mui-slat variant="row">
+                      <mui-v-stack slot="start" space="0">
+                        <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
+                        <mui-body size="small">Groceries</mui-body>
+                      </mui-v-stack>
+                      <mui-v-stack space="0" slot="end" alignX="end">
+                        <mui-body size="small">Pending</mui-body>
+                        <mui-body size="medium">-$26.89</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
+                  </mui-slat-group>
 
-                    <mui-v-stack space="var(--space-025)">
-                      <mui-slat variant="row">
-                        <mui-v-stack slot="start" space="0">
-                          <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
-                          <mui-body size="small">Groceries</mui-body>
-                        </mui-v-stack>
-                        <mui-v-stack space="0" slot="end" alignX="end">
-                          <mui-body size="small">Pending</mui-body>
-                          <mui-body size="medium">-$26.89</mui-body>
-                        </mui-v-stack>
-                      </mui-slat>
-                    </mui-v-stack>
-
-                  </mui-v-stack>
                 </mui-tab-panel>
 
                 <mui-tab-panel item="item2">
-                  <mui-v-stack alignX="stretch" space="var(--space-000)">
+                  <mui-slat-group>
                     <mui-slat variant="header">
                       <mui-heading size="6" slot="start">Recents</mui-heading>
                     </mui-slat>
-                    <mui-v-stack space="var(--space-025)">
-                      <mui-slat variant="action">
-                        <mui-v-stack space="0" slot="start">
-                          <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
-                          <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
-                        </mui-v-stack>
-                      </mui-slat>
-                      <mui-slat variant="action">
-                        <mui-body size="medium" weight="bold" slot="start">21 Mar 2025</mui-body>
-                      </mui-slat>
-                    </mui-v-stack>
+                    <mui-slat variant="action">
+                      <mui-v-stack space="0" slot="start">
+                        <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
+                        <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
+                      </mui-v-stack>
+                    </mui-slat>
+                    <mui-slat variant="action">
+                      <mui-body size="medium" weight="bold" slot="start">21 Mar 2025</mui-body>
+                    </mui-slat>
                     <mui-slat variant="header">
                       <mui-heading size="6" slot="start">All</mui-heading>
                     </mui-slat>
-                    <mui-v-stack space="var(--space-025)">
-                      <mui-slat variant="action">
-                        <mui-body size="medium" weight="bold" slot="start">2025</mui-body>
-                      </mui-slat>
-                      <mui-slat variant="action">
-                        <mui-body size="medium" weight="bold" slot="start">2024</mui-body>
-                      </mui-slat>
-                    </mui-v-stack>
-                  </mui-v-stack>
+                    <mui-slat variant="action">
+                      <mui-body size="medium" weight="bold" slot="start">2025</mui-body>
+                    </mui-slat>
+                    <mui-slat variant="action">
+                      <mui-body size="medium" weight="bold" slot="start">2024</mui-body>
+                    </mui-slat>
+                  </mui-slat-group>
                 </mui-tab-panel>
 
               </mui-v-stack>
@@ -193,15 +182,15 @@ class compWallet extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-tab-bar&gt;<br><br>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;item1&quot;&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack alignX=&quot;stretch&quot; space=&quot;var(--space-000)&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-tab-panel&gt;<br><br>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-panel item=&quot;item2&quot;&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack alignX=&quot;stretch&quot; space=&quot;var(--space-000)&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-tab-panel&gt;<br><br>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
