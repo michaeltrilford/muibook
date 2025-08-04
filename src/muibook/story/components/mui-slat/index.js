@@ -242,9 +242,11 @@ class storySlat extends HTMLElement {
               <mui-link data-scroll-link="row-accessory">Row Accessory</mui-link>
               <mui-link data-scroll-link="action">Action</mui-link>
               <mui-link data-scroll-link="action-accessory">Action Accessory</mui-link>
-              <mui-link data-scroll-link="slat-group">Slat Group</mui-link>
-              <mui-link data-scroll-link="slat-group-divider">Slat Group: Dividers</mui-link>
-              <mui-link data-scroll-link="slat-group-accordion">Slat Group: Accordion</mui-link>
+              <mui-link data-scroll-link="slat-and-group">Slat & Group</mui-link>
+              <mui-link data-scroll-link="card-slat-and-group">Card: Slat & Group</mui-link>
+              <mui-link data-scroll-link="card-variant-slat-group">Card: Variant Slat & Group</mui-link>
+              <mui-link data-scroll-link="card-slat-group-divider">Card: Slat Group Dividers</mui-link>
+              <mui-link data-scroll-link="card-slat-group-accordion">Card: Slat Group & Accordion</mui-link>
               <mui-link data-scroll-link="card-condensed">Card: Condensed</mui-link>
             </mui-h-stack>
           </mui-message>
@@ -635,16 +637,293 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-
         <story-card
-          id="slat-group"
-          title="Slat Group"
+          id="slat-and-group"
+          title="Slat & Group"
           description="
-            If a mui-slat is slotted directly into the mui-card-body, 
-            if will automatically align the slats with the heading to ensure consistent alignment within a card.
+            This example demonstrates the default mui-slat within a mui-slat-group. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/#/responsive'>Slat to Table</mui-link> demo.
           "
           usage="
-            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
+            Default mui-slat is used, which has no padding applied.;
+            Wrapping the slat in the group will add predefined margin beneath the rows.;
+            Utilise layout helpers to craft your desired layout.
+          "
+        >
+
+          <mui-v-stack slot="body" space="var(--space-400)">
+
+            <mui-slat-group>
+              <mui-slat>
+                <mui-v-stack slot="start" space="0">
+                  <mui-body size="small" weight="bold">Name</mui-body>
+                </mui-v-stack>
+                <mui-v-stack space="0" slot="end" alignX="end">
+                  <mui-body size="x-small">Figma</mui-body>
+                </mui-v-stack>
+              </mui-slat>
+              <mui-slat>
+                <mui-v-stack slot="start" space="0">
+                  <mui-body size="small" weight="bold">Billed</mui-body>
+                </mui-v-stack>
+                <mui-v-stack space="0" slot="end" alignX="end">
+                  <mui-badge usage="slat-end" size="x-small">Monthly</mui-badge>
+                </mui-v-stack>
+              </mui-slat>
+              <mui-slat>
+                <mui-v-stack slot="start" space="0">
+                  <mui-body size="small" weight="bold">Cost</mui-body>
+                </mui-v-stack>
+                <mui-v-stack space="0" slot="end" alignX="end">
+                  <mui-body size="x-small">$20.00</mui-body>
+                </mui-v-stack>
+              </mui-slat>
+            </mui-slat-group>
+            <mui-rule></mui-rule>
+            <mui-slat-group>
+              <mui-slat>
+                <mui-v-stack slot="start" space="0">
+                  <mui-body size="small" weight="bold">Name</mui-body>
+                </mui-v-stack>
+                <mui-v-stack space="0" slot="end" alignX="end">
+                  <mui-body size="x-small">Sketch</mui-body>
+                </mui-v-stack>
+              </mui-slat>
+              <mui-slat>
+                <mui-v-stack slot="start" space="0">
+                  <mui-body size="small" weight="bold">Billed</mui-body>
+                </mui-v-stack>
+                <mui-v-stack space="0" slot="end" alignX="end">
+                  <mui-badge usage="slat-end" size="x-small">Monthly</mui-badge>
+                </mui-v-stack>
+              </mui-slat>
+              <mui-slat>
+                <mui-v-stack slot="start" space="0">
+                  <mui-body size="small" weight="bold">Cost</mui-body>
+                </mui-v-stack>
+                <mui-v-stack space="0" slot="end" alignX="end">
+                  <mui-body size="x-small">$12.00</mui-body>
+                </mui-v-stack>
+              </mui-slat>
+            </mui-slat-group>
+
+          </mui-v-stack>
+
+
+          <mui-code slot="footer" scrollable>
+            &lt;mui-v-stack space=&quot;var(--space-400)&quot;&gt;<br>
+            &nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Name&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot;&gt;Figma&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Billed&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge usage=&quot;slat-end&quot; size=&quot;x-small&quot;&gt;Monthly&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Cost&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot;&gt;$20.00&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+            &nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Name&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot;&gt;Sketch&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Billed&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge usage=&quot;slat-end&quot; size=&quot;x-small&quot;&gt;Monthly&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Cost&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot;&gt;$12.00&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
+            &lt;/mui-v-stack&gt;
+          </mui-code>
+
+
+        </story-card>
+
+        <story-card
+          id="card-slat-and-group"
+          title="Card: Slat & Group"
+          description="
+            This example demonstrates the mui-slat and mui-slat-group used within a mui-card. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/#/responsive'>Slat to Table</mui-link> demo.
+          "
+          usage="
+            Default mui-slat is used, which has no padding applied.;
+            Wrapping the slat in the group will add predefined margin beneath the rows.;
+            Utilise layout helpers to craft your desired layout.;
+            mui-badge has a helper (usage='slat-end') to adjust the alignment when used in a slat-end position.
+          "
+        >
+          <mui-card slot="body">
+            <mui-card-header>
+              <mui-heading size="3">Design Tools</mui-heading>
+              <mui-body>Comparison list of pricing for popular design tooling</mui-body>
+            </mui-card-header>
+            <mui-rule></mui-rule>
+            <mui-card-body>
+            <mui-v-stack space="var(--space-400)" style="padding-top: var(--space-500); padding-bottom: var(--space-200);">
+              <mui-slat-group>
+                <mui-slat>
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Name</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">Figma</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-slat>
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Billed</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-badge usage="slat-end" size="x-small">Monthly</mui-badge>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-slat>
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Cost</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">$20.00</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+              </mui-slat-group>
+              <mui-rule></mui-rule>
+              <mui-slat-group>
+                <mui-slat>
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Name</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">Sketch</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-slat>
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Billed</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-badge usage="slat-end" size="x-small">Monthly</mui-badge>
+                  </mui-v-stack>
+                </mui-slat>
+                <mui-slat>
+                  <mui-v-stack slot="start" space="0">
+                    <mui-body size="small" weight="bold">Cost</mui-body>
+                  </mui-v-stack>
+                  <mui-v-stack space="0" slot="end" alignX="end">
+                    <mui-body size="x-small">$12.00</mui-body>
+                  </mui-v-stack>
+                </mui-slat>
+              </mui-slat-group>
+            </mui-v-stack>
+            </mui-card-body>
+          </mui-card>
+
+          <mui-code slot="footer" scrollable>
+            &lt;mui-card&gt;<br>
+            &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot;&gt;Design Tools&lt;/mui-heading&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;Comparison list of pricing for popular design tooling&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-card-header&gt;<br>
+            &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+            &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;var(--space-400)&quot; style=&quot;padding-top: var(--space-500); padding-bottom: var(--space-200);&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Name&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot;&gt;Figma&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Billed&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge usage=&quot;slat-end&quot; size=&quot;x-small&quot;&gt;Monthly&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Cost&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot;&gt;$20.00&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Name&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot;&gt;Sketch&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Billed&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge usage=&quot;slat-end&quot; size=&quot;x-small&quot;&gt;Monthly&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Cost&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot;&gt;$12.00&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
+            &lt;/mui-card&gt;
+          </mui-code>
+
+
+        </story-card>
+
+        <story-card
+          id="card-variant-slat-group"
+          title="Card: Variant Slat & Group"
+          description="When a mui-slat is placed directly inside mui-card-body, it aligns with the card heading to maintain consistent layout. Automatic styles are applied only when the slat variant is set to header, row, or action."
+          usage="
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items.;
             Place slats directly inside mui-card-body to inherit alignment.;
             Use this layout only for cards with limited width. For wider layouts, consider using a table.
           "
@@ -766,14 +1045,12 @@ class storySlat extends HTMLElement {
 
 
         <story-card 
-          id="slat-group-divider"
-          title="Slat Group: Dividers" 
-          description="
-            If a mui-slat is slotted directly into the mui-card-body, 
-            if will automatically align the slats with the heading to ensure consistent alignment within a card.
-          "
+          id="card-slat-group-divider"
+          title="Card: Slat Group Dividers" 
+          description="When a mui-slat is placed directly inside mui-card-body, it aligns with the card heading to maintain consistent layout. Automatic styles are applied only when the slat variant is set to header, row, or action."
           usage="
-            mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items.;
+            mui-rule can be used between slats for visual separation.;
             Place slats directly inside mui-card-body to inherit alignment.;
             Use this layout only for cards with limited width. For wider layouts, consider using a table.
           "
@@ -900,9 +1177,9 @@ class storySlat extends HTMLElement {
         </story-card>
 
         <story-card
-          id="slat-group-accordion"
-          title="Slat Group: Card & Accordion" 
-          description="When a Slat Group is used within an accordion that is nested within a card, the slat group will automatically append the usage='card' attribute, to ensure the slat styles are correctly used in this situation."
+          id="card-slat-group-accordion"
+          title="Card: Slat Group & Accordion" 
+          description="When a Slat Group is used within an accordion that is nested within a card, the slat group will automatically append the usage='card' attribute, to ensure the slat styles are correctly used in this situation. Automatic styles are applied only when the slat variant is set to header, row, or action."
         >
             <mui-card slot="body">
               <mui-card-header>

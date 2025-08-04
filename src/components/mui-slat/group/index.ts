@@ -49,33 +49,32 @@ class MuiSlatGroup extends HTMLElement {
   private setLastInGroup() {
     const children = Array.from(this.children) as HTMLElement[];
 
-    const isSlat = (el: Element): el is HTMLElement => el.tagName.toLowerCase() === "mui-slat";
+    const isSlat = (el: Element | undefined): el is HTMLElement => !!el && el.tagName.toLowerCase() === "mui-slat";
 
-    const getVariant = (el: Element) => el.getAttribute("variant") || "";
-
-    const validSlats = children.filter((el) => isSlat(el) && ["action", "row"].includes(getVariant(el)));
+    const slats = children.filter(isSlat);
 
     // Clear classes first
-    validSlats.forEach((el) => {
+    slats.forEach((el) => {
       el.classList.remove("last-in-group");
       el.classList.remove("before-header");
     });
 
-    // Mark the last action/row
-    const last = validSlats.at(-1);
+    // Mark the last slat
+    const last = slats.at(-1);
     if (last) last.classList.add("last-in-group");
 
-    // Mark any action/row directly before a header
-    children.forEach((el, i) => {
-      if (!isSlat(el)) return;
-      const variant = getVariant(el);
+    // Mark any slat directly before a header
+    for (let i = 0; i < children.length - 1; i++) {
+      const current = children[i];
       const next = children[i + 1];
-      const nextVariant = getVariant(next || {});
 
-      if (["action", "row"].includes(variant) && next && isSlat(next) && nextVariant === "header") {
-        el.classList.add("before-header");
+      if (isSlat(current) && next?.tagName.toLowerCase() === "mui-slat") {
+        const nextVariant = next.getAttribute("variant") || "";
+        if (nextVariant === "header") {
+          current.classList.add("before-header");
+        }
       }
-    });
+    }
   }
 
   render() {
@@ -103,48 +102,31 @@ class MuiSlatGroup extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
-      /* ===================================================
-      If a user wraps items in multiple groups per 
-      item, the same spacing will result if it was all items 
-      within one group 
-      =================================================== */
-      :host(:not(:first-of-type)) {
-        margin-top: var(--space-400);
-      }
+      /* Default Specific */
+      ::slotted(mui-slat:not([variant])) { margin-bottom: var(--space-100) }
+      ::slotted(mui-rule) { margin-top: var(--space-200); }
+      ::slotted(mui-rule:first-child) { margin-top: var(--space-000);}
 
-      /* Default */
-      ::slotted(mui-rule) {
-        margin-top: var(--space-200);
-      }
-
-      ::slotted(mui-rule:first-child) {
-        margin-top: var(--space-000);
-      }
-
-      ::slotted(mui-slat[variant="header"]:first-child) {
-        padding-top: var(--space-000);
-      }
+      /* Variant Specific */
+      ::slotted(mui-slat[variant="header"]:first-child) { padding-top: var(--space-000); }
 
       ::slotted(mui-slat[variant="action"]),
-      ::slotted(mui-slat[variant="row"]) {
-        margin-bottom: var(--space-050);
-      }
+      ::slotted(mui-slat[variant="row"]) { margin-bottom: var(--space-050); }
 
+      /* Reset Margin Bottom If applied */
       ::slotted(mui-slat.before-header),
-      ::slotted(mui-slat.last-in-group) {
-        margin-bottom: 0 !important;
-      }
+      ::slotted(mui-slat.last-in-group) { margin-bottom: 0 !important; }
 
       @media (min-width: 768px) {
-        ::slotted(mui-rule) {
-          margin-top: var(--space-400);
-        }
+        ::slotted(mui-rule) { margin-top: var(--space-400); }
       }
 
       ${
         isCard
           ? /*css*/ `
-        ::slotted(mui-slat) {
+
+        /* Has Variant */
+        ::slotted(mui-slat[variant]) {
           ${SlatOffset}
         }
 
@@ -172,7 +154,10 @@ class MuiSlatGroup extends HTMLElement {
       ${
         isAccordion
           ? /*css*/ `
-        ::slotted(mui-slat) {
+
+
+        /* Has Variant */
+        ::slotted(mui-slat[variant]) {
           ${SlatOffset}
         }
 

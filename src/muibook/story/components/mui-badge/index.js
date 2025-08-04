@@ -22,6 +22,13 @@ class storyBadge extends HTMLElement {
         description: "Describe the intent or mood of the badge.",
       },
       {
+        name: "usage",
+        type: "string",
+        options: "slat-end",
+        default: "",
+        description: "A layout helper to offset the badge when used in the end position within a mui-slat.",
+      },
+      {
         name: "style",
         type: "string",
         options: "Valid CSS",

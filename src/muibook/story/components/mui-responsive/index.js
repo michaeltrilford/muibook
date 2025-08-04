@@ -182,6 +182,66 @@ class storyResponsive extends HTMLElement {
         </mui-v-stack>
     `;
 
+    const Columns = `1fr 1fr 1fr`;
+
+    const TableData = [
+      {
+        name: "Figma",
+        billed: "Monthly",
+        cost: "$20.00",
+      },
+      {
+        name: "Sketch",
+        billed: "Monthly",
+        cost: "$12.00",
+      },
+    ];
+
+    const TableRow = TableData.map(
+      (prop) => /*html*/ `
+        <mui-row columns="${Columns}">
+          <mui-cell>${prop.name}</mui-cell>
+          <mui-cell><mui-badge>${prop.billed}</mui-badge></mui-cell>
+          <mui-cell>${prop.cost}</mui-cell>
+        </mui-row>
+      `
+    ).join("");
+
+    const SlatRow = TableData.map((prop, index, array) => {
+      const slatGroup = /*html*/ `
+    <mui-slat-group>
+      <mui-slat>
+        <mui-v-stack slot="start" space="0">
+          <mui-body size="small" weight="bold">Name</mui-body>
+        </mui-v-stack>
+        <mui-v-stack space="0" slot="end" alignX="end">
+          <mui-body size="x-small">${prop.name}</mui-body>
+        </mui-v-stack>
+      </mui-slat>
+      <mui-slat>
+        <mui-v-stack slot="start" space="0">
+          <mui-body size="small" weight="bold">Billed</mui-body>
+        </mui-v-stack>
+        <mui-v-stack space="0" slot="end" alignX="end">
+          <mui-badge usage="slat-end" size="x-small">${prop.billed}</mui-badge>
+        </mui-v-stack>
+      </mui-slat>
+      <mui-slat>
+        <mui-v-stack slot="start" space="0">
+          <mui-body size="small" weight="bold">Cost</mui-body>
+        </mui-v-stack>
+        <mui-v-stack space="0" slot="end" alignX="end">
+          <mui-body size="x-small">${prop.cost}</mui-body>
+        </mui-v-stack>
+      </mui-slat>
+    </mui-slat-group>
+  `;
+
+      const rule = index < array.length - 1 ? `<mui-rule></mui-rule>` : ``;
+
+      return slatGroup + rule;
+    }).join("");
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -244,6 +304,112 @@ class storyResponsive extends HTMLElement {
             <br />
             &lt;/mui-responsive&gt;
           </mui-code>
+        </story-card>
+
+        <story-card title="Slat to Table" description="Showcasing how to loop data on to the mui-table and mui-slat within the mui-responsive component.">
+          <mui-responsive slot="body" breakpoint="1080">
+            <mui-table slot="showAbove">
+              <mui-row-group heading>
+                <mui-row columns="${Columns}">
+                  <mui-cell>Name</mui-cell>
+                  <mui-cell>Billed</mui-cell>
+                  <mui-cell>Cost</mui-cell>
+                </mui-row>
+              </mui-row-group>
+              <mui-row-group>
+                ${TableRow}
+              </mui-row-group>
+            </mui-table>
+            <mui-v-stack space="var(--space-400)" slot="showBelow">
+              ${SlatRow}
+            </mui-v-stack>
+          </mui-responsive>
+
+          <mui-code slot="footer" scrollable>
+            // COMPOSITION LOGIC<br><br>
+            const&nbsp;Columns&nbsp;=&nbsp;&#96;1fr&nbsp;1fr&nbsp;1fr&#96;;<br>
+            <br>
+            const&nbsp;TableData&nbsp;=&nbsp;[<br>
+            &nbsp;&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;"Figma",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;billed:&nbsp;"Monthly",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;cost:&nbsp;"&#36;20.00",<br>
+            &nbsp;&nbsp;},<br>
+            &nbsp;&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;"Sketch",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;billed:&nbsp;"Monthly",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;cost:&nbsp;"&#36;12.00",<br>
+            &nbsp;&nbsp;},<br>
+            ];<br>
+            <br>
+            const&nbsp;TableRow&nbsp;=&nbsp;TableData.map(<br>
+            &nbsp;&nbsp;(prop)&nbsp;=&gt;&nbsp;/*html*/&nbsp;&#96;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row&nbsp;columns="&#36;{Columns}"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;&#36;{prop.name}&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;&lt;mui-badge&gt;&#36;{prop.billed}&lt;/mui-badge&gt;&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;&#36;{prop.cost}&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+            &nbsp;&nbsp;&#96;<br>
+            ).join("");<br>
+            <br>
+            const&nbsp;SlatRow&nbsp;=&nbsp;TableData.map((prop,&nbsp;index,&nbsp;array)&nbsp;=&gt;&nbsp;{<br>
+            &nbsp;&nbsp;const&nbsp;slatGroup&nbsp;=&nbsp;/*html*/&nbsp;&#96;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&nbsp;slot="start"&nbsp;space="0"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&nbsp;size="small"&nbsp;weight="bold"&gt;Name&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&nbsp;space="0"&nbsp;slot="end"&nbsp;alignX="end"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&nbsp;size="x-small"&gt;&#36;{prop.name}&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&nbsp;slot="start"&nbsp;space="0"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&nbsp;size="small"&nbsp;weight="bold"&gt;Billed&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&nbsp;space="0"&nbsp;slot="end"&nbsp;alignX="end"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge&nbsp;usage="slat-end"&nbsp;size="x-small"&gt;&#36;{prop.billed}&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&nbsp;slot="start"&nbsp;space="0"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&nbsp;size="small"&nbsp;weight="bold"&gt;Cost&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&nbsp;space="0"&nbsp;slot="end"&nbsp;alignX="end"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&nbsp;size="x-small"&gt;&#36;{prop.cost}&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
+            &nbsp;&nbsp;&#96;;<br>
+            <br>
+            &nbsp;&nbsp;const&nbsp;rule&nbsp;=&nbsp;index&nbsp;&lt;&nbsp;array.length&nbsp;-&nbsp;1&nbsp;?&nbsp;&#96;&lt;mui-rule&gt;&lt;/mui-rule&gt;&#96;&nbsp;:&nbsp;&#96;&#96;;<br>
+            <br>
+            &nbsp;&nbsp;return&nbsp;slatGroup&nbsp;+&nbsp;rule;<br>
+            }).join("");<br>
+            <br><br>
+            // RESPONSIVE COMPOSITION<br><br>
+            &lt;mui-responsive&nbsp;breakpoint="1080"&gt;<br>
+            &nbsp;&nbsp;&lt;mui-table&nbsp;slot="showAbove"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&nbsp;heading&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row&nbsp;columns="&#36;{Columns}"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Name&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Billed&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Cost&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{TableRow}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-table&gt;<br>
+            &nbsp;&nbsp;&lt;mui-v-stack&nbsp;space="var(--space-400)"&nbsp;slot="showBelow"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&#36;{SlatRow}<br>
+            &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+            &lt;/mui-responsive&gt;<br>
+          </mui-code>
+
+
         </story-card>
 
         <story-card title="Table: Desktop to Mobile">

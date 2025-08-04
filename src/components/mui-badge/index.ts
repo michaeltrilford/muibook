@@ -53,6 +53,10 @@ class MuiBadge extends HTMLElement {
         color: var(--badge-text-color);
         padding: var(--space-050) var(--space-200);
       }
+
+      :host([usage="slat-end"]) {
+        margin-right: calc(-1 * var(--space-200));
+      }
     `;
 
     this.setAttribute("role", "status");
