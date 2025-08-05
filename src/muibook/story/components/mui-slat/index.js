@@ -260,38 +260,41 @@ class storySlat extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props: Slat">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
 
-        <spec-card title="Props: Accessory">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${accessoryRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accessoryAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+        <mui-v-stack space="var(--space-500)">
+          <props-card title="Slat">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
 
-        <spec-card title="Props: Group">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${groupRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${groupAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+          <props-card title="Accessory">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${accessoryRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accessoryAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+
+          <props-card title="Group">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${groupRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${groupAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+        </mui-v-stack>
 
         <story-card
           id="default"

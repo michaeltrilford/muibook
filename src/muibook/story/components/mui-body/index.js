@@ -123,7 +123,7 @@ class storyBody extends HTMLElement {
             </mui-code>
           </spec-card>
 
-          <spec-card title="Props">
+          <props-card title="Body">
             <mui-responsive breakpoint="767" slot="body">
               <story-type-table slot="showAbove">
                 ${rows}
@@ -132,7 +132,7 @@ class storyBody extends HTMLElement {
                 ${accordions}
               </mui-accordion-group>
             </mui-responsive>
-          </spec-card>
+          </props-card>
 
         <story-card title="Default">
 

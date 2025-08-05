@@ -125,7 +125,7 @@ class storyButton extends HTMLElement {
             </mui-code>
           </spec-card>
 
-        <spec-card title="Props">
+        <props-card title="Button">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
@@ -134,7 +134,7 @@ class storyButton extends HTMLElement {
               ${accordions}
             </mui-accordion-group>
           </mui-responsive>
-        </spec-card>
+        </props-card>
 
         <story-card title="Form submissions" description="Unfortunately, Web Components can’t rely on type='submit' to handle form submissions due to Shadow DOM boundaries. Instead, manual submission logic needs to be applied to ensure expected behavior.">
           <mui-button variant="primary" slot="body">Sign up</mui-button>

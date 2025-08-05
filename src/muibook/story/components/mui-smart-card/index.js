@@ -157,7 +157,7 @@ class storySmartCard extends HTMLElement {
         </spec-card>
 
 
-        <spec-card title="Props">
+        <props-card title="Smart Card">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
@@ -166,7 +166,7 @@ class storySmartCard extends HTMLElement {
               ${accordions}
             </mui-accordion-group>
           </mui-responsive>
-        </spec-card>
+        </props-card>
 
         <story-card title="Plain"
           description="An example of composing a light coloured payment card."

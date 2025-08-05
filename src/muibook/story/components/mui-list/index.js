@@ -159,7 +159,8 @@ class storyList extends HTMLElement {
           </mui-code>
         </spec-card>
 
-          <spec-card title="Props: List">
+        <mui-v-stack space="var(--space-500)">
+          <props-card title="List">
             <mui-responsive breakpoint="767" slot="body">
               <story-type-table slot="showAbove">
                 ${ListRows}
@@ -168,9 +169,9 @@ class storyList extends HTMLElement {
                 ${ListAccordions}
               </mui-accordion-group>
             </mui-responsive>
-          </spec-card>
+          </props-card>
 
-        <spec-card title="Props: List-Item">
+          <props-card title="List-Item">
             <mui-responsive breakpoint="767" slot="body">
               <story-type-table slot="showAbove">
                 ${rows}
@@ -179,7 +180,8 @@ class storyList extends HTMLElement {
                 ${accordions}
               </mui-accordion-group>
             </mui-responsive>
-          </spec-card>
+          </props-card>
+        </mui-v-stack>
 
         <story-card title="Sizes">
 

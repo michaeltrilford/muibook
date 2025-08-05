@@ -1,6 +1,6 @@
 class MuiIconToggle extends HTMLElement {
   static get observedAttributes() {
-    return ["toggle", "rotate"];
+    return ["toggle", "rotate", "size"];
   }
 
   constructor() {
@@ -13,19 +13,32 @@ class MuiIconToggle extends HTMLElement {
 
     if (!this.shadowRoot!.innerHTML) this.render();
 
-    // Set size="small" on current children
-    this.applySmallSize();
+    // Trigger size logic at first render
+    this.attributeChangedCallback("size", null, this.getAttribute("size"));
 
-    // Also react to future slot changes
     const startSlot = this.shadowRoot!.querySelector('slot[name="start"]') as HTMLSlotElement;
     const endSlot = this.shadowRoot!.querySelector('slot[name="end"]') as HTMLSlotElement;
 
-    startSlot.addEventListener("slotchange", () => this.applySmallSize());
-    endSlot.addEventListener("slotchange", () => this.applySmallSize());
+    startSlot.addEventListener("slotchange", () => this.applySize());
+    endSlot.addEventListener("slotchange", () => this.applySize());
   }
 
-  attributeChangedCallback() {
-    // No re-render needed, attributes drive styling via CSS
+  attributeChangedCallback(name: string, _oldValue: string | null, _newValue: string | null) {
+    if (name === "size") {
+      const size = this.getAttribute("size") || "small";
+
+      const sizeMap: Record<"x-small" | "small" | "medium" | "large", string> = {
+        "x-small": "1.6rem",
+        small: "2.4rem",
+        medium: "3.6rem",
+        large: "4.8rem",
+      };
+
+      const resolvedSize = sizeMap[size as keyof typeof sizeMap] ?? sizeMap.small;
+      this.style.setProperty("--icon-toggle-size", resolvedSize);
+
+      this.applySize(); // Also apply the size to slotted icons
+    }
   }
 
   get toggle() {
@@ -45,12 +58,16 @@ class MuiIconToggle extends HTMLElement {
   /* ------------------------------------------------------------------ */
   /* PRIVATE: force size="small" on all assigned elements               */
   /* ------------------------------------------------------------------ */
-  private applySmallSize() {
+  private applySize() {
+    const size = this.getAttribute("size") || "small";
+
     const slots = this.shadowRoot!.querySelectorAll("slot");
     slots.forEach((slot) => {
       slot.assignedElements({ flatten: true }).forEach((el) => {
-        // Always overwrite – user cannot override
-        (el as HTMLElement).setAttribute("size", "small");
+        // Only update if user hasn't explicitly set size
+        if (!el.hasAttribute("size") || el.getAttribute("size") === "small") {
+          (el as HTMLElement).setAttribute("size", size);
+        }
       });
     });
   }
@@ -61,8 +78,8 @@ class MuiIconToggle extends HTMLElement {
         :host {
           display: inline-flex;
           position: relative;
-          height: 2.4rem;
-          width: 2.4rem;
+          height: var(--icon-toggle-size, 2.4rem);
+          width: var(--icon-toggle-size, 2.4rem);
         }
 
         ::slotted(*) {

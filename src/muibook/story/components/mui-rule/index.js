@@ -87,7 +87,7 @@ class storyRule extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props">
+        <props-card title="Rule">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
@@ -96,7 +96,7 @@ class storyRule extends HTMLElement {
               ${accordions}
             </mui-accordion-group>
           </mui-responsive>
-        </spec-card>
+        </props-card>
 
         <story-card title="Horizontal">
           <div slot="body">

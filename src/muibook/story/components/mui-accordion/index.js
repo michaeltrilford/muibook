@@ -15,6 +15,27 @@ class storyAccordion extends HTMLElement {
         column-gap: var(--space-300);
         row-gap: var(--space-100);
       }
+
+      /* Accordion Core */
+      [data-icon-animation="accordion-inline"] {
+        transition: var(--speed-200) ease-in-out;
+      }
+
+      [data-icon-animation="accordion-inline"][open] {
+        transform: rotate(90deg);
+      }
+
+      [data-icon-animation="accordion-block"] {
+        transition: transform var(--speed-200) ease-in-out;
+
+      }
+
+      [data-icon-animation="accordion-block"][open] {
+        transform: rotate(-180deg);
+      }
+
+
+
     `;
 
     const propItems = [
@@ -127,7 +148,8 @@ class storyAccordion extends HTMLElement {
               <mui-link data-scroll-link="card-accordion">Card: Accordion</mui-link>
               <mui-link data-scroll-link="card-header-accordion">Card Header: Accordion</mui-link>
               <mui-link data-scroll-link="accordion-slat-detect">Accordion: Slat Detection</mui-link>
-              <mui-link data-scroll-link="card-slat-detect">Card: Slat Detection</mui-link>              
+              <mui-link data-scroll-link="card-slat-detect">Card: Slat Detection</mui-link>   
+              <mui-link data-scroll-link="accordion-core">Accordion Core</mui-link>              
             </mui-h-stack>
           </mui-message>
 
@@ -139,7 +161,7 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props: Accordion Block">
+        <props-card title="Accordion Block">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
@@ -148,7 +170,7 @@ class storyAccordion extends HTMLElement {
               ${accordions}
             </mui-accordion-group>
           </mui-responsive>
-        </spec-card>
+        </props-card>
 
         <story-card
           id="accordion-inline"
@@ -745,6 +767,153 @@ class storyAccordion extends HTMLElement {
             &lt;/mui-card&gt;
           </mui-code>
         </story-card>
+
+        <story-card
+          id="accordion-core"
+          title="Accordion Core" 
+          description="Use your imagination and compose your own accordion experience with some overhead in effort. Below is a variety of examples using cards and different techniques to toggle an icon based on the open state."
+        >
+          <mui-v-stack slot="body">
+
+            <mui-accordion-core>              
+              <mui-h-stack space="var(--space-200)" alignY="center" slot="summary">
+                <mui-icon-right-chevron></mui-icon-right-chevron>
+                <mui-heading size="3">Accordion Inline</mui-heading>
+              </mui-h-stack>
+              <div slot="detail" style="padding-top: var(--space-400);">
+                <mui-body>This is the detailed content inside the accordion.</mui-body>
+              </div>
+            </mui-accordion-core>
+
+            <mui-card>
+              <mui-accordion-core>              
+                <mui-card-header slot="summary">                
+                  <mui-h-stack space="var(--space-100)" alignX="space-between" alignY="center">
+                    <mui-heading size="3">Accordion Block</mui-heading>
+                    <mui-icon-down-chevron></mui-icon-down-chevron>
+                  </mui-h-stack>
+                </mui-card-header>
+                <div slot="detail">
+                  <mui-rule></mui-rule>
+                  <mui-card-body>
+                    <mui-body>This is the detailed content inside the accordion.</mui-body>
+                  </mui-card-body>
+                </div>
+              </mui-accordion-core>
+            </mui-card>
+
+            <mui-card>
+              <mui-accordion-core>              
+                <mui-card-header slot="summary">                
+                  <mui-h-stack space="var(--space-100)" alignX="space-between" alignY="center">
+                    <mui-heading size="3">Accordion w/ Icon Toggle</mui-heading>
+                    <mui-icon-toggle rotate>
+                        <mui-icon-add slot="start"></mui-icon-add>
+                        <mui-icon-subtract slot="end"></mui-icon-subtract>
+                      </mui-icon-toggle>
+                  </mui-h-stack>
+                </mui-card-header>
+                <div slot="detail">
+                  <mui-rule></mui-rule>
+                  <mui-card-body>
+                    <mui-body>This is the detailed content inside the accordion.</mui-body>
+                  </mui-card-body>
+                </div>
+              </mui-accordion-core>
+            </mui-card>
+                    
+          </mui-v-stack>
+
+          <mui-code slot="footer" scrollable>
+
+            // Custom: Accordion Inline<br>
+            /* ================================================================ */<br><br>
+            
+            // Styles must be added where the component is used to pierce the shadow DOM.<br>
+            // This only works with &lt;mui-icon-right-chevron&gt;<br>
+            // Attributes are set by &lt;mui-accordion-core&gt;.<br><br>
+
+            [data-icon-animation=&quot;accordion-inline&quot;] {<br>
+            &nbsp;&nbsp;transition: var(--speed-200) ease-in-out;<br>
+            }<br><br>
+
+            [data-icon-animation=&quot;accordion-inline&quot;][open] {<br>
+            &nbsp;&nbsp;transform: rotate(90deg);<br>
+            }<br><br>
+
+            &nbsp;&nbsp;&lt;mui-accordion-core&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack space=&quot;var(--space-200)&quot; alignY=&quot;center&quot; slot=&quot;summary&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-right-chevron&gt;&lt;/mui-icon-right-chevron&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot;&gt;Accordion Inline&lt;/mui-heading&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot=&quot;detail&quot; style="padding-top: var(--space-400);"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;This is the detailed content inside the accordion.&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-accordion-core&gt;<br><br><br><br>
+
+            
+            // Custom: Accordion Block<br>
+            /* ================================================================ */<br><br>
+            
+            // Styles must be added where the component is used to pierce the shadow DOM.<br>
+            // This only works with &lt;mui-icon-down-chevron&gt;<br>
+            // Attributes are set by &lt;mui-accordion-core&gt;.<br><br>
+
+            [data-icon-animation=&quot;accordion-block&quot;] {<br>
+            &nbsp;&nbsp;transition: transform var(--speed-200) ease-in-out;<br>
+            }<br><br>
+
+            [data-icon-animation=&quot;accordion-block&quot;][open] {<br>
+            &nbsp;&nbsp;transform: rotate(-180deg);<br>
+            }<br><br>
+
+            &lt;mui-card&gt;<br>
+            &nbsp;&nbsp;&lt;mui-accordion-core&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-header slot=&quot;summary&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack space=&quot;var(--space-100)&quot; alignX=&quot;space-between&quot; alignY=&quot;center&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot;&gt;Accordion Block&lt;/mui-heading&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-down-chevron&gt;&lt;/mui-icon-down-chevron&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-header&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot=&quot;detail&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;This is the detailed content inside the accordion.&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-accordion-core&gt;<br>
+            &lt;/mui-card&gt;<br><br><br><br>
+
+            
+            // Custom: Accordion (Icon-Toggle)<br>
+            /* ================================================================ */<br><br>
+            
+            // Experiment with the &lt;mui-icon-toggle&gt; to utilise the toggle behaviour for the accordion.<br>
+            // Attributes are set by &lt;mui-accordion-core&gt;.<br><br>
+
+
+            &lt;mui-card&gt;<br>
+            &nbsp;&nbsp;&lt;mui-accordion-core&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-header slot=&quot;summary&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack space=&quot;var(--space-100)&quot; alignX=&quot;space-between&quot; alignY=&quot;center&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot;&gt;Accordion w/ Icon Toggle&lt;/mui-heading&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle rotate&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot=&quot;start&quot;&gt;&lt;/mui-icon-add&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot=&quot;end&quot;&gt;&lt;/mui-icon-subtract&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-header&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot=&quot;detail&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;This is the detailed content inside the accordion.&lt;/mui-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-accordion-core&gt;<br>
+            &lt;/mui-card&gt;
+          </mui-code>
+        </story-card>
+
 
       </mui-v-stack>
 

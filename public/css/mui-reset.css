@@ -126,7 +126,7 @@ q {
 
 q:after,
 q:before {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -153,17 +153,17 @@ dd {
 }
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   appearance: button;
   cursor: pointer;
 }
 
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -172,17 +172,17 @@ button::-moz-focus-inner,
   outline: none;
 }
 
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type='search'] {
+[type="search"] {
   appearance: textfield;
   outline-offset: -2px;
 }
 
-[type='search']::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   appearance: none;
 }
 
@@ -191,8 +191,8 @@ button::-moz-focus-inner,
   font: inherit;
 }
 
-input[type='search']::-webkit-search-cancel-button,
-input[type='search']::-webkit-search-decoration {
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
   appearance: none;
 }
 
@@ -209,8 +209,8 @@ textarea {
   vertical-align: baseline;
 }
 
-[type='checkbox'],
-[type='radio'],
+[type="checkbox"],
+[type="radio"],
 legend {
   padding: 0;
 }
@@ -244,17 +244,17 @@ textarea {
   appearance: none;
 }
 
-input[type='radio'] {
+input[type="radio"] {
   appearance: radio;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   appearance: checkbox;
 }
 
-input[type='button'],
-input[type='submit'],
-input[type='reset'],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
 button {
   display: inline-block;
   cursor: pointer;
@@ -281,7 +281,7 @@ legend {
   font-weight: 700;
 }
 
-input[type='checkbox'],
-input[type='radio'] {
+input[type="checkbox"],
+input[type="radio"] {
   width: auto;
 }

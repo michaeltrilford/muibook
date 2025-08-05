@@ -24,6 +24,10 @@
       "import": "./dist/esm/components/mui-accordion/index.js",
       "types": "./dist/types/components/mui-accordion/index.d.ts"
     },
+    "./mui-accordion/core": {
+      "import": "./dist/esm/components/mui-accordion/core/index.js",
+      "types": "./dist/types/components/mui-accordion/core/index.d.ts"
+    },
     "./mui-accordion/block": {
       "import": "./dist/esm/components/mui-accordion/block/index.js",
       "types": "./dist/types/components/mui-accordion/block/index.d.ts"

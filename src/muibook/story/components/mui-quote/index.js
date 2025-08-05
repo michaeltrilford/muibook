@@ -74,7 +74,7 @@ class storyQuote extends HTMLElement {
             </mui-code>
           </spec-card>
 
-          <spec-card title="Props">
+          <props-card title="Quote">
             <mui-responsive breakpoint="767" slot="body">
               <story-type-table slot="showAbove">
                 ${rows}
@@ -83,7 +83,7 @@ class storyQuote extends HTMLElement {
                 ${accordions}
               </mui-accordion-group>
             </mui-responsive>
-          </spec-card>
+          </props-card>
 
         <story-card title="Quote">
 

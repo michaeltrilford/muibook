@@ -19,6 +19,7 @@ export * from "./components/mui-slat/slat";
 export * from "./components/mui-slat/accessory";
 export * from "./components/mui-slat/group";
 export * from "./components/mui-accordion/group";
+export * from "./components/mui-accordion/core";
 export * from "./components/mui-accordion/inline";
 export * from "./components/mui-accordion/block";
 export * from "./components/mui-heading";

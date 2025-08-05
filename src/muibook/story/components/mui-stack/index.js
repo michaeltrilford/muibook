@@ -244,16 +244,28 @@ class storyStack extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props: HStack">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsHStack}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsHStack}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+        <mui-v-stack space="var(--space-500)">
+          <props-card title="HStack">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rowsHStack}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accordionsHStack}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+          <props-card title="VStack">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rowsVStack}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accordionsVStack}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+        </mui-v-stack>
 
         <story-card title="Horizontal: Default">
           ${DefaultHStack}
@@ -267,17 +279,6 @@ class storyStack extends HTMLElement {
             &lt;/mui-h-stack&gt;
           </mui-code>
         </story-card>
-
-        <spec-card title="Props: VStack">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsVStack}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsVStack}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
 
         <story-card title="Vertical: Default">
           ${DefaultVStack}

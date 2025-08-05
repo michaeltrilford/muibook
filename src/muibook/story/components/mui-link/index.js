@@ -146,7 +146,7 @@ class storyLink extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props">
+        <props-card title="Link">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
@@ -155,7 +155,7 @@ class storyLink extends HTMLElement {
               ${accordions}
             </mui-accordion-group>
           </mui-responsive>
-        </spec-card>
+        </props-card>
 
         <story-card title="Sizes" description="Link sizes should match the surrounding body text size when nested within a paragraph.">
 

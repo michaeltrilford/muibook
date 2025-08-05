@@ -112,7 +112,7 @@ class storySwitch extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props">
+        <props-card title="Switch">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
@@ -121,7 +121,7 @@ class storySwitch extends HTMLElement {
               ${accordions}
             </mui-accordion-group>
           </mui-responsive>
-        </spec-card>
+        </props-card>
 
 
         <story-card title="Unchecked"

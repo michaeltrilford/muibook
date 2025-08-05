@@ -128,6 +128,8 @@ declare global {
       };
 
       // LAYOUT
+      "mui-accordion-core": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+
       "mui-accordion-block": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         heading: string;
         size?: "small" | "medium" | "large" | string;
@@ -213,6 +215,15 @@ declare global {
         space?: string;
       };
 
+      "mui-slat-group": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        slot?: string;
+      };
+
+      "mui-slat-accessory": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        slot?: string;
+        usage?: "card" | "accordion";
+      };
+
       // ACTIONS
       "mui-button": React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
         slot?: string;
@@ -294,6 +305,16 @@ declare global {
       "mui-icon-up-chevron": MuiIconProps;
       "mui-icon-warning": MuiIconProps;
       "mui-icon-ellipsis": MuiIconProps;
+
+      "mui-icon-toggle": React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      > & {
+        slot?: "start" | "end";
+        toggle?: boolean;
+        rotate?: boolean;
+        size?: MuiIconSize;
+      };
 
       // ADD LOCAL TYPES
       // E.g. 

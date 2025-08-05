@@ -46,14 +46,14 @@ class storyIcon extends HTMLElement {
         type: "string",
         options: "x-small, small, medium, large",
         default: "small",
-        description: "Set the size of the body text.",
+        description: "Set the size of the icon.",
       },
       {
         name: "color",
         type: "string",
         options: "Valid CSS, inverted",
         default: "--icon-color-default",
-        description: "Set the size of the body text.",
+        description: "Adjust the color",
       },
     ];
 
@@ -126,6 +126,13 @@ class storyIcon extends HTMLElement {
         default: "-",
         description: "Change the transition to include a rotating effect.",
       },
+      {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "small",
+        description: "Set the size of the icon.",
+      },
     ];
 
     const IconToggleRows = IconTogglePropItems.map(
@@ -181,28 +188,28 @@ class storyIcon extends HTMLElement {
             </mui-code>
           </spec-card>
 
-
-          <spec-card title="Props: Icon">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </spec-card>
-
-          <spec-card title="Props: Icon Toggle" description="A visual alternative to a button, used to control views with a persistent open/close state — such as menus or drawers. Unlike standard buttons, this component is purpose-built for toggling visibility and should not replace buttons used for general actions.">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${IconToggleRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${IconToggleAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </spec-card>
+          <mui-v-stack space="var(--space-500)">
+            <props-card title="Icon">
+              <mui-responsive breakpoint="767" slot="body">
+                <story-type-table slot="showAbove">
+                  ${rows}
+                </story-type-table>
+                <mui-accordion-group exclusive slot="showBelow">
+                  ${accordions}
+                </mui-accordion-group>
+              </mui-responsive>
+            </props-card>
+            <props-card title="Icon Toggle" description="A visual alternative to a button, used to control views with a persistent open/close state — such as menus or drawers. Unlike standard buttons, this component is purpose-built for toggling visibility and should not replace buttons used for general actions.">
+              <mui-responsive breakpoint="767" slot="body">
+                <story-type-table slot="showAbove">
+                  ${IconToggleRows}
+                </story-type-table>
+                <mui-accordion-group exclusive slot="showBelow">
+                  ${IconToggleAccordions}
+                </mui-accordion-group>
+              </mui-responsive>
+            </props-card>
+          </mui-v-stack>
 
           <story-card title="Sizes" description="The default size of the icon is size: small">
 

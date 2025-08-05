@@ -118,7 +118,7 @@ class storyMessage extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props">
+        <props-card title="Message">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
@@ -127,7 +127,7 @@ class storyMessage extends HTMLElement {
               ${accordions}
             </mui-accordion-group>
           </mui-responsive>
-        </spec-card>
+        </props-card>
 
         <story-card
           title="Default" 

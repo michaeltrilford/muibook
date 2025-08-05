@@ -282,49 +282,51 @@ class storyTabBar extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props: Tab Controller">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${tabBarControllerRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${tabBarControllerAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+        <mui-v-stack space="var(--space-500)">
+          <props-card title="Tab Controller">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${tabBarControllerRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${tabBarControllerAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
 
-        <spec-card title="Props: Tab Bar">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${tabBarRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${tabBarAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+          <props-card title="Tab Bar">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${tabBarRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${tabBarAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
 
-        <spec-card title="Props: Tab Item">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${tabItemRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${tabItemAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+          <props-card title="Tab Item">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${tabItemRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${tabItemAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
 
-        <spec-card title="Props: Tab Panel">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${panelRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${panelAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+          <props-card title="Tab Panel">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${panelRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${panelAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+        </mui-v-stack>
 
 
         <story-card title="Default">

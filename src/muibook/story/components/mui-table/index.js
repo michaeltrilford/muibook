@@ -390,49 +390,51 @@ class storyTable extends HTMLElement {
             </mui-code>
           </spec-card>
 
-          <spec-card title="Props: Table">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${tableRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${tableAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </spec-card>
+          <mui-v-stack space="var(--space-500)">
+            <props-card title="Table">
+              <mui-responsive breakpoint="767" slot="body">
+                <story-type-table slot="showAbove">
+                  ${tableRows}
+                </story-type-table>
+                <mui-accordion-group exclusive slot="showBelow">
+                  ${tableAccordions}
+                </mui-accordion-group>
+              </mui-responsive>
+            </props-card>
 
-          <spec-card title="Props: RowGroup">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rowGroupRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${rowGroupAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </spec-card>
+            <props-card title="RowGroup">
+              <mui-responsive breakpoint="767" slot="body">
+                <story-type-table slot="showAbove">
+                  ${rowGroupRows}
+                </story-type-table>
+                <mui-accordion-group exclusive slot="showBelow">
+                  ${rowGroupAccordions}
+                </mui-accordion-group>
+              </mui-responsive>
+            </props-card>
 
-          <spec-card title="Props: Row">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rowRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${rowAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </spec-card>
+            <props-card title="Row">
+              <mui-responsive breakpoint="767" slot="body">
+                <story-type-table slot="showAbove">
+                  ${rowRows}
+                </story-type-table>
+                <mui-accordion-group exclusive slot="showBelow">
+                  ${rowAccordions}
+                </mui-accordion-group>
+              </mui-responsive>
+            </props-card>
 
-          <spec-card title="Props: Cell">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${cellRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${cellAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </spec-card>
+            <props-card title="Cell">
+              <mui-responsive breakpoint="767" slot="body">
+                <story-type-table slot="showAbove">
+                  ${cellRows}
+                </story-type-table>
+                <mui-accordion-group exclusive slot="showBelow">
+                  ${cellAccordions}
+                </mui-accordion-group>
+              </mui-responsive>
+            </props-card>
+          </mui-v-stack>
 
           <story-card title="Table">
             <div class="canvas" slot="body">

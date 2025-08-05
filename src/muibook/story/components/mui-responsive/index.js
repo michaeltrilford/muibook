@@ -260,7 +260,7 @@ class storyResponsive extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props">
+        <props-card title="Responsive">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
@@ -269,7 +269,7 @@ class storyResponsive extends HTMLElement {
               ${accordions}
             </mui-accordion-group>
           </mui-responsive>
-        </spec-card>
+        </props-card>
 
         <story-card title="Single Breakpoint">
           <mui-responsive slot="body" breakpoint="600">

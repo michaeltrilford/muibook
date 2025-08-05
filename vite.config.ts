@@ -11,6 +11,7 @@ export default defineConfig({
         // ACCORDION
         "components/mui-accordion": path.resolve(__dirname, "src/components/mui-accordion"),
         "components/mui-accordion/group": path.resolve(__dirname, "src/components/mui-accordion/group"),
+        "components/mui-accordion/core": path.resolve(__dirname, "src/components/mui-accordion/core"),
         "components/mui-accordion/inline": path.resolve(__dirname, "src/components/mui-accordion/inline"),
         "components/mui-accordion/block": path.resolve(__dirname, "src/components/mui-accordion/block"),
         // ADDON

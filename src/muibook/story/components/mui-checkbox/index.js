@@ -115,7 +115,7 @@ class storyCheckbox extends HTMLElement {
             </mui-code>
           </spec-card>
 
-        <spec-card title="Props">
+        <props-card title="Checkbox">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rows}
@@ -124,7 +124,7 @@ class storyCheckbox extends HTMLElement {
               ${accordions}
             </mui-accordion-group>
           </mui-responsive>
-        </spec-card>
+        </props-card>
 
 
         <story-card 

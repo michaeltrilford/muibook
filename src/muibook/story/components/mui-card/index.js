@@ -265,49 +265,51 @@ class storyCards extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <spec-card title="Props: Card" description="The mui-card houses the header, body and footer.">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsCard}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsCard}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+        <mui-v-stack space="var(--space-500)">
+          <props-card title="Card" description="The mui-card houses the header, body and footer.">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rowsCard}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accordionsCard}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
 
-        <spec-card title="Props: Card Header" description="The mui-card-header will house suitable mui components or other relevant elements.">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsCardHeader}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsCardHeader}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+          <props-card title="Card Header" description="The mui-card-header will house suitable mui components or other relevant elements.">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rowsCardHeader}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accordionsCardHeader}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
 
-        <spec-card title="Props: Card Body" description="The mui-card-body will house suitable mui components or other relevant elements.">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsCardBody}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsCardBody}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+          <props-card title="Card Body" description="The mui-card-body will house suitable mui components or other relevant elements.">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rowsCardBody}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accordionsCardBody}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
 
-        <spec-card title="Props: Card Footer" description="The mui-card-footer will house actions or other relevant elements.">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsCardFooter}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsCardFooter}
-            </mui-accordion-group>
-          </mui-responsive>
-        </spec-card>
+          <props-card title="Card Footer" description="The mui-card-footer will house actions or other relevant elements.">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rowsCardFooter}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accordionsCardFooter}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+        </mui-v-stack>
 
         <story-card id="card" title="Card">
           <div slot="body">
