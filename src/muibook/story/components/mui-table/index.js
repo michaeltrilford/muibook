@@ -365,24 +365,8 @@ class storyTable extends HTMLElement {
       `
     ).join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
+    const stories = /*html*/ `
 
-      <story-template 
-        title="Table"
-        description="This system uses custom elements designed for flexibility and styling control. It leverages CSS Grid to give developers precise control over column layout, spacing, and responsiveness, while maintaining alignment with screen reader expectations."
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table"
-        guides="https://guides.muibook.com/table"
-        accessibility="
-          mui-table uses role='table';
-          mui-row-group uses role='rowgroup';
-          mui-row uses role='row';
-          mui-cell uses role='cell';
-          Follows table semantics for screen reader support
-        "
-      >
-
-        <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Import">
             <mui-code slot="footer" size="small" scrollable>
@@ -390,7 +374,7 @@ class storyTable extends HTMLElement {
             </mui-code>
           </spec-card>
 
-          <mui-v-stack space="var(--space-500)">
+          <mui-v-stack space="var(--space-400)">
             <props-card title="Table">
               <mui-responsive breakpoint="767" slot="body">
                 <story-type-table slot="showAbove">
@@ -460,7 +444,7 @@ class storyTable extends HTMLElement {
                 </mui-row-group>
               </mui-table>
             </div>
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
               const Columns = &#96;1fr 1fr 1fr&#96;;<br>
               <br>
               &lt;mui-table&gt;
@@ -517,7 +501,7 @@ class storyTable extends HTMLElement {
               <br />
               <br />
               &lt;/mui-table&gt;
-            </mui-code>
+            </story-code-block>
           </story-card>
 
           <story-card 
@@ -552,7 +536,7 @@ class storyTable extends HTMLElement {
                 </mui-row-group>
               </mui-table>
             </div>
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
               <br>
               &lt;mui-table&gt;
@@ -609,7 +593,7 @@ class storyTable extends HTMLElement {
               <br />
               <br />
               &lt;/mui-table&gt;
-            </mui-code>
+            </story-code-block>
           </story-card>
 
           <story-card 
@@ -630,7 +614,7 @@ class storyTable extends HTMLElement {
                 </mui-row-group>
               </mui-table>
             </div>
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
               <br />
               <br />
               &nbsp;&nbsp;// Table Data
@@ -706,7 +690,7 @@ class storyTable extends HTMLElement {
               <br />
               <br />
               &lt;/mui-table&gt;
-            </mui-code>
+            </story-code-block>
           </story-card>
 
           <story-card title="Responsive Table" github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-table/index.js">
@@ -720,7 +704,7 @@ class storyTable extends HTMLElement {
                 </div>
               </mui-responsive>
             </div>
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
               &lt;mui-responsive breakpoint="600"&gt;
               <br />
               <br />
@@ -750,7 +734,7 @@ class storyTable extends HTMLElement {
               <br />
               <br />
               &lt;/mui-responsive&gt;
-            </mui-code>
+            </story-code-block>
           </story-card>
 
           <story-card 
@@ -788,7 +772,7 @@ class storyTable extends HTMLElement {
                 </mui-card-body>
               </mui-card>
             </div>
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
               <br>
               &lt;mui-card&gt;<br>
@@ -839,7 +823,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-table&gt;<br>
               &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
               &lt;/mui-card&gt;
-            </mui-code>
+            </story-code-block>
           </story-card>
 
           <story-card title="Card Header w/ Table" description="You can add in a mui-rule to help add a division between the header and body of the card">
@@ -879,7 +863,7 @@ class storyTable extends HTMLElement {
                 </mui-card-body>
               </mui-card>
             </div>
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
               const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
               <br>
               &lt;mui-card&gt;<br>
@@ -934,11 +918,27 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-table&gt;<br>
               &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
               &lt;/mui-card&gt;
-            </mui-code>
+            </story-code-block>
           </story-card>
+    `;
 
-        </mui-v-stack>
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
+      <story-template 
+        title="Table"
+        description="This system uses custom elements designed for flexibility and styling control. It leverages CSS Grid to give developers precise control over column layout, spacing, and responsiveness, while maintaining alignment with screen reader expectations."
+        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table"
+        guides="https://guides.muibook.com/table"
+        accessibility="
+          mui-table uses role='table';
+          mui-row-group uses role='rowgroup';
+          mui-row uses role='row';
+          mui-cell uses role='cell';
+          Follows table semantics for screen reader support
+        "
+      >
+        ${stories}
       </story-template>
     `;
   }

@@ -138,17 +138,7 @@ class storySmartCard extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template title="Smart Card" 
-        description="A dynamic card component for wallets, dashboards, spend tools, or reward programs—designed to represent digital or physical cards in modern, digital-first experiences."
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=440-1250&t=FSv3FEahG8VQW1FZ-1" 
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-smart-card/index.ts"
-        guides="https://guides.muibook.com/smart-card"
-      >
-
-      <mui-v-stack space="var(--space-700)">
+    const stories = /*html*/ `
 
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
@@ -182,7 +172,7 @@ class storySmartCard extends HTMLElement {
           >
           </mui-smart-card>
           </mui-v-stack>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-smart-card<br>
             &nbsp;&nbsp;number="1234"<br>
             &nbsp;&nbsp;type="Debit"<br>
@@ -191,7 +181,7 @@ class storySmartCard extends HTMLElement {
             &nbsp;&nbsp;variant="plain"<br>
             &gt;<br>
             &lt;/mui-smart-card&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Plain / Inverted"
@@ -209,7 +199,7 @@ class storySmartCard extends HTMLElement {
           >
           </mui-smart-card>
           </mui-v-stack>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-smart-card<br>
             &nbsp;&nbsp;inverted<br>
             &nbsp;&nbsp;number="1234"<br>
@@ -219,7 +209,7 @@ class storySmartCard extends HTMLElement {
             &nbsp;&nbsp;variant="plain"<br>
             &gt;<br>
             &lt;/mui-smart-card&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Animated"
@@ -237,7 +227,7 @@ class storySmartCard extends HTMLElement {
           >
           </mui-smart-card>
           </mui-v-stack>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-smart-card<br>
             &nbsp;&nbsp;number="1234"<br>
             &nbsp;&nbsp;type="Debit"<br>
@@ -247,7 +237,7 @@ class storySmartCard extends HTMLElement {
             &nbsp;&nbsp;variant="animated"<br>
             &gt;<br>
             &lt;/mui-smart-card&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card 
@@ -282,7 +272,7 @@ class storySmartCard extends HTMLElement {
             >
             </mui-smart-card>
           </mui-v-stack>
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
               /* Max-Height: 126px */<br>
               <br>
               &lt;mui-smart-card<br>
@@ -290,7 +280,7 @@ class storySmartCard extends HTMLElement {
               &nbsp;&nbsp;logo-height="80"<br>
               &nbsp;&nbsp;...<br>
               &gt;&lt;/mui-smart-card&gt;
-            </mui-code>
+            </story-code-block>
         </story-card>
 
         <story-card title="Frozen"
@@ -308,13 +298,13 @@ class storySmartCard extends HTMLElement {
             >
             </mui-smart-card>
           </mui-v-stack>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-smart-card<br>
             &nbsp;&nbsp;state="frozen"<br>
             &nbsp;&nbsp;...<br>
             &gt;<br>
             &lt;/mui-smart-card&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
 
@@ -341,7 +331,7 @@ class storySmartCard extends HTMLElement {
             >
             </mui-smart-card>
           </mui-v-stack>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             /* Plain */<br>
             /* ======================== */<br>
             <br>
@@ -363,7 +353,7 @@ class storySmartCard extends HTMLElement {
             &nbsp;&nbsp;...<br>
             &gt;<br>
             &lt;/mui-smart-card&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Background-Color" 
@@ -391,7 +381,7 @@ class storySmartCard extends HTMLElement {
             >
             </mui-smart-card>
           </mui-v-stack>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             /* Plain */<br>
             /* ======================== */<br>
             <br>
@@ -413,7 +403,7 @@ class storySmartCard extends HTMLElement {
             &nbsp;&nbsp;...<br>
             &gt;<br>
             &lt;/mui-smart-card&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Payment Networks" description="Use the partner prop to slot in other payment networks"
@@ -431,14 +421,14 @@ class storySmartCard extends HTMLElement {
             >
             </mui-smart-card>
           </mui-v-stack>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-smart-card<br>
             &nbsp;&nbsp;partner="./images/networks/mastercard.svg"<br>
             &nbsp;&nbsp;...<br>
             &gt;<br>
             &lt;/mui-smart-card&gt;
             <br>
-          </mui-code>
+          </story-code-block>
 
         </story-card>
 
@@ -515,7 +505,7 @@ class storySmartCard extends HTMLElement {
           >
           </mui-smart-card>
           </mui-v-stack>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             /* Diamond */<br>
             /* ======================== */<br>
             <br>
@@ -568,11 +558,20 @@ class storySmartCard extends HTMLElement {
             &nbsp;&nbsp;...<br>
             &gt;<br>
             &lt;/mui-smart-card&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
+    `;
 
-      </mui-v-stack>
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
+      <story-template title="Smart Card" 
+        description="A dynamic card component for wallets, dashboards, spend tools, or reward programs—designed to represent digital or physical cards in modern, digital-first experiences."
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=440-1250&t=FSv3FEahG8VQW1FZ-1" 
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-smart-card/index.ts"
+        guides="https://guides.muibook.com/smart-card"
+      >
+        ${stories}
       </story-template>
     `;
   }

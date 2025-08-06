@@ -23,14 +23,12 @@ class tokensSemantic extends HTMLElement {
       >
 
         <mui-message heading="Quicklinks" slot="message">
-          <mui-h-stack class="token-item-menu" alignY="center">
-            <mui-link data-scroll-link="feedback">Feedback</mui-link>
-            <mui-link data-scroll-link="form">Form</mui-link>
-            <mui-link data-scroll-link="action">Action</mui-link>
+          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
+            <mui-link size="small" data-scroll-link="feedback">Feedback</mui-link>
+            <mui-link size="small" data-scroll-link="form">Form</mui-link>
+            <mui-link size="small" data-scroll-link="action">Action</mui-link>
           </mui-h-stack>
         </mui-message>
-
-        <mui-v-stack space="var(--space-700)">
   
           <spec-card id="feedback" title="Feedback" description="User feedback (alerts, messages)">
             <story-token-slat slot="body" token="--feedback-neutral-border-color" variant="color"></story-token-slat>  
@@ -177,8 +175,6 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--action-attention-border-focus" variant="border"></story-token-slat>
             <story-token-slat slot="body" token="--action-attention-border-disabled" variant="border"></story-token-slat>
           </spec-card>
-
-        </mui-v-stack>
 
       </story-template>
     `;

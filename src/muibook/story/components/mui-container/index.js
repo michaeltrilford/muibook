@@ -72,6 +72,70 @@ class storyContainer extends HTMLElement {
       })
       .join("");
 
+    const stories = /*html*/ `
+      <spec-card title="Import">
+        <mui-code slot="footer" size="small" scrollable>
+          import "@muibook/components/mui-container";<br>
+        </mui-code>
+      </spec-card>
+
+      <props-card title="Container">
+        <mui-responsive breakpoint="767" slot="body">
+          <story-type-table slot="showAbove">
+            ${rows}
+          </story-type-table>
+          <mui-accordion-group exclusive slot="showBelow">
+            ${accordions}
+          </mui-accordion-group>
+        </mui-responsive>
+      </props-card>
+
+      <story-card title="Small">
+        <mui-container small slot="body">
+          <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
+        </mui-container>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-container small&gt;...&lt;/mui-container&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Medium">
+      <mui-container medium slot="body">
+        <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
+      </mui-container>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-container medium&gt;...&lt;/mui-container&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Large">
+        <mui-container large slot="body">
+          <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
+        </mui-container>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-container large&gt;...&lt;/mui-container&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Fluid">
+        <mui-container fluid slot="body">
+          <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
+        </mui-container>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-container fluid&gt;...&lt;/mui-container&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Center">
+        <mui-container small center slot="body">
+          <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
+        </mui-container>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-container center&gt;...&lt;/mui-container&gt;
+        </story-code-block>
+      </story-card>
+    `;
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -81,73 +145,7 @@ class storyContainer extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-container/index.ts"
         guides="https://guides.muibook.com/container"
       >
-
-        <mui-v-stack space="var(--space-700)">
-
-          <spec-card title="Import">
-            <mui-code slot="footer" size="small" scrollable>
-              import "@muibook/components/mui-container";<br>
-            </mui-code>
-          </spec-card>
-
-          <props-card title="Container">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <story-card title="Small">
-            <mui-container small slot="body">
-              <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
-            </mui-container>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-container small&gt;...&lt;/mui-container&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card title="Medium">
-          <mui-container medium slot="body">
-            <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
-          </mui-container>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-container medium&gt;...&lt;/mui-container&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card title="Large">
-            <mui-container large slot="body">
-              <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
-            </mui-container>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-container large&gt;...&lt;/mui-container&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card title="Fluid">
-            <mui-container fluid slot="body">
-              <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
-            </mui-container>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-container fluid&gt;...&lt;/mui-container&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card title="Center">
-            <mui-container small center slot="body">
-              <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
-            </mui-container>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-container center&gt;...&lt;/mui-container&gt;
-            </mui-code>
-          </story-card>
-
-        </mui-v-stack>
-
+        ${stories}
       </story-template>
     `;
   }

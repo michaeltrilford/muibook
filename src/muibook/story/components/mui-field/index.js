@@ -87,26 +87,7 @@ class storyField extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template 
-        title="Field"
-        description="The mui-field component only renders a validation message if the message attribute is set. Showing/hiding the message is controlled by the form logic, or application state. This keeps mui-field simple, declarative, and reactive to the attributes it’s given."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-field/index.ts"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=112-620&t=GMqx21isUVAMpLJp-1"
-        guides="https://guides.muibook.com/field"
-        accessibility="
-          A label is required for screen reader support to describe the input’s purpose.;
-          If hide-label is used, the label is visually hidden but accessible via aria-label.;
-          The label and form element are linked via for and id. If no id is provided, one is generated.;
-          Clear focus styles are shown for keyboard users.;
-          The native disabled attribute is fully supported by assistive tech.
-        "
-      >
-
-      <mui-v-stack space="var(--space-700)">
-
+    const stories = /*html*/ `
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-field";<br>
@@ -132,14 +113,14 @@ class storyField extends HTMLElement {
           <mui-field label="Email" slot="body">
             <mui-input type="email" placeholder="you@example.com"></mui-input>
           </mui-field>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-field label="Email"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-input type="email" placeholder="you@example.com"&gt;&lt;/mui-input&gt;
             <br />
             &lt;/mui-field&gt;
             <br />
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Input: Default w/ Message" description="You are able to pass in a message that stays static on the page."
@@ -148,14 +129,14 @@ class storyField extends HTMLElement {
           <mui-field label="Name" slot="body" message="This field doesn't accept special characters">
             <mui-input></mui-input>
           </mui-field>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-field label="Name" message="This field doesn't accept special characters"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-input&gt;&lt;/mui-input&gt;
             <br />
             &lt;/mui-field&gt;
             <br />
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Input: Success w/ Message" description="The form logic will inject the success message onto the field component and render"
@@ -178,7 +159,7 @@ class storyField extends HTMLElement {
           </mui-field>
 
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             <br />
             {
             <br />
@@ -196,7 +177,7 @@ class storyField extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-input type="password" value="••••••••"&gt;&lt;/mui-input&gt;
             <br />
             &lt;/mui-field&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
 
@@ -220,7 +201,7 @@ class storyField extends HTMLElement {
             <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
           </mui-field>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             <br />
             {
             <br />
@@ -238,7 +219,7 @@ class storyField extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;
             <br />
             &lt;/mui-field&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Input: Error w/ Message" description="The form logic will inject the error message onto the field component and render"
@@ -261,7 +242,7 @@ class storyField extends HTMLElement {
             <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
           </mui-field>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             <br />
             {
             <br />
@@ -279,7 +260,7 @@ class storyField extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;
             <br />
             &lt;/mui-field&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Select: Error w/ Message" description="The form logic will inject the error message onto the field component and render"
@@ -310,7 +291,7 @@ class storyField extends HTMLElement {
             </mui-select>
           </mui-field>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             <br />
             {
             <br />
@@ -328,7 +309,7 @@ class storyField extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-select options='[{...}]'&gt;&lt;/mui-select&gt;
             <br />
             &lt;/mui-field&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
 
@@ -371,7 +352,7 @@ class storyField extends HTMLElement {
             </mui-input>
           </mui-field>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             <br />
             {
             <br />
@@ -399,14 +380,28 @@ class storyField extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-select&gt;<br>
             &nbsp;&nbsp;&lt;/mui-input&gt;<br>
             &lt;/mui-field&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
+    `;
 
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
-      </mui-v-stack>
-
-      
-
+      <story-template 
+        title="Field"
+        description="The mui-field component only renders a validation message if the message attribute is set. Showing/hiding the message is controlled by the form logic, or application state. This keeps mui-field simple, declarative, and reactive to the attributes it’s given."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-field/index.ts"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=112-620&t=GMqx21isUVAMpLJp-1"
+        guides="https://guides.muibook.com/field"
+        accessibility="
+          A label is required for screen reader support to describe the input’s purpose.;
+          If hide-label is used, the label is visually hidden but accessible via aria-label.;
+          The label and form element are linked via for and id. If no id is provided, one is generated.;
+          Clear focus styles are shown for keyboard users.;
+          The native disabled attribute is fully supported by assistive tech.
+        "
+      >
+        ${stories}
       </story-template>
     `;
   }

@@ -226,17 +226,7 @@ class storyStack extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template 
-        title="Stack" 
-        description="A layout component that arranges its children in a horizontal or vertical flow"
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stack"
-        guides="https://guides.muibook.com/stack"
-      >
-
-      <mui-v-stack space="var(--space-700)">
+    const stories = /*html*/ `
 
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
@@ -244,7 +234,7 @@ class storyStack extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <mui-v-stack space="var(--space-500)">
+        <mui-v-stack space="var(--space-400)">
           <props-card title="HStack">
             <mui-responsive breakpoint="767" slot="body">
               <story-type-table slot="showAbove">
@@ -269,7 +259,7 @@ class storyStack extends HTMLElement {
 
         <story-card title="Horizontal: Default">
           ${DefaultHStack}
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-h-stack&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
@@ -277,12 +267,12 @@ class storyStack extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
             <br />
             &lt;/mui-h-stack&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Vertical: Default">
           ${DefaultVStack}
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-v-stack&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
@@ -290,12 +280,12 @@ class storyStack extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
             <br />
             &lt;/mui-v-stack&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
       <story-card title="Horizontal: Custom Space">
         ${HStackSpace}
-        <mui-code slot="footer" scrollable>
+        <story-code-block slot="footer" scrollable>
           &lt;mui-h-stack space="var(--space-400)"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
@@ -303,12 +293,12 @@ class storyStack extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
           <br />
           &lt;/mui-h-stack&gt;
-        </mui-code>
+        </story-code-block>
       </story-card>
 
       <story-card title="Vertical: Custom Space">
         ${VStackSpace}
-        <mui-code slot="footer" scrollable>
+        <story-code-block slot="footer" scrollable>
           &lt;mui-v-stack space="var(--space-400)"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
@@ -316,11 +306,21 @@ class storyStack extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
           <br />
           &lt;/mui-v-stack&gt;
-        </mui-code>
+        </story-code-block>
       </story-card>
 
-      </mui-v-stack>
+    `;
 
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
+
+      <story-template 
+        title="Stack" 
+        description="A layout component that arranges its children in a horizontal or vertical flow"
+        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stack"
+        guides="https://guides.muibook.com/stack"
+      >
+        ${stories}
       </story-template>
     `;
   }

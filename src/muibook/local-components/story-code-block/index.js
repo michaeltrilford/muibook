@@ -1,4 +1,4 @@
-class StoryCode extends HTMLElement {
+class StoryCodeBlock extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
@@ -37,4 +37,4 @@ class StoryCode extends HTMLElement {
   }
 }
 
-customElements.define("story-code", StoryCode);
+customElements.define("story-code-block", StoryCodeBlock);

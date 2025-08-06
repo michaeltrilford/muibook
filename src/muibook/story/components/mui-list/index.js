@@ -141,6 +141,165 @@ class storyList extends HTMLElement {
       })
       .join("");
 
+    const stories = /*html*/ `
+      <spec-card title="Import">
+        <mui-code slot="footer" size="small" scalable>
+          import "@muibook/components/mui-list";<br>
+        </mui-code>
+      </spec-card>
+
+      <mui-v-stack space="var(--space-400)">
+        <props-card title="List">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${ListRows}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${ListAccordions}
+            </mui-accordion-group>
+          </mui-responsive>
+        </props-card>
+
+        <props-card title="List-Item">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${rows}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${accordions}
+            </mui-accordion-group>
+          </mui-responsive>
+        </props-card>
+      </mui-v-stack>
+
+      <story-card title="Sizes">
+
+          <div slot="body">
+            <mui-v-stack space="var(--space-500)">
+              <div>
+                <mui-heading size="4" >X-Small</mui-heading>
+
+                <mui-list as="ol">
+                  <mui-list-item size="x-small">Coffee</mui-list-item>
+                  <mui-list-item size="x-small">Tea</mui-list-item>
+                  <mui-list-item size="x-small">Milk</mui-list-item>
+                </mui-list>
+
+              </div>
+              <div>
+                <mui-heading size="4" >Small</mui-heading>
+
+                <mui-list as="ol">
+                  <mui-list-item size="small">Coffee</mui-list-item>
+                  <mui-list-item size="small">Tea</mui-list-item>
+                  <mui-list-item size="small">Milk</mui-list-item>
+                </mui-list>
+
+              </div>
+              <div>
+                <mui-heading size="4" >Medium</mui-heading>
+
+                <mui-list as="ol">
+                  <mui-list-item size="medium">Coffee</mui-list-item>
+                  <mui-list-item size="medium">Tea</mui-list-item>
+                  <mui-list-item size="medium">Milk</mui-list-item>
+                </mui-list>
+
+              </div>
+              <div>
+                <mui-heading size="4" >Large</mui-heading>
+
+                <mui-list as="ol">
+                  <mui-list-item size="large">Coffee</mui-list-item>
+                  <mui-list-item size="large">Tea</mui-list-item>
+                  <mui-list-item size="large">Milk</mui-list-item>
+                </mui-list>
+
+              </div>
+            </mui-v-stack>
+          </div>
+
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-list-item size="x-small"&gt;
+            <br />
+            &nbsp;&nbsp;{text}
+            <br />
+            &lt;/mui-list-item&gt;
+            <br />
+            <br />
+            &lt;mui-list-item size="small"&gt;
+            <br />
+            &nbsp;&nbsp;{text}
+            <br />
+            &lt;/mui-list-item&gt;
+            <br />
+            <br />
+            &lt;mui-list-item size="medium"&gt;
+            <br />
+            &nbsp;&nbsp;{text}
+            <br />
+            &lt;/mui-list-item&gt;
+            <br />
+            <br />
+            &lt;mui-list-item size="large"&gt;
+            <br />
+            &nbsp;&nbsp;{text}
+            <br />
+            &lt;/mui-list-item&gt;
+          </story-code-block>
+
+      </story-card>
+
+
+      <story-card title="Unordered">
+
+        <div slot="body">
+        <mui-list as="ol">
+          <mui-list-item>Coffee</mui-list-item>
+          <mui-list-item>Tea</mui-list-item>
+          <mui-list-item>Milk</mui-list-item>
+        </mui-list>
+        </div>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-list as="ol"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
+          <br />
+          &lt;/mui-list&gt;
+        </story-code-block>
+
+      </story-card>
+
+      <story-card title="Ordered">
+
+        <div slot="body">
+          <mui-list as="ul">
+            <mui-list-item>Coffee</mui-list-item>
+            <mui-list-item>Tea</mui-list-item>
+            <mui-list-item>Milk</mui-list-item>
+          </mui-list>
+        </div>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-list as="ul"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
+          <br />
+          &lt;/mui-list&gt;
+        </story-code-block>
+        
+      </story-card>
+    `;
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -150,168 +309,7 @@ class storyList extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-list"
         guides="https://guides.muibook.com/list"
       >
-
-      <mui-v-stack space="var(--space-700)">
-
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scalable>
-            import "@muibook/components/mui-list";<br>
-          </mui-code>
-        </spec-card>
-
-        <mui-v-stack space="var(--space-500)">
-          <props-card title="List">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${ListRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${ListAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <props-card title="List-Item">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-        </mui-v-stack>
-
-        <story-card title="Sizes">
-
-            <div slot="body">
-              <mui-v-stack space="var(--space-500)">
-                <div>
-                  <mui-heading size="4" >X-Small</mui-heading>
-
-                  <mui-list as="ol">
-                    <mui-list-item size="x-small">Coffee</mui-list-item>
-                    <mui-list-item size="x-small">Tea</mui-list-item>
-                    <mui-list-item size="x-small">Milk</mui-list-item>
-                  </mui-list>
-
-                </div>
-                <div>
-                  <mui-heading size="4" >Small</mui-heading>
-
-                  <mui-list as="ol">
-                    <mui-list-item size="small">Coffee</mui-list-item>
-                    <mui-list-item size="small">Tea</mui-list-item>
-                    <mui-list-item size="small">Milk</mui-list-item>
-                  </mui-list>
-
-                </div>
-                <div>
-                  <mui-heading size="4" >Medium</mui-heading>
-
-                  <mui-list as="ol">
-                    <mui-list-item size="medium">Coffee</mui-list-item>
-                    <mui-list-item size="medium">Tea</mui-list-item>
-                    <mui-list-item size="medium">Milk</mui-list-item>
-                  </mui-list>
-
-                </div>
-                <div>
-                  <mui-heading size="4" >Large</mui-heading>
-
-                  <mui-list as="ol">
-                    <mui-list-item size="large">Coffee</mui-list-item>
-                    <mui-list-item size="large">Tea</mui-list-item>
-                    <mui-list-item size="large">Milk</mui-list-item>
-                  </mui-list>
-
-                </div>
-              </mui-v-stack>
-            </div>
-
-            <mui-code slot="footer" scrollable>
-              &lt;mui-list-item size="x-small"&gt;
-              <br />
-              &nbsp;&nbsp;{text}
-              <br />
-              &lt;/mui-list-item&gt;
-              <br />
-              <br />
-              &lt;mui-list-item size="small"&gt;
-              <br />
-              &nbsp;&nbsp;{text}
-              <br />
-              &lt;/mui-list-item&gt;
-              <br />
-              <br />
-              &lt;mui-list-item size="medium"&gt;
-              <br />
-              &nbsp;&nbsp;{text}
-              <br />
-              &lt;/mui-list-item&gt;
-              <br />
-              <br />
-              &lt;mui-list-item size="large"&gt;
-              <br />
-              &nbsp;&nbsp;{text}
-              <br />
-              &lt;/mui-list-item&gt;
-            </mui-code>
-
-        </story-card>
-
-
-        <story-card title="Unordered">
-
-          <div slot="body">
-          <mui-list as="ol">
-            <mui-list-item>Coffee</mui-list-item>
-            <mui-list-item>Tea</mui-list-item>
-            <mui-list-item>Milk</mui-list-item>
-          </mui-list>
-          </div>
-
-          <mui-code slot="footer" scrollable>
-            &lt;mui-list as="ol"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
-            <br />
-            &lt;/mui-list&gt;
-          </mui-code>
-
-        </story-card>
-
-        <story-card title="Ordered">
-
-          <div slot="body">
-            <mui-list as="ul">
-              <mui-list-item>Coffee</mui-list-item>
-              <mui-list-item>Tea</mui-list-item>
-              <mui-list-item>Milk</mui-list-item>
-            </mui-list>
-          </div>
-
-          <mui-code slot="footer" scrollable>
-            &lt;mui-list as="ul"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list-item&gt;{text}&lt;/mui-list-item&gt;
-            <br />
-            &lt;/mui-list&gt;
-          </mui-code>
-          
-        </story-card>
-
-      </mui-v-stack>
-
+        ${stories}
       </story-template>
     `;
   }

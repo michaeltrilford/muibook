@@ -36,20 +36,17 @@ class tokensBrand extends HTMLElement {
       >
 
           <mui-message heading="Quicklinks" slot="message">
-            <mui-h-stack class="token-item-menu" alignY="center">
-              <mui-link data-scroll-link="font-family">Font Family</mui-link>
-              <mui-link data-scroll-link="font-scale">Font Scale</mui-link>
-              <mui-link data-scroll-link="line-height">Line Height</mui-link>
-              <mui-link data-scroll-link="font-weight">Font Weight</mui-link>
-              <mui-link data-scroll-link="radius">Radius</mui-link>
-              <mui-link data-scroll-link="spacing">Spacing</mui-link>
-              <mui-link data-scroll-link="stroke">Stroke</mui-link>
-              <mui-link data-scroll-link="colors">Colors</mui-link>
+            <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
+              <mui-link size="small" data-scroll-link="font-family">Font Family</mui-link>
+              <mui-link size="small" data-scroll-link="font-scale">Font Scale</mui-link>
+              <mui-link size="small" data-scroll-link="line-height">Line Height</mui-link>
+              <mui-link size="small" data-scroll-link="font-weight">Font Weight</mui-link>
+              <mui-link size="small" data-scroll-link="radius">Radius</mui-link>
+              <mui-link size="small" data-scroll-link="spacing">Spacing</mui-link>
+              <mui-link size="small" data-scroll-link="stroke">Stroke</mui-link>
+              <mui-link size="small" data-scroll-link="colors">Colors</mui-link>
             </mui-h-stack>
           </mui-message>
-
-        <mui-v-stack space="var(--space-700)">
-
 
           <spec-card id="font-family" title="Font Family">
             <story-token-slat 
@@ -244,8 +241,6 @@ class tokensBrand extends HTMLElement {
             <story-token-slat slot="body" token="--blue-900" variant="color"></story-token-slat> 
             <story-token-slat slot="body" token="--blue-1000" variant="color"></story-token-slat> 
           </spec-card>
-
-        </mui-v-stack>
 
       </story-template>
     `;

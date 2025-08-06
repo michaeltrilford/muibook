@@ -103,25 +103,8 @@ class storySelect extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
+    const stories = /*html*/ `
 
-      <story-template
-        title="Select" 
-        description="A versatile dropdown component for selecting from a list of options, supporting customisable styles and accessibility features."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-select/index.ts"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=117-2068&t=GMqx21isUVAMpLJp-1"
-        guides="https://guides.muibook.com/select"
-        accessibility="
-          A label is required for screen reader support, describing the purpose of the select.;
-          If hide-label is used, the label is visually hidden but still accessible via aria-label.;
-          The label and select are linked using for and id attributes. If no id is provided, one is generated.;
-          Keyboard users see a clear focus style when navigating.;
-          The disabled attribute is native and fully supported by assistive tech.
-        "
-      >
-
-      <mui-v-stack space="var(--space-700)">
 
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
@@ -157,7 +140,7 @@ class storySelect extends HTMLElement {
               ]'>
             </mui-select>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-select label="Default"
               <br />
               &nbsp;&nbsp;&nbsp;&nbsp;options='[
@@ -174,7 +157,7 @@ class storySelect extends HTMLElement {
               <br />
             &lt;/mui-select&gt;
 
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card 
@@ -192,7 +175,7 @@ class storySelect extends HTMLElement {
               ]'>
             </mui-select>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-select
             <br />
               &nbsp;&nbsp;label="Brand"
@@ -209,7 +192,7 @@ class storySelect extends HTMLElement {
               <br />
             &lt;/mui-select&gt;
 
-          </mui-code>
+          </story-code-block>
         </story-card>
 
 
@@ -229,7 +212,7 @@ class storySelect extends HTMLElement {
               ]'>
             </mui-select>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-select
             <br />
               &nbsp;&nbsp;label="Brand"
@@ -246,7 +229,7 @@ class storySelect extends HTMLElement {
               <br />
             &lt;/mui-select&gt;
 
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -265,7 +248,7 @@ class storySelect extends HTMLElement {
               ]'>
             </mui-select>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-select
 
             <br />
@@ -285,7 +268,7 @@ class storySelect extends HTMLElement {
               <br />
             &lt;/mui-select&gt;
 
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -307,7 +290,7 @@ class storySelect extends HTMLElement {
                 ]'>
               </mui-select>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-input type="search" label="Search"&gt;<br>
             &nbsp;&nbsp;&lt;mui-select<br>
             &nbsp;&nbsp;&nbsp;&nbsp;slot="before"<br>
@@ -321,7 +304,7 @@ class storySelect extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;]'&gt;<br>
             &nbsp;&nbsp;&lt;/mui-select&gt;<br>
             &lt;/mui-input&gt;
-          </<mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card 
@@ -342,7 +325,7 @@ class storySelect extends HTMLElement {
                 ]'>
               </mui-select>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-input type="number" label="Amount to transfer"&gt;<br>
             &nbsp;&nbsp;&lt;mui-select<br>
             &nbsp;&nbsp;&nbsp;&nbsp;slot="after"<br>
@@ -355,12 +338,28 @@ class storySelect extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;]'&gt;<br>
             &nbsp;&nbsp;&lt;/mui-select&gt;<br>
             &lt;/mui-input&gt;
-          </<mui-code>
+          </story-code-block>
         </story-card>
+      `;
 
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
-      </mui-v-stack>
-
+      <story-template
+        title="Select" 
+        description="A versatile dropdown component for selecting from a list of options, supporting customisable styles and accessibility features."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-select/index.ts"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=117-2068&t=GMqx21isUVAMpLJp-1"
+        guides="https://guides.muibook.com/select"
+        accessibility="
+          A label is required for screen reader support, describing the purpose of the select.;
+          If hide-label is used, the label is visually hidden but still accessible via aria-label.;
+          The label and select are linked using for and id attributes. If no id is provided, one is generated.;
+          Keyboard users see a clear focus style when navigating.;
+          The disabled attribute is native and fully supported by assistive tech.
+        "
+      >
+        ${stories}
       </story-template>
     `;
   }

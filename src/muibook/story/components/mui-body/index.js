@@ -103,20 +103,7 @@ class storyBody extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-
-      <story-template
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-body/index.ts"
-        title="Body"
-        guides="https://guides.muibook.com/body"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-892&t=fSFYVey9aCoE5oQa-1"
-        description="Use the Body component for clear and readable paragraph text across the UI. It’s ideal for longer-form content such as descriptions, explanations, or supporting information. Variant styles are also available for status messages and other contextual needs."
-      >
-
-        <mui-v-stack space="var(--space-700)">
-
+    const stories = /*html*/ `
           <spec-card title="Import">
             <mui-code slot="footer" size="small" scrollable>
               import "@muibook/components/mui-body";<br>
@@ -140,9 +127,9 @@ class storyBody extends HTMLElement {
             <mui-body>Risus Mollis Dapibus</mui-body>
           </div>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-body&gt; ... &lt;/mui-body&gt;
-          </mui-code>
+          </story-code-block>
 
         </story-card>
 
@@ -169,7 +156,7 @@ class storyBody extends HTMLElement {
               </mui-v-stack>
             </div>
 
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
               &lt;mui-body size="x-small"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body size="small"&gt; ... &lt;/mui-body&gt;
@@ -177,7 +164,7 @@ class storyBody extends HTMLElement {
               &lt;mui-body size="medium"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body size="large"&gt; ... &lt;/mui-body&gt;
-            </mui-code>
+            </story-code-block>
 
           </story-card>
 
@@ -200,13 +187,13 @@ class storyBody extends HTMLElement {
               </mui-v-stack>
             </div>
 
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
               &lt;mui-body variant="success"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body variant="warning"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body variant="error"&gt; ... &lt;/mui-body&gt;
-            </mui-code>
+            </story-code-block>
 
           </story-card>
 
@@ -229,7 +216,7 @@ class storyBody extends HTMLElement {
               </mui-v-stack>
             </div>
 
-            <mui-code slot="footer" scrollable>
+            <story-code-block slot="footer" scrollable>
 
               &lt;style&gt;
                 <br>
@@ -267,12 +254,23 @@ class storyBody extends HTMLElement {
               &nbsp;&nbsp;{text}
               <br>
               &lt;/mui-body&gt;
-            </mui-code>
+            </story-code-block>
 
           </story-card>
+    `;
 
-        </mui-v-stack>
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
+
+      <story-template
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-body/index.ts"
+        title="Body"
+        guides="https://guides.muibook.com/body"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-892&t=fSFYVey9aCoE5oQa-1"
+        description="Use the Body component for clear and readable paragraph text across the UI. It’s ideal for longer-form content such as descriptions, explanations, or supporting information. Variant styles are also available for status messages and other contextual needs."
+      >
+        ${stories}
       </story-template>
     `;
   }

@@ -14,7 +14,6 @@ class partsLayout extends HTMLElement {
         description="Allows flexible styling overrides with customisable part names, supporting trusted customisation and scoped CSS in MUI web components."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/utils/part-map/index.ts"
         >
-        <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Display">
             <story-part-slat slot="body" token="part(display)" usage="Link, Button, Stack, Grid, Body" output="Defines the display type of the element." ></story-part-slat>
@@ -183,8 +182,6 @@ class partsLayout extends HTMLElement {
               }
             </mui-code>
           </spec-card>
-
-        </mui-v-stack>
 
       </story-template>
     `;

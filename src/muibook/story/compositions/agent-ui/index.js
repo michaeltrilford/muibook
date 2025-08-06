@@ -114,8 +114,6 @@ class compAgentUI extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/agent-ui/index.js"
       >
 
-      <mui-v-stack space="var(--space-700)">
-
         <story-card 
           title="Prompt Input" 
           description="
@@ -124,7 +122,7 @@ class compAgentUI extends HTMLElement {
           <div slot="body">
             ${AgentPrompt}
           </div>
-          <mui-code slot="footer">
+          <story-code-block slot="footer">
             <br />
             <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/contextual-design-tokens">Surface Tokens</mui-link></mui-body>
             <br />
@@ -147,14 +145,14 @@ class compAgentUI extends HTMLElement {
             &nbsp;&nbsp;...
             <br />
             }
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Conversation Bubble" description="A dark mode–ready conversation bubble built from flexible system blocks.">
           <div slot="body">
             ${AgentConversationReply}
           </div>
-          <mui-code slot="footer">
+          <story-code-block slot="footer">
             <br />
             <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/contextual-design-tokens">Surface Tokens</mui-link></mui-body>
             <br />
@@ -179,10 +177,8 @@ class compAgentUI extends HTMLElement {
             &nbsp;&nbsp;...
             <br />
             }
-          </mui-code>
+          </story-code-block>
         </story-card>
-
-      </mui-v-stack>
 
       </story-template>
     `;

@@ -39,8 +39,6 @@ class MuiplayApp extends HTMLElement {
       >
 
 
-      <mui-v-stack space="var(--space-700)">
-
         <page-card>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
@@ -82,8 +80,6 @@ class MuiplayApp extends HTMLElement {
           </mui-grid>
 
         </page-card>
-
-      </mui-v-stack>
 
       </story-template>
     `;

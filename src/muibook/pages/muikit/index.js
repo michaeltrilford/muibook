@@ -38,9 +38,6 @@ class MuikitPage extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=5A8fWmORS1XTiPBQ-1"
       >
 
-
-      <mui-v-stack space="var(--space-700)">
-
         <page-card>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
@@ -91,8 +88,6 @@ class MuikitPage extends HTMLElement {
           </mui-grid>
 
         </page-card>
-
-      </mui-v-stack>
 
       </story-template>
     `;

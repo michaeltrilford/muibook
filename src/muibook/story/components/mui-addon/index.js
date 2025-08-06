@@ -57,19 +57,7 @@ class storyAddon extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template 
-        title="Add On"
-        description="Enhance form inputs by using mui-addon to display supplementary information like units, prefixes, or suffixes."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-addon/index.ts"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=133-588&t=a1UUlxRE4ZIJUKwJ-1"
-        guides="https://guides.muibook.com/add-on"
-      >
-
-      <mui-v-stack space="var(--space-700)">
-
+    const stories = /*html*/ `
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-addon";<br>
@@ -95,7 +83,7 @@ class storyAddon extends HTMLElement {
             <mui-input label="Enter amount">
               <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-input label="Enter amount"&gt;
             <br />
 
@@ -108,7 +96,7 @@ class storyAddon extends HTMLElement {
 
             &lt;/mui-input&gt;
             <br />
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="After: Add On"
@@ -119,7 +107,7 @@ class storyAddon extends HTMLElement {
             <mui-input label="Enter amount">
               <mui-addon slot="after"><mui-body>USD</mui-body></mui-input></mui-addon>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-input label="Enter amount"&gt;
             <br />
 
@@ -132,11 +120,21 @@ class storyAddon extends HTMLElement {
 
             &lt;/mui-input&gt;
             <br />
-          </mui-code>
+          </story-code-block>
         </story-card>
+      `;
 
-      </mui-v-stack>
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
+      <story-template 
+        title="Add On"
+        description="Enhance form inputs by using mui-addon to display supplementary information like units, prefixes, or suffixes."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-addon/index.ts"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=133-588&t=a1UUlxRE4ZIJUKwJ-1"
+        guides="https://guides.muibook.com/add-on"
+      >
+        ${stories}
       </story-template>
     `;
   }

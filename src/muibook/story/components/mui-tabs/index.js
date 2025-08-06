@@ -256,33 +256,14 @@ class storyTabBar extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template
-        title="Tab Bar"
-        description="Allow users to switch between views or content sections by selecting from a group of tabs."
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1"
-        guides="https://guides.muibook.com/tab-bar"
-        accessibility="
-          Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.; 
-          aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.; 
-          Each active tab-item can receive focus and shows a focus-visible outline.; 
-          tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.
-        "
-
-      >
-
-      <mui-v-stack space="var(--space-700)">
-
+    const stories = /*html*/ `
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-tabs";<br>
           </mui-code>
         </spec-card>
 
-        <mui-v-stack space="var(--space-500)">
+        <mui-v-stack space="var(--space-400)">
           <props-card title="Tab Controller">
             <mui-responsive breakpoint="767" slot="body">
               <story-type-table slot="showAbove">
@@ -335,7 +316,7 @@ class storyTabBar extends HTMLElement {
             <mui-tab-item id="item2">Item 2</mui-tab-item>
             <mui-tab-item id="item3">Item 3</mui-tab-item>
           </mui-tab-bar>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-tab-bar&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-tab-item active id="item1"&gt;Item One&lt;/mui-tab-item&gt;
@@ -345,7 +326,7 @@ class storyTabBar extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-tab-item id="item3"&gt;Item three&lt;/mui-tab-item&gt;
             <br />
             &lt;/mui-tab-bar&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Tab Controller and Tab Panel">
@@ -361,7 +342,7 @@ class storyTabBar extends HTMLElement {
             <mui-tab-panel item="item3">Content 3</mui-tab-panel>
           </mui-tab-controller>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-tab-controller&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-tab-bar&gt;<br />
@@ -373,14 +354,14 @@ class storyTabBar extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-tab-panel item="item2"&gt;Content 2&lt;/mui-tab-panel&gt;<br />
             &nbsp;&nbsp;&lt;mui-tab-panel item="item3"&gt;Content 3&lt;/mui-tab-panel&gt;<br />
             &lt;/mui-tab-controller&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Animation Speed 500ms">
           <mui-tab-bar slot="body" speed="500">
             ${tabItemsHTML}
           </mui-tab-bar>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             const tabData = [
             <br />
             &nbsp;&nbsp;{ id: 'item1', label: 'Message', icon: 'mui-icon-message', active: true },
@@ -408,14 +389,14 @@ class storyTabBar extends HTMLElement {
             &nbsp;&#36;{tabItemsHTML}
             <br />
             &lt;/mui-tab-bar&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Default w/ Icon">
           <mui-tab-bar slot="body">
             ${tabItemsHTML}
           </mui-tab-bar>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             const tabData = [
             <br />
             &nbsp;&nbsp;{ id: 'item1', label: 'Message', icon: 'mui-icon-message', active: true },
@@ -443,7 +424,7 @@ class storyTabBar extends HTMLElement {
             &nbsp;&#36;{tabItemsHTML}
             <br />
             &lt;/mui-tab-bar&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Full width">
@@ -451,7 +432,7 @@ class storyTabBar extends HTMLElement {
             ${tabItemsHTML}
           </mui-tab-bar>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             const tabData = [
             <br />
             &nbsp;&nbsp;{ id: 'item1', label: 'Message', icon: 'mui-icon-message', active: true },
@@ -479,11 +460,27 @@ class storyTabBar extends HTMLElement {
             &nbsp;&#36;{tabItemsHTML}
             <br />
             &lt;/mui-tab-bar&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
+    `;
 
-      </mui-v-stack>
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
+      <story-template
+        title="Tab Bar"
+        description="Allow users to switch between views or content sections by selecting from a group of tabs."
+        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1"
+        guides="https://guides.muibook.com/tab-bar"
+        accessibility="
+          Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.; 
+          aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.; 
+          Each active tab-item can receive focus and shows a focus-visible outline.; 
+          tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.
+        "
+      >
+        ${stories}
       </story-template>
     `;
   }

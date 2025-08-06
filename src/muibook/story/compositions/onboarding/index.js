@@ -20,9 +20,7 @@ class Onboarding extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/onboarding/index.js"
       >
 
-      <mui-v-stack space="var(--space-700)">
-
-          <mui-message id="colors" variant="info" heading="Working with Web Components and Shadow DOM">
+          <mui-message variant="info" heading="Working with Web Components and Shadow DOM">
             <mui-v-stack space="var(--space-200)">
               <mui-body size="small">
                 Accessing internal input values and handling actions requires awareness of Shadow DOM boundaries.
@@ -72,7 +70,7 @@ class Onboarding extends HTMLElement {
             </mui-card>
           </mui-container>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/onboarding/index.js">👨‍💻 View full code on Github</mui-link>
             <br /><br /><br /><br />
             // Example: Submit Logic<br />
@@ -140,12 +138,10 @@ class Onboarding extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
             &nbsp;&nbsp;&lt;/mui-card&gt;<br />
             &lt;/mui-container&gt;
-            </mui-code>
+            </story-code-block>
       
 
         </story-card>
-
-      </mui-v-stack>
 
       </story-template>
     `;

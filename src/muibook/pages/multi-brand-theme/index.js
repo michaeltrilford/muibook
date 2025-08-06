@@ -38,9 +38,6 @@ class MultiBrandTheme extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
 
-
-      <mui-v-stack space="var(--space-700)">
-
         <page-card>
           
           <mui-grid slot="body" class="config"  space="var(--space-400)">
@@ -162,9 +159,6 @@ class MultiBrandTheme extends HTMLElement {
           </mui-code>
 
         </page-card>
-
-      </mui-v-stack>
-
 
 
       </story-template>

@@ -83,18 +83,7 @@ class storyBadge extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template 
-        title="Badge"
-        description="Badges are non-interactive and indicate counts or statuses."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts"
-        guides="https://guides.muibook.com/badge"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1108&t=FSv3FEahG8VQW1FZ-1"
-      >
-
-      <mui-v-stack space="var(--space-700)">
+    const stories = /*html*/ `
 
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
@@ -117,69 +106,79 @@ class storyBadge extends HTMLElement {
           <div slot="body">
             <mui-badge>New</mui-badge>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-badge&gt;
             <br />
             &nbsp;&nbsp;...
             <br />
             &lt;/mui-badge&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Neutral">
           <div slot="body">
             <mui-badge variant="neutral">Offline</mui-badge>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-badge variant="neutral"&gt;
             <br />
             &nbsp;&nbsp;...
             <br />
             &lt;/mui-badge&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Positive">
           <div slot="body">
             <mui-badge variant="positive">Paid</mui-badge>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-badge variant="positive"&gt;
             <br />
             &nbsp;&nbsp;...
             <br />
             &lt;/mui-badge&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Warning">
           <div slot="body">
             <mui-badge variant="warning">Busy</mui-badge>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-badge variant="warning"&gt;
             <br />
             &nbsp;&nbsp;...
             <br />
             &lt;/mui-badge&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Attention">
           <div slot="body">
             <mui-badge variant="attention">Urgent</mui-badge>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-badge variant="attention"&gt;
             <br />
             &nbsp;&nbsp;...
             <br />
             &lt;/mui-badge&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
+    `;
 
-      </mui-v-stack>
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
+      <story-template 
+        title="Badge"
+        description="Badges are non-interactive and indicate counts or statuses."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts"
+        guides="https://guides.muibook.com/badge"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1108&t=FSv3FEahG8VQW1FZ-1"
+      >
+        ${stories}
       </story-template>
     `;
   }

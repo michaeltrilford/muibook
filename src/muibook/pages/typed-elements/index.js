@@ -38,9 +38,6 @@ class TypedElements extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts"
       >
 
-
-      <mui-v-stack space="var(--space-700)">
-
         <page-card>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
@@ -123,8 +120,6 @@ class TypedElements extends HTMLElement {
           </mui-code>
 
         </page-card>
-
-      </mui-v-stack>
 
       </story-template>
     `;

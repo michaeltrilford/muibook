@@ -34,32 +34,30 @@ class tokensComponents extends HTMLElement {
       >
 
           <mui-message heading="Quicklinks" slot="message">
-            <mui-h-stack class="token-item-menu" alignY="center">
-              <mui-link data-scroll-link="switch">Switch</mui-link>  
-              <mui-link data-scroll-link="icon">Icon</mui-link>
-              <mui-link data-scroll-link="card">Card</mui-link>
-              <mui-link data-scroll-link="badge">Badge</mui-link>
-              <mui-link data-scroll-link="table">Table</mui-link>
-              <mui-link data-scroll-link="image">Image</mui-link>
-              <mui-link data-scroll-link="code">Code</mui-link>
-              <mui-link data-scroll-link="alert">Alert</mui-link>
-              <mui-link data-scroll-link="message">Message</mui-link>
-              <mui-link data-scroll-link="button">Button</mui-link>
-              <mui-link data-scroll-link="link-button">Link Button</mui-link>
-              <mui-link data-scroll-link="link-default">Link Default</mui-link>
-              <mui-link data-scroll-link="heading">Heading</mui-link>
-              <mui-link data-scroll-link="body">Body</mui-link>
-              <mui-link data-scroll-link="label">Label</mui-link>
-              <mui-link data-scroll-link="list">List</mui-link>
-              <mui-link data-scroll-link="input">Input</mui-link>
-              <mui-link data-scroll-link="addon">Add On</mui-link>
-              <mui-link data-scroll-link="tab">Tab Bar</mui-link>
-              <mui-link data-scroll-link="carousel">Carousel</mui-link>
-              <mui-link data-scroll-link="slat">Slat</mui-link>
+            <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
+              <mui-link size="small" data-scroll-link="switch">Switch</mui-link>  
+              <mui-link size="small" data-scroll-link="icon">Icon</mui-link>
+              <mui-link size="small" data-scroll-link="card">Card</mui-link>
+              <mui-link size="small" data-scroll-link="badge">Badge</mui-link>
+              <mui-link size="small" data-scroll-link="table">Table</mui-link>
+              <mui-link size="small" data-scroll-link="image">Image</mui-link>
+              <mui-link size="small" data-scroll-link="code">Code</mui-link>
+              <mui-link size="small" data-scroll-link="alert">Alert</mui-link>
+              <mui-link size="small" data-scroll-link="message">Message</mui-link>
+              <mui-link size="small" data-scroll-link="button">Button</mui-link>
+              <mui-link size="small" data-scroll-link="link-button">Link Button</mui-link>
+              <mui-link size="small" data-scroll-link="link-default">Link Default</mui-link>
+              <mui-link size="small" data-scroll-link="heading">Heading</mui-link>
+              <mui-link size="small" data-scroll-link="body">Body</mui-link>
+              <mui-link size="small" data-scroll-link="label">Label</mui-link>
+              <mui-link size="small" data-scroll-link="list">List</mui-link>
+              <mui-link size="small" data-scroll-link="input">Input</mui-link>
+              <mui-link size="small" data-scroll-link="addon">Add On</mui-link>
+              <mui-link size="small" data-scroll-link="tab">Tab Bar</mui-link>
+              <mui-link size="small" data-scroll-link="carousel">Carousel</mui-link>
+              <mui-link size="small" data-scroll-link="slat">Slat</mui-link>
             </mui-h-stack>
           </mui-message>
-
-        <mui-v-stack space="var(--space-700)">
 
           <spec-card 
             id="switch"
@@ -224,16 +222,6 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--slat-radius" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--slat-accessory-background" variant="color"></story-token-slat>
           </spec-card>
-
-        </mui-v-stack>
-
-
-
-
-
-
-
-        </mui-v-stack>
 
       </story-template>
     `;

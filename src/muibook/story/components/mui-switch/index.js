@@ -86,25 +86,7 @@ class storySwitch extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template
-        title="Switch"
-        description="A component that allows users to switch a setting on or off with immediate effect."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts"
-        guides="https://guides.muibook.com/switch"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=147-1003&t=FSv3FEahG8VQW1FZ-1"
-        accessibility="
-          A label is required and applied as aria-label to describe the switch’s purpose.;
-          Uses role='switch' and updates aria-checked for assistive tech.;
-          The label isn’t shown visually—context is provided through icons or nearby text.;
-          disabled sets aria-disabled and blocks interaction.;
-          Supports keyboard navigation with visible focus styles.
-        "
-      >
-
-      <mui-v-stack space="var(--space-700)">
+    const stories = /*html*/ `
 
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
@@ -130,9 +112,9 @@ class storySwitch extends HTMLElement {
           <div slot="body">
             <mui-switch label="Unchecked"></mui-switch>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-switch label="Unchecked"&gt;&lt;/mui-switch&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Checked"
@@ -141,9 +123,9 @@ class storySwitch extends HTMLElement {
           <div slot="body">
             <mui-switch label="On Example" checked></mui-switch>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-switch checked label="On Example"&gt;&lt;/mui-switch&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Disabled w/ Unchecked"
@@ -152,9 +134,9 @@ class storySwitch extends HTMLElement {
           <div slot="body">
             <mui-switch label="Unchecked w/ Disabled" disabled></mui-switch>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-switch label="Unchecked w/ Disabled"&gt;&lt;/mui-switch&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Disabled w/ Checked"
@@ -163,9 +145,9 @@ class storySwitch extends HTMLElement {
           <div slot="body">
             <mui-switch disabled label="Checked w/ Disabled" checked></mui-switch>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-switch checked disabled label="Checked w/ Disabled"&gt;&lt;/mui-switch&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Icons: Off"
@@ -177,7 +159,7 @@ class storySwitch extends HTMLElement {
               <mui-icon-moon slot="on-icon"></mui-icon-moon>
             </mui-switch>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-switch label="Dark mode toggle"&gt;
               <br />
               &nbsp;&nbsp;&lt;mui-icon-sun slot="off-icon"&gt;&lt;/mui-icon-sun&gt;
@@ -185,7 +167,7 @@ class storySwitch extends HTMLElement {
               &nbsp;&nbsp;&lt;mui-icon-moon slot="on-icon"&gt;&lt;/mui-icon-moon&gt;
               <br />
             &lt;/mui-switch&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Icons: On"
@@ -197,7 +179,7 @@ class storySwitch extends HTMLElement {
               <mui-icon-moon slot="on-icon"></mui-icon-moon>
             </mui-switch>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-switch label="Dark mode toggle" checked&gt;
               <br />
               &nbsp;&nbsp;&lt;mui-icon-sun slot="off-icon"&gt;&lt;/mui-icon-sun&gt;
@@ -205,12 +187,28 @@ class storySwitch extends HTMLElement {
               &nbsp;&nbsp;&lt;mui-icon-moon slot="on-icon"&gt;&lt;/mui-icon-moon&gt;
               <br />
             &lt;/mui-switch&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
+    `;
 
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
-      </mui-v-stack>
-
+      <story-template
+        title="Switch"
+        description="A component that allows users to switch a setting on or off with immediate effect."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts"
+        guides="https://guides.muibook.com/switch"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=147-1003&t=FSv3FEahG8VQW1FZ-1"
+        accessibility="
+          A label is required and applied as aria-label to describe the switch’s purpose.;
+          Uses role='switch' and updates aria-checked for assistive tech.;
+          The label isn’t shown visually—context is provided through icons or nearby text.;
+          disabled sets aria-disabled and blocks interaction.;
+          Supports keyboard navigation with visible focus styles.
+        "
+      >
+        ${stories}
       </story-template>
     `;
   }

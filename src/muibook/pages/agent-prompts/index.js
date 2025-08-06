@@ -38,9 +38,6 @@ class AgentPromptsPage extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/agent/prompts/index.ts"
       >
 
-
-      <mui-v-stack space="var(--space-700)">
-
         <page-card>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
@@ -103,8 +100,6 @@ class AgentPromptsPage extends HTMLElement {
           </mui-code>
 
         </page-card>
-
-      </mui-v-stack>
 
       </story-template>
     `;

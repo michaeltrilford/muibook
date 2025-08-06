@@ -70,18 +70,7 @@ class storyCode extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template 
-        title="Code"
-        description="The component defines a code view."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-code/index.ts"
-        guides="https://guides.muibook.com/code"
-      >
-
-      <mui-v-stack space="var(--space-700)">
-
+    const stories = /*html*/ `
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-code";<br>
@@ -106,9 +95,9 @@ class storyCode extends HTMLElement {
               A tooltip drifted so far from its anchor it was officially lost at sea.
             </mui-code>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-code size="large"&gt;...&lt;/mui-code&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
        <story-card title="Medium">
@@ -117,9 +106,9 @@ class storyCode extends HTMLElement {
               The modal refused to close, holding focus hostage forever.
             </mui-code>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-code size="medium"&gt;...&lt;/mui-code&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Small">
@@ -128,9 +117,9 @@ class storyCode extends HTMLElement {
               The fox tried to tab into a hidden element, but focus was trapped in a loop.
             </mui-code>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-code size="small"&gt;...&lt;/mui-code&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="X-Small">
@@ -139,9 +128,9 @@ class storyCode extends HTMLElement {
               A rogue component ignored the theme and styled itself in pure chaos.
             </mui-code>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-code size="x-small"&gt;...&lt;/mui-code&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Scrollable" 
@@ -158,13 +147,23 @@ class storyCode extends HTMLElement {
               A tooltip drifted so far from its anchor it was officially lost at sea.
             </mui-code>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-code size="large" scrollable&gt;...&lt;/mui-code&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
-      </mui-v-stack>
+    `;
 
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
+
+      <story-template 
+        title="Code"
+        description="The component defines a code view."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-code/index.ts"
+        guides="https://guides.muibook.com/code"
+      >
+        ${stories}
       </story-template>
     `;
   }

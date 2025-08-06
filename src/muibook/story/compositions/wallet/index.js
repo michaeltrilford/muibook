@@ -35,10 +35,7 @@ class compWallet extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/wallet/index.js"
       >
 
-      <mui-v-stack space="var(--space-700)">
-
         <story-card title="Transactions" description="This composition view demonstrates how foundational components can be used to build a wallet UI, while also surfacing where the system may need more flexibility. Creating compositions like this gives the Design System team valuable insight into how the system is working in practice and where refinements or improvements such as enhancements to the slat component may be needed.">
-
 
           <mui-v-stack alignX="stretch" slot="body" style="max-width: 365px; margin: 0 auto; padding-top: var(--space-700); padding-bottom: var(--space-700)">
             <mui-smart-card
@@ -143,7 +140,7 @@ class compWallet extends HTMLElement {
 
           </mui-v-stack>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/wallet/index.js" target="_blank">👨‍💻 View full file on Github</mui-link>
             <br />
             <br />
@@ -197,10 +194,8 @@ class compWallet extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-tab-controller&gt;<br>
             &lt;/mui-v-stack&gt;
 
-          </mui-code>
+          </story-code-block>
         </story-card>
-
-      </mui-v-stack>
 
       </story-template>
     `;

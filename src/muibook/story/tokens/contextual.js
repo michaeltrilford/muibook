@@ -50,16 +50,14 @@ class tokensContextual extends HTMLElement {
       >
 
           <mui-message heading="Quicklinks" slot="message">
-            <mui-h-stack class="token-item-menu" alignY="center">
-              <mui-link data-scroll-link="text">Text</mui-link>
-              <mui-link data-scroll-link="font-weight">Font Weight</mui-link>
-              <mui-link data-scroll-link="border">Border</mui-link>
-              <mui-link data-scroll-link="outline">Outline</mui-link>
-              <mui-link data-scroll-link="surface">Surface</mui-link>
+            <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
+              <mui-link size="small" data-scroll-link="text">Text</mui-link>
+              <mui-link size="small" data-scroll-link="font-weight">Font Weight</mui-link>
+              <mui-link size="small" data-scroll-link="border">Border</mui-link>
+              <mui-link size="small" data-scroll-link="outline">Outline</mui-link>
+              <mui-link size="small" data-scroll-link="surface">Surface</mui-link>
             </mui-h-stack>
           </mui-message>
-      
-        <mui-v-stack space="var(--space-700)">
 
           <spec-card id="text" title="Text">
             <story-token-slat slot="body" token="--text-color" variant="text-color"></story-token-slat>
@@ -182,8 +180,6 @@ class tokensContextual extends HTMLElement {
               }
             </mui-code>
           </story-card>
-
-        </mui-v-stack>
 
       </story-template>
     `;

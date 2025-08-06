@@ -62,6 +62,42 @@ class storyFileUpload extends HTMLElement {
       })
       .join("");
 
+    const stories = /*html*/ `
+      <spec-card title="Import">
+        <mui-code slot="footer" size="small" scrollable>
+          import "@muibook/components/mui-file-upload";<br>
+        </mui-code>
+      </spec-card>
+
+      <props-card title="File Upload">
+        <mui-responsive breakpoint="768" slot="body">
+          <story-type-table slot="showAbove">
+            ${rows}
+          </story-type-table>
+          <mui-accordion-group exclusive slot="showBelow">
+            ${accordions}
+          </mui-accordion-group>
+        </mui-responsive>
+      </props-card>
+
+      <story-card 
+        title="Default"
+        description="A simple file input that displays the selected file name and emits a file-upload event."
+        usageLink="https://guides.muibook.com/file-upload"
+      >
+        <mui-file-upload slot="body"
+          acceptedFileTypes=".pdf,.jpg"
+          currentFileName="No file selected"
+        ></mui-file-upload>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-file-upload<br />
+          &nbsp;&nbsp;acceptedFileTypes=".pdf,.jpg"<br />
+          &nbsp;&nbsp;currentFileName="No file selected"<br />
+          &gt;&lt;/mui-file-upload&gt;
+        </story-code-block>
+      </story-card> 
+    `;
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -71,45 +107,7 @@ class storyFileUpload extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-upload/index.ts"
         guides="https://guides.muibook.com/file-upload"
       >
-
-        <mui-v-stack space="var(--space-700)">
-
-          <spec-card title="Import">
-            <mui-code slot="footer" size="small" scrollable>
-              import "@muibook/components/mui-file-upload";<br>
-            </mui-code>
-          </spec-card>
-
-          <props-card title="File Upload">
-            <mui-responsive breakpoint="768" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <story-card 
-            title="Default"
-            description="A simple file input that displays the selected file name and emits a file-upload event."
-            usageLink="https://guides.muibook.com/file-upload"
-          >
-            <mui-file-upload slot="body"
-              acceptedFileTypes=".pdf,.jpg"
-              currentFileName="No file selected"
-            ></mui-file-upload>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-file-upload<br />
-              &nbsp;&nbsp;acceptedFileTypes=".pdf,.jpg"<br />
-              &nbsp;&nbsp;currentFileName="No file selected"<br />
-              &gt;&lt;/mui-file-upload&gt;
-            </mui-code>
-          </story-card>
-
-        </mui-v-stack>
-
+        ${stories}
       </story-template>
     `;
   }

@@ -38,9 +38,6 @@ class WrappedComponents extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/tree/main/src/types/react/wrapped-components"
       >
 
-
-      <mui-v-stack space="var(--space-700)">
-
         <page-card>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
@@ -133,8 +130,6 @@ class WrappedComponents extends HTMLElement {
             <br />
           </mui-code>
         </page-card>
-
-      </mui-v-stack>
 
       </story-template>
     `;

@@ -39,9 +39,6 @@ class CreateMuiApp extends HTMLElement {
         github="https://github.com/michaeltrilford/create-mui-app"
       >
 
-
-      <mui-v-stack space="var(--space-700)">
-
         <page-card>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
@@ -99,8 +96,6 @@ class CreateMuiApp extends HTMLElement {
           </mui-grid>
 
         </page-card>
-
-      </mui-v-stack>
 
       </story-template>
     `;

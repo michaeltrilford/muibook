@@ -220,40 +220,7 @@ class storySlat extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template 
-        title="Slat"
-        description="Slat is a composable component designed to display table data on mobile devices. It provides flexible start and end slots, enabling consumers to tailor how data is presented in a mobile-friendly, stacked format. Slat is ideal for adapting complex table layouts into a clearer, more accessible experience on smaller screens."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts"
-        accessibility="
-          mui-slat uses role='row';
-          slotted children inherit role='cell'
-        "
-        guides="https://guides.muibook.com/slat"
-      >
-
-          <mui-message heading="Quicklinks" slot="message">
-            <mui-h-stack class="token-item-menu" alignY="center">
-              <mui-link data-scroll-link="default">Default</mui-link>    
-              <mui-link data-scroll-link="header">Header</mui-link>  
-              <mui-link data-scroll-link="row">Row</mui-link>  
-              <mui-link data-scroll-link="row-accessory">Row Accessory</mui-link>
-              <mui-link data-scroll-link="action">Action</mui-link>
-              <mui-link data-scroll-link="action-accessory">Action Accessory</mui-link>
-              <mui-link data-scroll-link="slat-and-group">Slat & Group</mui-link>
-              <mui-link data-scroll-link="card-slat-and-group">Card: Slat & Group</mui-link>
-              <mui-link data-scroll-link="card-variant-slat-group">Card: Variant Slat & Group</mui-link>
-              <mui-link data-scroll-link="card-slat-group-divider">Card: Slat Group Dividers</mui-link>
-              <mui-link data-scroll-link="card-slat-group-accordion">Card: Slat Group & Accordion</mui-link>
-              <mui-link data-scroll-link="card-condensed">Card: Condensed</mui-link>
-            </mui-h-stack>
-          </mui-message>
-
-
-      <mui-v-stack space="var(--space-700)">
-
+    const stories = /*html*/ `
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
             import "@muibook/components/mui-slat";<br>
@@ -261,7 +228,7 @@ class storySlat extends HTMLElement {
         </spec-card>
 
 
-        <mui-v-stack space="var(--space-500)">
+        <mui-v-stack space="var(--space-400)">
           <props-card title="Slat">
             <mui-responsive breakpoint="767" slot="body">
               <story-type-table slot="showAbove">
@@ -310,7 +277,7 @@ class storySlat extends HTMLElement {
             </mui-h-stack>
           </mui-slat>
           
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-slat&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-heading slot="start" size="5"&gt;...&lt;/mui-heading&gt;
@@ -322,7 +289,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-h-stack&gt;
             <br />
             &lt;/mui-slat&gt;
-          </mui-code>
+          </story-code-block>
 
         </story-card>
 
@@ -340,7 +307,7 @@ class storySlat extends HTMLElement {
             </mui-h-stack>
           </mui-slat>
           
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-slat variant="header"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Heading&lt;/mui-heading&gt;
@@ -352,7 +319,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-h-stack&gt;
             <br />
             &lt;/mui-slat&gt;
-          </mui-code>
+          </story-code-block>
 
         </story-card>
 
@@ -374,7 +341,7 @@ class storySlat extends HTMLElement {
             </mui-v-stack>
           </mui-slat>
           
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-slat variant="row"&gt;
             <br />
             <br />
@@ -397,7 +364,7 @@ class storySlat extends HTMLElement {
             <br />
             <br />
             &lt;/mui-slat&gt;
-          </mui-code>
+          </story-code-block>
 
         </story-card>
 
@@ -415,7 +382,7 @@ class storySlat extends HTMLElement {
             </mui-v-stack>
           </mui-slat>
           
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-slat variant="action"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-v-stack slot="start"&gt;
@@ -427,7 +394,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;
             <br />
             &lt;/mui-slat&gt;
-          </mui-code>
+          </story-code-block>
 
         </story-card>
 
@@ -455,7 +422,7 @@ class storySlat extends HTMLElement {
 
           </mui-slat>
           
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-slat variant="row"&gt;
             <br />
             <br />
@@ -484,7 +451,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;
             <br />
             &lt;/mui-slat&gt;
-          </mui-code>
+          </story-code-block>
 
         </story-card>
 
@@ -563,7 +530,7 @@ class storySlat extends HTMLElement {
 
           </mui-v-stack>
           
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             // PAGE USE
             <br />
             <br />
@@ -636,7 +603,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
             &nbsp;&nbsp;&lt;/mui-card&gt;<br />
-          </mui-code>
+          </story-code-block>
 
         </story-card>
 
@@ -712,7 +679,7 @@ class storySlat extends HTMLElement {
           </mui-v-stack>
 
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-v-stack space=&quot;var(--space-400)&quot;&gt;<br>
             &nbsp;&nbsp;&lt;mui-slat-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
@@ -768,7 +735,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
             &nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
             &lt;/mui-v-stack&gt;
-          </mui-code>
+          </story-code-block>
 
 
         </story-card>
@@ -851,7 +818,7 @@ class storySlat extends HTMLElement {
             </mui-card-body>
           </mui-card>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot;&gt;Design Tools&lt;/mui-heading&gt;<br>
@@ -916,7 +883,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </mui-code>
+          </story-code-block>
 
 
         </story-card>
@@ -984,7 +951,7 @@ class storySlat extends HTMLElement {
             
           </mui-card>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;Account Activity&lt;/mui-heading&gt;<br>
@@ -1041,7 +1008,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </mui-code>
+          </story-code-block>
 
 
         </story-card>
@@ -1115,7 +1082,7 @@ class storySlat extends HTMLElement {
             
           </mui-card>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;Account Activity&lt;/mui-heading&gt;<br>
@@ -1175,7 +1142,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-group&gt;<br>
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </mui-code>
+          </story-code-block>
 
         </story-card>
 
@@ -1284,7 +1251,7 @@ class storySlat extends HTMLElement {
                 </mui-accordion-group>
               </mui-card-body>
             </mui-card>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot;&gt;Title&lt;/mui-heading&gt;<br>
@@ -1376,7 +1343,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card 
@@ -1447,7 +1414,7 @@ class storySlat extends HTMLElement {
             </mui-card-body>
           </mui-card>
           
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br />
             &nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
@@ -1500,11 +1467,43 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
             &lt;/mui-card&gt;
-          </mui-code>
+          </story-code-block>
 
         </story-card>
+    `;
 
-      </mui-v-stack>
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
+
+      <story-template 
+        title="Slat"
+        description="Slat is a composable component designed to display table data on mobile devices. It provides flexible start and end slots, enabling consumers to tailor how data is presented in a mobile-friendly, stacked format. Slat is ideal for adapting complex table layouts into a clearer, more accessible experience on smaller screens."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts"
+        accessibility="
+          mui-slat uses role='row';
+          slotted children inherit role='cell'
+        "
+        guides="https://guides.muibook.com/slat"
+      >
+
+        <mui-message heading="Quicklinks" slot="message">
+          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
+            <mui-link size="small" data-scroll-link="default">Default</mui-link>    
+            <mui-link size="small" data-scroll-link="header">Header</mui-link>  
+            <mui-link size="small" data-scroll-link="row">Row</mui-link>  
+            <mui-link size="small" data-scroll-link="row-accessory">Row Accessory</mui-link>
+            <mui-link size="small" data-scroll-link="action">Action</mui-link>
+            <mui-link size="small" data-scroll-link="action-accessory">Action Accessory</mui-link>
+            <mui-link size="small" data-scroll-link="slat-and-group">Slat & Group</mui-link>
+            <mui-link size="small" data-scroll-link="card-slat-and-group">Card: Slat & Group</mui-link>
+            <mui-link size="small" data-scroll-link="card-variant-slat-group">Card: Variant Slat & Group</mui-link>
+            <mui-link size="small" data-scroll-link="card-slat-group-divider">Card: Slat Group Dividers</mui-link>
+            <mui-link size="small" data-scroll-link="card-slat-group-accordion">Card: Slat Group & Accordion</mui-link>
+            <mui-link size="small" data-scroll-link="card-condensed">Card: Condensed</mui-link>
+          </mui-h-stack>
+        </mui-message>
+
+        ${stories}
 
       </story-template>
     `;

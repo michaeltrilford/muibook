@@ -84,6 +84,79 @@ class storyHeading extends HTMLElement {
       })
       .join("");
 
+    const stories = /*html*/ `
+      <spec-card title="Import">
+        <mui-code slot="footer" size="small" scrollable>
+          import "@muibook/components/mui-heading";<br>
+        </mui-code>
+      </spec-card>
+
+      <props-card title="Heading">
+        <mui-responsive breakpoint="767" slot="body">
+          <story-type-table slot="showAbove">
+            ${rows}
+          </story-type-table>
+          <mui-accordion-group exclusive slot="showBelow">
+            ${accordions}
+          </mui-accordion-group>
+        </mui-responsive>
+      </props-card>
+
+      <story-card noHeader>
+        <div slot="body">
+          <mui-heading size="1">Heading 1</mui-heading>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-heading size="1"&gt; ... &lt;/mui-heading&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card noHeader>
+        <div slot="body">
+          <mui-heading size="2">Heading 2</mui-heading>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-heading size="2"&gt; ... &lt;/mui-heading&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card noHeader>
+        <div slot="body">
+          <mui-heading size="3">Heading 3</mui-heading>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-heading size="3"&gt; ... &lt;/mui-heading&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card noHeader>
+        <div slot="body">
+          <mui-heading size="4">Heading 4</mui-heading>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-heading size="4"&gt; ... &lt;/mui-heading&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card noHeader>
+        <div slot="body">
+          <mui-heading size="5">Heading 5</mui-heading>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-heading size="5"&gt; ... &lt;/mui-heading&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card noHeader>
+        <div slot="body">
+          <mui-heading size="6">Heading 6</mui-heading>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-heading size="6"&gt; ... &lt;/mui-heading&gt;
+        </story-code-block>
+      </story-card>
+    `;
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -95,82 +168,7 @@ class storyHeading extends HTMLElement {
         guides="https://guides.muibook.com/heading"
         accessibility="Use the level property (H1–H6) to maintain correct semantic structure.; Follow a logical order — don’t skip heading levels.; Helps screen readers understand and navigate the page hierarchy."
       >
-        
-        <mui-v-stack space="var(--space-700)">
-        
-          <spec-card title="Import">
-            <mui-code slot="footer" size="small" scrollable>
-              import "@muibook/components/mui-heading";<br>
-            </mui-code>
-          </spec-card>
-
-          <props-card title="Heading">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <story-card noHeader>
-            <div slot="body">
-              <mui-heading size="1">Heading 1</mui-heading>
-            </div>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-heading size="1"&gt; ... &lt;/mui-heading&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card noHeader>
-            <div slot="body">
-              <mui-heading size="2">Heading 2</mui-heading>
-            </div>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-heading size="2"&gt; ... &lt;/mui-heading&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card noHeader>
-            <div slot="body">
-              <mui-heading size="3">Heading 3</mui-heading>
-            </div>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-heading size="3"&gt; ... &lt;/mui-heading&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card noHeader>
-            <div slot="body">
-              <mui-heading size="4">Heading 4</mui-heading>
-            </div>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-heading size="4"&gt; ... &lt;/mui-heading&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card noHeader>
-            <div slot="body">
-              <mui-heading size="5">Heading 5</mui-heading>
-            </div>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-heading size="5"&gt; ... &lt;/mui-heading&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card noHeader>
-            <div slot="body">
-              <mui-heading size="6">Heading 6</mui-heading>
-            </div>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-heading size="6"&gt; ... &lt;/mui-heading&gt;
-            </mui-code>
-          </story-card>
-        
-        </mui-v-stack>
-
+        ${stories}
       </story-template>
     `;
   }

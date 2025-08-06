@@ -242,17 +242,15 @@ class storyResponsive extends HTMLElement {
       return slatGroup + rule;
     }).join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
+    const stories = /*html*/ `
 
-      <story-template 
-        title="Responsive"
-        description="Dynamically render UI based on viewport size"
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts"
-        guides="https://guides.muibook.com/responsive"
-      >
-
-      <mui-v-stack space="var(--space-700)">
+          <mui-message variant="info" heading="Working with Web Components and Shadow DOM">
+            <mui-v-stack space="var(--space-200)">
+              <mui-body size="small">
+                mui-responsive only works when used in the regular app layer (the light DOM). If it’s placed inside a custom element’s shadow DOM, slot content won’t be projected correctly. This behaviour is a browser limitation, not a bug.
+                </mui-body>
+            </mui-v-stack>
+          </mui-message>
       
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
@@ -276,7 +274,7 @@ class storyResponsive extends HTMLElement {
             <mui-heading slot="showBelow" size="5" level="3">Mobile / Below 600</mui-heading>
             <mui-heading slot="showAbove" size="3" level="3">Desktop / Above 600</mui-heading>
           </mui-responsive>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-responsive breakpoint="600"&gt;
             <br />
             &nbsp;&nbsp;&lt;div slot="showAbove"&gt;...&lt;/div&gt;
@@ -284,7 +282,7 @@ class storyResponsive extends HTMLElement {
             &nbsp;&nbsp;&lt;div slot="showBelow"&gt;...&lt;/div&gt;
             <br />
             &lt;/mui-responsive&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Dual Breakpoint">
@@ -293,7 +291,7 @@ class storyResponsive extends HTMLElement {
             <mui-heading slot="showMiddle" size="4" level="3">Tablet / Between 600-1200</mui-heading>
             <mui-heading slot="showAbove" size="3" level="3">Desktop / Above 1200</mui-heading>
           </mui-responsive>
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-responsive breakpoint-low="599" breakpoint-high="1024"&gt;
             <br />
             &nbsp;&nbsp;&lt;div slot="showAbove"&gt;...&lt;/div&gt;
@@ -303,7 +301,7 @@ class storyResponsive extends HTMLElement {
             &nbsp;&nbsp;&lt;div slot="showBelow"&gt;...&lt;/div&gt;
             <br />
             &lt;/mui-responsive&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
 
         <story-card title="Slat to Table" description="Showcasing how to loop data on to the mui-table and mui-slat within the mui-responsive component.">
@@ -325,7 +323,7 @@ class storyResponsive extends HTMLElement {
             </mui-v-stack>
           </mui-responsive>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             // COMPOSITION LOGIC<br><br>
             const&nbsp;Columns&nbsp;=&nbsp;&#96;1fr&nbsp;1fr&nbsp;1fr&#96;;<br>
             <br>
@@ -407,7 +405,7 @@ class storyResponsive extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&#36;{SlatRow}<br>
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &lt;/mui-responsive&gt;<br>
-          </mui-code>
+          </story-code-block>
 
 
         </story-card>
@@ -423,7 +421,7 @@ class storyResponsive extends HTMLElement {
             </div>
           </mui-responsive>
 
-          <mui-code slot="footer" scrollable>
+          <story-code-block slot="footer" scrollable>
             &lt;mui-responsive breakpoint="600"&gt;
             <br />
             <br />
@@ -452,11 +450,20 @@ class storyResponsive extends HTMLElement {
             <br />
             <br />
             &lt;/mui-responsive&gt;
-          </mui-code>
+          </story-code-block>
         </story-card>
+    `;
 
-      </mui-v-stack>
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
 
+      <story-template 
+        title="Responsive"
+        description="Dynamically render UI based on viewport size"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts"
+        guides="https://guides.muibook.com/responsive"
+      >
+        ${stories}
       </story-template>
     `;
   }

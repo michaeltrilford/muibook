@@ -69,6 +69,89 @@ class storyRule extends HTMLElement {
       })
       .join("");
 
+    const stories = /*html*/ `
+      <spec-card title="Import">
+        <mui-code slot="footer" size="small" scrollable>
+          import "@muibook/components/mui-rule";<br>
+        </mui-code>
+      </spec-card>
+
+      <props-card title="Rule">
+        <mui-responsive breakpoint="767" slot="body">
+          <story-type-table slot="showAbove">
+            ${rows}
+          </story-type-table>
+          <mui-accordion-group exclusive slot="showBelow">
+            ${accordions}
+          </mui-accordion-group>
+        </mui-responsive>
+      </props-card>
+
+      <story-card title="Horizontal">
+        <div slot="body">
+          <mui-rule direction="horizontal" length="100%" style="margin: var(--space-700) 0;"></mui-rule>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-rule
+          <br />
+          &nbsp;&nbsp;direction="horizontal"
+          <br />
+          &nbsp;&nbsp;length="100%"&gt;
+          <br />
+          &lt;/mui-rule&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Vertical">
+        <div slot="body">
+          <mui-rule direction="vertical" length="100px"></mui-rule>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-rule
+          <br />
+          &nbsp;&nbsp;direction="vertical"
+          <br />
+          &nbsp;&nbsp;length="100px"&gt;
+          <br />
+          &lt;/mui-rule&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Horizontal">
+        <div slot="body">
+          <mui-rule direction="horizontal" length="100%" weight="2px" style="margin: var(--space-700) 0;"></mui-rule>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-rule
+          <br />
+          &nbsp;&nbsp;direction="horizontal"
+          <br />
+          &nbsp;&nbsp;length="100%"&gt;
+          <br />
+          &nbsp;&nbsp;weight="2px"&gt;
+          <br />
+          &lt;/mui-rule&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Vertical">
+        <div slot="body">
+          <mui-rule direction="vertical" length="100px" weight="2px"></mui-rule>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-rule
+          <br />
+          &nbsp;&nbsp;direction="vertical"
+          <br />
+          &nbsp;&nbsp;length="100px"&gt;
+          <br />
+          &nbsp;&nbsp;weight="2px"&gt;
+          <br />
+          &lt;/mui-rule&gt;
+        </story-code-block>
+      </story-card>
+    `;
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -78,92 +161,7 @@ class storyRule extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-rule/index.ts"
         guides="https://guides.muibook.com/rule"
       >
-
-      <mui-v-stack space="var(--space-700)">
-
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-rule";<br>
-          </mui-code>
-        </spec-card>
-
-        <props-card title="Rule">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
-
-        <story-card title="Horizontal">
-          <div slot="body">
-            <mui-rule direction="horizontal" length="100%" style="margin: var(--space-700) 0;"></mui-rule>
-          </div>
-          <mui-code slot="footer" scrollable>
-            &lt;mui-rule
-            <br />
-            &nbsp;&nbsp;direction="horizontal"
-            <br />
-            &nbsp;&nbsp;length="100%"&gt;
-            <br />
-            &lt;/mui-rule&gt;
-          </mui-code>
-        </story-card>
-
-        <story-card title="Vertical">
-          <div slot="body">
-            <mui-rule direction="vertical" length="100px"></mui-rule>
-          </div>
-          <mui-code slot="footer" scrollable>
-            &lt;mui-rule
-            <br />
-            &nbsp;&nbsp;direction="vertical"
-            <br />
-            &nbsp;&nbsp;length="100px"&gt;
-            <br />
-            &lt;/mui-rule&gt;
-          </mui-code>
-        </story-card>
-
-        <story-card title="Horizontal">
-          <div slot="body">
-            <mui-rule direction="horizontal" length="100%" weight="2px" style="margin: var(--space-700) 0;"></mui-rule>
-          </div>
-          <mui-code slot="footer" scrollable>
-            &lt;mui-rule
-            <br />
-            &nbsp;&nbsp;direction="horizontal"
-            <br />
-            &nbsp;&nbsp;length="100%"&gt;
-            <br />
-            &nbsp;&nbsp;weight="2px"&gt;
-            <br />
-            &lt;/mui-rule&gt;
-          </mui-code>
-        </story-card>
-
-        <story-card title="Vertical">
-          <div slot="body">
-            <mui-rule direction="vertical" length="100px" weight="2px"></mui-rule>
-          </div>
-          <mui-code slot="footer" scrollable>
-            &lt;mui-rule
-            <br />
-            &nbsp;&nbsp;direction="vertical"
-            <br />
-            &nbsp;&nbsp;length="100px"&gt;
-            <br />
-            &nbsp;&nbsp;weight="2px"&gt;
-            <br />
-            &lt;/mui-rule&gt;
-          </mui-code>
-        </story-card>
-
-      </mui-v-stack>
-
+        ${stories}
       </story-template>
     `;
   }

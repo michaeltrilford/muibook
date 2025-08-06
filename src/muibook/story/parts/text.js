@@ -14,7 +14,6 @@ class partsText extends HTMLElement {
         description="Allows flexible styling overrides with customisable part names, supporting trusted customisation and scoped CSS in MUI web components."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/utils/part-map/index.ts"
         >
-        <mui-v-stack space="var(--space-700)">
 
           <spec-card title="Color">
             <story-part-slat slot="body" token="part(color)" usage="Link, Button, Select" output="Defines the color of the element." ></story-part-slat>
@@ -129,8 +128,6 @@ class partsText extends HTMLElement {
               }
             </mui-code>
           </spec-card>
-
-        </mui-v-stack>
 
       </story-template>
     `;

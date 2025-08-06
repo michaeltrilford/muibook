@@ -66,6 +66,58 @@ class storyImage extends HTMLElement {
       })
       .join("");
 
+    const stories = /*html*/ `
+      <spec-card title="Import">
+        <mui-code slot="footer" size="small" scrollable>
+          import "@muibook/components/mui-image";<br>
+        </mui-code>
+      </spec-card>
+
+      <props-card title="Image">
+        <mui-responsive breakpoint="767" slot="body">
+          <story-type-table slot="showAbove">
+            ${rows}
+          </story-type-table>
+          <mui-accordion-group exclusive slot="showBelow">
+            ${accordions}
+          </mui-accordion-group>
+        </mui-responsive>
+      </props-card>
+
+      <story-card title="Single image">
+        <div slot="body">
+          <mui-image>
+            <img slot="image" src="${Image}" alt="Spacing scale illustration" />
+          </mui-image>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-image&gt;
+          <br />
+          &nbsp;&nbsp;&lt;img slot="image" src="..." alt="Spacing scale illustration" /&gt;
+          <br />
+          &lt;/mui-image&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Image with caption">
+        <div slot="body">
+          <mui-image>
+            <img slot="image" src="${Image}" alt="Spacing scale illustration" />
+            <figcaption slot="caption">Example image</figcaption>
+          </mui-image>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-image&gt;
+          <br />
+          &nbsp;&nbsp;&lt;img slot="image" src="..." alt="Spacing scale illustration" /&gt;
+          <br />
+          &nbsp;&nbsp;&lt;figcaption slot="caption">...&lt;/figcaption&gt;
+          <br />
+          &lt;/mui-image&gt;
+        </story-code-block>
+      </story-card>
+    `;
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
@@ -81,61 +133,7 @@ class storyImage extends HTMLElement {
           Use the caption slot for extended context, especially for diagrams or UI patterns.
         "
       >
-
-        <mui-v-stack space="var(--space-700)">
-
-          <spec-card title="Import">
-            <mui-code slot="footer" size="small" scrollable>
-              import "@muibook/components/mui-image";<br>
-            </mui-code>
-          </spec-card>
-
-          <props-card title="Image">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <story-card title="Single image">
-            <div slot="body">
-              <mui-image>
-                <img slot="image" src="${Image}" alt="Spacing scale illustration" />
-              </mui-image>
-            </div>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-image&gt;
-              <br />
-              &nbsp;&nbsp;&lt;img slot="image" src="..." alt="Spacing scale illustration" /&gt;
-              <br />
-              &lt;/mui-image&gt;
-            </mui-code>
-          </story-card>
-
-          <story-card title="Image with caption">
-            <div slot="body">
-              <mui-image>
-                <img slot="image" src="${Image}" alt="Spacing scale illustration" />
-                <figcaption slot="caption">Example image</figcaption>
-              </mui-image>
-            </div>
-            <mui-code slot="footer" scrollable>
-              &lt;mui-image&gt;
-              <br />
-              &nbsp;&nbsp;&lt;img slot="image" src="..." alt="Spacing scale illustration" /&gt;
-              <br />
-              &nbsp;&nbsp;&lt;figcaption slot="caption">...&lt;/figcaption&gt;
-              <br />
-              &lt;/mui-image&gt;
-            </mui-code>
-          </story-card>
-
-        </mui-v-stack>
-
+        ${stories}
       </story-template>
 
     `;

@@ -119,41 +119,7 @@ class storyAccordion extends HTMLElement {
       })
       .join("");
 
-    shadowRoot.innerHTML = /*html*/ `
-      <style>${styles}</style>
-
-      <story-template 
-        title="Accordion"
-        description="The Accordion is a component stores content underneath a collapsible heading, revealing it through progressive disclosure in the user interface."
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-accordion"
-        guides="https://guides.muibook.com/accordion"
-        accessibility="
-          Accordion summary uses role='button' and tabindex='0' for keyboard access.;
-          Supports Enter and Space keys for toggling.;
-          aria-expanded reflects open/closed state.;
-          aria-controls links summary to detail with a unique ID.;
-          mui-heading applies semantic heading with role='heading' and aria-level.;
-          Chevron icon rotates visually and the state is conveyed via aria-expanded.
-        "
-      >
-
-          <mui-message heading="Quicklinks" slot="message">
-            <mui-h-stack class="token-item-menu" alignY="center">
-              <mui-link data-scroll-link="accordion-inline">Inline</mui-link>
-              <mui-link data-scroll-link="accordion-group-and-block">Group & Block</mui-link>
-              <mui-link data-scroll-link="accordion-group-and-block-exclusive">Group & Block: Exclusive</mui-link>
-              <mui-link data-scroll-link="tab-behaviour-button">Tab Behaviour: Button</mui-link>
-              <mui-link data-scroll-link="tab-behaviour-link">Tab Behaviour: Link</mui-link>
-              <mui-link data-scroll-link="detail-space-none">Detail Space: None</mui-link>
-              <mui-link data-scroll-link="card-accordion">Card: Accordion</mui-link>
-              <mui-link data-scroll-link="card-header-accordion">Card Header: Accordion</mui-link>
-              <mui-link data-scroll-link="accordion-slat-detect">Accordion: Slat Detection</mui-link>
-              <mui-link data-scroll-link="card-slat-detect">Card: Slat Detection</mui-link>   
-              <mui-link data-scroll-link="accordion-core">Accordion Core</mui-link>              
-            </mui-h-stack>
-          </mui-message>
-
-      <mui-v-stack space="var(--space-700)">
+    const stories = /*html*/ `
 
         <spec-card title="Import">
           <mui-code slot="footer" size="small" scrollable>
@@ -187,7 +153,7 @@ class storyAccordion extends HTMLElement {
               </mui-list>
             </mui-accordion-inline>
           </div>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             &lt;mui-accordion-inline heading="Heading"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
@@ -197,7 +163,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-list&gt;
             <br />
             &lt;/mui-accordion-inline&gt;
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -218,7 +184,7 @@ class storyAccordion extends HTMLElement {
               </div>
             </mui-accordion-block>
           </mui-accordion-group>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             &lt;mui-accordion-group&gt;
             <br />  
             &nbsp;&nbsp;&lt;mui-accordion-block heading="Heading"&gt;
@@ -242,7 +208,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-accordion-block&gt;
             <br />
             &lt;mui-accordion-group&gt;
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -263,7 +229,7 @@ class storyAccordion extends HTMLElement {
               </div>
             </mui-accordion-block>
           </mui-accordion-group>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             &lt;mui-accordion-group exclusive&gt;
             <br />  
             &nbsp;&nbsp;&lt;mui-accordion-block heading="Heading"&gt;
@@ -287,7 +253,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-accordion-block&gt;
             <br />
             &lt;mui-accordion-group&gt;
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -302,7 +268,7 @@ class storyAccordion extends HTMLElement {
               </div>
             </mui-accordion-inline>
           </div>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             &lt;mui-accordion-inline heading="Heading"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
@@ -312,7 +278,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-list&gt;
             <br />
             &lt;/mui-accordion-inline&gt;
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -327,7 +293,7 @@ class storyAccordion extends HTMLElement {
               </div>
             </mui-accordion-inline>
           </div>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             &lt;mui-accordion-inline heading="Heading"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
@@ -337,7 +303,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-list&gt;
             <br />
             &lt;/mui-accordion-inline&gt;
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -354,7 +320,7 @@ class storyAccordion extends HTMLElement {
               <mui-link variant="tertiary" class="nav-link">Contextual</mui-link>
             </mui-v-stack>
           </mui-accordion-block>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             const styles = &#96;<br>
             &nbsp;&nbsp;.nav-link {<br>
             &nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
@@ -369,7 +335,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link variant="tertiary" class="nav-link"&gt;Contextual&lt;/mui-link&gt;<br>
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &lt;/mui-accordion-block&gt;
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card 
@@ -397,7 +363,7 @@ class storyAccordion extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-group exclusive&gt;<br>
@@ -414,7 +380,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card id="card-header-accordion" title="Card Header w/ Accordion" 
@@ -445,7 +411,7 @@ class storyAccordion extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;Title&lt;/mui-heading&gt;<br>
@@ -466,7 +432,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -579,7 +545,7 @@ class storyAccordion extends HTMLElement {
               </mui-accordion-block>
             </mui-accordion-group>
           </div>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             &nbsp;&nbsp;&lt;mui-accordion-group exclusive&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-block heading="Default"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="detail"&gt;<br>
@@ -619,7 +585,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-block&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -732,7 +698,7 @@ class storyAccordion extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <story-code slot="footer">
+          <story-code-block slot="footer">
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-group exclusive&gt;<br>
@@ -776,7 +742,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </story-code>
+          </story-code-block>
         </story-card>
 
         <story-card
@@ -835,7 +801,7 @@ class storyAccordion extends HTMLElement {
                     
           </mui-v-stack>
 
-          <story-code slot="footer">
+          <story-code-block slot="footer">
 
             // Custom: Accordion Inline<br>
             /* ================================================================ */<br><br>
@@ -922,13 +888,48 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
             &nbsp;&nbsp;&lt;/mui-accordion-core&gt;<br>
             &lt;/mui-card&gt;
-          </story-code>
+          </story-code-block>
 
 
         </story-card>
+      `;
+
+    shadowRoot.innerHTML = /*html*/ `
+      <style>${styles}</style>
+
+      <story-template 
+        title="Accordion"
+        description="The Accordion is a component stores content underneath a collapsible heading, revealing it through progressive disclosure in the user interface."
+        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-accordion"
+        guides="https://guides.muibook.com/accordion"
+        accessibility="
+          Accordion summary uses role='button' and tabindex='0' for keyboard access.;
+          Supports Enter and Space keys for toggling.;
+          aria-expanded reflects open/closed state.;
+          aria-controls links summary to detail with a unique ID.;
+          mui-heading applies semantic heading with role='heading' and aria-level.;
+          Chevron icon rotates visually and the state is conveyed via aria-expanded.
+        "
+      >
+        <mui-message heading="Quicklinks" slot="message">
+          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
+            <mui-link size="small" data-scroll-link="accordion-inline">Inline</mui-link>
+            <mui-link size="small" data-scroll-link="accordion-group-and-block">Group & Block</mui-link>
+            <mui-link size="small" data-scroll-link="accordion-group-and-block-exclusive">Group & Block: Exclusive</mui-link>
+            <mui-link size="small" data-scroll-link="tab-behaviour-button">Tab Behaviour: Button</mui-link>
+            <mui-link size="small" data-scroll-link="tab-behaviour-link">Tab Behaviour: Link</mui-link>
+            <mui-link size="small" data-scroll-link="detail-space-none">Detail Space: None</mui-link>
+            <mui-link size="small" data-scroll-link="card-accordion">Card: Accordion</mui-link>
+            <mui-link size="small" data-scroll-link="card-header-accordion">Card Header: Accordion</mui-link>
+            <mui-link size="small" data-scroll-link="accordion-slat-detect">Accordion: Slat Detection</mui-link>
+            <mui-link size="small" data-scroll-link="card-slat-detect">Card: Slat Detection</mui-link>   
+            <mui-link size="small" data-scroll-link="accordion-core">Accordion Core</mui-link>              
+          </mui-h-stack>
+        </mui-message>
 
 
-      </mui-v-stack>
+        ${stories}
+
 
       </story-template>
     `;

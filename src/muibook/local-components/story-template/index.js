@@ -16,12 +16,56 @@ class StoryTemplate extends HTMLElement {
   connectedCallback() {
     const styles = /*css*/ `
       :host { display: block; width: 100%; }
+
+      .wrapper::part(gap) {
+        gap: var(--space-400);
+      }
+
+      .header-group::part(gap) {
+        gap: var(--space-300);
+      }
+
+      .introduction::part(gap),
+      .stories::part(gap) {
+        gap: var(--space-400);
+      }
+
+      @media (min-width: 768px) {
+        .wrapper::part(gap) {
+          gap: var(--space-500);
+        }
+
+      .header-group::part(gap) {
+        gap: var(--space-300);
+      }
+
+        .introduction::part(gap),
+        .stories::part(gap) {
+          gap: var(--space-500);
+        }
+      }
+
+      @media (min-width: 960px) {
+        .wrapper::part(gap) {
+          gap: var(--space-600);
+        }
+
+      .header-group::part(gap) {
+        gap: var(--space-300);
+      }
+
+        .introduction::part(gap),
+        .stories::part(gap) {
+          gap: var(--space-600);
+        }
+      }
+
     `;
 
     const title = this.getAttribute("title") || "";
     const descriptionText = this.getAttribute("description") || "";
     const description = descriptionText
-      ? /*html*/ `<mui-body large style="letter-spacing: 0.75px; max-width: 75ch;">${descriptionText}</mui-body>`
+      ? /*html*/ `<mui-body size="medium" style="max-width: 75ch; margin-bottom: var(--space-200);">${descriptionText}</mui-body>`
       : "";
 
     const accessibilityItems = this.getAttribute("accessibility");
@@ -79,7 +123,7 @@ class StoryTemplate extends HTMLElement {
         <mui-message heading="Accessibility Notes" icon="mui-icon-accessibility">
             <mui-list as="ul">
               ${accessibilityArray
-                .map((item) => `<mui-list-item size="small" weight="medium">${item.trim()}</mui-list-item>`)
+                .map((item) => `<mui-list-item size="x-small" weight="regular">${item.trim()}</mui-list-item>`)
                 .join("")}
             </mui-list>
         </mui-message> 
@@ -89,9 +133,9 @@ class StoryTemplate extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <mui-container center>
-        <mui-v-stack space="var(--space-700)">
-          <mui-v-stack space="var(--space-600)">
-            <mui-v-stack space="var(--space-400)">
+        <mui-v-stack class="wrapper">
+          <mui-v-stack class="introduction">
+            <mui-v-stack class="header-group">
               <mui-responsive breakpoint="768">
                 <mui-h-stack slot="showBelow" alignX="space-between" alignY="center">
                   <mui-heading size="2" level="1">${title}</mui-heading>
@@ -119,9 +163,9 @@ class StoryTemplate extends HTMLElement {
             ${accessibilitySection}
             <slot name="message"></slot>
           </mui-v-stack>
-          <div>
+          <mui-v-stack class="stories">
             <slot></slot>
-          </div>
+          </mui-v-stack>
         </mui-v-stack>
       </mui-container>
     `;
