@@ -70,7 +70,7 @@ class PropsCard extends HTMLElement {
               ${
                 title
                   ? `
-                    <mui-h-stack alignY="center" space="var(--space-300)">
+                    <mui-h-stack alignY="center" space="var(--space-200)">
                       <span style="font-size: 42px; margin-right: 6px; line-height: 1">🎛️</span> 
                       <mui-v-stack space="var(--space-000);">
                         <mui-body size="x-small" weight="bold" style="text-transform: uppercase; margin-left: var(--space-025); opacity: 0.8;">Props Types</mui-body>
