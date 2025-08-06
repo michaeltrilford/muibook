@@ -75,6 +75,9 @@ class appNavbar extends HTMLElement {
         padding-left: var(--space-500);
         padding-right: var(--space-500);
       }
+      mui-body::part(box-sizing) {
+        box-sizing: border-box;
+      }
       mui-body::part(margin) {
         margin-top: var(--space-400);
         margin-bottom: var(--space-200);

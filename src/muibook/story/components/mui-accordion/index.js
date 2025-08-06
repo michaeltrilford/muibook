@@ -372,7 +372,13 @@ class storyAccordion extends HTMLElement {
           </story-code>
         </story-card>
 
-        <story-card id="card-accordion" title="Card w/ Accordion">
+        <story-card 
+          id="card-accordion" 
+          title="Card w/ Accordion" 
+          usage="
+            When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding.;
+            If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually."
+        >
           <div slot="body">
             <mui-card>
               <mui-card-body>
@@ -411,7 +417,12 @@ class storyAccordion extends HTMLElement {
           </story-code>
         </story-card>
 
-        <story-card id="card-header-accordion" title="Card Header w/ Accordion" description="You can add in a mui-rule to help add a division between the header and body of the card">
+        <story-card id="card-header-accordion" title="Card Header w/ Accordion" 
+          description="You can add in a mui-rule to help add a division between the header and body of the card"
+          usage="
+            When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding.;
+            If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually."  
+        >
           <div slot="body">
             <mui-card>
               <mui-card-header>

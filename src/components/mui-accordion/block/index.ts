@@ -133,6 +133,15 @@ class MuiAccordionBlock extends HTMLElement {
           padding-right: var(--space-600);
         }
       }
+      :host(.card-slot) .detail-space-none {
+        padding: 0;
+      }
+      @media (min-width: 768px) {
+        :host(.card-slot) .detail-space-none {
+          padding: 0;
+        }
+      }
+
 
     </style>
 
