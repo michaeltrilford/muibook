@@ -18,16 +18,19 @@ class StoryTemplate extends HTMLElement {
       :host { display: block; width: 100%; }
 
       .wrapper::part(gap) {
-        gap: var(--space-400);
+        gap: var(--space-500);
       }
 
       .header-group::part(gap) {
         gap: var(--space-300);
       }
 
-      .introduction::part(gap),
-      .stories::part(gap) {
+      .introduction::part(gap) {
         gap: var(--space-400);
+      }
+
+      .stories::part(gap) {
+        gap: var(--space-500);
       }
 
       @media (min-width: 768px) {
@@ -35,14 +38,15 @@ class StoryTemplate extends HTMLElement {
           gap: var(--space-500);
         }
 
-      .header-group::part(gap) {
-        gap: var(--space-300);
-      }
+        .header-group::part(gap) {
+          gap: var(--space-300);
+        }
 
         .introduction::part(gap),
         .stories::part(gap) {
           gap: var(--space-500);
         }
+
       }
 
       @media (min-width: 960px) {
