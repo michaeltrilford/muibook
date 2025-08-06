@@ -95,6 +95,7 @@ import "./local-components/page-card";
 import "./local-components/spec-card";
 import "./local-components/props-card";
 import "./local-components/story-card";
+import "./local-components/story-code";
 import "./local-components/story-code-snippet";
 import "./local-components/story-demo";
 import "./local-components/story-icon-grid";

@@ -58,6 +58,11 @@ class MuiCode extends HTMLElement {
         white-space: ${isScrollable ? "nowrap" : "wrap"};
       }
 
+      code:focus-visible {
+        outline: ${isScrollable ? "var(--outline-thick)" : "none"};
+        outline-offset: ${isScrollable ? "calc(-1 * var(--stroke-size-500))" : "none"};
+      }
+
       @media (min-width: 600px) {
         code {
           padding: var(--space-500) var(--space-600);

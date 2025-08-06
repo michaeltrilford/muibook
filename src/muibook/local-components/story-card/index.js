@@ -201,7 +201,7 @@ class storyCard extends HTMLElement {
             </div>
           </section>
         </mui-card-body>
-        <mui-card-footer><slot name="footer"></slot></mui-card-footer>
+        <mui-card-footer style="padding: 0;"><slot name="footer"></slot></mui-card-footer>
       </mui-card>
     `;
   }

@@ -187,7 +187,7 @@ class storyAccordion extends HTMLElement {
               </mui-list>
             </mui-accordion-inline>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             &lt;mui-accordion-inline heading="Heading"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
@@ -197,7 +197,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-list&gt;
             <br />
             &lt;/mui-accordion-inline&gt;
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card
@@ -218,7 +218,7 @@ class storyAccordion extends HTMLElement {
               </div>
             </mui-accordion-block>
           </mui-accordion-group>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             &lt;mui-accordion-group&gt;
             <br />  
             &nbsp;&nbsp;&lt;mui-accordion-block heading="Heading"&gt;
@@ -242,7 +242,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-accordion-block&gt;
             <br />
             &lt;mui-accordion-group&gt;
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card
@@ -263,7 +263,7 @@ class storyAccordion extends HTMLElement {
               </div>
             </mui-accordion-block>
           </mui-accordion-group>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             &lt;mui-accordion-group exclusive&gt;
             <br />  
             &nbsp;&nbsp;&lt;mui-accordion-block heading="Heading"&gt;
@@ -287,7 +287,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-accordion-block&gt;
             <br />
             &lt;mui-accordion-group&gt;
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card
@@ -302,7 +302,7 @@ class storyAccordion extends HTMLElement {
               </div>
             </mui-accordion-inline>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             &lt;mui-accordion-inline heading="Heading"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
@@ -312,7 +312,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-list&gt;
             <br />
             &lt;/mui-accordion-inline&gt;
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card
@@ -327,7 +327,7 @@ class storyAccordion extends HTMLElement {
               </div>
             </mui-accordion-inline>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             &lt;mui-accordion-inline heading="Heading"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
@@ -337,7 +337,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-list&gt;
             <br />
             &lt;/mui-accordion-inline&gt;
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card
@@ -354,7 +354,7 @@ class storyAccordion extends HTMLElement {
               <mui-link variant="tertiary" class="nav-link">Contextual</mui-link>
             </mui-v-stack>
           </mui-accordion-block>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             const styles = &#96;<br>
             &nbsp;&nbsp;.nav-link {<br>
             &nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
@@ -369,7 +369,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link variant="tertiary" class="nav-link"&gt;Contextual&lt;/mui-link&gt;<br>
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &lt;/mui-accordion-block&gt;
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card id="card-accordion" title="Card w/ Accordion">
@@ -391,7 +391,7 @@ class storyAccordion extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-group exclusive&gt;<br>
@@ -408,7 +408,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card id="card-header-accordion" title="Card Header w/ Accordion" description="You can add in a mui-rule to help add a division between the header and body of the card">
@@ -434,7 +434,7 @@ class storyAccordion extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;Title&lt;/mui-heading&gt;<br>
@@ -455,7 +455,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card
@@ -568,7 +568,7 @@ class storyAccordion extends HTMLElement {
               </mui-accordion-block>
             </mui-accordion-group>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             &nbsp;&nbsp;&lt;mui-accordion-group exclusive&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-block heading="Default"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="detail"&gt;<br>
@@ -608,7 +608,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-block&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card
@@ -721,7 +721,7 @@ class storyAccordion extends HTMLElement {
               </mui-card-body>
             </mui-card>
           </div>
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
             &lt;mui-card&gt;<br>
             &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-accordion-group exclusive&gt;<br>
@@ -765,7 +765,7 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-accordion-group&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;
-          </mui-code>
+          </story-code>
         </story-card>
 
         <story-card
@@ -824,7 +824,7 @@ class storyAccordion extends HTMLElement {
                     
           </mui-v-stack>
 
-          <mui-code slot="footer" scrollable>
+          <story-code slot="footer">
 
             // Custom: Accordion Inline<br>
             /* ================================================================ */<br><br>
@@ -911,7 +911,9 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
             &nbsp;&nbsp;&lt;/mui-accordion-core&gt;<br>
             &lt;/mui-card&gt;
-          </mui-code>
+          </story-code>
+
+
         </story-card>
 
 
