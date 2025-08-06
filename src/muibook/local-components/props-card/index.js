@@ -43,7 +43,7 @@ class PropsCard extends HTMLElement {
       }
 
       .icon {
-        margin-right: var(--space-050);
+        margin-right: var(--space-200);
       }
 
       @media (min-width: 768px) {
@@ -65,7 +65,7 @@ class PropsCard extends HTMLElement {
       <style>${styles}</style>
       <mui-card>
         <mui-accordion-core style="border-radius: var(--card-radius)">
-          <mui-card-header slot="summary" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
+          <mui-card-header slot="summary">
             <mui-h-stack space="var(--space-100)" alignX="space-between" alignY="center">
               ${
                 title
@@ -73,14 +73,14 @@ class PropsCard extends HTMLElement {
                     <mui-h-stack alignY="center" space="var(--space-300)">
                       <span style="font-size: 42px; margin-right: 6px; line-height: 1">🎛️</span> 
                       <mui-v-stack space="var(--space-000);">
-                        <mui-body size="x-small" weight="bold" style="text-transform: uppercase; margin-left: var(--space-025); opacity: 0.8; translate: 0px var(--space-050);">Props Types</mui-body>
-                        <mui-heading size="3" level="2">${title}</mui-heading>
+                        <mui-body size="x-small" weight="bold" style="text-transform: uppercase; margin-left: var(--space-025); opacity: 0.8;">Props Types</mui-body>
+                        <mui-heading size="4" level="2">${title}</mui-heading>
                       </mui-v-stack>
                     </mui-h-stack>
                     `
                   : `<mui-heading size="3" level="2">Prop Types</mui-heading>`
               }
-              <mui-icon-toggle rotate class="icon" size="small">
+              <mui-icon-toggle rotate class="icon" size="x-small">
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
