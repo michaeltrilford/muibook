@@ -210,11 +210,11 @@ class storyChip extends HTMLElement {
 
         <story-card title="Before: Filters" description="Return results specific to one or multiple categories the user selects.">
           <mui-h-stack slot="body" space="var(--space-200)">
-            <mui-chip id="chip1" close>
+            <mui-chip id="chip3" close>
               Branding
               <mui-icon-left-sidebar slot="before"></mui-icon-left-sidebar>
             </mui-chip>
-            <mui-chip id="chip2" state="active" close>
+            <mui-chip id="chip4" state="active" close>
               Web Design
               <mui-icon-left-sidebar slot="before"></mui-icon-left-sidebar>
             </mui-chip>
