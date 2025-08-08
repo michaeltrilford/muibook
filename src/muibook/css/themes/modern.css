@@ -213,6 +213,10 @@ html[data-brand="modern"][data-theme="light"] {
 
   /* Carousel */
   --carousel-background: var(--grey-100);
+
+  /* Chip */
+  --chip-border-color-active: var(--grey-1000);
+  --chip-text-color-active: var(--grey-1000);
 }
 
 /* =============================================================================== */
@@ -350,6 +354,10 @@ html[data-brand="modern"][data-theme="dark"] {
 
   /* Carousel */
   --carousel-background: var(--grey-700);
+
+  /* Chip */
+  --chip-border-color-active: var(--grey-100);
+  --chip-text-color-active: var(--grey-100);
 }
 
 /* ================================================================= */
@@ -362,4 +370,6 @@ html[data-brand="modern"][data-theme="dark"] {
 html[data-brand="modern"] {
   /* Card */
   --card-radius: var(--radius-400);
+  /* Chip */
+  --chip-icon-fill: var(--icon-color-default);
 }

@@ -170,6 +170,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/alert" title="Alert"></app-navbar-link>
         <app-navbar-link link="#/message" title="Message"></app-navbar-link>
         <app-navbar-link link="#/badge" title="Badge"></app-navbar-link>
+        <app-navbar-link link="#/chip" title="Chip"></app-navbar-link>
         
         <mui-body weight="bold">Actions</mui-body>
         <app-navbar-link link="#/button" title="Button"></app-navbar-link>

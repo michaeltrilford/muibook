@@ -32,6 +32,8 @@ export default defineConfig({
         "components/mui-card/header": path.resolve(__dirname, "src/components/mui-card/header"),
         "components/mui-card/body": path.resolve(__dirname, "src/components/mui-card/body"),
         "components/mui-card/footer": path.resolve(__dirname, "src/components/mui-card/footer"),
+        // CHIP
+        "components/mui-chip": path.resolve(__dirname, "src/components/mui-chip"),
         // CAROUSEL
         "components/mui-carousel": path.resolve(__dirname, "src/components/mui-carousel"),
         "components/mui-carousel/controller": path.resolve(__dirname, "src/components/mui-carousel/controller"),

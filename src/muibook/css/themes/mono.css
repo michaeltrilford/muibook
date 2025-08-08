@@ -168,6 +168,10 @@ html[data-brand="mono"][data-theme="light"] {
 
   /* Carousel */
   --carousel-background: var(--mono-grey-100);
+
+  /* Chip */
+  --chip-border-color-active: var(--grey-1000);
+  --chip-text-color-active: var(--grey-1000);
 }
 
 /* =============================================================================== */
@@ -308,6 +312,10 @@ html[data-brand="mono"][data-theme="dark"] {
 
   /* Carousel */
   --carousel-background: var(--mono-grey-700);
+
+  /* Chip */
+  --chip-border-color-active: var(--grey-100);
+  --chip-text-color-active: var(--grey-100);
 }
 
 /* ================================================================= */
@@ -320,4 +328,6 @@ html[data-brand="mono"][data-theme="dark"] {
 html[data-brand="mono"] {
   /* Card */
   --card-radius: var(--radius-400);
+  /* Chip */
+  --chip-icon-fill: var(--icon-color-default);
 }

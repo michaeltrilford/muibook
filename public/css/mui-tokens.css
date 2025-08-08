@@ -387,6 +387,20 @@ html[data-theme="light"] {
   --slat-card-background: var(--surface-elevated-100);
   --slat-card-background-hover: var(--surface-elevated-200);
   --slat-accessory-background: var(--black-opacity-10);
+
+  /* Chip */
+  --chip-background: var(--white);
+  --chip-background-hover: var(--white);
+  --chip-background-focus: var(--white);
+  --chip-background-active: var(--white);
+  --chip-border-color: var(--grey-300);
+  --chip-border-color-hover: var(--grey-300);
+  --chip-border-color-focus: var(--grey-300);
+  --chip-border-color-active: var(--grey-1000);
+  --chip-text-color-active: var(--grey-1000);
+  --chip-icon-fill: var(--black);
+  --chip-close-action-background: var(--black-opacity-10);
+  --chip-close-action-background-hover: var(--black-opacity-0);
 }
 
 /* ==================================================================================================== */
@@ -571,6 +585,20 @@ html[data-theme="dark"] {
   --slat-card-background: var(--surface-elevated-100);
   --slat-card-background-hover: var(--surface-elevated-200);
   --slat-accessory-background: var(--white-opacity-10);
+
+  /* Chip */
+  --chip-background: var(--black);
+  --chip-background-hover: var(--black);
+  --chip-background-focus: var(--black);
+  --chip-background-active: var(--black);
+  --chip-border-color: var(--grey-700);
+  --chip-border-color-hover: var(--grey-700);
+  --chip-border-color-focus: var(--grey-700);
+  --chip-border-color-active: var(--grey-100);
+  --chip-text-color-active: var(--grey-100);
+  --chip-icon-fill: var(--white);
+  --chip-close-action-background: var(--white-opacity-20);
+  --chip-close-action-background-hover: var(--white-opacity-0);
 }
 
 /* ==================================================================================================== */
@@ -688,4 +716,6 @@ html[data-theme="dark"] {
   --slat-radius: var(--radius-200);
   /* Checkbox */
   --checkbox-radius: var(--radius-100);
+  /* Chip */
+  --chip-radius: var(--radius-400);
 }

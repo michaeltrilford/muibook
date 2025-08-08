@@ -224,6 +224,10 @@ html[data-brand="jal"][data-theme="light"] {
 
   /* Carousel */
   --carousel-background: var(--jal-grey-100);
+
+  /* Chip */
+  --chip-border-color-active: var(--jal-red-500);
+  --chip-text-color-active: var(--jal-red-500);
 }
 
 /* =============================================================================== */
@@ -365,6 +369,10 @@ html[data-brand="jal"][data-theme="dark"] {
 
   /* Carousel */
   --carousel-background: var(--jal-grey-900);
+
+  /* Chip */
+  --chip-border-color-active: var(--jal-red-200);
+  --chip-text-color-active: var(--jal-red-200);
 }
 
 /* ================================================================= */
@@ -377,4 +385,6 @@ html[data-brand="jal"][data-theme="dark"] {
 html[data-brand="jal"] {
   /* Card */
   --card-radius: var(--radius-200);
+  /* Chip */
+  --chip-icon-fill: var(--icon-color-default);
 }

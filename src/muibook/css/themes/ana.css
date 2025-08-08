@@ -207,6 +207,10 @@ html[data-brand="ana"][data-theme="light"] {
 
   /* Carousel */
   --carousel-background: var(--ana-grey-100);
+
+  /* Chip */
+  --chip-border-color-active: var(--ana-blue-400);
+  --chip-text-color-active: var(--ana-blue-400);
 }
 
 /* =============================================================================== */
@@ -347,6 +351,10 @@ html[data-brand="ana"][data-theme="dark"] {
 
   /* Carousel */
   --carousel-background: var(--ana-grey-800);
+
+  /* Chip */
+  --chip-border-color-active: var(--ana-blue-200);
+  --chip-text-color-active: var(--ana-blue-200);
 }
 
 /* ================================================================= */
@@ -362,4 +370,6 @@ html[data-brand="ana"] {
   --card-radius: var(--radius-400);
   /* Tab */
   --tab-radius: var(--radius-400);
+  /* Chip */
+  --chip-icon-fill: var(--icon-color-default);
 }

@@ -84,6 +84,10 @@
       "import": "./dist/esm/components/mui-card/header/index.js",
       "types": "./dist/types/components/mui-card/header/index.d.ts"
     },
+    "./mui-chip": {
+      "import": "./dist/esm/components/mui-chip/index.js",
+      "types": "./dist/types/components/mui-chip/index.d.ts"
+    },
     "./mui-carousel": {
       "import": "./dist/esm/components/mui-carousel/index.js",
       "types": "./dist/types/components/mui-carousel/index.d.ts"

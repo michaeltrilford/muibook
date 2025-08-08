@@ -51,7 +51,8 @@ class MuiBadge extends HTMLElement {
         font-size: var(--text-font-size-xs);
         font-weight: var(--badge-font-weight);
         color: var(--badge-text-color);
-        padding: var(--space-050) var(--space-200);
+        padding: var(--space-100) var(--space-200);
+        line-height: 1;
       }
 
       :host([usage="slat-end"]) {
