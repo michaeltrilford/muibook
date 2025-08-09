@@ -113,7 +113,7 @@ class storyChip extends HTMLElement {
           </mui-responsive>
         </props-card>
 
-        <story-card title="Default">
+        <story-card title="Default" usageLink="https://guides.muibook.com/chip">
           <div slot="body">
             <mui-chip>Branding</mui-chip>
           </div>
@@ -126,7 +126,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Icon Before">
+        <story-card title="Icon Before" usageLink="https://guides.muibook.com/chip">
           <div slot="body">
             <mui-chip> 
               Downloads
@@ -143,7 +143,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Icon After">
+        <story-card title="Icon After" usageLink="https://guides.muibook.com/chip">
           <div slot="body">
             <mui-chip> 
               Downloads
@@ -159,7 +159,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Active">
+        <story-card title="Active" usageLink="https://guides.muibook.com/chip">
           <div slot="body">
             <mui-chip active> 
               Videos
@@ -174,7 +174,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Badge: Before">
+        <story-card title="Badge: Before" usageLink="https://guides.muibook.com/chip">
           <div slot="body">
             <mui-chip> 
               Videos
@@ -206,7 +206,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Filters" description="Return results specific to one or multiple categories the user selects.">
+        <story-card title="Filters" description="Return results specific to one or multiple categories the user selects." usageLink="https://guides.muibook.com/chip">
           <mui-h-stack slot="body" space="var(--space-200)">
             <mui-chip id="chip-one" dismiss>Branding</mui-chip>
             <mui-chip id="chip-two" active dismiss>Web Design</mui-chip>
@@ -237,7 +237,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Filters: Icon Before" description="Return results specific to one or multiple categories the user selects.">
+        <story-card title="Filters: Icon Before" description="Return results specific to one or multiple categories the user selects." usageLink="https://guides.muibook.com/chip">
           <mui-h-stack slot="body" space="var(--space-200)">
             <mui-chip id="chip-three" dismiss>
               <mui-icon-left-sidebar slot="before"></mui-icon-left-sidebar>
@@ -274,7 +274,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Sub Navigation" description="It is often used to view page results for a single category.">
+        <story-card title="Sub Navigation" description="It is often used to view page results for a single category." usageLink="https://guides.muibook.com/chip">
           <mui-h-stack id="sub-navigation" slot="body" space="var(--space-200)">
             <mui-chip> 
               All
@@ -325,7 +325,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Multi-Select Groups">
+        <story-card title="Multi-Select Groups" usageLink="https://guides.muibook.com/chip">
           <mui-h-stack id="multi-chip-select" slot="body" class="multi-select">
             <mui-chip> 
               All
@@ -398,6 +398,9 @@ class storyChip extends HTMLElement {
       <story-template 
         title="Chip"
         description="A Chip is a compact, interactive element representing an attribute or action. It can include text, icons, avatars, badges, or a dismiss option, and is used for choices, filters, or tags."
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=646-5183&t=75XKzlBGMRDDu3oC-1"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-chip/index.ts"
+        guides="https://guides.muibook.com/chip"
       >
         ${stories}
       </story-template>
