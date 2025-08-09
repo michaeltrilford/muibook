@@ -89,6 +89,19 @@ class storyTokenSlat extends HTMLElement {
         background: var(--mui-brand-300);
       }
 
+      .animation-preview {
+        width: var(--space-700);
+        height: var(--space-700);
+        background: var(--mui-brand-300);
+        border-radius: var(--radius-100);
+        animation: pulse var(--anim-speed) ease-in-out infinite alternate;
+      }
+
+      @keyframes pulse {
+        from { transform: scale(1); opacity: 1; }
+        to { transform: scale(1.2); opacity: 0.6; }
+      }
+
       .border-preview,
       .outline-preview { width: var(--space-700); }
 
@@ -155,6 +168,9 @@ class storyTokenSlat extends HTMLElement {
         break;
       case "outline":
         visualPreview = /*html*/ `<div class="outline-preview" style="outline: var(${token});"></div>`;
+        break;
+      case "animation":
+        visualPreview = /*html*/ `<div class="animation-preview" style="--anim-speed: var(${token});"></div>`;
         break;
     }
 

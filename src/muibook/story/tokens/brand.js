@@ -44,6 +44,7 @@ class tokensBrand extends HTMLElement {
               <mui-link size="small" data-scroll-link="radius">Radius</mui-link>
               <mui-link size="small" data-scroll-link="spacing">Spacing</mui-link>
               <mui-link size="small" data-scroll-link="stroke">Stroke</mui-link>
+              <mui-link size="small" data-scroll-link="speed">Speed</mui-link>
               <mui-link size="small" data-scroll-link="colors">Colors</mui-link>
             </mui-h-stack>
           </mui-message>
@@ -124,6 +125,13 @@ class tokensBrand extends HTMLElement {
             <story-token-slat slot="body" token="--stroke-size-300" variant="border-width"></story-token-slat>
             <story-token-slat slot="body" token="--stroke-size-400" variant="border-width"></story-token-slat>
             <story-token-slat slot="body" token="--stroke-size-500" variant="border-width"></story-token-slat>
+          </spec-card>
+
+          <spec-card id="speed" title="Speed">
+            <story-token-slat slot="body" token="--speed-100" variant="animation"></story-token-slat>
+            <story-token-slat slot="body" token="--speed-200" variant="animation"></story-token-slat>
+            <story-token-slat slot="body" token="--speed-300" variant="animation"></story-token-slat>
+            <story-token-slat slot="body" token="--speed-400" variant="animation"></story-token-slat>
           </spec-card>
 
           <mui-message id="colors" variant="info" heading="Adjusting the brand select won’t change colors on this page">
