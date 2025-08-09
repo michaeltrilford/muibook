@@ -5,16 +5,16 @@ class MuiChip extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["state", "usage", "close"];
+    return ["active", "usage", "dismiss"];
   }
 
   connectedCallback() {
     this.render();
     this.updateIconSlots();
 
-    if (!this.hasAttribute("tabindex") && !this.hasAttribute("close")) {
+    if (!this.hasAttribute("tabindex") && !this.hasAttribute("dismiss")) {
       this.setAttribute("tabindex", "0");
-    } else if (this.hasAttribute("close")) {
+    } else if (this.hasAttribute("dismiss")) {
       this.removeAttribute("tabindex");
     }
 
@@ -120,14 +120,14 @@ class MuiChip extends HTMLElement {
 
       /* Active: mouse down OR programmatic */
       :host([variant="clickable"]:active),
-      :host([variant="clickable"][state="active"]) {
+      :host([variant="clickable"][active]) {
         background: var(--chip-background-active);
         box-shadow: inset 0 0 0 1px var(--chip-border-color-active);
         border-color: var(--chip-border-color-active);
       }
 
       :host([variant="clickable"]:active) mui-body::part(color),
-      :host([variant="clickable"][state="active"]) mui-body::part(color) {
+      :host([variant="clickable"][active]) mui-body::part(color) {
         color: var(--chip-text-color-active);
       }
 
@@ -149,50 +149,50 @@ class MuiChip extends HTMLElement {
 
           
 
-      /* CLOSE */
+      /* DISMISS */
 
-      /* Disable pointer and focus styles when close attribute is present */
-      :host([close]) {
+      /* Disable pointer and focus styles when dismiss attribute is present */
+      :host([dismiss]) {
         grid-template-columns: 1fr auto;
         padding-right: calc(var(--space-100) + 0.1rem);
       }
 
       /* Has Before */
-      :host([close].has-before) {
+      :host([dismiss].has-before) {
         grid-template-columns: auto 1fr auto;
         padding-left: var(--space-200);
       }
 
-      /* Close Icon */
+      /* Dismiss Icon */
       mui-button::part(background) {
         height: initial;
         width: initial;
         padding: var(--space-025);
         border-radius: var(--radius-400);
-        background: var(--chip-close-action-background);
+        background: var(--chip-dismiss-action-background);
       }
       mui-button::part(background):hover {
-        background: var(--chip-close-action-background-hover);
+        background: var(--chip-dismiss-action-background-hover);
       }
     `;
 
-    if (this.hasAttribute("close")) {
-      // Close mode
+    if (this.hasAttribute("dismiss")) {
+      // Dismiss mode
       this.shadowRoot!.innerHTML = /*html*/ `
         <style>${styles}</style>
         <slot name="before"></slot>
         <mui-body size="small" weight="bold">
           <slot></slot>
         </mui-body>
-        <mui-button part="close-btn" variant="tertiary" aria-label="Remove chip">
+        <mui-button part="dismiss-btn" variant="tertiary" aria-label="Remove chip">
           <mui-icon-close size="x-small"></mui-icon-close>
         </mui-button>
       `;
 
-      this.shadowRoot!.querySelector('[part="close-btn"]')?.addEventListener("click", (e) => {
+      this.shadowRoot!.querySelector('[part="dismiss-btn"]')?.addEventListener("click", (e) => {
         e.stopPropagation();
         this.dispatchEvent(
-          new CustomEvent("close", {
+          new CustomEvent("dismiss", {
             bubbles: true,
             composed: true,
             detail: { id: this.id },
