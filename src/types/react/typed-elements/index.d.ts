@@ -95,7 +95,7 @@ declare global {
 
       "mui-list": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         as?: "ul" | "ol" | string;
-        style?: string;
+        style?: React.CSSProperties;
         class?: string;
       };
 
@@ -108,7 +108,7 @@ declare global {
         heading: string;
         icon?: string;
         variant?: "neutral" | "positive" | "info" | "warning" | "attention" | string;
-        style?: string;
+        style?: React.CSSProperties;
         class?: string;
       };
 
@@ -271,13 +271,13 @@ declare global {
       // FEEDBACK
       "mui-alert": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         variant?: "default" | "success" | "warning" | "error";
-        style?: string;
+        style?: React.CSSProperties;
         class?: string;
       };
 
       "mui-badge": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         variant?: "neutral" | "positive" | "warning" | "attention" | string;
-        style?: string;
+        style?: React.CSSProperties;
         class?: string;
       };
 
