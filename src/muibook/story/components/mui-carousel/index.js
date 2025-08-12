@@ -1,4 +1,4 @@
-import HeroGuides from "../../../images/guru/hero-guides.png";
+import HeroGuides from "../../../images/guru/hero-guides-plugin-no-text.png";
 import HeroOutcomes from "../../../images/guru/hero-outcomes.png";
 
 class storyCarousel extends HTMLElement {
@@ -544,7 +544,7 @@ class storyCarousel extends HTMLElement {
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;description: 'A Figma plugin that...',
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;image: './images/guru/hero-guides.png',
+            &nbsp;&nbsp;&nbsp;&nbsp;image: './images/guru/hero-guides-plugin.png',
             <br />
           &nbsp;&nbsp;},
           <br />
