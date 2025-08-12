@@ -5,31 +5,35 @@ class MuiRule extends HTMLElement {
 
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
-    let direction = `horizontal`;
-    let length = `100%`;
-    let weight = "1px";
+    this.attachShadow({ mode: "open" });
     this.setAttribute("role", "presentation");
-    this.setAttribute("direction", this.getAttribute("direction") || direction);
-    this.setAttribute("length", this.getAttribute("length") || length);
-    this.setAttribute("weight", this.getAttribute("weight") || weight);
+    this.updateStyles();
+  }
+
+  attributeChangedCallback() {
+    this.updateStyles();
+  }
+
+  updateStyles() {
+    const length = this.getAttribute("length") || "100%";
+    const weight = this.getAttribute("weight") || "1px";
+
     const styles = /*css*/ `
       :host {
         display: block;
         background: var(--border-color);
       }
       :host([direction="horizontal"]) {
-        width: ${this.getAttribute("length") || length};
-        height: ${this.getAttribute("weight") || weight};
+        width: ${length};
+        height: ${weight};
       }
       :host([direction="vertical"]) {
-        height: ${this.getAttribute("length") || length};
-        width: ${this.getAttribute("weight") || weight};
+        height: ${length};
+        width: ${weight};
       }
     `;
-    shadowRoot.innerHTML = `
-    <style>${styles}</style>
-  `;
+
+    this.shadowRoot!.innerHTML = `<style>${styles}</style>`;
   }
 }
 

@@ -244,6 +244,11 @@ textarea {
   appearance: none;
 }
 
+input[type="range"] {
+  appearance: auto;
+  -webkit-appearance: slider-horizontal;
+}
+
 input[type="radio"] {
   appearance: radio;
 }

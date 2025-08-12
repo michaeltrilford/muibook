@@ -23,6 +23,24 @@ class MuiLink extends HTMLElement {
     requestAnimationFrame(() => this.updateSlotState());
   }
 
+  attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null) {
+    if (!this.shadowRoot) return;
+
+    if (name === "href") {
+      const anchor = this.shadowRoot.querySelector("a");
+      if (anchor) {
+        anchor.setAttribute("href", newValue || "#");
+      }
+    }
+
+    if (name === "target") {
+      const anchor = this.shadowRoot.querySelector("a");
+      if (anchor) {
+        anchor.setAttribute("target", newValue || "_self");
+      }
+    }
+  }
+
   private updateSlotState() {
     const shadow = this.shadowRoot!;
     const slotDefault = shadow.querySelector("slot:not([name])") as HTMLSlotElement | null;
