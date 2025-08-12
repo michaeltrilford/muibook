@@ -91,7 +91,7 @@ import "./container";
 import "./navbar";
 import "./local-components/theme";
 import "./local-components/page-banner-browser";
-import "./local-components/page-banner";
+import "./local-components/page-banner-plugin";
 import "./local-components/page-card";
 import "./local-components/spec-card";
 import "./local-components/props-card";
