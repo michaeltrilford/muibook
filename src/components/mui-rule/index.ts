@@ -7,6 +7,11 @@ class MuiRule extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.setAttribute("role", "presentation");
+
+    if (!this.hasAttribute("direction")) {
+      this.setAttribute("direction", "horizontal");
+    }
+
     this.updateStyles();
   }
 
