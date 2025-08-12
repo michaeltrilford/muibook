@@ -79,7 +79,6 @@ class pageBannerPlugin extends HTMLElement {
                 </mui-h-stack>
                 <mui-v-stack space="var(--space-400)" style="max-width: 50ch;">
                   <mui-body size="small">MUI integrates with Guru Guides to provide in-context design guidelines direct in Figma, making component guidance easy to access where designers need it most.</mui-body>
-                  <mui-body size="small">Log in with the <strong>MUI credentials</strong> to view the guidelines.</mui-body>
                 </mui-v-stack>
               </mui-v-stack>
               <mui-button-group>
@@ -100,7 +99,6 @@ class pageBannerPlugin extends HTMLElement {
                 </mui-h-stack>
                 <mui-v-stack space="var(--space-400)" style="max-width: 50ch;">
                   <mui-body size="medium">MUI integrates with Guru Guides to provide in-context design guidelines direct in Figma, making component guidance easy to access where designers need it most.</mui-body>
-                  <mui-body size="medium">Log in with the <strong>MUI credentials</strong> to view the guidelines.</mui-body>
                 </mui-v-stack>
               </mui-v-stack>
               <mui-button-group>
