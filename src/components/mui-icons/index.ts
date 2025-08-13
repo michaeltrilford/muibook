@@ -25,3 +25,4 @@ import "./up-chevron";
 import "./warning";
 import "./down-arrow-circle";
 import "./ellipsis";
+import "./gear";

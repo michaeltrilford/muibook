@@ -76,6 +76,7 @@ export default defineConfig({
           "src/components/mui-icons/down-arrow-circle.ts"
         ),
         "components/mui-icons/ellipsis": path.resolve(__dirname, "src/components/mui-icons/ellipsis.ts"),
+        "components/mui-icons/gear": path.resolve(__dirname, "src/components/mui-icons/gear.ts"),
         // IMAGE
         "components/mui-image": path.resolve(__dirname, "src/components/mui-image"),
         // INPUT

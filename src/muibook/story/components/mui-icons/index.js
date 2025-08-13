@@ -347,6 +347,11 @@ class storyIcon extends HTMLElement {
             <mui-code slot="footer" scrollable>mui-icon-ellipsis</mui-code>
           </story-icon-grid>  
 
+          <story-icon-grid center>              
+            <mui-icon-gear slot="body"></mui-icon-gear>
+            <mui-code slot="footer" scrollable>mui-icon-gear</mui-code>
+          </story-icon-grid>  
+
 
 
         </mui-grid> 

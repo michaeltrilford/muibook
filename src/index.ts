@@ -56,6 +56,7 @@ export * from "./components/mui-icons/up-chevron";
 export * from "./components/mui-icons/warning";
 export * from "./components/mui-icons/down-arrow-circle";
 export * from "./components/mui-icons/ellipsis";
+export * from "./components/mui-icons/gear";
 
 // Layout
 export * from "./components/mui-stack/hstack";

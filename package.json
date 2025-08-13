@@ -232,6 +232,10 @@
       "import": "./dist/esm/components/mui-icons/ellipsis/index.js",
       "types": "./dist/types/components/mui-icons/ellipsis/index.d.ts"
     },
+    "./mui-icons/gear": {
+      "import": "./dist/esm/components/mui-icons/gear/index.js",
+      "types": "./dist/types/components/mui-icons/gear/index.d.ts"
+    },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"
