@@ -73,6 +73,12 @@ class MuiButton extends HTMLElement {
       outline: var(--outline-thick);
     }
 
+    :host button ::slotted(.mui-icon) { fill: var(--action-primary-text-color); }
+    :host:hover button ::slotted(.mui-icon) { fill: var(--action-primary-text-color-hover); }
+    :host:focus-visible button ::slotted(.mui-icon) { fill: var(--action-primary-text-color-focus); }
+    :host:disabled button ::slotted(.mui-icon) { fill: var(--action-primary-text-color-disabled); }
+
+
     /* Primary 
     ========================================= */
     :host([variant="primary"]) button {

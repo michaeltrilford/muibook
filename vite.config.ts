@@ -26,6 +26,8 @@ export default defineConfig({
         "components/mui-button": path.resolve(__dirname, "src/components/mui-button"),
         // BUTTON GROUP
         "components/mui-button-group": path.resolve(__dirname, "src/components/mui-button-group"),
+        // DROPDOWN
+        "components/mui-dropdown": path.resolve(__dirname, "src/components/mui-dropdown"),
         // CARD
         "components/mui-card": path.resolve(__dirname, "src/components/mui-card"),
         "components/mui-card/card": path.resolve(__dirname, "src/components/mui-card/card"),
@@ -77,6 +79,7 @@ export default defineConfig({
         ),
         "components/mui-icons/ellipsis": path.resolve(__dirname, "src/components/mui-icons/ellipsis.ts"),
         "components/mui-icons/gear": path.resolve(__dirname, "src/components/mui-icons/gear.ts"),
+        "components/mui-icons/translate": path.resolve(__dirname, "src/components/mui-icons/translate.ts"),
         // IMAGE
         "components/mui-image": path.resolve(__dirname, "src/components/mui-image"),
         // INPUT
@@ -89,6 +92,8 @@ export default defineConfig({
         "components/mui-list": path.resolve(__dirname, "src/components/mui-list"),
         "components/mui-list/item": path.resolve(__dirname, "src/components/mui-list/item"),
         "components/mui-list/list": path.resolve(__dirname, "src/components/mui-list/list"),
+        // LOADING
+        "components/mui-loading": path.resolve(__dirname, "src/components/mui-loading"),
         // Message
         "components/mui-message": path.resolve(__dirname, "src/components/mui-message"),
         // QUOTE

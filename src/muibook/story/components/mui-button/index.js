@@ -268,7 +268,7 @@ class storyButton extends HTMLElement {
           <br />
           &nbsp;&nbsp;More
           <br>
-          &nbsp;&nbsp;&lt;mui-icon-add slot="after" size="x-small"&gt;&lt;/mui-icon-add&gt;
+          &nbsp;&nbsp;&lt;mui-icon-down-chevron slot="after" size="x-small"&gt;&lt;/mui-icon-down-chevron&gt;
           <br />
           &lt;/mui-button&gt;
         </story-code-block>

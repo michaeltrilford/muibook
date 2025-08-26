@@ -7,7 +7,7 @@ declare global {
     interface MuiIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
       size?: MuiIconSize;
       color?: string;
-      slot?: "on-icon" | "off-icon";
+       slot?: "start" | "end" | "before" | "after";
     }
 
     interface IntrinsicElements {
@@ -305,6 +305,8 @@ declare global {
       "mui-icon-up-chevron": MuiIconProps;
       "mui-icon-warning": MuiIconProps;
       "mui-icon-ellipsis": MuiIconProps;
+      "mui-icon-gear": MuiIconProps;
+      "mui-icon-translate": MuiIconProps & { flip?: boolean };
 
       "mui-icon-toggle": React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement>,

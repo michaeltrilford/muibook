@@ -26,3 +26,4 @@ import "./warning";
 import "./down-arrow-circle";
 import "./ellipsis";
 import "./gear";
+import "./translate";

@@ -73,11 +73,11 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--form-default-text-color" variant="text-color"></story-token-slat>  
             <story-token-slat slot="body" token="--form-success-text-color" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--form-warning-text-color" variant="text-color"></story-token-slat>
-            <story-token-slat slot="body" token="---form-error-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-error-text-color" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--form-default-text-color-hover" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--form-success-text-color-hover" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--form-warning-text-color-hover" variant="text-color"></story-token-slat>
-            <story-token-slat slot="body" token="---form-error-text-color-hover" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-error-text-color-hover" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--form-default-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--form-success-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--form-warning-border-color" variant="border-color"></story-token-slat>

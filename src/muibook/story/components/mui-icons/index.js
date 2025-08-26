@@ -55,6 +55,13 @@ class storyIcon extends HTMLElement {
         default: "--icon-color-default",
         description: "Adjust the color",
       },
+      {
+        name: "flip",
+        type: "boolean",
+        options: "flip",
+        default: "",
+        description: "translate icon only",
+      },
     ];
 
     const rows = propItems
@@ -350,6 +357,16 @@ class storyIcon extends HTMLElement {
           <story-icon-grid center>              
             <mui-icon-gear slot="body"></mui-icon-gear>
             <mui-code slot="footer" scrollable>mui-icon-gear</mui-code>
+          </story-icon-grid>  
+
+          <story-icon-grid center>              
+            <mui-icon-translate slot="body"></mui-icon-translate>
+            <mui-code slot="footer" scrollable>mui-icon-translate</mui-code>
+          </story-icon-grid> 
+
+          <story-icon-grid center>              
+            <mui-icon-translate flip slot="body"></mui-icon-translate>
+            <mui-code slot="footer" scrollable>mui-icon-translate flip</mui-code>
           </story-icon-grid>  
 
 

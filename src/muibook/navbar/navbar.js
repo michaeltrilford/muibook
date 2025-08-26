@@ -162,6 +162,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/stack" title="Stack"></app-navbar-link>
         <app-navbar-link link="#/grid" title="Grid"></app-navbar-link>
         <app-navbar-link link="#/responsive" title="Responsive"></app-navbar-link>
+        <app-navbar-link link="#/loading" title="Loading"></app-navbar-link>
         <app-navbar-link link="#/container" title="Container"></app-navbar-link>
         <app-navbar-link link="#/rule" title="Rule"></app-navbar-link>
         <app-navbar-link link="#/card" title="Card"></app-navbar-link>
@@ -175,6 +176,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/button" title="Button"></app-navbar-link>
         <app-navbar-link link="#/link" title="Link"></app-navbar-link>
         <app-navbar-link link="#/chip" title="Chip"></app-navbar-link>
+        <app-navbar-link link="#/dropdown" title="Dropdown"></app-navbar-link>
         
         <mui-body weight="bold">Navigation</mui-body>
         <app-navbar-link link="#/tab-bar" title="Tab Bar"></app-navbar-link>  

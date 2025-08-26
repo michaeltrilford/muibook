@@ -64,6 +64,10 @@
       "import": "./dist/esm/components/mui-button-group/index.js",
       "types": "./dist/types/components/mui-button-group/index.d.ts"
     },
+    "./mui-dropdown": {
+      "import": "./dist/esm/components/mui-dropdown/index.js",
+      "types": "./dist/types/components/mui-dropdown/index.d.ts"
+    },
     "./mui-card": {
       "import": "./dist/esm/components/mui-card/index.js",
       "types": "./dist/types/components/mui-card/index.d.ts"
@@ -236,6 +240,10 @@
       "import": "./dist/esm/components/mui-icons/gear/index.js",
       "types": "./dist/types/components/mui-icons/gear/index.d.ts"
     },
+    "./mui-icons/translate": {
+      "import": "./dist/esm/components/mui-icons/translate/index.js",
+      "types": "./dist/types/components/mui-icons/translate/index.d.ts"
+    },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"
@@ -359,6 +367,10 @@
     "./mui-tabs/tab-bar": {
       "import": "./dist/esm/components/mui-tabs/tab-bar/index.js",
       "types": "./dist/types/components/mui-tabs/tab-bar/index.d.ts"
+    },
+    "./mui-loading": {
+      "import": "./dist/esm/components/mui-loading/index.js",
+      "types": "./dist/types/components/mui-loading/index.d.ts"
     },
     ".": {
       "import": "./dist/esm/index.js",

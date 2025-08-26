@@ -71,7 +71,9 @@ export class AppContainer extends HTMLElement {
       "/message": "story-message",
       "/badge": "story-badge",
       "/button": "story-button",
+      "/dropdown": "story-dropdown",
       "/responsive": "story-responsive",
+      "/loading": "story-loading",
       "/stack": "story-stack",
       "/grid": "story-grid",
       "/card": "story-cards",
@@ -131,6 +133,8 @@ export class AppContainer extends HTMLElement {
       "comp-onboarding": () => import("../story/compositions/onboarding/index.js"),
 
       "story-button": () => import("../story/components/mui-button"),
+      "story-dropdown": () => import("../story/components/mui-dropdown"),
+      "story-loading": () => import("../story/components/mui-loading"),
       "story-link": () => import("../story/components/mui-link"),
       "story-icon": () => import("../story/components/mui-icons"),
       "story-image": () => import("../story/components/mui-image"),
