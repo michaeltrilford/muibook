@@ -26,6 +26,20 @@ class storyDropdown extends HTMLElement {
         description:
           "The button will automatically have the correct variants to be visually consistent when used within the dropdown.",
       },
+      {
+        name: "zindex",
+        type: "string",
+        options: "",
+        default: "1",
+        description: "Ability to adjust the z-index",
+      },
+      {
+        name: "placement",
+        type: "string",
+        options: "left, right",
+        default: "left",
+        description: "Set the placement of the dropdown on the x-axis.",
+      },
     ];
 
     const rows = propItems
@@ -86,13 +100,11 @@ class storyDropdown extends HTMLElement {
       </props-card>
 
       <story-card title="Dropdown w/ Ellipsis">
-      <mui-button-group right  slot="body">
-        <mui-dropdown small>
+        <mui-dropdown slot="body">
           <mui-button slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
           <mui-button>Option one</mui-button>
           <mui-button>Option two</mui-button>
         </mui-dropdown>
-        </mui-button-group>
         <story-code-block slot="footer" scrollable>
           &lt;mui-dropdown&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;<br>
@@ -105,9 +117,13 @@ class storyDropdown extends HTMLElement {
       </story-card>
 
       <story-card title="Adjust Z-Index">
-        <mui-dropdown small slot="body" zindex="999">
+        <mui-dropdown slot="body" zindex="999" placement="left">
           <mui-button slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
           <mui-button>Option one</mui-button>
+          <mui-button>Option two</mui-button>
+          <mui-button>Option two</mui-button>
+          <mui-button>Option two</mui-button>
+          <mui-button>Option two</mui-button>
           <mui-button>Option two</mui-button>
         </mui-dropdown>
         <story-code-block slot="footer" scrollable>
@@ -122,8 +138,8 @@ class storyDropdown extends HTMLElement {
       </story-card>
 
       <story-card title="Dropdown w/ Icon">
-        <mui-button-group right  slot="body">
-          <mui-dropdown small>
+        <mui-button-group right slot="body">
+          <mui-dropdown>
             <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron></mui-button>
             <mui-button>PDF</mui-button>
             <mui-button>CSV</mui-button>
@@ -132,6 +148,40 @@ class storyDropdown extends HTMLElement {
         </mui-button-group>
         <story-code-block slot="footer" scrollable>
           &lt;mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;PDF&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;CSV&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Placement: Left">
+        <mui-v-stack slot="body" alignX="center">
+          <mui-dropdown placement="left">
+            <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron></mui-button>
+            <mui-button>PDF</mui-button>
+            <mui-button>CSV</mui-button>
+          </mui-dropdown>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dropdown placement="left"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;PDF&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;CSV&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Placement: Right">
+        <mui-v-stack slot="body" alignX="center">
+          <mui-dropdown placement="right">
+            <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron></mui-button>
+            <mui-button>PDF</mui-button>
+            <mui-button>CSV</mui-button>
+          </mui-dropdown>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dropdown placement="right"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;PDF&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;CSV&lt;/mui-button&gt;<br>

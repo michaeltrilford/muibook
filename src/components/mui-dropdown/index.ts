@@ -19,15 +19,18 @@ class MuiDropdown extends HTMLElement {
   };
 
   static get observedAttributes() {
-    return ["zindex"];
+    return ["zindex", "placement"];
   }
 
   attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null) {
     if (name === "zindex" && this.menu) {
       this.menu.style.zIndex = newValue ?? "1";
     }
-  }
 
+    if (name === "placement" && this.menu) {
+      this.adjustPlacement();
+    }
+  }
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -52,17 +55,35 @@ class MuiDropdown extends HTMLElement {
 
     // Force variant="tertiary" on all default slot buttons (dropdown options)
     const defaultSlot = this.shadowRoot?.querySelector("slot:not([name])") as HTMLSlotElement | null;
-    const optionNodes = defaultSlot?.assignedNodes({ flatten: true }) || [];
-    optionNodes.forEach((node) => {
-      if (node instanceof HTMLElement && node.tagName.toLowerCase() === "mui-button") {
-        node.setAttribute("variant", "tertiary");
 
-        // Add click listener to close the menu when clicked
-        node.addEventListener("click", () => {
-          this.menu?.classList.remove("show");
+    if (defaultSlot) {
+      const updateButtons = () => {
+        const optionNodes = defaultSlot.assignedElements({ flatten: true }) as HTMLElement[];
+
+        optionNodes.forEach((btn) => {
+          btn.classList.remove("dropdown-slot", "dropdown-slot-first", "dropdown-slot-last");
         });
-      }
-    });
+
+        optionNodes.forEach((btn, i) => {
+          btn.setAttribute("variant", "tertiary");
+          btn.classList.add("dropdown-slot");
+
+          if (i === 0) btn.classList.add("dropdown-slot-first");
+          if (i === optionNodes.length - 1) btn.classList.add("dropdown-slot-last");
+
+          // click listener once
+          if (!(btn as any)._dropdownListenerAdded) {
+            btn.addEventListener("click", () => this.menu?.classList.remove("show"));
+            (btn as any)._dropdownListenerAdded = true;
+          }
+        });
+      };
+
+      defaultSlot.addEventListener("slotchange", updateButtons);
+
+      // run initially in case nodes already exist
+      updateButtons();
+    }
 
     // Bind event listeners for the trigger button
     this.toggleMenu = this.toggleMenu.bind(this);
@@ -158,25 +179,37 @@ class MuiDropdown extends HTMLElement {
     // ---- Vertical placement ----
     let top = hostRect.height + offsetY; // default below
     if (vh - hostRect.bottom < menuH + offsetY && hostRect.top > vh - hostRect.bottom) {
-      // place above if not enough space below
-      top = -(menuH + offsetY);
+      top = -(menuH + offsetY); // place above if not enough space below
     }
 
     // ---- Horizontal placement ----
-    // default: align to host right
-    let left = hostRect.width - menuW;
+    let left = 0;
+    const placement = this.getAttribute("placement") || "left";
 
-    // clamp horizontally to stay in viewport
-    const minLeft = margin - hostRect.left; // left edge ≥ margin
-    const maxLeft = vw - margin - (hostRect.left + menuW); // right edge ≤ viewport
+    switch (placement) {
+      case "left":
+        left = 0; // menu’s left edge aligns with host’s left edge
+        break;
+      case "center":
+        left = (hostRect.width - menuW) / 2; // center horizontally relative to host
+        break;
+      case "right":
+      default:
+        left = hostRect.width - menuW; // menu’s right edge aligns with host’s right edge
+        break;
+    }
+
+    // ---- Clamp horizontally to viewport ----
+    const minLeft = margin - hostRect.left;
+    const maxLeft = vw - margin - (hostRect.left + menuW);
     left = Math.max(minLeft, Math.min(left, maxLeft));
 
-    // cap width if too wide
+    // ---- Cap width if too wide ----
     if (menuW > vw - margin * 2) {
       menu.style.maxWidth = `${vw - margin * 2}px`;
     }
 
-    // ---- Apply relative offsets ----
+    // ---- Apply offsets ----
     menu.style.top = `${top}px`;
     menu.style.left = `${left}px`;
   }
@@ -189,20 +222,22 @@ class MuiDropdown extends HTMLElement {
           display: inline-block;
         }
         .dropdown-menu {
-          position: absolute;
-          background: var(--surface);
-          border: var(--border-thin);
-          border-color: var(--white-opacity-20);
-          min-width: 150px;
-          box-shadow: 0 var(--space-100) var(--space-200) var(--black-opacity-20);
-          z-index: 1;
-          border-radius: var(--radius-100);
-
-          /* hidden by default */
+          /* hidden state */
           display: none;
           opacity: 0;
           transform: translateY(-0.25rem);
           transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+          /* End */
+          min-width: 150px;
+          position: absolute;
+          z-index: 1;
+          border: var(--border-thin);
+          /* Unique Styles */
+          background: var(--dropdown-background);
+          border-color: var(--dropdown-border-color);
+          box-shadow: var(--dropdown-shadow);
+          border-radius: var(--dropdown-radius);
+          padding: 1px;
         }
 
         .dropdown-menu.show {
@@ -224,6 +259,7 @@ class MuiDropdown extends HTMLElement {
         .inner {
           display: flex;
           flex-direction: column;
+          gap: 1px;
         }
       </style>
 
@@ -233,7 +269,7 @@ class MuiDropdown extends HTMLElement {
       <!-- Dropdown options slot -->
       <div class="dropdown-menu">
         <div class="inner">
-        <slot></slot>
+          <slot></slot>
         </div>
       </div>
     `;

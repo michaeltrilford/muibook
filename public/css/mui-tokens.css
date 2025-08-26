@@ -401,6 +401,12 @@ html[data-theme="light"] {
   --chip-icon-fill: var(--black);
   --chip-dismiss-action-background: var(--black-opacity-10);
   --chip-dismiss-action-background-hover: var(--black-opacity-0);
+
+  /* Dropdown */
+  --dropdown-background: var(--grey-100);
+  --dropdown-border-color: var(--black-opacity-20);
+  --dropdown-shadow: 0 var(--space-100) var(--space-200) var(--black-opacity-10);
+  --dropdown-button-background-hover: var(--white);
 }
 
 /* ==================================================================================================== */
@@ -599,6 +605,12 @@ html[data-theme="dark"] {
   --chip-icon-fill: var(--white);
   --chip-dismiss-action-background: var(--white-opacity-20);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
+
+  /* Dropdown */
+  --dropdown-background: var(--grey-1000);
+  --dropdown-border-color: var(--black-opacity-20);
+  --dropdown-shadow: 0 var(--space-100) var(--space-200) var(--black-opacity-20);
+  --dropdown-button-background-hover: var(--grey-900);
 }
 
 /* ==================================================================================================== */
@@ -718,4 +730,6 @@ html[data-theme="dark"] {
   --checkbox-radius: var(--radius-100);
   /* Chip */
   --chip-radius: var(--radius-400);
+  /* Dropdown */
+  --dropdown-radius: var(--radius-100);
 }

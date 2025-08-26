@@ -314,6 +314,26 @@ class MuiButton extends HTMLElement {
         fill: var(--alert-icon);
       }
 
+      /* Dropdown Slot */
+      :host(.dropdown-slot) button {
+        border-radius: var(--radius-000);
+      }
+
+      :host(.dropdown-slot) button:hover,
+      :host(.dropdown-slot) button:focus {
+        background: var(--dropdown-button-background-hover);
+      }
+
+      :host(.dropdown-slot-first) button {
+        border-top-left-radius: calc(var(--radius-100) / 2);
+        border-top-right-radius: calc(var(--radius-100) / 2);
+      }
+
+      :host(.dropdown-slot-last) button  {
+        border-bottom-left-radius: calc(var(--radius-100) / 2);
+        border-bottom-right-radius: calc(var(--radius-100) / 2);
+      }
+
 
       /* Before & After Icon
       ========================================= */
