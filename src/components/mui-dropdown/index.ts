@@ -1,4 +1,5 @@
 class MuiDropdown extends HTMLElement {
+  static openDropdown: MuiDropdown | null = null;
   private button: HTMLElement | null = null;
   private menu: HTMLElement | null = null;
   private handleKeyDown(event: KeyboardEvent) {
@@ -124,29 +125,34 @@ class MuiDropdown extends HTMLElement {
 
   toggleMenu(event: Event) {
     event.stopPropagation();
-
     if (!this.menu) return;
 
     const isOpen = this.menu.classList.contains("show");
 
+    // Close any other open dropdown first
+    if (!isOpen && MuiDropdown.openDropdown && MuiDropdown.openDropdown !== this) {
+      MuiDropdown.openDropdown.closeWithAnimation();
+    }
+
     if (isOpen) {
       this.closeWithAnimation();
+      if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
       this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
     } else {
-      this.menu.style.display = "block"; // restore so transitions can run
+      this.menu.style.display = "block"; // restore for transitions
       requestAnimationFrame(() => {
         this.menu?.classList.add("show");
         this.adjustPlacement();
       });
+      MuiDropdown.openDropdown = this;
       this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: true }, bubbles: true }));
     }
   }
 
   closeMenu(event: Event) {
     if (!this.contains(event.target as Node)) {
-      this.menu?.classList.remove("show");
-
-      // Dispatch event so React can remove inert
+      this.closeWithAnimation();
+      if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
       this.dispatchEvent(
         new CustomEvent("dropdown-toggle", {
           detail: { open: false },
