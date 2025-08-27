@@ -26,17 +26,29 @@ class MuiDropdown extends HTMLElement {
   }
   private handleResize = () => {
     if (this.menu?.classList.contains("show")) {
-      this.adjustPlacement();
+      this.adjustPosition();
     }
+  };
+
+  private handleMinimise = () => {
+    if (!this.menu) return;
+
+    this.menu.classList.remove("show");
+    this.menu?.setAttribute("inert", "true");
+
+    if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
+    this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
   };
 
   private handleScroll = () => {
     if (this.menu?.classList.contains("show")) {
-      this.adjustPlacement();
+      this.adjustPosition();
     }
   };
 
   private handleFocusOut = (event: FocusEvent) => {
+    if (this.suspendClose) return; // skip closing if attribute is present
+
     if (!this.contains(event.relatedTarget as Node)) {
       this.closeWithAnimation();
       this.menu?.setAttribute("inert", "true");
@@ -46,18 +58,32 @@ class MuiDropdown extends HTMLElement {
   };
 
   static get observedAttributes() {
-    return ["zindex", "placement"];
+    return ["zindex", "position", "suspend-close"];
+  }
+
+  get suspendClose() {
+    return this.hasAttribute("suspend-close");
   }
 
   attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null) {
+    if (name === "suspend-close" && this.menu) {
+      const minimiseBtn = this.shadowRoot?.querySelector(".minimise") as HTMLElement | null;
+
+      if (minimiseBtn) {
+        // Toggle visibility only, since the icon is passed in
+        minimiseBtn.style.display = this.suspendClose ? "block" : "none";
+      }
+    }
+
     if (name === "zindex" && this.menu) {
       this.menu.style.zIndex = newValue ?? "1";
     }
 
-    if (name === "placement" && this.menu) {
-      this.adjustPlacement();
+    if (name === "position" && this.menu) {
+      this.adjustPosition();
     }
   }
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -107,7 +133,14 @@ class MuiDropdown extends HTMLElement {
 
           // click listener once
           if (!(btn as any)._dropdownListenerAdded) {
-            btn.addEventListener("click", () => this.menu?.classList.remove("show"));
+            btn.addEventListener("click", () => {
+              if (!this.suspendClose) {
+                this.menu?.classList.remove("show");
+                this.menu?.setAttribute("inert", "true");
+                if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
+                this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
+              }
+            });
             (btn as any)._dropdownListenerAdded = true;
           }
         });
@@ -130,6 +163,8 @@ class MuiDropdown extends HTMLElement {
 
     window.addEventListener("resize", this.handleResize);
     window.addEventListener("scroll", this.handleScroll, true); // capture scroll on parents
+
+    this.shadowRoot?.querySelector(".minimise")?.addEventListener("click", this.handleMinimise);
   }
 
   disconnectedCallback() {
@@ -179,7 +214,7 @@ class MuiDropdown extends HTMLElement {
       requestAnimationFrame(() => {
         this.menu?.classList.add("show");
         this.menu?.removeAttribute("inert"); // enable interaction
-        this.adjustPlacement();
+        this.adjustPosition();
       });
       MuiDropdown.openDropdown = this;
       this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: true }, bubbles: true }));
@@ -187,20 +222,20 @@ class MuiDropdown extends HTMLElement {
   }
 
   closeMenu(event: Event) {
-    if (!this.contains(event.target as Node)) {
-      this.closeWithAnimation();
-      this.menu?.setAttribute("inert", "true"); // restore inert when closing
-      if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
-      this.dispatchEvent(
-        new CustomEvent("dropdown-toggle", {
-          detail: { open: false },
-          bubbles: true,
-        })
-      );
-    }
+    const path = event.composedPath(); // array of nodes the event passes through
+
+    // If click was inside menu or button, ignore
+    if (this.menu && path.includes(this.menu)) return;
+    if (this.button && path.includes(this.button)) return;
+
+    // Otherwise, close
+    this.closeWithAnimation();
+    this.menu?.setAttribute("inert", "true");
+    if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
+    this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
   }
 
-  adjustPlacement() {
+  adjustPosition() {
     if (!this.menu) return;
 
     const menu = this.menu;
@@ -220,17 +255,17 @@ class MuiDropdown extends HTMLElement {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 
-    // ---- Vertical placement ----
+    // ---- Vertical position ----
     let top = hostRect.height + offsetY; // default below
     if (vh - hostRect.bottom < menuH + offsetY && hostRect.top > vh - hostRect.bottom) {
       top = -(menuH + offsetY); // place above if not enough space below
     }
 
-    // ---- Horizontal placement ----
+    // ---- Horizontal position ----
     let left = 0;
-    const placement = this.getAttribute("placement") || "left";
+    const position = this.getAttribute("position") || "left";
 
-    switch (placement) {
+    switch (position) {
       case "left":
         left = 0; // menu’s left edge aligns with host’s left edge
         break;
@@ -305,6 +340,30 @@ class MuiDropdown extends HTMLElement {
           flex-direction: column;
           gap: 1px;
         }
+
+        .minimise {
+          position: absolute;
+          top: -1.2rem;
+          right: -1.2rem;
+        }
+
+        .minimise::part(border-radius) {
+          border-radius: 2.4rem;
+          height: 2.4rem;
+          width: 2.4rem;
+          background: var(--surface-elevated-100);
+          border: var(--border-thin);
+        }
+
+        .minimise::part(border-radius)::after {
+          content: "";
+          position: absolute;
+          top: calc(-1 * var(--space-100));   /* expand hitbox upward */
+          left: calc(-1 * var(--space-100));  /* expand hitbox leftward */
+          right: calc(-1 * var(--space-100)); /* expand hitbox rightward */
+          bottom: calc(-1 * var(--space-100));/* expand hitbox downward */
+        }
+
       </style>
 
       <!-- Trigger button slot -->
@@ -312,6 +371,14 @@ class MuiDropdown extends HTMLElement {
 
       <!-- Dropdown options slot -->
       <div class="dropdown-menu">
+        ${
+          this.suspendClose
+            ? /*html*/ `
+            <mui-button variant="tertiary" class="minimise">
+              <mui-icon-close size="x-small"></mui-icon-close>
+            </mui-button>`
+            : ""
+        }
         <div class="inner">
           <slot></slot>
         </div>
