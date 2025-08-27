@@ -4,7 +4,24 @@ class MuiDropdown extends HTMLElement {
   private menu: HTMLElement | null = null;
   private handleKeyDown(event: KeyboardEvent) {
     if (event.key === "Escape") {
-      this.menu?.classList.remove("show");
+      if (!this.menu) return;
+
+      // Close menu visually
+      this.menu.classList.remove("show");
+
+      // Restore inert
+      this.menu.setAttribute("inert", "true");
+
+      // Clear open dropdown if needed
+      if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
+
+      // Fire event
+      this.dispatchEvent(
+        new CustomEvent("dropdown-toggle", {
+          detail: { open: false },
+          bubbles: true,
+        })
+      );
     }
   }
   private handleResize = () => {
@@ -16,6 +33,15 @@ class MuiDropdown extends HTMLElement {
   private handleScroll = () => {
     if (this.menu?.classList.contains("show")) {
       this.adjustPlacement();
+    }
+  };
+
+  private handleFocusOut = (event: FocusEvent) => {
+    if (!this.contains(event.relatedTarget as Node)) {
+      this.closeWithAnimation();
+      this.menu?.setAttribute("inert", "true");
+      if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
+      this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
     }
   };
 
@@ -46,6 +72,13 @@ class MuiDropdown extends HTMLElement {
     // Apply initial z-index from attribute or default
     const zIndex = this.getAttribute("zindex") || "1";
     if (this.menu) this.menu.style.zIndex = zIndex;
+
+    // INERT
+    if (this.menu) {
+      this.menu.setAttribute("inert", "true"); // inert by default
+    }
+
+    this.menu?.addEventListener("focusout", this.handleFocusOut);
 
     // Get the slotted trigger button
     const actionSlot = this.shadowRoot?.querySelector('slot[name="action"]') as HTMLSlotElement | null;
@@ -106,6 +139,8 @@ class MuiDropdown extends HTMLElement {
 
     window.removeEventListener("resize", this.handleResize);
     window.removeEventListener("scroll", this.handleScroll, true);
+
+    this.menu?.removeEventListener("focusout", this.handleFocusOut);
   }
 
   closeWithAnimation() {
@@ -136,12 +171,14 @@ class MuiDropdown extends HTMLElement {
 
     if (isOpen) {
       this.closeWithAnimation();
+      this.menu?.setAttribute("inert", "true"); // restore inert when closing
       if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
       this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
     } else {
       this.menu.style.display = "block"; // restore for transitions
       requestAnimationFrame(() => {
         this.menu?.classList.add("show");
+        this.menu?.removeAttribute("inert"); // enable interaction
         this.adjustPlacement();
       });
       MuiDropdown.openDropdown = this;
@@ -152,6 +189,7 @@ class MuiDropdown extends HTMLElement {
   closeMenu(event: Event) {
     if (!this.contains(event.target as Node)) {
       this.closeWithAnimation();
+      this.menu?.setAttribute("inert", "true"); // restore inert when closing
       if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
       this.dispatchEvent(
         new CustomEvent("dropdown-toggle", {
