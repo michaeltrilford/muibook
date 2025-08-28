@@ -3,7 +3,7 @@ import { getPartMap } from "../../utils/part-map";
 /* Mui Link */
 class MuiLink extends HTMLElement {
   static get observedAttributes() {
-    return ["target", "href", "variant", "weight", "size"];
+    return ["target", "href", "variant", "weight", "size", "download"];
   }
 
   constructor() {
@@ -37,6 +37,17 @@ class MuiLink extends HTMLElement {
       const anchor = this.shadowRoot.querySelector("a");
       if (anchor) {
         anchor.setAttribute("target", newValue || "_self");
+      }
+    }
+
+    if (name === "download") {
+      const anchor = this.shadowRoot.querySelector("a");
+      if (!anchor) return;
+
+      if (newValue !== null) {
+        anchor.setAttribute("download", newValue === "" ? "" : newValue);
+      } else {
+        anchor.removeAttribute("download");
       }
     }
   }
@@ -380,6 +391,7 @@ class MuiLink extends HTMLElement {
       part="${partMap}" 
       target="${this.getAttribute("target") || "_self"}" 
       href="${this.getAttribute("href") || "#"}"
+      ${this.hasAttribute("download") ? `download="${this.getAttribute("download") || ""}"` : ""}
       >
       <slot name="before"></slot>
       <slot></slot>

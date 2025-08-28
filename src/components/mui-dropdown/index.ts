@@ -30,16 +30,6 @@ class MuiDropdown extends HTMLElement {
     }
   };
 
-  private handleMinimise = () => {
-    if (!this.menu) return;
-
-    this.menu.classList.remove("show");
-    this.menu?.setAttribute("inert", "true");
-
-    if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
-    this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
-  };
-
   private handleScroll = () => {
     if (this.menu?.classList.contains("show")) {
       this.adjustPosition();
@@ -47,7 +37,7 @@ class MuiDropdown extends HTMLElement {
   };
 
   private handleFocusOut = (event: FocusEvent) => {
-    if (this.suspendClose) return; // skip closing if attribute is present
+    if (this.persistent) return; // skip closing if attribute is present
 
     if (!this.contains(event.relatedTarget as Node)) {
       this.closeWithAnimation();
@@ -58,23 +48,14 @@ class MuiDropdown extends HTMLElement {
   };
 
   static get observedAttributes() {
-    return ["zindex", "position", "suspend-close"];
+    return ["zindex", "position", "persistent"];
   }
 
-  get suspendClose() {
-    return this.hasAttribute("suspend-close");
+  get persistent() {
+    return this.hasAttribute("persistent");
   }
 
   attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null) {
-    if (name === "suspend-close" && this.menu) {
-      const minimiseBtn = this.shadowRoot?.querySelector(".minimise") as HTMLElement | null;
-
-      if (minimiseBtn) {
-        // Toggle visibility only, since the icon is passed in
-        minimiseBtn.style.display = this.suspendClose ? "block" : "none";
-      }
-    }
-
     if (name === "zindex" && this.menu) {
       this.menu.style.zIndex = newValue ?? "1";
     }
@@ -134,7 +115,7 @@ class MuiDropdown extends HTMLElement {
           // click listener once
           if (!(btn as any)._dropdownListenerAdded) {
             btn.addEventListener("click", () => {
-              if (!this.suspendClose) {
+              if (!this.persistent) {
                 this.menu?.classList.remove("show");
                 this.menu?.setAttribute("inert", "true");
                 if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
@@ -163,8 +144,6 @@ class MuiDropdown extends HTMLElement {
 
     window.addEventListener("resize", this.handleResize);
     window.addEventListener("scroll", this.handleScroll, true); // capture scroll on parents
-
-    this.shadowRoot?.querySelector(".minimise")?.addEventListener("click", this.handleMinimise);
   }
 
   disconnectedCallback() {
@@ -341,29 +320,6 @@ class MuiDropdown extends HTMLElement {
           gap: 1px;
         }
 
-        .minimise {
-          position: absolute;
-          top: -1.2rem;
-          right: -1.2rem;
-        }
-
-        .minimise::part(border-radius) {
-          border-radius: 2.4rem;
-          height: 2.4rem;
-          width: 2.4rem;
-          background: var(--surface-elevated-100);
-          border: var(--border-thin);
-        }
-
-        .minimise::part(border-radius)::after {
-          content: "";
-          position: absolute;
-          top: calc(-1 * var(--space-100));   /* expand hitbox upward */
-          left: calc(-1 * var(--space-100));  /* expand hitbox leftward */
-          right: calc(-1 * var(--space-100)); /* expand hitbox rightward */
-          bottom: calc(-1 * var(--space-100));/* expand hitbox downward */
-        }
-
       </style>
 
       <!-- Trigger button slot -->
@@ -371,14 +327,6 @@ class MuiDropdown extends HTMLElement {
 
       <!-- Dropdown options slot -->
       <div class="dropdown-menu">
-        ${
-          this.suspendClose
-            ? /*html*/ `
-            <mui-button variant="tertiary" class="minimise">
-              <mui-icon-close size="x-small"></mui-icon-close>
-            </mui-button>`
-            : ""
-        }
         <div class="inner">
           <slot></slot>
         </div>

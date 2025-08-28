@@ -1,5 +1,7 @@
 import VisaBlack from "../../../images/networks/visa-black.svg";
 import LogoPlaceholder from "../../../images/card/image-220.png";
+import Butter from "../../../images/mesh/buttercup.png";
+import Guides from "../../../images/mui/mui.svg";
 
 class storyDropdown extends HTMLElement {
   constructor() {
@@ -42,6 +44,13 @@ class storyDropdown extends HTMLElement {
         options: "left, right",
         default: "left",
         description: "Set the default position of the dropdown on the x-axis.",
+      },
+      {
+        name: "persistent",
+        type: "boolean",
+        options: "",
+        default: "",
+        description: "Allows the dropdown to remain open while interacting with its slotted contents.",
       },
     ];
 
@@ -192,18 +201,19 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Position: Center" description="The demo example below demonstrates how other elements can be used within the dropdown slot.">
+      <story-card title="Position: Center">
         <mui-v-stack slot="body" alignX="center">
           <mui-dropdown position="center">
             <mui-button slot="action" variant="secondary"><mui-icon-info></mui-icon-info></mui-button>
 
-            <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
+            <mui-v-stack space="var(--space-300)" style="padding: var(--space-300); width: 300px;">
               <mui-smart-card
-                type="Debit"
+                variant="animated"
                 number="1234"
+                type="Debit"
+                bg-image="${Butter}"
+                logo="${Guides}"
                 partner="${VisaBlack}"
-                logo="${LogoPlaceholder}"
-                variant="plain"
               >
               </mui-smart-card>
               </mui-v-stack>
@@ -217,15 +227,21 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Suspend-Close" description="The demo example below demonstrates how other elements can be used within the dropdown slot.">
+      <story-card 
+        title="Persistent" 
+        description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
+        usage="
+          Use the 'persistent' boolean so users can interact with the dropdown content without it closing.; 
+          For instance, users can input data, click buttons, or interact with other elements inside the dropdown while it remains open.;
+          This story demonstrates a card preview where you can upload an image as the card background.;
+          Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
-          <mui-dropdown position="center" suspend-close>
 
+          <mui-dropdown position="center" persistent data-file-preview="true">
             <mui-button slot="action" variant="secondary">
                 Card Artwork
                 <mui-icon-add slot="after" size="x-small"></mui-icon-add>
             </mui-button>
-
             <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
               <mui-smart-card
                 type="Debit"
@@ -240,12 +256,11 @@ class storyDropdown extends HTMLElement {
                 currentFileName="Upload Image"></mui-file-upload>
               </mui-v-stack>
           </mui-dropdown>
-          <mui-dropdown position="center" suspend-close>
 
+          <mui-dropdown position="center" persistent data-file-preview="true">
             <mui-button slot="action" variant="secondary">
               <mui-icon-add></mui-icon-add>
             </mui-button>
-
             <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
               <mui-smart-card
                 type="Debit"
@@ -270,15 +285,21 @@ class storyDropdown extends HTMLElement {
       </story-card>
 
       <story-card 
-        title="Advanced: Suspend-Close" 
-        description="Using logic to toggle the suspend-close attribute, users can keep the dropdown open after interacting with slotted items. Combined with the toggle component and button, this creates a unique interactive experience. When active, the default minimise (✕) icon is hidden."
-        usage="Users can interact with the content inside the dropdown while it stays open by using the suspend-close attribute.;Users can toggle auxiliary content with buttons (e.g., ➕ / ➖) without closing the dropdown.">
+        title="Advanced: Persistent" 
+        description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
+        usage="
+          Use the 'persistent' boolean so users can interact with the dropdown content without it closing.; 
+          For instance, users can input data, click buttons, or interact with other elements inside the dropdown while it remains open.;
+          This story demonstrates a card preview where you can upload an image as the card background.;
+          Utilising the mui-toggle with the mui-icon-x with logic allows you to add affordance for auxiliary content without closing the dropdown.;
+          Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
-          <mui-dropdown id="dropdown-2" position="center">
+
+          <mui-dropdown data-toggle-dropdown="example-1" data-file-preview="true" position="center">
 
             <mui-button slot="action" variant="secondary">
               Card Artwork
-              <mui-icon-toggle id="toggle-2" slot="after" rotate size="x-small">
+              <mui-icon-toggle data-toggle-control="example-1" slot="after" rotate size="x-small">
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
@@ -299,10 +320,10 @@ class storyDropdown extends HTMLElement {
               </mui-v-stack>
           </mui-dropdown>
 
- <mui-dropdown id="dropdown-1" position="center">
+          <mui-dropdown data-toggle-dropdown="example-2" data-file-preview="true" position="center">
 
             <mui-button slot="action" variant="secondary">
-              <mui-icon-toggle id="toggle-1" rotate>
+              <mui-icon-toggle data-toggle-control="example-2" rotate>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
@@ -340,7 +361,7 @@ class storyDropdown extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Dropdown (Beta)" 
+        title="Dropdown" 
         description="The dropdown has a trigger action and an overlay menu. The action can use any mui-button variant, while menu options follow a predefined style. The menu auto-positions to stay within the viewport."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dropdown/index.ts"
         guides="https://guides.muibook.com"
@@ -349,11 +370,11 @@ class storyDropdown extends HTMLElement {
       </story-template>
     `;
 
-    function bindDropdownToggle(dropdownId, toggleId) {
-      const dropdown = shadowRoot.getElementById(dropdownId);
-      const toggle = shadowRoot.getElementById(toggleId);
-
-      if (!dropdown || !toggle) return;
+    // === Dropdown toggle binding (existing) ===
+    shadowRoot.querySelectorAll("[data-toggle-dropdown]").forEach((dropdown) => {
+      const toggleId = dropdown.getAttribute("data-toggle-dropdown");
+      const toggle = shadowRoot.querySelector(`[data-toggle-control="${toggleId}"]`);
+      if (!toggle) return;
 
       dropdown.addEventListener("dropdown-toggle", (event) => {
         const open = event.detail.open;
@@ -362,14 +383,42 @@ class storyDropdown extends HTMLElement {
         toggle.toggle = open;
         toggle.setAttribute("aria-pressed", String(open));
 
-        // Toggle suspend-close dynamically
-        dropdown.toggleAttribute("suspend-close", open);
+        // Toggle persistent dynamically
+        dropdown.toggleAttribute("persistent", open);
       });
-    }
+    });
 
-    // Usage
-    bindDropdownToggle("dropdown-1", "toggle-1");
-    bindDropdownToggle("dropdown-2", "toggle-2");
+    // === NEW: File upload → smart card binding ===
+    shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) => {
+      let currentObjectURL = null;
+
+      const smartCard = dropdown.querySelector("mui-smart-card");
+
+      // Handle file upload
+      dropdown.addEventListener("file-upload", function(event) {
+        const file = event.detail.file;
+        if (!file) return;
+
+        if (currentObjectURL) URL.revokeObjectURL(currentObjectURL);
+        const objectURL = URL.createObjectURL(file);
+        currentObjectURL = objectURL;
+
+        const smartCard = dropdown.querySelector("mui-smart-card");
+        if (smartCard) smartCard.setAttribute("bg-image", objectURL);
+      });
+
+      // Handle reset: Use data-reset-image
+      const resetBtn = dropdown.querySelector("[data-reset-image]");
+      if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+          if (currentObjectURL) {
+            URL.revokeObjectURL(currentObjectURL);
+            currentObjectURL = null;
+          }
+          if (smartCard) smartCard.removeAttribute("bg-image");
+        });
+      }
+    });
   }
 }
 
