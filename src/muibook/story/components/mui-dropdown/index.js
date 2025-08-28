@@ -228,7 +228,7 @@ class storyDropdown extends HTMLElement {
       </story-card>
 
       <story-card 
-        title="Persistent" 
+        title="Persistent"
         description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
         usage="
           Use the 'persistent' boolean so users can interact with the dropdown content without it closing.; 
@@ -277,15 +277,76 @@ class storyDropdown extends HTMLElement {
           </mui-dropdown>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown position="center"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;...&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack&gt;...&lt;/mui-v-stack&gt;<br>
+          &lt;mui-dropdown persistent data-file-preview="true" position="center"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="after" size="x-small"&gt;&lt;/mui-icon-add&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="Debit"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number="1234"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partner="./images/networks/visa-black.svg"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo="./images/card/image-220.png"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant="plain"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-smart-card&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-upload acceptedFileTypes=".pdf,.jpg,.png" currentFileName="Upload Artwork"&gt;&lt;/mui-file-upload&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
           &lt;/mui-dropdown&gt;
+
+          <br><br><br>
+
+          &lt;mui-dropdown persistent data-file-preview="true" position="center"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="Debit"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number="1234"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partner="./images/networks/visa-black.svg"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo="./images/card/image-220.png"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant="plain"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-smart-card&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-upload acceptedFileTypes=".pdf,.jpg,.png" currentFileName="Upload Artwork"&gt;&lt;/mui-file-upload&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &lt;/mui-dropdown&gt;
+
+          <br><br><br>
+          
+          // File Upload Logic<br>
+          ///////////////////////////////////////////////////////////////////<br><br>
+          shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) =&gt; {<br>
+          &nbsp;&nbsp;let currentObjectURL = null;<br>
+          &nbsp;&nbsp;const smartCard = dropdown.querySelector("mui-smart-card");<br>
+          &nbsp;&nbsp;// Handle file upload<br>
+          &nbsp;&nbsp;dropdown.addEventListener("file-upload", function(event) {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const file = event.detail.file;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if (!file) return;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if (currentObjectURL) URL.revokeObjectURL(currentObjectURL);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const objectURL = URL.createObjectURL(file);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;currentObjectURL = objectURL;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const smartCard = dropdown.querySelector("mui-smart-card");<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if (smartCard) smartCard.setAttribute("bg-image", objectURL);<br>
+          &nbsp;&nbsp;
+          &nbsp;&nbsp;// Handle reset: Use data-reset-image<br>
+          &nbsp;&nbsp;const resetBtn = dropdown.querySelector("[data-reset-image]");<br>
+          &nbsp;&nbsp;if (resetBtn) {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;resetBtn.addEventListener("click", () =&gt; {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (currentObjectURL) {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL.revokeObjectURL(currentObjectURL);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentObjectURL = null;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (smartCard) smartCard.removeAttribute("bg-image");<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;});<br>
+          &nbsp;&nbsp;}<br>
+          });<br>
+
         </story-code-block>
       </story-card>
 
       <story-card 
-        title="Advanced: Persistent" 
+        title="Advanced: Persistent"
         description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
         usage="
           Use the 'persistent' boolean so users can interact with the dropdown content without it closing.; 
@@ -295,11 +356,11 @@ class storyDropdown extends HTMLElement {
           Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
 
-          <mui-dropdown data-toggle-dropdown="example-1" data-file-preview="true" position="center">
+          <mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center">
 
             <mui-button slot="action" variant="secondary">
               Card Artwork
-              <mui-icon-toggle data-toggle-control="example-1" slot="after" rotate size="x-small">
+              <mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate size="x-small">
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
@@ -320,10 +381,10 @@ class storyDropdown extends HTMLElement {
               </mui-v-stack>
           </mui-dropdown>
 
-          <mui-dropdown data-toggle-dropdown="example-2" data-file-preview="true" position="center">
+          <mui-dropdown data-toggle-dropdown="hook-2" data-file-preview="true" position="center">
 
             <mui-button slot="action" variant="secondary">
-              <mui-icon-toggle data-toggle-control="example-2" rotate>
+              <mui-icon-toggle data-toggle-control="hook-2" rotate>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
@@ -346,15 +407,96 @@ class storyDropdown extends HTMLElement {
 
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown position="center"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;...&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack&gt;...&lt;/mui-v-stack&gt;<br>
+          &lt;mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate size="x-small"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="Debit"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number="1234"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partner="./images/networks/visa-black.svg"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo="./images/card/image-220.png"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant="plain"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-smart-card&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-upload acceptedFileTypes=".pdf,.jpg,.png" currentFileName="Upload Artwork"&gt;&lt;/mui-file-upload&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
           &lt;/mui-dropdown&gt;
+
+          <br><br><br>
+
+          &lt;mui-dropdown data-toggle-dropdown="hook-2" data-file-preview="true" position="center"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control="hook-2" rotate&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="Debit"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number="1234"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partner="./images/networks/visa-black.svg"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo="./images/card/image-220.png"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant="plain"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-smart-card&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-upload acceptedFileTypes=".pdf,.jpg,.png" currentFileName="Upload Artwork"&gt;&lt;/mui-file-upload&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &lt;/mui-dropdown&gt;
+
+          <br><br><br>
+
+          // Persistent Toggle Logic<br>
+          ///////////////////////////////////////////////////////////////////<br><br>
+          shadowRoot.querySelectorAll("[data-toggle-dropdown]").forEach((dropdown) =&gt; {<br>
+          &nbsp;&nbsp;const toggleId = dropdown.getAttribute("data-toggle-dropdown");<br>
+          &nbsp;&nbsp;const toggle = shadowRoot.querySelector(&#96;[data-toggle-control="\${toggleId}"]&#96;);<br>
+          &nbsp;&nbsp;if (!toggle) return;<br>
+          &nbsp;&nbsp;dropdown.addEventListener("dropdown-toggle", (event) =&gt; {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const open = event.detail.open;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;// Toggle the icon + ARIA state<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;toggle.toggle = open;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;toggle.setAttribute("aria-pressed", String(open));<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;// Toggle persistent dynamically<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;dropdown.toggleAttribute("persistent", open);<br>
+          &nbsp;&nbsp;});
+
+          <br><br><br>
+          
+          // File Upload Logic<br>
+          ///////////////////////////////////////////////////////////////////<br><br>
+          shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) =&gt; {<br>
+          &nbsp;&nbsp;let currentObjectURL = null;<br>
+          &nbsp;&nbsp;const smartCard = dropdown.querySelector("mui-smart-card");<br>
+          &nbsp;&nbsp;// Handle file upload<br>
+          &nbsp;&nbsp;dropdown.addEventListener("file-upload", function(event) {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const file = event.detail.file;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if (!file) return;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if (currentObjectURL) URL.revokeObjectURL(currentObjectURL);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const objectURL = URL.createObjectURL(file);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;currentObjectURL = objectURL;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const smartCard = dropdown.querySelector("mui-smart-card");<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if (smartCard) smartCard.setAttribute("bg-image", objectURL);<br>
+          &nbsp;&nbsp;
+          &nbsp;&nbsp;// Handle reset: Use data-reset-image<br>
+          &nbsp;&nbsp;const resetBtn = dropdown.querySelector("[data-reset-image]");<br>
+          &nbsp;&nbsp;if (resetBtn) {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;resetBtn.addEventListener("click", () =&gt; {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (currentObjectURL) {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL.revokeObjectURL(currentObjectURL);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentObjectURL = null;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (smartCard) smartCard.removeAttribute("bg-image");<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;});<br>
+          &nbsp;&nbsp;}<br>
+          });<br>
+
         </story-code-block>
       </story-card>
-
-
-
     `;
 
     shadowRoot.innerHTML = /*html*/ `
@@ -370,7 +512,7 @@ class storyDropdown extends HTMLElement {
       </story-template>
     `;
 
-    // === Dropdown toggle binding (existing) ===
+    // === Persistent Toggle Logic ===
     shadowRoot.querySelectorAll("[data-toggle-dropdown]").forEach((dropdown) => {
       const toggleId = dropdown.getAttribute("data-toggle-dropdown");
       const toggle = shadowRoot.querySelector(`[data-toggle-control="${toggleId}"]`);
@@ -388,7 +530,7 @@ class storyDropdown extends HTMLElement {
       });
     });
 
-    // === NEW: File upload → smart card binding ===
+    // === File Upload Logic ===
     shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) => {
       let currentObjectURL = null;
 
