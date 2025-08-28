@@ -455,7 +455,7 @@ class storyDropdown extends HTMLElement {
           shadowRoot.querySelectorAll("[data-toggle-dropdown]").forEach((dropdown) =&gt; {<br>
           &nbsp;&nbsp;const toggleId = dropdown.getAttribute("data-toggle-dropdown");<br>
           &nbsp;&nbsp;const toggle = shadowRoot.querySelector(&#96;[data-toggle-control="\${toggleId}"]&#96;);<br>
-          &nbsp;&nbsp;if (!toggle) return;<br>
+          &nbsp;&nbsp;if (!toggle) return;<br><br>
           &nbsp;&nbsp;dropdown.addEventListener("dropdown-toggle", (event) =&gt; {<br>
           &nbsp;&nbsp;&nbsp;&nbsp;const open = event.detail.open;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;// Toggle the icon + ARIA state<br>
@@ -463,6 +463,16 @@ class storyDropdown extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;toggle.setAttribute("aria-pressed", String(open));<br>
           &nbsp;&nbsp;&nbsp;&nbsp;// Toggle persistent dynamically<br>
           &nbsp;&nbsp;&nbsp;&nbsp;dropdown.toggleAttribute("persistent", open);<br>
+          &nbsp;&nbsp;});<br><br>
+
+          &nbsp;&nbsp;dropdown.addEventListener("focusout", function(event) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;var relatedTarget = event.relatedTarget;<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;// Ignore if focus is still within the dropdown<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if (relatedTarget && dropdown.contains(relatedTarget)) return;<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;// Otherwise, focus has moved outside<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;toggle.toggle = false;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;toggle.setAttribute("aria-pressed", "false");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;dropdown.removeAttribute("persistent"); // or close your menu here<br>
           &nbsp;&nbsp;});
 
           <br><br><br>
@@ -527,6 +537,18 @@ class storyDropdown extends HTMLElement {
 
         // Toggle persistent dynamically
         dropdown.toggleAttribute("persistent", open);
+      });
+
+      dropdown.addEventListener("focusout", function(event) {
+        var relatedTarget = event.relatedTarget;
+
+        // Ignore if focus is still within the dropdown
+        if (relatedTarget && dropdown.contains(relatedTarget)) return;
+
+        // Otherwise, focus has moved outside
+        toggle.toggle = false;
+        toggle.setAttribute("aria-pressed", "false");
+        dropdown.removeAttribute("persistent"); // or close your menu here
       });
     });
 
