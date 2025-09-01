@@ -139,8 +139,8 @@ class storyLoader extends HTMLElement {
         
       </story-card>
 
-      <story-card title="Translate" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
-        <mui-loader data-loading loading animation="translate" slot="body">
+      <story-card title="Translate: Up" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+        <mui-loader data-loading loading animation="translate" slot="body" direction="up">
           <mui-button>Option two</mui-button>
         </mui-loader>
 
@@ -149,13 +149,63 @@ class storyLoader extends HTMLElement {
         </mui-h-stack>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-loader loading animation="translate"&gt;<br>
+          &lt;mui-loader loading animation="translate" direction="up"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Action&lt;/mui-button&gt;<br>
           &lt;/mui-loader&gt;
         </story-code-block>
       </story-card>
 
-      <story-card title="Duration" description="2s animation duration">
+      <story-card title="Translate: Down" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+        <mui-loader data-loading loading animation="translate" slot="body" direction="down">
+          <mui-button>Option two</mui-button>
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Refresh Story</mui-button>
+        </mui-h-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation="translate" direction="down"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;Action&lt;/mui-button&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+      </story-card>
+
+
+      <story-card title="Translate: Left" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+        <mui-loader data-loading loading animation="translate" slot="body" direction="left">
+          <mui-button>Option two</mui-button>
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Refresh Story</mui-button>
+        </mui-h-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation="translate" direction="left"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;Action&lt;/mui-button&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+      </story-card>
+
+
+      <story-card title="Translate: Right" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+        <mui-loader data-loading loading animation="translate" slot="body" direction="right">
+          <mui-button>Option two</mui-button>
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Refresh Story</mui-button>
+        </mui-h-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation="translate" direction="right"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;Action&lt;/mui-button&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Duration" description="10s animation duration">
         <mui-loader data-loading loading animation="translate" duration="2s" slot="body">
           <mui-button>Option two</mui-button>
         </mui-loader>
@@ -165,7 +215,7 @@ class storyLoader extends HTMLElement {
         </mui-h-stack>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-loader loading animation="translate" duration="2s"&gt;<br>
+          &lt;mui-loader loading animation="translate" duration="10s"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Action&lt;/mui-button&gt;<br>
           &lt;/mui-loader&gt;
         </story-code-block>
