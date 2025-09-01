@@ -71,7 +71,7 @@ export * from "./components/mui-card/header";
 export * from "./components/mui-card/body";
 export * from "./components/mui-card/footer";
 export * from "./components/mui-chip";
-export * from "./components/mui-loading";
+export * from "./components/mui-loader";
 
 // Feedback
 export * from "./components/mui-alert";

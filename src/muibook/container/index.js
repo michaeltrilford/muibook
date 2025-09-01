@@ -73,7 +73,7 @@ export class AppContainer extends HTMLElement {
       "/button": "story-button",
       "/dropdown": "story-dropdown",
       "/responsive": "story-responsive",
-      "/loading": "story-loading",
+      "/loader": "story-loader",
       "/stack": "story-stack",
       "/grid": "story-grid",
       "/card": "story-cards",
@@ -134,7 +134,7 @@ export class AppContainer extends HTMLElement {
 
       "story-button": () => import("../story/components/mui-button"),
       "story-dropdown": () => import("../story/components/mui-dropdown"),
-      "story-loading": () => import("../story/components/mui-loading"),
+      "story-loader": () => import("../story/components/mui-loader"),
       "story-link": () => import("../story/components/mui-link"),
       "story-icon": () => import("../story/components/mui-icons"),
       "story-image": () => import("../story/components/mui-image"),

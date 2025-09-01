@@ -1,4 +1,4 @@
-class storyLoading extends HTMLElement {
+class storyLoader extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
@@ -91,7 +91,7 @@ class storyLoading extends HTMLElement {
     const stories = /*html*/ `
       <spec-card title="Import">
         <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-loading";<br>
+          import "@muibook/components/mui-loader";<br>
         </mui-code>
       </spec-card>
 
@@ -107,46 +107,67 @@ class storyLoading extends HTMLElement {
       </props-card>
 
       <story-card title="Pulsate">
-        <mui-loading loading animation="pulsate" slot="body">
+        <mui-loader data-loading loading animation="pulsate" slot="body">
           <mui-button>Option two</mui-button>
-        </mui-loading>
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Refresh Story</mui-button>
+        </mui-h-stack>
+
         <story-code-block slot="footer" scrollable>
-          &lt;mui-loading loading animation="pulsate"&gt;<br>
+          &lt;mui-loader loading animation="pulsate"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Action&lt;/mui-button&gt;<br>
-          &lt;/mui-loading&gt;
+          &lt;/mui-loader&gt;
         </story-code-block>
       </story-card>
 
       <story-card title="Fade-In">
-        <mui-loading loading animation="fade-in" slot="body">
+        <mui-loader data-loading loading animation="fade-in" slot="body">
           <mui-button>Option two</mui-button>
-        </mui-loading>
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Refresh Story</mui-button>
+        </mui-h-stack>
+
         <story-code-block slot="footer" scrollable>
-          &lt;mui-loading loading animation="fade-in"&gt;<br>
+          &lt;mui-loader loading animation="fade-in"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Action&lt;/mui-button&gt;<br>
-          &lt;/mui-loading&gt;
+          &lt;/mui-loader&gt;
         </story-code-block>
+        
       </story-card>
 
       <story-card title="Translate" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
-        <mui-loading loading animation="translate" slot="body">
+        <mui-loader data-loading loading animation="translate" slot="body">
           <mui-button>Option two</mui-button>
-        </mui-loading>
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Refresh Story</mui-button>
+        </mui-h-stack>
+
         <story-code-block slot="footer" scrollable>
-          &lt;mui-loading loading animation="translate"&gt;<br>
+          &lt;mui-loader loading animation="translate"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Action&lt;/mui-button&gt;<br>
-          &lt;/mui-loading&gt;
+          &lt;/mui-loader&gt;
         </story-code-block>
       </story-card>
 
       <story-card title="Duration" description="2s animation duration">
-        <mui-loading loading animation="translate" duration="2s" slot="body">
+        <mui-loader data-loading loading animation="translate" duration="2s" slot="body">
           <mui-button>Option two</mui-button>
-        </mui-loading>
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Refresh Story</mui-button>
+        </mui-h-stack>
+
         <story-code-block slot="footer" scrollable>
-          &lt;mui-loading loading animation="translate" duration="2s"&gt;<br>
+          &lt;mui-loader loading animation="translate" duration="2s"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Action&lt;/mui-button&gt;<br>
-          &lt;/mui-loading&gt;
+          &lt;/mui-loader&gt;
         </story-code-block>
       </story-card>
 
@@ -156,15 +177,33 @@ class storyLoading extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Loading (Beta)" 
-        description="This component provides seamless loading animations for initial page loads or skeleton-style experiences. Wrap your UI with Mui-Loading to manage initial loading states or page transitions."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loading/index.ts"
+        title="Loader" 
+        description="This component provides seamless loading animations for initial page loads or skeleton-style experiences. Wrap your UI with Mui-Loader to manage initial loading states or page transitions."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts"
         guides="https://guides.muibook.com"
       >
         ${stories}
       </story-template>
     `;
+
+    // --- generic restart logic ---
+    function restartAnimation(el) {
+      if (!el) return;
+      el.removeAttribute("loading");
+      requestAnimationFrame(() => {
+        el.setAttribute("loading", "");
+      });
+    }
+
+    // Find ALL restart buttons and hook them to their nearest <mui-loader>
+    shadowRoot.querySelectorAll("[data-restart]").forEach((btn) => {
+      const card = btn.closest("story-card");
+      const loadingEl = card?.querySelector("[data-loading]");
+      if (loadingEl) {
+        btn.addEventListener("click", () => restartAnimation(loadingEl));
+      }
+    });
   }
 }
 
-customElements.define("story-loading", storyLoading);
+customElements.define("story-loader", storyLoader);

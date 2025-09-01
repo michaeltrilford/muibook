@@ -93,7 +93,7 @@ export default defineConfig({
         "components/mui-list/item": path.resolve(__dirname, "src/components/mui-list/item"),
         "components/mui-list/list": path.resolve(__dirname, "src/components/mui-list/list"),
         // LOADING
-        "components/mui-loading": path.resolve(__dirname, "src/components/mui-loading"),
+        "components/mui-loader": path.resolve(__dirname, "src/components/mui-loader"),
         // Message
         "components/mui-message": path.resolve(__dirname, "src/components/mui-message"),
         // QUOTE

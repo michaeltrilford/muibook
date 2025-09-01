@@ -88,7 +88,7 @@ import "../components/mui-list/list";
 import "../components/mui-list/item";
 import "../components/mui-input";
 import "../components/mui-checkbox";
-import "../components/mui-loading";
+import "../components/mui-loader";
 
 // Muibook Components
 import "./container";

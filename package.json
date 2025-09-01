@@ -368,9 +368,9 @@
       "import": "./dist/esm/components/mui-tabs/tab-bar/index.js",
       "types": "./dist/types/components/mui-tabs/tab-bar/index.d.ts"
     },
-    "./mui-loading": {
-      "import": "./dist/esm/components/mui-loading/index.js",
-      "types": "./dist/types/components/mui-loading/index.d.ts"
+    "./mui-loader": {
+      "import": "./dist/esm/components/mui-loader/index.js",
+      "types": "./dist/types/components/mui-loader/index.d.ts"
     },
     ".": {
       "import": "./dist/esm/index.js",

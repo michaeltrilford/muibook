@@ -1,4 +1,4 @@
-class MuiLoading extends HTMLElement {
+class MuiLoader extends HTMLElement {
   static get observedAttributes() {
     return ["loading", "animation", "direction", "duration"];
   }
@@ -105,6 +105,6 @@ class MuiLoading extends HTMLElement {
   }
 }
 
-if (!customElements.get("mui-loading")) {
-  customElements.define("mui-loading", MuiLoading);
+if (!customElements.get("mui-loader")) {
+  customElements.define("mui-loader", MuiLoader);
 }
