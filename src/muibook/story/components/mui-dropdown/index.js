@@ -236,7 +236,6 @@ class storyDropdown extends HTMLElement {
           This story demonstrates a card preview where you can upload an image as the card background.;
           Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
-
           <mui-dropdown position="center" persistent data-file-preview="true">
             <mui-button slot="action" variant="secondary">
                 Card Artwork
@@ -256,49 +255,12 @@ class storyDropdown extends HTMLElement {
                 currentFileName="Upload Image"></mui-file-upload>
               </mui-v-stack>
           </mui-dropdown>
-
-          <mui-dropdown position="center" persistent data-file-preview="true">
-            <mui-button slot="action" variant="secondary">
-              <mui-icon-add></mui-icon-add>
-            </mui-button>
-            <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
-              <mui-smart-card
-                type="Debit"
-                number="1234"
-                partner="${VisaBlack}"
-                logo="${LogoPlaceholder}"
-                variant="plain"
-              >
-              </mui-smart-card>
-              <mui-file-upload
-                acceptedFileTypes=".pdf,.jpg,.png"
-                currentFileName="Upload Artwork"></mui-file-upload>
-              </mui-v-stack>
-          </mui-dropdown>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-dropdown persistent data-file-preview="true" position="center"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="after" size="x-small"&gt;&lt;/mui-icon-add&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="Debit"<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number="1234"<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partner="./images/networks/visa-black.svg"<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo="./images/card/image-220.png"<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant="plain"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-smart-card&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-upload acceptedFileTypes=".pdf,.jpg,.png" currentFileName="Upload Artwork"&gt;&lt;/mui-file-upload&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &lt;/mui-dropdown&gt;
-
-          <br><br><br>
-
-          &lt;mui-dropdown persistent data-file-preview="true" position="center"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add&gt;&lt;/mui-icon-add&gt;<br>
           &nbsp;&nbsp;&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
@@ -360,7 +322,6 @@ class storyDropdown extends HTMLElement {
         <mui-h-stack slot="body" alignX="center" space="80px">
 
           <mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center">
-
             <mui-button slot="action" variant="secondary">
               Card Artwork
               <mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate size="x-small">
@@ -368,7 +329,6 @@ class storyDropdown extends HTMLElement {
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
             </mui-button>
-
             <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
               <mui-smart-card
                 type="Debit"
@@ -384,57 +344,12 @@ class storyDropdown extends HTMLElement {
               </mui-v-stack>
           </mui-dropdown>
 
-          <mui-dropdown data-toggle-dropdown="hook-2" data-file-preview="true" position="center">
-
-            <mui-button slot="action" variant="secondary">
-              <mui-icon-toggle data-toggle-control="hook-2" rotate>
-                <mui-icon-add slot="start"></mui-icon-add>
-                <mui-icon-subtract slot="end"></mui-icon-subtract>
-              </mui-icon-toggle>
-            </mui-button>
-
-            <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
-              <mui-smart-card
-                type="Debit"
-                number="1234"
-                partner="${VisaBlack}"
-                logo="${LogoPlaceholder}"
-                variant="plain"
-              >
-              </mui-smart-card>
-              <mui-file-upload
-                acceptedFileTypes=".pdf,.jpg,.png"
-                currentFileName="Upload Artwork"></mui-file-upload>
-              </mui-v-stack>
-          </mui-dropdown>
-
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate size="x-small"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="Debit"<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number="1234"<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partner="./images/networks/visa-black.svg"<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logo="./images/card/image-220.png"<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant="plain"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-smart-card&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-upload acceptedFileTypes=".pdf,.jpg,.png" currentFileName="Upload Artwork"&gt;&lt;/mui-file-upload&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &lt;/mui-dropdown&gt;
-
-          <br><br><br>
-
-          &lt;mui-dropdown data-toggle-dropdown="hook-2" data-file-preview="true" position="center"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control="hook-2" rotate&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br>
