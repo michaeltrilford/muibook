@@ -96,9 +96,18 @@ class MuiLoader extends HTMLElement {
         .loadingFullHeight {
           height: 100vh;
         }
+
+        @media (prefers-reduced-motion: reduce) {
+          .fade-in, .pulsate, .translate-up, .translate-down, .translate-left, .translate-right {
+            animation: none !important;
+          }
+        }
       </style>
 
-      <div class="${loading ? animationClass : ""}">
+      <div class="${loading ? animationClass : ""}"   role="status" aria-busy="${loading}">
+        <span style="position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;">
+          Loading...
+        </span>
         <slot></slot>
       </div>
     `;

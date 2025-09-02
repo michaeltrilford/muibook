@@ -105,7 +105,7 @@ class storyLoader extends HTMLElement {
         <!-- Actions -->
         <mui-button-group>
           <div style="height: 40px; width: 100%; max-width: 120px; border: var(--border-thin); border-color: transparent; background: var(--surface-elevated-100); border-radius: var(--action-radius);"></div>
-          <div style="height: 40px; width: 100%; max-width: 120px; border: var(--border-thin); border-radius: var(--action-radius);"></div>
+          <div style="height: 40px; width: 100%; max-width: 120px; border: var(--border-thin); border-color: var(--surface-elevated-100); border-radius: var(--action-radius);"></div>
         </mui-button-group>
       </mui-v-stack>
     `;
@@ -354,6 +354,13 @@ class storyLoader extends HTMLElement {
         description="This component provides seamless loading animations for initial page loads or skeleton-style experiences. Wrap your UI with Mui-Loader to manage initial loading states or page transitions."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts"
         guides="https://guides.muibook.com"
+        accessibility="
+          The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.;
+          aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.;
+          A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.;
+          The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.;
+          No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.
+        "
       >
         ${stories}
       </story-template>
