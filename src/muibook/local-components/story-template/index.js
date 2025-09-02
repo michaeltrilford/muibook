@@ -79,8 +79,8 @@ class StoryTemplate extends HTMLElement {
     const demoContent = demoLink
       ? /*html*/ `
         <mui-responsive breakpoint="1000">
-          <mui-link target="_blank" href="${demoLink}" rel="noopener" variant="secondary">Demo<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
-          <mui-link target="_blank" href="${demoLink}" rel="noopener" variant="secondary"><mui-icon-globe></mui-icon-globe></mui-link>
+          <mui-link slot="showAbove" target="_blank" href="${demoLink}" rel="noopener" variant="secondary">Demo<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${demoLink}" rel="noopener" variant="secondary"><mui-icon-globe></mui-icon-globe></mui-link>
         </mui-responsive>      
       `
       : "";
@@ -89,8 +89,8 @@ class StoryTemplate extends HTMLElement {
     const websiteContent = websiteLink
       ? /*html*/ `
         <mui-responsive breakpoint="1000">
-          <mui-link target="_blank" href="${websiteLink}" rel="noopener" variant="secondary">Try Now<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
-          <mui-link target="_blank" href="${websiteLink}" rel="noopener" variant="secondary"><mui-icon-globe></mui-icon-globe></mui-link>
+          <mui-link slot="showAbove" target="_blank" href="${websiteLink}" rel="noopener" variant="secondary">Try Now<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${websiteLink}" rel="noopener" variant="secondary"><mui-icon-globe></mui-icon-globe></mui-link>
         </mui-responsive>
       `
       : "";
