@@ -152,6 +152,10 @@
       "import": "./dist/esm/components/mui-icons/close/index.js",
       "types": "./dist/types/components/mui-icons/close/index.d.ts"
     },
+    "./mui-icons/calendar": {
+      "import": "./dist/esm/components/mui-icons/calendar/index.js",
+      "types": "./dist/types/components/mui-icons/calendar/index.d.ts"
+    },
     "./mui-icons/down-chevron": {
       "import": "./dist/esm/components/mui-icons/down-chevron/index.js",
       "types": "./dist/types/components/mui-icons/down-chevron/index.d.ts"

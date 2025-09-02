@@ -16,6 +16,7 @@ import "../components/mui-icons/add";
 import "../components/mui-icons/attention";
 import "../components/mui-icons/check";
 import "../components/mui-icons/close";
+import "../components/mui-icons/calendar";
 import "../components/mui-icons/down-chevron";
 import "../components/mui-icons/globe";
 import "../components/mui-icons/grid";

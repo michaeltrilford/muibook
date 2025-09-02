@@ -54,6 +54,7 @@ export default defineConfig({
         "components/mui-icons/add": path.resolve(__dirname, "src/components/mui-icons/add.ts"),
         "components/mui-icons/check": path.resolve(__dirname, "src/components/mui-icons/check.ts"),
         "components/mui-icons/close": path.resolve(__dirname, "src/components/mui-icons/close.ts"),
+        "components/mui-icons/calendar": path.resolve(__dirname, "src/components/mui-icons/calendar.ts"),
         "components/mui-icons/down-chevron": path.resolve(__dirname, "src/components/mui-icons/down-chevron.ts"),
         "components/mui-icons/globe": path.resolve(__dirname, "src/components/mui-icons/globe.ts"),
         "components/mui-icons/grid": path.resolve(__dirname, "src/components/mui-icons/grid.ts"),

@@ -255,6 +255,11 @@ class storyIcon extends HTMLElement {
           </story-icon-grid>
 
           <story-icon-grid center>              
+            <mui-icon-calendar slot="body"></mui-icon-calendar>
+            <mui-code slot="footer" scrollable>mui-icon-calendar</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>              
             <mui-icon-up-chevron slot="body"></mui-icon-up-chevron>
             <mui-code slot="footer" scrollable>mui-icon-up-chevron</mui-code>
           </story-icon-grid>

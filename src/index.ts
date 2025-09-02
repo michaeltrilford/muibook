@@ -35,6 +35,7 @@ export * from "./components/mui-icons/add";
 export * from "./components/mui-icons/attention";
 export * from "./components/mui-icons/check";
 export * from "./components/mui-icons/close";
+export * from "./components/mui-icons/calendar";
 export * from "./components/mui-icons/down-chevron";
 export * from "./components/mui-icons/globe";
 export * from "./components/mui-icons/grid";
