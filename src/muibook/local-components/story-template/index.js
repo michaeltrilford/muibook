@@ -77,12 +77,22 @@ class StoryTemplate extends HTMLElement {
 
     const demoLink = this.getAttribute("demo");
     const demoContent = demoLink
-      ? /*html*/ `<mui-link target="_blank" href="${demoLink}" rel="noopener" variant="secondary">Demo<mui-icon-globe slot="after"></mui-icon-globe></mui-link>`
+      ? /*html*/ `
+        <mui-responsive breakpoint="1000">
+          <mui-link target="_blank" href="${demoLink}" rel="noopener" variant="secondary">Demo<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
+          <mui-link target="_blank" href="${demoLink}" rel="noopener" variant="secondary"><mui-icon-globe></mui-icon-globe></mui-link>
+        </mui-responsive>      
+      `
       : "";
 
     const websiteLink = this.getAttribute("website");
     const websiteContent = websiteLink
-      ? /*html*/ `<mui-link target="_blank" href="${websiteLink}" rel="noopener" variant="secondary">Try Now<mui-icon-globe slot="after"></mui-icon-globe></mui-link>`
+      ? /*html*/ `
+        <mui-responsive breakpoint="1000">
+          <mui-link target="_blank" href="${websiteLink}" rel="noopener" variant="secondary">Try Now<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
+          <mui-link target="_blank" href="${websiteLink}" rel="noopener" variant="secondary"><mui-icon-globe></mui-icon-globe></mui-link>
+        </mui-responsive>
+      `
       : "";
 
     const githubLink = this.getAttribute("github");
