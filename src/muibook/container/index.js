@@ -47,6 +47,8 @@ export class AppContainer extends HTMLElement {
       "/muikit": "muikit-page",
       "/keywords": "agent-keywords-page",
       "/prompts": "agent-prompts-page",
+      "/showcase": "showcase-page",
+      "/npm": "npm-page",
 
       "/brand-design-tokens": "tokens-brand",
       "/semantic-design-tokens": "tokens-semantic",
@@ -117,6 +119,8 @@ export class AppContainer extends HTMLElement {
       "muikit-page": () => import("../pages/muikit/index.js"),
       "agent-keywords-page": () => import("../pages/agent-keywords/index.js"),
       "agent-prompts-page": () => import("../pages/agent-prompts/index.js"),
+      "showcase-page": () => import("../pages/showcase/index.js"),
+      "npm-page": () => import("../pages/packages/index.js"),
 
       "tokens-brand": () => import("../story/tokens/brand.js"),
       "tokens-semantic": () => import("../story/tokens/semantic.js"),

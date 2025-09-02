@@ -99,6 +99,7 @@ class appNavbar extends HTMLElement {
       <app-navbar-group id="resources" groupname="Resources">
         <mui-body class="first" weight="bold">Get Started</mui-body>
         <app-navbar-link link="#/create-mui-app" title="Create App"></app-navbar-link>
+        <app-navbar-link link="#/npm" title="NPM Package"></app-navbar-link>
         <mui-body weight="bold">Design</mui-body>
         <app-navbar-link link="#/design-guidelines" title="UX Guidelines"></app-navbar-link>
         <app-navbar-link link="#/muikit" title="Mui Kit"></app-navbar-link>
@@ -112,6 +113,8 @@ class appNavbar extends HTMLElement {
         <mui-body weight="bold">AI Agent</mui-body>
         <app-navbar-link link="#/keywords" title="Keywords"></app-navbar-link>
         <app-navbar-link link="#/prompts" title="Prompts"></app-navbar-link>
+        <mui-body weight="bold">Showcase</mui-body>
+        <app-navbar-link link="#/showcase" title="Projects"></app-navbar-link>        
       </app-navbar-group>
     `;
 
