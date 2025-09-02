@@ -33,8 +33,8 @@ class NpmPage extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="NPM Packages"
-        description="The available packages for MUI and how to use them"
+        title="NPM Package"
+        description="The available package for MUI and how to use them"
       >
 
         <page-card>
