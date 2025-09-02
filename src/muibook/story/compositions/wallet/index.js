@@ -195,14 +195,14 @@ class compWallet extends HTMLElement {
 
             <mui-slat variant="row" style="grid-template-columns: 2fr auto;">
               <mui-v-stack slot="start" space="0">
-                <mui-body size="medium" weight="bold">Background Artwork</mui-body>
+                <mui-body size="medium" weight="bold">Artwork</mui-body>
                 <mui-body size="small" data-preferred-size>Preferred size: 395×248</mui-body>
                 <mui-body size="small" data-file-name style="display: none;"></mui-body>
               </mui-v-stack>
               <mui-h-stack space="0" slot="end" alignX="end">
                 <mui-button data-background-reset variant="tertiary" style="display: none;">Reset</mui-button>
                 <mui-dropdown data-toggle-dropdown="background" data-file-preview="true" position="center">
-                  <mui-button slot="action" variant="tertiary">
+                  <mui-button slot="action" variant="secondary">
                     <mui-icon-toggle data-toggle-control="background" rotate>
                       <mui-icon-add slot="start"></mui-icon-add>
                       <mui-icon-subtract slot="end"></mui-icon-subtract>
@@ -247,14 +247,14 @@ class compWallet extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-slat-group data-group=&quot;card-artwork&quot;&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant=&quot;row&quot; style=&quot;grid-template-columns: 2fr auto;&quot;&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;medium&quot; weight=&quot;bold&quot;&gt;Background Artwork&lt;/mui-body&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;medium&quot; weight=&quot;bold&quot;&gt;Artwork&lt;/mui-body&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; data-preferred-size&gt;Preferred size: 395×248&lt;/mui-body&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; data-file-name style=&quot;display: none;&quot;&gt;&lt;/mui-body&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-background-reset variant=&quot;tertiary&quot; style=&quot;display: none;&quot;&gt;Reset&lt;/mui-button&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown data-toggle-dropdown=&quot;background&quot; data-file-preview=&quot;true&quot; position=&quot;center&quot;&gt;<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;tertiary&quot;&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control=&quot;background&quot; rotate&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot=&quot;start&quot;&gt;&lt;/mui-icon-add&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot=&quot;end&quot;&gt;&lt;/mui-icon-subtract&gt;<br/>
