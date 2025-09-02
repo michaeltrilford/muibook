@@ -104,7 +104,7 @@ class storyLoader extends HTMLElement {
         </mui-v-stack>
         <!-- Actions -->
         <mui-button-group>
-          <div style="height: 40px; width: 100%; max-width: 120px; background: var(--surface-elevated-100); border-radius: var(--action-radius);"></div>
+          <div style="height: 40px; width: 100%; max-width: 120px; border: var(--border-thin); border-color: transparent; background: var(--surface-elevated-100); border-radius: var(--action-radius);"></div>
           <div style="height: 40px; width: 100%; max-width: 120px; border: var(--border-thin); border-radius: var(--action-radius);"></div>
         </mui-button-group>
       </mui-v-stack>
