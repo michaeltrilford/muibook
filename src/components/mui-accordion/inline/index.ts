@@ -57,7 +57,6 @@ class MuiAccordionInline extends HTMLElement {
       }
 
       .accordion-detail[open] {
-        max-height: 200vh;
         transition: max-height var(--speed-400) ease-in-out;
       }
 
@@ -110,8 +109,11 @@ class MuiAccordionInline extends HTMLElement {
     if (inner) {
       if (isOpen) {
         inner.setAttribute("inert", "");
+        this.detailEl.style.maxHeight = "0";
       } else {
         inner.removeAttribute("inert");
+        const scrollHeight = this.detailEl.scrollHeight;
+        this.detailEl.style.maxHeight = scrollHeight + "px";
       }
     }
   }

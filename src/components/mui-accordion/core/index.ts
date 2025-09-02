@@ -57,9 +57,6 @@ class MuiAccordionCore extends HTMLElement {
         overflow: hidden;
         transition: max-height 0.3s ease;
       }
-      .accordion-detail[open] {
-        max-height: 200vh;
-      }
     `;
 
     this.shadowRoot.innerHTML = /* html */ `
@@ -121,6 +118,8 @@ class MuiAccordionCore extends HTMLElement {
   openAccordion() {
     if (!this.detailEl || !this.summaryEl) return;
 
+    const scrollHeight = this.detailEl.scrollHeight;
+    this.detailEl.style.maxHeight = scrollHeight + "px";
     this.detailEl.setAttribute("open", "");
     this.detailEl.setAttribute("aria-hidden", "false");
     this.summaryEl.setAttribute("aria-expanded", "true");
@@ -135,6 +134,7 @@ class MuiAccordionCore extends HTMLElement {
   closeAccordion() {
     if (!this.detailEl || !this.summaryEl) return;
 
+    this.detailEl.style.maxHeight = "0";
     this.detailEl.removeAttribute("open");
     this.detailEl.setAttribute("aria-hidden", "true");
     this.summaryEl.setAttribute("aria-expanded", "false");

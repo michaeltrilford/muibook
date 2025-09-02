@@ -72,10 +72,6 @@ class MuiAccordionBlock extends HTMLElement {
         box-shadow: inset 0 1px 0 0 var(--border-color);
       }
 
-      .accordion-detail[open] {
-        max-height: 200vh;
-      }
-
       .accordion-detail-inner {
         padding: var(--space-500);
       }
@@ -209,10 +205,19 @@ class MuiAccordionBlock extends HTMLElement {
   }
 
   toggleAccordion() {
-    if (!this.detailEl || !this.chevronEl || !this.summaryEl) return;
+    if (!this.detailEl) return;
 
     const isOpen = this.detailEl.hasAttribute("open");
-    this.setOpen(!isOpen);
+    const nextOpen = !isOpen;
+
+    this.setOpen(nextOpen);
+
+    if (nextOpen) {
+      const scrollHeight = this.detailEl.scrollHeight;
+      this.detailEl.style.maxHeight = scrollHeight + "px";
+    } else {
+      this.detailEl.style.maxHeight = "0";
+    }
   }
 
   setOpen(state: boolean) {
