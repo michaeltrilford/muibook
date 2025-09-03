@@ -47,6 +47,8 @@ export default defineConfig({
         "components/mui-file-upload": path.resolve(__dirname, "src/components/mui-file-upload"),
         "components/mui-grid": path.resolve(__dirname, "src/components/mui-grid"),
         "components/mui-heading": path.resolve(__dirname, "src/components/mui-heading"),
+        // DIALOG
+        "components/mui-dialog": path.resolve(__dirname, "src/components/mui-dialog"),
         // ICONS
         "components/mui-icons": path.resolve(__dirname, "src/components/mui-icons"),
         "components/mui-icons/accessibility": path.resolve(__dirname, "src/components/mui-icons/accessibility.ts"),

@@ -52,6 +52,7 @@ import "../components/mui-card/header";
 import "../components/mui-card/body";
 import "../components/mui-card/footer";
 import "../components/mui-chip";
+import "../components/mui-dialog";
 import "../components/mui-responsive";
 import "../components/mui-stack/hstack";
 import "../components/mui-stack/vstack";
