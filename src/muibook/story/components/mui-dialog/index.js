@@ -9,6 +9,18 @@ class storyDialog extends HTMLElement {
       :host { display: block; }
 
       mui-container { min-width: initial; } 
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;
+      }
     `;
 
     const propItems = [
@@ -58,6 +70,22 @@ class storyDialog extends HTMLElement {
         default: "",
         description:
           "Recommended to pair with an element that has the same data-dialog value to open the dialog. Refer to code examples.",
+      },
+      {
+        name: "aria-labelledby",
+        type: "boolean",
+        options: "dialog-title-2",
+        default: "",
+        description:
+          "Add an element with the same id as the value to provide an accessible name for the dialog. Refer to code examples.",
+      },
+      {
+        name: "aria-describedby",
+        type: "boolean",
+        options: "dialog-desc-2",
+        default: "",
+        description:
+          "Add an element with the same id as the value to provide an accessible description for the dialog. Refer to code examples.",
       },
     ];
 
@@ -183,9 +211,9 @@ class storyDialog extends HTMLElement {
       <!-- Dialog with Actions -->
       <story-card title="Confirmation Dialog">
         <mui-button variant="primary" data-dialog="hook-1" slot="body">Open Dialog</mui-button>
-        <mui-dialog data-dialog="hook-1" width="400px" slot="body">
-          <mui-heading size="4" level="4" slot="title">Dialog Title</mui-heading>
-          <mui-body>This is some dialog content</mui-body>
+        <mui-dialog data-dialog="hook-1" width="400px" slot="body" aria-labelledby="dialog-title-1" aria-describedby="dialog-desc-1">
+          <mui-heading size="4" level="4" slot="title" id="dialog-title-1">Dialog Title</mui-heading>
+          <mui-body id="dialog-desc-1">This is some dialog content</mui-body>
           <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
           <mui-button slot="actions" variant="primary">Confirm</mui-button>
         </mui-dialog>
@@ -193,9 +221,9 @@ class storyDialog extends HTMLElement {
 
           &lt;mui-button variant="primary" data-dialog="hook-1"&gt;...&lt;/mui-button&gt;<br><br>
 
-          &lt;mui-dialog data-dialog="hook-1" width="400px"&gt;<br>
-            &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Dialog Title&lt;/mui-heading&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;This is some dialog content&lt;/mui-body&gt;<br>
+          &lt;mui-dialog data-dialog="hook-1" width="400px" aria-labelledby="dialog-title-1" aria-describedby="dialog-desc-1"&gt;<br>
+            &nbsp;&nbsp;&lt;mui-heading slot="title" id="dialog-title-1"&gt;Dialog Title&lt;/mui-heading&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body id="dialog-desc-1"&gt;This is some dialog content&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
             &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-dialog&gt;
@@ -224,9 +252,9 @@ class storyDialog extends HTMLElement {
       <story-card title="Delete Confirmation">
         <mui-button data-dialog="hook-2" slot="body" variant="attention">Delete</mui-button>
 
-        <mui-dialog data-dialog="hook-2" width="400px" slot="body">
-          <mui-heading size="4" level="4" slot="title">Delete repository?</mui-heading>
-          <mui-body>Are you sure you want to delete this item? This action cannot be undone.</mui-body>
+        <mui-dialog data-dialog="hook-2" width="400px" slot="body" aria-labelledby="dialog-title-2" aria-describedby="dialog-desc-2">
+          <mui-heading size="4" level="4" slot="title"id="dialog-title-2">Delete repository?</mui-heading>
+          <mui-body id="dialog-desc-2">Are you sure you want to delete this item? This action cannot be undone.</mui-body>
           <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
           <mui-button slot="actions" variant="attention">Delete this repository</mui-button>
         </mui-dialog>
@@ -235,13 +263,11 @@ class storyDialog extends HTMLElement {
 
           &lt;mui-button variant="attention" data-dialog="hook-2"&gt;...&lt;/mui-button&gt;<br><br>
 
-          &lt;mui-dialog data-dialog="hook-2" width="400px"&gt;<br>
-            &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Delete repository?&lt;/mui-heading&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;Are you sure you want to delete this item? This action cannot be undone.&lt;/mui-body&gt;<br>
+          &lt;mui-dialog data-dialog="hook-2" width="400px" aria-labelledby="dialog-title-2" aria-describedby="dialog-desc-2"&gt;<br>
+            &nbsp;&nbsp;&lt;mui-heading slot="title" id="dialog-title-2"&gt;Delete repository?&lt;/mui-heading&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body id="dialog-desc-2"&gt;Are you sure you want to delete this item? This action cannot be undone.&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
             &nbsp;&nbsp;&lt;mui-button slot="actions" variant="attention"&gt;Delete this repository&lt;/mui-button&gt;<br>
-
-
           &lt;/mui-dialog&gt;
 
           <br><br>
@@ -269,8 +295,13 @@ class storyDialog extends HTMLElement {
       <!-- Tip / Guidance Dialog -->
       <story-card title="Tip Dialog">
         <mui-button data-dialog="hook-3" slot="body">Show Tip</mui-button>
-        <mui-dialog data-dialog="hook-3" width="400px" slot="body">
-          <mui-heading size="4" level="4" slot="title">Keyboard Shortcuts</mui-heading>
+        <mui-dialog data-dialog="hook-3" width="400px" slot="body" aria-labelledby="dialog-title-3" aria-describedby="dialog-desc-3">
+          <mui-heading size="4" level="4" slot="title" id="dialog-title-3">Keyboard Shortcuts</mui-heading>
+
+          <span id="dialog-desc-3" class="visually-hidden">
+            This dialog lists available keyboard shortcuts for saving and undoing actions.
+          </span>
+
           <mui-list as="ul">
             <mui-list-item>'Ctrl + S' to save</mui-list-item>
             <mui-list-item>'Ctrl + Z' to undo your last action.</mui-list-item>
@@ -278,11 +309,38 @@ class storyDialog extends HTMLElement {
         </mui-dialog>
         <story-code-block slot="footer" scrollable>
 
+          .visually-hidden {<br>
+          &nbsp;&nbsp;position: absolute;<br>
+          &nbsp;&nbsp;width: 1px;<br>
+          &nbsp;&nbsp;height: 1px;<br>
+          &nbsp;&nbsp;padding: 0;<br>
+          &nbsp;&nbsp;margin: -1px;<br>
+          &nbsp;&nbsp;overflow: hidden;<br>
+          &nbsp;&nbsp;clip: rect(0,0,0,0);<br>
+          &nbsp;&nbsp;white-space: nowrap;<br>
+          &nbsp;&nbsp;border: 0;<br>
+          }<br>
+          <br>
+
           &lt;mui-button variant="primary" data-dialog="hook-3"&gt;...&lt;/mui-button&gt;<br><br>
 
-          &lt;mui-dialog data-dialog="hook-3" width="400px"&gt;<br>
-            &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Keyboard Shortcuts&lt;/mui-heading&gt;<br>
-            &nbsp;&nbsp;&lt;mui-body&gt;Use &lt;kbd&gt;Ctrl + S&lt;/kbd&gt; to save and &lt;kbd&gt;Ctrl + Z&lt;/kbd&gt; to undo your last action.&lt;/mui-body&gt;<br>
+          &lt;mui-dialog data-dialog="hook-3" width="400px" aria-labelledby="dialog-title-3" aria-describedby="dialog-desc-3"&gt;<br>
+            &nbsp;&nbsp;&lt;mui-heading slot="title" id="dialog-title-3"&gt;Keyboard Shortcuts&lt;/mui-heading&gt;<br>
+
+
+            <br>
+
+            &nbsp;&nbsp;&lt;span id="dialog-desc-3" class="visually-hidden"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;This dialog lists available keyboard shortcuts for saving and undoing actions.<br>
+            &nbsp;&nbsp;&lt;/span&gt;<br>
+
+            <br>
+            &nbsp;&nbsp;&lt;mui-list as="ul"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-list-item&gt;'Ctrl + S' to save&lt;/mui-list-item&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-list-item&gt;'Ctrl + Z' to undo your last action.&lt;/mui-list-item&gt;<br>
+            &nbsp;&nbsp;&lt;/mui-list&gt;<br>
+            <br>
+
           &lt;/mui-dialog&gt;
 
           <br><br>
@@ -303,8 +361,13 @@ class storyDialog extends HTMLElement {
       <!-- Media Dialog with Close Action -->
       <story-card title="Media Dialog w/ Close">
         <mui-button data-dialog="hook-4" slot="body">Open Preview</mui-button>
-        <mui-dialog data-dialog="hook-4" width="600px" slot="body">
-          <mui-heading size="4" level="4" slot="title">Preview Card</mui-heading>
+        <mui-dialog data-dialog="hook-4" width="600px" slot="body" aria-labelledby="dialog-title-4" aria-describedby="dialog-desc-4">
+          <mui-heading size="4" level="4" slot="title" id="dialog-title-4">Preview Card</mui-heading>
+
+          <span id="dialog-desc-4" class="visually-hidden">
+            This card preview shows a Visa Debit card with masked number ending 1234.
+          </span>
+
           <mui-v-stack space="var(--space-200)" alignX="center" style="padding: var(--space-800) 0;">
             <mui-smart-card
               variant="plain"
@@ -317,13 +380,39 @@ class storyDialog extends HTMLElement {
             >
             </mui-smart-card>
           </mui-v-stack>
+
         </mui-dialog>
         <story-code-block slot="footer" scrollable>
 
+          .visually-hidden {<br>
+          &nbsp;&nbsp;position: absolute;<br>
+          &nbsp;&nbsp;width: 1px;<br>
+          &nbsp;&nbsp;height: 1px;<br>
+          &nbsp;&nbsp;padding: 0;<br>
+          &nbsp;&nbsp;margin: -1px;<br>
+          &nbsp;&nbsp;overflow: hidden;<br>
+          &nbsp;&nbsp;clip: rect(0,0,0,0);<br>
+          &nbsp;&nbsp;white-space: nowrap;<br>
+          &nbsp;&nbsp;border: 0;<br>
+          }<br>
+          <br>
+
           &lt;mui-button variant="primary" data-dialog="hook-4"&gt;...&lt;/mui-button&gt;<br><br>
 
-          &lt;mui-dialog data-dialog="hook-4" width="600px"&gt;<br>
-            &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Preview Card&lt;/mui-heading&gt;<br>
+          &lt;mui-dialog data-dialog="hook-4" width="600px" aria-labelledby="dialog-title-4" aria-describedby="dialog-desc-4"&gt;<br>
+
+            <br>
+          
+            &nbsp;&nbsp;&lt;mui-heading slot="title" id="dialog-title-4"&gt;Preview Card&lt;/mui-heading&gt;<br>
+
+            <br>
+
+            &nbsp;&nbsp;&lt;span id="dialog-desc-4" class="visually-hidden"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;This card preview shows a Visa Debit card with masked number ending 1234.<br>
+            &nbsp;&nbsp;&lt;/span&gt;<br>
+
+            <br>
+
             &nbsp;&nbsp;&lt;mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-smart-card&gt;<br>
@@ -348,11 +437,11 @@ class storyDialog extends HTMLElement {
       <!-- Loading / Progress Dialog -->
       <story-card title="Loading Dialog">
         <mui-button data-dialog="hook-5" slot="body">Start Upload</mui-button>
-        <mui-dialog data-dialog="hook-5" width="500px" slot="body">
-          <mui-heading size="4" level="4" slot="title">Uploading</mui-heading>
+        <mui-dialog data-dialog="hook-5" width="500px" slot="body" aria-labelledby="dialog-title-5" aria-describedby="dialog-desc-5">
+          <mui-heading size="4" level="4" slot="title" id="dialog-title-5">Uploading</mui-heading>
           <mui-v-stack space="var(--space-200)" alignX="center" style="padding: var(--space-800) 0;">
             <mui-loader loading animation="pulsate" duration="1.5s">
-              <mui-body>Uploading your files… please wait.</mui-body>
+              <mui-body id="dialog-desc-5">Uploading your files… please wait.</mui-body>
             </mui-loader>
           </mui-v-stack>
         </mui-dialog>
@@ -360,11 +449,11 @@ class storyDialog extends HTMLElement {
 
           &lt;mui-button variant="primary" data-dialog="hook-5"&gt;...&lt;/mui-button&gt;<br><br>
 
-          &lt;mui-dialog data-dialog="hook-5" width="300px"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Uploading&lt;/mui-heading&gt;<br>
+          &lt;mui-dialog data-dialog="hook-5" width="300px" aria-labelledby="dialog-title-5" aria-describedby="dialog-desc-5"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-heading slot="title" id="dialog-title-5"&gt;Uploading&lt;/mui-heading&gt;<br>
           &nbsp;&nbsp;&lt;mui-v-stack&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-loader loading animation="pulsate" duration="1.5s"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;Uploading your files… please wait.&lt;/mui-body&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body id="dialog-desc-5"&gt;Uploading your files… please wait.&lt;/mui-body&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-loader&gt;<br>
           &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
           &lt;/mui-dialog&gt;
@@ -393,6 +482,14 @@ class storyDialog extends HTMLElement {
         title="Dialog" 
         description="A modal window that prompts users to take a specific action or provide additional information without navigating away from the current context."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
+        accessibility="
+          Uses role='dialog' and aria-modal='true' for screen readers.;
+          Focus is managed by the browser’s native dialog behavior when open.;
+          The close button includes aria-label='Close Icon'.;
+          Footer is hidden when empty to reduce screen reader noise.;
+          Clicking the backdrop closes the dialog.;
+          No extra labels are required from the consumer. Accessible by default.
+        "
       >
         ${stories}
       </story-template>
