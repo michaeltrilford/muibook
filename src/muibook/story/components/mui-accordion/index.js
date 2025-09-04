@@ -119,6 +119,182 @@ class storyAccordion extends HTMLElement {
       })
       .join("");
 
+    const inlinePropItems = [
+      {
+        name: "heading",
+        required: true,
+        type: "string",
+        options: "{text}",
+        default: "(required)",
+        description: "Provides the accordion element with a heading",
+      },
+      {
+        name: "slot=&#8220;detail&#8221;",
+        required: true,
+        type: "slot (named)",
+        options: "mui-list, mui-body, {elements}, etc",
+        default: "(required)",
+        description: "Define the detail content for the expanded section within the Accordion.",
+      },
+    ];
+
+    const inlineRows = inlinePropItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const inlineAccordions = inlinePropItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === inlinePropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+            <mui-accordion-block
+              style="position: relative; z-index: 1;" 
+              size="medium" 
+              heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+              ${isLastChild}>
+              <story-type-slat
+                slot="detail"
+                ${prop.required ? "required" : ""}
+                name="${prop.name}"
+                type="${prop.type}" 
+                options="${prop.options || ""}"
+                default="${prop.default || ""}"
+                description="${prop.description}">
+              </story-type-slat>
+            </mui-accordion-block>
+          `;
+      })
+      .join("");
+
+    const groupPropItems = [
+      {
+        name: "slot",
+        required: true,
+        type: "slot (default)",
+        options: "{mui-accordion-block}",
+        default: "",
+        description: "Slot in one or more mui-accordion-block elements to be grouped together.",
+      },
+      {
+        name: "exclusive",
+        type: "boolean",
+        options: "",
+        default: "",
+        description: "When set, only one accordion block can be open at a time within the group.",
+      },
+    ];
+
+    const groupRows = groupPropItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const groupAccordions = groupPropItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === groupPropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+            <mui-accordion-block
+              style="position: relative; z-index: 1;" 
+              size="medium" 
+              heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+              ${isLastChild}>
+              <story-type-slat
+                slot="detail"
+                ${prop.required ? "required" : ""}
+                name="${prop.name}"
+                type="${prop.type}" 
+                options="${prop.options || ""}"
+                default="${prop.default || ""}"
+                description="${prop.description}">
+              </story-type-slat>
+            </mui-accordion-block>
+          `;
+      })
+      .join("");
+
+    const corePropItems = [
+      {
+        name: "slot=&#8220;summary&#8221;",
+        required: true,
+        type: "slot (named)",
+        options: "mui-h-stack, mui-heading, mui-card-header, {elements}, etc",
+        default: "(required)",
+        description: "Define the summary content for the collapsed section within the Accordion.",
+      },
+      {
+        name: "slot=&#8220;detail&#8221;",
+        required: true,
+        type: "slot (named)",
+        options: "mui-h-stack, mui-v-stack, mui-list, mui-body, {elements}, etc",
+        default: "(required)",
+        description: "Define the detail content for the expanded section within the Accordion.",
+      },
+    ];
+
+    const coreRows = corePropItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const coreAccordions = corePropItems
+      .map((prop, index) => {
+        // Check if it's the last item in the array
+        const isLastChild = index === corePropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+            <mui-accordion-block
+              style="position: relative; z-index: 1;" 
+              size="medium" 
+              heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+              ${isLastChild}>
+              <story-type-slat
+                slot="detail"
+                ${prop.required ? "required" : ""}
+                name="${prop.name}"
+                type="${prop.type}" 
+                options="${prop.options || ""}"
+                default="${prop.default || ""}"
+                description="${prop.description}">
+              </story-type-slat>
+            </mui-accordion-block>
+          `;
+      })
+      .join("");
+
     const stories = /*html*/ `
 
         <spec-card title="Import">
@@ -127,16 +303,48 @@ class storyAccordion extends HTMLElement {
           </mui-code>
         </spec-card>
 
-        <props-card title="Accordion Block">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <mui-v-stack space="var(--space-400)">
+          <props-card title="Accordion Block">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${rows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${accordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+          <props-card title="Accordion Inline">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${inlineRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${inlineAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+          <props-card title="Accordion Group">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${groupRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${groupAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+          <props-card title="Accordion Core">
+            <mui-responsive breakpoint="767" slot="body">
+              <story-type-table slot="showAbove">
+                ${coreRows}
+              </story-type-table>
+              <mui-accordion-group exclusive slot="showBelow">
+                ${coreAccordions}
+              </mui-accordion-group>
+            </mui-responsive>
+          </props-card>
+        </mui-v-stack>
 
         <story-card
           id="accordion-inline"
