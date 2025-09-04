@@ -8,6 +8,13 @@ class MuiAccordionBlock extends HTMLElement {
   private chevronEl: HTMLElement | null = null;
   private accordionId!: string;
 
+  private getDetailEl(): HTMLElement | null {
+    if (!this.detailEl) {
+      this.detailEl = this.shadowRoot?.querySelector(".accordion-detail") || null;
+    }
+    return this.detailEl;
+  }
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -205,44 +212,41 @@ class MuiAccordionBlock extends HTMLElement {
   }
 
   toggleAccordion() {
-    if (!this.detailEl) return;
+    const detailEl = this.getDetailEl();
+    if (!detailEl) return;
 
-    const isOpen = this.detailEl.hasAttribute("open");
+    const isOpen = detailEl.hasAttribute("open");
     const nextOpen = !isOpen;
 
     this.setOpen(nextOpen);
 
     if (nextOpen) {
-      const scrollHeight = this.detailEl.scrollHeight;
-      this.detailEl.style.maxHeight = scrollHeight + "px";
+      const scrollHeight = detailEl.scrollHeight;
+      detailEl.style.maxHeight = scrollHeight + "px";
     } else {
-      this.detailEl.style.maxHeight = "0";
+      detailEl.style.maxHeight = "0";
     }
   }
 
   setOpen(state: boolean) {
-    if (!this.detailEl || !this.chevronEl || !this.summaryEl) return;
+    const detailEl = this.getDetailEl();
+    if (!detailEl || !this.chevronEl || !this.summaryEl) return;
 
-    const innerDetail = this.detailEl.querySelector(".accordion-detail-inner");
+    const innerDetail = detailEl.querySelector(".accordion-detail-inner");
 
     if (state) {
-      this.detailEl.setAttribute("open", "");
+      detailEl.setAttribute("open", "");
       this.chevronEl.setAttribute("open", "");
       this.summaryEl.setAttribute("aria-expanded", "true");
-
-      if (innerDetail) {
-        innerDetail.removeAttribute("inert");
-      }
+      if (innerDetail) innerDetail.removeAttribute("inert");
 
       this.dispatchEvent(new CustomEvent("accordion-opened", { bubbles: true, composed: true }));
     } else {
-      this.detailEl.removeAttribute("open");
+      detailEl.removeAttribute("open");
       this.chevronEl.removeAttribute("open");
       this.summaryEl.setAttribute("aria-expanded", "false");
-
-      if (innerDetail) {
-        innerDetail.setAttribute("inert", "");
-      }
+      if (innerDetail) innerDetail.setAttribute("inert", "");
+      detailEl.style.maxHeight = "0"; // ensure height collapses
     }
   }
 

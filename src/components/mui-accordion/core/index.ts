@@ -33,8 +33,8 @@ class MuiAccordionCore extends HTMLElement {
     const summarySlotEl = this.querySelector('[slot="summary"]');
     const detailSlotEl = this.querySelector('[slot="detail"]');
 
+    // 🔹 END OF ADD
     if (!summarySlotEl || !detailSlotEl) return;
-
     this.iconToggleEl = summarySlotEl.querySelector("mui-icon-toggle");
 
     // Compose styles conditionally based on presence of iconToggle
@@ -55,7 +55,7 @@ class MuiAccordionCore extends HTMLElement {
       .accordion-detail {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height var(--speed-300) ease;
       }
     `;
 
@@ -71,6 +71,29 @@ class MuiAccordionCore extends HTMLElement {
 
     this.summaryEl = this.shadowRoot.querySelector(".accordion-summary");
     this.detailEl = this.shadowRoot.querySelector(".accordion-detail");
+
+    // 2. Query the real <slot> element inside shadow DOM
+    const detailSlot = this.shadowRoot.querySelector('slot[name="detail"]') as HTMLSlotElement;
+
+    // 3. Setup ResizeObserver on assigned elements
+    const recalcHeight = () => {
+      if (this.open && this.detailEl) {
+        this.detailEl.style.maxHeight = this.detailEl.scrollHeight + "px";
+      }
+    };
+
+    Array.from(detailSlot.assignedElements({ flatten: false })).forEach((el) => {
+      const observer = new ResizeObserver(recalcHeight);
+      observer.observe(el);
+    });
+
+    detailSlot.addEventListener("slotchange", () => {
+      Array.from(detailSlot.assignedElements({ flatten: false })).forEach((el) => {
+        const observer = new ResizeObserver(recalcHeight);
+        observer.observe(el);
+      });
+      recalcHeight();
+    });
 
     this.iconToggleEl = summarySlotEl.querySelector("mui-icon-toggle");
 

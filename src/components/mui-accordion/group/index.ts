@@ -38,14 +38,15 @@ class MuiAccordionGroup extends HTMLElement {
       }
 
       // Handle exclusive opening
-      this.accordions.forEach((accordion) => {
-        accordion.addEventListener("accordion-opened", () => {
-          if (this.hasAttribute("exclusive")) {
-            this.accordions.forEach((other) => {
-              if (other !== accordion) {
-                other.closeAccordion();
-              }
-            });
+      this.addEventListener("accordion-opened", (e: Event) => {
+        if (!this.hasAttribute("exclusive")) return;
+
+        // Make sure we get the <mui-accordion-block> element, not some child inside it
+        const openedAccordion = e.composedPath()[0] as AccordionBlockElement;
+
+        this.accordions.forEach((other) => {
+          if (other !== openedAccordion) {
+            other.closeAccordion();
           }
         });
       });
