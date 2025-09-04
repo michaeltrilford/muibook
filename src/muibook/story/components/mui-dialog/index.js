@@ -256,7 +256,7 @@ class storyDialog extends HTMLElement {
           <mui-heading size="4" level="4" slot="title"id="dialog-title-2">Delete repository?</mui-heading>
           <mui-body id="dialog-desc-2">Are you sure you want to delete this item? This action cannot be undone.</mui-body>
           <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="attention">Delete this repository</mui-button>
+          <mui-button slot="actions" variant="attention">Delete</mui-button>
         </mui-dialog>
 
         <story-code-block slot="footer" scrollable>
@@ -267,7 +267,7 @@ class storyDialog extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-heading slot="title" id="dialog-title-2"&gt;Delete repository?&lt;/mui-heading&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body id="dialog-desc-2"&gt;Are you sure you want to delete this item? This action cannot be undone.&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
-            &nbsp;&nbsp;&lt;mui-button slot="actions" variant="attention"&gt;Delete this repository&lt;/mui-button&gt;<br>
+            &nbsp;&nbsp;&lt;mui-button slot="actions" variant="attention"&gt;Delete&lt;/mui-button&gt;<br>
           &lt;/mui-dialog&gt;
 
           <br><br>
