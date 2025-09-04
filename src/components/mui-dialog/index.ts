@@ -28,6 +28,12 @@ class MuiDialog extends HTMLElement {
         overflow: hidden;
       }
 
+      dialog,
+      dialog:focus,
+      dialog:focus-visible {
+       outline: none;
+      }
+
       dialog::backdrop {
         background: var(--black-opacity-90);
       }
@@ -56,13 +62,6 @@ class MuiDialog extends HTMLElement {
 
       footer[hidden] {
         display: none !important;
-      }
-
-      button.close {
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: inherit;
       }
     `;
 
