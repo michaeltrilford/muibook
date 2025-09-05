@@ -102,19 +102,18 @@ class HomePage extends HTMLElement {
       @media (min-width: 960px) {
         :host {
           box-sizing: border-box;
-          padding: var(--space-800);
-          padding-top: var(--space-800); 
+          padding-bottom: calc(var(--space-800) + env(safe-area-inset-bottom));
+          padding-top: calc(var(--space-800) + env(safe-area-inset-top)); 
           padding-right: var(--space-800);   
           padding-left: var(--space-800); 
-          
         } 
       }
 
       @media (min-width: 1400px) {
         :host {
           box-sizing: border-box;
-          padding: var(--space-800);
-          padding-top: calc(var(--space-800) * 2); 
+          padding-bottom: calc(var(--space-800) + env(safe-area-inset-bottom));
+          padding-top: calc((var(--space-800) * 2) + env(safe-area-inset-top)); 
           padding-right: calc(var(--space-800) * 2);   
           padding-left: calc(var(--space-800) * 2);         
         } 
@@ -259,8 +258,9 @@ class HomePage extends HTMLElement {
       @media (min-width: 1400px) {
 
         :host([data-brand="jal"]),
-        :host([data-brand="ana"]) {
-          padding-top: calc(var(--space-600) * 2);         
+        :host([data-brand="ana"]) {          
+          padding-top: calc((var(--space-600) * 2) + env(safe-area-inset-top)); 
+
         } 
 
         :host([data-brand="jal"]) main,

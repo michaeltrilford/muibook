@@ -18,8 +18,8 @@ class StoryTemplate extends HTMLElement {
       :host { display: block; width: 100%; }
 
       .container {
-        padding-top: var(--space-500);
-        padding-bottom: var(--space-500);
+        padding-top: calc(var(--space-500) + env(safe-area-inset-top)); 
+        padding-bottom: calc(var(--space-500) + env(safe-area-inset-bottom));
         width: calc(100% - (var(--space-500) * 2));
       }
 
@@ -58,8 +58,8 @@ class StoryTemplate extends HTMLElement {
       @media (min-width: 960px) {
 
         .container {
-          padding-top: var(--space-600);
-          padding-bottom: var(--space-600);
+          padding-top: calc(var(--space-600) + env(safe-area-inset-top)); 
+          padding-bottom: calc(var(--space-600) + env(safe-area-inset-bottom));
           width: calc(100% - (var(--space-800) * 2));
         }
 
@@ -79,8 +79,8 @@ class StoryTemplate extends HTMLElement {
 
       @media (min-width: 1550px) {
         .container {
-          padding-top: var(--space-800);
-          padding-bottom: var(--space-800);
+          padding-top: calc(var(--space-800) + env(safe-area-inset-top)); 
+          padding-bottom: calc(var(--space-800) + env(safe-area-inset-bottom));
         }
       }
 
