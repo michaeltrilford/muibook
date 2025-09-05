@@ -4,9 +4,9 @@ import "../../images/mui/ana-logo";
 import "../../images/mui/jal-logo";
 import "../../images/mui/jal-logo-mobile";
 import "../../images/mui/ana-logo-mobile";
-import Jal from "../../images/jal/bg-plane.png";
-import AnaLight from "../../images/ana/light.jpg";
-import AnaNight from "../../images/ana/night.jpg";
+import Jal from "../../images/jal/bg-plane.webp";
+import AnaLight from "../../images/ana/light.webp";
+import AnaNight from "../../images/ana/night.webp";
 
 class HomePage extends HTMLElement {
   constructor() {
