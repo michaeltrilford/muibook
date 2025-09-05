@@ -8,6 +8,7 @@ export class AppContainer extends HTMLElement {
 
     const style = document.createElement("style");
     style.textContent = /*css*/ `
+
       :host {
         display: grid;
         padding-top: env(safe-area-inset-top);
@@ -17,16 +18,6 @@ export class AppContainer extends HTMLElement {
       :host(.focused) {
         outline-offset: calc(var(--stroke-size-500) * -1);
       }
-
-      @media (min-width: 960px) {
-        :host {
-          padding: var(--space-500);         
-          padding-left: var(--space-500);
-          padding-right: var(--space-500);
-          padding-bottom: var(--space-500);
-        } 
-      }
-
     `;
 
     this.shadowRoot.appendChild(style);
@@ -196,11 +187,31 @@ export class AppContainer extends HTMLElement {
       // Add class to trigger server-loaded condition
       page.classList.add("server-loaded");
 
+      // ✨ Pass down brand and theme from <html>
+      const html = document.documentElement;
+      page.setAttribute("data-brand", html.getAttribute("data-brand") || "mui");
+      page.setAttribute("data-theme", html.getAttribute("data-theme") || "light");
+
+      // Append to shadow DOM
       this.shadowRoot.appendChild(page);
+
+      // ✨ Observe <html> attributes and propagate to page
+      const observer = new MutationObserver(() => {
+        page.setAttribute("data-brand", html.getAttribute("data-brand") || "mui");
+        page.setAttribute("data-theme", html.getAttribute("data-theme") || "light");
+      });
+      observer.observe(html, { attributes: true, attributeFilter: ["data-brand", "data-theme"] });
     }
 
     // Scroll to top when page route changes
     window.scrollTo(0, 0);
+
+    // Add "home" class if current path is home
+    if (path === "/home") {
+      this.classList.add("home");
+    } else {
+      this.classList.remove("home");
+    }
   }
 
   connectedCallback() {

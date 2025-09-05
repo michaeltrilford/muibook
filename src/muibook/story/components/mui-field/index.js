@@ -285,8 +285,7 @@ class storyField extends HTMLElement {
                 {"value": "default", "label": "Select Option"},
                 {"value": "mui", "label": "Mui"},
                 {"value": "jal", "label": "JAL"},
-                {"value": "ana", "label": "ANA"},
-                {"value": "mono", "label": "Mono"}
+                {"value": "ana", "label": "ANA"}
               ]'>
             </mui-select>
           </mui-field>

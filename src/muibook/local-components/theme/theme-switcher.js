@@ -7,7 +7,6 @@ class ThemeSwitcher extends HTMLElement {
       mui: { theme: true },
       jal: { theme: true },
       ana: { theme: true },
-      mono: { theme: true },
       modern: { theme: true },
     };
 
@@ -76,7 +75,6 @@ class ThemeSwitcher extends HTMLElement {
             {"value": "mui", "label": "Mui"},
             {"value": "jal", "label": "JAL"},
             {"value": "ana", "label": "ANA"},
-            {"value": "mono", "label": "Mono"},
             {"value": "modern", "label": "Modern"}
           ]'>
         </mui-select>

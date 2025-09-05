@@ -17,6 +17,12 @@ class StoryTemplate extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; width: 100%; }
 
+      .container {
+        padding-top: var(--space-500);
+        padding-bottom: var(--space-500);
+        width: calc(100% - (var(--space-500) * 2));
+      }
+
       .wrapper::part(gap) {
         gap: var(--space-500);
       }
@@ -50,17 +56,31 @@ class StoryTemplate extends HTMLElement {
       }
 
       @media (min-width: 960px) {
+
+        .container {
+          padding-top: var(--space-600);
+          padding-bottom: var(--space-600);
+          width: calc(100% - (var(--space-800) * 2));
+        }
+
         .wrapper::part(gap) {
           gap: var(--space-600);
         }
 
-      .header-group::part(gap) {
-        gap: var(--space-300);
-      }
+        .header-group::part(gap) {
+          gap: var(--space-300);
+        }
 
         .introduction::part(gap),
         .stories::part(gap) {
           gap: var(--space-600);
+        }
+      }
+
+      @media (min-width: 1550px) {
+        .container {
+          padding-top: var(--space-800);
+          padding-bottom: var(--space-800);
         }
       }
 
@@ -146,7 +166,7 @@ class StoryTemplate extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-      <mui-container center>
+      <mui-container center class="container">
         <mui-v-stack class="wrapper">
           <mui-v-stack class="introduction">
             <mui-v-stack class="header-group">

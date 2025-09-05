@@ -29,6 +29,8 @@ html[data-theme="light"] {
   --app-container-surface: var(--white);
   --app-navbar-surface: var(--white);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
+  /* Home Page */
+  --home-page-body-text: var(--black);
 }
 html[data-theme="dark"] {
   --app-logo-color: var(--mui-brand-300);
@@ -47,6 +49,8 @@ html[data-theme="dark"] {
   --app-container-surface: var(--surface);
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
+  /* Home Page */
+  --home-page-body-text: var(--white);
 }
 
 /* =============================================================================== */
@@ -82,7 +86,7 @@ html[data-brand="jal"][data-theme="dark"] {
 /*   Component theme alignment across storefront                                   */
 /* =============================================================================== */
 html[data-brand="ana"][data-theme="light"] {
-  --app-logo-color: var(--ana-blue-500);
+  --app-logo-color: var(--ana-blue-400);
   --app-nav-accent: var(--ana-blue-400);
   --app-theme-toggle-bg: var(--ana-grey-200);
   --app-story-snippet-code-bg: var(--ana-blue-400);
@@ -91,10 +95,12 @@ html[data-brand="ana"][data-theme="light"] {
   --app-container-surface: var(--ana-white);
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
+  /* Home Page */
+  --home-page-body-text: var(--ana-blue-400);
 }
 
 html[data-brand="ana"][data-theme="dark"] {
-  --app-logo-color: var(--ana-blue-300);
+  --app-logo-color: var(--ana-white);
   --app-nav-accent: var(--ana-blue-200);
   --app-theme-toggle-bg: var(--ana-blue-200);
   --app-story-snippet-code-bg: var(--ana-blue-200);
@@ -103,34 +109,8 @@ html[data-brand="ana"][data-theme="dark"] {
   --app-container-surface: var(--surface);
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
-}
-
-/* =============================================================================== */
-/*   Theme Storefront: Mono                                                        */
-/*   Component theme alignment across storefront                                   */
-/* =============================================================================== */
-html[data-brand="mono"][data-theme="light"] {
-  --app-logo-color: var(--mono-grey-700);
-  --app-nav-accent: var(--mono-black);
-  --app-theme-toggle-bg: var(--mono-grey-200);
-  --app-story-snippet-code-bg: var(--mono-grey-200);
-  --app-story-snippet-code-text: var(--mono-black);
-  /* App Surface */
-  --app-container-surface: var(--mono-grey-100);
-  --app-navbar-surface: var(--surface-elevated-100);
-  --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
-}
-
-html[data-brand="mono"][data-theme="dark"] {
-  --app-logo-color: var(--mono-grey-100);
-  --app-nav-accent: var(--mono-white);
-  --app-theme-toggle-bg: var(--mono-grey-200);
-  --app-story-snippet-code-bg: var(--mono-white);
-  --app-story-snippet-code-text: var(--mono-black);
-  /* App Surface */
-  --app-container-surface: var(--surface);
-  --app-navbar-surface: var(--surface-elevated-100);
-  --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
+  /* Home Page */
+  --home-page-body-text: var(--white);
 }
 
 /* =============================================================================== */

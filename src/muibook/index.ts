@@ -1,7 +1,6 @@
 import "./css/app.css";
 import "./css/themes/jal.css";
 import "./css/themes/ana.css";
-import "./css/themes/mono.css";
 import "./css/themes/modern.css";
 import "./css/app-theme.css";
 
