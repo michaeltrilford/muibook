@@ -29,6 +29,7 @@ html[data-theme="light"] {
   --app-container-surface: var(--white);
   --app-navbar-surface: var(--white);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
+  --app-navbar-accordion-chevron-hover: var(--surface-elevated-200);
   /* Home Page */
   --home-page-body-text: var(--black);
 }
@@ -49,6 +50,7 @@ html[data-theme="dark"] {
   --app-container-surface: var(--surface);
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
+  --app-navbar-accordion-chevron-hover: var(--surface-elevated-200);
   /* Home Page */
   --home-page-body-text: var(--white);
 }
@@ -67,6 +69,7 @@ html[data-brand="jal"][data-theme="light"] {
   --app-container-surface: var(--white);
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
+  --app-navbar-accordion-chevron-hover: var(--jal-grey-100);
 }
 
 html[data-brand="jal"][data-theme="dark"] {
@@ -79,6 +82,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-container-surface: var(--jal-grey-800);
   --app-navbar-surface: var(--jal-grey-900);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
+  --app-navbar-accordion-chevron-hover: var(--jal-grey-1000);
 }
 
 /* =============================================================================== */
@@ -97,6 +101,7 @@ html[data-brand="ana"][data-theme="light"] {
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
   /* Home Page */
   --home-page-body-text: var(--ana-blue-500);
+  --app-navbar-accordion-chevron-hover: var(--ana-grey-100);
 }
 
 html[data-brand="ana"][data-theme="dark"] {
@@ -111,6 +116,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
   /* Home Page */
   --home-page-body-text: var(--white);
+  --app-navbar-accordion-chevron-hover: var(--ana-grey-900);
 }
 
 /* =============================================================================== */
@@ -128,6 +134,7 @@ html[data-brand="modern"][data-theme="light"] {
   --app-container-surface: var(--grey-100);
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
+  --app-navbar-accordion-chevron-hover: var(--grey-100);
 }
 
 html[data-brand="modern"][data-theme="dark"] {
@@ -140,4 +147,5 @@ html[data-brand="modern"][data-theme="dark"] {
   --app-container-surface: var(--grey-1000);
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
+  --app-navbar-accordion-chevron-hover: var(--grey-800);
 }

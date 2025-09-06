@@ -29,6 +29,10 @@ class appNavbarGroup extends HTMLElement {
         position: relative;
         z-index: 3;
       }
+
+      mui-accordion-block {
+        --surface-elevated-200: var(--app-navbar-accordion-chevron-hover);
+      }
     </style>
 
     <mui-accordion-block size="small" heading="${this.getAttribute("groupname")}" detail-space="none">
