@@ -55,16 +55,19 @@ class MuiButton extends HTMLElement {
     button:hover {
       background: var(--action-primary-background-hover);
       color: var(--action-primary-text-color-hover);
+      border: var(--action-primary-border-hover);
     }
 
     button:focus-visible {
       background: var(--action-primary-background-focus);
       color: var(--action-primary-text-color-focus);
+      border: var(--action-primary-border-focus);
     }
 
     button:disabled {
       background: var(--action-primary-background-disabled);
       color: var(--action-primary-text-color-disabled);
+      border: var(--action-primary-border-disabled);
     }
 
     button, button:before, button:after {box-sizing: border-box;}
