@@ -152,9 +152,9 @@ html[data-brand="jal"][data-theme="light"] {
   --action-tertiary-border-color-focus: var(--white-opacity-0);
   --action-tertiary-border-color-disabled: var(--white-opacity-0);
   --action-tertiary-background: var(--white-opacity-0);
-  --action-tertiary-background-hover: var(--white-opacity-40);
-  --action-tertiary-background-focus: var(--white-opacity-40);
-  --action-tertiary-background-disabled: var(--white-opacity-40);
+  --action-tertiary-background-hover: var(--black-opacity-10);
+  --action-tertiary-background-focus: var(--black-opacity-10);
+  --action-tertiary-background-disabled: var(--black-opacity-40);
   --action-tertiary-text-color: var(--jal-red-300);
   --action-tertiary-text-color-hover: var(--jal-red-300);
   --action-tertiary-text-color-focus: var(--jal-red-300);
