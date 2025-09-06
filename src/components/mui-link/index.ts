@@ -196,10 +196,10 @@ class MuiLink extends HTMLElement {
         cursor: not-allowed;
       }
 
-      :host([variant="primary"]) ::slotted(.mui-icon) { fill: var(--action-primary-text-color); }
-      :host([variant="primary"]):hover ::slotted(.mui-icon) { fill: var(--action-primary-text-color-hover); }
-      :host([variant="primary"]):focus ::slotted(.mui-icon) { fill: var(--action-primary-text-color-focus); }
-      :host([variant="primary"]):disabled ::slotted(.mui-icon) { fill: var(--action-primary-text-color-disabled); }
+      :host([variant="primary"]) a ::slotted(.mui-icon) { fill: var(--action-primary-text-color); }
+      :host([variant="primary"]) a:hover ::slotted(.mui-icon) { fill: var(--action-primary-text-color-hover); }
+      :host([variant="primary"]) a:focus ::slotted(.mui-icon) { fill: var(--action-primary-text-color-focus); }
+      :host([variant="primary"]) a:disabled ::slotted(.mui-icon) { fill: var(--action-primary-text-color-disabled); }
 
       /* Button Secondary 
       ========================================= */
@@ -228,10 +228,10 @@ class MuiLink extends HTMLElement {
         cursor: not-allowed;
       }
 
-      :host([variant="secondary"]) ::slotted(.mui-icon) { fill: var(--action-secondary-text-color); }
-      :host([variant="secondary"]):hover ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-hover); }
-      :host([variant="secondary"]):focus ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-focus); }
-      :host([variant="secondary"]):disabled ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-disabled); }
+      :host([variant="secondary"]) a ::slotted(.mui-icon) { fill: var(--action-secondary-text-color); }
+      :host([variant="secondary"]) a:hover ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-hover); }
+      :host([variant="secondary"]) a:focus ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-focus); }
+      :host([variant="secondary"]) a:disabled ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-disabled); }
 
       /* Button Tertiary
       ========================================= */
@@ -260,10 +260,10 @@ class MuiLink extends HTMLElement {
         cursor: not-allowed;
       }
 
-      :host([variant="tertiary"]) ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color); }
-      :host([variant="tertiary"]):hover ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-hover); }
-      :host([variant="tertiary"]):focus ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-focus); }
-      :host([variant="tertiary"]):disabled ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-disabled); }
+      :host([variant="tertiary"]) a ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color); }
+      :host([variant="tertiary"]) a:hover ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-hover); }
+      :host([variant="tertiary"]) a:focus ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-focus); }
+      :host([variant="tertiary"]) a:disabled ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-disabled); }
 
       /* Button Attention
       ========================================= */
@@ -292,10 +292,10 @@ class MuiLink extends HTMLElement {
         cursor: not-allowed;
       }
 
-      :host([variant="attention"]) ::slotted(.mui-icon) { fill: var(--action-attention-text-color); }
-      :host([variant="attention"]):hover ::slotted(.mui-icon) { fill: var(--action-attention-text-color-hover); }
-      :host([variant="attention"]):focus ::slotted(.mui-icon) { fill: var(--action-attention-text-color-focus); }
-      :host([variant="attention"]):disabled ::slotted(.mui-icon) { fill: var(--action-attention-text-color-disabled); }
+      :host([variant="attention"]) a ::slotted(.mui-icon) { fill: var(--action-attention-text-color); }
+      :host([variant="attention"]) a:hover ::slotted(.mui-icon) { fill: var(--action-attention-text-color-hover); }
+      :host([variant="attention"]) a:focus ::slotted(.mui-icon) { fill: var(--action-attention-text-color-focus); }
+      :host([variant="attention"]) a:disabled ::slotted(.mui-icon) { fill: var(--action-attention-text-color-disabled); }
 
       /* Icon only
       ========================================= */

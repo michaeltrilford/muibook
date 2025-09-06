@@ -126,7 +126,7 @@ html[data-brand="modern"][data-theme="light"] {
   --action-secondary-border-color: var(--grey-800);
   --action-secondary-border-color-hover: var(--grey-800);
   --action-secondary-border-color-focus: var(--grey-800);
-  --action-secondary-border-color-disabled: var(--grey-800);
+  --action-secondary-border-color-disabled: var(--grey-300);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--white-opacity-50);
   --action-secondary-background-focus: var(--white-opacity-50);
@@ -156,11 +156,11 @@ html[data-brand="modern"][data-theme="light"] {
   --action-attention-background: var(--red-500);
   --action-attention-background-hover: var(--red-600);
   --action-attention-background-focus: var(--red-600);
-  --action-attention-background-disabled: var(--red-100);
+  --action-attention-background-disabled: var(--grey-200);
   --action-attention-text-color: var(--white);
   --action-attention-text-color-hover: var(--white);
   --action-attention-text-color-focus: var(--white);
-  --action-attention-text-color-disabled: var(--red-300);
+  --action-attention-text-color-disabled: var(--grey-400);
 
   /* Badge */
   --badge-text-color: var(--white);
@@ -258,16 +258,16 @@ html[data-brand="modern"][data-theme="dark"] {
   --action-primary-background: var(--white);
   --action-primary-background-hover: var(--grey-100);
   --action-primary-background-focus: var(--grey-100);
-  --action-primary-background-disabled: var(--grey-100);
+  --action-primary-background-disabled: var(--grey-400);
   --action-primary-text-color: var(--grey-900);
   --action-primary-text-color-hover: var(--grey-900);
   --action-primary-text-color-focus: var(--grey-900);
-  --action-primary-text-color-disabled: var(--grey-400);
+  --action-primary-text-color-disabled: var(--grey-200);
 
   --action-secondary-border-color: var(--grey-200);
   --action-secondary-border-color-hover: var(--grey-200);
   --action-secondary-border-color-focus: var(--grey-200);
-  --action-secondary-border-color-disabled: var(--grey-200);
+  --action-secondary-border-color-disabled: var(--grey-600);
   --action-secondary-background: var(--black-opacity-0);
   --action-secondary-background-hover: var(--black-opacity-20);
   --action-secondary-background-focus: var(--black-opacity-20);
@@ -297,11 +297,11 @@ html[data-brand="modern"][data-theme="dark"] {
   --action-attention-background: var(--red-600);
   --action-attention-background-hover: var(--red-700);
   --action-attention-background-focus: var(--red-700);
-  --action-attention-background-disabled: var(--red-900);
+  --action-attention-background-disabled: var(--grey-400);
   --action-attention-text-color: var(--white);
   --action-attention-text-color-hover: var(--white);
   --action-attention-text-color-focus: var(--white);
-  --action-attention-text-color-disabled: var(--red-300);
+  --action-attention-text-color-disabled: var(--grey-200);
 
   /* Badge */
   --badge-text-color: var(--white);

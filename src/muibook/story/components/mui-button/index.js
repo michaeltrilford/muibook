@@ -185,6 +185,24 @@ class storyButton extends HTMLElement {
         </story-code-block>
       </story-card>
 
+
+      <story-card title="Disabled">
+        <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
+          <mui-button disabled>Submit</mui-button>
+          <mui-button disabled variant="primary">Submit</mui-button>
+          <mui-button disabled variant="secondary">Submit</mui-button>
+          <mui-button disabled variant="tertiary">Submit</mui-button>
+          <mui-button disabled variant="attention">Submit</mui-button>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button disabled&gt;
+          <br />
+          &nbsp;&nbsp;...
+          <br />
+          &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card 
         title="Header: Button-Group" 
         description="Example of actions that are present at the top of a page or card use."

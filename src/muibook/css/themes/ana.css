@@ -126,50 +126,50 @@ html[data-brand="ana"][data-theme="light"] {
   --action-primary-border-color: var(--ana-blue-500);
   --action-primary-border-color-hover: var(--ana-blue-600);
   --action-primary-border-color-focus: var(--ana-blue-600);
-  --action-primary-border-color-disabled: var(--ana-grey-500);
+  --action-primary-border-color-disabled: var(--ana-grey-400);
   --action-primary-background: var(--ana-blue-500);
   --action-primary-background-hover: var(--ana-blue-600);
   --action-primary-background-focus: var(--ana-blue-600);
-  --action-primary-background-disabled: var(--ana-grey-500);
+  --action-primary-background-disabled: var(--ana-grey-400);
   --action-primary-text-color: var(--ana-white);
   --action-primary-text-color-hover: var(--ana-white);
   --action-primary-text-color-focus: var(--ana-white);
-  --action-primary-text-color-disabled: var(--ana-white);
+  --action-primary-text-color-disabled: var(--ana-grey-200);
 
   --action-secondary-border-color: var(--ana-blue-500);
   --action-secondary-border-color-hover: var(--ana-blue-600);
   --action-secondary-border-color-focus: var(--ana-blue-600);
-  --action-secondary-border-color-disabled: var(--ana-grey-500);
+  --action-secondary-border-color-disabled: var(--ana-grey-400);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--ana-white);
   --action-secondary-background-focus: var(--ana-white);
-  --action-secondary-background-disabled: var(--ana-white);
+  --action-secondary-background-disabled: var(--white-opacity-0);
   --action-secondary-text-color: var(--ana-blue-500);
   --action-secondary-text-color-hover: var(--ana-blue-600);
   --action-secondary-text-color-focus: var(--ana-blue-600);
-  --action-secondary-text-color-disabled: var(--ana-grey-500);
+  --action-secondary-text-color-disabled: var(--ana-grey-400);
 
   --action-tertiary-border-color: var(--white-opacity-0);
   --action-tertiary-border-color-hover: var(--white-opacity-0);
   --action-tertiary-border-color-focus: var(--white-opacity-0);
-  --action-tertiary-border-color-disabled: var(--ana-grey-500);
+  --action-tertiary-border-color-disabled: var(--ana-grey-400);
   --action-tertiary-background: var(--white-opacity-0);
   --action-tertiary-background-hover: var(--ana-white);
   --action-tertiary-background-focus: var(--ana-white);
-  --action-tertiary-background-disabled: var(--ana-white);
+  --action-tertiary-background-disabled: var(--white-opacity-0);
   --action-tertiary-text-color: var(--ana-blue-500);
   --action-tertiary-text-color-hover: var(--ana-blue-600);
   --action-tertiary-text-color-focus: var(--ana-blue-600);
-  --action-tertiary-text-color-disabled: var(--ana-grey-500);
+  --action-tertiary-text-color-disabled: var(--ana-grey-400);
 
   --action-attention-border-color: var(--ana-red-400);
   --action-attention-border-color-hover: var(--ana-red-600);
   --action-attention-border-color-focus: var(--ana-red-600);
-  --action-attention-border-color-disabled: var(--ana-grey-500);
+  --action-attention-border-color-disabled: var(--ana-grey-400);
   --action-attention-background: var(--ana-red-400);
   --action-attention-background-hover: var(--ana-red-600);
   --action-attention-background-focus: var(--ana-red-600);
-  --action-attention-background-disabled: var(--ana-grey-500);
+  --action-attention-background-disabled: var(--ana-grey-400);
   --action-attention-text-color: var(--ana-white);
   --action-attention-text-color-hover: var(--ana-white);
   --action-attention-text-color-focus: var(--ana-white);
@@ -278,20 +278,20 @@ html[data-brand="ana"][data-theme="dark"] {
   --action-primary-text-color: var(--ana-white);
   --action-primary-text-color-hover: var(--ana-white);
   --action-primary-text-color-focus: var(--ana-white);
-  --action-primary-text-color-disabled: var(--ana-white);
+  --action-primary-text-color-disabled: var(--ana-grey-200);
 
   --action-secondary-border-color: var(--ana-blue-200);
   --action-secondary-border-color-hover: var(--ana-blue-200);
   --action-secondary-border-color-focus: var(--ana-blue-200);
-  --action-secondary-border-color-disabled: var(--ana-blue-100);
+  --action-secondary-border-color-disabled: var(--ana-grey-400);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--ana-grey-1100);
   --action-secondary-background-focus: var(--ana-grey-1100);
-  --action-secondary-background-disabled: var(--ana-grey-600);
+  --action-secondary-background-disabled: var(--white-opacity-0);
   --action-secondary-text-color: var(--ana-blue-200);
   --action-secondary-text-color-hover: var(--ana-blue-200);
   --action-secondary-text-color-focus: var(--ana-blue-200);
-  --action-secondary-text-color-disabled: var(--ana-grey-200);
+  --action-secondary-text-color-disabled: var(--ana-grey-400);
 
   --action-tertiary-border-color: var(--white-opacity-0);
   --action-tertiary-border-color-hover: var(--white-opacity-0);
@@ -304,7 +304,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --action-tertiary-text-color: var(--ana-blue-200);
   --action-tertiary-text-color-hover: var(--ana-blue-200);
   --action-tertiary-text-color-focus: var(--ana-blue-200);
-  --action-tertiary-text-color-disabled: var(--ana-grey-200);
+  --action-tertiary-text-color-disabled: var(--ana-grey-300);
 
   --action-attention-border-color: var(--ana-red-400);
   --action-attention-border-color-hover: var(--ana-red-500);
@@ -317,7 +317,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --action-attention-text-color: var(--ana-white);
   --action-attention-text-color-hover: var(--ana-white);
   --action-attention-text-color-focus: var(--ana-white);
-  --action-attention-text-color-disabled: var(--ana-white);
+  --action-attention-text-color-disabled: var(--ana-grey-300);
 
   /* Badge */
   --badge-text-color: var(--ana-white);

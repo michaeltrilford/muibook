@@ -272,7 +272,7 @@ html[data-theme="light"] {
   --action-secondary-border-color: var(--grey-800);
   --action-secondary-border-color-hover: var(--grey-800);
   --action-secondary-border-color-focus: var(--grey-800);
-  --action-secondary-border-color-disabled: var(--grey-800);
+  --action-secondary-border-color-disabled: var(--grey-400);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--grey-100);
   --action-secondary-background-focus: var(--grey-100);
@@ -483,7 +483,7 @@ html[data-theme="dark"] {
   --action-secondary-border-color: var(--grey-200);
   --action-secondary-border-color-hover: var(--grey-200);
   --action-secondary-border-color-focus: var(--grey-200);
-  --action-secondary-border-color-disabled: var(--grey-200);
+  --action-secondary-border-color-disabled: var(--grey-600);
   --action-secondary-background: var(--black-opacity-0);
   --action-secondary-background-hover: var(--grey-800);
   --action-secondary-background-focus: var(--grey-800);
