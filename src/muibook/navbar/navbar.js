@@ -107,6 +107,7 @@ class appNavbar extends HTMLElement {
         <mui-body weight="bold">Theming</mui-body>
         <app-navbar-link link="#/base-theme" title="Base Theme"></app-navbar-link>
         <app-navbar-link link="#/multi-brand-theme" title="Multi-Brand Theme"></app-navbar-link>
+        <app-navbar-link link="#/overrides" title="Overrides"></app-navbar-link>
         <mui-body weight="bold">React Helpers</mui-body>
         <app-navbar-link link="#/typed-elements" title="Typed Elements"></app-navbar-link>
         <app-navbar-link link="#/wrapped-components" title="Wrapped Components"></app-navbar-link>
