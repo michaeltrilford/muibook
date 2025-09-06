@@ -86,17 +86,17 @@ html[data-brand="jal"][data-theme="dark"] {
 /*   Component theme alignment across storefront                                   */
 /* =============================================================================== */
 html[data-brand="ana"][data-theme="light"] {
-  --app-logo-color: var(--ana-blue-400);
-  --app-nav-accent: var(--ana-blue-400);
+  --app-logo-color: var(--ana-blue-500);
+  --app-nav-accent: var(--ana-blue-500);
   --app-theme-toggle-bg: var(--ana-grey-200);
-  --app-story-snippet-code-bg: var(--ana-blue-400);
+  --app-story-snippet-code-bg: var(--ana-blue-500);
   --app-story-snippet-code-text: var(--ana-white);
   /* App Surface */
   --app-container-surface: var(--ana-white);
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
   /* Home Page */
-  --home-page-body-text: var(--ana-blue-400);
+  --home-page-body-text: var(--ana-blue-500);
 }
 
 html[data-brand="ana"][data-theme="dark"] {
