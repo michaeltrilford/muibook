@@ -59,28 +59,28 @@ html[data-brand="jal"] {
   --jal-green-700: #388e3c;
   --jal-green-800: #2c6e2f;
   --jal-green-900: #1b4c1d;
-  /* Brand Yellow Scale */
-  --jal-yellow-50: #fff9e5;
-  --jal-yellow-100: #fff2cc;
-  --jal-yellow-200: #ffeb99;
-  --jal-yellow-300: #ffe066;
-  --jal-yellow-400: #ffd32b;
-  --jal-yellow-500: #ffc107;
-  --jal-yellow-600: #ffb300;
-  --jal-yellow-700: #ffa000;
-  --jal-yellow-800: #ff8f00;
-  --jal-yellow-900: #c87100;
+  /* Brand Yellow Scale - Fully redistributed */
+  --jal-yellow-50: #fff8e0; /* very light tint */
+  --jal-yellow-100: #ffeeb3; /* slightly darker, consistent with other 100s */
+  --jal-yellow-200: #ffe080; /* mid-light tone */
+  --jal-yellow-300: #ffd44d; /* mid tone */
+  --jal-yellow-400: #ffc92b; /* deeper mid tone */
+  --jal-yellow-500: #ffc107; /* base yellow */
+  --jal-yellow-600: #e6aa00; /* slightly lighter than before for consistency */
+  --jal-yellow-700: #d39600; /* mid-dark tone */
+  --jal-yellow-800: #bb8200; /* deeper shade */
+  --jal-yellow-900: #a36d00; /* deepest shade, aligned with other scales */
   /* Brand Gold Scale */
-  --brand-gold-50: #fdf9ec;
-  --brand-gold-100: #f9f0d0;
-  --brand-gold-200: #f0dd9f;
-  --brand-gold-300: #e6c96d;
-  --brand-gold-400: #dcb23e;
-  --brand-gold-500: #c39a1e;
-  --brand-gold-600: #a8821a;
-  --brand-gold-700: #8d6b16;
-  --brand-gold-800: #735614;
-  --brand-gold-900: #5a4210;
+  --jal-gold-50: #fdf9ec; /* very light, usable for backgrounds */
+  --jal-gold-100: #f9f0d0;
+  --jal-gold-200: #f0dd9f;
+  --jal-gold-300: #e6c96d;
+  --jal-gold-400: #dcb23e; /* starting to reflect richer tone */
+  --jal-gold-500: #c39a1e; /* base gold */
+  --jal-gold-600: #9c6d16; /* matches one of the JAL reference browns */
+  --jal-gold-700: #8c713f; /* deeper brown from reference */
+  --jal-gold-800: #856514; /* main JAL brown */
+  --jal-gold-900: #735010; /* slightly darker for contrast / hover */
   /* White & Black */
   --jal-white: #ffffff;
   --jal-black: #000000;
@@ -160,14 +160,14 @@ html[data-brand="jal"][data-theme="light"] {
   --action-tertiary-text-color-focus: var(--jal-red-300);
   --action-tertiary-text-color-disabled: var(--jal-red-300);
 
-  --action-attention-border-color: var(--jal-red-500);
-  --action-attention-border-color-hover: var(--jal-red-700);
-  --action-attention-border-color-focus: var(--jal-red-700);
-  --action-attention-border-color-disabled: var(--jal-red-700);
-  --action-attention-background: var(--jal-red-300);
+  --action-attention-border-color: var(--jal-red-800);
+  --action-attention-border-color-hover: var(--jal-red-500);
+  --action-attention-border-color-focus: var(--jal-red-500);
+  --action-attention-border-color-disabled: var(--jal-grey-700);
+  --action-attention-background: var(--jal-red-800);
   --action-attention-background-hover: var(--jal-red-500);
   --action-attention-background-focus: var(--jal-red-500);
-  --action-attention-background-disabled: var(--jal-red-500);
+  --action-attention-background-disabled: var(--jal-grey-700);
   --action-attention-text-color: var(--jal-white);
   --action-attention-text-color-hover: var(--jal-white);
   --action-attention-text-color-focus: var(--jal-white);
@@ -242,7 +242,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --feedback-warning-border-color: var(--jal-yellow-500);
   --feedback-attention-border-color: var(--jal-red-500);
 
-  --feedback-neutral-background: var(--jal-grey-900);
+  --feedback-neutral-background: var(--jal-grey-700);
   --feedback-positive-background: var(--jal-green-900);
   --feedback-info-background: var(--jal-blue-900);
   --feedback-warning-background: var(--jal-yellow-900);
@@ -305,18 +305,18 @@ html[data-brand="jal"][data-theme="dark"] {
   --action-tertiary-text-color-focus: var(--jal-red-200);
   --action-tertiary-text-color-disabled: var(--jal-red-200);
 
-  --action-attention-border-color: var(--jal-red-500);
-  --action-attention-border-color-hover: var(--jal-red-500);
-  --action-attention-border-color-focus: var(--jal-red-500);
-  --action-attention-border-color-disabled: var(--jal-red-500);
-  --action-attention-background: var(--jal-red-500);
-  --action-attention-background-hover: var(--jal-red-700);
-  --action-attention-background-focus: var(--jal-red-700);
-  --action-attention-background-disabled: var(--jal-red-100);
-  --action-attention-text-color: var(--jal-white);
-  --action-attention-text-color-hover: var(--jal-white);
-  --action-attention-text-color-focus: var(--jal-white);
-  --action-attention-text-color-disabled: var(--jal-white);
+  --action-attention-border-color: var(--jal-red-200);
+  --action-attention-border-color-hover: var(--jal-red-100);
+  --action-attention-border-color-focus: var(--jal-red-100);
+  --action-attention-border-color-disabled: var(--jal-grey-500);
+  --action-attention-background: var(--jal-red-200);
+  --action-attention-background-hover: var(--jal-red-100);
+  --action-attention-background-focus: var(--jal-red-100);
+  --action-attention-background-disabled: var(--jal-grey-100);
+  --action-attention-text-color: var(--jal-red-800);
+  --action-attention-text-color-hover: var(--jal-red-900);
+  --action-attention-text-color-focus: var(--jal-red-900);
+  --action-attention-text-color-disabled: var(--jal-red-900);
 
   /* Badge */
   --badge-text-color: var(--jal-white);

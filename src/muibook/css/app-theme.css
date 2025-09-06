@@ -76,8 +76,8 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-story-snippet-code-bg: var(--jal-red-300);
   --app-story-snippet-code-text: var(--jal-white);
   /* App Surface */
-  --app-container-surface: var(--surface);
-  --app-navbar-surface: var(--surface-elevated-100);
+  --app-container-surface: var(--jal-grey-800);
+  --app-navbar-surface: var(--jal-grey-900);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
 }
 
