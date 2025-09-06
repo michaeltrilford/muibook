@@ -405,8 +405,11 @@ html[data-theme="light"] {
   /* Dropdown */
   --dropdown-background: var(--grey-100);
   --dropdown-border-color: var(--black-opacity-20);
-  --dropdown-shadow: 0 var(--space-100) var(--space-200) var(--black-opacity-10);
+  --dropdown-shadow-color: var(--black-opacity-10);
   --dropdown-button-background-hover: var(--white);
+
+  /* Dialog */
+  --dialog-backdrop: var(--black-opacity-70);
 }
 
 /* ==================================================================================================== */
@@ -609,8 +612,11 @@ html[data-theme="dark"] {
   /* Dropdown */
   --dropdown-background: var(--grey-1000);
   --dropdown-border-color: var(--black-opacity-20);
-  --dropdown-shadow: 0 var(--space-100) var(--space-200) var(--black-opacity-20);
+  --dropdown-shadow-color: var(--black-opacity-20);
   --dropdown-button-background-hover: var(--grey-900);
+
+  /* Dialog */
+  --dialog-backdrop: var(--black-opacity-70);
 }
 
 /* ==================================================================================================== */
@@ -732,4 +738,6 @@ html[data-theme="dark"] {
   --chip-radius: var(--radius-400);
   /* Dropdown */
   --dropdown-radius: var(--radius-100);
+  /* Dialog */
+  --dialog-radius: var(--radius-150);
 }

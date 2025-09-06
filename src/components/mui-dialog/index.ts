@@ -20,12 +20,12 @@ class MuiDialog extends HTMLElement {
     const styles = /*css*/ `
       dialog {
         border: none;
-        border-radius: var(--card-radius);
-        background: var(--surface-elevated-100);
         width: ${width};
         max-width: 90vw;
         padding: 0;
         overflow: hidden;
+        border-radius: var(--dialog-radius);
+        background: var(--surface-elevated-100);
       }
 
       dialog,
@@ -35,7 +35,7 @@ class MuiDialog extends HTMLElement {
       }
 
       dialog::backdrop {
-        background: var(--black-opacity-70);
+        background: var(--dialog-backdrop);
       }
 
       header {
@@ -47,9 +47,9 @@ class MuiDialog extends HTMLElement {
       }
 
       main {
-        padding: var(--space-500, 20px);
         max-height: 60vh;
         overflow-y: auto;
+        padding: var(--space-500);
       }
 
       footer {

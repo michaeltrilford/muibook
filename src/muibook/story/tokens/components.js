@@ -56,6 +56,9 @@ class tokensComponents extends HTMLElement {
               <mui-link size="small" data-scroll-link="tab">Tab Bar</mui-link>
               <mui-link size="small" data-scroll-link="carousel">Carousel</mui-link>
               <mui-link size="small" data-scroll-link="slat">Slat</mui-link>
+              <mui-link size="small" data-scroll-link="dialog">Dialog</mui-link>
+              <mui-link size="small" data-scroll-link="dropdown">Dropdown</mui-link>
+              <mui-link size="small" data-scroll-link="chip">Chip</mui-link>
             </mui-h-stack>
           </mui-message>
 
@@ -187,7 +190,7 @@ class tokensComponents extends HTMLElement {
             title="Tab Bar"
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-tabs"
           >
-            <story-token-slat slot="body" token="--tab-border-color" variant="border"></story-token-slat>  
+            <story-token-slat slot="body" token="--tab-border-color" variant="border-color"></story-token-slat>  
             <story-token-slat slot="body" token="--tab-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-background-active" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-icon" variant="color"></story-token-slat>
@@ -221,6 +224,50 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--slat-card-background-hover" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--slat-radius" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--slat-accessory-background" variant="color"></story-token-slat>
+          </spec-card>
+
+          <spec-card 
+            id="dialog"
+            title="Dialog"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
+          >
+            <story-token-slat slot="body" token="--dialog-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--dialog-backdrop" variant="color"></story-token-slat>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Surface Contextual</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Border Contextual</mui-link> tokens</mui-body>
+          </spec-card>
+
+          <spec-card 
+            id="dropdown"
+            title="Dropdown"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dropdown/index.ts"
+          >
+            <story-token-slat slot="body" token="--dropdown-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--dropdown-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--dropdown-button-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--dropdown-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--dropdown-shadow-color" variant="color"></story-token-slat>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Surface Contextual</mui-link> tokens</mui-body>
+          </spec-card>
+
+          <spec-card 
+            id="chip"
+            title="Chip"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-chip/index.ts"
+          >
+            <story-token-slat slot="body" token="--chip-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-background-focus" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-background-active" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-border-color-hover" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-border-color-focus" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-border-color-active" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-text-color-active" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-icon-fill" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-dismiss-action-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-dismiss-action-background-hover" variant="color"></story-token-slat>
           </spec-card>
 
       </story-template>

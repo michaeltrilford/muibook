@@ -293,7 +293,7 @@ class MuiDropdown extends HTMLElement {
           /* Unique Styles */
           background: var(--dropdown-background);
           border-color: var(--dropdown-border-color);
-          box-shadow: var(--dropdown-shadow);
+          box-shadow: 0 var(--space-100) var(--space-200) var(--dropdown-shadow-color);
           border-radius: var(--dropdown-radius);
           padding: 1px;
         }
