@@ -68,11 +68,12 @@ class MuiDrawer extends HTMLElement {
     const width = this.getAttribute("width") || "400px";
     const variant = this.getAttribute("variant") || "overlay";
 
+    // Determine side: attribute takes priority, otherwise fallback to slot logic
     const hasBefore = !!this.querySelector('[slot="before"]');
-    this._computedSide = hasBefore ? "right" : "left"; // after is left by default
+    this._computedSide = (this.getAttribute("side") as "left" | "right") || (hasBefore ? "right" : "left");
 
-    if (variant !== "overlay") {
-      // override side only for push and persistent
+    // Only update the attribute if it changed
+    if (this.getAttribute("side") !== this._computedSide) {
       this.setAttribute("side", this._computedSide);
     }
 
@@ -214,6 +215,9 @@ class MuiDrawer extends HTMLElement {
       }
     `;
 
+    // Compute which side to render the drawer
+    const side = this.getAttribute("side") || this._computedSide;
+
     // Template selection
     let template = "";
 
@@ -236,24 +240,17 @@ class MuiDrawer extends HTMLElement {
         </footer>
       </div>
     `;
-    } else if (variant === "push") {
+    } else if (variant === "push" || variant === "persistent") {
       template = /*html*/ `
-        <style>${baseStyles}${inlineStyles}</style>
-        <div class="push-layout">
-          <slot name="before"></slot>
-          ${this.getDrawerTemplate()}
-          <slot name="after"></slot>
-        </div>
-      `;
-    } else if (variant === "persistent") {
-      template = /*html*/ `
-        <style>${baseStyles}${inlineStyles}</style>
-        <div class="persistent-layout">
-          <slot name="before"></slot>
-          ${this.getDrawerTemplate(false)}
-          <slot name="after"></slot>
-        </div>
-      `;
+    <style>${baseStyles}${inlineStyles}</style>
+    <div class="${variant}-layout">
+      ${
+        side === "left"
+          ? this.getDrawerTemplate() + '<slot name="page"></slot>'
+          : '<slot name="page"></slot>' + this.getDrawerTemplate()
+      }
+    </div>
+  `;
     }
 
     this.shadowRoot.innerHTML = template;
@@ -292,6 +289,9 @@ class MuiDrawer extends HTMLElement {
       this.outerEl.style.width = value || "400px";
     }
     if (name === "side") {
+      this.render();
+      this.cacheEls();
+      this.attachEvents();
       this.syncOpenState();
     }
     if (name === "variant") {

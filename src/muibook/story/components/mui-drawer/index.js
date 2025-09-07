@@ -293,60 +293,8 @@ class storyDrawer extends HTMLElement {
 
       <story-card title="Left-side: Push Drawer">
   
-        <mui-drawer slot="body" variant="push" data-drawer="drawer-3" width="320px">
-          <div slot="after" class="page-main">
-            <div class="page-header">
-              <mui-heading size="4" level="4">New Invoice</mui-heading>
-            </div>
-            <div class="page-content">
-              <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
-                <mui-v-stack space="var(--space-300);">
-                  <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
-                <mui-v-stack space="var(--space-400);">
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
-              </mui-v-stack>
-              <mui-button variant="primary" data-drawer="drawer-3">Edit</mui-button>
-            </div>
-          </div>
-          <mui-heading size="4" level="4" slot="title">Edit Invoice Details</mui-heading>
-          <form>
-            <mui-v-stack space="var(--space-400)">
-              <mui-input label="Customer" value="Hank Barry"></mui-input>
-              <mui-input label="Invoice ID" value="IV001"></mui-input>
-              <mui-input label="Purchase ID" value="9900"></mui-input>
-              <mui-input label="Issued" value="16/10/2025"></mui-input>
-              <mui-input label="Due" value="15/11/2025"></mui-input>
-              <mui-text-area label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-text-area>
-            </mui-v-stack>
-          </form>
-          <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="primary">Save</mui-button>
-        </mui-drawer>
-
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-grid col="1fr auto"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-container&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Main body content goes here.&lt;/p&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="primary" data-drawer="drawer-2"&gt;Open Drawer&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-container&gt;<br><br>
-          &nbsp;&nbsp;&lt;mui-drawer variant="push" data-drawer="drawer-2" width="300px" side="left"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Push Drawer&lt;/mui-heading&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;This drawer pushes content aside.&lt;/mui-body&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Close&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-drawer&gt;<br>
-          &lt;/mui-grid&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card title="Right-side: Push Drawer">
-  
-        <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px">
-          <div slot="before" class="page-main">
+        <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="left">
+          <div slot="page" class="page-main">
             <div class="page-header">
               <mui-heading size="4" level="4">New Invoice</mui-heading>
             </div>
@@ -396,10 +344,62 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="Right-side: Push Drawer">
+  
+        <mui-drawer slot="body" variant="push" data-drawer="drawer-3" width="320px" side="right">
+          <div slot="page" class="page-main">
+            <div class="page-header">
+              <mui-heading size="4" level="4">New Invoice</mui-heading>
+            </div>
+            <div class="page-content">
+              <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
+                <mui-v-stack space="var(--space-300);">
+                  <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+                  <div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+                </mui-v-stack>
+                <mui-v-stack space="var(--space-400);">
+                  <div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+                  <div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+                  <div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+                </mui-v-stack>
+              </mui-v-stack>
+              <mui-button variant="primary" data-drawer="drawer-3">Edit</mui-button>
+            </div>
+          </div>
+          <mui-heading size="4" level="4" slot="title">Edit Invoice Details</mui-heading>
+          <form>
+            <mui-v-stack space="var(--space-400)">
+              <mui-input label="Customer" value="Hank Barry"></mui-input>
+              <mui-input label="Invoice ID" value="IV001"></mui-input>
+              <mui-input label="Purchase ID" value="9900"></mui-input>
+              <mui-input label="Issued" value="16/10/2025"></mui-input>
+              <mui-input label="Due" value="15/11/2025"></mui-input>
+              <mui-text-area label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-text-area>
+            </mui-v-stack>
+          </form>
+          <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
+          <mui-button slot="actions" variant="primary">Save</mui-button>
+        </mui-drawer>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-grid col="1fr auto"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-container&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Main body content goes here.&lt;/p&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="primary" data-drawer="drawer-2"&gt;Open Drawer&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-container&gt;<br><br>
+          &nbsp;&nbsp;&lt;mui-drawer variant="push" data-drawer="drawer-2" width="300px" side="left"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Push Drawer&lt;/mui-heading&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;This drawer pushes content aside.&lt;/mui-body&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Close&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-drawer&gt;<br>
+          &lt;/mui-grid&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card title="Right-side: Persistent Drawer" description="Content is displayed BEFORE the drawer content">
       
-        <mui-drawer variant="persistent" width="320px" slot="body">
-          <div slot="before" class="page-main">
+        <mui-drawer variant="persistent" width="320px" slot="body" side="right">
+          <div slot="page" class="page-main">
             <div class="page-header">
               <mui-heading size="4" level="4">Smart Bills</mui-heading>
             </div>
@@ -443,8 +443,8 @@ class storyDrawer extends HTMLElement {
 
       <story-card title="Left-side: Persistent Drawer" description="Content is displayed AFTER the drawer content">
       
-        <mui-drawer variant="persistent" width="320px" slot="body">
-          <div slot="after" class="page-main">
+        <mui-drawer variant="persistent" width="320px" slot="body" side="left">
+          <div slot="page" class="page-main">
             <div class="page-header">
               <mui-heading size="4" level="4">Smart Bills</mui-heading>
             </div>
