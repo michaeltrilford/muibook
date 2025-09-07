@@ -49,6 +49,8 @@ export default defineConfig({
         "components/mui-heading": path.resolve(__dirname, "src/components/mui-heading"),
         // DIALOG
         "components/mui-dialog": path.resolve(__dirname, "src/components/mui-dialog"),
+        // DRAWER
+        "components/mui-drawer": path.resolve(__dirname, "src/components/mui-drawer"),
         // ICONS
         "components/mui-icons": path.resolve(__dirname, "src/components/mui-icons"),
         "components/mui-icons/accessibility": path.resolve(__dirname, "src/components/mui-icons/accessibility.ts"),

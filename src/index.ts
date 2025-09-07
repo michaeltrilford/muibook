@@ -29,6 +29,7 @@ export * from "./components/mui-list/list";
 export * from "./components/mui-quote";
 export * from "./components/mui-code";
 export * from "./components/mui-dialog";
+export * from "./components/mui-drawer";
 export * from "./components/mui-image";
 export * from "./components/mui-smart-card";
 export * from "./components/mui-icons/accessibility";

@@ -1,3 +1,6 @@
+import "../mui-icons/close";
+import "../mui-button";
+
 class MuiDialog extends HTMLElement {
   private dialogEl!: HTMLDialogElement;
   private footerEl!: HTMLElement | null;

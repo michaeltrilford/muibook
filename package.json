@@ -116,6 +116,10 @@
       "import": "./dist/esm/components/mui-dialog/index.js",
       "types": "./dist/types/components/mui-dialog/index.d.ts"
     },
+    "./mui-drawer": {
+      "import": "./dist/esm/components/mui-drawer/index.js",
+      "types": "./dist/types/components/mui-drawer/index.d.ts"
+    },
     "./mui-field": {
       "import": "./dist/esm/components/mui-field/index.js",
       "types": "./dist/types/components/mui-field/index.d.ts"

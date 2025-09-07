@@ -152,6 +152,7 @@ class appNavbar extends HTMLElement {
         <mui-body weight="bold">Content</mui-body>
         <app-navbar-link link="#/table" title="Table"></app-navbar-link>
         <app-navbar-link link="#/dialog" title="Dialog"></app-navbar-link>
+        <app-navbar-link link="#/drawer" title="Drawer"></app-navbar-link>
         <app-navbar-link link="#/slat" title="Slat"></app-navbar-link>
         <app-navbar-link link="#/accordion" title="Accordion"></app-navbar-link>
         <app-navbar-link link="#/heading" title="Heading"></app-navbar-link>
