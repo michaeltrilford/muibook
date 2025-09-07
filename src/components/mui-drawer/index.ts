@@ -217,6 +217,7 @@ class MuiDrawer extends HTMLElement {
 
     // Compute which side to render the drawer
     const side = this.getAttribute("side") || this._computedSide;
+    const showCloseButton = variant === "overlay" || variant === "push";
 
     // Template selection
     let template = "";
@@ -242,15 +243,15 @@ class MuiDrawer extends HTMLElement {
     `;
     } else if (variant === "push" || variant === "persistent") {
       template = /*html*/ `
-    <style>${baseStyles}${inlineStyles}</style>
-    <div class="${variant}-layout">
-      ${
-        side === "left"
-          ? this.getDrawerTemplate() + '<slot name="page"></slot>'
-          : '<slot name="page"></slot>' + this.getDrawerTemplate()
-      }
-    </div>
-  `;
+        <style>${baseStyles}${inlineStyles}</style>
+        <div class="${variant}-layout">
+          ${
+            side === "left"
+              ? this.getDrawerTemplate(showCloseButton) + '<slot name="page"></slot>'
+              : '<slot name="page"></slot>' + this.getDrawerTemplate(showCloseButton)
+          }
+        </div>
+      `;
     }
 
     this.shadowRoot.innerHTML = template;
