@@ -26,10 +26,14 @@ class MuiDrawer extends HTMLElement {
     this.updateFooterVisibility();
     this.syncOpenState();
     document.addEventListener("keydown", this._handleEscape);
+
+    // 👇 Watch for resize
+    window.addEventListener("resize", this._handleResize);
   }
 
   disconnectedCallback() {
     document.removeEventListener("keydown", this._handleEscape);
+    window.removeEventListener("resize", this._handleResize);
   }
 
   private _handleEscape = (e: KeyboardEvent) => {
@@ -86,17 +90,21 @@ class MuiDrawer extends HTMLElement {
         border-bottom: var(--border-thin);
         box-sizing: border-box;
         min-height: 7.7rem;
+        max-height: 7.7rem;
       }
 
       main {
-        flex: 1;
         overflow-y: auto;
         height: 100%;
         padding: var(--space-500);
         box-sizing: border-box;
-
         /* Force a new compositing layer */
         will-change: transform, opacity;
+        height: calc(100dvh - (7.7rem  + (env(safe-area-inset-top) + env(safe-area-inset-bottom)) ));
+      }
+
+      :host([has-footer]) main {
+        padding-bottom: calc(7.7rem + var(--space-500));
       }
 
       footer {
@@ -108,6 +116,9 @@ class MuiDrawer extends HTMLElement {
         background: var(--surface-elevated-100);
         gap: var(--space-300);
         box-sizing: border-box;
+        position: fixed;
+        bottom: 0;
+        width: ${width};
       }
 
       footer[hidden] {
@@ -184,11 +195,14 @@ class MuiDrawer extends HTMLElement {
 
     const inlineStyles = /*css*/ `
       .outer {
-        display: flex;
-        flex-direction: column;
         background: var(--surface-elevated-100);
         width: ${width};
         height: auto;
+        /* FullHeight */
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100dvh;
       }
 
       .push-layout {
@@ -215,6 +229,86 @@ class MuiDrawer extends HTMLElement {
       }
     `;
 
+    const responsiveStyles = /*css*/ `
+      @media (max-width: 768px) {
+        .drawer-wrapper {
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+          width: 100%;
+          max-height: 100dvh;
+          transform: translateY(100%);
+          transition: none;
+        }        
+
+        :host([open]) .drawer-wrapper {
+          transform: translateY(0);
+          transition: transform 0.3s ease;
+        }
+
+        .outer {
+          width: 100%;
+          border: none;
+          height: 100%;
+        }
+
+        footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+        }
+
+        .persistent-layout {
+          display: block;
+          height: auto;
+        }
+
+
+        .persistent-layout .drawer-wrapper {
+          width: 100%;
+          position: static;
+          height: auto;
+          transform: none;
+          order: 1;
+          padding: calc(var(--space-700) / 2);
+          box-sizing: border-box;
+          max-height: initial;
+        }
+
+        .persistent-layout .outer {
+          position: static;
+          height: auto;
+          border-radius: var(--radius-200);
+        }
+
+        .persistent-layout footer {
+          border-bottom-right-radius: var(--radius-200);
+          border-bottom-left-radius: var(--radius-200);
+          position: static;
+          width: 100%;
+        }
+
+        .persistent-layout main {
+          height: auto;
+        }
+
+        :host([has-footer]) main {
+          padding-bottom: var(--space-500);
+        }
+
+        :host([open]) .drawer-wrapper, 
+        .persistent-layout .drawer-wrapper {
+          border: none;
+        }
+
+
+
+
+      }
+    `;
+
     // Compute which side to render the drawer
     const side = this.getAttribute("side") || this._computedSide;
     const showCloseButton = variant === "overlay" || variant === "push";
@@ -224,7 +318,7 @@ class MuiDrawer extends HTMLElement {
 
     if (variant === "overlay") {
       template = /*html*/ `
-      <style>${baseStyles}${overlayStyles}</style>
+      <style>${baseStyles}${overlayStyles}${responsiveStyles}</style>
       <div class="overlay"></div>
       <div class="outer" role="dialog" aria-modal="true">
         <header>
@@ -243,7 +337,7 @@ class MuiDrawer extends HTMLElement {
     `;
     } else if (variant === "push" || variant === "persistent") {
       template = /*html*/ `
-        <style>${baseStyles}${inlineStyles}</style>
+        <style>${baseStyles}${inlineStyles}${responsiveStyles}</style>
         <div class="${variant}-layout">
           ${
             side === "left"
@@ -282,6 +376,9 @@ class MuiDrawer extends HTMLElement {
     if (!this.footerEl || !this.actionsSlot) return;
     const hasActions = this.actionsSlot.assignedElements().length > 0;
     this.footerEl.hidden = !hasActions;
+
+    // 👇 Reflect state on host
+    this.toggleAttribute("has-footer", hasActions);
   }
 
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
@@ -319,23 +416,50 @@ class MuiDrawer extends HTMLElement {
       this.inert = !isOpen; // make drawer non-interactive when closed
     }
 
-    // For push & persistent layouts, just update grid
-    if (variant === "push" || variant === "persistent") {
+    // push & persistent layouts
+    if (variant === "push" && this.drawerWrapper) {
       this.updateLayout(variant, isOpen);
+      this.drawerWrapper.style.zIndex = drawerZ.toString();
+      this.drawerWrapper.inert = !isOpen; // only push should disable when closed
+    }
 
-      if (variant === "push" && this.drawerWrapper) {
-        this.drawerWrapper.style.zIndex = drawerZ.toString();
-        this.drawerWrapper.inert = !isOpen;
-      }
+    if (variant === "persistent" && this.drawerWrapper) {
+      this.updateLayout(variant, isOpen);
+      this.drawerWrapper.style.zIndex = drawerZ.toString();
+      this.drawerWrapper.inert = false; // persistent should always be interactive
     }
   }
+
+  private _handleResize = () => {
+    const variant = this.getAttribute("variant") || "overlay";
+    if (variant === "push" || variant === "persistent") {
+      const isOpen = this.hasAttribute("open");
+      this.updateLayout(variant, isOpen);
+    }
+  };
 
   private updateLayout(variant: string, isOpen: boolean) {
     const drawerWidth = this.getAttribute("width") || "300px";
     const side = this.getAttribute("side") || this._computedSide;
-
     const layout = variant === "push" ? this.pushLayout : variant === "persistent" ? this.persistentLayout : null;
     if (!layout) return;
+
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      if (variant === "push") {
+        // Let CSS handle slide-up
+        layout.style.removeProperty("grid-template-columns");
+      } else if (variant === "persistent") {
+        // Stack drawer and page vertically
+        layout.style.display = "grid";
+        layout.style.removeProperty("grid-template-columns");
+      }
+      return;
+    }
+
+    // Desktop: restore grid
+    layout.style.display = "grid";
 
     if (variant === "push") {
       layout.style.gridTemplateColumns =

@@ -41,11 +41,7 @@ class storyDrawer extends HTMLElement {
         overflow: scroll;
       }
 
-      @media (max-width: 600px) {
-        .page-content {
-          height: auto;
-        }
-      }
+
 
     `;
 
@@ -331,7 +327,7 @@ class storyDrawer extends HTMLElement {
               <mui-input label="Purchase ID" value="9900"></mui-input>
               <mui-input label="Issued" value="16/10/2025"></mui-input>
               <mui-input label="Due" value="15/11/2025"></mui-input>
-              <mui-text-area label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-text-area>
+              <mui-input label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-input>
             </mui-v-stack>
           </form>
 
@@ -413,8 +409,8 @@ class storyDrawer extends HTMLElement {
             <div class="page-header">
               <mui-heading size="4" level="4">Smart Bills</mui-heading>
             </div>
-            <div class="page-content">
-              <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
+            <mui-loader loading animation="pulsate" duration="2s">
+              <mui-v-stack space="var(--space-600);" style="padding: var(--space-700)">
                 <mui-v-stack space="var(--space-300);">
                   <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
                   <div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
@@ -425,7 +421,7 @@ class storyDrawer extends HTMLElement {
                   <div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
                 </mui-v-stack>
               </mui-v-stack>
-            </div>
+            </mui-loader>
           </div>
           <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
           <form>
@@ -458,8 +454,8 @@ class storyDrawer extends HTMLElement {
             <div class="page-header">
               <mui-heading size="4" level="4">Smart Bills</mui-heading>
             </div>
-            <div class="page-content">
-              <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
+            <mui-loader loading animation="pulsate" duration="2s">
+              <mui-v-stack space="var(--space-600);" style="padding: var(--space-700)">
                 <mui-v-stack space="var(--space-300);">
                   <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
                   <div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
@@ -470,7 +466,7 @@ class storyDrawer extends HTMLElement {
                   <div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
                 </mui-v-stack>
               </mui-v-stack>
-            </div>
+            </mui-loader>
           </div>
           <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
           <form>
@@ -502,22 +498,43 @@ class storyDrawer extends HTMLElement {
 
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
+      <mui-drawer variant="persistent" width="320px" slot="body" side="right">
+        <div slot="page" class="page-main">
+          <div class="page-header">
+            <mui-heading size="4" level="4">Smart Bills</mui-heading>
+          </div>
+          <mui-loader loading animation="pulsate" duration="2s">
+            <mui-v-stack space="var(--space-600);" style="padding: var(--space-700)">
+              <mui-v-stack space="var(--space-300);">
+                <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+                <div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+              </mui-v-stack>
+              <mui-v-stack space="var(--space-400);">
+                <div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+                <div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+                <div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+              </mui-v-stack>
+            </mui-v-stack>
+          </mui-loader>
+        </div>
+        <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
+        <form>
+          <mui-v-stack space="var(--space-400)">
+            <mui-input label="Item" value="Hank Barry"></mui-input>
+            <mui-input label="Description" value="Telstra Upfront 5G Internet"></mui-input>
+            <mui-input label="Allocate to" value="Internet"></mui-input>
+            <mui-input label="Qty" value="1"></mui-input>
+            <mui-input label="Unit price" value="85.50"></mui-input>
+          </mui-v-stack>
+        </form>
 
-      <story-template 
-        title="Drawer (WIP)" 
-        description="A drawer view that prompts users to take a specific action or provide additional information without navigating away from the current context."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
-        accessibility="
-          Uses role='dialog' and aria-modal='true' for screen readers.;
-          Focus is managed by the browser’s native dialog behavior when open.;
-          The close button includes aria-label='Close Icon'.;
-          Footer is hidden when empty to reduce screen reader noise.;
-          Clicking the backdrop closes the dialog.;
-          No extra labels are required from the consumer. Accessible by default.
-        "
-      >
-        ${stories}
-      </story-template>
+        <mui-button slot="actions" variant="tertiary">Back</mui-button>
+        <mui-button slot="actions" variant="primary">Next</mui-button>
+
+      </mui-drawer>
+
+
+
     `;
 
     // Open dialog buttons
