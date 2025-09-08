@@ -89,8 +89,6 @@ class MuiDrawer extends HTMLElement {
         padding: calc(var(--space-400) + env(safe-area-inset-top)) var(--space-400) var(--space-400) var(--space-500);
         border-bottom: var(--border-thin);
         box-sizing: border-box;
-        min-height: 7.7rem;
-        max-height: 7.7rem;
       }
 
       main {
@@ -289,6 +287,10 @@ class MuiDrawer extends HTMLElement {
           position: static;
           height: auto;
           border-radius: var(--radius-200);
+        }
+
+        .persistent-layout header {
+          padding-top: var(--space-400);
         }
 
         .persistent-layout footer {

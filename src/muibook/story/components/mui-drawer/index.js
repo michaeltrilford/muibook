@@ -33,7 +33,7 @@ class storyDrawer extends HTMLElement {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: calc(var(--space-400) + env(safe-area-inset-top)) var(--space-400) var(--space-400) var(--space-500);
+        padding: var(--space-400) var(--space-400) var(--space-400) var(--space-500);
         border-bottom: var(--border-thin);
         box-sizing: border-box;
         min-height: 7.7rem;
