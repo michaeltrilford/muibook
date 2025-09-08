@@ -101,6 +101,8 @@ export default defineConfig({
         "components/mui-loader": path.resolve(__dirname, "src/components/mui-loader"),
         // Message
         "components/mui-message": path.resolve(__dirname, "src/components/mui-message"),
+        // PROGRESS
+        "components/mui-progress": path.resolve(__dirname, "src/components/mui-progress"),
         // QUOTE
         "components/mui-quote": path.resolve(__dirname, "src/components/mui-quote"),
         // RESPONSIVE

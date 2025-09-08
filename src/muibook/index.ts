@@ -71,6 +71,7 @@ import "../components/mui-slat/group";
 import "../components/mui-body";
 import "../components/mui-rule";
 import "../components/mui-quote";
+import "../components/mui-progress";
 import "../components/mui-smart-card";
 import "../components/mui-table/table";
 import "../components/mui-table/row";

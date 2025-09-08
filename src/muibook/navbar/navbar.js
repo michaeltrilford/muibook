@@ -147,7 +147,8 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
         <app-navbar-link link="#/checkbox" title="Checkbox"></app-navbar-link>  
         <app-navbar-link link="#/select" title="Select"></app-navbar-link>  
-        <app-navbar-link link="#/switch" title="Switch"></app-navbar-link>  
+        <app-navbar-link link="#/switch" title="Switch"></app-navbar-link>
+        <app-navbar-link link="#/progress" title="Progress"></app-navbar-link>  
 
         <mui-body weight="bold">Content</mui-body>
         <app-navbar-link link="#/table" title="Table"></app-navbar-link>

@@ -9,6 +9,7 @@ export * from "./components/mui-input";
 export * from "./components/mui-checkbox";
 export * from "./components/mui-select";
 export * from "./components/mui-switch";
+export * from "./components/mui-progress";
 
 // Content
 export * from "./components/mui-table/table";

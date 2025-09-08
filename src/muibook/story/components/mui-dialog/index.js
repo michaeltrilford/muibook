@@ -439,9 +439,10 @@ class storyDialog extends HTMLElement {
         <mui-button data-dialog="hook-5" slot="body">Start Upload</mui-button>
         <mui-dialog data-dialog="hook-5" width="500px" slot="body" aria-labelledby="dialog-title-5" aria-describedby="dialog-desc-5">
           <mui-heading size="4" level="4" slot="title" id="dialog-title-5">Uploading</mui-heading>
-          <mui-v-stack space="var(--space-200)" alignX="center" style="padding: var(--space-800) 0;">
-            <mui-loader loading animation="pulsate" duration="1.5s">
-              <mui-body id="dialog-desc-5">Uploading your files… please wait.</mui-body>
+          <mui-v-stack space="var(--space-400)" alignX="center" style="padding: var(--space-800) 0;">
+            <mui-progress style="width: 55%" state="pending"></mui-progress>
+            <mui-loader loading animation="pulsate" duration="3s">
+              <mui-body size="small" id="dialog-desc-5">Uploading your files… please wait.</mui-body>
             </mui-loader>
           </mui-v-stack>
         </mui-dialog>

@@ -300,6 +300,10 @@
       "import": "./dist/esm/components/mui-rule/index.js",
       "types": "./dist/types/components/mui-rule/index.d.ts"
     },
+    "./mui-progress": {
+      "import": "./dist/esm/components/mui-progress/index.js",
+      "types": "./dist/types/components/mui-progress/index.d.ts"
+    },
     "./mui-select": {
       "import": "./dist/esm/components/mui-select/index.js",
       "types": "./dist/types/components/mui-select/index.d.ts"
