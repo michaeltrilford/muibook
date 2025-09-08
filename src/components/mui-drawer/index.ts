@@ -55,7 +55,7 @@ class MuiDrawer extends HTMLElement {
             <mui-button class="close" variant="tertiary" aria-label="Close panel">
               <mui-icon-close></mui-icon-close>
             </mui-button>`
-              : ""
+              : "<span class='spacer'></span>"
           }
         </header>
         <main><slot></slot></main>
@@ -216,6 +216,10 @@ class MuiDrawer extends HTMLElement {
         display: grid;
         height: 100%;
         overflow: hidden; /* optional, prevents content overflow during transitions */
+      }
+
+      .persistent-layout .spacer {
+        height: 4.4rem;
       }
 
       .drawer-wrapper {
