@@ -303,7 +303,7 @@ class storyDrawer extends HTMLElement {
 
       <story-card title="Left-side: Push Drawer">
   
-        <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="left">
+        <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="left" z-index="200">
           <div slot="page" class="page-main">
             <div class="page-header">
               <mui-heading size="4" level="4">New Invoice</mui-heading>
@@ -356,7 +356,7 @@ class storyDrawer extends HTMLElement {
 
       <story-card title="Right-side: Push Drawer">
   
-        <mui-drawer slot="body" variant="push" data-drawer="drawer-3" width="320px" side="right">
+        <mui-drawer slot="body" variant="push" data-drawer="drawer-3" width="320px" side="right" z-index="200">
           <div slot="page" class="page-main">
             <div class="page-header">
               <mui-heading size="4" level="4">New Invoice</mui-heading>
@@ -408,7 +408,7 @@ class storyDrawer extends HTMLElement {
 
       <story-card title="Right-side: Persistent Drawer" description="Content is displayed BEFORE the drawer content">
       
-        <mui-drawer variant="persistent" width="320px" slot="body" side="right">
+        <mui-drawer variant="persistent" width="320px" slot="body" side="right" z-index="200">
           <div slot="page" class="page-main">
             <div class="page-header">
               <mui-heading size="4" level="4">Smart Bills</mui-heading>
@@ -453,7 +453,7 @@ class storyDrawer extends HTMLElement {
 
       <story-card title="Left-side: Persistent Drawer" description="Content is displayed AFTER the drawer content">
       
-        <mui-drawer variant="persistent" width="320px" slot="body" side="left">
+        <mui-drawer variant="persistent" width="320px" slot="body" side="left" z-index="200">
           <div slot="page" class="page-main">
             <div class="page-header">
               <mui-heading size="4" level="4">Smart Bills</mui-heading>
