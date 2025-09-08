@@ -50,7 +50,7 @@ class MuiDrawer extends HTMLElement {
     <div class="drawer-wrapper">
       <div class="outer" role="complementary">
         <header>
-          <slot name="title"></slot>
+          <slot name="title"><span></span></slot>
           ${
             hasCloseButton
               ? `

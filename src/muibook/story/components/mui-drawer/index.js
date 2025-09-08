@@ -20,8 +20,7 @@ class storyDrawer extends HTMLElement {
         text-align: left;
       }
       .menu-item::part(padding) {
-        padding-left: var(--space-500);
-        padding-right: var(--space-500);
+        padding: var(--space-300) var(--space-500);
         border-radius: 0;
       }
 
@@ -652,20 +651,20 @@ class storyDrawer extends HTMLElement {
               </div>
             </div>
             <mui-heading size="4" level="4" slot="title">Menu</mui-heading>
-            <mui-v-stack alignX="stretch" space="var(--space-100)">
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+            <mui-v-stack alignX="stretch" space="var(--space-100)" style="padding-bottom: var(--space-400);">
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
             </mui-v-stack>
           </mui-drawer>
         </div>
