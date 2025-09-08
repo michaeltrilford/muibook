@@ -424,7 +424,7 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Left-side: Push Drawer" description="The Push Drawer slides in from the left and shifts the page content to the right. This variant is designed for full-screen page views rather than being placed within a smaller page section. It provides a clear separation between the drawer and the main content, ensuring focus while still keeping the full page accessible.">
+      <story-card title="Left-side: Push Drawer" description="The Push Drawer slides in from the left and shifts the page content to the right. This variant is intended for full-screen page views rather than smaller page sections. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content. If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.">
         <div class="canvas" slot="body">  
           <mui-drawer variant="push" data-drawer="drawer-3" width="320px" side="left" z-index="200">
             <div slot="page" class="page-main">
@@ -470,7 +470,8 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Right-side: Push Drawer" description="The Push Drawer slides in from the right and shifts the page content to the left. This variant is designed for full-screen page views rather than being placed within a smaller page section. It provides a clear separation between the drawer and the main content, ensuring focus while still keeping the full page accessible.">
+      <story-card title="Right-side: Push Drawer" 
+        description="The Push Drawer slides in from the right and shifts the page content to the left. This variant is intended for full-screen page views rather than smaller page sections. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content. If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.">
         <div class="canvas" slot="body">
           <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right" z-index="200">
             <div slot="page" class="page-main">
