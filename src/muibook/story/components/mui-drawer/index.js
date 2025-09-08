@@ -266,7 +266,7 @@ class storyDrawer extends HTMLElement {
         <mui-h-stack alignX="space-between">
           <mui-v-stack space="var(--space-300);">
             <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>  
-            <div style="height:var(--heading-font-size-100); width: 200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height:var(--heading-font-size-100); width: 100px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
             <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
           </mui-v-stack>
           <mui-v-stack space="var(--space-300);">
