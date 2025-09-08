@@ -359,7 +359,7 @@ class storyDrawer extends HTMLElement {
       </mui-v-stack>
 
       <story-card title="Overlay Drawer: Left" description="The drawer is positioned fixed to the viewport edge">
-        <mui-button variant="primary" data-drawer="drawer-1" slot="body">Open Overlay Drawer</mui-button>
+        <mui-button variant="primary" data-drawer="drawer-1" slot="body">Open</mui-button>
         
         <mui-drawer variant="overlay" data-drawer="drawer-1" width="400px" side="left" slot="body" z-index="200">
           <mui-heading size="4" level="4" slot="title">Overlay Drawer</mui-heading>
@@ -392,7 +392,7 @@ class storyDrawer extends HTMLElement {
       </story-card>
 
       <story-card title="Overlay Drawer: Right" description="The drawer is positioned fixed to the viewport edge">
-        <mui-button variant="primary" data-drawer="drawer-2" slot="body">Open Overlay Drawer</mui-button>
+        <mui-button variant="primary" data-drawer="drawer-2" slot="body">Open</mui-button>
         
         <mui-drawer variant="overlay" data-drawer="drawer-2" width="400px" side="right" slot="body" z-index="200">
           <mui-heading size="4" level="4" slot="title">Overlay Drawer</mui-heading>
