@@ -27,9 +27,9 @@ class storyProgress extends HTMLElement {
       {
         name: "state",
         type: "string",
-        options: "indeterminate",
+        options: "pending, syncing",
         default: "",
-        description: "Set to 'indeterminate' when progress cannot be measured",
+        description: "Select a state that demonstrates intial pending state or a retry state.",
       },
     ];
 
