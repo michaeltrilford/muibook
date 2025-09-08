@@ -119,7 +119,7 @@ class storyDropdown extends HTMLElement {
         </mui-dropdown>
         <story-code-block slot="footer" scrollable>
           &lt;mui-dropdown&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="&#8220;"action&#8221;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
           &nbsp;&nbsp;&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Option one&lt;/mui-button&gt;<br>

@@ -100,11 +100,6 @@ class MuiDrawer extends HTMLElement {
         box-sizing: border-box;
         /* Force a new compositing layer */
         will-change: transform, opacity;
-        height: calc(100dvh - (7.7rem  + (env(safe-area-inset-top) + env(safe-area-inset-bottom)) ));
-      }
-
-      :host([has-footer]) main {
-        padding-bottom: calc(7.7rem + var(--space-500));
       }
 
       footer {
@@ -127,6 +122,12 @@ class MuiDrawer extends HTMLElement {
     `;
 
     const overlayStyles = /*css*/ `
+
+
+      main {
+        height: calc(100dvh - ((7.7rem * 2)  + (env(safe-area-inset-top) + env(safe-area-inset-bottom)) ));
+      }
+
       .overlay {
         position: fixed;
         top: 0;
@@ -197,12 +198,14 @@ class MuiDrawer extends HTMLElement {
       .outer {
         background: var(--surface-elevated-100);
         width: ${width};
-        height: auto;
-        /* FullHeight */
         position: fixed;
         top: 0;
         left: 0;
-        height: 100dvh;
+        height: 100%;
+      }
+
+      main {
+        height: calc(100% - (7.7rem * 2));
       }
 
       .push-layout {
@@ -279,6 +282,7 @@ class MuiDrawer extends HTMLElement {
           padding: calc(var(--space-700) / 2);
           box-sizing: border-box;
           max-height: initial;
+          z-index: initial;
         }
 
         .persistent-layout .outer {
@@ -306,11 +310,14 @@ class MuiDrawer extends HTMLElement {
         .persistent-layout .drawer-wrapper {
           border: none;
         }
-
-
-
-
       }
+
+      @media (max-width: 500px) {
+        .persistent-layout .drawer-wrapper {
+          padding: calc(var(--space-400) / 2);
+        }
+      }
+
     `;
 
     // Compute which side to render the drawer
@@ -429,7 +436,6 @@ class MuiDrawer extends HTMLElement {
 
     if (variant === "persistent" && this.drawerWrapper) {
       this.updateLayout(variant, isOpen);
-      this.drawerWrapper.style.zIndex = drawerZ.toString();
       this.drawerWrapper.inert = false; // persistent should always be interactive
     }
   }

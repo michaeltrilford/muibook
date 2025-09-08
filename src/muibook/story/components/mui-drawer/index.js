@@ -5,6 +5,15 @@ class storyDrawer extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
+      .canvas {
+        background: var(--surface);
+        padding: 1px;
+        margin-top: calc(var(--space-400) * -1);
+        margin-bottom: calc(var(--space-400) * -1);
+        margin-left: calc(var(--space-400) * -1);
+        margin-right: calc(var(--space-400) * -1);
+      }
+
       mui-container { min-width: initial; } 
 
       .visually-hidden {
@@ -37,15 +46,23 @@ class storyDrawer extends HTMLElement {
       .page-content {
         padding: var(--space-500) var(--space-500);
         box-sizing: border-box;
+        overflow: scroll;
+      }
+
+      .persistent-content {
+        padding: var(--space-500) var(--space-500);
+        box-sizing: border-box;
         height: calc(100dvh - (7.7rem  + (env(safe-area-inset-top) + env(safe-area-inset-bottom)) ));
         overflow: scroll;
       }
 
-      @media (max-width: 600px) {
-        .page-content {
+      @media (max-width: 768px) {
+        .page-content,
+        .persistent-content {
           height: auto;
         }
       }
+    }
 
     `;
 
@@ -204,6 +221,112 @@ class storyDrawer extends HTMLElement {
       })
       .join("");
 
+    const invoiceHeader = /*html*/ `
+      <mui-h-stack space="var(--space-300)" alignY="center">
+        <mui-heading size="4" level="4">New Invoice</mui-heading>
+        <mui-badge>Preview</mui-badge>
+      </mui-h-stack>
+    `;
+
+    const content = /*html*/ `
+      <mui-v-stack space="var(--space-300);">
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
+        <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
+      </mui-v-stack>
+    `;
+
+    const invoice = /*html*/ `
+      <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
+      
+        <mui-h-stack alignX="space-between">
+          <mui-v-stack space="var(--space-300);">
+            <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>  
+            <div style="height:var(--heading-font-size-100); width: 200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+          </mui-v-stack>
+          <mui-v-stack space="var(--space-300);">
+            <div style="height:var(--heading-font-size-400); min-width: 80px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height:var(--heading-font-size-100); min-width: 80px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+          </mui-v-stack>
+        </mui-h-stack>
+
+        <mui-v-stack alignX="stretch" space="var(--space-300);">
+          <mui-v-stack space="var(--space-300);">
+            <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+          </mui-v-stack>
+          <mui-v-stack space="var(--space-100);">
+            <div style="height: 6rem; width:100%; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height: 6rem; width:100%; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height: 6rem; width:100%; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height: 6rem; width:100%; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+          </mui-v-stack>
+        </mui-v-stack>
+
+      </mui-v-stack>
+    `;
+
+    const bill = /*html*/ `
+      <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
+
+        <mui-h-stack alignX="space-between">
+          <mui-v-stack space="var(--space-300);">
+            <div style="height:var(--heading-font-size-100); width: 60px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height:var(--heading-font-size-400); width: 100px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+          </mui-v-stack>
+          <mui-v-stack space="var(--space-100);" alignX="end">
+            <div style="height: 0.8rem; width: 40px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height: 0.8rem; width: 60px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height: 0.8rem; width: 30px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+          </mui-v-stack>
+        </mui-h-stack>
+
+        <mui-grid col="1fr auto">
+          <mui-v-stack space="var(--space-300);" alignX="end">
+            <div style="height: 9.6rem; width: 180px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+          </mui-v-stack>
+        </mui-grid>
+
+        <mui-v-stack alignX="stretch" space="var(--space-300);">
+          <mui-v-stack space="var(--space-300);">
+            <div style="height: 1.6rem; width: 90px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+          </mui-v-stack>
+
+          <mui-v-stack space="var(--space-100);">
+            <div style="height: 2.4rem; width:100%; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height: 2.4rem; width:100%; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height: 2.4rem; width:100%; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+            <div style="height: 2.4rem; width:100%; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
+          </mui-v-stack>
+        </mui-v-stack>
+
+      </mui-v-stack>
+    `;
+
     const stories = /*html*/ `
     
       <spec-card title="Import">
@@ -235,12 +358,12 @@ class storyDrawer extends HTMLElement {
         </props-card>
       </mui-v-stack>
 
-      <story-card title="Overlay Drawer: Left">
+      <story-card title="Overlay Drawer: Left" description="The drawer is positioned fixed to the viewport edge">
         <mui-button variant="primary" data-drawer="drawer-1" slot="body">Open Overlay Drawer</mui-button>
         
         <mui-drawer variant="overlay" data-drawer="drawer-1" width="400px" side="left" slot="body" z-index="200">
           <mui-heading size="4" level="4" slot="title">Overlay Drawer</mui-heading>
-          <mui-body>This drawer overlays content and can be dismissed by clicking outside or the close button.</mui-body>
+            ${content}
           <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
           <mui-button slot="actions" variant="primary">Confirm</mui-button>
         </mui-drawer>
@@ -268,12 +391,12 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Overlay Drawer: Right">
+      <story-card title="Overlay Drawer: Right" description="The drawer is positioned fixed to the viewport edge">
         <mui-button variant="primary" data-drawer="drawer-2" slot="body">Open Overlay Drawer</mui-button>
         
         <mui-drawer variant="overlay" data-drawer="drawer-2" width="400px" side="right" slot="body" z-index="200">
           <mui-heading size="4" level="4" slot="title">Overlay Drawer</mui-heading>
-          <mui-body>This drawer overlays content and can be dismissed by clicking outside or the close button.</mui-body>
+          ${content}
           <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
           <mui-button slot="actions" variant="primary">Confirm</mui-button>
         </mui-drawer>
@@ -301,44 +424,37 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Left-side: Push Drawer">
-  
-        <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="left" z-index="200">
-          <div slot="page" class="page-main">
-            <div class="page-header">
-              <mui-heading size="4" level="4">New Invoice</mui-heading>
+      <story-card title="Left-side: Push Drawer" description="The Push Drawer slides in from the left and shifts the page content to the right. This variant is designed for full-screen page views rather than being placed within a smaller page section. It provides a clear separation between the drawer and the main content, ensuring focus while still keeping the full page accessible.">
+        <div class="canvas" slot="body">  
+          <mui-drawer variant="push" data-drawer="drawer-3" width="320px" side="left" z-index="200">
+            <div slot="page" class="page-main">
+              <div class="page-header">
+                ${invoiceHeader}
+                <mui-dropdown position="right">
+                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                  <mui-button variant="tertiary" data-drawer="drawer-3">Edit Details</mui-button>
+                  <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                </mui-dropdown>
+              </div>
+              <div class="page-content">
+                ${invoice}
+              </div>
             </div>
-            <div class="page-content">
-              <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
-                <mui-v-stack space="var(--space-300);">
-                  <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
-                <mui-v-stack space="var(--space-400);">
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
+            <mui-heading size="4" level="4" slot="title">Invoice Details</mui-heading>
+            <form>
+              <mui-v-stack space="var(--space-400)">
+                <mui-input label="Customer" value="Hank Barry"></mui-input>
+                <mui-input label="Invoice ID" value="IV001"></mui-input>
+                <mui-input label="Purchase ID" value="9900"></mui-input>
+                <mui-input label="Issued" value="16/10/2025"></mui-input>
+                <mui-input label="Due" value="15/11/2025"></mui-input>
+                <mui-input label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-input>
               </mui-v-stack>
-              <mui-button variant="primary" data-drawer="drawer-4">Edit</mui-button>
-            </div>
-          </div>
-          <mui-heading size="4" level="4" slot="title">Edit Invoice Details</mui-heading>
-          <form>
-            <mui-v-stack space="var(--space-400)">
-              <mui-input label="Customer" value="Hank Barry"></mui-input>
-              <mui-input label="Invoice ID" value="IV001"></mui-input>
-              <mui-input label="Purchase ID" value="9900"></mui-input>
-              <mui-input label="Issued" value="16/10/2025"></mui-input>
-              <mui-input label="Due" value="15/11/2025"></mui-input>
-              <mui-text-area label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-text-area>
-            </mui-v-stack>
-          </form>
-
-          <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="primary">Save</mui-button>
-        </mui-drawer>
-
+            </form>
+            <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
+            <mui-button slot="actions" variant="primary">Save</mui-button>
+          </mui-drawer>
+        </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-grid col="1fr auto"&gt;<br>
           &nbsp;&nbsp;&lt;mui-container&gt;<br>
@@ -354,43 +470,37 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Right-side: Push Drawer">
-  
-        <mui-drawer slot="body" variant="push" data-drawer="drawer-3" width="320px" side="right" z-index="200">
-          <div slot="page" class="page-main">
-            <div class="page-header">
-              <mui-heading size="4" level="4">New Invoice</mui-heading>
+      <story-card title="Right-side: Push Drawer" description="The Push Drawer slides in from the right and shifts the page content to the left. This variant is designed for full-screen page views rather than being placed within a smaller page section. It provides a clear separation between the drawer and the main content, ensuring focus while still keeping the full page accessible.">
+        <div class="canvas" slot="body">
+          <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right" z-index="200">
+            <div slot="page" class="page-main">
+              <div class="page-header">
+                ${invoiceHeader}
+                <mui-dropdown position="right">
+                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                  <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
+                  <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                </mui-dropdown>
+              </div>
+              <div class="page-content">
+                ${invoice}
+              </div>
             </div>
-            <div class="page-content">
-              <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
-                <mui-v-stack space="var(--space-300);">
-                  <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
-                <mui-v-stack space="var(--space-400);">
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
+            <mui-heading size="4" level="4" slot="title">Invoice Details</mui-heading>
+            <form>
+              <mui-v-stack space="var(--space-400)">
+                <mui-input label="Customer" value="Hank Barry"></mui-input>
+                <mui-input label="Invoice ID" value="IV001"></mui-input>
+                <mui-input label="Purchase ID" value="9900"></mui-input>
+                <mui-input label="Issued" value="16/10/2025"></mui-input>
+                <mui-input label="Due" value="15/11/2025"></mui-input>
+                <mui-input label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-input>
               </mui-v-stack>
-              <mui-button variant="primary" data-drawer="drawer-3">Edit</mui-button>
-            </div>
-          </div>
-          <mui-heading size="4" level="4" slot="title">Edit Invoice Details</mui-heading>
-          <form>
-            <mui-v-stack space="var(--space-400)">
-              <mui-input label="Customer" value="Hank Barry"></mui-input>
-              <mui-input label="Invoice ID" value="IV001"></mui-input>
-              <mui-input label="Purchase ID" value="9900"></mui-input>
-              <mui-input label="Issued" value="16/10/2025"></mui-input>
-              <mui-input label="Due" value="15/11/2025"></mui-input>
-              <mui-text-area label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-text-area>
-            </mui-v-stack>
-          </form>
-          <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="primary">Save</mui-button>
-        </mui-drawer>
-
+            </form>
+            <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
+            <mui-button slot="actions" variant="primary">Save</mui-button>
+          </mui-drawer>
+        </div>  
         <story-code-block slot="footer" scrollable>
           &lt;mui-grid col="1fr auto"&gt;<br>
           &nbsp;&nbsp;&lt;mui-container&gt;<br>
@@ -406,43 +516,31 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Right-side: Persistent Drawer" description="Content is displayed BEFORE the drawer content">
-      
-        <mui-drawer variant="persistent" width="320px" slot="body" side="right" z-index="200">
-          <div slot="page" class="page-main">
-            <div class="page-header">
-              <mui-heading size="4" level="4">Smart Bills</mui-heading>
+      <story-card title="Right-side: Persistent Drawer" description="The Persistent Drawer remains fixed in place without sliding in or out. Positioned on the right side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically. If a different mobile experience is required, you can use state or media queries to switch the component to an alternative layout that better suits small screens.">
+        <div class="canvas" slot="body">
+          <mui-drawer variant="persistent" width="320px" slot="body" side="right" z-index="200">
+            <div slot="page" class="page-main">
+              <div class="page-header">
+                <mui-heading size="4" level="4">Smart Bills</mui-heading>
+              </div>
+              <div class="page-content">
+                ${bill}
+              </div>
             </div>
-            <div class="page-content">
-              <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
-                <mui-v-stack space="var(--space-300);">
-                  <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
-                <mui-v-stack space="var(--space-400);">
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
+            <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
+            <form>
+              <mui-v-stack space="var(--space-400)">
+                <mui-input label="Item" value="Hank Barry"></mui-input>
+                <mui-input label="Description" value="Telstra Upfront 5G Internet"></mui-input>
+                <mui-input label="Allocate to" value="Internet"></mui-input>
+                <mui-input label="Qty" value="1"></mui-input>
+                <mui-input label="Unit price" value="85.50"></mui-input>
               </mui-v-stack>
-            </div>
-          </div>
-          <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
-          <form>
-            <mui-v-stack space="var(--space-400)">
-              <mui-input label="Item" value="Hank Barry"></mui-input>
-              <mui-input label="Description" value="Telstra Upfront 5G Internet"></mui-input>
-              <mui-input label="Allocate to" value="Internet"></mui-input>
-              <mui-input label="Qty" value="1"></mui-input>
-              <mui-input label="Unit price" value="85.50"></mui-input>
-            </mui-v-stack>
-          </form>
-
-          <mui-button slot="actions" variant="tertiary">Back</mui-button>
-          <mui-button slot="actions" variant="primary">Next</mui-button>
-
-        </mui-drawer>
-
+            </form>
+            <mui-button slot="actions" variant="tertiary">Back</mui-button>
+            <mui-button slot="actions" variant="primary">Next</mui-button>
+          </mui-drawer>
+        </div>  
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer variant="persistent" data-drawer="drawer-4" width="250px" side="left"&gt;<br>
           &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Persistent Drawer&lt;/mui-heading&gt;<br>
@@ -451,43 +549,31 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Left-side: Persistent Drawer" description="Content is displayed AFTER the drawer content">
-      
-        <mui-drawer variant="persistent" width="320px" slot="body" side="left" z-index="200">
-          <div slot="page" class="page-main">
-            <div class="page-header">
-              <mui-heading size="4" level="4">Smart Bills</mui-heading>
+      <story-card title="Left-side: Persistent Drawer" description="The Persistent Drawer remains fixed in place without sliding in or out. Positioned on the left side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically. If a different mobile experience is required, you can use state or media queries to switch the component to an alternative layout that better suits small screens.">
+        <div class="canvas" slot="body">
+          <mui-drawer variant="persistent" width="320px" slot="body" side="left" z-index="200">
+            <div slot="page" class="page-main">
+              <div class="page-header">
+                <mui-heading size="4" level="4">Smart Bills</mui-heading>
+              </div>
+              <div class="page-content">
+                ${bill}
+              </div>
             </div>
-            <div class="page-content">
-              <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
-                <mui-v-stack space="var(--space-300);">
-                  <div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
-                <mui-v-stack space="var(--space-400);">
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                  <div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
-                </mui-v-stack>
+            <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
+            <form>
+              <mui-v-stack space="var(--space-400)">
+                <mui-input label="Item" value="Hank Barry"></mui-input>
+                <mui-input label="Description" value="Telstra Upfront 5G Internet"></mui-input>
+                <mui-input label="Allocate to" value="Internet"></mui-input>
+                <mui-input label="Qty" value="1"></mui-input>
+                <mui-input label="Unit price" value="85.50"></mui-input>
               </mui-v-stack>
-            </div>
-          </div>
-          <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
-          <form>
-            <mui-v-stack space="var(--space-400)">
-              <mui-input label="Item" value="Hank Barry"></mui-input>
-              <mui-input label="Description" value="Telstra Upfront 5G Internet"></mui-input>
-              <mui-input label="Allocate to" value="Internet"></mui-input>
-              <mui-input label="Qty" value="1"></mui-input>
-              <mui-input label="Unit price" value="85.50"></mui-input>
-            </mui-v-stack>
-          </form>
-
-          <mui-button slot="actions" variant="tertiary">Back</mui-button>
-          <mui-button slot="actions" variant="primary">Next</mui-button>
-
-        </mui-drawer>
-
+            </form>
+            <mui-button slot="actions" variant="tertiary">Back</mui-button>
+            <mui-button slot="actions" variant="primary">Next</mui-button>
+          </mui-drawer>
+        </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer variant="persistent" width="250px" side="left"&gt;<br>
           &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Persistent Drawer&lt;/mui-heading&gt;<br>
