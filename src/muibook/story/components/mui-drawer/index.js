@@ -73,7 +73,7 @@ class storyDrawer extends HTMLElement {
         type: "slot (default)",
         options: "{mui-body}, {mui-elements}, {elements}",
         default: "(required)",
-        description: "Slot in content to be displayed within the dialog.",
+        description: "Slot in content to be displayed within the drawer.",
       },
       {
         name: "slot=&#8220;title&#8221;",
@@ -81,7 +81,7 @@ class storyDrawer extends HTMLElement {
         type: "slot (named)",
         options: "{mui-heading}",
         default: "(required)",
-        description: "Slot in a heading element to title the dialog.",
+        description: "Slot in a heading element to title the drawer.",
       },
       {
         name: "slot=&#8220;actions&#8221;",
@@ -89,14 +89,22 @@ class storyDrawer extends HTMLElement {
         options: "Cancel/Save, etc.",
         default: "",
         description:
-          "Slot in action buttons for the dialog, always placed in the footer. refer to mui-button documentation for use.",
+          "Slot in action buttons for the drawer, always placed in the footer. refer to mui-button documentation for use.",
       },
       {
         name: "width",
         type: "string",
         options: "px, %, em, rem, etc.",
         default: "350px",
-        description: "Set the width of the dialog.",
+        description: "Set the width of the drawer.",
+      },
+      {
+        name: "z-index",
+        type: "string",
+        options: "",
+        default: "110",
+        description:
+          "Adjust the z-index to adjust the placwement when using with other local components, such as navigation.",
       },
       {
         name: "open",
@@ -104,31 +112,31 @@ class storyDrawer extends HTMLElement {
         options: "",
         default: "",
         description:
-          "Pair with state to toggle the visibility of the dialog. Alternatively, use an element with the same data-drawer value to open the dialog.",
+          "Pair with state to toggle the visibility of the drawer. Alternatively, use an element with the same data-drawer value to open the drawer.",
       },
       {
         name: "data-drawer",
         type: "boolean",
-        options: "",
+        options: "Cancel",
         default: "",
         description:
-          "Recommended to pair with an element that has the same data-drawer value to open the dialog. Refer to code examples.",
+          "Recommended to pair with an element that has the same data-drawer value to open the drawer. Refer to code examples.",
       },
       {
         name: "aria-labelledby",
         type: "boolean",
-        options: "dialog-title-2",
+        options: "drawer-title-2",
         default: "",
         description:
-          "Add an element with the same id as the value to provide an accessible name for the dialog. Refer to code examples.",
+          "Add an element with the same id as the value to provide an accessible name for the drawer. Refer to code examples.",
       },
       {
         name: "aria-describedby",
         type: "boolean",
-        options: "dialog-desc-2",
+        options: "drawer-desc-2",
         default: "",
         description:
-          "Add an element with the same id as the value to provide an accessible description for the dialog. Refer to code examples.",
+          "Add an element with the same id as the value to provide an accessible description for the drawer. Refer to code examples.",
       },
     ];
 
@@ -178,7 +186,7 @@ class storyDrawer extends HTMLElement {
         options: "",
         default: "",
         description:
-          "Add the boolean and state to an action within the footer that closes the dialog. Refer to code examples.",
+          "Add the boolean and state to an action within the footer that closes the drawer. Refer to code examples.",
       },
     ];
 
@@ -358,7 +366,7 @@ class storyDrawer extends HTMLElement {
         </props-card>
       </mui-v-stack>
 
-      <story-card title="Overlay Drawer: Left" description="The drawer is positioned fixed to the viewport edge">
+      <story-card title="Overlay Left" description="The drawer is positioned fixed to the viewport edge">
         <mui-button variant="primary" data-drawer="drawer-1" slot="body">Open</mui-button>
         
         <mui-drawer variant="overlay" data-drawer="drawer-1" width="400px" side="left" slot="body" z-index="200">
@@ -369,10 +377,10 @@ class storyDrawer extends HTMLElement {
         </mui-drawer>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-button variant="primary" data-drawer="drawer-1"&gt;Open Overlay Drawer&lt;/mui-button&gt;<br><br>
-          &lt;mui-drawer variant="overlay" data-drawer="drawer-1" width="400px" side="right"&gt;<br>
+          &lt;mui-button variant="primary" data-drawer="hook"&gt;Open&lt;/mui-button&gt;<br><br>
+          &lt;mui-drawer variant="overlay" data-drawer="hook" width="400px" side="left"&gt;<br>
           &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Overlay Drawer&lt;/mui-heading&gt;<br>
-          &nbsp;&nbsp;&lt;mui-body&gt;This drawer overlays content and can be dismissed.&lt;/mui-body&gt;<br>
+          &nbsp;&nbsp;...<br>
           &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-drawer&gt;<br><br>
@@ -391,7 +399,7 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Overlay Drawer: Right" description="The drawer is positioned fixed to the viewport edge">
+      <story-card title="Overlay Right" description="The drawer is positioned fixed to the viewport edge">
         <mui-button variant="primary" data-drawer="drawer-2" slot="body">Open</mui-button>
         
         <mui-drawer variant="overlay" data-drawer="drawer-2" width="400px" side="right" slot="body" z-index="200">
@@ -402,10 +410,10 @@ class storyDrawer extends HTMLElement {
         </mui-drawer>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-button variant="primary" data-drawer="drawer-1"&gt;Open Overlay Drawer&lt;/mui-button&gt;<br><br>
-          &lt;mui-drawer variant="overlay" data-drawer="drawer-1" width="400px" side="right"&gt;<br>
+          &lt;mui-button variant="primary" data-drawer="hook"&gt;Open&lt;/mui-button&gt;<br><br>
+          &lt;mui-drawer variant="overlay" data-drawer="hook" width="400px" side="right"&gt;<br>
           &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Overlay Drawer&lt;/mui-heading&gt;<br>
-          &nbsp;&nbsp;&lt;mui-body&gt;This drawer overlays content and can be dismissed.&lt;/mui-body&gt;<br>
+          &nbsp;&nbsp;...<br>
           &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-drawer&gt;<br><br>
@@ -424,7 +432,18 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Left-side: Push Drawer" description="The Push Drawer slides in from the left and shifts the page content to the right. This variant is intended for full-screen page views rather than smaller page sections. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content. If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.">
+      <story-card 
+        title="Push Left" 
+        description="The Push Drawer slides in from the left and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
+        usage="
+          This variant is intended for full-screen page views rather than smaller page sections.;
+          Apply styles to ensure the container spans the viewport correctly.;
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
+          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
+          If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.;
+          See the <mui-link size='small' target='_blank' href='#/push-left'>full-screen example</mui-link>
+        "
+      >
         <div class="canvas" slot="body">  
           <mui-drawer variant="push" data-drawer="drawer-3" width="320px" side="left" z-index="200">
             <div slot="page" class="page-main">
@@ -456,22 +475,25 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-grid col="1fr auto"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-container&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Main body content goes here.&lt;/p&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="primary" data-drawer="drawer-3"&gt;Open Drawer&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-container&gt;<br><br>
-          &nbsp;&nbsp;&lt;mui-drawer variant="push" data-drawer="drawer-3" width="300px" side="left"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Push Drawer&lt;/mui-heading&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;This drawer pushes content aside.&lt;/mui-body&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Close&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-drawer&gt;<br>
-          &lt;/mui-grid&gt;
+          &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="left"&gt;<br>
+          &nbsp;&nbsp;...
+          &lt;/mui-drawer&gt;
         </story-code-block>
       </story-card>
 
-      <story-card title="Right-side: Push Drawer" 
-        description="The Push Drawer slides in from the right and shifts the page content to the left. This variant is intended for full-screen page views rather than smaller page sections. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content. If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.">
+      <story-card 
+        title="Push Right" 
+        description="The Push Drawer slides in from the right and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
+        usage="
+          This variant is intended for full-screen page views rather than smaller page sections.;
+          Apply styles to ensure the container spans the viewport correctly.;
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
+          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
+          If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.;
+          See the <mui-link size='small' target='_blank' href='#/push-right'>full-screen example</mui-link>
+        "
+
+      >
         <div class="canvas" slot="body">
           <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right" z-index="200">
             <div slot="page" class="page-main">
@@ -503,21 +525,23 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>  
         <story-code-block slot="footer" scrollable>
-          &lt;mui-grid col="1fr auto"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-container&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Main body content goes here.&lt;/p&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="primary" data-drawer="drawer-2"&gt;Open Drawer&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-container&gt;<br><br>
-          &nbsp;&nbsp;&lt;mui-drawer variant="push" data-drawer="drawer-2" width="300px" side="left"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Push Drawer&lt;/mui-heading&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;This drawer pushes content aside.&lt;/mui-body&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Close&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-drawer&gt;<br>
-          &lt;/mui-grid&gt;
+          &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
+          &nbsp;&nbsp;...
+          &lt;/mui-drawer&gt;
         </story-code-block>
       </story-card>
 
-      <story-card title="Right-side: Persistent Drawer" description="The Persistent Drawer remains fixed in place without sliding in or out. Positioned on the right side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically. If a different mobile experience is required, you can use state or media queries to switch the component to an alternative layout that better suits small screens.">
+      <story-card 
+        title="Persistent Right" 
+        description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the right side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
+        usage="
+          This variant is intended for full-screen page views rather than smaller page sections.;
+          Apply styles to ensure the container spans the viewport correctly.;
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
+          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
+          See the <mui-link size='small' target='_blank' href='#/persistent-right'>full-screen example</mui-link>
+        "
+      >
         <div class="canvas" slot="body">
           <mui-drawer variant="persistent" width="320px" slot="body" side="right" z-index="200">
             <div slot="page" class="page-main">
@@ -543,14 +567,23 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>  
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="persistent" data-drawer="drawer-4" width="250px" side="left"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Persistent Drawer&lt;/mui-heading&gt;<br>
-          &nbsp;&nbsp;&lt;mui-body&gt;Always visible, no close button.&lt;/mui-body&gt;<br>
+          &lt;mui-drawer variant="persistent" width="320px" side="right"&gt;<br>
+          &nbsp;&nbsp;...
           &lt;/mui-drawer&gt;
         </story-code-block>
       </story-card>
 
-      <story-card title="Left-side: Persistent Drawer" description="The Persistent Drawer remains fixed in place without sliding in or out. Positioned on the left side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically. If a different mobile experience is required, you can use state or media queries to switch the component to an alternative layout that better suits small screens.">
+      <story-card
+        title="Persistent Left"
+        description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the left side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
+        usage="
+          This variant is intended for full-screen page views rather than smaller page sections.;
+          Apply styles to ensure the container spans the viewport correctly.;
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
+          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
+          See the <mui-link size='small' target='_blank' href='#/persistent-left'>full-screen example</mui-link>
+        "
+      >
         <div class="canvas" slot="body">
           <mui-drawer variant="persistent" width="320px" slot="body" side="left" z-index="200">
             <div slot="page" class="page-main">
@@ -576,9 +609,8 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="persistent" width="250px" side="left"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Persistent Drawer&lt;/mui-heading&gt;<br>
-          &nbsp;&nbsp;&lt;mui-body&gt;Always visible, no close button.&lt;/mui-body&gt;<br>
+          &lt;mui-drawer variant="persistent" width="320px" side="left"&gt;<br>
+            &nbsp;&nbsp;...
           &lt;/mui-drawer&gt;
         </story-code-block>
       </story-card>
@@ -591,23 +623,23 @@ class storyDrawer extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Drawer (WIP)" 
+        title="Drawer" 
         description="A drawer view that prompts users to take a specific action or provide additional information without navigating away from the current context."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-drawer/index.ts"
         accessibility="
-          Uses role='dialog' and aria-modal='true' for screen readers.;
-          Focus is managed by the browser’s native dialog behavior when open.;
-          The close button includes aria-label='Close Icon'.;
-          Footer is hidden when empty to reduce screen reader noise.;
-          Clicking the backdrop closes the dialog.;
-          No extra labels are required from the consumer. Accessible by default.
+          Uses role='dialog' for overlay/push variants and role='complementary' for persistent layout variants.;
+          Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions.;
+          When open, focus is trapped in the drawer and returns to the trigger on close (consumer must handle inert/aria-hidden for background).;
+          The close button includes aria-label='Close drawer'.;
+          Footer slot is hidden when empty to reduce screen reader noise.;
+          Backdrop click and Escape key close the drawer in overlay and push variants.
         "
       >
         ${stories}
       </story-template>
     `;
 
-    // Open dialog buttons
+    // Open drawer buttons
     this.shadowRoot.querySelectorAll("mui-button[data-drawer]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const target = btn.getAttribute("data-drawer");
@@ -616,7 +648,7 @@ class storyDrawer extends HTMLElement {
       });
     });
 
-    // Close buttons inside each dialog
+    // Close buttons inside each drawer
     this.shadowRoot.querySelectorAll("mui-drawer[data-drawer]").forEach((drawer) => {
       drawer.querySelectorAll("mui-button[data-close]").forEach((btn) => {
         btn.addEventListener("click", () => drawer.removeAttribute("open"));

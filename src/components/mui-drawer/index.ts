@@ -52,7 +52,7 @@ class MuiDrawer extends HTMLElement {
           ${
             hasCloseButton
               ? `
-            <mui-button class="close" variant="tertiary" aria-label="Close panel">
+            <mui-button class="close" variant="tertiary" aria-label="Close drawer">
               <mui-icon-close></mui-icon-close>
             </mui-button>`
               : "<span class='spacer'></span>"

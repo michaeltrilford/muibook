@@ -66,7 +66,7 @@ class storyDialog extends HTMLElement {
       {
         name: "data-dialog",
         type: "boolean",
-        options: "",
+        options: "Cancel",
         default: "",
         description:
           "Recommended to pair with an element that has the same data-dialog value to open the dialog. Refer to code examples.",
@@ -484,11 +484,11 @@ class storyDialog extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
         accessibility="
           Uses role='dialog' and aria-modal='true' for screen readers.;
+          Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions.;
           Focus is managed by the browser’s native dialog behavior when open.;
           The close button includes aria-label='Close Icon'.;
           Footer is hidden when empty to reduce screen reader noise.;
-          Clicking the backdrop closes the dialog.;
-          No extra labels are required from the consumer. Accessible by default.
+          Clicking the backdrop closes the dialog.
         "
       >
         ${stories}
