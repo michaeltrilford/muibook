@@ -11,7 +11,7 @@ class MuiDrawer extends HTMLElement {
   private persistentLayout: HTMLElement | null = null;
 
   static get observedAttributes() {
-    return ["open", "width", "side", "variant", "z-index"];
+    return ["open", "width", "side", "variant", "z-index", "drawer-space"];
   }
 
   constructor() {
@@ -44,6 +44,8 @@ class MuiDrawer extends HTMLElement {
   };
 
   private getDrawerTemplate(hasCloseButton = true) {
+    const noPadding = this.hasAttribute("drawer-space") ? "no-padding" : "";
+
     return /*html*/ `
     <div class="drawer-wrapper">
       <div class="outer" role="complementary">
@@ -58,7 +60,7 @@ class MuiDrawer extends HTMLElement {
               : "<span class='spacer'></span>"
           }
         </header>
-        <main><slot></slot></main>
+        <main class="${noPadding}"><slot></slot></main>
         <footer hidden><slot name="actions"></slot></footer>
       </div>
     </div>
@@ -98,6 +100,10 @@ class MuiDrawer extends HTMLElement {
         box-sizing: border-box;
         /* Force a new compositing layer */
         will-change: transform, opacity;
+      }
+
+      main.no-padding {
+        padding: 0 !important;
       }
 
       footer {
@@ -203,23 +209,27 @@ class MuiDrawer extends HTMLElement {
       }
 
       main {
+        height: calc(100% - 7.7rem);
+      }
+
+      :host([has-footer]) main {
         height: calc(100% - (7.7rem * 2));
       }
 
-      .push-layout {
+      .push {
         display: grid;
         height: 100%;
         overflow: hidden; /* optional, prevents content overflow during transitions */
         transition: grid-template-columns var(--speed-100) ease; /* smooth push animation */
       }
 
-      .persistent-layout {
+      .persistent {
         display: grid;
         height: 100%;
         overflow: hidden; /* optional, prevents content overflow during transitions */
       }
 
-      .persistent-layout .spacer {
+      .persistent .spacer {
         height: 4.4rem;
       }
 
@@ -229,7 +239,7 @@ class MuiDrawer extends HTMLElement {
       }
 
       :host([open]) .drawer-wrapper,
-      .persistent-layout .drawer-wrapper {
+      .persistent .drawer-wrapper {
         ${drawerWrapperBorder}
       }
     `;
@@ -265,13 +275,13 @@ class MuiDrawer extends HTMLElement {
           width: 100%;
         }
 
-        .persistent-layout {
+        .persistent {
           display: block;
           height: auto;
         }
 
 
-        .persistent-layout .drawer-wrapper {
+        .persistent .drawer-wrapper {
           width: 100%;
           position: static;
           height: auto;
@@ -283,24 +293,25 @@ class MuiDrawer extends HTMLElement {
           z-index: initial;
         }
 
-        .persistent-layout .outer {
+        .persistent .outer {
           position: static;
           height: auto;
           border-radius: var(--radius-200);
         }
 
-        .persistent-layout header {
+        .persistent header {
           padding-top: var(--space-400);
         }
 
-        .persistent-layout footer {
+        .persistent footer {
           border-bottom-right-radius: var(--radius-200);
           border-bottom-left-radius: var(--radius-200);
           position: static;
           width: 100%;
+          padding: var(--space-400) var(--space-500) var(--space-400);
         }
 
-        .persistent-layout main {
+        .persistent main {
           height: auto;
         }
 
@@ -309,13 +320,13 @@ class MuiDrawer extends HTMLElement {
         }
 
         :host([open]) .drawer-wrapper, 
-        .persistent-layout .drawer-wrapper {
+        .persistent .drawer-wrapper {
           border: none;
         }
       }
 
       @media (max-width: 500px) {
-        .persistent-layout .drawer-wrapper {
+        .persistent .drawer-wrapper {
           padding: calc(var(--space-400) / 2);
         }
       }
@@ -351,7 +362,7 @@ class MuiDrawer extends HTMLElement {
     } else if (variant === "push" || variant === "persistent") {
       template = /*html*/ `
         <style>${baseStyles}${inlineStyles}${responsiveStyles}</style>
-        <div class="${variant}-layout">
+        <div class="${variant}">
           ${
             side === "left"
               ? this.getDrawerTemplate(showCloseButton) + '<slot name="page"></slot>'
@@ -370,8 +381,8 @@ class MuiDrawer extends HTMLElement {
     this.footerEl = this.shadowRoot!.querySelector("footer");
     this.actionsSlot = this.shadowRoot!.querySelector('slot[name="actions"]');
     this.drawerWrapper = this.shadowRoot!.querySelector(".drawer-wrapper");
-    this.pushLayout = this.shadowRoot!.querySelector(".push-layout");
-    this.persistentLayout = this.shadowRoot!.querySelector(".persistent-layout");
+    this.pushLayout = this.shadowRoot!.querySelector(".push");
+    this.persistentLayout = this.shadowRoot!.querySelector(".persistent");
   }
 
   private attachEvents() {

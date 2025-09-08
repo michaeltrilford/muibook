@@ -16,6 +16,15 @@ class storyDrawer extends HTMLElement {
 
       mui-container { min-width: initial; } 
 
+      .menu-item {
+        text-align: left;
+      }
+      .menu-item::part(padding) {
+        padding-left: var(--space-500);
+        padding-right: var(--space-500);
+        border-radius: 0;
+      }
+
       .visually-hidden {
         position: absolute;
         width: 1px;
@@ -121,6 +130,14 @@ class storyDrawer extends HTMLElement {
         default: "",
         description:
           "Recommended to pair with an element that has the same data-drawer value to open the drawer. Refer to code examples.",
+      },
+      {
+        name: "drawer-space",
+        required: false,
+        type: "string",
+        options: "none",
+        default: "",
+        description: "Turn off the padding inside the body of the drawer body section.",
       },
       {
         name: "aria-labelledby",
@@ -476,7 +493,7 @@ class storyDrawer extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="left"&gt;<br>
-          &nbsp;&nbsp;...
+          &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
       </story-card>
@@ -526,7 +543,7 @@ class storyDrawer extends HTMLElement {
         </div>  
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
-          &nbsp;&nbsp;...
+          &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
       </story-card>
@@ -568,7 +585,7 @@ class storyDrawer extends HTMLElement {
         </div>  
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer variant="persistent" width="320px" side="right"&gt;<br>
-          &nbsp;&nbsp;...
+          &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
       </story-card>
@@ -610,7 +627,51 @@ class storyDrawer extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer variant="persistent" width="320px" side="left"&gt;<br>
-            &nbsp;&nbsp;...
+            &nbsp;&nbsp;...<br>
+          &lt;/mui-drawer&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        title="Menu Example"
+        description=""
+      >
+        <div class="canvas" slot="body">
+          <mui-drawer variant="push" width="260px" slot="body" side="left" z-index="200" data-drawer="hook" drawer-space="none">
+            <div slot="page" class="page-main">
+              <div class="page-header">
+                <mui-h-stack space="var(--space-200)" alignY="center">
+                  <mui-button variant="tertiary" data-drawer="hook">
+                    <mui-icon-menu></mui-icon-menu>
+                  </mui-button>
+                  <mui-heading size="4" level="4">Smart Bills</mui-heading>
+                </mui-h-stack>
+              </div>
+              <div class="page-content">
+                ${bill}
+              </div>
+            </div>
+            <mui-heading size="4" level="4" slot="title">Menu</mui-heading>
+            <mui-v-stack alignX="stretch" space="var(--space-100)">
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1</mui-button>
+            </mui-v-stack>
+          </mui-drawer>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer variant="push" width="320px" side="left" data-drawer="hook" drawer-space="none"&gt;<br>
+            &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
       </story-card>
