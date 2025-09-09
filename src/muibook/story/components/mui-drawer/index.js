@@ -120,6 +120,13 @@ class storyDrawer extends HTMLElement {
         description: "Choose the position of the drawer",
       },
       {
+        name: "breakpoint",
+        type: "string",
+        options: "0 or higher",
+        default: "768",
+        description: "Adjust the breakpoint. Set it to 0 if you want to turn it off completely.",
+      },
+      {
         name: "variant",
         type: "string",
         options: "overlay, persistent, push",
@@ -805,7 +812,7 @@ class storyDrawer extends HTMLElement {
         description="Crafting the responsive behaviour using mui-responsive and alternative variants."
         usage="
           Omit the header and using a custom header and action that has 'data-close' to toggle the view;
-          Use mui-responsive component to toggle state and components between desktop and mobile. 
+          Use mui-responsive component to toggle state and components between desktop and mobile.;
         "
       >
         <div class="canvas" slot="body">
@@ -887,7 +894,56 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card 
+        id="drawer-breakpoint"
+        title="Breakpoint" 
+        description="Adjust the default breakpoint for the mobile view. Set it to '0' if you want to use media queries or state to swap out the entire view."
+        usage="
+          This variant is intended for full-screen page views rather than smaller page sections.;
+          Apply styles to ensure the container spans the viewport correctly.;
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
+          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
+          If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.;
+          See the <mui-link size='small' target='_blank' href='#/push-right'>full-screen example</mui-link>
+        "
 
+      >
+        <div class="canvas" slot="body">
+          <mui-drawer slot="body" variant="push" breakpoint="1500" data-drawer="breakpoint" width="320px" side="right" z-index="200">
+            <div slot="page" class="page-main">
+              <div class="page-header">
+                ${invoiceHeader}
+                <mui-dropdown position="right">
+                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                  <mui-button variant="tertiary" data-drawer="breakpoint">Edit Details</mui-button>
+                  <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                </mui-dropdown>
+              </div>
+              <div class="page-content">
+                ${invoice}
+              </div>
+            </div>
+            <mui-heading size="4" level="4" slot="title">Invoice Details</mui-heading>
+            <form>
+              <mui-v-stack space="var(--space-400)">
+                <mui-input label="Customer" value="Hank Barry"></mui-input>
+                <mui-input label="Invoice ID" value="IV001"></mui-input>
+                <mui-input label="Purchase ID" value="9900"></mui-input>
+                <mui-input label="Issued" value="16/10/2025"></mui-input>
+                <mui-input label="Due" value="15/11/2025"></mui-input>
+                <mui-input label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-input>
+              </mui-v-stack>
+            </form>
+            <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
+            <mui-button slot="actions" variant="primary">Save</mui-button>
+          </mui-drawer>
+        </div>  
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
+          &nbsp;&nbsp;...<br>
+          &lt;/mui-drawer&gt;
+        </story-code-block>
+      </story-card>
 
     `;
 

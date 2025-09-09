@@ -13,7 +13,7 @@ class MuiDrawer extends HTMLElement {
   private headerSlot: HTMLSlotElement | null = null;
 
   static get observedAttributes() {
-    return ["open", "width", "side", "variant", "z-index", "drawer-space"];
+    return ["open", "width", "side", "variant", "z-index", "drawer-space", "breakpoint"];
   }
 
   constructor() {
@@ -37,6 +37,11 @@ class MuiDrawer extends HTMLElement {
   disconnectedCallback() {
     document.removeEventListener("keydown", this._handleEscape);
     window.removeEventListener("resize", this._handleResize);
+  }
+
+  private getBreakpoint(): number {
+    const val = this.getAttribute("breakpoint");
+    return val ? Number(val) : 768; // default
   }
 
   private _handleEscape = (e: KeyboardEvent) => {
@@ -105,7 +110,7 @@ class MuiDrawer extends HTMLElement {
       main.no-padding {
         padding: 0;
       }
-      
+
       main.no-heading {
         padding-top: calc(var(--space-500) + env(safe-area-inset-top));
       }
@@ -266,8 +271,10 @@ class MuiDrawer extends HTMLElement {
       :host([variant="persistent"]) .outer  { ${outerBorder} }
     `;
 
+    const breakpoint = this.getBreakpoint();
+
     const responsiveStyles = /*css*/ `
-      @media (max-width: 768px) {
+      @media (max-width: ${breakpoint}px) {
         .outer {
           position: fixed;
           left: 0;
@@ -345,7 +352,7 @@ class MuiDrawer extends HTMLElement {
 
       }
 
-      @media (max-width: 500px) {
+      @media (max-width: 360px) {
         :host([variant="persistent"]) .outer {
           padding: calc(var(--space-400) / 2);
         }
@@ -509,7 +516,7 @@ class MuiDrawer extends HTMLElement {
     const layout = variant === "push" ? this.pushLayout : variant === "persistent" ? this.persistentLayout : null;
     if (!layout) return;
 
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= this.getBreakpoint();
 
     if (isMobile) {
       if (variant === "push") {
