@@ -3,6 +3,12 @@ class storyDrawer extends HTMLElement {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
     const styles = /*css*/ `
+      .token-item-menu::part(flex-wrap) {
+        flex-wrap: wrap;
+        column-gap: var(--space-300);
+        row-gap: var(--space-100);
+      }
+
       :host { display: block; }
 
       .canvas {
@@ -85,11 +91,18 @@ class storyDrawer extends HTMLElement {
       },
       {
         name: "slot=&#8220;title&#8221;",
-        required: true,
         type: "slot (named)",
-        options: "{mui-heading}",
-        default: "(required)",
+        options: "{mui-heading}, {mui-elements}, {elements}",
+        default: "",
         description: "Slot in a heading element to title the drawer.",
+      },
+      {
+        name: "slot=&#8220;page&#8221;",
+        type: "slot (named)",
+        options: "{mui-elements}, {elements}",
+        default: "",
+        description:
+          "Used for the Persistent or Push drawer variants. The page content is slotted here, and the drawer sits alongside it (either left or right depending on the side attribute).",
       },
       {
         name: "slot=&#8220;actions&#8221;",
@@ -98,6 +111,20 @@ class storyDrawer extends HTMLElement {
         default: "",
         description:
           "Slot in action buttons for the drawer, always placed in the footer. refer to mui-button documentation for use.",
+      },
+      {
+        name: "side",
+        type: "string",
+        options: "left, right",
+        default: "left",
+        description: "Choose the position of the drawer",
+      },
+      {
+        name: "variant",
+        type: "string",
+        options: "overlay, persistent, push",
+        default: "overlay",
+        description: "Choose the type of drawer",
       },
       {
         name: "width",
@@ -125,7 +152,7 @@ class storyDrawer extends HTMLElement {
       {
         name: "data-drawer",
         type: "boolean",
-        options: "Cancel",
+        options: "",
         default: "",
         description:
           "Recommended to pair with an element that has the same data-drawer value to open the drawer. Refer to code examples.",
@@ -351,6 +378,24 @@ class storyDrawer extends HTMLElement {
       </mui-v-stack>
     `;
 
+    const menuItems = /*html*/ `
+      <mui-v-stack alignX="stretch" space="var(--space-100)" style="padding-bottom: var(--space-400);">
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+      </mui-v-stack>
+    `;
+
     const stories = /*html*/ `
     
       <spec-card title="Import">
@@ -382,11 +427,14 @@ class storyDrawer extends HTMLElement {
         </props-card>
       </mui-v-stack>
 
-      <story-card title="Overlay Left" description="The drawer is positioned fixed to the viewport edge">
+      <story-card id="drawer-overlay-left" title="Overlay Left" description="The drawer is positioned fixed to the viewport edge">
         <mui-button variant="primary" data-drawer="drawer-1" slot="body">Open</mui-button>
         
-        <mui-drawer variant="overlay" data-drawer="drawer-1" width="400px" side="left" slot="body" z-index="200">
-          <mui-heading size="4" level="4" slot="title">Overlay Drawer</mui-heading>
+        <mui-drawer variant="overlay" data-drawer="drawer-1" side="left" slot="body" z-index="200">
+            <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
+              <guides-logo style="width: 24px;"></guides-logo>
+              <mui-heading size="4" level="4">Guides</mui-heading>
+            </mui-h-stack>
             ${content}
           <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
           <mui-button slot="actions" variant="primary">Confirm</mui-button>
@@ -415,11 +463,14 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Overlay Right" description="The drawer is positioned fixed to the viewport edge">
+      <story-card id="drawer-overlay-right" title="Overlay Right" description="The drawer is positioned fixed to the viewport edge">
         <mui-button variant="primary" data-drawer="drawer-2" slot="body">Open</mui-button>
         
         <mui-drawer variant="overlay" data-drawer="drawer-2" width="400px" side="right" slot="body" z-index="200">
-          <mui-heading size="4" level="4" slot="title">Overlay Drawer</mui-heading>
+          <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
+            <guides-logo style="width: 24px;"></guides-logo>
+            <mui-heading size="4" level="4">Guides</mui-heading>
+          </mui-h-stack>
           ${content}
           <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
           <mui-button slot="actions" variant="primary">Confirm</mui-button>
@@ -448,7 +499,72 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card id="drawer-overlay-no-header" title="Overlay: No Header" description="If no header if used, ensure there is a way for the user to cancel out of the view, especially on mobile.">
+        <mui-button variant="primary" data-drawer="overlay-no-header" slot="body">Open</mui-button>
+        
+        <mui-drawer variant="overlay" data-drawer="overlay-no-header" width="400px" side="left" slot="body" z-index="200">
+          ${content}
+          <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
+          <mui-button slot="actions" variant="primary">Confirm</mui-button>
+        </mui-drawer>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button variant="primary" data-drawer="hook"&gt;Open&lt;/mui-button&gt;<br><br>
+          &lt;mui-drawer variant="overlay" data-drawer="hook" width="400px" side="left"&gt;<br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
+          &lt;/mui-drawer&gt;<br><br>
+          this.shadowRoot.querySelectorAll('[data-drawer]').forEach((btn) =&gt; {<br>
+          &nbsp;&nbsp;btn.addEventListener('click', () =&gt; {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const target = btn.getAttribute('data-drawer');<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const drawer = this.shadowRoot.querySelector(&#96;[data-drawer=&quot; + target + &quot;]&#96;);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if (drawer) drawer.setAttribute('open', '');<br>
+          &nbsp;&nbsp;});<br>
+          });<br>
+          this.shadowRoot.querySelectorAll('mui-drawer').forEach((drawer) =&gt; {<br>
+          &nbsp;&nbsp;drawer.querySelectorAll('[data-close]').forEach((btn) =&gt; {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;btn.addEventListener('click', () =&gt; drawer.removeAttribute('open'));<br>
+          &nbsp;&nbsp;});<br>
+          });
+        </story-code-block>
+      </story-card>
+
+      <story-card id="drawer-overlay-no-footer" title="Overlay: No Footer" description="If no footer if used, ensure there is a way for the user to cancel out of the view, especially on mobile.">
+        <mui-button variant="primary" data-drawer="overlay-no-footer" slot="body">Open</mui-button>
+        
+        <mui-drawer variant="overlay" data-drawer="overlay-no-footer" width="400px" side="left" slot="body" z-index="200">
+          <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
+            <guides-logo style="width: 24px;"></guides-logo>
+            <mui-heading size="4" level="4">Guides</mui-heading>
+          </mui-h-stack>
+          ${content}
+        </mui-drawer>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button variant="primary" data-drawer="hook"&gt;Open&lt;/mui-button&gt;<br><br>
+          &lt;mui-drawer variant="overlay" data-drawer="hook" width="400px" side="left"&gt;<br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
+          &lt;/mui-drawer&gt;<br><br>
+          this.shadowRoot.querySelectorAll('[data-drawer]').forEach((btn) =&gt; {<br>
+          &nbsp;&nbsp;btn.addEventListener('click', () =&gt; {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const target = btn.getAttribute('data-drawer');<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;const drawer = this.shadowRoot.querySelector(&#96;[data-drawer=&quot; + target + &quot;]&#96;);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if (drawer) drawer.setAttribute('open', '');<br>
+          &nbsp;&nbsp;});<br>
+          });<br>
+          this.shadowRoot.querySelectorAll('mui-drawer').forEach((drawer) =&gt; {<br>
+          &nbsp;&nbsp;drawer.querySelectorAll('[data-close]').forEach((btn) =&gt; {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;btn.addEventListener('click', () =&gt; drawer.removeAttribute('open'));<br>
+          &nbsp;&nbsp;});<br>
+          });
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="drawer-push-left"
         title="Push Left" 
         description="The Push Drawer slides in from the left and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
         usage="
@@ -498,6 +614,7 @@ class storyDrawer extends HTMLElement {
       </story-card>
 
       <story-card 
+        id="drawer-push-right"
         title="Push Right" 
         description="The Push Drawer slides in from the right and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
         usage="
@@ -548,6 +665,7 @@ class storyDrawer extends HTMLElement {
       </story-card>
 
       <story-card 
+        id="drawer-persistent-right"
         title="Persistent Right" 
         description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the right side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
         usage="
@@ -590,6 +708,7 @@ class storyDrawer extends HTMLElement {
       </story-card>
 
       <story-card
+       id="drawer-persistent-left"
         title="Persistent Left"
         description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the left side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
         usage="
@@ -632,11 +751,12 @@ class storyDrawer extends HTMLElement {
       </story-card>
 
       <story-card
-        title="Menu Example"
-        description=""
+       id="drawer-menu"
+        title="Menu"
+        description="Uses the built-in heading and close button to provide a clear way to close the panel, while also presenting additional context through the header section."
       >
         <div class="canvas" slot="body">
-          <mui-drawer variant="push" width="260px" slot="body" side="left" z-index="200" data-drawer="hook" drawer-space="none">
+          <mui-drawer variant="push" width="260px" side="left" z-index="200" data-drawer="hook" drawer-space="none">
             <div slot="page" class="page-main">
               <div class="page-header">
                 <mui-h-stack space="var(--space-200)" alignY="center">
@@ -650,7 +770,11 @@ class storyDrawer extends HTMLElement {
                 ${bill}
               </div>
             </div>
-            <mui-heading size="4" level="4" slot="title">Menu</mui-heading>
+            <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
+              <guides-logo style="width: 24px;"></guides-logo>
+              <mui-heading size="4" level="4">Guides</mui-heading>
+            </mui-h-stack>
+
             <mui-v-stack alignX="stretch" space="var(--space-100)" style="padding-bottom: var(--space-400);">
               <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
               <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
@@ -670,6 +794,94 @@ class storyDrawer extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer variant="push" width="320px" side="left" data-drawer="hook" drawer-space="none"&gt;<br>
+            &nbsp;&nbsp;...<br>
+          &lt;/mui-drawer&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+       id="drawer-advanced-menu"
+        title="Advanced Menu"
+        description="Crafting the responsive behaviour using mui-responsive and alternative variants."
+        usage="
+          Omit the header and using a custom header and action that has 'data-close' to toggle the view;
+          Use mui-responsive component to toggle state and components between desktop and mobile. 
+        "
+      >
+        <div class="canvas" slot="body">
+
+          <div class="page-header" style="padding-left: var(--space-400);">
+            <mui-h-stack space="var(--space-300)" alignY="center">
+
+              <mui-responsive breakpoint="768">
+                <mui-button slot="showAbove" variant="tertiary" data-drawer-toggle="custom-header-toggle">
+                  <mui-icon-menu></mui-icon-menu>
+                </mui-button>
+                <mui-button slot="showBelow" variant="tertiary" data-drawer="custom-header-overlay">
+                  <mui-icon-menu></mui-icon-menu>
+                </mui-button>
+              </mui-responsive>
+
+              <mui-h-stack space="var(--space-100)" alignY="center">
+                <guides-logo style="width: 24px;"></guides-logo>
+                <mui-heading size="4" level="4">Guides</mui-heading>
+              </mui-h-stack>
+            </mui-h-stack>
+          </div>
+
+          <mui-responsive breakpoint="768">
+
+            <mui-drawer 
+              slot="showAbove" 
+              variant="push" 
+              width="260px" 
+              side="left" 
+              data-drawer-toggle="custom-header-toggle" 
+              drawer-space="none"
+            >
+              ${menuItems}
+              <div slot="page" class="page-main">
+                <div class="page-content">
+                  ${bill}
+                </div>
+              </div>
+              
+            </mui-drawer>
+
+            <div slot="showBelow">
+              <mui-drawer 
+                variant="overlay" 
+                width="260px" 
+                side="left" 
+                z-index="200" 
+                data-drawer="custom-header-overlay" 
+                drawer-space="none"
+              >
+                
+              <mui-h-stack space="var(--space-300)" alignY="center" style="padding: var(--space-300) var(--space-500) var(--space-300) var(--space-400)">
+                <mui-button variant="tertiary" data-close>
+                  <mui-icon-menu></mui-icon-menu>
+                </mui-button>
+                <mui-h-stack space="var(--space-100)" alignY="center">
+                  <guides-logo style="width: 24px;"></guides-logo>
+                  <mui-heading size="4" level="4">Guides</mui-heading>
+                </mui-h-stack>
+              </mui-h-stack>
+
+                ${menuItems}
+              </mui-drawer>
+              <div class="page-main">
+                <div class="page-content">
+                  ${bill}
+                </div>
+              </div>
+            </div>
+
+          </mui-responsive>
+
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer variant="push" width="320px" side="left" data-drawer-toggle="hook" drawer-space="none"&gt;<br>
             &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
@@ -695,6 +907,21 @@ class storyDrawer extends HTMLElement {
           Backdrop click and Escape key close the drawer in overlay and push variants.
         "
       >
+        <mui-message heading="Quicklinks" slot="message">
+          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
+            <mui-link size="small" data-scroll-link="drawer-overlay-left">Overlay Left</mui-link>
+            <mui-link size="small" data-scroll-link="drawer-overlay-right">Overlay Right</mui-link>
+            <mui-link size="small" data-scroll-link="drawer-overlay-no-header">Overlay: No Header</mui-link>
+            <mui-link size="small" data-scroll-link="drawer-overlay-no-footer">Overlay: No Footer</mui-link>
+            <mui-link size="small" data-scroll-link="drawer-push-left">Push Left</mui-link>
+            <mui-link size="small" data-scroll-link="drawer-push-right">Push Right</mui-link>
+            <mui-link size="small" data-scroll-link="drawer-persistent-left">Persistent Left</mui-link>
+            <mui-link size="small" data-scroll-link="drawer-persistent-right">Persistent Right</mui-link>
+            <mui-link size="small" data-scroll-link="drawer-menu">Menu</mui-link>
+            <mui-link size="small" data-scroll-link="drawer-advanced-menu">Advanced Menu</mui-link>              
+          </mui-h-stack>
+        </mui-message>
+
         ${stories}
       </story-template>
     `;
@@ -713,6 +940,39 @@ class storyDrawer extends HTMLElement {
       drawer.querySelectorAll("mui-button[data-close]").forEach((btn) => {
         btn.addEventListener("click", () => drawer.removeAttribute("open"));
       });
+    });
+
+    // Toggle drawer buttons
+    this.shadowRoot.querySelectorAll("mui-button[data-drawer-toggle]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-drawer-toggle");
+        const drawer = this.shadowRoot.querySelector(`mui-drawer[data-drawer-toggle="${target}"]`);
+        if (!drawer) return;
+
+        if (drawer.hasAttribute("open")) {
+          drawer.removeAttribute("open");
+        } else {
+          drawer.setAttribute("open", "");
+        }
+      });
+    });
+
+    // Spec Card - Minimal scroll-to handler
+    // The common href with hash could not be used because of the hash navigation
+    // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
+    shadowRoot.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-scroll-link]");
+      if (!trigger) return;
+
+      event.preventDefault();
+
+      const targetId = trigger.getAttribute("data-scroll-link");
+      if (!targetId) return;
+
+      const targetEl = shadowRoot.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+      }
     });
   }
 }
