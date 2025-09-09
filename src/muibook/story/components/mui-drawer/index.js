@@ -897,14 +897,10 @@ class storyDrawer extends HTMLElement {
       <story-card 
         id="drawer-breakpoint"
         title="Breakpoint" 
-        description="Adjust the default breakpoint for the mobile view. Set it to '0' if you want to use media queries or state to swap out the entire view."
+        description="Adjust the default breakpoint for the mobile view."
         usage="
-          This variant is intended for full-screen page views rather than smaller page sections.;
-          Apply styles to ensure the container spans the viewport correctly.;
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
-          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
-          If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.;
-          See the <mui-link size='small' target='_blank' href='#/push-right'>full-screen example</mui-link>
+          If you want to use media queries or state to introudce a completely different mobile view, you can set the breakpoint '0' to avoid the mobile view from appearing.;
+          Alternatively, if you need to override the default 768px cutoff, you can provide a custom value for breakpoint (for example, 1024) to control when the drawer switches to its mobile behavior.
         "
 
       >
