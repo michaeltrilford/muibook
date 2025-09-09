@@ -103,8 +103,18 @@ class MuiDrawer extends HTMLElement {
         will-change: transform, opacity;
       }
       main.no-padding {
-        padding: 0 !important;
+        padding: 0;
       }
+      
+      main.no-heading {
+        padding-top: calc(var(--space-500) + env(safe-area-inset-top));
+      }
+
+      main.no-padding.no-heading {
+        padding-top: env(safe-area-inset-top);
+      }
+
+
       footer {
         display: flex;
         align-items: center;
@@ -423,12 +433,18 @@ class MuiDrawer extends HTMLElement {
   }
 
   private updateHeaderVisibility() {
-    if (!this.headerEl || !this.headerSlot) return;
+    if (!this.headerEl || !this.headerSlot || !this.innerEl) return;
     const hasHeader = this.headerSlot.assignedElements().length > 0;
     this.headerEl.hidden = !hasHeader;
 
     // 👇 Reflect state on host
     this.toggleAttribute("has-header", hasHeader);
+
+    // Add/remove no-heading class on <main>
+    const mainEl = this.innerEl.querySelector("main");
+    if (mainEl) {
+      mainEl.classList.toggle("no-heading", !hasHeader);
+    }
   }
 
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
