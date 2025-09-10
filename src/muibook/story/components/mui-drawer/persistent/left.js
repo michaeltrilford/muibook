@@ -83,6 +83,42 @@ class storyPersistentLeft extends HTMLElement {
       </mui-v-stack>
     `;
 
+    const reviewStepper = /*html*/ `
+        <mui-v-stack space="0" style="margin-bottom: var(--space-400);">
+          <div 
+            style="
+              background: var(--surface-elevated-200);
+              padding: var(--space-400);
+              border-top-left-radius: var(--radius-300); 
+              border-top-right-radius: var(--radius-300); 
+              border: var(--border-thin);
+            "
+          >
+            <mui-body size="small" weight="bold">Guru has prefilled the fields</mui-body>
+            <mui-body size="small">Review the items and proceed</mui-body>
+          </div>
+          <div 
+            style="
+              background: var(--surface-elevated-200);
+              padding: var(--space-400) 0 var(--space-500);
+              border-bottom-left-radius: var(--radius-300); 
+              border-bottom-right-radius: var(--radius-300); 
+              border: var(--border-thin);
+                border-top: none;
+            "
+          >
+            <mui-stepper direction="horizontal" active-step="2">
+              <mui-step title="Details">
+              </mui-step>
+              <mui-step title="Items">
+              </mui-step>
+              <mui-step title="Pay">
+              </mui-step>
+            </mui-stepper>
+          </div>
+        </mui-v-stack>
+      `;
+
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <div class="fullscreen">
@@ -96,6 +132,7 @@ class storyPersistentLeft extends HTMLElement {
           </div>
         </div>
         <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
+        ${reviewStepper}
         <form>
           <mui-v-stack space="var(--space-400)">
             <mui-input label="Item" value="Hank Barry"></mui-input>
