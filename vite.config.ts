@@ -122,6 +122,10 @@ export default defineConfig({
         "components/mui-stack": path.resolve(__dirname, "src/components/mui-stack"),
         "components/mui-stack/hstack": path.resolve(__dirname, "src/components/mui-stack/hstack"),
         "components/mui-stack/vstack": path.resolve(__dirname, "src/components/mui-stack/vstack"),
+        // STEPPER
+        "components/mui-stepper": path.resolve(__dirname, "src/components/mui-stepper"),
+        "components/mui-stepper/stepper": path.resolve(__dirname, "src/components/mui-stepper/stepper"),
+        "components/mui-stepper/step": path.resolve(__dirname, "src/components/mui-stepper/step"),
         // SWITCH
         "components/mui-switch": path.resolve(__dirname, "src/components/mui-switch"),
         // TABLE

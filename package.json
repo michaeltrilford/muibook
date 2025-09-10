@@ -340,6 +340,18 @@
       "import": "./dist/esm/components/mui-stack/vstack/index.js",
       "types": "./dist/types/components/mui-stack/vstack/index.d.ts"
     },
+    "./mui-stepper": {
+      "import": "./dist/esm/components/mui-stepper/index.js",
+      "types": "./dist/types/components/mui-stepper/index.d.ts"
+    },
+    "./mui-stepper/stepper": {
+      "import": "./dist/esm/components/mui-stepper/stepper/index.js",
+      "types": "./dist/types/components/mui-stepper/stepper/index.d.ts"
+    },
+    "./mui-stepper/step": {
+      "import": "./dist/esm/components/mui-stepper/step/index.js",
+      "types": "./dist/types/components/mui-stepper/step/index.d.ts"
+    },
     "./mui-switch": {
       "import": "./dist/esm/components/mui-switch/index.js",
       "types": "./dist/types/components/mui-switch/index.d.ts"

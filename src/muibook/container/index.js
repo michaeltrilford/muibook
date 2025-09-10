@@ -49,6 +49,7 @@ export class AppContainer extends HTMLElement {
       "/layout-part-selectors": "parts-layout",
       "/visual-part-selectors": "parts-visual",
 
+      "/stepper": "story-stepper",
       "/smart-card": "story-smart-card",
       "/field": "story-field",
       "/tab-bar": "story-tab-bar",
@@ -134,6 +135,7 @@ export class AppContainer extends HTMLElement {
       "comp-wallet": () => import("../story/compositions/wallet"),
       "comp-onboarding": () => import("../story/compositions/onboarding/index.js"),
 
+      "story-stepper": () => import("../story/components/mui-stepper"),
       "story-button": () => import("../story/components/mui-button"),
       "story-dropdown": () => import("../story/components/mui-dropdown"),
       "story-loader": () => import("../story/components/mui-loader"),

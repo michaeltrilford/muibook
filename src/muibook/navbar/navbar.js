@@ -187,7 +187,8 @@ class appNavbar extends HTMLElement {
         
         <mui-body weight="bold">Navigation</mui-body>
         <app-navbar-link link="#/tab-bar" title="Tab Bar"></app-navbar-link>  
-        <app-navbar-link link="#/carousel" title="Carousel"></app-navbar-link>  
+        <app-navbar-link link="#/carousel" title="Carousel"></app-navbar-link>
+        <app-navbar-link link="#/stepper" title="Stepper"></app-navbar-link>   
         
       </app-navbar-group>
     `;

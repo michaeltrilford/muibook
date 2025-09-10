@@ -95,3 +95,5 @@ export * from "./components/mui-tabs/panel";
 export * from "./components/mui-tabs/tab-bar";
 export * from "./components/mui-carousel/controller";
 export * from "./components/mui-carousel/panel";
+export * from "./components/mui-stepper/stepper";
+export * from "./components/mui-stepper/step";

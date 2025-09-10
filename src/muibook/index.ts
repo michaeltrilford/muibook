@@ -92,6 +92,8 @@ import "../components/mui-list/item";
 import "../components/mui-input";
 import "../components/mui-checkbox";
 import "../components/mui-loader";
+import "../components/mui-stepper/step";
+import "../components/mui-stepper/stepper";
 
 // Muibook Components
 import "./container";
