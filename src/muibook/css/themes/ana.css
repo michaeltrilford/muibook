@@ -230,6 +230,13 @@ html[data-brand="ana"][data-theme="light"] {
   /* Chip */
   --chip-border-color-active: var(--ana-blue-500);
   --chip-text-color-active: var(--ana-blue-500);
+
+  /* Stepper */
+  --stepper-color: var(--ana-blue-500);
+  --stepper-background-active: var(--stepper-color);
+  --stepper-background-inactive: var(--grey-200);
+  --stepper-border-color: var(--stepper-color);
+  --stepper-text-color-active: var(--stepper-color);
 }
 
 /* =============================================================================== */
@@ -374,6 +381,13 @@ html[data-brand="ana"][data-theme="dark"] {
   /* Chip */
   --chip-border-color-active: var(--ana-blue-200);
   --chip-text-color-active: var(--ana-blue-200);
+
+  /* Stepper */
+  --stepper-color: var(--ana-blue-200);
+  --stepper-background-active: var(--stepper-color);
+  --stepper-background-inactive: var(--black);
+  --stepper-border-color: var(--stepper-color);
+  --stepper-text-color-active: var(--stepper-color);
 }
 
 /* ================================================================= */

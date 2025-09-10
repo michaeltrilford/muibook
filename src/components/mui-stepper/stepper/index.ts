@@ -98,9 +98,13 @@ class MuiStepper extends HTMLElement {
     `;
 
     // Post-process slotted steps
+
+    const activeStepIndex = activeStep - 1;
+
     const steps = this.steps;
     steps.forEach((step, i) => {
-      const state = i < activeStep ? "completed" : i === activeStep ? "active" : "upcoming";
+      const state = i < activeStepIndex ? "completed" : i === activeStepIndex ? "active" : "upcoming";
+
       step.setAttribute("state", state);
       step.setAttribute("direction", direction);
       step.setAttribute("position", i === 0 ? "first" : i === steps.length - 1 ? "last" : "middle");

@@ -79,22 +79,23 @@ class MuiStep extends HTMLElement {
           width: ${size};
           height: ${size};
           border-radius: 50%;
-          box-shadow: inset 0 0 0 var(--stroke-size-200) var(--blue-500);
-          background: var(--surface);
+          box-shadow: inset 0 0 0 var(--stroke-size-200) var(--stepper-border-color);
+          background: var(--stepper-background-inactive);
           z-index: 1;
         }
 
         .dot.completed {
-          background: var(--blue-500);
-          border-color: var(--blue-500);
+          background: var(--stepper-background-active);
+          border-color: var(--stepper-border-color);
         }
         .dot.active {
-          border-color: var(--blue-500);
+          border-color: var(--stepper-border-color);
+          background: var(--stepper-background-active);
         }
 
         .line {
           position: absolute;
-          background: var(--blue-500);
+          background: var(--stepper-color);
         }
 
         .line.before.horizontal {
@@ -132,7 +133,7 @@ class MuiStep extends HTMLElement {
         }
 
         :host([direction="vertical"]) .content {
-          border-left: var(--stroke-size-200) solid var(--blue-500);
+          border-left: var(--stroke-size-200) solid var(--stepper-color);
           margin-left: calc( -1 * ((${size} / 2) + var(--stroke-size-100)));
           padding-left: ${size};
           padding-bottom: ${size};
@@ -156,7 +157,7 @@ class MuiStep extends HTMLElement {
         }
 
         mui-body.active::part(color) {
-          color: var(--blue-300);;
+          color: var(--stepper-text-color-active);;
         }
 
       </style>

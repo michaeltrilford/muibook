@@ -416,6 +416,13 @@ html[data-theme="light"] {
   --progress-track-background: var(--grey-200);
   --progress-bar-state-100: var(--grey-200);
   --progress-bar-state-200: var(--grey-300);
+
+  /* Stepper */
+  --stepper-color: var(--blue-600);
+  --stepper-background-active: var(--stepper-color);
+  --stepper-background-inactive: var(--white);
+  --stepper-border-color: var(--stepper-color);
+  --stepper-text-color-active: var(--stepper-color);
 }
 
 /* ==================================================================================================== */
@@ -629,6 +636,13 @@ html[data-theme="dark"] {
   --progress-track-background: var(--grey-700);
   --progress-bar-state-100: var(--grey-900);
   --progress-bar-state-200: var(--grey-1000);
+
+  /* Stepper */
+  --stepper-color: var(--blue-500);
+  --stepper-background-active: var(--stepper-color);
+  --stepper-background-inactive: var(--black);
+  --stepper-border-color: var(--stepper-color);
+  --stepper-text-color-active: var(--stepper-color);
 }
 
 /* ==================================================================================================== */
