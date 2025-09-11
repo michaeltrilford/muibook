@@ -55,7 +55,7 @@ class MuiStep extends HTMLElement {
         ? contentHTML + dotHTML // content above
         : dotHTML + contentHTML; // vertical: dot left, content right
 
-    const size = " 2.1rem";
+    const size = " 1.8rem";
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
@@ -133,12 +133,29 @@ class MuiStep extends HTMLElement {
         }
 
         :host([direction="vertical"]) .content {
-          border-left: var(--stroke-size-200) solid var(--stepper-color);
           margin-left: calc( -1 * ((${size} / 2) + var(--stroke-size-100)));
           padding-left: ${size};
           padding-bottom: ${size};
           align-items: start;
           text-align: left;
+          position: relative;
+        }
+
+        :host([direction="vertical"]) .content:before {
+          content: "";
+          width: var(--stroke-size-200);
+          height: 100%;
+          position: absolute;
+          background: var(--stepper-border-color);
+          margin-left: calc(-1 * ${size});
+          height: calc(100% - ${size});
+          bottom: calc(-1 * var(--stroke-size-100));
+
+        }
+
+        :host([direction="vertical"][position="last"]) .content:before {
+          display: none;
+
         }
 
         :host([direction="vertical"][position="last"]) .content {
@@ -146,6 +163,9 @@ class MuiStep extends HTMLElement {
         }
 
 
+        :host([direction="vertical"]) .dotwrapper {
+          margin-top: var(--stroke-size-100);
+        }
 
 
 
