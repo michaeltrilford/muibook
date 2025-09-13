@@ -86,10 +86,8 @@ class MuiStep extends HTMLElement {
 
         .dot.completed {
           background: var(--stepper-background-active);
-          border-color: var(--stepper-border-color);
         }
         .dot.active {
-          border-color: var(--stepper-border-color);
           background: var(--stepper-background-active);
         }
 
@@ -155,7 +153,6 @@ class MuiStep extends HTMLElement {
 
         :host([direction="vertical"][position="last"]) .content:before {
           display: none;
-
         }
 
         :host([direction="vertical"][position="last"]) .content {
@@ -164,13 +161,9 @@ class MuiStep extends HTMLElement {
 
 
         :host([direction="vertical"]) .dotwrapper {
-          margin-top: var(--stroke-size-100);
+          margin-top: var(--stroke-size-200);
+          margin-bottom: var(--stroke-size-100);
         }
-
-
-
-
-
 
         .title[active] {
           font-weight: bold;

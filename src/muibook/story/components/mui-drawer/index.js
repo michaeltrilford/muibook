@@ -992,6 +992,7 @@ class storyDrawer extends HTMLElement {
         title="Drawer" 
         description="A drawer view that prompts users to take a specific action or provide additional information without navigating away from the current context."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-drawer/index.ts"
+        guides="https://guides.muibook.com/drawer"
         accessibility="
           Uses role='dialog' for overlay/push variants and role='complementary' for persistent layout variants.;
           Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions.;
