@@ -993,6 +993,7 @@ class storyDrawer extends HTMLElement {
         description="A drawer view that prompts users to take a specific action or provide additional information without navigating away from the current context."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-drawer/index.ts"
         guides="https://guides.muibook.com/drawer"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=780-4943&t=KhmyUmaNDWKTGtrH-1"
         accessibility="
           Uses role='dialog' for overlay/push variants and role='complementary' for persistent layout variants.;
           Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions.;

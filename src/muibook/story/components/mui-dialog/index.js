@@ -484,6 +484,7 @@ class storyDialog extends HTMLElement {
         description="A modal window that prompts users to take a specific action or provide additional information without navigating away from the current context."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
         guides="https://guides.muibook.com/dialog"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=780-4948&t=KhmyUmaNDWKTGtrH-1"
         accessibility="
           Uses role='dialog' and aria-modal='true' for screen readers.;
           Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions.;
