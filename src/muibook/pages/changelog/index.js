@@ -34,8 +34,8 @@ class ChangelogPage extends HTMLElement {
 
       <story-template 
         title="Changelog"
-        description="Style your brand without editing component code."
-        github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
+        description="Keep track of updates, fixes, and new features for your components."
+        github="https://github.com/michaeltrilford/muibook/blob/main/CHANGELOG.md"
       >
         <design-changelog>${changelog}</design-changelog>
       </story-template>
