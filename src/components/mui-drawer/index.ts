@@ -160,7 +160,7 @@ class MuiDrawer extends HTMLElement {
         height: 100%;
         z-index: 101;
         transition: opacity 0.3s ease, visibility 0.3s ease;
-        background: var(--dialog-backdrop);
+        background: var(--backdrop-overlay);
         opacity: 0;
         visibility: hidden;
         will-change: opacity, visibility;

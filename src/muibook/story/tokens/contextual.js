@@ -55,6 +55,7 @@ class tokensContextual extends HTMLElement {
               <mui-link size="small" data-scroll-link="font-weight">Font Weight</mui-link>
               <mui-link size="small" data-scroll-link="border">Border</mui-link>
               <mui-link size="small" data-scroll-link="outline">Outline</mui-link>
+              <mui-link size="small" data-scroll-link="overlay">Overlay</mui-link>
               <mui-link size="small" data-scroll-link="surface">Surface</mui-link>
             </mui-h-stack>
           </mui-message>
@@ -98,6 +99,10 @@ class tokensContextual extends HTMLElement {
           <story-token-slat slot="body" token="--outline-thin" variant="outline"></story-token-slat>
           <story-token-slat slot="body" token="--outline-medium" variant="outline"></story-token-slat>
           <story-token-slat slot="body" token="--outline-thick" variant="outline"></story-token-slat>
+          </spec-card>
+
+          <spec-card id="overlay" title="Overlay">
+           <story-token-slat slot="body" token="--backdrop-overlay" variant="color"></story-token-slat>  
           </spec-card>
 
           <spec-card id="surface" title="Surface" description="Surface tokens define the background layers of the interface. They create depth and support elevation across contexts. Light and dark modes aren’t simple color inversions; they’re carefully designed to preserve consistent elevation and stacking across all surfaces.">

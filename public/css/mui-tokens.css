@@ -327,6 +327,7 @@ html[data-theme="light"] {
   --text-color-error: var(--red-600);
   --text-color-optional: var(--grey-600);
 
+  --backdrop-overlay: var(--black-opacity-70);
   /* ================================================================================================== */
   /* Components                                                                                         */
   /* ================================================================================================== */
@@ -408,14 +409,11 @@ html[data-theme="light"] {
   --dropdown-shadow-color: var(--black-opacity-10);
   --dropdown-button-background-hover: var(--white);
 
-  /* Dialog */
-  --dialog-backdrop: var(--black-opacity-70);
-
   /* Progress */
   --progress-bar-background: var(--blue-600);
   --progress-track-background: var(--grey-200);
-  --progress-bar-state-100: var(--grey-200);
-  --progress-bar-state-200: var(--grey-300);
+  --progress-loading-bar-100: var(--grey-200);
+  --progress-loading-bar-200: var(--grey-300);
 
   /* Stepper */
   --stepper-color: var(--blue-600);
@@ -550,6 +548,8 @@ html[data-theme="dark"] {
   --text-color-warning: var(--orange-400);
   --text-color-error: var(--red-400);
   --text-color-optional: var(--grey-300);
+
+  --backdrop-overlay: var(--black-opacity-70);
   /* ================================================================================================== */
   /* Components                                                                                         */
   /* ================================================================================================== */
@@ -628,14 +628,11 @@ html[data-theme="dark"] {
   --dropdown-shadow-color: var(--black-opacity-20);
   --dropdown-button-background-hover: var(--grey-900);
 
-  /* Dialog */
-  --dialog-backdrop: var(--black-opacity-70);
-
   /* Progress */
   --progress-bar-background: var(--blue-500);
   --progress-track-background: var(--grey-700);
-  --progress-bar-state-100: var(--grey-900);
-  --progress-bar-state-200: var(--grey-1000);
+  --progress-loading-bar-100: var(--grey-900);
+  --progress-loading-bar-200: var(--grey-1000);
 
   /* Stepper */
   --stepper-color: var(--blue-500);

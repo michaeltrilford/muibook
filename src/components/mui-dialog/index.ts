@@ -38,7 +38,7 @@ class MuiDialog extends HTMLElement {
       }
 
       dialog::backdrop {
-        background: var(--dialog-backdrop);
+        background: var(--backdrop-overlay);
       }
 
       header {

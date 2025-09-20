@@ -34,10 +34,10 @@ class MuiProgress extends HTMLElement {
       extraStyles = `
         background-image: repeating-linear-gradient(
           45deg,
-          var(--progress-bar-state-100) 0,
-          var(--progress-bar-state-100) 10px,
-          var(--progress-bar-state-200) 10px,
-          var(--progress-bar-state-200) 20px
+          var(--progress-loading-bar-100) 0,
+          var(--progress-loading-bar-100) 10px,
+          var(--progress-loading-bar-200) 10px,
+          var(--progress-loading-bar-200) 20px
         );
         background-size: 200% 100%;
       `;

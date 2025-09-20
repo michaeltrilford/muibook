@@ -59,6 +59,7 @@ class tokensComponents extends HTMLElement {
               <mui-link size="small" data-scroll-link="dialog">Dialog</mui-link>
               <mui-link size="small" data-scroll-link="dropdown">Dropdown</mui-link>
               <mui-link size="small" data-scroll-link="chip">Chip</mui-link>
+              <mui-link size="small" data-scroll-link="progress">Progress</mui-link>
             </mui-h-stack>
           </mui-message>
 
@@ -232,7 +233,15 @@ class tokensComponents extends HTMLElement {
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
           >
             <story-token-slat slot="body" token="--dialog-radius" variant="radius"></story-token-slat>
-            <story-token-slat slot="body" token="--dialog-backdrop" variant="color"></story-token-slat>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Surface Contextual</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Border Contextual</mui-link> tokens</mui-body>
+          </spec-card>
+
+          <spec-card 
+            id="drawer"
+            title="Drawer"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-drawer/index.ts"
+          >
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Surface Contextual</mui-link> tokens</mui-body>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Border Contextual</mui-link> tokens</mui-body>
           </spec-card>
@@ -268,6 +277,29 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--chip-icon-fill" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-dismiss-action-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-dismiss-action-background-hover" variant="color"></story-token-slat>
+          </spec-card>
+
+          <spec-card 
+            id="progress"
+            title="Progress"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts"
+          >
+            <story-token-slat slot="body" token="--progress-bar-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--progress-track-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--progress-loading-bar-100" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--progress-loading-bar-200" variant="color"></story-token-slat>
+          </spec-card>
+
+          <spec-card 
+            id="stepper"
+            title="Stepper"
+            github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-stepper/index.ts"
+          >
+            <story-token-slat slot="body" token="--stepper-background-active" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--stepper-background-inactive" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--stepper-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--stepper-text-color-active" variant="text-color"></story-token-slat>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Text Contextual</mui-link> tokens</mui-body>
           </spec-card>
 
       </story-template>

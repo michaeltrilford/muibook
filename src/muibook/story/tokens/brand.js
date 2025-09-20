@@ -42,7 +42,7 @@ class tokensBrand extends HTMLElement {
               <mui-link size="small" data-scroll-link="line-height">Line Height</mui-link>
               <mui-link size="small" data-scroll-link="font-weight">Font Weight</mui-link>
               <mui-link size="small" data-scroll-link="radius">Radius</mui-link>
-              <mui-link size="small" data-scroll-link="spacing">Spacing</mui-link>
+              <mui-link size="small" data-scroll-link="space">Space</mui-link>
               <mui-link size="small" data-scroll-link="stroke">Stroke</mui-link>
               <mui-link size="small" data-scroll-link="speed">Speed</mui-link>
               <mui-link size="small" data-scroll-link="colors">Colors</mui-link>
@@ -105,7 +105,7 @@ class tokensBrand extends HTMLElement {
             <story-token-slat slot="body" token="--radius-400" variant="radius"></story-token-slat>
           </spec-card>
 
-          <spec-card id="spacing" title="Spacing">
+          <spec-card id="space" title="Space">
             <story-token-slat slot="body" token="--space-000" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--space-025" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--space-050" variant="size"></story-token-slat>
