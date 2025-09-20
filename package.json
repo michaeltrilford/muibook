@@ -423,9 +423,7 @@
     "build:muibook": "vite build --config vite.muibook.config.ts",
     "preview:muibook": "vite preview --config vite.muibook.config.ts",
     "build:create-mui-app": "vite build --config vite.create-mui-app.config.ts",
-    "preview:create-mui-app": "vite preview --config vite.create-mui-app.config.ts",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags"
+    "preview:create-mui-app": "vite preview --config vite.create-mui-app.config.ts"
   },
   "files": [
     "dist/esm/index.js",
