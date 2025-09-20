@@ -27,6 +27,7 @@ export class AppContainer extends HTMLElement {
       "/home": "home-page",
 
       "/design-guidelines": "design-guidelines",
+      "/changelog": "changelog-page",
       "/muiplay": "muiplay-app",
       "/base-theme": "base-theme",
       "/multi-brand-theme": "multi-brand-theme",
@@ -120,6 +121,7 @@ export class AppContainer extends HTMLElement {
       "agent-prompts-page": () => import("../pages/agent-prompts/index.js"),
       "showcase-page": () => import("../pages/showcase/index.js"),
       "npm-page": () => import("../pages/packages/index.js"),
+      "changelog-page": () => import("../pages/changelog/index.js"),
 
       "tokens-brand": () => import("../story/tokens/brand.js"),
       "tokens-semantic": () => import("../story/tokens/semantic.js"),

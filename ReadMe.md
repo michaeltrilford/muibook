@@ -1,3 +1,5 @@
+- See [CHANGELOG.md](./CHANGELOG.md) for details on updates.
+
 # NPM Package 📦 – @muibook/components
 
 Leverage reusable vanilla Web Components built with the Mui (MichaelUI) Design System in your project. Simply install the [@muibook/components](https://www.npmjs.com/package/@muibook/components?activeTab=readme) package to access a framework-agnostic, accessible, and customizable component library.

@@ -114,6 +114,7 @@ import "./local-components/story-template";
 import "./local-components/story-token-slat";
 import "./local-components/story-token-types";
 import "./local-components/story-types";
+import "./local-components/changelog";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   <app-navbar>
