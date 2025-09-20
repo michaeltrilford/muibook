@@ -1,8 +1,8 @@
 ## Header [Start]
 
-## 📦 [5.0.0] - 2025-09-20
+## 📦 v5.0.0
 
-[View changes](https://github.com/your-org/your-repo/compare/v4.0.0...v5.0.0)
+[View changes](https://www.npmjs.com/package/@muibook/components/v/5.0.0)
 
 ## Header [End]
 
@@ -29,7 +29,9 @@
 
 ## Header [Start]
 
-## 📦 [4.0.0] - 2025-08-13
+## 📦 v4.0.0
+
+[View changes](https://www.npmjs.com/package/@muibook/components/v/4.0.0)
 
 ## Header [End]
 
