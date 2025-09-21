@@ -1,3 +1,6 @@
+import pkg from "../../../../package.json";
+const version = pkg.version; // e.g., "5.0.0"
+
 import "../../images/mui/mui-logo-mobile";
 import "../../images/mui/mui-logo";
 import "../../images/mui/ana-logo";
@@ -77,8 +80,10 @@ class HomePage extends HTMLElement {
   render() {
     const { desktop, tablet, phone } = this.getLogos();
 
+    const versionText = `${version}`;
+
     const intro = /*html*/ `
-      Muibook is the home of the Mui Design System — native Web Components with clean, composable patterns that help you write less code
+      Muibook is the home of the Mui Design System — native Web Components with clean, composable patterns that help you write less code —
     `;
 
     const styles = /*css*/ `
@@ -86,7 +91,8 @@ class HomePage extends HTMLElement {
       :host { 
         display: flex; 
         width: 100%; 
-        align-items: stretch; 
+        align-items: stretch;
+        position: relative;
       }
 
       .main-content__grid { 
@@ -357,21 +363,21 @@ class HomePage extends HTMLElement {
           
           <!-- Main content above -->
           <main slot="showAbove">
+            
             <div class="logo-wrapper">
               ${desktop}
             </div>
             <mui-grid class="introduction">
 
-
               <mui-responsive breakpoint-high="1877" breakpoint-low="1400">
                 <mui-body class="body-text" size="large" weight="bold" slot="showAbove">
-                  ${intro}
+                  ${intro}<mui-link size="large" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="large" weight="regular" href='#/changelog'>Changelog</mui-link>
                 </mui-body> 
                 <mui-body class="body-text"  size="medium" weight="bold" slot="showMiddle">
-                  ${intro}
+                  ${intro}<mui-link size="medium" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="medium" weight="regular" href='#/changelog'>Changelog</mui-link>
                 </mui-body> 
                 <mui-body class="body-text" size="small" weight="bold" slot="showBelow">
-                  ${intro}
+                  ${intro}<mui-link size="small" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="small" weight="regular" href='#/changelog'>Changelog</mui-link>
                 </mui-body> 
               </mui-responsive>
 
@@ -393,7 +399,7 @@ class HomePage extends HTMLElement {
               </div>
               <mui-v-stack space="var(--space-500)" style="max-width: 31rem; padding-left: var(--space-300); padding-right: var(--space-300);">
                 <mui-body class="body-text" size="small" weight="bold">
-                  ${intro}
+                  ${intro}<mui-link size="small" weight="bold" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="small" weight="bold" href='#/changelog'>Changelog</mui-link>
                 </mui-body> 
               </mui-v-stack>
        
@@ -401,7 +407,7 @@ class HomePage extends HTMLElement {
               <mui-h-stack slot="showAbove" space="var(--space-300)">
                 ${actions}
               </mui-h-stack>
-                            <mui-v-stack slot="showBelow" space="var(--space-300)">
+                <mui-v-stack slot="showBelow" space="var(--space-300)">
                 ${actions}
               </mui-v-stack>
               </mui-responsive>
