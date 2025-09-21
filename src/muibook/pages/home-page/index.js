@@ -167,7 +167,7 @@ class HomePage extends HTMLElement {
          
       }
 
-      @media (min-width: 1100px) {
+      @media (min-width: 1200px) {
         main { 
           column-gap: var(--space-800); 
           row-gap: var(--space-800); 
@@ -248,7 +248,7 @@ class HomePage extends HTMLElement {
       }
 
 
-      @media (min-width: 1100px) {
+      @media (min-width: 1300px) {
         :host([data-brand="jal"]) main,
         :host([data-brand="ana"]) main { 
           column-gap: var(--space-800); 
@@ -338,12 +338,12 @@ class HomePage extends HTMLElement {
 
       @media (min-width: 960px) {
         :host([data-brand="jal"]) .body-text,
-        :host([data-brand="ana"]) .body-text { max-width: 58ch; }
+        :host([data-brand="ana"]) .body-text { max-width: 62ch; }
       }
 
       @media (min-width: 1400px) {
         :host([data-brand="jal"]) .body-text,
-        :host([data-brand="ana"]) .body-text { max-width: 68ch }
+        :host([data-brand="ana"]) .body-text { max-width: 70ch }
       }
 
       @media (min-width: 1877px) {
@@ -351,6 +351,17 @@ class HomePage extends HTMLElement {
         :host([data-brand="ana"]) .body-text  { max-width: 75ch;}
       }
       /* ---- */
+
+      .intro-outer {
+        display: flex;
+        justify-content: end;
+      }
+
+      @media (min-width: 1400px) {
+        .intro-outer {
+          display: block;
+        }
+      }
 
     `;
 
@@ -369,21 +380,29 @@ class HomePage extends HTMLElement {
             </div>
             <mui-grid class="introduction">
 
-              <mui-responsive breakpoint-high="1877" breakpoint-low="1400">
+              <mui-responsive breakpoint-high="1877" breakpoint-low="1400" class="intro-outer">
                 <mui-body class="body-text" size="large" weight="bold" slot="showAbove">
                   ${intro}<mui-link size="large" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="large" weight="regular" href='#/changelog'>Changelog</mui-link>
                 </mui-body> 
-                <mui-body class="body-text"  size="medium" weight="bold" slot="showMiddle">
+                <mui-body class="body-text" size="medium" weight="bold" slot="showMiddle">
                   ${intro}<mui-link size="medium" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="medium" weight="regular" href='#/changelog'>Changelog</mui-link>
                 </mui-body> 
-                <mui-body class="body-text" size="small" weight="bold" slot="showBelow">
+                <mui-body class="body-text" style="text-align: right;"  size="small" weight="bold" slot="showBelow">
                   ${intro}<mui-link size="small" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="small" weight="regular" href='#/changelog'>Changelog</mui-link>
                 </mui-body> 
               </mui-responsive>
 
-              <mui-h-stack space="var(--space-300)">
-                ${actions}
-              </mui-h-stack>
+              <mui-responsive breakpoint-high="1877" breakpoint-low="1400">
+                <mui-h-stack slot="showAbove" space="var(--space-300)">
+                  ${actions}
+                </mui-h-stack>
+                <mui-h-stack  slot="showMiddle" space="var(--space-300)">
+                  ${actions}
+                </mui-h-stack>
+                <mui-h-stack alignX="end" slot="showBelow" space="var(--space-300)">
+                  ${actions}
+                </mui-h-stack>
+              </mui-responsive>
             </mui-grid>
 
           </main>
