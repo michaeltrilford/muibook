@@ -131,7 +131,7 @@ class DesignChangelog extends HTMLElement {
       .replace(
         /\[([^\]]+)\]\(([^)]+)\)/g,
         `
-        <mui-responsive breakpoint="1000">
+        <mui-responsive breakpoint="400">
           <mui-link slot="showAbove" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark>$1</mui-link>
           <mui-link slot="showBelow" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark></mui-link>
         </mui-responsive>
