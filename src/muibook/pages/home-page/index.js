@@ -201,7 +201,7 @@ class HomePage extends HTMLElement {
       }
 
       @media (min-width: 1877px) {
-        .body-text { max-width: 68ch; }
+        .body-text { max-width: 72ch; }
       }
 
       /* Brand + theme combinations */
@@ -348,7 +348,7 @@ class HomePage extends HTMLElement {
 
       @media (min-width: 1877px) {
         :host([data-brand="jal"]) .body-text,
-        :host([data-brand="ana"]) .body-text  { max-width: 75ch;}
+        :host([data-brand="ana"]) .body-text  { max-width: 78ch;}
       }
       /* ---- */
 
