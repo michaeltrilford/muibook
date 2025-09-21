@@ -1,3 +1,5 @@
+import "../../images/npm-mark";
+
 class DesignChangelog extends HTMLElement {
   constructor() {
     super();
@@ -126,7 +128,15 @@ class DesignChangelog extends HTMLElement {
       .replace(/^### (.*)$/gm, "<mui-heading level='2' size='4'>$1</mui-heading>")
       .replace(/^## (.*)$/gm, "<mui-heading level='3' size='3'>$1</mui-heading>")
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<mui-link href="$2">$1</mui-link>')
+      .replace(
+        /\[([^\]]+)\]\(([^)]+)\)/g,
+        `
+        <mui-responsive breakpoint="1000">
+          <mui-link slot="showAbove" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark>$1</mui-link>
+          <mui-link slot="showBelow" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark></mui-link>
+        </mui-responsive>
+      `
+      )
       .replace(/^(?:- .*(?:\n|$))+/gm, (match) => {
         const items = match
           .trim()

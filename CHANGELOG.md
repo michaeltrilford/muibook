@@ -1,8 +1,8 @@
 ## Header [Start]
 
-## 📦 v5.0.0 (Upcoming)
+## v5.0.0
 
-[View changes](https://www.npmjs.com/package/@muibook/components/v/5.0.0)
+[Package](https://www.npmjs.com/package/@muibook/components/v/5.0.0)
 
 ## Header [End]
 
@@ -29,9 +29,9 @@
 
 ## Header [Start]
 
-## 📦 v4.0.0
+## v4.0.0
 
-[View changes](https://www.npmjs.com/package/@muibook/components/v/4.0.0)
+[Package](https://www.npmjs.com/package/@muibook/components/v/4.0.0)
 
 ## Header [End]
 

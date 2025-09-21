@@ -90,7 +90,8 @@ class storyCard extends HTMLElement {
     const githubLink = this.getAttribute("github");
     const githubContent = githubLink
       ? /*html*/ `
-        <mui-link 
+        <mui-link
+          variant="tertiary"
           class="github" 
           href="${githubLink}" 
           target="_blank" 
