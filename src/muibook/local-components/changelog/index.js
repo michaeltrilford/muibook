@@ -10,8 +10,6 @@ class DesignChangelog extends HTMLElement {
   async loadChangelog() {
     const res = await fetch("/CHANGELOG.md");
     const markdown = await res.text();
-
-    // Simple local Markdown parser
     const html = this.parseMarkdown(markdown);
 
     const styles = /*css*/ `
@@ -20,49 +18,33 @@ class DesignChangelog extends HTMLElement {
         font-family: var(--font-body);
         line-height: var(--line-height-100);
       }
-
-      mui-card {
-        border: var(--border-thick);
-      }
-
-      mui-card-body {
-        padding: var(--space-600);
-        padding-top: var(--space-500);
-      }
-
-      /* Headings */
-      mui-heading[size="4"] {
+      .header {
         margin-bottom: var(--space-400);
       }
 
-      /* Lists */
-      mui-list {
-        margin: var(--space-000) 0 var(--space-500);
+      .section {
+        padding: var(--space-500) var(--space-500) var(--space-500) var(--space-500);
+        background: var(--surface-elevated-200);
+        border-radius: var(--radius-100);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-100);
+        align-items: start;
       }
 
-      mui-list:last-child{
-        margin-bottom: var(--space-000);
+      .section:not(:last-child) {
+        margin-bottom: var(--space-025);
       }
 
-      li.release-item {
-        padding-left: 0.25em;
-        margin: 0.25em 0;
-        border-left: 4px solid transparent;
-      }
+      mui-list { margin-top: var(--space-025); }
+      mui-card { border: var(--border-thick); }
+      mui-card-body { padding-top: var(--space-400);}
 
-      /* Links and bold */
-      a {
-        color: var(--primary);
-        text-decoration: underline;
-      }
-      strong {
-        font-weight: var(--font-weight-bold);
-      }
-
-      .header {
-        margin-bottom: var(--space-600);
-        border-bottom: var(--border-thin);
-        padding-bottom: var(--space-500);
+      @media (min-width: 768px) {
+        .section {
+          grid-template-columns: 12rem 1fr;
+          gap: var(--space-800);
+        }
       }
 
     `;
@@ -78,13 +60,27 @@ class DesignChangelog extends HTMLElement {
     const result = [];
     let inHeader = false;
     let headerLines = [];
-    let currentGroup = [];
+    let cardContent = [];
+    let currentSection = null;
+    let sectionContent = [];
 
-    const flushGroup = () => {
-      if (currentGroup.length) {
-        // Wrap the group content in <mui-card><mui-card-body>...</mui-card-body></mui-card>
-        result.push(`<mui-card><mui-card-body condensed>${currentGroup.join("\n")}</mui-card-body></mui-card>`);
-        currentGroup = [];
+    const flushSection = () => {
+      if (currentSection) {
+        cardContent.push(`
+        <div class="section">
+          <mui-heading level="3" size="5">${currentSection}</mui-heading>
+          ${sectionContent.join("\n")}
+        </div>
+      `);
+        currentSection = null;
+        sectionContent = [];
+      }
+    };
+
+    const flushCard = () => {
+      if (cardContent.length) {
+        result.push(`<mui-card><mui-card-body>${cardContent.join("\n")}</mui-card-body></mui-card>`);
+        cardContent = [];
       }
     };
 
@@ -94,57 +90,72 @@ class DesignChangelog extends HTMLElement {
       if (trimmed === "## Header [Start]") {
         inHeader = true;
         headerLines = [];
-        continue; // skip marker line
+        continue;
       }
 
       if (trimmed === "## Header [End]") {
         inHeader = false;
-        // Wrap header content in a div.header
         const headerContent = headerLines.join("\n");
-        currentGroup.push(
+        cardContent.push(
           `<mui-h-stack alignX="space-between" alignY="center" class="header">${headerContent}</mui-h-stack>`
         );
-        continue; // skip marker line
+        continue;
       }
 
       if (trimmed === "---") {
-        flushGroup();
+        flushSection();
+        flushCard();
         continue;
       }
 
       if (inHeader) {
-        headerLines.push(line); // collect header content
+        headerLines.push(line);
+        continue;
+      }
+
+      // Section heading (### Added / Changed / Fixed)
+      const sectionMatch = trimmed.match(/^### (.*)$/);
+      if (sectionMatch) {
+        flushSection(); // finish previous
+        currentSection = sectionMatch[1]; // e.g. "Added"
+        continue;
+      }
+
+      if (currentSection) {
+        sectionContent.push(line);
       } else {
-        currentGroup.push(line); // normal content
+        cardContent.push(line);
       }
     }
 
-    flushGroup(); // flush any remaining content
+    flushSection();
+    flushCard();
 
     let html = result.join("\n");
 
-    // Final parse: headings, bold, links, lists
-    html = html
-      .replace(/^### (.*)$/gm, "<mui-heading level='2' size='4'>$1</mui-heading>")
-      .replace(/^## (.*)$/gm, "<mui-heading level='3' size='3'>$1</mui-heading>")
-      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      .replace(
-        /\[([^\]]+)\]\(([^)]+)\)/g,
-        `
-        <mui-responsive breakpoint="400">
-          <mui-link slot="showAbove" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark>$1</mui-link>
-          <mui-link slot="showBelow" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark></mui-link>
-        </mui-responsive>
+    // Replace ### headings inside sections (already added with <mui-heading>)
+    html = html.replace(/^## (.*)$/gm, "<mui-heading level='2' size='3'>$1</mui-heading>");
+
+    // Replace links
+    html = html.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
       `
-      )
-      .replace(/^(?:- .*(?:\n|$))+/gm, (match) => {
-        const items = match
-          .trim()
-          .split("\n")
-          .map((l) => l.replace(/^- /, "<mui-list-item>") + "</mui-list-item>")
-          .join("");
-        return `<mui-list as="ul">${items}</mui-list>`;
-      });
+    <mui-responsive breakpoint="400">
+      <mui-link slot="showAbove" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark>$1</mui-link>
+      <mui-link slot="showBelow" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark></mui-link>
+    </mui-responsive>
+  `
+    );
+
+    // Replace list items
+    html = html.replace(/^(?:- .*(?:\n|$))+/gm, (match) => {
+      const items = match
+        .trim()
+        .split("\n")
+        .map((l) => l.replace(/^- /, "<mui-list-item size='small'>") + "</mui-list-item>")
+        .join("");
+      return `<mui-list as="ul">${items}</mui-list>`;
+    });
 
     return html;
   }
