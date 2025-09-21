@@ -15,7 +15,6 @@
 - Stepper Component and stories
 - Design token additions
 - Icon additions
-- Added custom homepage assets for JAL and ANA theme
 
 ### Changed
 
