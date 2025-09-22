@@ -233,6 +233,24 @@ declare global {
         style?: React.CSSProperties & { [key: `--${string}`]: string | undefined };
       };
 
+      "mui-button-group": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+
+      "mui-dropdown": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        label?: string;
+        class?: string;
+        style?: React.CSSProperties;
+        position?: string;
+      };
+      "mui-progress": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        progress?: number;
+      };
+
+      "mui-drawer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        variant?: string;
+        width?: string;
+        side?: string;
+      };
+
       "mui-link": React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> & {
         slot?: string;
         size?: MuiIconSize | string;

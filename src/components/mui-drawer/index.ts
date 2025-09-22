@@ -543,10 +543,12 @@ class MuiDrawer extends HTMLElement {
 
   open() {
     this.setAttribute("open", "");
+    this.dispatchEvent(new CustomEvent("mui-drawer-open", { bubbles: true, composed: true }));
   }
 
   close() {
     this.removeAttribute("open");
+    this.dispatchEvent(new CustomEvent("mui-drawer-close", { bubbles: true, composed: true }));
   }
 }
 
