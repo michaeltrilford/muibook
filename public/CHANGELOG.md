@@ -1,5 +1,27 @@
 ## Header [Start]
 
+## v5.1.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/5.1.0)
+
+## Header [End]
+
+### Added
+
+- Drawer: Event bubbling and composition for mui-drawer-open and mui-drawer-close
+
+### Changed
+
+- [None]
+
+### Fixed
+
+- [None]
+
+---
+
+## Header [Start]
+
 ## v5.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/5.0.0)
