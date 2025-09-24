@@ -996,11 +996,12 @@ class storyDrawer extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=780-4943&t=KhmyUmaNDWKTGtrH-1"
         accessibility="
           Uses role='dialog' for overlay/push variants and role='complementary' for persistent layout variants.;
-          Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions.;
-          When open, focus is trapped in the drawer and returns to the trigger on close (consumer must handle inert/aria-hidden for background).;
+          Supports aria-labelledby and aria-describedby for accessible titles and descriptions.;
           The close button includes aria-label='Close drawer'.;
           Footer slot is hidden when empty to reduce screen reader noise.;
-          Backdrop click and Escape key close the drawer in overlay and push variants.
+          When open, consumers must trap focus in the drawer and apply inert/aria-hidden to the background.;
+          Backdrop click and Escape close the drawer in overlay and push variants.;
+          The component exposes 'mui-drawer-open' and 'mui-drawer-close' events so external state (e.g. React setDrawerOpen(false)) stays in sync with the drawer’s internal logic.
         "
       >
         <mui-message heading="Quicklinks" slot="message">

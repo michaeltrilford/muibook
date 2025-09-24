@@ -491,7 +491,9 @@ class storyDialog extends HTMLElement {
           Focus is managed by the browser’s native dialog behavior when open.;
           The close button includes aria-label='Close Icon'.;
           Footer is hidden when empty to reduce screen reader noise.;
-          Clicking the backdrop closes the dialog.
+          Clicking the backdrop closes the dialog.;
+          When open, consumers must trap focus in the dialog and apply inert/aria-hidden to the background.;
+          The component exposes 'mui-dialog-open' and 'mui-dialog-close' events so external state (e.g. React setDialogOpen(false)) stays in sync with the dialog’s internal logic.
         "
       >
         ${stories}

@@ -141,10 +141,12 @@ class MuiDialog extends HTMLElement {
 
   open() {
     this.setAttribute("open", "");
+    this.dispatchEvent(new CustomEvent("mui-dialog-open", { bubbles: true, composed: true }));
   }
 
   close() {
     this.removeAttribute("open");
+    this.dispatchEvent(new CustomEvent("mui-dialog-close", { bubbles: true, composed: true }));
   }
 }
 
