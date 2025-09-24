@@ -233,6 +233,7 @@ class tokensComponents extends HTMLElement {
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
           >
             <story-token-slat slot="body" token="--dialog-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--dialog-background" variant="color"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Surface Contextual</mui-link> tokens</mui-body>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Border Contextual</mui-link> tokens</mui-body>
           </spec-card>
@@ -242,6 +243,7 @@ class tokensComponents extends HTMLElement {
             title="Drawer"
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-drawer/index.ts"
           >
+            <story-token-slat slot="body" token="--drawer-background" variant="color"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Surface Contextual</mui-link> tokens</mui-body>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/contextual-design-tokens">Border Contextual</mui-link> tokens</mui-body>
           </spec-card>
