@@ -1,5 +1,28 @@
 ## Header [Start]
 
+## v5.2.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/5.2.0)
+
+## Header [End]
+
+### Added
+
+- Dialog: Bubbling mui-dialog-open and mui-dialog-close events for external state sync.
+- Design tokens: Added tokens for dialog and drawer to allow consistent background color customisation.
+
+### Changed
+
+- [None]
+
+### Fixed
+
+- [None]
+
+---
+
+## Header [Start]
+
 ## v5.1.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/5.1.0)

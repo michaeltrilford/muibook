@@ -28,7 +28,7 @@ class MuiDialog extends HTMLElement {
         padding: 0;
         overflow: hidden;
         border-radius: var(--dialog-radius);
-        background: var(--surface-elevated-100);
+        background: var(--dialog-background);
       }
 
       dialog,

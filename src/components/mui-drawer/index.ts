@@ -177,7 +177,7 @@ class MuiDrawer extends HTMLElement {
         height: 100dvh;
         z-index: 110;
         transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-        background: var(--surface-elevated-100);
+        background: var(--drawer-background);
         border-left: var(--border-thin);
         width: ${width};
         transform: translateX(100%);

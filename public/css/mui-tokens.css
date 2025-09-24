@@ -421,6 +421,12 @@ html[data-theme="light"] {
   --stepper-background-inactive: var(--white);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
+
+  /* Dialog */
+  --dialog-background: var(--white);
+
+  /* Drawer */
+  --drawer-background: var(--white);
 }
 
 /* ==================================================================================================== */
@@ -640,6 +646,12 @@ html[data-theme="dark"] {
   --stepper-background-inactive: var(--black);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
+
+  /* Dialog */
+  --dialog-background: var(--grey-800);
+
+  /* Drawer */
+  --drawer-background: var(--grey-800);
 }
 
 /* ==================================================================================================== */
