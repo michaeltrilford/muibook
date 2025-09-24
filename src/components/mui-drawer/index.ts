@@ -126,7 +126,7 @@ class MuiDrawer extends HTMLElement {
         justify-content: flex-end;
         padding: var(--space-400) var(--space-500) calc(var(--space-400) + env(safe-area-inset-bottom));
         border-top: var(--border-thin);
-        background: var(--surface-elevated-100);
+        background: var(--drawer-background);
         gap: var(--space-300);
         box-sizing: border-box;
         position: fixed;
@@ -222,7 +222,7 @@ class MuiDrawer extends HTMLElement {
 
     const pageStyles = /*css*/ `
       .inner {
-        background: var(--surface-elevated-100);
+        background: var(--drawer-background);
         width: ${width};
         position: fixed;
         top: 0;

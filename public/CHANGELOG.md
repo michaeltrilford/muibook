@@ -1,5 +1,27 @@
 ## Header [Start]
 
+## v5.2.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/5.2.1)
+
+## Header [End]
+
+### Added
+
+- [None]
+
+### Changed
+
+- [None]
+
+### Fixed
+
+- Ensured the new Drawer background token is applied correctly across relevant parts of the component.
+
+---
+
+## Header [Start]
+
 ## v5.2.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/5.2.0)
