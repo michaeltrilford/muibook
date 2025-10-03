@@ -38,7 +38,7 @@ class TypedElements extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts"
       >
 
-        <page-card>
+        <page-card noheader>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
 

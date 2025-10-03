@@ -39,7 +39,7 @@ class CreateMuiApp extends HTMLElement {
         github="https://github.com/michaeltrilford/create-mui-app"
       >
 
-        <page-card>
+        <page-card noheader>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
 

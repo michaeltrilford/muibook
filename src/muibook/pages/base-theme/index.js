@@ -38,7 +38,7 @@ class BaseTheme extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
 
-        <page-card>
+        <page-card noheader>
           
           <mui-grid slot="body" class="config"  space="var(--space-400)">
 

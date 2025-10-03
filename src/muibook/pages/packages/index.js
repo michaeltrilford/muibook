@@ -37,7 +37,7 @@ class NpmPage extends HTMLElement {
         description="The available package for MUI and how to use them"
       >
 
-        <page-card>
+        <page-card noheader>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
 

@@ -38,7 +38,7 @@ class AgentKeywordsPage extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/agent/keywords/index.ts" 
       >
 
-        <page-card>
+        <page-card noheader>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
 

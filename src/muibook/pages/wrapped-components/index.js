@@ -38,7 +38,7 @@ class WrappedComponents extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/tree/main/src/types/react/wrapped-components"
       >
 
-        <page-card>
+        <page-card noheader>
           
           <mui-grid slot="body" class="config" space="var(--space-600)">
 
