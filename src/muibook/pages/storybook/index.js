@@ -1,6 +1,6 @@
 import Image from "../../images/pages/npm.png";
 
-class NpmPage extends HTMLElement {
+class StorybookPage extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
@@ -33,9 +33,9 @@ class NpmPage extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="NPM Package"
-        description="Get the latest muibook packages and learn how to use them in your project."
-        npm="https://www.npmjs.com/package/@muibook/components"
+        title="Storybook"
+        description="Storybook complements muibook.com, the main hub for the design system."
+        storybook="https://stories.muibook.com/"
       >
 
         <page-card noheader>
@@ -45,27 +45,25 @@ class NpmPage extends HTMLElement {
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="large">
-                  Leverage reusable vanilla Web Components built with the Mui Design System in your project.
+                <mui-heading level="3" size="5">Overview</mui-heading>
+                <mui-body size="medium">
+                  The examples found on <mui-link size="medium" href="https://stories.muibook.com"  target="_blank">stories.muibook.com </mui-link> mirror the main site to ensure consistency. 
                 </mui-body>
-                <mui-body size="large">
-                  Simply install the <mui-link size="medium" href="https://www.npmjs.com/package/@muibook/components" target="_blank">@muibook/components</mui-link> package to access a framework-agnostic, accessible, and customizable component library.
+                <mui-body size="medium">
+                  Components are fully interactive so teams can explore variations and practical usage.
                 </mui-body>
-              </mui-v-stack>
-
-              <mui-v-stack space="var(--space-400)">
-                <mui-heading level="3" size="5">Getting started</mui-heading>
-                <mui-code size="small">npm install @muibook/components</mui-code>
+                <mui-body size="medium">
+                  This build uses the latest Muibook package and is prepared for upcoming MCP features.
+                </mui-body>
               </mui-v-stack>
                 
 
               <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">📦 What’s in the package</mui-heading>
+                <mui-heading level="3" size="5">What’s included</mui-heading>
                 <mui-list as="ul">
-                  <mui-list-item size="medium">Components</mui-list-item>
-                  <mui-list-item size="medium">CSS</mui-list-item>
-                  <mui-list-item size="medium">Utils (part map for internal use)</mui-list-item>
-                  <mui-list-item size="medium">Agent (keywords and prompts)</mui-list-item>
+                  <mui-list-item size="medium">Components – All Mui Design System components, ready to explore and interact with.</mui-list-item>
+                  <mui-list-item style="margin-top: var(--space-300)" size="medium">Usage examples – Adjust arguments to test variations and behavior.</mui-list-item>
+                  <mui-list-item style="margin-top: var(--space-300)" size="medium">Future MCP-ready tooling – Designed to evolve as new Storybook features are introduced.</mui-list-item>
                 </mui-list>
               </mui-v-stack>
 
@@ -83,4 +81,4 @@ class NpmPage extends HTMLElement {
   }
 }
 
-customElements.define("npm-page", NpmPage);
+customElements.define("storybook-page", StorybookPage);

@@ -485,6 +485,7 @@ class storyDialog extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
         guides="https://guides.muibook.com/dialog"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=780-4948&t=KhmyUmaNDWKTGtrH-1"
+        storybook="https://stories.muibook.com/?path=/docs/content-dialog--docs"
         accessibility="
           Uses role='dialog' and aria-modal='true' for screen readers.;
           Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions.;

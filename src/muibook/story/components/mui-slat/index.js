@@ -1479,6 +1479,8 @@ class storySlat extends HTMLElement {
         title="Slat"
         description="Slat is a composable component designed to display table data on mobile devices. It provides flexible start and end slots, enabling consumers to tailor how data is presented in a mobile-friendly, stacked format. Slat is ideal for adapting complex table layouts into a clearer, more accessible experience on smaller screens."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts"
+        storybook="https://stories.muibook.com/?path=/docs/content-slat--docs"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=957-8535&t=0ytskb8cxriEmdz2-1"
         accessibility="
           mui-slat uses role='row';
           slotted children inherit role='cell'

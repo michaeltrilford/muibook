@@ -578,6 +578,7 @@ class storyLink extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-663&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-link/index.ts"
         guides="https://guides.muibook.com/link"
+        storybook="https://stories.muibook.com/?path=/docs/actions-link--docs"
       >
         ${stories}
       </story-template>

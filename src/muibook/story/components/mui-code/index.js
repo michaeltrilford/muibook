@@ -162,6 +162,7 @@ class storyCode extends HTMLElement {
         description="The component defines a code view."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-code/index.ts"
         guides="https://guides.muibook.com/code"
+        storybook="https://stories.muibook.com/?path=/docs/content-code--docs"
       >
         ${stories}
       </story-template>

@@ -347,6 +347,7 @@ class storyMessage extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=9-1053&t=ZA9uH4LK37tSuk6r-1"
         guides="https://guides.muibook.com/message"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-message/index.ts"
+        storybook="https://stories.muibook.com/?path=/docs/feedback-message--docs"
         accessibility="
             ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.;
             Neutral, Postive, Info support the role of STATUS for screen reader feedback.;

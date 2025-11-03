@@ -1110,6 +1110,8 @@ class storyAccordion extends HTMLElement {
         description="The Accordion is a component stores content underneath a collapsible heading, revealing it through progressive disclosure in the user interface."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-accordion"
         guides="https://guides.muibook.com/accordion"
+        storybook="https://stories.muibook.com/?path=/docs/content-accordion--docs"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1"
         accessibility="
           Accordion summary uses role='button' and tabindex='0' for keyboard access.;
           Supports Enter and Space keys for toggling.;

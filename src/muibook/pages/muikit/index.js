@@ -34,7 +34,7 @@ class MuikitPage extends HTMLElement {
 
       <story-template 
         title="Mui Kit"
-        description="The Figma UI Kit that’s a 1:1 match to the MUI Coded Design System"
+        description="The Figma UI Kit that’s a 1:1 match to the MUI Coded Design System."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=5A8fWmORS1XTiPBQ-1"
       >
 

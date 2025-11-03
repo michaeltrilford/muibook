@@ -354,6 +354,7 @@ class storyLoader extends HTMLElement {
         description="This component provides seamless loading animations for initial page loads or skeleton-style experiences. Wrap your UI with Mui-Loader to manage initial loading states or page transitions."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts"
         guides="https://guides.muibook.com"
+        storybook="https://stories.muibook.com/?path=/docs/feedback-loader--docs"
         accessibility="
           The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.;
           aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.;

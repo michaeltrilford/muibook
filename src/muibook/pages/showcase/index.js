@@ -51,8 +51,8 @@ class ShowcasePage extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Project Showcase"
-        description="Products and websites that utilise the Muibook Design System"
+        title="Projects"
+        description="Products and websites that utilise the Muibook Design System."
       >
 
         <page-card noheader>
@@ -102,7 +102,7 @@ class ShowcasePage extends HTMLElement {
               </mui-v-stack>
               <mui-image>
                 <img class="website-image" slot="image" src="${Image3}" alt="Muiplay" />
-                <figcaption slot="caption"><mui-link href="https://play.muibook.com/" target="_blank">play.muibook.com</figcaption>
+                <figcaption slot="caption"><mui-link href="https://play.muibook.com/" target="_blank">play.muibook.com</mui-link></figcaption>
               </mui-image> 
             </mui-v-stack>
 
@@ -110,12 +110,12 @@ class ShowcasePage extends HTMLElement {
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Muibook Guides</mui-heading>
                 <mui-body size="medium">
-                  Muibook Guidelines are built with the Guru Guides engine and use Muibook components for the front-end UI. In Figma, users can access these guidelines directly through the Guru Guides plugin shown above.
+                  The Guidelines are built with <mui-link href="https://gurusuite.xyz" target="_blank">Guru Guides</mui-link> engine and use Muibook components for the front-end UI. In Figma, users can access these guidelines directly through the Guru Guides plugin shown above.
                 </mui-body>
               </mui-v-stack>
               <mui-image>
                 <img class="website-image" slot="image" src="${Image4}" alt="Guides.Muibook.com" />
-                <figcaption slot="caption"><mui-link href="https://guides.muibook.com/" target="_blank">guides.muibook.com</figcaption>
+                <figcaption slot="caption"><mui-link href="https://guides.muibook.com/" target="_blank">guides.muibook.com</mui-link></figcaption>
               </mui-image> 
             </mui-v-stack>
 

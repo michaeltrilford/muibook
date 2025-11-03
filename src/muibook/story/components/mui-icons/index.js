@@ -507,6 +507,7 @@ class storyIcon extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-311&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-icons"
         guides="https://guides.muibook.com/icons"
+        storybook="https://stories.muibook.com/?path=/docs/content-icons--docs"
       >
         ${stories}
       </story-template>

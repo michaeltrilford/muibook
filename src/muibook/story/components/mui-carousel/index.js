@@ -651,7 +651,8 @@ class storyCarousel extends HTMLElement {
         description="A carousel component with tab-based navigation, enabling users to switch between views or content sections with ease."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-carousel"
         guides="https://guides.muibook.com/carousel"
-        figma=""
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8697&t=0ytskb8cxriEmdz2-1"
+        storybook="https://stories.muibook.com/?path=/docs/navigation-carousel--docs"
         accessibility="
           Left/Right arrows, Home and End keys let keyboard users navigate between carousel items.; 
           aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.; 

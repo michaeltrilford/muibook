@@ -268,6 +268,7 @@ class storyBody extends HTMLElement {
         title="Body"
         guides="https://guides.muibook.com/body"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-892&t=fSFYVey9aCoE5oQa-1"
+        storybook="https://stories.muibook.com/?path=/docs/content-body--docs"
         description="Use the Body component for clear and readable paragraph text across the UI. It’s ideal for longer-form content such as descriptions, explanations, or supporting information. Variant styles are also available for status messages and other contextual needs."
       >
         ${stories}

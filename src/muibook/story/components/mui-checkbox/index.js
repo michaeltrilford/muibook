@@ -203,6 +203,7 @@ class storyCheckbox extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-checkbox/index.ts"
         guides="https://guides.muibook.com/checkbox"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=634-4686&t=aIjJqBxWOU1t0Jjp-1"
+        storybook="https://stories.muibook.com/?path=/docs/inputs-checkbox--docs"
         accessibility="
           A visible label or accessible name is required for screen reader support to describe the checkbox’s purpose.;
           If no visible label is provided, use aria-label (or aria-labelledby) to supply an accessible name.;

@@ -160,6 +160,7 @@ class storyRule extends HTMLElement {
         description="A horizontal rule to divide a page"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-rule/index.ts"
         guides="https://guides.muibook.com/rule"
+        storybook="https://stories.muibook.com/?path=/docs/layout-rule--docs"
       >
         ${stories}
       </story-template>

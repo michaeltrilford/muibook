@@ -2,10 +2,11 @@ import "../../../components/mui-heading";
 import "../../images/github-mark";
 import "../../images/figma-mark";
 import "../../images/guides-mark";
+import "../../images/storybook-mark";
 
 class StoryTemplate extends HTMLElement {
   static get observedAttributes() {
-    return ["title", "description", "accessibility", "website", "demo", "github", "figma", "guides"];
+    return ["title", "description", "accessibility", "website", "demo", "github", "figma", "guides", "npm"];
   }
 
   constructor() {
@@ -89,7 +90,7 @@ class StoryTemplate extends HTMLElement {
     const title = this.getAttribute("title") || "";
     const descriptionText = this.getAttribute("description") || "";
     const description = descriptionText
-      ? /*html*/ `<mui-body size="medium" style="max-width: 75ch; margin-bottom: var(--space-200);">${descriptionText}</mui-body>`
+      ? /*html*/ `<mui-body size="medium" style="max-width: 55ch; margin-bottom: var(--space-200);">${descriptionText}</mui-body>`
       : "";
 
     const accessibilityItems = this.getAttribute("accessibility");
@@ -98,9 +99,9 @@ class StoryTemplate extends HTMLElement {
     const demoLink = this.getAttribute("demo");
     const demoContent = demoLink
       ? /*html*/ `
-        <mui-responsive breakpoint="1000">
-          <mui-link slot="showAbove" target="_blank" href="${demoLink}" rel="noopener" variant="secondary">Demo<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${demoLink}" rel="noopener" variant="secondary"><mui-icon-globe></mui-icon-globe></mui-link>
+        <mui-responsive breakpoint="1200">
+          <mui-link slot="showAbove" target="_blank" href="${demoLink}" rel="noopener" variant="tertiary">Demo<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${demoLink}" rel="noopener" variant="tertiary"><mui-icon-globe></mui-icon-globe></mui-link>
         </mui-responsive>      
       `
       : "";
@@ -108,9 +109,29 @@ class StoryTemplate extends HTMLElement {
     const websiteLink = this.getAttribute("website");
     const websiteContent = websiteLink
       ? /*html*/ `
-        <mui-responsive breakpoint="1000">
-          <mui-link slot="showAbove" target="_blank" href="${websiteLink}" rel="noopener" variant="secondary">Try Now<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${websiteLink}" rel="noopener" variant="secondary"><mui-icon-globe></mui-icon-globe></mui-link>
+        <mui-responsive breakpoint="1200">
+          <mui-link slot="showAbove" target="_blank" href="${websiteLink}" rel="noopener" variant="tertiary">Try Now<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${websiteLink}" rel="noopener" variant="tertiary"><mui-icon-globe></mui-icon-globe></mui-link>
+        </mui-responsive>
+      `
+      : "";
+
+    const storybookLink = this.getAttribute("storybook");
+    const storybookContent = storybookLink
+      ? /*html*/ `
+        <mui-responsive breakpoint="1200">
+          <mui-link slot="showAbove" target="_blank" href="${storybookLink}" rel="noopener" variant="tertiary">Storybook<storybook-mark slot="after"></storybook-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${storybookLink}" rel="noopener" variant="tertiary"><storybook-mark></storybook-mark></mui-link>
+        </mui-responsive>
+      `
+      : "";
+
+    const npmLink = this.getAttribute("npm");
+    const npmContent = npmLink
+      ? /*html*/ `
+        <mui-responsive breakpoint="1200">
+          <mui-link slot="showAbove" target="_blank" href="${npmLink}" rel="noopener" variant="tertiary">Package<npm-mark slot="after"></npm-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${npmLink}" rel="noopener" variant="tertiary"><npm-mark></npm-mark></mui-link>
         </mui-responsive>
       `
       : "";
@@ -118,9 +139,9 @@ class StoryTemplate extends HTMLElement {
     const githubLink = this.getAttribute("github");
     const githubContent = githubLink
       ? /*html*/ `
-        <mui-responsive breakpoint="1000">
-          <mui-link slot="showAbove" target="_blank" href="${githubLink}" rel="noopener" variant="secondary">Github<github-mark slot="after"></github-mark></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${githubLink}" rel="noopener" variant="secondary"><github-mark></github-mark></mui-link>
+        <mui-responsive breakpoint="1200">
+          <mui-link slot="showAbove" target="_blank" href="${githubLink}" rel="noopener" variant="tertiary">Github<github-mark slot="after"></github-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${githubLink}" rel="noopener" variant="tertiary"><github-mark></github-mark></mui-link>
         </mui-responsive>
       `
       : "";
@@ -128,9 +149,9 @@ class StoryTemplate extends HTMLElement {
     const figmaLink = this.getAttribute("figma");
     const figmaContent = figmaLink
       ? /*html*/ `
-        <mui-responsive breakpoint="1000">
-         <mui-link slot="showAbove" target="_blank" href="${figmaLink}" rel="noopener" variant="secondary">Figma<figma-mark slot="after"></figma-mark></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${figmaLink}" rel="noopener" variant="secondary"><figma-mark></figma-mark></mui-link>
+        <mui-responsive breakpoint="1200">
+         <mui-link slot="showAbove" target="_blank" href="${figmaLink}" rel="noopener" variant="tertiary">Figma<figma-mark slot="after"></figma-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${figmaLink}" rel="noopener" variant="tertiary"><figma-mark></figma-mark></mui-link>
         </mui-responsive>
       `
       : "";
@@ -138,9 +159,9 @@ class StoryTemplate extends HTMLElement {
     const guidesLink = this.getAttribute("guides");
     const guidesContent = guidesLink
       ? /*html*/ `
-        <mui-responsive breakpoint="1000">
-          <mui-link slot="showAbove" target="_blank" href="${guidesLink}" rel="noopener" variant="secondary">Guides<guides-mark slot="after"></guides-mark></mui-link>
-          <mui-link slot="showBelow" target="_blank" icon-only href="${guidesLink}" rel="noopener" variant="secondary"><guides-mark></guides-mark></mui-link>
+        <mui-responsive breakpoint="1200">
+          <mui-link slot="showAbove" target="_blank" href="${guidesLink}" rel="noopener" variant="tertiary">Guides<guides-mark slot="after"></guides-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" icon-only href="${guidesLink}" rel="noopener" variant="tertiary"><guides-mark></guides-mark></mui-link>
         </mui-responsive>
       `
       : "";
@@ -173,9 +194,11 @@ class StoryTemplate extends HTMLElement {
               <mui-responsive breakpoint="768">
                 <mui-h-stack slot="showBelow" alignX="space-between" alignY="center">
                   <mui-heading size="2" level="1">${title}</mui-heading>
-                  <mui-h-stack space="var(--space-100)">
+                  <mui-h-stack space="var(--space-000)">
                     ${demoContent}
                     ${websiteContent}
+                    ${npmContent}
+                    ${storybookContent}
                     ${guidesContent}
                     ${figmaContent}
                     ${githubContent}
@@ -183,9 +206,11 @@ class StoryTemplate extends HTMLElement {
                 </mui-h-stack>
                 <mui-h-stack slot="showAbove" alignX="space-between" alignY="center">
                   <mui-heading size="1"level="1">${title}</mui-heading>
-                  <mui-h-stack space="var(--space-100)">
+                  <mui-h-stack space="var(--space-000)">
                     ${demoContent}
                     ${websiteContent}
+                    ${npmContent}
+                    ${storybookContent}
                     ${guidesContent}
                     ${figmaContent}
                     ${githubContent}

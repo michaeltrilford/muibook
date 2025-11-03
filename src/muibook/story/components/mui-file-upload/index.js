@@ -106,6 +106,8 @@ class storyFileUpload extends HTMLElement {
         description="A simple file input that displays the selected file name and emits a file-upload event."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-upload/index.ts"
         guides="https://guides.muibook.com/file-upload"
+        storybook="https://stories.muibook.com/?path=/docs/inputs-file-upload--docs"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4068&t=0ytskb8cxriEmdz2-1"
       >
         ${stories}
       </story-template>

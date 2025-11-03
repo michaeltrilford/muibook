@@ -335,6 +335,7 @@ class storyAlert extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-4444&t=ZA9uH4LK37tSuk6r-1"
         guides="https://guides.muibook.com/alert"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts"
+        storybook="https://stories.muibook.com/?path=/docs/feedback-alert--docs"
 
         accessibility="
           ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.; 

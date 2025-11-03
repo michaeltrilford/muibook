@@ -133,6 +133,7 @@ class storyAddon extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-addon/index.ts"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=133-588&t=a1UUlxRE4ZIJUKwJ-1"
         guides="https://guides.muibook.com/add-on"
+        storybook="https://stories.muibook.com/?path=/docs/inputs-addon--docs"
       >
         ${stories}
       </story-template>

@@ -333,6 +333,9 @@ class storyStepper extends HTMLElement {
         title="Stepper"
         description="A Stepper component visually represents a sequence of steps in a process. It helps users understand progress and navigate through multi-step workflows. This component supports both horizontal and vertical orientations."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stepper"
+        storybook="https://stories.muibook.com/?path=/docs/navigation-stepper--docs"
+        guides="https://guides.muibook.com/stepper"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4195&t=0ytskb8cxriEmdz2-1"
       >
         <mui-message heading="Quicklinks" slot="message">
           <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">

@@ -40,6 +40,7 @@ export class AppContainer extends HTMLElement {
       "/prompts": "agent-prompts-page",
       "/showcase": "showcase-page",
       "/npm": "npm-page",
+      "/storybook": "storybook-page",
 
       "/brand-design-tokens": "tokens-brand",
       "/semantic-design-tokens": "tokens-semantic",
@@ -121,6 +122,7 @@ export class AppContainer extends HTMLElement {
       "agent-prompts-page": () => import("../pages/agent-prompts/index.js"),
       "showcase-page": () => import("../pages/showcase/index.js"),
       "npm-page": () => import("../pages/packages/index.js"),
+      "storybook-page": () => import("../pages/storybook/index.js"),
       "changelog-page": () => import("../pages/changelog/index.js"),
 
       "tokens-brand": () => import("../story/tokens/brand.js"),

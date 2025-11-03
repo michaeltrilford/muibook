@@ -348,6 +348,7 @@ class storySelect extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-select/index.ts"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=117-2068&t=GMqx21isUVAMpLJp-1"
         guides="https://guides.muibook.com/select"
+        storybook="https://stories.muibook.com/?path=/docs/inputs-select--docs"
         accessibility="
           A label is required for screen reader support, describing the purpose of the select.;
           If hide-label is used, the label is visually hidden but still accessible via aria-label.;

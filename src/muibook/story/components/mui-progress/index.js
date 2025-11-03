@@ -130,6 +130,10 @@ class storyProgress extends HTMLElement {
         title="Progress"
         description="A horizontal progress bar showing completion percentage."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts"
+        storybook="https://stories.muibook.com/?path=/docs/inputs-progress--docs"
+        guides="https://guides.muibook.com/progress"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4161&t=0ytskb8cxriEmdz2-1"
+
       >
         ${stories}
       </story-template>

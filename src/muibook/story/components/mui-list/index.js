@@ -308,6 +308,8 @@ class storyList extends HTMLElement {
         description="The component defines an ordered or unordered list."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-list"
         guides="https://guides.muibook.com/list"
+        storybook="https://stories.muibook.com/?path=/docs/content-list--docs"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8673&t=0ytskb8cxriEmdz2-1"
       >
         ${stories}
       </story-template>

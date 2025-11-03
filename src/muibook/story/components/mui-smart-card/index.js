@@ -570,6 +570,7 @@ class storySmartCard extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=440-1250&t=FSv3FEahG8VQW1FZ-1" 
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-smart-card/index.ts"
         guides="https://guides.muibook.com/smart-card"
+        storybook="https://stories.muibook.com/?path=/docs/content-smartcard--docs"
       >
         ${stories}
       </story-template>

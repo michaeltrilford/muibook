@@ -1078,6 +1078,7 @@ class storyCards extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-861&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-card"
         guides="https://guides.muibook.com/card"
+        storybook="https://stories.muibook.com/?path=/docs/layout-card--docs"
       >
 
         <mui-message heading="Quicklinks" slot="message">

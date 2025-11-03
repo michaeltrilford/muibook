@@ -34,7 +34,7 @@ class OverridesPage extends HTMLElement {
 
       <story-template 
         title="Overrides"
-        description="We provide sensible approaches to enable safe and trusted customisation of the design system."
+        description="Sensible approaches to enable safe and trusted customisation."
         github=""
       >
 

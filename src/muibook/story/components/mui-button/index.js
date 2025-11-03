@@ -538,6 +538,7 @@ class storyButton extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-570&t=fSFYVey9aCoE5oQa-1" 
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-button/index.ts"
         guides="https://guides.muibook.com/button"
+        storybook="https://stories.muibook.com/?path=/docs/actions-button--docs"
       >
         ${stories}
       </story-template>

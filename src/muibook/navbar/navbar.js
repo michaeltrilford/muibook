@@ -100,6 +100,7 @@ class appNavbar extends HTMLElement {
         <mui-body class="first" weight="bold">Get Started</mui-body>
         <app-navbar-link link="#/create-mui-app" title="Create App"></app-navbar-link>
         <app-navbar-link link="#/npm" title="NPM Package"></app-navbar-link>
+        <app-navbar-link link="#/storybook" title="Storybook"></app-navbar-link>
         <app-navbar-link link="#/changelog" title="Changelog"></app-navbar-link>
         <mui-body weight="bold">Design</mui-body>
         <app-navbar-link link="#/design-guidelines" title="UX Guidelines"></app-navbar-link>

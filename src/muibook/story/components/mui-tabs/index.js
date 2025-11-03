@@ -473,6 +473,7 @@ class storyTabBar extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1"
         guides="https://guides.muibook.com/tab-bar"
+        storybook="https://stories.muibook.com/?path=/docs/navigation-tabbar--docs"
         accessibility="
           Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.; 
           aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.; 
