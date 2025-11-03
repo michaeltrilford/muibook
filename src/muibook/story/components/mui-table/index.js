@@ -523,7 +523,7 @@ class storyTable extends HTMLElement {
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
-                      <mui-dropdown placement="right">
+                      <mui-dropdown position="right">
                         <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
@@ -534,7 +534,7 @@ class storyTable extends HTMLElement {
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
-                      <mui-dropdown placement="right">
+                      <mui-dropdown position="right">
                         <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
@@ -765,7 +765,7 @@ class storyTable extends HTMLElement {
                         <mui-cell>Whalen</mui-cell>
                         <mui-cell>$1,100.00</mui-cell>
                         <mui-cell action>
-                          <mui-dropdown placement="right">
+                          <mui-dropdown position="right">
                             <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                             <mui-button>Option one</mui-button>
                             <mui-button>Option two</mui-button>
@@ -776,7 +776,7 @@ class storyTable extends HTMLElement {
                         <mui-cell>Whalen</mui-cell>
                         <mui-cell>$1,100.00</mui-cell>
                         <mui-cell action>
-                          <mui-dropdown placement="right">
+                          <mui-dropdown position="right">
                             <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                             <mui-button>Option one</mui-button>
                             <mui-button>Option two</mui-button>
@@ -829,7 +829,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown placement="right"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
@@ -864,7 +864,7 @@ class storyTable extends HTMLElement {
                         <mui-cell>Whalen</mui-cell>
                         <mui-cell>$1,100.00</mui-cell>
                         <mui-cell action>
-                          <mui-dropdown placement="right">
+                          <mui-dropdown position="right">
                             <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                             <mui-button>Option one</mui-button>
                             <mui-button>Option two</mui-button>
@@ -875,7 +875,7 @@ class storyTable extends HTMLElement {
                         <mui-cell>Whalen</mui-cell>
                         <mui-cell>$1,100.00</mui-cell>
                         <mui-cell action>
-                          <mui-dropdown placement="right">
+                          <mui-dropdown position="right">
                             <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
                             <mui-button>Option one</mui-button>
                             <mui-button>Option two</mui-button>
@@ -923,7 +923,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown placement="right"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
@@ -932,7 +932,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown placement="right"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>

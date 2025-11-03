@@ -225,15 +225,11 @@ class storyStepper extends HTMLElement {
             </mui-stepper>
           </div>
           <story-code-block slot="footer">
-            &lt;mui-accordion-inline heading="Heading"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;...
-            <br />
-            &nbsp;&nbsp;&lt;/mui-list&gt;
-            <br />
-            &lt;/mui-accordion-inline&gt;
+            &lt;mui-stepper direction="horizontal" active-step="1"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Details"&gt;&lt;/mui-step&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Items"&gt;&lt;/mui-step&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Pay"&gt;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;<br />
           </story-code-block>
         </story-card>
 
@@ -253,15 +249,11 @@ class storyStepper extends HTMLElement {
             </mui-stepper>
           </div>
           <story-code-block slot="footer">
-            &lt;mui-accordion-inline heading="Heading"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;...
-            <br />
-            &nbsp;&nbsp;&lt;/mui-list&gt;
-            <br />
-            &lt;/mui-accordion-inline&gt;
+            &lt;mui-stepper direction="vertical" active-step="1"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Details"&gt;&lt;/mui-step&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Items"&gt;&lt;/mui-step&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Pay"&gt;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;<br />
           </story-code-block>
         </story-card>
 
@@ -273,26 +265,28 @@ class storyStepper extends HTMLElement {
           <div slot="body">
             <mui-stepper direction="horizontal" active-step="1">
               <mui-step title="Details">
-                <mui-body size="x-small" slot="secondary">Additional Info</mui-body>
+                <mui-body size="x-small" slot="secondary">Placeholder content</mui-body>
               </mui-step>
               <mui-step title="Items">
-                <mui-body size="x-small" slot="secondary">Additional Info</mui-body>
+                <mui-body size="x-small" slot="secondary">Placeholder content</mui-body>
               </mui-step>
               <mui-step title="Pay">
-                <mui-body size="x-small" slot="secondary">Additional Info</mui-body>
+                <mui-body size="x-small" slot="secondary">Placeholder content</mui-body>
               </mui-step>
             </mui-stepper>
           </div>
           <story-code-block slot="footer">
-            &lt;mui-accordion-inline heading="Heading"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;...
-            <br />
-            &nbsp;&nbsp;&lt;/mui-list&gt;
-            <br />
-            &lt;/mui-accordion-inline&gt;
+            &lt;mui-stepper direction="horizontal" active-step="1"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Details"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" slot="secondary"&gt;Placeholder content&lt;/mui-body&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-step&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Items"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" slot="secondary"&gt;Placeholder content&lt;/mui-body&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-step&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Pay"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" slot="secondary"&gt;Placeholder content&lt;/mui-body&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;<br />
           </story-code-block>
         </story-card>
 
@@ -304,26 +298,28 @@ class storyStepper extends HTMLElement {
           <div slot="body">
             <mui-stepper direction="vertical" active-step="1">
               <mui-step title="Details">
-                <mui-body size="x-small" slot="secondary">Additional Info</mui-body>
+                <mui-body size="x-small" slot="secondary">Placeholder content</mui-body>
               </mui-step>
               <mui-step title="Items">
-                <mui-body size="x-small" slot="secondary">Additional Info</mui-body>
+                <mui-body size="x-small" slot="secondary">Placeholder content</mui-body>
               </mui-step>
               <mui-step title="Pay">
-                <mui-body size="x-small" slot="secondary">Additional Info</mui-body>
+                <mui-body size="x-small" slot="secondary">Placeholder content</mui-body>
               </mui-step>
             </mui-stepper>
           </div>
           <story-code-block slot="footer">
-            &lt;mui-accordion-inline heading="Heading"&gt;
-            <br />
-            &nbsp;&nbsp;&lt;mui-list as="ul" slot="detail"&gt;
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;...
-            <br />
-            &nbsp;&nbsp;&lt;/mui-list&gt;
-            <br />
-            &lt;/mui-accordion-inline&gt;
+            &lt;mui-stepper direction="vertical" active-step="1"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Details"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" slot="secondary"&gt;Placeholder content&lt;/mui-body&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-step&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Items"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" slot="secondary"&gt;Placeholder content&lt;/mui-body&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-step&gt;<br />
+              &nbsp;&nbsp;&lt;mui-step title="Pay"&gt;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" slot="secondary"&gt;Placeholder content&lt;/mui-body&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;<br />
           </story-code-block>
         </story-card>
 
