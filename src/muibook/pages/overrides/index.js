@@ -11,9 +11,16 @@ class OverridesPage extends HTMLElement {
         grid-template-columns: 1fr;
       }
 
+      mui-image {
+        border: var(--border-thin);
+        border-color: var(--app-story-banner-border-color);
+        border-radius: var(--radius-400);
+        overflow: hidden;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 400px;
+          grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
           justify-content: space-between;
           align-items: start;
@@ -22,7 +29,7 @@ class OverridesPage extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 500px;
+          grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
         }
       }
@@ -34,25 +41,18 @@ class OverridesPage extends HTMLElement {
 
       <story-template 
         title="Overrides"
-        description="Sensible approaches to enable safe and trusted customisation."
-        github=""
       >
-
-        <page-card noheader>
           
-          <mui-grid slot="body" class="config"  space="var(--space-400)">
+          <mui-grid class="config"  space="var(--space-400)">
 
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="large">The design system is built to be flexible, and we provide ways to make sensible adjustments when necessary.</mui-body>
-                <mui-body size="large">
+                <mui-body size="medium">Sensible approaches to enable safe and trusted customisation. The design system is built to be flexible, and we provide ways to make sensible adjustments when necessary.</mui-body>
+                <mui-body size="medium">
                   When applying overrides, it is best to scope them carefully to avoid style leaks. Below are a few approaches you can take.
                 </mui-body>
               </mui-v-stack>
-
-              <mui-rule></mui-rule>
-
 
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Our position on styling</mui-heading>
@@ -110,11 +110,8 @@ class OverridesPage extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Author Tokens" />
-              <figcaption slot="caption"><mui-link href="#/text-part-selectors">text-part-selectors</mui-link></figcaption>
             </mui-image> 
           </mui-grid>
-
-        </page-card>
 
 
       </story-template>

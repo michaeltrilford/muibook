@@ -16,12 +16,8 @@ class pageBannerBrowser extends HTMLElement {
         border-radius: var(--radius-300);
         background: var(--app-story-banner-gradient-start);
         background: linear-gradient(0deg, var(--app-story-banner-gradient-start) 0%, var(--app-story-banner-gradient-end) 100%);
-        border: var(--feedback-neutral-border);
-        border-bottom: var(--border-thick);
+        border: var(--border-thick);
         border-color: var(--app-story-banner-border-color);
-        box-shadow:
-          6px 6px 16px var(--black-opacity-10),
-          -6px -6px 14px var(--black-opacity-10);
       }
 
       @media (min-width: 1288px) {

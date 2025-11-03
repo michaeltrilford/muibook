@@ -11,9 +11,16 @@ class CreateMuiApp extends HTMLElement {
         grid-template-columns: 1fr;
       }
 
+      mui-image {
+        border: var(--border-thin);
+        border-color: var(--app-story-banner-border-color);
+        border-radius: var(--radius-400);
+        overflow: hidden;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 400px;
+          grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
           justify-content: space-between;
           align-items: start;
@@ -22,7 +29,7 @@ class CreateMuiApp extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 500px;
+          grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
         }
       }
@@ -34,22 +41,19 @@ class CreateMuiApp extends HTMLElement {
 
       <story-template 
         title="Create App"
-        description="Kickstart your project with MUI’s Web Components."
+        description=""
         demo="https://create.muibook.com"
         github="https://github.com/michaeltrilford/create-mui-app"
       >
-
-        <page-card noheader>
-          
-          <mui-grid slot="body" class="config" space="var(--space-600)">
+          <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="large">Kickstart your project with a lightweight scaffold built on Vite. It comes 
+                <mui-body size="medium">Kickstart your project with a lightweight scaffold built on Vite. It comes 
                 preloaded with foundational CSS resets, a solid base structure, and design tokens ready to be customised 
                 for your brand.</mui-body>
-                <mui-body size="large">Access a curated set of <strong>MUI Components</strong>, wrapped in a clean layout that highlights 
+                <mui-body size="medium">Access a curated set of <strong>MUI Components</strong>, wrapped in a clean layout that highlights 
                 the Design System’s core building blocks—so you can start designing and building immediately.</mui-body>
               </mui-v-stack>
 
@@ -91,11 +95,8 @@ class CreateMuiApp extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Create Mui App Code" />
-              <figcaption slot="caption">create-mui-app/src/index.ts</figcaption>
             </mui-image> 
           </mui-grid>
-
-        </page-card>
 
       </story-template>
     `;

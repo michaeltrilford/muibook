@@ -11,9 +11,16 @@ class MuikitPage extends HTMLElement {
         grid-template-columns: 1fr;
       }
 
+      mui-image {
+        border: var(--border-thin);
+        border-color: var(--app-story-banner-border-color);
+        border-radius: var(--radius-400);
+        overflow: hidden;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 400px;
+          grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
           justify-content: space-between;
           align-items: start;
@@ -22,7 +29,7 @@ class MuikitPage extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 500px;
+          grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
         }
       }
@@ -34,20 +41,19 @@ class MuikitPage extends HTMLElement {
 
       <story-template 
         title="Mui Kit"
-        description="The Figma UI Kit that’s a 1:1 match to the MUI Coded Design System."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=5A8fWmORS1XTiPBQ-1"
       >
 
-        <page-card noheader>
+
           
-          <mui-grid slot="body" class="config" space="var(--space-600)">
+          <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Design with confidence, aligned to code</mui-heading>
                 <mui-body size="medium">
-                  MuiKit replicates MUI’s coded components inside Figma, giving designers and developers a shared language. From inputs to layout systems, every element is a 1:1 match—down to prop types, states, and design tokens.
+                  The Figma UI Kit that’s a 1:1 match to the MUI Coded Design System. MuiKit replicates MUI’s coded components inside Figma, giving designers and developers a shared language. From inputs to layout systems, every element is a 1:1 match—down to prop types, states, and design tokens.
                 </mui-body>
                 <mui-body size="medium">
                   Whether you’re working with interactive fields, typography, tables, or UI patterns like tab bars and carousels, MuiKit ensures your prototypes stay true to the system—reducing handoff friction and improving consistency.
@@ -87,7 +93,7 @@ class MuikitPage extends HTMLElement {
             </mui-image> 
           </mui-grid>
 
-        </page-card>
+
 
       </story-template>
     `;

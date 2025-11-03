@@ -11,9 +11,16 @@ class MultiBrandTheme extends HTMLElement {
         grid-template-columns: 1fr;
       }
 
+      mui-image {
+        border: var(--border-thin);
+        border-color: var(--app-story-banner-border-color);
+        border-radius: var(--radius-400);
+        overflow: hidden;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 400px;
+          grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
           justify-content: space-between;
           align-items: start;
@@ -22,7 +29,7 @@ class MultiBrandTheme extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 500px;
+          grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
         }
       }
@@ -34,25 +41,19 @@ class MultiBrandTheme extends HTMLElement {
 
       <story-template 
         title="Multi-Brand"
-        description="Connect alternative brands via the design tokens."
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
-
-        <page-card noheader>
           
-          <mui-grid slot="body" class="config"  space="var(--space-400)">
+          <mui-grid class="config"  space="var(--space-400)">
 
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="large">To support multiple brands, you must first have a complete <mui-link size="large" href="/#/base-theme">base theme</mui-link> defined for both light and dark modes.</mui-body>
-                <mui-body size="large">Each brand theme will extend and override this foundation.</mui-body>
+                <mui-body size="medium">Connect alternative brands via the design tokens. To support multiple brands, you must first have a complete <mui-link size="medium" href="/#/base-theme">base theme</mui-link> defined for both light and dark modes.</mui-body>
+                <mui-body size="medium">Each brand theme will extend and override this foundation.</mui-body>
                 <mui-body><strong>Define your base theme:</strong> Use the mui-tokens.css package via NPM or CDN, or start from a forked version of the mui-tokens.css repository.</mui-body>
                 <mui-body><strong>Customise your brand:</strong> Decide which parts of the system need to change for each brand theme. Then copy the relevant tokens into your brand-specific file and update their values accordingly.</mui-body>
               </mui-v-stack>
-
-              <mui-rule></mui-rule>
-
 
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Brand Configuration</mui-heading>
@@ -112,7 +113,6 @@ class MultiBrandTheme extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Author Tokens" />
-              <figcaption slot="caption">themes/modern.css</figcaption>
             </mui-image> 
           </mui-grid>
 
@@ -156,8 +156,6 @@ class MultiBrandTheme extends HTMLElement {
             }<br />
             <br />
           </mui-code>
-
-        </page-card>
 
 
       </story-template>

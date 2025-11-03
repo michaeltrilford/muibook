@@ -11,9 +11,16 @@ class MuiplayApp extends HTMLElement {
         grid-template-columns: 1fr;
       }
 
+      mui-image {
+        border: var(--border-thin);
+        border-color: var(--app-story-banner-border-color);
+        border-radius: var(--radius-400);
+        overflow: hidden;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 400px;
+          grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
           justify-content: space-between;
           align-items: start;
@@ -22,7 +29,7 @@ class MuiplayApp extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 500px;
+          grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
         }
       }
@@ -34,20 +41,16 @@ class MuiplayApp extends HTMLElement {
 
       <story-template 
         title="Muiplay"
-        description="An AI-powered playground for generating layouts with MUI components."
         website="https://play.muibook.com"
       >
 
-
-        <page-card noheader>
-          
-          <mui-grid slot="body" class="config" space="var(--space-600)">
+          <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="large">Muiplay lets you describe the layout you want — like “a sidebar with a header and table” — and it instantly builds it using components from Michael UI. It’s designed to remove the friction of setup, letting you focus on structure, flow, and functionality from the very start.</mui-body>
-                <mui-body size="large">Whether you’re mocking up ideas, testing flows, or kicking off a real project, Muiplay speeds up the process by giving you a clean, extensible layout from a natural-language prompt. It’s your shortcut to clean code and design consistency.</mui-body>
+                <mui-body size="medium">Muiplay lets you describe the layout you want, like “a sidebar with a header and table,” and it instantly builds it using components from Michael UI. It’s designed to remove the friction of setup so you can focus on structure, flow, and functionality from the very start.</mui-body>
+                <mui-body size="medium">Whether you’re mocking up ideas, testing flows, or kicking off a real project, Muiplay speeds up the process by giving you a clean, extensible layout from a natural-language prompt. It’s your shortcut to clean code and design consistency.</mui-body>
               </mui-v-stack>
 
 
@@ -78,8 +81,6 @@ class MuiplayApp extends HTMLElement {
               <img slot="image" src="${Image}" alt="Create Mui App Code" />
             </mui-image> 
           </mui-grid>
-
-        </page-card>
 
       </story-template>
     `;

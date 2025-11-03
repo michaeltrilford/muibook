@@ -11,9 +11,16 @@ class TypedElements extends HTMLElement {
         grid-template-columns: 1fr;
       }
 
+      mui-image {
+        border: var(--border-thin);
+        border-color: var(--app-story-banner-border-color);
+        border-radius: var(--radius-400);
+        overflow: hidden;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 400px;
+          grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
           justify-content: space-between;
           align-items: start;
@@ -22,7 +29,7 @@ class TypedElements extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 500px;
+          grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
         }
       }
@@ -34,18 +41,15 @@ class TypedElements extends HTMLElement {
 
       <story-template 
         title="Typed Elements"
-        description="Directly type custom elements via JSX intrinsic elements augmentation."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts"
       >
-
-        <page-card noheader>
           
-          <mui-grid slot="body" class="config" space="var(--space-600)">
+          <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="large">This approach directly types custom elements by augmenting React's JSX IntrinsicElements, enabling use of your web components with typed props in JSX.</mui-body>
+                <mui-body size="medium">Directly type custom elements via JSX intrinsic elements augmentation. This approach directly types custom elements by augmenting React's JSX IntrinsicElements, enabling use of your web components with typed props in JSX.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
@@ -80,14 +84,10 @@ class TypedElements extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Typed Components" />
-              <figcaption slot="caption">types/typed-elements</figcaption>
             </mui-image>  
           </mui-grid>
 
-
-          <mui-rule slot="footer"></mui-rule>
-
-          <mui-code slot="footer" scrollable>
+          <mui-code scrollable>
             <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts" target="_blank">👨‍💻 View file on Github</mui-link>
             <br />
             <br />
@@ -118,8 +118,6 @@ class TypedElements extends HTMLElement {
             &nbsp;&nbsp;}<br>
             }
           </mui-code>
-
-        </page-card>
 
       </story-template>
     `;

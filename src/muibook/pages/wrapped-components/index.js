@@ -11,9 +11,16 @@ class WrappedComponents extends HTMLElement {
         grid-template-columns: 1fr;
       }
 
+      mui-image {
+        border: var(--border-thin);
+        border-color: var(--app-story-banner-border-color);
+        border-radius: var(--radius-400);
+        overflow: hidden;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 400px;
+          grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
           justify-content: space-between;
           align-items: start;
@@ -22,7 +29,7 @@ class WrappedComponents extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 500px;
+          grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
         }
       }
@@ -34,18 +41,15 @@ class WrappedComponents extends HTMLElement {
 
       <story-template 
         title="Wrapped Components"
-        description="Typed wrappers for clean, safe web component usage."
         github="https://github.com/michaeltrilford/muibook/tree/main/src/types/react/wrapped-components"
       >
-
-        <page-card noheader>
           
-          <mui-grid slot="body" class="config" space="var(--space-600)">
+          <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="large">This approach wraps a custom element in a React component, allowing you to define typed props and encapsulate logic using familiar React patterns like props, children, and event handling.</mui-body>
+                <mui-body size="medium">This approach wraps a custom element in a React component, allowing you to define typed props and encapsulate logic using familiar React patterns like props, children, and event handling.</mui-body>
               </mui-v-stack>
 
              <mui-v-stack space="var(--space-300)">
@@ -61,13 +65,11 @@ class WrappedComponents extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Create Wrapped Component" />
-              <figcaption slot="caption">components/mui-container</figcaption>
             </mui-image> 
           </mui-grid>
 
-          <mui-rule slot="footer"></mui-rule>
 
-          <mui-code slot="footer" scrollable>
+          <mui-code scrollable>
             <br />
             <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts" target="_blank">👨‍💻 View file on Github</mui-link>
             <br />
@@ -129,7 +131,6 @@ class WrappedComponents extends HTMLElement {
             <br />
             <br />
           </mui-code>
-        </page-card>
 
       </story-template>
     `;

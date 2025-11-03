@@ -11,9 +11,16 @@ class BaseTheme extends HTMLElement {
         grid-template-columns: 1fr;
       }
 
+      mui-image {
+        border: var(--border-thin);
+        border-color: var(--app-story-banner-border-color);
+        border-radius: var(--radius-400);
+        overflow: hidden;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 400px;
+          grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
           justify-content: space-between;
           align-items: start;
@@ -22,7 +29,7 @@ class BaseTheme extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 500px;
+          grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
         }
       }
@@ -34,24 +41,19 @@ class BaseTheme extends HTMLElement {
 
       <story-template 
         title="Base Theme"
-        description="Style your brand without editing component code."
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
-
-        <page-card noheader>
           
-          <mui-grid slot="body" class="config"  space="var(--space-400)">
+          <mui-grid class="config"  space="var(--space-400)">
 
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="large">Plan how your brand will come to life with support for both light and dark modes.</mui-body>
-                <mui-body size="large">There are two main approaches to integrating the theme into your project:</mui-body>
+                <mui-body size="medium">Style your brand without editing component code. Plan how your brand will come to life with support for both light and dark modes.</mui-body>
+                <mui-body size="medium">There are two main approaches to integrating the theme into your project:</mui-body>
                 <mui-body><strong>Override method:</strong> Import the mui-tokens.css package via NPM or CDN option, then create a new CSS file to override only the tokens you need using the structure outlined on this page.</mui-body>
                 <mui-body><strong>Fork method:</strong> Fork the mui-tokens.css repository and directly modify the relevant sections to suit your brand.</mui-body>
               </mui-v-stack>
-
-              <mui-rule></mui-rule>
 
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Theme Configuration</mui-heading>
@@ -107,11 +109,10 @@ class BaseTheme extends HTMLElement {
 
             <mui-image>
               <img slot="image" src="${Image}" alt="Author Tokens" />
-              <figcaption slot="caption">mui-styles/mui-tokens.css</figcaption>
             </mui-image> 
           </mui-grid>
 
-          <mui-code slot="footer">
+          <mui-code>
             <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css" target="_blank">👨‍💻 View file on Github</mui-link>
             <br />
             <br />
@@ -148,8 +149,6 @@ class BaseTheme extends HTMLElement {
             }<br />
             <br />
           </mui-code>
-
-        </page-card>
 
       </story-template>
     `;

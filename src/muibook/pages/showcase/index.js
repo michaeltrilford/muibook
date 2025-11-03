@@ -16,8 +16,6 @@ class ShowcasePage extends HTMLElement {
 
       @media (min-width: 1230px) {
         .config::part(display) {
-          padding-left: var(--space-200);
-          padding-right: var(--space-200);
           grid-template-columns: 1fr 1fr;
           gap: var(--space-800);
           justify-content: space-between;
@@ -27,7 +25,6 @@ class ShowcasePage extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          padding: var(--space-400) var(--space-500) var(--space-500);
           column-gap: var(--space-800);
           row-gap: var(--space-800);
         }
@@ -37,12 +34,12 @@ class ShowcasePage extends HTMLElement {
         padding: 24px; 
         padding-bottom: 0;
         box-sizing: border-box;
-        background: var(--surface-recessed-100);
+        background: var(--surface-elevated-200);
       }
       .website-image {
         padding: 24px; 
         box-sizing: border-box;
-        background: var(--surface-recessed-100);
+        background: var(--surface-elevated-200);
       }
 
     `;
@@ -54,10 +51,8 @@ class ShowcasePage extends HTMLElement {
         title="Projects"
         description="Products and websites that utilise the Muibook Design System."
       >
-
-        <page-card noheader>
           
-          <mui-grid slot="body" class="config" space="var(--space-600)">
+          <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
               <mui-v-stack space="var(--space-300)">
@@ -122,8 +117,6 @@ class ShowcasePage extends HTMLElement {
             <mui-image>
             </mui-image> 
           </mui-grid>
-
-        </page-card>
 
       </story-template>
     `;

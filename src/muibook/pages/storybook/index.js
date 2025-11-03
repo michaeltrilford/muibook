@@ -11,9 +11,16 @@ class StorybookPage extends HTMLElement {
         grid-template-columns: 1fr;
       }
 
+      mui-image {
+        border: var(--border-thin);
+        border-color: var(--app-story-banner-border-color);
+        border-radius: var(--radius-400);
+        overflow: hidden;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 400px;
+          grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
           justify-content: space-between;
           align-items: start;
@@ -22,7 +29,7 @@ class StorybookPage extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 50ch) 500px;
+          grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
         }
       }
@@ -34,26 +41,19 @@ class StorybookPage extends HTMLElement {
 
       <story-template 
         title="Storybook"
-        description="Storybook complements muibook.com, the main hub for the design system."
         storybook="https://stories.muibook.com/"
       >
 
-        <page-card noheader>
+  
           
-          <mui-grid slot="body" class="config" space="var(--space-600)">
+          <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
                 <mui-heading level="3" size="5">Overview</mui-heading>
                 <mui-body size="medium">
-                  The examples found on <mui-link size="medium" href="https://stories.muibook.com"  target="_blank">stories.muibook.com </mui-link> mirror the main site to ensure consistency. 
-                </mui-body>
-                <mui-body size="medium">
-                  Components are fully interactive so teams can explore variations and practical usage.
-                </mui-body>
-                <mui-body size="medium">
-                  This build uses the latest Muibook package and is prepared for upcoming MCP features.
+                  The examples found on <mui-link size="medium" href="https://stories.muibook.com"  target="_blank">stories.muibook.com </mui-link> mirror the main site to ensure consistency. Components are fully interactive so teams can explore variations and practical usage. This build uses the latest Muibook package and is prepared for upcoming MCP features.
                 </mui-body>
               </mui-v-stack>
                 
@@ -74,7 +74,7 @@ class StorybookPage extends HTMLElement {
             </mui-image> 
           </mui-grid>
 
-        </page-card>
+
 
       </story-template>
     `;
