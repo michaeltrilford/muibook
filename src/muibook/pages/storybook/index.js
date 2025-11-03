@@ -1,4 +1,4 @@
-import Image from "../../images/pages/npm.png";
+import Image from "../../images/pages/storybook.png";
 
 class StorybookPage extends HTMLElement {
   constructor() {
