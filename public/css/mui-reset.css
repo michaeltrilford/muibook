@@ -139,9 +139,9 @@ dd {
   margin: 0;
 }
 
-*:not(mui-),
-*:not(mui-):before,
-*:not(mui-):after {
+*:not(mui-row):not(mui-cell),
+*:not(mui-row):not(mui-cell):before,
+*:not(mui-row):not(mui-cell):after {
   box-sizing: border-box;
 }
 
