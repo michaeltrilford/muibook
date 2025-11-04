@@ -124,7 +124,7 @@ class compAgentUI extends HTMLElement {
           </div>
           <story-code-block slot="footer">
             <br />
-            <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/contextual-design-tokens">Surface Tokens</mui-link></mui-body>
+            <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/intent-design-tokens">Surface Tokens</mui-link></mui-body>
             <br />
             /* =================================== */
             <br />
@@ -154,7 +154,7 @@ class compAgentUI extends HTMLElement {
           </div>
           <story-code-block slot="footer">
             <br />
-            <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/contextual-design-tokens">Surface Tokens</mui-link></mui-body>
+            <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/intent-design-tokens">Surface Tokens</mui-link></mui-body>
             <br />
             /* =================================== */
             <br />

@@ -204,9 +204,6 @@
 /* 2. LIGHT MODE                                                                                        */
 /* ==================================================================================================== */
 html[data-theme="light"] {
-  /* ================================================================================================== */
-  /* Semantic                                                                                           */
-  /* ================================================================================================== */
   /* Form */
   --form-default-text-color: var(--grey-500);
   --form-success-text-color: var(--green-700);
@@ -254,7 +251,6 @@ html[data-theme="light"] {
   --feedback-info-action-background: var(--blue-200);
   --feedback-warning-action-background: var(--orange-200);
   --feedback-attention-action-background: var(--red-200);
-
   /* Action - Primary (Button & Link) */
   --action-primary-border-color: var(--black-opacity-0);
   --action-primary-border-color-hover: var(--black-opacity-0);
@@ -307,9 +303,7 @@ html[data-theme="light"] {
   --action-attention-text-color-hover: var(--white);
   --action-attention-text-color-focus: var(--white);
   --action-attention-text-color-disabled: var(--red-300);
-  /* ================================================================================================== */
-  /* Contextual                                                                                         */
-  /* ================================================================================================== */
+  /* Surface */
   --surface: var(--grey-200);
   --surface-elevated-alpha: var(--white-opacity-50);
   --surface-elevated-100: var(--white);
@@ -317,16 +311,16 @@ html[data-theme="light"] {
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
-
+  /* Stroke */
   --outline-color: var(--blue-500);
   --border-color: var(--black-opacity-20);
-
+  /* Text */
   --text-color: var(--grey-900);
   --text-color-success: var(--green-600);
   --text-color-warning: var(--orange-600);
   --text-color-error: var(--red-600);
   --text-color-optional: var(--grey-600);
-
+  /* Overlay */
   --backdrop-overlay: var(--black-opacity-70);
   /* ================================================================================================== */
   /* Components                                                                                         */
@@ -433,9 +427,6 @@ html[data-theme="light"] {
 /* 3. DARK MODE                                                                                         */
 /* ==================================================================================================== */
 html[data-theme="dark"] {
-  /* ================================================================================================== */
-  /* Semantic                                                                                           */
-  /* ================================================================================================== */
   /* Form */
   --form-default-text-color: var(--grey-500);
   --form-success-text-color: var(--green-400);
@@ -535,9 +526,7 @@ html[data-theme="dark"] {
   --action-attention-text-color-hover: var(--white);
   --action-attention-text-color-focus: var(--white);
   --action-attention-text-color-disabled: var(--red-300);
-  /* ================================================================================================== */
-  /* Contextual                                                                                         */
-  /* ================================================================================================== */
+  /* Surface */
   --surface: var(--grey-1000);
   --surface-elevated-alpha: var(--white-opacity-10);
   --surface-elevated-100: var(--grey-800);
@@ -545,16 +534,16 @@ html[data-theme="dark"] {
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
   --surface-recessed-200: var(--grey-1100);
-
+  /* Stroke */
   --outline-color: var(--blue-300);
   --border-color: var(--white-opacity-20);
-
+  /* Text */
   --text-color: var(--grey-200);
   --text-color-success: var(--green-400);
   --text-color-warning: var(--orange-400);
   --text-color-error: var(--red-400);
   --text-color-optional: var(--grey-300);
-
+  /* Overlay */
   --backdrop-overlay: var(--black-opacity-70);
   /* ================================================================================================== */
   /* Components                                                                                         */
@@ -658,9 +647,6 @@ html[data-theme="dark"] {
 /* 4. SET THE FOUNDATION                                                                                */
 /* ==================================================================================================== */
 :where(html) {
-  /* ================================================================================================== */
-  /* Semantic                                                                                           */
-  /* ================================================================================================== */
   /* Feedback - Border (Alerts & Messages) */
   --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
   --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
@@ -696,9 +682,6 @@ html[data-theme="dark"] {
   --action-font-size: var(--text-font-size);
   --action-line-height: var(--text-line-height);
   --action-font-weight: var(--font-weight-medium);
-  /* ================================================================================================== */
-  /* Contextual                                                                                         */
-  /* ================================================================================================== */
   /* Text */
   --text-line-height-xs: var(--line-height-25);
   --text-line-height-s: var(--line-height-50);

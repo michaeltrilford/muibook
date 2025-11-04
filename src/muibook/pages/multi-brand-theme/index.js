@@ -80,11 +80,10 @@ class MultiBrandTheme extends HTMLElement {
             
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Design Token Overview</mui-heading>
-                <mui-body>Design tokens are organised into four tiers, each mapped to the sections below. These ultimately feed into the components within the design system.</mui-body>
+                <mui-body>Design tokens are organised into three tiers, each mapped to the sections below. These ultimately feed into the components within the design system.</mui-body>
                 <mui-body size="medium">
                   <mui-link size="medium" href="#/brand-design-tokens">Brand</mui-link>, 
-                  <mui-link size="medium" href="#/semantic-design-tokens">Semantic</mui-link>, 
-                  <mui-link size="medium" href="#/contextual-design-tokens">Contextual</mui-link> and 
+                  <mui-link size="medium" href="#/intent-design-tokens">Intent</mui-link> and 
                   <mui-link size="medium" href="#/components-design-tokens">Component</mui-link> tokens.</mui-body>
               </mui-v-stack>
 
