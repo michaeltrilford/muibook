@@ -28,15 +28,31 @@ class HomePage extends HTMLElement {
   }
 
   getLogos() {
-    let brand = this.getAttribute("data-brand") || "mui";
+    // Get the brand from attribute or fallback to "mui"
+    let brand = this.getAttribute("data-brand") || document.documentElement.getAttribute("data-brand") || "mui";
+    if (!brand || brand === "modern") brand = "mui";
 
-    // Normalize brands that share the same logo
-    if (brand === "modern") brand = "mui";
+    // Define the allowed brands and their component tags
+    const LOGO_TAGS = {
+      mui: "mui-logo",
+      jal: "jal-logo",
+      ana: "ana-logo",
+    };
+
+    const LOGO_MOBILE_TAGS = {
+      mui: "mui-logo-mobile",
+      jal: "jal-logo-mobile",
+      ana: "ana-logo-mobile",
+    };
+
+    // Resolve the correct tag names, fallback to mui
+    const desktopTag = LOGO_TAGS[brand] || LOGO_TAGS.mui;
+    const phoneTag = LOGO_MOBILE_TAGS[brand] || LOGO_MOBILE_TAGS.mui;
 
     return {
-      desktop: `<${brand}-logo color="var(--app-logo-color)"></${brand}-logo>`,
-      tablet: `<${brand}-logo color="var(--app-logo-color)" slot="showAbove" style="max-width:26rem;"></${brand}-logo>`,
-      phone: `<${brand}-logo-mobile color="var(--app-logo-color)" slot="showBelow"></${brand}-logo-mobile>`,
+      desktop: `<${desktopTag} color="var(--app-logo-color)"></${desktopTag}>`,
+      tablet: `<${desktopTag} color="var(--app-logo-color)" slot="showAbove" style="max-width:26rem;"></${desktopTag}>`,
+      phone: `<${phoneTag} color="var(--app-logo-color)" slot="showBelow"></${phoneTag}>`,
     };
   }
 
