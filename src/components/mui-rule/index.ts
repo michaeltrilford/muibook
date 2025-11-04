@@ -6,11 +6,16 @@ class MuiRule extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.setAttribute("role", "presentation");
+  }
+
+  connectedCallback() {
+    if (!this.shadowRoot) return;
 
     if (!this.hasAttribute("direction")) {
       this.setAttribute("direction", "horizontal");
     }
+
+    this.setAttribute("role", "presentation");
 
     this.updateStyles();
   }
