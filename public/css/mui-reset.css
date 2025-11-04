@@ -139,9 +139,9 @@ dd {
   margin: 0;
 }
 
-*,
-:before,
-:after {
+*:not(mui-),
+*:not(mui-):before,
+*:not(mui-):after {
   box-sizing: border-box;
 }
 
