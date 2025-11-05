@@ -17,7 +17,6 @@
 ### Fixed
 
 - Fixed an issue where incorrect CSS targeting caused unexpected behavior. Targeting has been corrected in this release.
-- (Github Commit)[https://github.com/michaeltrilford/muibook/commit/67255f84c464f744c7aecd3d2987326b936f62b4]
 
 ---
 
@@ -36,7 +35,6 @@
 ### Changed
 
 - Adjusted the CSS Reset to exclude certain design system components from the global box-sizing rule. This prevents layout issues when Web Components are used in traditional light DOM contexts, where those components expect box-sizing: content-box.
-- (Github Commit)[https://github.com/michaeltrilford/muibook/commit/397b5e082348b67ed947603c1e1d231f5256110e]
 
 ### Fixed
 
@@ -62,7 +60,7 @@
 
 ### Fixed
 
-- [Ensured Rule and Field renders in environments like react.](https://github.com/michaeltrilford/muibook/commit/52c03c831423c250637e4ac57e9ec02910e5a73a)
+- Ensured Rule and Field renders in environments like react.
 
 ---
 
