@@ -434,7 +434,7 @@ class storyDropdown extends HTMLElement {
         title="Dropdown" 
         description="The dropdown has a trigger action and an overlay menu. The action can use any mui-button variant, while menu options follow a predefined style. The menu auto-positions to stay within the viewport."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dropdown/index.ts"
-        guides="https://guides.muibook.com"
+        guides="https://guides.muibook.com/dropdown"
         storybook="https://stories.muibook.com/?path=/docs/actions-dropdown--docs"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12740&t=BwezUSymTClm00wJ-1"
       >
