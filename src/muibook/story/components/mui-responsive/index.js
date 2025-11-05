@@ -463,6 +463,7 @@ class storyResponsive extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts"
         guides="https://guides.muibook.com/responsive"
         storybook="https://stories.muibook.com/?path=/docs/layout-responsive--docs"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12704&t=BwezUSymTClm00wJ-1"
       >
         ${stories}
       </story-template>

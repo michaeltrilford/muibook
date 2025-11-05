@@ -320,6 +320,7 @@ class storyStack extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stack"
         guides="https://guides.muibook.com/stack"
         storybook="https://stories.muibook.com/?path=/docs/layout-stack--docs"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12708&t=BwezUSymTClm00wJ-1"
       >
         ${stories}
       </story-template>

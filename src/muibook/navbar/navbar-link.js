@@ -1,7 +1,7 @@
 /* myApp */
 class appNavbarLink extends HTMLElement {
   static get observedAttributes() {
-    return ["link", "title"];
+    return ["link", "title", "badge"];
   }
 
   constructor() {
@@ -10,11 +10,23 @@ class appNavbarLink extends HTMLElement {
   }
 
   connectedCallback() {
+    const badge = this.getAttribute("badge");
+    const title = this.getAttribute("title");
+    const link = this.getAttribute("link");
+    const badgeClass = badge ? "has-badge" : "";
+
     let html = /*html*/ `
     <style>
 
       :host {
         display: block;
+      }
+
+      .has-badge::part(justify-content) {
+        justify-content: space-between;
+      }
+      .has-badge::part(display) {
+        display: flex;
       }
 
       mui-link {
@@ -49,8 +61,10 @@ class appNavbarLink extends HTMLElement {
       }
     </style>
 
-    <mui-link  href="${this.getAttribute("link")}">${this.getAttribute("title")}</mui-link> 
-
+    <mui-link href="${link}" class="${badgeClass}">
+    ${title}
+    ${badge ? `<mui-badge>${badge}</mui-badge>` : ``}
+    </mui-link> 
     `;
 
     this.shadowRoot.innerHTML = html;

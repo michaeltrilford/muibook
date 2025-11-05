@@ -191,7 +191,7 @@ class StoryTemplate extends HTMLElement {
         <mui-v-stack class="wrapper">
           <mui-v-stack class="introduction">
             <mui-v-stack class="header-group">
-              <mui-responsive breakpoint="768">
+              <mui-responsive breakpoint="1200">
                 <mui-h-stack slot="showBelow" alignX="space-between" alignY="center">
                   <mui-heading size="2" level="1">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">

@@ -28,7 +28,7 @@ class tokensComponents extends HTMLElement {
 
       <story-template 
         title="Components"
-        description="Component tokens are a blend of specific values and references to relevant semantic or contextual tokens. They provide the final, practical styling applied directly to UI components and their states."
+        description="Tokens that map brand and intent decisions to UI components, applying consistent, themed styling across components and their states."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >

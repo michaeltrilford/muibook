@@ -44,7 +44,7 @@ class tokensIntent extends HTMLElement {
 
       <story-template 
         title="Intent"
-        description="Tokens that represent meaningful design decisions, translating raw brand values into purposeful roles such as feedback, interaction, and structure, which are then applied to specific components."
+        description="Tokens that represent design decisions, translating raw values into contextual definitions such as feedback, state, and visual emphasis. They serve as the conduit between raw values and components."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >

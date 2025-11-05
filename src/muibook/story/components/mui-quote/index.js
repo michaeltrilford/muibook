@@ -107,6 +107,7 @@ class storyQuote extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-quote/index.ts"
         guides="https://guides.muibook.com/quote"
         storybook="https://stories.muibook.com/?path=/docs/content-quote--docs"
+        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1069-15815&t=BwezUSymTClm00wJ-1"
       >
         ${stories}
       </story-template>

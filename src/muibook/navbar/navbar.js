@@ -1,6 +1,11 @@
+import pkg from "../../../package.json";
+const version = pkg.version; // e.g., "5.0.0"
+
 class appNavbar extends HTMLElement {
   constructor() {
     super();
+
+    const versionText = `${version}`;
 
     const shadowRoot = this.attachShadow({ mode: "open" });
 
@@ -99,7 +104,7 @@ class appNavbar extends HTMLElement {
       <app-navbar-group id="resources" groupname="Resources">
         <mui-body class="first" weight="bold">Get Started</mui-body>
         <app-navbar-link link="#/create-mui-app" title="Create App"></app-navbar-link>
-        <app-navbar-link link="#/npm" title="NPM Package"></app-navbar-link>
+        <app-navbar-link link="#/npm" title="NPM Package" badge=${versionText}></app-navbar-link>
         <app-navbar-link link="#/storybook" title="Storybook"></app-navbar-link>
         <app-navbar-link link="#/changelog" title="Changelog"></app-navbar-link>
         <mui-body weight="bold">Design</mui-body>
@@ -123,9 +128,9 @@ class appNavbar extends HTMLElement {
 
     const Required = /*html*/ `
       <app-navbar-group id="design-tokens" groupname="Design Tokens">
-        <app-navbar-link link="#/brand-design-tokens" title="Brand"></app-navbar-link>
-        <app-navbar-link link="#/intent-design-tokens" title="Intent"></app-navbar-link>
-        <app-navbar-link link="#/components-design-tokens" title="Components"></app-navbar-link>
+        <app-navbar-link link="#/brand-design-tokens" title="Brand" badge="Tier 1"></app-navbar-link>
+        <app-navbar-link link="#/intent-design-tokens" title="Intent" badge="Tier 2"></app-navbar-link>
+        <app-navbar-link link="#/components-design-tokens" title="Components" badge="Tier 3"></app-navbar-link>
       </app-navbar-group>
     `;
 
