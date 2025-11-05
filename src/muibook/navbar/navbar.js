@@ -1,11 +1,6 @@
-import pkg from "../../../package.json";
-const version = pkg.version; // e.g., "5.0.0"
-
 class appNavbar extends HTMLElement {
   constructor() {
     super();
-
-    const versionText = `${version}`;
 
     const shadowRoot = this.attachShadow({ mode: "open" });
 
@@ -104,7 +99,7 @@ class appNavbar extends HTMLElement {
       <app-navbar-group id="resources" groupname="Resources">
         <mui-body class="first" weight="bold">Get Started</mui-body>
         <app-navbar-link link="#/create-mui-app" title="Create App"></app-navbar-link>
-        <app-navbar-link link="#/npm" title="NPM Package" badge=${versionText}></app-navbar-link>
+        <app-navbar-link link="#/npm" title="NPM Package"></app-navbar-link>
         <app-navbar-link link="#/storybook" title="Storybook"></app-navbar-link>
         <app-navbar-link link="#/changelog" title="Changelog"></app-navbar-link>
         <mui-body weight="bold">Design</mui-body>
