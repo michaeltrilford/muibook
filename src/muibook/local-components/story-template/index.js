@@ -90,7 +90,7 @@ class StoryTemplate extends HTMLElement {
     const title = this.getAttribute("title") || "";
     const descriptionText = this.getAttribute("description") || "";
     const description = descriptionText
-      ? /*html*/ `<mui-body size="medium" style="max-width: 57ch; margin-bottom: var(--space-200);">${descriptionText}</mui-body>`
+      ? /*html*/ `<mui-body size="medium" style="max-width: 70ch; margin-bottom: var(--space-200); text-wrap: pretty;">${descriptionText}</mui-body>`
       : "";
 
     const accessibilityItems = this.getAttribute("accessibility");
