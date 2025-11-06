@@ -351,7 +351,7 @@ class storyLoader extends HTMLElement {
 
       <story-template 
         title="Loader" 
-        description="This component provides seamless loading animations for initial page loads or skeleton-style experiences. Wrap your UI with Mui-Loader to manage initial loading states or page transitions."
+        description="The Loader component applies smooth, built-in transitions during page loads, content updates, or skeleton placeholders to maintain a seamless, polished experience."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts"
         guides="https://guides.muibook.com/loader"
         storybook="https://stories.muibook.com/?path=/docs/feedback-loader--docs"
