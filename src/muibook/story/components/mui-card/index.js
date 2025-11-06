@@ -501,23 +501,23 @@ class storyCards extends HTMLElement {
         <div slot="body">
           <mui-card>
             <mui-card-header>
-              <mui-heading size="3">Title</mui-heading>
+              <mui-heading size="3">Design Tools</mui-heading>
             </mui-card-header>
             <mui-rule></mui-rule>
             <mui-card-body>
               <mui-table>
                 <mui-row-group heading>
                   <mui-row columns="${Columns_Action}">
-                    <mui-cell>Office</mui-cell>
-                    <mui-cell>Cost</mui-cell>
+                    <mui-cell>Company</mui-cell>
+                    <mui-cell>Monthly Cost</mui-cell>
                     <mui-cell action>
                     </mui-cell>
                   </mui-row>
                 </mui-row-group>
                 <mui-row-group>
                   <mui-row columns="${Columns_Action}">
-                    <mui-cell>Whalen</mui-cell>
-                    <mui-cell>$1,100.00</mui-cell>
+                    <mui-cell>Figma</mui-cell>
+                    <mui-cell>$20.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
                         <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
@@ -527,8 +527,8 @@ class storyCards extends HTMLElement {
                     </mui-cell>
                   </mui-row>
                   <mui-row columns="${Columns_Action}">
-                    <mui-cell>Whalen</mui-cell>
-                    <mui-cell>$1,100.00</mui-cell>
+                    <mui-cell>Sketch</mui-cell>
+                    <mui-cell>$12.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
                         <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
