@@ -376,7 +376,7 @@ class storyLink extends HTMLElement {
       >
         <mui-v-stack slot="body">
           <mui-h-stack alignx="space-between">
-            <mui-heading size='1' level='1'>Dashboard</mui-heading>
+            <mui-heading size='1' level='1'>Home</mui-heading>
             <mui-link size="large" variant="primary">Learn more<mui-icon-info slot="after"></mui-icon-info></mui-link>
           </mui-h-stack>
           <mui-rule

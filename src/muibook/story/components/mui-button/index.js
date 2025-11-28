@@ -440,7 +440,7 @@ If needed, you can override this by providing a custom size—the button will re
       >
         <mui-v-stack slot="body">
           <mui-h-stack alignx="space-between">
-            <mui-heading size='1' level='1'>Dashboard</mui-heading>
+            <mui-heading size='1' level='1'>Home</mui-heading>
             <mui-button size="large">Reports</mui-button>
           </mui-h-stack>
           <mui-rule
