@@ -1,5 +1,27 @@
 ## Header [Start]
 
+## v7.1.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/7.1.0)
+
+## Header [End]
+
+### Added
+
+- [None]
+
+### Changed
+
+- Updated Alert and Message to use the medium sized icon by default.
+
+### Fixed
+
+- [None]
+
+---
+
+## Header [Start]
+
 ## v7.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/7.0.0)

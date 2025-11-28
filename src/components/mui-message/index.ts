@@ -112,7 +112,7 @@ class MuiMessage extends HTMLElement {
       <section aria-labelledby="message-heading" aria-live="${ariaLive}" role="${role}">
         <mui-h-stack space="var(--message-gap-horizontal)">
           <div class="icon">
-            <${iconTag} color="var(${iconColor})"></${iconTag}>
+            <${iconTag} size="medium" color="var(${iconColor})"></${iconTag}>
           </div>
           <mui-v-stack space="var(--message-gap-vertical)">
             <div class="heading" id="message-heading">${headingText}</div>

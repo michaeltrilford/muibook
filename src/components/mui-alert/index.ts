@@ -148,7 +148,7 @@ class MuiAlert extends HTMLElement {
     if (!this.shadowRoot) return;
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-      <${iconTag} size="small" color="var(${iconColor})" class="icon"></${iconTag}>
+      <${iconTag} size="medium" color="var(${iconColor})" class="icon"></${iconTag}>
       <mui-body>
         <span class="label">${labelText}</span>
         <slot></slot>
