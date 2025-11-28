@@ -265,7 +265,7 @@ class storyLink extends HTMLElement {
                 ]'>
               </mui-select>
               </mui-h-stack>
-              <mui-h-stack space="var(--space-500)" aligny="center">
+              <mui-h-stack space="var(--space-400)" aligny="center">
                 <mui-h-stack space="var(--space-200)" aligny="center">
                   <mui-chip dismiss>
                     Admin
@@ -282,7 +282,7 @@ class storyLink extends HTMLElement {
                   {"value": "active", "label": "Active"}
                 ]'>
               </mui-select>
-              <mui-h-stack space="var(--space-500)" aligny="center" alignx="space-between">
+              <mui-h-stack space="var(--space-400)" aligny="center" alignx="space-between">
                 <mui-h-stack space="var(--space-200)" aligny="center">
                   <mui-chip dismiss>
                     Admin

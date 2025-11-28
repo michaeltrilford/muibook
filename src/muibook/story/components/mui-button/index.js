@@ -250,7 +250,7 @@ If needed, you can override this by providing a custom size—the button will re
                 ]'>
               </mui-select>
               </mui-h-stack>
-              <mui-h-stack space="var(--space-500)" aligny="center">
+              <mui-h-stack space="var(--space-400)" aligny="center">
                 <mui-h-stack space="var(--space-200)" aligny="center">
                   <mui-chip dismiss>
                     Admin
@@ -267,7 +267,7 @@ If needed, you can override this by providing a custom size—the button will re
                   {"value": "active", "label": "Active"}
                 ]'>
               </mui-select>
-              <mui-h-stack space="var(--space-500)" aligny="center" alignx="space-between">
+              <mui-h-stack space="var(--space-400)" aligny="center" alignx="space-between">
                 <mui-h-stack space="var(--space-200)" aligny="center">
                   <mui-chip dismiss>
                     Admin
