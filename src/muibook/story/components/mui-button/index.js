@@ -636,8 +636,8 @@ If needed, you can override this by providing a custom size—the button will re
       >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
-            <mui-button variant="primary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-button>
-            <mui-button variant="primary"><mui-icon-add></mui-icon-add></mui-button>
+            <mui-button variant="primary">Share</mui-button>
+            <mui-button variant="primary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-button variant="primary" >
@@ -663,8 +663,8 @@ If needed, you can override this by providing a custom size—the button will re
       >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
-            <mui-button variant="secondary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-button>
-            <mui-button variant="secondary"><mui-icon-add></mui-icon-add></mui-button>
+            <mui-button variant="secondary">Share</mui-button>
+            <mui-button variant="secondary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-button variant="secondary" >
@@ -691,8 +691,8 @@ If needed, you can override this by providing a custom size—the button will re
       >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
-            <mui-button variant="tertiary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-button>
-            <mui-button variant="tertiary"><mui-icon-add></mui-icon-add></mui-button>
+            <mui-button variant="tertiary">Share</mui-button>
+            <mui-button variant="tertiary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-button variant="tertiary" >
@@ -718,8 +718,8 @@ If needed, you can override this by providing a custom size—the button will re
       >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
-            <mui-button variant="attention">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-button>
-            <mui-button variant="attention"><mui-icon-add></mui-icon-add></mui-button>
+            <mui-button variant="attention">Share</mui-button>
+            <mui-button variant="attention"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-button variant="attention" >

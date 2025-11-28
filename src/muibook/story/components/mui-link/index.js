@@ -574,8 +574,8 @@ class storyLink extends HTMLElement {
       >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
-            <mui-link variant="primary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-link>
-            <mui-link variant="primary"><mui-icon-add></mui-icon-add></mui-link>
+            <mui-link variant="primary">Share</mui-link>
+            <mui-link variant="primary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-link>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="primary" >
@@ -602,8 +602,8 @@ class storyLink extends HTMLElement {
       >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
-            <mui-link variant="secondary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-link>
-            <mui-link variant="secondary"><mui-icon-add></mui-icon-add></mui-link>
+            <mui-link variant="secondary">Share</mui-link>
+            <mui-link variant="secondary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-link>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="secondary" >
@@ -630,8 +630,8 @@ class storyLink extends HTMLElement {
       >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
-            <mui-link variant="tertiary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-link>
-            <mui-link variant="tertiary"><mui-icon-add></mui-icon-add></mui-link>
+            <mui-link variant="tertiary">Share</mui-link>
+            <mui-link variant="tertiary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-link>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="tertiary" >
@@ -658,8 +658,8 @@ class storyLink extends HTMLElement {
       >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
-            <mui-link variant="attention">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-link>
-            <mui-link variant="attention"><mui-icon-add></mui-icon-add></mui-link>
+            <mui-link variant="attention">Share</mui-link>
+            <mui-link variant="attention"><mui-icon-ellipsis></mui-icon-ellipsis></mui-link>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="attention" >
