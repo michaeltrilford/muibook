@@ -25,7 +25,6 @@
 - Slotted page item inherits overflow: auto and height of 100dvh without user intervention. User is able to override and turn off if required.
 - Ensured slotted items in Input don't wrap by default. The parent is flex and causes slotted children to wrap.
 - Linked the input background to the Chip component.
-- [View on Github](https://github.com/michaeltrilford/muibook/commit/ef174e3ac30df271d274b44bddeedf6854902181)
 
 ---
 
