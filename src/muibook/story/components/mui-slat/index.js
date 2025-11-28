@@ -349,16 +349,16 @@ class storySlat extends HTMLElement {
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;...&lt;/mui-body&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;...&lt;/mui-body&gt;
             <br />
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;
             <br />
             <br />
             &nbsp;&nbsp;&lt;mui-v-stack slot="end" alignX="end"&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;...&lt;/mui-body&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;...&lt;/mui-body&gt;
             <br />
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;
             <br />
@@ -389,7 +389,7 @@ class storySlat extends HTMLElement {
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;...&lt;/mui-body&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small&gt;...&lt;/mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;...&lt;/mui-body&gt;
             <br />
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;
             <br />

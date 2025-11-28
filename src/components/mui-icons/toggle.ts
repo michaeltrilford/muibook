@@ -25,16 +25,16 @@ class MuiIconToggle extends HTMLElement {
 
   attributeChangedCallback(name: string, _oldValue: string | null, _newValue: string | null) {
     if (name === "size") {
-      const size = this.getAttribute("size") || "small";
+      const size = this.getAttribute("size") || "medium";
 
       const sizeMap: Record<"x-small" | "small" | "medium" | "large", string> = {
         "x-small": "1.6rem",
-        small: "2.4rem",
-        medium: "3.6rem",
-        large: "4.8rem",
+        small: "2.1rem",
+        medium: "2.4rem",
+        large: "2.8rem",
       };
 
-      const resolvedSize = sizeMap[size as keyof typeof sizeMap] ?? sizeMap.small;
+      const resolvedSize = sizeMap[size as keyof typeof sizeMap] ?? sizeMap.medium;
       this.style.setProperty("--icon-toggle-size", resolvedSize);
 
       this.applySize(); // Also apply the size to slotted icons
@@ -59,15 +59,13 @@ class MuiIconToggle extends HTMLElement {
   /* PRIVATE: force size="small" on all assigned elements               */
   /* ------------------------------------------------------------------ */
   private applySize() {
-    const size = this.getAttribute("size") || "small";
+    const size = this.getAttribute("size") || "medium";
 
     const slots = this.shadowRoot!.querySelectorAll("slot");
     slots.forEach((slot) => {
       slot.assignedElements({ flatten: true }).forEach((el) => {
-        // Only update if user hasn't explicitly set size
-        if (!el.hasAttribute("size") || el.getAttribute("size") === "small") {
-          (el as HTMLElement).setAttribute("size", size);
-        }
+        // Always propagate the toggle's size to slotted elements
+        (el as HTMLElement).setAttribute("size", size);
       });
     });
   }
@@ -78,8 +76,8 @@ class MuiIconToggle extends HTMLElement {
         :host {
           display: inline-flex;
           position: relative;
-          height: var(--icon-toggle-size, 2.4rem);
-          width: var(--icon-toggle-size, 2.4rem);
+          height: var(--icon-toggle-size);
+          width: var(--icon-toggle-size);
         }
 
         ::slotted(*) {

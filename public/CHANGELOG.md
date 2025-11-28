@@ -1,5 +1,35 @@
 ## Header [Start]
 
+## v7.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/7.0.0)
+
+## Header [End]
+
+### Added
+
+- [None]
+
+### Changed
+
+- Reworked the Prompt file for more accurate Model and Agent usage.
+- Introduced button sizes | x-small, small, medium, large
+- Introduced link button sizes | x-small, small, medium, large
+- Updated icon sizes and toggle to support: x-small: 1.6rem | small: 2.1rem | medium: 2.4rem | large: 2.8rem
+- Set toggle to default="medium"
+
+### Fixed
+
+- Fixed a width mismatch on the Drawer component.
+- Ensured the Drawer `PUSH` & `PERSISTENT` variants are block, not inline.
+- Slotted page item inherits overflow: auto and height of 100dvh without user intervention. User is able to override and turn off if required.
+- Ensured slotted items in Input don't wrap by default. The parent is flex and causes slotted children to wrap.
+- Linked the input background to the Chip component.
+
+---
+
+## Header [Start]
+
 ## v6.1.1
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/6.1.1)

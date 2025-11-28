@@ -229,7 +229,7 @@ class appNavbar extends HTMLElement {
 
       <app-navbar-toggle>
         <mui-button variant="tertiary">
-          <mui-icon-toggle rotate>
+          <mui-icon-toggle rotate size="medium">
             <mui-icon-menu class="color-icon" slot="start"></mui-icon-menu>
             <mui-icon-close class="color-icon" slot="end"></mui-icon-close>
           </mui-icon-toggle>

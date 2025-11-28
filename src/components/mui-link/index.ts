@@ -3,7 +3,7 @@ import { getPartMap } from "../../utils/part-map";
 /* Mui Link */
 class MuiLink extends HTMLElement {
   static get observedAttributes() {
-    return ["target", "href", "variant", "weight", "size", "download"];
+    return ["target", "href", "variant", "weight", "size", "download", "usage"];
   }
 
   constructor() {
@@ -50,6 +50,28 @@ class MuiLink extends HTMLElement {
         anchor.removeAttribute("download");
       }
     }
+
+    if (name === "size" && _oldValue !== newValue && this.shadowRoot) {
+      requestAnimationFrame(() => {
+        const shadow = this.shadowRoot;
+        if (!shadow) return;
+
+        const slots = [
+          shadow.querySelector("slot:not([name])"),
+          shadow.querySelector('slot[name="before"]'),
+          shadow.querySelector('slot[name="after"]'),
+        ] as (HTMLSlotElement | null)[];
+
+        const isIconOnly = this.hasAttribute("icon-only");
+
+        slots.forEach((slot) => {
+          if (slot) {
+            const nodes = slot.assignedNodes({ flatten: true });
+            this.updateIconSizes(nodes, isIconOnly);
+          }
+        });
+      });
+    }
   }
 
   private updateSlotState() {
@@ -85,6 +107,18 @@ class MuiLink extends HTMLElement {
       );
 
     this.toggleAttribute("icon-only", iconOnly);
+
+    if (iconOnly) {
+      this.updateIconSizes(assignedNodes, true);
+    } else {
+      const allSlots = [slotBefore, slotDefault, slotAfter];
+      allSlots.forEach((slot) => {
+        if (slot) {
+          const nodes = slot.assignedNodes({ flatten: true });
+          this.updateIconSizes(nodes, false);
+        }
+      });
+    }
   }
 
   render() {
@@ -149,12 +183,14 @@ class MuiLink extends HTMLElement {
       :host([variant="primary"]),
       :host([variant="secondary"]),
       :host([variant="tertiary"]),
-      :host([variant="attention"]) { display: inline-block; text-align: center; }
+      :host([variant="attention"]),
+      :host([usage="input"]) { display: inline-block; text-align: center; }
 
       :host([variant="primary"]) a,
       :host([variant="secondary"]) a,
       :host([variant="tertiary"]) a,
-      :host([variant="attention"]) a {
+      :host([variant="attention"]) a,
+      :host([usage="input"]) a {
         display: inherit;
         text-align: inherit;
         width: 100%;
@@ -359,7 +395,7 @@ class MuiLink extends HTMLElement {
         align-items: center; 
         gap: var(--space-100);
       }
-      
+
       :host(.has-after.has-before) a {
         grid-template-columns: auto 1fr auto;
       }
@@ -372,18 +408,221 @@ class MuiLink extends HTMLElement {
         grid-template-columns: auto 1fr;
       }
 
-      :host(.has-after.has-before[variant]) a {
+      :host(.has-after.has-before[variant]:not([variant="default"])) a,
+      :host(.has-after.has-before[usage="input"]) a {
         padding-right: var(--action-after-slot-padding);
         padding-left: var(--action-before-slot-padding);
       }
 
-      :host(.has-after[variant]) a {
+      :host(.has-after[variant]:not([variant="default"])) a,
+      :host(.has-after[usage="input"]) a {
         padding-right: var(--action-after-slot-padding);
       }
 
-      :host(.has-before[variant]) a {
+      :host(.has-before[variant]:not([variant="default"])) a,
+      :host(.has-before[usage="input"]) a {
         padding-left: var(--action-before-slot-padding);
       }
+
+      /* ========================================================================== */
+      /* STYLE ADJUSTMENTS WHEN BUTTON IS SLOTTED WITHIN INPUT                      */
+      /* Related styles unique to this usage is found in the mui-input/index.js     */
+      /* ========================================================================== */
+      :host([slot="before"][usage="input"]) a,
+      :host([slot="after"][usage="input"]) a {
+        border: var(--border-thin);
+        min-height: 4.4rem;
+        background: var(--input-background);
+        color: var(--action-secondary-text-color);
+        border-color: var(--form-default-border-color);
+      }
+
+      :host([slot="before"][usage="input"]) a:hover,
+      :host([slot="before"][usage="input"]) a:focus-visible,
+      :host([slot="after"][usage="input"]) a:hover,
+      :host([slot="after"][usage="input"]) a:focus-visible {
+        background: var(--input-background);
+        color: var(--action-secondary-text-color-hover);
+        border-color: var(--form-default-border-color-hover);
+        border-width: var(--stroke-size-100);
+      }
+
+      :host([slot="after"][usage="input"]) a ::slotted(.mui-icon),
+      :host([slot="before"][usage="input"]) a ::slotted(.mui-icon) { 
+        fill: var(--action-secondary-text-color); 
+      }
+
+      :host([slot="after"][usage="input"]) a:hover ::slotted(.mui-icon),
+      :host([slot="before"][usage="input"]) a:hover ::slotted(.mui-icon) { 
+        fill: var(--action-secondary-text-color-hover); 
+      }
+
+      :host([slot="after"][usage="input"]) a:focus-visible ::slotted(.mui-icon),
+      :host([slot="before"][usage="input"]) a:focus-visible ::slotted(.mui-icon) { 
+        fill: var(--action-secondary-text-color-focus); 
+      }
+
+      /* ========================================================================== */
+      /* BEFORE: When a BUTTON has slot="before" applied to host for INPUT usage    */
+      /* ========================================================================== */
+      :host([slot="before"][usage="input"]) a {
+        border-right: none;
+        border-top-right-radius: var(--radius-000);
+        border-bottom-right-radius: var(--radius-000);
+      }
+
+      :host([slot="before"][usage="input"]) a:hover,
+      :host([slot="before"][usage="input"]) a:focus-visible {
+        border-right: none;
+        box-shadow: var(--stroke-size-100) 0 0 0 var(--form-default-border-color-hover);
+      }
+
+      /* ========================================================================== */
+      /* AFTER: When a BUTTON has slot="after" applied to host for INPUT usage      */
+      /* ========================================================================== */
+      :host([slot="after"][usage="input"]) a {
+        border-left: none;
+        border-top-left-radius: var(--radius-000);
+        border-bottom-left-radius: var(--radius-000);
+      }
+
+      :host([slot="after"][usage="input"]) a:hover,
+      :host([slot="after"][usage="input"]) a:focus-visible {
+        border-left: none;
+        box-shadow: calc(-1 * var(--stroke-size-100)) 0 0 0 var(--form-default-border-color-hover);
+      }
+
+      /* ========================================================================== */
+      /* Size Variants with Before & After Icon padding adjustments                 */
+      /* ========================================================================== */
+
+      :host([size="x-small"][variant]:not([variant="default"])) a,
+      :host([size="x-small"][variant]:not([variant="default"])) a:hover,
+      :host([size="x-small"][variant]:not([variant="default"])) a:focus {
+        font-size: var(--text-font-size-xs);
+        line-height: var(--text-line-height-xs);
+        font-weight: var(--font-weight-semi-bold);
+        padding: var(--action-padding-x-small);
+        border-width: var(--stroke-size-100);
+      }
+
+      :host([size="small"][variant]:not([variant="default"])) a {
+        font-size: var(--text-font-size-s);
+        line-height: var(--text-line-height-s);
+        padding: var(--action-padding-small);
+      }
+
+      :host([size="medium"][variant]:not([variant="default"])) a {
+        font-size: var(--text-font-size-m);
+        line-height: var(--text-line-height-m);
+        padding: var(--action-padding);
+      }
+
+      :host([size="large"][variant]:not([variant="default"])) a {
+        font-size: var(--text-font-size-l);
+        line-height: var(--text-line-height-l);
+        padding: var(--action-padding-large);
+      }
+
+      /* Icon-only size variants */
+      :host([size="x-small"][variant]:not([variant="default"])[icon-only]) a {
+        height: var(--action-icon-only-size-x-small);
+        width: var(--action-icon-only-size-x-small);
+        padding: var(--action-icon-only-padding);
+      }
+
+      :host([size="small"][variant]:not([variant="default"])[icon-only]) a {
+        height: var(--action-icon-only-size-small);
+        width: var(--action-icon-only-size-small);
+        padding: var(--action-icon-only-padding);
+      }
+
+      :host([size="medium"][variant]:not([variant="default"])[icon-only]) a {
+        height: var(--action-icon-only-size);
+        width: var(--action-icon-only-size);
+        padding: var(--action-icon-only-padding);
+      }
+
+      :host([size="large"][variant]:not([variant="default"])[icon-only]) a {
+        height: var(--action-icon-only-size-large);
+        width: var(--action-icon-only-size-large);
+        padding: var(--action-icon-only-padding);
+      }
+
+      /* Before & After Icon padding adjustments for x-small */
+      :host([size="x-small"][variant]:not([variant="default"]).has-after) a,
+      :host([size="x-small"][variant]:not([variant="default"]).has-before) a,
+      :host([size="x-small"][variant]:not([variant="default"]).has-after.has-before) a { 
+        gap: var(--space-025);
+      }
+
+      :host([size="x-small"][variant]:not([variant="default"]).has-after.has-before) a {
+        padding-right: var(--action-after-slot-padding-x-small);
+        padding-left: var(--action-before-slot-padding-x-small);
+      }
+
+      :host([size="x-small"][variant]:not([variant="default"]).has-after) a {
+        padding-right: var(--action-after-slot-padding-x-small);
+      }
+
+      :host([size="x-small"][variant]:not([variant="default"]).has-before) a {
+        padding-left: var(--action-before-slot-padding-x-small);
+      }
+
+      /* Before & After Icon padding adjustments for small */
+      :host([size="small"][variant]:not([variant="default"]).has-after) a,
+      :host([size="small"][variant]:not([variant="default"]).has-before) a,
+      :host([size="small"][variant]:not([variant="default"]).has-after.has-before) a { 
+        gap: var(--space-050);
+      }
+
+      :host([size="small"][variant]:not([variant="default"]).has-after.has-before) a {
+        padding-right: var(--action-after-slot-padding-small);
+        padding-left: var(--action-before-slot-padding-small);
+      }
+
+      :host([size="small"][variant]:not([variant="default"]).has-after) a {
+        padding-right: var(--action-after-slot-padding-small);
+      }
+
+      :host([size="small"][variant]:not([variant="default"]).has-before) a {
+        padding-left: var(--action-before-slot-padding-small);
+      }
+
+      /* Before & After Icon padding adjustments for medium */
+      :host([size="medium"][variant]:not([variant="default"]).has-after.has-before) a {
+        padding-right: var(--action-after-slot-padding);
+        padding-left: var(--action-before-slot-padding);
+      }
+
+      :host([size="medium"][variant]:not([variant="default"]).has-after) a {
+        padding-right: var(--action-after-slot-padding);
+      }
+
+      :host([size="medium"][variant]:not([variant="default"]).has-before) a {
+        padding-left: var(--action-before-slot-padding);
+      }
+
+      /* Before & After Icon padding adjustments for large */
+      :host([size="large"][variant]:not([variant="default"]).has-after) a,
+      :host([size="large"][variant]:not([variant="default"]).has-before) a,
+      :host([size="large"][variant]:not([variant="default"]).has-after.has-before) a { 
+        gap: var(--space-200);
+      }
+
+      :host([size="large"][variant]:not([variant="default"]).has-after.has-before) a {
+        padding-right: var(--action-after-slot-padding-large);
+        padding-left: var(--action-before-slot-padding-large);
+      }
+
+      :host([size="large"][variant]:not([variant="default"]).has-after) a {
+        padding-right: var(--action-after-slot-padding-large);
+      }
+
+      :host([size="large"][variant]:not([variant="default"]).has-before) a {
+        padding-left: var(--action-before-slot-padding-large);
+      }
+
 
     </style>
 
@@ -398,6 +637,33 @@ class MuiLink extends HTMLElement {
       <slot name="after"></slot>
     </a>
     `;
+  }
+
+  updateIconSizes(nodes: Node[], isIconOnly: boolean): void {
+    const linkSize = this.getAttribute("size") || "medium";
+
+    // Map link sizes to icon sizes
+    const iconSizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "x-small",
+      medium: isIconOnly ? "medium" : "small",
+      large: isIconOnly ? "large" : "medium",
+    };
+
+    const targetIconSize = iconSizeMap[linkSize] || "small";
+
+    nodes.forEach((node: Node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as HTMLElement;
+        const tagName = el.tagName.toLowerCase();
+        const isIcon = tagName === "svg" || el.classList.contains("mui-icon") || tagName === "mui-icon";
+
+        // Only set size if the element doesn't already have one
+        if (isIcon && !el.hasAttribute("size")) {
+          el.setAttribute("size", targetIconSize);
+        }
+      }
+    });
   }
 
   waitForPartMap(): Promise<void> {

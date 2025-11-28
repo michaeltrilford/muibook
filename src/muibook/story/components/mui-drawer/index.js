@@ -612,10 +612,9 @@ class storyDrawer extends HTMLElement {
         description="The Push Drawer slides in from the left and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
         usage="
           This variant is intended for full-screen page views rather than smaller page sections.;
-          Apply styles to ensure the container spans the viewport correctly.;
+          Use layout components or styles to ensure the push/persistent variants span viewport correct.;
           Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
-          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
-          If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.;
+          If an alternative mobile view is required, use state or media queries to swap the drawer out.;
           See the <mui-link size='small' target='_blank' href='#/push-left'>full-screen example</mui-link>
         "
       >
@@ -662,10 +661,9 @@ class storyDrawer extends HTMLElement {
         description="The Push Drawer slides in from the right and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
         usage="
           This variant is intended for full-screen page views rather than smaller page sections.;
-          Apply styles to ensure the container spans the viewport correctly.;
+          Use layout components or styles to ensure the push/persistent variants span viewport correct.;
           Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
-          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
-          If a different mobile experience is needed, state or media queries can be used to swap the component for a layout better suited to small screens.;
+          If an alternative mobile view is required, use state or media queries to swap the drawer out.;
           See the <mui-link size='small' target='_blank' href='#/push-right'>full-screen example</mui-link>
         "
 
@@ -713,9 +711,8 @@ class storyDrawer extends HTMLElement {
         description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the right side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
         usage="
           This variant is intended for full-screen page views rather than smaller page sections.;
-          Apply styles to ensure the container spans the viewport correctly.;
+          Use layout components or styles to ensure the push/persistent variants span viewport correctly.;
           Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
-          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
           See the <mui-link size='small' target='_blank' href='#/persistent-right'>full-screen example</mui-link>
         "
       >
@@ -759,9 +756,8 @@ class storyDrawer extends HTMLElement {
         description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the left side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
         usage="
           This variant is intended for full-screen page views rather than smaller page sections.;
-          Apply styles to ensure the container spans the viewport correctly.;
+          Use layout components or styles to ensure the push/persistent variants span viewport correctly.;
           Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
-          Ensure the content container uses 'overflow-y: scroll' for this type of drawer.;
           See the <mui-link size='small' target='_blank' href='#/persistent-left'>full-screen example</mui-link>
         "
       >

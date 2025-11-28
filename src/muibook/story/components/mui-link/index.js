@@ -5,6 +5,12 @@ class storyLink extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
+      .token-item-menu::part(flex-wrap) {
+        flex-wrap: wrap;
+        column-gap: var(--space-300);
+        row-gap: var(--space-100);
+      }
+
       mui-link.custom-wc::part(color) {
         color: var(--red-600);
       }
@@ -54,7 +60,7 @@ class storyLink extends HTMLElement {
         type: "string",
         options: "x-small, small, medium, large",
         default: "medium",
-        description: "Adjust the size of the link text size to align with mui-body options.",
+        description: "Change the size of the link action",
       },
       {
         name: "variant",
@@ -145,7 +151,7 @@ class storyLink extends HTMLElement {
         </mui-responsive>
       </props-card>
 
-      <story-card title="Sizes" description="Link sizes should match the surrounding body text size when nested within a paragraph.">
+      <story-card title="Link: Sizes" id="link-sizes" description="Link sizes should match the surrounding body text size when nested within a paragraph.">
 
           <div slot="body">
             <mui-v-stack space="var(--space-500)">
@@ -199,7 +205,210 @@ class storyLink extends HTMLElement {
 
       </story-card>
 
-      <story-card title="URL">
+      <story-card
+        id="link-button-x-small"
+        title="Link Button: X-Small" 
+        description="When a link includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
+        usage="
+          Highly compact UI regions;
+          Dense application toolbars;
+          Tight data tables;
+          Compact control panels
+        "
+      >    
+
+        <mui-v-stack slot="body" alignx="stretch">
+          <mui-h-stack alignx="end" alignY="center" space="var(--space-050)">
+            <mui-link size="x-small" variant="primary">Email us</mui-link>
+            <mui-link size="x-small" variant="tertiary">Learn more</mui-link>
+          </mui-h-stack>
+          <mui-rule
+            direction="horizontal"
+            length="100%">
+          </mui-rule>
+          <mui-h-stack alignx="start" alignY="center" space="var(--space-300)">
+            <mui-link size='x-small' variant="primary">
+              Learn more
+              <mui-icon-info slot="before"></mui-icon-info>
+            </mui-link>
+            <mui-link size='x-small' variant="primary">
+              Learn more
+              <mui-icon-info slot="after"></mui-icon-info>
+            </mui-link>
+            <mui-link size='x-small' variant="primary">
+              <mui-icon-info></mui-icon-info>
+            </mui-link>
+          </mui-h-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-link size="x-small"&gt;...&lt;/mui-link&gt;<br /><br />
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="link-button-small"
+        title="Link Button: Small" 
+        description="When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
+        usage=" 
+          Toolbar actions with mixed icon/text;
+          Discrete filters and utility actions;
+          Secondary or supporting navigation
+        "
+      >  
+        <mui-v-stack slot="body">
+
+          <mui-h-stack alignx="space-between" aligny="center" style="border-radius: var(--radius-200); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
+            <mui-h-stack space="var(--space-300)">
+            <mui-input label="Search" hide-label placeholder="Search by name, email, or ID..." style="min-width: 25rem; max-width: 25rem;"></mui-input>
+            <mui-select label="Status" hide-label
+              style="min-width: 12rem;"
+                options='[
+                {"value": "default", "label": "Pending"},
+                {"value": "active", "label": "Active"}
+              ]'>
+            </mui-select>
+            </mui-h-stack>
+            <mui-h-stack space="var(--space-500)" aligny="center">
+              <mui-link size="small" variant="tertiary">Need Help?</mui-link>
+            </mui-h-stack>
+          </mui-h-stack>
+            
+          <mui-rule
+            direction="horizontal"
+            length="100%">
+          </mui-rule>
+
+          <mui-v-stack space="var(--space-050)">
+            <mui-body size="medium" weight="bold">Default Icon Size</mui-body>
+            <mui-body size="small" style="max-width: 64ch;">When an icon is slotted into an action, it automatically inherits the action's default icon size (size="x-small"). If you need a different look or emphasis, you can override the size as required.</mui-body>
+          </mui-v-stack>
+
+          <mui-h-stack alignx="start" alignY="center" space="var(--space-300)">
+            <mui-link size='small' variant="primary">
+              Learn more
+              <mui-icon-info slot="before"></mui-icon-info>
+            </mui-link>
+            <mui-link size='small' variant="primary">
+              Learn more
+              <mui-icon-info slot="after"></mui-icon-info>
+            </mui-link>
+            <mui-link size='small' variant="primary">
+              <mui-icon-info></mui-icon-info>
+            </mui-link>
+          </mui-h-stack>
+
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-link size="small"&gt;...&lt;/mui-link&gt;<br /><br />
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="link-button-medium"
+        title="Link Button: Medium (Default)" 
+        description="When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
+        usage=" 
+          Standard text-level actions;
+          Card actions (primary/secondary);
+          Modal and dialog interactions;
+          Navigation elements within body text;
+          Places where links appear in default reading flow;
+          Form inputs (e.g., hero search bars)
+        "
+      >
+        <mui-v-stack slot="body">
+          <mui-v-stack space="var(--space-050)">
+            <mui-body size="medium" weight="bold">Default Icon Size</mui-body>
+            <mui-body size="small" style="max-width: 64ch;">When an icon is slotted into an action, it automatically inherits the action's default icon size (size="small"). If you need a different look or emphasis, you can override the size as required.</mui-body>
+          </mui-v-stack>
+          <mui-v-stack alignx="start" alignY="center" space="var(--space-300)">
+            <mui-link variant="primary">
+              Learn more
+              <mui-icon-info slot="before"></mui-icon-info>
+            </mui-link>
+            <mui-link variant="primary">
+              Learn more
+              <mui-icon-info slot="after"></mui-icon-info>
+            </mui-link>
+            <mui-link variant="primary">
+              <mui-icon-info size="small"></mui-icon-info>
+            </mui-link>
+          </mui-v-stack>
+
+          <mui-rule
+            direction="horizontal"
+            length="100%">
+          </mui-rule>
+
+          <mui-v-stack space="var(--space-050)">
+            <mui-body size="medium" weight="bold">Input Usage</mui-body>
+            <mui-body size="small" style="max-width: 64ch;">Only the medium-sized input supports the before and after slots. These slots are not available for small or large input variants.</mui-body>
+          </mui-v-stack>
+
+          <mui-input label="Enter amount">
+            <mui-link slot="before">
+              Action
+              <mui-icon-info slot="before"></mui-icon-info>
+            </mui-link>
+            <mui-link slot="after">
+              Action
+              <mui-icon-info slot="after"></mui-icon-info>
+            </mui-link>
+          </mui-input>
+
+        </mui-v-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-link size="medium"&gt;...&lt;/mui-link&gt;<br /><br />
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="link-button-large"
+        title="Link Button: Large" 
+        description="When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
+        usage=" 
+          Large headings (H1/H2) and hero layouts;
+          Prominent calls to action in content;
+          Empty states and marketing content;
+          Interfaces where the link must stand out more than standard body actions
+        "
+      >
+        <mui-v-stack slot="body">
+          <mui-h-stack alignx="space-between">
+            <mui-heading size='1' level='1'>Dashboard</mui-heading>
+            <mui-link size="large" variant="primary">Learn more<mui-icon-info slot="after"></mui-icon-info></mui-link>
+          </mui-h-stack>
+          <mui-rule
+            direction="horizontal"
+            length="100%">
+          </mui-rule>
+          <mui-v-stack space="var(--space-050)">
+            <mui-body size="medium" weight="bold">Default Icon Size</mui-body>
+            <mui-body size="small" style="max-width: 64ch;">When an icon is slotted into an action, it automatically inherits the action's default icon size (size="medium"). If you need a different look or emphasis, you can override the size as required.</mui-body>
+          </mui-v-stack>
+          <mui-v-stack alignx="start" alignY="center" space="var(--space-300)">
+            <mui-link size='large' variant="primary">
+              Learn more
+              <mui-icon-info slot="before"></mui-icon-info>
+            </mui-link>
+            <mui-link size='large' variant="primary">
+              Learn more
+              <mui-icon-info slot="after"></mui-icon-info>
+            </mui-link>
+            <mui-link size='large' variant="primary">
+              <mui-icon-info></mui-icon-info>
+            </mui-link>
+          </mui-v-stack>
+
+        </mui-v-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-link size="large"&gt;...&lt;/mui-link&gt;<br /><br />
+        </story-code-block>
+      </story-card>
+
+      <story-card title="URL" id="url">
         <div slot="body">
           <mui-link target="_blank" href="links.html">Unsubscribe</mui-link>
         </div>
@@ -208,7 +417,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="External link">
+      <story-card title="External link" id="external">
         <div slot="body">
           <mui-link target="_blank">Unsubscribe</mui-link>
         </div>
@@ -217,7 +426,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Primary Link">
+      <story-card title="Primary Link" id="primary-link">
         <div slot="body">
           <mui-link target="_blank" variant="primary">Fork Github</mui-link>
         </div>
@@ -226,7 +435,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Secondary Link">
+      <story-card title="Secondary Link" id="secondary-link">
         <div slot="body">
           <mui-link target="_blank" variant="secondary">View report</mui-link>
         </div>
@@ -235,7 +444,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Tertiary Link">
+      <story-card title="Tertiary Link" id="tertiary-link">
         <div slot="body">
           <mui-link target="_blank" variant="tertiary">View report</mui-link>
         </div>
@@ -244,7 +453,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Attention Link">
+      <story-card title="Attention Link" id="attention-link">
         <div slot="body">
           <mui-link target="_blank" variant="attention">Fork Github</mui-link>
         </div>
@@ -254,7 +463,8 @@ class storyLink extends HTMLElement {
       </story-card>
 
       <story-card 
-        title="Icon: Link (Before & After)"
+        title="Link (Before & After)"
+        id="link"
         usage='
           Use small size icon when it is paired with text or the icon-only action is used in a button group;
           Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
@@ -309,7 +519,8 @@ class storyLink extends HTMLElement {
       </story-card>
 
       <story-card 
-        title="Icon: Button (Before & After)"
+        title="Link Button (Before & After)"
+        id="link-button"
         usage='
           Use small size icon when it is paired with text or the icon-only action is used in a button group;
           Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
@@ -355,6 +566,7 @@ class storyLink extends HTMLElement {
 
       <story-card 
         title="Primary: Icon-Only"
+        id="primary-icon-only"
         usage='
           Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
           Use small size icon when it is paired with text or the icon-only action is used in a button group.
@@ -392,6 +604,7 @@ class storyLink extends HTMLElement {
 
       <story-card 
         title="Secondary: Icon-Only"
+        id="secondary-icon-only"
         usage='
           Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
           Use small size icon when it is paired with text or the icon-only action is used in a button group.
@@ -429,6 +642,7 @@ class storyLink extends HTMLElement {
 
       <story-card 
         title="Tertiary: Icon-Only"
+        id="tertiary-icon-only"
         usage='
           Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
           Use small size icon when it is paired with text or the icon-only action is used in a button group.
@@ -466,6 +680,7 @@ class storyLink extends HTMLElement {
 
       <story-card 
         title="Attention: Icon-Only"
+        id="attention-icon-only"
         usage='
           Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
           Use small size icon when it is paired with text or the icon-only action is used in a button group.
@@ -501,7 +716,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Part Selectors" description="Ideal for building custom web-component compositions using MUI and scoped CSS styles.">
+      <story-card title="Part Selectors" id="part" description="Ideal for building custom web-component compositions using MUI and scoped CSS styles.">
         <div slot="body">
           <mui-link class="custom-wc" target="_blank" href="links.html">Unsubscribe</mui-link>
         </div>
@@ -580,9 +795,51 @@ class storyLink extends HTMLElement {
         guides="https://guides.muibook.com/link"
         storybook="https://stories.muibook.com/?path=/docs/actions-link--docs"
       >
+
+        <mui-message heading="Quicklinks" slot="message">
+          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
+            <mui-link size="small" data-scroll-link="link-sizes">Link: Sizes</mui-link>  
+            <mui-link size="small" data-scroll-link="link-button-x-small">Link Button: X-Small</mui-link>
+            <mui-link size="small" data-scroll-link="link-button-small">Link Button: Small</mui-link>
+            <mui-link size="small" data-scroll-link="link-button-medium">Link Button: Medium</mui-link>
+            <mui-link size="small" data-scroll-link="link-button-large">Link Button: Large</mui-link>
+            <mui-link size="small" data-scroll-link="url">URL</mui-link>
+            <mui-link size="small" data-scroll-link="external">External Link</mui-link>
+            <mui-link size="small" data-scroll-link="primary">Primary Link</mui-link>
+            <mui-link size="small" data-scroll-link="tertiary">Tertiary Link</mui-link>
+            <mui-link size="small" data-scroll-link="attention">Attention Link</mui-link>
+            <mui-link size="small" data-scroll-link="disabled">Disabled Link</mui-link>
+            <mui-link size="small" data-scroll-link="link">Link (Before & After)</mui-link>
+            <mui-link size="small" data-scroll-link="link-button">Link Button (Before & After)</mui-link>
+            <mui-link size="small" data-scroll-link="primary-icon-only">Primary: Icon-Only</mui-link>
+            <mui-link size="small" data-scroll-link="secondary-icon-only">Secondary: Icon-Only</mui-link>
+            <mui-link size="small" data-scroll-link="tertiary-icon-only">Tertiary: Icon-Only</mui-link>
+            <mui-link size="small" data-scroll-link="attention-icon-only">Attention: Icon-Only</mui-link>
+            <mui-link size="small" data-scroll-link="part">Part Selectors</mui-link>            
+          </mui-h-stack>
+        </mui-message>
+
         ${stories}
       </story-template>
     `;
+
+    // Spec Card - Minimal scroll-to handler
+    // The common href with hash could not be used because of the hash navigation
+    // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
+    shadowRoot.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-scroll-link]");
+      if (!trigger) return;
+
+      event.preventDefault();
+
+      const targetId = trigger.getAttribute("data-scroll-link");
+      if (!targetId) return;
+
+      const targetEl = shadowRoot.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+      }
+    });
   }
 }
 

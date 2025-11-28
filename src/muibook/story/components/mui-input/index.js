@@ -357,6 +357,30 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="After: Link" 
+        usageLink="https://guides.muibook.com/input"
+      >
+        <div slot="body">
+          <mui-input type="email" label="Email" value="mui-web-components@proton.me">
+            <mui-link href="/#/input" slot="after">Help</mui-link>
+          </mui-input>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input 
+          <br />
+          &nbsp;&nbsp;type="email" 
+          <br />
+          &nbsp;&nbsp;label="Email" 
+          <br />
+          &nbsp;&nbsp;value="mui-web-components@proton.me"
+          <br />
+          &gt;
+          <br>
+          &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br>
+          &lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card title="Type: Text" description="The default input type for plain text."
         usageLink="https://guides.muibook.com/input"
       >

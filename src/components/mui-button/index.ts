@@ -3,7 +3,7 @@ import { getPartMap } from "../../utils/part-map";
 /* Mui Button */
 class MuiButton extends HTMLElement {
   static get observedAttributes() {
-    return ["onclick", "type", "aria-label", "disabled", "variant"];
+    return ["onclick", "type", "aria-label", "disabled", "variant", "size", "usage"];
   }
 
   constructor() {
@@ -12,6 +12,8 @@ class MuiButton extends HTMLElement {
   }
 
   async connectedCallback() {
+    if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
+
     await this.waitForPartMap();
 
     if (!this.shadowRoot) return;
@@ -49,7 +51,8 @@ class MuiButton extends HTMLElement {
       text-align: inherit;
     }
 
-    // Turned back on for focus-visible
+    /* Turned back on for focus-visible
+    ========================================= */
     button:focus-visible, button:active, button:hover { outline: var(--space-000); }
 
     button:hover {
@@ -81,7 +84,6 @@ class MuiButton extends HTMLElement {
     :host button:hover ::slotted(.mui-icon) { fill: var(--action-primary-text-color-hover); }
     :host button:focus-visible ::slotted(.mui-icon) { fill: var(--action-primary-text-color-focus); }
     :host button:disabled ::slotted(.mui-icon) { fill: var(--action-primary-text-color-disabled); }
-
 
     /* Primary 
     ========================================= */
@@ -219,8 +221,8 @@ class MuiButton extends HTMLElement {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 44px;
-      width: 44px;
+      height: var(--action-icon-only-size);
+      width: var(--action-icon-only-size);
       padding: var(--action-icon-only-padding);
     }
     /* ===================================== */
@@ -230,140 +232,275 @@ class MuiButton extends HTMLElement {
     /* STYLE ADJUSTMENTS WHEN BUTTON IS SLOTTED WITHIN INPUT                      */
     /* Related styles unique to this usage is found in the mui-input/index.js     */
     /* ========================================================================== */
+    :host([slot="before"][usage="input"]) button,
+    :host([slot="after"][usage="input"]) button {
+      border: var(--border-thin);
+      min-height: 4.4rem;
+      background: var(--input-background);
+      color: var(--action-secondary-text-color);
+      border-color: var(--form-default-border-color);
+    }
+
+    :host([slot="before"][usage="input"]) button:hover,
+    :host([slot="before"][usage="input"]) button:focus-visible,
+    :host([slot="after"][usage="input"]) button:hover,
+    :host([slot="after"][usage="input"]) button:focus-visible {
+      background: var(--input-background);
+      color: var(--action-secondary-text-color-hover);
+      border-color: var(--form-default-border-color-hover);
+      border-width: var(--stroke-size-100);
+    }
+
+    :host([slot="after"][usage="input"]) button ::slotted(.mui-icon),
+    :host([slot="before"][usage="input"]) button ::slotted(.mui-icon) { 
+      fill: var(--action-secondary-text-color); 
+    }
+    
+    :host([slot="after"][usage="input"]) button:hover ::slotted(.mui-icon),
+    :host([slot="before"][usage="input"]) button:hover ::slotted(.mui-icon) { 
+      fill: var(--action-secondary-text-color-hover); 
+    }
+
+    :host([slot="after"][usage="input"]) button:focus-visible ::slotted(.mui-icon),
+    :host([slot="before"][usage="input"]) button:focus-visible ::slotted(.mui-icon) { 
+      fill: var(--action-secondary-text-color-focus); 
+    }
+
+    :host([slot="after"][usage="input"]) button:disabled ::slotted(.mui-icon),
+    :host([slot="before"][usage="input"]) button:disabled ::slotted(.mui-icon) { 
+      fill: var(--action-secondary-text-color-disabled); 
+    }
+
 
     /* ========================================================================== */
     /* BEFORE: When a BUTTON has slot="before" applied to host for INPUT usage    */
     /* ========================================================================== */
+    :host([slot="before"][usage="input"]) button {
+      border-right: none;
+      border-top-right-radius: var(--radius-000);
+      border-bottom-right-radius: var(--radius-000);
+    }
 
-        :host([slot="before"]) button {
-          border: var(--border-thin);
-          min-height: 4.4rem;
-          background: var(--action-secondary-background);
-          color: var(--action-secondary-text-color);
-          border-color: var(--form-default-border-color);
-          border-right: none;
-          border-top-right-radius: var(--radius-000);
-          border-bottom-right-radius: var(--radius-000);
-        }
-
-        :host([slot="before"]) button:hover {
-          background: var(--action-secondary-background-hover);
-          color: var(--action-secondary-text-color-hover);
-          border-color: var(--form-default-border-color-hover);
-        }
+    :host([slot="before"][usage="input"]) button:hover,
+    :host([slot="before"][usage="input"]) button:focus-visible {
+      border-right: none;
+      box-shadow: var(--stroke-size-100) 0 0 0 var(--form-default-border-color-hover);
+    }
 
     /* ========================================================================== */
     /* AFTER: When a BUTTON has slot="after" applied to host for INPUT usage      */
     /* ========================================================================== */
+    :host([slot="after"][usage="input"]) button {
+      border-left: none;
+      border-top-left-radius: var(--radius-000);
+      border-bottom-left-radius: var(--radius-000);
+    }
 
-        :host([slot="after"]) button {
-          border: var(--border-thin);
-          min-height: 4.4rem;
-          background: var(--action-secondary-background);
-          color: var(--action-secondary-text-color);
-          border-color: var(--form-default-border-color);
-          border-left: none;
-          border-top-left-radius: var(--radius-000);
-          border-bottom-left-radius: var(--radius-000);
-        }
-
-        :host([slot="after"]) button:hover,
-        :host([slot="after"]) button:focus-visible {
-          background: var(--action-secondary-background-hover);
-          color: var(--action-secondary-text-color-hover);
-          border-color: var(--form-default-border-color-hover);
-        }
+    :host([slot="after"][usage="input"]) button:hover,
+    :host([slot="after"][usage="input"]) button:focus-visible {
+      border-left: none;
+      box-shadow: calc(-1 * var(--stroke-size-100)) 0 0 0 var(--form-default-border-color-hover);
+    }
 
     /* ========================================================================== */
 
 
-      :host(.alert-positive-slot) {
-        --alert-text: var(--feedback-positive-text);
-        --alert-icon: var(--feedback-positive-icon);
-        --alert-bg-hover: var(--feedback-positive-action-background);
-      }
+    :host(.alert-positive-slot) {
+      --alert-text: var(--feedback-positive-text);
+      --alert-icon: var(--feedback-positive-icon);
+      --alert-bg-hover: var(--feedback-positive-action-background);
+    }
 
-      :host(.alert-info-slot) {
-        --alert-text: var(--feedback-info-text);
-        --alert-icon: var(--feedback-info-icon);
-        --alert-bg-hover: var(--feedback-info-action-background);
-      }
+    :host(.alert-info-slot) {
+      --alert-text: var(--feedback-info-text);
+      --alert-icon: var(--feedback-info-icon);
+      --alert-bg-hover: var(--feedback-info-action-background);
+    }
 
-      :host(.alert-warning-slot) {
-        --alert-text: var(--feedback-warning-text);
-        --alert-icon: var(--feedback-warning-icon);
-        --alert-bg-hover: var(--feedback-warning-action-background);
-      }
+    :host(.alert-warning-slot) {
+      --alert-text: var(--feedback-warning-text);
+      --alert-icon: var(--feedback-warning-icon);
+      --alert-bg-hover: var(--feedback-warning-action-background);
+    }
 
-      :host(.alert-attention-slot) {
-        --alert-text: var(--feedback-attention-text);
-        --alert-icon: var(--feedback-attention-icon);
-        --alert-bg-hover: var(--feedback-attention-action-background);
-      }
+    :host(.alert-attention-slot) {
+      --alert-text: var(--feedback-attention-text);
+      --alert-icon: var(--feedback-attention-icon);
+      --alert-bg-hover: var(--feedback-attention-action-background);
+    }
 
-      :host(.alert-slot) button {
-        font-weight: var(--font-weight-semi-bold);
-        color: var(--alert-text);
-      }
+    :host(.alert-slot) button {
+      font-weight: var(--font-weight-semi-bold);
+      color: var(--alert-text);
+    }
 
-      :host(.alert-slot) button:hover,
-      :host(.alert-slot) button:focus-visible {
-        background: var(--alert-bg-hover);
-        color: var(--alert-text);
-      }
+    :host(.alert-slot) button:hover,
+    :host(.alert-slot) button:focus-visible {
+      background: var(--alert-bg-hover);
+      color: var(--alert-text);
+    }
 
-      :host(.alert-slot) ::slotted(.mui-icon),
-      :host(.alert-slot):hover ::slotted(.mui-icon),
-      :host(.alert-slot):focus-visible ::slotted(.mui-icon) {
-        fill: var(--alert-icon);
-      }
+    :host(.alert-slot) ::slotted(.mui-icon),
+    :host(.alert-slot):hover ::slotted(.mui-icon),
+    :host(.alert-slot):focus-visible ::slotted(.mui-icon) {
+      fill: var(--alert-icon);
+    }
 
-      /* Dropdown Slot */
-      :host(.dropdown-slot) button {
-        border-radius: var(--radius-000);
-      }
+    /* Dropdown Slot */
+    :host(.dropdown-slot) button {
+      border-radius: var(--radius-000);
+    }
 
-      :host(.dropdown-slot) button:hover,
-      :host(.dropdown-slot) button:focus {
-        background: var(--dropdown-button-background-hover);
-      }
+    :host(.dropdown-slot) button:hover,
+    :host(.dropdown-slot) button:focus {
+      background: var(--dropdown-button-background-hover);
+    }
 
-      :host(.dropdown-slot-first) button {
-        border-top-left-radius: calc(var(--radius-100) / 2);
-        border-top-right-radius: calc(var(--radius-100) / 2);
-      }
+    :host(.dropdown-slot-first) button {
+      border-top-left-radius: calc(var(--radius-100) / 2);
+      border-top-right-radius: calc(var(--radius-100) / 2);
+    }
 
-      :host(.dropdown-slot-last) button  {
-        border-bottom-left-radius: calc(var(--radius-100) / 2);
-        border-bottom-right-radius: calc(var(--radius-100) / 2);
-      }
+    :host(.dropdown-slot-last) button  {
+      border-bottom-left-radius: calc(var(--radius-100) / 2);
+      border-bottom-right-radius: calc(var(--radius-100) / 2);
+    }
 
 
-      /* Before & After Icon
+    /* Before & After Icon
+    ========================================= */
+    :host(.has-after) button,
+    :host(.has-before) button,
+    :host(.has-after.has-before) button { 
+      display: grid; 
+      align-items: center; 
+      gap: var(--space-100);
+    }
+    
+    :host(.has-after.has-before) button {
+      grid-template-columns: auto 1fr auto;
+      padding-right: var(--action-after-slot-padding);
+      padding-left: var(--action-before-slot-padding);
+    }
+
+    :host(.has-after) button {
+      grid-template-columns: 1fr auto;
+      padding-right: var(--action-after-slot-padding);
+    }
+
+    :host(.has-before) button {
+      grid-template-columns: auto 1fr;
+      padding-left: var(--action-before-slot-padding);
+    }
+
+
+    /* Size Variants
+    ========================================= */
+    :host([size="x-small"]) button,
+    :host([size="x-small"]) button:hover,
+    :host([size="x-small"]) button:focus {
+      font-size: var(--text-font-size-xs);
+      line-height: var(--text-line-height-xs);
+      font-weight: var(--font-weight-semi-bold);
+      padding: var(--action-padding-x-small);
+      border-width: var(--stroke-size-100);
+    }
+
+    :host([size="small"]) button {
+      font-size: var(--text-font-size-s);
+      line-height: var(--text-line-height-s);
+      padding: var(--action-padding-small);
+    }
+
+    :host([size="medium"]) button {
+      font-size: var(--text-font-size-m);
+      line-height: var(--text-line-height-m);
+    }
+
+    :host([size="large"]) button {
+      font-size: var(--text-font-size-l);
+      line-height: var(--text-line-height-l);
+      padding: var(--action-padding-large);
+    }
+
+    :host([size="x-small"][icon-only]) button {
+      height: var(--action-icon-only-size-x-small);
+      width: var(--action-icon-only-size-x-small);
+      padding: var(--action-icon-only-padding);
+    }
+
+    :host([size="small"][icon-only]) button {
+      height: var(--action-icon-only-size-small);
+      width: var(--action-icon-only-size-small);
+      padding: var(--action-icon-only-padding);
+    }
+
+    :host([size="large"][icon-only]) button {
+      height: var(--action-icon-only-size-large);
+      width: var(--action-icon-only-size-large);
+      padding: var(--action-icon-only-padding);
+    }
+
+
+    /* Before & After Icon
       ========================================= */
-      :host(.has-after) button,
-      :host(.has-before) button,
-      :host(.has-after.has-before) button { 
-        display: grid; 
-        align-items: center; 
-        gap: var(--space-100);
-      }
-      
-      :host(.has-after.has-before) button {
-        grid-template-columns: auto 1fr auto;
-        padding-right: var(--action-after-slot-padding);
-        padding-left: var(--action-before-slot-padding);
-      }
+    :host([size="x-small"].has-after) button,
+    :host([size="x-small"].has-before) button,
+    :host([size="x-small"].has-after.has-before) button { 
+      gap: var(--space-025);
+    }
+    
+    :host([size="x-small"].has-after.has-before) button {
+      padding-right: var(--action-after-slot-padding-x-small);
+      padding-left: var(--action-before-slot-padding-x-small);
+    }
 
-      :host(.has-after) button {
-        grid-template-columns: 1fr auto;
-        padding-right: var(--action-after-slot-padding);
-      }
+    :host([size="x-small"].has-after) button {
+      padding-right: var(--action-after-slot-padding-x-small);
+    }
 
-      :host(.has-before) button {
-        grid-template-columns: auto 1fr;
-        padding-left: var(--action-before-slot-padding);
-      }
+    :host([size="x-small"].has-before) button {
+      padding-left: var(--action-before-slot-padding-x-small);
+    }
+
+    :host([size="small"].has-after) button,
+    :host([size="small"].has-before) button,
+    :host([size="small"].has-after.has-before) button { 
+      gap: var(--space-050);
+    }
+    
+    :host([size="small"].has-after.has-before) button {
+      padding-right: var(--action-after-slot-padding-small);
+      padding-left: var(--action-before-slot-padding-small);
+    }
+
+    :host([size="small"].has-after) button {
+      padding-right: var(--action-after-slot-padding-small);
+    }
+
+    :host([size="small"].has-before) button {
+      padding-left: var(--action-before-slot-padding-small);
+    }
+
+    :host([size="large"].has-after) button,
+    :host([size="large"].has-before) button,
+    :host([size="large"].has-after.has-before) button { 
+      gap: var(--space-200);
+    }
+    
+    :host([size="large"].has-after.has-before) button {
+      padding-right: var(--action-after-slot-padding-large);
+      padding-left: var(--action-before-slot-padding-large);
+    }
+
+    :host([size="large"].has-after) button {
+      padding-right: var(--action-after-slot-padding-large);
+    }
+
+    :host([size="large"].has-before) button {
+      padding-left: var(--action-before-slot-padding-large);
+    }
+
 
     </style>
 
@@ -419,10 +556,75 @@ class MuiButton extends HTMLElement {
         return node.nodeType === Node.TEXT_NODE && !node.textContent?.trim();
       });
 
+      // NEW: Handle icon-only vs regular buttons
       if (iconOnly) {
         this.setAttribute("icon-only", "");
+        // Set icon size based on button size for icon-only buttons
+        this.updateIconSizes(assignedNodes, true);
       } else {
         this.removeAttribute("icon-only");
+        // Set icon size for icons in regular buttons
+        const allSlots = [slotBefore, slotDefault, slotAfter];
+        allSlots.forEach((slot) => {
+          if (slot) {
+            const nodes = slot.assignedNodes({ flatten: true });
+            this.updateIconSizes(nodes, false);
+          }
+        });
+      }
+    });
+  }
+
+  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+    if (name === "size" && oldValue !== newValue && this.shadowRoot) {
+      // Re-run icon size update when button size changes
+      requestAnimationFrame(() => {
+        const shadow = this.shadowRoot;
+        if (!shadow) return;
+
+        const slots = [
+          shadow.querySelector("slot:not([name])"),
+          shadow.querySelector('slot[name="before"]'),
+          shadow.querySelector('slot[name="after"]'),
+        ] as (HTMLSlotElement | null)[];
+
+        const isIconOnly = this.hasAttribute("icon-only");
+
+        slots.forEach((slot) => {
+          if (slot) {
+            const nodes = slot.assignedNodes({ flatten: true });
+            this.updateIconSizes(nodes, isIconOnly);
+          }
+        });
+      });
+    }
+  }
+
+  updateIconSizes(nodes: Node[], isIconOnly: boolean): void {
+    const buttonSize = this.getAttribute("size") || "medium";
+
+    // Map button sizes to icon sizes
+    const iconSizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "x-small",
+      medium: isIconOnly ? "medium" : "small", // small for regular, medium for icon-only
+      large: isIconOnly ? "large" : "medium",
+    };
+
+    const targetIconSize = iconSizeMap[buttonSize] || "small";
+
+    nodes.forEach((node: Node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as HTMLElement;
+        const isIcon =
+          el.tagName.toLowerCase() === "svg" ||
+          el.classList.contains("mui-icon") ||
+          el.tagName.toLowerCase() === "mui-icon";
+
+        // Only set size if the element doesn't already have one
+        if (isIcon && !el.hasAttribute("size")) {
+          el.setAttribute("size", targetIconSize);
+        }
       }
     });
   }

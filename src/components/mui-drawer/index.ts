@@ -79,7 +79,7 @@ class MuiDrawer extends HTMLElement {
   private render() {
     if (!this.shadowRoot) return;
 
-    const width = this.getAttribute("width") || "400px";
+    const width = this.getAttribute("width") || "320px";
     const variant = this.getAttribute("variant") || "overlay";
 
     // Determine side: attribute takes priority, otherwise fallback to slot logic
@@ -246,6 +246,11 @@ class MuiDrawer extends HTMLElement {
         will-change: transform;
       }
 
+      :host([variant="push"]),
+      :host([variant="persistent"]) {
+        display: block;
+        width: 100%;
+      }
 
       /* Push */
       :host([variant="push"]) .shell {
@@ -269,6 +274,15 @@ class MuiDrawer extends HTMLElement {
       /* Hidden & Persistent */
       :host([open]) .outer,
       :host([variant="persistent"]) .outer  { ${outerBorder} }
+
+
+      /* Direct slotted element */
+      ::slotted([slot="page"]) {
+        height: 100dvh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
     `;
 
     const breakpoint = this.getBreakpoint();
@@ -457,7 +471,7 @@ class MuiDrawer extends HTMLElement {
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
     if (name === "open") this.syncOpenState();
     if (name === "width" && this.innerEl) {
-      this.innerEl.style.width = value || "400px";
+      this.innerEl.style.width = value || "320px";
     }
     if (name === "side") {
       this.render();
@@ -511,7 +525,7 @@ class MuiDrawer extends HTMLElement {
   };
 
   private updateLayout(variant: string, isOpen: boolean) {
-    const drawerWidth = this.getAttribute("width") || "300px";
+    const drawerWidth = this.getAttribute("width") || "320px";
     const side = this.getAttribute("side") || this._computedSide;
     const layout = variant === "push" ? this.pushLayout : variant === "persistent" ? this.persistentLayout : null;
     if (!layout) return;

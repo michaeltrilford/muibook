@@ -65,6 +65,38 @@ class MuiInput extends HTMLElement {
     });
   }
 
+  updateSlottedButtons(): void {
+    requestAnimationFrame(() => {
+      const beforeSlot = this.shadowRoot?.querySelector('slot[name="before"]') as HTMLSlotElement | null;
+      const afterSlot = this.shadowRoot?.querySelector('slot[name="after"]') as HTMLSlotElement | null;
+
+      const updateButtonsInSlot = (slot: HTMLSlotElement | null) => {
+        if (!slot) return;
+
+        const assignedNodes = slot.assignedNodes({ flatten: true });
+        assignedNodes.forEach((node: Node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            const el = node as HTMLElement;
+            const tagName = el.tagName.toLowerCase();
+            if (tagName === "mui-button" || tagName === "mui-link") {
+              // Set usage attribute to 'input'
+              el.setAttribute("usage", "input");
+              // Enforce size to 'medium'
+              el.setAttribute("size", "medium");
+              // Remove variant attribute completely
+              el.removeAttribute("variant");
+              // Remove weight attribute completely
+              el.removeAttribute("weight");
+            }
+          }
+        });
+      };
+
+      updateButtonsInSlot(beforeSlot);
+      updateButtonsInSlot(afterSlot);
+    });
+  }
+
   render() {
     const allowedTypes = ["text", "password", "email", "number", "search", "tel", "url", "date", "time"];
 
@@ -213,16 +245,24 @@ class MuiInput extends HTMLElement {
         /* is focusable will be addressed.                                            */
         /* ========================================================================== */
 
-           slot[name="before"]::slotted(*:focus),
-           input:focus,
-           slot[name="after"]::slotted(*:focus) { z-index: 1; }
+        slot[name="before"]::slotted(*:focus),
+        input:focus,
+        slot[name="after"]::slotted(*:focus),
+        slot[name="before"]::slotted(*:hover),
+        input:hover,
+        slot[name="after"]::slotted(*:hover) { z-index: 1; }
 
-          /* Ensure feedback styles appear above SELECT and focusable Items */
-           input.success,
-           input.warning,
-           input.error {
-             z-index: 1;
-           }
+      /* Ensure feedback styles appear above SELECT and focusable Items */
+        input.success,
+        input.warning,
+        input.error {
+          z-index: 1;
+        }
+
+
+        /* Slotted items */
+        slot[name="before"]::slotted(*),
+        slot[name="after"]::slotted(*) { flex: none; }
 
         /* ========================================================================== */
         
@@ -247,6 +287,8 @@ class MuiInput extends HTMLElement {
 
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = html;
+
+      this.updateSlottedButtons();
     }
   }
 }

@@ -415,7 +415,7 @@ class storyAccordion extends HTMLElement {
             <br />
             &nbsp;&nbsp;&lt;/mui-accordion-block&gt;
             <br />
-            &lt;mui-accordion-group&gt;
+            &lt;/mui-accordion-group&gt;
           </story-code-block>
         </story-card>
 
@@ -460,7 +460,7 @@ class storyAccordion extends HTMLElement {
             <br />
             &nbsp;&nbsp;&lt;/mui-accordion-block&gt;
             <br />
-            &lt;mui-accordion-group&gt;
+            &lt;/mui-accordion-group&gt;
           </story-code-block>
         </story-card>
 

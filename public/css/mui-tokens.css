@@ -384,7 +384,7 @@ html[data-theme="light"] {
   --slat-accessory-background: var(--black-opacity-10);
 
   /* Chip */
-  --chip-background: var(--white);
+  --chip-background: var(--input-background);
   --chip-background-hover: var(--white);
   --chip-background-focus: var(--white);
   --chip-background-active: var(--white);
@@ -604,10 +604,10 @@ html[data-theme="dark"] {
   --slat-accessory-background: var(--white-opacity-10);
 
   /* Chip */
-  --chip-background: var(--black);
-  --chip-background-hover: var(--black);
-  --chip-background-focus: var(--black);
-  --chip-background-active: var(--black);
+  --chip-background: var(--input-background);
+  --chip-background-hover: var(--grey-800);
+  --chip-background-focus: var(--grey-800);
+  --chip-background-active: var(--grey-800);
   --chip-border-color: var(--grey-700);
   --chip-border-color-hover: var(--grey-700);
   --chip-border-color-focus: var(--grey-700);
@@ -674,14 +674,36 @@ html[data-theme="dark"] {
   --action-attention-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color-focus);
   --action-attention-border-disabled: var(--stroke-size-200) var(--stroke-solid)
     var(--action-attention-border-color-disabled);
-  --action-padding: var(--space-200) calc(var(--space-300) + var(--space-100));
-  --action-before-slot-padding: var(--space-300);
-  --action-after-slot-padding: var(--space-300);
-  --action-icon-only-padding: var(--space-000);
   --action-radius: var(--radius-100);
   --action-font-size: var(--text-font-size);
   --action-line-height: var(--text-line-height);
   --action-font-weight: var(--font-weight-medium);
+
+  /* SIZE: XSMALL */
+  --action-padding-x-small: var(--space-050) var(--space-200);
+  --action-before-slot-padding-x-small: var(--space-100);
+  --action-after-slot-padding-x-small: var(--space-100);
+  --action-icon-only-size-x-small: 2.8rem;
+
+  /* SIZE: SMALL */
+  --action-padding-small: calc(var(--space-100) - (var(--stroke-size-100) / 2)) var(--space-300);
+  --action-before-slot-padding-small: var(--space-200);
+  --action-after-slot-padding-small: var(--space-200);
+  --action-icon-only-size-small: 3.6rem;
+
+  /* SIZE: MEDIUM: DEFAULT */
+  --action-padding: var(--space-200) calc(var(--space-300) + var(--space-100));
+  --action-before-slot-padding: var(--space-300);
+  --action-after-slot-padding: var(--space-300);
+  --action-icon-only-padding: var(--space-000);
+  --action-icon-only-size: 4.4rem;
+
+  /* SIZE: LARGE */
+  --action-padding-large: var(--space-300) var(--space-500);
+  --action-before-slot-padding-large: var(--space-400);
+  --action-after-slot-padding-large: var(--space-400);
+  --action-icon-only-size-large: 5.2rem;
+
   /* Text */
   --text-line-height-xs: var(--line-height-25);
   --text-line-height-s: var(--line-height-50);

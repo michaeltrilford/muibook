@@ -34,9 +34,9 @@ class MuiIconEllipsis extends HTMLElement {
     // Map size to actual values
     const sizeMap: Record<"x-small" | "small" | "medium" | "large", string> = {
       "x-small": "1.6rem",
-      small: "2.4rem",
-      medium: "3.6rem",
-      large: "4.8rem",
+      small: "2.1rem",
+      medium: "2.4rem",
+      large: "2.8rem",
     };
 
     const sizeStyleMap = sizeMap[size] ?? sizeMap.small;
