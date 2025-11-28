@@ -553,8 +553,8 @@ If needed, you can override this by providing a custom size—the button will re
         title="Header: Button-Group" 
         description="Example of actions that are present at the top of a page or card use."
         usage='
-          Use small size icon when it is paired with text or the icon-only action is used in a button group;
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
       >
@@ -601,8 +601,8 @@ If needed, you can override this by providing a custom size—the button will re
       <story-card title="Icon (Before & After)"
         id="icon-before-after"
         usage='
-          Use small size icon when it is paired with text or the icon-only action is used in a button group;
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
       >
@@ -643,29 +643,19 @@ If needed, you can override this by providing a custom size—the button will re
       <story-card title="Primary: Icon-Only"
         id="primary-icon-only"
         usage='
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
-          Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
       >
         <mui-h-stack slot="body" space="var(--space-100)">
-          <mui-button variant="primary">
-            <mui-icon-add></mui-icon-add>
-          </mui-button>
-          <mui-button variant="primary">
-            <mui-icon-subtract></mui-icon-subtract>
-          </mui-button>
-          <mui-button variant="primary">
-            <mui-icon-grid></mui-icon-grid>
-          </mui-button>
-          <mui-button variant="primary">
-            <mui-icon-notification></mui-icon-notification>
-          </mui-button>
-          <mui-button variant="primary">
-            <mui-icon-menu></mui-icon-menu>
-          </mui-button>
-          <mui-button variant="primary">
-            <mui-icon-message></mui-icon-message>
+          <mui-button-group>
+            <mui-button variant="primary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-button>
+            <mui-button variant="primary"><mui-icon-add></mui-icon-add></mui-button>
+          </mui-button-group>
+          <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
+          <mui-button variant="primary" >
+            <mui-icon-menu size="medium"></mui-icon-menu>
           </mui-button>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
@@ -680,29 +670,19 @@ If needed, you can override this by providing a custom size—the button will re
       <story-card title="Secondary: Icon-Only"
         id="secondary-icon-only"
         usage='
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
-          Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
       >
         <mui-h-stack slot="body" space="var(--space-100)">
-          <mui-button variant="secondary">
-            <mui-icon-add></mui-icon-add>
-          </mui-button>
-          <mui-button variant="secondary">
-            <mui-icon-subtract></mui-icon-subtract>
-          </mui-button>
-          <mui-button variant="secondary">
-            <mui-icon-grid></mui-icon-grid>
-          </mui-button>
-          <mui-button variant="secondary">
-            <mui-icon-notification></mui-icon-notification>
-          </mui-button>
-          <mui-button variant="secondary">
-            <mui-icon-menu></mui-icon-menu>
-          </mui-button>
-          <mui-button variant="secondary">
-            <mui-icon-message></mui-icon-message>
+          <mui-button-group>
+            <mui-button variant="secondary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-button>
+            <mui-button variant="secondary"><mui-icon-add></mui-icon-add></mui-button>
+          </mui-button-group>
+          <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
+          <mui-button variant="secondary" >
+            <mui-icon-menu size="medium"></mui-icon-menu>
           </mui-button>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
@@ -718,29 +698,19 @@ If needed, you can override this by providing a custom size—the button will re
         id="tertiary-icon-only"
         title="Tertiary: Icon-Only" 
         usage='
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
-          Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
       >
         <mui-h-stack slot="body" space="var(--space-100)">
-          <mui-button variant="tertiary">
-            <mui-icon-add></mui-icon-add>
-          </mui-button>
-          <mui-button variant="tertiary">
-            <mui-icon-subtract></mui-icon-subtract>
-          </mui-button>
-          <mui-button variant="tertiary">
-            <mui-icon-grid></mui-icon-grid>
-          </mui-button>
-          <mui-button variant="tertiary">
-            <mui-icon-notification></mui-icon-notification>
-          </mui-button>
-          <mui-button variant="tertiary">
-            <mui-icon-menu></mui-icon-menu>
-          </mui-button>
-          <mui-button variant="tertiary">
-            <mui-icon-message></mui-icon-message>
+          <mui-button-group>
+            <mui-button variant="tertiary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-button>
+            <mui-button variant="tertiary"><mui-icon-add></mui-icon-add></mui-button>
+          </mui-button-group>
+          <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
+          <mui-button variant="tertiary" >
+            <mui-icon-menu size="medium"></mui-icon-menu>
           </mui-button>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
@@ -755,29 +725,19 @@ If needed, you can override this by providing a custom size—the button will re
       <story-card title="Attention: Icon-Only"
         id="attention-icon-only"
         usage='
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
-          Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
       >
         <mui-h-stack slot="body" space="var(--space-100)">
-          <mui-button variant="attention">
-            <mui-icon-add></mui-icon-add>
-          </mui-button>
-          <mui-button variant="attention">
-            <mui-icon-subtract></mui-icon-subtract>
-          </mui-button>
-          <mui-button variant="attention">
-            <mui-icon-grid></mui-icon-grid>
-          </mui-button>
-          <mui-button variant="attention">
-            <mui-icon-notification></mui-icon-notification>
-          </mui-button>
-          <mui-button variant="attention">
-            <mui-icon-menu></mui-icon-menu>
-          </mui-button>
-          <mui-button variant="attention">
-            <mui-icon-message></mui-icon-message>
+          <mui-button-group>
+            <mui-button variant="attention">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-button>
+            <mui-button variant="attention"><mui-icon-add></mui-icon-add></mui-button>
+          </mui-button-group>
+          <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
+          <mui-button variant="attention" >
+            <mui-icon-warning size="medium"></mui-icon-warning>
           </mui-button>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
@@ -789,28 +749,33 @@ If needed, you can override this by providing a custom size—the button will re
         </story-code-block>
       </story-card>
 
-      <story-card title="Icon Toggle: Default" id="icon-toggle-default">
+      <story-card title="Icon Toggle: Default" id="icon-toggle-default"
+        usage='
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu;
+          Use small (default) size icon when paired with text-based action is used in a button group.
+        '
+      >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button variant="primary">  
-            <mui-icon-toggle>
+            <mui-icon-toggle size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
           <mui-button variant="secondary">  
-            <mui-icon-toggle>
+            <mui-icon-toggle size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
           <mui-button variant="tertiary">  
-            <mui-icon-toggle>
+            <mui-icon-toggle size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
           <mui-button variant="attention">  
-            <mui-icon-toggle>
+            <mui-icon-toggle size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
@@ -835,28 +800,33 @@ If needed, you can override this by providing a custom size—the button will re
         </story-code-block>
       </story-card>
 
-      <story-card title="Icon Toggle: Rotate" id="icon-toggle-rotate">
+      <story-card title="Icon Toggle: Rotate" id="icon-toggle-rotate"
+        usage='
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu;
+          Use small (default) size icon when paired with text-based action is used in a button group.
+        '
+      >
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button variant="primary">  
-            <mui-icon-toggle rotate>
+            <mui-icon-toggle rotate size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
           <mui-button variant="secondary">  
-            <mui-icon-toggle rotate>
+            <mui-icon-toggle rotate size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
           <mui-button variant="tertiary">  
-            <mui-icon-toggle rotate>
+            <mui-icon-toggle rotate size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
           <mui-button variant="attention">  
-            <mui-icon-toggle rotate>
+            <mui-icon-toggle rotate size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>

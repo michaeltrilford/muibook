@@ -321,7 +321,7 @@ class storyLink extends HTMLElement {
             <mui-body size="medium" weight="bold">Default Icon Size</mui-body>
             <mui-body size="small" style="max-width: 64ch;">When an icon is slotted into an action, it automatically inherits the action's default icon size (size="small"). If you need a different look or emphasis, you can override the size as required.</mui-body>
           </mui-v-stack>
-          <mui-v-stack alignx="start" alignY="center" space="var(--space-300)">
+          <mui-h-stack alignx="start" alignY="center" space="var(--space-300)">
             <mui-link variant="primary">
               Learn more
               <mui-icon-info slot="before"></mui-icon-info>
@@ -333,7 +333,7 @@ class storyLink extends HTMLElement {
             <mui-link variant="primary">
               <mui-icon-info size="small"></mui-icon-info>
             </mui-link>
-          </mui-v-stack>
+          </mui-h-stack>
 
           <mui-rule
             direction="horizontal"
@@ -387,7 +387,7 @@ class storyLink extends HTMLElement {
             <mui-body size="medium" weight="bold">Default Icon Size</mui-body>
             <mui-body size="small" style="max-width: 64ch;">When an icon is slotted into an action, it automatically inherits the action's default icon size (size="medium"). If you need a different look or emphasis, you can override the size as required.</mui-body>
           </mui-v-stack>
-          <mui-v-stack alignx="start" alignY="center" space="var(--space-300)">
+          <mui-h-stack alignx="start" alignY="center" space="var(--space-300)">
             <mui-link size='large' variant="primary">
               Learn more
               <mui-icon-info slot="before"></mui-icon-info>
@@ -399,7 +399,7 @@ class storyLink extends HTMLElement {
             <mui-link size='large' variant="primary">
               <mui-icon-info></mui-icon-info>
             </mui-link>
-          </mui-v-stack>
+          </mui-h-stack>
 
         </mui-v-stack>
 
@@ -466,8 +466,7 @@ class storyLink extends HTMLElement {
         title="Link (Before & After)"
         id="link"
         usage='
-          Use small size icon when it is paired with text or the icon-only action is used in a button group;
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
+          Use x-small size icon when it is paired with text
         '
         usageLink="https://guides.muibook.com/link"        
       >
@@ -522,8 +521,8 @@ class storyLink extends HTMLElement {
         title="Link Button (Before & After)"
         id="link-button"
         usage='
-          Use small size icon when it is paired with text or the icon-only action is used in a button group;
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"
       >
@@ -533,13 +532,13 @@ class storyLink extends HTMLElement {
           <mui-link 
             variant="primary">
               Download
-              <mui-icon-down-arrow-circle slot="before" size="x-small"></mui-icon-down-arrow-circle>
+              <mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle>
           </mui-link>
 
           <mui-link 
             variant="primary">
               View more
-              <mui-icon-right-chevron slot="after" size="x-small"></mui-icon-right-chevron>
+              <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
           </mui-link>
 
         </mui-v-stack>
@@ -549,7 +548,7 @@ class storyLink extends HTMLElement {
           <br />
           &nbsp;&nbsp;Download
           <br>
-          &nbsp;&nbsp;&lt;mui-icon-down-arrow-circle slot="before" size="x-small"&gt;&lt;/mui-icon-down-arrow-circle&gt;
+          &nbsp;&nbsp;&lt;mui-icon-down-arrow-circle slot="before"&gt;&lt;/mui-icon-down-arrow-circle&gt;
           <br />
           &lt;/mui-link&gt;
           <br>
@@ -558,7 +557,7 @@ class storyLink extends HTMLElement {
           <br />
           &nbsp;&nbsp;View more
           <br>
-          &nbsp;&nbsp;&lt;mui-icon-right-chevron slot="after" size="x-small"&gt;&lt;/mui-icon-right-chevron&gt;
+          &nbsp;&nbsp;&lt;mui-icon-right-chevron slot="after"&gt;&lt;/mui-icon-right-chevron&gt;
           <br />
           &lt;/mui-link&gt;
         </story-code-block>
@@ -568,29 +567,19 @@ class storyLink extends HTMLElement {
         title="Primary: Icon-Only"
         id="primary-icon-only"
         usage='
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
-          Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"  
       >
         <mui-h-stack slot="body" space="var(--space-100)">
+          <mui-button-group>
+            <mui-link variant="primary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-link>
+            <mui-link variant="primary"><mui-icon-add></mui-icon-add></mui-link>
+          </mui-button-group>
+          <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="primary" >
-            <mui-icon-add></mui-icon-add>
-          </mui-link>
-          <mui-link variant="primary" >
-            <mui-icon-subtract></mui-icon-subtract>
-          </mui-link>
-          <mui-link variant="primary" >
-            <mui-icon-grid></mui-icon-grid>
-          </mui-link>
-          <mui-link variant="primary" >
-            <mui-icon-notification></mui-icon-notification>
-          </mui-link>
-          <mui-link variant="primary" >
-            <mui-icon-menu></mui-icon-menu>
-          </mui-link>
-          <mui-link variant="primary" >
-            <mui-icon-message></mui-icon-message>
+            <mui-icon-menu size="medium"></mui-icon-menu>
           </mui-link>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
@@ -606,29 +595,19 @@ class storyLink extends HTMLElement {
         title="Secondary: Icon-Only"
         id="secondary-icon-only"
         usage='
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
-          Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"    
       >
         <mui-h-stack slot="body" space="var(--space-100)">
+          <mui-button-group>
+            <mui-link variant="secondary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-link>
+            <mui-link variant="secondary"><mui-icon-add></mui-icon-add></mui-link>
+          </mui-button-group>
+          <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="secondary" >
-            <mui-icon-add variant="secondary" size="small"></mui-icon-add>
-          </mui-link>
-          <mui-link variant="secondary" >
-            <mui-icon-subtract></mui-icon-subtract>
-          </mui-link>
-          <mui-link variant="secondary" >
-            <mui-icon-grid></mui-icon-grid>
-          </mui-link>
-          <mui-link variant="secondary" >
-            <mui-icon-notification></mui-icon-notification>
-          </mui-link>
-          <mui-link variant="secondary" >
-            <mui-icon-menu></mui-icon-menu>
-          </mui-link>
-          <mui-link variant="secondary" >
-            <mui-icon-message></mui-icon-message>
+            <mui-icon-menu size="medium"></mui-icon-menu>
           </mui-link>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
@@ -644,29 +623,19 @@ class storyLink extends HTMLElement {
         title="Tertiary: Icon-Only"
         id="tertiary-icon-only"
         usage='
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
-          Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"    
       >
         <mui-h-stack slot="body" space="var(--space-100)">
+          <mui-button-group>
+            <mui-link variant="tertiary">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-link>
+            <mui-link variant="tertiary"><mui-icon-add></mui-icon-add></mui-link>
+          </mui-button-group>
+          <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="tertiary" >
-            <mui-icon-add></mui-icon-add>
-          </mui-link>
-          <mui-link variant="tertiary" >
-            <mui-icon-subtract></mui-icon-subtract>
-          </mui-link>
-          <mui-link variant="tertiary" >
-            <mui-icon-grid></mui-icon-grid>
-          </mui-link>
-          <mui-link variant="tertiary" >
-            <mui-icon-notification></mui-icon-notification>
-          </mui-link>
-          <mui-link variant="tertiary" >
-            <mui-icon-menu></mui-icon-menu>
-          </mui-link>
-          <mui-link variant="tertiary" >
-            <mui-icon-message></mui-icon-message>
+            <mui-icon-menu size="medium"></mui-icon-menu>
           </mui-link>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
@@ -682,29 +651,19 @@ class storyLink extends HTMLElement {
         title="Attention: Icon-Only"
         id="attention-icon-only"
         usage='
-          Use medium size icon (default) when the icon-only action appears on its own. E.g. Menu; 
-          Use small size icon when it is paired with text or the icon-only action is used in a button group.
+          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"    
       >
         <mui-h-stack slot="body" space="var(--space-100)">
+          <mui-button-group>
+            <mui-link variant="attention">Download<mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle></mui-link>
+            <mui-link variant="attention"><mui-icon-add></mui-icon-add></mui-link>
+          </mui-button-group>
+          <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="attention" >
-            <mui-icon-add></mui-icon-add>
-          </mui-link>
-          <mui-link variant="attention" >
-            <mui-icon-subtract></mui-icon-subtract>
-          </mui-link>
-          <mui-link variant="attention" >
-            <mui-icon-grid></mui-icon-grid>
-          </mui-link>
-          <mui-link variant="attention" >
-            <mui-icon-notification></mui-icon-notification>
-          </mui-link>
-          <mui-link variant="attention" >
-            <mui-icon-menu></mui-icon-menu>
-          </mui-link>
-          <mui-link variant="attention" >
-            <mui-icon-message></mui-icon-message>
+            <mui-icon-warning size="medium"></mui-icon-warning>
           </mui-link>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
