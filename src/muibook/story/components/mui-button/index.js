@@ -255,9 +255,6 @@ If needed, you can override this by providing a custom size—the button will re
                   <mui-chip dismiss>
                     Admin
                   </mui-chip>
-                  <mui-chip dismiss>
-                    2024
-                  </mui-chip>
                 </mui-h-stack>
                 <mui-button size="small" variant="tertiary">Reset Filter</mui-button>
               </mui-h-stack>
@@ -274,9 +271,6 @@ If needed, you can override this by providing a custom size—the button will re
                 <mui-h-stack space="var(--space-200)" aligny="center">
                   <mui-chip dismiss>
                     Admin
-                  </mui-chip>
-                  <mui-chip dismiss>
-                    2024
                   </mui-chip>
                 </mui-h-stack>
                 <mui-button size="small" variant="tertiary">Reset Filter</mui-button>
