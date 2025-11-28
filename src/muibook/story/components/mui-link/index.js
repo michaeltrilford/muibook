@@ -257,21 +257,45 @@ class storyLink extends HTMLElement {
       >  
         <mui-v-stack slot="body">
 
-          <mui-h-stack alignx="space-between" aligny="center" style="border-radius: var(--radius-200); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
-            <mui-h-stack space="var(--space-300)">
-            <mui-input label="Search" hide-label placeholder="Search by name, email, or ID..." style="min-width: 25rem; max-width: 25rem;"></mui-input>
-            <mui-select label="Status" hide-label
-              style="min-width: 12rem;"
-                options='[
-                {"value": "default", "label": "Pending"},
-                {"value": "active", "label": "Active"}
-              ]'>
-            </mui-select>
+<mui-responsive breakpoint="1280">
+            <mui-h-stack alignx="space-between" aligny="center" slot="showAbove" style="border-radius: var(--radius-200); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
+              <mui-h-stack space="var(--space-300)">
+              <mui-input label="Search" hide-label placeholder="Search by name, email, or ID..." style="min-width: 25rem; max-width: 25rem;"></mui-input>
+              <mui-select label="Status" hide-label
+                style="min-width: 12rem;"
+                  options='[
+                  {"value": "default", "label": "Pending"},
+                  {"value": "active", "label": "Active"}
+                ]'>
+              </mui-select>
+              </mui-h-stack>
+              <mui-h-stack space="var(--space-500)" aligny="center">
+                <mui-h-stack space="var(--space-200)" aligny="center">
+                  <mui-chip dismiss>
+                    Admin
+                  </mui-chip>
+                </mui-h-stack>
+                <mui-link size="small" variant="tertiary">Need Help?</mui-link>
+              </mui-h-stack>
             </mui-h-stack>
-            <mui-h-stack space="var(--space-500)" aligny="center">
-              <mui-link size="small" variant="tertiary">Need Help?</mui-link>
-            </mui-h-stack>
-          </mui-h-stack>
+            <mui-v-stack alignx="stretch" aligny="center" space="var(--space-300)" slot="showBelow" style="border-radius: var(--radius-100); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
+              <mui-input label="Search" hide-label placeholder="Search by name, email, or ID..."></mui-input>
+              <mui-select label="Status" hide-label
+                  options='[
+                  {"value": "default", "label": "Pending"},
+                  {"value": "active", "label": "Active"}
+                ]'>
+              </mui-select>
+              <mui-h-stack space="var(--space-500)" aligny="center" alignx="space-between">
+                <mui-h-stack space="var(--space-200)" aligny="center">
+                  <mui-chip dismiss>
+                    Admin
+                  </mui-chip>
+                </mui-h-stack>
+                <mui-link size="small" variant="tertiary">Need Help?</mui-link>
+              </mui-h-stack>
+            </mui-v-stack>
+          </mui-responsive>
             
           <mui-rule
             direction="horizontal"
