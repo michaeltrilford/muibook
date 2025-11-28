@@ -232,10 +232,6 @@ class storyLink extends HTMLElement {
               <mui-icon-info slot="before"></mui-icon-info>
             </mui-link>
             <mui-link size='x-small' variant="primary">
-              Learn more
-              <mui-icon-info slot="after"></mui-icon-info>
-            </mui-link>
-            <mui-link size='x-small' variant="primary">
               <mui-icon-info></mui-icon-info>
             </mui-link>
           </mui-h-stack>
@@ -257,7 +253,7 @@ class storyLink extends HTMLElement {
       >  
         <mui-v-stack slot="body">
 
-<mui-responsive breakpoint="1280">
+          <mui-responsive breakpoint="1280">
             <mui-h-stack alignx="space-between" aligny="center" slot="showAbove" style="border-radius: var(--radius-200); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
               <mui-h-stack space="var(--space-300)">
               <mui-input label="Search" hide-label placeholder="Search by name, email, or ID..." style="min-width: 25rem; max-width: 25rem;"></mui-input>
@@ -313,10 +309,6 @@ class storyLink extends HTMLElement {
               <mui-icon-info slot="before"></mui-icon-info>
             </mui-link>
             <mui-link size='small' variant="primary">
-              Learn more
-              <mui-icon-info slot="after"></mui-icon-info>
-            </mui-link>
-            <mui-link size='small' variant="primary">
               <mui-icon-info></mui-icon-info>
             </mui-link>
           </mui-h-stack>
@@ -349,10 +341,6 @@ class storyLink extends HTMLElement {
             <mui-link variant="primary">
               Learn more
               <mui-icon-info slot="before"></mui-icon-info>
-            </mui-link>
-            <mui-link variant="primary">
-              Learn more
-              <mui-icon-info slot="after"></mui-icon-info>
             </mui-link>
             <mui-link variant="primary">
               <mui-icon-info size="small"></mui-icon-info>
@@ -399,14 +387,6 @@ class storyLink extends HTMLElement {
         "
       >
         <mui-v-stack slot="body">
-          <mui-h-stack alignx="space-between">
-            <mui-heading size='1' level='1'>Home</mui-heading>
-            <mui-link size="large" variant="primary">Learn more<mui-icon-info slot="after"></mui-icon-info></mui-link>
-          </mui-h-stack>
-          <mui-rule
-            direction="horizontal"
-            length="100%">
-          </mui-rule>
           <mui-v-stack space="var(--space-050)">
             <mui-body size="medium" weight="bold">Default Icon Size</mui-body>
             <mui-body size="small" style="max-width: 64ch;">When an icon is slotted into an action, it automatically inherits the action's default icon size (size="medium"). If you need a different look or emphasis, you can override the size as required.</mui-body>
@@ -415,10 +395,6 @@ class storyLink extends HTMLElement {
             <mui-link size='large' variant="primary">
               Learn more
               <mui-icon-info slot="before"></mui-icon-info>
-            </mui-link>
-            <mui-link size='large' variant="primary">
-              Learn more
-              <mui-icon-info slot="after"></mui-icon-info>
             </mui-link>
             <mui-link size='large' variant="primary">
               <mui-icon-info></mui-icon-info>
