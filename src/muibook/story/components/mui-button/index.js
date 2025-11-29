@@ -209,7 +209,7 @@ If needed, you can override this by providing a custom size—the button will re
           </mui-rule>
 
           <mui-v-stack space="var(--space-050)">
-            <mui-body size="medium" weight="bold">Toggle Button</mui-body>
+            <mui-body size="medium" weight="bold">Toggle Button / Icon-Only</mui-body>
             <mui-body size="small" style="max-width: 60ch;">Authors can provide a custom icon size when needed. In the example below, the x-small toggle button uses (size="x-small") to maintain visual balance.</mui-body>
           </mui-v-stack>
           <mui-v-stack alignx="start" alignY="center" space="var(--space-300)">
@@ -306,7 +306,7 @@ If needed, you can override this by providing a custom size—the button will re
           </mui-rule>
 
           <mui-v-stack space="var(--space-050)">
-            <mui-body size="medium" weight="bold">Toggle Button</mui-body>
+            <mui-body size="medium" weight="bold">Toggle Button / Icon-Only</mui-body>
             <mui-body size="small" style="max-width: 60ch;">Authors can provide a custom icon size when needed. In the example below, the small toggle button uses (size="small") to maintain visual balance.</mui-body>
           </mui-v-stack>
           <mui-v-stack alignx="start" alignY="center" space="var(--space-300)">
@@ -401,7 +401,7 @@ If needed, you can override this by providing a custom size—the button will re
           </mui-rule>
 
           <mui-v-stack space="var(--space-050)">
-            <mui-body size="medium" weight="bold">Toggle Button</mui-body>
+            <mui-body size="medium" weight="bold">Toggle Button / Icon-Only</mui-body>
             <mui-body size="small" style="max-width: 60ch;">Authors can provide a custom icon size when needed. In the example below, the medium toggle button uses (size="medium") to maintain visual balance.</mui-body>
           </mui-v-stack>
           <mui-v-stack alignx="start" alignY="center" space="var(--space-300)">
@@ -455,7 +455,7 @@ If needed, you can override this by providing a custom size—the button will re
             length="100%">
           </mui-rule>
           <mui-v-stack space="var(--space-050)">
-            <mui-body size="medium" weight="bold">Toggle Button</mui-body>
+            <mui-body size="medium" weight="bold">Toggle Button / Icon-Only</mui-body>
             <mui-body size="small" style="max-width: 60ch;">Authors can provide a custom icon size when needed. In the example below, the large toggle button uses (size="large") to maintain visual balance.</mui-body>
           </mui-v-stack>
           <mui-button size="large" id="btn" variant="primary">
