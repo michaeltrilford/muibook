@@ -187,6 +187,11 @@ If needed, you can override this by providing a custom size—the button will re
             length="100%">
           </mui-rule>
 
+          <mui-v-stack space="var(--space-050)">
+            <mui-body size="medium" weight="bold">Default Icon Size</mui-body>
+            <mui-body size="small" style="max-width: 64ch;">When an icon is slotted into a button, it automatically inherits the button’s default icon size (size="x-small"). If you need a different look or emphasis, you can override the size as required.</mui-body>
+          </mui-v-stack>
+
           <mui-h-stack alignx="start" alignY="center" space="var(--space-300)">
             <mui-button size='x-small' variant="primary">
               Add New
