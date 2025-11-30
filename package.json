@@ -256,6 +256,38 @@
       "import": "./dist/esm/components/mui-icons/translate/index.js",
       "types": "./dist/types/components/mui-icons/translate/index.d.ts"
     },
+    "./mui-icons/home": {
+      "import": "./dist/esm/components/mui-icons/home/index.js",
+      "types": "./dist/types/components/mui-icons/home/index.d.ts"
+    },
+    "./mui-icons/play-stack": {
+      "import": "./dist/esm/components/mui-icons/play-stack/index.js",
+      "types": "./dist/types/components/mui-icons/play-stack/index.d.ts"
+    },
+    "./mui-icons/game-controller": {
+      "import": "./dist/esm/components/mui-icons/game-controller/index.js",
+      "types": "./dist/types/components/mui-icons/game-controller/index.d.ts"
+    },
+    "./mui-icons/movie-clapper": {
+      "import": "./dist/esm/components/mui-icons/movie-clapper/index.js",
+      "types": "./dist/types/components/mui-icons/movie-clapper/index.d.ts"
+    },
+    "./mui-icons/music-microphone": {
+      "import": "./dist/esm/components/mui-icons/music-microphone/index.js",
+      "types": "./dist/types/components/mui-icons/music-microphone/index.d.ts"
+    },
+    "./mui-icons/music-quarter-note": {
+      "import": "./dist/esm/components/mui-icons/music-quarter-note/index.js",
+      "types": "./dist/types/components/mui-icons/music-quarter-note/index.d.ts"
+    },
+    "./mui-icons/play-rectangle": {
+      "import": "./dist/esm/components/mui-icons/play-rectangle/index.js",
+      "types": "./dist/types/components/mui-icons/play-rectangle/index.d.ts"
+    },
+    "./mui-icons/list-and-film": {
+      "import": "./dist/esm/components/mui-icons/list-and-film/index.js",
+      "types": "./dist/types/components/mui-icons/list-and-film/index.d.ts"
+    },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"

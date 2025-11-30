@@ -85,6 +85,20 @@ export default defineConfig({
         "components/mui-icons/ellipsis": path.resolve(__dirname, "src/components/mui-icons/ellipsis.ts"),
         "components/mui-icons/gear": path.resolve(__dirname, "src/components/mui-icons/gear.ts"),
         "components/mui-icons/translate": path.resolve(__dirname, "src/components/mui-icons/translate.ts"),
+        "components/mui-icons/home": path.resolve(__dirname, "src/components/mui-icons/home.ts"),
+        "components/mui-icons/play-stack": path.resolve(__dirname, "src/components/mui-icons/play-stack.ts"),
+        "components/mui-icons/game-controller": path.resolve(__dirname, "src/components/mui-icons/game-controller.ts"),
+        "components/mui-icons/movie-clapper": path.resolve(__dirname, "src/components/mui-icons/movie-clapper.ts"),
+        "components/mui-icons/music-microphone": path.resolve(
+          __dirname,
+          "src/components/mui-icons/music-microphone.ts"
+        ),
+        "components/mui-icons/music-quarter-note": path.resolve(
+          __dirname,
+          "src/components/mui-icons/music-quarter-note.ts"
+        ),
+        "components/mui-icons/play-rectangle": path.resolve(__dirname, "src/components/mui-icons/play-rectangle.ts"),
+        "components/mui-icons/list-and-film": path.resolve(__dirname, "src/components/mui-icons/list-and-film.ts"),
         // IMAGE
         "components/mui-image": path.resolve(__dirname, "src/components/mui-image"),
         // INPUT

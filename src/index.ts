@@ -62,6 +62,14 @@ export * from "./components/mui-icons/down-arrow-circle";
 export * from "./components/mui-icons/ellipsis";
 export * from "./components/mui-icons/gear";
 export * from "./components/mui-icons/translate";
+export * from "./components/mui-icons/home";
+export * from "./components/mui-icons/play-stack";
+export * from "./components/mui-icons/game-controller";
+export * from "./components/mui-icons/movie-clapper";
+export * from "./components/mui-icons/music-microphone";
+export * from "./components/mui-icons/music-quarter-note";
+export * from "./components/mui-icons/play-rectangle";
+export * from "./components/mui-icons/list-and-film";
 
 // Layout
 export * from "./components/mui-stack/hstack";
