@@ -353,6 +353,37 @@ class storyDrawerVideo extends HTMLElement {
         </mui-v-stack>
       </div>
     `;
+
+    // Open drawer buttons
+    this.shadowRoot.querySelectorAll("mui-button[data-drawer]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-drawer");
+        const drawer = this.shadowRoot.querySelector(`mui-drawer[data-drawer="${target}"]`);
+        if (drawer) drawer.setAttribute("open", "");
+      });
+    });
+
+    // Close buttons inside each drawer
+    this.shadowRoot.querySelectorAll("mui-drawer[data-drawer]").forEach((drawer) => {
+      drawer.querySelectorAll("mui-button[data-close]").forEach((btn) => {
+        btn.addEventListener("click", () => drawer.removeAttribute("open"));
+      });
+    });
+
+    // Toggle drawer buttons
+    this.shadowRoot.querySelectorAll("mui-button[data-drawer-toggle]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-drawer-toggle");
+        const drawer = this.shadowRoot.querySelector(`mui-drawer[data-drawer-toggle="${target}"]`);
+        if (!drawer) return;
+
+        if (drawer.hasAttribute("open")) {
+          drawer.removeAttribute("open");
+        } else {
+          drawer.setAttribute("open", "");
+        }
+      });
+    });
   }
 }
 
