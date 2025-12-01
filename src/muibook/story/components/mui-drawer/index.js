@@ -2,6 +2,8 @@ import C from "../../../images/jal/crystal.png";
 import D from "../../../images/jal/diamond.png";
 import P from "../../../images/jal/premier.png";
 import S from "../../../images/jal/sapphire.png";
+import MaxAvatar from "../../../images/mui/avatar-max.png";
+import JulieAvatar from "../../../images/mui/avatar-julie.png";
 
 class storyDrawer extends HTMLElement {
   constructor() {
@@ -88,7 +90,26 @@ class storyDrawer extends HTMLElement {
       .video-menu-group-heading { text-align: left; }
 
       .video-menu-more {
-        margin-top: var(--space-200);
+        margin: var(--space-100);
+      }
+
+      .video-menu-more_hero {
+        margin-left: var(--space-300);
+      }
+
+      .avatar { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-400);
+        height: var(--space-600);
+        width: var(--space-600);
+        overflow: hidden;
+        margin-right: var(--space-050);
+        > img {
+          width: 100%;
+          height: auto;
+        }
       }
 
       .video-menu-group-heading {
@@ -722,7 +743,7 @@ class storyDrawer extends HTMLElement {
         <div class="filter">
           <div class="filter_next">
             <mui-button variant="tertiary" class="filter-action" aria-label="Next filters">
-              <mui-icon-right-chevron size="small"></mui-icon-right-chevron>
+              <mui-icon-right-chevron size="medium"></mui-icon-right-chevron>
             </mui-button>
           </div>
           <div class="filter_chip-scroll">
@@ -846,24 +867,18 @@ class storyDrawer extends HTMLElement {
             <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Library">
-            <mui-slat-accessory slot="before">
-              <mui-icon-left-sidebar size="x-small"></mui-icon-left-sidebar>
-            </mui-slat-accessory>
+            <div class="avatar" slot="before">
+              <img size="small" src="${JulieAvatar}"  alt="Julie"/>
+            </div>
             Outdoors
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="History">
-            <mui-slat-accessory slot="before">
-              <mui-icon-music-microphone size="x-small"></mui-icon-music-microphone>
-            </mui-slat-accessory>
+            <div class="avatar" slot="before">
+              <img size="small" src="${MaxAvatar}"  alt="Max"/>
+            </div>
             Music
           </mui-button>
-          <mui-button variant="tertiary" class="video-menu-item" aria-label="Your Videos">
-            <mui-slat-accessory slot="before">
-              <mui-icon-music-microphone size="x-small"></mui-icon-music-microphone>
-            </mui-slat-accessory>
-            Sauce
-          </mui-button>
-          <mui-button variant="tertiary" size="small" class="video-menu-more" aria-label="Show more">
+          <mui-button variant="tertiary" size="small" class="video-menu-more video-menu-more_hero" aria-label="Show more">
             <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
             Show more
           </mui-button>
@@ -1430,10 +1445,10 @@ class storyDrawer extends HTMLElement {
 
               <mui-responsive breakpoint="768">
                 <mui-button slot="showAbove" variant="tertiary" aria-label="Open menu" size="medium" data-drawer-toggle="video-header-toggle">
-                  <mui-icon-menu size="small"></mui-icon-menu>
+                  <mui-icon-menu size="medium"></mui-icon-menu>
                 </mui-button>
                 <mui-button slot="showBelow" variant="tertiary" aria-label="Open menu" size="medium" data-drawer="video-header-overlay">
-                  <mui-icon-menu size="small"></mui-icon-menu>
+                  <mui-icon-menu size="medium"></mui-icon-menu>
                 </mui-button>
               </mui-responsive>
 
@@ -1447,11 +1462,11 @@ class storyDrawer extends HTMLElement {
               <mui-h-stack slot="showAbove" alignx="center" aligny="center" space="var(--space-300)" style="padding: var(--space-000) var(--space-300) var(--space-000) var(--space-300); width: 100%;">
                 <mui-input content="placeholder" state="default" variant="default" placeholder="Search">
                   <mui-button variant="secondary" slot="after" aria-label="Search">
-                    <mui-icon-right-chevron></mui-icon-right-chevron>
+                    <mui-icon-right-chevron size="medium"></mui-icon-right-chevron>
                   </mui-button>
                 </mui-input>
                 <mui-button variant="tertiary" aria-label="Settings">
-                  <mui-icon-gear></mui-icon-gear>
+                  <mui-icon-gear size="medium"></mui-icon-gear>
                 </mui-button>
               </mui-h-stack>
             </mui-responsive>
@@ -1459,7 +1474,7 @@ class storyDrawer extends HTMLElement {
             <mui-h-stack alignx="start" aligny="center" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000);">
               <mui-button variant="primary">Create</mui-button>
               <mui-button variant="tertiary" aria-label="Notifications">
-                <mui-icon-notification></mui-icon-notification>
+                <mui-icon-notification size="medium"></mui-icon-notification>
               </mui-button>
             </mui-h-stack>
           </mui-h-stack>
@@ -1484,7 +1499,7 @@ class storyDrawer extends HTMLElement {
               <mui-h-stack style="padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color);" alignx="space-between" aligny="center">
                 <mui-h-stack alignx="start" aligny="center" space="var(--space-000)">
                   <mui-button variant="tertiary" aria-label="Open menu" size="medium" data-close>
-                    <mui-icon-menu size="small"></mui-icon-menu>
+                    <mui-icon-menu size="medium"></mui-icon-menu>
                   </mui-button>
                   <mui-h-stack alignx="start" aligny="center" space="var(--space-200)" style="padding: var(--space-000) var(--space-200) var(--space-000) var(--space-200); border-radius: var(--radius-000);">
                     <mui-heading level="3" size="3">Premium</mui-heading>
