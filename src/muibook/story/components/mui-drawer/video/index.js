@@ -71,8 +71,9 @@ class storyDrawerVideo extends HTMLElement {
         cursor: pointer;
       }
 
-      .page {
+      .video-page {
         height: calc(100dvh - 7.7rem);
+        overflow-y: scroll;
       }
 
       .video_grid {
@@ -298,7 +299,7 @@ class storyDrawerVideo extends HTMLElement {
     ];
 
     const videoPageContent = /*html*/ `
-      <mui-v-stack slot="page" class="page" space="var(--space-000)" alignx="stretch" aligny="start">
+      <mui-v-stack slot="page" class="video-page" space="var(--space-000)" alignx="stretch" aligny="start">
         <div class="filter">
           <div class="filter_next">
             <mui-button variant="tertiary" class="filter-action" aria-label="Next filters">
