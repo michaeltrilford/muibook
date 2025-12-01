@@ -1,5 +1,7 @@
 import C from "../../../images/jal/crystal.png";
 import D from "../../../images/jal/diamond.png";
+import P from "../../../images/jal/premier.png";
+import S from "../../../images/jal/sapphire.png";
 
 class storyDrawer extends HTMLElement {
   constructor() {
@@ -97,6 +99,13 @@ class storyDrawer extends HTMLElement {
       .filter_chip-scroll { 
         padding: var(--space-600) 6.4rem var(--space-500) var(--space-500); 
         overflow-x: auto;
+        -ms-overflow-style: none; /* IE/Edge */
+        scrollbar-width: none;     /* Firefox */
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .filter_chip-scroll::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
       }
       .filter_chip-group {
         width: max-content; 
@@ -138,6 +147,12 @@ class storyDrawer extends HTMLElement {
       }
       .video-menu-group::part(padding) {
         padding: var(--space-300) var(--space-200);
+      }
+
+
+      .filter-action.at-end {
+        opacity: 0.5;
+        cursor: not-allowed;
       }
 
       @media (min-width: 768px) {
@@ -518,6 +533,189 @@ class storyDrawer extends HTMLElement {
       </mui-v-stack>
     `;
 
+    const videos = [
+      {
+        title: "Urban Photography Tips",
+        author: "LensMaster",
+        views: "120K views • 2 days ago",
+        image: D,
+      },
+      {
+        title: "Beginner Yoga Routine",
+        author: "Flex & Flow",
+        views: "980K views • 1 week ago",
+        image: S,
+      },
+      {
+        title: "Amazing Street Food Tour",
+        author: "TasteTravels",
+        views: "1.1M views • 3 days ago",
+        image: D,
+      },
+      {
+        title: "Ultimate Coding 101",
+        author: "Dev Explorer",
+        views: "450K views • 9 hours ago",
+        image: S,
+      },
+      {
+        title: "Minimalist Home Makeover",
+        author: "Cozy Living",
+        views: "800K views • 4 days ago",
+        image: P,
+      },
+      {
+        title: "History of Samurai",
+        author: "Ancient Stories",
+        views: "2.2M views • 2 weeks ago",
+        image: C,
+      },
+      {
+        title: "Daily Productivity Hacks",
+        author: "Focus Lab",
+        views: "56K views • 6 hours ago",
+        image: D,
+      },
+      {
+        title: "Wildlife of the Amazon",
+        author: "EcoVision",
+        views: "1.9M views • 1 month ago",
+        image: P,
+      },
+      {
+        title: "DIY Woodworking Basics",
+        author: "Crafted Corner",
+        views: "310K views • 5 days ago",
+        image: P,
+      },
+      {
+        title: "Piano Chill Beats",
+        author: "LoFi House",
+        views: "760K views • 3 hours ago",
+        image: D,
+      },
+      {
+        title: "Inside Tokyo Nightlife",
+        author: "Travel Pulse",
+        views: "1.3M views • 1 week ago",
+        image: P,
+      },
+      {
+        title: "Ultimate Gym Routine",
+        author: "Fit Nation",
+        views: "670K views • 2 days ago",
+        image: P,
+      },
+      {
+        title: "Building AI Assistants",
+        author: "Tech Forge",
+        views: "900K views • 10 hours ago",
+        image: C,
+      },
+      {
+        title: "The Secrets of Typography",
+        author: "Design Lab",
+        views: "140K views • 3 weeks ago",
+        image: D,
+      },
+      {
+        title: "Relaxing Rain Sounds",
+        author: "Calm Channel",
+        views: "3.5M views • 1 month ago",
+        image: C,
+      },
+      {
+        title: "Speedrunning 101",
+        author: "GameMaster",
+        views: "280K views • 4 hours ago",
+        image: D,
+      },
+      {
+        title: "How to Grow Indoor Plants",
+        author: "GreenSpace",
+        views: "510K views • 2 days ago",
+        image: P,
+      },
+      {
+        title: "Mastering Colour Grading",
+        author: "CinePro",
+        views: "820K views • 1 week ago",
+        image: D,
+      },
+      {
+        title: "Beginner Meditation Guide",
+        author: "Peaceful Mind",
+        views: "400K views • 8 hours ago",
+        image: S,
+      },
+      {
+        title: "Streetwear Lookbook 2024",
+        author: "StyleWorks",
+        views: "1.7M views • 2 weeks ago",
+        image: D,
+      },
+      {
+        title: "Mountain Biking Adventure",
+        author: "Ride Wild",
+        views: "230K views • 1 day ago",
+        image: C,
+      },
+      {
+        title: "Deep Sea Mysteries",
+        author: "OceanX",
+        views: "2.9M views • 3 weeks ago",
+        image: D,
+      },
+      {
+        title: "Quick & Healthy Recipes",
+        author: "FoodLab",
+        views: "640K views • 12 hours ago",
+        image: C,
+      },
+      {
+        title: "Top 10 Indie Games",
+        author: "Pixel Corner",
+        views: "520K views • 5 days ago",
+        image: P,
+      },
+      {
+        title: "Zen Garden Tutorial",
+        author: "CalmScape",
+        views: "110K views • 2 days ago",
+        image: C,
+      },
+      {
+        title: "Cinematic Drone Shots",
+        author: "SkyVision",
+        views: "1.4M views • 1 week ago",
+        image: S,
+      },
+      {
+        title: "How Planes Really Fly",
+        author: "AeroTech",
+        views: "870K views • 4 days ago",
+        image: P,
+      },
+      {
+        title: "Ultimate Coffee Guide",
+        author: "Brew Studio",
+        views: "300K views • 9 hours ago",
+        image: S,
+      },
+      {
+        title: "Fantasy Worldbuilding Tips",
+        author: "LoreCrafter",
+        views: "480K views • 3 days ago",
+        image: P,
+      },
+      {
+        title: "The Art of Animation",
+        author: "Frame by Frame",
+        views: "2M views • 1 month ago",
+        image: S,
+      },
+    ];
+
     const videoPageContent = /*html*/ `
       <mui-v-stack slot="page" class="page" space="var(--space-000)" alignx="stretch" aligny="start">
         <div class="filter">
@@ -601,6 +799,26 @@ class storyDrawer extends HTMLElement {
               </mui-v-stack>
             </mui-h-stack>
           </mui-v-stack>
+
+          ${videos
+            .map(
+              (v) => /*html*/ `
+                <mui-v-stack alignx="start" aligny="start" space="var(--space-300)" class="card">
+                  <mui-image variants="image"><img slot="image" src="${v.image}" alt="${v.title}" /></mui-image>
+                  <mui-h-stack alignx="start" aligny="start" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
+                    <mui-v-stack class="card_content" alignx="start" aligny="start" space="var(--space-025)" style="border-radius: var(--radius-000); width: 100%;">
+                      <mui-body size="large" variant="default" weight="bold">${v.title}</mui-body>
+                      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
+                        <mui-body size="x-small" variant="default" weight="bold">${v.author}</mui-body>
+                        <mui-body size="x-small" variant="default" weight="bold">${v.views}</mui-body>
+                      </mui-v-stack>
+                    </mui-v-stack>
+                  </mui-h-stack>
+                </mui-v-stack>`
+            )
+            .join("\n")}
+
+
         </mui-grid>
       </mui-v-stack>
     `;
@@ -1401,6 +1619,36 @@ class storyDrawer extends HTMLElement {
           drawer.setAttribute("open", "");
         }
       });
+    });
+
+    // Filter scroll logic
+    this.shadowRoot.querySelectorAll(".filter").forEach((filter) => {
+      const button = filter.querySelector(".filter-action");
+      const scrollContainer = filter.querySelector(".filter_chip-scroll");
+
+      if (!button || !scrollContainer) return;
+
+      function checkEnd() {
+        const atEnd = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 10;
+        if (atEnd) {
+          button.classList.add("at-end");
+        } else {
+          button.classList.remove("at-end");
+        }
+      }
+
+      button.addEventListener("click", () => {
+        const scrollAmount = 200; // Adjust as needed
+        scrollContainer.scrollBy({
+          left: scrollAmount,
+          behavior: "smooth",
+        });
+      });
+
+      scrollContainer.addEventListener("scroll", checkEnd);
+
+      // Initial check
+      checkEnd();
     });
 
     // Spec Card - Minimal scroll-to handler
