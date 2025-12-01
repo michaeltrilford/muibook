@@ -199,6 +199,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/agent" title="Agent UI"></app-navbar-link> 
         <app-navbar-link link="#/onboarding" title="Onboarding"></app-navbar-link> 
         <app-navbar-link link="#/wallet" title="Wallet"></app-navbar-link> 
+        <app-navbar-link link="#/muitube" title="MuiTube"></app-navbar-link> 
       </app-navbar-group>
     `;
 

@@ -97,6 +97,7 @@ export class AppContainer extends HTMLElement {
       "/agent": "comp-agent-ui",
       "/wallet": "comp-wallet",
       "/onboarding": "comp-onboarding",
+      "/muitube": "comp-mui-tube",
     };
 
     // ✨ NEW CHECK ✨
@@ -137,6 +138,7 @@ export class AppContainer extends HTMLElement {
       "comp-agent-ui": () => import("../story/compositions/agent-ui"),
       "comp-wallet": () => import("../story/compositions/wallet"),
       "comp-onboarding": () => import("../story/compositions/onboarding/index.js"),
+      "comp-mui-tube": () => import("../story/compositions/muitube/index.js"),
 
       "story-stepper": () => import("../story/components/mui-stepper"),
       "story-button": () => import("../story/components/mui-button"),

@@ -18,6 +18,7 @@ class Onboarding extends HTMLElement {
         title="Onboarding"
         description="Creating compositions provide the Design System a view of how the system is working and where it needs flexibility."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/onboarding/index.js"
+        storybook="https://stories.muibook.com/?path=/docs/compositions-onboarding--docs"
       >
 
           <mui-message variant="info" heading="Working with Web Components and Shadow DOM">

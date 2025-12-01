@@ -112,6 +112,7 @@ class compAgentUI extends HTMLElement {
           where it needs flexibility.
         "
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/agent-ui/index.js"
+        storybook="https://stories.muibook.com/?path=/docs/compositions-agentui--docs"
       >
 
         <story-card 

@@ -522,14 +522,17 @@ class storyDrawerVideo extends HTMLElement {
               </mui-h-stack>
             </mui-responsive>
             <mui-h-stack alignx="start" aligny="center" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000);">
-              <mui-button variant="primary">Create</mui-button>
+              <mui-responsive breakpoint="768">
+                <mui-button variant="primary" slot="showAbove">Create</mui-button>
+                <mui-button variant="primary" slot="showBelow"><mui-icon-add size="medium"></mui-icon-add></mui-button>
+              </mui-responsive>
               <mui-button variant="tertiary" aria-label="Notifications">
                 <mui-icon-notification size="medium"></mui-icon-notification>
               </mui-button>
             </mui-h-stack>
           </mui-h-stack>
           <mui-responsive breakpoint="768">
-            <mui-drawer width="240px" variant="push" data-drawer="default" drawer-space="none" open side="left" slot="showAbove" data-drawer-toggle="video-header-toggle">
+            <mui-drawer width="240px" variant="push" drawer-space="none" open side="left" slot="showAbove" data-drawer-toggle="video-header-toggle">
               ${videoMenuItems}
               ${videoPageContent}
             </mui-drawer>

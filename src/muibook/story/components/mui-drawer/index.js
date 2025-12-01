@@ -846,7 +846,7 @@ class storyDrawer extends HTMLElement {
     `;
 
     const videoMenuItems = /*html*/ `
-      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); background: var(--surface-elevated-100);">
+      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)">
 
         <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Home">
@@ -1430,8 +1430,8 @@ class storyDrawer extends HTMLElement {
       </story-card>
 
       <story-card 
-        id="drawer-video" 
-        title="VideoTube" 
+        id="mui-tube" 
+        title="MuiTube" 
         usage="
           This example demonstrates a responsive drawer menu for a video platform.;
           On desktop, the drawer uses the 'push' variant to shift content and keep it accessible.;
@@ -1472,7 +1472,10 @@ class storyDrawer extends HTMLElement {
             </mui-responsive>
 
             <mui-h-stack alignx="start" aligny="center" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000);">
-              <mui-button variant="primary">Create</mui-button>
+              <mui-responsive breakpoint="768">
+                <mui-button variant="primary" slot="showAbove">Create</mui-button>
+                <mui-button variant="primary" slot="showBelow"><mui-icon-add size="medium"></mui-icon-add></mui-button>
+              </mui-responsive>
               <mui-button variant="tertiary" aria-label="Notifications">
                 <mui-icon-notification size="medium"></mui-icon-notification>
               </mui-button>
@@ -1481,7 +1484,7 @@ class storyDrawer extends HTMLElement {
           
           <mui-responsive breakpoint="768">
 
-            <mui-drawer width="240px" variant="push" data-drawer="default" drawer-space="none" open side="left" slot="showAbove" data-drawer-toggle="video-header-toggle">
+            <mui-drawer width="240px" variant="push" drawer-space="none" open side="left" slot="showAbove" data-drawer-toggle="video-header-toggle">
               ${videoMenuItems}
               ${videoPageContent}
             </mui-drawer>
@@ -1597,7 +1600,7 @@ class storyDrawer extends HTMLElement {
             <mui-link size="small" data-scroll-link="drawer-persistent-right">Persistent Right</mui-link>
             <mui-link size="small" data-scroll-link="drawer-menu">Menu</mui-link>
             <mui-link size="small" data-scroll-link="drawer-advanced-menu">Advanced Menu</mui-link>  
-            <mui-link size="small" data-scroll-link="drawer-video">VideoTube</mui-link>     
+            <mui-link size="small" data-scroll-link="mui-tube">MuiTube</mui-link>     
             <mui-link size="small" data-scroll-link="drawer-breakpoint">Breakpoint</mui-link>         
           </mui-h-stack>
         </mui-message>

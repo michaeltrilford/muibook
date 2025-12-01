@@ -351,6 +351,7 @@ class compWallet extends HTMLElement {
         title="Wallet"
         description="Creating compositions provide the Design System a view of how the system is working and where it needs flexibility."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/wallet/index.js"
+        storybook="https://stories.muibook.com/?path=/docs/compositions-wallet--docs"
       >
         ${transactions}
         ${settings}
