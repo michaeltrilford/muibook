@@ -81,15 +81,22 @@ class storyDrawerVideo extends HTMLElement {
       }  
       
       .card_content { padding-left: var(--space-100); }
-      .card:hover {
+      .card::part(background) {
+        padding: var(--space-000);
+        border: none;
+      }
+      .card::part(background):hover,
+      .card::part(background):focus-visible {
         background: var(--surface-elevated-100);
-        transition: box-shadow var(--speed-100);
-        box-shadow: 0 0 0 var(--space-400) var(--surface-elevated-100);
+        transition: box-shadow var(--speed-100), outline var(--speed-100);
+        box-shadow: 0 0 0 var(--space-400) var(--surface-elevated-100), 0 var(--space-200) var(--space-400) var(--space-300) var(--surface-recessed-alpha);
         border-top-left-radius: var(--radius-300);
         border-top-right-radius: var(--radius-300);
         border-bottom-left-radius: var(--radius-100);
         border-bottom-right-radius: var(--radius-100);
-        cursor: pointer;
+      }
+      .card::part(background):focus-visible {
+        outline-offset: var(--space-300);
       }
 
       .video-page {
@@ -381,18 +388,20 @@ class storyDrawerVideo extends HTMLElement {
           ${videos
             .map(
               (v) => /*html*/ `
-                <mui-v-stack alignx="start" aligny="start" space="var(--space-300)" class="card">
-                  <mui-image variants="image"><img slot="image" src="${v.image}" alt="${v.title}" /></mui-image>
-                  <mui-h-stack alignx="start" aligny="start" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
-                    <mui-v-stack class="card_content" alignx="start" aligny="start" space="var(--space-025)" style="border-radius: var(--radius-000); width: 100%;">
-                      <mui-body size="large" variant="default" weight="bold">${v.title}</mui-body>
-                      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
-                        <mui-body size="x-small" variant="default" weight="bold">${v.author}</mui-body>
-                        <mui-body size="x-small" variant="default" weight="bold">${v.views}</mui-body>
+                <mui-link variant="tertiary" href="#" class="card">
+                  <mui-v-stack alignx="start" aligny="start" space="var(--space-300)">
+                    <mui-image variants="image"><img slot="image" src="${v.image}" alt="${v.title}" /></mui-image>
+                    <mui-h-stack alignx="start" aligny="start" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
+                      <mui-v-stack class="card_content" alignx="start" aligny="start" space="var(--space-025)" style="border-radius: var(--radius-000); width: 100%;">
+                        <mui-body size="large" variant="default" weight="bold">${v.title}</mui-body>
+                        <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
+                          <mui-body size="x-small" variant="default" weight="bold">${v.author}</mui-body>
+                          <mui-body size="x-small" variant="default" weight="bold">${v.views}</mui-body>
+                        </mui-v-stack>
                       </mui-v-stack>
-                    </mui-v-stack>
-                  </mui-h-stack>
-                </mui-v-stack>`
+                    </mui-h-stack>
+                  </mui-v-stack>
+                </mui-link>`
             )
             .join("\n")}
         </mui-grid>
