@@ -91,7 +91,7 @@ class storyPushRight extends HTMLElement {
             <div class="page-header">
               ${invoiceHeader}
               <mui-dropdown position="right">
-                <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                 <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
                 <mui-button disabled variant="tertiary">Add line-item</mui-button>
               </mui-dropdown>

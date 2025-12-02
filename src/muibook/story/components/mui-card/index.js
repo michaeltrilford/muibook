@@ -421,7 +421,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -432,7 +432,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -520,7 +520,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$20.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -531,7 +531,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$12.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>

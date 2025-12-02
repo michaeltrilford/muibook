@@ -113,7 +113,7 @@ class storyDropdown extends HTMLElement {
 
       <story-card title="Ellipsis Action">
         <mui-dropdown slot="body">
-          <mui-button slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+          <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
           <mui-button>Option one</mui-button>
           <mui-button>Option two</mui-button>
         </mui-dropdown>
@@ -130,7 +130,7 @@ class storyDropdown extends HTMLElement {
 
       <story-card title="Z-Index Customisation" description="Use this feature if a fixed navigation or other elements in your application conflict with the default z-index. Adjust the value to ensure your UI layers display correctly.">
         <mui-dropdown slot="body" zindex="999" position="left">
-          <mui-button slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+          <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
           <mui-button>Option one</mui-button>
           <mui-button>Option two</mui-button>
           <mui-button>Option two</mui-button>
@@ -152,7 +152,7 @@ class storyDropdown extends HTMLElement {
       <story-card title="Dropdown w/ Icon">
         <mui-button-group right slot="body">
           <mui-dropdown>
-            <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron></mui-button>
+            <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
             <mui-button>PDF</mui-button>
             <mui-button>CSV</mui-button>
           </mui-dropdown>
@@ -170,7 +170,7 @@ class storyDropdown extends HTMLElement {
       <story-card title="Position: Left">
         <mui-v-stack slot="body" alignX="center">
           <mui-dropdown position="left">
-            <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron></mui-button>
+            <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
             <mui-button>PDF</mui-button>
             <mui-button>CSV</mui-button>
           </mui-dropdown>
@@ -187,7 +187,7 @@ class storyDropdown extends HTMLElement {
       <story-card title="Position: Right">
         <mui-v-stack slot="body" alignX="center">
           <mui-dropdown position="right">
-            <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron></mui-button>
+            <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
             <mui-button>PDF</mui-button>
             <mui-button>CSV</mui-button>
           </mui-dropdown>
@@ -204,7 +204,7 @@ class storyDropdown extends HTMLElement {
       <story-card title="Position: Center">
         <mui-v-stack slot="body" alignX="center">
           <mui-dropdown position="center">
-            <mui-button slot="action" variant="secondary"><mui-icon-info></mui-icon-info></mui-button>
+            <mui-button slot="action" variant="secondary"><mui-icon-info size="medium"></mui-icon-info></mui-button>
 
             <mui-v-stack space="var(--space-300)" style="padding: var(--space-300); width: 300px;">
               <mui-smart-card
@@ -239,7 +239,7 @@ class storyDropdown extends HTMLElement {
           <mui-dropdown position="center" persistent data-file-preview="true">
             <mui-button slot="action" variant="secondary">
                 Card Artwork
-                <mui-icon-add slot="after" size="x-small"></mui-icon-add>
+                <mui-icon-add slot="after"></mui-icon-add>
             </mui-button>
             <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
               <mui-smart-card
@@ -260,7 +260,7 @@ class storyDropdown extends HTMLElement {
           &lt;mui-dropdown persistent data-file-preview="true" position="center"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="after" size="x-small"&gt;&lt;/mui-icon-add&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="after"&gt;&lt;/mui-icon-add&gt;<br>
           &nbsp;&nbsp;&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
@@ -324,7 +324,7 @@ class storyDropdown extends HTMLElement {
           <mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center">
             <mui-button slot="action" variant="secondary">
               Card Artwork
-              <mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate size="x-small">
+              <mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate>
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
@@ -349,7 +349,7 @@ class storyDropdown extends HTMLElement {
           &lt;mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate size="x-small"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br>

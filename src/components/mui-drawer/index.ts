@@ -63,7 +63,7 @@ class MuiDrawer extends HTMLElement {
             hasCloseButton
               ? `
             <mui-button class="close" variant="tertiary" aria-label="Close drawer">
-              <mui-icon-close></mui-icon-close>
+              <mui-icon-close size="medium"></mui-icon-close>
             </mui-button>`
               : "<span class='spacer'></span>"
           }
@@ -391,7 +391,7 @@ class MuiDrawer extends HTMLElement {
         <header hidden>
           <slot name="title"></slot>
           <mui-button class="close" variant="tertiary" aria-label="Close drawer">
-            <mui-icon-close></mui-icon-close>
+            <mui-icon-close size="medium"></mui-icon-close>
           </mui-button>
         </header>
         <main class="${noPadding}">

@@ -73,7 +73,7 @@ class MuiDialog extends HTMLElement {
       <dialog>
         <header>
           <slot name="title"></slot>
-          <mui-button class="close" aria-label="Close" variant="tertiary"><mui-icon-close></mui-icon-close></mui-button>
+          <mui-button class="close" aria-label="Close" variant="tertiary"><mui-icon-close size="medium"></mui-icon-close></mui-button>
         </header>
         <main>
           <slot></slot>

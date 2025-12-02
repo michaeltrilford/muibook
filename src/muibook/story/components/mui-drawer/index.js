@@ -1121,7 +1121,7 @@ class storyDrawer extends HTMLElement {
               <div class="page-header">
                 ${invoiceHeader}
                 <mui-dropdown position="right">
-                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                   <mui-button variant="tertiary" data-drawer="drawer-3">Edit Details</mui-button>
                   <mui-button disabled variant="tertiary">Add line-item</mui-button>
                 </mui-dropdown>
@@ -1171,7 +1171,7 @@ class storyDrawer extends HTMLElement {
               <div class="page-header">
                 ${invoiceHeader}
                 <mui-dropdown position="right">
-                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                   <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
                   <mui-button disabled variant="tertiary">Add line-item</mui-button>
                 </mui-dropdown>
@@ -1303,7 +1303,7 @@ class storyDrawer extends HTMLElement {
               <div class="page-header">
                 <mui-h-stack space="var(--space-200)" alignY="center">
                   <mui-button variant="tertiary" data-drawer="hook">
-                    <mui-icon-menu></mui-icon-menu>
+                    <mui-icon-menu size="medium"></mui-icon-menu>
                   </mui-button>
                   <mui-heading size="4" level="4">Smart Bills</mui-heading>
                 </mui-h-stack>
@@ -1318,19 +1318,19 @@ class storyDrawer extends HTMLElement {
             </mui-h-stack>
 
             <mui-v-stack alignX="stretch" space="var(--space-100)" style="padding-bottom: var(--space-400);">
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
+              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
             </mui-v-stack>
           </mui-drawer>
         </div>
@@ -1357,10 +1357,10 @@ class storyDrawer extends HTMLElement {
 
               <mui-responsive breakpoint="768">
                 <mui-button slot="showAbove" variant="tertiary" data-drawer-toggle="custom-header-toggle">
-                  <mui-icon-menu></mui-icon-menu>
+                  <mui-icon-menu size="medium"></mui-icon-menu>
                 </mui-button>
                 <mui-button slot="showBelow" variant="tertiary" data-drawer="custom-header-overlay">
-                  <mui-icon-menu></mui-icon-menu>
+                  <mui-icon-menu size="medium"></mui-icon-menu>
                 </mui-button>
               </mui-responsive>
 
@@ -1402,7 +1402,7 @@ class storyDrawer extends HTMLElement {
                 
               <mui-h-stack space="var(--space-300)" alignY="center" style="padding: var(--space-300) var(--space-500) var(--space-300) var(--space-400)">
                 <mui-button variant="tertiary" data-close>
-                  <mui-icon-menu></mui-icon-menu>
+                  <mui-icon-menu size="medium"></mui-icon-menu>
                 </mui-button>
                 <mui-h-stack space="var(--space-100)" alignY="center">
                   <guides-logo style="width: 24px;"></guides-logo>
@@ -1535,7 +1535,7 @@ class storyDrawer extends HTMLElement {
               <div class="page-header">
                 ${invoiceHeader}
                 <mui-dropdown position="right">
-                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                   <mui-button variant="tertiary" data-drawer="breakpoint">Edit Details</mui-button>
                   <mui-button disabled variant="tertiary">Add line-item</mui-button>
                 </mui-dropdown>
