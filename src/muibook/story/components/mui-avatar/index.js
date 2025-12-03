@@ -134,7 +134,7 @@ class storyAvatar extends HTMLElement {
         title="Image" 
         description="" 
         usage=""
-        usageLink="https://guides.muibook.com/avatar"
+        usageLink=""
         accessibility=""
       >
         <mui-h-stack slot="body" alignY="center">
@@ -151,7 +151,7 @@ class storyAvatar extends HTMLElement {
         title="Icon" 
         description="" 
         usage=""
-        usageLink="https://guides.muibook.com/avatar"
+        usageLink=""
         accessibility=""
       >
         <mui-v-stack slot="body">
@@ -181,7 +181,7 @@ class storyAvatar extends HTMLElement {
         title="Size" 
         description="" 
         usage=""
-        usageLink="https://guides.muibook.com/avatar"
+        usageLink=""
         accessibility=""
       >
         <mui-v-stack slot="body">
@@ -221,11 +221,69 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card
+        title="Chip Avatars" 
+        description="When an Avatar is used within a Chip, it inherits the size x-small to help reduce configuration and adopt design decisions." 
+        usage=""
+        usageLink=""
+        accessibility=""
+      >
+        <mui-v-stack slot="body">
+          <mui-grid space="var(--space-100)" col="min-content min-content min-content">
+            <mui-chip>
+              <mui-avatar slot="before" size="x-small" label="Espresso & Muffin Bar" background="neutral">
+                <mui-icon-left-sidebar></mui-icon-left-sidebar>
+              </mui-avatar>
+              Videos
+            </mui-chip>
+            <mui-chip>
+              <mui-avatar slot="before" label="Espresso & Muffin Bar" background="neutral"></mui-avatar>
+              Videos
+            </mui-chip>
+            <mui-chip>
+              <mui-avatar slot="before" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
+              Videos
+            </mui-chip>
+            <mui-chip>
+              <mui-avatar slot="after" label="Espresso & Muffin Bar" background="neutral">
+                <mui-icon-left-sidebar></mui-icon-left-sidebar>
+              </mui-avatar>
+              Videos
+            </mui-chip>
+            <mui-chip>
+              <mui-avatar slot="after" label="Espresso & Muffin Bar" background="neutral"></mui-avatar>
+              Videos
+            </mui-chip>
+            <mui-chip>
+              <mui-avatar slot="after" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
+              Videos
+            </mui-chip>
+          </mui-grid>
+
+          <mui-grid space="var(--space-100)" col="min-content min-content min-content">
+            <mui-chip dismiss>
+              <mui-avatar slot="before" size="x-small" label="Espresso & Muffin Bar" background="neutral">
+                <mui-icon-left-sidebar></mui-icon-left-sidebar>
+              </mui-avatar>
+              Videos
+            </mui-chip>
+            <mui-chip dismiss>
+              <mui-avatar slot="before" label="Espresso & Muffin Bar" background="neutral"></mui-avatar>
+              Videos
+            </mui-chip>
+            <mui-chip dismiss>
+              <mui-avatar slot="before" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
+              Videos
+            </mui-chip>
+          </mui-grid>
+        </mui-v-stack>
+      </story-card>
+
       <story-card 
         title="Background Colors" 
         description="Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes." 
         usage=""
-        usageLink="https://guides.muibook.com/avatar"
+        usageLink=""
         accessibility=""
       >
         <div slot="body">
@@ -239,12 +297,12 @@ class storyAvatar extends HTMLElement {
         title="Buttons" 
         description="Buttons can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size." 
         usage=""
-        usageLink="https://guides.muibook.com/avatar"
+        usageLink=""
         accessibility=""
       >
         <mui-v-stack slot="body">
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-button variant="primary" size="x-small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
               Julie AI
@@ -256,10 +314,6 @@ class storyAvatar extends HTMLElement {
             <mui-button variant="tertiary" size="x-small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
               Julie AI
-            </mui-button>
-            <mui-button variant="attention" size="x-small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
             </mui-button>
             <mui-button disabled variant="tertiary" size="x-small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
@@ -273,7 +327,7 @@ class storyAvatar extends HTMLElement {
             </mui-button>
           </mui-v-stack>
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-button variant="primary" size="small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
               Julie AI
@@ -285,10 +339,6 @@ class storyAvatar extends HTMLElement {
             <mui-button variant="tertiary" size="small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
               Julie AI
-            </mui-button>
-            <mui-button variant="attention" size="small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
             </mui-button>
             <mui-button disabled variant="tertiary" size="small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
@@ -302,7 +352,7 @@ class storyAvatar extends HTMLElement {
             </mui-button>
           </mui-v-stack>
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-button variant="primary" size="medium" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
               Julie AI
@@ -314,10 +364,6 @@ class storyAvatar extends HTMLElement {
             <mui-button variant="tertiary" size="medium" class="group-item" aria-label="Library">
               <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
               Julie AI
-            </mui-button>
-            <mui-button variant="attention" size="medium" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
             </mui-button>
             <mui-button disabled variant="tertiary" size="medium" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
@@ -331,7 +377,7 @@ class storyAvatar extends HTMLElement {
             </mui-button>
           </mui-v-stack>
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-button variant="primary" size="large" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
               Julie AI
@@ -343,10 +389,6 @@ class storyAvatar extends HTMLElement {
             <mui-button variant="tertiary" size="large" class="group-item" aria-label="Library">
               <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
               Julie AI
-            </mui-button>
-            <mui-button variant="attention" size="large" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
             </mui-button>
             <mui-button disabled variant="tertiary" size="large" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
@@ -369,15 +411,15 @@ class storyAvatar extends HTMLElement {
         title="Links" 
         description="Links can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size." 
         usage=""
-        usageLink="https://guides.muibook.com/avatar"
+        usageLink=""
         accessibility=""
       >
         <mui-v-stack slot="body">
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="x-small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              Julie AI (Not recommended)
             </mui-link>
             <mui-link size="x-small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
@@ -393,7 +435,7 @@ class storyAvatar extends HTMLElement {
             </mui-link>
             <mui-link disabled size="x-small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              Max AI (Not recommended)
             </mui-link>
             <mui-link size="x-small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -403,10 +445,10 @@ class storyAvatar extends HTMLElement {
             </mui-link>
           </mui-v-stack>
         
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              Julie AI (Not recommended)
             </mui-link>
             <mui-link size="small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
@@ -422,7 +464,7 @@ class storyAvatar extends HTMLElement {
             </mui-link>
             <mui-link disabled size="small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              Max AI (Not recommended)
             </mui-link>
             <mui-link size="small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -432,10 +474,10 @@ class storyAvatar extends HTMLElement {
             </mui-link>
           </mui-v-stack>
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="medium" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              Julie AI (Not recommended)
             </mui-link>
             <mui-link size="medium" class="group-item" aria-label="History">        
               <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
@@ -451,7 +493,7 @@ class storyAvatar extends HTMLElement {
             </mui-link>
             <mui-link disabled size="medium" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              Max AI (Not recommended)
             </mui-link>
             <mui-link size="medium" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -461,10 +503,10 @@ class storyAvatar extends HTMLElement {
             </mui-link>
           </mui-v-stack>
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="large" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              Julie AI (Not recommended)
             </mui-link>
             <mui-link size="large" class="group-item" aria-label="History">        
               <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
@@ -480,7 +522,7 @@ class storyAvatar extends HTMLElement {
             </mui-link>
             <mui-link disabled size="large" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              Max AI (Not recommended)
             </mui-link>
             <mui-link size="large" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -490,7 +532,7 @@ class storyAvatar extends HTMLElement {
             </mui-link>
           </mui-v-stack>
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link variant="primary" size="x-small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
               Julie AI
@@ -502,10 +544,6 @@ class storyAvatar extends HTMLElement {
             <mui-link variant="tertiary" size="x-small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
               Julie AI
-            </mui-link>
-            <mui-link variant="attention" size="x-small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
             </mui-link>
             <mui-link disabled variant="tertiary" size="x-small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
@@ -519,7 +557,7 @@ class storyAvatar extends HTMLElement {
             </mui-link>
           </mui-v-stack>
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link variant="primary" size="small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
               Julie AI
@@ -531,10 +569,6 @@ class storyAvatar extends HTMLElement {
             <mui-link variant="tertiary" size="small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
               Julie AI
-            </mui-link>
-            <mui-link variant="attention" size="small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
             </mui-link>
             <mui-link disabled variant="tertiary" size="small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
@@ -548,7 +582,7 @@ class storyAvatar extends HTMLElement {
             </mui-link>
           </mui-v-stack>
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link variant="primary" size="medium" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
               Julie AI
@@ -560,10 +594,6 @@ class storyAvatar extends HTMLElement {
             <mui-link variant="tertiary" size="medium" class="group-item" aria-label="Library">
               <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
               Julie AI
-            </mui-link>
-            <mui-link variant="attention" size="medium" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
             </mui-link>
             <mui-link disabled variant="tertiary" size="medium" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
@@ -577,7 +607,7 @@ class storyAvatar extends HTMLElement {
             </mui-link>
           </mui-v-stack>
 
-          <mui-v-stack alignx="stretch" aligny="start" space="var(--space-100)" class="group">
+          <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link variant="primary" size="large" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Julie AI"></mui-avatar>
               Julie AI
@@ -589,10 +619,6 @@ class storyAvatar extends HTMLElement {
             <mui-link variant="tertiary" size="large" class="group-item" aria-label="Library">
               <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
               Julie AI
-            </mui-link>
-            <mui-link variant="attention" size="large" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
             </mui-link>
             <mui-link disabled variant="tertiary" size="large" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Max AI"></mui-avatar>
@@ -615,7 +641,7 @@ class storyAvatar extends HTMLElement {
         title="Slat & Card Avatars" 
         description="" 
         usage=""
-        usageLink="https://guides.muibook.com/avatar"
+        usageLink=""
         accessibility=""
       >
         <div slot="body">

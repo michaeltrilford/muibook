@@ -53,6 +53,27 @@ class MuiChip extends HTMLElement {
 
       this.classList.toggle("has-before", hasBefore);
       this.classList.toggle("has-after", hasAfter);
+
+      this.forceAvatarSize(slotBefore);
+      this.forceAvatarSize(slotAfter);
+    });
+  }
+
+  forceAvatarSize(slot: HTMLSlotElement | null) {
+    if (!slot) return;
+
+    const assignedNodes = slot.assignedNodes({ flatten: true });
+    assignedNodes.forEach((node: Node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const element = node as Element;
+        const tagName = element.tagName.toLowerCase();
+
+        if (tagName === "mui-avatar") {
+          element.setAttribute("size", "x-small");
+        } else if (tagName.startsWith("mui-icon-")) {
+          element.setAttribute("size", "medium");
+        }
+      }
     });
   }
 
@@ -134,16 +155,16 @@ class MuiChip extends HTMLElement {
       ::slotted(.mui-icon) {
         box-sizing: border-box;
         padding: var(--space-025);
-        width: var(--space-500);
-        height: var(--space-500);
         fill: var(--chip-icon-fill);
       }
 
-      :host(.has-before) ::slotted(.mui-icon) { 
+      :host(.has-before) ::slotted(.mui-icon),
+      :host(.has-before) ::slotted(.mui-avatar) { 
         margin-right: -4px;
       }
 
-      :host(.has-after) ::slotted(.mui-icon) { 
+      :host(.has-after) ::slotted(.mui-icon),
+      :host(.has-after) ::slotted(.mui-avatar) { 
         margin-left: -4px;
       }
 

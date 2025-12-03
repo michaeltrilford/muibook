@@ -37,6 +37,7 @@ class tokensComponents extends HTMLElement {
             <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
               <mui-link size="small" data-scroll-link="switch">Switch</mui-link>  
               <mui-link size="small" data-scroll-link="icon">Icon</mui-link>
+              <mui-link size="small" data-scroll-link="icon">Avatar</mui-link>
               <mui-link size="small" data-scroll-link="card">Card</mui-link>
               <mui-link size="small" data-scroll-link="badge">Badge</mui-link>
               <mui-link size="small" data-scroll-link="table">Table</mui-link>
@@ -80,6 +81,20 @@ class tokensComponents extends HTMLElement {
           <spec-card id="icon" title="Icon" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-icons">
             <story-token-slat slot="body" token="--icon-color-default" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--icon-color-inverted" variant="color"></story-token-slat>
+          </spec-card>
+
+          <spec-card id="avatar" title="Avatar" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts">
+            <story-token-slat slot="body" token="--avatar-x-small" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-small" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-medium" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-large" variant="size"></story-token-slat>
+
+            <story-token-slat slot="body" token="--avatar-background-neutral" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-positive" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-warning" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-attention" variant="color"></story-token-slat>
+
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Text</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="card" title="Card" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-card">

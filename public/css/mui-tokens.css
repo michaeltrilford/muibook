@@ -805,4 +805,9 @@ html[data-theme="dark"] {
   --dropdown-radius: var(--radius-100);
   /* Dialog */
   --dialog-radius: var(--radius-150);
+  /* Avatar */
+  --avatar-x-small: var(--space-500); /* 24px */
+  --avatar-small: calc(var(--space-600) + var(--space-025)); /* 38px */
+  --avatar-medium: var(--space-700); /* 48px */
+  --avatar-large: calc(var(--space-700) + var(--space-200)); /* 56px */
 }

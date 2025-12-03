@@ -368,6 +368,14 @@ class MuiButton extends HTMLElement {
 
     :host button ::slotted(mui-avatar) {
       --avatar-background-override: var(--action-avatar-background);
+    }
+
+    :host([size="x-small"]) button ::slotted(mui-avatar) {
+      margin-right: var(--space-025);
+    }
+    :host([size="small"]) button ::slotted(mui-avatar),
+    :host([size="medium"]) button ::slotted(mui-avatar),
+    :host([size="large"]) button ::slotted(mui-avatar) {
       margin-right: var(--space-050);
     }
 

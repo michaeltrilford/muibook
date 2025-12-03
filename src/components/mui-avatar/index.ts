@@ -75,10 +75,10 @@ class MuiAvatar extends HTMLElement {
 
     // Token-based size map
     const sizeMap: Record<string, string> = {
-      "x-small": "var(--avatar-size-x-small, 24px)",
-      small: "var(--avatar-size-small, 40px)",
-      medium: "var(--avatar-size-medium, 48px)",
-      large: "var(--avatar-size-large, 56px)",
+      "x-small": "var(--avatar-x-small)",
+      small: "var(--avatar-small)",
+      medium: "var(--avatar-medium)",
+      large: "var(--avatar-large)",
     };
     const resolvedSize = sizeMap[size] ?? sizeMap.medium;
 

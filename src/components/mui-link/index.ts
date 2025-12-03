@@ -401,21 +401,41 @@ class MuiLink extends HTMLElement {
         fill: var(--alert-icon);
       }
 
-      :host(:not([variant="default"])) a ::slotted(mui-avatar) {
-        --avatar-background-override: var(--action-avatar-background);
-        margin-right: var(--space-050);
-      }
+      /* AVATAR */
 
-      :host([variant="default"]) a ::slotted(mui-avatar) {
+      /* Link - Default */
+      :host([variant="default"][size="x-small"]) a ::slotted(mui-avatar) {
+        margin-right: var(--space-025);
+      }
+      :host([variant="default"][size="small"]) a ::slotted(mui-avatar),
+      :host([variant="default"][size="medium"]) a ::slotted(mui-avatar),
+      :host([variant="default"][size="large"]) a ::slotted(mui-avatar) {
         margin-right: var(--space-025);
       }
 
+      /* Link Button */
+      :host(:not([variant="default"])) a ::slotted(mui-avatar) {
+        --avatar-background-override: var(--action-avatar-background);
+      }
+
+      /* Link Button: Sizes */
+      :host(:not([variant="default"])[size="x-small"]) a ::slotted(mui-avatar) {
+        margin-right: var(--space-025);
+      }
+      :host(:not([variant="default"])[size="small"]) a ::slotted(mui-avatar),
+      :host(:not([variant="default"])[size="medium"]) a ::slotted(mui-avatar),
+      :host(:not([variant="default"])[size="large"]) a ::slotted(mui-avatar) {
+        margin-right: var(--space-050);
+      }
+
+      /* Link Button: Background */
       :host(:not([variant="default"])) a[aria-disabled="true"] ::slotted(mui-avatar),
       :host(:not([variant="default"])) a[aria-disabled="true"]:hover ::slotted(mui-avatar),
       :host(:not([variant="default"])) a[aria-disabled="true"]:focus ::slotted(mui-avatar) {
         --avatar-background-override: var(--action-avatar-background);
       }
 
+      /* Disabled */
       :host a[aria-disabled="true"] ::slotted(mui-avatar),
       :host a[aria-disabled="true"]:hover ::slotted(mui-avatar),
       :host a[aria-disabled="true"]:focus ::slotted(mui-avatar) {
@@ -691,14 +711,24 @@ class MuiLink extends HTMLElement {
   // Update avatar sizes based on button size
   updateAvatarSizes(nodes: Node[]): void {
     const buttonSize = this.getAttribute("size") || "medium";
+    const variant = this.getAttribute("variant") || "default";
+    const isDefaultVariant = variant === "default";
 
-    // Map button sizes to avatar sizes
-    const avatarSizeMap: Record<string, string> = {
-      "x-small": "x-small",
-      small: "x-small",
-      medium: "small",
-      large: "medium",
-    };
+    // Map link sizes to avatar sizes
+    // Default variant (plain link) uses smaller avatars
+    const avatarSizeMap: Record<string, string> = isDefaultVariant
+      ? {
+          "x-small": "x-small",
+          small: "x-small",
+          medium: "x-small",
+          large: "small",
+        }
+      : {
+          "x-small": "x-small",
+          small: "x-small",
+          medium: "small",
+          large: "medium",
+        };
 
     const targetAvatarSize = avatarSizeMap[buttonSize] || "small";
 
