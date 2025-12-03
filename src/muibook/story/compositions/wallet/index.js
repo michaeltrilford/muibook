@@ -47,7 +47,12 @@ class compWallet extends HTMLElement {
                       <mui-body size="small">22 July 2025</mui-body>
                     </mui-h-stack>
                   </mui-slat>
-                  <mui-slat variant="row">
+                  <mui-slat variant="row" col="1fr auto">
+
+                    <mui-avatar slot="accessory">
+                      <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+                    </mui-avatar>
+
                     <mui-v-stack slot="start" space="0">
                       <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
                       <mui-body size="small">Food & Drink</mui-body>
@@ -57,7 +62,12 @@ class compWallet extends HTMLElement {
                       <mui-body size="small">-$8.12</mui-body>
                     </mui-v-stack>
                   </mui-slat>
-                  <mui-slat variant="row">
+                  <mui-slat variant="row" col="1fr auto">
+
+                    <mui-avatar slot="accessory">
+                      <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+                    </mui-avatar>
+
                     <mui-v-stack slot="start" space="0">
                       <mui-body size="medium" weight="bold">Apple App Store</mui-body>
                       <mui-body size="small">Entertainment</mui-body>
@@ -73,7 +83,12 @@ class compWallet extends HTMLElement {
                       <mui-body size="small">21 July 2025</mui-body>
                     </mui-h-stack>
                   </mui-slat>
-                  <mui-slat variant="row">
+                  <mui-slat variant="row" col="1fr auto">
+
+                    <mui-avatar slot="accessory">
+                      <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+                    </mui-avatar>
+
                     <mui-v-stack slot="start" space="0">
                       <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
                       <mui-body size="small">Groceries</mui-body>

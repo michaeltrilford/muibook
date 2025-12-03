@@ -76,7 +76,7 @@ class MuiAvatar extends HTMLElement {
     // Token-based size map
     const sizeMap: Record<string, string> = {
       "x-small": "var(--avatar-size-x-small, 24px)",
-      small: "var(--avatar-size-small, 36px)",
+      small: "var(--avatar-size-small, 40px)",
       medium: "var(--avatar-size-medium, 48px)",
       large: "var(--avatar-size-large, 56px)",
     };
@@ -125,8 +125,8 @@ class MuiAvatar extends HTMLElement {
       justify-content: center;
       user-select: none;
       box-sizing: border-box;
-      padding: ${showInitials || hasSlot ? `calc(${resolvedSize} * 0.1)` : "0"};
-      text-decoration: none !important; 
+      padding: ${showInitials || hasSlot ? `calc(${resolvedSize} * 0.1)` : "0"}; 
+      flex: none;
     }
     img {
       width: 100%;

@@ -617,10 +617,10 @@ html[data-theme="dark"] {
   --slat-background-hover: var(--black-opacity-50);
   --slat-card-background: var(--surface-elevated-100);
   --slat-card-background-hover: var(--surface-elevated-200);
-  --slat-avatar-background: var(--black-opacity-40);
-  --slat-avatar-background-hover: var(--black-opacity-80);
+  --slat-avatar-background: var(--black-opacity-20);
+  --slat-avatar-background-hover: var(--black-opacity-40);
   --slat-card-avatar-background: var(--black-opacity-30);
-  --slat-card-avatar-background-hover: var(--black-opacity-70);
+  --slat-card-avatar-background-hover: var(--black-opacity-40);
 
   /* Avatar */
   --avatar-background-neutral: var(--grey-900);
