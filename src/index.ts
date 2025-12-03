@@ -17,7 +17,6 @@ export * from "./components/mui-table/cell";
 export * from "./components/mui-table/row";
 export * from "./components/mui-table/row-group";
 export * from "./components/mui-slat/slat";
-export * from "./components/mui-slat/accessory";
 export * from "./components/mui-slat/group";
 export * from "./components/mui-accordion/group";
 export * from "./components/mui-accordion/core";
@@ -31,6 +30,7 @@ export * from "./components/mui-quote";
 export * from "./components/mui-code";
 export * from "./components/mui-dialog";
 export * from "./components/mui-drawer";
+export * from "./components/mui-avatar";
 export * from "./components/mui-image";
 export * from "./components/mui-smart-card";
 export * from "./components/mui-icons/accessibility";
@@ -70,6 +70,8 @@ export * from "./components/mui-icons/music-microphone";
 export * from "./components/mui-icons/music-quarter-note";
 export * from "./components/mui-icons/play-rectangle";
 export * from "./components/mui-icons/list-and-film";
+export * from "./components/mui-icons/search";
+export * from "./components/mui-icons/checkmark";
 
 // Layout
 export * from "./components/mui-stack/hstack";

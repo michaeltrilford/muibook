@@ -22,10 +22,27 @@ class MuiSlat extends HTMLElement {
     this.render(); // always re-render for any observed attribute
   }
 
+  enforceAvatarSizes() {
+    const slots = this.shadowRoot?.querySelectorAll("slot");
+    slots?.forEach((slot) => {
+      const assigned = slot.assignedElements({ flatten: true });
+      assigned.forEach((el) => {
+        if (el.tagName.toLowerCase() === "mui-avatar") {
+          el.setAttribute("size", "small");
+        }
+      });
+    });
+  }
+
   connectedCallback() {
     this.variant = this.getAttribute("variant") || "";
     this.setAttribute("role", "row");
     this.render();
+
+    // Enforce avatar sizes after render
+    requestAnimationFrame(() => {
+      this.enforceAvatarSizes();
+    });
   }
 
   applyCellRoles() {
@@ -123,6 +140,22 @@ class MuiSlat extends HTMLElement {
       :host(.condensed-slot:last-of-type) .action::part(border-radius) {
         border-bottom-left-radius: var(--card-radius); 
         border-bottom-right-radius: var(--card-radius); 
+      }
+
+      ::slotted(mui-avatar) {
+        --avatar-background-override: var(--slat-avatar-background);
+      }
+      .action:hover ::slotted(mui-avatar),
+      .action:focus ::slotted(mui-avatar) {
+        --avatar-background-override: var(--slat-avatar-background-hover);
+      }
+
+      :host(.card-slot) ::slotted(mui-avatar) {
+        --avatar-background-override: var(--slat-card-avatar-background);
+      }
+      :host(.card-slot) .action:hover ::slotted(mui-avatar),
+      :host(.card-slot) .action:focus ::slotted(mui-avatar) {
+        --avatar-background-override: var(--slat-card-avatar-background-hover);
       }
 
     `;

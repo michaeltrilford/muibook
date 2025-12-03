@@ -171,6 +171,8 @@ class tokensIntent extends HTMLElement {
             <story-token-slat slot="body" token="--action-line-height" variant="line-height"></story-token-slat>
             <story-token-slat slot="body" token="--action-font-weight" variant="font-weight"></story-token-slat>
             <story-token-slat slot="body" token="--action-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--action-avatar-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--action-avatar-background-hover" variant="color"></story-token-slat>
           </spec-card>
 
           <spec-card title="Action / Primary" description="Used for the most important action on a page or UI surface.">

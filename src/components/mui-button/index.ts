@@ -366,6 +366,22 @@ class MuiButton extends HTMLElement {
       border-bottom-right-radius: calc(var(--radius-100) / 2);
     }
 
+    :host button ::slotted(mui-avatar) {
+      --avatar-background-override: var(--action-avatar-background);
+      margin-right: var(--space-050);
+    }
+
+    :host button:disabled ::slotted(mui-avatar),
+    :host button:disabled:hover ::slotted(mui-avatar),
+    :host button:disabled:focus ::slotted(mui-avatar) {
+      opacity: 0.5;
+      --avatar-background-override: var(--action-avatar-background);
+    }
+
+    :host button:hover ::slotted(mui-avatar),
+    :host button:focus ::slotted(mui-avatar) {
+      --avatar-background-override: var(--action-avatar-background-hover);
+    }
 
     /* Before & After Icon
     ========================================= */
@@ -398,7 +414,8 @@ class MuiButton extends HTMLElement {
     ========================================= */
     :host([size="x-small"]) button,
     :host([size="x-small"]) button:hover,
-    :host([size="x-small"]) button:focus {
+    :host([size="x-small"]) button:focus,
+    :host([size="x-small"]) button:disabled {
       font-size: var(--text-font-size-xs);
       line-height: var(--text-line-height-xs);
       font-weight: var(--font-weight-semi-bold);
@@ -569,6 +586,7 @@ class MuiButton extends HTMLElement {
           if (slot) {
             const nodes = slot.assignedNodes({ flatten: true });
             this.updateIconSizes(nodes, false);
+            this.updateAvatarSizes(nodes);
           }
         });
       }
@@ -594,10 +612,37 @@ class MuiButton extends HTMLElement {
           if (slot) {
             const nodes = slot.assignedNodes({ flatten: true });
             this.updateIconSizes(nodes, isIconOnly);
+            this.updateAvatarSizes(nodes);
           }
         });
       });
     }
+  }
+
+  // Update avatar sizes based on button size
+  updateAvatarSizes(nodes: Node[]): void {
+    const buttonSize = this.getAttribute("size") || "medium";
+
+    // Map button sizes to avatar sizes
+    const avatarSizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+
+    const targetAvatarSize = avatarSizeMap[buttonSize] || "small";
+
+    nodes.forEach((node: Node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as HTMLElement;
+        const isAvatar = el.tagName.toLowerCase() === "mui-avatar";
+
+        if (isAvatar) {
+          el.setAttribute("size", targetAvatarSize);
+        }
+      }
+    });
   }
 
   updateIconSizes(nodes: Node[], isIconOnly: boolean): void {

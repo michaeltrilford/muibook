@@ -413,6 +413,16 @@ class storyIcon extends HTMLElement {
             <mui-icon-list-and-film slot="body"></mui-icon-list-and-film>
             <mui-code slot="footer" scrollable>mui-icon-list-and-film</mui-code>
           </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-search slot="body"></mui-icon-search>
+            <mui-code slot="footer" scrollable>mui-icon-search</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-checkmark slot="body"></mui-icon-checkmark>
+            <mui-code slot="footer" scrollable>mui-icon-checkmark</mui-code>
+          </story-icon-grid>
         </mui-grid> 
 
       </story-card>

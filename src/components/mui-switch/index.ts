@@ -17,6 +17,7 @@ class MuiSwitch extends HTMLElement {
     }
     this._updateIcons();
     this._updateDisabledState();
+    this._enforceIconSize();
 
     this._checkbox?.addEventListener("change", () => {
       if (this._checkbox) {
@@ -92,6 +93,30 @@ class MuiSwitch extends HTMLElement {
       this._checkbox?.removeAttribute("aria-disabled");
       this._checkbox?.removeAttribute("tabindex");
     }
+  }
+
+  private _enforceIconSize(): void {
+    const onIconSlot = this.shadowRoot!.querySelector('slot[name="on-icon"]') as HTMLSlotElement | null;
+    const offIconSlot = this.shadowRoot!.querySelector('slot[name="off-icon"]') as HTMLSlotElement | null;
+
+    const enforceSize = (slot: HTMLSlotElement | null) => {
+      if (!slot) return;
+
+      const handleSlotChange = () => {
+        slot.assignedElements().forEach((el) => {
+          const tagName = el.tagName.toLowerCase();
+          if (tagName.startsWith("mui-icon")) {
+            el.setAttribute("size", "x-small");
+          }
+        });
+      };
+
+      slot.addEventListener("slotchange", handleSlotChange);
+      setTimeout(handleSlotChange, 0);
+    };
+
+    enforceSize(onIconSlot);
+    enforceSize(offIconSlot);
   }
 
   _updateIcons() {
@@ -170,8 +195,6 @@ class MuiSwitch extends HTMLElement {
 
         ::slotted([slot="on-icon"]),
         ::slotted([slot="off-icon"]) {
-          width: 16px;
-          height: 16px;
           fill: var(--switch-icon);
         }
 

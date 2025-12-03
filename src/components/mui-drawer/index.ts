@@ -57,7 +57,7 @@ class MuiDrawer extends HTMLElement {
     return /*html*/ `
     <div class="outer">
       <div class="inner" role="complementary">
-        <header>
+        <div class="header">
           <slot name="title"></slot>
           ${
             hasCloseButton
@@ -67,9 +67,9 @@ class MuiDrawer extends HTMLElement {
             </mui-button>`
               : "<span class='spacer'></span>"
           }
-        </header>
-        <main class="${noPadding}"><slot></slot></main>
-        <footer hidden><slot name="actions"></slot></footer>
+        </div>
+        <div class="content ${noPadding}"><slot></slot></div>
+        <div class="actions" hidden><slot name="actions"></slot></div>
       </div>
     </div>
   `;
@@ -92,7 +92,7 @@ class MuiDrawer extends HTMLElement {
     }
 
     const baseStyles = /*css*/ `
-      header {
+      .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -100,27 +100,26 @@ class MuiDrawer extends HTMLElement {
         border-bottom: var(--border-thin);
         box-sizing: border-box;
       }
-      main {
+      .content {
         overflow-y: auto;
         height: 100%;
         padding: var(--space-500);
         box-sizing: border-box;
-        will-change: transform, opacity;
       }
-      main.no-padding {
+      .content.no-padding {
         padding: 0;
       }
 
-      main.no-heading {
+      .content.no-heading {
         padding-top: calc(var(--space-500) + env(safe-area-inset-top));
       }
 
-      main.no-padding.no-heading {
+      .content.no-padding.no-heading {
         padding-top: env(safe-area-inset-top);
       }
 
 
-      footer {
+      .actions {
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -133,22 +132,22 @@ class MuiDrawer extends HTMLElement {
         bottom: 0;
         width: 100%;
       }
-      header[hidden],
-      footer[hidden] {
+      .header[hidden],
+      .actions[hidden] {
         display: none !important;
       }
     `;
 
     const overlayStyles = /*css*/ `
-      :host([has-header]) main {
+      :host([has-header]) .content {
         height: calc(100dvh - (7.7rem  + env(safe-area-inset-top) ));
       }
 
-      :host([has-footer]) main {
+      :host([has-footer]) .content {
         height: calc(100dvh - (7.7rem  + env(safe-area-inset-bottom) ));
       }
 
-      :host([has-header][has-footer]) main {
+      :host([has-header][has-footer]) .content {
         height: calc(100dvh - ((7.7rem * 2)  + (env(safe-area-inset-top) + env(safe-area-inset-bottom)) ));
       }
 
@@ -230,14 +229,14 @@ class MuiDrawer extends HTMLElement {
         height: 100%;
       }
 
-      main { height: 100%; }
+      .content { height: 100%; }
 
-      :host([has-header]) main,
-      :host([has-footer]) main {
+      :host([has-header]) .content,
+      :host([has-footer]) .content {
         height: calc(100% - 7.7rem);
       }
 
-      :host([has-header][has-footer]) main {
+      :host([has-header][has-footer]) .content {
         height: calc(100% - (7.7rem * 2));
       }
 
@@ -267,7 +266,7 @@ class MuiDrawer extends HTMLElement {
         overflow: hidden;
       }
 
-      :host([variant="persistent"]) header .spacer {
+      :host([variant="persistent"]) .header .spacer {
         height: 4.4rem;
       }
 
@@ -307,7 +306,7 @@ class MuiDrawer extends HTMLElement {
           border: none;
         }
 
-        footer {
+        .actions {
           position: fixed;
           bottom: 0;
           width: 100%;
@@ -350,13 +349,13 @@ class MuiDrawer extends HTMLElement {
           z-index: initial;
         }
 
-        :host([variant="persistent"]) header {
+        :host([variant="persistent"]) .header {
           padding-top: var(--space-400);
         }
 
-        :host([variant="persistent"]) main { height: auto; }
+        :host([variant="persistent"]) .content { height: auto; }
 
-        :host([variant="persistent"]) footer {
+        :host([variant="persistent"]) .actions {
           border-bottom-right-radius: var(--radius-200);
           border-bottom-left-radius: var(--radius-200);
           position: static;
@@ -388,18 +387,18 @@ class MuiDrawer extends HTMLElement {
       <style>${baseStyles}${overlayStyles}${responsiveStyles}</style>
       <div class="overlay"></div>
       <div class="inner" role="dialog" aria-modal="true">
-        <header hidden>
+        <div class="header" hidden>
           <slot name="title"></slot>
           <mui-button class="close" variant="tertiary" aria-label="Close drawer">
             <mui-icon-close size="medium"></mui-icon-close>
           </mui-button>
-        </header>
-        <main class="${noPadding}">
+        </div>
+        <div class="content ${noPadding}">
           <slot></slot>
-        </main>
-        <footer hidden>
+        </div>
+        <div class="actions" hidden>
           <slot name="actions"></slot>
-        </footer>
+        </div>
       </div>
     `;
     } else if (variant === "push" || variant === "persistent") {
@@ -421,12 +420,12 @@ class MuiDrawer extends HTMLElement {
   private cacheEls() {
     this.innerEl = this.shadowRoot!.querySelector(".inner")!;
     this.overlayEl = this.shadowRoot!.querySelector(".overlay");
-    this.footerEl = this.shadowRoot!.querySelector("footer");
+    this.footerEl = this.shadowRoot!.querySelector(".actions");
     this.actionsSlot = this.shadowRoot!.querySelector('slot[name="actions"]');
     this.outer = this.shadowRoot!.querySelector(".outer");
     this.pushLayout = this.shadowRoot!.querySelector(".shell");
     this.persistentLayout = this.shadowRoot!.querySelector(".shell");
-    this.headerEl = this.shadowRoot!.querySelector("header");
+    this.headerEl = this.shadowRoot!.querySelector(".header");
     this.headerSlot = this.shadowRoot!.querySelector('slot[name="title"]');
   }
 
@@ -461,10 +460,10 @@ class MuiDrawer extends HTMLElement {
     // 👇 Reflect state on host
     this.toggleAttribute("has-header", hasHeader);
 
-    // Add/remove no-heading class on <main>
-    const mainEl = this.innerEl.querySelector("main");
-    if (mainEl) {
-      mainEl.classList.toggle("no-heading", !hasHeader);
+    // Add/remove no-heading class on <div class="content">
+    const contentEl = this.innerEl.querySelector(".content");
+    if (contentEl) {
+      contentEl.classList.toggle("no-heading", !hasHeader);
     }
   }
 

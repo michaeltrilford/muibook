@@ -163,6 +163,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>   
         <app-navbar-link link="#/table" title="Table"></app-navbar-link>
         <app-navbar-link link="#/image" title="Image"></app-navbar-link>
+        <app-navbar-link link="#/avatar" title="Avatar"></app-navbar-link>
         <app-navbar-link link="#/list" title="List"></app-navbar-link>
         <app-navbar-link link="#/icons" title="Icons"></app-navbar-link>
 

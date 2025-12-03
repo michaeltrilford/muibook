@@ -293,16 +293,52 @@ const videoMenuItems = /*html*/ `
         <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
       <mui-button variant="tertiary" class="video-menu-item" aria-label="Library">
-        <div class="avatar" slot="before">
-          <img size="small" src="${JulieAvatar}"  alt="Julie"/>
-        </div>
-        Outdoors
+        <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+        Julie AI
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">
-        <div class="avatar" slot="before">
-          <img size="small" src="${MaxAvatar}"  alt="Max"/>
-        </div>
-        Music
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
+        <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+        Max AI
+      </mui-button>
+            <mui-button variant="tertiary" class="video-menu-item" aria-label="Library">
+        <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+        Julie AI
+      </mui-button>
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
+        <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+        Max AI
+      </mui-button>
+            <mui-button variant="tertiary" class="video-menu-item" aria-label="Library">
+        <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+        Julie AI
+      </mui-button>
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
+        <mui-avatar slot="before" size="small" label="Max AI" background="positive"></mui-avatar>
+        Max AI
+      </mui-button>
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
+        <mui-avatar slot="before" size="small" label="Max AI" background="warning"></mui-avatar>
+        Max AI
+      </mui-button>
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
+        <mui-avatar slot="before" size="small" label="Max AI" background="attention"></mui-avatar>
+        Max AI
+      </mui-button>
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
+        <mui-avatar slot="before" size="small" label="Vocal Jazz"></mui-avatar>
+        Vocal Jazz
+      </mui-button>
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
+        <mui-avatar slot="before" size="small" label="Hot Grill">
+          <mui-icon-calendar></mui-icon-calendar>
+        </mui-avatar>
+        Hot Grill
+      </mui-button>
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
+        <mui-avatar slot="before" size="small" label="Hot Grill" background="attention">
+          <mui-icon-calendar></mui-icon-calendar>
+        </mui-avatar>
+        Hot Grill
       </mui-button>
       <mui-button variant="tertiary" size="small" class="video-menu-more video-menu-more_hero" aria-label="Show more">
         <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
@@ -389,20 +425,7 @@ const styles = /*css*/ `
     margin-left: var(--space-300);
   }
 
-  .avatar { 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-400);
-    height: var(--space-600);
-    width: var(--space-600);
-    overflow: hidden;
-    margin-right: var(--space-050);
-    > img {
-      width: 100%;
-      height: auto;
-    }
-  }
+  mui-avatar { margin-right: var(--space-050); }
 
   .video-menu-group-heading {
     margin-bottom: var(--space-200);
@@ -523,7 +546,7 @@ class compMuiTube extends HTMLElement {
             <mui-h-stack slot="showAbove" alignx="center" aligny="center" space="var(--space-300)" style="padding: var(--space-000) var(--space-300) var(--space-000) var(--space-300); width: 100%;">
               <mui-input content="placeholder" state="default" variant="default" placeholder="Search">
                 <mui-button variant="secondary" slot="after" aria-label="Search">
-                  <mui-icon-right-chevron size="medium"></mui-icon-right-chevron>
+                  <mui-icon-search size="medium"></mui-icon-search>
                 </mui-button>
               </mui-input>
               <mui-button variant="tertiary" aria-label="Settings">

@@ -407,9 +407,10 @@ class storySlat extends HTMLElement {
 
           <mui-slat slot="body" variant="row">
 
-            <mui-slat-accessory slot="accessory">
-              <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
-            </mui-slat-accessory>
+            <mui-avatar slot="accessory" size="medium" label="Espresso & Muffin Bar">
+              <mui-icon-left-sidebar></mui-icon-left-sidebar>
+            </mui-avatar>
+
             <mui-v-stack slot="start" space="0">
               <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
               <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
@@ -426,11 +427,11 @@ class storySlat extends HTMLElement {
             &lt;mui-slat variant="row"&gt;
             <br />
             <br />
-            &nbsp;&nbsp;&lt;mui-slat-accessory slot="accessory"&gt;
+            &nbsp;&nbsp;&lt;mui-avatar slot="accessory"&gt;
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-left-sidebar size="small"&gt;&lt;/mui-icon-left-sidebar&gt;
             <br />
-            &nbsp;&nbsp;&lt;/mui-slat-accessory&gt;
+            &nbsp;&nbsp;&lt;/mui-avatar&gt;
             <br />
             <br />
             &nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;
@@ -465,9 +466,9 @@ class storySlat extends HTMLElement {
           <mui-v-stack slot="body">
 
             <mui-slat variant="action">
-              <mui-slat-accessory slot="accessory">
+              <mui-avatar slot="accessory" size="small" label="Espresso & Muffin Bar" background="neutral">
                 <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
-              </mui-slat-accessory>
+              </mui-avatar>
               <mui-v-stack slot="start" space="0">
                 <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
                 <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
@@ -493,9 +494,9 @@ class storySlat extends HTMLElement {
                     </mui-h-stack>
                   </mui-slat>
                   <mui-slat variant="action">
-                    <mui-slat-accessory slot="accessory">
+                    <mui-avatar slot="accessory" size="small" label="Espresso & Muffin Bar" background="neutral">
                       <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
-                    </mui-slat-accessory>
+                    </mui-avatar>
                     <mui-v-stack  slot="start" space="0">
                       <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
                       <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
@@ -516,9 +517,9 @@ class storySlat extends HTMLElement {
                 <mui-rule></mui-rule>
                 <mui-v-stack space="var(--space-000)">
                   <mui-slat variant="action">
-                    <mui-slat-accessory slot="accessory">
+                    <mui-avatar slot="accessory" size="small" label="Espresso & Muffin Bar" background="attention">
                       <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
-                    </mui-slat-accessory>
+                    </mui-avatar>
                     <mui-v-stack slot="start" space="0">
                       <mui-body size="medium" weight="bold">Espresso & Muffin Bar</mui-body>
                       <mui-body size="small">Food & Drink • Richmond, VIC</mui-body>
@@ -535,9 +536,9 @@ class storySlat extends HTMLElement {
             <br />
             <br />
             &nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br /><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-accessory slot="accessory"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar slot="accessory"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-left-sidebar size="small"&gt;&lt;/mui-icon-left-sidebar&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-accessory&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-avatar&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;Espresso &amp; Muffin Bar&lt;/mui-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Food &amp; Drink • Richmond, VIC&lt;/mui-body&gt;<br />
@@ -566,9 +567,9 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant=&quot;action&quot;&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-accessory slot=&quot;accessory&quot;&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar slot=&quot;accessory&quot;&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-left-sidebar size=&quot;small&quot;&gt;&lt;/mui-icon-left-sidebar&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-accessory&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-avatar&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;medium&quot; weight=&quot;bold&quot;&gt;Espresso &amp; Muffin Bar&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot;&gt;Food &amp; Drink &bull; Richmond, VIC&lt;/mui-body&gt;<br>
@@ -592,9 +593,9 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br /><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat-accessory slot="accessory"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar slot="accessory"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-left-sidebar size="small"&gt;&lt;/mui-icon-left-sidebar&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat-accessory&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-avatar&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;Espresso &amp; Muffin Bar&lt;/mui-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Food &amp; Drink • Richmond, VIC&lt;/mui-body&gt;<br />

@@ -3,7 +3,7 @@ import { getPartMap } from "../../utils/part-map";
 /* Mui Link */
 class MuiLink extends HTMLElement {
   static get observedAttributes() {
-    return ["target", "href", "variant", "weight", "size", "download", "usage"];
+    return ["target", "href", "variant", "disabled", "weight", "size", "download", "usage"];
   }
 
   constructor() {
@@ -40,6 +40,19 @@ class MuiLink extends HTMLElement {
       }
     }
 
+    if (name === "disabled") {
+      const anchor = this.shadowRoot.querySelector("a");
+      if (anchor) {
+        if (newValue !== null) {
+          anchor.setAttribute("aria-disabled", "true");
+          anchor.setAttribute("href", "javascript:void(0)");
+        } else {
+          anchor.setAttribute("aria-disabled", "false");
+          anchor.setAttribute("href", this.getAttribute("href") || "#");
+        }
+      }
+    }
+
     if (name === "download") {
       const anchor = this.shadowRoot.querySelector("a");
       if (!anchor) return;
@@ -68,6 +81,7 @@ class MuiLink extends HTMLElement {
           if (slot) {
             const nodes = slot.assignedNodes({ flatten: true });
             this.updateIconSizes(nodes, isIconOnly);
+            this.updateAvatarSizes(nodes);
           }
         });
       });
@@ -116,6 +130,7 @@ class MuiLink extends HTMLElement {
         if (slot) {
           const nodes = slot.assignedNodes({ flatten: true });
           this.updateIconSizes(nodes, false);
+          this.updateAvatarSizes(nodes);
         }
       });
     }
@@ -148,7 +163,7 @@ class MuiLink extends HTMLElement {
       a:focus, a:active, a:hover { outline: var(--space-000); }
       a:hover { color: var(--link-text-color-default-hover); text-decoration-color: color-mix(in srgb, var(--link-text-color-default-hover) 80%, transparent); }
       a:focus { color: var(--link-text-color-default-focus); text-decoration-color: color-mix(in srgb, var(--link-text-color-default-focus) 80%, transparent); }
-      a:disabled { color: var(--link-text-color-default-disabled); text-decoration-color: color-mix(in srgb, var(--link-text-color-default-disabled) 80%, transparent); cursor: not-allowed; }
+      a[aria-disabled="true"] { color: var(--link-text-color-default-disabled); text-decoration-color: color-mix(in srgb, var(--link-text-color-default-disabled) 80%, transparent); cursor: not-allowed; }
       a, a:before, a:after {box-sizing: border-box;}
       a:focus-visible { outline: var(--outline-thick); }
 
@@ -225,7 +240,7 @@ class MuiLink extends HTMLElement {
         border: var(--action-primary-border-focus);
       }
 
-      :host([variant="primary"]) a:disabled {
+      :host([variant="primary"]) a[aria-disabled="true"] {
         background: var(--action-primary-background-disabled); 
         color: var(--action-primary-text-color-disabled);
         border: var(--action-primary-border-disabled);
@@ -235,7 +250,7 @@ class MuiLink extends HTMLElement {
       :host([variant="primary"]) a ::slotted(.mui-icon) { fill: var(--action-primary-text-color); }
       :host([variant="primary"]) a:hover ::slotted(.mui-icon) { fill: var(--action-primary-text-color-hover); }
       :host([variant="primary"]) a:focus ::slotted(.mui-icon) { fill: var(--action-primary-text-color-focus); }
-      :host([variant="primary"]) a:disabled ::slotted(.mui-icon) { fill: var(--action-primary-text-color-disabled); }
+      :host([variant="primary"]) a[aria-disabled="true"] ::slotted(.mui-icon) { fill: var(--action-primary-text-color-disabled); }
 
       /* Button Secondary 
       ========================================= */
@@ -257,7 +272,7 @@ class MuiLink extends HTMLElement {
         border: var(--action-secondary-border-focus); 
       }
 
-      :host([variant="secondary"]) a:disabled {
+      :host([variant="secondary"]) a[aria-disabled="true"] {
         background: var(--action-secondary-background-disabled);
         color: var(--action-secondary-text-color-disabled);
         border: var(--action-secondary-border-disabled); 
@@ -267,7 +282,7 @@ class MuiLink extends HTMLElement {
       :host([variant="secondary"]) a ::slotted(.mui-icon) { fill: var(--action-secondary-text-color); }
       :host([variant="secondary"]) a:hover ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-hover); }
       :host([variant="secondary"]) a:focus ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-focus); }
-      :host([variant="secondary"]) a:disabled ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-disabled); }
+      :host([variant="secondary"]) a[aria-disabled="true"] ::slotted(.mui-icon) { fill: var(--action-secondary-text-color-disabled); }
 
       /* Button Tertiary
       ========================================= */
@@ -289,7 +304,7 @@ class MuiLink extends HTMLElement {
         border: var(--action-tertiary-border-focus);
       }
 
-      :host([variant="tertiary"]) a:disabled {
+      :host([variant="tertiary"]) a[aria-disabled="true"] {
         background: var(--action-tertiary-background-disabled);
         color: var(--action-tertiary-text-color-disabled);
         border: var(--action-tertiary-border-disabled);
@@ -299,7 +314,7 @@ class MuiLink extends HTMLElement {
       :host([variant="tertiary"]) a ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color); }
       :host([variant="tertiary"]) a:hover ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-hover); }
       :host([variant="tertiary"]) a:focus ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-focus); }
-      :host([variant="tertiary"]) a:disabled ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-disabled); }
+      :host([variant="tertiary"]) a[aria-disabled="true"] ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-disabled); }
 
       /* Button Attention
       ========================================= */
@@ -321,7 +336,7 @@ class MuiLink extends HTMLElement {
         border: var(--action-attention-border-focus);
       }
 
-      :host([variant="attention"]) a:disabled {
+      :host([variant="attention"]) a[aria-disabled="true"] {
         background: var(--action-attention-background-disabled);
         color: var(--action-attention-text-color-disabled);
         border: var(--action-attention-border-disabled);
@@ -331,7 +346,7 @@ class MuiLink extends HTMLElement {
       :host([variant="attention"]) a ::slotted(.mui-icon) { fill: var(--action-attention-text-color); }
       :host([variant="attention"]) a:hover ::slotted(.mui-icon) { fill: var(--action-attention-text-color-hover); }
       :host([variant="attention"]) a:focus ::slotted(.mui-icon) { fill: var(--action-attention-text-color-focus); }
-      :host([variant="attention"]) a:disabled ::slotted(.mui-icon) { fill: var(--action-attention-text-color-disabled); }
+      :host([variant="attention"]) a[aria-disabled="true"] ::slotted(.mui-icon) { fill: var(--action-attention-text-color-disabled); }
 
       /* Icon only
       ========================================= */
@@ -385,6 +400,34 @@ class MuiLink extends HTMLElement {
       :host(.alert-slot):focus-visible ::slotted(.mui-icon) {
         fill: var(--alert-icon);
       }
+
+      :host(:not([variant="default"])) a ::slotted(mui-avatar) {
+        --avatar-background-override: var(--action-avatar-background);
+        margin-right: var(--space-050);
+      }
+
+      :host([variant="default"]) a ::slotted(mui-avatar) {
+        margin-right: var(--space-025);
+      }
+
+      :host(:not([variant="default"])) a[aria-disabled="true"] ::slotted(mui-avatar),
+      :host(:not([variant="default"])) a[aria-disabled="true"]:hover ::slotted(mui-avatar),
+      :host(:not([variant="default"])) a[aria-disabled="true"]:focus ::slotted(mui-avatar) {
+        --avatar-background-override: var(--action-avatar-background);
+      }
+
+      :host a[aria-disabled="true"] ::slotted(mui-avatar),
+      :host a[aria-disabled="true"]:hover ::slotted(mui-avatar),
+      :host a[aria-disabled="true"]:focus ::slotted(mui-avatar) {
+        opacity: 0.5;
+      }
+
+      :host(:not([variant="default"])) a:hover ::slotted(mui-avatar),
+      :host(:not([variant="default"])) a:focus ::slotted(mui-avatar) {
+        --avatar-background-override: var(--action-avatar-background-hover);
+      }
+
+
 
       /* Before & After Icon
       ========================================= */
@@ -498,7 +541,8 @@ class MuiLink extends HTMLElement {
 
       :host([size="x-small"][variant]:not([variant="default"])) a,
       :host([size="x-small"][variant]:not([variant="default"])) a:hover,
-      :host([size="x-small"][variant]:not([variant="default"])) a:focus {
+      :host([size="x-small"][variant]:not([variant="default"])) a:focus,
+      :host([size="x-small"][variant]:not([variant="default"])) a[aria-disabled="true"] {
         font-size: var(--text-font-size-xs);
         line-height: var(--text-line-height-xs);
         font-weight: var(--font-weight-semi-bold);
@@ -629,14 +673,45 @@ class MuiLink extends HTMLElement {
     <a
       part="${partMap}" 
       target="${this.getAttribute("target") || "_self"}" 
-      href="${this.getAttribute("href") || "#"}"
-      ${this.hasAttribute("download") ? `download="${this.getAttribute("download") || ""}"` : ""}
+      href="${this.hasAttribute("disabled") ? "javascript:void(0)" : this.getAttribute("href") || "#"}"
+      aria-disabled="${this.hasAttribute("disabled") ? "true" : "false"}"
+      ${
+        this.hasAttribute("download") && !this.hasAttribute("disabled")
+          ? `download="${this.getAttribute("download") || ""}"`
+          : ""
+      }
       >
       <slot name="before"></slot>
       <slot></slot>
       <slot name="after"></slot>
     </a>
     `;
+  }
+
+  // Update avatar sizes based on button size
+  updateAvatarSizes(nodes: Node[]): void {
+    const buttonSize = this.getAttribute("size") || "medium";
+
+    // Map button sizes to avatar sizes
+    const avatarSizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+
+    const targetAvatarSize = avatarSizeMap[buttonSize] || "small";
+
+    nodes.forEach((node: Node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as HTMLElement;
+        const isAvatar = el.tagName.toLowerCase() === "mui-avatar";
+
+        if (isAvatar) {
+          el.setAttribute("size", targetAvatarSize);
+        }
+      }
+    });
   }
 
   updateIconSizes(nodes: Node[], isIconOnly: boolean): void {

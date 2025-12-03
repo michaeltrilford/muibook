@@ -219,9 +219,12 @@ declare global {
         slot?: string;
       };
 
-      "mui-slat-accessory": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        slot?: string;
-        usage?: "card" | "accordion";
+      "mui-avatar": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        slot?: "accessory" | "start" | "end" | "before" | "after" | string;
+        size?: "small" | "medium" | "large" | string;
+        label?: string;
+        style?: React.CSSProperties;
+        class?: string;
       };
 
       // ACTIONS

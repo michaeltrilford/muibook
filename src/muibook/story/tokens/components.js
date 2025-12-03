@@ -224,7 +224,10 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--slat-card-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--slat-card-background-hover" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--slat-radius" variant="radius"></story-token-slat>
-            <story-token-slat slot="body" token="--slat-accessory-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-avatar-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-avatar-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-card-avatar-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slat-card-avatar-background-hover" variant="color"></story-token-slat>
           </spec-card>
 
           <spec-card 

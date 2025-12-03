@@ -99,6 +99,10 @@ export default defineConfig({
         ),
         "components/mui-icons/play-rectangle": path.resolve(__dirname, "src/components/mui-icons/play-rectangle.ts"),
         "components/mui-icons/list-and-film": path.resolve(__dirname, "src/components/mui-icons/list-and-film.ts"),
+        "components/mui-icons/search": path.resolve(__dirname, "src/components/mui-icons/search.ts"),
+        "components/mui-icons/checkmark": path.resolve(__dirname, "src/components/mui-icons/checkmark.ts"),
+        // AVATAR
+        "components/mui-avatar": path.resolve(__dirname, "src/components/mui-avatar"),
         // IMAGE
         "components/mui-image": path.resolve(__dirname, "src/components/mui-image"),
         // INPUT
@@ -128,7 +132,6 @@ export default defineConfig({
         // SLAT
         "components/mui-slat": path.resolve(__dirname, "src/components/mui-slat"),
         "components/mui-slat/slat": path.resolve(__dirname, "src/components/mui-slat/slat"),
-        "components/mui-slat/accessory": path.resolve(__dirname, "src/components/mui-slat/accessory"),
         "components/mui-slat/group": path.resolve(__dirname, "src/components/mui-slat/group"),
         // SMART CARD
         "components/mui-smart-card": path.resolve(__dirname, "src/components/mui-smart-card"),

@@ -41,7 +41,7 @@ class MuiDialog extends HTMLElement {
         background: var(--backdrop-overlay);
       }
 
-      header {
+      .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -49,13 +49,13 @@ class MuiDialog extends HTMLElement {
         border-bottom: var(--border-thin);
       }
 
-      main {
+      .content {
         max-height: 60vh;
         overflow-y: auto;
         padding: var(--space-500);
       }
 
-      footer {
+      .actions {
         display: flex;
         justify-content: flex-end;
         padding: var(--space-400) var(--space-500);
@@ -63,7 +63,7 @@ class MuiDialog extends HTMLElement {
         gap: var(--space-300);
       }
 
-      footer[hidden] {
+      .actions[hidden] {
         display: none !important;
       }
     `;
@@ -71,21 +71,21 @@ class MuiDialog extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <dialog>
-        <header>
+        <div class="header">
           <slot name="title"></slot>
           <mui-button class="close" aria-label="Close" variant="tertiary"><mui-icon-close size="medium"></mui-icon-close></mui-button>
-        </header>
-        <main>
+        </div>
+        <div class="content">
           <slot></slot>
-        </main>
-        <footer hidden>
+        </div>
+        <div class="actions" hidden>
           <slot name="actions"></slot>
-        </footer>
+        </div>
       </dialog>
     `;
 
     this.dialogEl = this.shadowRoot.querySelector("dialog")!;
-    this.footerEl = this.shadowRoot.querySelector("footer");
+    this.footerEl = this.shadowRoot.querySelector(".actions");
     this.actionsSlot = this.shadowRoot.querySelector('slot[name="actions"]');
 
     const closeBtn = this.shadowRoot.querySelector(".close");

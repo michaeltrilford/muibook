@@ -288,9 +288,21 @@
       "import": "./dist/esm/components/mui-icons/list-and-film/index.js",
       "types": "./dist/types/components/mui-icons/list-and-film/index.d.ts"
     },
+    "./mui-icons/search": {
+      "import": "./dist/esm/components/mui-icons/search/index.js",
+      "types": "./dist/types/components/mui-icons/search/index.d.ts"
+    },
+    "./mui-icons/checkmark": {
+      "import": "./dist/esm/components/mui-icons/checkmark/index.js",
+      "types": "./dist/types/components/mui-icons/checkmark/index.d.ts"
+    },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"
+    },
+    "./mui-avatar": {
+      "import": "./dist/esm/components/mui-avatar/index.js",
+      "types": "./dist/types/components/mui-avatar/index.d.ts"
     },
     "./mui-input": {
       "import": "./dist/esm/components/mui-input/index.js",
@@ -347,10 +359,6 @@
     "./mui-slat/slat": {
       "import": "./dist/esm/components/mui-slat/slat/index.js",
       "types": "./dist/types/components/mui-slat/slat/index.d.ts"
-    },
-    "./mui-slat/accessory": {
-      "import": "./dist/esm/components/mui-slat/accessory/index.js",
-      "types": "./dist/types/components/mui-slat/accessory/index.d.ts"
     },
     "./mui-slat/group": {
       "import": "./dist/esm/components/mui-slat/group/index.js",

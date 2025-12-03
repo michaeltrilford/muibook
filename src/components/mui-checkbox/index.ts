@@ -102,37 +102,13 @@ class MuiCheckbox extends HTMLElement {
     const disabled = this.hasAttribute("disabled");
 
     const CheckIcon = `
-      <svg
-        class="icon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="none"
-        viewBox="0 0 16 16"
-      >
-        <path
-          fill="currentColor"
-          d="M12.783 3.59a1 1 0 0 1 1.414 1.414L6.791 12.41a1 1 0 0 1-1.414 0L1.803 8.837l-.069-.076A1 1 0 0 1 3.14 7.353l.077.07 2.866 2.866z"
-        ></path>
-      </svg>
+      <mui-icon-checkmark class="icon" size="x-small" color="inverted"></mui-icon-checkmark>
     `;
 
     const indeterminate = this.hasAttribute("indeterminate");
 
     const IndeterminateIcon = `
-      <svg
-        class="icon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="none"
-        viewBox="0 0 16 16"
-      >
-        <path
-          fill="currentColor"
-          d="m12.5 7 .102.005a1 1 0 0 1 0 1.99L12.5 9h-9a1 1 0 0 1 0-2z"
-        ></path>
-      </svg>
+      <mui-icon-subtract class="icon" size="x-small" color="inverted"></mui-icon-subtract>
     `;
 
     const icon = indeterminate ? IndeterminateIcon : CheckIcon;
@@ -199,11 +175,9 @@ class MuiCheckbox extends HTMLElement {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 16px;
-          height: 16px;
           pointer-events: none;
           display: none;
-          color: var(--checkbox-icon-color-checked);
+          fill: var(--checkbox-icon-color-checked);
         }
 
         .checkbox-wrapper input:checked + .icon {
