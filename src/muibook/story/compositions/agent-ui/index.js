@@ -1,5 +1,3 @@
-import "../../../images/mui/mui-logo-mobile";
-
 class compAgentUI extends HTMLElement {
   constructor() {
     super();
@@ -62,7 +60,7 @@ class compAgentUI extends HTMLElement {
     const AgentConversationReply = /*html*/ `
       <style>
         .conversation-background {
-          background: var(--surface);
+          background: var(--surface-elevated-200);
           padding: var(--space-400);
           box-sizing: border-box;
           margin-top: calc(var(--space-400) * -1);
@@ -70,7 +68,7 @@ class compAgentUI extends HTMLElement {
           margin-left: calc(var(--space-400) * -1);
           margin-right: calc(var(--space-400) * -1);
         }
-        .conversation-reply {
+        mui-grid {
           background: var(--surface-elevated-alpha);
           padding: var(--space-400);
           width: 100%;
@@ -78,26 +76,15 @@ class compAgentUI extends HTMLElement {
           border: var(--border-thin);
           border-radius: var(--radius-300);
         }
-        .avatar {
-          width: 3.6rem;
-          flex: 0 0 3.6rem;
-          height: 3.6rem;
-          background: var(--mui-brand-300);
-          display: flex;
-          justify-content: center;
-          align-content: center;
-          border-radius: 3.6rem;
+        mui-grid::part(display) {
+          align-items: center;
         }
-        mui-logo-mobile { max-width: 1.6rem; margin-top: 4px; }
-
       </style>
       <div class="conversation-background">
-        <mui-h-stack class="conversation-reply" alignY="center" space="var(--space-400)">
-          <div class="avatar">
-            <mui-logo-mobile style="width: 100%; height: auto;"></mui-logo-mobile>
-          </div>
-          <mui-body size="small">Review my website <mui-link size="small" href="https://muibook.com" target="_blank">muibook.com</mui-link></mui-body>
-        </mui-h-stack>
+        <mui-grid class="conversation-reply" col="auto 1fr" space="var(--space-400)">
+          <mui-avatar label="Michael Trilford" background="neutral"></mui-avatar>
+          <mui-body size="small">Can you provide me with the CSAT data for the past quarter, broken down by feature area, and highlight any pain points mentioned in customer feedback?</mui-body>
+        </mui-grid>
       </div>
     `;
 
