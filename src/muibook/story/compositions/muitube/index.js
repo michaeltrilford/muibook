@@ -600,18 +600,13 @@ class compMuiTube extends HTMLElement {
       <story-template 
         title="MuiTube"
         description="
-          Creating compositions provide the Design 
-          System a view of how the system is working and 
-          where it needs flexibility.
+          A composition demonstrating how to build a YouTube-like experience using components from the Design System, arranged in a way that effectively supports real content.
         "
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/muitube/index.js"
         storybook="https://stories.muibook.com/?path=/docs/compositions-muitube--docs"
       >
 
-        <story-card 
-          title="Home page" 
-          description="A composition demonstrating how to build a YouTube-like experience using components from the Design System, arranged in a way that effectively supports real content."
-          >
+        <story-card noheader>
           <div slot="body">
             ${Comp}
           </div>
