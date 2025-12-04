@@ -189,7 +189,7 @@ const videos = [
 ];
 
 const videoPageContent = /*html*/ `
-  <mui-v-stack slot="page" class="video-page" space="var(--space-000)" alignx="stretch" aligny="start">
+  <mui-v-stack slot="page" class="video-page" space="var(--space-000)" alignx="stretch" aligny="start" id="main-content">
     <div class="filter">
       <div class="filter_next">
         <mui-button variant="tertiary" class="filter-action" aria-label="Next filters">
@@ -204,39 +204,18 @@ const videoPageContent = /*html*/ `
           aligny="center" 
           space="var(--space-200)"
         >
-          <mui-chip active>
-            <mui-body size="small" variant="default" weight="bold">All</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Gaming</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Podcasts</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Thrillers</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Marco Pierre White</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Italian cuisine</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Roasting</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Music</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Satire</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Hamburgers</mui-body>
-          </mui-chip>
-          <mui-chip>
-            <mui-body size="small" variant="default" weight="bold">Japan</mui-body>
-          </mui-chip>
+          <mui-chip class="skip-chip" style="margin-right: var(--space-100)">Skip Filters</mui-chip>  
+          <mui-chip active>All</mui-chip>
+          <mui-chip>Gaming</mui-chip>
+          <mui-chip>Podcasts</mui-chip>
+          <mui-chip>Thrillers</mui-chip>
+          <mui-chip>Marco Pierre White</mui-chip>
+          <mui-chip>Italian cuisine</mui-chip>
+          <mui-chip>Roasting</mui-chip>
+          <mui-chip>Music</mui-chip>
+          <mui-chip>Satire</mui-chip>
+          <mui-chip>Hamburgers</mui-chip>
+          <mui-chip>Japan</mui-chip>
         </mui-grid>
       </div>
     </div>
@@ -275,6 +254,12 @@ const videoMenuItems = /*html*/ `
   <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); background: var(--surface-elevated-100);">
 
     <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
+
+      <mui-button variant="tertiary" class="video-menu-item skip-menu-button" aria-label="Skip menu">
+        Skip Menu
+        <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+      </mui-button>
+
       <mui-button variant="tertiary" class="video-menu-item" aria-label="Home">
         <mui-icon-home slot="before"></mui-icon-home>
         Home
@@ -399,6 +384,33 @@ const videoMenuItems = /*html*/ `
 `;
 
 const styles = /*css*/ `
+
+  /* Skip Menu Button */
+  .skip-menu-button {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .skip-menu-button:focus,
+  .skip-menu-button:focus-within {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  .skip-chip {
+    display: none; /* hidden by default */
+  }
+
+  .skip-chip.show {
+    display: inline-flex; /* shows only on keyboard focus */
+  }
+
   :host { display: block; }
 
   .fullscreen {
@@ -439,6 +451,7 @@ const styles = /*css*/ `
     -ms-overflow-style: none; /* IE/Edge */
     scrollbar-width: none;     /* Firefox */
     -webkit-overflow-scrolling: touch;
+    margin-right: var(--stroke-size-500);
   }
 
   .filter_chip-scroll::-webkit-scrollbar {
@@ -452,9 +465,12 @@ const styles = /*css*/ `
     background: var(--surface-elevated-200); 
     position: absolute; 
     right: 0; 
-    top: var(--space-600); 
+    top: calc(var(--space-500) + var(--space-100)); 
     box-shadow: calc(-1 * var(--space-400)) 0 var(--space-200) 0 var(--surface-elevated-200); 
-    padding-right: var(--space-500);
+    padding-top: var(--space-100);
+    padding-right: calc(var(--space-500) - var(--stroke-size-500));
+    padding-bottom: var(--space-100);
+    margin-right: var(--stroke-size-500);
   }  
   
   .card_content { padding-left: var(--space-100); }
@@ -480,6 +496,10 @@ const styles = /*css*/ `
   .video-page {
     height: calc(100dvh - 7.7rem);
     overflow-y: scroll;
+  }
+  .video-page:focus-visible {
+      outline: var(--outline-thick);
+      outline-offset: calc(-1 * var(--stroke-size-500))
   }
 
   .video_grid {
@@ -508,7 +528,7 @@ const styles = /*css*/ `
     }
 
     .filter_next { 
-      padding-right: var(--space-700);
+      padding-right: calc(var(--space-700) - var(--stroke-size-500));
     }  
 
     .video_grid {
@@ -525,6 +545,7 @@ class compMuiTube extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
+
     const Comp = /*html*/ `
       <style>${styles}</style>
       <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" style="background: var(--surface-elevated-200);" slot="body">
@@ -625,6 +646,62 @@ class compMuiTube extends HTMLElement {
 
       </story-template>
     `;
+
+    // Handle skip menu buttons
+    this.shadowRoot.querySelectorAll(".skip-menu-button").forEach((skipButton) => {
+      skipButton.addEventListener("click", (e) => {
+        const mainContent = this.shadowRoot.querySelector("#main-content");
+        if (mainContent) {
+          mainContent.focus();
+          mainContent.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    const filterAction = this.shadowRoot.querySelector(".filter-action");
+    const skipChip = this.shadowRoot.querySelector(".skip-chip");
+    const firstVideoCard = this.shadowRoot.querySelector(".video_grid .card");
+
+    // Step 1: Show skip chip only on tab forward out of filter-action
+    filterAction.addEventListener("keydown", (e) => {
+      if (e.key === "Tab" && !e.shiftKey) {
+        skipChip.classList.add("show");
+        skipChip.setAttribute("tabindex", "0"); // make focusable for keyboard
+      }
+    });
+
+    // Step 2: Focus first inner <a> when skip chip is activated
+    const focusFirstCard = () => {
+      if (!firstVideoCard) return;
+
+      // Query the shadow root of the <mui-link> to get the <a> inside
+      const linkAnchor = firstVideoCard.shadowRoot?.querySelector("a") || firstVideoCard.querySelector("a");
+      if (linkAnchor) {
+        linkAnchor.focus();
+      } else {
+        // Fallback: focus the host itself
+        firstVideoCard.focus();
+      }
+
+      // Hide skip chip and remove temporary tabindex
+      skipChip.classList.remove("show");
+      skipChip.removeAttribute("tabindex");
+    };
+
+    // Activate skip chip on click or Enter/Space
+    skipChip.addEventListener("click", focusFirstCard);
+    skipChip.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        focusFirstCard();
+      }
+    });
+
+    // Optional: hide skip chip if blurred without activating
+    skipChip.addEventListener("blur", () => {
+      skipChip.classList.remove("show");
+      skipChip.removeAttribute("tabindex");
+    });
 
     // Open drawer buttons
     this.shadowRoot.querySelectorAll("mui-button[data-drawer]").forEach((btn) => {

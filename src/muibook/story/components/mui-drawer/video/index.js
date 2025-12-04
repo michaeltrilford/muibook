@@ -330,39 +330,17 @@ class storyDrawerVideo extends HTMLElement {
               aligny="center" 
               space="var(--space-200)"
             >
-              <mui-chip active>
-                <mui-body size="small" variant="default" weight="bold">All</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Gaming</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Podcasts</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Thrillers</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Marco Pierre White</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Italian cuisine</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Roasting</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Music</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Satire</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Hamburgers</mui-body>
-              </mui-chip>
-              <mui-chip>
-                <mui-body size="small" variant="default" weight="bold">Japan</mui-body>
-              </mui-chip>
+              <mui-chip active>All</mui-chip>
+              <mui-chip>Gaming</mui-chip>
+              <mui-chip>Podcasts</mui-chip>
+              <mui-chip>Thrillers</mui-chip>
+              <mui-chip>Marco Pierre White</mui-chip>
+              <mui-chip>Italian cuisine</mui-chip>
+              <mui-chip>Roasting</mui-chip>
+              <mui-chip>Music</mui-chip>
+              <mui-chip>Satire</mui-chip>
+              <mui-chip>Hamburgers</mui-chip>
+              <mui-chip>Japan</mui-chip>
             </mui-grid>
           </div>
         </div>
