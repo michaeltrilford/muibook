@@ -199,7 +199,7 @@ html[data-brand="ana"][data-theme="light"] {
   --surface: var(--ana-grey-200);
   --surface-elevated-alpha: var(--white-opacity-50);
   --surface-elevated-100: var(--white);
-  --surface-elevated-200: var(--ana-grey-100);
+  --surface-elevated-200: var(--ana-grey-50);
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--ana-grey-300);
   --surface-recessed-200: var(--ana-grey-400);
@@ -369,8 +369,8 @@ html[data-brand="ana"][data-theme="dark"] {
   /* Surface */
   --surface: var(--ana-grey-900);
   --surface-elevated-alpha: var(--white-opacity-10);
-  --surface-elevated-100: var(--ana-grey-800);
-  --surface-elevated-200: var(--ana-grey-900);
+  --surface-elevated-100: var(--ana-grey-700);
+  --surface-elevated-200: var(--ana-grey-800);
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--ana-grey-1000);
   --surface-recessed-200: var(--ana-grey-1100);
