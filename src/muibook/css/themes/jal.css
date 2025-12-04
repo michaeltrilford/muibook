@@ -155,9 +155,9 @@ html[data-brand="jal"][data-theme="light"] {
   --action-tertiary-background-hover: var(--black-opacity-10);
   --action-tertiary-background-focus: var(--black-opacity-10);
   --action-tertiary-background-disabled: var(--jal-grey-300);
-  --action-tertiary-text-color: var(--jal-red-300);
-  --action-tertiary-text-color-hover: var(--jal-red-300);
-  --action-tertiary-text-color-focus: var(--jal-red-300);
+  --action-tertiary-text-color: var(--jal-red-400);
+  --action-tertiary-text-color-hover: var(--jal-red-400);
+  --action-tertiary-text-color-focus: var(--jal-red-400);
   --action-tertiary-text-color-disabled: var(--jal-grey-100);
 
   --action-attention-border-color: var(--jal-red-800);
@@ -182,10 +182,6 @@ html[data-brand="jal"][data-theme="light"] {
 
   /* Outline (Focus) */
   --outline-color: var(--jal-red-300);
-
-  /* Icon */
-  --icon-color-default: var(--jal-red-300);
-  --icon-color-inverted: var(--jal-white);
 
   /* Type */
   --text-color: var(--jal-grey-900);
@@ -225,10 +221,6 @@ html[data-brand="jal"][data-theme="light"] {
   /* Carousel */
   --carousel-background: var(--jal-grey-100);
 
-  /* Chip */
-  --chip-border-color-active: var(--jal-red-500);
-  --chip-text-color-active: var(--jal-red-500);
-
   /* Stepper */
   --stepper-color: var(--jal-red-500);
   --stepper-background-active: var(--stepper-color);
@@ -250,7 +242,7 @@ html[data-brand="jal"][data-theme="light"] {
   --chip-border-color: var(--jal-grey-300);
   --chip-border-color-hover: var(--jal-grey-300);
   --chip-border-color-focus: var(--jal-grey-300);
-  --chip-border-color-active: var(--jal-grey-1000);
+  --chip-border-color-active: var(--jal-red-500);
   --chip-text-color-active: var(--jal-grey-1000);
   --chip-icon-fill: var(--jal-black);
   --chip-dismiss-action-background: var(--jal-grey-100);
@@ -355,10 +347,6 @@ html[data-brand="jal"][data-theme="dark"] {
   /* Outline (Focus) */
   --outline-color: var(--jal-red-200);
 
-  /* Icon */
-  --icon-color-default: var(--jal-red-200);
-  --icon-color-inverted: var(--jal-black);
-
   /* Type */
   --text-color: var(--jal-grey-200);
   --heading-text-color: var(--jal-red-200);
@@ -397,10 +385,6 @@ html[data-brand="jal"][data-theme="dark"] {
   /* Carousel */
   --carousel-background: var(--jal-grey-900);
 
-  /* Chip */
-  --chip-border-color-active: var(--jal-red-200);
-  --chip-text-color-active: var(--jal-red-200);
-
   /* Stepper */
   --stepper-color: var(--jal-red-200);
   --stepper-background-active: var(--stepper-color);
@@ -422,7 +406,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --chip-border-color: var(--jal-grey-600);
   --chip-border-color-hover: var(--jal-grey-700);
   --chip-border-color-focus: var(--jal-grey-700);
-  --chip-border-color-active: var(--jal-grey-100);
+  --chip-border-color-active: var(--jal-red-200);
   --chip-text-color-active: var(--jal-grey-100);
   --chip-icon-fill: var(--jal-white);
   --chip-dismiss-action-background: var(--surface-elevated-100);

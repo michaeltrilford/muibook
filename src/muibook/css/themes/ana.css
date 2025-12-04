@@ -185,10 +185,6 @@ html[data-brand="ana"][data-theme="light"] {
   /* Outline (Focus) */
   --outline-color: var(--ana-blue-300);
 
-  /* Icon */
-  --icon-color-default: var(--ana-blue-500);
-  --icon-color-inverted: var(--ana-white);
-
   /* Type */
   --text-color: var(--ana-grey-900);
   --heading-text-color: var(--ana-blue-500);
@@ -257,6 +253,10 @@ html[data-brand="ana"][data-theme="light"] {
   --chip-icon-fill: var(--ana-black);
   --chip-dismiss-action-background: var(--ana-grey-100);
   --chip-dismiss-action-background-hover: var(--black-opacity-0);
+
+  /* Drawer */
+  --dialog-background: var(--ana-white);
+  --drawer-background: var(--ana-white);
 }
 
 /* =============================================================================== */
@@ -328,7 +328,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --action-tertiary-background-hover: var(--ana-grey-1100);
   --action-tertiary-background-focus: var(--ana-grey-1100);
   --action-tertiary-background-disabled: var(--ana-grey-600);
-  --action-tertiary-text-color: var(--ana-blue-200);
+  --action-tertiary-text-color: var(--ana-blue-100);
   --action-tertiary-text-color-hover: var(--ana-blue-200);
   --action-tertiary-text-color-focus: var(--ana-blue-200);
   --action-tertiary-text-color-disabled: var(--ana-grey-300);
@@ -355,10 +355,6 @@ html[data-brand="ana"][data-theme="dark"] {
 
   /* Outline (Focus) */
   --outline-color: var(--ana-blue-200);
-
-  /* Icon */
-  --icon-color-default: var(--ana-blue-200);
-  --icon-color-inverted: var(--ana-white);
 
   /* Type */
   --text-color: var(--ana-grey-100);
@@ -428,6 +424,10 @@ html[data-brand="ana"][data-theme="dark"] {
   --chip-icon-fill: var(--ana-white);
   --chip-dismiss-action-background: var(--ana-grey-700);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
+
+  /* Drawer */
+  --dialog-background: var(--ana-grey-800);
+  --drawer-background: var(--ana-grey-800);
 }
 
 /* ================================================================= */
