@@ -792,30 +792,6 @@ class storyDrawer extends HTMLElement {
           space="var(--space-600)"
           col="repeat(auto-fit, minmax(268px, 1fr))"
         >
-          <mui-v-stack alignx="start" aligny="start" space="var(--space-300)" class="card">
-            <mui-image variants="image"><img slot="image" src="${D}" alt="Urban Photography Tips" /></mui-image>
-            <mui-h-stack alignx="start" aligny="start" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
-              <mui-v-stack class="card_content" alignx="start" aligny="start" space="var(--space-025)" style="border-radius: var(--radius-000); width: 100%;">
-                <mui-body size="large" variant="default" weight="bold">Urban Photography Tips</mui-body>
-                <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
-                  <mui-body size="x-small" variant="default" weight="bold">LensMaster</mui-body>
-                  <mui-body size="x-small" variant="default" weight="bold">120K views • 2 days ago</mui-body>
-                </mui-v-stack>
-              </mui-v-stack>
-            </mui-h-stack>
-          </mui-v-stack>
-          <mui-v-stack alignx="start" aligny="start" space="var(--space-300)" class="card">
-            <mui-image variants="image"><img slot="image" src="${C}" alt="Beginner Yoga Routine" /></mui-image>
-            <mui-h-stack alignx="start" aligny="start" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
-              <mui-v-stack class="card_content" alignx="start" aligny="start" space="var(--space-025)" style="border-radius: var(--radius-000); width: 100%;">
-                <mui-body size="large" variant="default" weight="bold">Beginner Yoga Routine</mui-body>
-                <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
-                  <mui-body size="x-small" variant="default" weight="bold">Flex & Flow</mui-body>
-                  <mui-body size="x-small" variant="default" weight="bold">980K views • 1 week ago</mui-body>
-                </mui-v-stack>
-              </mui-v-stack>
-            </mui-h-stack>
-          </mui-v-stack>
 
           ${videos
             .map(
