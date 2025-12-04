@@ -33,7 +33,8 @@ class storyDrawerVideo extends HTMLElement {
       }
 
       .video-menu-more_hero {
-        margin-left: var(--space-300);
+        margin-left: calc(var(--space-300) + var(--space-025));
+        margin-right: calc(var(--space-300) + var(--space-025));
       }
 
       mui-avatar { margin-right: var(--space-050); }
