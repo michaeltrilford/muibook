@@ -153,8 +153,8 @@ html[data-brand="ana"][data-theme="light"] {
   --action-tertiary-border-color-hover: var(--white-opacity-0);
   --action-tertiary-border-color-focus: var(--white-opacity-0);
   --action-tertiary-border-color-disabled: var(--ana-grey-400);
-  --action-tertiary-background: var(--white-opacity-0);
-  --action-tertiary-background-hover: var(--ana-white);
+  --action-tertiary-background-hover: var(--ana-grey-100);
+  --action-tertiary-background-focus: var(--ana-grey-100);
   --action-tertiary-background-focus: var(--ana-white);
   --action-tertiary-background-disabled: var(--white-opacity-0);
   --action-tertiary-text-color: var(--ana-blue-500);
@@ -248,7 +248,7 @@ html[data-brand="ana"][data-theme="light"] {
   --chip-border-color: var(--ana-grey-300);
   --chip-border-color-hover: var(--ana-grey-300);
   --chip-border-color-focus: var(--ana-grey-300);
-  --chip-border-color-active: var(--ana-grey-1000);
+  --chip-border-color-active: var(--ana-blue-500);
   --chip-text-color-active: var(--ana-grey-1000);
   --chip-icon-fill: var(--ana-black);
   --chip-dismiss-action-background: var(--ana-grey-100);
@@ -325,8 +325,8 @@ html[data-brand="ana"][data-theme="dark"] {
   --action-tertiary-border-color-focus: var(--white-opacity-0);
   --action-tertiary-border-color-disabled: var(--white-opacity-0);
   --action-tertiary-background: var(--white-opacity-0);
-  --action-tertiary-background-hover: var(--ana-grey-1100);
-  --action-tertiary-background-focus: var(--ana-grey-1100);
+  --action-tertiary-background-hover: var(--black-opacity-40);
+  --action-tertiary-background-focus: var(--black-opacity-40);
   --action-tertiary-background-disabled: var(--ana-grey-600);
   --action-tertiary-text-color: var(--ana-blue-100);
   --action-tertiary-text-color-hover: var(--ana-blue-200);
@@ -394,10 +394,6 @@ html[data-brand="ana"][data-theme="dark"] {
   /* Carousel */
   --carousel-background: var(--ana-grey-800);
 
-  /* Chip */
-  --chip-border-color-active: var(--ana-blue-200);
-  --chip-text-color-active: var(--ana-blue-200);
-
   /* Stepper */
   --stepper-color: var(--ana-blue-200);
   --stepper-background-active: var(--stepper-color);
@@ -419,8 +415,8 @@ html[data-brand="ana"][data-theme="dark"] {
   --chip-border-color: var(--ana-grey-600);
   --chip-border-color-hover: var(--ana-grey-700);
   --chip-border-color-focus: var(--ana-grey-700);
-  --chip-border-color-active: var(--ana-grey-100);
-  --chip-text-color-active: var(--ana-grey-100);
+  --chip-border-color-active: var(--ana-blue-200);
+  --chip-text-color-active: var(--ana-blue-100);
   --chip-icon-fill: var(--ana-white);
   --chip-dismiss-action-background: var(--ana-grey-700);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
