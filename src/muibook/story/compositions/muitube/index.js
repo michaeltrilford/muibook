@@ -257,7 +257,6 @@ const videoMenuItems = /*html*/ `
 
       <mui-button variant="tertiary" class="video-menu-item skip-menu-button" aria-label="Skip menu">
         Skip Menu
-        <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
 
       <mui-button variant="tertiary" class="video-menu-item" aria-label="Home">
@@ -742,8 +741,10 @@ class compMuiTube extends HTMLElement {
       if (!button || !scrollContainer) return;
 
       function checkEnd() {
+        const isScrollable = scrollContainer.scrollWidth > scrollContainer.clientWidth;
         const atEnd = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 10;
-        if (atEnd) {
+
+        if (!isScrollable || atEnd) {
           button.classList.add("at-end");
         } else {
           button.classList.remove("at-end");
@@ -751,18 +752,39 @@ class compMuiTube extends HTMLElement {
       }
 
       button.addEventListener("click", () => {
-        const scrollAmount = 200; // Adjust as needed
+        const scrollAmount = 200;
         scrollContainer.scrollBy({
           left: scrollAmount,
           behavior: "smooth",
         });
+        // Recheck after scroll completes
+        setTimeout(checkEnd, 350);
       });
 
       scrollContainer.addEventListener("scroll", checkEnd);
 
-      // Initial check
-      checkEnd();
+      // Don't check on initial load - wait for connectedCallback
     });
+  }
+  connectedCallback() {
+    // Wait for all custom elements to render before checking scroll
+    setTimeout(() => {
+      this.shadowRoot.querySelectorAll(".filter").forEach((filter) => {
+        const button = filter.querySelector(".filter-action");
+        const scrollContainer = filter.querySelector(".filter_chip-scroll");
+
+        if (!button || !scrollContainer) return;
+
+        const isScrollable = scrollContainer.scrollWidth > scrollContainer.clientWidth;
+        const atEnd = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 10;
+
+        if (!isScrollable || atEnd) {
+          button.classList.add("at-end");
+        } else {
+          button.classList.remove("at-end");
+        }
+      });
+    }, 100);
   }
 }
 
