@@ -158,13 +158,11 @@ class MuiChip extends HTMLElement {
         fill: var(--chip-icon-fill);
       }
 
-      :host(.has-before) ::slotted(.mui-icon),
-      :host(.has-before) ::slotted(.mui-avatar) { 
+      :host(.has-before) ::slotted(.mui-icon) { 
         margin-right: -4px;
       }
 
-      :host(.has-after) ::slotted(.mui-icon),
-      :host(.has-after) ::slotted(.mui-avatar) { 
+      :host(.has-after) ::slotted(.mui-icon) { 
         margin-left: -4px;
       }
 

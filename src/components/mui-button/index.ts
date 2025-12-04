@@ -429,23 +429,27 @@ class MuiButton extends HTMLElement {
       font-weight: var(--font-weight-semi-bold);
       padding: var(--action-padding-x-small);
       border-width: var(--stroke-size-100);
+      border-radius: var(--action-radius-x-small);
     }
 
     :host([size="small"]) button {
       font-size: var(--text-font-size-s);
       line-height: var(--text-line-height-s);
       padding: var(--action-padding-small);
+      border-radius: var(--action-radius-small);
     }
 
     :host([size="medium"]) button {
       font-size: var(--text-font-size-m);
       line-height: var(--text-line-height-m);
+      border-radius: var(--action-radius-medium);
     }
 
     :host([size="large"]) button {
       font-size: var(--text-font-size-l);
       line-height: var(--text-line-height-l);
       padding: var(--action-padding-large);
+      border-radius: var(--action-radius-large);
     }
 
     :host([size="x-small"][icon-only]) button {

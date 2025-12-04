@@ -171,6 +171,10 @@ class tokensIntent extends HTMLElement {
             <story-token-slat slot="body" token="--action-line-height" variant="line-height"></story-token-slat>
             <story-token-slat slot="body" token="--action-font-weight" variant="font-weight"></story-token-slat>
             <story-token-slat slot="body" token="--action-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--action-radius-x-small" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--action-radius-small" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--action-radius-medium" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--action-radius-large" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--action-avatar-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--action-avatar-background-hover" variant="color"></story-token-slat>
           </spec-card>

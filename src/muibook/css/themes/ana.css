@@ -237,6 +237,26 @@ html[data-brand="ana"][data-theme="light"] {
   --stepper-background-inactive: var(--grey-200);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--ana-grey-200);
+  --avatar-background-positive: var(--ana-green-200);
+  --avatar-background-warning: var(--ana-yellow-200);
+  --avatar-background-attention: var(--ana-red-200);
+
+  /* Chip */
+  --chip-background: var(--ana-white);
+  --chip-background-hover: var(--ana-white);
+  --chip-background-focus: var(--ana-white);
+  --chip-background-active: var(--ana-white);
+  --chip-border-color: var(--ana-grey-300);
+  --chip-border-color-hover: var(--ana-grey-300);
+  --chip-border-color-focus: var(--ana-grey-300);
+  --chip-border-color-active: var(--ana-grey-1000);
+  --chip-text-color-active: var(--ana-grey-1000);
+  --chip-icon-fill: var(--ana-black);
+  --chip-dismiss-action-background: var(--ana-grey-100);
+  --chip-dismiss-action-background-hover: var(--black-opacity-0);
 }
 
 /* =============================================================================== */
@@ -388,6 +408,26 @@ html[data-brand="ana"][data-theme="dark"] {
   --stepper-background-inactive: var(--black);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--ana-grey-900);
+  --avatar-background-positive: var(--ana-green-900);
+  --avatar-background-warning: var(--ana-yellow-900);
+  --avatar-background-attention: var(--ana-red-900);
+
+  /* Chip */
+  --chip-background: var(--ana-grey-800);
+  --chip-background-hover: var(--ana-grey-800);
+  --chip-background-focus: var(--ana-grey-800);
+  --chip-background-active: var(--ana-grey-800);
+  --chip-border-color: var(--ana-grey-600);
+  --chip-border-color-hover: var(--ana-grey-700);
+  --chip-border-color-focus: var(--ana-grey-700);
+  --chip-border-color-active: var(--ana-grey-100);
+  --chip-text-color-active: var(--ana-grey-100);
+  --chip-icon-fill: var(--ana-white);
+  --chip-dismiss-action-background: var(--ana-grey-700);
+  --chip-dismiss-action-background-hover: var(--white-opacity-0);
 }
 
 /* ================================================================= */
@@ -398,7 +438,11 @@ html[data-brand="ana"][data-theme="dark"] {
 /* any changes you wish to make                                      */
 /* ================================================================= */
 html[data-brand="ana"] {
-  --action-radius: var(--radius-400);
+  --action-radius-x-small: var(--radius-300);
+  --action-radius-small: var(--radius-400);
+  --action-radius-medium: var(--radius-500);
+  --action-radius-large: var(--radius-600);
+
   /* Card */
   --card-radius: var(--radius-400);
   /* Tab */

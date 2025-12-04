@@ -103,6 +103,8 @@ class tokensBrand extends HTMLElement {
             <story-token-slat slot="body" token="--radius-200" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--radius-300" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--radius-400" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--radius-500" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--radius-600" variant="radius"></story-token-slat>
           </spec-card>
 
           <spec-card id="space" title="Space">

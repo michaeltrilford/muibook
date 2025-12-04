@@ -224,6 +224,26 @@ html[data-brand="modern"][data-theme="light"] {
   --stepper-background-inactive: var(--white);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--grey-200);
+  --avatar-background-positive: var(--green-200);
+  --avatar-background-warning: var(--orange-200);
+  --avatar-background-attention: var(--red-200);
+
+  /* Chip */
+  --chip-background: var(--white);
+  --chip-background-hover: var(--white);
+  --chip-background-focus: var(--white);
+  --chip-background-active: var(--white);
+  --chip-border-color: var(--grey-300);
+  --chip-border-color-hover: var(--grey-300);
+  --chip-border-color-focus: var(--grey-300);
+  --chip-border-color-active: var(--grey-1000);
+  --chip-text-color-active: var(--grey-1000);
+  --chip-icon-fill: var(--black);
+  --chip-dismiss-action-background: var(--grey-100);
+  --chip-dismiss-action-background-hover: var(--black-opacity-0);
 }
 
 /* =============================================================================== */
@@ -372,6 +392,26 @@ html[data-brand="modern"][data-theme="dark"] {
   --stepper-background-inactive: var(--black);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--grey-200);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--grey-900);
+  --avatar-background-positive: var(--green-900);
+  --avatar-background-warning: var(--orange-900);
+  --avatar-background-attention: var(--red-900);
+
+  /* Chip */
+  --chip-background: var(--grey-800);
+  --chip-background-hover: var(--grey-800);
+  --chip-background-focus: var(--grey-800);
+  --chip-background-active: var(--grey-800);
+  --chip-border-color: var(--grey-600);
+  --chip-border-color-hover: var(--grey-700);
+  --chip-border-color-focus: var(--grey-700);
+  --chip-border-color-active: var(--grey-100);
+  --chip-text-color-active: var(--grey-100);
+  --chip-icon-fill: var(--white);
+  --chip-dismiss-action-background: var(--grey-700);
+  --chip-dismiss-action-background-hover: var(--white-opacity-0);
 }
 
 /* ================================================================= */

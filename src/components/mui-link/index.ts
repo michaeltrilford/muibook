@@ -568,24 +568,28 @@ class MuiLink extends HTMLElement {
         font-weight: var(--font-weight-semi-bold);
         padding: var(--action-padding-x-small);
         border-width: var(--stroke-size-100);
+        border-radius: var(--action-radius-x-small);
       }
 
       :host([size="small"][variant]:not([variant="default"])) a {
         font-size: var(--text-font-size-s);
         line-height: var(--text-line-height-s);
         padding: var(--action-padding-small);
+        border-radius: var(--action-radius-small);
       }
 
       :host([size="medium"][variant]:not([variant="default"])) a {
         font-size: var(--text-font-size-m);
         line-height: var(--text-line-height-m);
         padding: var(--action-padding);
+        border-radius: var(--action-radius-medium);
       }
 
       :host([size="large"][variant]:not([variant="default"])) a {
         font-size: var(--text-font-size-l);
         line-height: var(--text-line-height-l);
         padding: var(--action-padding-large);
+        border-radius: var(--action-radius-large);
       }
 
       /* Icon-only size variants */

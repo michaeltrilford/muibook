@@ -8,6 +8,15 @@ class storyAvatar extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
+      .canvas {
+        background: var(--surface-elevated-100);
+        padding: var(--space-600);
+        margin-top: calc(var(--space-400) * -1);
+        margin-bottom: calc(var(--space-400) * -1);
+        margin-left: calc(var(--space-400) * -1);
+        margin-right: calc(var(--space-400) * -1);
+      }
+
       .group-item { text-align: left; }
 
       .group {
@@ -137,12 +146,14 @@ class storyAvatar extends HTMLElement {
         usageLink=""
         accessibility=""
       >
-        <mui-h-stack slot="body" alignY="center">
-          <mui-avatar size="x-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-          <mui-avatar size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-          <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-          <mui-avatar size="large" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-        </mui-h-stack>
+        <div class="canvas" slot="body">
+          <mui-h-stack alignY="center">
+            <mui-avatar size="x-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+            <mui-avatar size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+            <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+            <mui-avatar size="large" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+          </mui-h-stack>
+        </div>
         <story-code-block slot="footer" scrollable>
         </story-code-block>
       </story-card>
@@ -154,24 +165,25 @@ class storyAvatar extends HTMLElement {
         usageLink=""
         accessibility=""
       >
-        <mui-v-stack slot="body">
 
-          <mui-h-stack alignY="center">
-            <mui-avatar size="x-small" label="Max AI">
-              <mui-icon-calendar size="large"></mui-icon-calendar>
-            </mui-avatar>
-            <mui-avatar size="small" label="Max AI">
-              <mui-icon-calendar size="large"></mui-icon-calendar>
-            </mui-avatar>
-            <mui-avatar size="medium" label="Max AI">
-              <mui-icon-calendar size="large"></mui-icon-calendar>
-            </mui-avatar>
-            <mui-avatar size="large" label="Max AI">
-              <mui-icon-calendar size="large"></mui-icon-calendar>
-            </mui-avatar>
-          </mui-h-stack>
-
-        </mui-v-stack>
+        <div class="canvas" slot="body">
+          <mui-v-stack>
+            <mui-h-stack alignY="center">
+              <mui-avatar size="x-small" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
+              <mui-avatar size="small" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
+              <mui-avatar size="medium" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
+              <mui-avatar size="large" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
+            </mui-h-stack>
+          </mui-v-stack>
+        </div>
 
         <story-code-block slot="footer" scrollable>
         </story-code-block>
@@ -184,38 +196,41 @@ class storyAvatar extends HTMLElement {
         usageLink=""
         accessibility=""
       >
-        <mui-v-stack slot="body">
 
-          <mui-h-stack alignY="start">
-            <mui-avatar size="x-small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-            <mui-avatar size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-            <mui-avatar size="medium" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-            <mui-avatar size="large" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-          </mui-h-stack>
+        <div class="canvas" slot="body">
+          <mui-v-stack>
 
-          <mui-h-stack alignY="center">
-            <mui-avatar size="x-small" label="Max AI"></mui-avatar>
-            <mui-avatar size="small" label="Max AI"></mui-avatar>
-            <mui-avatar size="medium" label="Max AI"></mui-avatar>
-            <mui-avatar size="large" label="Max AI"></mui-avatar>
-          </mui-h-stack>
-          
-          <mui-h-stack alignY="end">
-            <mui-avatar size="x-small" label="Max AI">
-              <mui-icon-calendar size="large"></mui-icon-calendar>
-            </mui-avatar>
-            <mui-avatar size="small" label="Max AI">
-              <mui-icon-calendar size="large"></mui-icon-calendar>
-            </mui-avatar>
-            <mui-avatar size="medium" label="Max AI">
-              <mui-icon-calendar size="large"></mui-icon-calendar>
-            </mui-avatar>
-            <mui-avatar size="large" label="Max AI">
-              <mui-icon-calendar size="large"></mui-icon-calendar>
-            </mui-avatar>
-          </mui-h-stack>
+            <mui-h-stack alignY="start">
+              <mui-avatar size="x-small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+              <mui-avatar size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+              <mui-avatar size="medium" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+              <mui-avatar size="large" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+            </mui-h-stack>
 
-        </mui-v-stack>
+            <mui-h-stack alignY="center">
+              <mui-avatar size="x-small" label="Max AI"></mui-avatar>
+              <mui-avatar size="small" label="Max AI"></mui-avatar>
+              <mui-avatar size="medium" label="Max AI"></mui-avatar>
+              <mui-avatar size="large" label="Max AI"></mui-avatar>
+            </mui-h-stack>
+            
+            <mui-h-stack alignY="end">
+              <mui-avatar size="x-small" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
+              <mui-avatar size="small" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
+              <mui-avatar size="medium" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
+              <mui-avatar size="large" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
+            </mui-h-stack>
+
+          </mui-v-stack>
+        </div>
 
         <story-code-block slot="footer" scrollable>
         </story-code-block>
@@ -228,55 +243,57 @@ class storyAvatar extends HTMLElement {
         usageLink=""
         accessibility=""
       >
-        <mui-v-stack slot="body">
-          <mui-grid space="var(--space-100)" col="min-content min-content min-content">
-            <mui-chip>
-              <mui-avatar slot="before" size="x-small" label="Espresso & Muffin Bar" background="neutral">
-                <mui-icon-left-sidebar></mui-icon-left-sidebar>
-              </mui-avatar>
-              Videos
-            </mui-chip>
-            <mui-chip>
-              <mui-avatar slot="before" label="Espresso & Muffin Bar" background="neutral"></mui-avatar>
-              Videos
-            </mui-chip>
-            <mui-chip>
-              <mui-avatar slot="before" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
-              Videos
-            </mui-chip>
-            <mui-chip>
-              <mui-avatar slot="after" label="Espresso & Muffin Bar" background="neutral">
-                <mui-icon-left-sidebar></mui-icon-left-sidebar>
-              </mui-avatar>
-              Videos
-            </mui-chip>
-            <mui-chip>
-              <mui-avatar slot="after" label="Espresso & Muffin Bar" background="neutral"></mui-avatar>
-              Videos
-            </mui-chip>
-            <mui-chip>
-              <mui-avatar slot="after" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
-              Videos
-            </mui-chip>
-          </mui-grid>
+        <div slot="body" class="canvas">
+          <mui-v-stack>
+            <mui-grid space="var(--space-100)" col="min-content min-content min-content">
+              <mui-chip>
+                <mui-avatar slot="before" size="x-small" label="Espresso & Muffin Bar" background="neutral">
+                  <mui-icon-left-sidebar></mui-icon-left-sidebar>
+                </mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip>
+                <mui-avatar slot="before" label="Espresso & Muffin Bar" background="neutral"></mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip>
+                <mui-avatar slot="before" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip>
+                <mui-avatar slot="after" label="Espresso & Muffin Bar" background="neutral">
+                  <mui-icon-left-sidebar></mui-icon-left-sidebar>
+                </mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip>
+                <mui-avatar slot="after" label="Espresso & Muffin Bar" background="neutral"></mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip>
+                <mui-avatar slot="after" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
+                Videos
+              </mui-chip>
+            </mui-grid>
 
-          <mui-grid space="var(--space-100)" col="min-content min-content min-content">
-            <mui-chip dismiss>
-              <mui-avatar slot="before" size="x-small" label="Espresso & Muffin Bar" background="neutral">
-                <mui-icon-left-sidebar></mui-icon-left-sidebar>
-              </mui-avatar>
-              Videos
-            </mui-chip>
-            <mui-chip dismiss>
-              <mui-avatar slot="before" label="Espresso & Muffin Bar" background="neutral"></mui-avatar>
-              Videos
-            </mui-chip>
-            <mui-chip dismiss>
-              <mui-avatar slot="before" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
-              Videos
-            </mui-chip>
-          </mui-grid>
-        </mui-v-stack>
+            <mui-grid space="var(--space-100)" col="min-content min-content min-content">
+              <mui-chip dismiss>
+                <mui-avatar slot="before" size="x-small" label="Espresso & Muffin Bar" background="neutral">
+                  <mui-icon-left-sidebar></mui-icon-left-sidebar>
+                </mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip dismiss>
+                <mui-avatar slot="before" label="Espresso & Muffin Bar" background="neutral"></mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip dismiss>
+                <mui-avatar slot="before" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
+                Videos
+              </mui-chip>
+            </mui-grid>
+          </mui-v-stack>
+        </div>
       </story-card>
 
       <story-card 
@@ -286,7 +303,7 @@ class storyAvatar extends HTMLElement {
         usageLink=""
         accessibility=""
       >
-        <div slot="body">
+        <div slot="body" class="canvas">
           <mui-avatar label="Max AI" background-color="var(--surface)"></mui-avatar>
         </div>
         <story-code-block slot="footer" scrollable>

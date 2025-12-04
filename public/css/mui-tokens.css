@@ -173,6 +173,8 @@
   --radius-200: 8px;
   --radius-300: 16px;
   --radius-400: 24px;
+  --radius-500: 36px;
+  --radius-600: 48px;
   /* Spacing */
   --space-000: 0;
   --space-025: 0.2rem;
@@ -396,7 +398,7 @@ html[data-theme="light"] {
   --avatar-background-attention: var(--red-200);
 
   /* Chip */
-  --chip-background: var(--input-background);
+  --chip-background: var(--white);
   --chip-background-hover: var(--white);
   --chip-background-focus: var(--white);
   --chip-background-active: var(--white);
@@ -406,7 +408,7 @@ html[data-theme="light"] {
   --chip-border-color-active: var(--grey-1000);
   --chip-text-color-active: var(--grey-1000);
   --chip-icon-fill: var(--black);
-  --chip-dismiss-action-background: var(--black-opacity-10);
+  --chip-dismiss-action-background: var(--grey-100);
   --chip-dismiss-action-background-hover: var(--black-opacity-0);
 
   /* Dropdown */
@@ -629,17 +631,17 @@ html[data-theme="dark"] {
   --avatar-background-attention: var(--red-900);
 
   /* Chip */
-  --chip-background: var(--input-background);
+  --chip-background: var(--grey-800);
   --chip-background-hover: var(--grey-800);
   --chip-background-focus: var(--grey-800);
   --chip-background-active: var(--grey-800);
-  --chip-border-color: var(--grey-700);
+  --chip-border-color: var(--grey-600);
   --chip-border-color-hover: var(--grey-700);
   --chip-border-color-focus: var(--grey-700);
   --chip-border-color-active: var(--grey-100);
   --chip-text-color-active: var(--grey-100);
   --chip-icon-fill: var(--white);
-  --chip-dismiss-action-background: var(--white-opacity-20);
+  --chip-dismiss-action-background: var(--grey-700);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
 
   /* Dropdown */
@@ -699,24 +701,26 @@ html[data-theme="dark"] {
   --action-attention-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color-focus);
   --action-attention-border-disabled: var(--stroke-size-200) var(--stroke-solid)
     var(--action-attention-border-color-disabled);
-  --action-radius: var(--radius-100);
   --action-font-size: var(--text-font-size);
   --action-line-height: var(--text-line-height);
   --action-font-weight: var(--font-weight-medium);
 
   /* SIZE: XSMALL */
+  --action-radius-x-small: var(--radius-100);
   --action-padding-x-small: var(--space-050) var(--space-200);
   --action-before-slot-padding-x-small: var(--space-100);
   --action-after-slot-padding-x-small: var(--space-100);
   --action-icon-only-size-x-small: 2.8rem;
 
   /* SIZE: SMALL */
+  --action-radius-small: var(--radius-100);
   --action-padding-small: calc(var(--space-100) - (var(--stroke-size-100) / 2)) var(--space-300);
   --action-before-slot-padding-small: var(--space-200);
   --action-after-slot-padding-small: var(--space-200);
   --action-icon-only-size-small: 3.6rem;
 
   /* SIZE: MEDIUM: DEFAULT */
+  --action-radius-medium: var(--radius-200);
   --action-padding: var(--space-200) calc(var(--space-300) + var(--space-100));
   --action-before-slot-padding: var(--space-300);
   --action-after-slot-padding: var(--space-300);
@@ -724,6 +728,7 @@ html[data-theme="dark"] {
   --action-icon-only-size: 4.4rem;
 
   /* SIZE: LARGE */
+  --action-radius-large: var(--radius-300);
   --action-padding-large: var(--space-300) var(--space-500);
   --action-before-slot-padding-large: var(--space-400);
   --action-after-slot-padding-large: var(--space-400);

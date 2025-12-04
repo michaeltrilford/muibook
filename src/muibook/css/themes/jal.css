@@ -232,9 +232,29 @@ html[data-brand="jal"][data-theme="light"] {
   /* Stepper */
   --stepper-color: var(--jal-red-500);
   --stepper-background-active: var(--stepper-color);
-  --stepper-background-inactive: var(--white);
+  --stepper-background-inactive: var(--jal-white);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--jal-grey-100);
+  --avatar-background-positive: var(--jal-green-200);
+  --avatar-background-warning: var(--jal-yellow-200);
+  --avatar-background-attention: var(--jal-red-200);
+
+  /* Chip */
+  --chip-background: var(--jal-white);
+  --chip-background-hover: var(--jal-white);
+  --chip-background-focus: var(--jal-white);
+  --chip-background-active: var(--jal-white);
+  --chip-border-color: var(--jal-grey-300);
+  --chip-border-color-hover: var(--jal-grey-300);
+  --chip-border-color-focus: var(--jal-grey-300);
+  --chip-border-color-active: var(--jal-grey-1000);
+  --chip-text-color-active: var(--jal-grey-1000);
+  --chip-icon-fill: var(--jal-black);
+  --chip-dismiss-action-background: var(--jal-grey-100);
+  --chip-dismiss-action-background-hover: var(--black-opacity-0);
 }
 
 /* =============================================================================== */
@@ -387,6 +407,26 @@ html[data-brand="jal"][data-theme="dark"] {
   --stepper-background-inactive: var(--black);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--jal-grey-900);
+  --avatar-background-positive: var(--jal-green-900);
+  --avatar-background-warning: var(--jal-yellow-900);
+  --avatar-background-attention: var(--jal-red-900);
+
+  /* Chip */
+  --chip-background: var(--jal-grey-800);
+  --chip-background-hover: var(--jal-grey-800);
+  --chip-background-focus: var(--jal-grey-800);
+  --chip-background-active: var(--jal-grey-800);
+  --chip-border-color: var(--jal-grey-600);
+  --chip-border-color-hover: var(--jal-grey-700);
+  --chip-border-color-focus: var(--jal-grey-700);
+  --chip-border-color-active: var(--jal-grey-100);
+  --chip-text-color-active: var(--jal-grey-100);
+  --chip-icon-fill: var(--jal-white);
+  --chip-dismiss-action-background: var(--surface-elevated-100);
+  --chip-dismiss-action-background-hover: var(--white-opacity-0);
 }
 
 /* ================================================================= */
