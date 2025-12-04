@@ -276,51 +276,27 @@ const videoMenuItems = /*html*/ `
         Subscriptions
         <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Library">
-        <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-        Julie AI
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">        
+        <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Real Estate Profile Image"></mui-avatar>
+        Real Estate
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
-        <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-        Max AI
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">        
+        <mui-avatar slot="before" size="small" label="Jazz Beats"></mui-avatar>
+        Jazz Beats
       </mui-button>
-            <mui-button variant="tertiary" class="video-menu-item" aria-label="Library">
-        <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-        Julie AI
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Julie Cooks">
+        <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie Cooks Profile Image"></mui-avatar>
+        Julie Cooks
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
-        <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-        Max AI
-      </mui-button>
-            <mui-button variant="tertiary" class="video-menu-item" aria-label="Library">
-        <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-        Julie AI
-      </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
-        <mui-avatar slot="before" size="small" label="Max AI" background="positive"></mui-avatar>
-        Max AI
-      </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
-        <mui-avatar slot="before" size="small" label="Max AI" background="warning"></mui-avatar>
-        Max AI
-      </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
-        <mui-avatar slot="before" size="small" label="Max AI" background="attention"></mui-avatar>
-        Max AI
-      </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
-        <mui-avatar slot="before" size="small" label="Vocal Jazz"></mui-avatar>
-        Vocal Jazz
-      </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
-        <mui-avatar slot="before" size="small" label="Hot Grill">
-          <mui-icon-calendar></mui-icon-calendar>
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">        
+        <mui-avatar slot="before" size="small" label="Sidebar Court">
+          <mui-icon-left-sidebar></mui-icon-left-sidebar>
         </mui-avatar>
-        Hot Grill
+        Sidebar Court
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">        
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">        
         <mui-avatar slot="before" size="small" label="Hot Grill" background="attention">
-          <mui-icon-calendar></mui-icon-calendar>
+          <mui-icon-sun></mui-icon-sun>
         </mui-avatar>
         Hot Grill
       </mui-button>
@@ -337,15 +313,15 @@ const videoMenuItems = /*html*/ `
         You
         <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Library">
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Playlists">
         <mui-icon-list-and-film slot="before"></mui-icon-list-and-film>
         Playlists
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="History">
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Your videos">
         <mui-icon-play-rectangle slot="before"></mui-icon-play-rectangle>
         Your videos
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Your Videos">
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Downloads">
         <mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle>
         Downloads
       </mui-button>
@@ -362,7 +338,7 @@ const videoMenuItems = /*html*/ `
         Explore
         <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Trending">
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Music">
         <mui-icon-music-microphone slot="before"></mui-icon-music-microphone>
         Music
       </mui-button>
