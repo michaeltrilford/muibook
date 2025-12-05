@@ -2,6 +2,7 @@ import "./css/app.css";
 import "./css/themes/jal.css";
 import "./css/themes/ana.css";
 import "./css/themes/modern.css";
+import "./css/themes/sensei.css";
 import "./css/app-theme.css";
 
 // Utils

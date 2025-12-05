@@ -8,6 +8,7 @@ class ThemeSwitcher extends HTMLElement {
       jal: { theme: true },
       ana: { theme: true },
       modern: { theme: true },
+      sensei: { theme: true },
     };
 
     // Define font links per brand
@@ -73,6 +74,7 @@ class ThemeSwitcher extends HTMLElement {
           hide-label
           options='[
             {"value": "mui", "label": "Mui"},
+            {"value": "sensei", "label": "Sensei"},
             {"value": "jal", "label": "JAL"},
             {"value": "ana", "label": "ANA"},
             {"value": "modern", "label": "Modern"}

@@ -11,6 +11,7 @@ export class AppContainer extends HTMLElement {
 
       :host {
         display: grid;
+        background: var(--app-container-surface);
       }
 
       :host(.focused) {

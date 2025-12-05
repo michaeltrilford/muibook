@@ -347,7 +347,7 @@ class MuiButton extends HTMLElement {
     }
 
     /* Dropdown Slot */
-    :host(.dropdown-slot) button {
+    :host([size].dropdown-slot) button {
       border-radius: var(--radius-000);
     }
 
@@ -356,12 +356,12 @@ class MuiButton extends HTMLElement {
       background: var(--dropdown-button-background-hover);
     }
 
-    :host(.dropdown-slot-first) button {
+    :host([size].dropdown-slot-first) button {
       border-top-left-radius: calc(var(--radius-100) / 2);
       border-top-right-radius: calc(var(--radius-100) / 2);
     }
 
-    :host(.dropdown-slot-last) button  {
+    :host([size].dropdown-slot-last) button   {
       border-bottom-left-radius: calc(var(--radius-100) / 2);
       border-bottom-right-radius: calc(var(--radius-100) / 2);
     }
