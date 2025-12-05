@@ -1,3 +1,6 @@
+import MaxAvatar from "../../../images/mui/avatar-max.png";
+import JulieAvatar from "../../../images/mui/avatar-julie.png";
+
 class storyDrawer extends HTMLElement {
   constructor() {
     super();
@@ -525,21 +528,195 @@ class storyDrawer extends HTMLElement {
         </mui-v-stack>
       `;
 
+    const menuBillItems = /*html*/ `
+      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); background: var(--surface-elevated-100);">
+        <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Home">
+            <mui-icon-home slot="before"></mui-icon-home>
+            Home
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Shorts">
+            <mui-icon-play-stack slot="before"></mui-icon-play-stack>
+            Shorts
+          </mui-button>
+        </mui-v-stack>
+        <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
+        <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
+          <mui-button variant="tertiary" size="small" class="video-menu-group-heading" aria-label="Subscriptions">
+            Subscriptions
+            <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">        
+            <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Real Estate Profile Image"></mui-avatar>
+            Real Estate
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">        
+            <mui-avatar slot="before" size="small" label="Jazz Beats"></mui-avatar>
+            Jazz Beats
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Julie Cooks">
+            <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie Cooks Profile Image"></mui-avatar>
+            Julie Cooks
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">        
+            <mui-avatar slot="before" size="small" label="Sidebar Court">
+              <mui-icon-left-sidebar></mui-icon-left-sidebar>
+            </mui-avatar>
+            Sidebar Court
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">        
+            <mui-avatar slot="before" size="small" label="Hot Grill" background="attention">
+              <mui-icon-sun></mui-icon-sun>
+            </mui-avatar>
+            Hot Grill
+          </mui-button>
+          <mui-button variant="tertiary" size="small" class="video-menu-more video-menu-more_hero" aria-label="Show more">
+            <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
+            Show more
+          </mui-button>
+        </mui-v-stack>
+        <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
+        <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
+          <mui-button variant="tertiary" size="small" class="video-menu-group-heading" aria-label="Subscriptions">
+            You
+            <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Playlists">
+            <mui-icon-list-and-film slot="before"></mui-icon-list-and-film>
+            Playlists
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Your videos">
+            <mui-icon-play-rectangle slot="before"></mui-icon-play-rectangle>
+            Your videos
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Downloads">
+            <mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle>
+            Downloads
+          </mui-button>
+          <mui-button variant="tertiary" size="small" class="video-menu-more" aria-label="Show more">
+            <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
+            Show more
+          </mui-button>
+        </mui-v-stack>
+        <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
+        <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
+          <mui-button variant="tertiary" size="small" class="video-menu-group-heading" aria-label="Explore">
+            Explore
+            <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Music">
+            <mui-icon-music-microphone slot="before"></mui-icon-music-microphone>
+            Music
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Movies & TV">
+            <mui-icon-play-rectangle slot="before"></mui-icon-play-rectangle>
+            Movies & TV
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Gaming">
+            <mui-icon-game-controller slot="before"></mui-icon-game-controller>
+            Gaming
+          </mui-button>
+          <mui-button variant="tertiary" size="small" class="video-menu-more" aria-label="Show more">
+            <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
+            Show more
+          </mui-button>
+        </mui-v-stack>
+      </mui-v-stack>
+    `;
+
     const menuItems = /*html*/ `
-      <mui-v-stack alignX="stretch" space="var(--space-100)" style="padding-bottom: var(--space-400);">
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
-        <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear slot="before"></mui-icon-gear></mui-button>
+      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); background: var(--surface-elevated-100);">
+        <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Home">
+            <mui-icon-home slot="before"></mui-icon-home>
+            Home
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Shorts">
+            <mui-icon-play-stack slot="before"></mui-icon-play-stack>
+            Shorts
+          </mui-button>
+        </mui-v-stack>
+        <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
+        <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
+          <mui-button variant="tertiary" size="small" class="video-menu-group-heading" aria-label="Subscriptions">
+            Subscriptions
+            <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">        
+            <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Real Estate Profile Image"></mui-avatar>
+            Real Estate
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">        
+            <mui-avatar slot="before" size="small" label="Jazz Beats"></mui-avatar>
+            Jazz Beats
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Julie Cooks">
+            <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie Cooks Profile Image"></mui-avatar>
+            Julie Cooks
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">        
+            <mui-avatar slot="before" size="small" label="Sidebar Court">
+              <mui-icon-left-sidebar></mui-icon-left-sidebar>
+            </mui-avatar>
+            Sidebar Court
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">        
+            <mui-avatar slot="before" size="small" label="Hot Grill" background="attention">
+              <mui-icon-sun></mui-icon-sun>
+            </mui-avatar>
+            Hot Grill
+          </mui-button>
+          <mui-button variant="tertiary" size="small" class="video-menu-more video-menu-more_hero" aria-label="Show more">
+            <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
+            Show more
+          </mui-button>
+        </mui-v-stack>
+        <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
+        <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
+          <mui-button variant="tertiary" size="small" class="video-menu-group-heading" aria-label="Subscriptions">
+            You
+            <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Playlists">
+            <mui-icon-list-and-film slot="before"></mui-icon-list-and-film>
+            Playlists
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Your videos">
+            <mui-icon-play-rectangle slot="before"></mui-icon-play-rectangle>
+            Your videos
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Downloads">
+            <mui-icon-down-arrow-circle slot="before"></mui-icon-down-arrow-circle>
+            Downloads
+          </mui-button>
+          <mui-button variant="tertiary" size="small" class="video-menu-more" aria-label="Show more">
+            <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
+            Show more
+          </mui-button>
+        </mui-v-stack>
+        <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
+        <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
+          <mui-button variant="tertiary" size="small" class="video-menu-group-heading" aria-label="Explore">
+            Explore
+            <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Music">
+            <mui-icon-music-microphone slot="before"></mui-icon-music-microphone>
+            Music
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Movies & TV">
+            <mui-icon-play-rectangle slot="before"></mui-icon-play-rectangle>
+            Movies & TV
+          </mui-button>
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Gaming">
+            <mui-icon-game-controller slot="before"></mui-icon-game-controller>
+            Gaming
+          </mui-button>
+          <mui-button variant="tertiary" size="small" class="video-menu-more" aria-label="Show more">
+            <mui-icon-down-chevron slot="before"></mui-icon-down-chevron>
+            Show more
+          </mui-button>
+        </mui-v-stack>
       </mui-v-stack>
     `;
 
@@ -912,7 +1089,7 @@ class storyDrawer extends HTMLElement {
                   <mui-button variant="tertiary" data-drawer="hook">
                     <mui-icon-menu size="medium"></mui-icon-menu>
                   </mui-button>
-                  <mui-heading size="4" level="4">Smart Bills</mui-heading>
+                  <mui-heading size="4" level="4">Premium</mui-heading>
                 </mui-h-stack>
               </div>
               <div class="page-content">
@@ -921,24 +1098,10 @@ class storyDrawer extends HTMLElement {
             </div>
             <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
               <guides-logo style="width: 24px;"></guides-logo>
-              <mui-heading size="4" level="4">Guides</mui-heading>
+              <mui-heading size="4" level="4">Guru</mui-heading>
             </mui-h-stack>
 
-            <mui-v-stack alignX="stretch" space="var(--space-100)" style="padding-bottom: var(--space-400);">
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-              <mui-button class="menu-item" variant="tertiary">Item 1<mui-icon-gear size="small" slot="before"></mui-icon-gear></mui-button>
-            </mui-v-stack>
+            ${menuBillItems}
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
@@ -973,7 +1136,7 @@ class storyDrawer extends HTMLElement {
 
               <mui-h-stack space="var(--space-100)" alignY="center">
                 <guides-logo style="width: 24px;"></guides-logo>
-                <mui-heading size="4" level="4">Guides</mui-heading>
+                <mui-heading size="4" level="4">Guru</mui-heading>
               </mui-h-stack>
             </mui-h-stack>
           </div>

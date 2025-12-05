@@ -13,7 +13,7 @@
 /* ==================================================================================================== */
 html[data-brand="sensei"] {
   /* Font-family */
-  --font-family: system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-family: "Aleo", serif;
 
   /* ================================================================================================== */
   /*  Typography on the Web • Orchestrating Vertical Rhythm                                             */
@@ -84,19 +84,19 @@ html[data-brand="sensei"] {
   --font-weight-500: 500;
   --font-weight-600: 600;
   --font-weight-700: 700;
-  /* Black with blue hint */
-  --alt-black: hsl(220, 15%, 10%);
-  --alt-black-opacity-0: hsla(220, 15%, 10%, 0);
-  --alt-black-opacity-10: hsla(220, 15%, 10%, 0.1);
-  --alt-black-opacity-20: hsla(220, 15%, 10%, 0.2);
-  --alt-black-opacity-30: hsla(220, 15%, 10%, 0.3);
-  --alt-black-opacity-40: hsla(220, 15%, 10%, 0.4);
-  --alt-black-opacity-50: hsla(220, 15%, 10%, 0.5);
-  --alt-black-opacity-60: hsla(220, 15%, 10%, 0.6);
-  --alt-black-opacity-70: hsla(220, 15%, 10%, 0.7);
-  --alt-black-opacity-80: hsla(220, 15%, 10%, 0.8);
-  --alt-black-opacity-90: hsla(220, 15%, 10%, 0.9);
-  --alt-black-opacity-100: hsla(220, 15%, 10%, 1);
+  /* Black with a stronger green tinge */
+  --alt-black: hsl(155, 25%, 10%);
+  --alt-black-opacity-0: hsla(155, 25%, 10%, 0);
+  --alt-black-opacity-10: hsla(155, 25%, 10%, 0.1);
+  --alt-black-opacity-20: hsla(155, 25%, 10%, 0.2);
+  --alt-black-opacity-30: hsla(155, 25%, 10%, 0.3);
+  --alt-black-opacity-40: hsla(155, 25%, 10%, 0.4);
+  --alt-black-opacity-50: hsla(155, 25%, 10%, 0.5);
+  --alt-black-opacity-60: hsla(155, 25%, 10%, 0.6);
+  --alt-black-opacity-70: hsla(155, 25%, 10%, 0.7);
+  --alt-black-opacity-80: hsla(155, 25%, 10%, 0.8);
+  --alt-black-opacity-90: hsla(155, 25%, 10%, 0.9);
+  --alt-black-opacity-100: hsla(155, 25%, 10%, 1);
 
   /* White with blue hint */
   --alt-white: hsl(220, 15%, 98%);
@@ -164,6 +164,9 @@ html[data-brand="sensei"] {
   --alt-green-1200: hsl(120, 100%, 12%);
   --alt-green-1300: hsl(120, 100%, 8%);
   --alt-green-1400: hsl(120, 100%, 4%);
+
+  --alt-green-1400-opacity-80: hsla(120, 100%, 4%, 0.8);
+  --alt-green-1400-opacity-40: hsla(120, 100%, 4%, 0.4);
 
   /* Blue scale - fixed reversals and jumps */
   --alt-blue-100: hsl(208, 100%, 95%);
@@ -336,7 +339,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --text-color-error: var(--alt-red-600);
   --text-color-optional: var(--alt-grey-600);
   /* Overlay */
-  --backdrop-overlay: var(--alt-black-opacity-70);
+  --backdrop-overlay: var(--alt-green-1400-opacity-80);
   /* ================================================================================================== */
   /* Components                                                                                         */
   /* ================================================================================================== */
@@ -572,7 +575,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --text-color-error: var(--alt-red-400);
   --text-color-optional: var(--alt-grey-300);
   /* Overlay */
-  --backdrop-overlay: var(--alt-black-opacity-70);
+  --backdrop-overlay: var(--alt-green-1400-opacity-80);
   /* ================================================================================================== */
   /* Components                                                                                         */
   /* ================================================================================================== */
@@ -674,10 +677,10 @@ html[data-brand="sensei"][data-theme="dark"] {
   --stepper-text-color-active: var(--stepper-color);
 
   /* Dialog */
-  --dialog-background: var(--alt-green-1100);
+  --dialog-background: var(--alt-green-1300);
 
   /* Drawer */
-  --drawer-background: var(--alt-green-1100);
+  --drawer-background: var(--alt-green-1300);
 }
 
 /* ==================================================================================================== */

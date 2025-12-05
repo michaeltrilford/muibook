@@ -37,6 +37,19 @@ class ThemeSwitcher extends HTMLElement {
           href: "https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap",
         },
       ],
+      sensei: [
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossOrigin: "anonymous",
+        },
+        {
+          rel: "stylesheet",
+          href:
+            "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&family=Aleo:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,600;1,600&family=Sansita+Swashed:wght@300..900&display=swap",
+        },
+      ],
     };
   }
 

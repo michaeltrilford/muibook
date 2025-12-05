@@ -213,11 +213,11 @@ class HomePage extends HTMLElement {
       }
 
       @media (min-width: 1400px) {
-        .body-text { max-width: 64ch; }
+        .body-text { max-width: 66ch; }
       }
 
       @media (min-width: 1877px) {
-        .body-text { max-width: 72ch; }
+        .body-text { max-width: 74ch; }
       }
 
       /* Brand + theme combinations */
