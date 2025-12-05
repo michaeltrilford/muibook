@@ -1,11 +1,11 @@
-import C from "../../../images/muitube/jal-video.png";
-import D from "../../../images/muitube/jal-video.png";
-import P from "../../../images/muitube/jal-video.png";
-import S from "../../../images/muitube/jal-video.png";
-import MuiVideo from "../../../images/muitube/mui-video.png";
-import SenseiVideo from "../../../images/muitube/sensei-video.png";
-import JalVideo from "../../../images/muitube/jal-video.png";
-import AnaVideo from "../../../images/muitube/ana-video.png";
+import MuiVideoDark from "../../../images/muitube/mui-video-dark.png";
+import SenseiVideoDark from "../../../images/muitube/sensei-video-dark.png";
+import JalVideoDark from "../../../images/muitube/jal-video-dark.png";
+import AnaVideoDark from "../../../images/muitube/ana-video-dark.png";
+import MuiVideoLight from "../../../images/muitube/mui-video-light.png";
+import SenseiVideoLight from "../../../images/muitube/sensei-video-light.png";
+import JalVideoLight from "../../../images/muitube/jal-video-light.png";
+import AnaVideoLight from "../../../images/muitube/ana-video-light.png";
 import MaxAvatar from "../../../images/mui/avatar-max.png";
 import JulieAvatar from "../../../images/mui/avatar-julie.png";
 
@@ -14,181 +14,151 @@ const videos = [
     title: "Urban Photography Tips",
     author: "LensMaster",
     views: "120K views • 2 days ago",
-    image: D,
   },
   {
     title: "Beginner Yoga Routine",
     author: "Flex & Flow",
     views: "980K views • 1 week ago",
-    image: S,
   },
   {
     title: "Amazing Street Food Tour",
     author: "TasteTravels",
     views: "1.1M views • 3 days ago",
-    image: D,
   },
   {
     title: "Ultimate Coding 101",
     author: "Dev Explorer",
     views: "450K views • 9 hours ago",
-    image: S,
   },
   {
     title: "Minimalist Home Makeover",
     author: "Cozy Living",
     views: "800K views • 4 days ago",
-    image: P,
   },
   {
     title: "History of Samurai",
     author: "Ancient Stories",
     views: "2.2M views • 2 weeks ago",
-    image: C,
   },
   {
     title: "Daily Productivity Hacks",
     author: "Focus Lab",
     views: "56K views • 6 hours ago",
-    image: D,
   },
   {
     title: "Wildlife of the Amazon",
     author: "EcoVision",
     views: "1.9M views • 1 month ago",
-    image: P,
   },
   {
     title: "DIY Woodworking Basics",
     author: "Crafted Corner",
     views: "310K views • 5 days ago",
-    image: P,
   },
   {
     title: "Piano Chill Beats",
     author: "LoFi House",
     views: "760K views • 3 hours ago",
-    image: D,
   },
   {
     title: "Inside Tokyo Nightlife",
     author: "Travel Pulse",
     views: "1.3M views • 1 week ago",
-    image: P,
   },
   {
     title: "Ultimate Gym Routine",
     author: "Fit Nation",
     views: "670K views • 2 days ago",
-    image: P,
   },
   {
     title: "Building AI Assistants",
     author: "Tech Forge",
     views: "900K views • 10 hours ago",
-    image: C,
   },
   {
     title: "The Secrets of Typography",
     author: "Design Lab",
     views: "140K views • 3 weeks ago",
-    image: D,
   },
   {
     title: "Relaxing Rain Sounds",
     author: "Calm Channel",
     views: "3.5M views • 1 month ago",
-    image: C,
   },
   {
     title: "Speedrunning 101",
     author: "GameMaster",
     views: "280K views • 4 hours ago",
-    image: D,
   },
   {
     title: "How to Grow Indoor Plants",
     author: "GreenSpace",
     views: "510K views • 2 days ago",
-    image: P,
   },
   {
     title: "Mastering Colour Grading",
     author: "CinePro",
     views: "820K views • 1 week ago",
-    image: D,
   },
   {
     title: "Beginner Meditation Guide",
     author: "Peaceful Mind",
     views: "400K views • 8 hours ago",
-    image: S,
   },
   {
     title: "Streetwear Lookbook 2024",
     author: "StyleWorks",
     views: "1.7M views • 2 weeks ago",
-    image: D,
   },
   {
     title: "Mountain Biking Adventure",
     author: "Ride Wild",
     views: "230K views • 1 day ago",
-    image: C,
   },
   {
     title: "Deep Sea Mysteries",
     author: "OceanX",
     views: "2.9M views • 3 weeks ago",
-    image: D,
   },
   {
     title: "Quick & Healthy Recipes",
     author: "FoodLab",
     views: "640K views • 12 hours ago",
-    image: C,
   },
   {
     title: "Top 10 Indie Games",
     author: "Pixel Corner",
     views: "520K views • 5 days ago",
-    image: P,
   },
   {
     title: "Zen Garden Tutorial",
     author: "CalmScape",
     views: "110K views • 2 days ago",
-    image: C,
   },
   {
     title: "Cinematic Drone Shots",
     author: "SkyVision",
     views: "1.4M views • 1 week ago",
-    image: S,
   },
   {
     title: "How Planes Really Fly",
     author: "AeroTech",
     views: "870K views • 4 days ago",
-    image: P,
   },
   {
     title: "Ultimate Coffee Guide",
     author: "Brew Studio",
     views: "300K views • 9 hours ago",
-    image: S,
   },
   {
     title: "Fantasy Worldbuilding Tips",
     author: "LoreCrafter",
     views: "480K views • 3 days ago",
-    image: P,
   },
   {
     title: "The Art of Animation",
     author: "Frame by Frame",
     views: "2M views • 1 month ago",
-    image: S,
   },
 ];
 
@@ -466,21 +436,30 @@ class compMuiTube extends HTMLElement {
     // Define image sets per brand - single image per brand
     this.brandImageSets = {
       jal: {
-        image: JalVideo,
+        light: JalVideoLight,
+        dark: JalVideoDark,
       },
       ana: {
-        image: AnaVideo,
+        light: AnaVideoLight,
+        dark: AnaVideoDark,
       },
       mui: {
-        image: MuiVideo,
+        light: MuiVideoLight,
+        dark: MuiVideoDark,
       },
       modern: {
-        image: MuiVideo,
+        light: MuiVideoLight,
+        dark: MuiVideoDark,
       },
       sensei: {
-        image: SenseiVideo,
+        light: SenseiVideoLight,
+        dark: SenseiVideoDark,
       },
     };
+  }
+
+  getCurrentTheme() {
+    return document.documentElement.getAttribute("data-theme") || "light";
   }
 
   getCurrentBrand() {
@@ -489,8 +468,9 @@ class compMuiTube extends HTMLElement {
 
   getThemedImage() {
     const currentBrand = this.getCurrentBrand();
+    const currentTheme = this.getCurrentTheme();
     const brandImages = this.brandImageSets[currentBrand];
-    return brandImages?.image || MuiVideo;
+    return brandImages?.[currentTheme] || brandImages?.light || MuiVideoLight;
   }
 
   generateVideoHTML(videos) {
@@ -664,8 +644,8 @@ class compMuiTube extends HTMLElement {
     // Re-render when brand changes
     this.brandObserver = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.attributeName === "data-brand") {
-          console.log("Brand changed, re-rendering images");
+        if (mutation.attributeName === "data-brand" || mutation.attributeName === "data-theme") {
+          console.log("Brand or theme changed, re-rendering images");
           this.render();
         }
       });
@@ -673,7 +653,7 @@ class compMuiTube extends HTMLElement {
 
     this.brandObserver.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["data-brand"],
+      attributeFilter: ["data-brand", "data-theme"],
     });
 
     // Wait for all custom elements to render before checking scroll
