@@ -32,6 +32,7 @@ html[data-theme="light"] {
   --app-navbar-accordion-chevron-hover: var(--surface-elevated-200);
   /* Home Page */
   --home-page-body-text: var(--black);
+  --app-story-card: var(--grey-200);
 }
 html[data-theme="dark"] {
   --app-logo-color: var(--mui-brand-300);
@@ -53,6 +54,7 @@ html[data-theme="dark"] {
   --app-navbar-accordion-chevron-hover: var(--surface-elevated-200);
   /* Home Page */
   --home-page-body-text: var(--white);
+  --app-story-card: var(--grey-1000);
 }
 
 /* =============================================================================== */
@@ -70,6 +72,7 @@ html[data-brand="jal"][data-theme="light"] {
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
   --app-navbar-accordion-chevron-hover: var(--jal-grey-100);
+  --app-story-card: var(--grey-200);
 }
 
 html[data-brand="jal"][data-theme="dark"] {
@@ -83,6 +86,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-navbar-surface: var(--jal-grey-900);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
   --app-navbar-accordion-chevron-hover: var(--jal-grey-1000);
+  --app-story-card: var(--grey-900);
 }
 
 /* =============================================================================== */
@@ -102,6 +106,7 @@ html[data-brand="ana"][data-theme="light"] {
   /* Home Page */
   --home-page-body-text: var(--ana-blue-500);
   --app-navbar-accordion-chevron-hover: var(--ana-grey-100);
+  --app-story-card: var(--ana-grey-200);
 }
 
 html[data-brand="ana"][data-theme="dark"] {
@@ -117,6 +122,7 @@ html[data-brand="ana"][data-theme="dark"] {
   /* Home Page */
   --home-page-body-text: var(--white);
   --app-navbar-accordion-chevron-hover: var(--ana-grey-900);
+  --app-story-card: var(--ana-grey-800);
 }
 
 /* =============================================================================== */
@@ -135,6 +141,7 @@ html[data-brand="modern"][data-theme="light"] {
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
   --app-navbar-accordion-chevron-hover: var(--grey-100);
+  --app-story-card: var(--grey-200);
 }
 
 html[data-brand="modern"][data-theme="dark"] {
@@ -148,6 +155,7 @@ html[data-brand="modern"][data-theme="dark"] {
   --app-navbar-surface: var(--surface-elevated-100);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
   --app-navbar-accordion-chevron-hover: var(--grey-800);
+  --app-story-card: var(--grey-900);
 }
 
 /* =============================================================================== */
@@ -166,6 +174,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --app-navbar-surface-100: var(--alt-green-300);
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--alt-green-1200);
+  --app-story-card: var(--alt-green-200);
 }
 
 html[data-brand="sensei"][data-theme="dark"] {
@@ -180,4 +189,5 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-navbar-surface-100: var(--alt-green-1300);
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--alt-green-400);
+  --app-story-card: var(--alt-green-1400);
 }
