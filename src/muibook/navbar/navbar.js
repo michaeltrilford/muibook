@@ -242,6 +242,25 @@ class appNavbar extends HTMLElement {
       </app-navbar-toggle>
     `;
 
+    // Measure theme element and position home element
+    const measureAndPositionHome = () => {
+      const themeEl = shadowRoot.querySelector("app-navbar-theme");
+      const homeEl = shadowRoot.querySelector("app-navbar-home");
+
+      if (themeEl && homeEl) {
+        const themeHeight = themeEl.offsetHeight;
+        homeEl.style.top = `calc(${themeHeight}px + var(--stroke-size-100))`;
+      }
+    };
+
+    // Initial measurement
+    requestAnimationFrame(() => {
+      measureAndPositionHome();
+    });
+
+    // Re-measure on resize
+    window.addEventListener("resize", measureAndPositionHome);
+
     const btn = shadowRoot.querySelector("mui-button");
     const toggle = shadowRoot.querySelector("mui-icon-toggle");
 

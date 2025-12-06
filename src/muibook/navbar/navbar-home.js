@@ -18,8 +18,8 @@ class appNavbarHome extends HTMLElement {
         position: sticky; 
         box-shadow: 0 1px 0 0 var(--border-color), 0 -1px 0 0 var(--border-color);
         z-index: 3;
-        top: calc(92px + 1px);
-        margin-bottom: 2px;
+        top: calc(92px + var(--stroke-size-100));
+        margin-bottom: calc(var(--stroke-size-100) * 2);
         background: var(--app-navbar-surface);
       }
 

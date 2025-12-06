@@ -34,7 +34,7 @@ class MuiFileUpload extends HTMLElement {
           cursor: pointer;
           align-items: center;
           justify-content: space-between;
-          padding-left: 16px;
+          padding-left: var(--space-400);
           display: flex;
           width: 100%;
           line-height: var(--text-line-height-s);
@@ -59,17 +59,17 @@ class MuiFileUpload extends HTMLElement {
         }
         @media (min-width: 340px) {
           .label {
-            width: 115px;
+            width: 11.5rem;
           }
         }
         @media (min-width: 440px) {
           .label {
-            width: 175px;
+            width: 17.5rem;
           }
         }
         @media (min-width: 600px) {
           .label {
-            width: 220px;
+            width: 22rem;
           }
         }
 
@@ -78,7 +78,7 @@ class MuiFileUpload extends HTMLElement {
         }
 
         mui-button::part(height) {
-          height: calc(4.2rem - 0.2rem);
+          height: calc(var(--space-600) + var(--space-050));
           padding: var(--space-400);
           padding-top: var(--space-000);
           padding-bottom: var(--space-000);
@@ -86,7 +86,7 @@ class MuiFileUpload extends HTMLElement {
         }
 
         mui-button::part(border-radius) {
-          border-radius: calc(var(--radius-100) - 2px);
+          border-radius: calc(var(--radius-100) - var(--space-025));
         }
 
         input[type="file"] {
