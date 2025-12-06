@@ -123,7 +123,7 @@ class MuiSelect extends HTMLElement {
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
           border-radius: var(--radius-100);
-          color: var(--text-color);
+          color: var(--form-default-text-color);
           background: var(--input-background);
           width: 100%;
           box-sizing: border-box;
@@ -131,6 +131,7 @@ class MuiSelect extends HTMLElement {
         }
         select:hover {
           border-color: var(--form-default-border-color-hover);
+          color: var(--form-default-text-color-hover);
         }
         select:focus {
           outline: var(--outline-thick);

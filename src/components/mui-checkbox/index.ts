@@ -131,8 +131,8 @@ class MuiCheckbox extends HTMLElement {
 
         input[type="checkbox"] {
           all: unset;
-          width: 19px;
-          height: 19px;
+          width: var(--checkbox-size);
+          height: var(--checkbox-size);
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
           border-radius: var(--checkbox-radius);

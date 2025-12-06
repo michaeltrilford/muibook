@@ -40,7 +40,7 @@ class appNavbarHome extends HTMLElement {
 
       /* Spacing Parts */
       mui-link::part(padding) {
-        padding: 1.5rem var(--space-500);
+        padding: var(--space-400) var(--space-500);
       }
       mui-link::part(margin) {
         margin: var(--space-000);

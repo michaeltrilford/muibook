@@ -150,11 +150,12 @@ class MuiInput extends HTMLElement {
           border-radius: var(--radius-100);
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
-          color: var(--text-color);
+          color: var(--form-default-text-color);
           background: var(--input-background);
         }
         input:hover {
           border-color: var(--form-default-border-color-hover);
+          color: var(--form-default-text-color-hover);
         }
         input:focus {
           outline: var(--outline-thick);
@@ -194,6 +195,29 @@ class MuiInput extends HTMLElement {
           border-color: var(--form-error-border-color-hover);
           box-shadow: 0 0 0 2px var(--form-error-border-color-hover);
         }
+
+
+        /* Placeholder styles */
+        input::placeholder {
+          color: var(--form-default-placeholder-color);
+          opacity: 1;
+        }
+
+        /* Optional: hover */
+        input:hover::placeholder {
+          color: var(--form-default-placeholder-color-hover);
+        }
+
+        /* Optional: focus */
+        input:focus::placeholder {
+          color: var(--form-default-placeholder-color-focus);
+        }
+
+        /* Optional: disabled */
+        input:disabled::placeholder {
+          color: var(--form-default-placeholder-color-disabled);
+        }
+
         .vh {
           position: absolute;
           width: 1px;

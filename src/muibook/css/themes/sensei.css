@@ -85,100 +85,101 @@ html[data-brand="sensei"] {
   --font-weight-600: 600;
   --font-weight-700: 700;
   /* Black with a stronger green tinge */
-  --alt-black: hsl(155, 25%, 10%);
-  --alt-black-opacity-0: hsla(155, 25%, 10%, 0);
-  --alt-black-opacity-10: hsla(155, 25%, 10%, 0.1);
-  --alt-black-opacity-20: hsla(155, 25%, 10%, 0.2);
-  --alt-black-opacity-30: hsla(155, 25%, 10%, 0.3);
-  --alt-black-opacity-40: hsla(155, 25%, 10%, 0.4);
-  --alt-black-opacity-50: hsla(155, 25%, 10%, 0.5);
-  --alt-black-opacity-60: hsla(155, 25%, 10%, 0.6);
-  --alt-black-opacity-70: hsla(155, 25%, 10%, 0.7);
-  --alt-black-opacity-80: hsla(155, 25%, 10%, 0.8);
-  --alt-black-opacity-90: hsla(155, 25%, 10%, 0.9);
-  --alt-black-opacity-100: hsla(155, 25%, 10%, 1);
+  --sensei-black: hsl(155, 25%, 10%);
+  --sensei-black-opacity-0: hsla(155, 25%, 10%, 0);
+  --sensei-black-opacity-10: hsla(155, 25%, 10%, 0.1);
+  --sensei-black-opacity-20: hsla(155, 25%, 10%, 0.2);
+  --sensei-black-opacity-30: hsla(155, 25%, 10%, 0.3);
+  --sensei-black-opacity-40: hsla(155, 25%, 10%, 0.4);
+  --sensei-black-opacity-50: hsla(155, 25%, 10%, 0.5);
+  --sensei-black-opacity-60: hsla(155, 25%, 10%, 0.6);
+  --sensei-black-opacity-70: hsla(155, 25%, 10%, 0.7);
+  --sensei-black-opacity-80: hsla(155, 25%, 10%, 0.8);
+  --sensei-black-opacity-90: hsla(155, 25%, 10%, 0.9);
+  --sensei-black-opacity-100: hsla(155, 25%, 10%, 1);
 
   /* White with blue hint */
-  --alt-white: hsl(220, 15%, 98%);
-  --alt-white-opacity-0: hsla(220, 15%, 98%, 0);
-  --alt-white-opacity-10: hsla(220, 15%, 98%, 0.1);
-  --alt-white-opacity-20: hsla(220, 15%, 98%, 0.2);
-  --alt-white-opacity-30: hsla(220, 15%, 98%, 0.3);
-  --alt-white-opacity-40: hsla(220, 15%, 98%, 0.4);
-  --alt-white-opacity-50: hsla(220, 15%, 98%, 0.5);
-  --alt-white-opacity-60: hsla(220, 15%, 98%, 0.6);
-  --alt-white-opacity-70: hsla(220, 15%, 98%, 0.7);
-  --alt-white-opacity-80: hsla(220, 15%, 98%, 0.8);
-  --alt-white-opacity-90: hsla(220, 15%, 98%, 0.9);
-  --alt-white-opacity-100: hsla(220, 15%, 98%, 1);
+  --sensei-white: hsl(220, 15%, 98%);
+  --sensei-white-opacity-0: hsla(220, 15%, 98%, 0);
+  --sensei-white-opacity-10: hsla(220, 15%, 98%, 0.1);
+  --sensei-white-opacity-20: hsla(220, 15%, 98%, 0.2);
+  --sensei-white-opacity-30: hsla(220, 15%, 98%, 0.3);
+  --sensei-white-opacity-40: hsla(220, 15%, 98%, 0.4);
+  --sensei-white-opacity-50: hsla(220, 15%, 98%, 0.5);
+  --sensei-white-opacity-60: hsla(220, 15%, 98%, 0.6);
+  --sensei-white-opacity-70: hsla(220, 15%, 98%, 0.7);
+  --sensei-white-opacity-80: hsla(220, 15%, 98%, 0.8);
+  --sensei-white-opacity-90: hsla(220, 15%, 98%, 0.9);
+  --sensei-white-opacity-100: hsla(220, 15%, 98%, 1);
 
   /* Grey scale - slightly adjusted */
-  --alt-grey-100: hsl(220, 10%, 96%);
-  --alt-grey-200: hsl(220, 10%, 88%);
-  --alt-grey-300: hsl(220, 8%, 80%);
-  --alt-grey-400: hsl(220, 6%, 67%);
-  --alt-grey-500: hsl(220, 5%, 53%);
-  --alt-grey-600: hsl(220, 6%, 40%);
-  --alt-grey-700: hsl(220, 7%, 33%);
-  --alt-grey-800: hsl(220, 8%, 27%);
-  --alt-grey-900: hsl(220, 10%, 20%);
-  --alt-grey-1000: hsl(220, 12%, 13%);
-  --alt-grey-1100: hsl(220, 14%, 7%);
+  --sensei-grey-100: hsl(150, 10%, 96%);
+  --sensei-grey-200: hsl(150, 10%, 88%);
+  --sensei-grey-300: hsl(150, 8%, 80%);
+  --sensei-grey-400: hsl(150, 6%, 67%);
+  --sensei-grey-500: hsl(150, 5%, 53%);
+  --sensei-grey-600: hsl(150, 6%, 40%);
+  --sensei-grey-700: hsl(150, 7%, 33%);
+  --sensei-grey-800: hsl(150, 8%, 27%);
+  --sensei-grey-900: hsl(150, 10%, 20%);
+  --sensei-grey-1000: hsl(150, 12%, 13%);
+  --sensei-grey-1100: hsl(150, 14%, 7%);
 
   /* Red scale - smoother transitions, 500 fixed */
-  --alt-red-100: hsl(0, 100%, 95%);
-  --alt-red-200: hsl(0, 85%, 85%);
-  --alt-red-300: hsl(0, 85%, 75%);
-  --alt-red-400: hsl(0, 85%, 64%);
-  --alt-red-500: hsl(0, 46%, 49%);
-  --alt-red-600: hsl(0, 70%, 45%);
-  --alt-red-700: hsl(0, 65%, 41%);
-  --alt-red-800: hsl(0, 60%, 36%);
-  --alt-red-900: hsl(0, 55%, 31%);
-  --alt-red-1000: hsl(0, 50%, 24%);
+  --sensei-red-100: hsl(0, 100%, 95%);
+  --sensei-red-200: hsl(0, 85%, 85%);
+  --sensei-red-300: hsl(0, 85%, 75%);
+  --sensei-red-400: hsl(0, 85%, 64%);
+  --sensei-red-500: hsl(0, 46%, 49%);
+  --sensei-red-600: hsl(0, 70%, 45%);
+  --sensei-red-700: hsl(0, 65%, 41%);
+  --sensei-red-800: hsl(0, 60%, 36%);
+  --sensei-red-900: hsl(0, 55%, 31%);
+  --sensei-red-1000: hsl(0, 50%, 24%);
 
   /* Orange scale - already good, minor tweaks */
-  --alt-orange-100: hsl(38, 100%, 90%);
-  --alt-orange-200: hsl(38, 100%, 82%);
-  --alt-orange-300: hsl(38, 100%, 75%);
-  --alt-orange-400: hsl(38, 100%, 65%);
-  --alt-orange-500: hsl(38, 100%, 55%);
-  --alt-orange-600: hsl(38, 100%, 48%);
-  --alt-orange-700: hsl(38, 100%, 41%);
-  --alt-orange-800: hsl(38, 100%, 34%);
-  --alt-orange-900: hsl(38, 100%, 27%);
-  --alt-orange-1000: hsl(38, 100%, 22%);
+  --sensei-orange-100: hsl(38, 100%, 90%);
+  --sensei-orange-200: hsl(38, 100%, 82%);
+  --sensei-orange-300: hsl(38, 100%, 75%);
+  --sensei-orange-400: hsl(38, 100%, 65%);
+  --sensei-orange-500: hsl(38, 100%, 55%);
+  --sensei-orange-600: hsl(38, 100%, 48%);
+  --sensei-orange-700: hsl(38, 100%, 41%);
+  --sensei-orange-800: hsl(38, 100%, 34%);
+  --sensei-orange-900: hsl(38, 100%, 27%);
+  --sensei-orange-1000: hsl(38, 100%, 22%);
 
   /* Green scale - mint-like 100-400, smoother progression */
-  --alt-green-100: hsl(120, 60%, 95%);
-  --alt-green-200: hsl(120, 60%, 88%);
-  --alt-green-300: hsl(120, 60%, 80%);
-  --alt-green-400: hsl(120, 60%, 72%);
-  --alt-green-500: hsl(120, 68%, 60%);
-  --alt-green-600: hsl(120, 76%, 48%);
-  --alt-green-700: hsl(120, 84%, 40%);
-  --alt-green-800: hsl(120, 92%, 33%);
-  --alt-green-900: hsl(120, 96%, 27%);
-  --alt-green-1000: hsl(120, 100%, 22%);
-  --alt-green-1100: hsl(120, 100%, 16%);
-  --alt-green-1200: hsl(120, 100%, 12%);
-  --alt-green-1300: hsl(120, 100%, 8%);
-  --alt-green-1400: hsl(120, 100%, 4%);
+  --sensei-green-100: hsl(120, 60%, 95%);
+  --sensei-green-200: hsl(120, 60%, 88%);
+  --sensei-green-300: hsl(120, 60%, 80%);
+  --sensei-green-400: hsl(120, 60%, 72%);
+  --sensei-green-500: hsl(120, 68%, 60%);
+  --sensei-green-600: hsl(120, 76%, 48%);
+  --sensei-green-700: hsl(120, 84%, 40%);
+  --sensei-green-800: hsl(120, 92%, 33%);
+  --sensei-green-900: hsl(120, 96%, 27%);
+  --sensei-green-1000: hsl(120, 100%, 22%);
+  --sensei-green-1100: hsl(120, 100%, 16%);
+  --sensei-green-1200: hsl(120, 100%, 12%);
+  --sensei-green-1300: hsl(120, 100%, 8%);
+  --sensei-green-1400: hsl(120, 100%, 4%);
+  --sensei-green-1500: hsl(120, 100%, 2%);
 
-  --alt-green-1400-opacity-80: hsla(120, 100%, 4%, 0.8);
-  --alt-green-1400-opacity-40: hsla(120, 100%, 4%, 0.4);
+  --sensei-green-1400-opacity-80: hsla(120, 100%, 4%, 0.8);
+  --sensei-green-1400-opacity-40: hsla(120, 100%, 4%, 0.4);
 
   /* Blue scale - fixed reversals and jumps */
-  --alt-blue-100: hsl(208, 100%, 95%);
-  --alt-blue-200: hsl(208, 100%, 90%);
-  --alt-blue-300: hsl(208, 100%, 80%);
-  --alt-blue-400: hsl(208, 95%, 72%);
-  --alt-blue-500: hsl(208, 90%, 63%);
-  --alt-blue-600: hsl(208, 85%, 54%);
-  --alt-blue-700: hsl(208, 88%, 47%);
-  --alt-blue-800: hsl(208, 92%, 41%);
-  --alt-blue-900: hsl(208, 96%, 35%);
-  --alt-blue-1000: hsl(208, 100%, 28%);
+  --sensei-blue-100: hsl(208, 100%, 95%);
+  --sensei-blue-200: hsl(208, 100%, 90%);
+  --sensei-blue-300: hsl(208, 100%, 80%);
+  --sensei-blue-400: hsl(208, 95%, 72%);
+  --sensei-blue-500: hsl(208, 90%, 63%);
+  --sensei-blue-600: hsl(208, 85%, 54%);
+  --sensei-blue-700: hsl(208, 88%, 47%);
+  --sensei-blue-800: hsl(208, 92%, 41%);
+  --sensei-blue-900: hsl(208, 96%, 35%);
+  --sensei-blue-1000: hsl(208, 100%, 28%);
   /* Radius */
   --radius-000: 0;
   --radius-100: 4px;
@@ -220,234 +221,238 @@ html[data-brand="sensei"] {
 /* ==================================================================================================== */
 html[data-brand="sensei"][data-theme="light"] {
   /* Form */
-  --form-default-text-color: var(--alt-grey-500);
-  --form-success-text-color: var(--alt-green-700);
-  --form-warning-text-color: var(--alt-orange-700);
-  --form-error-text-color: var(--alt-red-700);
-  --form-default-text-color-hover: var(--alt-grey-600);
-  --form-success-text-color-hover: var(--alt-green-800);
-  --form-warning-text-color-hover: var(--alt-orange-800);
-  --form-error-text-color-hover: var(--alt-red-800);
-  --form-default-border-color: var(--alt-green-700);
-  --form-success-border-color: var(--alt-green-600);
-  --form-warning-border-color: var(--alt-orange-600);
-  --form-error-border-color: var(--alt-red-600);
-  --form-default-border-color-hover: var(--alt-green-1100);
-  --form-success-border-color-hover: var(--alt-green-700);
-  --form-warning-border-color-hover: var(--alt-orange-700);
-  --form-error-border-color-hover: var(--alt-red-700);
+  --form-default-text-color: var(--sensei-green-1000);
+  --form-success-text-color: var(--sensei-green-700);
+  --form-warning-text-color: var(--sensei-orange-700);
+  --form-error-text-color: var(--sensei-red-700);
+  --form-default-text-color-hover: var(--sensei-green-1100);
+  --form-success-text-color-hover: var(--sensei-green-800);
+  --form-warning-text-color-hover: var(--sensei-orange-800);
+  --form-error-text-color-hover: var(--sensei-red-800);
+  --form-default-border-color: var(--sensei-green-700);
+  --form-success-border-color: var(--sensei-green-600);
+  --form-warning-border-color: var(--sensei-orange-600);
+  --form-error-border-color: var(--sensei-red-600);
+  --form-default-border-color-hover: var(--sensei-green-1100);
+  --form-success-border-color-hover: var(--sensei-green-700);
+  --form-warning-border-color-hover: var(--sensei-orange-700);
+  --form-error-border-color-hover: var(--sensei-red-700);
+  --form-default-placeholder-color: var(--sensei-green-900);
+  --form-default-placeholder-color-hover: var(--sensei-green-1000);
+  --form-default-placeholder-color-focus: var(--sensei-green-1000);
+  --form-default-placeholder-color-disabled: var(--sensei-green-600);
   /* Feedback - Border (Alerts & Messages) */
-  --feedback-neutral-border-color: var(--alt-green-700);
-  --feedback-positive-border-color: var(--alt-green-600);
-  --feedback-info-border-color: var(--alt-blue-600);
-  --feedback-warning-border-color: var(--alt-orange-600);
-  --feedback-attention-border-color: var(--alt-red-600);
+  --feedback-neutral-border-color: var(--sensei-green-700);
+  --feedback-positive-border-color: var(--sensei-green-700);
+  --feedback-info-border-color: var(--sensei-grey-500);
+  --feedback-warning-border-color: var(--sensei-orange-600);
+  --feedback-attention-border-color: var(--sensei-red-600);
   /* Feedback - Background (Alerts & Messages) */
-  --feedback-neutral-background: var(--alt-green-300);
-  --feedback-positive-background: var(--alt-green-100);
-  --feedback-info-background: var(--alt-blue-100);
-  --feedback-warning-background: var(--alt-orange-100);
-  --feedback-attention-background: var(--alt-red-100);
+  --feedback-neutral-background: var(--sensei-green-300);
+  --feedback-positive-background: var(--sensei-green-200);
+  --feedback-info-background: var(--sensei-green-100);
+  --feedback-warning-background: var(--sensei-orange-100);
+  --feedback-attention-background: var(--sensei-red-100);
   /* Feedback - Icon (Alerts & Messages) */
-  --feedback-neutral-icon: var(--alt-green-900);
-  --feedback-positive-icon: var(--alt-green-600);
-  --feedback-info-icon: var(--alt-blue-600);
-  --feedback-warning-icon: var(--alt-orange-600);
-  --feedback-attention-icon: var(--alt-red-600);
+  --feedback-neutral-icon: var(--sensei-green-900);
+  --feedback-positive-icon: var(--sensei-green-800);
+  --feedback-info-icon: var(--sensei-grey-500);
+  --feedback-warning-icon: var(--sensei-orange-700);
+  --feedback-attention-icon: var(--sensei-red-600);
   /* Feedback - Text (Alerts & Messages) */
-  --feedback-neutral-text: var(--alt-grey-900);
-  --feedback-positive-text: var(--alt-green-900);
-  --feedback-info-text: var(--alt-blue-900);
-  --feedback-warning-text: var(--alt-orange-900);
-  --feedback-attention-text: var(--alt-red-900);
+  --feedback-neutral-text: var(--sensei-green-1100);
+  --feedback-positive-text: var(--sensei-green-900);
+  --feedback-info-text: var(--sensei-grey-600);
+  --feedback-warning-text: var(--sensei-orange-900);
+  --feedback-attention-text: var(--sensei-red-900);
   /* Feedback - Action (Button & Link) */
-  --feedback-neutral-action-background: var(--alt-grey-200);
-  --feedback-positive-action-background: var(--alt-green-200);
-  --feedback-info-action-background: var(--alt-blue-200);
-  --feedback-warning-action-background: var(--alt-orange-200);
-  --feedback-attention-action-background: var(--alt-red-200);
+  --feedback-neutral-action-background: var(--sensei-green-200);
+  --feedback-positive-action-background: var(--sensei-green-300);
+  --feedback-info-action-background: var(--sensei-grey-200);
+  --feedback-warning-action-background: var(--sensei-orange-200);
+  --feedback-attention-action-background: var(--sensei-red-200);
   /* Action - Primary (Button & Link) */
-  --action-primary-border-color: var(--alt-black-opacity-0);
-  --action-primary-border-color-hover: var(--alt-black-opacity-0);
-  --action-primary-border-color-focus: var(--alt-black-opacity-0);
-  --action-primary-border-color-disabled: var(--alt-black-opacity-0);
-  --action-primary-background: var(--alt-green-1100);
-  --action-primary-background-hover: var(--alt-green-1400);
-  --action-primary-background-focus: var(--alt-green-1400);
-  --action-primary-background-disabled: var(--alt-green-200);
-  --action-primary-text-color: var(--alt-white);
-  --action-primary-text-color-hover: var(--alt-white);
-  --action-primary-text-color-focus: var(--alt-white);
-  --action-primary-text-color-disabled: var(--alt-grey-400);
+  --action-primary-border-color: var(--sensei-black-opacity-0);
+  --action-primary-border-color-hover: var(--sensei-black-opacity-0);
+  --action-primary-border-color-focus: var(--sensei-black-opacity-0);
+  --action-primary-border-color-disabled: var(--sensei-black-opacity-0);
+  --action-primary-background: var(--sensei-green-1100);
+  --action-primary-background-hover: var(--sensei-green-1400);
+  --action-primary-background-focus: var(--sensei-green-1400);
+  --action-primary-background-disabled: var(--sensei-grey-200);
+  --action-primary-text-color: var(--sensei-white);
+  --action-primary-text-color-hover: var(--sensei-white);
+  --action-primary-text-color-focus: var(--sensei-white);
+  --action-primary-text-color-disabled: var(--sensei-grey-400);
   /* Action - Secondary (Button & Link) */
-  --action-secondary-border-color: var(--alt-green-1000);
-  --action-secondary-border-color-hover: var(--alt-green-800);
-  --action-secondary-border-color-focus: var(--alt-green-800);
-  --action-secondary-border-color-disabled: var(--alt-green-400);
-  --action-secondary-background: var(--alt-green-400);
-  --action-secondary-background-hover: var(--alt-green-400);
-  --action-secondary-background-focus: var(--alt-green-400);
-  --action-secondary-background-disabled: var(--alt-green-400);
-  --action-secondary-text-color: var(--alt-green-1300);
-  --action-secondary-text-color-hover: var(--alt-green-1300);
-  --action-secondary-text-color-focus: var(--alt-green-1300);
-  --action-secondary-text-color-disabled: var(--alt-green-400);
+  --action-secondary-border-color: var(--sensei-green-1000);
+  --action-secondary-border-color-hover: var(--sensei-green-1400);
+  --action-secondary-border-color-focus: var(--sensei-green-1400);
+  --action-secondary-border-color-disabled: var(--sensei-grey-300);
+  --action-secondary-background: var(--sensei-white-opacity-0);
+  --action-secondary-background-hover: var(--sensei-white-opacity-10);
+  --action-secondary-background-focus: var(--sensei-white-opacity-10);
+  --action-secondary-background-disabled: var(--sensei-grey-200);
+  --action-secondary-text-color: var(--sensei-green-1300);
+  --action-secondary-text-color-hover: var(--sensei-green-1300);
+  --action-secondary-text-color-focus: var(--sensei-green-1300);
+  --action-secondary-text-color-disabled: var(--sensei-grey-400);
   /* Action - Tertiary (Button & Link) */
-  --action-tertiary-border-color: var(--alt-black-opacity-0);
-  --action-tertiary-border-color-hover: var(--alt-black-opacity-0);
-  --action-tertiary-border-color-focus: var(--alt-black-opacity-0);
-  --action-tertiary-border-color-disabled: var(--alt-black-opacity-0);
-  --action-tertiary-background: var(--alt-white-opacity-0);
-  --action-tertiary-background-hover: var(--alt-green-200);
-  --action-tertiary-background-focus: var(--alt-green-200);
-  --action-tertiary-background-disabled: var(--alt-grey-200);
-  --action-tertiary-text-color: var(--alt-grey-900);
-  --action-tertiary-text-color-hover: var(--alt-grey-1000);
-  --action-tertiary-text-color-focus: var(--alt-grey-1000);
-  --action-tertiary-text-color-disabled: var(--alt-grey-400);
+  --action-tertiary-border-color: var(--sensei-black-opacity-0);
+  --action-tertiary-border-color-hover: var(--sensei-black-opacity-0);
+  --action-tertiary-border-color-focus: var(--sensei-black-opacity-0);
+  --action-tertiary-border-color-disabled: var(--sensei-black-opacity-0);
+  --action-tertiary-background: var(--sensei-white-opacity-0);
+  --action-tertiary-background-hover: var(--sensei-green-400);
+  --action-tertiary-background-focus: var(--sensei-green-400);
+  --action-tertiary-background-disabled: var(--sensei-grey-200);
+  --action-tertiary-text-color: var(--sensei-green-1100);
+  --action-tertiary-text-color-hover: var(--sensei-green-1200);
+  --action-tertiary-text-color-focus: var(--sensei-green-1200);
+  --action-tertiary-text-color-disabled: var(--sensei-grey-400);
   /* Action - Attention (Button & Link) */
-  --action-attention-border-color: var(--alt-black-opacity-0);
-  --action-attention-border-color-hover: var(--alt-black-opacity-0);
-  --action-attention-border-color-focus: var(--alt-black-opacity-0);
-  --action-attention-border-color-disabled: var(--alt-black-opacity-0);
-  --action-attention-background: var(--alt-red-500);
-  --action-attention-background-hover: var(--alt-red-600);
-  --action-attention-background-focus: var(--alt-red-600);
-  --action-attention-background-disabled: var(--alt-red-100);
-  --action-attention-text-color: var(--alt-white);
-  --action-attention-text-color-hover: var(--alt-white);
-  --action-attention-text-color-focus: var(--alt-white);
-  --action-attention-text-color-disabled: var(--alt-red-300);
+  --action-attention-border-color: var(--sensei-black-opacity-0);
+  --action-attention-border-color-hover: var(--sensei-black-opacity-0);
+  --action-attention-border-color-focus: var(--sensei-black-opacity-0);
+  --action-attention-border-color-disabled: var(--sensei-black-opacity-0);
+  --action-attention-background: var(--sensei-red-500);
+  --action-attention-background-hover: var(--sensei-red-600);
+  --action-attention-background-focus: var(--sensei-red-600);
+  --action-attention-background-disabled: var(--sensei-grey-200);
+  --action-attention-text-color: var(--sensei-white);
+  --action-attention-text-color-hover: var(--sensei-white);
+  --action-attention-text-color-focus: var(--sensei-white);
+  --action-attention-text-color-disabled: var(--sensei-grey-400);
   /* Action - Avatar (Button & Link) */
-  --action-avatar-background: var(--alt-green-400);
-  --action-avatar-background-hover: var(--alt-green-300);
+  --action-avatar-background: var(--sensei-green-400);
+  --action-avatar-background-hover: var(--sensei-green-300);
   /* Surface */
-  --surface: var(--alt-green-200);
-  --surface-elevated-alpha: var(--alt-green-300);
-  --surface-elevated-100: var(--alt-green-300);
-  --surface-elevated-200: var(--alt-green-400);
-  --surface-recessed-alpha: var(--alt-green-400);
-  --surface-recessed-100: var(--alt-green-300);
-  --surface-recessed-200: var(--alt-green-400);
+  --surface: var(--sensei-green-200);
+  --surface-elevated-alpha: var(--sensei-green-300);
+  --surface-elevated-100: var(--sensei-green-300);
+  --surface-elevated-200: var(--sensei-green-400);
+  --surface-recessed-alpha: var(--sensei-green-400);
+  --surface-recessed-100: var(--sensei-green-300);
+  --surface-recessed-200: var(--sensei-green-400);
   /* Stroke */
-  --outline-color: var(--alt-green-900);
-  --border-color: var(--alt-green-700);
+  --outline-color: var(--sensei-green-900);
+  --border-color: var(--sensei-green-700);
   /* Text */
-  --text-color: var(--alt-green-1400);
-  --text-color-success: var(--alt-green-600);
-  --text-color-warning: var(--alt-orange-600);
-  --text-color-error: var(--alt-red-600);
-  --text-color-optional: var(--alt-grey-600);
+  --text-color: var(--sensei-green-1400);
+  --text-color-success: var(--sensei-green-700);
+  --text-color-warning: var(--sensei-orange-600);
+  --text-color-error: var(--sensei-red-600);
+  --text-color-optional: var(--sensei-green-800);
   /* Overlay */
-  --backdrop-overlay: var(--alt-green-1400-opacity-80);
+  --backdrop-overlay: var(--sensei-green-1400-opacity-80);
   /* ================================================================================================== */
   /* Components                                                                                         */
   /* ================================================================================================== */
   /* Switch */
-  --switch-track-background: var(--alt-green-800);
-  --switch-track-background-checked: var(--alt-green-1200);
-  --switch-thumb-bg: var(--alt-green-300);
-  --switch-icon: var(--alt-green-1000);
+  --switch-track-background: var(--sensei-green-800);
+  --switch-track-background-checked: var(--sensei-green-1200);
+  --switch-thumb-bg: var(--sensei-green-300);
+  --switch-icon: var(--sensei-green-1000);
   /* Icon */
-  --icon-color-default: var(---alt-green-100);
-  --icon-color-inverted: var(--alt-green-1000);
+  --icon-color-default: var(---sensei-green-100);
+  --icon-color-inverted: var(--sensei-green-1000);
   /* Badge */
-  --badge-text-color: var(--alt-white);
-  --badge-background-neutral: var(--alt-green-900);
-  --badge-background-positive: var(--alt-green-600);
-  --badge-background-warning: var(--alt-orange-600);
-  --badge-background-attention: var(--alt-red-600);
+  --badge-text-color: var(--sensei-white);
+  --badge-background-neutral: var(--sensei-green-900);
+  --badge-background-positive: var(--sensei-green-600);
+  --badge-background-warning: var(--sensei-orange-600);
+  --badge-background-attention: var(--sensei-red-600);
   /* Heading */
-  --heading-text-color: var(--alt-green-1100);
+  --heading-text-color: var(--sensei-green-1100);
   /* Link */
-  --link-text-color-default: var(--alt-grey-900);
-  --link-text-color-default-hover: var(--alt-grey-1000);
-  --link-text-color-default-focus: var(--alt-grey-1000);
-  --link-text-color-default-disabled: var(--alt-grey-800);
+  --link-text-color-default: var(--sensei-green-1100);
+  --link-text-color-default-hover: var(--sensei-green-1400);
+  --link-text-color-default-focus: var(--sensei-green-1400);
+  --link-text-color-default-disabled: var(--sensei-green-500);
   /* Input */
-  --input-background: var(--alt-green-200);
-  --input-background-disabled: var(--alt-green-200);
+  --input-background: var(--sensei-green-200);
+  --input-background-disabled: var(--sensei-green-200);
 
   /* Checkbox */
-  --checkbox-background: var(--alt-green-100);
-  --checkbox-background-checked: var(--alt-green-900);
-  --checkbox-icon-color-checked: var(--alt-green-200);
+  --checkbox-background: var(--sensei-green-100);
+  --checkbox-background-checked: var(--sensei-green-900);
+  --checkbox-icon-color-checked: var(--sensei-green-200);
 
-  --checkbox-background-disabled: var(--alt-green-100);
-  --checkbox-background-checked-disabled: var(--alt-green-800);
-  --checkbox-icon-color-checked-disabled: var(--alt-green-100);
+  --checkbox-background-disabled: var(--sensei-green-100);
+  --checkbox-background-checked-disabled: var(--sensei-green-800);
+  --checkbox-icon-color-checked-disabled: var(--sensei-green-100);
 
   /* Addon */
-  --addon-background: var(--alt-green-200);
+  --addon-background: var(--sensei-green-200);
   /* Tabs */
-  --tab-border-color: var(--alt-green-700);
+  --tab-border-color: var(--sensei-green-700);
 
-  --tab-background: var(--alt-green-400);
-  --tab-icon: var(--alt-green-1100);
-  --tab-text-color: var(--alt-green-1100);
+  --tab-background: var(--sensei-green-400);
+  --tab-icon: var(--sensei-green-1100);
+  --tab-text-color: var(--sensei-green-1100);
 
-  --tab-background-active: var(--alt-green-200);
-  --tab-icon-active: var(--alt-green-1000);
-  --tab-text-color-active: var(--alt-green-1000);
-  --tab-shadow-active: var(--alt-black-opacity-10);
+  --tab-background-active: var(--sensei-green-200);
+  --tab-icon-active: var(--sensei-green-1000);
+  --tab-text-color-active: var(--sensei-green-1000);
+  --tab-shadow-active: var(--sensei-black-opacity-10);
 
   /* Carousel */
-  --carousel-background: var(--alt-green-200);
+  --carousel-background: var(--sensei-green-200);
 
   /* Slat */
-  --slat-background: var(--alt-white-opacity-60);
-  --slat-background-hover: var(--alt-white-opacity-90);
+  --slat-background: var(--sensei-white-opacity-60);
+  --slat-background-hover: var(--sensei-white-opacity-90);
   --slat-card-background: var(--surface-elevated-100);
   --slat-card-background-hover: var(--surface-elevated-200);
-  --slat-avatar-background: var(--alt-green-400);
-  --slat-avatar-background-hover: var(--alt-green-300);
-  --slat-card-avatar-background: var(--alt-green-200);
-  --slat-card-avatar-background-hover: var(--alt-green-200);
+  --slat-avatar-background: var(--sensei-green-400);
+  --slat-avatar-background-hover: var(--sensei-green-300);
+  --slat-card-avatar-background: var(--sensei-green-200);
+  --slat-card-avatar-background-hover: var(--sensei-green-200);
 
   /* Avatar */
-  --avatar-background-neutral: var(--alt-green-400);
-  --avatar-background-positive: var(--alt-green-400);
-  --avatar-background-warning: var(--alt-orange-400);
-  --avatar-background-attention: var(--alt-red-400);
+  --avatar-background-neutral: var(--sensei-green-400);
+  --avatar-background-positive: var(--sensei-green-400);
+  --avatar-background-warning: var(--sensei-orange-400);
+  --avatar-background-attention: var(--sensei-red-400);
 
   /* Chip */
-  --chip-background: var(--alt-green-200);
-  --chip-background-hover: var(--alt-green-300);
-  --chip-background-focus: var(--alt-green-300);
-  --chip-background-active: var(--alt-green-1100);
-  --chip-border-color: var(--alt-green-200);
-  --chip-border-color-hover: var(--alt-green-100);
-  --chip-border-color-focus: var(--alt-green-100);
-  --chip-border-color-active: var(--alt-green-1100);
-  --chip-text-color-active: var(--alt-green-200);
-  --chip-icon-fill: var(--alt-green-1100);
-  --chip-dismiss-action-background: var(--alt-green-100);
-  --chip-dismiss-action-background-hover: var(--alt-black-opacity-0);
+  --chip-background: var(--sensei-green-200);
+  --chip-background-hover: var(--sensei-green-300);
+  --chip-background-focus: var(--sensei-green-300);
+  --chip-background-active: var(--sensei-green-1100);
+  --chip-border-color: var(--sensei-green-200);
+  --chip-border-color-hover: var(--sensei-green-100);
+  --chip-border-color-focus: var(--sensei-green-100);
+  --chip-border-color-active: var(--sensei-green-1100);
+  --chip-text-color-active: var(--sensei-green-200);
+  --chip-icon-fill: var(--sensei-green-1100);
+  --chip-dismiss-action-background: var(--sensei-green-300);
+  --chip-dismiss-action-background-hover: var(--sensei-black-opacity-0);
 
   /* Dropdown */
-  --dropdown-background: var(--alt-green-300);
-  --dropdown-border-color: var(--alt-black-opacity-20);
-  --dropdown-shadow-color: var(--alt-green-400);
-  --dropdown-button-background-hover: var(--alt-green-200);
+  --dropdown-background: var(--sensei-green-300);
+  --dropdown-border-color: var(--sensei-black-opacity-20);
+  --dropdown-shadow-color: var(--sensei-green-400);
+  --dropdown-button-background-hover: var(--sensei-green-200);
 
   /* Progress */
-  --progress-bar-background: var(--alt-blue-600);
-  --progress-track-background: var(--alt-grey-200);
-  --progress-loading-bar-100: var(--alt-grey-200);
-  --progress-loading-bar-200: var(--alt-grey-300);
+  --progress-bar-background: var(--sensei-green-900);
+  --progress-track-background: var(--sensei-green-400);
+  --progress-loading-bar-100: var(--sensei-green-500);
+  --progress-loading-bar-200: var(--sensei-green-400);
 
   /* Stepper */
-  --stepper-color: var(--alt-green-1000);
+  --stepper-color: var(--sensei-green-1000);
   --stepper-background-active: var(--stepper-color);
-  --stepper-background-inactive: var(--alt-green-400);
+  --stepper-background-inactive: var(--sensei-green-400);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
 
   /* Dialog */
-  --dialog-background: var(--alt-green-300);
+  --dialog-background: var(--sensei-green-300);
 
   /* Drawer */
-  --drawer-background: var(--alt-green-300);
+  --drawer-background: var(--sensei-green-300);
 }
 
 /* ==================================================================================================== */
@@ -455,232 +460,238 @@ html[data-brand="sensei"][data-theme="light"] {
 /* ==================================================================================================== */
 html[data-brand="sensei"][data-theme="dark"] {
   /* Form */
-  --form-default-text-color: var(--alt-grey-500);
-  --form-success-text-color: var(--alt-green-400);
-  --form-warning-text-color: var(--alt-orange-400);
-  --form-error-text-color: var(--alt-red-400);
-  --form-default-text-color-hover: var(--alt-grey-400);
-  --form-success-text-color-hover: var(--alt-green-300);
-  --form-warning-text-color-hover: var(--alt-orange-300);
-  --form-error-text-color-hover: var(--alt-red-300);
+  --form-default-text-color: var(--sensei-green-400);
+  --form-success-text-color: var(--sensei-green-400);
+  --form-warning-text-color: var(--sensei-orange-400);
+  --form-error-text-color: var(--sensei-red-400);
+  --form-default-text-color-hover: var(--sensei-green-300);
+  --form-success-text-color-hover: var(--sensei-green-300);
+  --form-warning-text-color-hover: var(--sensei-orange-300);
+  --form-error-text-color-hover: var(--sensei-red-300);
   --form-default-border-color: var(--border-color);
-  --form-success-border-color: var(--alt-green-400);
-  --form-warning-border-color: var(--alt-orange-400);
-  --form-error-border-color: var(--alt-red-400);
-  --form-default-border-color-hover: var(--alt-green-1100);
-  --form-success-border-color-hover: var(--alt-green-300);
-  --form-warning-border-color-hover: var(--alt-orange-300);
-  --form-error-border-color-hover: var(--alt-red-300);
+  --form-success-border-color: var(--sensei-green-400);
+  --form-warning-border-color: var(--sensei-orange-400);
+  --form-error-border-color: var(--sensei-red-400);
+  --form-default-border-color-hover: var(--sensei-green-1100);
+  --form-success-border-color-hover: var(--sensei-green-300);
+  --form-warning-border-color-hover: var(--sensei-orange-300);
+  --form-error-border-color-hover: var(--sensei-red-300);
+  --form-default-placeholder-color: var(--sensei-green-400);
+  --form-default-placeholder-color-hover: var(--sensei-green-500);
+  --form-default-placeholder-color-focus: var(--sensei-green-500);
+  --form-default-placeholder-color-disabled: var(--sensei-green-1200);
   /* Feedback - Border (Alerts & Messages) */
-  --feedback-neutral-border-color: var(--alt-green-1200);
-  --feedback-positive-border-color: var(--alt-green-900);
-  --feedback-info-border-color: var(--alt-blue-400);
-  --feedback-warning-border-color: var(--alt-orange-400);
-  --feedback-attention-border-color: var(--alt-red-400);
+  --feedback-neutral-border-color: var(--sensei-green-1200);
+  --feedback-positive-border-color: var(--sensei-green-800);
+  --feedback-info-border-color: var(--sensei-green-1100);
+  --feedback-warning-border-color: var(--sensei-orange-400);
+  --feedback-attention-border-color: var(--sensei-red-400);
   /* Feedback - Background (Alerts & Messages) */
-  --feedback-neutral-background: var(--alt-green-1300);
-  --feedback-positive-background: var(--alt-green-800);
-  --feedback-info-background: var(--alt-blue-800);
-  --feedback-warning-background: var(--alt-orange-800);
-  --feedback-attention-background: var(--alt-red-800);
+  --feedback-neutral-background: var(--sensei-green-1300);
+  --feedback-positive-background: var(--sensei-green-1000);
+  --feedback-info-background: var(--sensei-green-1200);
+  --feedback-warning-background: var(--sensei-orange-800);
+  --feedback-attention-background: var(--sensei-red-800);
   /* Feedback - Icon (Alerts & Messages) */
-  --feedback-neutral-icon: var(--alt-green-300);
-  --feedback-positive-icon: var(--alt-green-500);
-  --feedback-info-icon: var(--alt-blue-200);
-  --feedback-warning-icon: var(--alt-orange-200);
-  --feedback-attention-icon: var(--alt-red-200);
+  --feedback-neutral-icon: var(--sensei-green-300);
+  --feedback-positive-icon: var(--sensei-green-200);
+  --feedback-info-icon: var(--sensei-green-300);
+  --feedback-warning-icon: var(--sensei-orange-200);
+  --feedback-attention-icon: var(--sensei-red-200);
   /* Feedback - Text (Alerts & Messages) */
-  --feedback-neutral-text: var(--alt-grey-100);
-  --feedback-positive-text: var(--alt-green-100);
-  --feedback-info-text: var(--alt-blue-100);
-  --feedback-warning-text: var(--alt-orange-100);
-  --feedback-attention-text: var(--alt-red-100);
+  --feedback-neutral-text: var(--sensei-green-100);
+  --feedback-positive-text: var(--sensei-green-100);
+  --feedback-info-text: var(--sensei-green-300);
+  --feedback-warning-text: var(--sensei-orange-100);
+  --feedback-attention-text: var(--sensei-red-100);
   /* Feedback - Action (Button & Link) */
-  --feedback-neutral-action-background: var(--alt-grey-900);
-  --feedback-positive-action-background: var(--alt-green-900);
-  --feedback-info-action-background: var(--alt-blue-900);
-  --feedback-warning-action-background: var(--alt-orange-900);
-  --feedback-attention-action-background: var(--alt-red-900);
+  --feedback-neutral-action-background: var(--sensei-green-900);
+  --feedback-positive-action-background: var(--sensei-green-900);
+  --feedback-info-action-background: var(--sensei-green-1300);
+  --feedback-warning-action-background: var(--sensei-orange-900);
+  --feedback-attention-action-background: var(--sensei-red-900);
   /* Action - Primary (Button & Link) */
-  --action-primary-border-color: var(--alt-black-opacity-0);
-  --action-primary-border-color-hover: var(--alt-black-opacity-0);
-  --action-primary-border-color-focus: var(--alt-black-opacity-0);
-  --action-primary-border-color-disabled: var(--alt-black-opacity-0);
-  --action-primary-background: var(--alt-green-500);
-  --action-primary-background-hover: var(--alt-green-500);
-  --action-primary-background-focus: var(--alt-green-500);
-  --action-primary-background-disabled: var(--alt-green-800);
-  --action-primary-text-color: var(--alt-green-1400);
-  --action-primary-text-color-hover: var(--alt-green-1400);
-  --action-primary-text-color-focus: var(--alt-green-1400);
-  --action-primary-text-color-disabled: var(--alt-green-400);
+  --action-primary-border-color: var(--sensei-black-opacity-0);
+  --action-primary-border-color-hover: var(--sensei-black-opacity-0);
+  --action-primary-border-color-focus: var(--sensei-black-opacity-0);
+  --action-primary-border-color-disabled: var(--sensei-black-opacity-0);
+  --action-primary-background: var(--sensei-green-500);
+  --action-primary-background-hover: var(--sensei-green-400);
+  --action-primary-background-focus: var(--sensei-green-400);
+  --action-primary-background-disabled: var(--sensei-green-800);
+  --action-primary-text-color: var(--sensei-green-1400);
+  --action-primary-text-color-hover: var(--sensei-green-1400);
+  --action-primary-text-color-focus: var(--sensei-green-1400);
+  --action-primary-text-color-disabled: var(--sensei-green-400);
   /* Action - Secondary (Button & Link) */
-  --action-secondary-border-color: var(--alt-green-400);
-  --action-secondary-border-color-hover: var(--alt-green-500);
-  --action-secondary-border-color-focus: var(--alt-green-500);
-  --action-secondary-border-color-disabled: var(--alt-green-500);
-  --action-secondary-background: var(--alt-black-opacity-0);
-  --action-secondary-background-hover: var(--alt-black-opacity-0);
-  --action-secondary-background-focus: var(--alt-black-opacity-0);
-  --action-secondary-background-disabled: var(--alt-green-1400);
-  --action-secondary-text-color: var(--alt-green-400);
-  --action-secondary-text-color-hover: var(--alt-green-500);
-  --action-secondary-text-color-focus: var(--alt-green-500);
-  --action-secondary-text-color-disabled: var(--alt-green-500);
+  --action-secondary-border-color: var(--sensei-green-400);
+  --action-secondary-border-color-hover: var(--sensei-green-500);
+  --action-secondary-border-color-focus: var(--sensei-green-500);
+  --action-secondary-border-color-disabled: var(--sensei-green-500);
+  --action-secondary-background: var(--sensei-black-opacity-0);
+  --action-secondary-background-hover: var(--sensei-green-1200);
+  --action-secondary-background-focus: var(--sensei-green-1200);
+  --action-secondary-background-disabled: var(--sensei-green-1400);
+  --action-secondary-text-color: var(--sensei-green-400);
+  --action-secondary-text-color-hover: var(--sensei-green-500);
+  --action-secondary-text-color-focus: var(--sensei-green-500);
+  --action-secondary-text-color-disabled: var(--sensei-green-500);
   /* Action - Tertiary (Button & Link) */
-  --action-tertiary-border-color: var(--alt-black-opacity-0);
-  --action-tertiary-border-color-hover: var(--alt-black-opacity-0);
-  --action-tertiary-border-color-focus: var(--alt-black-opacity-0);
-  --action-tertiary-border-color-disabled: var(--alt-black-opacity-0);
-  --action-tertiary-background: var(--alt-black-opacity-0);
-  --action-tertiary-background-hover: var(--alt-green-1200);
-  --action-tertiary-background-focus: var(--alt-green-1200);
-  --action-tertiary-background-disabled: var(--alt-green-1400);
-  --action-tertiary-text-color: var(--alt-green-400);
-  --action-tertiary-text-color-hover: var(--alt-green-500);
-  --action-tertiary-text-color-focus: var(--alt-green-500);
-  --action-tertiary-text-color-disabled: var(--alt-green-1200);
+  --action-tertiary-border-color: var(--sensei-black-opacity-0);
+  --action-tertiary-border-color-hover: var(--sensei-black-opacity-0);
+  --action-tertiary-border-color-focus: var(--sensei-black-opacity-0);
+  --action-tertiary-border-color-disabled: var(--sensei-black-opacity-0);
+  --action-tertiary-background: var(--sensei-black-opacity-0);
+  --action-tertiary-background-hover: var(--sensei-green-1200);
+  --action-tertiary-background-focus: var(--sensei-green-1200);
+  --action-tertiary-background-disabled: var(--sensei-green-1400);
+  --action-tertiary-text-color: var(--sensei-green-300);
+  --action-tertiary-text-color-hover: var(--sensei-green-400);
+  --action-tertiary-text-color-focus: var(--sensei-green-400);
+  --action-tertiary-text-color-disabled: var(--sensei-green-1200);
   /* Action - Attention (Button & Link) */
-  --action-attention-border-color: var(--alt-black-opacity-0);
-  --action-attention-border-color-hover: var(--alt-black-opacity-0);
-  --action-attention-border-color-focus: var(--alt-black-opacity-0);
-  --action-attention-border-color-disabled: var(--alt-black-opacity-0);
-  --action-attention-background: var(--alt-red-600);
-  --action-attention-background-hover: var(--alt-red-700);
-  --action-attention-background-focus: var(--alt-red-700);
-  --action-attention-background-disabled: var(--alt-red-900);
-  --action-attention-text-color: var(--alt-white);
-  --action-attention-text-color-hover: var(--alt-white);
-  --action-attention-text-color-focus: var(--alt-white);
-  --action-attention-text-color-disabled: var(--alt-red-300);
+  --action-attention-border-color: var(--sensei-black-opacity-0);
+  --action-attention-border-color-hover: var(--sensei-black-opacity-0);
+  --action-attention-border-color-focus: var(--sensei-black-opacity-0);
+  --action-attention-border-color-disabled: var(--sensei-black-opacity-0);
+  --action-attention-background: var(--sensei-red-600);
+  --action-attention-background-hover: var(--sensei-red-700);
+  --action-attention-background-focus: var(--sensei-red-700);
+  --action-attention-background-disabled: var(--sensei-red-900);
+  --action-attention-text-color: var(--sensei-white);
+  --action-attention-text-color-hover: var(--sensei-white);
+  --action-attention-text-color-focus: var(--sensei-white);
+  --action-attention-text-color-disabled: var(--sensei-red-300);
   /* Action - Avatar (Button & Link) */
-  --action-avatar-background: var(--alt-green-1100);
-  --action-avatar-background-hover: var(--alt-green-1300);
+  --action-avatar-background: var(--sensei-green-1100);
+  --action-avatar-background-hover: var(--sensei-green-1300);
 
   /* Surface */
-  --surface: var(--alt-green-1200);
-  --surface-elevated-alpha: var(--alt-green-1200);
-  --surface-elevated-100: var(--alt-green-1300);
-  --surface-elevated-200: var(--alt-green-1400);
-  --surface-recessed-alpha: var(--alt-black-opacity-30);
-  --surface-recessed-100: var(--alt-green-1000);
-  --surface-recessed-200: var(--alt-green-1100);
+  --surface: var(--sensei-green-1200);
+  --surface-elevated-alpha: var(--sensei-green-1200);
+  --surface-elevated-100: var(--sensei-green-1300);
+  --surface-elevated-200: var(--sensei-green-1400);
+  --surface-elevated-300: var(--sensei-green-1500);
+  --surface-recessed-alpha: var(--sensei-black-opacity-30);
+  --surface-recessed-100: var(--sensei-green-1000);
+  --surface-recessed-200: var(--sensei-green-1100);
+  --surface-recessed-300: var(--sensei-green-1200);
   /* Stroke */
-  --outline-color: var(--alt-green-700);
-  --border-color: var(--alt-green-1200);
+  --outline-color: var(--sensei-green-700);
+  --border-color: var(--sensei-green-1200);
   /* Text */
-  --text-color: var(--alt-green-200);
-  --text-color-success: var(--alt-green-400);
-  --text-color-warning: var(--alt-orange-400);
-  --text-color-error: var(--alt-red-400);
-  --text-color-optional: var(--alt-grey-300);
+  --text-color: var(--sensei-green-200);
+  --text-color-success: var(--sensei-green-500);
+  --text-color-warning: var(--sensei-orange-400);
+  --text-color-error: var(--sensei-red-400);
+  --text-color-optional: var(--sensei-green-900);
   /* Overlay */
-  --backdrop-overlay: var(--alt-green-1400-opacity-80);
+  --backdrop-overlay: var(--sensei-green-1400-opacity-80);
   /* ================================================================================================== */
   /* Components                                                                                         */
   /* ================================================================================================== */
   /* Switch */
-  --switch-track-background: var(--alt-green-300);
-  --switch-track-background-checked: var(--alt-green-500);
-  --switch-thumb-bg: var(--alt-green-1300);
-  --switch-icon: var(--alt-green-400);
+  --switch-track-background: var(--sensei-green-300);
+  --switch-track-background-checked: var(--sensei-green-500);
+  --switch-thumb-bg: var(--sensei-green-1300);
+  --switch-icon: var(--sensei-green-400);
   /* Icon */
-  --icon-color-default: var(--alt-green-200);
-  --icon-color-inverted: var(--alt-green-1000);
+  --icon-color-default: var(--sensei-green-200);
+  --icon-color-inverted: var(--sensei-green-1000);
   /* Badge */
-  --badge-text-color: var(--alt-green-1200);
-  --badge-background-neutral: var(--alt-green-400);
-  --badge-background-positive: var(--alt-green-400);
-  --badge-background-warning: var(--alt-orange-400);
-  --badge-background-attention: var(--alt-red-400);
+  --badge-text-color: var(--sensei-green-1200);
+  --badge-background-neutral: var(--sensei-green-400);
+  --badge-background-positive: var(--sensei-green-400);
+  --badge-background-warning: var(--sensei-orange-400);
+  --badge-background-attention: var(--sensei-red-400);
   /* Heading */
-  --heading-text-color: var(--alt-grey-100);
+  --heading-text-color: var(--sensei-green-300);
   /* Link */
-  --link-text-color-default: var(--alt-grey-200);
-  --link-text-color-default-hover: var(--alt-grey-100);
-  --link-text-color-default-focus: var(--alt-grey-100);
-  --link-text-color-default-disabled: var(--alt-grey-600);
+  --link-text-color-default: var(--sensei-green-300);
+  --link-text-color-default-hover: var(--sensei-green-500);
+  --link-text-color-default-focus: var(--sensei-green-500);
+  --link-text-color-default-disabled: var(--sensei-green-1000);
   /* Input */
-  --input-background: var(--alt-green-1400);
-  --input-background-disabled: var(--alt-green-1400);
+  --input-background: var(--sensei-green-1400);
+  --input-background-disabled: var(--sensei-green-1400);
   /* Checkbox */
-  --checkbox-background: var(--alt-grey-900);
-  --checkbox-background-checked: var(--alt-grey-200);
-  --checkbox-icon-color-checked: var(--alt-grey-900);
-  --checkbox-background-disabled: var(--alt-grey-800);
-  --checkbox-background-checked-disabled: var(--alt-grey-500);
-  --checkbox-icon-color-checked-disabled: var(--alt-grey-900);
+  --checkbox-background: var(--sensei-green-1400);
+  --checkbox-background-checked: var(--sensei-green-500);
+  --checkbox-icon-color-checked: var(--sensei-green-1400);
+  --checkbox-background-disabled: var(--sensei-green-1300);
+  --checkbox-background-checked-disabled: var(--sensei-green-800);
+  --checkbox-icon-color-checked-disabled: var(--sensei-green-1400);
   /* Addon */
-  --addon-background: var(--alt-green-1400);
+  --addon-background: var(--sensei-green-1400);
   /* Tabs */
-  --tab-border-color: var(--alt-green-1200);
+  --tab-border-color: var(--sensei-green-1200);
 
-  --tab-background: var(--alt-green-1400);
-  --tab-icon: var(--alt-green-400);
-  --tab-text-color: var(--alt-green-400);
+  --tab-background: var(--sensei-green-1400);
+  --tab-icon: var(--sensei-green-400);
+  --tab-text-color: var(--sensei-green-400);
 
-  --tab-background-active: var(--alt-green-300);
-  --tab-icon-active: var(--alt-green-1200);
-  --tab-text-color-active: var(--alt-green-1200);
-  --tab-shadow-active: var(--alt-green-1400);
+  --tab-background-active: var(--sensei-green-300);
+  --tab-icon-active: var(--sensei-green-1200);
+  --tab-text-color-active: var(--sensei-green-1200);
+  --tab-shadow-active: var(--sensei-green-1400);
 
   /* Carousel */
-  --carousel-background: var(--alt-green-1200);
+  --carousel-background: var(--sensei-green-1200);
 
   /* Slat */
-  --slat-background: var(--alt-green-1200);
-  --slat-background-hover: var(--alt-green-1100);
-  --slat-card-background: var(--alt-green-1300);
-  --slat-card-background-hover: var(--alt-green-1200);
-  --slat-avatar-background: var(--alt-green-1300);
-  --slat-avatar-background-hover: var(--alt-green-1200);
-  --slat-card-avatar-background: var(--alt-green-1100);
-  --slat-card-avatar-background-hover: var(--alt-green-1000);
+  --slat-background: var(--sensei-green-1200);
+  --slat-background-hover: var(--sensei-green-1100);
+  --slat-card-background: var(--sensei-green-1300);
+  --slat-card-background-hover: var(--sensei-green-1200);
+  --slat-avatar-background: var(--sensei-green-1300);
+  --slat-avatar-background-hover: var(--sensei-green-1200);
+  --slat-card-avatar-background: var(--sensei-green-1100);
+  --slat-card-avatar-background-hover: var(--sensei-green-1000);
 
   /* Avatar */
-  --avatar-background-neutral: var(--alt-green-900);
-  --avatar-background-positive: var(--alt-green-900);
-  --avatar-background-warning: var(--alt-orange-900);
-  --avatar-background-attention: var(--alt-red-900);
+  --avatar-background-neutral: var(--sensei-green-900);
+  --avatar-background-positive: var(--sensei-green-900);
+  --avatar-background-warning: var(--sensei-orange-900);
+  --avatar-background-attention: var(--sensei-red-900);
 
   /* Chip */
-  --chip-background: var(--alt-green-1200);
-  --chip-background-hover: var(--alt-green-1400);
-  --chip-background-focus: var(--alt-green-1400);
-  --chip-background-active: var(--alt-green-500);
-  --chip-border-color: var(--alt-green-1200);
-  --chip-border-color-hover: var(--alt-green-1200);
-  --chip-border-color-focus: var(--alt-green-1200);
-  --chip-border-color-active: var(--alt-green-500);
-  --chip-text-color-active: var(--alt-green-1400);
-  --chip-icon-fill: var(--alt-white);
-  --chip-dismiss-action-background: var(--alt-green-700);
-  --chip-dismiss-action-background-hover: var(--alt-white-opacity-0);
+  --chip-background: var(--sensei-green-1200);
+  --chip-background-hover: var(--sensei-green-1400);
+  --chip-background-focus: var(--sensei-green-1400);
+  --chip-background-active: var(--sensei-green-500);
+  --chip-border-color: var(--sensei-green-1200);
+  --chip-border-color-hover: var(--sensei-green-1200);
+  --chip-border-color-focus: var(--sensei-green-1200);
+  --chip-border-color-active: var(--sensei-green-500);
+  --chip-text-color-active: var(--sensei-green-1400);
+  --chip-icon-fill: var(--sensei-white);
+  --chip-dismiss-action-background: var(--sensei-green-1300);
+  --chip-dismiss-action-background-hover: var(--sensei-white-opacity-0);
 
   /* Dropdown */
-  --dropdown-background: var(--alt-green-1400);
-  --dropdown-border-color: var(--alt-black-opacity-20);
-  --dropdown-shadow-color: var(--alt-black-opacity-20);
-  --dropdown-button-background-hover: var(--alt-green-1300);
+  --dropdown-background: var(--sensei-green-1400);
+  --dropdown-border-color: var(--sensei-black-opacity-20);
+  --dropdown-shadow-color: var(--sensei-black-opacity-20);
+  --dropdown-button-background-hover: var(--sensei-green-1300);
 
   /* Progress */
-  --progress-bar-background: var(--alt-green-500);
-  --progress-track-background: var(--alt-green-1400);
-  --progress-loading-bar-100: var(--alt-green-1100);
-  --progress-loading-bar-200: var(--alt-green-1200);
+  --progress-bar-background: var(--sensei-green-500);
+  --progress-track-background: var(--sensei-green-1400);
+  --progress-loading-bar-100: var(--sensei-green-1100);
+  --progress-loading-bar-200: var(--sensei-green-1200);
 
   /* Stepper */
-  --stepper-color: var(--alt-green-500);
+  --stepper-color: var(--sensei-green-500);
   --stepper-background-active: var(--stepper-color);
-  --stepper-background-inactive: var(--alt-green-1300);
+  --stepper-background-inactive: var(--sensei-green-1300);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
 
   /* Dialog */
-  --dialog-background: var(--alt-green-1300);
+  --dialog-background: var(--sensei-green-1300);
 
   /* Drawer */
-  --drawer-background: var(--alt-green-1300);
+  --drawer-background: var(--sensei-green-1300);
 }
 
 /* ==================================================================================================== */

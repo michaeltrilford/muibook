@@ -163,31 +163,31 @@ html[data-brand="modern"][data-theme="dark"] {
 /*   Component theme alignment across storefront                                   */
 /* =============================================================================== */
 html[data-brand="sensei"][data-theme="light"] {
-  --app-logo-color: var(--alt-green-1100);
-  --app-nav-accent: var(--alt-green-1400);
-  --app-theme-toggle-bg: var(--alt-green-900);
-  --app-story-snippet-code-bg: var(--alt-green-500);
-  --app-story-snippet-code-text: var(--alt-green-1200);
+  --app-logo-color: var(--sensei-green-1100);
+  --app-nav-accent: var(--sensei-green-1400);
+  --app-theme-toggle-bg: var(--sensei-green-900);
+  --app-story-snippet-code-bg: var(--sensei-green-500);
+  --app-story-snippet-code-text: var(--sensei-green-1200);
   /* App Surface */
-  --app-container-surface: var(--alt-green-400);
-  --app-navbar-surface: var(--alt-green-400);
-  --app-navbar-surface-100: var(--alt-green-300);
+  --app-container-surface: var(--sensei-green-400);
+  --app-navbar-surface: var(--sensei-green-400);
+  --app-navbar-surface-100: var(--sensei-green-300);
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
-  --home-page-body-text: var(--alt-green-1200);
-  --app-story-card: var(--alt-green-200);
+  --home-page-body-text: var(--sensei-green-1200);
+  --app-story-card: var(--sensei-white-opacity-60);
 }
 
 html[data-brand="sensei"][data-theme="dark"] {
-  --app-logo-color: var(--alt-green-500);
-  --app-nav-accent: var(--alt-green-400);
-  --app-theme-toggle-bg: var(--alt-green-400);
-  --app-story-snippet-code-bg: var(--alt-green-500);
-  --app-story-snippet-code-text: var(--alt-green-1200);
+  --app-logo-color: var(--sensei-green-500);
+  --app-nav-accent: var(--sensei-green-400);
+  --app-theme-toggle-bg: var(--sensei-green-400);
+  --app-story-snippet-code-bg: var(--sensei-green-500);
+  --app-story-snippet-code-text: var(--sensei-green-1200);
   /* App Surface */
-  --app-container-surface: var(--alt-green-1400);
-  --app-navbar-surface: var(--alt-green-1400);
-  --app-navbar-surface-100: var(--alt-green-1300);
+  --app-container-surface: var(--sensei-green-1400);
+  --app-navbar-surface: var(--sensei-green-1400);
+  --app-navbar-surface-100: var(--sensei-green-1300);
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
-  --home-page-body-text: var(--alt-green-400);
-  --app-story-card: var(--alt-green-1400);
+  --home-page-body-text: var(--sensei-green-400);
+  --app-story-card: var(--sensei-green-1400);
 }

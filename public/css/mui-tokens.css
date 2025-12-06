@@ -122,6 +122,7 @@
   --grey-900: #333;
   --grey-1000: #222;
   --grey-1100: #111;
+  --grey-1200: #020;
   /* Red scale */
   --red-100: #ffe5e5;
   --red-200: #fbbcbc;
@@ -207,11 +208,11 @@
 /* ==================================================================================================== */
 html[data-theme="light"] {
   /* Form */
-  --form-default-text-color: var(--grey-500);
+  --form-default-text-color: var(--grey-900);
   --form-success-text-color: var(--green-700);
   --form-warning-text-color: var(--orange-700);
   --form-error-text-color: var(--red-700);
-  --form-default-text-color-hover: var(--grey-600);
+  --form-default-text-color-hover: var(--grey-800);
   --form-success-text-color-hover: var(--green-800);
   --form-warning-text-color-hover: var(--orange-800);
   --form-error-text-color-hover: var(--red-800);
@@ -223,6 +224,10 @@ html[data-theme="light"] {
   --form-success-border-color-hover: var(--green-700);
   --form-warning-border-color-hover: var(--orange-700);
   --form-error-border-color-hover: var(--red-700);
+  --form-default-placeholder-color: var(--grey-500);
+  --form-default-placeholder-color-hover: var(--grey-700);
+  --form-default-placeholder-color-focus: var(--grey-700);
+  --form-default-placeholder-color-disabled: var(--grey-500);
   /* Feedback - Border (Alerts & Messages) */
   --feedback-neutral-border-color: var(--black-opacity-20);
   --feedback-positive-border-color: var(--green-600);
@@ -442,11 +447,11 @@ html[data-theme="light"] {
 /* ==================================================================================================== */
 html[data-theme="dark"] {
   /* Form */
-  --form-default-text-color: var(--grey-500);
+  --form-default-text-color: var(--grey-200);
   --form-success-text-color: var(--green-400);
   --form-warning-text-color: var(--orange-400);
   --form-error-text-color: var(--red-400);
-  --form-default-text-color-hover: var(--grey-400);
+  --form-default-text-color-hover: var(--grey-100);
   --form-success-text-color-hover: var(--green-300);
   --form-warning-text-color-hover: var(--orange-300);
   --form-error-text-color-hover: var(--red-300);
@@ -458,6 +463,10 @@ html[data-theme="dark"] {
   --form-success-border-color-hover: var(--green-300);
   --form-warning-border-color-hover: var(--orange-300);
   --form-error-border-color-hover: var(--red-300);
+  --form-default-placeholder-color: var(--grey-500);
+  --form-default-placeholder-color-hover: var(--grey-400);
+  --form-default-placeholder-color-focus: var(--grey-400);
+  --form-default-placeholder-color-disabled: var(--grey-500);
   /* Feedback - Border (Alerts & Messages) */
   --feedback-neutral-border-color: var(--white-opacity-20);
   --feedback-positive-border-color: var(--green-400);
@@ -549,9 +558,11 @@ html[data-theme="dark"] {
   --surface-elevated-alpha: var(--white-opacity-10);
   --surface-elevated-100: var(--grey-800);
   --surface-elevated-200: var(--grey-900);
+  --surface-elevated-300: var(--grey-1000);
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
   --surface-recessed-200: var(--grey-1100);
+  --surface-recessed-300: var(--grey-1200);
   /* Stroke */
   --outline-color: var(--blue-300);
   --border-color: var(--white-opacity-20);
@@ -804,6 +815,8 @@ html[data-theme="dark"] {
   --slat-radius: var(--radius-200);
   /* Checkbox */
   --checkbox-radius: var(--radius-100);
+  --checkbox-size: calc(var(--space-400) + (var(--stroke-size-100) * 3));
+
   /* Chip */
   --chip-radius: var(--radius-400);
   /* Dropdown */

@@ -11,19 +11,10 @@ class compAgentUI extends HTMLElement {
     const AgentPrompt = /*html*/ `
 
       <style>
-        .canvas {
-          background: var(--surface);
-          padding: var(--space-400);
-          margin-top: calc(var(--space-400) * -1);
-          margin-bottom: calc(var(--space-400) * -1);
-          margin-left: calc(var(--space-400) * -1);
-          margin-right: calc(var(--space-400) * -1);
-        }
-
         .prompt-input { 
           padding: var(--space-400);
           padding-bottom: var(--space-200);
-          background: var(--surface-elevated-alpha);
+          background: var(--surface-elevated-100);
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
           border-radius: var(--radius-300);
@@ -34,58 +25,46 @@ class compAgentUI extends HTMLElement {
         }
       </style>
 
-      <div class="canvas">
-        <mui-v-stack class="prompt-input" space="var(--space-200)">
-          <mui-input label="Default" hide-label placeholder="Reply to Mui..."></mui-input>
-
-          <mui-h-stack class="prompt-toolbar" space="var(--space-200)">
-            <mui-h-stack space="var(--space-000)">
-              <mui-button variant="tertiary">
-                <mui-icon-left-sidebar size="medium"></mui-icon-left-sidebar>
-              </mui-button>
-            </mui-h-stack>
-            <mui-h-stack space="var(--space-200)">
-              <mui-button variant="tertiary" id="submitBtn">
-                <mui-icon-toggle id="toggle" rotate size="medium">
-                  <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
-                  <mui-icon-stop slot="end"></mui-icon-stop>
-                </mui-icon-toggle>
-              </mui-button>
-            </mui-h-stack>
+      <mui-v-stack class="prompt-input" space="var(--space-200)">
+        <mui-input label="Default" hide-label placeholder="Reply to Mui..."></mui-input>
+        <mui-h-stack class="prompt-toolbar" space="var(--space-200)">
+          <mui-h-stack space="var(--space-000)">
+            <mui-button variant="tertiary">
+              <mui-icon-left-sidebar size="medium"></mui-icon-left-sidebar>
+            </mui-button>
           </mui-h-stack>
-        </mui-v-stack>
-      </div>
+          <mui-h-stack space="var(--space-200)">
+            <mui-button variant="tertiary" id="submitBtn">
+              <mui-icon-toggle id="toggle" rotate size="medium">
+                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
+                <mui-icon-stop slot="end"></mui-icon-stop>
+              </mui-icon-toggle>
+            </mui-button>
+          </mui-h-stack>
+        </mui-h-stack>
+      </mui-v-stack>
+
     `;
 
     const AgentConversationReply = /*html*/ `
       <style>
-        .conversation-background {
-          background: var(--surface-elevated-200);
-          padding: var(--space-400);
-          box-sizing: border-box;
-          margin-top: calc(var(--space-400) * -1);
-          margin-bottom: calc(var(--space-400) * -1);
-          margin-left: calc(var(--space-400) * -1);
-          margin-right: calc(var(--space-400) * -1);
-        }
         mui-grid {
-          background: var(--surface-elevated-alpha);
+          background: var(--surface-elevated-100);
           padding: var(--space-400);
           width: 100%;
           box-sizing: border-box;
           border: var(--border-thin);
+          border-color: var(--form-default-border-color);
           border-radius: var(--radius-300);
         }
         mui-grid::part(display) {
           align-items: center;
         }
-      </style>
-      <div class="conversation-background">
-        <mui-grid class="conversation-reply" col="auto 1fr" space="var(--space-400)">
-          <mui-avatar label="Michael Trilford" background="neutral"></mui-avatar>
-          <mui-body size="small">Can you provide me with the CSAT data for the past quarter, broken down by feature area, and highlight any pain points mentioned in customer feedback?</mui-body>
-        </mui-grid>
-      </div>
+      </style> 
+      <mui-grid col="auto 1fr" space="var(--space-400)">
+        <mui-avatar label="Michael Trilford" background="neutral"></mui-avatar>
+        <mui-body size="small">Can you provide me with the CSAT data for the past quarter, broken down by feature area, and highlight any pain points mentioned in customer feedback?</mui-body>
+      </mui-grid>
     `;
 
     shadowRoot.innerHTML = /*html*/ `
