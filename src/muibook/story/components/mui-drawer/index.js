@@ -66,21 +66,12 @@ class storyDrawer extends HTMLElement {
         overflow: scroll;
       }
 
-      .persistent-content {
-        padding: var(--space-500) var(--space-500);
-        box-sizing: border-box;
-        height: calc(100dvh - (7.7rem  + (env(safe-area-inset-top) + env(safe-area-inset-bottom)) ));
-        overflow: scroll;
-      }
-
       @media (max-width: 768px) {
-        .page-content,
-        .persistent-content {
+        .page-content {
           height: auto;
         }
       }
       
-      .filter-action::part(height) { height: 4rem; width: 4rem; } 
       .video-menu-item,
       .video-menu-more,
       .video-menu-group-heading { text-align: left; }
@@ -100,89 +91,11 @@ class storyDrawer extends HTMLElement {
         margin-bottom: var(--space-200);
       }
 
-      .filter { display: grid; width: 100%; position: relative; }
-      .filter_chip-scroll { 
-        padding: var(--space-600) 6.4rem var(--space-500) var(--space-500); 
-        overflow-x: auto;
-        -ms-overflow-style: none; /* IE/Edge */
-        scrollbar-width: none;     /* Firefox */
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .filter_chip-scroll::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
-      }
-      .filter_chip-group {
-        width: max-content; 
-      }
-      .filter_next { 
-        background: var(--surface-elevated-200); 
-        position: absolute; 
-        right: 0; 
-        top: var(--space-600); 
-        box-shadow: calc(-1 * var(--space-400)) 0 var(--space-200) 0 var(--surface-elevated-200); 
-        padding-right: var(--space-500);
-      }  
-      
-      .card_content { padding-left: var(--space-100); }
-      .card::part(background) {
-        padding: var(--space-000);
-        border: none;
-      }
-      .card::part(background):hover,
-      .card::part(background):focus-visible {
-        background: var(--surface-elevated-100);
-        transition: box-shadow var(--speed-100), outline var(--speed-100);
-        box-shadow: 0 0 0 var(--space-400) var(--surface-elevated-100), 0 var(--space-200) var(--space-400) var(--space-300) var(--surface-recessed-alpha);
-        border-top-left-radius: var(--radius-300);
-        border-top-right-radius: var(--radius-300);
-        border-bottom-left-radius: var(--radius-100);
-        border-bottom-right-radius: var(--radius-100);
-      }
-      .card::part(background):focus-visible {
-        outline-offset: var(--space-300);
-      }
-
-      .video-page {
-        height: calc(100dvh - 7.7rem);
-        overflow-y: scroll;
-      }
-
-      .video_grid {
-        width: 100%; 
-        padding: var(--space-500); 
-        padding-top: var(--space-200);
-        box-sizing: border-box;
-      }
-
       .video-menu-group {
         width: 100%;
       }
       .video-menu-group::part(padding) {
         padding: var(--space-300) var(--space-200);
-      }
-
-
-      .filter-action.at-end {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      @media (min-width: 768px) {
-        .filter_chip-scroll {
-          padding: var(--space-600) 8.8rem var(--space-500) var(--space-700); 
-        }
-
-        .filter_next { 
-          padding-right: var(--space-700);
-        }  
-
-        .video_grid {
-          width: 100%;
-          padding: var(--space-700); 
-          padding-top: var(--space-200);
-        }
-
       }
 
     `;

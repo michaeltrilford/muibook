@@ -350,7 +350,8 @@ const styles = /*css*/ `
   }
   .filter_next { 
     background: var(--surface-elevated-200); 
-    position: absolute; 
+    position: absolute;
+    z-index: 1;
     right: 0; 
     top: calc(var(--space-500) + var(--space-100)); 
     box-shadow: calc(-1 * var(--space-400)) 0 var(--space-200) 0 var(--surface-elevated-200); 
