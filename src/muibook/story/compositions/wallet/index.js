@@ -11,12 +11,21 @@ class compWallet extends HTMLElement {
       :host { 
         display: block;
       }
+        .canvas {
+          background: var(--app-story-wallet-card);
+          padding: var(--space-400);
+          margin-top: calc(var(--space-400) * -1);
+          margin-bottom: calc(var(--space-400) * -1);
+          margin-left: calc(var(--space-400) * -1);
+          margin-right: calc(var(--space-400) * -1);
+        }
+
     `;
 
     const transactions = /*html*/ `
       <story-card title="Transactions" description="This composition view demonstrates how foundational components can be used to build a wallet UI, while also surfacing where the system may need more flexibility. Creating compositions like this gives the Design System team valuable insight into how the system is working in practice and where refinements or improvements such as enhancements to the slat component may be needed.">
-
-        <mui-v-stack alignX="stretch" slot="body" style="max-width: 365px; margin: 0 auto; padding-top: var(--space-700); padding-bottom: var(--space-700)">
+        <div class="canvas" slot="body">
+        <mui-v-stack alignX="stretch" style="max-width: 365px; margin: 0 auto; padding-top: var(--space-700); padding-bottom: var(--space-700)">
           <mui-smart-card
             variant="animated"
             partner="${Visa}"
@@ -133,6 +142,8 @@ class compWallet extends HTMLElement {
           </mui-tab-controller>
 
         </mui-v-stack>
+
+        </div>
 
         <story-code-block slot="footer" scrollable>
           <mui-link size="x-small" href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/wallet/index.js" target="_blank">👨‍💻 View full file on Github</mui-link>

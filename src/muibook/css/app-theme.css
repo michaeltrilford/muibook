@@ -175,6 +175,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--sensei-green-1200);
   --app-story-card: var(--sensei-white-opacity-60);
+  --app-story-wallet-card: var(--surface-elevated-100);
 }
 
 html[data-brand="sensei"][data-theme="dark"] {
@@ -190,4 +191,5 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--sensei-green-400);
   --app-story-card: var(--sensei-green-1400);
+  --app-story-wallet-card: var(--surface-elevated-100);
 }
