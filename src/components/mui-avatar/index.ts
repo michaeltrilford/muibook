@@ -54,6 +54,22 @@ class MuiAvatar extends HTMLElement {
       positive: "var(--avatar-background-positive)",
       warning: "var(--avatar-background-warning)",
       attention: "var(--avatar-background-attention)",
+
+      // Random-use profile colours
+      purple: "var(--avatar-background-purple)",
+      violet: "var(--avatar-background-violet)",
+      pink: "var(--avatar-background-pink)",
+      magenta: "var(--avatar-background-magenta)",
+      red: "var(--avatar-background-red)",
+      orange: "var(--avatar-background-orange)",
+      amber: "var(--avatar-background-amber)",
+      yellow: "var(--avatar-background-yellow)",
+      lime: "var(--avatar-background-lime)",
+      green: "var(--avatar-background-green)",
+      teal: "var(--avatar-background-teal)",
+      cyan: "var(--avatar-background-cyan)",
+      blue: "var(--avatar-background-blue)",
+      indigo: "var(--avatar-background-indigo)",
     };
 
     return map[background] ?? map["neutral"];

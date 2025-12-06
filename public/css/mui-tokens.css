@@ -201,6 +201,36 @@
   --speed-200: 0.2s;
   --speed-300: 0.3s;
   --speed-400: 0.4s;
+
+  /* Avatar Colors */
+  --avatar-purple-200: hsl(270, 55%, 70%);
+  --avatar-purple-800: hsl(270, 55%, 35%);
+  --avatar-violet-200: hsl(255, 50%, 70%);
+  --avatar-violet-800: hsl(255, 50%, 35%);
+  --avatar-pink-200: hsl(330, 65%, 73%);
+  --avatar-pink-800: hsl(330, 65%, 40%);
+  --avatar-magenta-200: hsl(295, 60%, 70%);
+  --avatar-magenta-800: hsl(295, 60%, 35%);
+  --avatar-red-200: hsl(0, 65%, 68%);
+  --avatar-red-800: hsl(0, 65%, 35%);
+  --avatar-orange-200: hsl(25, 80%, 70%);
+  --avatar-orange-800: hsl(25, 80%, 35%);
+  --avatar-amber-200: hsl(45, 85%, 72%);
+  --avatar-amber-800: hsl(45, 85%, 38%);
+  --avatar-yellow-200: hsl(55, 80%, 75%);
+  --avatar-yellow-800: hsl(55, 80%, 40%);
+  --avatar-lime-200: hsl(90, 55%, 70%);
+  --avatar-lime-800: hsl(90, 55%, 35%);
+  --avatar-green-200: hsl(140, 50%, 70%);
+  --avatar-green-800: hsl(140, 50%, 35%);
+  --avatar-teal-200: hsl(170, 55%, 70%);
+  --avatar-teal-800: hsl(170, 55%, 35%);
+  --avatar-cyan-200: hsl(190, 60%, 70%);
+  --avatar-cyan-800: hsl(190, 60%, 35%);
+  --avatar-blue-200: hsl(210, 70%, 70%);
+  --avatar-blue-800: hsl(210, 70%, 35%);
+  --avatar-indigo-200: hsl(230, 55%, 70%);
+  --avatar-indigo-800: hsl(230, 55%, 35%);
 }
 
 /* ==================================================================================================== */
@@ -401,6 +431,21 @@ html[data-theme="light"] {
   --avatar-background-positive: var(--green-200);
   --avatar-background-warning: var(--orange-200);
   --avatar-background-attention: var(--red-200);
+
+  --avatar-background-purple: var(--avatar-purple-200);
+  --avatar-background-violet: var(--avatar-violet-200);
+  --avatar-background-pink: var(--avatar-pink-200);
+  --avatar-background-magenta: var(--avatar-magenta-200);
+  --avatar-background-red: var(--avatar-red-200);
+  --avatar-background-orange: var(--avatar-orange-200);
+  --avatar-background-amber: var(--avatar-amber-200);
+  --avatar-background-yellow: var(--avatar-yellow-200);
+  --avatar-background-lime: var(--avatar-lime-200);
+  --avatar-background-green: var(--avatar-green-200);
+  --avatar-background-teal: var(--avatar-teal-200);
+  --avatar-background-cyan: var(--avatar-cyan-200);
+  --avatar-background-blue: var(--avatar-blue-200);
+  --avatar-background-indigo: var(--avatar-indigo-200);
 
   /* Chip */
   --chip-background: var(--white);
@@ -640,6 +685,21 @@ html[data-theme="dark"] {
   --avatar-background-positive: var(--green-900);
   --avatar-background-warning: var(--orange-900);
   --avatar-background-attention: var(--red-900);
+
+  --avatar-background-purple: var(--avatar-purple-800);
+  --avatar-background-violet: var(--avatar-violet-800);
+  --avatar-background-pink: var(--avatar-pink-800);
+  --avatar-background-magenta: var(--avatar-magenta-800);
+  --avatar-background-red: var(--avatar-red-800);
+  --avatar-background-orange: var(--avatar-orange-800);
+  --avatar-background-amber: var(--avatar-amber-800);
+  --avatar-background-yellow: var(--avatar-yellow-800);
+  --avatar-background-lime: var(--avatar-lime-800);
+  --avatar-background-green: var(--avatar-green-800);
+  --avatar-background-teal: var(--avatar-teal-800);
+  --avatar-background-cyan: var(--avatar-cyan-800);
+  --avatar-background-blue: var(--avatar-blue-800);
+  --avatar-background-indigo: var(--avatar-indigo-800);
 
   /* Chip */
   --chip-background: var(--grey-800);

@@ -33,9 +33,10 @@ class storyAvatar extends HTMLElement {
       {
         name: "background",
         type: "string",
-        options: "neutral, positive, warning, attention",
+        options:
+          "neutral, positive, warning, attention, purple, violet, pink, magenta, red, orange, amber, yellow, lime, green, teal, cyan, blue, indigo",
         default: "neutral",
-        description: "Background color variant to use inside the avatar.",
+        description: "Background color variant to use inside the avatar. Includes semantic and random profile colors.",
       },
       {
         name: "background-color",
@@ -294,6 +295,37 @@ class storyAvatar extends HTMLElement {
             </mui-grid>
           </mui-v-stack>
         </div>
+      </story-card>
+
+      <story-card 
+        title="Background" 
+        description="Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes." 
+        usage=""
+        usageLink=""
+        accessibility=""
+      >
+        <mui-grid col="repeat(auto-fill, minmax(48px, 1fr))" space="var(--space-400) var(--space-400)" slot="body" class="canvas">
+          <mui-avatar label="Max AI" background="neutral"></mui-avatar>
+          <mui-avatar label="Max AI" background="positive"></mui-avatar>
+          <mui-avatar label="Max AI" background="warning"></mui-avatar>
+          <mui-avatar label="Max AI" background="attention"></mui-avatar>
+          <mui-avatar label="Max AI" background="purple"></mui-avatar>
+          <mui-avatar label="Max AI" background="violet"></mui-avatar>
+          <mui-avatar label="Max AI" background="pink"></mui-avatar>
+          <mui-avatar label="Max AI" background="magenta"></mui-avatar>
+          <mui-avatar label="Max AI" background="red"></mui-avatar>
+          <mui-avatar label="Max AI" background="orange"></mui-avatar>
+          <mui-avatar label="Max AI" background="amber"></mui-avatar>
+          <mui-avatar label="Max AI" background="yellow"></mui-avatar>
+          <mui-avatar label="Max AI" background="lime"></mui-avatar>
+          <mui-avatar label="Max AI" background="green"></mui-avatar>
+          <mui-avatar label="Max AI" background="teal"></mui-avatar>
+          <mui-avatar label="Max AI" background="cyan"></mui-avatar>
+          <mui-avatar label="Max AI" background="blue"></mui-avatar>
+          <mui-avatar label="Max AI" background="indigo"></mui-avatar>
+        </mui-grid>
+        <story-code-block slot="footer" scrollable>
+        </story-code-block>
       </story-card>
 
       <story-card 
