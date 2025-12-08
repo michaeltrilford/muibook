@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyAccordion extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("mui-accordion");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -518,7 +525,10 @@ class storyAccordion extends HTMLElement {
           id="detail-space-none"
           title="Detail Space: None" 
           description="In accordion-block, you are able to turn off the space within the detail section."
-          usage="Ideal for using the accordion block to contain navigation items; Support full-bleed content such as images or documents."
+          usage="
+            Ideal for using the accordion block to contain navigation items|||
+            Support full-bleed content such as images or documents.
+          "
           usageLink="https://guides.muibook.com/accordion"
         >
           <mui-accordion-block heading="Design Tokens" detail-space="none" slot="body" style="width: 26rem;">
@@ -550,8 +560,9 @@ class storyAccordion extends HTMLElement {
           id="card-accordion" 
           title="Card w/ Accordion" 
           usage="
-            When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding.;
-            If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually."
+            When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding|||
+            If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.
+          "
         >
           <div slot="body">
             <mui-card>
@@ -594,8 +605,9 @@ class storyAccordion extends HTMLElement {
         <story-card id="card-header-accordion" title="Card Header w/ Accordion" 
           description="You can add in a mui-rule to help add a division between the header and body of the card"
           usage="
-            When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding.;
-            If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually."  
+            When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding|||
+            If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.
+          "  
         >
           <div slot="body">
             <mui-card>
@@ -646,7 +658,10 @@ class storyAccordion extends HTMLElement {
         <story-card
           id="accordion-slat-detect"
           title="Accordion: Slat Detection"
-          usage="When an accordion is used with mui-slat-group, the attribute of usage='accordion' is applied automatically.; Opt-out by not using the mui-slat-group, but you will have to craft your own layout."
+          usage="
+            When an accordion is used with mui-slat-group, the attribute of usage='accordion' is applied automatically|||
+            Opt-out by not using the mui-slat-group, but you will have to craft your own layout.
+          "
         >
           <div slot="body">
             <mui-accordion-group exclusive>
@@ -799,7 +814,10 @@ class storyAccordion extends HTMLElement {
         <story-card
           id="card-slat-detect"
           title="Card: Slat Detection"
-          usage="When a card and accordion is used togther with mui-slat-group, the attribute of usage='card' is applied automatically.; Opt-out by not using the mui-slat-group, but you will have to craft your own layout."
+          usage="
+            When a card and accordion is used togther with mui-slat-group, the attribute of usage='card' is applied automatically.|||
+            Opt-out by not using the mui-slat-group, but you will have to craft your own layout.
+          "
         >
           <div slot="body">
             <mui-card>
@@ -1102,24 +1120,18 @@ class storyAccordion extends HTMLElement {
         </story-card>
       `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Accordion"
-        description="The Accordion is a component stores content underneath a collapsible heading, revealing it through progressive disclosure in the user interface."
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-accordion"
-        guides="https://guides.muibook.com/accordion"
-        storybook="https://stories.muibook.com/?path=/docs/content-accordion--docs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1"
-        accessibility="
-          Accordion summary uses role='button' and tabindex='0' for keyboard access.;
-          Supports Enter and Space keys for toggling.;
-          aria-expanded reflects open/closed state.;
-          aria-controls links summary to detail with a unique ID.;
-          mui-heading applies semantic heading with role='heading' and aria-level.;
-          Chevron icon rotates visually and the state is conveyed via aria-expanded.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
+
       >
         <mui-message heading="Quicklinks" slot="message">
           <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
@@ -1147,7 +1159,7 @@ class storyAccordion extends HTMLElement {
     // Spec Card - Minimal scroll-to handler
     // The common href with hash could not be used because of the hash navigation
     // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
-    shadowRoot.addEventListener("click", (event) => {
+    this.shadowRoot.addEventListener("click", (event) => {
       const trigger = event.target.closest("[data-scroll-link]");
       if (!trigger) return;
 

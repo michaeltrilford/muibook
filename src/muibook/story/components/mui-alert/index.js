@@ -1,7 +1,13 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyAlert extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("mui-alert");
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -105,7 +111,7 @@ class storyAlert extends HTMLElement {
       <story-card 
         title="Success" 
         description="Indicates that an operation or action has been completed successfully." 
-        usage="Form submissions that have been processed without errors.;Successful data updates or saves.;Confirmation of completed tasks or actions."
+        usage="Form submissions that have been processed without errors|||Successful data updates or saves|||Confirmation of completed tasks or actions."
         usageLink="https://guides.muibook.com/alert"
         accessibility="ARIA-live of POLITE is set on this variant."
       >
@@ -124,7 +130,7 @@ class storyAlert extends HTMLElement {
       <story-card
         title="Info"
         description="Provides general information or updates that are helpful but not critical."
-        usage="Announcing new features or updates.; Providing contextual information or tips.; Informing users about non-urgent system statuses."
+        usage="Announcing new features or updates|||Providing contextual information or tips|||Informing users about non-urgent system statuses."
         usageLink="https://guides.muibook.com/alert"
         accessibility="ARIA-live of POLITE is set on this variant."
       >
@@ -143,7 +149,7 @@ class storyAlert extends HTMLElement {
       <story-card
         title="Warning"
         description="Alerts users to potential issues or situations that require caution."
-        usage="Notifying about unsaved changes.; Indicating deprecated features or upcoming changes.; Highlighting actions that may have unintended consequences."
+        usage="Notifying about unsaved changes||| Indicating deprecated features or upcoming changes||| Highlighting actions that may have unintended consequences."
         usageLink="https://guides.muibook.com/alert"
         accessibility="ARIA-live of ASSERTIVE is set on this variant."
       >
@@ -162,7 +168,7 @@ class storyAlert extends HTMLElement {
       <story-card
         title="Error"
         description="Indicates that an error has occurred, requiring user attention or action."
-        usage="Form validation errors.; System failures or exceptions.; Failed operations or transactions."
+        usage="Form validation errors||| System failures or exceptions||| Failed operations or transactions."
         usageLink="https://guides.muibook.com/alert"
         accessibility="ARIA-live of ASSERTIVE is set on this variant."
       >
@@ -326,21 +332,17 @@ class storyAlert extends HTMLElement {
       </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template
-        title="Alert"
-        description="Alerts are to surface meaningful system messages related to the users' current task or action."
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-4444&t=ZA9uH4LK37tSuk6r-1"
-        guides="https://guides.muibook.com/alert"
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts"
-        storybook="https://stories.muibook.com/?path=/docs/feedback-alert--docs"
-
-        accessibility="
-          ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.; 
-          The role is set to ALERT for immediate screen reader feedback.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

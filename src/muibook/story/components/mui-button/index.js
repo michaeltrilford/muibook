@@ -157,14 +157,13 @@ class storyButton extends HTMLElement {
       <story-card
         id="size-x-small"
         title="Size: X-Small" 
-        description="When a button includes an icon, the system automatically applies an appropriate icon size.
-If needed, you can override this by providing a custom size—the button will respect the value you set."
+        description="When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set."
         usage="
-          Micro-interactions that require clear, compact buttons;
-          Application toolbars;
-          Dense data tables;
-          Compact control panels;
-          Icon buttons in tight spaces;
+          Micro-interactions that require clear, compact buttons|||
+          Application toolbars|||
+          Dense data tables|||
+          Compact control panels|||
+          Icon buttons in tight spaces|||
           Inline editing actions
         "
       >    
@@ -235,10 +234,9 @@ If needed, you can override this by providing a custom size—the button will re
       <story-card
         id="size-small"
         title="Size: Small" 
-        description="When a button includes an icon, the system automatically applies an appropriate icon size.
-If needed, you can override this by providing a custom size—the button will respect the value you set."
+        description="When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set."
         usage=" 
-          Small/medium form inputs;
+          Small/medium form inputs|||
           Toolbar actions or discrete filter controls
         "
       >  
@@ -334,10 +332,10 @@ If needed, you can override this by providing a custom size—the button will re
         title="Size: Medium (Default)" 
         description="When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set."
         usage=" 
-          Standard form inputs (text fields, selects);
-          Card components (primary and secondary actions);
-          Modal dialogs;
-          Navigation elements;
+          Standard form inputs (text fields, selects)|||
+          Card components (primary and secondary actions)|||
+          Modal dialogs|||
+          Navigation elements|||
           Default body text context
         "
       >
@@ -430,10 +428,10 @@ If needed, you can override this by providing a custom size—the button will re
         title="Size: Large" 
         description="When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set."
         usage=" 
-          Large headings (H1, H2);
-          Hero sections;
-          Large form inputs (search bars, prominent forms);
-          Empty states with calls-to-action;
+          Large headings (H1, H2)|||
+          Hero sections|||
+          Large form inputs (search bars, prominent forms)|||
+          Empty states with calls-to-action|||
           Marketing/landing page content
         "
       >
@@ -544,7 +542,7 @@ If needed, you can override this by providing a custom size—the button will re
         title="Header: Button-Group" 
         description="Example of actions that are present at the top of a page or card use."
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
@@ -592,7 +590,7 @@ If needed, you can override this by providing a custom size—the button will re
       <story-card title="Icon (Before & After)"
         id="icon-before-after"
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
@@ -634,7 +632,7 @@ If needed, you can override this by providing a custom size—the button will re
       <story-card title="Primary: Icon-Only"
         id="primary-icon-only"
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
@@ -661,7 +659,7 @@ If needed, you can override this by providing a custom size—the button will re
       <story-card title="Secondary: Icon-Only"
         id="secondary-icon-only"
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
@@ -689,7 +687,7 @@ If needed, you can override this by providing a custom size—the button will re
         id="tertiary-icon-only"
         title="Tertiary: Icon-Only" 
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
@@ -716,7 +714,7 @@ If needed, you can override this by providing a custom size—the button will re
       <story-card title="Attention: Icon-Only"
         id="attention-icon-only"
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/button"
@@ -742,7 +740,7 @@ If needed, you can override this by providing a custom size—the button will re
 
       <story-card title="Icon Toggle: Default" id="icon-toggle-default"
         usage='
-          Use medium size icon when the icon-only action appears on its own. E.g. Menu;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu|||
           Use small (default) size icon when paired with text-based action is used in a button group.
         '
       >
@@ -793,7 +791,7 @@ If needed, you can override this by providing a custom size—the button will re
 
       <story-card title="Icon Toggle: Rotate" id="icon-toggle-rotate"
         usage='
-          Use medium size icon when the icon-only action appears on its own. E.g. Menu;
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu|||
           Use small (default) size icon when paired with text-based action is used in a button group.
         '
       >

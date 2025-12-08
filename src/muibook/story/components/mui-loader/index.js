@@ -357,10 +357,10 @@ class storyLoader extends HTMLElement {
         storybook="https://stories.muibook.com/?path=/docs/feedback-loader--docs"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12710&t=BwezUSymTClm00wJ-1"
         accessibility="
-          The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.;
-          aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.;
-          A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.;
-          The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.;
+          The loader is announced to screen readers via role='status', ensuring updates are conveyed politely|||
+          aria-busy is set to true when loading, indicating the region is currently in a 'busy' state|||
+          A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual|||
+          The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations|||
           No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.
         "
       >

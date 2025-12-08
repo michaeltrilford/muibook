@@ -244,9 +244,9 @@ class storySmartCard extends HTMLElement {
           title="Logo" 
           description="The logo area, positioned at the top-right of the card, has a maximum size of 220×126px and scales down responsively on smaller devices." 
           usage="
-            Import the logo using the logo property; 
-            Set the logo-height to an appropriate size no larger than 126px; 
-            If your SVG is at intended height, then logo-height isn't required; 
+            Import the logo using the logo property|||
+            Set the logo-height to an appropriate size no larger than 126px|||
+            If your SVG is at intended height, then logo-height isn't required|||
             When using a 2x/3x PNGs and resize with logo-height
           "
           usageLink="https://guides.muibook.com/smart-card"

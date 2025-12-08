@@ -796,8 +796,8 @@ class storyAvatar extends HTMLElement {
         storybook=""
 
         accessibility="
-          Avatars should always include an accessible label via the <code>label</code> attribute to ensure screen readers can convey their purpose.;
-          When using images, ensure they are clear and appropriately sized for the avatar component.;
+          Avatars should always include an accessible label via the <code>label</code> attribute to ensure screen readers can convey their purpose|||
+          When using images, ensure they are clear and appropriately sized for the avatar component|||
           For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.
         "
       >

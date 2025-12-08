@@ -608,8 +608,8 @@ class storyCards extends HTMLElement {
           if will automatically align the slats with the heading to ensure consistent alignment within a card.
         "
         usage="
-          mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
-          Place slats directly inside mui-card-body to inherit alignment.;
+          mui-slat-group is added within the mui-card-body to apply an offset for the slat items|||
+          Place slats directly inside mui-card-body to inherit alignment|||
           Use this layout only for cards with limited width. For wider layouts, consider using a table.
         "
       >
@@ -737,7 +737,7 @@ class storyCards extends HTMLElement {
         "
         usage="
           mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
-          Place slats directly inside mui-card-body to inherit alignment.;
+          Place slats directly inside mui-card-body to inherit alignment|||
           Use this layout only for cards with limited width. For wider layouts, consider using a table.
         "
       >

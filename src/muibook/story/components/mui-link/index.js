@@ -210,9 +210,9 @@ class storyLink extends HTMLElement {
         title="Link Button: X-Small" 
         description="When a link includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
         usage="
-          Highly compact UI regions;
-          Dense application toolbars;
-          Tight data tables;
+          Highly compact UI regions|||
+          Dense application toolbars|||
+          Tight data tables|||
           Compact control panels
         "
       >    
@@ -252,8 +252,8 @@ class storyLink extends HTMLElement {
         title="Link Button: Small" 
         description="When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
         usage=" 
-          Toolbar actions with mixed icon/text;
-          Discrete filters and utility actions;
+          Toolbar actions with mixed icon/text|||
+          Discrete filters and utility actions|||
           Secondary or supporting navigation
         "
       >  
@@ -330,11 +330,11 @@ class storyLink extends HTMLElement {
         title="Link Button: Medium (Default)" 
         description="When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
         usage=" 
-          Standard text-level actions;
-          Card actions (primary/secondary);
-          Modal and dialog interactions;
-          Navigation elements within body text;
-          Places where links appear in default reading flow;
+          Standard text-level actions|||
+          Card actions (primary/secondary)|||
+          Modal and dialog interactions|||
+          Navigation elements within body text|||
+          Places where links appear in default reading flow|||
           Form inputs (e.g., hero search bars)
         "
       >
@@ -386,9 +386,9 @@ class storyLink extends HTMLElement {
         title="Link Button: Large" 
         description="When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
         usage=" 
-          Large headings (H1/H2) and hero layouts;
-          Prominent calls to action in content;
-          Empty states and marketing content;
+          Large headings (H1/H2) and hero layouts|||
+          Prominent calls to action in content|||
+          Empty states and marketing content|||
           Interfaces where the link must stand out more than standard body actions
         "
       >
@@ -527,7 +527,7 @@ class storyLink extends HTMLElement {
         title="Link Button (Before & After)"
         id="link-button"
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"
@@ -573,7 +573,7 @@ class storyLink extends HTMLElement {
         title="Primary: Icon-Only"
         id="primary-icon-only"
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"  
@@ -601,7 +601,7 @@ class storyLink extends HTMLElement {
         title="Secondary: Icon-Only"
         id="secondary-icon-only"
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"    
@@ -629,7 +629,7 @@ class storyLink extends HTMLElement {
         title="Tertiary: Icon-Only"
         id="tertiary-icon-only"
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"    
@@ -657,7 +657,7 @@ class storyLink extends HTMLElement {
         title="Attention: Icon-Only"
         id="attention-icon-only"
         usage='
-          Use small (default) size icon when paired with text-based action is used in a button group.;
+          Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
         '
         usageLink="https://guides.muibook.com/link"    

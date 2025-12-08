@@ -316,9 +316,9 @@ class storyField extends HTMLElement {
           title="Input & Select: Error w/ Message" 
           description="The form logic will inject the error message onto the field component and render"
           usage="
-            Add input is the primary element, so this item should have validation;
-            The select isn’t the primary input: It’s more of a supporting control (Filter | Unit | Currency);
-            Grouped but semantically separate: While it’s next to the input, it’s not part of the input’s value;
+            Add input is the primary element, so this item should have validation|||
+            The select isn’t the primary input: It’s more of a supporting control (Filter | Unit | Currency)|||
+            Grouped but semantically separate: While it’s next to the input, it’s not part of the input’s value|||
             Validation usually targets primary fields like text, email, number — not auxiliary UI.
           "
           usageLink="https://guides.muibook.com/field"
@@ -394,10 +394,10 @@ class storyField extends HTMLElement {
         guides="https://guides.muibook.com/field"
         storybook="https://stories.muibook.com/?path=/docs/inputs-field--docs"
         accessibility="
-          A label is required for screen reader support to describe the input’s purpose.;
-          If hide-label is used, the label is visually hidden but accessible via aria-label.;
-          The label and form element are linked via for and id. If no id is provided, one is generated.;
-          Clear focus styles are shown for keyboard users.;
+          A label is required for screen reader support to describe the input’s purpose.|||
+          If hide-label is used, the label is visually hidden but accessible via aria-label.|||
+          The label and form element are linked via for and id. If no id is provided, one is generated.|||
+          Clear focus styles are shown for keyboard users.|||
           The native disabled attribute is fully supported by assistive tech.
         "
       >

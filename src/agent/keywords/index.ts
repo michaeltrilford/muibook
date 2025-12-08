@@ -104,6 +104,7 @@ export const muiKeywords: Record<string, string[]> = {
     "variant",
     "state",
   ],
+  addOn: ["input after", "input before"],
   // COMPOSITIONS
   wallet: [
     "wallet",

@@ -1,10 +1,16 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 import MaxAvatar from "../../../images/mui/avatar-max.png";
 import JulieAvatar from "../../../images/mui/avatar-julie.png";
 
 class storyDrawer extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("mui-drawer");
     const styles = /*css*/ `
       .token-item-menu::part(flex-wrap) {
         flex-wrap: wrap;
@@ -803,13 +809,13 @@ class storyDrawer extends HTMLElement {
       <story-card
         id="drawer-push-left"
         title="Push Left" 
-        description="The Push Drawer slides in from the left and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
+        description="The Push Drawer slides in from the left and shifts the page content to the right. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
         usage="
-          This variant is intended for full-screen page views rather than smaller page sections.;
-          Use layout components or styles to ensure the push/persistent variants span viewport correct.;
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
-          If an alternative mobile view is required, use state or media queries to swap the drawer out.;
-          See the <mui-link size='small' target='_blank' href='#/push-left'>full-screen example</mui-link>
+          This variant is intended for full-screen page views rather than smaller page sections.|||
+          Use layout components or styles to ensure the push/persistent variants span viewport correct.|||
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
+          If an alternative mobile view is required, use state or media queries to swap the drawer out.|||
+          See the <mui-link size='x-small' target='_blank' href='#/push-left'>full-screen example</mui-link>
         "
       >
         <div class="canvas" slot="body">  
@@ -854,13 +860,12 @@ class storyDrawer extends HTMLElement {
         title="Push Right" 
         description="The Push Drawer slides in from the right and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
         usage="
-          This variant is intended for full-screen page views rather than smaller page sections.;
-          Use layout components or styles to ensure the push/persistent variants span viewport correct.;
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
-          If an alternative mobile view is required, use state or media queries to swap the drawer out.;
-          See the <mui-link size='small' target='_blank' href='#/push-right'>full-screen example</mui-link>
+          This variant is intended for full-screen page views rather than smaller page sections.|||
+          Use layout components or styles to ensure the push/persistent variants span viewport correct.|||
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
+          If an alternative mobile view is required, use state or media queries to swap the drawer out.|||
+          See the <mui-link size='x-small' target='_blank' href='#/push-right'>full-screen example</mui-link>
         "
-
       >
         <div class="canvas" slot="body">
           <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right" z-index="200">
@@ -904,10 +909,10 @@ class storyDrawer extends HTMLElement {
         title="Persistent Right" 
         description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the right side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
         usage="
-          This variant is intended for full-screen page views rather than smaller page sections.;
-          Use layout components or styles to ensure the push/persistent variants span viewport correctly.;
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
-          See the <mui-link size='small' target='_blank' href='#/persistent-right'>full-screen example</mui-link>
+          This variant is intended for full-screen page views rather than smaller page sections.|||
+          Use layout components or styles to ensure the push/persistent variants span viewport correctly.|||
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
+          See the <mui-link size='x-small' target='_blank' href='#/persistent-right'>full-screen example</mui-link>
         "
       >
         <div class="canvas" slot="body">
@@ -949,10 +954,10 @@ class storyDrawer extends HTMLElement {
         title="Persistent Left"
         description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the left side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
         usage="
-          This variant is intended for full-screen page views rather than smaller page sections.;
-          Use layout components or styles to ensure the push/persistent variants span viewport correctly.;
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.;
-          See the <mui-link size='small' target='_blank' href='#/persistent-left'>full-screen example</mui-link>
+          This variant is intended for full-screen page views rather than smaller page sections.|||
+          Use layout components or styles to ensure the push/persistent variants span viewport correctly.|||
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
+          See the <mui-link size='x-small' target='_blank' href='#/persistent-left'>full-screen example</mui-link>
         "
       >
         <div class="canvas" slot="body">
@@ -1029,7 +1034,7 @@ class storyDrawer extends HTMLElement {
         title="Advanced Menu"
         description="Crafting the responsive behaviour using mui-responsive and alternative variants."
         usage="
-          Omit the header and using a custom header and action that has 'data-close' to toggle the view;
+          Omit the header and using a custom header and action that has 'data-close' to toggle the view|||
           Use mui-responsive component to toggle state and components between desktop and mobile.
         "
       >
@@ -1117,7 +1122,7 @@ class storyDrawer extends HTMLElement {
         title="Breakpoint" 
         description="Adjust the default breakpoint for the mobile view."
         usage="
-          If you want to use media queries or state to introudce a completely different mobile view, you can set the breakpoint '0' to avoid the mobile view from appearing.;
+          If you want to use media queries or state to introudce a completely different mobile view, you can set the breakpoint '0' to avoid the mobile view from appearing.|||
           Alternatively, if you need to override the default 768px cutoff, you can provide a custom value for breakpoint (for example, 1024) to control when the drawer switches to its mobile behavior.
         "
 
@@ -1161,25 +1166,17 @@ class storyDrawer extends HTMLElement {
 
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Drawer" 
-        description="A drawer view that prompts users to take a specific action or provide additional information without navigating away from the current context."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-drawer/index.ts"
-        guides="https://guides.muibook.com/drawer"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=780-4943&t=KhmyUmaNDWKTGtrH-1"
-        storybook="https://stories.muibook.com/?path=/docs/content-drawer--docs"
-        accessibility="
-          Uses role='dialog' for overlay/push variants and role='complementary' for persistent layout variants.;
-          Supports aria-labelledby and aria-describedby for accessible titles and descriptions.;
-          The close button includes aria-label='Close drawer'.;
-          Footer slot is hidden when empty to reduce screen reader noise.;
-          When open, consumers must trap focus in the drawer and apply inert/aria-hidden to the background.;
-          Backdrop click and Escape close the drawer in overlay and push variants.;
-          The component exposes 'mui-drawer-open' and 'mui-drawer-close' events so external state (e.g. React setDrawerOpen(false)) stays in sync with the drawer’s internal logic.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         <mui-message heading="Quicklinks" slot="message">
           <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
@@ -1235,7 +1232,7 @@ class storyDrawer extends HTMLElement {
     // Spec Card - Minimal scroll-to handler
     // The common href with hash could not be used because of the hash navigation
     // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
-    shadowRoot.addEventListener("click", (event) => {
+    this.shadowRoot.addEventListener("click", (event) => {
       const trigger = event.target.closest("[data-scroll-link]");
       if (!trigger) return;
 

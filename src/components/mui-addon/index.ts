@@ -1,4 +1,8 @@
+import { muiDocs } from "./doc";
+
 class MuiAddon extends HTMLElement {
+  static guidelines = muiDocs;
+
   static get observedAttributes() {
     return ["slot"];
   }

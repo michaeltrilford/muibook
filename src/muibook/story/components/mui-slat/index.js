@@ -297,7 +297,7 @@ class storySlat extends HTMLElement {
           id="header"
           title="Header" 
           description="Used at the top of a list or repeatable layout to label or introduce the content below."
-          usage="Use with Row and Action variants where required.; Use heading size of 6 and choose the appropriate level for accessibility."
+          usage="Use with Row and Action variants where required||| Use heading size of 6 and choose the appropriate level for accessibility."
           usageLink="https://guides.muibook.com/slat">
 
           <mui-slat slot="body" variant="header">
@@ -615,8 +615,8 @@ class storySlat extends HTMLElement {
             This example demonstrates the default mui-slat within a mui-slat-group. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/#/responsive'>Slat to Table</mui-link> demo.
           "
           usage="
-            Default mui-slat is used, which has no padding applied.;
-            Wrapping the slat in the group will add predefined margin beneath the rows.;
+            Default mui-slat is used, which has no padding applied|||
+            Wrapping the slat in the group will add predefined margin beneath the rows|||
             Utilise layout helpers to craft your desired layout.
           "
         >
@@ -748,9 +748,9 @@ class storySlat extends HTMLElement {
             This example demonstrates the mui-slat and mui-slat-group used within a mui-card. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/#/responsive'>Slat to Table</mui-link> demo.
           "
           usage="
-            Default mui-slat is used, which has no padding applied.;
-            Wrapping the slat in the group will add predefined margin beneath the rows.;
-            Utilise layout helpers to craft your desired layout.;
+            Default mui-slat is used, which has no padding applied|||
+            Wrapping the slat in the group will add predefined margin beneath the rows|||
+            Utilise layout helpers to craft your desired layout|||
             mui-badge has a helper (usage='slat-end') to adjust the alignment when used in a slat-end position.
           "
         >
@@ -894,8 +894,8 @@ class storySlat extends HTMLElement {
           title="Card: Variant Slat & Group"
           description="When a mui-slat is placed directly inside mui-card-body, it aligns with the card heading to maintain consistent layout. Automatic styles are applied only when the slat variant is set to header, row, or action."
           usage="
-            mui-slat-group is added within the mui-card-body to apply an offset for the slat items.;
-            Place slats directly inside mui-card-body to inherit alignment.;
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items|||
+            Place slats directly inside mui-card-body to inherit alignment|||
             Use this layout only for cards with limited width. For wider layouts, consider using a table.
           "
         >
@@ -1020,9 +1020,9 @@ class storySlat extends HTMLElement {
           title="Card: Slat Group Dividers" 
           description="When a mui-slat is placed directly inside mui-card-body, it aligns with the card heading to maintain consistent layout. Automatic styles are applied only when the slat variant is set to header, row, or action."
           usage="
-            mui-slat-group is added within the mui-card-body to apply an offset for the slat items.;
-            mui-rule can be used between slats for visual separation.;
-            Place slats directly inside mui-card-body to inherit alignment.;
+            mui-slat-group is added within the mui-card-body to apply an offset for the slat items|||
+            mui-rule can be used between slats for visual separation|||
+            Place slats directly inside mui-card-body to inherit alignment|||
             Use this layout only for cards with limited width. For wider layouts, consider using a table.
           "
         >

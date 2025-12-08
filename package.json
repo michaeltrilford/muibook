@@ -452,18 +452,21 @@
       "import": "./dist/esm/agent/keywords/index.js",
       "types": "./dist/types/agent/keywords/index.d.ts"
     },
+    "./custom-elements.json": "./dist/esm/custom-elements.json",
     "./css/mui-tokens.css": "./dist/esm/css/mui-tokens.css",
     "./css/mui-reset.css": "./dist/esm/css/mui-reset.css",
     "./css/mui-base.css": "./dist/esm/css/mui-base.css"
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npm run cem && tsc && vite build && npm run copy-cem",
     "preview": "vite preview",
     "build:muibook": "vite build --config vite.muibook.config.ts",
     "preview:muibook": "vite preview --config vite.muibook.config.ts",
     "build:create-mui-app": "vite build --config vite.create-mui-app.config.ts",
-    "preview:create-mui-app": "vite preview --config vite.create-mui-app.config.ts"
+    "preview:create-mui-app": "vite preview --config vite.create-mui-app.config.ts",
+    "cem": "cem analyze --outdir public",
+    "copy-cem": "cp public/custom-elements.json dist/esm/custom-elements.json"
   },
   "files": [
     "dist/esm/index.js",
@@ -474,11 +477,14 @@
     "dist/types/index.d.ts",
     "dist/types/components",
     "dist/types/utils",
-    "dist/types/agent"
+    "dist/types/agent",
+    "dist/esm/custom-elements.json"
   ],
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.11.0",
     "@types/node": "^22.15.24",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
-  }
+  },
+  "customElements": "public/custom-elements.json"
 }

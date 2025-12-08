@@ -601,10 +601,10 @@ class storyInput extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1"
         storybook="https://stories.muibook.com/?path=/docs/inputs-input--docs"
         accessibility="
-          A label is required for screen reader support to describe the input’s purpose.;
-          If hide-label is used, the label is visually hidden but accessible via aria-label.;
-          The label and input are linked via for and id. If no id is provided, one is generated.;
-          Clear focus styles are shown for keyboard users.;
+          A label is required for screen reader support to describe the input's purpose.|||
+          If hide-label is used, the label is visually hidden but accessible via aria-label.|||
+          The label and input are linked via for and id. If no id is provided, one is generated.|||
+          Clear focus styles are shown for keyboard users.|||
           The native disabled attribute is fully supported by assistive tech.
         "
       >

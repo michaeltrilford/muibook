@@ -94,7 +94,25 @@ class StoryTemplate extends HTMLElement {
       : "";
 
     const accessibilityItems = this.getAttribute("accessibility");
-    let accessibilityArray = [];
+    let accessibilityArray = accessibilityItems
+      ? accessibilityItems
+          .split("|||")
+          .map((item) => item.trim())
+          .filter((item) => item.length > 0)
+      : [];
+
+    // ADD THIS SECTION BACK:
+    const accessibilitySection = accessibilityArray.length
+      ? /*html*/ `
+    <mui-message heading="Accessibility Notes" icon="mui-icon-accessibility">
+      <mui-list as="ul">
+        ${accessibilityArray
+          .map((item) => `<mui-list-item size="x-small" weight="regular">${item}</mui-list-item>`)
+          .join("")}
+      </mui-list>
+    </mui-message> 
+  `
+      : "";
 
     const demoLink = this.getAttribute("demo");
     const demoContent = demoLink
@@ -163,25 +181,6 @@ class StoryTemplate extends HTMLElement {
           <mui-link slot="showAbove" target="_blank" href="${guidesLink}" rel="noopener" variant="tertiary">Guides<guides-mark slot="after"></guides-mark></mui-link>
           <mui-link slot="showBelow" target="_blank" icon-only href="${guidesLink}" rel="noopener" variant="tertiary"><guides-mark></guides-mark></mui-link>
         </mui-responsive>
-      `
-      : "";
-
-    try {
-      const sanitizedItems = accessibilityItems ? accessibilityItems.replace(/(['"])(?=\w)(.*?)(?=\w)\1/g, "$2") : "";
-      accessibilityArray = sanitizedItems ? JSON.parse(sanitizedItems) : [];
-    } catch (e) {
-      accessibilityArray = accessibilityItems ? accessibilityItems.split(";") : [];
-    }
-
-    const accessibilitySection = accessibilityArray.length
-      ? /*html*/ `
-        <mui-message heading="Accessibility Notes" icon="mui-icon-accessibility">
-            <mui-list as="ul">
-              ${accessibilityArray
-                .map((item) => `<mui-list-item size="x-small" weight="regular">${item.trim()}</mui-list-item>`)
-                .join("")}
-            </mui-list>
-        </mui-message> 
       `
       : "";
 

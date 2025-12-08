@@ -167,7 +167,7 @@ class storyHeading extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-heading/index.ts"
         guides="https://guides.muibook.com/heading"
         storybook="https://stories.muibook.com/?path=/docs/content-heading--docs"
-        accessibility="Use the level property (H1–H6) to maintain correct semantic structure.; Follow a logical order — don’t skip heading levels.; Helps screen readers understand and navigate the page hierarchy."
+        accessibility="Use the level property (H1–H6) to maintain correct semantic structure||| Follow a logical order — don’t skip heading levels||| Helps screen readers understand and navigate the page hierarchy."
       >
         ${stories}
       </story-template>

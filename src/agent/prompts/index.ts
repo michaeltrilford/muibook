@@ -30,7 +30,19 @@ Rules:
         select: `<mui-field label="Brand"><mui-select options='[{ "value": "jpy", "label": "JPY" },{ "value": "usd", "label": "USD" }]'></mui-select></mui-field>`,
         inputAndSelect: `<mui-field label="Amount to transfer" slot="body"><mui-input type="number"><mui-select slot="after" label="Currency" hide-label style="width: 100px;" options='[{ "value": "jpy", "label": "JPY" },{ "value": "usd", "label": "USD" }]'></mui-select></mui-input></mui-field>`,
       },
-      addon: `<mui-addon>...</mui-addon>`,
+      addon: {
+        text: [
+          `<mui-input><mui-addon slot="before">$</mui-addon></mui-input>`,
+          `<mui-input><mui-addon slot="after">kg</mui-addon></mui-input>`,
+          `<mui-input><mui-addon slot="before">%</mui-addon></mui-input>`,
+          `<mui-field label="Website"><mui-input><mui-addon slot="before">https://</mui-addon></mui-input></mui-field>`,
+        ],
+        icon: [
+          `<mui-input><mui-addon slot="before"><mui-icon name="search"></mui-icon></mui-addon></mui-input>`,
+          `<mui-input><mui-addon slot="after"><mui-icon name="calendar"></mui-icon></mui-addon></mui-input>`,
+          `<mui-field label="Email"><mui-input type="email"><mui-addon slot="before"><mui-icon name="mail"></mui-icon></mui-addon></mui-input></mui-field>`,
+        ],
+      },
       checkbox: `<mui-checkbox>...</mui-checkbox>`,
       fileUpload: `<mui-file-upload>...</mui-file-upload>`,
       input: `<mui-input>...</mui-input>`,

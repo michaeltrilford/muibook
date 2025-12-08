@@ -475,9 +475,9 @@ class storyTabBar extends HTMLElement {
         guides="https://guides.muibook.com/tab-bar"
         storybook="https://stories.muibook.com/?path=/docs/navigation-tabbar--docs"
         accessibility="
-          Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.; 
-          aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.; 
-          Each active tab-item can receive focus and shows a focus-visible outline.; 
+          Left/Right arrows, Home and End keys let keyboard users navigate between tab-items||| 
+          aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive||| 
+          Each active tab-item can receive focus and shows a focus-visible outline||| 
           tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.
         "
       >

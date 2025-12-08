@@ -114,7 +114,7 @@ class storyMessage extends HTMLElement {
       <story-card
         title="Default" 
         description="The default uses the neutral state offers a subtle, neutral tone, ideal for conveying general information without drawing undue attention."
-        accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
+        accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
       >
         <mui-message slot="body">
           <mui-body>Body content...</mui-body>
@@ -201,9 +201,9 @@ class storyMessage extends HTMLElement {
       <story-card 
         title="Variant: Neutral" 
         description="A calm, balanced tone for non-critical, persistent messages." 
-        usage="Use on settings or system pages to display non-urgent information.; Suitable for background status like sync confirmation or feature explanations."
+        usage="Use on settings or system pages to display non-urgent information||| Suitable for background status like sync confirmation or feature explanations."
         usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
+        accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
       >
         <mui-message heading="Sync Settings" slot="body" variant="neutral">
             <mui-body size="small">Your preferences are backed up and synced across devices.</mui-body>
@@ -228,9 +228,9 @@ class storyMessage extends HTMLElement {
       <story-card 
         title="Variant: Positive" 
         description="The Positive state conveys successful actions, achievements, or confirmations, fostering a sense of accomplishment and satisfaction." 
-        usage="Indicate successful form submissions or completed tasks.; Acknowledge user achievements or milestones."
+        usage="Indicate successful form submissions or completed tasks||| Acknowledge user achievements or milestones."
         usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
+        accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
       >
         <mui-message heading="Report Ready for Download" slot="body" variant="positive">
           <mui-body>The report has been generated and is ready for download.</mui-body>
@@ -256,9 +256,9 @@ class storyMessage extends HTMLElement {
       <story-card 
         title="Variant: Info" 
         description="The Info state provides informative messages that help users understand system status or feature updates, guiding them without urgency." 
-        usage="Use to announce new features | enhancements | system changes.; Appropriate for onboarding tips or contextual help."
+        usage="Use to announce new features | enhancements | system changes||| Appropriate for onboarding tips or contextual help."
         usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of POLITE is set on this variant.; Role of STATUS is set on this variant."
+        accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
       >
         <mui-message heading="New Feature Available" slot="body" variant="info">
           <mui-body>A new dashboard layout is now available. Explore the enhanced features.</mui-body>
@@ -284,9 +284,9 @@ class storyMessage extends HTMLElement {
       <story-card
         title="Variant: Warning"
         description="The Warning state alerts users to potential issues that may require attention, helping prevent errors or misunderstandings." 
-        usage="Notify users of actions that could lead to undesirable outcomes; like unsaved changes.; Warn about system limitations or upcoming expirations."
+        usage="Notify users of actions that could lead to undesirable outcomes; like unsaved changes||| Warn about system limitations or upcoming expirations."
         usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of ASSERTIVE is set on this variant.; Role of ALERT is set on this variant."
+        accessibility="ARIA-live of ASSERTIVE is set on this variant||| Role of ALERT is set on this variant."
       >
         <mui-message heading="Password Expiry Warning" slot="body" variant="warning">
           <mui-body>Your password will expire in 3 days. Please update it to maintain account security.</mui-body>
@@ -312,9 +312,9 @@ class storyMessage extends HTMLElement {
       <story-card
         title="Variant: Attention"
         description="The Attention state demands immediate user focus, highlighting critical issues that require prompt action." 
-        usage='Alert users to urgent problems; such as system errors or security breaches.; Use for time-sensitive notifications that impact user experience.'
+        usage='Alert users to urgent problems; such as system errors or security breaches||| Use for time-sensitive notifications that impact user experience.'
         usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of ASSERTIVE is set on this variant.; Role of ALERT is set on this variant."
+        accessibility="ARIA-live of ASSERTIVE is set on this variant||| Role of ALERT is set on this variant."
       >
         <mui-message heading="Scheduled Maintenance" slot="body" variant="attention">
           <mui-body>Our website will be undergoing maintenance on [Date] from [Time] to [Time]. Some features may be unavailable during this period.</mui-body>
@@ -349,8 +349,8 @@ class storyMessage extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-message/index.ts"
         storybook="https://stories.muibook.com/?path=/docs/feedback-message--docs"
         accessibility="
-            ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.;
-            Neutral, Postive, Info support the role of STATUS for screen reader feedback.;
+            ARIA-live is built in, using POLITE + ASSERTIVE for screen readers|||
+            Neutral, Postive, Info support the role of STATUS for screen reader feedback|||
             Warning, Attention support the role of ALERT for screen reader feedback.
           "
       >

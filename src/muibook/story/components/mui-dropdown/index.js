@@ -231,9 +231,9 @@ class storyDropdown extends HTMLElement {
         title="Persistent"
         description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
         usage="
-          Use the 'persistent' boolean so users can interact with the dropdown content without it closing.; 
-          For instance, users can input data, click buttons, or interact with other elements inside the dropdown while it remains open.;
-          This story demonstrates a card preview where you can upload an image as the card background.;
+          Use the 'persistent' boolean so users can interact with the dropdown content without it closing||| 
+          For instance, users can input data, click buttons, or interact with other elements inside the dropdown while it remains open|||
+          This story demonstrates a card preview where you can upload an image as the card background|||
           Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
           <mui-dropdown position="center" persistent data-file-preview="true">
@@ -311,13 +311,13 @@ class storyDropdown extends HTMLElement {
         title="Advanced: Persistent"
         description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
         usage="
-          Use the 'Persistent Toggle Logic' to track whether the dropdown is open so you can toggle the 'persistent' boolean, so users can interact with the dropdown content without it closing.;
-          Pair the logic above with the mui-toggle and mui-icons to add affordance when the auxiliary content is visible/hidden.;
-          Refer to the 'Persistent Toggle Logic' in the 'View Code' section;
-          The mui-dropdown will use this attribute: data-toggle-dropdown='uniqueID';
-          The mui-toggle will have this: data-toggle-control='uniqueID';
-          For instance, users can input data, click buttons, or interact with other elements inside the dropdown while it remains open.;
-          This story demonstrates a card preview where you can upload an image as the card background.;
+          Use the 'Persistent Toggle Logic' to track whether the dropdown is open so you can toggle the 'persistent' boolean, so users can interact with the dropdown content without it closing|||
+          Pair the logic above with the mui-toggle and mui-icons to add affordance when the auxiliary content is visible/hidden|||
+          Refer to the 'Persistent Toggle Logic' in the 'View Code' section|||
+          The mui-dropdown will use this attribute: data-toggle-dropdown='uniqueID'|||
+          The mui-toggle will have this: data-toggle-control='uniqueID'|||
+          For instance, users can input data, click buttons, or interact with other elements inside the dropdown while it remains open|||
+          This story demonstrates a card preview where you can upload an image as the card background|||
           Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
 

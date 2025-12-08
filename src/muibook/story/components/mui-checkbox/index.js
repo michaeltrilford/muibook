@@ -138,10 +138,10 @@ class storyCheckbox extends HTMLElement {
       <story-card 
       title="Indeterminate" 
       usage="
-        Used on parent checkboxes in multi-select groups to show partial selection.; 
-        Often acts as a control to clear selected child options.;
-        Parent reflects children: unchecked (none), checked (all), indeterminate (some).;
-        States switch based on user input and child selection.;
+        Used on parent checkboxes in multi-select groups to show partial selection.|||
+        Often acts as a control to clear selected child options.|||
+        Parent reflects children: unchecked (none), checked (all), indeterminate (some).|||
+        States switch based on user input and child selection.|||
         Your app controls the logic. The component renders the static UI.
       "
       usageLink="https://guides.muibook.com/input"
@@ -172,7 +172,10 @@ class storyCheckbox extends HTMLElement {
 
       <story-card 
       title="Usage: Terms & conditions" 
-      description="This checkbox is often used to confirm user agreement with legal terms. It typically starts unchecked and must be checked to proceed. It may become disabled if the form is locked or certain conditions aren’t met." usage="Slot in a string of text and accompanied link or supporting elements.; No body component is required as this is built in."
+      description="This checkbox is often used to confirm user agreement with legal terms. It typically starts unchecked and must be checked to proceed. It may become disabled if the form is locked or certain conditions aren’t met." 
+      usage="
+        Slot in a string of text and accompanied link or supporting elements.|||
+        No body component is required as this is built in."
       usageLink="https://guides.muibook.com/input"
       >
       <mui-field id="termsField" slot="body">
@@ -205,9 +208,9 @@ class storyCheckbox extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=634-4686&t=aIjJqBxWOU1t0Jjp-1"
         storybook="https://stories.muibook.com/?path=/docs/inputs-checkbox--docs"
         accessibility="
-          A visible label or accessible name is required for screen reader support to describe the checkbox’s purpose.;
-          If no visible label is provided, use aria-label (or aria-labelledby) to supply an accessible name.;
-          Clear focus styles are present for keyboard users.;
+          A visible label or accessible name is required for screen reader support to describe the checkbox’s purpose.|||
+          If no visible label is provided, use aria-label (or aria-labelledby) to supply an accessible name.|||
+          Clear focus styles are present for keyboard users.|||
           The native disabled attribute is fully supported by assistive technologies.
         "
       >

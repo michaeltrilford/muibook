@@ -102,17 +102,15 @@ class storyCard extends HTMLElement {
       `
       : "";
 
-    // Handle usage list
+    // Handle usage list - Updated to use ||| delimiter
     const usageItems = this.getAttribute("usage");
     const usageLink = this.getAttribute("usageLink");
-    let usageArray = [];
-
-    try {
-      const sanitizedItems = usageItems ? usageItems.replace(/(['"])(?=\w)(.*?)(?=\w)\1/g, "$2") : "";
-      usageArray = sanitizedItems ? JSON.parse(sanitizedItems) : [];
-    } catch (e) {
-      usageArray = usageItems ? usageItems.split(";") : [];
-    }
+    let usageArray = usageItems
+      ? usageItems
+          .split("|||")
+          .map((item) => item.trim())
+          .filter((item) => item.length > 0)
+      : [];
 
     const usageContent = usageArray.length
       ? /*html*/ `
@@ -121,8 +119,8 @@ class storyCard extends HTMLElement {
           ${usageArray
             .map(
               (usage) => /*html*/ `
-            <mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">
-              ${usage.trim()}
+            <mui-list-item size="x-small" weight="medium" style="margin-bottom: var(--space-050)">
+              ${usage}
             </mui-list-item>`
             )
             .join("")}
@@ -135,29 +133,24 @@ class storyCard extends HTMLElement {
           <mui-link
             href="${usageLink}"
             target="_blank"
-            size="small"
+            variant="tertiary"
             rel="noopener noreferrer"
             weight="bold"
-            style="margin-top: var(--space-200); margin-bottom: var(--space-200);"
           >
-            View UX guidelines ↗
+            UX Guidelines
+            <mui-icon-info slot="after"></mui-icon-info>
           </mui-link>
         `
       : "";
 
-    // Handle accessibility list
+    // Handle accessibility list - Updated to use ||| delimiter
     const accessibilityItems = this.getAttribute("accessibility");
-
-    let accessibilityArray = [];
-
-    try {
-      // Try parse JSON (after cleaning quotes)
-      const sanitizedItems = accessibilityItems ? accessibilityItems.replace(/(['"])(?=\w)(.*?)(?=\w)\1/g, "$2") : "";
-      accessibilityArray = sanitizedItems ? JSON.parse(sanitizedItems) : [];
-    } catch (e) {
-      // Fallback split by semicolon
-      accessibilityArray = accessibilityItems ? accessibilityItems.split(";") : [];
-    }
+    let accessibilityArray = accessibilityItems
+      ? accessibilityItems
+          .split("|||")
+          .map((item) => item.trim())
+          .filter((item) => item.length > 0)
+      : [];
 
     const accessibilityContent = accessibilityArray.length
       ? /*html*/ `
@@ -166,7 +159,7 @@ class storyCard extends HTMLElement {
       ${accessibilityArray
         .map(
           (accessibility) =>
-            /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${accessibility.trim()}</mui-list-item>`
+            /*html*/ `<mui-list-item size="x-small" weight="medium" style="margin-bottom: var(--space-050)">${accessibility}</mui-list-item>`
         )
         .join("")}
     </mui-list>
@@ -183,12 +176,11 @@ class storyCard extends HTMLElement {
           <mui-card-header>
             <mui-h-stack alignX="space-between" alignY="center">
               <mui-heading size="3" level="2">${title}</mui-heading>
-              ${githubContent}
+              ${githubContent}${usageLinkContent}
             </mui-h-stack>
             <mui-v-stack space="var(--space-100)">
               ${description}
               ${usageContent}
-              ${usageLinkContent}
               ${accessibilityContent}
             </mui-v-stack>
 

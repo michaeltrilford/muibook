@@ -339,9 +339,9 @@ class storyCarousel extends HTMLElement {
         description="A flexible, composable carousel that gives you full control over the content and internal layout."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js"
         usage="
-          Carousel controls are set to bottom-center by default.;
-          Internal padding is required.;
-          The var(--carousel-tab-offset) is available to help with control spacing - though, not required.;
+          Carousel controls are set to bottom-center by default|||
+          Internal padding is required|||
+          The var(--carousel-tab-offset) is available to help with control spacing - though, not required|||
           You will need knowledge of CSS to add your specific custom content.
         "
         usageLink="https://guides.muibook.com/carousel"
@@ -654,9 +654,9 @@ class storyCarousel extends HTMLElement {
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8697&t=0ytskb8cxriEmdz2-1"
         storybook="https://stories.muibook.com/?path=/docs/navigation-carousel--docs"
         accessibility="
-          Left/Right arrows, Home and End keys let keyboard users navigate between carousel items.; 
-          aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.; 
-          Each active tab-item can receive focus and shows a focus-visible outline.; 
+          Left/Right arrows, Home and End keys let keyboard users navigate between carousel items||| 
+          aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive||| 
+          Each active tab-item can receive focus and shows a focus-visible outline||| 
           tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.
         "
 

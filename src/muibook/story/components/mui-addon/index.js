@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyAddon extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("mui-addon");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -75,13 +82,14 @@ class storyAddon extends HTMLElement {
           </mui-responsive>
         </props-card>
 
-        <story-card title="Before: Add On"
-          description="Use for units, currency, or short static labels."
+        <story-card title="Text"
+          description="Use for units, currency, or short static labels"
           usageLink="https://guides.muibook.com/add-on"
         >
           <div slot="body">
             <mui-input label="Enter amount">
               <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
+            </mui-input>
           </div>
           <story-code-block slot="footer" scrollable>
             &lt;mui-input label="Enter amount"&gt;
@@ -99,13 +107,14 @@ class storyAddon extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="After: Add On"
-          description="Use for units, currency, or short static labels."
-          usageLink="https://guides.muibook.com/add-on"
+        <story-card title="Icon"
+          description="Use for symbolic cues or clarification of the input’s intent"
+          usageLink="${data.guides}"
         >
           <div slot="body">
-            <mui-input label="Enter amount">
-              <mui-addon slot="after"><mui-body>USD</mui-body></mui-input></mui-addon>
+            <mui-input label="Enter your date">
+              <mui-addon slot="after"><mui-icon-info></mui-icon-info></mui-addon>
+            </mui-input>
           </div>
           <story-code-block slot="footer" scrollable>
             &lt;mui-input label="Enter amount"&gt;
@@ -124,16 +133,16 @@ class storyAddon extends HTMLElement {
         </story-card>
       `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Add On"
-        description="Enhance form inputs by using mui-addon to display supplementary information like units, prefixes, or suffixes."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-addon/index.ts"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=133-588&t=a1UUlxRE4ZIJUKwJ-1"
-        guides="https://guides.muibook.com/add-on"
-        storybook="https://stories.muibook.com/?path=/docs/inputs-addon--docs"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
       >
         ${stories}
       </story-template>

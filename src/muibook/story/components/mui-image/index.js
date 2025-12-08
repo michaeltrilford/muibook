@@ -130,8 +130,8 @@ class storyImage extends HTMLElement {
         storybook="https://stories.muibook.com/?path=/docs/content-image--docs"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4194&t=0ytskb8cxriEmdz2-1"
         accessibility="
-          Use meaningful alt text that describes the image’s purpose.;
-          Use alt=&#8220;&#8221; for decorative images that don’t convey information.;
+          Use meaningful alt text that describes the image’s purpose|||
+          Use alt=&#8220;&#8221; for decorative images that don’t convey information|||
           Use the caption slot for extended context, especially for diagrams or UI patterns.
         "
       >
