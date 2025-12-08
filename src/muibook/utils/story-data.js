@@ -47,16 +47,10 @@ async function loadAllDocs() {
 export async function getComponentDocs(tagName) {
   const allDocs = await loadAllDocs();
 
-  // Normalize tagName: remove "mui-" prefix and make case-insensitive
-  const normalizedTag = tagName.replace(/^mui-/i, "");
-
-  // Lookup using the keys of the muiDocs object
-  const docKey = Object.keys(allDocs).find((key) => key.toLowerCase() === normalizedTag.toLowerCase());
-
-  if (!docKey) {
+  if (!allDocs[tagName]) {
     console.warn(`Guidelines not found for ${tagName}`);
     return null;
   }
 
-  return allDocs[docKey];
+  return allDocs[tagName];
 }

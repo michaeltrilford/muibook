@@ -1,9 +1,15 @@
+import { getComponentDocs } from "../../../utils/story-data";
 import Image from "../../../images/story/image-1080.png";
 
 class storyCards extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Card");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -1112,16 +1118,17 @@ class storyCards extends HTMLElement {
       </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Card" 
-        description="The Card provides the ability to group items or components." 
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-861&t=fSFYVey9aCoE5oQa-1"
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-card"
-        guides="https://guides.muibook.com/card"
-        storybook="https://stories.muibook.com/?path=/docs/layout-card--docs"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
 
         <mui-message heading="Quicklinks" slot="message">
@@ -1146,7 +1153,7 @@ class storyCards extends HTMLElement {
     // Spec Card - Minimal scroll-to handler
     // The common href with hash could not be used because of the hash navigation
     // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
-    shadowRoot.addEventListener("click", (event) => {
+    this.shadowRoot.addEventListener("click", (event) => {
       const trigger = event.target.closest("[data-scroll-link]");
       if (!trigger) return;
 
@@ -1155,7 +1162,7 @@ class storyCards extends HTMLElement {
       const targetId = trigger.getAttribute("data-scroll-link");
       if (!targetId) return;
 
-      const targetEl = shadowRoot.getElementById(targetId);
+      const targetEl = this.shadowRoot.getElementById(targetId);
       if (targetEl) {
         targetEl.scrollIntoView({ behavior: "smooth" });
       }

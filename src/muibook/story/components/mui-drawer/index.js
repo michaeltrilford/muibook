@@ -10,7 +10,7 @@ class storyDrawer extends HTMLElement {
   }
 
   async connectedCallback() {
-    const data = await getComponentDocs("mui-drawer");
+    const data = await getComponentDocs("Drawer");
     const styles = /*css*/ `
       .token-item-menu::part(flex-wrap) {
         flex-wrap: wrap;

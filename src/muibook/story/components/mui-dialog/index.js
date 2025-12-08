@@ -1,10 +1,16 @@
+import { getComponentDocs } from "../../../utils/story-data";
 import VisaBlack from "../../../images/networks/visa-black.svg";
 import Guides from "../../../images/guru/guides.svg";
 
 class storyDialog extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Dialog");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -476,26 +482,17 @@ class storyDialog extends HTMLElement {
 
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Dialog" 
-        description="A modal window that prompts users to take a specific action or provide additional information without navigating away from the current context."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"
-        guides="https://guides.muibook.com/dialog"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=780-4948&t=KhmyUmaNDWKTGtrH-1"
-        storybook="https://stories.muibook.com/?path=/docs/content-dialog--docs"
-        accessibility="
-          Uses role='dialog' and aria-modal='true' for screen readers|||
-          Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions|||
-          Focus is managed by the browser’s native dialog behavior when open|||
-          The close button includes aria-label='Close Icon'|||
-          Footer is hidden when empty to reduce screen reader noise|||
-          Clicking the backdrop closes the dialog|||
-          When open, consumers must trap focus in the dialog and apply inert/aria-hidden to the background|||
-          The component exposes 'mui-dialog-open' and 'mui-dialog-close' events so external state (e.g. React setDialogOpen(false)) stays in sync with the dialog’s internal logic.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

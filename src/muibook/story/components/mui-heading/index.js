@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyHeading extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Heading");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -157,17 +164,17 @@ class storyHeading extends HTMLElement {
       </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Heading" 
-        description="The Heading component includes six levels (H1–H6) for structured heading usage, supporting a range of hierarchies in text presentation."
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1120&t=fSFYVey9aCoE5oQa-1"
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-heading/index.ts"
-        guides="https://guides.muibook.com/heading"
-        storybook="https://stories.muibook.com/?path=/docs/content-heading--docs"
-        accessibility="Use the level property (H1–H6) to maintain correct semantic structure||| Follow a logical order — don’t skip heading levels||| Helps screen readers understand and navigate the page hierarchy."
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

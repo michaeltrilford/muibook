@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyIcon extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Icons");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -546,15 +553,17 @@ class storyIcon extends HTMLElement {
       </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Icons"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-311&t=fSFYVey9aCoE5oQa-1"
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-icons"
-        guides="https://guides.muibook.com/icons"
-        storybook="https://stories.muibook.com/?path=/docs/content-icons--docs"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

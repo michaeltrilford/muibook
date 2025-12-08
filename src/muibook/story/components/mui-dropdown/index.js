@@ -1,3 +1,4 @@
+import { getComponentDocs } from "../../../utils/story-data";
 import VisaBlack from "../../../images/networks/visa-black.svg";
 import LogoPlaceholder from "../../../images/card/image-220.png";
 import Butter from "../../../images/mesh/buttercup.png";
@@ -6,7 +7,12 @@ import Guides from "../../../images/mui/mui.svg";
 class storyDropdown extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Dropdown");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -427,16 +433,17 @@ class storyDropdown extends HTMLElement {
       </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Dropdown" 
-        description="The dropdown has a trigger action and an overlay menu. The action can use any mui-button variant, while menu options follow a predefined style. The menu auto-positions to stay within the viewport."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dropdown/index.ts"
-        guides="https://guides.muibook.com/dropdown"
-        storybook="https://stories.muibook.com/?path=/docs/actions-dropdown--docs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12740&t=BwezUSymTClm00wJ-1"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

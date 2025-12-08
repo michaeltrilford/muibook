@@ -7,7 +7,7 @@ class storyAddon extends HTMLElement {
   }
 
   async connectedCallback() {
-    const data = await getComponentDocs("mui-addon");
+    const data = await getComponentDocs("AddOn");
 
     const styles = /*css*/ `
       :host { display: block; }

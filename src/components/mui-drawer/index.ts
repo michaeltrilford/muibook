@@ -1,10 +1,7 @@
-import { muiDocs } from "./doc";
 import "../mui-icons/close";
 import "../mui-button";
 
 class MuiDrawer extends HTMLElement {
-  static guidelines = muiDocs;
-
   private innerEl: HTMLElement | null = null;
   private overlayEl: HTMLElement | null = null;
   private footerEl: HTMLElement | null = null;

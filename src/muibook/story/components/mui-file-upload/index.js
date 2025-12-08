@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyFileUpload extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("FileUpload");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -98,16 +105,17 @@ class storyFileUpload extends HTMLElement {
       </story-card> 
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template
-        title="File Upload"
-        description="A simple file input that displays the selected file name and emits a file-upload event."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-upload/index.ts"
-        guides="https://guides.muibook.com/file-upload"
-        storybook="https://stories.muibook.com/?path=/docs/inputs-file-upload--docs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4068&t=0ytskb8cxriEmdz2-1"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

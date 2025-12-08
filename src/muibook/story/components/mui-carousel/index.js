@@ -1,10 +1,16 @@
+import { getComponentDocs } from "../../../utils/story-data";
 import HeroGuides from "../../../images/guru/hero-guides-plugin-no-text.png";
 import HeroOutcomes from "../../../images/guru/hero-outcomes.png";
 
 class storyCarousel extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Carousel");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -643,23 +649,17 @@ class storyCarousel extends HTMLElement {
       </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template
-        title="Carousel"
-        description="A carousel component with tab-based navigation, enabling users to switch between views or content sections with ease."
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-carousel"
-        guides="https://guides.muibook.com/carousel"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8697&t=0ytskb8cxriEmdz2-1"
-        storybook="https://stories.muibook.com/?path=/docs/navigation-carousel--docs"
-        accessibility="
-          Left/Right arrows, Home and End keys let keyboard users navigate between carousel items||| 
-          aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive||| 
-          Each active tab-item can receive focus and shows a focus-visible outline||| 
-          tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.
-        "
-
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

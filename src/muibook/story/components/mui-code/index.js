@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyCode extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Code");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -154,16 +161,17 @@ class storyCode extends HTMLElement {
 
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Code"
-        description="The component defines a code view."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-code/index.ts"
-        guides="https://guides.muibook.com/code"
-        storybook="https://stories.muibook.com/?path=/docs/content-code--docs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1069-15814&t=BwezUSymTClm00wJ-1"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

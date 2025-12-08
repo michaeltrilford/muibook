@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyBadge extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Badge");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -168,16 +175,17 @@ class storyBadge extends HTMLElement {
         </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Badge"
-        description="Badges are non-interactive and indicate counts or statuses."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts"
-        guides="https://guides.muibook.com/badge"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1108&t=FSv3FEahG8VQW1FZ-1"
-        storybook="https://stories.muibook.com/?path=/docs/feedback-badge--docs"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

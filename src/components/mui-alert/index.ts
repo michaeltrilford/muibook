@@ -1,4 +1,3 @@
-import { muiDocs } from "./doc";
 import "../mui-body";
 import "../mui-icons/check";
 import "../mui-icons/info";
@@ -15,8 +14,6 @@ function isVariant(value: string): value is Variant {
 }
 
 class MuiAlert extends HTMLElement {
-  static guidelines = muiDocs;
-
   static get observedAttributes() {
     return ["variant"];
   }

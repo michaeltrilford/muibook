@@ -1,10 +1,16 @@
+import { getComponentDocs } from "../../../utils/story-data";
 import MaxAvatar from "../../../images/mui/avatar-max.png";
 import JulieAvatar from "../../../images/mui/avatar-julie.png";
 
 class storyAvatar extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Avatar");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -784,22 +790,17 @@ class storyAvatar extends HTMLElement {
 
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template
-        title="Avatar"
-        description="Avatar components are used to represent users or entities visually, often through images, initials, or icons."
-        figma=""
-        guides=""
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts"
-        storybook=""
-
-        accessibility="
-          Avatars should always include an accessible label via the <code>label</code> attribute to ensure screen readers can convey their purpose|||
-          When using images, ensure they are clear and appropriately sized for the avatar component|||
-          For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

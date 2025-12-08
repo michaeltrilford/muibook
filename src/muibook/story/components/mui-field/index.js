@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyField extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Field");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -383,31 +390,27 @@ class storyField extends HTMLElement {
         </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Field"
-        description="The mui-field component only renders a validation message if the message attribute is set. Showing/hiding the message is controlled by the form logic, or application state. This keeps mui-field simple, declarative, and reactive to the attributes it’s given."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-field/index.ts"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=112-620&t=GMqx21isUVAMpLJp-1"
-        guides="https://guides.muibook.com/field"
-        storybook="https://stories.muibook.com/?path=/docs/inputs-field--docs"
-        accessibility="
-          A label is required for screen reader support to describe the input’s purpose.|||
-          If hide-label is used, the label is visually hidden but accessible via aria-label.|||
-          The label and form element are linked via for and id. If no id is provided, one is generated.|||
-          Clear focus styles are shown for keyboard users.|||
-          The native disabled attribute is fully supported by assistive tech.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>
     `;
+
+    this.addEventListeners();
   }
 
-  connectedCallback() {
-    // Add a click listener inside the shadowRoot
+  // Add toggle behaviour once DOM is rendered
+  addEventListeners() {
     this.shadowRoot.addEventListener("click", (event) => {
       const button = event.target.closest("[data-toggle]");
       if (!button) return;
@@ -415,6 +418,7 @@ class storyField extends HTMLElement {
       const targetId = button.getAttribute("data-toggle");
       const message = button.getAttribute("data-message") || "Password strength is strong";
       const variant = button.getAttribute("data-variant");
+
       const field = this.shadowRoot.getElementById(targetId);
       if (!field) return;
 
@@ -425,7 +429,7 @@ class storyField extends HTMLElement {
         field.setAttribute("message", message);
       }
 
-      // Toggle variant if data-variant is present
+      // Toggle variant
       if (variant) {
         if (field.getAttribute("variant") === variant) {
           field.removeAttribute("variant");

@@ -137,8 +137,8 @@ class storyCard extends HTMLElement {
             rel="noopener noreferrer"
             weight="bold"
           >
-            UX Guidelines
-            <mui-icon-info slot="after"></mui-icon-info>
+            Guides
+            <guides-mark slot="after"></guides-mark>
           </mui-link>
         `
       : "";

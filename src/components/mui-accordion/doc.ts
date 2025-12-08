@@ -59,6 +59,8 @@ interface ComponentDoc {
     dontContent?: RuleItem[];
   }[];
   behaviour?: {
+    image?: string;
+    description?: string;
     list: string[];
   };
   writing?: {

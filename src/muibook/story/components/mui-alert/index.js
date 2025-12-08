@@ -7,7 +7,7 @@ class storyAlert extends HTMLElement {
   }
 
   async connectedCallback() {
-    const data = await getComponentDocs("mui-alert");
+    const data = await getComponentDocs("Alert");
     const styles = /*css*/ `
       :host { display: block; }
     `;

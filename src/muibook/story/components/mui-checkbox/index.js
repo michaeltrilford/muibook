@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyCheckbox extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Checkbox");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -112,7 +119,7 @@ class storyCheckbox extends HTMLElement {
       <story-card 
       title="Unchecked (Default)"
       description="No option or all options are unselected. The checkbox appears empty, indicating nothing is chosen."
-      usageLink="https://guides.muibook.com/input"
+      usageLink="https://guides.muibook.com/checkbox"
       >
 
       <mui-checkbox slot="body"></mui-checkbox>
@@ -125,7 +132,7 @@ class storyCheckbox extends HTMLElement {
       <story-card 
       title="Checked"
       description="A single option or all options are selected. The checkbox is fully marked, showing complete selection."
-      usageLink="https://guides.muibook.com/input"
+      usageLink="https://guides.muibook.com/checkbox"
       >
       <mui-checkbox checked slot="body"></mui-checkbox>
       <story-code-block slot="footer" scrollable>
@@ -144,7 +151,7 @@ class storyCheckbox extends HTMLElement {
         States switch based on user input and child selection.|||
         Your app controls the logic. The component renders the static UI.
       "
-      usageLink="https://guides.muibook.com/input"
+      usageLink="https://guides.muibook.com/checkbox"
       >
       <mui-checkbox indeterminate slot="body"></mui-checkbox>
       <story-code-block slot="footer" scrollable>
@@ -156,7 +163,7 @@ class storyCheckbox extends HTMLElement {
       <story-card 
       title="Disabled"
       description="The option is unavailable for interaction. It may be selected or unselected but cannot be changed by the user."
-      usageLink="https://guides.muibook.com/input"
+      usageLink="https://guides.muibook.com/checkbox"
       > 
       <mui-h-stack slot="body">
         <mui-checkbox disabled></mui-checkbox>
@@ -176,7 +183,7 @@ class storyCheckbox extends HTMLElement {
       usage="
         Slot in a string of text and accompanied link or supporting elements.|||
         No body component is required as this is built in."
-      usageLink="https://guides.muibook.com/input"
+      usageLink="https://guides.muibook.com/checkbox"
       >
       <mui-field id="termsField" slot="body">
         <mui-checkbox id="agreeTerms">I agree to the <mui-link href="/terms" size="small">terms and conditions</mui-link></mui-checkbox>
@@ -197,22 +204,17 @@ class storyCheckbox extends HTMLElement {
       </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Checkbox"
-        description="A checkbox component for capturing single or multiple selections."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-checkbox/index.ts"
-        guides="https://guides.muibook.com/checkbox"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=634-4686&t=aIjJqBxWOU1t0Jjp-1"
-        storybook="https://stories.muibook.com/?path=/docs/inputs-checkbox--docs"
-        accessibility="
-          A visible label or accessible name is required for screen reader support to describe the checkbox’s purpose.|||
-          If no visible label is provided, use aria-label (or aria-labelledby) to supply an accessible name.|||
-          Clear focus styles are present for keyboard users.|||
-          The native disabled attribute is fully supported by assistive technologies.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

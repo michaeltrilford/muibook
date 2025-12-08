@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyInput extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Input");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -590,23 +597,17 @@ class storyInput extends HTMLElement {
       </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Input"
-        description="An input component for capturing user text, styled for consistency across your UI."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts"
-        guides="https://guides.muibook.com/input"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1"
-        storybook="https://stories.muibook.com/?path=/docs/inputs-input--docs"
-        accessibility="
-          A label is required for screen reader support to describe the input's purpose.|||
-          If hide-label is used, the label is visually hidden but accessible via aria-label.|||
-          The label and input are linked via for and id. If no id is provided, one is generated.|||
-          Clear focus styles are shown for keyboard users.|||
-          The native disabled attribute is fully supported by assistive tech.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

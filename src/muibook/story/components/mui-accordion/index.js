@@ -7,7 +7,7 @@ class storyAccordion extends HTMLElement {
   }
 
   async connectedCallback() {
-    const data = await getComponentDocs("mui-accordion");
+    const data = await getComponentDocs("Accordion");
 
     const styles = /*css*/ `
       :host { display: block; }

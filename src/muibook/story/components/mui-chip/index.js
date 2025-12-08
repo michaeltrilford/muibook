@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyChip extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Chip");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -392,23 +399,22 @@ class storyChip extends HTMLElement {
 
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Chip"
-        description="A Chip is a compact, interactive element representing an attribute or action. It can include text, icons, avatars, badges, or a dismiss option, and is used for choices, filters, or tags."
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=646-5183&t=75XKzlBGMRDDu3oC-1"
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-chip/index.ts"
-        guides="https://guides.muibook.com/chip"
-        storybook="https://stories.muibook.com/?path=/docs/actions-chip--docs"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>
     `;
-  }
 
-  connectedCallback() {
     const shadow = this.shadowRoot;
     if (!shadow) return; // Guard against null
 
