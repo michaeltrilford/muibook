@@ -1168,7 +1168,7 @@ class storyAccordion extends HTMLElement {
       const targetId = trigger.getAttribute("data-scroll-link");
       if (!targetId) return;
 
-      const targetEl = shadowRoot.getElementById(targetId);
+      const targetEl = this.shadowRoot.getElementById(targetId);
       if (targetEl) {
         targetEl.scrollIntoView({ behavior: "smooth" });
       }
