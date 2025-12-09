@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storySlat extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Slat");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -1473,20 +1480,17 @@ class storySlat extends HTMLElement {
         </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Slat"
-        description="Slat is a composable component designed to display table data on mobile devices. It provides flexible start and end slots, enabling consumers to tailor how data is presented in a mobile-friendly, stacked format. Slat is ideal for adapting complex table layouts into a clearer, more accessible experience on smaller screens."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts"
-        storybook="https://stories.muibook.com/?path=/docs/content-slat--docs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=957-8535&t=0ytskb8cxriEmdz2-1"
-        accessibility="
-          mui-slat uses role='row';
-          slotted children inherit role='cell'
-        "
-        guides="https://guides.muibook.com/slat"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
 
         <mui-message heading="Quicklinks" slot="message">
@@ -1514,7 +1518,7 @@ class storySlat extends HTMLElement {
     // Spec Card - Minimal scroll-to handler
     // The common href with hash could not be used because of the hash navigation
     // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
-    shadowRoot.addEventListener("click", (event) => {
+    this.shadowRoot.addEventListener("click", (event) => {
       const trigger = event.target.closest("[data-scroll-link]");
       if (!trigger) return;
 
@@ -1523,7 +1527,7 @@ class storySlat extends HTMLElement {
       const targetId = trigger.getAttribute("data-scroll-link");
       if (!targetId) return;
 
-      const targetEl = shadowRoot.getElementById(targetId);
+      const targetEl = this.shadowRoot.getElementById(targetId);
       if (targetEl) {
         targetEl.scrollIntoView({ behavior: "smooth" });
       }

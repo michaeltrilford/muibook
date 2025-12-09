@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyLoader extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Loader");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -346,23 +353,17 @@ class storyLoader extends HTMLElement {
 
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Loader" 
-        description="The Loader component applies smooth, built-in transitions during page loads, content updates, or skeleton placeholders to maintain a seamless, polished experience."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts"
-        guides="https://guides.muibook.com/loader"
-        storybook="https://stories.muibook.com/?path=/docs/feedback-loader--docs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12710&t=BwezUSymTClm00wJ-1"
-        accessibility="
-          The loader is announced to screen readers via role='status', ensuring updates are conveyed politely|||
-          aria-busy is set to true when loading, indicating the region is currently in a 'busy' state|||
-          A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual|||
-          The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations|||
-          No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>
@@ -378,7 +379,7 @@ class storyLoader extends HTMLElement {
     }
 
     // Find ALL restart buttons and hook them to their nearest <mui-loader>
-    shadowRoot.querySelectorAll("[data-restart]").forEach((btn) => {
+    this.shadowRoot.querySelectorAll("[data-restart]").forEach((btn) => {
       const card = btn.closest("story-card");
       const loadingEl = card?.querySelector("[data-loading]");
       if (loadingEl) {

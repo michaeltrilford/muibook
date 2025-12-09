@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyStepper extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Stepper");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -326,16 +333,17 @@ class storyStepper extends HTMLElement {
 
       `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Stepper"
-        description="A Stepper component visually represents a sequence of steps in a process. It helps users understand progress and navigate through multi-step workflows. This component supports both horizontal and vertical orientations."
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stepper"
-        storybook="https://stories.muibook.com/?path=/docs/navigation-stepper--docs"
-        guides="https://guides.muibook.com/stepper"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4195&t=0ytskb8cxriEmdz2-1"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         <mui-message heading="Quicklinks" slot="message">
           <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
@@ -354,7 +362,7 @@ class storyStepper extends HTMLElement {
     // Spec Card - Minimal scroll-to handler
     // The common href with hash could not be used because of the hash navigation
     // Usage: <mui-link data-scroll-link="surface">Text</mui-link>
-    shadowRoot.addEventListener("click", (event) => {
+    this.shadowRoot.addEventListener("click", (event) => {
       const trigger = event.target.closest("[data-scroll-link]");
       if (!trigger) return;
 
@@ -363,7 +371,7 @@ class storyStepper extends HTMLElement {
       const targetId = trigger.getAttribute("data-scroll-link");
       if (!targetId) return;
 
-      const targetEl = shadowRoot.getElementById(targetId);
+      const targetEl = this.shadowRoot.getElementById(targetId);
       if (targetEl) {
         targetEl.scrollIntoView({ behavior: "smooth" });
       }

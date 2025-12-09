@@ -1,87 +1,10 @@
-// UX guideline documentation is stored in each component’s Doc.ts file.
-// We include generic content that supports the Muibook storefront, but we intentionally
-// exclude Storybook-specific data since it isn’t reused across the system.
-
-interface VariantItem {
-  key: string;
-  title: string;
-  description: string;
-  image?: string;
-}
-
-interface CompositionItem {
-  key: string;
-  name: string;
-  description: string;
-  image?: string;
-}
-
-interface RuleItem {
-  description?: string;
-  image?: string;
-}
-
-interface ComponentDoc {
-  title?: string;
-  hero?: string[];
-  figma?: string[];
-  github?: string[];
-  guides?: string[];
-  storybook?: string[];
-  website?: string[];
-  description: string;
-
-  usage?: {
-    list: string[];
-  };
-
-  accessibility?: {
-    designerList?: string[];
-    engineerList?: string[];
-  };
-
-  anatomy?: {
-    image?: string;
-    list: string[];
-  };
-
-  variants?: {
-    items: VariantItem[];
-  };
-
-  compositions?: {
-    description?: string;
-    items: CompositionItem[];
-  };
-
-  related?: {
-    items: { name: string; link: string }[];
-  };
-
-  rules?: {
-    heading: string;
-    description: string;
-    doContent?: RuleItem[];
-    dontContent?: RuleItem[];
-  }[];
-
-  behaviour?: {
-    image?: string;
-    description?: string;
-    list: string[];
-  };
-
-  writing?: {
-    list: string[];
-  };
-}
-
-type MuiDocs = Record<string, ComponentDoc>;
+import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Container: {
     title: "Container",
-    description: "The Container is a layout helper to provide the base page structure for a web experience.",
+    description:
+      "A layout component used to constrain content within a defined width and apply consistent spacing. Containers help maintain readable line lengths, align content with the grid, and provide structure across different screen sizes.",
 
     hero: [
       "https://images.ctfassets.net/i5uwscj4pkk2/4tgr8R96AqBOE0r2TDM3Lv/47cb49bdee1e0a6a618017990468f1f6/Container_-_Home_Image.png",

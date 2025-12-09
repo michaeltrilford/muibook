@@ -1,3 +1,4 @@
+import { getComponentDocs } from "../../../utils/story-data";
 import VisaWhite from "../../../images/networks/visa-white.svg";
 import VisaBlack from "../../../images/networks/visa-black.svg";
 import Mastercard from "../../../images/networks/mastercard.svg";
@@ -20,7 +21,12 @@ import BackgroundPlaceholder from "../../../images/card/image-395.png";
 class storySmartCard extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("SmartCard");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -562,15 +568,17 @@ class storySmartCard extends HTMLElement {
         </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template title="Smart Card" 
-        description="A dynamic card component for wallets, dashboards, spend tools, or reward programs—designed to represent digital or physical cards in modern, digital-first experiences."
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=440-1250&t=FSv3FEahG8VQW1FZ-1" 
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-smart-card/index.ts"
-        guides="https://guides.muibook.com/smart-card"
-        storybook="https://stories.muibook.com/?path=/docs/content-smartcard--docs"
+      <story-template 
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

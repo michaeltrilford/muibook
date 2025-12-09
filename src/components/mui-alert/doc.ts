@@ -1,79 +1,4 @@
-// UX guideline documentation is stored in each component’s Doc.ts file.
-// We include generic content that supports the Muibook storefront, but we intentionally
-// exclude Storybook-specific data since it isn’t reused across the system.
-
-interface VariantItem {
-  key: string;
-  title: string;
-  description: string;
-  image?: string;
-}
-
-interface CompositionItem {
-  key: string;
-  name: string;
-  description: string;
-  image?: string;
-}
-
-interface RuleItem {
-  description?: string;
-  image?: string;
-}
-
-interface ComponentDoc {
-  title?: string;
-  hero?: string[];
-  figma?: string[];
-  guides?: string[];
-  github?: string[];
-  storybook?: string[];
-  website?: string[];
-  prompts?: {
-    [key: string]: string | string[] | Record<string, string | string[]>;
-  };
-  keywords?: string[];
-  description: string;
-
-  usage?: {
-    list: string[];
-  };
-  accessibility?: {
-    designerList?: string[];
-    engineerList?: string[];
-  };
-  anatomy?: {
-    image?: string;
-    list: string[];
-  };
-  variants?: {
-    items: VariantItem[];
-  };
-  compositions?: {
-    description?: string;
-    items: CompositionItem[];
-  };
-  related?: {
-    items: { name: string; link: string }[];
-  };
-  rules?: {
-    heading: string;
-    description: string;
-    doContent?: RuleItem[];
-    dontContent?: RuleItem[];
-  }[];
-  behaviour?: {
-    image?: string;
-    description?: string;
-    list: string[];
-  };
-  writing?: {
-    list: string[];
-  };
-}
-
-// Wrapper keyed by component name
-type MuiDocs = Record<string, ComponentDoc>;
+import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Alert: {
@@ -89,18 +14,6 @@ export const muiDocs: MuiDocs = {
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts"],
     storybook: ["https://stories.muibook.com/?path=/docs/feedback-alert--docs"],
     website: ["https://muibook.com/#/alert"],
-    prompts: {
-      success: ["<mui-alert variant='success'>...</mui-alert>"],
-      info: ["<mui-alert variant='info'>...</mui-alert>"],
-      warning: ["<mui-alert variant='warning'>...</mui-alert>"],
-      attention: ["<mui-alert variant='attention'>...</mui-alert>"],
-      errorWithButton: [
-        "<mui-alert variant='error'><mui-button slot='action'><mui-icon-close></mui-icon-close></mui-button></mui-alert>",
-      ],
-      successWithButton: ["<mui-alert variant='success'><mui-button slot='action'>Undo</mui-button></mui-alert>"],
-      warningWithLink: ["<mui-alert variant='warning'><mui-link slot='action'>Upgrade</mui-link></mui-alert>"],
-    },
-    keywords: ["alert", "success", "info", "warning", "error", "message", "banner", "notification"],
     usage: {
       list: [
         "Success: Confirm completed actions such as form submissions, data saves, or task completion.",

@@ -1,97 +1,28 @@
-// UX guideline documentation is stored in each component’s Doc.ts file.
-// We include generic content that supports the Muibook storefront, but we intentionally
-// exclude Storybook-specific data since it isn’t reused across the system.
-
-interface VariantItem {
-  key: string;
-  title: string;
-  description: string;
-  image?: string;
-}
-
-interface CompositionItem {
-  key: string;
-  name: string;
-  description: string;
-  image?: string;
-}
-
-interface RuleItem {
-  description?: string;
-  image?: string;
-}
-
-interface ComponentDoc {
-  title?: string;
-  hero?: string[];
-  figma?: string[];
-  github?: string[];
-  guides?: string[];
-  storybook?: string[];
-  website?: string[];
-  description: string;
-
-  usage?: {
-    list: string[];
-  };
-
-  accessibility?: {
-    designerList?: string[];
-    engineerList?: string[];
-  };
-
-  anatomy?: {
-    image?: string;
-    list: string[];
-  };
-
-  variants?: {
-    items: VariantItem[];
-  };
-
-  compositions?: {
-    description?: string;
-    items: CompositionItem[];
-  };
-
-  related?: {
-    items: { name: string; link: string }[];
-  };
-
-  rules?: {
-    heading: string;
-    description: string;
-    doContent?: RuleItem[];
-    dontContent?: RuleItem[];
-  }[];
-
-  behaviour?: {
-    image?: string;
-    description?: string;
-    list: string[];
-  };
-
-  writing?: {
-    list: string[];
-  };
-}
-
-type MuiDocs = Record<string, ComponentDoc>;
+import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Rule: {
     title: "Rule",
-    description: "",
+    description: "A styling rule that visually separates or divides page elements.",
 
-    hero: [""],
-    figma: [""],
-    storybook: [""],
-    github: [""],
-    website: [""],
-    guides: [""],
+    hero: [
+      "https://images.ctfassets.net/i5uwscj4pkk2/1MLQoDYuXhKOBDZQRZtBH7/6cd51d6b04fb62f1e04b0383c38d4cce/Rule_-_Home_Image.png",
+    ],
+    figma: [
+      "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12617&t=BwezUSymTClm00wJ-1",
+    ],
+    storybook: ["https://stories.muibook.com/?path=/docs/layout-rule--docs"],
+    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-rule/index.ts"],
+    website: ["https://muibook.com/#/rule"],
+    guides: ["https://guides.muibook.com/rule"],
 
     usage: {
-      list: [""],
+      list: [
+        "Use horizontal rules to separate sections or create visual breaks in flows.",
+        "Use vertical rules to divide elements within a row or dense layout.",
+        "Align with spacing and layout conventions to maintain visual rhythm.",
+        "Avoid using as decoration—rules should support clarity and structure.",
+      ],
     },
 
     accessibility: {

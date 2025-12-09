@@ -1,5 +1,46 @@
 ## Header [Start]
 
+## v8.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/8.0.0)
+
+## Header [End]
+
+### Added
+
+- Added a new Avatar component for displaying images, initials, and icons, replacing the mui-slat-accessory component.
+- Added new icons to the current icon set.
+- Added Avatar support to Button and Slat components with automatic size adjustments.
+- Added Avatar detection to Chip component, which automatically applies size="x-small" by default.
+- Added Avatar detection to Button and Link components, which automatically set the appropriate avatar size based on action size.
+- Added new action-radius tokens for greater control of theme adjustments per action size.
+- Added --checkbox-size design token and applied it to the checkbox component.
+- Added placeholder text tokens for input elements.
+- Added new avatar tokens to provide additional preset background color options for the avatar component.
+- Embedded prior guideline data directly in the system, maintaining 100% component parity.
+- Added the Custom Element Manifest to the packaged exports.
+- Manifest packaged for NPM adoption, making guideline data accessible to tooling.
+
+### Changed
+
+- Updated Drawer and Dialog to use medium-sized icons by default.
+- Updated Switch to use size="x-small" by default when an icon is present.
+- Updated checkbox icon to use the new checkmark icon and sizing.
+- Updated Chip component to control icon size via prop instead of CSS override.
+- Updated Dropdown to ensure border radius overrides work with new button sizes.
+- Removed height property from addon as it is not required.
+- Updated Input and Select to use the default text color tokens.
+
+### Fixed
+
+- Fixed a known Safari bug with web components and the will-change CSS property.
+- Fixed semantic HTML errors in the Drawer and Dialog components.
+- Fixed hard-coded pixel values in the file upload component.
+
+---
+
+## Header [Start]
+
 ## v7.1.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/7.1.0)

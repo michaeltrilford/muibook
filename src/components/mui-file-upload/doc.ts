@@ -1,82 +1,4 @@
-// UX guideline documentation is stored in each component’s Doc.ts file.
-// We include generic content that supports the Muibook storefront, but we intentionally
-// exclude Storybook-specific data since it isn’t reused across the system.
-
-interface VariantItem {
-  key: string;
-  title: string;
-  description: string;
-  image?: string;
-}
-
-interface CompositionItem {
-  key: string;
-  name: string;
-  description: string;
-  image?: string;
-}
-
-interface RuleItem {
-  description?: string;
-  image?: string;
-}
-
-interface ComponentDoc {
-  title?: string;
-  hero?: string[];
-  figma?: string[];
-  github?: string[];
-  guides?: string[];
-  storybook?: string[];
-  website?: string[];
-  description: string;
-
-  usage?: {
-    list: string[];
-  };
-
-  accessibility?: {
-    designerList?: string[];
-    engineerList?: string[];
-  };
-
-  anatomy?: {
-    image?: string;
-    list: string[];
-  };
-
-  variants?: {
-    items: VariantItem[];
-  };
-
-  compositions?: {
-    description?: string;
-    items: CompositionItem[];
-  };
-
-  related?: {
-    items: { name: string; link: string }[];
-  };
-
-  rules?: {
-    heading: string;
-    description: string;
-    doContent?: RuleItem[];
-    dontContent?: RuleItem[];
-  }[];
-
-  behaviour?: {
-    image?: string;
-    description?: string;
-    list: string[];
-  };
-
-  writing?: {
-    list: string[];
-  };
-}
-
-type MuiDocs = Record<string, ComponentDoc>;
+import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   FileUpload: {
@@ -95,7 +17,13 @@ export const muiDocs: MuiDocs = {
     guides: ["https://guides.muibook.com/file-upload"],
 
     usage: {
-      list: [""],
+      list: [
+        "Use when users need to upload a file, such as documents, images, or other assets.",
+        "Keep labels and instructions clear so users understand what file types and sizes are allowed.",
+        "Display the selected file name once uploaded to confirm selection.",
+        "Validate file type and size before submission and provide helpful error messages.",
+        "Only use this component when uploading is essential to completing a task — avoid optional uploads unless necessary.",
+      ],
     },
 
     accessibility: {
@@ -104,8 +32,12 @@ export const muiDocs: MuiDocs = {
     },
 
     anatomy: {
-      image: "",
-      list: [""],
+      image:
+        "https://images.ctfassets.net/i5uwscj4pkk2/2sqEWKOyrgyXbePd1Y0QY1/36670de55b4f68391d073275b94b11e8/FileUpload_-_Anatomy.png",
+      list: [
+        "Message: This text indicates that no file has been selected.",
+        "Action: Use this element as a call to action for the user to add a file.",
+      ],
     },
 
     variants: {
@@ -134,8 +66,20 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         {
-          name: "",
-          link: "",
+          name: "Field",
+          link: "https://guides.muibook.com/field",
+        },
+        {
+          name: "Input",
+          link: "https://guides.muibook.com/input",
+        },
+        {
+          name: "Select",
+          link: "https://guides.muibook.com/select",
+        },
+        {
+          name: "Add on",
+          link: "https://guides.muibook.com/add-on",
         },
       ],
     },

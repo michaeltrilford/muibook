@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyResponsive extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Responsive");
+
     const styles = /*css*/ `
       :host { display: block; }
       .local-ring {
@@ -454,16 +461,17 @@ class storyResponsive extends HTMLElement {
         </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Responsive"
-        description="Dynamically render UI based on viewport size"
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts"
-        guides="https://guides.muibook.com/responsive"
-        storybook="https://stories.muibook.com/?path=/docs/layout-responsive--docs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12704&t=BwezUSymTClm00wJ-1"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

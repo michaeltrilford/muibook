@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storySwitch extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Switch");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -191,23 +198,17 @@ class storySwitch extends HTMLElement {
         </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template
-        title="Switch"
-        description="A component that allows users to switch a setting on or off with immediate effect."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts"
-        guides="https://guides.muibook.com/switch"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=147-1003&t=FSv3FEahG8VQW1FZ-1"
-        storybook="https://stories.muibook.com/?path=/docs/inputs-switch--docs"
-        accessibility="
-          A label is required and applied as aria-label to describe the switch’s purpose.|||
-          Uses role='switch' and updates aria-checked for assistive tech.|||
-          The label isn’t shown visually—context is provided through icons or nearby text.|||
-          disabled sets aria-disabled and blocks interaction.|||
-          Supports keyboard navigation with visible focus styles.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

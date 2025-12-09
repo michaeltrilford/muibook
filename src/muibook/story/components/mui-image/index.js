@@ -129,18 +129,7 @@ class storyImage extends HTMLElement {
 
 
       <story-template 
-        title="Image"
-        description="Displays an image with a caption using named slots for clear structure and accessibility."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-image/index.ts"
-        guides="https://guides.muibook.com/image"
-        storybook="https://stories.muibook.com/?path=/docs/content-image--docs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4194&t=0ytskb8cxriEmdz2-1"
-        accessibility="
-          Use meaningful alt text that describes the image’s purpose|||
-          Use alt=&#8220;&#8221; for decorative images that don’t convey information|||
-          Use the caption slot for extended context, especially for diagrams or UI patterns.
-        "
-                title="${data.title}"
+        title="${data.title}"
         description="${data.description}"
         github="${data.github}"
         figma="${data.figma}"

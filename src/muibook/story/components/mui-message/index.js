@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyMessage extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Message");
+
     const styles = /*css*/ `
       :host { display: block; }
 
@@ -338,21 +345,17 @@ class storyMessage extends HTMLElement {
       </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template 
-        title="Message"
-        description="The message component provides persistent, non-dismissible notifications that remain visible until the system determines they should be suspended."
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=9-1053&t=ZA9uH4LK37tSuk6r-1"
-        guides="https://guides.muibook.com/message"
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-message/index.ts"
-        storybook="https://stories.muibook.com/?path=/docs/feedback-message--docs"
-        accessibility="
-            ARIA-live is built in, using POLITE + ASSERTIVE for screen readers|||
-            Neutral, Postive, Info support the role of STATUS for screen reader feedback|||
-            Warning, Attention support the role of ALERT for screen reader feedback.
-          "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storyTabBar extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Tabs");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -464,22 +471,17 @@ class storyTabBar extends HTMLElement {
         </story-card>
     `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template
-        title="Tab Bar"
-        description="Allow users to switch between views or content sections by selecting from a group of tabs."
-        github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1"
-        guides="https://guides.muibook.com/tab-bar"
-        storybook="https://stories.muibook.com/?path=/docs/navigation-tabbar--docs"
-        accessibility="
-          Left/Right arrows, Home and End keys let keyboard users navigate between tab-items||| 
-          aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive||| 
-          Each active tab-item can receive focus and shows a focus-visible outline||| 
-          tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

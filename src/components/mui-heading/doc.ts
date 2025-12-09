@@ -1,82 +1,4 @@
-// UX guideline documentation is stored in each component’s Doc.ts file.
-// We include generic content that supports the Muibook storefront, but we intentionally
-// exclude Storybook-specific data since it isn’t reused across the system.
-
-interface VariantItem {
-  key: string;
-  title: string;
-  description: string;
-  image?: string;
-}
-
-interface CompositionItem {
-  key: string;
-  name: string;
-  description: string;
-  image?: string;
-}
-
-interface RuleItem {
-  description?: string;
-  image?: string;
-}
-
-interface ComponentDoc {
-  title?: string;
-  hero?: string[];
-  figma?: string[];
-  github?: string[];
-  guides?: string[];
-  storybook?: string[];
-  website?: string[];
-  description: string;
-
-  usage?: {
-    list: string[];
-  };
-
-  accessibility?: {
-    designerList?: string[];
-    engineerList?: string[];
-  };
-
-  anatomy?: {
-    image?: string;
-    list: string[];
-  };
-
-  variants?: {
-    items: VariantItem[];
-  };
-
-  compositions?: {
-    description?: string;
-    items: CompositionItem[];
-  };
-
-  related?: {
-    items: { name: string; link: string }[];
-  };
-
-  rules?: {
-    heading: string;
-    description: string;
-    doContent?: RuleItem[];
-    dontContent?: RuleItem[];
-  }[];
-
-  behaviour?: {
-    image?: string;
-    description?: string;
-    list: string[];
-  };
-
-  writing?: {
-    list: string[];
-  };
-}
-
-type MuiDocs = Record<string, ComponentDoc>;
+import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Heading: {
@@ -125,22 +47,77 @@ export const muiDocs: MuiDocs = {
     variants: {
       items: [
         {
-          key: "",
-          title: "",
-          description: "",
-          image: "",
+          key: "heading-1",
+          title: "Heading 1",
+          description:
+            "The primary heading is typically the page's main title. It plays a crucial role in accessibility and SEO, as screen readers and search engines rely on H1s to understand page structure.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/4qDOWEyMtO0U40Ot9aSKNb/a3ae2d059cb9caeb26c6c65e36df71b2/heading-1.png",
+        },
+        {
+          key: "heading-2",
+          title: "Heading 2",
+          description: "A secondary heading that introduces major sections within a page, following the H1.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/WXCjRrpLpqzGUhY8auOMv/66d0cd721db330f68547a16a63feec4f/heading-2.png",
+        },
+        {
+          key: "heading-3",
+          title: "Heading 3",
+          description: "A heading is used to structure content under H2, providing additional hierarchy.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/146ZPfxWf50ahUf35SAMWU/ffaacafbe9f905da81850a60d00e48d7/heading-3.png",
+        },
+        {
+          key: "heading-4",
+          title: "Heading 4",
+          description: "A heading for organising detailed content under H3, maintaining readability.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/53f9iMdJUV7DPsiZhPToiY/83141d25fb2de26bcb7c0e66a4fd14f6/heading-4.png",
+        },
+        {
+          key: "heading-5",
+          title: "Heading 5",
+          description: "A heading that introduces lower-level content, often for minor divisions within H4 sections.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/1pocISFs6Ht66gXn4EHn59/f43d402c6cbe3dafbc06d35ef1097cad/heading-5.png",
+        },
+        {
+          key: "heading-6",
+          title: "Heading 6",
+          description: "The lowest level heading, used for minimal emphasis or supplementary labeling.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/3CV5CHrrNrkeTkZDfhpRGA/29d6f9b6da53f4174f8c4d45aee01939/heading-6.png",
         },
       ],
     },
 
     compositions: {
-      description: "",
+      description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [
         {
-          key: "",
-          name: "",
-          description: "",
-          image: "",
+          key: "muibook-resource",
+          name: "Muibook Resource",
+          description:
+            "The Muibook documentation site uses MUI components to compose its layout, including headings, text, lists, buttons, icons, and image components.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/3LVvuYDZWRnMhxNy6GMLNd/c5074a05eacb2c22c50ea172b3567c48/Muibook-List-Composition.png",
+        },
+        {
+          key: "guru-outcomes-roadmap",
+          name: "Guru Outcomes - Roadmap",
+          description:
+            "The Loader component in action on the roadmap page, smoothly loading the UI while masking delays and improving perceived performance.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/7Hebis0o1mlvvDZlQRZfzl/f0c06679ab417f2ee624b570226da77d/outcomes-roadmap.gif",
+        },
+        {
+          key: "guru-outcomes-dashboard",
+          name: "Guru Outcomes - Dashboard",
+          description:
+            "Use the <mui-loader> component to mask slow network or initial data load times. Combine its features to create a seamless loading experience.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/7fsKn4mqKGieVh2D1EdyuR/a9afa145001e13470054aa9d7004127d/outcomes-home.gif",
         },
       ],
     },
@@ -148,8 +125,8 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         {
-          name: "",
-          link: "",
+          name: "Body",
+          link: "https://guides.muibook.com/body",
         },
       ],
     },

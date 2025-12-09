@@ -1,94 +1,21 @@
-// UX guideline documentation is stored in each component’s Doc.ts file.
-// We include generic content that supports the Muibook storefront, but we intentionally
-// exclude Storybook-specific data since it isn’t reused across the system.
-
-interface VariantItem {
-  key: string;
-  title: string;
-  description: string;
-  image?: string;
-}
-
-interface CompositionItem {
-  key: string;
-  name: string;
-  description: string;
-  image?: string;
-}
-
-interface RuleItem {
-  description?: string;
-  image?: string;
-}
-
-interface ComponentDoc {
-  title?: string;
-  hero?: string[];
-  figma?: string[];
-  github?: string[];
-  guides?: string[];
-  storybook?: string[];
-  website?: string[];
-  description: string;
-
-  usage?: {
-    list: string[];
-  };
-
-  accessibility?: {
-    designerList?: string[];
-    engineerList?: string[];
-  };
-
-  anatomy?: {
-    image?: string;
-    list: string[];
-  };
-
-  variants?: {
-    items: VariantItem[];
-  };
-
-  compositions?: {
-    description?: string;
-    items: CompositionItem[];
-  };
-
-  related?: {
-    items: { name: string; link: string }[];
-  };
-
-  rules?: {
-    heading: string;
-    description: string;
-    doContent?: RuleItem[];
-    dontContent?: RuleItem[];
-  }[];
-
-  behaviour?: {
-    image?: string;
-    description?: string;
-    list: string[];
-  };
-
-  writing?: {
-    list: string[];
-  };
-}
-
-type MuiDocs = Record<string, ComponentDoc>;
+import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Stepper: {
     title: "Stepper",
-    description: "",
+    description:
+      "A Stepper component visually represents a sequence of steps in a process. It helps users understand progress and navigate through multi-step workflows. This component supports both horizontal and vertical orientations.",
 
-    hero: [""],
-    figma: [""],
-    storybook: [""],
-    github: [""],
-    website: [""],
-    guides: [""],
+    hero: [
+      "https://images.ctfassets.net/i5uwscj4pkk2/423YAEfIeoDzzsK9ClbTkP/485c6c4f637080247caa150afed0ef14/Stepper_-_Home_Image.png",
+    ],
+    figma: [
+      "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4195&t=0ytskb8cxriEmdz2-1",
+    ],
+    storybook: ["https://stories.muibook.com/?path=/docs/navigation-stepper--docs"],
+    github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stepper"],
+    website: ["https://muibook.com/#/stepper"],
+    guides: ["https://guides.muibook.com/stepper"],
 
     usage: {
       list: [""],
@@ -100,8 +27,13 @@ export const muiDocs: MuiDocs = {
     },
 
     anatomy: {
-      image: "",
-      list: [""],
+      description: "The stepper uses two simple styles: active and inactive. Their meaning changes based on position in the sequence, representing progress through different states.",
+      image:
+        "https://images.ctfassets.net/i5uwscj4pkk2/6Y5iyISdhK7PX8d1cHJxWv/761efb630c924af42ebf8d8bd5fabfb2/Stepper_-_Anatomy.png",
+      list: [
+        "Active / Completed: Indicates the current step or a task that has been successfully finished.",
+        "Upcoming: Represents a step or task that has not yet been completed.",
+      ],
     },
 
     variants: {
@@ -116,13 +48,15 @@ export const muiDocs: MuiDocs = {
     },
 
     compositions: {
-      description: "",
+      description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [
         {
-          key: "",
-          name: "",
-          description: "",
-          image: "",
+          key: "review-items-task",
+          name: "Review Items Task",
+          description:
+            "A permanent drawer remains visible at all times and is typically used for core navigation or tools that support the main content. It doesn’t open or close, and is always part of the current layout or workflow.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/rHTSU9sPUdmwrmGETRLcC/fa444ff8d8a72a28e8f10537324bbca3/drawer-composition-smart-bills.png",
         },
       ],
     },

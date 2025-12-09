@@ -1,7 +1,14 @@
+import { getComponentDocs } from "../../../utils/story-data";
+
 class storySelect extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    const data = await getComponentDocs("Select");
+
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -339,23 +346,17 @@ class storySelect extends HTMLElement {
         </story-card>
       `;
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
       <story-template
-        title="Select" 
-        description="A versatile dropdown component for selecting from a list of options, supporting customisable styles and accessibility features."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-select/index.ts"
-        figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=117-2068&t=GMqx21isUVAMpLJp-1"
-        guides="https://guides.muibook.com/select"
-        storybook="https://stories.muibook.com/?path=/docs/inputs-select--docs"
-        accessibility="
-          A label is required for screen reader support, describing the purpose of the select.|||
-          If hide-label is used, the label is visually hidden but still accessible via aria-label.|||
-          The label and select are linked using for and id attributes. If no id is provided, one is generated.|||
-          Keyboard users see a clear focus style when navigating.|||
-          The disabled attribute is native and fully supported by assistive tech.
-        "
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
       >
         ${stories}
       </story-template>

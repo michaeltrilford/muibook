@@ -1,82 +1,4 @@
-// UX guideline documentation is stored in each component’s Doc.ts file.
-// We include generic content that supports the Muibook storefront, but we intentionally
-// exclude Storybook-specific data since it isn’t reused across the system.
-
-interface VariantItem {
-  key: string;
-  title: string;
-  description: string;
-  image?: string;
-}
-
-interface CompositionItem {
-  key: string;
-  name: string;
-  description: string;
-  image?: string;
-}
-
-interface RuleItem {
-  description?: string;
-  image?: string;
-}
-
-interface ComponentDoc {
-  title?: string;
-  hero?: string[];
-  figma?: string[];
-  github?: string[];
-  guides?: string[];
-  storybook?: string[];
-  website?: string[];
-  description: string;
-
-  usage?: {
-    list: string[];
-  };
-
-  accessibility?: {
-    designerList?: string[];
-    engineerList?: string[];
-  };
-
-  anatomy?: {
-    image?: string;
-    list: string[];
-  };
-
-  variants?: {
-    items: VariantItem[];
-  };
-
-  compositions?: {
-    description?: string;
-    items: CompositionItem[];
-  };
-
-  related?: {
-    items: { name: string; link: string }[];
-  };
-
-  rules?: {
-    heading: string;
-    description: string;
-    doContent?: RuleItem[];
-    dontContent?: RuleItem[];
-  }[];
-
-  behaviour?: {
-    image?: string;
-    description?: string;
-    list: string[];
-  };
-
-  writing?: {
-    list: string[];
-  };
-}
-
-type MuiDocs = Record<string, ComponentDoc>;
+import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Dialog: {
@@ -121,8 +43,14 @@ export const muiDocs: MuiDocs = {
     },
 
     anatomy: {
-      image: "",
-      list: [""],
+      image:
+        "https://images.ctfassets.net/i5uwscj4pkk2/3Qs9rIWX7LeUjQ3ioObKBe/4848a3b0ad303a12eef5739ddd1c6169/Dialog_-_Anatomy.png",
+      list: [
+        "Heading: Text that describes the purpose or contents of the dialog.",
+        "Close: An icon or button that allows users to close the dialog.",
+        "Container: Controls the position of the dialog and appears as an overlay.",
+        "Footer: Optional section for additional actions, such as 'Cancel' or 'Save'.",
+      ],
     },
 
     variants: {
@@ -151,27 +79,71 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         {
-          name: "",
-          link: "",
+          name: "Drawer",
+          link: "https://guides.muibook.com/drawer",
+        },
+        {
+          name: "Button",
+          link: "https://guides.muibook.com/button",
         },
       ],
     },
 
     rules: [
       {
-        heading: "",
+        heading: "Dismiss the Dialog",
         description: "",
-        doContent: [{ description: "", image: "" }],
-        dontContent: [{ description: "", image: "" }],
+        doContent: [
+          {
+            description: "Dismiss the Dialog by clicking the cross icon, cancel button or the surrounding background.",
+            image:
+              "https://images.ctfassets.net/i5uwscj4pkk2/VxeZZCz9ekrnQQ5AByJ5W/5671672f2bb94c91d913d443e6c73f75/dialog-dismiss-do.png",
+          },
+        ],
+        dontContent: [
+          {
+            description: "Avoid hiding the close button or replacing the footer action with a close function.",
+            image:
+              "https://images.ctfassets.net/i5uwscj4pkk2/69Iqe3DgTqm9Xy1m1aBnlT/f858753bf988bb08e6255c3f3b790abe/dialog-dismiss-dont.png",
+          },
+        ],
+      },
+      {
+        heading: "Content Clarity",
+        description: "",
+        doContent: [
+          {
+            description:
+              "Use a simple, stacked layout that ensures clarity and flexibility in the limited space. Keep the content clear, concise, and easy to read.",
+            image:
+              "https://images.ctfassets.net/i5uwscj4pkk2/6Th9UaPwtSwR5TD93JvKOS/206fe41d70d2f20aa5ef02478eeb340a/dialog-content-do.png",
+          },
+        ],
+        dontContent: [
+          {
+            description:
+              "Don’t use complex layouts like grids or overcrowd the dialog with excessive content that may hinder readability.",
+            image:
+              "https://images.ctfassets.net/i5uwscj4pkk2/5OeRzyHdAW5m7TrePK4Ksq/09d0b82ff09a67465b9606a95689063f/dialog-content-do-not.png",
+          },
+        ],
       },
     ],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Dialogs appear as a temporary overlay on top of the main content.",
+        "The dialog smoothly animates onto the screen to enhance user experience.",
+        "Users can click the background to dismiss the dialog.",
+      ],
     },
 
     writing: {
-      list: [""],
+      list: [
+        "Concise Information: Keep dialog content simple and to the point.",
+        "Clear Labels: Use clear labels for actions and navigation items.",
+        "Avoid Overcrowding: Do not overcrowd the dialog with too much information.",
+      ],
     },
   },
 };

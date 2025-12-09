@@ -1,82 +1,4 @@
-// UX guideline documentation is stored in each component’s Doc.ts file.
-// We include generic content that supports the Muibook storefront, but we intentionally
-// exclude Storybook-specific data since it isn’t reused across the system.
-
-interface VariantItem {
-  key: string;
-  title: string;
-  description: string;
-  image?: string;
-}
-
-interface CompositionItem {
-  key: string;
-  name: string;
-  description: string;
-  image?: string;
-}
-
-interface RuleItem {
-  description?: string;
-  image?: string;
-}
-
-interface ComponentDoc {
-  title?: string;
-  hero?: string[];
-  figma?: string[];
-  github?: string[];
-  guides?: string[];
-  storybook?: string[];
-  website?: string[];
-  description: string;
-
-  usage?: {
-    list: string[];
-  };
-
-  accessibility?: {
-    designerList?: string[];
-    engineerList?: string[];
-  };
-
-  anatomy?: {
-    image?: string;
-    list: string[];
-  };
-
-  variants?: {
-    items: VariantItem[];
-  };
-
-  compositions?: {
-    description?: string;
-    items: CompositionItem[];
-  };
-
-  related?: {
-    items: { name: string; link: string }[];
-  };
-
-  rules?: {
-    heading: string;
-    description: string;
-    doContent?: RuleItem[];
-    dontContent?: RuleItem[];
-  }[];
-
-  behaviour?: {
-    image?: string;
-    description?: string;
-    list: string[];
-  };
-
-  writing?: {
-    list: string[];
-  };
-}
-
-type MuiDocs = Record<string, ComponentDoc>;
+import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Icons: {
@@ -108,7 +30,8 @@ export const muiDocs: MuiDocs = {
     },
 
     anatomy: {
-      image: "",
+      image:
+        "https://images.ctfassets.net/i5uwscj4pkk2/2f8wjsLiD2PWa8l1teXquC/e63402df34cb2b2def97c8c5bd13111d/icons-anatomy.png",
       list: [""],
     },
 
@@ -124,13 +47,31 @@ export const muiDocs: MuiDocs = {
     },
 
     compositions: {
-      description: "",
+      description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [
         {
-          key: "",
-          name: "",
-          description: "",
-          image: "",
+          key: "ai-playground",
+          name: "AI Playground (Error)",
+          description:
+            "Demonstrates the Muiplay AI Playground showing a floating error positioned close to the field where a prompt is required to generate a task.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/40RfRPVAN9dvWO7UFuIiUC/52de3cffd69a5bcc2e457f8de03bb9cf/Play-Alert-Composition.png",
+        },
+        {
+          key: "wallet",
+          name: "Wallet",
+          description:
+            "This example shows a wallet view featuring a digital card, transaction and statement tabs. It demonstrates how foundational components like tabs, slats, and buttons can be composed to create flexible, real-world layouts.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/6RoGBcahh63o16PAcEsgyX/36f5c8d9bf0e8754a574955b32ee6eda/Tab_Bar_-_Composition.png",
+        },
+        {
+          key: "theme-switch",
+          name: "Theme Switch",
+          description:
+            "This example from the Muibook Docs website demonstrates a switch component used to toggle the interface between light and dark modes.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/19NvfLGnzRI4MebRSU2aMH/d6ffcca7dffb6c7b843cafc83b812d90/SwitchTheme-Composition.png",
         },
       ],
     },
@@ -138,8 +79,24 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         {
-          name: "",
-          link: "",
+          name: "Link",
+          link: "https://guides.muibook.com/link",
+        },
+        {
+          name: "Button",
+          link: "https://guides.muibook.com/button",
+        },
+        {
+          name: "Input",
+          link: "https://guides.muibook.com/input",
+        },
+        {
+          name: "Add on",
+          link: "https://guides.muibook.com/add-on",
+        },
+        {
+          name: "Slat",
+          link: "https://guides.muibook.com/slat",
         },
       ],
     },
