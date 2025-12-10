@@ -15,14 +15,20 @@ class appNavbarHome extends HTMLElement {
 
       :host { 
         display: block;
-        position: sticky; 
+        position: sticky;
+        background: var(--app-navbar-surface);
         z-index: 3;
         top: 92px;
-        background: var(--app-navbar-surface);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
         border-top: var(--app-navbar-border);
         border-bottom: var(--app-navbar-border);
+      }
+
+      @media (min-width: 960px) {
+        :host {
+          background: var(--app-navbar-surface-opacity);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
       }
 
       mui-link {

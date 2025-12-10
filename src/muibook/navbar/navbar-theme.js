@@ -11,12 +11,11 @@ class appNavbarTheme extends HTMLElement {
         display: block;
         padding: var(--space-500);
         background: var(--app-navbar-surface);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
         z-index: 3;
         position: sticky;
         top: 0;
         padding-top: calc(env(safe-area-inset-top) + var(--space-500));
+        box-shadow: 0 var(--stroke-size-100) 0 0 var(--app-navbar-border-color);
       }
 
       mui-grid::part(align-items) {
@@ -25,6 +24,15 @@ class appNavbarTheme extends HTMLElement {
 
       theme-switcher {
       --form-default-border-color: var(--app-navbar-border-color);
+      }
+
+      @media (min-width: 960px) {
+        :host {
+          background: var(--app-navbar-surface-opacity);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: none;
+        }
       }
 
     `;

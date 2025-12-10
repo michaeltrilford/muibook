@@ -32,6 +32,16 @@ class appNavbarMenu extends HTMLElement {
       :host([desktop])::-webkit-scrollbar {
         display: none; 
       } 
+
+
+      @media (min-width: 960px) {
+        :host {
+          background: var(--app-navbar-surface-opacity);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+      }
+
     `;
 
     // We provide the shadow root with some HTML

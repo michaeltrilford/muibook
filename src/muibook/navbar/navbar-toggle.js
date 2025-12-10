@@ -12,7 +12,9 @@ class appNavbarToggle extends HTMLElement {
       :host {
         width: 100%;
         margin-bottom: 0;
-        background: var(--app-navbar-surface);
+       background: var(--app-navbar-surface-opacity);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         box-shadow: inset 0 1px 0 0 var(--border-color);
         padding: var(--space-400) var(--space-500);
         display: flex;
@@ -25,6 +27,7 @@ class appNavbarToggle extends HTMLElement {
         @media (min-width: 961px) {
           display: none;
         }
+        
       }
 
     </style>
