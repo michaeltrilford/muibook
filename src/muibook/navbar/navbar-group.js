@@ -32,6 +32,14 @@ class appNavbarGroup extends HTMLElement {
         z-index: 3;
       }
 
+      @media (min-width: 960px) {
+        :host {
+          background: var(--app-navbar-surface-opacity);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+      }
+
       mui-accordion-block {
         --surface-elevated-200: var(--app-navbar-accordion-chevron-hover);
       }

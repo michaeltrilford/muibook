@@ -13,6 +13,7 @@ class appNavbar extends HTMLElement {
         left: 0;
         width: 100%;
       }
+      
 
       #desktop {
         display: none;
@@ -33,6 +34,13 @@ class appNavbar extends HTMLElement {
         left: 0;
         min-height: 100vh;
       }
+
+      .grid {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        height: 100%;
+      }
+      .spacer {background: var(--app-navbar-surface-opacity)}
 
         #desktop {
           display: block;
@@ -210,13 +218,18 @@ class appNavbar extends HTMLElement {
 
       <app-navbar-menu desktop id="desktop">
         <slot name="skip"></slot>
-        ${Theme}
-        ${Home}
-        ${Resources}
-        ${Required}
-        ${Parts}
-        ${Components}
-        ${Compositions}
+        <div class="grid">
+          <div>
+            ${Theme}
+            ${Home}
+            ${Resources}
+            ${Required}
+            ${Parts}
+            ${Components}
+            ${Compositions}
+          </div>
+          <div class="spacer"></div>
+        </div>
       </app-navbar-menu>
       
       <app-navbar-menu mobile id="mobile">
@@ -227,6 +240,7 @@ class appNavbar extends HTMLElement {
         ${Parts}
         ${Components}
         ${Compositions}
+        <div></div>
       </app-navbar-menu>
 
       <app-navbar-toggle>

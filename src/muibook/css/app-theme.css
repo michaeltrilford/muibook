@@ -131,9 +131,9 @@ html[data-brand="ana"][data-theme="dark"] {
   --app-story-snippet-code-bg: var(--ana-blue-200);
   --app-story-snippet-code-text: var(--ana-black);
   /* App Surface */
-  --app-container-surface: var(--surface);
-  --app-navbar-surface-opacity: var(--ana-grey-900-opacity-80);
-  --app-navbar-surface: var(--ana-grey-900);
+  --app-container-surface: var(--ana-grey-800);
+  --app-navbar-surface-opacity: var(--ana-grey-800-opacity-80);
+  --app-navbar-surface: var(--ana-grey-800);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
   --app-navbar-border-color: var(--ana-grey-600);
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
