@@ -25,11 +25,11 @@ html[data-brand="jal"] {
   --jal-grey-700: #494949;
   --jal-grey-800: #3a3a3a;
   --jal-grey-900: #1a1a1a;
-  --jal-grey-1000: #0b0b0b;
+  --jal-grey-1000: #050505;
   --jal-grey-1100: #030303;
   --jal-grey-1200: #020202;
   --jal-grey-1300: #010101;
-  --jal-grey-900-opacity-80: hsla(0, 0%, 10%, 0.8);
+  --jal-grey-1000-opacity-80: hsla(0, 0%, 4%, 0.8);
   /* Brand Red Scale */
   --jal-red-50: #fcebec;
   --jal-red-100: #f3d6db;
@@ -264,56 +264,56 @@ html[data-brand="jal"][data-theme="dark"] {
   --feedback-positive-border-color: var(--jal-green-700);
   --feedback-info-border-color: var(--jal-blue-500);
   --feedback-warning-border-color: var(--jal-yellow-500);
-  --feedback-attention-border-color: var(--jal-red-500);
+  --feedback-attention-border-color: var(--jal-gold-500);
 
   --feedback-neutral-background: var(--jal-grey-900);
   --feedback-positive-background: var(--jal-green-900);
   --feedback-info-background: var(--jal-blue-900);
   --feedback-warning-background: var(--jal-yellow-900);
-  --feedback-attention-background: var(--jal-red-900);
+  --feedback-attention-background: var(--jal-gold-900);
 
   --feedback-neutral-icon: var(--jal-grey-300);
   --feedback-positive-icon: var(--jal-green-100);
   --feedback-info-icon: var(--jal-blue-100);
   --feedback-warning-icon: var(--jal-yellow-100);
-  --feedback-attention-icon: var(--jal-red-100);
+  --feedback-attention-icon: var(--jal-gold-100);
 
   --feedback-neutral-text: var(--jal-grey-100);
   --feedback-positive-text: var(--jal-green-100);
   --feedback-info-text: var(--jal-blue-100);
   --feedback-warning-text: var(--jal-yellow-100);
-  --feedback-attention-text: var(--jal-red-100);
+  --feedback-attention-text: var(--jal-gold-100);
 
   --feedback-neutral-action-background: var(--jal-grey-800);
   --feedback-positive-action-background: var(--jal-green-800);
   --feedback-info-action-background: var(--jal-blue-800);
   --feedback-warning-action-background: var(--jal-yellow-800);
-  --feedback-attention-action-background: var(--jal-red-800);
+  --feedback-attention-action-background: var(--jal-gold-800);
 
   --action-primary-border-color: var(--black-opacity-0);
   --action-primary-border-color-hover: var(--black-opacity-0);
   --action-primary-border-color-focus: var(--black-opacity-0);
   --action-primary-border-color-disabled: var(--black-opacity-0);
-  --action-primary-background: var(--jal-red-300);
-  --action-primary-background-hover: var(--jal-red-400);
-  --action-primary-background-focus: var(--jal-red-400);
+  --action-primary-background: var(--jal-gold-300);
+  --action-primary-background-hover: var(--jal-gold-400);
+  --action-primary-background-focus: var(--jal-gold-400);
   --action-primary-background-disabled: var(--jal-grey-400);
-  --action-primary-text-color: var(--jal-white);
-  --action-primary-text-color-hover: var(--jal-white);
-  --action-primary-text-color-focus: var(--jal-white);
+  --action-primary-text-color: var(--jal-black);
+  --action-primary-text-color-hover: var(--jal-black);
+  --action-primary-text-color-focus: var(--jal-black);
   --action-primary-text-color-disabled: var(--jal-grey-200);
 
-  --action-secondary-border-color: var(--jal-red-200);
-  --action-secondary-border-color-hover: var(--jal-red-100);
-  --action-secondary-border-color-focus: var(--jal-red-100);
+  --action-secondary-border-color: var(--jal-gold-200);
+  --action-secondary-border-color-hover: var(--jal-gold-100);
+  --action-secondary-border-color-focus: var(--jal-gold-100);
   --action-secondary-border-color-disabled: var(--jal-grey-500);
   --action-secondary-background: var(--white-opacity-0);
   --action-secondary-background-hover: var(--black-opacity-0);
   --action-secondary-background-focus: var(--black-opacity-0);
   --action-secondary-background-disabled: var(--black-opacity-0);
-  --action-secondary-text-color: var(--jal-red-200);
-  --action-secondary-text-color-hover: var(--jal-red-100);
-  --action-secondary-text-color-focus: var(--jal-red-100);
+  --action-secondary-text-color: var(--jal-gold-200);
+  --action-secondary-text-color-hover: var(--jal-gold-100);
+  --action-secondary-text-color-focus: var(--jal-gold-100);
   --action-secondary-text-color-disabled: var(--jal-grey-500);
 
   --action-tertiary-border-color: var(--white-opacity-0);
@@ -324,40 +324,40 @@ html[data-brand="jal"][data-theme="dark"] {
   --action-tertiary-background-hover: var(--black-opacity-20);
   --action-tertiary-background-focus: var(--black-opacity-20);
   --action-tertiary-background-disabled: var(--jal-grey-400);
-  --action-tertiary-text-color: var(--jal-red-200);
-  --action-tertiary-text-color-hover: var(--jal-red-200);
-  --action-tertiary-text-color-focus: var(--jal-red-200);
+  --action-tertiary-text-color: var(--jal-gold-200);
+  --action-tertiary-text-color-hover: var(--jal-gold-200);
+  --action-tertiary-text-color-focus: var(--jal-gold-200);
   --action-tertiary-text-color-disabled: var(--jal-grey-200);
 
-  --action-attention-border-color: var(--jal-red-200);
-  --action-attention-border-color-hover: var(--jal-red-100);
-  --action-attention-border-color-focus: var(--jal-red-100);
+  --action-attention-border-color: var(--jal-gold-200);
+  --action-attention-border-color-hover: var(--jal-gold-100);
+  --action-attention-border-color-focus: var(--jal-gold-100);
   --action-attention-border-color-disabled: var(--jal-grey-400);
-  --action-attention-background: var(--jal-red-200);
-  --action-attention-background-hover: var(--jal-red-100);
-  --action-attention-background-focus: var(--jal-red-100);
+  --action-attention-background: var(--jal-gold-200);
+  --action-attention-background-hover: var(--jal-gold-100);
+  --action-attention-background-focus: var(--jal-gold-100);
   --action-attention-background-disabled: var(--jal-grey-400);
-  --action-attention-text-color: var(--jal-red-800);
-  --action-attention-text-color-hover: var(--jal-red-900);
-  --action-attention-text-color-focus: var(--jal-red-900);
+  --action-attention-text-color: var(--jal-gold-800);
+  --action-attention-text-color-hover: var(--jal-gold-900);
+  --action-attention-text-color-focus: var(--jal-gold-900);
   --action-attention-text-color-disabled: var(--jal-grey-200);
 
   /* Badge */
   --badge-text-color: var(--jal-white);
   --badge-background-neutral: var(--jal-grey-1000);
-  --badge-background-positive: var(--jal-green-600);
-  --badge-background-warning: var(--jal-yellow-800);
-  --badge-background-attention: var(--jal-red-400);
+  --badge-background-positive: var(--jal-green-900);
+  --badge-background-warning: var(--jal-yellow-900);
+  --badge-background-attention: var(--jal-red-800);
 
   /* Outline (Focus) */
-  --outline-color: var(--jal-red-200);
+  --outline-color: var(--jal-gold-200);
 
   /* Type */
   --text-color: var(--jal-grey-200);
-  --heading-text-color: var(--jal-red-200);
+  --heading-text-color: var(--jal-gold-200);
 
   /* Input */
-  --input-background: var(--jal-grey-800);
+  --input-background: var(--jal-grey-900);
 
   /* Border */
   --border-color: var(--white-opacity-10);
@@ -372,18 +372,21 @@ html[data-brand="jal"][data-theme="dark"] {
   --surface-recessed-100: var(--jal-grey-1000);
   --surface-recessed-200: var(--jal-grey-1200);
 
+  --drawer-background: var(--surface-recessed-100);
+  --dialog-background: var(--surface-recessed-100);
+
   /* Switch */
   --switch-track-background: var(--jal-grey-500);
-  --switch-track-background-checked: var(--jal-red-300);
+  --switch-track-background-checked: var(--jal-gold-300);
 
   /* Tabs */
-  --tab-border-color: var(--jal-red-800);
+  --tab-border-color: var(--jal-gold-800);
 
-  --tab-background: var(--jal-red-900);
+  --tab-background: var(--jal-gold-900);
   --tab-icon: var(--jal-white);
   --tab-text-color: var(--jal-white);
 
-  --tab-background-active: var(--jal-red-500);
+  --tab-background-active: var(--jal-gold-500);
   --tab-icon-active: var(--jal-white);
   --tab-text-color-active: var(--jal-white);
   --tab-shadow-active: var(--black-opacity-20);
@@ -392,7 +395,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --carousel-background: var(--jal-grey-900);
 
   /* Stepper */
-  --stepper-color: var(--jal-red-200);
+  --stepper-color: var(--jal-gold-200);
   --stepper-background-active: var(--stepper-color);
   --stepper-background-inactive: var(--black);
   --stepper-border-color: var(--stepper-color);
@@ -402,18 +405,18 @@ html[data-brand="jal"][data-theme="dark"] {
   --avatar-background-neutral: var(--jal-grey-900);
   --avatar-background-positive: var(--jal-green-900);
   --avatar-background-warning: var(--jal-yellow-900);
-  --avatar-background-attention: var(--jal-red-900);
+  --avatar-background-attention: var(--jal-gold-900);
 
   /* Chip */
-  --chip-background: var(--jal-grey-800);
-  --chip-background-hover: var(--jal-grey-800);
-  --chip-background-focus: var(--jal-grey-800);
-  --chip-background-active: var(--jal-grey-800);
+  --chip-background: var(--jal-grey-900);
+  --chip-background-hover: var(--jal-grey-900);
+  --chip-background-focus: var(--jal-grey-900);
+  --chip-background-active: var(--jal-grey-900);
   --chip-border-color: var(--jal-grey-600);
   --chip-border-color-hover: var(--jal-grey-700);
   --chip-border-color-focus: var(--jal-grey-700);
-  --chip-border-color-active: var(--jal-red-200);
-  --chip-text-color-active: var(--jal-grey-100);
+  --chip-border-color-active: var(--jal-gold-200);
+  --chip-text-color-active: var(--jal-gold-200);
   --chip-icon-fill: var(--jal-white);
   --chip-dismiss-action-background: var(--surface-elevated-100);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);

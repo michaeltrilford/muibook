@@ -153,15 +153,15 @@ html[data-brand="ana"][data-theme="light"] {
   --action-tertiary-border-color: var(--white-opacity-0);
   --action-tertiary-border-color-hover: var(--white-opacity-0);
   --action-tertiary-border-color-focus: var(--white-opacity-0);
-  --action-tertiary-border-color-disabled: var(--ana-grey-400);
+  --action-tertiary-border-color-disabled: var(--white-opacity-0);
   --action-tertiary-background-hover: var(--ana-grey-100);
   --action-tertiary-background-focus: var(--ana-grey-100);
   --action-tertiary-background-focus: var(--ana-white);
-  --action-tertiary-background-disabled: var(--white-opacity-0);
+  --action-tertiary-background-disabled: var(--ana-grey-200);
   --action-tertiary-text-color: var(--ana-blue-500);
   --action-tertiary-text-color-hover: var(--ana-blue-600);
   --action-tertiary-text-color-focus: var(--ana-blue-600);
-  --action-tertiary-text-color-disabled: var(--ana-grey-400);
+  --action-tertiary-text-color-disabled: var(--ana-grey-300);
 
   --action-attention-border-color: var(--ana-red-400);
   --action-attention-border-color-hover: var(--ana-red-600);
@@ -329,11 +329,11 @@ html[data-brand="ana"][data-theme="dark"] {
   --action-tertiary-background: var(--white-opacity-0);
   --action-tertiary-background-hover: var(--black-opacity-40);
   --action-tertiary-background-focus: var(--black-opacity-40);
-  --action-tertiary-background-disabled: var(--ana-grey-600);
+  --action-tertiary-background-disabled: var(--ana-grey-1000);
   --action-tertiary-text-color: var(--ana-blue-100);
   --action-tertiary-text-color-hover: var(--ana-blue-200);
   --action-tertiary-text-color-focus: var(--ana-blue-200);
-  --action-tertiary-text-color-disabled: var(--ana-grey-300);
+  --action-tertiary-text-color-disabled: var(--ana-grey-700);
 
   --action-attention-border-color: var(--ana-red-400);
   --action-attention-border-color-hover: var(--ana-red-500);

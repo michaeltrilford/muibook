@@ -52,7 +52,7 @@ class storyDrawer extends HTMLElement {
       }
 
       .page-header {
-        background: var(--surface-elevated-100);
+        background: var(--drawer-background);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -448,7 +448,7 @@ class storyDrawer extends HTMLElement {
       `;
 
     const menuBillItems = /*html*/ `
-      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); background: var(--surface-elevated-100);">
+      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); background: var(--drawer-background);">
         <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Home">
             <mui-icon-home slot="before"></mui-icon-home>
@@ -544,7 +544,7 @@ class storyDrawer extends HTMLElement {
     `;
 
     const menuItems = /*html*/ `
-      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); background: var(--surface-elevated-100);">
+      <mui-v-stack alignx="start" aligny="start" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000); background: var(--drawer-background);">
         <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Home">
             <mui-icon-home slot="before"></mui-icon-home>

@@ -18,6 +18,10 @@ class StoryTemplate extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; width: 100%; }
 
+      .storefront-heading { 
+        --heading-text-color: var(--app-heading-color);
+      }
+
       .container {
         padding-top: calc(var(--space-500) + env(safe-area-inset-top)); 
         padding-bottom: calc(var(--space-500) + env(safe-area-inset-bottom));
@@ -192,7 +196,7 @@ class StoryTemplate extends HTMLElement {
             <mui-v-stack class="header-group">
               <mui-responsive breakpoint="1200">
                 <mui-h-stack slot="showBelow" alignX="space-between" alignY="center">
-                  <mui-heading size="2" level="1">${title}</mui-heading>
+                  <mui-heading size="2" level="1" class="storefront-heading">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">
                     ${demoContent}
                     ${websiteContent}
@@ -204,7 +208,7 @@ class StoryTemplate extends HTMLElement {
                   </mui-h-stack>
                 </mui-h-stack>
                 <mui-h-stack slot="showAbove" alignX="space-between" alignY="center">
-                  <mui-heading size="1"level="1">${title}</mui-heading>
+                  <mui-heading size="1"level="1" class="storefront-heading">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">
                     ${demoContent}
                     ${websiteContent}
