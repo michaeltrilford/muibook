@@ -88,7 +88,7 @@ html[data-brand="jal"][data-theme="light"] {
 }
 
 html[data-brand="jal"][data-theme="dark"] {
-  --app-logo-color: var(--jal-gold-900);
+  --app-logo-color: var(--jal-gold-300);
   --app-heading-color: var(--jal-gold-200);
   --app-nav-accent: var(--jal-gold-200);
   --app-theme-toggle-bg: var(--jal-gold-200);
@@ -103,6 +103,12 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-story-card: var(--jal-grey-1000);
   --app-navbar-border-color: var(--jal-grey-900);
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
+}
+
+@media (min-width: 960px) {
+  html[data-brand="jal"][data-theme="dark"] {
+    --app-logo-color: var(--jal-gold-900);
+  }
 }
 
 /* =============================================================================== */

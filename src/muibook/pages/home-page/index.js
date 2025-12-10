@@ -314,7 +314,7 @@ class HomePage extends HTMLElement {
       }
       :host([data-brand="jal"][data-theme="dark"]) {
         background-image:
-          linear-gradient(to top, var(--black-opacity-80) 0%, var(--black-opacity-80) 100%),
+          linear-gradient(to top, var(--black-opacity-70) 0%, var(--black-opacity-70) 100%),
           url(${Jal});
       }
       :host([data-brand="ana"][data-theme="light"]) {
