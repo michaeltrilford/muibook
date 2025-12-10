@@ -99,7 +99,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-navbar-surface-opacity: var(--jal-grey-1000-opacity-80);
   --app-navbar-surface: var(--jal-grey-1000);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
-  --app-navbar-accordion-chevron-hover: var(--jal-grey-1100);
+  --app-navbar-accordion-chevron-hover: var(--jal-grey-900);
   --app-story-card: var(--jal-grey-1000);
   --app-navbar-border-color: var(--jal-grey-900);
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
