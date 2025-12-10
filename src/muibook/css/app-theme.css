@@ -53,7 +53,7 @@ html[data-brand="mui"][data-theme="dark"] {
   --app-story-icon-grid-text-inverted: var(--grey-900);
   --app-story-icon-grid-background-inverted: var(--grey-200);
   /* App Surface */
-  --app-container-surface: var(--surface);
+  --app-container-surface: var(--grey-1000);
   --app-navbar-border-color: var(--white-opacity-10);
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-surface-opacity: hsla(0, 0%, 13%, 0.8);
