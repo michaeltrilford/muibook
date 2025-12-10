@@ -26,6 +26,9 @@ html[data-brand="modern"] {
   --grey-900: #2e2e3a;
   --grey-1000: #1f1f29;
 
+  --grey-100-opacity-80: hsla(240, 20%, 95%, 0.8);
+  --grey-1000-opacity-80: hsla(240, 14%, 14%, 0.8);
+
   /* Red scale – stronger, punchier */
   --red-100: #ffe2e2;
   --red-200: #ffbaba;
@@ -184,7 +187,8 @@ html[data-brand="modern"][data-theme="light"] {
   --input-background: var(--red-50);
 
   /* Border */
-  --border-color: var(--black-opacity-20);
+  --border-color: var(--grey-200);
+  --form-default-border-color: var(--grey-200);
 
   /* Surface */
   --surface: var(--grey-200);
@@ -352,7 +356,8 @@ html[data-brand="modern"][data-theme="dark"] {
   --input-background: var(--grey-800);
 
   /* Border */
-  --border-color: var(--white-opacity-30);
+  --border-color: var(--grey-600);
+  --form-default-border-color: var(--grey-600);
 
   /* Surface */
   --surface: var(--grey-900);

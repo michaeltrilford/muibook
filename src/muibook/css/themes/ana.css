@@ -30,6 +30,7 @@ html[data-brand="ana"] {
   --ana-grey-900: #141414;
   --ana-grey-1000: #0f0f0f; /* slightly deeper than 900 */
   --ana-grey-1100: #0a0a0a; /* almost black */
+  --ana-grey-900-opacity-80: hsla(0, 0%, 17%, 0.8);
 
   /* ANA Blue Scale (based on ANA corporate branding) */
   --ana-blue-50: #e8f0fb;
@@ -194,6 +195,7 @@ html[data-brand="ana"][data-theme="light"] {
 
   /* Border */
   --border-color: var(--black-opacity-20);
+  --form-default-border-color: var(--black-opacity-20);
 
   /* Surface */
   --surface: var(--ana-grey-200);
@@ -365,6 +367,7 @@ html[data-brand="ana"][data-theme="dark"] {
 
   /* Border */
   --border-color: var(--white-opacity-20);
+  --form-default-border-color: var(--white-opacity-20);
 
   /* Surface */
   --surface: var(--ana-grey-900);

@@ -36,7 +36,7 @@ class appNavbar extends HTMLElement {
 
         #desktop {
           display: block;
-          box-shadow: var(--stroke-size-100) 0 0 0 var(--border-color);
+          box-shadow: var(--stroke-size-100) 0 0 0 var(--app-navbar-border-color);
         }
         #mobile {
           display: none;
@@ -249,7 +249,7 @@ class appNavbar extends HTMLElement {
 
       if (themeEl && homeEl) {
         const themeHeight = themeEl.offsetHeight;
-        homeEl.style.top = `calc(${themeHeight}px + var(--stroke-size-100))`;
+        homeEl.style.top = `calc(${themeHeight}px)`;
       }
     };
 

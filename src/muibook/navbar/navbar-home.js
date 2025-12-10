@@ -16,11 +16,13 @@ class appNavbarHome extends HTMLElement {
       :host { 
         display: block;
         position: sticky; 
-        box-shadow: 0 1px 0 0 var(--border-color), 0 -1px 0 0 var(--border-color);
         z-index: 3;
-        top: calc(92px + var(--stroke-size-100));
-        margin-bottom: calc(var(--stroke-size-100) * 2);
+        top: 92px;
         background: var(--app-navbar-surface);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-top: var(--app-navbar-border);
+        border-bottom: var(--app-navbar-border);
       }
 
       mui-link {

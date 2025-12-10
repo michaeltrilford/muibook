@@ -10,9 +10,9 @@ class appNavbarTheme extends HTMLElement {
       :host {
         display: block;
         padding: var(--space-500);
-        box-shadow: 0 1px 0 0 var(--border-color);
-        margin-bottom: -1px;
         background: var(--app-navbar-surface);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         z-index: 3;
         position: sticky;
         top: 0;
@@ -21,6 +21,10 @@ class appNavbarTheme extends HTMLElement {
 
       mui-grid::part(align-items) {
         align-items: center;
+      }
+
+      theme-switcher {
+      --form-default-border-color: var(--app-navbar-border-color);
       }
 
     `;

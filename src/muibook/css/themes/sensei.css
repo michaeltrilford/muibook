@@ -166,6 +166,7 @@ html[data-brand="sensei"] {
   --sensei-green-1400: hsl(120, 100%, 4%);
   --sensei-green-1500: hsl(120, 100%, 2%);
 
+  --sensei-green-400-opacity-80: hsla(120, 60%, 72%, 0.8);
   --sensei-green-1400-opacity-80: hsla(120, 100%, 4%, 0.8);
   --sensei-green-1400-opacity-40: hsla(120, 100%, 4%, 0.4);
 

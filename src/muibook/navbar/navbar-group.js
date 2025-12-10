@@ -22,7 +22,12 @@ class appNavbarGroup extends HTMLElement {
   connectedCallback() {
     let html = /*html*/ `
     <style>
-      :host { display: block; background: var(--app-navbar-surface); }
+      :host { 
+        display: block; 
+        background: var(--app-navbar-surface);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
       :host(:last-of-type) { padding-bottom: 6rem; }
 
       :host(.focused) {
@@ -32,6 +37,13 @@ class appNavbarGroup extends HTMLElement {
 
       mui-accordion-block {
         --surface-elevated-200: var(--app-navbar-accordion-chevron-hover);
+      }
+      :host(:first-of-type) mui-accordion-block {
+        --border-thin: none;
+      }
+      :host mui-accordion-block {
+        --border-thin: var(--app-navbar-border);
+        --border-color: var(--app-navbar-border-color);
       }
     </style>
 

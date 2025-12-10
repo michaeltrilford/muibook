@@ -27,7 +27,9 @@ html[data-theme="light"] {
   --app-story-icon-grid-background-inverted: var(--grey-900);
   /* App Surface */
   --app-container-surface: var(--white);
-  --app-navbar-surface: var(--white);
+  --app-navbar-border-color: var(--black-opacity-20);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
+  --app-navbar-surface: var(--white-opacity-60);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
   --app-navbar-accordion-chevron-hover: var(--surface-elevated-200);
   /* Home Page */
@@ -49,7 +51,9 @@ html[data-theme="dark"] {
   --app-story-icon-grid-background-inverted: var(--grey-200);
   /* App Surface */
   --app-container-surface: var(--surface);
-  --app-navbar-surface: var(--surface-elevated-100);
+  --app-navbar-border-color: var(--white-opacity-10);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
+  --app-navbar-surface: hsla(0, 0%, 13%, 0.8);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
   --app-navbar-accordion-chevron-hover: var(--surface-elevated-200);
   /* Home Page */
@@ -63,14 +67,16 @@ html[data-theme="dark"] {
 /* =============================================================================== */
 html[data-brand="jal"][data-theme="light"] {
   --app-logo-color: var(--jal-red-400);
-  --app-nav-accent: var(--jal-red-600);
+  --app-nav-accent: var(--jal-red-500);
   --app-theme-toggle-bg: var(--jal-grey-200);
   --app-story-snippet-code-bg: var(--jal-red-300);
   --app-story-snippet-code-text: var(--jal-white);
   /* App Surface */
   --app-container-surface: var(--white);
-  --app-navbar-surface: var(--surface-elevated-100);
+  --app-navbar-surface: var(--white-opacity-80);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
+  --app-navbar-border-color: var(--jal-grey-200);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--jal-grey-100);
   --app-story-card: var(--grey-200);
 }
@@ -82,11 +88,13 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-story-snippet-code-bg: var(--jal-red-300);
   --app-story-snippet-code-text: var(--jal-white);
   /* App Surface */
-  --app-container-surface: var(--jal-grey-800);
-  --app-navbar-surface: var(--jal-grey-900);
+  --app-container-surface: var(--jal-grey-900);
+  --app-navbar-surface: var(--jal-grey-900-opacity-80);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
   --app-navbar-accordion-chevron-hover: var(--jal-grey-1000);
-  --app-story-card: var(--grey-900);
+  --app-story-card: var(--jal-grey-900);
+  --app-navbar-border-color: var(--jal-grey-800);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
 }
 
 /* =============================================================================== */
@@ -101,8 +109,10 @@ html[data-brand="ana"][data-theme="light"] {
   --app-story-snippet-code-text: var(--ana-white);
   /* App Surface */
   --app-container-surface: var(--ana-white);
-  --app-navbar-surface: var(--surface-elevated-100);
+  --app-navbar-surface: var(--white-opacity-80);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
+  --app-navbar-border-color: var(--ana-grey-200);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   /* Home Page */
   --home-page-body-text: var(--ana-blue-500);
   --app-navbar-accordion-chevron-hover: var(--ana-grey-100);
@@ -117,8 +127,10 @@ html[data-brand="ana"][data-theme="dark"] {
   --app-story-snippet-code-text: var(--ana-black);
   /* App Surface */
   --app-container-surface: var(--surface);
-  --app-navbar-surface: var(--surface-elevated-100);
+  --app-navbar-surface: var(--ana-grey-900-opacity-80);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
+  --app-navbar-border-color: var(--ana-grey-600);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   /* Home Page */
   --home-page-body-text: var(--white);
   --app-navbar-accordion-chevron-hover: var(--ana-grey-900);
@@ -138,8 +150,10 @@ html[data-brand="modern"][data-theme="light"] {
   --app-story-snippet-code-text: var(--black);
   /* App Surface */
   --app-container-surface: var(--grey-100);
-  --app-navbar-surface: var(--surface-elevated-100);
+  --app-navbar-surface: var(--grey-100-opacity-80);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
+  --app-navbar-border-color: var(--grey-300);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--grey-100);
   --app-story-card: var(--grey-200);
 }
@@ -152,8 +166,10 @@ html[data-brand="modern"][data-theme="dark"] {
   --app-story-code-text: var(--black);
   /* App Surface */
   --app-container-surface: var(--grey-1000);
-  --app-navbar-surface: var(--surface-elevated-100);
+  --app-navbar-surface: var(--grey-1000-opacity-80);
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
+  --app-navbar-border-color: var(--grey-800);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--grey-800);
   --app-story-card: var(--grey-900);
 }
@@ -170,8 +186,11 @@ html[data-brand="sensei"][data-theme="light"] {
   --app-story-snippet-code-text: var(--sensei-green-1200);
   /* App Surface */
   --app-container-surface: var(--sensei-green-400);
-  --app-navbar-surface: var(--sensei-green-400);
+  --app-navbar-border: var(--border-thin);
+  --app-navbar-surface: var(--sensei-green-400-opacity-80);
   --app-navbar-surface-100: var(--sensei-green-300);
+  --app-navbar-border-color: var(--sensei-green-700);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--sensei-green-1200);
   --app-story-card: var(--sensei-white-opacity-60);
@@ -186,8 +205,11 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-story-snippet-code-text: var(--sensei-green-1200);
   /* App Surface */
   --app-container-surface: var(--sensei-green-1400);
-  --app-navbar-surface: var(--sensei-green-1400);
+  --app-navbar-border: var(--border-thin);
+  --app-navbar-surface: var(--sensei-green-1400-opacity-80);
   --app-navbar-surface-100: var(--sensei-green-1300);
+  --app-navbar-border-color: var(--sensei-green-1200);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--sensei-green-400);
   --app-story-card: var(--sensei-green-1400);
