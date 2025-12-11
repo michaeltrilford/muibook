@@ -39,15 +39,10 @@ class specCard extends HTMLElement {
     const githubLink = this.getAttribute("github");
     const githubContent = githubLink
       ? /*html*/ `
-        <mui-link
-          variant="tertiary"
-          class="github" 
-          href="${githubLink}" 
-          target="_blank" 
-          rel="noopener">
-          Usage
-          <github-mark slot="after"></github-mark>
-        </mui-link>
+        <mui-responsive breakpoint="1200">
+          <mui-link slot="showAbove" target="_blank" href="${githubLink}" rel="noopener" variant="tertiary">Github<github-mark slot="after"></github-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${githubLink}" rel="noopener" variant="tertiary"><github-mark></github-mark></mui-link>
+        </mui-responsive>
       `
       : "";
 

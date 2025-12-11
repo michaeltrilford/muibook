@@ -90,15 +90,10 @@ class storyCard extends HTMLElement {
     const githubLink = this.getAttribute("github");
     const githubContent = githubLink
       ? /*html*/ `
-        <mui-link
-          variant="tertiary"
-          class="github" 
-          href="${githubLink}" 
-          target="_blank" 
-          rel="noopener">
-          Usage
-          <github-mark slot="after"></github-mark>
-        </mui-link>
+        <mui-responsive breakpoint="1200">
+          <mui-link slot="showAbove" target="_blank" href="${githubLink}" rel="noopener" variant="tertiary">Github<github-mark slot="after"></github-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" href="${githubLink}" rel="noopener" variant="tertiary"><github-mark></github-mark></mui-link>
+        </mui-responsive>
       `
       : "";
 
@@ -130,16 +125,10 @@ class storyCard extends HTMLElement {
 
     const usageLinkContent = usageLink
       ? /*html*/ `
-          <mui-link
-            href="${usageLink}"
-            target="_blank"
-            variant="tertiary"
-            rel="noopener noreferrer"
-            weight="bold"
-          >
-            Guides
-            <guides-mark slot="after"></guides-mark>
-          </mui-link>
+        <mui-responsive breakpoint="1200">
+          <mui-link slot="showAbove" target="_blank" href="${usageLink}" rel="noopener" variant="tertiary">Guides<guides-mark slot="after"></guides-mark></mui-link>
+          <mui-link slot="showBelow" target="_blank" icon-only href="${usageLink}" rel="noopener" variant="tertiary"><guides-mark></guides-mark></mui-link>
+        </mui-responsive>
         `
       : "";
 
@@ -176,7 +165,9 @@ class storyCard extends HTMLElement {
           <mui-card-header>
             <mui-h-stack alignX="space-between" alignY="center">
               <mui-heading size="3" level="2">${title}</mui-heading>
+              <mui-h-stack space="0">
               ${githubContent}${usageLinkContent}
+              </mui-h-stack>
             </mui-h-stack>
             <mui-v-stack space="var(--space-100)">
               ${description}

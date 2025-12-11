@@ -1,5 +1,27 @@
 ## Header [Start]
 
+## v8.0.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/8.0.0)
+
+## Header [End]
+
+### Added
+
+- [None]
+
+### Changed
+
+- [None]
+
+### Fixed
+
+- Addressed an issue with the --grey-1200 design token.
+
+---
+
+## Header [Start]
+
 ## v8.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/8.0.0)
