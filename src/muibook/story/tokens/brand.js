@@ -144,7 +144,7 @@ class tokensBrand extends HTMLElement {
                 
                 <mui-body size="small">
                 What matters is how those brand values are mapped to the 
-                <mui-link size="small" href="/#/intent-design-tokens">Intent</mui-link> and 
+                <mui-link size="small" href="/#/semantic-design-tokens">Semantic</mui-link> and 
                 <mui-link size="small" href="/#/components-design-tokens">Components</mui-link> tokens — these pages will reflect the selected theme.
               </mui-body>
             </mui-v-stack>

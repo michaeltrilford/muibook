@@ -1,4 +1,4 @@
-class tokensIntent extends HTMLElement {
+class tokensSemantic extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
@@ -43,8 +43,8 @@ class tokensIntent extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Intent"
-        description="Tokens that represent design decisions, translating raw values into contextual definitions such as feedback, state, and visual emphasis. They serve as the conduit between raw values and components."
+        title="Semantic"
+        description="Tokens that translate raw values into meaningful, context-aware design decisions, guiding component behavior and visual emphasis."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
@@ -293,7 +293,7 @@ class tokensIntent extends HTMLElement {
             </div>
             <mui-code slot="footer">
               <br />
-              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/intent-design-tokens">Surface Tokens</mui-link></mui-body>
+              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
               <br />
               /* =================================== */
               <br />
@@ -321,7 +321,7 @@ class tokensIntent extends HTMLElement {
             </div>
             <mui-code slot="footer">
               <br />
-              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/intent-design-tokens">Surface Tokens</mui-link></mui-body>
+              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
               <br />
               /* =================================== */
               <br />
@@ -364,4 +364,4 @@ class tokensIntent extends HTMLElement {
   }
 }
 
-customElements.define("tokens-intent", tokensIntent);
+customElements.define("tokens-semantic", tokensSemantic);

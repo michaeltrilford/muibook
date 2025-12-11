@@ -44,7 +44,7 @@ export class AppContainer extends HTMLElement {
       "/storybook": "storybook-page",
 
       "/brand-design-tokens": "tokens-brand",
-      "/intent-design-tokens": "tokens-intent",
+      "/semantic-design-tokens": "tokens-semantic",
       "/components-design-tokens": "tokens-components",
       "/text-part-selectors": "parts-text",
       "/spacing-part-selectors": "parts-spacing",
@@ -128,7 +128,7 @@ export class AppContainer extends HTMLElement {
       "changelog-page": () => import("../pages/changelog/index.js"),
 
       "tokens-brand": () => import("../story/tokens/brand.js"),
-      "tokens-intent": () => import("../story/tokens/intent.js"),
+      "tokens-semantic": () => import("../story/tokens/semantic.js"),
       "tokens-components": () => import("../story/tokens/components.js"),
 
       "parts-text": () => import("../story/parts/text.js"),

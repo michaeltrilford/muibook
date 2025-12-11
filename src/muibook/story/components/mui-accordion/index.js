@@ -534,7 +534,7 @@ class storyAccordion extends HTMLElement {
           <mui-accordion-block heading="Design Tokens" detail-space="none" slot="body" style="width: 26rem;">
             <mui-v-stack slot="detail" space="var(--space-000)" style="padding: var(--space-100)">
               <mui-link variant="tertiary" class="nav-link">Brand</mui-link>
-              <mui-link variant="tertiary" class="nav-link">Intent</mui-link>
+              <mui-link variant="tertiary" class="nav-link">Semantic</mui-link>
               <mui-link variant="tertiary" class="nav-link">Component</mui-link>
             </mui-v-stack>
           </mui-accordion-block>
@@ -549,7 +549,7 @@ class storyAccordion extends HTMLElement {
             &lt;mui-accordion-block heading="Design Tokens" detail-space="none" style="width: 26rem;"&gt;<br>
             &nbsp;&nbsp;&lt;mui-v-stack slot="detail" space="var(--space-000)" style="padding: var(--space-100)"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link variant="tertiary" class="nav-link"&gt;Brand&lt;/mui-link&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link variant="tertiary" class="nav-link"&gt;Intent&lt;/mui-link&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link variant="tertiary" class="nav-link"&gt;Semantic&lt;/mui-link&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link variant="tertiary" class="nav-link"&gt;Component&lt;/mui-link&gt;<br>
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &lt;/mui-accordion-block&gt;

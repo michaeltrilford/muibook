@@ -28,7 +28,7 @@ class tokensComponents extends HTMLElement {
 
       <story-template 
         title="Components"
-        description="Tokens that map brand and intent decisions to UI components, applying consistent, themed styling across components and their states."
+        description="Tokens that map brand and semantic decisions to UI components, applying consistent, themed styling across components and their states."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
@@ -94,12 +94,12 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--avatar-background-warning" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--avatar-background-attention" variant="color"></story-token-slat>
 
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Text</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Text</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="card" title="Card" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-card">
             <story-token-slat slot="body" token="--card-radius" variant="radius"></story-token-slat>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Surface</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="badge" title="Badge" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts">
@@ -115,35 +115,35 @@ class tokensComponents extends HTMLElement {
           </spec-card>
 
           <spec-card id="table" title="Table" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table">
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Border</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Border</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="image" title="Image" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-image/index.ts">
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Text</mui-link> tokens</mui-body>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Surface</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Text</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="code" title="Code" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-code/index.ts">
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Text</mui-link> tokens</mui-body>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Surface</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Text</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="alert" title="Alert" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts">
             <story-token-slat slot="body" token="--alert-radius" variant="radius"></story-token-slat>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Feedback</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Feedback</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="message" title="Message" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-message/index.ts">
             <story-token-slat slot="body" token="--message-radius" variant="radius"></story-token-slat>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Feedback</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Feedback</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="button" title="Button" description="Button uses the 'Action' tokens to define the visual behavior of call-to-action button elements." github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-button/index.ts">
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Action</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Action</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="link-button" title="Link Button" description="Link button uses the 'Action' tokens to define the visual behavior of call-to-action button elements." github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-link/index.ts">
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Action</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Action</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="link-default" title="Link Default" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-link/index.ts">
@@ -173,15 +173,15 @@ class tokensComponents extends HTMLElement {
           </spec-card>
 
           <spec-card id="body" title="Body" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-card/body/index.ts">
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Text</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Text</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="label" title="Label" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts">
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Text</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Text</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="list" title="List" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-list">
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Text</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Text</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card 
@@ -252,8 +252,8 @@ class tokensComponents extends HTMLElement {
           >
             <story-token-slat slot="body" token="--dialog-radius" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--dialog-background" variant="color"></story-token-slat>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Surface</mui-link> tokens</mui-body>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Border</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Border</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card 
@@ -262,8 +262,8 @@ class tokensComponents extends HTMLElement {
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-drawer/index.ts"
           >
             <story-token-slat slot="body" token="--drawer-background" variant="color"></story-token-slat>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Surface</mui-link> tokens</mui-body>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Border</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Border</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card 
@@ -276,7 +276,7 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--dropdown-button-background-hover" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--dropdown-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--dropdown-shadow-color" variant="color"></story-token-slat>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Surface</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card 
@@ -319,7 +319,7 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--stepper-background-inactive" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--stepper-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--stepper-text-color-active" variant="text-color"></story-token-slat>
-            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/intent-design-tokens">Text</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Text</mui-link> tokens</mui-body>
           </spec-card>
 
       </story-template>

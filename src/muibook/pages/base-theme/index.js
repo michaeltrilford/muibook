@@ -76,7 +76,7 @@ class BaseTheme extends HTMLElement {
                 <mui-body size="medium">Design tokens are organised into three tiers, each mapped to the sections below. These ultimately feed into the components within the design system.</mui-body>
                 <mui-body size="medium">
                   <mui-link size="medium" href="#/brand-design-tokens">Brand</mui-link>, 
-                  <mui-link size="medium" href="#/intent">Intent</mui-link> and 
+                  <mui-link size="medium" href="#/semantic">Semantic</mui-link> and 
                   <mui-link size="medium" href="#/components-design-tokens">Component</mui-link> tokens.</mui-body>
               </mui-v-stack>
 
