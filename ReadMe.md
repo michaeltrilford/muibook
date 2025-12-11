@@ -178,6 +178,22 @@ npm publish
 
 ---
 
+## Title
+
+Refreshing Your npm Access Token (90-Day Expiry)
+
+### Description:
+
+npm login tokens expire every 90 days. When they do, you must log in again before publishing packages. No other setup needs to be repeated.
+
+### Steps:
+
+1. Run npm login to refresh your token.
+2. Publish normally with `npm publish --access public`
+3. Repeat npm login every 90 days when prompted.
+
+---
+
 ### Development Notes
 
 - Add any new components to `vite.config.ts` to include them in builds
