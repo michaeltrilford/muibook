@@ -48,7 +48,7 @@ class PropsCard extends HTMLElement {
 
       @media (min-width: 768px) {
         .icon {
-          margin-right: var(--space-000);
+          margin-right: var(--space-100);
         }
       }
 
@@ -71,7 +71,7 @@ class PropsCard extends HTMLElement {
                 title
                   ? `
                     <mui-h-stack alignY="center" space="var(--space-200)">
-                      <span style="font-size: 42px; margin-right: 6px; line-height: 1">🎛️</span> 
+                      <span style="font-size: 42px; margin-right: 6px; margin-top: 3px; line-height: 1">🎛️</span> 
                       <mui-v-stack space="var(--space-000);">
                         <mui-body size="x-small" weight="bold" style="text-transform: uppercase; margin-left: var(--space-025); opacity: 0.8;">Props Types</mui-body>
                         <mui-heading size="4" level="2">${title}</mui-heading>
@@ -80,7 +80,7 @@ class PropsCard extends HTMLElement {
                     `
                   : `<mui-heading size="3" level="2">Prop Types</mui-heading>`
               }
-              <mui-icon-toggle rotate class="icon" size="x-small">
+              <mui-icon-toggle rotate class="icon" size="small">
                 <mui-icon-add slot="start"></mui-icon-add>
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>

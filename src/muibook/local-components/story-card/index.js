@@ -78,6 +78,16 @@ class storyCard extends HTMLElement {
         margin-bottom: var(--space-050);
       }
 
+      .actions {
+        margin-right: calc(-1 * var(--space-050))
+      }
+
+      @media (min-width: 768px) {
+      .actions {
+        margin-right: calc(-1 * var(--space-200))
+      }
+      }
+
     `;
 
     const title = this.getAttribute("title") || "";
@@ -165,7 +175,7 @@ class storyCard extends HTMLElement {
           <mui-card-header>
             <mui-h-stack alignX="space-between" alignY="center">
               <mui-heading size="3" level="2">${title}</mui-heading>
-              <mui-h-stack space="0">
+              <mui-h-stack space="0" class="actions">
               ${githubContent}${usageLinkContent}
               </mui-h-stack>
             </mui-h-stack>
