@@ -28,7 +28,7 @@ Rules:
         placeholder: `<mui-field label="Email"><mui-input type="email" placeholder="you@example.com" value="..."></mui-input></mui-field>`,
         message: `<mui-field label="Name" message="This field doesn't accept special characters"><mui-input></mui-input></mui-field>`,
         select: `<mui-field label="Brand"><mui-select options='[{ "value": "jpy", "label": "JPY" },{ "value": "usd", "label": "USD" }]'></mui-select></mui-field>`,
-        inputAndSelect: `<mui-field label="Amount to transfer" slot="body"><mui-input type="number"><mui-select slot="after" label="Currency" hide-label style="width: 100px;" options='[{ "value": "jpy", "label": "JPY" },{ "value": "usd", "label": "USD" }]'></mui-select></mui-input></mui-field>`,
+        inputAndSelect: `<mui-field label="Amount to transfer"><mui-input type="number"><mui-select slot="after" label="Currency" hide-label style="width: 100px;" options='[{ "value": "jpy", "label": "JPY" },{ "value": "usd", "label": "USD" }]'></mui-select></mui-input></mui-field>`,
       },
       addon: {
         text: [

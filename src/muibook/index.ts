@@ -1,8 +1,12 @@
 import "./css/app.css";
-import "./css/themes/jal.css";
-import "./css/themes/ana.css";
-import "./css/themes/modern.css";
-import "./css/themes/sensei.css";
+import "./css/themes/jal/brand.css";
+import "./css/themes/jal/index.css";
+import "./css/themes/ana/brand.css";
+import "./css/themes/ana/index.css";
+import "./css/themes/modern/brand.css";
+import "./css/themes/modern/index.css";
+import "./css/themes/sensei/brand.css";
+import "./css/themes/sensei/index.css";
 import "./css/app-theme.css";
 
 // Utils

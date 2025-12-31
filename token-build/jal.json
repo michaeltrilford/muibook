@@ -1,0 +1,18 @@
+{
+  "source": ["token-build/tokens/jal.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "src/muibook/css/themes/jal/",
+      "files": [
+        {
+          "destination": "brand.css",
+          "format": "css/variables",
+          "options": {
+            "selector": "html[data-brand=\"jal\"]"
+          }
+        }
+      ]
+    }
+  }
+}

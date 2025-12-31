@@ -1,0 +1,376 @@
+/* ==================== */
+/*   __  __ _   _ ___   */
+/*  |  \/  | | | |_ _|  */
+/*  | |\/| | | | || |   */
+/*  | |  | | |_| || |   */
+/*  |_|  |_|\___/|___|  */
+/*                      */
+/*   michael.ui.system  */
+/* ==================== */
+
+/* =============================================================================== */
+/* 1. BRAND PRIMITIVES  ------> ana/brand.css                                      */
+/* =============================================================================== */
+
+/* =============================================================================== */
+/* 2. LIGHT MODE                                                                   */
+/* =============================================================================== */
+html[data-brand="ana"][data-theme="light"] {
+  /* Feedback */
+  --feedback-neutral-border-color: var(--black-opacity-20);
+  --feedback-positive-border-color: var(--green-50);
+  --feedback-info-border-color: var(--blue-50);
+  --feedback-warning-border-color: var(--orange-50);
+  --feedback-attention-border-color: var(--red-50);
+
+  --feedback-neutral-background: var(--white);
+  --feedback-positive-background: var(--green-50);
+  --feedback-info-background: var(--blue-50);
+  --feedback-warning-background: var(--orange-50);
+  --feedback-attention-background: var(--red-50);
+
+  --feedback-neutral-icon: var(--grey-500);
+  --feedback-positive-icon: var(--green-600);
+  --feedback-info-icon: var(--blue-500);
+  --feedback-warning-icon: var(--orange-700);
+  --feedback-attention-icon: var(--red-600);
+
+  --feedback-neutral-text: var(--grey-700);
+  --feedback-positive-text: var(--green-700);
+  --feedback-info-text: var(--blue-700);
+  --feedback-warning-text: var(--orange-700);
+  --feedback-attention-text: var(--red-600);
+
+  --feedback-neutral-action-background: var(--grey-100);
+  --feedback-positive-action-background: var(--green-100);
+  --feedback-info-action-background: var(--blue-100);
+  --feedback-warning-action-background: var(--orange-100);
+  --feedback-attention-action-background: var(--red-100);
+
+  --action-primary-border-color: var(--blue-500);
+  --action-primary-border-color-hover: var(--blue-600);
+  --action-primary-border-color-focus: var(--blue-600);
+  --action-primary-border-color-disabled: var(--grey-400);
+  --action-primary-background: var(--blue-500);
+  --action-primary-background-hover: var(--blue-600);
+  --action-primary-background-focus: var(--blue-600);
+  --action-primary-background-disabled: var(--grey-400);
+  --action-primary-text-color: var(--white);
+  --action-primary-text-color-hover: var(--white);
+  --action-primary-text-color-focus: var(--white);
+  --action-primary-text-color-disabled: var(--grey-200);
+
+  --action-secondary-border-color: var(--blue-500);
+  --action-secondary-border-color-hover: var(--blue-600);
+  --action-secondary-border-color-focus: var(--blue-600);
+  --action-secondary-border-color-disabled: var(--grey-400);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--white);
+  --action-secondary-background-focus: var(--white);
+  --action-secondary-background-disabled: var(--white-opacity-0);
+  --action-secondary-text-color: var(--blue-500);
+  --action-secondary-text-color-hover: var(--blue-600);
+  --action-secondary-text-color-focus: var(--blue-600);
+  --action-secondary-text-color-disabled: var(--grey-400);
+
+  --action-tertiary-border-color: var(--white-opacity-0);
+  --action-tertiary-border-color-hover: var(--white-opacity-0);
+  --action-tertiary-border-color-focus: var(--white-opacity-0);
+  --action-tertiary-border-color-disabled: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--grey-100);
+  --action-tertiary-background-focus: var(--grey-100);
+  --action-tertiary-background-focus: var(--white);
+  --action-tertiary-background-disabled: var(--grey-200);
+  --action-tertiary-text-color: var(--blue-500);
+  --action-tertiary-text-color-hover: var(--blue-600);
+  --action-tertiary-text-color-focus: var(--blue-600);
+  --action-tertiary-text-color-disabled: var(--grey-300);
+
+  --action-attention-border-color: var(--red-400);
+  --action-attention-border-color-hover: var(--red-600);
+  --action-attention-border-color-focus: var(--red-600);
+  --action-attention-border-color-disabled: var(--grey-400);
+  --action-attention-background: var(--red-400);
+  --action-attention-background-hover: var(--red-600);
+  --action-attention-background-focus: var(--red-600);
+  --action-attention-background-disabled: var(--grey-400);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--white);
+
+  /* Badge */
+  --badge-text-color: var(--white);
+  --badge-background-neutral: var(--grey-500);
+  --badge-background-positive: var(--green-500);
+  --badge-background-warning: var(--orange-500);
+  --badge-background-attention: var(--red-500);
+
+  /* Outline (Focus) */
+  --outline-color: var(--blue-300);
+
+  /* Type */
+  --text-color: var(--grey-900);
+  --heading-text-color: var(--blue-500);
+
+  /* Input */
+  --input-background: var(--white);
+
+  /* Border */
+  --border-color: var(--black-opacity-20);
+  --form-default-border-color: var(--black-opacity-20);
+
+  /* Surface */
+  --surface: var(--grey-200);
+  --surface-elevated-alpha: var(--white-opacity-50);
+  --surface-elevated-100: var(--white);
+  --surface-elevated-200: var(--grey-50);
+  --surface-recessed-alpha: var(--black-opacity-10);
+  --surface-recessed-100: var(--grey-300);
+  --surface-recessed-200: var(--grey-400);
+
+  /* Switch */
+  --switch-track-background: var(--grey-300);
+  --switch-track-background-checked: var(--blue-500);
+
+  /* Tabs */
+  --tab-border-color: var(--blue-300);
+
+  --tab-background: var(--blue-50);
+  --tab-icon: var(--blue-500);
+  --tab-text-color: var(--blue-500);
+
+  --tab-background-active: var(--blue-500);
+  --tab-icon-active: var(--blue-50);
+  --tab-text-color-active: var(--blue-50);
+  --tab-shadow-active: var(--black-opacity-10);
+
+  /* Carousel */
+  --carousel-background: var(--grey-100);
+
+  /* Chip */
+  --chip-border-color-active: var(--blue-500);
+  --chip-text-color-active: var(--blue-500);
+
+  /* Stepper */
+  --stepper-color: var(--blue-500);
+  --stepper-background-active: var(--stepper-color);
+  --stepper-background-inactive: var(--grey-200);
+  --stepper-border-color: var(--stepper-color);
+  --stepper-text-color-active: var(--stepper-color);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--grey-200);
+  --avatar-background-positive: var(--green-200);
+  --avatar-background-warning: var(--orange-200);
+  --avatar-background-attention: var(--red-200);
+
+  /* Chip */
+  --chip-background: var(--white);
+  --chip-background-hover: var(--white);
+  --chip-background-focus: var(--white);
+  --chip-background-active: var(--white);
+  --chip-border-color: var(--grey-300);
+  --chip-border-color-hover: var(--grey-300);
+  --chip-border-color-focus: var(--grey-300);
+  --chip-border-color-active: var(--blue-500);
+  --chip-text-color-active: var(--grey-1000);
+  --chip-icon-fill: var(--black);
+  --chip-dismiss-action-background: var(--grey-100);
+  --chip-dismiss-action-background-hover: var(--black-opacity-0);
+
+  /* Drawer */
+  --dialog-background: var(--white);
+  --drawer-background: var(--white);
+}
+
+/* =============================================================================== */
+/* 3. DARK MODE                                                                    */
+/* =============================================================================== */
+html[data-brand="ana"][data-theme="dark"] {
+  /* Feedback */
+  --feedback-neutral-border-color: var(--white-opacity-20);
+  --feedback-positive-border-color: var(--green-700);
+  --feedback-info-border-color: var(--blue-700);
+  --feedback-warning-border-color: var(--orange-700);
+  --feedback-attention-border-color: var(--red-700);
+
+  --feedback-neutral-background: var(--grey-800);
+  --feedback-positive-background: var(--green-700);
+  --feedback-info-background: var(--blue-700);
+  --feedback-warning-background: var(--orange-700);
+  --feedback-attention-background: var(--red-700);
+
+  --feedback-neutral-icon: var(--grey-100);
+  --feedback-positive-icon: var(--green-100);
+  --feedback-info-icon: var(--blue-100);
+  --feedback-warning-icon: var(--orange-100);
+  --feedback-attention-icon: var(--red-100);
+
+  --feedback-neutral-text: var(--grey-100);
+  --feedback-positive-text: var(--green-100);
+  --feedback-info-text: var(--blue-100);
+  --feedback-warning-text: var(--orange-100);
+  --feedback-attention-text: var(--red-100);
+
+  --feedback-neutral-action-background: var(--grey-600);
+  --feedback-positive-action-background: var(--green-600);
+  --feedback-info-action-background: var(--blue-600);
+  --feedback-warning-action-background: var(--orange-600);
+  --feedback-attention-action-background: var(--red-600);
+
+  --action-primary-border-color: var(--blue-400);
+  --action-primary-border-color-hover: var(--blue-500);
+  --action-primary-border-color-focus: var(--blue-500);
+  --action-primary-border-color-disabled: var(--grey-400);
+  --action-primary-background: var(--blue-400);
+  --action-primary-background-hover: var(--blue-500);
+  --action-primary-background-focus: var(--blue-500);
+  --action-primary-background-disabled: var(--grey-400);
+  --action-primary-text-color: var(--white);
+  --action-primary-text-color-hover: var(--white);
+  --action-primary-text-color-focus: var(--white);
+  --action-primary-text-color-disabled: var(--grey-200);
+
+  --action-secondary-border-color: var(--blue-200);
+  --action-secondary-border-color-hover: var(--blue-200);
+  --action-secondary-border-color-focus: var(--blue-200);
+  --action-secondary-border-color-disabled: var(--grey-400);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--grey-1100);
+  --action-secondary-background-focus: var(--grey-1100);
+  --action-secondary-background-disabled: var(--white-opacity-0);
+  --action-secondary-text-color: var(--blue-200);
+  --action-secondary-text-color-hover: var(--blue-200);
+  --action-secondary-text-color-focus: var(--blue-200);
+  --action-secondary-text-color-disabled: var(--grey-400);
+
+  --action-tertiary-border-color: var(--white-opacity-0);
+  --action-tertiary-border-color-hover: var(--white-opacity-0);
+  --action-tertiary-border-color-focus: var(--white-opacity-0);
+  --action-tertiary-border-color-disabled: var(--white-opacity-0);
+  --action-tertiary-background: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--black-opacity-40);
+  --action-tertiary-background-focus: var(--black-opacity-40);
+  --action-tertiary-background-disabled: var(--grey-1000);
+  --action-tertiary-text-color: var(--blue-100);
+  --action-tertiary-text-color-hover: var(--blue-200);
+  --action-tertiary-text-color-focus: var(--blue-200);
+  --action-tertiary-text-color-disabled: var(--grey-700);
+
+  --action-attention-border-color: var(--red-400);
+  --action-attention-border-color-hover: var(--red-500);
+  --action-attention-border-color-focus: var(--red-500);
+  --action-attention-border-color-disabled: var(--grey-600);
+  --action-attention-background: var(--red-400);
+  --action-attention-background-hover: var(--red-500);
+  --action-attention-background-focus: var(--red-500);
+  --action-attention-background-disabled: var(--grey-600);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--grey-300);
+
+  /* Badge */
+  --badge-text-color: var(--white);
+  --badge-background-neutral: var(--grey-600);
+  --badge-background-positive: var(--green-700);
+  --badge-background-warning: var(--orange-700);
+  --badge-background-attention: var(--red-500);
+
+  /* Outline (Focus) */
+  --outline-color: var(--blue-200);
+
+  /* Type */
+  --text-color: var(--grey-100);
+  --heading-text-color: var(--blue-200);
+
+  /* Input */
+  --input-background: var(--grey-800);
+
+  /* Border */
+  --border-color: var(--white-opacity-20);
+  --form-default-border-color: var(--white-opacity-20);
+
+  /* Surface */
+  --surface: var(--grey-900);
+  --surface-elevated-alpha: var(--white-opacity-10);
+  --surface-elevated-100: var(--grey-700);
+  --surface-elevated-200: var(--grey-800);
+  --surface-recessed-alpha: var(--black-opacity-30);
+  --surface-recessed-100: var(--grey-1000);
+  --surface-recessed-200: var(--grey-1100);
+
+  /* Switch */
+  --switch-track-background: var(--grey-700);
+  --switch-track-background-checked: var(--blue-400);
+
+  /* Tabs */
+  --tab-border-color: var(--blue-500);
+
+  --tab-background: var(--blue-800);
+  --tab-icon: var(--blue-100);
+  --tab-text-color: var(--blue-100);
+
+  --tab-background-active: var(--blue-100);
+  --tab-icon-active: var(--blue-800);
+  --tab-text-color-active: var(--blue-800);
+  --tab-shadow-active: var(--black-opacity-10);
+
+  /* Carousel */
+  --carousel-background: var(--grey-800);
+
+  /* Stepper */
+  --stepper-color: var(--blue-200);
+  --stepper-background-active: var(--stepper-color);
+  --stepper-background-inactive: var(--black);
+  --stepper-border-color: var(--stepper-color);
+  --stepper-text-color-active: var(--stepper-color);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--grey-900);
+  --avatar-background-positive: var(--green-900);
+  --avatar-background-warning: var(--orange-900);
+  --avatar-background-attention: var(--red-900);
+
+  /* Chip */
+  --chip-background: var(--grey-800);
+  --chip-background-hover: var(--grey-800);
+  --chip-background-focus: var(--grey-800);
+  --chip-background-active: var(--grey-800);
+  --chip-border-color: var(--grey-600);
+  --chip-border-color-hover: var(--grey-700);
+  --chip-border-color-focus: var(--grey-700);
+  --chip-border-color-active: var(--blue-200);
+  --chip-text-color-active: var(--blue-100);
+  --chip-icon-fill: var(--white);
+  --chip-dismiss-action-background: var(--grey-700);
+  --chip-dismiss-action-background-hover: var(--white-opacity-0);
+
+  /* Drawer */
+  --dialog-background: var(--grey-800);
+  --drawer-background: var(--grey-800);
+}
+
+/* ================================================================= */
+/* 4. SET THE FOUNDATION                                             */
+/* Map tokens to semantic or component contexts .                    */
+/* ================================================================= */
+/* If you have a base token file already, you only need to include   */
+/* any changes you wish to make                                      */
+/* ================================================================= */
+html[data-brand="ana"] {
+  --action-radius-x-small: var(--radius-300);
+  --action-radius-small: var(--radius-400);
+  --action-radius-medium: var(--radius-500);
+  --action-radius-large: var(--radius-600);
+
+  /* Card */
+  --card-radius: var(--radius-400);
+  /* Tab */
+  --tab-radius: var(--radius-400);
+  /* Chip */
+  --chip-icon-fill: var(--icon-color-default);
+  /* Dialog */
+  --dialog-radius: var(--radius-400);
+}

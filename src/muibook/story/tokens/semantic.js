@@ -307,7 +307,7 @@ class tokensSemantic extends HTMLElement {
               <br />
               .surface-elevated {
               <br />
-              &nbsp;&nbsp;background: var(--surface-elevated-200);
+              &nbsp;&nbsp;background: var(--surface-elevated-100);
               <br />
               }
             </mui-code>

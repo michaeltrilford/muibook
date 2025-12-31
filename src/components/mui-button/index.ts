@@ -34,7 +34,7 @@ class MuiButton extends HTMLElement {
       border: none;
       cursor: pointer;
       width: 100%;
-      border-radius: var(--action-radius);
+      border-radius: var(--action-radius-medium);
       padding: var(--action-padding);
       text-decoration: none;
       line-height: var(--action-line-height);

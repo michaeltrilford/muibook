@@ -1,6 +1,7 @@
 class MuiSwitch extends HTMLElement {
   private _checked: boolean = false;
   private _checkbox: HTMLInputElement | null = null;
+  private _changeHandler?: () => void;
 
   constructor() {
     super();
@@ -19,18 +20,11 @@ class MuiSwitch extends HTMLElement {
     this._updateDisabledState();
     this._enforceIconSize();
 
-    this._checkbox?.addEventListener("change", () => {
-      if (this._checkbox) {
-        this.checked = this._checkbox.checked;
-        this.dispatchEvent(
-          new CustomEvent("change", {
-            detail: { checked: this.checked },
-            bubbles: true,
-            composed: true,
-          })
-        );
-      }
-    });
+    this._setupListener();
+  }
+
+  disconnectedCallback() {
+    this._cleanupListeners();
   }
 
   static get observedAttributes() {
@@ -82,6 +76,12 @@ class MuiSwitch extends HTMLElement {
     }
   }
 
+  private _cleanupListeners() {
+    if (this._checkbox && this._changeHandler) {
+      this._checkbox.removeEventListener("change", this._changeHandler);
+    }
+  }
+
   _updateDisabledState() {
     const isDisabled = this.hasAttribute("disabled");
     if (isDisabled) {
@@ -93,6 +93,30 @@ class MuiSwitch extends HTMLElement {
       this._checkbox?.removeAttribute("aria-disabled");
       this._checkbox?.removeAttribute("tabindex");
     }
+  }
+
+  private _setupListener() {
+    if (!this._checkbox) return;
+
+    // Clean up old listeners
+    this._cleanupListeners();
+
+    // Change handler for React compatibility
+    this._changeHandler = () => {
+      if (this._checkbox) {
+        this.checked = this._checkbox.checked;
+        this.dispatchEvent(
+          new CustomEvent("change", {
+            detail: { checked: this.checked },
+            bubbles: true,
+            composed: true,
+          })
+        );
+      }
+    };
+
+    // Attach listener
+    this._checkbox.addEventListener("change", this._changeHandler);
   }
 
   private _enforceIconSize(): void {

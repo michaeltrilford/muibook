@@ -18,6 +18,7 @@ import "@muibook/components/mui-body"; // Individual
 #### CSS Usage
 
 ```javascript
+import "@muibook/components/css/mui-brand.css";
 import "@muibook/components/css/mui-tokens.css";
 import "@muibook/components/css/mui-base.css";
 import "@muibook/components/css/mui-reset.css";
@@ -178,7 +179,13 @@ npm publish
 
 ---
 
-## Title
+## Style Dictionary
+
+- npm run token-build
+
+---
+
+## NPM Token REFRESH
 
 Refreshing Your npm Access Token (90-Day Expiry)
 

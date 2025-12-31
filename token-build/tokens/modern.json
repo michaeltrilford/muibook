@@ -1,0 +1,72 @@
+{
+  "font-family": {
+    "value": "\"Golos Text\", sans-serif",
+    "attributes": { "category": "typography", "brand": "modern" }
+  },
+
+  "grey-100": { "value": "#f0f0f5" },
+  "grey-200": { "value": "#d9d9e0" },
+  "grey-300": { "value": "#bfbfcc" },
+  "grey-400": { "value": "#a5a5b3" },
+  "grey-500": { "value": "#8c8c99" },
+  "grey-600": { "value": "#737380" },
+  "grey-700": { "value": "#595966" },
+  "grey-800": { "value": "#40404d" },
+  "grey-900": { "value": "#2e2e3a" },
+  "grey-1000": { "value": "#1f1f29" },
+  "grey-100-opacity-80": {
+    "value": "hsla(240, 20%, 95%, 0.8)",
+    "attributes": { "category": "color", "brand": "modern" }
+  },
+  "grey-1000-opacity-80": {
+    "value": "hsla(240, 14%, 14%, 0.8)",
+    "attributes": { "category": "color", "brand": "modern" }
+  },
+
+  "red-100": { "value": "#ffe2e2" },
+  "red-200": { "value": "#ffbaba" },
+  "red-300": { "value": "#ff8f8f" },
+  "red-400": { "value": "#ff5e5e" },
+  "red-500": { "value": "#ff2e2e" },
+  "red-600": { "value": "#e60026" },
+  "red-700": { "value": "#cc0022" },
+  "red-800": { "value": "#b3001e" },
+  "red-900": { "value": "#99001a" },
+  "red-1000": { "value": "#660012" },
+
+  "orange-100": { "value": "#fff1d6" },
+  "orange-200": { "value": "#ffd9a0" },
+  "orange-300": { "value": "#ffc266" },
+  "orange-400": { "value": "#ffaa33" },
+  "orange-500": { "value": "#ff8c00" },
+  "orange-600": { "value": "#e67600" },
+  "orange-700": { "value": "#cc6600" },
+  "orange-800": { "value": "#b35900" },
+  "orange-900": { "value": "#994d00" },
+  "orange-1000": { "value": "#803f00" },
+
+  "green-100": { "value": "#d8fce0" },
+  "green-200": { "value": "#aafac2" },
+  "green-300": { "value": "#7cf8a4" },
+  "green-400": { "value": "#4ef686" },
+  "green-500": { "value": "#1ce661" },
+  "green-600": { "value": "#00cc4c" },
+  "green-700": { "value": "#00b33f" },
+  "green-800": { "value": "#009933" },
+  "green-900": { "value": "#00802a" },
+  "green-1000": { "value": "#00661f" },
+
+  "blue-100": { "value": "#e0f0ff" },
+  "blue-200": { "value": "#b3dbff" },
+  "blue-300": { "value": "#80c3ff" },
+  "blue-400": { "value": "#4daaff" },
+  "blue-500": { "value": "#1a92ff" },
+  "blue-600": { "value": "#0075e0" },
+  "blue-700": { "value": "#0066cc" },
+  "blue-800": { "value": "#0055b3" },
+  "blue-900": { "value": "#004499" },
+  "blue-1000": { "value": "#003380" },
+
+  "white": { "value": "#ffffff" },
+  "black": { "value": "#000000" }
+}

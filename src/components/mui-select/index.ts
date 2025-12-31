@@ -8,6 +8,8 @@ class MuiSelect extends HTMLElement {
     return ["name", "value", "id", "label", "options", "disabled", "hide-label", "variant"];
   }
 
+  _changeHandler?: (e: Event) => void;
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -20,10 +22,15 @@ class MuiSelect extends HTMLElement {
     this.setupListener();
   }
 
-  attributeChangedCallback(name: string, newValue: string | null) {
-    if (!this.shadowRoot) return;
+  disconnectedCallback() {
+    // Clean up event listeners
+    this.cleanupListeners();
+  }
 
-    const selectEl = /** @type {HTMLSelectElement | null} */ this.shadowRoot.querySelector("select");
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (!this.shadowRoot || oldValue === newValue) return;
+
+    const selectEl = this.shadowRoot.querySelector("select") as HTMLSelectElement | null;
 
     if (name === "value" && selectEl) {
       selectEl.value = newValue || "";
@@ -37,35 +44,50 @@ class MuiSelect extends HTMLElement {
       }
     }
 
-    if (["options", "label", "hide-label"].includes(name)) {
+    if (["options", "label", "hide-label", "variant", "disabled"].includes(name)) {
       this.render();
       this.setupListener();
     }
   }
 
+  cleanupListeners() {
+    const selectEl = this.shadowRoot?.querySelector("select");
+    if (selectEl && this._changeHandler) {
+      selectEl.removeEventListener("change", this._changeHandler);
+      selectEl.removeEventListener("input", this._changeHandler);
+    }
+  }
+
   setupListener() {
     if (!this.shadowRoot) return;
-    const selectEl = this.shadowRoot.querySelector("select");
-    if (selectEl) {
-      // Remove previous event listener to prevent duplicates
-      const newSelectEl = selectEl.cloneNode(true);
-      if (selectEl.parentNode) {
-        selectEl.parentNode.replaceChild(newSelectEl, selectEl);
-      }
 
-      newSelectEl.addEventListener("change", (e: Event) => {
-        const target = e.target as HTMLSelectElement | null;
-        if (target) {
-          this.dispatchEvent(
-            new CustomEvent("change", {
-              detail: { value: target.value },
-              bubbles: true,
-              composed: true,
-            })
-          );
-        }
-      });
-    }
+    const selectEl = this.shadowRoot.querySelector("select") as HTMLSelectElement | null;
+    if (!selectEl) return;
+
+    // Clean up old listeners
+    this.cleanupListeners();
+
+    // Change/Input handler - dispatching both for React compatibility
+    this._changeHandler = (e: Event) => {
+      const target = e.target as HTMLSelectElement;
+
+      // Update host attribute
+      this.setAttribute("value", target.value);
+
+      // Dispatch both events for better framework compatibility
+      const eventDetail = {
+        detail: { value: target.value },
+        bubbles: true,
+        composed: true,
+      };
+
+      this.dispatchEvent(new CustomEvent("change", eventDetail));
+      this.dispatchEvent(new CustomEvent("input", eventDetail));
+    };
+
+    // Attach listeners
+    selectEl.addEventListener("change", this._changeHandler);
+    selectEl.addEventListener("input", this._changeHandler);
   }
 
   render() {
@@ -89,7 +111,7 @@ class MuiSelect extends HTMLElement {
     // Here, we directly use the ariaLabel logic as in the 'input' component
     const ariaLabelAttr = hideLabel && label ? `aria-label="${label}"` : "";
 
-    type SelectOption = { value: string; label: string };
+    type SelectOption = { value: string; label: string; disabled?: boolean };
 
     let options: SelectOption[] = [];
     try {
@@ -99,7 +121,12 @@ class MuiSelect extends HTMLElement {
     }
 
     const optionsHTML = options
-      .map((opt) => `<option value="${opt.value}" ${opt.value === value ? "selected" : ""}>${opt.label}</option>`)
+      .map(
+        (opt) =>
+          `<option value="${opt.value}" ${opt.value === value ? "selected" : ""} ${opt.disabled ? "disabled" : ""}>${
+            opt.label
+          }</option>`
+      )
       .join("");
 
     const html = /*html*/ `

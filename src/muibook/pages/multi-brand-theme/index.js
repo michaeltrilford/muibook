@@ -88,7 +88,7 @@ class MultiBrandTheme extends HTMLElement {
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">Brand Sections</mui-heading>
+                <mui-heading level="3" size="5">Brand &amp; Themes</mui-heading>
                 <mui-body size="medium"><strong>Brand primitives</strong> Define core tokens like colors, fonts, and spacing, which is the foundation for every component.</mui-body>
                 <mui-body size="medium"><strong>Light mode:</strong> Apply your brand tokens to a light theme. Test for accessibility and visual consistency.</mui-body>
                 <mui-body size="medium"><strong>Dark mode:</strong> Use high-contrast tokens to adapt your brand for dark environments.</mui-body>
@@ -99,10 +99,10 @@ class MultiBrandTheme extends HTMLElement {
                 <mui-heading level="3" size="5">Multi-Brand Theme</mui-heading>
                 <mui-body size="medium">
                   See how 
-                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/jal.css" target="_blank">JAL</mui-link>, 
-                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/ana.css" target="_blank">ANA</mui-link>, 
-                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/modern.css" target="_blank">Modern</mui-link>,
-                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/sensei.css" target="_blank">Sensei</mui-link>
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/jal" target="_blank">JAL</mui-link>, 
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/ana" target="_blank">ANA</mui-link>, 
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/modern" target="_blank">Modern</mui-link>,
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/sensei" target="_blank">Sensei</mui-link>
                   build on the core MUI theme. Only override the values you need; everything else falls back to the  
                   <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css" target="_blank">mui-tokens</mui-link> 
                   theme.

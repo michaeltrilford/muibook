@@ -5,6 +5,8 @@ class MuiCheckbox extends HTMLElement {
     return ["checked", "disabled", "id", "indeterminate"];
   }
 
+  _changeHandler?: (e: Event) => void;
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -13,6 +15,10 @@ class MuiCheckbox extends HTMLElement {
   connectedCallback() {
     this.render();
     this.setupListener();
+  }
+
+  disconnectedCallback() {
+    this.cleanupListeners();
   }
 
   attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null): void {
@@ -47,33 +53,38 @@ class MuiCheckbox extends HTMLElement {
     }
   }
 
+  cleanupListeners() {
+    const input = this.shadowRoot?.querySelector("input");
+    if (input && this._changeHandler) {
+      input.removeEventListener("change", this._changeHandler);
+    }
+  }
+
   setupListener(): void {
     const input = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
     if (!input) return;
 
-    input.addEventListener("change", (e: Event) => {
-      const target = e.target as HTMLInputElement;
-      this.dispatchEvent(
-        new CustomEvent("change", {
-          detail: { checked: target.checked },
-          bubbles: true,
-          composed: true,
-        })
-      );
+    // Clean up old listeners
+    this.cleanupListeners();
 
-      // Sync attribute
-      if (target.checked) {
-        this.setAttribute("checked", "");
-      } else {
-        this.removeAttribute("checked");
-      }
-    });
-
+    // Set indeterminate state
     input.indeterminate = this.hasAttribute("indeterminate");
 
-    input.addEventListener("change", (e: Event) => {
+    // Single change handler for React compatibility
+    this._changeHandler = (e: Event) => {
       const target = e.target as HTMLInputElement;
 
+      // Update host attribute
+      if (target.checked) {
+        this.setAttribute("checked", "");
+      } else {
+        this.removeAttribute("checked");
+      }
+
+      // Clear indeterminate on interaction
+      this.removeAttribute("indeterminate");
+
+      // Dispatch event
       this.dispatchEvent(
         new CustomEvent("change", {
           detail: { checked: target.checked },
@@ -81,15 +92,10 @@ class MuiCheckbox extends HTMLElement {
           composed: true,
         })
       );
+    };
 
-      this.removeAttribute("indeterminate"); // clear indeterminate on interaction
-
-      if (target.checked) {
-        this.setAttribute("checked", "");
-      } else {
-        this.removeAttribute("checked");
-      }
-    });
+    // Attach listener
+    input.addEventListener("change", this._changeHandler);
   }
 
   render() {

@@ -1,0 +1,18 @@
+{
+  "source": ["token-build/tokens/modern.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "src/muibook/css/themes/modern/",
+      "files": [
+        {
+          "destination": "brand.css",
+          "format": "css/variables",
+          "options": {
+            "selector": "html[data-brand=\"modern\"]"
+          }
+        }
+      ]
+    }
+  }
+}

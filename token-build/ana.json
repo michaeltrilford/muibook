@@ -1,0 +1,18 @@
+{
+  "source": ["token-build/tokens/ana.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "src/muibook/css/themes/ana/",
+      "files": [
+        {
+          "destination": "brand.css",
+          "format": "css/variables",
+          "options": {
+            "selector": "html[data-brand=\"ana\"]"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,17 +1,37 @@
 class MuiTabItem extends HTMLElement {
   private iconEl?: HTMLElement;
+  private updateIcon(iconTag: string | null) {
+    if (!this.shadowRoot) return;
+
+    // Remove previous icon
+    if (this.iconEl) {
+      this.shadowRoot.removeChild(this.iconEl);
+      this.iconEl = undefined;
+    }
+
+    // Defensive: only create if a valid tag name exists
+    if (iconTag && iconTag.trim() !== "" && customElements.get(iconTag)) {
+      const iconEl = document.createElement(iconTag);
+      iconEl.setAttribute("color", this.hasAttribute("active") ? "var(--tab-icon-active)" : "var(--tab-icon)");
+      iconEl.setAttribute("size", "small");
+      this.shadowRoot.insertBefore(iconEl, this.shadowRoot.firstChild); // insert before slot
+      this.iconEl = iconEl;
+    }
+  }
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   static get observedAttributes() {
-    return ["active"];
+    return ["active", "icon"];
   }
 
-  attributeChangedCallback(name: string, _oldValue: string | null, _newValue: string | null): void {
+  attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null): void {
     if (name === "active") {
       this.updateActiveState();
+    } else if (name === "icon") {
+      this.updateIcon(newValue);
     }
   }
 

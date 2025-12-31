@@ -21,6 +21,10 @@ class MuiDialog extends HTMLElement {
     const width = this.getAttribute("width") || "350px";
 
     const styles = /*css*/ `
+      :host {
+        display: contents;
+      }
+
       dialog {
         border: none;
         width: ${width};

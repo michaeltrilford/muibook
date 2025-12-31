@@ -1,0 +1,74 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+html[data-brand="jal"] {
+  --font-family: "Noto Sans JP", "メイリオ", sans-serif;
+  --grey-50: #fafafa;
+  --grey-100: #f4f4f4;
+  --grey-200: #e0e0e0;
+  --grey-300: #c2c2c2;
+  --grey-400: #a3a3a3;
+  --grey-500: #8a8a8a;
+  --grey-600: #707070;
+  --grey-700: #494949;
+  --grey-800: #3a3a3a;
+  --grey-900: #1a1a1a;
+  --grey-1000: #050505;
+  --grey-1100: #030303;
+  --grey-1200: #020202;
+  --grey-1300: #010101;
+  --grey-1000-opacity-80: hsla(0, 0%, 4%, 0.8);
+  --red-50: #fcebec;
+  --red-100: #f3d6db;
+  --red-200: #ffb2b9;
+  --red-300: #d34856;
+  --red-400: #c32c3b;
+  --red-500: #b11b24;
+  --red-600: #9e1b32;
+  --red-700: #801528;
+  --red-800: #6a0c21;
+  --red-900: #4a0b11;
+  --blue-50: #e5f3fc;
+  --blue-100: #cfe9f9;
+  --blue-200: #a2d4f2;
+  --blue-300: #74b8ec;
+  --blue-400: #4184e2;
+  --blue-500: #2567b7;
+  --blue-600: #1e549c;
+  --blue-700: #163f7d;
+  --blue-800: #0e2a5f;
+  --blue-900: #001a44;
+  --green-50: #e8f5e9;
+  --green-100: #c8e6c9;
+  --green-200: #a5d6a7;
+  --green-300: #81c784;
+  --green-400: #66bb6a;
+  --green-500: #4caf50;
+  --green-600: #43a047;
+  --green-700: #388e3c;
+  --green-800: #2c6e2f;
+  --green-900: #1b4c1d;
+  --yellow-50: #fff8e0;
+  --yellow-100: #ffeeb3;
+  --yellow-200: #ffe080;
+  --yellow-300: #ffd44d;
+  --yellow-400: #ffc92b;
+  --yellow-500: #ffc107;
+  --yellow-600: #e6aa00;
+  --yellow-700: #d39600;
+  --yellow-800: #bb8200;
+  --yellow-900: #a36d00;
+  --gold-50: #fdf9ec;
+  --gold-100: #f9f0d0;
+  --gold-200: #f0dd9f;
+  --gold-300: #e6c96d;
+  --gold-400: #dcb23e;
+  --gold-500: #c39a1e;
+  --gold-600: #9c6d16;
+  --gold-700: #8c713f;
+  --gold-800: #856514;
+  --gold-900: #735010;
+  --white: #ffffff;
+  --black: #000000;
+}

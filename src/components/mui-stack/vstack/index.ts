@@ -2,7 +2,7 @@ import { getPartMap } from "../../../utils/part-map";
 
 class MuiVStack extends HTMLElement {
   static get observedAttributes() {
-    return ["space", "alignX", "alignY"];
+    return ["space", "alignx", "aligny"];
   }
 
   private space: string;
@@ -43,21 +43,23 @@ class MuiVStack extends HTMLElement {
         part="${partMap}" 
         style="
           --space: ${this.getAttribute("space") || this.space};
-          --alignX: ${this.getAttribute("alignX") || this.alignX};
-          --alignY: ${this.getAttribute("alignY") || this.alignY};
+          --alignX: ${this.getAttribute("alignx") || this.alignX};
+          --alignY: ${this.getAttribute("aligny") || this.alignY};
         ">
       </slot>
     `;
   }
 
-  attributeChangedCallback(name: string, newValue: string | null) {
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (oldValue === newValue) return;
+
     if (!this.shadowRoot) return;
     const slot = this.shadowRoot.querySelector("slot");
 
     if (slot) {
       if (name === "space") slot.style.setProperty("--space", newValue || this.space);
-      if (name === "alignX") slot.style.setProperty("--alignX", newValue || this.alignX);
-      if (name === "alignY") slot.style.setProperty("--alignY", newValue || this.alignY);
+      if (name === "alignx") slot.style.setProperty("--alignX", newValue || this.alignX);
+      if (name === "aligny") slot.style.setProperty("--alignY", newValue || this.alignY);
     }
   }
 

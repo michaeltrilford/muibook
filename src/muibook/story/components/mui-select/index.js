@@ -15,6 +15,14 @@ class storySelect extends HTMLElement {
 
     const propItems = [
       {
+        name: "variant",
+        type: "string",
+        options: "default, success, warning, error",
+        default: "",
+        description:
+          "Visual feedback state for the select input. Applies appropriate styling for form validation states.",
+      },
+      {
         name: "options",
         required: true,
         type: "array",

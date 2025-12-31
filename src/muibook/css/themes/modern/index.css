@@ -9,77 +9,8 @@
 /* ==================== */
 
 /* =============================================================================== */
-/* 1. BRAND PRIMITIVES                                                             */
+/* 1. BRAND PRIMITIVES  ------> modern/brand.css                                   */
 /* =============================================================================== */
-html[data-brand="modern"] {
-  --font-family: "Golos Text", sans-serif;
-
-  /* Grey scale – cooler, slightly more saturated tones */
-  --grey-100: #f0f0f5;
-  --grey-200: #d9d9e0;
-  --grey-300: #bfbfcc;
-  --grey-400: #a5a5b3;
-  --grey-500: #8c8c99;
-  --grey-600: #737380;
-  --grey-700: #595966;
-  --grey-800: #40404d;
-  --grey-900: #2e2e3a;
-  --grey-1000: #1f1f29;
-
-  --grey-100-opacity-80: hsla(240, 20%, 95%, 0.8);
-  --grey-1000-opacity-80: hsla(240, 14%, 14%, 0.8);
-
-  /* Red scale – stronger, punchier */
-  --red-100: #ffe2e2;
-  --red-200: #ffbaba;
-  --red-300: #ff8f8f;
-  --red-400: #ff5e5e;
-  --red-500: #ff2e2e;
-  --red-600: #e60026;
-  --red-700: #cc0022;
-  --red-800: #b3001e;
-  --red-900: #99001a;
-  --red-1000: #660012;
-
-  /* Orange scale – richer, deeper tones */
-  --orange-100: #fff1d6;
-  --orange-200: #ffd9a0;
-  --orange-300: #ffc266;
-  --orange-400: #ffaa33;
-  --orange-500: #ff8c00;
-  --orange-600: #e67600;
-  --orange-700: #cc6600;
-  --orange-800: #b35900;
-  --orange-900: #994d00;
-  --orange-1000: #803f00;
-
-  /* Green scale – fresher, more vibrant */
-  --green-100: #d8fce0;
-  --green-200: #aafac2;
-  --green-300: #7cf8a4;
-  --green-400: #4ef686;
-  --green-500: #1ce661;
-  --green-600: #00cc4c;
-  --green-700: #00b33f;
-  --green-800: #009933;
-  --green-900: #00802a;
-  --green-1000: #00661f;
-
-  /* Blue scale – more saturation and contrast */
-  --blue-100: #e0f0ff;
-  --blue-200: #b3dbff;
-  --blue-300: #80c3ff;
-  --blue-400: #4daaff;
-  --blue-500: #1a92ff;
-  --blue-600: #0075e0;
-  --blue-700: #0066cc;
-  --blue-800: #0055b3;
-  --blue-900: #004499;
-  --blue-1000: #003380;
-
-  --white: #ffffff;
-  --black: #000000;
-}
 
 /* =============================================================================== */
 /* 2. LIGHT MODE                                                                   */

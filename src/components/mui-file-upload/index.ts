@@ -5,6 +5,9 @@ class MuiFileUpload extends HTMLElement {
   currentFileName: string;
   selectedFileName: string | null;
 
+  private _wrapperClickHandler?: () => void;
+  private _inputChangeHandler?: (e: Event) => void;
+
   shadowRoot!: ShadowRoot;
   wrapper!: HTMLDivElement;
   label!: HTMLSpanElement;
@@ -19,10 +22,16 @@ class MuiFileUpload extends HTMLElement {
     this.currentFileName = this.getAttribute("currentFileName") || "";
 
     this.selectedFileName = null;
+  }
 
+  connectedCallback() {
     this.render();
     this.cacheElements();
     this.attachEvents();
+  }
+
+  disconnectedCallback() {
+    this.cleanupListeners();
   }
 
   render() {
@@ -109,12 +118,24 @@ class MuiFileUpload extends HTMLElement {
     this.input = this.shadowRoot.querySelector('input[type="file"]') as HTMLInputElement;
   }
 
-  attachEvents() {
-    this.wrapper.addEventListener("click", () => {
-      this.input.click();
-    });
+  cleanupListeners() {
+    if (this.wrapper && this._wrapperClickHandler) {
+      this.wrapper.removeEventListener("click", this._wrapperClickHandler);
+    }
+    if (this.input && this._inputChangeHandler) {
+      this.input.removeEventListener("change", this._inputChangeHandler);
+    }
+  }
 
-    this.input.addEventListener("change", this.handleFileChange.bind(this));
+  attachEvents() {
+    this._wrapperClickHandler = () => {
+      this.input.click();
+    };
+
+    this._inputChangeHandler = this.handleFileChange.bind(this);
+
+    this.wrapper.addEventListener("click", this._wrapperClickHandler);
+    this.input.addEventListener("change", this._inputChangeHandler);
   }
 
   handleFileChange(event: Event) {

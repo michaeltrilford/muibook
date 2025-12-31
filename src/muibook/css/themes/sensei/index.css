@@ -1,0 +1,541 @@
+/* ==================== */
+/*   __  __ _   _ ___   */
+/*  |  \/  | | | |_ _|  */
+/*  | |\/| | | | || |   */
+/*  | |  | | |_| || |   */
+/*  |_|  |_|\___/|___|  */
+/*                      */
+/*   michael.ui.system  */
+/* ==================== */
+
+/* ==================================================================================================== */
+/* 1. BRAND PRIMITIVES  ------> sensei/brand.css                                                        */
+/* ==================================================================================================== */
+
+/* ==================================================================================================== */
+/* 2. LIGHT MODE                                                                                        */
+/* ==================================================================================================== */
+html[data-brand="sensei"][data-theme="light"] {
+  /* Form */
+  --form-default-text-color: var(--green-1000);
+  --form-success-text-color: var(--green-700);
+  --form-warning-text-color: var(--orange-700);
+  --form-error-text-color: var(--red-700);
+  --form-default-text-color-hover: var(--green-1100);
+  --form-success-text-color-hover: var(--green-800);
+  --form-warning-text-color-hover: var(--orange-800);
+  --form-error-text-color-hover: var(--red-800);
+  --form-default-border-color: var(--green-700);
+  --form-success-border-color: var(--green-600);
+  --form-warning-border-color: var(--orange-600);
+  --form-error-border-color: var(--red-600);
+  --form-default-border-color-hover: var(--green-1100);
+  --form-success-border-color-hover: var(--green-700);
+  --form-warning-border-color-hover: var(--orange-700);
+  --form-error-border-color-hover: var(--red-700);
+  --form-default-placeholder-color: var(--green-900);
+  --form-default-placeholder-color-hover: var(--green-1000);
+  --form-default-placeholder-color-focus: var(--green-1000);
+  --form-default-placeholder-color-disabled: var(--green-600);
+  /* Feedback - Border (Alerts & Messages) */
+  --feedback-neutral-border-color: var(--green-700);
+  --feedback-positive-border-color: var(--green-700);
+  --feedback-info-border-color: var(--grey-500);
+  --feedback-warning-border-color: var(--orange-600);
+  --feedback-attention-border-color: var(--red-600);
+  /* Feedback - Background (Alerts & Messages) */
+  --feedback-neutral-background: var(--green-300);
+  --feedback-positive-background: var(--green-200);
+  --feedback-info-background: var(--green-100);
+  --feedback-warning-background: var(--orange-100);
+  --feedback-attention-background: var(--red-100);
+  /* Feedback - Icon (Alerts & Messages) */
+  --feedback-neutral-icon: var(--green-900);
+  --feedback-positive-icon: var(--green-800);
+  --feedback-info-icon: var(--grey-500);
+  --feedback-warning-icon: var(--orange-700);
+  --feedback-attention-icon: var(--red-600);
+  /* Feedback - Text (Alerts & Messages) */
+  --feedback-neutral-text: var(--green-1100);
+  --feedback-positive-text: var(--green-900);
+  --feedback-info-text: var(--grey-600);
+  --feedback-warning-text: var(--orange-900);
+  --feedback-attention-text: var(--red-900);
+  /* Feedback - Action (Button & Link) */
+  --feedback-neutral-action-background: var(--green-200);
+  --feedback-positive-action-background: var(--green-300);
+  --feedback-info-action-background: var(--grey-200);
+  --feedback-warning-action-background: var(--orange-200);
+  --feedback-attention-action-background: var(--red-200);
+  /* Action - Primary (Button & Link) */
+  --action-primary-border-color: var(--black-opacity-0);
+  --action-primary-border-color-hover: var(--black-opacity-0);
+  --action-primary-border-color-focus: var(--black-opacity-0);
+  --action-primary-border-color-disabled: var(--black-opacity-0);
+  --action-primary-background: var(--green-1100);
+  --action-primary-background-hover: var(--green-1400);
+  --action-primary-background-focus: var(--green-1400);
+  --action-primary-background-disabled: var(--grey-200);
+  --action-primary-text-color: var(--white);
+  --action-primary-text-color-hover: var(--white);
+  --action-primary-text-color-focus: var(--white);
+  --action-primary-text-color-disabled: var(--grey-400);
+  /* Action - Secondary (Button & Link) */
+  --action-secondary-border-color: var(--green-1000);
+  --action-secondary-border-color-hover: var(--green-1400);
+  --action-secondary-border-color-focus: var(--green-1400);
+  --action-secondary-border-color-disabled: var(--grey-300);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--white-opacity-10);
+  --action-secondary-background-focus: var(--white-opacity-10);
+  --action-secondary-background-disabled: var(--grey-200);
+  --action-secondary-text-color: var(--green-1300);
+  --action-secondary-text-color-hover: var(--green-1300);
+  --action-secondary-text-color-focus: var(--green-1300);
+  --action-secondary-text-color-disabled: var(--grey-400);
+  /* Action - Tertiary (Button & Link) */
+  --action-tertiary-border-color: var(--black-opacity-0);
+  --action-tertiary-border-color-hover: var(--black-opacity-0);
+  --action-tertiary-border-color-focus: var(--black-opacity-0);
+  --action-tertiary-border-color-disabled: var(--black-opacity-0);
+  --action-tertiary-background: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--green-400);
+  --action-tertiary-background-focus: var(--green-400);
+  --action-tertiary-background-disabled: var(--grey-200);
+  --action-tertiary-text-color: var(--green-1100);
+  --action-tertiary-text-color-hover: var(--green-1200);
+  --action-tertiary-text-color-focus: var(--green-1200);
+  --action-tertiary-text-color-disabled: var(--grey-400);
+  /* Action - Attention (Button & Link) */
+  --action-attention-border-color: var(--black-opacity-0);
+  --action-attention-border-color-hover: var(--black-opacity-0);
+  --action-attention-border-color-focus: var(--black-opacity-0);
+  --action-attention-border-color-disabled: var(--black-opacity-0);
+  --action-attention-background: var(--red-500);
+  --action-attention-background-hover: var(--red-600);
+  --action-attention-background-focus: var(--red-600);
+  --action-attention-background-disabled: var(--grey-200);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--grey-400);
+  /* Action - Avatar (Button & Link) */
+  --action-avatar-background: var(--green-400);
+  --action-avatar-background-hover: var(--green-300);
+  /* Surface */
+  --surface: var(--green-200);
+  --surface-elevated-alpha: var(--green-300);
+  --surface-elevated-100: var(--green-300);
+  --surface-elevated-200: var(--green-400);
+  --surface-recessed-alpha: var(--green-400);
+  --surface-recessed-100: var(--green-300);
+  --surface-recessed-200: var(--green-400);
+  /* Stroke */
+  --outline-color: var(--green-900);
+  --border-color: var(--green-700);
+  /* Text */
+  --text-color: var(--green-1400);
+  --text-color-success: var(--green-700);
+  --text-color-warning: var(--orange-600);
+  --text-color-error: var(--red-600);
+  --text-color-optional: var(--green-800);
+  /* Overlay */
+  --backdrop-overlay: var(--green-1400-opacity-80);
+  /* ================================================================================================== */
+  /* Components                                                                                         */
+  /* ================================================================================================== */
+  /* Switch */
+  --switch-track-background: var(--green-800);
+  --switch-track-background-checked: var(--green-1200);
+  --switch-thumb-bg: var(--green-300);
+  --switch-icon: var(--green-1000);
+  /* Icon */
+  --icon-color-default: var(--green-1000);
+  --icon-color-inverted: var(--green-100);
+  /* Badge */
+  --badge-text-color: var(--white);
+  --badge-background-neutral: var(--green-900);
+  --badge-background-positive: var(--green-600);
+  --badge-background-warning: var(--orange-600);
+  --badge-background-attention: var(--red-600);
+  /* Heading */
+  --heading-text-color: var(--green-1100);
+  /* Link */
+  --link-text-color-default: var(--green-1100);
+  --link-text-color-default-hover: var(--green-1400);
+  --link-text-color-default-focus: var(--green-1400);
+  --link-text-color-default-disabled: var(--green-500);
+  /* Input */
+  --input-background: var(--green-200);
+  --input-background-disabled: var(--green-200);
+
+  /* Checkbox */
+  --checkbox-background: var(--green-100);
+  --checkbox-background-checked: var(--green-900);
+  --checkbox-icon-color-checked: var(--green-200);
+
+  --checkbox-background-disabled: var(--green-100);
+  --checkbox-background-checked-disabled: var(--green-800);
+  --checkbox-icon-color-checked-disabled: var(--green-100);
+
+  /* Addon */
+  --addon-background: var(--green-200);
+  /* Tabs */
+  --tab-border-color: var(--green-700);
+
+  --tab-background: var(--green-400);
+  --tab-icon: var(--green-1100);
+  --tab-text-color: var(--green-1100);
+
+  --tab-background-active: var(--green-200);
+  --tab-icon-active: var(--green-1000);
+  --tab-text-color-active: var(--green-1000);
+  --tab-shadow-active: var(--black-opacity-10);
+
+  /* Carousel */
+  --carousel-background: var(--green-200);
+
+  /* Slat */
+  --slat-background: var(--white-opacity-60);
+  --slat-background-hover: var(--white-opacity-90);
+  --slat-card-background: var(--surface-elevated-100);
+  --slat-card-background-hover: var(--surface-elevated-200);
+  --slat-avatar-background: var(--green-400);
+  --slat-avatar-background-hover: var(--green-300);
+  --slat-card-avatar-background: var(--green-200);
+  --slat-card-avatar-background-hover: var(--green-200);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--green-400);
+  --avatar-background-positive: var(--green-400);
+  --avatar-background-warning: var(--orange-400);
+  --avatar-background-attention: var(--red-400);
+
+  /* Chip */
+  --chip-background: var(--green-200);
+  --chip-background-hover: var(--green-300);
+  --chip-background-focus: var(--green-300);
+  --chip-background-active: var(--green-1100);
+  --chip-border-color: var(--green-200);
+  --chip-border-color-hover: var(--green-100);
+  --chip-border-color-focus: var(--green-100);
+  --chip-border-color-active: var(--green-1100);
+  --chip-text-color-active: var(--green-200);
+  --chip-icon-fill: var(--green-1100);
+  --chip-dismiss-action-background: var(--green-300);
+  --chip-dismiss-action-background-hover: var(--black-opacity-0);
+
+  /* Dropdown */
+  --dropdown-background: var(--green-300);
+  --dropdown-border-color: var(--black-opacity-20);
+  --dropdown-shadow-color: var(--green-400);
+  --dropdown-button-background-hover: var(--green-200);
+
+  /* Progress */
+  --progress-bar-background: var(--green-900);
+  --progress-track-background: var(--green-400);
+  --progress-loading-bar-100: var(--green-500);
+  --progress-loading-bar-200: var(--green-400);
+
+  /* Stepper */
+  --stepper-color: var(--green-1000);
+  --stepper-background-active: var(--stepper-color);
+  --stepper-background-inactive: var(--green-400);
+  --stepper-border-color: var(--stepper-color);
+  --stepper-text-color-active: var(--stepper-color);
+
+  /* Dialog */
+  --dialog-background: var(--green-300);
+
+  /* Drawer */
+  --drawer-background: var(--green-300);
+}
+
+/* ==================================================================================================== */
+/* 3. DARK MODE                                                                                         */
+/* ==================================================================================================== */
+html[data-brand="sensei"][data-theme="dark"] {
+  /* Form */
+  --form-default-text-color: var(--green-400);
+  --form-success-text-color: var(--green-400);
+  --form-warning-text-color: var(--orange-400);
+  --form-error-text-color: var(--red-400);
+  --form-default-text-color-hover: var(--green-300);
+  --form-success-text-color-hover: var(--green-300);
+  --form-warning-text-color-hover: var(--orange-300);
+  --form-error-text-color-hover: var(--red-300);
+  --form-default-border-color: var(--border-color);
+  --form-success-border-color: var(--green-400);
+  --form-warning-border-color: var(--orange-400);
+  --form-error-border-color: var(--red-400);
+  --form-default-border-color-hover: var(--green-1100);
+  --form-success-border-color-hover: var(--green-300);
+  --form-warning-border-color-hover: var(--orange-300);
+  --form-error-border-color-hover: var(--red-300);
+  --form-default-placeholder-color: var(--green-400);
+  --form-default-placeholder-color-hover: var(--green-500);
+  --form-default-placeholder-color-focus: var(--green-500);
+  --form-default-placeholder-color-disabled: var(--green-1200);
+  /* Feedback - Border (Alerts & Messages) */
+  --feedback-neutral-border-color: var(--green-1200);
+  --feedback-positive-border-color: var(--green-800);
+  --feedback-info-border-color: var(--green-1100);
+  --feedback-warning-border-color: var(--orange-400);
+  --feedback-attention-border-color: var(--red-400);
+  /* Feedback - Background (Alerts & Messages) */
+  --feedback-neutral-background: var(--green-1300);
+  --feedback-positive-background: var(--green-1000);
+  --feedback-info-background: var(--green-1200);
+  --feedback-warning-background: var(--orange-800);
+  --feedback-attention-background: var(--red-800);
+  /* Feedback - Icon (Alerts & Messages) */
+  --feedback-neutral-icon: var(--green-300);
+  --feedback-positive-icon: var(--green-200);
+  --feedback-info-icon: var(--green-300);
+  --feedback-warning-icon: var(--orange-200);
+  --feedback-attention-icon: var(--red-200);
+  /* Feedback - Text (Alerts & Messages) */
+  --feedback-neutral-text: var(--green-100);
+  --feedback-positive-text: var(--green-100);
+  --feedback-info-text: var(--green-300);
+  --feedback-warning-text: var(--orange-100);
+  --feedback-attention-text: var(--red-100);
+  /* Feedback - Action (Button & Link) */
+  --feedback-neutral-action-background: var(--green-900);
+  --feedback-positive-action-background: var(--green-900);
+  --feedback-info-action-background: var(--green-1300);
+  --feedback-warning-action-background: var(--orange-900);
+  --feedback-attention-action-background: var(--red-900);
+  /* Action - Primary (Button & Link) */
+  --action-primary-border-color: var(--black-opacity-0);
+  --action-primary-border-color-hover: var(--black-opacity-0);
+  --action-primary-border-color-focus: var(--black-opacity-0);
+  --action-primary-border-color-disabled: var(--black-opacity-0);
+  --action-primary-background: var(--green-500);
+  --action-primary-background-hover: var(--green-400);
+  --action-primary-background-focus: var(--green-400);
+  --action-primary-background-disabled: var(--green-800);
+  --action-primary-text-color: var(--green-1400);
+  --action-primary-text-color-hover: var(--green-1400);
+  --action-primary-text-color-focus: var(--green-1400);
+  --action-primary-text-color-disabled: var(--green-400);
+  /* Action - Secondary (Button & Link) */
+  --action-secondary-border-color: var(--green-400);
+  --action-secondary-border-color-hover: var(--green-500);
+  --action-secondary-border-color-focus: var(--green-500);
+  --action-secondary-border-color-disabled: var(--green-500);
+  --action-secondary-background: var(--black-opacity-0);
+  --action-secondary-background-hover: var(--green-1200);
+  --action-secondary-background-focus: var(--green-1200);
+  --action-secondary-background-disabled: var(--green-1400);
+  --action-secondary-text-color: var(--green-400);
+  --action-secondary-text-color-hover: var(--green-500);
+  --action-secondary-text-color-focus: var(--green-500);
+  --action-secondary-text-color-disabled: var(--green-500);
+  /* Action - Tertiary (Button & Link) */
+  --action-tertiary-border-color: var(--black-opacity-0);
+  --action-tertiary-border-color-hover: var(--black-opacity-0);
+  --action-tertiary-border-color-focus: var(--black-opacity-0);
+  --action-tertiary-border-color-disabled: var(--black-opacity-0);
+  --action-tertiary-background: var(--black-opacity-0);
+  --action-tertiary-background-hover: var(--green-1200);
+  --action-tertiary-background-focus: var(--green-1200);
+  --action-tertiary-background-disabled: var(--green-1400);
+  --action-tertiary-text-color: var(--green-300);
+  --action-tertiary-text-color-hover: var(--green-400);
+  --action-tertiary-text-color-focus: var(--green-400);
+  --action-tertiary-text-color-disabled: var(--green-1200);
+  /* Action - Attention (Button & Link) */
+  --action-attention-border-color: var(--black-opacity-0);
+  --action-attention-border-color-hover: var(--black-opacity-0);
+  --action-attention-border-color-focus: var(--black-opacity-0);
+  --action-attention-border-color-disabled: var(--black-opacity-0);
+  --action-attention-background: var(--red-600);
+  --action-attention-background-hover: var(--red-700);
+  --action-attention-background-focus: var(--red-700);
+  --action-attention-background-disabled: var(--red-900);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--red-300);
+  /* Action - Avatar (Button & Link) */
+  --action-avatar-background: var(--green-1100);
+  --action-avatar-background-hover: var(--green-1300);
+
+  /* Surface */
+  --surface: var(--green-1200);
+  --surface-elevated-alpha: var(--green-1200);
+  --surface-elevated-100: var(--green-1300);
+  --surface-elevated-200: var(--green-1400);
+  --surface-elevated-300: var(--green-1500);
+  --surface-recessed-alpha: var(--black-opacity-30);
+  --surface-recessed-100: var(--green-1000);
+  --surface-recessed-200: var(--green-1100);
+  --surface-recessed-300: var(--green-1200);
+  /* Stroke */
+  --outline-color: var(--green-700);
+  --border-color: var(--green-1200);
+  /* Text */
+  --text-color: var(--green-200);
+  --text-color-success: var(--green-500);
+  --text-color-warning: var(--orange-400);
+  --text-color-error: var(--red-400);
+  --text-color-optional: var(--green-900);
+  /* Overlay */
+  --backdrop-overlay: var(--green-1400-opacity-80);
+  /* ================================================================================================== */
+  /* Components                                                                                         */
+  /* ================================================================================================== */
+  /* Switch */
+  --switch-track-background: var(--green-300);
+  --switch-track-background-checked: var(--green-500);
+  --switch-thumb-bg: var(--green-1300);
+  --switch-icon: var(--green-400);
+  /* Icon */
+  --icon-color-default: var(--green-200);
+  --icon-color-inverted: var(--green-1000);
+  /* Badge */
+  --badge-text-color: var(--green-1400);
+  --badge-background-neutral: var(--green-400);
+  --badge-background-positive: var(--green-400);
+  --badge-background-warning: var(--orange-400);
+  --badge-background-attention: var(--red-400);
+  /* Heading */
+  --heading-text-color: var(--green-300);
+  /* Link */
+  --link-text-color-default: var(--green-200);
+  --link-text-color-default-hover: var(--green-400);
+  --link-text-color-default-focus: var(--green-400);
+  --link-text-color-default-disabled: var(--green-800);
+  /* Input */
+  --input-background: var(--green-1400);
+  --input-background-disabled: var(--green-1400);
+  /* Checkbox */
+  --checkbox-background: var(--green-1400);
+  --checkbox-background-checked: var(--green-500);
+  --checkbox-icon-color-checked: var(--green-1400);
+  --checkbox-background-disabled: var(--green-1300);
+  --checkbox-background-checked-disabled: var(--green-800);
+  --checkbox-icon-color-checked-disabled: var(--green-1400);
+  /* Addon */
+  --addon-background: var(--green-1400);
+  /* Tabs */
+  --tab-border-color: var(--green-1200);
+
+  --tab-background: var(--green-1400);
+  --tab-icon: var(--green-400);
+  --tab-text-color: var(--green-400);
+
+  --tab-background-active: var(--green-300);
+  --tab-icon-active: var(--green-1200);
+  --tab-text-color-active: var(--green-1200);
+  --tab-shadow-active: var(--green-1400);
+
+  /* Carousel */
+  --carousel-background: var(--green-1200);
+
+  /* Slat */
+  --slat-background: var(--green-1200);
+  --slat-background-hover: var(--green-1100);
+  --slat-card-background: var(--green-1300);
+  --slat-card-background-hover: var(--green-1200);
+  --slat-avatar-background: var(--green-1300);
+  --slat-avatar-background-hover: var(--green-1200);
+  --slat-card-avatar-background: var(--green-1100);
+  --slat-card-avatar-background-hover: var(--green-1000);
+
+  /* Avatar */
+  --avatar-background-neutral: var(--green-900);
+  --avatar-background-positive: var(--green-900);
+  --avatar-background-warning: var(--orange-900);
+  --avatar-background-attention: var(--red-900);
+
+  /* Chip */
+  --chip-background: var(--green-1200);
+  --chip-background-hover: var(--green-1400);
+  --chip-background-focus: var(--green-1400);
+  --chip-background-active: var(--green-500);
+  --chip-border-color: var(--green-1200);
+  --chip-border-color-hover: var(--green-1200);
+  --chip-border-color-focus: var(--green-1200);
+  --chip-border-color-active: var(--green-500);
+  --chip-text-color-active: var(--green-1400);
+  --chip-icon-fill: var(--white);
+  --chip-dismiss-action-background: var(--green-1300);
+  --chip-dismiss-action-background-hover: var(--white-opacity-0);
+
+  /* Dropdown */
+  --dropdown-background: var(--green-1400);
+  --dropdown-border-color: var(--black-opacity-20);
+  --dropdown-shadow-color: var(--black-opacity-20);
+  --dropdown-button-background-hover: var(--green-1300);
+
+  /* Progress */
+  --progress-bar-background: var(--green-500);
+  --progress-track-background: var(--green-1400);
+  --progress-loading-bar-100: var(--green-1100);
+  --progress-loading-bar-200: var(--green-1200);
+
+  /* Stepper */
+  --stepper-color: var(--green-500);
+  --stepper-background-active: var(--stepper-color);
+  --stepper-background-inactive: var(--green-1300);
+  --stepper-border-color: var(--stepper-color);
+  --stepper-text-color-active: var(--stepper-color);
+
+  /* Dialog */
+  --dialog-background: var(--green-1300);
+
+  /* Drawer */
+  --drawer-background: var(--green-1300);
+}
+
+/* ==================================================================================================== */
+/* 4. SET THE FOUNDATION                                                                                */
+/* ==================================================================================================== */
+html[data-brand="sensei"] {
+  /* Feedback - Border (Alerts & Messages) */
+  --feedback-neutral-border: var(--stroke-size-100) var(--stroke-solid) var(--feedback-neutral-border-color);
+  --feedback-positive-border: var(--stroke-size-100) var(--stroke-solid) var(--feedback-positive-border-color);
+  --feedback-info-border: var(--stroke-size-100) var(--stroke-solid) var(--feedback-info-border-color);
+  --feedback-warning-border: var(--stroke-size-100) var(--stroke-solid) var(--feedback-warning-border-color);
+  --feedback-attention-border: var(--stroke-size-100) var(--stroke-solid) var(--feedback-attention-border-color);
+  /* Action (Button & Link) */
+  --action-primary-border: var(--stroke-size-100) var(--stroke-solid) var(--action-primary-border-color);
+  --action-primary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-primary-border-color-hover);
+  --action-primary-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-primary-border-color-focus);
+  --action-primary-border-disabled: var(--stroke-size-100) var(--stroke-solid)
+    var(--action-primary-border-color-disabled);
+  --action-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--action-secondary-border-color);
+  --action-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-secondary-border-color-hover);
+  --action-secondary-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-secondary-border-color-focus);
+  --action-secondary-border-disabled: var(--stroke-size-100) var(--stroke-solid)
+    var(--action-secondary-border-color-disabled);
+  --action-tertiary-border: var(--stroke-size-100) var(--stroke-solid) var(--action-tertiary-border-color);
+  --action-tertiary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-tertiary-border-color-hover);
+  --action-tertiary-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-tertiary-border-color-focus);
+  --action-tertiary-border-disabled: var(--stroke-size-100) var(--stroke-solid)
+    var(--action-tertiary-border-color-disabled);
+  --action-attention-border: var(--stroke-size-100) var(--stroke-solid) var(--action-attention-border-color);
+  --action-attention-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-attention-border-color-hover);
+  --action-attention-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-attention-border-color-focus);
+  --action-attention-border-disabled: var(--stroke-size-100) var(--stroke-solid)
+    var(--action-attention-border-color-disabled);
+  --action-font-size: var(--text-font-size);
+  --action-line-height: var(--text-line-height);
+  --action-font-weight: var(--font-weight-medium);
+
+  --action-radius-x-small: var(--radius-300);
+  --action-radius-small: var(--radius-400);
+  --action-radius-medium: var(--radius-500);
+  --action-radius-large: var(--radius-600);
+
+  /* Card */
+  --card-radius: var(--radius-400);
+  /* Tab */
+  --tab-radius: var(--radius-400);
+  /* Chip */
+  --chip-icon-fill: var(--icon-color-default);
+  /* Dialog */
+  --dialog-radius: var(--radius-400);
+}

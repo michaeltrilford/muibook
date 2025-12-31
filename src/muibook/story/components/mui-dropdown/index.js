@@ -450,9 +450,9 @@ class storyDropdown extends HTMLElement {
     `;
 
     // === Persistent Toggle Logic ===
-    shadowRoot.querySelectorAll("[data-toggle-dropdown]").forEach((dropdown) => {
+    this.shadowRoot.querySelectorAll("[data-toggle-dropdown]").forEach((dropdown) => {
       const toggleId = dropdown.getAttribute("data-toggle-dropdown");
-      const toggle = shadowRoot.querySelector(`[data-toggle-control="${toggleId}"]`);
+      const toggle = this.shadowRoot.querySelector(`[data-toggle-control="${toggleId}"]`);
       if (!toggle) return;
 
       dropdown.addEventListener("dropdown-toggle", (event) => {
@@ -480,7 +480,7 @@ class storyDropdown extends HTMLElement {
     });
 
     // === File Upload Logic ===
-    shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) => {
+    this.shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) => {
       let currentObjectURL = null;
 
       const smartCard = dropdown.querySelector("mui-smart-card");

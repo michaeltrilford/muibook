@@ -453,9 +453,14 @@
       "types": "./dist/types/agent/keywords/index.d.ts"
     },
     "./custom-elements.json": "./dist/esm/custom-elements.json",
+    "./css/mui-brand.css": "./dist/esm/css/mui-brand.css",
     "./css/mui-tokens.css": "./dist/esm/css/mui-tokens.css",
     "./css/mui-reset.css": "./dist/esm/css/mui-reset.css",
-    "./css/mui-base.css": "./dist/esm/css/mui-base.css"
+    "./css/mui-base.css": "./dist/esm/css/mui-base.css",
+    "./tokens/js": {
+      "import": "./dist/esm/tokens/js/index.js",
+      "types": "./dist/types/tokens/js/index.d.ts"
+    }
   },
   "scripts": {
     "dev": "vite",
@@ -466,7 +471,10 @@
     "build:create-mui-app": "vite build --config vite.create-mui-app.config.ts",
     "preview:create-mui-app": "vite preview --config vite.create-mui-app.config.ts",
     "cem": "cem analyze --outdir public",
-    "copy-cem": "cp public/custom-elements.json dist/esm/custom-elements.json"
+    "copy-cem": "cp public/custom-elements.json dist/esm/custom-elements.json",
+    "token-build": "node token-build/index.js",
+    "token-build:watch": "nodemon --watch token-build --ext json --exec \"npm run token-build\"",
+    "prebuild": "npm run token-build"
   },
   "files": [
     "dist/esm/index.js",
@@ -474,15 +482,18 @@
     "dist/esm/utils",
     "dist/esm/agent",
     "dist/esm/css",
+    "dist/esm/tokens",
     "dist/types/index.d.ts",
     "dist/types/components",
     "dist/types/utils",
     "dist/types/agent",
+    "dist/types/tokens",
     "dist/esm/custom-elements.json"
   ],
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@types/node": "^22.15.24",
+    "style-dictionary": "^4.4.0",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
   },

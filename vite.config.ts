@@ -8,6 +8,8 @@ export default defineConfig({
       entry: {
         // FALLBACK ENTRY POINT
         index: path.resolve(__dirname, "src/index.ts"),
+        // TOKENS (JS OPTION)
+        "tokens/js": path.resolve(__dirname, "src/tokens/js/index.ts"),
         // ACCORDION
         "components/mui-accordion": path.resolve(__dirname, "src/components/mui-accordion"),
         "components/mui-accordion/group": path.resolve(__dirname, "src/components/mui-accordion/group"),

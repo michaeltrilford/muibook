@@ -3,6 +3,8 @@ class MuiInput extends HTMLElement {
     return ["type", "name", "value", "placeholder", "id", "label", "disabled", "hide-label", "variant"];
   }
 
+  _changeHandler?: (e: Event) => void;
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -11,6 +13,11 @@ class MuiInput extends HTMLElement {
   connectedCallback() {
     this.render();
     this.setupListener();
+  }
+
+  disconnectedCallback() {
+    // Clean up event listeners
+    this.cleanupListeners();
   }
 
   attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null): void {
@@ -29,40 +36,50 @@ class MuiInput extends HTMLElement {
       }
     }
 
-    if (name === "type" || name === "placeholder" || name === "label" || name === "hide-label") {
+    if (name === "type" || name === "placeholder" || name === "label" || name === "hide-label" || name === "variant") {
       this.render();
       this.setupListener();
     }
   }
 
-  setupListener(): void {
-    const oldInputEl = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
-    if (!oldInputEl) return;
+  cleanupListeners() {
+    const inputEl = this.shadowRoot?.querySelector("input");
+    if (inputEl && this._changeHandler) {
+      inputEl.removeEventListener("change", this._changeHandler);
+      inputEl.removeEventListener("input", this._changeHandler);
+    }
+  }
 
-    const newInputEl = oldInputEl.cloneNode(true) as HTMLInputElement;
-    oldInputEl.parentNode?.replaceChild(newInputEl, oldInputEl);
+  setupListener() {
+    if (!this.shadowRoot) return;
 
-    newInputEl.addEventListener("input", (e: Event) => {
+    const inputEl = this.shadowRoot.querySelector("input") as HTMLInputElement | null;
+    if (!inputEl) return;
+
+    // Clean up old listeners
+    this.cleanupListeners();
+
+    // Change/Input handler - dispatching both for React compatibility
+    this._changeHandler = (e: Event) => {
       const target = e.target as HTMLInputElement;
-      this.dispatchEvent(
-        new CustomEvent("input", {
-          detail: { value: target.value },
-          bubbles: true,
-          composed: true,
-        })
-      );
-    });
 
-    newInputEl.addEventListener("change", (e: Event) => {
-      const target = e.target as HTMLInputElement;
-      this.dispatchEvent(
-        new CustomEvent("change", {
-          detail: { value: target.value },
-          bubbles: true,
-          composed: true,
-        })
-      );
-    });
+      // Update host attribute
+      this.setAttribute("value", target.value);
+
+      // Dispatch both events for better framework compatibility
+      const eventDetail = {
+        detail: { value: target.value },
+        bubbles: true,
+        composed: true,
+      };
+
+      this.dispatchEvent(new CustomEvent("change", eventDetail));
+      this.dispatchEvent(new CustomEvent("input", eventDetail));
+    };
+
+    // Attach listeners
+    inputEl.addEventListener("change", this._changeHandler);
+    inputEl.addEventListener("input", this._changeHandler);
   }
 
   updateSlottedButtons(): void {

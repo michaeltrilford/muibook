@@ -1,47 +1,33 @@
 class MuiCardBody extends HTMLElement {
+  static get observedAttributes() {
+    return ["condensed"];
+  }
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
-    if (!this.shadowRoot) return;
-    const html = /*html*/ `
-      <style>
-        :host {
-          display: block;
-          box-sizing: border-box;
-        }
-        
-        :host(.inner-space) {
-          padding: var(--space-500);
-        }
-        @media (min-width: 768px) {
-          :host(.inner-space) {
-            padding: var(--space-600);
-          }
-        }
+    this.render();
+  }
 
-        :host(.has-card-slat-group) {
-          padding-bottom: var(--space-200);
-        }
-        @media (min-width: 768px) {
-        :host(.has-card-slat-group) {
-          padding-bottom: var(--space-500);
-        }
-        }
-        
-      </style>
-      <slot></slot>
-    `;
+  attributeChangedCallback(name: string, _oldValue: string | null, _newValue: string | null): void {
+    if (name === "condensed") {
+      // Re-run the slotted content logic when condensed changes
+      this.updateSlottedContent();
+    }
+  }
 
-    this.shadowRoot.innerHTML = html;
-
+  updateSlottedContent(): void {
     requestAnimationFrame(() => {
       if (!this.shadowRoot) return;
       const slot = this.shadowRoot.querySelector("slot") as HTMLSlotElement | null;
       if (!slot) return;
       const nodes = slot.assignedNodes({ flatten: true });
+
+      // CLEAR ALL CLASSES FIRST
+      this.classList.remove("inner-space", "has-card-slat-group", "has-accordion-slat-group");
 
       let hasLayoutComponent = false;
 
@@ -72,8 +58,9 @@ class MuiCardBody extends HTMLElement {
               slat.classList.add("card-slot");
               if (this.hasAttribute("condensed")) {
                 slat.classList.add("condensed-slot");
+              } else {
+                slat.classList.remove("condensed-slot");
               }
-              // Slats do not count as layout components
             }
           });
 
@@ -118,6 +105,41 @@ class MuiCardBody extends HTMLElement {
         this.classList.add("inner-space");
       }
     });
+  }
+
+  render() {
+    if (!this.shadowRoot) return;
+    const html = /*html*/ `
+      <style>
+        :host {
+          display: block;
+          box-sizing: border-box;
+        }
+        
+        :host(.inner-space) {
+          padding: var(--space-500);
+        }
+        @media (min-width: 768px) {
+          :host(.inner-space) {
+            padding: var(--space-600);
+          }
+        }
+
+        :host(.has-card-slat-group) {
+          padding-bottom: var(--space-200);
+        }
+        @media (min-width: 768px) {
+        :host(.has-card-slat-group) {
+          padding-bottom: var(--space-500);
+        }
+        }
+        
+      </style>
+      <slot></slot>
+    `;
+
+    this.shadowRoot.innerHTML = html;
+    this.updateSlottedContent();
   }
 }
 

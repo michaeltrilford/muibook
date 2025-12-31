@@ -9,11 +9,21 @@ class MuiHeading extends HTMLElement {
   }
 
   connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback(_name: string, oldValue: string | null, newValue: string | null) {
+    if (oldValue === newValue) return;
+    if (this.shadowRoot) {
+      this.render();
+    }
+  }
+
+  render() {
     if (!this.shadowRoot) return;
 
     const size = this.getAttribute("size") || "1";
-    const level = this.getAttribute("level") || size; // fallback if level isn't provided
-
+    const level = this.getAttribute("level") || size;
     const tag = `h${level}`;
 
     this.shadowRoot.innerHTML = /*html*/ `

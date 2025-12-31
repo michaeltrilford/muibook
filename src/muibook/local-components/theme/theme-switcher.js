@@ -110,7 +110,7 @@ class ThemeSwitcher extends HTMLElement {
   }
 
   applySettings() {
-    const brand = localStorage.getItem("brand") || "default";
+    const brand = localStorage.getItem("brand") || "mui";
     document.documentElement.setAttribute("data-brand", brand);
 
     const brandSwitcher = this.shadowRoot.getElementById("brand-switcher");

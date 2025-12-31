@@ -1,0 +1,62 @@
+{
+  "source": ["token-build/tokens/mui.json"],
+  "platforms": {
+    "web-npm": {
+      "transformGroup": "css",
+      "buildPath": "public/css/",
+      "files": [
+        {
+          "destination": "mui-brand.css",
+          "format": "css/variables-with-typography-doc"
+        }
+      ]
+    },
+    "web-src": {
+      "transformGroup": "css",
+      "buildPath": "src/tokens/css/",
+      "files": [
+        {
+          "destination": "mui-brand.css",
+          "format": "css/variables-with-typography-doc"
+        }
+      ]
+    },
+    "js-src": {
+      "transformGroup": "js",
+      "buildPath": "src/tokens/js/",
+      "files": [
+        {
+          "destination": "index.ts",
+          "format": "javascript/es6"
+        }
+      ]
+    },
+    "ios-src": {
+      "transformGroup": "ios/custom",
+      "buildPath": "src/tokens/ios/",
+      "files": [
+        {
+          "destination": "MuiBrandTokens.swift",
+          "format": "ios-swift/class-custom",
+          "options": {
+            "className": "BrandTokens"
+          }
+        }
+      ]
+    },
+    "android-src": {
+      "transformGroup": "android/custom",
+      "buildPath": "src/tokens/android/",
+      "files": [
+        {
+          "destination": "colors.xml",
+          "format": "android/colors-custom"
+        },
+        {
+          "destination": "dimens.xml",
+          "format": "android/dimens-custom"
+        }
+      ]
+    }
+  }
+}

@@ -1,5 +1,34 @@
 ## Header [Start]
 
+## v9.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/9.0.0)
+
+## Header [End]
+
+### Added
+
+- Introduced `brand.css` as the base for future JSON → token generation using the Design Token Format Module.
+- Added semantic token mapping in `tokens.css` sourced from brand primitives.
+
+### Changed
+
+- Aligned brand primitives to semantic tokens across the system.
+- Updated Input, Select, Checkbox, and File Upload to improve event bubbling and React data handling.
+- Storefront UI refreshed, theme examples improved, moved to styled dictionary build for serving themes.
+- Improved theme loading fallback when non-existent theme is requested.
+
+### Fixed
+
+- Normalised `alignx` and `aligny` to lowercase for safer React prop usage.
+- Heading component now responds to attribute changes correctly.
+- Dialog wrapper uses display: contents to avoid layout issues when hidden.
+- attributeChanged reliability fixes across Alert, Button, Card, Dialog, Grid, Heading, Stacks, Tabs, and others.
+
+---
+
+## Header [Start]
+
 ## v8.0.1
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/8.0.0)

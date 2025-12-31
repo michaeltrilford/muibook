@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Don't edit directly • Generated on Wed, 31 Dec 2025 01:53:05 GMT • muibook.com  
+-->
+<resources>
+    <dimen name="font_size_15">17.6sp</dimen>
+    <dimen name="font_size_25">19.2sp</dimen>
+    <dimen name="font_size_50">22.4sp</dimen>
+    <dimen name="font_size_100">25.6sp</dimen>
+    <dimen name="font_size_200">28.8sp</dimen>
+    <dimen name="font_size_300">33.6sp</dimen>
+    <dimen name="font_size_400">38.4sp</dimen>
+    <dimen name="font_size_500">57.6sp</dimen>
+    <dimen name="font_size_600">76.8sp</dimen>
+    <dimen name="font_size_700">96sp</dimen>
+    <dimen name="font_size_800">115.2sp</dimen>
+    <dimen name="font_size_900">134.4sp</dimen>
+    <dimen name="font_size_1000">153.6sp</dimen>
+    <dimen name="radius_100">4dp</dimen>
+    <dimen name="radius_150">6dp</dimen>
+    <dimen name="radius_200">8dp</dimen>
+    <dimen name="radius_300">16dp</dimen>
+    <dimen name="radius_400">24dp</dimen>
+    <dimen name="radius_500">36dp</dimen>
+    <dimen name="radius_600">48dp</dimen>
+    <dimen name="radius_000">0dp</dimen>
+    <dimen name="space_100">9.6dp</dimen>
+    <dimen name="space_200">12.8dp</dimen>
+    <dimen name="space_300">19.2dp</dimen>
+    <dimen name="space_400">25.6dp</dimen>
+    <dimen name="space_500">38.4dp</dimen>
+    <dimen name="space_600">57.6dp</dimen>
+    <dimen name="space_700">76.8dp</dimen>
+    <dimen name="space_800">96dp</dimen>
+    <dimen name="space_000">0dp</dimen>
+    <dimen name="space_025">3.2dp</dimen>
+    <dimen name="space_050">6.4dp</dimen>
+    <dimen name="stroke_size_100">1dp</dimen>
+    <dimen name="stroke_size_200">2dp</dimen>
+    <dimen name="stroke_size_300">3dp</dimen>
+    <dimen name="stroke_size_400">4dp</dimen>
+    <dimen name="stroke_size_500">5dp</dimen>
+</resources>

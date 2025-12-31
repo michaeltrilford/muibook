@@ -14,6 +14,8 @@ function isVariant(value: string): value is Variant {
 }
 
 class MuiAlert extends HTMLElement {
+  private actionSlotListener: (() => void) | null = null;
+
   static get observedAttributes() {
     return ["variant"];
   }
@@ -24,6 +26,16 @@ class MuiAlert extends HTMLElement {
   }
 
   connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (name === "variant" && oldValue !== newValue && this.shadowRoot) {
+      this.render();
+    }
+  }
+
+  render() {
     const rawVariant = this.getAttribute("variant") || "positive";
 
     const variantAliases: Record<VariantAlias, Variant> = {
@@ -35,7 +47,11 @@ class MuiAlert extends HTMLElement {
       ? rawVariant
       : variantAliases[rawVariant as VariantAlias] || "positive";
 
-    this.setAttribute("variant", variant);
+    // Update the variant attribute if it was an alias
+    if (rawVariant !== variant) {
+      this.setAttribute("variant", variant);
+      return; // Will trigger attributeChangedCallback again with correct variant
+    }
 
     // Define aria-live mapping based on variant
     const ariaLiveMapping: Record<Variant, "polite" | "assertive"> = {
@@ -77,7 +93,6 @@ class MuiAlert extends HTMLElement {
       attention: "Error!",
     };
 
-    this.setAttribute("aria-live", ariaLiveMapping[variant]);
     const iconTag = iconTags[variant];
     const iconColor = iconColors[variant];
     const labelColor = labelColors[variant];
@@ -111,7 +126,6 @@ class MuiAlert extends HTMLElement {
       ::slotted(mui-button[slot="action"]),
       ::slotted(mui-link[slot="action"]) { padding-top: var(--space-100); }
 
-
       @media (min-width: 600px) {
         :host { gap: var(--alert-gap-horizontal-desktop); }
         :host([has-action]) { padding-right: var(--space-100); }
@@ -144,7 +158,6 @@ class MuiAlert extends HTMLElement {
         .join("")}
     `;
 
-    // Add the feedback states to body
     if (!this.shadowRoot) return;
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
@@ -156,16 +169,26 @@ class MuiAlert extends HTMLElement {
       <slot name="action"></slot>
     `;
 
+    // Re-setup action slot after rendering
+    this.setupActionSlot();
+  }
+
+  setupActionSlot() {
     const actionSlot = this.shadowRoot?.querySelector('slot[name="action"]') as HTMLSlotElement | null;
 
     if (actionSlot) {
+      // Prevent memory leaks
+      if (this.actionSlotListener) {
+        actionSlot.removeEventListener("slotchange", this.actionSlotListener);
+      }
+
       const checkForAction = () => {
+        const variant = this.getAttribute("variant") || "positive";
         const assigned = actionSlot.assignedElements();
         let hasAction = false;
 
         assigned.forEach((el: Element) => {
           const tag = el.tagName;
-
           const isActionComponent = tag === "MUI-BUTTON" || tag === "MUI-LINK";
 
           if (isActionComponent) {
@@ -182,8 +205,10 @@ class MuiAlert extends HTMLElement {
         }
       };
 
-      actionSlot.addEventListener("slotchange", checkForAction);
-      requestAnimationFrame(checkForAction); // Run once on init
+      // Store reference to listener for cleanup
+      this.actionSlotListener = checkForAction;
+      actionSlot.addEventListener("slotchange", this.actionSlotListener);
+      requestAnimationFrame(checkForAction);
     }
   }
 }
