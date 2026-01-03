@@ -114,6 +114,7 @@ class MuiSmartCard extends HTMLElement {
         }
 
         :host {
+          display: block;
           width: 100%;
           max-width: 395px;
           min-width: 247px;

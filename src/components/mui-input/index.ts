@@ -26,6 +26,7 @@ class MuiInput extends HTMLElement {
 
     if (name === "value") {
       inputEl.value = newValue ?? "";
+      return;
     }
 
     if (name === "disabled") {
@@ -34,9 +35,10 @@ class MuiInput extends HTMLElement {
       } else {
         inputEl.setAttribute("disabled", "");
       }
+      return;
     }
 
-    if (name === "type" || name === "placeholder" || name === "label" || name === "hide-label" || name === "variant") {
+    if (["type", "placeholder", "label", "hide-label", "variant"].includes(name)) {
       this.render();
       this.setupListener();
     }

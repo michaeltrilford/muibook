@@ -34,6 +34,7 @@ class MuiSelect extends HTMLElement {
 
     if (name === "value" && selectEl) {
       selectEl.value = newValue || "";
+      return;
     }
 
     if (name === "disabled" && selectEl) {
@@ -42,9 +43,10 @@ class MuiSelect extends HTMLElement {
       } else {
         selectEl.setAttribute("disabled", "");
       }
+      return;
     }
 
-    if (["options", "label", "hide-label", "variant", "disabled"].includes(name)) {
+    if (["options", "label", "hide-label", "variant"].includes(name)) {
       this.render();
       this.setupListener();
     }
