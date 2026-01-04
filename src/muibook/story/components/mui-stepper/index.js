@@ -47,18 +47,10 @@ class storyStepper extends HTMLElement {
 
     const propItems = [
       {
-        name: "heading",
+        name: "slot",
         required: true,
-        type: "string",
-        options: "{text}",
-        default: "(required)",
-        description: "Provides the accordion element with a heading",
-      },
-      {
-        name: "slot=&#8220;detail&#8221;",
-        required: true,
-        type: "slot (named)",
-        options: "mui-list, mui-body, {elements}, etc",
+        type: "slot (default)",
+        options: "mui-step",
         default: "(required)",
         description: "Define the detail content for the expanded section within the Accordion.",
       },
@@ -79,10 +71,9 @@ class storyStepper extends HTMLElement {
       {
         name: "class",
         type: "CSS class",
-        options: "card-slot",
+        options: "",
         default: "",
-        description:
-          "By default, when Accordion is slotted into the mui-card, padding is automatically added. However, if the mui-accordion is nested within a shadow dom, you have to apply the class for correct padding",
+        description: "",
       },
     ];
 
@@ -128,20 +119,11 @@ class storyStepper extends HTMLElement {
 
     const stepPropItems = [
       {
-        name: "heading",
-        required: true,
+        name: "title",
         type: "string",
         options: "{text}",
-        default: "(required)",
-        description: "Provides the accordion element with a heading",
-      },
-      {
-        name: "slot=&#8220;detail&#8221;",
-        required: true,
-        type: "slot (named)",
-        options: "mui-list, mui-body, {elements}, etc",
-        default: "(required)",
-        description: "Define the detail content for the expanded section within the Accordion.",
+        default: "",
+        description: "Provides the step with a title",
       },
     ];
 
