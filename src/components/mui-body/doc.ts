@@ -44,6 +44,14 @@ export const muiDocs: MuiDocs = {
             "https://images.ctfassets.net/i5uwscj4pkk2/2NAalFsBAkeBz69hO093eb/b9390132c50df11749aaa47dafdb2b93/default.png",
         },
         {
+          key: "optional",
+          title: "Optional",
+          description:
+            "Optional text is visually lighter, providing subtle contrast to Standard body text. It comes in four sizes—x-small, small, medium, and large—for tailored readability. Font weights of regular and bold are also available, giving flexibility for emphasis or hierarchy.",
+          image:
+            "",
+        },
+        {
           key: "success",
           title: "Success",
           description:

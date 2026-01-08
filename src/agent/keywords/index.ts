@@ -41,8 +41,8 @@ export const muiKeywords: Record<string, string[]> = {
   container: ["container", "wrapper", "layout", "section"],
   responsive: ["responsive", "breakpoint", "mobile", "desktop", "showAbove", "showBelow"],
   rule: ["rule", "divider", "separator", "line", "hr"],
-  heading: ["heading", "title", "h1", "h2", "h3", "level"],
-  body: ["body", "text", "paragraph", "copy"],
+  heading: ["heading", "title", "h1", "h2", "h3", "size", "level"],
+  body: ["body", "text", "paragraph", "copy", "default", "optional", "success", "warning", "error"],
   list: ["list", "items", "ul", "li"],
   slat: [
     "slat",

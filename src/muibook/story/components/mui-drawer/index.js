@@ -1007,7 +1007,7 @@ class storyDrawer extends HTMLElement {
                   <mui-button variant="tertiary" data-drawer="hook">
                     <mui-icon-menu size="medium"></mui-icon-menu>
                   </mui-button>
-                  <mui-heading size="4" level="4">Premium</mui-heading>
+                  <mui-heading size="1" level="4">Premium</mui-heading>
                 </mui-h-stack>
               </div>
               <div class="page-content">
@@ -1016,7 +1016,7 @@ class storyDrawer extends HTMLElement {
             </div>
             <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
               <guides-logo style="width: 24px;"></guides-logo>
-              <mui-heading size="4" level="4">Guru</mui-heading>
+              <mui-heading size="1" level="4">Guru</mui-heading>
             </mui-h-stack>
 
             ${menuBillItems}

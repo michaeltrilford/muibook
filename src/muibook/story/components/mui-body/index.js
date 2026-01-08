@@ -36,7 +36,7 @@ class storyBody extends HTMLElement {
       {
         name: "variant",
         type: "string",
-        options: "default, success, warning, error",
+        options: "default, optional, success, warning, error",
         default: "default",
         description: "Set the mood of the text for feedback states.",
       },
@@ -180,6 +180,11 @@ class storyBody extends HTMLElement {
             <div slot="body">
               <mui-v-stack space="var(--space-500)">
                 <div>
+                  <mui-heading size="4">Optional</mui-heading>
+                  <mui-body variant="optional">Risus Mollis Dapibus</mui-body>
+                  <mui-body>Risus Mollis Dapibus</mui-body>
+                </div>
+                <div>
                   <mui-heading size="4">Success</mui-heading>
                   <mui-body variant="success">Risus Mollis Dapibus</mui-body>
                 </div>
@@ -195,7 +200,9 @@ class storyBody extends HTMLElement {
             </div>
 
             <story-code-block slot="footer" scrollable>
-              &lt;mui-body variant="success"&gt; ... &lt;/mui-body&gt;
+              &lt;mui-body variant="optional"&gt; ... &lt;/mui-body&gt;
+              <br />
+               &lt;mui-body variant="success"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body variant="warning"&gt; ... &lt;/mui-body&gt;
               <br />

@@ -1,5 +1,29 @@
 ## Header [Start]
 
+## v9.1.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/9.1.0)
+
+## Header [End]
+
+### Added
+
+- Body Component: Added Optional variant and updated centralised Usage Guidelines & Prompts
+- Added A2UI Prompts to `prompts/index.ts` with JSON tree output
+
+### Changed
+
+- Ensured Disabled attr updates in React
+- Input, Select: improve attribute change condition readability
+
+### Fixed
+
+- Card: The parent element should be block by default.
+
+---
+
+## Header [Start]
+
 ## v9.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/9.0.0)

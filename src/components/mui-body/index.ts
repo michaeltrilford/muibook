@@ -69,6 +69,11 @@ class MuiBody extends HTMLElement {
       :host([variant="default"]) p {
         color: var(--text-color);
       }
+
+      :host([variant="optional"]) p {
+        color: var(--text-color-optional);
+      }
+
       :host([variant="success"]) p {
         color: var(--text-color-success);
       }
@@ -81,6 +86,9 @@ class MuiBody extends HTMLElement {
 
       :host([variant="default"]) ::slotted(.mui-icon) {
         fill: var(--text-color);
+      }
+      :host([variant="optional"]) ::slotted(.mui-icon) {
+        fill: var(--text-color-optional);
       }
       :host([variant="success"]) ::slotted(.mui-icon) {
         fill: var(--text-color-success);

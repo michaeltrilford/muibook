@@ -65,6 +65,7 @@ class tokensSemantic extends HTMLElement {
 
           <spec-card id="text" title="Text">
             <story-token-slat slot="body" token="--text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--text-color-optional" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--text-color-success" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--text-color-warning" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--text-color-error" variant="text-color"></story-token-slat>

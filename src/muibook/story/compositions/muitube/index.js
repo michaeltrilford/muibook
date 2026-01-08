@@ -556,7 +556,7 @@ class compMuiTube extends HTMLElement {
               </mui-button>
             </mui-responsive>
             <mui-h-stack alignx="start" aligny="center" space="var(--space-200)" style="padding: var(--space-000) var(--space-200) var(--space-000) var(--space-200); border-radius: var(--radius-000);">
-              <mui-heading level="3" size="3">Premium</mui-heading>
+              <mui-heading level="1" size="3">Premium</mui-heading>
               <mui-badge variant="neutral">AU</mui-badge>
             </mui-h-stack>
           </mui-h-stack>
@@ -602,7 +602,7 @@ class compMuiTube extends HTMLElement {
                   <mui-icon-menu size="medium"></mui-icon-menu>
                 </mui-button>
                 <mui-h-stack alignx="start" aligny="center" space="var(--space-200)" style="padding: var(--space-000) var(--space-200) var(--space-000) var(--space-200); border-radius: var(--radius-000);">
-                  <mui-heading level="3" size="3">Premium</mui-heading>
+                  <mui-heading level="1" size="3">Premium</mui-heading>
                   <mui-badge variant="neutral">AU</mui-badge>
                 </mui-h-stack>
               </mui-h-stack>

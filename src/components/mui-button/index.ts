@@ -606,6 +606,17 @@ class MuiButton extends HTMLElement {
   }
 
   attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+    if (name === "disabled") {
+      const button = this.shadowRoot?.querySelector("button");
+      if (button) {
+        if (this.hasAttribute("disabled")) {
+          button.setAttribute("disabled", "");
+        } else {
+          button.removeAttribute("disabled");
+        }
+      }
+    }
+
     if (name === "size" && oldValue !== newValue && this.shadowRoot) {
       // Re-run icon size update when button size changes
       requestAnimationFrame(() => {

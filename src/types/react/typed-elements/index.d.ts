@@ -70,7 +70,7 @@ declare global {
       "mui-body": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         size?: "x-small" | "small" | "medium" | "large";
         weight?: "regular" | "medium" | "bold";
-        variant?: "default" | "muted" | "success" | "warning" | "error" | string;
+        variant?: "default" | "optional" | "success" | "warning" | "error" | string;
         class?: string;
       };
 
