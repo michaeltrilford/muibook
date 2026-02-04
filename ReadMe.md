@@ -183,19 +183,15 @@ npm publish
 
 - npm run token-build
 
----
-
 ## NPM Token REFRESH
 
-Refreshing Your npm Access Token (90-Day Expiry)
+I have to login everytime it seems.
 
-### Description:
-
-npm login tokens expire every 90 days. When they do, you must log in again before publishing packages. No other setup needs to be repeated.
+npm login tokens expire every 90 days When they do, you must log in again before publishing packages. No other setup needs to be repeated.
 
 ### Steps:
 
-1. Run npm login to refresh your token.
+1. Run `npm login` to refresh your token.
 2. Publish normally with `npm publish --access public`
 3. Repeat npm login every 90 days when prompted.
 
