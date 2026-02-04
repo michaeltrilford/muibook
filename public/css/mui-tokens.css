@@ -276,8 +276,6 @@ html[data-theme="light"] {
   --dropdown-border-color: var(--black-opacity-20);
   --dropdown-shadow-color: var(--black-opacity-10);
   --dropdown-button-background-hover: var(--white);
-  --dropdown-offset: var(--space-200);
-  --dropdown-min-width: 15rem;
 
   /* Progress */
   --progress-bar-background: var(--blue-600);
@@ -532,8 +530,6 @@ html[data-theme="dark"] {
   --dropdown-border-color: var(--black-opacity-20);
   --dropdown-shadow-color: var(--black-opacity-20);
   --dropdown-button-background-hover: var(--grey-900);
-  --dropdown-offset: var(--space-200);
-  --dropdown-min-width: 15rem;
 
   /* Progress */
   --progress-bar-background: var(--blue-500);
@@ -559,6 +555,10 @@ html[data-theme="dark"] {
 /* 4. SET THE FOUNDATION                                                                                */
 /* ==================================================================================================== */
 :where(html) {
+  /* Dropdown */
+  --dropdown-offset: var(--space-200);
+  --dropdown-min-width: 15rem;
+
   /* Feedback - Border (Alerts & Messages) */
   --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
   --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
