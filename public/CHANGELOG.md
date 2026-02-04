@@ -1,8 +1,30 @@
 ## Header [Start]
 
+## v10.0.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/10.0.1)
+
+## Header [End]
+
+### Added
+
+- None
+
+### Changed
+
+- None
+
+### Fixed
+
+- Fixed AI icon
+
+---
+
+## Header [Start]
+
 ## v10.0.0
 
-[Package](https://www.npmjs.com/package/@muibook/components/v/9.2.0)
+[Package](https://www.npmjs.com/package/@muibook/components/v/10.0.0)
 
 ## Header [End]
 
