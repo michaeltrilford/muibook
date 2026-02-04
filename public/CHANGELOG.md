@@ -1,5 +1,32 @@
 ## Header [Start]
 
+## v10.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/9.2.0)
+
+## Header [End]
+
+### Added
+
+- Added `mui-icon-pin` and `mui-icon-pin-slash`.
+- Added dropdown tokens `--dropdown-offset` and `--dropdown-min-width` with stories for custom offset and menu min-width.
+
+### Changed
+
+- Chip: moved layout/background styles into an internal container; host remains minimal.
+- Badge: moved visuals into internal container; host now uses inline-flex to hug content.
+- Dropdown: menu uses tokenized offset and min-width; menu box-sizing is border-box; min-width defaults to 15rem.
+- Icons story updated to include Pin and Pin Slash.
+- Migrated host state styling from classes to attributes across Card, Slat, Accordion Block, Table Cell, Tabs, Switch, Alert, Link, Button, and Dropdown.
+
+### Fixed
+
+- Fixed a know bug on Safari when dealing with tabs and z-index for highlight tab.
+
+---
+
+## Header [Start]
+
 ## v9.1.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/9.1.0)
