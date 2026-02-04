@@ -4,6 +4,10 @@
 
 Leverage reusable vanilla Web Components built with the Mui (MichaelUI) Design System in your project. Simply install the [@muibook/components](https://www.npmjs.com/package/@muibook/components?activeTab=readme) package to access a framework-agnostic, accessible, and customizable component library.
 
+## Usage Policy (Summary)
+
+This repository is **source-available for education and internal use**. Redistribution, repackaging, or resale is **not permitted**. The intended public distribution channel is the NPM package: `@muibook/components`. See `LICENSE` for full terms.
+
 ```bash
 npm install @muibook/components
 ```
