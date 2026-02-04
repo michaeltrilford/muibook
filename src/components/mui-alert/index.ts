@@ -99,7 +99,14 @@ class MuiAlert extends HTMLElement {
     const labelText = labelTexts[variant];
 
     const styles = /*css*/ `
+
       :host {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      section {
         border-radius: var(--alert-radius);
         padding-left: var(--alert-padding);
         padding-right: var(--alert-padding);
@@ -110,6 +117,8 @@ class MuiAlert extends HTMLElement {
         align-items: start;
         gap: var(--alert-gap-horizontal-mobile);
         box-sizing: border-box;
+        border: var(--feedback-${variant}-border);
+        background: var(--feedback-${variant}-background);
       }
 
       .icon,
@@ -118,7 +127,7 @@ class MuiAlert extends HTMLElement {
         padding-bottom: var(--alert-padding);
       }
 
-      :host([has-action]) {
+      section[has-action] {
         padding-right: var(--space-100);
         grid-template-columns: auto 1fr auto;
       }
@@ -127,8 +136,8 @@ class MuiAlert extends HTMLElement {
       ::slotted(mui-link[slot="action"]) { padding-top: var(--space-100); }
 
       @media (min-width: 600px) {
-        :host { gap: var(--alert-gap-horizontal-desktop); }
-        :host([has-action]) { padding-right: var(--space-100); }
+        :section { gap: var(--alert-gap-horizontal-desktop); }
+        :section([has-action]) { padding-right: var(--space-100); }
         ::slotted(mui-button[slot="action"]),
         ::slotted(mui-link[slot="action"]) { align-self: center; padding-top: var(--space-000); }
       }
@@ -146,27 +155,19 @@ class MuiAlert extends HTMLElement {
         gap: var(--space-000);
       }
 
-      ${["positive", "info", "warning", "attention"]
-        .map(
-          (v) => /*css*/ `
-        :host([variant="${v}"]) {
-          border: var(--feedback-${v}-border);
-          background: var(--feedback-${v}-background);
-        }
-      `
-        )
-        .join("")}
     `;
 
     if (!this.shadowRoot) return;
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
+      <section>
       <${iconTag} size="medium" color="var(${iconColor})" class="icon"></${iconTag}>
       <mui-body>
         <span class="label">${labelText}</span>
         <slot></slot>
       </mui-body>
       <slot name="action"></slot>
+      </section>
     `;
 
     // Re-setup action slot after rendering
@@ -194,14 +195,23 @@ class MuiAlert extends HTMLElement {
           if (isActionComponent) {
             hasAction = true;
             el.setAttribute("variant", "tertiary");
-            el.classList.add("alert-slot", `alert-${variant}-slot`);
+            el.removeAttribute("alert-slot");
+            el.removeAttribute("alert-positive-slot");
+            el.removeAttribute("alert-info-slot");
+            el.removeAttribute("alert-warning-slot");
+            el.removeAttribute("alert-attention-slot");
+            el.setAttribute("alert-slot", "");
+            el.setAttribute(`alert-${variant}-slot`, "");
           }
         });
 
-        if (hasAction) {
-          this.setAttribute("has-action", "");
-        } else {
-          this.removeAttribute("has-action");
+        const section = this.shadowRoot?.querySelector("section");
+        if (section) {
+          if (hasAction) {
+            section.setAttribute("has-action", "");
+          } else {
+            section.removeAttribute("has-action");
+          }
         }
       };
 

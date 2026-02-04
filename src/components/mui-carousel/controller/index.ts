@@ -1,5 +1,17 @@
 class MuiCarouselController extends HTMLElement {
   private shadow: ShadowRoot;
+  private autoRotateInterval?: number;
+  private currentIndex: number = 0;
+
+  // Add these bound methods
+  private boundMouseEnter = () => this.pauseAutoRotate();
+  private boundMouseLeave = () => this.resumeAutoRotate();
+  private boundFocusIn = () => this.pauseAutoRotate();
+  private boundFocusOut = () => this.resumeAutoRotate();
+
+  static get observedAttributes() {
+    return ["auto-rotate", "rotate-interval"];
+  }
 
   constructor() {
     super();
@@ -24,6 +36,126 @@ class MuiCarouselController extends HTMLElement {
       const activeTab = tabBar.querySelector("tab-item[active]");
       if (activeTab) {
         this.updatePanels(activeTab.id);
+      } else {
+        // No active tab? Activate the first one
+        const firstTab = tabBar.querySelector("tab-item");
+        if (firstTab) {
+          firstTab.setAttribute("active", "");
+          this.updatePanels(firstTab.id);
+        }
+      }
+    }
+
+    // Pause on hover/focus (use bound methods)
+    this.addEventListener("mouseenter", this.boundMouseEnter);
+    this.addEventListener("mouseleave", this.boundMouseLeave);
+    this.addEventListener("focusin", this.boundFocusIn);
+    this.addEventListener("focusout", this.boundFocusOut);
+
+    // Wait for slotted content to render, then start auto-rotate
+    if (this.hasAttribute("auto-rotate")) {
+      // Use IntersectionObserver to wait until carousel is visible
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+
+          // Give extra time for content to fully render
+          setTimeout(() => {
+            const track = this.shadow.querySelector(".carousel-track") as HTMLElement;
+            if (track && track.offsetWidth > 0) {
+              this.startAutoRotate();
+            }
+          }, 300);
+        }
+      });
+
+      observer.observe(this);
+    }
+  }
+
+  disconnectedCallback() {
+    this.stopAutoRotate();
+    this.removeEventListener("mouseenter", this.boundMouseEnter);
+    this.removeEventListener("mouseleave", this.boundMouseLeave);
+    this.removeEventListener("focusin", this.boundFocusIn);
+    this.removeEventListener("focusout", this.boundFocusOut);
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (oldValue === newValue) return;
+
+    if (name === "auto-rotate") {
+      if (newValue !== null) {
+        this.startAutoRotate();
+      } else {
+        this.stopAutoRotate();
+      }
+    }
+
+    if (name === "rotate-interval" && this.hasAttribute("auto-rotate")) {
+      this.stopAutoRotate();
+      this.startAutoRotate();
+    }
+  }
+
+  private startAutoRotate() {
+    // Stop any existing interval first
+    this.stopAutoRotate();
+
+    const interval = parseInt(this.getAttribute("rotate-interval") || "10000");
+
+    console.log("🎠 Starting auto-rotate with interval:", interval);
+
+    this.autoRotateInterval = window.setInterval(() => {
+      this.rotateNext();
+    }, interval);
+  }
+
+  private stopAutoRotate() {
+    if (this.autoRotateInterval) {
+      clearInterval(this.autoRotateInterval);
+      this.autoRotateInterval = undefined;
+    }
+  }
+
+  private pauseAutoRotate() {
+    this.stopAutoRotate();
+  }
+
+  private resumeAutoRotate() {
+    if (this.hasAttribute("auto-rotate")) {
+      this.startAutoRotate();
+    }
+  }
+
+  private rotateNext() {
+    const panels = this.querySelectorAll("mui-carousel-panel");
+    console.log("🔄 rotateNext called, panels:", panels.length, "currentIndex:", this.currentIndex);
+
+    if (panels.length === 0) return;
+
+    this.currentIndex = (this.currentIndex + 1) % panels.length;
+    const nextPanel = panels[this.currentIndex];
+    const itemId = nextPanel.getAttribute("item");
+
+    console.log("➡️ Rotating to index:", this.currentIndex, "itemId:", itemId);
+
+    if (itemId) {
+      // Directly update the carousel without touching tab bar
+      // (let updatePanels handle everything)
+      this.updatePanels(itemId);
+
+      // THEN sync tab bar (don't trigger tab-change event)
+      const tabBar = this.querySelector("tab-bar");
+      if (tabBar) {
+        const tabItem = tabBar.querySelector(`tab-item#${itemId}`);
+        if (tabItem) {
+          // Silently update without triggering events
+          tabBar.querySelectorAll("tab-item").forEach((tab) => {
+            tab.removeAttribute("active");
+          });
+          tabItem.setAttribute("active", "");
+        }
       }
     }
   }
@@ -135,11 +267,34 @@ class MuiCarouselController extends HTMLElement {
     const panels = this.querySelectorAll("mui-carousel-panel");
     const track = this.shadow.querySelector(".carousel-track") as HTMLElement | null;
 
+    console.log("🎯 updatePanels called with:", activeId);
+
+    if (!track) {
+      console.error("❌ Track element not found!");
+      return;
+    }
+
     const index = Array.from(panels).findIndex((panel) => panel.getAttribute("item") === activeId);
 
-    if (index === -1) return;
+    if (index === -1) {
+      console.warn("⚠️ Panel not found for:", activeId);
+      return;
+    }
 
-    (track as HTMLElement).style.transform = `translateX(-${index * 100}%)`;
+    // Update currentIndex to stay in sync
+    this.currentIndex = index;
+
+    const newTransform = `translateX(-${index * 100}%)`;
+    console.log("🎬 Setting transform to:", newTransform);
+    console.log("📏 Current transform:", track.style.transform);
+    console.log("🎨 Current transition:", window.getComputedStyle(track).transition);
+
+    track.style.transform = newTransform;
+
+    // Force reflow to ensure transition happens
+    void track.offsetHeight;
+
+    console.log("✅ After setting transform:", track.style.transform);
   }
 }
 

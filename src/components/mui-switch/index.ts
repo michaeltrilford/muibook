@@ -85,11 +85,9 @@ class MuiSwitch extends HTMLElement {
   _updateDisabledState() {
     const isDisabled = this.hasAttribute("disabled");
     if (isDisabled) {
-      this.shadowRoot!.host.classList.add("disabled");
       this._checkbox?.setAttribute("aria-disabled", "true");
       this._checkbox?.setAttribute("tabindex", "-1");
     } else {
-      this.shadowRoot!.host.classList.remove("disabled");
       this._checkbox?.removeAttribute("aria-disabled");
       this._checkbox?.removeAttribute("tabindex");
     }
@@ -222,11 +220,11 @@ class MuiSwitch extends HTMLElement {
           fill: var(--switch-icon);
         }
 
-        :host(.disabled) {
+        :host([disabled]) {
           cursor: not-allowed;
         }
 
-        :host(.disabled) .switch {
+        :host([disabled]) .switch {
           opacity: 0.4;
           pointer-events: none;
         }

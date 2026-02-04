@@ -305,63 +305,63 @@ class MuiButton extends HTMLElement {
     /* ========================================================================== */
 
 
-    :host(.alert-positive-slot) {
+    :host([alert-positive-slot]) {
       --alert-text: var(--feedback-positive-text);
       --alert-icon: var(--feedback-positive-icon);
       --alert-bg-hover: var(--feedback-positive-action-background);
     }
 
-    :host(.alert-info-slot) {
+    :host([alert-info-slot]) {
       --alert-text: var(--feedback-info-text);
       --alert-icon: var(--feedback-info-icon);
       --alert-bg-hover: var(--feedback-info-action-background);
     }
 
-    :host(.alert-warning-slot) {
+    :host([alert-warning-slot]) {
       --alert-text: var(--feedback-warning-text);
       --alert-icon: var(--feedback-warning-icon);
       --alert-bg-hover: var(--feedback-warning-action-background);
     }
 
-    :host(.alert-attention-slot) {
+    :host([alert-attention-slot]) {
       --alert-text: var(--feedback-attention-text);
       --alert-icon: var(--feedback-attention-icon);
       --alert-bg-hover: var(--feedback-attention-action-background);
     }
 
-    :host(.alert-slot) button {
+    :host([alert-slot]) button {
       font-weight: var(--font-weight-semi-bold);
       color: var(--alert-text);
     }
 
-    :host(.alert-slot) button:hover,
-    :host(.alert-slot) button:focus-visible {
+    :host([alert-slot]) button:hover,
+    :host([alert-slot]) button:focus-visible {
       background: var(--alert-bg-hover);
       color: var(--alert-text);
     }
 
-    :host(.alert-slot) ::slotted(.mui-icon),
-    :host(.alert-slot):hover ::slotted(.mui-icon),
-    :host(.alert-slot):focus-visible ::slotted(.mui-icon) {
+    :host([alert-slot]) ::slotted(.mui-icon),
+    :host([alert-slot]):hover ::slotted(.mui-icon),
+    :host([alert-slot]):focus-visible ::slotted(.mui-icon) {
       fill: var(--alert-icon);
     }
 
     /* Dropdown Slot */
-    :host([size].dropdown-slot) button {
+    :host([size][dropdown-slot]) button {
       border-radius: var(--radius-000);
     }
 
-    :host(.dropdown-slot) button:hover,
-    :host(.dropdown-slot) button:focus {
+    :host([dropdown-slot]) button:hover,
+    :host([dropdown-slot]) button:focus {
       background: var(--dropdown-button-background-hover);
     }
 
-    :host([size].dropdown-slot-first) button {
+    :host([size][dropdown-slot-first]) button {
       border-top-left-radius: calc(var(--radius-100) / 2);
       border-top-right-radius: calc(var(--radius-100) / 2);
     }
 
-    :host([size].dropdown-slot-last) button   {
+    :host([size][dropdown-slot-last]) button   {
       border-bottom-left-radius: calc(var(--radius-100) / 2);
       border-bottom-right-radius: calc(var(--radius-100) / 2);
     }
@@ -393,30 +393,29 @@ class MuiButton extends HTMLElement {
 
     /* Before & After Icon
     ========================================= */
-    :host(.has-after) button,
-    :host(.has-before) button,
-    :host(.has-after.has-before) button { 
+    :host([has-after]) button,
+    :host([has-before]) button,
+    :host([has-after][has-before]) button { 
       display: grid; 
       align-items: center; 
       gap: var(--space-100);
     }
-    
-    :host(.has-after.has-before) button {
+
+    :host([has-after][has-before]) button {
       grid-template-columns: auto 1fr auto;
       padding-right: var(--action-after-slot-padding);
       padding-left: var(--action-before-slot-padding);
     }
 
-    :host(.has-after) button {
+    :host([has-after]) button {
       grid-template-columns: 1fr auto;
       padding-right: var(--action-after-slot-padding);
     }
 
-    :host(.has-before) button {
+    :host([has-before]) button {
       grid-template-columns: auto 1fr;
       padding-left: var(--action-before-slot-padding);
     }
-
 
     /* Size Variants
     ========================================= */
@@ -473,60 +472,60 @@ class MuiButton extends HTMLElement {
 
     /* Before & After Icon
       ========================================= */
-    :host([size="x-small"].has-after) button,
-    :host([size="x-small"].has-before) button,
-    :host([size="x-small"].has-after.has-before) button { 
+    :host([size="x-small"][has-after]) button,
+    :host([size="x-small"][has-before]) button,
+    :host([size="x-small"][has-after][has-before]) button { 
       gap: var(--space-025);
     }
     
-    :host([size="x-small"].has-after.has-before) button {
+    :host([size="x-small"][has-after][has-before]) button {
       padding-right: var(--action-after-slot-padding-x-small);
       padding-left: var(--action-before-slot-padding-x-small);
     }
 
-    :host([size="x-small"].has-after) button {
+    :host([size="x-small"][has-after]) button {
       padding-right: var(--action-after-slot-padding-x-small);
     }
 
-    :host([size="x-small"].has-before) button {
+    :host([size="x-small"][has-before]) button {
       padding-left: var(--action-before-slot-padding-x-small);
     }
 
-    :host([size="small"].has-after) button,
-    :host([size="small"].has-before) button,
-    :host([size="small"].has-after.has-before) button { 
+    :host([size="small"][has-after]) button,
+    :host([size="small"][has-before]) button,
+    :host([size="small"][has-after][has-before]) button { 
       gap: var(--space-050);
     }
     
-    :host([size="small"].has-after.has-before) button {
+    :host([size="small"][has-after][has-before]) button {
       padding-right: var(--action-after-slot-padding-small);
       padding-left: var(--action-before-slot-padding-small);
     }
 
-    :host([size="small"].has-after) button {
+    :host([size="small"][has-after]) button {
       padding-right: var(--action-after-slot-padding-small);
     }
 
-    :host([size="small"].has-before) button {
+    :host([size="small"][has-before]) button {
       padding-left: var(--action-before-slot-padding-small);
     }
 
-    :host([size="large"].has-after) button,
-    :host([size="large"].has-before) button,
-    :host([size="large"].has-after.has-before) button { 
+    :host([size="large"][has-after]) button,
+    :host([size="large"][has-before]) button,
+    :host([size="large"][has-after][has-before]) button { 
       gap: var(--space-200);
     }
     
-    :host([size="large"].has-after.has-before) button {
+    :host([size="large"][has-after][has-before]) button {
       padding-right: var(--action-after-slot-padding-large);
       padding-left: var(--action-before-slot-padding-large);
     }
 
-    :host([size="large"].has-after) button {
+    :host([size="large"][has-after]) button {
       padding-right: var(--action-after-slot-padding-large);
     }
 
-    :host([size="large"].has-before) button {
+    :host([size="large"][has-before]) button {
       padding-left: var(--action-before-slot-padding-large);
     }
 
@@ -572,8 +571,8 @@ class MuiButton extends HTMLElement {
       const hasBefore = hasAssignedContent(slotBefore);
       const hasAfter = hasAssignedContent(slotAfter);
 
-      this.classList.toggle("has-before", hasBefore);
-      this.classList.toggle("has-after", hasAfter);
+      this.toggleAttribute("has-before", hasBefore);
+      this.toggleAttribute("has-after", hasAfter);
 
       const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
 

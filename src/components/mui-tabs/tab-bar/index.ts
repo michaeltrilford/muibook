@@ -29,12 +29,6 @@ class MuiTabBar extends HTMLElement {
 
     const children = Array.from(this.children);
 
-    const shouldBeFullWidth = this.hasAttribute("full-width");
-
-    if (shouldBeFullWidth) {
-      this.classList.add("full-width");
-    }
-
     this.setAttribute("role", "tablist");
 
     const orientation = this.getAttribute("orientation") || "horizontal";
@@ -135,7 +129,7 @@ class MuiTabBar extends HTMLElement {
           overflow: hidden;
         }
 
-        :host(.full-width) {
+        :host([full-width]) {
           display: flex;
           width: 100%;
         }
@@ -152,7 +146,7 @@ class MuiTabBar extends HTMLElement {
           box-sizing: border-box;
           box-shadow: 0 0 4px 4px var(--tab-shadow-active);
           will-change: transform, width;
-          transform: translateX(0);
+          transform: translateX(0) translateZ(0);
           width: 0;
         }
 
@@ -161,6 +155,7 @@ class MuiTabBar extends HTMLElement {
           z-index: 1;
           flex: 1;
           contain: content; /* Performance optimization */
+          transform: translateZ(0);
         }
       </style>
       <div class="highlight"></div>
@@ -264,7 +259,7 @@ class MuiTabBar extends HTMLElement {
     const barRect = this.getBoundingClientRect();
     const borderWidth = parseFloat(getComputedStyle(this).borderWidth) || 0;
     const leftPosition = elRect.left - barRect.left - borderWidth;
-    highlight.style.transform = `translateX(${leftPosition}px)`;
+    highlight.style.transform = `translateX(${leftPosition}px) translateZ(0)`;
     highlight.style.width = `${elRect.width}px`;
   }
 

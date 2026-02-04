@@ -91,6 +91,20 @@ class storyCarousel extends HTMLElement {
         description:
           "Assigns the element to a named slot in the Carousel Controller. Required for light DOM content like tabs and panels.",
       },
+      {
+        name: "auto-rotate",
+        type: "boolean",
+        options: "auto-rotate",
+        default: "",
+        description: "Enable the content to auto rotate.",
+      },
+      {
+        name: "rotate-interval",
+        type: "string",
+        options: "E.g. 10 seconds",
+        default: "10000",
+        description: "Adjust the timing of the Carousel.",
+      },
     ];
 
     const rowsController = propItemsController
@@ -420,6 +434,101 @@ class storyCarousel extends HTMLElement {
           <br />
           <br />
           &nbsp;&nbsp;... Add other panels ...
+          <br />
+          <br />
+          &lt;/mui-carousel-controller&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card 
+        title="Auto Rotate" 
+        description="Demonstrates how to add set-up auto-rotate of the carousel panels."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js"  
+      >
+        <mui-carousel-controller slot="body" auto-rotate rotate-interval="10000">
+          <mui-tab-bar slot="controls" controlsPosition="bottom-right">
+            ${carouselTabItems}
+          </mui-tab-bar>
+          ${carouselItems}
+        </mui-carousel-controller>
+        <story-code-block slot="footer" scrollable>
+          /* === Author Styles ================= */
+          <br />
+          <br />
+          .grid {<br />
+          &nbsp;&nbsp;display: grid;<br />
+          &nbsp;&nbsp;grid-template-columns: 1fr;<br />
+          }<br /><br />
+          .hero {<br />
+          &nbsp;&nbsp;display: flex;<br />
+          &nbsp;&nbsp;background: var(--black-opacity-40);<br />
+          &nbsp;&nbsp;padding: var(--space-400);<br />
+          &nbsp;&nbsp;padding-bottom: var(--space-000);<br />
+          }<br /><br />
+          .content {<br />
+          &nbsp;&nbsp;padding: var(--space-600);<br />
+          &nbsp;&nbsp;padding-bottom: var(--space-400);<br />
+          &nbsp;&nbsp;margin-bottom: var(--carousel-tab-offset);<br />
+          }<br /><br />
+          @media (min-width: 1100px) {<br />
+          &nbsp;&nbsp;.grid { ... }<br />
+          &nbsp;&nbsp;.hero { ... }<br />
+          &nbsp;&nbsp;.content { ... }<br />
+          }
+          <br />
+          <br />
+          <br />
+          
+          /* === Component Usage =============== */
+          <br />
+          <br />
+          &lt;mui-carousel-controller auto-rotate rotate-interval="1000"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-tab-bar slot="controls" controlsPosition="bottom-right"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active id="one"&gt;1&lt;/mui-tab-item&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;...
+          <br />
+          &nbsp;&nbsp;&lt;/mui-tab-bar&gt;
+          <br />
+          <br />
+          &nbsp;&nbsp;&lt;mui-carousel-panel slot="item" item="one"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="grid"&gt;
+          <br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="hero"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style="width: 100%; height: auto;"
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width="400"
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height="376"
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src="./images/guides.png"
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+          <br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack class="content"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading level="3" size="2"&gt;Guides&lt;/mui-heading&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Figma plugin that delivers UX...
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-body&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;
+          <br />
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-carousel-panel&gt;<br />
+          <br />
+          &nbsp;&nbsp;...
           <br />
           <br />
           &lt;/mui-carousel-controller&gt;

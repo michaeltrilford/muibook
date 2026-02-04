@@ -155,6 +155,40 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="Custom Offset" description="Override the vertical gap between the trigger and menu using the --dropdown-offset token.">
+        <mui-dropdown slot="body" style="--dropdown-offset: var(--space-500);">
+          <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+          <mui-button>Option one</mui-button>
+          <mui-button>Option two</mui-button>
+        </mui-dropdown>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dropdown style="--dropdown-offset: var(--space-500);"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;Option one&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;Option two&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Menu Min-Width" description="Override the minimum menu width using the --dropdown-min-width token.">
+        <mui-dropdown slot="body" style="--dropdown-min-width: 9rem;">
+          <mui-button slot="action" size="small"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+          <mui-button>One</mui-button>
+          <mui-button>Two</mui-button>
+        </mui-dropdown>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dropdown style="--dropdown-min-width: 9rem;"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size="small"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;One&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;Two&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card title="Dropdown w/ Icon">
         <mui-button-group right slot="body">
           <mui-dropdown>

@@ -128,16 +128,16 @@ class MuiSlat extends HTMLElement {
         text-align: right;
       }
       
-      :host(.card-slot) {
+      :host([card-slot]) {
         --slat-background: var(--slat-card-background);
         --slat-background-hover: var(--slat-card-background-hover);
       }
 
-      :host(.condensed-slot) .action::part(border-radius) {
+      :host([condensed-slot]) .action::part(border-radius) {
         border-radius: 0; 
       }
 
-      :host(.condensed-slot:last-of-type) .action::part(border-radius) {
+      :host([condensed-slot]:last-of-type) .action::part(border-radius) {
         border-bottom-left-radius: var(--card-radius); 
         border-bottom-right-radius: var(--card-radius); 
       }
@@ -150,11 +150,11 @@ class MuiSlat extends HTMLElement {
         --avatar-background-override: var(--slat-avatar-background-hover);
       }
 
-      :host(.card-slot) ::slotted(mui-avatar) {
+      :host([card-slot]) ::slotted(mui-avatar) {
         --avatar-background-override: var(--slat-card-avatar-background);
       }
-      :host(.card-slot) .action:hover ::slotted(mui-avatar),
-      :host(.card-slot) .action:focus ::slotted(mui-avatar) {
+      :host([card-slot]) .action:hover ::slotted(mui-avatar),
+      :host([card-slot]) .action:focus ::slotted(mui-avatar) {
         --avatar-background-override: var(--slat-card-avatar-background-hover);
       }
 

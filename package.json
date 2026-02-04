@@ -296,6 +296,34 @@
       "import": "./dist/esm/components/mui-icons/checkmark/index.js",
       "types": "./dist/types/components/mui-icons/checkmark/index.d.ts"
     },
+    "./mui-icons/rectangle-media-text": {
+      "import": "./dist/esm/components/mui-icons/rectangle-media-text/index.js",
+      "types": "./dist/types/components/mui-icons/rectangle-media-text/index.d.ts"
+    },
+    "./mui-icons/rectangle": {
+      "import": "./dist/esm/components/mui-icons/rectangle/index.js",
+      "types": "./dist/types/components/mui-icons/rectangle/index.d.ts"
+    },
+    "./mui-icons/rectangle-dashed": {
+      "import": "./dist/esm/components/mui-icons/rectangle-dashed/index.js",
+      "types": "./dist/types/components/mui-icons/rectangle-dashed/index.d.ts"
+    },
+    "./mui-icons/rectangle-left-drawer": {
+      "import": "./dist/esm/components/mui-icons/rectangle-left-drawer/index.js",
+      "types": "./dist/types/components/mui-icons/rectangle-left-drawer/index.d.ts"
+    },
+    "./mui-icons/rectangle-bottom-panel": {
+      "import": "./dist/esm/components/mui-icons/rectangle-bottom-panel/index.js",
+      "types": "./dist/types/components/mui-icons/rectangle-bottom-panel/index.d.ts"
+    },
+    "./mui-icons/pin": {
+      "import": "./dist/esm/components/mui-icons/pin/index.js",
+      "types": "./dist/types/components/mui-icons/pin/index.d.ts"
+    },
+    "./mui-icons/pin-slash": {
+      "import": "./dist/esm/components/mui-icons/pin-slash/index.js",
+      "types": "./dist/types/components/mui-icons/pin-slash/index.d.ts"
+    },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"

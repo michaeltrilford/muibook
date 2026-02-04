@@ -276,6 +276,8 @@ html[data-theme="light"] {
   --dropdown-border-color: var(--black-opacity-20);
   --dropdown-shadow-color: var(--black-opacity-10);
   --dropdown-button-background-hover: var(--white);
+  --dropdown-offset: var(--space-200);
+  --dropdown-min-width: 15rem;
 
   /* Progress */
   --progress-bar-background: var(--blue-600);
@@ -530,6 +532,8 @@ html[data-theme="dark"] {
   --dropdown-border-color: var(--black-opacity-20);
   --dropdown-shadow-color: var(--black-opacity-20);
   --dropdown-button-background-hover: var(--grey-900);
+  --dropdown-offset: var(--space-200);
+  --dropdown-min-width: 15rem;
 
   /* Progress */
   --progress-bar-background: var(--blue-500);

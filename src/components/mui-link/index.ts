@@ -106,8 +106,8 @@ class MuiLink extends HTMLElement {
     const hasBefore = hasAssignedContent(slotBefore);
     const hasAfter = hasAssignedContent(slotAfter);
 
-    this.classList.toggle("has-before", hasBefore);
-    this.classList.toggle("has-after", hasAfter);
+    this.toggleAttribute("has-before", hasBefore);
+    this.toggleAttribute("has-after", hasAfter);
 
     const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
 
@@ -360,44 +360,44 @@ class MuiLink extends HTMLElement {
       }
       /* ===================================== */
 
-      :host(.alert-positive-slot) {
+      :host([alert-positive-slot]) {
         --alert-text: var(--feedback-positive-text);
         --alert-icon: var(--feedback-positive-icon);
         --alert-bg-hover: var(--feedback-positive-action-background);
       }
 
-      :host(.alert-info-slot) {
+      :host([alert-info-slot]) {
         --alert-text: var(--feedback-info-text);
         --alert-icon: var(--feedback-info-icon);
         --alert-bg-hover: var(--feedback-info-action-background);
       }
 
-      :host(.alert-warning-slot) {
+      :host([alert-warning-slot]) {
         --alert-text: var(--feedback-warning-text);
         --alert-icon: var(--feedback-warning-icon);
         --alert-bg-hover: var(--feedback-warning-action-background);
       }
 
-      :host(.alert-attention-slot) {
+      :host([alert-attention-slot]) {
         --alert-text: var(--feedback-attention-text);
         --alert-icon: var(--feedback-attention-icon);
         --alert-bg-hover: var(--feedback-attention-action-background);
       }
 
-      :host(.alert-slot) a {
+      :host([alert-slot]) a {
         font-weight: var(--font-weight-semi-bold);
         color: var(--alert-text);
       }
 
-      :host(.alert-slot) a:hover,
-      :host(.alert-slot) a:focus-visible {
+      :host([alert-slot]) a:hover,
+      :host([alert-slot]) a:focus-visible {
         background: var(--alert-bg-hover);
         color: var(--alert-text);
       }
 
-      :host(.alert-slot) ::slotted(.mui-icon),
-      :host(.alert-slot):hover ::slotted(.mui-icon),
-      :host(.alert-slot):focus-visible ::slotted(.mui-icon) {
+      :host([alert-slot]) ::slotted(.mui-icon),
+      :host([alert-slot]):hover ::slotted(.mui-icon),
+      :host([alert-slot]):focus-visible ::slotted(.mui-icon) {
         fill: var(--alert-icon);
       }
 
@@ -451,39 +451,39 @@ class MuiLink extends HTMLElement {
 
       /* Before & After Icon
       ========================================= */
-      :host(.has-after) a,
-      :host(.has-before) a,
-      :host(.has-after.has-before) a { 
+      :host([has-after]) a,
+      :host([has-before]) a,
+      :host([has-after][has-before]) a { 
         display: grid; 
         align-items: center; 
         gap: var(--space-100);
       }
 
-      :host(.has-after.has-before) a {
+      :host([has-after][has-before]) a {
         grid-template-columns: auto 1fr auto;
       }
 
-      :host(.has-after) a {
+      :host([has-after]) a {
         grid-template-columns: 1fr auto;
       }
 
-      :host(.has-before) a {
+      :host([has-before]) a {
         grid-template-columns: auto 1fr;
       }
 
-      :host(.has-after.has-before[variant]:not([variant="default"])) a,
-      :host(.has-after.has-before[usage="input"]) a {
+      :host([has-after][has-before][variant]:not([variant="default"])) a,
+      :host([has-after][has-before][usage="input"]) a {
         padding-right: var(--action-after-slot-padding);
         padding-left: var(--action-before-slot-padding);
       }
 
-      :host(.has-after[variant]:not([variant="default"])) a,
-      :host(.has-after[usage="input"]) a {
+      :host([has-after][variant]:not([variant="default"])) a,
+      :host([has-after][usage="input"]) a {
         padding-right: var(--action-after-slot-padding);
       }
 
-      :host(.has-before[variant]:not([variant="default"])) a,
-      :host(.has-before[usage="input"]) a {
+      :host([has-before][variant]:not([variant="default"])) a,
+      :host([has-before][usage="input"]) a {
         padding-left: var(--action-before-slot-padding);
       }
 
@@ -618,76 +618,76 @@ class MuiLink extends HTMLElement {
       }
 
       /* Before & After Icon padding adjustments for x-small */
-      :host([size="x-small"][variant]:not([variant="default"]).has-after) a,
-      :host([size="x-small"][variant]:not([variant="default"]).has-before) a,
-      :host([size="x-small"][variant]:not([variant="default"]).has-after.has-before) a { 
+      :host([size="x-small"][variant]:not([variant="default"])[has-after]) a,
+      :host([size="x-small"][variant]:not([variant="default"])[has-before]) a,
+      :host([size="x-small"][variant]:not([variant="default"])[has-after][has-before]) a { 
         gap: var(--space-025);
       }
 
-      :host([size="x-small"][variant]:not([variant="default"]).has-after.has-before) a {
+      :host([size="x-small"][variant]:not([variant="default"])[has-after][has-before]) a {
         padding-right: var(--action-after-slot-padding-x-small);
         padding-left: var(--action-before-slot-padding-x-small);
       }
 
-      :host([size="x-small"][variant]:not([variant="default"]).has-after) a {
+      :host([size="x-small"][variant]:not([variant="default"])[has-after]) a {
         padding-right: var(--action-after-slot-padding-x-small);
       }
 
-      :host([size="x-small"][variant]:not([variant="default"]).has-before) a {
+      :host([size="x-small"][variant]:not([variant="default"])[has-before]) a {
         padding-left: var(--action-before-slot-padding-x-small);
       }
 
       /* Before & After Icon padding adjustments for small */
-      :host([size="small"][variant]:not([variant="default"]).has-after) a,
-      :host([size="small"][variant]:not([variant="default"]).has-before) a,
-      :host([size="small"][variant]:not([variant="default"]).has-after.has-before) a { 
+      :host([size="small"][variant]:not([variant="default"])[has-after]) a,
+      :host([size="small"][variant]:not([variant="default"])[has-before]) a,
+      :host([size="small"][variant]:not([variant="default"])[has-after][has-before]) a { 
         gap: var(--space-050);
       }
 
-      :host([size="small"][variant]:not([variant="default"]).has-after.has-before) a {
+      :host([size="small"][variant]:not([variant="default"])[has-after][has-before]) a {
         padding-right: var(--action-after-slot-padding-small);
         padding-left: var(--action-before-slot-padding-small);
       }
 
-      :host([size="small"][variant]:not([variant="default"]).has-after) a {
+      :host([size="small"][variant]:not([variant="default"])[has-after]) a {
         padding-right: var(--action-after-slot-padding-small);
       }
 
-      :host([size="small"][variant]:not([variant="default"]).has-before) a {
+      :host([size="small"][variant]:not([variant="default"])[has-before]) a {
         padding-left: var(--action-before-slot-padding-small);
       }
 
       /* Before & After Icon padding adjustments for medium */
-      :host([size="medium"][variant]:not([variant="default"]).has-after.has-before) a {
+      :host([size="medium"][variant]:not([variant="default"])[has-after][has-before]) a {
         padding-right: var(--action-after-slot-padding);
         padding-left: var(--action-before-slot-padding);
       }
 
-      :host([size="medium"][variant]:not([variant="default"]).has-after) a {
+      :host([size="medium"][variant]:not([variant="default"])[has-after]) a {
         padding-right: var(--action-after-slot-padding);
       }
 
-      :host([size="medium"][variant]:not([variant="default"]).has-before) a {
+      :host([size="medium"][variant]:not([variant="default"])[has-before]) a {
         padding-left: var(--action-before-slot-padding);
       }
 
       /* Before & After Icon padding adjustments for large */
-      :host([size="large"][variant]:not([variant="default"]).has-after) a,
-      :host([size="large"][variant]:not([variant="default"]).has-before) a,
-      :host([size="large"][variant]:not([variant="default"]).has-after.has-before) a { 
+      :host([size="large"][variant]:not([variant="default"])[has-after]) a,
+      :host([size="large"][variant]:not([variant="default"])[has-before]) a,
+      :host([size="large"][variant]:not([variant="default"])[has-after][has-before]) a { 
         gap: var(--space-200);
       }
 
-      :host([size="large"][variant]:not([variant="default"]).has-after.has-before) a {
+      :host([size="large"][variant]:not([variant="default"])[has-after][has-before]) a {
         padding-right: var(--action-after-slot-padding-large);
         padding-left: var(--action-before-slot-padding-large);
       }
 
-      :host([size="large"][variant]:not([variant="default"]).has-after) a {
+      :host([size="large"][variant]:not([variant="default"])[has-after]) a {
         padding-right: var(--action-after-slot-padding-large);
       }
 
-      :host([size="large"][variant]:not([variant="default"]).has-before) a {
+      :host([size="large"][variant]:not([variant="default"])[has-before]) a {
         padding-left: var(--action-before-slot-padding-large);
       }
 

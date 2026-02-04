@@ -22,8 +22,8 @@ class MuiCard extends HTMLElement {
       ::slotted(*:last-child) {
         margin-bottom: 0;
       }
-      ::slotted(.inner-space-top) {
-      padding-top: 0;
+      ::slotted([inner-space-top]) {
+        padding-top: 0;
       }
     </style>
     <slot></slot>
@@ -41,9 +41,9 @@ class MuiCard extends HTMLElement {
 
         if (body) {
           if (hasHeader) {
-            body.classList.add("inner-space-top");
+            body.setAttribute("inner-space-top", "");
           } else {
-            body.classList.remove("inner-space-top");
+            body.removeAttribute("inner-space-top");
           }
         }
       });

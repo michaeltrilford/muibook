@@ -55,6 +55,7 @@ export default defineConfig({
         "components/mui-drawer": path.resolve(__dirname, "src/components/mui-drawer"),
         // ICONS
         "components/mui-icons": path.resolve(__dirname, "src/components/mui-icons"),
+        "components/mui-icons/ai": path.resolve(__dirname, "src/components/mui-icons/ai.ts"),
         "components/mui-icons/accessibility": path.resolve(__dirname, "src/components/mui-icons/accessibility.ts"),
         "components/mui-icons/attention": path.resolve(__dirname, "src/components/mui-icons/attention.ts"),
         "components/mui-icons/add": path.resolve(__dirname, "src/components/mui-icons/add.ts"),
@@ -103,6 +104,25 @@ export default defineConfig({
         "components/mui-icons/list-and-film": path.resolve(__dirname, "src/components/mui-icons/list-and-film.ts"),
         "components/mui-icons/search": path.resolve(__dirname, "src/components/mui-icons/search.ts"),
         "components/mui-icons/checkmark": path.resolve(__dirname, "src/components/mui-icons/checkmark.ts"),
+        "components/mui-icons/rectangle-media-text": path.resolve(
+          __dirname,
+          "src/components/mui-icons/rectangle-media-text.ts"
+        ),
+        "components/mui-icons/rectangle": path.resolve(__dirname, "src/components/mui-icons/rectangle.ts"),
+        "components/mui-icons/rectangle-dashed": path.resolve(
+          __dirname,
+          "src/components/mui-icons/rectangle-dashed.ts"
+        ),
+        "components/mui-icons/rectangle-left-drawer": path.resolve(
+          __dirname,
+          "src/components/mui-icons/rectangle-left-drawer.ts"
+        ),
+        "components/mui-icons/rectangle-bottom-panel": path.resolve(
+          __dirname,
+          "src/components/mui-icons/rectangle-bottom-panel.ts"
+        ),
+        "components/mui-icons/pin": path.resolve(__dirname, "src/components/mui-icons/pin.ts"),
+        "components/mui-icons/pin-slash": path.resolve(__dirname, "src/components/mui-icons/pin-slash.ts"),
         // AVATAR
         "components/mui-avatar": path.resolve(__dirname, "src/components/mui-avatar"),
         // IMAGE

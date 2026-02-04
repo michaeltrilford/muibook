@@ -116,31 +116,31 @@ class MuiAccordionBlock extends HTMLElement {
       }
 
       /* Card Slot (Supports: Table Cell, Accordion Block) */
-      :host(.card-slot) .accordion-summary {
+      :host([card-slot]) .accordion-summary {
         padding-left: var(--space-500);
         padding-right: var(--space-500);
       }
       @media (min-width: 768px) {
-        :host(.card-slot) .accordion-summary {
+        :host([card-slot]) .accordion-summary {
           padding-left: var(--space-600);
           padding-right: var(--space-600);
         }
       }
-      :host(.card-slot) .accordion-detail-inner {
+      :host([card-slot]) .accordion-detail-inner {
         padding-left: var(--space-500);
         padding-right: var(--space-500);
       }
       @media (min-width: 768px) {
-        :host(.card-slot) .accordion-detail-inner {
+        :host([card-slot]) .accordion-detail-inner {
           padding-left: var(--space-600);
           padding-right: var(--space-600);
         }
       }
-      :host(.card-slot) .detail-space-none {
+      :host([card-slot]) .detail-space-none {
         padding: 0;
       }
       @media (min-width: 768px) {
-        :host(.card-slot) .detail-space-none {
+        :host([card-slot]) .detail-space-none {
           padding: 0;
         }
       }

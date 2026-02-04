@@ -102,15 +102,17 @@ class MuiDropdown extends HTMLElement {
         const optionNodes = defaultSlot.assignedElements({ flatten: true }) as HTMLElement[];
 
         optionNodes.forEach((btn) => {
-          btn.classList.remove("dropdown-slot", "dropdown-slot-first", "dropdown-slot-last");
+          btn.removeAttribute("dropdown-slot");
+          btn.removeAttribute("dropdown-slot-first");
+          btn.removeAttribute("dropdown-slot-last");
         });
 
         optionNodes.forEach((btn, i) => {
           btn.setAttribute("variant", "tertiary");
-          btn.classList.add("dropdown-slot");
+          btn.setAttribute("dropdown-slot", "");
 
-          if (i === 0) btn.classList.add("dropdown-slot-first");
-          if (i === optionNodes.length - 1) btn.classList.add("dropdown-slot-last");
+          if (i === 0) btn.setAttribute("dropdown-slot-first", "");
+          if (i === optionNodes.length - 1) btn.setAttribute("dropdown-slot-last", "");
 
           // click listener once
           if (!(btn as any)._dropdownListenerAdded) {
@@ -219,7 +221,11 @@ class MuiDropdown extends HTMLElement {
 
     const menu = this.menu;
     const margin = 8; // viewport inset
-    const offsetY = 8; // vertical gap from trigger
+    const offsetRaw = getComputedStyle(this).getPropertyValue("--dropdown-offset").trim() || "0.8rem";
+    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 10;
+    const offsetY = offsetRaw.endsWith("rem")
+      ? parseFloat(offsetRaw) * fontSize
+      : parseFloat(offsetRaw) || 8; // vertical gap from trigger
 
     // Reset so we measure cleanly
     menu.style.top = "";
@@ -286,9 +292,10 @@ class MuiDropdown extends HTMLElement {
           transform: translateY(-0.25rem);
           transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
           /* End */
-          min-width: 150px;
+          min-width: var(--dropdown-min-width, 15rem);
           position: absolute;
           z-index: 1;
+          box-sizing: border-box;
           border: var(--border-thin);
           /* Unique Styles */
           background: var(--dropdown-background);

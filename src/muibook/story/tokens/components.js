@@ -276,6 +276,8 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--dropdown-button-background-hover" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--dropdown-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--dropdown-shadow-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--dropdown-offset" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--dropdown-min-width" variant="size"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 

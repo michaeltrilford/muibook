@@ -124,7 +124,7 @@ class storyLoader extends HTMLElement {
         </mui-code>
       </spec-card>
 
-      <props-card title="Loading">
+      <props-card title="Loader">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
             ${rows}

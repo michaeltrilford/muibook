@@ -26,8 +26,10 @@ class MuiCardBody extends HTMLElement {
       if (!slot) return;
       const nodes = slot.assignedNodes({ flatten: true });
 
-      // CLEAR ALL CLASSES FIRST
-      this.classList.remove("inner-space", "has-card-slat-group", "has-accordion-slat-group");
+      // CLEAR ALL ATTRIBUTES FIRST
+      this.removeAttribute("inner-space");
+      this.removeAttribute("has-card-slat-group");
+      this.removeAttribute("has-accordion-slat-group");
 
       let hasLayoutComponent = false;
 
@@ -42,7 +44,7 @@ class MuiCardBody extends HTMLElement {
           if (accordion instanceof HTMLElement) {
             const blocks = accordion.querySelectorAll("mui-accordion-block");
             blocks.forEach((block: Element) => {
-              (block as HTMLElement).classList.add("card-slot");
+              (block as HTMLElement).setAttribute("card-slot", "");
             });
 
             hasLayoutComponent = true;
@@ -55,11 +57,11 @@ class MuiCardBody extends HTMLElement {
           slats.forEach((slat) => {
             const variant = slat.getAttribute("variant");
             if (variant === "action" || variant === "row") {
-              slat.classList.add("card-slot");
+              slat.setAttribute("card-slot", "");
               if (this.hasAttribute("condensed")) {
-                slat.classList.add("condensed-slot");
+                slat.setAttribute("condensed-slot", "");
               } else {
-                slat.classList.remove("condensed-slot");
+                slat.removeAttribute("condensed-slot");
               }
             }
           });
@@ -71,7 +73,7 @@ class MuiCardBody extends HTMLElement {
           if (table instanceof HTMLElement) {
             const cells = table.querySelectorAll("mui-cell");
             cells.forEach((cell: Element) => {
-              (cell as HTMLElement).classList.add("card-slot");
+              (cell as HTMLElement).setAttribute("card-slot", "");
             });
 
             hasLayoutComponent = true;
@@ -92,9 +94,10 @@ class MuiCardBody extends HTMLElement {
               const insideAccordion = slatGroup.closest("mui-accordion-block");
 
               if (insideAccordion) {
-                this.classList.add("has-accordion-slat-group");
+                this.setAttribute("has-accordion-slat-group", "");
               } else {
-                this.classList.add("inner-space", "has-card-slat-group");
+                this.setAttribute("inner-space", "");
+                this.setAttribute("has-card-slat-group", "");
               }
             });
           }
@@ -102,7 +105,7 @@ class MuiCardBody extends HTMLElement {
       });
 
       if (!hasLayoutComponent && !this.hasAttribute("condensed")) {
-        this.classList.add("inner-space");
+        this.setAttribute("inner-space", "");
       }
     });
   }
@@ -116,20 +119,20 @@ class MuiCardBody extends HTMLElement {
           box-sizing: border-box;
         }
         
-        :host(.inner-space) {
+        :host([inner-space]) {
           padding: var(--space-500);
         }
         @media (min-width: 768px) {
-          :host(.inner-space) {
+          :host([inner-space]) {
             padding: var(--space-600);
           }
         }
 
-        :host(.has-card-slat-group) {
+        :host([has-card-slat-group]) {
           padding-bottom: var(--space-200);
         }
         @media (min-width: 768px) {
-        :host(.has-card-slat-group) {
+        :host([has-card-slat-group]) {
           padding-bottom: var(--space-500);
         }
         }

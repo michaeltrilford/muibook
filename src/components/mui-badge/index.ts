@@ -45,7 +45,13 @@ class MuiBadge extends HTMLElement {
 
     const styles = /*css*/ `
       :host {
-        display: inline-block;
+        display: inline-flex;
+        box-sizing: border-box;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
         border-radius: var(--badge-radius);
         background: ${background};
         font-size: var(--text-font-size-xs);
@@ -66,7 +72,9 @@ class MuiBadge extends HTMLElement {
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = /*html*/ `
         <style>${styles}</style>
-        <slot></slot>
+        <span class="badge">
+          <slot></slot>
+        </span>
       `;
     }
   }

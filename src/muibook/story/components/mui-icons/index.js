@@ -430,6 +430,46 @@ class storyIcon extends HTMLElement {
             <mui-icon-checkmark slot="body"></mui-icon-checkmark>
             <mui-code slot="footer" scrollable>mui-icon-checkmark</mui-code>
           </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-ai slot="body"></mui-icon-ai>
+            <mui-code slot="footer" scrollable>mui-icon-ai</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-rectangle slot="body"></mui-icon-rectangle>
+            <mui-code slot="footer" scrollable>mui-icon-rectangle</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-rectangle-media-text slot="body"></mui-icon-rectangle-media-text>
+            <mui-code slot="footer" scrollable>mui-icon-rectangle-media-text</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-rectangle-dashed slot="body"></mui-icon-rectangle-dashed>
+            <mui-code slot="footer" scrollable>mui-icon-rectangle-dashed</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-rectangle-left-drawer slot="body"></mui-icon-rectangle-left-drawer>
+            <mui-code slot="footer" scrollable>mui-icon-rectangle-left-drawer</mui-code>
+          </story-icon-grid> 
+          
+          <story-icon-grid center>
+            <mui-icon-rectangle-bottom-panel slot="body"></mui-icon-rectangle-bottom-panel>
+            <mui-code slot="footer" scrollable>mui-icon-rectangle-bottom-panel</mui-code>
+          </story-icon-grid> 
+
+          <story-icon-grid center>
+            <mui-icon-pin slot="body"></mui-icon-pin>
+            <mui-code slot="footer" scrollable>mui-icon-pin</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-pin-slash slot="body"></mui-icon-pin-slash>
+            <mui-code slot="footer" scrollable>mui-icon-pin-slash</mui-code>
+          </story-icon-grid>
         </mui-grid> 
 
       </story-card>

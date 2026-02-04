@@ -14,17 +14,17 @@ class MuiCardFooter extends HTMLElement {
           box-sizing: border-box;
         }
 
-        :host(.inner-space) {
+        :host([inner-space]) {
           padding: var(--space-400) var(--space-500);
         }
 
         @media (min-width: 768px) {
-          :host(.inner-space) {
+          :host([inner-space]) {
             padding: var(--space-500) var(--space-600);
           }
         }
 
-        :host(.hidden) {
+        :host([hidden]) {
           display: none;
         }
 
@@ -33,7 +33,7 @@ class MuiCardFooter extends HTMLElement {
           border-bottom-left-radius: calc(var(--card-radius) - 1px);
         }
 
-        :host(.has-button-group) {
+        :host([has-button-group]) {
           padding-top: 0;
         }
 
@@ -57,7 +57,7 @@ class MuiCardFooter extends HTMLElement {
       });
 
       if (visibleNodes.length === 0) {
-        this.classList.add("hidden");
+        this.setAttribute("hidden", "");
         return;
       }
 
@@ -79,11 +79,11 @@ class MuiCardFooter extends HTMLElement {
       });
 
       if (!hasCode) {
-        this.classList.add("inner-space");
+        this.setAttribute("inner-space", "");
       }
 
       if (hasButtonGroup) {
-        this.classList.add("has-button-group");
+        this.setAttribute("has-button-group", "");
       }
     });
   }

@@ -64,11 +64,11 @@ class MuiTabItem extends HTMLElement {
         border-radius: calc(var(--tab-radius) - 0.2rem);
       }
 
-      :host(.active) {
+      :host([active]) {
         color: var(--tab-text-color-active);
       }
 
-      :host(.active:focus-visible) {
+      :host([active]:focus-visible) {
         outline: var(--outline-thick);
         outline-offset: -5px;
       }
@@ -97,8 +97,6 @@ class MuiTabItem extends HTMLElement {
 
   updateActiveState() {
     const isActive = this.hasAttribute("active");
-    this.classList.toggle("active", isActive);
-
     this.setAttribute("role", "tab");
     this.setAttribute("aria-selected", isActive ? "true" : "false");
     this.setAttribute("tabindex", isActive ? "0" : "-1");

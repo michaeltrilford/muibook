@@ -33,6 +33,7 @@ export * from "./components/mui-drawer";
 export * from "./components/mui-avatar";
 export * from "./components/mui-image";
 export * from "./components/mui-smart-card";
+export * from "./components/mui-icons/ai";
 export * from "./components/mui-icons/accessibility";
 export * from "./components/mui-icons/add";
 export * from "./components/mui-icons/attention";
@@ -72,6 +73,13 @@ export * from "./components/mui-icons/play-rectangle";
 export * from "./components/mui-icons/list-and-film";
 export * from "./components/mui-icons/search";
 export * from "./components/mui-icons/checkmark";
+export * from "./components/mui-icons/rectangle";
+export * from "./components/mui-icons/rectangle-media-text";
+export * from "./components/mui-icons/rectangle-dashed";
+export * from "./components/mui-icons/rectangle-left-drawer";
+export * from "./components/mui-icons/rectangle-bottom-panel";
+export * from "./components/mui-icons/pin";
+export * from "./components/mui-icons/pin-slash";
 
 // Layout
 export * from "./components/mui-stack/hstack";
