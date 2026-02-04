@@ -1,6 +1,6 @@
 {
   "name": "@muibook/components",
-  "version": "9.1.0",
+  "version": "10.0.0",
   "type": "module",
   "description": "A library of MUI-based design system components.",
   "author": "Michael Trilford",
