@@ -6,28 +6,39 @@ class MuiTabController extends HTMLElement {
 
   connectedCallback() {
     this.addEventListener("tab-change", this.handleTabChange);
+    requestAnimationFrame(() => this.initializePanels());
+  }
 
-    // Initialize visibility based on currently active tab-item
+  disconnectedCallback() {
+    this.removeEventListener("tab-change", this.handleTabChange);
+  }
+
+  private initializePanels(): void {
     const tabBar = this.querySelector("mui-tab-bar");
-    if (tabBar) {
-      const activeTab = tabBar.querySelector("mui-tab-item[active]");
-      if (activeTab) this.updatePanels(activeTab.id);
-    }
+    const activeTab = tabBar?.querySelector<HTMLElement>("mui-tab-item[active]");
+    const fallbackTab = tabBar?.querySelector<HTMLElement>("mui-tab-item");
+    const activeId = activeTab?.id || fallbackTab?.id || "";
+    this.updatePanels(activeId);
   }
 
   handleTabChange(event: Event): void {
     const customEvent = event as CustomEvent<{ activeId: string }>;
-    this.updatePanels(customEvent.detail.activeId);
+    const activeId = customEvent?.detail?.activeId || "";
+    this.updatePanels(activeId);
   }
 
   updatePanels(activeId: string): void {
-    const panels = this.querySelectorAll<HTMLElement>("mui-tab-panel");
+    const panels = Array.from(this.querySelectorAll<HTMLElement>("mui-tab-panel"));
+    if (!panels.length) return;
+
+    let targetPanel = panels.find((panel) => panel.getAttribute("item") === activeId) || null;
+    if (!targetPanel) targetPanel = panels[0];
+
     panels.forEach((panel) => {
-      if (panel.getAttribute("item") === activeId) {
-        panel.style.display = ""; // or block/flex depending on your styling
-      } else {
-        panel.style.display = "none";
-      }
+      const isActive = panel === targetPanel;
+      panel.toggleAttribute("hidden", !isActive);
+      panel.setAttribute("aria-hidden", String(!isActive));
+      panel.style.display = isActive ? "" : "none";
     });
   }
 }

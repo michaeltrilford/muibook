@@ -45,6 +45,9 @@ class tokensComponents extends HTMLElement {
 
           <spec-card id="alert" title="Alert" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts">
             <story-token-slat slot="body" token="--alert-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--alert-padding-large" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--alert-padding-medium" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--alert-padding-small" variant="size"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Feedback</mui-link> tokens</mui-body>
           </spec-card>
 

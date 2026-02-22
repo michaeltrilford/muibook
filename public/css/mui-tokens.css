@@ -778,7 +778,9 @@ html[data-theme="dark"] {
   --heading-line-height-600: var(--line-height-100);
   /* Alert */
   --alert-radius: var(--radius-100);
-  --alert-padding: var(--space-400);
+  --alert-padding-large: var(--space-400);
+  --alert-padding-medium: var(--space-300);
+  --alert-padding-small: var(--space-200);
   --alert-gap-horizontal-mobile: var(--space-300);
   --alert-gap-horizontal-desktop: var(--space-100);
   /* Messages */

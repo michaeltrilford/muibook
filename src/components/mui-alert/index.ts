@@ -7,6 +7,7 @@ import "../mui-icons/attention";
 // Type definitions
 type Variant = "positive" | "info" | "warning" | "attention";
 type VariantAlias = "success" | "error";
+type AlertSize = "small" | "medium" | "large";
 
 // Utility function to check if a string is a valid Variant
 function isVariant(value: string): value is Variant {
@@ -15,9 +16,10 @@ function isVariant(value: string): value is Variant {
 
 class MuiAlert extends HTMLElement {
   private actionSlotListener: (() => void) | null = null;
+  private contentSlotListener: (() => void) | null = null;
 
   static get observedAttributes() {
-    return ["variant"];
+    return ["variant", "label", "hide-label", "size"];
   }
 
   constructor() {
@@ -30,7 +32,11 @@ class MuiAlert extends HTMLElement {
   }
 
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
-    if (name === "variant" && oldValue !== newValue && this.shadowRoot) {
+    if (
+      (name === "variant" || name === "label" || name === "hide-label" || name === "size") &&
+      oldValue !== newValue &&
+      this.shadowRoot
+    ) {
       this.render();
     }
   }
@@ -96,7 +102,44 @@ class MuiAlert extends HTMLElement {
     const iconTag = iconTags[variant];
     const iconColor = iconColors[variant];
     const labelColor = labelColors[variant];
-    const labelText = labelTexts[variant];
+    const customLabel = this.getAttribute("label");
+    const labelText = customLabel && customLabel.trim().length > 0 ? customLabel : labelTexts[variant];
+    const hideLabel = this.hasAttribute("hide-label");
+    const size = this.getAlertSize();
+    const iconSize = size === "large" ? "medium" : "small";
+    const bodySize = size === "large" ? "medium" : "small";
+    const verticalPaddingTop =
+      size === "large"
+        ? "var(--alert-padding-large)"
+        : size === "medium"
+          ? "var(--alert-padding-medium)"
+          : "var(--alert-padding-small)";
+    const verticalPaddingBottom =
+      size === "large"
+        ? "var(--alert-padding-large)"
+        : size === "medium"
+          ? "var(--alert-padding-medium)"
+          : "var(--alert-padding-small)";
+    const iconVerticalPadding =
+      size === "large"
+        ? "var(--alert-padding-large)"
+        : size === "medium"
+          ? "var(--alert-padding-medium)"
+          : "var(--alert-padding-small)";
+    const horizontalPadding =
+      size === "large"
+        ? "var(--alert-padding-large)"
+        : size === "medium"
+          ? "var(--alert-padding-medium)"
+          : "var(--alert-padding-small)";
+    const horizontalGap =
+      size === "large"
+        ? "var(--alert-gap-horizontal-mobile)"
+        : size === "medium"
+          ? "var(--space-200)"
+          : "var(--space-200)";
+    const actionPaddingRight =
+      size === "small" || size === "large" ? "var(--space-100)" : "calc(var(--space-050) + var(--space-025))";
 
     const styles = /*css*/ `
 
@@ -108,36 +151,48 @@ class MuiAlert extends HTMLElement {
 
       section {
         border-radius: var(--alert-radius);
-        padding-left: var(--alert-padding);
-        padding-right: var(--alert-padding);
+        padding-left: ${horizontalPadding};
+        padding-right: ${horizontalPadding};
         background: var(--white);
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
         display: grid;
         grid-template-columns: auto 1fr;
         align-items: start;
-        gap: var(--alert-gap-horizontal-mobile);
+        gap: ${horizontalGap};
         box-sizing: border-box;
         border: var(--feedback-${variant}-border);
         background: var(--feedback-${variant}-background);
       }
 
-      .icon,
+      .icon {
+        padding-top: ${iconVerticalPadding};
+        padding-bottom: ${iconVerticalPadding};
+      }
+
       mui-body {
-        padding-top: var(--alert-padding);
-        padding-bottom: var(--alert-padding);
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      mui-body::part(padding) {
+        padding-top: ${verticalPaddingTop};
+        padding-bottom: ${verticalPaddingBottom};
       }
 
       section[has-action] {
-        padding-right: var(--space-100);
+        padding-right: ${actionPaddingRight};
         grid-template-columns: auto 1fr auto;
       }
 
       ::slotted(mui-button[slot="action"]),
-      ::slotted(mui-link[slot="action"]) { padding-top: var(--space-100); }
+      ::slotted(mui-link[slot="action"]) {
+        padding-top: var(--space-100);
+      }
 
       @media (min-width: 600px) {
         :section { gap: var(--alert-gap-horizontal-desktop); }
-        :section([has-action]) { padding-right: var(--space-100); }
+        :section([has-action]) { padding-right: ${actionPaddingRight}; }
         ::slotted(mui-button[slot="action"]),
         ::slotted(mui-link[slot="action"]) { align-self: center; padding-top: var(--space-000); }
       }
@@ -145,10 +200,6 @@ class MuiAlert extends HTMLElement {
       .label {
         color: var(${labelColor}); 
         font-weight: var(--font-weight-bold);
-      }
-
-      mui-body::part(display) {
-        display: inline;
       }
 
       mui-body::part(gap) {
@@ -161,9 +212,9 @@ class MuiAlert extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <section>
-      <${iconTag} size="medium" color="var(${iconColor})" class="icon"></${iconTag}>
-      <mui-body>
-        <span class="label">${labelText}</span>
+      <${iconTag} size="${iconSize}" color="var(${iconColor})" class="icon"></${iconTag}>
+      <mui-body size="${bodySize}">
+        ${hideLabel ? "" : `<span class="label">${labelText}</span>`}
         <slot></slot>
       </mui-body>
       <slot name="action"></slot>
@@ -172,6 +223,24 @@ class MuiAlert extends HTMLElement {
 
     // Re-setup action slot after rendering
     this.setupActionSlot();
+    this.setupContentSlot();
+  }
+
+  private getAlertSize(): AlertSize {
+    const sizeAttr = this.getAttribute("size");
+    return sizeAttr === "small" || sizeAttr === "large" ? sizeAttr : "medium";
+  }
+
+  private getInlineContentSize(size: AlertSize): string {
+    if (size === "small") return "small";
+    if (size === "medium") return "small";
+    return "medium";
+  }
+
+  private getActionControlSize(size: AlertSize): string {
+    if (size === "small") return "x-small";
+    if (size === "medium") return "small";
+    return "medium";
   }
 
   setupActionSlot() {
@@ -185,6 +254,8 @@ class MuiAlert extends HTMLElement {
 
       const checkForAction = () => {
         const variant = this.getAttribute("variant") || "positive";
+        const size = this.getAlertSize();
+        const actionSize = this.getActionControlSize(size);
         const assigned = actionSlot.assignedElements();
         let hasAction = false;
 
@@ -195,6 +266,15 @@ class MuiAlert extends HTMLElement {
           if (isActionComponent) {
             hasAction = true;
             el.setAttribute("variant", "tertiary");
+            el.setAttribute("size", actionSize);
+            if (el.hasAttribute("icon-only")) {
+              const icons = Array.from(el.querySelectorAll("*")).filter((node) =>
+                node.tagName.toLowerCase().startsWith("mui-icon-"),
+              );
+              icons.forEach((icon) => {
+                icon.setAttribute("size", actionSize);
+              });
+            }
             el.removeAttribute("alert-slot");
             el.removeAttribute("alert-positive-slot");
             el.removeAttribute("alert-info-slot");
@@ -220,6 +300,35 @@ class MuiAlert extends HTMLElement {
       actionSlot.addEventListener("slotchange", this.actionSlotListener);
       requestAnimationFrame(checkForAction);
     }
+  }
+
+  setupContentSlot() {
+    const contentSlot = this.shadowRoot?.querySelector("slot:not([name])") as HTMLSlotElement | null;
+    if (!contentSlot) return;
+
+    if (this.contentSlotListener) {
+      contentSlot.removeEventListener("slotchange", this.contentSlotListener);
+    }
+
+    const checkForContent = () => {
+      const size = this.getAlertSize();
+      const inlineSize = this.getInlineContentSize(size);
+      const assigned = contentSlot.assignedElements({ flatten: true });
+
+      assigned.forEach((el) => {
+        const tag = el.tagName.toLowerCase();
+        const isMuiLink = tag === "mui-link";
+        const isMuiBody = tag === "mui-body";
+
+        if (isMuiLink || isMuiBody) {
+          el.setAttribute("size", inlineSize);
+        }
+      });
+    };
+
+    this.contentSlotListener = checkForContent;
+    contentSlot.addEventListener("slotchange", this.contentSlotListener);
+    requestAnimationFrame(checkForContent);
   }
 }
 

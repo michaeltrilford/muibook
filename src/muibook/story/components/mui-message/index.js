@@ -46,6 +46,13 @@ class storyMessage extends HTMLElement {
         description: "Describe the intent or mood of a message",
       },
       {
+        name: "size",
+        type: "string",
+        options: "small, medium, large",
+        default: "large",
+        description: "Controls density and content sizing for message layout.",
+      },
+      {
         name: "style",
         type: "string",
         options: "Valid CSS",
@@ -200,6 +207,39 @@ class storyMessage extends HTMLElement {
           &lt;mui-message heading="Accessibility" icon="mui-icon-accessibility"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-body&gt;Body content...&lt;/mui-body&gt;
+          <br />
+          &lt;/mui-message&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card 
+        title="Size: Large, Medium, Small" 
+        description="Message supports size density for layout and content."
+        usage="Use large for prominent explanatory content blocks.|||Use medium for standard page-level guidance in denser layouts.|||Use small for compact regions where space is limited."
+        accessibility="Keep heading and body concise at smaller sizes to preserve readability."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-message heading="Large Message" variant="info" size="large">
+            <mui-body>Large message body content.</mui-body>
+            <mui-link>Read details</mui-link>
+          </mui-message>
+
+          <mui-message heading="Medium Message" variant="info" size="medium">
+            <mui-body>Medium message body content.</mui-body>
+            <mui-link>Read details</mui-link>
+          </mui-message>
+
+          <mui-message heading="Small Message" variant="info" size="small">
+            <mui-body>Small message body content.</mui-body>
+            <mui-link>Read details</mui-link>
+          </mui-message>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-message heading="Medium Message" size="medium"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-body&gt;Medium message body content.&lt;/mui-body&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-link&gt;Read details&lt;/mui-link&gt;
           <br />
           &lt;/mui-message&gt;
         </story-code-block>

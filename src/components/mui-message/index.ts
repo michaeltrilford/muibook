@@ -6,6 +6,7 @@ import "../mui-icons/warning";
 import "../mui-icons/attention";
 
 type MessageVariant = "neutral" | "positive" | "info" | "warning" | "attention";
+type MessageSize = "small" | "medium" | "large";
 
 const MESSAGE_VARIANTS: MessageVariant[] = ["neutral", "positive", "info", "warning", "attention"];
 
@@ -59,16 +60,71 @@ const iconTags: Record<MessageVariant, string> = {
 
 /* Mui Message */
 class MuiMessage extends HTMLElement {
+  private contentSlotListener: (() => void) | null = null;
+
+  static get observedAttributes() {
+    return ["variant", "heading", "icon", "size"];
+  }
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (oldValue === newValue) return;
+    if (name === "variant" || name === "heading" || name === "icon" || name === "size") {
+      this.render();
+    }
+  }
+
+  private getMessageSize(): MessageSize {
+    const size = this.getAttribute("size");
+    if (size === "small" || size === "medium") return size;
+    return "large";
+  }
+
+  private getInlineContentSize(size: MessageSize): string {
+    if (size === "small") return "x-small";
+    if (size === "medium") return "small";
+    return "medium";
+  }
+
+  private setupContentSlot(size: MessageSize) {
+    const contentSlot = this.shadowRoot?.querySelector("slot:not([name])") as HTMLSlotElement | null;
+    if (!contentSlot) return;
+
+    if (this.contentSlotListener) {
+      contentSlot.removeEventListener("slotchange", this.contentSlotListener);
+    }
+
+    const syncContentSizes = () => {
+      const inlineSize = this.getInlineContentSize(size);
+      const nodes = contentSlot.assignedElements({ flatten: true });
+
+      nodes.forEach((el) => {
+        const tag = el.tagName.toLowerCase();
+        if (tag === "mui-body" || tag === "mui-link") {
+          el.setAttribute("size", inlineSize);
+        }
+      });
+    };
+
+    this.contentSlotListener = syncContentSizes;
+    contentSlot.addEventListener("slotchange", this.contentSlotListener);
+    requestAnimationFrame(syncContentSizes);
+  }
+
+  private render() {
     const rawVariant = this.getAttribute("variant") || "neutral";
     const variant: MessageVariant = MESSAGE_VARIANTS.includes(rawVariant as MessageVariant)
       ? (rawVariant as MessageVariant)
       : "neutral";
+    const size = this.getMessageSize();
 
     const headingText = this.getAttribute("heading") || "Heading...";
     const customIcon = this.getAttribute("icon");
@@ -79,6 +135,12 @@ class MuiMessage extends HTMLElement {
     const variantStyle = variantStyles[variant];
     const ariaLive = ariaLiveMap[variant];
     const role = roleMap[variant];
+    const horizontalGap =
+      size === "large" ? "var(--message-gap-horizontal)" : size === "medium" ? "var(--space-200)" : "var(--space-100)";
+    const verticalGap =
+      size === "large" ? "var(--message-gap-vertical)" : size === "medium" ? "var(--space-100)" : "var(--space-050)";
+    const headingFontSize = size === "large" ? "var(--font-size-200)" : "var(--font-size-100)";
+    const iconSize = size === "large" ? "medium" : "small";
 
     const styles = /*css*/ `
       :host {
@@ -100,7 +162,7 @@ class MuiMessage extends HTMLElement {
 
       .heading {
         font-weight: var(--font-weight-bold);
-        font-size: var(--font-size-200);
+        font-size: ${headingFontSize};
         ${headingColor}
       }
     `;
@@ -110,17 +172,19 @@ class MuiMessage extends HTMLElement {
         <style>${styles}</style>
     
       <section aria-labelledby="message-heading" aria-live="${ariaLive}" role="${role}">
-        <mui-h-stack space="var(--message-gap-horizontal)">
+        <mui-h-stack space="${horizontalGap}">
           <div class="icon">
-            <${iconTag} size="medium" color="var(${iconColor})"></${iconTag}>
+            <${iconTag} size="${iconSize}" color="var(${iconColor})"></${iconTag}>
           </div>
-          <mui-v-stack space="var(--message-gap-vertical)">
+          <mui-v-stack space="${verticalGap}">
             <div class="heading" id="message-heading">${headingText}</div>
             <slot></slot>
           </mui-v-stack>
         </mui-h-stack>
       </section>
       `;
+
+    this.setupContentSlot(size);
   }
 }
 

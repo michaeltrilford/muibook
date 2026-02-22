@@ -13,6 +13,9 @@ class MuiTabPanel extends HTMLElement {
         :host {
           display: block;
         }
+        :host([hidden]) {
+          display: none !important;
+        }
         .inner {
           padding: var(--tab-panel-padding, 0);
         }
