@@ -469,7 +469,7 @@ class MuiPrompt extends HTMLElement {
     const fanStep = "calc(var(--action-icon-only-size-medium) + var(--space-100))";
     actions.forEach((action, index) => {
       action.style.transition = `transform ${fanSpeed}ms ease, opacity ${fanSpeed}ms ease`;
-      action.style.zIndex = String(100 - index);
+      action.style.zIndex = "";
       const existing = this.fanAnimations.get(action);
       if (existing) {
         existing.cancel();
