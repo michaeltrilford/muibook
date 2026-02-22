@@ -50,15 +50,17 @@ class MuiPrompt extends HTMLElement {
     const files: File[] = Array.from(clipboard.files || []);
     const rawText = clipboard.getData("text/plain") || "";
     const text = rawText.trim();
+    const hasText = text.length > 0;
+    const imageUrl = hasText ? this.detectImageUrl(text) : "";
     const overflowToPreview = this.getAttribute("preview-overflow-to-preview") !== "false";
     const thresholdRaw = this.getAttribute("preview-threshold-chars");
     const thresholdChars = Number.isFinite(Number.parseInt(thresholdRaw || "", 10))
       ? Math.max(1, Number.parseInt(thresholdRaw || "", 10))
       : 220;
-    const hasText = text.length > 0;
     const detectedTextBadge = hasText ? this.detectBadge(text) : "";
     const isStructuredSnippet = detectedTextBadge !== "" && detectedTextBadge !== "Insightful";
-    const shouldOverflowText = overflowToPreview && hasText && (text.length >= thresholdChars || isStructuredSnippet);
+    const shouldOverflowText =
+      overflowToPreview && hasText && (Boolean(imageUrl) || text.length >= thresholdChars || isStructuredSnippet);
     const hasBinaryItems = files.length > 0;
 
     if (!hasBinaryItems && !hasText) return;
@@ -76,13 +78,23 @@ class MuiPrompt extends HTMLElement {
     }));
 
     if (shouldOverflowText && text) {
-      items.unshift({
-        kind: "text",
-        mimeType: "text/plain",
-        badge: this.detectBadge(text),
-        preview: text.slice(0, 260),
-        value: rawText,
-      });
+      if (imageUrl) {
+        items.unshift({
+          kind: "image",
+          mimeType: "text/uri-list",
+          badge: "IMG",
+          preview: imageUrl,
+          value: imageUrl,
+        });
+      } else {
+        items.unshift({
+          kind: "text",
+          mimeType: "text/plain",
+          badge: this.detectBadge(text),
+          preview: text.slice(0, 260),
+          value: rawText,
+        });
+      }
     }
 
     this.dispatchEvent(
@@ -90,7 +102,7 @@ class MuiPrompt extends HTMLElement {
         detail: {
           items,
           text: rawText || "",
-          textBadge: detectedTextBadge,
+          textBadge: imageUrl ? "IMG" : detectedTextBadge,
           overflowed: shouldOverflowText,
           thresholdChars,
           timestamp: new Date().toISOString(),
@@ -274,6 +286,21 @@ class MuiPrompt extends HTMLElement {
     if (/\b(select|from|where|group by|order by|join)\b/i.test(trimmed)) return "SQL";
     if (/\b(const|let|function|=>|import|export|return)\b/.test(trimmed)) return "JS";
     return "Insightful";
+  }
+
+  private detectImageUrl(value: string) {
+    const trimmed = value.trim();
+    if (!/^https?:\/\//i.test(trimmed)) return "";
+
+    try {
+      const url = new URL(trimmed);
+      const path = url.pathname.toLowerCase();
+      if (/\.(png|jpe?g|gif|webp|svg|avif|bmp)$/.test(path)) return trimmed;
+    } catch {
+      return "";
+    }
+
+    return "";
   }
 
   private bindEvents() {

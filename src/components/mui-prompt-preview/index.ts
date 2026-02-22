@@ -70,6 +70,11 @@ class MuiPromptPreview extends HTMLElement {
 
   private onKeyOpenPreview = (event: KeyboardEvent) => {
     if (event.key !== "Enter" && event.key !== " ") return;
+    const path = event.composedPath();
+    const fromDismissAction = path.some((node) => {
+      return node instanceof HTMLElement && node.classList?.contains("dismiss-action");
+    });
+    if (fromDismissAction) return;
     event.preventDefault();
     this.onOpenPreview(event);
   };
@@ -230,8 +235,13 @@ class MuiPromptPreview extends HTMLElement {
         :host([clickable]) {
           cursor: pointer;
         }
+        :host([clickable]:focus-visible) {
+          outline: none;
+        }
         :host([clickable]:focus-visible) .box {
           outline: var(--outline-thick);
+          outline-width: var(--stroke-size-200);
+          outline-offset: 0;
         }
         .box {
           position: relative;
@@ -416,6 +426,9 @@ class MuiPromptPreview extends HTMLElement {
         .dismiss-secondary:hover::part(border),
         .dismiss-secondary:focus-visible::part(border) {
           border: var(--prompt-preview-dismiss-secondary-border-hover);
+        }
+        .dismiss-action::part(outline) {
+          outline-width: var(--stroke-size-200);
         }
         .box.variant-overlay mui-badge,
         .box.has-image mui-badge,

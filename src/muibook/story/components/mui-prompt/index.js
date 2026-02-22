@@ -195,6 +195,55 @@ class StoryPrompt extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card
+        id="default"
+        title="Empty"
+        usage="This is a reusable offering extracted from Agent UI compositions.|||Use it as the shared prompt primitive across products."
+      >
+        <mui-v-stack slot="body" space="var(--space-100)">
+          <mui-prompt
+            id="promptDemo"
+            placeholder="Reply to Mui..."
+            enter-submit
+            actions-fan
+          >
+            <mui-button slot="actions" variant="tertiary" fan-trigger icon-only>
+              <mui-icon-toggle rotate size="medium">
+                <mui-icon-grid slot="start"></mui-icon-grid>
+                <mui-icon-close slot="end"></mui-icon-close>
+              </mui-icon-toggle>
+            </mui-button>
+            <mui-button slot="actions" variant="tertiary" icon-only>
+              <mui-icon-calendar size="medium"></mui-icon-calendar>
+            </mui-button>
+            <mui-button slot="actions" variant="tertiary" icon-only>
+              <mui-icon-pin size="medium"></mui-icon-pin>
+            </mui-button>
+            <mui-button slot="actions" variant="tertiary" icon-only>
+              <mui-icon-translate size="medium"></mui-icon-translate>
+            </mui-button>
+            <mui-button slot="actions" variant="tertiary" icon-only>
+              <mui-icon-left-sidebar size="medium"></mui-icon-left-sidebar>
+            </mui-button>
+            <mui-button slot="actions-right" variant="tertiary" id="promptSubmitBtn">
+              <mui-icon-toggle id="promptToggle" rotate size="medium">
+                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
+                <mui-icon-stop slot="end"></mui-icon-stop>
+              </mui-icon-toggle>
+            </mui-button>
+          </mui-prompt>
+          <mui-body id="promptStatus" size="x-small" variant="optional" style="padding-left: var(--space-100); margin-top: var(--space-050);">
+            Idle: no submit yet.
+          </mui-body>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt placeholder="Reply to Mui..." enter-submit actions-fan&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="tertiary" fan-trigger icon-only&gt;...&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot="actions-right" variant="tertiary"&gt;...&lt;/mui-button&gt;<br />
+          &lt;/mui-prompt&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="preview-open-image-dialog" title="Preview: Image" description="Click image preview to open the built-in prompt dialog.">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
@@ -292,55 +341,6 @@ class StoryPrompt extends HTMLElement {
           &lt;mui-prompt enter-submit actions-fan&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" clickable badge="IMG" bg-image="{url}" value=""&gt;&lt;/mui-prompt-preview&gt;<br />
           &nbsp;&nbsp;&lt;mui-button slot="actions" fan-trigger icon-only&gt;...&lt;/mui-button&gt;<br />
-          &lt;/mui-prompt&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card
-        id="default"
-        title="Prompt"
-        usage="This is a reusable offering extracted from Agent UI compositions.|||Use it as the shared prompt primitive across products."
-      >
-        <mui-v-stack slot="body" space="var(--space-100)">
-          <mui-prompt
-            id="promptDemo"
-            placeholder="Reply to Mui..."
-            enter-submit
-            actions-fan
-          >
-            <mui-button slot="actions" variant="tertiary" fan-trigger icon-only>
-              <mui-icon-toggle rotate size="medium">
-                <mui-icon-grid slot="start"></mui-icon-grid>
-                <mui-icon-close slot="end"></mui-icon-close>
-              </mui-icon-toggle>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only>
-              <mui-icon-calendar size="medium"></mui-icon-calendar>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only>
-              <mui-icon-pin size="medium"></mui-icon-pin>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only>
-              <mui-icon-translate size="medium"></mui-icon-translate>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only>
-              <mui-icon-left-sidebar size="medium"></mui-icon-left-sidebar>
-            </mui-button>
-            <mui-button slot="actions-right" variant="tertiary" id="promptSubmitBtn">
-              <mui-icon-toggle id="promptToggle" rotate size="medium">
-                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-button>
-          </mui-prompt>
-          <mui-body id="promptStatus" size="x-small" variant="optional" style="padding-left: var(--space-100); margin-top: var(--space-050);">
-            Idle: no submit yet.
-          </mui-body>
-        </mui-v-stack>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-prompt placeholder="Reply to Mui..." enter-submit actions-fan&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="tertiary" fan-trigger icon-only&gt;...&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="actions-right" variant="tertiary"&gt;...&lt;/mui-button&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
@@ -527,8 +527,13 @@ class StoryPrompt extends HTMLElement {
           if (clickable) preview.setAttribute("clickable", "");
           preview.setAttribute("badge", item.badge || "Insightful");
 
-          if (item.kind === "image" && item.file) {
-            const imageUrl = URL.createObjectURL(item.file);
+          if (item.kind === "image") {
+            const imageUrl = item.file ? URL.createObjectURL(item.file) : item.preview || item.value || "";
+            if (!imageUrl) {
+              preview.setAttribute("value", item.value || "");
+              promptEl.appendChild(preview);
+              return;
+            }
             preview.setAttribute("bg-image", imageUrl);
             preview.setAttribute("image-tint", imageTint);
             preview.setAttribute("value", "");
