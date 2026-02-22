@@ -1,5 +1,67 @@
 ## Header [Start]
 
+## v11.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/11.0.0)
+
+## Header [End]
+
+### Added
+
+- Added `mui-textarea` component with support for `label`, `hide-label`, `rows`, `value`, `placeholder`, `disabled`, and validation variants (`success`, `warning`, `error`).
+- Added Textarea docs and Muibook story page.
+- Added tab-specific semantic tokens for spacing/sizing control (padding, slot padding, gap, edge padding, badge offsets).
+- Added `mui-chip-input` component with multi-value chip entry, suggestion list, keyboard navigation, and hidden form input support.
+- Added `mui-icon-text-below-folder`.
+- Added `xx-small` icon size support and updated icon stories/docs.
+- Added Body `before` / `after` slots with automatic icon sizing by body size.
+- Added chip-input placement and responsive layout APIs: `placement="before|after"`, `mobile-stack`, and `breakpoint`.
+- Added chip-input events for modern integrations: `chip-input-change` and `chip-input-query-change`.
+- Added `mui-icon-exclamationmark`.
+- Added Stepper sizing support: `size="x-small|small|medium"` (default `medium`) with matching dot/icon sizing tokens.
+- Added Alert size tokens: `--alert-padding-large`, `--alert-padding-medium`, `--alert-padding-small`.
+
+### Changed
+
+- Tabs: introduced named slot-driven icon/badge behavior for `mui-tab-item` (`before` / `after`), with automatic icon and badge sizing from tab size.
+- Tabs: migrated sizing/spacing from action-token dependency to tab-specific tokens.
+- Tabs: updated story coverage for before/after slot patterns, size variants, and default/full-width examples.
+- Tabs: added `variant="ghost"` on `mui-tab-bar` to remove outer bar chrome while keeping active-tab emphasis.
+- Tabs: `ghost` variant now removes highlight shadow for a clean chrome-free presentation.
+- Badge: added size API (`x-small`, `small`, `medium`, `large`) with `medium` as default; sizing is now auto-enforced by host components in Button, Link, and Tab Item.
+- Button/Link/Tab Item: added badge slot offset spacing for `before`/`after` usage and aligned small/x-small spacing tiers.
+- Checkbox: updated label size mapping so `size="large"` uses medium body typography.
+- Chip: decoupled sizing from action tokens and added chip-specific size/radius/padding/gap tokens.
+- Chip/Input composition: input now supports controlled slot layout modes for stacked compositions, and chip-input composes with input slots instead of a separate shell.
+- Field: added optional message variant coverage in docs/stories.
+- Stepper: added component-level state tokens for success, warning, error, disabled, icon color, and dot sizing (`--stepper-*`), with light/dark mappings.
+- Stepper: expanded story coverage with representative state flows (error, disabled, checkout, verification) and small/x-small examples.
+- Stepper: pending and error states now use `mui-icon-exclamationmark`.
+- Progress: added component tokens for syncing/pending customization (`--progress-syncing-bar-background`, `--progress-radius`, `--progress-syncing-width`, `--progress-pending-stripe-size`).
+- Alert: added `size="small|medium|large"` with `medium` as default.
+- Alert: added `label` override and `hide-label` option for prefix text control.
+- Alert: auto-maps slotted content sizing (`mui-body`, `mui-link`) and action slot sizing (`mui-button`, `mui-link`) by alert size.
+- Message: added `size="small|medium|large"` with `large` as default (existing behavior), plus size-aware heading/icon/gap scaling.
+- Message: enforces slotted `mui-body` and `mui-link` sizes based on message size.
+- Form Hint terminology aligned to “Form Message” in component guidance (component/tag remains `mui-form-hint` for compatibility).
+
+### Fixed
+
+- Fixed tab before/after layout alignment and host padding precedence when both slot states are present.
+- Tabs (dots): updated focus ring to use `--outline-medium` with `outline-offset: var(--stroke-size-200)` for clearer keyboard focus.
+- Checkbox and Radio: disabled state now applies `not-allowed` cursor feedback on label text as well as control input.
+- Chip-input: preserved focus/caret while typing and selecting.
+- Chip-input: disabled state now keeps dismiss icons visible while preventing removal.
+- Stepper interactive behavior now preserves authored `state` and uses internal `resolved-state`, fixing backward navigation getting stuck.
+- Stepper vertical timeline now includes a top connector arm with state blend transitions for pending/error.
+- Progress: syncing/pending visuals now consume component tokens for width, radius, stripe size, and syncing bar background.
+- Alert: corrected small size vertical spacing and action-side padding behavior for `section[has-action]`.
+- Alert: corrected inline content/action auto-size mapping (body/link and action controls) across large/medium/small.
+
+---
+
+## Header [Start]
+
 ## v10.0.1
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/10.0.1)

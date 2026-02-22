@@ -467,8 +467,6 @@ class MuiPrompt extends HTMLElement {
     const fanOpen = this.hasAttribute("fan-open");
     const fanSpeed = 100;
     const fanStep = "calc(var(--action-icon-only-size-medium) + var(--space-100))";
-    const fanAmplitude = "0px";
-
     actions.forEach((action, index) => {
       action.style.transition = `transform ${fanSpeed}ms ease, opacity ${fanSpeed}ms ease`;
       action.style.zIndex = String(100 - index);
@@ -479,6 +477,7 @@ class MuiPrompt extends HTMLElement {
       }
 
       if (!fanMode) {
+        action.style.transitionDelay = "";
         action.style.transform = "";
         action.style.opacity = "";
         action.style.pointerEvents = "";
@@ -487,6 +486,7 @@ class MuiPrompt extends HTMLElement {
       }
 
       if (index === 0) {
+        action.style.transitionDelay = "";
         action.style.transform = "translateX(0)";
         action.style.opacity = "1";
         action.style.pointerEvents = "";
@@ -495,6 +495,7 @@ class MuiPrompt extends HTMLElement {
       }
 
       if (!fanOpen) {
+        action.style.transitionDelay = "";
         action.style.transform = "translateX(0) scale(0.8)";
         action.style.opacity = "0";
         action.style.pointerEvents = "none";
@@ -503,35 +504,44 @@ class MuiPrompt extends HTMLElement {
       }
 
       const x = `calc(${fanStep} * -${index})`;
-      const y = `calc(${Math.sin(index * 0.65).toFixed(3)} * ${fanAmplitude} - var(--space-100))`;
-      action.style.transform = `translate(${x}, ${y})`;
-      action.style.opacity = "1";
-      action.style.pointerEvents = "";
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prefersReducedMotion) return;
+      const staggerDelay = index * 50;
+      action.style.transition = `opacity ${Math.max(120, fanSpeed - 40)}ms ease, transform ${fanSpeed}ms cubic-bezier(0.22, 1, 0.36, 1)`;
+      action.style.transitionDelay = `${staggerDelay}ms`;
+      action.style.transform = "translateX(0) scale(0.92)";
+      action.style.opacity = "0";
+      action.style.pointerEvents = "none";
+      action.style.filter = "";
 
-      const hueBase = 48 * index;
-      const animation = action.animate(
-        [
-          { transform: `translate(${x}, ${y})`, filter: `hue-rotate(${hueBase}deg) saturate(1.1)` },
+      requestAnimationFrame(() => {
+        action.style.transform = `translateX(${x})`;
+        action.style.opacity = "1";
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReducedMotion) {
+          action.style.pointerEvents = "";
+          return;
+        }
+
+        const bounce = action.animate(
+          [
+            { transform: "translateX(0) scale(0.92)" },
+            { transform: `translateX(${x}) scale(1.03)`, offset: 0.68 },
+            { transform: `translateX(calc(${x} - var(--space-050))) scale(0.99)`, offset: 0.86 },
+            { transform: `translateX(${x}) scale(1)` },
+          ],
           {
-            transform: `translate(${x}, calc(${y} - var(--space-200)))`,
-            filter: `hue-rotate(${hueBase + 95}deg) saturate(1.25)`,
+            duration: fanSpeed + 180,
+            delay: staggerDelay,
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+            fill: "forwards",
           },
-          {
-            transform: `translate(${x}, calc(${y} + var(--space-050)))`,
-            filter: `hue-rotate(${hueBase + 170}deg) saturate(1.2)`,
-          },
-          { transform: `translate(${x}, ${y})`, filter: `hue-rotate(${hueBase + 250}deg) saturate(1.1)` },
-        ],
-        {
-          duration: fanSpeed * 8 + index * 30,
-          iterations: Infinity,
-          easing: "cubic-bezier(0.34, 1.36, 0.64, 1)",
-          direction: "alternate",
-        },
-      );
-      this.fanAnimations.set(action, animation);
+        );
+        this.fanAnimations.set(action, bounce);
+        bounce.finished
+          .catch(() => undefined)
+          .finally(() => {
+            action.style.pointerEvents = "";
+          });
+      });
     });
 
     rightActions.forEach((action) => {
