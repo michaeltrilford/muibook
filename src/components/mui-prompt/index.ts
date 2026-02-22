@@ -639,7 +639,7 @@ class MuiPrompt extends HTMLElement {
           box-sizing: border-box;
           overflow-x: auto;
           overflow-y: hidden;
-          padding-inline: var(--space-300);
+          padding-inline: calc(var(--space-300) + var(--stroke-size-100));
           padding-top:  var(--stroke-size-200);
           padding-bottom:  var(--stroke-size-200);
           scrollbar-width: thin;
@@ -669,6 +669,12 @@ class MuiPrompt extends HTMLElement {
         }
         .preview-row::part(gap) {
           gap: var(--space-100);
+        }
+        .preview-end-spacer {
+          flex: 0 0 calc(var(--space-300) - var(--space-100) + var(--stroke-size-100));
+          width: calc(var(--space-300) - var(--space-100) + var(--stroke-size-100));
+          min-width: calc(var(--space-300) - var(--space-100) + var(--stroke-size-100));
+          pointer-events: none;
         }
         ::slotted([slot="preview"]) {
           display: block;
@@ -734,6 +740,7 @@ class MuiPrompt extends HTMLElement {
           <div class="preview-shell" part="preview-shell">
             <mui-h-stack class="preview-row" part="preview-row" aligny="stretch" alignx="start" space="var(--space-100)">
               <slot name="preview"></slot>
+              <span class="preview-end-spacer" aria-hidden="true"></span>
             </mui-h-stack>
           </div>
           <slot name="input">
