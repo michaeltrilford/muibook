@@ -25,6 +25,23 @@ class StoryFormGroup extends HTMLElement {
             <mui-select options='[{"label":"Product","value":"product"},{"label":"Engineering","value":"engineering"},{"label":"Design","value":"design"}]'></mui-select>
           </mui-field>
         </mui-form-group>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-group heading="Account Details"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-field label="Email"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input type="email" placeholder="you@company.com"&gt;&lt;/mui-input&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-field&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-field label="Role"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-select options='[...]'&gt;&lt;/mui-select&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-field&gt;
+          <br />
+          &lt;/mui-form-group&gt;
+        </story-code-block>
       </story-card>
 
       <story-card id="horizontal" title="Horizontal Variant" description="Split row layout with responsive stack on mobile.">
@@ -34,12 +51,31 @@ class StoryFormGroup extends HTMLElement {
           </mui-field>
           <mui-field label="Notification Limit">
             <mui-input placeholder="3"></mui-input>
-            <mui-form-hint slot="message" style="color: var(--text-color-optional);">
-              <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
-              Override width with --form-group-horizontal-template
-            </mui-form-hint>
           </mui-field>
+          <mui-form-hint style="color: var(--text-color-optional);">
+            <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+            We use this contact when invoices fail and payment follow-up is required.
+          </mui-form-hint>
         </mui-form-group>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-group variant="horizontal" hide-label&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-field label="Billing Contact"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input type="email" placeholder="billing@company.com"&gt;&lt;/mui-input&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-field&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-field label="Notification Limit"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input placeholder="3"&gt;&lt;/mui-input&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-form-hint slot="message"&gt;...&lt;/mui-form-hint&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-field&gt;
+          <br />
+          &lt;/mui-form-group&gt;
+        </story-code-block>
       </story-card>
     `;
 

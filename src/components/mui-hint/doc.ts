@@ -24,7 +24,7 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         { name: "Body", link: "https://guides.muibook.com/body" },
-        { name: "Form Hint", link: "https://guides.muibook.com/field" },
+        { name: "Form Message", link: "https://guides.muibook.com/field" },
       ],
     },
     rules: [{ heading: "", description: "", doContent: [{ description: "", image: "" }], dontContent: [{ description: "", image: "" }] }],

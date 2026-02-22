@@ -27,6 +27,15 @@ class StoryHint extends HTMLElement {
             Warning tooltip content
           </mui-hint>
         </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-hint&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-icon-info slot="trigger" size="small"&gt;&lt;/mui-icon-info&gt;
+          <br />
+          &nbsp;&nbsp;Default tooltip content
+          <br />
+          &lt;/mui-hint&gt;
+        </story-code-block>
       </story-card>
 
       <story-card id="placements" title="Placements">
@@ -48,6 +57,15 @@ class StoryHint extends HTMLElement {
             Right placement
           </mui-hint>
         </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-hint placement="top"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-icon-info slot="trigger" size="small"&gt;&lt;/mui-icon-info&gt;
+          <br />
+          &nbsp;&nbsp;Top placement
+          <br />
+          &lt;/mui-hint&gt;
+        </story-code-block>
       </story-card>
     `;
 

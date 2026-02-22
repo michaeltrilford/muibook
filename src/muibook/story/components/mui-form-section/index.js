@@ -16,7 +16,7 @@ class StoryFormSection extends HTMLElement {
         </mui-code>
       </spec-card>
 
-      <story-card id="account-setup" title="Account Setup Section" description="Real form grouping with Field, Input, Select, and Form Hint. Intended for use on a surface background." usage="Use one form section for each major form area.|||Use form group to cluster related fields.|||Hide group labels when they repeat the section title.">
+      <story-card id="account-setup" title="Account Setup Section" description="Real form grouping with Field, Input, Select, and Form Message. Intended for use on a surface background." usage="Use one form section for each major form area.|||Use form group to cluster related fields.|||Hide group labels when they repeat the section title.">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Account Setup">
             <mui-form-group heading="Account Details" hide-label>
@@ -33,6 +33,19 @@ class StoryFormSection extends HTMLElement {
             </mui-form-group>
           </mui-form-section>
         </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-section heading="Account Setup"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-form-group heading="Account Details" hide-label&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field label="Email"&gt;...&lt;/mui-field&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field label="Role"&gt;...&lt;/mui-field&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-form-group&gt;
+          <br />
+          &lt;/mui-form-section&gt;
+        </story-code-block>
       </story-card>
 
       <story-card id="billing" title="Billing Preferences Section" description="Grouped controls with radio choices and inline guidance. Intended for use on a surface background." usage="Use horizontal groups for paired fields.|||Default split is 1fr / 20rem and stacks on mobile.|||Use form hints for helper or status text.">
@@ -97,6 +110,17 @@ class StoryFormSection extends HTMLElement {
             </mui-card>
           </mui-v-stack>
         </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-section heading="Billing Preferences"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-form-group heading="Billing Cycle"&gt;...&lt;/mui-form-group&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-form-group heading="Notifications"&gt;...&lt;/mui-form-group&gt;
+          <br />
+          &lt;/mui-form-section&gt;
+        </story-code-block>
       </story-card>
 
       <story-card id="no-legend" title="No Legend" description="Form section composition without a section heading/legend.">
@@ -117,6 +141,17 @@ class StoryFormSection extends HTMLElement {
             </mui-form-group>
           </mui-form-section>
         </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-section&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-form-group heading="Contact Preferences"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field label="Billing Alerts"&gt;...&lt;/mui-field&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-form-group&gt;
+          <br />
+          &lt;/mui-form-section&gt;
+        </story-code-block>
       </story-card>
 
       <story-card id="card-compare" title="Card Spacing Compare" description="Reference spacing using mui-card and mui-card-body for side-by-side comparison.">
@@ -137,6 +172,17 @@ class StoryFormSection extends HTMLElement {
             </mui-form-group>
           </mui-card-body>
         </mui-card>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-card&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-card-body&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-form-group heading="Contact Preferences"&gt;...&lt;/mui-form-group&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-card-body&gt;
+          <br />
+          &lt;/mui-card&gt;
+        </story-code-block>
       </story-card>
 
     `;

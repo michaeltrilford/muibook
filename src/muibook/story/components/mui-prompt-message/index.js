@@ -25,6 +25,15 @@ class StoryPromptMessage extends HTMLElement {
           <mui-avatar size="small" slot="avatar" label="Michael Trilford" background="neutral"></mui-avatar>
           <mui-body size="small">Can you provide CSAT data for the past quarter and highlight pain points by feature area?</mui-body>
         </mui-prompt-message>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt-message&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-avatar slot="avatar" size="small" label="Michael Trilford" background="neutral"&gt;&lt;/mui-avatar&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-body size="small"&gt;Can you provide CSAT data...&lt;/mui-body&gt;
+          <br />
+          &lt;/mui-prompt-message&gt;
+        </story-code-block>
       </story-card>
 
       <story-card id="list" title="Conversation List">
@@ -38,6 +47,15 @@ class StoryPromptMessage extends HTMLElement {
             <mui-body size="small">Great, include sentiment trends and top customer themes.</mui-body>
           </mui-prompt-message>
         </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-v-stack space="var(--space-200)"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-prompt-message&gt;...&lt;/mui-prompt-message&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-prompt-message&gt;...&lt;/mui-prompt-message&gt;
+          <br />
+          &lt;/mui-v-stack&gt;
+        </story-code-block>
       </story-card>
     `;
 

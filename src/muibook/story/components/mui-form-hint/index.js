@@ -19,9 +19,6 @@ class StoryFormHint extends HTMLElement {
       <story-card id="patterns" title="Message Patterns" description="Icon-led supporting text with semantic color from usage context.">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-200)">
-            <mui-form-hint style="color: var(--text-color-default);">
-              Use your work email so teammates can find your account.
-            </mui-form-hint>
             <mui-form-hint style="color: var(--text-color-optional);">
               <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
               Optional: Add a referral code.
@@ -40,9 +37,18 @@ class StoryFormHint extends HTMLElement {
             </mui-form-hint>
           </mui-v-stack>
         </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-hint style="color: var(--text-color-warning);"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-icon-warning slot="before" color="var(--text-color-warning)"&gt;&lt;/mui-icon-warning&gt;
+          <br />
+          &nbsp;&nbsp;Your password expires in 5 days.
+          <br />
+          &lt;/mui-form-hint&gt;
+        </story-code-block>
       </story-card>
 
-      <story-card id="field-composition" title="Field Composition" description="Real usage under Field controls, with helper text and validation feedback.">
+      <story-card id="field-composition" title="Field Composition" description="Use Form Hint on the owning Field via slot='message' for helper and validation copy.">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Project Settings">
             <mui-form-group heading="Environment" hide-label>
@@ -69,6 +75,62 @@ class StoryFormHint extends HTMLElement {
             </mui-form-group>
           </mui-form-section>
         </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-field label="API Key"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-input value="pk_live_..." variant="error"&gt;&lt;/mui-input&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-form-hint slot="message" style="color: var(--text-color-error);"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-attention slot="before" color="var(--text-color-error)"&gt;&lt;/mui-icon-attention&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;This key is invalid. Regenerate and try again.
+          <br />
+          &nbsp;&nbsp;&lt;/mui-form-hint&gt;
+          <br />
+          &lt;/mui-field&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="form-group-composition" title="Form Group Composition" description="Use Form Hint directly inside Form Group for group-level guidance and section notes.">
+        <div slot="body" class="story-form-surface">
+          <mui-form-section heading="Billing Setup">
+            <mui-form-group heading="Billing Preferences">
+              <mui-form-hint style="color: var(--text-color-optional);">
+                <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+                Changes apply on the next billing cycle.
+              </mui-form-hint>
+
+              <mui-field label="Invoice Frequency">
+                <mui-select options='[{"label":"Monthly","value":"monthly"},{"label":"Quarterly","value":"quarterly"},{"label":"Yearly","value":"yearly"}]' value="monthly"></mui-select>
+              </mui-field>
+
+              <mui-field label="Reference Code">
+                <mui-input placeholder="Optional"></mui-input>
+              </mui-field>
+
+              <mui-form-hint style="color: var(--text-color-warning);">
+                <mui-icon-warning slot="before" color="var(--text-color-warning)"></mui-icon-warning>
+                Enterprise billing changes may require admin approval.
+              </mui-form-hint>
+            </mui-form-group>
+          </mui-form-section>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-group heading="Billing Preferences"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-form-hint style="color: var(--text-color-optional);"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot="before" color="var(--text-color-optional)"&gt;&lt;/mui-icon-info&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;Changes apply on the next billing cycle.
+          <br />
+          &nbsp;&nbsp;&lt;/mui-form-hint&gt;
+          <br />
+          &nbsp;&nbsp;...
+          <br />
+          &lt;/mui-form-group&gt;
+        </story-code-block>
       </story-card>
 
       <story-card id="sizes" title="Sizes" description="Hint typography and icon sizing across x-small, small, medium, and large body sizes.">
@@ -90,6 +152,15 @@ class StoryFormHint extends HTMLElement {
             large helper content
           </mui-form-hint>
         </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-hint size="small" style="color: var(--text-color-warning);"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-icon-warning slot="before" color="var(--text-color-warning)"&gt;&lt;/mui-icon-warning&gt;
+          <br />
+          &nbsp;&nbsp;small helper content
+          <br />
+          &lt;/mui-form-hint&gt;
+        </story-code-block>
       </story-card>
     `;
 
@@ -104,7 +175,7 @@ class StoryFormHint extends HTMLElement {
         }
       </style>
       <story-template
-        title="${data?.title || "Form Hint"}"
+        title="${data?.title || "Form Message"}"
         description="${data?.description || ""}"
         github="${(data?.github || []).join("|||")}"
         figma="${(data?.figma || []).join("|||")}"
@@ -115,7 +186,7 @@ class StoryFormHint extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="patterns::Message Patterns|||field-composition::Field Composition|||sizes::Sizes"
+          links="patterns::Message Patterns|||field-composition::Field Composition|||form-group-composition::Form Group Composition|||sizes::Sizes"
         ></story-quicklinks>
         ${stories}
       </story-template>

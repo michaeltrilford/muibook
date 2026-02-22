@@ -2,9 +2,9 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   FormHint: {
-    title: "Form Hint",
+    title: "Form Message",
     description:
-      "Form Hint provides supporting text below form controls for guidance, validation, and status messaging.",
+      "Form Message (mui-form-hint) provides supporting text below form controls for guidance, validation, and status messaging.",
     hero: [""],
     figma: [""],
     storybook: ["https://stories.muibook.com"],
@@ -15,8 +15,8 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use for supporting text below form controls.",
         "Use inside mui-field with slot='message' for consistent spacing and placement.",
-        "When used in Form Group layouts, attach each Form Hint to its specific Field using slot='message'.",
-        "Form Hint wraps Mui Body with form-oriented defaults.",
+        "When used in Form Group layouts, attach each Form Message to its specific Field using slot='message'.",
+        "Form Message wraps Mui Body with form-oriented defaults.",
         "Supporting copy is intentionally knocked back so inputs and selections stay visually primary.",
         "Slot icons in before/after using Mui Body slot behavior.",
         "Style state feedback through slotted icon color and text styling in usage context.",
