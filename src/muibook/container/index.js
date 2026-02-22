@@ -110,7 +110,6 @@ export class AppContainer extends HTMLElement {
       "/table": "story-table",
       "/slat": "story-slat",
 
-      "/agent": "comp-agent-ui",
       "/wallet": "comp-wallet",
       "/onboarding": "comp-onboarding",
       "/muitube": "comp-mui-tube",
@@ -152,7 +151,6 @@ export class AppContainer extends HTMLElement {
       "parts-layout": () => import("../story/parts/layout.js"),
       "parts-visual": () => import("../story/parts/visual.js"),
 
-      "comp-agent-ui": () => import("../story/compositions/agent-ui"),
       "comp-wallet": () => import("../story/compositions/wallet"),
       "comp-onboarding": () => import("../story/compositions/onboarding/index.js"),
       "comp-mui-tube": () => import("../story/compositions/muitube/index.js"),

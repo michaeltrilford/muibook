@@ -219,7 +219,6 @@ class appNavbar extends HTMLElement {
 
     const Compositions = /*html*/ `
       <app-navbar-group id="compositions" groupname="Compositions">
-        <app-navbar-link link="#/agent" title="Agent UI"></app-navbar-link> 
         <app-navbar-link link="#/onboarding" title="Onboarding"></app-navbar-link> 
         <app-navbar-link link="#/wallet" title="Wallet"></app-navbar-link> 
         <app-navbar-link link="#/muitube" title="MuiTube"></app-navbar-link> 
