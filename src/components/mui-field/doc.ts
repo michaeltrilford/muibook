@@ -18,10 +18,14 @@ export const muiDocs: MuiDocs = {
 
     usage: {
       list: [
-        "Acts as a parent wrapper for form elements such as Input, Select, Textarea, etc.",
+        "Acts as a parent wrapper for form elements such as Input, Select, Textarea, and Radio Group.",
+        "Use size='x-small|small|medium|large' on Field to keep slotted controls consistent.",
+        "Use slot='message' for rich helper/validation content (for example, mui-form-hint with icons).",
+        "Inside Form Group, keep helper/validation content attached to each related Field via slot='message'.",
         "Use clear, descriptive labels so users understand the purpose of the form field.",
         "Mark required fields with an asterisk (*) and validate input before submission.",
-        "isplay validation messages in real-time or upon submission to guide corrections.",
+        "Display validation messages in real-time or upon submission to guide corrections.",
+        "Helper and supporting copy should be intentionally knocked back so form controls remain visually primary.",
       ],
     },
 
@@ -48,6 +52,7 @@ export const muiDocs: MuiDocs = {
         "Label: The Field component supports a label, useful for grouping multiple inputs or when applying the label at the parent level is preferred.",
         "Message: Supports rendering static text or dynamic messages that reflect the field’s state, such as success, warning, or error.",
         "Slot: Allows insertion of related form components like Input or Select as children within the Field.",
+        "Message Slot: Supports custom helper content using slot='message'.",
       ],
     },
 
@@ -67,6 +72,14 @@ export const muiDocs: MuiDocs = {
             "Includes supporting text beneath the field. Use to provide guidance, context, or character limits.",
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/1krnirIt4OKRZTkYRqXR2T/bbbb42a4afc3873407ceeb78e0fdb801/default-message.png",
+        },
+        {
+          key: "optional-with-message",
+          title: "Optional w/ Message",
+          description:
+            "Use for non-blocking helper context. The optional token keeps emphasis low while preserving clarity.",
+          image:
+            "",
         },
         {
           key: "success-with-message",

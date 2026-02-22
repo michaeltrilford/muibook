@@ -1,6 +1,6 @@
 class MuiField extends HTMLElement {
   static get observedAttributes() {
-    return ["variant", "message", "label", "hide-label"];
+    return ["variant", "message", "label", "hide-label", "size"];
   }
 
   constructor() {
@@ -10,18 +10,36 @@ class MuiField extends HTMLElement {
     // Static shadow DOM: slot + message container + styles
     this.shadowRoot!.innerHTML = `
       <style>
-        :host { display: block; }
-
-        mui-body { margin-top: var(--space-200); }
-        mui-body::part(display) { display: flex; }
-        mui-body::part(align-items) { align-items: center; }
-        mui-body::part(gap) { gap: var(--space-100); }
+        :host {
+          display: flex;
+          flex-direction: column;
+        }
+        .field-content {
+          display: flex;
+          flex-direction: column;
+        }
+        .message-container {
+          display: none;
+        }
+        :host([has-message]) .message-container {
+          display: flex;
+          margin-top: var(--space-300);
+        }
+        :host([size="x-small"][has-message]) .message-container { margin-top: var(--space-100); }
+        :host([size="small"][has-message]) .message-container { margin-top: var(--space-100); }
+        :host([size="medium"][has-message]) .message-container { margin-top: var(--space-300); }
+        :host([size="large"][has-message]) .message-container { margin-top: var(--space-300); }
 
         ::slotted(mui-checkbox) { padding-left: var(--space-025); }
       </style>
 
-      <slot></slot>
-      <div class="message-container"></div>
+      <div class="field-content">
+        <slot></slot>
+      </div>
+      <div class="message-container">
+        <slot name="message"></slot>
+        <div class="message-fallback"></div>
+      </div>
     `;
   }
 
@@ -57,16 +75,24 @@ class MuiField extends HTMLElement {
     else this.removeAttribute("hide-label");
   }
 
+  get size() {
+    return this.getAttribute("size") || "medium";
+  }
+  set size(val: string) {
+    this.setAttribute("size", val);
+  }
+
   // -----------------------
   // Lifecycle methods
   // -----------------------
   connectedCallback() {
+    this.bindSlotEvents();
     this.renderMessage();
     this.passAttributesToChild();
   }
 
   attributeChangedCallback(name: string) {
-    if (["variant", "message", "label", "hide-label"].includes(name)) {
+    if (["variant", "message", "label", "hide-label", "size"].includes(name)) {
       this.renderMessage();
       this.passAttributesToChild();
     }
@@ -81,7 +107,7 @@ class MuiField extends HTMLElement {
     const slotted = slot?.assignedElements?.()[0]; // assumes only one
     if (!slotted) return;
 
-    ["variant", "label", "hide-label"].forEach((attr) => {
+    ["variant", "label", "hide-label", "size"].forEach((attr) => {
       if (this.hasAttribute(attr)) {
         slotted.setAttribute(attr, this.getAttribute(attr) || "");
       } else {
@@ -92,18 +118,47 @@ class MuiField extends HTMLElement {
 
   renderMessage() {
     if (!this.shadowRoot) return;
-    const container = this.shadowRoot.querySelector(".message-container");
-    if (!container) return;
+    const fallback = this.shadowRoot.querySelector(".message-fallback") as HTMLElement | null;
+    const messageSlot = this.shadowRoot.querySelector('slot[name="message"]') as HTMLSlotElement | null;
+    if (!fallback || !messageSlot) return;
 
     const variant = this.variant;
     const message = this.message;
 
     let icon = "";
-    if (variant === "success") icon = `<mui-icon-check></mui-icon-check>`;
-    else if (variant === "warning") icon = `<mui-icon-warning></mui-icon-warning>`;
-    else if (variant === "error") icon = `<mui-icon-attention></mui-icon-attention>`;
+    if (variant === "success") icon = `<mui-icon-check slot="before"></mui-icon-check>`;
+    else if (variant === "warning") icon = `<mui-icon-warning slot="before"></mui-icon-warning>`;
+    else if (variant === "error") icon = `<mui-icon-attention slot="before"></mui-icon-attention>`;
 
-    container.innerHTML = message ? `<mui-body size="small" variant="${variant}">${icon}${message}</mui-body>` : "";
+    const hasSlottedMessage = messageSlot.assignedNodes({ flatten: true }).some((node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) return true;
+      if (node.nodeType === Node.TEXT_NODE) return (node.textContent || "").trim().length > 0;
+      return false;
+    });
+
+    if (hasSlottedMessage) {
+      fallback.innerHTML = "";
+      this.setAttribute("has-message", "");
+      return;
+    }
+
+    fallback.innerHTML = message ? `<mui-body size="small" variant="${variant}">${icon}${message}</mui-body>` : "";
+    if (message) this.setAttribute("has-message", "");
+    else this.removeAttribute("has-message");
+  }
+
+  bindSlotEvents() {
+    if (!this.shadowRoot) return;
+
+    const messageSlot = this.shadowRoot.querySelector('slot[name="message"]') as HTMLSlotElement | null;
+    if (messageSlot) {
+      messageSlot.addEventListener("slotchange", () => this.renderMessage());
+    }
+
+    const contentSlot = this.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement | null;
+    if (contentSlot) {
+      contentSlot.addEventListener("slotchange", () => this.passAttributesToChild());
+    }
   }
 }
 

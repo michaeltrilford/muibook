@@ -22,6 +22,7 @@ export const muiDocs: MuiDocs = {
         "Show task progress – Indicate how much of a task or process has been completed.",
         "Display loading states – Represent the progress of a background operation, such as file uploads.",
         "Track step completion – Show progress in multi-step workflows or onboarding processes.",
+        "Tune visual density and motion with component tokens such as --progress-radius, --progress-syncing-width, and --progress-pending-stripe-size.",
       ],
     },
 

@@ -108,3 +108,30 @@ button[type="submit"] {
   border-radius: var(--radius-100);
   border: var(--border-thick);
 }
+
+/* Global minimal scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--border-color) 55%, transparent) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: var(--space-100);
+  height: var(--space-100);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--border-color) 55%, transparent);
+  border-radius: var(--radius-300);
+  border: var(--stroke-size-100) solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--border-color) 75%, transparent);
+  background-clip: padding-box;
+}

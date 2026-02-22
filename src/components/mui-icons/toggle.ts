@@ -27,7 +27,8 @@ class MuiIconToggle extends HTMLElement {
     if (name === "size") {
       const size = this.getAttribute("size") || "medium";
 
-      const sizeMap: Record<"x-small" | "small" | "medium" | "large", string> = {
+      const sizeMap: Record<"xx-small" | "x-small" | "small" | "medium" | "large", string> = {
+        "xx-small": "1.3rem",
         "x-small": "1.6rem",
         small: "2.1rem",
         medium: "2.4rem",
@@ -83,7 +84,8 @@ class MuiIconToggle extends HTMLElement {
         ::slotted(*) {
           position: absolute;
           transform-origin: 50% 50%;
-          transition: var(--speed-200) ease-in-out;
+          translate: 0 0;
+          transition: transform var(--speed-200) ease-in-out, translate var(--speed-200) ease-in-out;
           fill: currentColor; 
         }
 

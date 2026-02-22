@@ -24,9 +24,16 @@ class storyBadge extends HTMLElement {
       {
         name: "variant",
         type: "string",
-        options: "neutral, positive, warning, attention",
+        options: "neutral, positive, warning, attention, overlay",
         default: "neutral",
         description: "Describe the intent or mood of the badge.",
+      },
+      {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "medium",
+        description: "Controls the badge size.",
       },
       {
         name: "usage",
@@ -122,6 +129,23 @@ class storyBadge extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card title="Sizes">
+          <div slot="body">
+            <mui-v-stack space="var(--space-200)" alignx="start">
+              <mui-badge size="x-small">2</mui-badge>
+              <mui-badge size="small">2</mui-badge>
+              <mui-badge size="medium">2</mui-badge>
+              <mui-badge size="large">2</mui-badge>
+            </mui-v-stack>
+          </div>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-badge size="x-small"&gt;2&lt;/mui-badge&gt;<br />
+            &lt;mui-badge size="small"&gt;2&lt;/mui-badge&gt;<br />
+            &lt;mui-badge size="medium"&gt;2&lt;/mui-badge&gt;<br />
+            &lt;mui-badge size="large"&gt;2&lt;/mui-badge&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card title="Neutral">
           <div slot="body">
             <mui-badge variant="neutral">Offline</mui-badge>
@@ -171,6 +195,15 @@ class storyBadge extends HTMLElement {
             &nbsp;&nbsp;...
             <br />
             &lt;/mui-badge&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Overlay">
+          <div slot="body">
+            <mui-badge variant="overlay">IMG</mui-badge>
+          </div>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-badge variant="overlay"&gt;IMG&lt;/mui-badge&gt;
           </story-code-block>
         </story-card>
     `;

@@ -37,6 +37,40 @@ class storyLink extends HTMLElement {
         text-decoration: underline;
       }
 
+      .overlay-canvas {
+        position: relative;
+        min-height: calc(var(--space-800) + var(--space-700));
+        border-radius: var(--radius-200);
+        border: var(--border-thin);
+        border-color: var(--form-default-border-color);
+        overflow: hidden;
+        box-shadow: var(--shadow-200);
+        display: flex;
+        align-items: end;
+        justify-content: start;
+        padding: var(--space-200);
+        box-sizing: border-box;
+      }
+
+      .overlay-canvas::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--canvas-tint, var(--grey-1200)) 20%, transparent) 0%,
+            color-mix(in srgb, var(--canvas-tint, var(--grey-1200)) 58%, transparent) 100%
+          ),
+          var(--canvas-image) center / cover no-repeat;
+        filter: saturate(0.9);
+      }
+
+      .overlay-canvas > * {
+        position: relative;
+        z-index: 1;
+      }
+
     `;
 
     const propItems = [
@@ -65,14 +99,14 @@ class storyLink extends HTMLElement {
       {
         name: "size",
         type: "string",
-        options: "x-small, small, medium, large",
+        options: "xx-small, x-small, small, medium, large",
         default: "medium",
         description: "Change the size of the link action",
       },
       {
         name: "variant",
         type: "string",
-        options: "primary, secondary, tertiary, attention",
+        options: "primary, secondary, tertiary, overlay, attention",
         default: "",
         description:
           "Apply a button style to the link, often used for navigation options or other actions that leverage an anchor link.",
@@ -163,6 +197,10 @@ class storyLink extends HTMLElement {
           <div slot="body">
             <mui-v-stack space="var(--space-500)">
               <div>
+                <mui-heading size="4" >XX-Small</mui-heading>
+                <mui-link size="xx-small">Link text</mui-link>
+              </div>
+              <div>
                 <mui-heading size="4" >X-Small</mui-heading>
                 <mui-link size="x-small">Link text</mui-link>
               </div>
@@ -182,6 +220,13 @@ class storyLink extends HTMLElement {
           </div>
 
           <story-code-block slot="footer" scrollable>
+            &lt;mui-link size="xx-small"&gt;
+            <br />
+            &nbsp;&nbsp;Link text
+            <br />
+            &lt;/mui-link&gt;
+            <br />
+            <br />
             &lt;mui-link size="x-small"&gt;
             <br />
             &nbsp;&nbsp;Link text
@@ -475,6 +520,36 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="Overlay Link" id="overlay-link" description="Overlay links on image surfaces using the overlay variant.">
+        <mui-grid slot="body" col="1fr 1fr" space="var(--space-200)">
+          <div
+            class="overlay-canvas"
+            style="
+              --canvas-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80');
+              --canvas-tint: var(--grey-1200);
+            "
+          >
+            <mui-link variant="overlay">Dismiss</mui-link>
+          </div>
+
+          <div
+            class="overlay-canvas"
+            style="
+              --canvas-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80');
+              --canvas-tint: var(--grey-1100);
+            "
+          >
+            <mui-link variant="overlay" icon-only aria-label="Close">
+              <mui-icon-close></mui-icon-close>
+            </mui-link>
+          </div>
+        </mui-grid>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-link variant="overlay"&gt;Dismiss&lt;/mui-link&gt;<br />
+          &lt;mui-link variant="overlay" icon-only aria-label="Close"&gt;...&lt;/mui-link&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card 
         title="Link (Before & After)"
         id="link"
@@ -588,7 +663,7 @@ class storyLink extends HTMLElement {
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-link variant="primary">Share</mui-link>
-            <mui-link variant="primary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-link>
+            <mui-link variant="primary"><mui-icon-menu></mui-icon-menu></mui-link>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="primary" >
@@ -616,7 +691,7 @@ class storyLink extends HTMLElement {
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-link variant="secondary">Share</mui-link>
-            <mui-link variant="secondary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-link>
+            <mui-link variant="secondary"><mui-icon-menu></mui-icon-menu></mui-link>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="secondary" >
@@ -644,7 +719,7 @@ class storyLink extends HTMLElement {
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-link variant="tertiary">Share</mui-link>
-            <mui-link variant="tertiary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-link>
+            <mui-link variant="tertiary"><mui-icon-menu></mui-icon-menu></mui-link>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="tertiary" >
@@ -672,7 +747,7 @@ class storyLink extends HTMLElement {
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-link variant="attention">Share</mui-link>
-            <mui-link variant="attention"><mui-icon-ellipsis></mui-icon-ellipsis></mui-link>
+            <mui-link variant="attention"><mui-icon-menu></mui-icon-menu></mui-link>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-link variant="attention" >
@@ -769,28 +844,12 @@ class storyLink extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
       >
 
-        <mui-message heading="Quicklinks" slot="message">
-          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
-            <mui-link size="small" data-scroll-link="link-sizes">Link: Sizes</mui-link>  
-            <mui-link size="small" data-scroll-link="link-button-x-small">Link Button: X-Small</mui-link>
-            <mui-link size="small" data-scroll-link="link-button-small">Link Button: Small</mui-link>
-            <mui-link size="small" data-scroll-link="link-button-medium">Link Button: Medium</mui-link>
-            <mui-link size="small" data-scroll-link="link-button-large">Link Button: Large</mui-link>
-            <mui-link size="small" data-scroll-link="url">URL</mui-link>
-            <mui-link size="small" data-scroll-link="external">External Link</mui-link>
-            <mui-link size="small" data-scroll-link="primary">Primary Link</mui-link>
-            <mui-link size="small" data-scroll-link="tertiary">Tertiary Link</mui-link>
-            <mui-link size="small" data-scroll-link="attention">Attention Link</mui-link>
-            <mui-link size="small" data-scroll-link="disabled">Disabled Link</mui-link>
-            <mui-link size="small" data-scroll-link="link">Link (Before & After)</mui-link>
-            <mui-link size="small" data-scroll-link="link-button">Link Button (Before & After)</mui-link>
-            <mui-link size="small" data-scroll-link="primary-icon-only">Primary: Icon-Only</mui-link>
-            <mui-link size="small" data-scroll-link="secondary-icon-only">Secondary: Icon-Only</mui-link>
-            <mui-link size="small" data-scroll-link="tertiary-icon-only">Tertiary: Icon-Only</mui-link>
-            <mui-link size="small" data-scroll-link="attention-icon-only">Attention: Icon-Only</mui-link>
-            <mui-link size="small" data-scroll-link="part">Part Selectors</mui-link>            
-          </mui-h-stack>
-        </mui-message>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          limit="10"
+          links="link-sizes::Link: Sizes|||link-button-x-small::Link Button: X-Small|||link-button-small::Link Button: Small|||link-button-medium::Link Button: Medium|||link-button-large::Link Button: Large|||url::URL|||external::External Link|||primary-link::Primary Link|||secondary-link::Secondary Link|||tertiary-link::Tertiary Link|||overlay-link::Overlay Link|||attention-link::Attention Link|||disabled::Disabled Link|||link::Link (Before & After)|||link-button::Link Button (Before & After)|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||part::Part Selectors"
+        ></story-quicklinks>
 
         ${stories}
       </story-template>

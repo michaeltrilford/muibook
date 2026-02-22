@@ -17,6 +17,41 @@ class storyButton extends HTMLElement {
         column-gap: var(--space-300);
         row-gap: var(--space-100);
       }
+
+      .overlay-canvas {
+        position: relative;
+        min-height: calc(var(--space-800) + var(--space-700));
+        border-radius: var(--radius-200);
+        border: var(--border-thin);
+        border-color: var(--form-default-border-color);
+        overflow: hidden;
+        box-shadow: var(--shadow-200);
+        display: flex;
+        align-items: end;
+        justify-content: start;
+        padding: var(--space-200);
+        box-sizing: border-box;
+      }
+
+      .overlay-canvas::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--canvas-tint, var(--grey-1200)) 20%, transparent) 0%,
+            color-mix(in srgb, var(--canvas-tint, var(--grey-1200)) 58%, transparent) 100%
+          ),
+          var(--canvas-image) center / cover no-repeat;
+        filter: saturate(0.9);
+      }
+
+      .overlay-canvas > * {
+        position: relative;
+        z-index: 1;
+      }
+
     `;
 
     const propItems = [
@@ -46,14 +81,14 @@ class storyButton extends HTMLElement {
       {
         name: "size",
         type: "string",
-        options: "x-small, small, medium, large",
+        options: "xx-small, x-small, small, medium, large",
         default: "medium",
         description: "Change the size of the action",
       },
       {
         name: "variant",
         type: "string",
-        options: "primary, secondary, tertiary, attention",
+        options: "primary, secondary, tertiary, overlay, attention",
         default: "primary",
         description: "Describe the intent or mood of the action.",
       },
@@ -158,6 +193,23 @@ class storyButton extends HTMLElement {
         &lt;mui-button&nbsp;variant="primary"&gt;<br />
         &nbsp;&nbsp;&nbsp;&nbsp;...<br />
         &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="size-xx-small"
+        title="Size: XX-Small"
+        description="Ultra-compact button size for dense utility actions."
+      >
+        <mui-h-stack slot="body" alignx="start" space="var(--space-100)">
+          <mui-button size="xx-small" variant="tertiary">Edit</mui-button>
+          <mui-button size="xx-small" variant="primary">Save</mui-button>
+          <mui-button size="xx-small" variant="primary" icon-only>
+            <mui-icon-add></mui-icon-add>
+          </mui-button>
+        </mui-h-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button size="xx-small" variant="primary"&gt;Save&lt;/mui-button&gt;
         </story-code-block>
       </story-card>
 
@@ -526,6 +578,36 @@ class storyButton extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="Overlay" id="overlay" description="Overlay actions on image surfaces using the overlay variant.">
+        <mui-grid slot="body" col="1fr 1fr" space="var(--space-200)">
+          <div
+            class="overlay-canvas"
+            style="
+              --canvas-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80');
+              --canvas-tint: var(--grey-1200);
+            "
+          >
+            <mui-button variant="overlay">Dismiss</mui-button>
+          </div>
+
+          <div
+            class="overlay-canvas"
+            style="
+              --canvas-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80');
+              --canvas-tint: var(--grey-1100);
+            "
+          >
+            <mui-button variant="overlay" icon-only aria-label="Close">
+              <mui-icon-close></mui-icon-close>
+            </mui-button>
+          </div>
+        </mui-grid>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button variant="overlay"&gt;Dismiss&lt;/mui-button&gt;<br />
+          &lt;mui-button variant="overlay" icon-only aria-label="Close"&gt;...&lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
 
       <story-card title="Disabled" id="disabled">
         <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
@@ -647,7 +729,7 @@ class storyButton extends HTMLElement {
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-button variant="primary">Share</mui-button>
-            <mui-button variant="primary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+            <mui-button variant="primary"><mui-icon-menu></mui-icon-menu></mui-button>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-button variant="primary" >
@@ -674,7 +756,7 @@ class storyButton extends HTMLElement {
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-button variant="secondary">Share</mui-button>
-            <mui-button variant="secondary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+            <mui-button variant="secondary"><mui-icon-menu></mui-icon-menu></mui-button>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-button variant="secondary" >
@@ -702,7 +784,7 @@ class storyButton extends HTMLElement {
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-button variant="tertiary">Share</mui-button>
-            <mui-button variant="tertiary"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+            <mui-button variant="tertiary"><mui-icon-menu></mui-icon-menu></mui-button>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-button variant="tertiary" >
@@ -729,7 +811,7 @@ class storyButton extends HTMLElement {
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-button variant="attention">Share</mui-button>
-            <mui-button variant="attention"><mui-icon-ellipsis></mui-icon-ellipsis></mui-button>
+            <mui-button variant="attention"><mui-icon-menu></mui-icon-menu></mui-button>
           </mui-button-group>
           <mui-badge style="align-self: center; margin: 0 var(--space-400);">VS</mui-badge>
           <mui-button variant="attention" >
@@ -860,27 +942,12 @@ class storyButton extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
       >
-        <mui-message heading="Quicklinks" slot="message">
-          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
-            <mui-link size="small" data-scroll-link="form-submissions">Form submissions</mui-link>  
-            <mui-link size="small" data-scroll-link="size-x-small">Size: X-Small</mui-link>
-            <mui-link size="small" data-scroll-link="size-small">Size: Small</mui-link>
-            <mui-link size="small" data-scroll-link="size-medium">Size: Medium</mui-link>
-            <mui-link size="small" data-scroll-link="size-large">Size: Large</mui-link>
-            <mui-link size="small" data-scroll-link="primary">Primary</mui-link>
-            <mui-link size="small" data-scroll-link="secondary">Secondary</mui-link>
-            <mui-link size="small" data-scroll-link="tertiary">Tertiary</mui-link>
-            <mui-link size="small" data-scroll-link="attention">Attention</mui-link>
-            <mui-link size="small" data-scroll-link="disabled">Disabled</mui-link>
-            <mui-link size="small" data-scroll-link="primary-icon-only">Primary: Icon-Only</mui-link>
-            <mui-link size="small" data-scroll-link="secondary-icon-only">Secondary: Icon-Only</mui-link>
-            <mui-link size="small" data-scroll-link="tertiary-icon-only">Tertiary: Icon-Only</mui-link>
-            <mui-link size="small" data-scroll-link="attention-icon-only">Attention: Icon-Only</mui-link>
-            <mui-link size="small" data-scroll-link="icon-toggle-default">Icon Toggle: Default</mui-link>
-            <mui-link size="small" data-scroll-link="icon-toggle-rotate">Icon Toggle: Rotate</mui-link>
-            
-          </mui-h-stack>
-        </mui-message>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          limit="10"
+          links="form-submissions::Form submissions|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
+        ></story-quicklinks>
 
         ${stories}
       </story-template>

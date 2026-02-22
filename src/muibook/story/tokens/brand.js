@@ -35,19 +35,12 @@ class tokensBrand extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
 
-          <mui-message heading="Quicklinks" slot="message">
-            <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
-              <mui-link size="small" data-scroll-link="font-family">Font Family</mui-link>
-              <mui-link size="small" data-scroll-link="font-scale">Font Scale</mui-link>
-              <mui-link size="small" data-scroll-link="line-height">Line Height</mui-link>
-              <mui-link size="small" data-scroll-link="font-weight">Font Weight</mui-link>
-              <mui-link size="small" data-scroll-link="radius">Radius</mui-link>
-              <mui-link size="small" data-scroll-link="space">Space</mui-link>
-              <mui-link size="small" data-scroll-link="stroke">Stroke</mui-link>
-              <mui-link size="small" data-scroll-link="speed">Speed</mui-link>
-              <mui-link size="small" data-scroll-link="colors">Colors</mui-link>
-            </mui-h-stack>
-          </mui-message>
+          <story-quicklinks
+            slot="message"
+            heading="Quicklinks"
+            limit="10"
+            links="font-family::Font Family|||font-scale::Font Scale|||line-height::Line Height|||font-weight::Font Weight|||radius::Radius|||space::Space|||stroke::Stroke|||speed::Speed|||colors::Colors"
+          ></story-quicklinks>
 
           <spec-card id="font-family" title="Font Family">
             <story-token-slat 

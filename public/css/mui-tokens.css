@@ -137,6 +137,19 @@ html[data-theme="light"] {
   --action-tertiary-text-color-hover: var(--grey-1000);
   --action-tertiary-text-color-focus: var(--grey-1000);
   --action-tertiary-text-color-disabled: var(--grey-400);
+  /* Action - Overlay (Button & Link) */
+  --action-overlay-border-color: var(--white-opacity-30);
+  --action-overlay-border-color-hover: var(--white-opacity-30);
+  --action-overlay-border-color-focus: var(--white-opacity-30);
+  --action-overlay-border-color-disabled: var(--white-opacity-20);
+  --action-overlay-background: var(--black-opacity-60);
+  --action-overlay-background-hover: var(--black-opacity-70);
+  --action-overlay-background-focus: var(--black-opacity-70);
+  --action-overlay-background-disabled: var(--black-opacity-40);
+  --action-overlay-text-color: var(--white);
+  --action-overlay-text-color-hover: var(--white);
+  --action-overlay-text-color-focus: var(--white);
+  --action-overlay-text-color-disabled: var(--white-opacity-40);
   /* Action - Attention (Button & Link) */
   --action-attention-border-color: var(--black-opacity-0);
   --action-attention-border-color-hover: var(--black-opacity-0);
@@ -158,6 +171,25 @@ html[data-theme="light"] {
   --surface-elevated-alpha: var(--white-opacity-50);
   --surface-elevated-100: var(--white);
   --surface-elevated-200: var(--grey-100);
+  --prompt-preview-dismiss-border-color: var(--black-opacity-30);
+  --prompt-preview-box-drop-shadow: drop-shadow(
+    0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-10)
+  );
+  --prompt-preview-surface: var(--surface-elevated-100);
+  --prompt-preview-accent-mix-100: 10%;
+  --prompt-preview-accent-mix-200: 8%;
+  --prompt-preview-accent-mix-300: 6%;
+  --prompt-preview-accent-mix-400: 8%;
+  --prompt-preview-accent-mix-500: 4%;
+  --prompt-preview-dismiss-secondary-background: var(--grey-100);
+  --prompt-preview-dismiss-secondary-background-hover: var(--grey-200);
+  --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--black-opacity-30);
+  --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--black-opacity-50);
+  --prompt-preview-top-shade-height: calc(var(--space-600) + var(--space-100));
+  --prompt-preview-top-shade-start: var(--black-opacity-10);
+  --prompt-preview-top-shade-end: var(--black-opacity-0);
+  --prompt-preview-top-shade-start-overlay: var(--black-opacity-50);
+  --prompt-preview-top-shade-end-overlay: var(--black-opacity-0);
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
@@ -189,6 +221,9 @@ html[data-theme="light"] {
   --badge-background-positive: var(--green-600);
   --badge-background-warning: var(--orange-600);
   --badge-background-attention: var(--red-600);
+  --badge-background-overlay: var(--black-opacity-60);
+  --badge-text-color-overlay: var(--white);
+  --badge-border-overlay: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
   /* Heading */
   --heading-text-color: var(--grey-1000);
   /* Link */
@@ -208,6 +243,15 @@ html[data-theme="light"] {
   --checkbox-background-disabled: var(--grey-100);
   --checkbox-background-checked-disabled: var(--grey-800);
   --checkbox-icon-color-checked-disabled: var(--grey-100);
+  /* Radio */
+  --radio-background: var(--white);
+  --radio-border-color: var(--form-default-border-color);
+  --radio-border-color-hover: var(--form-default-border-color-hover);
+  --radio-border-color-checked: var(--grey-900);
+  --radio-dot-color-checked: var(--grey-900);
+  --radio-background-disabled: var(--grey-100);
+  --radio-border-color-disabled: var(--grey-300);
+  --radio-dot-color-checked-disabled: var(--grey-500);
 
   /* Addon */
   --addon-background: var(--grey-100);
@@ -282,13 +326,20 @@ html[data-theme="light"] {
   --progress-track-background: var(--grey-200);
   --progress-loading-bar-100: var(--grey-200);
   --progress-loading-bar-200: var(--grey-300);
+  --progress-syncing-bar-background: var(--progress-bar-background);
 
   /* Stepper */
-  --stepper-color: var(--blue-600);
+  --stepper-color: var(--grey-700);
   --stepper-background-active: var(--stepper-color);
   --stepper-background-inactive: var(--white);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
+  --stepper-icon-color: var(--white);
+  --stepper-success-color: var(--stepper-color);
+  --stepper-warning-color: var(--orange-700);
+  --stepper-error-color: var(--text-color-error);
+  --stepper-disabled-color: var(--text-color-optional);
+  --stepper-disabled-opacity: 0.75;
 
   /* Dialog */
   --dialog-background: var(--white);
@@ -391,6 +442,19 @@ html[data-theme="dark"] {
   --action-tertiary-text-color-hover: var(--grey-100);
   --action-tertiary-text-color-focus: var(--grey-100);
   --action-tertiary-text-color-disabled: var(--grey-600);
+  /* Action - Overlay (Button & Link) */
+  --action-overlay-border-color: var(--white-opacity-30);
+  --action-overlay-border-color-hover: var(--white-opacity-30);
+  --action-overlay-border-color-focus: var(--white-opacity-30);
+  --action-overlay-border-color-disabled: var(--white-opacity-20);
+  --action-overlay-background: var(--black-opacity-60);
+  --action-overlay-background-hover: var(--black-opacity-70);
+  --action-overlay-background-focus: var(--black-opacity-70);
+  --action-overlay-background-disabled: var(--black-opacity-40);
+  --action-overlay-text-color: var(--white);
+  --action-overlay-text-color-hover: var(--white);
+  --action-overlay-text-color-focus: var(--white);
+  --action-overlay-text-color-disabled: var(--white-opacity-40);
   /* Action - Attention (Button & Link) */
   --action-attention-border-color: var(--black-opacity-0);
   --action-attention-border-color-hover: var(--black-opacity-0);
@@ -413,6 +477,25 @@ html[data-theme="dark"] {
   --surface-elevated-alpha: var(--white-opacity-10);
   --surface-elevated-100: var(--grey-800);
   --surface-elevated-200: var(--grey-900);
+  --prompt-preview-dismiss-border-color: var(--white-opacity-30);
+  --prompt-preview-box-drop-shadow: drop-shadow(
+    0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20)
+  );
+  --prompt-preview-surface: var(--surface-elevated-200);
+  --prompt-preview-accent-mix-100: 14%;
+  --prompt-preview-accent-mix-200: 10%;
+  --prompt-preview-accent-mix-300: 8%;
+  --prompt-preview-accent-mix-400: 12%;
+  --prompt-preview-accent-mix-500: 6%;
+  --prompt-preview-dismiss-secondary-background: var(--surface-recessed-100);
+  --prompt-preview-dismiss-secondary-background-hover: var(--surface-recessed-200);
+  --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
+  --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-50);
+  --prompt-preview-top-shade-height: calc(var(--space-600) + var(--space-100));
+  --prompt-preview-top-shade-start: var(--black-opacity-30);
+  --prompt-preview-top-shade-end: var(--black-opacity-0);
+  --prompt-preview-top-shade-start-overlay: var(--black-opacity-50);
+  --prompt-preview-top-shade-end-overlay: var(--black-opacity-0);
   --surface-elevated-300: var(--grey-1000);
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
@@ -446,6 +529,9 @@ html[data-theme="dark"] {
   --badge-background-positive: var(--green-400);
   --badge-background-warning: var(--orange-400);
   --badge-background-attention: var(--red-400);
+  --badge-background-overlay: var(--black-opacity-60);
+  --badge-text-color-overlay: var(--white);
+  --badge-border-overlay: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
   /* Heading */
   --heading-text-color: var(--grey-100);
   /* Link */
@@ -463,6 +549,15 @@ html[data-theme="dark"] {
   --checkbox-background-disabled: var(--grey-800);
   --checkbox-background-checked-disabled: var(--grey-500);
   --checkbox-icon-color-checked-disabled: var(--grey-900);
+  /* Radio */
+  --radio-background: var(--grey-900);
+  --radio-border-color: var(--form-default-border-color);
+  --radio-border-color-hover: var(--form-default-border-color-hover);
+  --radio-border-color-checked: var(--grey-200);
+  --radio-dot-color-checked: var(--grey-200);
+  --radio-background-disabled: var(--grey-800);
+  --radio-border-color-disabled: var(--grey-600);
+  --radio-dot-color-checked-disabled: var(--grey-500);
   /* Addon */
   --addon-background: var(--grey-1000);
   /* Tabs */
@@ -536,13 +631,20 @@ html[data-theme="dark"] {
   --progress-track-background: var(--grey-700);
   --progress-loading-bar-100: var(--grey-900);
   --progress-loading-bar-200: var(--grey-1000);
+  --progress-syncing-bar-background: var(--progress-bar-background);
 
   /* Stepper */
-  --stepper-color: var(--blue-500);
+  --stepper-color: var(--white);
   --stepper-background-active: var(--stepper-color);
   --stepper-background-inactive: var(--black);
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
+  --stepper-icon-color: var(--grey-1100);
+  --stepper-success-color: var(--stepper-color);
+  --stepper-warning-color: var(--orange-300);
+  --stepper-error-color: var(--red-300);
+  --stepper-disabled-color: var(--text-color-optional);
+  --stepper-disabled-opacity: 0.8;
 
   /* Dialog */
   --dialog-background: var(--grey-800);
@@ -581,6 +683,11 @@ html[data-theme="dark"] {
   --action-tertiary-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-tertiary-border-color-focus);
   --action-tertiary-border-disabled: var(--stroke-size-200) var(--stroke-solid)
     var(--action-tertiary-border-color-disabled);
+  --action-overlay-border: var(--stroke-size-100) var(--stroke-solid) var(--action-overlay-border-color);
+  --action-overlay-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-overlay-border-color-hover);
+  --action-overlay-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-overlay-border-color-focus);
+  --action-overlay-border-disabled: var(--stroke-size-100) var(--stroke-solid)
+    var(--action-overlay-border-color-disabled);
   --action-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color);
   --action-attention-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color-hover);
   --action-attention-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color-focus);
@@ -679,8 +786,56 @@ html[data-theme="dark"] {
   --message-padding: var(--space-400);
   --message-gap-horizontal: var(--space-300);
   --message-gap-vertical: var(--space-100);
+  /* Progress */
+  --progress-radius: var(--space-300);
+  --progress-syncing-width: 30%;
+  --progress-pending-stripe-size: 1rem;
+  /* Stepper */
+  --stepper-dot-size: var(--action-icon-only-size-x-small);
+  --stepper-dot-size-small: calc(var(--stepper-dot-size) - var(--space-050));
+  --stepper-dot-size-x-small: calc(var(--stepper-dot-size-small) - var(--space-050));
   /* Tab */
   --tab-radius: var(--radius-200);
+  --tab-font-size: var(--text-font-size-m);
+  --tab-line-height: var(--text-line-height-m);
+  --tab-font-weight: var(--font-weight-medium);
+  --tab-padding: var(--space-200) calc(var(--space-300) + var(--space-100));
+  --tab-before-slot-padding: var(--space-300);
+  --tab-after-slot-padding: var(--space-300);
+  --tab-min-height: 4.4rem;
+  --tab-gap: var(--space-100);
+  --tab-gap-x-small: var(--space-050);
+  --tab-gap-small: var(--space-100);
+  --tab-gap-large: var(--space-200);
+  --tab-font-size-x-small: var(--text-font-size-xs);
+  --tab-line-height-x-small: var(--text-line-height-xs);
+  --tab-font-weight-x-small: var(--font-weight-semi-bold);
+  --tab-padding-x-small: var(--space-050) var(--space-200);
+  --tab-before-slot-padding-x-small: var(--space-100);
+  --tab-after-slot-padding-x-small: var(--space-100);
+  --tab-min-height-x-small: 2.8rem;
+  --tab-font-size-small: var(--text-font-size-s);
+  --tab-line-height-small: var(--text-line-height-s);
+  --tab-padding-small: calc(var(--space-100) - (var(--stroke-size-100) / 2)) var(--space-300);
+  --tab-before-slot-padding-small: var(--space-200);
+  --tab-after-slot-padding-small: var(--space-200);
+  --tab-min-height-small: 3.6rem;
+  --tab-font-size-large: var(--text-font-size-l);
+  --tab-line-height-large: var(--text-line-height-l);
+  --tab-padding-large: var(--space-300) var(--space-500);
+  --tab-before-slot-padding-large: var(--space-400);
+  --tab-after-slot-padding-large: var(--space-400);
+  --tab-min-height-large: 5.2rem;
+  --tab-edge-padding-extra: var(--space-050);
+  --tab-edge-padding-extra-x-small: var(--space-025);
+  --tab-edge-padding-extra-small: var(--space-050);
+  --tab-edge-padding-extra-large: var(--space-100);
+  --tab-badge-offset: var(--space-025);
+  --tab-badge-offset-large: var(--space-050);
+  --tab-dot-size: 1rem;
+  --tab-dot-gap: var(--space-100);
+  --tab-dot-color: var(--tab-icon);
+  --tab-dot-color-active: var(--tab-icon-active);
   /* Carousel */
   --carousel-radius: var(--radius-300);
   --carousel-tab-position: var(--space-400);
@@ -689,10 +844,28 @@ html[data-theme="dark"] {
   --slat-radius: var(--radius-200);
   /* Checkbox */
   --checkbox-radius: var(--radius-100);
-  --checkbox-size: calc(var(--space-400) + (var(--stroke-size-100) * 3));
+  --checkbox-size: calc(var(--space-500) - var(--stroke-size-500));
+  /* Radio */
+  --radio-size: calc(var(--space-500) - 2px);
 
   /* Chip */
-  --chip-radius: var(--radius-400);
+  --chip-radius: var(--chip-radius-medium);
+  --chip-radius-x-small: var(--radius-300);
+  --chip-radius-small: var(--radius-300);
+  --chip-radius-medium: var(--radius-400);
+  --chip-radius-large: var(--radius-500);
+  --chip-height-x-small: 2.8rem;
+  --chip-height-small: 3.6rem;
+  --chip-height-medium: 4rem;
+  --chip-height-large: 5.2rem;
+  --chip-padding-x-small: 0 var(--space-200);
+  --chip-padding-small: var(--space-100) var(--space-300);
+  --chip-padding-medium: var(--space-100) var(--space-300);
+  --chip-padding-large: var(--space-200) var(--space-400);
+  --chip-gap-x-small: var(--space-100);
+  --chip-gap-small: var(--space-200);
+  --chip-gap-medium: var(--space-200);
+  --chip-gap-large: var(--space-300);
   /* Dropdown */
   --dropdown-radius: var(--radius-100);
   /* Dialog */

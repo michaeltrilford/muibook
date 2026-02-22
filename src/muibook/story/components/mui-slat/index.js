@@ -1493,22 +1493,12 @@ class storySlat extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
       >
 
-        <mui-message heading="Quicklinks" slot="message">
-          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
-            <mui-link size="small" data-scroll-link="default">Default</mui-link>    
-            <mui-link size="small" data-scroll-link="header">Header</mui-link>  
-            <mui-link size="small" data-scroll-link="row">Row</mui-link>  
-            <mui-link size="small" data-scroll-link="row-accessory">Row Accessory</mui-link>
-            <mui-link size="small" data-scroll-link="action">Action</mui-link>
-            <mui-link size="small" data-scroll-link="action-accessory">Action Accessory</mui-link>
-            <mui-link size="small" data-scroll-link="slat-and-group">Slat & Group</mui-link>
-            <mui-link size="small" data-scroll-link="card-slat-and-group">Card: Slat & Group</mui-link>
-            <mui-link size="small" data-scroll-link="card-variant-slat-group">Card: Variant Slat & Group</mui-link>
-            <mui-link size="small" data-scroll-link="card-slat-group-divider">Card: Slat Group Dividers</mui-link>
-            <mui-link size="small" data-scroll-link="card-slat-group-accordion">Card: Slat Group & Accordion</mui-link>
-            <mui-link size="small" data-scroll-link="card-condensed">Card: Condensed</mui-link>
-          </mui-h-stack>
-        </mui-message>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          limit="10"
+          links="default::Default|||header::Header|||row::Row|||row-accessory::Row Accessory|||action::Action|||action-accessory::Action Accessory|||slat-and-group::Slat & Group|||card-slat-and-group::Card: Slat & Group|||card-variant-slat-group::Card: Variant Slat & Group|||card-slat-group-divider::Card: Slat Group Dividers|||card-slat-group-accordion::Card: Slat Group & Accordion|||card-condensed::Card: Condensed"
+        ></story-quicklinks>
 
         ${stories}
 

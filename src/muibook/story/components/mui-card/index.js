@@ -427,7 +427,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -438,7 +438,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -482,7 +482,7 @@ class storyCards extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-menu&gt;&lt;/mui-icon-menu&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -526,7 +526,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$20.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -537,7 +537,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$12.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -1131,21 +1131,12 @@ class storyCards extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
       >
 
-        <mui-message heading="Quicklinks" slot="message">
-          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
-            <mui-link size="small" data-scroll-link="card">Card</mui-link>
-            <mui-link size="small" data-scroll-link="card-footer">Card: Footer</mui-link>
-            <mui-link size="small" data-scroll-link="card-image">Card: Image</mui-link>
-            <mui-link size="small" data-scroll-link="card-table">Card: Table</mui-link>
-            <mui-link size="small" data-scroll-link="card-header-table">Card: Header & Table</mui-link>
-            <mui-link size="small" data-scroll-link="slat-group">Slat Group</mui-link>
-            <mui-link size="small" data-scroll-link="slat-group-divider">Slat Group: Dividers</mui-link>
-            <mui-link size="small" data-scroll-link="slat-group-detection">Slat Group: Detection</mui-link>
-            <mui-link size="small" data-scroll-link="card-accordion">Card: Accordion</mui-link>
-            <mui-link size="small" data-scroll-link="card-header-accordion">Card: Header & Accordion</mui-link>
-            
-          </mui-h-stack>
-        </mui-message>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          limit="10"
+          links="card::Card|||card-footer::Card: Footer|||card-image::Card: Image|||card-table::Card: Table|||card-header-table::Card: Header & Table|||slat-group::Slat Group|||slat-group-divider::Slat Group: Dividers|||slat-group-detection::Slat Group: Detection|||card-accordion::Card: Accordion|||card-header-accordion::Card: Header & Accordion"
+        ></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -20,6 +20,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Show the number of unread notifications – E.g. '4' unread messages",
         "Indicate the status of a user – E.g. Online, Busy, or Away",
+        "Use size variants (x-small, small, medium, large) to match surrounding component scale.",
       ],
     },
 
@@ -62,6 +63,12 @@ export const muiDocs: MuiDocs = {
           description: "Represents an error, issue or critical state.",
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/E0jtn7WSTwYligMqSNl0k/c3c041e025c3725682ec12eb3ab98400/badge-error.png",
+        },
+        {
+          key: "overlay",
+          title: "overlay",
+          description: "For labels placed on media/image surfaces with stronger contrast.",
+          image: "",
         },
       ],
     },
@@ -106,8 +113,16 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         {
-          name: "",
-          link: "",
+          name: "Button",
+          link: "https://guides.muibook.com/button",
+        },
+        {
+          name: "Link",
+          link: "https://guides.muibook.com/link",
+        },
+        {
+          name: "Tab Bar",
+          link: "https://guides.muibook.com/tab-bar",
         },
       ],
     },

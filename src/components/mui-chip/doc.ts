@@ -22,6 +22,8 @@ export const muiDocs: MuiDocs = {
         "Use to visually indicate states or properties, such as tags, categories, or labels.",
         "Chips are clickable for filtering content or initiating events.",
         "Allow users to remove Chips when they no longer apply. E.g. Removing filters.",
+        "Use size='x-small|small|medium|large' to align chip scale with surrounding controls.",
+        "When used in input before/after slots, chip usage and size are automatically aligned by the input component.",
       ],
     },
 

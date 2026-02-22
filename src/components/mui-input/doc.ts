@@ -18,8 +18,13 @@ export const muiDocs: MuiDocs = {
         "Ensure validation feedback is considered when using an input. E.g. Error text.",
         "Ensure the experience has clear focus states to support keyboard accessibility.",
         "Select the appropriate input types for the specific use case. E.g. Text, Email, Password.",
+        "Use size='x-small|small|medium|large' to align inputs with surrounding form controls.",
+        "Use mui-chip in before/after slots for tag-style contextual input patterns.",
         "Use placeholder text to provide context of the input use; avoid using them as primary labels.",
         "Avoid relying solely on placeholder text for instructions, as it disappears when users start typing.",
+        "Use the optional attribute when a field is not required to show a clear (optional) marker in the label.",
+        "Use max-length when input limits matter; the component shows a live character count.",
+        "In React controlled mode, keep value updates isolated from structural attribute updates (label, type, placeholder, variant) to avoid focus loss while typing.",
       ],
     },
 
@@ -31,6 +36,9 @@ export const muiDocs: MuiDocs = {
         "The label and input are linked via for and id. If no id is provided, one is generated.",
         "Clear focus styles are shown for keyboard users.",
         "The native disabled attribute is fully supported by assistive tech.",
+        "Optional fields can be explicitly communicated with the optional attribute without changing label association.",
+        "When max-length is set, users get visible character progress while native maxlength enforcement remains intact.",
+        "For React integrations, prefer reading event.detail.value from the web component custom event instead of querying shadow DOM internals.",
       ],
     },
 

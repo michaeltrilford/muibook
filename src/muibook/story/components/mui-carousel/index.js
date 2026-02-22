@@ -164,6 +164,13 @@ class storyCarousel extends HTMLElement {
         default: "bottom",
         description: "Define the position of the controls for the Carousel",
       },
+      {
+        name: "variant",
+        type: "string",
+        options: "default, dots",
+        default: "default",
+        description: "Use dots for compact carousel controls.",
+      },
     ];
 
     const rowsTabBar = propItemsTabBar
@@ -286,9 +293,9 @@ class storyCarousel extends HTMLElement {
     ];
 
     const carouselTabItems = carouselData
-      .map(({ id, label, icon, active }) => {
+      .map(({ id, label, active }) => {
         const activeAttr = active ? " active" : "";
-        return `<mui-tab-item id="${id}" icon="${icon}"${activeAttr}>${label}</mui-tab-item>`;
+        return `<mui-tab-item id="${id}"${activeAttr}>${label}</mui-tab-item>`;
       })
       .join("");
 
@@ -531,6 +538,28 @@ class storyCarousel extends HTMLElement {
           &nbsp;&nbsp;...
           <br />
           <br />
+          &lt;/mui-carousel-controller&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card 
+        title="Dots Controls" 
+        description="Uses the Tabs dots variant for compact carousel pagination."
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js"  
+      >
+        <mui-carousel-controller slot="body" auto-rotate rotate-interval="10000">
+          <mui-tab-bar slot="controls" controlsPosition="bottom" variant="dots">
+            ${carouselTabItems}
+          </mui-tab-bar>
+          ${carouselItems}
+        </mui-carousel-controller>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-carousel-controller auto-rotate rotate-interval="10000"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-tab-bar slot="controls" variant="dots"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active id="one"&gt;1&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id="two"&gt;2&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-tab-bar&gt;<br />
+          &nbsp;&nbsp;...carousel panels...<br />
           &lt;/mui-carousel-controller&gt;
         </story-code-block>
       </story-card>

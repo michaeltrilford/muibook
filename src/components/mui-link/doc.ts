@@ -127,6 +127,14 @@ export const muiDocs: MuiDocs = {
             "https://images.ctfassets.net/i5uwscj4pkk2/79wxg2B2u21x1qAKTsFOIM/d8c1665de85c90983bbe50d3762f2298/Tertiary_-_IconOnly.png",
         },
         {
+          key: "overlay",
+          title: "Overlay",
+          description:
+            "Use on layered media or tinted surfaces where link actions need contrast without heavy visual weight. Works well for controls rendered over previews and imagery.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/1y7LN0FWjqrAQim9y289YN/2a65b13be6f42399404fb5bb68014700/Secondary.png",
+        },
+        {
           key: "attention",
           title: "Attention",
           description:

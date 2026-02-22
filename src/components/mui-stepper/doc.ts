@@ -18,7 +18,13 @@ export const muiDocs: MuiDocs = {
     guides: ["https://guides.muibook.com/stepper"],
 
     usage: {
-      list: [""],
+      list: [
+        "Use active-step to control the current step in a multi-step flow.",
+        "Use size='x-small|small|medium' to match the density of the surrounding layout.",
+        "Use interactive when users should be able to click and keyboard-navigate steps.",
+        "Use linear with interactive to limit forward progression to the next available step while still allowing users to move backwards.",
+        "Use explicit step states (success, pending, error, disabled) for async and validation workflows.",
+      ],
     },
 
     accessibility: {
@@ -31,8 +37,9 @@ export const muiDocs: MuiDocs = {
       image:
         "https://images.ctfassets.net/i5uwscj4pkk2/6Y5iyISdhK7PX8d1cHJxWv/761efb630c924af42ebf8d8bd5fabfb2/Stepper_-_Anatomy.png",
       list: [
-        "Active / Completed: Indicates the current step or a task that has been successfully finished.",
-        "Upcoming: Represents a step or task that has not yet been completed.",
+        "Active / Completed / Success: Indicates the current step or a task that has been successfully finished.",
+        "Pending / Error / Disabled: Communicates processing, validation failure, or temporarily unavailable steps.",
+        "Upcoming: Represents a step or task that has not yet started.",
       ],
     },
 

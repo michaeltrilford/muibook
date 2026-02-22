@@ -108,6 +108,10 @@
       "import": "./dist/esm/components/mui-code/index.js",
       "types": "./dist/types/components/mui-code/index.d.ts"
     },
+    "./mui-markdown": {
+      "import": "./dist/esm/components/mui-markdown/index.js",
+      "types": "./dist/types/components/mui-markdown/index.d.ts"
+    },
     "./mui-container": {
       "import": "./dist/esm/components/mui-container/index.js",
       "types": "./dist/types/components/mui-container/index.d.ts"
@@ -123,6 +127,34 @@
     "./mui-field": {
       "import": "./dist/esm/components/mui-field/index.js",
       "types": "./dist/types/components/mui-field/index.d.ts"
+    },
+    "./mui-form-section": {
+      "import": "./dist/esm/components/mui-form-section/index.js",
+      "types": "./dist/types/components/mui-form-section/index.d.ts"
+    },
+    "./mui-form-group": {
+      "import": "./dist/esm/components/mui-form-group/index.js",
+      "types": "./dist/types/components/mui-form-group/index.d.ts"
+    },
+    "./mui-form-hint": {
+      "import": "./dist/esm/components/mui-form-hint/index.js",
+      "types": "./dist/types/components/mui-form-hint/index.d.ts"
+    },
+    "./mui-prompt": {
+      "import": "./dist/esm/components/mui-prompt/index.js",
+      "types": "./dist/types/components/mui-prompt/index.d.ts"
+    },
+    "./mui-prompt-message": {
+      "import": "./dist/esm/components/mui-prompt-message/index.js",
+      "types": "./dist/types/components/mui-prompt-message/index.d.ts"
+    },
+    "./mui-prompt-preview": {
+      "import": "./dist/esm/components/mui-prompt-preview/index.js",
+      "types": "./dist/types/components/mui-prompt-preview/index.d.ts"
+    },
+    "./mui-hint": {
+      "import": "./dist/esm/components/mui-hint/index.js",
+      "types": "./dist/types/components/mui-hint/index.d.ts"
     },
     "./mui-file-upload": {
       "import": "./dist/esm/components/mui-file-upload/index.js",
@@ -151,6 +183,10 @@
     "./mui-icons/attention": {
       "import": "./dist/esm/components/mui-icons/attention/index.js",
       "types": "./dist/types/components/mui-icons/attention/index.d.ts"
+    },
+    "./mui-icons/exclamationmark": {
+      "import": "./dist/esm/components/mui-icons/exclamationmark/index.js",
+      "types": "./dist/types/components/mui-icons/exclamationmark/index.d.ts"
     },
     "./mui-icons/check": {
       "import": "./dist/esm/components/mui-icons/check/index.js",
@@ -324,6 +360,10 @@
       "import": "./dist/esm/components/mui-icons/pin-slash/index.js",
       "types": "./dist/types/components/mui-icons/pin-slash/index.d.ts"
     },
+    "./mui-icons/text-below-folder": {
+      "import": "./dist/esm/components/mui-icons/text-below-folder/index.js",
+      "types": "./dist/types/components/mui-icons/text-below-folder/index.d.ts"
+    },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"
@@ -336,9 +376,25 @@
       "import": "./dist/esm/components/mui-input/index.js",
       "types": "./dist/types/components/mui-input/index.d.ts"
     },
+    "./mui-chip-input": {
+      "import": "./dist/esm/components/mui-chip-input/index.js",
+      "types": "./dist/types/components/mui-chip-input/index.d.ts"
+    },
+    "./mui-textarea": {
+      "import": "./dist/esm/components/mui-textarea/index.js",
+      "types": "./dist/types/components/mui-textarea/index.d.ts"
+    },
     "./mui-checkbox": {
       "import": "./dist/esm/components/mui-checkbox/index.js",
       "types": "./dist/types/components/mui-checkbox/index.d.ts"
+    },
+    "./mui-radio": {
+      "import": "./dist/esm/components/mui-radio/index.js",
+      "types": "./dist/types/components/mui-radio/index.d.ts"
+    },
+    "./mui-radio-group": {
+      "import": "./dist/esm/components/mui-radio-group/index.js",
+      "types": "./dist/types/components/mui-radio-group/index.d.ts"
     },
     "./mui-link": {
       "import": "./dist/esm/components/mui-link/index.js",
@@ -468,6 +524,10 @@
       "import": "./dist/esm/components/mui-loader/index.js",
       "types": "./dist/types/components/mui-loader/index.d.ts"
     },
+    "./mui-spinner": {
+      "import": "./dist/esm/components/mui-spinner/index.js",
+      "types": "./dist/types/components/mui-spinner/index.d.ts"
+    },
     ".": {
       "import": "./dist/esm/index.js",
       "types": "./dist/types/index.d.ts"
@@ -524,6 +584,9 @@
     "style-dictionary": "^4.4.0",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "marked": "^12.0.0"
   },
   "customElements": "public/custom-elements.json"
 }

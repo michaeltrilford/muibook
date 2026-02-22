@@ -20,6 +20,7 @@ export const muiDocs: MuiDocs = {
         "Use states like Default, Success, Warning and Error to align with feedback or messaging contexts.",
         "Match the body size to the layout’s overall design and readability.",
         "Adjust the size by selecting x-small, small, medium or large.",
+        "Use before/after slots to compose inline icons, badges, or helper UI with body text.",
       ],
     },
 

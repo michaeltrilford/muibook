@@ -49,19 +49,12 @@ class tokensSemantic extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
       >
 
-        <mui-message heading="Quicklinks" slot="message">
-          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
-          <mui-link size="small" data-scroll-link="text">Text</mui-link>
-          <mui-link size="small" data-scroll-link="font-weight">Font Weight</mui-link>
-          <mui-link size="small" data-scroll-link="border">Border</mui-link>
-          <mui-link size="small" data-scroll-link="outline">Outline</mui-link>
-          <mui-link size="small" data-scroll-link="overlay">Overlay</mui-link>
-          <mui-link size="small" data-scroll-link="feedback">Feedback</mui-link>
-          <mui-link size="small" data-scroll-link="form">Form</mui-link>
-          <mui-link size="small" data-scroll-link="action">Action</mui-link>
-          <mui-link size="small" data-scroll-link="surface">Surface</mui-link>
-          </mui-h-stack>
-        </mui-message>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          limit="10"
+          links="text::Text|||font-weight::Font Weight|||border::Border|||outline::Outline|||overlay::Overlay|||feedback::Feedback|||form::Form|||action::Action|||surface::Surface"
+        ></story-quicklinks>
 
           <spec-card id="text" title="Text">
             <story-token-slat slot="body" token="--text-color" variant="text-color"></story-token-slat>

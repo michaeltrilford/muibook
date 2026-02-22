@@ -42,7 +42,7 @@ class compWallet extends HTMLElement {
 
             <mui-v-stack alignX="stretch" style="max-width: 100%;" space="var(--space-300)">
 
-              <mui-tab-bar>
+              <mui-tab-bar variant="ghost">
                 <mui-tab-item active id="item1">Transactions</mui-tab-item>
                 <mui-tab-item id="item2">Statements</mui-tab-item>
               </mui-tab-bar>
@@ -177,7 +177,7 @@ class compWallet extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max-width: 100%;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&gt;<br><br>
 
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-bar&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-bar variant=&quot;ghost&quot;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active id=&quot;item1&quot;&gt;Transactions&lt;/mui-tab-item&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id=&quot;item2&quot;&gt;Statements&lt;/mui-tab-item&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-tab-bar&gt;<br><br>

@@ -57,16 +57,37 @@ class storyStepper extends HTMLElement {
       {
         name: "direction",
         type: "string",
-        options: "horizonal, vertical",
-        default: "medium",
+        options: "horizontal, vertical",
+        default: "horizontal",
         description: "Adjust the direction",
       },
       {
         name: "active-step",
-        type: "boolean",
-        options: "",
-        default: "",
+        type: "number",
+        options: "1..n",
+        default: "1",
         description: "Active step",
+      },
+      {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium",
+        default: "medium",
+        description: "Controls dot, icon, and label scale.",
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        options: "interactive",
+        default: "",
+        description: "Allows clicking steps and keyboard navigation.",
+      },
+      {
+        name: "linear",
+        type: "boolean",
+        options: "linear",
+        default: "",
+        description: "In interactive mode, limits navigation to current/next steps.",
       },
       {
         name: "class",
@@ -124,6 +145,13 @@ class storyStepper extends HTMLElement {
         options: "{text}",
         default: "",
         description: "Provides the step with a title",
+      },
+      {
+        name: "state",
+        type: "string",
+        options: "upcoming, active, completed, success, pending, error, disabled",
+        default: "upcoming",
+        description: "Optional explicit state override for the step.",
       },
     ];
 
@@ -219,6 +247,171 @@ class storyStepper extends HTMLElement {
               &nbsp;&nbsp;&lt;mui-step title="Items"&gt;&lt;/mui-step&gt;<br />
               &nbsp;&nbsp;&lt;mui-step title="Pay"&gt;&lt;/mui-step&gt;<br />
             &lt;/mui-stepper&gt;<br />
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          id="interactive"
+          title="Interactive"
+          description="Use arrow keys, Home/End, or click a step. Emits step-change."
+        >
+          <div slot="body">
+            <mui-stepper id="stepper-interactive" direction="horizontal" active-step="2" interactive>
+              <mui-step title="Details"></mui-step>
+              <mui-step title="Items"></mui-step>
+              <mui-step title="Review"></mui-step>
+              <mui-step title="Pay"></mui-step>
+            </mui-stepper>
+          </div>
+          <story-code-block slot="footer">
+            &lt;mui-stepper direction="horizontal" active-step="2" interactive&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Details"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Items"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Review"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Pay"&gt;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          id="small"
+          title="Small"
+          description="Compact stepper variant for dense layouts."
+        >
+          <div slot="body">
+            <mui-stepper direction="horizontal" size="small" active-step="2">
+              <mui-step title="Details"></mui-step>
+              <mui-step title="Items"></mui-step>
+              <mui-step title="Pay"></mui-step>
+            </mui-stepper>
+          </div>
+          <story-code-block slot="footer">
+            &lt;mui-stepper direction="horizontal" size="small" active-step="2"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Details"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Items"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Pay"&gt;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          id="x-small"
+          title="X-Small"
+          description="Extra compact variant using xx-small state icons."
+        >
+          <div slot="body">
+            <mui-stepper direction="horizontal" size="x-small" active-step="2">
+              <mui-step title="Details"></mui-step>
+              <mui-step title="Items"></mui-step>
+              <mui-step title="Pay"></mui-step>
+            </mui-stepper>
+          </div>
+          <story-code-block slot="footer">
+            &lt;mui-stepper direction="horizontal" size="x-small" active-step="2"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Details"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Items"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Pay"&gt;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          id="error-example"
+          title="Error Example"
+          description="Representative validation failure in a multi-step flow."
+        >
+          <div slot="body">
+            <mui-stepper direction="horizontal" active-step="2">
+              <mui-step title="Details" state="success"></mui-step>
+              <mui-step title="Billing" state="error"></mui-step>
+              <mui-step title="Review" state="upcoming"></mui-step>
+              <mui-step title="Pay" state="upcoming"></mui-step>
+            </mui-stepper>
+          </div>
+          <story-code-block slot="footer">
+            &lt;mui-stepper direction="horizontal" active-step="2"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Details" state="success"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Billing" state="error"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Review" state="upcoming"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Pay" state="upcoming"&gt;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          id="disabled-example"
+          title="Disabled Example"
+          description="Representative flow where downstream steps are locked."
+        >
+          <div slot="body">
+            <mui-stepper direction="horizontal" active-step="2">
+              <mui-step title="Profile" state="success"></mui-step>
+              <mui-step title="Verification" state="pending"></mui-step>
+              <mui-step title="Approval" state="disabled"></mui-step>
+              <mui-step title="Done" state="disabled"></mui-step>
+            </mui-stepper>
+          </div>
+          <story-code-block slot="footer">
+            &lt;mui-stepper direction="horizontal" active-step="2"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Profile" state="success"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Verification" state="pending"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Approval" state="disabled"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Done" state="disabled"&gt;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          id="checkout-flow"
+          title="Checkout Flow States"
+          description="Representative payment flow with success, active processing, and blocked completion."
+        >
+          <div slot="body">
+            <mui-stepper direction="horizontal" active-step="3">
+              <mui-step title="Cart" state="success"></mui-step>
+              <mui-step title="Address" state="success"></mui-step>
+              <mui-step title="Payment" state="pending"></mui-step>
+              <mui-step title="Confirm" state="disabled"></mui-step>
+            </mui-stepper>
+          </div>
+          <story-code-block slot="footer">
+            &lt;mui-stepper direction="horizontal" active-step="3"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Cart" state="success"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Address" state="success"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Payment" state="pending"&gt;&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Confirm" state="disabled"&gt;&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          id="verification-flow"
+          title="Verification Timeline"
+          description="Representative account verification sequence with a failed review and follow-up check."
+        >
+          <div slot="body">
+            <mui-stepper direction="vertical" active-step="3">
+              <mui-step title="Identity submitted" state="success">
+                <mui-body size="x-small" slot="secondary">Documents uploaded</mui-body>
+              </mui-step>
+              <mui-step title="Compliance review" state="error">
+                <mui-body size="x-small" slot="secondary">Mismatch found</mui-body>
+              </mui-step>
+              <mui-step title="Resubmission" state="active">
+                <mui-body size="x-small" slot="secondary">In progress</mui-body>
+              </mui-step>
+              <mui-step title="Final approval" state="upcoming">
+                <mui-body size="x-small" slot="secondary">Waiting for review</mui-body>
+              </mui-step>
+            </mui-stepper>
+          </div>
+          <story-code-block slot="footer">
+            &lt;mui-stepper direction="vertical" active-step="3"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Identity submitted" state="success"&gt;...&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Compliance review" state="error"&gt;...&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Resubmission" state="active"&gt;...&lt;/mui-step&gt;<br />
+            &nbsp;&nbsp;&lt;mui-step title="Final approval" state="upcoming"&gt;...&lt;/mui-step&gt;<br />
+            &lt;/mui-stepper&gt;
           </story-code-block>
         </story-card>
 
@@ -327,14 +520,12 @@ class storyStepper extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
       >
-        <mui-message heading="Quicklinks" slot="message">
-          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
-            <mui-link size="small" data-scroll-link="horizontal">Horizontal</mui-link>
-            <mui-link size="small" data-scroll-link="vertical">Vertical</mui-link> 
-            <mui-link size="small" data-scroll-link="horizontal-secondary">Horizontal: Secondary</mui-link>
-            <mui-link size="small" data-scroll-link="vertical-secondary">Vertical: Secondary</mui-link>           
-          </mui-h-stack>
-        </mui-message>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          limit="10"
+          links="horizontal::Horizontal|||x-small::X-Small|||small::Small|||error-example::Error Example|||disabled-example::Disabled Example|||checkout-flow::Checkout Flow States|||verification-flow::Verification Timeline|||vertical::Vertical|||horizontal-secondary::Horizontal: Secondary|||vertical-secondary::Vertical: Secondary"
+        ></story-quicklinks>
 
         ${stories}
 

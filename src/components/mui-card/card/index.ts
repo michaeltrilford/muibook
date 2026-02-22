@@ -1,7 +1,7 @@
 /* Mui Card */
 class MuiCard extends HTMLElement {
   static get observedAttributes() {
-    return ["footer"];
+    return ["footer", "borderless"];
   }
 
   constructor() {
@@ -18,6 +18,11 @@ class MuiCard extends HTMLElement {
         display: block;
         border-radius: var(--card-radius);
         background: var(--surface-elevated-100);
+        border: var(--border-thin);
+        border-color: var(--border-color);
+      }
+      :host([borderless]) {
+        border: none;
       }
       ::slotted(*:last-child) {
         margin-bottom: 0;

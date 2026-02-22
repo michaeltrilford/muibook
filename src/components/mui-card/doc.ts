@@ -18,6 +18,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use cards to visually group related content, actions, or components in a structured block.",
         "Use the header for titles or key actions, the body for primary content, and the footer for secondary actions or metadata.",
+        "Cards include a subtle border by default. Use borderless when you need a flush surface.",
         "Avoid overloading cards with too much content — keep them focused and scannable.",
         "Maintain consistent spacing and alignment between multiple cards to support visual rhythm.",
       ],

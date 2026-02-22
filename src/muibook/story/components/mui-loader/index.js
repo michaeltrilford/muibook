@@ -121,6 +121,7 @@ class storyLoader extends HTMLElement {
       <spec-card title="Import">
         <mui-code slot="footer" size="small" scrollable>
           import "@muibook/components/mui-loader";<br>
+          import "@muibook/components/mui-spinner";<br>
         </mui-code>
       </spec-card>
 
@@ -134,6 +135,38 @@ class storyLoader extends HTMLElement {
           </mui-accordion-group>
         </mui-responsive>
       </props-card>
+
+      <story-card title="Spinner">
+        <mui-h-stack slot="body" alignX="center" alignY="center" space="var(--space-300)" style="padding: var(--space-600);">
+          <mui-spinner size="x-small" label="Loading account data"></mui-spinner>
+          <mui-spinner size="small"></mui-spinner>
+          <mui-spinner size="medium"></mui-spinner>
+          <mui-spinner size="large"></mui-spinner>
+        </mui-h-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-spinner size=&quot;small&quot; label=&quot;Loading&quot;&gt;&lt;/mui-spinner&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Loader + Spinner" description="Use Loader to animate the container while Spinner gives immediate loading feedback.">
+        <mui-loader data-loading loading animation="fade-in" slot="body">
+          <mui-v-stack alignX="center" alignY="center" space="var(--space-300)" style="padding: var(--space-700);">
+            <mui-spinner size="medium" label="Loading dashboard"></mui-spinner>
+            <mui-body size="small">Loading dashboard data...</mui-body>
+          </mui-v-stack>
+        </mui-loader>
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
+        </mui-h-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation=&quot;fade-in&quot;&gt;<br>
+          &nbsp;&nbsp;&lt;mui-v-stack alignX=&quot;center&quot; alignY=&quot;center&quot; space=&quot;var(--space-300)&quot;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-spinner size=&quot;medium&quot; label=&quot;Loading dashboard&quot;&gt;&lt;/mui-spinner&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot;&gt;Loading dashboard data...&lt;/mui-body&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+      </story-card>
 
       <story-card title="Pulsate">
         <mui-loader data-loading loading animation="pulsate" slot="body">

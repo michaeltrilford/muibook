@@ -28,17 +28,49 @@ class MuiBody extends HTMLElement {
   render() {
     if (!this.shadowRoot) return;
 
-    const partMap = getPartMap("spacing", "layout", "visual");
+    const partMap = getPartMap("text", "spacing", "layout", "visual");
 
     this.shadowRoot.innerHTML = /*html*/ `
     <style>
       :host { display: block; }
+      :host([has-before]),
+      :host([has-after]) {
+        display: inline-flex;
+      }
 
       :host p {
         color: var(--text-color);
         margin: var(--space-000);
         display: block;
         width: 100%;
+      }
+
+      :host([has-before]) p,
+      :host([has-after]) p {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-100);
+        width: auto;
+        max-width: 100%;
+      }
+
+      @media (max-width: 767px) {
+        :host([has-before]) p,
+        :host([has-after]) p {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+        }
+      }
+
+      .content {
+        min-width: 0;
+      }
+
+      ::slotted([slot="before"]),
+      ::slotted([slot="after"]) {
+        flex-shrink: 0;
       }
 
       :host([size="x-small"]) p {
@@ -102,8 +134,55 @@ class MuiBody extends HTMLElement {
 
     </style>
     
-    <p part="${partMap}"><slot></slot></p>
+    <p part="${partMap}">
+      <slot name="before"></slot>
+      <span class="content"><slot></slot></span>
+      <slot name="after"></slot>
+    </p>
     `;
+
+    this.setupSlotBehavior();
+  }
+
+  private setupSlotBehavior() {
+    if (!this.shadowRoot) return;
+
+    const beforeSlot = this.shadowRoot.querySelector('slot[name="before"]') as HTMLSlotElement | null;
+    const afterSlot = this.shadowRoot.querySelector('slot[name="after"]') as HTMLSlotElement | null;
+
+    const update = () => {
+      const beforeEls = beforeSlot?.assignedElements({ flatten: true }) ?? [];
+      const afterEls = afterSlot?.assignedElements({ flatten: true }) ?? [];
+
+      if (beforeEls.length > 0) this.setAttribute("has-before", "");
+      else this.removeAttribute("has-before");
+
+      if (afterEls.length > 0) this.setAttribute("has-after", "");
+      else this.removeAttribute("has-after");
+
+      this.syncIconSizes([...beforeEls, ...afterEls]);
+    };
+
+    beforeSlot?.addEventListener("slotchange", update);
+    afterSlot?.addEventListener("slotchange", update);
+    update();
+  }
+
+  private syncIconSizes(elements: Element[]) {
+    const sizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "small",
+      medium: "small",
+      large: "medium",
+    };
+
+    const iconSize = sizeMap[this.getAttribute("size") || "medium"] || "small";
+
+    elements.forEach((el) => {
+      if (el.tagName.startsWith("MUI-ICON-")) {
+        el.setAttribute("size", iconSize);
+      }
+    });
   }
 
   waitForPartMap(): Promise<void> {

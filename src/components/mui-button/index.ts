@@ -183,6 +183,46 @@ class MuiButton extends HTMLElement {
     :host([variant="tertiary"]) button:focus-visible ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-focus); }
     :host([variant="tertiary"]) button:disabled ::slotted(.mui-icon) { fill: var(--action-tertiary-text-color-disabled); }
 
+    /* Overlay
+    ========================================= */
+    :host([variant="overlay"]) button {
+      background: color-mix(in srgb, var(--action-overlay-background) 85%, transparent);
+      color: var(--action-overlay-text-color);
+      border: var(--action-overlay-border);
+      -webkit-backdrop-filter: blur(var(--space-100)) saturate(120%);
+      backdrop-filter: blur(var(--space-100)) saturate(120%);
+    }
+
+    :host([variant="overlay"]) button:hover {
+      background: color-mix(in srgb, var(--action-overlay-background-hover) 85%, transparent);
+      color: var(--action-overlay-text-color-hover);
+      border: var(--action-overlay-border-hover);
+      -webkit-backdrop-filter: blur(var(--space-100)) saturate(120%);
+      backdrop-filter: blur(var(--space-100)) saturate(120%);
+    }
+
+    :host([variant="overlay"]) button:focus-visible {
+      background: color-mix(in srgb, var(--action-overlay-background-focus) 85%, transparent);
+      color: var(--action-overlay-text-color-focus);
+      border: var(--action-overlay-border-focus);
+      -webkit-backdrop-filter: blur(var(--space-100)) saturate(120%);
+      backdrop-filter: blur(var(--space-100)) saturate(120%);
+    }
+
+    :host([variant="overlay"]) button:disabled {
+      background: color-mix(in srgb, var(--action-overlay-background-disabled) 85%, transparent);
+      color: var(--action-overlay-text-color-disabled);
+      border: var(--action-overlay-border-disabled);
+      -webkit-backdrop-filter: blur(var(--space-100)) saturate(120%);
+      backdrop-filter: blur(var(--space-100)) saturate(120%);
+      cursor: not-allowed;
+    }
+
+    :host([variant="overlay"]) button ::slotted(.mui-icon) { fill: var(--action-overlay-text-color); }
+    :host([variant="overlay"]) button:hover ::slotted(.mui-icon) { fill: var(--action-overlay-text-color-hover); }
+    :host([variant="overlay"]) button:focus-visible ::slotted(.mui-icon) { fill: var(--action-overlay-text-color-focus); }
+    :host([variant="overlay"]) button:disabled ::slotted(.mui-icon) { fill: var(--action-overlay-text-color-disabled); }
+
     /* Attention
     ========================================= */
     :host([variant="attention"]) button {
@@ -370,6 +410,7 @@ class MuiButton extends HTMLElement {
       --avatar-background-override: var(--action-avatar-background);
     }
 
+    :host([size="xx-small"]) button ::slotted(mui-avatar),
     :host([size="x-small"]) button ::slotted(mui-avatar) {
       margin-right: var(--space-025);
     }
@@ -389,6 +430,31 @@ class MuiButton extends HTMLElement {
     :host button:hover ::slotted(mui-avatar),
     :host button:focus ::slotted(mui-avatar) {
       --avatar-background-override: var(--action-avatar-background-hover);
+    }
+
+    /* Badge Spacing */
+    :host([has-before]) button ::slotted(mui-badge[slot="before"]) {
+      margin-right: var(--space-025);
+    }
+
+    :host([has-after]) button ::slotted(mui-badge[slot="after"]) {
+      margin-left: var(--space-025);
+    }
+
+    :host([size="x-small"][has-before]) button ::slotted(mui-badge[slot="before"]) {
+      margin-right: var(--space-025);
+    }
+
+    :host([size="x-small"][has-after]) button ::slotted(mui-badge[slot="after"]) {
+      margin-left: var(--space-025);
+    }
+
+    :host([size="large"][has-before]) button ::slotted(mui-badge[slot="before"]) {
+      margin-right: var(--space-050);
+    }
+
+    :host([size="large"][has-after]) button ::slotted(mui-badge[slot="after"]) {
+      margin-left: var(--space-050);
     }
 
     /* Before & After Icon
@@ -419,6 +485,18 @@ class MuiButton extends HTMLElement {
 
     /* Size Variants
     ========================================= */
+    :host([size="xx-small"]) button,
+    :host([size="xx-small"]) button:hover,
+    :host([size="xx-small"]) button:focus,
+    :host([size="xx-small"]) button:disabled {
+      font-size: var(--font-size-15);
+      line-height: var(--line-height-25);
+      font-weight: var(--font-weight-semi-bold);
+      padding: var(--space-025) var(--space-100);
+      border-width: var(--stroke-size-100);
+      border-radius: var(--action-radius-x-small);
+    }
+
     :host([size="x-small"]) button,
     :host([size="x-small"]) button:hover,
     :host([size="x-small"]) button:focus,
@@ -451,6 +529,12 @@ class MuiButton extends HTMLElement {
       border-radius: var(--action-radius-large);
     }
 
+    :host([size="xx-small"][icon-only]) button {
+      height: calc(var(--action-icon-only-size-x-small) - var(--space-100));
+      width: calc(var(--action-icon-only-size-x-small) - var(--space-100));
+      padding: var(--action-icon-only-padding);
+    }
+
     :host([size="x-small"][icon-only]) button {
       height: var(--action-icon-only-size-x-small);
       width: var(--action-icon-only-size-x-small);
@@ -472,10 +556,29 @@ class MuiButton extends HTMLElement {
 
     /* Before & After Icon
       ========================================= */
+    :host([size="xx-small"][has-after]) button,
+    :host([size="xx-small"][has-before]) button,
+    :host([size="xx-small"][has-after][has-before]) button { 
+      gap: var(--space-050);
+    }
+    
+    :host([size="xx-small"][has-after][has-before]) button {
+      padding-right: var(--action-after-slot-padding-x-small);
+      padding-left: var(--action-before-slot-padding-x-small);
+    }
+
+    :host([size="xx-small"][has-after]) button {
+      padding-right: var(--action-after-slot-padding-x-small);
+    }
+
+    :host([size="xx-small"][has-before]) button {
+      padding-left: var(--action-before-slot-padding-x-small);
+    }
+
     :host([size="x-small"][has-after]) button,
     :host([size="x-small"][has-before]) button,
     :host([size="x-small"][has-after][has-before]) button { 
-      gap: var(--space-025);
+      gap: var(--space-050);
     }
     
     :host([size="x-small"][has-after][has-before]) button {
@@ -494,7 +597,7 @@ class MuiButton extends HTMLElement {
     :host([size="small"][has-after]) button,
     :host([size="small"][has-before]) button,
     :host([size="small"][has-after][has-before]) button { 
-      gap: var(--space-050);
+      gap: var(--space-100);
     }
     
     :host([size="small"][has-after][has-before]) button {
@@ -598,6 +701,7 @@ class MuiButton extends HTMLElement {
             const nodes = slot.assignedNodes({ flatten: true });
             this.updateIconSizes(nodes, false);
             this.updateAvatarSizes(nodes);
+            this.updateBadgeSizes(nodes);
           }
         });
       }
@@ -635,6 +739,7 @@ class MuiButton extends HTMLElement {
             const nodes = slot.assignedNodes({ flatten: true });
             this.updateIconSizes(nodes, isIconOnly);
             this.updateAvatarSizes(nodes);
+            this.updateBadgeSizes(nodes);
           }
         });
       });
@@ -647,6 +752,7 @@ class MuiButton extends HTMLElement {
 
     // Map button sizes to avatar sizes
     const avatarSizeMap: Record<string, string> = {
+      "xx-small": "x-small",
       "x-small": "x-small",
       small: "x-small",
       medium: "small",
@@ -672,6 +778,7 @@ class MuiButton extends HTMLElement {
 
     // Map button sizes to icon sizes
     const iconSizeMap: Record<string, string> = {
+      "xx-small": "xx-small",
       "x-small": "x-small",
       small: "x-small",
       medium: isIconOnly ? "medium" : "small", // small for regular, medium for icon-only
@@ -691,6 +798,28 @@ class MuiButton extends HTMLElement {
         // Only set size if the element doesn't already have one
         if (isIcon && !el.hasAttribute("size")) {
           el.setAttribute("size", targetIconSize);
+        }
+      }
+    });
+  }
+
+  updateBadgeSizes(nodes: Node[]): void {
+    const buttonSize = this.getAttribute("size") || "medium";
+    const badgeSizeMap: Record<string, string> = {
+      "xx-small": "x-small",
+      "x-small": "x-small",
+      small: "small",
+      medium: "medium",
+      large: "large",
+    };
+    const targetBadgeSize = badgeSizeMap[buttonSize] || "medium";
+
+    nodes.forEach((node: Node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as HTMLElement;
+        if (el.tagName.toLowerCase() === "mui-badge") {
+          // Enforce host-driven badge sizing for consistency.
+          el.setAttribute("size", targetBadgeSize);
         }
       }
     });

@@ -19,7 +19,7 @@ class MuiIconTranslate extends HTMLElement {
   }
 
   render(): void {
-    const size = (this.getAttribute("size") || "small") as "x-small" | "small" | "medium" | "large";
+    const size = (this.getAttribute("size") || "small") as "xx-small" | "x-small" | "small" | "medium" | "large";
     const rawColor = this.getAttribute("color");
     const flip = this.hasAttribute("flip");
 
@@ -33,7 +33,8 @@ class MuiIconTranslate extends HTMLElement {
     const iconColor: string = (rawColor && colorMap[rawColor]) || rawColor || "var(--icon-color-default)";
 
     // Map size to actual values
-    const sizeMap: Record<"x-small" | "small" | "medium" | "large", string> = {
+    const sizeMap: Record<"xx-small" | "x-small" | "small" | "medium" | "large", string> = {
+      "xx-small": "1.3rem",
       "x-small": "1.6rem",
       small: "2.1rem",
       medium: "2.4rem",

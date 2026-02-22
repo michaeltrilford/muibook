@@ -5,7 +5,7 @@ class MuiChip extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["active", "usage", "dismiss"];
+    return ["active", "usage", "dismiss", "size", "disabled"];
   }
 
   connectedCallback() {
@@ -19,6 +19,7 @@ class MuiChip extends HTMLElement {
     }
 
     this.addEventListener("keydown", (e) => {
+      if (this.hasAttribute("disabled")) return;
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         this.click();
@@ -62,6 +63,15 @@ class MuiChip extends HTMLElement {
   forceAvatarSize(slot: HTMLSlotElement | null) {
     if (!slot) return;
 
+    const size = this.getAttribute("size") || "medium";
+    const iconSizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "medium",
+      large: "medium",
+    };
+    const iconSize = iconSizeMap[size] || "medium";
+
     const assignedNodes = slot.assignedNodes({ flatten: true });
     assignedNodes.forEach((node: Node) => {
       if (node.nodeType === Node.ELEMENT_NODE) {
@@ -71,30 +81,82 @@ class MuiChip extends HTMLElement {
         if (tagName === "mui-avatar") {
           element.setAttribute("size", "x-small");
         } else if (tagName.startsWith("mui-icon-")) {
-          element.setAttribute("size", "medium");
+          element.setAttribute("size", iconSize);
         }
       }
     });
   }
 
   render() {
+    const size = this.getAttribute("size") || "medium";
+    const bodySizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+    const dismissIconSizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "xx-small",
+      medium: "x-small",
+      large: "small",
+    };
+    const dismissButtonSizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "small",
+      large: "small",
+    };
+    const bodySize = bodySizeMap[size] || "small";
+    const dismissIconSize = dismissIconSizeMap[size] || "x-small";
+    const dismissButtonSize = dismissButtonSizeMap[size] || "small";
+
     const styles = /*css*/ `
       :host {
         display: inline-flex;
         box-sizing: border-box;
       }
+      :host([disabled]) {
+        opacity: 0.4;
+      }
 
       .container {
         display: inline-grid;
         align-items: center;
-        height: 4rem;
+        height: var(--chip-height-medium);
         box-sizing: border-box;
         border: var(--border-thin);
-        padding: var(--space-100) var(--space-400);
-        gap: var(--space-200);
+        padding: var(--chip-padding-medium);
+        gap: var(--chip-gap-medium);
         background: var(--chip-background);
         border-color: var(--chip-border-color);
         border-radius: var(--chip-radius);
+      }
+
+      :host([size="x-small"]) .container {
+        height: var(--chip-height-x-small);
+        padding: var(--chip-padding-x-small);
+        gap: var(--chip-gap-x-small);
+        border-radius: var(--chip-radius-x-small);
+      }
+
+      :host([size="small"]) .container {
+        height: var(--chip-height-small);
+        padding: var(--chip-padding-small);
+        gap: var(--chip-gap-small);
+        border-radius: var(--chip-radius-small);
+      }
+
+      :host([size="medium"]) .container {
+        height: var(--chip-height-medium);
+        border-radius: var(--chip-radius-medium);
+      }
+
+      :host([size="large"]) .container {
+        height: var(--chip-height-large);
+        padding: var(--chip-padding-large);
+        gap: var(--chip-gap-large);
+        border-radius: var(--chip-radius-large);
       }
 
       /* CLICKABLE */
@@ -125,6 +187,27 @@ class MuiChip extends HTMLElement {
       /* Usage: input */
       :host([usage="input"]) .container {
         border-radius: var(--input-radius);
+        border: none;
+      }
+
+      :host([usage="input"][slot="before"]),
+      :host([usage="input"][slot="after"]) {
+        background: var(--chip-input-background, #333333);
+        padding: var(--chip-input-shell-padding, 2px);
+        border: var(--chip-input-shell-border, 1px solid var(--form-default-border-color));
+        box-sizing: border-box;
+      }
+
+      :host([usage="input"][slot="before"]) {
+        border-right: none;
+        border-top-left-radius: var(--input-radius);
+        border-bottom-left-radius: var(--input-radius);
+      }
+
+      :host([usage="input"][slot="after"]) {
+        border-left: none;
+        border-top-right-radius: var(--input-radius);
+        border-bottom-right-radius: var(--input-radius);
       }
 
       /* Hover and focus (natural) */
@@ -178,7 +261,19 @@ class MuiChip extends HTMLElement {
       /* Disable pointer and focus styles when dismiss attribute is present */
       :host([dismiss]) .container {
         grid-template-columns: 1fr auto;
+        padding-right: calc(var(--space-200) + 0.1rem);
+      }
+
+      :host([dismiss][size="x-small"]) .container {
+        padding-right: calc(var(--space-050) + 0.1rem);
+      }
+
+      :host([dismiss][size="small"]) .container {
         padding-right: calc(var(--space-100) + 0.1rem);
+      }
+
+      :host([dismiss][size="large"]) .container {
+        padding-right: calc(var(--space-300) + 0.1rem);
       }
 
       /* Has Before */
@@ -198,24 +293,34 @@ class MuiChip extends HTMLElement {
       mui-button::part(background):hover {
         background: var(--chip-dismiss-action-background-hover);
       }
+      :host([disabled]) mui-button {
+        pointer-events: none;
+      }
     `;
 
     if (this.hasAttribute("dismiss")) {
       // Dismiss mode
-      this.shadowRoot!.innerHTML = /*html*/ `
+        this.shadowRoot!.innerHTML = /*html*/ `
         <style>${styles}</style>
         <span class="container">
           <slot name="before"></slot>
-          <mui-body size="small" weight="bold">
+          <mui-body size="${bodySize}" weight="bold">
             <slot></slot>
           </mui-body>
-          <mui-button part="dismiss-btn" variant="tertiary" aria-label="Remove chip">
-            <mui-icon-close size="x-small"></mui-icon-close>
+          <mui-button
+            part="dismiss-btn"
+            variant="tertiary"
+            size="${dismissButtonSize}"
+            aria-label="Remove chip"
+            ${this.hasAttribute("disabled") ? "disabled" : ""}
+          >
+            <mui-icon-close size="${dismissIconSize}"></mui-icon-close>
           </mui-button>
         </span>
       `;
 
       this.shadowRoot!.querySelector('[part="dismiss-btn"]')?.addEventListener("click", (e) => {
+        if (this.hasAttribute("disabled")) return;
         e.stopPropagation();
         this.dispatchEvent(
           new CustomEvent("dismiss", {
@@ -232,7 +337,7 @@ class MuiChip extends HTMLElement {
           <style>${styles}</style>
           <span class="container">
             <slot name="before"></slot>
-            <mui-body size="small" weight="bold">
+            <mui-body size="${bodySize}" weight="bold">
               <slot></slot>
             </mui-body>
             <slot name="after"></slot>

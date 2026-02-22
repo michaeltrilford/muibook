@@ -22,6 +22,13 @@ class storyInput extends HTMLElement {
         description: "",
       },
       {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "medium",
+        description: "Controls input sizing scale.",
+      },
+      {
         name: "types",
         type: "string",
         options: "text, password, email, number, search, tel, url, date, time",
@@ -53,6 +60,13 @@ class storyInput extends HTMLElement {
         description: "Hides the label but it is still present for screen readers",
       },
       {
+        name: "optional",
+        type: "boolean",
+        options: "optional",
+        default: "",
+        description: "Adds an (optional) marker to the label.",
+      },
+      {
         name: "disabled",
         type: "boolean",
         options: "disabled",
@@ -81,16 +95,23 @@ class storyInput extends HTMLElement {
         description: "You want the input to start with pre-filled content.",
       },
       {
+        name: "max-length",
+        type: "number",
+        options: "{number}",
+        default: "",
+        description: "Sets a max character length and shows a live character count.",
+      },
+      {
         name: "slot=&#8220;before&#8221;",
         type: "slot (named)",
-        options: "mui-addon, mui-select, mui-button",
+        options: "mui-addon, mui-select, mui-button, mui-chip",
         default: "",
         description: "Primary content slot for a slat layout.",
       },
       {
         name: "slot=&#8220;after&#8221;",
         type: "slot (named)",
-        options: "mui-addon, mui-select, mui-button",
+        options: "mui-addon, mui-select, mui-button, mui-chip",
         default: "",
         description: "Slot in elements to appear flush next to the input",
       },
@@ -168,6 +189,23 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="Sizes"
+        usageLink="https://guides.muibook.com/input"
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-input size="x-small" label="X-Small"></mui-input>
+          <mui-input size="small" label="Small"></mui-input>
+          <mui-input size="medium" label="Medium"></mui-input>
+          <mui-input size="large" label="Large"></mui-input>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input size="x-small" label="X-Small"&gt;&lt;/mui-input&gt;<br />
+          &lt;mui-input size="small" label="Small"&gt;&lt;/mui-input&gt;<br />
+          &lt;mui-input size="medium" label="Medium"&gt;&lt;/mui-input&gt;<br />
+          &lt;mui-input size="large" label="Large"&gt;&lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card title="Variant: Success" description="The label is required, if not set there will be a console warning."
         usageLink="https://guides.muibook.com/input"
       >
@@ -224,6 +262,30 @@ class storyInput extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-input label="Disabled" disabled&gt;&lt;/mui-input&gt;
+          <br />
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Optional Label"
+        usageLink="https://guides.muibook.com/input"
+      >
+        <div slot="body">
+          <mui-input label="Company Website" optional placeholder="https://"></mui-input>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input label="Company Website" optional placeholder="https://"&gt;&lt;/mui-input&gt;
+          <br />
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Character Count"
+        usageLink="https://guides.muibook.com/input"
+      >
+        <div slot="body">
+          <mui-input label="Username" max-length="24" placeholder="up to 24 characters"></mui-input>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input label="Username" max-length="24" placeholder="up to 24 characters"&gt;&lt;/mui-input&gt;
           <br />
         </story-code-block>
       </story-card>
@@ -384,6 +446,78 @@ class storyInput extends HTMLElement {
           &gt;
           <br>
           &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br>
+          &lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Before: Chip"
+        usageLink="https://guides.muibook.com/input"
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-input size="x-small" label="Search tags">
+            <mui-chip slot="before" dismiss>Tag</mui-chip>
+          </mui-input>
+          <mui-input size="small" label="Search tags">
+            <mui-chip slot="before" dismiss>Tag</mui-chip>
+          </mui-input>
+          <mui-input size="medium" label="Search tags">
+            <mui-chip slot="before" dismiss>Tag</mui-chip>
+          </mui-input>
+          <mui-input size="large" label="Search tags">
+            <mui-chip slot="before" dismiss>Tag</mui-chip>
+          </mui-input>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input size="x-small" label="Search tags"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip slot="before" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
+          &lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="After: Chip"
+        usageLink="https://guides.muibook.com/input"
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-input size="x-small" label="Search tags">
+            <mui-chip slot="after" dismiss>Tag</mui-chip>
+          </mui-input>
+          <mui-input size="small" label="Search tags">
+            <mui-chip slot="after" dismiss>Tag</mui-chip>
+          </mui-input>
+          <mui-input size="medium" label="Search tags">
+            <mui-chip slot="after" dismiss>Tag</mui-chip>
+          </mui-input>
+          <mui-input size="large" label="Search tags">
+            <mui-chip slot="after" dismiss>Tag</mui-chip>
+          </mui-input>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input size="x-small" label="Search tags"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip slot="after" dismiss&gt;Tag&lt;/mui-chip&gt;<br />
+          &lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Hint: Overlay" description="Use slot='hint' for non-interactive floating hints (icon, badge, tooltip marker)."
+        usageLink="https://guides.muibook.com/input"
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-input size="x-small" label="Username" placeholder="Enter your username">
+            <mui-icon-info slot="hint"></mui-icon-info>
+          </mui-input>
+          <mui-input size="small" label="Referral Code" placeholder="Optional">
+            <mui-badge slot="hint">NEW</mui-badge>
+          </mui-input>
+          <mui-input size="medium" label="Website" placeholder="https://">
+            <mui-icon-warning slot="hint"></mui-icon-warning>
+          </mui-input>
+          <mui-input size="large" label="Profile ID" placeholder="ID">
+            <mui-badge slot="hint" size="small">BETA</mui-badge>
+          </mui-input>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input label="Username"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-info slot="hint"&gt;&lt;/mui-icon-info&gt;<br />
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>

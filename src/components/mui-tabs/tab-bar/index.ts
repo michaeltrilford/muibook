@@ -5,6 +5,9 @@ class MuiTabBar extends HTMLElement {
   private _hasInitialized: boolean;
   private _animationSpeed: number = 200;
   private _resizeObserver: ResizeObserver;
+  static get observedAttributes() {
+    return ["size", "variant"];
+  }
 
   constructor() {
     super();
@@ -23,11 +26,23 @@ class MuiTabBar extends HTMLElement {
     });
   }
 
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if ((name === "size" || name === "variant") && oldValue !== newValue) {
+      this._applySizeToChildren();
+      this._applyVariantToChildren();
+      if (this._activeTab) this._updateHighlight(this._activeTab);
+    }
+  }
+
   connectedCallback() {
+    if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
+
     const animationSpeed = this.getAttribute("speed") || "200";
     this._animationSpeed = parseInt(animationSpeed, 10);
 
     const children = Array.from(this.children);
+    this._applySizeToChildren(children as HTMLElement[]);
+    this._applyVariantToChildren(children as HTMLElement[]);
 
     this.setAttribute("role", "tablist");
 
@@ -134,6 +149,29 @@ class MuiTabBar extends HTMLElement {
           width: 100%;
         }
 
+        :host([variant="dots"]) {
+          border: none;
+          border-radius: var(--radius-000);
+          background: transparent;
+          gap: var(--tab-dot-gap);
+          overflow: visible;
+          align-items: center;
+        }
+
+        :host([variant="ghost"]) {
+          border: none;
+          background: transparent;
+          box-shadow: none;
+        }
+
+        :host([variant="ghost"]) .highlight {
+          box-shadow: none;
+        }
+
+        :host([variant="dots"][full-width]) {
+          justify-content: center;
+        }
+
         .highlight {
           border-radius: calc(var(--tab-radius) - 0.2rem);
           position: absolute;
@@ -150,12 +188,20 @@ class MuiTabBar extends HTMLElement {
           width: 0;
         }
 
+        :host([variant="dots"]) .highlight {
+          display: none;
+        }
+
         ::slotted(mui-tab-item) {
           position: relative;
           z-index: 1;
           flex: 1;
           contain: content; /* Performance optimization */
           transform: translateZ(0);
+        }
+
+        :host([variant="dots"]) ::slotted(mui-tab-item) {
+          flex: 0;
         }
       </style>
       <div class="highlight"></div>
@@ -194,6 +240,26 @@ class MuiTabBar extends HTMLElement {
         highlight.style.transition = "";
         this._hasInitialized = true;
       });
+    });
+  }
+
+  private _applySizeToChildren(childrenParam?: HTMLElement[]) {
+    const size = this.getAttribute("size") || "medium";
+    const children = childrenParam || (Array.from(this.children) as HTMLElement[]);
+    children.forEach((child) => {
+      if (child.tagName.toLowerCase() === "mui-tab-item") {
+        child.setAttribute("size", size);
+      }
+    });
+  }
+
+  private _applyVariantToChildren(childrenParam?: HTMLElement[]) {
+    const variant = this.getAttribute("variant") || "default";
+    const children = childrenParam || (Array.from(this.children) as HTMLElement[]);
+    children.forEach((child) => {
+      if (child.tagName.toLowerCase() === "mui-tab-item") {
+        child.setAttribute("variant", variant);
+      }
     });
   }
 
@@ -254,6 +320,7 @@ class MuiTabBar extends HTMLElement {
   }
 
   private _updateHighlight(el: HTMLElement): void {
+    if (this.getAttribute("variant") === "dots") return;
     const highlight = this.shadowRoot!.querySelector(".highlight") as HTMLElement;
     const elRect = el.getBoundingClientRect();
     const barRect = this.getBoundingClientRect();

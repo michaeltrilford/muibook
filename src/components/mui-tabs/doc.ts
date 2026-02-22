@@ -21,6 +21,10 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use to organise related content or views at the same level of hierarchy.",
         "Ideal for toggling between sections without navigating away from the page.",
+        "Use the size API (x-small, small, medium, large) to align tabs with adjacent buttons.",
+        "Use named slots (before/after) to compose icons and badges in tab items.",
+        "Use variant='dots' for compact pagination controls such as carousel navigation.",
+        "Use variant='ghost' when you want only active-tab emphasis without outer tab bar chrome.",
         "Keep labels short, clear, and consistently styled.",
         "Avoid using when content is unrelated or exceeds a manageable number of tabs.",
       ],

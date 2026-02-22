@@ -18,16 +18,30 @@ class storyField extends HTMLElement {
         name: "slot",
         required: true,
         type: "slot (default)",
-        options: "mui-input, mui-select",
+        options: "mui-input, mui-textarea, mui-select, mui-radio-group",
         default: "(required)",
         description: "Slot in text, icons or other appropriate micro compositions to support form experiences.",
       },
       {
+        name: "slot=message",
+        type: "slot (named)",
+        options: "mui-form-hint, mui-body",
+        default: "",
+        description: "Named message slot for rich helper and validation content.",
+      },
+      {
         name: "variant",
         type: "string",
-        options: "default, success, warning, error",
+        options: "default, optional, success, warning, error",
         default: "default",
         description: "--",
+      },
+      {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "medium",
+        description: "Forwards size to the slotted form control.",
       },
       {
         name: "label",
@@ -130,6 +144,142 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card
+          title="Input: Sizes"
+          description="Field forwards size to the slotted control."
+          usageLink="https://guides.muibook.com/field"
+        >
+          <mui-v-stack slot="body" space="var(--space-200)">
+            <mui-field label="X-Small" size="x-small">
+              <mui-input placeholder="X-Small"></mui-input>
+            </mui-field>
+            <mui-field label="Small" size="small">
+              <mui-input placeholder="Small"></mui-input>
+            </mui-field>
+            <mui-field label="Medium" size="medium">
+              <mui-input placeholder="Medium"></mui-input>
+            </mui-field>
+            <mui-field label="Large" size="large">
+              <mui-input placeholder="Large"></mui-input>
+            </mui-field>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-field label="small" size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          title="Select: Sizes"
+          description="Field forwards size to select controls."
+          usageLink="https://guides.muibook.com/field"
+        >
+          <mui-v-stack slot="body" space="var(--space-200)">
+            <mui-field label="X-Small" size="x-small">
+              <mui-select
+                options='[
+                  {"value": "one", "label": "Option 1"},
+                  {"value": "two", "label": "Option 2"}
+                ]'>
+              </mui-select>
+            </mui-field>
+            <mui-field label="Small" size="small">
+              <mui-select
+                options='[
+                  {"value": "one", "label": "Option 1"},
+                  {"value": "two", "label": "Option 2"}
+                ]'>
+              </mui-select>
+            </mui-field>
+            <mui-field label="Medium" size="medium">
+              <mui-select
+                options='[
+                  {"value": "one", "label": "Option 1"},
+                  {"value": "two", "label": "Option 2"}
+                ]'>
+              </mui-select>
+            </mui-field>
+            <mui-field label="Large" size="large">
+              <mui-select
+                options='[
+                  {"value": "one", "label": "Option 1"},
+                  {"value": "two", "label": "Option 2"}
+                ]'>
+              </mui-select>
+            </mui-field>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-field label="small" size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-select options='[{...}]'&gt;&lt;/mui-select&gt;<br />
+            &lt;/mui-field&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          title="Textarea: Sizes"
+          description="Field forwards size to textarea controls."
+          usageLink="https://guides.muibook.com/field"
+        >
+          <mui-v-stack slot="body" space="var(--space-200)">
+            <mui-field label="X-Small" size="x-small">
+              <mui-textarea placeholder="X-Small"></mui-textarea>
+            </mui-field>
+            <mui-field label="Small" size="small">
+              <mui-textarea placeholder="Small"></mui-textarea>
+            </mui-field>
+            <mui-field label="Medium" size="medium">
+              <mui-textarea placeholder="Medium"></mui-textarea>
+            </mui-field>
+            <mui-field label="Large" size="large">
+              <mui-textarea placeholder="Large"></mui-textarea>
+            </mui-field>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-field label="small" size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-textarea&gt;&lt;/mui-textarea&gt;<br />
+            &lt;/mui-field&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Form Group: Field Messages" description="Recommended pattern: in Form Group layouts, each Field owns its helper and validation message. Supporting copy is intentionally knocked back so input controls stay primary."
+          usage="Attach helper and validation content directly to the owning field.|||Inside Form Group, keep messages on each field instead of standalone hint rows."
+          usageLink="https://guides.muibook.com/field"
+        >
+          <mui-v-stack slot="body" space="var(--space-300)">
+            <mui-form-group heading="Access Settings" hide-label>
+              <mui-field label="API Key">
+                <mui-input value="pk_live_..." variant="error"></mui-input>
+                <mui-form-hint slot="message" style="color: var(--text-color-error);">
+                  <mui-icon-attention slot="before" color="var(--text-color-error)"></mui-icon-attention>
+                  This key is invalid. Regenerate and try again.
+                </mui-form-hint>
+              </mui-field>
+              <mui-field label="Project Name">
+                <mui-input placeholder="Atlas Redesign"></mui-input>
+                <mui-form-hint slot="message" style="color: var(--text-color-optional);">
+                  <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+                  Visible to your workspace.
+                </mui-form-hint>
+              </mui-field>
+              <mui-field label="Environment">
+                <mui-select options='[{"label":"Development","value":"dev"},{"label":"Staging","value":"staging"},{"label":"Production","value":"prod"}]' value="prod"></mui-select>
+                <mui-form-hint slot="message" style="color: var(--text-color-warning);">
+                  <mui-icon-warning slot="before" color="var(--text-color-warning)"></mui-icon-warning>
+                  Production changes require admin approval.
+                </mui-form-hint>
+              </mui-field>
+            </mui-form-group>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-form-group&gt;<br />
+            &nbsp;&nbsp;&lt;mui-field label="API Key"&gt;...&lt;/mui-field&gt;<br />
+            &nbsp;&nbsp;&lt;mui-field label="Project Name"&gt;...&lt;/mui-field&gt;<br />
+            &nbsp;&nbsp;&lt;mui-field label="Environment"&gt;...&lt;/mui-field&gt;<br />
+            &lt;/mui-form-group&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card title="Input: Default w/ Message" description="You are able to pass in a message that stays static on the page."
           usageLink="https://guides.muibook.com/field"
         >
@@ -140,6 +290,22 @@ class storyField extends HTMLElement {
             &lt;mui-field label="Name" message="This field doesn't accept special characters"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-input&gt;&lt;/mui-input&gt;
+            <br />
+            &lt;/mui-field&gt;
+            <br />
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Input: Optional w/ Message" description="Use optional when guidance is informational and not a validation state."
+          usageLink="https://guides.muibook.com/field"
+        >
+          <mui-field label="Website" slot="body" variant="optional" message="Optional field for portfolio link">
+            <mui-input placeholder="https://"></mui-input>
+          </mui-field>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-field label="Website" variant="optional" message="Optional field for portfolio link"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="https://"&gt;&lt;/mui-input&gt;
             <br />
             &lt;/mui-field&gt;
             <br />

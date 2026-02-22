@@ -23,6 +23,13 @@ class storySelect extends HTMLElement {
           "Visual feedback state for the select input. Applies appropriate styling for form validation states.",
       },
       {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "medium",
+        description: "Controls select sizing scale.",
+      },
+      {
         name: "options",
         required: true,
         type: "array",
@@ -54,6 +61,13 @@ class storySelect extends HTMLElement {
         options: "hide-label",
         default: "",
         description: "Ensures the label is accessible to screen readers while visually hiding it to avoid redundancy",
+      },
+      {
+        name: "optional",
+        type: "boolean",
+        options: "optional",
+        default: "",
+        description: "Adds an (optional) marker to the label.",
       },
       {
         name: "disabled",
@@ -173,6 +187,39 @@ class storySelect extends HTMLElement {
         </story-card>
 
         <story-card 
+          title="Optional Label" 
+          description="Adds optional guidance while keeping the same accessible label pattern."
+          usageLink="https://guides.muibook.com/select"
+        >
+          <div slot="body">
+            <mui-select
+              label="Region"
+              optional
+              options='[
+                {"value": "apac", "label": "APAC"},
+                {"value": "emea", "label": "EMEA"},
+                {"value": "amer", "label": "Americas"}
+              ]'>
+            </mui-select>
+          </div>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-select label="Region" optional
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;options='[
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;{"value": "apac", "label": "APAC"},
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;{"value": "emea", "label": "EMEA"},
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;{"value": "amer", "label": "Americas"}
+              <br />
+              &nbsp;&nbsp;]'&gt;
+              <br />
+            &lt;/mui-select&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card 
           title="Hide Label" 
           description="Ensures the label is accessible to screen readers while visually hiding it to avoid redundancy."
           usageLink="https://guides.muibook.com/select"
@@ -241,6 +288,53 @@ class storySelect extends HTMLElement {
               <br />
             &lt;/mui-select&gt;
 
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          title="Sizes"
+          description="Use size to align the select with adjacent form controls."
+          usageLink="https://guides.muibook.com/select"
+        >
+          <mui-v-stack slot="body" space="var(--space-200)">
+            <mui-select
+              size="x-small"
+              label="X-Small"
+              options='[
+                {"value": "one", "label": "Option 1"},
+                {"value": "two", "label": "Option 2"}
+              ]'>
+            </mui-select>
+            <mui-select
+              size="small"
+              label="Small"
+              options='[
+                {"value": "one", "label": "Option 1"},
+                {"value": "two", "label": "Option 2"}
+              ]'>
+            </mui-select>
+            <mui-select
+              size="medium"
+              label="Medium"
+              options='[
+                {"value": "one", "label": "Option 1"},
+                {"value": "two", "label": "Option 2"}
+              ]'>
+            </mui-select>
+            <mui-select
+              size="large"
+              label="Large"
+              options='[
+                {"value": "one", "label": "Option 1"},
+                {"value": "two", "label": "Option 2"}
+              ]'>
+            </mui-select>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-select size="x-small" label="X-Small" options='[...]'&gt;&lt;/mui-select&gt;<br />
+            &lt;mui-select size="small" label="Small" options='[...]'&gt;&lt;/mui-select&gt;<br />
+            &lt;mui-select size="medium" label="Medium" options='[...]'&gt;&lt;/mui-select&gt;<br />
+            &lt;mui-select size="large" label="Large" options='[...]'&gt;&lt;/mui-select&gt;
           </story-code-block>
         </story-card>
 

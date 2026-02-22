@@ -112,6 +112,14 @@ export const muiDocs: MuiDocs = {
             "https://images.ctfassets.net/i5uwscj4pkk2/50Nmp65TaWcwTixZhpLoUT/af5c8743d1482969667cf2a063428759/button-tertiary-icon.png",
         },
         {
+          key: "overlay",
+          title: "Overlay",
+          description:
+            "Use on layered media or tinted surfaces where a subtle translucent action is needed. Keeps controls readable over imagery while staying visually lightweight.",
+          image:
+            "https://images.ctfassets.net/i5uwscj4pkk2/5MgDmdtcMDIIsHKlzMNpj1/42fbbce26a313f72c670ff91ff4fb500/button-secondary.png",
+        },
+        {
           key: "attention",
           title: "Attention",
           description:

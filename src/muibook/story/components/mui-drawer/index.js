@@ -227,7 +227,7 @@ class storyDrawer extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -277,7 +277,7 @@ class storyDrawer extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -824,7 +824,7 @@ class storyDrawer extends HTMLElement {
               <div class="page-header">
                 ${invoiceHeader}
                 <mui-dropdown position="right">
-                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+                  <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
                   <mui-button variant="tertiary" data-drawer="drawer-3">Edit Details</mui-button>
                   <mui-button disabled variant="tertiary">Add line-item</mui-button>
                 </mui-dropdown>
@@ -873,7 +873,7 @@ class storyDrawer extends HTMLElement {
               <div class="page-header">
                 ${invoiceHeader}
                 <mui-dropdown position="right">
-                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+                  <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
                   <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
                   <mui-button disabled variant="tertiary">Add line-item</mui-button>
                 </mui-dropdown>
@@ -1007,7 +1007,7 @@ class storyDrawer extends HTMLElement {
                   <mui-button variant="tertiary" data-drawer="hook">
                     <mui-icon-menu size="medium"></mui-icon-menu>
                   </mui-button>
-                  <mui-heading size="1" level="4">Premium</mui-heading>
+                  <mui-heading size="4" level="4">Premium</mui-heading>
                 </mui-h-stack>
               </div>
               <div class="page-content">
@@ -1016,7 +1016,7 @@ class storyDrawer extends HTMLElement {
             </div>
             <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
               <guides-logo style="width: 24px;"></guides-logo>
-              <mui-heading size="1" level="4">Guru</mui-heading>
+              <mui-heading size="4" level="4">Guru</mui-heading>
             </mui-h-stack>
 
             ${menuBillItems}
@@ -1133,7 +1133,7 @@ class storyDrawer extends HTMLElement {
               <div class="page-header">
                 ${invoiceHeader}
                 <mui-dropdown position="right">
-                  <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+                  <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
                   <mui-button variant="tertiary" data-drawer="breakpoint">Edit Details</mui-button>
                   <mui-button disabled variant="tertiary">Add line-item</mui-button>
                 </mui-dropdown>
@@ -1178,21 +1178,12 @@ class storyDrawer extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
       >
-        <mui-message heading="Quicklinks" slot="message">
-          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
-            <mui-link size="small" data-scroll-link="drawer-overlay-left">Overlay Left</mui-link>
-            <mui-link size="small" data-scroll-link="drawer-overlay-right">Overlay Right</mui-link>
-            <mui-link size="small" data-scroll-link="drawer-overlay-no-header">Overlay: No Header</mui-link>
-            <mui-link size="small" data-scroll-link="drawer-overlay-no-footer">Overlay: No Footer</mui-link>
-            <mui-link size="small" data-scroll-link="drawer-push-left">Push Left</mui-link>
-            <mui-link size="small" data-scroll-link="drawer-push-right">Push Right</mui-link>
-            <mui-link size="small" data-scroll-link="drawer-persistent-left">Persistent Left</mui-link>
-            <mui-link size="small" data-scroll-link="drawer-persistent-right">Persistent Right</mui-link>
-            <mui-link size="small" data-scroll-link="drawer-menu">Menu</mui-link>
-            <mui-link size="small" data-scroll-link="drawer-advanced-menu">Advanced Menu</mui-link>      
-            <mui-link size="small" data-scroll-link="drawer-breakpoint">Breakpoint</mui-link>         
-          </mui-h-stack>
-        </mui-message>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          limit="10"
+          links="drawer-overlay-left::Overlay Left|||drawer-overlay-right::Overlay Right|||drawer-overlay-no-header::Overlay: No Header|||drawer-overlay-no-footer::Overlay: No Footer|||drawer-push-left::Push Left|||drawer-push-right::Push Right|||drawer-persistent-left::Persistent Left|||drawer-persistent-right::Persistent Right|||drawer-menu::Menu|||drawer-advanced-menu::Advanced Menu|||drawer-breakpoint::Breakpoint"
+        ></story-quicklinks>
 
         ${stories}
       </story-template>

@@ -54,11 +54,18 @@ class storyChip extends HTMLElement {
         description: "Enable the ability for the user to dismiss the selection / chip.",
       },
       {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "medium",
+        description: "Controls chip sizing and keeps slotted icon/text scale in sync.",
+      },
+      {
         name: "usage",
         type: "string",
         options: "input",
         default: "",
-        description: "When slotted inside the input experience, it will adjust the radius. (Coming soon)",
+        description: "When slotted inside input, chip adjusts radius and sizing to match the field.",
       },
     ];
 
@@ -178,6 +185,21 @@ class storyChip extends HTMLElement {
             &nbsp;&nbsp;Videos
             <br />
             &lt;/mui-chip&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Sizes" usageLink="https://guides.muibook.com/chip">
+          <mui-h-stack slot="body" space="var(--space-200)" alignY="center">
+            <mui-chip size="x-small">X-Small</mui-chip>
+            <mui-chip size="small">Small</mui-chip>
+            <mui-chip size="medium">Medium</mui-chip>
+            <mui-chip size="large">Large</mui-chip>
+          </mui-h-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-chip size="x-small"&gt;X-Small&lt;/mui-chip&gt;<br />
+            &lt;mui-chip size="small"&gt;Small&lt;/mui-chip&gt;<br />
+            &lt;mui-chip size="medium"&gt;Medium&lt;/mui-chip&gt;<br />
+            &lt;mui-chip size="large"&gt;Large&lt;/mui-chip&gt;
           </story-code-block>
         </story-card>
 

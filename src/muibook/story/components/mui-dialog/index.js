@@ -62,6 +62,13 @@ class storyDialog extends HTMLElement {
         description: "Set the width of the dialog.",
       },
       {
+        name: "content-padding",
+        type: "string",
+        options: "none",
+        default: "",
+        description: "Set to none to remove internal content padding and allow full-bleed layouts.",
+      },
+      {
         name: "open",
         type: "boolean",
         options: "",

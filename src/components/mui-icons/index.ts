@@ -2,6 +2,7 @@
 import "./accessibility";
 import "./add";
 import "./attention";
+import "./exclamationmark";
 import "./check";
 import "./close";
 import "./down-chevron";
@@ -43,3 +44,4 @@ import "./rectangle-left-drawer";
 import "./rectangle-bottom-panel";
 import "./pin";
 import "./pin-slash";
+import "./text-below-folder";

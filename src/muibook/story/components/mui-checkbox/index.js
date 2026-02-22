@@ -29,6 +29,13 @@ class storyCheckbox extends HTMLElement {
         description: "",
       },
       {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "medium",
+        description: "Controls checkbox control and label scale.",
+      },
+      {
         name: "checked",
         type: "boolean",
         options: "checked",
@@ -141,6 +148,25 @@ class storyCheckbox extends HTMLElement {
       </story-code-block>
       </story-card>
 
+      <story-card 
+      title="Sizes"
+      description="Scale checkbox size from x-small to large."
+      usageLink="https://guides.muibook.com/checkbox"
+      >
+      <mui-v-stack slot="body" space="var(--space-200)">
+        <mui-checkbox size="x-small" checked>X-Small</mui-checkbox>
+        <mui-checkbox size="small" checked>Small</mui-checkbox>
+        <mui-checkbox size="medium" checked>Medium</mui-checkbox>
+        <mui-checkbox size="large" checked>Large</mui-checkbox>
+      </mui-v-stack>
+      <story-code-block slot="footer" scrollable>
+        &lt;mui-checkbox size="x-small" checked&gt;X-Small&lt;/mui-checkbox&gt;<br />
+        &lt;mui-checkbox size="small" checked&gt;Small&lt;/mui-checkbox&gt;<br />
+        &lt;mui-checkbox size="medium" checked&gt;Medium&lt;/mui-checkbox&gt;<br />
+        &lt;mui-checkbox size="large" checked&gt;Large&lt;/mui-checkbox&gt;
+      </story-code-block>
+      </story-card>
+
 
       <story-card 
       title="Indeterminate" 
@@ -166,14 +192,14 @@ class storyCheckbox extends HTMLElement {
       usageLink="https://guides.muibook.com/checkbox"
       > 
       <mui-h-stack slot="body">
-        <mui-checkbox disabled></mui-checkbox>
-        <mui-checkbox disabled checked></mui-checkbox>
-        <mui-checkbox disabled indeterminate></mui-checkbox>
+        <mui-checkbox disabled>Disabled</mui-checkbox>
+        <mui-checkbox disabled checked>Disabled Selected</mui-checkbox>
+        <mui-checkbox disabled indeterminate>Disabled Mixed</mui-checkbox>
       </mui-h-stack>
       <story-code-block slot="footer" scrollable>
-        &nbsp;&nbsp;&lt;mui-checkbox disabled&gt;&lt;/mui-checkbox&gt;<br />
-        &nbsp;&nbsp;&lt;mui-checkbox disabled checked&gt;&lt;/mui-checkbox&gt;<br />
-        &nbsp;&nbsp;&lt;mui-checkbox disabled indeterminate&gt;&lt;/mui-checkbox&gt;
+        &nbsp;&nbsp;&lt;mui-checkbox disabled&gt;Disabled&lt;/mui-checkbox&gt;<br />
+        &nbsp;&nbsp;&lt;mui-checkbox disabled checked&gt;Disabled Selected&lt;/mui-checkbox&gt;<br />
+        &nbsp;&nbsp;&lt;mui-checkbox disabled indeterminate&gt;Disabled Mixed&lt;/mui-checkbox&gt;
       </story-code-block>
       </story-card>
 

@@ -325,7 +325,7 @@ declare global {
       "mui-icon-up-arrow": MuiIconProps;
       "mui-icon-up-chevron": MuiIconProps;
       "mui-icon-warning": MuiIconProps;
-      "mui-icon-ellipsis": MuiIconProps;
+      "mui-icon-menu": MuiIconProps;
       "mui-icon-gear": MuiIconProps;
       "mui-icon-translate": MuiIconProps & { flip?: boolean };
 

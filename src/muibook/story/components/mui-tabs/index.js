@@ -37,7 +37,7 @@ class storyTabBar extends HTMLElement {
         default="${prop.default || ""}"
         description="${prop.description}">
       </story-type-row>
-    `
+    `,
       )
       .join("");
 
@@ -82,6 +82,27 @@ class storyTabBar extends HTMLElement {
         default: "200ms",
         description: "Adjust the timing of the tab animation",
       },
+      {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "medium",
+        description: "Controls the tab-item sizing and aligns with button action sizing.",
+      },
+      {
+        name: "full-width",
+        type: "boolean",
+        options: "full-width",
+        default: "",
+        description: "Expands the tab bar to the full width of the container.",
+      },
+      {
+        name: "variant",
+        type: "string",
+        options: "default, dots, ghost",
+        default: "default",
+        description: "Dots renders circular indicators for compact control patterns such as carousels. Ghost removes outer bar chrome while keeping active-tab styling.",
+      },
     ];
 
     const tabBarRows = propItemsTabBar
@@ -95,7 +116,7 @@ class storyTabBar extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -135,11 +156,18 @@ class storyTabBar extends HTMLElement {
         description: "Pass in text to the tab item",
       },
       {
-        name: "icon",
-        type: "string",
-        options: "mui-icon-[name]",
+        name: "slot=before",
+        type: "slot (named)",
+        options: "{mui-icon-*}, {mui-badge}, {custom}",
         default: "",
-        description: "Pass in optional icon",
+        description: "Optional leading content.",
+      },
+      {
+        name: "slot=after",
+        type: "slot (named)",
+        options: "{mui-icon-*}, {mui-badge}, {custom}",
+        default: "",
+        description: "Optional trailing content.",
       },
       {
         name: "active",
@@ -147,6 +175,13 @@ class storyTabBar extends HTMLElement {
         options: "active",
         default: "",
         description: "Set the active tab state",
+      },
+      {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "inherits from tab-bar",
+        description: "Optional override. In most cases, set size on tab-bar.",
       },
       {
         name: "id",
@@ -168,7 +203,7 @@ class storyTabBar extends HTMLElement {
               default="${prop.default || ""}"
               description="${prop.description}">
             </story-type-row>
-          `
+          `,
       )
       .join("");
 
@@ -222,7 +257,7 @@ class storyTabBar extends HTMLElement {
               default="${prop.default || ""}"
               description="${prop.description}">
             </story-type-row>
-          `
+          `,
       )
       .join("");
 
@@ -252,14 +287,14 @@ class storyTabBar extends HTMLElement {
       .join("");
 
     const tabData = [
-      { id: "item1", label: "Message", icon: "mui-icon-message", active: true },
-      { id: "item2", label: "Notification", icon: "mui-icon-notification" },
+      { id: "item1", label: "Message", active: true },
+      { id: "item2", label: "Notification" },
     ];
 
     const tabItemsHTML = tabData
-      .map(({ id, label, icon, active }) => {
+      .map(({ id, label, active }) => {
         const activeAttr = active ? " active" : "";
-        return /*html*/ `<mui-tab-item id="${id}" icon="${icon}"${activeAttr}>${label}</mui-tab-item>`;
+        return /*html*/ `<mui-tab-item id="${id}"${activeAttr}>${label}</mui-tab-item>`;
       })
       .join("");
 
@@ -371,20 +406,20 @@ class storyTabBar extends HTMLElement {
           <story-code-block slot="footer" scrollable>
             const tabData = [
             <br />
-            &nbsp;&nbsp;{ id: 'item1', label: 'Message', icon: 'mui-icon-message', active: true },
+            &nbsp;&nbsp;{ id: 'item1', label: 'Message', active: true },
             <br />
-            &nbsp;&nbsp;{ id: 'item2', label: 'Notification', icon: 'mui-icon-notification' },
+            &nbsp;&nbsp;{ id: 'item2', label: 'Notification' },
             <br />
             ];
             <br />
             <br />
             const tabItemsHTML = tabData
             <br />
-            &nbsp;&nbsp;.map(({ label, icon, active }) => {
+            &nbsp;&nbsp;.map(({ id, label, active }) => {
               <br />
             &nbsp;&nbsp;const activeAttr = active ? ' active' : '';
             <br />
-            &nbsp;&nbsp;return &#96;&lt;mui-tab-item id="&#36;{id}" icon="&#36;{icon}"&#36;{activeAttr}&gt;&#36;{label}&lt;/mui-tab-item&gt;&#96;;
+            &nbsp;&nbsp;return &#96;&lt;mui-tab-item id="&#36;{id}"&#36;{activeAttr}&gt;&#36;{label}&lt;/mui-tab-item&gt;&#96;;
             <br />
             })
             <br />
@@ -399,27 +434,199 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Default w/ Icon">
+        <story-card title="Size Variants">
+          <mui-v-stack slot="body" space="var(--space-300)">
+            <mui-tab-bar size="x-small">
+              <mui-tab-item active id="x-small-1">Overview</mui-tab-item>
+              <mui-tab-item id="x-small-2">Details</mui-tab-item>
+            </mui-tab-bar>
+            <mui-tab-bar size="small">
+              <mui-tab-item active id="small-1">Overview</mui-tab-item>
+              <mui-tab-item id="small-2">Details</mui-tab-item>
+            </mui-tab-bar>
+            <mui-tab-bar size="medium">
+              <mui-tab-item active id="medium-1">Overview</mui-tab-item>
+              <mui-tab-item id="medium-2">Details</mui-tab-item>
+            </mui-tab-bar>
+            <mui-tab-bar size="large">
+              <mui-tab-item active id="large-1">Overview</mui-tab-item>
+              <mui-tab-item id="large-2">Details</mui-tab-item>
+            </mui-tab-bar>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-tab-bar size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id="small-1"&gt;Overview&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="small-2"&gt;Details&lt;/mui-tab-item&gt;<br />
+            &lt;/mui-tab-bar&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Size Parity with Button">
+          <mui-v-stack slot="body" space="var(--space-300)">
+            <mui-h-stack alignY="center" space="var(--space-300)">
+              <mui-button size="x-small">Action</mui-button>
+              <mui-tab-bar size="x-small">
+                <mui-tab-item active id="pair-x-1">Tab One</mui-tab-item>
+                <mui-tab-item id="pair-x-2">Tab Two</mui-tab-item>
+              </mui-tab-bar>
+            </mui-h-stack>
+            <mui-h-stack alignY="center" space="var(--space-300)">
+              <mui-button size="small">Action</mui-button>
+              <mui-tab-bar size="small">
+                <mui-tab-item active id="pair-s-1">Tab One</mui-tab-item>
+                <mui-tab-item id="pair-s-2">Tab Two</mui-tab-item>
+              </mui-tab-bar>
+            </mui-h-stack>
+            <mui-h-stack alignY="center" space="var(--space-300)">
+              <mui-button size="medium">Action</mui-button>
+              <mui-tab-bar size="medium">
+                <mui-tab-item active id="pair-m-1">Tab One</mui-tab-item>
+                <mui-tab-item id="pair-m-2">Tab Two</mui-tab-item>
+              </mui-tab-bar>
+            </mui-h-stack>
+            <mui-h-stack alignY="center" space="var(--space-300)">
+              <mui-button size="large">Action</mui-button>
+              <mui-tab-bar size="large">
+                <mui-tab-item active id="pair-l-1">Tab One</mui-tab-item>
+                <mui-tab-item id="pair-l-2">Tab Two</mui-tab-item>
+              </mui-tab-bar>
+            </mui-h-stack>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-button size="small"&gt;Action&lt;/mui-button&gt;<br />
+            &lt;mui-tab-bar size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id="pair-s-1"&gt;Tab One&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="pair-s-2"&gt;Tab Two&lt;/mui-tab-item&gt;<br />
+            &lt;/mui-tab-bar&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Before and After Slots">
+          <mui-v-stack slot="body" space="var(--space-300)" alignx='start'>
+            <mui-h-stack alignY="center" space="var(--space-300)">
+              <mui-button size="x-small">
+                <mui-icon-calendar slot="before"></mui-icon-calendar>
+                Action
+                <mui-badge slot="after">Beta</mui-badge>
+              </mui-button>
+              <mui-tab-bar size="x-small">
+                <mui-tab-item active id="default-width-x-small-1">
+                  <mui-icon-message slot="before"></mui-icon-message>
+                  Inbox
+                  <mui-badge slot="after" size="x-small">2</mui-badge>
+                </mui-tab-item>
+                <mui-tab-item id="default-width-x-small-2">
+                  <mui-icon-calendar slot="before"></mui-icon-calendar>
+                  Activity
+                  <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+                </mui-tab-item>
+              </mui-tab-bar>
+            </mui-h-stack>
+
+            <mui-h-stack alignY="center" space="var(--space-300)">
+              <mui-button size="small">
+                <mui-icon-calendar slot="before"></mui-icon-calendar>
+                Action
+                <mui-badge slot="after">Beta</mui-badge>
+              </mui-button>
+              <mui-tab-bar size="small">
+                <mui-tab-item active id="default-width-small-1">
+                  <mui-icon-message slot="before"></mui-icon-message>
+                  Inbox
+                  <mui-badge slot="after" size="small">2</mui-badge>
+                </mui-tab-item>
+                <mui-tab-item id="default-width-small-2">
+                  <mui-icon-calendar slot="before"></mui-icon-calendar>
+                  Activity
+                  <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+                </mui-tab-item>
+              </mui-tab-bar>
+            </mui-h-stack>
+
+            <mui-h-stack alignY="center" space="var(--space-300)">
+              <mui-button size="medium">
+                <mui-icon-calendar slot="before"></mui-icon-calendar>
+                Action
+                <mui-badge slot="after">Beta</mui-badge>
+              </mui-button>
+              <mui-tab-bar size="medium">
+                <mui-tab-item active id="default-width-medium-1">
+                  <mui-icon-message slot="before"></mui-icon-message>
+                  Inbox
+                  <mui-badge slot="after" size="medium">2</mui-badge>
+                </mui-tab-item>
+                <mui-tab-item id="default-width-medium-2">
+                  <mui-icon-calendar slot="before"></mui-icon-calendar>
+                  Activity
+                  <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+                </mui-tab-item>
+              </mui-tab-bar>
+            </mui-h-stack>
+
+            <mui-h-stack alignY="center" space="var(--space-300)">
+              <mui-button size="large">
+                <mui-icon-calendar slot="before"></mui-icon-calendar>
+                Action
+                <mui-badge slot="after">Beta</mui-badge>
+              </mui-button>
+              <mui-tab-bar size="large">
+                <mui-tab-item active id="default-width-large-1">
+                  <mui-icon-message slot="before"></mui-icon-message>
+                  Inbox
+                  <mui-badge slot="after" size="large">2</mui-badge>
+                </mui-tab-item>
+                <mui-tab-item id="default-width-large-2">
+                  <mui-icon-calendar slot="before"></mui-icon-calendar>
+                  Activity
+                  <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+                </mui-tab-item>
+              </mui-tab-bar>
+            </mui-h-stack>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-button size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-icon-calendar slot="before"&gt;&lt;/mui-icon-calendar&gt;<br />
+            &nbsp;&nbsp;Action<br />
+            &nbsp;&nbsp;&lt;mui-badge slot="after"&gt;Beta&lt;/mui-badge&gt;<br />
+            &lt;/mui-button&gt;<br />
+            &lt;mui-tab-bar size="small"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id="default-width-small-1"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-message slot="before"&gt;&lt;/mui-icon-message&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Inbox<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge slot="after"&gt;2&lt;/mui-badge&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="default-width-small-2"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-calendar slot="before"&gt;&lt;/mui-icon-calendar&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Activity<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-right-chevron slot="after"&gt;&lt;/mui-icon-right-chevron&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-tab-item&gt;<br />
+            <br />
+            &lt;/mui-tab-bar&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Default Width">
           <mui-tab-bar slot="body">
             ${tabItemsHTML}
           </mui-tab-bar>
           <story-code-block slot="footer" scrollable>
             const tabData = [
             <br />
-            &nbsp;&nbsp;{ id: 'item1', label: 'Message', icon: 'mui-icon-message', active: true },
+            &nbsp;&nbsp;{ id: 'item1', label: 'Message', active: true },
             <br />
-            &nbsp;&nbsp;{ id: 'item2', label: 'Notification', icon: 'mui-icon-notification' },
+            &nbsp;&nbsp;{ id: 'item2', label: 'Notification' },
             <br />
             ];
             <br />
             <br />
             const tabItemsHTML = tabData
             <br />
-            &nbsp;&nbsp;.map(({ label, icon, active }) => {
+            &nbsp;&nbsp;.map(({ id, label, active }) => {
               <br />
             &nbsp;&nbsp;const activeAttr = active ? ' active' : '';
             <br />
-            &nbsp;&nbsp;return &#96;&lt;mui-tab-item id="&#36;{id}" icon="&#36;{icon}"&#36;{activeAttr}&gt;&#36;{label}&lt;/mui-tab-item&gt;&#96;;
+            &nbsp;&nbsp;return &#96;&lt;mui-tab-item id="&#36;{id}"&#36;{activeAttr}&gt;&#36;{label}&lt;/mui-tab-item&gt;&#96;;
             <br />
             })
             <br />
@@ -434,6 +641,36 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card title="Dots Variant">
+          <mui-tab-bar slot="body" variant="dots">
+            <mui-tab-item active id="dots-1">Slide 1</mui-tab-item>
+            <mui-tab-item id="dots-2">Slide 2</mui-tab-item>
+            <mui-tab-item id="dots-3">Slide 3</mui-tab-item>
+          </mui-tab-bar>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-tab-bar variant="dots"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id="dots-1"&gt;Slide 1&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="dots-2"&gt;Slide 2&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="dots-3"&gt;Slide 3&lt;/mui-tab-item&gt;<br />
+            &lt;/mui-tab-bar&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Ghost Variant">
+          <mui-tab-bar slot="body" variant="ghost">
+            <mui-tab-item active id="ghost-1">Overview</mui-tab-item>
+            <mui-tab-item id="ghost-2">Activity</mui-tab-item>
+            <mui-tab-item id="ghost-3">Settings</mui-tab-item>
+          </mui-tab-bar>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-tab-bar variant="ghost"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id="ghost-1"&gt;Overview&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="ghost-2"&gt;Activity&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="ghost-3"&gt;Settings&lt;/mui-tab-item&gt;<br />
+            &lt;/mui-tab-bar&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card title="Full width">
           <mui-tab-bar full-width slot="body">
             ${tabItemsHTML}
@@ -442,20 +679,20 @@ class storyTabBar extends HTMLElement {
           <story-code-block slot="footer" scrollable>
             const tabData = [
             <br />
-            &nbsp;&nbsp;{ id: 'item1', label: 'Message', icon: 'mui-icon-message', active: true },
+            &nbsp;&nbsp;{ id: 'item1', label: 'Message', active: true },
             <br />
-            &nbsp;&nbsp;{ id: 'item2', label: 'Notification', icon: 'mui-icon-notification' },
+            &nbsp;&nbsp;{ id: 'item2', label: 'Notification' },
             <br />
             ];
             <br />
             <br />
             const tabItemsHTML = tabData
             <br />
-            &nbsp;&nbsp;.map(({ label, icon, active }) => {
+            &nbsp;&nbsp;.map(({ id, label, active }) => {
               <br />
             &nbsp;&nbsp;const activeAttr = active ? ' active' : '';
             <br />
-            &nbsp;&nbsp;return &#96;&lt;mui-tab-item id="&#36;{id}" icon="&#36;{icon}"&#36;{activeAttr}&gt;&#36;{label}&lt;/mui-tab-item&gt;&#96;;
+            &nbsp;&nbsp;return &#96;&lt;mui-tab-item id="&#36;{id}"&#36;{activeAttr}&gt;&#36;{label}&lt;/mui-tab-item&gt;&#96;;
             <br />
             })
             <br />

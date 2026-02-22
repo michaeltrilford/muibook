@@ -1133,21 +1133,12 @@ class storyAccordion extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
       >
-        <mui-message heading="Quicklinks" slot="message">
-          <mui-h-stack class="token-item-menu" alignY="center" style="padding-bottom: var(--space-100);">
-            <mui-link size="small" data-scroll-link="accordion-inline">Inline</mui-link>
-            <mui-link size="small" data-scroll-link="accordion-group-and-block">Group & Block</mui-link>
-            <mui-link size="small" data-scroll-link="accordion-group-and-block-exclusive">Group & Block: Exclusive</mui-link>
-            <mui-link size="small" data-scroll-link="tab-behaviour-button">Tab Behaviour: Button</mui-link>
-            <mui-link size="small" data-scroll-link="tab-behaviour-link">Tab Behaviour: Link</mui-link>
-            <mui-link size="small" data-scroll-link="detail-space-none">Detail Space: None</mui-link>
-            <mui-link size="small" data-scroll-link="card-accordion">Card: Accordion</mui-link>
-            <mui-link size="small" data-scroll-link="card-header-accordion">Card Header: Accordion</mui-link>
-            <mui-link size="small" data-scroll-link="accordion-slat-detect">Accordion: Slat Detection</mui-link>
-            <mui-link size="small" data-scroll-link="card-slat-detect">Card: Slat Detection</mui-link>   
-            <mui-link size="small" data-scroll-link="accordion-core">Accordion Core</mui-link>              
-          </mui-h-stack>
-        </mui-message>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          limit="10"
+          links="accordion-inline::Inline|||accordion-group-and-block::Group & Block|||accordion-group-and-block-exclusive::Group & Block: Exclusive|||tab-behaviour-button::Tab Behaviour: Button|||tab-behaviour-link::Tab Behaviour: Link|||detail-space-none::Detail Space: None|||card-accordion::Card: Accordion|||card-header-accordion::Card Header: Accordion|||accordion-slat-detect::Accordion: Slat Detection|||card-slat-detect::Card: Slat Detection|||accordion-core::Accordion Core"
+        ></story-quicklinks>
 
 
         ${stories}

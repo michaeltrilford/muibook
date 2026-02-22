@@ -121,6 +121,7 @@ class appNavbar extends HTMLElement {
         <mui-body weight="bold">React Helpers</mui-body>
         <app-navbar-link link="#/typed-elements" title="Typed Elements"></app-navbar-link>
         <app-navbar-link link="#/wrapped-components" title="Wrapped Components"></app-navbar-link>
+        <app-navbar-link link="#/react-input-helper" title="Input Helper"></app-navbar-link>
         <mui-body weight="bold">AI Agent</mui-body>
         <app-navbar-link link="#/keywords" title="Keywords"></app-navbar-link>
         <app-navbar-link link="#/prompts" title="Prompts"></app-navbar-link>
@@ -148,13 +149,24 @@ class appNavbar extends HTMLElement {
 
     const Components = /*html*/ `
       <app-navbar-group id="web-components" groupname="Components">
+        <mui-body class="first" weight="bold">Prompts</mui-body>
+        <app-navbar-link link="#/prompt" title="Prompt"></app-navbar-link>
+        <app-navbar-link link="#/prompt-message" title="Prompt Message"></app-navbar-link>
+        <app-navbar-link link="#/prompt-preview" title="Prompt Preview"></app-navbar-link>
       
-        <mui-body class="first" weight="bold">Inputs</mui-body>
+        <mui-body weight="bold">Inputs</mui-body>
         <app-navbar-link link="#/addon" title="Add On"></app-navbar-link>   
         <app-navbar-link link="#/checkbox" title="Checkbox"></app-navbar-link>  
+        <app-navbar-link link="#/radio" title="Radio"></app-navbar-link>  
         <app-navbar-link link="#/field" title="Field"></app-navbar-link> 
+        <app-navbar-link link="#/hint" title="Hint"></app-navbar-link>
+        <app-navbar-link link="#/form-group" title="Form Group"></app-navbar-link>
+        <app-navbar-link link="#/form-section" title="Form Section"></app-navbar-link>
+        <app-navbar-link link="#/form-hint" title="Form Hint"></app-navbar-link>
         <app-navbar-link link="#/file-upload" title="File Upload"></app-navbar-link> 
         <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
+        <app-navbar-link link="#/chip-input" title="Chip Input"></app-navbar-link>
+        <app-navbar-link link="#/textarea" title="Textarea"></app-navbar-link>
         <app-navbar-link link="#/progress" title="Progress"></app-navbar-link>  
         <app-navbar-link link="#/select" title="Select"></app-navbar-link>  
         <app-navbar-link link="#/switch" title="Switch"></app-navbar-link>
@@ -164,6 +176,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/heading" title="Heading"></app-navbar-link>
         <app-navbar-link link="#/body" title="Body"></app-navbar-link>
         <app-navbar-link link="#/code" title="Code"></app-navbar-link>
+        <app-navbar-link link="#/markdown" title="Markdown"></app-navbar-link>
         <app-navbar-link link="#/dialog" title="Dialog"></app-navbar-link>
         <app-navbar-link link="#/drawer" title="Drawer"></app-navbar-link>
         <app-navbar-link link="#/quote" title="Quote"></app-navbar-link>

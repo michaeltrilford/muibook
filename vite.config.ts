@@ -3,6 +3,15 @@ import { defineConfig } from "vite";
 import path from "path";
 
 export default defineConfig({
+  server: {
+    port: 12000,
+    strictPort: true,
+    hmr: {
+      host: "localhost",
+      port: 12000,
+      protocol: "ws",
+    },
+  },
   build: {
     lib: {
       entry: {
@@ -44,8 +53,17 @@ export default defineConfig({
         "components/mui-carousel/panel": path.resolve(__dirname, "src/components/mui-carousel/panel"),
         // CODE
         "components/mui-code": path.resolve(__dirname, "src/components/mui-code/index.ts"),
+        // MARKDOWN
+        "components/mui-markdown": path.resolve(__dirname, "src/components/mui-markdown"),
         "components/mui-container": path.resolve(__dirname, "src/components/mui-container"),
         "components/mui-field": path.resolve(__dirname, "src/components/mui-field"),
+        "components/mui-form-section": path.resolve(__dirname, "src/components/mui-form-section"),
+        "components/mui-form-group": path.resolve(__dirname, "src/components/mui-form-group"),
+        "components/mui-form-hint": path.resolve(__dirname, "src/components/mui-form-hint"),
+        "components/mui-hint": path.resolve(__dirname, "src/components/mui-hint"),
+        "components/mui-prompt": path.resolve(__dirname, "src/components/mui-prompt"),
+        "components/mui-prompt-message": path.resolve(__dirname, "src/components/mui-prompt-message"),
+        "components/mui-prompt-preview": path.resolve(__dirname, "src/components/mui-prompt-preview"),
         "components/mui-file-upload": path.resolve(__dirname, "src/components/mui-file-upload"),
         "components/mui-grid": path.resolve(__dirname, "src/components/mui-grid"),
         "components/mui-heading": path.resolve(__dirname, "src/components/mui-heading"),
@@ -58,6 +76,7 @@ export default defineConfig({
         "components/mui-icons/ai": path.resolve(__dirname, "src/components/mui-icons/ai.ts"),
         "components/mui-icons/accessibility": path.resolve(__dirname, "src/components/mui-icons/accessibility.ts"),
         "components/mui-icons/attention": path.resolve(__dirname, "src/components/mui-icons/attention.ts"),
+        "components/mui-icons/exclamationmark": path.resolve(__dirname, "src/components/mui-icons/exclamationmark.ts"),
         "components/mui-icons/add": path.resolve(__dirname, "src/components/mui-icons/add.ts"),
         "components/mui-icons/check": path.resolve(__dirname, "src/components/mui-icons/check.ts"),
         "components/mui-icons/close": path.resolve(__dirname, "src/components/mui-icons/close.ts"),
@@ -123,14 +142,25 @@ export default defineConfig({
         ),
         "components/mui-icons/pin": path.resolve(__dirname, "src/components/mui-icons/pin.ts"),
         "components/mui-icons/pin-slash": path.resolve(__dirname, "src/components/mui-icons/pin-slash.ts"),
+        "components/mui-icons/text-below-folder": path.resolve(
+          __dirname,
+          "src/components/mui-icons/text-below-folder.ts"
+        ),
         // AVATAR
         "components/mui-avatar": path.resolve(__dirname, "src/components/mui-avatar"),
         // IMAGE
         "components/mui-image": path.resolve(__dirname, "src/components/mui-image"),
         // INPUT
         "components/mui-input": path.resolve(__dirname, "src/components/mui-input"),
+        // CHIP INPUT
+        "components/mui-chip-input": path.resolve(__dirname, "src/components/mui-chip-input"),
+        // TEXTAREA
+        "components/mui-textarea": path.resolve(__dirname, "src/components/mui-textarea"),
         // CHECKBOX
         "components/mui-checkbox": path.resolve(__dirname, "src/components/mui-checkbox"),
+        // RADIO
+        "components/mui-radio": path.resolve(__dirname, "src/components/mui-radio"),
+        "components/mui-radio-group": path.resolve(__dirname, "src/components/mui-radio-group"),
         // LINK
         "components/mui-link": path.resolve(__dirname, "src/components/mui-link"),
         // LIST
@@ -139,6 +169,7 @@ export default defineConfig({
         "components/mui-list/list": path.resolve(__dirname, "src/components/mui-list/list"),
         // LOADING
         "components/mui-loader": path.resolve(__dirname, "src/components/mui-loader"),
+        "components/mui-spinner": path.resolve(__dirname, "src/components/mui-spinner"),
         // Message
         "components/mui-message": path.resolve(__dirname, "src/components/mui-message"),
         // PROGRESS

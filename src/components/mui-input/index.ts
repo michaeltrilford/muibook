@@ -1,6 +1,20 @@
 class MuiInput extends HTMLElement {
   static get observedAttributes() {
-    return ["type", "name", "value", "placeholder", "id", "label", "disabled", "hide-label", "variant"];
+    return [
+      "type",
+      "name",
+      "value",
+      "placeholder",
+      "id",
+      "label",
+      "disabled",
+      "hide-label",
+      "variant",
+      "optional",
+      "max-length",
+      "size",
+      "slot-layout",
+    ];
   }
 
   _changeHandler?: (e: Event) => void;
@@ -11,6 +25,7 @@ class MuiInput extends HTMLElement {
   }
 
   connectedCallback() {
+    if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.render();
     this.setupListener();
   }
@@ -26,6 +41,7 @@ class MuiInput extends HTMLElement {
 
     if (name === "value") {
       inputEl.value = newValue ?? "";
+      this.updateCharacterCount();
       return;
     }
 
@@ -38,7 +54,11 @@ class MuiInput extends HTMLElement {
       return;
     }
 
-    if (["type", "placeholder", "label", "hide-label", "variant"].includes(name)) {
+    if (
+      ["type", "placeholder", "label", "hide-label", "variant", "optional", "max-length", "size", "slot-layout"].includes(
+        name
+      )
+    ) {
       this.render();
       this.setupListener();
     }
@@ -77,17 +97,31 @@ class MuiInput extends HTMLElement {
 
       this.dispatchEvent(new CustomEvent("change", eventDetail));
       this.dispatchEvent(new CustomEvent("input", eventDetail));
+      this.updateCharacterCount();
     };
 
     // Attach listeners
     inputEl.addEventListener("change", this._changeHandler);
     inputEl.addEventListener("input", this._changeHandler);
+    this.updateCharacterCount();
+  }
+
+  updateCharacterCount() {
+    const inputEl = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
+    const countEl = this.shadowRoot?.querySelector(".char-count") as HTMLElement | null;
+    if (!inputEl || !countEl || inputEl.maxLength <= 0) return;
+    countEl.textContent = `${inputEl.value.length}/${inputEl.maxLength}`;
   }
 
   updateSlottedButtons(): void {
     requestAnimationFrame(() => {
+      const size = this.getAttribute("size") || "medium";
+      const allowedSizes = ["x-small", "small", "medium", "large"];
+      const normalizedSize = allowedSizes.includes(size) ? size : "medium";
+
       const beforeSlot = this.shadowRoot?.querySelector('slot[name="before"]') as HTMLSlotElement | null;
       const afterSlot = this.shadowRoot?.querySelector('slot[name="after"]') as HTMLSlotElement | null;
+      const hintSlot = this.shadowRoot?.querySelector('slot[name="hint"]') as HTMLSlotElement | null;
 
       const updateButtonsInSlot = (slot: HTMLSlotElement | null) => {
         if (!slot) return;
@@ -100,12 +134,17 @@ class MuiInput extends HTMLElement {
             if (tagName === "mui-button" || tagName === "mui-link") {
               // Set usage attribute to 'input'
               el.setAttribute("usage", "input");
-              // Enforce size to 'medium'
-              el.setAttribute("size", "medium");
+              // Keep add-on controls aligned with input size.
+              el.setAttribute("size", normalizedSize);
               // Remove variant attribute completely
               el.removeAttribute("variant");
               // Remove weight attribute completely
               el.removeAttribute("weight");
+            }
+            if (tagName === "mui-chip") {
+              // Keep chip aligned with input affordance sizing.
+              el.setAttribute("usage", "input");
+              el.setAttribute("size", normalizedSize);
             }
           }
         });
@@ -113,11 +152,53 @@ class MuiInput extends HTMLElement {
 
       updateButtonsInSlot(beforeSlot);
       updateButtonsInSlot(afterSlot);
+
+      if (hintSlot) {
+        const hintIconSizeMap: Record<string, string> = {
+          "x-small": "xx-small",
+          small: "x-small",
+          medium: "x-small",
+          large: "small",
+        };
+        const hintBadgeSizeMap: Record<string, string> = {
+          "x-small": "x-small",
+          small: "x-small",
+          medium: "small",
+          large: "medium",
+        };
+        const iconSize = hintIconSizeMap[normalizedSize] || "x-small";
+        const badgeSize = hintBadgeSizeMap[normalizedSize] || "small";
+        hintSlot.assignedNodes({ flatten: true }).forEach((node: Node) => {
+          if (node.nodeType !== Node.ELEMENT_NODE) return;
+          const el = node as HTMLElement;
+          const tagName = el.tagName.toLowerCase();
+          if (tagName.startsWith("mui-icon-") && !el.hasAttribute("size")) {
+            el.setAttribute("size", iconSize);
+          }
+          if (tagName === "mui-badge" && !el.hasAttribute("size")) {
+            el.setAttribute("size", badgeSize);
+          }
+          el.setAttribute("aria-hidden", "true");
+        });
+      }
     });
   }
 
   render() {
-    const allowedTypes = ["text", "password", "email", "number", "search", "tel", "url", "date", "time"];
+    const allowedTypes = [
+      "text",
+      "password",
+      "email",
+      "number",
+      "search",
+      "tel",
+      "url",
+      "date",
+      "time",
+      "datetime-local",
+      "month",
+      "week",
+    ];
 
     const rawType = this.getAttribute("type") || "text";
     const type = allowedTypes.includes(rawType) ? rawType : "text";
@@ -130,23 +211,44 @@ class MuiInput extends HTMLElement {
         .toString(36)
         .substr(2, 9)}`;
     const label = this.getAttribute("label") || "";
+    const optional = this.hasAttribute("optional");
     const hideLabel = this.hasAttribute("hide-label");
     const disabled = this.hasAttribute("disabled");
     const ariaLabel = hideLabel && label ? `aria-label="${label}"` : "";
+    const maxLengthRaw = this.getAttribute("max-length");
+    const maxLength = maxLengthRaw && Number(maxLengthRaw) > 0 ? String(Number(maxLengthRaw)) : "";
+    const size = this.getAttribute("size") || "medium";
+    const allowedSizes = ["x-small", "small", "medium", "large"];
+    const normalizedSize = allowedSizes.includes(size) ? size : "medium";
 
     const variant = this.getAttribute("variant") || "";
     const variantClass = variant ? variant : "";
+    const slotLayout = this.getAttribute("slot-layout") || "inline";
+    const wrapperClass = slotLayout === "stack-mobile" ? "input-wrapper stack-mobile" : "input-wrapper";
 
     // ADD-ON
     const hasBefore = this.querySelector('[slot="before"]') !== null;
     const hasAfter = this.querySelector('[slot="after"]') !== null;
-    const inputClasses = [variantClass, hasBefore ? "before" : "", hasAfter ? "after" : ""].filter(Boolean).join(" ");
+    const hasHint = this.querySelector('[slot="hint"]') !== null;
+    const inputClasses = [variantClass, hasBefore ? "before" : "", hasAfter ? "after" : "", hasHint ? "hint" : ""]
+      .filter(Boolean)
+      .join(" ");
 
     const html = /*html*/ `
       <style>
         :host {
           display: inline-block;
           width: 100%;
+          container-type: inline-size;
+        }
+        :host([type="date"]),
+        :host([type="time"]),
+        :host([type="datetime-local"]),
+        :host([type="month"]),
+        :host([type="week"]),
+        :host([type="number"]),
+        :host([type="search"]) {
+          color-scheme: light dark;
         }
         label {
           display: block;
@@ -155,13 +257,153 @@ class MuiInput extends HTMLElement {
           margin-bottom: var(--space-100);
           color: var(--text-color);
         }
+        .label-with-optional {
+          display: flex;
+          align-items: center;
+          gap: var(--space-100);
+        }
         .input-wrapper {
           display: flex;
           width: 100%;
+          align-items: stretch;
+          position: relative;
+        }
+        .input-wrapper.stack-mobile {
+          display: flex;
+        }
+        .before-slot,
+        .after-slot,
+        .hint-slot {
+          display: inline-flex;
+          align-items: stretch;
+          gap: var(--space-050);
+          flex-wrap: var(--input-slot-wrap, nowrap);
+          overflow-x: var(--input-slot-overflow-x, visible);
+          overflow-y: var(--input-slot-overflow-y, visible);
+          scrollbar-width: thin;
+          flex: 0 1 auto;
+        }
+        .hint-slot {
+          position: absolute;
+          right: var(--space-300);
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 1;
+          pointer-events: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-color-optional);
+          gap: var(--space-100);
+          overflow: visible;
+          flex: 0 0 auto;
+        }
+        :host([size="x-small"]) .hint-slot {
+          right: var(--space-200);
+        }
+        :host([size="small"]) .hint-slot {
+          right: var(--space-300);
+        }
+        :host([size="large"]) .hint-slot {
+          right: var(--space-400);
+        }
+        .before-slot {
+          max-width: none;
+        }
+        .after-slot {
+          max-width: none;
+        }
+        @container (min-width: 20rem) {
+          .before-slot {
+            max-width: var(--input-before-slot-max-width, 50%);
+          }
+          .after-slot {
+            max-width: var(--input-after-slot-max-width, 50%);
+          }
+        }
+        .input-wrapper.stack-mobile {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr);
+          gap: var(--space-000);
+        }
+        .input-wrapper.stack-mobile .before-slot,
+        .input-wrapper.stack-mobile .after-slot {
+          display: flex;
+          max-width: 100%;
+          width: 100%;
+          flex: 1 1 auto;
+          overflow-x: visible;
+          overflow-y: visible;
+        }
+        .input-wrapper.stack-mobile .hint-slot {
+          right: var(--space-200);
+          top: calc(var(--action-icon-only-size) / 2);
+          transform: translateY(-50%);
+        }
+        .input-wrapper.stack-mobile slot[name="before"]::slotted(mui-addon),
+        .input-wrapper.stack-mobile slot[name="after"]::slotted(mui-addon) {
+          width: 100%;
+        }
+        .input-wrapper.stack-mobile .before-slot {
+          grid-row: 1;
+        }
+        .input-wrapper.stack-mobile input {
+          grid-row: 2;
+        }
+        .input-wrapper.stack-mobile .after-slot {
+          grid-row: 3;
+        }
+        .input-wrapper.stack-mobile input.before:not(.after) {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          border-bottom-left-radius: var(--radius-100);
+          border-bottom-right-radius: var(--radius-100);
+        }
+        .input-wrapper.stack-mobile input.after:not(.before) {
+          border-top-left-radius: var(--radius-100);
+          border-top-right-radius: var(--radius-100);
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+        .input-wrapper.stack-mobile input.before.after {
+          border-radius: 0;
+        }
+        .meta {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: var(--space-100);
+          min-height: 1.8rem;
+        }
+        .char-count {
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+          color: var(--text-color);
+          opacity: 0.7;
+        }
+        .optional {
+          color: var(--text-color-optional);
+          display: inline-flex;
+          align-items: center;
+          gap: var(--space-050);
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+          text-transform: uppercase;
+          font-weight: var(--font-weight-medium);
+        }
+        .optional-dot {
+          display: inline-flex;
+          align-items: center;
+          line-height: 1;
+        }
+        .optional-text {
+          display: inline-flex;
+          align-items: center;
         }
         input {
           min-height: 4.4rem;
-          width: 100%;
+          width: auto;
+          min-width: 0;
+          flex: 1 1 auto;
           line-height: var(--text-line-height);
           padding: var(--space-200) var(--space-300);
           box-sizing: border-box;
@@ -171,6 +413,42 @@ class MuiInput extends HTMLElement {
           border-color: var(--form-default-border-color);
           color: var(--form-default-text-color);
           background: var(--input-background);
+        }
+        input.size-x-small {
+          min-height: var(--action-icon-only-size-x-small);
+          padding: var(--action-padding-x-small);
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+        }
+        input.size-x-small.hint:not(.after) {
+          padding-right: calc(var(--space-500) + var(--space-200));
+        }
+        input.size-small {
+          min-height: var(--action-icon-only-size-small);
+          padding: var(--action-padding-small);
+          font-size: var(--text-font-size-s);
+          line-height: var(--text-line-height-s);
+        }
+        input.size-small.hint:not(.after) {
+          padding-right: calc(var(--space-500) + var(--space-300));
+        }
+        input.size-medium {
+          min-height: 4.4rem;
+          padding: var(--space-200) var(--space-300);
+          font-size: var(--text-font-size);
+          line-height: var(--text-line-height);
+        }
+        input.size-medium.hint:not(.after) {
+          padding-right: calc(var(--space-600) + var(--space-300));
+        }
+        input.size-large {
+          min-height: var(--action-icon-only-size-large);
+          padding: var(--space-300) var(--space-400);
+          font-size: var(--text-font-size-l);
+          line-height: var(--text-line-height-l);
+        }
+        input.size-large.hint:not(.after) {
+          padding-right: calc(var(--space-700) + var(--space-300));
         }
         input:hover {
           border-color: var(--form-default-border-color-hover);
@@ -184,6 +462,7 @@ class MuiInput extends HTMLElement {
           cursor: not-allowed;
           background-color: var(--input-background-disabled);
         }
+
         input.success {
           color: var(--form-success-text-color);
           border-color: var(--form-success-border-color);
@@ -306,26 +585,49 @@ class MuiInput extends HTMLElement {
         /* Slotted items */
         slot[name="before"]::slotted(*),
         slot[name="after"]::slotted(*) { flex: none; }
+        slot[name="hint"]::slotted(*) {
+          flex: none;
+          pointer-events: none;
+        }
 
         /* ========================================================================== */
         
 
       </style>
-      ${label ? `<label for="${id}" class="${hideLabel ? "vh" : ""}">${label}</label>` : ""}
-    <div class="input-wrapper">
-      <slot name="before"></slot>
+      ${
+        label
+          ? `<label for="${id}" class="${[hideLabel ? "vh" : "", optional ? "label-with-optional" : ""]
+              .filter(Boolean)
+              .join(" ")}">${label}${
+              optional
+                ? ' <span class="optional"><span class="optional-dot" aria-hidden="true">•</span><span class="optional-text">Optional</span></span>'
+                : ""
+            }</label>`
+          : ""
+      }
+    <div class="${wrapperClass}">
+      <div class="before-slot">
+        <slot name="before"></slot>
+      </div>
       <input
-        class="${inputClasses}"
+        class="${[inputClasses, `size-${normalizedSize}`].filter(Boolean).join(" ")}"
         type="${type}"
         name="${name}"
         id="${id}"
         value="${value}"
         placeholder="${placeholder}"
         ${disabled ? 'disabled aria-disabled="true"' : ""}
+        ${maxLength ? `maxlength="${maxLength}"` : ""}
         ${ariaLabel}
       />
-      <slot name="after"></slot>
+      <div class="hint-slot">
+        <slot name="hint"></slot>
+      </div>
+      <div class="after-slot">
+        <slot name="after"></slot>
+      </div>
     </div>
+    ${maxLength ? '<div class="meta"><span class="char-count"></span></div>' : ""}
     `;
 
     if (this.shadowRoot) {

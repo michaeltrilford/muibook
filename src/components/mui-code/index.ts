@@ -1,7 +1,7 @@
 /* Mui Code */
 class MuiCode extends HTMLElement {
   static get observedAttributes() {
-    return ["size", "scrollable"];
+    return ["size", "scrollable", "wrap"];
   }
 
   constructor() {
@@ -24,6 +24,7 @@ class MuiCode extends HTMLElement {
     if (!this.shadowRoot) return;
 
     const isScrollable = this.hasAttribute("scrollable");
+    const isWrap = this.hasAttribute("wrap");
 
     const styles = /*css*/ `
       :host {
@@ -54,13 +55,15 @@ class MuiCode extends HTMLElement {
         padding: var(--space-400) var(--space-500);
         box-sizing: border-box;
         width: 100%;
-        overflow-x: ${isScrollable ? "auto" : "visible"};
-        white-space: ${isScrollable ? "nowrap" : "wrap"};
+        overflow-x: ${isWrap ? "hidden" : isScrollable ? "auto" : "visible"};
+        white-space: ${isWrap ? "pre-wrap" : isScrollable ? "nowrap" : "normal"};
+        overflow-wrap: ${isWrap ? "anywhere" : "normal"};
+        word-break: ${isWrap ? "break-word" : "normal"};
       }
 
       code:focus-visible {
-        outline: ${isScrollable ? "var(--outline-thick)" : "none"};
-        outline-offset: ${isScrollable ? "calc(-1 * var(--stroke-size-500))" : "none"};
+        outline: ${isScrollable && !isWrap ? "var(--outline-thick)" : "none"};
+        outline-offset: ${isScrollable && !isWrap ? "calc(-1 * var(--stroke-size-500))" : "none"};
       }
 
       @media (min-width: 600px) {

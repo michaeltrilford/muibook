@@ -36,6 +36,13 @@ class storyCode extends HTMLElement {
         default: "",
         description: "Ensure the content is horizontally scrollable.",
       },
+      {
+        name: "wrap",
+        type: "boolean",
+        options: "wrap",
+        default: "",
+        description: "Enable wrapped code/content for long payload readability.",
+      },
     ];
 
     const rows = propItems
@@ -156,6 +163,17 @@ class storyCode extends HTMLElement {
           </div>
           <story-code-block slot="footer" scrollable>
             &lt;mui-code size="large" scrollable&gt;...&lt;/mui-code&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Wrap">
+          <div slot="body">
+            <mui-code size="small" wrap>
+              {"source":"crm","query":"CSAT by feature","range":"Q4","include":["pain_points","sentiment","churn_drivers","top_requests"]}
+            </mui-code>
+          </div>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-code size="small" wrap&gt;...&lt;/mui-code&gt;
           </story-code-block>
         </story-card>
 

@@ -21,7 +21,7 @@ export const muiDocs: MuiDocs = {
         "Ideal for initial page loads, content transitions, or skeleton screens while data is fetching.",
         "Applied to pages or key components for seamless load transitions.",
         "Works seamlessly with other MUI components and layouts without additional setup.",
-        "Used with skeletons, spinners, or other feedback to improve perceived performance.",
+        "Use with Mui Spinner, skeletons, or other feedback to improve perceived performance.",
       ],
     },
 
@@ -119,8 +119,8 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         {
-          name: "",
-          link: "",
+          name: "Spinner",
+          link: "https://guides.muibook.com/loader",
         },
       ],
     },

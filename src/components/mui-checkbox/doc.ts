@@ -17,7 +17,9 @@ export const muiDocs: MuiDocs = {
     guides: ["https://guides.muibook.com/checkbox"],
 
     usage: {
-      list: [""],
+      list: [
+        "Use size='x-small|small|medium|large' to scale checkbox controls with surrounding form content.",
+      ],
     },
 
     accessibility: {

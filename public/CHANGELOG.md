@@ -8,15 +8,15 @@
 
 ### Added
 
-- None
+- [None]
 
 ### Changed
 
-- None
+- [None]
 
 ### Fixed
 
-- Fixed AI icon
+- Fixed AI icon.
 
 ---
 

@@ -59,6 +59,10 @@ class MuiDialog extends HTMLElement {
         padding: var(--space-500);
       }
 
+      :host([content-padding="none"]) .content {
+        padding: var(--space-000);
+      }
+
       .actions {
         display: flex;
         justify-content: flex-end;

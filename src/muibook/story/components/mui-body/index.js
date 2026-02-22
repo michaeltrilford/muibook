@@ -11,10 +11,6 @@ class storyBody extends HTMLElement {
 
     const styles = /*css*/ `
       :host { display: block; }
-
-      mui-body.part-example::part(gap) { gap: var(--space-100); }
-      mui-body.part-example::part(align-items) {align-items: center; }
-      mui-body.part-example::part(display) { display: flex; }
     `;
 
     const propItems = [
@@ -22,9 +18,23 @@ class storyBody extends HTMLElement {
         name: "slot",
         required: true,
         type: "string",
-        options: "{text}, mui-icon-[name]",
+        options: "{text}",
         default: "(required)",
         description: "Content for the body element.",
+      },
+      {
+        name: "slot=&#8220;before&#8221;",
+        type: "slot (named)",
+        options: "mui-icon-[name], mui-badge",
+        default: "",
+        description: "Places content before the body text.",
+      },
+      {
+        name: "slot=&#8220;after&#8221;",
+        type: "slot (named)",
+        options: "mui-icon-[name], mui-badge",
+        default: "",
+        description: "Places content after the body text.",
       },
       {
         name: "size",
@@ -60,14 +70,6 @@ class storyBody extends HTMLElement {
         options: "Valid CSS",
         default: "",
         description: "You are able to use add a classname to add layout based CSS to the host element.",
-      },
-      {
-        name: "part",
-        type: "CSS",
-        options: "mui-body::part(gap)",
-        default: "",
-        description:
-          "Controlled trust-based customisation for modifying internal aspects of a body text. <mui-link href='/#/spacing-part-selectors' size='x-small'>Learn more</mui-link>",
       },
     ];
 
@@ -211,61 +213,62 @@ class storyBody extends HTMLElement {
 
           </story-card>
 
-          <story-card title="Part Selectors" description="This approach extends the mui-body element using the part selector to support validation messaging within the field component.">
+          <story-card title="Before and After Slots" description="Compose icons and inline helpers without part-selector styling.">
 
             <div slot="body">
               <mui-v-stack space="var(--space-500)">
                 <div>
-                  <mui-heading size="4" style="margin-bottom: var(--space-200)">Success w/ Icon</mui-heading>
-                  <mui-body class="part-example" variant="success"><mui-icon-check></mui-icon-check>Risus Mollis Dapibus</mui-body>
+                  <mui-heading size="4" style="margin-bottom: var(--space-200)">X-Small</mui-heading>
+                  <mui-body size="x-small" variant="success"><mui-icon-check slot="before"></mui-icon-check>Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
-                  <mui-heading size="4" style="margin-bottom: var(--space-200)">Warning w/ Icon</mui-heading>
-                  <mui-body class="part-example" variant="warning"><mui-icon-warning></mui-icon-warning>Risus Mollis Dapibus</mui-body>
+                  <mui-heading size="4" style="margin-bottom: var(--space-200)">Small</mui-heading>
+                  <mui-body size="small" variant="warning"><mui-icon-warning slot="before"></mui-icon-warning>Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
-                  <mui-heading size="4" style="margin-bottom: var(--space-200)">Error w/ Icon</mui-heading>
-                  <mui-body class="part-example" variant="error"><mui-icon-attention></mui-icon-attention>Risus Mollis Dapibus</mui-body>
+                  <mui-heading size="4" style="margin-bottom: var(--space-200)">Medium</mui-heading>
+                  <mui-body size="medium" variant="error"><mui-icon-attention slot="before"></mui-icon-attention>Risus Mollis Dapibus</mui-body>
+                </div>
+                <div>
+                  <mui-heading size="4" style="margin-bottom: var(--space-200)">Large (After Slot)</mui-heading>
+                  <mui-body size="large">Risus Mollis Dapibus<mui-icon-right-chevron slot="after"></mui-icon-right-chevron></mui-body>
                 </div>
               </mui-v-stack>
             </div>
 
             <story-code-block slot="footer" scrollable>
-
-              &lt;style&gt;
-                <br>
-                &nbsp;&nbsp;mui-body::part(gap) { gap: var(--space-100); }
-                <br>
-                &nbsp;&nbsp;mui-body::part(align-items) {align-items: center; }
-                <br>
-                &nbsp;&nbsp;mui-body::part(display) { display: flex; }
-                <br>
-              &lt;/style&gt;
+              &lt;mui-body size="x-small" variant="success"&gt;
               <br>
-              <br>
-              &lt;mui-body variant="success"&gt;
-              <br>
-              &nbsp;&nbsp;&lt;mui-icon-check&gt;&lt;/mui-icon-check&gt;
+              &nbsp;&nbsp;&lt;mui-icon-check slot=&quot;before&quot;&gt;&lt;/mui-icon-check&gt;
               <br>
               &nbsp;&nbsp;{text}
               <br>
               &lt;/mui-body&gt;
               <br />
               <br>
-              &lt;mui-body variant="warning"&gt;
+              &lt;mui-body size="small" variant="warning"&gt;
               <br>
-              &nbsp;&nbsp;&lt;mui-icon-warningk&gt;&lt;/mui-icon-warningk&gt;
+              &nbsp;&nbsp;&lt;mui-icon-warning slot=&quot;before&quot;&gt;&lt;/mui-icon-warning&gt;
               <br>
               &nbsp;&nbsp;{text}
               <br>
               &lt;/mui-body&gt;
               <br>
               <br />
-              &lt;mui-body variant="error"&gt;
+              &lt;mui-body size="medium" variant="error"&gt;
               <br>
-              &nbsp;&nbsp;&lt;mui-icon-attention&gt;&lt;/mui-icon-attention&gt;
+              &nbsp;&nbsp;&lt;mui-icon-attention slot=&quot;before&quot;&gt;&lt;/mui-icon-attention&gt;
               <br>
               &nbsp;&nbsp;{text}
+              <br>
+              &lt;/mui-body&gt;
+              <br>
+              <br />
+              &lt;mui-body size="large"&gt;
+              <br>
+              &nbsp;&nbsp;{text}
+              <br>
+              &nbsp;&nbsp;&lt;mui-icon-right-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-right-chevron&gt;
               <br>
               &lt;/mui-body&gt;
             </story-code-block>

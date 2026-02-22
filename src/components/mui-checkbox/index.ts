@@ -2,7 +2,7 @@ import "../mui-body";
 
 class MuiCheckbox extends HTMLElement {
   static get observedAttributes() {
-    return ["checked", "disabled", "id", "indeterminate"];
+    return ["checked", "disabled", "id", "indeterminate", "size"];
   }
 
   _changeHandler?: (e: Event) => void;
@@ -13,6 +13,7 @@ class MuiCheckbox extends HTMLElement {
   }
 
   connectedCallback() {
+    if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.render();
     this.setupListener();
   }
@@ -47,7 +48,7 @@ class MuiCheckbox extends HTMLElement {
       }
     }
 
-    if ("id".includes(name)) {
+    if (["id", "size"].includes(name)) {
       this.render();
       this.setupListener();
     }
@@ -106,15 +107,33 @@ class MuiCheckbox extends HTMLElement {
         .substr(2, 9)}`;
     const checked = this.hasAttribute("checked");
     const disabled = this.hasAttribute("disabled");
+    const size = this.getAttribute("size") || "medium";
+    const allowedSizes = ["x-small", "small", "medium", "large"];
+    const normalizedSize = allowedSizes.includes(size) ? size : "medium";
+    const labelSizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+    const labelSize = labelSizeMap[normalizedSize] || "small";
 
-    const CheckIcon = `
-      <mui-icon-checkmark class="icon" size="x-small" color="inverted"></mui-icon-checkmark>
+    const iconSizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "x-small",
+      large: "small",
+    };
+    const iconSize = iconSizeMap[normalizedSize] || "x-small";
+
+    const CheckIcon = /*html*/ `
+      <mui-icon-checkmark class="icon" size="${iconSize}" color="inverted"></mui-icon-checkmark>
     `;
 
     const indeterminate = this.hasAttribute("indeterminate");
 
-    const IndeterminateIcon = `
-      <mui-icon-subtract class="icon" size="x-small" color="inverted"></mui-icon-subtract>
+    const IndeterminateIcon = /*html*/ `
+      <mui-icon-subtract class="icon" size="${iconSize}" color="inverted"></mui-icon-subtract>
     `;
 
     const icon = indeterminate ? IndeterminateIcon : CheckIcon;
@@ -130,9 +149,15 @@ class MuiCheckbox extends HTMLElement {
 
         label {
           display: flex;
-          align-items: start;
+          align-items: center;
           gap: var(--space-200);
           cursor: pointer;
+        }
+        :host([disabled]) label {
+          cursor: not-allowed;
+        }
+        :host([disabled]) mui-body {
+          cursor: not-allowed;
         }
 
         input[type="checkbox"] {
@@ -149,6 +174,18 @@ class MuiCheckbox extends HTMLElement {
           background-repeat: no-repeat;
           background-position: center;
         }
+        :host([size="x-small"]) input[type="checkbox"] {
+          width: calc(var(--checkbox-size) - var(--space-100));
+          height: calc(var(--checkbox-size) - var(--space-100));
+        }
+        :host([size="small"]) input[type="checkbox"] {
+          width: calc(var(--checkbox-size) - var(--space-050));
+          height: calc(var(--checkbox-size) - var(--space-050));
+        }
+        :host([size="large"]) input[type="checkbox"] {
+          width: calc(var(--checkbox-size) + var(--space-100));
+          height: calc(var(--checkbox-size) + var(--space-100));
+        }
 
         input[type="checkbox"]:hover {
           border-color: var(--form-default-border-color-hover);
@@ -163,7 +200,7 @@ class MuiCheckbox extends HTMLElement {
         }
 
         input[type="checkbox"]:focus {
-          outline: var(--outline-thick);
+          outline: var(--outline-medium);
         }
 
         input:disabled {
@@ -207,7 +244,11 @@ class MuiCheckbox extends HTMLElement {
           />
           ${icon}
         </span>
-        ${hasContent ? `<mui-body size="small"><slot></slot></mui-body>` : ""}
+        ${
+          hasContent
+            ? `<mui-body size="${labelSize}"><slot></slot></mui-body>`
+            : ""
+        }
       </label>
     `;
   }

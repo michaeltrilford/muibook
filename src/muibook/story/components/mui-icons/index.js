@@ -51,7 +51,7 @@ class storyIcon extends HTMLElement {
       {
         name: "size",
         type: "string",
-        options: "x-small, small, medium, large",
+        options: "xx-small, x-small, small, medium, large",
         default: "small",
         description: "Set the size of the icon.",
       },
@@ -143,7 +143,7 @@ class storyIcon extends HTMLElement {
       {
         name: "size",
         type: "string",
-        options: "x-small, small, medium, large",
+        options: "xx-small, x-small, small, medium, large",
         default: "small",
         description: "Set the size of the icon.",
       },
@@ -346,6 +346,11 @@ class storyIcon extends HTMLElement {
             <mui-code slot="footer" scrollable>mui-icon-attention</mui-code>
           </story-icon-grid>
 
+          <story-icon-grid center>
+            <mui-icon-exclamationmark slot="body"></mui-icon-exclamationmark>
+            <mui-code slot="footer" scrollable>mui-icon-exclamationmark</mui-code>
+          </story-icon-grid>
+
           <story-icon-grid center>              
             <mui-icon-globe slot="body"></mui-icon-globe>
             <mui-code slot="footer" scrollable>mui-icon-globe</mui-code>
@@ -362,8 +367,8 @@ class storyIcon extends HTMLElement {
           </story-icon-grid>  
           
           <story-icon-grid center>              
-            <mui-icon-ellipsis slot="body"></mui-icon-ellipsis>
-            <mui-code slot="footer" scrollable>mui-icon-ellipsis</mui-code>
+            <mui-icon-menu slot="body"></mui-icon-menu>
+            <mui-code slot="footer" scrollable>mui-icon-menu</mui-code>
           </story-icon-grid>  
 
           <story-icon-grid center>              
@@ -469,6 +474,11 @@ class storyIcon extends HTMLElement {
           <story-icon-grid center>
             <mui-icon-pin-slash slot="body"></mui-icon-pin-slash>
             <mui-code slot="footer" scrollable>mui-icon-pin-slash</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-text-below-folder slot="body"></mui-icon-text-below-folder>
+            <mui-code slot="footer" scrollable>mui-icon-text-below-folder</mui-code>
           </story-icon-grid>
         </mui-grid> 
 

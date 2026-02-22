@@ -19,6 +19,8 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use to support labels or actions, not replace them.",
         "Ideal for reinforcing meaning in buttons, menus, or navigation.",
+        "Reserve mui-icon-exclamationmark for progress/timeline states where compact critical emphasis is needed.",
+        "Supported sizes are xx-small, x-small, small, medium, and large.",
         "Ensure consistency in size, style, and alignment across the product.",
         "Avoid using icons without clear meaning or universal recognition.",
       ],

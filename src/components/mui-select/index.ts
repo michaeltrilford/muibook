@@ -5,7 +5,7 @@ class MuiSelect extends HTMLElement {
   partMap = "";
 
   static get observedAttributes() {
-    return ["name", "value", "id", "label", "options", "disabled", "hide-label", "variant"];
+    return ["name", "value", "id", "label", "options", "disabled", "hide-label", "variant", "optional", "size"];
   }
 
   _changeHandler?: (e: Event) => void;
@@ -16,6 +16,7 @@ class MuiSelect extends HTMLElement {
   }
 
   async connectedCallback() {
+    if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     await this.waitForPartMap();
     this.partMap = getPartMap("text", "visual");
     this.render();
@@ -46,7 +47,7 @@ class MuiSelect extends HTMLElement {
       return;
     }
 
-    if (["options", "label", "hide-label", "variant"].includes(name)) {
+    if (["options", "label", "hide-label", "variant", "optional", "size"].includes(name)) {
       this.render();
       this.setupListener();
     }
@@ -104,8 +105,19 @@ class MuiSelect extends HTMLElement {
     const label = this.getAttribute("label") || "";
     const value = this.getAttribute("value") || "";
     const hideLabel = this.hasAttribute("hide-label");
+    const optional = this.hasAttribute("optional");
     const disabled = this.hasAttribute("disabled");
     const optionsAttr = this.getAttribute("options") || "[]";
+    const size = this.getAttribute("size") || "medium";
+    const allowedSizes = ["x-small", "small", "medium", "large"];
+    const normalizedSize = allowedSizes.includes(size) ? size : "medium";
+    const chevronSizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "x-small",
+      large: "small",
+    };
+    const chevronSize = chevronSizeMap[normalizedSize] || "x-small";
 
     const variant = this.getAttribute("variant") || "";
     const variantClass = variant ? variant : "";
@@ -157,6 +169,30 @@ class MuiSelect extends HTMLElement {
           width: 100%;
           box-sizing: border-box;
           appearance: none;
+        }
+        select.size-x-small {
+          min-height: var(--action-icon-only-size-x-small);
+          padding: var(--action-padding-x-small);
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+        }
+        select.size-small {
+          min-height: var(--action-icon-only-size-small);
+          padding: var(--action-padding-small);
+          font-size: var(--text-font-size-s);
+          line-height: var(--text-line-height-s);
+        }
+        select.size-medium {
+          min-height: 4.4rem;
+          padding: var(--space-200) var(--space-300);
+          font-size: var(--text-font-size);
+          line-height: var(--text-line-height);
+        }
+        select.size-large {
+          min-height: var(--action-icon-only-size-large);
+          padding: var(--space-300) var(--space-400);
+          font-size: var(--text-font-size-l);
+          line-height: var(--text-line-height-l);
         }
         select:hover {
           border-color: var(--form-default-border-color-hover);
@@ -211,6 +247,24 @@ class MuiSelect extends HTMLElement {
           white-space: nowrap;
           border: 0;
         }
+        .optional {
+          color: var(--text-color-optional);
+          display: inline-flex;
+          align-items: center;
+          gap: var(--space-050);
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+          text-transform: uppercase;
+          font-weight: var(--font-weight-medium);
+        }
+        .optional-dot {
+          display: inline-flex;
+          align-items: center;
+          line-height: 1;
+        }
+        .optional-text {
+          transform: translateY(calc(var(--stroke-size-100) * -1));
+        }
         .chevron {
           position: absolute; 
           right: var(--space-300);
@@ -222,6 +276,18 @@ class MuiSelect extends HTMLElement {
           background: var(--input-background);
           box-shadow: -4px 0 4px 0 var(--input-background);
           pointer-events: none;
+        }
+        :host([size="x-small"]) .chevron,
+        :host([size="small"]) .chevron {
+          right: var(--space-200);
+          padding: var(--space-000);
+          box-shadow: none;
+        }
+        :host([size="large"]) .chevron {
+          right: var(--space-400);
+          padding: var(--space-300);
+          padding-left: var(--space-000);
+          padding-right: var(--space-000);
         }
 
         select:disabled + .chevron {
@@ -265,13 +331,21 @@ class MuiSelect extends HTMLElement {
         /* ========================================================================== */
 
       </style>
-      ${label ? /*html*/ `<label for="${id}" class="${hideLabel ? "vh" : ""}">${label}</label>` : ""}
+      ${
+        label
+          ? /*html*/ `<label for="${id}" class="${hideLabel ? "vh" : ""}">${label}${
+              optional
+                ? ' <span class="optional"><span class="optional-dot" aria-hidden="true">•</span><span class="optional-text">Optional</span></span>'
+                : ""
+            }</label>`
+          : ""
+      }
       <div style="position: relative;">
-        <select class="${variantClass}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} 
+        <select class="${[variantClass, `size-${normalizedSize}`].filter(Boolean).join(" ")}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} 
         ${disabled ? "disabled" : ""}>
           ${optionsHTML}
         </select>
-        <mui-icon-down-chevron class="chevron" size="x-small"></mui-icon-down-chevron>
+        <mui-icon-down-chevron class="chevron" size="${chevronSize}"></mui-icon-down-chevron>
       </div>
     `;
 
