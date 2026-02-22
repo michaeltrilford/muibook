@@ -2,7 +2,7 @@
 // MuiBrandTokens.swift
 //
 
-// Don't edit directly • Generated on Sun, 22 Feb 2026 09:48:30 GMT • muibook.com
+// Don't edit directly • Generated on Sun, 22 Feb 2026 13:57:27 GMT • muibook.com
 
 import UIKit
 
@@ -39,6 +39,7 @@ public class BrandTokens {
     public static let lineHeight_1000 = CGFloat(1.125)
     public static let black = UIColor.black
     public static let blackOpacity_0 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.000)
+    public static let blackOpacity_5 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.051)
     public static let blackOpacity_10 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.102)
     public static let blackOpacity_20 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.200)
     public static let blackOpacity_30 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.302)
@@ -62,6 +63,7 @@ public class BrandTokens {
     public static let whiteOpacity_90 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.902)
     public static let whiteOpacity_100 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.0)
     public static let grey_100 = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1.0)
+    public static let grey_150 = UIColor(red: 0.922, green: 0.922, blue: 0.922, alpha: 1.0)
     public static let grey_200 = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1.0)
     public static let grey_300 = UIColor(red: 0.800, green: 0.800, blue: 0.800, alpha: 1.0)
     public static let grey_400 = UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1.0)

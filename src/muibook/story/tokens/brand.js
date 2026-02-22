@@ -146,6 +146,7 @@ class tokensBrand extends HTMLElement {
           <spec-card title="Colors / Black">
             <story-token-slat slot="body" token="--black" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--black-opacity-0" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--black-opacity-5" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--black-opacity-10" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--black-opacity-20" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--black-opacity-30" variant="color"></story-token-slat>
@@ -180,6 +181,7 @@ class tokensBrand extends HTMLElement {
             <story-token-slat slot="body" token="--grey-100" variant="color">
               <div slot="visual" style="width: 16px; height: 16px; background: var(--grey-100); border-radius: 4px;"></div>
             </story-token-slat>
+            <story-token-slat slot="body" token="--grey-150" variant="color"></story-token-slat>
 
             <story-token-slat slot="body" token="--grey-200" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--grey-300" variant="color"></story-token-slat>

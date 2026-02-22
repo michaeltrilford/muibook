@@ -306,14 +306,16 @@ html[data-theme="light"] {
   --chip-background-hover: var(--white);
   --chip-background-focus: var(--white);
   --chip-background-active: var(--white);
-  --chip-border-color: var(--grey-300);
+  --chip-border-color: var(--grey-200);
   --chip-border-color-hover: var(--grey-300);
   --chip-border-color-focus: var(--grey-300);
   --chip-border-color-active: var(--grey-1000);
   --chip-text-color-active: var(--grey-1000);
   --chip-icon-fill: var(--black);
-  --chip-dismiss-action-background: var(--grey-100);
+  --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-5));
+  --chip-dismiss-action-background: var(--grey-150);
   --chip-dismiss-action-background-hover: var(--black-opacity-0);
+  --chip-dismiss-action-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-0));
 
   /* Dropdown */
   --dropdown-background: var(--grey-100);
@@ -617,8 +619,10 @@ html[data-theme="dark"] {
   --chip-border-color-active: var(--grey-100);
   --chip-text-color-active: var(--grey-100);
   --chip-icon-fill: var(--white);
+  --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20));
   --chip-dismiss-action-background: var(--grey-700);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
+  --chip-dismiss-action-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-5));
 
   /* Dropdown */
   --dropdown-background: var(--grey-1000);
@@ -853,9 +857,9 @@ html[data-theme="dark"] {
   /* Chip */
   --chip-radius: var(--chip-radius-medium);
   --chip-radius-x-small: var(--radius-300);
-  --chip-radius-small: var(--radius-300);
-  --chip-radius-medium: var(--radius-400);
-  --chip-radius-large: var(--radius-500);
+  --chip-radius-small: var(--radius-400);
+  --chip-radius-medium: var(--radius-500);
+  --chip-radius-large: var(--radius-600);
   --chip-height-x-small: 2.8rem;
   --chip-height-small: 3.6rem;
   --chip-height-medium: 4rem;

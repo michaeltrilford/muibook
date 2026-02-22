@@ -2,6 +2,23 @@ import "../mui-stack/hstack";
 import "../mui-dialog";
 import "../mui-heading";
 import "../mui-code";
+import "../mui-button";
+import "../mui-icons/grid";
+import "../mui-icons/close";
+import "../mui-icons/toggle";
+import "../mui-rule";
+import "../mui-prompt-toggle";
+
+type PromptItem = {
+  kind: "text" | "image" | "file";
+  mimeType: string;
+  badge: string;
+  preview: string;
+  value: string;
+  file?: File;
+  fileName?: string;
+  size?: number;
+};
 
 class MuiPrompt extends HTMLElement {
   static get observedAttributes() {
@@ -18,6 +35,7 @@ class MuiPrompt extends HTMLElement {
       "preview-auto-clickable",
       "preview-dialog-width",
       "preview-dialog-title",
+      "context-mode",
       "aria-label",
       "aria-labelledby",
       "aria-describedby",
@@ -30,22 +48,81 @@ class MuiPrompt extends HTMLElement {
   private previewSlotEl: HTMLSlotElement | null = null;
   private previewResizeObserver: ResizeObserver | null = null;
   private fanAnimations = new Map<HTMLElement, Animation>();
+  private readonly enforceActionVariants = () => {
+    if (!this.shadowRoot) return;
+    const selector = 'slot[name="actions"], slot[name="actions-trigger"], slot[name="actions-right"]';
+    const slots = Array.from(this.shadowRoot.querySelectorAll(selector)) as HTMLSlotElement[];
+    const applyActionsSlotSpacing = (node: HTMLElement, isActionsSlot: boolean) => {
+      if (!isActionsSlot || node.tagName.toLowerCase() !== "mui-button") return;
+      const isIconOnly = node.hasAttribute("icon-only");
+      if (isIconOnly) {
+        node.style.marginRight = "var(--space-025)";
+        return;
+      }
+      if (node.style.marginRight === "var(--space-025)") node.style.marginRight = "";
+    };
+    slots.forEach((slot) => {
+      const isActionsSlot = slot.name === "actions";
+      const elements = slot.assignedElements({ flatten: true }) as HTMLElement[];
+      elements.forEach((el) => {
+        const nodes: HTMLElement[] = [el, ...(Array.from(el.querySelectorAll("*")) as HTMLElement[])];
+        nodes.forEach((node) => {
+          const tag = node.tagName.toLowerCase();
+          if (tag === "mui-button") {
+            node.setAttribute("variant", "tertiary");
+            applyActionsSlotSpacing(node, isActionsSlot);
+            return;
+          }
+          if (tag === "mui-dropdown") {
+            const actionNodes = node.querySelectorAll('[slot="action"]');
+            actionNodes.forEach((actionNode) => {
+              if (actionNode instanceof HTMLElement && actionNode.tagName.toLowerCase() === "mui-button") {
+                actionNode.setAttribute("variant", "tertiary");
+                applyActionsSlotSpacing(actionNode, isActionsSlot);
+              }
+            });
+          }
+        });
+      });
+    });
+  };
+
+  private emitPromptItems({
+    items,
+    text,
+    textBadge,
+    overflowed,
+    thresholdChars,
+    source,
+  }: {
+    items: PromptItem[];
+    text: string;
+    textBadge: string;
+    overflowed: boolean;
+    thresholdChars: number;
+    source: "paste" | "upload";
+  }) {
+    this.dispatchEvent(
+      new CustomEvent("prompt-paste", {
+        detail: {
+          source,
+          items,
+          text,
+          textBadge,
+          overflowed,
+          thresholdChars,
+          timestamp: new Date().toISOString(),
+        },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
 
   private onPaste = (event: Event) => {
     const pasteEvent = event as ClipboardEvent;
     const clipboard = pasteEvent.clipboardData;
     if (!clipboard) return;
-
-    type PromptPasteItem = {
-      kind: "text" | "image" | "file";
-      mimeType: string;
-      badge: string;
-      preview: string;
-      value: string;
-      file?: File;
-      fileName?: string;
-      size?: number;
-    };
 
     const files: File[] = Array.from(clipboard.files || []);
     const rawText = clipboard.getData("text/plain") || "";
@@ -66,7 +143,7 @@ class MuiPrompt extends HTMLElement {
     if (!hasBinaryItems && !hasText) return;
     if (hasBinaryItems || shouldOverflowText) pasteEvent.preventDefault();
 
-    const items: PromptPasteItem[] = files.map((file) => ({
+    const items: PromptItem[] = files.map((file) => ({
       kind: file.type.startsWith("image/") ? "image" : "file",
       mimeType: file.type || "",
       file,
@@ -97,20 +174,14 @@ class MuiPrompt extends HTMLElement {
       }
     }
 
-    this.dispatchEvent(
-      new CustomEvent("prompt-paste", {
-        detail: {
-          items,
-          text: rawText || "",
-          textBadge: imageUrl ? "IMG" : detectedTextBadge,
-          overflowed: shouldOverflowText,
-          thresholdChars,
-          timestamp: new Date().toISOString(),
-        },
-        bubbles: true,
-        composed: true,
-      }),
-    );
+    this.emitPromptItems({
+      source: "paste",
+      items,
+      text: rawText || "",
+      textBadge: imageUrl ? "IMG" : detectedTextBadge,
+      overflowed: shouldOverflowText,
+      thresholdChars,
+    });
   };
 
   private onInput = (event: Event) => {
@@ -177,12 +248,90 @@ class MuiPrompt extends HTMLElement {
     this.openInternalPreviewDialog(detail);
   };
 
+  private normalizeContextMode(mode: string | null) {
+    return mode === "chip" ? "chip" : "icon";
+  }
+
+  private setContextMode(mode: "icon" | "chip", source: "api" | "click" | "dismiss" = "api") {
+    const next = this.normalizeContextMode(mode);
+    if (this.getAttribute("context-mode") !== next) this.setAttribute("context-mode", next);
+    this.syncContextModeUI();
+    this.dispatchEvent(
+      new CustomEvent("prompt-context-change", {
+        detail: { mode: next, source },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    if (source === "dismiss") {
+      this.dispatchEvent(
+        new CustomEvent("prompt-context-dismiss", {
+          detail: { mode: next },
+          bubbles: true,
+          composed: true,
+        }),
+      );
+    }
+  }
+
+  private syncContextModeUI() {
+    if (!this.shadowRoot) return;
+    const mode = this.normalizeContextMode(this.getAttribute("context-mode"));
+    const slots = Array.from(
+      this.shadowRoot.querySelectorAll(
+        'slot[name="actions"], slot[name="actions-right"], slot[name="actions-trigger"]',
+      ),
+    ) as HTMLSlotElement[];
+    const actionNodes = slots.flatMap((slot) => slot.assignedElements({ flatten: true }) as HTMLElement[]);
+    actionNodes.forEach((root) => {
+      const nodes: HTMLElement[] = [root, ...(Array.from(root.querySelectorAll("*")) as HTMLElement[])];
+      nodes.forEach((el) => {
+        const tag = el.tagName.toLowerCase();
+        const isToggleWrapper = tag === "mui-prompt-toggle";
+        const isToggle = el.hasAttribute("context-toggle");
+        const isChip = el.hasAttribute("context-chip");
+        if (isToggleWrapper) {
+          el.setAttribute("mode", mode);
+          return;
+        }
+        if (isToggle || isChip) {
+          const show = isToggle ? mode === "icon" : mode === "chip";
+          el.toggleAttribute("hidden", !show);
+          el.style.display = show ? "inline-flex" : "none";
+        }
+      });
+    });
+  }
+
+  private onContextToggleClick = (event: Event) => {
+    const path = event.composedPath();
+    const toggle = path.find(
+      (node) =>
+        node instanceof HTMLElement &&
+        (node.tagName.toLowerCase() === "mui-prompt-toggle" || node.hasAttribute?.("context-toggle")),
+    ) as HTMLElement | undefined;
+    if (!toggle) return;
+    this.setContextMode("chip", "click");
+    this.updateActionsLayout();
+  };
+
+  private onContextChipDismiss = (event: Event) => {
+    const path = event.composedPath();
+    const chip = path.find((node) => node instanceof HTMLElement && node.hasAttribute?.("context-chip")) as
+      | HTMLElement
+      | undefined;
+    if (!chip) return;
+    this.setContextMode("icon", "dismiss");
+    this.updateActionsLayout();
+  };
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
+    if (!this.hasAttribute("context-mode")) this.setAttribute("context-mode", "icon");
     this.render();
     this.bindEvents();
     this.updateActionsLayout();
@@ -205,6 +354,17 @@ class MuiPrompt extends HTMLElement {
     if (name === "value" && textarea) {
       textarea.value = newValue ?? "";
       this.syncTextareaHeight(textarea);
+      return;
+    }
+
+    if (name === "context-mode") {
+      const normalized = this.normalizeContextMode(newValue);
+      if (newValue !== normalized) {
+        this.setAttribute("context-mode", normalized);
+        return;
+      }
+      this.syncContextModeUI();
+      this.updateActionsLayout();
       return;
     }
 
@@ -311,8 +471,14 @@ class MuiPrompt extends HTMLElement {
     textarea?.addEventListener("keydown", this.onKeyDown);
     textarea?.addEventListener("paste", this.onPaste);
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
+    const actionTriggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
+    const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     actionSlot?.addEventListener("slotchange", () => this.updateActionsLayout());
+    actionTriggerSlot?.addEventListener("slotchange", () => this.updateActionsLayout());
+    actionRightSlot?.addEventListener("slotchange", () => this.updateActionsLayout());
     this.addEventListener("prompt-preview-open", this.onPreviewOpen as EventListener);
+    this.addEventListener("click", this.onContextToggleClick);
+    this.addEventListener("dismiss", this.onContextChipDismiss as EventListener);
     this.bindPreviewOverflow();
     this.bindActionTrigger();
   }
@@ -324,6 +490,8 @@ class MuiPrompt extends HTMLElement {
     textarea?.removeEventListener("keydown", this.onKeyDown);
     textarea?.removeEventListener("paste", this.onPaste);
     this.removeEventListener("prompt-preview-open", this.onPreviewOpen as EventListener);
+    this.removeEventListener("click", this.onContextToggleClick);
+    this.removeEventListener("dismiss", this.onContextChipDismiss as EventListener);
     if (this.triggerEl) {
       this.triggerEl.removeEventListener("click", this.toggleFanOpen);
       this.triggerEl = null;
@@ -456,6 +624,8 @@ class MuiPrompt extends HTMLElement {
   private bindActionTrigger() {
     if (!this.shadowRoot || !this.hasAttribute("actions-fan")) return;
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
+    const triggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
+    const defaultTrigger = this.shadowRoot.querySelector("#promptDefaultActionsTrigger") as HTMLElement | null;
     if (!actionSlot) return;
 
     if (this.triggerEl) {
@@ -463,9 +633,19 @@ class MuiPrompt extends HTMLElement {
       this.triggerEl = null;
     }
 
-    const actions = actionSlot.assignedElements({ flatten: true }) as HTMLElement[];
+    const triggerActions = ((triggerSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[]).filter(
+      (el) => !el.hasAttribute("hidden"),
+    );
+    const slottedActions = (actionSlot.assignedElements({ flatten: true }) as HTMLElement[]).filter(
+      (el) => !el.hasAttribute("hidden"),
+    );
     const trigger =
-      (actions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) || actions[0] || null;
+      (triggerActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
+      triggerActions[0] ||
+      defaultTrigger ||
+      (slottedActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
+      slottedActions[0] ||
+      null;
     if (!trigger) return;
 
     this.triggerEl = trigger;
@@ -482,18 +662,63 @@ class MuiPrompt extends HTMLElement {
     iconToggle.setAttribute("aria-pressed", String(isOpen));
   }
 
+  private setFanItemInert(element: HTMLElement, shouldBeInert: boolean) {
+    if (!shouldBeInert) {
+      element.removeAttribute("inert");
+      element.removeAttribute("aria-hidden");
+      const previousTabIndex = element.getAttribute("data-fan-tabindex");
+      if (previousTabIndex !== null) {
+        if (previousTabIndex === "__none__") element.removeAttribute("tabindex");
+        else element.setAttribute("tabindex", previousTabIndex);
+        element.removeAttribute("data-fan-tabindex");
+      }
+      return;
+    }
+
+    if (!element.hasAttribute("data-fan-tabindex")) {
+      element.setAttribute("data-fan-tabindex", element.getAttribute("tabindex") ?? "__none__");
+    }
+    element.setAttribute("tabindex", "-1");
+    element.setAttribute("inert", "");
+    element.setAttribute("aria-hidden", "true");
+  }
+
   private updateActionsLayout() {
     if (!this.shadowRoot) return;
+    this.syncContextModeUI();
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
+    const triggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
+    const defaultTrigger = this.shadowRoot.querySelector("#promptDefaultActionsTrigger") as HTMLElement | null;
+    const actionsSeparator = this.shadowRoot.querySelector(".actions-separator") as HTMLElement | null;
     if (!actionSlot) return;
 
-    const actions = actionSlot.assignedElements({ flatten: true }) as HTMLElement[];
+    const triggerActions = ((triggerSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[]).filter(
+      (el) => !el.hasAttribute("hidden"),
+    );
+    const slottedActions = (actionSlot.assignedElements({ flatten: true }) as HTMLElement[]).filter(
+      (el) => !el.hasAttribute("hidden"),
+    );
+    const trigger =
+      (triggerActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
+      triggerActions[0] ||
+      defaultTrigger ||
+      (slottedActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
+      slottedActions[0] ||
+      null;
+    const nonTriggerActions = slottedActions.filter((action) => action !== trigger);
+    const actions = trigger ? [trigger, ...nonTriggerActions] : slottedActions;
     const rightActionSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     const rightActions = (rightActionSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[];
     const fanMode = this.hasAttribute("actions-fan");
     const fanOpen = this.hasAttribute("fan-open");
     const fanSpeed = 100;
     const fanStep = "calc(var(--action-icon-only-size-medium) + var(--space-100))";
+    if (actionsSeparator) {
+      const showSeparator = fanMode && fanOpen && slottedActions.length > 0;
+      actionsSeparator.toggleAttribute("hidden", !showSeparator);
+      actionsSeparator.style.display = showSeparator ? "inline-flex" : "none";
+    }
+    this.enforceActionVariants();
     actions.forEach((action, index) => {
       action.style.transition = `transform ${fanSpeed}ms ease, opacity ${fanSpeed}ms ease`;
       action.style.zIndex = "";
@@ -504,6 +729,7 @@ class MuiPrompt extends HTMLElement {
       }
 
       if (!fanMode) {
+        this.setFanItemInert(action, false);
         action.style.transitionDelay = "";
         action.style.transform = "";
         action.style.opacity = "";
@@ -513,6 +739,7 @@ class MuiPrompt extends HTMLElement {
       }
 
       if (index === 0) {
+        this.setFanItemInert(action, false);
         action.style.transitionDelay = "";
         action.style.transform = "translateX(0)";
         action.style.opacity = "1";
@@ -522,6 +749,7 @@ class MuiPrompt extends HTMLElement {
       }
 
       if (!fanOpen) {
+        this.setFanItemInert(action, true);
         action.style.transitionDelay = "";
         action.style.transform = "translateX(0) scale(0.8)";
         action.style.opacity = "0";
@@ -538,6 +766,7 @@ class MuiPrompt extends HTMLElement {
       action.style.opacity = "0";
       action.style.pointerEvents = "none";
       action.style.filter = "";
+      this.setFanItemInert(action, true);
 
       requestAnimationFrame(() => {
         action.style.transform = `translateX(${x})`;
@@ -545,6 +774,7 @@ class MuiPrompt extends HTMLElement {
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (prefersReducedMotion) {
           action.style.pointerEvents = "";
+          this.setFanItemInert(action, false);
           return;
         }
 
@@ -567,6 +797,7 @@ class MuiPrompt extends HTMLElement {
           .catch(() => undefined)
           .finally(() => {
             action.style.pointerEvents = "";
+            this.setFanItemInert(action, false);
           });
       });
     });
@@ -597,6 +828,7 @@ class MuiPrompt extends HTMLElement {
       <style>
         :host {
           display: block;
+          --prompt-action-radius: var(--chip-radius-small, var(--radius-400));
         }
         .surface {
           position: relative;
@@ -737,14 +969,74 @@ class MuiPrompt extends HTMLElement {
           gap: var(--space-100);
           pointer-events: none;
         }
+        .actions-slot > * {
+          pointer-events: auto;
+        }
         .actions-slot-left {
           left: var(--space-300);
+          gap: 0;
         }
         .actions-slot-right {
           right: var(--space-300);
         }
-        ::slotted([slot="actions"]),
-        ::slotted([slot="actions-right"]) {
+        .actions-separator {
+          margin-inline: var(--space-200);
+          pointer-events: none;
+        }
+        .actions-separator[hidden] {
+          display: none !important;
+        }
+        .actions-slot mui-button {
+          --action-radius-x-small: var(--prompt-action-radius);
+          --action-radius-small: var(--prompt-action-radius);
+          --action-radius-medium: var(--prompt-action-radius);
+          --action-radius-large: var(--prompt-action-radius);
+        }
+        slot[name="actions-trigger"]::slotted(mui-button),
+        slot[name="actions"]::slotted(mui-button),
+        slot[name="actions-right"]::slotted(mui-button) {
+          --action-radius-x-small: var(--prompt-action-radius);
+          --action-radius-small: var(--prompt-action-radius);
+          --action-radius-medium: var(--prompt-action-radius);
+          --action-radius-large: var(--prompt-action-radius);
+        }
+        slot[name="actions-trigger"]::slotted(mui-dropdown),
+        slot[name="actions"]::slotted(mui-dropdown),
+        slot[name="actions-right"]::slotted(mui-dropdown) {
+          --action-radius-x-small: var(--prompt-action-radius);
+          --action-radius-small: var(--prompt-action-radius);
+          --action-radius-medium: var(--prompt-action-radius);
+          --action-radius-large: var(--prompt-action-radius);
+        }
+        slot[name="actions-trigger"]::slotted(mui-h-stack),
+        slot[name="actions"]::slotted(mui-h-stack),
+        slot[name="actions-right"]::slotted(mui-h-stack) {
+          --action-radius-x-small: var(--prompt-action-radius);
+          --action-radius-small: var(--prompt-action-radius);
+          --action-radius-medium: var(--prompt-action-radius);
+          --action-radius-large: var(--prompt-action-radius);
+        }
+        slot[name="actions-trigger"]::slotted(mui-prompt-toggle),
+        slot[name="actions"]::slotted(mui-prompt-toggle),
+        slot[name="actions-right"]::slotted(mui-prompt-toggle) {
+          --action-radius-x-small: var(--prompt-action-radius);
+          --action-radius-small: var(--prompt-action-radius);
+          --action-radius-medium: var(--prompt-action-radius);
+          --action-radius-large: var(--prompt-action-radius);
+        }
+        slot[name="actions-trigger"],
+        slot[name="actions"],
+        slot[name="actions-right"] {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--space-025);
+        }
+        slot[name="actions-trigger"] {
+          flex: 0 0 auto;
+        }
+        ::slotted([slot="actions"]:not([hidden])),
+        ::slotted([slot="actions-trigger"]:not([hidden])),
+        ::slotted([slot="actions-right"]:not([hidden])) {
           display: inline-flex;
           align-items: center;
           gap: var(--space-100);
@@ -782,8 +1074,21 @@ class MuiPrompt extends HTMLElement {
             >${value}</textarea>
           </slot>
         </div>
-        <slot name="actions" class="actions-slot actions-slot-left"></slot>
-        <slot name="actions-right" class="actions-slot actions-slot-right"></slot>
+        <div class="actions-slot actions-slot-left">
+          <slot name="actions-trigger">
+            <mui-button id="promptDefaultActionsTrigger" variant="tertiary" fan-trigger icon-only size="small" aria-label="More actions">
+              <mui-icon-toggle rotate size="small">
+                <mui-icon-grid slot="start" size="small"></mui-icon-grid>
+                <mui-icon-close slot="end" size="small"></mui-icon-close>
+              </mui-icon-toggle>
+            </mui-button>
+          </slot>
+          <mui-rule class="actions-separator" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" aria-hidden="true"></mui-rule>
+          <slot name="actions"></slot>
+        </div>
+        <div class="actions-slot actions-slot-right">
+          <slot name="actions-right"></slot>
+        </div>
       </div>
 
       <mui-dialog

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Don't edit directly • Generated on Sun, 22 Feb 2026 09:48:30 GMT • muibook.com
+  Don't edit directly • Generated on Sun, 22 Feb 2026 13:57:27 GMT • muibook.com
 -->
 <resources>
     <color name="black">#FF000000</color>
     <color name="black_opacity_0">#00000000</color>
+    <color name="black_opacity_5">#0D000000</color>
     <color name="black_opacity_10">#1A000000</color>
     <color name="black_opacity_20">#33000000</color>
     <color name="black_opacity_30">#4D000000</color>
@@ -28,6 +29,7 @@
     <color name="white_opacity_90">#E6FFFFFF</color>
     <color name="white_opacity_100">#FFFFFFFF</color>
     <color name="grey_100">#FFF5F5F5</color>
+    <color name="grey_150">#FFEBEBEB</color>
     <color name="grey_200">#FFE5E5E5</color>
     <color name="grey_300">#FFCCCCCC</color>
     <color name="grey_400">#FFAAAAAA</color>

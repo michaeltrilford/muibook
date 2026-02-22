@@ -47,9 +47,16 @@ class storyDropdown extends HTMLElement {
       {
         name: "position",
         type: "string",
-        options: "left, right",
+        options: "left, center, right",
         default: "left",
         description: "Set the default position of the dropdown on the x-axis.",
+      },
+      {
+        name: "vertical-position",
+        type: "string",
+        options: "auto, up, down",
+        default: "auto",
+        description: "Set preferred menu direction on the y-axis while still using smart fallback when needed.",
       },
       {
         name: "persistent",
@@ -220,6 +227,25 @@ class storyDropdown extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;PDF&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;CSV&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Vertical Position: Up">
+        <mui-v-stack slot="body" alignX="center">
+          <mui-dropdown position="left" vertical-position="up">
+            <mui-button slot="action" variant="secondary">Actions<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
+            <mui-button>Edit</mui-button>
+            <mui-button>Duplicate</mui-button>
+            <mui-button>Archive</mui-button>
+          </mui-dropdown>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dropdown position="left" vertical-position="up"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Actions&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;Edit&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;Duplicate&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button&gt;Archive&lt;/mui-button&gt;<br>
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>

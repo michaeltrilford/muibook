@@ -151,6 +151,7 @@ class appNavbar extends HTMLElement {
       <app-navbar-group id="web-components" groupname="Components">
         <mui-body class="first" weight="bold">Prompts</mui-body>
         <app-navbar-link link="#/prompt" title="Prompt"></app-navbar-link>
+        <app-navbar-link link="#/prompt-toggle" title="Prompt Toggle"></app-navbar-link>
         <app-navbar-link link="#/prompt-message" title="Prompt Message"></app-navbar-link>
         <app-navbar-link link="#/prompt-preview" title="Prompt Preview"></app-navbar-link>
       

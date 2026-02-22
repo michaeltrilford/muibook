@@ -48,7 +48,7 @@ class MuiDropdown extends HTMLElement {
   };
 
   static get observedAttributes() {
-    return ["zindex", "position", "persistent"];
+    return ["zindex", "position", "vertical-position", "persistent"];
   }
 
   get persistent() {
@@ -60,7 +60,7 @@ class MuiDropdown extends HTMLElement {
       this.menu.style.zIndex = newValue ?? "1";
     }
 
-    if (name === "position" && this.menu) {
+    if ((name === "position" || name === "vertical-position") && this.menu) {
       this.adjustPosition();
     }
   }
@@ -241,9 +241,20 @@ class MuiDropdown extends HTMLElement {
     const vh = window.innerHeight;
 
     // ---- Vertical position ----
+    const verticalPosition = (this.getAttribute("vertical-position") || "auto").toLowerCase();
+    const spaceBelow = vh - hostRect.bottom;
+    const spaceAbove = hostRect.top;
+    const minRequired = menuH + offsetY;
+    const canFitBelow = spaceBelow >= minRequired;
+    const canFitAbove = spaceAbove >= minRequired;
+
     let top = hostRect.height + offsetY; // default below
-    if (vh - hostRect.bottom < menuH + offsetY && hostRect.top > vh - hostRect.bottom) {
-      top = -(menuH + offsetY); // place above if not enough space below
+    if (verticalPosition === "up") {
+      top = canFitAbove || !canFitBelow ? -(menuH + offsetY) : hostRect.height + offsetY;
+    } else if (verticalPosition === "down") {
+      top = canFitBelow || !canFitAbove ? hostRect.height + offsetY : -(menuH + offsetY);
+    } else if (!canFitBelow && spaceAbove > spaceBelow) {
+      top = -(menuH + offsetY); // auto: flip above when below is tighter and above has more room
     }
 
     // ---- Horizontal position ----

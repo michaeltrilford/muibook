@@ -8,6 +8,7 @@ export * from "./components/mui-form-group";
 export * from "./components/mui-form-hint";
 export * from "./components/mui-hint";
 export * from "./components/mui-prompt";
+export * from "./components/mui-prompt-toggle";
 export * from "./components/mui-prompt-message";
 export * from "./components/mui-prompt-preview";
 export * from "./components/mui-file-upload";

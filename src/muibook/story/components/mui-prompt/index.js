@@ -49,11 +49,27 @@ class StoryPrompt extends HTMLElement {
         description: "Optional preview block shown above the prompt input.",
       },
       {
+        name: "slot=actions-trigger",
+        type: "slot (named)",
+        options: "button, icons",
+        default: "Built-in trigger",
+        description:
+          "Optional custom trigger action (for fan toggle). If omitted, Prompt renders a default grid/close trigger.",
+      },
+      {
         name: "slot=actions",
         type: "slot (named)",
-        options: "buttons, icons",
+        options: "buttons, icons, mui-prompt-toggle",
         default: "",
         description: "Floating prompt actions.",
+      },
+      {
+        name: "context-mode",
+        type: "string",
+        options: "icon, chip",
+        default: "icon",
+        description:
+          "Controls which content inside <mui-prompt-toggle> is visible. icon shows [context-toggle], chip shows [context-chip].",
       },
       {
         name: "slot=actions-right",
@@ -113,6 +129,22 @@ class StoryPrompt extends HTMLElement {
       )
       .join("");
 
+    const accordions = propItems
+      .map((prop, index) => {
+        const isLast = index === propItems.length - 1 ? "last-child" : "";
+        return /*html*/ `
+          <mui-accordion-block heading="${prop.name}" class="${isLast}">
+            <story-type-slat
+              type="${prop.type}"
+              options="${prop.options || ""}"
+              default="${prop.default || ""}"
+              description="${prop.description}">
+            </story-type-slat>
+          </mui-accordion-block>
+        `;
+      })
+      .join("");
+
     const stories = /*html*/ `
       <spec-card title="Import">
         <mui-code slot="footer" size="small" scrollable>
@@ -121,16 +153,21 @@ class StoryPrompt extends HTMLElement {
       </spec-card>
 
       <props-card title="Prompt">
-        <story-type-table slot="body">
-          ${rows}
-        </story-type-table>
+        <mui-responsive breakpoint="768" slot="body">
+          <story-type-table slot="showAbove">
+            ${rows}
+          </story-type-table>
+          <mui-accordion-group exclusive slot="showBelow">
+            ${accordions}
+          </mui-accordion-group>
+        </mui-responsive>
       </props-card>
 
       <story-card
         id="preview-data"
         title="Preview: Data Feed"
         description="Render extracted preview metadata on-page for product logic."
-        usage="Use prompt-paste to capture clipboard payloads and append previews.|||Use prompt-preview-open to drive analytics, dialog selection, or routing.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
+        usage="Use prompt-paste to capture clipboard payloads and append previews.|||Use prompt-preview-open to drive analytics, dialog selection, or routing.|||Use context-mode='icon|chip' with slotted <mui-prompt-toggle> (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
@@ -138,6 +175,7 @@ class StoryPrompt extends HTMLElement {
             placeholder="Paste, click preview, or submit..."
             enter-submit
             actions-fan
+            context-mode="icon"
           >
             <mui-prompt-preview
               slot="preview"
@@ -154,20 +192,35 @@ class StoryPrompt extends HTMLElement {
               bg-image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80"
               value=""
             ></mui-prompt-preview>
-            <mui-button slot="actions" variant="tertiary" fan-trigger icon-only>
-              <mui-icon-toggle rotate size="medium">
-                <mui-icon-grid slot="start"></mui-icon-grid>
-                <mui-icon-close slot="end"></mui-icon-close>
-              </mui-icon-toggle>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-calendar size="medium"></mui-icon-calendar></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-pin size="medium"></mui-icon-pin></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-translate size="medium"></mui-icon-translate></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-left-sidebar size="medium"></mui-icon-left-sidebar></mui-button>
-            <mui-button slot="actions-right" variant="tertiary" id="agentDataSubmitBtn">
-              <mui-icon-toggle id="agentDataToggle" rotate size="medium">
-                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end"></mui-icon-stop>
+       
+            <mui-dropdown slot="actions" position="left" vertical-position="up">
+              <mui-button slot="action" variant="tertiary" icon-only size="small">
+                <mui-icon-add size="small"></mui-icon-add>
+              </mui-button>
+              <mui-button variant="tertiary" size='small'>Upload Photo</mui-button>
+              <mui-button variant="tertiary" size='small'>Take Photo</mui-button>
+              <mui-button variant="tertiary" size='small'>Upload File</mui-button>
+              <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
+            </mui-dropdown>
+            <mui-prompt-toggle slot="actions">
+              <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                <mui-icon-globe size="small"></mui-icon-globe>
+              </mui-button>
+              <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+            </mui-prompt-toggle>
+            <mui-dropdown slot="actions" position="right" vertical-position="up">
+              <mui-button slot="action" variant="tertiary" size="small">
+                MPT-4
+                <mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            </mui-dropdown>
+            <mui-button slot="actions-right" variant="tertiary" id="agentDataSubmitBtn" size="small" icon-only>
+              <mui-icon-toggle id="agentDataToggle" rotate size="small">
+                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
+                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
               </mui-icon-toggle>
             </mui-button>
           </mui-prompt>
@@ -183,7 +236,9 @@ class StoryPrompt extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt actions-fan enter-submit&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" clickable badge="JSON" ...&gt;&lt;/mui-prompt-preview&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="actions" fan-trigger icon-only&gt;...&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="actions"&gt;...add + globe...&lt;/mui-h-stack&gt;<br />
+          
+          &nbsp;&nbsp;&lt;mui-dropdown slot="actions"&gt;...MPT...&lt;/mui-dropdown&gt;<br />
           &lt;/mui-prompt&gt;<br />
           <br />
           prompt.addEventListener("prompt-paste", (event) =&gt; {<br />
@@ -191,6 +246,9 @@ class StoryPrompt extends HTMLElement {
           });<br />
           prompt.addEventListener("prompt-preview-open", (event) =&gt; {<br />
           &nbsp;&nbsp;console.log(event.detail);<br />
+          });<br />
+          prompt.addEventListener("prompt-context-change", (event) =&gt; {<br />
+          &nbsp;&nbsp;console.log(event.detail.mode); // icon | chip<br />
           });<br />
         </story-code-block>
       </story-card>
@@ -206,29 +264,38 @@ class StoryPrompt extends HTMLElement {
             placeholder="Reply to Mui..."
             enter-submit
             actions-fan
+            context-mode="icon"
           >
-            <mui-button slot="actions" variant="tertiary" fan-trigger icon-only>
-              <mui-icon-toggle rotate size="medium">
-                <mui-icon-grid slot="start"></mui-icon-grid>
-                <mui-icon-close slot="end"></mui-icon-close>
-              </mui-icon-toggle>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only>
-              <mui-icon-calendar size="medium"></mui-icon-calendar>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only>
-              <mui-icon-pin size="medium"></mui-icon-pin>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only>
-              <mui-icon-translate size="medium"></mui-icon-translate>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only>
-              <mui-icon-left-sidebar size="medium"></mui-icon-left-sidebar>
-            </mui-button>
-            <mui-button slot="actions-right" variant="tertiary" id="promptSubmitBtn">
-              <mui-icon-toggle id="promptToggle" rotate size="medium">
-                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end"></mui-icon-stop>
+            <mui-h-stack slot="actions" space="var(--space-050)">
+              <mui-dropdown position="right" vertical-position="up">
+                <mui-button slot="action" variant="tertiary" icon-only size="small">
+                  <mui-icon-add size="small"></mui-icon-add>
+                </mui-button>
+                <mui-button variant="tertiary" size='small'>Upload Photo</mui-button>
+                <mui-button variant="tertiary" size='small'>Take Photo</mui-button>
+                <mui-button variant="tertiary" size='small'>Upload File</mui-button>
+                <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
+              </mui-dropdown>
+              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+                <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                  <mui-icon-globe size="small"></mui-icon-globe>
+                </mui-button>
+                <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+              </mui-prompt-toggle>
+            </mui-h-stack>
+            <mui-dropdown slot="actions" position="right" vertical-position="up">
+              <mui-button slot="action" variant="tertiary" size="small">
+                MPT-4
+                <mui-icon-down-chevron slot="after" size="small"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            </mui-dropdown>
+            <mui-button slot="actions-right" variant="tertiary" id="promptSubmitBtn" size="small" icon-only>
+              <mui-icon-toggle id="promptToggle" rotate size="small">
+                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
+                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
               </mui-icon-toggle>
             </mui-button>
           </mui-prompt>
@@ -238,7 +305,9 @@ class StoryPrompt extends HTMLElement {
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt placeholder="Reply to Mui..." enter-submit actions-fan&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="tertiary" fan-trigger icon-only&gt;...&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="actions"&gt;...add + globe...&lt;/mui-h-stack&gt;<br />
+          
+          &nbsp;&nbsp;&lt;mui-dropdown slot="actions" vertical-position="up"&gt;...MPT...&lt;/mui-dropdown&gt;<br />
           &nbsp;&nbsp;&lt;mui-button slot="actions-right" variant="tertiary"&gt;...&lt;/mui-button&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
@@ -251,6 +320,7 @@ class StoryPrompt extends HTMLElement {
             placeholder="Use this image..."
             enter-submit
             actions-fan
+            context-mode="icon"
           >
             <mui-prompt-preview
               slot="preview"
@@ -316,20 +386,36 @@ class StoryPrompt extends HTMLElement {
               bg-image="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1400&q=80"
               value=""
             ></mui-prompt-preview>
-            <mui-button slot="actions" variant="tertiary" fan-trigger icon-only>
-              <mui-icon-toggle rotate size="medium">
-                <mui-icon-grid slot="start"></mui-icon-grid>
-                <mui-icon-close slot="end"></mui-icon-close>
-              </mui-icon-toggle>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-calendar size="medium"></mui-icon-calendar></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-pin size="medium"></mui-icon-pin></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-translate size="medium"></mui-icon-translate></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-left-sidebar size="medium"></mui-icon-left-sidebar></mui-button>
-            <mui-button slot="actions-right" variant="tertiary" id="agentImageSubmitBtn">
-              <mui-icon-toggle id="agentImageToggle" rotate size="medium">
-                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end"></mui-icon-stop>
+            <mui-h-stack slot="actions" space="var(--space-050)">
+              <mui-dropdown position="right" vertical-position="up">
+                <mui-button slot="action" variant="tertiary" icon-only size="small">
+                  <mui-icon-add size="small"></mui-icon-add>
+                </mui-button>
+                <mui-button variant="tertiary" size='small'>Upload Photo</mui-button>
+                <mui-button variant="tertiary" size='small'>Take Photo</mui-button>
+                <mui-button variant="tertiary" size='small'>Upload File</mui-button>
+                <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
+              </mui-dropdown>
+              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+                <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                  <mui-icon-globe size="small"></mui-icon-globe>
+                </mui-button>
+                <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+              </mui-prompt-toggle>
+            </mui-h-stack>
+            <mui-dropdown slot="actions" position="right" vertical-position="up">
+              <mui-button slot="action" variant="tertiary" size="small">
+                MPT-4
+                <mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            </mui-dropdown>
+                        <mui-button slot="actions-right" variant="tertiary" id="agentImageSubmitBtn" size="small" icon-only>
+              <mui-icon-toggle id="agentImageToggle" rotate size="small">
+                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
+                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
               </mui-icon-toggle>
             </mui-button>
           </mui-prompt>
@@ -340,7 +426,9 @@ class StoryPrompt extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt enter-submit actions-fan&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" clickable badge="IMG" bg-image="{url}" value=""&gt;&lt;/mui-prompt-preview&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="actions" fan-trigger icon-only&gt;...&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="actions"&gt;...add + globe...&lt;/mui-h-stack&gt;<br />
+          
+          &nbsp;&nbsp;&lt;mui-dropdown slot="actions"&gt;...MPT...&lt;/mui-dropdown&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
@@ -352,6 +440,7 @@ class StoryPrompt extends HTMLElement {
             placeholder="Review payload..."
             enter-submit
             actions-fan
+            context-mode="icon"
           >
             <mui-prompt-preview
               slot="preview"
@@ -395,20 +484,36 @@ class StoryPrompt extends HTMLElement {
               animated
               value='SELECT feature_area, AVG(csat) FROM survey_responses WHERE quarter = "Q4" GROUP BY feature_area;'
             ></mui-prompt-preview>
-            <mui-button slot="actions" variant="tertiary" fan-trigger icon-only>
-              <mui-icon-toggle rotate size="medium">
-                <mui-icon-grid slot="start"></mui-icon-grid>
-                <mui-icon-close slot="end"></mui-icon-close>
-              </mui-icon-toggle>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-calendar size="medium"></mui-icon-calendar></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-pin size="medium"></mui-icon-pin></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-translate size="medium"></mui-icon-translate></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-left-sidebar size="medium"></mui-icon-left-sidebar></mui-button>
-            <mui-button slot="actions-right" variant="tertiary" id="agentCodeSubmitBtn">
-              <mui-icon-toggle id="agentCodeToggle" rotate size="medium">
-                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end"></mui-icon-stop>
+            <mui-h-stack slot="actions" space="var(--space-050)">
+              <mui-dropdown position="right" vertical-position="up">
+                <mui-button slot="action" variant="tertiary" icon-only size="small">
+                  <mui-icon-add size="small"></mui-icon-add>
+                </mui-button>
+                <mui-button variant="tertiary" size='small'>Upload Photo</mui-button>
+                <mui-button variant="tertiary" size='small'>Take Photo</mui-button>
+                <mui-button variant="tertiary" size='small'>Upload File</mui-button>
+                <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
+              </mui-dropdown>
+              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+                <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                  <mui-icon-globe size="small"></mui-icon-globe>
+                </mui-button>
+                <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+              </mui-prompt-toggle>
+            </mui-h-stack>
+            <mui-dropdown slot="actions" position="right" vertical-position="up">
+              <mui-button slot="action" variant="tertiary" size="small">
+                MPT-4
+                <mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            </mui-dropdown>
+                        <mui-button slot="actions-right" variant="tertiary" id="agentCodeSubmitBtn" size="small" icon-only>
+              <mui-icon-toggle id="agentCodeToggle" rotate size="small">
+                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
+                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
               </mui-icon-toggle>
             </mui-button>
           </mui-prompt>
@@ -420,6 +525,9 @@ class StoryPrompt extends HTMLElement {
           &lt;mui-prompt enter-submit actions-fan&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" clickable badge="JSON" value="{...}"&gt;&lt;/mui-prompt-preview&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" clickable badge="CSS" value=".card{...}"&gt;&lt;/mui-prompt-preview&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="actions"&gt;...add + globe...&lt;/mui-h-stack&gt;<br />
+          
+          &nbsp;&nbsp;&lt;mui-dropdown slot="actions"&gt;...MPT...&lt;/mui-dropdown&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
@@ -432,6 +540,7 @@ class StoryPrompt extends HTMLElement {
             enter-submit
             actions-fan
             preview-auto-clickable="false"
+            context-mode="icon"
           >
             <mui-prompt-preview
               slot="preview"
@@ -446,20 +555,36 @@ class StoryPrompt extends HTMLElement {
               bg-image="https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png"
               value=""
             ></mui-prompt-preview>
-            <mui-button slot="actions" variant="tertiary" fan-trigger icon-only>
-              <mui-icon-toggle rotate size="medium">
-                <mui-icon-grid slot="start"></mui-icon-grid>
-                <mui-icon-close slot="end"></mui-icon-close>
-              </mui-icon-toggle>
-            </mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-calendar size="medium"></mui-icon-calendar></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-pin size="medium"></mui-icon-pin></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-translate size="medium"></mui-icon-translate></mui-button>
-            <mui-button slot="actions" variant="tertiary" icon-only><mui-icon-left-sidebar size="medium"></mui-icon-left-sidebar></mui-button>
-            <mui-button slot="actions-right" variant="tertiary" id="agentPreviewOffSubmitBtn">
-              <mui-icon-toggle id="agentPreviewOffToggle" rotate size="medium">
-                <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end"></mui-icon-stop>
+            <mui-h-stack slot="actions" space="var(--space-050)">
+              <mui-dropdown position="right" vertical-position="up">
+                <mui-button slot="action" variant="tertiary" icon-only size="small">
+                  <mui-icon-add size="small"></mui-icon-add>
+                </mui-button>
+                <mui-button variant="tertiary" size='small'>Upload Photo</mui-button>
+                <mui-button variant="tertiary" size='small'>Take Photo</mui-button>
+                <mui-button variant="tertiary" size='small'>Upload File</mui-button>
+                <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
+              </mui-dropdown>
+              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+                <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                  <mui-icon-globe size="small"></mui-icon-globe>
+                </mui-button>
+                <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+              </mui-prompt-toggle>
+            </mui-h-stack>
+            <mui-dropdown slot="actions" position="right" vertical-position="up">
+              <mui-button slot="action" variant="tertiary" size="small">
+                MPT-4
+                <mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            </mui-dropdown>
+                        <mui-button slot="actions-right" variant="tertiary" id="agentPreviewOffSubmitBtn" size="small" icon-only>
+              <mui-icon-toggle id="agentPreviewOffToggle" rotate size="small">
+                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
+                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
               </mui-icon-toggle>
             </mui-button>
           </mui-prompt>
@@ -471,6 +596,9 @@ class StoryPrompt extends HTMLElement {
           &lt;mui-prompt preview-auto-clickable="false" enter-submit actions-fan&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" badge="JSON" ...&gt;&lt;/mui-prompt-preview&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" badge="IMG" ...&gt;&lt;/mui-prompt-preview&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="actions"&gt;...add + globe...&lt;/mui-h-stack&gt;<br />
+          
+          &nbsp;&nbsp;&lt;mui-dropdown slot="actions"&gt;...MPT...&lt;/mui-dropdown&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>

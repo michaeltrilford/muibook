@@ -134,7 +134,7 @@ class storyButton extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -303,8 +303,8 @@ class storyButton extends HTMLElement {
           <mui-responsive breakpoint="1280">
             <mui-h-stack alignx="space-between" aligny="center" slot="showAbove" style="border-radius: var(--radius-200); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
               <mui-h-stack space="var(--space-300)">
-              <mui-input label="Search" hide-label placeholder="Search by name, email, or ID..." style="min-width: 25rem; max-width: 25rem;"></mui-input>
-              <mui-select label="Status" hide-label
+              <mui-input size="small" label="Search" hide-label placeholder="Search by name, email, or ID..." style="min-width: 25rem; max-width: 25rem;"></mui-input>
+              <mui-select size="small" label="Status" hide-label
                 style="min-width: 12rem;"
                   options='[
                   {"value": "default", "label": "Pending"},
@@ -314,7 +314,7 @@ class storyButton extends HTMLElement {
               </mui-h-stack>
               <mui-h-stack space="var(--space-400)" aligny="center">
                 <mui-h-stack space="var(--space-200)" aligny="center">
-                  <mui-chip dismiss>
+                  <mui-chip dismiss size="small">
                     Admin
                   </mui-chip>
                 </mui-h-stack>
@@ -331,7 +331,7 @@ class storyButton extends HTMLElement {
               </mui-select>
               <mui-h-stack space="var(--space-400)" aligny="center" alignx="space-between">
                 <mui-h-stack space="var(--space-200)" aligny="center">
-                  <mui-chip dismiss>
+                  <mui-chip dismiss size="small">
                     Admin
                   </mui-chip>
                 </mui-h-stack>

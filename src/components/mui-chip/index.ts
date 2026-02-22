@@ -131,6 +131,10 @@ class MuiChip extends HTMLElement {
         background: var(--chip-background);
         border-color: var(--chip-border-color);
         border-radius: var(--chip-radius);
+        filter: var(
+          --chip-filter,
+          drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20))
+        );
       }
 
       :host([size="x-small"]) .container {
@@ -289,6 +293,7 @@ class MuiChip extends HTMLElement {
         padding: var(--space-025);
         border-radius: var(--radius-400);
         background: var(--chip-dismiss-action-background);
+        filter: var(--chip-dismiss-action-filter, var(--chip-filter));
       }
       mui-button::part(background):hover {
         background: var(--chip-dismiss-action-background-hover);

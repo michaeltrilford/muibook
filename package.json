@@ -144,6 +144,10 @@
       "import": "./dist/esm/components/mui-prompt/index.js",
       "types": "./dist/types/components/mui-prompt/index.d.ts"
     },
+    "./mui-prompt-toggle": {
+      "import": "./dist/esm/components/mui-prompt-toggle/index.js",
+      "types": "./dist/types/components/mui-prompt-toggle/index.d.ts"
+    },
     "./mui-prompt-message": {
       "import": "./dist/esm/components/mui-prompt-message/index.js",
       "types": "./dist/types/components/mui-prompt-message/index.d.ts"

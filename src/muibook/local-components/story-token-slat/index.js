@@ -97,6 +97,15 @@ class storyTokenSlat extends HTMLElement {
         animation: pulse var(--anim-speed) ease-in-out infinite alternate;
       }
 
+      .shadow-preview {
+        width: var(--space-700);
+        height: var(--space-700);
+        background: var(--surface-elevated-100);
+        border: var(--border-thin);
+        border-color: var(--border-color);
+        border-radius: var(--radius-100);
+      }
+
       @keyframes pulse {
         from { transform: scale(1); opacity: 1; }
         to { transform: scale(1.2); opacity: 0.6; }
@@ -171,6 +180,9 @@ class storyTokenSlat extends HTMLElement {
         break;
       case "animation":
         visualPreview = /*html*/ `<div class="animation-preview" style="--anim-speed: var(${token});"></div>`;
+        break;
+      case "shadow":
+        visualPreview = /*html*/ `<div class="shadow-preview" style="filter: var(${token});"></div>`;
         break;
     }
 

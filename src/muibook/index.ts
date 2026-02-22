@@ -108,6 +108,7 @@ import "../components/mui-form-group";
 import "../components/mui-form-hint";
 import "../components/mui-hint";
 import "../components/mui-prompt";
+import "../components/mui-prompt-toggle";
 import "../components/mui-prompt-message";
 import "../components/mui-prompt-preview";
 import "../components/mui-alert";

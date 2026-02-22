@@ -224,6 +224,8 @@ html[data-brand="sensei"][data-theme="light"] {
   --chip-icon-fill: var(--green-1100);
   --chip-dismiss-action-background: var(--green-300);
   --chip-dismiss-action-background-hover: var(--black-opacity-0);
+  --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20));
+  --chip-dismiss-action-filter: var(--chip-filter);
 
   /* Dropdown */
   --dropdown-background: var(--green-300);
@@ -463,6 +465,8 @@ html[data-brand="sensei"][data-theme="dark"] {
   --chip-icon-fill: var(--white);
   --chip-dismiss-action-background: var(--green-1300);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
+  --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-40));
+  --chip-dismiss-action-filter: var(--chip-filter);
 
   /* Dropdown */
   --dropdown-background: var(--green-1400);
