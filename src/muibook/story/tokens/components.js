@@ -273,6 +273,7 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--prompt-accent-secondary" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-hover-sweep-speed" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-focus-pulse-speed" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-surface-filter" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-placeholder-color" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-placeholder-color-hover" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-placeholder-color-focus" variant="text-color"></story-token-slat>

@@ -37,6 +37,8 @@ class MuiPrompt extends HTMLElement {
       "preview-dialog-width",
       "preview-dialog-title",
       "context-mode",
+      "effects-off",
+      "color-layout",
       "color-top-start",
       "color-top-mid",
       "color-top-end",
@@ -53,6 +55,7 @@ class MuiPrompt extends HTMLElement {
   private previewSlotEl: HTMLSlotElement | null = null;
   private previewResizeObserver: ResizeObserver | null = null;
   private fanAnimations = new Map<HTMLElement, Animation>();
+  private pendingColorFade = false;
   private readonly enforceActionVariants = () => {
     if (!this.shadowRoot) return;
     const selector = 'slot[name="actions"], slot[name="actions-trigger"], slot[name="actions-right"]';
@@ -401,9 +404,39 @@ class MuiPrompt extends HTMLElement {
       return;
     }
 
+    if (
+      name === "color-layout" ||
+      name === "color-top-start" ||
+      name === "color-top-mid" ||
+      name === "color-top-end" ||
+      name === "color-top-accent"
+    ) {
+      this.pendingColorFade = true;
+    }
+
     this.render();
     this.bindEvents();
     this.updateActionsLayout();
+    if (this.pendingColorFade) {
+      this.runColorFade();
+      this.pendingColorFade = false;
+    }
+  }
+
+  private runColorFade() {
+    const surface = this.shadowRoot?.querySelector(".surface") as HTMLElement | null;
+    if (!surface || typeof surface.animate !== "function") return;
+    surface.animate(
+      [
+        { opacity: 0.82, filter: "saturate(0.92)" },
+        { opacity: 1, filter: "saturate(1)" },
+      ],
+      {
+        duration: 240,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        fill: "none",
+      },
+    );
   }
 
   private getValue() {
@@ -828,6 +861,20 @@ class MuiPrompt extends HTMLElement {
     const colorTopMid = this.getAttribute("color-top-mid") || "";
     const colorTopEnd = this.getAttribute("color-top-end") || "";
     const colorTopAccent = this.getAttribute("color-top-accent") || "";
+    const colorLayout = (this.getAttribute("color-layout") || "default").toLowerCase();
+    const swapLayout = colorLayout === "swap";
+    const startSource = swapLayout
+      ? colorTopEnd || "var(--prompt-color-top-end, var(--green-500))"
+      : colorTopStart || "var(--prompt-color-top-start, var(--mui-brand-400))";
+    const midSource = swapLayout
+      ? colorTopAccent || "var(--prompt-color-top-accent, var(--orange-500))"
+      : colorTopMid || "var(--prompt-color-top-mid, var(--blue-500))";
+    const endSource = swapLayout
+      ? colorTopStart || "var(--prompt-color-top-start, var(--mui-brand-400))"
+      : colorTopEnd || "var(--prompt-color-top-end, var(--green-500))";
+    const accentSource = swapLayout
+      ? colorTopMid || "var(--prompt-color-top-mid, var(--blue-500))"
+      : colorTopAccent || "var(--prompt-color-top-accent, var(--orange-500))";
     const ariaLabel = this.getAttribute("aria-label");
     const ariaLabelledBy = this.getAttribute("aria-labelledby");
     const ariaDescribedBy = this.getAttribute("aria-describedby");
@@ -838,15 +885,12 @@ class MuiPrompt extends HTMLElement {
         :host {
           display: block;
           --prompt-action-radius: var(--chip-radius-small, var(--radius-400));
-          --_prompt-color-top-start-source: ${colorTopStart || "var(--_prompt-accent-primary)"};
-          --_prompt-color-top-mid-source: ${colorTopMid || "var(--_prompt-accent-mid)"};
-          --_prompt-color-top-end-source: ${colorTopEnd || "var(--_prompt-accent-secondary)"};
-          --_prompt-color-top-accent-source: ${colorTopAccent || "color-mix(in srgb, var(--_prompt-accent-primary) 62%, var(--_prompt-accent-secondary) 38%)"};
+          --_prompt-color-top-start-source: ${startSource};
+          --_prompt-color-top-mid-source: ${midSource};
+          --_prompt-color-top-end-source: ${endSource};
+          --_prompt-color-top-accent-source: ${accentSource};
           --_prompt-accent-primary: var(--prompt-accent-primary, var(--prompt-spectrum-start, var(--mui-brand-400)));
-          --_prompt-accent-secondary: var(
-            --prompt-accent-secondary,
-            color-mix(in srgb, var(--_prompt-accent-primary) 68%, var(--white) 32%)
-          );
+          --_prompt-accent-secondary: var(--prompt-accent-secondary, var(--blue-500));
           --_prompt-accent-mid: color-mix(in srgb, var(--_prompt-accent-primary) 52%, var(--_prompt-accent-secondary) 48%);
           --_prompt-start-tint: color-mix(in srgb, var(--_prompt-color-top-start-source) 24%, transparent 76%);
           --_prompt-mid-tint: color-mix(in srgb, var(--_prompt-color-top-mid-source) 18%, transparent 82%);
@@ -856,19 +900,64 @@ class MuiPrompt extends HTMLElement {
             var(--_prompt-color-top-accent-source) 16%,
             transparent 84%
           );
+          --_prompt-layer-start-tint: ${swapLayout ? "var(--_prompt-end-tint)" : "var(--_prompt-start-tint)"};
+          --_prompt-layer-mid-tint: ${swapLayout ? "var(--_prompt-accent-tint)" : "var(--_prompt-mid-tint)"};
+          --_prompt-layer-end-tint: ${swapLayout ? "var(--_prompt-start-tint)" : "var(--_prompt-end-tint)"};
+          --_prompt-layer-accent-tint: ${swapLayout ? "var(--_prompt-mid-tint)" : "var(--_prompt-accent-tint)"};
           --_prompt-spectrum-blend-mode-hover: normal;
           --_prompt-spectrum-blend-mode-focus: normal;
           --prompt-placeholder-color-hover-light: var(--grey-1200);
           --prompt-placeholder-color-hover-dark: var(--white);
           --prompt-placeholder-color-focus-light: var(--grey-1200);
           --prompt-placeholder-color-focus-dark: var(--white);
-          --prompt-focus-surface-opacity: 0.55;
+          --prompt-focus-border-color: var(--black-opacity-50);
+          --prompt-surface-filter: drop-shadow(
+            0 var(--stroke-size-100) 0 var(--black-opacity-5)
+          );
+          --prompt-focus-after-opacity: 0.28;
+          --prompt-focus-after-opacity-min: 0;
+          --prompt-focus-after-opacity-max: 0.28;
+          --prompt-focus-after-pulse-speed-global: calc(var(--speed-400) * 4);
+          --prompt-focus-after-pulse-speed-light: var(--prompt-focus-after-pulse-speed-global);
+          --prompt-focus-after-pulse-speed-dark: var(--prompt-focus-after-pulse-speed-global);
+          --prompt-focus-after-pulse-speed: var(--prompt-focus-after-pulse-speed-global);
+          --prompt-focus-surface-opacity: 0.35;
           --prompt-mesh-scale-max-x: 1;
           --prompt-mesh-scale-max-y: 1.09;
           --prompt-mesh-scale-min-x: 0.98;
           --prompt-mesh-scale-min-y: 1.04;
           --prompt-mesh-overflow: calc((var(--prompt-mesh-scale-max-y) - 1) * 50%);
           --prompt-mesh-blur-pad: var(--space-100);
+          --prompt-hover-border-pulse-start: color-mix(
+            in srgb,
+            var(--prompt-focus-border-color) 10%,
+            transparent 90%
+          );
+          --prompt-hover-border-pulse-end: color-mix(
+            in srgb,
+            var(--prompt-focus-border-color) 25%,
+            transparent 75%
+          );
+          --_prompt-border-hover-primary-soft: color-mix(
+            in srgb,
+            var(--prompt-border-color-hover-primary, var(--_prompt-accent-primary)) 46%,
+            var(--form-default-border-color-hover) 54%
+          );
+          --_prompt-border-hover-primary-strong: color-mix(
+            in srgb,
+            var(--prompt-border-color-hover-primary, var(--_prompt-accent-primary)) 70%,
+            var(--form-default-border-color-hover) 30%
+          );
+          --_prompt-border-hover-secondary-soft: color-mix(
+            in srgb,
+            var(--prompt-border-color-hover-secondary, var(--_prompt-accent-secondary)) 46%,
+            var(--form-default-border-color-hover) 54%
+          );
+          --_prompt-border-hover-secondary-strong: color-mix(
+            in srgb,
+            var(--prompt-border-color-hover-secondary, var(--_prompt-accent-secondary)) 70%,
+            var(--form-default-border-color-hover) 30%
+          );
           overflow: visible;
         }
         .surface {
@@ -884,6 +973,7 @@ class MuiPrompt extends HTMLElement {
           transition:
             border-color var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1),
             box-shadow var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1);
+          filter: var(--prompt-surface-filter);
           box-shadow: none;
         }
         .surface::before {
@@ -908,38 +998,35 @@ class MuiPrompt extends HTMLElement {
           background:
             radial-gradient(
               90% 120% at 12% 16%,
-              var(--_prompt-start-tint) 0%,
+              var(--_prompt-layer-start-tint) 0%,
               transparent 62%
             ),
             radial-gradient(
               90% 120% at 72% 8%,
-              var(--_prompt-mid-tint) 0%,
+              var(--_prompt-layer-mid-tint) 0%,
               transparent 60%
             ),
             radial-gradient(
               80% 120% at 86% 72%,
-              var(--_prompt-end-tint) 0%,
+              var(--_prompt-layer-end-tint) 0%,
               transparent 58%
             ),
             radial-gradient(
               110% 120% at 34% 88%,
-              var(--_prompt-accent-tint) 0%,
+              var(--_prompt-layer-accent-tint) 0%,
               transparent 64%
             );
           mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
           filter: blur(var(--space-050));
-          transform: translate3d(0, 0, 0) scale(1.05);
+          transform: translate3d(0, 0, 0) scaleX(0.94) scaleY(1.01);
           transform-origin: center;
           will-change: transform, opacity, filter;
           transition: opacity var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1), filter var(--speed-200) ease;
         }
         .surface:hover {
           overflow: hidden;
-          border-color: var(--prompt-border-color-hover, var(--form-default-border-color-hover));
           background: var(--surface-elevated-100);
-          animation: none;
-          box-shadow: 0 var(--stroke-size-100) var(--space-200)
-            color-mix(in srgb, var(--prompt-hover-glow-color, var(--mui-brand-400)) 10%, transparent 90%);
+          animation: promptBorderHoverPulse var(--prompt-hover-border-pulse-speed, var(--speed-500)) ease-in-out infinite;
         }
         :host(:has(.actions-slot:hover)) .surface,
         :host(:has(.actions-slot:focus-within)) .surface {
@@ -950,30 +1037,30 @@ class MuiPrompt extends HTMLElement {
           background:
             radial-gradient(
               90% 120% at 12% 16%,
-              var(--_prompt-start-tint) 0%,
+              var(--_prompt-layer-start-tint) 0%,
               transparent 62%
             ),
             radial-gradient(
               90% 120% at 72% 8%,
-              var(--_prompt-mid-tint) 0%,
+              var(--_prompt-layer-mid-tint) 0%,
               transparent 60%
             ),
             radial-gradient(
               80% 120% at 86% 72%,
-              var(--_prompt-end-tint) 0%,
+              var(--_prompt-layer-end-tint) 0%,
               transparent 58%
             ),
             radial-gradient(
               110% 120% at 34% 88%,
-              var(--_prompt-accent-tint) 0%,
+              var(--_prompt-layer-accent-tint) 0%,
               transparent 64%
             ),
             var(--surface-elevated-100);
           mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
           filter: none;
           animation:
-            promptMeshHoverPulse var(--prompt-hover-sweep-speed, 1400ms) ease-in-out infinite alternate,
-            promptMeshPulse calc(var(--prompt-hover-sweep-speed, 1400ms) * 1.15) ease-in-out infinite;
+            promptMeshHoverPulse var(--prompt-hover-sweep-speed, var(--speed-500)) ease-in-out infinite alternate,
+            promptMeshPulse calc(var(--prompt-hover-sweep-speed, var(--speed-500)) * 1.15) ease-in-out infinite;
         }
         .surface:hover::after {
           opacity: 0;
@@ -981,27 +1068,65 @@ class MuiPrompt extends HTMLElement {
         }
         .surface:focus-within {
           overflow: visible;
-          outline: var(--outline-thin);
-          outline-color: var(--outline-color);
-          border-color: transparent;
-          outline-offset: var(--stroke-size-400);
+          border-color: var(--prompt-focus-border-color);
           background: var(--surface-elevated-100);
+          animation: none;
         }
         .surface:focus-within::after {
-          opacity: 1;
+          z-index: 1;
+          opacity: 0;
           mix-blend-mode: normal;
           filter: blur(var(--space-200));
-          animation:
-            promptMeshFocusPulse var(--prompt-focus-pulse-speed, 1200ms) ease-in-out infinite alternate,
-            promptMeshPulse calc(var(--prompt-focus-pulse-speed, 1200ms) * 1.2) ease-in-out infinite;
+          animation: promptMeshPulseFocusSoft var(--prompt-focus-after-pulse-speed) ease-in-out infinite;
         }
         .surface:focus-within::before {
+          z-index: 2;
           inset: 0;
           border-radius: var(--radius-300);
           opacity: var(--prompt-focus-surface-opacity);
-          background: var(--prompt-focus-surface-background, var(--surface-elevated-100));
+          background:
+            radial-gradient(
+              90% 120% at 12% 16%,
+              var(--_prompt-layer-start-tint) 0%,
+              transparent 62%
+            ),
+            radial-gradient(
+              90% 120% at 72% 8%,
+              var(--_prompt-layer-mid-tint) 0%,
+              transparent 60%
+            ),
+            radial-gradient(
+              80% 120% at 86% 72%,
+              var(--_prompt-layer-end-tint) 0%,
+              transparent 58%
+            ),
+            radial-gradient(
+              110% 120% at 34% 88%,
+              var(--_prompt-layer-accent-tint) 0%,
+              transparent 64%
+            ),
+            var(--prompt-focus-surface-background, var(--surface-elevated-100));
           mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
           animation: none;
+        }
+        :host([effects-off]) .surface::before {
+          inset: 0;
+          border-radius: var(--radius-300);
+          background: var(--surface-elevated-100);
+          mix-blend-mode: normal;
+          opacity: 1;
+          filter: none;
+          animation: none;
+        }
+        :host([effects-off]) .surface::after {
+          display: none;
+        }
+        :host([effects-off]) .surface:hover {
+          box-shadow: none;
+          border-color: var(--form-default-border-color-hover);
+        }
+        :host([effects-off]) .surface:focus-within {
+          background: var(--surface-elevated-100);
         }
         @keyframes promptMeshFloat {
           0% {
@@ -1011,21 +1136,40 @@ class MuiPrompt extends HTMLElement {
             transform: translate3d(0, 0, 0) scaleX(var(--prompt-mesh-scale-min-x)) scaleY(var(--prompt-mesh-scale-min-y));
           }
         }
+        @keyframes promptBorderHoverPulse {
+          0%,
+          100% {
+            border-color: var(--prompt-hover-border-pulse-start);
+          }
+          50% {
+            border-color: var(--prompt-hover-border-pulse-end);
+          }
+        }
         @keyframes promptMeshPulse {
           0%,
           100% {
-            opacity: 0.92;
-          }
-          50% {
             opacity: 1;
           }
-        }
-        @keyframes promptMeshFocusPulse {
-          0% {
-            transform: translate3d(0, 0, 0) scaleX(1) scaleY(1.03);
+          50% {
+            opacity: 0;
           }
+        }
+        @keyframes promptMeshPulseStrong {
+          0%,
           100% {
-            transform: translate3d(0, 0, 0) scaleX(1) scaleY(1.05);
+            opacity: 0.18;
+          }
+          50% {
+            opacity: 0.34;
+          }
+        }
+        @keyframes promptMeshPulseFocusSoft {
+          0%,
+          100% {
+            opacity: var(--prompt-focus-after-opacity-min);
+          }
+          50% {
+            opacity: var(--prompt-focus-after-opacity-max);
           }
         }
         @keyframes promptMeshHoverPulse {
@@ -1195,7 +1339,7 @@ class MuiPrompt extends HTMLElement {
         :host-context([data-theme="dark"]),
         :host-context([theme="dark"]),
         :host-context(.theme-dark) {
-          --prompt-focus-surface-opacity: 1;
+          --prompt-focus-surface-opacity: 0.35;
           --_prompt-accent-secondary: var(
             --prompt-accent-secondary,
             color-mix(in srgb, var(--_prompt-accent-primary) 64%, var(--grey-1200) 36%)
@@ -1213,8 +1357,55 @@ class MuiPrompt extends HTMLElement {
             var(--_prompt-color-top-accent-source) 16%,
             transparent 84%
           );
+          --_prompt-border-hover-primary-soft: color-mix(
+            in srgb,
+            var(--prompt-border-color-hover-primary, var(--_prompt-accent-primary)) 56%,
+            var(--form-default-border-color-hover) 44%
+          );
+          --_prompt-border-hover-primary-strong: color-mix(
+            in srgb,
+            var(--prompt-border-color-hover-primary, var(--_prompt-accent-primary)) 78%,
+            var(--form-default-border-color-hover) 22%
+          );
+          --_prompt-border-hover-secondary-soft: color-mix(
+            in srgb,
+            var(--prompt-border-color-hover-secondary, var(--_prompt-accent-secondary)) 56%,
+            var(--form-default-border-color-hover) 44%
+          );
+          --_prompt-border-hover-secondary-strong: color-mix(
+            in srgb,
+            var(--prompt-border-color-hover-secondary, var(--_prompt-accent-secondary)) 78%,
+            var(--form-default-border-color-hover) 22%
+          );
+          --prompt-hover-border-pulse-start: color-mix(
+            in srgb,
+            var(--prompt-focus-border-color) 10%,
+            transparent 90%
+          );
+          --prompt-hover-border-pulse-end: color-mix(
+            in srgb,
+            var(--prompt-focus-border-color) 25%,
+            transparent 75%
+          );
+          --prompt-focus-border-color: var(--white-opacity-50);
+          --prompt-surface-filter: drop-shadow(
+            0 var(--stroke-size-100) 0 var(--black-opacity-10)
+          );
+          --prompt-focus-after-opacity: 0.3;
+          --prompt-focus-after-opacity-min: 0;
+          --prompt-focus-after-opacity-max: 0.3;
           --_prompt-spectrum-blend-mode-hover: soft-light;
           --_prompt-spectrum-blend-mode-focus: normal;
+        }
+        :host-context([data-theme="light"]),
+        :host-context([theme="light"]),
+        :host-context(.theme-light) {
+          --prompt-focus-after-pulse-speed: var(--prompt-focus-after-pulse-speed-light);
+        }
+        :host-context([data-theme="dark"]),
+        :host-context([theme="dark"]),
+        :host-context(.theme-dark) {
+          --prompt-focus-after-pulse-speed: var(--prompt-focus-after-pulse-speed-dark);
         }
         .surface:focus-within textarea::placeholder {
           color: var(

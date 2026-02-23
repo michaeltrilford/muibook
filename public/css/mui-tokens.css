@@ -204,6 +204,9 @@ html[data-theme="light"] {
   --prompt-accent-secondary: var(--prompt-spectrum-end);
   --prompt-hover-sweep-speed: 1400ms;
   --prompt-focus-pulse-speed: 1400ms;
+  --prompt-surface-filter: drop-shadow(
+    0 var(--stroke-size-100) 0 var(--black-opacity-5)
+  );
   --prompt-placeholder-color: var(--form-default-placeholder-color);
   --prompt-placeholder-color-hover: var(--form-default-placeholder-color-hover);
   --prompt-placeholder-color-focus: var(--form-default-placeholder-color-focus);
@@ -529,6 +532,9 @@ html[data-theme="dark"] {
   --prompt-accent-secondary: var(--prompt-spectrum-end);
   --prompt-hover-sweep-speed: 1400ms;
   --prompt-focus-pulse-speed: 1400ms;
+  --prompt-surface-filter: drop-shadow(
+    0 var(--stroke-size-100) 0 var(--black-opacity-10)
+  );
   --prompt-placeholder-color: var(--form-default-placeholder-color);
   --prompt-placeholder-color-hover: var(--form-default-placeholder-color-hover);
   --prompt-placeholder-color-focus: var(--form-default-placeholder-color-focus);

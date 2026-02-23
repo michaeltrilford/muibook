@@ -5,11 +5,22 @@ class storyTypeSlat extends HTMLElement {
 
   constructor() {
     super();
+    this.attachShadow({ mode: 'open' });
+  }
 
-    const shadowRoot = this.attachShadow({ mode: 'open' });
+  connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback() {
+    this.render();
+  }
+
+  render() {
+    if (!this.shadowRoot) return;
 
     const styles = /*css*/ `
-      :host { 
+      :host {
         display: block;
       }
 
@@ -28,8 +39,7 @@ class storyTypeSlat extends HTMLElement {
         clip-path: inset(50%);
         white-space: nowrap;
         border: 0;
-        }
-
+      }
     `;
 
     const name = this.getAttribute('name') || '—';
@@ -42,9 +52,7 @@ class storyTypeSlat extends HTMLElement {
       rawOptions !== '-'
         ? rawOptions
             .split(',')
-            .map(
-              (opt) => `<story-code-snippet>${opt.trim()}</story-code-snippet>`,
-            )
+            .map((opt) => `<story-code-snippet>${opt.trim()}</story-code-snippet>`)
             .join(' ')
         : '-';
 
@@ -54,44 +62,46 @@ class storyTypeSlat extends HTMLElement {
         ? `<story-code-snippet>${rawDefault}</story-code-snippet>`
         : '-';
 
-    shadowRoot.innerHTML = /*html*/ `
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-
-
       <mui-responsive breakpoint="600">
-
         <mui-v-stack space="var(--space-000)" slot="showAbove">
           <mui-slat style="gap: var(--space-600)">
             <div slot="start">
               <mui-v-stack space="var(--space-200)">
-                <mui-body size="medium"><mui-h-stack space="var(--space-050)"><span class="title">Name:</span> ${name} 
-                ${
-                  required
-                    ? '<span aria-hidden="true" style="color: var(--red-500)">*</span><span class="visually-hidden">(required)</span>'
-                    : ''
-                }
-                </mui-h-stack></mui-body>
+                <mui-body size="medium">
+                  <mui-h-stack space="var(--space-050)">
+                    <span class="title">Name:</span> ${name}
+                    ${
+                      required
+                        ? '<span aria-hidden="true" style="color: var(--red-500)">*</span><span class="visually-hidden">(required)</span>'
+                        : ''
+                    }
+                  </mui-h-stack>
+                </mui-body>
                 <mui-body size="x-small"><span class="title">Description:</span><br /> ${description}</mui-body>
               </mui-v-stack>
             </div>
-
             <mui-v-stack space="var(--space-100)" slot="end">
               <mui-body size="x-small"><span class="title">Default:</span> ${defaultVal}</mui-body>
               <mui-body size="x-small"><span class="title">Type:</span> ${type}</mui-body>
               <mui-body size="x-small"><span class="title">Options:</span> ${optionList}</mui-body>
-              </mui-v-stack>
+            </mui-v-stack>
           </mui-slat>
         </mui-v-stack>
 
         <mui-v-stack space="var(--space-100)" slot="showBelow">
           <mui-v-stack space="var(--space-200)">
-             <mui-body size="medium"><mui-h-stack space="var(--space-050)"><span class="title">Name:</span> ${name} 
+            <mui-body size="medium">
+              <mui-h-stack space="var(--space-050)">
+                <span class="title">Name:</span> ${name}
                 ${
                   required
                     ? '<span aria-hidden="true" style="color: var(--red-500)">*</span><span class="visually-hidden">(required)</span>'
                     : ''
                 }
-                </mui-h-stack></mui-body>
+              </mui-h-stack>
+            </mui-body>
             <mui-body size="x-small">${description}</mui-body>
           </mui-v-stack>
 
@@ -100,7 +110,7 @@ class storyTypeSlat extends HTMLElement {
             <mui-body size="x-small"><span class="title">Type:</span> ${type}</mui-body>
             <mui-body size="x-small"><span class="title">Options:</span> ${optionList}</mui-body>
           </mui-v-stack>
-
+        </mui-v-stack>
       </mui-responsive>
     `;
   }

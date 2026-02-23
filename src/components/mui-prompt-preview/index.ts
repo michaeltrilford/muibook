@@ -221,7 +221,7 @@ class MuiPromptPreview extends HTMLElement {
               180deg,
               color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-400), transparent) 0%,
               color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-500), transparent) 30%,
-              var(--prompt-preview-surface) 100%
+              transparent 100%
             )
       `;
     const boxClasses = `box${bgImage ? " has-image" : ""}${isOverlayVariant ? " variant-overlay" : ""}${isInverted ? " inverted" : ""}`;
@@ -353,9 +353,9 @@ class MuiPromptPreview extends HTMLElement {
             transparent 100%
           );
           transform: translateX(-120%);
-          animation: previewScanline 2600ms cubic-bezier(0.22, 1, 0.36, 1) var(--prompt-preview-iterations);
+          animation: previewScanline 3600ms cubic-bezier(0.22, 1, 0.36, 1) var(--prompt-preview-iterations);
           animation-delay: var(--prompt-preview-sheen-delay, 0ms);
-          opacity: 0.36;
+          opacity: 0.16;
         }
         .box.animated:not(.has-image) .scanline {
           opacity: 0.08;
@@ -370,8 +370,8 @@ class MuiPromptPreview extends HTMLElement {
         }
         @keyframes previewScanline {
           0% { transform: translateX(-120%); opacity: 0; }
-          10% { opacity: 1; }
-          65% { opacity: 1; }
+          10% { opacity: 0.62; }
+          65% { opacity: 0.62; }
           100% { transform: translateX(120%); opacity: 0; }
         }
         @keyframes previewPulse {
