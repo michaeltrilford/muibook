@@ -232,13 +232,7 @@ class MuiPrompt extends HTMLElement {
     if (this.hasAttribute("disabled")) return;
 
     keyboardEvent.preventDefault();
-    this.dispatchEvent(
-      new CustomEvent("submit", {
-        detail: { value: this.getValue() },
-        bubbles: true,
-        composed: true,
-      }),
-    );
+    this.submit("keyboard");
   };
 
   private onPreviewScroll = () => {
@@ -442,6 +436,60 @@ class MuiPrompt extends HTMLElement {
   private getValue() {
     const textarea = this.shadowRoot?.querySelector("textarea");
     return textarea?.value ?? this.getAttribute("value") ?? "";
+  }
+
+  get value() {
+    return this.getValue();
+  }
+
+  set value(next: string) {
+    const normalized = next == null ? "" : String(next);
+    if (this.getAttribute("value") !== normalized) {
+      this.setAttribute("value", normalized);
+      return;
+    }
+    const textarea = this.shadowRoot?.querySelector("textarea") as HTMLTextAreaElement | null;
+    if (!textarea || textarea.value === normalized) return;
+    textarea.value = normalized;
+    this.syncTextareaHeight(textarea);
+  }
+
+  submit(source: "api" | "keyboard" = "api") {
+    if (this.hasAttribute("disabled")) return false;
+    const value = this.getValue();
+    const canSubmit = this.dispatchEvent(
+      new CustomEvent("before-submit", {
+        detail: { value, source },
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
+    );
+    if (!canSubmit) return false;
+    this.dispatchEvent(
+      new CustomEvent("submit", {
+        detail: { value, source },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    return true;
+  }
+
+  clear() {
+    this.value = "";
+    this.dispatchEvent(
+      new CustomEvent("input", {
+        detail: { value: "" },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  focus() {
+    const textarea = this.shadowRoot?.querySelector("textarea") as HTMLTextAreaElement | null;
+    textarea?.focus();
   }
 
   private syncTextareaHeight(textarea: HTMLTextAreaElement) {

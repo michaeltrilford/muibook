@@ -33,6 +33,34 @@ class StoryPrompt extends HTMLElement {
         description: "Enter submits; Shift+Enter adds newline.",
       },
       {
+        name: "before-submit (event)",
+        type: "CustomEvent",
+        options: "cancelable",
+        default: "",
+        description: "Fires before submit. Call event.preventDefault() to block submission.",
+      },
+      {
+        name: "submit(source?)",
+        type: "method",
+        options: "api, keyboard",
+        default: "",
+        description: "Programmatically submits with before-submit guard. Returns false when canceled.",
+      },
+      {
+        name: "clear()",
+        type: "method",
+        options: "",
+        default: "",
+        description: "Clears value and emits input.",
+      },
+      {
+        name: "focus()",
+        type: "method",
+        options: "",
+        default: "",
+        description: "Focuses the internal textarea.",
+      },
+      {
         name: "actions-fan",
         type: "boolean",
         options: "actions-fan",
@@ -396,6 +424,78 @@ class StoryPrompt extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-dropdown slot="actions" vertical-position="up"&gt;...MPT...&lt;/mui-dropdown&gt;<br />
           &nbsp;&nbsp;&lt;mui-button slot="actions-right" variant="tertiary"&gt;...&lt;/mui-button&gt;<br />
           &lt;/mui-prompt&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="submit-guard-api"
+        title="Submit Guard + API"
+        description="Use before-submit to block invalid sends, then call submit/clear/focus from app controls."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt
+            preview-scrollbar="hidden"
+            id="promptApiGuard"
+            placeholder="Type at least 5 characters..."
+            enter-submit
+            actions-fan
+            context-mode="icon"
+          >
+            <mui-h-stack slot="actions" space="var(--space-050)">
+              <mui-dropdown position="right" vertical-position="up">
+                <mui-button slot="action" variant="tertiary" icon-only size="small">
+                  <mui-icon-add size="small"></mui-icon-add>
+                </mui-button>
+                <mui-button variant="tertiary" size="small">Upload Photo</mui-button>
+                <mui-button variant="tertiary" size="small">Take Photo</mui-button>
+                <mui-button variant="tertiary" size="small">Upload File</mui-button>
+                <mui-button variant="tertiary" size="small">Screenshot</mui-button>
+              </mui-dropdown>
+              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+                <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                  <mui-icon-globe size="small"></mui-icon-globe>
+                </mui-button>
+                <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+              </mui-prompt-toggle>
+            </mui-h-stack>
+            <mui-dropdown slot="actions" position="right" vertical-position="up">
+              <mui-button slot="action" variant="tertiary" size="small">
+                MPT-4
+                <mui-icon-down-chevron slot="after" size="small"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            </mui-dropdown>
+            <mui-button slot="actions-right" variant="tertiary" id="promptApiSubmitBtn" size="small" icon-only>
+              <mui-icon-toggle id="promptApiToggle" rotate size="small">
+                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
+                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
+              </mui-icon-toggle>
+            </mui-button>
+          </mui-prompt>
+          <mui-h-stack space="var(--space-100)">
+            <mui-button id="promptApiSubmitMethodBtn" size="small" variant="secondary">Call submit()</mui-button>
+            <mui-button id="promptApiClearBtn" size="small" variant="tertiary">Call clear()</mui-button>
+            <mui-button id="promptApiFocusBtn" size="small" variant="tertiary">Call focus()</mui-button>
+          </mui-h-stack>
+          <mui-v-stack space="var(--space-050)">
+            <mui-body id="promptApiStatus" size="x-small" variant="optional" style="padding-left: var(--space-100);">
+              Idle: no submit yet.
+            </mui-body>
+            <mui-body id="promptApiPayload" size="x-small" variant="optional" style="padding-left: var(--space-100);">
+              {"event":"idle"}
+            </mui-body>
+          </mui-v-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt id="promptApiGuard" enter-submit&gt;...&lt;/mui-prompt&gt;<br />
+          prompt.addEventListener("before-submit", (event) =&gt; {<br />
+          &nbsp;&nbsp;if ((event.detail.value || "").trim().length &lt; 5) event.preventDefault();<br />
+          });<br />
+          prompt.submit(); // returns false when canceled<br />
+          prompt.clear();<br />
+          prompt.focus();
         </story-code-block>
       </story-card>
 
@@ -919,6 +1019,7 @@ class StoryPrompt extends HTMLElement {
       }
     };
     moveStatusUnderPrompt("promptDemo", "promptStatus");
+    moveStatusUnderPrompt("promptApiGuard", "promptApiStatus");
     moveStatusUnderPrompt("effectsOffPrompt", "effectsOffStatus");
     moveStatusUnderPrompt("agentCodeDialogPrompt", "agentCodeStatus");
     moveStatusUnderPrompt("agentImageDialogPrompt", "agentImageStatus");
@@ -930,6 +1031,14 @@ class StoryPrompt extends HTMLElement {
     const toggle = this.shadowRoot.querySelector("#promptToggle");
     const status = this.shadowRoot.querySelector("#promptStatus");
     const promptPayload = this.shadowRoot.querySelector("#promptPayload");
+    const promptApiGuard = this.shadowRoot.querySelector("#promptApiGuard");
+    const promptApiSubmitBtn = this.shadowRoot.querySelector("#promptApiSubmitBtn");
+    const promptApiToggle = this.shadowRoot.querySelector("#promptApiToggle");
+    const promptApiStatus = this.shadowRoot.querySelector("#promptApiStatus");
+    const promptApiPayload = this.shadowRoot.querySelector("#promptApiPayload");
+    const promptApiSubmitMethodBtn = this.shadowRoot.querySelector("#promptApiSubmitMethodBtn");
+    const promptApiClearBtn = this.shadowRoot.querySelector("#promptApiClearBtn");
+    const promptApiFocusBtn = this.shadowRoot.querySelector("#promptApiFocusBtn");
     const effectsOffPrompt = this.shadowRoot.querySelector("#effectsOffPrompt");
     const effectsOffSubmitBtn = this.shadowRoot.querySelector("#effectsOffSubmitBtn");
     const effectsOffToggle = this.shadowRoot.querySelector("#effectsOffToggle");
@@ -1061,6 +1170,14 @@ class StoryPrompt extends HTMLElement {
       label: "Agent prompt (default)",
     });
     bindPromptSimulation({
+      promptEl: promptApiGuard,
+      submitEl: promptApiSubmitBtn,
+      toggleEl: promptApiToggle,
+      statusEl: promptApiStatus,
+      payloadEl: promptApiPayload,
+      label: "Agent prompt (submit guard + api)",
+    });
+    bindPromptSimulation({
       promptEl: effectsOffPrompt,
       submitEl: effectsOffSubmitBtn,
       toggleEl: effectsOffToggle,
@@ -1154,6 +1271,37 @@ class StoryPrompt extends HTMLElement {
         valuePreview: String(detail.value || "").slice(0, 80),
         summary: `Preview opened: ${detail.badge || "UNKNOWN"}`,
       });
+    });
+
+    promptApiGuard?.addEventListener("before-submit", (event) => {
+      const detail = event.detail || {};
+      const value = String(detail.value || "").trim();
+      if (value.length >= 5) return;
+      event.preventDefault();
+      if (promptApiStatus) promptApiStatus.textContent = "Blocked: enter at least 5 characters";
+      if (promptApiPayload) {
+        promptApiPayload.textContent = JSON.stringify({
+          event: "before-submit:blocked",
+          reason: "min-length",
+          min: 5,
+          length: value.length,
+        });
+      }
+    });
+
+    promptApiSubmitMethodBtn?.addEventListener("click", () => {
+      const ok = promptApiGuard?.submit?.("api");
+      if (!ok && promptApiStatus) promptApiStatus.textContent = "submit(): canceled by before-submit";
+    });
+    promptApiClearBtn?.addEventListener("click", () => {
+      promptApiGuard?.clear?.();
+      if (promptApiStatus) promptApiStatus.textContent = "clear(): value reset";
+      if (promptApiPayload) promptApiPayload.textContent = JSON.stringify({ event: "clear" });
+    });
+    promptApiFocusBtn?.addEventListener("click", () => {
+      promptApiGuard?.focus?.();
+      if (promptApiStatus) promptApiStatus.textContent = "focus(): textarea focused";
+      if (promptApiPayload) promptApiPayload.textContent = JSON.stringify({ event: "focus" });
     });
   }
 }
