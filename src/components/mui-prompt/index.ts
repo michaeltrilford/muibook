@@ -31,11 +31,16 @@ class MuiPrompt extends HTMLElement {
       "actions-fan",
       "fan-open",
       "preview-overflow-to-preview",
+      "preview-scrollbar",
       "preview-threshold-chars",
       "preview-auto-clickable",
       "preview-dialog-width",
       "preview-dialog-title",
       "context-mode",
+      "color-top-start",
+      "color-top-mid",
+      "color-top-end",
+      "color-top-accent",
       "aria-label",
       "aria-labelledby",
       "aria-describedby",
@@ -819,6 +824,10 @@ class MuiPrompt extends HTMLElement {
     const rows = this.getAttribute("rows") || "3";
     const disabled = this.hasAttribute("disabled");
     const previewDialogWidth = this.getAttribute("preview-dialog-width") || "560px";
+    const colorTopStart = this.getAttribute("color-top-start") || "";
+    const colorTopMid = this.getAttribute("color-top-mid") || "";
+    const colorTopEnd = this.getAttribute("color-top-end") || "";
+    const colorTopAccent = this.getAttribute("color-top-accent") || "";
     const ariaLabel = this.getAttribute("aria-label");
     const ariaLabelledBy = this.getAttribute("aria-labelledby");
     const ariaDescribedBy = this.getAttribute("aria-describedby");
@@ -829,6 +838,38 @@ class MuiPrompt extends HTMLElement {
         :host {
           display: block;
           --prompt-action-radius: var(--chip-radius-small, var(--radius-400));
+          --_prompt-color-top-start-source: ${colorTopStart || "var(--_prompt-accent-primary)"};
+          --_prompt-color-top-mid-source: ${colorTopMid || "var(--_prompt-accent-mid)"};
+          --_prompt-color-top-end-source: ${colorTopEnd || "var(--_prompt-accent-secondary)"};
+          --_prompt-color-top-accent-source: ${colorTopAccent || "color-mix(in srgb, var(--_prompt-accent-primary) 62%, var(--_prompt-accent-secondary) 38%)"};
+          --_prompt-accent-primary: var(--prompt-accent-primary, var(--prompt-spectrum-start, var(--mui-brand-400)));
+          --_prompt-accent-secondary: var(
+            --prompt-accent-secondary,
+            color-mix(in srgb, var(--_prompt-accent-primary) 68%, var(--white) 32%)
+          );
+          --_prompt-accent-mid: color-mix(in srgb, var(--_prompt-accent-primary) 52%, var(--_prompt-accent-secondary) 48%);
+          --_prompt-start-tint: color-mix(in srgb, var(--_prompt-color-top-start-source) 24%, transparent 76%);
+          --_prompt-mid-tint: color-mix(in srgb, var(--_prompt-color-top-mid-source) 18%, transparent 82%);
+          --_prompt-end-tint: color-mix(in srgb, var(--_prompt-color-top-end-source) 20%, transparent 80%);
+          --_prompt-accent-tint: color-mix(
+            in srgb,
+            var(--_prompt-color-top-accent-source) 16%,
+            transparent 84%
+          );
+          --_prompt-spectrum-blend-mode-hover: normal;
+          --_prompt-spectrum-blend-mode-focus: normal;
+          --prompt-placeholder-color-hover-light: var(--grey-1200);
+          --prompt-placeholder-color-hover-dark: var(--white);
+          --prompt-placeholder-color-focus-light: var(--grey-1200);
+          --prompt-placeholder-color-focus-dark: var(--white);
+          --prompt-focus-surface-opacity: 0.55;
+          --prompt-mesh-scale-max-x: 1;
+          --prompt-mesh-scale-max-y: 1.09;
+          --prompt-mesh-scale-min-x: 0.98;
+          --prompt-mesh-scale-min-y: 1.04;
+          --prompt-mesh-overflow: calc((var(--prompt-mesh-scale-max-y) - 1) * 50%);
+          --prompt-mesh-blur-pad: var(--space-100);
+          overflow: visible;
         }
         .surface {
           position: relative;
@@ -838,15 +879,186 @@ class MuiPrompt extends HTMLElement {
           background: var(--surface-elevated-100);
           padding: 0;
           box-sizing: border-box;
+          overflow: visible;
+          isolation: isolate;
+          transition:
+            border-color var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1);
+          box-shadow: none;
+        }
+        .surface::before {
+          content: "";
+          position: absolute;
+          inset: var(--stroke-size-200);
+          pointer-events: none;
+          border-radius: calc(var(--radius-300) - var(--stroke-size-200));
+          z-index: 1;
+          opacity: 1;
+          background: var(--surface-elevated-100);
+          transition: opacity var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .surface::after {
+          content: "";
+          position: absolute;
+          inset: calc((var(--prompt-mesh-overflow) + var(--prompt-mesh-blur-pad)) * -1);
+          pointer-events: none;
+          border-radius: calc(var(--radius-300) + var(--prompt-mesh-overflow) + var(--prompt-mesh-blur-pad));
+          z-index: 0;
+          opacity: 0;
+          background:
+            radial-gradient(
+              90% 120% at 12% 16%,
+              var(--_prompt-start-tint) 0%,
+              transparent 62%
+            ),
+            radial-gradient(
+              90% 120% at 72% 8%,
+              var(--_prompt-mid-tint) 0%,
+              transparent 60%
+            ),
+            radial-gradient(
+              80% 120% at 86% 72%,
+              var(--_prompt-end-tint) 0%,
+              transparent 58%
+            ),
+            radial-gradient(
+              110% 120% at 34% 88%,
+              var(--_prompt-accent-tint) 0%,
+              transparent 64%
+            );
+          mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
+          filter: blur(var(--space-050));
+          transform: translate3d(0, 0, 0) scale(1.05);
+          transform-origin: center;
+          will-change: transform, opacity, filter;
+          transition: opacity var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1), filter var(--speed-200) ease;
+        }
+        .surface:hover {
+          overflow: hidden;
+          border-color: var(--prompt-border-color-hover, var(--form-default-border-color-hover));
+          background: var(--surface-elevated-100);
+          animation: none;
+          box-shadow: 0 var(--stroke-size-100) var(--space-200)
+            color-mix(in srgb, var(--prompt-hover-glow-color, var(--mui-brand-400)) 10%, transparent 90%);
+        }
+        :host(:has(.actions-slot:hover)) .surface,
+        :host(:has(.actions-slot:focus-within)) .surface {
+          overflow: visible;
+        }
+        .surface:hover::before {
+          opacity: 1;
+          background:
+            radial-gradient(
+              90% 120% at 12% 16%,
+              var(--_prompt-start-tint) 0%,
+              transparent 62%
+            ),
+            radial-gradient(
+              90% 120% at 72% 8%,
+              var(--_prompt-mid-tint) 0%,
+              transparent 60%
+            ),
+            radial-gradient(
+              80% 120% at 86% 72%,
+              var(--_prompt-end-tint) 0%,
+              transparent 58%
+            ),
+            radial-gradient(
+              110% 120% at 34% 88%,
+              var(--_prompt-accent-tint) 0%,
+              transparent 64%
+            ),
+            var(--surface-elevated-100);
+          mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
+          filter: none;
+          animation:
+            promptMeshHoverPulse var(--prompt-hover-sweep-speed, 1400ms) ease-in-out infinite alternate,
+            promptMeshPulse calc(var(--prompt-hover-sweep-speed, 1400ms) * 1.15) ease-in-out infinite;
+        }
+        .surface:hover::after {
+          opacity: 0;
+          animation: none;
+        }
+        .surface:focus-within {
+          overflow: visible;
+          outline: var(--outline-thin);
+          outline-color: var(--outline-color);
+          border-color: transparent;
+          outline-offset: var(--stroke-size-400);
+          background: var(--surface-elevated-100);
+        }
+        .surface:focus-within::after {
+          opacity: 1;
+          mix-blend-mode: normal;
+          filter: blur(var(--space-200));
+          animation:
+            promptMeshFocusPulse var(--prompt-focus-pulse-speed, 1200ms) ease-in-out infinite alternate,
+            promptMeshPulse calc(var(--prompt-focus-pulse-speed, 1200ms) * 1.2) ease-in-out infinite;
+        }
+        .surface:focus-within::before {
+          inset: 0;
+          border-radius: var(--radius-300);
+          opacity: var(--prompt-focus-surface-opacity);
+          background: var(--prompt-focus-surface-background, var(--surface-elevated-100));
+          mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
+          animation: none;
+        }
+        @keyframes promptMeshFloat {
+          0% {
+            transform: translate3d(0, 0, 0) scaleX(var(--prompt-mesh-scale-max-x)) scaleY(var(--prompt-mesh-scale-max-y));
+          }
+          100% {
+            transform: translate3d(0, 0, 0) scaleX(var(--prompt-mesh-scale-min-x)) scaleY(var(--prompt-mesh-scale-min-y));
+          }
+        }
+        @keyframes promptMeshPulse {
+          0%,
+          100% {
+            opacity: 0.92;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
+        @keyframes promptMeshFocusPulse {
+          0% {
+            transform: translate3d(0, 0, 0) scaleX(1) scaleY(1.03);
+          }
+          100% {
+            transform: translate3d(0, 0, 0) scaleX(1) scaleY(1.05);
+          }
+        }
+        @keyframes promptMeshHoverPulse {
+          0% {
+            transform: translate3d(0, 0, 0) scale(1.02);
+          }
+          100% {
+            transform: translate3d(0, 0, 0) scale(1.04);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .surface,
+          .surface::before,
+          .surface::after {
+            transition: none;
+            animation: none !important;
+          }
+          .surface:focus-within {
+            animation: none !important;
+          }
         }
         .input-wrap {
+          position: relative;
+          z-index: 2;
           width: 100%;
           padding-bottom: 5rem;
           box-sizing: border-box;
+          overflow: visible;
         }
         .preview-shell {
           position: relative;
           width: 100%;
+          z-index: 2;
           box-sizing: border-box;
           margin-inline: 0;
           padding-top: var(--space-300);
@@ -920,6 +1132,12 @@ class MuiPrompt extends HTMLElement {
           background: color-mix(in srgb, var(--text-color-optional) 85%, transparent);
           background-clip: padding-box;
         }
+        :host([preview-scrollbar="hidden"]) .preview-row {
+          scrollbar-width: none;
+        }
+        :host([preview-scrollbar="hidden"]) .preview-row::-webkit-scrollbar {
+          display: none;
+        }
         .preview-row::part(display) {
           display: flex;
         }
@@ -956,18 +1174,74 @@ class MuiPrompt extends HTMLElement {
           box-sizing: border-box;
         }
         textarea::placeholder {
-          color: var(--text-color-optional);
+          color: var(--prompt-placeholder-color, var(--form-default-placeholder-color, var(--text-color-optional)));
+          opacity: 1;
+          transition: color var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .surface:hover textarea::placeholder {
+          color: var(
+            --prompt-placeholder-color-hover,
+            var(--prompt-placeholder-color-hover-light)
+          );
+        }
+        :host-context([data-theme="dark"]) .surface:hover textarea::placeholder,
+        :host-context([theme="dark"]) .surface:hover textarea::placeholder,
+        :host-context(.theme-dark) .surface:hover textarea::placeholder {
+          color: var(
+            --prompt-placeholder-color-hover,
+            var(--prompt-placeholder-color-hover-dark)
+          );
+        }
+        :host-context([data-theme="dark"]),
+        :host-context([theme="dark"]),
+        :host-context(.theme-dark) {
+          --prompt-focus-surface-opacity: 1;
+          --_prompt-accent-secondary: var(
+            --prompt-accent-secondary,
+            color-mix(in srgb, var(--_prompt-accent-primary) 64%, var(--grey-1200) 36%)
+          );
+          --_prompt-accent-mid: color-mix(
+            in srgb,
+            var(--_prompt-accent-primary) 56%,
+            var(--_prompt-accent-secondary) 44%
+          );
+          --_prompt-start-tint: color-mix(in srgb, var(--_prompt-color-top-start-source) 22%, transparent 78%);
+          --_prompt-mid-tint: color-mix(in srgb, var(--_prompt-color-top-mid-source) 18%, transparent 82%);
+          --_prompt-end-tint: color-mix(in srgb, var(--_prompt-color-top-end-source) 20%, transparent 80%);
+          --_prompt-accent-tint: color-mix(
+            in srgb,
+            var(--_prompt-color-top-accent-source) 16%,
+            transparent 84%
+          );
+          --_prompt-spectrum-blend-mode-hover: soft-light;
+          --_prompt-spectrum-blend-mode-focus: normal;
+        }
+        .surface:focus-within textarea::placeholder {
+          color: var(
+            --prompt-placeholder-color-focus,
+            var(--prompt-placeholder-color-focus-light)
+          );
+        }
+        :host-context([data-theme="dark"]) .surface:focus-within textarea::placeholder,
+        :host-context([theme="dark"]) .surface:focus-within textarea::placeholder,
+        :host-context(.theme-dark) .surface:focus-within textarea::placeholder {
+          color: var(
+            --prompt-placeholder-color-focus,
+            var(--prompt-placeholder-color-focus-dark)
+          );
         }
         textarea:disabled {
           cursor: not-allowed;
         }
         .actions-slot {
           position: absolute;
+          z-index: 2;
           bottom: var(--space-300);
           display: inline-flex;
           align-items: center;
           gap: var(--space-100);
           pointer-events: none;
+          overflow: visible;
         }
         .actions-slot > * {
           pointer-events: auto;
@@ -1007,6 +1281,8 @@ class MuiPrompt extends HTMLElement {
           --action-radius-small: var(--prompt-action-radius);
           --action-radius-medium: var(--prompt-action-radius);
           --action-radius-large: var(--prompt-action-radius);
+          position: relative;
+          z-index: 4;
         }
         slot[name="actions-trigger"]::slotted(mui-h-stack),
         slot[name="actions"]::slotted(mui-h-stack),

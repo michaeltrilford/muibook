@@ -32,7 +32,7 @@ class tokensComponents extends HTMLElement {
             slot="message"
             heading="Quicklinks"
             limit="10"
-            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||message::Message|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
+            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
           ></story-quicklinks>
 
           <spec-card
@@ -256,6 +256,26 @@ class tokensComponents extends HTMLElement {
           <spec-card id="message" title="Message" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-message/index.ts">
             <story-token-slat slot="body" token="--message-radius" variant="radius"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Feedback</mui-link> tokens</mui-body>
+          </spec-card>
+
+          <spec-card id="prompt" title="Prompt" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt/index.ts">
+            <story-token-slat slot="body" token="--prompt-border-color-hover" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-border-color-focus" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-hover-ring-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-hover-glow-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-focus-ring-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-focus-glow-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-focus-surface-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-spectrum-start" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-spectrum-mid" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-spectrum-end" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-accent-primary" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-accent-secondary" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-hover-sweep-speed" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-focus-pulse-speed" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-placeholder-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-placeholder-color-hover" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-placeholder-color-focus" variant="text-color"></story-token-slat>
           </spec-card>
 
           <spec-card id="prompt-preview" title="Prompt Preview" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-preview/index.ts">

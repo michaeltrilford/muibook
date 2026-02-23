@@ -113,6 +113,55 @@ class StoryPrompt extends HTMLElement {
         default: "true",
         description: "Auto-applies clickable behavior to slotted previews.",
       },
+      {
+        name: "preview-scrollbar",
+        type: "string",
+        options: "hidden",
+        default: "",
+        description: "Set to hidden to keep horizontal preview scrolling but hide the scrollbar chrome.",
+      },
+      {
+        name: "--prompt-accent-primary",
+        type: "css var",
+        options: "{color}",
+        default: "var(--prompt-spectrum-start)",
+        description: "Primary accent used for prompt hover/focus mesh color synthesis.",
+      },
+      {
+        name: "--prompt-accent-secondary",
+        type: "css var",
+        options: "{color}",
+        default: "auto-derived from primary",
+        description: "Optional secondary accent; when omitted Prompt derives an opposite tone internally.",
+      },
+      {
+        name: "color-top-start",
+        type: "string",
+        options: "{css-color}",
+        default: "",
+        description: "Optional top mesh start color override (attribute).",
+      },
+      {
+        name: "color-top-mid",
+        type: "string",
+        options: "{css-color}",
+        default: "",
+        description: "Optional top mesh middle color override (attribute).",
+      },
+      {
+        name: "color-top-end",
+        type: "string",
+        options: "{css-color}",
+        default: "",
+        description: "Optional top mesh end color override (attribute).",
+      },
+      {
+        name: "color-top-accent",
+        type: "string",
+        options: "{css-color}",
+        default: "",
+        description: "Optional top mesh accent color override (attribute).",
+      },
     ];
 
     const rows = propItems
@@ -167,15 +216,21 @@ class StoryPrompt extends HTMLElement {
         id="preview-data"
         title="Preview: Data Feed"
         description="Render extracted preview metadata on-page for product logic."
-        usage="Use prompt-paste to capture clipboard payloads and append previews.|||Use prompt-preview-open to drive analytics, dialog selection, or routing.|||Use context-mode='icon|chip' with slotted <mui-prompt-toggle> (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
+        usage="Use prompt-paste to capture clipboard payloads and append previews.|||Use prompt-preview-open to drive analytics, dialog selection, or routing.|||Use context-mode='icon|chip' with slotted <mui-prompt-toggle> (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||Theme the hover/focus mesh using --prompt-accent-primary and optional --prompt-accent-secondary.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
+            preview-scrollbar="hidden"
             id="agentDataPrompt"
             placeholder="Paste, click preview, or submit..."
             enter-submit
             actions-fan
             context-mode="icon"
+            color-top-start="var(--mui-brand-400)"
+            color-top-mid="var(--blue-500)"
+            color-top-end="var(--green-500)"
+            color-top-accent="var(--orange-500)"
+            style="--prompt-accent-primary: var(--mui-brand-400); --prompt-accent-secondary: var(--blue-500);"
           >
             <mui-prompt-preview
               slot="preview"
@@ -234,7 +289,14 @@ class StoryPrompt extends HTMLElement {
           </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-prompt actions-fan enter-submit&gt;<br />
+          &lt;mui-prompt<br />
+          &nbsp;&nbsp;actions-fan<br />
+          &nbsp;&nbsp;enter-submit<br />
+          &nbsp;&nbsp;color-top-start="var(--mui-brand-400)"<br />
+          &nbsp;&nbsp;color-top-mid="var(--blue-500)"<br />
+          &nbsp;&nbsp;color-top-end="var(--green-500)"<br />
+          &nbsp;&nbsp;color-top-accent="var(--orange-500)"<br />
+          &nbsp;&nbsp;style="--prompt-accent-primary: var(--mui-brand-400); --prompt-accent-secondary: var(--blue-500);"&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" clickable badge="JSON" ...&gt;&lt;/mui-prompt-preview&gt;<br />
           &nbsp;&nbsp;&lt;mui-h-stack slot="actions"&gt;...add + globe...&lt;/mui-h-stack&gt;<br />
           
@@ -260,6 +322,7 @@ class StoryPrompt extends HTMLElement {
       >
         <mui-v-stack slot="body" space="var(--space-100)">
           <mui-prompt
+            preview-scrollbar="hidden"
             id="promptDemo"
             placeholder="Reply to Mui..."
             enter-submit
@@ -316,6 +379,7 @@ class StoryPrompt extends HTMLElement {
       <story-card id="preview-open-image-dialog" title="Preview: Image" description="Click image preview to open the built-in prompt dialog.">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
+            preview-scrollbar="hidden"
             id="agentImageDialogPrompt"
             placeholder="Use this image..."
             enter-submit
@@ -436,6 +500,7 @@ class StoryPrompt extends HTMLElement {
       <story-card id="preview-open-dialog" title="Preview: Code" description="Click preview to open the built-in prompt dialog.">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
+            preview-scrollbar="hidden"
             id="agentCodeDialogPrompt"
             placeholder="Review payload..."
             enter-submit
@@ -535,6 +600,7 @@ class StoryPrompt extends HTMLElement {
       <story-card id="preview-off" title="Preview: Off" description="Disable preview auto-click so items stay non-interactive.">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
+            preview-scrollbar="hidden"
             id="agentPreviewOffPrompt"
             placeholder="Preview is off..."
             enter-submit
