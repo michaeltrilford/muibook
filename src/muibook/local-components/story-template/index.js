@@ -6,7 +6,18 @@ import "../../images/storybook-mark";
 
 class StoryTemplate extends HTMLElement {
   static get observedAttributes() {
-    return ["title", "description", "accessibility", "website", "demo", "github", "figma", "guides", "npm"];
+    return [
+      "title",
+      "description",
+      "accessibility",
+      "website",
+      "demo",
+      "github",
+      "figma",
+      "guides",
+      "npm",
+      "container-max-width",
+    ];
   }
 
   constructor() {
@@ -26,6 +37,9 @@ class StoryTemplate extends HTMLElement {
         padding-top: calc(var(--space-500) + env(safe-area-inset-top)); 
         padding-bottom: calc(var(--space-500) + env(safe-area-inset-bottom));
         width: calc(100% - (var(--space-500) * 2));
+        max-width: var(--story-template-container-max-width, none);
+        margin-inline: auto;
+        box-sizing: border-box;
       }
 
       .wrapper::part(gap) {
@@ -93,6 +107,10 @@ class StoryTemplate extends HTMLElement {
 
     const title = this.getAttribute("title") || "";
     const descriptionText = this.getAttribute("description") || "";
+    const containerMaxWidth = this.getAttribute("container-max-width");
+    const containerStyle = containerMaxWidth
+      ? `style="--story-template-container-max-width: ${containerMaxWidth};"`
+      : "";
     const description = descriptionText
       ? /*html*/ `<mui-body size="medium" style="max-width: 70ch; margin-bottom: var(--space-200); text-wrap: pretty;">${descriptionText}</mui-body>`
       : "";
@@ -190,7 +208,7 @@ class StoryTemplate extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-      <mui-container center class="container">
+      <mui-container center class="container" ${containerStyle}>
         <mui-v-stack class="wrapper">
           <mui-v-stack class="introduction">
             <mui-v-stack class="header-group">

@@ -4,36 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-accordion/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/#/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-accordion/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-accordion/index.ts",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-addon/doc.ts",
       "declarations": [
         {
@@ -89,6 +59,201 @@
           "declaration": {
             "name": "MuiAddon",
             "module": "src/components/mui-addon/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-accordion/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/#/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-accordion/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-accordion/index.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-badge/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Badge: { title: \"Badge\", description: \"Badges are non-interactive and indicate counts or statuses.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/3uhL6lnJTEY4LtVyMA3og5/7844fa7e691b9f97e3c335e1a978e881/Badge_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1108&t=FSv3FEahG8VQW1FZ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/feedback-badge--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts\"], website: [\"https://muibook.com/#/badge\"], guides: [\"https://guides.muibook.com/badge\"], usage: { list: [ \"Show the number of unread notifications – E.g. '4' unread messages\", \"Indicate the status of a user – E.g. Online, Busy, or Away\", \"Use size variants (x-small, small, medium, large) to match surrounding component scale.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"default\", title: \"default\", description: \"Used for data that is visually in the foreground.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3Xgz2qoLs8NACel4fRr9iC/52699b5763f1efd4853a9ffb991b3ff3/badge-default.png\", }, { key: \"positive\", title: \"positive\", description: \"For positive or completed statuses.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/65RMIuUEUIzusbSAwqLQcI/63edb290041c708fc69d0d27fc49e25d/badge-positive.png\", }, { key: \"warning\", title: \"warning\", description: \"For urgent or important statuses.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5AFfOShVyTEKO1wgIe6rYv/e809c76ddabdfd9789adc31a26becf83/badge-warning.png\", }, { key: \"error\", title: \"error\", description: \"Represents an error, issue or critical state.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/E0jtn7WSTwYligMqSNl0k/c3c041e025c3725682ec12eb3ab98400/badge-error.png\", }, { key: \"overlay\", title: \"overlay\", description: \"For labels placed on media/image surfaces with stronger contrast.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcome-based-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, { key: \"compliance-dashboard-table\", name: \"Compliance Dashboard Table\", description: \"This example shows a desktop view of a table used within an accounting compliance dashboard.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3vUKA5C5iJ3LvjLwf2WiO9/274ffe423dbe828244294f6809172ce1/table-composition-compliance-dashboard.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, { key: \"outcomes-roadmap-dashboard\", name: \"Outcomes Roadmap Dashboard\", description: \"Example of the responsive component in the Outcomes Roadmap Dashboard, demonstrating layout, title, and padding adjustments across breakpoints.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3FsXandRr1Z9BAKv33twxT/b0d0e4a8b6237bf7d38660111bceb8ab/responsive-composition.gif\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Link\", link: \"https://guides.muibook.com/link\", }, { name: \"Tab Bar\", link: \"https://guides.muibook.com/tab-bar\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-badge/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-badge/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiBadge",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant"
+            },
+            {
+              "name": "size"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-badge",
+          "declaration": {
+            "name": "MuiBadge",
+            "module": "src/components/mui-badge/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Avatar: { title: \"Avatar\", description: \"Avatar components are used to represent users or entities visually, often through images, initials, or icons.\", hero: [\"https://images.ctfassets.net/i5uwscj4pkk2/2Qj1aPRsHVZZs6eF8XO6XC/54dd3c04d5a0ac379050cfa6f45d9732/Avatar_-_Home_Image.png\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1498-15366&t=2P2nhh7B70fl6xQ4-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/inputs-avatar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts\"], website: [\"https://muibook.com/#/avatar\"], guides: [\"https://guides.muibook.com/avatar\"], usage: { list: [ \"Represent a user or entity visually in lists, chats, comments, or profiles.\", \"Display a profile photo, initials, or icon associated with a person or object.\", \"Use in compact UI elements where space is limited (e.g., tables, cards).\", \"Pair with user metadata (name, role, status) for context.\", \"Indicate presence, status, or selection in collaborative interfaces.\", ], }, accessibility: { designerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], engineerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-avatar/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiAvatar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_imageFailed",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "hasSlottedContent"
+            },
+            {
+              "kind": "method",
+              "name": "getInitials",
+              "parameters": [
+                {
+                  "name": "label",
+                  "type": {
+                    "text": "string | null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getBackgroundCSS"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label"
+            },
+            {
+              "name": "image"
+            },
+            {
+              "name": "size"
+            },
+            {
+              "name": "background"
+            },
+            {
+              "name": "background-color"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-avatar",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-avatar",
+          "declaration": {
+            "name": "MuiAvatar",
+            "module": "src/components/mui-avatar/index.ts"
           }
         }
       ]
@@ -231,171 +396,6 @@
           "declaration": {
             "name": "MuiAlert",
             "module": "src/components/mui-alert/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-avatar/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Avatar: { title: \"Avatar\", description: \"Avatar components are used to represent users or entities visually, often through images, initials, or icons.\", hero: [\"https://images.ctfassets.net/i5uwscj4pkk2/2Qj1aPRsHVZZs6eF8XO6XC/54dd3c04d5a0ac379050cfa6f45d9732/Avatar_-_Home_Image.png\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1498-15366&t=2P2nhh7B70fl6xQ4-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/inputs-avatar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts\"], website: [\"https://muibook.com/#/avatar\"], guides: [\"https://guides.muibook.com/avatar\"], usage: { list: [ \"Represent a user or entity visually in lists, chats, comments, or profiles.\", \"Display a profile photo, initials, or icon associated with a person or object.\", \"Use in compact UI elements where space is limited (e.g., tables, cards).\", \"Pair with user metadata (name, role, status) for context.\", \"Indicate presence, status, or selection in collaborative interfaces.\", ], }, accessibility: { designerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], engineerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-avatar/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-avatar/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiAvatar",
-          "members": [
-            {
-              "kind": "field",
-              "name": "_imageFailed",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "hasSlottedContent"
-            },
-            {
-              "kind": "method",
-              "name": "getInitials",
-              "parameters": [
-                {
-                  "name": "label",
-                  "type": {
-                    "text": "string | null"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "getBackgroundCSS"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label"
-            },
-            {
-              "name": "image"
-            },
-            {
-              "name": "size"
-            },
-            {
-              "name": "background"
-            },
-            {
-              "name": "background-color"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-avatar",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-avatar",
-          "declaration": {
-            "name": "MuiAvatar",
-            "module": "src/components/mui-avatar/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-badge/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Badge: { title: \"Badge\", description: \"Badges are non-interactive and indicate counts or statuses.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/3uhL6lnJTEY4LtVyMA3og5/7844fa7e691b9f97e3c335e1a978e881/Badge_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1108&t=FSv3FEahG8VQW1FZ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/feedback-badge--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts\"], website: [\"https://muibook.com/#/badge\"], guides: [\"https://guides.muibook.com/badge\"], usage: { list: [ \"Show the number of unread notifications – E.g. '4' unread messages\", \"Indicate the status of a user – E.g. Online, Busy, or Away\", \"Use size variants (x-small, small, medium, large) to match surrounding component scale.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"default\", title: \"default\", description: \"Used for data that is visually in the foreground.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3Xgz2qoLs8NACel4fRr9iC/52699b5763f1efd4853a9ffb991b3ff3/badge-default.png\", }, { key: \"positive\", title: \"positive\", description: \"For positive or completed statuses.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/65RMIuUEUIzusbSAwqLQcI/63edb290041c708fc69d0d27fc49e25d/badge-positive.png\", }, { key: \"warning\", title: \"warning\", description: \"For urgent or important statuses.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5AFfOShVyTEKO1wgIe6rYv/e809c76ddabdfd9789adc31a26becf83/badge-warning.png\", }, { key: \"error\", title: \"error\", description: \"Represents an error, issue or critical state.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/E0jtn7WSTwYligMqSNl0k/c3c041e025c3725682ec12eb3ab98400/badge-error.png\", }, { key: \"overlay\", title: \"overlay\", description: \"For labels placed on media/image surfaces with stronger contrast.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcome-based-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, { key: \"compliance-dashboard-table\", name: \"Compliance Dashboard Table\", description: \"This example shows a desktop view of a table used within an accounting compliance dashboard.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3vUKA5C5iJ3LvjLwf2WiO9/274ffe423dbe828244294f6809172ce1/table-composition-compliance-dashboard.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, { key: \"outcomes-roadmap-dashboard\", name: \"Outcomes Roadmap Dashboard\", description: \"Example of the responsive component in the Outcomes Roadmap Dashboard, demonstrating layout, title, and padding adjustments across breakpoints.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3FsXandRr1Z9BAKv33twxT/b0d0e4a8b6237bf7d38660111bceb8ab/responsive-composition.gif\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Link\", link: \"https://guides.muibook.com/link\", }, { name: \"Tab Bar\", link: \"https://guides.muibook.com/tab-bar\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-badge/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-badge/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiBadge",
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant"
-            },
-            {
-              "name": "size"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-badge",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-badge",
-          "declaration": {
-            "name": "MuiBadge",
-            "module": "src/components/mui-badge/index.ts"
           }
         }
       ]
@@ -5730,70 +5730,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-progress/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Progress: { title: \"Progress\", description: \"A Progress Bar visually represents completion status by filling a bar based on a percentage value. It gives users a clear indication of progress for a given task or process.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/2NPcL7tA0zGUWFLShr66fS/23d0050dce8c8379afc6deb8e351d049/Progress_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4161&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/inputs-progress--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts\"], website: [\"https://muibook.com/#/progress\"], guides: [\"https://guides.muibook.com/progress\"], usage: { list: [ \"Show task progress – Indicate how much of a task or process has been completed.\", \"Display loading states – Represent the progress of a background operation, such as file uploads.\", \"Track step completion – Show progress in multi-step workflows or onboarding processes.\", \"Tune visual density and motion with component tokens such as --progress-radius, --progress-syncing-width, and --progress-pending-stripe-size.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/1iPll53Pmtgjh50qYwhsgY/908da9c51dd605895bd6306290fc6bd9/Progress_-_Anatomy.png\", list: [ \"Fill (Indicator) – The colored portion inside the track that represents the progress percentage.\", \"Track – The background of the progress bar, providing the visual boundary for progress.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcome-based-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-progress/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-progress/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiProgress",
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "progress"
-            },
-            {
-              "name": "state"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-progress",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-progress",
-          "declaration": {
-            "name": "MuiProgress",
-            "module": "src/components/mui-progress/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-prompt/doc.ts",
       "declarations": [
         {
@@ -6288,6 +6224,70 @@
           "declaration": {
             "name": "MuiPrompt",
             "module": "src/components/mui-prompt/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-progress/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Progress: { title: \"Progress\", description: \"A Progress Bar visually represents completion status by filling a bar based on a percentage value. It gives users a clear indication of progress for a given task or process.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/2NPcL7tA0zGUWFLShr66fS/23d0050dce8c8379afc6deb8e351d049/Progress_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4161&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/inputs-progress--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts\"], website: [\"https://muibook.com/#/progress\"], guides: [\"https://guides.muibook.com/progress\"], usage: { list: [ \"Show task progress – Indicate how much of a task or process has been completed.\", \"Display loading states – Represent the progress of a background operation, such as file uploads.\", \"Track step completion – Show progress in multi-step workflows or onboarding processes.\", \"Tune visual density and motion with component tokens such as --progress-radius, --progress-syncing-width, and --progress-pending-stripe-size.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/1iPll53Pmtgjh50qYwhsgY/908da9c51dd605895bd6306290fc6bd9/Progress_-_Anatomy.png\", list: [ \"Fill (Indicator) – The colored portion inside the track that represents the progress percentage.\", \"Track – The background of the progress bar, providing the visual boundary for progress.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcome-based-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-progress/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-progress/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiProgress",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "progress"
+            },
+            {
+              "name": "state"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-progress",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-progress",
+          "declaration": {
+            "name": "MuiProgress",
+            "module": "src/components/mui-progress/index.ts"
           }
         }
       ]
@@ -7138,36 +7138,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-slat/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Slat: { title: \"Slat\", description: \"Used to display structured data in a stacked format, typically on smaller viewports or within narrow-width layouts. Slats offer flexibility to surface key content and support custom layouts, stacking, or expansion of additional details.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/2SHOSwTkf7V7Ql4OaobtMg/2cacf5103d02e00f67748578213f4433/Slat_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=957-8535&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-slat--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts\"], website: [\"https://muibook.com/#/slat\"], guides: [\"https://guides.muibook.com/slat\"], usage: { list: [ \"Suitable for displaying data in narrow-width containers, such as side panels\", \"Use as a responsive alternative to tables on mobile or narrow viewports\", \"deal for presenting structured data in a compact, scannable format\", \"Supports stacking labels and values for easier readability\", \"Can include expandable sections to reveal more content on demand\", ], }, accessibility: { designerList: [\"mui-slat uses role='row'\", \"slotted children inherit role='cell'\"], engineerList: [\"mui-slat uses role='row'\", \"slotted children inherit role='cell'\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/0OzwVoT0EyK1sR1ufn3Vw/3cbee51beec1240ebeaaad485bff5970/Slat_-_Anatomy.png\", list: [ \"Header (Start): Slot for the header of slat items.\", \"Header (End): Optional area for secondary information.\", \"Row (Start): Primary content slot in a slat layout.\", \"Row (End): Secondary content slot in a slat layout.\", \"Accessory: Use for an icon or other suitable elements within the limited space available.\", \"Action: Enables the slat to become a clickable action.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"smart-card\", name: \"Smart Card\", description: \"The Smart Card composition uses slats to present structured information in a compact format. Slats help organise details such as titles, descriptions, and supporting actions, making the card easy to scan and interact with.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/74knMtil1vp9nHPPWXM1kr/54f8d978b0a82bca2c126e8ab800826f/SmartCard_-_Card_Composition.png\", }, { key: \"account-activity\", name: \"Account Activity\", description: \"In Account Activity, slats are used to display a list of recent actions. Each slat provides a clear breakdown of primary details with optional secondary information, ensuring activity is both easy to read and consistent across the interface.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5GVrfo3fcsVnX7yduux6kE/978c2c6635bf19ee7e67ccd26744ad33/Slat_-_Account_Composition.png\", }, ], }, related: { items: [ { name: \"Icons\", link: \"https://guides.muibook.com/icons\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-slat/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-slat/index.ts",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-smart-card/doc.ts",
       "declarations": [
         {
@@ -7256,6 +7226,36 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-slat/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Slat: { title: \"Slat\", description: \"Used to display structured data in a stacked format, typically on smaller viewports or within narrow-width layouts. Slats offer flexibility to surface key content and support custom layouts, stacking, or expansion of additional details.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/2SHOSwTkf7V7Ql4OaobtMg/2cacf5103d02e00f67748578213f4433/Slat_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=957-8535&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-slat--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts\"], website: [\"https://muibook.com/#/slat\"], guides: [\"https://guides.muibook.com/slat\"], usage: { list: [ \"Suitable for displaying data in narrow-width containers, such as side panels\", \"Use as a responsive alternative to tables on mobile or narrow viewports\", \"deal for presenting structured data in a compact, scannable format\", \"Supports stacking labels and values for easier readability\", \"Can include expandable sections to reveal more content on demand\", ], }, accessibility: { designerList: [\"mui-slat uses role='row'\", \"slotted children inherit role='cell'\"], engineerList: [\"mui-slat uses role='row'\", \"slotted children inherit role='cell'\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/0OzwVoT0EyK1sR1ufn3Vw/3cbee51beec1240ebeaaad485bff5970/Slat_-_Anatomy.png\", list: [ \"Header (Start): Slot for the header of slat items.\", \"Header (End): Optional area for secondary information.\", \"Row (Start): Primary content slot in a slat layout.\", \"Row (End): Secondary content slot in a slat layout.\", \"Accessory: Use for an icon or other suitable elements within the limited space available.\", \"Action: Enables the slat to become a clickable action.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"smart-card\", name: \"Smart Card\", description: \"The Smart Card composition uses slats to present structured information in a compact format. Slats help organise details such as titles, descriptions, and supporting actions, making the card easy to scan and interact with.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/74knMtil1vp9nHPPWXM1kr/54f8d978b0a82bca2c126e8ab800826f/SmartCard_-_Card_Composition.png\", }, { key: \"account-activity\", name: \"Account Activity\", description: \"In Account Activity, slats are used to display a list of recent actions. Each slat provides a clear breakdown of primary details with optional secondary information, ensuring activity is both easy to read and consistent across the interface.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5GVrfo3fcsVnX7yduux6kE/978c2c6635bf19ee7e67ccd26744ad33/Slat_-_Account_Composition.png\", }, ], }, related: { items: [ { name: \"Icons\", link: \"https://guides.muibook.com/icons\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-slat/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-slat/index.ts",
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
@@ -7354,36 +7354,6 @@
     {
       "kind": "javascript-module",
       "path": "src/components/mui-stack/index.ts",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-stepper/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Stepper: { title: \"Stepper\", description: \"A Stepper component visually represents a sequence of steps in a process. It helps users understand progress and navigate through multi-step workflows. This component supports both horizontal and vertical orientations.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/423YAEfIeoDzzsK9ClbTkP/485c6c4f637080247caa150afed0ef14/Stepper_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4195&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/navigation-stepper--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stepper\"], website: [\"https://muibook.com/#/stepper\"], guides: [\"https://guides.muibook.com/stepper\"], usage: { list: [ \"Use active-step to control the current step in a multi-step flow.\", \"Use size='x-small|small|medium' to match the density of the surrounding layout.\", \"Use interactive when users should be able to click and keyboard-navigate steps.\", \"Use linear with interactive to limit forward progression to the next available step while still allowing users to move backwards.\", \"Use explicit step states (success, pending, error, disabled) for async and validation workflows.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { description: \"The stepper uses two simple styles: active and inactive. Their meaning changes based on position in the sequence, representing progress through different states.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6Y5iyISdhK7PX8d1cHJxWv/761efb630c924af42ebf8d8bd5fabfb2/Stepper_-_Anatomy.png\", list: [ \"Active / Completed / Success: Indicates the current step or a task that has been successfully finished.\", \"Pending / Error / Disabled: Communicates processing, validation failure, or temporarily unavailable steps.\", \"Upcoming: Represents a step or task that has not yet started.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"review-items-task\", name: \"Review Items Task\", description: \"A permanent drawer remains visible at all times and is typically used for core navigation or tools that support the main content. It doesn’t open or close, and is always part of the current layout or workflow.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/rHTSU9sPUdmwrmGETRLcC/fa444ff8d8a72a28e8f10537324bbca3/drawer-composition-smart-bills.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-stepper/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-stepper/index.ts",
       "declarations": [],
       "exports": []
     },
@@ -7519,6 +7489,36 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-stepper/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Stepper: { title: \"Stepper\", description: \"A Stepper component visually represents a sequence of steps in a process. It helps users understand progress and navigate through multi-step workflows. This component supports both horizontal and vertical orientations.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/423YAEfIeoDzzsK9ClbTkP/485c6c4f637080247caa150afed0ef14/Stepper_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4195&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/navigation-stepper--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stepper\"], website: [\"https://muibook.com/#/stepper\"], guides: [\"https://guides.muibook.com/stepper\"], usage: { list: [ \"Use active-step to control the current step in a multi-step flow.\", \"Use size='x-small|small|medium' to match the density of the surrounding layout.\", \"Use interactive when users should be able to click and keyboard-navigate steps.\", \"Use linear with interactive to limit forward progression to the next available step while still allowing users to move backwards.\", \"Use explicit step states (success, pending, error, disabled) for async and validation workflows.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { description: \"The stepper uses two simple styles: active and inactive. Their meaning changes based on position in the sequence, representing progress through different states.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6Y5iyISdhK7PX8d1cHJxWv/761efb630c924af42ebf8d8bd5fabfb2/Stepper_-_Anatomy.png\", list: [ \"Active / Completed / Success: Indicates the current step or a task that has been successfully finished.\", \"Pending / Error / Disabled: Communicates processing, validation failure, or temporarily unavailable steps.\", \"Upcoming: Represents a step or task that has not yet started.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"review-items-task\", name: \"Review Items Task\", description: \"A permanent drawer remains visible at all times and is typically used for core navigation or tools that support the main content. It doesn’t open or close, and is always part of the current layout or workflow.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/rHTSU9sPUdmwrmGETRLcC/fa444ff8d8a72a28e8f10537324bbca3/drawer-composition-smart-bills.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-stepper/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-stepper/index.ts",
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
@@ -7930,62 +7930,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-accordion/inline/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiAccordionInline",
-          "members": [
-            {
-              "kind": "field",
-              "name": "summaryEl",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "detailEl",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "chevronEl",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "toggleAccordion"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-accordion-inline",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-accordion-inline",
-          "declaration": {
-            "name": "MuiAccordionInline",
-            "module": "src/components/mui-accordion/inline/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-card/body/index.ts",
       "declarations": [
         {
@@ -8066,6 +8010,62 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-accordion/inline/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiAccordionInline",
+          "members": [
+            {
+              "kind": "field",
+              "name": "summaryEl",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "detailEl",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "chevronEl",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "toggleAccordion"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-accordion-inline",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-accordion-inline",
+          "declaration": {
+            "name": "MuiAccordionInline",
+            "module": "src/components/mui-accordion/inline/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-card/footer/index.ts",
       "declarations": [
         {
@@ -8086,6 +8086,91 @@
           "declaration": {
             "name": "MuiCardFooter",
             "module": "src/components/mui-card/footer/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-carousel/panel/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiCarouselPanel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "item"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <style> :host { display: block; box-sizing: border-box; overflow: hidden; } </style> <slot></slot> `"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "item"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-carousel-panel",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-carousel-panel",
+          "declaration": {
+            "name": "MuiCarouselPanel",
+            "module": "src/components/mui-carousel/panel/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-list/item/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiListItem",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant"
+            },
+            {
+              "name": "size"
+            },
+            {
+              "name": "weight"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-list-item",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-list-item",
+          "declaration": {
+            "name": "MuiListItem",
+            "module": "src/components/mui-list/item/index.ts"
           }
         }
       ]
@@ -8246,91 +8331,6 @@
           "declaration": {
             "name": "MuiCarouselController",
             "module": "src/components/mui-carousel/controller/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-carousel/panel/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiCarouselPanel",
-          "members": [
-            {
-              "kind": "field",
-              "name": "item"
-            },
-            {
-              "kind": "field",
-              "name": "innerHTML",
-              "default": "` <style> :host { display: block; box-sizing: border-box; overflow: hidden; } </style> <slot></slot> `"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "item"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-carousel-panel",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-carousel-panel",
-          "declaration": {
-            "name": "MuiCarouselPanel",
-            "module": "src/components/mui-carousel/panel/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-list/item/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiListItem",
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant"
-            },
-            {
-              "name": "size"
-            },
-            {
-              "name": "weight"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-list-item",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-list-item",
-          "declaration": {
-            "name": "MuiListItem",
-            "module": "src/components/mui-list/item/index.ts"
           }
         }
       ]
@@ -8581,6 +8581,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-stepper/step/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiStep",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "state"
+            },
+            {
+              "name": "resolved-state"
+            },
+            {
+              "name": "title"
+            },
+            {
+              "name": "direction"
+            },
+            {
+              "name": "hide-icon"
+            },
+            {
+              "name": "size"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-step",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-step",
+          "declaration": {
+            "name": "MuiStep",
+            "module": "src/components/mui-stepper/step/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-stack/vstack/index.ts",
       "declarations": [
         {
@@ -8659,126 +8711,6 @@
           "declaration": {
             "name": "MuiVStack",
             "module": "src/components/mui-stack/vstack/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-stepper/step/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiStep",
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "state"
-            },
-            {
-              "name": "resolved-state"
-            },
-            {
-              "name": "title"
-            },
-            {
-              "name": "direction"
-            },
-            {
-              "name": "hide-icon"
-            },
-            {
-              "name": "size"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-step",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-step",
-          "declaration": {
-            "name": "MuiStep",
-            "module": "src/components/mui-stepper/step/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-table/row/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiRow",
-          "attributes": [
-            {
-              "name": "columns"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-row",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-row",
-          "declaration": {
-            "name": "MuiRow",
-            "module": "src/components/mui-table/row/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-table/cell/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiCell",
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "align-y"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-cell",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-cell",
-          "declaration": {
-            "name": "MuiCell",
-            "module": "src/components/mui-table/cell/index.ts"
           }
         }
       ]
@@ -8958,6 +8890,37 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-table/row/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiRow",
+          "attributes": [
+            {
+              "name": "columns"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-row",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-row",
+          "declaration": {
+            "name": "MuiRow",
+            "module": "src/components/mui-table/row/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-table/row-group/index.ts",
       "declarations": [
         {
@@ -8978,6 +8941,69 @@
           "declaration": {
             "name": "MuiRowGroup",
             "module": "src/components/mui-table/row-group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/table/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiTable",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-table",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-table",
+          "declaration": {
+            "name": "MuiTable",
+            "module": "src/components/mui-table/table/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/cell/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiCell",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "align-y"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-cell",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-cell",
+          "declaration": {
+            "name": "MuiCell",
+            "module": "src/components/mui-table/cell/index.ts"
           }
         }
       ]
@@ -9050,32 +9076,6 @@
           "declaration": {
             "name": "MuiTabController",
             "module": "src/components/mui-tabs/controller/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-table/table/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiTable",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-table",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-table",
-          "declaration": {
-            "name": "MuiTable",
-            "module": "src/components/mui-table/table/index.ts"
           }
         }
       ]
