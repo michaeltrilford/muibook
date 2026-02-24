@@ -97,7 +97,11 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="audio-native" title="Native Audio" description="Direct audio file rendered with native controls.">
+      <story-card
+        id="audio-native"
+        title="Native Audio"
+        description="Direct audio file rendered with native controls."
+        usage="Chrome currently does not support full theming for native media controls, so the seek bar can appear in light styling.|||Muibook defaults to native media controls for reliability and accessibility.|||If you need deeper visual customization, bring your own player UI.">
         <mui-media-player
           slot="body"
           type="audio"
