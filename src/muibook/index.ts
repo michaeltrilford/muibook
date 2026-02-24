@@ -132,6 +132,8 @@ import "../components/mui-radio";
 import "../components/mui-radio-group";
 import "../components/mui-loader";
 import "../components/mui-spinner";
+import "../components/mui-media-player";
+import "../components/mui-range-input";
 import "../components/mui-stepper/step";
 import "../components/mui-stepper/stepper";
 

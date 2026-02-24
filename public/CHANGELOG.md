@@ -20,6 +20,9 @@
 - Added `mui-icon-exclamationmark`.
 - Added Stepper sizing support: `size="x-small|small|medium"` (default `medium`) with matching dot/icon sizing tokens.
 - Added Alert size tokens: `--alert-padding-large`, `--alert-padding-medium`, `--alert-padding-small`.
+- Added `mui-media-player` component with native video/audio and YouTube/SoundCloud embed support.
+- Added Media Player docs/story page and Prompt native media examples (`.mp4` / `.mp3`) with View Code.
+- Added Dialog `content-max-height` attribute (`none`) for media-first dialog layouts.
 
 ### Changed
 
@@ -44,6 +47,7 @@
 - Message: added `size="small|medium|large"` with `large` as default (existing behavior), plus size-aware heading/icon/gap scaling.
 - Message: enforces slotted `mui-body` and `mui-link` sizes based on message size.
 - Form Hint terminology aligned to “Form Message” in component guidance (component/tag remains `mui-form-hint` for compatibility).
+- Media Player native controls now include scrub-time hover bubble, time-mode toggle (`elapsed/total` ↔ `remaining/total`), and control hints (Play/Stop, Mute, Time).
 
 ### Fixed
 
@@ -57,6 +61,7 @@
 - Progress: syncing/pending visuals now consume component tokens for width, radius, stripe size, and syncing bar background.
 - Alert: corrected small size vertical spacing and action-side padding behavior for `section[has-action]`.
 - Alert: corrected inline content/action auto-size mapping (body/link and action controls) across large/medium/small.
+- Prompt preview dialog now disables default content max-height/scroll when rendering media so native video/audio sizing remains correct.
 
 ---
 

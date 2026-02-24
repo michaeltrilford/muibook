@@ -544,6 +544,14 @@
       "import": "./dist/esm/components/mui-spinner/index.js",
       "types": "./dist/types/components/mui-spinner/index.d.ts"
     },
+    "./mui-media-player": {
+      "import": "./dist/esm/components/mui-media-player/index.js",
+      "types": "./dist/types/components/mui-media-player/index.d.ts"
+    },
+    "./mui-range-input": {
+      "import": "./dist/esm/components/mui-range-input/index.js",
+      "types": "./dist/types/components/mui-range-input/index.d.ts"
+    },
     ".": {
       "import": "./dist/esm/index.js",
       "types": "./dist/types/index.d.ts"

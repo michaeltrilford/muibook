@@ -181,6 +181,14 @@ html[data-brand="modern"][data-theme="light"] {
   --chip-dismiss-action-background-hover: var(--black-opacity-0);
   --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20));
   --chip-dismiss-action-filter: var(--chip-filter);
+
+  /* Media Player */
+  --media-player-seek-color: var(--grey-1200);
+  --media-player-seek-time-background: var(--surface-elevated-100);
+  --media-player-seek-time-border-color: var(--border-color);
+  --range-input-accent-color: var(--media-player-seek-color);
+  --range-input-bubble-background: var(--media-player-seek-time-background);
+  --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
 }
 
 /* =============================================================================== */
@@ -352,6 +360,14 @@ html[data-brand="modern"][data-theme="dark"] {
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
   --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-40));
   --chip-dismiss-action-filter: var(--chip-filter);
+
+  /* Media Player */
+  --media-player-seek-color: var(--white);
+  --media-player-seek-time-background: var(--surface-recessed-100);
+  --media-player-seek-time-border-color: var(--white-opacity-20);
+  --range-input-accent-color: var(--media-player-seek-color);
+  --range-input-bubble-background: var(--media-player-seek-time-background);
+  --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
 }
 
 /* ================================================================= */

@@ -300,9 +300,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="preview-data"
-        title="Preview: Data Feed"
-        description="Render extracted preview metadata on-page for product logic."
-        usage="Use prompt-paste to capture clipboard payloads and append previews.|||Use prompt-preview-open to drive analytics, dialog selection, or routing.|||Use context-mode='icon|chip' with slotted <mui-prompt-toggle> (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||Theme the hover/focus mesh using --prompt-accent-primary and optional --prompt-accent-secondary.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
+        title="Interactive Prompt Setup"
+        description="Canonical interactive setup for this page: paste/upload previews, context toggle, submit, and prompt event telemetry."
+        usage="This is the primary interactive story on this page.|||Use prompt-paste to capture clipboard payloads and append previews.|||Use prompt-preview-open to drive analytics, dialog selection, or routing.|||Use context-mode='icon|chip' with slotted <mui-prompt-toggle> (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||Theme the hover/focus mesh using --prompt-accent-primary and optional --prompt-accent-secondary.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt debug
@@ -843,7 +843,7 @@ class StoryPrompt extends HTMLElement {
       <story-card
         id="preview-media"
         title="Preview: Media"
-        description="Paste media URLs (mp4/mp3) to verify VIDEO and MUSIC badge detection."
+        description="Media badge/render check (YouTube, SoundCloud, direct media URLs). For full interactive paste/upload flow, use Interactive Prompt Setup."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt debug
@@ -863,14 +863,70 @@ class StoryPrompt extends HTMLElement {
               slot="preview"
               clickable
               badge="MUSIC"
-              value="https://samplelib.com/lib/preview/mp3/sample-3s.mp3"
+              value="https://soundcloud.com/atariiiiiiiiii/the-clash-3-prod-rckstr?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
             ></mui-prompt-preview>
           </mui-prompt>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-prompt placeholder="Paste .mp4 or .mp3 URL..."&gt;<br />
-          &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" badge="VIDEO" value="https://...sample.mp4"&gt;&lt;/mui-prompt-preview&gt;<br />
-          &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" badge="MUSIC" value="https://...sample.mp3"&gt;&lt;/mui-prompt-preview&gt;<br />
+          &lt;mui-prompt placeholder="Paste YouTube, SoundCloud, .mp4 or .mp3 URL..."&gt;<br />
+          &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" badge="VIDEO" value="https://youtu.be/..."&gt;&lt;/mui-prompt-preview&gt;<br />
+          &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" badge="MUSIC" value="https://soundcloud.com/..."&gt;&lt;/mui-prompt-preview&gt;<br />
+          &lt;/mui-prompt&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="preview-native-video"
+        title="Preview: Native Video"
+        description="Prompt preview wired to a direct .mp4 URL so dialog opens with native video controls."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt debug
+            id="promptNativeVideo"
+            preview-scrollbar="hidden"
+            placeholder="Paste .mp4 links..."
+            enter-submit
+            actions-fan
+          >
+            <mui-prompt-preview
+              slot="preview"
+              clickable
+              badge="VIDEO"
+              value="https://www.w3schools.com/html/mov_bbb.mp4"
+            ></mui-prompt-preview>
+          </mui-prompt>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt enter-submit actions-fan&gt;<br />
+          &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" clickable badge="VIDEO" value="https://www.w3schools.com/html/mov_bbb.mp4"&gt;&lt;/mui-prompt-preview&gt;<br />
+          &lt;/mui-prompt&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="preview-native-audio"
+        title="Preview: Native Audio"
+        description="Prompt preview wired to a direct .mp3 URL so dialog opens with native audio controls."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt debug
+            id="promptNativeAudio"
+            preview-scrollbar="hidden"
+            placeholder="Paste .mp3 links..."
+            enter-submit
+            actions-fan
+          >
+            <mui-prompt-preview
+              slot="preview"
+              clickable
+              badge="MUSIC"
+              value="https://www.w3schools.com/html/horse.mp3"
+            ></mui-prompt-preview>
+          </mui-prompt>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt enter-submit actions-fan&gt;<br />
+          &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" clickable badge="MUSIC" value="https://www.w3schools.com/html/horse.mp3"&gt;&lt;/mui-prompt-preview&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
@@ -1060,7 +1116,7 @@ class StoryPrompt extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       >
-        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||error-feedback::Error Feedback|||preview-open-dialog::Open Code Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-off::Preview Off|||preview-data::Preview Data Feed"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Setup|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||error-feedback::Error Feedback|||preview-open-dialog::Open Code Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
         ${stories}
       </story-template>
     `;
@@ -1085,6 +1141,8 @@ class StoryPrompt extends HTMLElement {
     const agentCodeDialogPrompt = this.shadowRoot.querySelector("#agentCodeDialogPrompt");
     const agentImageDialogPrompt = this.shadowRoot.querySelector("#agentImageDialogPrompt");
     const promptMediaDetection = this.shadowRoot.querySelector("#promptMediaDetection");
+    const promptNativeVideo = this.shadowRoot.querySelector("#promptNativeVideo");
+    const promptNativeAudio = this.shadowRoot.querySelector("#promptNativeAudio");
     const agentPreviewOffPrompt = this.shadowRoot.querySelector("#agentPreviewOffPrompt");
     const agentColorSwapPrompt = this.shadowRoot.querySelector("#agentColorSwapPrompt");
     const agentDataPrompt = this.shadowRoot.querySelector("#agentDataPrompt");
@@ -1116,6 +1174,10 @@ class StoryPrompt extends HTMLElement {
             preview.setAttribute("bg-image", imageUrl);
             preview.setAttribute("image-tint", imageTint);
             preview.setAttribute("value", "");
+          } else if (item.kind === "video" || item.kind === "audio") {
+            const mediaUrl = item.file ? URL.createObjectURL(item.file) : item.preview || item.value || "";
+            preview.setAttribute("badge", item.kind === "video" ? "VIDEO" : "MUSIC");
+            preview.setAttribute("value", mediaUrl || item.value || "");
           } else {
             preview.setAttribute("value", item.value || "");
           }
@@ -1210,6 +1272,14 @@ class StoryPrompt extends HTMLElement {
     bindPromptSimulation({
       promptEl: promptMediaDetection,
       label: "Agent prompt (media detection)",
+    });
+    bindPromptSimulation({
+      promptEl: promptNativeVideo,
+      label: "Agent prompt (native video preview)",
+    });
+    bindPromptSimulation({
+      promptEl: promptNativeAudio,
+      label: "Agent prompt (native audio preview)",
     });
     bindPromptSimulation({
       promptEl: agentPreviewOffPrompt,

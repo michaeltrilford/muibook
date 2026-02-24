@@ -69,6 +69,13 @@ class storyDialog extends HTMLElement {
         description: "Set to none to remove internal content padding and allow full-bleed layouts.",
       },
       {
+        name: "content-max-height",
+        type: "string",
+        options: "none",
+        default: "60vh",
+        description: "Set to none to remove the default content max-height/scroll behavior.",
+      },
+      {
         name: "open",
         type: "boolean",
         options: "",

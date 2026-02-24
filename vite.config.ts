@@ -174,6 +174,8 @@ export default defineConfig({
         // LOADING
         "components/mui-loader": path.resolve(__dirname, "src/components/mui-loader"),
         "components/mui-spinner": path.resolve(__dirname, "src/components/mui-spinner"),
+        "components/mui-media-player": path.resolve(__dirname, "src/components/mui-media-player"),
+        "components/mui-range-input": path.resolve(__dirname, "src/components/mui-range-input"),
         // Message
         "components/mui-message": path.resolve(__dirname, "src/components/mui-message"),
         // PROGRESS

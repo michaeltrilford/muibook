@@ -3,8 +3,7 @@ import type { MuiDocs } from "../../types/guidelines";
 export const muiDocs: MuiDocs = {
   Prompt: {
     title: "Prompt",
-    description:
-      "Prompt provides a reusable prompt surface with floating actions and Enter-to-submit behavior.",
+    description: "Prompt provides a reusable prompt surface with floating actions and Enter-to-submit behavior.",
     hero: [""],
     figma: [""],
     storybook: ["https://stories.muibook.com"],
@@ -14,6 +13,7 @@ export const muiDocs: MuiDocs = {
     usage: {
       list: [
         "Use for AI/chat prompt entry surfaces with action controls.",
+        "In Muibook stories, use the Interactive Prompt story at the top of the page as the primary end-to-end reference (paste/upload/context/submit).",
         "This component is extracted from composition patterns to standardize prompt behavior across experiences.",
         "Keep prompt as a controlled input in app state: write value via attribute/property and sync from input events.",
         "Use Enter submit for fast send flows; keep Shift+Enter for multiline authoring.",
@@ -40,6 +40,7 @@ export const muiDocs: MuiDocs = {
         "Use setError(message) and clearError() for app-driven validation and transport error handling.",
         "Use prompt-paste to ingest user clipboard payloads and convert them into prompt-preview items.",
         "Use prompt-preview-open to react to preview activation and update app-level analytics/state.",
+        "For native media previews, use direct .mp4/.mp3 values so the built-in dialog opens with native media controls.",
         "For React wrappers, map CustomEvent handlers to props (onSubmit, onPromptPaste, onPromptPreviewOpen, onEscape).",
         "Mark the trigger action with fan-trigger; if omitted, the first action is used.",
         "Prefer this component instead of ad hoc prompt wrappers when the same interaction model is needed.",
@@ -52,11 +53,11 @@ export const muiDocs: MuiDocs = {
         "Keep status text low-emphasis visually, but persistent enough to communicate send state changes.",
       ],
       engineerList: [
-        "Ensure a clear placeholder or label context for prompt intent.",
         "Support keyboard parity: Enter submits, Shift+Enter adds newline.",
-        "Provide aria-label values for icon-only action buttons slotted into actions.",
         "If showing send status, use an aria-live region so updates are announced to assistive tech.",
         "Do not trap focus; users must be able to tab into and out of the prompt and actions naturally.",
+        "Ensure a clear placeholder or label context for prompt intent.",
+        "Provide aria-label values for icon-only action buttons slotted into actions.",
       ],
     },
     anatomy: { image: "", list: ["Prompt surface", "Input area", "Action slot"] },
@@ -72,8 +73,12 @@ export const muiDocs: MuiDocs = {
       {
         heading: "Pattern Rule",
         description: "Use Prompt as the shared prompt-surface primitive; keep product-specific flows in compositions.",
-        doContent: [{ description: "Reuse this component when Enter submit + floating actions are expected.", image: "" }],
-        dontContent: [{ description: "Do not rebuild the prompt shell in each composition with custom wrappers.", image: "" }],
+        doContent: [
+          { description: "Reuse this component when Enter submit + floating actions are expected.", image: "" },
+        ],
+        dontContent: [
+          { description: "Do not rebuild the prompt shell in each composition with custom wrappers.", image: "" },
+        ],
       },
     ],
     behaviour: {
@@ -93,9 +98,7 @@ export const muiDocs: MuiDocs = {
       ],
     },
     writing: {
-      list: [
-        "Use clear placeholder prompts that describe expected user input.",
-      ],
+      list: ["Use clear placeholder prompts that describe expected user input."],
     },
   },
 };

@@ -204,12 +204,16 @@ html[data-theme="light"] {
   --prompt-accent-secondary: var(--prompt-spectrum-end);
   --prompt-hover-sweep-speed: 1400ms;
   --prompt-focus-pulse-speed: 1400ms;
-  --prompt-surface-filter: drop-shadow(
-    0 var(--stroke-size-100) 0 var(--black-opacity-5)
-  );
+  --prompt-surface-filter: drop-shadow(0 var(--stroke-size-100) 0 var(--black-opacity-5));
   --prompt-placeholder-color: var(--form-default-placeholder-color);
   --prompt-placeholder-color-hover: var(--form-default-placeholder-color-hover);
   --prompt-placeholder-color-focus: var(--form-default-placeholder-color-focus);
+  --media-player-seek-color: var(--grey-1200);
+  --media-player-seek-time-background: var(--surface-elevated-100);
+  --media-player-seek-time-border-color: var(--border-color);
+  --range-input-accent-color: var(--media-player-seek-color);
+  --range-input-bubble-background: var(--media-player-seek-time-background);
+  --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
@@ -532,12 +536,16 @@ html[data-theme="dark"] {
   --prompt-accent-secondary: var(--prompt-spectrum-end);
   --prompt-hover-sweep-speed: 1400ms;
   --prompt-focus-pulse-speed: 1400ms;
-  --prompt-surface-filter: drop-shadow(
-    0 var(--stroke-size-100) 0 var(--black-opacity-10)
-  );
+  --prompt-surface-filter: drop-shadow(0 var(--stroke-size-100) 0 var(--black-opacity-10));
   --prompt-placeholder-color: var(--form-default-placeholder-color);
   --prompt-placeholder-color-hover: var(--form-default-placeholder-color-hover);
   --prompt-placeholder-color-focus: var(--form-default-placeholder-color-focus);
+  --media-player-seek-color: var(--white);
+  --media-player-seek-time-background: var(--surface-recessed-100);
+  --media-player-seek-time-border-color: var(--white-opacity-20);
+  --range-input-accent-color: var(--media-player-seek-color);
+  --range-input-bubble-background: var(--media-player-seek-time-background);
+  --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
   --surface-elevated-300: var(--grey-1000);
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
@@ -572,7 +580,7 @@ html[data-theme="dark"] {
   --badge-background-warning: var(--orange-400);
   --badge-background-attention: var(--red-400);
   --badge-background-overlay: var(--black-opacity-60);
-  --badge-text-color-overlay: var(--white);
+  --badge-text-color-overlay: var(--grey-300);
   --badge-border-overlay: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
   /* Heading */
   --heading-text-color: var(--grey-100);

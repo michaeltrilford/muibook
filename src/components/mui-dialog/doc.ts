@@ -21,6 +21,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Used to alert the user of potentially a harmful action.",
         "Use for focused interactions that require attention and immediate action.",
+        "Use content-max-height='none' when dialog content should size naturally (for example, native media players).",
       ],
     },
 

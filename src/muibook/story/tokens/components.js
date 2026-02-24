@@ -32,7 +32,7 @@ class tokensComponents extends HTMLElement {
             slot="message"
             heading="Quicklinks"
             limit="10"
-            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
+            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
           ></story-quicklinks>
 
           <spec-card
@@ -258,6 +258,12 @@ class tokensComponents extends HTMLElement {
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Feedback</mui-link> tokens</mui-body>
           </spec-card>
 
+          <spec-card id="media-player" title="Media Player" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-media-player/index.ts">
+            <story-token-slat slot="body" token="--media-player-seek-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-seek-time-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-seek-time-border-color" variant="border-color"></story-token-slat>
+          </spec-card>
+
           <spec-card id="prompt" title="Prompt" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt/index.ts">
             <story-token-slat slot="body" token="--prompt-border-color-hover" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-border-color-focus" variant="border-color"></story-token-slat>
@@ -328,6 +334,12 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--radio-border-color-disabled" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--radio-dot-color-checked" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--radio-dot-color-checked-disabled" variant="color"></story-token-slat>
+          </spec-card>
+
+          <spec-card id="range-input" title="Range Input" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-range-input/index.ts">
+            <story-token-slat slot="body" token="--range-input-accent-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--range-input-bubble-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--range-input-bubble-border-color" variant="border-color"></story-token-slat>
           </spec-card>
 
           <spec-card

@@ -3,8 +3,10 @@ import "../mui-stack/vstack";
 import "../mui-dialog";
 import "../mui-heading";
 import "../mui-code";
+import "../mui-media-player";
 import "../mui-button";
 import "../mui-body";
+import "../mui-link";
 import "../mui-spinner";
 import "../mui-icons/grid";
 import "../mui-icons/close";
@@ -16,7 +18,7 @@ import "../mui-rule";
 import "../mui-prompt-toggle";
 
 type PromptItem = {
-  kind: "text" | "image" | "file";
+  kind: "text" | "image" | "video" | "audio" | "file";
   mimeType: string;
   badge: string;
   preview: string;
@@ -208,7 +210,13 @@ class MuiPrompt extends HTMLElement {
     if (hasBinaryItems || shouldOverflowText) pasteEvent.preventDefault();
 
     const items: PromptItem[] = files.map((file) => ({
-      kind: file.type.startsWith("image/") ? "image" : "file",
+      kind: file.type.startsWith("image/")
+        ? "image"
+        : file.type.startsWith("video/")
+          ? "video"
+          : file.type.startsWith("audio/")
+            ? "audio"
+            : "file",
       mimeType: file.type || "",
       file,
       fileName: file.name || "",
@@ -706,6 +714,10 @@ class MuiPrompt extends HTMLElement {
     value: string,
   ): { url: string; kind: "image" | "video" | "audio"; badge: "IMG" | "VIDEO" | "MUSIC"; mimeType: string } | null {
     const trimmed = value.trim();
+    if (!trimmed) return null;
+    if (trimmed.startsWith("blob:")) {
+      return { url: trimmed, kind: "video", badge: "VIDEO", mimeType: "video/*" };
+    }
     const urlMatch = trimmed.match(/https?:\/\/[^\s]+/i);
     const candidate = (urlMatch?.[0] || trimmed).trim();
     if (!/^https?:\/\//i.test(candidate)) return null;
@@ -856,16 +868,42 @@ class MuiPrompt extends HTMLElement {
     const title = this.shadowRoot.querySelector("#promptAutoPreviewTitle") as HTMLElement | null;
     const code = this.shadowRoot.querySelector("#promptAutoPreviewCode") as HTMLElement | null;
     const image = this.shadowRoot.querySelector("#promptAutoPreviewImage") as HTMLImageElement | null;
+    const media = this.shadowRoot.querySelector("#promptAutoPreviewMedia") as HTMLElement | null;
+    const mediaUrlLabel = this.shadowRoot.querySelector("#promptAutoPreviewMediaUrl") as HTMLElement | null;
 
     const normalized = this.normalizePreviewDetail(detail);
     const dialogTitle = this.getAttribute("preview-dialog-title") || normalized.label;
     const value = normalized.value;
     const bgImage = normalized.bgImage;
     const badge = normalized.badge;
+    const mediaUrl = value ? this.detectMediaUrl(value) : null;
+    const hasMediaByBadge = !bgImage && value.length > 0 && (badge === "VIDEO" || badge === "MUSIC");
+    const hasMedia = !bgImage && (Boolean(mediaUrl && (mediaUrl.kind === "video" || mediaUrl.kind === "audio")) || hasMediaByBadge);
     const hasImage = bgImage.length > 0;
     const hasCode = value.length > 0;
+    const isDirectAudioFileUrl = (() => {
+      if (!mediaUrl || mediaUrl.kind !== "audio") return false;
+      try {
+        const parsed = new URL(mediaUrl.url);
+        return /\.(mp3|wav|m4a|aac|flac|ogg|oga)$/.test(parsed.pathname.toLowerCase());
+      } catch {
+        return false;
+      }
+    })();
+    const directAudioDisplayName = (() => {
+      if (!mediaUrl || !isDirectAudioFileUrl) return "";
+      try {
+        const parsed = new URL(mediaUrl.url);
+        const rawName = parsed.pathname.split("/").filter(Boolean).pop() || "";
+        const decodedName = decodeURIComponent(rawName);
+        const baseName = decodedName.replace(/\.(mp3|wav|m4a|aac|flac|ogg|oga)$/i, "") || decodedName || "Audio";
+        return baseName.charAt(0).toUpperCase() + baseName.slice(1);
+      } catch {
+        return "Audio";
+      }
+    })();
 
-    if (!hasImage && !hasCode) return;
+    if (!hasImage && !hasCode && !hasMedia) return;
 
     this.setAttribute("preview-dialog-value", value);
     this.setAttribute("preview-dialog-image", bgImage);
@@ -873,16 +911,73 @@ class MuiPrompt extends HTMLElement {
 
     if (title) title.textContent = dialogTitle;
 
+    if (hasMedia) {
+      dialog?.setAttribute("content-max-height", "none");
+    } else {
+      dialog?.removeAttribute("content-max-height");
+    }
+
     if (hasImage) {
+      if (mediaUrlLabel) mediaUrlLabel.setAttribute("hidden", "");
       if (image) {
         image.setAttribute("src", bgImage);
         image.removeAttribute("hidden");
       }
+      if (media) media.setAttribute("hidden", "");
       if (code) code.setAttribute("hidden", "");
+    } else if (hasMedia && mediaUrl) {
+      if (mediaUrlLabel) {
+        const showLabel = isDirectAudioFileUrl;
+        mediaUrlLabel.textContent = showLabel ? directAudioDisplayName : mediaUrl.url;
+        if (showLabel) {
+          mediaUrlLabel.setAttribute("href", mediaUrl.url);
+          mediaUrlLabel.setAttribute("target", "_blank");
+          mediaUrlLabel.setAttribute("rel", "noopener noreferrer");
+        } else {
+          mediaUrlLabel.removeAttribute("href");
+          mediaUrlLabel.removeAttribute("target");
+          mediaUrlLabel.removeAttribute("rel");
+        }
+        mediaUrlLabel.toggleAttribute("hidden", !showLabel);
+      }
+      if (media) {
+        media.setAttribute("src", mediaUrl.url);
+        media.removeAttribute("type");
+        media.removeAttribute("prefer-native-controls");
+        media.removeAttribute("hidden");
+      }
+      if (code) code.setAttribute("hidden", "");
+      if (image) {
+        image.removeAttribute("src");
+        image.setAttribute("hidden", "");
+      }
+    } else if (hasMediaByBadge) {
+      if (mediaUrlLabel) {
+        const showLabel = false;
+        mediaUrlLabel.textContent = value;
+        mediaUrlLabel.toggleAttribute("hidden", !showLabel);
+      }
+      if (media) {
+        media.setAttribute("src", value);
+        media.setAttribute("type", badge === "VIDEO" ? "video" : "audio");
+        media.removeAttribute("prefer-native-controls");
+        media.removeAttribute("hidden");
+      }
+      if (code) code.setAttribute("hidden", "");
+      if (image) {
+        image.removeAttribute("src");
+        image.setAttribute("hidden", "");
+      }
     } else {
+      if (mediaUrlLabel) mediaUrlLabel.setAttribute("hidden", "");
       if (code) {
         code.textContent = value;
         code.removeAttribute("hidden");
+      }
+      if (media) {
+        media.removeAttribute("src");
+        media.removeAttribute("prefer-native-controls");
+        media.setAttribute("hidden", "");
       }
       if (image) {
         image.removeAttribute("src");
@@ -1818,8 +1913,32 @@ class MuiPrompt extends HTMLElement {
           height: auto;
           border-radius: var(--radius-100);
         }
+        .auto-preview-media-url {
+          display: inline-flex;
+          width: 100%;
+          box-sizing: border-box;
+          padding: var(--space-300);
+          background: var(--surface-elevated-200);
+        }
+        .auto-preview-media-url::part(width) {
+          width: 100%;
+        }
+        .auto-preview-media-url::part(display) {
+          display: block;
+        }
+        .auto-preview-media-url::part(white-space) {
+          white-space: nowrap;
+        }
+        .auto-preview-media-url::part(overflow) {
+          overflow: hidden;
+        }
+        .auto-preview-media-url::part(text-overflow) {
+          text-overflow: ellipsis;
+        }
         #promptAutoPreviewCode[hidden],
-        #promptAutoPreviewImage[hidden] {
+        #promptAutoPreviewImage[hidden],
+        #promptAutoPreviewMediaUrl[hidden],
+        #promptAutoPreviewMedia[hidden] {
           display: none !important;
         }
         .error-region {
@@ -1939,6 +2058,8 @@ class MuiPrompt extends HTMLElement {
         <mui-heading id="promptAutoPreviewTitle" slot="title" size="5">Pasted Content</mui-heading>
         <mui-code id="promptAutoPreviewCode" size="x-small" wrap hidden></mui-code>
         <img id="promptAutoPreviewImage" class="auto-preview-image" alt="Pasted preview" hidden />
+        <mui-link id="promptAutoPreviewMediaUrl" class="auto-preview-media-url" size="x-small" variant="tertiary" weight="regular" hidden></mui-link>
+        <mui-media-player id="promptAutoPreviewMedia" hidden></mui-media-player>
       </mui-dialog>
     `;
     this.setDebugState("Idle: no submit yet.");

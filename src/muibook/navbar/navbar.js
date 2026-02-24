@@ -168,6 +168,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/form-message" title="Form Message"></app-navbar-link>
         <app-navbar-link link="#/file-upload" title="File Upload"></app-navbar-link> 
         <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
+        <app-navbar-link link="#/range-input" title="Range Input"></app-navbar-link>
         <app-navbar-link link="#/chip-input" title="Chip Input"></app-navbar-link>
         <app-navbar-link link="#/textarea" title="Textarea"></app-navbar-link>
         <app-navbar-link link="#/progress" title="Progress"></app-navbar-link>  
@@ -186,6 +187,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/slat" title="Slat"></app-navbar-link>
         <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>   
         <app-navbar-link link="#/table" title="Table"></app-navbar-link>
+        <app-navbar-link link="#/media-player" title="Media Player"></app-navbar-link>
         <app-navbar-link link="#/image" title="Image"></app-navbar-link>
         <app-navbar-link link="#/avatar" title="Avatar"></app-navbar-link>
         <app-navbar-link link="#/list" title="List"></app-navbar-link>

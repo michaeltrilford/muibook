@@ -7,7 +7,7 @@ class MuiDialog extends HTMLElement {
   private actionsSlot!: HTMLSlotElement | null;
 
   static get observedAttributes() {
-    return ["open", "width"];
+    return ["open", "width", "content-max-height"];
   }
 
   constructor() {
@@ -57,6 +57,11 @@ class MuiDialog extends HTMLElement {
         max-height: 60vh;
         overflow-y: auto;
         padding: var(--space-500);
+      }
+
+      :host([content-max-height="none"]) .content {
+        max-height: none;
+        overflow-y: visible;
       }
 
       :host([content-padding="none"]) .content {
