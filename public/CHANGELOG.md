@@ -1,6 +1,6 @@
 ## Header [Start]
 
-## v11.0.0
+## v11.0.0 (Soon)
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/11.0.0)
 
