@@ -710,6 +710,32 @@ class MuiPrompt extends HTMLElement {
     return "Insightful";
   }
 
+  private formatPreviewCode(value: string, badge: string) {
+    const input = value.trim();
+    if (!input) return value;
+
+    if (badge === "JSON") {
+      try {
+        return JSON.stringify(JSON.parse(input), null, 2);
+      } catch {
+        return value;
+      }
+    }
+
+    if (badge === "CSS") {
+      const collapsed = input.replace(/\s+/g, " ").trim();
+      const withBraces = collapsed
+        .replace(/\s*{\s*/g, " {\n  ")
+        .replace(/;\s*/g, ";\n  ")
+        .replace(/\s*}\s*/g, "\n}\n")
+        .replace(/\n\s*\n/g, "\n")
+        .trim();
+      return withBraces.replace(/\n {2}\n/g, "\n").trim();
+    }
+
+    return value;
+  }
+
   private detectMediaUrl(
     value: string,
   ): { url: string; kind: "image" | "video" | "audio"; badge: "IMG" | "VIDEO" | "MUSIC"; mimeType: string } | null {
@@ -971,7 +997,7 @@ class MuiPrompt extends HTMLElement {
     } else {
       if (mediaUrlLabel) mediaUrlLabel.setAttribute("hidden", "");
       if (code) {
-        code.textContent = value;
+        code.textContent = this.formatPreviewCode(value, badge);
         code.removeAttribute("hidden");
       }
       if (media) {
