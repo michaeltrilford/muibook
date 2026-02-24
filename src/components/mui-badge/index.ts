@@ -1,5 +1,5 @@
 type Variant = "neutral" | "positive" | "warning" | "attention" | "overlay";
-type Size = "x-small" | "small" | "medium" | "large";
+type Size = "xx-small" | "x-small" | "small" | "medium" | "large";
 
 class MuiBadge extends HTMLElement {
   constructor() {
@@ -70,6 +70,12 @@ class MuiBadge extends HTMLElement {
     const ariaLive = ariaLiveMap[variant];
 
     const sizeMap: Record<Size, { fontSize: string; lineHeight: string; padding: string; minHeight?: string }> = {
+      "xx-small": {
+        fontSize: "var(--font-size-15)",
+        lineHeight: "1",
+        padding: "0 var(--space-050)",
+        minHeight: "1.6rem",
+      },
       "x-small": {
         fontSize: "var(--font-size-15)",
         lineHeight: "1",

@@ -84,7 +84,7 @@ class storyBody extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -230,8 +230,8 @@ class storyBody extends HTMLElement {
                   <mui-body size="medium" variant="error"><mui-icon-attention slot="before"></mui-icon-attention>Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
-                  <mui-heading size="4" style="margin-bottom: var(--space-200)">Large (After Slot)</mui-heading>
-                  <mui-body size="large">Risus Mollis Dapibus<mui-icon-right-chevron slot="after"></mui-icon-right-chevron></mui-body>
+                  <mui-heading size="4" style="margin-bottom: var(--space-200)">Large</mui-heading>
+                  <mui-body size="large">Risus Mollis Dapibus<mui-icon-info slot="after"></mui-icon-info></mui-body>
                 </div>
               </mui-v-stack>
             </div>
@@ -271,6 +271,61 @@ class storyBody extends HTMLElement {
               &nbsp;&nbsp;&lt;mui-icon-right-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-right-chevron&gt;
               <br>
               &lt;/mui-body&gt;
+            </story-code-block>
+
+          </story-card>
+
+          <story-card title="Before and After Wrapping" description="Before/after slots stay aligned when body text wraps to multiple lines.">
+
+            <div slot="body">
+              <mui-v-stack space="var(--space-300)" alignx="start">
+                <div style="max-width: 28rem;">
+                  <mui-body size="x-small" variant="optional">
+                    <mui-icon-info slot="before"></mui-icon-info>
+                    X-small wrapping text keeps icon alignment stable when the content moves to a second line in constrained widths.
+                    <mui-badge slot="after" size="xx-small">XS</mui-badge>
+                  </mui-body>
+                </div>
+                <div style="max-width: 28rem;">
+                  <mui-body size="small" variant="warning">
+                    <mui-icon-warning slot="before"></mui-icon-warning>
+                    This helper message wraps across multiple lines so the icon remains aligned at the start of the content.
+                    <mui-icon-info slot="after"></mui-icon-info>
+                  </mui-body>
+                </div>
+                <div style="max-width: 28rem;">
+                  <mui-body size="medium" variant="error">
+                    <mui-icon-attention slot="before"></mui-icon-attention>
+                    This is a longer multi-line message with before and after content to validate start alignment for wrapped body text.
+                    <mui-badge slot="after" size="small">NEW</mui-badge>
+                  </mui-body>
+                </div>
+                <div style="max-width: 28rem;">
+                  <mui-body size="large" variant="success">
+                    <mui-icon-check slot="before"></mui-icon-check>
+                    Large body wrapping also keeps the leading icon top-aligned while the line-height and text block expand.
+                    <mui-icon-info slot="after"></mui-icon-info>
+                  </mui-body>
+                </div>
+              </mui-v-stack>
+            </div>
+
+            <story-code-block slot="footer" scrollable>
+              &lt;mui-body size=&quot;x-small&quot; variant=&quot;optional&quot;&gt;...&lt;/mui-body&gt;
+              <br>
+              &lt;mui-body size=&quot;small&quot; variant=&quot;warning&quot;&gt;
+              <br>
+              &nbsp;&nbsp;&lt;mui-icon-warning slot=&quot;before&quot;&gt;&lt;/mui-icon-warning&gt;
+              <br>
+              &nbsp;&nbsp;{long wrapping text}
+              <br>
+              &nbsp;&nbsp;&lt;mui-icon-right-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-right-chevron&gt;
+              <br>
+              &lt;/mui-body&gt;
+              <br>
+              &lt;mui-body size=&quot;medium&quot; variant=&quot;error&quot;&gt;...&lt;/mui-body&gt;
+              <br>
+              &lt;mui-body size=&quot;large&quot; variant=&quot;success&quot;&gt;...&lt;/mui-body&gt;
             </story-code-block>
 
           </story-card>

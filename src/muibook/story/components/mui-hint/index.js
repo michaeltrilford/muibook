@@ -67,6 +67,28 @@ class StoryHint extends HTMLElement {
           &lt;/mui-hint&gt;
         </story-code-block>
       </story-card>
+
+      <story-card id="delay" title="Delay">
+        <mui-v-stack slot="body" space="var(--space-200)" style="padding: var(--space-400);">
+          <mui-hint placement="top">
+            <mui-icon-info slot="trigger" color="default" size="small"></mui-icon-info>
+            Default delay (1500ms, clamped to 1000-2000ms)
+          </mui-hint>
+          <mui-hint placement="right" delay="2000" initial-delay="2000">
+            <mui-icon-warning slot="trigger" color="default" size="small"></mui-icon-warning>
+            Long delay (2000ms)
+          </mui-hint>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-hint delay="1500" initial-delay="1500"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-icon-info slot="trigger" size="small"&gt;&lt;/mui-icon-info&gt;
+          <br />
+          &nbsp;&nbsp;Tooltip content
+          <br />
+          &lt;/mui-hint&gt;
+        </story-code-block>
+      </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -79,7 +101,7 @@ class StoryHint extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       >
-        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||placements::Placements"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||placements::Placements|||delay::Delay"></story-quicklinks>
         ${stories}
       </story-template>
     `;

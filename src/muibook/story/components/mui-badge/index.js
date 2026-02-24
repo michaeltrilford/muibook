@@ -31,7 +31,7 @@ class storyBadge extends HTMLElement {
       {
         name: "size",
         type: "string",
-        options: "x-small, small, medium, large",
+        options: "xx-small, x-small, small, medium, large",
         default: "medium",
         description: "Controls the badge size.",
       },
@@ -132,6 +132,7 @@ class storyBadge extends HTMLElement {
         <story-card title="Sizes">
           <div slot="body">
             <mui-v-stack space="var(--space-200)" alignx="start">
+              <mui-badge size="xx-small">2</mui-badge>
               <mui-badge size="x-small">2</mui-badge>
               <mui-badge size="small">2</mui-badge>
               <mui-badge size="medium">2</mui-badge>
@@ -139,6 +140,7 @@ class storyBadge extends HTMLElement {
             </mui-v-stack>
           </div>
           <story-code-block slot="footer" scrollable>
+            &lt;mui-badge size="xx-small"&gt;2&lt;/mui-badge&gt;<br />
             &lt;mui-badge size="x-small"&gt;2&lt;/mui-badge&gt;<br />
             &lt;mui-badge size="small"&gt;2&lt;/mui-badge&gt;<br />
             &lt;mui-badge size="medium"&gt;2&lt;/mui-badge&gt;<br />

@@ -68,6 +68,7 @@ export * from "./components/mui-icons/message";
 export * from "./components/mui-icons/moon";
 export * from "./components/mui-icons/notification";
 export * from "./components/mui-icons/right-chevron";
+export * from "./components/mui-icons/spinner";
 export * from "./components/mui-icons/stop";
 export * from "./components/mui-icons/subtract";
 export * from "./components/mui-icons/sun";

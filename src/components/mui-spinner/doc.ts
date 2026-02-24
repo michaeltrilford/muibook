@@ -13,7 +13,7 @@ export const muiDocs: MuiDocs = {
     usage: {
       list: [
         "Use when content is loading and progress percentage is unavailable.",
-        "Prefer small or medium sizes inside controls and cards.",
+        "Use size variants (xx-small to large) to match surrounding density.",
         "Set label for assistive technology context.",
       ],
     },

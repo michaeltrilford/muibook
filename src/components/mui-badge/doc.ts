@@ -20,7 +20,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Show the number of unread notifications – E.g. '4' unread messages",
         "Indicate the status of a user – E.g. Online, Busy, or Away",
-        "Use size variants (x-small, small, medium, large) to match surrounding component scale.",
+        "Use size variants (xx-small, x-small, small, medium, large) to match surrounding component scale.",
       ],
     },
 

@@ -70,6 +70,20 @@ class StoryPrompt extends HTMLElement {
       { name: "fan-open", type: "boolean", options: "fan-open", default: "", description: "Forces fan actions open." },
       { name: "disabled", type: "boolean", options: "disabled", default: "", description: "Disables prompt input." },
       {
+        name: "loading",
+        type: "boolean",
+        options: "loading",
+        default: "",
+        description: "Shows built-in spinner next to actions-right and blocks submit while active.",
+      },
+      {
+        name: "loading-label",
+        type: "string",
+        options: "{text}",
+        default: "Sending",
+        description: "Accessible label used by the built-in loading spinner.",
+      },
+      {
         name: "slot=preview",
         type: "slot (named)",
         options: "mui-prompt-preview",
@@ -103,8 +117,8 @@ class StoryPrompt extends HTMLElement {
         name: "slot=actions-right",
         type: "slot (named)",
         options: "button, toggle",
-        default: "",
-        description: "Right-side submit/state action.",
+        default: "Built-in submit toggle",
+        description: "Optional override for the right-side submit/state action.",
       },
       {
         name: "preview-dialog-width",
@@ -147,6 +161,34 @@ class StoryPrompt extends HTMLElement {
         options: "hidden",
         default: "",
         description: "Set to hidden to keep horizontal preview scrolling but hide the scrollbar chrome.",
+      },
+      {
+        name: "error-message",
+        type: "string",
+        options: "{text}",
+        default: "",
+        description: "Direct error copy rendered below prompt.",
+      },
+      {
+        name: "debug",
+        type: "boolean",
+        options: "debug",
+        default: "",
+        description: "Renders built-in status + JSON payload output below the prompt for diagnostics.",
+      },
+      {
+        name: "setError(message)",
+        type: "method",
+        options: "",
+        default: "",
+        description: "Sets prompt error message programmatically.",
+      },
+      {
+        name: "clearError()",
+        type: "method",
+        options: "",
+        default: "",
+        description: "Clears prompt error state and collapses expanded error copy.",
       },
       {
         name: "effects-off",
@@ -263,7 +305,7 @@ class StoryPrompt extends HTMLElement {
         usage="Use prompt-paste to capture clipboard payloads and append previews.|||Use prompt-preview-open to drive analytics, dialog selection, or routing.|||Use context-mode='icon|chip' with slotted <mui-prompt-toggle> (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||Theme the hover/focus mesh using --prompt-accent-primary and optional --prompt-accent-secondary.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt
+          <mui-prompt debug
             preview-scrollbar="hidden"
             id="agentDataPrompt"
             placeholder="Paste, click preview, or submit..."
@@ -316,21 +358,7 @@ class StoryPrompt extends HTMLElement {
               <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
               <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
             </mui-dropdown>
-            <mui-button slot="actions-right" variant="tertiary" id="agentDataSubmitBtn" size="small" icon-only>
-              <mui-icon-toggle id="agentDataToggle" rotate size="small">
-                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-button>
           </mui-prompt>
-          <mui-v-stack space="var(--space-050)">
-            <mui-body id="agentDataStatus" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              Idle: waiting for prompt data events.
-            </mui-body>
-            <mui-body id="agentDataPayload" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              {"event":"idle"}
-            </mui-body>
-          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt<br />
@@ -366,7 +394,7 @@ class StoryPrompt extends HTMLElement {
         usage="This is a reusable offering extracted from Agent UI compositions.|||Use it as the shared prompt primitive across products."
       >
         <mui-v-stack slot="body" space="var(--space-100)">
-          <mui-prompt
+          <mui-prompt debug
             preview-scrollbar="hidden"
             id="promptDemo"
             placeholder="Reply to Mui..."
@@ -384,7 +412,7 @@ class StoryPrompt extends HTMLElement {
                 <mui-button variant="tertiary" size='small'>Upload File</mui-button>
                 <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
               </mui-dropdown>
-              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+              <mui-prompt-toggle>
                 <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                   <mui-icon-globe size="small"></mui-icon-globe>
                 </mui-button>
@@ -400,21 +428,7 @@ class StoryPrompt extends HTMLElement {
               <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
               <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
             </mui-dropdown>
-            <mui-button slot="actions-right" variant="tertiary" id="promptSubmitBtn" size="small" icon-only>
-              <mui-icon-toggle id="promptToggle" rotate size="small">
-                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-button>
           </mui-prompt>
-          <mui-v-stack space="var(--space-050)">
-            <mui-body id="promptStatus" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              Idle: no submit yet.
-            </mui-body>
-            <mui-body id="promptPayload" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              {"event":"idle"}
-            </mui-body>
-          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt placeholder="Reply to Mui..." enter-submit actions-fan&gt;<br />
@@ -422,7 +436,7 @@ class StoryPrompt extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-prompt-toggle slot="actions"&gt;...globe/chip...&lt;/mui-prompt-toggle&gt;<br />
           
           &nbsp;&nbsp;&lt;mui-dropdown slot="actions" vertical-position="up"&gt;...MPT...&lt;/mui-dropdown&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="actions-right" variant="tertiary"&gt;...&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;// built-in actions-right submit control<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
@@ -433,7 +447,7 @@ class StoryPrompt extends HTMLElement {
         description="Use before-submit to block invalid sends, then call submit/clear/focus from app controls."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt
+          <mui-prompt debug
             preview-scrollbar="hidden"
             id="promptApiGuard"
             placeholder="Type at least 5 characters..."
@@ -451,7 +465,7 @@ class StoryPrompt extends HTMLElement {
                 <mui-button variant="tertiary" size="small">Upload File</mui-button>
                 <mui-button variant="tertiary" size="small">Screenshot</mui-button>
               </mui-dropdown>
-              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+              <mui-prompt-toggle>
                 <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                   <mui-icon-globe size="small"></mui-icon-globe>
                 </mui-button>
@@ -467,26 +481,12 @@ class StoryPrompt extends HTMLElement {
               <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
               <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
             </mui-dropdown>
-            <mui-button slot="actions-right" variant="tertiary" id="promptApiSubmitBtn" size="small" icon-only>
-              <mui-icon-toggle id="promptApiToggle" rotate size="small">
-                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-button>
           </mui-prompt>
           <mui-h-stack space="var(--space-100)">
             <mui-button id="promptApiSubmitMethodBtn" size="small" variant="secondary">Call submit()</mui-button>
             <mui-button id="promptApiClearBtn" size="small" variant="tertiary">Call clear()</mui-button>
             <mui-button id="promptApiFocusBtn" size="small" variant="tertiary">Call focus()</mui-button>
           </mui-h-stack>
-          <mui-v-stack space="var(--space-050)">
-            <mui-body id="promptApiStatus" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              Idle: no submit yet.
-            </mui-body>
-            <mui-body id="promptApiPayload" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              {"event":"idle"}
-            </mui-body>
-          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt id="promptApiGuard" enter-submit&gt;...&lt;/mui-prompt&gt;<br />
@@ -500,12 +500,122 @@ class StoryPrompt extends HTMLElement {
       </story-card>
 
       <story-card
+        id="loading"
+        title="Async Loading"
+        description="Show async spinner feedback next to submit while a request is in flight."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt debug
+            id="promptLoadingDemo"
+            preview-scrollbar="hidden"
+            placeholder="Send to start loading state..."
+            enter-submit
+            actions-fan
+            context-mode="icon"
+            loading-label="Sending request"
+          >
+            <mui-h-stack slot="actions" space="var(--space-050)">
+              <mui-dropdown position="right" vertical-position="up">
+                <mui-button slot="action" variant="tertiary" icon-only size="small">
+                  <mui-icon-add size="small"></mui-icon-add>
+                </mui-button>
+                <mui-button variant="tertiary" size="small">Upload Photo</mui-button>
+                <mui-button variant="tertiary" size="small">Take Photo</mui-button>
+                <mui-button variant="tertiary" size="small">Upload File</mui-button>
+                <mui-button variant="tertiary" size="small">Screenshot</mui-button>
+              </mui-dropdown>
+              <mui-prompt-toggle>
+                <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                  <mui-icon-globe size="small"></mui-icon-globe>
+                </mui-button>
+                <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+              </mui-prompt-toggle>
+            </mui-h-stack>
+            <mui-dropdown slot="actions" position="right" vertical-position="up">
+              <mui-button slot="action" variant="tertiary" size="small">
+                MPT-4
+                <mui-icon-down-chevron slot="after" size="small"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            </mui-dropdown>
+          </mui-prompt>
+          <mui-h-stack space="var(--space-100)">
+            <mui-button id="promptLoadingStartBtn" size="small" variant="secondary">Start Loading</mui-button>
+            <mui-button id="promptLoadingStopBtn" size="small" variant="tertiary">Stop Loading</mui-button>
+          </mui-h-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt loading loading-label="Sending request"&gt;...&lt;/mui-prompt&gt;<br />
+          prompt.setAttribute("loading", "");<br />
+          prompt.removeAttribute("loading");
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="error-feedback"
+        title="Error Feedback"
+        description="Inject direct error text or custom slot content. Long errors can expand for review."
+        usage="Use Bad Data for raw machine/system validation output.|||Use Custom Data for humanised, user-facing guidance copy.|||Use Reset to clear both direct error-message and custom slotted error content."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt debug
+            preview-scrollbar="hidden"
+            id="promptErrorDemo"
+            placeholder="Try submitting bad or clean payload..."
+            enter-submit
+            actions-fan
+            context-mode="icon"
+          >
+            <mui-h-stack slot="actions" space="var(--space-050)">
+              <mui-dropdown position="right" vertical-position="up">
+                <mui-button slot="action" variant="tertiary" icon-only size="small">
+                  <mui-icon-add size="small"></mui-icon-add>
+                </mui-button>
+                <mui-button variant="tertiary" size="small">Upload Photo</mui-button>
+                <mui-button variant="tertiary" size="small">Take Photo</mui-button>
+                <mui-button variant="tertiary" size="small">Upload File</mui-button>
+                <mui-button variant="tertiary" size="small">Screenshot</mui-button>
+              </mui-dropdown>
+              <mui-prompt-toggle>
+                <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                  <mui-icon-globe size="small"></mui-icon-globe>
+                </mui-button>
+                <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+              </mui-prompt-toggle>
+            </mui-h-stack>
+            <mui-dropdown slot="actions" position="right" vertical-position="up">
+              <mui-button slot="action" variant="tertiary" size="small">
+                MPT-4
+                <mui-icon-down-chevron slot="after" size="small"></mui-icon-down-chevron>
+              </mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            </mui-dropdown>
+          </mui-prompt>
+          <mui-h-stack space="var(--space-100)">
+            <mui-button id="promptErrorBadBtn" size="small" variant="secondary">Bad Data</mui-button>
+            <mui-button id="promptErrorCustomBtn" size="small" variant="tertiary">Custom Data</mui-button>
+            <mui-button id="promptErrorResetBtn" size="small" variant="tertiary">Reset</mui-button>
+          </mui-h-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt id="promptErrorDemo"&gt;...&lt;/mui-prompt&gt;<br />
+          prompt.setError("ERR_VALIDATION_422: field 'intent' is required; schema=prompt/v4");<br />
+          prompt.setError("We could not process that request. Check the fields and try again.");<br />
+          prompt.clearError();<br />
+        </story-code-block>
+      </story-card>
+
+      <story-card
         id="effects-off"
         title="Effects Off"
         description="Disable prompt hover/focus visuals for a flatter surface."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt
+          <mui-prompt debug
             effects-off
             preview-scrollbar="hidden"
             id="effectsOffPrompt"
@@ -524,7 +634,7 @@ class StoryPrompt extends HTMLElement {
                 <mui-button variant="tertiary" size='small'>Upload File</mui-button>
                 <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
               </mui-dropdown>
-              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+              <mui-prompt-toggle>
                 <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                   <mui-icon-globe size="small"></mui-icon-globe>
                 </mui-button>
@@ -540,28 +650,14 @@ class StoryPrompt extends HTMLElement {
               <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
               <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
             </mui-dropdown>
-            <mui-button slot="actions-right" variant="tertiary" id="effectsOffSubmitBtn" size="small" icon-only>
-              <mui-icon-toggle id="effectsOffToggle" rotate size="small">
-                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-button>
           </mui-prompt>
-          <mui-v-stack space="var(--space-050)">
-            <mui-body id="effectsOffStatus" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              Idle: no submit yet.
-            </mui-body>
-            <mui-body id="effectsOffPayload" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              {"event":"idle"}
-            </mui-body>
-          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt effects-off enter-submit actions-fan&gt;<br />
           &nbsp;&nbsp;&lt;mui-dropdown slot="actions"&gt;...add...&lt;/mui-dropdown&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-toggle slot="actions"&gt;...globe/chip...&lt;/mui-prompt-toggle&gt;<br />
           &nbsp;&nbsp;&lt;mui-dropdown slot="actions"&gt;...MPT...&lt;/mui-dropdown&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="actions-right" variant="tertiary"&gt;...&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;// built-in actions-right submit control<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
@@ -572,7 +668,7 @@ class StoryPrompt extends HTMLElement {
         description="Remap the top color positions without changing the supplied color values."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt
+          <mui-prompt debug
             preview-scrollbar="hidden"
             id="agentColorSwapPrompt"
             color-layout="swap"
@@ -595,7 +691,7 @@ class StoryPrompt extends HTMLElement {
                 <mui-button variant="tertiary" size='small'>Upload File</mui-button>
                 <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
               </mui-dropdown>
-              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+              <mui-prompt-toggle>
                 <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                   <mui-icon-globe size="small"></mui-icon-globe>
                 </mui-button>
@@ -611,21 +707,7 @@ class StoryPrompt extends HTMLElement {
               <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
               <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
             </mui-dropdown>
-            <mui-button slot="actions-right" variant="tertiary" id="agentColorSwapSubmitBtn" size="small" icon-only>
-              <mui-icon-toggle id="agentColorSwapToggle" rotate size="small">
-                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-button>
           </mui-prompt>
-          <mui-v-stack space="var(--space-050)">
-            <mui-body id="agentColorSwapStatus" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              Idle: no submit yet.
-            </mui-body>
-            <mui-body id="agentColorSwapPayload" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              {"event":"idle"}
-            </mui-body>
-          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt<br />
@@ -640,14 +722,14 @@ class StoryPrompt extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-dropdown slot="actions"&gt;...add...&lt;/mui-dropdown&gt;<br />
           &nbsp;&nbsp;&lt;mui-prompt-toggle slot="actions"&gt;...globe/chip...&lt;/mui-prompt-toggle&gt;<br />
           &nbsp;&nbsp;&lt;mui-dropdown slot="actions"&gt;...MPT...&lt;/mui-dropdown&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="actions-right" variant="tertiary"&gt;...&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;// built-in actions-right submit control<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="preview-open-image-dialog" title="Preview: Image" description="Click image preview to open the built-in prompt dialog.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt
+          <mui-prompt debug
             preview-scrollbar="hidden"
             id="agentImageDialogPrompt"
             placeholder="Use this image..."
@@ -729,7 +811,7 @@ class StoryPrompt extends HTMLElement {
                 <mui-button variant="tertiary" size='small'>Upload File</mui-button>
                 <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
               </mui-dropdown>
-              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+              <mui-prompt-toggle>
                 <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                   <mui-icon-globe size="small"></mui-icon-globe>
                 </mui-button>
@@ -745,21 +827,7 @@ class StoryPrompt extends HTMLElement {
               <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
               <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
             </mui-dropdown>
-                        <mui-button slot="actions-right" variant="tertiary" id="agentImageSubmitBtn" size="small" icon-only>
-              <mui-icon-toggle id="agentImageToggle" rotate size="small">
-                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-button>
           </mui-prompt>
-          <mui-v-stack space="var(--space-050)">
-            <mui-body id="agentImageStatus" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              Idle: no submit yet.
-            </mui-body>
-            <mui-body id="agentImagePayload" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              {"event":"idle"}
-            </mui-body>
-          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt enter-submit actions-fan&gt;<br />
@@ -772,9 +840,44 @@ class StoryPrompt extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card
+        id="preview-media"
+        title="Preview: Media"
+        description="Paste media URLs (mp4/mp3) to verify VIDEO and MUSIC badge detection."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt debug
+            id="promptMediaDetection"
+            preview-scrollbar="hidden"
+            placeholder="Paste a media URL such as .mp4 or .mp3 ..."
+            enter-submit
+            actions-fan
+          >
+            <mui-prompt-preview
+              slot="preview"
+              clickable
+              badge="VIDEO"
+              value="https://youtu.be/2HTtfmXkeZQ?si=uM5dXCf3fb2M_9YB"
+            ></mui-prompt-preview>
+            <mui-prompt-preview
+              slot="preview"
+              clickable
+              badge="MUSIC"
+              value="https://samplelib.com/lib/preview/mp3/sample-3s.mp3"
+            ></mui-prompt-preview>
+          </mui-prompt>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt placeholder="Paste .mp4 or .mp3 URL..."&gt;<br />
+          &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" badge="VIDEO" value="https://...sample.mp4"&gt;&lt;/mui-prompt-preview&gt;<br />
+          &nbsp;&nbsp;&lt;mui-prompt-preview slot="preview" badge="MUSIC" value="https://...sample.mp3"&gt;&lt;/mui-prompt-preview&gt;<br />
+          &lt;/mui-prompt&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="preview-open-dialog" title="Preview: Code" description="Click preview to open the built-in prompt dialog.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt
+          <mui-prompt debug
             preview-scrollbar="hidden"
             id="agentCodeDialogPrompt"
             placeholder="Review payload..."
@@ -834,7 +937,7 @@ class StoryPrompt extends HTMLElement {
                 <mui-button variant="tertiary" size='small'>Upload File</mui-button>
                 <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
               </mui-dropdown>
-              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+              <mui-prompt-toggle>
                 <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                   <mui-icon-globe size="small"></mui-icon-globe>
                 </mui-button>
@@ -850,21 +953,7 @@ class StoryPrompt extends HTMLElement {
               <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
               <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
             </mui-dropdown>
-                        <mui-button slot="actions-right" variant="tertiary" id="agentCodeSubmitBtn" size="small" icon-only>
-              <mui-icon-toggle id="agentCodeToggle" rotate size="small">
-                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-button>
           </mui-prompt>
-          <mui-v-stack space="var(--space-050)">
-            <mui-body id="agentCodeStatus" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              Idle: no submit yet.
-            </mui-body>
-            <mui-body id="agentCodePayload" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              {"event":"idle"}
-            </mui-body>
-          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt enter-submit actions-fan&gt;<br />
@@ -880,7 +969,7 @@ class StoryPrompt extends HTMLElement {
 
       <story-card id="preview-off" title="Preview: Off" description="Disable preview auto-click so items stay non-interactive.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt
+          <mui-prompt debug
             preview-scrollbar="hidden"
             id="agentPreviewOffPrompt"
             placeholder="Preview is off..."
@@ -912,7 +1001,7 @@ class StoryPrompt extends HTMLElement {
                 <mui-button variant="tertiary" size='small'>Upload File</mui-button>
                 <mui-button variant="tertiary" size='small'>Screenshot</mui-button>
               </mui-dropdown>
-              <mui-prompt-toggle style="margin-inline: var(--space-200) var(--space-025);">
+              <mui-prompt-toggle>
                 <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                   <mui-icon-globe size="small"></mui-icon-globe>
                 </mui-button>
@@ -928,21 +1017,7 @@ class StoryPrompt extends HTMLElement {
               <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
               <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
             </mui-dropdown>
-                        <mui-button slot="actions-right" variant="tertiary" id="agentPreviewOffSubmitBtn" size="small" icon-only>
-              <mui-icon-toggle id="agentPreviewOffToggle" rotate size="small">
-                <mui-icon-up-arrow slot="start" size="small"></mui-icon-up-arrow>
-                <mui-icon-stop slot="end" size="small"></mui-icon-stop>
-              </mui-icon-toggle>
-            </mui-button>
           </mui-prompt>
-          <mui-v-stack space="var(--space-050)">
-            <mui-body id="agentPreviewOffStatus" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              Idle: preview auto-click is off.
-            </mui-body>
-            <mui-body id="agentPreviewOffPayload" size="x-small" variant="optional" style="padding-left: var(--space-100);">
-              {"event":"idle"}
-            </mui-body>
-          </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt preview-auto-clickable="false" enter-submit actions-fan&gt;<br />
@@ -968,6 +1043,7 @@ class StoryPrompt extends HTMLElement {
           gap: var(--space-400);
           width: 100%;
           padding-block: var(--space-800);
+          padding-inline: var(--space-800);
           box-sizing: border-box;
         }
         .prompt-story-shell > * {
@@ -984,7 +1060,7 @@ class StoryPrompt extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       >
-        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||preview-open-dialog::Open Code Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-off::Preview Off|||preview-data::Preview Data Feed"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||error-feedback::Error Feedback|||preview-open-dialog::Open Code Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-off::Preview Off|||preview-data::Preview Data Feed"></story-quicklinks>
         ${stories}
       </story-template>
     `;
@@ -997,80 +1073,27 @@ class StoryPrompt extends HTMLElement {
       shell.appendChild(promptEl);
     });
 
-    const agentDataPromptEl = this.shadowRoot.querySelector("#agentDataPrompt");
-    const agentDataStatusEl = this.shadowRoot.querySelector("#agentDataStatus");
-    const agentDataShell = agentDataPromptEl?.closest(".prompt-story-shell");
-    const agentDataMeta = agentDataStatusEl?.parentElement;
-    if (agentDataShell && agentDataMeta && agentDataMeta.parentElement !== agentDataShell) {
-      agentDataShell.appendChild(agentDataMeta);
-    }
-    const moveStatusUnderPrompt = (promptId, statusId) => {
-      const promptEl = this.shadowRoot.querySelector(`#${promptId}`);
-      const statusEl = this.shadowRoot.querySelector(`#${statusId}`);
-      const shell = promptEl?.closest(".prompt-story-shell");
-      const statusContainer = statusEl?.parentElement;
-      if (
-        shell &&
-        statusContainer &&
-        statusContainer.parentElement !== shell &&
-        !statusContainer.contains(shell)
-      ) {
-        shell.appendChild(statusContainer);
-      }
-    };
-    moveStatusUnderPrompt("promptDemo", "promptStatus");
-    moveStatusUnderPrompt("promptApiGuard", "promptApiStatus");
-    moveStatusUnderPrompt("effectsOffPrompt", "effectsOffStatus");
-    moveStatusUnderPrompt("agentCodeDialogPrompt", "agentCodeStatus");
-    moveStatusUnderPrompt("agentImageDialogPrompt", "agentImageStatus");
-    moveStatusUnderPrompt("agentPreviewOffPrompt", "agentPreviewOffStatus");
-    moveStatusUnderPrompt("agentColorSwapPrompt", "agentColorSwapStatus");
-
     const prompt = this.shadowRoot.querySelector("#promptDemo");
-    const submitBtn = this.shadowRoot.querySelector("#promptSubmitBtn");
-    const toggle = this.shadowRoot.querySelector("#promptToggle");
-    const status = this.shadowRoot.querySelector("#promptStatus");
-    const promptPayload = this.shadowRoot.querySelector("#promptPayload");
     const promptApiGuard = this.shadowRoot.querySelector("#promptApiGuard");
-    const promptApiSubmitBtn = this.shadowRoot.querySelector("#promptApiSubmitBtn");
-    const promptApiToggle = this.shadowRoot.querySelector("#promptApiToggle");
-    const promptApiStatus = this.shadowRoot.querySelector("#promptApiStatus");
-    const promptApiPayload = this.shadowRoot.querySelector("#promptApiPayload");
     const promptApiSubmitMethodBtn = this.shadowRoot.querySelector("#promptApiSubmitMethodBtn");
     const promptApiClearBtn = this.shadowRoot.querySelector("#promptApiClearBtn");
     const promptApiFocusBtn = this.shadowRoot.querySelector("#promptApiFocusBtn");
+    const promptLoadingDemo = this.shadowRoot.querySelector("#promptLoadingDemo");
+    const promptLoadingStartBtn = this.shadowRoot.querySelector("#promptLoadingStartBtn");
+    const promptLoadingStopBtn = this.shadowRoot.querySelector("#promptLoadingStopBtn");
     const effectsOffPrompt = this.shadowRoot.querySelector("#effectsOffPrompt");
-    const effectsOffSubmitBtn = this.shadowRoot.querySelector("#effectsOffSubmitBtn");
-    const effectsOffToggle = this.shadowRoot.querySelector("#effectsOffToggle");
-    const effectsOffStatus = this.shadowRoot.querySelector("#effectsOffStatus");
-    const effectsOffPayload = this.shadowRoot.querySelector("#effectsOffPayload");
     const agentCodeDialogPrompt = this.shadowRoot.querySelector("#agentCodeDialogPrompt");
-    const agentCodeSubmitBtn = this.shadowRoot.querySelector("#agentCodeSubmitBtn");
-    const agentCodeToggle = this.shadowRoot.querySelector("#agentCodeToggle");
-    const agentCodeStatus = this.shadowRoot.querySelector("#agentCodeStatus");
-    const agentCodePayload = this.shadowRoot.querySelector("#agentCodePayload");
     const agentImageDialogPrompt = this.shadowRoot.querySelector("#agentImageDialogPrompt");
-    const agentImageSubmitBtn = this.shadowRoot.querySelector("#agentImageSubmitBtn");
-    const agentImageToggle = this.shadowRoot.querySelector("#agentImageToggle");
-    const agentImageStatus = this.shadowRoot.querySelector("#agentImageStatus");
-    const agentImagePayload = this.shadowRoot.querySelector("#agentImagePayload");
+    const promptMediaDetection = this.shadowRoot.querySelector("#promptMediaDetection");
     const agentPreviewOffPrompt = this.shadowRoot.querySelector("#agentPreviewOffPrompt");
-    const agentPreviewOffSubmitBtn = this.shadowRoot.querySelector("#agentPreviewOffSubmitBtn");
-    const agentPreviewOffToggle = this.shadowRoot.querySelector("#agentPreviewOffToggle");
-    const agentPreviewOffStatus = this.shadowRoot.querySelector("#agentPreviewOffStatus");
-    const agentPreviewOffPayload = this.shadowRoot.querySelector("#agentPreviewOffPayload");
     const agentColorSwapPrompt = this.shadowRoot.querySelector("#agentColorSwapPrompt");
-    const agentColorSwapSubmitBtn = this.shadowRoot.querySelector("#agentColorSwapSubmitBtn");
-    const agentColorSwapToggle = this.shadowRoot.querySelector("#agentColorSwapToggle");
-    const agentColorSwapStatus = this.shadowRoot.querySelector("#agentColorSwapStatus");
-    const agentColorSwapPayload = this.shadowRoot.querySelector("#agentColorSwapPayload");
     const agentDataPrompt = this.shadowRoot.querySelector("#agentDataPrompt");
-    const agentDataSubmitBtn = this.shadowRoot.querySelector("#agentDataSubmitBtn");
-    const agentDataToggle = this.shadowRoot.querySelector("#agentDataToggle");
-    const agentDataStatus = this.shadowRoot.querySelector("#agentDataStatus");
-    const agentDataPayload = this.shadowRoot.querySelector("#agentDataPayload");
+    const promptErrorDemo = this.shadowRoot.querySelector("#promptErrorDemo");
+    const promptErrorBadBtn = this.shadowRoot.querySelector("#promptErrorBadBtn");
+    const promptErrorCustomBtn = this.shadowRoot.querySelector("#promptErrorCustomBtn");
+    const promptErrorResetBtn = this.shadowRoot.querySelector("#promptErrorResetBtn");
 
-    const bindPastePreviews = ({ promptEl, statusEl, imageTint = "var(--grey-1200)", clickable = true }) => {
+    const bindPastePreviews = ({ promptEl, imageTint = "var(--grey-1200)", clickable = true }) => {
       promptEl?.addEventListener("prompt-paste", (event) => {
         const payload = event.detail || {};
         const items = Array.isArray(payload.items) ? payload.items : [];
@@ -1099,19 +1122,20 @@ class StoryPrompt extends HTMLElement {
 
           promptEl.appendChild(preview);
         });
-
-        if (statusEl) {
-          statusEl.textContent = `Pasted ${items.length} item${items.length > 1 ? "s" : ""} • preview added`;
-        }
       });
     };
 
-    const bindPromptSimulation = ({ promptEl, submitEl, toggleEl, statusEl, payloadEl, label }) => {
+    const bindPromptSimulation = ({ promptEl, label }) => {
+      const resolveSubmitEl = () => promptEl?.shadowRoot?.querySelector("#promptDefaultSubmitAction") ?? null;
+      const resolveToggleEl = () =>
+        promptEl?.shadowRoot?.querySelector("#promptDefaultSubmitAction mui-icon-toggle") ?? null;
+
       let pendingSendTimeout;
       const setSendingState = (isSending) => {
-        if (!toggleEl) return;
-        toggleEl.toggle = isSending;
-        toggleEl.setAttribute("aria-pressed", String(isSending));
+        const activeToggle = resolveToggleEl();
+        if (!activeToggle) return;
+        activeToggle.toggle = isSending;
+        activeToggle.setAttribute("aria-pressed", String(isSending));
       };
       const cancelSimulation = (reason = "Esc: actions closed, send cancelled") => {
         if (pendingSendTimeout) {
@@ -1119,8 +1143,7 @@ class StoryPrompt extends HTMLElement {
           pendingSendTimeout = undefined;
         }
         setSendingState(false);
-        if (statusEl) statusEl.textContent = reason;
-        if (payloadEl) payloadEl.textContent = JSON.stringify({ event: "cancelled" });
+        console.log(`${label}: ${reason}`);
       };
       const simulateSend = (source) => {
         if (pendingSendTimeout) {
@@ -1134,21 +1157,20 @@ class StoryPrompt extends HTMLElement {
         };
         console.log(`${label} JSON sending (simulation):`, payload);
         setSendingState(true);
-        if (statusEl) statusEl.textContent = `Sending JSON (${source})... ${JSON.stringify(payload)}`;
-        if (payloadEl) payloadEl.textContent = JSON.stringify({ event: "sending", ...payload });
         pendingSendTimeout = window.setTimeout(() => {
           pendingSendTimeout = undefined;
           setSendingState(false);
-          if (statusEl) statusEl.textContent = `Sent JSON (${source})`;
-          if (payloadEl) payloadEl.textContent = JSON.stringify({ event: "sent", ...payload });
+          console.log(`${label} JSON sent (simulation):`, payload);
         }, 350);
       };
 
       promptEl?.addEventListener("click", (event) => {
+        const activeSubmit = resolveSubmitEl();
         const path = event.composedPath();
         const clickedSubmit = path.some((node) => {
           if (!(node instanceof HTMLElement)) return false;
-          if (submitEl && node === submitEl) return true;
+          if (activeSubmit && node === activeSubmit) return true;
+          if (node.id === "promptDefaultSubmitAction") return true;
           return node.getAttribute?.("slot") === "actions-right";
         });
         if (clickedSubmit) simulateSend("click");
@@ -1163,114 +1185,61 @@ class StoryPrompt extends HTMLElement {
 
     bindPromptSimulation({
       promptEl: prompt,
-      submitEl: submitBtn,
-      toggleEl: toggle,
-      statusEl: status,
-      payloadEl: promptPayload,
       label: "Agent prompt (default)",
     });
     bindPromptSimulation({
       promptEl: promptApiGuard,
-      submitEl: promptApiSubmitBtn,
-      toggleEl: promptApiToggle,
-      statusEl: promptApiStatus,
-      payloadEl: promptApiPayload,
       label: "Agent prompt (submit guard + api)",
     });
     bindPromptSimulation({
+      promptEl: promptLoadingDemo,
+      label: "Agent prompt (async loading)",
+    });
+    bindPromptSimulation({
       promptEl: effectsOffPrompt,
-      submitEl: effectsOffSubmitBtn,
-      toggleEl: effectsOffToggle,
-      statusEl: effectsOffStatus,
-      payloadEl: effectsOffPayload,
       label: "Agent prompt (effects off)",
     });
     bindPromptSimulation({
       promptEl: agentCodeDialogPrompt,
-      submitEl: agentCodeSubmitBtn,
-      toggleEl: agentCodeToggle,
-      statusEl: agentCodeStatus,
-      payloadEl: agentCodePayload,
       label: "Agent prompt (code dialog)",
     });
     bindPromptSimulation({
       promptEl: agentImageDialogPrompt,
-      submitEl: agentImageSubmitBtn,
-      toggleEl: agentImageToggle,
-      statusEl: agentImageStatus,
-      payloadEl: agentImagePayload,
       label: "Agent prompt (image dialog)",
     });
     bindPromptSimulation({
+      promptEl: promptMediaDetection,
+      label: "Agent prompt (media detection)",
+    });
+    bindPromptSimulation({
       promptEl: agentPreviewOffPrompt,
-      submitEl: agentPreviewOffSubmitBtn,
-      toggleEl: agentPreviewOffToggle,
-      statusEl: agentPreviewOffStatus,
-      payloadEl: agentPreviewOffPayload,
       label: "Agent prompt (preview off)",
     });
     bindPromptSimulation({
       promptEl: agentColorSwapPrompt,
-      submitEl: agentColorSwapSubmitBtn,
-      toggleEl: agentColorSwapToggle,
-      statusEl: agentColorSwapStatus,
-      payloadEl: agentColorSwapPayload,
       label: "Agent prompt (color swap)",
     });
     bindPromptSimulation({
       promptEl: agentDataPrompt,
-      submitEl: agentDataSubmitBtn,
-      toggleEl: agentDataToggle,
-      statusEl: agentDataStatus,
-      payloadEl: agentDataPayload,
       label: "Agent prompt (data feed)",
+    });
+    bindPromptSimulation({
+      promptEl: promptErrorDemo,
+      label: "Agent prompt (error feedback)",
     });
 
     bindPastePreviews({
       promptEl: agentCodeDialogPrompt,
-      statusEl: agentCodeStatus,
     });
     bindPastePreviews({
       promptEl: agentImageDialogPrompt,
-      statusEl: agentImageStatus,
     });
     bindPastePreviews({
       promptEl: agentPreviewOffPrompt,
-      statusEl: agentPreviewOffStatus,
       clickable: false,
     });
     bindPastePreviews({
       promptEl: agentDataPrompt,
-      statusEl: agentDataStatus,
-    });
-
-    const setDataFeed = (data) => {
-      if (agentDataPayload) agentDataPayload.textContent = JSON.stringify(data, null, 2);
-      if (agentDataStatus) agentDataStatus.textContent = data.summary || "Event received";
-    };
-
-    agentDataPrompt?.addEventListener("prompt-paste", (event) => {
-      const detail = event.detail || {};
-      const items = Array.isArray(detail.items) ? detail.items : [];
-      setDataFeed({
-        event: "prompt-paste",
-        itemCount: items.length,
-        badges: items.map((item) => item.badge),
-        timestamp: detail.timestamp || "",
-        summary: `Paste event: ${items.length} item${items.length === 1 ? "" : "s"} detected`,
-      });
-    });
-
-    agentDataPrompt?.addEventListener("prompt-preview-open", (event) => {
-      const detail = event.detail || {};
-      setDataFeed({
-        event: "prompt-preview-open",
-        badge: detail.badge || "",
-        label: detail.label || "",
-        hasImage: Boolean(detail.bgImage),
-        valuePreview: String(detail.value || "").slice(0, 80),
-        summary: `Preview opened: ${detail.badge || "UNKNOWN"}`,
-      });
     });
 
     promptApiGuard?.addEventListener("before-submit", (event) => {
@@ -1278,30 +1247,54 @@ class StoryPrompt extends HTMLElement {
       const value = String(detail.value || "").trim();
       if (value.length >= 5) return;
       event.preventDefault();
-      if (promptApiStatus) promptApiStatus.textContent = "Blocked: enter at least 5 characters";
-      if (promptApiPayload) {
-        promptApiPayload.textContent = JSON.stringify({
-          event: "before-submit:blocked",
-          reason: "min-length",
-          min: 5,
-          length: value.length,
-        });
-      }
+      console.log("before-submit:blocked", { reason: "min-length", min: 5, length: value.length });
     });
 
     promptApiSubmitMethodBtn?.addEventListener("click", () => {
       const ok = promptApiGuard?.submit?.("api");
-      if (!ok && promptApiStatus) promptApiStatus.textContent = "submit(): canceled by before-submit";
+      if (!ok) console.log("submit(): canceled by before-submit");
     });
     promptApiClearBtn?.addEventListener("click", () => {
       promptApiGuard?.clear?.();
-      if (promptApiStatus) promptApiStatus.textContent = "clear(): value reset";
-      if (promptApiPayload) promptApiPayload.textContent = JSON.stringify({ event: "clear" });
+      console.log("clear(): value reset");
     });
     promptApiFocusBtn?.addEventListener("click", () => {
       promptApiGuard?.focus?.();
-      if (promptApiStatus) promptApiStatus.textContent = "focus(): textarea focused";
-      if (promptApiPayload) promptApiPayload.textContent = JSON.stringify({ event: "focus" });
+      console.log("focus(): textarea focused");
+    });
+    promptLoadingDemo?.addEventListener("submit", () => {
+      promptLoadingDemo?.setAttribute("loading", "");
+      window.setTimeout(() => {
+        promptLoadingDemo?.removeAttribute("loading");
+      }, 1200);
+    });
+    promptLoadingStartBtn?.addEventListener("click", () => {
+      promptLoadingDemo?.setAttribute("loading", "");
+      console.log("loading:start");
+    });
+    promptLoadingStopBtn?.addEventListener("click", () => {
+      promptLoadingDemo?.removeAttribute("loading");
+      console.log("loading:stop");
+    });
+
+    promptErrorBadBtn?.addEventListener("click", () => {
+      const message = "ERR_VALIDATION_422: field 'intent' is required; schema=prompt/v4";
+      promptErrorDemo?.setError?.(message);
+      console.log("error:set", { reason: "bad-data", message });
+    });
+    promptErrorCustomBtn?.addEventListener("click", () => {
+      const message =
+        "We could not process that request. Check the fields and try again. If this keeps happening, contact support with correlation ID #73A.";
+      promptErrorDemo?.setError?.(message);
+      console.log("error:custom", { mode: "message", message });
+    });
+    promptErrorResetBtn?.addEventListener("click", () => {
+      promptErrorDemo?.clearError?.();
+      console.log("error:reset");
+    });
+    promptErrorDemo?.addEventListener("prompt-error-clear", (event) => {
+      const detail = event.detail || {};
+      console.log("prompt-error-clear", detail);
     });
   }
 }

@@ -1,14 +1,15 @@
 class MuiHint extends HTMLElement {
   static get observedAttributes() {
-    return ["placement", "open", "delay"];
+    return ["placement", "open", "delay", "initial-delay"];
   }
 
   private openTimer: number | null = null;
   private closeTimer: number | null = null;
+  private hasOpenedOnce = false;
   private boundReposition = () => this.positionTooltip();
   private boundDocPointer = (event: Event) => {
     const path = event.composedPath();
-    if (!path.includes(this)) this.close();
+    if (!path.includes(this)) this.close(true);
   };
 
   constructor() {
@@ -48,7 +49,7 @@ class MuiHint extends HTMLElement {
           cursor: help;
         }
         .tooltip {
-          position: fixed;
+          position: absolute;
           z-index: 1000;
           min-width: max-content;
           max-width: var(--hint-max-width, 28rem);
@@ -65,6 +66,9 @@ class MuiHint extends HTMLElement {
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
           box-sizing: border-box;
+        }
+        :host([closing-immediate]) .tooltip {
+          transition-duration: 0ms;
         }
         :host([open]) .tooltip {
           opacity: 1;
@@ -121,21 +125,24 @@ class MuiHint extends HTMLElement {
 
     trigger.addEventListener("mouseenter", () => this.openWithDelay());
     trigger.addEventListener("mouseleave", () => this.closeWithDelay());
-    trigger.addEventListener("focus", () => this.openWithDelay());
-    trigger.addEventListener("blur", () => this.closeWithDelay());
-    trigger.addEventListener("click", (event) => {
-      event.preventDefault();
-      this.toggle();
-    });
+    trigger.addEventListener("focusin", () => this.openWithDelay());
+    trigger.addEventListener("focusout", () => this.close(true));
 
     this.addEventListener("keydown", (event) => {
-      if ((event as KeyboardEvent).key === "Escape") this.close();
+      if ((event as KeyboardEvent).key === "Escape") this.close(true);
     });
   }
 
   private getDelay() {
     const raw = Number(this.getAttribute("delay"));
-    return Number.isFinite(raw) ? Math.max(raw, 0) : 120;
+    if (Number.isFinite(raw)) return Math.min(2000, Math.max(1000, raw));
+    return 1500;
+  }
+
+  private getInitialDelay() {
+    const raw = Number(this.getAttribute("initial-delay"));
+    if (Number.isFinite(raw)) return Math.min(2000, Math.max(1000, raw));
+    return 1500;
   }
 
   private openWithDelay() {
@@ -143,7 +150,7 @@ class MuiHint extends HTMLElement {
       window.clearTimeout(this.closeTimer);
       this.closeTimer = null;
     }
-    const delay = this.getDelay();
+    const delay = this.hasOpenedOnce ? this.getDelay() : this.getInitialDelay();
     this.openTimer = window.setTimeout(() => this.open(), delay);
   }
 
@@ -156,6 +163,8 @@ class MuiHint extends HTMLElement {
   }
 
   private open() {
+    this.hasOpenedOnce = true;
+    this.removeAttribute("closing-immediate");
     this.setAttribute("open", "");
     requestAnimationFrame(() => this.positionTooltip());
     window.addEventListener("resize", this.boundReposition);
@@ -163,25 +172,37 @@ class MuiHint extends HTMLElement {
     document.addEventListener("pointerdown", this.boundDocPointer, true);
   }
 
-  private close() {
+  private close(immediate = false) {
+    if (this.openTimer) {
+      window.clearTimeout(this.openTimer);
+      this.openTimer = null;
+    }
+    if (this.closeTimer) {
+      window.clearTimeout(this.closeTimer);
+      this.closeTimer = null;
+    }
+    if (immediate) this.setAttribute("closing-immediate", "");
     this.removeAttribute("open");
+    if (immediate) {
+      requestAnimationFrame(() => this.removeAttribute("closing-immediate"));
+    }
     window.removeEventListener("resize", this.boundReposition);
     window.removeEventListener("scroll", this.boundReposition, true);
     document.removeEventListener("pointerdown", this.boundDocPointer, true);
   }
 
-  private toggle() {
-    if (this.hasAttribute("open")) this.close();
-    else this.open();
-  }
-
   private positionTooltip() {
-    const trigger = this.shadowRoot?.querySelector(".trigger") as HTMLElement | null;
+    const triggerWrapper = this.shadowRoot?.querySelector(".trigger") as HTMLElement | null;
     const tooltip = this.shadowRoot?.querySelector(".tooltip") as HTMLElement | null;
-    if (!tooltip || !trigger) return;
+    if (!tooltip || !triggerWrapper) return;
+
+    const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement | null;
+    const slottedTrigger = (triggerSlot?.assignedElements({ flatten: true })?.[0] as HTMLElement | undefined) || null;
+    const anchor = slottedTrigger || triggerWrapper;
 
     const desired = this.getAttribute("placement") || "top";
-    const triggerRect = trigger.getBoundingClientRect();
+    const triggerRect = anchor.getBoundingClientRect();
+    const hostRect = this.getBoundingClientRect();
     const tooltipRect = tooltip.getBoundingClientRect();
     const viewportH = window.innerHeight;
     const viewportW = window.innerWidth;
@@ -196,28 +217,31 @@ class MuiHint extends HTMLElement {
 
     tooltip.setAttribute("data-placement", resolved);
 
-    let top = 0;
-    let left = 0;
+    let globalTop = 0;
+    let globalLeft = 0;
 
     if (resolved === "top") {
-      top = triggerRect.top - tooltipRect.height - gap;
-      left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
+      globalTop = triggerRect.top - tooltipRect.height - gap;
+      globalLeft = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
     } else if (resolved === "bottom") {
-      top = triggerRect.bottom + gap;
-      left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
+      globalTop = triggerRect.bottom + gap;
+      globalLeft = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
     } else if (resolved === "left") {
-      top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
-      left = triggerRect.left - tooltipRect.width - gap;
+      globalTop = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
+      globalLeft = triggerRect.left - tooltipRect.width - gap;
     } else {
-      top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
-      left = triggerRect.right + gap;
+      globalTop = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
+      globalLeft = triggerRect.right + gap;
     }
 
-    top = Math.max(edge, Math.min(top, viewportH - tooltipRect.height - edge));
-    left = Math.max(edge, Math.min(left, viewportW - tooltipRect.width - edge));
+    globalTop = Math.max(edge, Math.min(globalTop, viewportH - tooltipRect.height - edge));
+    globalLeft = Math.max(edge, Math.min(globalLeft, viewportW - tooltipRect.width - edge));
 
-    tooltip.style.top = `${top}px`;
-    tooltip.style.left = `${left}px`;
+    const localTop = globalTop - hostRect.top;
+    const localLeft = globalLeft - hostRect.left;
+
+    tooltip.style.top = `${localTop}px`;
+    tooltip.style.left = `${localLeft}px`;
   }
 }
 

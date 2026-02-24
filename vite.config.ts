@@ -96,6 +96,7 @@ export default defineConfig({
         "components/mui-icons/moon": path.resolve(__dirname, "src/components/mui-icons/moon.ts"),
         "components/mui-icons/notification": path.resolve(__dirname, "src/components/mui-icons/notification.ts"),
         "components/mui-icons/right-chevron": path.resolve(__dirname, "src/components/mui-icons/right-chevron.ts"),
+        "components/mui-icons/spinner": path.resolve(__dirname, "src/components/mui-icons/spinner.ts"),
         "components/mui-icons/stop": path.resolve(__dirname, "src/components/mui-icons/stop.ts"),
         "components/mui-icons/subtract": path.resolve(__dirname, "src/components/mui-icons/subtract.ts"),
         "components/mui-icons/sun": path.resolve(__dirname, "src/components/mui-icons/sun.ts"),

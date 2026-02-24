@@ -1,3 +1,5 @@
+import "../mui-icons/spinner";
+
 class MuiSpinner extends HTMLElement {
   static get observedAttributes() {
     return ["size", "color", "duration", "label"];
@@ -11,6 +13,7 @@ class MuiSpinner extends HTMLElement {
   connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     if (!this.hasAttribute("duration")) this.setAttribute("duration", "0.8s");
+    if (!this.hasAttribute("color")) this.setAttribute("color", "default");
     this.render();
   }
 
@@ -23,10 +26,11 @@ class MuiSpinner extends HTMLElement {
 
     const size = this.getAttribute("size") || "medium";
     const duration = this.getAttribute("duration") || "0.8s";
-    const color = this.getAttribute("color") || "var(--icon-color-default)";
+    const color = this.getAttribute("color") || "default";
     const label = this.getAttribute("label") || "Loading";
 
     const sizeMap: Record<string, string> = {
+      "xx-small": "1.3rem",
       "x-small": "1.6rem",
       small: "2.1rem",
       medium: "2.4rem",
@@ -47,11 +51,11 @@ class MuiSpinner extends HTMLElement {
         .spinner {
           width: 100%;
           height: 100%;
-          border-radius: 999px;
-          border: var(--stroke-size-200) solid color-mix(in srgb, ${color} 25%, transparent);
-          border-top-color: ${color};
           animation: spin ${duration} linear infinite;
           box-sizing: border-box;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
         .vh {
           position: absolute;
@@ -74,7 +78,9 @@ class MuiSpinner extends HTMLElement {
         }
       </style>
       <span class="vh">${label}</span>
-      <span class="spinner" role="status" aria-label="${label}"></span>
+      <span class="spinner" role="status" aria-label="${label}">
+        <mui-icon-spinner size="${size}" color="${color}"></mui-icon-spinner>
+      </span>
     `;
   }
 }

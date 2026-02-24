@@ -33,13 +33,17 @@ class MuiPromptToggle extends HTMLElement {
   private syncMode() {
     const mode = this.normalizeMode();
     const toggleNodes = Array.from(this.querySelectorAll('[slot="toggle"], [context-toggle]')) as HTMLElement[];
-    const chipNodes = Array.from(this.querySelectorAll('[slot="chip"], [context-chip]')) as HTMLElement[];
+    const activeNodes = Array.from(
+      this.querySelectorAll(
+        '[slot="active"], [context-active], [context-close], [slot="chip"], [context-chip], [slot="spinner"], [context-spinner]',
+      ),
+    ) as HTMLElement[];
     toggleNodes.forEach((node) => {
       const show = mode === "icon";
       node.toggleAttribute("hidden", !show);
       node.style.display = show ? "" : "none";
     });
-    chipNodes.forEach((node) => {
+    activeNodes.forEach((node) => {
       const show = mode === "chip";
       node.toggleAttribute("hidden", !show);
       node.style.display = show ? "" : "none";

@@ -2,6 +2,8 @@ import "../mui-badge";
 import "../mui-body";
 import "../mui-button";
 import "../mui-icons/close";
+import "../mui-icons/play-rectangle";
+import "../mui-icons/music-microphone";
 import "../mui-stack/vstack";
 import { getPartMap } from "../../utils/part-map";
 
@@ -140,6 +142,28 @@ class MuiPromptPreview extends HTMLElement {
     const explicit = this.getAttribute("badge");
     if (explicit) return explicit;
     const trimmed = value.trim();
+    const urlMatch = trimmed.match(/https?:\/\/[^\s]+/i);
+    if (urlMatch) {
+      try {
+        const url = new URL(urlMatch[0]);
+        const host = url.hostname.toLowerCase();
+        const path = url.pathname.toLowerCase();
+        if (/\.(png|jpe?g|gif|webp|svg|avif|bmp)$/.test(path)) return "IMG";
+        if (host === "youtu.be" || host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com")) return "VIDEO";
+        if (host.endsWith("vimeo.com") || host.endsWith("twitch.tv")) return "VIDEO";
+        if (
+          host.endsWith("soundcloud.com") ||
+          host.endsWith("spotify.com") ||
+          host.endsWith("bandcamp.com") ||
+          host.endsWith("mixcloud.com")
+        )
+          return "MUSIC";
+        if (/\.(mp4|webm|mov|m4v|ogv)$/.test(path)) return "VIDEO";
+        if (/\.(mp3|wav|m4a|aac|flac|ogg|oga)$/.test(path)) return "MUSIC";
+      } catch {
+        // ignore
+      }
+    }
     if (trimmed.startsWith("{") || trimmed.startsWith("[")) return "JSON";
     if (/\{[\s\S]*\}/.test(trimmed) && /:/.test(trimmed)) return "CSS";
     return "Insightful";
@@ -152,6 +176,35 @@ class MuiPromptPreview extends HTMLElement {
     const trimmed = value.trim();
     const previewText = trimmed ? trimmed.slice(0, 120) : "No preview text";
     return `${label}. Type: ${badge}. ${previewText}`;
+  }
+
+  private extractUrl(value: string) {
+    const match = value.trim().match(/https?:\/\/[^\s]+/i);
+    if (!match) return null;
+    try {
+      const parsed = new URL(match[0]);
+      return parsed.toString();
+    } catch {
+      return null;
+    }
+  }
+
+  private isImageUrl(url: string) {
+    try {
+      const parsed = new URL(url);
+      return /\.(png|jpe?g|gif|webp|svg|avif|bmp)$/i.test(parsed.pathname);
+    } catch {
+      return false;
+    }
+  }
+
+  private escapeHtml(value: string) {
+    return value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
   }
 
   private applyAnimationDelayOffset() {
@@ -185,6 +238,10 @@ class MuiPromptPreview extends HTMLElement {
     const dismissVariant = isOverlayVariant ? "overlay" : "secondary";
     const dismissClass = `dismiss-action${isOverlayVariant ? "" : " dismiss-secondary"}`;
     const isClickable = this.hasAttribute("clickable");
+    const previewUrl = this.extractUrl(value);
+    const previewHasImageUrl = Boolean(previewUrl && this.isImageUrl(previewUrl));
+    const mediaIconOnly = Boolean(previewUrl && !bgImage && (badge === "VIDEO" || badge === "MUSIC"));
+    const safePreviewUrl = previewUrl ? this.escapeHtml(previewUrl) : "";
     const safeBgImage = bgImage.replace(/"/g, "&quot;");
     const imageBackground = bgImage
       ? `
@@ -474,11 +531,33 @@ class MuiPromptPreview extends HTMLElement {
           word-break: break-word;
           color: color-mix(in srgb, var(--prompt-preview-text-color) 84%, transparent 16%);
         }
+        .snippet-media-only {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          min-height: calc(var(--space-500) + var(--space-300));
+        }
+        .snippet-media-icon {
+          flex: 0 0 auto;
+          opacity: 0.5;
+        }
+        .snippet-image {
+          display: block;
+          width: 100%;
+          height: 100%;
+          max-height: calc(var(--space-600) + var(--space-200));
+          object-fit: cover;
+          border-radius: var(--radius-100);
+        }
 
         .inner {
           margin-top: var(--space-500);
           min-width: 0;
           width: 100%;
+        }
+        .inner.media-inline {
+          margin-top: var(--space-300);
         }
 
 
@@ -494,8 +573,24 @@ class MuiPromptPreview extends HTMLElement {
           <mui-icon-close size="xx-small"></mui-icon-close>
         </mui-button>
         <mui-badge variant="${badgeVariant}" size="x-small">${badge}</mui-badge>
-        <mui-v-stack class="inner" space="var(--space-025)" alignX="stretch">
-          ${textVisible ? `<mui-body class="snippet" size="x-small" variant="optional">${snippet.slice(0, 260)}</mui-body>` : ""}
+        <mui-v-stack class="inner${mediaIconOnly ? " media-inline" : ""}" space="var(--space-025)" alignX="stretch">
+          ${
+            textVisible
+              ? previewHasImageUrl && !bgImage
+                ? `<img class="snippet-image" src="${safePreviewUrl}" alt="${this.escapeHtml(badge)} preview image" />`
+                : `<mui-body class="snippet" size="x-small" variant="optional">${
+                    previewUrl
+                      ? `${
+                          badge === "VIDEO"
+                            ? `<span class="snippet-media-only"><mui-icon-play-rectangle class="snippet-media-icon" size="medium"></mui-icon-play-rectangle></span>`
+                            : badge === "MUSIC"
+                              ? `<span class="snippet-media-only"><mui-icon-music-microphone class="snippet-media-icon" size="medium"></mui-icon-music-microphone></span>`
+                              : this.escapeHtml(snippet.slice(0, 260))
+                        }`
+                      : this.escapeHtml(snippet.slice(0, 260))
+                  }</mui-body>`
+              : ""
+          }
         </mui-v-stack>
       </div>
     `;
@@ -521,6 +616,7 @@ class MuiPromptPreview extends HTMLElement {
       if (this.getAttribute("role") === "button") this.removeAttribute("role");
       if (this.getAttribute("aria-haspopup") === "dialog") this.removeAttribute("aria-haspopup");
     }
+
   }
 }
 

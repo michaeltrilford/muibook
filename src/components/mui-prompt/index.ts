@@ -1,11 +1,17 @@
 import "../mui-stack/hstack";
+import "../mui-stack/vstack";
 import "../mui-dialog";
 import "../mui-heading";
 import "../mui-code";
 import "../mui-button";
+import "../mui-body";
+import "../mui-spinner";
 import "../mui-icons/grid";
 import "../mui-icons/close";
 import "../mui-icons/toggle";
+import "../mui-icons/up-arrow";
+import "../mui-icons/stop";
+import "../mui-icons/attention";
 import "../mui-rule";
 import "../mui-prompt-toggle";
 
@@ -46,6 +52,10 @@ class MuiPrompt extends HTMLElement {
       "aria-label",
       "aria-labelledby",
       "aria-describedby",
+      "error-message",
+      "debug",
+      "loading",
+      "loading-label",
     ];
   }
 
@@ -56,6 +66,7 @@ class MuiPrompt extends HTMLElement {
   private previewResizeObserver: ResizeObserver | null = null;
   private fanAnimations = new Map<HTMLElement, Animation>();
   private pendingColorFade = false;
+  private lastDebugPayload = '{"event":"idle"}';
   private readonly enforceActionVariants = () => {
     if (!this.shadowRoot) return;
     const selector = 'slot[name="actions"], slot[name="actions-trigger"], slot[name="actions-right"]';
@@ -94,6 +105,51 @@ class MuiPrompt extends HTMLElement {
       });
     });
   };
+
+  private onDefaultSubmitClick = (event: Event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (this.hasAttribute("disabled")) return;
+    this.submit("api");
+  };
+
+  private syncLoadingState() {
+    if (!this.shadowRoot) return;
+    const isLoading = this.hasAttribute("loading");
+    const spinner = this.shadowRoot.querySelector(".prompt-loading-spinner") as HTMLElement | null;
+    const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
+    const defaultSubmitToggle = defaultSubmit?.querySelector("mui-icon-toggle") as HTMLElement | null;
+
+    if (spinner) {
+      spinner.toggleAttribute("hidden", !isLoading);
+      spinner.setAttribute("label", this.getAttribute("loading-label") || "Sending");
+    }
+    this.toggleAttribute("aria-busy", isLoading);
+    if (isLoading) this.setAttribute("aria-busy", "true");
+    else this.removeAttribute("aria-busy");
+
+    if (defaultSubmit) defaultSubmit.toggleAttribute("disabled", isLoading);
+    if (defaultSubmitToggle) {
+      defaultSubmitToggle.toggleAttribute("toggle", isLoading);
+      defaultSubmitToggle.setAttribute("aria-pressed", String(isLoading));
+    }
+  }
+
+  private setDebugState(status: string, payload?: Record<string, unknown>) {
+    if (!this.shadowRoot) return;
+    const region = this.shadowRoot.querySelector(".debug-region") as HTMLElement | null;
+    const statusEl = this.shadowRoot.querySelector("#promptDebugStatus") as HTMLElement | null;
+    const payloadEl = this.shadowRoot.querySelector("#promptDebugPayload") as HTMLElement | null;
+    if (!region || !statusEl || !payloadEl) return;
+
+    const enabled = this.hasAttribute("debug");
+    region.toggleAttribute("hidden", !enabled);
+    if (!enabled) return;
+
+    statusEl.textContent = status;
+    if (payload) this.lastDebugPayload = JSON.stringify(payload);
+    payloadEl.textContent = this.lastDebugPayload;
+  }
 
   private emitPromptItems({
     items,
@@ -136,7 +192,7 @@ class MuiPrompt extends HTMLElement {
     const rawText = clipboard.getData("text/plain") || "";
     const text = rawText.trim();
     const hasText = text.length > 0;
-    const imageUrl = hasText ? this.detectImageUrl(text) : "";
+    const mediaUrl = hasText ? this.detectMediaUrl(text) : null;
     const overflowToPreview = this.getAttribute("preview-overflow-to-preview") !== "false";
     const thresholdRaw = this.getAttribute("preview-threshold-chars");
     const thresholdChars = Number.isFinite(Number.parseInt(thresholdRaw || "", 10))
@@ -145,7 +201,7 @@ class MuiPrompt extends HTMLElement {
     const detectedTextBadge = hasText ? this.detectBadge(text) : "";
     const isStructuredSnippet = detectedTextBadge !== "" && detectedTextBadge !== "Insightful";
     const shouldOverflowText =
-      overflowToPreview && hasText && (Boolean(imageUrl) || text.length >= thresholdChars || isStructuredSnippet);
+      overflowToPreview && hasText && (Boolean(mediaUrl?.url) || text.length >= thresholdChars || isStructuredSnippet);
     const hasBinaryItems = files.length > 0;
 
     if (!hasBinaryItems && !hasText) return;
@@ -157,19 +213,25 @@ class MuiPrompt extends HTMLElement {
       file,
       fileName: file.name || "",
       size: file.size || 0,
-      badge: file.type.startsWith("image/") ? "IMG" : "FILE",
+      badge: file.type.startsWith("image/")
+        ? "IMG"
+        : file.type.startsWith("video/")
+          ? "VIDEO"
+          : file.type.startsWith("audio/")
+            ? "MUSIC"
+            : "FILE",
       preview: file.name || "Pasted file",
       value: file.name || "",
     }));
 
     if (shouldOverflowText && text) {
-      if (imageUrl) {
+      if (mediaUrl?.url) {
         items.unshift({
-          kind: "image",
-          mimeType: "text/uri-list",
-          badge: "IMG",
-          preview: imageUrl,
-          value: imageUrl,
+          kind: mediaUrl.kind === "image" ? "image" : "text",
+          mimeType: mediaUrl.mimeType,
+          badge: mediaUrl.badge,
+          preview: mediaUrl.url,
+          value: mediaUrl.url,
         });
       } else {
         items.unshift({
@@ -186,7 +248,7 @@ class MuiPrompt extends HTMLElement {
       source: "paste",
       items,
       text: rawText || "",
-      textBadge: imageUrl ? "IMG" : detectedTextBadge,
+      textBadge: mediaUrl?.badge || detectedTextBadge,
       overflowed: shouldOverflowText,
       thresholdChars,
     });
@@ -196,6 +258,9 @@ class MuiPrompt extends HTMLElement {
     const target = event.target as HTMLTextAreaElement;
     if (!target || target.tagName !== "TEXTAREA") return;
     this.syncTextareaHeight(target);
+    if (this.hasAttribute("has-error") && !this.hasAttribute("persist-message")) {
+      this.clearError("input");
+    }
 
     if (this.getAttribute("value") !== target.value) {
       this.setAttribute("value", target.value);
@@ -207,6 +272,12 @@ class MuiPrompt extends HTMLElement {
         composed: true,
       }),
     );
+  };
+
+  private onTextareaFocus = () => {
+    if (!this.hasAttribute("persist-message")) {
+      this.clearError("focus");
+    }
   };
 
   private onKeyDown = (event: Event) => {
@@ -291,12 +362,19 @@ class MuiPrompt extends HTMLElement {
         const tag = el.tagName.toLowerCase();
         const isToggleWrapper = tag === "mui-prompt-toggle";
         const isToggle = el.hasAttribute("context-toggle");
-        const isChip = el.hasAttribute("context-chip");
+        const isActive =
+          el.hasAttribute("context-active") ||
+          el.hasAttribute("context-close") ||
+          el.hasAttribute("context-chip") ||
+          el.hasAttribute("context-spinner");
         if (isToggleWrapper) {
           el.setAttribute("mode", mode);
           return;
         }
-        if (isToggle || isChip) {
+        if (isToggle || isActive) {
+          if (el.hasAttribute("context-chip") && el.tagName.toLowerCase() === "mui-chip" && !el.hasAttribute("variant")) {
+            el.setAttribute("variant", "ghost");
+          }
           const show = isToggle ? mode === "icon" : mode === "chip";
           el.toggleAttribute("hidden", !show);
           el.style.display = show ? "inline-flex" : "none";
@@ -307,10 +385,24 @@ class MuiPrompt extends HTMLElement {
 
   private onContextToggleClick = (event: Event) => {
     const path = event.composedPath();
+    const fromTextInput = path.some((node) => {
+      if (!(node instanceof HTMLElement)) return false;
+      const tag = node.tagName.toLowerCase();
+      return tag === "textarea" || tag === "input" || node.isContentEditable;
+    });
+    if (fromTextInput) return;
+    const closeControl = path.find((node) => node instanceof HTMLElement && node.hasAttribute?.("context-close")) as
+      | HTMLElement
+      | undefined;
+    if (closeControl) {
+      this.setContextMode("icon", "dismiss");
+      this.updateActionsLayout();
+      return;
+    }
     const toggle = path.find(
       (node) =>
         node instanceof HTMLElement &&
-        (node.tagName.toLowerCase() === "mui-prompt-toggle" || node.hasAttribute?.("context-toggle")),
+        (node.hasAttribute?.("context-toggle") || node.getAttribute?.("slot") === "toggle"),
     ) as HTMLElement | undefined;
     if (!toggle) return;
     this.setContextMode("chip", "click");
@@ -319,10 +411,14 @@ class MuiPrompt extends HTMLElement {
 
   private onContextChipDismiss = (event: Event) => {
     const path = event.composedPath();
-    const chip = path.find((node) => node instanceof HTMLElement && node.hasAttribute?.("context-chip")) as
-      | HTMLElement
-      | undefined;
-    if (!chip) return;
+    const activeNode = path.find(
+      (node) =>
+        node instanceof HTMLElement &&
+        (node.hasAttribute?.("context-active") ||
+          node.hasAttribute?.("context-chip") ||
+          node.hasAttribute?.("context-spinner")),
+    ) as HTMLElement | undefined;
+    if (!activeNode) return;
     this.setContextMode("icon", "dismiss");
     this.updateActionsLayout();
   };
@@ -398,6 +494,16 @@ class MuiPrompt extends HTMLElement {
       return;
     }
 
+    if (name === "debug") {
+      this.setDebugState("Idle: no submit yet.");
+      return;
+    }
+
+    if (name === "loading" || name === "loading-label") {
+      this.syncLoadingState();
+      return;
+    }
+
     if (
       name === "color-layout" ||
       name === "color-top-start" ||
@@ -455,8 +561,15 @@ class MuiPrompt extends HTMLElement {
   }
 
   submit(source: "api" | "keyboard" = "api") {
-    if (this.hasAttribute("disabled")) return false;
+    if (this.hasAttribute("disabled") || this.hasAttribute("loading")) return false;
     const value = this.getValue();
+    const sourceLabel = source === "keyboard" ? "enter" : "api";
+    const payload = {
+      event: "sent",
+      source: sourceLabel,
+      prompt: value,
+      timestamp: new Date().toISOString(),
+    };
     const canSubmit = this.dispatchEvent(
       new CustomEvent("before-submit", {
         detail: { value, source },
@@ -465,7 +578,10 @@ class MuiPrompt extends HTMLElement {
         cancelable: true,
       }),
     );
-    if (!canSubmit) return false;
+    if (!canSubmit) {
+      this.setDebugState(`Blocked JSON (${sourceLabel})`, { ...payload, event: "blocked" });
+      return false;
+    }
     this.dispatchEvent(
       new CustomEvent("submit", {
         detail: { value, source },
@@ -473,6 +589,7 @@ class MuiPrompt extends HTMLElement {
         composed: true,
       }),
     );
+    this.setDebugState(`Sent JSON (${sourceLabel})`, payload);
     return true;
   }
 
@@ -485,6 +602,54 @@ class MuiPrompt extends HTMLElement {
         composed: true,
       }),
     );
+  }
+
+  get errorMessage() {
+    return this.getAttribute("error-message") || "";
+  }
+
+  set errorMessage(next: string) {
+    const normalized = next == null ? "" : String(next).trim();
+    if (!normalized) {
+      this.removeAttribute("error-message");
+      return;
+    }
+    this.setAttribute("error-message", normalized);
+  }
+
+  setError(message: string) {
+    this.errorMessage = message;
+    if (this.errorMessage) {
+      this.dispatchEvent(
+        new CustomEvent("prompt-error-set", {
+          detail: { message: this.errorMessage },
+          bubbles: true,
+          composed: true,
+        }),
+      );
+    }
+  }
+
+  clearError(source: "api" | "focus" | "input" = "api") {
+    const message = this.errorMessage;
+    this.removeAttribute("error-message");
+    this.removeAttribute("error-expanded");
+    if (!message) return;
+    this.dispatchEvent(
+      new CustomEvent("prompt-error-clear", {
+        detail: { source, message },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  private syncErrorVisibility() {
+    if (!this.shadowRoot) return;
+    const errorRegion = this.shadowRoot.querySelector(".error-region") as HTMLElement | null;
+    const hasMessage = Boolean(this.errorMessage.trim().length);
+    errorRegion?.toggleAttribute("hidden", !hasMessage);
+    this.toggleAttribute("has-error", hasMessage);
   }
 
   focus() {
@@ -518,6 +683,9 @@ class MuiPrompt extends HTMLElement {
     const trimmed = value.trim();
     if (!trimmed) return "Insightful";
 
+    const mediaUrl = this.detectMediaUrl(trimmed);
+    if (mediaUrl?.badge) return mediaUrl.badge;
+
     if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
       try {
         JSON.parse(trimmed);
@@ -534,19 +702,46 @@ class MuiPrompt extends HTMLElement {
     return "Insightful";
   }
 
-  private detectImageUrl(value: string) {
+  private detectMediaUrl(
+    value: string,
+  ): { url: string; kind: "image" | "video" | "audio"; badge: "IMG" | "VIDEO" | "MUSIC"; mimeType: string } | null {
     const trimmed = value.trim();
-    if (!/^https?:\/\//i.test(trimmed)) return "";
+    const urlMatch = trimmed.match(/https?:\/\/[^\s]+/i);
+    const candidate = (urlMatch?.[0] || trimmed).trim();
+    if (!/^https?:\/\//i.test(candidate)) return null;
 
     try {
-      const url = new URL(trimmed);
+      const url = new URL(candidate);
       const path = url.pathname.toLowerCase();
-      if (/\.(png|jpe?g|gif|webp|svg|avif|bmp)$/.test(path)) return trimmed;
+      const hostname = url.hostname.toLowerCase();
+      if (/\.(png|jpe?g|gif|webp|svg|avif|bmp)$/.test(path)) {
+        return { url: candidate, kind: "image", badge: "IMG", mimeType: "image/*" };
+      }
+      if (hostname === "youtu.be" || hostname.endsWith("youtube.com") || hostname.endsWith("youtube-nocookie.com")) {
+        return { url: candidate, kind: "video", badge: "VIDEO", mimeType: "video/*" };
+      }
+      if (hostname.endsWith("vimeo.com") || hostname.endsWith("twitch.tv")) {
+        return { url: candidate, kind: "video", badge: "VIDEO", mimeType: "video/*" };
+      }
+      if (
+        hostname.endsWith("soundcloud.com") ||
+        hostname.endsWith("spotify.com") ||
+        hostname.endsWith("bandcamp.com") ||
+        hostname.endsWith("mixcloud.com")
+      ) {
+        return { url: candidate, kind: "audio", badge: "MUSIC", mimeType: "audio/*" };
+      }
+      if (/\.(mp4|webm|mov|m4v|ogv)$/.test(path)) {
+        return { url: candidate, kind: "video", badge: "VIDEO", mimeType: "video/*" };
+      }
+      if (/\.(mp3|wav|m4a|aac|flac|ogg|oga)$/.test(path)) {
+        return { url: candidate, kind: "audio", badge: "MUSIC", mimeType: "audio/*" };
+      }
     } catch {
-      return "";
+      return null;
     }
 
-    return "";
+    return null;
   }
 
   private bindEvents() {
@@ -556,25 +751,33 @@ class MuiPrompt extends HTMLElement {
     textarea?.addEventListener("input", this.onInput);
     textarea?.addEventListener("keydown", this.onKeyDown);
     textarea?.addEventListener("paste", this.onPaste);
+    textarea?.addEventListener("focus", this.onTextareaFocus);
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
     const actionTriggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
     const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
+    const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
     actionSlot?.addEventListener("slotchange", () => this.updateActionsLayout());
     actionTriggerSlot?.addEventListener("slotchange", () => this.updateActionsLayout());
     actionRightSlot?.addEventListener("slotchange", () => this.updateActionsLayout());
+    defaultSubmit?.addEventListener("click", this.onDefaultSubmitClick);
     this.addEventListener("prompt-preview-open", this.onPreviewOpen as EventListener);
     this.addEventListener("click", this.onContextToggleClick);
     this.addEventListener("dismiss", this.onContextChipDismiss as EventListener);
+    this.syncErrorVisibility();
     this.bindPreviewOverflow();
     this.bindActionTrigger();
+    this.syncLoadingState();
   }
 
   private unbindEvents() {
     if (!this.shadowRoot) return;
     const textarea = this.shadowRoot.querySelector("textarea") as HTMLTextAreaElement | null;
+    const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
     textarea?.removeEventListener("input", this.onInput);
     textarea?.removeEventListener("keydown", this.onKeyDown);
     textarea?.removeEventListener("paste", this.onPaste);
+    textarea?.removeEventListener("focus", this.onTextareaFocus);
+    defaultSubmit?.removeEventListener("click", this.onDefaultSubmitClick);
     this.removeEventListener("prompt-preview-open", this.onPreviewOpen as EventListener);
     this.removeEventListener("click", this.onContextToggleClick);
     this.removeEventListener("dismiss", this.onContextChipDismiss as EventListener);
@@ -707,6 +910,13 @@ class MuiPrompt extends HTMLElement {
     this.updateActionsLayout();
   };
 
+  private isContextOnlyAction(action: HTMLElement) {
+    const tag = action.tagName.toLowerCase();
+    if (tag === "mui-prompt-toggle") return true;
+    if (action.hasAttribute("context-toggle")) return true;
+    return Boolean(action.querySelector("[context-toggle]"));
+  }
+
   private bindActionTrigger() {
     if (!this.shadowRoot || !this.hasAttribute("actions-fan")) return;
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
@@ -725,13 +935,30 @@ class MuiPrompt extends HTMLElement {
     const slottedActions = (actionSlot.assignedElements({ flatten: true }) as HTMLElement[]).filter(
       (el) => !el.hasAttribute("hidden"),
     );
-    const trigger =
-      (triggerActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
-      triggerActions[0] ||
-      defaultTrigger ||
-      (slottedActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
-      slottedActions[0] ||
-      null;
+    const hasToolbarActions = slottedActions.length > 0;
+    if (!hasToolbarActions) {
+      if (defaultTrigger) {
+        defaultTrigger.setAttribute("hidden", "");
+        defaultTrigger.style.display = "none";
+      }
+      return;
+    }
+    const contextOnlySingle =
+      triggerActions.length === 0 &&
+      slottedActions.length === 1 &&
+      this.isContextOnlyAction(slottedActions[0] as HTMLElement);
+    if (defaultTrigger) {
+      defaultTrigger.toggleAttribute("hidden", contextOnlySingle);
+      defaultTrigger.style.display = contextOnlySingle ? "none" : "inline-flex";
+    }
+    const trigger = contextOnlySingle
+      ? null
+      : (triggerActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
+        triggerActions[0] ||
+        defaultTrigger ||
+        (slottedActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
+        slottedActions[0] ||
+        null;
     if (!trigger) return;
 
     this.triggerEl = trigger;
@@ -784,13 +1011,26 @@ class MuiPrompt extends HTMLElement {
     const slottedActions = (actionSlot.assignedElements({ flatten: true }) as HTMLElement[]).filter(
       (el) => !el.hasAttribute("hidden"),
     );
-    const trigger =
-      (triggerActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
-      triggerActions[0] ||
-      defaultTrigger ||
-      (slottedActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
-      slottedActions[0] ||
-      null;
+    const hasToolbarActions = slottedActions.length > 0;
+    const leftActionsSlot = this.shadowRoot.querySelector(".actions-slot-left") as HTMLElement | null;
+    if (leftActionsSlot) leftActionsSlot.style.display = hasToolbarActions ? "inline-flex" : "none";
+    const contextOnlySingle =
+      triggerActions.length === 0 &&
+      slottedActions.length === 1 &&
+      this.isContextOnlyAction(slottedActions[0] as HTMLElement);
+    if (defaultTrigger) {
+      const hideDefaultTrigger = !hasToolbarActions || contextOnlySingle;
+      defaultTrigger.toggleAttribute("hidden", hideDefaultTrigger);
+      defaultTrigger.style.display = hideDefaultTrigger ? "none" : "inline-flex";
+    }
+    const trigger = contextOnlySingle
+      ? null
+      : (triggerActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
+        triggerActions[0] ||
+        defaultTrigger ||
+        (slottedActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
+        slottedActions[0] ||
+        null;
     const nonTriggerActions = slottedActions.filter((action) => action !== trigger);
     const actions = trigger ? [trigger, ...nonTriggerActions] : slottedActions;
     const rightActionSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
@@ -927,6 +1167,8 @@ class MuiPrompt extends HTMLElement {
     const ariaLabelledBy = this.getAttribute("aria-labelledby");
     const ariaDescribedBy = this.getAttribute("aria-describedby");
     const fallbackAriaLabel = !ariaLabel && !ariaLabelledBy ? "Prompt input" : "";
+    const errorMessage = (this.getAttribute("error-message") || "").trim();
+    const errorText = errorMessage;
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
@@ -1247,6 +1489,9 @@ class MuiPrompt extends HTMLElement {
           box-sizing: border-box;
           overflow: visible;
         }
+        :host([has-error]) .input-wrap {
+          padding-bottom: calc(5rem + var(--space-500));
+        }
         .preview-shell {
           position: relative;
           width: 100%;
@@ -1492,6 +1737,16 @@ class MuiPrompt extends HTMLElement {
         .actions-slot-right {
           right: var(--space-300);
         }
+        .prompt-loading-spinner[hidden] {
+          display: none !important;
+        }
+        .prompt-loading-spinner {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          margin-inline-end: var(--space-100);
+        }
         .actions-separator {
           margin-inline: var(--space-200);
           pointer-events: none;
@@ -1567,6 +1822,51 @@ class MuiPrompt extends HTMLElement {
         #promptAutoPreviewImage[hidden] {
           display: none !important;
         }
+        .error-region {
+          position: absolute;
+          left: calc(var(--space-300) + var(--space-100));
+          right: calc(var(--space-300) + var(--space-100));
+          bottom: calc(var(--space-300) + var(--action-icon-only-size-small) + var(--space-100));
+          display: grid;
+          gap: var(--space-100);
+          z-index: 3;
+          pointer-events: auto;
+        }
+        .error-default[hidden] {
+          display: none !important;
+        }
+        .error-default {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: var(--space-100);
+          align-items: start;
+          min-width: 0;
+          margin-left: var(--space-050);
+        }
+        .error-default mui-body {
+          min-width: 0;
+          max-width: 100%;
+        }
+        .error-default mui-body::part(width) {
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+        }
+        .error-text {
+          display: block;
+          min-width: 0;
+          max-width: 100%;
+          white-space: normal;
+          overflow-wrap: anywhere;
+          word-break: break-word;
+        }
+        .debug-region[hidden] {
+          display: none !important;
+        }
+        .debug-region {
+          margin-top: var(--space-400);
+          padding-left: var(--space-100);
+        }
       </style>
 
         <div class="surface">
@@ -1601,10 +1901,35 @@ class MuiPrompt extends HTMLElement {
           <mui-rule class="actions-separator" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" aria-hidden="true"></mui-rule>
           <slot name="actions"></slot>
         </div>
-        <div class="actions-slot actions-slot-right">
-          <slot name="actions-right"></slot>
+      <div class="actions-slot actions-slot-right">
+          <mui-spinner
+            class="prompt-loading-spinner"
+            size="small"
+            label="${(this.getAttribute("loading-label") || "Sending").replace(/"/g, "&quot;")}"
+            ${this.hasAttribute("loading") ? "" : "hidden"}
+          ></mui-spinner>
+          <slot name="actions-right">
+            <mui-button id="promptDefaultSubmitAction" variant="tertiary" size="small" icon-only aria-label="Submit prompt">
+              <mui-icon-toggle rotate size="small" style="--icon-toggle-size: 2.1rem;">
+                <mui-icon-up-arrow slot="start" size="small" class="mui-icon"></mui-icon-up-arrow>
+                <mui-icon-stop slot="end" size="small" class="mui-icon"></mui-icon-stop>
+              </mui-icon-toggle>
+            </mui-button>
+          </slot>
         </div>
+        <div class="error-region" hidden>
+   
+        <mui-body size="x-small" variant="error" class="error-default" ${errorMessage ? "" : "hidden"}>
+          <mui-icon-attention slot="before"></mui-icon-attention>
+          <span class="error-text">${errorText}</span>
+        </mui-body>
+     
       </div>
+      </div>
+      <mui-v-stack class="debug-region" space="var(--space-050)" ${this.hasAttribute("debug") ? "" : "hidden"}>
+        <mui-body id="promptDebugStatus" size="x-small" variant="optional" weight="regular">Idle: no submit yet.</mui-body>
+        <mui-body id="promptDebugPayload" size="x-small" variant="optional" weight="regular">{"event":"idle"}</mui-body>
+      </mui-v-stack>
 
       <mui-dialog
         id="promptAutoPreviewDialog"
@@ -1616,6 +1941,7 @@ class MuiPrompt extends HTMLElement {
         <img id="promptAutoPreviewImage" class="auto-preview-image" alt="Pasted preview" hidden />
       </mui-dialog>
     `;
+    this.setDebugState("Idle: no submit yet.");
   }
 }
 

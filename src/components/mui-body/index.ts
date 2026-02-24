@@ -48,20 +48,10 @@ class MuiBody extends HTMLElement {
       :host([has-before]) p,
       :host([has-after]) p {
         display: inline-flex;
-        align-items: center;
+        align-items: flex-start;
         gap: var(--space-100);
         width: auto;
         max-width: 100%;
-      }
-
-      @media (max-width: 767px) {
-        :host([has-before]) p,
-        :host([has-after]) p {
-          display: flex;
-          align-items: flex-start;
-          justify-content: flex-start;
-          width: 100%;
-        }
       }
 
       .content {
@@ -71,6 +61,22 @@ class MuiBody extends HTMLElement {
       ::slotted([slot="before"]),
       ::slotted([slot="after"]) {
         flex-shrink: 0;
+        margin-top: var(--body-inline-icon-offset-medium, var(--body-inline-icon-offset, var(--stroke-size-100)));
+      }
+
+      :host([size="x-small"]) ::slotted([slot="before"]),
+      :host([size="x-small"]) ::slotted([slot="after"]) {
+        margin-top: var(--body-inline-icon-offset-x-small, var(--body-inline-icon-offset, var(--stroke-size-100)));
+      }
+
+      :host([size="small"]) ::slotted([slot="before"]),
+      :host([size="small"]) ::slotted([slot="after"]) {
+        margin-top: var(--body-inline-icon-offset-small, var(--body-inline-icon-offset, var(--stroke-size-100)));
+      }
+
+      :host([size="large"]) ::slotted([slot="before"]),
+      :host([size="large"]) ::slotted([slot="after"]) {
+        margin-top: var(--body-inline-icon-offset-large, var(--body-inline-icon-offset, var(--stroke-size-100)));
       }
 
       :host([size="x-small"]) p {
@@ -160,7 +166,7 @@ class MuiBody extends HTMLElement {
       if (afterEls.length > 0) this.setAttribute("has-after", "");
       else this.removeAttribute("has-after");
 
-      this.syncIconSizes([...beforeEls, ...afterEls]);
+      this.syncInlineSlotSizes([...beforeEls, ...afterEls]);
     };
 
     beforeSlot?.addEventListener("slotchange", update);
@@ -168,7 +174,7 @@ class MuiBody extends HTMLElement {
     update();
   }
 
-  private syncIconSizes(elements: Element[]) {
+  private syncInlineSlotSizes(elements: Element[]) {
     const sizeMap: Record<string, string> = {
       "x-small": "x-small",
       small: "small",
@@ -177,10 +183,20 @@ class MuiBody extends HTMLElement {
     };
 
     const iconSize = sizeMap[this.getAttribute("size") || "medium"] || "small";
+    const badgeSizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+    const badgeSize = badgeSizeMap[this.getAttribute("size") || "medium"] || "small";
 
     elements.forEach((el) => {
       if (el.tagName.startsWith("MUI-ICON-")) {
         el.setAttribute("size", iconSize);
+      }
+      if (el.tagName === "MUI-BADGE") {
+        el.setAttribute("size", badgeSize);
       }
     });
   }

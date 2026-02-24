@@ -45,3 +45,4 @@ import "./rectangle-bottom-panel";
 import "./pin";
 import "./pin-slash";
 import "./text-below-folder";
+import "./spinner";

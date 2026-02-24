@@ -5,7 +5,7 @@ class MuiChip extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["active", "usage", "dismiss", "size", "disabled"];
+    return ["active", "usage", "dismiss", "size", "disabled", "variant"];
   }
 
   connectedCallback() {
@@ -168,6 +168,10 @@ class MuiChip extends HTMLElement {
         cursor: pointer;
         transition: border-color var(--speed-200), background-color var(--speed-200);
       }
+      :host([variant="ghost"]) {
+        cursor: pointer;
+        transition: border-color var(--speed-200), background-color var(--speed-200);
+      }
 
       /* Before & After Slot
       ========================================= */
@@ -220,6 +224,14 @@ class MuiChip extends HTMLElement {
         border-color: var(--chip-border-color-hover);
         box-shadow: inset 0 0 0 1px var(--chip-border-color-hover);
       }
+      :host([variant="ghost"]) .container {
+        background: var(--chip-ghost-background, transparent);
+        border-color: var(--chip-ghost-border-color, color-mix(in srgb, var(--border-color) 50%, transparent));
+      }
+      :host([variant="ghost"]:hover) .container {
+        background: var(--chip-ghost-background-hover, color-mix(in srgb, var(--surface-elevated-100) 55%, transparent));
+        border-color: var(--chip-ghost-border-color-hover, color-mix(in srgb, var(--border-color) 70%, transparent));
+      }
 
       :host([variant="clickable"]:focus) {
         outline: none;
@@ -230,6 +242,11 @@ class MuiChip extends HTMLElement {
         border-color: var(--chip-border-color-focus);
         outline: var(--outline-thick);
       }
+      :host([variant="ghost"]:focus-visible) .container {
+        background: var(--chip-ghost-background-focus, color-mix(in srgb, var(--surface-elevated-100) 62%, transparent));
+        border-color: var(--chip-ghost-border-color-focus, color-mix(in srgb, var(--border-color) 80%, transparent));
+        outline: var(--outline-thick);
+      }
 
       /* Active: mouse down OR programmatic */
       :host([variant="clickable"]:active) .container,
@@ -237,6 +254,12 @@ class MuiChip extends HTMLElement {
         background: var(--chip-background-active);
         box-shadow: inset 0 0 0 1px var(--chip-border-color-active);
         border-color: var(--chip-border-color-active);
+      }
+      :host([variant="ghost"]:active) .container,
+      :host([variant="ghost"][active]) .container {
+        background: var(--chip-ghost-background-active, color-mix(in srgb, var(--surface-elevated-100) 68%, transparent));
+        box-shadow: inset 0 0 0 1px var(--chip-ghost-border-color-active, color-mix(in srgb, var(--border-color) 85%, transparent));
+        border-color: var(--chip-ghost-border-color-active, color-mix(in srgb, var(--border-color) 85%, transparent));
       }
 
       :host([variant="clickable"]:active) mui-body::part(color),
@@ -337,7 +360,7 @@ class MuiChip extends HTMLElement {
       });
     } else {
       // Default mode
-      this.setAttribute("variant", "clickable");
+      if (!this.hasAttribute("variant")) this.setAttribute("variant", "clickable");
       this.shadowRoot!.innerHTML = /*html*/ `
           <style>${styles}</style>
           <span class="container">

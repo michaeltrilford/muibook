@@ -260,6 +260,10 @@
       "import": "./dist/esm/components/mui-icons/right-chevron/index.js",
       "types": "./dist/types/components/mui-icons/right-chevron/index.d.ts"
     },
+    "./mui-icons/spinner": {
+      "import": "./dist/esm/components/mui-icons/spinner/index.js",
+      "types": "./dist/types/components/mui-icons/spinner/index.d.ts"
+    },
     "./mui-icons/stop": {
       "import": "./dist/esm/components/mui-icons/stop/index.js",
       "types": "./dist/types/components/mui-icons/stop/index.d.ts"

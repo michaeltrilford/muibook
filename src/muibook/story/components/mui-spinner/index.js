@@ -13,7 +13,7 @@ class StorySpinner extends HTMLElement {
       {
         name: "size",
         type: "string",
-        options: "x-small, small, medium, large",
+        options: "xx-small, x-small, small, medium, large",
         default: "medium",
         description: "Controls spinner dimensions.",
       },
@@ -69,6 +69,7 @@ class StorySpinner extends HTMLElement {
 
       <story-card id="sizes" title="Sizes">
         <mui-h-stack slot="body" alignX="start" alignY="center" space="var(--space-400)" style="padding: var(--space-500);">
+          <mui-spinner size="xx-small"></mui-spinner>
           <mui-spinner size="x-small"></mui-spinner>
           <mui-spinner size="small"></mui-spinner>
           <mui-spinner size="medium"></mui-spinner>
