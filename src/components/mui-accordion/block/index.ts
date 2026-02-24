@@ -119,6 +119,7 @@ class MuiAccordionBlock extends HTMLElement {
       :host([card-slot]) .accordion-summary {
         padding-left: var(--space-500);
         padding-right: var(--space-500);
+        border-top-color: color-mix(in srgb, var(--border-color) 50%, transparent);
       }
       @media (min-width: 768px) {
         :host([card-slot]) .accordion-summary {
@@ -129,6 +130,9 @@ class MuiAccordionBlock extends HTMLElement {
       :host([card-slot]) .accordion-detail-inner {
         padding-left: var(--space-500);
         padding-right: var(--space-500);
+      }
+      :host([card-slot]) .accordion-detail {
+        box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--border-color) 50%, transparent);
       }
       @media (min-width: 768px) {
         :host([card-slot]) .accordion-detail-inner {

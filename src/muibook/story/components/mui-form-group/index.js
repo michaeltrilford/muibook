@@ -52,10 +52,10 @@ class StoryFormGroup extends HTMLElement {
           <mui-field label="Notification Limit">
             <mui-input placeholder="3"></mui-input>
           </mui-field>
-          <mui-form-hint style="color: var(--text-color-optional);">
+          <mui-form-message style="color: var(--text-color-optional);">
             <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
             We use this contact when invoices fail and payment follow-up is required.
-          </mui-form-hint>
+          </mui-form-message>
         </mui-form-group>
         <story-code-block slot="footer" scrollable>
           &lt;mui-form-group variant="horizontal" hide-label&gt;
@@ -70,7 +70,7 @@ class StoryFormGroup extends HTMLElement {
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input placeholder="3"&gt;&lt;/mui-input&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-form-hint slot="message"&gt;...&lt;/mui-form-hint&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-form-message slot="message"&gt;...&lt;/mui-form-message&gt;
           <br />
           &nbsp;&nbsp;&lt;/mui-field&gt;
           <br />

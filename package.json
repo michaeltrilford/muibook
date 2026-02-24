@@ -132,9 +132,17 @@
       "import": "./dist/esm/components/mui-form-section/index.js",
       "types": "./dist/types/components/mui-form-section/index.d.ts"
     },
+    "./mui-form-section-footer": {
+      "import": "./dist/esm/components/mui-form-section-footer/index.js",
+      "types": "./dist/types/components/mui-form-section-footer/index.d.ts"
+    },
     "./mui-form-group": {
       "import": "./dist/esm/components/mui-form-group/index.js",
       "types": "./dist/types/components/mui-form-group/index.d.ts"
+    },
+    "./mui-form-message": {
+      "import": "./dist/esm/components/mui-form-message/index.js",
+      "types": "./dist/types/components/mui-form-message/index.d.ts"
     },
     "./mui-form-hint": {
       "import": "./dist/esm/components/mui-form-hint/index.js",

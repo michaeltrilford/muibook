@@ -164,7 +164,8 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/hint" title="Hint"></app-navbar-link>
         <app-navbar-link link="#/form-group" title="Form Group"></app-navbar-link>
         <app-navbar-link link="#/form-section" title="Form Section"></app-navbar-link>
-        <app-navbar-link link="#/form-hint" title="Form Message"></app-navbar-link>
+        <app-navbar-link link="#/form-section-footer" title="Form Section Footer"></app-navbar-link>
+        <app-navbar-link link="#/form-message" title="Form Message"></app-navbar-link>
         <app-navbar-link link="#/file-upload" title="File Upload"></app-navbar-link> 
         <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
         <app-navbar-link link="#/chip-input" title="Chip Input"></app-navbar-link>

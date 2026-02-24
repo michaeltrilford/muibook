@@ -59,6 +59,7 @@ class MuiFormGroup extends HTMLElement {
         :host([variant="horizontal"]) .content-inner ::slotted(*) {
           min-inline-size: 0;
         }
+        :host([variant="horizontal"]) .content-inner ::slotted(mui-form-message),
         :host([variant="horizontal"]) .content-inner ::slotted(mui-form-hint) {
           grid-column: 1 / -1;
         }

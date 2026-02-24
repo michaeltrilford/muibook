@@ -17,11 +17,19 @@ class MuiRule extends HTMLElement {
 
     this.setAttribute("role", "presentation");
 
+    this.syncContextAttributes();
     this.updateStyles();
   }
 
   attributeChangedCallback() {
     this.updateStyles();
+  }
+
+  private syncContextAttributes() {
+    const inCard = Boolean(this.closest("mui-card"));
+    const inFormSection = Boolean(this.closest("mui-form-section"));
+    this.toggleAttribute("in-card", inCard);
+    this.toggleAttribute("in-form-section", inFormSection);
   }
 
   updateStyles() {
@@ -32,6 +40,10 @@ class MuiRule extends HTMLElement {
       :host {
         display: block;
         background: var(--border-color);
+      }
+      :host([in-card]),
+      :host([in-form-section]) {
+        background: color-mix(in srgb, var(--border-color) 50%, transparent);
       }
       :host([direction="horizontal"]) {
         width: ${length};

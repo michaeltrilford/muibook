@@ -20,7 +20,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Acts as a parent wrapper for form elements such as Input, Select, Textarea, and Radio Group.",
         "Use size='x-small|small|medium|large' on Field to keep slotted controls consistent.",
-        "Use slot='message' for rich helper/validation content (for example, mui-form-hint with icons).",
+        "Use slot='message' for rich helper/validation content (for example, mui-form-message with icons).",
         "Inside Form Group, keep helper/validation content attached to each related Field via slot='message'.",
         "Use clear, descriptive labels so users understand the purpose of the form field.",
         "Mark required fields with an asterisk (*) and validate input before submission.",

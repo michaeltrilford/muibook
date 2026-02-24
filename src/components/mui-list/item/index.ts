@@ -28,6 +28,9 @@ class MuiListItem extends HTMLElement {
         margin: var(--space-000);
         color: var(--text-color);
       }
+      :host(:not(:last-child)) {
+        margin-bottom: var(--space-025);
+      }
 
       /* Size styles */
 

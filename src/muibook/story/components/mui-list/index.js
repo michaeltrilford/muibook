@@ -56,7 +56,7 @@ class storyList extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -120,7 +120,7 @@ class storyList extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -183,7 +183,7 @@ class storyList extends HTMLElement {
 
           <div slot="body">
             <mui-v-stack space="var(--space-500)">
-              <div>
+              <mui-v-stack space="var(--space-200)">
                 <mui-heading size="4" >X-Small</mui-heading>
 
                 <mui-list as="ol">
@@ -192,8 +192,8 @@ class storyList extends HTMLElement {
                   <mui-list-item size="x-small">Milk</mui-list-item>
                 </mui-list>
 
-              </div>
-              <div>
+              </mui-v-stack>
+              <mui-v-stack space="var(--space-200)">
                 <mui-heading size="4" >Small</mui-heading>
 
                 <mui-list as="ol">
@@ -202,8 +202,8 @@ class storyList extends HTMLElement {
                   <mui-list-item size="small">Milk</mui-list-item>
                 </mui-list>
 
-              </div>
-              <div>
+              </mui-v-stack>
+              <mui-v-stack space="var(--space-200)">
                 <mui-heading size="4" >Medium</mui-heading>
 
                 <mui-list as="ol">
@@ -212,8 +212,8 @@ class storyList extends HTMLElement {
                   <mui-list-item size="medium">Milk</mui-list-item>
                 </mui-list>
 
-              </div>
-              <div>
+              </mui-v-stack>
+              <mui-v-stack space="var(--space-200)">
                 <mui-heading size="4" >Large</mui-heading>
 
                 <mui-list as="ol">
@@ -222,7 +222,7 @@ class storyList extends HTMLElement {
                   <mui-list-item size="large">Milk</mui-list-item>
                 </mui-list>
 
-              </div>
+              </mui-v-stack>
             </mui-v-stack>
           </div>
 

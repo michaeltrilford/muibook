@@ -10,6 +10,20 @@ class MuiRow extends HTMLElement {
 
   connectedCallback() {
     this.setAttribute("role", "row");
+    this.syncContextAttributes();
+    this.render();
+  }
+
+  attributeChangedCallback() {
+    this.render();
+  }
+
+  private syncContextAttributes() {
+    const inCard = Boolean(this.closest("mui-card"));
+    this.toggleAttribute("in-card", inCard);
+  }
+
+  private render() {
     if (!this.shadowRoot) return;
     this.shadowRoot.innerHTML = /*html*/ `
     <style>
@@ -22,6 +36,9 @@ class MuiRow extends HTMLElement {
         border-top: var(--border-thin);
         align-items: center;
         min-height: 4.4rem;
+      }
+      :host([in-card]) {
+        border-top-color: color-mix(in srgb, var(--border-color) 50%, transparent);
       }
     </style>
     <slot></slot>

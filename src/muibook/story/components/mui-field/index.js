@@ -25,7 +25,7 @@ class storyField extends HTMLElement {
       {
         name: "slot=message",
         type: "slot (named)",
-        options: "mui-form-hint, mui-body",
+        options: "mui-form-message, mui-body",
         default: "",
         description: "Named message slot for rich helper and validation content.",
       },
@@ -250,24 +250,24 @@ class storyField extends HTMLElement {
             <mui-form-group heading="Access Settings" hide-label>
               <mui-field label="API Key">
                 <mui-input value="pk_live_..." variant="error"></mui-input>
-                <mui-form-hint slot="message" style="color: var(--text-color-error);">
+                <mui-form-message slot="message" style="color: var(--text-color-error);">
                   <mui-icon-attention slot="before" color="var(--text-color-error)"></mui-icon-attention>
                   This key is invalid. Regenerate and try again.
-                </mui-form-hint>
+                </mui-form-message>
               </mui-field>
               <mui-field label="Project Name">
                 <mui-input placeholder="Atlas Redesign"></mui-input>
-                <mui-form-hint slot="message" style="color: var(--text-color-optional);">
+                <mui-form-message slot="message" style="color: var(--text-color-optional);">
                   <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
                   Visible to your workspace.
-                </mui-form-hint>
+                </mui-form-message>
               </mui-field>
               <mui-field label="Environment">
                 <mui-select options='[{"label":"Development","value":"dev"},{"label":"Staging","value":"staging"},{"label":"Production","value":"prod"}]' value="prod"></mui-select>
-                <mui-form-hint slot="message" style="color: var(--text-color-warning);">
+                <mui-form-message slot="message" style="color: var(--text-color-warning);">
                   <mui-icon-warning slot="before" color="var(--text-color-warning)"></mui-icon-warning>
                   Production changes require admin approval.
-                </mui-form-hint>
+                </mui-form-message>
               </mui-field>
             </mui-form-group>
           </mui-v-stack>

@@ -2,7 +2,7 @@ import "../mui-heading";
 
 class MuiFormSection extends HTMLElement {
   static get observedAttributes() {
-    return ["heading", "disabled", "borderless"];
+    return ["heading", "heading-level", "disabled", "borderless"];
   }
 
   constructor() {
@@ -18,10 +18,24 @@ class MuiFormSection extends HTMLElement {
     this.render();
   }
 
+  private onSlotChange = () => {
+    if (!this.shadowRoot) return;
+    const headerSlot = this.shadowRoot.querySelector('slot[name="header"]') as HTMLSlotElement | null;
+    const footerSlot = this.shadowRoot.querySelector('slot[name="footer"]') as HTMLSlotElement | null;
+    const hasHeader = Boolean(headerSlot?.assignedElements({ flatten: true }).length);
+    const hasFooter = Boolean(footerSlot?.assignedElements({ flatten: true }).length);
+    this.toggleAttribute("has-header", hasHeader);
+    this.toggleAttribute("has-footer", hasFooter);
+  };
+
   render() {
     if (!this.shadowRoot) return;
 
     const heading = this.getAttribute("heading") || "";
+    const headingLevelRaw = Number(this.getAttribute("heading-level") || "4");
+    const headingLevel = Number.isFinite(headingLevelRaw)
+      ? Math.min(6, Math.max(1, Math.trunc(headingLevelRaw)))
+      : 4;
     const disabled = this.hasAttribute("disabled");
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -54,6 +68,15 @@ class MuiFormSection extends HTMLElement {
         .legend-row {
           margin-bottom: var(--space-600);
         }
+        :host([has-header]) .legend-row {
+          display: none;
+        }
+        .header {
+          margin-bottom: var(--space-600);
+        }
+        :host(:not([has-header])) .header {
+          display: none;
+        }
         .vh {
           position: absolute;
           width: 1px;
@@ -69,6 +92,12 @@ class MuiFormSection extends HTMLElement {
           display: grid;
           gap: var(--space-500);
         }
+        .footer {
+          margin-top: var(--space-600);
+        }
+        :host(:not([has-footer])) .footer {
+          display: none;
+        }
         :host([disabled]) {
           cursor: not-allowed;
         }
@@ -78,12 +107,28 @@ class MuiFormSection extends HTMLElement {
       </style>
 
       <fieldset ${disabled ? "disabled" : ""}>
-        ${heading ? `<legend class="vh">${heading}</legend><div class="legend-row"><mui-heading size="4" level="4">${heading}</mui-heading></div>` : ""}
+        ${
+          heading
+            ? `<legend class="vh">${heading}</legend><div class="legend-row"><mui-heading size="4" level="${headingLevel}">${heading}</mui-heading></div>`
+            : ""
+        }
+        <div class="header">
+          <slot name="header"></slot>
+        </div>
         <div class="content">
           <slot></slot>
         </div>
+        <div class="footer">
+          <slot name="footer"></slot>
+        </div>
       </fieldset>
     `;
+
+    const headerSlot = this.shadowRoot.querySelector('slot[name="header"]');
+    const footerSlot = this.shadowRoot.querySelector('slot[name="footer"]');
+    headerSlot?.addEventListener("slotchange", this.onSlotChange);
+    footerSlot?.addEventListener("slotchange", this.onSlotChange);
+    this.onSlotChange();
   }
 }
 

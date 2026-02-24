@@ -427,7 +427,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -438,7 +438,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -482,7 +482,7 @@ class storyCards extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-menu&gt;&lt;/mui-icon-menu&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -526,7 +526,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$20.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>
@@ -537,7 +537,7 @@ class storyCards extends HTMLElement {
                     <mui-cell>$12.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
+                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
                         <mui-button>Option one</mui-button>
                         <mui-button>Option two</mui-button>
                       </mui-dropdown>

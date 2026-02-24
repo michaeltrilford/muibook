@@ -14,9 +14,16 @@ export const muiDocs: MuiDocs = {
     usage: {
       list: [
         "Use to group related inputs into meaningful chunks in long forms.",
+        "Use Form Section when semantics matter (fieldset + grouped form controls). Use Card for generic content grouping that is not a form.",
         "Use Form Group inside Form Section for second-level grouping and horizontal splits.",
+        "Use heading-level to map section headings to the correct document outline while keeping visual size consistent.",
         "Pair with Field, Input, Select, Radio Group, and Form Message for complete form flows.",
-        "Place helper/validation copy in mui-field slot='message' (for example, with mui-form-hint) instead of standalone section-level hints.",
+        "Use slot='header' and slot='footer' when you need custom section chrome/actions while preserving fieldset semantics.",
+        "Prefer mui-form-section-footer in slot='footer' for consistent divider and action spacing.",
+        "When header/footer layout uses mui-h-stack, switch to mui-v-stack at smaller breakpoints for readability and touch comfort.",
+        "Place helper/validation copy in mui-field slot='message' (for example, with mui-form-message) instead of standalone section-level hints.",
+        "For page composition, wrap each major region in mui-v-stack and use larger section spacing (for example, var(--space-800)) between Form Section, document links, and FAQ blocks.",
+        "Keep section-level actions in a dedicated trailing-aligned stack (for example, mui-v-stack alignx='end') rather than embedding controls inside form content rows.",
         "Use disabled when an entire section should be temporarily non-interactive.",
         "Use borderless when the section sits on an already-defined container surface.",
       ],
@@ -29,6 +36,7 @@ export const muiDocs: MuiDocs = {
       items: [
         { name: "Field", link: "https://guides.muibook.com/field" },
         { name: "Form Group", link: "https://guides.muibook.com/field" },
+        { name: "Form Section Footer", link: "https://guides.muibook.com/form-section" },
         { name: "Input", link: "https://guides.muibook.com/input" },
         { name: "Form Message", link: "https://guides.muibook.com/field" },
       ],
