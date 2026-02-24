@@ -92,8 +92,8 @@ class storyCard extends HTMLElement {
 
     const title = this.getAttribute("title") || "";
     const description = this.hasAttribute("description")
-      ? /*html*/ `<mui-body style="max-width: 86ch; margin-top: var(--space-200);" size="small">${this.getAttribute(
-          "description"
+      ? /*html*/ `<mui-body style="max-width: 86ch; margin-top: var(--space-200); text-wrap: pretty;" size="small">${this.getAttribute(
+          "description",
         )}</mui-body>`
       : "";
 
@@ -124,9 +124,9 @@ class storyCard extends HTMLElement {
           ${usageArray
             .map(
               (usage) => /*html*/ `
-            <mui-list-item size="x-small" weight="medium" style="margin-bottom: var(--space-050)">
+            <mui-list-item size="x-small" weight="medium" style="margin-bottom: var(--space-050); text-wrap: balance;">
               ${usage}
-            </mui-list-item>`
+            </mui-list-item>`,
             )
             .join("")}
         </mui-list>
@@ -158,7 +158,7 @@ class storyCard extends HTMLElement {
       ${accessibilityArray
         .map(
           (accessibility) =>
-            /*html*/ `<mui-list-item size="x-small" weight="medium" style="margin-bottom: var(--space-050)">${accessibility}</mui-list-item>`
+            /*html*/ `<mui-list-item size="x-small" weight="medium" style="margin-bottom: var(--space-050)">${accessibility}</mui-list-item>`,
         )
         .join("")}
     </mui-list>

@@ -31,8 +31,8 @@ class specCard extends HTMLElement {
 
     const title = this.getAttribute("title") || "";
     const description = this.hasAttribute("description")
-      ? /*html*/ `<mui-body style="max-width: 86ch; margin-top: var(--space-200);" size="small">${this.getAttribute(
-          "description"
+      ? /*html*/ `<mui-body style="max-width: 86ch; margin-top: var(--space-200); text-wrap: pretty;" size="small">${this.getAttribute(
+          "description",
         )}</mui-body>`
       : "";
 
@@ -64,7 +64,7 @@ class specCard extends HTMLElement {
           ${usageArray
             .map(
               (usage) =>
-                /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${usage.trim()}</mui-list-item>`
+                /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050); text-wrap: balance;">${usage.trim()}</mui-list-item>`,
             )
             .join("")}
         </mui-list>
@@ -92,7 +92,7 @@ class specCard extends HTMLElement {
       ${accessibilityArray
         .map(
           (accessibility) =>
-            /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${accessibility.trim()}</mui-list-item>`
+            /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${accessibility.trim()}</mui-list-item>`,
         )
         .join("")}
     </mui-list>
