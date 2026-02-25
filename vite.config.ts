@@ -106,7 +106,7 @@ export default defineConfig({
         "components/mui-icons/warning": path.resolve(__dirname, "src/components/mui-icons/warning.ts"),
         "components/mui-icons/down-arrow-circle": path.resolve(
           __dirname,
-          "src/components/mui-icons/down-arrow-circle.ts"
+          "src/components/mui-icons/down-arrow-circle.ts",
         ),
         "components/mui-icons/ellipsis": path.resolve(__dirname, "src/components/mui-icons/ellipsis.ts"),
         "components/mui-icons/gear": path.resolve(__dirname, "src/components/mui-icons/gear.ts"),
@@ -117,11 +117,11 @@ export default defineConfig({
         "components/mui-icons/movie-clapper": path.resolve(__dirname, "src/components/mui-icons/movie-clapper.ts"),
         "components/mui-icons/music-microphone": path.resolve(
           __dirname,
-          "src/components/mui-icons/music-microphone.ts"
+          "src/components/mui-icons/music-microphone.ts",
         ),
         "components/mui-icons/music-quarter-note": path.resolve(
           __dirname,
-          "src/components/mui-icons/music-quarter-note.ts"
+          "src/components/mui-icons/music-quarter-note.ts",
         ),
         "components/mui-icons/play-rectangle": path.resolve(__dirname, "src/components/mui-icons/play-rectangle.ts"),
         "components/mui-icons/list-and-film": path.resolve(__dirname, "src/components/mui-icons/list-and-film.ts"),
@@ -129,26 +129,26 @@ export default defineConfig({
         "components/mui-icons/checkmark": path.resolve(__dirname, "src/components/mui-icons/checkmark.ts"),
         "components/mui-icons/rectangle-media-text": path.resolve(
           __dirname,
-          "src/components/mui-icons/rectangle-media-text.ts"
+          "src/components/mui-icons/rectangle-media-text.ts",
         ),
         "components/mui-icons/rectangle": path.resolve(__dirname, "src/components/mui-icons/rectangle.ts"),
         "components/mui-icons/rectangle-dashed": path.resolve(
           __dirname,
-          "src/components/mui-icons/rectangle-dashed.ts"
+          "src/components/mui-icons/rectangle-dashed.ts",
         ),
         "components/mui-icons/rectangle-left-drawer": path.resolve(
           __dirname,
-          "src/components/mui-icons/rectangle-left-drawer.ts"
+          "src/components/mui-icons/rectangle-left-drawer.ts",
         ),
         "components/mui-icons/rectangle-bottom-panel": path.resolve(
           __dirname,
-          "src/components/mui-icons/rectangle-bottom-panel.ts"
+          "src/components/mui-icons/rectangle-bottom-panel.ts",
         ),
         "components/mui-icons/pin": path.resolve(__dirname, "src/components/mui-icons/pin.ts"),
         "components/mui-icons/pin-slash": path.resolve(__dirname, "src/components/mui-icons/pin-slash.ts"),
         "components/mui-icons/text-below-folder": path.resolve(
           __dirname,
-          "src/components/mui-icons/text-below-folder.ts"
+          "src/components/mui-icons/text-below-folder.ts",
         ),
         // AVATAR
         "components/mui-avatar": path.resolve(__dirname, "src/components/mui-avatar"),
@@ -227,6 +227,7 @@ export default defineConfig({
     },
     outDir: "dist/esm",
     rollupOptions: {
+      external: ["marked"],
       preserveEntrySignatures: "strict",
       output: {
         preserveModules: true,

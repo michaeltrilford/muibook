@@ -3123,6 +3123,145 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-input/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Input: { title: \"Input\", description: \"An input component for capturing user text, styled for consistency across your UI.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/inputs-input--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts\"], website: [\"https://muibook.com/#/input\"], guides: [\"https://guides.muibook.com/input\"], usage: { list: [ \"Ensure the purpose of the input is clear, either through a placeholder text or surrounding context.\", \"Ensure validation feedback is considered when using an input. E.g. Error text.\", \"Ensure the experience has clear focus states to support keyboard accessibility.\", \"Select the appropriate input types for the specific use case. E.g. Text, Email, Password.\", \"Use size='x-small|small|medium|large' to align inputs with surrounding form controls.\", \"Use mui-chip in before/after slots for tag-style contextual input patterns.\", \"Use placeholder text to provide context of the input use; avoid using them as primary labels.\", \"Avoid relying solely on placeholder text for instructions, as it disappears when users start typing.\", \"Use the optional attribute when a field is not required to show a clear (optional) marker in the label.\", \"Use max-length when input limits matter; the component shows a live character count.\", \"In React controlled mode, keep value updates isolated from structural attribute updates (label, type, placeholder, variant) to avoid focus loss while typing.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"A label is required for screen reader support to describe the input's purpose.\", \"If hide-label is used, the label is visually hidden but accessible via aria-label.\", \"The label and input are linked via for and id. If no id is provided, one is generated.\", \"Clear focus styles are shown for keyboard users.\", \"The native disabled attribute is fully supported by assistive tech.\", \"Optional fields can be explicitly communicated with the optional attribute without changing label association.\", \"When max-length is set, users get visible character progress while native maxlength enforcement remains intact.\", \"For React integrations, prefer reading event.detail.value from the web component custom event instead of querying shadow DOM internals.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/5aiWlqSJ4BYCGtXn9MbGd/2734f1771c0e666806060bc85f753927/Input_-_Anatomy.png\", list: [ \"Label: Describes the purpose of the Input; required for accessibility. Can be hidden if the context is clear. Ensure the label text is still provided for developers to support screen reader access.\", \"Text: The label or placeholder text that describes the input field’s purpose.\", \"Before: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"After: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"Slot Before: Allows insertion of an Add-On, Select, or Button before the input to provide contextual or interactive elements. Some design craft may be needed to align elements visually in tools like Figma.\", \"Slot After: Allows insertion of an Add-On, Select, or Button after the input to support or clarify the user’s entry. Some design craft may be needed to ensure alignment and spacing look accurate in design tools.\", ], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"The standard Input with visible label and no interaction or validation states applied. Used for most form field scenarios.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5t0SMtVRHvOSHiuHZ8jLfS/64da2bbaf5d2f4216f1c876f205c1298/input-default.png\", }, { key: \"hide-label\", title: \"Hide Label\", description: \"The label is visually hidden but remains accessible to screen readers. Use when the label context is already clear from surrounding UI. Ensure the label name is documented for developers, as the component requires a label for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4wC0xbPgmsMGi6YhMG8PnI/f01da9a977092a2da1e128fbee3325eb/input-hide-label.png\", }, { key: \"hover\", title: \"Hover\", description: \"Displays the hover state styling when a pointer is placed over the Input. Useful for demonstrating interactive feedback.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5IXEcxa2RxqubupHmblDhd/ab41eba34289194733a87994b096e95d/input-hover.png\", }, { key: \"focus\", title: \"Focus\", description: \"Shows the focus ring or border to indicate that the Input is currently active. Supports accessible keyboard navigation.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4AA4IcIdnov9MfSeY4rSdL/bbaf44297cdd4bd09d626b707dbe5f47/input-focus.png\", }, { key: \"error\", title: \"Error\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2LYMpJwtH7f8KfPYl0vwAg/385529402b5e73399320c9581c8e1301/input-error.png\", }, { key: \"input-field\", title: \"Input + Field\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/kSXvQ6D4hvuP3c9bC0ZUa/319272dc75f0b08493753a49c0fbff75/success-message.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"user-details\", name: \"User Details (Step 1)\", description: \"This composition uses an accordion to contain a step in a multi-step flow. It focuses on input fields with labels, placeholders, and optional states, keeping the layout compact and clear.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"onboarding-form\", name: \"Onboarding Form\", description: \"Demonstrates an onboarding form within a card, using logic to confirm terms acceptance. Components include Heading, Input Fields, Checkbox, and Button.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1NrgynTcdmVVKSYCsQwlOW/5fc4776c1860b498a59a2865b4e57ecb/Card-Onboarding-Composition.png\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"File Upload\", link: \"https://guides.muibook.com/file-upload\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-input/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-input/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_changeHandler",
+              "type": {
+                "text": "(e: Event) => void | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cleanupListeners"
+            },
+            {
+              "kind": "method",
+              "name": "setupListener"
+            },
+            {
+              "kind": "method",
+              "name": "updateCharacterCount"
+            },
+            {
+              "kind": "method",
+              "name": "updateSlottedButtons",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "input",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "value"
+            },
+            {
+              "name": "placeholder"
+            },
+            {
+              "name": "id"
+            },
+            {
+              "name": "label"
+            },
+            {
+              "name": "disabled"
+            },
+            {
+              "name": "hide-label"
+            },
+            {
+              "name": "variant"
+            },
+            {
+              "name": "optional"
+            },
+            {
+              "name": "max-length"
+            },
+            {
+              "name": "size"
+            },
+            {
+              "name": "slot-layout"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-input",
+          "declaration": {
+            "name": "MuiInput",
+            "module": "src/components/mui-input/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-icons/accessibility.ts",
       "declarations": [
         {
@@ -5417,145 +5556,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-input/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Input: { title: \"Input\", description: \"An input component for capturing user text, styled for consistency across your UI.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/inputs-input--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts\"], website: [\"https://muibook.com/#/input\"], guides: [\"https://guides.muibook.com/input\"], usage: { list: [ \"Ensure the purpose of the input is clear, either through a placeholder text or surrounding context.\", \"Ensure validation feedback is considered when using an input. E.g. Error text.\", \"Ensure the experience has clear focus states to support keyboard accessibility.\", \"Select the appropriate input types for the specific use case. E.g. Text, Email, Password.\", \"Use size='x-small|small|medium|large' to align inputs with surrounding form controls.\", \"Use mui-chip in before/after slots for tag-style contextual input patterns.\", \"Use placeholder text to provide context of the input use; avoid using them as primary labels.\", \"Avoid relying solely on placeholder text for instructions, as it disappears when users start typing.\", \"Use the optional attribute when a field is not required to show a clear (optional) marker in the label.\", \"Use max-length when input limits matter; the component shows a live character count.\", \"In React controlled mode, keep value updates isolated from structural attribute updates (label, type, placeholder, variant) to avoid focus loss while typing.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"A label is required for screen reader support to describe the input's purpose.\", \"If hide-label is used, the label is visually hidden but accessible via aria-label.\", \"The label and input are linked via for and id. If no id is provided, one is generated.\", \"Clear focus styles are shown for keyboard users.\", \"The native disabled attribute is fully supported by assistive tech.\", \"Optional fields can be explicitly communicated with the optional attribute without changing label association.\", \"When max-length is set, users get visible character progress while native maxlength enforcement remains intact.\", \"For React integrations, prefer reading event.detail.value from the web component custom event instead of querying shadow DOM internals.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/5aiWlqSJ4BYCGtXn9MbGd/2734f1771c0e666806060bc85f753927/Input_-_Anatomy.png\", list: [ \"Label: Describes the purpose of the Input; required for accessibility. Can be hidden if the context is clear. Ensure the label text is still provided for developers to support screen reader access.\", \"Text: The label or placeholder text that describes the input field’s purpose.\", \"Before: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"After: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"Slot Before: Allows insertion of an Add-On, Select, or Button before the input to provide contextual or interactive elements. Some design craft may be needed to align elements visually in tools like Figma.\", \"Slot After: Allows insertion of an Add-On, Select, or Button after the input to support or clarify the user’s entry. Some design craft may be needed to ensure alignment and spacing look accurate in design tools.\", ], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"The standard Input with visible label and no interaction or validation states applied. Used for most form field scenarios.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5t0SMtVRHvOSHiuHZ8jLfS/64da2bbaf5d2f4216f1c876f205c1298/input-default.png\", }, { key: \"hide-label\", title: \"Hide Label\", description: \"The label is visually hidden but remains accessible to screen readers. Use when the label context is already clear from surrounding UI. Ensure the label name is documented for developers, as the component requires a label for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4wC0xbPgmsMGi6YhMG8PnI/f01da9a977092a2da1e128fbee3325eb/input-hide-label.png\", }, { key: \"hover\", title: \"Hover\", description: \"Displays the hover state styling when a pointer is placed over the Input. Useful for demonstrating interactive feedback.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5IXEcxa2RxqubupHmblDhd/ab41eba34289194733a87994b096e95d/input-hover.png\", }, { key: \"focus\", title: \"Focus\", description: \"Shows the focus ring or border to indicate that the Input is currently active. Supports accessible keyboard navigation.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4AA4IcIdnov9MfSeY4rSdL/bbaf44297cdd4bd09d626b707dbe5f47/input-focus.png\", }, { key: \"error\", title: \"Error\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2LYMpJwtH7f8KfPYl0vwAg/385529402b5e73399320c9581c8e1301/input-error.png\", }, { key: \"input-field\", title: \"Input + Field\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/kSXvQ6D4hvuP3c9bC0ZUa/319272dc75f0b08493753a49c0fbff75/success-message.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"user-details\", name: \"User Details (Step 1)\", description: \"This composition uses an accordion to contain a step in a multi-step flow. It focuses on input fields with labels, placeholders, and optional states, keeping the layout compact and clear.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"onboarding-form\", name: \"Onboarding Form\", description: \"Demonstrates an onboarding form within a card, using logic to confirm terms acceptance. Components include Heading, Input Fields, Checkbox, and Button.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1NrgynTcdmVVKSYCsQwlOW/5fc4776c1860b498a59a2865b4e57ecb/Card-Onboarding-Composition.png\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"File Upload\", link: \"https://guides.muibook.com/file-upload\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-input/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-input/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "_changeHandler",
-              "type": {
-                "text": "(e: Event) => void | undefined"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "cleanupListeners"
-            },
-            {
-              "kind": "method",
-              "name": "setupListener"
-            },
-            {
-              "kind": "method",
-              "name": "updateCharacterCount"
-            },
-            {
-              "kind": "method",
-              "name": "updateSlottedButtons",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "events": [
-            {
-              "name": "change",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "input",
-              "type": {
-                "text": "CustomEvent"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "type"
-            },
-            {
-              "name": "name"
-            },
-            {
-              "name": "value"
-            },
-            {
-              "name": "placeholder"
-            },
-            {
-              "name": "id"
-            },
-            {
-              "name": "label"
-            },
-            {
-              "name": "disabled"
-            },
-            {
-              "name": "hide-label"
-            },
-            {
-              "name": "variant"
-            },
-            {
-              "name": "optional"
-            },
-            {
-              "name": "max-length"
-            },
-            {
-              "name": "size"
-            },
-            {
-              "name": "slot-layout"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-input",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-input",
-          "declaration": {
-            "name": "MuiInput",
-            "module": "src/components/mui-input/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-link/doc.ts",
       "declarations": [
         {
@@ -5736,76 +5736,6 @@
       "path": "src/components/mui-list/index.ts",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-loader/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Loader: { title: \"Loader\", description: \"The Loader component applies smooth, built-in transitions during page loads, content updates, or skeleton placeholders to maintain a seamless, polished experience.\", hero: [\"\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12710&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/feedback-loader--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts\"], website: [\"\"], guides: [\"https://guides.muibook.com/loader\"], usage: { list: [ \"Wrap any page or UI section with Mui-Loader to automatically display loading animations.\", \"Ideal for initial page loads, content transitions, or skeleton screens while data is fetching.\", \"Applied to pages or key components for seamless load transitions.\", \"Works seamlessly with other MUI components and layouts without additional setup.\", \"Use with Mui Spinner, skeletons, or other feedback to improve perceived performance.\", ], }, accessibility: { designerList: [ \"The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.\", \"aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.\", \"A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.\", \"The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.\", \"No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.\", ], engineerList: [ \"The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.\", \"aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.\", \"A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.\", \"The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.\", \"No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"pulsate\", title: \"Pulsate\", description: \"\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5gZwRuH4Ojs38xlq7HAMCt/47be2502487c0d85955c203788442d12/pulse.gif\", }, { key: \"fade-in\", title: \"Fade-In\", description: \"\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/xPo8WGtJjoiW5y8gcXFJG/ed432ec413dc4839129139dad546e926/fade-in.gif\", }, { key: \"translate-up\", title: \"Translate: Up\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4UTi4tmMxdiTDNR0wi5AOt/8d0e21d88eb33c71d1c7f69df8f42772/up.gif\", }, { key: \"translate-down\", title: \"Translate: Down\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/63936AreBgAC7oxohQbLpY/e26318a5b4b6aaa790f363c4180d92ad/down.gif\", }, { key: \"translate-left\", title: \"Translate: Left\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"hhttps://images.ctfassets.net/i5uwscj4pkk2/5Rzmo4ISRIfaY5aMAbO1U6/0db9896ce44b9704960fde8bc9b70a07/left.gif\", }, { key: \"translate-right\", title: \"Translate: Right\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2pzlTEsdJj4FKmnsleLO0T/79a8d4fbecc3953a9ec21772df5ee9ac/right.gif\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"guru-outcomes-dashboard\", name: \"Guru Outcomes - Dashboard\", description: \"Use the <mui-loader> component to mask slow network or initial data load times. Combine its features to create a seamless loading experience.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7fsKn4mqKGieVh2D1EdyuR/a9afa145001e13470054aa9d7004127d/outcomes-home.gif\", }, { key: \"guru-outcomes-roadmap\", name: \"Guru Outcomes - Roadmap\", description: \"The Loader component in action on the roadmap page, smoothly loading the UI while masking delays and improving perceived performance.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7Hebis0o1mlvvDZlQRZfzl/f0c06679ab417f2ee624b570226da77d/outcomes-roadmap.gif\", }, ], }, related: { items: [ { name: \"Spinner\", link: \"https://guides.muibook.com/loader\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-loader/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-loader/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiLoader",
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "loading"
-            },
-            {
-              "name": "animation"
-            },
-            {
-              "name": "direction"
-            },
-            {
-              "name": "duration"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-loader",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-loader",
-          "declaration": {
-            "name": "MuiLoader",
-            "module": "src/components/mui-loader/index.ts"
-          }
-        }
-      ]
     },
     {
       "kind": "javascript-module",
@@ -6171,6 +6101,76 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-loader/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Loader: { title: \"Loader\", description: \"The Loader component applies smooth, built-in transitions during page loads, content updates, or skeleton placeholders to maintain a seamless, polished experience.\", hero: [\"\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12710&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/feedback-loader--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts\"], website: [\"\"], guides: [\"https://guides.muibook.com/loader\"], usage: { list: [ \"Wrap any page or UI section with Mui-Loader to automatically display loading animations.\", \"Ideal for initial page loads, content transitions, or skeleton screens while data is fetching.\", \"Applied to pages or key components for seamless load transitions.\", \"Works seamlessly with other MUI components and layouts without additional setup.\", \"Use with Mui Spinner, skeletons, or other feedback to improve perceived performance.\", ], }, accessibility: { designerList: [ \"The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.\", \"aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.\", \"A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.\", \"The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.\", \"No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.\", ], engineerList: [ \"The loader is announced to screen readers via role='status', ensuring updates are conveyed politely.\", \"aria-busy is set to true when loading, indicating the region is currently in a 'busy' state.\", \"A visually hidden 'Loading…' text is included by default to provide meaningful content for screen readers, even if the slotted content is purely visual.\", \"The component respects the user’s reduced motion preferences via prefers-reduced-motion, preventing potentially distracting animations.\", \"No additional labels are required from the consumer, making it lightweight and flexible while remaining accessible by default.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"pulsate\", title: \"Pulsate\", description: \"\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5gZwRuH4Ojs38xlq7HAMCt/47be2502487c0d85955c203788442d12/pulse.gif\", }, { key: \"fade-in\", title: \"Fade-In\", description: \"\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/xPo8WGtJjoiW5y8gcXFJG/ed432ec413dc4839129139dad546e926/fade-in.gif\", }, { key: \"translate-up\", title: \"Translate: Up\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4UTi4tmMxdiTDNR0wi5AOt/8d0e21d88eb33c71d1c7f69df8f42772/up.gif\", }, { key: \"translate-down\", title: \"Translate: Down\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/63936AreBgAC7oxohQbLpY/e26318a5b4b6aaa790f363c4180d92ad/down.gif\", }, { key: \"translate-left\", title: \"Translate: Left\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"hhttps://images.ctfassets.net/i5uwscj4pkk2/5Rzmo4ISRIfaY5aMAbO1U6/0db9896ce44b9704960fde8bc9b70a07/left.gif\", }, { key: \"translate-right\", title: \"Translate: Right\", description: \"Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2pzlTEsdJj4FKmnsleLO0T/79a8d4fbecc3953a9ec21772df5ee9ac/right.gif\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"guru-outcomes-dashboard\", name: \"Guru Outcomes - Dashboard\", description: \"Use the <mui-loader> component to mask slow network or initial data load times. Combine its features to create a seamless loading experience.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7fsKn4mqKGieVh2D1EdyuR/a9afa145001e13470054aa9d7004127d/outcomes-home.gif\", }, { key: \"guru-outcomes-roadmap\", name: \"Guru Outcomes - Roadmap\", description: \"The Loader component in action on the roadmap page, smoothly loading the UI while masking delays and improving perceived performance.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7Hebis0o1mlvvDZlQRZfzl/f0c06679ab417f2ee624b570226da77d/outcomes-roadmap.gif\", }, ], }, related: { items: [ { name: \"Spinner\", link: \"https://guides.muibook.com/loader\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-loader/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-loader/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiLoader",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "loading"
+            },
+            {
+              "name": "animation"
+            },
+            {
+              "name": "direction"
+            },
+            {
+              "name": "duration"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-loader",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-loader",
+          "declaration": {
+            "name": "MuiLoader",
+            "module": "src/components/mui-loader/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-progress/doc.ts",
       "declarations": [
         {
@@ -6229,6 +6229,110 @@
           "declaration": {
             "name": "MuiProgress",
             "module": "src/components/mui-progress/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-prompt-message/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ PromptMessage: { title: \"Prompt Message\", description: \"Prompt Message provides a consistent conversation row shell with avatar and message content slots.\", hero: [\"\"], figma: [\"\"], storybook: [\"https://stories.muibook.com\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-message/index.ts\"], website: [\"https://muibook.com/#/prompt-message\"], guides: [\"https://guides.muibook.com/body\"], usage: { list: [ \"Use for chat-style reply rows in assistant and support interfaces.\", \"This component is extracted from composition patterns to keep conversation shells consistent.\", \"Slot avatar content into slot='avatar'.\", \"Use body/content components for message text.\", \"Use size='x-small|small|medium|large' to scale avatar/text rhythm across dense and spacious layouts.\", \"Use variant='ghost' when the message row should render without surface treatment.\", \"Use density='compact' when padding should be removed for tight compositions.\", \"Prefer this component over ad hoc grid wrappers when building threaded chat content.\", ], }, accessibility: { designerList: [ \"Maintain clear speaker distinction through avatar + message pairing.\", \"Keep contrast and typography readable in long conversation threads.\", ], engineerList: [ \"Provide meaningful avatar labels where identity context matters.\", \"Preserve DOM reading order (identity first, then message content).\", \"Avoid injecting decorative-only text into message content; keep semantics focused on conversation copy.\", ], }, anatomy: { image: \"\", list: [\"Bubble container\", \"Avatar slot\", \"Message content slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Avatar\", link: \"https://guides.muibook.com/avatar\" }, { name: \"Body\", link: \"https://guides.muibook.com/body\" }, ], }, rules: [ { heading: \"Pattern Rule\", description: \"Use Prompt Message as the base conversation row primitive.\", doContent: [{ description: \"Compose identity + message content through avatar and body slots.\", image: \"\" }], dontContent: [{ description: \"Avoid custom one-off bubble containers per page.\", image: \"\" }], }, ], behaviour: { list: [ \"Avatar and message content align consistently across rows.\", ], }, writing: { list: [ \"Keep message copy concise and scannable in multi-row threads.\", ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-prompt-message/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-prompt-message/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiPromptMessage",
+          "members": [
+            {
+              "kind": "field",
+              "name": "resizeObserver",
+              "type": {
+                "text": "ResizeObserver | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "avatarSlotEl",
+              "type": {
+                "text": "HTMLSlotElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "contentSlotEl",
+              "type": {
+                "text": "HTMLSlotElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "method",
+              "name": "bindSlotSync",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "bindLayoutSync",
+              "privacy": "private"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size"
+            },
+            {
+              "name": "variant"
+            },
+            {
+              "name": "density"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-prompt-message",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-prompt-message",
+          "declaration": {
+            "name": "MuiPromptMessage",
+            "module": "src/components/mui-prompt-message/index.ts"
           }
         }
       ]
@@ -6874,166 +6978,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-prompt-message/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ PromptMessage: { title: \"Prompt Message\", description: \"Prompt Message provides a consistent conversation row shell with avatar and message content slots.\", hero: [\"\"], figma: [\"\"], storybook: [\"https://stories.muibook.com\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-message/index.ts\"], website: [\"https://muibook.com/#/prompt-message\"], guides: [\"https://guides.muibook.com/body\"], usage: { list: [ \"Use for chat-style reply rows in assistant and support interfaces.\", \"This component is extracted from composition patterns to keep conversation shells consistent.\", \"Slot avatar content into slot='avatar'.\", \"Use body/content components for message text.\", \"Use size='x-small|small|medium|large' to scale avatar/text rhythm across dense and spacious layouts.\", \"Use variant='ghost' when the message row should render without surface treatment.\", \"Use density='compact' when padding should be removed for tight compositions.\", \"Prefer this component over ad hoc grid wrappers when building threaded chat content.\", ], }, accessibility: { designerList: [ \"Maintain clear speaker distinction through avatar + message pairing.\", \"Keep contrast and typography readable in long conversation threads.\", ], engineerList: [ \"Provide meaningful avatar labels where identity context matters.\", \"Preserve DOM reading order (identity first, then message content).\", \"Avoid injecting decorative-only text into message content; keep semantics focused on conversation copy.\", ], }, anatomy: { image: \"\", list: [\"Bubble container\", \"Avatar slot\", \"Message content slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Avatar\", link: \"https://guides.muibook.com/avatar\" }, { name: \"Body\", link: \"https://guides.muibook.com/body\" }, ], }, rules: [ { heading: \"Pattern Rule\", description: \"Use Prompt Message as the base conversation row primitive.\", doContent: [{ description: \"Compose identity + message content through avatar and body slots.\", image: \"\" }], dontContent: [{ description: \"Avoid custom one-off bubble containers per page.\", image: \"\" }], }, ], behaviour: { list: [ \"Avatar and message content align consistently across rows.\", ], }, writing: { list: [ \"Keep message copy concise and scannable in multi-row threads.\", ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-prompt-message/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-prompt-message/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiPromptMessage",
-          "members": [
-            {
-              "kind": "field",
-              "name": "resizeObserver",
-              "type": {
-                "text": "ResizeObserver | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "avatarSlotEl",
-              "type": {
-                "text": "HTMLSlotElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "contentSlotEl",
-              "type": {
-                "text": "HTMLSlotElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            },
-            {
-              "kind": "method",
-              "name": "bindSlotSync",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "bindLayoutSync",
-              "privacy": "private"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size"
-            },
-            {
-              "name": "variant"
-            },
-            {
-              "name": "density"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-prompt-message",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-prompt-message",
-          "declaration": {
-            "name": "MuiPromptMessage",
-            "module": "src/components/mui-prompt-message/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-prompt-toggle/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiPromptToggle",
-          "members": [
-            {
-              "kind": "field",
-              "name": "observer",
-              "type": {
-                "text": "MutationObserver | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "normalizeMode",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "syncMode",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "mode"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-prompt-toggle",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-prompt-toggle",
-          "declaration": {
-            "name": "MuiPromptToggle",
-            "module": "src/components/mui-prompt-toggle/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-prompt-preview/doc.ts",
       "declarations": [
         {
@@ -7240,6 +7184,62 @@
           "declaration": {
             "name": "MuiPromptPreview",
             "module": "src/components/mui-prompt-preview/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-prompt-toggle/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiPromptToggle",
+          "members": [
+            {
+              "kind": "field",
+              "name": "observer",
+              "type": {
+                "text": "MutationObserver | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "normalizeMode",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "syncMode",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "mode"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-prompt-toggle",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-prompt-toggle",
+          "declaration": {
+            "name": "MuiPromptToggle",
+            "module": "src/components/mui-prompt-toggle/index.ts"
           }
         }
       ]
@@ -9293,6 +9293,58 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-stepper/step/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MuiStep",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "state"
+            },
+            {
+              "name": "resolved-state"
+            },
+            {
+              "name": "title"
+            },
+            {
+              "name": "direction"
+            },
+            {
+              "name": "hide-icon"
+            },
+            {
+              "name": "size"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-step",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-step",
+          "declaration": {
+            "name": "MuiStep",
+            "module": "src/components/mui-stepper/step/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-stack/hstack/index.ts",
       "declarations": [
         {
@@ -9634,52 +9686,26 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-stepper/step/index.ts",
+      "path": "src/components/mui-table/row-group/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "MuiStep",
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "state"
-            },
-            {
-              "name": "resolved-state"
-            },
-            {
-              "name": "title"
-            },
-            {
-              "name": "direction"
-            },
-            {
-              "name": "hide-icon"
-            },
-            {
-              "name": "size"
-            }
-          ],
+          "name": "MuiRowGroup",
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-step",
+          "tagName": "mui-row-group",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-step",
+          "name": "mui-row-group",
           "declaration": {
-            "name": "MuiStep",
-            "module": "src/components/mui-stepper/step/index.ts"
+            "name": "MuiRowGroup",
+            "module": "src/components/mui-table/row-group/index.ts"
           }
         }
       ]
@@ -9766,32 +9792,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/row-group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "MuiRowGroup",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-row-group",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-row-group",
-          "declaration": {
-            "name": "MuiRowGroup",
-            "module": "src/components/mui-table/row-group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-table/table/index.ts",
       "declarations": [
         {
@@ -9818,72 +9818,45 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-tabs/controller/index.ts",
+      "path": "src/components/mui-tabs/panel/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "MuiTabController",
+          "name": "MuiTabPanel",
           "members": [
             {
-              "kind": "method",
-              "name": "initializePanels",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
+              "kind": "field",
+              "name": "item",
+              "type": {
+                "text": "string | null"
               }
             },
             {
-              "kind": "method",
-              "name": "handleTabChange",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <style> :host { display: block; } :host([hidden]) { display: none !important; } .inner { padding: var(--tab-panel-padding, 0); } </style> <div class=\"inner\"> <slot></slot> </div> `"
+            }
+          ],
+          "attributes": [
             {
-              "kind": "method",
-              "name": "updatePanels",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "activeId",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
+              "name": "item"
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-tab-controller",
+          "tagName": "mui-tab-panel",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-tab-controller",
+          "name": "mui-tab-panel",
           "declaration": {
-            "name": "MuiTabController",
-            "module": "src/components/mui-tabs/controller/index.ts"
+            "name": "MuiTabPanel",
+            "module": "src/components/mui-tabs/panel/index.ts"
           }
         }
       ]
@@ -9995,45 +9968,72 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-tabs/panel/index.ts",
+      "path": "src/components/mui-tabs/controller/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "MuiTabPanel",
+          "name": "MuiTabController",
           "members": [
             {
-              "kind": "field",
-              "name": "item",
-              "type": {
-                "text": "string | null"
+              "kind": "method",
+              "name": "initializePanels",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
               }
             },
             {
-              "kind": "field",
-              "name": "innerHTML",
-              "default": "` <style> :host { display: block; } :host([hidden]) { display: none !important; } .inner { padding: var(--tab-panel-padding, 0); } </style> <div class=\"inner\"> <slot></slot> </div> `"
-            }
-          ],
-          "attributes": [
+              "kind": "method",
+              "name": "handleTabChange",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
             {
-              "name": "item"
+              "kind": "method",
+              "name": "updatePanels",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "activeId",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-tab-panel",
+          "tagName": "mui-tab-controller",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-tab-panel",
+          "name": "mui-tab-controller",
           "declaration": {
-            "name": "MuiTabPanel",
-            "module": "src/components/mui-tabs/panel/index.ts"
+            "name": "MuiTabController",
+            "module": "src/components/mui-tabs/controller/index.ts"
           }
         }
       ]
