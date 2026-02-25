@@ -159,6 +159,12 @@ Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=To
 
 ---
 
+## Style Dictionary
+
+- npm run token-build
+
+---
+
 ### Publishing
 
 #### Version Management
@@ -182,10 +188,6 @@ npm publish
 ```
 
 ---
-
-## Style Dictionary
-
-- npm run token-build
 
 ## NPM Token REFRESH
 
