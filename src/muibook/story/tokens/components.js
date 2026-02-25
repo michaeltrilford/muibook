@@ -32,7 +32,7 @@ class tokensComponents extends HTMLElement {
             slot="message"
             heading="Quicklinks"
             limit="10"
-            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
+            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
           ></story-quicklinks>
 
           <spec-card
@@ -342,6 +342,14 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--range-input-bubble-border-color" variant="border-color"></story-token-slat>
           </spec-card>
 
+          <spec-card id="skeleton" title="Skeleton" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-skeleton/index.ts">
+            <story-token-slat slot="body" token="--skeleton-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--skeleton-highlight" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--skeleton-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--skeleton-animation-speed" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--skeleton-gap" variant="size"></story-token-slat>
+          </spec-card>
+
           <spec-card
             id="slat"
             title="Slat"
@@ -408,6 +416,7 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--tab-text-color" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-text-color-active" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-shadow-active" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tabs-ghost-box-shadow" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--tab-radius" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--tab-padding" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--tab-before-slot-padding" variant="size"></story-token-slat>

@@ -37,7 +37,7 @@ class MuiHint extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
         :host {
-          display: block;
+          display: inline-flex;
           width: max-content;
           position: relative;
           vertical-align: middle;

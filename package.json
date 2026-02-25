@@ -540,6 +540,10 @@
       "import": "./dist/esm/components/mui-loader/index.js",
       "types": "./dist/types/components/mui-loader/index.d.ts"
     },
+    "./mui-skeleton": {
+      "import": "./dist/esm/components/mui-skeleton/index.js",
+      "types": "./dist/types/components/mui-skeleton/index.d.ts"
+    },
     "./mui-spinner": {
       "import": "./dist/esm/components/mui-spinner/index.js",
       "types": "./dist/types/components/mui-spinner/index.d.ts"

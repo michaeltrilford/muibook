@@ -67,7 +67,7 @@ class storyLoader extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -95,26 +95,24 @@ class storyLoader extends HTMLElement {
       })
       .join("");
 
-    const Skeleton = /*html*/ `          
-      <mui-v-stack space="var(--space-600);" style="padding: var(--space-600)">
-        <mui-v-stack space="var(--space-300);">
-          <!-- Title -->
-          <div style="height: var(--heading-font-size-100); width: 80%; max-width: 200px; background: var(--surface-elevated-100); border-radius: var(--radius-200);"></div>
-          <!-- Subtitle -->
-          <div style="height: var(--heading-font-size-400); width: 60%; max-width: 350px; background: var(--surface-elevated-100); border-radius: var(--radius-200);"></div>
+    const Skeleton = /*html*/ `   
+      <mui-grid col="2fr 1fr">       
+        <mui-v-stack space="var(--space-600);" style="padding: var(--space-600)">
+          <mui-v-stack space="var(--space-400);">
+            <mui-v-stack space="var(--space-300);" alignx="start">
+              <mui-h-stack space="var(--space-400)" aligny="start">
+                <mui-skeleton shape="line" size="large" width="30rem" height="var(--space-800)" animation="shimmer"></mui-skeleton>
+                <mui-skeleton shape="rect" size="x-small" width="var(--space-800)" height="var(--space-500)" radius="var(--badge-radius)" animation="shimmer"></mui-skeleton>
+              </mui-h-stack>
+            </mui-v-stack>
+            <mui-skeleton lines="3" line-widths="80%,70%,80%" animation="shimmer"></mui-skeleton>
+            </mui-v-stack>
+            <mui-h-stack space="var(--space-200)" alignx='start'>
+              <mui-skeleton shape="rect" height="var(--space-600)" width="10rem" radius="var(--radius-500)" animation="shimmer"></mui-skeleton>
+              <mui-skeleton shape="rect" height="var(--space-600)" width="10rem" radius="var(--radius-500)" animation="shimmer"></mui-skeleton>
+          </mui-h-stack>
         </mui-v-stack>
-        <mui-v-stack space="var(--space-400);">
-          <!-- Content -->
-          <div style="height: var(--text-font-size-m); width: 90%; max-width: 400px; background: var(--surface-elevated-100); border-radius: var(--radius-200);"></div>
-          <div style="height: var(--text-font-size-m); width: 70%; max-width: 380px; background: var(--surface-elevated-100); border-radius: var(--radius-200);"></div>
-          <div style="height: var(--text-font-size-m); width: 90%; max-width: 410px; background: var(--surface-elevated-100); border-radius: var(--radius-200);"></div>
-        </mui-v-stack>
-        <!-- Actions -->
-        <mui-button-group>
-          <div style="height: 40px; width: 100%; max-width: 120px; border: var(--border-thin); border-color: transparent; background: var(--surface-elevated-100); border-radius: var(--action-radius);"></div>
-          <div style="height: 40px; width: 100%; max-width: 120px; border: var(--border-thin); border-color: var(--surface-elevated-100); border-radius: var(--action-radius);"></div>
-        </mui-button-group>
-      </mui-v-stack>
+      </mui-grid>
     `;
 
     const stories = /*html*/ `
@@ -136,19 +134,164 @@ class storyLoader extends HTMLElement {
         </mui-responsive>
       </props-card>
 
-      <story-card title="Spinner">
-        <mui-h-stack slot="body" alignX="center" alignY="center" space="var(--space-300)" style="padding: var(--space-600);">
-          <mui-spinner size="x-small" label="Loading account data"></mui-spinner>
-          <mui-spinner size="small"></mui-spinner>
-          <mui-spinner size="medium"></mui-spinner>
-          <mui-spinner size="large"></mui-spinner>
+      <story-card
+        id="pulsate"
+        title="Pulsate"
+        usage="Prefer token, rem, and percentage sizing over fixed pixel values for skeleton placeholders.|||Use mui-v-stack, mui-h-stack, and mui-grid to compose loading layouts.|||Keep the skeleton structure aligned to the real content hierarchy for smoother transitions.">
+        <mui-loader data-loading loading animation="pulsate" slot="body">
+          ${Skeleton}
+        </mui-loader>
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-spinner size=&quot;small&quot; label=&quot;Loading&quot;&gt;&lt;/mui-spinner&gt;
+          &lt;mui-loader loading animation="pulsate"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-grid col="2fr 1fr"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600)" style="padding: var(--space-600)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton shape="line" size="large" width="30rem" height="var(--space-800)" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton lines="3" line-widths="80%,70%,80%" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-grid&gt;<br>
+          &lt;/mui-loader&gt;
         </story-code-block>
       </story-card>
 
-      <story-card title="Loader + Spinner" description="Use Loader to animate the container while Spinner gives immediate loading feedback.">
+
+      <story-card id="fade-in" title="Fade-In">
+        <mui-loader data-loading loading animation="fade-in" slot="body">
+           ${Skeleton}
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
+        </mui-h-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation="fade-in"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-grid col="2fr 1fr"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600)" style="padding: var(--space-600)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton shape="line" size="large" width="30rem" height="var(--space-800)" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton lines="3" line-widths="80%,70%,80%" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-grid&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+        
+      </story-card>
+
+      <story-card title="Translate: Up" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+        <mui-loader data-loading loading animation="translate" slot="body" direction="up">
+           ${Skeleton}
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
+        </mui-h-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation="translate" direction="up"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-grid col="2fr 1fr"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600)" style="padding: var(--space-600)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton shape="line" size="large" width="30rem" height="var(--space-800)" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton lines="3" line-widths="80%,70%,80%" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-grid&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+
+      </story-card>
+
+      <story-card title="Translate: Down" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+        <mui-loader data-loading loading animation="translate" slot="body" direction="down">
+           ${Skeleton}
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
+        </mui-h-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation="translate" direction="down"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-grid col="2fr 1fr"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600)" style="padding: var(--space-600)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton shape="line" size="large" width="30rem" height="var(--space-800)" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton lines="3" line-widths="80%,70%,80%" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-grid&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+
+      </story-card>
+
+
+      <story-card title="Translate: Left" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+        <mui-loader data-loading loading animation="translate" slot="body" direction="left">
+           ${Skeleton}
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
+        </mui-h-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation="translate" direction="left"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-grid col="2fr 1fr"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600)" style="padding: var(--space-600)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton shape="line" size="large" width="30rem" height="var(--space-800)" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton lines="3" line-widths="80%,70%,80%" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-grid&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+
+      </story-card>
+
+
+      <story-card title="Translate: Right" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+        <mui-loader data-loading loading animation="translate" slot="body" direction="right">
+           ${Skeleton}
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
+        </mui-h-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation="translate" direction="right"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-grid col="2fr 1fr"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600)" style="padding: var(--space-600)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton shape="line" size="large" width="30rem" height="var(--space-800)" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton lines="3" line-widths="80%,70%,80%" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-grid&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+
+      </story-card>
+
+      <story-card id="duration" title="Duration" description="10s animation duration">
+        <mui-loader data-loading loading animation="translate" duration="10s" slot="body">
+           ${Skeleton}
+        </mui-loader>
+
+        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
+          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
+        </mui-h-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-loader loading animation="translate" duration="10s"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-grid col="2fr 1fr"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600)" style="padding: var(--space-600)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton shape="line" size="large" width="30rem" height="var(--space-800)" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-skeleton lines="3" line-widths="80%,70%,80%" animation="shimmer"&gt;&lt;/mui-skeleton&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-grid&gt;<br>
+          &lt;/mui-loader&gt;
+        </story-code-block>
+
+      </story-card>
+
+      <story-card id="loader-spinner" title="Loader + Spinner" description="Use Loader to animate the container while Spinner gives immediate loading feedback.">
         <mui-loader data-loading loading animation="fade-in" slot="body">
           <mui-v-stack alignX="center" alignY="center" space="var(--space-300)" style="padding: var(--space-700);">
             <mui-spinner size="medium" label="Loading dashboard"></mui-spinner>
@@ -168,222 +311,6 @@ class storyLoader extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Pulsate">
-        <mui-loader data-loading loading animation="pulsate" slot="body">
-          ${Skeleton}
-        </mui-loader>
-        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
-          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
-        </mui-h-stack>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-loader loading animation="pulsate"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600);" style="padding: var(--space-600)"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; background:var(--surface-elevated-100); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; border:var(--border-thin); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &lt;/mui-loader&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card title="Fade-In">
-        <mui-loader data-loading loading animation="fade-in" slot="body">
-           ${Skeleton}
-        </mui-loader>
-
-        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
-          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
-        </mui-h-stack>
-
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-loader loading animation="fade-in"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600);" style="padding: var(--space-600)"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; background:var(--surface-elevated-100); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; border:var(--border-thin); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &lt;/mui-loader&gt;
-        </story-code-block>
-        
-      </story-card>
-
-      <story-card title="Translate: Up" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
-        <mui-loader data-loading loading animation="translate" slot="body" direction="up">
-           ${Skeleton}
-        </mui-loader>
-
-        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
-          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
-        </mui-h-stack>
-
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-loader loading animation="translate" direction="up"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600);" style="padding: var(--space-600)"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; background:var(--surface-elevated-100); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; border:var(--border-thin); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &lt;/mui-loader&gt;
-        </story-code-block>
-
-      </story-card>
-
-      <story-card title="Translate: Down" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
-        <mui-loader data-loading loading animation="translate" slot="body" direction="down">
-           ${Skeleton}
-        </mui-loader>
-
-        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
-          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
-        </mui-h-stack>
-
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-loader loading animation="translate" direction="down"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600);" style="padding: var(--space-600)"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; background:var(--surface-elevated-100); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; border:var(--border-thin); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &lt;/mui-loader&gt;
-        </story-code-block>
-
-      </story-card>
-
-
-      <story-card title="Translate: Left" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
-        <mui-loader data-loading loading animation="translate" slot="body" direction="left">
-           ${Skeleton}
-        </mui-loader>
-
-        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
-          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
-        </mui-h-stack>
-
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-loader loading animation="translate" direction="left"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600);" style="padding: var(--space-600)"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; background:var(--surface-elevated-100); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; border:var(--border-thin); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &lt;/mui-loader&gt;
-        </story-code-block>
-
-      </story-card>
-
-
-      <story-card title="Translate: Right" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
-        <mui-loader data-loading loading animation="translate" slot="body" direction="right">
-           ${Skeleton}
-        </mui-loader>
-
-        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
-          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
-        </mui-h-stack>
-
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-loader loading animation="translate" direction="right"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600);" style="padding: var(--space-600)"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; background:var(--surface-elevated-100); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; border:var(--border-thin); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &lt;/mui-loader&gt;
-        </story-code-block>
-
-      </story-card>
-
-      <story-card title="Duration" description="10s animation duration">
-        <mui-loader data-loading loading animation="translate" duration="2s" slot="body">
-           ${Skeleton}
-        </mui-loader>
-
-        <mui-h-stack alignX="center" slot="footer" style="border-top: var(--border-thin); background: var(--surface-elevated-200); padding: var(--space-100);">
-          <mui-button variant="tertiary" data-restart>Reload Story</mui-button>
-        </mui-h-stack>
-
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-loader loading animation="translate" duration="10s"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-600);" style="padding: var(--space-600)"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-100); width:80%; max-width:200px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--heading-font-size-400); width:60%; max-width:350px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400);"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:400px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:70%; max-width:380px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:var(--text-font-size-m); width:90%; max-width:410px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; background:var(--surface-elevated-100); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="height:40px; width:100%; max-width:120px; border:var(--border-thin); border-radius:var(--action-radius);"&gt;&lt;/div&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
-          &lt;/mui-loader&gt;
-        </story-code-block>
-
-      </story-card>
-
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -398,6 +325,11 @@ class storyLoader extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
       >
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          links="pulsate::Pulsate|||fade-in::Fade-In|||duration::Duration|||loader-spinner::Loader + Spinner">
+        </story-quicklinks>
         ${stories}
       </story-template>
     `;

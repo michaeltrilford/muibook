@@ -4,6 +4,7 @@ import "../mui-button";
 import "../mui-icons/close";
 import "../mui-icons/play-rectangle";
 import "../mui-icons/music-microphone";
+import "../mui-spinner";
 import "../mui-stack/vstack";
 import { getPartMap } from "../../utils/part-map";
 
@@ -23,6 +24,8 @@ class MuiPromptPreview extends HTMLElement {
       "animation-mode",
       "variant",
       "clickable",
+      "loading",
+      "loading-label",
     ];
   }
 
@@ -230,6 +233,8 @@ class MuiPromptPreview extends HTMLElement {
     const textVisible = this.hasAttribute("badge-only") ? false : !bgImage || this.hasAttribute("show-text");
     const animationMode = (this.getAttribute("animation-mode") || "loop").toLowerCase();
     const variant = (this.getAttribute("variant") || "").toLowerCase();
+    const isLoading = this.hasAttribute("loading");
+    const loadingLabel = (this.getAttribute("loading-label") || "Loading preview").trim();
     const canAnimate = this.hasAttribute("animated") || Boolean(bgImage);
     const animated = canAnimate && animationMode !== "off";
     const animationIterations = animationMode === "once" ? "1" : "infinite";
@@ -237,7 +242,7 @@ class MuiPromptPreview extends HTMLElement {
     const badgeVariant = isOverlayVariant ? "overlay" : "neutral";
     const dismissVariant = isOverlayVariant ? "overlay" : "secondary";
     const dismissClass = `dismiss-action${isOverlayVariant ? "" : " dismiss-secondary"}`;
-    const isClickable = this.hasAttribute("clickable");
+    const isClickable = this.hasAttribute("clickable") && !isLoading;
     const previewUrl = this.extractUrl(value);
     const previewHasImageUrl = Boolean(previewUrl && this.isImageUrl(previewUrl));
     const mediaIconOnly = Boolean(previewUrl && !bgImage && (badge === "VIDEO" || badge === "MUSIC"));
@@ -327,6 +332,25 @@ class MuiPromptPreview extends HTMLElement {
           --prompt-preview-top-shade-start-active: var(--prompt-preview-top-shade-start);
           --prompt-preview-top-shade-end-active: var(--prompt-preview-top-shade-end);
           color: var(--prompt-preview-text-color);
+        }
+        .box.loading .inner,
+        .box.loading mui-badge,
+        .box.loading .dismiss-action {
+          display: none;
+        }
+        .loading-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 4;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          background: color-mix(in srgb, var(--surface-elevated-100) 35%, transparent 65%);
+          backdrop-filter: blur(var(--space-025));
+        }
+        .box.loading .loading-overlay {
+          display: inline-flex;
         }
         .box.animated {
           overflow: hidden;
@@ -566,7 +590,7 @@ class MuiPromptPreview extends HTMLElement {
         }
       </style>
 
-      <div class="${boxClasses}${animated ? " animated" : ""}" part="${partMap}" style="--prompt-preview-iterations: ${animationIterations};">
+      <div class="${boxClasses}${animated ? " animated" : ""}${isLoading ? " loading" : ""}" part="${partMap}" style="--prompt-preview-iterations: ${animationIterations};" ${isLoading ? 'aria-busy="true"' : ""}>
         <span class="top-shade"></span>
         <span class="scanline"></span>
         <mui-button class="${dismissClass}" icon-only size="xx-small" variant="${dismissVariant}" aria-label="Dismiss preview">
@@ -592,6 +616,9 @@ class MuiPromptPreview extends HTMLElement {
               : ""
           }
         </mui-v-stack>
+        <div class="loading-overlay" aria-live="polite" aria-label="${this.escapeHtml(loadingLabel)}">
+          <mui-spinner size="small" label="${this.escapeHtml(loadingLabel)}"></mui-spinner>
+        </div>
       </div>
     `;
 

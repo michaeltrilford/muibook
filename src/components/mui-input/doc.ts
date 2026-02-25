@@ -19,6 +19,7 @@ export const muiDocs: MuiDocs = {
         "Ensure the experience has clear focus states to support keyboard accessibility.",
         "Select the appropriate input types for the specific use case. E.g. Text, Email, Password.",
         "Use size='x-small|small|medium|large' to align inputs with surrounding form controls.",
+        "Use slot='hint' for contextual overlays, including mui-hint with interactive tooltip content.",
         "Use mui-chip in before/after slots for tag-style contextual input patterns.",
         "Use placeholder text to provide context of the input use; avoid using them as primary labels.",
         "Avoid relying solely on placeholder text for instructions, as it disappears when users start typing.",

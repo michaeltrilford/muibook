@@ -42,6 +42,8 @@ class MuiPrompt extends HTMLElement {
       "preview-scrollbar",
       "preview-threshold-chars",
       "preview-auto-clickable",
+      "preview-loading",
+      "preview-loading-label",
       "preview-dialog-width",
       "preview-dialog-title",
       "context-mode",
@@ -509,6 +511,12 @@ class MuiPrompt extends HTMLElement {
 
     if (name === "loading" || name === "loading-label") {
       this.syncLoadingState();
+      this.syncPreviewLoadingState();
+      return;
+    }
+
+    if (name === "preview-loading" || name === "preview-loading-label") {
+      this.syncPreviewLoadingState();
       return;
     }
 
@@ -856,6 +864,7 @@ class MuiPrompt extends HTMLElement {
     const hasItems = assigned.length > 0;
     this.previewShellEl.toggleAttribute("hidden", !hasItems);
     this.syncPreviewInteractivity(assigned);
+    this.syncPreviewLoadingState(assigned);
   }
 
   private syncPreviewInteractivity(assigned?: Element[]) {
@@ -865,6 +874,29 @@ class MuiPrompt extends HTMLElement {
       if (el.tagName.toLowerCase() !== "mui-prompt-preview") return;
       if (el.getAttribute("clickable") === "false") return;
       el.setAttribute("clickable", "");
+    });
+  }
+
+  private syncPreviewLoadingState(assigned?: Element[]) {
+    const mode = this.getAttribute("preview-loading");
+    const loadingLabel = (this.getAttribute("preview-loading-label") || "").trim();
+    const previews = (assigned || this.previewSlotEl?.assignedElements({ flatten: true }) || []) as HTMLElement[];
+    if (!mode) {
+      previews.forEach((el) => {
+        if (el.tagName.toLowerCase() !== "mui-prompt-preview") return;
+        el.removeAttribute("loading");
+      });
+      return;
+    }
+    const shouldLoad = mode === "auto" ? this.hasAttribute("loading") : true;
+    previews.forEach((el) => {
+      if (el.tagName.toLowerCase() !== "mui-prompt-preview") return;
+      if (shouldLoad) {
+        el.setAttribute("loading", "");
+      } else {
+        el.removeAttribute("loading");
+      }
+      if (loadingLabel) el.setAttribute("loading-label", loadingLabel);
     });
   }
 

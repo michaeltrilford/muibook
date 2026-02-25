@@ -19,6 +19,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use to display units (e.g. %, $, kg) or fixed prefixes/suffixes alongside inputs.",
         "Ideal for improving data entry accuracy and user understanding.",
+        "Use size (x-small to large) to match compact and dense input layouts.",
         "Ensure Add Ons are visually distinct but do not overpower the main input content.",
         "Avoid overcrowding inputs with multiple Add Ons to maintain clarity.",
       ],

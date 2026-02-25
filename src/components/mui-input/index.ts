@@ -146,6 +146,10 @@ class MuiInput extends HTMLElement {
               el.setAttribute("usage", "input");
               el.setAttribute("size", normalizedSize);
             }
+            if (tagName === "mui-addon") {
+              // Keep add-on spacing/height aligned with input size.
+              el.setAttribute("size", normalizedSize);
+            }
           }
         });
       };
@@ -172,6 +176,10 @@ class MuiInput extends HTMLElement {
           if (node.nodeType !== Node.ELEMENT_NODE) return;
           const el = node as HTMLElement;
           const tagName = el.tagName.toLowerCase();
+          if (tagName === "mui-hint") {
+            el.removeAttribute("aria-hidden");
+            return;
+          }
           if (tagName.startsWith("mui-icon-") && !el.hasAttribute("size")) {
             el.setAttribute("size", iconSize);
           }
@@ -588,6 +596,9 @@ class MuiInput extends HTMLElement {
         slot[name="hint"]::slotted(*) {
           flex: none;
           pointer-events: none;
+        }
+        slot[name="hint"]::slotted(mui-hint) {
+          pointer-events: auto;
         }
 
         /* ========================================================================== */

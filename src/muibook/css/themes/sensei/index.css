@@ -191,6 +191,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --tab-icon-active: var(--green-1000);
   --tab-text-color-active: var(--green-1000);
   --tab-shadow-active: var(--black-opacity-10);
+  --tabs-ghost-box-shadow: none;
 
   /* Carousel */
   --carousel-background: var(--green-200);
@@ -234,6 +235,11 @@ html[data-brand="sensei"][data-theme="light"] {
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
+  --skeleton-background: var(--surface-elevated-200);
+  --skeleton-highlight: var(--white-opacity-70);
+  --skeleton-radius: var(--radius-200);
+  --skeleton-animation-speed: 2000ms;
+  --skeleton-gap: var(--space-200);
 
   /* Dropdown */
   --dropdown-background: var(--green-300);
@@ -440,6 +446,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --tab-icon-active: var(--green-1200);
   --tab-text-color-active: var(--green-1200);
   --tab-shadow-active: var(--green-1400);
+  --tabs-ghost-box-shadow: none;
 
   /* Carousel */
   --carousel-background: var(--green-1200);
@@ -483,6 +490,11 @@ html[data-brand="sensei"][data-theme="dark"] {
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
+  --skeleton-background: var(--surface-elevated-200);
+  --skeleton-highlight: var(--white-opacity-30);
+  --skeleton-radius: var(--radius-200);
+  --skeleton-animation-speed: 2000ms;
+  --skeleton-gap: var(--space-200);
 
   /* Dropdown */
   --dropdown-background: var(--green-1400);

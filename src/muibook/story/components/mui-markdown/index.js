@@ -36,6 +36,20 @@ class storyMarkdown extends HTMLElement {
         default: "x-small",
         description: "Controls the size used for code blocks.",
       },
+      {
+        name: "render-mode",
+        type: "string",
+        options: "shadow, light",
+        default: "shadow",
+        description: "Render into shadow DOM (default) or light DOM for external TOC/querying.",
+      },
+      {
+        name: "lightbox",
+        type: "boolean",
+        options: "attribute",
+        default: "false",
+        description: "Enables image click-to-open lightbox overlay and dispatches lightbox events.",
+      },
     ];
 
     const rows = propItems
@@ -108,59 +122,79 @@ Body text renders with medium sizing.
         </story-code-block>
       </story-card>
 
-      <story-card title="Markers: Grid, Box, Rule">
+      <story-card title="Layout Tokens: Grid / Box / Rule / Space">
         <div slot="body">
           <mui-markdown body-size="small" code-size="x-small">
 -- grid-col-1fr-1fr-1fr --
 Column A
 Column B
 Column C
--- grid-col-1fr-1fr-1fr --
+-- grid-end --
 
 -- box --
 This is a plain div wrapper.
 -- box --
 
 -- rule --
+
+Body before space
+-- space-300 --
+Body after space
           </mui-markdown>
         </div>
         <story-code-block slot="footer" scrollable>
-          -- grid-col-1fr-1fr-1fr -- ... -- grid-col-1fr-1fr-1fr --<br>
+          -- grid-col-1fr-1fr-1fr -- ... -- grid-end --<br>
           -- box -- ... -- box --<br>
-          -- rule --
+          -- rule --<br>
+          -- space-300 --
         </story-code-block>
       </story-card>
 
-      <story-card title="Markers: Space">
+      <story-card title="Stack Tokens: VStack / HStack / Responsive Stack">
         <div slot="body">
           <mui-markdown body-size="small" code-size="x-small">
-### Space 100
-Body before
--- space-100 --
-Body after
+-- vstack-space-200-start --
+### VStack Group
+- Item A
+- Item B
+-- vstack-end --
 
-### Space 300
-Body before
--- space-300 --
-Body after
+-- hstack-space-300-start --
+Left content
+Right content
+-- hstack-end --
 
-### Space 500
-Body before
--- space-500 --
-Body after
-
-### Space 800
-Body before
--- space-800 --
-Body after
+-- stack-space-400-bp-550-start --
+### Mobile First
+Column one
+Column two
+-- stack-end --
           </mui-markdown>
         </div>
         <story-code-block slot="footer" scrollable>
-          -- space-100 -- / -- space-300 -- / -- space-500 -- / -- space-800 --
+          -- vstack-space-200-start -- ... -- vstack-end --<br>
+          -- hstack-space-300-start -- ... -- hstack-end --<br>
+          -- stack-space-400-bp-550-start -- ... -- stack-end --
         </story-code-block>
       </story-card>
 
-      <story-card title="Code Block">
+      <story-card title="Table Columns Token">
+        <div slot="body">
+          <mui-markdown body-size="small" code-size="x-small">
+-- table-columns-1fr-2fr --
+
+| Field | Purpose |
+| --- | --- |
+| type | Component key |
+| htmlTag | Element tag |
+          </mui-markdown>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          -- table-columns-1fr-2fr --
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Code Block Actions: Expand + Copy">
         <div slot="body">
           <mui-markdown body-size="small" code-size="x-small">
 ~~~js
@@ -170,6 +204,21 @@ console.log("Hello from Muibook")
         </div>
         <story-code-block slot="footer" scrollable>
           ~~~js ... ~~~
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Image Lightbox + Event Hooks (Vanilla)">
+        <div slot="body" id="markdown-event-demo">
+          <mui-markdown id="lightbox-demo" lightbox body-size="small" code-size="x-small">
+![Quadrant](https://raw.githubusercontent.com/michaeltrilford/Redactd/main/public/images/quadrant.png)
+          </mui-markdown>
+          <mui-body size="x-small" variant="optional" id="markdown-event-log" style="margin-top: var(--space-200);">
+            Click image to open lightbox.
+          </mui-body>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          element.addEventListener("mui-markdown-image-click", ...)<br>
+          element.addEventListener("mui-markdown-lightbox-change", ...)
         </story-code-block>
       </story-card>
     `;
@@ -209,6 +258,18 @@ console.log("Hello from Muibook")
         ${stories}
       </story-template>
     `;
+
+    const eventDemo = this.shadowRoot.getElementById("lightbox-demo");
+    const eventLog = this.shadowRoot.getElementById("markdown-event-log");
+    if (eventDemo && eventLog) {
+      eventDemo.addEventListener("mui-markdown-image-click", () => {
+        eventLog.textContent = "Event: mui-markdown-image-click";
+      });
+      eventDemo.addEventListener("mui-markdown-lightbox-change", (event) => {
+        const isOpen = Boolean(event?.detail?.open);
+        eventLog.textContent = `Event: mui-markdown-lightbox-change (${isOpen ? "open" : "closed"})`;
+      });
+    }
   }
 }
 

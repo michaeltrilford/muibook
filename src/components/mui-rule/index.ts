@@ -28,8 +28,12 @@ class MuiRule extends HTMLElement {
   private syncContextAttributes() {
     const inCard = Boolean(this.closest("mui-card"));
     const inFormSection = Boolean(this.closest("mui-form-section"));
+    const inDialog = Boolean(this.closest("mui-dialog"));
+    const inDrawer = Boolean(this.closest("mui-drawer"));
     this.toggleAttribute("in-card", inCard);
     this.toggleAttribute("in-form-section", inFormSection);
+    this.toggleAttribute("in-dialog", inDialog);
+    this.toggleAttribute("in-drawer", inDrawer);
   }
 
   updateStyles() {
@@ -42,7 +46,9 @@ class MuiRule extends HTMLElement {
         background: var(--border-color);
       }
       :host([in-card]),
-      :host([in-form-section]) {
+      :host([in-form-section]),
+      :host([in-dialog]),
+      :host([in-drawer]) {
         background: color-mix(in srgb, var(--border-color) 50%, transparent);
       }
       :host([direction="horizontal"]) {

@@ -22,6 +22,7 @@ export const muiDocs: MuiDocs = {
         "Enable or disable a setting – Toggle features like dark mode or notifications.",
         "Control device states – Switch on/off smart devices or system settings.",
         "Trigger immediate actions – Instantly apply changes without requiring confirmation.",
+        "Use size='x-small|small|medium|large' to match switch density with surrounding controls.",
       ],
     },
 

@@ -144,6 +144,7 @@ html[data-brand="jal"][data-theme="light"] {
   --tab-icon-active: var(--red-500);
   --tab-text-color-active: var(--red-500);
   --tab-shadow-active: var(--red-600);
+  --tabs-ghost-box-shadow: none;
 
   /* Carousel */
   --carousel-background: var(--grey-100);
@@ -184,6 +185,11 @@ html[data-brand="jal"][data-theme="light"] {
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
+  --skeleton-background: var(--surface-elevated-200);
+  --skeleton-highlight: var(--white-opacity-70);
+  --skeleton-radius: var(--radius-200);
+  --skeleton-animation-speed: 2000ms;
+  --skeleton-gap: var(--space-200);
 }
 
 /* =============================================================================== */
@@ -322,6 +328,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --tab-icon-active: var(--white);
   --tab-text-color-active: var(--white);
   --tab-shadow-active: var(--black-opacity-20);
+  --tabs-ghost-box-shadow: none;
 
   /* Carousel */
   --carousel-background: var(--grey-900);
@@ -362,6 +369,11 @@ html[data-brand="jal"][data-theme="dark"] {
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
+  --skeleton-background: var(--surface-elevated-200);
+  --skeleton-highlight: var(--white-opacity-30);
+  --skeleton-radius: var(--radius-200);
+  --skeleton-animation-speed: 2000ms;
+  --skeleton-gap: var(--space-200);
 }
 
 /* ================================================================= */

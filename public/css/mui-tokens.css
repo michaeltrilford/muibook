@@ -214,6 +214,11 @@ html[data-theme="light"] {
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
+  --skeleton-background: var(--surface-elevated-200);
+  --skeleton-highlight: var(--white-opacity-70);
+  --skeleton-radius: var(--radius-200);
+  --skeleton-animation-speed: 2000ms;
+  --skeleton-gap: var(--space-200);
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
@@ -290,6 +295,7 @@ html[data-theme="light"] {
   --tab-icon-active: var(--black);
   --tab-text-color-active: var(--black);
   --tab-shadow-active: var(--black-opacity-10);
+  --tabs-ghost-box-shadow: none;
 
   /* Carousel */
   --carousel-background: var(--white);
@@ -546,6 +552,11 @@ html[data-theme="dark"] {
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
+  --skeleton-background: var(--surface-elevated-200);
+  --skeleton-highlight: var(--white-opacity-30);
+  --skeleton-radius: var(--radius-200);
+  --skeleton-animation-speed: 2000ms;
+  --skeleton-gap: var(--space-200);
   --surface-elevated-300: var(--grey-1000);
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
@@ -621,6 +632,7 @@ html[data-theme="dark"] {
   --tab-icon-active: var(--white);
   --tab-text-color-active: var(--white);
   --tab-shadow-active: var(--black-opacity-40);
+  --tabs-ghost-box-shadow: none;
 
   /* Carousel */
   --carousel-background: var(--grey-700);

@@ -131,6 +131,7 @@ import "../components/mui-checkbox";
 import "../components/mui-radio";
 import "../components/mui-radio-group";
 import "../components/mui-loader";
+import "../components/mui-skeleton";
 import "../components/mui-spinner";
 import "../components/mui-media-player";
 import "../components/mui-range-input";

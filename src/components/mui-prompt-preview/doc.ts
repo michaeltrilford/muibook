@@ -17,6 +17,8 @@ export const muiDocs: MuiDocs = {
         "Use badge to classify payload types like JSON, CSS, or Insightful.",
         "Use `bg-image` to render a visual source and `image-tint` to tune color tone.",
         "Use `inverted` for high-contrast white-on-dark surfaces.",
+        "Use `loading` during async enrichment flows (metadata, URL checks, or media probing).",
+        "Set `loading-label` to provide clear accessible loading feedback.",
         "Use the `dismiss` event to track analytics/API updates before removing a preview.",
       ],
     },

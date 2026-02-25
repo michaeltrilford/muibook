@@ -152,66 +152,68 @@ class appNavbar extends HTMLElement {
       <app-navbar-group id="web-components" groupname="Components">
         <mui-body class="first" weight="bold">Prompts</mui-body>
         <app-navbar-link link="#/prompt" title="Prompt"></app-navbar-link>
-        <app-navbar-link link="#/prompt-toggle" title="Prompt Toggle"></app-navbar-link>
         <app-navbar-link link="#/prompt-message" title="Prompt Message"></app-navbar-link>
         <app-navbar-link link="#/prompt-preview" title="Prompt Preview"></app-navbar-link>
-      
-        <mui-body weight="bold">Inputs</mui-body>
-        <app-navbar-link link="#/addon" title="Add On"></app-navbar-link>   
-        <app-navbar-link link="#/checkbox" title="Checkbox"></app-navbar-link>  
-        <app-navbar-link link="#/radio" title="Radio"></app-navbar-link>  
-        <app-navbar-link link="#/field" title="Field"></app-navbar-link> 
-        <app-navbar-link link="#/hint" title="Hint"></app-navbar-link>
-        <app-navbar-link link="#/form-group" title="Form Group"></app-navbar-link>
-        <app-navbar-link link="#/form-section" title="Form Section"></app-navbar-link>
-        <app-navbar-link link="#/form-section-footer" title="Form Section Footer"></app-navbar-link>
-        <app-navbar-link link="#/form-message" title="Form Message"></app-navbar-link>
-        <app-navbar-link link="#/file-upload" title="File Upload"></app-navbar-link> 
-        <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
-        <app-navbar-link link="#/range-input" title="Range Input"></app-navbar-link>
-        <app-navbar-link link="#/chip-input" title="Chip Input"></app-navbar-link>
-        <app-navbar-link link="#/textarea" title="Textarea"></app-navbar-link>
-        <app-navbar-link link="#/progress" title="Progress"></app-navbar-link>  
-        <app-navbar-link link="#/select" title="Select"></app-navbar-link>  
-        <app-navbar-link link="#/switch" title="Switch"></app-navbar-link>
+        <app-navbar-link link="#/prompt-toggle" title="Prompt Toggle"></app-navbar-link>
 
-        <mui-body weight="bold">Content</mui-body>
-        <app-navbar-link link="#/accordion" title="Accordion"></app-navbar-link>
-        <app-navbar-link link="#/heading" title="Heading"></app-navbar-link>
-        <app-navbar-link link="#/body" title="Body"></app-navbar-link>
-        <app-navbar-link link="#/code" title="Code"></app-navbar-link>
-        <app-navbar-link link="#/markdown" title="Markdown"></app-navbar-link>
-        <app-navbar-link link="#/dialog" title="Dialog"></app-navbar-link>
-        <app-navbar-link link="#/drawer" title="Drawer"></app-navbar-link>
-        <app-navbar-link link="#/quote" title="Quote"></app-navbar-link>
-        <app-navbar-link link="#/slat" title="Slat"></app-navbar-link>
-        <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>   
-        <app-navbar-link link="#/table" title="Table"></app-navbar-link>
-        <app-navbar-link link="#/media-player" title="Media Player"></app-navbar-link>
-        <app-navbar-link link="#/image" title="Image"></app-navbar-link>
-        <app-navbar-link link="#/avatar" title="Avatar"></app-navbar-link>
-        <app-navbar-link link="#/list" title="List"></app-navbar-link>
-        <app-navbar-link link="#/icons" title="Icons"></app-navbar-link>
-
-        <mui-body weight="bold">Layout</mui-body>
-        <app-navbar-link link="#/card" title="Card"></app-navbar-link>
-        <app-navbar-link link="#/container" title="Container"></app-navbar-link>
-        <app-navbar-link link="#/responsive" title="Responsive"></app-navbar-link>
-        <app-navbar-link link="#/rule" title="Rule"></app-navbar-link>
-        <app-navbar-link link="#/stack" title="Stack"></app-navbar-link>
-        <app-navbar-link link="#/grid" title="Grid"></app-navbar-link>
-        
-        <mui-body weight="bold">Feedback</mui-body>
-        <app-navbar-link link="#/alert" title="Alert"></app-navbar-link>
-        <app-navbar-link link="#/badge" title="Badge"></app-navbar-link>
-        <app-navbar-link link="#/message" title="Message"></app-navbar-link>
-        <app-navbar-link link="#/loader" title="Loader"></app-navbar-link>
-        
         <mui-body weight="bold">Actions</mui-body>
         <app-navbar-link link="#/button" title="Button"></app-navbar-link>
         <app-navbar-link link="#/chip" title="Chip"></app-navbar-link>
         <app-navbar-link link="#/dropdown" title="Dropdown"></app-navbar-link>
         <app-navbar-link link="#/link" title="Link"></app-navbar-link>
+      
+        <mui-body weight="bold">Inputs</mui-body>
+        <app-navbar-link link="#/addon" title="Add On"></app-navbar-link>   
+        <app-navbar-link link="#/chip-input" title="Chip Input"></app-navbar-link>
+        <app-navbar-link link="#/checkbox" title="Checkbox"></app-navbar-link>  
+        <app-navbar-link link="#/field" title="Field"></app-navbar-link> 
+        <app-navbar-link link="#/file-upload" title="File Upload"></app-navbar-link> 
+        <app-navbar-link link="#/form-group" title="Form Group"></app-navbar-link>
+        <app-navbar-link link="#/form-message" title="Form Message"></app-navbar-link>
+        <app-navbar-link link="#/form-section" title="Form Section"></app-navbar-link>
+        <app-navbar-link link="#/form-section-footer" title="Form Section Footer"></app-navbar-link>
+        <app-navbar-link link="#/hint" title="Hint"></app-navbar-link>
+        <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
+        <app-navbar-link link="#/progress" title="Progress"></app-navbar-link>  
+        <app-navbar-link link="#/radio" title="Radio"></app-navbar-link>  
+        <app-navbar-link link="#/range-input" title="Range Input"></app-navbar-link>
+        <app-navbar-link link="#/select" title="Select"></app-navbar-link>  
+        <app-navbar-link link="#/switch" title="Switch"></app-navbar-link>
+        <app-navbar-link link="#/textarea" title="Textarea"></app-navbar-link>
+
+        <mui-body weight="bold">Content</mui-body>
+        <app-navbar-link link="#/accordion" title="Accordion"></app-navbar-link>
+        <app-navbar-link link="#/avatar" title="Avatar"></app-navbar-link>
+        <app-navbar-link link="#/body" title="Body"></app-navbar-link>
+        <app-navbar-link link="#/code" title="Code"></app-navbar-link>
+        <app-navbar-link link="#/dialog" title="Dialog"></app-navbar-link>
+        <app-navbar-link link="#/drawer" title="Drawer"></app-navbar-link>
+        <app-navbar-link link="#/heading" title="Heading"></app-navbar-link>
+        <app-navbar-link link="#/image" title="Image"></app-navbar-link>
+        <app-navbar-link link="#/icons" title="Icons"></app-navbar-link>
+        <app-navbar-link link="#/list" title="List"></app-navbar-link>
+        <app-navbar-link link="#/markdown" title="Markdown"></app-navbar-link>
+        <app-navbar-link link="#/media-player" title="Media Player"></app-navbar-link>
+        <app-navbar-link link="#/quote" title="Quote"></app-navbar-link>
+        <app-navbar-link link="#/slat" title="Slat"></app-navbar-link>
+        <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>   
+        <app-navbar-link link="#/table" title="Table"></app-navbar-link>
+
+        <mui-body weight="bold">Layout</mui-body>
+        <app-navbar-link link="#/card" title="Card"></app-navbar-link>
+        <app-navbar-link link="#/container" title="Container"></app-navbar-link>
+        <app-navbar-link link="#/grid" title="Grid"></app-navbar-link>
+        <app-navbar-link link="#/responsive" title="Responsive"></app-navbar-link>
+        <app-navbar-link link="#/rule" title="Rule"></app-navbar-link>
+        <app-navbar-link link="#/stack" title="Stack"></app-navbar-link>
+        
+        <mui-body weight="bold">Feedback</mui-body>
+        <app-navbar-link link="#/alert" title="Alert"></app-navbar-link>
+        <app-navbar-link link="#/badge" title="Badge"></app-navbar-link>
+        <app-navbar-link link="#/loader" title="Loader"></app-navbar-link>
+        <app-navbar-link link="#/message" title="Message"></app-navbar-link>
+        <app-navbar-link link="#/skeleton" title="Skeleton"></app-navbar-link>
+        <app-navbar-link link="#/spinner" title="Spinner"></app-navbar-link>
         
         <mui-body weight="bold">Navigation</mui-body>
         <app-navbar-link link="#/carousel" title="Carousel"></app-navbar-link>

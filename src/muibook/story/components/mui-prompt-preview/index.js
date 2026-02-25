@@ -26,6 +26,20 @@ class StoryPromptPreview extends HTMLElement {
       { name: "badge-only", type: "boolean", options: "badge-only", default: "", description: "Force badge-only mode." },
       { name: "animated", type: "boolean", options: "animated", default: "", description: "Enable scanline/pulse animation (unless off mode)." },
       {
+        name: "loading",
+        type: "boolean",
+        options: "loading",
+        default: "",
+        description: "Shows preview loading overlay state while async metadata/content resolves.",
+      },
+      {
+        name: "loading-label",
+        type: "string",
+        options: "{text}",
+        default: "Loading preview",
+        description: "Accessible label announced while preview is loading.",
+      },
+      {
         name: "clickable",
         type: "boolean",
         options: "clickable",
@@ -105,6 +119,25 @@ class StoryPromptPreview extends HTMLElement {
           &lt;mui-prompt-preview badge="JSON" ...&gt;&lt;/mui-prompt-preview&gt;<br />
           &lt;mui-prompt-preview badge="CSS" ...&gt;&lt;/mui-prompt-preview&gt;<br />
           &lt;mui-prompt-preview badge="JS" ...&gt;&lt;/mui-prompt-preview&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="loading" title="Loading State" description="Use loading while async preview metadata or media checks resolve.">
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt-preview
+            badge="JSON"
+            value='{"source":"crm","query":"CSAT by feature","range":"Q4"}'
+          ></mui-prompt-preview>
+          <mui-prompt-preview
+            badge="JSON"
+            loading
+            loading-label="Resolving preview"
+            value='{"source":"crm","query":"CSAT by feature","range":"Q4"}'
+          ></mui-prompt-preview>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt-preview badge="JSON" value='{"source":"crm","query":"CSAT"}'&gt;&lt;/mui-prompt-preview&gt;<br />
+          &lt;mui-prompt-preview badge="JSON" loading loading-label="Resolving preview" value='{"source":"crm","query":"CSAT"}'&gt;&lt;/mui-prompt-preview&gt;
         </story-code-block>
       </story-card>
 
@@ -204,7 +237,7 @@ class StoryPromptPreview extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       >
-        <story-quicklinks slot="message" heading="Quicklinks" links="predropped::Pre-dropped Preview|||types::Payload Types|||pasted-image::Pasted Image|||dismiss-tracking::Dismiss Tracking|||open-dialog::Open Dialog|||open-dialog-image::Open Image Dialog"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="predropped::Pre-dropped Preview|||types::Payload Types|||loading::Loading State|||pasted-image::Pasted Image|||dismiss-tracking::Dismiss Tracking|||open-dialog::Open Dialog|||open-dialog-image::Open Image Dialog"></story-quicklinks>
         ${stories}
       </story-template>
     `;

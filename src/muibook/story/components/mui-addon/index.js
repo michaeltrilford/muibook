@@ -22,6 +22,13 @@ class storyAddon extends HTMLElement {
         default: "(required)",
         description: "Slot in text, icons or other appropriate micro compositions to support form experiences.",
       },
+      {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "medium",
+        description: "Optional size override. Add On also inherits input size when used in mui-input slots.",
+      },
     ];
 
     const rows = propItems
@@ -113,22 +120,70 @@ class storyAddon extends HTMLElement {
         >
           <div slot="body">
             <mui-input label="Enter your date">
-              <mui-addon slot="after"><mui-icon-info></mui-icon-info></mui-addon>
+              <mui-addon slot="after">
+                <mui-hint placement="top">
+                  <mui-icon-info slot="trigger" size="small"></mui-icon-info>
+                  Date format: DD/MM/YYYY
+                </mui-hint>
+              </mui-addon>
             </mui-input>
           </div>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-input label="Enter amount"&gt;
+            &lt;mui-input label="Enter your date"&gt;
             <br />
 
             &nbsp;&nbsp;&lt;mui-addon slot="after"&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-hint placement="top"&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot="trigger" size="small"&gt;&lt;/mui-icon-info&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date format: DD/MM/YYYY
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-hint&gt;
             <br />
             &nbsp;&nbsp;&lt;/mui-addon&gt;
             <br />            
 
             &lt;/mui-input&gt;
             <br />
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Input Sizes"
+          description="Add On across large, medium, small, and x-small input sizes."
+          usageLink="${data.guides}"
+        >
+          <mui-v-stack slot="body" space="var(--space-300)">
+            <mui-input label="Large" size="large">
+              <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
+            </mui-input>
+            <mui-input label="Medium" size="medium">
+              <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
+            </mui-input>
+            <mui-input label="Small" size="small">
+              <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
+            </mui-input>
+            <mui-input label="X-Small" size="x-small">
+              <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
+            </mui-input>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-input label="Large" size="large"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-addon slot="before"&gt;&lt;mui-body&gt;USD&lt;/mui-body&gt;&lt;/mui-addon&gt;<br />
+            &lt;/mui-input&gt;<br />
+            <br />
+            &lt;mui-input label="Medium" size="medium"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-addon slot="before"&gt;&lt;mui-body&gt;USD&lt;/mui-body&gt;&lt;/mui-addon&gt;<br />
+            &lt;/mui-input&gt;<br />
+            <br />
+            &lt;mui-input label="Small" size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-addon slot="before"&gt;&lt;mui-body&gt;USD&lt;/mui-body&gt;&lt;/mui-addon&gt;<br />
+            &lt;/mui-input&gt;<br />
+            <br />
+            &lt;mui-input label="X-Small" size="x-small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-addon slot="before"&gt;&lt;mui-body&gt;USD&lt;/mui-body&gt;&lt;/mui-addon&gt;<br />
+            &lt;/mui-input&gt;
           </story-code-block>
         </story-card>
       `;

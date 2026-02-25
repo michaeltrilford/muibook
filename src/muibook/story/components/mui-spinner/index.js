@@ -75,6 +75,13 @@ class StorySpinner extends HTMLElement {
           <mui-spinner size="medium"></mui-spinner>
           <mui-spinner size="large"></mui-spinner>
         </mui-h-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-spinner size="xx-small"&gt;&lt;/mui-spinner&gt;<br>
+          &lt;mui-spinner size="x-small"&gt;&lt;/mui-spinner&gt;<br>
+          &lt;mui-spinner size="small"&gt;&lt;/mui-spinner&gt;<br>
+          &lt;mui-spinner size="medium"&gt;&lt;/mui-spinner&gt;<br>
+          &lt;mui-spinner size="large"&gt;&lt;/mui-spinner&gt;
+        </story-code-block>
       </story-card>
 
       <story-card id="custom" title="Color and Duration">
@@ -83,6 +90,11 @@ class StorySpinner extends HTMLElement {
           <mui-spinner color="var(--text-color-success)" duration="1.2s" label="Loading success content"></mui-spinner>
           <mui-spinner color="var(--text-color-error)" duration="0.6s" label="Loading error content"></mui-spinner>
         </mui-h-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-spinner color="var(--text-color-warning)" label="Loading warning content"&gt;&lt;/mui-spinner&gt;<br>
+          &lt;mui-spinner color="var(--text-color-success)" duration="1.2s" label="Loading success content"&gt;&lt;/mui-spinner&gt;<br>
+          &lt;mui-spinner color="var(--text-color-error)" duration="0.6s" label="Loading error content"&gt;&lt;/mui-spinner&gt;
+        </story-code-block>
       </story-card>
     `;
 

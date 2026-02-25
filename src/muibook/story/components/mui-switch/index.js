@@ -38,6 +38,13 @@ class storySwitch extends HTMLElement {
         description: "On / Off state",
       },
       {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "large",
+        description: "Switch size variant.",
+      },
+      {
         name: "slot=&#8220;on-icon&#8221;",
         type: "slot (named)",
         options: "mui-icon-[name]",
@@ -132,6 +139,49 @@ class storySwitch extends HTMLElement {
           </div>
           <story-code-block slot="footer" scrollable>
             &lt;mui-switch checked label="On Example"&gt;&lt;/mui-switch&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Sizes"
+          description="Explore x-small, small, medium, and large switch sizes."
+          usageLink="https://guides.muibook.com/switch"
+        >
+          <mui-v-stack slot="body" space="var(--space-300)">
+            <mui-h-stack space="var(--space-300)" alignY="center">
+              <mui-switch label="X-Small" size="x-small"></mui-switch>
+              <mui-switch label="Small" size="small"></mui-switch>
+              <mui-switch label="Medium" size="medium"></mui-switch>
+              <mui-switch label="Large" size="large"></mui-switch>
+            </mui-h-stack>
+            <mui-h-stack space="var(--space-300)" alignY="center">
+              <mui-switch label="X-Small Icons" size="x-small">
+                <mui-icon-sun slot="off-icon"></mui-icon-sun>
+                <mui-icon-moon slot="on-icon"></mui-icon-moon>
+              </mui-switch>
+              <mui-switch label="Small Icons" size="small">
+                <mui-icon-sun slot="off-icon"></mui-icon-sun>
+                <mui-icon-moon slot="on-icon"></mui-icon-moon>
+              </mui-switch>
+              <mui-switch label="Medium Icons" size="medium">
+                <mui-icon-sun slot="off-icon"></mui-icon-sun>
+                <mui-icon-moon slot="on-icon"></mui-icon-moon>
+              </mui-switch>
+              <mui-switch label="Large Icons" size="large">
+                <mui-icon-sun slot="off-icon"></mui-icon-sun>
+                <mui-icon-moon slot="on-icon"></mui-icon-moon>
+              </mui-switch>
+            </mui-h-stack>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-switch label="X-Small" size="x-small"&gt;&lt;/mui-switch&gt;<br />
+            &lt;mui-switch label="Small" size="small"&gt;&lt;/mui-switch&gt;<br />
+            &lt;mui-switch label="Medium" size="medium"&gt;&lt;/mui-switch&gt;<br />
+            &lt;mui-switch label="Large" size="large"&gt;&lt;/mui-switch&gt;<br />
+            <br />
+            &lt;mui-switch label="Medium Icons" size="medium"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-icon-sun slot="off-icon"&gt;&lt;/mui-icon-sun&gt;<br />
+            &nbsp;&nbsp;&lt;mui-icon-moon slot="on-icon"&gt;&lt;/mui-icon-moon&gt;<br />
+            &lt;/mui-switch&gt;
           </story-code-block>
         </story-card>
 

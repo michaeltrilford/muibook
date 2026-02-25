@@ -28,7 +28,7 @@ class MuiSwitch extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["label", "disabled", "checked"];
+    return ["label", "disabled", "checked", "size"];
   }
 
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
@@ -53,6 +53,10 @@ class MuiSwitch extends HTMLElement {
         }
         this._updateDisabledState();
       }
+    }
+
+    if (name === "size" && oldValue !== newValue) {
+      this._enforceIconSize();
     }
   }
 
@@ -120,6 +124,14 @@ class MuiSwitch extends HTMLElement {
   private _enforceIconSize(): void {
     const onIconSlot = this.shadowRoot!.querySelector('slot[name="on-icon"]') as HTMLSlotElement | null;
     const offIconSlot = this.shadowRoot!.querySelector('slot[name="off-icon"]') as HTMLSlotElement | null;
+    const size = this.getAttribute("size") || "large";
+    const iconSizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "xx-small",
+      medium: "x-small",
+      large: "x-small",
+    };
+    const mappedIconSize = iconSizeMap[size] || "x-small";
 
     const enforceSize = (slot: HTMLSlotElement | null) => {
       if (!slot) return;
@@ -128,7 +140,7 @@ class MuiSwitch extends HTMLElement {
         slot.assignedElements().forEach((el) => {
           const tagName = el.tagName.toLowerCase();
           if (tagName.startsWith("mui-icon")) {
-            el.setAttribute("size", "x-small");
+            el.setAttribute("size", mappedIconSize);
           }
         });
       };
@@ -159,6 +171,9 @@ class MuiSwitch extends HTMLElement {
 
   render() {
     const label = this.getAttribute("label");
+    const size = this.getAttribute("size") || "large";
+    const allowedSizes = ["x-small", "small", "medium", "large"];
+    const normalizedSize = allowedSizes.includes(size) ? size : "large";
 
     this.shadowRoot!.innerHTML = /*html*/ `
       <style>
@@ -167,8 +182,8 @@ class MuiSwitch extends HTMLElement {
         .switch {
           position: relative;
           display: inline-block;
-          width: var(--switch-width);
-          height: var(--switch-height);
+          width: var(--_switch-width, var(--switch-width));
+          height: var(--_switch-height, var(--switch-height));
         }
 
         .switch input {
@@ -190,15 +205,15 @@ class MuiSwitch extends HTMLElement {
           bottom: 0;
           background-color: var(--switch-track-background);
           transition: background-color var(--speed-200);
-          border-radius: var(--switch-height);
+          border-radius: var(--_switch-height, var(--switch-height));
         }
 
         .thumb {
           position: absolute;
-          top: var(--switch-offset);
-          left: var(--switch-offset);
-          width: var(--switch-thumb-size);
-          height: var(--switch-thumb-size);
+          top: var(--_switch-offset, var(--switch-offset));
+          left: var(--_switch-offset, var(--switch-offset));
+          width: var(--_switch-thumb-size, var(--switch-thumb-size));
+          height: var(--_switch-thumb-size, var(--switch-thumb-size));
           background-color: var(--switch-thumb-bg);
           transition: transform var(--speed-200);
           border-radius: 50%;
@@ -212,7 +227,38 @@ class MuiSwitch extends HTMLElement {
         }
 
         input:checked + .track .thumb {
-          transform: translateX(calc(var(--switch-width) - var(--switch-thumb-size) - (var(--switch-offset) * 2)));
+          transform: translateX(
+            calc(
+              var(--_switch-width, var(--switch-width)) -
+              var(--_switch-thumb-size, var(--switch-thumb-size)) -
+              (var(--_switch-offset, var(--switch-offset)) * 2)
+            )
+          );
+        }
+
+        :host([size="x-small"]) {
+          --_switch-offset: var(--stroke-size-100);
+          --_switch-thumb-size: calc(var(--action-icon-only-size-x-small) - var(--space-200));
+          --_switch-height: calc(var(--_switch-thumb-size) + (var(--_switch-offset) * 2));
+          --_switch-width: calc(var(--_switch-height) * 1.6);
+        }
+        :host([size="small"]) {
+          --_switch-offset: var(--stroke-size-100);
+          --_switch-thumb-size: calc(var(--action-icon-only-size-small) - var(--space-200));
+          --_switch-height: calc(var(--_switch-thumb-size) + (var(--_switch-offset) * 2));
+          --_switch-width: calc(var(--_switch-height) * 1.6);
+        }
+        :host([size="medium"]) {
+          --_switch-offset: var(--stroke-size-100);
+          --_switch-thumb-size: calc(var(--switch-thumb-size) - var(--space-100));
+          --_switch-height: calc(var(--_switch-thumb-size) + (var(--_switch-offset) * 2));
+          --_switch-width: calc(var(--_switch-height) * 1.6);
+        }
+        :host([size="large"]) {
+          --_switch-offset: var(--switch-offset);
+          --_switch-thumb-size: var(--switch-thumb-size);
+          --_switch-height: var(--switch-height);
+          --_switch-width: var(--switch-width);
         }
 
         ::slotted([slot="on-icon"]),
@@ -245,6 +291,7 @@ class MuiSwitch extends HTMLElement {
         </span>
       </label>
     `;
+    this.setAttribute("size", normalizedSize);
   }
 }
 

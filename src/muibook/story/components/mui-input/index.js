@@ -498,26 +498,48 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Hint: Overlay" description="Use slot='hint' for non-interactive floating hints (icon, badge, tooltip marker)."
+      <story-card title="Hint: Overlay" description="Use slot='hint' for overlay markers and contextual hints."
         usageLink="https://guides.muibook.com/input"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" label="Username" placeholder="Enter your username">
-            <mui-icon-info slot="hint"></mui-icon-info>
+            <mui-hint slot="hint" placement="top">
+              <mui-icon-info slot="trigger" size="xx-small"></mui-icon-info>
+              Username is visible to your team.
+            </mui-hint>
           </mui-input>
           <mui-input size="small" label="Referral Code" placeholder="Optional">
-            <mui-badge slot="hint">NEW</mui-badge>
+            <mui-hint slot="hint" placement="top">
+              <mui-badge slot="trigger" size="x-small">NEW</mui-badge>
+              Referral codes are optional.
+            </mui-hint>
           </mui-input>
           <mui-input size="medium" label="Website" placeholder="https://">
-            <mui-icon-warning slot="hint"></mui-icon-warning>
+            <mui-hint slot="hint" placement="top">
+              <mui-icon-warning slot="trigger" size="x-small"></mui-icon-warning>
+              Include https:// in your URL.
+            </mui-hint>
           </mui-input>
           <mui-input size="large" label="Profile ID" placeholder="ID">
-            <mui-badge slot="hint" size="small">BETA</mui-badge>
+            <mui-hint slot="hint" placement="top">
+              <mui-badge slot="trigger" size="small">BETA</mui-badge>
+              Profile IDs are generated after verification.
+            </mui-hint>
           </mui-input>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-input label="Username"&gt;<br />
-          &nbsp;&nbsp;&lt;mui-icon-info slot="hint"&gt;&lt;/mui-icon-info&gt;<br />
+          &nbsp;&nbsp;&lt;mui-hint slot="hint" placement="top"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot="trigger" size="xx-small"&gt;&lt;/mui-icon-info&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;Username is visible to your team.<br />
+          &nbsp;&nbsp;&lt;/mui-hint&gt;<br />
+          &lt;/mui-input&gt;
+          <br /><br />
+          &lt;mui-input label="Website"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-hint slot="hint" placement="top"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-warning slot="trigger" size="x-small"&gt;&lt;/mui-icon-warning&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;Include https:// in your URL.<br />
+          &nbsp;&nbsp;&lt;/mui-hint&gt;<br />
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>

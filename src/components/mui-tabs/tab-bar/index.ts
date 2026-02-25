@@ -161,7 +161,7 @@ class MuiTabBar extends HTMLElement {
         :host([variant="ghost"]) {
           border: none;
           background: transparent;
-          box-shadow: none;
+          box-shadow: var(--tabs-ghost-box-shadow);
         }
 
         :host([variant="ghost"]) .highlight {

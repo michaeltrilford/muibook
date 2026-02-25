@@ -156,6 +156,20 @@ class StoryPrompt extends HTMLElement {
         description: "Auto-applies clickable behavior to slotted previews.",
       },
       {
+        name: "preview-loading",
+        type: "string|boolean",
+        options: "true, auto",
+        default: "",
+        description: "When set, applies loading state to slotted mui-prompt-preview items. Use auto to mirror prompt loading state.",
+      },
+      {
+        name: "preview-loading-label",
+        type: "string",
+        options: "{text}",
+        default: "Loading preview",
+        description: "Accessible loading label passed to slotted previews when preview-loading is active.",
+      },
+      {
         name: "preview-scrollbar",
         type: "string",
         options: "hidden",
@@ -307,6 +321,8 @@ class StoryPrompt extends HTMLElement {
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt debug
             preview-scrollbar="hidden"
+            preview-loading="auto"
+            preview-loading-label="Resolving preview"
             id="agentDataPrompt"
             placeholder="Paste, click preview, or submit..."
             enter-submit
@@ -364,6 +380,8 @@ class StoryPrompt extends HTMLElement {
           &lt;mui-prompt<br />
           &nbsp;&nbsp;actions-fan<br />
           &nbsp;&nbsp;enter-submit<br />
+          &nbsp;&nbsp;preview-loading="auto"<br />
+          &nbsp;&nbsp;preview-loading-label="Resolving preview"<br />
           &nbsp;&nbsp;color-top-start="var(--mui-brand-400)"<br />
           &nbsp;&nbsp;color-top-mid="var(--blue-500)"<br />
           &nbsp;&nbsp;color-top-end="var(--green-500)"<br />
@@ -550,6 +568,53 @@ class StoryPrompt extends HTMLElement {
           &lt;mui-prompt loading loading-label="Sending request"&gt;...&lt;/mui-prompt&gt;<br />
           prompt.setAttribute("loading", "");<br />
           prompt.removeAttribute("loading");
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="preview-loading-flow"
+        title="Preview Loading Flow"
+        description="Working async flow: toggle preview loading based on LLM/tooling lifecycle."
+        usage="Typical pattern: set prompt loading during request, and mirror preview loading using preview-loading='auto'.|||If a preview is still being enriched after send completes, force loading with preview-loading='true' and then clear it."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt
+            debug
+            id="promptPreviewLoadingFlow"
+            placeholder="Ask for summary..."
+            enter-submit
+            actions-fan
+            preview-loading="auto"
+            preview-loading-label="Resolving preview"
+            context-mode="icon"
+          >
+            <mui-prompt-preview
+              slot="preview"
+              clickable
+              badge="JSON"
+              animated
+              value='{"source":"crm","query":"summarise support backlog"}'
+            ></mui-prompt-preview>
+            <mui-prompt-toggle slot="actions">
+              <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                <mui-icon-globe size="small"></mui-icon-globe>
+              </mui-button>
+              <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+            </mui-prompt-toggle>
+          </mui-prompt>
+          <mui-h-stack space="var(--space-100)">
+            <mui-button id="promptPreviewFlowStartBtn" size="small" variant="secondary">LLM Loading</mui-button>
+            <mui-button id="promptPreviewFlowReadyBtn" size="small" variant="tertiary">LLM Ready</mui-button>
+            <mui-button id="promptPreviewFlowForceBtn" size="small" variant="tertiary">Force Preview Load</mui-button>
+            <mui-button id="promptPreviewFlowResetBtn" size="small" variant="tertiary">Reset Auto</mui-button>
+          </mui-h-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt preview-loading="auto" preview-loading-label="Resolving preview"&gt;...&lt;/mui-prompt&gt;<br />
+          prompt.setAttribute("loading", ""); // LLM in-flight (mirrors preview loading)<br />
+          prompt.removeAttribute("loading"); // LLM done<br />
+          prompt.setAttribute("preview-loading", "true"); // optional extended preview enrichment<br />
+          prompt.setAttribute("preview-loading", "auto"); // return to mirrored mode
         </story-code-block>
       </story-card>
 
@@ -1116,7 +1181,7 @@ class StoryPrompt extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       >
-        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Setup|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||error-feedback::Error Feedback|||preview-open-dialog::Open Code Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Setup|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Open Code Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
         ${stories}
       </story-template>
     `;
@@ -1137,6 +1202,11 @@ class StoryPrompt extends HTMLElement {
     const promptLoadingDemo = this.shadowRoot.querySelector("#promptLoadingDemo");
     const promptLoadingStartBtn = this.shadowRoot.querySelector("#promptLoadingStartBtn");
     const promptLoadingStopBtn = this.shadowRoot.querySelector("#promptLoadingStopBtn");
+    const promptPreviewLoadingFlow = this.shadowRoot.querySelector("#promptPreviewLoadingFlow");
+    const promptPreviewFlowStartBtn = this.shadowRoot.querySelector("#promptPreviewFlowStartBtn");
+    const promptPreviewFlowReadyBtn = this.shadowRoot.querySelector("#promptPreviewFlowReadyBtn");
+    const promptPreviewFlowForceBtn = this.shadowRoot.querySelector("#promptPreviewFlowForceBtn");
+    const promptPreviewFlowResetBtn = this.shadowRoot.querySelector("#promptPreviewFlowResetBtn");
     const effectsOffPrompt = this.shadowRoot.querySelector("#effectsOffPrompt");
     const agentCodeDialogPrompt = this.shadowRoot.querySelector("#agentCodeDialogPrompt");
     const agentImageDialogPrompt = this.shadowRoot.querySelector("#agentImageDialogPrompt");
@@ -1258,6 +1328,10 @@ class StoryPrompt extends HTMLElement {
       label: "Agent prompt (async loading)",
     });
     bindPromptSimulation({
+      promptEl: promptPreviewLoadingFlow,
+      label: "Agent prompt (preview loading flow)",
+    });
+    bindPromptSimulation({
       promptEl: effectsOffPrompt,
       label: "Agent prompt (effects off)",
     });
@@ -1345,6 +1419,27 @@ class StoryPrompt extends HTMLElement {
     promptLoadingStopBtn?.addEventListener("click", () => {
       promptLoadingDemo?.removeAttribute("loading");
       console.log("loading:stop");
+    });
+
+    promptPreviewFlowStartBtn?.addEventListener("click", () => {
+      promptPreviewLoadingFlow?.setAttribute("loading", "");
+      promptPreviewLoadingFlow?.setAttribute("preview-loading", "auto");
+      console.log("preview-flow:llm-loading");
+    });
+    promptPreviewFlowReadyBtn?.addEventListener("click", () => {
+      promptPreviewLoadingFlow?.removeAttribute("loading");
+      promptPreviewLoadingFlow?.setAttribute("preview-loading", "auto");
+      console.log("preview-flow:llm-ready");
+    });
+    promptPreviewFlowForceBtn?.addEventListener("click", () => {
+      promptPreviewLoadingFlow?.removeAttribute("loading");
+      promptPreviewLoadingFlow?.setAttribute("preview-loading", "true");
+      console.log("preview-flow:preview-enrichment");
+    });
+    promptPreviewFlowResetBtn?.addEventListener("click", () => {
+      promptPreviewLoadingFlow?.removeAttribute("loading");
+      promptPreviewLoadingFlow?.setAttribute("preview-loading", "auto");
+      console.log("preview-flow:reset-auto");
     });
 
     promptErrorBadBtn?.addEventListener("click", () => {

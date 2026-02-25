@@ -19,6 +19,8 @@ export const muiDocs: MuiDocs = {
       list: [
         "Wrap any page or UI section with Mui-Loader to automatically display loading animations.",
         "Ideal for initial page loads, content transitions, or skeleton screens while data is fetching.",
+        "When crafting skeleton states inside Loader, prefer design tokens, rem units, and percentages over fixed pixel sizes.",
+        "Compose placeholders with Muibook layout components such as mui-v-stack, mui-h-stack, and mui-grid for consistent spacing.",
         "Applied to pages or key components for seamless load transitions.",
         "Works seamlessly with other MUI components and layouts without additional setup.",
         "Use with Mui Spinner, skeletons, or other feedback to improve perceived performance.",
