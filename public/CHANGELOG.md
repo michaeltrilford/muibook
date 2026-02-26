@@ -1,6 +1,51 @@
 ## Header [Start]
 
-## v11.0.0 (Soon)
+## v12.0.0 (Soon)
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/12.0.0)
+
+## Header [End]
+
+### Added
+
+- Added `mui-skeleton` component for wireframe/prototype loading UI, including `shape`, `size`, `lines`, `line-widths`, `max-width`, and animation options (`shimmer`, `pulsate`, `none`) with controllable animation `duration`.
+- Added `mui-range-input` as a reusable range/seek primitive for media and custom input flows.
+- Added `mui-form-section-footer` component to standardize footer spacing/divider behavior inside `mui-form-section`.
+- Added `mui-prompt-toggle` component for icon↔chip (or custom slotted node) context toggling inside prompt action areas.
+- Added `mui-prompt` debug mode (`debug`) to render internal submit/status payload feedback without story-only wiring.
+- Added `mui-prompt` async preview state controls: `preview-loading` and `preview-loading-label`.
+- Added Prompt Preview media-type detection for common URL hosts/extensions (including YouTube/SoundCloud patterns) with VIDEO/MUSIC badge handling.
+
+### Changed
+
+- Prompt family now supports a cleaner end-to-end composition pattern around `mui-prompt`, `mui-prompt-message`, `mui-prompt-preview`, and `mui-prompt-toggle` with built-in submit/toggle behavior and reduced story-side glue code.
+- Prompt action bars now have stronger defaults for fan/toolbar interactions, internal action ordering, and keyboard-safe hidden action handling.
+- Prompt surface interaction visuals were refined for hover/focus states, with tokenized accent/focus customization and optional effects toggle support.
+- Prompt Preview now supports async/loading and media/icon-first rendering states while preserving dismiss/clickable workflows.
+- Prompt Message expanded with explicit size support (`x-small|small|medium|large`), `ghost` variant, and compact density behavior.
+- Input/Addon composition now enforces consistent slotted sizing between `mui-input`, `mui-addon`, and nested body/icon content across all sizes.
+- Field now inherits `size` and `optional` to slotted controls, and inherits `size` to `slot="message"` content for consistent field/message scaling.
+- Input, Select, and Textarea labels now scale by control size (`x-small|small|medium|large`) while preserving medium as baseline.
+- Input, Select, and Textarea optional label text now follows size-aware stepped scaling (intentionally smaller than label at each tier).
+- Switch sizing model was expanded and normalized across `x-small|small|medium|large`.
+- Rule contextual styling now automatically adapts inside Card, Form Section, Dialog, and Drawer via host-context attrs (`in-card`, `in-form-section`, `in-dialog`, `in-drawer`).
+- Tabs ghost variant now exposes a dedicated box-shadow override token (`--tabs-ghost-box-shadow`) for more controlled visual theming.
+- Chip added `ghost` variant support with dedicated background/border hover/focus/active token hooks.
+
+### Fixed
+
+- Fixed prompt preview click/dismiss interaction conflicts so dismiss actions no longer trigger parent preview activation.
+- Fixed prompt preview focus/click behavior so keyboard and pointer activation both map cleanly to dialog/open flows.
+- Fixed prompt textarea auto-height and bottom action-clearance behavior to prevent overlap/jump issues while typing.
+- Fixed media-preview classification edge cases where non-file URLs were incorrectly falling back to generic text badges.
+- Fixed docs/runtime mismatch from Form Message naming migration (`mui-form-hint` / `mui-form-message`) to avoid manifest/docs load errors.
+- Fixed Field fallback message sizing by removing hardcoded small-size text; fallback now follows Field size.
+
+---
+
+## Header [Start]
+
+## v11.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/11.0.0)
 

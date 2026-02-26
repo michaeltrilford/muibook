@@ -151,10 +151,27 @@ class MuiSelect extends HTMLElement {
         }
         label {
           font-size: var(--text-font-size);
+          line-height: var(--text-line-height);
           font-weight: var(--font-weight-medium);
           margin-bottom: var(--space-100);
           color: var(--text-color);
           display: block;
+        }
+        :host([size="x-small"]) label {
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+        }
+        :host([size="small"]) label {
+          font-size: var(--text-font-size-s);
+          line-height: var(--text-line-height-s);
+        }
+        :host([size="medium"]) label {
+          font-size: var(--text-font-size);
+          line-height: var(--text-line-height);
+        }
+        :host([size="large"]) label {
+          font-size: var(--text-font-size-l);
+          line-height: var(--text-line-height-l);
         }
         select {
           min-height: 4.4rem;
@@ -256,6 +273,22 @@ class MuiSelect extends HTMLElement {
           line-height: var(--text-line-height-xs);
           text-transform: uppercase;
           font-weight: var(--font-weight-medium);
+        }
+        :host([size="x-small"]) .optional {
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+        }
+        :host([size="small"]) .optional {
+          font-size: var(--text-font-size-xs);
+          line-height: var(--text-line-height-xs);
+        }
+        :host([size="medium"]) .optional {
+          font-size: var(--text-font-size-s);
+          line-height: var(--text-line-height-s);
+        }
+        :host([size="large"]) .optional {
+          font-size: var(--text-font-size);
+          line-height: var(--text-line-height);
         }
         .optional-dot {
           display: inline-flex;

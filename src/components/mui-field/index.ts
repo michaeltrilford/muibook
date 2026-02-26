@@ -1,6 +1,6 @@
 class MuiField extends HTMLElement {
   static get observedAttributes() {
-    return ["variant", "message", "label", "hide-label", "size"];
+    return ["variant", "message", "label", "hide-label", "size", "optional"];
   }
 
   constructor() {
@@ -82,6 +82,14 @@ class MuiField extends HTMLElement {
     this.setAttribute("size", val);
   }
 
+  get optional() {
+    return this.hasAttribute("optional");
+  }
+  set optional(val: boolean) {
+    if (val) this.setAttribute("optional", "");
+    else this.removeAttribute("optional");
+  }
+
   // -----------------------
   // Lifecycle methods
   // -----------------------
@@ -89,12 +97,14 @@ class MuiField extends HTMLElement {
     this.bindSlotEvents();
     this.renderMessage();
     this.passAttributesToChild();
+    this.syncMessageSlotSizing();
   }
 
   attributeChangedCallback(name: string) {
-    if (["variant", "message", "label", "hide-label", "size"].includes(name)) {
+    if (["variant", "message", "label", "hide-label", "size", "optional"].includes(name)) {
       this.renderMessage();
       this.passAttributesToChild();
+      this.syncMessageSlotSizing();
     }
   }
 
@@ -107,7 +117,7 @@ class MuiField extends HTMLElement {
     const slotted = slot?.assignedElements?.()[0]; // assumes only one
     if (!slotted) return;
 
-    ["variant", "label", "hide-label", "size"].forEach((attr) => {
+    ["variant", "label", "hide-label", "size", "optional"].forEach((attr) => {
       if (this.hasAttribute(attr)) {
         slotted.setAttribute(attr, this.getAttribute(attr) || "");
       } else {
@@ -142,9 +152,24 @@ class MuiField extends HTMLElement {
       return;
     }
 
-    fallback.innerHTML = message ? `<mui-body size="small" variant="${variant}">${icon}${message}</mui-body>` : "";
+    fallback.innerHTML = message ? `<mui-body size="${this.size}" variant="${variant}">${icon}${message}</mui-body>` : "";
     if (message) this.setAttribute("has-message", "");
     else this.removeAttribute("has-message");
+  }
+
+  syncMessageSlotSizing() {
+    if (!this.shadowRoot) return;
+    const size = this.size || "medium";
+    const messageSlot = this.shadowRoot.querySelector('slot[name="message"]') as HTMLSlotElement | null;
+    if (!messageSlot) return;
+
+    const slotted = messageSlot.assignedElements({ flatten: true });
+    slotted.forEach((el) => {
+      const tag = el.tagName.toLowerCase();
+      if (tag === "mui-form-message" || tag === "mui-form-hint" || tag === "mui-body") {
+        el.setAttribute("size", size);
+      }
+    });
   }
 
   bindSlotEvents() {
@@ -152,7 +177,10 @@ class MuiField extends HTMLElement {
 
     const messageSlot = this.shadowRoot.querySelector('slot[name="message"]') as HTMLSlotElement | null;
     if (messageSlot) {
-      messageSlot.addEventListener("slotchange", () => this.renderMessage());
+      messageSlot.addEventListener("slotchange", () => {
+        this.renderMessage();
+        this.syncMessageSlotSizing();
+      });
     }
 
     const contentSlot = this.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement | null;

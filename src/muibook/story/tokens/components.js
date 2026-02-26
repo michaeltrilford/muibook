@@ -150,6 +150,14 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--chip-text-color-active" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-icon-fill" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-filter" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-ghost-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-ghost-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-ghost-background-focus" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-ghost-background-active" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-ghost-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-ghost-border-color-hover" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-ghost-border-color-focus" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-ghost-border-color-active" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-dismiss-action-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-dismiss-action-background-hover" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-dismiss-action-filter" variant="shadow"></story-token-slat>
@@ -262,23 +270,39 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--media-player-seek-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-seek-time-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-seek-time-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-video-ratio" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-soundcloud-ratio" variant="size"></story-token-slat>
           </spec-card>
 
           <spec-card id="prompt" title="Prompt" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt/index.ts">
             <story-token-slat slot="body" token="--prompt-border-color-hover" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-border-color-focus" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-border-color-hover-primary" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-border-color-hover-secondary" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-hover-ring-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-hover-glow-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-hover-border-pulse-start" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-hover-border-pulse-end" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-hover-border-pulse-speed" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-focus-ring-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-focus-glow-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-focus-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-focus-surface-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-spectrum-start" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-spectrum-mid" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-spectrum-end" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-color-top-start" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-color-top-mid" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-color-top-end" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-color-top-accent" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-accent-primary" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-accent-secondary" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-hover-sweep-speed" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-focus-pulse-speed" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-focus-after-opacity" variant="opacity"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-focus-after-opacity-min" variant="opacity"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-focus-after-opacity-max" variant="opacity"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-focus-after-pulse-speed" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-surface-filter" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-placeholder-color" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-placeholder-color-hover" variant="text-color"></story-token-slat>
@@ -286,6 +310,7 @@ class tokensComponents extends HTMLElement {
           </spec-card>
 
           <spec-card id="prompt-preview" title="Prompt Preview" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-preview/index.ts">
+            <story-token-slat slot="body" token="--prompt-preview-accent" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-surface" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-box-drop-shadow" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-dismiss-border-color" variant="border-color"></story-token-slat>
@@ -347,6 +372,9 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--skeleton-highlight" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--skeleton-radius" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--skeleton-animation-speed" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--skeleton-shimmer-opacity" variant="opacity"></story-token-slat>
+            <story-token-slat slot="body" token="--skeleton-pulse-min-opacity" variant="opacity"></story-token-slat>
+            <story-token-slat slot="body" token="--skeleton-pulse-max-opacity" variant="opacity"></story-token-slat>
             <story-token-slat slot="body" token="--skeleton-gap" variant="size"></story-token-slat>
           </spec-card>
 

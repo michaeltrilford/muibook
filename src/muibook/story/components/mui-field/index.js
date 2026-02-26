@@ -32,16 +32,23 @@ class storyField extends HTMLElement {
       {
         name: "variant",
         type: "string",
-        options: "default, optional, success, warning, error",
+        options: "default, success, warning, error",
         default: "default",
         description: "--",
+      },
+      {
+        name: "optional",
+        type: "boolean",
+        options: "optional",
+        default: "",
+        description: "Forwards optional to the slotted form control label treatment.",
       },
       {
         name: "size",
         type: "string",
         options: "x-small, small, medium, large",
         default: "medium",
-        description: "Forwards size to the slotted form control.",
+        description: "Set once on Field; forwards size to the slotted form control and slot=message content.",
       },
       {
         name: "label",
@@ -272,11 +279,98 @@ class storyField extends HTMLElement {
             </mui-form-group>
           </mui-v-stack>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-form-group&gt;<br />
-            &nbsp;&nbsp;&lt;mui-field label="API Key"&gt;...&lt;/mui-field&gt;<br />
-            &nbsp;&nbsp;&lt;mui-field label="Project Name"&gt;...&lt;/mui-field&gt;<br />
-            &nbsp;&nbsp;&lt;mui-field label="Environment"&gt;...&lt;/mui-field&gt;<br />
+            &lt;mui-form-group heading="Access Settings" hide-label&gt;<br />
+            &nbsp;&nbsp;&lt;mui-field label="API Key"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input variant="error" value="pk_live_..."&gt;&lt;/mui-input&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-form-message slot="message"&gt;This key is invalid. Regenerate and try again.&lt;/mui-form-message&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-field&gt;<br />
+            &nbsp;&nbsp;&lt;mui-field label="Project Name"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input placeholder="Atlas Redesign"&gt;&lt;/mui-input&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-form-message slot="message"&gt;Visible to your workspace.&lt;/mui-form-message&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-field&gt;<br />
             &lt;/mui-form-group&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Form Group: Field Messages by Size" description="Field-owned messages inside Form Group across x-small, small, medium, and large sizes."
+          usage="Set size once on mui-field. Size is inherited by the slotted control and message content."
+          usageLink="https://guides.muibook.com/field"
+        >
+          <mui-v-stack slot="body" space="var(--space-300)">
+            <mui-form-group heading="Access Settings" hide-label>
+              <mui-field label="X Small" size="x-small">
+                <mui-input variant="error" value="pk_live_..."></mui-input>
+                <mui-form-message slot="message" style="color: var(--text-color-error);">
+                  <mui-icon-attention slot="before" size="x-small" color="var(--text-color-error)"></mui-icon-attention>
+                  This key is invalid.
+                </mui-form-message>
+              </mui-field>
+              <mui-field label="Small" size="small">
+                <mui-input placeholder="Atlas Redesign"></mui-input>
+                <mui-form-message slot="message" style="color: var(--text-color-optional);">
+                  <mui-icon-info slot="before" size="small" color="var(--text-color-optional)"></mui-icon-info>
+                  Visible to your workspace.
+                </mui-form-message>
+              </mui-field>
+              <mui-field label="Medium" size="medium">
+                <mui-select
+                  options='[{"label":"Development","value":"dev"},{"label":"Staging","value":"staging"},{"label":"Production","value":"prod"}]'
+                  value="prod"
+                ></mui-select>
+                <mui-form-message slot="message" style="color: var(--text-color-warning);">
+                  <mui-icon-warning slot="before" size="medium" color="var(--text-color-warning)"></mui-icon-warning>
+                  Production changes require admin approval.
+                </mui-form-message>
+              </mui-field>
+              <mui-field label="Large" size="large">
+                <mui-textarea placeholder="Describe access policy..."></mui-textarea>
+                <mui-form-message slot="message" style="color: var(--text-color-optional);">
+                  <mui-icon-info slot="before" size="large" color="var(--text-color-optional)"></mui-icon-info>
+                  Reviewed weekly by workspace admins.
+                </mui-form-message>
+              </mui-field>
+            </mui-form-group>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-form-group heading="Access Settings" hide-label&gt;<br />
+            &nbsp;&nbsp;&lt;mui-field label="X Small" size="x-small"&gt;...&lt;/mui-field&gt;<br />
+            &nbsp;&nbsp;&lt;mui-field label="Small" size="small"&gt;...&lt;/mui-field&gt;<br />
+            &nbsp;&nbsp;&lt;mui-field label="Medium" size="medium"&gt;...&lt;/mui-field&gt;<br />
+            &nbsp;&nbsp;&lt;mui-field label="Large" size="large"&gt;...&lt;/mui-field&gt;<br />
+            &lt;/mui-form-group&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Optional Label Sizes" description="Review Optional label treatment across x-small, small, medium, and large form sizes."
+          usage="Optional remains intentionally smaller than the main label at each tier so field labels stay primary."
+          usageLink="https://guides.muibook.com/field"
+        >
+          <mui-v-stack slot="body" space="var(--space-300)">
+            <mui-field label="X Small" size="x-small" optional>
+              <mui-input placeholder="x-small input"></mui-input>
+            </mui-field>
+
+            <mui-field label="Small" size="small" optional>
+              <mui-select
+                options='[{"label":"Option A","value":"a"},{"label":"Option B","value":"b"}]'
+                value="a"
+              ></mui-select>
+            </mui-field>
+
+            <mui-field label="Medium" size="medium" optional>
+              <mui-input placeholder="medium input"></mui-input>
+            </mui-field>
+
+            <mui-field label="Large" size="large" optional>
+              <mui-textarea rows="3" placeholder="large textarea"></mui-textarea>
+            </mui-field>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-field label="Medium" size="medium" optional&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="medium input"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
+            <br />
+            &lt;!-- optional is inherited from mui-field --&gt;
           </story-code-block>
         </story-card>
 
