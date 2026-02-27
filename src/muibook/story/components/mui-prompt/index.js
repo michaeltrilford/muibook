@@ -65,13 +65,13 @@ class StoryPrompt extends HTMLElement {
         type: "boolean",
         options: "actions-fan",
         default: "",
-        description: "Enables fan behavior with actions closed by default.",
+        description: "Optional explicit fan-mode override. Fan behavior is derived from slotted actions by default.",
       },
       {
         name: "fan-open",
         type: "boolean",
         options: "fan-open",
-        default: "",
+        default: "false",
         description: "Opens fan actions by default.",
       },
       { name: "disabled", type: "boolean", options: "disabled", default: "", description: "Disables prompt input." },
@@ -107,7 +107,7 @@ class StoryPrompt extends HTMLElement {
       {
         name: "slot=actions",
         type: "slot (named)",
-        options: "buttons, icons, mui-prompt-toggle",
+        options: "buttons, icons, mui-prompt-toggle, mui-rule",
         default: "",
         description: "Floating prompt actions.",
       },
@@ -356,6 +356,7 @@ class StoryPrompt extends HTMLElement {
               value=""
             ></mui-prompt-preview>
        
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-dropdown slot="actions" position="left" vertical-position="up">
               <mui-button slot="action" variant="tertiary" icon-only size="small">
                 <mui-icon-add size="small"></mui-icon-add>
@@ -425,6 +426,7 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -478,6 +480,7 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -537,6 +540,7 @@ class StoryPrompt extends HTMLElement {
             context-mode="icon"
             loading-label="Sending request"
           >
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -600,6 +604,7 @@ class StoryPrompt extends HTMLElement {
               animated
               value='{"source":"crm","query":"summarise support backlog"}'
             ></mui-prompt-preview>
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-prompt-toggle slot="actions">
               <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                 <mui-icon-globe size="small"></mui-icon-globe>
@@ -638,6 +643,7 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -694,6 +700,7 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -751,6 +758,7 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -870,6 +878,7 @@ class StoryPrompt extends HTMLElement {
               bg-image="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1400&q=80"
               value=""
             ></mui-prompt-preview>
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -1052,6 +1061,7 @@ class StoryPrompt extends HTMLElement {
               animated
               value='SELECT feature_area, AVG(csat) FROM survey_responses WHERE quarter = "Q4" GROUP BY feature_area;'
             ></mui-prompt-preview>
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -1116,6 +1126,7 @@ class StoryPrompt extends HTMLElement {
               bg-image="https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png"
               value=""
             ></mui-prompt-preview>
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">

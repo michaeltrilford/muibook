@@ -19,6 +19,7 @@
 
 ### Changed
 
+- Prompt removed the built-in action divider; separators are now consumer-slotted (`<mui-rule slot="actions">`) for deterministic composition control.
 - Prompt family now supports a cleaner end-to-end composition pattern around `mui-prompt`, `mui-prompt-message`, `mui-prompt-preview`, and `mui-prompt-toggle` with built-in submit/toggle behavior and reduced story-side glue code.
 - Prompt fan behavior is now normalized so `fan-open` implies fan mode consistently, reducing builder/story mismatches when opening action fans by default.
 - Prompt action bars now have stronger defaults for fan/toolbar interactions, internal action ordering, and keyboard-safe hidden action handling.
@@ -39,6 +40,7 @@
 
 ### Fixed
 
+- Prompt fan/action rendering now aligns with slotted action composition in builders, avoiding internal divider visibility drift.
 - Fixed prompt preview click/dismiss interaction conflicts so dismiss actions no longer trigger parent preview activation.
 - Fixed prompt preview focus/click behavior so keyboard and pointer activation both map cleanly to dialog/open flows.
 - Fixed prompt fan open/close inconsistencies between Prompt and Prompt Toggle story setups by enforcing a single fan-mode path when `fan-open` is used.

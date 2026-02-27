@@ -1204,7 +1204,6 @@ class MuiPrompt extends HTMLElement {
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
     const triggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
     const defaultTrigger = this.shadowRoot.querySelector("#promptDefaultActionsTrigger") as HTMLElement | null;
-    const actionsSeparator = this.shadowRoot.querySelector(".actions-separator") as HTMLElement | null;
     if (!actionSlot) return;
 
     const triggerActions = ((triggerSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[]).filter(
@@ -1244,11 +1243,6 @@ class MuiPrompt extends HTMLElement {
     const fanOpen = this.hasAttribute("fan-open");
     const fanSpeed = 100;
     const fanStep = "calc(var(--action-icon-only-size-medium) + var(--space-100))";
-    if (actionsSeparator) {
-      const showSeparator = fanMode && fanOpen && hasExtraFanActions;
-      actionsSeparator.toggleAttribute("hidden", !showSeparator);
-      actionsSeparator.style.display = showSeparator ? "inline-flex" : "none";
-    }
     this.enforceActionVariants();
     actions.forEach((action, index) => {
       action.style.transition = `transform ${fanSpeed}ms ease, opacity ${fanSpeed}ms ease`;
@@ -1952,13 +1946,6 @@ class MuiPrompt extends HTMLElement {
           pointer-events: none;
           margin-inline-end: var(--space-100);
         }
-        .actions-separator {
-          margin-inline: var(--space-200);
-          pointer-events: none;
-        }
-        .actions-separator[hidden] {
-          display: none !important;
-        }
         .actions-slot mui-button {
           --action-radius-x-small: var(--prompt-action-radius);
           --action-radius-small: var(--prompt-action-radius);
@@ -2127,7 +2114,6 @@ class MuiPrompt extends HTMLElement {
               </mui-icon-toggle>
             </mui-button>
           </slot>
-          <mui-rule class="actions-separator" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" aria-hidden="true"></mui-rule>
           <slot name="actions"></slot>
         </div>
       <div class="actions-slot actions-slot-right">
