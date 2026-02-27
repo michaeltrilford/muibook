@@ -26,5 +26,10 @@
     "noEmit": false
   },
   "include": ["src"],
-  "exclude": ["src/types/react/typed-elements", "src/types/react/wrapped-components"]
+  "exclude": [
+    "src/types/react/typed-elements",
+    "src/types/react/wrapped-components",
+    "src/components/mui-markdown",
+    "src/muibook/story/components/mui-markdown"
+  ]
 }

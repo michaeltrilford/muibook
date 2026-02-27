@@ -580,7 +580,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm run cem && tsc && vite build && npm run copy-cem",
+    "build": "npm run cem && rm -rf dist && tsc && vite build && npm run copy-cem",
     "preview": "vite preview",
     "build:muibook": "vite build --config vite.muibook.config.ts",
     "preview:muibook": "vite preview --config vite.muibook.config.ts",
