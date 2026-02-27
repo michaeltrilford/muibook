@@ -4,7 +4,6 @@ import "../mui-stack/vstack";
 import "../mui-stack/hstack";
 import "../mui-button";
 import "../mui-icons/warning";
-import "../mui-dialog";
 import "../mui-select";
 
 class MuiSlideFrame extends HTMLElement {
@@ -24,8 +23,6 @@ class MuiSlideFrame extends HTMLElement {
       "hide-header",
       "hide-footer",
       "hide-counter",
-      "preview",
-      "lightbox",
       "scroll",
       "fullscreen",
     ];
@@ -39,7 +36,6 @@ class MuiSlideFrame extends HTMLElement {
   private footerAfterSlot: HTMLSlotElement | null = null;
   private footerDescriptionSlot: HTMLSlotElement | null = null;
   private notesSlot: HTMLSlotElement | null = null;
-  private imageSlot: HTMLSlotElement | null = null;
   private stageEl: HTMLElement | null = null;
   private surfaceEl: HTMLElement | null = null;
   private nativeFullscreenActive = false;
@@ -47,7 +43,6 @@ class MuiSlideFrame extends HTMLElement {
   private pointerStartY: number | null = null;
   private onSlotChange = () => this.syncSections();
   private onChromeSlotChange = () => this.syncChromeState();
-  private onSurfaceClick = (event: Event) => this.handleSurfaceClick(event);
   private onPointerDown = (event: PointerEvent) => this.handlePointerDown(event);
   private onPointerUp = (event: PointerEvent) => this.handlePointerUp(event);
   private onKeyDown = (event: KeyboardEvent) => this.handleArrowNavigation(event);
@@ -96,8 +91,6 @@ class MuiSlideFrame extends HTMLElement {
     this.footerAfterSlot?.removeEventListener("slotchange", this.onChromeSlotChange);
     this.footerDescriptionSlot?.removeEventListener("slotchange", this.onChromeSlotChange);
     this.notesSlot?.removeEventListener("slotchange", this.onChromeSlotChange);
-    this.imageSlot?.removeEventListener("slotchange", this.onChromeSlotChange);
-    this.surfaceEl?.removeEventListener("click", this.onSurfaceClick);
     this.surfaceEl?.removeEventListener("pointerdown", this.onPointerDown);
     this.surfaceEl?.removeEventListener("pointerup", this.onPointerUp);
     this.removeEventListener("keydown", this.onKeyDown);
@@ -445,21 +438,11 @@ class MuiSlideFrame extends HTMLElement {
         :host([present]) .surface {
           overflow: auto !important;
         }
-        :host([preview]) .stage {
-          border-color: var(--slide-frame-preview-border-color, var(--text-color-warning));
-        }
-        :host([preview]:not([variant="plain"]):not([variant="ghost"])) .stage {
-          box-shadow:
-            var(--slide-frame-shadow),
-            0 0 0 var(--stroke-size-100) color-mix(in srgb, var(--slide-frame-preview-border-color, var(--text-color-warning)) 45%, transparent);
-        }
-        :host([preview][variant="plain"]) .stage,
-        :host([preview][variant="ghost"]) .stage {
-          box-shadow: 0 0 0 var(--stroke-size-100) color-mix(in srgb, var(--slide-frame-preview-border-color, var(--text-color-warning)) 45%, transparent);
-        }
         .header,
         .footer {
           display: block;
+          width: 100%;
+          box-sizing: border-box;
         }
         .header {
           padding:
@@ -534,14 +517,6 @@ class MuiSlideFrame extends HTMLElement {
         :host([present]) .stage {
           background: var(--slide-frame-background-present, var(--slide-frame-background));
         }
-        .lightbox-image {
-          display: block;
-          width: 100%;
-          max-height: 75vh;
-          height: auto;
-          object-fit: contain;
-        }
-
         .present-controls {
           display: grid;
         }
@@ -620,10 +595,6 @@ class MuiSlideFrame extends HTMLElement {
         </div>
         <div class="notes"><mui-body variant="optional" size="x-small">Notes...</mui-body><slot name="notes"></slot></div>
       </div>
-      <mui-dialog id="lightboxDialog" width="min(94vw, 1200px)" content-padding="none">
-        <mui-heading slot="title" size="5" level="3">Image Preview</mui-heading>
-        <img id="lightboxImage" class="lightbox-image" alt="Slide image preview" />
-      </mui-dialog>
     `;
     this.defaultSlot = this.shadowRoot.querySelector("slot:not([name])");
     this.defaultSlot?.addEventListener("slotchange", this.onSlotChange);
@@ -633,7 +604,6 @@ class MuiSlideFrame extends HTMLElement {
     this.footerSlot = this.shadowRoot.querySelector('slot[name="footer"]');
     this.footerAfterSlot = this.shadowRoot.querySelector('slot[name="footer-after"]');
     this.notesSlot = this.shadowRoot.querySelector('slot[name="notes"]');
-    this.imageSlot = this.shadowRoot.querySelector('slot[name="image"]');
     this.stageEl = this.shadowRoot.querySelector(".stage");
     this.surfaceEl = this.shadowRoot.querySelector(".surface");
     this.headerSlot?.addEventListener("slotchange", this.onChromeSlotChange);
@@ -643,13 +613,9 @@ class MuiSlideFrame extends HTMLElement {
     this.footerAfterSlot?.addEventListener("slotchange", this.onChromeSlotChange);
     this.footerDescriptionSlot?.addEventListener("slotchange", this.onChromeSlotChange);
     this.notesSlot?.addEventListener("slotchange", this.onChromeSlotChange);
-    this.surfaceEl?.addEventListener("click", this.onSurfaceClick);
     this.surfaceEl?.addEventListener("pointerdown", this.onPointerDown);
     this.surfaceEl?.addEventListener("pointerup", this.onPointerUp);
     this.style.setProperty("--slide-frame-ratio", this.resolveRatio());
-    this.shadowRoot.querySelector("#lightboxDialog")?.addEventListener("mui-dialog-close", () => {
-      this.dispatchEvent(new CustomEvent("lightbox-close", { bubbles: true, composed: true }));
-    });
     this.shadowRoot.querySelector("#notesActionBtn")?.addEventListener("click", () => {
       this.toggleNotes();
     });
@@ -759,19 +725,6 @@ class MuiSlideFrame extends HTMLElement {
     this.updateFullscreenSurfaceFit();
   }
 
-  private handleSurfaceClick(event: Event) {
-    if (!this.hasAttribute("lightbox")) return;
-    if (!this.imageSlot) return;
-    const assigned = this.imageSlot.assignedElements({ flatten: true });
-    if (assigned.length === 0) return;
-    const path = event.composedPath();
-    const clickedImageRegion = assigned.some((el) => path.includes(el));
-    if (!clickedImageRegion) return;
-    const image = this.resolveLightboxImage(path, assigned);
-    if (!image || !image.src) return;
-    this.openLightbox(image.src, image.alt || "Slide image preview");
-  }
-
   private handlePointerDown(event: PointerEvent) {
     this.pointerStartX = event.clientX;
     this.pointerStartY = event.clientY;
@@ -866,33 +819,6 @@ class MuiSlideFrame extends HTMLElement {
     }
     this.stageEl.style.width = `${Math.max(0, Math.floor(width))}px`;
     this.stageEl.style.height = `${Math.max(0, Math.floor(height))}px`;
-  }
-
-  private resolveLightboxImage(path: EventTarget[], assigned: Element[]) {
-    const direct = path.find((target) => target instanceof HTMLImageElement);
-    if (direct instanceof HTMLImageElement) return direct;
-    for (const el of assigned) {
-      if (el instanceof HTMLImageElement) return el;
-      const nested = el.querySelector?.("img");
-      if (nested instanceof HTMLImageElement) return nested;
-    }
-    return null;
-  }
-
-  private openLightbox(src: string, alt: string) {
-    const dialog = this.shadowRoot?.querySelector("#lightboxDialog") as (HTMLElement & { open?: () => void }) | null;
-    const image = this.shadowRoot?.querySelector<HTMLImageElement>("#lightboxImage");
-    if (!dialog || !image) return;
-    image.src = src;
-    image.alt = alt;
-    dialog.open?.();
-    this.dispatchEvent(
-      new CustomEvent("lightbox-open", {
-        detail: { src, alt },
-        bubbles: true,
-        composed: true,
-      }),
-    );
   }
 
   private escapeHtml(value: string) {

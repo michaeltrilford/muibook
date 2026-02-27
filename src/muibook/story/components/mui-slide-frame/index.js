@@ -112,7 +112,7 @@ class storySlideFrame extends HTMLElement {
       {
         name: "variant",
         type: "string",
-        options: "default, plain, ghost",
+        options: "default, plain",
         default: "default",
         description: "Controls frame chrome (border/background/shadow).",
       },
@@ -152,25 +152,11 @@ class storySlideFrame extends HTMLElement {
         description: "Hide built-in footer section counter.",
       },
       {
-        name: "preview",
-        type: "boolean",
-        options: "preview",
-        default: "",
-        description: "Enable preview warning treatment.",
-      },
-      {
         name: "scroll",
         type: "boolean",
         options: "scroll",
         default: "",
         description: "Opt in to surface scrolling when content overflows.",
-      },
-      {
-        name: "lightbox",
-        type: "boolean",
-        options: "lightbox",
-        default: "",
-        description: "Open image content in a built-in lightbox dialog on click.",
       },
     ];
 
@@ -309,21 +295,8 @@ class storySlideFrame extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Variant: Ghost">
-        <mui-slide-frame class="shell" slot="body" ratio="16:9" variant="ghost" padding="small" title="Quarterly Product Review" footer-text="Ghost variant." scroll>
-          <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
-          <mui-v-stack space="var(--space-400)" alignx="stretch">
-            ${quarterlyBaseContent}
-          </mui-v-stack>
-          ${quarterlyFollowupContent}
-        </mui-slide-frame>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-slide-frame variant="ghost"&gt;...&lt;/mui-slide-frame&gt;
-        </story-code-block>
-      </story-card>
-
       <story-card title="Variant: Plain">
-        <mui-slide-frame class="shell" slot="body" ratio="16:9" variant="plain" padding="small" title="Quarterly Product Review" footer-text="Plain variant." scroll preview>
+        <mui-slide-frame class="shell" slot="body" ratio="16:9" variant="plain" padding="small" title="Quarterly Product Review" footer-text="Plain variant." scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
           <mui-v-stack space="var(--space-400)" alignx="stretch">
             ${quarterlyBaseContent}
@@ -375,7 +348,7 @@ class storySlideFrame extends HTMLElement {
       </story-card>
 
       <story-card title="Image Composition">
-        <mui-slide-frame class="shell" slot="body" ratio="16:9" padding="medium" lightbox title="Quarterly Product Review" footer-text="Image composition with lightbox." scroll>
+        <mui-slide-frame class="shell" slot="body" ratio="16:9" padding="medium" title="Quarterly Product Review" footer-text="Image composition." scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
           <mui-v-stack space="var(--space-400)" alignx="stretch">
             ${quarterlyBaseContent}
@@ -386,7 +359,7 @@ class storySlideFrame extends HTMLElement {
           </mui-v-stack>
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-slide-frame ratio="16:9" padding="medium" lightbox title="Quarterly Product Review" footer-text="Image composition with lightbox." scroll&gt;<br />
+          &lt;mui-slide-frame ratio="16:9" padding="medium" title="Quarterly Product Review" footer-text="Image composition." scroll&gt;<br />
           &nbsp;&nbsp;&lt;mui-badge slot="header" variant="neutral" size="small"&gt;Q1&lt;/mui-badge&gt;<br />
           &nbsp;&nbsp;&lt;mui-image crop height="20rem" fit="cover" position="center center"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="..." alt="Presentation image" /&gt;<br />

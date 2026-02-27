@@ -1,5 +1,54 @@
 ## Header [Start]
 
+## v15.0.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/15.0.1)
+
+## Header [End]
+
+### Added
+
+- Added Slide Frame counter numeric stabilization (tabular-number rendering + fixed digit width) to prevent footer counter shifting between section values.
+
+### Changed
+
+- Slide Frame prop/docs/story surface now uses `variant="default|plain"` only (ghost removed from story + prop references).
+- Slide Frame changelog/docs/story language updated to component-only usage (removed stale preview/lightbox guidance).
+
+### Fixed
+
+- Removed unused Slide Frame `preview` and `lightbox` behavior from component runtime and public story prop surface.
+- Fixed Slide Frame footer counter jitter by rendering stable-width number spans.
+
+---
+
+## Header [Start]
+
+## v15.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/15.0.0)
+
+## Header [End]
+
+### Added
+
+- Added Slide Frame chrome visibility controls: `hide-header` and `hide-footer`.
+- Added Slide Frame fullscreen/present toolbar wiring for explicit exit controls and section counter updates.
+
+### Changed
+
+- Slide Frame fullscreen/present layout was refactored so ratio stage fitting is calculated against available frame space (including chrome rows).
+- Slide Frame structure now prioritizes frame/stage sizing consistency with explicit `height: 100%` behavior for presentation contexts.
+
+### Fixed
+
+- Fixed Slide Frame fullscreen/present fit regressions that caused content to clip or push footer content off-screen on some viewports.
+- Fixed Slide Frame section counter semantics (`active-section` zero-based behavior) and footer text update consistency.
+
+---
+
+## Header [Start]
+
 ## v14.0.2
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/14.0.2)
