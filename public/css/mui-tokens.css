@@ -557,7 +557,7 @@ html[data-theme="dark"] {
   --prompt-placeholder-color: var(--form-default-placeholder-color);
   --prompt-placeholder-color-hover: var(--form-default-placeholder-color-hover);
   --prompt-placeholder-color-focus: var(--form-default-placeholder-color-focus);
-  --slide-frame-background: var(--surface-elevated-200);
+  --slide-frame-background: var(--surface-elevated-100);
   --slide-frame-border-color: var(--border-color);
   --slide-frame-background-present: var(--slide-frame-background);
   --media-player-seek-color: var(--white);

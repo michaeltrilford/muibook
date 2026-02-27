@@ -5,6 +5,7 @@ import "../mui-stack/hstack";
 import "../mui-button";
 import "../mui-icons/warning";
 import "../mui-dialog";
+import "../mui-select";
 
 class MuiSlideFrame extends HTMLElement {
   static get observedAttributes() {
@@ -20,10 +21,13 @@ class MuiSlideFrame extends HTMLElement {
       "radius",
       "title",
       "footer-text",
+      "hide-header",
+      "hide-footer",
       "hide-counter",
       "preview",
       "lightbox",
       "scroll",
+      "fullscreen",
     ];
   }
 
@@ -36,7 +40,9 @@ class MuiSlideFrame extends HTMLElement {
   private footerDescriptionSlot: HTMLSlotElement | null = null;
   private notesSlot: HTMLSlotElement | null = null;
   private imageSlot: HTMLSlotElement | null = null;
+  private stageEl: HTMLElement | null = null;
   private surfaceEl: HTMLElement | null = null;
+  private nativeFullscreenActive = false;
   private pointerStartX: number | null = null;
   private pointerStartY: number | null = null;
   private onSlotChange = () => this.syncSections();
@@ -45,7 +51,16 @@ class MuiSlideFrame extends HTMLElement {
   private onPointerDown = (event: PointerEvent) => this.handlePointerDown(event);
   private onPointerUp = (event: PointerEvent) => this.handlePointerUp(event);
   private onKeyDown = (event: KeyboardEvent) => this.handleArrowNavigation(event);
+  private onFullscreenChange = () => this.handleFullscreenChange();
+  private onFullscreenError = () => this.handleFullscreenError();
+  private onWindowResize = () => this.updateFullscreenSurfaceFit();
   private onDocumentKeyDown = (event: KeyboardEvent) => {
+    const inNativeFullscreen = document.fullscreenElement === this;
+    if (event.key === "Escape" && this.hasAttribute("present") && !inNativeFullscreen) {
+      event.preventDefault();
+      this.resetPresentationState();
+      return;
+    }
     if (!this.shouldHandleGlobalKeys(event)) return;
     if (this.isEditableTarget(event.target)) return;
     this.handleArrowNavigation(event);
@@ -67,6 +82,9 @@ class MuiSlideFrame extends HTMLElement {
     this.syncChromeState();
     this.addEventListener("keydown", this.onKeyDown);
     document.addEventListener("keydown", this.onDocumentKeyDown);
+    document.addEventListener("fullscreenchange", this.onFullscreenChange);
+    document.addEventListener("fullscreenerror", this.onFullscreenError);
+    window.addEventListener("resize", this.onWindowResize);
   }
 
   disconnectedCallback() {
@@ -84,12 +102,51 @@ class MuiSlideFrame extends HTMLElement {
     this.surfaceEl?.removeEventListener("pointerup", this.onPointerUp);
     this.removeEventListener("keydown", this.onKeyDown);
     document.removeEventListener("keydown", this.onDocumentKeyDown);
+    document.removeEventListener("fullscreenchange", this.onFullscreenChange);
+    document.removeEventListener("fullscreenerror", this.onFullscreenError);
+    window.removeEventListener("resize", this.onWindowResize);
   }
 
   attributeChangedCallback(_name: string, oldValue: string | null, newValue: string | null) {
     if (oldValue === newValue) return;
     this.render();
     this.syncSections();
+    this.syncChromeState();
+  }
+
+  async enterFullscreen() {
+    if (document.fullscreenElement === this) return true;
+    const host = this as HTMLElement & { requestFullscreen?: () => Promise<void> };
+    if (typeof host.requestFullscreen !== "function") return true;
+    try {
+      await host.requestFullscreen();
+      return true;
+    } catch {
+      this.dispatchEvent(new CustomEvent("fullscreen-error", { bubbles: true, composed: true }));
+      return true;
+    }
+  }
+
+  async exitFullscreen() {
+    if (document.fullscreenElement === this && typeof document.exitFullscreen === "function") {
+      try {
+        await document.exitFullscreen();
+      } catch {
+        this.dispatchEvent(new CustomEvent("fullscreen-error", { bubbles: true, composed: true }));
+      }
+    }
+    return true;
+  }
+
+  async toggleFullscreen(force?: boolean) {
+    const shouldEnable = typeof force === "boolean" ? force : !this.hasAttribute("fullscreen");
+    return shouldEnable ? this.enterFullscreen() : this.exitFullscreen();
+  }
+
+  private resetPresentationState() {
+    this.nativeFullscreenActive = false;
+    this.removeAttribute("present");
+    this.removeAttribute("fullscreen");
     this.syncChromeState();
   }
 
@@ -188,6 +245,23 @@ class MuiSlideFrame extends HTMLElement {
     return "16 / 9";
   }
 
+  private resolveRatioParts() {
+    const ratio = (this.getAttribute("ratio") || "16:9").trim();
+    if (ratio === "custom") {
+      const width = parseFloat(this.getAttribute("ratio-width") || "16");
+      const height = parseFloat(this.getAttribute("ratio-height") || "9");
+      if (width > 0 && height > 0) return { width, height };
+      return { width: 16, height: 9 };
+    }
+    const ratioParts = ratio.split(":");
+    if (ratioParts.length === 2) {
+      const width = parseFloat(ratioParts[0]);
+      const height = parseFloat(ratioParts[1]);
+      if (width > 0 && height > 0) return { width, height };
+    }
+    return { width: 16, height: 9 };
+  }
+
   private syncSections() {
     if (!this.shadowRoot) return;
     const sections = this.getSections();
@@ -205,9 +279,16 @@ class MuiSlideFrame extends HTMLElement {
       }
     });
     this.style.setProperty("--slide-frame-ratio", this.resolveRatio());
+    this.updateFullscreenSurfaceFit();
   }
 
   private handleArrowNavigation(event: KeyboardEvent) {
+    const inNativeFullscreen = document.fullscreenElement === this;
+    if (event.key === "Escape" && this.hasAttribute("present") && !inNativeFullscreen) {
+      event.preventDefault();
+      this.resetPresentationState();
+      return;
+    }
     if (this.getSections().length < 2) return;
     if (event.defaultPrevented) return;
     if (event.key === "ArrowRight" || event.key === "ArrowDown") {
@@ -249,69 +330,148 @@ class MuiSlideFrame extends HTMLElement {
           display: block;
           width: 100%;
           --slide-frame-ratio: 16 / 9;
-          --slide-frame-padding-active: var(--slide-frame-padding-medium);
           --slide-frame-leading-offset: var(--space-025);
-          --slide-frame-border-active: var(--border-thin);
-          --slide-frame-border-color-active: var(--slide-frame-border-color);
-          --slide-frame-background-active: var(--slide-frame-background);
-          --slide-frame-shadow-active: var(--slide-frame-shadow);
-          --slide-frame-radius-active: var(--slide-frame-radius);
+          --slide-frame-surface-padding-active: var(--slide-frame-padding-medium);
+          --slide-frame-header-padding-inline: var(--slide-frame-surface-padding-active);
+          --slide-frame-header-padding-block: var(--slide-frame-surface-padding-active);
+          --slide-frame-header-padding-top: var(--slide-frame-header-padding-block);
+          --slide-frame-header-padding-bottom: 0;
+          --slide-frame-footer-padding-inline: var(--slide-frame-surface-padding-active);
+          --slide-frame-footer-padding-block: var(--slide-frame-surface-padding-active);
+          --slide-frame-footer-padding-top: 0;
+          --slide-frame-footer-padding-bottom: var(--space-200);
         }
-        :host([variant="plain"]) {
-          --slide-frame-border-active: none;
-          --slide-frame-border-color-active: transparent;
-          --slide-frame-background-active: transparent;
-          --slide-frame-shadow-active: none;
+        :host([padding="none"]) { --slide-frame-surface-padding-active: 0; }
+        :host([padding="small"]) { --slide-frame-surface-padding-active: var(--slide-frame-padding-small); }
+        :host([padding="medium"]),
+        :host(:not([padding])) { --slide-frame-surface-padding-active: var(--slide-frame-padding-medium); }
+        :host([padding="large"]) { --slide-frame-surface-padding-active: var(--slide-frame-padding-large); }
+        :host([fullscreen]) {
+          position: fixed;
+          inset: 0;
+          width: 100vw;
+          height: 100dvh;
+          z-index: var(--slide-frame-fullscreen-z-index, 1000);
         }
-        :host([variant="ghost"]) {
-          --slide-frame-border-active: none;
-          --slide-frame-border-color-active: transparent;
-          --slide-frame-background-active: var(--slide-frame-background-ghost);
-          --slide-frame-shadow-active: none;
+        :host([padding="none"]) .surface { padding: 0; }
+        :host([padding="small"]) .surface { padding: var(--slide-frame-padding-small); }
+        :host([padding="large"]) .surface { padding: var(--slide-frame-padding-large); }
+        :host([padding="medium"]) .surface,
+        :host(:not([padding])) .surface { padding: var(--slide-frame-padding-medium); }
+
+        :host([variant="plain"]) .stage {
+          border: none;
+          border-color: transparent;
+          background: transparent;
+          box-shadow: none;
         }
-        :host([radius="none"]) { --slide-frame-radius-active: 0; }
-        :host([radius="small"]) { --slide-frame-radius-active: var(--slide-frame-radius-small); }
-        :host([radius="medium"]) { --slide-frame-radius-active: var(--slide-frame-radius-medium); }
-        :host([radius="large"]) { --slide-frame-radius-active: var(--slide-frame-radius-large); }
+        :host([variant="ghost"]) .stage {
+          border: none;
+          border-color: transparent;
+          background: var(--slide-frame-background-ghost);
+          box-shadow: none;
+        }
+        :host([radius="none"]) .stage { border-radius: 0; }
+        :host([radius="small"]) .stage { border-radius: var(--slide-frame-radius-small); }
+        :host([radius="medium"]) .stage { border-radius: var(--slide-frame-radius-medium); }
+        :host([radius="large"]) .stage { border-radius: var(--slide-frame-radius-large); }
 
         .frame {
           display: grid;
           width: 100%;
+          height: 100%;
           gap: 0;
           padding: var(--space-400);
-          background: var(--surface-recessed-200);
+          background: var(--surface-recessed-100);
           box-sizing: border-box;
+        }
+        :host([fullscreen]) .frame {
+          width: 100%;
+          min-height: 100%;
+          grid-template-rows: auto minmax(0, 1fr) auto;
+          overflow-y: auto;
+          overflow-x: hidden;
+          padding: 0;
+        }
+        :host(:fullscreen) .frame {
+          padding: 0;
         }
         :host([has-chrome]) .frame {
           gap: var(--slide-frame-gap, var(--space-300));
         }
 
+        .stage {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          aspect-ratio: var(--slide-frame-ratio);
+          border: var(--border-thin);
+          border-color: var(--slide-frame-border-color);
+          border-radius: var(--slide-frame-radius);
+          background: var(--slide-frame-background);
+          box-shadow: var(--slide-frame-shadow);
+          box-sizing: border-box;
+          overflow: hidden;
+          display: grid;
+          grid-template-rows: auto minmax(0, 1fr) auto;
+        }
+        :host([fullscreen]) .stage,
+        :host([present]) .stage {
+          justify-self: center;
+          align-self: center;
+          height: 100%;
+          max-height: 100%;
+          width: auto;
+          max-width: 100%;
+        }
+        :host([fullscreen]) .stage,
+        :host(:fullscreen) .stage {
+          border: none;
+          border-radius: 0;
+        }
         .surface {
           position: relative;
           width: 100%;
-          aspect-ratio: var(--slide-frame-ratio);
-          border: var(--slide-frame-border-active);
-          border-color: var(--slide-frame-border-color-active);
-          border-radius: var(--slide-frame-radius-active);
-          background: var(--slide-frame-background-active);
-          box-shadow: var(--slide-frame-shadow-active);
+          min-width: 0;
+          min-height: 0;
           box-sizing: border-box;
-          padding: var(--slide-frame-padding-active);
           overflow: hidden;
           display: block;
         }
         :host([scroll]) .surface {
           overflow: auto;
         }
-        :host([preview]) .surface {
+        :host([fullscreen]) .surface,
+        :host([present]) .surface {
+          overflow: auto !important;
+        }
+        :host([preview]) .stage {
           border-color: var(--slide-frame-preview-border-color, var(--text-color-warning));
+        }
+        :host([preview]:not([variant="plain"]):not([variant="ghost"])) .stage {
           box-shadow:
-            var(--slide-frame-shadow-active),
+            var(--slide-frame-shadow),
             0 0 0 var(--stroke-size-100) color-mix(in srgb, var(--slide-frame-preview-border-color, var(--text-color-warning)) 45%, transparent);
+        }
+        :host([preview][variant="plain"]) .stage,
+        :host([preview][variant="ghost"]) .stage {
+          box-shadow: 0 0 0 var(--stroke-size-100) color-mix(in srgb, var(--slide-frame-preview-border-color, var(--text-color-warning)) 45%, transparent);
         }
         .header,
         .footer {
           display: block;
+        }
+        .header {
+          padding:
+            var(--slide-frame-header-padding-top)
+            var(--slide-frame-header-padding-inline)
+            var(--slide-frame-header-padding-bottom);
+        }
+        .footer {
+          padding:
+            var(--slide-frame-footer-padding-top)
+            var(--slide-frame-footer-padding-inline)
+            var(--slide-frame-footer-padding-bottom);
         }
         .leading {
           margin-inline: var(--slide-frame-leading-offset);
@@ -352,6 +512,15 @@ class MuiSlideFrame extends HTMLElement {
         .footer-counter {
           white-space: nowrap;
         }
+        .footer-counter .counter-value {
+          display: inline-block;
+          min-width: calc(var(--slide-frame-counter-digits, 1) * 1ch);
+          text-align: right;
+        }
+        .footer-counter::part(text) {
+          font-variant-numeric: tabular-nums;
+          font-feature-settings: "tnum" 1;
+        }
         .notes {
           display: none;
         }
@@ -362,8 +531,8 @@ class MuiSlideFrame extends HTMLElement {
           border-radius: var(--radius-200);
 
         }
-        :host([present]) .surface {
-          background: var(--slide-frame-background-present, var(--slide-frame-background-active));
+        :host([present]) .stage {
+          background: var(--slide-frame-background-present, var(--slide-frame-background));
         }
         .lightbox-image {
           display: block;
@@ -375,14 +544,13 @@ class MuiSlideFrame extends HTMLElement {
 
         .present-controls {
           display: grid;
-          padding-bottom: var(--space-100);
-          border-bottom: var(--border-thin);
         }
-        :host([present]) .present-controls {
-          display: none;
+        :host([fullscreen]) .present-controls,
+        :host(:fullscreen) .present-controls {
+          display: none !important;
         }
-        :host(:not([present])) #slideFrameTogglePresentBtn {
-          /* optional: style to indicate inactive state */
+        :host(:not([fullscreen])) #slideFrameExitPresentBtn {
+          display: none !important;
         }
 
         ::slotted([data-slide-section][slide-hidden]) {
@@ -394,9 +562,10 @@ class MuiSlideFrame extends HTMLElement {
           <mui-h-stack space="var(--space-050)" aligny="center">
             <mui-button id="slideFrameAddSectionBtn" variant="tertiary" size="x-small">Add Section</mui-button>
             <mui-rule direction="vertical" length="var(--space-300)"></mui-rule>
-            <mui-button id="slideFrameTogglePresentBtn" variant="tertiary" size="x-small">Present Mode</mui-button>
+            <mui-button id="slideFrameToggleFullscreenBtn" variant="tertiary" size="x-small">Full Screen</mui-button>
             <mui-rule direction="vertical" length="var(--space-300)"></mui-rule>
             <mui-button id="slideFrameToggleNotesBtn" variant="tertiary" size="x-small">Notes</mui-button>
+            <mui-rule direction="vertical" length="var(--space-300)"></mui-rule>
           </mui-h-stack>
           <mui-h-stack space="var(--space-050)" aligny="center">
             <mui-button id="slideFramePrevSectionBtn" variant="tertiary" size="x-small"><mui-icon-left-chevron slot="before"></mui-icon-left-chevron>Previous</mui-button>
@@ -404,41 +573,52 @@ class MuiSlideFrame extends HTMLElement {
             <mui-button id="slideFrameNextSectionBtn" variant="tertiary" size="x-small">Next<mui-icon-right-chevron slot="after"></mui-icon-right-chevron></mui-button>
           </mui-h-stack>
         </mui-grid>
-        <div class="header" id="headerRegion">
-          <mui-v-stack class="leading leading_top" space="var(--space-100)" alignx="stretch" aligny="center"> 
-            <mui-h-stack class="header-main" alignx="space-between" aligny="center" space="var(--space-300)">
-              <div class="header-leading">
-                <mui-heading class="header-title" size="4" level="4" id="headerTitle"${escapedTitle ? "" : " hidden"}>${escapedTitle}</mui-heading>
-                <slot name="header"></slot>
-              </div>
-              <mui-h-stack class="header-after" alignx="end" aligny="center" space="var(--space-200)">
-                <slot name="header-after"></slot>
+        <div class="stage">
+          <div class="header" id="headerRegion">
+            <mui-v-stack class="leading leading_top" space="var(--space-100)" alignx="stretch" aligny="center"> 
+              <mui-h-stack class="header-main" alignx="space-between" aligny="center" space="var(--space-300)">
+                <div class="header-leading">
+                  <mui-heading class="header-title" size="4" level="4" id="headerTitle"${escapedTitle ? "" : " hidden"}>${escapedTitle}</mui-heading>
+                  <slot name="header"></slot>
+                </div>
+                <mui-h-stack class="header-after" alignx="end" aligny="center" space="var(--space-200)">
+                  <slot name="header-after"></slot>
+                </mui-h-stack>
               </mui-h-stack>
-            </mui-h-stack>
-            <mui-h-stack class="header-description" alignx="start" aligny="start" space="var(--space-200)">
-              <slot name="header-description"></slot>
-            </mui-h-stack>
-          </mui-v-stack>
-        </div>
-        <div class="surface" tabindex="0" role="region" aria-label="Slide frame">
-          <slot name="image"></slot>
-          <slot></slot>
+              <mui-h-stack class="header-description" alignx="start" aligny="start" space="var(--space-200)">
+                <slot name="header-description"></slot>
+              </mui-h-stack>
+            </mui-v-stack>
+          </div>
+          <div class="surface" tabindex="0" role="region" aria-label="Slide frame">
+            <slot name="image"></slot>
+            <slot></slot>
+          </div>
+          <div class="footer" id="footerRegion">
+            <mui-v-stack class="leading leading_bottom" space="var(--space-400)">
+              <mui-h-stack class="footer-main" alignx="space-between" aligny="center" space="var(--space-300)">
+                <div class="footer-leading">
+                  <mui-body class="footer-copy" size="small" id="footerText"${escapedFooterText ? "" : " hidden"}>${escapedFooterText}</mui-body>
+                  <slot name="footer"></slot>
+                </div>
+                <mui-h-stack class="footer-after" alignx="end" aligny="center" space="var(--space-200)">
+                  <mui-select
+                    id="slideFrameRatioSelect"
+                    size="x-small"
+                    style="width: 7rem; margin-right: var(--space-025)"
+                    options='[{"label":"16:9","value":"16:9"},{"label":"4:3","value":"4:3"},{"label":"1:1","value":"1:1"}]'
+                    value="${this.getAttribute("ratio") || "16:9"}"
+                    aria-label="Slide ratio">
+                  </mui-select>
+                  <mui-button id="slideFrameExitPresentBtn" size="x-small" variant="tertiary" hidden style="margin-right: var(--space-025)">Exit Fullscreen</mui-button>
+                  <mui-body class="footer-counter" id="footerCounter" size="x-small" variant="optional" hidden>Section 1/1</mui-body>
+                  <slot name="footer-after"></slot>
+                </mui-h-stack>
+              </mui-h-stack>
+            </mui-v-stack>
+          </div>
         </div>
         <div class="notes"><mui-body variant="optional" size="x-small">Notes...</mui-body><slot name="notes"></slot></div>
-        <div class="footer" id="footerRegion">
-          <mui-v-stack class="leading leading_bottom" space="var(--space-400)">
-            <mui-h-stack class="footer-main" alignx="space-between" aligny="center" space="var(--space-300)">
-              <div class="footer-leading">
-                <mui-body class="footer-copy" size="small" id="footerText"${escapedFooterText ? "" : " hidden"}>${escapedFooterText}</mui-body>
-                <slot name="footer"></slot>
-              </div>
-              <mui-h-stack class="footer-after" alignx="end" aligny="center" space="var(--space-200)">
-                <mui-body class="footer-counter" id="footerCounter" size="x-small" variant="optional" hidden>Section 1/1</mui-body>
-                <slot name="footer-after"></slot>
-              </mui-h-stack>
-            </mui-h-stack>
-          </mui-v-stack>
-        </div>
       </div>
       <mui-dialog id="lightboxDialog" width="min(94vw, 1200px)" content-padding="none">
         <mui-heading slot="title" size="5" level="3">Image Preview</mui-heading>
@@ -454,6 +634,7 @@ class MuiSlideFrame extends HTMLElement {
     this.footerAfterSlot = this.shadowRoot.querySelector('slot[name="footer-after"]');
     this.notesSlot = this.shadowRoot.querySelector('slot[name="notes"]');
     this.imageSlot = this.shadowRoot.querySelector('slot[name="image"]');
+    this.stageEl = this.shadowRoot.querySelector(".stage");
     this.surfaceEl = this.shadowRoot.querySelector(".surface");
     this.headerSlot?.addEventListener("slotchange", this.onChromeSlotChange);
     this.headerAfterSlot?.addEventListener("slotchange", this.onChromeSlotChange);
@@ -481,13 +662,37 @@ class MuiSlideFrame extends HTMLElement {
     this.shadowRoot.querySelector("#slideFrameNextSectionBtn")?.addEventListener("click", () => {
       this.nextSection();
     });
-    this.shadowRoot.querySelector("#slideFrameTogglePresentBtn")?.addEventListener("click", () => {
-      this.toggleAttribute("present");
+    this.shadowRoot.querySelector("#slideFrameToggleFullscreenBtn")?.addEventListener("click", () => {
+      const isActive = this.hasAttribute("fullscreen") || document.fullscreenElement === this;
+      if (isActive) {
+        this.resetPresentationState();
+        void this.exitFullscreen();
+        return;
+      }
+      this.setAttribute("present", "");
+      this.setAttribute("fullscreen", "");
       this.syncChromeState();
+      void this.enterFullscreen().then((ok) => {
+        if (!ok) return;
+        this.syncChromeState();
+      });
+    });
+    this.shadowRoot.querySelector("#slideFrameExitPresentBtn")?.addEventListener("click", () => {
+      this.resetPresentationState();
+      void this.exitFullscreen();
     });
     this.shadowRoot.querySelector("#slideFrameToggleNotesBtn")?.addEventListener("click", () => {
       this.toggleNotes();
     });
+    this.shadowRoot.querySelector("#slideFrameRatioSelect")?.addEventListener("change", (event) => {
+      const target = event.currentTarget as HTMLElement & {
+        value?: string;
+        getAttribute?: (name: string) => string | null;
+      };
+      const selected = target?.value || target?.getAttribute?.("value") || "16:9";
+      this.setAttribute("ratio", selected);
+    });
+    requestAnimationFrame(() => this.updateFullscreenSurfaceFit());
   }
 
   private syncChromeState() {
@@ -498,28 +703,51 @@ class MuiSlideFrame extends HTMLElement {
       );
     const hasHeaderTitle = Boolean((this.getAttribute("title") || "").trim());
     const hasFooterText = Boolean((this.getAttribute("footer-text") || "").trim());
+    const forceHideHeader = this.hasAttribute("hide-header");
+    const forceHideFooter = this.hasAttribute("hide-footer");
     const showCounter = !this.hasAttribute("hide-counter") && this.getSections().length > 0;
     const hasHeader =
-      hasHeaderTitle ||
-      hasNodes(this.headerSlot) ||
-      hasNodes(this.headerAfterSlot) ||
-      hasNodes(this.headerDescriptionSlot);
+      !forceHideHeader &&
+      (hasHeaderTitle ||
+        hasNodes(this.headerSlot) ||
+        hasNodes(this.headerAfterSlot) ||
+        hasNodes(this.headerDescriptionSlot));
     const hasFooter =
-      hasFooterText ||
-      hasNodes(this.footerSlot) ||
-      hasNodes(this.footerAfterSlot) ||
-      hasNodes(this.footerDescriptionSlot) ||
-      showCounter;
+      !forceHideFooter &&
+      (hasFooterText ||
+        hasNodes(this.footerSlot) ||
+        hasNodes(this.footerAfterSlot) ||
+        hasNodes(this.footerDescriptionSlot) ||
+        showCounter ||
+        this.hasAttribute("present") ||
+        this.hasAttribute("fullscreen"));
     const hasNotes = hasNodes(this.notesSlot);
     const notesVisible = this.hasAttribute("notes-open");
     const headerRegion = this.shadowRoot.querySelector<HTMLElement>("#headerRegion");
     const footerRegion = this.shadowRoot.querySelector<HTMLElement>("#footerRegion");
     const counter = this.shadowRoot.querySelector<HTMLElement>("#footerCounter");
+    const exitPresent = this.shadowRoot.querySelector<HTMLElement>("#slideFrameExitPresentBtn");
+    const fullscreenBtn = this.shadowRoot.querySelector<HTMLElement>("#slideFrameToggleFullscreenBtn");
+    const controls = this.shadowRoot.querySelector<HTMLElement>(".present-controls");
     const total = Math.max(this.getSections().length, 1);
     const index = this.getActiveSectionIndex() + 1;
+    if (controls) {
+      const isFullscreen = this.hasAttribute("fullscreen") || document.fullscreenElement === this;
+      controls.hidden = isFullscreen;
+    }
     if (counter) {
       counter.hidden = !showCounter;
-      counter.textContent = `Section ${Math.min(index, total)}/${total}`;
+      const current = Math.min(index, total);
+      const digits = String(total).length;
+      counter.style.setProperty("--slide-frame-counter-digits", String(digits));
+      counter.setAttribute("aria-label", `Section ${current} of ${total}`);
+      counter.innerHTML = `Section <span class="counter-value">${current}</span>/<span class="counter-value">${total}</span>`;
+    }
+    if (exitPresent) {
+      exitPresent.hidden = !this.hasAttribute("fullscreen");
+    }
+    if (fullscreenBtn) {
+      fullscreenBtn.textContent = this.hasAttribute("fullscreen") ? "Exit Fullscreen" : "Full Screen";
     }
     if (headerRegion) headerRegion.hidden = !hasHeader;
     if (footerRegion) footerRegion.hidden = !hasFooter;
@@ -528,6 +756,7 @@ class MuiSlideFrame extends HTMLElement {
     this.toggleAttribute("has-notes", hasNotes);
     this.toggleAttribute("notes-visible", notesVisible);
     this.toggleAttribute("has-chrome", hasHeader || hasFooter || notesVisible);
+    this.updateFullscreenSurfaceFit();
   }
 
   private handleSurfaceClick(event: Event) {
@@ -558,6 +787,85 @@ class MuiSlideFrame extends HTMLElement {
     if (Math.abs(dx) < 40 || Math.abs(dx) <= Math.abs(dy)) return;
     if (dx < 0) this.nextSection();
     else this.prevSection();
+  }
+
+  private handleFullscreenChange() {
+    const active = document.fullscreenElement === this;
+    const hadFullscreenState = this.hasAttribute("fullscreen");
+    if (active) {
+      this.nativeFullscreenActive = true;
+      this.toggleAttribute("fullscreen", true);
+      this.toggleAttribute("present", true);
+    } else if (this.nativeFullscreenActive || hadFullscreenState) {
+      this.resetPresentationState();
+    } else {
+      return;
+    }
+    this.syncChromeState();
+    this.updateFullscreenSurfaceFit();
+    this.dispatchEvent(
+      new CustomEvent("fullscreen-change", {
+        detail: { active },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  private handleFullscreenError() {
+    this.nativeFullscreenActive = false;
+    if (this.hasAttribute("fullscreen")) {
+      this.resetPresentationState();
+      this.dispatchEvent(new CustomEvent("fullscreen-error", { bubbles: true, composed: true }));
+      return;
+    }
+    this.syncChromeState();
+    this.dispatchEvent(new CustomEvent("fullscreen-error", { bubbles: true, composed: true }));
+  }
+
+  private updateFullscreenSurfaceFit() {
+    if (!this.shadowRoot || !this.stageEl) return;
+    const shouldFit = this.hasAttribute("fullscreen") || this.hasAttribute("present");
+    if (!shouldFit) {
+      this.stageEl.style.width = "";
+      this.stageEl.style.height = "";
+      return;
+    }
+    const frame = this.shadowRoot.querySelector<HTMLElement>(".frame");
+    const controls = this.shadowRoot.querySelector<HTMLElement>(".present-controls");
+    const notes = this.shadowRoot.querySelector<HTMLElement>(".notes");
+    if (!frame) return;
+    const frameRect = frame.getBoundingClientRect();
+    const frameStyle = getComputedStyle(frame);
+    const padTop = parseFloat(frameStyle.paddingTop || "0") || 0;
+    const padBottom = parseFloat(frameStyle.paddingBottom || "0") || 0;
+    const padLeft = parseFloat(frameStyle.paddingLeft || "0") || 0;
+    const padRight = parseFloat(frameStyle.paddingRight || "0") || 0;
+    const rowGap = parseFloat(frameStyle.rowGap || frameStyle.gap || "0") || 0;
+    const controlsH =
+      controls && getComputedStyle(controls).display !== "none" ? controls.getBoundingClientRect().height : 0;
+    const notesH = notes && getComputedStyle(notes).display !== "none" ? notes.getBoundingClientRect().height : 0;
+    const visibleRows = [controlsH > 0, true, notesH > 0].filter(Boolean).length;
+    const gaps = Math.max(0, visibleRows - 1);
+    const availableW = Math.max(0, frameRect.width - padLeft - padRight);
+    const availableH = Math.max(0, frameRect.height - padTop - padBottom - controlsH - notesH - rowGap * gaps);
+    const ratio = this.resolveRatioParts();
+    const fitByHeight = this.hasAttribute("fullscreen") || document.fullscreenElement === this;
+    let width: number;
+    let height: number;
+    if (fitByHeight) {
+      height = availableH;
+      width = height * (ratio.width / ratio.height);
+    } else {
+      width = availableW;
+      height = width * (ratio.height / ratio.width);
+      if (height > availableH) {
+        height = availableH;
+        width = height * (ratio.width / ratio.height);
+      }
+    }
+    this.stageEl.style.width = `${Math.max(0, Math.floor(width))}px`;
+    this.stageEl.style.height = `${Math.max(0, Math.floor(height))}px`;
   }
 
   private resolveLightboxImage(path: EventTarget[], assigned: Element[]) {
