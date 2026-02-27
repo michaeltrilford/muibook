@@ -1,6 +1,121 @@
 ## Header [Start]
 
-## v12.0.0 (Soon)
+## v14.0.2
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/14.0.2)
+
+## Header [End]
+
+### Added
+
+- Added `--tabs-ghost-box-shadow` token for `mui-tab-bar[variant="ghost"]` override control.
+- Added contextual Rule support for Dialog and Drawer (`in-dialog`, `in-drawer`) to match Card/Form Section behavior.
+
+### Changed
+
+- Deprecated Markdown from the public package surface (`mui-markdown` removed from package exports/bundle entrypoints).
+- Prompt fan behavior is now deterministic: `fan-open` drives fan mode consistently across Prompt and Prompt Toggle examples.
+- Prompt default accent color fallbacks now use system palette tokens (no `--mui-brand-*` hard dependency).
+- Build pipeline now clears `dist/` before compile to prevent stale declaration artifacts.
+
+### Fixed
+
+- Removed `marked` from published runtime/peer dependency paths to avoid CDN ESM resolution failures.
+- Fixed Prompt action fan/story parity regressions where slotted actions did not hide/show consistently.
+- Fixed field-message inheritance gaps so `mui-field` size/optional behavior propagates cleanly to message content.
+
+---
+
+## Header [Start]
+
+## v14.0.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/14.0.1)
+
+## Header [End]
+
+### Added
+
+- Added Prompt surface filter token (`--prompt-surface-filter`) for direct depth/shadow override.
+- Added Chip ghost treatment hooks used by Prompt action/context patterns.
+
+### Changed
+
+- Prompt hover/focus mesh effects were refined and tokenized for light/dark tuning without story-side CSS overrides.
+- Prompt Preview loading/media states were tightened to prioritize icon/media-first rendering during async transitions.
+
+### Fixed
+
+- Fixed Prompt preview dismiss/open event conflicts (dismiss no longer activates preview dialog click path).
+- Fixed Prompt textarea growth/clearance regressions with bottom action bars.
+
+---
+
+## Header [Start]
+
+## v14.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/14.0.0)
+
+## Header [End]
+
+### Added
+
+- Added `mui-skeleton` with shape/size/line controls and configurable shimmer/pulsate/none animation modes.
+- Added `mui-range-input` as reusable seek/range primitive.
+- Added `mui-form-section-footer` for standardized footer divider/spacing patterns.
+- Added `mui-prompt-toggle` for icon/chip (or custom slotted node) context toggling.
+- Added `mui-slide-frame` for composable presentation surfaces with ratio and section navigation APIs.
+- Added Prompt debug state (`debug`) and async preview controls (`preview-loading`, `preview-loading-label`).
+- Added Prompt Preview media detection for YouTube/SoundCloud and extension-based video/audio URLs.
+
+### Changed
+
+- Prompt composition standardized around `mui-prompt`, `mui-prompt-message`, `mui-prompt-preview`, and `mui-prompt-toggle`.
+- Prompt action separators moved to consumer composition (`<mui-rule slot="actions">`) for explicit control.
+- Prompt Message expanded with `x-small|small|medium|large`, plus `ghost` + compact density variants.
+- Image component now supports `max-height` as a first-class sizing attribute.
+
+### Fixed
+
+- Fixed Prompt/Prompt Toggle fan-open behavior drift between examples and component runtime.
+- Fixed preview classification fallbacks for non-file media URLs.
+- Fixed Form Message naming/docs manifest mismatch after hint/message migration.
+
+---
+
+## Header [Start]
+
+## v13.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/13.0.0)
+
+## Header [End]
+
+### Added
+
+- Added Alert size model (`small|medium|large`) with size-specific padding tokens.
+- Added Message size model (`small|medium|large`) with enforced typography/action scaling.
+- Added Switch size support across `x-small|small|medium|large`.
+- Added design tokens `--grey-150` and `--black-opacity-5`.
+
+### Changed
+
+- Field now inherits `size` to slotted controls and to `slot="message"` content.
+- Input, Select, and Textarea labels now scale with control size; optional label copy follows stepped size mapping.
+- Addon/Input slot sizing was normalized so slotted body/link/icon align across all control sizes.
+- Rule contextual color behavior aligned across Card/Form Section and expanded component surfaces.
+
+### Fixed
+
+- Fixed Alert action/text auto-size mapping inconsistencies in mixed slotted-content layouts.
+- Fixed small/medium spacing mismatches in Alert and Message size variants.
+
+---
+
+## Header [Start]
+
+## v12.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/12.0.0)
 
@@ -8,47 +123,19 @@
 
 ### Added
 
-- Added `mui-skeleton` component for wireframe/prototype loading UI, including `shape`, `size`, `lines`, `line-widths`, `max-width`, and animation options (`shimmer`, `pulsate`, `none`) with controllable animation `duration`.
-- Added `mui-range-input` as a reusable range/seek primitive for media and custom input flows.
-- Added `mui-form-section-footer` component to standardize footer spacing/divider behavior inside `mui-form-section`.
-- Added `mui-prompt-toggle` component for icon↔chip (or custom slotted node) context toggling inside prompt action areas.
-- Added `mui-slide-frame` component for composable presentation surfaces with ratio control, present mode section collapsing, and appendable sections.
-- Added `mui-prompt` debug mode (`debug`) to render internal submit/status payload feedback without story-only wiring.
-- Added `mui-prompt` async preview state controls: `preview-loading` and `preview-loading-label`.
-- Added Prompt Preview media-type detection for common URL hosts/extensions (including YouTube/SoundCloud patterns) with VIDEO/MUSIC badge handling.
+- Added Prompt preview dialog activation defaults (`clickable`/keyboard parity) for slotted previews.
+- Added Prompt media preview badges for IMAGE/CODE/JSON/CSS/VIDEO/MUSIC workflows.
+- Added Prompt action fan support (`actions-fan`, `fan-open`) for compact toolbar composition.
 
 ### Changed
 
-- Prompt removed the built-in action divider; separators are now consumer-slotted (`<mui-rule slot="actions">`) for deterministic composition control.
-- Prompt family now supports a cleaner end-to-end composition pattern around `mui-prompt`, `mui-prompt-message`, `mui-prompt-preview`, and `mui-prompt-toggle` with built-in submit/toggle behavior and reduced story-side glue code.
-- Prompt fan behavior is now normalized so `fan-open` implies fan mode consistently, reducing builder/story mismatches when opening action fans by default.
-- Prompt action bars now have stronger defaults for fan/toolbar interactions, internal action ordering, and keyboard-safe hidden action handling.
-- Prompt surface interaction visuals were refined for hover/focus states, with tokenized accent/focus customization and optional effects toggle support.
-- Prompt default color fallbacks were moved away from `--mui-brand-*` to system color tokens for more portable usage across themes/builders.
-- Prompt Preview now supports async/loading and media/icon-first rendering states while preserving dismiss/clickable workflows.
-- Prompt Message expanded with explicit size support (`x-small|small|medium|large`), `ghost` variant, and compact density behavior.
-- Image now supports `max-height` as a first-class attribute for responsive frame sizing without relying on host inline style overrides.
-- Markdown is deprecated from the public package surface in this release line; `mui-markdown` is no longer exported/bundled in package entrypoints.
-- Input/Addon composition now enforces consistent slotted sizing between `mui-input`, `mui-addon`, and nested body/icon content across all sizes.
-- Field now inherits `size` and `optional` to slotted controls, and inherits `size` to `slot="message"` content for consistent field/message scaling.
-- Input, Select, and Textarea labels now scale by control size (`x-small|small|medium|large`) while preserving medium as baseline.
-- Input, Select, and Textarea optional label text now follows size-aware stepped scaling (intentionally smaller than label at each tier).
-- Switch sizing model was expanded and normalized across `x-small|small|medium|large`.
-- Rule contextual styling now automatically adapts inside Card, Form Section, Dialog, and Drawer via host-context attrs (`in-card`, `in-form-section`, `in-dialog`, `in-drawer`).
-- Tabs ghost variant now exposes a dedicated box-shadow override token (`--tabs-ghost-box-shadow`) for more controlled visual theming.
-- Chip added `ghost` variant support with dedicated background/border hover/focus/active token hooks.
+- Migrated agent naming to prompt naming in the component surface (`mui-prompt`, `mui-prompt-message`, `mui-prompt-preview`).
+- Prompt examples moved to component-driven behavior (less story-only glue code for submit/toggle/dialog flows).
 
 ### Fixed
 
-- Prompt fan/action rendering now aligns with slotted action composition in builders, avoiding internal divider visibility drift.
-- Fixed prompt preview click/dismiss interaction conflicts so dismiss actions no longer trigger parent preview activation.
-- Fixed prompt preview focus/click behavior so keyboard and pointer activation both map cleanly to dialog/open flows.
-- Fixed prompt fan open/close inconsistencies between Prompt and Prompt Toggle story setups by enforcing a single fan-mode path when `fan-open` is used.
-- Fixed prompt textarea auto-height and bottom action-clearance behavior to prevent overlap/jump issues while typing.
-- Fixed media-preview classification edge cases where non-file URLs were incorrectly falling back to generic text badges.
-- Fixed docs/runtime mismatch from Form Message naming migration (`mui-form-hint` / `mui-form-message`) to avoid manifest/docs load errors.
-- Fixed Field fallback message sizing by removing hardcoded small-size text; fallback now follows Field size.
-- Removed `marked` package/peer dependency from the distributable package to avoid CDN/runtime resolution failures tied to markdown export paths.
+- Fixed Prompt submit toggle icon reset paths when handling cancel/escape simulation flows.
+- Fixed Prompt preview focus ring/activation ordering so keyboard focus state matches click state.
 
 ---
 
