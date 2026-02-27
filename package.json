@@ -108,10 +108,6 @@
       "import": "./dist/esm/components/mui-code/index.js",
       "types": "./dist/types/components/mui-code/index.d.ts"
     },
-    "./mui-markdown": {
-      "import": "./dist/esm/components/mui-markdown/index.js",
-      "types": "./dist/types/components/mui-markdown/index.d.ts"
-    },
     "./mui-slide-frame": {
       "import": "./dist/esm/components/mui-slide-frame/index.js",
       "types": "./dist/types/components/mui-slide-frame/index.d.ts"
@@ -617,11 +613,7 @@
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
   },
-  "peerDependencies": {
-    "marked": "^12.0.0"
-  },
-  "dependencies": {
-    "marked": "^12.0.0"
-  },
+  "peerDependencies": {},
+  "dependencies": {},
   "customElements": "public/custom-elements.json"
 }

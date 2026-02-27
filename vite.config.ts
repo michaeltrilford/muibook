@@ -53,8 +53,6 @@ export default defineConfig({
         "components/mui-carousel/panel": path.resolve(__dirname, "src/components/mui-carousel/panel"),
         // CODE
         "components/mui-code": path.resolve(__dirname, "src/components/mui-code/index.ts"),
-        // MARKDOWN
-        "components/mui-markdown": path.resolve(__dirname, "src/components/mui-markdown"),
         "components/mui-slide-frame": path.resolve(__dirname, "src/components/mui-slide-frame"),
         "components/mui-container": path.resolve(__dirname, "src/components/mui-container"),
         "components/mui-field": path.resolve(__dirname, "src/components/mui-field"),

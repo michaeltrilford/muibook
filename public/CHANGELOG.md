@@ -27,6 +27,7 @@
 - Prompt Preview now supports async/loading and media/icon-first rendering states while preserving dismiss/clickable workflows.
 - Prompt Message expanded with explicit size support (`x-small|small|medium|large`), `ghost` variant, and compact density behavior.
 - Image now supports `max-height` as a first-class attribute for responsive frame sizing without relying on host inline style overrides.
+- Markdown is deprecated from the public package surface in this release line; `mui-markdown` is no longer exported/bundled in package entrypoints.
 - Input/Addon composition now enforces consistent slotted sizing between `mui-input`, `mui-addon`, and nested body/icon content across all sizes.
 - Field now inherits `size` and `optional` to slotted controls, and inherits `size` to `slot="message"` content for consistent field/message scaling.
 - Input, Select, and Textarea labels now scale by control size (`x-small|small|medium|large`) while preserving medium as baseline.
@@ -45,6 +46,7 @@
 - Fixed media-preview classification edge cases where non-file URLs were incorrectly falling back to generic text badges.
 - Fixed docs/runtime mismatch from Form Message naming migration (`mui-form-hint` / `mui-form-message`) to avoid manifest/docs load errors.
 - Fixed Field fallback message sizing by removing hardcoded small-size text; fallback now follows Field size.
+- Removed `marked` package/peer dependency from the distributable package to avoid CDN/runtime resolution failures tied to markdown export paths.
 
 ---
 
