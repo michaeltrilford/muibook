@@ -433,6 +433,26 @@ class MuiPrompt extends HTMLElement {
     this.updateActionsLayout();
   };
 
+  private hasTruthyFlagAttribute(name: string) {
+    const raw = this.getAttribute(name);
+    return raw !== null && raw !== "false";
+  }
+
+  private shouldUseFanModeByActions() {
+    if (!this.shadowRoot) return false;
+    const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
+    if (!actionSlot) return false;
+    const slottedActions = (actionSlot.assignedElements({ flatten: true }) as HTMLElement[]).filter(
+      (el) => !el.hasAttribute("hidden"),
+    );
+    return slottedActions.length > 0;
+  }
+
+  private isFanModeEnabled() {
+    if (this.hasTruthyFlagAttribute("actions-fan")) return true;
+    return this.shouldUseFanModeByActions();
+  }
+
   private ensureFanMode() {
     // Allow fan-open to be the single public switch for "open by default".
     if (this.hasAttribute("fan-open") && !this.hasAttribute("actions-fan")) {
@@ -1079,7 +1099,7 @@ class MuiPrompt extends HTMLElement {
   }
 
   private bindActionTrigger() {
-    if (!this.shadowRoot || !this.hasAttribute("actions-fan")) return;
+    if (!this.shadowRoot || !this.isFanModeEnabled()) return;
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
     const triggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
     const defaultTrigger = this.shadowRoot.querySelector("#promptDefaultActionsTrigger") as HTMLElement | null;
@@ -1196,7 +1216,7 @@ class MuiPrompt extends HTMLElement {
     const actions = trigger ? [trigger, ...nonTriggerActions] : slottedActions;
     const rightActionSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     const rightActions = (rightActionSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[];
-    const fanMode = this.hasAttribute("actions-fan");
+    const fanMode = this.isFanModeEnabled();
     const fanOpen = this.hasAttribute("fan-open");
     const fanSpeed = 100;
     const fanStep = "calc(var(--action-icon-only-size-medium) + var(--space-100))";
