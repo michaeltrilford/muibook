@@ -71,6 +71,8 @@ class MuiPrompt extends HTMLElement {
   private fanAnimations = new Map<HTMLElement, Animation>();
   private pendingColorFade = false;
   private lastDebugPayload = '{"event":"idle"}';
+  private lightDomObserver: MutationObserver | null = null;
+  private readonly onActionsSlotChange = () => this.updateActionsLayout();
   private readonly enforceActionVariants = () => {
     if (!this.shadowRoot) return;
     const selector = 'slot[name="actions"], slot[name="actions-trigger"], slot[name="actions-right"]';
@@ -122,6 +124,9 @@ class MuiPrompt extends HTMLElement {
     const isLoading = this.hasAttribute("loading");
     const spinner = this.shadowRoot.querySelector(".prompt-loading-spinner") as HTMLElement | null;
     const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
+    const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
+    const actionTriggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
+    const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     const defaultSubmitToggle = defaultSubmit?.querySelector("mui-icon-toggle") as HTMLElement | null;
 
     if (spinner) {
@@ -454,10 +459,8 @@ class MuiPrompt extends HTMLElement {
   }
 
   private ensureFanMode() {
-    // Allow fan-open to be the single public switch for "open by default".
-    if (this.hasAttribute("fan-open") && !this.hasAttribute("actions-fan")) {
-      this.setAttribute("actions-fan", "");
-    }
+    // Intentionally no-op: do not mutate public input attributes from inside component.
+    // Fan behavior is derived from slotted actions (+ optional actions-fan opt-in).
   }
 
   constructor() {
@@ -471,6 +474,9 @@ class MuiPrompt extends HTMLElement {
     this.render();
     this.bindEvents();
     this.updateActionsLayout();
+    queueMicrotask(() => this.updateActionsLayout());
+    requestAnimationFrame(() => this.updateActionsLayout());
+    requestAnimationFrame(() => requestAnimationFrame(() => this.updateActionsLayout()));
     const textarea = this.shadowRoot?.querySelector("textarea") as HTMLTextAreaElement | null;
     if (textarea) {
       this.syncTextareaHeight(textarea);
@@ -831,9 +837,19 @@ class MuiPrompt extends HTMLElement {
     const actionTriggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
     const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
-    actionSlot?.addEventListener("slotchange", () => this.updateActionsLayout());
-    actionTriggerSlot?.addEventListener("slotchange", () => this.updateActionsLayout());
-    actionRightSlot?.addEventListener("slotchange", () => this.updateActionsLayout());
+    actionSlot?.addEventListener("slotchange", this.onActionsSlotChange);
+    actionTriggerSlot?.addEventListener("slotchange", this.onActionsSlotChange);
+    actionRightSlot?.addEventListener("slotchange", this.onActionsSlotChange);
+    if (typeof MutationObserver !== "undefined") {
+      this.lightDomObserver?.disconnect();
+      this.lightDomObserver = new MutationObserver(() => this.updateActionsLayout());
+      this.lightDomObserver.observe(this, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["slot", "hidden"],
+      });
+    }
     defaultSubmit?.addEventListener("click", this.onDefaultSubmitClick);
     this.addEventListener("prompt-preview-open", this.onPreviewOpen as EventListener);
     this.addEventListener("click", this.onContextToggleClick);
@@ -848,11 +864,17 @@ class MuiPrompt extends HTMLElement {
     if (!this.shadowRoot) return;
     const textarea = this.shadowRoot.querySelector("textarea") as HTMLTextAreaElement | null;
     const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
+    const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
+    const actionTriggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
+    const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     textarea?.removeEventListener("input", this.onInput);
     textarea?.removeEventListener("keydown", this.onKeyDown);
     textarea?.removeEventListener("paste", this.onPaste);
     textarea?.removeEventListener("focus", this.onTextareaFocus);
     defaultSubmit?.removeEventListener("click", this.onDefaultSubmitClick);
+    actionSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
+    actionTriggerSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
+    actionRightSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
     this.removeEventListener("prompt-preview-open", this.onPreviewOpen as EventListener);
     this.removeEventListener("click", this.onContextToggleClick);
     this.removeEventListener("dismiss", this.onContextChipDismiss as EventListener);
@@ -864,6 +886,8 @@ class MuiPrompt extends HTMLElement {
     this.previewSlotEl?.removeEventListener("slotchange", this.onPreviewSlotChange);
     this.previewResizeObserver?.disconnect();
     this.previewResizeObserver = null;
+    this.lightDomObserver?.disconnect();
+    this.lightDomObserver = null;
     this.previewShellEl = null;
     this.previewRowEl = null;
     this.previewSlotEl = null;
@@ -1216,12 +1240,15 @@ class MuiPrompt extends HTMLElement {
     const actions = trigger ? [trigger, ...nonTriggerActions] : slottedActions;
     const rightActionSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     const rightActions = (rightActionSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[];
-    const fanMode = this.isFanModeEnabled();
+    const hasExtraFanActions = nonTriggerActions.length > 0;
+    this.toggleAttribute("has-actions", hasToolbarActions);
+    this.toggleAttribute("has-extra-actions", hasExtraFanActions);
+    const fanMode = hasToolbarActions || this.hasTruthyFlagAttribute("actions-fan");
     const fanOpen = this.hasAttribute("fan-open");
     const fanSpeed = 100;
     const fanStep = "calc(var(--action-icon-only-size-medium) + var(--space-100))";
     if (actionsSeparator) {
-      const showSeparator = fanMode && fanOpen && slottedActions.length > 0;
+      const showSeparator = fanMode && fanOpen && hasExtraFanActions;
       actionsSeparator.toggleAttribute("hidden", !showSeparator);
       actionsSeparator.style.display = showSeparator ? "inline-flex" : "none";
     }
