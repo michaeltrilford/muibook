@@ -124,9 +124,6 @@ class MuiPrompt extends HTMLElement {
     const isLoading = this.hasAttribute("loading");
     const spinner = this.shadowRoot.querySelector(".prompt-loading-spinner") as HTMLElement | null;
     const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
-    const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
-    const actionTriggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
-    const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     const defaultSubmitToggle = defaultSubmit?.querySelector("mui-icon-toggle") as HTMLElement | null;
 
     if (spinner) {
@@ -863,10 +860,10 @@ class MuiPrompt extends HTMLElement {
   private unbindEvents() {
     if (!this.shadowRoot) return;
     const textarea = this.shadowRoot.querySelector("textarea") as HTMLTextAreaElement | null;
-    const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
     const actionTriggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
     const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
+    const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
     textarea?.removeEventListener("input", this.onInput);
     textarea?.removeEventListener("keydown", this.onKeyDown);
     textarea?.removeEventListener("paste", this.onPaste);
