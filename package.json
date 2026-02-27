@@ -112,6 +112,10 @@
       "import": "./dist/esm/components/mui-markdown/index.js",
       "types": "./dist/types/components/mui-markdown/index.d.ts"
     },
+    "./mui-slide-frame": {
+      "import": "./dist/esm/components/mui-slide-frame/index.js",
+      "types": "./dist/types/components/mui-slide-frame/index.d.ts"
+    },
     "./mui-container": {
       "import": "./dist/esm/components/mui-container/index.js",
       "types": "./dist/types/components/mui-container/index.d.ts"

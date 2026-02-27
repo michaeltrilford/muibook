@@ -194,6 +194,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/list" title="List"></app-navbar-link>
         <app-navbar-link link="#/markdown" title="Markdown"></app-navbar-link>
         <app-navbar-link link="#/media-player" title="Media Player"></app-navbar-link>
+        <app-navbar-link link="#/slide-frame" title="Slide Frame"></app-navbar-link>
         <app-navbar-link link="#/quote" title="Quote"></app-navbar-link>
         <app-navbar-link link="#/slat" title="Slat"></app-navbar-link>
         <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>   

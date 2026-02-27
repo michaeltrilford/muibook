@@ -65,9 +65,15 @@ class StoryPrompt extends HTMLElement {
         type: "boolean",
         options: "actions-fan",
         default: "",
-        description: "Enables fan-out actions from the trigger action.",
+        description: "Enables fan behavior with actions closed by default.",
       },
-      { name: "fan-open", type: "boolean", options: "fan-open", default: "", description: "Forces fan actions open." },
+      {
+        name: "fan-open",
+        type: "boolean",
+        options: "fan-open",
+        default: "",
+        description: "Opens fan actions by default.",
+      },
       { name: "disabled", type: "boolean", options: "disabled", default: "", description: "Disables prompt input." },
       {
         name: "loading",
@@ -319,14 +325,14 @@ class StoryPrompt extends HTMLElement {
         usage="This is the primary interactive story on this page.|||Use prompt-paste to capture clipboard payloads and append previews.|||Use prompt-preview-open to drive analytics, dialog selection, or routing.|||Use context-mode='icon|chip' with slotted <mui-prompt-toggle> (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||Theme the hover/focus mesh using --prompt-accent-primary and optional --prompt-accent-secondary.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
             preview-loading="auto"
             preview-loading-label="Resolving preview"
             id="agentDataPrompt"
             placeholder="Paste, click preview, or submit..."
             enter-submit
-            actions-fan
+           
             context-mode="icon"
             color-top-start="var(--mui-brand-400)"
             color-top-mid="var(--blue-500)"
@@ -378,8 +384,7 @@ class StoryPrompt extends HTMLElement {
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt<br />
-          &nbsp;&nbsp;actions-fan<br />
-          &nbsp;&nbsp;enter-submit<br />
+          &nbsp;&nbsp;          &nbsp;&nbsp;enter-submit<br />
           &nbsp;&nbsp;preview-loading="auto"<br />
           &nbsp;&nbsp;preview-loading-label="Resolving preview"<br />
           &nbsp;&nbsp;color-top-start="var(--mui-brand-400)"<br />
@@ -412,12 +417,12 @@ class StoryPrompt extends HTMLElement {
         usage="This is a reusable offering extracted from Agent UI compositions.|||Use it as the shared prompt primitive across products."
       >
         <mui-v-stack slot="body" space="var(--space-100)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
             id="promptDemo"
             placeholder="Reply to Mui..."
             enter-submit
-            actions-fan
+           
             context-mode="icon"
           >
             <mui-h-stack slot="actions" space="var(--space-050)">
@@ -465,12 +470,12 @@ class StoryPrompt extends HTMLElement {
         description="Use before-submit to block invalid sends, then call submit/clear/focus from app controls."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
             id="promptApiGuard"
             placeholder="Type at least 5 characters..."
             enter-submit
-            actions-fan
+           
             context-mode="icon"
           >
             <mui-h-stack slot="actions" space="var(--space-050)">
@@ -523,12 +528,12 @@ class StoryPrompt extends HTMLElement {
         description="Show async spinner feedback next to submit while a request is in flight."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             id="promptLoadingDemo"
             preview-scrollbar="hidden"
             placeholder="Send to start loading state..."
             enter-submit
-            actions-fan
+           
             context-mode="icon"
             loading-label="Sending request"
           >
@@ -583,7 +588,7 @@ class StoryPrompt extends HTMLElement {
             id="promptPreviewLoadingFlow"
             placeholder="Ask for summary..."
             enter-submit
-            actions-fan
+           
             preview-loading="auto"
             preview-loading-label="Resolving preview"
             context-mode="icon"
@@ -625,12 +630,12 @@ class StoryPrompt extends HTMLElement {
         usage="Use Bad Data for raw machine/system validation output.|||Use Custom Data for humanised, user-facing guidance copy.|||Use Reset to clear both direct error-message and custom slotted error content."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
             id="promptErrorDemo"
             placeholder="Try submitting bad or clean payload..."
             enter-submit
-            actions-fan
+           
             context-mode="icon"
           >
             <mui-h-stack slot="actions" space="var(--space-050)">
@@ -680,13 +685,13 @@ class StoryPrompt extends HTMLElement {
         description="Disable prompt hover/focus visuals for a flatter surface."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             effects-off
             preview-scrollbar="hidden"
             id="effectsOffPrompt"
             placeholder="Flat prompt surface..."
             enter-submit
-            actions-fan
+           
             context-mode="icon"
           >
             <mui-h-stack slot="actions" space="var(--space-050)">
@@ -733,7 +738,7 @@ class StoryPrompt extends HTMLElement {
         description="Remap the top color positions without changing the supplied color values."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
             id="agentColorSwapPrompt"
             color-layout="swap"
@@ -743,7 +748,7 @@ class StoryPrompt extends HTMLElement {
             color-top-accent="#8fd3ff"
             placeholder="Swapped color layout..."
             enter-submit
-            actions-fan
+           
             context-mode="icon"
           >
             <mui-h-stack slot="actions" space="var(--space-050)">
@@ -777,8 +782,7 @@ class StoryPrompt extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt<br />
           &nbsp;&nbsp;enter-submit<br />
-          &nbsp;&nbsp;actions-fan<br />
-          &nbsp;&nbsp;color-layout="swap"<br />
+          &nbsp;&nbsp;          &nbsp;&nbsp;color-layout="swap"<br />
           &nbsp;&nbsp;color-top-start="#ff4fbf"<br />
           &nbsp;&nbsp;color-top-mid="#8fd3ff"<br />
           &nbsp;&nbsp;color-top-end="#ff4fbf"<br />
@@ -794,12 +798,12 @@ class StoryPrompt extends HTMLElement {
 
       <story-card id="preview-open-image-dialog" title="Preview: Image" description="Click image preview to open the built-in prompt dialog.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
             id="agentImageDialogPrompt"
             placeholder="Use this image..."
             enter-submit
-            actions-fan
+           
             context-mode="icon"
           >
             <mui-prompt-preview
@@ -911,12 +915,12 @@ class StoryPrompt extends HTMLElement {
         description="Media badge/render check (YouTube, SoundCloud, direct media URLs). For full interactive paste/upload flow, use Interactive Prompt Setup."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             id="promptMediaDetection"
             preview-scrollbar="hidden"
             placeholder="Paste a media URL such as .mp4 or .mp3 ..."
             enter-submit
-            actions-fan
+           
           >
             <mui-prompt-preview
               slot="preview"
@@ -946,12 +950,12 @@ class StoryPrompt extends HTMLElement {
         description="Prompt preview wired to a direct .mp4 URL so dialog opens with native video controls."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             id="promptNativeVideo"
             preview-scrollbar="hidden"
             placeholder="Paste .mp4 links..."
             enter-submit
-            actions-fan
+           
           >
             <mui-prompt-preview
               slot="preview"
@@ -974,12 +978,12 @@ class StoryPrompt extends HTMLElement {
         description="Prompt preview wired to a direct .mp3 URL so dialog opens with native audio controls."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             id="promptNativeAudio"
             preview-scrollbar="hidden"
             placeholder="Paste .mp3 links..."
             enter-submit
-            actions-fan
+           
           >
             <mui-prompt-preview
               slot="preview"
@@ -998,12 +1002,12 @@ class StoryPrompt extends HTMLElement {
 
       <story-card id="preview-open-dialog" title="Preview: Code" description="Click preview to open the built-in prompt dialog.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
             id="agentCodeDialogPrompt"
             placeholder="Review payload..."
             enter-submit
-            actions-fan
+           
             context-mode="icon"
           >
             <mui-prompt-preview
@@ -1090,12 +1094,12 @@ class StoryPrompt extends HTMLElement {
 
       <story-card id="preview-off" title="Preview: Off" description="Disable preview auto-click so items stay non-interactive.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt debug
+          <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
             id="agentPreviewOffPrompt"
             placeholder="Preview is off..."
             enter-submit
-            actions-fan
+           
             preview-auto-clickable="false"
             context-mode="icon"
           >

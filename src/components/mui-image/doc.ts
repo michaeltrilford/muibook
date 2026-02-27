@@ -20,6 +20,10 @@ export const muiDocs: MuiDocs = {
     usage: {
       list: [
         "Use to display images that require additional context or explanation.",
+        "Use height + crop + fit=cover when you need fixed-height visual crops.",
+        "Use max-height with aspect-ratio for responsive image frames that should not exceed a visual cap.",
+        "Use focal-x/focal-y or position to keep important content in frame.",
+        "Use zoom carefully to tighten framing without switching to background-image.",
         "Captions should clarify the relevance of the image, not repeat surrounding content.",
         "Ideal for diagrams, UI examples, or content requiring attribution.",
         "Ensure images are accessible with alt text and meaningful captions.",

@@ -32,7 +32,7 @@ class tokensComponents extends HTMLElement {
             slot="message"
             heading="Quicklinks"
             limit="10"
-            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
+            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slide-frame::Slide Frame|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
           ></story-quicklinks>
 
           <spec-card
@@ -376,6 +376,18 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--skeleton-pulse-min-opacity" variant="opacity"></story-token-slat>
             <story-token-slat slot="body" token="--skeleton-pulse-max-opacity" variant="opacity"></story-token-slat>
             <story-token-slat slot="body" token="--skeleton-gap" variant="size"></story-token-slat>
+          </spec-card>
+
+          <spec-card id="slide-frame" title="Slide Frame" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slide-frame/index.ts">
+            <story-token-slat slot="body" token="--slide-frame-padding-small" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--slide-frame-padding-medium" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--slide-frame-padding-large" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--slide-frame-gap" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--slide-frame-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--slide-frame-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--slide-frame-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--slide-frame-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--slide-frame-background-present" variant="color"></story-token-slat>
           </spec-card>
 
           <spec-card

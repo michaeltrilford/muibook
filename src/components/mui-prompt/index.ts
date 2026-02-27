@@ -433,6 +433,13 @@ class MuiPrompt extends HTMLElement {
     this.updateActionsLayout();
   };
 
+  private ensureFanMode() {
+    // Allow fan-open to be the single public switch for "open by default".
+    if (this.hasAttribute("fan-open") && !this.hasAttribute("actions-fan")) {
+      this.setAttribute("actions-fan", "");
+    }
+  }
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -440,6 +447,7 @@ class MuiPrompt extends HTMLElement {
 
   connectedCallback() {
     if (!this.hasAttribute("context-mode")) this.setAttribute("context-mode", "icon");
+    this.ensureFanMode();
     this.render();
     this.bindEvents();
     this.updateActionsLayout();
@@ -500,6 +508,7 @@ class MuiPrompt extends HTMLElement {
     }
 
     if (name === "fan-open" || name === "actions-fan") {
+      this.ensureFanMode();
       this.updateActionsLayout();
       return;
     }
@@ -1058,7 +1067,6 @@ class MuiPrompt extends HTMLElement {
   }
 
   private toggleFanOpen = () => {
-    if (!this.hasAttribute("actions-fan")) return;
     this.toggleAttribute("fan-open");
     this.updateActionsLayout();
   };
@@ -1306,12 +1314,12 @@ class MuiPrompt extends HTMLElement {
     const swapLayout = colorLayout === "swap";
     const startSource = swapLayout
       ? colorTopEnd || "var(--prompt-color-top-end, var(--green-500))"
-      : colorTopStart || "var(--prompt-color-top-start, var(--mui-brand-400))";
+      : colorTopStart || "var(--prompt-color-top-start, var(--blue-500))";
     const midSource = swapLayout
       ? colorTopAccent || "var(--prompt-color-top-accent, var(--orange-500))"
       : colorTopMid || "var(--prompt-color-top-mid, var(--blue-500))";
     const endSource = swapLayout
-      ? colorTopStart || "var(--prompt-color-top-start, var(--mui-brand-400))"
+      ? colorTopStart || "var(--prompt-color-top-start, var(--blue-500))"
       : colorTopEnd || "var(--prompt-color-top-end, var(--green-500))";
     const accentSource = swapLayout
       ? colorTopMid || "var(--prompt-color-top-mid, var(--blue-500))"
@@ -1332,7 +1340,7 @@ class MuiPrompt extends HTMLElement {
           --_prompt-color-top-mid-source: ${midSource};
           --_prompt-color-top-end-source: ${endSource};
           --_prompt-color-top-accent-source: ${accentSource};
-          --_prompt-accent-primary: var(--prompt-accent-primary, var(--prompt-spectrum-start, var(--mui-brand-400)));
+          --_prompt-accent-primary: var(--prompt-accent-primary, var(--prompt-spectrum-start, var(--blue-500)));
           --_prompt-accent-secondary: var(--prompt-accent-secondary, var(--blue-500));
           --_prompt-accent-mid: color-mix(in srgb, var(--_prompt-accent-primary) 52%, var(--_prompt-accent-secondary) 48%);
           --_prompt-start-tint: color-mix(in srgb, var(--_prompt-color-top-start-source) 24%, transparent 76%);

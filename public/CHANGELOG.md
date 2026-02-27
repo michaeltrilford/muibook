@@ -12,6 +12,7 @@
 - Added `mui-range-input` as a reusable range/seek primitive for media and custom input flows.
 - Added `mui-form-section-footer` component to standardize footer spacing/divider behavior inside `mui-form-section`.
 - Added `mui-prompt-toggle` component for icon↔chip (or custom slotted node) context toggling inside prompt action areas.
+- Added `mui-slide-frame` component for composable presentation surfaces with ratio control, present mode section collapsing, and appendable sections.
 - Added `mui-prompt` debug mode (`debug`) to render internal submit/status payload feedback without story-only wiring.
 - Added `mui-prompt` async preview state controls: `preview-loading` and `preview-loading-label`.
 - Added Prompt Preview media-type detection for common URL hosts/extensions (including YouTube/SoundCloud patterns) with VIDEO/MUSIC badge handling.
@@ -19,10 +20,13 @@
 ### Changed
 
 - Prompt family now supports a cleaner end-to-end composition pattern around `mui-prompt`, `mui-prompt-message`, `mui-prompt-preview`, and `mui-prompt-toggle` with built-in submit/toggle behavior and reduced story-side glue code.
+- Prompt fan behavior is now normalized so `fan-open` implies fan mode consistently, reducing builder/story mismatches when opening action fans by default.
 - Prompt action bars now have stronger defaults for fan/toolbar interactions, internal action ordering, and keyboard-safe hidden action handling.
 - Prompt surface interaction visuals were refined for hover/focus states, with tokenized accent/focus customization and optional effects toggle support.
+- Prompt default color fallbacks were moved away from `--mui-brand-*` to system color tokens for more portable usage across themes/builders.
 - Prompt Preview now supports async/loading and media/icon-first rendering states while preserving dismiss/clickable workflows.
 - Prompt Message expanded with explicit size support (`x-small|small|medium|large`), `ghost` variant, and compact density behavior.
+- Image now supports `max-height` as a first-class attribute for responsive frame sizing without relying on host inline style overrides.
 - Input/Addon composition now enforces consistent slotted sizing between `mui-input`, `mui-addon`, and nested body/icon content across all sizes.
 - Field now inherits `size` and `optional` to slotted controls, and inherits `size` to `slot="message"` content for consistent field/message scaling.
 - Input, Select, and Textarea labels now scale by control size (`x-small|small|medium|large`) while preserving medium as baseline.
@@ -36,6 +40,7 @@
 
 - Fixed prompt preview click/dismiss interaction conflicts so dismiss actions no longer trigger parent preview activation.
 - Fixed prompt preview focus/click behavior so keyboard and pointer activation both map cleanly to dialog/open flows.
+- Fixed prompt fan open/close inconsistencies between Prompt and Prompt Toggle story setups by enforcing a single fan-mode path when `fan-open` is used.
 - Fixed prompt textarea auto-height and bottom action-clearance behavior to prevent overlap/jump issues while typing.
 - Fixed media-preview classification edge cases where non-file URLs were incorrectly falling back to generic text badges.
 - Fixed docs/runtime mismatch from Form Message naming migration (`mui-form-hint` / `mui-form-message`) to avoid manifest/docs load errors.
