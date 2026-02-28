@@ -504,8 +504,7 @@ class MuiSlideFrame extends HTMLElement {
 
         :host([fullscreen]) .notes,
         :host(:fullscreen) .notes {
-          border: none;
-          border-radius: 0;
+          display: none !important;
         }
 
         :host([present]) .stage {
@@ -671,7 +670,8 @@ class MuiSlideFrame extends HTMLElement {
         this.hasAttribute("present") ||
         this.hasAttribute("fullscreen"));
     const hasNotes = hasNodes(this.notesSlot);
-    const notesVisible = this.hasAttribute("notes-open");
+    const isFullscreen = this.hasAttribute("fullscreen") || document.fullscreenElement === this;
+    const notesVisible = this.hasAttribute("notes-open") && !isFullscreen;
     const headerRegion = this.shadowRoot.querySelector<HTMLElement>("#headerRegion");
     const footerRegion = this.shadowRoot.querySelector<HTMLElement>("#footerRegion");
     const counter = this.shadowRoot.querySelector<HTMLElement>("#footerCounter");
@@ -681,7 +681,6 @@ class MuiSlideFrame extends HTMLElement {
     const total = Math.max(this.getSections().length, 1);
     const index = this.getActiveSectionIndex() + 1;
     if (controls) {
-      const isFullscreen = this.hasAttribute("fullscreen") || document.fullscreenElement === this;
       controls.hidden = isFullscreen;
     }
     if (counter) {

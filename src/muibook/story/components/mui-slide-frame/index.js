@@ -331,6 +331,29 @@ class storySlideFrame extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card
+        title="Notes Hidden in Fullscreen"
+        usage="Notes can be open in normal mode for review.|||When entering fullscreen, notes are intentionally hidden so presentation layout stays stable.">
+        <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." notes-open scroll>
+          <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
+          <mui-body slot="header-description" size="small" variant="optional">Core metrics and roadmap outcomes.</mui-body>
+          ${quarterlyPageOne}
+          ${quarterlyPageTwo}
+          <mui-body slot="notes" size="small" variant="optional">Speaker notes: these are visible in normal mode and hidden in fullscreen.</mui-body>
+        </mui-slide-frame>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-slide-frame ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." notes-open scroll&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="header" variant="neutral" size="small"&gt;Q1&lt;/mui-badge&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="optional"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-slide-section&gt;...&lt;/mui-slide-section&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-slide-section&gt;...&lt;/mui-slide-section&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="notes" size="small" variant="optional"&gt;Speaker notes...&lt;/mui-body&gt;<br />
+          &lt;/mui-slide-frame&gt;
+        </story-code-block>
+      </story-card>
+
             <story-card title="Variant: Plain">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" variant="plain" padding="small" title="Quarterly Product Review" footer-text="Plain variant." scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
