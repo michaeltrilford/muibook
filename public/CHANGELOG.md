@@ -1,5 +1,19 @@
 ## Header [Start]
 
+## v17.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/17.0.0)
+
+## Header [End]
+
+### Changed
+
+- Slide Frame section navigation no longer uses swipe gestures; navigation is via controls and keyboard arrows.
+
+---
+
+## Header [Start]
+
 ## v16.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/16.0.0)
@@ -25,6 +39,30 @@
 ### Fixed
 
 - Removed internal `multi-line` runtime attribute behavior from `mui-prompt-message`, preventing runtime state from leaking into exported markup.
+
+---
+
+## Header [Start]
+
+## v17.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/17.0.0)
+
+## Header [End]
+
+### Breaking Changes
+
+- Slide Frame public prop surface was reduced to user-facing controls only.
+- Removed Slide Frame public props/paths that were internal or unused in product flows (`present`, `preview`, `lightbox`, `ratio-width`, `ratio-height`, and `ratio="custom"` option).
+
+### Added
+
+- Added `mui-slide-section` as a composable page wrapper for Slide Frame sections.
+- Added cancelable Slide Frame `section-add-request` event so apps/builders can provide custom section insertion logic.
+
+### Changed
+
+- Slide Frame section navigation no longer uses swipe gestures; navigation is via controls and keyboard arrows.
 
 ---
 
