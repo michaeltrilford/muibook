@@ -1,10 +1,15 @@
 ## Header [Start]
 
-## v15.0.2
+## v16.0.0
 
-[Package](https://www.npmjs.com/package/@muibook/components/v/15.0.2)
+[Package](https://www.npmjs.com/package/@muibook/components/v/16.0.0)
 
 ## Header [End]
+
+### Breaking Changes
+
+- Slide Frame public prop surface was reduced to user-facing controls only.
+- Removed Slide Frame public props/paths that were internal or unused in product flows (`present`, `preview`, `lightbox`, `ratio-width`, `ratio-height`, and `ratio="custom"` option).
 
 ### Changed
 
