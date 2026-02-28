@@ -42,3 +42,6 @@ When a component uses slots:
 - Prefer touching source under `src/`; `dist/` is generated.
 - Keep changes small and aligned with existing component patterns.
 - If unsure about behavior, search for sibling components in `src/components/` for examples.
+- Avoid persisting internal runtime state as public attributes (for example `multi-line`, `has-*`, or similar UI state flags).
+- Prefer CSS-first layout behavior over JS-driven state attrs when a stable visual result can be achieved without runtime attribute toggling.
+- Exported/component-consumed HTML should only include public API attrs; strip internal runtime attrs in export paths.

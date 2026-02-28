@@ -97,14 +97,6 @@ class StoryPrompt extends HTMLElement {
         description: "Optional preview block shown above the prompt input.",
       },
       {
-        name: "slot=actions-trigger",
-        type: "slot (named)",
-        options: "button, icons",
-        default: "Built-in trigger",
-        description:
-          "Optional custom trigger action (for fan toggle). If omitted, Prompt renders a default grid/close trigger.",
-      },
-      {
         name: "slot=actions",
         type: "slot (named)",
         options: "buttons, icons, mui-prompt-toggle, mui-rule",

@@ -22,7 +22,7 @@ export const muiDocs: MuiDocs = {
         "Use slot='actions' for utility actions (attach, source, tools).",
         "Prompt includes a default submit control in actions-right; override by slotting your own actions-right control when needed.",
         "All utility actions are intended to be slotted so product teams can wire behavior from app state.",
-        "A default fan trigger is included out-of-the-box; provide slot='actions-trigger' only when customizing.",
+        "A default fan trigger is included out-of-the-box for action fan behavior.",
         "Use slot='actions-right' when you need a custom submit/toggle action instead of the default.",
         "Prompt no longer renders a built-in action divider; slot your own <mui-rule slot='actions'> when needed (for example with inline margin style).",
         "Set loading to show built-in async feedback spinner beside actions-right while requests are in flight.",

@@ -1,7 +1,6 @@
 import "../mui-body";
 
 class MuiPromptMessage extends HTMLElement {
-  private resizeObserver: ResizeObserver | null = null;
   private avatarSlotEl: HTMLSlotElement | null = null;
   private contentSlotEl: HTMLSlotElement | null = null;
 
@@ -19,20 +18,16 @@ class MuiPromptMessage extends HTMLElement {
     if (!this.hasAttribute("variant")) this.setAttribute("variant", "default");
     if (!this.hasAttribute("density")) this.setAttribute("density", "default");
     this.render();
-    this.bindLayoutSync();
     this.bindSlotSync();
   }
 
   attributeChangedCallback(_name: string, oldValue: string | null, newValue: string | null) {
     if (oldValue === newValue) return;
     this.render();
-    this.bindLayoutSync();
     this.bindSlotSync();
   }
 
   disconnectedCallback() {
-    this.resizeObserver?.disconnect();
-    this.resizeObserver = null;
     this.avatarSlotEl = null;
     this.contentSlotEl = null;
   }
@@ -57,7 +52,7 @@ class MuiPromptMessage extends HTMLElement {
         .bubble {
           display: grid;
           grid-template-columns: auto 1fr;
-          align-items: center;
+          align-items: start;
           gap: ${spacing.gap};
           width: 100%;
           box-sizing: border-box;
@@ -79,12 +74,10 @@ class MuiPromptMessage extends HTMLElement {
         .content {
           min-width: 0;
         }
-        :host([multi-line]) .bubble {
-          align-items: start;
-        }
-        :host([multi-line]) .content {
-          margin-top: var(--space-050);
-        }
+        :host([size="x-small"]) .content { margin-top: calc(var(--space-025) + var(--stroke-size-100)); }
+        :host([size="small"]) .content { margin-top: var(--space-200); }
+        :host([size="medium"]) .content { margin-top: var(--space-200); }
+        :host([size="large"]) .content { margin-top: var(--space-300); }
       </style>
 
       <div class="bubble">
@@ -139,39 +132,6 @@ class MuiPromptMessage extends HTMLElement {
     this.avatarSlotEl.addEventListener("slotchange", sync);
     this.contentSlotEl.addEventListener("slotchange", sync);
     sync();
-  }
-
-  private bindLayoutSync() {
-    if (!this.shadowRoot) return;
-
-    this.resizeObserver?.disconnect();
-    this.resizeObserver = null;
-
-    const content = this.shadowRoot.querySelector(".content") as HTMLElement | null;
-    const defaultSlot = this.shadowRoot.querySelector("#contentSlot") as HTMLSlotElement | null;
-    if (!content || !defaultSlot) return;
-
-    const syncLineState = () => {
-      requestAnimationFrame(() => {
-        const assigned = defaultSlot.assignedElements({ flatten: true });
-        const lineHeightSource = (assigned[0] as HTMLElement | undefined) || content;
-        const lineHeightValue = getComputedStyle(lineHeightSource).lineHeight || "0";
-        const parsedLineHeight = Number.parseFloat(lineHeightValue);
-        const lineHeight = Number.isFinite(parsedLineHeight) && parsedLineHeight > 0 ? parsedLineHeight : 20;
-        const lines = Math.round(content.getBoundingClientRect().height / lineHeight);
-        this.toggleAttribute("multi-line", lines > 1);
-      });
-    };
-
-    defaultSlot.addEventListener("slotchange", syncLineState);
-
-    if (typeof ResizeObserver !== "undefined") {
-      this.resizeObserver = new ResizeObserver(() => syncLineState());
-      this.resizeObserver.observe(content);
-      this.resizeObserver.observe(this);
-    }
-
-    syncLineState();
   }
 }
 

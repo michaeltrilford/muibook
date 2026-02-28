@@ -79,28 +79,14 @@ class storySlideFrame extends HTMLElement {
         type: "slot (named)",
         options: "{mui-elements}, {elements}",
         default: "",
-        description: "Optional notes region. In present mode it is hidden until notes-open is enabled.",
+        description: "Optional notes region. Hidden by default until notes-open is enabled.",
       },
       {
         name: "ratio",
         type: "string",
-        options: "16:9, 4:3, 1:1, custom",
+        options: "16:9, 4:3, 3:2, 1:1, 9:16",
         default: "16:9",
         description: "Aspect ratio for the slide surface.",
-      },
-      {
-        name: "ratio-width",
-        type: "number",
-        options: "{number}",
-        default: "",
-        description: "Used with ratio='custom'.",
-      },
-      {
-        name: "ratio-height",
-        type: "number",
-        options: "{number}",
-        default: "",
-        description: "Used with ratio='custom'.",
       },
       {
         name: "padding",
@@ -124,25 +110,39 @@ class storySlideFrame extends HTMLElement {
         description: "Controls frame corner radius.",
       },
       {
-        name: "present",
+        name: "fullscreen",
         type: "boolean",
-        options: "present",
+        options: "fullscreen",
         default: "",
-        description: "Collapse non-active sections and hide header/footer regions.",
+        description: "Enable fullscreen presentation state.",
       },
       {
         name: "notes-open",
         type: "boolean",
         options: "notes-open",
         default: "",
-        description: "In present mode, shows slot=notes when enabled.",
+        description: "Shows slot=notes when enabled.",
       },
       {
         name: "active-section",
         type: "number",
         options: "{index}",
         default: "0",
-        description: "Current section index in present mode.",
+        description: "Current section index (0-based).",
+      },
+      {
+        name: "hide-header",
+        type: "boolean",
+        options: "hide-header",
+        default: "",
+        description: "Hide header region and slotted header content.",
+      },
+      {
+        name: "hide-footer",
+        type: "boolean",
+        options: "hide-footer",
+        default: "",
+        description: "Hide footer region and slotted footer content.",
       },
       {
         name: "hide-counter",
@@ -150,6 +150,13 @@ class storySlideFrame extends HTMLElement {
         options: "hide-counter",
         default: "",
         description: "Hide built-in footer section counter.",
+      },
+      {
+        name: "allow-add-section",
+        type: "boolean",
+        options: "allow-add-section",
+        default: "",
+        description: "Show Add Section action in the toolbar (editor flow).",
       },
       {
         name: "scroll",
@@ -262,7 +269,32 @@ class storySlideFrame extends HTMLElement {
         </mui-responsive>
       </props-card>
 
-      <story-card title="Default">
+      <story-card
+        title="Default"
+        usage="Each direct child in the default slot is a slide section/page.|||Use one mui-v-stack per page for clean composition.|||Use active-section (0-based) to control which page is visible.|||Use allow-add-section for editor flows where users create sections in-session.">
+        <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." scroll allow-add-section>
+          <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
+          <mui-body slot="header-description" size="small" variant="optional">Core metrics and roadmap outcomes.</mui-body>
+          <mui-v-stack space="var(--space-400)" alignx="stretch">
+            ${quarterlyBaseContent}
+          </mui-v-stack>
+          ${quarterlyFollowupContent}
+        </mui-slide-frame>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-slide-frame ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." scroll allow-add-section&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge slot="header" variant="neutral" size="small"&gt;Q1&lt;/mui-badge&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="optional"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &lt;/mui-slide-frame&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        title="No Add Section Action"
+        usage="Default behavior hides Add Section when allow-add-section is not set.|||Use this for production presentation flows with pre-authored pages.">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
           <mui-body slot="header-description" size="small" variant="optional">Core metrics and roadmap outcomes.</mui-body>
@@ -272,16 +304,20 @@ class storySlideFrame extends HTMLElement {
           ${quarterlyFollowupContent}
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-slide-frame ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." scroll&gt;<br />
+          &lt;mui-slide-frame ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." scroll present&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Add Section stays hidden by default --&gt;<br />
           &nbsp;&nbsp;&lt;mui-badge slot="header" variant="neutral" size="small"&gt;Q1&lt;/mui-badge&gt;<br />
           &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="optional"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&lt;!-- compose with cards/stacks/grid as needed --&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
           &lt;/mui-slide-frame&gt;
         </story-code-block>
       </story-card>
 
-      <story-card title="Custom Ratio">
-        <mui-slide-frame class="shell" slot="body" ratio="custom" ratio-width="3" ratio-height="2" padding="large" scroll title="Quarterly Product Review" footer-text="Custom ratio 3:2 with scrolling enabled.">
+      <story-card title="Ratio 3:2">
+        <mui-slide-frame class="shell" slot="body" ratio="3:2" padding="large" scroll title="Quarterly Product Review" footer-text="Ratio 3:2 with scrolling enabled.">
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
           <mui-v-stack space="var(--space-400)" alignx="stretch">
             ${quarterlyBaseContent}
@@ -289,8 +325,11 @@ class storySlideFrame extends HTMLElement {
           ${quarterlyFollowupContent}
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-slide-frame ratio="custom" ratio-width="3" ratio-height="2" padding="large" scroll&gt;<br />
-          &nbsp;&nbsp;&lt;mui-v-stack&gt;...&lt;/mui-v-stack&gt;<br />
+          &lt;mui-slide-frame ratio="3:2" padding="large" scroll&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
           &lt;/mui-slide-frame&gt;
         </story-code-block>
       </story-card>
@@ -304,7 +343,12 @@ class storySlideFrame extends HTMLElement {
           ${quarterlyFollowupContent}
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-slide-frame variant="plain"&gt;...&lt;/mui-slide-frame&gt;
+          &lt;mui-slide-frame variant="plain"&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &lt;/mui-slide-frame&gt;
         </story-code-block>
       </story-card>
 
@@ -317,7 +361,12 @@ class storySlideFrame extends HTMLElement {
           ${quarterlyFollowupContent}
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-slide-frame radius="none"&gt;...&lt;/mui-slide-frame&gt;
+          &lt;mui-slide-frame radius="none"&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &lt;/mui-slide-frame&gt;
         </story-code-block>
       </story-card>
 
@@ -330,7 +379,12 @@ class storySlideFrame extends HTMLElement {
           ${quarterlyFollowupContent}
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-slide-frame radius="small"&gt;...&lt;/mui-slide-frame&gt;
+          &lt;mui-slide-frame radius="small"&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &lt;/mui-slide-frame&gt;
         </story-code-block>
       </story-card>
 
@@ -343,7 +397,12 @@ class storySlideFrame extends HTMLElement {
           ${quarterlyFollowupContent}
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-slide-frame radius="large"&gt;...&lt;/mui-slide-frame&gt;
+          &lt;mui-slide-frame radius="large"&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &lt;/mui-slide-frame&gt;
         </story-code-block>
       </story-card>
 
@@ -361,9 +420,14 @@ class storySlideFrame extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-slide-frame ratio="16:9" padding="medium" title="Quarterly Product Review" footer-text="Image composition." scroll&gt;<br />
           &nbsp;&nbsp;&lt;mui-badge slot="header" variant="neutral" size="small"&gt;Q1&lt;/mui-badge&gt;<br />
-          &nbsp;&nbsp;&lt;mui-image crop height="20rem" fit="cover" position="center center"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="..." alt="Presentation image" /&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-image&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-image crop height="20rem" fit="cover" position="center center"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="..." alt="Presentation image" /&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-image&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
           &lt;/mui-slide-frame&gt;
         </story-code-block>
       </story-card>
@@ -379,9 +443,14 @@ class storySlideFrame extends HTMLElement {
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
           &lt;mui-slide-frame ratio="16:9" scroll&gt;<br />
-          &nbsp;&nbsp;&lt;mui-image crop height="20rem" fit="cover" position="center center"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="..." alt="Centered crop image" /&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-image&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-image crop height="20rem" fit="cover" position="center center"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="..." alt="Centered crop image" /&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-image&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
           &lt;/mui-slide-frame&gt;
         </story-code-block>
       </story-card>
@@ -404,9 +473,10 @@ class storySlideFrame extends HTMLElement {
           &lt;mui-slide-frame ratio="4:3" title="Quarterly Product Review" footer-text="Footer metadata and source notes." scroll&gt;<br />
           &nbsp;&nbsp;&lt;mui-badge slot="header" size="large" variant="neutral"&gt;Cover&lt;/mui-badge&gt;<br />
           &nbsp;&nbsp;&lt;mui-button slot="header-after" size="x-small" variant="tertiary"&gt;Sources&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&lt;mui-image&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="..." alt="Cover image" /&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-image&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="stretch"&gt;...&lt;/mui-v-stack&gt;<br />
           &nbsp;&nbsp;&lt;mui-link slot="footer-after" size="x-small" variant="tertiary" weight="regular" href="#"&gt;Open source&lt;/mui-link&gt;<br />
           &lt;/mui-slide-frame&gt;
         </story-code-block>

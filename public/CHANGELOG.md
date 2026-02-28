@@ -1,5 +1,24 @@
 ## Header [Start]
 
+## v15.0.2
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/15.0.2)
+
+## Header [End]
+
+### Changed
+
+- Prompt Message layout now uses CSS-only alignment behavior (no runtime multi-line detection state).
+- Prompt Message content top-offset spacing is now size-mapped for consistent avatar/text alignment across `x-small|small|medium|large`.
+
+### Fixed
+
+- Removed internal `multi-line` runtime attribute behavior from `mui-prompt-message`, preventing runtime state from leaking into exported markup.
+
+---
+
+## Header [Start]
+
 ## v15.0.1
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/15.0.1)

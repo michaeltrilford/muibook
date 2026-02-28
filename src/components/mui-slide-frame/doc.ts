@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     usage: {
       list: [
         "Use as a single-slide shell and compose internals with existing components like Stack, Grid, Card, and Media.",
-        "Use ratio='16:9|4:3|1:1|custom' for presentation formats.",
+        "Use ratio='16:9|4:3|1:1|3:2|9:16' (or any valid W:H string) for presentation formats.",
         "Use title for built-in header text and footer-text for built-in footer copy.",
         "Section counter is built into the footer and updates with active-section.",
         "Use slot='header-after' and slot='footer-after' for trailing actions.",

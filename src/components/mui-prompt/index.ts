@@ -75,7 +75,7 @@ class MuiPrompt extends HTMLElement {
   private readonly onActionsSlotChange = () => this.updateActionsLayout();
   private readonly enforceActionVariants = () => {
     if (!this.shadowRoot) return;
-    const selector = 'slot[name="actions"], slot[name="actions-trigger"], slot[name="actions-right"]';
+    const selector = 'slot[name="actions"], slot[name="actions-right"]';
     const slots = Array.from(this.shadowRoot.querySelectorAll(selector)) as HTMLSlotElement[];
     const applyActionsSlotSpacing = (node: HTMLElement, isActionsSlot: boolean) => {
       if (!isActionsSlot || node.tagName.toLowerCase() !== "mui-button") return;
@@ -364,7 +364,7 @@ class MuiPrompt extends HTMLElement {
     const mode = this.normalizeContextMode(this.getAttribute("context-mode"));
     const slots = Array.from(
       this.shadowRoot.querySelectorAll(
-        'slot[name="actions"], slot[name="actions-right"], slot[name="actions-trigger"]',
+        'slot[name="actions"], slot[name="actions-right"]',
       ),
     ) as HTMLSlotElement[];
     const actionNodes = slots.flatMap((slot) => slot.assignedElements({ flatten: true }) as HTMLElement[]);
@@ -831,11 +831,9 @@ class MuiPrompt extends HTMLElement {
     textarea?.addEventListener("paste", this.onPaste);
     textarea?.addEventListener("focus", this.onTextareaFocus);
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
-    const actionTriggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
     const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
     actionSlot?.addEventListener("slotchange", this.onActionsSlotChange);
-    actionTriggerSlot?.addEventListener("slotchange", this.onActionsSlotChange);
     actionRightSlot?.addEventListener("slotchange", this.onActionsSlotChange);
     if (typeof MutationObserver !== "undefined") {
       this.lightDomObserver?.disconnect();
@@ -861,7 +859,6 @@ class MuiPrompt extends HTMLElement {
     if (!this.shadowRoot) return;
     const textarea = this.shadowRoot.querySelector("textarea") as HTMLTextAreaElement | null;
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
-    const actionTriggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
     const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
     textarea?.removeEventListener("input", this.onInput);
@@ -870,7 +867,6 @@ class MuiPrompt extends HTMLElement {
     textarea?.removeEventListener("focus", this.onTextareaFocus);
     defaultSubmit?.removeEventListener("click", this.onDefaultSubmitClick);
     actionSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
-    actionTriggerSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
     actionRightSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
     this.removeEventListener("prompt-preview-open", this.onPreviewOpen as EventListener);
     this.removeEventListener("click", this.onContextToggleClick);
@@ -1122,7 +1118,6 @@ class MuiPrompt extends HTMLElement {
   private bindActionTrigger() {
     if (!this.shadowRoot || !this.isFanModeEnabled()) return;
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
-    const triggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
     const defaultTrigger = this.shadowRoot.querySelector("#promptDefaultActionsTrigger") as HTMLElement | null;
     if (!actionSlot) return;
 
@@ -1131,9 +1126,6 @@ class MuiPrompt extends HTMLElement {
       this.triggerEl = null;
     }
 
-    const triggerActions = ((triggerSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[]).filter(
-      (el) => !el.hasAttribute("hidden"),
-    );
     const slottedActions = (actionSlot.assignedElements({ flatten: true }) as HTMLElement[]).filter(
       (el) => !el.hasAttribute("hidden"),
     );
@@ -1145,22 +1137,12 @@ class MuiPrompt extends HTMLElement {
       }
       return;
     }
-    const contextOnlySingle =
-      triggerActions.length === 0 &&
-      slottedActions.length === 1 &&
-      this.isContextOnlyAction(slottedActions[0] as HTMLElement);
+    const contextOnlySingle = slottedActions.length === 1 && this.isContextOnlyAction(slottedActions[0] as HTMLElement);
     if (defaultTrigger) {
       defaultTrigger.toggleAttribute("hidden", contextOnlySingle);
       defaultTrigger.style.display = contextOnlySingle ? "none" : "inline-flex";
     }
-    const trigger = contextOnlySingle
-      ? null
-      : (triggerActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
-        triggerActions[0] ||
-        defaultTrigger ||
-        (slottedActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
-        slottedActions[0] ||
-        null;
+    const trigger = contextOnlySingle || !hasToolbarActions ? null : defaultTrigger;
     if (!trigger) return;
 
     this.triggerEl = trigger;
@@ -1202,36 +1184,22 @@ class MuiPrompt extends HTMLElement {
     if (!this.shadowRoot) return;
     this.syncContextModeUI();
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
-    const triggerSlot = this.shadowRoot.querySelector('slot[name="actions-trigger"]') as HTMLSlotElement | null;
     const defaultTrigger = this.shadowRoot.querySelector("#promptDefaultActionsTrigger") as HTMLElement | null;
     if (!actionSlot) return;
 
-    const triggerActions = ((triggerSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[]).filter(
-      (el) => !el.hasAttribute("hidden"),
-    );
     const slottedActions = (actionSlot.assignedElements({ flatten: true }) as HTMLElement[]).filter(
       (el) => !el.hasAttribute("hidden"),
     );
     const hasToolbarActions = slottedActions.length > 0;
     const leftActionsSlot = this.shadowRoot.querySelector(".actions-slot-left") as HTMLElement | null;
     if (leftActionsSlot) leftActionsSlot.style.display = hasToolbarActions ? "inline-flex" : "none";
-    const contextOnlySingle =
-      triggerActions.length === 0 &&
-      slottedActions.length === 1 &&
-      this.isContextOnlyAction(slottedActions[0] as HTMLElement);
+    const contextOnlySingle = slottedActions.length === 1 && this.isContextOnlyAction(slottedActions[0] as HTMLElement);
     if (defaultTrigger) {
       const hideDefaultTrigger = !hasToolbarActions || contextOnlySingle;
       defaultTrigger.toggleAttribute("hidden", hideDefaultTrigger);
       defaultTrigger.style.display = hideDefaultTrigger ? "none" : "inline-flex";
     }
-    const trigger = contextOnlySingle
-      ? null
-      : (triggerActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
-        triggerActions[0] ||
-        defaultTrigger ||
-        (slottedActions.find((action) => action.hasAttribute("fan-trigger")) as HTMLElement | undefined) ||
-        slottedActions[0] ||
-        null;
+    const trigger = contextOnlySingle || !hasToolbarActions ? null : defaultTrigger;
     const nonTriggerActions = slottedActions.filter((action) => action !== trigger);
     const actions = trigger ? [trigger, ...nonTriggerActions] : slottedActions;
     const rightActionSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
@@ -1799,11 +1767,13 @@ class MuiPrompt extends HTMLElement {
           outline: none;
           background: transparent;
           color: var(--text-color);
-          font: inherit;
+          font-family: var(--font-family);
+          font-size: var(--text-font-size);
+          font-weight: var(--font-weight-regular);
           padding-block-start: calc(var(--space-300) + var(--space-050));
           padding-inline: calc(var(--space-300) + var(--space-100));
           padding-block-end: var(--space-000);
-          line-height: var(--text-line-height-medium);
+          line-height: var(--text-line-height);
           resize: none;
           height: calc(3 * 1.55em);
           min-height: calc(3 * 1.55em);
@@ -1952,7 +1922,6 @@ class MuiPrompt extends HTMLElement {
           --action-radius-medium: var(--prompt-action-radius);
           --action-radius-large: var(--prompt-action-radius);
         }
-        slot[name="actions-trigger"]::slotted(mui-button),
         slot[name="actions"]::slotted(mui-button),
         slot[name="actions-right"]::slotted(mui-button) {
           --action-radius-x-small: var(--prompt-action-radius);
@@ -1960,7 +1929,6 @@ class MuiPrompt extends HTMLElement {
           --action-radius-medium: var(--prompt-action-radius);
           --action-radius-large: var(--prompt-action-radius);
         }
-        slot[name="actions-trigger"]::slotted(mui-dropdown),
         slot[name="actions"]::slotted(mui-dropdown),
         slot[name="actions-right"]::slotted(mui-dropdown) {
           --action-radius-x-small: var(--prompt-action-radius);
@@ -1970,7 +1938,6 @@ class MuiPrompt extends HTMLElement {
           position: relative;
           z-index: 4;
         }
-        slot[name="actions-trigger"]::slotted(mui-h-stack),
         slot[name="actions"]::slotted(mui-h-stack),
         slot[name="actions-right"]::slotted(mui-h-stack) {
           --action-radius-x-small: var(--prompt-action-radius);
@@ -1978,7 +1945,6 @@ class MuiPrompt extends HTMLElement {
           --action-radius-medium: var(--prompt-action-radius);
           --action-radius-large: var(--prompt-action-radius);
         }
-        slot[name="actions-trigger"]::slotted(mui-prompt-toggle),
         slot[name="actions"]::slotted(mui-prompt-toggle),
         slot[name="actions-right"]::slotted(mui-prompt-toggle) {
           --action-radius-x-small: var(--prompt-action-radius);
@@ -1986,18 +1952,13 @@ class MuiPrompt extends HTMLElement {
           --action-radius-medium: var(--prompt-action-radius);
           --action-radius-large: var(--prompt-action-radius);
         }
-        slot[name="actions-trigger"],
         slot[name="actions"],
         slot[name="actions-right"] {
           display: inline-flex;
           align-items: center;
           gap: var(--space-025);
         }
-        slot[name="actions-trigger"] {
-          flex: 0 0 auto;
-        }
         ::slotted([slot="actions"]:not([hidden])),
-        ::slotted([slot="actions-trigger"]:not([hidden])),
         ::slotted([slot="actions-right"]:not([hidden])) {
           display: inline-flex;
           align-items: center;
@@ -2106,14 +2067,12 @@ class MuiPrompt extends HTMLElement {
           </slot>
         </div>
         <div class="actions-slot actions-slot-left">
-          <slot name="actions-trigger">
-            <mui-button id="promptDefaultActionsTrigger" variant="tertiary" fan-trigger icon-only size="small" aria-label="More actions">
-              <mui-icon-toggle rotate size="small">
-                <mui-icon-grid slot="start" size="small"></mui-icon-grid>
-                <mui-icon-close slot="end" size="small"></mui-icon-close>
-              </mui-icon-toggle>
-            </mui-button>
-          </slot>
+          <mui-button id="promptDefaultActionsTrigger" variant="tertiary" fan-trigger icon-only size="small" aria-label="More actions">
+            <mui-icon-toggle rotate size="small">
+              <mui-icon-grid slot="start" size="small"></mui-icon-grid>
+              <mui-icon-close slot="end" size="small"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
           <slot name="actions"></slot>
         </div>
       <div class="actions-slot actions-slot-right">

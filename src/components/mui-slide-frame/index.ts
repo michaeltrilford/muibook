@@ -10,8 +10,6 @@ class MuiSlideFrame extends HTMLElement {
   static get observedAttributes() {
     return [
       "ratio",
-      "ratio-width",
-      "ratio-height",
       "present",
       "active-section",
       "padding",
@@ -23,6 +21,7 @@ class MuiSlideFrame extends HTMLElement {
       "hide-header",
       "hide-footer",
       "hide-counter",
+      "allow-add-section",
       "scroll",
       "fullscreen",
     ];
@@ -38,6 +37,7 @@ class MuiSlideFrame extends HTMLElement {
   private notesSlot: HTMLSlotElement | null = null;
   private stageEl: HTMLElement | null = null;
   private surfaceEl: HTMLElement | null = null;
+  private activeSectionEl: Element | null = null;
   private nativeFullscreenActive = false;
   private pointerStartX: number | null = null;
   private pointerStartY: number | null = null;
@@ -156,6 +156,7 @@ class MuiSlideFrame extends HTMLElement {
   }
 
   private setActiveSectionIndex(index: number) {
+    this.activeSectionEl = null;
     this.setAttribute("active-section", String(index));
   }
 
@@ -188,10 +189,16 @@ class MuiSlideFrame extends HTMLElement {
   }
 
   addSection(content?: HTMLElement | string) {
-    const section = document.createElement("div");
+    const section = document.createElement("mui-v-stack");
+    section.setAttribute("space", "var(--space-400)");
+    section.setAttribute("alignx", "center");
+    section.setAttribute("aligny", "center");
     section.setAttribute("data-slide-section", "");
     if (typeof content === "string") {
-      section.textContent = content;
+      const body = document.createElement("mui-body");
+      body.setAttribute("size", "large");
+      body.textContent = content;
+      section.appendChild(body);
     } else if (content instanceof HTMLElement) {
       section.appendChild(content);
     }
@@ -223,12 +230,6 @@ class MuiSlideFrame extends HTMLElement {
 
   private resolveRatio() {
     const ratio = (this.getAttribute("ratio") || "16:9").trim();
-    if (ratio === "custom") {
-      const width = parseFloat(this.getAttribute("ratio-width") || "16");
-      const height = parseFloat(this.getAttribute("ratio-height") || "9");
-      if (width > 0 && height > 0) return `${width} / ${height}`;
-      return "16 / 9";
-    }
     const ratioParts = ratio.split(":");
     if (ratioParts.length === 2) {
       const width = parseFloat(ratioParts[0]);
@@ -240,12 +241,6 @@ class MuiSlideFrame extends HTMLElement {
 
   private resolveRatioParts() {
     const ratio = (this.getAttribute("ratio") || "16:9").trim();
-    if (ratio === "custom") {
-      const width = parseFloat(this.getAttribute("ratio-width") || "16");
-      const height = parseFloat(this.getAttribute("ratio-height") || "9");
-      if (width > 0 && height > 0) return { width, height };
-      return { width: 16, height: 9 };
-    }
     const ratioParts = ratio.split(":");
     if (ratioParts.length === 2) {
       const width = parseFloat(ratioParts[0]);
@@ -258,7 +253,14 @@ class MuiSlideFrame extends HTMLElement {
   private syncSections() {
     if (!this.shadowRoot) return;
     const sections = this.getSections();
-    const activeIndex = this.getActiveSectionIndex();
+    let activeIndex = this.getActiveSectionIndex();
+    if (this.activeSectionEl && sections.includes(this.activeSectionEl)) {
+      activeIndex = sections.indexOf(this.activeSectionEl);
+    }
+    activeIndex = Math.max(0, Math.min(activeIndex, Math.max(0, sections.length - 1)));
+    if ((this.getAttribute("active-section") || "0") !== String(activeIndex)) {
+      this.setAttribute("active-section", String(activeIndex));
+    }
     const collapse = this.hasAttribute("present") || sections.length > 1;
     sections.forEach((section, index) => {
       section.setAttribute("data-slide-section", "");
@@ -271,6 +273,7 @@ class MuiSlideFrame extends HTMLElement {
         else section.removeAttribute("slide-hidden");
       }
     });
+    this.activeSectionEl = sections[activeIndex] ?? null;
     this.style.setProperty("--slide-frame-ratio", this.resolveRatio());
     this.updateFullscreenSurfaceFit();
   }
@@ -332,7 +335,7 @@ class MuiSlideFrame extends HTMLElement {
           --slide-frame-footer-padding-inline: var(--slide-frame-surface-padding-active);
           --slide-frame-footer-padding-block: var(--slide-frame-surface-padding-active);
           --slide-frame-footer-padding-top: 0;
-          --slide-frame-footer-padding-bottom: var(--space-200);
+          --slide-frame-footer-padding-bottom: var(--space-400);
         }
         :host([padding="none"]) { --slide-frame-surface-padding-active: 0; }
         :host([padding="small"]) { --slide-frame-surface-padding-active: var(--slide-frame-padding-small); }
@@ -536,15 +539,11 @@ class MuiSlideFrame extends HTMLElement {
         <mui-grid col="1fr auto" class="present-controls" aligny="center">
           <mui-h-stack space="var(--space-050)" aligny="center">
             <mui-button id="slideFrameAddSectionBtn" variant="tertiary" size="x-small">Add Section</mui-button>
-            <mui-rule direction="vertical" length="var(--space-300)"></mui-rule>
             <mui-button id="slideFrameToggleFullscreenBtn" variant="tertiary" size="x-small">Full Screen</mui-button>
-            <mui-rule direction="vertical" length="var(--space-300)"></mui-rule>
             <mui-button id="slideFrameToggleNotesBtn" variant="tertiary" size="x-small">Notes</mui-button>
-            <mui-rule direction="vertical" length="var(--space-300)"></mui-rule>
           </mui-h-stack>
           <mui-h-stack space="var(--space-050)" aligny="center">
             <mui-button id="slideFramePrevSectionBtn" variant="tertiary" size="x-small"><mui-icon-left-chevron slot="before"></mui-icon-left-chevron>Previous</mui-button>
-            <mui-rule direction="vertical" length="var(--space-300)"></mui-rule>
             <mui-button id="slideFrameNextSectionBtn" variant="tertiary" size="x-small">Next<mui-icon-right-chevron slot="after"></mui-icon-right-chevron></mui-button>
           </mui-h-stack>
         </mui-grid>
@@ -620,7 +619,7 @@ class MuiSlideFrame extends HTMLElement {
       this.toggleNotes();
     });
     this.shadowRoot.querySelector("#slideFrameAddSectionBtn")?.addEventListener("click", () => {
-      this.addSection(`Section ${(this.getSections().length + 1).toString()}: New`);
+      this.addSection(`Section ${(this.getSections().length + 1).toString()}`);
     });
     this.shadowRoot.querySelector("#slideFramePrevSectionBtn")?.addEventListener("click", () => {
       this.prevSection();
@@ -695,11 +694,20 @@ class MuiSlideFrame extends HTMLElement {
     const exitPresent = this.shadowRoot.querySelector<HTMLElement>("#slideFrameExitPresentBtn");
     const fullscreenBtn = this.shadowRoot.querySelector<HTMLElement>("#slideFrameToggleFullscreenBtn");
     const controls = this.shadowRoot.querySelector<HTMLElement>(".present-controls");
+    const addSectionBtn = this.shadowRoot.querySelector<HTMLElement>("#slideFrameAddSectionBtn");
+    const addSectionRule = this.shadowRoot.querySelector<HTMLElement>("#slideFrameAddSectionRule");
     const total = Math.max(this.getSections().length, 1);
     const index = this.getActiveSectionIndex() + 1;
     if (controls) {
       const isFullscreen = this.hasAttribute("fullscreen") || document.fullscreenElement === this;
       controls.hidden = isFullscreen;
+    }
+    if (addSectionBtn) {
+      const showAddSection = this.hasAttribute("allow-add-section");
+      addSectionBtn.hidden = !showAddSection;
+      addSectionBtn.style.display = showAddSection ? "" : "none";
+      if (addSectionRule) addSectionRule.hidden = !showAddSection;
+      if (addSectionRule) addSectionRule.style.display = showAddSection ? "" : "none";
     }
     if (counter) {
       counter.hidden = !showCounter;
