@@ -4,7 +4,7 @@ export const muiDocs: MuiDocs = {
   SlideFrame: {
     title: "Slide Frame",
     description:
-      "Slide Frame is a composable presentation surface for UI-builder workflows. It supports configurable ratio, variants, radius, image composition, and overflow handling.",
+      "Slide Frame is a composable presentation surface for UI-builder workflows. It supports configurable ratio, variants, image composition, and overflow handling.",
     hero: [""],
     figma: [""],
     storybook: [""],
@@ -21,10 +21,8 @@ export const muiDocs: MuiDocs = {
         "Use slot='header-after' and slot='footer-after' for trailing actions.",
         "Use slot='header-description' for secondary lines.",
         "Use variant='default|plain' to control frame chrome.",
-        "Use radius='default | none | small | medium | large' to align with your layout language.",
         "Use scroll to opt into surface scrolling when content exceeds the frame.",
         "When multiple sections exist, users can navigate with Left/Right arrows.",
-        "Use section-add-request to intercept Add Section and inject app-specific section content.",
         "In present mode, press Esc to exit quickly.",
         "Use header/footer slots for frame-level controls, metadata, or actions.",
       ],
@@ -34,7 +32,6 @@ export const muiDocs: MuiDocs = {
       engineerList: [
         "The surface is focusable in present mode and supports keyboard section navigation with Left/Right arrows.",
         "Esc exits present mode.",
-        "Use hide-counter when you need to suppress the built-in Section X/Y footer counter.",
         "Expose external controls for next/previous actions when building guided presentation flows.",
       ],
     },

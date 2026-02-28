@@ -16,13 +16,10 @@ class MuiSlideFrame extends HTMLElement {
       "padding",
       "notes-open",
       "variant",
-      "radius",
       "title",
       "footer-text",
       "hide-header",
       "hide-footer",
-      "hide-counter",
-      "allow-add-section",
       "scroll",
       "fullscreen",
     ];
@@ -67,7 +64,6 @@ class MuiSlideFrame extends HTMLElement {
     if (!this.hasAttribute("padding")) this.setAttribute("padding", "medium");
     if (!this.hasAttribute("active-section")) this.setAttribute("active-section", "0");
     if (!this.hasAttribute("variant")) this.setAttribute("variant", "default");
-    if (!this.hasAttribute("radius")) this.setAttribute("radius", "default");
     this.render();
     this.syncSections();
     this.syncChromeState();
@@ -184,65 +180,6 @@ class MuiSlideFrame extends HTMLElement {
     );
   }
 
-  private createDefaultSection(label: string) {
-    const section = document.createElement("mui-slide-section");
-    const stack = document.createElement("mui-v-stack");
-    stack.setAttribute("space", "var(--space-400)");
-    stack.setAttribute("alignx", "center");
-    stack.setAttribute("aligny", "center");
-    const body = document.createElement("mui-body");
-    body.setAttribute("size", "large");
-    body.textContent = label;
-    stack.appendChild(body);
-    section.appendChild(stack);
-    return section;
-  }
-
-  addSection(content?: HTMLElement | string) {
-    const nextLabel = `Section ${(this.getSections().length + 1).toString()}`;
-    let section: HTMLElement;
-    if (typeof content === "string") {
-      section = this.createDefaultSection(content);
-    } else if (content instanceof HTMLElement) {
-      if (content.tagName.toLowerCase() === "mui-slide-section") {
-        section = content;
-      } else {
-        section = document.createElement("mui-slide-section");
-        section.appendChild(content);
-      }
-    } else {
-      section = this.createDefaultSection(nextLabel);
-    }
-    this.appendChild(section);
-    const sections = this.getSections();
-    const next = Math.max(0, sections.length - 1);
-    this.setActiveSectionIndex(next);
-    this.syncSections();
-    this.dispatchEvent(
-      new CustomEvent("section-add", {
-        detail: { index: next, total: sections.length },
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
-
-  private requestAddSection() {
-    const sectionCount = this.getSections().length;
-    const event = new CustomEvent("section-add-request", {
-      detail: {
-        index: sectionCount,
-        total: sectionCount + 1,
-      },
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-    });
-    const shouldRunDefault = this.dispatchEvent(event);
-    if (!shouldRunDefault) return;
-    this.addSection(`Section ${(sectionCount + 1).toString()}`);
-  }
-
   toggleNotes(force?: boolean) {
     const next = typeof force === "boolean" ? force : !this.hasAttribute("notes-open");
     this.toggleAttribute("notes-open", next);
@@ -353,6 +290,14 @@ class MuiSlideFrame extends HTMLElement {
           display: block;
           width: 100%;
           --slide-frame-ratio: 16 / 9;
+          --slide-frame-padding-small: var(--space-300);
+          --slide-frame-padding-medium: var(--space-400);
+          --slide-frame-padding-large: var(--space-500);
+          --slide-frame-radius: var(--radius-300);
+          --slide-frame-border-color: var(--border-color);
+          --slide-frame-background: var(--surface-elevated-100);
+          --slide-frame-background-ghost: transparent;
+          --slide-frame-shadow: none;
           --slide-frame-leading-offset: var(--space-025);
           --slide-frame-surface-padding-active: var(--slide-frame-padding-medium);
           --slide-frame-header-padding-inline: var(--slide-frame-surface-padding-active);
@@ -394,11 +339,6 @@ class MuiSlideFrame extends HTMLElement {
           background: var(--slide-frame-background-ghost);
           box-shadow: none;
         }
-        :host([radius="none"]) .stage { border-radius: 0; }
-        :host([radius="small"]) .stage { border-radius: var(--slide-frame-radius-small); }
-        :host([radius="medium"]) .stage { border-radius: var(--slide-frame-radius-medium); }
-        :host([radius="large"]) .stage { border-radius: var(--slide-frame-radius-large); }
-
         .frame {
           display: grid;
           width: 100%;
@@ -416,13 +356,14 @@ class MuiSlideFrame extends HTMLElement {
           overflow-x: hidden;
           padding: 0;
         }
-        :host(:fullscreen) .frame {
-          padding: 0;
-        }
         :host([has-chrome]) .frame {
           gap: var(--slide-frame-gap, var(--space-300));
         }
-
+        :host([has-chrome]:fullscreen) .frame {
+          padding: 0;
+          gap: var(--stroke-size-100);
+        }
+        
         .stage {
           position: relative;
           width: 100%;
@@ -437,6 +378,15 @@ class MuiSlideFrame extends HTMLElement {
           overflow: hidden;
           display: grid;
           grid-template-rows: auto minmax(0, 1fr) auto;
+        }
+        :host(:not([has-header])) .stage {
+          grid-template-rows: minmax(0, 1fr) auto;
+        }
+        :host(:not([has-footer])) .stage {
+          grid-template-rows: auto minmax(0, 1fr);
+        }
+        :host(:not([has-header]):not([has-footer])) .stage {
+          grid-template-rows: minmax(0, 1fr);
         }
         :host([fullscreen]) .stage,
         :host([present]) .stage {
@@ -473,6 +423,10 @@ class MuiSlideFrame extends HTMLElement {
           display: block;
           width: 100%;
           box-sizing: border-box;
+        }
+        .header[hidden],
+        .footer[hidden] {
+          display: none !important;
         }
         .header {
           padding:
@@ -540,10 +494,20 @@ class MuiSlideFrame extends HTMLElement {
         :host([notes-open]) .notes {
           display: block;
           padding: var(--space-400);
-          background: var(--surface-elevated-100);
-          border-radius: var(--radius-200);
-
+          border: var(--border-thin);
+          border-color: var(--slide-frame-border-color);
+          border-radius: var(--slide-frame-radius);
+          background: var(--slide-frame-background);
+          box-shadow: var(--slide-frame-shadow);
+          box-sizing: border-box;
         }
+
+        :host([fullscreen]) .notes,
+        :host(:fullscreen) .notes {
+          border: none;
+          border-radius: 0;
+        }
+
         :host([present]) .stage {
           background: var(--slide-frame-background-present, var(--slide-frame-background));
         }
@@ -565,7 +529,6 @@ class MuiSlideFrame extends HTMLElement {
       <div class="frame">
         <mui-grid col="1fr auto" class="present-controls" aligny="center">
           <mui-h-stack space="var(--space-050)" aligny="center">
-            <mui-button id="slideFrameAddSectionBtn" variant="tertiary" size="x-small">Add Section</mui-button>
             <mui-button id="slideFrameToggleFullscreenBtn" variant="tertiary" size="x-small">Full Screen</mui-button>
             <mui-button id="slideFrameToggleNotesBtn" variant="tertiary" size="x-small">Notes</mui-button>
           </mui-h-stack>
@@ -642,9 +605,6 @@ class MuiSlideFrame extends HTMLElement {
     this.shadowRoot.querySelector("#notesActionBtn")?.addEventListener("click", () => {
       this.toggleNotes();
     });
-    this.shadowRoot.querySelector("#slideFrameAddSectionBtn")?.addEventListener("click", () => {
-      this.requestAddSection();
-    });
     this.shadowRoot.querySelector("#slideFramePrevSectionBtn")?.addEventListener("click", () => {
       this.prevSection();
     });
@@ -694,7 +654,7 @@ class MuiSlideFrame extends HTMLElement {
     const hasFooterText = Boolean((this.getAttribute("footer-text") || "").trim());
     const forceHideHeader = this.hasAttribute("hide-header");
     const forceHideFooter = this.hasAttribute("hide-footer");
-    const showCounter = !this.hasAttribute("hide-counter") && this.getSections().length > 0;
+    const showCounter = !forceHideFooter && this.getSections().length > 0;
     const hasHeader =
       !forceHideHeader &&
       (hasHeaderTitle ||
@@ -718,20 +678,11 @@ class MuiSlideFrame extends HTMLElement {
     const exitPresent = this.shadowRoot.querySelector<HTMLElement>("#slideFrameExitPresentBtn");
     const fullscreenBtn = this.shadowRoot.querySelector<HTMLElement>("#slideFrameToggleFullscreenBtn");
     const controls = this.shadowRoot.querySelector<HTMLElement>(".present-controls");
-    const addSectionBtn = this.shadowRoot.querySelector<HTMLElement>("#slideFrameAddSectionBtn");
-    const addSectionRule = this.shadowRoot.querySelector<HTMLElement>("#slideFrameAddSectionRule");
     const total = Math.max(this.getSections().length, 1);
     const index = this.getActiveSectionIndex() + 1;
     if (controls) {
       const isFullscreen = this.hasAttribute("fullscreen") || document.fullscreenElement === this;
       controls.hidden = isFullscreen;
-    }
-    if (addSectionBtn) {
-      const showAddSection = this.hasAttribute("allow-add-section");
-      addSectionBtn.hidden = !showAddSection;
-      addSectionBtn.style.display = showAddSection ? "" : "none";
-      if (addSectionRule) addSectionRule.hidden = !showAddSection;
-      if (addSectionRule) addSectionRule.style.display = showAddSection ? "" : "none";
     }
     if (counter) {
       counter.hidden = !showCounter;
