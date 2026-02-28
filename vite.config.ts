@@ -54,6 +54,7 @@ export default defineConfig({
         // CODE
         "components/mui-code": path.resolve(__dirname, "src/components/mui-code/index.ts"),
         "components/mui-slide-frame": path.resolve(__dirname, "src/components/mui-slide-frame"),
+        "components/mui-slide-section": path.resolve(__dirname, "src/components/mui-slide-section"),
         "components/mui-container": path.resolve(__dirname, "src/components/mui-container"),
         "components/mui-field": path.resolve(__dirname, "src/components/mui-field"),
         "components/mui-form-section": path.resolve(__dirname, "src/components/mui-form-section"),

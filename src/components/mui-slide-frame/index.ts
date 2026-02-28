@@ -1,5 +1,6 @@
 import "../mui-heading";
 import "../mui-body";
+import "../mui-slide-section";
 import "../mui-stack/vstack";
 import "../mui-stack/hstack";
 import "../mui-button";
@@ -36,15 +37,10 @@ class MuiSlideFrame extends HTMLElement {
   private footerDescriptionSlot: HTMLSlotElement | null = null;
   private notesSlot: HTMLSlotElement | null = null;
   private stageEl: HTMLElement | null = null;
-  private surfaceEl: HTMLElement | null = null;
   private activeSectionEl: Element | null = null;
   private nativeFullscreenActive = false;
-  private pointerStartX: number | null = null;
-  private pointerStartY: number | null = null;
   private onSlotChange = () => this.syncSections();
   private onChromeSlotChange = () => this.syncChromeState();
-  private onPointerDown = (event: PointerEvent) => this.handlePointerDown(event);
-  private onPointerUp = (event: PointerEvent) => this.handlePointerUp(event);
   private onKeyDown = (event: KeyboardEvent) => this.handleArrowNavigation(event);
   private onFullscreenChange = () => this.handleFullscreenChange();
   private onFullscreenError = () => this.handleFullscreenError();
@@ -91,8 +87,6 @@ class MuiSlideFrame extends HTMLElement {
     this.footerAfterSlot?.removeEventListener("slotchange", this.onChromeSlotChange);
     this.footerDescriptionSlot?.removeEventListener("slotchange", this.onChromeSlotChange);
     this.notesSlot?.removeEventListener("slotchange", this.onChromeSlotChange);
-    this.surfaceEl?.removeEventListener("pointerdown", this.onPointerDown);
-    this.surfaceEl?.removeEventListener("pointerup", this.onPointerUp);
     this.removeEventListener("keydown", this.onKeyDown);
     document.removeEventListener("keydown", this.onDocumentKeyDown);
     document.removeEventListener("fullscreenchange", this.onFullscreenChange);
@@ -145,7 +139,9 @@ class MuiSlideFrame extends HTMLElement {
 
   private getSections() {
     const sections = this.defaultSlot?.assignedElements({ flatten: true }) || [];
-    return sections.filter((el) => !["header", "footer"].includes(el.getAttribute("slot") || ""));
+    const directSections = sections.filter((el) => !["header", "footer"].includes(el.getAttribute("slot") || ""));
+    const explicitSections = directSections.filter((el) => el.tagName.toLowerCase() === "mui-slide-section");
+    return explicitSections.length > 0 ? explicitSections : directSections;
   }
 
   private getActiveSectionIndex() {
@@ -188,19 +184,34 @@ class MuiSlideFrame extends HTMLElement {
     );
   }
 
+  private createDefaultSection(label: string) {
+    const section = document.createElement("mui-slide-section");
+    const stack = document.createElement("mui-v-stack");
+    stack.setAttribute("space", "var(--space-400)");
+    stack.setAttribute("alignx", "center");
+    stack.setAttribute("aligny", "center");
+    const body = document.createElement("mui-body");
+    body.setAttribute("size", "large");
+    body.textContent = label;
+    stack.appendChild(body);
+    section.appendChild(stack);
+    return section;
+  }
+
   addSection(content?: HTMLElement | string) {
-    const section = document.createElement("mui-v-stack");
-    section.setAttribute("space", "var(--space-400)");
-    section.setAttribute("alignx", "center");
-    section.setAttribute("aligny", "center");
-    section.setAttribute("data-slide-section", "");
+    const nextLabel = `Section ${(this.getSections().length + 1).toString()}`;
+    let section: HTMLElement;
     if (typeof content === "string") {
-      const body = document.createElement("mui-body");
-      body.setAttribute("size", "large");
-      body.textContent = content;
-      section.appendChild(body);
+      section = this.createDefaultSection(content);
     } else if (content instanceof HTMLElement) {
-      section.appendChild(content);
+      if (content.tagName.toLowerCase() === "mui-slide-section") {
+        section = content;
+      } else {
+        section = document.createElement("mui-slide-section");
+        section.appendChild(content);
+      }
+    } else {
+      section = this.createDefaultSection(nextLabel);
     }
     this.appendChild(section);
     const sections = this.getSections();
@@ -214,6 +225,22 @@ class MuiSlideFrame extends HTMLElement {
         composed: true,
       }),
     );
+  }
+
+  private requestAddSection() {
+    const sectionCount = this.getSections().length;
+    const event = new CustomEvent("section-add-request", {
+      detail: {
+        index: sectionCount,
+        total: sectionCount + 1,
+      },
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    });
+    const shouldRunDefault = this.dispatchEvent(event);
+    if (!shouldRunDefault) return;
+    this.addSection(`Section ${(sectionCount + 1).toString()}`);
   }
 
   toggleNotes(force?: boolean) {
@@ -604,7 +631,6 @@ class MuiSlideFrame extends HTMLElement {
     this.footerAfterSlot = this.shadowRoot.querySelector('slot[name="footer-after"]');
     this.notesSlot = this.shadowRoot.querySelector('slot[name="notes"]');
     this.stageEl = this.shadowRoot.querySelector(".stage");
-    this.surfaceEl = this.shadowRoot.querySelector(".surface");
     this.headerSlot?.addEventListener("slotchange", this.onChromeSlotChange);
     this.headerAfterSlot?.addEventListener("slotchange", this.onChromeSlotChange);
     this.headerDescriptionSlot?.addEventListener("slotchange", this.onChromeSlotChange);
@@ -612,14 +638,12 @@ class MuiSlideFrame extends HTMLElement {
     this.footerAfterSlot?.addEventListener("slotchange", this.onChromeSlotChange);
     this.footerDescriptionSlot?.addEventListener("slotchange", this.onChromeSlotChange);
     this.notesSlot?.addEventListener("slotchange", this.onChromeSlotChange);
-    this.surfaceEl?.addEventListener("pointerdown", this.onPointerDown);
-    this.surfaceEl?.addEventListener("pointerup", this.onPointerUp);
     this.style.setProperty("--slide-frame-ratio", this.resolveRatio());
     this.shadowRoot.querySelector("#notesActionBtn")?.addEventListener("click", () => {
       this.toggleNotes();
     });
     this.shadowRoot.querySelector("#slideFrameAddSectionBtn")?.addEventListener("click", () => {
-      this.addSection(`Section ${(this.getSections().length + 1).toString()}`);
+      this.requestAddSection();
     });
     this.shadowRoot.querySelector("#slideFramePrevSectionBtn")?.addEventListener("click", () => {
       this.prevSection();
@@ -731,23 +755,6 @@ class MuiSlideFrame extends HTMLElement {
     this.toggleAttribute("notes-visible", notesVisible);
     this.toggleAttribute("has-chrome", hasHeader || hasFooter || notesVisible);
     this.updateFullscreenSurfaceFit();
-  }
-
-  private handlePointerDown(event: PointerEvent) {
-    this.pointerStartX = event.clientX;
-    this.pointerStartY = event.clientY;
-  }
-
-  private handlePointerUp(event: PointerEvent) {
-    if (this.pointerStartX == null || this.pointerStartY == null) return;
-    if (this.getSections().length < 2) return;
-    const dx = event.clientX - this.pointerStartX;
-    const dy = event.clientY - this.pointerStartY;
-    this.pointerStartX = null;
-    this.pointerStartY = null;
-    if (Math.abs(dx) < 40 || Math.abs(dx) <= Math.abs(dy)) return;
-    if (dx < 0) this.nextSection();
-    else this.prevSection();
   }
 
   private handleFullscreenChange() {

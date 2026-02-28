@@ -69,6 +69,7 @@ import "../components/mui-button-group";
 import "../components/mui-dropdown";
 import "../components/mui-code";
 import "../components/mui-slide-frame";
+import "../components/mui-slide-section";
 import "../components/mui-avatar";
 import "../components/mui-image";
 import "../components/mui-select";

@@ -11,10 +11,16 @@
 - Slide Frame public prop surface was reduced to user-facing controls only.
 - Removed Slide Frame public props/paths that were internal or unused in product flows (`present`, `preview`, `lightbox`, `ratio-width`, `ratio-height`, and `ratio="custom"` option).
 
+### Added
+
+- Added `mui-slide-section` as a composable page wrapper for Slide Frame sections.
+- Added cancelable Slide Frame `section-add-request` event so apps/builders can provide custom section insertion logic.
+
 ### Changed
 
 - Prompt Message layout now uses CSS-only alignment behavior (no runtime multi-line detection state).
 - Prompt Message content top-offset spacing is now size-mapped for consistent avatar/text alignment across `x-small|small|medium|large`.
+- Slide Frame stories and guidance now use `mui-slide-section` as the page composition pattern.
 
 ### Fixed
 

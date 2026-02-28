@@ -13,7 +13,8 @@ export const muiDocs: MuiDocs = {
     guides: ["https://guides.muibook.com/slide-frame"],
     usage: {
       list: [
-        "Use as a single-slide shell and compose internals with existing components like Stack, Grid, Card, and Media.",
+        "Use as a presentation shell and compose page content with existing components like Stack, Grid, Card, and Media.",
+        "Prefer one <mui-slide-section> per page in the default slot for scalable composition.",
         "Use ratio='16:9|4:3|1:1|3:2|9:16' (or any valid W:H string) for presentation formats.",
         "Use title for built-in header text and footer-text for built-in footer copy.",
         "Section counter is built into the footer and updates with active-section.",
@@ -22,7 +23,8 @@ export const muiDocs: MuiDocs = {
         "Use variant='default|plain' to control frame chrome.",
         "Use radius='default | none | small | medium | large' to align with your layout language.",
         "Use scroll to opt into surface scrolling when content exceeds the frame.",
-        "When multiple sections exist, users can navigate with Left/Right arrows or horizontal swipe gestures.",
+        "When multiple sections exist, users can navigate with Left/Right arrows.",
+        "Use section-add-request to intercept Add Section and inject app-specific section content.",
         "In present mode, press Esc to exit quickly.",
         "Use header/footer slots for frame-level controls, metadata, or actions.",
       ],

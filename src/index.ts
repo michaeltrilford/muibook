@@ -43,6 +43,7 @@ export * from "./components/mui-list/list";
 export * from "./components/mui-quote";
 export * from "./components/mui-code";
 export * from "./components/mui-slide-frame";
+export * from "./components/mui-slide-section";
 export * from "./components/mui-dialog";
 export * from "./components/mui-drawer";
 export * from "./components/mui-avatar";
