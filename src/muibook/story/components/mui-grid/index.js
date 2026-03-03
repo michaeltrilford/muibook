@@ -98,7 +98,7 @@ class storyGrid extends HTMLElement {
 
     const Box = /*html*/ `
       <mui-card>
-        <mui-card-body>.</mui-card-body>
+        <mui-card-body>{content}</mui-card-body>
       </mui-card>
     `;
 

@@ -569,7 +569,7 @@ class MuiSlideFrame extends HTMLElement {
                     id="slideFrameRatioSelect"
                     size="x-small"
                     style="width: 7rem; margin-right: var(--space-025)"
-                    options='[{"label":"16:9","value":"16:9"},{"label":"4:3","value":"4:3"},{"label":"1:1","value":"1:1"}]'
+                    options='[{"label":"16:9","value":"16:9"},{"label":"4:3","value":"4:3"},{"label":"3:2","value":"3:2"},{"label":"1:1","value":"1:1"},{"label":"9:16","value":"9:16"}]'
                     value="${this.getAttribute("ratio") || "16:9"}"
                     aria-label="Slide ratio">
                   </mui-select>

@@ -231,7 +231,13 @@ class storyBody extends HTMLElement {
                 </div>
                 <div>
                   <mui-heading size="4" style="margin-bottom: var(--space-200)">Large</mui-heading>
-                  <mui-body size="large">Risus Mollis Dapibus<mui-icon-info slot="after"></mui-icon-info></mui-body>
+                  <mui-body size="large">
+                    Risus Mollis Dapibus
+                    <mui-hint slot="after" placement="top" style="display: inline-flex;">
+                      <mui-icon-info slot="trigger"></mui-icon-info>
+                      Additional details
+                    </mui-hint>
+                  </mui-body>
                 </div>
               </mui-v-stack>
             </div>
@@ -268,7 +274,13 @@ class storyBody extends HTMLElement {
               <br>
               &nbsp;&nbsp;{text}
               <br>
-              &nbsp;&nbsp;&lt;mui-icon-right-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-right-chevron&gt;
+              &nbsp;&nbsp;&lt;mui-hint slot=&quot;after&quot; placement=&quot;top&quot;&gt;
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot;&gt;&lt;/mui-icon-info&gt;
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;Additional details
+              <br>
+              &nbsp;&nbsp;&lt;/mui-hint&gt;
               <br>
               &lt;/mui-body&gt;
             </story-code-block>
@@ -283,28 +295,40 @@ class storyBody extends HTMLElement {
                   <mui-body size="x-small" variant="optional">
                     <mui-icon-info slot="before"></mui-icon-info>
                     X-small wrapping text keeps icon alignment stable when the content moves to a second line in constrained widths.
-                    <mui-badge slot="after" size="xx-small">XS</mui-badge>
+                    <mui-hint slot="after" placement="top" style="display: inline-flex;">
+                      <mui-badge slot="trigger" size="xx-small">XS</mui-badge>
+                      X-small size tag
+                    </mui-hint>
                   </mui-body>
                 </div>
                 <div style="max-width: 28rem;">
                   <mui-body size="small" variant="warning">
                     <mui-icon-warning slot="before"></mui-icon-warning>
                     This helper message wraps across multiple lines so the icon remains aligned at the start of the content.
-                    <mui-icon-info slot="after"></mui-icon-info>
+                    <mui-hint slot="after" placement="top" style="display: inline-flex;">
+                      <mui-icon-info slot="trigger" color="var(--text-color-optional)"></mui-icon-info>
+                      Warning details
+                    </mui-hint>
                   </mui-body>
                 </div>
                 <div style="max-width: 28rem;">
                   <mui-body size="medium" variant="error">
                     <mui-icon-attention slot="before"></mui-icon-attention>
                     This is a longer multi-line message with before and after content to validate start alignment for wrapped body text.
-                    <mui-badge slot="after" size="small">NEW</mui-badge>
+                    <mui-hint slot="after" placement="top" style="display: inline-flex;">
+                      <mui-badge slot="trigger" size="small">NEW</mui-badge>
+                      New status
+                    </mui-hint>
                   </mui-body>
                 </div>
                 <div style="max-width: 28rem;">
                   <mui-body size="large" variant="success">
                     <mui-icon-check slot="before"></mui-icon-check>
                     Large body wrapping also keeps the leading icon top-aligned while the line-height and text block expand.
-                    <mui-icon-info slot="after"></mui-icon-info>
+                    <mui-hint slot="after" placement="top" style="display: inline-flex;">
+                      <mui-icon-info slot="trigger" color="var(--text-color-optional)"></mui-icon-info>
+                      Success details
+                    </mui-hint>
                   </mui-body>
                 </div>
               </mui-v-stack>
@@ -319,13 +343,43 @@ class storyBody extends HTMLElement {
               <br>
               &nbsp;&nbsp;{long wrapping text}
               <br>
-              &nbsp;&nbsp;&lt;mui-icon-right-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-right-chevron&gt;
+              &nbsp;&nbsp;&lt;mui-hint slot=&quot;after&quot; placement=&quot;top&quot;&gt;
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot; color=&quot;var(--text-color-optional)&quot;&gt;&lt;/mui-icon-info&gt;
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;Warning details
+              <br>
+              &nbsp;&nbsp;&lt;/mui-hint&gt;
               <br>
               &lt;/mui-body&gt;
               <br>
-              &lt;mui-body size=&quot;medium&quot; variant=&quot;error&quot;&gt;...&lt;/mui-body&gt;
+              &lt;mui-body size=&quot;medium&quot; variant=&quot;error&quot;&gt;
               <br>
-              &lt;mui-body size=&quot;large&quot; variant=&quot;success&quot;&gt;...&lt;/mui-body&gt;
+              &nbsp;&nbsp;{long wrapping text}
+              <br>
+              &nbsp;&nbsp;&lt;mui-hint slot=&quot;after&quot; placement=&quot;top&quot;&gt;
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge slot=&quot;trigger&quot; size=&quot;small&quot;&gt;NEW&lt;/mui-badge&gt;
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;New status
+              <br>
+              &nbsp;&nbsp;&lt;/mui-hint&gt;
+              <br>
+              &lt;/mui-body&gt;
+              <br>
+              &lt;mui-body size=&quot;large&quot; variant=&quot;success&quot;&gt;
+              <br>
+              &nbsp;&nbsp;{long wrapping text}
+              <br>
+              &nbsp;&nbsp;&lt;mui-hint slot=&quot;after&quot; placement=&quot;top&quot;&gt;
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot; color=&quot;var(--text-color-optional)&quot;&gt;&lt;/mui-icon-info&gt;
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;Success details
+              <br>
+              &nbsp;&nbsp;&lt;/mui-hint&gt;
+              <br>
+              &lt;/mui-body&gt;
             </story-code-block>
 
           </story-card>
