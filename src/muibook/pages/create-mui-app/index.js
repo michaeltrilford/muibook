@@ -18,6 +18,15 @@ class CreateMuiApp extends HTMLElement {
         overflow: hidden;
       }
 
+      .sponsor-embed {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .sponsor-cta {
+        flex-wrap: wrap;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 65ch) 400px;
@@ -55,6 +64,17 @@ class CreateMuiApp extends HTMLElement {
                 for your brand.</mui-body>
                 <mui-body size="medium">Access a curated set of <strong>MUI Components</strong>, wrapped in a clean layout that highlights 
                 the Design System’s core building blocks—so you can start designing and building immediately.</mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-400)">
+                <mui-rule></mui-rule>
+                <mui-h-stack class="sponsor-cta" space="var(--space-200)" aligny="center" alignx='space-between'>
+                  <mui-body weight="bold">Want to support this project?</mui-body>
+                  <span class="sponsor-embed" aria-label="Sponsor Muibook">
+                    <iframe src="https://github.com/sponsors/michaeltrilford/button" title="Sponsor michaeltrilford" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
+                  </span>
+                </mui-h-stack>
+                <mui-rule></mui-rule>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
