@@ -2,6 +2,8 @@ import Image from "../../images/guru/hero-guides-plugin.png";
 import Image2 from "../../images/guru/hero-outcomes.png";
 import Image3 from "../../images/mui/mui-play.png";
 import Image4 from "../../images/mui/mui-guides.png";
+import Image5 from "../../images/pages/redactd.png";
+import Image6 from "../../images/pages/upvote.png";
 
 class ShowcasePage extends HTMLElement {
   constructor() {
@@ -53,6 +55,32 @@ class ShowcasePage extends HTMLElement {
       >
           
           <mui-grid class="config" space="var(--space-600)">
+
+            <mui-v-stack space="var(--space-600)">
+              <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Redactd</mui-heading>
+                <mui-body size="medium">
+                  Build and compose real web layouts directly with Web Components, moving from prompt to production-ready UI in-browser for any framework. Design by hand or via prompts, switch modes freely, import components via CDN, and export clean HTML or JSON with structured UX guidance.
+                </mui-body>
+              </mui-v-stack>
+              <mui-image>
+                <img class="website-image" slot="image" src="${Image5}" alt="Redactd" />
+                <figcaption slot="caption"><mui-link href="https://redactd.xyz" target="_blank">redactd.xyz</mui-link></figcaption>
+              </mui-image>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-600)">
+              <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">UpVote</mui-heading>
+                <mui-body size="medium">
+                  UpVote helps users capture and prioritise opportunities and commitments in one place, from jobs and OKRs to travel, bills, and ongoing priorities. Items can be upvoted so the most important work rises to the top, powered by a consistent Muibook Web Components interface.
+                </mui-body>
+              </mui-v-stack>
+              <mui-image>
+                <img class="website-image" slot="image" src="${Image6}" alt="UpVote" />
+                <figcaption slot="caption"><mui-link href="https://upvote.redactd.xyz" target="_blank">upvote.redactd.xyz</mui-link></figcaption>
+              </mui-image>
+            </mui-v-stack>
 
             <mui-v-stack space="var(--space-600)">
               <mui-v-stack space="var(--space-300)">
@@ -114,8 +142,6 @@ class ShowcasePage extends HTMLElement {
               </mui-image> 
             </mui-v-stack>
 
-            <mui-image>
-            </mui-image> 
           </mui-grid>
 
       </story-template>
