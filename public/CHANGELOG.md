@@ -1,5 +1,20 @@
 ## Header [Start]
 
+## v18.1.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/18.1.1)
+
+## Header [End]
+
+### Fixed
+
+- Dropdown now applies `variant="tertiary"` only when slotted option buttons do not define a variant, preserving explicit variants like `primary`.
+- Build output now includes the dropdown default-variant fallback logic for published dist.
+
+---
+
+## Header [Start]
+
 ## v18.1.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/18.1.0)
