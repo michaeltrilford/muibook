@@ -1436,9 +1436,9 @@ class MuiPrompt extends HTMLElement {
         .surface::before {
           content: "";
           position: absolute;
-          inset: var(--stroke-size-200);
+          inset: 0;
           pointer-events: none;
-          border-radius: calc(var(--radius-300) - var(--stroke-size-200));
+          border-radius: var(--radius-300);
           z-index: 1;
           opacity: 1;
           background: var(--surface-elevated-100);
@@ -1481,7 +1481,7 @@ class MuiPrompt extends HTMLElement {
           transition: opacity var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1), filter var(--speed-200) ease;
         }
         .surface:hover {
-          overflow: hidden;
+          overflow: visible;
           background: var(--surface-elevated-100);
           animation: promptBorderHoverPulse var(--prompt-hover-border-pulse-speed, var(--speed-500)) ease-in-out infinite;
         }
@@ -1515,9 +1515,7 @@ class MuiPrompt extends HTMLElement {
             var(--surface-elevated-100);
           mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
           filter: none;
-          animation:
-            promptMeshHoverPulse var(--prompt-hover-sweep-speed, var(--speed-500)) ease-in-out infinite alternate,
-            promptMeshPulse calc(var(--prompt-hover-sweep-speed, var(--speed-500)) * 1.15) ease-in-out infinite;
+          animation: promptMeshPulse calc(var(--prompt-hover-sweep-speed, var(--speed-500)) * 1.15) ease-in-out infinite;
         }
         .surface:hover::after {
           opacity: 0;
@@ -1888,7 +1886,7 @@ class MuiPrompt extends HTMLElement {
         }
         .actions-slot {
           position: absolute;
-          z-index: 2;
+          z-index: 4;
           bottom: var(--space-300);
           display: inline-flex;
           align-items: center;

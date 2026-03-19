@@ -141,6 +141,90 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="Action Sizes">
+        <mui-v-stack slot="body" space="var(--space-300)" alignX="start">
+          <mui-dropdown>
+            <mui-button slot="action" size="x-small"><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
+            <mui-button size="x-small">Option one</mui-button>
+            <mui-button size="x-small">Option two</mui-button>
+          </mui-dropdown>
+          <mui-dropdown>
+            <mui-button slot="action" size="small"><mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
+            <mui-button size="small">Option one</mui-button>
+            <mui-button size="small">Option two</mui-button>
+          </mui-dropdown>
+          <mui-dropdown>
+            <mui-button slot="action" size="medium"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+            <mui-button size="medium">Option one</mui-button>
+            <mui-button size="medium">Option two</mui-button>
+          </mui-dropdown>
+          <mui-dropdown>
+            <mui-button slot="action" size="large"><mui-icon-ellipsis size="large"></mui-icon-ellipsis></mui-button>
+            <mui-button size="large">Option one</mui-button>
+            <mui-button size="large">Option two</mui-button>
+          </mui-dropdown>
+          <mui-dropdown>
+            <mui-button slot="action" size="x-small"><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
+            <mui-button size="x-small" variant="primary">Option active</mui-button>
+            <mui-button size="x-small">Option two</mui-button>
+          </mui-dropdown>
+          <mui-dropdown>
+            <mui-button slot="action" size="small"><mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
+            <mui-button size="small" variant="primary">Option active</mui-button>
+            <mui-button size="small">Option two</mui-button>
+          </mui-dropdown>
+          <mui-dropdown>
+            <mui-button slot="action" size="medium"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+            <mui-button size="medium" variant="primary">Option active</mui-button>
+            <mui-button size="medium">Option two</mui-button>
+          </mui-dropdown>
+          <mui-dropdown>
+            <mui-button slot="action" size="large"><mui-icon-ellipsis size="large"></mui-icon-ellipsis></mui-button>
+            <mui-button size="large" variant="primary">Option active</mui-button>
+            <mui-button size="large">Option two</mui-button>
+          </mui-dropdown>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;!-- Default (x-small, small, medium, large) --&gt;<br>
+          &lt;mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;x-small&quot;&gt;&lt;mui-icon-ellipsis size=&quot;x-small&quot;&gt;&lt;/mui-icon-ellipsis&gt;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;x-small&quot;&gt;Option one&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;x-small&quot;&gt;Option two&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;<br><br>
+          &lt;!-- Repeat for small / medium / large --&gt;<br><br>
+
+          &lt;!-- Active-first (x-small, small, medium, large) --&gt;<br>
+          &lt;mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;x-small&quot;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size=&quot;x-small&quot;&gt;&lt;/mui-icon-ellipsis&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;x-small&quot; variant=&quot;primary&quot;&gt;Option active&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;x-small&quot;&gt;Option two&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;<br><br>
+          &lt;mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;small&quot;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size=&quot;small&quot;&gt;&lt;/mui-icon-ellipsis&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;small&quot; variant=&quot;primary&quot;&gt;Option active&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;small&quot;&gt;Option two&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;<br><br>
+          &lt;mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;medium&quot;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size=&quot;medium&quot;&gt;&lt;/mui-icon-ellipsis&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;medium&quot; variant=&quot;primary&quot;&gt;Option active&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;medium&quot;&gt;Option two&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;<br><br>
+          &lt;mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;large&quot;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size=&quot;large&quot;&gt;&lt;/mui-icon-ellipsis&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;large&quot; variant=&quot;primary&quot;&gt;Option active&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button size=&quot;large&quot;&gt;Option two&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card title="Z-Index Customisation" description="Use this feature if a fixed navigation or other elements in your application conflict with the default z-index. Adjust the value to ensure your UI layers display correctly.">
         <mui-dropdown slot="body" zindex="999" position="left">
           <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>

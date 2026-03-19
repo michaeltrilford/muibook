@@ -100,19 +100,22 @@ class MuiDropdown extends HTMLElement {
     if (defaultSlot) {
       const updateButtons = () => {
         const optionNodes = defaultSlot.assignedElements({ flatten: true }) as HTMLElement[];
+        const optionButtons = optionNodes.filter((el) => el.tagName.toLowerCase() === "mui-button");
 
-        optionNodes.forEach((btn) => {
+        optionButtons.forEach((btn) => {
           btn.removeAttribute("dropdown-slot");
           btn.removeAttribute("dropdown-slot-first");
           btn.removeAttribute("dropdown-slot-last");
         });
 
-        optionNodes.forEach((btn, i) => {
-          btn.setAttribute("variant", "tertiary");
+        optionButtons.forEach((btn, i) => {
+          if (!btn.hasAttribute("variant")) {
+            btn.setAttribute("variant", "tertiary");
+          }
           btn.setAttribute("dropdown-slot", "");
 
           if (i === 0) btn.setAttribute("dropdown-slot-first", "");
-          if (i === optionNodes.length - 1) btn.setAttribute("dropdown-slot-last", "");
+          if (i === optionButtons.length - 1) btn.setAttribute("dropdown-slot-last", "");
 
           // click listener once
           if (!(btn as any)._dropdownListenerAdded) {

@@ -1,5 +1,27 @@
 ## Header [Start]
 
+## v18.1.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/18.1.0)
+
+## Header [End]
+
+### Changed
+
+- Dropdown now applies `variant="tertiary"` to direct slotted option buttons only when no variant is provided, allowing explicit variants (for example `primary`) to override.
+- Dropdown option slot styling now focuses on shape/radius behavior; option color behavior is left to button variants.
+- Prompt hover surface now keeps overflow visible so slotted popovers/menus can expand beyond prompt bounds.
+
+### Fixed
+
+- Fixed dropdown option indexing so first/last radius attrs apply only to slotted `mui-button` items.
+- Fixed prompt action layering so left/right action slots render above error region overlays.
+- Fixed dropdown/table story consistency by standardizing ellipsis action icons and adding explicit size/active-option coverage.
+
+---
+
+## Header [Start]
+
 ## v17.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/17.0.0)

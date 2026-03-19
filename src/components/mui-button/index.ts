@@ -389,11 +389,7 @@ class MuiButton extends HTMLElement {
     /* Dropdown Slot */
     :host([size][dropdown-slot]) button {
       border-radius: var(--radius-000);
-    }
-
-    :host([dropdown-slot]) button:hover,
-    :host([dropdown-slot]) button:focus {
-      background: var(--dropdown-button-background-hover);
+      white-space: nowrap;
     }
 
     :host([size][dropdown-slot-first]) button {
