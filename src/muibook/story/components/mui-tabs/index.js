@@ -8,6 +8,13 @@ class storyTabBar extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Tabs");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-tab-item",
+        parentAttrs: ["has-before", "has-after"],
+        childAttrs: [],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -713,6 +720,7 @@ class storyTabBar extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
+        attrs-reference='${attrsReference}'
       
         imports='["@muibook/components/mui-tabs"]'>
         ${stories}

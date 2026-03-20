@@ -8,6 +8,13 @@ class storyButton extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Button");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-button",
+        parentAttrs: ["has-before", "has-after", "icon-only"],
+        childAttrs: [],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -935,6 +942,7 @@ class storyButton extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
+        attrs-reference='${attrsReference}'
       
         imports='["@muibook/components/mui-button"]'>
         <story-quicklinks

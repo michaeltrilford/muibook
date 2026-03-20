@@ -11,6 +11,13 @@ class storyDrawer extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Drawer");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-drawer",
+        parentAttrs: ["has-header", "has-footer"],
+        childAttrs: [],
+      },
+    ]);
     const styles = /*css*/ `
       .token-item-menu::part(flex-wrap) {
         flex-wrap: wrap;
@@ -1170,6 +1177,7 @@ class storyDrawer extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
+        attrs-reference='${attrsReference}'
       
         imports='["@muibook/components/mui-drawer"]'>
         <story-quicklinks

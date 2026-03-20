@@ -8,6 +8,13 @@ class storyRule extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Rule");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-rule",
+        parentAttrs: ["in-card", "in-form-section", "in-dialog", "in-drawer"],
+        childAttrs: [],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -164,6 +171,7 @@ class storyRule extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
+        attrs-reference='${attrsReference}'
       
         imports='["@muibook/components/mui-rule"]'>
         ${stories}
