@@ -1,5 +1,23 @@
 ## Header [Start]
 
+## v18.2.0 (Soon)
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/18.2.0)
+
+## Header [End]
+
+### Changed
+
+- Dropdown option behavior is tracked under prior `v18.1.x` component updates; no additional component runtime changes were introduced in this patch.
+
+### Not Started
+
+- Planned `mui-body` alignment follow-up is captured for the next pass: refine before/after inline icon alignment behavior across sizes without introducing runtime state attrs.
+
+---
+
+## Header [Start]
+
 ## v18.1.1
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/18.1.1)
