@@ -8,6 +8,13 @@ class storyField extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Field");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-field",
+        parentAttrs: ["has-message"],
+        childAttrs: [],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -116,12 +123,6 @@ class storyField extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-field";<br>
-          </mui-code>
-        </spec-card>
-
         <props-card title="Field">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
@@ -656,12 +657,14 @@ class storyField extends HTMLElement {
       <story-template 
         title="${data.title}"
         description="${data.description}"
+        attrs-reference='${attrsReference}'
         github="${data.github}"
         figma="${data.figma}"
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-field"]'>
         ${stories}
       </story-template>
     `;

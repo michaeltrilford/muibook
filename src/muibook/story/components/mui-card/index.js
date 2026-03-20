@@ -9,6 +9,23 @@ class storyCards extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Card");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-card",
+        parentAttrs: [],
+        childAttrs: [],
+      },
+      {
+        component: "mui-card-body",
+        parentAttrs: ["has-card-slat-group", "has-accordion-slat-group", "inner-space-top"],
+        childAttrs: [],
+      },
+      {
+        component: "mui-card-footer",
+        parentAttrs: ["has-button-group"],
+        childAttrs: [],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -48,7 +65,7 @@ class storyCards extends HTMLElement {
         default="${prop.default || ""}"
         description="${prop.description}">
       </story-type-row>
-    `
+    `,
       )
       .join("");
 
@@ -99,7 +116,7 @@ class storyCards extends HTMLElement {
         default="${prop.default || ""}"
         description="${prop.description}">
       </story-type-row>
-    `
+    `,
       )
       .join("");
 
@@ -159,7 +176,7 @@ class storyCards extends HTMLElement {
         default="${prop.default || ""}"
         description="${prop.description}">
       </story-type-row>
-    `
+    `,
       )
       .join("");
 
@@ -210,7 +227,7 @@ class storyCards extends HTMLElement {
         default="${prop.default || ""}"
         description="${prop.description}">
       </story-type-row>
-    `
+    `,
       )
       .join("");
 
@@ -239,14 +256,8 @@ class storyCards extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-card";<br>
-        </mui-code>
-      </spec-card>
-
       <mui-v-stack space="var(--space-400)">
-        <props-card title="Card" description="The mui-card houses the header, body and footer.">
+        <props-card title="Card">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rowsCard}
@@ -257,7 +268,7 @@ class storyCards extends HTMLElement {
           </mui-responsive>
         </props-card>
 
-        <props-card title="Card Header" description="The mui-card-header will house suitable mui components or other relevant elements.">
+        <props-card title="Card Header">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rowsCardHeader}
@@ -268,7 +279,7 @@ class storyCards extends HTMLElement {
           </mui-responsive>
         </props-card>
 
-        <props-card title="Card Body" description="The mui-card-body will house suitable mui components or other relevant elements.">
+        <props-card title="Card Body">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rowsCardBody}
@@ -279,7 +290,7 @@ class storyCards extends HTMLElement {
           </mui-responsive>
         </props-card>
 
-        <props-card title="Card Footer" description="The mui-card-footer will house actions or other relevant elements.">
+        <props-card title="Card Footer">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
               ${rowsCardFooter}
@@ -1124,12 +1135,14 @@ class storyCards extends HTMLElement {
       <story-template 
         title="${data.title}"
         description="${data.description}"
+        attrs-reference='${attrsReference}'
         github="${data.github}"
         figma="${data.figma}"
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-card"]'>
 
         <story-quicklinks
           slot="message"

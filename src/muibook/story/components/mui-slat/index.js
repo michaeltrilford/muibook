@@ -228,13 +228,6 @@ class storySlat extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-slat";<br>
-          </mui-code>
-        </spec-card>
-
-
         <mui-v-stack space="var(--space-400)">
           <props-card title="Slat">
             <mui-responsive breakpoint="767" slot="body">
@@ -1491,7 +1484,8 @@ class storySlat extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-slat"]'>
 
         <story-quicklinks
           slot="message"

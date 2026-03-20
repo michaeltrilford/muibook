@@ -12,6 +12,17 @@ class storyDropdown extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Dropdown");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-button",
+        parentAttrs: [],
+        childAttrs: [
+          "dropdown-slot",
+          "dropdown-slot-first",
+          "dropdown-slot-last",
+        ],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -107,12 +118,6 @@ class storyDropdown extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-dropdown";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Dropdown">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -583,12 +588,14 @@ class storyDropdown extends HTMLElement {
       <story-template 
         title="${data.title}"
         description="${data.description}"
+        attrs-reference='${attrsReference}'
         github="${data.github}"
         figma="${data.figma}"
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-dropdown"]'>
         ${stories}
       </story-template>
     `;

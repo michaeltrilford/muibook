@@ -101,13 +101,6 @@ class storySwitch extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-switch";<br>
-          </mui-code>
-        </spec-card>
-
         <props-card title="Switch">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
@@ -259,7 +252,8 @@ class storySwitch extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-switch"]'>
         ${stories}
       </story-template>
     `;

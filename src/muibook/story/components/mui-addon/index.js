@@ -72,12 +72,6 @@ class storyAddon extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-addon";<br>
-          </mui-code>
-        </spec-card>
-
         <props-card title="Add On">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
@@ -198,7 +192,8 @@ class storyAddon extends HTMLElement {
         figma="${data.figma}"
         guides="${data.guides}"
         storybook="${data.storybook}"
-      >
+      
+        imports='["@muibook/components/mui-addon"]'>
         ${stories}
       </story-template>
     `;

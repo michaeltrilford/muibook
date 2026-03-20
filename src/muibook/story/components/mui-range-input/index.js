@@ -35,12 +35,6 @@ class StoryRangeInput extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-range-input";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Range Input">
         <story-type-table slot="body">
           ${rows}
@@ -81,7 +75,8 @@ class StoryRangeInput extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-range-input"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||bubble::Bubble + Time Format|||disabled::Disabled"></story-quicklinks>
         ${stories}
       </story-template>

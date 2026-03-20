@@ -141,12 +141,6 @@ class storyTextarea extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-textarea";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Textarea">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -233,7 +227,8 @@ class storyTextarea extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-textarea"]'>
         ${stories}
       </story-template>
     `;

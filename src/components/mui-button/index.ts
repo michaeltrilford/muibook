@@ -525,6 +525,31 @@ class MuiButton extends HTMLElement {
       border-radius: var(--action-radius-large);
     }
 
+    /* Dropdown slot corner radius must win over size radius rules */
+    :host([size][dropdown-slot]) button,
+    :host([size][dropdown-slot]) button:hover,
+    :host([size][dropdown-slot]) button:focus,
+    :host([size][dropdown-slot]) button:disabled {
+      border-radius: var(--radius-000);
+      white-space: nowrap;
+    }
+
+    :host([size][dropdown-slot-first]) button,
+    :host([size][dropdown-slot-first]) button:hover,
+    :host([size][dropdown-slot-first]) button:focus,
+    :host([size][dropdown-slot-first]) button:disabled {
+      border-top-left-radius: calc(var(--radius-100) / 2);
+      border-top-right-radius: calc(var(--radius-100) / 2);
+    }
+
+    :host([size][dropdown-slot-last]) button,
+    :host([size][dropdown-slot-last]) button:hover,
+    :host([size][dropdown-slot-last]) button:focus,
+    :host([size][dropdown-slot-last]) button:disabled {
+      border-bottom-left-radius: calc(var(--radius-100) / 2);
+      border-bottom-right-radius: calc(var(--radius-100) / 2);
+    }
+
     :host([size="xx-small"][icon-only]) button {
       height: calc(var(--action-icon-only-size-x-small) - var(--space-100));
       width: calc(var(--action-icon-only-size-x-small) - var(--space-100));

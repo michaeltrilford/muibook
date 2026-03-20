@@ -10,6 +10,8 @@ class StoryTemplate extends HTMLElement {
       "title",
       "description",
       "accessibility",
+      "attrs-reference",
+      "imports",
       "website",
       "demo",
       "github",
@@ -136,6 +138,30 @@ class StoryTemplate extends HTMLElement {
   `
       : "";
 
+    const attrsReferenceItems = this.getAttribute("attrs-reference") || "";
+    const attrsReferenceSection = attrsReferenceItems
+      ? /*html*/ `<attr-card title="Dynamic Attributes" items='${attrsReferenceItems}'></attr-card>`
+      : "";
+
+    const importItemsRaw = this.getAttribute("imports") || "";
+    let importItems = [];
+    if (importItemsRaw) {
+      try {
+        const parsed = JSON.parse(importItemsRaw);
+        importItems = Array.isArray(parsed) ? parsed : [String(parsed)];
+      } catch {
+        importItems = importItemsRaw
+          .split("|||")
+          .map((item) => item.trim())
+          .filter(Boolean);
+      }
+    }
+    const importSection = importItems.length
+      ? /*html*/ `
+        <import-card imports='${JSON.stringify(importItems).replaceAll("'", "&apos;")}'></import-card>
+      `
+      : "";
+
     const demoLink = this.getAttribute("demo");
     const demoContent = demoLink
       ? /*html*/ `
@@ -240,8 +266,12 @@ class StoryTemplate extends HTMLElement {
               </mui-responsive>
               ${description}
             </mui-v-stack>
+            <mui-v-stack space="var(--space-400)">
+            ${importSection}
             ${accessibilitySection}
             <slot name="message"></slot>
+            ${attrsReferenceSection}
+          </mui-v-stack>
           </mui-v-stack>
           <mui-v-stack class="stories">
             <slot></slot>

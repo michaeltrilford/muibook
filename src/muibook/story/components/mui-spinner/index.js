@@ -55,12 +55,6 @@ class StorySpinner extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-spinner";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Spinner">
         <story-type-table slot="body">
           ${rows}
@@ -107,7 +101,8 @@ class StorySpinner extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-spinner"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

@@ -196,13 +196,6 @@ class storyStepper extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-stepper";<br>
-          </mui-code>
-        </spec-card>
-
         <mui-v-stack space="var(--space-400)">
           <props-card title="Stepper">
             <mui-responsive breakpoint="767" slot="body">
@@ -519,7 +512,8 @@ class storyStepper extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-stepper"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

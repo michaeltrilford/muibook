@@ -145,14 +145,6 @@ class storySmartCard extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-smart-card";<br>
-          </mui-code>
-        </spec-card>
-
-
         <props-card title="Smart Card">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
@@ -579,7 +571,8 @@ class storySmartCard extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-smart-card"]'>
         ${stories}
       </story-template>
     `;

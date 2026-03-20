@@ -8,6 +8,13 @@ class storyAlert extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Alert");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-button",
+        parentAttrs: [],
+        childAttrs: ["alert-slot", "alert-positive-slot", "alert-info-slot", "alert-warning-slot", "alert-attention-slot"],
+      },
+    ]);
     const styles = /*css*/ `
       :host { display: block; }
     `;
@@ -112,12 +119,6 @@ class storyAlert extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-alert";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Alert">
         <mui-responsive breakpoint="768" slot="body">
           <story-type-table slot="showAbove">
@@ -632,12 +633,14 @@ class storyAlert extends HTMLElement {
       <story-template
         title="${data.title}"
         description="${data.description}"
+        attrs-reference='${attrsReference}'
         github="${data.github}"
         figma="${data.figma}"
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-alert"]'>
         ${stories}
       </story-template>
     `;

@@ -69,12 +69,6 @@ class StoryMediaPlayer extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-media-player";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Media Player">
         <story-type-table slot="body">
           ${rows}
@@ -149,7 +143,8 @@ class StoryMediaPlayer extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-media-player"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

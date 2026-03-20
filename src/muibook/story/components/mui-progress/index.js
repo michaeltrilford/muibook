@@ -80,13 +80,6 @@ class storyProgress extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-code";<br>
-          </mui-code>
-        </spec-card>
-
-
           <props-card title="Progress">
             <mui-responsive breakpoint="767" slot="body">
               <story-type-table slot="showAbove">
@@ -141,7 +134,8 @@ class storyProgress extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-code"]'>
         ${stories}
       </story-template>
     `;

@@ -10,12 +10,6 @@ class StoryFormHint extends HTMLElement {
     const data = await getComponentDocs("FormHint");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-form-hint";<br>
-        </mui-code>
-      </spec-card>
-
       <story-card id="patterns" title="Message Patterns" description="Icon-led supporting text with semantic color from usage context.">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-200)">
@@ -182,7 +176,8 @@ class StoryFormHint extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-form-hint"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

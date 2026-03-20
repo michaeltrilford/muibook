@@ -10,12 +10,6 @@ class StoryHint extends HTMLElement {
     const data = await getComponentDocs("Hint");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-hint";<br>
-        </mui-code>
-      </spec-card>
-
       <story-card id="default" title="Default">
         <mui-v-stack slot="body" space="var(--space-200)" style="padding: var(--space-400);">
           <mui-hint>
@@ -100,7 +94,8 @@ class StoryHint extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-hint"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||placements::Placements|||delay::Delay"></story-quicklinks>
         ${stories}
       </story-template>

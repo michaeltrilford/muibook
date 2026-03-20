@@ -8,14 +8,15 @@ class StoryFormSectionFooter extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("FormSectionFooter");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-form-section-footer",
+        parentAttrs: ["has-rule"],
+        childAttrs: [],
+      },
+    ]);
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-form-section-footer";<br>
-        </mui-code>
-      </spec-card>
-
       <story-card id="default" title="Default Footer Wrapper" description="Use form-section-footer in slot='footer' to standardise action spacing.">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Commercial Licensing">
@@ -94,12 +95,14 @@ class StoryFormSectionFooter extends HTMLElement {
       <story-template
         title="${data?.title || "Form Section Footer"}"
         description="${data?.description || ""}"
+        attrs-reference='${attrsReference}'
         github="${(data?.github || []).join("|||")}"
         figma="${(data?.figma || []).join("|||")}"
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-form-section-footer"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
@@ -112,4 +115,3 @@ class StoryFormSectionFooter extends HTMLElement {
 }
 
 customElements.define("story-form-section-footer", StoryFormSectionFooter);
-

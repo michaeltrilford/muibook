@@ -199,12 +199,6 @@ class storyDialog extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-dialog";<br>
-        </mui-code>
-      </spec-card>
-
       <mui-v-stack space="var(--space-400)">
         <props-card title="Dialog">
           <mui-responsive breakpoint="767" slot="body">
@@ -507,7 +501,8 @@ class storyDialog extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-dialog"]'>
         ${stories}
       </story-template>
     `;

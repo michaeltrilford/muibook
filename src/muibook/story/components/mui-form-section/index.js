@@ -8,14 +8,15 @@ class StoryFormSection extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("FormSection");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-form-section",
+        parentAttrs: ["has-header", "has-footer"],
+        childAttrs: [],
+      },
+    ]);
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-form-section";<br>
-        </mui-code>
-      </spec-card>
-
       <story-card id="account-setup" title="Account Setup Section" description="Real form grouping with Field, Input, Select, and Form Message. Intended for use on a surface background." usage="Use one form section for each major form area.|||Use form group to cluster related fields.|||Hide group labels when they repeat the section title.">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Account Setup">
@@ -342,12 +343,14 @@ class StoryFormSection extends HTMLElement {
       <story-template
         title="${data?.title || "Form Section"}"
         description="${data?.description || ""} These examples are designed to be used on a surface background."
+        attrs-reference='${attrsReference}'
         github="${(data?.github || []).join("|||")}"
         figma="${(data?.figma || []).join("|||")}"
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-form-section"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

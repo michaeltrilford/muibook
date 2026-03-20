@@ -64,12 +64,6 @@ class storyQuote extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-quote";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Quote">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -116,7 +110,8 @@ class storyQuote extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-quote"]'>
         ${stories}
       </story-template>
     `;

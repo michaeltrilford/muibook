@@ -103,12 +103,6 @@ class storyGrid extends HTMLElement {
     `;
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-grid";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Grid">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -169,7 +163,8 @@ class storyGrid extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-grid"]'>
         ${stories}
       </story-template>
     `;

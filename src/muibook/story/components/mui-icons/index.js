@@ -185,12 +185,6 @@ class storyIcon extends HTMLElement {
     }).join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-icons";<br>
-        </mui-code>
-      </spec-card>
-
       <mui-v-stack space="var(--space-400)">
         <props-card title="Icon">
           <mui-responsive breakpoint="767" slot="body">
@@ -614,7 +608,8 @@ class storyIcon extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-icons"]'>
         ${stories}
       </story-template>
 

@@ -8,6 +8,13 @@ class storySlideFrame extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("SlideFrame");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-slide-frame",
+        parentAttrs: ["has-header", "has-footer", "has-notes", "notes-visible", "has-chrome"],
+        childAttrs: ["data-slide-section", "slide-active", "slide-hidden"],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -250,13 +257,6 @@ class storySlideFrame extends HTMLElement {
     `;
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-slide-frame";<br>
-          import "@muibook/components/mui-slide-section";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Slide Frame">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -377,12 +377,14 @@ class storySlideFrame extends HTMLElement {
       <story-template
         title="${data?.title || "Slide Frame"}"
         description="${data?.description || ""}"
+        attrs-reference='${attrsReference}'
         github="${data?.github || ""}"
         figma="${data?.figma || ""}"
         guides="${data?.guides || ""}"
         storybook="${data?.storybook || ""}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-slide-frame", "@muibook/components/mui-slide-section"]'>
         ${stories}
       </story-template>
     `;

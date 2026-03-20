@@ -258,13 +258,6 @@ class storyResponsive extends HTMLElement {
                 </mui-body>
             </mui-v-stack>
           </mui-message>
-      
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-responsive";<br>
-          </mui-code>
-        </spec-card>
-
         <props-card title="Responsive">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
@@ -472,7 +465,8 @@ class storyResponsive extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-responsive"]'>
         ${stories}
       </story-template>
     `;

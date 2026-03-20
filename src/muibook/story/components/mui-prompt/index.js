@@ -8,6 +8,13 @@ class StoryPrompt extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Prompt");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-prompt",
+        parentAttrs: ["has-actions", "has-extra-actions", "has-error"],
+        childAttrs: [],
+      },
+    ]);
 
     const propItems = [
       {
@@ -293,12 +300,6 @@ class StoryPrompt extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-prompt";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Prompt">
         <mui-responsive breakpoint="980" slot="body">
           <story-type-table slot="showAbove" overflow-x>
@@ -1182,12 +1183,14 @@ class StoryPrompt extends HTMLElement {
       <story-template
         title="${data?.title || "Prompt"}"
         description="${data?.description || ""}"
+        attrs-reference='${attrsReference}'
         github="${(data?.github || []).join("|||")}"
         figma="${(data?.figma || []).join("|||")}"
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-prompt"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Setup|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Open Code Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
         ${stories}
       </story-template>

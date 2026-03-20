@@ -104,13 +104,6 @@ class storyRadio extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-radio";<br>
-          import "@muibook/components/mui-radio-group";
-        </mui-code>
-      </spec-card>
-
       <props-card title="Radio">
         <mui-v-stack slot="body" space="var(--space-200)">
           <story-type-table>
@@ -206,7 +199,8 @@ class storyRadio extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-radio", "@muibook/components/mui-radio-group"]'>
         ${stories}
       </story-template>
     `;

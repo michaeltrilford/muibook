@@ -318,14 +318,6 @@ class storyCarousel extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-carousel";<br><br>
-          // Required:<br>
-          import "@muibook/components/mui-tabs";<br>
-        </mui-code>
-      </spec-card>
-
       <mui-v-stack space="var(--space-400)">
         <props-card title="Carousel Controller" description="The carousel-controller handles layout and transitions. Slotted children like tab-bar and carousel-panel must include the correct slot attributes to integrate properly.">
           <mui-responsive breakpoint="767" slot="body">
@@ -798,7 +790,8 @@ class storyCarousel extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-carousel", "@muibook/components/mui-tabs"]'>
         ${stories}
       </story-template>
     `;

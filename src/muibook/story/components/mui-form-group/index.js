@@ -10,12 +10,6 @@ class StoryFormGroup extends HTMLElement {
     const data = await getComponentDocs("FormGroup");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-form-group";<br>
-        </mui-code>
-      </spec-card>
-
       <story-card id="default" title="Default Group" description="Standard group with heading and stacked controls.">
         <mui-form-group slot="body" heading="Account Details">
           <mui-field label="Email">
@@ -88,7 +82,8 @@ class StoryFormGroup extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-form-group"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

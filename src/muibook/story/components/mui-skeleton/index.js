@@ -41,12 +41,6 @@ class StorySkeleton extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-skeleton";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Skeleton">
         <story-type-table slot="body">
           ${rows}
@@ -133,7 +127,8 @@ class StorySkeleton extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-skeleton"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

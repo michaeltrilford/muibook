@@ -116,13 +116,6 @@ class storyLoader extends HTMLElement {
     `;
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-loader";<br>
-          import "@muibook/components/mui-spinner";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Loader">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -324,7 +317,8 @@ class storyLoader extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-loader", "@muibook/components/mui-spinner"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

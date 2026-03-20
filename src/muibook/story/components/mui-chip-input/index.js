@@ -145,12 +145,6 @@ class storyChipInput extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-chip-input";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Chip Input">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -293,7 +287,8 @@ class storyChipInput extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-chip-input"]'>
         ${stories}
       </story-template>
     `;

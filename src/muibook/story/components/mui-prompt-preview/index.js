@@ -70,12 +70,6 @@ class StoryPromptPreview extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-prompt-preview";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Prompt Preview">
         <story-type-table slot="body">
           ${rows}
@@ -236,7 +230,8 @@ class StoryPromptPreview extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-prompt-preview"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="predropped::Pre-dropped Preview|||types::Payload Types|||loading::Loading State|||pasted-image::Pasted Image|||dismiss-tracking::Dismiss Tracking|||open-dialog::Open Dialog|||open-dialog-image::Open Image Dialog"></story-quicklinks>
         ${stories}
       </story-template>

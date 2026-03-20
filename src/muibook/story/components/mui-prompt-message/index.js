@@ -93,12 +93,6 @@ class StoryPromptMessage extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-prompt-message";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Prompt Message">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -243,7 +237,8 @@ class StoryPromptMessage extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-prompt-message"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||list::Conversation List|||sizes::Sizes|||ghost::Ghost Variant|||compact::Compact Density"></story-quicklinks>
         ${stories}
       </story-template>

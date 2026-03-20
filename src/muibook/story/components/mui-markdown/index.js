@@ -224,12 +224,6 @@ console.log("Hello from Muibook")
     `;
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-markdown";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Markdown">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -254,7 +248,8 @@ console.log("Hello from Muibook")
         guides="${data?.guides || ""}"
         storybook="${data?.storybook || ""}"
         accessibility="${data?.accessibility?.engineerList?.join("|||") || ""}"
-      >
+      
+        imports='["@muibook/components/mui-markdown"]'>
         ${stories}
       </story-template>
     `;

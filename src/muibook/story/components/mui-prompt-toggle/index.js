@@ -10,12 +10,6 @@ class StoryPromptToggle extends HTMLElement {
     const data = await getComponentDocs("PromptToggle");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-prompt-toggle";<br>
-        </mui-code>
-      </spec-card>
-
       <story-card
         id="recommended-prompt"
         title="Recommended Prompt Composition"
@@ -243,7 +237,8 @@ class StoryPromptToggle extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-prompt-toggle"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

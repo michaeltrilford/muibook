@@ -8,6 +8,13 @@ class storyBody extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Body");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-body",
+        parentAttrs: ["has-before", "has-after"],
+        childAttrs: [],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -113,12 +120,6 @@ class storyBody extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-          <spec-card title="Import">
-            <mui-code slot="footer" size="small" scrollable>
-              import "@muibook/components/mui-body";<br>
-            </mui-code>
-          </spec-card>
-
           <props-card title="Body">
             <mui-responsive breakpoint="767" slot="body">
               <story-type-table slot="showAbove">
@@ -392,12 +393,14 @@ class storyBody extends HTMLElement {
       <story-template
         title="${data.title}"
         description="${data.description}"
+        attrs-reference='${attrsReference}'
         github="${data.github}"
         figma="${data.figma}"
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-body"]'>
         ${stories}
       </story-template>
     `;

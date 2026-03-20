@@ -92,12 +92,6 @@ class storyHeading extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-heading";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Heading">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -175,7 +169,8 @@ class storyHeading extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-heading"]'>
         ${stories}
       </story-template>
     `;

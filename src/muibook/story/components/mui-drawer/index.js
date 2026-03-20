@@ -640,13 +640,6 @@ class storyDrawer extends HTMLElement {
     `;
 
     const stories = /*html*/ `
-    
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-drawer";<br>
-        </mui-code>
-      </spec-card>
-
       <mui-v-stack space="var(--space-400)">
         <props-card title="Drawer">
           <mui-responsive breakpoint="767" slot="body">
@@ -1177,7 +1170,8 @@ class storyDrawer extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-drawer"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

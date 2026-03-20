@@ -8,6 +8,13 @@ class storyChip extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Chip");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-chip",
+        parentAttrs: ["has-before", "has-after"],
+        childAttrs: [],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -109,13 +116,6 @@ class storyChip extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-
-        <spec-card title="Import">
-          <mui-code slot="footer" size="small" scrollable>
-            import "@muibook/components/mui-chip";<br>
-          </mui-code>
-        </spec-card>
-
         <props-card title="Chip">
           <mui-responsive breakpoint="767" slot="body">
             <story-type-table slot="showAbove">
@@ -427,12 +427,14 @@ class storyChip extends HTMLElement {
       <story-template 
         title="${data.title}"
         description="${data.description}"
+        attrs-reference='${attrsReference}'
         github="${data.github}"
         figma="${data.figma}"
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-chip"]'>
         ${stories}
       </story-template>
     `;

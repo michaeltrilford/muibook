@@ -145,12 +145,6 @@ class storyImage extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <spec-card title="Import">
-        <mui-code slot="footer" size="small" scrollable>
-          import "@muibook/components/mui-image";<br>
-        </mui-code>
-      </spec-card>
-
       <props-card title="Image">
         <mui-responsive breakpoint="767" slot="body">
           <story-type-table slot="showAbove">
@@ -253,7 +247,8 @@ class storyImage extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      >
+      
+        imports='["@muibook/components/mui-image"]'>
         ${stories}
       </story-template>
 
