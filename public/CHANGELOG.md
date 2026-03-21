@@ -1,6 +1,6 @@
 ## Header [Start]
 
-## v18.2.0 (Soon)
+## v18.2.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/18.2.0)
 
@@ -9,6 +9,7 @@
 ### Changed
 
 - `mui-tab-bar` click handling now resolves `mui-tab-item` via composed event path/closest matching, improving reliability across nested slotted content.
+- `mui-body` small-size inline before/after icon fallback offset was tuned for better single-line and wrapped text alignment.
 
 ### Fixed
 

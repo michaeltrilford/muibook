@@ -61,7 +61,7 @@ class MuiBody extends HTMLElement {
       ::slotted([slot="before"]),
       ::slotted([slot="after"]) {
         flex-shrink: 0;
-        margin-top: var(--body-inline-icon-offset-medium, var(--body-inline-icon-offset, var(--stroke-size-100)));
+        margin-top: var(--body-inline-icon-offset-medium, var(--body-inline-icon-offset, var(--stroke-size-200)));
       }
 
       :host([size="x-small"]) ::slotted([slot="before"]),
@@ -71,7 +71,9 @@ class MuiBody extends HTMLElement {
 
       :host([size="small"]) ::slotted([slot="before"]),
       :host([size="small"]) ::slotted([slot="after"]) {
-        margin-top: var(--body-inline-icon-offset-small, var(--body-inline-icon-offset, var(--stroke-size-100)));
+        margin-top: var(
+          --body-inline-icon-offset-small, var(--body-inline-icon-offset)
+        );
       }
 
       :host([size="large"]) ::slotted([slot="before"]),
