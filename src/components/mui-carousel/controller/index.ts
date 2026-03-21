@@ -31,14 +31,14 @@ class MuiCarouselController extends HTMLElement {
     this.addEventListener("tab-change", this.handleTabChange);
 
     // Show the initially active panel (based on tab-bar)
-    const tabBar = this.querySelector("tab-bar");
+    const tabBar = this.querySelector("mui-tab-bar");
     if (tabBar) {
-      const activeTab = tabBar.querySelector("tab-item[active]");
+      const activeTab = tabBar.querySelector("mui-tab-item[active]");
       if (activeTab) {
         this.updatePanels(activeTab.id);
       } else {
         // No active tab? Activate the first one
-        const firstTab = tabBar.querySelector("tab-item");
+        const firstTab = tabBar.querySelector("mui-tab-item");
         if (firstTab) {
           firstTab.setAttribute("active", "");
           this.updatePanels(firstTab.id);
@@ -146,12 +146,12 @@ class MuiCarouselController extends HTMLElement {
       this.updatePanels(itemId);
 
       // THEN sync tab bar (don't trigger tab-change event)
-      const tabBar = this.querySelector("tab-bar");
+      const tabBar = this.querySelector("mui-tab-bar");
       if (tabBar) {
-        const tabItem = tabBar.querySelector(`tab-item#${itemId}`);
+        const tabItem = tabBar.querySelector(`mui-tab-item#${itemId}`);
         if (tabItem) {
           // Silently update without triggering events
-          tabBar.querySelectorAll("tab-item").forEach((tab) => {
+          tabBar.querySelectorAll("mui-tab-item").forEach((tab) => {
             tab.removeAttribute("active");
           });
           tabItem.setAttribute("active", "");

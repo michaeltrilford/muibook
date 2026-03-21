@@ -120,11 +120,15 @@ class MuiTabBar extends HTMLElement {
       }
     });
 
-    children.forEach((child) => {
-      const htmlChild = child as HTMLElement;
-      htmlChild.addEventListener("click", () => {
-        this.setActiveTab(htmlChild);
-      });
+    this.addEventListener("click", (e: Event) => {
+      const path = typeof (e as Event).composedPath === "function" ? (e as Event).composedPath() : [];
+      const tabFromPath = path.find(
+        (entry) => entry instanceof HTMLElement && entry.tagName.toLowerCase() === "mui-tab-item"
+      ) as HTMLElement | undefined;
+      const tabFromTarget = e.target instanceof HTMLElement ? e.target.closest("mui-tab-item") : null;
+      const tab = tabFromPath || tabFromTarget;
+      if (!tab || !this.contains(tab)) return;
+      this.setActiveTab(tab as HTMLElement);
     });
 
     if (!this.shadowRoot) return;

@@ -8,11 +8,11 @@
 
 ### Changed
 
-- Dropdown option behavior is tracked under prior `v18.1.x` component updates; no additional component runtime changes were introduced in this patch.
+- `mui-tab-bar` click handling now resolves `mui-tab-item` via composed event path/closest matching, improving reliability across nested slotted content.
 
-### Not Started
+### Fixed
 
-- Planned `mui-body` alignment follow-up is captured for the next pass: refine before/after inline icon alignment behavior across sizes without introducing runtime state attrs.
+- `mui-carousel-controller` now targets `mui-tab-bar` / `mui-tab-item` selectors consistently (instead of legacy `tab-bar` / `tab-item`), restoring tab-to-panel sync and initial active panel detection.
 
 ---
 
