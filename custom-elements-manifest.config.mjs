@@ -1,12 +1,40 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const readDynamicAttrs = (() => {
+  const cache = new Map();
+
+  return (modulePath) => {
+    if (!modulePath) return null;
+    if (cache.has(modulePath)) return cache.get(modulePath);
+
+    const filePath = path.join(process.cwd(), path.dirname(modulePath), "dynamic-attrs.json");
+    if (!fs.existsSync(filePath)) {
+      cache.set(modulePath, null);
+      return null;
+    }
+
+    try {
+      const parsed = JSON.parse(fs.readFileSync(filePath, "utf8"));
+      cache.set(modulePath, parsed);
+      return parsed;
+    } catch {
+      cache.set(modulePath, null);
+      return null;
+    }
+  };
+})();
+
 export default {
   globs: ["src/components/**/*.ts"],
   outdir: "public",
   exclude: ["src/**/*.stories.ts", "src/**/*.test.ts", "src/**/*.spec.ts"],
   litelement: false, // Set to true if you're using Lit
   plugins: [
-    () => ({
+    {
       name: "muibook-css-parts",
       packageLinkPhase({ customElementsManifest }) {
+        const dynamicAttrsManifest = {};
         const partMapParts = [
           "color",
           "font-family",
@@ -80,9 +108,27 @@ export default {
                 },
               ];
             }
+
+            const dynamicAttrs = readDynamicAttrs(mod.path);
+            if (dynamicAttrs) {
+              dynamicAttrsManifest[decl.tagName] = dynamicAttrs;
+            }
           }
         }
+
+        fs.writeFileSync(
+          path.join(process.cwd(), "public", "dynamic-attrs.json"),
+          JSON.stringify(
+            {
+              version: 1,
+              generatedAt: new Date().toISOString(),
+              components: dynamicAttrsManifest,
+            },
+            null,
+            2
+          )
+        );
       },
-    }),
+    },
   ],
 };

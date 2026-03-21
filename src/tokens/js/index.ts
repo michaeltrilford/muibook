@@ -136,6 +136,7 @@ export const StrokeSize200 = "2px";
 export const StrokeSize300 = "3px";
 export const StrokeSize400 = "4px";
 export const StrokeSize500 = "5px";
+export const StrokeSize050 = "0.5px";
 export const StrokeSolid = "solid";
 export const StrokeOutset = "outset";
 export const Speed100 = "0.1s";

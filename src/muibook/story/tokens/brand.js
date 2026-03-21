@@ -115,6 +115,7 @@ class tokensBrand extends HTMLElement {
           </spec-card>
 
           <spec-card id="stroke" title="Stroke">
+            <story-token-slat slot="body" token="--stroke-size-050" variant="border-width"></story-token-slat>
             <story-token-slat slot="body" token="--stroke-size-100" variant="border-width"></story-token-slat>
             <story-token-slat slot="body" token="--stroke-size-200" variant="border-width"></story-token-slat>
             <story-token-slat slot="body" token="--stroke-size-300" variant="border-width"></story-token-slat>

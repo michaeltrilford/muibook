@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "generatedAt": "2026-03-21T05:19:17.252Z",
+  "components": {
+    "mui-body": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-before",
+        "has-after"
+      ]
+    },
+    "mui-button": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-before",
+        "has-after",
+        "icon-only",
+        "dropdown-slot",
+        "dropdown-slot-first",
+        "dropdown-slot-last",
+        "alert-slot",
+        "alert-positive-slot",
+        "alert-info-slot",
+        "alert-warning-slot",
+        "alert-attention-slot"
+      ]
+    },
+    "mui-chip": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-before",
+        "has-after"
+      ]
+    },
+    "mui-drawer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-header",
+        "has-footer"
+      ]
+    },
+    "mui-field": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-message"
+      ]
+    },
+    "mui-form-section": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-header",
+        "has-footer"
+      ]
+    },
+    "mui-form-section-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-rule"
+      ]
+    },
+    "mui-link": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-before",
+        "has-after",
+        "icon-only"
+      ]
+    },
+    "mui-prompt": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-actions",
+        "has-extra-actions",
+        "has-error"
+      ]
+    },
+    "mui-rule": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "in-card",
+        "in-form-section",
+        "in-dialog",
+        "in-drawer"
+      ]
+    },
+    "mui-slide-frame": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-header",
+        "has-footer",
+        "has-notes",
+        "notes-visible",
+        "has-chrome",
+        "data-slide-section",
+        "slide-active",
+        "slide-hidden"
+      ]
+    },
+    "mui-accordion-block": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "card-slot",
+        "first-child",
+        "last-child"
+      ]
+    },
+    "mui-card-body": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-card-slat-group",
+        "has-accordion-slat-group",
+        "inner-space-top"
+      ]
+    },
+    "mui-card-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-button-group"
+      ]
+    },
+    "mui-row": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "in-card"
+      ]
+    },
+    "mui-tab-item": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-before",
+        "has-after"
+      ]
+    }
+  }
+}

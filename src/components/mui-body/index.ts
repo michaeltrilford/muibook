@@ -78,7 +78,7 @@ class MuiBody extends HTMLElement {
 
       :host([size="large"]) ::slotted([slot="before"]),
       :host([size="large"]) ::slotted([slot="after"]) {
-        margin-top: var(--body-inline-icon-offset-large, var(--body-inline-icon-offset, var(--stroke-size-100)));
+        margin-top: var(--body-inline-icon-offset-large, var(--body-inline-icon-offset, var(--stroke-size-050)));
       }
 
       :host([size="x-small"]) p {

@@ -1,6 +1,6 @@
 class MuiHint extends HTMLElement {
   static get observedAttributes() {
-    return ["placement", "open", "delay", "initial-delay"];
+    return ["placement", "open", "delay", "initial-delay", "size"];
   }
 
   private openTimer: number | null = null;
@@ -21,10 +21,12 @@ class MuiHint extends HTMLElement {
     if (!this.hasAttribute("placement")) this.setAttribute("placement", "top");
     this.render();
     this.setupEvents();
+    this.syncTriggerSize();
   }
 
   attributeChangedCallback() {
     if (!this.shadowRoot) return;
+    this.syncTriggerSize();
     if (this.hasAttribute("open")) {
       requestAnimationFrame(() => this.positionTooltip());
     }
@@ -122,14 +124,48 @@ class MuiHint extends HTMLElement {
   private setupEvents() {
     const trigger = this.shadowRoot?.querySelector(".trigger");
     if (!trigger) return;
+    const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement | null;
 
     trigger.addEventListener("mouseenter", () => this.openWithDelay());
     trigger.addEventListener("mouseleave", () => this.closeWithDelay());
     trigger.addEventListener("focusin", () => this.openWithDelay());
     trigger.addEventListener("focusout", () => this.close(true));
+    triggerSlot?.addEventListener("slotchange", () => this.syncTriggerSize());
 
     this.addEventListener("keydown", (event) => {
       if ((event as KeyboardEvent).key === "Escape") this.close(true);
+    });
+  }
+
+  private syncTriggerSize() {
+    const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement | null;
+    if (!triggerSlot) return;
+
+    const size = this.getAttribute("size") || this.closest("mui-body")?.getAttribute("size") || "medium";
+    const iconSizeMap: Record<string, string> = {
+      "x-small": "x-small",
+      small: "small",
+      medium: "small",
+      large: "medium",
+    };
+    const badgeSizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+
+    const iconSize = iconSizeMap[size] || "small";
+    const badgeSize = badgeSizeMap[size] || "small";
+    const triggerEls = triggerSlot.assignedElements({ flatten: true });
+
+    triggerEls.forEach((el) => {
+      if (el.tagName.startsWith("MUI-ICON-") && !el.hasAttribute("size")) {
+        el.setAttribute("size", iconSize);
+      }
+      if (el.tagName === "MUI-BADGE" && !el.hasAttribute("size")) {
+        el.setAttribute("size", badgeSize);
+      }
     });
   }
 

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    "has-header",
+    "has-footer",
+    "has-notes",
+    "notes-visible",
+    "has-chrome",
+    "data-slide-section",
+    "slide-active",
+    "slide-hidden"
+  ]
+}

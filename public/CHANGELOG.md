@@ -10,6 +10,9 @@
 
 - `mui-tab-bar` click handling now resolves `mui-tab-item` via composed event path/closest matching, improving reliability across nested slotted content.
 - `mui-body` small-size inline before/after icon fallback offset was tuned for better single-line and wrapped text alignment.
+- `mui-hint` now auto-syncs trigger icon/badge size from nearest `mui-body[size]` (or `mui-hint[size]`) when trigger size is not explicitly set.
+- Added `--stroke-size-050` (`0.5px`) to the core brand token set and token docs (including generated CSS/JS/iOS/Android outputs).
+- Dynamic attributes are now sourced from per-component `dynamic-attrs.json` files and emitted as a generated manifest at `public/dynamic-attrs.json` (also published as `dist/esm/dynamic-attrs.json`).
 
 ### Fixed
 

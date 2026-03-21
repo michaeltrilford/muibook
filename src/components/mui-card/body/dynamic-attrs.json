@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": ["has-card-slat-group", "has-accordion-slat-group", "inner-space-top"]
+}

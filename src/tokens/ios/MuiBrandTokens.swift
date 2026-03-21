@@ -2,7 +2,7 @@
 // MuiBrandTokens.swift
 //
 
-// Don't edit directly • Generated on Sat, 21 Mar 2026 03:38:22 GMT • muibook.com
+// Don't edit directly • Generated on Sat, 21 Mar 2026 05:19:16 GMT • muibook.com
 
 import UIKit
 
@@ -139,6 +139,7 @@ public class BrandTokens {
     public static let strokeSize_300 = CGFloat(3)
     public static let strokeSize_400 = CGFloat(4)
     public static let strokeSize_500 = CGFloat(5)
+    public static let strokeSize_050 = CGFloat(0.5)
     public static let speed_100 = TimeInterval(0.1)
     public static let speed_200 = TimeInterval(0.2)
     public static let speed_300 = TimeInterval(0.3)

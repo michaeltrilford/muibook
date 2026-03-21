@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": [
+    "has-before",
+    "has-after",
+    "icon-only",
+    "dropdown-slot",
+    "dropdown-slot-first",
+    "dropdown-slot-last",
+    "alert-slot",
+    "alert-positive-slot",
+    "alert-info-slot",
+    "alert-warning-slot",
+    "alert-attention-slot"
+  ]
+}

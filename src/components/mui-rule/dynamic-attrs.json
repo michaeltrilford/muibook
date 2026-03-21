@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": ["in-card", "in-form-section", "in-dialog", "in-drawer"]
+}

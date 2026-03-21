@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "destinationOnly": true,
+  "attributes": ["card-slot", "first-child", "last-child"]
+}
