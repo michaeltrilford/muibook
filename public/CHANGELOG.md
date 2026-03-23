@@ -1,5 +1,34 @@
 ## Header [Start]
 
+## v19.0.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.0.0)
+
+## Header [End]
+
+### Changed
+
+- Added row action size tokens (`--row-action-xxs`, `--row-action-xs`, `--row-action-s`, `--row-action-m`, `--row-action-l`) and surfaced them in token docs.
+- Table row sizing now maps `mui-row[size]` to row typography + action-cell sizing (`xx-small|x-small|small|medium|large`, default `medium`).
+- `mui-chip-input` option list now uses `mui-button` options for visual parity with system action styles.
+- Component token docs now group table action-size tokens under a dedicated Table section.
+- Muibook routing now serves `mui-form-message` only; legacy `form-hint` story route/loader wiring was removed.
+
+### Fixed
+
+- `mui-card-body` now treats `condensed` as the final padding override, ensuring spacing remains zero even when helper attrs like `inner-space` / `has-card-slat-group` are present.
+- `mui-slat[variant="action"][radius="none"]` now restores outer corners correctly for condensed card flows by applying first/last-of-type corner rules when `condensed-slot` is present.
+- `mui-cell[action]` sizing now uses an internal wrapper with `box-sizing: border-box`, preserving outer cell padding while correctly honoring row-driven size tokens.
+- Table header/action column alignment now auto-reserves action-column space for empty last header cells when body rows use action cells.
+- Updated table stories: removed duplicate generic action story and split action-size coverage into dedicated size stories using dropdown actions.
+- `mui-chip-input` no longer re-renders the full component on each input keystroke, preventing caret reversal behavior on desktop and keyboard collapse-per-character on mobile.
+- `mui-chip-input` listbox interactions were moved to delegated handlers + targeted list updates for more stable input focus and option selection behavior.
+- Removed stale, unserved `mui-form-hint` story file and Muibook `mui-form-hint` app import to avoid duplicate/legacy documentation paths.
+
+---
+
+## Header [Start]
+
 ## v18.2.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/18.2.0)

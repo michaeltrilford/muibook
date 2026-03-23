@@ -25,7 +25,16 @@ class MuiCell extends HTMLElement {
       justify-content: space-between;
       align-self: ${this.getAttribute("align-y") || "initial"};
       text-align: left;
+      font-size: var(--row-cell-font-size, var(--text-font-size-m));
+      line-height: var(--row-cell-line-height, var(--text-line-height-m));
 
+    }
+    .inner {
+      display: inherit;
+      width: 100%;
+      min-width: 0;
+      align-items: inherit;
+      justify-content: inherit;
     }
     :host(*:first-of-type) {
       padding-left: var(--space-400);
@@ -61,11 +70,21 @@ class MuiCell extends HTMLElement {
       text-align: center;
     }
     :host([action]) {
-      width: 4.4rem;
-      height: 4.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    :host([action]) .inner {
+      width: var(--row-action-size);
+      height: var(--row-action-size);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      margin-left: auto;
     }
     </style>
-     <slot></slot>
+     <div class="inner"><slot></slot></div>
   `;
   }
 }

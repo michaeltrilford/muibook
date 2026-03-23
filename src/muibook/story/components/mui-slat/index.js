@@ -8,6 +8,18 @@ class storySlat extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Slat");
+    const attrsReference = JSON.stringify([
+      {
+        component: "mui-slat",
+        parentAttrs: [],
+        childAttrs: ["card-slot", "condensed-slot"],
+      },
+      {
+        component: "mui-slat-group",
+        parentAttrs: [],
+        childAttrs: ['usage="card"'],
+      },
+    ]);
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -75,6 +87,13 @@ class storySlat extends HTMLElement {
         options: "var(--space-xxx)",
         default: "",
         description: "Adjust the gap between columns.",
+      },
+      {
+        name: "radius",
+        type: "string",
+        options: "default, none",
+        default: "default",
+        description: "Adjust action radius behavior. Use none to remove radius on action slats.",
       },
     ];
 
@@ -460,7 +479,7 @@ class storySlat extends HTMLElement {
           id="action-accessory"
           title="Action: Accessory" 
           description="Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout."
-          usage="Use with Row and Header variants where required."
+          usage="Use with Row and Header variants where required.|||When used inside a condensed card body, set radius='none' on action slats."
           usageLink="https://guides.muibook.com/slat">
 
           <mui-v-stack slot="body">
@@ -516,7 +535,7 @@ class storySlat extends HTMLElement {
                 </mui-slat>
                 <mui-rule></mui-rule>
                 <mui-v-stack space="var(--space-000)">
-                  <mui-slat variant="action">
+                  <mui-slat variant="action" radius="none">
                     <mui-avatar slot="accessory" size="small" label="Espresso & Muffin Bar" background="attention">
                       <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
                     </mui-avatar>
@@ -592,7 +611,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" radius="none"&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar slot="accessory"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-left-sidebar size="small"&gt;&lt;/mui-icon-left-sidebar&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-avatar&gt;<br /><br />
@@ -1351,7 +1370,7 @@ class storySlat extends HTMLElement {
           id="card-condensed"
           title="Card: Condensed" 
           description="For tighter layouts on desktop or <mui-link size='small' href='#/responsive'>mobile responsive views</mui-link>, apply condensed boolean to the card-body. Slats are already condensed, so edge-to-edge layouts work well as the viewport narrows. Again, the Slat is intentionally flexible — good design decisions are still important."
-          usage=""
+          usage="Use radius='none' on action slats inside condensed card body layouts."
           usageLink="https://guides.muibook.com/slat"
           github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-slat/index.js"
           >
@@ -1367,7 +1386,7 @@ class storySlat extends HTMLElement {
 
               <mui-rule></mui-rule>
 
-              <mui-slat variant="action">
+              <mui-slat variant="action" radius="none">
                 <mui-v-stack slot="start" space="0">
                   <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
                   <mui-body size="small">Food & Drink</mui-body>
@@ -1378,7 +1397,7 @@ class storySlat extends HTMLElement {
                 </mui-v-stack>
               </mui-slat>
               <mui-rule></mui-rule>
-              <mui-slat variant="action">
+              <mui-slat variant="action" radius="none">
                 <mui-v-stack slot="start" space="0">
                   <mui-body size="medium" weight="bold">Apple App Store</mui-body>
                   <mui-body size="small">Entertainment</mui-body>
@@ -1401,7 +1420,7 @@ class storySlat extends HTMLElement {
               <mui-rule></mui-rule>
 
               <mui-v-stack space="var(--space-025)">
-                <mui-slat variant="action">
+                <mui-slat variant="action" radius="none">
                   <mui-v-stack slot="start" space="0">
                     <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
                     <mui-body size="small">Groceries</mui-body>
@@ -1425,7 +1444,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" radius="none"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;Espresso Bar&lt;/mui-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Food &amp; Drink&lt;/mui-body&gt;<br />
@@ -1436,7 +1455,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" radius="none"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;Apple App Store&lt;/mui-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Entertainment&lt;/mui-body&gt;<br />
@@ -1455,7 +1474,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-025)"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="action" radius="none"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" weight="bold"&gt;IGA South Yarra&lt;/mui-body&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small"&gt;Groceries&lt;/mui-body&gt;<br />
@@ -1484,6 +1503,7 @@ class storySlat extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
+        attrs-reference='${attrsReference}'
       
         imports='["@muibook/components/mui-slat"]'>
 

@@ -88,6 +88,14 @@ class storyTable extends HTMLElement {
         description:
           "Define the overall table layout using the grid-template-columns CSS property. Any valid grid-template-columns value can be used to control column sizing and distribution.",
       },
+      {
+        name: "size",
+        type: "string",
+        options: "xx-small, x-small, small, medium, large",
+        default: "medium",
+        description:
+          "Sets row-level sizing for cell typography and action-cell box size. Keep action columns as auto. Dropdown and button sizes are set manually in row content and should match row size.",
+      },
     ];
 
     const cellPropItems = [
@@ -105,7 +113,7 @@ class storyTable extends HTMLElement {
         options: "action",
         default: "",
         description:
-          "When a single action is added—typically in the last column—use the action boolean to apply it to both the cell and its header. Set the corresponding column width on the row to auto to ensure proper sizing.",
+          "When a single action is added—typically in the last column—use the action boolean on body cells. Keep the action column width as auto. Empty last header cells are auto-sized to match the action column, and row size controls cell box sizing.",
       },
       {
         name: "checkbox",
@@ -510,40 +518,36 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card 
-            title="Table w/ Action"
-            description="When a single action is added, it is usually placed in the last column. Use the action boolean to apply it to both the cell and its header. Set the corresponding column width on the row to auto to ensure proper sizing."          
-          >
+          <story-card title="XX-Small Action Size">
             <div class="canvas" slot="body">
               <mui-table>
                 <mui-row-group heading>
-                  <mui-row columns="${Columns_Action}">
+                  <mui-row columns="${Columns_Action}" size="xx-small">
                     <mui-cell>Office</mui-cell>
                     <mui-cell>Cost</mui-cell>
-                    <mui-cell action>
-                    </mui-cell>
+                    <mui-cell action></mui-cell>
                   </mui-row>
                 </mui-row-group>
                 <mui-row-group>
-                  <mui-row columns="${Columns_Action}">
+                  <mui-row columns="${Columns_Action}" size="xx-small">
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-                        <mui-button>Option one</mui-button>
-                        <mui-button>Option two</mui-button>
+                        <mui-button slot="action" variant="tertiary" size="xx-small" icon-only><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="xx-small">Edit</mui-button>
+                        <mui-button size="xx-small">Archive</mui-button>
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
-                  <mui-row columns="${Columns_Action}">
-                    <mui-cell>Whalen</mui-cell>
-                    <mui-cell>$1,100.00</mui-cell>
+                  <mui-row columns="${Columns_Action}" size="xx-small">
+                    <mui-cell>Peters</mui-cell>
+                    <mui-cell>$2,350.00</mui-cell>
                     <mui-cell action>
                       <mui-dropdown position="right">
-                        <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-                        <mui-button>Option one</mui-button>
-                        <mui-button>Option two</mui-button>
+                        <mui-button slot="action" variant="tertiary" size="xx-small" icon-only><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="xx-small">Edit</mui-button>
+                        <mui-button size="xx-small">Archive</mui-button>
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
@@ -551,62 +555,241 @@ class storyTable extends HTMLElement {
               </mui-table>
             </div>
             <story-code-block slot="footer" scrollable>
-              const Columns_Action = &#96;1fr 1fr auto&#96;;<br>
-              <br>
-              &lt;mui-table&gt;
+              const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
+              &lt;mui-row columns="\${Columns_Action}" size="xx-small"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="action" variant="tertiary" size="xx-small" icon-only&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="x-small"&gt;&lt;/mui-icon-ellipsis&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="xx-small"&gt;Edit&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="xx-small"&gt;Archive&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
+              &lt;/mui-row&gt;
+            </story-code-block>
+          </story-card>
+
+          <story-card title="X-Small Action Size">
+            <div class="canvas" slot="body">
+              <mui-table>
+                <mui-row-group heading>
+                  <mui-row columns="${Columns_Action}" size="x-small">
+                    <mui-cell>Office</mui-cell>
+                    <mui-cell>Cost</mui-cell>
+                    <mui-cell action></mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  <mui-row columns="${Columns_Action}" size="x-small">
+                    <mui-cell>Whalen</mui-cell>
+                    <mui-cell>$1,100.00</mui-cell>
+                    <mui-cell action>
+                      <mui-dropdown position="right">
+                        <mui-button slot="action" variant="tertiary" size="x-small" icon-only><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="x-small">Edit</mui-button>
+                        <mui-button size="x-small">Archive</mui-button>
+                      </mui-dropdown>
+                    </mui-cell>
+                  </mui-row>
+                  <mui-row columns="${Columns_Action}" size="x-small">
+                    <mui-cell>Peters</mui-cell>
+                    <mui-cell>$2,350.00</mui-cell>
+                    <mui-cell action>
+                      <mui-dropdown position="right">
+                        <mui-button slot="action" variant="tertiary" size="x-small" icon-only><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="x-small">Edit</mui-button>
+                        <mui-button size="x-small">Archive</mui-button>
+                      </mui-dropdown>
+                    </mui-cell>
+                  </mui-row>
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
-              &nbsp;&nbsp;// Table Header
-              <br>
-              &nbsp;&nbsp;/////////////////////////////////////
+              &lt;mui-row columns="\${Columns_Action}" size="x-small"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="action" variant="tertiary" size="x-small" icon-only&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="x-small"&gt;&lt;/mui-icon-ellipsis&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Edit&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Archive&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
+              &lt;/mui-row&gt;
+            </story-code-block>
+          </story-card>
+
+          <story-card title="Small Action Size">
+            <div class="canvas" slot="body">
+              <mui-table>
+                <mui-row-group heading>
+                  <mui-row columns="${Columns_Action}" size="small">
+                    <mui-cell>Office</mui-cell>
+                    <mui-cell>Cost</mui-cell>
+                    <mui-cell action></mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  <mui-row columns="${Columns_Action}" size="small">
+                    <mui-cell>Whalen</mui-cell>
+                    <mui-cell>$1,100.00</mui-cell>
+                    <mui-cell action>
+                      <mui-dropdown position="right">
+                        <mui-button slot="action" variant="tertiary" size="small" icon-only><mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="small">Edit</mui-button>
+                        <mui-button size="small">Archive</mui-button>
+                      </mui-dropdown>
+                    </mui-cell>
+                  </mui-row>
+                  <mui-row columns="${Columns_Action}" size="small">
+                    <mui-cell>Peters</mui-cell>
+                    <mui-cell>$2,350.00</mui-cell>
+                    <mui-cell action>
+                      <mui-dropdown position="right">
+                        <mui-button slot="action" variant="tertiary" size="small" icon-only><mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="small">Edit</mui-button>
+                        <mui-button size="small">Archive</mui-button>
+                      </mui-dropdown>
+                    </mui-cell>
+                  </mui-row>
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
+              &lt;mui-row columns="\${Columns_Action}" size="small"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="action" variant="tertiary" size="small" icon-only&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="small"&gt;&lt;/mui-icon-ellipsis&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="small"&gt;Edit&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="small"&gt;Archive&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
+              &lt;/mui-row&gt;
+            </story-code-block>
+          </story-card>
+
+          <story-card title="Medium Action Size">
+            <div class="canvas" slot="body">
+              <mui-table>
+                <mui-row-group heading>
+                  <mui-row columns="${Columns_Action}" size="medium">
+                    <mui-cell>Office</mui-cell>
+                    <mui-cell>Cost</mui-cell>
+                    <mui-cell action></mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  <mui-row columns="${Columns_Action}" size="medium">
+                    <mui-cell>Whalen</mui-cell>
+                    <mui-cell>$1,100.00</mui-cell>
+                    <mui-cell action>
+                      <mui-dropdown position="right">
+                        <mui-button slot="action" variant="tertiary" size="medium" icon-only><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="medium">Edit</mui-button>
+                        <mui-button size="medium">Archive</mui-button>
+                      </mui-dropdown>
+                    </mui-cell>
+                  </mui-row>
+                  <mui-row columns="${Columns_Action}" size="medium">
+                    <mui-cell>Peters</mui-cell>
+                    <mui-cell>$2,350.00</mui-cell>
+                    <mui-cell action>
+                      <mui-dropdown position="right">
+                        <mui-button slot="action" variant="tertiary" size="medium" icon-only><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="medium">Edit</mui-button>
+                        <mui-button size="medium">Archive</mui-button>
+                      </mui-dropdown>
+                    </mui-cell>
+                  </mui-row>
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
-              &nbsp;&nbsp;&lt;mui-row-group heading&gt;
+              &lt;mui-row columns="\${Columns_Action}" size="medium"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="action" variant="tertiary" size="medium" icon-only&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="medium"&gt;&lt;/mui-icon-ellipsis&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="medium"&gt;Edit&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="medium"&gt;Archive&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
+              &lt;/mui-row&gt;
+            </story-code-block>
+          </story-card>
+
+          <story-card title="Large Action Size">
+            <div class="canvas" slot="body">
+              <mui-table>
+                <mui-row-group heading>
+                  <mui-row columns="${Columns_Action}" size="large">
+                    <mui-cell>Office</mui-cell>
+                    <mui-cell>Cost</mui-cell>
+                    <mui-cell action></mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  <mui-row columns="${Columns_Action}" size="large">
+                    <mui-cell>Whalen</mui-cell>
+                    <mui-cell>$1,100.00</mui-cell>
+                    <mui-cell action>
+                      <mui-dropdown position="right">
+                        <mui-button slot="action" variant="tertiary" size="large" icon-only><mui-icon-ellipsis size="large"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="large">Edit</mui-button>
+                        <mui-button size="large">Archive</mui-button>
+                      </mui-dropdown>
+                    </mui-cell>
+                  </mui-row>
+                  <mui-row columns="${Columns_Action}" size="large">
+                    <mui-cell>Peters</mui-cell>
+                    <mui-cell>$2,350.00</mui-cell>
+                    <mui-cell action>
+                      <mui-dropdown position="right">
+                        <mui-button slot="action" variant="tertiary" size="large" icon-only><mui-icon-ellipsis size="large"></mui-icon-ellipsis></mui-button>
+                        <mui-button size="large">Edit</mui-button>
+                        <mui-button size="large">Archive</mui-button>
+                      </mui-dropdown>
+                    </mui-cell>
+                  </mui-row>
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              const Columns_Action = &#96;1fr 1fr auto&#96;;<br />
               <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;...&lt;/mui-cell&gt;
-                  <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
-                <br />
-              &nbsp;&nbsp;&lt;/mui-row-group&gt;
-              <br />
-              <br />
-              &nbsp;&nbsp;// Table Body
-              <br>
-              &nbsp;&nbsp;/////////////////////////////////////
-              <br />
-              <br />
-              &nbsp;&nbsp;&lt;mui-row-group&gt;
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;...&lt;/mui-cell&gt;
-                  <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;...&lt;/mui-cell&gt;
-                  <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;
-                <br />
-              &nbsp;&nbsp;&lt;/mui-row-group&gt;
-              <br />
-              <br />
-              &lt;/mui-table&gt;
+              &lt;mui-row columns="\${Columns_Action}" size="large"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br />
+              &nbsp;&nbsp;&lt;mui-cell action&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="action" variant="tertiary" size="large" icon-only&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="large"&gt;&lt;/mui-icon-ellipsis&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="large"&gt;Edit&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="large"&gt;Archive&lt;/mui-button&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-cell&gt;<br />
+              &lt;/mui-row&gt;
             </story-code-block>
           </story-card>
 

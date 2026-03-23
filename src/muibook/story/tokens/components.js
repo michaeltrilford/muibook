@@ -469,7 +469,12 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--tab-dot-color-active" variant="color"></story-token-slat>
           </spec-card>
 
-          <spec-card id="table" title="Table" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table">
+          <spec-card id="table" title="Table" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table" description="Tokens used for table action column sizing across row sizes.">
+            <story-token-slat slot="body" token="--row-action-xxs" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--row-action-xs" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--row-action-s" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--row-action-m" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--row-action-l" variant="size"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Border</mui-link> tokens</mui-body>
           </spec-card>
 

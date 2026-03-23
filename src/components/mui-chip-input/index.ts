@@ -1,5 +1,6 @@
 import "../mui-input";
 import "../mui-chip";
+import "../mui-button";
 import "../mui-stack/hstack";
 
 type ChipInputOption = {
@@ -216,6 +217,11 @@ class MuiChipInput extends HTMLElement {
     return this.getAttribute("placement") === "after" ? "after" : "before";
   }
 
+  private set placement(value: string) {
+    const normalized = value === "after" ? "after" : "before";
+    this.setAttribute("placement", normalized);
+  }
+
   private get useStackLayout() {
     if (this.hasAttribute("mobile-stack")) return true;
     const breakpointRaw = this.getAttribute("breakpoint");
@@ -340,23 +346,20 @@ class MuiChipInput extends HTMLElement {
     if (event.key === "ArrowDown" && listLength > 0) {
       event.preventDefault();
       this.highlightedIndex = (this.highlightedIndex + 1 + listLength) % listLength;
-      const caret = this.inputValue.length;
-      this.rerenderAndPreserveFocus(caret, caret);
+      this.updateListbox();
       return;
     }
 
     if (event.key === "ArrowUp" && listLength > 0) {
       event.preventDefault();
       this.highlightedIndex = (this.highlightedIndex - 1 + listLength) % listLength;
-      const caret = this.inputValue.length;
-      this.rerenderAndPreserveFocus(caret, caret);
+      this.updateListbox();
       return;
     }
 
     if (event.key === "Escape") {
       this.highlightedIndex = -1;
-      const caret = this.inputValue.length;
-      this.rerenderAndPreserveFocus(caret, caret);
+      this.updateListbox();
       return;
     }
 
@@ -386,28 +389,29 @@ class MuiChipInput extends HTMLElement {
     if (!input) return;
 
     input.oninput = (event: Event) => {
-      const previousInner = this.getInnerInput();
-      const selectionStart = previousInner?.selectionStart ?? null;
-      const selectionEnd = previousInner?.selectionEnd ?? null;
       const detailValue = (event as CustomEvent<{ value?: string }>).detail?.value;
       const hostValue = input.getAttribute("value") || "";
       this.inputValue = detailValue ?? hostValue;
       this.highlightedIndex = -1;
       this.emitQueryChange();
-      this.rerenderAndPreserveFocus(selectionStart, selectionEnd);
+      this.updateListbox();
     };
 
     input.onkeydown = (event: KeyboardEvent) => {
       this.handleKeyboard(event);
     };
 
-    this.shadowRoot.querySelectorAll("[data-option-value]").forEach((el) => {
-      el.addEventListener("mousedown", (event) => {
+    const listbox = this.shadowRoot.querySelector(".listbox") as HTMLElement | null;
+    if (listbox) {
+      listbox.onmousedown = (event: MouseEvent) => {
+        const target = event.target as HTMLElement | null;
+        const optionEl = target?.closest("[data-option-value]") as HTMLElement | null;
+        if (!optionEl) return;
         event.preventDefault();
-        const value = (el as HTMLElement).getAttribute("data-option-value");
+        const value = optionEl.getAttribute("data-option-value");
         if (value) this.addValue(value);
-      });
-    });
+      };
+    }
 
     this.shadowRoot.querySelectorAll("[data-remove-value]").forEach((el) => {
       el.addEventListener("dismiss", (event) => {
@@ -416,6 +420,54 @@ class MuiChipInput extends HTMLElement {
         if (value && !this.disabled) this.removeValue(value);
       });
     });
+  }
+
+  private updateListbox() {
+    if (!this.shadowRoot) return;
+    const listbox = this.shadowRoot.querySelector(".listbox") as HTMLElement | null;
+    if (!listbox) return;
+
+    const options = this.filteredOptions;
+    const showList = !this.disabled && (options.length > 0 || this.showCreateOption) && this.inputValue.trim().length > 0;
+
+    if (!showList) {
+      listbox.hidden = true;
+      listbox.innerHTML = "";
+      return;
+    }
+
+    const optionsMarkup = options
+      .map((option, index) => {
+        const isActive = index === this.highlightedIndex;
+        return /*html*/ `
+          <mui-button
+            variant="${isActive ? "secondary" : "tertiary"}"
+            size="small"
+            class="option ${isActive ? "active" : ""}"
+            role="option"
+            aria-selected="${isActive ? "true" : "false"}"
+            data-option-value="${option.value}"
+          >${option.label}</mui-button>
+        `;
+      })
+      .join("");
+
+    const createIndex = options.length;
+    const createMarkup = this.showCreateOption
+      ? /*html*/ `
+          <mui-button
+            variant="${this.highlightedIndex === createIndex ? "secondary" : "tertiary"}"
+            size="small"
+            class="option ${this.highlightedIndex === createIndex ? "active" : ""}"
+            role="option"
+            aria-selected="${this.highlightedIndex === createIndex ? "true" : "false"}"
+            data-option-value="${this.inputValue.trim()}"
+          >Add "${this.inputValue.trim()}"</mui-button>
+        `
+      : "";
+
+    listbox.hidden = false;
+    listbox.innerHTML = `${optionsMarkup}${createMarkup}`;
   }
 
   render() {
@@ -434,13 +486,14 @@ class MuiChipInput extends HTMLElement {
       .map((option, index) => {
         const isActive = index === this.highlightedIndex;
         return /*html*/ `
-          <button
-            type="button"
+          <mui-button
+            variant="${isActive ? "secondary" : "tertiary"}"
+            size="small"
             class="option ${isActive ? "active" : ""}"
             role="option"
             aria-selected="${isActive ? "true" : "false"}"
             data-option-value="${option.value}"
-          >${option.label}</button>
+          >${option.label}</mui-button>
         `;
       })
       .join("");
@@ -448,13 +501,14 @@ class MuiChipInput extends HTMLElement {
     const createIndex = options.length;
     const createMarkup = this.showCreateOption
       ? /*html*/ `
-          <button
-            type="button"
+          <mui-button
+            variant="${this.highlightedIndex === createIndex ? "secondary" : "tertiary"}"
+            size="small"
             class="option ${this.highlightedIndex === createIndex ? "active" : ""}"
             role="option"
             aria-selected="${this.highlightedIndex === createIndex ? "true" : "false"}"
             data-option-value="${this.inputValue.trim()}"
-          >Add "${this.inputValue.trim()}"</button>
+          >Add "${this.inputValue.trim()}"</mui-button>
         `
       : "";
 
@@ -550,16 +604,8 @@ class MuiChipInput extends HTMLElement {
         }
         .option {
           width: 100%;
-          text-align: left;
-          border: none;
-          background: transparent;
-          padding: var(--space-200) var(--space-300);
-          cursor: pointer;
-          color: var(--text-color);
-        }
-        .option.active,
-        .option:hover {
-          background: var(--surface-elevated-200);
+          justify-content: flex-start;
+          --button-width: 100%;
         }
       </style>
 
@@ -585,11 +631,9 @@ class MuiChipInput extends HTMLElement {
           ${chipsMarkup}
         </mui-input>
 
-        ${
-          showList
-            ? `<div id="${listId}" class="listbox" role="listbox">${optionsMarkup}${createMarkup}</div>`
-            : ""
-        }
+        <div id="${listId}" class="listbox" role="listbox" ${showList ? "" : "hidden"}>
+          ${showList ? `${optionsMarkup}${createMarkup}` : ""}
+        </div>
       </div>
 
       ${hiddenInputs}

@@ -28,13 +28,15 @@ class MuiStepper extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.setAttribute("direction", this.getAttribute("direction") || "horizontal");
-    this.setAttribute("active-step", this.getAttribute("active-step") || "1");
-    const rawSize = this.getAttribute("size");
-    this.setAttribute("size", rawSize === "x-small" || rawSize === "small" ? rawSize : "medium");
   }
 
   connectedCallback() {
+    if (!this.hasAttribute("direction")) this.setAttribute("direction", "horizontal");
+    if (!this.hasAttribute("active-step")) this.setAttribute("active-step", "1");
+    const rawSize = this.getAttribute("size");
+    if (!(rawSize === "x-small" || rawSize === "small" || rawSize === "medium")) {
+      this.setAttribute("size", "medium");
+    }
     this.addEventListener("keydown", this.onKeyDown);
     this.render();
   }

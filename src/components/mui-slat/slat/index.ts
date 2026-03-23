@@ -133,13 +133,18 @@ class MuiSlat extends HTMLElement {
         --slat-background-hover: var(--slat-card-background-hover);
       }
 
-      :host([condensed-slot]) .action::part(border-radius) {
-        border-radius: 0; 
+      :host([radius="none"]) .action::part(border-radius) {
+        border-radius: 0;
       }
 
-      :host([condensed-slot]:last-of-type) .action::part(border-radius) {
-        border-bottom-left-radius: var(--card-radius); 
-        border-bottom-right-radius: var(--card-radius); 
+      :host([radius="none"][condensed-slot]:first-of-type) .action::part(border-radius) {
+        border-top-left-radius: var(--card-radius);
+        border-top-right-radius: var(--card-radius);
+      }
+
+      :host([radius="none"][condensed-slot]:last-of-type) .action::part(border-radius) {
+        border-bottom-left-radius: var(--card-radius);
+        border-bottom-right-radius: var(--card-radius);
       }
 
       ::slotted(mui-avatar) {

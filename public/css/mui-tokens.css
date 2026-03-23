@@ -796,6 +796,11 @@ html[data-theme="dark"] {
   --action-after-slot-padding: var(--space-300);
   --action-icon-only-padding: var(--space-000);
   --action-icon-only-size: 4.4rem;
+  --row-action-xxs: calc(var(--action-icon-only-size-x-small) - var(--space-100));
+  --row-action-xs: var(--action-icon-only-size-x-small);
+  --row-action-s: var(--action-icon-only-size-small);
+  --row-action-m: var(--action-icon-only-size);
+  --row-action-l: var(--action-icon-only-size-large);
 
   /* SIZE: LARGE */
   --action-radius-large: var(--radius-300);

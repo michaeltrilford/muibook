@@ -1,6 +1,10 @@
 import "../mui-button";
 
 class MuiFileUpload extends HTMLElement {
+  static get observedAttributes() {
+    return ["accepted-file-types", "current-file-name", "acceptedfiletypes", "currentfilename"];
+  }
+
   acceptedFileTypes: string;
   currentFileName: string;
   selectedFileName: string | null;
@@ -18,13 +22,40 @@ class MuiFileUpload extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
 
-    this.acceptedFileTypes = this.getAttribute("acceptedFileTypes") || "";
-    this.currentFileName = this.getAttribute("currentFileName") || "";
+    this.acceptedFileTypes = this.readAcceptedFileTypes();
+    this.currentFileName = this.readCurrentFileName();
 
     this.selectedFileName = null;
   }
 
+  private readAcceptedFileTypes() {
+    return this.getAttribute("accepted-file-types") || this.getAttribute("acceptedFileTypes") || this.getAttribute("acceptedfiletypes") || "";
+  }
+
+  private readCurrentFileName() {
+    return this.getAttribute("current-file-name") || this.getAttribute("currentFileName") || this.getAttribute("currentfilename") || "";
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (oldValue === newValue) return;
+
+    if (name === "accepted-file-types" || name === "acceptedfiletypes") {
+      this.acceptedFileTypes = this.readAcceptedFileTypes();
+      if (this.input) this.input.accept = this.acceptedFileTypes;
+      return;
+    }
+
+    if (name === "current-file-name" || name === "currentfilename") {
+      this.currentFileName = this.readCurrentFileName();
+      if (!this.selectedFileName && this.label) {
+        this.label.textContent = this.currentFileName || "No file selected";
+      }
+    }
+  }
+
   connectedCallback() {
+    this.acceptedFileTypes = this.readAcceptedFileTypes();
+    this.currentFileName = this.readCurrentFileName();
     this.render();
     this.cacheElements();
     this.attachEvents();
@@ -103,7 +134,7 @@ class MuiFileUpload extends HTMLElement {
         }
       </style>
       <div class="wrapper">
-        <span class="label">${this.currentFileName}</span>
+        <span class="label">${this.selectedFileName || this.currentFileName || "No file selected"}</span>
         <mui-button variant="tertiary">Browse</mui-button>
         <input type="file" accept="${this.acceptedFileTypes}" />
       </div>

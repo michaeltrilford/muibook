@@ -132,9 +132,16 @@ class MuiCardBody extends HTMLElement {
           padding-bottom: var(--space-200);
         }
         @media (min-width: 768px) {
-        :host([has-card-slat-group]) {
-          padding-bottom: var(--space-500);
+          :host([has-card-slat-group]) {
+            padding-bottom: var(--space-500);
+          }
         }
+
+        :host([condensed]),
+        :host([condensed][inner-space]),
+        :host([condensed][has-card-slat-group]),
+        :host([condensed][has-accordion-slat-group]) {
+          padding: var(--space-000);
         }
         
       </style>
