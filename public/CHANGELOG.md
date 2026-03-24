@@ -1,5 +1,20 @@
 ## Header [Start]
 
+## v19.0.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.0.1)
+
+## Header [End]
+
+### Fixed
+
+- `mui-responsive` now reinitializes when `breakpoint`, `breakpoint-low`, or `breakpoint-high` changes.
+- `mui-responsive` now cleans up and rebinds `matchMedia` listeners on disconnect/reconnect.
+
+---
+
+## Header [Start]
+
 ## v19.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.0.0)
