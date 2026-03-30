@@ -176,7 +176,7 @@ class MuiInput extends HTMLElement {
         large: "small",
       };
       const inlineBadgeSizeMap: Record<string, string> = {
-        "x-small": "x-small",
+        "x-small": "xx-small",
         small: "x-small",
         medium: "small",
         large: "medium",
@@ -215,7 +215,7 @@ class MuiInput extends HTMLElement {
           large: "small",
         };
         const hintBadgeSizeMap: Record<string, string> = {
-          "x-small": "x-small",
+          "x-small": "xx-small",
           small: "x-small",
           medium: "small",
           large: "medium",

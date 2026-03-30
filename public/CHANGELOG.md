@@ -1,5 +1,19 @@
 ## Header [Start]
 
+## v19.1.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.1.1)
+
+## Header [End]
+
+### Fixed
+
+- `mui-input` now maps slotted badges to `xx-small` when the input size is `x-small`, keeping inline badge affordances visually aligned at the smallest size.
+
+---
+
+## Header [Start]
+
 ## v19.1.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.1.0)
@@ -14,6 +28,7 @@
 
 ### Fixed
 
+- `mui-accordion-block` and `mui-accordion-inline` now respond cleanly to heading/size/detail content updates by re-rendering on observed attribute changes and re-syncing open height when slotted detail content changes; accordion detail slat groups also keep `usage="accordion"` applied.
 - Removed the misleading fallback shell background from `mui-chip-input`; the component now relies on the mapped token value instead of an implicit hardcoded color.
 - `mui-input` internal affordance spacing now measures actual slotted inside/hint content so padding stays consistent across sizes without relying on runtime attrs.
 - `mui-input` now pushes size-aware slot height to slotted `mui-button` / `mui-link` controls, and input-composed buttons keep their flush `000` seam radius across size states.
