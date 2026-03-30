@@ -275,7 +275,7 @@ class MuiButton extends HTMLElement {
     :host([slot="before"][usage="input"]) button,
     :host([slot="after"][usage="input"]) button {
       border: var(--border-thin);
-      min-height: 4.4rem;
+      min-height: var(--input-slot-min-height);
       background: var(--input-background);
       color: var(--action-secondary-text-color);
       border-color: var(--form-default-border-color);
@@ -523,6 +523,25 @@ class MuiButton extends HTMLElement {
       line-height: var(--text-line-height-l);
       padding: var(--action-padding-large);
       border-radius: var(--action-radius-large);
+    }
+
+    /* Keep input-composed buttons flush against the input edge after size radius applies. */
+    :host([slot="before"][usage="input"]) button,
+    :host([slot="before"][usage="input"]) button:hover,
+    :host([slot="before"][usage="input"]) button:focus,
+    :host([slot="before"][usage="input"]) button:focus-visible,
+    :host([slot="before"][usage="input"]) button:disabled {
+      border-top-right-radius: var(--radius-000);
+      border-bottom-right-radius: var(--radius-000);
+    }
+
+    :host([slot="after"][usage="input"]) button,
+    :host([slot="after"][usage="input"]) button:hover,
+    :host([slot="after"][usage="input"]) button:focus,
+    :host([slot="after"][usage="input"]) button:focus-visible,
+    :host([slot="after"][usage="input"]) button:disabled {
+      border-top-left-radius: var(--radius-000);
+      border-bottom-left-radius: var(--radius-000);
     }
 
     /* Dropdown slot corner radius must win over size radius rules */

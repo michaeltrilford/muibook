@@ -3,10 +3,29 @@ import "../../mui-heading";
 
 /* Mui Accordion */
 class MuiAccordionBlock extends HTMLElement {
+  static get observedAttributes() {
+    return ["heading", "size", "level", "detail-space"];
+  }
+
   private summaryEl: HTMLElement | null = null;
   private detailEl: HTMLElement | null = null;
   private chevronEl: HTMLElement | null = null;
+  private detailSlotEl: HTMLSlotElement | null = null;
   private accordionId!: string;
+
+  private readonly handleSummaryClick = () => this.toggleAccordion();
+
+  private readonly handleSummaryKeydown = (e: KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      this.toggleAccordion();
+    }
+  };
+
+  private readonly handleDetailSlotChange = () => {
+    this.applyAccordionUsage();
+    this.syncOpenHeight();
+  };
 
   private getDetailEl(): HTMLElement | null {
     if (!this.detailEl) {
@@ -24,14 +43,68 @@ class MuiAccordionBlock extends HTMLElement {
   }
 
   connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback(_name: string, oldValue: string | null, newValue: string | null) {
+    if (oldValue === newValue || !this.isConnected) return;
+    this.render();
+  }
+
+  private applyAccordionUsage() {
+    requestAnimationFrame(() => {
+      const slot = this.detailSlotEl || this.shadowRoot?.querySelector('slot[name="detail"]') as HTMLSlotElement | null;
+
+      if (!slot) return;
+
+      const slottedNodes = slot.assignedElements({ flatten: true });
+      slottedNodes.forEach((node) => {
+        const slatGroups =
+          node.tagName?.toLowerCase() === "mui-slat-group"
+            ? [node]
+            : Array.from(node.querySelectorAll?.("mui-slat-group") || []);
+
+        slatGroups.forEach((slatGroup) => {
+          if (!slatGroup.hasAttribute("usage")) {
+            slatGroup.setAttribute("usage", "accordion");
+          }
+        });
+      });
+    });
+  }
+
+  private bindEvents() {
+    this.summaryEl?.removeEventListener("click", this.handleSummaryClick);
+    this.summaryEl?.removeEventListener("keydown", this.handleSummaryKeydown);
+    this.summaryEl?.addEventListener("click", this.handleSummaryClick);
+    this.summaryEl?.addEventListener("keydown", this.handleSummaryKeydown);
+
+    this.detailSlotEl?.removeEventListener("slotchange", this.handleDetailSlotChange);
+    this.detailSlotEl?.addEventListener("slotchange", this.handleDetailSlotChange);
+  }
+
+  private syncOpenHeight() {
+    const detailEl = this.getDetailEl();
+    if (!detailEl || !detailEl.hasAttribute("open")) return;
+
+    requestAnimationFrame(() => {
+      const liveDetailEl = this.getDetailEl();
+      if (!liveDetailEl || !liveDetailEl.hasAttribute("open")) return;
+      liveDetailEl.style.maxHeight = liveDetailEl.scrollHeight + "px";
+    });
+  }
+
+  private render() {
     if (!this.shadowRoot) return;
+
+    const wasOpen = this.getDetailEl()?.hasAttribute("open") ?? false;
     const headingText = this.getAttribute("heading") || "Heading...";
     const size = this.getAttribute("size") || "medium";
     const headingLevel = this.getAttribute("level") || "3";
     const detailSpace = this.getAttribute("detail-space");
     const detailSpaceClass = detailSpace ? `detail-space-${detailSpace}` : "";
 
-    let html = /*html*/ `
+    const html = /*html*/ `
     <style>
 
       :host { display: block; }
@@ -96,7 +169,7 @@ class MuiAccordionBlock extends HTMLElement {
       .size-large-summary {
         padding: var(--space-500) var(--space-600);
       }
-        
+
       .size-small-detail {
         padding: var(--space-500);
       }
@@ -115,7 +188,6 @@ class MuiAccordionBlock extends HTMLElement {
         border-top: none;
       }
 
-      /* Card Slot (Supports: Table Cell, Accordion Block) */
       :host([card-slot]) .accordion-summary {
         padding-left: var(--space-500);
         padding-right: var(--space-500);
@@ -149,7 +221,6 @@ class MuiAccordionBlock extends HTMLElement {
         }
       }
 
-
     </style>
 
     <div
@@ -170,49 +241,25 @@ class MuiAccordionBlock extends HTMLElement {
         <slot name="detail">Insert Content</slot>
       </div>
     </div>
-    
     `;
 
     this.shadowRoot.innerHTML = html;
-
-    // Auto-assign usage="card" to slat-groups inside the detail slot
-    requestAnimationFrame(() => {
-      const slot = this.shadowRoot!.querySelector('slot[name="detail"]') as HTMLSlotElement;
-
-      if (slot) {
-        const slottedNodes = slot.assignedElements({ flatten: true });
-
-        slottedNodes.forEach((node) => {
-          const slatGroups =
-            node.tagName?.toLowerCase() === "mui-slat-group"
-              ? [node]
-              : Array.from(node.querySelectorAll?.("mui-slat-group") || []);
-
-          slatGroups.forEach((slatGroup) => {
-            if (!slatGroup.hasAttribute("usage")) {
-              slatGroup.setAttribute("usage", "accordion");
-            }
-          });
-        });
-      }
-    });
-
     this.summaryEl = this.shadowRoot.querySelector(".accordion-summary");
     this.detailEl = this.shadowRoot.querySelector(".accordion-detail");
     this.chevronEl = this.shadowRoot.querySelector("mui-icon-down-chevron");
+    this.detailSlotEl = this.shadowRoot.querySelector('slot[name="detail"]');
 
     if (!this.summaryEl || !this.detailEl || !this.chevronEl) {
       console.error("Accordion elements not found");
       return;
     }
 
-    this.summaryEl?.addEventListener("click", () => this.toggleAccordion());
-    this.summaryEl?.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        this.toggleAccordion();
-      }
-    });
+    this.bindEvents();
+    this.applyAccordionUsage();
+    this.setOpen(wasOpen);
+    if (wasOpen) {
+      this.detailEl.style.maxHeight = this.detailEl.scrollHeight + "px";
+    }
   }
 
   toggleAccordion() {
@@ -250,7 +297,7 @@ class MuiAccordionBlock extends HTMLElement {
       this.chevronEl.removeAttribute("open");
       this.summaryEl.setAttribute("aria-expanded", "false");
       if (innerDetail) innerDetail.setAttribute("inert", "");
-      detailEl.style.maxHeight = "0"; // ensure height collapses
+      detailEl.style.maxHeight = "0";
     }
   }
 

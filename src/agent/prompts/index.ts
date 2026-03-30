@@ -129,7 +129,7 @@ Rules:
       },
       buttonGroup: {
         default: `<mui-button-group>...</mui-button-group>`,
-        alignedRight: `<mui-button-group right>...</mui-button-group>`,
+        alignedRight: `<mui-button-group align="right">...</mui-button-group>`,
       },
       chip: `<mui-chip>...</mui-chip>`,
       dropdown: `<mui-dropdown>...</mui-dropdown>`,

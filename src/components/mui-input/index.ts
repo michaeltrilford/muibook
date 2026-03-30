@@ -18,6 +18,7 @@ class MuiInput extends HTMLElement {
   }
 
   _changeHandler?: (e: Event) => void;
+  _slotResizeObserver?: ResizeObserver;
 
   constructor() {
     super();
@@ -33,6 +34,7 @@ class MuiInput extends HTMLElement {
   disconnectedCallback() {
     // Clean up event listeners
     this.cleanupListeners();
+    this._slotResizeObserver?.disconnect();
   }
 
   attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null): void {
@@ -121,7 +123,16 @@ class MuiInput extends HTMLElement {
 
       const beforeSlot = this.shadowRoot?.querySelector('slot[name="before"]') as HTMLSlotElement | null;
       const afterSlot = this.shadowRoot?.querySelector('slot[name="after"]') as HTMLSlotElement | null;
+      const insideBeforeSlot = this.shadowRoot?.querySelector('slot[name="inside-before"]') as HTMLSlotElement | null;
+      const insideAfterSlot = this.shadowRoot?.querySelector('slot[name="inside-after"]') as HTMLSlotElement | null;
       const hintSlot = this.shadowRoot?.querySelector('slot[name="hint"]') as HTMLSlotElement | null;
+      const slotMinHeightMap: Record<string, string> = {
+        "x-small": "var(--action-icon-only-size-x-small)",
+        small: "var(--action-icon-only-size-small)",
+        medium: "var(--action-icon-only-size)",
+        large: "var(--action-icon-only-size-large)",
+      };
+      const slotMinHeight = slotMinHeightMap[normalizedSize] || "var(--action-icon-only-size)";
 
       const updateButtonsInSlot = (slot: HTMLSlotElement | null) => {
         if (!slot) return;
@@ -136,6 +147,7 @@ class MuiInput extends HTMLElement {
               el.setAttribute("usage", "input");
               // Keep add-on controls aligned with input size.
               el.setAttribute("size", normalizedSize);
+              el.style.setProperty("--input-slot-min-height", slotMinHeight);
               // Remove variant attribute completely
               el.removeAttribute("variant");
               // Remove weight attribute completely
@@ -156,6 +168,44 @@ class MuiInput extends HTMLElement {
 
       updateButtonsInSlot(beforeSlot);
       updateButtonsInSlot(afterSlot);
+
+      const inlineIconSizeMap: Record<string, string> = {
+        "x-small": "xx-small",
+        small: "x-small",
+        medium: "x-small",
+        large: "small",
+      };
+      const inlineBadgeSizeMap: Record<string, string> = {
+        "x-small": "x-small",
+        small: "x-small",
+        medium: "small",
+        large: "medium",
+      };
+      const inlineIconSize = inlineIconSizeMap[normalizedSize] || "x-small";
+      const inlineBadgeSize = inlineBadgeSizeMap[normalizedSize] || "small";
+
+      const updateInlineSlot = (slot: HTMLSlotElement | null) => {
+        if (!slot) return;
+        slot.assignedNodes({ flatten: true }).forEach((node: Node) => {
+          if (node.nodeType !== Node.ELEMENT_NODE) return;
+          const el = node as HTMLElement;
+          const tagName = el.tagName.toLowerCase();
+          if (tagName === "mui-hint") {
+            el.removeAttribute("aria-hidden");
+            return;
+          }
+          if (tagName.startsWith("mui-icon-")) {
+            el.setAttribute("size", inlineIconSize);
+          }
+          if (tagName === "mui-badge") {
+            el.setAttribute("size", inlineBadgeSize);
+          }
+          el.setAttribute("aria-hidden", "true");
+        });
+      };
+
+      updateInlineSlot(insideBeforeSlot);
+      updateInlineSlot(insideAfterSlot);
 
       if (hintSlot) {
         const hintIconSizeMap: Record<string, string> = {
@@ -188,6 +238,26 @@ class MuiInput extends HTMLElement {
           }
           el.setAttribute("aria-hidden", "true");
         });
+      }
+
+      this._slotResizeObserver?.disconnect();
+
+      const insideBeforeEl = this.shadowRoot?.querySelector(".inside-before-slot") as HTMLElement | null;
+      const insideAfterClusterEl = this.shadowRoot?.querySelector(".inside-after-cluster") as HTMLElement | null;
+
+      const syncInlineSpacing = () => {
+        const insideBeforeWidth = insideBeforeEl?.offsetWidth || 0;
+        const insideAfterWidth = insideAfterClusterEl?.offsetWidth || 0;
+        this.style.setProperty("--input-inside-before-space", `${insideBeforeWidth}px`);
+        this.style.setProperty("--input-inside-after-space", `${insideAfterWidth}px`);
+      };
+
+      syncInlineSpacing();
+
+      if (typeof ResizeObserver !== "undefined") {
+        this._slotResizeObserver = new ResizeObserver(() => syncInlineSpacing());
+        if (insideBeforeEl) this._slotResizeObserver.observe(insideBeforeEl);
+        if (insideAfterClusterEl) this._slotResizeObserver.observe(insideAfterClusterEl);
       }
     });
   }
@@ -237,8 +307,17 @@ class MuiInput extends HTMLElement {
     // ADD-ON
     const hasBefore = this.querySelector('[slot="before"]') !== null;
     const hasAfter = this.querySelector('[slot="after"]') !== null;
+    const hasInsideBefore = this.querySelector('[slot="inside-before"]') !== null;
+    const hasInsideAfter = this.querySelector('[slot="inside-after"]') !== null;
     const hasHint = this.querySelector('[slot="hint"]') !== null;
-    const inputClasses = [variantClass, hasBefore ? "before" : "", hasAfter ? "after" : "", hasHint ? "hint" : ""]
+    const inputClasses = [
+      variantClass,
+      hasBefore ? "before" : "",
+      hasAfter ? "after" : "",
+      hasInsideBefore ? "inside-before" : "",
+      hasInsideAfter ? "inside-after" : "",
+      hasHint ? "hint" : "",
+    ]
       .filter(Boolean)
       .join(" ");
 
@@ -248,6 +327,20 @@ class MuiInput extends HTMLElement {
           display: inline-block;
           width: 100%;
           container-type: inline-size;
+          --input-inline-offset: var(--space-300);
+          --input-inline-gap: var(--space-100);
+        }
+        :host([size="x-small"]) {
+          --input-inline-offset: var(--space-200);
+        }
+        :host([size="small"]) {
+          --input-inline-offset: var(--space-300);
+        }
+        :host([size="medium"]) {
+          --input-inline-offset: var(--space-300);
+        }
+        :host([size="large"]) {
+          --input-inline-offset: var(--space-400);
         }
         :host([type="date"]),
         :host([type="time"]),
@@ -293,11 +386,20 @@ class MuiInput extends HTMLElement {
           align-items: stretch;
           position: relative;
         }
+        .input-shell {
+          position: relative;
+          flex: 1 1 auto;
+          min-width: 0;
+          display: flex;
+          align-items: stretch;
+        }
         .input-wrapper.stack-mobile {
           display: flex;
         }
         .before-slot,
         .after-slot,
+        .inside-before-slot,
+        .inside-after-slot,
         .hint-slot {
           display: inline-flex;
           align-items: stretch;
@@ -308,12 +410,12 @@ class MuiInput extends HTMLElement {
           scrollbar-width: thin;
           flex: 0 1 auto;
         }
-        .hint-slot {
+        .inside-before-slot {
           position: absolute;
-          right: var(--space-300);
+          left: var(--input-inline-offset);
           top: 50%;
           transform: translateY(-50%);
-          z-index: 1;
+          z-index: 2;
           pointer-events: none;
           display: inline-flex;
           align-items: center;
@@ -323,14 +425,28 @@ class MuiInput extends HTMLElement {
           overflow: visible;
           flex: 0 0 auto;
         }
-        :host([size="x-small"]) .hint-slot {
-          right: var(--space-200);
+        .inside-after-cluster {
+          position: absolute;
+          right: var(--input-inline-offset);
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--space-100);
+          overflow: visible;
+          flex: 0 0 auto;
         }
-        :host([size="small"]) .hint-slot {
-          right: var(--space-300);
-        }
-        :host([size="large"]) .hint-slot {
-          right: var(--space-400);
+        .hint-slot {
+          pointer-events: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-color-optional);
+          gap: var(--space-100);
+          overflow: visible;
+          flex: 0 0 auto;
         }
         .before-slot {
           max-width: none;
@@ -361,9 +477,12 @@ class MuiInput extends HTMLElement {
           overflow-y: visible;
         }
         .input-wrapper.stack-mobile .hint-slot {
-          right: var(--space-200);
+          position: static;
+          transform: none;
+        }
+        .input-wrapper.stack-mobile .inside-before-slot,
+        .input-wrapper.stack-mobile .inside-after-cluster {
           top: calc(var(--action-icon-only-size) / 2);
-          transform: translateY(-50%);
         }
         .input-wrapper.stack-mobile slot[name="before"]::slotted(mui-addon),
         .input-wrapper.stack-mobile slot[name="after"]::slotted(mui-addon) {
@@ -460,36 +579,56 @@ class MuiInput extends HTMLElement {
           padding: var(--action-padding-x-small);
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
+          --input-inline-padding-current: var(--space-200);
         }
+        input.size-x-small.inside-before:not(.before) {
+          padding-left: calc(var(--input-inline-padding-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
+        }
+        input.size-x-small.inside-after:not(.after),
         input.size-x-small.hint:not(.after) {
-          padding-right: calc(var(--space-500) + var(--space-200));
+          padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-small {
           min-height: var(--action-icon-only-size-small);
           padding: var(--action-padding-small);
           font-size: var(--text-font-size-s);
           line-height: var(--text-line-height-s);
+          --input-inline-padding-current: var(--space-300);
         }
+        input.size-small.inside-before:not(.before) {
+          padding-left: calc(var(--input-inline-padding-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
+        }
+        input.size-small.inside-after:not(.after),
         input.size-small.hint:not(.after) {
-          padding-right: calc(var(--space-500) + var(--space-300));
+          padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-medium {
           min-height: 4.4rem;
           padding: var(--space-200) var(--space-300);
           font-size: var(--text-font-size);
           line-height: var(--text-line-height);
+          --input-inline-padding-current: var(--space-300);
         }
+        input.size-medium.inside-before:not(.before) {
+          padding-left: calc(var(--input-inline-padding-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
+        }
+        input.size-medium.inside-after:not(.after),
         input.size-medium.hint:not(.after) {
-          padding-right: calc(var(--space-600) + var(--space-300));
+          padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-large {
           min-height: var(--action-icon-only-size-large);
           padding: var(--space-300) var(--space-400);
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);
+          --input-inline-padding-current: var(--space-400);
         }
+        input.size-large.inside-before:not(.before) {
+          padding-left: calc(var(--input-inline-padding-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
+        }
+        input.size-large.inside-after:not(.after),
         input.size-large.hint:not(.after) {
-          padding-right: calc(var(--space-700) + var(--space-300));
+          padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input:hover {
           border-color: var(--form-default-border-color-hover);
@@ -611,9 +750,13 @@ class MuiInput extends HTMLElement {
         slot[name="before"]::slotted(*:focus),
         input:focus,
         slot[name="after"]::slotted(*:focus),
+        slot[name="inside-before"]::slotted(*:focus),
+        slot[name="inside-after"]::slotted(*:focus),
         slot[name="before"]::slotted(*:hover),
         input:hover,
-        slot[name="after"]::slotted(*:hover) { z-index: 1; }
+        slot[name="after"]::slotted(*:hover),
+        slot[name="inside-before"]::slotted(*:hover),
+        slot[name="inside-after"]::slotted(*:hover) { z-index: 1; }
 
       /* Ensure feedback styles appear above SELECT and focusable Items */
         input.success,
@@ -626,10 +769,17 @@ class MuiInput extends HTMLElement {
         /* Slotted items */
         slot[name="before"]::slotted(*),
         slot[name="after"]::slotted(*) { flex: none; }
+        slot[name="inside-before"]::slotted(*),
+        slot[name="inside-after"]::slotted(*) {
+          flex: none;
+          pointer-events: none;
+        }
         slot[name="hint"]::slotted(*) {
           flex: none;
           pointer-events: none;
         }
+        slot[name="inside-before"]::slotted(mui-hint),
+        slot[name="inside-after"]::slotted(mui-hint),
         slot[name="hint"]::slotted(mui-hint) {
           pointer-events: auto;
         }
@@ -653,19 +803,41 @@ class MuiInput extends HTMLElement {
       <div class="before-slot">
         <slot name="before"></slot>
       </div>
-      <input
-        class="${[inputClasses, `size-${normalizedSize}`].filter(Boolean).join(" ")}"
-        type="${type}"
-        name="${name}"
-        id="${id}"
-        value="${value}"
-        placeholder="${placeholder}"
-        ${disabled ? 'disabled aria-disabled="true"' : ""}
-        ${maxLength ? `maxlength="${maxLength}"` : ""}
-        ${ariaLabel}
-      />
-      <div class="hint-slot">
-        <slot name="hint"></slot>
+      <div class="input-shell">
+        <div class="inside-before-slot">
+          <slot name="inside-before"></slot>
+        </div>
+        <input
+          class="${[inputClasses, `size-${normalizedSize}`].filter(Boolean).join(" ")}"
+          type="${type}"
+          name="${name}"
+          id="${id}"
+          value="${value}"
+          placeholder="${placeholder}"
+          ${disabled ? 'disabled aria-disabled="true"' : ""}
+          ${maxLength ? `maxlength="${maxLength}"` : ""}
+          ${ariaLabel}
+        />
+        ${
+          hasInsideAfter || hasHint
+            ? `<div class="inside-after-cluster">
+          ${
+            hasInsideAfter
+              ? `<div class="inside-after-slot">
+            <slot name="inside-after"></slot>
+          </div>`
+              : ""
+          }
+          ${
+            hasHint
+              ? `<div class="hint-slot">
+            <slot name="hint"></slot>
+          </div>`
+              : ""
+          }
+        </div>`
+            : ""
+        }
       </div>
       <div class="after-slot">
         <slot name="after"></slot>

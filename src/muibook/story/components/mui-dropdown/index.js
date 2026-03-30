@@ -286,7 +286,7 @@ class storyDropdown extends HTMLElement {
       </story-card>
 
       <story-card title="Dropdown w/ Icon">
-        <mui-button-group right slot="body">
+        <mui-button-group align="right" slot="body">
           <mui-dropdown>
             <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
             <mui-button>PDF</mui-button>

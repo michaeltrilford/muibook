@@ -130,6 +130,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --surface-recessed-alpha: var(--green-400);
   --surface-recessed-100: var(--green-300);
   --surface-recessed-200: var(--green-400);
+  --chip-input-background: var(--surface-recessed-100);
   /* Stroke */
   --outline-color: var(--green-900);
   --border-color: var(--green-700);
@@ -388,6 +389,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --surface-recessed-100: var(--green-1000);
   --surface-recessed-200: var(--green-1100);
   --surface-recessed-300: var(--green-1200);
+  --chip-input-background: var(--surface-recessed-100);
   /* Stroke */
   --outline-color: var(--green-700);
   --border-color: var(--green-1200);

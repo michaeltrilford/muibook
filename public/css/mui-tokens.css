@@ -230,6 +230,7 @@ html[data-theme="light"] {
   --skeleton-radius: var(--radius-200);
   --skeleton-animation-speed: 2000ms;
   --skeleton-gap: var(--space-200);
+  --chip-input-background: var(--surface-elevated-alpha);
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
@@ -571,6 +572,7 @@ html[data-theme="dark"] {
   --skeleton-radius: var(--radius-200);
   --skeleton-animation-speed: 2000ms;
   --skeleton-gap: var(--space-200);
+  --chip-input-background: var(--grey-900);
   --surface-elevated-300: var(--grey-1000);
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);

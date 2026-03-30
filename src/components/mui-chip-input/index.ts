@@ -563,8 +563,8 @@ class MuiChipInput extends HTMLElement {
           overflow: hidden;
         }
         mui-h-stack.chip-slot-shell {
-          background: var(--chip-input-background, #333333);
-          padding: var(--chip-input-shell-padding, 2px);
+          background: var(--chip-input-background);
+          padding: var(--space-025);
           border: var(--chip-input-shell-border, 1px solid var(--form-default-border-color));
           box-sizing: border-box;
           width: 100%;

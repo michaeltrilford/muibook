@@ -2,9 +2,27 @@ import "../../mui-icons/right-chevron";
 import "../../mui-heading";
 
 class MuiAccordionInline extends HTMLElement {
+  static get observedAttributes() {
+    return ["heading", "level"];
+  }
+
   private summaryEl!: HTMLElement | null;
   private detailEl!: HTMLElement | null;
   private chevronEl!: HTMLElement | null;
+  private detailSlotEl: HTMLSlotElement | null = null;
+
+  private readonly handleSummaryClick = () => this.toggleAccordion();
+
+  private readonly handleSummaryKeydown = (e: KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      this.toggleAccordion();
+    }
+  };
+
+  private readonly handleDetailSlotChange = () => {
+    this.syncOpenHeight();
+  };
 
   constructor() {
     super();
@@ -12,13 +30,43 @@ class MuiAccordionInline extends HTMLElement {
   }
 
   connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback(_name: string, oldValue: string | null, newValue: string | null) {
+    if (oldValue === newValue || !this.isConnected) return;
+    this.render();
+  }
+
+  private bindEvents() {
+    this.summaryEl?.removeEventListener("click", this.handleSummaryClick);
+    this.summaryEl?.removeEventListener("keydown", this.handleSummaryKeydown);
+    this.summaryEl?.addEventListener("click", this.handleSummaryClick);
+    this.summaryEl?.addEventListener("keydown", this.handleSummaryKeydown);
+
+    this.detailSlotEl?.removeEventListener("slotchange", this.handleDetailSlotChange);
+    this.detailSlotEl?.addEventListener("slotchange", this.handleDetailSlotChange);
+  }
+
+  private syncOpenHeight() {
+    if (!this.detailEl || !this.detailEl.hasAttribute("open")) return;
+
+    requestAnimationFrame(() => {
+      if (!this.detailEl || !this.detailEl.hasAttribute("open")) return;
+      this.detailEl.style.maxHeight = this.detailEl.scrollHeight + "px";
+    });
+  }
+
+  private render() {
     if (!this.shadowRoot) return;
+
+    const wasOpen = this.detailEl?.hasAttribute("open") ?? false;
     const headingText = this.getAttribute("heading") || "Heading...";
     const headingLevel = this.getAttribute("level") || "3";
 
-    let html = /*html*/ `
+    const html = /*html*/ `
     <style>
-      :host { 
+      :host {
         display: inline-flex;
         flex-direction: column;
       }
@@ -29,7 +77,6 @@ class MuiAccordionInline extends HTMLElement {
         margin-bottom: var(--space-000);
         cursor: pointer;
       }
-
 
       .accordion-summary:focus-visible {
         outline: var(--outline-thick);
@@ -87,14 +134,18 @@ class MuiAccordionInline extends HTMLElement {
     this.summaryEl = this.shadowRoot.querySelector(".accordion-summary");
     this.detailEl = this.shadowRoot.querySelector(".accordion-detail");
     this.chevronEl = this.shadowRoot.querySelector("mui-icon-right-chevron");
+    this.detailSlotEl = this.shadowRoot.querySelector('slot[name="detail"]');
 
-    this.summaryEl?.addEventListener("click", this.toggleAccordion.bind(this));
-    this.summaryEl?.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        this.toggleAccordion();
-      }
-    });
+    this.bindEvents();
+
+    if (wasOpen && this.detailEl && this.chevronEl && this.summaryEl) {
+      this.detailEl.setAttribute("open", "");
+      this.chevronEl.setAttribute("open", "");
+      this.summaryEl.setAttribute("aria-expanded", "true");
+      const inner = this.detailEl.querySelector(".accordion-detail-inner");
+      inner?.removeAttribute("inert");
+      this.detailEl.style.maxHeight = this.detailEl.scrollHeight + "px";
+    }
   }
 
   toggleAccordion() {

@@ -45,6 +45,13 @@ class storyAvatar extends HTMLElement {
         description: "Background color variant to use inside the avatar. Includes semantic and random profile colors.",
       },
       {
+        name: "size",
+        type: "string",
+        options: "x-small, small, medium, large",
+        default: "medium",
+        description: "Adjusts the avatar size and any slotted icon sizing to match.",
+      },
+      {
         name: "background-color",
         type: "string",
         options: "-",

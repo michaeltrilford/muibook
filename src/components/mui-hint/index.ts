@@ -51,6 +51,7 @@ class MuiHint extends HTMLElement {
           cursor: help;
         }
         .tooltip {
+          display: none;
           position: absolute;
           z-index: 1000;
           min-width: max-content;
@@ -73,6 +74,7 @@ class MuiHint extends HTMLElement {
           transition-duration: 0ms;
         }
         :host([open]) .tooltip {
+          display: block;
           opacity: 1;
           pointer-events: auto;
         }

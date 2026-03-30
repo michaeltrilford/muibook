@@ -42,6 +42,9 @@ When a component uses slots:
 - Prefer touching source under `src/`; `dist/` is generated.
 - Keep changes small and aligned with existing component patterns.
 - If unsure about behavior, search for sibling components in `src/components/` for examples.
+- Story props panels are often defined locally in the Muibook story page via `propItems` arrays. Do not add or reshape component `doc.ts` files just to populate a props panel unless the user explicitly wants that information added to the docs/CEM layer too.
+- Treat `dynamic-attrs.json` as a separate concern from story props. It documents destination/runtime structural attrs (often destination-only) for builder/runtime integration and should not be merged conceptually with the story `propItems` API surface.
+- When documenting dynamic attrs, prefer destination-only output: list where the attrs appear, not where they originate, unless the user explicitly asks for the source relationship.
 - Avoid persisting internal runtime state as public attributes (for example `multi-line`, `has-*`, or similar UI state flags).
 - Prefer CSS-first layout behavior over JS-driven state attrs when a stable visual result can be achieved without runtime attribute toggling.
 - Exported/component-consumed HTML should only include public API attrs; strip internal runtime attrs in export paths.

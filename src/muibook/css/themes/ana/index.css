@@ -128,6 +128,7 @@ html[data-brand="ana"][data-theme="light"] {
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
+  --chip-input-background: var(--surface-recessed-100);
 
   /* Switch */
   --switch-track-background: var(--grey-300);
@@ -316,6 +317,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
   --surface-recessed-200: var(--grey-1100);
+  --chip-input-background: var(--surface-recessed-100);
 
   /* Switch */
   --switch-track-background: var(--grey-700);

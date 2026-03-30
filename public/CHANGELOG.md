@@ -1,5 +1,28 @@
 ## Header [Start]
 
+## v19.1.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.1.0)
+
+## Header [End]
+
+### Changed
+
+- Added public `--chip-input-background` token mapping in Muibook tokens for light and dark themes, and aligned `mui-chip-input` to consume that token for its shell background.
+- `mui-prompt-toggle` story page now defines and surfaces its public prop types directly in the story-level props panel, keeping props UI mapping out of component docs/CEM.
+- `mui-input` now supports `slot="inside-before"` and `slot="inside-after"` for internal leading/trailing affordances, with size-normalized slotted icon/badge treatment and matching story coverage.
+
+### Fixed
+
+- Removed the misleading fallback shell background from `mui-chip-input`; the component now relies on the mapped token value instead of an implicit hardcoded color.
+- `mui-input` internal affordance spacing now measures actual slotted inside/hint content so padding stays consistent across sizes without relying on runtime attrs.
+- `mui-input` now pushes size-aware slot height to slotted `mui-button` / `mui-link` controls, and input-composed buttons keep their flush `000` seam radius across size states.
+- `mui-hint` now removes closed tooltip content from layout flow, preventing hidden hint text from creating horizontal overflow.
+
+---
+
+## Header [Start]
+
 ## v19.0.1
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.0.1)

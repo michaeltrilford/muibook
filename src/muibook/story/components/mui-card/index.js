@@ -345,7 +345,7 @@ class storyCards extends HTMLElement {
               </mui-body>
             </mui-card-body>
             <mui-card-footer>
-              <mui-button-group right>
+              <mui-button-group align="right">
                 <mui-button variant="secondary">Cancel</mui-button>
                 <mui-button variant="primary">Submit</mui-button>
               </mui-button-group>
@@ -365,7 +365,7 @@ class storyCards extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-card-footer&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group right&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group align="right"&gt;
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button
           variant="secondary">Cancel&lt;/mui-button&gt;

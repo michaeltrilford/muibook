@@ -169,17 +169,90 @@ class storyButton extends HTMLElement {
       })
       .join("");
 
+    const buttonGroupPropItems = [
+      {
+        name: "layout",
+        type: "string",
+        options: "row, column",
+        default: "row",
+        description: "Controls the direction of the button group. Column is intended for full-width stacked actions.",
+      },
+      {
+        name: "align",
+        type: "string",
+        options: "left, right",
+        default: "left",
+        description: "Controls alignment for row layouts.",
+      },
+      {
+        name: "right",
+        type: "boolean",
+        options: "right",
+        default: "",
+        description: "Deprecated legacy alignment attribute. Prefer align='right'.",
+      },
+    ];
+
+    const buttonGroupRows = buttonGroupPropItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            name="${prop.name}"
+            type="${prop.type}" 
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `,
+      )
+      .join("");
+
+    const buttonGroupAccordions = buttonGroupPropItems
+      .map((prop, index) => {
+        const isLastChild = index === buttonGroupPropItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+          <mui-accordion-block 
+            size="medium" 
+            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
+            ${isLastChild}>
+            <story-type-slat
+              slot="detail"
+              name="${prop.name}"
+              type="${prop.type}" 
+              options="${prop.options || ""}"
+              default="${prop.default || ""}"
+              description="${prop.description}">
+            </story-type-slat>
+          </mui-accordion-block>
+        `;
+      })
+      .join("");
+
     const stories = /*html*/ `
-      <props-card title="Button">
-        <mui-responsive breakpoint="767" slot="body">
-          <story-type-table slot="showAbove">
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <mui-v-stack space="var(--space-400)">
+        <props-card title="Button">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${rows}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${accordions}
+            </mui-accordion-group>
+          </mui-responsive>
+        </props-card>
+
+        <props-card title="Button Group">
+          <mui-responsive breakpoint="767" slot="body">
+            <story-type-table slot="showAbove">
+              ${buttonGroupRows}
+            </story-type-table>
+            <mui-accordion-group exclusive slot="showBelow">
+              ${buttonGroupAccordions}
+            </mui-accordion-group>
+          </mui-responsive>
+        </props-card>
+      </mui-v-stack>
 
       <story-card title="Form submissions" id="form-submissions" description="Unfortunately, Web Components can’t rely on type='submit' to handle form submissions due to Shadow DOM boundaries. Instead, manual submission logic needs to be applied to ensure expected behavior.">
         <mui-button variant="primary" slot="body">Sign up</mui-button>
@@ -637,7 +710,7 @@ class storyButton extends HTMLElement {
         '
         usageLink="https://guides.muibook.com/button"
       >
-        <mui-button-group right slot="body">
+        <mui-button-group align="right" slot="body">
           <mui-button variant="secondary">
             Export
             <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
@@ -647,7 +720,7 @@ class storyButton extends HTMLElement {
             </mui-button>
         </mui-button-group>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-button-group right&gt;
+          &lt;mui-button-group align="right"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;...&lt;/mui-button&gt;
           <br />
@@ -662,17 +735,77 @@ class storyButton extends HTMLElement {
         title="Footer: Button-Group" 
         description="Example of actions in a card, dialog or drawer."
       >
-        <mui-button-group right slot="body">
+        <mui-button-group align="right" slot="body">
           <mui-button variant="secondary">Cancel</mui-button>
           <mui-button variant="primary">Submit</mui-button>
         </mui-button-group>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-button-group right&gt;
+          &lt;mui-button-group align="right"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;...&lt;/mui-button&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-button variant="primary"&gt;...&lt;/mui-button&gt;
           <br />
+          &lt;/mui-button-group&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="button-group-layout"
+        title="Button-Group: Layout"
+        description="Use layout to control the group direction."
+        usage='
+          Use layout=&quot;row|column&quot; to define the group direction|||
+          Column layout is intended for full-width stacked actions
+        '
+        usageLink="https://guides.muibook.com/button"
+      >
+        <mui-v-stack slot="body" space="var(--space-300)" alignX="stretch">
+          <mui-button-group layout="row">
+            <mui-button variant="secondary">Cancel</mui-button>
+            <mui-button variant="primary">Submit</mui-button>
+          </mui-button-group>
+          <mui-button-group layout="column">
+            <mui-button variant="secondary">Secondary</mui-button>
+            <mui-button variant="primary">Primary</mui-button>
+          </mui-button-group>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button-group layout="row"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;Cancel&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant="primary"&gt;Submit&lt;/mui-button&gt;<br />
+          &lt;/mui-button-group&gt;<br /><br />
+          &lt;mui-button-group layout="column"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;Secondary&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant="primary"&gt;Primary&lt;/mui-button&gt;<br />
+          &lt;/mui-button-group&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="button-group-alignment"
+        title="Button-Group: Alignment"
+        description="Use align to control button-group placement."
+        usage='
+          Use align=&quot;left|right&quot; to control placement within row groups|||
+          The legacy right attribute is deprecated; prefer align=&quot;right&quot;
+        '
+        usageLink="https://guides.muibook.com/button"
+      >
+        <mui-v-stack slot="body" space="var(--space-300)" alignX="stretch">
+          <mui-button-group layout="row" align="left">
+            <mui-button variant="secondary">Back</mui-button>
+            <mui-button variant="primary">Continue</mui-button>
+          </mui-button-group>
+          <mui-button-group layout="row" align="right">
+            <mui-button variant="secondary">Back</mui-button>
+            <mui-button variant="primary">Continue</mui-button>
+          </mui-button-group>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button-group layout="row" align="right"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;Back&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant="primary"&gt;Continue&lt;/mui-button&gt;<br />
           &lt;/mui-button-group&gt;
         </story-code-block>
       </story-card>
@@ -949,7 +1082,7 @@ class storyButton extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="form-submissions::Form submissions|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
+          links="form-submissions::Form submissions|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||button-group::Header: Button-Group|||footer-button-group::Footer: Button-Group|||button-group-layout::Button-Group: Layout|||button-group-alignment::Button-Group: Alignment|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
         ></story-quicklinks>
 
         ${stories}

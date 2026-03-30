@@ -122,6 +122,27 @@ class storyInput extends HTMLElement {
         default: "",
         description: "Slot in elements to appear flush next to the input",
       },
+      {
+        name: "slot=&#8220;inside-before&#8221;",
+        type: "slot (named)",
+        options: "mui-icon-*, mui-badge, mui-hint",
+        default: "",
+        description: "Adds internal leading affordance content inside the input edge. Slotted icon and badge sizing is forced to match the input size.",
+      },
+      {
+        name: "slot=&#8220;inside-after&#8221;",
+        type: "slot (named)",
+        options: "mui-icon-*, mui-badge, mui-hint",
+        default: "",
+        description: "Adds internal trailing affordance content inside the input edge. Slotted icon and badge sizing is forced to match the input size.",
+      },
+      {
+        name: "slot=&#8220;hint&#8221;",
+        type: "slot (named)",
+        options: "mui-hint",
+        default: "",
+        description: "Adds a contextual hint/overlay marker inside the input field edge.",
+      },
     ];
 
     const rows = propItems
@@ -402,50 +423,80 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="After: Button" 
+      <story-card title="Button: Before & After" 
         usageLink="https://guides.muibook.com/input"
       >
-        <div slot="body">
-          <mui-input type="email" label="Email" value="mui-web-components@proton.me">
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-input size="x-small" type="search" label="Search docs">
+            <mui-button slot="before">Search</mui-button>
+          </mui-input>
+          <mui-input size="small" type="search" label="Search docs">
+            <mui-button slot="before">Search</mui-button>
+          </mui-input>
+          <mui-input size="medium" type="search" label="Search docs">
+            <mui-button slot="before">Search</mui-button>
+          </mui-input>
+          <mui-input size="large" type="search" label="Search docs">
+            <mui-button slot="before">Search</mui-button>
+          </mui-input>
+          <mui-input size="x-small" type="email" label="Email" value="mui-web-components@proton.me">
             <mui-button slot="after">Copy</mui-button>
           </mui-input>
-        </div>
+          <mui-input size="small" type="email" label="Email" value="mui-web-components@proton.me">
+            <mui-button slot="after">Copy</mui-button>
+          </mui-input>
+          <mui-input size="medium" type="email" label="Email" value="mui-web-components@proton.me">
+            <mui-button slot="after">Copy</mui-button>
+          </mui-input>
+          <mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me">
+            <mui-button slot="after">Copy</mui-button>
+          </mui-input>
+        </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
-          <br />
-          &nbsp;&nbsp;type="email" 
-          <br />
-          &nbsp;&nbsp;label="Email" 
-          <br />
-          &nbsp;&nbsp;value="mui-web-components@proton.me"
-          <br />
-          &gt;
-          <br>
+          &lt;mui-input size="x-small" type="search" label="Search docs"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="before"&gt;Search&lt;/mui-button&gt;<br>
+          &lt;/mui-input&gt;<br><br>
+          &lt;mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br>
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>
 
-      <story-card title="After: Link" 
+      <story-card title="Link: Before & After" 
         usageLink="https://guides.muibook.com/input"
       >
-        <div slot="body">
-          <mui-input type="email" label="Email" value="mui-web-components@proton.me">
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-input size="x-small" type="search" label="Search docs">
+            <mui-link href="/#/input" slot="before">Docs</mui-link>
+          </mui-input>
+          <mui-input size="small" type="search" label="Search docs">
+            <mui-link href="/#/input" slot="before">Docs</mui-link>
+          </mui-input>
+          <mui-input size="medium" type="search" label="Search docs">
+            <mui-link href="/#/input" slot="before">Docs</mui-link>
+          </mui-input>
+          <mui-input size="large" type="search" label="Search docs">
+            <mui-link href="/#/input" slot="before">Docs</mui-link>
+          </mui-input>
+          <mui-input size="x-small" type="email" label="Email" value="mui-web-components@proton.me">
             <mui-link href="/#/input" slot="after">Help</mui-link>
           </mui-input>
-        </div>
+          <mui-input size="small" type="email" label="Email" value="mui-web-components@proton.me">
+            <mui-link href="/#/input" slot="after">Help</mui-link>
+          </mui-input>
+          <mui-input size="medium" type="email" label="Email" value="mui-web-components@proton.me">
+            <mui-link href="/#/input" slot="after">Help</mui-link>
+          </mui-input>
+          <mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me">
+            <mui-link href="/#/input" slot="after">Help</mui-link>
+          </mui-input>
+        </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
-          <br />
-          &nbsp;&nbsp;type="email" 
-          <br />
-          &nbsp;&nbsp;label="Email" 
-          <br />
-          &nbsp;&nbsp;value="mui-web-components@proton.me"
-          <br />
-          &gt;
-          <br>
-          &nbsp;&nbsp;&lt;mui-button slot="after"&gt;Copy&lt;/mui-button&gt;<br>
+          &lt;mui-input size="x-small" type="search" label="Search docs"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-link href="/#/input" slot="before"&gt;Docs&lt;/mui-link&gt;<br>
+          &lt;/mui-input&gt;<br><br>
+          &lt;mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-link href="/#/input" slot="after"&gt;Help&lt;/mui-link&gt;<br>
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>
@@ -540,6 +591,54 @@ class storyInput extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-warning slot="trigger" size="x-small"&gt;&lt;/mui-icon-warning&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;Include https:// in your URL.<br />
           &nbsp;&nbsp;&lt;/mui-hint&gt;<br />
+          &lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Inside Before: Icons" description="Use slot='inside-before' for internal leading affordances. Slotted icon sizes are normalized to the input size."
+        usageLink="https://guides.muibook.com/input"
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-input size="x-small" label="Search">
+            <mui-icon-search slot="inside-before"></mui-icon-search>
+          </mui-input>
+          <mui-input size="small" label="Search">
+            <mui-icon-search slot="inside-before"></mui-icon-search>
+          </mui-input>
+          <mui-input size="medium" label="Search">
+            <mui-icon-search slot="inside-before"></mui-icon-search>
+          </mui-input>
+          <mui-input size="large" label="Search">
+            <mui-icon-search slot="inside-before"></mui-icon-search>
+          </mui-input>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input size="medium" label="Search"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-search slot="inside-before"&gt;&lt;/mui-icon-search&gt;<br />
+          &lt;/mui-input&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Inside After: Icons" description="Use slot='inside-after' for internal trailing affordances. Slotted icon sizes are normalized to the input size."
+        usageLink="https://guides.muibook.com/input"
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-input size="x-small" label="Search">
+            <mui-icon-calendar slot="inside-after"></mui-icon-calendar>
+          </mui-input>
+          <mui-input size="small" label="Search">
+            <mui-icon-calendar slot="inside-after"></mui-icon-calendar>
+          </mui-input>
+          <mui-input size="medium" label="Search">
+            <mui-icon-calendar slot="inside-after"></mui-icon-calendar>
+          </mui-input>
+          <mui-input size="large" label="Search">
+            <mui-icon-calendar slot="inside-after"></mui-icon-calendar>
+          </mui-input>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-input size="medium" label="Search"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-calendar slot="inside-after"&gt;&lt;/mui-icon-calendar&gt;<br />
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>

@@ -569,7 +569,7 @@ class MuiLink extends HTMLElement {
       :host([slot="before"][usage="input"]) a,
       :host([slot="after"][usage="input"]) a {
         border: var(--border-thin);
-        min-height: 4.4rem;
+        min-height: var(--input-slot-min-height);
         background: var(--input-background);
         color: var(--action-secondary-text-color);
         border-color: var(--form-default-border-color);
@@ -637,7 +637,11 @@ class MuiLink extends HTMLElement {
       :host([size="xx-small"][variant]:not([variant="default"])) a,
       :host([size="xx-small"][variant]:not([variant="default"])) a:hover,
       :host([size="xx-small"][variant]:not([variant="default"])) a:focus,
-      :host([size="xx-small"][variant]:not([variant="default"])) a[aria-disabled="true"] {
+      :host([size="xx-small"][variant]:not([variant="default"])) a[aria-disabled="true"],
+      :host([size="xx-small"][usage="input"]) a,
+      :host([size="xx-small"][usage="input"]) a:hover,
+      :host([size="xx-small"][usage="input"]) a:focus,
+      :host([size="xx-small"][usage="input"]) a[aria-disabled="true"] {
         font-size: var(--font-size-15);
         line-height: var(--line-height-25);
         font-weight: var(--font-weight-semi-bold);
@@ -649,7 +653,11 @@ class MuiLink extends HTMLElement {
       :host([size="x-small"][variant]:not([variant="default"])) a,
       :host([size="x-small"][variant]:not([variant="default"])) a:hover,
       :host([size="x-small"][variant]:not([variant="default"])) a:focus,
-      :host([size="x-small"][variant]:not([variant="default"])) a[aria-disabled="true"] {
+      :host([size="x-small"][variant]:not([variant="default"])) a[aria-disabled="true"],
+      :host([size="x-small"][usage="input"]) a,
+      :host([size="x-small"][usage="input"]) a:hover,
+      :host([size="x-small"][usage="input"]) a:focus,
+      :host([size="x-small"][usage="input"]) a[aria-disabled="true"] {
         font-size: var(--text-font-size-xs);
         line-height: var(--text-line-height-xs);
         font-weight: var(--font-weight-semi-bold);
@@ -658,25 +666,47 @@ class MuiLink extends HTMLElement {
         border-radius: var(--action-radius-x-small);
       }
 
-      :host([size="small"][variant]:not([variant="default"])) a {
+      :host([size="small"][variant]:not([variant="default"])) a,
+      :host([size="small"][usage="input"]) a {
         font-size: var(--text-font-size-s);
         line-height: var(--text-line-height-s);
         padding: var(--action-padding-small);
         border-radius: var(--action-radius-small);
       }
 
-      :host([size="medium"][variant]:not([variant="default"])) a {
+      :host([size="medium"][variant]:not([variant="default"])) a,
+      :host([size="medium"][usage="input"]) a {
         font-size: var(--text-font-size-m);
         line-height: var(--text-line-height-m);
         padding: var(--action-padding);
         border-radius: var(--action-radius-medium);
       }
 
-      :host([size="large"][variant]:not([variant="default"])) a {
+      :host([size="large"][variant]:not([variant="default"])) a,
+      :host([size="large"][usage="input"]) a {
         font-size: var(--text-font-size-l);
         line-height: var(--text-line-height-l);
         padding: var(--action-padding-large);
         border-radius: var(--action-radius-large);
+      }
+
+      /* Keep input-composed links flush against the input edge after size radius applies. */
+      :host([slot="before"][usage="input"]) a,
+      :host([slot="before"][usage="input"]) a:hover,
+      :host([slot="before"][usage="input"]) a:focus,
+      :host([slot="before"][usage="input"]) a:focus-visible,
+      :host([slot="before"][usage="input"]) a[aria-disabled="true"] {
+        border-top-right-radius: var(--radius-000);
+        border-bottom-right-radius: var(--radius-000);
+      }
+
+      :host([slot="after"][usage="input"]) a,
+      :host([slot="after"][usage="input"]) a:hover,
+      :host([slot="after"][usage="input"]) a:focus,
+      :host([slot="after"][usage="input"]) a:focus-visible,
+      :host([slot="after"][usage="input"]) a[aria-disabled="true"] {
+        border-top-left-radius: var(--radius-000);
+        border-bottom-left-radius: var(--radius-000);
       }
 
       /* Icon-only size variants */

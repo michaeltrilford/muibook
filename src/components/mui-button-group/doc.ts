@@ -14,6 +14,10 @@ export const muiDocs: MuiDocs = {
 
     usage: {
       list: [
+        "Use layout='row|column' to match the intended action arrangement.",
+        "Use align='left|right' to control action alignment for row layouts.",
+        "Column layout is intended for full-width stacked actions.",
+        "Prefer align='right' instead of the legacy right attribute.",
         "Use small (default) size icon when paired with text-based action is used in a button group.",
         "Use medium size icon when the icon-only action appears on its own. E.g. Menu.",
       ],
