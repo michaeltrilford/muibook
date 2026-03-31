@@ -80,7 +80,7 @@ class ImportCard extends HTMLElement {
         :host { display: block; scroll-margin-top: var(--space-600); }
         mui-card { border: var(--border-thick); }
         mui-card-header { padding: var(--space-400); }
-        mui-card-footer { background: var(--surface-elevated-200); padding: var(--space-400) var(--space-400) var(--space-400) var(--space-700);}
+        mui-card-footer { background: var(--surface-elevated-200); padding: var(--space-400) var(--space-400) var(--space-400) var(--space-700); border-radius: 0 0 var(--card-radius) var(--card-radius); }
         code { 
           font-size: var(--text-font-size-s);
           line-height: var(--text-line-height-s);
