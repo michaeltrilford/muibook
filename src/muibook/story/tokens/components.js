@@ -32,7 +32,7 @@ class tokensComponents extends HTMLElement {
             slot="message"
             heading="Quicklinks"
             limit="10"
-            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slide-frame::Slide Frame|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
+            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||illustration::Illustration|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slide-frame::Slide Frame|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
           ></story-quicklinks>
 
           <spec-card
@@ -226,6 +226,17 @@ class tokensComponents extends HTMLElement {
           <spec-card id="icon" title="Icon" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-icons">
             <story-token-slat slot="body" token="--icon-color-default" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--icon-color-inverted" variant="color"></story-token-slat>
+          </spec-card>
+
+          <spec-card id="illustration" title="Illustration" github="https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-illustrations">
+            <story-token-slat slot="body" token="--illustration-main-color-default" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--illustration-main-color-inverted" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--illustration-shadow-color-default" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--illustration-shadow-color-inverted" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--illustration-size-small" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--illustration-size-medium" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--illustration-size-large" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--illustration-size-x-large" variant="size"></story-token-slat>
           </spec-card>
 
           <spec-card id="image" title="Image" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-image/index.ts">

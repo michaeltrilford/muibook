@@ -63,6 +63,7 @@ import "../components/mui-icons/rectangle-bottom-panel";
 import "../components/mui-icons/pin";
 import "../components/mui-icons/pin-slash";
 import "../components/mui-icons/text-below-folder";
+import "../components/mui-illustrations";
 import "../components/mui-link";
 import "../components/mui-button";
 import "../components/mui-button-group";

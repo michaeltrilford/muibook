@@ -40,11 +40,10 @@ class storyDialog extends HTMLElement {
       },
       {
         name: "slot=&#8220;title&#8221;",
-        required: true,
         type: "slot (named)",
         options: "{mui-heading}",
-        default: "(required)",
-        description: "Slot in a heading element to title the dialog.",
+        default: "",
+        description: "Optional heading content for the dialog. When omitted, the header row and built-in close action are not rendered.",
       },
       {
         name: "slot=&#8220;actions&#8221;",
@@ -260,6 +259,33 @@ class storyDialog extends HTMLElement {
           &nbsp;&nbsp;});<br>
           });<br>
 
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Headerless Dialog">
+        <mui-button variant="secondary" data-dialog="hook-headerless" slot="body">Open Headerless</mui-button>
+        <mui-dialog
+          data-dialog="hook-headerless"
+          width="400px"
+          slot="body"
+          aria-describedby="dialog-desc-headerless"
+        >
+          <mui-body id="dialog-desc-headerless">
+            This dialog has no title slot, so the header row and built-in close action are not rendered.
+          </mui-body>
+          <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
+          <mui-button slot="actions" variant="primary">Confirm</mui-button>
+        </mui-dialog>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button variant="secondary" data-dialog="hook-headerless"&gt;...&lt;/mui-button&gt;<br><br>
+
+          &lt;mui-dialog data-dialog="hook-headerless" width="400px" aria-describedby="dialog-desc-headerless"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-body id="dialog-desc-headerless"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;This dialog has no title slot, so the header row and built-in close action are not rendered.<br>
+          &nbsp;&nbsp;&lt;/mui-body&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
+          &lt;/mui-dialog&gt;
         </story-code-block>
       </story-card>
 

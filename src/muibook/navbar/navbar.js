@@ -150,7 +150,7 @@ class appNavbar extends HTMLElement {
 
     const Components = /*html*/ `
       <app-navbar-group id="web-components" groupname="Components">
-        <mui-body class="first" weight="bold">Prompts</mui-body>
+        <mui-body class="first" weight="bold">AI & LLM</mui-body>
         <app-navbar-link link="#/prompt" title="Prompt"></app-navbar-link>
         <app-navbar-link link="#/prompt-message" title="Prompt Message"></app-navbar-link>
         <app-navbar-link link="#/prompt-preview" title="Prompt Preview"></app-navbar-link>
@@ -161,6 +161,15 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/chip" title="Chip"></app-navbar-link>
         <app-navbar-link link="#/dropdown" title="Dropdown"></app-navbar-link>
         <app-navbar-link link="#/link" title="Link"></app-navbar-link>
+
+        <mui-body weight="bold">Visuals</mui-body>
+        <app-navbar-link link="#/icons" title="Icons"></app-navbar-link>
+        <app-navbar-link link="#/illustrations" title="Illustrations"></app-navbar-link>
+        <app-navbar-link link="#/image" title="Image"></app-navbar-link>
+        <app-navbar-link link="#/media-player" title="Media Player"></app-navbar-link>
+        <app-navbar-link link="#/slide-frame" title="Slide Frame"></app-navbar-link>
+        <app-navbar-link link="#/carousel" title="Carousel"></app-navbar-link>
+        <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>
       
         <mui-body weight="bold">Inputs</mui-body>
         <app-navbar-link link="#/addon" title="Add On"></app-navbar-link>   
@@ -186,18 +195,15 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="#/avatar" title="Avatar"></app-navbar-link>
         <app-navbar-link link="#/body" title="Body"></app-navbar-link>
         <app-navbar-link link="#/code" title="Code"></app-navbar-link>
-        <app-navbar-link link="#/dialog" title="Dialog"></app-navbar-link>
-        <app-navbar-link link="#/drawer" title="Drawer"></app-navbar-link>
         <app-navbar-link link="#/heading" title="Heading"></app-navbar-link>
-        <app-navbar-link link="#/image" title="Image"></app-navbar-link>
-        <app-navbar-link link="#/icons" title="Icons"></app-navbar-link>
         <app-navbar-link link="#/list" title="List"></app-navbar-link>
-        <app-navbar-link link="#/media-player" title="Media Player"></app-navbar-link>
-        <app-navbar-link link="#/slide-frame" title="Slide Frame"></app-navbar-link>
         <app-navbar-link link="#/quote" title="Quote"></app-navbar-link>
         <app-navbar-link link="#/slat" title="Slat"></app-navbar-link>
-        <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>   
         <app-navbar-link link="#/table" title="Table"></app-navbar-link>
+
+        <mui-body weight="bold">Overlays</mui-body>
+        <app-navbar-link link="#/dialog" title="Dialog"></app-navbar-link>
+        <app-navbar-link link="#/drawer" title="Drawer"></app-navbar-link>
 
         <mui-body weight="bold">Layout</mui-body>
         <app-navbar-link link="#/card" title="Card"></app-navbar-link>
@@ -210,13 +216,14 @@ class appNavbar extends HTMLElement {
         <mui-body weight="bold">Feedback</mui-body>
         <app-navbar-link link="#/alert" title="Alert"></app-navbar-link>
         <app-navbar-link link="#/badge" title="Badge"></app-navbar-link>
-        <app-navbar-link link="#/loader" title="Loader"></app-navbar-link>
         <app-navbar-link link="#/message" title="Message"></app-navbar-link>
+
+        <mui-body weight="bold">Loading</mui-body>
+        <app-navbar-link link="#/loader" title="Loader"></app-navbar-link>
         <app-navbar-link link="#/skeleton" title="Skeleton"></app-navbar-link>
         <app-navbar-link link="#/spinner" title="Spinner"></app-navbar-link>
         
         <mui-body weight="bold">Navigation</mui-body>
-        <app-navbar-link link="#/carousel" title="Carousel"></app-navbar-link>
         <app-navbar-link link="#/stepper" title="Stepper"></app-navbar-link>   
         <app-navbar-link link="#/tab-bar" title="Tab Bar"></app-navbar-link>  
         

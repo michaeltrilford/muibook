@@ -188,6 +188,14 @@
       "import": "./dist/esm/components/mui-icons/index.js",
       "types": "./dist/types/components/mui-icons/index.d.ts"
     },
+    "./mui-illustrations": {
+      "import": "./dist/esm/components/mui-illustrations/index.js",
+      "types": "./dist/types/components/mui-illustrations/index.d.ts"
+    },
+    "./mui-illustrations/trash": {
+      "import": "./dist/esm/components/mui-illustrations/trash/index.js",
+      "types": "./dist/types/components/mui-illustrations/trash.d.ts"
+    },
     "./mui-icons/accessibility": {
       "import": "./dist/esm/components/mui-icons/accessibility/index.js",
       "types": "./dist/types/components/mui-icons/accessibility/index.d.ts"

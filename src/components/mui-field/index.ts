@@ -26,7 +26,7 @@ class MuiField extends HTMLElement {
           margin-top: var(--space-300);
         }
         :host([size="x-small"][has-message]) .message-container { margin-top: var(--space-100); }
-        :host([size="small"][has-message]) .message-container { margin-top: var(--space-100); }
+        :host([size="small"][has-message]) .message-container { margin-top: var(--space-200); }
         :host([size="medium"][has-message]) .message-container { margin-top: var(--space-300); }
         :host([size="large"][has-message]) .message-container { margin-top: var(--space-300); }
 
@@ -152,7 +152,9 @@ class MuiField extends HTMLElement {
       return;
     }
 
-    fallback.innerHTML = message ? `<mui-body size="${this.size}" variant="${variant}">${icon}${message}</mui-body>` : "";
+    fallback.innerHTML = message
+      ? `<mui-body size="${this.size}" variant="${variant}">${icon}${message}</mui-body>`
+      : "";
     if (message) this.setAttribute("has-message", "");
     else this.removeAttribute("has-message");
   }
@@ -183,7 +185,7 @@ class MuiField extends HTMLElement {
       });
     }
 
-    const contentSlot = this.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement | null;
+    const contentSlot = this.shadowRoot.querySelector("slot:not([name])") as HTMLSlotElement | null;
     if (contentSlot) {
       contentSlot.addEventListener("slotchange", () => this.passAttributesToChild());
     }

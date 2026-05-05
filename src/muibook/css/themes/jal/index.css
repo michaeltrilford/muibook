@@ -112,6 +112,14 @@ html[data-brand="jal"][data-theme="light"] {
   /* Type */
   --text-color: var(--grey-900);
   --heading-text-color: var(--red-500);
+  --illustration-main-color-default: var(--heading-text-color);
+  --illustration-main-color-inverted: var(--gold-200);
+  --illustration-shadow-color-default: color-mix(in srgb, var(--red-700) 42%, transparent);
+  --illustration-shadow-color-inverted: color-mix(in srgb, var(--gold-600) 55%, transparent);
+  --illustration-size-small: 8rem;
+  --illustration-size-medium: 9.6rem;
+  --illustration-size-large: 11.2rem;
+  --illustration-size-x-large: 12.8rem;
 
   /* Input */
   --input-background: var(--white);
@@ -294,6 +302,14 @@ html[data-brand="jal"][data-theme="dark"] {
   /* Type */
   --text-color: var(--grey-200);
   --heading-text-color: var(--gold-200);
+  --illustration-main-color-default: var(--heading-text-color);
+  --illustration-main-color-inverted: var(--gold-900);
+  --illustration-shadow-color-default: color-mix(in srgb, var(--gold-900) 42%, transparent);
+  --illustration-shadow-color-inverted: color-mix(in srgb, var(--gold-900) 35%, transparent);
+  --illustration-size-small: 8rem;
+  --illustration-size-medium: 9.6rem;
+  --illustration-size-large: 11.2rem;
+  --illustration-size-x-large: 12.8rem;
 
   /* Input */
   --input-background: var(--grey-900);

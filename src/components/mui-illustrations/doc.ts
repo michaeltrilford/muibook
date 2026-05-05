@@ -1,0 +1,87 @@
+import type { MuiDocs } from "../../types/guidelines";
+
+export const muiDocs: MuiDocs = {
+  Illustrations: {
+    title: "Illustrations",
+    description:
+      "Large-format decorative visuals used to support empty states, onboarding moments, and explanatory content without competing with the primary interface.",
+
+    hero: [""],
+    figma: [""],
+    storybook: [""],
+    github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-illustrations"],
+    website: ["https://muibook.com/#/illustrations"],
+    guides: [""],
+
+    usage: {
+      list: [
+        "Use illustrations to add tone and clarity to empty states, helper panels, and onboarding screens.",
+        "Prefer one illustration per message area so the visual supports the content instead of competing with it.",
+        "Use color='default' for light contexts and color='inverted' when the illustration needs to sit on dark surfaces.",
+        "Use a custom CSS color only when the illustration needs to inherit a specific product accent.",
+        "Keep illustration sizing consistent within the same product area.",
+      ],
+    },
+
+    accessibility: {
+      designerList: [""],
+      engineerList: [
+        "Treat illustrations as decorative unless they communicate unique meaning that is not already present in adjacent text.",
+      ],
+    },
+
+    anatomy: {
+      image: "",
+      list: [""],
+    },
+
+    variants: {
+      items: [
+        {
+          key: "trash",
+          title: "Trash",
+          description: "A single illustration export for destructive, discard, or empty-bin related moments.",
+          image: "",
+        },
+      ],
+    },
+
+    compositions: {
+      description: "Illustrations are typically paired with heading, body copy, and one primary action.",
+      items: [
+        {
+          key: "empty-state",
+          name: "Empty State",
+          description: "A compact empty-state composition using an illustration to anchor the message.",
+          image: "",
+        },
+      ],
+    },
+
+    related: {
+      items: [
+        { name: "Icons", link: "https://guides.muibook.com/icons" },
+        { name: "Message", link: "https://guides.muibook.com/message" },
+        { name: "Card", link: "https://guides.muibook.com/card" },
+      ],
+    },
+
+    rules: [
+      {
+        heading: "",
+        description: "",
+        doContent: [{ description: "", image: "" }],
+        dontContent: [{ description: "", image: "" }],
+      },
+    ],
+
+    behaviour: {
+      list: [""],
+    },
+
+    writing: {
+      list: [""],
+    },
+  },
+};
+

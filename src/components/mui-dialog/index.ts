@@ -5,6 +5,8 @@ class MuiDialog extends HTMLElement {
   private dialogEl!: HTMLDialogElement;
   private footerEl!: HTMLElement | null;
   private actionsSlot!: HTMLSlotElement | null;
+  private headerEl!: HTMLElement | null;
+  private titleSlot!: HTMLSlotElement | null;
 
   static get observedAttributes() {
     return ["open", "width", "content-max-height"];
@@ -79,6 +81,10 @@ class MuiDialog extends HTMLElement {
       .actions[hidden] {
         display: none !important;
       }
+
+      .header[hidden] {
+        display: none !important;
+      }
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -100,6 +106,8 @@ class MuiDialog extends HTMLElement {
     this.dialogEl = this.shadowRoot.querySelector("dialog")!;
     this.footerEl = this.shadowRoot.querySelector(".actions");
     this.actionsSlot = this.shadowRoot.querySelector('slot[name="actions"]');
+    this.headerEl = this.shadowRoot.querySelector(".header");
+    this.titleSlot = this.shadowRoot.querySelector('slot[name="title"]');
 
     const closeBtn = this.shadowRoot.querySelector(".close");
     closeBtn?.addEventListener("click", () => this.close());
@@ -120,9 +128,18 @@ class MuiDialog extends HTMLElement {
 
     // Show/hide footer depending on slot content
     this.actionsSlot?.addEventListener("slotchange", () => this.updateFooterVisibility());
+    this.titleSlot?.addEventListener("slotchange", () => this.updateHeaderVisibility());
+    this.updateHeaderVisibility();
     this.updateFooterVisibility();
 
     this.syncOpenState();
+  }
+
+  private updateHeaderVisibility() {
+    if (!this.headerEl || !this.titleSlot) return;
+    const hasTitle = this.titleSlot.assignedElements().length > 0;
+    this.headerEl.hidden = !hasTitle;
+    this.toggleAttribute("has-header", hasTitle);
   }
 
   private updateFooterVisibility() {

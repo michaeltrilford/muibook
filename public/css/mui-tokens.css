@@ -256,6 +256,14 @@ html[data-theme="light"] {
   /* Icon */
   --icon-color-default: var(--black);
   --icon-color-inverted: var(--white);
+  --illustration-main-color-default: var(--icon-color-default);
+  --illustration-main-color-inverted: var(--icon-color-inverted);
+  --illustration-shadow-color-default: var(--black-opacity-20);
+  --illustration-shadow-color-inverted: var(--white-opacity-20);
+  --illustration-size-small: 8rem;
+  --illustration-size-medium: 9.6rem;
+  --illustration-size-large: 11.2rem;
+  --illustration-size-x-large: 12.8rem;
   /* Badge */
   --badge-text-color: var(--grey-100);
   --badge-background-neutral: var(--grey-600);
@@ -600,6 +608,14 @@ html[data-theme="dark"] {
   /* Icon */
   --icon-color-default: var(--white);
   --icon-color-inverted: var(--black);
+  --illustration-main-color-default: var(--icon-color-default);
+  --illustration-main-color-inverted: var(--icon-color-inverted);
+  --illustration-shadow-color-default: var(--black-opacity-30);
+  --illustration-shadow-color-inverted: var(--black-opacity-20);
+  --illustration-size-small: 8rem;
+  --illustration-size-medium: 9.6rem;
+  --illustration-size-large: 11.2rem;
+  --illustration-size-x-large: 12.8rem;
   /* Badge */
   --badge-text-color: var(--grey-900);
   --badge-background-neutral: var(--grey-400);

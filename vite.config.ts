@@ -76,6 +76,8 @@ export default defineConfig({
         "components/mui-drawer": path.resolve(__dirname, "src/components/mui-drawer"),
         // ICONS
         "components/mui-icons": path.resolve(__dirname, "src/components/mui-icons"),
+        "components/mui-illustrations": path.resolve(__dirname, "src/components/mui-illustrations"),
+        "components/mui-illustrations/trash": path.resolve(__dirname, "src/components/mui-illustrations/trash.ts"),
         "components/mui-icons/ai": path.resolve(__dirname, "src/components/mui-icons/ai.ts"),
         "components/mui-icons/accessibility": path.resolve(__dirname, "src/components/mui-icons/accessibility.ts"),
         "components/mui-icons/attention": path.resolve(__dirname, "src/components/mui-icons/attention.ts"),

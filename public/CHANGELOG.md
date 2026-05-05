@@ -1,5 +1,29 @@
 ## Header [Start]
 
+## v19.2.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.2.0)
+
+## Header [End]
+
+### Added
+
+- Added the new `mui-illustrations` component family with first export `mui-illustration-trash`.
+- Added illustration component tokens for public main color, shadow, and size control.
+
+### Changed
+
+- `mui-illustration-trash` now supports theme-aware light/dark rendering and brand-aligned defaults.
+- Derived illustration detail/atmosphere color mixing is now handled internally by the component instead of being exposed as public token API.
+
+### Fixed
+
+- `mui-dialog` now matches drawer-style header behavior: when no `slot="title"` content is provided, the header row and built-in close action are not rendered.
+
+---
+
+## Header [Start]
+
 ## v19.1.1
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.1.1)

@@ -22,6 +22,7 @@ export const muiDocs: MuiDocs = {
         "Used to alert the user of potentially a harmful action.",
         "Use for focused interactions that require attention and immediate action.",
         "Use content-max-height='none' when dialog content should size naturally (for example, native media players).",
+        "When no title slot is provided, the dialog does not render the header row or built-in close action.",
       ],
     },
 
@@ -35,7 +36,7 @@ export const muiDocs: MuiDocs = {
         "Uses role='dialog' and aria-modal='true' for screen readers.",
         "Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions.",
         "Focus is managed by the browser’s native dialog behavior when open.",
-        "The close button includes aria-label='Close Icon'.",
+        "When a title slot is present, the close button includes aria-label='Close Icon'.",
         "Footer is hidden when empty to reduce screen reader noise.",
         "Clicking the backdrop closes the dialog.",
         "When open, consumers must trap focus in the dialog and apply inert/aria-hidden to the background.",
@@ -47,8 +48,8 @@ export const muiDocs: MuiDocs = {
       image:
         "https://images.ctfassets.net/i5uwscj4pkk2/3Qs9rIWX7LeUjQ3ioObKBe/4848a3b0ad303a12eef5739ddd1c6169/Dialog_-_Anatomy.png",
       list: [
-        "Heading: Text that describes the purpose or contents of the dialog.",
-        "Close: An icon or button that allows users to close the dialog.",
+        "Heading: Optional text that describes the purpose or contents of the dialog.",
+        "Close: Optional icon action shown when the dialog header is present.",
         "Container: Controls the position of the dialog and appears as an overlay.",
         "Footer: Optional section for additional actions, such as 'Cancel' or 'Save'.",
       ],

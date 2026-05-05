@@ -112,6 +112,14 @@ html[data-brand="ana"][data-theme="light"] {
   /* Type */
   --text-color: var(--grey-900);
   --heading-text-color: var(--blue-500);
+  --illustration-main-color-default: var(--heading-text-color);
+  --illustration-main-color-inverted: var(--white);
+  --illustration-shadow-color-default: var(--black-opacity-30);
+  --illustration-shadow-color-inverted: var(--white-opacity-20);
+  --illustration-size-small: 8rem;
+  --illustration-size-medium: 9.6rem;
+  --illustration-size-large: 11.2rem;
+  --illustration-size-x-large: 12.8rem;
 
   /* Input */
   --input-background: var(--white);
@@ -301,6 +309,14 @@ html[data-brand="ana"][data-theme="dark"] {
   /* Type */
   --text-color: var(--grey-100);
   --heading-text-color: var(--blue-200);
+  --illustration-main-color-default: var(--heading-text-color);
+  --illustration-main-color-inverted: var(--black);
+  --illustration-shadow-color-default: var(--black-opacity-30);
+  --illustration-shadow-color-inverted: var(--black-opacity-20);
+  --illustration-size-small: 8rem;
+  --illustration-size-medium: 9.6rem;
+  --illustration-size-large: 11.2rem;
+  --illustration-size-x-large: 12.8rem;
 
   /* Input */
   --input-background: var(--grey-800);

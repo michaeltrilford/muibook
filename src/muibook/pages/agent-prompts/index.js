@@ -62,7 +62,7 @@ class AgentPromptsPage extends HTMLElement {
 
 
               <mui-code scrollable>
-              export const muiPrompts = [
+              export const prompts = [
               <br>
               &nbsp;&nbsp;&#123;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;role: &quot;system&quot;,<br>

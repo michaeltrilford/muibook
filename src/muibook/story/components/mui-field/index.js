@@ -410,22 +410,44 @@ class storyField extends HTMLElement {
         <story-card title="Input: Success w/ Message" description="The form logic will inject the success message onto the field component and render"
           usageLink="https://guides.muibook.com/field"
         >
-          <!-- Change here: remove onclick, add data-toggle attribute -->
-          <mui-button
-            variant="secondary"
-            style="margin-bottom: var(--space-500)"
-            slot="body" 
-            data-toggle="field-success-toggle" 
-            data-message="Password strength: Strong"
-            data-variant="success"
-          >
-            Test Validation
-          </mui-button>
+          <mui-v-stack slot="body" space="var(--space-400)">
+            <mui-button
+              variant="secondary"
+              data-toggle="field-success-toggle-xs,field-success-toggle-s,field-success-toggle-m,field-success-toggle-l"
+              data-message="Password strength: Strong"
+              data-variant="success"
+            >
+              Test Validation
+            </mui-button>
 
-          <mui-field id="field-success-toggle" label="Password" slot="body">
-            <mui-input type="password" value="temp1234"></mui-input>
-          </mui-field>
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">x-small</mui-body>
+              <mui-field id="field-success-toggle-xs" label="Password" size="x-small">
+                <mui-input type="password" value="temp1234"></mui-input>
+              </mui-field>
+            </mui-v-stack>
 
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">small</mui-body>
+              <mui-field id="field-success-toggle-s" label="Password" size="small">
+                <mui-input type="password" value="temp1234"></mui-input>
+              </mui-field>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">medium</mui-body>
+              <mui-field id="field-success-toggle-m" label="Password" size="medium">
+                <mui-input type="password" value="temp1234"></mui-input>
+              </mui-field>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">large</mui-body>
+              <mui-field id="field-success-toggle-l" label="Password" size="large">
+                <mui-input type="password" value="temp1234"></mui-input>
+              </mui-field>
+            </mui-v-stack>
+          </mui-v-stack>
 
           <story-code-block slot="footer" scrollable>
             <br />
@@ -440,10 +462,22 @@ class storyField extends HTMLElement {
             }
             <br />
             <br />
-            &lt;mui-field label="Password"&gt;
+            &lt;mui-button data-toggle="field-success-toggle-xs,field-success-toggle-s,field-success-toggle-m,field-success-toggle-l" data-message="Password strength: Strong" data-variant="success"&gt;Test Validation&lt;/mui-button&gt;<br />
             <br />
-            &nbsp;&nbsp;&lt;mui-input type="password" value="••••••••"&gt;&lt;/mui-input&gt;
+            &lt;mui-field label="Password" size="x-small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input type="password" value="••••••••"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
             <br />
+            &lt;mui-field label="Password" size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input type="password" value="••••••••"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
+            <br />
+            &lt;mui-field label="Password" size="medium"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input type="password" value="••••••••"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
+            <br />
+            &lt;mui-field label="Password" size="large"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input type="password" value="••••••••"&gt;&lt;/mui-input&gt;<br />
             &lt;/mui-field&gt;
           </story-code-block>
         </story-card>
@@ -452,22 +486,44 @@ class storyField extends HTMLElement {
         <story-card title="Input: Warning w/ Message" description="The form logic will inject the warning message onto the field component and render"
           usageLink="https://guides.muibook.com/field"
         >
+          <mui-v-stack slot="body" space="var(--space-400)">
+            <mui-button
+              variant="secondary"
+              data-toggle="field-warning-toggle-xs,field-warning-toggle-s,field-warning-toggle-m,field-warning-toggle-l"
+              data-message="Please double-check your email address for typos"
+              data-variant="warning"
+            >
+              Test Validation
+            </mui-button>
 
-          <!-- Change here: remove onclick, add data-toggle attribute -->
-          <mui-button
-            variant="secondary"
-            style="margin-bottom: var(--space-500)"
-            slot="body" 
-            data-toggle="field-warning-toggle" 
-            data-message="Please double-check your email address for typos"
-            data-variant="warning"
-          >
-            Test Validation
-          </mui-button>
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">x-small</mui-body>
+              <mui-field id="field-warning-toggle-xs" label="Email" size="x-small">
+                <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
+              </mui-field>
+            </mui-v-stack>
 
-          <mui-field id="field-warning-toggle" label="Email" slot="body">
-            <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
-          </mui-field>
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">small</mui-body>
+              <mui-field id="field-warning-toggle-s" label="Email" size="small">
+                <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
+              </mui-field>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">medium</mui-body>
+              <mui-field id="field-warning-toggle-m" label="Email" size="medium">
+                <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
+              </mui-field>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">large</mui-body>
+              <mui-field id="field-warning-toggle-l" label="Email" size="large">
+                <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
+              </mui-field>
+            </mui-v-stack>
+          </mui-v-stack>
 
           <story-code-block slot="footer" scrollable>
             <br />
@@ -482,10 +538,22 @@ class storyField extends HTMLElement {
             }
             <br />
             <br />
-            &lt;mui-field label="Email"&gt;
+            &lt;mui-button data-toggle="field-warning-toggle-xs,field-warning-toggle-s,field-warning-toggle-m,field-warning-toggle-l" data-message="Please double-check your email address for typos" data-variant="warning"&gt;Test Validation&lt;/mui-button&gt;<br />
             <br />
-            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;
+            &lt;mui-field label="Email" size="x-small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
             <br />
+            &lt;mui-field label="Email" size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
+            <br />
+            &lt;mui-field label="Email" size="medium"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
+            <br />
+            &lt;mui-field label="Email" size="large"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;<br />
             &lt;/mui-field&gt;
           </story-code-block>
         </story-card>
@@ -493,22 +561,44 @@ class storyField extends HTMLElement {
         <story-card title="Input: Error w/ Message" description="The form logic will inject the error message onto the field component and render"
           usageLink="https://guides.muibook.com/field"
         >
+          <mui-v-stack slot="body" space="var(--space-400)">
+            <mui-button
+              variant="secondary" 
+              data-toggle="field-error-toggle-xs,field-error-toggle-s,field-error-toggle-m,field-error-toggle-l" 
+              data-message="Enter a valid email to proceed"
+              data-variant="error"
+            >
+              Test Validation
+            </mui-button>
 
-          <!-- Change here: remove onclick, add data-toggle attribute -->
-          <mui-button
-            variant="secondary" 
-            style="margin-bottom: var(--space-500)" 
-            slot="body" 
-            data-toggle="field-error-toggle" 
-            data-message="Enter a valid email to proceed"
-            data-variant="error"
-          >
-            Test Validation
-          </mui-button>
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">x-small</mui-body>
+              <mui-field id="field-error-toggle-xs" label="Email" size="x-small">
+                <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
+              </mui-field>
+            </mui-v-stack>
 
-          <mui-field id="field-error-toggle" label="Email" slot="body">
-            <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
-          </mui-field>
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">small</mui-body>
+              <mui-field id="field-error-toggle-s" label="Email" size="small">
+                <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
+              </mui-field>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">medium</mui-body>
+              <mui-field id="field-error-toggle-m" label="Email" size="medium">
+                <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
+              </mui-field>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">large</mui-body>
+              <mui-field id="field-error-toggle-l" label="Email" size="large">
+                <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
+              </mui-field>
+            </mui-v-stack>
+          </mui-v-stack>
 
           <story-code-block slot="footer" scrollable>
             <br />
@@ -523,10 +613,22 @@ class storyField extends HTMLElement {
             }
             <br />
             <br />
-            &lt;mui-field label="Email"&gt;
+            &lt;mui-button data-toggle="field-error-toggle-xs,field-error-toggle-s,field-error-toggle-m,field-error-toggle-l" data-message="Enter a valid email to proceed" data-variant="error"&gt;Test Validation&lt;/mui-button&gt;<br />
             <br />
-            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;
+            &lt;mui-field label="Email" size="x-small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
             <br />
+            &lt;mui-field label="Email" size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
+            <br />
+            &lt;mui-field label="Email" size="medium"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;<br />
+            <br />
+            &lt;mui-field label="Email" size="large"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="you@example.com" value="michael@muibook.com"&gt;&lt;/mui-input&gt;<br />
             &lt;/mui-field&gt;
           </story-code-block>
         </story-card>
@@ -534,29 +636,72 @@ class storyField extends HTMLElement {
         <story-card title="Select: Error w/ Message" description="The form logic will inject the error message onto the field component and render"
           usageLink="https://guides.muibook.com/field"
         >
+          <mui-v-stack slot="body" space="var(--space-400)">
+            <mui-button
+              variant="secondary" 
+              data-toggle="select-field-error-toggle-xs,select-field-error-toggle-s,select-field-error-toggle-m,select-field-error-toggle-l" 
+              data-message="Please select one option"
+              data-variant="error"
+            >
+              Test Validation
+            </mui-button>
 
-          <!-- Change here: remove onclick, add data-toggle attribute -->
-          <mui-button
-            variant="secondary" 
-            style="margin-bottom: var(--space-500)" 
-            slot="body" 
-            data-toggle="select-field-error-toggle" 
-            data-message="Please select one option"
-            data-variant="error"
-          >
-            Test Validation
-          </mui-button>
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">x-small</mui-body>
+              <mui-field id="select-field-error-toggle-xs" label="Brand" size="x-small">
+                <mui-select
+                    options='[
+                    {"value": "default", "label": "Select Option"},
+                    {"value": "mui", "label": "Mui"},
+                    {"value": "jal", "label": "JAL"},
+                    {"value": "ana", "label": "ANA"}
+                  ]'>
+                </mui-select>
+              </mui-field>
+            </mui-v-stack>
 
-          <mui-field id="select-field-error-toggle" label="Brand" slot="body">
-            <mui-select
-                options='[
-                {"value": "default", "label": "Select Option"},
-                {"value": "mui", "label": "Mui"},
-                {"value": "jal", "label": "JAL"},
-                {"value": "ana", "label": "ANA"}
-              ]'>
-            </mui-select>
-          </mui-field>
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">small</mui-body>
+              <mui-field id="select-field-error-toggle-s" label="Brand" size="small">
+                <mui-select
+                    options='[
+                    {"value": "default", "label": "Select Option"},
+                    {"value": "mui", "label": "Mui"},
+                    {"value": "jal", "label": "JAL"},
+                    {"value": "ana", "label": "ANA"}
+                  ]'>
+                </mui-select>
+              </mui-field>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">medium</mui-body>
+              <mui-field id="select-field-error-toggle-m" label="Brand" size="medium">
+                <mui-select
+                    options='[
+                    {"value": "default", "label": "Select Option"},
+                    {"value": "mui", "label": "Mui"},
+                    {"value": "jal", "label": "JAL"},
+                    {"value": "ana", "label": "ANA"}
+                  ]'>
+                </mui-select>
+              </mui-field>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-300)">
+              <mui-body size="small" variant="optional">large</mui-body>
+              <mui-field id="select-field-error-toggle-l" label="Brand" size="large">
+                <mui-select
+                    options='[
+                    {"value": "default", "label": "Select Option"},
+                    {"value": "mui", "label": "Mui"},
+                    {"value": "jal", "label": "JAL"},
+                    {"value": "ana", "label": "ANA"}
+                  ]'>
+                </mui-select>
+              </mui-field>
+            </mui-v-stack>
+          </mui-v-stack>
 
           <story-code-block slot="footer" scrollable>
             <br />
@@ -571,10 +716,22 @@ class storyField extends HTMLElement {
             }
             <br />
             <br />
-            &lt;mui-field label="Brand"&gt;
+            &lt;mui-button data-toggle="select-field-error-toggle-xs,select-field-error-toggle-s,select-field-error-toggle-m,select-field-error-toggle-l" data-message="Please select one option" data-variant="error"&gt;Test Validation&lt;/mui-button&gt;<br />
             <br />
-            &nbsp;&nbsp;&lt;mui-select options='[{...}]'&gt;&lt;/mui-select&gt;
+            &lt;mui-field label="Brand" size="x-small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-select options='[{...}]'&gt;&lt;/mui-select&gt;<br />
+            &lt;/mui-field&gt;<br />
             <br />
+            &lt;mui-field label="Brand" size="small"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-select options='[{...}]'&gt;&lt;/mui-select&gt;<br />
+            &lt;/mui-field&gt;<br />
+            <br />
+            &lt;mui-field label="Brand" size="medium"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-select options='[{...}]'&gt;&lt;/mui-select&gt;<br />
+            &lt;/mui-field&gt;<br />
+            <br />
+            &lt;mui-field label="Brand" size="large"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-select options='[{...}]'&gt;&lt;/mui-select&gt;<br />
             &lt;/mui-field&gt;
           </story-code-block>
         </story-card>
@@ -678,28 +835,31 @@ class storyField extends HTMLElement {
       const button = event.target.closest("[data-toggle]");
       if (!button) return;
 
-      const targetId = button.getAttribute("data-toggle");
+      const targetIds = (button.getAttribute("data-toggle") || "")
+        .split(",")
+        .map((id) => id.trim())
+        .filter(Boolean);
       const message = button.getAttribute("data-message") || "Password strength is strong";
       const variant = button.getAttribute("data-variant");
 
-      const field = this.shadowRoot.getElementById(targetId);
-      if (!field) return;
+      targetIds.forEach((targetId) => {
+        const field = this.shadowRoot.getElementById(targetId);
+        if (!field) return;
 
-      // Toggle message
-      if (field.hasAttribute("message")) {
-        field.removeAttribute("message");
-      } else {
-        field.setAttribute("message", message);
-      }
-
-      // Toggle variant
-      if (variant) {
-        if (field.getAttribute("variant") === variant) {
-          field.removeAttribute("variant");
+        if (field.hasAttribute("message")) {
+          field.removeAttribute("message");
         } else {
-          field.setAttribute("variant", variant);
+          field.setAttribute("message", message);
         }
-      }
+
+        if (variant) {
+          if (field.getAttribute("variant") === variant) {
+            field.removeAttribute("variant");
+          } else {
+            field.setAttribute("variant", variant);
+          }
+        }
+      });
     });
   }
 }

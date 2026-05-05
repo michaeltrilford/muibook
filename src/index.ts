@@ -99,6 +99,8 @@ export * from "./components/mui-icons/rectangle-bottom-panel";
 export * from "./components/mui-icons/pin";
 export * from "./components/mui-icons/pin-slash";
 export * from "./components/mui-icons/text-below-folder";
+export * from "./components/mui-illustrations";
+export * from "./components/mui-illustrations/trash";
 
 // Layout
 export * from "./components/mui-stack/hstack";

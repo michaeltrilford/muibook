@@ -1,9 +1,19 @@
-export const muiKeywords: Record<string, string[]> = {
+export const keywords: Record<string, string[]> = {
+  // FEEDBACK
   alert: ["alert", "success", "info", "warning", "error", "message", "banner", "notification"],
   message: ["message", "notice", "notification", "alert", "info", "positive", "neutral", "warning", "attention"],
-  badge: ["badge", "label", "tag", "notification"],
+  loader: ["loader", "loading", "skeleton", "placeholder", "shimmer", "pulse", "fade", "spinner"],
+  spinner: ["spinner", "loading", "busy", "indicator", "progress"],
+  progress: ["progress", "bar", "loading", "completion", "percent", "syncing", "pending"],
+
+  // ACTIONS
   button: ["button", "click", "action", "submit", "cta", "primary", "secondary", "tertiary", "attention"],
   "button-group": ["button group", "buttons", "actions", "group", "right", "align"],
+  link: ["link", "anchor", "hyperlink", "navigation", "primary", "secondary", "tertiary", "attention"],
+  dropdown: ["dropdown", "menu", "popover", "context menu", "action menu"],
+  chip: ["chip", "tag", "filter", "active", "dismiss", "input chip"],
+
+  // CONTENT
   icon: [
     "icon",
     "glyph",
@@ -32,18 +42,44 @@ export const muiKeywords: Record<string, string[]> = {
     "subtract",
     "minus",
   ],
-  link: ["link", "anchor", "hyperlink", "navigation", "primary", "secondary", "tertiary", "attention"],
-  tab: ["tab", "tab bar", "tab controller", "tab panel", "navigation", "tabs"],
-  carousel: ["carousel", "slider", "carousel controller", "carousel panel", "carousel item", "carousel tabs"],
-  card: ["card", "panel", "box", "tile"],
+  heading: ["heading", "title", "h1", "h2", "h3", "size", "level"],
+  body: ["body", "text", "paragraph", "copy", "default", "optional", "success", "warning", "error"],
+  span: ["span", "inline", "text", "rich text", "inline link"],
+  code: ["code", "snippet", "monospace", "pre", "syntax"],
+  quote: ["quote", "blockquote", "citation", "pull quote"],
+  list: ["list", "items", "ul", "li", "ordered", "unordered"],
+  avatar: ["avatar", "profile", "user", "initials", "image", "icon", "person"],
+  image: ["image", "photo", "picture", "figure", "caption", "img"],
+  skeleton: ["skeleton", "loading", "placeholder", "shimmer", "pulse", "line", "rect", "circle"],
+  badge: ["badge", "label", "tag", "status", "notification", "overlay", "positive", "warning", "error"],
+
+  // ACCORDION
+  accordion: [
+    "accordion",
+    "collapse",
+    "expand",
+    "toggle",
+    "show more",
+    "disclosure",
+    "section",
+    "detail",
+    "summary",
+    "accordion block",
+    "accordion inline",
+    "accordion group",
+  ],
+
+  // LAYOUT
   stack: ["stack", "v-stack", "h-stack", "vertical", "horizontal", "spacing"],
   grid: ["grid", "columns", "rows", "layout", "container"],
   container: ["container", "wrapper", "layout", "section"],
   responsive: ["responsive", "breakpoint", "mobile", "desktop", "showAbove", "showBelow"],
   rule: ["rule", "divider", "separator", "line", "hr"],
-  heading: ["heading", "title", "h1", "h2", "h3", "size", "level"],
-  body: ["body", "text", "paragraph", "copy", "default", "optional", "success", "warning", "error"],
-  list: ["list", "items", "ul", "li"],
+
+  // SURFACES
+  card: ["card", "panel", "box", "tile"],
+  dialog: ["dialog", "modal", "popup", "overlay", "lightbox", "confirm"],
+  drawer: ["drawer", "sidebar", "panel", "slide", "overlay", "push", "persistent", "left", "right"],
   slat: [
     "slat",
     "row",
@@ -104,18 +140,34 @@ export const muiKeywords: Record<string, string[]> = {
     "variant",
     "state",
   ],
-  addOn: ["input after", "input before"],
-  // COMPOSITIONS
-  wallet: [
-    "wallet",
-    "smart card",
-    "debit card",
-    "transaction list",
-    "banking",
-    "spending",
-    "activity",
-    "statements",
-    "account",
-    "balance",
-  ],
+
+  // FORMS AND INPUTS
+  input: ["input", "text field", "text input", "field", "entry", "form field"],
+  textarea: ["textarea", "text area", "multiline", "long text", "message", "description", "rows"],
+  select: ["select", "dropdown", "picker", "options", "choose", "combobox"],
+  checkbox: ["checkbox", "check", "tick", "agree", "terms", "boolean", "toggle"],
+  radio: ["radio", "radio button", "option", "choose one", "single select"],
+  switch: ["switch", "toggle", "on off", "enable", "disable", "boolean"],
+  field: ["field", "form field", "label", "input wrapper", "validation", "error", "success", "warning"],
+  "form-group": ["form group", "form", "group", "vertical", "horizontal", "fieldset"],
+  "form-section": ["form section", "section", "form heading", "grouped fields"],
+  "form-message": ["form message", "hint", "helper text", "validation message", "field message"],
+  rangeInput: ["range", "slider", "min", "max", "step", "range input", "scrubber"],
+  chipInput: ["chip input", "tag input", "multi select", "token input", "chips"],
+  fileUpload: ["file upload", "upload", "attach", "file", "drag and drop", "attachment"],
+  addOn: ["addon", "input after", "input before", "prefix", "suffix", "unit", "currency"],
+
+  // NAVIGATION
+  tab: ["tab", "tab bar", "tab controller", "tab panel", "navigation", "tabs"],
+  carousel: ["carousel", "slider", "carousel controller", "carousel panel", "carousel item", "carousel tabs"],
+  stepper: ["stepper", "steps", "wizard", "progress steps", "multi step", "step indicator"],
+
+  // PROMPT
+  prompt: ["prompt", "ai prompt", "chat input", "message input", "fan", "context", "preview", "submit"],
+  promptMessage: ["prompt message", "chat message", "ai message", "ghost", "compact", "density"],
+  promptPreview: ["prompt preview", "preview", "badge", "image preview", "animated preview"],
+  promptToggle: ["prompt toggle", "toggle", "icon mode", "chip mode"],
+
+  // PRESENTATION
+  slideFrame: ["slide", "slides", "presentation", "slide frame", "deck", "ratio", "fullscreen", "section", "notes"],
 };
