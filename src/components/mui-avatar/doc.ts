@@ -22,6 +22,10 @@ export const muiDocs: MuiDocs = {
         "Use in compact UI elements where space is limited (e.g., tables, cards).",
         "Pair with user metadata (name, role, status) for context.",
         "Indicate presence, status, or selection in collaborative interfaces.",
+        "Avatar can be slotted into Button for identity-led actions such as switching video platform profiles, opening an account menu, or accessing workspace controls.",
+        "Use an avatar-only button when the avatar itself is the visible trigger for a profile dropdown, account settings drawer, workspace switcher, or compact dialog action.",
+        "In global app headers, avatar-only buttons are a good fit for account settings, billing, support, or team context menus.",
+        "When Avatar is the only content inside Button, let the avatar define the final size and treat Button as the interactive wrapper.",
       ],
     },
 
@@ -40,27 +44,49 @@ export const muiDocs: MuiDocs = {
 
     anatomy: {
       image: "",
-      list: [""],
+      list: [
+        "Image / Initials / Icon: The visible identity marker shown inside the avatar.",
+        "Label: Accessible name announced to assistive technology.",
+        "Status or Context (optional): Additional meaning can be conveyed through surrounding UI such as presence, role, or action context.",
+      ],
     },
 
     variants: {
       items: [
         {
-          key: "",
-          title: "",
-          description: "",
+          key: "image",
+          title: "Image",
+          description: "Use when a profile or entity image is available and recognition matters.",
+          image: "",
+        },
+        {
+          key: "initials",
+          title: "Initials",
+          description: "Use as the default fallback when no image is present but the entity has a clear name.",
+          image: "",
+        },
+        {
+          key: "icon",
+          title: "Icon",
+          description: "Use for generic entities, products, or utility actions where a person-specific identity is not required.",
           image: "",
         },
       ],
     },
 
     compositions: {
-      description: "",
+      description: "Showcases actual use cases, demonstrating how Avatar fits into identity, communication, and account-oriented UI patterns.",
       items: [
         {
-          key: "",
-          name: "",
-          description: "",
+          key: "account-menu",
+          name: "Account Menu Trigger",
+          description: "An avatar-only button used in a global app header to open account, billing, or support actions.",
+          image: "",
+        },
+        {
+          key: "profile-switcher",
+          name: "Profile Switcher",
+          description: "A compact avatar trigger used to switch between people, channels, or workspace identities in a media or collaboration product.",
           image: "",
         },
       ],
@@ -69,27 +95,50 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         {
-          name: "",
-          link: "",
+          name: "Button",
+          link: "https://guides.muibook.com/button",
+        },
+        {
+          name: "Chip",
+          link: "https://guides.muibook.com/chip",
+        },
+        {
+          name: "Slat",
+          link: "https://guides.muibook.com/slat",
         },
       ],
     },
 
     rules: [
       {
-        heading: "",
-        description: "",
-        doContent: [{ description: "", image: "" }],
-        dontContent: [{ description: "", image: "" }],
+        heading: "Use the right identity source",
+        description: "Choose the avatar content type based on confidence in the identity data and the importance of recognition.",
+        doContent: [
+          {
+            description: "Use a real image when recognition matters, initials when a name is available, and an icon for generic or product-level identities.",
+            image: "",
+          },
+        ],
+        dontContent: [
+          {
+            description: "Do not force decorative imagery or inconsistent fallback logic when the identity is unclear.",
+            image: "",
+          },
+        ],
       },
     ],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Avatar is presentational by default and becomes interactive when wrapped by Button or another interactive parent.",
+        "When used inside an avatar-only button, Avatar owns the visible size while Button owns interaction semantics, focus, and disabled behaviour.",
+      ],
     },
 
     writing: {
-      list: [""],
+      list: [
+        "Provide a meaningful label so assistive technology can identify the person, entity, or action context represented by the avatar.",
+      ],
     },
   },
 };
