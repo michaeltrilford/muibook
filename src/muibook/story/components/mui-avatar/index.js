@@ -463,6 +463,106 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card
+        title="Avatar-only Dropdown"
+        description="When a button only contains an Avatar, the button collapses to a primitive wrapper and the avatar drives the final size. This example uses that pattern as a dropdown trigger."
+        usage="Use this when the avatar itself is the interactive target.|||The button keeps interaction semantics and states, while the avatar controls the footprint.|||This works well for profile menus and compact account actions."
+        usageLink=""
+        accessibility=""
+      >
+        <div slot="body" class="canvas">
+          <mui-h-stack alignY="center">
+            <mui-dropdown position="left">
+              <mui-button slot="action" aria-label="Open Julie profile menu">
+                <mui-avatar size="x-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+              </mui-button>
+              <mui-button variant="tertiary">Profile</mui-button>
+              <mui-button variant="tertiary">Settings</mui-button>
+              <mui-button variant="tertiary">Sign out</mui-button>
+            </mui-dropdown>
+
+            <mui-dropdown position="left">
+              <mui-button slot="action" aria-label="Open Max profile menu">
+                <mui-avatar size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+              </mui-button>
+              <mui-button variant="tertiary">Profile</mui-button>
+              <mui-button variant="tertiary">Billing</mui-button>
+              <mui-button variant="tertiary">Sign out</mui-button>
+            </mui-dropdown>
+
+            <mui-dropdown position="left">
+              <mui-button slot="action" aria-label="Open Julie profile menu">
+                <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+              </mui-button>
+              <mui-button variant="tertiary">Profile</mui-button>
+              <mui-button variant="tertiary">Notifications</mui-button>
+              <mui-button variant="tertiary">Sign out</mui-button>
+            </mui-dropdown>
+
+            <mui-dropdown position="left">
+              <mui-button slot="action" aria-label="Open team calendar menu">
+                <mui-avatar size="large" label="Team calendar">
+                  <mui-icon-calendar size="large"></mui-icon-calendar>
+                </mui-avatar>
+              </mui-button>
+              <mui-button variant="tertiary">Calendar</mui-button>
+              <mui-button variant="tertiary">Availability</mui-button>
+              <mui-button variant="tertiary">Close</mui-button>
+            </mui-dropdown>
+          </mui-h-stack>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dropdown position=&quot;left&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; aria-label=&quot;Open Julie profile menu&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${JulieAvatar}&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Profile&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Settings&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Sign out&lt;/mui-button&gt;<br />
+          &lt;/mui-dropdown&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        title="Avatar-only Button"
+        description="Avatar-only buttons also work as standalone actions. This example opens a dialog using the avatar as the trigger."
+        usage="Use this when the avatar itself is the only visible action.|||The button keeps semantics and focus behavior, while the avatar defines the final size."
+        usageLink=""
+        accessibility=""
+      >
+        <div slot="body" class="canvas">
+          <mui-h-stack alignY="center">
+            <mui-button data-dialog="avatar-profile-dialog" aria-label="Open Julie profile dialog">
+              <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+            </mui-button>
+          </mui-h-stack>
+
+          <mui-dialog
+            data-dialog="avatar-profile-dialog"
+            width="400px"
+            aria-labelledby="avatar-profile-dialog-title"
+            aria-describedby="avatar-profile-dialog-desc"
+          >
+            <mui-heading size="4" level="4" slot="title" id="avatar-profile-dialog-title">Julie AI</mui-heading>
+            <mui-body id="avatar-profile-dialog-desc">
+              This dialog shows how an avatar-only button can act as a compact trigger for profile and account actions.
+            </mui-body>
+            <mui-button slot="footer" variant="tertiary" data-close>Close</mui-button>
+          </mui-dialog>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button data-dialog=&quot;avatar-profile-dialog&quot; aria-label=&quot;Open Julie profile dialog&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${JulieAvatar}&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;/mui-button&gt;<br />
+          <br />
+          &lt;mui-dialog data-dialog=&quot;avatar-profile-dialog&quot; width=&quot;400px&quot; aria-labelledby=&quot;avatar-profile-dialog-title&quot; aria-describedby=&quot;avatar-profile-dialog-desc&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-heading slot=&quot;title&quot; id=&quot;avatar-profile-dialog-title&quot;&gt;Julie AI&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body id=&quot;avatar-profile-dialog-desc&quot;&gt;...&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot=&quot;footer&quot; variant=&quot;tertiary&quot; data-close&gt;Close&lt;/mui-button&gt;<br />
+          &lt;/mui-dialog&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card 
         title="Links" 
         description="Links can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size." 
@@ -807,6 +907,25 @@ class storyAvatar extends HTMLElement {
         ${stories}
       </story-template>
     `;
+
+    this.addDialogEventListeners();
+  }
+
+  addDialogEventListeners() {
+    this.shadowRoot.querySelectorAll("mui-button[data-dialog]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-dialog");
+        if (!target) return;
+        const dialog = this.shadowRoot.querySelector(`mui-dialog[data-dialog="${target}"]`);
+        dialog?.setAttribute("open", "");
+      });
+    });
+
+    this.shadowRoot.querySelectorAll("mui-dialog[data-dialog]").forEach((dialog) => {
+      dialog.querySelectorAll("mui-button[data-close]").forEach((btn) => {
+        btn.addEventListener("click", () => dialog.removeAttribute("open"));
+      });
+    });
   }
 }
 

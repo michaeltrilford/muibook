@@ -5,6 +5,7 @@
     "has-before",
     "has-after",
     "icon-only",
+    "avatar-only",
     "dropdown-slot",
     "dropdown-slot-first",
     "dropdown-slot-last",

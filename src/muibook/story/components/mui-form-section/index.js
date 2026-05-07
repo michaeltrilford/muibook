@@ -16,8 +16,111 @@ class StoryFormSection extends HTMLElement {
       },
     ]);
 
+    const propItems = [
+      {
+        name: "slot",
+        required: true,
+        type: "slot (default)",
+        options: "mui-field, mui-form-group, mui-rule, mui-form-section-footer",
+        default: "(required)",
+        description: "Primary section content rendered inside the fieldset.",
+      },
+      {
+        name: "slot=header",
+        type: "slot (named)",
+        options: "mui-heading, mui-responsive, mui-h-stack, mui-v-stack",
+        default: "",
+        description: "Optional custom header chrome. When used, it replaces the default heading row.",
+      },
+      {
+        name: "slot=footer",
+        type: "slot (named)",
+        options: "mui-form-section-footer, mui-h-stack, mui-v-stack",
+        default: "",
+        description: "Optional footer area for actions or supporting section content.",
+      },
+      {
+        name: "heading",
+        type: "string",
+        options: "{text}",
+        default: "",
+        description: "Section legend text. When omitted, no default legend row is rendered.",
+      },
+      {
+        name: "heading-level",
+        type: "number",
+        options: "1-6",
+        default: "4",
+        description: "Semantic heading level used by the default heading row.",
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+        options: "disabled",
+        default: "",
+        description: "Disables the underlying fieldset and marks the whole section as non-interactive.",
+      },
+      {
+        name: "borderless",
+        type: "boolean",
+        options: "borderless",
+        default: "",
+        description: "Removes the default fieldset border when the section sits inside another defined surface.",
+      },
+    ];
+
+    const rows = propItems
+      .map(
+        (prop) => /*html*/ `
+          <story-type-row
+            ${prop.required ? "required" : ""}
+            name="${prop.name}"
+            type="${prop.type}"
+            options="${prop.options || ""}"
+            default="${prop.default || ""}"
+            description="${prop.description}">
+          </story-type-row>
+        `
+      )
+      .join("");
+
+    const accordions = propItems
+      .map((prop, index) => {
+        const isLastChild = index === propItems.length - 1 ? "last-child" : "";
+
+        return /*html*/ `
+          <mui-accordion-block
+            style="position: relative; z-index: 1;"
+            size="medium"
+            heading="${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)}"
+            ${isLastChild}>
+            <story-type-slat
+              slot="detail"
+              ${prop.required ? "required" : ""}
+              name="${prop.name}"
+              type="${prop.type}"
+              options="${prop.options || ""}"
+              default="${prop.default || ""}"
+              description="${prop.description}">
+            </story-type-slat>
+          </mui-accordion-block>
+        `;
+      })
+      .join("");
+
     const stories = /*html*/ `
-      <story-card id="account-setup" title="Account Setup Section" description="Real form grouping with Field, Input, Select, and Form Message. Intended for use on a surface background." usage="Use one form section for each major form area.|||Use form group to cluster related fields.|||Hide group labels when they repeat the section title.">
+      <props-card title="Form Section">
+        <mui-responsive breakpoint="767" slot="body">
+          <story-type-table slot="showAbove">
+            ${rows}
+          </story-type-table>
+          <mui-accordion-group exclusive slot="showBelow">
+            ${accordions}
+          </mui-accordion-group>
+        </mui-responsive>
+      </props-card>
+
+      <story-card id="account-setup" title="Account Setup Section" description="Real form grouping with Field, Input, Select, and Form Message. Intended for use on a surface background." usage="Use one form section for each major form area.|||Use form group to cluster related fields.|||Hide group labels when they repeat the section title.|||Use the default greyscale mui-form-message for lighter supporting copy tied to a specific field.">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Account Setup">
             <mui-form-group heading="Account Details" hide-label>
@@ -49,7 +152,7 @@ class StoryFormSection extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="billing" title="Billing Preferences Section" description="Grouped controls with radio choices and inline guidance. Intended for use on a surface background." usage="Use horizontal groups for paired fields.|||Default split is 1fr / 20rem and stacks on mobile.|||Use form hints for helper or status text.">
+      <story-card id="billing" title="Billing Preferences Section" description="Grouped controls with radio choices and inline guidance. Intended for use on a surface background." usage="Use horizontal groups for paired fields.|||Default split is 1fr / 20rem and stacks on mobile.|||Use form hints for helper or status text.|||Use a colored mui-form-message for stronger static section/group guidance, or the default greyscale version for lighter supporting copy.">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-400)">
             <mui-form-section heading="Billing Preferences">
@@ -60,7 +163,7 @@ class StoryFormSection extends HTMLElement {
                     <mui-radio value="quarterly">Quarterly</mui-radio>
                     <mui-radio value="yearly">Yearly</mui-radio>
                   </mui-radio-group>
-                  <mui-form-message slot="message" style="color: var(--text-color-warning);">
+                  <mui-form-message slot="message" variant="warning" style="color: var(--text-color-warning);">
                     <mui-icon-warning slot="before" color="var(--text-color-warning)"></mui-icon-warning>
                     Updating invoice frequency applies to the next billing cycle.
                   </mui-form-message>
@@ -124,7 +227,7 @@ class StoryFormSection extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="no-legend" title="No Legend" description="Form section composition without a section heading/legend.">
+      <story-card id="no-legend" title="No Legend" description="Form section composition without a section heading/legend." usage="Use the default greyscale mui-form-message when the supporting copy should stay visually quiet within the section.">
         <div slot="body" class="story-form-surface">
           <mui-form-section>
             <mui-form-group heading="Contact Preferences">

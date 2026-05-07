@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-05T05:23:53.486Z",
+  "generatedAt": "2026-05-06T06:15:46.675Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -17,6 +17,7 @@
         "has-before",
         "has-after",
         "icon-only",
+        "avatar-only",
         "dropdown-slot",
         "dropdown-slot-first",
         "dropdown-slot-last",

@@ -1,4 +1,6 @@
 import { getComponentDocs } from "../../../utils/story-data";
+import MaxAvatar from "../../../images/mui/avatar-max.png";
+import JulieAvatar from "../../../images/mui/avatar-julie.png";
 
 class storyButton extends HTMLElement {
   constructor() {
@@ -11,7 +13,7 @@ class storyButton extends HTMLElement {
     const attrsReference = JSON.stringify([
       {
         component: "mui-button",
-        parentAttrs: ["has-before", "has-after", "icon-only"],
+        parentAttrs: ["has-before", "has-after", "icon-only", "avatar-only"],
         childAttrs: [],
       },
     ]);
@@ -961,6 +963,66 @@ class storyButton extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card
+        title="Avatar-only Button"
+        id="avatar-only-button"
+        description="When a button only contains an Avatar, it collapses to a primitive interactive wrapper and the avatar drives the final size."
+        usage='
+          Use this when the avatar itself is the visible action target|||
+          The button keeps semantics and interaction states while the avatar controls the footprint
+        '
+      >
+        <mui-h-stack slot="body" space="var(--space-200)" alignY="center">
+          <mui-button data-dialog="button-avatar-dialog" aria-label="Open Julie profile dialog">
+            <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+          </mui-button>
+
+          <mui-button data-dialog="button-avatar-dialog-2" aria-label="Open Max profile dialog">
+            <mui-avatar size="large" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+          </mui-button>
+        </mui-h-stack>
+
+        <mui-dialog
+          data-dialog="button-avatar-dialog"
+          width="400px"
+          slot="body"
+          aria-labelledby="button-avatar-dialog-title"
+          aria-describedby="button-avatar-dialog-desc"
+        >
+          <mui-heading size="4" level="4" slot="title" id="button-avatar-dialog-title">Julie AI</mui-heading>
+          <mui-body id="button-avatar-dialog-desc">
+            This example shows an avatar-only button opening a dialog from the Button component page.
+          </mui-body>
+          <mui-button slot="footer" variant="tertiary" data-close>Close</mui-button>
+        </mui-dialog>
+
+        <mui-dialog
+          data-dialog="button-avatar-dialog-2"
+          width="400px"
+          slot="body"
+          aria-labelledby="button-avatar-dialog-title-2"
+          aria-describedby="button-avatar-dialog-desc-2"
+        >
+          <mui-heading size="4" level="4" slot="title" id="button-avatar-dialog-title-2">Max AI</mui-heading>
+          <mui-body id="button-avatar-dialog-desc-2">
+            Avatar-only buttons can be used as compact profile and account action triggers.
+          </mui-body>
+          <mui-button slot="footer" variant="tertiary" data-close>Close</mui-button>
+        </mui-dialog>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button data-dialog=&quot;button-avatar-dialog&quot; aria-label=&quot;Open Julie profile dialog&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${JulieAvatar}&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;/mui-button&gt;<br />
+          <br />
+          &lt;mui-dialog data-dialog=&quot;button-avatar-dialog&quot; width=&quot;400px&quot; aria-labelledby=&quot;button-avatar-dialog-title&quot; aria-describedby=&quot;button-avatar-dialog-desc&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-heading slot=&quot;title&quot; id=&quot;button-avatar-dialog-title&quot;&gt;Julie AI&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body id=&quot;button-avatar-dialog-desc&quot;&gt;...&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot=&quot;footer&quot; variant=&quot;tertiary&quot; data-close&gt;Close&lt;/mui-button&gt;<br />
+          &lt;/mui-dialog&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card title="Icon Toggle: Default" id="icon-toggle-default"
         usage='
           Use medium size icon when the icon-only action appears on its own. E.g. Menu|||
@@ -1082,7 +1144,7 @@ class storyButton extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="form-submissions::Form submissions|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||button-group::Header: Button-Group|||footer-button-group::Footer: Button-Group|||button-group-layout::Button-Group: Layout|||button-group-alignment::Button-Group: Alignment|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
+          links="form-submissions::Form submissions|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||button-group::Header: Button-Group|||footer-button-group::Footer: Button-Group|||button-group-layout::Button-Group: Layout|||button-group-alignment::Button-Group: Alignment|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||avatar-only-button::Avatar-only Button|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
         ></story-quicklinks>
 
         ${stories}
@@ -1117,6 +1179,21 @@ class storyButton extends HTMLElement {
       if (targetEl) {
         targetEl.scrollIntoView({ behavior: "smooth" });
       }
+    });
+
+    this.shadowRoot.querySelectorAll("mui-button[data-dialog]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-dialog");
+        if (!target) return;
+        const dialog = this.shadowRoot.querySelector(`mui-dialog[data-dialog="${target}"]`);
+        dialog?.setAttribute("open", "");
+      });
+    });
+
+    this.shadowRoot.querySelectorAll("mui-dialog[data-dialog]").forEach((dialog) => {
+      dialog.querySelectorAll("mui-button[data-close]").forEach((btn) => {
+        btn.addEventListener("click", () => dialog.removeAttribute("open"));
+      });
     });
   }
 }

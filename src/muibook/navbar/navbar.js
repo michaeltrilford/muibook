@@ -165,22 +165,23 @@ class appNavbar extends HTMLElement {
         <mui-body weight="bold">Visuals</mui-body>
         <app-navbar-link link="#/icons" title="Icons"></app-navbar-link>
         <app-navbar-link link="#/illustrations" title="Illustrations"></app-navbar-link>
+        <app-navbar-link link="#/avatar" title="Avatar"></app-navbar-link>
         <app-navbar-link link="#/image" title="Image"></app-navbar-link>
         <app-navbar-link link="#/media-player" title="Media Player"></app-navbar-link>
         <app-navbar-link link="#/slide-frame" title="Slide Frame"></app-navbar-link>
         <app-navbar-link link="#/carousel" title="Carousel"></app-navbar-link>
         <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>
       
-        <mui-body weight="bold">Inputs</mui-body>
+        <mui-body weight="bold">Forms</mui-body>
         <app-navbar-link link="#/addon" title="Add On"></app-navbar-link>   
         <app-navbar-link link="#/chip-input" title="Chip Input"></app-navbar-link>
         <app-navbar-link link="#/checkbox" title="Checkbox"></app-navbar-link>  
         <app-navbar-link link="#/field" title="Field"></app-navbar-link> 
-        <app-navbar-link link="#/file-upload" title="File Upload"></app-navbar-link> 
-        <app-navbar-link link="#/form-group" title="Form Group"></app-navbar-link>
-        <app-navbar-link link="#/form-message" title="Form Message"></app-navbar-link>
         <app-navbar-link link="#/form-section" title="Form Section"></app-navbar-link>
         <app-navbar-link link="#/form-section-footer" title="Form Section Footer"></app-navbar-link>
+        <app-navbar-link link="#/form-group" title="Form Group"></app-navbar-link>
+        <app-navbar-link link="#/form-message" title="Form Message"></app-navbar-link>
+        <app-navbar-link link="#/file-upload" title="File Upload"></app-navbar-link> 
         <app-navbar-link link="#/hint" title="Hint"></app-navbar-link>
         <app-navbar-link link="#/input" title="Input"></app-navbar-link>  
         <app-navbar-link link="#/progress" title="Progress"></app-navbar-link>  
@@ -192,7 +193,6 @@ class appNavbar extends HTMLElement {
 
         <mui-body weight="bold">Content</mui-body>
         <app-navbar-link link="#/accordion" title="Accordion"></app-navbar-link>
-        <app-navbar-link link="#/avatar" title="Avatar"></app-navbar-link>
         <app-navbar-link link="#/body" title="Body"></app-navbar-link>
         <app-navbar-link link="#/code" title="Code"></app-navbar-link>
         <app-navbar-link link="#/heading" title="Heading"></app-navbar-link>

@@ -10,27 +10,39 @@ class StoryFormGroup extends HTMLElement {
     const data = await getComponentDocs("FormGroup");
 
     const stories = /*html*/ `
-      <story-card id="default" title="Default Group" description="Standard group with heading and stacked controls.">
-        <mui-form-group slot="body" heading="Account Details">
-          <mui-field label="Email">
-            <mui-input type="email" placeholder="you@company.com"></mui-input>
-          </mui-field>
-          <mui-field label="Role">
-            <mui-select options='[{"label":"Product","value":"product"},{"label":"Engineering","value":"engineering"},{"label":"Design","value":"design"}]'></mui-select>
-          </mui-field>
-        </mui-form-group>
+      <story-card id="vertical" title="Vertical Group" description="Stacked group with heading, choice controls, and field-level guidance." usage="Use a stacked group when the controls belong to the same decision area.|||Keep helper and status copy attached to the relevant field.|||When the message belongs to a specific mui-field inside the group, use slot=&quot;message&quot; on that field.|||Use a colored mui-form-message for static guidance that needs more emphasis; use the default greyscale version for lighter supporting copy.">
+        <div slot="body" class="story-form-surface">
+          <mui-form-group heading="Billing Cycle">
+            <mui-field label="Invoice Frequency">
+              <mui-radio-group value="monthly">
+                <mui-radio value="monthly">Monthly</mui-radio>
+                <mui-radio value="quarterly">Quarterly</mui-radio>
+                <mui-radio value="yearly">Yearly</mui-radio>
+              </mui-radio-group>
+              <mui-form-message slot="message" variant="warning">
+                <mui-icon-warning slot="before" color="var(--text-color-warning)"></mui-icon-warning>
+                Updating invoice frequency applies to the next billing cycle.
+              </mui-form-message>
+            </mui-field>
+            <mui-field label="Reference Code">
+              <mui-input placeholder="Optional"></mui-input>
+            </mui-field>
+          </mui-form-group>
+        </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-form-group heading="Account Details"&gt;
+          &lt;mui-form-group heading="Billing Cycle"&gt;
           <br />
-          &nbsp;&nbsp;&lt;mui-field label="Email"&gt;
+          &nbsp;&nbsp;&lt;mui-field label="Invoice Frequency"&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input type="email" placeholder="you@company.com"&gt;&lt;/mui-input&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-radio-group value="monthly"&gt;...&lt;/mui-radio-group&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-form-message slot="message" variant="warning"&gt;...&lt;/mui-form-message&gt;
           <br />
           &nbsp;&nbsp;&lt;/mui-field&gt;
           <br />
-          &nbsp;&nbsp;&lt;mui-field label="Role"&gt;
+          &nbsp;&nbsp;&lt;mui-field label="Reference Code"&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-select options='[...]'&gt;&lt;/mui-select&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input placeholder="Optional"&gt;&lt;/mui-input&gt;
           <br />
           &nbsp;&nbsp;&lt;/mui-field&gt;
           <br />
@@ -38,42 +50,59 @@ class StoryFormGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="horizontal" title="Horizontal Variant" description="Split row layout with responsive stack on mobile.">
-        <mui-form-group slot="body" variant="horizontal" hide-label>
-          <mui-field label="Billing Contact">
-            <mui-input type="email" placeholder="billing@company.com"></mui-input>
-          </mui-field>
-          <mui-field label="Notification Limit">
-            <mui-input placeholder="3"></mui-input>
-          </mui-field>
-          <mui-form-message style="color: var(--text-color-optional);">
-            <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
-            We use this contact when invoices fail and payment follow-up is required.
-          </mui-form-message>
-        </mui-form-group>
+      <story-card id="horizontal" title="Horizontal Group" description="Split row layout with responsive stack on mobile." usage="Use a horizontal group for paired follow-up fields.|||Wrap the group in a mui-v-stack with appropriate spacing when supporting content needs to sit above or below it.|||Keep helper or status copy outside the horizontal group rather than inserting mui-form-message directly into the group.|||Because the supporting message sits outside the field/group in this pattern, slot=&quot;message&quot; is not required.|||Use a colored mui-form-message when the note needs more emphasis, or leave it greyscale for lighter supporting copy.">
+        <div slot="body" class="story-form-surface">
+          <mui-v-stack space="var(--space-300)">
+            <mui-form-group variant="horizontal" hide-label>
+              <mui-field label="Billing Contact">
+                <mui-input type="email" placeholder="billing@company.com"></mui-input>
+              </mui-field>
+              <mui-field label="Notification Limit">
+                <mui-input placeholder="3"></mui-input>
+              </mui-field>
+            </mui-form-group>
+            <mui-form-message>
+              <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+              You can update these preferences at any time.
+            </mui-form-message>
+          </mui-v-stack>
+        </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-form-group variant="horizontal" hide-label&gt;
+          &lt;mui-v-stack space="var(--space-300)"&gt;
           <br />
-          &nbsp;&nbsp;&lt;mui-field label="Billing Contact"&gt;
+          &nbsp;&nbsp;&lt;mui-form-group variant="horizontal" hide-label&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input type="email" placeholder="billing@company.com"&gt;&lt;/mui-input&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field label="Billing Contact"&gt;
           <br />
-          &nbsp;&nbsp;&lt;/mui-field&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input type="email" placeholder="billing@company.com"&gt;&lt;/mui-input&gt;
           <br />
-          &nbsp;&nbsp;&lt;mui-field label="Notification Limit"&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input placeholder="3"&gt;&lt;/mui-input&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field label="Notification Limit"&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-form-message slot="message"&gt;...&lt;/mui-form-message&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input placeholder="3"&gt;&lt;/mui-input&gt;
           <br />
-          &nbsp;&nbsp;&lt;/mui-field&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;
           <br />
-          &lt;/mui-form-group&gt;
+          &nbsp;&nbsp;&lt;/mui-form-group&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-form-message&gt;...&lt;/mui-form-message&gt;
+          <br />
+          &lt;/mui-v-stack&gt;
         </story-code-block>
       </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
+      <style>
+        .story-form-surface {
+          margin-inline: calc(var(--space-400) * -1);
+          margin-block: calc(var(--space-400) * -1);
+          padding: var(--space-400);
+          background: var(--surface-elevated-200);
+          box-sizing: border-box;
+        }
+      </style>
       <story-template
         title="${data?.title || "Form Group"}"
         description="${data?.description || ""}"
@@ -87,7 +116,7 @@ class StoryFormGroup extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="default::Default Group|||horizontal::Horizontal Variant"
+          links="vertical::Vertical Group|||horizontal::Horizontal Group"
         ></story-quicklinks>
         ${stories}
       </story-template>

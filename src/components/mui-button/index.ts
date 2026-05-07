@@ -672,6 +672,35 @@ class MuiButton extends HTMLElement {
       padding-left: var(--action-before-slot-padding-large);
     }
 
+    :host([avatar-only]) {
+      width: auto;
+      display: flex;
+    }
+
+    :host([avatar-only]) button,
+    :host([avatar-only]) button:hover,
+    :host([avatar-only]) button:focus,
+    :host([avatar-only]) button:focus-visible,
+    :host([avatar-only]) button:disabled {
+      width: auto;
+      min-width: 0;
+      min-height: 0;
+      padding: var(--space-000);
+      border: none;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-000);
+      line-height: 0;
+      border-radius: 999rem;
+    }
+
+    :host([avatar-only]) button ::slotted(mui-avatar) {
+      margin-right: var(--space-000);
+      margin-left: var(--space-000);
+    }
+
 
     </style>
 
@@ -691,61 +720,17 @@ class MuiButton extends HTMLElement {
 
     this.shadowRoot.innerHTML = html;
 
-    // Wait for slot content to be assigned
-    await customElements.whenDefined("mui-button"); // optional, extra safety
+    await customElements.whenDefined("mui-button");
 
-    requestAnimationFrame(() => {
-      const shadow = this.shadowRoot;
-      if (!shadow) return;
+    const slots = [
+      this.shadowRoot.querySelector("slot:not([name])"),
+      this.shadowRoot.querySelector('slot[name="before"]'),
+      this.shadowRoot.querySelector('slot[name="after"]'),
+    ] as (HTMLSlotElement | null)[];
 
-      const slotDefault = shadow.querySelector("slot:not([name])") as HTMLSlotElement | null;
-      const slotBefore = shadow.querySelector('slot[name="before"]') as HTMLSlotElement | null;
-      const slotAfter = shadow.querySelector('slot[name="after"]') as HTMLSlotElement | null;
+    slots.forEach((slot) => slot?.addEventListener("slotchange", () => this.syncButtonState()));
 
-      const hasAssignedContent = (slot: HTMLSlotElement | null): boolean => {
-        if (!slot) return false;
-        return slot.assignedNodes({ flatten: true }).some((node: Node) => {
-          return (
-            node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim())
-          );
-        });
-      };
-
-      const hasBefore = hasAssignedContent(slotBefore);
-      const hasAfter = hasAssignedContent(slotAfter);
-
-      this.toggleAttribute("has-before", hasBefore);
-      this.toggleAttribute("has-after", hasAfter);
-
-      const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
-
-      const iconOnly = assignedNodes.every((node: Node) => {
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          const el = node as HTMLElement;
-          return el.tagName.toLowerCase() === "svg" || el.classList.contains("mui-icon");
-        }
-        return node.nodeType === Node.TEXT_NODE && !node.textContent?.trim();
-      });
-
-      // NEW: Handle icon-only vs regular buttons
-      if (iconOnly) {
-        this.setAttribute("icon-only", "");
-        // Set icon size based on button size for icon-only buttons
-        this.updateIconSizes(assignedNodes, true);
-      } else {
-        this.removeAttribute("icon-only");
-        // Set icon size for icons in regular buttons
-        const allSlots = [slotBefore, slotDefault, slotAfter];
-        allSlots.forEach((slot) => {
-          if (slot) {
-            const nodes = slot.assignedNodes({ flatten: true });
-            this.updateIconSizes(nodes, false);
-            this.updateAvatarSizes(nodes);
-            this.updateBadgeSizes(nodes);
-          }
-        });
-      }
-    });
+    requestAnimationFrame(() => this.syncButtonState());
   }
 
   attributeChangedCallback(name: string, oldValue: string, newValue: string) {
@@ -761,29 +746,75 @@ class MuiButton extends HTMLElement {
     }
 
     if (name === "size" && oldValue !== newValue && this.shadowRoot) {
-      // Re-run icon size update when button size changes
-      requestAnimationFrame(() => {
-        const shadow = this.shadowRoot;
-        if (!shadow) return;
-
-        const slots = [
-          shadow.querySelector("slot:not([name])"),
-          shadow.querySelector('slot[name="before"]'),
-          shadow.querySelector('slot[name="after"]'),
-        ] as (HTMLSlotElement | null)[];
-
-        const isIconOnly = this.hasAttribute("icon-only");
-
-        slots.forEach((slot) => {
-          if (slot) {
-            const nodes = slot.assignedNodes({ flatten: true });
-            this.updateIconSizes(nodes, isIconOnly);
-            this.updateAvatarSizes(nodes);
-            this.updateBadgeSizes(nodes);
-          }
-        });
-      });
+      requestAnimationFrame(() => this.syncButtonState());
     }
+  }
+
+  syncButtonState(): void {
+    const shadow = this.shadowRoot;
+    if (!shadow) return;
+
+    const slotDefault = shadow.querySelector("slot:not([name])") as HTMLSlotElement | null;
+    const slotBefore = shadow.querySelector('slot[name="before"]') as HTMLSlotElement | null;
+    const slotAfter = shadow.querySelector('slot[name="after"]') as HTMLSlotElement | null;
+
+    const hasAssignedContent = (slot: HTMLSlotElement | null): boolean => {
+      if (!slot) return false;
+      return slot.assignedNodes({ flatten: true }).some((node: Node) => {
+        return node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim());
+      });
+    };
+
+    const hasBefore = hasAssignedContent(slotBefore);
+    const hasAfter = hasAssignedContent(slotAfter);
+
+    this.toggleAttribute("has-before", hasBefore);
+    this.toggleAttribute("has-after", hasAfter);
+
+    const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
+    const assignedElements = slotDefault?.assignedElements({ flatten: true }) ?? [];
+
+    const avatarOnly =
+      assignedElements.length === 1 &&
+      assignedElements[0].tagName.toLowerCase() === "mui-avatar" &&
+      assignedNodes.every((node: Node) => {
+        if (node.nodeType === Node.TEXT_NODE) return !node.textContent?.trim();
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          return (node as HTMLElement).tagName.toLowerCase() === "mui-avatar";
+        }
+        return false;
+      });
+
+    this.toggleAttribute("avatar-only", avatarOnly);
+
+    const iconOnly =
+      !avatarOnly &&
+      assignedNodes.every((node: Node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          const el = node as HTMLElement;
+          return el.tagName.toLowerCase() === "svg" || el.classList.contains("mui-icon");
+        }
+        return node.nodeType === Node.TEXT_NODE && !node.textContent?.trim();
+      });
+
+    if (iconOnly) {
+      this.setAttribute("icon-only", "");
+      this.updateIconSizes(assignedNodes, true);
+      return;
+    }
+
+    this.removeAttribute("icon-only");
+
+    const allSlots = [slotBefore, slotDefault, slotAfter];
+    allSlots.forEach((slot) => {
+      if (!slot) return;
+      const nodes = slot.assignedNodes({ flatten: true });
+      this.updateIconSizes(nodes, false);
+      if (!avatarOnly) {
+        this.updateAvatarSizes(nodes);
+      }
+      this.updateBadgeSizes(nodes);
+    });
   }
 
   // Update avatar sizes based on button size

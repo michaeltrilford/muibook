@@ -1,5 +1,20 @@
 ## Header [Start]
 
+## v19.3.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.3.0)
+
+## Header [End]
+
+### Added
+
+- `mui-button` now detects avatar-only composition when the default slot only contains `mui-avatar`, strips standard button chrome/spacing in that mode, and lets the avatar define the final control size.
+- `mui-button` now exposes `avatar-only` in its dynamic attribute mapping so builder/runtime integrations can account for the structural state consistently.
+
+---
+
+## Header [Start]
+
 ## v19.2.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.2.0)
