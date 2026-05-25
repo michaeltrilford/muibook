@@ -47,7 +47,7 @@ class storyAvatar extends HTMLElement {
       {
         name: "size",
         type: "string",
-        options: "x-small, small, medium, large",
+        options: "xx-small, x-small, small, medium, large",
         default: "medium",
         description: "Adjusts the avatar size and any slotted icon sizing to match.",
       },
@@ -156,6 +156,7 @@ class storyAvatar extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-h-stack alignY="center">
+            <mui-avatar size="xx-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
             <mui-avatar size="x-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
             <mui-avatar size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
             <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
@@ -163,6 +164,11 @@ class storyAvatar extends HTMLElement {
           </mui-h-stack>
         </div>
         <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar size=&quot;xx-small&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;x-small&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;small&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;medium&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;large&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;
         </story-code-block>
       </story-card>
 
@@ -177,6 +183,9 @@ class storyAvatar extends HTMLElement {
         <div class="canvas" slot="body">
           <mui-v-stack>
             <mui-h-stack alignY="center">
+              <mui-avatar size="xx-small" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
               <mui-avatar size="x-small" label="Max AI">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
@@ -194,6 +203,15 @@ class storyAvatar extends HTMLElement {
         </div>
 
         <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar size=&quot;xx-small&quot; label=&quot;Calendar&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-calendar&gt;&lt;/mui-icon-calendar&gt;<br />
+          &lt;/mui-avatar&gt;<br /><br />
+          &lt;mui-avatar size=&quot;x-small&quot; label=&quot;Calendar&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-calendar&gt;&lt;/mui-icon-calendar&gt;<br />
+          &lt;/mui-avatar&gt;<br /><br />
+          &lt;mui-avatar size=&quot;small&quot; label=&quot;Calendar&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-calendar&gt;&lt;/mui-icon-calendar&gt;<br />
+          &lt;/mui-avatar&gt;
         </story-code-block>
       </story-card>
 
@@ -209,6 +227,7 @@ class storyAvatar extends HTMLElement {
           <mui-v-stack>
 
             <mui-h-stack alignY="start">
+              <mui-avatar size="xx-small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
               <mui-avatar size="x-small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
               <mui-avatar size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
               <mui-avatar size="medium" image="${MaxAvatar}" label="Max AI"></mui-avatar>
@@ -216,6 +235,7 @@ class storyAvatar extends HTMLElement {
             </mui-h-stack>
 
             <mui-h-stack alignY="center">
+              <mui-avatar size="xx-small" label="Max AI"></mui-avatar>
               <mui-avatar size="x-small" label="Max AI"></mui-avatar>
               <mui-avatar size="small" label="Max AI"></mui-avatar>
               <mui-avatar size="medium" label="Max AI"></mui-avatar>
@@ -223,6 +243,9 @@ class storyAvatar extends HTMLElement {
             </mui-h-stack>
             
             <mui-h-stack alignY="end">
+              <mui-avatar size="xx-small" label="Max AI">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
               <mui-avatar size="x-small" label="Max AI">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
@@ -241,12 +264,17 @@ class storyAvatar extends HTMLElement {
         </div>
 
         <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar size=&quot;xx-small&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;x-small&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;small&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;medium&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;large&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;
         </story-code-block>
       </story-card>
 
       <story-card
         title="Chip Avatars" 
-        description="When an Avatar is used within a Chip, it inherits the size x-small to help reduce configuration and adopt design decisions." 
+        description="When an Avatar is used within a Chip, it is set to xx-small so compact chips retain the 24px avatar footprint."
         usage=""
         usageLink=""
         accessibility=""
@@ -255,7 +283,7 @@ class storyAvatar extends HTMLElement {
           <mui-v-stack>
             <mui-grid space="var(--space-100)" col="min-content min-content min-content">
               <mui-chip>
-                <mui-avatar slot="before" size="x-small" label="Espresso & Muffin Bar" background="neutral">
+                <mui-avatar slot="before" size="xx-small" label="Espresso & Muffin Bar" background="neutral">
                   <mui-icon-left-sidebar></mui-icon-left-sidebar>
                 </mui-avatar>
                 Videos
@@ -286,7 +314,7 @@ class storyAvatar extends HTMLElement {
 
             <mui-grid space="var(--space-100)" col="min-content min-content min-content">
               <mui-chip dismiss>
-                <mui-avatar slot="before" size="x-small" label="Espresso & Muffin Bar" background="neutral">
+                <mui-avatar slot="before" size="xx-small" label="Espresso & Muffin Bar" background="neutral">
                   <mui-icon-left-sidebar></mui-icon-left-sidebar>
                 </mui-avatar>
                 Videos
@@ -302,6 +330,13 @@ class storyAvatar extends HTMLElement {
             </mui-grid>
           </mui-v-stack>
         </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-chip&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; label=&quot;Max AI&quot; image=&quot;avatar-max.png&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;Videos<br />
+          &lt;/mui-chip&gt;<br /><br />
+          // Slotted avatars are automatically sized to xx-small (24px).
+        </story-code-block>
       </story-card>
 
       <story-card 
@@ -332,6 +367,12 @@ class storyAvatar extends HTMLElement {
           <mui-avatar label="Max AI" background="indigo"></mui-avatar>
         </mui-grid>
         <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;neutral&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;positive&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;warning&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;attention&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;purple&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;blue&quot;&gt;&lt;/mui-avatar&gt;
         </story-code-block>
       </story-card>
 
@@ -346,6 +387,10 @@ class storyAvatar extends HTMLElement {
           <mui-avatar label="Max AI" background-color="var(--surface)"></mui-avatar>
         </div>
         <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar<br />
+          &nbsp;&nbsp;label=&quot;Max AI&quot;<br />
+          &nbsp;&nbsp;background-color=&quot;var(--surface)&quot;&gt;<br />
+          &lt;/mui-avatar&gt;
         </story-code-block>
       </story-card>
 
@@ -460,6 +505,14 @@ class storyAvatar extends HTMLElement {
 
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
+          &lt;mui-button variant=&quot;primary&quot; size=&quot;x-small&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;Julie AI<br />
+          &lt;/mui-button&gt;<br /><br />
+          &lt;mui-button variant=&quot;secondary&quot; size=&quot;medium&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; image=&quot;avatar-max.png&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;Max AI<br />
+          &lt;/mui-button&gt;
         </story-code-block>
       </story-card>
 
@@ -472,6 +525,15 @@ class storyAvatar extends HTMLElement {
       >
         <div slot="body" class="canvas">
           <mui-h-stack alignY="center">
+            <mui-dropdown position="left">
+              <mui-button slot="action" aria-label="Open compact Julie profile menu">
+                <mui-avatar size="xx-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+              </mui-button>
+              <mui-button variant="tertiary">Profile</mui-button>
+              <mui-button variant="tertiary">Settings</mui-button>
+              <mui-button variant="tertiary">Sign out</mui-button>
+            </mui-dropdown>
+
             <mui-dropdown position="left">
               <mui-button slot="action" aria-label="Open Julie profile menu">
                 <mui-avatar size="x-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
@@ -790,6 +852,14 @@ class storyAvatar extends HTMLElement {
 
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
+          &lt;mui-link size=&quot;medium&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; image=&quot;avatar-max.png&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;Max AI<br />
+          &lt;/mui-link&gt;<br /><br />
+          &lt;mui-link variant=&quot;primary&quot; size=&quot;medium&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;Julie AI<br />
+          &lt;/mui-link&gt;
         </story-code-block>
       </story-card>
 
@@ -886,6 +956,15 @@ class storyAvatar extends HTMLElement {
           </mui-v-stack>
         </div>
         <story-code-block slot="footer" scrollable>
+          &lt;mui-slat variant=&quot;action&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;accessory&quot; size=&quot;medium&quot; label=&quot;Espresso &amp; Muffin Bar&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-left-sidebar&gt;&lt;/mui-icon-left-sidebar&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight=&quot;bold&quot;&gt;Espresso &amp; Muffin Bar&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot;&gt;Food &amp; Drink&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &lt;/mui-slat&gt;
         </story-code-block>
       </story-card>
 

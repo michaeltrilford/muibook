@@ -186,7 +186,7 @@ class MuiTabBar extends HTMLElement {
           z-index: 0;
           padding: var(--space-200) var(--space-400);
           box-sizing: border-box;
-          box-shadow: 0 0 4px 4px var(--tab-shadow-active);
+          box-shadow: var(--tab-shadow-active);
           will-change: transform, width;
           transform: translateX(0) translateZ(0);
           width: 0;

@@ -100,7 +100,7 @@ class MuiPromptMessage extends HTMLElement {
     const sync = () => {
       const size = this.getAttribute("size") || "medium";
       const avatarSizeMap: Record<string, string> = {
-        "x-small": "x-small",
+        "x-small": "xx-small",
         small: "small",
         medium: "small",
         large: "medium",

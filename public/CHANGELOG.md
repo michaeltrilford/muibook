@@ -1,5 +1,32 @@
 ## Header [Start]
 
+## v19.4.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.4.0)
+
+## Header [End]
+
+### Added
+
+- `mui-h-stack` and `mui-v-stack` now support `height`, `width`, `fill`, and `viewport` sizing controls, allowing aligned content to fill explicit or viewport-height layouts without reaching into internal parts.
+- `mui-field` now supports `variant="info"` messages with the matching informational icon and feedback color treatment.
+- `mui-form-group` now supports `space`, `aligny`, `heading-space`, and `heading-level` for aligned mixed-control layouts and semantic section headings.
+- Added public `--dialog-border` token for opt-in dialog surface borders while preserving the borderless default.
+- Added public `--code-background` and `--prompt-preview-code-background` tokens for code and prompt preview code surface overrides.
+- `mui-avatar` now supports `size="xx-small"` at 24px, while `size="x-small"` now provides a 32px option aligned to medium switch layouts.
+
+### Changed
+
+- `mui-code` now consumes `--code-background`, and prompt auto-preview code maps its background through `--prompt-preview-code-background`.
+- `mui-drawer` header and footer now size intrinsically within its panel layout, keeping drawer content scrollable without fixed footer offsets when custom action content changes footer height.
+- `mui-tab-bar` now consumes a complete `--tab-shadow-active` shadow value, backed by `--tab-shadow-active-color`, so active highlight geometry can be overridden without changing component CSS.
+- Compact avatar compositions in `mui-chip`, `mui-button`, `mui-link`, and `mui-prompt-message` now use `xx-small` to retain their previous 24px footprint.
+- `mui-switch` and `mui-prompt` derived styling variables no longer use private underscore-prefixed names, allowing intentional component-level overrides.
+
+---
+
+## Header [Start]
+
 ## v19.3.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.3.0)

@@ -1,3 +1,5 @@
+import "../mui-icons/info";
+
 class MuiField extends HTMLElement {
   static get observedAttributes() {
     return ["variant", "message", "label", "hide-label", "size", "optional"];
@@ -139,6 +141,9 @@ class MuiField extends HTMLElement {
     if (variant === "success") icon = `<mui-icon-check slot="before"></mui-icon-check>`;
     else if (variant === "warning") icon = `<mui-icon-warning slot="before"></mui-icon-warning>`;
     else if (variant === "error") icon = `<mui-icon-attention slot="before"></mui-icon-attention>`;
+    else if (variant === "info") {
+      icon = `<mui-icon-info slot="before" color="var(--feedback-info-icon)"></mui-icon-info>`;
+    }
 
     const hasSlottedMessage = messageSlot.assignedNodes({ flatten: true }).some((node) => {
       if (node.nodeType === Node.ELEMENT_NODE) return true;
@@ -152,8 +157,9 @@ class MuiField extends HTMLElement {
       return;
     }
 
+    const infoTextColor = variant === "info" ? ` style="--text-color: var(--feedback-info-text);"` : "";
     fallback.innerHTML = message
-      ? `<mui-body size="${this.size}" variant="${variant}">${icon}${message}</mui-body>`
+      ? `<mui-body size="${this.size}" variant="${variant}"${infoTextColor}>${icon}${message}</mui-body>`
       : "";
     if (message) this.setAttribute("has-message", "");
     else this.removeAttribute("has-message");

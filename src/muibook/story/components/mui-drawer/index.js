@@ -773,6 +773,31 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="drawer-overlay-custom-footer" title="Overlay: Custom Footer Content" description="Footer content uses its rendered height while the drawer body remains scrollable.">
+        <mui-button variant="primary" data-drawer="overlay-custom-footer" slot="body">Open</mui-button>
+
+        <mui-drawer variant="overlay" data-drawer="overlay-custom-footer" width="400px" side="right" slot="body" z-index="200">
+          <mui-heading size="4" level="4" slot="title">Review Changes</mui-heading>
+          ${content}
+          <mui-v-stack slot="actions" alignx="stretch" space="var(--space-300)" style="width: 100%;">
+            <mui-h-stack alignx="end" space="var(--space-300)">
+              <mui-button variant="secondary" data-close>Cancel</mui-button>
+              <mui-button variant="primary">Save changes</mui-button>
+            </mui-h-stack>
+          </mui-v-stack>
+        </mui-drawer>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer variant="overlay" data-drawer="hook" width="400px" side="right"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Review Changes&lt;/mui-heading&gt;<br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;&lt;mui-v-stack slot="actions" alignx="stretch" space="var(--space-300)" style="width: 100%;"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack alignx="end" space="var(--space-300)"&gt;...&lt;/mui-h-stack&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+          &lt;/mui-drawer&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="drawer-overlay-no-footer" title="Overlay: No Footer" description="If no footer if used, ensure there is a way for the user to cancel out of the view, especially on mobile.">
         <mui-button variant="primary" data-drawer="overlay-no-footer" slot="body">Open</mui-button>
         
@@ -1184,7 +1209,7 @@ class storyDrawer extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="drawer-overlay-left::Overlay Left|||drawer-overlay-right::Overlay Right|||drawer-overlay-no-header::Overlay: No Header|||drawer-overlay-no-footer::Overlay: No Footer|||drawer-push-left::Push Left|||drawer-push-right::Push Right|||drawer-persistent-left::Persistent Left|||drawer-persistent-right::Persistent Right|||drawer-menu::Menu|||drawer-advanced-menu::Advanced Menu|||drawer-breakpoint::Breakpoint"
+          links="drawer-overlay-left::Overlay Left|||drawer-overlay-right::Overlay Right|||drawer-overlay-custom-footer::Overlay: Custom Footer Content|||drawer-overlay-no-header::Overlay: No Header|||drawer-overlay-no-footer::Overlay: No Footer|||drawer-push-left::Push Left|||drawer-push-right::Push Right|||drawer-persistent-left::Persistent Left|||drawer-persistent-right::Persistent Right|||drawer-menu::Menu|||drawer-advanced-menu::Advanced Menu|||drawer-breakpoint::Breakpoint"
         ></story-quicklinks>
 
         ${stories}

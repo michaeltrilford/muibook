@@ -94,15 +94,22 @@ class MuiDrawer extends HTMLElement {
     const baseStyles = /*css*/ `
       .header {
         display: flex;
+        flex: 0 0 auto;
         justify-content: space-between;
         align-items: center;
         padding: calc(var(--space-400) + env(safe-area-inset-top)) var(--space-400) var(--space-400) var(--space-500);
         border-bottom: var(--border-thin);
         box-sizing: border-box;
       }
+      .inner {
+        display: flex;
+        flex-direction: column;
+      }
       .content {
+        flex: 1 1 auto;
+        min-height: 0;
         overflow-y: auto;
-        height: 100%;
+        height: auto;
         padding: var(--space-500);
         box-sizing: border-box;
       }
@@ -121,6 +128,7 @@ class MuiDrawer extends HTMLElement {
 
       .actions {
         display: flex;
+        flex: 0 0 auto;
         align-items: center;
         justify-content: flex-end;
         padding: var(--space-400) var(--space-500) calc(var(--space-400) + env(safe-area-inset-bottom));
@@ -128,8 +136,6 @@ class MuiDrawer extends HTMLElement {
         background: var(--drawer-background);
         gap: var(--space-300);
         box-sizing: border-box;
-        position: fixed;
-        bottom: 0;
         width: 100%;
       }
       .header[hidden],
@@ -139,18 +145,6 @@ class MuiDrawer extends HTMLElement {
     `;
 
     const overlayStyles = /*css*/ `
-      :host([has-header]) .content {
-        height: calc(100dvh - (7.7rem  + env(safe-area-inset-top) ));
-      }
-
-      :host([has-footer]) .content {
-        height: calc(100dvh - (7.7rem  + env(safe-area-inset-bottom) ));
-      }
-
-      :host([has-header][has-footer]) .content {
-        height: calc(100dvh - ((7.7rem * 2)  + (env(safe-area-inset-top) + env(safe-area-inset-bottom)) ));
-      }
-
       .overlay {
         position: fixed;
         top: 0;
@@ -182,8 +176,6 @@ class MuiDrawer extends HTMLElement {
         transform: translateX(100%);
         opacity: 0;
         visibility: hidden;
-        display: flex;
-        flex-direction: column;
         will-change: transform, opacity;
       }
 
@@ -227,17 +219,6 @@ class MuiDrawer extends HTMLElement {
         top: 0;
         left: 0;
         height: 100%;
-      }
-
-      .content { height: 100%; }
-
-      :host([has-header]) .content,
-      :host([has-footer]) .content {
-        height: calc(100% - 7.7rem);
-      }
-
-      :host([has-header][has-footer]) .content {
-        height: calc(100% - (7.7rem * 2));
       }
 
       .outer {
@@ -306,12 +287,6 @@ class MuiDrawer extends HTMLElement {
           border: none;
         }
 
-        .actions {
-          position: fixed;
-          bottom: 0;
-          width: 100%;
-        }
-
         /* Overlay */
         :host([variant="overlay"]) .inner {
           max-width: ${width};
@@ -353,12 +328,15 @@ class MuiDrawer extends HTMLElement {
           padding-top: var(--space-400);
         }
 
-        :host([variant="persistent"]) .content { height: auto; }
+        :host([variant="persistent"]) .content {
+          flex: 0 1 auto;
+          min-height: initial;
+          height: auto;
+        }
 
         :host([variant="persistent"]) .actions {
           border-bottom-right-radius: var(--radius-200);
           border-bottom-left-radius: var(--radius-200);
-          position: static;
           width: 100%;
           padding: var(--space-400) var(--space-500) var(--space-400);
         }

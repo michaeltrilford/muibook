@@ -52,6 +52,7 @@ class tokensComponents extends HTMLElement {
           </spec-card>
 
           <spec-card id="avatar" title="Avatar" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts">
+            <story-token-slat slot="body" token="--avatar-xx-small" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--avatar-x-small" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--avatar-small" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--avatar-medium" variant="size"></story-token-slat>
@@ -164,6 +165,7 @@ class tokensComponents extends HTMLElement {
           </spec-card>
 
           <spec-card id="code" title="Code" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-code/index.ts">
+            <story-token-slat slot="body" token="--code-background" variant="color"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Text</mui-link> tokens</mui-body>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
@@ -175,6 +177,7 @@ class tokensComponents extends HTMLElement {
           >
             <story-token-slat slot="body" token="--dialog-radius" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--dialog-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--dialog-border" variant="border"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/#/semantic-design-tokens">Border</mui-link> tokens</mui-body>
           </spec-card>
@@ -323,6 +326,7 @@ class tokensComponents extends HTMLElement {
           <spec-card id="prompt-preview" title="Prompt Preview" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-preview/index.ts">
             <story-token-slat slot="body" token="--prompt-preview-accent" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-surface" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-preview-code-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-box-drop-shadow" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-dismiss-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-dismiss-secondary-background" variant="color"></story-token-slat>
@@ -466,7 +470,8 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--tab-icon-active" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-text-color" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-text-color-active" variant="text-color"></story-token-slat>
-            <story-token-slat slot="body" token="--tab-shadow-active" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-shadow-active-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-shadow-active" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--tabs-ghost-box-shadow" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--tab-radius" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--tab-padding" variant="size"></story-token-slat>

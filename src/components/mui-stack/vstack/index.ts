@@ -2,7 +2,7 @@ import { getPartMap } from "../../../utils/part-map";
 
 class MuiVStack extends HTMLElement {
   static get observedAttributes() {
-    return ["space", "alignx", "aligny"];
+    return ["space", "alignx", "aligny", "height", "width", "viewport", "fill"];
   }
 
   private space: string;
@@ -21,9 +21,21 @@ class MuiVStack extends HTMLElement {
     this.styles = /*css*/ `
       :host {
         display: block;
+        height: var(--stack-height, auto);
+        width: var(--stack-width, auto);
+      }
+      :host([fill]) {
+        --stack-height: 100%;
+        --stack-width: 100%;
+      }
+      :host([viewport]) {
+        --stack-height: 100dvh;
       }
       slot {
         display: grid;
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
         gap: var(--space);
         justify-items: var(--alignX);
         align-items: var(--alignY);
@@ -34,6 +46,7 @@ class MuiVStack extends HTMLElement {
   async connectedCallback() {
     if (!this.shadowRoot) return;
     await this.waitForPartMap();
+    this.syncDimensions();
 
     const partMap = getPartMap("spacing", "layout", "visual");
 
@@ -53,6 +66,10 @@ class MuiVStack extends HTMLElement {
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
     if (oldValue === newValue) return;
 
+    if (name === "height" || name === "width") {
+      this.syncDimensions();
+    }
+
     if (!this.shadowRoot) return;
     const slot = this.shadowRoot.querySelector("slot");
 
@@ -60,6 +77,23 @@ class MuiVStack extends HTMLElement {
       if (name === "space") slot.style.setProperty("--space", newValue || this.space);
       if (name === "alignx") slot.style.setProperty("--alignX", newValue || this.alignX);
       if (name === "aligny") slot.style.setProperty("--alignY", newValue || this.alignY);
+    }
+  }
+
+  private syncDimensions() {
+    const height = this.getAttribute("height");
+    const width = this.getAttribute("width");
+
+    if (height) {
+      this.style.setProperty("--stack-height", height);
+    } else {
+      this.style.removeProperty("--stack-height");
+    }
+
+    if (width) {
+      this.style.setProperty("--stack-width", width);
+    } else {
+      this.style.removeProperty("--stack-width");
     }
   }
 

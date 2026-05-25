@@ -79,7 +79,7 @@ class MuiChip extends HTMLElement {
         const tagName = element.tagName.toLowerCase();
 
         if (tagName === "mui-avatar") {
-          element.setAttribute("size", "x-small");
+          element.setAttribute("size", "xx-small");
         } else if (tagName.startsWith("mui-icon-")) {
           element.setAttribute("size", iconSize);
         }

@@ -1002,7 +1002,7 @@ class StoryPrompt extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="preview-open-dialog" title="Preview: Code" description="Click preview to open the built-in prompt dialog.">
+      <story-card id="preview-open-dialog" title="Preview: Code Types" description="JSON and CSS are formatted by the built-in dialog; the remaining types render source content for comparison.">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
@@ -1191,7 +1191,7 @@ class StoryPrompt extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       
         imports='["@muibook/components/mui-prompt"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Setup|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Open Code Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Setup|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Code Types Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -170,6 +170,27 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card title="Formatted Payload Types" description="Format source values before passing text into Code; Code preserves whitespace and wrapping without altering content.">
+          <mui-v-stack slot="body" space="var(--space-400)">
+            <mui-body size="x-small" weight="bold">JSON</mui-body>
+            <mui-code id="formattedJsonExample" size="small" wrap></mui-code>
+            <mui-body size="x-small" weight="bold">CSS</mui-body>
+            <mui-code id="formattedCssExample" size="small" wrap></mui-code>
+            <mui-body size="x-small" weight="bold">JavaScript</mui-body>
+            <mui-code id="formattedJsExample" size="small" wrap></mui-code>
+            <mui-body size="x-small" weight="bold">TypeScript</mui-body>
+            <mui-code id="formattedTsExample" size="small" wrap></mui-code>
+            <mui-body size="x-small" weight="bold">Markdown</mui-body>
+            <mui-code id="formattedMdExample" size="small" wrap></mui-code>
+            <mui-body size="x-small" weight="bold">SQL</mui-body>
+            <mui-code id="formattedSqlExample" size="small" wrap></mui-code>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            code.textContent = formatSource(payload, type);<br /><br />
+            &lt;mui-code size="small" wrap&gt;&lt;/mui-code&gt;
+          </story-code-block>
+        </story-card>
+
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -188,6 +209,46 @@ class storyCode extends HTMLElement {
         ${stories}
       </story-template>
     `;
+
+    const formattedExamples = {
+      formattedJsonExample: JSON.stringify(
+        {
+          source: "crm",
+          query: "CSAT by feature",
+          range: "Q4",
+          include: ["pain_points", "sentiment", "churn_drivers"],
+        },
+        null,
+        2,
+      ),
+      formattedCssExample: `.card {
+  display: grid;
+  gap: var(--space-200);
+  padding: var(--space-300);
+}`,
+      formattedJsExample: `const result = items
+  .filter((item) => item.active)
+  .map((item) => item.id);`,
+      formattedTsExample: `type PromptPayload = {
+  source: string;
+  query: string;
+  include: string[];
+};`,
+      formattedMdExample: `## Q4 Notes
+
+- Churn up in SMB
+- CSAT strongest in onboarding
+- Follow-up: improve docs`,
+      formattedSqlExample: `SELECT feature_area, AVG(csat)
+FROM survey_responses
+WHERE quarter = "Q4"
+GROUP BY feature_area;`,
+    };
+
+    Object.entries(formattedExamples).forEach(([id, text]) => {
+      const code = this.shadowRoot.querySelector(`#${id}`);
+      if (code) code.textContent = text;
+    });
   }
 }
 

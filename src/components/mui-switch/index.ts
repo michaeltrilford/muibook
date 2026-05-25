@@ -182,8 +182,8 @@ class MuiSwitch extends HTMLElement {
         .switch {
           position: relative;
           display: inline-block;
-          width: var(--_switch-width, var(--switch-width));
-          height: var(--_switch-height, var(--switch-height));
+          width: var(--switch-width-computed, var(--switch-width));
+          height: var(--switch-height-computed, var(--switch-height));
         }
 
         .switch input {
@@ -205,15 +205,15 @@ class MuiSwitch extends HTMLElement {
           bottom: 0;
           background-color: var(--switch-track-background);
           transition: background-color var(--speed-200);
-          border-radius: var(--_switch-height, var(--switch-height));
+          border-radius: var(--switch-height-computed, var(--switch-height));
         }
 
         .thumb {
           position: absolute;
-          top: var(--_switch-offset, var(--switch-offset));
-          left: var(--_switch-offset, var(--switch-offset));
-          width: var(--_switch-thumb-size, var(--switch-thumb-size));
-          height: var(--_switch-thumb-size, var(--switch-thumb-size));
+          top: var(--switch-offset-computed, var(--switch-offset));
+          left: var(--switch-offset-computed, var(--switch-offset));
+          width: var(--switch-thumb-size-computed, var(--switch-thumb-size));
+          height: var(--switch-thumb-size-computed, var(--switch-thumb-size));
           background-color: var(--switch-thumb-bg);
           transition: transform var(--speed-200);
           border-radius: 50%;
@@ -229,36 +229,36 @@ class MuiSwitch extends HTMLElement {
         input:checked + .track .thumb {
           transform: translateX(
             calc(
-              var(--_switch-width, var(--switch-width)) -
-              var(--_switch-thumb-size, var(--switch-thumb-size)) -
-              (var(--_switch-offset, var(--switch-offset)) * 2)
+              var(--switch-width-computed, var(--switch-width)) -
+              var(--switch-thumb-size-computed, var(--switch-thumb-size)) -
+              (var(--switch-offset-computed, var(--switch-offset)) * 2)
             )
           );
         }
 
         :host([size="x-small"]) {
-          --_switch-offset: var(--stroke-size-100);
-          --_switch-thumb-size: calc(var(--action-icon-only-size-x-small) - var(--space-200));
-          --_switch-height: calc(var(--_switch-thumb-size) + (var(--_switch-offset) * 2));
-          --_switch-width: calc(var(--_switch-height) * 1.6);
+          --switch-offset-computed: var(--stroke-size-100);
+          --switch-thumb-size-computed: calc(var(--action-icon-only-size-x-small) - var(--space-200));
+          --switch-height-computed: calc(var(--switch-thumb-size-computed) + (var(--switch-offset-computed) * 2));
+          --switch-width-computed: calc(var(--switch-height-computed) * 1.6);
         }
         :host([size="small"]) {
-          --_switch-offset: var(--stroke-size-100);
-          --_switch-thumb-size: calc(var(--action-icon-only-size-small) - var(--space-200));
-          --_switch-height: calc(var(--_switch-thumb-size) + (var(--_switch-offset) * 2));
-          --_switch-width: calc(var(--_switch-height) * 1.6);
+          --switch-offset-computed: var(--stroke-size-100);
+          --switch-thumb-size-computed: calc(var(--action-icon-only-size-small) - var(--space-200));
+          --switch-height-computed: calc(var(--switch-thumb-size-computed) + (var(--switch-offset-computed) * 2));
+          --switch-width-computed: calc(var(--switch-height-computed) * 1.6);
         }
         :host([size="medium"]) {
-          --_switch-offset: var(--stroke-size-100);
-          --_switch-thumb-size: calc(var(--switch-thumb-size) - var(--space-100));
-          --_switch-height: calc(var(--_switch-thumb-size) + (var(--_switch-offset) * 2));
-          --_switch-width: calc(var(--_switch-height) * 1.6);
+          --switch-offset-computed: var(--stroke-size-100);
+          --switch-thumb-size-computed: calc(var(--switch-thumb-size) - var(--space-100));
+          --switch-height-computed: calc(var(--switch-thumb-size-computed) + (var(--switch-offset-computed) * 2));
+          --switch-width-computed: calc(var(--switch-height-computed) * 1.6);
         }
         :host([size="large"]) {
-          --_switch-offset: var(--switch-offset);
-          --_switch-thumb-size: var(--switch-thumb-size);
-          --_switch-height: var(--switch-height);
-          --_switch-width: var(--switch-width);
+          --switch-offset-computed: var(--switch-offset);
+          --switch-thumb-size-computed: var(--switch-thumb-size);
+          --switch-height-computed: var(--switch-height);
+          --switch-width-computed: var(--switch-width);
         }
 
         ::slotted([slot="on-icon"]),

@@ -179,11 +179,13 @@ html[data-theme="light"] {
   --surface-elevated-alpha: var(--white-opacity-50);
   --surface-elevated-100: var(--white);
   --surface-elevated-200: var(--grey-100);
+  --code-background: var(--surface-elevated-200);
   --prompt-preview-dismiss-border-color: var(--black-opacity-30);
   --prompt-preview-box-drop-shadow: drop-shadow(
     0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-10)
   );
   --prompt-preview-surface: var(--surface-elevated-100);
+  --prompt-preview-code-background: var(--code-background);
   --prompt-preview-accent-mix-100: 10%;
   --prompt-preview-accent-mix-200: 8%;
   --prompt-preview-accent-mix-300: 6%;
@@ -314,7 +316,8 @@ html[data-theme="light"] {
   --tab-background-active: var(--white);
   --tab-icon-active: var(--black);
   --tab-text-color-active: var(--black);
-  --tab-shadow-active: var(--black-opacity-10);
+  --tab-shadow-active-color: var(--black-opacity-10);
+  --tab-shadow-active: 0 0 var(--stroke-size-400) var(--stroke-size-400) var(--tab-shadow-active-color);
   --tabs-ghost-box-shadow: none;
 
   /* Carousel */
@@ -395,6 +398,7 @@ html[data-theme="light"] {
 
   /* Dialog */
   --dialog-background: var(--white);
+  --dialog-border: none;
 
   /* Drawer */
   --drawer-background: var(--white);
@@ -529,11 +533,13 @@ html[data-theme="dark"] {
   --surface-elevated-alpha: var(--white-opacity-10);
   --surface-elevated-100: var(--grey-800);
   --surface-elevated-200: var(--grey-900);
+  --code-background: var(--surface-elevated-200);
   --prompt-preview-dismiss-border-color: var(--white-opacity-30);
   --prompt-preview-box-drop-shadow: drop-shadow(
     0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20)
   );
   --prompt-preview-surface: var(--surface-elevated-200);
+  --prompt-preview-code-background: var(--code-background);
   --prompt-preview-accent-mix-100: 14%;
   --prompt-preview-accent-mix-200: 10%;
   --prompt-preview-accent-mix-300: 8%;
@@ -663,7 +669,8 @@ html[data-theme="dark"] {
   --tab-background-active: var(--grey-700);
   --tab-icon-active: var(--white);
   --tab-text-color-active: var(--white);
-  --tab-shadow-active: var(--black-opacity-40);
+  --tab-shadow-active-color: var(--black-opacity-40);
+  --tab-shadow-active: 0 0 var(--stroke-size-400) var(--stroke-size-400) var(--tab-shadow-active-color);
   --tabs-ghost-box-shadow: none;
 
   /* Carousel */
@@ -744,6 +751,7 @@ html[data-theme="dark"] {
 
   /* Dialog */
   --dialog-background: var(--grey-800);
+  --dialog-border: none;
 
   /* Drawer */
   --drawer-background: var(--grey-800);
@@ -974,7 +982,8 @@ html[data-theme="dark"] {
   /* Dialog */
   --dialog-radius: var(--radius-150);
   /* Avatar */
-  --avatar-x-small: var(--space-500); /* 24px */
+  --avatar-xx-small: var(--space-500); /* 24px */
+  --avatar-x-small: calc(var(--space-500) + var(--space-200)); /* 32px */
   --avatar-small: calc(var(--space-600) + var(--space-025)); /* 38px */
   --avatar-medium: var(--space-700); /* 48px */
   --avatar-large: calc(var(--space-700) + var(--space-200)); /* 56px */

@@ -823,9 +823,9 @@ class MuiButton extends HTMLElement {
 
     // Map button sizes to avatar sizes
     const avatarSizeMap: Record<string, string> = {
-      "xx-small": "x-small",
-      "x-small": "x-small",
-      small: "x-small",
+      "xx-small": "xx-small",
+      "x-small": "xx-small",
+      small: "xx-small",
       medium: "small",
       large: "medium",
     };

@@ -161,6 +161,18 @@ class StoryTemplate extends HTMLElement {
         <import-card imports='${JSON.stringify(importItems).replaceAll("'", "&apos;")}'></import-card>
       `
       : "";
+    const hasMessageContent = Boolean(this.querySelector('[slot="message"]'));
+    const supplementalSection =
+      importSection || accessibilitySection || attrsReferenceSection || hasMessageContent
+        ? /*html*/ `
+            <mui-v-stack space="var(--space-400)">
+              ${importSection}
+              ${accessibilitySection}
+              <slot name="message"></slot>
+              ${attrsReferenceSection}
+            </mui-v-stack>
+          `
+        : "";
 
     const demoLink = this.getAttribute("demo");
     const demoContent = demoLink
@@ -266,12 +278,7 @@ class StoryTemplate extends HTMLElement {
               </mui-responsive>
               ${description}
             </mui-v-stack>
-            <mui-v-stack space="var(--space-400)">
-            ${importSection}
-            ${accessibilitySection}
-            <slot name="message"></slot>
-            ${attrsReferenceSection}
-          </mui-v-stack>
+            ${supplementalSection}
           </mui-v-stack>
           <mui-v-stack class="stories">
             <slot></slot>

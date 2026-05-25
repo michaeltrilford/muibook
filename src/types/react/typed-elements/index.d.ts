@@ -15,7 +15,7 @@ declare global {
       "mui-addon": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
       "mui-field": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        variant?: "default" | "success" | "warning" | "error" | string;
+        variant?: "default" | "info" | "success" | "warning" | "error" | string;
         label?: string;
         "hide-label"?: boolean;
         message?: string;
@@ -132,7 +132,7 @@ declare global {
 
       "mui-accordion-block": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         heading: string;
-        size?: "small" | "medium" | "large" | string;
+        size?: "xx-small" | "x-small" | "small" | "medium" | "large" | string;
         "detail-space"?: "none";
         class?: string;
       };
@@ -175,7 +175,11 @@ declare global {
       "mui-v-stack": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         space?: string;
         alignX?: "start" | "center" | "end" | "normal" | string;
-        alignY?: "start" | "center" | "end" | "normal" | string;
+        aligny?: "start" | "center" | "end" | "normal" | string;
+        height?: string;
+        width?: string;
+        viewport?: boolean;
+        fill?: boolean;
         slot?: string;
         style?: React.CSSProperties;
         class?: string;
@@ -184,7 +188,11 @@ declare global {
       "mui-h-stack": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         space?: string;
         alignX?: "start" | "center" | "end" | "normal" | string;
-        alignY?: "start" | "center" | "end" | "normal" | string;
+        aligny?: "start" | "center" | "end" | "normal" | string;
+        height?: string;
+        width?: string;
+        viewport?: boolean;
+        fill?: boolean;
         slot?: string;
         style?: React.CSSProperties;
         class?: string;
@@ -243,6 +251,17 @@ declare global {
         class?: string;
         style?: React.CSSProperties;
         position?: string;
+      };
+      "mui-form-group": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        heading?: string;
+        "heading-level"?: "1" | "2" | "3" | "4" | "5" | "6" | string;
+        "heading-space"?: string;
+        "hide-label"?: boolean;
+        variant?: "horizontal" | "default" | string;
+        space?: string;
+        aligny?: "start" | "center" | "end" | "normal" | string;
+        style?: React.CSSProperties & { [key: `--${string}`]: string | undefined };
+        class?: string;
       };
       "mui-progress": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         progress?: number;

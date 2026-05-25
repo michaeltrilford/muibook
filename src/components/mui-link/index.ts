@@ -864,16 +864,16 @@ class MuiLink extends HTMLElement {
     // Default variant (plain link) uses smaller avatars
     const avatarSizeMap: Record<string, string> = isDefaultVariant
       ? {
-          "xx-small": "x-small",
-          "x-small": "x-small",
-          small: "x-small",
-          medium: "x-small",
+          "xx-small": "xx-small",
+          "x-small": "xx-small",
+          small: "xx-small",
+          medium: "xx-small",
           large: "small",
         }
       : {
-          "xx-small": "x-small",
-          "x-small": "x-small",
-          small: "x-small",
+          "xx-small": "xx-small",
+          "x-small": "xx-small",
+          small: "xx-small",
           medium: "small",
           large: "medium",
         };

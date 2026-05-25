@@ -39,7 +39,7 @@ class storyField extends HTMLElement {
       {
         name: "variant",
         type: "string",
-        options: "default, success, warning, error",
+        options: "default, info, success, warning, error",
         default: "default",
         description: "--",
       },
@@ -246,6 +246,52 @@ class storyField extends HTMLElement {
           <story-code-block slot="footer" scrollable>
             &lt;mui-field label="small" size="small"&gt;<br />
             &nbsp;&nbsp;&lt;mui-textarea&gt;&lt;/mui-textarea&gt;<br />
+            &lt;/mui-field&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          title="Input: Default w/ Message"
+          description="A supporting field message can be displayed by default without validation or interaction logic."
+          usageLink="https://guides.muibook.com/field"
+        >
+          <mui-field
+            label="Display name"
+            message="Shown on your profile and visible to other members."
+            slot="body"
+          >
+            <mui-input placeholder="Enter a display name"></mui-input>
+          </mui-field>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-field<br />
+            &nbsp;&nbsp;label="Display name"<br />
+            &nbsp;&nbsp;message="Shown on your profile and visible to other members."<br />
+            &gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="Enter a display name"&gt;&lt;/mui-input&gt;<br />
+            &lt;/mui-field&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          title="Input: Info w/ Message"
+          description="An informational field message can be displayed without requiring a validation event."
+          usageLink="https://guides.muibook.com/field"
+        >
+          <mui-field
+            label="Project URL"
+            variant="info"
+            message="This URL will be included in shared project links."
+            slot="body"
+          >
+            <mui-input placeholder="https://example.com/project"></mui-input>
+          </mui-field>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-field<br />
+            &nbsp;&nbsp;label="Project URL"<br />
+            &nbsp;&nbsp;variant="info"<br />
+            &nbsp;&nbsp;message="This URL will be included in shared project links."<br />
+            &gt;<br />
+            &nbsp;&nbsp;&lt;mui-input placeholder="https://example.com/project"&gt;&lt;/mui-input&gt;<br />
             &lt;/mui-field&gt;
           </story-code-block>
         </story-card>

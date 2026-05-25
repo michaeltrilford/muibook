@@ -1342,27 +1342,31 @@ class MuiPrompt extends HTMLElement {
         :host {
           display: block;
           --prompt-action-radius: var(--chip-radius-small, var(--radius-400));
-          --_prompt-color-top-start-source: ${startSource};
-          --_prompt-color-top-mid-source: ${midSource};
-          --_prompt-color-top-end-source: ${endSource};
-          --_prompt-color-top-accent-source: ${accentSource};
-          --_prompt-accent-primary: var(--prompt-accent-primary, var(--prompt-spectrum-start, var(--blue-500)));
-          --_prompt-accent-secondary: var(--prompt-accent-secondary, var(--blue-500));
-          --_prompt-accent-mid: color-mix(in srgb, var(--_prompt-accent-primary) 52%, var(--_prompt-accent-secondary) 48%);
-          --_prompt-start-tint: color-mix(in srgb, var(--_prompt-color-top-start-source) 24%, transparent 76%);
-          --_prompt-mid-tint: color-mix(in srgb, var(--_prompt-color-top-mid-source) 18%, transparent 82%);
-          --_prompt-end-tint: color-mix(in srgb, var(--_prompt-color-top-end-source) 20%, transparent 80%);
-          --_prompt-accent-tint: color-mix(
+          --prompt-color-top-start-source: ${startSource};
+          --prompt-color-top-mid-source: ${midSource};
+          --prompt-color-top-end-source: ${endSource};
+          --prompt-color-top-accent-source: ${accentSource};
+          --prompt-accent-primary-derived: var(--prompt-accent-primary, var(--prompt-spectrum-start, var(--blue-500)));
+          --prompt-accent-secondary-derived: var(--prompt-accent-secondary, var(--blue-500));
+          --prompt-accent-mid: color-mix(
             in srgb,
-            var(--_prompt-color-top-accent-source) 16%,
+            var(--prompt-accent-primary-derived) 52%,
+            var(--prompt-accent-secondary-derived) 48%
+          );
+          --prompt-start-tint: color-mix(in srgb, var(--prompt-color-top-start-source) 24%, transparent 76%);
+          --prompt-mid-tint: color-mix(in srgb, var(--prompt-color-top-mid-source) 18%, transparent 82%);
+          --prompt-end-tint: color-mix(in srgb, var(--prompt-color-top-end-source) 20%, transparent 80%);
+          --prompt-accent-tint: color-mix(
+            in srgb,
+            var(--prompt-color-top-accent-source) 16%,
             transparent 84%
           );
-          --_prompt-layer-start-tint: ${swapLayout ? "var(--_prompt-end-tint)" : "var(--_prompt-start-tint)"};
-          --_prompt-layer-mid-tint: ${swapLayout ? "var(--_prompt-accent-tint)" : "var(--_prompt-mid-tint)"};
-          --_prompt-layer-end-tint: ${swapLayout ? "var(--_prompt-start-tint)" : "var(--_prompt-end-tint)"};
-          --_prompt-layer-accent-tint: ${swapLayout ? "var(--_prompt-mid-tint)" : "var(--_prompt-accent-tint)"};
-          --_prompt-spectrum-blend-mode-hover: normal;
-          --_prompt-spectrum-blend-mode-focus: normal;
+          --prompt-layer-start-tint: ${swapLayout ? "var(--prompt-end-tint)" : "var(--prompt-start-tint)"};
+          --prompt-layer-mid-tint: ${swapLayout ? "var(--prompt-accent-tint)" : "var(--prompt-mid-tint)"};
+          --prompt-layer-end-tint: ${swapLayout ? "var(--prompt-start-tint)" : "var(--prompt-end-tint)"};
+          --prompt-layer-accent-tint: ${swapLayout ? "var(--prompt-mid-tint)" : "var(--prompt-accent-tint)"};
+          --prompt-spectrum-blend-mode-hover: normal;
+          --prompt-spectrum-blend-mode-focus: normal;
           --prompt-placeholder-color-hover-light: var(--grey-1200);
           --prompt-placeholder-color-hover-dark: var(--white);
           --prompt-placeholder-color-focus-light: var(--grey-1200);
@@ -1395,24 +1399,24 @@ class MuiPrompt extends HTMLElement {
             var(--prompt-focus-border-color) 25%,
             transparent 75%
           );
-          --_prompt-border-hover-primary-soft: color-mix(
+          --prompt-border-hover-primary-soft: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-primary, var(--_prompt-accent-primary)) 46%,
+            var(--prompt-border-color-hover-primary, var(--prompt-accent-primary-derived)) 46%,
             var(--form-default-border-color-hover) 54%
           );
-          --_prompt-border-hover-primary-strong: color-mix(
+          --prompt-border-hover-primary-strong: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-primary, var(--_prompt-accent-primary)) 70%,
+            var(--prompt-border-color-hover-primary, var(--prompt-accent-primary-derived)) 70%,
             var(--form-default-border-color-hover) 30%
           );
-          --_prompt-border-hover-secondary-soft: color-mix(
+          --prompt-border-hover-secondary-soft: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-secondary, var(--_prompt-accent-secondary)) 46%,
+            var(--prompt-border-color-hover-secondary, var(--prompt-accent-secondary-derived)) 46%,
             var(--form-default-border-color-hover) 54%
           );
-          --_prompt-border-hover-secondary-strong: color-mix(
+          --prompt-border-hover-secondary-strong: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-secondary, var(--_prompt-accent-secondary)) 70%,
+            var(--prompt-border-color-hover-secondary, var(--prompt-accent-secondary-derived)) 70%,
             var(--form-default-border-color-hover) 30%
           );
           overflow: visible;
@@ -1455,25 +1459,25 @@ class MuiPrompt extends HTMLElement {
           background:
             radial-gradient(
               90% 120% at 12% 16%,
-              var(--_prompt-layer-start-tint) 0%,
+              var(--prompt-layer-start-tint) 0%,
               transparent 62%
             ),
             radial-gradient(
               90% 120% at 72% 8%,
-              var(--_prompt-layer-mid-tint) 0%,
+              var(--prompt-layer-mid-tint) 0%,
               transparent 60%
             ),
             radial-gradient(
               80% 120% at 86% 72%,
-              var(--_prompt-layer-end-tint) 0%,
+              var(--prompt-layer-end-tint) 0%,
               transparent 58%
             ),
             radial-gradient(
               110% 120% at 34% 88%,
-              var(--_prompt-layer-accent-tint) 0%,
+              var(--prompt-layer-accent-tint) 0%,
               transparent 64%
             );
-          mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
+          mix-blend-mode: var(--prompt-spectrum-blend-mode-hover);
           filter: blur(var(--space-050));
           transform: translate3d(0, 0, 0) scaleX(0.94) scaleY(1.01);
           transform-origin: center;
@@ -1494,26 +1498,26 @@ class MuiPrompt extends HTMLElement {
           background:
             radial-gradient(
               90% 120% at 12% 16%,
-              var(--_prompt-layer-start-tint) 0%,
+              var(--prompt-layer-start-tint) 0%,
               transparent 62%
             ),
             radial-gradient(
               90% 120% at 72% 8%,
-              var(--_prompt-layer-mid-tint) 0%,
+              var(--prompt-layer-mid-tint) 0%,
               transparent 60%
             ),
             radial-gradient(
               80% 120% at 86% 72%,
-              var(--_prompt-layer-end-tint) 0%,
+              var(--prompt-layer-end-tint) 0%,
               transparent 58%
             ),
             radial-gradient(
               110% 120% at 34% 88%,
-              var(--_prompt-layer-accent-tint) 0%,
+              var(--prompt-layer-accent-tint) 0%,
               transparent 64%
             ),
             var(--surface-elevated-100);
-          mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
+          mix-blend-mode: var(--prompt-spectrum-blend-mode-hover);
           filter: none;
           animation: promptMeshPulse calc(var(--prompt-hover-sweep-speed, var(--speed-500)) * 1.15) ease-in-out infinite;
         }
@@ -1542,26 +1546,26 @@ class MuiPrompt extends HTMLElement {
           background:
             radial-gradient(
               90% 120% at 12% 16%,
-              var(--_prompt-layer-start-tint) 0%,
+              var(--prompt-layer-start-tint) 0%,
               transparent 62%
             ),
             radial-gradient(
               90% 120% at 72% 8%,
-              var(--_prompt-layer-mid-tint) 0%,
+              var(--prompt-layer-mid-tint) 0%,
               transparent 60%
             ),
             radial-gradient(
               80% 120% at 86% 72%,
-              var(--_prompt-layer-end-tint) 0%,
+              var(--prompt-layer-end-tint) 0%,
               transparent 58%
             ),
             radial-gradient(
               110% 120% at 34% 88%,
-              var(--_prompt-layer-accent-tint) 0%,
+              var(--prompt-layer-accent-tint) 0%,
               transparent 64%
             ),
             var(--prompt-focus-surface-background, var(--surface-elevated-100));
-          mix-blend-mode: var(--_prompt-spectrum-blend-mode-hover);
+          mix-blend-mode: var(--prompt-spectrum-blend-mode-hover);
           animation: none;
         }
         :host([effects-off]) .surface::before {
@@ -1800,41 +1804,41 @@ class MuiPrompt extends HTMLElement {
         :host-context([theme="dark"]),
         :host-context(.theme-dark) {
           --prompt-focus-surface-opacity: 0.35;
-          --_prompt-accent-secondary: var(
+          --prompt-accent-secondary-derived: var(
             --prompt-accent-secondary,
-            color-mix(in srgb, var(--_prompt-accent-primary) 64%, var(--grey-1200) 36%)
+            color-mix(in srgb, var(--prompt-accent-primary-derived) 64%, var(--grey-1200) 36%)
           );
-          --_prompt-accent-mid: color-mix(
+          --prompt-accent-mid: color-mix(
             in srgb,
-            var(--_prompt-accent-primary) 56%,
-            var(--_prompt-accent-secondary) 44%
+            var(--prompt-accent-primary-derived) 56%,
+            var(--prompt-accent-secondary-derived) 44%
           );
-          --_prompt-start-tint: color-mix(in srgb, var(--_prompt-color-top-start-source) 22%, transparent 78%);
-          --_prompt-mid-tint: color-mix(in srgb, var(--_prompt-color-top-mid-source) 18%, transparent 82%);
-          --_prompt-end-tint: color-mix(in srgb, var(--_prompt-color-top-end-source) 20%, transparent 80%);
-          --_prompt-accent-tint: color-mix(
+          --prompt-start-tint: color-mix(in srgb, var(--prompt-color-top-start-source) 22%, transparent 78%);
+          --prompt-mid-tint: color-mix(in srgb, var(--prompt-color-top-mid-source) 18%, transparent 82%);
+          --prompt-end-tint: color-mix(in srgb, var(--prompt-color-top-end-source) 20%, transparent 80%);
+          --prompt-accent-tint: color-mix(
             in srgb,
-            var(--_prompt-color-top-accent-source) 16%,
+            var(--prompt-color-top-accent-source) 16%,
             transparent 84%
           );
-          --_prompt-border-hover-primary-soft: color-mix(
+          --prompt-border-hover-primary-soft: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-primary, var(--_prompt-accent-primary)) 56%,
+            var(--prompt-border-color-hover-primary, var(--prompt-accent-primary-derived)) 56%,
             var(--form-default-border-color-hover) 44%
           );
-          --_prompt-border-hover-primary-strong: color-mix(
+          --prompt-border-hover-primary-strong: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-primary, var(--_prompt-accent-primary)) 78%,
+            var(--prompt-border-color-hover-primary, var(--prompt-accent-primary-derived)) 78%,
             var(--form-default-border-color-hover) 22%
           );
-          --_prompt-border-hover-secondary-soft: color-mix(
+          --prompt-border-hover-secondary-soft: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-secondary, var(--_prompt-accent-secondary)) 56%,
+            var(--prompt-border-color-hover-secondary, var(--prompt-accent-secondary-derived)) 56%,
             var(--form-default-border-color-hover) 44%
           );
-          --_prompt-border-hover-secondary-strong: color-mix(
+          --prompt-border-hover-secondary-strong: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-secondary, var(--_prompt-accent-secondary)) 78%,
+            var(--prompt-border-color-hover-secondary, var(--prompt-accent-secondary-derived)) 78%,
             var(--form-default-border-color-hover) 22%
           );
           --prompt-hover-border-pulse-start: color-mix(
@@ -1854,8 +1858,8 @@ class MuiPrompt extends HTMLElement {
           --prompt-focus-after-opacity: 0.3;
           --prompt-focus-after-opacity-min: 0;
           --prompt-focus-after-opacity-max: 0.3;
-          --_prompt-spectrum-blend-mode-hover: soft-light;
-          --_prompt-spectrum-blend-mode-focus: normal;
+          --prompt-spectrum-blend-mode-hover: soft-light;
+          --prompt-spectrum-blend-mode-focus: normal;
         }
         :host-context([data-theme="light"]),
         :host-context([theme="light"]),
@@ -1990,6 +1994,9 @@ class MuiPrompt extends HTMLElement {
         }
         .auto-preview-media-url::part(text-overflow) {
           text-overflow: ellipsis;
+        }
+        #promptAutoPreviewCode {
+          --code-background: var(--prompt-preview-code-background);
         }
         #promptAutoPreviewCode[hidden],
         #promptAutoPreviewImage[hidden],

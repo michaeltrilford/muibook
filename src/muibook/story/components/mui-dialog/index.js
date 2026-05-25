@@ -262,6 +262,28 @@ class storyDialog extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="Bordered Dialog">
+        <mui-button variant="secondary" data-dialog="hook-border" slot="body">Open Bordered Dialog</mui-button>
+        <mui-dialog
+          data-dialog="hook-border"
+          width="400px"
+          slot="body"
+          aria-labelledby="dialog-title-border"
+          aria-describedby="dialog-desc-border"
+          style="--dialog-border: var(--border-thin);"
+        >
+          <mui-heading size="4" level="4" slot="title" id="dialog-title-border">Bordered Surface</mui-heading>
+          <mui-body id="dialog-desc-border">Apply a dialog border through the public surface token.</mui-body>
+          <mui-button slot="actions" variant="secondary" data-close>Close</mui-button>
+        </mui-dialog>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dialog style="--dialog-border: var(--border-thin);"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Bordered Surface&lt;/mui-heading&gt;<br>
+          &nbsp;&nbsp;&lt;mui-body&gt;Apply a dialog border through the public surface token.&lt;/mui-body&gt;<br>
+          &lt;/mui-dialog&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card title="Headerless Dialog">
         <mui-button variant="secondary" data-dialog="hook-headerless" slot="body">Open Headerless</mui-button>
         <mui-dialog

@@ -51,7 +51,7 @@ class MuiCode extends HTMLElement {
         border-radius: inherit;
         font-family: monospace;
         color: var(--text-color);
-        background: var(--surface-elevated-200);
+        background: var(--code-background);
         padding: var(--space-400) var(--space-500);
         box-sizing: border-box;
         width: 100%;

@@ -108,11 +108,29 @@ class StoryPromptPreview extends HTMLElement {
             animated
             value="const summary = data.filter(active).map(normalize).slice(0, 10);"
           ></mui-prompt-preview>
+          <mui-prompt-preview
+            badge="TS"
+            animated
+            value="type PromptPayload = { source: string; query: string; include: string[] };"
+          ></mui-prompt-preview>
+          <mui-prompt-preview
+            badge="MD"
+            animated
+            value="## Q4 Notes\n- Churn up in SMB\n- CSAT strongest in onboarding"
+          ></mui-prompt-preview>
+          <mui-prompt-preview
+            badge="SQL"
+            animated
+            value="SELECT feature_area, AVG(csat) FROM survey_responses GROUP BY feature_area;"
+          ></mui-prompt-preview>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt-preview badge="JSON" ...&gt;&lt;/mui-prompt-preview&gt;<br />
           &lt;mui-prompt-preview badge="CSS" ...&gt;&lt;/mui-prompt-preview&gt;<br />
-          &lt;mui-prompt-preview badge="JS" ...&gt;&lt;/mui-prompt-preview&gt;
+          &lt;mui-prompt-preview badge="JS" ...&gt;&lt;/mui-prompt-preview&gt;<br />
+          &lt;mui-prompt-preview badge="TS" ...&gt;&lt;/mui-prompt-preview&gt;<br />
+          &lt;mui-prompt-preview badge="MD" ...&gt;&lt;/mui-prompt-preview&gt;<br />
+          &lt;mui-prompt-preview badge="SQL" ...&gt;&lt;/mui-prompt-preview&gt;
         </story-code-block>
       </story-card>
 
@@ -169,7 +187,7 @@ class StoryPromptPreview extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="open-dialog" title="Click to Open Dialog" description="Use the prompt-preview-open event to open a dialog with full pasted content.">
+      <story-card id="open-dialog" title="Formatted JSON Dialog" description="Format the emitted value before presenting it in a consumer-managed dialog.">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt-preview
             id="dialogTriggerPreview"
@@ -185,7 +203,7 @@ class StoryPromptPreview extends HTMLElement {
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           preview.addEventListener("prompt-preview-open", (event) =&gt; {<br />
-          &nbsp;&nbsp;dialogCode.textContent = event.detail.value;<br />
+          &nbsp;&nbsp;dialogCode.textContent = JSON.stringify(JSON.parse(event.detail.value), null, 2);<br />
           &nbsp;&nbsp;dialog.open();<br />
           });<br /><br />
           &lt;mui-prompt-preview clickable ...&gt;&lt;/mui-prompt-preview&gt;
@@ -232,7 +250,7 @@ class StoryPromptPreview extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       
         imports='["@muibook/components/mui-prompt-preview"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="predropped::Pre-dropped Preview|||types::Payload Types|||loading::Loading State|||pasted-image::Pasted Image|||dismiss-tracking::Dismiss Tracking|||open-dialog::Open Dialog|||open-dialog-image::Open Image Dialog"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="predropped::Pre-dropped Preview|||types::Payload Types|||loading::Loading State|||pasted-image::Pasted Image|||dismiss-tracking::Dismiss Tracking|||open-dialog::Formatted JSON Dialog|||open-dialog-image::Open Image Dialog"></story-quicklinks>
         ${stories}
       </story-template>
     `;
@@ -282,7 +300,11 @@ class StoryPromptPreview extends HTMLElement {
     dialogTriggerPreview?.addEventListener("prompt-preview-open", (event) => {
       const payload = event.detail || {};
       if (previewDialogCode) {
-        previewDialogCode.textContent = payload.value || "";
+        try {
+          previewDialogCode.textContent = JSON.stringify(JSON.parse(payload.value || ""), null, 2);
+        } catch {
+          previewDialogCode.textContent = payload.value || "";
+        }
       }
       previewDialog?.open();
     });

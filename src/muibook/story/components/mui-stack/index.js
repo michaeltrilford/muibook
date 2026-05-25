@@ -9,7 +9,29 @@ class storyStack extends HTMLElement {
   async connectedCallback() {
     const data = await getComponentDocs("Stack");
 
-    const styles = /*css*/ `:host { display: block; }`;
+    const styles = /*css*/ `
+      :host { display: block; }
+
+      .vertical-align-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-300);
+      }
+
+      .vertical-align-canvas {
+        box-sizing: border-box;
+        padding: var(--space-300);
+        border: var(--border-thin);
+        border-radius: var(--radius-100);
+        background: var(--surface-recessed-100);
+      }
+
+      @media (max-width: 767px) {
+        .vertical-align-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    `;
 
     const BlockBox = /*html*/ `
       <mui-card>
@@ -63,6 +85,20 @@ class storyStack extends HTMLElement {
     </mui-v-stack>
   `;
 
+    const VStackAlignment = /*html*/ `
+      <div class="vertical-align-grid" slot="body">
+        <mui-v-stack class="vertical-align-canvas" height="28rem" alignx="stretch" aligny="start" space="var(--space-000)">
+          <mui-code>aligny="start"</mui-code>
+        </mui-v-stack>
+        <mui-v-stack class="vertical-align-canvas" height="28rem" alignx="stretch" aligny="center" space="var(--space-000)">
+          <mui-code>aligny="center"</mui-code>
+        </mui-v-stack>
+        <mui-v-stack class="vertical-align-canvas" height="28rem" alignx="stretch" aligny="end" space="var(--space-000)">
+          <mui-code>aligny="end"</mui-code>
+        </mui-v-stack>
+      </div>
+    `;
+
     const propItemsHStack = [
       {
         name: "space",
@@ -84,6 +120,34 @@ class storyStack extends HTMLElement {
         options: "start, center, end, etc...",
         default: "normal",
         description: "Vertical align using align-items properties.",
+      },
+      {
+        name: "height",
+        type: "string",
+        options: "{css-size}",
+        default: "auto",
+        description: "Sets a custom height for the stack layout, such as 100dvh or 28rem.",
+      },
+      {
+        name: "width",
+        type: "string",
+        options: "{css-size}",
+        default: "auto",
+        description: "Sets a custom width for the stack layout, such as 100% or 32rem.",
+      },
+      {
+        name: "viewport",
+        type: "boolean",
+        options: "true, false",
+        default: "false",
+        description: "Sets the stack height to 100dvh.",
+      },
+      {
+        name: "fill",
+        type: "boolean",
+        options: "true, false",
+        default: "false",
+        description: "Sets the stack height and width to 100% of its available parent.",
       },
       {
         name: "slot",
@@ -130,6 +194,34 @@ class storyStack extends HTMLElement {
         options: "start, center, end, etc...",
         default: "normal",
         description: "Vertical align using align-items properties.",
+      },
+      {
+        name: "height",
+        type: "string",
+        options: "{css-size}",
+        default: "auto",
+        description: "Sets a custom height for the stack layout, such as 100dvh or 28rem.",
+      },
+      {
+        name: "width",
+        type: "string",
+        options: "{css-size}",
+        default: "auto",
+        description: "Sets a custom width for the stack layout, such as 100% or 32rem.",
+      },
+      {
+        name: "viewport",
+        type: "boolean",
+        options: "true, false",
+        default: "false",
+        description: "Sets the stack height to 100dvh.",
+      },
+      {
+        name: "fill",
+        type: "boolean",
+        options: "true, false",
+        default: "false",
+        description: "Sets the stack height and width to 100% of its available parent.",
       },
       {
         name: "slot",
@@ -304,6 +396,17 @@ class storyStack extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
+          <br />
+          &lt;/mui-v-stack&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Vertical: Alignment in a Set Height">
+        ${VStackAlignment}
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-v-stack height="28rem" aligny="center"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-code&gt;aligny="center"&lt;/mui-code&gt;
           <br />
           &lt;/mui-v-stack&gt;
         </story-code-block>

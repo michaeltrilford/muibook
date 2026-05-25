@@ -91,6 +91,60 @@ class StoryFormGroup extends HTMLElement {
           &lt;/mui-v-stack&gt;
         </story-code-block>
       </story-card>
+
+      <story-card id="select-action" title="Select + Action" description="Use space and aligny to build an input-family row with a trailing action.">
+        <div slot="body" class="story-form-surface">
+          <mui-form-group variant="horizontal" space="var(--space-300)" aligny="end">
+            <mui-select
+              label="Saved View"
+              options='[
+                {"value": "open-tasks", "label": "Open Tasks"},
+                {"value": "blocked", "label": "Blocked"},
+                {"value": "recent", "label": "Recently Updated"}
+              ]'>
+            </mui-select>
+            <mui-button variant="secondary">Save View</mui-button>
+          </mui-form-group>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-group variant="horizontal" space="var(--space-300)" aligny="end"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-select label="Saved View" options='[{...}]'&gt;&lt;/mui-select&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;Save View&lt;/mui-button&gt;
+          <br />
+          &lt;/mui-form-group&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="heading-controls" title="Heading Level + Space" description="Heading semantics and heading spacing can be adjusted independently of grouped control spacing.">
+        <div slot="body" class="story-form-surface">
+          <mui-v-stack space="var(--space-500)">
+            <mui-form-group heading="Billing Cycle" heading-level="3">
+              <mui-field label="Reference Code">
+                <mui-input placeholder="Optional"></mui-input>
+              </mui-field>
+            </mui-form-group>
+
+            <mui-form-group heading="Billing Cycle" heading-level="4" heading-space="var(--space-700)">
+              <mui-field label="Reference Code">
+                <mui-input placeholder="Optional"></mui-input>
+              </mui-field>
+            </mui-form-group>
+          </mui-v-stack>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-form-group heading="Billing Cycle" heading-level="4" heading-space="var(--space-700)"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-field label="Reference Code"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input placeholder="Optional"&gt;&lt;/mui-input&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-field&gt;
+          <br />
+          &lt;/mui-form-group&gt;
+        </story-code-block>
+      </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -116,7 +170,7 @@ class StoryFormGroup extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="vertical::Vertical Group|||horizontal::Horizontal Group"
+          links="vertical::Vertical Group|||horizontal::Horizontal Group|||select-action::Select + Action|||heading-controls::Heading Level + Space"
         ></story-quicklinks>
         ${stories}
       </story-template>

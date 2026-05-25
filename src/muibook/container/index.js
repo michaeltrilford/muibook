@@ -120,6 +120,7 @@ export class AppContainer extends HTMLElement {
       "/wallet": "comp-wallet",
       "/onboarding": "comp-onboarding",
       "/muitube": "comp-mui-tube",
+      "/dashboard": "comp-dashboard",
     };
 
     // ✨ NEW CHECK ✨
@@ -162,6 +163,7 @@ export class AppContainer extends HTMLElement {
       "comp-wallet": () => import("../story/compositions/wallet"),
       "comp-onboarding": () => import("../story/compositions/onboarding/index.js"),
       "comp-mui-tube": () => import("../story/compositions/muitube/index.js"),
+      "comp-dashboard": () => import("../story/compositions/dashboard/index.js"),
 
       "story-stepper": () => import("../story/components/mui-stepper"),
       "story-button": () => import("../story/components/mui-button"),
