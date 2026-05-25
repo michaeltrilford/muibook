@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-07T05:33:39.221Z",
+  "generatedAt": "2026-05-25T10:00:50.637Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -133,13 +133,6 @@
         "has-button-group"
       ]
     },
-    "mui-slat-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        "usage"
-      ]
-    },
     "mui-slat": {
       "version": 1,
       "destinationOnly": true,
@@ -148,12 +141,11 @@
         "condensed-slot"
       ]
     },
-    "mui-tab-item": {
+    "mui-slat-group": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
-        "has-before",
-        "has-after"
+        "usage"
       ]
     },
     "mui-row": {
@@ -161,6 +153,14 @@
       "destinationOnly": true,
       "attributes": [
         "in-card"
+      ]
+    },
+    "mui-tab-item": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-before",
+        "has-after"
       ]
     }
   }
