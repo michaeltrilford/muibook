@@ -147,6 +147,21 @@ npm run preview:create-mui-app
 npm install
 ```
 
+#### Clean install from the lockfile:
+
+Use this when you want to install the exact dependency versions already recorded in `package-lock.json`, especially during an active NPM supply-chain issue.
+
+```bash
+npm ci
+npm run build
+```
+
+- `npm install` reads `package.json` version ranges and may update `package-lock.json`.
+- `npm ci` removes `node_modules` and installs exactly from `package-lock.json`.
+- `npm ci` fails if `package.json` and `package-lock.json` are out of sync.
+- Prefer `npm ci` for CI, release builds, and clean local verification.
+- The current declared versions in `package.json` are pinned for now by removing `^` and `~` ranges.
+
 #### TypeScript Support:
 
 ```bash

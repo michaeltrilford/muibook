@@ -170,6 +170,23 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="Sizes">
+        <div slot="body">
+          <mui-v-stack space="var(--space-300)">
+            <mui-textarea size="x-small" label="X-Small" placeholder="X-Small textarea"></mui-textarea>
+            <mui-textarea size="small" label="Small" placeholder="Small textarea"></mui-textarea>
+            <mui-textarea size="medium" label="Medium" placeholder="Medium textarea"></mui-textarea>
+            <mui-textarea size="large" label="Large" placeholder="Large textarea"></mui-textarea>
+          </mui-v-stack>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-textarea size="x-small" label="X-Small" placeholder="X-Small textarea"&gt;&lt;/mui-textarea&gt;<br />
+          &lt;mui-textarea size="small" label="Small" placeholder="Small textarea"&gt;&lt;/mui-textarea&gt;<br />
+          &lt;mui-textarea size="medium" label="Medium" placeholder="Medium textarea"&gt;&lt;/mui-textarea&gt;<br />
+          &lt;mui-textarea size="large" label="Large" placeholder="Large textarea"&gt;&lt;/mui-textarea&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card title="Variant: Error">
         <div slot="body">
           <mui-textarea label="Feedback" variant="error" value="Needs correction"></mui-textarea>

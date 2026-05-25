@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-07T04:13:11.487Z",
+  "generatedAt": "2026-05-07T05:33:39.221Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -148,19 +148,19 @@
         "condensed-slot"
       ]
     },
-    "mui-row": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        "in-card"
-      ]
-    },
     "mui-tab-item": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         "has-before",
         "has-after"
+      ]
+    },
+    "mui-row": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "in-card"
       ]
     }
   }

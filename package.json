@@ -621,11 +621,11 @@
     "dist/esm/dynamic-attrs.json"
   ],
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.11.0",
-    "@types/node": "^22.15.24",
-    "style-dictionary": "^4.4.0",
-    "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "@custom-elements-manifest/analyzer": "0.11.0",
+    "@types/node": "22.15.24",
+    "style-dictionary": "4.4.0",
+    "typescript": "5.8.3",
+    "vite": "6.3.5"
   },
   "peerDependencies": {},
   "dependencies": {},
