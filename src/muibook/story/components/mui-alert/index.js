@@ -119,16 +119,7 @@ class storyAlert extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Alert">
-        <mui-responsive breakpoint="768" slot="body">
-          <story-type-table slot="showAbove">
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <story-api-types tag="mui-alert" title="Alert"></story-api-types>
 
       <story-card 
         title="Success" 

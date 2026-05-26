@@ -10,6 +10,8 @@ class StoryHint extends HTMLElement {
     const data = await getComponentDocs("Hint");
 
     const stories = /*html*/ `
+      <story-api-types tag="mui-hint" title="Hint"></story-api-types>
+
       <story-card id="default" title="Default">
         <mui-v-stack slot="body" space="var(--space-200)" style="padding: var(--space-400);">
           <mui-hint>

@@ -9,43 +9,8 @@ class StorySkeleton extends HTMLElement {
   async connectedCallback() {
     const data = await getComponentDocs("Skeleton");
 
-    const propItems = [
-      { name: "shape", type: "string", options: "line, rect, circle", default: "line", description: "Skeleton block shape." },
-      { name: "size", type: "string", options: "x-small, small, medium, large", default: "medium", description: "Base height/size mapping." },
-      { name: "width", type: "string", options: "{css-size}", default: "100%", description: "Single-line width." },
-      { name: "max-width", type: "string", options: "{css-size}", default: "", description: "Optional max width for blocks." },
-      { name: "height", type: "string", options: "{css-size}", default: "size-based", description: "Block height override." },
-      { name: "radius", type: "string", options: "{css-size}", default: "token-based", description: "Radius override." },
-      { name: "lines", type: "number", options: "", default: "1", description: "Number of lines to render." },
-      { name: "line-widths", type: "string", options: "80%,60%,...", default: "", description: "Comma-separated widths per line." },
-      { name: "gap", type: "string", options: "{css-size}", default: "token-based", description: "Gap between lines." },
-      { name: "animation", type: "string", options: "shimmer, pulsate, none", default: "shimmer", description: "Animation mode." },
-      { name: "duration", type: "string", options: "{css-duration}", default: "2000ms", description: "Animation speed override for shimmer or pulsate." },
-      { name: "loading", type: "boolean|string", options: "true, false", default: "true", description: "Set false to reveal slotted content." },
-      { name: "slot='before'", type: "slot", options: "{elements}", default: "", description: "Leading slot, useful for avatar/action placeholders." },
-      { name: "slot='after'", type: "slot", options: "{elements}", default: "", description: "Trailing slot, useful for chips/actions." },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            name="${prop.name}"
-            type="${prop.type}"
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `,
-      )
-      .join("");
-
     const stories = /*html*/ `
-      <props-card title="Skeleton">
-        <story-type-table slot="body">
-          ${rows}
-        </story-type-table>
-      </props-card>
+      <story-api-types tag="mui-skeleton" title="Skeleton"></story-api-types>
 
       <story-card
         id="multiline"

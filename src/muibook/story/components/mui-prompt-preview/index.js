@@ -70,11 +70,7 @@ class StoryPromptPreview extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Prompt Preview">
-        <story-type-table slot="body">
-          ${rows}
-        </story-type-table>
-      </props-card>
+      <story-api-types tag="mui-prompt-preview" title="Prompt Preview"></story-api-types>
 
       <story-card id="predropped" title="Pre-dropped Preview" description="Shows long pasted input before submit.">
         <mui-prompt-preview

@@ -248,38 +248,8 @@ class storySlat extends HTMLElement {
 
     const stories = /*html*/ `
         <mui-v-stack space="var(--space-400)">
-          <props-card title="Slat">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <props-card title="Accessory">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${accessoryRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accessoryAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <props-card title="Group">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${groupRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${groupAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
+          <story-api-types tag="mui-slat" title="Slat"></story-api-types>
+          <story-api-types tag="mui-slat-group" title="Slat Group"></story-api-types>
         </mui-v-stack>
 
         <story-card

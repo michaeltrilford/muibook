@@ -257,49 +257,10 @@ class storyCards extends HTMLElement {
 
     const stories = /*html*/ `
       <mui-v-stack space="var(--space-400)">
-        <props-card title="Card">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsCard}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsCard}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
-
-        <props-card title="Card Header">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsCardHeader}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsCardHeader}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
-
-        <props-card title="Card Body">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsCardBody}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsCardBody}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
-
-        <props-card title="Card Footer">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsCardFooter}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsCardFooter}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-card" title="Card"></story-api-types>
+        <story-api-types tag="mui-card-header" title="Card Header"></story-api-types>
+        <story-api-types tag="mui-card-body" title="Card Body"></story-api-types>
+        <story-api-types tag="mui-card-footer" title="Card Footer"></story-api-types>
       </mui-v-stack>
 
       <story-card id="card" title="Card">

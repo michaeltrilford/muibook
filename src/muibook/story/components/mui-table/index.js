@@ -389,49 +389,10 @@ class storyTable extends HTMLElement {
 
     const stories = /*html*/ `
           <mui-v-stack space="var(--space-400)">
-            <props-card title="Table">
-              <mui-responsive breakpoint="767" slot="body">
-                <story-type-table slot="showAbove">
-                  ${tableRows}
-                </story-type-table>
-                <mui-accordion-group exclusive slot="showBelow">
-                  ${tableAccordions}
-                </mui-accordion-group>
-              </mui-responsive>
-            </props-card>
-
-            <props-card title="RowGroup">
-              <mui-responsive breakpoint="767" slot="body">
-                <story-type-table slot="showAbove">
-                  ${rowGroupRows}
-                </story-type-table>
-                <mui-accordion-group exclusive slot="showBelow">
-                  ${rowGroupAccordions}
-                </mui-accordion-group>
-              </mui-responsive>
-            </props-card>
-
-            <props-card title="Row">
-              <mui-responsive breakpoint="767" slot="body">
-                <story-type-table slot="showAbove">
-                  ${rowRows}
-                </story-type-table>
-                <mui-accordion-group exclusive slot="showBelow">
-                  ${rowAccordions}
-                </mui-accordion-group>
-              </mui-responsive>
-            </props-card>
-
-            <props-card title="Cell">
-              <mui-responsive breakpoint="767" slot="body">
-                <story-type-table slot="showAbove">
-                  ${cellRows}
-                </story-type-table>
-                <mui-accordion-group exclusive slot="showBelow">
-                  ${cellAccordions}
-                </mui-accordion-group>
-              </mui-responsive>
-            </props-card>
+            <story-api-types tag="mui-table" title="Table"></story-api-types>
+            <story-api-types tag="mui-row-group" title="Table Row Group"></story-api-types>
+            <story-api-types tag="mui-row" title="Table Row"></story-api-types>
+            <story-api-types tag="mui-cell" title="Table Cell"></story-api-types>
           </mui-v-stack>
 
           <story-card title="Table">

@@ -307,49 +307,10 @@ class storyTabBar extends HTMLElement {
 
     const stories = /*html*/ `
         <mui-v-stack space="var(--space-400)">
-          <props-card title="Tab Controller">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${tabBarControllerRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${tabBarControllerAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <props-card title="Tab Bar">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${tabBarRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${tabBarAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <props-card title="Tab Item">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${tabItemRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${tabItemAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-
-          <props-card title="Tab Panel">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${panelRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${panelAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
+          <story-api-types tag="mui-tab-controller" title="Tab Controller"></story-api-types>
+          <story-api-types tag="mui-tab-bar" title="Tab Bar"></story-api-types>
+          <story-api-types tag="mui-tab-item" title="Tab Item"></story-api-types>
+          <story-api-types tag="mui-tab-panel" title="Tab Panel"></story-api-types>
         </mui-v-stack>
 
 

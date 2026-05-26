@@ -9,57 +9,8 @@ class StorySpinner extends HTMLElement {
   async connectedCallback() {
     const data = await getComponentDocs("Spinner");
 
-    const propItems = [
-      {
-        name: "size",
-        type: "string",
-        options: "xx-small, x-small, small, medium, large",
-        default: "medium",
-        description: "Controls spinner dimensions.",
-      },
-      {
-        name: "color",
-        type: "string",
-        options: "token, css value",
-        default: "var(--icon-color-default)",
-        description: "Sets spinner stroke color.",
-      },
-      {
-        name: "duration",
-        type: "string",
-        options: "css duration",
-        default: "0.8s",
-        description: "Controls rotation speed.",
-      },
-      {
-        name: "label",
-        type: "string",
-        options: "",
-        default: "Loading",
-        description: "Accessible label for assistive technology.",
-      },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            name="${prop.name}"
-            type="${prop.type}"
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `
-      )
-      .join("");
-
     const stories = /*html*/ `
-      <props-card title="Spinner">
-        <story-type-table slot="body">
-          ${rows}
-        </story-type-table>
-      </props-card>
+      <story-api-types tag="mui-spinner" title="Spinner"></story-api-types>
 
       <story-card id="sizes" title="Sizes">
         <mui-h-stack slot="body" alignX="start" alignY="center" space="var(--space-400)" style="padding: var(--space-500);">

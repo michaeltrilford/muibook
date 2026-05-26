@@ -136,16 +136,7 @@ class storyAvatar extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Avatar">
-        <mui-responsive breakpoint="768" slot="body">
-          <story-type-table slot="showAbove">
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <story-api-types tag="mui-avatar" title="Avatar"></story-api-types>
 
       <story-card 
         title="Image" 

@@ -1,11 +1,8 @@
 import "../mui-heading";
-import "../mui-body";
 
 class MuiFormGroup extends HTMLElement {
-  private slotEl: HTMLSlotElement | null = null;
-
   static get observedAttributes() {
-    return ["heading", "heading-level", "heading-space", "hide-label", "variant", "space", "aligny"];
+    return ["heading", "heading-level", "heading-space", "hide-heading", "hide-label", "variant", "space", "aligny"];
   }
 
   constructor() {
@@ -15,22 +12,17 @@ class MuiFormGroup extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    this.bindSlotBehavior();
-    this.updateChoiceGroupState();
   }
 
   attributeChangedCallback() {
     this.render();
-    this.bindSlotBehavior();
-    this.updateChoiceGroupState();
   }
 
   render() {
     if (!this.shadowRoot) return;
 
     const heading = this.getAttribute("heading") || "";
-    const hideLabel = this.hasAttribute("hide-label");
-    const isChoiceGroup = this.hasAttribute("choice-group");
+    const hideHeading = this.hasAttribute("hide-heading") || this.hasAttribute("hide-label");
     const headingLevel = this.getHeadingLevel();
 
     this.syncLayoutAttributes();
@@ -50,11 +42,6 @@ class MuiFormGroup extends HTMLElement {
           display: block;
           margin: 0;
           margin-bottom: var(--form-group-heading-space);
-        }
-        .group-label {
-          display: inline-flex;
-          margin: 0;
-          margin-bottom: var(--form-group-space);
         }
         .content {
           display: grid;
@@ -84,10 +71,8 @@ class MuiFormGroup extends HTMLElement {
 
       <div class="group">
         ${
-          heading && !hideLabel
-            ? isChoiceGroup
-              ? `<mui-body class="group-label" size="small" weight="bold" variant="optional">${heading}</mui-body>`
-              : `<mui-heading class="group-heading" size="5" level="${headingLevel}">${heading}</mui-heading>`
+          heading && !hideHeading
+            ? `<mui-heading class="group-heading" size="5" level="${headingLevel}">${heading}</mui-heading>`
             : ""
         }
         <div class="content">
@@ -98,35 +83,6 @@ class MuiFormGroup extends HTMLElement {
       </div>
     `;
   }
-
-  private bindSlotBehavior() {
-    if (!this.shadowRoot) return;
-    const slot = this.shadowRoot.querySelector("slot") as HTMLSlotElement | null;
-    if (!slot) return;
-    if (this.slotEl === slot) return;
-
-    this.slotEl?.removeEventListener("slotchange", this.updateChoiceGroupState);
-    this.slotEl = slot;
-    this.slotEl.addEventListener("slotchange", this.updateChoiceGroupState);
-  }
-
-  private updateChoiceGroupState = () => {
-    const slotted = this.slotEl?.assignedElements({ flatten: true }) || [];
-    const choiceSelector = "mui-radio-group, mui-radio, mui-checkbox, mui-switch";
-    const hasChoiceControls = slotted.some((el) => {
-      const tag = el.tagName.toLowerCase();
-      if (tag === "mui-radio-group" || tag === "mui-radio" || tag === "mui-checkbox" || tag === "mui-switch") {
-        return true;
-      }
-      return Boolean(el.querySelector?.(choiceSelector));
-    });
-
-    if (hasChoiceControls === this.hasAttribute("choice-group")) return;
-
-    this.toggleAttribute("choice-group", hasChoiceControls);
-    this.render();
-    this.bindSlotBehavior();
-  };
 
   private syncLayoutAttributes() {
     const space = this.getAttribute("space");

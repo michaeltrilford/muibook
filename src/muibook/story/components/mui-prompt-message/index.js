@@ -93,16 +93,7 @@ class StoryPromptMessage extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Prompt Message">
-        <mui-responsive breakpoint="767" slot="body">
-          <story-type-table slot="showAbove">
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <story-api-types tag="mui-prompt-message" title="Prompt Message"></story-api-types>
 
       <story-card
         id="default"

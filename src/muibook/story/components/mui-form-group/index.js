@@ -10,6 +10,8 @@ class StoryFormGroup extends HTMLElement {
     const data = await getComponentDocs("FormGroup");
 
     const stories = /*html*/ `
+      <story-api-types tag="mui-form-group" title="Form Group"></story-api-types>
+
       <story-card id="vertical" title="Vertical Group" description="Stacked group with heading, choice controls, and field-level guidance." usage="Use a stacked group when the controls belong to the same decision area.|||Keep helper and status copy attached to the relevant field.|||When the message belongs to a specific mui-field inside the group, use slot=&quot;message&quot; on that field.|||Use a colored mui-form-message for static guidance that needs more emphasis; use the default greyscale version for lighter supporting copy.">
         <div slot="body" class="story-form-surface">
           <mui-form-group heading="Billing Cycle">
@@ -53,7 +55,7 @@ class StoryFormGroup extends HTMLElement {
       <story-card id="horizontal" title="Horizontal Group" description="Split row layout with responsive stack on mobile." usage="Use a horizontal group for paired follow-up fields.|||Wrap the group in a mui-v-stack with appropriate spacing when supporting content needs to sit above or below it.|||Keep helper or status copy outside the horizontal group rather than inserting mui-form-message directly into the group.|||Because the supporting message sits outside the field/group in this pattern, slot=&quot;message&quot; is not required.|||Use a colored mui-form-message when the note needs more emphasis, or leave it greyscale for lighter supporting copy.">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-300)">
-            <mui-form-group variant="horizontal" hide-label>
+            <mui-form-group variant="horizontal" hide-heading>
               <mui-field label="Billing Contact">
                 <mui-input type="email" placeholder="billing@company.com"></mui-input>
               </mui-field>
@@ -70,7 +72,7 @@ class StoryFormGroup extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-v-stack space="var(--space-300)"&gt;
           <br />
-          &nbsp;&nbsp;&lt;mui-form-group variant="horizontal" hide-label&gt;
+          &nbsp;&nbsp;&lt;mui-form-group variant="horizontal" hide-heading&gt;
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field label="Billing Contact"&gt;
           <br />

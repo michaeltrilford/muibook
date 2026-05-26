@@ -85,16 +85,7 @@ class storyCode extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-          <props-card title="Code">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
+          <story-api-types tag="mui-code" title="Code"></story-api-types>
 
         <story-card title="Large">
           <div slot="body">

@@ -1,0 +1,35 @@
+export const muiApi = {
+  "mui-slide-frame": {
+    description: "Presents slide content in a framed surface with optional chrome, notes and presentation controls.",
+    attributes: [
+      { name: "ratio", type: { text: '"16:9" | "4:3" | "3:2" | "1:1" | "9:16"' }, default: "16:9", description: "Sets the slide aspect ratio." },
+      { name: "padding", type: { text: '"none" | "small" | "medium" | "large"' }, default: "medium", description: "Sets content padding inside the slide surface." },
+      { name: "variant", type: { text: '"default" | "plain" | "ghost"' }, default: "default", description: "Sets the frame surface treatment." },
+      { name: "title", type: { text: "string" }, description: "Renders a title in the default header chrome." },
+      { name: "footer-text", type: { text: "string" }, description: "Renders supporting text in the default footer chrome." },
+      { name: "active-section", type: { text: "number" }, default: "0", description: "Selects the visible `mui-slide-section` item." },
+      { name: "notes-open", type: { text: "boolean" }, default: "false", description: "Displays the notes region outside presentation mode." },
+      { name: "hide-header", type: { text: "boolean" }, default: "false", description: "Hides header chrome." },
+      { name: "hide-footer", type: { text: "boolean" }, default: "false", description: "Hides footer chrome." },
+      { name: "scroll", type: { text: "boolean" }, default: "false", description: "Allows slide surface overflow to scroll." },
+      { name: "present", type: { text: "boolean" }, default: "false", description: "Displays the presentation layout." },
+      { name: "fullscreen", type: { text: "boolean" }, default: "false", description: "Displays the frame in its fullscreen layout state." },
+    ],
+    slots: [
+      { name: "", description: "Main slide content or `mui-slide-section` children." },
+      { name: "image", description: "Background or leading media positioned in the slide surface." },
+      { name: "header", description: "Custom content adjacent to the title." },
+      { name: "header-after", description: "Trailing header actions or metadata." },
+      { name: "header-description", description: "Supporting header description content." },
+      { name: "footer", description: "Custom content adjacent to the footer text." },
+      { name: "footer-after", description: "Trailing footer actions or metadata." },
+      { name: "notes", description: "Presenter notes displayed when notes are open." },
+    ],
+    events: [
+      { name: "section-change", description: "Dispatched when the active slide section changes." },
+      { name: "notes-toggle", description: "Dispatched when presenter notes open or close." },
+      { name: "fullscreen-change", description: "Dispatched when fullscreen presentation state changes." },
+      { name: "fullscreen-error", description: "Dispatched when fullscreen presentation cannot be entered or exited." },
+    ],
+  },
+};

@@ -145,16 +145,7 @@ class storySmartCard extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-        <props-card title="Smart Card">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-smart-card" title="Smart Card"></story-api-types>
 
         <story-card title="Plain"
           description="An example of composing a light coloured payment card."

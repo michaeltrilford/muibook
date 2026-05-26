@@ -118,16 +118,7 @@ class storyDropdown extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Dropdown">
-        <mui-responsive breakpoint="767" slot="body">
-          <story-type-table slot="showAbove">
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <story-api-types tag="mui-dropdown" title="Dropdown"></story-api-types>
 
       <story-card title="Ellipsis Action">
         <mui-dropdown slot="body">

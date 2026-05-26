@@ -57,7 +57,7 @@ class PropsCard extends HTMLElement {
     const title = this.getAttribute("title") || "";
     const description = this.hasAttribute("description")
       ? /*html*/ `<mui-body style="max-width: 60ch; margin-top: var(--space-200); margin-bottom: var(--space-100);" size="small">${this.getAttribute(
-          "description"
+          "description",
         )}</mui-body>`
       : "";
 
@@ -88,7 +88,7 @@ class PropsCard extends HTMLElement {
             ${description}
           </mui-card-header>
           <div slot="detail">
-            <mui-rule></mui-rule>
+            <mui-rule style="background: var(--border-color)"></mui-rule>
             <mui-card-body>
               <slot name="body"></slot>
             </mui-card-body>

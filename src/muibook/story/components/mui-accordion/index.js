@@ -311,46 +311,10 @@ class storyAccordion extends HTMLElement {
 
     const stories = /*html*/ `
         <mui-v-stack space="var(--space-400)">
-          <props-card title="Accordion Block">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-          <props-card title="Accordion Inline">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${inlineRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${inlineAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-          <props-card title="Accordion Group">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${groupRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${groupAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-          <props-card title="Accordion Core">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${coreRows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${coreAccordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
+          <story-api-types tag="mui-accordion-block" title="Accordion Block"></story-api-types>
+          <story-api-types tag="mui-accordion-inline" title="Accordion Inline"></story-api-types>
+          <story-api-types tag="mui-accordion-group" title="Accordion Group"></story-api-types>
+          <story-api-types tag="mui-accordion-core" title="Accordion Core"></story-api-types>
         </mui-v-stack>
 
         <story-card

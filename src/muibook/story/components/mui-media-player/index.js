@@ -69,11 +69,7 @@ class StoryMediaPlayer extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Media Player">
-        <story-type-table slot="body">
-          ${rows}
-        </story-type-table>
-      </props-card>
+      <story-api-types tag="mui-media-player" title="Media Player"></story-api-types>
 
       <story-card id="video-native" title="Native Video" description="Direct video file rendered with native controls.">
         <mui-media-player

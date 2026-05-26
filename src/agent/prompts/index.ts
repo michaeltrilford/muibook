@@ -66,9 +66,9 @@ TEXT NODE RULES FOR MUISCAN:
 Available Components:
 
 LAYOUT:
-- VStack: space, alignX, alignY, style
-- HStack: space, alignX, alignY, style
-- Grid: col, space, alignX, alignY
+- VStack: space, padding, alignX, alignY, height, width, fill, viewport, style
+- HStack: space, padding, alignX, alignY, height, width, fill, viewport, style
+- Grid: col, space, padding, alignX, alignY, height, width, fill, viewport, style
 - Container: size (small|medium|large), center, style
 - Responsive: breakpoint, breakpoint-low, breakpoint-high; slots showBelow/showMiddle/showAbove
 - Rule: length, weight, direction (horizontal|vertical)

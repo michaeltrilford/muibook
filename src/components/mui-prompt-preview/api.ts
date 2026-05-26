@@ -1,0 +1,40 @@
+export const muiApi = {
+  "mui-prompt-preview": {
+    description: "Displays a compact preview of pasted or attached prompt context and optionally opens fuller content.",
+    members: [
+      { kind: "field", name: "value", type: { text: "string" }, description: "Gets or sets source preview content." },
+      { kind: "field", name: "badge", type: { text: "string" }, description: "Gets or sets the displayed content-type badge." },
+      { kind: "field", name: "label", type: { text: "string" }, description: "Gets or sets the preview label." },
+      { kind: "field", name: "accent", type: { text: "string" }, description: "Gets or sets the preview accent CSS color." },
+      { kind: "field", name: "bgImage", type: { text: "string" }, description: "Gets or sets the preview background image URL." },
+      { kind: "field", name: "imageTint", type: { text: "string" }, description: "Gets or sets the image overlay tint." },
+    ],
+    attributes: [
+      { name: "value", type: { text: "string" }, description: "Source text or URL rendered as preview content." },
+      { name: "badge", type: { text: "string" }, description: "Overrides the inferred content-type badge." },
+      { name: "label", type: { text: "string" }, description: "Accessible and event label for the preview." },
+      { name: "accent", type: { text: "string" }, description: "Accent CSS color used by non-image preview effects." },
+      { name: "bg-image", type: { text: "string" }, description: "Background image URL for image-led previews." },
+      { name: "image-tint", type: { text: "string" }, description: "CSS color used to tint a background-image preview." },
+      { name: "inverted", type: { text: "boolean" }, default: "false", description: "Uses text styling appropriate for dark or image-backed surfaces." },
+      { name: "badge-only", type: { text: "boolean" }, default: "false", description: "Suppresses text content so only the preview badge is displayed." },
+      { name: "show-text", type: { text: "boolean" }, default: "false", description: "Forces preview text to display when an image background is supplied." },
+      { name: "animated", type: { text: "boolean" }, default: "false", description: "Enables preview sheen and pulse animation." },
+      { name: "animation-mode", type: { text: '"loop" | "once" | "off"' }, default: "loop", description: "Controls animation repetition." },
+      { name: "variant", type: { text: '"default" | "overlay"' }, default: "default", description: "Visual treatment of the preview surface." },
+      { name: "clickable", type: { text: "boolean" }, default: "false", description: "Enables keyboard/click activation and `prompt-preview-open` events." },
+      { name: "loading", type: { text: "boolean" }, default: "false", description: "Displays loading feedback and prevents preview activation." },
+      { name: "loading-label", type: { text: "string" }, default: "Loading preview", description: "Accessible label for loading feedback." },
+    ],
+    events: [
+      { name: "dismiss", description: "Cancelable event dispatched when the dismiss action is activated; includes preview details." },
+      { name: "prompt-preview-open", description: "Dispatched when clickable preview content is activated; includes preview details." },
+    ],
+    cssProperties: [
+      { name: "--prompt-preview-accent", description: "Default preview effect accent when no `accent` attribute is provided." },
+      { name: "--prompt-preview-box-drop-shadow", description: "Filter drop shadow applied to the preview surface." },
+      { name: "--prompt-preview-dismiss-secondary-background", description: "Background of the dismiss action on standard previews." },
+      { name: "--prompt-preview-dismiss-secondary-border", description: "Border of the dismiss action on standard previews." },
+    ],
+  },
+};

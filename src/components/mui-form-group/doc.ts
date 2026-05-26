@@ -15,16 +15,16 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use inside Form Section to create second-level groups.",
         "Set heading to label a group.",
-        "Use hide-label when a heading is redundant.",
+        "Use hide-heading when a heading is redundant.",
         "Use variant='horizontal' for split rows that collapse on mobile.",
         "Override horizontal columns with --form-group-horizontal-template.",
         "For hints and validation copy, use mui-field slot='message' for consistent spacing.",
         "Avoid standalone helper rows between fields; keep messaging attached to each field.",
-        "Choice controls (radio/checkbox/switch groups) automatically render heading as compact label text.",
+        "Use heading-level to set the correct semantic heading hierarchy without changing the visual heading size.",
       ],
     },
     accessibility: { designerList: [""], engineerList: [""] },
-    anatomy: { image: "", list: ["Optional heading/label", "Grouped slotted controls"] },
+    anatomy: { image: "", list: ["Optional heading", "Grouped slotted controls"] },
     variants: {
       items: [
         { key: "default", title: "Default", description: "Stacked vertical group.", image: "" },

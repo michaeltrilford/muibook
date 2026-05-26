@@ -15,86 +15,6 @@ class storyLoader extends HTMLElement {
       mui-container { min-width: initial; } 
     `;
 
-    ["loading", "animation", "direction", "duration", "delay"];
-
-    const propItems = [
-      {
-        name: "slot",
-        required: true,
-        type: "slot (default)",
-        options: "{mui-elements}, {elements}",
-        default: "(required)",
-        description: "Slot your UI inside to adopt animation",
-      },
-      {
-        name: "loading",
-        type: "boolean",
-        options: "",
-        default: "",
-        description: "Controls the animation behvaiour",
-      },
-      {
-        name: "animation",
-        type: "string",
-        options: "fade-in, pulsate, translate",
-        default: "fade-in",
-        description: "Animation type",
-      },
-      {
-        name: "direction",
-        type: "string",
-        options: "up, right, down, left",
-        default: "",
-        description: "Direction for translate animation type",
-      },
-      {
-        name: "duration",
-        type: "number",
-        options: "",
-        default: "1s",
-        description: "Timing function speed",
-      },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            ${prop.required ? "required" : ""}
-            name="${prop.name}"
-            type="${prop.type}" 
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `,
-      )
-      .join("");
-
-    const accordions = propItems
-      .map((prop, index) => {
-        // Check if it's the last item in the array
-        const isLastChild = index === propItems.length - 1 ? "last-child" : "";
-
-        return /*html*/ `
-          <mui-accordion-block 
-            size="medium" 
-            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
-            ${isLastChild}>
-            <story-type-slat
-              slot="detail"
-              ${prop.required ? "required" : ""}
-              name="${prop.name}"
-              type="${prop.type}" 
-              options="${prop.options || ""}"
-              default="${prop.default || ""}"
-              description="${prop.description}">
-            </story-type-slat>
-          </mui-accordion-block>
-        `;
-      })
-      .join("");
-
     const Skeleton = /*html*/ `   
       <mui-grid col="2fr 1fr">       
         <mui-v-stack space="var(--space-600);" style="padding: var(--space-600)">
@@ -116,16 +36,7 @@ class storyLoader extends HTMLElement {
     `;
 
     const stories = /*html*/ `
-      <props-card title="Loader">
-        <mui-responsive breakpoint="767" slot="body">
-          <story-type-table slot="showAbove">
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <story-api-types tag="mui-loader" title="Loader"></story-api-types>
 
       <story-card
         id="pulsate"

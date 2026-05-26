@@ -54,3 +54,15 @@ export async function getComponentDocs(tagName) {
 
   return allDocs[tagName];
 }
+
+export async function getComponentApi(tagName) {
+  const manifest = await loadManifest();
+
+  for (const module of manifest.modules || []) {
+    const declaration = module.declarations?.find((item) => item.tagName === tagName);
+    if (declaration) return declaration;
+  }
+
+  console.warn(`Component API not found for ${tagName}`);
+  return null;
+}

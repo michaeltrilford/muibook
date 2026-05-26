@@ -104,21 +104,11 @@ class storyRadio extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Radio">
-        <mui-v-stack slot="body" space="var(--space-200)">
-          <story-type-table>
-            ${rows}
-          </story-type-table>
-        </mui-v-stack>
-      </props-card>
+      <mui-v-stack space="var(--space-400)">
+        <story-api-types tag="mui-radio" title="Radio"></story-api-types>
 
-      <props-card title="Radio Group">
-        <mui-v-stack slot="body" space="var(--space-200)">
-          <story-type-table>
-            ${groupRows}
-          </story-type-table>
-        </mui-v-stack>
-      </props-card>
+        <story-api-types tag="mui-radio-group" title="Radio Group"></story-api-types>
+      </mui-v-stack>
 
       <story-card title="Default">
         <mui-radio slot="body">Option</mui-radio>

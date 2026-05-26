@@ -233,27 +233,9 @@ class storyButton extends HTMLElement {
 
     const stories = /*html*/ `
       <mui-v-stack space="var(--space-400)">
-        <props-card title="Button">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-button" title="Button"></story-api-types>
 
-        <props-card title="Button Group">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${buttonGroupRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${buttonGroupAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-button-group" title="Button Group"></story-api-types>
       </mui-v-stack>
 
       <story-card title="Form submissions" id="form-submissions" description="Unfortunately, Web Components can’t rely on type='submit' to handle form submissions due to Shadow DOM boundaries. Instead, manual submission logic needs to be applied to ensure expected behavior.">

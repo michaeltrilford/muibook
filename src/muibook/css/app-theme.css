@@ -38,6 +38,9 @@ html[data-brand="mui"][data-theme="light"] {
   --home-page-body-text: var(--black);
   --app-story-card: var(--grey-200);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  /* Story Types */
+  --app-story-type-header-background: var(--grey-100);
+  --app-navbar-section-chevron: var(--grey-400);
 }
 html[data-brand="mui"][data-theme="dark"] {
   --app-logo-color: var(--mui-brand-300);
@@ -65,6 +68,9 @@ html[data-brand="mui"][data-theme="dark"] {
   --home-page-body-text: var(--white);
   --app-story-card: var(--grey-1000);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  /* Story Types */
+  --app-story-type-header-background: var(--grey-900);
+  --app-navbar-section-chevron: var(--grey-600);
 }
 
 /* =============================================================================== */
@@ -88,6 +94,7 @@ html[data-brand="jal"][data-theme="light"] {
   --app-navbar-accordion-chevron-hover: var(--grey-100);
   --app-story-card: var(--grey-200);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-navbar-section-chevron: var(--red-300);
 }
 
 html[data-brand="jal"][data-theme="dark"] {
@@ -107,6 +114,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-navbar-border-color: var(--grey-900);
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-navbar-section-chevron: var(--gold-400);
 }
 
 @media (min-width: 960px) {
@@ -138,6 +146,7 @@ html[data-brand="ana"][data-theme="light"] {
   --app-navbar-accordion-chevron-hover: var(--grey-100);
   --app-story-card: var(--grey-200);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-navbar-section-chevron: var(--blue-300);
 }
 
 html[data-brand="ana"][data-theme="dark"] {
@@ -159,6 +168,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --app-navbar-accordion-chevron-hover: var(--grey-900);
   --app-story-card: var(--grey-800);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-navbar-section-chevron: var(--blue-300);
 }
 
 /* =============================================================================== */
@@ -183,6 +193,7 @@ html[data-brand="modern"][data-theme="light"] {
   --app-navbar-accordion-chevron-hover: var(--grey-100);
   --app-story-card: var(--grey-200);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-navbar-section-chevron: var(--grey-500);
 }
 
 html[data-brand="modern"][data-theme="dark"] {
@@ -202,6 +213,7 @@ html[data-brand="modern"][data-theme="dark"] {
   --app-navbar-accordion-chevron-hover: var(--grey-800);
   --app-story-card: var(--grey-900);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-navbar-section-chevron: var(--grey-300);
 }
 
 /* =============================================================================== */
@@ -228,6 +240,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --app-story-card: var(--white-opacity-60);
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-navbar-section-chevron: var(--green-800);
 }
 
 html[data-brand="sensei"][data-theme="dark"] {
@@ -250,4 +263,5 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-story-card: var(--green-1400);
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-navbar-section-chevron: var(--green-400);
 }

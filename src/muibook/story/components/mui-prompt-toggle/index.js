@@ -52,16 +52,7 @@ class StoryPromptToggle extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Prompt Toggle">
-        <mui-responsive breakpoint="980" slot="body">
-          <story-type-table slot="showAbove" overflow-x>
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <story-api-types tag="mui-prompt-toggle" title="Prompt Toggle"></story-api-types>
 
       <story-card
         id="recommended-prompt"

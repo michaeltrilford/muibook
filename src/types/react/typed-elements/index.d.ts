@@ -167,6 +167,11 @@ declare global {
       "mui-grid": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         col?: string | number;
         space?: string;
+        padding?: string;
+        height?: string;
+        width?: string;
+        viewport?: boolean;
+        fill?: boolean;
         slot?: string;
         style?: React.CSSProperties;
         class?: string;
@@ -174,6 +179,7 @@ declare global {
 
       "mui-v-stack": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         space?: string;
+        padding?: string;
         alignX?: "start" | "center" | "end" | "normal" | string;
         aligny?: "start" | "center" | "end" | "normal" | string;
         height?: string;
@@ -187,6 +193,7 @@ declare global {
 
       "mui-h-stack": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         space?: string;
+        padding?: string;
         alignX?: "start" | "center" | "end" | "normal" | string;
         aligny?: "start" | "center" | "end" | "normal" | string;
         height?: string;

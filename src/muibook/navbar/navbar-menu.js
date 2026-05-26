@@ -9,8 +9,7 @@ class appNavbarMenu extends HTMLElement {
 
       :host {
         display: block;
-        overflow-x: hidden;
-        overflow-y: scroll;
+        overflow: hidden;
         background: var(--app-navbar-surface);
         position: fixed;
         bottom: 0;

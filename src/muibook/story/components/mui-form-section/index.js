@@ -109,21 +109,12 @@ class StoryFormSection extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Form Section">
-        <mui-responsive breakpoint="767" slot="body">
-          <story-type-table slot="showAbove">
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <story-api-types tag="mui-form-section" title="Form Section"></story-api-types>
 
       <story-card id="account-setup" title="Account Setup Section" description="Real form grouping with Field, Input, Select, and Form Message. Intended for use on a surface background." usage="Use one form section for each major form area.|||Use form group to cluster related fields.|||Hide group labels when they repeat the section title.|||Use the default greyscale mui-form-message for lighter supporting copy tied to a specific field.">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Account Setup">
-            <mui-form-group heading="Account Details" hide-label>
+            <mui-form-group heading="Account Details" hide-heading>
               <mui-field label="Email">
                 <mui-input type="email" placeholder="you@company.com"></mui-input>
               </mui-field>
@@ -140,7 +131,7 @@ class StoryFormSection extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-form-section heading="Account Setup"&gt;
           <br />
-          &nbsp;&nbsp;&lt;mui-form-group heading="Account Details" hide-label&gt;
+          &nbsp;&nbsp;&lt;mui-form-group heading="Account Details" hide-heading&gt;
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field label="Email"&gt;...&lt;/mui-field&gt;
           <br />
@@ -181,7 +172,7 @@ class StoryFormSection extends HTMLElement {
                     <mui-radio value="none">None</mui-radio>
                   </mui-radio-group>
                 </mui-field>
-                <mui-form-group variant="horizontal" hide-label>
+                <mui-form-group variant="horizontal" hide-heading>
                   <mui-field label="Billing Contact">
                     <mui-input type="email" placeholder="billing@company.com"></mui-input>
                     <mui-form-message slot="message" style="color: var(--text-color-optional);">

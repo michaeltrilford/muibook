@@ -3,7 +3,7 @@ import { getPartMap } from "../../../utils/part-map";
 /* Mui H Stack */
 class MuiHStack extends HTMLElement {
   static get observedAttributes() {
-    return ["space", "aligny", "alignx", "height", "width", "viewport", "fill"];
+    return ["space", "aligny", "alignx", "padding", "height", "width", "viewport", "fill"];
   }
 
   private space: string;
@@ -22,8 +22,10 @@ class MuiHStack extends HTMLElement {
     this.styles = /*css*/ `
       :host {
         display: block;
-        height: var(--stack-height, auto);
-        width: var(--stack-width, auto);
+        --stack-height: auto;
+        --stack-width: auto;
+        height: var(--stack-height);
+        width: var(--stack-width);
       }
       :host([fill]) {
         --stack-height: 100%;
@@ -35,11 +37,21 @@ class MuiHStack extends HTMLElement {
       slot {
         display: flex;
         box-sizing: border-box;
-        height: 100%;
-        width: 100%;
+        height: auto;
+        width: auto;
         gap: var(--space);
+        padding: var(--padding);
         align-items: var(--alignY);
         justify-content: var(--alignX);
+      }
+      :host([height]) slot,
+      :host([viewport]) slot,
+      :host([fill]) slot {
+        height: 100%;
+      }
+      :host([width]) slot,
+      :host([fill]) slot {
+        width: 100%;
       }
     `;
   }
@@ -57,6 +69,7 @@ class MuiHStack extends HTMLElement {
         part="${partMap}" 
         style="
           --space: ${this.getAttribute("space") || this.space};
+          --padding: ${this.getAttribute("padding") || "var(--space-000)"};
           --alignY: ${this.getAttribute("aligny") || this.alignY};
           --alignX: ${this.getAttribute("alignx") || this.alignX};
         ">
@@ -76,6 +89,7 @@ class MuiHStack extends HTMLElement {
 
     if (slot) {
       if (name === "space") slot.style.setProperty("--space", newValue || this.space);
+      if (name === "padding") slot.style.setProperty("--padding", newValue || "var(--space-000)");
       if (name === "aligny") slot.style.setProperty("--alignY", newValue || this.alignY);
       if (name === "alignx") slot.style.setProperty("--alignX", newValue || this.alignX);
     }

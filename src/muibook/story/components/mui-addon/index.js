@@ -72,16 +72,7 @@ class storyAddon extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-        <props-card title="Add On">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-addon" title="Add On"></story-api-types>
 
         <story-card title="Text"
           description="Use for units, currency, or short static labels"

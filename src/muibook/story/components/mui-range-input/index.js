@@ -35,11 +35,7 @@ class StoryRangeInput extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Range Input">
-        <story-type-table slot="body">
-          ${rows}
-        </story-type-table>
-      </props-card>
+      <story-api-types tag="mui-range-input" title="Range Input"></story-api-types>
 
       <story-card id="default" title="Default" description="Basic numeric range input.">
         <mui-range-input slot="body" min="0" max="100" value="40" step="1" label="Volume"></mui-range-input>

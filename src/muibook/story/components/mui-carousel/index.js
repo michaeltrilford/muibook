@@ -319,38 +319,9 @@ class storyCarousel extends HTMLElement {
 
     const stories = /*html*/ `
       <mui-v-stack space="var(--space-400)">
-        <props-card title="Carousel Controller" description="The carousel-controller handles layout and transitions. Slotted children like tab-bar and carousel-panel must include the correct slot attributes to integrate properly.">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsController}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsController}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
-
-        <props-card title="Tab Bar" description="When used inside carousel-controller, mui-tab-bar can accept additional props to control placement and integration within the carousel layout.">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsTabBar}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsTabBar}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
-
-        <props-card title="Carousel Panel " description="Used to display the content for each carousel item. This component is typically slotted into a mui-carousel-controller and responds to tab selection based on the item mapping.">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rowsPanel}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordionsPanel}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-carousel-controller" title="Carousel Controller"></story-api-types>
+        <story-api-types tag="mui-tab-bar" title="Tab Bar"></story-api-types>
+        <story-api-types tag="mui-carousel-panel" title="Carousel Panel"></story-api-types>
       </mui-v-stack>
 
       <story-card 

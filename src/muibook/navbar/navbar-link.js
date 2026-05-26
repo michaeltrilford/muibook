@@ -61,7 +61,7 @@ class appNavbarLink extends HTMLElement {
       }
     </style>
 
-    <mui-link href="${link}" class="${badgeClass}">
+    <mui-link href="${link}" class="${badgeClass}" size="small">
     ${title}
     ${badge ? `<mui-badge>${badge}</mui-badge>` : ``}
     </mui-link> 

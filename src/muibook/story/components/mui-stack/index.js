@@ -108,6 +108,13 @@ class storyStack extends HTMLElement {
         description: "Apply a design tokens to apply a gap between slotted elements",
       },
       {
+        name: "padding",
+        type: "string",
+        options: "var(--space-100), var(--space-200), etc...",
+        default: "var(--space-000)",
+        description: "Sets inset spacing inside the layout using CSS padding shorthand.",
+      },
+      {
         name: "alignX",
         type: "string",
         options: "start, center, end, etc...",
@@ -180,6 +187,13 @@ class storyStack extends HTMLElement {
         options: "var(--space-100), etc...",
         default: "--space-500",
         description: "Apply a design tokens to apply a gap between slotted elements",
+      },
+      {
+        name: "padding",
+        type: "string",
+        options: "var(--space-100), var(--space-200), etc...",
+        default: "var(--space-000)",
+        description: "Sets inset spacing inside the layout using CSS padding shorthand.",
       },
       {
         name: "alignX",
@@ -327,26 +341,8 @@ class storyStack extends HTMLElement {
 
     const stories = /*html*/ `
         <mui-v-stack space="var(--space-400)">
-          <props-card title="HStack">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rowsHStack}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordionsHStack}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
-          <props-card title="VStack">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rowsVStack}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordionsVStack}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
+          <story-api-types tag="mui-h-stack" title="HStack"></story-api-types>
+          <story-api-types tag="mui-v-stack" title="VStack"></story-api-types>
         </mui-v-stack>
 
         <story-card title="Horizontal: Default">
@@ -397,6 +393,21 @@ class storyStack extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
           <br />
+          &lt;/mui-v-stack&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Padding">
+        <mui-v-stack class="vertical-align-canvas" padding="var(--space-400)" space="var(--space-300)" slot="body">
+          <mui-h-stack padding="var(--space-300)" space="var(--space-200)" style="background: var(--surface-elevated-100);">
+            ${Box}
+            ${Box}
+          </mui-h-stack>
+          <mui-body size="small">Stacks can inset content without additional wrapper styles.</mui-body>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-v-stack padding="var(--space-400)" space="var(--space-300)"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack padding="var(--space-300)" space="var(--space-200)"&gt;...&lt;/mui-h-stack&gt;<br />
           &lt;/mui-v-stack&gt;
         </story-code-block>
       </story-card>

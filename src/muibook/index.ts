@@ -149,6 +149,7 @@ import "./local-components/page-card";
 import "./local-components/spec-card";
 import "./local-components/import-card";
 import "./local-components/props-card";
+import "./local-components/story-api-types";
 import "./local-components/attr-card";
 import "./local-components/story-card";
 import "./local-components/story-code-block";

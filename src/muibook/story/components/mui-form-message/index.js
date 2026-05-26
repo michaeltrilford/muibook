@@ -10,6 +10,8 @@ class StoryFormMessage extends HTMLElement {
     const data = await getComponentDocs("FormMessage");
 
     const stories = /*html*/ `
+      <story-api-types tag="mui-form-message" title="Form Message"></story-api-types>
+
       <story-card id="patterns" title="Message Patterns" description="Icon-led supporting text with semantic color from usage context." usage="Use a colored mui-form-message when the static message needs more emphasis.|||Use the default greyscale version for lighter supporting copy.|||This component does not replace mui-field slot=&quot;message&quot; when the message belongs to a specific field; it is the message content used within that pattern.">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-200)">
@@ -71,7 +73,7 @@ class StoryFormMessage extends HTMLElement {
                   </mui-radio-group>
                 </mui-field>
 
-                <mui-form-group variant="horizontal" hide-label>
+                <mui-form-group variant="horizontal" hide-heading>
                   <mui-field label="Billing Contact">
                     <mui-input type="email" placeholder="billing@company.com"></mui-input>
                     <mui-form-message slot="message" variant="optional">

@@ -186,26 +186,8 @@ class storyIcon extends HTMLElement {
 
     const stories = /*html*/ `
       <mui-v-stack space="var(--space-400)">
-        <props-card title="Icon">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
-        <props-card title="Icon Toggle" description="A visual alternative to a button, used to control views with a persistent open/close state — such as menus or drawers. Unlike standard buttons, this component is purpose-built for toggling visibility and should not replace buttons used for general actions.">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${IconToggleRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${IconToggleAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-icon-add" title="Icon"></story-api-types>
+        <story-api-types tag="mui-icon-toggle" title="Icon Toggle"></story-api-types>
       </mui-v-stack>
 
       <story-card title="Sizes" description="The default size of the icon is size: small">

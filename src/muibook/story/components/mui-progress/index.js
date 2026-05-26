@@ -80,16 +80,7 @@ class storyProgress extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-          <props-card title="Progress">
-            <mui-responsive breakpoint="767" slot="body">
-              <story-type-table slot="showAbove">
-                ${rows}
-              </story-type-table>
-              <mui-accordion-group exclusive slot="showBelow">
-                ${accordions}
-              </mui-accordion-group>
-            </mui-responsive>
-          </props-card>
+          <story-api-types tag="mui-progress" title="Progress"></story-api-types>
 
         <story-card title="Progress" description="Displays a numeric value to indicate loading or completion state.">
           <div class="canvas" slot="body">

@@ -1,5 +1,30 @@
 ## Header [Start]
 
+## v19.5.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.5.0)
+
+## Header [End]
+
+### Added
+
+- `mui-h-stack`, `mui-v-stack`, and `mui-grid` now support a `padding` attribute using CSS shorthand values, making inset layout spacing available without internal part overrides or inline styles.
+- `mui-grid` now supports `height`, `width`, `fill`, and `viewport` sizing controls for parity with stack layouts and bounded alignment compositions.
+- `mui-form-group` now supports `hide-heading` for groups whose visible heading is supplied by surrounding structure; the previous `hide-label` attribute remains accepted as a compatibility alias.
+
+### Changed
+
+- React typings now expose the new Stack and Grid layout controls.
+- `mui-form-group` now renders its `heading` consistently as a semantic heading, including groups containing choice controls.
+
+### Fixed
+
+- `mui-h-stack` and `mui-v-stack` now keep default nested content intrinsic unless explicit sizing is requested, preventing unintended full-height stretching inside viewport and drawer layouts.
+
+---
+
+## Header [Start]
+
 ## v19.4.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.4.0)

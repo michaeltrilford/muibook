@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-25T10:00:50.637Z",
+  "generatedAt": "2026-05-26T09:56:39.253Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -133,19 +133,19 @@
         "has-button-group"
       ]
     },
+    "mui-slat-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "usage"
+      ]
+    },
     "mui-slat": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         "card-slot",
         "condensed-slot"
-      ]
-    },
-    "mui-slat-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        "usage"
       ]
     },
     "mui-row": {

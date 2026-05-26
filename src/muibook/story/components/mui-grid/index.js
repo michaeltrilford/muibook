@@ -9,7 +9,15 @@ class storyGrid extends HTMLElement {
   async connectedCallback() {
     const data = await getComponentDocs("Grid");
 
-    const styles = /*css*/ `:host { display: block; }`;
+    const styles = /*css*/ `
+      :host { display: block; }
+      .sized-grid {
+        box-sizing: border-box;
+        border: var(--border-thin);
+        border-radius: var(--radius-100);
+        background: var(--surface-recessed-100);
+      }
+    `;
 
     const propItems = [
       {
@@ -32,6 +40,55 @@ class storyGrid extends HTMLElement {
         options: "var(--space-xxx)",
         default: "",
         description: "Adjust the gap between columns.",
+      },
+      {
+        name: "padding",
+        type: "string",
+        options: "var(--space-100), var(--space-200), etc...",
+        default: "var(--space-000)",
+        description: "Sets inset spacing inside the layout using CSS padding shorthand.",
+      },
+      {
+        name: "alignX",
+        type: "string",
+        options: "start, center, end, stretch, etc...",
+        default: "normal",
+        description: "Horizontally aligns items within their grid cells.",
+      },
+      {
+        name: "alignY",
+        type: "string",
+        options: "start, center, end, stretch, etc...",
+        default: "normal",
+        description: "Vertically aligns items within their grid cells.",
+      },
+      {
+        name: "height",
+        type: "string",
+        options: "{css-size}",
+        default: "auto",
+        description: "Sets a custom height for the grid layout, such as 100dvh or 20rem.",
+      },
+      {
+        name: "width",
+        type: "string",
+        options: "{css-size}",
+        default: "auto",
+        description: "Sets a custom width for the grid layout, such as 100% or 32rem.",
+      },
+      {
+        name: "viewport",
+        type: "boolean",
+        options: "true, false",
+        default: "false",
+        description: "Sets the grid height to 100dvh.",
+      },
+      {
+        name: "fill",
+        type: "boolean",
+        options: "true, false",
+        default: "false",
+        description: "Sets the grid height and width to 100% of its available parent.",
       },
       {
         name: "style",
@@ -103,16 +160,7 @@ class storyGrid extends HTMLElement {
     `;
 
     const stories = /*html*/ `
-      <props-card title="Grid">
-        <mui-responsive breakpoint="767" slot="body">
-          <story-type-table slot="showAbove">
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <story-api-types tag="mui-grid" title="Grid"></story-api-types>
 
       <story-card title="Default">
 
@@ -147,6 +195,19 @@ class storyGrid extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
           <br />
+          &lt;/mui-grid&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Sized Alignment" description="Set a height to align items within a defined layout area.">
+        <mui-grid class="sized-grid" height="20rem" padding="var(--space-300)" col="1fr 1fr" aligny="center" space="var(--space-200)" slot="body">
+          ${Box}
+          ${Box}
+        </mui-grid>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-grid height="20rem" padding="var(--space-300)" col="1fr 1fr" aligny="center" space="var(--space-200)"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;<br />
+          &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;<br />
           &lt;/mui-grid&gt;
         </story-code-block>
       </story-card>

@@ -17,6 +17,8 @@ class StoryFormSectionFooter extends HTMLElement {
     ]);
 
     const stories = /*html*/ `
+      <story-api-types tag="mui-form-section-footer" title="Form Section Footer"></story-api-types>
+
       <story-card id="default" title="Default Footer Wrapper" description="Use form-section-footer in slot='footer' to standardise action spacing.">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Commercial Licensing">

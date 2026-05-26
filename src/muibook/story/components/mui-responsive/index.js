@@ -258,16 +258,7 @@ class storyResponsive extends HTMLElement {
                 </mui-body>
             </mui-v-stack>
           </mui-message>
-        <props-card title="Responsive">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-responsive" title="Responsive"></story-api-types>
 
         <story-card title="Single Breakpoint">
           <mui-responsive slot="body" breakpoint="600">

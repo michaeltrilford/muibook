@@ -648,26 +648,7 @@ class storyDrawer extends HTMLElement {
 
     const stories = /*html*/ `
       <mui-v-stack space="var(--space-400)">
-        <props-card title="Drawer">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
-        <props-card title="Close">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${closeRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${closeAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-drawer" title="Drawer"></story-api-types>
       </mui-v-stack>
 
       <story-card id="drawer-overlay-left" title="Overlay Left" description="The drawer is positioned fixed to the viewport edge">

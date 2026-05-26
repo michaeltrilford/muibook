@@ -182,16 +182,7 @@ class storyLink extends HTMLElement {
       .join("");
 
     const stories = /*html*/ `
-      <props-card title="Link">
-        <mui-responsive breakpoint="767" slot="body">
-          <story-type-table slot="showAbove">
-            ${rows}
-          </story-type-table>
-          <mui-accordion-group exclusive slot="showBelow">
-            ${accordions}
-          </mui-accordion-group>
-        </mui-responsive>
-      </props-card>
+      <story-api-types tag="mui-link" title="Link"></story-api-types>
 
       <story-card title="Link: Sizes" id="link-sizes" description="Link sizes should match the surrounding body text size when nested within a paragraph.">
 

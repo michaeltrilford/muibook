@@ -150,27 +150,8 @@ class storyList extends HTMLElement {
 
     const stories = /*html*/ `
       <mui-v-stack space="var(--space-400)">
-        <props-card title="List">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${ListRows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${ListAccordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
-
-        <props-card title="List-Item">
-          <mui-responsive breakpoint="767" slot="body">
-            <story-type-table slot="showAbove">
-              ${rows}
-            </story-type-table>
-            <mui-accordion-group exclusive slot="showBelow">
-              ${accordions}
-            </mui-accordion-group>
-          </mui-responsive>
-        </props-card>
+        <story-api-types tag="mui-list" title="List"></story-api-types>
+        <story-api-types tag="mui-list-item" title="List Item"></story-api-types>
       </mui-v-stack>
 
       <story-card title="Sizes">
