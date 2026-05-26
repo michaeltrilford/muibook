@@ -33,17 +33,8 @@ class MuiGrid extends HTMLElement {
     const styles = /*css*/ `
       :host {
         display: block;
-        --grid-height: auto;
-        --grid-width: auto;
-        height: var(--grid-height);
-        width: var(--grid-width);
-      }
-      :host([fill]) {
-        --grid-height: 100%;
-        --grid-width: 100%;
-      }
-      :host([viewport]) {
-        --grid-height: 100dvh;
+        height: var(--grid-height, auto);
+        width: var(--grid-width, auto);
       }
       div {
         display: grid;
@@ -78,7 +69,7 @@ class MuiGrid extends HTMLElement {
     if (oldValue === newValue) return;
     if (!this.shadowRoot) return;
 
-    if (name === "height" || name === "width") {
+    if (name === "height" || name === "width" || name === "viewport" || name === "fill") {
       this.syncDimensions();
     }
 
@@ -93,20 +84,11 @@ class MuiGrid extends HTMLElement {
   }
 
   private syncDimensions() {
-    const height = this.getAttribute("height");
-    const width = this.getAttribute("width");
+    const height = this.getAttribute("height") || (this.hasAttribute("viewport") ? "100dvh" : this.hasAttribute("fill") ? "100%" : "auto");
+    const width = this.getAttribute("width") || (this.hasAttribute("fill") ? "100%" : "auto");
 
-    if (height) {
-      this.style.setProperty("--grid-height", height);
-    } else {
-      this.style.removeProperty("--grid-height");
-    }
-
-    if (width) {
-      this.style.setProperty("--grid-width", width);
-    } else {
-      this.style.removeProperty("--grid-width");
-    }
+    this.style.setProperty("--grid-height", height);
+    this.style.setProperty("--grid-width", width);
   }
 
   waitForPartMap(): Promise<void> {

@@ -26,6 +26,32 @@ class storyStack extends HTMLElement {
         background: var(--surface-recessed-100);
       }
 
+      .viewport-preview {
+        position: relative;
+        height: 36rem;
+        overflow: hidden;
+        border: var(--border-thin);
+        border-radius: var(--radius-100);
+        background: var(--surface-recessed-100);
+      }
+
+      .viewport-shell {
+        position: absolute;
+        inset: 0;
+      }
+
+      .viewport-child {
+        border: var(--border-thin);
+        border-radius: var(--radius-100);
+        background: var(--surface-elevated-100);
+      }
+
+      .viewport-child-nested {
+        border: var(--border-thin);
+        border-radius: var(--radius-100);
+        background: var(--surface);
+      }
+
       @media (max-width: 767px) {
         .vertical-align-grid {
           grid-template-columns: 1fr;
@@ -95,6 +121,29 @@ class storyStack extends HTMLElement {
         </mui-v-stack>
         <mui-v-stack class="vertical-align-canvas" height="28rem" alignx="stretch" aligny="end" space="var(--space-000)">
           <mui-code>aligny="end"</mui-code>
+        </mui-v-stack>
+      </div>
+    `;
+
+    const VStackViewportChildren = /*html*/ `
+      <div class="viewport-preview" slot="body">
+        <mui-v-stack class="viewport-shell" viewport padding="var(--space-300)" space="var(--space-300)" alignx="stretch" aligny="start">
+          <mui-v-stack space="var(--space-300)">
+            <mui-v-stack class="viewport-child" padding="var(--space-300)" space="var(--space-200)">
+              <mui-body size="small" weight="bold">Nested VStack</mui-body>
+              <mui-body size="x-small" variant="optional">Intrinsic height inside an outer viewport stack.</mui-body>
+            </mui-v-stack>
+            <mui-h-stack class="viewport-child" padding="var(--space-300)" space="var(--space-200)" aligny="center">
+              <mui-v-stack class="viewport-child-nested" padding="var(--space-200)" space="var(--space-100)">
+                <mui-body size="x-small" weight="bold">Child A</mui-body>
+                <mui-body size="x-small" variant="optional">auto height</mui-body>
+              </mui-v-stack>
+              <mui-v-stack class="viewport-child-nested" padding="var(--space-200)" space="var(--space-100)">
+                <mui-body size="x-small" weight="bold">Child B</mui-body>
+                <mui-body size="x-small" variant="optional">auto height</mui-body>
+              </mui-v-stack>
+            </mui-h-stack>
+          </mui-v-stack>
         </mui-v-stack>
       </div>
     `;
@@ -418,6 +467,27 @@ class storyStack extends HTMLElement {
           &lt;mui-v-stack height="28rem" aligny="center"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-code&gt;aligny="center"&lt;/mui-code&gt;
+          <br />
+          &lt;/mui-v-stack&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Vertical: Viewport With Nested Stacks" description="Only the stack using viewport takes viewport height; nested stacks retain intrinsic content height.">
+        ${VStackViewportChildren}
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-v-stack viewport aligny="start" padding="var(--space-300)"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-v-stack&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack padding="var(--space-300)"&gt;...&lt;/mui-v-stack&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack padding="var(--space-300)"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&gt;...&lt;/mui-v-stack&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;
           <br />
           &lt;/mui-v-stack&gt;
         </story-code-block>

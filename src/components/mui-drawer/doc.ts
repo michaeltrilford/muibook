@@ -21,6 +21,8 @@ export const muiDocs: MuiDocs = {
         "Can be a temporary overlay Drawer that appears over content. E.g. Navigation",
         "Can be a persistent push Drawer until workflow complete. E.g. Tasks",
         "Task based Drawers are often positioned right of the viewport.",
+        "For push and persistent drawers, use a plain div as the direct slot='page' wrapper and compose layout components inside it.",
+        "Avoid assigning slot='page' directly to Stack or other sized layout components because Drawer owns the page viewport sizing.",
       ],
     },
     accessibility: {
@@ -50,6 +52,7 @@ export const muiDocs: MuiDocs = {
         "Close: An icon or button that allows users to close the drawer.",
         "Body: Section to slot navigation links, settings, or other relevant information.",
         "Footer: Optional section for additional actions, such as 'Cancel' or 'Save'.",
+        "Page: Plain div wrapper assigned to slot='page' for push and persistent layouts; place app layout content inside it.",
       ],
       image:
         "https://images.ctfassets.net/i5uwscj4pkk2/7aOA4WtcFwev6f3tZy6VgX/83c0b087170d859406526e5d7ad66d6b/Drawer_-_Anatomy.png",

@@ -21,17 +21,8 @@ class MuiVStack extends HTMLElement {
     this.styles = /*css*/ `
       :host {
         display: block;
-        --stack-height: auto;
-        --stack-width: auto;
-        height: var(--stack-height);
-        width: var(--stack-width);
-      }
-      :host([fill]) {
-        --stack-height: 100%;
-        --stack-width: 100%;
-      }
-      :host([viewport]) {
-        --stack-height: 100dvh;
+        height: var(--stack-height, auto);
+        width: var(--stack-width, auto);
       }
       slot {
         display: grid;
@@ -79,7 +70,7 @@ class MuiVStack extends HTMLElement {
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
     if (oldValue === newValue) return;
 
-    if (name === "height" || name === "width") {
+    if (name === "height" || name === "width" || name === "viewport" || name === "fill") {
       this.syncDimensions();
     }
 
@@ -95,20 +86,11 @@ class MuiVStack extends HTMLElement {
   }
 
   private syncDimensions() {
-    const height = this.getAttribute("height");
-    const width = this.getAttribute("width");
+    const height = this.getAttribute("height") || (this.hasAttribute("viewport") ? "100dvh" : this.hasAttribute("fill") ? "100%" : "auto");
+    const width = this.getAttribute("width") || (this.hasAttribute("fill") ? "100%" : "auto");
 
-    if (height) {
-      this.style.setProperty("--stack-height", height);
-    } else {
-      this.style.removeProperty("--stack-height");
-    }
-
-    if (width) {
-      this.style.setProperty("--stack-width", width);
-    } else {
-      this.style.removeProperty("--stack-width");
-    }
+    this.style.setProperty("--stack-height", height);
+    this.style.setProperty("--stack-width", width);
   }
 
   waitForPartMap(): Promise<void> {

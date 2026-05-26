@@ -52,7 +52,11 @@ export const muiApi = {
       { name: "", description: "Primary scrollable drawer content." },
       { name: "title", description: "Header title content. Providing it reveals the drawer header." },
       { name: "actions", description: "Footer action content. Providing it reveals the fixed footer region." },
-      { name: "page", description: "Page content displayed alongside `push` and `persistent` drawer variants." },
+      {
+        name: "page",
+        description:
+          "Page region displayed alongside `push` and `persistent` variants. Use a plain `div` as the direct slotted wrapper, then compose Stack or other layout components inside it.",
+      },
     ],
     events: [
       { name: "mui-drawer-open", description: "Dispatched by `open()` when the drawer opens." },
