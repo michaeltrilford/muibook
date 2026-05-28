@@ -16,7 +16,11 @@ class StoryFormMessage extends HTMLElement {
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-200)">
             <mui-form-message variant="optional">
+              <mui-icon-message slot="before"></mui-icon-message>
               Optional: Add a referral code.
+            </mui-form-message>
+            <mui-form-message variant="info">
+              Confirm billing details before saving changes.
             </mui-form-message>
             <mui-form-message variant="warning">
               <mui-icon-warning slot="before"></mui-icon-warning>
@@ -77,7 +81,7 @@ class StoryFormMessage extends HTMLElement {
                   <mui-field label="Billing Contact">
                     <mui-input type="email" placeholder="billing@company.com"></mui-input>
                     <mui-form-message slot="message" variant="optional">
-                      <mui-icon-info slot="before"></mui-icon-info>
+                      <mui-icon-message slot="before"></mui-icon-message>
                       You can update these preferences at any time
                     </mui-form-message>
                   </mui-field>
@@ -107,8 +111,12 @@ class StoryFormMessage extends HTMLElement {
           <mui-v-stack space="var(--space-200)">
             <mui-body size="small" variant="optional">x-small</mui-body>
             <mui-form-message size="x-small" variant="optional">
-              <mui-icon-info slot="before"></mui-icon-info>
+              <mui-icon-message slot="before"></mui-icon-message>
               X Small optional helper content
+            </mui-form-message>
+            <mui-form-message size="x-small" variant="info">
+              <mui-icon-info slot="before"></mui-icon-info>
+              X Small info helper content
             </mui-form-message>
             <mui-form-message size="x-small" variant="warning">
               <mui-icon-warning slot="before"></mui-icon-warning>
@@ -127,8 +135,12 @@ class StoryFormMessage extends HTMLElement {
           <mui-v-stack space="var(--space-200)">
             <mui-body size="small" variant="optional">small</mui-body>
             <mui-form-message size="small" variant="optional">
-              <mui-icon-info slot="before"></mui-icon-info>
+              <mui-icon-message slot="before"></mui-icon-message>
               Small optional helper content
+            </mui-form-message>
+            <mui-form-message size="small" variant="info">
+              <mui-icon-info slot="before"></mui-icon-info>
+              Small info helper content
             </mui-form-message>
             <mui-form-message size="small" variant="warning">
               <mui-icon-warning slot="before"></mui-icon-warning>
@@ -147,8 +159,12 @@ class StoryFormMessage extends HTMLElement {
           <mui-v-stack space="var(--space-200)">
             <mui-body size="small" variant="optional">medium</mui-body>
             <mui-form-message size="medium" variant="optional">
-              <mui-icon-info slot="before"></mui-icon-info>
+              <mui-icon-message slot="before"></mui-icon-message>
               Medium optional helper content
+            </mui-form-message>
+            <mui-form-message size="medium" variant="info">
+              <mui-icon-info slot="before"></mui-icon-info>
+              Medium info helper content
             </mui-form-message>
             <mui-form-message size="medium" variant="warning">
               <mui-icon-warning slot="before"></mui-icon-warning>
@@ -167,8 +183,12 @@ class StoryFormMessage extends HTMLElement {
           <mui-v-stack space="var(--space-200)">
             <mui-body size="small" variant="optional">large</mui-body>
             <mui-form-message size="large" variant="optional">
-              <mui-icon-info slot="before"></mui-icon-info>
+              <mui-icon-message slot="before"></mui-icon-message>
               Large optional helper content
+            </mui-form-message>
+            <mui-form-message size="large" variant="info">
+              <mui-icon-info slot="before"></mui-icon-info>
+              Large info helper content
             </mui-form-message>
             <mui-form-message size="large" variant="warning">
               <mui-icon-warning slot="before"></mui-icon-warning>
@@ -187,9 +207,18 @@ class StoryFormMessage extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-form-message size="small" variant="optional"&gt;
           <br />
-          &nbsp;&nbsp;&lt;mui-icon-info slot="before"&gt;&lt;/mui-icon-info&gt;
+          &nbsp;&nbsp;&lt;mui-icon-message slot="before"&gt;&lt;/mui-icon-message&gt;
           <br />
           &nbsp;&nbsp;Small optional helper content
+          <br />
+          &lt;/mui-form-message&gt;
+          <br />
+          <br />
+          &lt;mui-form-message size="small" variant="info"&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-icon-info slot="before"&gt;&lt;/mui-icon-info&gt;
+          <br />
+          &nbsp;&nbsp;Small info helper content
           <br />
           &lt;/mui-form-message&gt;
           <br />

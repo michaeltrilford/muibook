@@ -38,9 +38,9 @@ class storyRule extends HTMLElement {
       {
         name: "weight",
         type: "string",
-        options: "1px, 4px, etc...",
-        default: "",
-        description: "Easily add a weight of the line.",
+        options: "thin, thick, 1px, 4px, var(--stroke-size-300), etc...",
+        default: "thin",
+        description: "Sets the thickness of the rule.",
       },
     ];
 
@@ -116,7 +116,7 @@ class storyRule extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Horizontal">
+      <story-card title="Horizontal: Custom Weight">
         <div slot="body">
           <mui-rule direction="horizontal" length="100%" weight="2px" style="margin: var(--space-700) 0;"></mui-rule>
         </div>
@@ -125,7 +125,7 @@ class storyRule extends HTMLElement {
           <br />
           &nbsp;&nbsp;direction="horizontal"
           <br />
-          &nbsp;&nbsp;length="100%"&gt;
+          &nbsp;&nbsp;length="100%"
           <br />
           &nbsp;&nbsp;weight="2px"&gt;
           <br />
@@ -133,7 +133,7 @@ class storyRule extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Vertical">
+      <story-card title="Vertical: Custom Weight">
         <div slot="body">
           <mui-rule direction="vertical" length="100px" weight="2px"></mui-rule>
         </div>
@@ -142,11 +142,23 @@ class storyRule extends HTMLElement {
           <br />
           &nbsp;&nbsp;direction="vertical"
           <br />
-          &nbsp;&nbsp;length="100px"&gt;
+          &nbsp;&nbsp;length="100px"
           <br />
           &nbsp;&nbsp;weight="2px"&gt;
           <br />
           &lt;/mui-rule&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Weight: Thin and Thick">
+        <mui-v-stack slot="body" space="var(--space-700)">
+          <mui-rule direction="horizontal" length="100%" weight="thin"></mui-rule>
+          <mui-rule direction="horizontal" length="100%" weight="thick"></mui-rule>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-rule weight="thin"&gt;&lt;/mui-rule&gt;
+          <br />
+          &lt;mui-rule weight="thick"&gt;&lt;/mui-rule&gt;
         </story-code-block>
       </story-card>
     `;

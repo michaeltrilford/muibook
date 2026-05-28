@@ -68,7 +68,7 @@ class StoryHint extends HTMLElement {
         <mui-v-stack slot="body" space="var(--space-200)" style="padding: var(--space-400);">
           <mui-hint placement="top">
             <mui-icon-info slot="trigger" color="default" size="small"></mui-icon-info>
-            Default delay (1500ms, clamped to 1000-2000ms)
+            Default delay (500ms, clamped to 250-2000ms)
           </mui-hint>
           <mui-hint placement="right" delay="2000" initial-delay="2000">
             <mui-icon-warning slot="trigger" color="default" size="small"></mui-icon-warning>
@@ -76,7 +76,7 @@ class StoryHint extends HTMLElement {
           </mui-hint>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-hint delay="1500" initial-delay="1500"&gt;
+          &lt;mui-hint delay="500" initial-delay="500"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-icon-info slot="trigger" size="small"&gt;&lt;/mui-icon-info&gt;
           <br />

@@ -37,6 +37,20 @@ class storyHeading extends HTMLElement {
         description: "Set the semantic size of the heading for correct screen reader behaviour.",
       },
       {
+        name: "truncate",
+        type: "boolean",
+        options: "truncate",
+        default: "",
+        description: "Clamp heading text to one line with ellipsis when the available width is constrained.",
+      },
+      {
+        name: "clamp",
+        type: "number",
+        options: "1, 2, 3...",
+        default: "",
+        description: "Limit heading text to a set number of lines. Ignored when truncate is present.",
+      },
+      {
         name: "style",
         type: "string",
         options: "Valid CSS",
@@ -145,6 +159,44 @@ class storyHeading extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-heading size="6"&gt; ... &lt;/mui-heading&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Overflow" description="Use truncate for one-line heading overflow and clamp for bounded multi-line headings.">
+        <div slot="body">
+          <mui-v-stack space="var(--space-400)" alignx="start">
+            <div style="width: min(100%, 28rem); border: var(--border-thin); border-radius: var(--radius-200); padding: var(--space-300);">
+              <mui-v-stack space="var(--space-100)">
+                <mui-body size="small" variant="optional">Truncate</mui-body>
+                <mui-heading size="4" level="3" truncate>
+                  Enterprise subscription analytics workspace overview
+                </mui-heading>
+              </mui-v-stack>
+            </div>
+
+            <div style="width: min(100%, 28rem); border: var(--border-thin); border-radius: var(--radius-200); padding: var(--space-300);">
+              <mui-v-stack space="var(--space-100)">
+                <mui-body size="small" variant="optional">Clamp</mui-body>
+                <mui-heading size="3" level="3" clamp="2">
+                  Enterprise subscription analytics and lifecycle reporting workspace overview
+                </mui-heading>
+              </mui-v-stack>
+            </div>
+          </mui-v-stack>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-heading size=&quot;4&quot; level=&quot;3&quot; truncate&gt;
+          <br>
+          &nbsp;&nbsp;{long heading}
+          <br>
+          &lt;/mui-heading&gt;
+          <br>
+          <br>
+          &lt;mui-heading size=&quot;3&quot; level=&quot;3&quot; clamp=&quot;2&quot;&gt;
+          <br>
+          &nbsp;&nbsp;{long heading}
+          <br>
+          &lt;/mui-heading&gt;
         </story-code-block>
       </story-card>
     `;

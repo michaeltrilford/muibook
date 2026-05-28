@@ -1,5 +1,48 @@
 ## Header [Start]
 
+## v19.6.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.6.0)
+
+## Header [End]
+
+### Added
+
+- `mui-body` now supports `variant="info"` for lightweight inline informational guidance.
+- `mui-body` now supports `truncate` and `clamp` text overflow controls for constrained single-line and multi-line layouts.
+- `mui-heading` now supports `truncate` and `clamp` text overflow controls while preserving semantic heading levels.
+- `mui-form-message` now supports `variant="info"` for lighter informational form guidance.
+- `mui-rule` now supports semantic `weight="thin"` and `weight="thick"` values in addition to custom CSS values.
+- `mui-slat variant="action"` now supports `col` and `space` layout controls through the internal action button parts.
+
+### Changed
+
+- `mui-slat variant="action"` now defaults to `col="minmax(0, 1fr) auto"` so trailing content aligns to the end by default.
+- `mui-body size="large"` now uses the 30px text rhythm and aligns leading inline icons against the larger line-height.
+- `mui-hint` now reveals faster by default, using a 500ms delay with support for custom delays down to 250ms.
+
+---
+
+## Header [Start]
+
+## v19.5.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/19.5.1)
+
+## Header [End]
+
+### Fixed
+
+- `mui-h-stack`, `mui-v-stack`, and `mui-grid` now resolve `height`, `width`, `fill`, and `viewport` sizing onto the component host instead of relying on inherited custom properties, preventing nested layout components from inheriting parent viewport or fill sizing.
+
+### Documentation
+
+- `mui-drawer` now documents that push and persistent drawer page content should use a plain `div` as the direct `slot="page"` wrapper, with Stack or other layout components composed inside it.
+
+---
+
+## Header [Start]
+
 ## v19.5.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.5.0)

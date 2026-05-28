@@ -1,6 +1,6 @@
 class MuiHeading extends HTMLElement {
   static get observedAttributes() {
-    return ["size", "level"];
+    return ["size", "level", "truncate", "clamp"];
   }
 
   constructor() {
@@ -25,15 +25,48 @@ class MuiHeading extends HTMLElement {
     const size = this.getAttribute("size") || "1";
     const level = this.getAttribute("level") || size;
     const tag = `h${level}`;
+    const lineClamp = this.getLineClamp();
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
-        :host { display: block; }
+        :host {
+          display: block;
+          --heading-line-clamp: ${lineClamp};
+        }
+
+        :host([truncate]) {
+          min-width: 0;
+          max-width: 100%;
+          width: 100%;
+        }
 
         h1, h2, h3, h4, h5, h6 {
           margin: var(--space-000);
           font-weight: var(--heading-font-weight);
           color: var(--heading-text-color);
+          min-width: 0;
+          width: 100%;
+        }
+
+        .content {
+          max-width: 100%;
+          min-width: 0;
+        }
+
+        :host([truncate]) .content {
+          display: block;
+          max-width: 100%;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        :host([clamp]:not([truncate])) .content {
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: var(--heading-line-clamp);
         }
 
         .size-1 { font-size: var(--heading-font-size-100); line-height: var(--heading-line-height-100); }
@@ -44,9 +77,14 @@ class MuiHeading extends HTMLElement {
         .size-6 { font-size: var(--heading-font-size-600); line-height: var(--heading-line-height-600); }
       </style>
       <${tag} class="size-${size}">
-        <slot></slot>
+        <span class="content"><slot></slot></span>
       </${tag}>
     `;
+  }
+
+  private getLineClamp() {
+    const value = Number(this.getAttribute("clamp"));
+    return Number.isFinite(value) && value > 0 ? Math.floor(value) : 2;
   }
 }
 

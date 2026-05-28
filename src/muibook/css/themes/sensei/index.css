@@ -136,6 +136,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --border-color: var(--green-700);
   /* Text */
   --text-color: var(--green-1400);
+  --text-color-info: var(--green-800);
   --illustration-main-color-default: var(--heading-text-color);
   --illustration-main-color-inverted: var(--green-300);
   --illustration-shadow-color-default: color-mix(in srgb, var(--green-1200) 42%, transparent);
@@ -403,6 +404,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --border-color: var(--green-1200);
   /* Text */
   --text-color: var(--green-200);
+  --text-color-info: var(--green-900);
   --illustration-main-color-default: var(--heading-text-color);
   --illustration-main-color-inverted: var(--green-1100);
   --illustration-shadow-color-default: color-mix(in srgb, var(--green-900) 42%, transparent);

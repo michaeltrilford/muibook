@@ -173,14 +173,14 @@ class MuiHint extends HTMLElement {
 
   private getDelay() {
     const raw = Number(this.getAttribute("delay"));
-    if (Number.isFinite(raw)) return Math.min(2000, Math.max(1000, raw));
-    return 1500;
+    if (Number.isFinite(raw)) return Math.min(2000, Math.max(250, raw));
+    return 500;
   }
 
   private getInitialDelay() {
     const raw = Number(this.getAttribute("initial-delay"));
-    if (Number.isFinite(raw)) return Math.min(2000, Math.max(1000, raw));
-    return 1500;
+    if (Number.isFinite(raw)) return Math.min(2000, Math.max(250, raw));
+    return 500;
   }
 
   private openWithDelay() {

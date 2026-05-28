@@ -102,6 +102,7 @@ export const muiDocs: MuiDocs = {
         "Ideal for presenting structured data in a compact, scannable format",
         "Supports stacking labels and values for easier readability",
         "Can include expandable sections to reveal more content on demand",
+        "Use col and space to tune slat columns and spacing, including action slats.",
         "Use with SlatGroup when rows need to be presented as a related set, such as wallet activity, settings lists, grouped account records, or transaction histories.",
       ],
     },

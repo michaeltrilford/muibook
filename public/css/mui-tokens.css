@@ -241,6 +241,7 @@ html[data-theme="light"] {
   --border-color: var(--black-opacity-20);
   /* Text */
   --text-color: var(--grey-900);
+  --text-color-info: var(--blue-600);
   --text-color-success: var(--green-600);
   --text-color-warning: var(--orange-600);
   --text-color-error: var(--red-600);
@@ -597,6 +598,7 @@ html[data-theme="dark"] {
   --border-color: var(--white-opacity-20);
   /* Text */
   --text-color: var(--grey-200);
+  --text-color-info: var(--blue-400);
   --text-color-success: var(--green-400);
   --text-color-warning: var(--orange-400);
   --text-color-error: var(--red-400);
@@ -839,7 +841,7 @@ html[data-theme="dark"] {
   --text-line-height-xs: var(--line-height-25);
   --text-line-height-s: var(--line-height-50);
   --text-line-height-m: var(--line-height-100);
-  --text-line-height-l: var(--line-height-200);
+  --text-line-height-l: var(--line-height-225);
   --text-font-size-xs: var(--font-size-25);
   --text-font-size-s: var(--font-size-50);
   --text-font-size-m: var(--font-size-100);

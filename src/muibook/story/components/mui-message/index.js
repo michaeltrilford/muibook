@@ -47,7 +47,7 @@ class storyMessage extends HTMLElement {
 
           <mui-field label="Workspace name">
             <mui-input placeholder="Acme Studio"></mui-input>
-            <mui-form-message slot="message" variant="default">
+            <mui-form-message slot="message">
               Choose a name that your team will recognise.
             </mui-form-message>
           </mui-field>
@@ -66,7 +66,7 @@ class storyMessage extends HTMLElement {
           <br>
           &nbsp;&nbsp;&lt;mui-input placeholder="Acme Studio"&gt;&lt;/mui-input&gt;
           <br>
-          &nbsp;&nbsp;&lt;mui-form-message slot="message" variant="default"&gt;
+          &nbsp;&nbsp;&lt;mui-form-message slot="message"&gt;
           <br>
           &nbsp;&nbsp;&nbsp;&nbsp;Choose a name that your team will recognise.
           <br>

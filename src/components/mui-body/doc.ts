@@ -17,7 +17,7 @@ export const muiDocs: MuiDocs = {
     usage: {
       list: [
         "Use for supporting content or descriptions.",
-        "Use states like Default, Success, Warning and Error to align with feedback or messaging contexts.",
+        "Use states like Default, Info, Success, Warning and Error to align with feedback or messaging contexts.",
         "Match the body size to the layout’s overall design and readability.",
         "Adjust the size by selecting x-small, small, medium or large.",
         "Use before/after slots to compose inline icons, badges, or helper UI with body text.",
@@ -49,6 +49,14 @@ export const muiDocs: MuiDocs = {
           title: "Optional",
           description:
             "Optional text is visually lighter, providing subtle contrast to Standard body text. It comes in four sizes—x-small, small, medium, and large—for tailored readability. Font weights of regular and bold are also available, giving flexibility for emphasis or hierarchy.",
+          image:
+            "",
+        },
+        {
+          key: "info",
+          title: "Info",
+          description:
+            "Provides lightweight informational guidance in body text using a less impactful visual state. Pair with an info icon in the before slot when the copy needs inline context without the weight of a Message or Alert.",
           image:
             "",
         },

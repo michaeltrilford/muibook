@@ -369,6 +369,7 @@ class storySlat extends HTMLElement {
               <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
               <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
             </mui-v-stack>
+            <mui-badge slot="end">PDF</mui-badge>
           </mui-slat>
           
           <story-code-block slot="footer" scrollable>
@@ -382,7 +383,70 @@ class storySlat extends HTMLElement {
             <br />
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;
             <br />
+            &nbsp;&nbsp;&lt;mui-badge slot="end"&gt;PDF&lt;/mui-badge&gt;
+            <br />
             &lt;/mui-slat&gt;
+          </story-code-block>
+
+        </story-card>
+
+        <story-card
+          title="Action: Custom Columns and Space"
+          description="Action slats support col and space for custom column sizing and gap control inside grouped rows."
+          usage="Use col to tune the relationship between start and end content across repeated action rows.|||Use space to control the gap between those columns.">
+
+          <mui-slat-group slot="body">
+            <mui-slat variant="action" col="1fr auto" space="var(--space-800)">
+              <mui-v-stack space="0" slot="start">
+                <mui-body size="medium" weight="bold">Billing Details</mui-body>
+                <mui-body size="small" variant="optional">Manage invoice address and payment metadata</mui-body>
+              </mui-v-stack>
+              <mui-badge slot="end">Optional</mui-badge>
+            </mui-slat>
+            <mui-slat variant="action" col="1fr auto" space="var(--space-800)">
+              <mui-v-stack space="0" slot="start">
+                <mui-body size="medium" weight="bold">Team Seats</mui-body>
+                <mui-body size="small" variant="optional">Review active seats before renewal</mui-body>
+              </mui-v-stack>
+              <mui-badge slot="end" variant="warning">Review</mui-badge>
+            </mui-slat>
+          </mui-slat-group>
+
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-slat-group&gt;
+            <br />
+            <br />
+            &lt;mui-slat
+            <br />
+            &nbsp;&nbsp;variant="action"
+            <br />
+            &nbsp;&nbsp;col="1fr auto"
+            <br />
+            &nbsp;&nbsp;space="var(--space-800)"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;...&lt;/mui-v-stack&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-badge slot="end"&gt;Optional&lt;/mui-badge&gt;
+            <br />
+            &lt;/mui-slat&gt;
+            <br />
+            <br />
+            &lt;mui-slat
+            <br />
+            &nbsp;&nbsp;variant="action"
+            <br />
+            &nbsp;&nbsp;col="1fr auto"
+            <br />
+            &nbsp;&nbsp;space="var(--space-800)"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;...&lt;/mui-v-stack&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-badge slot="end" variant="warning"&gt;Review&lt;/mui-badge&gt;
+            <br />
+            &lt;/mui-slat&gt;
+            <br />
+            <br />
+            &lt;/mui-slat-group&gt;
           </story-code-block>
 
         </story-card>

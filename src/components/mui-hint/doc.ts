@@ -15,7 +15,7 @@ export const muiDocs: MuiDocs = {
         "Use for short contextual help that appears on hover or focus.",
         "Slot the trigger UI into slot='trigger' (icon, badge, text, or custom content).",
         "Set placement to top, bottom, left, or right to control tooltip position.",
-        "Delay is intentional by default: hint open is clamped to 1000-2000ms (default 1500ms) to prevent instant pop.",
+        "Delay is intentional by default: hint open is clamped to 250-2000ms (default 500ms) to prevent instant pop.",
         "Use delay and initial-delay to tune open timing when needed.",
       ],
     },

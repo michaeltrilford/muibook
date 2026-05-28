@@ -20,6 +20,8 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use horizontal rules to separate sections or create visual breaks in flows.",
         "Use vertical rules to divide elements within a row or dense layout.",
+        "Use weight='thin' or weight='thick' for common divider thicknesses.",
+        "Use custom CSS values for weight when a composition needs a specific thickness.",
         "Align with spacing and layout conventions to maintain visual rhythm.",
         "Avoid using as decoration—rules should support clarity and structure.",
       ],

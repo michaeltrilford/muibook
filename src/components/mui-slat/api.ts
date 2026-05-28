@@ -3,8 +3,20 @@ export const muiApi = {
     description: "Arranges leading and trailing row content with optional action and accessory treatments.",
     attributes: [
       { name: "variant", type: { text: '"header" | "row" | "action"' }, description: "Sets the slat layout and interactive presentation." },
-      { name: "col", type: { text: "string" }, default: "1fr 1fr", description: "Sets grid columns using any valid `grid-template-columns` value." },
-      { name: "space", type: { text: "string" }, default: "var(--space-500)", description: "Sets spacing between slat columns using any valid CSS gap value or token." },
+      {
+        name: "col",
+        type: { text: "string" },
+        default: "1fr 1fr; action: minmax(0, 1fr) auto",
+        description:
+          "Sets grid columns using any valid `grid-template-columns` value. Action slats default to `minmax(0, 1fr) auto` so trailing content stays aligned to the end.",
+      },
+      {
+        name: "space",
+        type: { text: "string" },
+        default: "var(--space-500)",
+        description:
+          "Sets spacing between slat columns using any valid CSS gap value or token, including action slats.",
+      },
       { name: "radius", type: { text: '"none"' }, description: "Removes the button radius for grouped action slats." },
     ],
     slots: [

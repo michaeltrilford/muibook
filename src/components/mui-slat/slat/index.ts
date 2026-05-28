@@ -62,7 +62,8 @@ class MuiSlat extends HTMLElement {
 
   render() {
     const isAction = this.variant === "action";
-    const col = this.getAttribute("col") || "1fr 1fr";
+    const col =
+      this.getAttribute("col") || (isAction ? "minmax(0, 1fr) auto" : "1fr 1fr");
     const space = this.getAttribute("space") || "var(--space-500)";
     const hasAccessory = this.hasAccessorySlot();
 
@@ -95,6 +96,14 @@ class MuiSlat extends HTMLElement {
 
       .action::part(text-align) {
         text-align: left;
+      }
+
+      .action::part(grid-template-columns) {
+        grid-template-columns: ${col};
+      }
+
+      .action::part(gap) {
+        gap: ${space};
       }
 
       .action:focus {

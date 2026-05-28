@@ -26,6 +26,7 @@ export const LineHeight25 = 1.5;
 export const LineHeight50 = 1.5;
 export const LineHeight100 = 1.5;
 export const LineHeight200 = 1.33333333;
+export const LineHeight225 = 1.66666667;
 export const LineHeight300 = 1.14285714;
 export const LineHeight400 = 1.5;
 export const LineHeight500 = 1.33333333;

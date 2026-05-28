@@ -14,6 +14,7 @@ class MuiFormMessage extends HTMLElement {
   private getIconColor(variant: string): string {
     const variantColorMap: Record<string, string> = {
       optional: "var(--text-color-optional)",
+      info: "var(--text-color-info)",
       warning: "var(--text-color-warning)",
       success: "var(--text-color-success)",
       error: "var(--text-color-error)",
@@ -65,6 +66,7 @@ class MuiFormMessage extends HTMLElement {
     const size = this.getAttribute("size") || "small";
     const weight = this.getAttribute("weight") || "regular";
     const variant = this.getAttribute("variant") || "optional";
+    const hasAfterSlot = this.querySelector('[slot="after"]') !== null;
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
@@ -76,14 +78,25 @@ class MuiFormMessage extends HTMLElement {
           margin-inline-start: var(--stroke-size-100);
           margin-block-start: var(--space-200);
         }
+        .slot-wrapper {
+          display: inline-flex;
+        }
       </style>
 
       <mui-body size="${size}" weight="${weight}" variant="${variant}">
-        <slot slot="before" name="before">
-          <mui-icon-info id="default-before-icon" size="${this.getIconSize(size)}" color="${this.getIconColor(variant)}"></mui-icon-info>
-        </slot>
+        <span slot="before" class="slot-wrapper">
+          <slot name="before">
+            <mui-icon-info id="default-before-icon" size="${this.getIconSize(size)}" color="${this.getIconColor(variant)}"></mui-icon-info>
+          </slot>
+        </span>
         <slot></slot>
-        <slot slot="after" name="after"></slot>
+        ${
+          hasAfterSlot
+            ? `<span slot="after" class="slot-wrapper">
+                <slot name="after"></slot>
+              </span>`
+            : ""
+        }
       </mui-body>
     `;
 

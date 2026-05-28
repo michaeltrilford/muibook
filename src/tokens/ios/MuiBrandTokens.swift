@@ -2,7 +2,7 @@
 // MuiBrandTokens.swift
 //
 
-// Don't edit directly • Generated on Thu, 28 May 2026 05:50:20 GMT • muibook.com
+// Don't edit directly • Generated on Thu, 28 May 2026 12:53:59 GMT • muibook.com
 
 import UIKit
 
@@ -29,6 +29,7 @@ public class BrandTokens {
     public static let lineHeight_50 = CGFloat(1.5)
     public static let lineHeight_100 = CGFloat(1.5)
     public static let lineHeight_200 = CGFloat(1.333)
+    public static let lineHeight_225 = CGFloat(1.667)
     public static let lineHeight_300 = CGFloat(1.143)
     public static let lineHeight_400 = CGFloat(1.5)
     public static let lineHeight_500 = CGFloat(1.333)

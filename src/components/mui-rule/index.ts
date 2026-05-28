@@ -36,9 +36,20 @@ class MuiRule extends HTMLElement {
     this.toggleAttribute("in-drawer", inDrawer);
   }
 
+  private getRuleWeight() {
+    const weight = this.getAttribute("weight") || "var(--stroke-size-100)";
+
+    const weightMap: Record<string, string> = {
+      thin: "var(--stroke-size-100)",
+      thick: "var(--stroke-size-200)",
+    };
+
+    return weightMap[weight] || weight;
+  }
+
   updateStyles() {
     const length = this.getAttribute("length") || "100%";
-    const weight = this.getAttribute("weight") || "1px";
+    const weight = this.getRuleWeight();
 
     const styles = /*css*/ `
       :host {

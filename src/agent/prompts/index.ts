@@ -72,7 +72,7 @@ LAYOUT:
 - Grid: col, space, padding, alignX, alignY, height, width, fill, viewport, style
 - Container: size (small|medium|large), center, style
 - Responsive: breakpoint, breakpoint-low, breakpoint-high; slots showBelow/showMiddle/showAbove
-- Rule: length, weight, direction (horizontal|vertical)
+- Rule: length, weight (thin|thick|CSS size), direction (horizontal|vertical)
 
 SURFACES:
 - Card: use CardBody for card content

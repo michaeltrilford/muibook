@@ -53,7 +53,7 @@ class storyBody extends HTMLElement {
       {
         name: "variant",
         type: "string",
-        options: "default, optional, success, warning, error",
+        options: "default, optional, info, success, warning, error",
         default: "default",
         description: "Set the mood of the text for feedback states.",
       },
@@ -63,6 +63,20 @@ class storyBody extends HTMLElement {
         options: "regular, medium, bold",
         default: "regular",
         description: "Set the weight of the body text.",
+      },
+      {
+        name: "truncate",
+        type: "boolean",
+        options: "truncate",
+        default: "",
+        description: "Clamp text to one line with ellipsis when the available width is constrained.",
+      },
+      {
+        name: "clamp",
+        type: "number",
+        options: "1, 2, 3...",
+        default: "",
+        description: "Limit text to a set number of lines. Ignored when truncate is present.",
       },
       {
         name: "style",
@@ -179,6 +193,10 @@ class storyBody extends HTMLElement {
                   <mui-body>Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
+                  <mui-heading size="4">Info</mui-heading>
+                  <mui-body variant="info">Helpful context for this section.</mui-body>
+                </div>
+                <div>
                   <mui-heading size="4">Success</mui-heading>
                   <mui-body variant="success">Risus Mollis Dapibus</mui-body>
                 </div>
@@ -196,7 +214,9 @@ class storyBody extends HTMLElement {
             <story-code-block slot="footer" scrollable>
               &lt;mui-body variant="optional"&gt; ... &lt;/mui-body&gt;
               <br />
-               &lt;mui-body variant="success"&gt; ... &lt;/mui-body&gt;
+              &lt;mui-body variant="info"&gt; ... &lt;/mui-body&gt;
+              <br />
+              &lt;mui-body variant="success"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body variant="warning"&gt; ... &lt;/mui-body&gt;
               <br />
@@ -284,7 +304,7 @@ class storyBody extends HTMLElement {
             <div slot="body">
               <mui-v-stack space="var(--space-300)" alignx="start">
                 <div style="max-width: 28rem;">
-                  <mui-body size="x-small" variant="optional">
+                  <mui-body size="x-small" variant="info">
                     <mui-icon-info slot="before"></mui-icon-info>
                     X-small wrapping text keeps icon alignment stable when the content moves to a second line in constrained widths.
                     <mui-hint slot="after" placement="top" style="display: inline-flex;">
@@ -327,7 +347,7 @@ class storyBody extends HTMLElement {
             </div>
 
             <story-code-block slot="footer" scrollable>
-              &lt;mui-body size=&quot;x-small&quot; variant=&quot;optional&quot;&gt;...&lt;/mui-body&gt;
+              &lt;mui-body size=&quot;x-small&quot; variant=&quot;info&quot;&gt;...&lt;/mui-body&gt;
               <br>
               &lt;mui-body size=&quot;small&quot; variant=&quot;warning&quot;&gt;
               <br>
@@ -370,6 +390,69 @@ class storyBody extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;Success details
               <br>
               &nbsp;&nbsp;&lt;/mui-hint&gt;
+              <br>
+              &lt;/mui-body&gt;
+            </story-code-block>
+
+          </story-card>
+
+          <story-card title="Overflow" description="Use truncate for one-line overflow and clamp for bounded multi-line copy.">
+
+            <div slot="body">
+              <mui-v-stack space="var(--space-400)" alignx="start">
+                <div style="width: min(100%, 28rem); border: var(--border-thin); border-radius: var(--radius-200); padding: var(--space-300);">
+                  <mui-v-stack space="var(--space-100)">
+                    <mui-heading size="5" level="3">Truncate</mui-heading>
+                    <mui-body truncate>
+                      Subscription analytics and lifecycle reporting for enterprise workspaces with a long account name.
+                    </mui-body>
+                  </mui-v-stack>
+                </div>
+
+                <div style="width: min(100%, 28rem); border: var(--border-thin); border-radius: var(--radius-200); padding: var(--space-300);">
+                  <mui-v-stack space="var(--space-100)">
+                    <mui-heading size="5" level="3">Clamp</mui-heading>
+                    <mui-body clamp="2">
+                      Subscription analytics and lifecycle reporting for enterprise workspaces. This copy is intentionally longer so it can be reviewed as a two-line clamp inside a constrained layout.
+                    </mui-body>
+                  </mui-v-stack>
+                </div>
+
+                <div style="width: min(100%, 28rem); border: var(--border-thin); border-radius: var(--radius-200); padding: var(--space-300);">
+                  <mui-v-stack space="var(--space-100)">
+                    <mui-heading size="5" level="3">Clamp With Slots</mui-heading>
+                    <mui-body clamp="2" variant="info">
+                      <mui-icon-info slot="before"></mui-icon-info>
+                      Slotted icons and badges remain visible while only the text content is clamped inside the body component.
+                      <mui-badge slot="after">Info</mui-badge>
+                    </mui-body>
+                  </mui-v-stack>
+                </div>
+              </mui-v-stack>
+            </div>
+
+            <story-code-block slot="footer" scrollable>
+              &lt;mui-body truncate&gt;
+              <br>
+              &nbsp;&nbsp;{long single-line content}
+              <br>
+              &lt;/mui-body&gt;
+              <br>
+              <br>
+              &lt;mui-body clamp=&quot;2&quot;&gt;
+              <br>
+              &nbsp;&nbsp;{long multi-line content}
+              <br>
+              &lt;/mui-body&gt;
+              <br>
+              <br>
+              &lt;mui-body clamp=&quot;2&quot; variant=&quot;info&quot;&gt;
+              <br>
+              &nbsp;&nbsp;&lt;mui-icon-info slot=&quot;before&quot;&gt;&lt;/mui-icon-info&gt;
+              <br>
+              &nbsp;&nbsp;{long multi-line content}
+              <br>
+              &nbsp;&nbsp;&lt;mui-badge slot=&quot;after&quot;&gt;Info&lt;/mui-badge&gt;
               <br>
               &lt;/mui-body&gt;
             </story-code-block>

@@ -2,7 +2,7 @@ import { getPartMap } from "../../utils/part-map";
 
 class MuiBody extends HTMLElement {
   static get observedAttributes() {
-    return ["size", "weight", "variant"];
+    return ["size", "weight", "variant", "truncate", "clamp"];
   }
 
   constructor() {
@@ -29,19 +29,31 @@ class MuiBody extends HTMLElement {
     if (!this.shadowRoot) return;
 
     const partMap = getPartMap("text", "spacing", "layout", "visual");
+    const lineClamp = this.getLineClamp();
 
     this.shadowRoot.innerHTML = /*html*/ `
     <style>
-      :host { display: block; }
+      :host {
+        display: block;
+        --body-line-clamp: ${lineClamp};
+      }
       :host([has-before]),
       :host([has-after]) {
         display: inline-flex;
+      }
+
+      :host([truncate]) {
+        display: block;
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
       }
 
       :host p {
         color: var(--text-color);
         margin: var(--space-000);
         display: block;
+        min-width: 0;
         width: 100%;
       }
 
@@ -55,7 +67,29 @@ class MuiBody extends HTMLElement {
       }
 
       .content {
+        max-width: 100%;
         min-width: 0;
+      }
+
+      :host([truncate]) p,
+      :host([clamp]) p {
+        max-width: 100%;
+      }
+
+      :host([truncate]) .content {
+        display: block;
+        max-width: 100%;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      :host([clamp]:not([truncate])) .content {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--body-line-clamp);
       }
 
       ::slotted([slot="before"]),
@@ -78,7 +112,7 @@ class MuiBody extends HTMLElement {
 
       :host([size="large"]) ::slotted([slot="before"]),
       :host([size="large"]) ::slotted([slot="after"]) {
-        margin-top: var(--body-inline-icon-offset-large, var(--body-inline-icon-offset, var(--stroke-size-050)));
+        margin-top: var(--body-inline-icon-offset-large, var(--body-inline-icon-offset, var(--stroke-size-300)));
       }
 
       :host([size="x-small"]) p {
@@ -114,6 +148,9 @@ class MuiBody extends HTMLElement {
         color: var(--text-color-optional);
       }
 
+      :host([variant="info"]) p {
+        color: var(--text-color-info);
+      }
       :host([variant="success"]) p {
         color: var(--text-color-success);
       }
@@ -129,6 +166,9 @@ class MuiBody extends HTMLElement {
       }
       :host([variant="optional"]) ::slotted(.mui-icon) {
         fill: var(--text-color-optional);
+      }
+      :host([variant="info"]) ::slotted(.mui-icon) {
+        fill: var(--text-color-info);
       }
       :host([variant="success"]) ::slotted(.mui-icon) {
         fill: var(--text-color-success);
@@ -150,6 +190,11 @@ class MuiBody extends HTMLElement {
     `;
 
     this.setupSlotBehavior();
+  }
+
+  private getLineClamp() {
+    const value = Number(this.getAttribute("clamp"));
+    return Number.isFinite(value) && value > 0 ? Math.floor(value) : 2;
   }
 
   private setupSlotBehavior() {

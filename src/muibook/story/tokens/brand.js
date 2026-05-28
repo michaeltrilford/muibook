@@ -72,6 +72,7 @@ class tokensBrand extends HTMLElement {
             <story-token-slat slot="body" token="--line-height-50" variant="line-height" font-size="--font-size-50"></story-token-slat>
             <story-token-slat slot="body" token="--line-height-100" variant="line-height" font-size="--font-size-100"></story-token-slat>
             <story-token-slat slot="body" token="--line-height-200" variant="line-height" font-size="--font-size-200"></story-token-slat>
+            <story-token-slat slot="body" token="--line-height-225" variant="line-height" font-size="--font-size-200"></story-token-slat>
             <story-token-slat slot="body" token="--line-height-300" variant="line-height" font-size="--font-size-300"></story-token-slat>
             <story-token-slat slot="body" token="--line-height-400" variant="line-height" font-size="--font-size-400"></story-token-slat>
             <story-token-slat slot="body" token="--line-height-500" variant="line-height" font-size="--font-size-500"></story-token-slat>
