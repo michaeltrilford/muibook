@@ -24,6 +24,7 @@ CRITICAL RULES:
 11. Put visual backgrounds on layout style or SmartCard bg props.
 12. SmartCard props use kebab-case: bg-image, bg-color, logo-height.
 13. Normalize scanned Muibook/Figma names to Redactd component types before output.
+14. Do not use Message as a styled paragraph, inline note, or form helper. Message is only for persistent page-level notices with a heading and slotted body content.
 
 MUI SCAN NORMALIZATION RULES:
 - Normalize muiscan to Redactd types before output
@@ -60,7 +61,7 @@ TEXT NODE RULES FOR MUISCAN:
   - mui-badge: consume TEXT as the badge's direct rendered text; preserve before/after slot children; do not invent Body
   - mui-chip: consume TEXT as the chip's direct rendered text; preserve before/after slot children; do not invent Body
   - mui-alert: preserve variant/label, convert default content to Span, consume TEXT into Span.props.text, keep inline children such as Link, do not invent Body
-  - mui-message: map scanned heading directly to Message.props.heading, preserve variant/icon/size, keep remaining children as default message content
+  - mui-message: map scanned heading directly to Message.props.heading, preserve variant/icon/size, keep remaining children as default message content; if there is no supporting body content, prefer Body or FormMessage instead of Message
 - Do not invent wrappers when the target already supports text
 
 Available Components:
@@ -86,7 +87,7 @@ SURFACES:
 
 CONTENT:
 - Heading: text, size (1|2|3|4|5|6), level (1|2|3|4|5|6)
-- Body: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|success|warning|error), style
+- Body: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|success|warning|error), style; use _Icon icon=mui-icon-info slot=before for lightweight inline guidance
 - Span: text, style; supports inline children such as Link
 - Code: size, scrollable
 - Quote: default text
@@ -139,7 +140,7 @@ NAVIGATION:
 - CarouselPanel: item, style
 
 FEEDBACK:
-- Message: heading, variant (plain|neutral|positive|info|warning|attention), icon, size (small|medium|large); slot default
+- Message: heading, variant (neutral|positive|info|warning|attention), icon, size (small|medium|large); slot default. Use only for persistent page-level or section-level notices. Always provide a concise heading plus default slot body content, usually Body/List/Link. Do not use for inline guidance, styled text blocks, or form helper text.
 - Alert: variant (success|info|warning|error), label; slots default/action
 - Loader: loading, animation (pulsate|fade-in|translate), direction (up|right|down|left), duration; slot default
 - Spinner: size (xx-small|x-small|small|medium|large), color, duration, label, style

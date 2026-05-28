@@ -8,8 +8,8 @@ export const muiApi = {
       { name: "aligny", type: { text: "string" }, default: "flex-start", description: "Vertical alignment of children, mapped to flex `align-items`." },
       { name: "height", type: { text: "string" }, description: "Sets the host height. Accepts any valid CSS height value, including tokens." },
       { name: "width", type: { text: "string" }, description: "Sets the host width. Accepts any valid CSS width value, including tokens." },
-      { name: "viewport", type: { text: "boolean" }, default: "false", description: "Sets stack height to `100dvh` for viewport-height layouts." },
-      { name: "fill", type: { text: "boolean" }, default: "false", description: "Sets available width and height to `100%` of the parent layout." },
+      { name: "viewport", type: { text: "boolean" }, default: "false", description: "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region." },
+      { name: "fill", type: { text: "boolean" }, default: "false", description: "Sets width and height to `100%` when the parent supplies a clearly bounded layout region." },
     ],
     slots: [{ name: "", description: "Content arranged horizontally inside the stack." }],
     cssProperties: [
@@ -26,8 +26,8 @@ export const muiApi = {
       { name: "aligny", type: { text: "string" }, default: "normal", description: "Vertical alignment of children, mapped to grid `align-items`." },
       { name: "height", type: { text: "string" }, description: "Sets the host height. Accepts any valid CSS height value, including tokens." },
       { name: "width", type: { text: "string" }, description: "Sets the host width. Accepts any valid CSS width value, including tokens." },
-      { name: "viewport", type: { text: "boolean" }, default: "false", description: "Sets stack height to `100dvh` for viewport-height layouts." },
-      { name: "fill", type: { text: "boolean" }, default: "false", description: "Sets available width and height to `100%` of the parent layout." },
+      { name: "viewport", type: { text: "boolean" }, default: "false", description: "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region." },
+      { name: "fill", type: { text: "boolean" }, default: "false", description: "Sets width and height to `100%` when the parent supplies a clearly bounded layout region." },
     ],
     slots: [{ name: "", description: "Content arranged vertically inside the stack." }],
     cssProperties: [

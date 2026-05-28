@@ -1,7 +1,15 @@
 export const keywords: Record<string, string[]> = {
   // FEEDBACK
   alert: ["alert", "success", "info", "warning", "error", "message", "banner", "notification"],
-  message: ["message", "notice", "notification", "alert", "info", "positive", "neutral", "warning", "attention"],
+  message: [
+    "page message",
+    "page notice",
+    "persistent notice",
+    "persistent message",
+    "system notice",
+    "status notice",
+    "message banner",
+  ],
   loader: ["loader", "loading", "skeleton", "placeholder", "shimmer", "pulse", "fade", "spinner"],
   spinner: ["spinner", "loading", "busy", "indicator", "progress"],
   progress: ["progress", "bar", "loading", "completion", "percent", "syncing", "pending"],

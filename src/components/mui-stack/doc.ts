@@ -24,6 +24,9 @@ export const muiDocs: MuiDocs = {
         "Supports responsive layouts by changing direction or spacing at breakpoints.",
         "Recognise it as a developer layout tool rather than a design asset.",
         "Use the space design token to maintain consistent gap spacing.",
+        "Use viewport on a top-level stack that owns the viewport-height region.",
+        "Use fill only when the parent provides a clearly bounded width and height.",
+        "For nested layouts that share height with headers, drawers, or sibling regions, define the page layout explicitly rather than relying on viewport or fill.",
       ],
     },
 

@@ -1,14 +1,21 @@
 export const muiApi = {
   "mui-message": {
-    description: "Presents longer-form guidance or status content with an intent icon, heading, and supporting body content.",
+    description:
+      "Presents a persistent page-level notification with an intent icon, heading, and slotted supporting body content. Use Form Message for form guidance and Body with an info icon for lightweight inline notes.",
     attributes: [
-      { name: "heading", type: { text: "string" }, default: "Heading...", description: "Sets the message heading text." },
+      {
+        name: "heading",
+        type: { text: "string" },
+        default: "Heading...",
+        description: "Sets the concise message title. Do not put full body copy here; supporting content belongs in the default slot.",
+      },
       { name: "icon", type: { text: "string" }, description: "Overrides the default variant icon with a `mui-icon-*` tag name." },
       {
         name: "variant",
         type: { text: '"neutral" | "positive" | "info" | "warning" | "attention"' },
         default: "neutral",
-        description: "Sets the message intent style and default icon.",
+        description:
+          "Sets the page-level intent style and default icon. Reserve positive, warning, and attention for meaningful status or severity, not routine inline emphasis.",
       },
       {
         name: "size",
@@ -17,7 +24,13 @@ export const muiApi = {
         description: "Controls the message density and typography scale.",
       },
     ],
-    slots: [{ name: "", description: "Supports body copy, lists, links, and related message content." }],
+    slots: [
+      {
+        name: "",
+        description:
+          "Required supporting content below the heading. Use `mui-body`, `mui-list`, `mui-link`, or related content; avoid leaving the slot empty.",
+      },
+    ],
     cssProperties: [
       { name: "--message-padding", description: "Controls the message inset spacing." },
       { name: "--message-gap-horizontal", description: "Controls horizontal spacing between icon and content." },

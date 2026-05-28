@@ -19,24 +19,66 @@ class storyMessage extends HTMLElement {
 
       <story-card
         title="Default" 
-        description="The default uses the neutral state offers a subtle, neutral tone, ideal for conveying general information without drawing undue attention."
+        description="Use Message as a persistent page-level notice with a heading and slotted body content."
         accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
       >
-        <mui-message slot="body">
-          <mui-body>Body content...</mui-body>
+        <mui-message heading="Workspace notice" slot="body">
+          <mui-body>This notice applies to the current workspace and remains visible while the status is relevant.</mui-body>
         </mui-message>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-message&gt;
+          &lt;mui-message heading="Workspace notice"&gt;
           <br>
-          &nbsp;&nbsp;&lt;mui-body&gt;Body content...&lt;/mui-body&gt;
+          &nbsp;&nbsp;&lt;mui-body&gt;This notice applies to the current workspace and remains visible while the status is relevant.&lt;/mui-body&gt;
           <br>
           &lt;/mui-message&gt;
         </story-code-block>
       </story-card>
 
+      <story-card
+        title="Use Lighter Guidance"
+        description="For inline context or form helper copy, use lighter components instead of Message."
+        usage="Use Body with an info icon for lightweight inline guidance.|||Use Form Message inside Field for form guidance, validation, or status copy."
+      >
+        <mui-v-stack slot="body" space="var(--space-400)">
+          <mui-body size="small">
+            <mui-icon-info slot="before"></mui-icon-info>
+            Use this pattern for lightweight inline guidance.
+          </mui-body>
+
+          <mui-field label="Workspace name">
+            <mui-input placeholder="Acme Studio"></mui-input>
+            <mui-form-message slot="message" variant="default">
+              Choose a name that your team will recognise.
+            </mui-form-message>
+          </mui-field>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-body size="small"&gt;
+          <br>
+          &nbsp;&nbsp;&lt;mui-icon-info slot="before"&gt;&lt;/mui-icon-info&gt;
+          <br>
+          &nbsp;&nbsp;Use this pattern for lightweight inline guidance.
+          <br>
+          &lt;/mui-body&gt;
+          <br>
+          <br>
+          &lt;mui-field label="Workspace name"&gt;
+          <br>
+          &nbsp;&nbsp;&lt;mui-input placeholder="Acme Studio"&gt;&lt;/mui-input&gt;
+          <br>
+          &nbsp;&nbsp;&lt;mui-form-message slot="message" variant="default"&gt;
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;Choose a name that your team will recognise.
+          <br>
+          &nbsp;&nbsp;&lt;/mui-form-message&gt;
+          <br>
+          &lt;/mui-field&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card 
         title="Slot: Body text" 
-        description="Content is customised via the Slot, which accepts the Body component or any valid child elements."
+        description="Supporting content belongs in the default slot; the heading should stay short."
       >
         <mui-message heading="Message heading" slot="body">
           <mui-body>This is an informational message about updates.</mui-body>
@@ -52,7 +94,7 @@ class storyMessage extends HTMLElement {
 
       <story-card 
         title="Slot: List" 
-        description="Content is customised via the Slot, which accepts the List component or any valid child elements."
+        description="Use list content when the page-level notice needs several supporting points."
       >
 
         <mui-message heading="Message heading" slot="body">
@@ -166,8 +208,8 @@ class storyMessage extends HTMLElement {
 
       <story-card 
         title="Variant: Positive" 
-        description="The Positive state conveys successful actions, achievements, or confirmations, fostering a sense of accomplishment and satisfaction." 
-        usage="Indicate successful form submissions or completed tasks||| Acknowledge user achievements or milestones."
+        description="The Positive state conveys durable page-level success or completion status."
+        usage="Use for persistent success notices that apply to the page or workflow.|||Use lighter Body or Form Message patterns for small inline confirmations."
         usageLink="https://guides.muibook.com/message"
         accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
       >
@@ -194,8 +236,8 @@ class storyMessage extends HTMLElement {
 
       <story-card 
         title="Variant: Info" 
-        description="The Info state provides informative messages that help users understand system status or feature updates, guiding them without urgency." 
-        usage="Use to announce new features | enhancements | system changes||| Appropriate for onboarding tips or contextual help."
+        description="The Info state provides page-level system information, feature changes, or workflow context."
+        usage="Use for durable page-level information.|||For inline context, use Body size='small' with mui-icon-info in slot='before'."
         usageLink="https://guides.muibook.com/message"
         accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
       >
@@ -222,8 +264,8 @@ class storyMessage extends HTMLElement {
 
       <story-card
         title="Variant: Warning"
-        description="The Warning state alerts users to potential issues that may require attention, helping prevent errors or misunderstandings." 
-        usage="Notify users of actions that could lead to undesirable outcomes; like unsaved changes||| Warn about system limitations or upcoming expirations."
+        description="The Warning state alerts users to page-level issues that may require attention."
+        usage="Use for unsaved changes, action consequences, limitations, or expirations.|||Use Form Message for field-specific warnings."
         usageLink="https://guides.muibook.com/message"
         accessibility="ARIA-live of ASSERTIVE is set on this variant||| Role of ALERT is set on this variant."
       >
@@ -250,8 +292,8 @@ class storyMessage extends HTMLElement {
 
       <story-card
         title="Variant: Attention"
-        description="The Attention state demands immediate user focus, highlighting critical issues that require prompt action." 
-        usage='Alert users to urgent problems; such as system errors or security breaches||| Use for time-sensitive notifications that impact user experience.'
+        description="The Attention state demands immediate focus for critical page-level issues."
+        usage='Use for urgent problems such as system errors, security issues, or time-sensitive interruptions.|||Do not use Attention for ordinary content emphasis.'
         usageLink="https://guides.muibook.com/message"
         accessibility="ARIA-live of ASSERTIVE is set on this variant||| Role of ALERT is set on this variant."
       >

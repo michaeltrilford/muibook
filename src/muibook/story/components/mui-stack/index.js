@@ -472,7 +472,7 @@ class storyStack extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Vertical: Viewport With Nested Stacks" description="Only the stack using viewport takes viewport height; nested stacks retain intrinsic content height.">
+      <story-card title="Vertical: Viewport With Nested Stacks" description="Use viewport on a stack that owns the viewport region. Nested stacks remain content-sized; shared header or panel layouts should define their height structure explicitly.">
         ${VStackViewportChildren}
         <story-code-block slot="footer" scrollable>
           &lt;mui-v-stack viewport aligny="start" padding="var(--space-300)"&gt;
