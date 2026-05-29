@@ -33,9 +33,9 @@ export const muiApi = {
       },
       {
         name: "stroke-ring-size",
-        type: { text: '"050" | "100" | "200" | "300" | "400" | "500" | string' },
-        default: "050",
-        description: "Ring stroke width when `stroke=\"ring\"` is used. Token values map to `--stroke-size-*`; use `050` by default and increase only when more contrast is needed.",
+        type: { text: '"100" | "200" | "300" | "400" | "500" | string' },
+        default: "100",
+        description: "Ring stroke width when `stroke=\"ring\"` is used. Token values map to `--stroke-size-*`; use `100` by default and increase only when more contrast is needed.",
       },
       {
         name: "size",

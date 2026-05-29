@@ -111,9 +111,9 @@ class storyButton extends HTMLElement {
       {
         name: "stroke-ring-size",
         type: "string",
-        options: "050, 100, 200, 300, 400, 500, valid CSS value",
-        default: "050",
-        description: "Set the ring shadow width when stroke is set to ring. Use 050 by default; increase only when more contrast is needed.",
+        options: "100, 200, 300, 400, 500, valid CSS value",
+        default: "100",
+        description: "Set the ring shadow width when stroke is set to ring. Use 100 by default; increase only when more contrast is needed.",
       },
       {
         name: "style",
@@ -636,8 +636,8 @@ class storyButton extends HTMLElement {
           Use stroke="ring" to draw the button stroke with an inset shadow instead of a physical border.|||
           Prefer ring when you want to adjust the visible stroke without changing the button height, padding, or alignment against adjacent controls.|||
           Pair stroke="ring" with inputs or selects when you want an action to visually align with a thinner form-control stroke.|||
-          Use stroke-ring-size="050" for the default hairline ring. This maps to var(--stroke-size-050).|||
-          Increase stroke-ring-size when the ring needs more visual contrast; supported token values are 050 through 500.
+          Use stroke-ring-size="100" for the default ring. This maps to var(--stroke-size-100).|||
+          Increase stroke-ring-size when the ring needs more visual contrast; supported token values are 100 through 500.
         '
       >
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
@@ -672,7 +672,6 @@ class storyButton extends HTMLElement {
           </mui-v-stack>
           <mui-rule direction="horizontal" length="100%"></mui-rule>
           <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
-            <mui-button variant="secondary" stroke="ring" stroke-ring-size="050">050</mui-button>
             <mui-button variant="secondary" stroke="ring" stroke-ring-size="100">100</mui-button>
             <mui-button variant="secondary" stroke="ring" stroke-ring-size="200">200</mui-button>
             <mui-button variant="secondary" stroke="ring" stroke-ring-size="300">300</mui-button>

@@ -114,7 +114,7 @@ class MuiLink extends HTMLElement {
     }
 
     const tokenValue = raw.startsWith("stroke-size-") ? raw.replace("stroke-size-", "") : raw;
-    const isStrokeToken = /^(050|100|200|300|400|500)$/.test(tokenValue);
+    const isStrokeToken = /^(100|200|300|400|500)$/.test(tokenValue);
     this.style.setProperty("--action-ring-size", isStrokeToken ? `var(--stroke-size-${tokenValue})` : raw);
   }
 
@@ -468,7 +468,7 @@ class MuiLink extends HTMLElement {
         border: none;
         box-shadow: var(
           --action-ring-shadow,
-          inset 0 0 0 var(--action-ring-size, var(--stroke-size-050)) var(--action-ring-color)
+          inset 0 0 0 var(--action-ring-size, var(--stroke-size-100)) var(--action-ring-color)
         );
       }
 
@@ -476,7 +476,7 @@ class MuiLink extends HTMLElement {
         border: none;
         box-shadow: var(
           --action-ring-shadow-hover,
-          inset 0 0 0 var(--action-ring-size, var(--stroke-size-050)) var(--action-ring-color-hover)
+          inset 0 0 0 var(--action-ring-size, var(--stroke-size-100)) var(--action-ring-color-hover)
         );
       }
 
@@ -484,7 +484,7 @@ class MuiLink extends HTMLElement {
         border: none;
         box-shadow: var(
           --action-ring-shadow-focus,
-          inset 0 0 0 var(--action-ring-size, var(--stroke-size-050)) var(--action-ring-color-focus)
+          inset 0 0 0 var(--action-ring-size, var(--stroke-size-100)) var(--action-ring-color-focus)
         );
       }
 
@@ -492,7 +492,7 @@ class MuiLink extends HTMLElement {
         border: none;
         box-shadow: var(
           --action-ring-shadow-disabled,
-          inset 0 0 0 var(--action-ring-size, var(--stroke-size-050)) var(--action-ring-color-disabled)
+          inset 0 0 0 var(--action-ring-size, var(--stroke-size-100)) var(--action-ring-color-disabled)
         );
       }
 

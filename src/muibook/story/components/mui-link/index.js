@@ -128,8 +128,8 @@ class storyLink extends HTMLElement {
       {
         name: "stroke-ring-size",
         type: "string",
-        options: "050, 100, 200, 300, 400, 500, valid CSS value",
-        default: "050",
+        options: "100, 200, 300, 400, 500, valid CSS value",
+        default: "100",
         description: "Set the ring shadow width when stroke is set to ring. Token values map to stroke-size tokens.",
       },
       {
@@ -515,7 +515,7 @@ class storyLink extends HTMLElement {
         usage='
           Use stroke="ring" to draw the action-style link stroke with an inset shadow instead of a physical border.|||
           Pair ring-stroked links with ring-stroked buttons when they need to share the same visual border treatment.|||
-          Use stroke-ring-size="050" for the default hairline ring, and increase only when more contrast is needed.
+          Use stroke-ring-size="100" for the default ring, and increase only when more contrast is needed.
         '
       >
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
@@ -530,7 +530,6 @@ class storyLink extends HTMLElement {
           <mui-link variant="tertiary" stroke="ring">Tertiary</mui-link>
           <mui-link variant="attention" stroke="ring">Attention</mui-link>
           <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
-            <mui-link variant="secondary" stroke="ring" stroke-ring-size="050">050</mui-link>
             <mui-link variant="secondary" stroke="ring" stroke-ring-size="100">100</mui-link>
             <mui-link variant="secondary" stroke="ring" stroke-ring-size="200">200</mui-link>
             <mui-link variant="secondary" stroke="ring" stroke-ring-size="300">300</mui-link>

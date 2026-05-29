@@ -37,13 +37,15 @@ class storyMessage extends HTMLElement {
       <story-card
         title="Use Lighter Guidance"
         description="For inline context or form helper copy, use lighter components instead of Message."
-        usage="Use Body with an info icon for lightweight inline guidance.|||Use Form Message inside Field for form guidance, validation, or status copy."
+        usage="Use Body with an info icon for lightweight inline guidance.|||Use Form Message inside Field for form guidance, validation, or status copy.|||When Form Message is used inside mui-field it inherits size='medium'."
       >
-        <mui-v-stack slot="body" space="var(--space-400)">
-          <mui-body size="small">
+        <mui-v-stack slot="body" space="var(--space-600)" style="padding: var(--space-600)">
+          <mui-body variant="optional">
             <mui-icon-info slot="before"></mui-icon-info>
             Use this pattern for lightweight inline guidance.
           </mui-body>
+
+          <mui-rule style="opacity: 0.5"></mui-rule>
 
           <mui-field label="Workspace name">
             <mui-input placeholder="Acme Studio"></mui-input>
@@ -53,7 +55,7 @@ class storyMessage extends HTMLElement {
           </mui-field>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-body size="small"&gt;
+          &lt;mui-body variant="optional"&gt;
           <br>
           &nbsp;&nbsp;&lt;mui-icon-info slot="before"&gt;&lt;/mui-icon-info&gt;
           <br>

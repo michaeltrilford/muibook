@@ -14,6 +14,7 @@ class MuiDropdown extends HTMLElement {
 
       // Clear open dropdown if needed
       if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
+      this.button?.setAttribute("aria-expanded", "false");
 
       // Fire event
       this.dispatchEvent(
@@ -43,8 +44,15 @@ class MuiDropdown extends HTMLElement {
       this.closeWithAnimation();
       this.menu?.setAttribute("inert", "true");
       if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
+      this.button?.setAttribute("aria-expanded", "false");
       this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
     }
+  };
+
+  private handleActionKeyDown = (event: KeyboardEvent) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    this.toggleMenu(event);
   };
 
   static get observedAttributes() {
@@ -86,13 +94,6 @@ class MuiDropdown extends HTMLElement {
     }
 
     this.menu?.addEventListener("focusout", this.handleFocusOut);
-
-    // Get the slotted trigger button
-    const actionSlot = this.shadowRoot?.querySelector('slot[name="action"]') as HTMLSlotElement | null;
-    const assignedActionNodes = actionSlot?.assignedNodes({ flatten: true }) || [];
-    this.button = assignedActionNodes.find(
-      (n) => n instanceof HTMLElement && n.tagName.toLowerCase() === "mui-button"
-    ) as HTMLElement | null;
 
     // Force variant="tertiary" on all default slot buttons (dropdown options)
     const defaultSlot = this.shadowRoot?.querySelector("slot:not([name])") as HTMLSlotElement | null;
@@ -143,7 +144,31 @@ class MuiDropdown extends HTMLElement {
     this.closeMenu = this.closeMenu.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
 
-    this.button?.addEventListener("click", this.toggleMenu);
+    // Get the slotted trigger action. Button is still supported, but other
+    // components such as Status can also act as the visible trigger.
+    const actionSlot = this.shadowRoot?.querySelector('slot[name="action"]') as HTMLSlotElement | null;
+    const syncActionTrigger = () => {
+      this.button?.removeEventListener("click", this.toggleMenu);
+      this.button?.removeEventListener("keydown", this.handleActionKeyDown);
+
+      const assignedActionNodes = actionSlot?.assignedElements({ flatten: true }) || [];
+      this.button = assignedActionNodes.find((node) => node instanceof HTMLElement) as HTMLElement | null;
+      if (!this.button) return;
+
+      const tagName = this.button.tagName.toLowerCase();
+      const isNativeTrigger = tagName === "mui-button" || tagName === "button" || tagName === "a";
+      if (!isNativeTrigger) {
+        if (!this.button.hasAttribute("tabindex")) this.button.setAttribute("tabindex", "0");
+        this.button.setAttribute("role", "button");
+      }
+      this.button.setAttribute("aria-haspopup", "menu");
+      this.button.setAttribute("aria-expanded", this.menu?.classList.contains("show") ? "true" : "false");
+      this.button.addEventListener("click", this.toggleMenu);
+      this.button.addEventListener("keydown", this.handleActionKeyDown);
+    };
+    actionSlot?.addEventListener("slotchange", syncActionTrigger);
+    syncActionTrigger();
+
     document.addEventListener("click", this.closeMenu);
     document.addEventListener("keydown", this.handleKeyDown); // ESC listener
 
@@ -153,6 +178,7 @@ class MuiDropdown extends HTMLElement {
 
   disconnectedCallback() {
     this.button?.removeEventListener("click", this.toggleMenu);
+    this.button?.removeEventListener("keydown", this.handleActionKeyDown);
     document.removeEventListener("click", this.closeMenu);
     document.removeEventListener("keydown", this.handleKeyDown);
 
@@ -166,6 +192,7 @@ class MuiDropdown extends HTMLElement {
     if (!this.menu) return;
 
     this.menu.classList.remove("show");
+    this.button?.setAttribute("aria-expanded", "false");
 
     // wait for transition to finish before hiding
     const duration = 150; // must match CSS transition time
@@ -200,6 +227,7 @@ class MuiDropdown extends HTMLElement {
         this.menu?.removeAttribute("inert"); // enable interaction
         this.adjustPosition();
       });
+      this.button?.setAttribute("aria-expanded", "true");
       MuiDropdown.openDropdown = this;
       this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: true }, bubbles: true }));
     }

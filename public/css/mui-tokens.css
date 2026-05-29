@@ -12,35 +12,65 @@
 /* 1. BRAND PRIMITIVES  ------> ./mui-brand.css                                                         */
 /* ==================================================================================================== */
 :where(html) {
-  /* Avatar Colors */
-  --avatar-purple-200: oklch(69.998% 0.12881 306.598);
-  --avatar-purple-800: oklch(39.825% 0.15525 302.768);
-  --avatar-violet-200: oklch(68.7% 0.11278 294.579);
-  --avatar-violet-800: oklch(37.751% 0.1414 289.195);
-  --avatar-pink-200: oklch(75% 0.12171 349.037);
-  --avatar-pink-800: oklch(49.567% 0.17587 355.522);
-  --avatar-magenta-200: oklch(73.607% 0.1553 324.203);
-  --avatar-magenta-800: oklch(46.026% 0.18151 324.267);
-  --avatar-red-200: oklch(69.219% 0.13185 21.008);
-  --avatar-red-800: oklch(43.588% 0.15193 26.224);
-  --avatar-orange-200: oklch(78.978% 0.10803 55.747);
-  --avatar-orange-800: oklch(51.737% 0.12922 49.443);
-  --avatar-amber-200: oklch(88.238% 0.11573 91.663);
-  --avatar-amber-800: oklch(65.465% 0.13065 86.837);
-  --avatar-yellow-200: oklch(92.328% 0.116 104.198);
-  --avatar-yellow-800: oklch(72.736% 0.14925 103.38);
-  --avatar-lime-200: oklch(84.773% 0.11998 130.068);
-  --avatar-lime-800: oklch(57.802% 0.13829 132.375);
-  --avatar-green-200: oklch(82.146% 0.10519 154.481);
-  --avatar-green-800: oklch(55.196% 0.1248 150.768);
-  --avatar-teal-200: oklch(83.949% 0.08537 182.617);
-  --avatar-teal-800: oklch(57.358% 0.092 179.632);
-  --avatar-cyan-200: oklch(81.649% 0.07802 211.528);
-  --avatar-cyan-800: oklch(54.656% 0.08505 214.39);
-  --avatar-blue-200: oklch(74.949% 0.09578 248.783);
-  --avatar-blue-800: oklch(45.925% 0.11981 252.499);
-  --avatar-indigo-200: oklch(69.039% 0.10593 274.775);
-  --avatar-indigo-800: oklch(38.197% 0.13614 269.807);
+  /* Categorical Colors */
+  --categorical-purple-200: oklch(69.998% 0.12881 306.598);
+  --categorical-purple-800: oklch(39.825% 0.15525 302.768);
+  --categorical-violet-200: oklch(68.7% 0.11278 294.579);
+  --categorical-violet-800: oklch(37.751% 0.1414 289.195);
+  --categorical-pink-200: oklch(75% 0.12171 349.037);
+  --categorical-pink-800: oklch(49.567% 0.17587 355.522);
+  --categorical-magenta-200: oklch(73.607% 0.1553 324.203);
+  --categorical-magenta-800: oklch(46.026% 0.18151 324.267);
+  --categorical-red-200: oklch(69.219% 0.13185 21.008);
+  --categorical-red-800: oklch(43.588% 0.15193 26.224);
+  --categorical-orange-200: oklch(78.978% 0.10803 55.747);
+  --categorical-orange-800: oklch(51.737% 0.12922 49.443);
+  --categorical-amber-200: oklch(88.238% 0.11573 91.663);
+  --categorical-amber-800: oklch(65.465% 0.13065 86.837);
+  --categorical-yellow-200: oklch(92.328% 0.116 104.198);
+  --categorical-yellow-800: oklch(72.736% 0.14925 103.38);
+  --categorical-lime-200: oklch(84.773% 0.11998 130.068);
+  --categorical-lime-800: oklch(57.802% 0.13829 132.375);
+  --categorical-green-200: oklch(82.146% 0.10519 154.481);
+  --categorical-green-800: oklch(55.196% 0.1248 150.768);
+  --categorical-teal-200: oklch(83.949% 0.08537 182.617);
+  --categorical-teal-800: oklch(57.358% 0.092 179.632);
+  --categorical-cyan-200: oklch(81.649% 0.07802 211.528);
+  --categorical-cyan-800: oklch(54.656% 0.08505 214.39);
+  --categorical-blue-200: oklch(74.949% 0.09578 248.783);
+  --categorical-blue-800: oklch(45.925% 0.11981 252.499);
+  --categorical-indigo-200: oklch(69.039% 0.10593 274.775);
+  --categorical-indigo-800: oklch(38.197% 0.13614 269.807);
+
+  /* Avatar colour aliases. Prefer --categorical-* for shared component colour foundations. */
+  --avatar-purple-200: var(--categorical-purple-200);
+  --avatar-purple-800: var(--categorical-purple-800);
+  --avatar-violet-200: var(--categorical-violet-200);
+  --avatar-violet-800: var(--categorical-violet-800);
+  --avatar-pink-200: var(--categorical-pink-200);
+  --avatar-pink-800: var(--categorical-pink-800);
+  --avatar-magenta-200: var(--categorical-magenta-200);
+  --avatar-magenta-800: var(--categorical-magenta-800);
+  --avatar-red-200: var(--categorical-red-200);
+  --avatar-red-800: var(--categorical-red-800);
+  --avatar-orange-200: var(--categorical-orange-200);
+  --avatar-orange-800: var(--categorical-orange-800);
+  --avatar-amber-200: var(--categorical-amber-200);
+  --avatar-amber-800: var(--categorical-amber-800);
+  --avatar-yellow-200: var(--categorical-yellow-200);
+  --avatar-yellow-800: var(--categorical-yellow-800);
+  --avatar-lime-200: var(--categorical-lime-200);
+  --avatar-lime-800: var(--categorical-lime-800);
+  --avatar-green-200: var(--categorical-green-200);
+  --avatar-green-800: var(--categorical-green-800);
+  --avatar-teal-200: var(--categorical-teal-200);
+  --avatar-teal-800: var(--categorical-teal-800);
+  --avatar-cyan-200: var(--categorical-cyan-200);
+  --avatar-cyan-800: var(--categorical-cyan-800);
+  --avatar-blue-200: var(--categorical-blue-200);
+  --avatar-blue-800: var(--categorical-blue-800);
+  --avatar-indigo-200: var(--categorical-indigo-200);
+  --avatar-indigo-800: var(--categorical-indigo-800);
 
   /* Slide Frame - Foundation */
   --slide-frame-padding-small: var(--space-300);
@@ -268,12 +298,27 @@ html[data-theme="light"] {
   --illustration-size-large: 11.2rem;
   --illustration-size-x-large: 12.8rem;
   /* Badge */
-  --badge-text-color: var(--grey-100);
-  --badge-background-neutral: var(--grey-600);
-  --badge-background-positive: var(--green-600);
-  --badge-background-warning: var(--orange-600);
-  --badge-background-attention: var(--red-600);
+  --badge-text-color: var(--grey-900);
+  --badge-background-neutral: var(--grey-200);
+  --badge-background-positive: color-mix(in srgb, var(--green-300) 100%, white 30%);
+  --badge-background-warning: color-mix(in srgb, var(--orange-300) 100%, white 30%);
+  --badge-background-attention: color-mix(in srgb, var(--red-300) 100%, white 30%);
   --badge-background-overlay: var(--black-opacity-60);
+  --badge-background-grey: color-mix(in srgb, var(--grey-200) 100%, black 0%);
+  --badge-background-purple: color-mix(in srgb, var(--categorical-purple-200) 100%, white 60%);
+  --badge-background-violet: color-mix(in srgb, var(--categorical-violet-200) 100%, white 60%);
+  --badge-background-pink: color-mix(in srgb, var(--categorical-pink-200) 100%, white 20%);
+  --badge-background-magenta: color-mix(in srgb, var(--categorical-magenta-200) 100%, white 20%);
+  --badge-background-red: color-mix(in srgb, var(--categorical-red-200) 100%, white 40%);
+  --badge-background-orange: color-mix(in srgb, var(--categorical-orange-200) 100%, white 20%);
+  --badge-background-amber: color-mix(in srgb, var(--categorical-amber-200) 92%, white 0%);
+  --badge-background-yellow: color-mix(in srgb, var(--categorical-yellow-200) 88%, white 00%);
+  --badge-background-lime: color-mix(in srgb, var(--categorical-lime-200) 100%, black 0%);
+  --badge-background-green: color-mix(in srgb, var(--categorical-green-200) 100%, black 0%);
+  --badge-background-teal: color-mix(in srgb, var(--categorical-teal-200) 100%, black 0%);
+  --badge-background-cyan: color-mix(in srgb, var(--categorical-cyan-200) 100%, black 0%);
+  --badge-background-blue: color-mix(in srgb, var(--categorical-blue-200) 100%, white 40%);
+  --badge-background-indigo: color-mix(in srgb, var(--categorical-indigo-200) 100%, white 40%);
   --badge-text-color-overlay: var(--white);
   --badge-border-overlay: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
   /* Heading */
@@ -320,6 +365,8 @@ html[data-theme="light"] {
   --tab-shadow-active-color: var(--black-opacity-10);
   --tab-shadow-active: 0 0 var(--stroke-size-400) var(--stroke-size-400) var(--tab-shadow-active-color);
   --tabs-ghost-box-shadow: none;
+  --tab-dot-color: var(--grey-300);
+  --tab-dot-color-active: var(--grey-900);
 
   /* Carousel */
   --carousel-background: var(--white);
@@ -340,20 +387,80 @@ html[data-theme="light"] {
   --avatar-background-warning: var(--orange-200);
   --avatar-background-attention: var(--red-200);
 
-  --avatar-background-purple: var(--avatar-purple-200);
-  --avatar-background-violet: var(--avatar-violet-200);
-  --avatar-background-pink: var(--avatar-pink-200);
-  --avatar-background-magenta: var(--avatar-magenta-200);
-  --avatar-background-red: var(--avatar-red-200);
-  --avatar-background-orange: var(--avatar-orange-200);
-  --avatar-background-amber: var(--avatar-amber-200);
-  --avatar-background-yellow: var(--avatar-yellow-200);
-  --avatar-background-lime: var(--avatar-lime-200);
-  --avatar-background-green: var(--avatar-green-200);
-  --avatar-background-teal: var(--avatar-teal-200);
-  --avatar-background-cyan: var(--avatar-cyan-200);
-  --avatar-background-blue: var(--avatar-blue-200);
-  --avatar-background-indigo: var(--avatar-indigo-200);
+  --avatar-background-purple: var(--categorical-purple-200);
+  --avatar-background-violet: var(--categorical-violet-200);
+  --avatar-background-pink: var(--categorical-pink-200);
+  --avatar-background-magenta: var(--categorical-magenta-200);
+  --avatar-background-red: var(--categorical-red-200);
+  --avatar-background-orange: var(--categorical-orange-200);
+  --avatar-background-amber: var(--categorical-amber-200);
+  --avatar-background-yellow: var(--categorical-yellow-200);
+  --avatar-background-lime: var(--categorical-lime-200);
+  --avatar-background-green: var(--categorical-green-200);
+  --avatar-background-teal: var(--categorical-teal-200);
+  --avatar-background-cyan: var(--categorical-cyan-200);
+  --avatar-background-blue: var(--categorical-blue-200);
+  --avatar-background-indigo: var(--categorical-indigo-200);
+
+  /* Status */
+  --status-positive-background: var(--green-100);
+  --status-positive-border-color: var(--green-500);
+  --status-positive-text-color: var(--green-1000);
+  --status-info-background: var(--blue-100);
+  --status-info-border-color: var(--blue-500);
+  --status-info-text-color: var(--blue-1000);
+  --status-warning-background: var(--orange-100);
+  --status-warning-border-color: var(--orange-500);
+  --status-warning-text-color: var(--orange-1000);
+  --status-attention-background: var(--red-100);
+  --status-attention-border-color: var(--red-500);
+  --status-attention-text-color: var(--red-1000);
+
+  --status-grey-background: color-mix(in srgb, var(--grey-200) 72%, white 28%);
+  --status-grey-border-color: var(--grey-400);
+  --status-grey-text-color: color-mix(in srgb, var(--grey-1000) 72%, black 28%);
+  --status-purple-background: color-mix(in srgb, var(--categorical-purple-200) 60%, white 95%);
+  --status-purple-border-color: color-mix(in srgb, var(--categorical-purple-200) 78%, black 12%);
+  --status-purple-text-color: color-mix(in srgb, var(--categorical-purple-800) 72%, black 28%);
+  --status-violet-background: color-mix(in srgb, var(--categorical-violet-200) 60%, white 95%);
+  --status-violet-border-color: color-mix(in srgb, var(--categorical-violet-200) 78%, black 12%);
+  --status-violet-text-color: color-mix(in srgb, var(--categorical-violet-800) 72%, black 28%);
+  --status-pink-background: color-mix(in srgb, var(--categorical-pink-200) 60%, white 95%);
+  --status-pink-border-color: color-mix(in srgb, var(--categorical-pink-200) 78%, black 12%);
+  --status-pink-text-color: color-mix(in srgb, var(--categorical-pink-800) 72%, black 28%);
+  --status-magenta-background: color-mix(in srgb, var(--categorical-magenta-200) 60%, white 95%);
+  --status-magenta-border-color: color-mix(in srgb, var(--categorical-magenta-200) 78%, black 12%);
+  --status-magenta-text-color: color-mix(in srgb, var(--categorical-magenta-800) 72%, black 28%);
+  --status-red-background: color-mix(in srgb, var(--categorical-red-200) 60%, white 95%);
+  --status-red-border-color: color-mix(in srgb, var(--categorical-red-200) 78%, black 12%);
+  --status-red-text-color: color-mix(in srgb, var(--categorical-red-800) 72%, black 28%);
+  --status-orange-background: color-mix(in srgb, var(--categorical-orange-200) 60%, white 95%);
+  --status-orange-border-color: color-mix(in srgb, var(--categorical-orange-200) 78%, black 12%);
+  --status-orange-text-color: color-mix(in srgb, var(--categorical-orange-800) 72%, black 28%);
+  --status-amber-background: color-mix(in srgb, var(--categorical-amber-200) 60%, white 95%);
+  --status-amber-border-color: color-mix(in srgb, var(--categorical-amber-200) 78%, black 24%);
+  --status-amber-text-color: color-mix(in srgb, var(--categorical-amber-800) 72%, black 28%);
+  --status-yellow-background: color-mix(in srgb, var(--categorical-yellow-200) 60%, white 95%);
+  --status-yellow-border-color: color-mix(in srgb, var(--categorical-yellow-200) 84%, black 33%);
+  --status-yellow-text-color: color-mix(in srgb, var(--categorical-yellow-800) 62%, black 38%);
+  --status-lime-background: color-mix(in srgb, var(--categorical-lime-200) 60%, white 95%);
+  --status-lime-border-color: color-mix(in srgb, var(--categorical-lime-200) 78%, black 22%);
+  --status-lime-text-color: color-mix(in srgb, var(--categorical-lime-800) 72%, black 28%);
+  --status-green-background: color-mix(in srgb, var(--categorical-green-200) 60%, white 95%);
+  --status-green-border-color: color-mix(in srgb, var(--categorical-green-200) 78%, black 24%);
+  --status-green-text-color: color-mix(in srgb, var(--categorical-green-800) 72%, black 28%);
+  --status-teal-background: color-mix(in srgb, var(--categorical-teal-200) 60%, white 95%);
+  --status-teal-border-color: color-mix(in srgb, var(--categorical-teal-200) 78%, black 20%);
+  --status-teal-text-color: color-mix(in srgb, var(--categorical-teal-800) 72%, black 28%);
+  --status-cyan-background: color-mix(in srgb, var(--categorical-cyan-200) 60%, white 95%);
+  --status-cyan-border-color: color-mix(in srgb, var(--categorical-cyan-200) 78%, black 18%);
+  --status-cyan-text-color: color-mix(in srgb, var(--categorical-cyan-800) 72%, black 28%);
+  --status-blue-background: color-mix(in srgb, var(--categorical-blue-200) 60%, white 95%);
+  --status-blue-border-color: color-mix(in srgb, var(--categorical-blue-200) 78%, black 12%);
+  --status-blue-text-color: color-mix(in srgb, var(--categorical-blue-800) 72%, black 28%);
+  --status-indigo-background: color-mix(in srgb, var(--categorical-indigo-200) 60%, white 95%);
+  --status-indigo-border-color: color-mix(in srgb, var(--categorical-indigo-200) 78%, black 12%);
+  --status-indigo-text-color: color-mix(in srgb, var(--categorical-indigo-800) 72%, black 28%);
 
   /* Chip */
   --chip-background: var(--white);
@@ -628,9 +735,24 @@ html[data-theme="dark"] {
   --badge-text-color: var(--grey-900);
   --badge-background-neutral: var(--grey-400);
   --badge-background-positive: var(--green-400);
-  --badge-background-warning: var(--orange-400);
-  --badge-background-attention: var(--red-400);
+  --badge-background-warning: color-mix(in srgb, var(--orange-400) 100%, white 25%);
+  --badge-background-attention: color-mix(in srgb, var(--red-400) 100%, white 25%);
   --badge-background-overlay: var(--black-opacity-60);
+  --badge-background-grey: color-mix(in srgb, var(--grey-400) 100%, white 0%);
+  --badge-background-purple: color-mix(in srgb, var(--categorical-purple-200) 100%, white 0%);
+  --badge-background-violet: color-mix(in srgb, var(--categorical-violet-200) 100%, white 0%);
+  --badge-background-pink: color-mix(in srgb, var(--categorical-pink-200) 100%, white 0%);
+  --badge-background-magenta: color-mix(in srgb, var(--categorical-magenta-200) 100%, white 0%);
+  --badge-background-red: color-mix(in srgb, var(--categorical-red-200) 100%, white 0%);
+  --badge-background-orange: color-mix(in srgb, var(--categorical-orange-200) 100%, white 0%);
+  --badge-background-amber: color-mix(in srgb, var(--categorical-amber-200) 100%, white 0%);
+  --badge-background-yellow: color-mix(in srgb, var(--categorical-yellow-200) 100%, white 0%);
+  --badge-background-lime: color-mix(in srgb, var(--categorical-lime-200) 100%, white 0%);
+  --badge-background-green: color-mix(in srgb, var(--categorical-green-200) 100%, white 0%);
+  --badge-background-teal: color-mix(in srgb, var(--categorical-teal-200) 100%, white 0%);
+  --badge-background-cyan: color-mix(in srgb, var(--categorical-cyan-200) 100%, white 0%);
+  --badge-background-blue: color-mix(in srgb, var(--categorical-blue-200) 100%, white 0%);
+  --badge-background-indigo: color-mix(in srgb, var(--categorical-indigo-200) 100%, white 0%);
   --badge-text-color-overlay: var(--grey-300);
   --badge-border-overlay: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
   /* Heading */
@@ -675,6 +797,9 @@ html[data-theme="dark"] {
   --tab-shadow-active: 0 0 var(--stroke-size-400) var(--stroke-size-400) var(--tab-shadow-active-color);
   --tabs-ghost-box-shadow: none;
 
+  --tab-dot-color: var(--grey-800);
+  --tab-dot-color-active: var(--grey-400);
+
   /* Carousel */
   --carousel-background: var(--grey-700);
 
@@ -694,20 +819,80 @@ html[data-theme="dark"] {
   --avatar-background-warning: var(--orange-900);
   --avatar-background-attention: var(--red-900);
 
-  --avatar-background-purple: var(--avatar-purple-800);
-  --avatar-background-violet: var(--avatar-violet-800);
-  --avatar-background-pink: var(--avatar-pink-800);
-  --avatar-background-magenta: var(--avatar-magenta-800);
-  --avatar-background-red: var(--avatar-red-800);
-  --avatar-background-orange: var(--avatar-orange-800);
-  --avatar-background-amber: var(--avatar-amber-800);
-  --avatar-background-yellow: var(--avatar-yellow-800);
-  --avatar-background-lime: var(--avatar-lime-800);
-  --avatar-background-green: var(--avatar-green-800);
-  --avatar-background-teal: var(--avatar-teal-800);
-  --avatar-background-cyan: var(--avatar-cyan-800);
-  --avatar-background-blue: var(--avatar-blue-800);
-  --avatar-background-indigo: var(--avatar-indigo-800);
+  --avatar-background-purple: var(--categorical-purple-800);
+  --avatar-background-violet: var(--categorical-violet-800);
+  --avatar-background-pink: var(--categorical-pink-800);
+  --avatar-background-magenta: var(--categorical-magenta-800);
+  --avatar-background-red: var(--categorical-red-800);
+  --avatar-background-orange: var(--categorical-orange-800);
+  --avatar-background-amber: var(--categorical-amber-800);
+  --avatar-background-yellow: var(--categorical-yellow-800);
+  --avatar-background-lime: var(--categorical-lime-800);
+  --avatar-background-green: var(--categorical-green-800);
+  --avatar-background-teal: var(--categorical-teal-800);
+  --avatar-background-cyan: var(--categorical-cyan-800);
+  --avatar-background-blue: var(--categorical-blue-800);
+  --avatar-background-indigo: var(--categorical-indigo-800);
+
+  /* Status */
+  --status-positive-background: var(--green-900);
+  --status-positive-border-color: var(--green-300);
+  --status-positive-text-color: var(--green-100);
+  --status-info-background: var(--blue-900);
+  --status-info-border-color: var(--blue-300);
+  --status-info-text-color: var(--blue-100);
+  --status-warning-background: var(--orange-1000);
+  --status-warning-border-color: var(--orange-300);
+  --status-warning-text-color: var(--orange-100);
+  --status-attention-background: var(--red-900);
+  --status-attention-border-color: var(--red-300);
+  --status-attention-text-color: var(--red-100);
+
+  --status-grey-background: color-mix(in srgb, var(--grey-800) 86%, black 14%);
+  --status-grey-border-color: var(--grey-500);
+  --status-grey-text-color: color-mix(in srgb, var(--grey-500) 72%, white 85%);
+  --status-purple-background: var(--categorical-purple-800);
+  --status-purple-border-color: var(--categorical-purple-200);
+  --status-purple-text-color: color-mix(in srgb, var(--categorical-purple-200) 78%, white 75%);
+  --status-violet-background: var(--categorical-violet-800);
+  --status-violet-border-color: var(--categorical-violet-200);
+  --status-violet-text-color: color-mix(in srgb, var(--categorical-violet-200) 78%, white 75%);
+  --status-pink-background: color-mix(in srgb, var(--categorical-pink-800) 86%, black 14%);
+  --status-pink-border-color: var(--categorical-pink-200);
+  --status-pink-text-color: color-mix(in srgb, var(--categorical-pink-200) 80%, white 74%);
+  --status-magenta-background: var(--categorical-magenta-800);
+  --status-magenta-border-color: var(--categorical-magenta-200);
+  --status-magenta-text-color: color-mix(in srgb, var(--categorical-magenta-200) 70%, white 78%);
+  --status-red-background: color-mix(in srgb, var(--categorical-red-800) 78%, black 22%);
+  --status-red-border-color: var(--categorical-red-200);
+  --status-red-text-color: color-mix(in srgb, var(--categorical-red-200) 82%, white 78%);
+  --status-orange-background: color-mix(in srgb, var(--categorical-orange-800) 68%, black 32%);
+  --status-orange-border-color: color-mix(in srgb, var(--categorical-orange-200) 40%, white 22%);
+  --status-orange-text-color: color-mix(in srgb, var(--categorical-orange-200) 84%, white 45%);
+  --status-amber-background: color-mix(in srgb, var(--categorical-amber-800) 58%, black 42%);
+  --status-amber-border-color: color-mix(in srgb, var(--categorical-amber-200) 40%, white 22%);
+  --status-amber-text-color: color-mix(in srgb, var(--categorical-amber-200) 82%, white 18%);
+  --status-yellow-background: color-mix(in srgb, var(--categorical-yellow-800) 50%, black 50%);
+  --status-yellow-border-color: color-mix(in srgb, var(--categorical-yellow-200) 40%, white 22%);
+  --status-yellow-text-color: color-mix(in srgb, var(--categorical-yellow-200) 82%, white 18%);
+  --status-lime-background: color-mix(in srgb, var(--categorical-lime-800) 72%, black 28%);
+  --status-lime-border-color: var(--categorical-lime-200);
+  --status-lime-text-color: color-mix(in srgb, var(--categorical-lime-200) 80%, white 65%);
+  --status-green-background: color-mix(in srgb, var(--categorical-green-800) 74%, black 26%);
+  --status-green-border-color: var(--categorical-green-200);
+  --status-green-text-color: color-mix(in srgb, var(--categorical-green-200) 80%, white 68%);
+  --status-teal-background: color-mix(in srgb, var(--categorical-teal-800) 72%, black 28%);
+  --status-teal-border-color: color-mix(in srgb, var(--categorical-teal-200) 40%, white 22%);
+  --status-teal-text-color: color-mix(in srgb, var(--categorical-teal-200) 80%, white 60%);
+  --status-cyan-background: color-mix(in srgb, var(--categorical-cyan-800) 72%, black 28%);
+  --status-cyan-border-color: var(--categorical-cyan-200);
+  --status-cyan-text-color: color-mix(in srgb, var(--categorical-cyan-200) 80%, white 60%);
+  --status-blue-background: color-mix(in srgb, var(--categorical-blue-800) 86%, black 14%);
+  --status-blue-border-color: var(--categorical-blue-200);
+  --status-blue-text-color: color-mix(in srgb, var(--categorical-blue-200) 78%, white 62%);
+  --status-indigo-background: var(--categorical-indigo-800);
+  --status-indigo-border-color: var(--categorical-indigo-200);
+  --status-indigo-text-color: color-mix(in srgb, var(--categorical-indigo-200) 78%, white 82%);
 
   /* Chip */
   --chip-background: var(--grey-800);
@@ -954,8 +1139,6 @@ html[data-theme="dark"] {
   --tab-badge-offset-large: var(--space-050);
   --tab-dot-size: 1rem;
   --tab-dot-gap: var(--space-100);
-  --tab-dot-color: var(--tab-icon);
-  --tab-dot-color-active: var(--tab-icon-active);
   /* Carousel */
   --carousel-radius: var(--radius-300);
   --carousel-tab-position: var(--space-400);

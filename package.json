@@ -560,6 +560,10 @@
       "import": "./dist/esm/components/mui-spinner/index.js",
       "types": "./dist/types/components/mui-spinner/index.d.ts"
     },
+    "./mui-status": {
+      "import": "./dist/esm/components/mui-status/index.js",
+      "types": "./dist/types/components/mui-status/index.d.ts"
+    },
     "./mui-media-player": {
       "import": "./dist/esm/components/mui-media-player/index.js",
       "types": "./dist/types/components/mui-media-player/index.d.ts"

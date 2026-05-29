@@ -76,6 +76,21 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--badge-background-positive" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--badge-background-warning" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--badge-background-attention" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-grey" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-purple" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-violet" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-pink" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-magenta" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-red" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-orange" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-amber" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-yellow" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-lime" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-green" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-teal" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-cyan" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-blue" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--badge-background-indigo" variant="color"></story-token-slat>
           </spec-card>
 
           <spec-card id="body" title="Body" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-card/body/index.ts">

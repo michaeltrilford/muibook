@@ -124,6 +124,7 @@ export * from "./components/mui-range-input";
 export * from "./components/mui-alert";
 export * from "./components/mui-message";
 export * from "./components/mui-badge";
+export * from "./components/mui-status";
 
 // Actions
 export * from "./components/mui-button";

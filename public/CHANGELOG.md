@@ -15,7 +15,9 @@
 - `mui-rule` now supports semantic `weight="thin"` and `weight="thick"` values in addition to custom CSS values.
 - `mui-slat variant="action"` now supports `col` and `space` layout controls through the internal action button parts.
 - Added canonical `--action-size-*` tokens for shared action control sizing across buttons, links, inputs, selects, tabs, and icon-only controls.
-- `mui-button` and action-style `mui-link` now support `stroke="ring"` and `stroke-ring-size` for inset shadow strokes that avoid adding physical border height.
+- `mui-button` and action-style `mui-link` now support `stroke="ring"` and `stroke-ring-size` for inset shadow strokes that avoid adding physical border height, defaulting to `stroke-ring-size="100"`.
+- Added `mui-status` for compact object and workflow state labels with before/after slots.
+- `mui-status` now supports the boolean `action` attribute for interactive status triggers with button semantics, keyboard activation, pointer cursor, and focus styling.
 - `mui-tab-bar` now supports `stroke="border"` and `stroke="none"` so bordered and borderless tab bars can align to the action sizing rhythm.
 - `mui-tab-bar` now supports `active-inset` for an inset active tab shadow treatment.
 - `mui-tab-bar` now supports `radius` for token-based or custom tab radius overrides.

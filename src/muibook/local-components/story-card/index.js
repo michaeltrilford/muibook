@@ -2,7 +2,7 @@ import "../../images/github-mark";
 
 class storyCard extends HTMLElement {
   static get observedAttributes() {
-    return ["title", "description", "usage", "usageLink", "accessibility", "github"];
+    return ["title", "description", "usage", "usageLink", "accessibility", "github", "canvas-background"];
   }
 
   constructor() {
@@ -21,7 +21,7 @@ class storyCard extends HTMLElement {
       }
 
       section {
-        background: var(--app-story-card);
+        background-color: var(--story-card-canvas-background, var(--app-story-card));
         position: relative;
       }
 
@@ -198,6 +198,22 @@ class storyCard extends HTMLElement {
         <mui-card-footer style="padding: 0;"><slot name="footer"></slot></mui-card-footer>
       </mui-card>
     `;
+
+    this.syncCanvasStyles();
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    if (name === "canvas-background") this.syncCanvasStyles();
+  }
+
+  syncCanvasStyles() {
+    const canvasBackground = this.getAttribute("canvas-background");
+    if (canvasBackground) {
+      this.style.setProperty("--story-card-canvas-background", canvasBackground);
+      return;
+    }
+    this.style.removeProperty("--story-card-canvas-background");
   }
 }
 

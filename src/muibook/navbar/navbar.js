@@ -241,6 +241,29 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>
         </app-navbar-section>
 
+        <app-navbar-section heading="Feedback" default-open>
+          <app-navbar-link link="#/badge" title="Badge"></app-navbar-link>
+          <app-navbar-link link="#/status" title="Status"></app-navbar-link>
+          <app-navbar-link link="#/alert" title="Alert"></app-navbar-link>
+          <app-navbar-link link="#/message" title="Message"></app-navbar-link>
+        </app-navbar-section>
+
+        <app-navbar-section heading="Loading" default-open>
+          <app-navbar-link link="#/loader" title="Loader"></app-navbar-link>
+          <app-navbar-link link="#/skeleton" title="Skeleton"></app-navbar-link>
+          <app-navbar-link link="#/spinner" title="Spinner"></app-navbar-link>
+        </app-navbar-section>
+
+        <app-navbar-section heading="Navigation" default-open>
+          <app-navbar-link link="#/stepper" title="Stepper"></app-navbar-link>
+          <app-navbar-link link="#/tab-bar" title="Tab Bar"></app-navbar-link>
+        </app-navbar-section>
+
+        <app-navbar-section heading="Overlays" default-open>
+          <app-navbar-link link="#/dialog" title="Dialog"></app-navbar-link>
+          <app-navbar-link link="#/drawer" title="Drawer"></app-navbar-link>
+        </app-navbar-section>
+
         <app-navbar-section heading="Forms" default-open>
           <app-navbar-link link="#/addon" title="Add On"></app-navbar-link>
           <app-navbar-link link="#/chip-input" title="Chip Input"></app-navbar-link>
@@ -272,11 +295,6 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="#/table" title="Table"></app-navbar-link>
         </app-navbar-section>
 
-        <app-navbar-section heading="Overlays" default-open>
-          <app-navbar-link link="#/dialog" title="Dialog"></app-navbar-link>
-          <app-navbar-link link="#/drawer" title="Drawer"></app-navbar-link>
-        </app-navbar-section>
-
         <app-navbar-section heading="Layout" default-open>
           <app-navbar-link link="#/card" title="Card"></app-navbar-link>
           <app-navbar-link link="#/container" title="Container"></app-navbar-link>
@@ -286,22 +304,6 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="#/stack" title="Stack"></app-navbar-link>
         </app-navbar-section>
 
-        <app-navbar-section heading="Feedback" default-open>
-          <app-navbar-link link="#/alert" title="Alert"></app-navbar-link>
-          <app-navbar-link link="#/badge" title="Badge"></app-navbar-link>
-          <app-navbar-link link="#/message" title="Message"></app-navbar-link>
-        </app-navbar-section>
-
-        <app-navbar-section heading="Loading" default-open>
-          <app-navbar-link link="#/loader" title="Loader"></app-navbar-link>
-          <app-navbar-link link="#/skeleton" title="Skeleton"></app-navbar-link>
-          <app-navbar-link link="#/spinner" title="Spinner"></app-navbar-link>
-        </app-navbar-section>
-
-        <app-navbar-section heading="Navigation" default-open>
-          <app-navbar-link link="#/stepper" title="Stepper"></app-navbar-link>
-          <app-navbar-link link="#/tab-bar" title="Tab Bar"></app-navbar-link>
-        </app-navbar-section>
       </app-navbar-group>
     `;
 

@@ -12,8 +12,8 @@ class MuiTabItem extends HTMLElement {
 
   private getBadgeSizeFromTabSize() {
     const size = this.getAttribute("size") || "medium";
-    if (size === "x-small") return "x-small";
-    if (size === "small") return "small";
+    if (size === "x-small") return "xx-small";
+    if (size === "small") return "x-small";
     if (size === "large") return "large";
     return "medium";
   }
@@ -176,6 +176,18 @@ class MuiTabItem extends HTMLElement {
 
       :host([size="large"][has-after]) ::slotted(mui-badge[slot="after"]) {
         margin-left: var(--tab-badge-offset-large);
+      }
+
+      :host ::slotted(mui-badge[variant="neutral"]:not([color])[slot="before"]),
+      :host ::slotted(mui-badge[variant="neutral"]:not([color])[slot="after"]) {
+        --badge-background: var(--tab-text-color);
+        --badge-text-color: var(--tab-background);
+      }
+
+      :host([active]) ::slotted(mui-badge[variant="neutral"]:not([color])[slot="before"]),
+      :host([active]) ::slotted(mui-badge[variant="neutral"]:not([color])[slot="after"]) {
+        --badge-background: var(--tab-text-color-active);
+        --badge-text-color: var(--tab-background-active);
       }
 
       :host([size="x-small"]) {

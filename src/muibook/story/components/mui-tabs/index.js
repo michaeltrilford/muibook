@@ -18,6 +18,15 @@ class storyTabBar extends HTMLElement {
 
     const styles = /*css*/ `
       :host { display: block; }
+
+      :host([data-theme="light"]) {
+        --custom-canvas: var(--grey-100);
+      }
+
+      :host([data-theme="dark"]) {
+        --custom-canvas: var(--grey-1000);
+      }
+
     `;
 
     // Controller
@@ -122,14 +131,16 @@ class storyTabBar extends HTMLElement {
         type: "string",
         options: "000, 100, 150, 200, 300, 400, 500, 600, valid CSS value",
         default: "var(--tab-radius)",
-        description: "Overrides the tab bar radius. Token values map to radius tokens; raw CSS radius values are also accepted.",
+        description:
+          "Overrides the tab bar radius. Token values map to radius tokens; raw CSS radius values are also accepted.",
       },
       {
         name: "variant",
         type: "string",
         options: "default, dots, ghost",
         default: "default",
-        description: "Dots renders circular indicators for compact control patterns such as carousels. Ghost removes outer bar chrome while keeping active-tab styling.",
+        description:
+          "Dots renders circular indicators for compact control patterns such as carousels. Ghost removes outer bar chrome while keeping active-tab styling.",
       },
     ];
 
@@ -315,8 +326,8 @@ class storyTabBar extends HTMLElement {
       .join("");
 
     const tabData = [
-      { id: "item1", label: "Message", active: true },
-      { id: "item2", label: "Notification" },
+      { id: "item1", label: "Item", active: true },
+      { id: "item2", label: "Item" },
     ];
 
     const tabItemsHTML = tabData
@@ -335,11 +346,11 @@ class storyTabBar extends HTMLElement {
         </mui-v-stack>
 
 
-        <story-card title="Default">
+        <story-card title="Default" canvas-background="var(--custom-canvas)">
           <mui-tab-bar slot="body">
-            <mui-tab-item active id="item1">Item 1</mui-tab-item>
-            <mui-tab-item id="item2">Item 2</mui-tab-item>
-            <mui-tab-item id="item3">Item 3</mui-tab-item>
+            <mui-tab-item active id="item1">Item</mui-tab-item>
+            <mui-tab-item id="item2">Item</mui-tab-item>
+            <mui-tab-item id="item3">Item</mui-tab-item>
           </mui-tab-bar>
           <story-code-block slot="footer" scrollable>
             &lt;mui-tab-bar&gt;
@@ -354,85 +365,110 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Stroke Outline" description="When you need a line to define the size of the tab area.">
-          <mui-tab-bar slot="body" stroke="border">
-            <mui-tab-item active id="stroke-outline-1">Overview</mui-tab-item>
-            <mui-tab-item id="stroke-outline-2">Activity</mui-tab-item>
-            <mui-tab-item id="stroke-outline-3">Settings</mui-tab-item>
+        <story-card title="Stroke: None" description="Use when the surrounding surface already defines the tab area." canvas-background="var(--custom-canvas)">
+          <mui-tab-bar slot="body" stroke="none">
+            <mui-tab-item active id="stroke-none-1">Item</mui-tab-item>
+            <mui-tab-item id="stroke-none-2">Item</mui-tab-item>
+            <mui-tab-item id="stroke-none-3">Item</mui-tab-item>
           </mui-tab-bar>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-tab-bar stroke=&quot;border&quot;&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item active id=&quot;stroke-outline-1&quot;&gt;Overview&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;stroke-outline-2&quot;&gt;Activity&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;stroke-outline-3&quot;&gt;Settings&lt;/mui-tab-item&gt;<br />
+            &lt;mui-tab-bar stroke=&quot;none&quot;&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id=&quot;stroke-none-1&quot;&gt;Item&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;stroke-none-2&quot;&gt;Item&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;stroke-none-3&quot;&gt;Item&lt;/mui-tab-item&gt;<br />
             &lt;/mui-tab-bar&gt;
           </story-code-block>
         </story-card>
 
-        <story-card title="Inset Tab" description="Use for a more modern, floating pill treatment.">
+        <story-card title="Inset Tab" description="Use for a more modern, floating pill treatment." canvas-background="var(--custom-canvas)">
           <mui-tab-bar slot="body" stroke="none" active-inset>
-            <mui-tab-item active id="active-inset-none-1">Overview</mui-tab-item>
-            <mui-tab-item id="active-inset-none-2">Activity</mui-tab-item>
-            <mui-tab-item id="active-inset-none-3">Settings</mui-tab-item>
+            <mui-tab-item active id="active-inset-none-1">Item</mui-tab-item>
+            <mui-tab-item id="active-inset-none-2">Item</mui-tab-item>
+            <mui-tab-item id="active-inset-none-3">Item</mui-tab-item>
           </mui-tab-bar>
           <story-code-block slot="footer" scrollable>
             &lt;mui-tab-bar stroke=&quot;none&quot; active-inset&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item active id=&quot;active-inset-none-1&quot;&gt;Overview&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;active-inset-none-2&quot;&gt;Activity&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;active-inset-none-3&quot;&gt;Settings&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id=&quot;active-inset-none-1&quot;&gt;Item&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;active-inset-none-2&quot;&gt;Item&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;active-inset-none-3&quot;&gt;Item&lt;/mui-tab-item&gt;<br />
             &lt;/mui-tab-bar&gt;
           </story-code-block>
         </story-card>
 
-        <story-card title="Radius" description="Use radius to adjust the base tab radius.">
+        <story-card title="Radius" description="Use radius to adjust the base tab radius." canvas-background="var(--custom-canvas)">
           <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
+            <mui-tab-bar radius="200">
+              <mui-tab-item active id="radius-200-1">Radius 200</mui-tab-item>
+              <mui-tab-item id="radius-200-2">Item</mui-tab-item>
+              <mui-tab-item id="radius-200-3">Item</mui-tab-item>
+            </mui-tab-bar>
             <mui-tab-bar radius="300">
               <mui-tab-item active id="radius-300-1">Radius 300</mui-tab-item>
-              <mui-tab-item id="radius-300-2">Activity</mui-tab-item>
-              <mui-tab-item id="radius-300-3">Settings</mui-tab-item>
+              <mui-tab-item id="radius-300-2">Item</mui-tab-item>
+              <mui-tab-item id="radius-300-3">Item</mui-tab-item>
             </mui-tab-bar>
-            <mui-tab-bar radius="500">
-              <mui-tab-item active id="radius-500-1">Radius 500</mui-tab-item>
-              <mui-tab-item id="radius-500-2">Activity</mui-tab-item>
-              <mui-tab-item id="radius-500-3">Settings</mui-tab-item>
-            </mui-tab-bar>
-            <mui-tab-bar radius="600">
-              <mui-tab-item active id="radius-600-1">Radius 600</mui-tab-item>
-              <mui-tab-item id="radius-600-2">Activity</mui-tab-item>
-              <mui-tab-item id="radius-600-3">Settings</mui-tab-item>
+            <mui-tab-bar radius="400">
+              <mui-tab-item active id="radius-400-1">Radius 400</mui-tab-item>
+              <mui-tab-item id="radius-400-2">Item</mui-tab-item>
+              <mui-tab-item id="radius-400-3">Item</mui-tab-item>
             </mui-tab-bar>
           </mui-v-stack>
           <story-code-block slot="footer" scrollable>
+            &lt;mui-tab-bar radius=&quot;200&quot;&gt;...&lt;/mui-tab-bar&gt;<br />
             &lt;mui-tab-bar radius=&quot;300&quot;&gt;...&lt;/mui-tab-bar&gt;<br />
-            &lt;mui-tab-bar radius=&quot;500&quot;&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item active id=&quot;radius-500-1&quot;&gt;Radius 500&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;radius-500-2&quot;&gt;Activity&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;radius-500-3&quot;&gt;Settings&lt;/mui-tab-item&gt;<br />
-            &lt;/mui-tab-bar&gt;<br />
-            &lt;mui-tab-bar radius=&quot;600&quot;&gt;...&lt;/mui-tab-bar&gt;
+            &lt;mui-tab-bar radius=&quot;400&quot;&gt;...&lt;/mui-tab-bar&gt;
           </story-code-block>
         </story-card>
 
-        <story-card title="Tab Controller and Tab Panel">
+        <story-card
+          title="Tab Controller & Tab Panel"
+          description="Pair a controller with a tab bar and matching panels when tab selection needs to swap visible page content."
+          usage="Use active-inset with stroke=&quot;none&quot; for a softer selected tab treatment.|||Use full-width when the tabs should divide the available tab bar width evenly.|||Constrain the tab bar with max-width and auto margins when the controller lives inside a wider content area.|||Use radius to tune the pill shape for the surrounding surface."
+          canvas-background="var(--custom-canvas)"
+        >
           <mui-tab-controller slot="body">
-            <mui-tab-bar>
-              <mui-tab-item active id="item1">Item 1</mui-tab-item>
-              <mui-tab-item id="item2">Item 2</mui-tab-item>
-              <mui-tab-item id="item3">Item 3</mui-tab-item>
+            <mui-tab-bar active-inset radius="500" stroke="none" full-width style="max-width: 370px; margin: 0 auto;">
+              <mui-tab-item active id="item1">Item</mui-tab-item>
+              <mui-tab-item id="item2">Item</mui-tab-item>
+              <mui-tab-item id="item3">Item</mui-tab-item>
             </mui-tab-bar>
 
-            <mui-tab-panel item="item1">Content 1</mui-tab-panel>
-            <mui-tab-panel item="item2">Content 2</mui-tab-panel>
-            <mui-tab-panel item="item3">Content 3</mui-tab-panel>
+            <mui-tab-panel item="item1">
+              <mui-v-stack
+                space="var(--space-100)"
+                style="border-radius: var(--radius-300); margin-block-start: var(--space-200); background: var(--tab-background); padding: var(--space-600);">
+                <mui-heading level="2" size="4">Content 1</mui-heading>
+                <mui-body>Secondary content</mui-body>
+              </mui-v-stack>
+            </mui-tab-panel>
+
+            <mui-tab-panel item="item2">
+              <mui-v-stack
+                space="var(--space-100)"
+                style="border-radius: var(--radius-300); margin-block-start: var(--space-200); background: var(--tab-background); padding: var(--space-600);">
+                <mui-heading level="2" size="4">Content 2</mui-heading>
+                <mui-body>Secondary content</mui-body>
+              </mui-v-stack>
+            </mui-tab-panel>
+
+            <mui-tab-panel item="item3">
+              <mui-v-stack
+                space="var(--space-100)"
+                style="border-radius: var(--radius-300); margin-block-start: var(--space-200); background: var(--tab-background); padding: var(--space-600);">
+                <mui-heading level="2" size="4">Content 3</mui-heading>
+                <mui-body>Secondary content</mui-body>
+              </mui-v-stack>
+            </mui-tab-panel>
+
           </mui-tab-controller>
 
           <story-code-block slot="footer" scrollable>
             &lt;mui-tab-controller&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-tab-bar&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active id="item1"&gt;Item 1&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id="item2"&gt;Item 2&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id="item3"&gt;Item 3&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-bar active-inset radius=&quot;500&quot; stroke=&quot;none&quot; full-width style=&quot;max-width: 370px; margin: 0 auto;&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active id="item1"&gt;Item&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id="item2"&gt;Item&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id="item3"&gt;Item&lt;/mui-tab-item&gt;<br />
             &nbsp;&nbsp;&lt;/mui-tab-bar&gt;<br />
             &nbsp;&nbsp;&lt;mui-tab-panel item="item1"&gt;Content 1&lt;/mui-tab-panel&gt;<br />
             &nbsp;&nbsp;&lt;mui-tab-panel item="item2"&gt;Content 2&lt;/mui-tab-panel&gt;<br />
@@ -441,16 +477,16 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Animation Speed 500ms">
+        <story-card title="Animation Speed 500ms" canvas-background="var(--custom-canvas)">
           <mui-tab-bar slot="body" speed="500">
             ${tabItemsHTML}
           </mui-tab-bar>
           <story-code-block slot="footer" scrollable>
             const tabData = [
             <br />
-            &nbsp;&nbsp;{ id: 'item1', label: 'Message', active: true },
+            &nbsp;&nbsp;{ id: 'item1', label: 'Item', active: true },
             <br />
-            &nbsp;&nbsp;{ id: 'item2', label: 'Notification' },
+            &nbsp;&nbsp;{ id: 'item2', label: 'Item' },
             <br />
             ];
             <br />
@@ -476,85 +512,85 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Size Variants">
+        <story-card title="Size Variants" canvas-background="var(--custom-canvas)">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-tab-bar size="x-small">
-              <mui-tab-item active id="x-small-1">Overview</mui-tab-item>
-              <mui-tab-item id="x-small-2">Details</mui-tab-item>
+              <mui-tab-item active id="x-small-1">Item</mui-tab-item>
+              <mui-tab-item id="x-small-2">Item</mui-tab-item>
             </mui-tab-bar>
             <mui-tab-bar size="small">
-              <mui-tab-item active id="small-1">Overview</mui-tab-item>
-              <mui-tab-item id="small-2">Details</mui-tab-item>
+              <mui-tab-item active id="small-1">Item</mui-tab-item>
+              <mui-tab-item id="small-2">Item</mui-tab-item>
             </mui-tab-bar>
             <mui-tab-bar size="medium">
-              <mui-tab-item active id="medium-1">Overview</mui-tab-item>
-              <mui-tab-item id="medium-2">Details</mui-tab-item>
+              <mui-tab-item active id="medium-1">Item</mui-tab-item>
+              <mui-tab-item id="medium-2">Item</mui-tab-item>
             </mui-tab-bar>
             <mui-tab-bar size="large">
-              <mui-tab-item active id="large-1">Overview</mui-tab-item>
-              <mui-tab-item id="large-2">Details</mui-tab-item>
+              <mui-tab-item active id="large-1">Item</mui-tab-item>
+              <mui-tab-item id="large-2">Item</mui-tab-item>
             </mui-tab-bar>
           </mui-v-stack>
           <story-code-block slot="footer" scrollable>
             &lt;mui-tab-bar size="small"&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item active id="small-1"&gt;Overview&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id="small-2"&gt;Details&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id="small-1"&gt;Item&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="small-2"&gt;Item&lt;/mui-tab-item&gt;<br />
             &lt;/mui-tab-bar&gt;
           </story-code-block>
         </story-card>
 
-        <story-card title="Size Parity with Button">
+        <story-card title="Size Parity with Button" canvas-background="var(--custom-canvas)">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-button size="x-small">Action</mui-button>
               <mui-tab-bar size="x-small">
-                <mui-tab-item active id="pair-x-1">Tab One</mui-tab-item>
-                <mui-tab-item id="pair-x-2">Tab Two</mui-tab-item>
+                <mui-tab-item active id="pair-x-1">Tab</mui-tab-item>
+                <mui-tab-item id="pair-x-2">Tab</mui-tab-item>
               </mui-tab-bar>
             </mui-h-stack>
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-button size="small">Action</mui-button>
               <mui-tab-bar size="small">
-                <mui-tab-item active id="pair-s-1">Tab One</mui-tab-item>
-                <mui-tab-item id="pair-s-2">Tab Two</mui-tab-item>
+                <mui-tab-item active id="pair-s-1">Tab</mui-tab-item>
+                <mui-tab-item id="pair-s-2">Tab</mui-tab-item>
               </mui-tab-bar>
             </mui-h-stack>
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-button size="medium">Action</mui-button>
               <mui-tab-bar size="medium">
-                <mui-tab-item active id="pair-m-1">Tab One</mui-tab-item>
-                <mui-tab-item id="pair-m-2">Tab Two</mui-tab-item>
+                <mui-tab-item active id="pair-m-1">Tab</mui-tab-item>
+                <mui-tab-item id="pair-m-2">Tab</mui-tab-item>
               </mui-tab-bar>
             </mui-h-stack>
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-button size="large">Action</mui-button>
               <mui-tab-bar size="large">
-                <mui-tab-item active id="pair-l-1">Tab One</mui-tab-item>
-                <mui-tab-item id="pair-l-2">Tab Two</mui-tab-item>
+                <mui-tab-item active id="pair-l-1">Tab</mui-tab-item>
+                <mui-tab-item id="pair-l-2">Tab</mui-tab-item>
               </mui-tab-bar>
             </mui-h-stack>
           </mui-v-stack>
           <story-code-block slot="footer" scrollable>
             &lt;mui-button size="small"&gt;Action&lt;/mui-button&gt;<br />
             &lt;mui-tab-bar size="small"&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item active id="pair-s-1"&gt;Tab One&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id="pair-s-2"&gt;Tab Two&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id="pair-s-1"&gt;Tab&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="pair-s-2"&gt;Tab&lt;/mui-tab-item&gt;<br />
             &lt;/mui-tab-bar&gt;
           </story-code-block>
         </story-card>
 
-        <story-card title="Before and After Slots">
+        <story-card title="Before and After Slots" canvas-background="var(--custom-canvas)">
           <mui-v-stack slot="body" space="var(--space-300)" alignx='start'>
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-tab-bar size="x-small">
                 <mui-tab-item active id="default-width-x-small-1">
-                  <mui-icon-message slot="before"></mui-icon-message>
-                  Inbox
-                  <mui-badge slot="after" size="x-small">2</mui-badge>
+                  <mui-icon-Item slot="before"></mui-icon-Item>
+                  Item
+                  <mui-badge slot="after" size="x-small">22</mui-badge>
                 </mui-tab-item>
                 <mui-tab-item id="default-width-x-small-2">
                   <mui-icon-calendar slot="before"></mui-icon-calendar>
-                  Activity
+                  Item
                   <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
                 </mui-tab-item>
               </mui-tab-bar>
@@ -563,13 +599,13 @@ class storyTabBar extends HTMLElement {
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-tab-bar size="small">
                 <mui-tab-item active id="default-width-small-1">
-                  <mui-icon-message slot="before"></mui-icon-message>
-                  Inbox
-                  <mui-badge slot="after" size="small">2</mui-badge>
+                  <mui-icon-Item slot="before"></mui-icon-Item>
+                  Item
+                  <mui-badge slot="after" size="small">22</mui-badge>
                 </mui-tab-item>
                 <mui-tab-item id="default-width-small-2">
                   <mui-icon-calendar slot="before"></mui-icon-calendar>
-                  Activity
+                  Item
                   <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
                 </mui-tab-item>
               </mui-tab-bar>
@@ -578,13 +614,13 @@ class storyTabBar extends HTMLElement {
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-tab-bar size="medium">
                 <mui-tab-item active id="default-width-medium-1">
-                  <mui-icon-message slot="before"></mui-icon-message>
-                  Inbox
-                  <mui-badge slot="after" size="medium">2</mui-badge>
+                  <mui-icon-Item slot="before"></mui-icon-Item>
+                  Item
+                  <mui-badge slot="after" size="medium">22</mui-badge>
                 </mui-tab-item>
                 <mui-tab-item id="default-width-medium-2">
                   <mui-icon-calendar slot="before"></mui-icon-calendar>
-                  Activity
+                  Item
                   <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
                 </mui-tab-item>
               </mui-tab-bar>
@@ -593,13 +629,13 @@ class storyTabBar extends HTMLElement {
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-tab-bar size="large">
                 <mui-tab-item active id="default-width-large-1">
-                  <mui-icon-message slot="before"></mui-icon-message>
-                  Inbox
-                  <mui-badge slot="after" size="large">2</mui-badge>
+                  <mui-icon-Item slot="before"></mui-icon-Item>
+                  Item
+                  <mui-badge slot="after" size="large">22</mui-badge>
                 </mui-tab-item>
                 <mui-tab-item id="default-width-large-2">
                   <mui-icon-calendar slot="before"></mui-icon-calendar>
-                  Activity
+                  Item
                   <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
                 </mui-tab-item>
               </mui-tab-bar>
@@ -609,13 +645,13 @@ class storyTabBar extends HTMLElement {
             &lt;mui-tab-bar size="small"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-tab-item active id="default-width-small-1"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-message slot="before"&gt;&lt;/mui-icon-message&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;Inbox<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-Item slot="before"&gt;&lt;/mui-icon-Item&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Item<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge slot="after"&gt;2&lt;/mui-badge&gt;<br />
             &nbsp;&nbsp;&lt;/mui-tab-item&gt;<br />
             &nbsp;&nbsp;&lt;mui-tab-item id="default-width-small-2"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-calendar slot="before"&gt;&lt;/mui-icon-calendar&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;Activity<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;Item<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-right-chevron slot="after"&gt;&lt;/mui-icon-right-chevron&gt;<br />
             &nbsp;&nbsp;&lt;/mui-tab-item&gt;<br />
             <br />
@@ -623,16 +659,16 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Default Width">
+        <story-card title="Default Width" canvas-background="var(--custom-canvas)">
           <mui-tab-bar slot="body">
             ${tabItemsHTML}
           </mui-tab-bar>
           <story-code-block slot="footer" scrollable>
             const tabData = [
             <br />
-            &nbsp;&nbsp;{ id: 'item1', label: 'Message', active: true },
+            &nbsp;&nbsp;{ id: 'item1', label: 'Item', active: true },
             <br />
-            &nbsp;&nbsp;{ id: 'item2', label: 'Notification' },
+            &nbsp;&nbsp;{ id: 'item2', label: 'Item' },
             <br />
             ];
             <br />
@@ -658,7 +694,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Dots Variant">
+        <story-card title="Dots Variant" canvas-background="var(--custom-canvas)">
           <mui-tab-bar slot="body" variant="dots">
             <mui-tab-item active id="dots-1">Slide 1</mui-tab-item>
             <mui-tab-item id="dots-2">Slide 2</mui-tab-item>
@@ -673,22 +709,22 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Ghost Variant">
+        <story-card title="Ghost Variant" canvas-background="var(--custom-canvas)">
           <mui-tab-bar slot="body" variant="ghost">
-            <mui-tab-item active id="ghost-1">Overview</mui-tab-item>
-            <mui-tab-item id="ghost-2">Activity</mui-tab-item>
-            <mui-tab-item id="ghost-3">Settings</mui-tab-item>
+            <mui-tab-item active id="ghost-1">Item</mui-tab-item>
+            <mui-tab-item id="ghost-2">Item</mui-tab-item>
+            <mui-tab-item id="ghost-3">Item</mui-tab-item>
           </mui-tab-bar>
           <story-code-block slot="footer" scrollable>
             &lt;mui-tab-bar variant="ghost"&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item active id="ghost-1"&gt;Overview&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id="ghost-2"&gt;Activity&lt;/mui-tab-item&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-item id="ghost-3"&gt;Settings&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id="ghost-1"&gt;Item&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="ghost-2"&gt;Item&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id="ghost-3"&gt;Item&lt;/mui-tab-item&gt;<br />
             &lt;/mui-tab-bar&gt;
           </story-code-block>
         </story-card>
 
-        <story-card title="Full width">
+        <story-card title="Full width" canvas-background="var(--custom-canvas)">
           <mui-tab-bar full-width slot="body">
             ${tabItemsHTML}
           </mui-tab-bar>
@@ -696,9 +732,9 @@ class storyTabBar extends HTMLElement {
           <story-code-block slot="footer" scrollable>
             const tabData = [
             <br />
-            &nbsp;&nbsp;{ id: 'item1', label: 'Message', active: true },
+            &nbsp;&nbsp;{ id: 'item1', label: 'Item', active: true },
             <br />
-            &nbsp;&nbsp;{ id: 'item2', label: 'Notification' },
+            &nbsp;&nbsp;{ id: 'item2', label: 'Item' },
             <br />
             ];
             <br />

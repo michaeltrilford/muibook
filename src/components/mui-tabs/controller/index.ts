@@ -2,9 +2,11 @@ class MuiTabController extends HTMLElement {
   constructor() {
     super();
     this.handleTabChange = this.handleTabChange.bind(this);
+    this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
+    this.render();
     this.addEventListener("tab-change", this.handleTabChange);
     requestAnimationFrame(() => this.initializePanels());
   }
@@ -40,6 +42,18 @@ class MuiTabController extends HTMLElement {
       panel.setAttribute("aria-hidden", String(!isActive));
       panel.style.display = isActive ? "" : "none";
     });
+  }
+
+  private render(): void {
+    if (!this.shadowRoot) return;
+    this.shadowRoot.innerHTML = /*html*/ `
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <slot></slot>
+    `;
   }
 }
 

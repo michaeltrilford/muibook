@@ -165,7 +165,8 @@ class StoryPrompt extends HTMLElement {
         type: "string|boolean",
         options: "true, auto",
         default: "",
-        description: "When set, applies loading state to slotted mui-prompt-preview items. Use auto to mirror prompt loading state.",
+        description:
+          "When set, applies loading state to slotted mui-prompt-preview items. Use auto to mirror prompt loading state.",
       },
       {
         name: "preview-loading-label",
@@ -493,9 +494,9 @@ class StoryPrompt extends HTMLElement {
             </mui-dropdown>
           </mui-prompt>
           <mui-h-stack space="var(--space-100)">
-            <mui-button id="promptApiSubmitMethodBtn" size="small" variant="secondary">Call submit()</mui-button>
-            <mui-button id="promptApiClearBtn" size="small" variant="tertiary">Call clear()</mui-button>
-            <mui-button id="promptApiFocusBtn" size="small" variant="tertiary">Call focus()</mui-button>
+            <mui-button id="promptApiSubmitMethodBtn" size="xx-small" variant="secondary">Call submit()</mui-button>
+            <mui-button id="promptApiClearBtn" size="xx-small" variant="tertiary">Call clear()</mui-button>
+            <mui-button id="promptApiFocusBtn" size="xx-small" variant="tertiary">Call focus()</mui-button>
           </mui-h-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -553,8 +554,8 @@ class StoryPrompt extends HTMLElement {
             </mui-dropdown>
           </mui-prompt>
           <mui-h-stack space="var(--space-100)">
-            <mui-button id="promptLoadingStartBtn" size="small" variant="secondary">Start Loading</mui-button>
-            <mui-button id="promptLoadingStopBtn" size="small" variant="tertiary">Stop Loading</mui-button>
+            <mui-button id="promptLoadingStartBtn" size="xx-small" variant="secondary">Start Loading</mui-button>
+            <mui-button id="promptLoadingStopBtn" size="xx-small" variant="tertiary">Stop Loading</mui-button>
           </mui-h-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -597,10 +598,10 @@ class StoryPrompt extends HTMLElement {
             </mui-prompt-toggle>
           </mui-prompt>
           <mui-h-stack space="var(--space-100)">
-            <mui-button id="promptPreviewFlowStartBtn" size="small" variant="secondary">LLM Loading</mui-button>
-            <mui-button id="promptPreviewFlowReadyBtn" size="small" variant="tertiary">LLM Ready</mui-button>
-            <mui-button id="promptPreviewFlowForceBtn" size="small" variant="tertiary">Force Preview Load</mui-button>
-            <mui-button id="promptPreviewFlowResetBtn" size="small" variant="tertiary">Reset Auto</mui-button>
+            <mui-button id="promptPreviewFlowStartBtn" size="xx-small" variant="secondary">LLM Loading</mui-button>
+            <mui-button id="promptPreviewFlowReadyBtn" size="xx-small" variant="tertiary">LLM Ready</mui-button>
+            <mui-button id="promptPreviewFlowForceBtn" size="xx-small" variant="tertiary">Force Preview Load</mui-button>
+            <mui-button id="promptPreviewFlowResetBtn" size="xx-small" variant="tertiary">Reset Auto</mui-button>
           </mui-h-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -656,9 +657,9 @@ class StoryPrompt extends HTMLElement {
             </mui-dropdown>
           </mui-prompt>
           <mui-h-stack space="var(--space-100)">
-            <mui-button id="promptErrorBadBtn" size="small" variant="secondary">Bad Data</mui-button>
-            <mui-button id="promptErrorCustomBtn" size="small" variant="tertiary">Custom Data</mui-button>
-            <mui-button id="promptErrorResetBtn" size="small" variant="tertiary">Reset</mui-button>
+            <mui-button id="promptErrorBadBtn" size="xx-small" variant="secondary">Bad Data</mui-button>
+            <mui-button id="promptErrorCustomBtn" size="xx-small" variant="tertiary">Custom Data</mui-button>
+            <mui-button id="promptErrorResetBtn" size="xx-small" variant="tertiary">Reset</mui-button>
           </mui-h-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -1162,13 +1163,21 @@ class StoryPrompt extends HTMLElement {
           justify-content: center;
           gap: var(--space-400);
           width: 100%;
-          padding-block: var(--space-800);
-          padding-inline: var(--space-800);
           box-sizing: border-box;
         }
         .prompt-story-shell > * {
           width: 100%;
-          max-width: var(--prompt-story-max-width, 92rem);
+          max-width: var(--prompt-story-max-width, 64rem);
+        }
+
+        @media (min-width: 600px) {
+          .prompt-story-shell {
+            padding-block: var(--space-600);
+            padding-inline: var(--space-600);
+          }
+          .prompt-story-shell > * {
+            max-width: var(--prompt-story-max-width, 92rem);
+          }
         }
       </style>
       <story-template

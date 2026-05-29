@@ -23,8 +23,8 @@ export const muiApi = {
       },
       {
         name: "stroke-ring-size",
-        type: { text: '"050" | "100" | "200" | "300" | "400" | "500" | string' },
-        default: "050",
+        type: { text: '"100" | "200" | "300" | "400" | "500" | string' },
+        default: "100",
         description:
           'Ring stroke width when `stroke="ring"` is used on action-style links. Token values map to `--stroke-size-*`.',
       },

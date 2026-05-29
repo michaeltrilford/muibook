@@ -59,6 +59,7 @@ TEXT NODE RULES FOR MUISCAN:
   - keep inline children such as Link nested inside the same Span
 - Exceptions:
   - mui-badge: consume TEXT as the badge's direct rendered text; preserve before/after slot children; do not invent Body
+  - mui-status: consume TEXT as the status's direct rendered text; preserve before/after icon slot children; do not invent Body, Badge, or Message inside Status
   - mui-chip: consume TEXT as the chip's direct rendered text; preserve before/after slot children; do not invent Body
   - mui-alert: preserve variant/label, convert default content to Span, consume TEXT into Span.props.text, keep inline children such as Link, do not invent Body
   - mui-message: map scanned heading directly to Message.props.heading, preserve variant/icon/size, keep remaining children as default message content; if there is no supporting body content, prefer Body or FormMessage instead of Message
@@ -96,7 +97,8 @@ CONTENT:
 - List: slot default
 - ListItem: text, variant, size (x-small|small|medium|large), weight (regular|bold)
 - _Icon: icon, size (xx-small|x-small|small|medium|large), color, slot
-- Badge: text, variant (default|positive|warning|error|overlay)
+- Badge: text, variant (default|positive|warning|error|overlay), color (grey|purple|violet|pink|magenta|red|orange|amber|yellow|lime|green|teal|cyan|blue|indigo|CSS background value). Use for compact non-interactive presentational metadata, counts, and lightweight state-like labels such as Paid, Busy, Offline, Beta, Default, or Shared when the surrounding UI already explains the object. Good inside cards, messages, chips, buttons, tabs, navigation, and hero or marketing surfaces. Use color to override the badge background only through theme-aware badge background tokens; do not use positive, warning, or attention just to get a different background colour.
+- Status: text, variant (info|positive|warning|attention), color (grey|purple|violet|pink|magenta|red|orange|amber|yellow|lime|green|teal|cyan|blue|indigo), size (small|medium); slots before/after. Use for compact object or workflow state labels such as Active, Draft, Pending, Review, Blocked, or Synced when the value is the primary state of a record, workflow, or system, especially in tables, slats, dashboards, and data-heavy pages. Status is non-interactive by default, but can be interactive when composed as a trigger or compact state action. Omit variant for default low-emphasis grey status; use variant for semantic feedback and color for non-semantic categorical labels. Use action only when the status is a trigger. Do not use for counts, helper text, paragraph guidance, page-level notices, or decorative metadata.
 - Skeleton: loading, shape (line|rect|circle), size, animation (shimmer|pulse|none), lines, width, height, radius, gap, duration, line-widths, max-width, style
 
 ACCORDION:
@@ -123,9 +125,9 @@ FORMS AND INPUTS:
 - Addon: text, size (x-small|small|medium|large), slot (before|after), style
 
 ACTIONS:
-- Button: text, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (050|100|200|300|400|500), disabled, aria-label; slots default/before/after
+- Button: text, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (100|200|300|400|500), disabled, aria-label; slots default/before/after
 - ButtonGroup: slot default, right, style
-- Link: text, href, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (050|100|200|300|400|500), target, download, weight (regular|bold), disabled; slots default/before/after
+- Link: text, href, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (100|200|300|400|500), target, download, weight (regular|bold), disabled; slots default/before/after
 - Dropdown: zindex, position, persistent; slots action/default
 - Chip: text, active, dismiss, usage; slots default/before/after
 

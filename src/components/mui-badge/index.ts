@@ -1,5 +1,21 @@
 type Variant = "neutral" | "positive" | "warning" | "attention" | "overlay";
 type Size = "xx-small" | "x-small" | "small" | "medium" | "large";
+type Color =
+  | "grey"
+  | "purple"
+  | "violet"
+  | "pink"
+  | "magenta"
+  | "red"
+  | "orange"
+  | "amber"
+  | "yellow"
+  | "lime"
+  | "green"
+  | "teal"
+  | "cyan"
+  | "blue"
+  | "indigo";
 
 class MuiBadge extends HTMLElement {
   constructor() {
@@ -8,7 +24,7 @@ class MuiBadge extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["variant", "size"];
+    return ["variant", "size", "color"];
   }
 
   connectedCallback() {
@@ -31,6 +47,7 @@ class MuiBadge extends HTMLElement {
     const variant = variantAttr as Variant;
     const sizeAttr = this.getAttribute("size") || "medium";
     const size = sizeAttr as Size;
+    const colorAttr = this.getAttribute("color")?.trim();
 
     const backgroundMap: Record<Variant, string> = {
       neutral: "var(--badge-background-neutral)",
@@ -38,6 +55,24 @@ class MuiBadge extends HTMLElement {
       warning: "var(--badge-background-warning)",
       attention: "var(--badge-background-attention)",
       overlay: "var(--badge-background-overlay)",
+    };
+
+    const colorMap: Record<Color, string> = {
+      grey: "var(--badge-background-grey)",
+      purple: "var(--badge-background-purple)",
+      violet: "var(--badge-background-violet)",
+      pink: "var(--badge-background-pink)",
+      magenta: "var(--badge-background-magenta)",
+      red: "var(--badge-background-red)",
+      orange: "var(--badge-background-orange)",
+      amber: "var(--badge-background-amber)",
+      yellow: "var(--badge-background-yellow)",
+      lime: "var(--badge-background-lime)",
+      green: "var(--badge-background-green)",
+      teal: "var(--badge-background-teal)",
+      cyan: "var(--badge-background-cyan)",
+      blue: "var(--badge-background-blue)",
+      indigo: "var(--badge-background-indigo)",
     };
 
     const textColorMap: Record<Variant, string> = {
@@ -64,7 +99,11 @@ class MuiBadge extends HTMLElement {
       overlay: "off",
     };
 
-    const background = backgroundMap[variant];
+    const namedColor = colorAttr as Color | undefined;
+    const background =
+      namedColor && colorMap[namedColor]
+        ? colorMap[namedColor]
+        : colorAttr || "var(--badge-background, " + backgroundMap[variant] + ")";
     const textColor = textColorMap[variant];
     const border = borderMap[variant];
     const ariaLive = ariaLiveMap[variant];
