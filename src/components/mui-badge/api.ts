@@ -1,7 +1,7 @@
 export const muiApi = {
   "mui-badge": {
     description:
-      "Displays compact, non-interactive presentational labels, counts, or lightweight metadata. Use for labels such as Paid, Busy, Offline, Beta, Default, or Shared when they support the surrounding UI rather than acting as the primary state field for a record.",
+      "Displays compact, non-interactive presentational labels, counts, or lightweight metadata. Use for labels such as Offline, Online, Busy, Do not disturb, Beta, Default, IMG, or Shared when they support the surrounding UI rather than acting as the primary state field for a record.",
     attributes: [
       {
         name: "variant",
