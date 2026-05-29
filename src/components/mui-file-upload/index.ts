@@ -119,6 +119,7 @@ class MuiFileUpload extends HTMLElement {
 
         mui-button::part(height) {
           height: calc(var(--space-600) + var(--space-050));
+          min-height: initial;
           padding: var(--space-400);
           padding-top: var(--space-000);
           padding-bottom: var(--space-000);

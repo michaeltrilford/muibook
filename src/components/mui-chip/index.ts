@@ -313,6 +313,7 @@ class MuiChip extends HTMLElement {
       mui-button::part(background) {
         height: initial;
         width: initial;
+        min-height: initial;
         padding: var(--space-025);
         border-radius: var(--radius-400);
         background: var(--chip-dismiss-action-background);

@@ -238,13 +238,13 @@ class MuiSwitch extends HTMLElement {
 
         :host([size="x-small"]) {
           --switch-offset-computed: var(--stroke-size-100);
-          --switch-thumb-size-computed: calc(var(--action-icon-only-size-x-small) - var(--space-200));
+          --switch-thumb-size-computed: calc(var(--action-size-x-small) - var(--space-200));
           --switch-height-computed: calc(var(--switch-thumb-size-computed) + (var(--switch-offset-computed) * 2));
           --switch-width-computed: calc(var(--switch-height-computed) * 1.6);
         }
         :host([size="small"]) {
           --switch-offset-computed: var(--stroke-size-100);
-          --switch-thumb-size-computed: calc(var(--action-icon-only-size-small) - var(--space-200));
+          --switch-thumb-size-computed: calc(var(--action-size-small) - var(--space-200));
           --switch-height-computed: calc(var(--switch-thumb-size-computed) + (var(--switch-offset-computed) * 2));
           --switch-width-computed: calc(var(--switch-height-computed) * 1.6);
         }

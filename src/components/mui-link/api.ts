@@ -16,6 +16,19 @@ export const muiApi = {
         description: "Uses standard inline-link styling or an action-style treatment.",
       },
       {
+        name: "stroke",
+        type: { text: '"border" | "ring"' },
+        default: "border",
+        description: "Controls whether action-style link strokes are drawn with the normal border or an inset ring shadow.",
+      },
+      {
+        name: "stroke-ring-size",
+        type: { text: '"050" | "100" | "200" | "300" | "400" | "500" | string' },
+        default: "050",
+        description:
+          'Ring stroke width when `stroke="ring"` is used on action-style links. Token values map to `--stroke-size-*`.',
+      },
+      {
         name: "disabled",
         type: { text: "boolean" },
         default: "false",

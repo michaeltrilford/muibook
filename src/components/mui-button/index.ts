@@ -3,7 +3,7 @@ import { getPartMap } from "../../utils/part-map";
 /* Mui Button */
 class MuiButton extends HTMLElement {
   static get observedAttributes() {
-    return ["onclick", "type", "aria-label", "disabled", "variant", "size", "usage"];
+    return ["onclick", "type", "aria-label", "disabled", "variant", "stroke", "stroke-ring-size", "size", "usage"];
   }
 
   constructor() {
@@ -13,6 +13,7 @@ class MuiButton extends HTMLElement {
 
   async connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
+    this.syncRingSizeAttribute();
 
     await this.waitForPartMap();
 
@@ -36,6 +37,7 @@ class MuiButton extends HTMLElement {
       width: 100%;
       border-radius: var(--action-radius-medium);
       padding: var(--action-padding);
+      min-height: var(--action-size-medium);
       text-decoration: none;
       line-height: var(--action-line-height);
       display: inherit;
@@ -255,14 +257,83 @@ class MuiButton extends HTMLElement {
     :host([variant="attention"]) button:focus-visible ::slotted(.mui-icon) { fill: var(--action-attention-text-color-focus); }
     :host([variant="attention"]) button:disabled ::slotted(.mui-icon) { fill: var(--action-attention-text-color-disabled); }
 
+    :host,
+    :host([variant="primary"]) {
+      --action-ring-color: var(--action-primary-border-color);
+      --action-ring-color-hover: var(--action-primary-border-color-hover);
+      --action-ring-color-focus: var(--action-primary-border-color-focus);
+      --action-ring-color-disabled: var(--action-primary-border-color-disabled);
+    }
+
+    :host([variant="secondary"]) {
+      --action-ring-color: var(--action-secondary-border-color);
+      --action-ring-color-hover: var(--action-secondary-border-color-hover);
+      --action-ring-color-focus: var(--action-secondary-border-color-focus);
+      --action-ring-color-disabled: var(--action-secondary-border-color-disabled);
+    }
+
+    :host([variant="tertiary"]) {
+      --action-ring-color: var(--action-tertiary-border-color);
+      --action-ring-color-hover: var(--action-tertiary-border-color-hover);
+      --action-ring-color-focus: var(--action-tertiary-border-color-focus);
+      --action-ring-color-disabled: var(--action-tertiary-border-color-disabled);
+    }
+
+    :host([variant="overlay"]) {
+      --action-ring-size: var(--stroke-size-100);
+      --action-ring-color: var(--action-overlay-border-color);
+      --action-ring-color-hover: var(--action-overlay-border-color-hover);
+      --action-ring-color-focus: var(--action-overlay-border-color-focus);
+      --action-ring-color-disabled: var(--action-overlay-border-color-disabled);
+    }
+
+    :host([variant="attention"]) {
+      --action-ring-color: var(--action-attention-border-color);
+      --action-ring-color-hover: var(--action-attention-border-color-hover);
+      --action-ring-color-focus: var(--action-attention-border-color-focus);
+      --action-ring-color-disabled: var(--action-attention-border-color-disabled);
+    }
+
+    :host([stroke="ring"]:not([usage="input"])) button {
+      border: none;
+      box-shadow: var(
+        --action-ring-shadow,
+        inset 0 0 0 var(--action-ring-size, var(--stroke-size-050)) var(--action-ring-color)
+      );
+    }
+
+    :host([stroke="ring"]:not([usage="input"])) button:hover {
+      border: none;
+      box-shadow: var(
+        --action-ring-shadow-hover,
+        inset 0 0 0 var(--action-ring-size, var(--stroke-size-050)) var(--action-ring-color-hover)
+      );
+    }
+
+    :host([stroke="ring"]:not([usage="input"])) button:focus-visible {
+      border: none;
+      box-shadow: var(
+        --action-ring-shadow-focus,
+        inset 0 0 0 var(--action-ring-size, var(--stroke-size-050)) var(--action-ring-color-focus)
+      );
+    }
+
+    :host([stroke="ring"]:not([usage="input"])) button:disabled {
+      border: none;
+      box-shadow: var(
+        --action-ring-shadow-disabled,
+        inset 0 0 0 var(--action-ring-size, var(--stroke-size-050)) var(--action-ring-color-disabled)
+      );
+    }
+
     /* Icon only
     ========================================= */
     :host([icon-only]) button {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: var(--action-icon-only-size);
-      width: var(--action-icon-only-size);
+      height: var(--action-size-medium);
+      width: var(--action-size-medium);
       padding: var(--action-icon-only-padding);
     }
     /* ===================================== */
@@ -488,6 +559,7 @@ class MuiButton extends HTMLElement {
       font-size: var(--font-size-15);
       line-height: var(--line-height-25);
       font-weight: var(--font-weight-semi-bold);
+      min-height: var(--action-size-xx-small);
       padding: var(--space-025) var(--space-100);
       border-width: var(--stroke-size-100);
       border-radius: var(--action-radius-x-small);
@@ -500,6 +572,7 @@ class MuiButton extends HTMLElement {
       font-size: var(--text-font-size-xs);
       line-height: var(--text-line-height-xs);
       font-weight: var(--font-weight-semi-bold);
+      min-height: var(--action-size-x-small);
       padding: var(--action-padding-x-small);
       border-width: var(--stroke-size-100);
       border-radius: var(--action-radius-x-small);
@@ -508,6 +581,7 @@ class MuiButton extends HTMLElement {
     :host([size="small"]) button {
       font-size: var(--text-font-size-s);
       line-height: var(--text-line-height-s);
+      min-height: var(--action-size-small);
       padding: var(--action-padding-small);
       border-radius: var(--action-radius-small);
     }
@@ -515,12 +589,14 @@ class MuiButton extends HTMLElement {
     :host([size="medium"]) button {
       font-size: var(--text-font-size-m);
       line-height: var(--text-line-height-m);
+      min-height: var(--action-size-medium);
       border-radius: var(--action-radius-medium);
     }
 
     :host([size="large"]) button {
       font-size: var(--text-font-size-l);
       line-height: var(--text-line-height-l);
+      min-height: var(--action-size-large);
       padding: var(--action-padding-large);
       border-radius: var(--action-radius-large);
     }
@@ -570,26 +646,26 @@ class MuiButton extends HTMLElement {
     }
 
     :host([size="xx-small"][icon-only]) button {
-      height: calc(var(--action-icon-only-size-x-small) - var(--space-100));
-      width: calc(var(--action-icon-only-size-x-small) - var(--space-100));
+      height: var(--action-size-xx-small);
+      width: var(--action-size-xx-small);
       padding: var(--action-icon-only-padding);
     }
 
     :host([size="x-small"][icon-only]) button {
-      height: var(--action-icon-only-size-x-small);
-      width: var(--action-icon-only-size-x-small);
+      height: var(--action-size-x-small);
+      width: var(--action-size-x-small);
       padding: var(--action-icon-only-padding);
     }
 
     :host([size="small"][icon-only]) button {
-      height: var(--action-icon-only-size-small);
-      width: var(--action-icon-only-size-small);
+      height: var(--action-size-small);
+      width: var(--action-size-small);
       padding: var(--action-icon-only-padding);
     }
 
     :host([size="large"][icon-only]) button {
-      height: var(--action-icon-only-size-large);
-      width: var(--action-icon-only-size-large);
+      height: var(--action-size-large);
+      width: var(--action-size-large);
       padding: var(--action-icon-only-padding);
     }
 
@@ -748,6 +824,23 @@ class MuiButton extends HTMLElement {
     if (name === "size" && oldValue !== newValue && this.shadowRoot) {
       requestAnimationFrame(() => this.syncButtonState());
     }
+
+    if (name === "stroke-ring-size" && oldValue !== newValue) {
+      this.syncRingSizeAttribute();
+    }
+  }
+
+  private syncRingSizeAttribute(): void {
+    const raw = this.getAttribute("stroke-ring-size")?.trim();
+
+    if (!raw) {
+      this.style.removeProperty("--action-ring-size");
+      return;
+    }
+
+    const tokenValue = raw.startsWith("stroke-size-") ? raw.replace("stroke-size-", "") : raw;
+    const isStrokeToken = /^(050|100|200|300|400|500)$/.test(tokenValue);
+    this.style.setProperty("--action-ring-size", isStrokeToken ? `var(--stroke-size-${tokenValue})` : raw);
   }
 
   syncButtonState(): void {

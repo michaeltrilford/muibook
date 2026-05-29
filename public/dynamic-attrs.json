@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-28T12:54:01.006Z",
+  "generatedAt": "2026-05-29T07:45:34.578Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -51,19 +51,19 @@
         "has-message"
       ]
     },
+    "mui-form-section-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-rule"
+      ]
+    },
     "mui-form-section": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         "has-header",
         "has-footer"
-      ]
-    },
-    "mui-form-section-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        "has-rule"
       ]
     },
     "mui-link": {
@@ -148,19 +148,19 @@
         "condensed-slot"
       ]
     },
-    "mui-row": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        "in-card"
-      ]
-    },
     "mui-tab-item": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         "has-before",
         "has-after"
+      ]
+    },
+    "mui-row": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "in-card"
       ]
     }
   }

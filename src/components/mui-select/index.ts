@@ -188,25 +188,25 @@ class MuiSelect extends HTMLElement {
           appearance: none;
         }
         select.size-x-small {
-          min-height: var(--action-icon-only-size-x-small);
+          min-height: var(--action-size-x-small);
           padding: var(--action-padding-x-small);
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
         }
         select.size-small {
-          min-height: var(--action-icon-only-size-small);
+          min-height: var(--action-size-small);
           padding: var(--action-padding-small);
           font-size: var(--text-font-size-s);
           line-height: var(--text-line-height-s);
         }
         select.size-medium {
-          min-height: 4.4rem;
+          min-height: var(--action-size-medium);
           padding: var(--space-200) var(--space-300);
           font-size: var(--text-font-size);
           line-height: var(--text-line-height);
         }
         select.size-large {
-          min-height: var(--action-icon-only-size-large);
+          min-height: var(--action-size-large);
           padding: var(--space-300) var(--space-400);
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);

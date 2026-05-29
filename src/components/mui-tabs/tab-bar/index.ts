@@ -6,7 +6,7 @@ class MuiTabBar extends HTMLElement {
   private _animationSpeed: number = 200;
   private _resizeObserver: ResizeObserver;
   static get observedAttributes() {
-    return ["size", "variant"];
+    return ["size", "variant", "stroke", "radius"];
   }
 
   constructor() {
@@ -27,15 +27,20 @@ class MuiTabBar extends HTMLElement {
   }
 
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
-    if ((name === "size" || name === "variant") && oldValue !== newValue) {
+    if ((name === "size" || name === "variant" || name === "stroke") && oldValue !== newValue) {
       this._applySizeToChildren();
       this._applyVariantToChildren();
       if (this._activeTab) this._updateHighlight(this._activeTab);
+    }
+
+    if (name === "radius" && oldValue !== newValue) {
+      this._syncRadiusAttribute();
     }
   }
 
   connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
+    this._syncRadiusAttribute();
 
     const animationSpeed = this.getAttribute("speed") || "200";
     this._animationSpeed = parseInt(animationSpeed, 10);
@@ -136,16 +141,35 @@ class MuiTabBar extends HTMLElement {
       <style>
         :host {
           --tab-animation-speed: ${this._animationSpeed}ms;
+          --tab-stroke-size: var(--stroke-size-100);
+          --tab-item-size-x-small: calc(var(--action-size-x-small) - (var(--tab-stroke-size) * 2));
+          --tab-item-size-small: calc(var(--action-size-small) - (var(--tab-stroke-size) * 2));
+          --tab-item-size-medium: calc(var(--action-size-medium) - (var(--tab-stroke-size) * 2));
+          --tab-item-size-large: calc(var(--action-size-large) - (var(--tab-stroke-size) * 2));
+          --tab-active-shadow: var(--tab-shadow-active);
+          --tab-active-inset-width: var(--stroke-size-300);
           position: relative;
           display: inline-flex;
-          border-width: var(--stroke-size-100);
+          border-width: var(--tab-stroke-size);
           border-style: var(--stroke-solid);
           border-color: var(--tab-border-color);
           border-radius: var(--tab-radius);
           background: var(--tab-background);
-          will-change: transform;
           box-sizing: border-box;
           overflow: hidden;
+        }
+
+        :host([active-inset]) {
+          --tab-active-shadow: none;
+        }
+
+        :host([stroke="none"]) {
+          --tab-stroke-size: 0px;
+          --tab-item-size-x-small: var(--action-size-x-small);
+          --tab-item-size-small: var(--action-size-small);
+          --tab-item-size-medium: var(--action-size-medium);
+          --tab-item-size-large: var(--action-size-large);
+          border: none;
         }
 
         :host([full-width]) {
@@ -154,6 +178,11 @@ class MuiTabBar extends HTMLElement {
         }
 
         :host([variant="dots"]) {
+          --tab-stroke-size: 0px;
+          --tab-item-size-x-small: var(--action-size-x-small);
+          --tab-item-size-small: var(--action-size-small);
+          --tab-item-size-medium: var(--action-size-medium);
+          --tab-item-size-large: var(--action-size-large);
           border: none;
           border-radius: var(--radius-000);
           background: transparent;
@@ -163,6 +192,11 @@ class MuiTabBar extends HTMLElement {
         }
 
         :host([variant="ghost"]) {
+          --tab-stroke-size: 0px;
+          --tab-item-size-x-small: var(--action-size-x-small);
+          --tab-item-size-small: var(--action-size-small);
+          --tab-item-size-medium: var(--action-size-medium);
+          --tab-item-size-large: var(--action-size-large);
           border: none;
           background: transparent;
           box-shadow: var(--tabs-ghost-box-shadow);
@@ -186,10 +220,27 @@ class MuiTabBar extends HTMLElement {
           z-index: 0;
           padding: var(--space-200) var(--space-400);
           box-sizing: border-box;
-          box-shadow: var(--tab-shadow-active);
-          will-change: transform, width;
-          transform: translateX(0) translateZ(0);
+          box-shadow: var(--tab-active-shadow);
+          transform: translateX(0);
           width: 0;
+        }
+
+        .highlight::after {
+          content: none;
+        }
+
+        :host([active-inset]) .highlight {
+          background: var(--tab-background);
+          box-shadow: none;
+        }
+
+        :host([active-inset]) .highlight::after {
+          content: "";
+          position: absolute;
+          inset: var(--tab-active-inset-width);
+          border-radius: calc(var(--tab-radius) - var(--tab-active-inset-width));
+          background: var(--tab-background-active);
+          box-shadow: var(--tab-active-shadow);
         }
 
         :host([variant="dots"]) .highlight {
@@ -200,8 +251,6 @@ class MuiTabBar extends HTMLElement {
           position: relative;
           z-index: 1;
           flex: 1;
-          contain: content; /* Performance optimization */
-          transform: translateZ(0);
         }
 
         :host([variant="dots"]) ::slotted(mui-tab-item) {
@@ -267,6 +316,19 @@ class MuiTabBar extends HTMLElement {
     });
   }
 
+  private _syncRadiusAttribute() {
+    const raw = this.getAttribute("radius")?.trim();
+
+    if (!raw) {
+      this.style.removeProperty("--tab-radius");
+      return;
+    }
+
+    const tokenValue = raw.startsWith("radius-") ? raw.replace("radius-", "") : raw;
+    const isRadiusToken = /^(000|100|150|200|300|400|500|600)$/.test(tokenValue);
+    this.style.setProperty("--tab-radius", isRadiusToken ? `var(--radius-${tokenValue})` : raw);
+  }
+
   disconnectedCallback() {
     window.removeEventListener("resize", this._handleResize);
 
@@ -330,7 +392,7 @@ class MuiTabBar extends HTMLElement {
     const barRect = this.getBoundingClientRect();
     const borderWidth = parseFloat(getComputedStyle(this).borderWidth) || 0;
     const leftPosition = elRect.left - barRect.left - borderWidth;
-    highlight.style.transform = `translateX(${leftPosition}px) translateZ(0)`;
+    highlight.style.transform = `translateX(${leftPosition}px)`;
     highlight.style.width = `${elRect.width}px`;
   }
 

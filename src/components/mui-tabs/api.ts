@@ -4,6 +4,9 @@ export const muiApi = {
     attributes: [
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Size applied to child tab items." },
       { name: "variant", type: { text: '"default" | "dots" | "ghost"' }, default: "default", description: "Visual treatment for the tab bar and its children." },
+      { name: "stroke", type: { text: '"border" | "none"' }, default: "border", description: "Controls whether the default tab bar border is rendered. When border is used, child tab item heights are reduced so the total control height stays aligned to action sizing." },
+      { name: "active-inset", type: { text: "boolean" }, default: "false", description: "Uses an inset active shadow recipe for the selected tab surface instead of the default active shadow." },
+      { name: "radius", type: { text: '"000" | "100" | "150" | "200" | "300" | "400" | "500" | "600" | string' }, default: "var(--tab-radius)", description: "Overrides the tab bar radius. Token values map to `--radius-*`; raw CSS radius values are also accepted." },
       { name: "orientation", type: { text: '"horizontal" | "vertical"' }, default: "horizontal", description: "ARIA orientation and keyboard navigation axis." },
       { name: "speed", type: { text: "string" }, default: "200", description: "Active indicator transition duration in milliseconds." },
       { name: "full-width", type: { text: "boolean" }, default: "false", description: "Expands the tab bar across the available width." },
@@ -14,6 +17,8 @@ export const muiApi = {
     cssProperties: [
       { name: "--tab-shadow-active-color", description: "Default color used to construct the active highlight shadow." },
       { name: "--tab-shadow-active", description: "Full box-shadow value for the active tab highlight, allowing geometry and color overrides." },
+      { name: "--tab-active-shadow", description: "Resolved active tab shadow used by the highlight layer." },
+      { name: "--tab-active-inset-width", description: "Inset width used to create the inner active surface when `active-inset` is present." },
     ],
   },
   "mui-tab-controller": {

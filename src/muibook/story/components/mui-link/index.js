@@ -119,6 +119,20 @@ class storyLink extends HTMLElement {
           "Apply a button style to the link, often used for navigation options or other actions that leverage an anchor link.",
       },
       {
+        name: "stroke",
+        type: "string",
+        options: "border, ring",
+        default: "border",
+        description: "Draw action-style link strokes with a physical border or an inset ring shadow.",
+      },
+      {
+        name: "stroke-ring-size",
+        type: "string",
+        options: "050, 100, 200, 300, 400, 500, valid CSS value",
+        default: "050",
+        description: "Set the ring shadow width when stroke is set to ring. Token values map to stroke-size tokens.",
+      },
+      {
         name: "style",
         type: "string",
         options: "Valid CSS",
@@ -494,6 +508,64 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card
+        title="Stroke: Ring"
+        id="stroke-ring"
+        description="Use a ring shadow when you prefer that approach for action-style link borders."
+        usage='
+          Use stroke="ring" to draw the action-style link stroke with an inset shadow instead of a physical border.|||
+          Pair ring-stroked links with ring-stroked buttons when they need to share the same visual border treatment.|||
+          Use stroke-ring-size="050" for the default hairline ring, and increase only when more contrast is needed.
+        '
+      >
+        <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
+          <mui-link size="xx-small" variant="secondary" stroke="ring">XX-Small</mui-link>
+          <mui-link size="x-small" variant="secondary" stroke="ring">X-Small</mui-link>
+          <mui-link size="small" variant="secondary" stroke="ring">Small</mui-link>
+          <mui-link size="medium" variant="secondary" stroke="ring">Medium</mui-link>
+          <mui-link size="large" variant="secondary" stroke="ring">Large</mui-link>
+          <mui-rule direction="horizontal" length="100%"></mui-rule>
+          <mui-link variant="primary" stroke="ring">Primary</mui-link>
+          <mui-link variant="secondary" stroke="ring">Secondary</mui-link>
+          <mui-link variant="tertiary" stroke="ring">Tertiary</mui-link>
+          <mui-link variant="attention" stroke="ring">Attention</mui-link>
+          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
+            <mui-link variant="secondary" stroke="ring" stroke-ring-size="050">050</mui-link>
+            <mui-link variant="secondary" stroke="ring" stroke-ring-size="100">100</mui-link>
+            <mui-link variant="secondary" stroke="ring" stroke-ring-size="200">200</mui-link>
+            <mui-link variant="secondary" stroke="ring" stroke-ring-size="300">300</mui-link>
+            <mui-link variant="secondary" stroke="ring" stroke-ring-size="400">400</mui-link>
+            <mui-link variant="secondary" stroke="ring" stroke-ring-size="500">500</mui-link>
+          </mui-h-stack>
+          <div
+            class="overlay-canvas"
+            style="
+              --canvas-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80');
+              --canvas-tint: var(--grey-1200);
+              padding: var(--space-300);
+            "
+          >
+            <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
+              <mui-link variant="overlay" stroke="ring">Overlay</mui-link>
+            </mui-h-stack>
+          </div>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-link size="xx-small" variant="secondary" stroke="ring"&gt;XX-Small&lt;/mui-link&gt;<br />
+          &lt;mui-link size="x-small" variant="secondary" stroke="ring"&gt;X-Small&lt;/mui-link&gt;<br />
+          &lt;mui-link size="small" variant="secondary" stroke="ring"&gt;Small&lt;/mui-link&gt;<br />
+          &lt;mui-link size="medium" variant="secondary" stroke="ring"&gt;Medium&lt;/mui-link&gt;<br />
+          &lt;mui-link size="large" variant="secondary" stroke="ring"&gt;Large&lt;/mui-link&gt;<br /><br />
+          &lt;mui-link variant="primary" stroke="ring"&gt;Primary&lt;/mui-link&gt;<br />
+          &lt;mui-link variant="secondary" stroke="ring"&gt;Secondary&lt;/mui-link&gt;<br />
+          &lt;mui-link variant="tertiary" stroke="ring"&gt;Tertiary&lt;/mui-link&gt;<br />
+          &lt;mui-link variant="attention" stroke="ring"&gt;Attention&lt;/mui-link&gt;<br />
+          &lt;mui-link variant="secondary" stroke="ring" stroke-ring-size="100"&gt;100&lt;/mui-link&gt;<br />
+          &lt;mui-link variant="secondary" stroke="ring" stroke-ring-size="500"&gt;500&lt;/mui-link&gt;<br />
+          &lt;mui-link variant="overlay" stroke="ring"&gt;Overlay&lt;/mui-link&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card title="Tertiary Link" id="tertiary-link">
         <div slot="body">
           <mui-link target="_blank" variant="tertiary">View report</mui-link>
@@ -842,7 +914,7 @@ class storyLink extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="link-sizes::Link: Sizes|||link-button-x-small::Link Button: X-Small|||link-button-small::Link Button: Small|||link-button-medium::Link Button: Medium|||link-button-large::Link Button: Large|||url::URL|||external::External Link|||primary-link::Primary Link|||secondary-link::Secondary Link|||tertiary-link::Tertiary Link|||overlay-link::Overlay Link|||attention-link::Attention Link|||disabled::Disabled Link|||link::Link (Before & After)|||link-button::Link Button (Before & After)|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||part::Part Selectors"
+          links="link-sizes::Link: Sizes|||link-button-x-small::Link Button: X-Small|||link-button-small::Link Button: Small|||link-button-medium::Link Button: Medium|||link-button-large::Link Button: Large|||url::URL|||external::External Link|||primary-link::Primary Link|||secondary-link::Secondary Link|||stroke-ring::Stroke: Ring|||tertiary-link::Tertiary Link|||overlay-link::Overlay Link|||attention-link::Attention Link|||disabled::Disabled Link|||link::Link (Before & After)|||link-button::Link Button (Before & After)|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||part::Part Selectors"
         ></story-quicklinks>
 
         ${stories}

@@ -21,6 +21,19 @@ class MuiStep extends HTMLElement {
     this.render();
   }
 
+  private syncContentState() {
+    if (!this.shadowRoot) return;
+    const content = this.shadowRoot.querySelector(".content");
+    const secondarySlot = this.shadowRoot.querySelector('slot[name="secondary"]') as HTMLSlotElement | null;
+    const hasSecondaryContent = Boolean(
+      secondarySlot
+        ?.assignedNodes({ flatten: true })
+        .some((node) => node.nodeType === Node.ELEMENT_NODE || Boolean(node.textContent?.trim())),
+    );
+
+    content?.classList.toggle("title-only", !hasSecondaryContent);
+  }
+
   render() {
     if (!this.shadowRoot) return;
 
@@ -90,6 +103,7 @@ class MuiStep extends HTMLElement {
           flex-direction: ${direction === "horizontal" ? "column" : "row"};
           align-items: ${direction === "horizontal" ? "center" : "flex-start"};
           flex: 1;
+          --stepper-title-only: 12px;
         }
 
         .dotwrapper {
@@ -287,6 +301,9 @@ class MuiStep extends HTMLElement {
           text-align: left;
           position: relative;
         }
+        :host([direction="vertical"]) .content.title-only {
+          padding-top: var(--stepper-title-only);
+        }
 
         :host([direction="vertical"]) .content:before {
           content: "";
@@ -428,6 +445,10 @@ class MuiStep extends HTMLElement {
       ${innerHTML}
 
     `;
+
+    const secondarySlot = this.shadowRoot.querySelector('slot[name="secondary"]') as HTMLSlotElement | null;
+    secondarySlot?.addEventListener("slotchange", () => this.syncContentState());
+    this.syncContentState();
   }
 }
 

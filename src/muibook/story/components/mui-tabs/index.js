@@ -104,6 +104,27 @@ class storyTabBar extends HTMLElement {
         description: "Expands the tab bar to the full width of the container.",
       },
       {
+        name: "stroke",
+        type: "string",
+        options: "border, none",
+        default: "border",
+        description: "Controls whether the default tab bar border is rendered.",
+      },
+      {
+        name: "active-inset",
+        type: "boolean",
+        options: "active-inset",
+        default: "",
+        description: "Uses an inset shadow recipe for the selected tab surface.",
+      },
+      {
+        name: "radius",
+        type: "string",
+        options: "000, 100, 150, 200, 300, 400, 500, 600, valid CSS value",
+        default: "var(--tab-radius)",
+        description: "Overrides the tab bar radius. Token values map to radius tokens; raw CSS radius values are also accepted.",
+      },
+      {
         name: "variant",
         type: "string",
         options: "default, dots, ghost",
@@ -333,6 +354,65 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card title="Stroke Outline" description="When you need a line to define the size of the tab area.">
+          <mui-tab-bar slot="body" stroke="border">
+            <mui-tab-item active id="stroke-outline-1">Overview</mui-tab-item>
+            <mui-tab-item id="stroke-outline-2">Activity</mui-tab-item>
+            <mui-tab-item id="stroke-outline-3">Settings</mui-tab-item>
+          </mui-tab-bar>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-tab-bar stroke=&quot;border&quot;&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id=&quot;stroke-outline-1&quot;&gt;Overview&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;stroke-outline-2&quot;&gt;Activity&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;stroke-outline-3&quot;&gt;Settings&lt;/mui-tab-item&gt;<br />
+            &lt;/mui-tab-bar&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Inset Tab" description="Use for a more modern, floating pill treatment.">
+          <mui-tab-bar slot="body" stroke="none" active-inset>
+            <mui-tab-item active id="active-inset-none-1">Overview</mui-tab-item>
+            <mui-tab-item id="active-inset-none-2">Activity</mui-tab-item>
+            <mui-tab-item id="active-inset-none-3">Settings</mui-tab-item>
+          </mui-tab-bar>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-tab-bar stroke=&quot;none&quot; active-inset&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id=&quot;active-inset-none-1&quot;&gt;Overview&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;active-inset-none-2&quot;&gt;Activity&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;active-inset-none-3&quot;&gt;Settings&lt;/mui-tab-item&gt;<br />
+            &lt;/mui-tab-bar&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card title="Radius" description="Use radius to adjust the base tab radius.">
+          <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
+            <mui-tab-bar radius="300">
+              <mui-tab-item active id="radius-300-1">Radius 300</mui-tab-item>
+              <mui-tab-item id="radius-300-2">Activity</mui-tab-item>
+              <mui-tab-item id="radius-300-3">Settings</mui-tab-item>
+            </mui-tab-bar>
+            <mui-tab-bar radius="500">
+              <mui-tab-item active id="radius-500-1">Radius 500</mui-tab-item>
+              <mui-tab-item id="radius-500-2">Activity</mui-tab-item>
+              <mui-tab-item id="radius-500-3">Settings</mui-tab-item>
+            </mui-tab-bar>
+            <mui-tab-bar radius="600">
+              <mui-tab-item active id="radius-600-1">Radius 600</mui-tab-item>
+              <mui-tab-item id="radius-600-2">Activity</mui-tab-item>
+              <mui-tab-item id="radius-600-3">Settings</mui-tab-item>
+            </mui-tab-bar>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-tab-bar radius=&quot;300&quot;&gt;...&lt;/mui-tab-bar&gt;<br />
+            &lt;mui-tab-bar radius=&quot;500&quot;&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item active id=&quot;radius-500-1&quot;&gt;Radius 500&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;radius-500-2&quot;&gt;Activity&lt;/mui-tab-item&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-item id=&quot;radius-500-3&quot;&gt;Settings&lt;/mui-tab-item&gt;<br />
+            &lt;/mui-tab-bar&gt;<br />
+            &lt;mui-tab-bar radius=&quot;600&quot;&gt;...&lt;/mui-tab-bar&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card title="Tab Controller and Tab Panel">
           <mui-tab-controller slot="body">
             <mui-tab-bar>
@@ -466,11 +546,6 @@ class storyTabBar extends HTMLElement {
         <story-card title="Before and After Slots">
           <mui-v-stack slot="body" space="var(--space-300)" alignx='start'>
             <mui-h-stack alignY="center" space="var(--space-300)">
-              <mui-button size="x-small">
-                <mui-icon-calendar slot="before"></mui-icon-calendar>
-                Action
-                <mui-badge slot="after">Beta</mui-badge>
-              </mui-button>
               <mui-tab-bar size="x-small">
                 <mui-tab-item active id="default-width-x-small-1">
                   <mui-icon-message slot="before"></mui-icon-message>
@@ -486,11 +561,6 @@ class storyTabBar extends HTMLElement {
             </mui-h-stack>
 
             <mui-h-stack alignY="center" space="var(--space-300)">
-              <mui-button size="small">
-                <mui-icon-calendar slot="before"></mui-icon-calendar>
-                Action
-                <mui-badge slot="after">Beta</mui-badge>
-              </mui-button>
               <mui-tab-bar size="small">
                 <mui-tab-item active id="default-width-small-1">
                   <mui-icon-message slot="before"></mui-icon-message>
@@ -506,11 +576,6 @@ class storyTabBar extends HTMLElement {
             </mui-h-stack>
 
             <mui-h-stack alignY="center" space="var(--space-300)">
-              <mui-button size="medium">
-                <mui-icon-calendar slot="before"></mui-icon-calendar>
-                Action
-                <mui-badge slot="after">Beta</mui-badge>
-              </mui-button>
               <mui-tab-bar size="medium">
                 <mui-tab-item active id="default-width-medium-1">
                   <mui-icon-message slot="before"></mui-icon-message>
@@ -526,11 +591,6 @@ class storyTabBar extends HTMLElement {
             </mui-h-stack>
 
             <mui-h-stack alignY="center" space="var(--space-300)">
-              <mui-button size="large">
-                <mui-icon-calendar slot="before"></mui-icon-calendar>
-                Action
-                <mui-badge slot="after">Beta</mui-badge>
-              </mui-button>
               <mui-tab-bar size="large">
                 <mui-tab-item active id="default-width-large-1">
                   <mui-icon-message slot="before"></mui-icon-message>
@@ -546,11 +606,6 @@ class storyTabBar extends HTMLElement {
             </mui-h-stack>
           </mui-v-stack>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-button size="small"&gt;<br />
-            &nbsp;&nbsp;&lt;mui-icon-calendar slot="before"&gt;&lt;/mui-icon-calendar&gt;<br />
-            &nbsp;&nbsp;Action<br />
-            &nbsp;&nbsp;&lt;mui-badge slot="after"&gt;Beta&lt;/mui-badge&gt;<br />
-            &lt;/mui-button&gt;<br />
             &lt;mui-tab-bar size="small"&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-tab-item active id="default-width-small-1"&gt;<br />

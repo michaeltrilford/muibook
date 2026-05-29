@@ -86,8 +86,8 @@ SURFACES:
 - SmartCard: state, number, variant, partner, type, logo, logo-height, bg-color, bg-image, inverted
 
 CONTENT:
-- Heading: text, size (1|2|3|4|5|6), level (1|2|3|4|5|6)
-- Body: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|success|warning|error), style; use _Icon icon=mui-icon-info slot=before for lightweight inline guidance
+- Heading: text, size (1|2|3|4|5|6), level (1|2|3|4|5|6), truncate, clamp
+- Body: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|info|success|warning|error), truncate, clamp, style; use _Icon icon=mui-icon-info slot=before for lightweight inline guidance
 - Span: text, style; supports inline children such as Link
 - Code: size, scrollable
 - Quote: default text
@@ -109,7 +109,7 @@ FORMS AND INPUTS:
 - FormSectionFooter: slot, style
 - FormGroup: heading, variant (vertical|horizontal), hide-label, style
 - Field: label, variant (default|success|warning|error), message, hide-label, size (x-small|small|medium|large), optional, style
-- FormMessage: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|success|warning|error), style
+- FormMessage: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|info|success|warning|error), style
 - Input: label, type (text|email|password|number|tel|url), placeholder, value, id, name, disabled, hide-label, variant (default|error), size (x-small|small|medium|large), optional, max-length; slots before/after
 - Textarea: label, placeholder, value, name, id, variant (default|success|warning|error), size (x-small|small|medium|large), rows, optional, hide-label, max-length, disabled, style
 - Select: label, placeholder, options, value, id, name, disabled, variant (default|error), size (x-small|small|medium|large)
@@ -123,14 +123,14 @@ FORMS AND INPUTS:
 - Addon: text, size (x-small|small|medium|large), slot (before|after), style
 
 ACTIONS:
-- Button: text, variant (primary|secondary|tertiary|overlay|attention), size (small|medium|large), disabled, aria-label; slots default/before/after
+- Button: text, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (050|100|200|300|400|500), disabled, aria-label; slots default/before/after
 - ButtonGroup: slot default, right, style
-- Link: text, href, variant (primary|secondary|tertiary|overlay|attention), size (x-small|small|medium|large), target, download, weight (regular|bold), disabled; slots default/before/after
+- Link: text, href, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (050|100|200|300|400|500), target, download, weight (regular|bold), disabled; slots default/before/after
 - Dropdown: zindex, position, persistent; slots action/default
 - Chip: text, active, dismiss, usage; slots default/before/after
 
 NAVIGATION:
-- TabBar: speed, controlsPosition; slots default/controls
+- TabBar: speed, controlsPosition, stroke (border|none), active-inset, radius; slots default/controls
 - TabItem: text, icon, active, id
 - TabController: slot default
 - TabPanel: item

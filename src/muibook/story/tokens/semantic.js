@@ -164,6 +164,11 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--action-font-size" variant="text-size"></story-token-slat>
             <story-token-slat slot="body" token="--action-line-height" variant="line-height"></story-token-slat>
             <story-token-slat slot="body" token="--action-font-weight" variant="font-weight"></story-token-slat>
+            <story-token-slat slot="body" token="--action-size-xx-small" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--action-size-x-small" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--action-size-small" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--action-size-medium" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--action-size-large" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--action-radius" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--action-radius-x-small" variant="radius"></story-token-slat>
             <story-token-slat slot="body" token="--action-radius-small" variant="radius"></story-token-slat>

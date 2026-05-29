@@ -93,7 +93,7 @@ class MuiTabItem extends HTMLElement {
         background: transparent;
         white-space: nowrap;
         cursor: pointer;
-        min-height: var(--action-icon-only-size);
+        min-height: var(--tab-item-size-medium, var(--action-size-medium));
         box-sizing: border-box;
         border-radius: calc(var(--tab-radius) - 0.2rem);
       }
@@ -183,7 +183,7 @@ class MuiTabItem extends HTMLElement {
         line-height: var(--text-line-height-xs);
         font-weight: var(--font-weight-semi-bold);
         padding: var(--action-padding-x-small);
-        min-height: var(--action-icon-only-size-x-small);
+        min-height: var(--tab-item-size-x-small, var(--action-size-x-small));
       }
 
       :host([size="x-small"][has-after]) {
@@ -207,7 +207,7 @@ class MuiTabItem extends HTMLElement {
         font-size: var(--text-font-size-s);
         line-height: var(--text-line-height-s);
         padding: var(--action-padding-small);
-        min-height: var(--action-icon-only-size-small);
+        min-height: var(--tab-item-size-small, var(--action-size-small));
       }
 
       :host([size="small"][has-after]) {
@@ -231,7 +231,7 @@ class MuiTabItem extends HTMLElement {
         font-size: var(--text-font-size-l);
         line-height: var(--text-line-height-l);
         padding: var(--action-padding-large);
-        min-height: var(--action-icon-only-size-large);
+        min-height: var(--tab-item-size-large, var(--action-size-large));
       }
 
       :host([size="large"][has-after]) {

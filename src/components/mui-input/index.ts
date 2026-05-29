@@ -127,12 +127,12 @@ class MuiInput extends HTMLElement {
       const insideAfterSlot = this.shadowRoot?.querySelector('slot[name="inside-after"]') as HTMLSlotElement | null;
       const hintSlot = this.shadowRoot?.querySelector('slot[name="hint"]') as HTMLSlotElement | null;
       const slotMinHeightMap: Record<string, string> = {
-        "x-small": "var(--action-icon-only-size-x-small)",
-        small: "var(--action-icon-only-size-small)",
-        medium: "var(--action-icon-only-size)",
-        large: "var(--action-icon-only-size-large)",
+        "x-small": "var(--action-size-x-small)",
+        small: "var(--action-size-small)",
+        medium: "var(--action-size-medium)",
+        large: "var(--action-size-large)",
       };
-      const slotMinHeight = slotMinHeightMap[normalizedSize] || "var(--action-icon-only-size)";
+      const slotMinHeight = slotMinHeightMap[normalizedSize] || "var(--action-size-medium)";
 
       const updateButtonsInSlot = (slot: HTMLSlotElement | null) => {
         if (!slot) return;
@@ -482,7 +482,7 @@ class MuiInput extends HTMLElement {
         }
         .input-wrapper.stack-mobile .inside-before-slot,
         .input-wrapper.stack-mobile .inside-after-cluster {
-          top: calc(var(--action-icon-only-size) / 2);
+          top: calc(var(--action-size-medium) / 2);
         }
         .input-wrapper.stack-mobile slot[name="before"]::slotted(mui-addon),
         .input-wrapper.stack-mobile slot[name="after"]::slotted(mui-addon) {
@@ -575,7 +575,7 @@ class MuiInput extends HTMLElement {
           background: var(--input-background);
         }
         input.size-x-small {
-          min-height: var(--action-icon-only-size-x-small);
+          min-height: var(--action-size-x-small);
           padding: var(--action-padding-x-small);
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
@@ -589,7 +589,7 @@ class MuiInput extends HTMLElement {
           padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-small {
-          min-height: var(--action-icon-only-size-small);
+          min-height: var(--action-size-small);
           padding: var(--action-padding-small);
           font-size: var(--text-font-size-s);
           line-height: var(--text-line-height-s);
@@ -603,7 +603,7 @@ class MuiInput extends HTMLElement {
           padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-medium {
-          min-height: 4.4rem;
+          min-height: var(--action-size-medium);
           padding: var(--space-200) var(--space-300);
           font-size: var(--text-font-size);
           line-height: var(--text-line-height);
@@ -617,7 +617,7 @@ class MuiInput extends HTMLElement {
           padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-large {
-          min-height: var(--action-icon-only-size-large);
+          min-height: var(--action-size-large);
           padding: var(--space-300) var(--space-400);
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);

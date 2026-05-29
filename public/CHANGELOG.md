@@ -1,8 +1,8 @@
 ## Header [Start]
 
-## v19.6.0
+## v20.0.0
 
-[Package](https://www.npmjs.com/package/@muibook/components/v/19.6.0)
+[Package](https://www.npmjs.com/package/@muibook/components/v/20.0.0)
 
 ## Header [End]
 
@@ -14,12 +14,27 @@
 - `mui-form-message` now supports `variant="info"` for lighter informational form guidance.
 - `mui-rule` now supports semantic `weight="thin"` and `weight="thick"` values in addition to custom CSS values.
 - `mui-slat variant="action"` now supports `col` and `space` layout controls through the internal action button parts.
+- Added canonical `--action-size-*` tokens for shared action control sizing across buttons, links, inputs, selects, tabs, and icon-only controls.
+- `mui-button` and action-style `mui-link` now support `stroke="ring"` and `stroke-ring-size` for inset shadow strokes that avoid adding physical border height.
+- `mui-tab-bar` now supports `stroke="border"` and `stroke="none"` so bordered and borderless tab bars can align to the action sizing rhythm.
+- `mui-tab-bar` now supports `active-inset` for an inset active tab shadow treatment.
+- `mui-tab-bar` now supports `radius` for token-based or custom tab radius overrides.
+- `mui-step` now exposes `--stepper-title-only` for tuning vertical title-only alignment.
 
 ### Changed
 
 - `mui-slat variant="action"` now defaults to `col="minmax(0, 1fr) auto"` so trailing content aligns to the end by default.
+- `mui-button` and button-style `mui-link` now use explicit action size `min-height` tokens, with large actions aligned to the 5.6rem control rhythm.
+- `mui-addon`, `mui-input`, `mui-select`, and `mui-switch` now reuse the shared `--action-size-*` sizing rhythm instead of older icon-only action size references.
+- `mui-tab-item` now resolves its height through the parent tab bar, keeping bordered and borderless tab controls aligned to the same outer action height.
 - `mui-body size="large"` now uses the 30px text rhythm and aligns leading inline icons against the larger line-height.
 - `mui-hint` now reveals faster by default, using a 500ms delay with support for custom delays down to 250ms.
+- `mui-step` now detects whether the `secondary` slot has content and only applies the vertical title-only offset when no secondary content is present.
+
+### Fixed
+
+- `mui-chip` and `mui-file-upload` now reset slotted `mui-button` min-height in compact internal action contexts.
+- `mui-prompt` fan actions now stay anchored in place after the shared action sizing token updates.
 
 ---
 

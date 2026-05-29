@@ -102,6 +102,20 @@ class storyButton extends HTMLElement {
         description: "Describe the intent or mood of the action.",
       },
       {
+        name: "stroke",
+        type: "string",
+        options: "border, ring",
+        default: "border",
+        description: "Draw the action stroke with a physical border or an inset ring shadow.",
+      },
+      {
+        name: "stroke-ring-size",
+        type: "string",
+        options: "050, 100, 200, 300, 400, 500, valid CSS value",
+        default: "050",
+        description: "Set the ring shadow width when stroke is set to ring. Use 050 by default; increase only when more contrast is needed.",
+      },
+      {
         name: "style",
         type: "string",
         options: "Valid CSS",
@@ -611,6 +625,88 @@ class storyButton extends HTMLElement {
           &nbsp;&nbsp;...
           <br />
           &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        title="Stroke: Ring"
+        id="stroke-ring"
+        description="If you prefer using a ring shadow to style your borders, you can adopt that approach."
+        usage='
+          Use stroke="ring" to draw the button stroke with an inset shadow instead of a physical border.|||
+          Prefer ring when you want to adjust the visible stroke without changing the button height, padding, or alignment against adjacent controls.|||
+          Pair stroke="ring" with inputs or selects when you want an action to visually align with a thinner form-control stroke.|||
+          Use stroke-ring-size="050" for the default hairline ring. This maps to var(--stroke-size-050).|||
+          Increase stroke-ring-size when the ring needs more visual contrast; supported token values are 050 through 500.
+        '
+      >
+        <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
+          <mui-button size="xx-small" variant="secondary" stroke="ring">XX-Small</mui-button>
+          <mui-button size="x-small" variant="secondary" stroke="ring">X-Small</mui-button>
+          <mui-button size="small" variant="secondary" stroke="ring">Small</mui-button>
+          <mui-button size="medium" variant="secondary" stroke="ring">Medium</mui-button>
+          <mui-button size="large" variant="secondary" stroke="ring">Large</mui-button>
+          <mui-rule direction="horizontal" length="100%"></mui-rule>
+          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
+            <mui-button variant="primary" stroke="ring">Primary</mui-button>
+            <mui-button variant="secondary" stroke="ring">Secondary</mui-button>
+            <mui-button variant="tertiary" stroke="ring">Tertiary</mui-button>
+            <mui-button variant="attention" stroke="ring">Attention</mui-button>
+          </mui-h-stack>
+          <mui-rule direction="horizontal" length="100%"></mui-rule>
+          <mui-v-stack space="var(--space-100)" alignx="start">
+            <mui-body size="small" weight="bold">Select + Action</mui-body>
+            <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
+              <mui-select
+                size="small"
+                label="Status"
+                hide-label
+                style="min-width: 14rem;"
+                options='[
+                  {"value": "default", "label": "Pending"},
+                  {"value": "active", "label": "Active"}
+                ]'>
+              </mui-select>
+              <mui-button size="small" variant="secondary" stroke="ring">Apply</mui-button>
+            </mui-h-stack>
+          </mui-v-stack>
+          <mui-rule direction="horizontal" length="100%"></mui-rule>
+          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
+            <mui-button variant="secondary" stroke="ring" stroke-ring-size="050">050</mui-button>
+            <mui-button variant="secondary" stroke="ring" stroke-ring-size="100">100</mui-button>
+            <mui-button variant="secondary" stroke="ring" stroke-ring-size="200">200</mui-button>
+            <mui-button variant="secondary" stroke="ring" stroke-ring-size="300">300</mui-button>
+            <mui-button variant="secondary" stroke="ring" stroke-ring-size="400">400</mui-button>
+            <mui-button variant="secondary" stroke="ring" stroke-ring-size="500">500</mui-button>
+          </mui-h-stack>
+          <div
+            class="overlay-canvas"
+            style="
+              --canvas-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80');
+              --canvas-tint: var(--grey-1200);
+              padding: var(--space-300);
+            "
+          >
+            <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
+              <mui-button variant="overlay" stroke="ring">Overlay</mui-button>
+            </mui-h-stack>
+          </div>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button size="xx-small" variant="secondary" stroke="ring"&gt;XX-Small&lt;/mui-button&gt;<br />
+          &lt;mui-button size="x-small" variant="secondary" stroke="ring"&gt;X-Small&lt;/mui-button&gt;<br />
+          &lt;mui-button size="small" variant="secondary" stroke="ring"&gt;Small&lt;/mui-button&gt;<br />
+          &lt;mui-button size="medium" variant="secondary" stroke="ring"&gt;Medium&lt;/mui-button&gt;<br />
+          &lt;mui-button size="large" variant="secondary" stroke="ring"&gt;Large&lt;/mui-button&gt;<br /><br />
+          &lt;mui-button variant="primary" stroke="ring"&gt;Primary&lt;/mui-button&gt;<br />
+          &lt;mui-button variant="secondary" stroke="ring"&gt;Secondary&lt;/mui-button&gt;<br />
+          &lt;mui-button variant="tertiary" stroke="ring"&gt;Tertiary&lt;/mui-button&gt;<br />
+          &lt;mui-button variant="attention" stroke="ring"&gt;Attention&lt;/mui-button&gt;<br />
+          &lt;mui-select size="small" label="Status" hide-label&gt;...&lt;/mui-select&gt;<br />
+          &lt;mui-button size="small" variant="secondary" stroke="ring"&gt;Apply&lt;/mui-button&gt;<br />
+          &lt;mui-button variant="secondary" stroke="ring" stroke-ring-size="100"&gt;100&lt;/mui-button&gt;<br />
+          &lt;mui-button variant="secondary" stroke="ring" stroke-ring-size="500"&gt;500&lt;/mui-button&gt;<br />
+          &lt;mui-button variant="overlay" stroke="ring"&gt;Overlay&lt;/mui-button&gt;
         </story-code-block>
       </story-card>
 
@@ -1126,7 +1222,7 @@ class storyButton extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="form-submissions::Form submissions|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||button-group::Header: Button-Group|||footer-button-group::Footer: Button-Group|||button-group-layout::Button-Group: Layout|||button-group-alignment::Button-Group: Alignment|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||avatar-only-button::Avatar-only Button|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
+          links="form-submissions::Form submissions|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||stroke-ring::Stroke: Ring|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||button-group::Header: Button-Group|||footer-button-group::Footer: Button-Group|||button-group-layout::Button-Group: Layout|||button-group-alignment::Button-Group: Alignment|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||avatar-only-button::Avatar-only Button|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
         ></story-quicklinks>
 
         ${stories}

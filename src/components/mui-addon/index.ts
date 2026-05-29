@@ -41,32 +41,32 @@ class MuiAddon extends HTMLElement {
           align-items: center;
           justify-content: center;
           box-sizing: border-box;
-          min-height: 4.4rem;
+          min-height: var(--action-size-medium);
           padding: var(--space-200) var(--space-400);
           background: var(--addon-background);
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
-          min-width: 4.4rem;
+          min-width: var(--action-size-medium);
           white-space: nowrap;
         }
         :host([size="x-small"]) {
-          min-height: var(--action-icon-only-size-x-small);
-          min-width: var(--action-icon-only-size-x-small);
+          min-height: var(--action-size-x-small);
+          min-width: var(--action-size-x-small);
           padding: var(--action-padding-x-small);
         }
         :host([size="small"]) {
-          min-height: var(--action-icon-only-size-small);
-          min-width: var(--action-icon-only-size-small);
+          min-height: var(--action-size-small);
+          min-width: var(--action-size-small);
           padding: var(--action-padding-small);
         }
         :host([size="medium"]) {
-          min-height: 4.4rem;
-          min-width: 4.4rem;
+          min-height: var(--action-size-medium);
+          min-width: var(--action-size-medium);
           padding: var(--space-200) var(--space-400);
         }
         :host([size="large"]) {
-          min-height: var(--action-icon-only-size-large);
-          min-width: var(--action-icon-only-size-large);
+          min-height: var(--action-size-large);
+          min-width: var(--action-size-large);
           padding: var(--space-300) var(--space-500);
         }
         :host([slot="before"]) {

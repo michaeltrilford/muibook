@@ -26,6 +26,18 @@ export const muiApi = {
         description: "Visual emphasis and intent of the action.",
       },
       {
+        name: "stroke",
+        type: { text: '"border" | "ring"' },
+        default: "border",
+        description: "Controls whether the action stroke is drawn with the normal border or an inset ring shadow.",
+      },
+      {
+        name: "stroke-ring-size",
+        type: { text: '"050" | "100" | "200" | "300" | "400" | "500" | string' },
+        default: "050",
+        description: "Ring stroke width when `stroke=\"ring\"` is used. Token values map to `--stroke-size-*`; use `050` by default and increase only when more contrast is needed.",
+      },
+      {
         name: "size",
         type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' },
         default: "medium",

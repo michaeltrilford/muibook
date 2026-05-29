@@ -804,38 +804,45 @@ html[data-theme="dark"] {
   --action-font-weight: var(--font-weight-medium);
 
   /* SIZE: XSMALL */
+  --action-size-xx-small: calc(var(--action-size-x-small) - var(--space-100));
+  --action-size-x-small: 2.8rem;
   --action-radius-x-small: var(--radius-100);
   --action-padding-x-small: var(--space-050) var(--space-200);
   --action-before-slot-padding-x-small: var(--space-100);
   --action-after-slot-padding-x-small: var(--space-100);
-  --action-icon-only-size-x-small: 2.8rem;
+  --action-icon-only-size-x-small: var(--action-size-x-small);
 
   /* SIZE: SMALL */
+  --action-size-small: 3.6rem;
   --action-radius-small: var(--radius-100);
   --action-padding-small: calc(var(--space-100) - (var(--stroke-size-100) / 2)) var(--space-300);
   --action-before-slot-padding-small: var(--space-200);
   --action-after-slot-padding-small: var(--space-200);
-  --action-icon-only-size-small: 3.6rem;
+  --action-icon-only-size-small: var(--action-size-small);
 
   /* SIZE: MEDIUM: DEFAULT */
+  --action-size-medium: 4.4rem;
   --action-radius-medium: var(--radius-200);
   --action-padding: var(--space-200) calc(var(--space-300) + var(--space-100));
   --action-before-slot-padding: var(--space-300);
   --action-after-slot-padding: var(--space-300);
   --action-icon-only-padding: var(--space-000);
-  --action-icon-only-size: 4.4rem;
-  --row-action-xxs: calc(var(--action-icon-only-size-x-small) - var(--space-100));
-  --row-action-xs: var(--action-icon-only-size-x-small);
-  --row-action-s: var(--action-icon-only-size-small);
-  --row-action-m: var(--action-icon-only-size);
-  --row-action-l: var(--action-icon-only-size-large);
+  --action-icon-only-size: var(--action-size-medium);
+  --action-icon-only-size-medium: var(--action-size-medium);
 
   /* SIZE: LARGE */
+  --action-size-large: 5.6rem;
   --action-radius-large: var(--radius-300);
-  --action-padding-large: var(--space-300) var(--space-500);
+  --action-padding-large: var(--space-200) var(--space-500);
   --action-before-slot-padding-large: var(--space-400);
   --action-after-slot-padding-large: var(--space-400);
-  --action-icon-only-size-large: 5.2rem;
+  --action-icon-only-size-large: var(--action-size-large);
+
+  --row-action-xxs: var(--action-size-xx-small);
+  --row-action-xs: var(--action-size-x-small);
+  --row-action-s: var(--action-size-small);
+  --row-action-m: var(--action-size-medium);
+  --row-action-l: var(--action-size-large);
 
   /* Text */
   --text-line-height-xs: var(--line-height-25);
@@ -904,7 +911,7 @@ html[data-theme="dark"] {
   --progress-syncing-width: 30%;
   --progress-pending-stripe-size: 1rem;
   /* Stepper */
-  --stepper-dot-size: var(--action-icon-only-size-x-small);
+  --stepper-dot-size: var(--action-size-x-small);
   --stepper-dot-size-small: calc(var(--stepper-dot-size) - var(--space-050));
   --stepper-dot-size-x-small: calc(var(--stepper-dot-size-small) - var(--space-050));
   /* Tab */

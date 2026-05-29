@@ -33,6 +33,10 @@ export const muiApi = {
       { name: "--stepper-color", description: "Controls the default step text and connector color." },
       { name: "--stepper-success-color", description: "Controls the success state color." },
       { name: "--stepper-error-color", description: "Controls the error state color." },
+      {
+        name: "--stepper-title-only",
+        description: "Controls the vertical title offset when a step has no secondary slot content.",
+      },
     ],
   },
 };

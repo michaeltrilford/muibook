@@ -94,7 +94,12 @@ class StoryFormGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="select-action" title="Select + Action" description="Use space and aligny to build an input-family row with a trailing action.">
+      <story-card
+        id="select-action"
+        title="Select + Action"
+        description="Use space and aligny to build an input-family row with a trailing action."
+        usage="Pair stroke=&quot;ring&quot; with inputs or selects when you want an action to visually align with a thinner form-control stroke.|||Keep the ring explicit on the action, rather than relying on form-group to change descendant button styling."
+      >
         <div slot="body" class="story-form-surface">
           <mui-form-group variant="horizontal" space="var(--space-300)" aligny="end">
             <mui-select
@@ -105,7 +110,7 @@ class StoryFormGroup extends HTMLElement {
                 {"value": "recent", "label": "Recently Updated"}
               ]'>
             </mui-select>
-            <mui-button variant="secondary">Save View</mui-button>
+            <mui-button variant="secondary" stroke="ring">Save View</mui-button>
           </mui-form-group>
         </div>
         <story-code-block slot="footer" scrollable>
@@ -113,7 +118,7 @@ class StoryFormGroup extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-select label="Saved View" options='[{...}]'&gt;&lt;/mui-select&gt;
           <br />
-          &nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;Save View&lt;/mui-button&gt;
+          &nbsp;&nbsp;&lt;mui-button variant="secondary" stroke="ring"&gt;Save View&lt;/mui-button&gt;
           <br />
           &lt;/mui-form-group&gt;
         </story-code-block>

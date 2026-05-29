@@ -1210,7 +1210,6 @@ class MuiPrompt extends HTMLElement {
     const fanMode = hasToolbarActions || this.hasTruthyFlagAttribute("actions-fan");
     const fanOpen = this.hasAttribute("fan-open");
     const fanSpeed = 100;
-    const fanStep = "calc(var(--action-icon-only-size-medium) + var(--space-100))";
     this.enforceActionVariants();
     actions.forEach((action, index) => {
       action.style.transition = `transform ${fanSpeed}ms ease, opacity ${fanSpeed}ms ease`;
@@ -1251,7 +1250,7 @@ class MuiPrompt extends HTMLElement {
         return;
       }
 
-      const x = `calc(${fanStep} * -${index})`;
+      const x = "0px";
       const staggerDelay = index * 50;
       action.style.transition = `opacity ${Math.max(120, fanSpeed - 40)}ms ease, transform ${fanSpeed}ms cubic-bezier(0.22, 1, 0.36, 1)`;
       action.style.transitionDelay = `${staggerDelay}ms`;
