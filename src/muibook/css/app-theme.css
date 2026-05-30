@@ -299,7 +299,7 @@ html[data-brand="paperclip"][data-theme="light"] {
   --app-container-surface: var(--white);
   --app-navbar-surface-opacity: var(--white-opacity-90);
   --app-navbar-surface: var(--white);
-  --app-navbar-surface-100: var(--blue-100);
+  --app-navbar-surface-100: var(--white);
   --app-navbar-border-color: var(--blue-500);
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--blue-100);
@@ -316,6 +316,7 @@ html[data-brand="paperclip"][data-theme="light"] {
   --app-story-wallet-card: var(--white);
   --app-illustration-background-inverse: var(--blue-500);
   --app-wallet-slat-background: var(--blue-100);
+  --app-muitube-background: var(--white);
 }
 
 html[data-brand="paperclip"][data-theme="dark"] {
@@ -334,12 +335,12 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --app-navbar-surface-opacity: var(--blue-500);
   --app-navbar-surface: var(--blue-500);
   --app-navbar-surface-100: var(--blue-500);
-  --app-navbar-border-color: var(--white);
+  --app-navbar-border-color: var(--blue-400);
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--blue-500);
   --home-page-body-text: var(--white);
   --app-story-card: var(--blue-500);
-  --app-story-card-canvas-guide-color: var(--white);
+  --app-story-card-canvas-guide-color: var(--blue-400);
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-story-type-header-background: var(--blue-500);
@@ -350,4 +351,5 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --app-story-wallet-card: var(--blue-500);
   --app-illustration-background-inverse: var(--white);
   --app-wallet-slat-background: var(--blue-600);
+  --app-muitube-background: var(--blue-500);
 }

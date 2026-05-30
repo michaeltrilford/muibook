@@ -351,12 +351,12 @@ const styles = /*css*/ `
     width: max-content; 
   }
   .filter_next { 
-    background: var(--surface-elevated-200); 
+    background: var(--app-muitube-background, var(--surface-elevated-100));
     position: absolute;
     z-index: 1;
     right: 0; 
     top: calc(var(--space-500) + var(--space-100)); 
-    box-shadow: calc(-1 * var(--space-400)) 0 var(--space-200) 0 var(--surface-elevated-200); 
+    box-shadow: calc(-1 * var(--space-400)) 0 var(--space-200) 0 var(--app-muitube-background, var(--surface-elevated-100)); 
     padding-top: var(--space-100);
     padding-right: calc(var(--space-500) - var(--stroke-size-500));
     padding-bottom: var(--space-100);
@@ -550,7 +550,7 @@ class compMuiTube extends HTMLElement {
 
     const Comp = /*html*/ `
       <style>${styles}</style>
-      <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" style="background: var(--surface-elevated-200);" slot="body">
+      <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" style="background: var(--app-muitube-background, var(--surface-elevated-100))" slot="body">
         <mui-h-stack style="padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color);" alignx="space-between" aligny="center">
           <mui-h-stack alignx="start" aligny="center" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000);">
             <mui-responsive breakpoint="768">
