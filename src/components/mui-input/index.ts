@@ -758,6 +758,10 @@ class MuiInput extends HTMLElement {
         slot[name="inside-before"]::slotted(*:hover),
         slot[name="inside-after"]::slotted(*:hover) { z-index: 1; }
 
+        input:focus {
+          z-index: 2;
+        }
+
       /* Ensure feedback styles appear above SELECT and focusable Items */
         input.success,
         input.warning,

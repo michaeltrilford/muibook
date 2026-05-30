@@ -3,8 +3,6 @@ import "./css/themes/jal/brand.css";
 import "./css/themes/jal/index.css";
 import "./css/themes/ana/brand.css";
 import "./css/themes/ana/index.css";
-import "./css/themes/modern/brand.css";
-import "./css/themes/modern/index.css";
 import "./css/themes/sensei/brand.css";
 import "./css/themes/sensei/index.css";
 import "./css/themes/paperclip/brand.css";

@@ -450,10 +450,6 @@ class compMuiTube extends HTMLElement {
         light: MuiVideoLight,
         dark: MuiVideoDark,
       },
-      modern: {
-        light: MuiVideoLight,
-        dark: MuiVideoDark,
-      },
       sensei: {
         light: SenseiVideoLight,
         dark: SenseiVideoDark,

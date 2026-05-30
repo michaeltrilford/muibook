@@ -102,7 +102,6 @@ class BaseTheme extends HTMLElement {
                 <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/paperclip" target="_blank">Paperclip</mui-link>,
                 <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/jal" target="_blank">JAL</mui-link>, 
                 <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/ana" target="_blank">ANA</mui-link>, 
-                <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/modern" target="_blank">Modern</mui-link>,
                 <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/sensei" target="_blank">Sensei</mui-link>
                 build on the core MUI theme. Only override the values you need; everything else falls back to the  
                 <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css" target="_blank">mui-tokens</mui-link> 

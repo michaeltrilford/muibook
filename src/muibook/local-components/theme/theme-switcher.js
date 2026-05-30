@@ -7,7 +7,6 @@ class ThemeSwitcher extends HTMLElement {
       mui: { theme: true },
       jal: { theme: true },
       ana: { theme: true },
-      modern: { theme: true },
       sensei: { theme: true },
       paperclip: { theme: true },
     };
@@ -24,18 +23,6 @@ class ThemeSwitcher extends HTMLElement {
         {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap",
-        },
-      ],
-      modern: [
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        {
-          rel: "preconnect",
-          href: "https://fonts.gstatic.com",
-          crossOrigin: "anonymous",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap",
         },
       ],
       sensei: [
@@ -103,8 +90,7 @@ class ThemeSwitcher extends HTMLElement {
             {"value": "paperclip", "label": "Paperclip"},
             {"value": "sensei", "label": "Sensei"},
             {"value": "jal", "label": "JAL"},
-            {"value": "ana", "label": "ANA"},
-            {"value": "modern", "label": "Modern"}
+            {"value": "ana", "label": "ANA"}
           ]'>
         </mui-select>
       </mui-grid>
@@ -125,7 +111,8 @@ class ThemeSwitcher extends HTMLElement {
 
   applySettings() {
     const storedBrand = localStorage.getItem("brand") || "mui";
-    const brand = storedBrand === "paperclip-punks" ? "paperclip" : storedBrand;
+    const normalizedBrand = storedBrand === "paperclip-punks" ? "paperclip" : storedBrand;
+    const brand = this.brandCapabilities[normalizedBrand] ? normalizedBrand : "mui";
     if (brand !== storedBrand) localStorage.setItem("brand", brand);
     document.documentElement.setAttribute("data-brand", brand);
 

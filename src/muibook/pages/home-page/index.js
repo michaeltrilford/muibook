@@ -7,6 +7,8 @@ import "../../images/mui/ana-logo";
 import "../../images/mui/jal-logo";
 import "../../images/mui/jal-logo-mobile";
 import "../../images/mui/ana-logo-mobile";
+import "../../images/mui/paperclip-punks-logo";
+import "../../images/mui/sensei-logo";
 import Jal from "../../images/jal/bg-plane.webp";
 import AnaLight from "../../images/ana/light.webp";
 import AnaNight from "../../images/ana/night.webp";
@@ -18,7 +20,7 @@ class HomePage extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["data-brand"];
+    return ["data-brand", "data-theme"];
   }
 
   attributeChangedCallback(_name, oldValue, newValue) {
@@ -27,22 +29,33 @@ class HomePage extends HTMLElement {
     }
   }
 
+  connectedCallback() {
+    const html = document.documentElement;
+    this.setAttribute("data-brand", html.getAttribute("data-brand") || "mui");
+    this.setAttribute("data-theme", html.getAttribute("data-theme") || "light");
+    this.render();
+  }
+
   getLogos() {
     // Get the brand from attribute or fallback to "mui"
     let brand = this.getAttribute("data-brand") || document.documentElement.getAttribute("data-brand") || "mui";
-    if (!brand || brand === "modern") brand = "mui";
+    if (!brand) brand = "mui";
 
     // Define the allowed brands and their component tags
     const LOGO_TAGS = {
       mui: "mui-logo",
       jal: "jal-logo",
       ana: "ana-logo",
+      paperclip: "paperclip-punks-logo",
+      sensei: "sensei-logo",
     };
 
     const LOGO_MOBILE_TAGS = {
       mui: "mui-logo-mobile",
       jal: "jal-logo-mobile",
       ana: "ana-logo-mobile",
+      paperclip: "paperclip-punks-logo",
+      sensei: "sensei-logo",
     };
 
     // Resolve the correct tag names, fallback to mui
@@ -58,9 +71,6 @@ class HomePage extends HTMLElement {
 
   getActions() {
     let brand = this.getAttribute("data-brand") || "mui";
-
-    // Normalize brands that share the same logo
-    if (brand === "modern") brand = "mui";
 
     // Return different HTML depending on brand
     if (brand === "mui") {
@@ -207,7 +217,6 @@ class HomePage extends HTMLElement {
         .introduction::part(align-items) { align-items: center; }
       }
 
-
       @media (min-width: 960px) {
         .body-text { max-width: 58ch; }
       }
@@ -238,21 +247,29 @@ class HomePage extends HTMLElement {
          background: var(--black-opacity-30);
       }
 
-      /* JAL & ANA */
+      /* Brand logo layouts */
       @media (min-width: 960px) {
         :host([data-brand="jal"]) .logo-wrapper { grid-column: 9 / 13; }
 
         :host([data-brand="ana"]) .logo-wrapper { grid-column: 8 / 13; }
 
+        :host([data-brand="paperclip"]) .logo-wrapper { grid-column: 6 / 13; }
+
+        :host([data-brand="sensei"]) .logo-wrapper { grid-column: 6 / 13; }
+
         :host([data-brand="jal"]) .introduction,
-        :host([data-brand="ana"]) .introduction { 
+        :host([data-brand="ana"]) .introduction,
+        :host([data-brand="paperclip"]) .introduction,
+        :host([data-brand="sensei"]) .introduction { 
           grid-column: 1 / 13; 
           grid-row: initial;
           align-content: end;
         }
 
         :host([data-brand="jal"]) main,
-        :host([data-brand="ana"]) main {
+        :host([data-brand="ana"]) main,
+        :host([data-brand="paperclip"]) main,
+        :host([data-brand="sensei"]) main {
           align-items: initial;
           justify-content: initial;
           column-gap: var(--space-200);
@@ -266,12 +283,16 @@ class HomePage extends HTMLElement {
 
       @media (min-width: 1300px) {
         :host([data-brand="jal"]) main,
-        :host([data-brand="ana"]) main { 
+        :host([data-brand="ana"]) main,
+        :host([data-brand="paperclip"]) main,
+        :host([data-brand="sensei"]) main { 
           column-gap: var(--space-800); 
           row-gap: var(--space-800); 
         }
         :host([data-brand="jal"]) .introduction,
-        :host([data-brand="ana"]) .introduction { 
+        :host([data-brand="ana"]) .introduction,
+        :host([data-brand="paperclip"]) .introduction,
+        :host([data-brand="sensei"]) .introduction { 
           grid-row: initial; 
           align-content: end; 
         }
@@ -280,13 +301,17 @@ class HomePage extends HTMLElement {
       @media (min-width: 1400px) {
 
         :host([data-brand="jal"]),
-        :host([data-brand="ana"]) {          
+        :host([data-brand="ana"]),
+        :host([data-brand="paperclip"]),
+        :host([data-brand="sensei"]) {          
           padding-top: calc((var(--space-600) * 2) + env(safe-area-inset-top)); 
 
         } 
 
         :host([data-brand="jal"]) main,
-        :host([data-brand="ana"]) main {
+        :host([data-brand="ana"]) main,
+        :host([data-brand="paperclip"]) main,
+        :host([data-brand="sensei"]) main {
           grid-template-rows: auto 1fr; 
         }
         :host([data-brand="jal"]) .logo-wrapper { 
@@ -295,17 +320,27 @@ class HomePage extends HTMLElement {
         :host([data-brand="ana"]) .logo-wrapper { 
           grid-column: 9 / 13; 
         }
+        :host([data-brand="paperclip"]) .logo-wrapper {
+          grid-column: 7 / 13;
+        }
+        :host([data-brand="sensei"]) .logo-wrapper {
+          grid-column: 7 / 13;
+        }
         :host([data-brand="jal"]) .introduction,
-        :host([data-brand="ana"]) .introduction { 
+        :host([data-brand="ana"]) .introduction,
+        :host([data-brand="paperclip"]) .introduction,
+        :host([data-brand="sensei"]) .introduction { 
           grid-column: 1 / 13; 
         }
         :host([data-brand="jal"]) .introduction::part(align-items),
-        :host([data-brand="ana"]) .introduction::part(align-items) { 
+        :host([data-brand="ana"]) .introduction::part(align-items),
+        :host([data-brand="paperclip"]) .introduction::part(align-items),
+        :host([data-brand="sensei"]) .introduction::part(align-items) { 
           align-items: center; 
         }
       }
 
-      /* JAL & ANA - GRID END */
+      /* Brand logo layouts - GRID END */
       
       :host([data-brand="jal"][data-theme="light"]) {
         background-image:

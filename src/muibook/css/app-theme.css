@@ -192,53 +192,6 @@ html[data-brand="ana"][data-theme="dark"] {
 }
 
 /* =============================================================================== */
-/*   Theme Storefront: Create App                                                  */
-/*   Component theme alignment across storefront                                   */
-/* =============================================================================== */
-
-html[data-brand="modern"][data-theme="light"] {
-  --app-logo-color: var(--black);
-  --app-heading-color: var(--black);
-  --app-nav-accent: var(--black);
-  --app-theme-toggle-bg: var(--grey-300);
-  --app-story-snippet-code-bg: var(--grey-200);
-  --app-story-snippet-code-text: var(--black);
-  /* App Surface */
-  --app-container-surface: var(--grey-100);
-  --app-navbar-surface-opacity: var(--grey-100-opacity-80);
-  --app-navbar-surface: var(--grey-100);
-  --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 96%, black);
-  --app-navbar-border-color: var(--grey-300);
-  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
-  --app-navbar-accordion-chevron-hover: var(--grey-100);
-  --app-story-card: var(--grey-200);
-  --app-story-banner-border-color: var(--app-navbar-border-color);
-  --app-navbar-section-chevron: var(--grey-500);
-  --app-muitube-background: var(--grey-100);
-}
-
-html[data-brand="modern"][data-theme="dark"] {
-  --app-logo-color: var(--white);
-  --app-heading-color: var(--white);
-  --app-nav-accent: var(--white);
-  --app-theme-toggle-bg: var(--grey-300);
-  --app-story-snippet-code-bg: var(--white);
-  --app-story-code-text: var(--black);
-  /* App Surface */
-  --app-container-surface: var(--grey-1000);
-  --app-navbar-surface-opacity: var(--grey-1000-opacity-80);
-  --app-navbar-surface: var(--grey-1000);
-  --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
-  --app-navbar-border-color: var(--grey-800);
-  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
-  --app-navbar-accordion-chevron-hover: var(--grey-800);
-  --app-story-card: var(--grey-900);
-  --app-story-banner-border-color: var(--app-navbar-border-color);
-  --app-navbar-section-chevron: var(--grey-300);
-  --app-muitube-background: var(--grey-800);
-}
-
-/* =============================================================================== */
 /*   Theme Storefront: SENSEI                                                      */
 /*   Component theme alignment across storefront                                   */
 /* =============================================================================== */
