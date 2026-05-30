@@ -55,6 +55,7 @@ html[data-brand="mui"][data-theme="light"] {
   /* Story Types */
   --app-story-type-header-background: var(--grey-100);
   --app-navbar-section-chevron: var(--grey-400);
+  --app-muitube-background: var(--grey-100);
 }
 html[data-brand="mui"][data-theme="dark"] {
   --app-logo-color: var(--mui-brand-300);
@@ -85,6 +86,7 @@ html[data-brand="mui"][data-theme="dark"] {
   /* Story Types */
   --app-story-type-header-background: var(--grey-900);
   --app-navbar-section-chevron: var(--grey-600);
+  --app-muitube-background: var(--grey-900);
 }
 
 /* =============================================================================== */
@@ -109,6 +111,7 @@ html[data-brand="jal"][data-theme="light"] {
   --app-story-card: var(--grey-200);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--red-300);
+  --app-muitube-background: var(--grey-100);
 }
 
 html[data-brand="jal"][data-theme="dark"] {
@@ -129,6 +132,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--gold-400);
+  --app-muitube-background: var(--grey-1000);
 }
 
 @media (min-width: 960px) {
@@ -161,6 +165,7 @@ html[data-brand="ana"][data-theme="light"] {
   --app-story-card: var(--grey-200);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--blue-300);
+  --app-muitube-background: var(--grey-100);
 }
 
 html[data-brand="ana"][data-theme="dark"] {
@@ -183,6 +188,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --app-story-card: var(--grey-800);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--blue-300);
+  --app-muitube-background: var(--grey-800);
 }
 
 /* =============================================================================== */
@@ -208,6 +214,7 @@ html[data-brand="modern"][data-theme="light"] {
   --app-story-card: var(--grey-200);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--grey-500);
+  --app-muitube-background: var(--grey-100);
 }
 
 html[data-brand="modern"][data-theme="dark"] {
@@ -228,6 +235,7 @@ html[data-brand="modern"][data-theme="dark"] {
   --app-story-card: var(--grey-900);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--grey-300);
+  --app-muitube-background: var(--grey-800);
 }
 
 /* =============================================================================== */
@@ -255,6 +263,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--green-800);
+  --app-muitube-background: var(--green-400);
 }
 
 html[data-brand="sensei"][data-theme="dark"] {
@@ -278,6 +287,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--green-400);
+  --app-muitube-background: var(--green-1400);
 }
 
 /* =============================================================================== */
@@ -316,7 +326,8 @@ html[data-brand="paperclip"][data-theme="light"] {
   --app-story-wallet-card: var(--white);
   --app-illustration-background-inverse: var(--blue-500);
   --app-wallet-slat-background: var(--blue-100);
-  --app-muitube-background: var(--white);
+  --app-muitube-background: var(--grey-100);
+  --app-muitube-card-background-hover: var(--white);
 }
 
 html[data-brand="paperclip"][data-theme="dark"] {
@@ -352,4 +363,5 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --app-illustration-background-inverse: var(--white);
   --app-wallet-slat-background: var(--blue-600);
   --app-muitube-background: var(--blue-500);
+  --app-muitube-card-background-hover: var(--blue-600);
 }

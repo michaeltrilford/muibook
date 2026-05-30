@@ -371,9 +371,9 @@ const styles = /*css*/ `
   }
   .card::part(background):hover,
   .card::part(background):focus-visible {
-    background: var(--surface-elevated-100);
+    background: var(--app-muitube-card-background-hover, var(--surface-elevated-100));
     transition: box-shadow var(--speed-100), outline var(--speed-100);
-    box-shadow: 0 0 0 var(--space-400) var(--surface-elevated-100), 0 var(--space-200) var(--space-400) var(--space-300) var(--surface-recessed-alpha);
+    box-shadow: 0 0 0 var(--space-400) var(--app-muitube-card-background-hover, var(--surface-elevated-100)), 0 var(--space-200) var(--space-400) var(--space-300) var(--surface-recessed-alpha);
     border-top-left-radius: var(--radius-300);
     border-top-right-radius: var(--radius-300);
     border-bottom-left-radius: var(--radius-100);
