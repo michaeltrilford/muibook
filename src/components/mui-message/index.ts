@@ -161,7 +161,8 @@ class MuiMessage extends HTMLElement {
       }
 
       .heading {
-        font-weight: var(--font-weight-bold);
+        font-family: var(--heading-font-family);
+        font-weight: var(--heading-font-weight);
         font-size: ${headingFontSize};
         ${headingColor}
       }

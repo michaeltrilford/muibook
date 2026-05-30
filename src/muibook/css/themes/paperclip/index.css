@@ -1,0 +1,754 @@
+/* ==================== */
+/*   __  __ _   _ ___   */
+/*  |  \/  | | | |_ _|  */
+/*  | |\/| | | | || |   */
+/*  | |  | | |_| || |   */
+/*  |_|  |_|\___/|___|  */
+/*                      */
+/*   michael.ui.system  */
+/* ==================== */
+
+/* ==================================================================================================== */
+/* 1. BRAND PRIMITIVES  ------> paperclip/brand.css                                                     */
+/* ==================================================================================================== */
+html[data-brand="paperclip"] {
+  --heading-font-family: "Space Mono", monospace;
+
+  --categorical-purple-200: #d9e3f1;
+  --categorical-purple-800: #4b607c;
+  --categorical-violet-200: #d4e0ef;
+  --categorical-violet-800: #475d7a;
+  --categorical-pink-200: #dde6f3;
+  --categorical-pink-800: #516784;
+  --categorical-magenta-200: #d1deee;
+  --categorical-magenta-800: #445976;
+  --categorical-red-200: #d7e1ef;
+  --categorical-red-800: #4d627e;
+  --categorical-orange-200: #dfe7f2;
+  --categorical-orange-800: #556985;
+  --categorical-amber-200: #e5ebf5;
+  --categorical-amber-800: #5d6f89;
+  --categorical-yellow-200: #e8edf6;
+  --categorical-yellow-800: #64748d;
+  --categorical-lime-200: #dce6f1;
+  --categorical-lime-800: #526783;
+  --categorical-green-200: #d4e2ef;
+  --categorical-green-800: #4a617d;
+  --categorical-teal-200: #cee0ee;
+  --categorical-teal-800: #435d78;
+  --categorical-cyan-200: #c8dcea;
+  --categorical-cyan-800: #3f5873;
+  --categorical-blue-200: #d1e0f0;
+  --categorical-blue-800: #44607f;
+  --categorical-indigo-200: #c9d8ea;
+  --categorical-indigo-800: #3d5672;
+}
+
+/* ==================================================================================================== */
+/* 2. LIGHT MODE                                                                                        */
+/* ==================================================================================================== */
+html[data-brand="paperclip"][data-theme="light"] {
+  --paperclip-standalone-background: var(--blue-500);
+  --paperclip-standalone-border-color: var(--blue-500);
+  --paperclip-standalone-text-color: var(--blue-500);
+  --paperclip-standalone-avatar-background: linear-gradient(180deg, var(--blue-500), var(--blue-500));
+
+  /* Form */
+  --form-default-text-color: var(--blue-500);
+  --form-success-text-color: var(--blue-500);
+  --form-warning-text-color: var(--blue-500);
+  --form-error-text-color: var(--blue-500);
+  --form-default-text-color-hover: var(--blue-500);
+  --form-success-text-color-hover: var(--blue-500);
+  --form-warning-text-color-hover: var(--blue-500);
+  --form-error-text-color-hover: var(--blue-500);
+  --form-default-border-color: var(--blue-300);
+  --form-success-border-color: var(--blue-300);
+  --form-warning-border-color: var(--blue-300);
+  --form-error-border-color: var(--blue-300);
+  --form-default-border-color-hover: var(--blue-800);
+  --form-success-border-color-hover: var(--blue-800);
+  --form-warning-border-color-hover: var(--blue-800);
+  --form-error-border-color-hover: var(--blue-800);
+  --form-default-placeholder-color: var(--blue-500);
+  --form-default-placeholder-color-hover: var(--blue-500);
+  --form-default-placeholder-color-focus: var(--blue-500);
+  --form-default-placeholder-color-disabled: var(--blue-500);
+
+  /* Feedback */
+  --feedback-neutral-border-color: var(--blue-500);
+  --feedback-positive-border-color: var(--blue-500);
+  --feedback-info-border-color: var(--blue-500);
+  --feedback-warning-border-color: var(--blue-500);
+  --feedback-attention-border-color: var(--blue-500);
+  --feedback-neutral-background: var(--white);
+  --feedback-positive-background: var(--white);
+  --feedback-info-background: var(--white);
+  --feedback-warning-background: var(--white);
+  --feedback-attention-background: var(--white);
+  --feedback-neutral-icon: var(--blue-500);
+  --feedback-positive-icon: var(--blue-500);
+  --feedback-info-icon: var(--blue-500);
+  --feedback-warning-icon: var(--blue-500);
+  --feedback-attention-icon: var(--blue-500);
+  --feedback-neutral-text: var(--blue-500);
+  --feedback-positive-text: var(--blue-500);
+  --feedback-info-text: var(--blue-500);
+  --feedback-warning-text: var(--blue-500);
+  --feedback-attention-text: var(--blue-500);
+  --feedback-neutral-action-background: var(--blue-500);
+  --feedback-positive-action-background: var(--blue-500);
+  --feedback-info-action-background: var(--blue-500);
+  --feedback-warning-action-background: var(--blue-500);
+  --feedback-attention-action-background: var(--blue-500);
+
+  /* Action */
+  --action-primary-background: var(--blue-500);
+  --action-primary-background-hover: var(--blue-600);
+  --action-primary-background-focus: var(--blue-600);
+  --action-primary-background-disabled: var(--blue-200);
+  --action-primary-text-color: var(--white);
+  --action-primary-text-color-hover: var(--white);
+  --action-primary-text-color-focus: var(--white);
+  --action-primary-text-color-disabled: var(--blue-400);
+
+  --action-secondary-border-color: var(--blue-500);
+  --action-secondary-border-color-hover: var(--blue-500);
+  --action-secondary-border-color-focus: var(--blue-500);
+  --action-secondary-border-color-disabled: var(--blue-200);
+  --action-secondary-background: var(--white-opacity-0);
+  --action-secondary-background-hover: var(--blue-100);
+  --action-secondary-background-focus: var(--blue-100);
+  --action-secondary-background-disabled: var(--blue-100);
+  --action-secondary-text-color: var(--blue-500);
+  --action-secondary-text-color-hover: var(--blue-600);
+  --action-secondary-text-color-focus: var(--blue-600);
+  --action-secondary-text-color-disabled: var(--blue-300);
+
+  --action-tertiary-background: var(--white-opacity-0);
+  --action-tertiary-background-hover: var(--blue-100);
+  --action-tertiary-background-focus: var(--blue-100);
+  --action-tertiary-background-disabled: var(--white-opacity-0);
+  --action-tertiary-text-color: var(--blue-500);
+  --action-tertiary-text-color-hover: var(--blue-500);
+  --action-tertiary-text-color-focus: var(--blue-500);
+  --action-tertiary-text-color-disabled: var(--blue-300);
+
+  --action-overlay-border-color: color-mix(in srgb, var(--blue-100) 30%, transparent);
+  --action-overlay-border-color-hover: color-mix(in srgb, var(--blue-100) 40%, transparent);
+  --action-overlay-border-color-focus: color-mix(in srgb, var(--blue-100) 40%, transparent);
+  --action-overlay-background: color-mix(in srgb, var(--blue-500) 70%, transparent);
+  --action-overlay-background-hover: color-mix(in srgb, var(--blue-500) 80%, transparent);
+  --action-overlay-background-focus: color-mix(in srgb, var(--blue-500) 80%, transparent);
+  --action-overlay-background-disabled: color-mix(in srgb, var(--blue-400) 40%, transparent);
+
+  --action-attention-background: var(--blue-800);
+  --action-attention-background-hover: var(--blue-800);
+  --action-attention-background-focus: var(--blue-900);
+  --action-attention-background-disabled: var(--blue-400);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--blue-300);
+
+  --action-avatar-background: var(--blue-500);
+  --action-avatar-background-hover: var(--blue-500);
+
+  /* Surface */
+  --surface: var(--white);
+  --surface-elevated-alpha: color-mix(in srgb, var(--blue-500) 80%, transparent);
+  --surface-elevated-100: var(--white);
+  --surface-elevated-200: var(--blue-100);
+  --surface-recessed-alpha: color-mix(in srgb, var(--blue-500) 10%, transparent);
+  --surface-recessed-100: var(--blue-500);
+  --surface-recessed-200: var(--blue-500);
+  --code-text-color: var(--blue-500);
+  --chip-input-background: var(--white);
+  --code-background: var(--blue-100);
+  --prompt-preview-dismiss-secondary-background: var(--blue-500);
+  --prompt-preview-dismiss-secondary-background-hover: var(--blue-600);
+  --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--blue-500);
+  --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--blue-600);
+
+  /* Stroke */
+  --outline-color: var(--blue-500);
+  --border-color: var(--blue-500);
+
+  /* Text */
+  --text-color: var(--blue-500);
+  --text-color-info: var(--blue-500);
+  --text-color-success: var(--blue-500);
+  --text-color-warning: var(--blue-500);
+  --text-color-error: var(--blue-500);
+  --text-color-optional: var(--blue-500);
+
+  /* Components */
+  --switch-track-background: var(--blue-500);
+  --switch-track-background-checked: var(--blue-500);
+  --switch-thumb-bg: var(--white);
+  --switch-thumb-bg-checked: var(--blue-500);
+  --switch-icon: var(--blue-500);
+  --switch-icon-checked: var(--white);
+
+  --icon-color-default: var(--blue-500);
+  --icon-color-inverted: var(--blue-500);
+  --heading-text-color: var(--blue-500);
+  --link-text-color-default: var(--blue-500);
+  --link-text-color-default-hover: var(--blue-500);
+  --link-text-color-default-focus: var(--blue-500);
+  --link-text-color-default-disabled: var(--blue-500);
+
+  --input-background: var(--white);
+  --input-background-disabled: var(--blue-100);
+  --checkbox-background: var(--white);
+  --checkbox-background-checked: var(--blue-500);
+  --checkbox-icon-color-checked: var(--white);
+  --checkbox-background-disabled: var(--blue-500);
+  --checkbox-background-checked-disabled: var(--blue-500);
+  --checkbox-icon-color-checked-disabled: var(--white);
+  --radio-background: var(--white);
+  --radio-border-color: var(--blue-500);
+  --radio-border-color-hover: var(--blue-500);
+  --radio-border-color-checked: var(--blue-500);
+  --radio-dot-color-checked: var(--blue-500);
+  --radio-background-disabled: var(--blue-500);
+  --radio-border-color-disabled: var(--blue-500);
+  --radio-dot-color-checked-disabled: var(--blue-500);
+  --addon-background: var(--blue-100);
+
+  --badge-text-color: var(--white);
+  --badge-background-neutral: var(--blue-500);
+  --badge-background-positive: color-mix(in srgb, var(--blue-500) 90%, var(--blue-500) 10%);
+  --badge-background-warning: color-mix(in srgb, var(--blue-500) 88%, var(--blue-500) 12%);
+  --badge-background-attention: color-mix(in srgb, var(--blue-500) 88%, var(--blue-500) 12%);
+  --badge-background-overlay: color-mix(in srgb, var(--blue-600) 70%, transparent);
+  --badge-background-grey: var(--paperclip-standalone-background);
+  --badge-background-purple: var(--paperclip-standalone-background);
+  --badge-background-violet: var(--paperclip-standalone-background);
+  --badge-background-pink: var(--paperclip-standalone-background);
+  --badge-background-magenta: var(--paperclip-standalone-background);
+  --badge-background-red: var(--paperclip-standalone-background);
+  --badge-background-orange: var(--paperclip-standalone-background);
+  --badge-background-amber: var(--paperclip-standalone-background);
+  --badge-background-yellow: var(--paperclip-standalone-background);
+  --badge-background-lime: var(--paperclip-standalone-background);
+  --badge-background-green: var(--paperclip-standalone-background);
+  --badge-background-teal: var(--paperclip-standalone-background);
+  --badge-background-cyan: var(--paperclip-standalone-background);
+  --badge-background-blue: var(--paperclip-standalone-background);
+  --badge-background-indigo: var(--paperclip-standalone-background);
+  --badge-text-color-overlay: var(--white);
+
+  --tab-border-color: var(--blue-500);
+  --tab-background: var(--blue-500);
+  --tab-icon: var(--white);
+  --tab-text-color: var(--white);
+  --tab-background-active: var(--white);
+  --tab-icon-active: var(--blue-500);
+  --tab-text-color-active: var(--blue-600);
+  --tab-shadow-active-color: color-mix(in srgb, var(--blue-500) 10%, transparent);
+  --tab-shadow-active: 0 0 var(--stroke-size-400) var(--stroke-size-400) var(--tab-shadow-active-color);
+  --tab-dot-color: var(--white);
+  --tab-dot-color-active: var(--white);
+
+  --slat-background: var(--white);
+  --slat-background-hover: var(--blue-100);
+  --slat-card-background: var(--white);
+  --slat-card-background-hover: var(--blue-100);
+  --slat-avatar-background: var(--blue-500);
+  --slat-avatar-background-hover: var(--blue-500);
+  --slat-card-avatar-background: var(--blue-500);
+  --slat-card-avatar-background-hover: var(--blue-500);
+
+  --paperclip-avatar-pattern-light:
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--white) 28%, transparent) 0.8px, transparent 1px) 0 0 /
+      8px 8px,
+    var(--blue-500);
+  --paperclip-avatar-pattern-light-alt:
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--white) 16%, transparent) 0 2px, transparent 2px 6px),
+    var(--blue-500);
+  --paperclip-avatar-pattern-light-warning:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 16%, transparent) 0 1px, transparent 1px 5px),
+    var(--blue-500);
+  --paperclip-avatar-pattern-light-attention:
+    radial-gradient(circle at 2px 2px, color-mix(in srgb, var(--white) 24%, transparent) 0.7px, transparent 1px) 0 0 /
+      7px 7px,
+    var(--blue-500);
+
+  --avatar-background-neutral: var(--paperclip-avatar-pattern-light);
+  --avatar-text-color: var(--blue-100);
+  --avatar-icon-color: var(--blue-100);
+  --avatar-background-positive: var(--paperclip-avatar-pattern-light-alt);
+  --avatar-background-warning: var(--paperclip-avatar-pattern-light-warning);
+  --avatar-background-attention: var(--paperclip-avatar-pattern-light-attention);
+  --avatar-background-purple: var(--paperclip-standalone-avatar-background);
+  --avatar-background-violet: var(--paperclip-standalone-avatar-background);
+  --avatar-background-pink: var(--paperclip-standalone-avatar-background);
+  --avatar-background-magenta: var(--paperclip-standalone-avatar-background);
+  --avatar-background-red: var(--paperclip-standalone-avatar-background);
+  --avatar-background-orange: var(--paperclip-standalone-avatar-background);
+  --avatar-background-amber: var(--paperclip-standalone-avatar-background);
+  --avatar-background-yellow: var(--paperclip-standalone-avatar-background);
+  --avatar-background-lime: var(--paperclip-standalone-avatar-background);
+  --avatar-background-green: var(--paperclip-standalone-avatar-background);
+  --avatar-background-teal: var(--paperclip-standalone-avatar-background);
+  --avatar-background-cyan: var(--paperclip-standalone-avatar-background);
+  --avatar-background-blue: var(--paperclip-standalone-avatar-background);
+  --avatar-background-indigo: var(--paperclip-standalone-avatar-background);
+
+  --status-positive-background: color-mix(in srgb, var(--blue-500) 92%, var(--blue-500) 8%);
+  --status-positive-border-color: var(--blue-500);
+  --status-positive-text-color: var(--white);
+  --status-info-background: color-mix(in srgb, var(--blue-500) 92%, var(--blue-500) 8%);
+  --status-info-border-color: var(--blue-500);
+  --status-info-text-color: var(--white);
+  --status-warning-background: color-mix(in srgb, var(--blue-500) 92%, var(--blue-500) 8%);
+  --status-warning-border-color: var(--blue-500);
+  --status-warning-text-color: var(--white);
+  --status-attention-background: color-mix(in srgb, var(--blue-500) 88%, var(--blue-500) 12%);
+  --status-attention-border-color: var(--blue-500);
+  --status-attention-text-color: var(--white);
+
+  --status-grey-background: var(--paperclip-standalone-background);
+  --status-grey-border-color: var(--paperclip-standalone-border-color);
+  --status-grey-text-color: var(--paperclip-standalone-text-color);
+  --status-purple-background: var(--paperclip-standalone-background);
+  --status-purple-border-color: var(--paperclip-standalone-border-color);
+  --status-purple-text-color: var(--paperclip-standalone-text-color);
+  --status-violet-background: var(--paperclip-standalone-background);
+  --status-violet-border-color: var(--paperclip-standalone-border-color);
+  --status-violet-text-color: var(--paperclip-standalone-text-color);
+  --status-pink-background: var(--paperclip-standalone-background);
+  --status-pink-border-color: var(--paperclip-standalone-border-color);
+  --status-pink-text-color: var(--paperclip-standalone-text-color);
+  --status-magenta-background: var(--paperclip-standalone-background);
+  --status-magenta-border-color: var(--paperclip-standalone-border-color);
+  --status-magenta-text-color: var(--paperclip-standalone-text-color);
+  --status-red-background: var(--paperclip-standalone-background);
+  --status-red-border-color: var(--paperclip-standalone-border-color);
+  --status-red-text-color: var(--paperclip-standalone-text-color);
+  --status-orange-background: var(--paperclip-standalone-background);
+  --status-orange-border-color: var(--paperclip-standalone-border-color);
+  --status-orange-text-color: var(--paperclip-standalone-text-color);
+  --status-amber-background: var(--paperclip-standalone-background);
+  --status-amber-border-color: var(--paperclip-standalone-border-color);
+  --status-amber-text-color: var(--paperclip-standalone-text-color);
+  --status-yellow-background: var(--paperclip-standalone-background);
+  --status-yellow-border-color: var(--paperclip-standalone-border-color);
+  --status-yellow-text-color: var(--paperclip-standalone-text-color);
+  --status-lime-background: var(--paperclip-standalone-background);
+  --status-lime-border-color: var(--paperclip-standalone-border-color);
+  --status-lime-text-color: var(--paperclip-standalone-text-color);
+  --status-green-background: var(--paperclip-standalone-background);
+  --status-green-border-color: var(--paperclip-standalone-border-color);
+  --status-green-text-color: var(--paperclip-standalone-text-color);
+  --status-teal-background: var(--paperclip-standalone-background);
+  --status-teal-border-color: var(--paperclip-standalone-border-color);
+  --status-teal-text-color: var(--paperclip-standalone-text-color);
+  --status-cyan-background: var(--paperclip-standalone-background);
+  --status-cyan-border-color: var(--paperclip-standalone-border-color);
+  --status-cyan-text-color: var(--paperclip-standalone-text-color);
+  --status-blue-background: var(--paperclip-standalone-background);
+  --status-blue-border-color: var(--paperclip-standalone-border-color);
+  --status-blue-text-color: var(--paperclip-standalone-text-color);
+  --status-indigo-background: var(--paperclip-standalone-background);
+  --status-indigo-border-color: var(--paperclip-standalone-border-color);
+  --status-indigo-text-color: var(--paperclip-standalone-text-color);
+
+  --chip-background: var(--white);
+  --chip-background-hover: var(--blue-100);
+  --chip-background-focus: var(--blue-100);
+  --chip-background-active: var(--blue-100);
+  --chip-border-color: var(--blue-500);
+  --chip-border-color-hover: var(--blue-500);
+  --chip-border-color-focus: var(--blue-500);
+  --chip-border-color-active: var(--blue-500);
+  --chip-text-color-active: var(--blue-500);
+  --chip-icon-fill: var(--blue-500);
+  --chip-filter: none;
+  --chip-dismiss-action-background: var(--blue-100);
+  --chip-dismiss-action-background-hover: color-mix(in srgb, var(--blue-100) 0%, transparent);
+  --chip-dismiss-action-filter: none;
+
+  --dropdown-background: var(--white);
+  --dropdown-border-color: var(--blue-500);
+  --dropdown-shadow-color: color-mix(in srgb, var(--blue-500) 10%, transparent);
+  --dropdown-button-background-hover: var(--blue-500);
+
+  --progress-bar-background: var(--blue-500);
+  --progress-track-background: var(--blue-500);
+  --progress-loading-bar-100: var(--blue-500);
+  --progress-loading-bar-200: var(--blue-500);
+  --progress-syncing-bar-background: var(--blue-500);
+
+  --stepper-color: var(--blue-500);
+  --stepper-background-active: var(--blue-500);
+  --stepper-background-inactive: var(--blue-500);
+  --stepper-border-color: var(--blue-500);
+  --stepper-text-color-active: var(--blue-500);
+  --stepper-icon-color: var(--blue-500);
+  --stepper-success-color: var(--blue-500);
+  --stepper-warning-color: var(--blue-500);
+  --stepper-error-color: var(--blue-500);
+
+  --dialog-background: var(--white);
+  --drawer-background: var(--white);
+
+  --illustration-main-color-default: var(--blue-500);
+  --illustration-main-color-inverted: var(--white);
+}
+
+/* ==================================================================================================== */
+/* 3. DARK MODE                                                                                         */
+/* ==================================================================================================== */
+html[data-brand="paperclip"][data-theme="dark"] {
+  --paperclip-standalone-background: var(--blue-200);
+  --paperclip-standalone-border-color: var(--white);
+  --paperclip-standalone-text-color: var(--white);
+  --paperclip-standalone-avatar-background: linear-gradient(180deg, var(--blue-700), var(--blue-700));
+
+  /* Form */
+  --form-default-text-color: var(--white);
+  --form-success-text-color: var(--white);
+  --form-warning-text-color: var(--white);
+  --form-error-text-color: var(--white);
+  --form-default-text-color-hover: var(--white);
+  --form-success-text-color-hover: var(--white);
+  --form-warning-text-color-hover: var(--white);
+  --form-error-text-color-hover: var(--white);
+  --form-default-border-color: var(--blue-300);
+  --form-success-border-color: var(--blue-300);
+  --form-warning-border-color: var(--blue-300);
+  --form-error-border-color: var(--blue-300);
+  --form-default-border-color-hover: var(--white);
+  --form-success-border-color-hover: var(--white);
+  --form-warning-border-color-hover: var(--white);
+  --form-error-border-color-hover: var(--white);
+  --form-default-placeholder-color: var(--white);
+  --form-default-placeholder-color-hover: var(--white);
+  --form-default-placeholder-color-focus: var(--white);
+  --form-default-placeholder-color-disabled: var(--white);
+
+  /* Feedback */
+  --feedback-neutral-border-color: var(--white);
+  --feedback-positive-border-color: var(--white);
+  --feedback-info-border-color: var(--white);
+  --feedback-warning-border-color: var(--white);
+  --feedback-attention-border-color: var(--white);
+  --feedback-neutral-background: var(--blue-500);
+  --feedback-positive-background: var(--blue-500);
+  --feedback-info-background: var(--blue-500);
+  --feedback-warning-background: var(--blue-500);
+  --feedback-attention-background: var(--blue-500);
+  --feedback-neutral-icon: var(--white);
+  --feedback-positive-icon: var(--white);
+  --feedback-info-icon: var(--white);
+  --feedback-warning-icon: var(--white);
+  --feedback-attention-icon: var(--white);
+  --feedback-neutral-text: var(--white);
+  --feedback-positive-text: var(--white);
+  --feedback-info-text: var(--white);
+  --feedback-warning-text: var(--white);
+  --feedback-attention-text: var(--white);
+  --feedback-neutral-action-background: var(--blue-500);
+  --feedback-positive-action-background: var(--blue-500);
+  --feedback-info-action-background: var(--blue-500);
+  --feedback-warning-action-background: var(--blue-500);
+  --feedback-attention-action-background: var(--blue-500);
+
+  /* Action */
+  --action-primary-background: var(--white);
+  --action-primary-background-hover: var(--white);
+  --action-primary-background-focus: var(--white);
+  --action-primary-background-disabled: var(--blue-400);
+  --action-primary-text-color: var(--blue-500);
+  --action-primary-text-color-hover: var(--blue-500);
+  --action-primary-text-color-focus: var(--blue-500);
+  --action-primary-text-color-disabled: var(--blue-500);
+
+  --action-secondary-border-color: var(--white);
+  --action-secondary-border-color-hover: var(--white);
+  --action-secondary-border-color-focus: var(--white);
+  --action-secondary-border-color-disabled: var(--blue-400);
+  --action-secondary-background: color-mix(in srgb, var(--blue-500) 0%, transparent);
+  --action-secondary-background-hover: var(--blue-600);
+  --action-secondary-background-focus: var(--blue-600);
+  --action-secondary-background-disabled: var(--blue-500);
+  --action-secondary-text-color: var(--white);
+  --action-secondary-text-color-hover: var(--white);
+  --action-secondary-text-color-focus: var(--white);
+  --action-secondary-text-color-disabled: var(--blue-400);
+
+  --action-tertiary-background: var(--black-opacity-0);
+  --action-tertiary-background-hover: var(--blue-600);
+  --action-tertiary-background-focus: var(--black-opacity-0);
+  --action-tertiary-background-disabled: var(--black-opacity-0);
+  --action-tertiary-text-color: var(--white);
+  --action-tertiary-text-color-hover: var(--white);
+  --action-tertiary-text-color-focus: var(--white);
+  --action-tertiary-text-color-disabled: var(--blue-400);
+
+  --action-overlay-border-color: color-mix(in srgb, var(--blue-100) 30%, transparent);
+  --action-overlay-border-color-hover: color-mix(in srgb, var(--blue-100) 40%, transparent);
+  --action-overlay-border-color-focus: color-mix(in srgb, var(--blue-100) 40%, transparent);
+  --action-overlay-background: color-mix(in srgb, var(--blue-500) 70%, transparent);
+  --action-overlay-background-hover: color-mix(in srgb, var(--blue-500) 80%, transparent);
+  --action-overlay-background-focus: color-mix(in srgb, var(--blue-500) 80%, transparent);
+  --action-overlay-background-disabled: color-mix(in srgb, var(--blue-400) 40%, transparent);
+
+  --action-attention-background: var(--blue-1000);
+  --action-attention-background-hover: var(--blue-1000);
+  --action-attention-background-focus: var(--blue-1000);
+  --action-attention-background-disabled: var(--blue-800);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--blue-400);
+
+  --action-avatar-background: var(--blue-500);
+  --action-avatar-background-hover: var(--blue-500);
+
+  /* Surface */
+  --surface: var(--blue-500);
+  --surface-elevated-alpha: color-mix(in srgb, var(--blue-500) 10%, transparent);
+  --surface-elevated-100: var(--blue-500);
+  --surface-elevated-200: var(--blue-600);
+  --surface-recessed-alpha: color-mix(in srgb, var(--blue-500) 40%, transparent);
+  --surface-recessed-100: var(--blue-500);
+  --surface-recessed-200: var(--blue-500);
+  --surface-recessed-300: var(--blue-500);
+  --chip-input-background: var(--blue-500);
+  --code-text-color: var(--white);
+  --code-background: var(--blue-600);
+  --prompt-preview-dismiss-secondary-background: var(--blue-500);
+  --prompt-preview-dismiss-secondary-background-hover: var(--blue-600);
+  --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--white);
+  --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--white);
+
+  /* Stroke */
+  --outline-color: var(--white);
+  --border-color: var(--white);
+
+  /* Text */
+  --text-color: var(--white);
+  --text-color-info: var(--white);
+  --text-color-success: var(--white);
+  --text-color-warning: var(--white);
+  --text-color-error: var(--white);
+  --text-color-optional: var(--white);
+
+  /* Components */
+  --switch-track-background: var(--white);
+  --switch-track-background-checked: var(--white);
+  --switch-thumb-bg: var(--blue-500);
+  --switch-thumb-bg-checked: var(--blue-500);
+  --switch-icon: var(--white);
+  --switch-icon-checked: var(--white);
+
+  --icon-color-default: var(--white);
+  --icon-color-inverted: var(--white);
+  --heading-text-color: var(--white);
+  --link-text-color-default: var(--white);
+  --link-text-color-default-hover: var(--white);
+  --link-text-color-default-focus: var(--white);
+  --link-text-color-default-disabled: var(--white);
+
+  --input-background: var(--blue-500);
+  --input-background-disabled: var(--blue-400);
+  --checkbox-background: var(--blue-500);
+  --checkbox-background-checked: var(--blue-500);
+  --checkbox-icon-color-checked: var(--white);
+  --checkbox-background-disabled: var(--blue-500);
+  --checkbox-background-checked-disabled: var(--blue-500);
+  --checkbox-icon-color-checked-disabled: var(--white);
+  --radio-background: var(--blue-500);
+  --radio-border-color: var(--white);
+  --radio-border-color-hover: var(--white);
+  --radio-border-color-checked: var(--white);
+  --radio-dot-color-checked: var(--white);
+  --radio-background-disabled: var(--blue-500);
+  --radio-border-color-disabled: var(--white);
+  --radio-dot-color-checked-disabled: var(--white);
+  --addon-background: var(--blue-600);
+
+  --badge-text-color: var(--blue-600);
+  --badge-background-neutral: var(--white);
+  --badge-background-positive: var(--blue-200);
+  --badge-background-warning: var(--blue-200);
+  --badge-background-attention: var(--blue-200);
+  --badge-background-overlay: color-mix(in srgb, var(--blue-500) 70%, transparent);
+  --badge-background-grey: var(--paperclip-standalone-background);
+  --badge-background-purple: var(--paperclip-standalone-background);
+  --badge-background-violet: var(--paperclip-standalone-background);
+  --badge-background-pink: var(--paperclip-standalone-background);
+  --badge-background-magenta: var(--paperclip-standalone-background);
+  --badge-background-red: var(--paperclip-standalone-background);
+  --badge-background-orange: var(--paperclip-standalone-background);
+  --badge-background-amber: var(--paperclip-standalone-background);
+  --badge-background-yellow: var(--paperclip-standalone-background);
+  --badge-background-lime: var(--paperclip-standalone-background);
+  --badge-background-green: var(--paperclip-standalone-background);
+  --badge-background-teal: var(--paperclip-standalone-background);
+  --badge-background-cyan: var(--paperclip-standalone-background);
+  --badge-background-blue: var(--paperclip-standalone-background);
+  --badge-background-indigo: var(--paperclip-standalone-background);
+  --badge-text-color-overlay: var(--white);
+
+  --tab-border-color: var(--white);
+  --tab-background: var(--blue-100);
+  --tab-icon: var(--white);
+  --tab-text-color: var(--blue-500);
+  --tab-background-active: var(--blue-500);
+  --tab-icon-active: var(--white);
+  --tab-text-color-active: var(--white);
+  --tab-shadow-active-color: color-mix(in srgb, var(--blue-500) 40%, transparent);
+  --tab-shadow-active: 0 0 var(--stroke-size-400) var(--stroke-size-400) var(--tab-shadow-active-color);
+  --tab-dot-color: var(--white);
+  --tab-dot-color-active: var(--white);
+
+  --slat-background: var(--blue-500);
+  --slat-background-hover: var(--blue-600);
+  --slat-card-background: var(--blue-500);
+  --slat-card-background-hover: var(--blue-600);
+  --slat-avatar-background: var(--blue-500);
+  --slat-avatar-background-hover: var(--blue-500);
+  --slat-card-avatar-background: var(--blue-500);
+  --slat-card-avatar-background-hover: var(--blue-500);
+
+  --paperclip-avatar-pattern-dark:
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--white) 22%, transparent) 0.8px, transparent 1px) 0 0 /
+      8px 8px,
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-alt:
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--white) 14%, transparent) 0 2px, transparent 2px 6px),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-warning:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 5px),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-attention:
+    radial-gradient(circle at 2px 2px, color-mix(in srgb, var(--white) 20%, transparent) 0.7px, transparent 1px) 0 0 /
+      7px 7px,
+    var(--blue-700);
+
+  --avatar-background-neutral: var(--paperclip-avatar-pattern-dark);
+  --avatar-text-color: var(--blue-100);
+  --avatar-icon-color: var(--blue-100);
+  --avatar-background-positive: var(--paperclip-avatar-pattern-dark-alt);
+  --avatar-background-warning: var(--paperclip-avatar-pattern-dark-warning);
+  --avatar-background-attention: var(--paperclip-avatar-pattern-dark-attention);
+  --avatar-background-purple: var(--paperclip-standalone-avatar-background);
+  --avatar-background-violet: var(--paperclip-standalone-avatar-background);
+  --avatar-background-pink: var(--paperclip-standalone-avatar-background);
+  --avatar-background-magenta: var(--paperclip-standalone-avatar-background);
+  --avatar-background-red: var(--paperclip-standalone-avatar-background);
+  --avatar-background-orange: var(--paperclip-standalone-avatar-background);
+  --avatar-background-amber: var(--paperclip-standalone-avatar-background);
+  --avatar-background-yellow: var(--paperclip-standalone-avatar-background);
+  --avatar-background-lime: var(--paperclip-standalone-avatar-background);
+  --avatar-background-green: var(--paperclip-standalone-avatar-background);
+  --avatar-background-teal: var(--paperclip-standalone-avatar-background);
+  --avatar-background-cyan: var(--paperclip-standalone-avatar-background);
+  --avatar-background-blue: var(--paperclip-standalone-avatar-background);
+  --avatar-background-indigo: var(--paperclip-standalone-avatar-background);
+
+  --status-positive-background: var(--blue-500);
+  --status-positive-border-color: var(--white);
+  --status-positive-text-color: var(--white);
+  --status-info-background: var(--blue-500);
+  --status-info-border-color: var(--white);
+  --status-info-text-color: var(--white);
+  --status-warning-background: var(--blue-500);
+  --status-warning-border-color: var(--white);
+  --status-warning-text-color: var(--white);
+  --status-attention-background: var(--blue-500);
+  --status-attention-border-color: var(--white);
+  --status-attention-text-color: var(--white);
+
+  --status-grey-background: var(--paperclip-standalone-background);
+  --status-grey-border-color: var(--paperclip-standalone-border-color);
+  --status-grey-text-color: var(--paperclip-standalone-text-color);
+  --status-purple-background: var(--paperclip-standalone-background);
+  --status-purple-border-color: var(--paperclip-standalone-border-color);
+  --status-purple-text-color: var(--paperclip-standalone-text-color);
+  --status-violet-background: var(--paperclip-standalone-background);
+  --status-violet-border-color: var(--paperclip-standalone-border-color);
+  --status-violet-text-color: var(--paperclip-standalone-text-color);
+  --status-pink-background: var(--paperclip-standalone-background);
+  --status-pink-border-color: var(--paperclip-standalone-border-color);
+  --status-pink-text-color: var(--paperclip-standalone-text-color);
+  --status-magenta-background: var(--paperclip-standalone-background);
+  --status-magenta-border-color: var(--paperclip-standalone-border-color);
+  --status-magenta-text-color: var(--paperclip-standalone-text-color);
+  --status-red-background: var(--paperclip-standalone-background);
+  --status-red-border-color: var(--paperclip-standalone-border-color);
+  --status-red-text-color: var(--paperclip-standalone-text-color);
+  --status-orange-background: var(--paperclip-standalone-background);
+  --status-orange-border-color: var(--paperclip-standalone-border-color);
+  --status-orange-text-color: var(--paperclip-standalone-text-color);
+  --status-amber-background: var(--paperclip-standalone-background);
+  --status-amber-border-color: var(--paperclip-standalone-border-color);
+  --status-amber-text-color: var(--paperclip-standalone-text-color);
+  --status-yellow-background: var(--paperclip-standalone-background);
+  --status-yellow-border-color: var(--paperclip-standalone-border-color);
+  --status-yellow-text-color: var(--paperclip-standalone-text-color);
+  --status-lime-background: var(--paperclip-standalone-background);
+  --status-lime-border-color: var(--paperclip-standalone-border-color);
+  --status-lime-text-color: var(--paperclip-standalone-text-color);
+  --status-green-background: var(--paperclip-standalone-background);
+  --status-green-border-color: var(--paperclip-standalone-border-color);
+  --status-green-text-color: var(--paperclip-standalone-text-color);
+  --status-teal-background: var(--paperclip-standalone-background);
+  --status-teal-border-color: var(--paperclip-standalone-border-color);
+  --status-teal-text-color: var(--paperclip-standalone-text-color);
+  --status-cyan-background: var(--paperclip-standalone-background);
+  --status-cyan-border-color: var(--paperclip-standalone-border-color);
+  --status-cyan-text-color: var(--paperclip-standalone-text-color);
+  --status-blue-background: var(--paperclip-standalone-background);
+  --status-blue-border-color: var(--paperclip-standalone-border-color);
+  --status-blue-text-color: var(--paperclip-standalone-text-color);
+  --status-indigo-background: var(--paperclip-standalone-background);
+  --status-indigo-border-color: var(--paperclip-standalone-border-color);
+  --status-indigo-text-color: var(--paperclip-standalone-text-color);
+
+  --chip-background: var(--blue-500);
+  --chip-background-hover: var(--blue-500);
+  --chip-background-focus: var(--blue-500);
+  --chip-background-active: var(--blue-600);
+  --chip-border-color: var(--blue-300);
+  --chip-border-color-hover: var(--blue-300);
+  --chip-border-color-focus: var(--blue-300);
+  --chip-border-color-active: var(--white);
+  --chip-text-color-active: var(--white);
+  --chip-icon-fill: var(--blue-300);
+  --chip-filter: none;
+  --chip-dismiss-action-background: var(--blue-700);
+  --chip-dismiss-action-background-hover: color-mix(in srgb, var(--blue-700) 0%, transparent);
+  --chip-dismiss-action-filter: none;
+
+  --dropdown-background: var(--blue-500);
+  --dropdown-border-color: var(--white);
+  --dropdown-shadow-color: color-mix(in srgb, var(--blue-500) 30%, transparent);
+  --dropdown-button-background-hover: var(--blue-500);
+
+  --progress-bar-background: var(--blue-500);
+  --progress-track-background: var(--blue-500);
+  --progress-loading-bar-100: var(--blue-500);
+  --progress-loading-bar-200: var(--blue-500);
+  --progress-syncing-bar-background: var(--blue-500);
+
+  --stepper-color: var(--white);
+  --stepper-background-active: var(--blue-500);
+  --stepper-background-inactive: var(--blue-500);
+  --stepper-border-color: var(--white);
+  --stepper-text-color-active: var(--white);
+  --stepper-icon-color: var(--white);
+  --stepper-success-color: var(--white);
+  --stepper-warning-color: var(--white);
+  --stepper-error-color: var(--white);
+
+  --dialog-background: var(--blue-500);
+  --drawer-background: var(--blue-500);
+
+  --illustration-main-color-inverted: var(--blue-500);
+  --illustration-main-color-default: var(--white);
+}

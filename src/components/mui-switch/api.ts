@@ -16,10 +16,16 @@ export const muiApi = {
     ],
     events: [{ name: "change", description: "Dispatched when user interaction changes the checked state." }],
     cssProperties: [
+      { name: "--switch-track-background", description: "Track background used when the switch is unchecked." },
+      { name: "--switch-track-background-checked", description: "Track background used when the switch is checked." },
+      { name: "--switch-thumb-bg", description: "Thumb background used when the switch is unchecked." },
+      { name: "--switch-icon", description: "Slotted icon fill used when the switch is unchecked." },
       { name: "--switch-width-computed", description: "Resolved switch track width; may be overridden for a custom size treatment." },
       { name: "--switch-height-computed", description: "Resolved switch track height; may be overridden for a custom size treatment." },
       { name: "--switch-thumb-size-computed", description: "Resolved switch thumb dimension; may be overridden for a custom size treatment." },
       { name: "--switch-offset-computed", description: "Resolved inset between switch track and thumb." },
+      { name: "--switch-thumb-bg-checked", description: "Thumb background used when the switch is checked." },
+      { name: "--switch-icon-checked", description: "Slotted icon fill used when the switch is checked." },
     ],
   },
 };

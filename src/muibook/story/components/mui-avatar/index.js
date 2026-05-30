@@ -107,7 +107,7 @@ class storyAvatar extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -272,7 +272,7 @@ class storyAvatar extends HTMLElement {
       >
         <div slot="body" class="canvas">
           <mui-v-stack>
-            <mui-grid space="var(--space-100)" col="min-content min-content min-content">
+            <mui-h-stack wrap space="var(--space-100)">
               <mui-chip>
                 <mui-avatar slot="before" size="xx-small" label="Espresso & Muffin Bar" background="neutral">
                   <mui-icon-left-sidebar></mui-icon-left-sidebar>
@@ -301,9 +301,9 @@ class storyAvatar extends HTMLElement {
                 <mui-avatar slot="after" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
                 Videos
               </mui-chip>
-            </mui-grid>
+            </mui-h-stack>
 
-            <mui-grid space="var(--space-100)" col="min-content min-content min-content">
+            <mui-h-stack wrap space="var(--space-100)">
               <mui-chip dismiss>
                 <mui-avatar slot="before" size="xx-small" label="Espresso & Muffin Bar" background="neutral">
                   <mui-icon-left-sidebar></mui-icon-left-sidebar>
@@ -318,7 +318,7 @@ class storyAvatar extends HTMLElement {
                 <mui-avatar slot="before" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
                 Videos
               </mui-chip>
-            </mui-grid>
+            </mui-h-stack>
           </mui-v-stack>
         </div>
         <story-code-block slot="footer" scrollable>
@@ -375,7 +375,7 @@ class storyAvatar extends HTMLElement {
         accessibility=""
       >
         <div slot="body" class="canvas">
-          <mui-avatar label="Max AI" background-color="var(--surface)"></mui-avatar>
+          <mui-avatar label="Max AI" background-color="var(--app-avatar-background, var(--surface))"></mui-avatar>
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-avatar<br />

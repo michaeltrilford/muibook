@@ -9,6 +9,7 @@ class ThemeSwitcher extends HTMLElement {
       ana: { theme: true },
       modern: { theme: true },
       sensei: { theme: true },
+      paperclip: { theme: true },
     };
 
     // Define font links per brand
@@ -50,6 +51,18 @@ class ThemeSwitcher extends HTMLElement {
             "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&family=Aleo:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,600;1,600&family=Sansita+Swashed:wght@300..900&display=swap",
         },
       ],
+      paperclip: [
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossOrigin: "anonymous",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+        },
+      ],
     };
   }
 
@@ -87,6 +100,7 @@ class ThemeSwitcher extends HTMLElement {
           hide-label
           options='[
             {"value": "mui", "label": "Mui"},
+            {"value": "paperclip", "label": "Paperclip"},
             {"value": "sensei", "label": "Sensei"},
             {"value": "jal", "label": "JAL"},
             {"value": "ana", "label": "ANA"},
@@ -110,7 +124,9 @@ class ThemeSwitcher extends HTMLElement {
   }
 
   applySettings() {
-    const brand = localStorage.getItem("brand") || "mui";
+    const storedBrand = localStorage.getItem("brand") || "mui";
+    const brand = storedBrand === "paperclip-punks" ? "paperclip" : storedBrand;
+    if (brand !== storedBrand) localStorage.setItem("brand", brand);
     document.documentElement.setAttribute("data-brand", brand);
 
     const brandSwitcher = this.shadowRoot.getElementById("brand-switcher");

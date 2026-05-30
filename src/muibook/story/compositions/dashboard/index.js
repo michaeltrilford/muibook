@@ -11,7 +11,7 @@ class CompDashboard extends HTMLElement {
       }
 
       .canvas {
-        background: var(--surface-elevated-200);
+        background: var(--app-faux-container-background, var(--surface-elevated-200));
         padding: var(--space-500);
         margin: calc(var(--space-400) * -1);
       }

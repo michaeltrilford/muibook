@@ -34,11 +34,11 @@ class StoryIllustration extends HTMLElement {
       }
 
       .illustration-shell.contrast {
-        background: var(--grey-800);
+        background: var(--app-illustration-background-inverse, var(--grey-800));
       }
 
       :host([data-theme="dark"]) .illustration-shell.contrast {
-        background: var(--grey-400);
+        background: var(--app-illustration-background-inverse, var(--grey-400));
       }
 
       .size-grid::part(internal) {

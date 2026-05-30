@@ -7,6 +7,9 @@ export const muiApi = {
       { name: "wrap", type: { text: "boolean" }, default: "false", description: "Wraps long code content and permits breaks in long values." },
     ],
     slots: [{ name: "", description: "Code or preformatted text content." }],
-    cssProperties: [{ name: "--code-background", description: "Background surface applied to the code block." }],
+    cssProperties: [
+      { name: "--code-background", description: "Background surface applied to the code block." },
+      { name: "--code-text-color", description: "Text color applied to the code content." },
+    ],
   },
 };

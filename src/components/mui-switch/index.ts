@@ -215,7 +215,9 @@ class MuiSwitch extends HTMLElement {
           width: var(--switch-thumb-size-computed, var(--switch-thumb-size));
           height: var(--switch-thumb-size-computed, var(--switch-thumb-size));
           background-color: var(--switch-thumb-bg);
-          transition: transform var(--speed-200);
+          transition:
+            background-color var(--speed-200),
+            transform var(--speed-200);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -227,6 +229,7 @@ class MuiSwitch extends HTMLElement {
         }
 
         input:checked + .track .thumb {
+          background-color: var(--switch-thumb-bg-checked, var(--switch-thumb-bg));
           transform: translateX(
             calc(
               var(--switch-width-computed, var(--switch-width)) -
@@ -264,6 +267,11 @@ class MuiSwitch extends HTMLElement {
         ::slotted([slot="on-icon"]),
         ::slotted([slot="off-icon"]) {
           fill: var(--switch-icon);
+        }
+
+        :host([checked]) ::slotted([slot="on-icon"]),
+        :host([checked]) ::slotted([slot="off-icon"]) {
+          fill: var(--switch-icon-checked, var(--switch-icon));
         }
 
         :host([disabled]) {

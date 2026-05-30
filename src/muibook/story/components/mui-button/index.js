@@ -629,6 +629,28 @@ class storyButton extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card title="Tertiary" id="tertiary">
+        <mui-button variant="tertiary" slot="body">Cancel</mui-button>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button variant="tertiary"&gt;
+          <br />
+          &nbsp;&nbsp;...
+          <br />
+          &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Attention" id="attention">
+        <mui-button variant="attention" slot="body">Delete</mui-button>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-button variant="attention"&gt;
+          <br />
+          &nbsp;&nbsp;...
+          <br />
+          &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card
         title="Stroke: Ring"
         id="stroke-ring"
@@ -708,28 +730,6 @@ class storyButton extends HTMLElement {
           &lt;mui-button variant="secondary" stroke="ring" stroke-ring-size="100"&gt;100&lt;/mui-button&gt;<br />
           &lt;mui-button variant="secondary" stroke="ring" stroke-ring-size="500"&gt;500&lt;/mui-button&gt;<br />
           &lt;mui-button variant="overlay" stroke="ring"&gt;Overlay&lt;/mui-button&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card title="Tertiary" id="tertiary">
-        <mui-button variant="tertiary" slot="body">Cancel</mui-button>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-button variant="tertiary"&gt;
-          <br />
-          &nbsp;&nbsp;...
-          <br />
-          &lt;/mui-button&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card title="Attention" id="attention">
-        <mui-button variant="attention" slot="body">Delete</mui-button>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-button variant="attention"&gt;
-          <br />
-          &nbsp;&nbsp;...
-          <br />
-          &lt;/mui-button&gt;
         </story-code-block>
       </story-card>
 

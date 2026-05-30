@@ -36,7 +36,7 @@ StyleDictionary.registerFormat(androidColorsFormat);
 StyleDictionary.registerFormat(androidDimensFormat);
 
 // List of brands to build
-const brands = ["mui", "jal", "ana", "modern", "sensei"];
+const brands = ["mui", "jal", "ana", "modern", "sensei", "paperclip"];
 
 console.log("🚀 Building all brand tokens...\n");
 

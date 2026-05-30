@@ -57,6 +57,10 @@ class DarkModeToggle extends HTMLElement {
         mui-switch {
           --switch-track-background: var(--app-theme-toggle-bg);
           --switch-track-background-checked: var(--app-theme-toggle-bg);
+          --switch-thumb-bg: var(--app-theme-toggle-thumb-bg);
+          --switch-thumb-bg-checked: var(--app-theme-toggle-thumb-bg-checked);
+          --switch-icon: var(--app-theme-toggle-icon);
+          --switch-icon-checked: var(--app-theme-toggle-icon-checked);
         }
       </style>
 

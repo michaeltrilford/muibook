@@ -9,6 +9,7 @@ export const muiApi = {
     ],
     slots: [{ name: "", description: "Heading text content." }],
     cssProperties: [
+      { name: "--heading-font-family", description: "Font family applied to heading text." },
       { name: "--heading-font-weight", description: "Font weight applied to heading text." },
       { name: "--heading-text-color", description: "Color applied to heading text." },
       { name: "--heading-line-clamp", description: "Resolved number of visible lines used by the clamp attribute." },

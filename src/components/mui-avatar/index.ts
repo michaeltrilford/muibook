@@ -137,7 +137,7 @@ class MuiAvatar extends HTMLElement {
       font-weight: var(--font-weight-bold);
       letter-spacing: -0.05rem;
       font-size: ${resolvedFontSize};
-      color: var(--text-color);
+      color: var(--avatar-text-color, var(--text-color));
       background: ${finalBackground};
       overflow: hidden;
       align-items: center;
@@ -168,6 +168,9 @@ class MuiAvatar extends HTMLElement {
       justify-content: center;
       width: 100%;
       height: 100%;
+    }
+    ::slotted([class*="mui-icon"]) {
+      fill: var(--avatar-icon-color, currentColor);
     }
   `;
 

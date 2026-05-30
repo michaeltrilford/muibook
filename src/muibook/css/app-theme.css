@@ -8,6 +8,20 @@
 /*   michael.ui.system  */
 /* ==================== */
 
+html[data-theme="light"] {
+  --app-theme-toggle-thumb-bg: var(--white);
+  --app-theme-toggle-thumb-bg-checked: var(--app-theme-toggle-thumb-bg);
+  --app-theme-toggle-icon: var(--icon-color-default);
+  --app-theme-toggle-icon-checked: var(--app-theme-toggle-icon);
+}
+
+html[data-theme="dark"] {
+  --app-theme-toggle-thumb-bg: var(--black);
+  --app-theme-toggle-thumb-bg-checked: var(--app-theme-toggle-thumb-bg);
+  --app-theme-toggle-icon: var(--icon-color-default);
+  --app-theme-toggle-icon-checked: var(--app-theme-toggle-icon);
+}
+
 /* =============================================================================== */
 /*   Theme Storefront: MUI                                                         */
 /*   Component theme alignment across storefront                                   */
@@ -264,4 +278,76 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--green-400);
+}
+
+/* =============================================================================== */
+/*   Theme Storefront: PAPERCLIP                                                   */
+/*   Component theme alignment across storefront                                   */
+/* =============================================================================== */
+html[data-brand="paperclip"][data-theme="light"] {
+  --app-logo-color: var(--blue-500);
+  --app-heading-color: var(--blue-500);
+  --app-nav-accent: var(--blue-500);
+  --app-theme-toggle-bg: var(--blue-500);
+  --app-theme-toggle-thumb-bg: var(--white);
+  --app-theme-toggle-thumb-bg-checked: var(--blue-500);
+  --app-theme-toggle-icon: var(--blue-500);
+  --app-theme-toggle-icon-checked: var(--white);
+  --app-story-snippet-code-bg: var(--blue-500);
+  --app-story-snippet-code-text: var(--white);
+  --app-story-code-text: var(--white);
+  --app-container-surface: var(--white);
+  --app-navbar-surface-opacity: var(--white-opacity-90);
+  --app-navbar-surface: var(--white);
+  --app-navbar-surface-100: var(--blue-100);
+  --app-navbar-border-color: var(--blue-500);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
+  --app-navbar-accordion-chevron-hover: var(--blue-100);
+  --home-page-body-text: var(--blue-500);
+  --app-story-card: var(--white);
+  --app-story-card-canvas-guide-color: var(--blue-500);
+  --app-story-wallet-card: var(--surface-elevated-100);
+  --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-story-type-header-background: var(--blue-100);
+  --app-navbar-section-chevron: var(--blue-600);
+  --app-faux-container-background: var(--white);
+  --app-story-code-text: var(--blue-500);
+  --app-avatar-background: var(--blue-700);
+  --app-story-wallet-card: var(--white);
+  --app-illustration-background-inverse: var(--blue-500);
+  --app-wallet-slat-background: var(--blue-100);
+}
+
+html[data-brand="paperclip"][data-theme="dark"] {
+  --app-logo-color: var(--white);
+  --app-heading-color: var(--white);
+  --app-nav-accent: var(--white);
+  --app-theme-toggle-bg: var(--white);
+  --app-theme-toggle-thumb-bg: var(--blue-500);
+  --app-theme-toggle-thumb-bg-checked: var(--blue-500);
+  --app-theme-toggle-icon: var(--white);
+  --app-theme-toggle-icon-checked: var(--white);
+  --app-story-snippet-code-bg: var(--blue-700);
+  --app-story-snippet-code-text: var(--white);
+  --app-story-code-text: var(--white);
+  --app-container-surface: var(--blue-500);
+  --app-navbar-surface-opacity: var(--blue-500);
+  --app-navbar-surface: var(--blue-500);
+  --app-navbar-surface-100: var(--blue-500);
+  --app-navbar-border-color: var(--white);
+  --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
+  --app-navbar-accordion-chevron-hover: var(--blue-500);
+  --home-page-body-text: var(--white);
+  --app-story-card: var(--blue-500);
+  --app-story-card-canvas-guide-color: var(--white);
+  --app-story-wallet-card: var(--surface-elevated-100);
+  --app-story-banner-border-color: var(--app-navbar-border-color);
+  --app-story-type-header-background: var(--blue-500);
+  --app-navbar-section-chevron: var(--white);
+  --app-faux-container-background: var(--blue-500);
+  --app-story-code-text: var(--white);
+  --app-avatar-background: var(--blue-900);
+  --app-story-wallet-card: var(--blue-500);
+  --app-illustration-background-inverse: var(--white);
+  --app-wallet-slat-background: var(--blue-600);
 }

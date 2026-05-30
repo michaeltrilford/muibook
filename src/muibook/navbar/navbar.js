@@ -49,7 +49,6 @@ class appNavbar extends HTMLElement {
         display: block;
         padding: var(--space-000) var(--space-000);
         background: var(--app-navbar-surface);
-        box-shadow: 0 var(--stroke-size-100) 0 0 var(--app-navbar-border-color);
         border-bottom: var(--app-navbar-border);
       }
 

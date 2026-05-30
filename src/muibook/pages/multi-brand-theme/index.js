@@ -99,6 +99,7 @@ class MultiBrandTheme extends HTMLElement {
                 <mui-heading level="3" size="5">Multi-Brand Theme</mui-heading>
                 <mui-body size="medium">
                   See how 
+                  <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/paperclip" target="_blank">Paperclip</mui-link>,
                   <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/jal" target="_blank">JAL</mui-link>, 
                   <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/ana" target="_blank">ANA</mui-link>, 
                   <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/modern" target="_blank">Modern</mui-link>,

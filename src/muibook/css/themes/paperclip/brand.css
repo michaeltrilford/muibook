@@ -1,0 +1,47 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+html[data-brand="paperclip"] {
+  --font-family: "Inter", Arial, Helvetica, sans-serif;
+  --blue-100: oklch(0.94 0.04 264.11);
+  --blue-200: oklch(0.86 0.08 264.11);
+  --blue-300: oklch(0.76 0.14 264.11);
+  --blue-400: oklch(0.61 0.23 264.11);
+  --blue-500: oklch(0.46 0.31 264.11);
+  --blue-600: oklch(0.4 0.27 264.11);
+  --blue-700: oklch(0.34 0.22 264.11);
+  --blue-800: oklch(0.28 0.17 264.11);
+  --blue-900: oklch(0.22 0.12 264.11);
+  --blue-1000: oklch(0.16 0.08 264.11);
+  --green-100: #eff8f3;
+  --green-200: #d8ebe2;
+  --green-300: #b5d7c8;
+  --green-400: #86baa3;
+  --green-500: #559a7d;
+  --green-600: #347b60;
+  --green-700: #26694f;
+  --green-800: #1e5641;
+  --green-900: #183f31;
+  --green-1000: #102d24;
+  --orange-100: #fbf4ec;
+  --orange-200: #f0dfcc;
+  --orange-300: #dfbf98;
+  --orange-400: #c99c61;
+  --orange-500: #ad7838;
+  --orange-600: #8d5f2b;
+  --orange-700: #764d24;
+  --orange-800: #5f3d20;
+  --orange-900: #472e1b;
+  --orange-1000: #342014;
+  --red-100: #fbf0f0;
+  --red-200: #eed4d4;
+  --red-300: #dda8a8;
+  --red-400: #c87878;
+  --red-500: #aa4f4f;
+  --red-600: #883838;
+  --red-700: #733030;
+  --red-800: #5b2828;
+  --red-900: #431f1f;
+  --red-1000: #301717;
+}

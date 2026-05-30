@@ -86,7 +86,7 @@ class pageBannerPlugin extends HTMLElement {
             <img class="hero" src="${Image}" alt="Hero" />
           </mui-grid>
           <mui-grid slot="showAbove" col="1fr 440px" class="banner-grid">
-            <mui-v-stack  space="var(--space-600)"  alignY="start" style="max-width: 41ch; padding-bottom: var(--space-700);">
+            <mui-v-stack  space="var(--space-600)"  alignY="start" style="max-width: 48ch; padding-bottom: var(--space-700);">
               <mui-v-stack  space="var(--space-400)">
                 <mui-h-stack space="var(--space-200)" alignY="center">
                   <mui-h-stack style="width: 38px;">

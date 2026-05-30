@@ -42,6 +42,7 @@ class MuiHeading extends HTMLElement {
 
         h1, h2, h3, h4, h5, h6 {
           margin: var(--space-000);
+          font-family: var(--heading-font-family, var(--font-family));
           font-weight: var(--heading-font-weight);
           color: var(--heading-text-color);
           min-width: 0;

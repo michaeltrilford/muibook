@@ -6,6 +6,7 @@ class StoryCodeBlock extends HTMLElement {
       :host { display: block; }
 
       mui-code {
+        --code-text-color: var(--app-story-code-text, var(--code-text-color, var(--text-color)));
         border-bottom-right-radius: calc(var(--card-radius) - 1px);
         border-bottom-left-radius: calc(var(--card-radius) - 1px);
       }

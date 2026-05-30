@@ -42,7 +42,7 @@ class compWallet extends HTMLElement {
 
             <mui-v-stack alignX="stretch" style="max-width: 100%;" space="var(--space-300)">
 
-              <mui-tab-bar variant="ghost">
+              <mui-tab-bar inset stroke="none" active-inset radius="500">
                 <mui-tab-item active id="item1">Transactions</mui-tab-item>
                 <mui-tab-item id="item2">Statements</mui-tab-item>
               </mui-tab-bar>
@@ -177,7 +177,7 @@ class compWallet extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max-width: 100%;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&gt;<br><br>
 
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-bar variant=&quot;ghost&quot;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-bar stroke=&quot;none&quot; active-inset radius=&quot;500&quot;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active id=&quot;item1&quot;&gt;Transactions&lt;/mui-tab-item&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item id=&quot;item2&quot;&gt;Statements&lt;/mui-tab-item&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-tab-bar&gt;<br><br>
@@ -219,7 +219,7 @@ class compWallet extends HTMLElement {
 
           <mui-slat-group data-group="card-artwork">
 
-            <mui-slat variant="row" style="grid-template-columns: 2fr auto;">
+            <mui-slat variant="row" style="grid-template-columns: 2fr auto; background: var(--app-wallet-slat-background, var(--slat-background));">
               <mui-v-stack slot="start" space="0">
                 <mui-body size="medium" weight="bold">Artwork</mui-body>
                 <mui-body size="small" data-preferred-size>Preferred size: 395×248</mui-body>
@@ -401,7 +401,7 @@ class compWallet extends HTMLElement {
         dropdown.toggleAttribute("persistent", open);
       });
 
-      dropdown.addEventListener("focusout", function(event) {
+      dropdown.addEventListener("focusout", function (event) {
         var relatedTarget = event.relatedTarget;
 
         // Ignore if focus is still within the dropdown

@@ -7,6 +7,8 @@ import "./css/themes/modern/brand.css";
 import "./css/themes/modern/index.css";
 import "./css/themes/sensei/brand.css";
 import "./css/themes/sensei/index.css";
+import "./css/themes/paperclip/brand.css";
+import "./css/themes/paperclip/index.css";
 import "./css/app-theme.css";
 
 // Utils

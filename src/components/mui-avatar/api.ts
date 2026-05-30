@@ -13,6 +13,7 @@ export const muiApi = {
       { name: "--avatar-xx-small", description: "Dimension for `size=\"xx-small\"`; defaults to 24px." },
       { name: "--avatar-x-small", description: "Dimension for `size=\"x-small\"`; defaults to 32px." },
       { name: "--avatar-background-override", description: "Overrides the resolved avatar background color." },
+      { name: "--avatar-icon-color", description: "Controls the fill color of slotted icon content inside the avatar. Falls back to currentColor." },
     ],
   },
 };

@@ -39,9 +39,15 @@ class ShowcasePage extends HTMLElement {
         background: var(--surface-elevated-200);
       }
       .website-image {
-        padding: 24px; 
+        padding: var(--space-500); 
+        padding-bottom: 0;
         box-sizing: border-box;
         background: var(--surface-elevated-200);
+      }
+
+      mui-image {
+        border: var(--app-projects-image-border, var(--border-thin));
+        border-radius: var(--app-border-radius, var(--mui-image-radius-active));
       }
 
     `;

@@ -2,7 +2,16 @@ import "../../images/github-mark";
 
 class storyCard extends HTMLElement {
   static get observedAttributes() {
-    return ["title", "description", "usage", "usageLink", "accessibility", "github", "canvas-background"];
+    return [
+      "title",
+      "description",
+      "usage",
+      "usageLink",
+      "accessibility",
+      "github",
+      "canvas-background",
+      "canvas-guide-color",
+    ];
   }
 
   constructor() {
@@ -31,7 +40,7 @@ class storyCard extends HTMLElement {
       div:after {
         content: "";
         position: absolute;
-        background: #12caff;
+        background: var(--story-card-canvas-guide-color, var(--app-story-card-canvas-guide-color, #12caff));
       }
 
       section:before,
@@ -204,16 +213,23 @@ class storyCard extends HTMLElement {
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) return;
-    if (name === "canvas-background") this.syncCanvasStyles();
+    if (name === "canvas-background" || name === "canvas-guide-color") this.syncCanvasStyles();
   }
 
   syncCanvasStyles() {
     const canvasBackground = this.getAttribute("canvas-background");
     if (canvasBackground) {
       this.style.setProperty("--story-card-canvas-background", canvasBackground);
-      return;
+    } else {
+      this.style.removeProperty("--story-card-canvas-background");
     }
-    this.style.removeProperty("--story-card-canvas-background");
+
+    const canvasGuideColor = this.getAttribute("canvas-guide-color");
+    if (canvasGuideColor) {
+      this.style.setProperty("--story-card-canvas-guide-color", canvasGuideColor);
+    } else {
+      this.style.removeProperty("--story-card-canvas-guide-color");
+    }
   }
 }
 
