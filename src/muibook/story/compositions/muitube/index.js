@@ -2,10 +2,12 @@ import MuiVideoDark from "../../../images/muitube/mui-video-dark.png";
 import SenseiVideoDark from "../../../images/muitube/sensei-video-dark.png";
 import JalVideoDark from "../../../images/muitube/jal-video-dark.png";
 import AnaVideoDark from "../../../images/muitube/ana-video-dark.png";
+import PaperclipVideoDark from "../../../images/muitube/paperclip-video-dark.png";
 import MuiVideoLight from "../../../images/muitube/mui-video-light.png";
 import SenseiVideoLight from "../../../images/muitube/sensei-video-light.png";
 import JalVideoLight from "../../../images/muitube/jal-video-light.png";
 import AnaVideoLight from "../../../images/muitube/ana-video-light.png";
+import PaperclipVideoLight from "../../../images/muitube/paperclip-video-light.png";
 import MaxAvatar from "../../../images/mui/avatar-max.png";
 import JulieAvatar from "../../../images/mui/avatar-julie.png";
 
@@ -455,6 +457,10 @@ class compMuiTube extends HTMLElement {
       sensei: {
         light: SenseiVideoLight,
         dark: SenseiVideoDark,
+      },
+      paperclip: {
+        light: PaperclipVideoLight,
+        dark: PaperclipVideoDark,
       },
     };
   }

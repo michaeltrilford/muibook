@@ -3,7 +3,7 @@
  */
 
 html[data-brand="paperclip"] {
-  --font-family: "Inter", Arial, Helvetica, sans-serif;
+  --font-family: "Archivo", Arial, Helvetica, sans-serif;
   --blue-100: oklch(0.94 0.04 264.11);
   --blue-200: oklch(0.86 0.08 264.11);
   --blue-300: oklch(0.76 0.14 264.11);
