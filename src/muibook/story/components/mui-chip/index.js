@@ -22,6 +22,17 @@ class storyChip extends HTMLElement {
       .multi-select::part(flex-wrap) { flex-wrap: wrap; }
       .multi-select::part(gap) { gap: var(--space-200); }
       .multi-select::part(width) { width: 180px; }
+
+      .chip-overflow-example {
+        display: flex;
+        gap: var(--space-200);
+        max-width: 42rem;
+      }
+
+      .chip-overflow-example mui-chip {
+        flex: 1 1 0;
+      }
+
     `;
 
     const propItems = [
@@ -87,7 +98,7 @@ class storyChip extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -180,7 +191,7 @@ class storyChip extends HTMLElement {
         </story-card>
 
         <story-card title="Sizes" usageLink="https://guides.muibook.com/chip">
-          <mui-h-stack slot="body" space="var(--space-200)" alignY="center">
+          <mui-h-stack slot="body" space="var(--space-200)" alignY="center" wrap="wrap">
             <mui-chip size="x-small">X-Small</mui-chip>
             <mui-chip size="small">Small</mui-chip>
             <mui-chip size="medium">Medium</mui-chip>
@@ -294,6 +305,25 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card title="Overflow" description="Long chip labels truncate when the chip is constrained by the surrounding layout." usageLink="https://guides.muibook.com/chip">
+          <div slot="body" class="chip-overflow-example">
+            <mui-chip dismiss>
+              <mui-icon-left-sidebar slot="before"></mui-icon-left-sidebar>
+              Branding
+            </mui-chip>
+            <mui-chip active dismiss>
+              <mui-icon-left-sidebar slot="before"></mui-icon-left-sidebar>
+              Web Design
+            </mui-chip>
+          </div>
+          <story-code-block slot="footer" scrollable>
+            &lt;div style=&quot;display: flex; gap: var(--space-200); max-width: 42rem;&quot;&gt;<br />
+            &nbsp;&nbsp;&lt;mui-chip dismiss style=&quot;flex: 1 1 0;&quot;&gt;Branding&lt;/mui-chip&gt;<br />
+            &nbsp;&nbsp;&lt;mui-chip dismiss active style=&quot;flex: 1 1 0;&quot;&gt;Web Design&lt;/mui-chip&gt;<br />
+            &lt;/div&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card title="Sub Navigation" description="It is often used to view page results for a single category." usageLink="https://guides.muibook.com/chip">
           <mui-h-stack id="sub-navigation" slot="body" space="var(--space-200)">
             <mui-chip> 
@@ -301,9 +331,6 @@ class storyChip extends HTMLElement {
             </mui-chip>
             <mui-chip active> 
               Gaming
-            </mui-chip>
-            <mui-chip> 
-              Podcasts
             </mui-chip>
           </mui-h-stack>
           <story-code-block slot="footer" scrollable>

@@ -6,6 +6,7 @@ export const muiApi = {
       { name: "padding", type: { text: "string" }, default: "var(--space-000)", description: "Padding applied inside the stack. Accepts any valid CSS padding value or design token." },
       { name: "alignx", type: { text: "string" }, default: "flex-start", description: "Horizontal alignment of children, mapped to flex `justify-content`." },
       { name: "aligny", type: { text: "string" }, default: "flex-start", description: "Vertical alignment of children, mapped to flex `align-items`." },
+      { name: "wrap", type: { text: '"nowrap" | "wrap" | "wrap-reverse" | boolean' }, default: "nowrap", description: "Controls horizontal wrapping. Use `wrap=\"wrap\"` for explicit wrapping, or the bare `wrap` attribute as shorthand." },
       { name: "height", type: { text: "string" }, description: "Sets the host height. Accepts any valid CSS height value, including tokens." },
       { name: "width", type: { text: "string" }, description: "Sets the host width. Accepts any valid CSS width value, including tokens." },
       { name: "viewport", type: { text: "boolean" }, default: "false", description: "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region." },

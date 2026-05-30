@@ -129,7 +129,7 @@ ACTIONS:
 - ButtonGroup: slot default, right, style
 - Link: text, href, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (100|200|300|400|500), target, download, weight (regular|bold), disabled; slots default/before/after
 - Dropdown: zindex, position, persistent; slots action/default
-- Chip: text, active, dismiss, usage; slots default/before/after
+- Chip: text, active, dismiss, usage; slots default/before/after. Chip labels truncate when constrained; keep text short and let icons/dismiss controls remain visible.
 
 NAVIGATION:
 - TabBar: speed, controlsPosition, stroke (border|none), active-inset, radius; slots default/controls

@@ -113,7 +113,8 @@ class storyButton extends HTMLElement {
         type: "string",
         options: "100, 200, 300, 400, 500, valid CSS value",
         default: "100",
-        description: "Set the ring shadow width when stroke is set to ring. Use 100 by default; increase only when more contrast is needed.",
+        description:
+          "Set the ring shadow width when stroke is set to ring. Use 100 by default; increase only when more contrast is needed.",
       },
       {
         name: "style",
@@ -647,7 +648,7 @@ class storyButton extends HTMLElement {
           <mui-button size="medium" variant="secondary" stroke="ring">Medium</mui-button>
           <mui-button size="large" variant="secondary" stroke="ring">Large</mui-button>
           <mui-rule direction="horizontal" length="100%"></mui-rule>
-          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
+          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start" wrap="wrap">
             <mui-button variant="primary" stroke="ring">Primary</mui-button>
             <mui-button variant="secondary" stroke="ring">Secondary</mui-button>
             <mui-button variant="tertiary" stroke="ring">Tertiary</mui-button>
@@ -671,13 +672,14 @@ class storyButton extends HTMLElement {
             </mui-h-stack>
           </mui-v-stack>
           <mui-rule direction="horizontal" length="100%"></mui-rule>
-          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
+          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start" wrap="wrap">
             <mui-button variant="secondary" stroke="ring" stroke-ring-size="100">100</mui-button>
             <mui-button variant="secondary" stroke="ring" stroke-ring-size="200">200</mui-button>
             <mui-button variant="secondary" stroke="ring" stroke-ring-size="300">300</mui-button>
             <mui-button variant="secondary" stroke="ring" stroke-ring-size="400">400</mui-button>
             <mui-button variant="secondary" stroke="ring" stroke-ring-size="500">500</mui-button>
           </mui-h-stack>
+          <mui-rule direction="horizontal" length="100%"></mui-rule>
           <div
             class="overlay-canvas"
             style="

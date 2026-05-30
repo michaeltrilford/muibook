@@ -80,21 +80,11 @@ class ImportCard extends HTMLElement {
         :host { display: block; scroll-margin-top: var(--space-600); }
         mui-card { border: var(--border-thick); }
         mui-card-header { padding: var(--space-400); }
-        mui-card-footer { background: var(--surface-elevated-200); padding: var(--space-400) var(--space-400) var(--space-400) var(--space-700); border-radius: 0 0 var(--card-radius) var(--card-radius); }
-        code { 
-          font-size: var(--text-font-size-s);
-          line-height: var(--text-line-height-s);
-          margin: 0;
-          display: block;
-          border-radius: inherit;
-          font-family: monospace;
-          color: var(--text-color);
-          box-sizing: border-box;
-          width: 100%;
-          overflow-x: visible;
-          white-space: normal;
-          overflow-wrap: normal;
-          word-break: normal;
+        mui-card-footer { background: var(--surface-elevated-200); padding-inline-end: var(--space-200); border-radius: 0 0 var(--card-radius) var(--card-radius); }
+        @media (min-width: 500px) {
+          mui-card-footer {
+            padding-inline-end: var(--space-400);
+          }
         }
       </style>
       <mui-card>
@@ -109,9 +99,9 @@ class ImportCard extends HTMLElement {
         <mui-rule direction="horizontal" role="presentation" in-card></mui-rule>
         <mui-card-footer>
           <mui-grid col="1fr auto" aligny="center">
-            <code class="import-card">
+            <mui-code class="import-card" size="x-small">
               ${importItems.map((path) => `import "${path}";<br>`).join("\n")}
-            </code>
+            </mui-code>
             <mui-button data-copy-imports size="x-small" variant="tertiary">Copy</mui-button>
           <mui-grid>
         </mui-card-footer>

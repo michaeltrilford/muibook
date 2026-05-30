@@ -115,6 +115,8 @@ class MuiChip extends HTMLElement {
       :host {
         display: inline-flex;
         box-sizing: border-box;
+        min-width: 0;
+        max-width: 100%;
       }
       :host([disabled]) {
         opacity: 0.4;
@@ -131,10 +133,17 @@ class MuiChip extends HTMLElement {
         background: var(--chip-background);
         border-color: var(--chip-border-color);
         border-radius: var(--chip-radius);
+        min-width: 0;
+        max-width: 100%;
         filter: var(
           --chip-filter,
           drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20))
         );
+      }
+
+      mui-body {
+        min-width: 0;
+        max-width: 100%;
       }
 
       :host([size="x-small"]) .container {
@@ -271,6 +280,7 @@ class MuiChip extends HTMLElement {
         box-sizing: border-box;
         padding: var(--space-025);
         fill: var(--chip-icon-fill);
+        flex-shrink: 0;
       }
 
       :host([has-before]) ::slotted(.mui-icon) { 
@@ -329,11 +339,11 @@ class MuiChip extends HTMLElement {
 
     if (this.hasAttribute("dismiss")) {
       // Dismiss mode
-        this.shadowRoot!.innerHTML = /*html*/ `
+      this.shadowRoot!.innerHTML = /*html*/ `
         <style>${styles}</style>
         <span class="container">
           <slot name="before"></slot>
-          <mui-body size="${bodySize}" weight="bold">
+          <mui-body size="${bodySize}" weight="bold" truncate>
             <slot></slot>
           </mui-body>
           <mui-button
@@ -366,7 +376,7 @@ class MuiChip extends HTMLElement {
           <style>${styles}</style>
           <span class="container">
             <slot name="before"></slot>
-            <mui-body size="${bodySize}" weight="bold">
+            <mui-body size="${bodySize}" weight="bold" truncate>
               <slot></slot>
             </mui-body>
             <slot name="after"></slot>

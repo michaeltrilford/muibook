@@ -167,7 +167,7 @@ class storyLink extends HTMLElement {
             default="${prop.default || ""}"
             description="${prop.description}">
           </story-type-row>
-        `
+        `,
       )
       .join("");
 
@@ -525,17 +525,21 @@ class storyLink extends HTMLElement {
           <mui-link size="medium" variant="secondary" stroke="ring">Medium</mui-link>
           <mui-link size="large" variant="secondary" stroke="ring">Large</mui-link>
           <mui-rule direction="horizontal" length="100%"></mui-rule>
-          <mui-link variant="primary" stroke="ring">Primary</mui-link>
-          <mui-link variant="secondary" stroke="ring">Secondary</mui-link>
-          <mui-link variant="tertiary" stroke="ring">Tertiary</mui-link>
-          <mui-link variant="attention" stroke="ring">Attention</mui-link>
-          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
+          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start" wrap="wrap">
+            <mui-link variant="primary" stroke="ring">Primary</mui-link>
+            <mui-link variant="secondary" stroke="ring">Secondary</mui-link>
+            <mui-link variant="tertiary" stroke="ring">Tertiary</mui-link>
+            <mui-link variant="attention" stroke="ring">Attention</mui-link>
+          </mui-h-stack>
+          <mui-rule direction="horizontal" length="100%"></mui-rule>
+          <mui-h-stack space="var(--space-200)" aligny="center" alignx="start" wrap="wrap">
             <mui-link variant="secondary" stroke="ring" stroke-ring-size="100">100</mui-link>
             <mui-link variant="secondary" stroke="ring" stroke-ring-size="200">200</mui-link>
             <mui-link variant="secondary" stroke="ring" stroke-ring-size="300">300</mui-link>
             <mui-link variant="secondary" stroke="ring" stroke-ring-size="400">400</mui-link>
             <mui-link variant="secondary" stroke="ring" stroke-ring-size="500">500</mui-link>
           </mui-h-stack>
+          <mui-rule direction="horizontal" length="100%"></mui-rule>
           <div
             class="overlay-canvas"
             style="

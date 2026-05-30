@@ -23,6 +23,7 @@ export const muiDocs: MuiDocs = {
         "Chips are clickable for filtering content or initiating events.",
         "Allow users to remove Chips when they no longer apply. E.g. Removing filters.",
         "Use size='x-small|small|medium|large' to align chip scale with surrounding controls.",
+        "Chip labels truncate when constrained so icons, avatars, badges, and dismiss actions remain visible.",
         "When used in input before/after slots, chip usage and size are automatically aligned by the input component.",
       ],
     },
@@ -211,7 +212,10 @@ export const muiDocs: MuiDocs = {
     ],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Chip text stays on one line and truncates when the chip is constrained by its parent layout.",
+        "Before, after, and dismiss affordances keep their fixed space while the label is allowed to shrink.",
+      ],
     },
 
     writing: {

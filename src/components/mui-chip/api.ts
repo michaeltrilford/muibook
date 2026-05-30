@@ -18,7 +18,7 @@ export const muiApi = {
         name: "size",
         type: { text: '"x-small" | "small" | "medium" | "large"' },
         default: "medium",
-        description: "Controls chip sizing and automatic slotted icon and text scale.",
+        description: "Controls chip sizing and automatic slotted icon and text scale. Chip labels truncate when constrained.",
       },
       {
         name: "disabled",

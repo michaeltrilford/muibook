@@ -52,6 +52,10 @@ class storyStack extends HTMLElement {
         background: var(--surface);
       }
 
+      .wrap-preview {
+        max-width: 44rem;
+      }
+
       @media (max-width: 767px) {
         .vertical-align-grid {
           grid-template-columns: 1fr;
@@ -148,6 +152,18 @@ class storyStack extends HTMLElement {
       </div>
     `;
 
+    const HStackWrap = /*html*/ `
+      <div class="vertical-align-canvas wrap-preview" slot="body">
+        <mui-h-stack wrap="wrap" space="var(--space-200)" aligny="center">
+          <mui-badge>Design System</mui-badge>
+          <mui-badge>Content Model</mui-badge>
+          <mui-badge>Documentation</mui-badge>
+          <mui-badge>Accessibility</mui-badge>
+          <mui-badge>Builder Runtime</mui-badge>
+        </mui-h-stack>
+      </div>
+    `;
+
     const propItemsHStack = [
       {
         name: "space",
@@ -176,6 +192,13 @@ class storyStack extends HTMLElement {
         options: "start, center, end, etc...",
         default: "normal",
         description: "Vertical align using align-items properties.",
+      },
+      {
+        name: "wrap",
+        type: "string | boolean",
+        options: "nowrap, wrap, wrap-reverse, true",
+        default: "nowrap",
+        description: "Controls flex wrapping. Use wrap=\"wrap\" for explicit wrapping, or the bare wrap attribute as shorthand.",
       },
       {
         name: "height",
@@ -443,6 +466,19 @@ class storyStack extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-card&gt;...&lt;/mui-card&gt;
           <br />
           &lt;/mui-v-stack&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Horizontal: Wrap" description="Use wrap when chips, badges, actions, or metadata rows need to continue onto a new line without switching layout primitives.">
+        ${HStackWrap}
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-h-stack wrap="wrap" space="var(--space-200)" aligny="center"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge&gt;Design System&lt;/mui-badge&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge&gt;Content Model&lt;/mui-badge&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge&gt;Documentation&lt;/mui-badge&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge&gt;Accessibility&lt;/mui-badge&gt;<br />
+          &nbsp;&nbsp;&lt;mui-badge&gt;Builder Runtime&lt;/mui-badge&gt;<br />
+          &lt;/mui-h-stack&gt;
         </story-code-block>
       </story-card>
 

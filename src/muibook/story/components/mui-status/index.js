@@ -115,9 +115,6 @@ class storyStatus extends HTMLElement {
               Review
               <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
             </mui-status>
-            <mui-status size="small" variant="warning">
-              Review
-            </mui-status>
           </mui-h-stack>
           <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
             <mui-status size="medium" variant="positive">
@@ -132,9 +129,6 @@ class storyStatus extends HTMLElement {
               <mui-icon-check slot="before"></mui-icon-check>
               Review
               <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
-            </mui-status>
-            <mui-status size="medium" variant="warning">
-              Review
             </mui-status>
           </mui-h-stack>
         </mui-v-stack>

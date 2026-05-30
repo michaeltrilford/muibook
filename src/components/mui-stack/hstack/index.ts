@@ -3,12 +3,13 @@ import { getPartMap } from "../../../utils/part-map";
 /* Mui H Stack */
 class MuiHStack extends HTMLElement {
   static get observedAttributes() {
-    return ["space", "aligny", "alignx", "padding", "height", "width", "viewport", "fill"];
+    return ["space", "aligny", "alignx", "padding", "height", "width", "viewport", "fill", "wrap"];
   }
 
   private space: string;
   private alignX: string;
   private alignY: string;
+  private wrap: string;
   private styles: string;
 
   constructor() {
@@ -18,6 +19,7 @@ class MuiHStack extends HTMLElement {
     this.space = `var(--space-500)`;
     this.alignY = `flex-start`;
     this.alignX = `flex-start`;
+    this.wrap = `nowrap`;
 
     this.styles = /*css*/ `
       :host {
@@ -34,6 +36,7 @@ class MuiHStack extends HTMLElement {
         padding: var(--padding);
         align-items: var(--alignY);
         justify-content: var(--alignX);
+        flex-wrap: var(--wrap);
       }
       :host([height]) slot,
       :host([viewport]) slot,
@@ -63,6 +66,7 @@ class MuiHStack extends HTMLElement {
           --padding: ${this.getAttribute("padding") || "var(--space-000)"};
           --alignY: ${this.getAttribute("aligny") || this.alignY};
           --alignX: ${this.getAttribute("alignx") || this.alignX};
+          --wrap: ${this.resolveWrap(this.getAttribute("wrap"))};
         ">
       </slot>
     `;
@@ -83,6 +87,7 @@ class MuiHStack extends HTMLElement {
       if (name === "padding") slot.style.setProperty("--padding", newValue || "var(--space-000)");
       if (name === "aligny") slot.style.setProperty("--alignY", newValue || this.alignY);
       if (name === "alignx") slot.style.setProperty("--alignX", newValue || this.alignX);
+      if (name === "wrap") slot.style.setProperty("--wrap", this.resolveWrap(newValue));
     }
   }
 
@@ -92,6 +97,11 @@ class MuiHStack extends HTMLElement {
 
     this.style.setProperty("--stack-height", height);
     this.style.setProperty("--stack-width", width);
+  }
+
+  private resolveWrap(value: string | null) {
+    if (value === null || value === "") return this.hasAttribute("wrap") ? "wrap" : this.wrap;
+    return value;
   }
 
   waitForPartMap(): Promise<void> {
