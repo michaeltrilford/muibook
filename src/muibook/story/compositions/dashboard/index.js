@@ -13,7 +13,6 @@ class CompDashboard extends HTMLElement {
       .canvas {
         background: var(--app-faux-container-background, var(--surface-elevated-200));
         padding: var(--space-500);
-        margin: calc(var(--space-400) * -1);
       }
 
       .dashboard {
@@ -82,8 +81,8 @@ class CompDashboard extends HTMLElement {
       >
         <story-card
           id="revenue-operations-dashboard"
-          title="Revenue Operations"
-          description="A practical dashboard layout for tracking recurring revenue, account activation, and follow-up work."
+          noheader
+          composition
         >
           <div slot="body" class="canvas">
             <mui-v-stack class="dashboard" space="var(--space-500)" alignx="stretch">
@@ -290,16 +289,6 @@ class CompDashboard extends HTMLElement {
             </mui-v-stack>
           </div>
 
-          <story-code-block slot="footer" scrollable>
-            &lt;mui-v-stack space=&quot;var(--space-500)&quot; alignx=&quot;stretch&quot;&gt;<br />
-            &nbsp;&nbsp;&lt;mui-h-stack alignx=&quot;space-between&quot; aligny=&quot;center&quot;&gt;...&lt;/mui-h-stack&gt;<br />
-            &nbsp;&nbsp;&lt;mui-v-stack space=&quot;var(--space-300)&quot; alignx=&quot;stretch&quot;&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-grid col=&quot;repeat(4, minmax(0, 1fr))&quot;&gt;...&lt;/mui-grid&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-grid col=&quot;minmax(0, 1.55fr) minmax(26rem, 1fr)&quot;&gt;...&lt;/mui-grid&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive breakpoint=&quot;767&quot;&gt;...&lt;/mui-responsive&gt;<br />
-            &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
-            &lt;/mui-v-stack&gt;
-          </story-code-block>
         </story-card>
       </story-template>
     `;

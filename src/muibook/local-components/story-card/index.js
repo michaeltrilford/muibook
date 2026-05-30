@@ -11,6 +11,9 @@ class storyCard extends HTMLElement {
       "github",
       "canvas-background",
       "canvas-guide-color",
+      "no-canvas-guide",
+      "body-condensed",
+      "composition",
     ];
   }
 
@@ -29,6 +32,11 @@ class storyCard extends HTMLElement {
         padding: var(--space-400);
       }
 
+      :host([body-condensed]) .story-body,
+      :host([composition]) .story-body {
+        padding: 0;
+      }
+
       section {
         background-color: var(--story-card-canvas-background, var(--app-story-card));
         position: relative;
@@ -41,6 +49,17 @@ class storyCard extends HTMLElement {
         content: "";
         position: absolute;
         background: var(--story-card-canvas-guide-color, var(--app-story-card-canvas-guide-color, #12caff));
+      }
+
+      :host([no-canvas-guide]) section:before,
+      :host([no-canvas-guide]) section:after,
+      :host([no-canvas-guide]) div:before,
+      :host([no-canvas-guide]) div:after,
+      :host([composition]) section:before,
+      :host([composition]) section:after,
+      :host([composition]) div:before,
+      :host([composition]) div:after {
+        display: none;
       }
 
       section:before,
@@ -89,6 +108,10 @@ class storyCard extends HTMLElement {
 
       .actions {
         margin-right: calc(-1 * var(--space-050))
+      }
+
+      .story-footer[hidden] {
+        display: none;
       }
 
       @media (min-width: 768px) {
@@ -197,23 +220,26 @@ class storyCard extends HTMLElement {
           </mui-card-header>
         `
         }
-        <mui-card-body>
+        <mui-card-body ${this.hasAttribute("body-condensed") || this.hasAttribute("composition") ? "condensed" : ""}>
           <section>
             <div class="story-body">
               <slot name="body"></slot>
             </div>
           </section>
         </mui-card-body>
-        <mui-card-footer style="padding: 0;"><slot name="footer"></slot></mui-card-footer>
+        <mui-card-footer class="story-footer" style="padding: 0;"><slot name="footer"></slot></mui-card-footer>
       </mui-card>
     `;
 
     this.syncCanvasStyles();
+    this.syncLayoutAttrs();
+    this.bindFooterSlot();
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) return;
     if (name === "canvas-background" || name === "canvas-guide-color") this.syncCanvasStyles();
+    if (name === "body-condensed" || name === "composition") this.syncLayoutAttrs();
   }
 
   syncCanvasStyles() {
@@ -230,6 +256,28 @@ class storyCard extends HTMLElement {
     } else {
       this.style.removeProperty("--story-card-canvas-guide-color");
     }
+  }
+
+  syncLayoutAttrs() {
+    const cardBody = this.shadowRoot?.querySelector("mui-card-body");
+    if (!cardBody) return;
+    cardBody.toggleAttribute("condensed", this.hasAttribute("body-condensed") || this.hasAttribute("composition"));
+  }
+
+  bindFooterSlot() {
+    const footer = this.shadowRoot?.querySelector(".story-footer");
+    const footerSlot = this.shadowRoot?.querySelector('slot[name="footer"]');
+    if (!footer || !footerSlot) return;
+
+    const syncFooterVisibility = () => {
+      const hasFooterContent = footerSlot
+        .assignedNodes({ flatten: true })
+        .some((node) => node.nodeType === Node.ELEMENT_NODE || node.textContent?.trim());
+      footer.toggleAttribute("hidden", !hasFooterContent);
+    };
+
+    footerSlot.addEventListener("slotchange", syncFooterVisibility);
+    syncFooterVisibility();
   }
 }
 

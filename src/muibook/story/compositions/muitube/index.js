@@ -633,7 +633,7 @@ class compMuiTube extends HTMLElement {
         storybook="https://stories.muibook.com/?path=/docs/compositions-muitube--docs"
       >
 
-        <story-card noheader>
+        <story-card noheader composition>
           <div slot="body">
             ${Comp}
           </div>
