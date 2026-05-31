@@ -4,6 +4,7 @@
   "attributes": [
     "has-before",
     "has-after",
+    "has-video",
     "icon-only",
     "avatar-only",
     "dropdown-slot",

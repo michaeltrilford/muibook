@@ -141,7 +141,7 @@ class MuiCardBody extends HTMLElement {
         :host([condensed][inner-space]),
         :host([condensed][has-card-slat-group]),
         :host([condensed][has-accordion-slat-group]) {
-          padding: var(--space-000);
+          padding: var(--stroke-size-100);
         }
         
       </style>

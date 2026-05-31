@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-29T14:42:21.956Z",
+  "generatedAt": "2026-05-31T05:18:10.351Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -16,6 +16,7 @@
       "attributes": [
         "has-before",
         "has-after",
+        "has-video",
         "icon-only",
         "avatar-only",
         "dropdown-slot",
@@ -35,6 +36,11 @@
         "has-before",
         "has-after"
       ]
+    },
+    "mui-chip-rail": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": []
     },
     "mui-drawer": {
       "version": 1,
@@ -72,6 +78,7 @@
       "attributes": [
         "has-before",
         "has-after",
+        "has-video",
         "icon-only"
       ]
     },
@@ -116,6 +123,11 @@
         "has-after"
       ]
     },
+    "mui-video-thumbnail": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": []
+    },
     "mui-accordion-block": {
       "version": 1,
       "destinationOnly": true,
@@ -156,19 +168,19 @@
         "condensed-slot"
       ]
     },
-    "mui-row": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        "in-card"
-      ]
-    },
     "mui-tab-item": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         "has-before",
         "has-after"
+      ]
+    },
+    "mui-row": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "in-card"
       ]
     }
   }

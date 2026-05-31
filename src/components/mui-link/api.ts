@@ -29,6 +29,12 @@ export const muiApi = {
           'Ring stroke width when `stroke="ring"` is used on action-style links. Token values map to `--stroke-size-*`.',
       },
       {
+        name: "focus-ring",
+        type: { text: '"inset" | "outset"' },
+        default: "default",
+        description: "Controls focus outline placement. The default is inset; use `outset` only when the focus ring should sit outside the action.",
+      },
+      {
         name: "disabled",
         type: { text: "boolean" },
         default: "false",
@@ -61,6 +67,28 @@ export const muiApi = {
       { name: "", description: "Link label or a single icon for an icon-only link action." },
       { name: "before", description: "Leading icon, avatar, badge, or other supporting content." },
       { name: "after", description: "Trailing icon, avatar, badge, or other supporting content." },
+    ],
+    cssProperties: [
+      {
+        name: "--action-focus-outline",
+        description: "Controls the link focus-visible outline. Defaults to stroke-size-400.",
+      },
+      {
+        name: "--action-focus-outline-offset",
+        description: "Controls the link focus-visible outline offset. Defaults to an inset stroke-size-400 offset.",
+      },
+      {
+        name: "--action-focus-outline-inset-offset",
+        description: "Controls the default inset focus outline offset. Defaults to stroke-size-400.",
+      },
+      {
+        name: "--action-focus-outline-outset-offset",
+        description: "Controls the positive outline offset when `focus-ring=\"outset\"` is used. Defaults to stroke-size-200.",
+      },
+      {
+        name: "--link-focus-radius",
+        description: "Controls the default inline link focus outline radius. Defaults to radius-200.",
+      },
     ],
   },
 };

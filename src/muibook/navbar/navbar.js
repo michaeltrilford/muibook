@@ -225,6 +225,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-section heading="Actions" default-open>
           <app-navbar-link link="#/button" title="Button"></app-navbar-link>
           <app-navbar-link link="#/chip" title="Chip"></app-navbar-link>
+          <app-navbar-link link="#/chip-rail" title="Chip Rail"></app-navbar-link>
           <app-navbar-link link="#/dropdown" title="Dropdown"></app-navbar-link>
           <app-navbar-link link="#/link" title="Link"></app-navbar-link>
         </app-navbar-section>
@@ -233,11 +234,15 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="#/icons" title="Icons"></app-navbar-link>
           <app-navbar-link link="#/illustrations" title="Illustrations"></app-navbar-link>
           <app-navbar-link link="#/avatar" title="Avatar"></app-navbar-link>
-          <app-navbar-link link="#/image" title="Image"></app-navbar-link>
-          <app-navbar-link link="#/media-player" title="Media Player"></app-navbar-link>
-          <app-navbar-link link="#/slide-frame" title="Slide Frame"></app-navbar-link>
           <app-navbar-link link="#/carousel" title="Carousel"></app-navbar-link>
           <app-navbar-link link="#/smart-card" title="Smart Card"></app-navbar-link>
+        </app-navbar-section>
+
+        <app-navbar-section heading="Media" default-open>
+          <app-navbar-link link="#/image" title="Image"></app-navbar-link>
+          <app-navbar-link link="#/media-player" title="Media Player"></app-navbar-link>
+          <app-navbar-link link="#/video-thumbnail" title="Video Thumbnail"></app-navbar-link>
+          <app-navbar-link link="#/slide-frame" title="Slide Frame"></app-navbar-link>
         </app-navbar-section>
 
         <app-navbar-section heading="Feedback" default-open>

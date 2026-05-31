@@ -1,12 +1,11 @@
 class StoryQuicklinks extends HTMLElement {
   static get observedAttributes() {
-    return ["heading", "links", "limit"];
+    return ["heading", "links", "size"];
   }
 
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.expanded = false;
     this._clickHandler = null;
   }
 
@@ -54,15 +53,6 @@ class StoryQuicklinks extends HTMLElement {
       const target = event.target;
       if (!(target instanceof Element)) return;
 
-      const toggleButton = target.closest("[data-toggle-quicklinks]");
-      if (toggleButton) {
-        event.preventDefault();
-        this.expanded = !this.expanded;
-        this.toggleAttribute("links-expanded", this.expanded);
-        toggleButton.textContent = this.expanded ? "Less..." : "More...";
-        return;
-      }
-
       const quicklink = target.closest("[data-scroll-link]");
       if (!quicklink) return;
 
@@ -93,69 +83,37 @@ class StoryQuicklinks extends HTMLElement {
 
   render() {
     const heading = this.getAttribute("heading") || "Quicklinks";
-    const limit = Number(this.getAttribute("limit") || "10");
+    const size = this.getAttribute("size") || "medium";
     const links = this.parseLinks(this.getAttribute("links"));
-    const collapsed = links.slice(0, limit);
-    const extra = links.slice(limit);
-    const hasExtra = extra.length > 0;
 
-    const linkMarkup = (item, extraClass = "") => /*html*/ `
-      <mui-link class="${extraClass}" size="small" data-scroll-link="${item.target}">${item.label}</mui-link>
+    const linkMarkup = (item) => /*html*/ `
+      <mui-chip variant="clickable" data-scroll-link="${item.target}">${item.label}</mui-chip>
     `;
 
     if (!this.shadowRoot) return;
+
+    if (!links.length) {
+      this.shadowRoot.innerHTML = "";
+      return;
+    }
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
         :host {
           display: block;
+          min-width: 0;
+          max-width: 100%;
         }
 
-        .token-item-menu::part(flex-wrap) {
-          flex-wrap: wrap;
-          column-gap: var(--space-300);
-          row-gap: var(--space-100);
-        }
-
-        .quicklink-extra {
-          display: none;
-        }
-
-        :host([links-expanded]) .quicklink-extra {
-          display: inline-flex;
-        }
-
-        .quicklinks-toggle {
-          text-transform: capitalize;
-          margin-left: var(--space-100);
-        }
-        .quicklinks-toggle::part(text-decoration) {
-          text-decoration: none;
-        }
-        .quicklinks-toggle:hover::part(text-decoration),
-        .quicklinks-toggle:focus-visible::part(text-decoration) {
-          text-decoration: underline;
-        }
-
-        .theme-brand::part(color) {
-          opacity: 0.75
+        mui-chip-rail {
+          --chip-rail-background: var(--surface);
         }
       </style>
 
-      <mui-message heading="${heading}">
-        <mui-h-stack class="token-item-menu" alignY="start">
-          ${collapsed.map((item) => linkMarkup(item)).join("")}
-          ${extra.map((item) => linkMarkup(item, "quicklink-extra")).join("")}
-          ${
-            hasExtra
-              ? '<mui-link size="small" weight="bold" class="quicklinks-toggle theme-brand" data-toggle-quicklinks>More...</mui-link>'
-              : ""
-          }
-        </mui-h-stack>
-      </mui-message>
+      <mui-chip-rail size="${size}" aria-label="${heading}">
+        ${links.map((item) => linkMarkup(item)).join("")}
+      </mui-chip-rail>
     `;
-
-    this.toggleAttribute("links-expanded", this.expanded);
   }
 }
 

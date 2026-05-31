@@ -3,7 +3,18 @@ import { getPartMap } from "../../utils/part-map";
 /* Mui Button */
 class MuiButton extends HTMLElement {
   static get observedAttributes() {
-    return ["onclick", "type", "aria-label", "disabled", "variant", "stroke", "stroke-ring-size", "size", "usage"];
+    return [
+      "onclick",
+      "type",
+      "aria-label",
+      "disabled",
+      "variant",
+      "stroke",
+      "stroke-ring-size",
+      "focus-ring",
+      "size",
+      "usage",
+    ];
   }
 
   constructor() {
@@ -29,6 +40,9 @@ class MuiButton extends HTMLElement {
       display: inline-block;
       width: auto;
       text-align: center;
+      --action-focus-outline: var(--stroke-size-400) var(--stroke-outset) var(--outline-color);
+      --action-focus-outline-inset-offset: var(--stroke-size-400);
+      --action-focus-outline-offset: calc(-1 * var(--action-focus-outline-inset-offset));
     }
     button {
       vertical-align: baseline;
@@ -79,7 +93,8 @@ class MuiButton extends HTMLElement {
     button, button:before, button:after {box-sizing: border-box;}
 
     button:focus-visible {
-      outline: var(--outline-thick);
+      outline: var(--action-focus-outline);
+      outline-offset: var(--action-focus-outline-offset);
     }
 
     :host button ::slotted(.mui-icon) { fill: var(--action-primary-text-color); }
@@ -777,6 +792,39 @@ class MuiButton extends HTMLElement {
       margin-left: var(--space-000);
     }
 
+    :host([has-video]) {
+      display: inline-block;
+      width: auto;
+      text-align: initial;
+    }
+
+    :host([has-video]) button,
+    :host([has-video]) button:hover,
+    :host([has-video]) button:focus,
+    :host([has-video]) button:focus-visible,
+    :host([has-video]) button:disabled {
+      display: block;
+      width: 100%;
+      min-height: 0;
+      padding: var(--space-000);
+      border: none;
+      border-radius: var(--radius-000);
+      background: transparent;
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      text-align: initial;
+      box-shadow: none;
+      outline-offset: var(--video-thumbnail-action-focus-outline-offset, var(--space-300));
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    :host([focus-ring="outset"]) button:focus-visible {
+      outline-offset: var(--action-focus-outline-outset-offset, var(--stroke-size-200));
+    }
+
 
     </style>
 
@@ -866,8 +914,12 @@ class MuiButton extends HTMLElement {
 
     const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
     const assignedElements = slotDefault?.assignedElements({ flatten: true }) ?? [];
+    const hasVideo = assignedElements.some((element) => element.tagName.toLowerCase() === "mui-video-thumbnail");
+
+    this.toggleAttribute("has-video", hasVideo);
 
     const avatarOnly =
+      !hasVideo &&
       assignedElements.length === 1 &&
       assignedElements[0].tagName.toLowerCase() === "mui-avatar" &&
       assignedNodes.every((node: Node) => {
@@ -882,6 +934,7 @@ class MuiButton extends HTMLElement {
 
     const iconOnly =
       !avatarOnly &&
+      !hasVideo &&
       assignedNodes.every((node: Node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
           const el = node as HTMLElement;

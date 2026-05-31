@@ -1,0 +1,46 @@
+export const muiApi = {
+  "mui-video-thumbnail": {
+    description: "Displays a video thumbnail image with optional play affordance, hover treatment, and tokenized frame styling.",
+    attributes: [
+      { name: "src", type: { text: "string" }, description: "Image URL used for the thumbnail." },
+      { name: "src-light", type: { text: "string" }, description: "Image URL used when `data-theme='light'`." },
+      { name: "src-dark", type: { text: "string" }, description: "Image URL used when `data-theme='dark'`." },
+      {
+        name: "src-{brand}-{theme}",
+        type: { text: "string" },
+        description:
+          "Brand and theme specific image URL. For example `src-paperclip-light` or `src-sensei-dark`. Falls back to `src-{theme}`, `src-{brand}`, then `src`.",
+      },
+      { name: "alt", type: { text: "string" }, default: "", description: "Alternative text passed to the thumbnail image." },
+      { name: "aspect-ratio", type: { text: "string" }, default: "16 / 9", description: "Sets the thumbnail frame aspect ratio." },
+      { name: "loading", type: { text: '"lazy" | "eager"' }, default: "lazy", description: "Image loading strategy." },
+      { name: "decoding", type: { text: '"async" | "sync" | "auto"' }, default: "async", description: "Image decoding hint." },
+      { name: "play", type: { text: "boolean" }, default: "false", description: "Displays the centered play affordance on hover." },
+      { name: "overlay", type: { text: "boolean" }, default: "false", description: "Enables the hover shade overlay." },
+    ],
+    slots: [
+      { name: "image", description: "Optional slotted image. Used when `src` is not provided." },
+      { name: "meta", description: "Optional metadata content shown below the thumbnail frame." },
+    ],
+    cssProperties: [
+      { name: "--video-thumbnail-aspect-ratio", description: "Default thumbnail aspect ratio." },
+      { name: "--video-thumbnail-radius", description: "Thumbnail frame border radius." },
+      { name: "--video-thumbnail-background", description: "Thumbnail frame background." },
+      { name: "--video-thumbnail-border", description: "Thumbnail frame border. Defaults to none." },
+      { name: "--video-thumbnail-border-hover", description: "Thumbnail frame border on hover." },
+      { name: "--video-thumbnail-box-shadow", description: "Thumbnail frame shadow." },
+      { name: "--video-thumbnail-box-shadow-hover", description: "Thumbnail frame shadow on hover." },
+      { name: "--video-thumbnail-image-filter", description: "Filter applied to the image." },
+      { name: "--video-thumbnail-image-filter-hover", description: "Filter applied to the image on hover." },
+      { name: "--video-thumbnail-overlay-background", description: "Overlay background over the image." },
+      { name: "--video-thumbnail-overlay-background-hover", description: "Overlay background over the image on hover." },
+      { name: "--video-thumbnail-play-size", description: "Size of the centered play affordance." },
+      { name: "--video-thumbnail-play-background", description: "Play affordance background." },
+      { name: "--video-thumbnail-play-background-hover", description: "Play affordance background on hover." },
+      { name: "--video-thumbnail-play-color", description: "Play affordance icon color." },
+      { name: "--video-thumbnail-play-opacity", description: "Play affordance opacity." },
+      { name: "--video-thumbnail-play-opacity-hover", description: "Play affordance opacity on hover." },
+      { name: "--video-thumbnail-meta-gap", description: "Gap between the frame and slotted metadata." },
+    ],
+  },
+};

@@ -32,7 +32,7 @@ class tokensComponents extends HTMLElement {
             slot="message"
             heading="Quicklinks"
             limit="10"
-            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||illustration::Illustration|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slide-frame::Slide Frame|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table"
+            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||illustration::Illustration|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slide-frame::Slide Frame|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table|||video-thumbnail::Video Thumbnail"
           ></story-quicklinks>
 
           <spec-card
@@ -301,6 +301,26 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--media-player-seek-time-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-video-ratio" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-soundcloud-ratio" variant="size"></story-token-slat>
+          </spec-card>
+
+          <spec-card id="video-thumbnail" title="Video Thumbnail" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-video-thumbnail/index.ts">
+            <story-token-slat slot="body" token="--video-thumbnail-aspect-ratio" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-border" variant="border"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-border-hover" variant="border"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-box-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-box-shadow-hover" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-image-filter" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-image-filter-hover" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-overlay-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-overlay-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-play-size" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-play-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-play-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-play-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-play-opacity" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-play-opacity-hover" variant="size"></story-token-slat>
           </spec-card>
 
           <spec-card id="prompt" title="Prompt" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt/index.ts">

@@ -92,6 +92,10 @@
       "import": "./dist/esm/components/mui-chip/index.js",
       "types": "./dist/types/components/mui-chip/index.d.ts"
     },
+    "./mui-chip-rail": {
+      "import": "./dist/esm/components/mui-chip-rail/index.js",
+      "types": "./dist/types/components/mui-chip-rail/index.d.ts"
+    },
     "./mui-carousel": {
       "import": "./dist/esm/components/mui-carousel/index.js",
       "types": "./dist/types/components/mui-carousel/index.d.ts"
@@ -567,6 +571,10 @@
     "./mui-media-player": {
       "import": "./dist/esm/components/mui-media-player/index.js",
       "types": "./dist/types/components/mui-media-player/index.d.ts"
+    },
+    "./mui-video-thumbnail": {
+      "import": "./dist/esm/components/mui-video-thumbnail/index.js",
+      "types": "./dist/types/components/mui-video-thumbnail/index.d.ts"
     },
     "./mui-range-input": {
       "import": "./dist/esm/components/mui-range-input/index.js",

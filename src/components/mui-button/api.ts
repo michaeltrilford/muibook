@@ -38,6 +38,12 @@ export const muiApi = {
         description: "Ring stroke width when `stroke=\"ring\"` is used. Token values map to `--stroke-size-*`; use `100` by default and increase only when more contrast is needed.",
       },
       {
+        name: "focus-ring",
+        type: { text: '"inset" | "outset"' },
+        default: "default",
+        description: "Controls focus outline placement. The default is inset; use `outset` only when the focus ring should sit outside the action.",
+      },
+      {
         name: "size",
         type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' },
         default: "medium",
@@ -53,6 +59,24 @@ export const muiApi = {
       { name: "", description: "Action label or a single icon or avatar for a compact action." },
       { name: "before", description: "Leading icon, avatar, badge, or other supporting content." },
       { name: "after", description: "Trailing icon, avatar, badge, or other supporting content." },
+    ],
+    cssProperties: [
+      {
+        name: "--action-focus-outline",
+        description: "Controls the button focus-visible outline. Defaults to stroke-size-400.",
+      },
+      {
+        name: "--action-focus-outline-offset",
+        description: "Controls the button focus-visible outline offset. Defaults to an inset stroke-size-400 offset.",
+      },
+      {
+        name: "--action-focus-outline-inset-offset",
+        description: "Controls the default inset focus outline offset. Defaults to stroke-size-400.",
+      },
+      {
+        name: "--action-focus-outline-outset-offset",
+        description: "Controls the positive outline offset when `focus-ring=\"outset\"` is used. Defaults to stroke-size-200.",
+      },
     ],
   },
 };

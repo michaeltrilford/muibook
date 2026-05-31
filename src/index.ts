@@ -114,10 +114,12 @@ export * from "./components/mui-card/header";
 export * from "./components/mui-card/body";
 export * from "./components/mui-card/footer";
 export * from "./components/mui-chip";
+export * from "./components/mui-chip-rail";
 export * from "./components/mui-loader";
 export * from "./components/mui-skeleton";
 export * from "./components/mui-spinner";
 export * from "./components/mui-media-player";
+export * from "./components/mui-video-thumbnail";
 export * from "./components/mui-range-input";
 
 // Feedback

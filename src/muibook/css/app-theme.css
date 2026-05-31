@@ -279,8 +279,7 @@ html[data-brand="paperclip"][data-theme="light"] {
   --app-story-wallet-card: var(--white);
   --app-illustration-background-inverse: var(--blue-500);
   --app-wallet-slat-background: var(--blue-100);
-  --app-muitube-background: var(--grey-100);
-  --app-muitube-card-background-hover: var(--white);
+  --app-muitube-background: var(--white);
 }
 
 html[data-brand="paperclip"][data-theme="dark"] {
@@ -316,5 +315,4 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --app-illustration-background-inverse: var(--white);
   --app-wallet-slat-background: var(--blue-600);
   --app-muitube-background: var(--blue-500);
-  --app-muitube-card-background-hover: var(--blue-600);
 }

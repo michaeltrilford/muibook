@@ -117,6 +117,9 @@ class MuiChip extends HTMLElement {
         box-sizing: border-box;
         min-width: 0;
         max-width: 100%;
+        --chip-focus-outline: var(--stroke-size-300) var(--stroke-outset) var(--outline-color);
+        --chip-focus-outline-offset: calc(-1 * var(--stroke-size-300));
+        --chip-dismiss-action-size: var(--chip-height-medium);
       }
       :host([disabled]) {
         opacity: 0.4;
@@ -144,6 +147,10 @@ class MuiChip extends HTMLElement {
       mui-body {
         min-width: 0;
         max-width: 100%;
+      }
+
+      mui-body::part(color) {
+        color: var(--chip-text-color, var(--text-color));
       }
 
       :host([size="x-small"]) .container {
@@ -233,6 +240,11 @@ class MuiChip extends HTMLElement {
         border-color: var(--chip-border-color-hover);
         box-shadow: inset 0 0 0 1px var(--chip-border-color-hover);
       }
+
+      :host([variant="clickable"]:hover) mui-body::part(color) {
+        color: var(--chip-text-color-hover, var(--chip-text-color, var(--text-color)));
+      }
+
       :host([variant="ghost"]) .container {
         background: var(--chip-ghost-background, transparent);
         border-color: var(--chip-ghost-border-color, color-mix(in srgb, var(--border-color) 50%, transparent));
@@ -249,12 +261,19 @@ class MuiChip extends HTMLElement {
       :host([variant="clickable"]:focus-visible) .container {
         background: var(--chip-background-focus);
         border-color: var(--chip-border-color-focus);
-        outline: var(--outline-thick);
+        outline: var(--chip-focus-outline, var(--outline-thick));
+        outline-offset: var(--chip-focus-outline-offset, 0px);
       }
+
+      :host([variant="clickable"]:focus-visible) mui-body::part(color) {
+        color: var(--chip-text-color-focus, var(--chip-text-color, var(--text-color)));
+      }
+
       :host([variant="ghost"]:focus-visible) .container {
         background: var(--chip-ghost-background-focus, color-mix(in srgb, var(--surface-elevated-100) 62%, transparent));
         border-color: var(--chip-ghost-border-color-focus, color-mix(in srgb, var(--border-color) 80%, transparent));
-        outline: var(--outline-thick);
+        outline: var(--chip-focus-outline, var(--outline-thick));
+        outline-offset: var(--chip-focus-outline-offset, 0px);
       }
 
       /* Active: mouse down OR programmatic */
@@ -273,7 +292,7 @@ class MuiChip extends HTMLElement {
 
       :host([variant="clickable"]:active) mui-body::part(color),
       :host([variant="clickable"][active]) mui-body::part(color) {
-        color: var(--chip-text-color-active);
+        color: var(--chip-text-color-active, var(--chip-text-color, var(--text-color)));
       }
 
       ::slotted(.mui-icon) {
@@ -321,10 +340,10 @@ class MuiChip extends HTMLElement {
 
       /* Dismiss Icon */
       mui-button::part(background) {
-        height: initial;
-        width: initial;
-        min-height: initial;
-        padding: var(--space-025);
+        height: var(--chip-dismiss-action-size);
+        width: var(--chip-dismiss-action-size);
+        min-height: var(--chip-dismiss-action-size);
+        padding: var(--space-000);
         border-radius: var(--radius-400);
         background: var(--chip-dismiss-action-background);
         filter: var(--chip-dismiss-action-filter, var(--chip-filter));

@@ -11,6 +11,7 @@ class MuiLink extends HTMLElement {
       "weight",
       "stroke",
       "stroke-ring-size",
+      "focus-ring",
       "size",
       "download",
       "usage",
@@ -140,8 +141,13 @@ class MuiLink extends HTMLElement {
     this.toggleAttribute("has-after", hasAfter);
 
     const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
+    const assignedElements = slotDefault?.assignedElements({ flatten: true }) ?? [];
+    const hasVideo = assignedElements.some((element) => element.tagName.toLowerCase() === "mui-video-thumbnail");
+
+    this.toggleAttribute("has-video", hasVideo);
 
     const iconOnly =
+      !hasVideo &&
       assignedNodes.length > 0 &&
       assignedNodes.every((node) =>
         node.nodeType === Node.ELEMENT_NODE
@@ -175,7 +181,14 @@ class MuiLink extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
     <style>
 
-      :host { display: inline-flex; width: auto; text-align: initial }
+      :host {
+        display: inline-flex;
+        width: auto;
+        text-align: initial;
+        --action-focus-outline: var(--stroke-size-400) var(--stroke-outset) var(--outline-color);
+        --action-focus-outline-inset-offset: var(--stroke-size-400);
+        --action-focus-outline-offset: calc(-1 * var(--action-focus-outline-inset-offset));
+      }
 
       a {
         color: var(--link-text-color-default);
@@ -188,6 +201,7 @@ class MuiLink extends HTMLElement {
         text-decoration-color: color-mix(in srgb, var(--text-color) 50%, transparent);
         width: inherit;
         display: inherit;
+        border-radius: var(--link-focus-radius, var(--radius-200));
       }
 
       /* Turned back on for focus-visible */
@@ -196,7 +210,10 @@ class MuiLink extends HTMLElement {
       a:focus { color: var(--link-text-color-default-focus); text-decoration-color: color-mix(in srgb, var(--link-text-color-default-focus) 80%, transparent); }
       a[aria-disabled="true"] { color: var(--link-text-color-default-disabled); text-decoration-color: color-mix(in srgb, var(--link-text-color-default-disabled) 80%, transparent); cursor: not-allowed; }
       a, a:before, a:after {box-sizing: border-box;}
-      a:focus-visible { outline: var(--outline-thick); }
+      a:focus-visible {
+        outline: var(--action-focus-outline);
+        outline-offset: var(--action-focus-outline-offset);
+      }
 
       :host([size="xx-small"]) a {
         font-size: var(--font-size-15);
@@ -935,6 +952,40 @@ class MuiLink extends HTMLElement {
 
       :host([size="large"][variant]:not([variant="default"])[has-before]) a {
         padding-left: var(--action-before-slot-padding-large);
+      }
+
+      :host([has-video]) {
+        display: inline-block;
+        width: auto;
+        text-align: initial;
+      }
+
+      :host([has-video]) a,
+      :host([has-video]) a:hover,
+      :host([has-video]) a:focus,
+      :host([has-video]) a:focus-visible,
+      :host([has-video]) a[aria-disabled="true"] {
+        display: block;
+        width: 100%;
+        min-height: 0;
+        padding: var(--space-000);
+        border: none;
+        border-radius: var(--radius-000);
+        background: transparent;
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        text-align: initial;
+        text-decoration: none;
+        box-shadow: none;
+        outline-offset: var(--video-thumbnail-action-focus-outline-offset, var(--space-300));
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+
+      :host([focus-ring="outset"]) a:focus-visible {
+        outline-offset: var(--action-focus-outline-outset-offset, var(--stroke-size-200));
       }
 
 

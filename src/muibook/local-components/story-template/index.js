@@ -139,9 +139,11 @@ class StoryTemplate extends HTMLElement {
       : "";
 
     const attrsReferenceItems = this.getAttribute("attrs-reference") || "";
-    const attrsReferenceSection = attrsReferenceItems
-      ? /*html*/ `<attr-card title="Dynamic Attributes" items='${attrsReferenceItems}'></attr-card>`
-      : "";
+    if (attrsReferenceItems) {
+      this.querySelectorAll("story-api-types").forEach((apiTypes) => {
+        apiTypes.setAttribute("attrs-reference", attrsReferenceItems);
+      });
+    }
 
     const importItemsRaw = this.getAttribute("imports") || "";
     let importItems = [];
@@ -163,16 +165,15 @@ class StoryTemplate extends HTMLElement {
       : "";
     const hasMessageContent = Boolean(this.querySelector('[slot="message"]'));
     const supplementalSection =
-      importSection || accessibilitySection || attrsReferenceSection || hasMessageContent
+      importSection || accessibilitySection
         ? /*html*/ `
             <mui-v-stack space="var(--space-400)">
               ${importSection}
               ${accessibilitySection}
-              <slot name="message"></slot>
-              ${attrsReferenceSection}
             </mui-v-stack>
           `
         : "";
+    const quicklinksSection = hasMessageContent ? /*html*/ `<slot name="message"></slot>` : "";
 
     const demoLink = this.getAttribute("demo");
     const demoContent = demoLink
@@ -278,6 +279,7 @@ class StoryTemplate extends HTMLElement {
               </mui-responsive>
               ${description}
             </mui-v-stack>
+            ${quicklinksSection}
             ${supplementalSection}
           </mui-v-stack>
           <mui-v-stack class="stories">

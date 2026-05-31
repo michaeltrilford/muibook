@@ -292,14 +292,6 @@ const styles = /*css*/ `
     overflow: visible;
   }
 
-  .skip-chip {
-    display: none; /* hidden by default */
-  }
-
-  .skip-chip.show {
-    display: inline-flex; /* shows only on keyboard focus */
-  }
-
   :host { display: block; }
 
   .fullscreen {
@@ -313,7 +305,6 @@ const styles = /*css*/ `
     overflow-y: scroll;
   }
 
-  .filter-action::part(height) { height: 4rem; width: 4rem; } 
   .video-menu-item,
   .video-menu-more,
   .video-menu-group-heading { text-align: left; }
@@ -333,53 +324,39 @@ const styles = /*css*/ `
     margin-bottom: var(--space-200);
   }
 
-  .filter { display: grid; width: 100%; position: relative; }
-  .filter_chip-scroll { 
-    padding: var(--space-600) 6.4rem var(--space-500) var(--space-500); 
-    overflow-x: auto;
-    -ms-overflow-style: none; /* IE/Edge */
-    scrollbar-width: none;     /* Firefox */
-    -webkit-overflow-scrolling: touch;
-    margin-right: var(--stroke-size-500);
+  .filter {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: var(--space-600) var(--space-500) var(--space-500);
   }
-
-  .filter_chip-scroll::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-  }
-
-  .filter_chip-group {
-    width: max-content; 
-  }
-  .filter_next { 
-    background: var(--app-muitube-background, var(--surface-elevated-100));
-    position: absolute;
-    z-index: 1;
-    right: 0; 
-    top: calc(var(--space-500) + var(--space-100)); 
-    box-shadow: calc(-1 * var(--space-400)) 0 var(--space-200) 0 var(--app-muitube-background, var(--surface-elevated-100)); 
-    padding-top: var(--space-100);
-    padding-right: calc(var(--space-500) - var(--stroke-size-500));
-    padding-bottom: var(--space-100);
-    margin-right: var(--stroke-size-500);
-  }  
   
   .card_content { padding-left: var(--space-100); }
 
   .card::part(background) {
     padding: var(--space-000);
     border: none;
-  }
-  .card::part(background):hover,
-  .card::part(background):focus-visible {
-    background: var(--app-muitube-card-background-hover, var(--surface-elevated-100));
-    transition: box-shadow var(--speed-100), outline var(--speed-100);
-    box-shadow: 0 0 0 var(--space-400) var(--app-muitube-card-background-hover, var(--surface-elevated-100)), 0 var(--space-200) var(--space-400) var(--space-300) var(--surface-recessed-alpha);
     border-top-left-radius: var(--radius-300);
     border-top-right-radius: var(--radius-300);
     border-bottom-left-radius: var(--radius-100);
     border-bottom-right-radius: var(--radius-100);
+    outline-offset: var(--space-300);
+    transition:
+      background var(--speed-100),
+      border-radius var(--speed-100),
+      box-shadow var(--speed-100),
+      outline var(--speed-100);
+  }
+  .card::part(background):hover,
+  .card::part(background):focus-visible {
+    background: var(--video-thumbnail-card-hover-background, var(--surface-elevated-100));
+    box-shadow:
+      0 0 0 var(--space-400) var(--video-thumbnail-card-hover-background, var(--surface-elevated-100)),
+      0 0 0 calc(var(--space-400) + var(--video-thumbnail-card-hover-edge-width, 0px)) var(--video-thumbnail-card-hover-edge-color-token, transparent),
+      0 var(--space-200) var(--space-400) var(--space-300) var(--surface-recessed-alpha);
   }
   .card::part(background):focus-visible {
+    outline: var(--outline-thick);
     outline-offset: var(--space-300);
   }
 
@@ -405,21 +382,10 @@ const styles = /*css*/ `
   .video-menu-group::part(padding) {
     padding: var(--space-300) var(--space-200);
   }
-
-
-  .filter-action.at-end {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
   @media (min-width: 768px) {
-    .filter_chip-scroll {
-      padding: var(--space-600) 8.8rem var(--space-500) var(--space-700); 
+    .filter {
+      padding: var(--space-600) var(--space-700) var(--space-500);
     }
-
-    .filter_next { 
-      padding-right: calc(var(--space-700) - var(--stroke-size-500));
-    }  
 
     .video_grid {
       width: 100%;
@@ -434,56 +400,35 @@ const styles = /*css*/ `
 class compMuiTube extends HTMLElement {
   constructor() {
     super();
-    const shadowRoot = this.attachShadow({ mode: "open" });
-
-    // Define image sets per brand - single image per brand
-    this.brandImageSets = {
-      jal: {
-        light: JalVideoLight,
-        dark: JalVideoDark,
-      },
-      ana: {
-        light: AnaVideoLight,
-        dark: AnaVideoDark,
-      },
-      mui: {
-        light: MuiVideoLight,
-        dark: MuiVideoDark,
-      },
-      sensei: {
-        light: SenseiVideoLight,
-        dark: SenseiVideoDark,
-      },
-      paperclip: {
-        light: PaperclipVideoLight,
-        dark: PaperclipVideoDark,
-      },
-    };
+    this.attachShadow({ mode: "open" });
   }
 
-  getCurrentTheme() {
-    return document.documentElement.getAttribute("data-theme") || "light";
-  }
-
-  getCurrentBrand() {
-    return document.documentElement.getAttribute("data-brand") || "mui";
-  }
-
-  getThemedImage() {
-    const currentBrand = this.getCurrentBrand();
-    const currentTheme = this.getCurrentTheme();
-    const brandImages = this.brandImageSets[currentBrand];
-    return brandImages?.[currentTheme] || brandImages?.light || MuiVideoLight;
+  getThemedThumbnailAttributes() {
+    return `
+      src="${MuiVideoLight}"
+      src-light="${MuiVideoLight}"
+      src-dark="${MuiVideoDark}"
+      src-mui-light="${MuiVideoLight}"
+      src-mui-dark="${MuiVideoDark}"
+      src-jal-light="${JalVideoLight}"
+      src-jal-dark="${JalVideoDark}"
+      src-ana-light="${AnaVideoLight}"
+      src-ana-dark="${AnaVideoDark}"
+      src-sensei-light="${SenseiVideoLight}"
+      src-sensei-dark="${SenseiVideoDark}"
+      src-paperclip-light="${PaperclipVideoLight}"
+      src-paperclip-dark="${PaperclipVideoDark}"
+    `;
   }
 
   generateVideoHTML(videos) {
-    const themedImage = this.getThemedImage(); // Get single image for all videos
+    const themedThumbnailAttributes = this.getThemedThumbnailAttributes();
     return videos
       .map((v) => {
         return /*html*/ `
           <mui-link variant="tertiary" href="#" class="card">
             <mui-v-stack alignx="start" aligny="start" space="var(--space-300)">
-              <mui-image variants="image"><img slot="image" src="${themedImage}" alt="${v.title}" /></mui-image>
+              <mui-video-thumbnail ${themedThumbnailAttributes} alt="${v.title}"></mui-video-thumbnail>
               <mui-h-stack alignx="start" aligny="start" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000); width: 100%;">
                 <mui-v-stack class="card_content" alignx="start" aligny="start" space="var(--space-025)" style="border-radius: var(--radius-000); width: 100%;">
                   <mui-body size="large" variant="default" weight="bold">${v.title}</mui-body>
@@ -504,33 +449,19 @@ class compMuiTube extends HTMLElement {
     const videoPageContent = /*html*/ `
       <mui-v-stack slot="page" class="video-page" space="var(--space-000)" alignx="stretch" aligny="start" id="main-content">
         <div class="filter">
-          <div class="filter_next">
-            <mui-button variant="tertiary" class="filter-action" aria-label="Next filters">
-              <mui-icon-right-chevron size="medium"></mui-icon-right-chevron>
-            </mui-button>
-          </div>
-          <div class="filter_chip-scroll">
-            <mui-grid 
-              class="filter_chip-group"
-              col="repeat(14, auto)" 
-              alignx="start" 
-              aligny="center" 
-              space="var(--space-200)"
-            >
-              <mui-chip class="skip-chip" style="margin-right: var(--space-100)">Skip Filters</mui-chip>  
-              <mui-chip active>All</mui-chip>
-              <mui-chip>Gaming</mui-chip>
-              <mui-chip>Podcasts</mui-chip>
-              <mui-chip>Thrillers</mui-chip>
-              <mui-chip>Marco Pierre White</mui-chip>
-              <mui-chip>Italian cuisine</mui-chip>
-              <mui-chip>Roasting</mui-chip>
-              <mui-chip>Music</mui-chip>
-              <mui-chip>Satire</mui-chip>
-              <mui-chip>Hamburgers</mui-chip>
-              <mui-chip>Japan</mui-chip>
-            </mui-grid>
-          </div>
+          <mui-chip-rail size="medium" aria-label="Video filters" style="--chip-rail-background: var(--app-muitube-background, var(--surface-elevated-100));">
+            <mui-chip active variant="clickable">All</mui-chip>
+            <mui-chip variant="clickable">Gaming</mui-chip>
+            <mui-chip variant="clickable">Podcasts</mui-chip>
+            <mui-chip variant="clickable">Thrillers</mui-chip>
+            <mui-chip variant="clickable">Marco Pierre White</mui-chip>
+            <mui-chip variant="clickable">Italian cuisine</mui-chip>
+            <mui-chip variant="clickable">Roasting</mui-chip>
+            <mui-chip variant="clickable">Music</mui-chip>
+            <mui-chip variant="clickable">Satire</mui-chip>
+            <mui-chip variant="clickable">Hamburgers</mui-chip>
+            <mui-chip variant="clickable">Japan</mui-chip>
+          </mui-chip-rail>
         </div>
         <mui-grid
           class="video_grid"
@@ -643,46 +574,10 @@ class compMuiTube extends HTMLElement {
 
   connectedCallback() {
     this.render();
-
-    // Re-render when brand changes
-    this.brandObserver = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === "data-brand" || mutation.attributeName === "data-theme") {
-          console.log("Brand or theme changed, re-rendering images");
-          this.render();
-        }
-      });
-    });
-
-    this.brandObserver.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-brand", "data-theme"],
-    });
-
-    // Wait for all custom elements to render before checking scroll
-    setTimeout(() => {
-      this.shadowRoot.querySelectorAll(".filter").forEach((filter) => {
-        const button = filter.querySelector(".filter-action");
-        const scrollContainer = filter.querySelector(".filter_chip-scroll");
-
-        if (!button || !scrollContainer) return;
-
-        const isScrollable = scrollContainer.scrollWidth > scrollContainer.clientWidth;
-        const atEnd = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 10;
-
-        if (!isScrollable || atEnd) {
-          button.classList.add("at-end");
-        } else {
-          button.classList.remove("at-end");
-        }
-      });
-    }, 100);
   }
 
   disconnectedCallback() {
-    if (this.brandObserver) {
-      this.brandObserver.disconnect();
-    }
+    this.brandObserver?.disconnect();
   }
 
   setupEventListeners() {
@@ -696,53 +591,6 @@ class compMuiTube extends HTMLElement {
         }
       });
     });
-
-    const filterAction = this.shadowRoot.querySelector(".filter-action");
-    const skipChip = this.shadowRoot.querySelector(".skip-chip");
-    const firstVideoCard = this.shadowRoot.querySelector(".video_grid .card");
-
-    if (filterAction && skipChip && firstVideoCard) {
-      // Step 1: Show skip chip only on tab forward out of filter-action
-      filterAction.addEventListener("keydown", (e) => {
-        if (e.key === "Tab" && !e.shiftKey) {
-          skipChip.classList.add("show");
-          skipChip.setAttribute("tabindex", "0"); // make focusable for keyboard
-        }
-      });
-
-      // Step 2: Focus first inner <a> when skip chip is activated
-      const focusFirstCard = () => {
-        if (!firstVideoCard) return;
-
-        // Query the shadow root of the <mui-link> to get the <a> inside
-        const linkAnchor = firstVideoCard.shadowRoot?.querySelector("a") || firstVideoCard.querySelector("a");
-        if (linkAnchor) {
-          linkAnchor.focus();
-        } else {
-          // Fallback: focus the host itself
-          firstVideoCard.focus();
-        }
-
-        // Hide skip chip and remove temporary tabindex
-        skipChip.classList.remove("show");
-        skipChip.removeAttribute("tabindex");
-      };
-
-      // Activate skip chip on click or Enter/Space
-      skipChip.addEventListener("click", focusFirstCard);
-      skipChip.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          focusFirstCard();
-        }
-      });
-
-      // Optional: hide skip chip if blurred without activating
-      skipChip.addEventListener("blur", () => {
-        skipChip.classList.remove("show");
-        skipChip.removeAttribute("tabindex");
-      });
-    }
 
     // Open drawer buttons
     this.shadowRoot.querySelectorAll("mui-button[data-drawer]").forEach((btn) => {
@@ -775,36 +623,6 @@ class compMuiTube extends HTMLElement {
       });
     });
 
-    // Filter scroll logic
-    this.shadowRoot.querySelectorAll(".filter").forEach((filter) => {
-      const button = filter.querySelector(".filter-action");
-      const scrollContainer = filter.querySelector(".filter_chip-scroll");
-
-      if (!button || !scrollContainer) return;
-
-      function checkEnd() {
-        const isScrollable = scrollContainer.scrollWidth > scrollContainer.clientWidth;
-        const atEnd = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 10;
-
-        if (!isScrollable || atEnd) {
-          button.classList.add("at-end");
-        } else {
-          button.classList.remove("at-end");
-        }
-      }
-
-      button.addEventListener("click", () => {
-        const scrollAmount = 200;
-        scrollContainer.scrollBy({
-          left: scrollAmount,
-          behavior: "smooth",
-        });
-        // Recheck after scroll completes
-        setTimeout(checkEnd, 350);
-      });
-
-      scrollContainer.addEventListener("scroll", checkEnd);
-    });
   }
 }
 

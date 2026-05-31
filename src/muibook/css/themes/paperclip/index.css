@@ -356,13 +356,16 @@ html[data-brand="paperclip"][data-theme="light"] {
   --status-indigo-text-color: var(--paperclip-standalone-text-color);
 
   --chip-background: var(--white);
-  --chip-background-hover: var(--blue-100);
-  --chip-background-focus: var(--blue-100);
-  --chip-background-active: var(--blue-100);
-  --chip-border-color: var(--blue-500);
+  --chip-background-hover: var(--white);
+  --chip-background-focus: var(--white);
+  --chip-background-active: var(--white);
+  --chip-border-color: var(--blue-400);
   --chip-border-color-hover: var(--blue-500);
   --chip-border-color-focus: var(--blue-500);
   --chip-border-color-active: var(--blue-500);
+  --chip-text-color: var(--blue-400);
+  --chip-text-color-focus: var(--blue-500);
+  --chip-text-color-hover: var(--blue-500);
   --chip-text-color-active: var(--blue-500);
   --chip-icon-fill: var(--blue-500);
   --chip-filter: none;
@@ -396,6 +399,10 @@ html[data-brand="paperclip"][data-theme="light"] {
 
   --illustration-main-color-default: var(--blue-500);
   --illustration-main-color-inverted: var(--white);
+
+  --video-thumbnail-card-hover-background: var(--white);
+  --video-thumbnail-card-hover-edge-width: var(--stroke-size-100);
+  --video-thumbnail-card-hover-edge-color-token: var(--blue-500);
 }
 
 /* ==================================================================================================== */
@@ -713,11 +720,14 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --chip-background: var(--blue-500);
   --chip-background-hover: var(--blue-500);
   --chip-background-focus: var(--blue-500);
-  --chip-background-active: var(--blue-600);
+  --chip-background-active: var(--blue-500);
   --chip-border-color: var(--blue-300);
-  --chip-border-color-hover: var(--blue-300);
-  --chip-border-color-focus: var(--blue-300);
+  --chip-border-color-hover: var(--white);
+  --chip-border-color-focus: var(--white);
   --chip-border-color-active: var(--white);
+  --chip-text-color: var(--blue-200);
+  --chip-text-color-focus: var(--white);
+  --chip-text-color-hover: var(--white);
   --chip-text-color-active: var(--white);
   --chip-icon-fill: var(--blue-300);
   --chip-filter: none;
@@ -751,4 +761,8 @@ html[data-brand="paperclip"][data-theme="dark"] {
 
   --illustration-main-color-inverted: var(--blue-500);
   --illustration-main-color-default: var(--white);
+
+  --video-thumbnail-card-hover-background: var(--blue-500);
+  --video-thumbnail-card-hover-edge-width: var(--stroke-size-100);
+  --video-thumbnail-card-hover-edge-color-token: var(--white);
 }

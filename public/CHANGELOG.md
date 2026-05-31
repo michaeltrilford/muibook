@@ -18,6 +18,8 @@
 - `mui-button` and action-style `mui-link` now support `stroke="ring"` and `stroke-ring-size` for inset shadow strokes that avoid adding physical border height, defaulting to `stroke-ring-size="100"`.
 - Added `mui-status` for compact object and workflow state labels with before/after slots.
 - `mui-status` now supports the boolean `action` attribute for interactive status triggers with button semantics, keyboard activation, pointer cursor, and focus styling.
+- Added `mui-chip-rail` for horizontal chip overflow with scroll controls, edge masking, size propagation, and configurable mask bleed.
+- Added `mui-video-thumbnail` for reusable video poster thumbnails with themeable hover, play affordance, and opt-in border tokens.
 - `mui-tab-bar` now supports `stroke="border"` and `stroke="none"` so bordered and borderless tab bars can align to the action sizing rhythm.
 - `mui-tab-bar` now supports `active-inset` for an inset active tab shadow treatment.
 - `mui-tab-bar` now supports `radius` for token-based or custom tab radius overrides.
@@ -26,6 +28,9 @@
 ### Changed
 
 - `mui-slat variant="action"` now defaults to `col="minmax(0, 1fr) auto"` so trailing content aligns to the end by default.
+- `mui-chip` label color now resolves through `--chip-text-color`, with hover, focus, and active clickable states exposing matching text color tokens.
+- MuiTube now uses `mui-video-thumbnail` for card poster images, with Paperclip opting into thumbnail borders from theme CSS.
+- `mui-video-thumbnail` now keeps play and overlay affordances opt-in and supports slotted metadata for linked card compositions.
 - `mui-button` and button-style `mui-link` now use explicit action size `min-height` tokens, with large actions aligned to the 5.6rem control rhythm.
 - `mui-addon`, `mui-input`, `mui-select`, and `mui-switch` now reuse the shared `--action-size-*` sizing rhythm instead of older icon-only action size references.
 - `mui-tab-item` now resolves its height through the parent tab bar, keeping bordered and borderless tab controls aligned to the same outer action height.

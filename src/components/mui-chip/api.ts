@@ -46,5 +46,35 @@ export const muiApi = {
     events: [
       { name: "dismiss", description: "Dispatched when the built-in dismiss action is activated; includes the chip id." },
     ],
+    cssProperties: [
+      {
+        name: "--chip-text-color",
+        description: "Controls the default chip label color.",
+      },
+      {
+        name: "--chip-text-color-hover",
+        description: "Controls the clickable chip label color on hover. Falls back to --chip-text-color.",
+      },
+      {
+        name: "--chip-text-color-focus",
+        description: "Controls the clickable chip label color on focus-visible. Falls back to --chip-text-color.",
+      },
+      {
+        name: "--chip-text-color-active",
+        description: "Controls the active clickable chip label color. Falls back to --chip-text-color.",
+      },
+      {
+        name: "--chip-focus-outline",
+        description: "Controls the clickable and ghost chip focus-visible outline.",
+      },
+      {
+        name: "--chip-focus-outline-offset",
+        description: "Controls the clickable and ghost chip focus-visible outline offset. Defaults inset so focus is not clipped in scroll containers.",
+      },
+      {
+        name: "--chip-dismiss-action-size",
+        description: "Controls the built-in dismiss action size. Defaults to the medium chip height, 4rem.",
+      },
+    ],
   },
 };
