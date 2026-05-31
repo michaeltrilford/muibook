@@ -321,6 +321,9 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--video-thumbnail-play-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--video-thumbnail-play-opacity" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--video-thumbnail-play-opacity-hover" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-card-hover-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-card-hover-edge-width" variant="border"></story-token-slat>
+            <story-token-slat slot="body" token="--video-thumbnail-card-hover-edge-color-token" variant="color"></story-token-slat>
           </spec-card>
 
           <spec-card id="prompt" title="Prompt" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt/index.ts">

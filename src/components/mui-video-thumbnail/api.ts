@@ -41,6 +41,18 @@ export const muiApi = {
       { name: "--video-thumbnail-play-opacity", description: "Play affordance opacity." },
       { name: "--video-thumbnail-play-opacity-hover", description: "Play affordance opacity on hover." },
       { name: "--video-thumbnail-meta-gap", description: "Gap between the frame and slotted metadata." },
+      {
+        name: "--video-thumbnail-card-hover-background",
+        description: "Composed card hover background used by linked or button video card examples.",
+      },
+      {
+        name: "--video-thumbnail-card-hover-edge-width",
+        description: "Composed card faux hover border width layered into the outer hover shadow.",
+      },
+      {
+        name: "--video-thumbnail-card-hover-edge-color-token",
+        description: "Composed card faux hover border color layered into the outer hover shadow.",
+      },
     ],
   },
 };

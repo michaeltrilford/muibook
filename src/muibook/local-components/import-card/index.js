@@ -80,11 +80,14 @@ class ImportCard extends HTMLElement {
         :host { display: block; scroll-margin-top: var(--space-600); }
         mui-card { border: var(--border-thick); }
         mui-card-header { padding: var(--space-400); }
-        mui-card-footer { overflow: hidden; background: var(--surface-elevated-200); padding-inline-end: var(--space-200); border-radius: 0 0 calc(var(--card-radius) - var(--stroke-size-200)) calc(var(--card-radius) - var(--stroke-size-200)); }
+        mui-card-footer { overflow: hidden; background: var(--surface-elevated-100); padding-inline-end: var(--space-200); border-radius: 0 0 calc(var(--card-radius) - var(--stroke-size-200)) calc(var(--card-radius) - var(--stroke-size-200)); }
         @media (min-width: 500px) {
           mui-card-footer {
             padding-inline-end: var(--space-400);
           }
+        }
+        mui-code {
+          --code-background: var(--surface-elevated-100);
         }
       </style>
       <mui-card>
@@ -102,7 +105,7 @@ class ImportCard extends HTMLElement {
             <mui-code class="import-card" size="x-small">
               ${importItems.map((path) => `import "${path}";<br>`).join("\n")}
             </mui-code>
-            <mui-button data-copy-imports size="x-small" variant="tertiary">Copy</mui-button>
+            <mui-button data-copy-imports size="x-small" variant="tertiary"><mui-icon-rectangle slot="before"></mui-icon-rectangle>Copy</mui-button>
           <mui-grid>
         </mui-card-footer>
       </mui-card>

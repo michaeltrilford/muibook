@@ -15,6 +15,7 @@ export const muiDocs: MuiDocs = {
         "Use `slot='meta'` when the thumbnail and metadata should compose as one linked media card.",
         "When placed inside `mui-link` or `mui-button`, the parent receives `has-video` internally so action variant styling does not override the media card.",
         "Use frame tokens such as `--video-thumbnail-border`, `--video-thumbnail-border-hover`, `--video-thumbnail-box-shadow-hover`, and `--video-thumbnail-meta-gap` to opt into themed card treatments.",
+        "Use composed-card tokens such as `--video-thumbnail-card-hover-background`, `--video-thumbnail-card-hover-edge-width`, and `--video-thumbnail-card-hover-edge-color-token` when the outer linked card needs a faux hover surface or border.",
       ],
     },
 

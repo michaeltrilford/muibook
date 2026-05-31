@@ -11,6 +11,7 @@ export const muiDocs: MuiDocs = {
         "Use Chip Rail when chips should stay on one line and overflow horizontally.",
         "Use `size` to keep slotted chips and rail actions visually aligned.",
         "Use `bleed-inline-size` and `bleed-block-size` when the rail needs internal space for overflow controls.",
+        "Focused slotted items are scrolled into view automatically, with scroll margin accounting for the edge mask and rail actions.",
       ],
     },
 
