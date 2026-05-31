@@ -109,7 +109,7 @@ class HomePage extends HTMLElement {
     const versionText = `${version}`;
 
     const intro = /*html*/ `
-      Muibook is the home of the Mui Design System — native Web Components with clean, composable patterns that help you write less code —
+      Muibook is the home of the MichaelUI Design System — native Web Components with clean, composable patterns that help you write less code —
     `;
 
     const styles = /*css*/ `

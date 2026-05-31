@@ -61,7 +61,7 @@ Learn more at [Muibook.com](https://muibook.com/#/create-mui-app)
 
 # Muibook Repository
 
-Muibook is the home of the Mui Design System (MichaelUI) — native Web Components with clean, composable patterns that help you write less code.
+Muibook is the home of the MichaelUI Design System — native Web Components with clean, composable patterns that help you write less code.
 
 - 📖 Comprehensive guides: From basic usage to advanced customization
 - 🎨 Design principles: Learn the MichaelUI design language
