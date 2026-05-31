@@ -55,14 +55,14 @@ class AgentKeywordsPage extends HTMLElement {
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="medium">Agent Keywords are structured terms designed to parse user intent and trigger specific AI agent logic efficiently. They provide a reliable vocabulary for matching commands and guiding automated workflows.</mui-body>
-                <mui-body size="medium">By defining these keywords clearly, you enable consistent and reusable AI interactions across different implementations and platforms.</mui-body>
+                <mui-body size="medium">Agent Keywords are a lightweight intent-matching map from the Muiplay era. Muiplay used keywords to detect likely component intent before sending the prompt and examples to the model.</mui-body>
+                <mui-body size="medium">They are still useful for simple routing, search, command palettes, or playground experiences. For richer products like Redactd and Outcomes, product-specific prompts and manifest metadata usually carry more of the workflow.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">Why Agent Keywords Matter</mui-heading>
+                <mui-heading level="3" size="5">Intent Matching</mui-heading>
                 <mui-body size="medium">
-                  Define and organize domain-specific keywords to improve intent recognition and enable scalable AI-driven logic in your applications.
+                  Use keywords when you need a quick way to map user language to components, examples, or documentation before handing the request to a model.
                 </mui-body>
               </mui-v-stack>
 

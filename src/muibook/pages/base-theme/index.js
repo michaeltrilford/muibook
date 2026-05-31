@@ -78,16 +78,16 @@ class BaseTheme extends HTMLElement {
                 <mui-heading level="3" size="5">Design Token Overview</mui-heading>
                 <mui-body size="medium">Design tokens are organised into three tiers, each mapped to the sections below. These ultimately feed into the components within the design system.</mui-body>
                 <mui-body size="medium">
-                  <mui-link size="medium" href="#/brand-design-tokens">Brand</mui-link>, 
-                  <mui-link size="medium" href="#/semantic">Semantic</mui-link> and 
-                  <mui-link size="medium" href="#/components-design-tokens">Component</mui-link> tokens.</mui-body>
+                  <mui-link size="medium" href="/brand-design-tokens">Brand</mui-link>, 
+                  <mui-link size="medium" href="/semantic-design-tokens">Semantic</mui-link> and 
+                  <mui-link size="medium" href="/components-design-tokens">Component</mui-link> tokens.</mui-body>
               </mui-v-stack>
 
   
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Tooling</mui-heading>
                 <mui-body 
-                  size="medium">We have recently adopted <mui-link href="https://styledictionary.com/" target="_blank">styledictionary.com</mui-link> to help transform a JSON structure into the brand primitive foundation. We use this to output JS, Swift (iOS), XML (Android) and the CSS Variables which are used in the mui-token.css file.
+                  size="medium">We have recently adopted <mui-link href="https://styledictionary.com/" target="_blank">styledictionary.com</mui-link> to help transform a JSON structure into the brand primitive foundation. We use this to output JS, Swift (iOS), XML (Android) and the CSS Variables which are used in the mui-tokens.css file.
                 </mui-body>
               </mui-v-stack>
 
@@ -102,7 +102,7 @@ class BaseTheme extends HTMLElement {
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Multi-Brand Theme</mui-heading>
 
-                <mui-body size="medium">If you support multiple brands, <mui-link href="#/multi-brand-theme">Learn more</mui-link> about using the brand-theme approach to manage theme variations.</mui-body>
+                <mui-body size="medium">If you support multiple brands, <mui-link href="/multi-brand-theme">Learn more</mui-link> about using the brand-theme approach to manage theme variations.</mui-body>
                 <mui-body size="medium">
                 See how 
                 <mui-link href="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/css/themes/paperclip" target="_blank">Paperclip</mui-link>,

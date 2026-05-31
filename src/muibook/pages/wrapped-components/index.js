@@ -56,6 +56,7 @@ class WrappedComponents extends HTMLElement {
 
               <mui-v-stack space="var(--space-400)">
                 <mui-body size="medium">This approach wraps a custom element in a React component, allowing you to define typed props and encapsulate logic using familiar React patterns like props, children, and event handling.</mui-body>
+                <mui-body size="medium">What we have learnt from Redactd and Outcomes is that wrappers are most useful as adapters, not as the default way to consume every component. Use them when React needs to coordinate state, refs, events, or opinionated composition around an underlying Web Component.</mui-body>
               </mui-v-stack>
 
              <mui-v-stack space="var(--space-300)">
@@ -65,6 +66,11 @@ class WrappedComponents extends HTMLElement {
              <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Import and use</mui-heading>
                 <mui-body size="medium">Use the wrapper in your React app like any other component—now with full type safety, validation, and editor support.</mui-body>
+              </mui-v-stack>
+
+             <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Wrap only the friction</mui-heading>
+                <mui-body size="medium">Prefer typed custom elements for simple usage. Reach for a wrapper when you need to translate React props into attributes, normalize custom events, forward refs, or protect a product-specific pattern from being rebuilt across screens.</mui-body>
               </mui-v-stack>
 
             </mui-v-stack>

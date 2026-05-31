@@ -152,7 +152,7 @@ class storyLink extends HTMLElement {
         options: "mui-link::part(add-css-selector)",
         default: "",
         description:
-          "Controlled trust-based customisation for modifying internal aspects of a link. <mui-link href='/#/text-part-selectors' size='x-small'>Learn more</mui-link>",
+          "Controlled trust-based customisation for modifying internal aspects of a link. <mui-link href='/text-part-selectors' size='x-small'>Learn more</mui-link>",
       },
     ];
 

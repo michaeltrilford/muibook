@@ -68,7 +68,8 @@ class NpmPage extends HTMLElement {
                 <mui-list-item size="medium">Components</mui-list-item>
                 <mui-list-item size="medium">CSS</mui-list-item>
                 <mui-list-item size="medium">Utils (part map for internal use)</mui-list-item>
-                <mui-list-item size="medium">Agent (keywords and prompts)</mui-list-item>
+                <mui-list-item size="medium">Manifest metadata (custom-elements.json and dynamic-attrs.json)</mui-list-item>
+                <mui-list-item size="medium">Agent references (keywords and prompts)</mui-list-item>
               </mui-list>
             </mui-v-stack>
 

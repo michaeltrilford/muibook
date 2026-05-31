@@ -55,14 +55,14 @@ class AgentPromptsPage extends HTMLElement {
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="medium">Agent Prompts are structured instructions designed to define the behavior and responses of AI agents clearly and consistently.</mui-body>
-                <mui-body size="medium">By formalizing these prompts, you ensure scalable, maintainable, and reusable logic across different AI implementations.</mui-body>
+                <mui-body size="medium">Agent Prompts are a baseline prompt contract for generating Muibook component trees. Muiplay used this approach to turn layout prompts into real Web Component markup.</mui-body>
+                <mui-body size="medium">In product tools like Redactd or Outcomes, prompts are usually extended or replaced with product-specific rules, output shapes, scoring, and workflow context. Treat this file as a reusable starting point, not the only prompt your product should use.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">Structured Task Instructions</mui-heading>
+                <mui-heading level="3" size="5">Prompt Contract</mui-heading>
                 <mui-body size="medium">
-                  Create reusable and clear directives that help AI agents interpret user intent and generate predictable, context-aware responses.
+                  Use prompts to define the allowed component inventory, JSON shape, naming rules, slot behavior, and examples that keep generated layouts predictable.
                 </mui-body>
               </mui-v-stack>
 

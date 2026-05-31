@@ -43,7 +43,7 @@ class storyPartSlat extends HTMLElement {
 
     const usageLinks = usageItems
       .map((label) => {
-        const url = `#/${label.toLowerCase().replace(/\s+/g, '')}`;
+        const url = `/${label.toLowerCase().replace(/\s+/g, '')}`;
         return /*html*/ `<mui-link size="x-small" weight="bold" href="${url}">${label}</mui-link>`;
       })
       .join('');

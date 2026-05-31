@@ -55,7 +55,7 @@ class MultiBrandTheme extends HTMLElement {
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="medium">Connect alternative brands via the design tokens. To support multiple brands, you must first have a complete <mui-link size="medium" href="/#/base-theme">base theme</mui-link> defined for both light and dark modes.</mui-body>
+                <mui-body size="medium">Connect alternative brands via the design tokens. To support multiple brands, you must first have a complete <mui-link size="medium" href="/base-theme">base theme</mui-link> defined for both light and dark modes.</mui-body>
                 <mui-body size="medium">Each brand theme will extend and override this foundation.</mui-body>
                 <mui-body><strong>Define your base theme:</strong> Use the mui-tokens.css package via NPM or CDN, or start from a forked version of the mui-tokens.css repository.</mui-body>
                 <mui-body><strong>Customise your brand:</strong> Decide which parts of the system need to change for each brand theme. Then copy the relevant tokens into your brand-specific file and update their values accordingly.</mui-body>
@@ -88,9 +88,9 @@ class MultiBrandTheme extends HTMLElement {
                 <mui-heading level="3" size="5">Design Token Overview</mui-heading>
                 <mui-body>Design tokens are organised into three tiers, each mapped to the sections below. These ultimately feed into the components within the design system.</mui-body>
                 <mui-body size="medium">
-                  <mui-link size="medium" href="#/brand-design-tokens">Brand</mui-link>, 
-                  <mui-link size="medium" href="#/semantic-design-tokens">Semantic</mui-link> and 
-                  <mui-link size="medium" href="#/components-design-tokens">Component</mui-link> tokens.</mui-body>
+                  <mui-link size="medium" href="/brand-design-tokens">Brand</mui-link>, 
+                  <mui-link size="medium" href="/semantic-design-tokens">Semantic</mui-link> and 
+                  <mui-link size="medium" href="/components-design-tokens">Component</mui-link> tokens.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">

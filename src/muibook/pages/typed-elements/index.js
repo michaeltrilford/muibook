@@ -56,6 +56,7 @@ class TypedElements extends HTMLElement {
 
               <mui-v-stack space="var(--space-400)">
                 <mui-body size="medium">Directly type custom elements via JSX intrinsic elements augmentation. This approach directly types custom elements by augmenting React's JSX IntrinsicElements, enabling use of your web components with typed props in JSX.</mui-body>
+                <mui-body size="medium">In Redactd and Outcomes, this has become the best default for broad product surfaces: keep the Web Component markup intact, preserve slots and attributes, and let React provide type support without forcing every component through a wrapper.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
@@ -76,6 +77,13 @@ class TypedElements extends HTMLElement {
                 <mui-heading level="3" size="5">Use Custom Elements Directly</mui-heading>
                 <mui-body size="medium">
                   Use your typed custom elements in JSX without wrappers, enjoying full autocompletion and type checking.
+                </mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Keep generated layouts portable</mui-heading>
+                <mui-body size="medium">
+                  Typed elements are especially useful for generated or exported layouts because the output stays close to the real component API. Attributes, slots, and design-token hooks remain visible instead of being hidden behind React-only abstractions.
                 </mui-body>
               </mui-v-stack>
 

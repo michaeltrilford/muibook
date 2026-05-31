@@ -821,7 +821,7 @@ class storyDrawer extends HTMLElement {
           Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
           Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
           If an alternative mobile view is required, use state or media queries to swap the drawer out.|||
-          See the <mui-link size='x-small' target='_blank' href='#/push-left'>full-screen example</mui-link>
+          See the <mui-link size='x-small' target='_blank' href='/push-left'>full-screen example</mui-link>
         "
       >
         <div class="canvas" slot="body">  
@@ -870,7 +870,7 @@ class storyDrawer extends HTMLElement {
           Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
           Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
           If an alternative mobile view is required, use state or media queries to swap the drawer out.|||
-          See the <mui-link size='x-small' target='_blank' href='#/push-right'>full-screen example</mui-link>
+          See the <mui-link size='x-small' target='_blank' href='/push-right'>full-screen example</mui-link>
         "
       >
         <div class="canvas" slot="body">
@@ -918,7 +918,7 @@ class storyDrawer extends HTMLElement {
           This variant is intended for full-screen page views rather than smaller page sections.|||
           Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
           Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
-          See the <mui-link size='x-small' target='_blank' href='#/persistent-right'>full-screen example</mui-link>
+          See the <mui-link size='x-small' target='_blank' href='/persistent-right'>full-screen example</mui-link>
         "
       >
         <div class="canvas" slot="body">
@@ -963,7 +963,7 @@ class storyDrawer extends HTMLElement {
           This variant is intended for full-screen page views rather than smaller page sections.|||
           Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
           Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
-          See the <mui-link size='x-small' target='_blank' href='#/persistent-left'>full-screen example</mui-link>
+          See the <mui-link size='x-small' target='_blank' href='/persistent-left'>full-screen example</mui-link>
         "
       >
         <div class="canvas" slot="body">

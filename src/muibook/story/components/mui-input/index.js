@@ -458,36 +458,36 @@ class storyInput extends HTMLElement {
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" type="search" label="Search docs">
-            <mui-link href="/#/input" slot="before">Docs</mui-link>
+            <mui-link href="/input" slot="before">Docs</mui-link>
           </mui-input>
           <mui-input size="small" type="search" label="Search docs">
-            <mui-link href="/#/input" slot="before">Docs</mui-link>
+            <mui-link href="/input" slot="before">Docs</mui-link>
           </mui-input>
           <mui-input size="medium" type="search" label="Search docs">
-            <mui-link href="/#/input" slot="before">Docs</mui-link>
+            <mui-link href="/input" slot="before">Docs</mui-link>
           </mui-input>
           <mui-input size="large" type="search" label="Search docs">
-            <mui-link href="/#/input" slot="before">Docs</mui-link>
+            <mui-link href="/input" slot="before">Docs</mui-link>
           </mui-input>
           <mui-input size="x-small" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-link href="/#/input" slot="after">Help</mui-link>
+            <mui-link href="/input" slot="after">Help</mui-link>
           </mui-input>
           <mui-input size="small" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-link href="/#/input" slot="after">Help</mui-link>
+            <mui-link href="/input" slot="after">Help</mui-link>
           </mui-input>
           <mui-input size="medium" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-link href="/#/input" slot="after">Help</mui-link>
+            <mui-link href="/input" slot="after">Help</mui-link>
           </mui-input>
           <mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me">
-            <mui-link href="/#/input" slot="after">Help</mui-link>
+            <mui-link href="/input" slot="after">Help</mui-link>
           </mui-input>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-input size="x-small" type="search" label="Search docs"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-link href="/#/input" slot="before"&gt;Docs&lt;/mui-link&gt;<br>
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="before"&gt;Docs&lt;/mui-link&gt;<br>
           &lt;/mui-input&gt;<br><br>
           &lt;mui-input size="large" type="email" label="Email" value="mui-web-components@proton.me"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-link href="/#/input" slot="after"&gt;Help&lt;/mui-link&gt;<br>
+          &nbsp;&nbsp;&lt;mui-link href="/input" slot="after"&gt;Help&lt;/mui-link&gt;<br>
           &lt;/mui-input&gt;
         </story-code-block>
       </story-card>

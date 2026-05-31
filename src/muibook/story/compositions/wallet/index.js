@@ -209,7 +209,7 @@ class compWallet extends HTMLElement {
         description="An example of a settings screen where users can personalise their card by uploading custom artwork for the card background and logo."
         usage="
         This example uses the advanced persistent dropdown pattern to keep the dropdown open while interacting with the file upload component.|||
-        Learn more about the <mui-link size='x-small' href='/#/dropdown'>dropdown</mui-link> component and its events in the documentation.|||
+        Learn more about the <mui-link size='x-small' href='/dropdown'>dropdown</mui-link> component and its events in the documentation.|||
         The code in this example is prototype code and not production ready, but it demonstrates how you can build this type of interaction with the MUI components.">
         ">
         

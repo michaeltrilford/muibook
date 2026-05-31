@@ -110,7 +110,7 @@ class storyGrid extends HTMLElement {
         options: "mui-grid::part(gap)",
         default: "",
         description:
-          "Controlled trust-based customisation for modifying internal aspects of a grid. <mui-link href='/#/spacing-part-selectors' size='x-small'>Learn more</mui-link>",
+          "Controlled trust-based customisation for modifying internal aspects of a grid. <mui-link href='/spacing-part-selectors' size='x-small'>Learn more</mui-link>",
       },
     ];
 

@@ -292,7 +292,7 @@ class tokensSemantic extends HTMLElement {
             </div>
             <mui-code slot="footer">
               <br />
-              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
+              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
               <br />
               /* =================================== */
               <br />
@@ -320,7 +320,7 @@ class tokensSemantic extends HTMLElement {
             </div>
             <mui-code slot="footer">
               <br />
-              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/#/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
+              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
               <br />
               /* =================================== */
               <br />

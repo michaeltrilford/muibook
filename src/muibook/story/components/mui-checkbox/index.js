@@ -200,7 +200,7 @@ class storyCheckbox extends HTMLElement {
         <mui-checkbox id="agreeTerms">I agree to the <mui-link href="/terms" size="small">terms and conditions</mui-link></mui-checkbox>
       </mui-field>
       <story-code-block slot="footer" scrollable>
-        <mui-link size="x-small" href="/#/onboarding">👨‍💻 View working file</mui-link>
+        <mui-link size="x-small" href="/onboarding">👨‍💻 View working file</mui-link>
         <br>
         <br>
 

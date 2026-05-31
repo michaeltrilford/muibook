@@ -665,7 +665,7 @@ class storySlat extends HTMLElement {
           id="slat-and-group"
           title="Slat & Group"
           description="
-            This example demonstrates the default mui-slat within a mui-slat-group. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/#/responsive'>Slat to Table</mui-link> demo.
+            This example demonstrates the default mui-slat within a mui-slat-group. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/responsive'>Slat to Table</mui-link> demo.
           "
           usage="
             Default mui-slat is used, which has no padding applied|||
@@ -798,7 +798,7 @@ class storySlat extends HTMLElement {
           id="card-slat-and-group"
           title="Card: Slat & Group"
           description="
-            This example demonstrates the mui-slat and mui-slat-group used within a mui-card. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/#/responsive'>Slat to Table</mui-link> demo.
+            This example demonstrates the mui-slat and mui-slat-group used within a mui-card. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/responsive'>Slat to Table</mui-link> demo.
           "
           usage="
             Default mui-slat is used, which has no padding applied|||
@@ -1403,7 +1403,7 @@ class storySlat extends HTMLElement {
         <story-card 
           id="card-condensed"
           title="Card: Condensed" 
-          description="For tighter layouts on desktop or <mui-link size='small' href='#/responsive'>mobile responsive views</mui-link>, apply condensed boolean to the card-body. Slats are already condensed, so edge-to-edge layouts work well as the viewport narrows. Again, the Slat is intentionally flexible — good design decisions are still important."
+          description="For tighter layouts on desktop or <mui-link size='small' href='/responsive'>mobile responsive views</mui-link>, apply condensed boolean to the card-body. Slats are already condensed, so edge-to-edge layouts work well as the viewport narrows. Again, the Slat is intentionally flexible — good design decisions are still important."
           usage="Use radius='none' on action slats inside condensed card body layouts."
           usageLink="https://guides.muibook.com/slat"
           github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-slat/index.js"

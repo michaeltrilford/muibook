@@ -56,6 +56,9 @@ class ReactInputHelper extends HTMLElement {
                 Use this helper pattern for controlled mui-input in React to avoid
                 focus loss on each keystroke.
               </mui-body>
+              <mui-body size="medium">
+                The important lesson from product usage is to treat the custom element as a stable DOM boundary. React should update the value deliberately, listen to the component event contract, and avoid re-applying static attributes during normal typing.
+              </mui-body>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-200)">
@@ -64,6 +67,7 @@ class ReactInputHelper extends HTMLElement {
                 <mui-list-item>Read value from <strong>event.detail.value</strong>.</mui-list-item>
                 <mui-list-item>Split static attrs and value into separate effects.</mui-list-item>
                 <mui-list-item>Keep value sync isolated to the value-only effect.</mui-list-item>
+                <mui-list-item>Let the Web Component own its internal focus, selection, and shadow DOM behavior while React owns the external value.</mui-list-item>
               </mui-list>
             </mui-v-stack>
 
@@ -72,6 +76,7 @@ class ReactInputHelper extends HTMLElement {
               <mui-list>
                 <mui-list-item>Re-applying label/type/placeholder/variant on every key.</mui-list-item>
                 <mui-list-item>Reading input from shadow DOM as the primary source.</mui-list-item>
+                <mui-list-item>Replacing the custom element node during input changes, which can drop focus and reset internal state.</mui-list-item>
               </mui-list>
             </mui-v-stack>
           </mui-v-stack>
