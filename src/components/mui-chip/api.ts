@@ -73,7 +73,8 @@ export const muiApi = {
       },
       {
         name: "--chip-dismiss-action-size",
-        description: "Controls the built-in dismiss action size. Defaults to the medium chip height, 4rem.",
+        description:
+          "Controls the built-in dismiss action size. Defaults to the xx-small avatar size, with large chips using the x-small avatar size.",
       },
     ],
   },

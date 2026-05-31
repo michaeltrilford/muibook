@@ -54,16 +54,25 @@ class ImportCard extends HTMLElement {
     const content = importItems.map((path) => `import "${path}";`).join("\n");
     try {
       await navigator.clipboard.writeText(content);
-      copyButton.textContent = "Copied";
+      this.setCopyButtonLabel(copyButton, "Copied");
       setTimeout(() => {
-        copyButton.textContent = "Copy";
+        this.setCopyButtonLabel(copyButton, "Copy");
       }, 1200);
     } catch {
-      copyButton.textContent = "Failed";
+      this.setCopyButtonLabel(copyButton, "Failed");
       setTimeout(() => {
-        copyButton.textContent = "Copy";
+        this.setCopyButtonLabel(copyButton, "Copy");
       }, 1200);
     }
+  }
+
+  setCopyButtonLabel(copyButton, label) {
+    const labelEl = copyButton.querySelector("[data-copy-label]");
+    if (labelEl) {
+      labelEl.textContent = label;
+      return;
+    }
+    copyButton.append(document.createTextNode(label));
   }
 
   render() {
@@ -79,8 +88,7 @@ class ImportCard extends HTMLElement {
       <style>
         :host { display: block; scroll-margin-top: var(--space-600); }
         mui-card { border: var(--border-thick); }
-        mui-card-header { padding: var(--space-400); }
-        mui-card-footer { overflow: hidden; background: var(--surface-elevated-100); padding-inline-end: var(--space-200); border-radius: 0 0 calc(var(--card-radius) - var(--stroke-size-200)) calc(var(--card-radius) - var(--stroke-size-200)); }
+        mui-card-footer { overflow: hidden; background: var(--surface-elevated-100); padding-inline-end: var(--space-200); border-radius: calc(var(--card-radius) - var(--stroke-size-200)); }
         @media (min-width: 500px) {
           mui-card-footer {
             padding-inline-end: var(--space-400);
@@ -90,26 +98,23 @@ class ImportCard extends HTMLElement {
           --code-background: var(--surface-elevated-100);
         }
       </style>
-      <mui-card>
-        <mui-card-header>
-          <mui-h-stack space="var(--space-300)">
-            <mui-icon-down-arrow-circle size="medium"></mui-icon-down-arrow-circle>
-            <mui-v-stack space="var(--space-000)">
-              <mui-heading size="5" level="2">${title}</mui-heading>
-            </mui-v-stack>
-          </mui-h-stack>
-        </mui-card-header>
-        <mui-rule direction="horizontal" role="presentation" in-card></mui-rule>
+      <mui-card role="region" aria-label="${this.escapeAttribute(title)} imports">
         <mui-card-footer>
           <mui-grid col="1fr auto" aligny="center">
-            <mui-code class="import-card" size="x-small">
+            <mui-code class="import-card" size="x-small" aria-label="${this.escapeAttribute(title)} statements">
               ${importItems.map((path) => `import "${path}";<br>`).join("\n")}
             </mui-code>
-            <mui-button data-copy-imports size="x-small" variant="tertiary"><mui-icon-rectangle slot="before"></mui-icon-rectangle>Copy</mui-button>
-          <mui-grid>
+            <mui-button data-copy-imports size="x-small" variant="tertiary" aria-label="Copy ${this.escapeAttribute(title.toLowerCase())} statements">
+              <span data-copy-label>Copy</span>
+            </mui-button>
+          </mui-grid>
         </mui-card-footer>
       </mui-card>
     `;
+  }
+
+  escapeAttribute(value) {
+    return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
   }
 }
 

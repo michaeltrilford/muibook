@@ -52,10 +52,6 @@ class StoryTemplate extends HTMLElement {
         gap: var(--space-300);
       }
 
-      .introduction::part(gap) {
-        gap: var(--space-400);
-      }
-
       .stories::part(gap) {
         gap: var(--space-500);
       }
@@ -69,7 +65,6 @@ class StoryTemplate extends HTMLElement {
           gap: var(--space-300);
         }
 
-        .introduction::part(gap),
         .stories::part(gap) {
           gap: var(--space-500);
         }
@@ -92,7 +87,6 @@ class StoryTemplate extends HTMLElement {
           gap: var(--space-300);
         }
 
-        .introduction::part(gap),
         .stories::part(gap) {
           gap: var(--space-600);
         }
@@ -114,7 +108,7 @@ class StoryTemplate extends HTMLElement {
       ? `style="--story-template-container-max-width: ${containerMaxWidth};"`
       : "";
     const description = descriptionText
-      ? /*html*/ `<mui-body size="medium" style="max-width: 70ch; margin-bottom: var(--space-200); text-wrap: pretty;">${descriptionText}</mui-body>`
+      ? /*html*/ `<mui-body size="medium" style="max-width: 70ch; text-wrap: pretty;">${descriptionText}</mui-body>`
       : "";
 
     const accessibilityItems = this.getAttribute("accessibility");
@@ -125,18 +119,70 @@ class StoryTemplate extends HTMLElement {
           .filter((item) => item.length > 0)
       : [];
 
-    // ADD THIS SECTION BACK:
+    const accessibilityItemsHtml = accessibilityArray
+      .map((item) => item.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll('"', "&quot;"))
+      .join("|||");
     const accessibilitySection = accessibilityArray.length
       ? /*html*/ `
-    <mui-message heading="Accessibility Notes" icon="mui-icon-accessibility">
-      <mui-list as="ul">
-        ${accessibilityArray
-          .map((item) => `<mui-list-item size="x-small" weight="regular">${item}</mui-list-item>`)
-          .join("")}
-      </mui-list>
-    </mui-message> 
-  `
+        <story-accessibility-panel items="${accessibilityItemsHtml}"></story-accessibility-panel>
+      `
       : "";
+    const generatedAccessibilityPanel = this.querySelector("[data-generated-accessibility-panel]");
+    if (generatedAccessibilityPanel) generatedAccessibilityPanel.remove();
+    const generatedDocTabs = this.querySelector("[data-generated-doc-tabs]");
+    if (generatedDocTabs) generatedDocTabs.remove();
+
+    const accessibilityItemsValue = accessibilityArray.join("|||");
+    const apiTypes = Array.from(this.querySelectorAll("story-api-types"));
+    const apiGroups = Array.from(new Set(apiTypes.map((apiType) => apiType.parentElement).filter(Boolean)));
+    const hasApiTypes = apiTypes.length > 0;
+
+    if (accessibilityItemsValue && hasApiTypes) {
+      const apiStack = document.createElement("mui-v-stack");
+      apiStack.setAttribute("space", "var(--space-100)");
+      apiTypes.forEach((apiType) => apiStack.append(apiType));
+
+      const panel = document.createElement("story-accessibility-panel");
+      panel.setAttribute("items", accessibilityItemsValue);
+      panel.setAttribute("data-generated-accessibility-panel", "");
+
+      const docTabs = document.createElement("mui-tab-controller");
+      docTabs.setAttribute("data-generated-doc-tabs", "");
+      docTabs.setAttribute("slot", "documentation");
+      docTabs.innerHTML = /*html*/ `
+        <mui-v-stack space="var(--space-500)">
+          <style>
+            [data-generated-doc-tabs] .docs-tab-bar {
+              margin: 0 auto;
+            }
+
+            @media (min-width: 960px) {
+              [data-generated-doc-tabs] .docs-tab-bar {
+                margin: 0;
+              }
+            }
+          </style>
+          <mui-tab-bar class="docs-tab-bar" stroke="none" active-inset inset-size="300" size="medium" radius="400" style="justify-self: start;">
+            <mui-tab-item id="accessibility" active>Accessibility</mui-tab-item>
+            <mui-tab-item id="props">Prop Types</mui-tab-item>
+          </mui-tab-bar>
+          <mui-tab-panel item="accessibility">
+            <mui-v-stack space="var(--space-400)" data-panel-stack="accessibility"></mui-v-stack>
+          </mui-tab-panel>
+          <mui-tab-panel item="props">
+            <mui-v-stack space="var(--space-100)" data-panel-stack="props"></mui-v-stack>
+          </mui-tab-panel>
+        </mui-v-stack>
+      `;
+      docTabs.querySelector('[data-panel-stack="accessibility"]').append(panel);
+      docTabs.querySelector('[data-panel-stack="props"]').append(apiStack);
+      apiGroups.forEach((apiGroup) => {
+        if (apiGroup !== this && apiGroup.childElementCount === 0 && apiGroup.textContent.trim() === "") {
+          apiGroup.remove();
+        }
+      });
+      this.append(docTabs);
+    }
 
     const attrsReferenceItems = this.getAttribute("attrs-reference") || "";
     if (attrsReferenceItems) {
@@ -164,15 +210,13 @@ class StoryTemplate extends HTMLElement {
       `
       : "";
     const hasMessageContent = Boolean(this.querySelector('[slot="message"]'));
-    const supplementalSection =
-      importSection || accessibilitySection
-        ? /*html*/ `
+    const supplementalSection = importSection
+      ? /*html*/ `
             <mui-v-stack space="var(--space-400)">
               ${importSection}
-              ${accessibilitySection}
             </mui-v-stack>
           `
-        : "";
+      : "";
     const quicklinksSection = hasMessageContent ? /*html*/ `<slot name="message"></slot>` : "";
 
     const demoLink = this.getAttribute("demo");
@@ -249,7 +293,7 @@ class StoryTemplate extends HTMLElement {
       <style>${styles}</style>
       <mui-container center class="container" ${containerStyle}>
         <mui-v-stack class="wrapper">
-          <mui-v-stack class="introduction">
+          <mui-v-stack class="introduction" space="var(--space-500)">
             <mui-v-stack class="header-group">
               <mui-responsive breakpoint="1200">
                 <mui-h-stack slot="showBelow" alignX="space-between" alignY="center">
@@ -281,8 +325,10 @@ class StoryTemplate extends HTMLElement {
             </mui-v-stack>
             ${quicklinksSection}
             ${supplementalSection}
+            <slot name="documentation"></slot>
           </mui-v-stack>
           <mui-v-stack class="stories">
+            ${hasApiTypes ? "" : accessibilitySection}
             <slot></slot>
           </mui-v-stack>
         </mui-v-stack>

@@ -106,7 +106,7 @@ class StoryQuicklinks extends HTMLElement {
         }
 
         mui-chip-rail {
-          --chip-rail-background: var(--surface);
+          --chip-rail-background: var(--app-container-surface, var(--surface));
         }
       </style>
 

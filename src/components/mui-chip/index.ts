@@ -119,7 +119,7 @@ class MuiChip extends HTMLElement {
         max-width: 100%;
         --chip-focus-outline: var(--stroke-size-300) var(--stroke-outset) var(--outline-color);
         --chip-focus-outline-offset: calc(-1 * var(--stroke-size-300));
-        --chip-dismiss-action-size: var(--chip-height-medium);
+        --chip-dismiss-action-size: var(--avatar-xx-small);
       }
       :host([disabled]) {
         opacity: 0.4;
@@ -177,6 +177,7 @@ class MuiChip extends HTMLElement {
         padding: var(--chip-padding-large);
         gap: var(--chip-gap-large);
         border-radius: var(--chip-radius-large);
+        --chip-dismiss-action-size: var(--avatar-x-small);
       }
 
       /* CLICKABLE */

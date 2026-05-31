@@ -44,13 +44,33 @@ html[data-brand="paperclip"] {
   --categorical-indigo-800: #3d5672;
 }
 
+html[data-brand="paperclip"] mui-avatar {
+  --paperclip-avatar-pattern-size: calc(var(--avatar-medium) / 4);
+}
+
+html[data-brand="paperclip"] mui-avatar[size="xx-small"] {
+  --paperclip-avatar-pattern-size: calc(var(--avatar-xx-small) / 4);
+}
+
+html[data-brand="paperclip"] mui-avatar[size="x-small"] {
+  --paperclip-avatar-pattern-size: calc(var(--avatar-x-small) / 4);
+}
+
+html[data-brand="paperclip"] mui-avatar[size="small"] {
+  --paperclip-avatar-pattern-size: calc(var(--avatar-small) / 4);
+}
+
+html[data-brand="paperclip"] mui-avatar[size="large"] {
+  --paperclip-avatar-pattern-size: calc(var(--avatar-large) / 4);
+}
+
 /* ==================================================================================================== */
 /* 2. LIGHT MODE                                                                                        */
 /* ==================================================================================================== */
 html[data-brand="paperclip"][data-theme="light"] {
   --paperclip-standalone-background: var(--blue-500);
   --paperclip-standalone-border-color: var(--blue-500);
-  --paperclip-standalone-text-color: var(--blue-500);
+  --paperclip-standalone-text-color: var(--white);
   --paperclip-standalone-avatar-background: linear-gradient(180deg, var(--blue-500), var(--blue-500));
 
   /* Form */
@@ -165,6 +185,12 @@ html[data-brand="paperclip"][data-theme="light"] {
   --code-text-color: var(--blue-500);
   --chip-input-background: var(--white);
   --code-background: var(--blue-100);
+  --media-player-seek-color: var(--blue-500);
+  --media-player-seek-time-background: var(--white);
+  --media-player-seek-time-border-color: var(--blue-500);
+  --range-input-accent-color: var(--blue-500);
+  --range-input-bubble-background: var(--media-player-seek-time-background);
+  --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
   --prompt-preview-dismiss-secondary-background: var(--blue-500);
   --prompt-preview-dismiss-secondary-background-hover: var(--blue-600);
   --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--blue-500);
@@ -260,41 +286,138 @@ html[data-brand="paperclip"][data-theme="light"] {
   --slat-card-avatar-background: var(--blue-500);
   --slat-card-avatar-background-hover: var(--blue-500);
 
-  --paperclip-avatar-pattern-light:
-    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--white) 28%, transparent) 0.8px, transparent 1px) 0 0 /
-      8px 8px,
-    var(--blue-500);
-  --paperclip-avatar-pattern-light-alt:
-    repeating-linear-gradient(135deg, color-mix(in srgb, var(--white) 16%, transparent) 0 2px, transparent 2px 6px),
-    var(--blue-500);
-  --paperclip-avatar-pattern-light-warning:
-    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 16%, transparent) 0 1px, transparent 1px 5px),
-    var(--blue-500);
-  --paperclip-avatar-pattern-light-attention:
-    radial-gradient(circle at 2px 2px, color-mix(in srgb, var(--white) 24%, transparent) 0.7px, transparent 1px) 0 0 /
-      7px 7px,
-    var(--blue-500);
+  --paperclip-avatar-base: var(--blue-500);
+  --paperclip-avatar-ink: color-mix(in srgb, var(--white) 20%, transparent);
+  --paperclip-avatar-ink-soft: color-mix(in srgb, var(--white) 12%, transparent);
+  --paperclip-avatar-pattern-neutral:
+    radial-gradient(circle at 50% 50%, var(--paperclip-avatar-ink) 0.8px, transparent 1px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-positive:
+    repeating-linear-gradient(135deg, var(--paperclip-avatar-ink) 0 2px, transparent 2px 6px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-warning:
+    repeating-linear-gradient(90deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 5px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-attention:
+    repeating-linear-gradient(45deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 5px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(-45deg, var(--paperclip-avatar-ink-soft) 0 1px, transparent 1px 5px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-purple:
+    repeating-linear-gradient(0deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 6px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-violet:
+    repeating-linear-gradient(0deg, var(--paperclip-avatar-ink-soft) 0 1px, transparent 1px 5px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(90deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 5px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-pink:
+    radial-gradient(circle at 50% 50%, transparent 0 1.6px, var(--paperclip-avatar-ink) 1.8px 2.4px, transparent 2.6px)
+      50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-magenta:
+    repeating-linear-gradient(45deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 6px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-red:
+    conic-gradient(from 90deg, var(--paperclip-avatar-ink) 25%, transparent 0 50%, var(--paperclip-avatar-ink) 0 75%, transparent 0)
+      50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-orange:
+    repeating-linear-gradient(90deg, var(--paperclip-avatar-ink) 0 2px, transparent 2px 7px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-amber:
+    repeating-linear-gradient(0deg, var(--paperclip-avatar-ink) 0 2px, transparent 2px 7px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-yellow:
+    repeating-linear-gradient(45deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 4px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(135deg, var(--paperclip-avatar-ink-soft) 0 1px, transparent 1px 4px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-lime:
+    repeating-linear-gradient(90deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 5px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(0deg, var(--paperclip-avatar-ink-soft) 0 1px, transparent 1px 5px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-green:
+    repeating-linear-gradient(135deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 5px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(90deg, var(--paperclip-avatar-ink-soft) 0 1px, transparent 1px 6px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-teal:
+    repeating-linear-gradient(120deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 6px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-cyan:
+    repeating-linear-gradient(90deg, var(--paperclip-avatar-ink-soft) 0 1px, transparent 1px 4px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(0deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 4px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-blue:
+    repeating-linear-gradient(30deg, var(--paperclip-avatar-ink) 0 2px, transparent 2px 7px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
+  --paperclip-avatar-pattern-indigo:
+    repeating-linear-gradient(150deg, var(--paperclip-avatar-ink) 0 1px, transparent 1px 5px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--paperclip-avatar-base);
 
-  --avatar-background-neutral: var(--paperclip-avatar-pattern-light);
+  --avatar-background-neutral: var(--paperclip-avatar-pattern-pink);
   --avatar-text-color: var(--blue-100);
   --avatar-icon-color: var(--blue-100);
-  --avatar-background-positive: var(--paperclip-avatar-pattern-light-alt);
-  --avatar-background-warning: var(--paperclip-avatar-pattern-light-warning);
-  --avatar-background-attention: var(--paperclip-avatar-pattern-light-attention);
-  --avatar-background-purple: var(--paperclip-standalone-avatar-background);
-  --avatar-background-violet: var(--paperclip-standalone-avatar-background);
-  --avatar-background-pink: var(--paperclip-standalone-avatar-background);
-  --avatar-background-magenta: var(--paperclip-standalone-avatar-background);
-  --avatar-background-red: var(--paperclip-standalone-avatar-background);
-  --avatar-background-orange: var(--paperclip-standalone-avatar-background);
-  --avatar-background-amber: var(--paperclip-standalone-avatar-background);
-  --avatar-background-yellow: var(--paperclip-standalone-avatar-background);
-  --avatar-background-lime: var(--paperclip-standalone-avatar-background);
-  --avatar-background-green: var(--paperclip-standalone-avatar-background);
-  --avatar-background-teal: var(--paperclip-standalone-avatar-background);
-  --avatar-background-cyan: var(--paperclip-standalone-avatar-background);
-  --avatar-background-blue: var(--paperclip-standalone-avatar-background);
-  --avatar-background-indigo: var(--paperclip-standalone-avatar-background);
+  --avatar-background-positive: var(--paperclip-avatar-pattern-positive);
+  --avatar-background-warning: var(--paperclip-avatar-pattern-warning);
+  --avatar-background-attention: var(--paperclip-avatar-pattern-attention);
+  --avatar-background-purple: var(--paperclip-avatar-pattern-purple);
+  --avatar-background-violet: var(--paperclip-avatar-pattern-violet);
+  --avatar-background-pink: var(--paperclip-avatar-pattern-neutral);
+  --avatar-background-magenta: var(--paperclip-avatar-pattern-magenta);
+  --avatar-background-red: var(--paperclip-avatar-pattern-red);
+  --avatar-background-orange: var(--paperclip-avatar-pattern-orange);
+  --avatar-background-amber: var(--paperclip-avatar-pattern-amber);
+  --avatar-background-yellow: var(--paperclip-avatar-pattern-yellow);
+  --avatar-background-lime: var(--paperclip-avatar-pattern-lime);
+  --avatar-background-green: var(--paperclip-avatar-pattern-green);
+  --avatar-background-teal: var(--paperclip-avatar-pattern-teal);
+  --avatar-background-cyan: var(--paperclip-avatar-pattern-cyan);
+  --avatar-background-blue: var(--paperclip-avatar-pattern-blue);
+  --avatar-background-indigo: var(--paperclip-avatar-pattern-indigo);
 
   --status-positive-background: color-mix(in srgb, var(--blue-500) 92%, var(--blue-500) 8%);
   --status-positive-border-color: var(--blue-500);
@@ -379,9 +502,9 @@ html[data-brand="paperclip"][data-theme="light"] {
   --dropdown-button-background-hover: var(--blue-500);
 
   --progress-bar-background: var(--blue-500);
-  --progress-track-background: var(--blue-500);
+  --progress-track-background: var(--blue-100);
   --progress-loading-bar-100: var(--blue-500);
-  --progress-loading-bar-200: var(--blue-500);
+  --progress-loading-bar-200: var(--blue-300);
   --progress-syncing-bar-background: var(--blue-500);
 
   --stepper-color: var(--blue-500);
@@ -389,7 +512,7 @@ html[data-brand="paperclip"][data-theme="light"] {
   --stepper-background-inactive: var(--blue-500);
   --stepper-border-color: var(--blue-500);
   --stepper-text-color-active: var(--blue-500);
-  --stepper-icon-color: var(--blue-500);
+  --stepper-icon-color: var(--white);
   --stepper-success-color: var(--blue-500);
   --stepper-warning-color: var(--blue-500);
   --stepper-error-color: var(--blue-500);
@@ -409,7 +532,7 @@ html[data-brand="paperclip"][data-theme="light"] {
 /* 3. DARK MODE                                                                                         */
 /* ==================================================================================================== */
 html[data-brand="paperclip"][data-theme="dark"] {
-  --paperclip-standalone-background: var(--blue-200);
+  --paperclip-standalone-background: var(--blue-500);
   --paperclip-standalone-border-color: var(--white);
   --paperclip-standalone-text-color: var(--white);
   --paperclip-standalone-avatar-background: linear-gradient(180deg, var(--blue-700), var(--blue-700));
@@ -527,6 +650,12 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --chip-input-background: var(--blue-500);
   --code-text-color: var(--white);
   --code-background: var(--blue-600);
+  --media-player-seek-color: var(--white);
+  --media-player-seek-time-background: var(--blue-500);
+  --media-player-seek-time-border-color: var(--white);
+  --range-input-accent-color: var(--white);
+  --range-input-bubble-background: var(--media-player-seek-time-background);
+  --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
   --prompt-preview-dismiss-secondary-background: var(--blue-500);
   --prompt-preview-dismiss-secondary-background-hover: var(--blue-600);
   --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--white);
@@ -578,11 +707,11 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --radio-dot-color-checked-disabled: var(--white);
   --addon-background: var(--blue-600);
 
-  --badge-text-color: var(--blue-600);
-  --badge-background-neutral: var(--white);
-  --badge-background-positive: var(--blue-200);
-  --badge-background-warning: var(--blue-200);
-  --badge-background-attention: var(--blue-200);
+  --badge-text-color: var(--white);
+  --badge-background-neutral: var(--paperclip-standalone-background);
+  --badge-background-positive: var(--paperclip-standalone-background);
+  --badge-background-warning: var(--paperclip-standalone-background);
+  --badge-background-attention: var(--paperclip-standalone-background);
   --badge-background-overlay: color-mix(in srgb, var(--blue-500) 70%, transparent);
   --badge-background-grey: var(--paperclip-standalone-background);
   --badge-background-purple: var(--paperclip-standalone-background);
@@ -623,40 +752,135 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --slat-card-avatar-background-hover: var(--blue-500);
 
   --paperclip-avatar-pattern-dark:
-    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--white) 22%, transparent) 0.8px, transparent 1px) 0 0 /
-      8px 8px,
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--white) 22%, transparent) 0.8px, transparent 1px) 50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-alt:
-    repeating-linear-gradient(135deg, color-mix(in srgb, var(--white) 14%, transparent) 0 2px, transparent 2px 6px),
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--white) 14%, transparent) 0 2px, transparent 2px 6px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-warning:
-    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 5px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-attention:
-    radial-gradient(circle at 2px 2px, color-mix(in srgb, var(--white) 20%, transparent) 0.7px, transparent 1px) 0 0 /
-      7px 7px,
+    repeating-linear-gradient(45deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 5px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(-45deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 5px)
+      50% 50% /
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-purple:
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 6px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-violet:
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 5px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 5px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-pink:
+    radial-gradient(circle at 50% 50%, transparent 0 1.6px, color-mix(in srgb, var(--white) 14%, transparent) 1.8px 2.4px, transparent 2.6px)
+      50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-magenta:
+    repeating-linear-gradient(45deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 6px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-red:
+    conic-gradient(from 90deg, color-mix(in srgb, var(--white) 14%, transparent) 25%, transparent 0 50%, color-mix(in srgb, var(--white) 14%, transparent) 0 75%, transparent 0)
+      50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-orange:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 14%, transparent) 0 2px, transparent 2px 7px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-amber:
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--white) 14%, transparent) 0 2px, transparent 2px 7px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-yellow:
+    repeating-linear-gradient(45deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 4px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 4px)
+      50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-lime:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 5px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 5px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-green:
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 5px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 6px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-teal:
+    repeating-linear-gradient(120deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 6px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-cyan:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 4px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 4px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-blue:
+    repeating-linear-gradient(30deg, color-mix(in srgb, var(--white) 14%, transparent) 0 2px, transparent 2px 7px)
+      50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
+    var(--blue-700);
+  --paperclip-avatar-pattern-dark-indigo:
+    repeating-linear-gradient(150deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 5px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
 
-  --avatar-background-neutral: var(--paperclip-avatar-pattern-dark);
+  --avatar-background-neutral: var(--paperclip-avatar-pattern-dark-pink);
   --avatar-text-color: var(--blue-100);
   --avatar-icon-color: var(--blue-100);
   --avatar-background-positive: var(--paperclip-avatar-pattern-dark-alt);
   --avatar-background-warning: var(--paperclip-avatar-pattern-dark-warning);
   --avatar-background-attention: var(--paperclip-avatar-pattern-dark-attention);
-  --avatar-background-purple: var(--paperclip-standalone-avatar-background);
-  --avatar-background-violet: var(--paperclip-standalone-avatar-background);
-  --avatar-background-pink: var(--paperclip-standalone-avatar-background);
-  --avatar-background-magenta: var(--paperclip-standalone-avatar-background);
-  --avatar-background-red: var(--paperclip-standalone-avatar-background);
-  --avatar-background-orange: var(--paperclip-standalone-avatar-background);
-  --avatar-background-amber: var(--paperclip-standalone-avatar-background);
-  --avatar-background-yellow: var(--paperclip-standalone-avatar-background);
-  --avatar-background-lime: var(--paperclip-standalone-avatar-background);
-  --avatar-background-green: var(--paperclip-standalone-avatar-background);
-  --avatar-background-teal: var(--paperclip-standalone-avatar-background);
-  --avatar-background-cyan: var(--paperclip-standalone-avatar-background);
-  --avatar-background-blue: var(--paperclip-standalone-avatar-background);
-  --avatar-background-indigo: var(--paperclip-standalone-avatar-background);
+  --avatar-background-purple: var(--paperclip-avatar-pattern-dark-purple);
+  --avatar-background-violet: var(--paperclip-avatar-pattern-dark-violet);
+  --avatar-background-pink: var(--paperclip-avatar-pattern-dark);
+  --avatar-background-magenta: var(--paperclip-avatar-pattern-dark-magenta);
+  --avatar-background-red: var(--paperclip-avatar-pattern-dark-red);
+  --avatar-background-orange: var(--paperclip-avatar-pattern-dark-orange);
+  --avatar-background-amber: var(--paperclip-avatar-pattern-dark-amber);
+  --avatar-background-yellow: var(--paperclip-avatar-pattern-dark-yellow);
+  --avatar-background-lime: var(--paperclip-avatar-pattern-dark-lime);
+  --avatar-background-green: var(--paperclip-avatar-pattern-dark-green);
+  --avatar-background-teal: var(--paperclip-avatar-pattern-dark-teal);
+  --avatar-background-cyan: var(--paperclip-avatar-pattern-dark-cyan);
+  --avatar-background-blue: var(--paperclip-avatar-pattern-dark-blue);
+  --avatar-background-indigo: var(--paperclip-avatar-pattern-dark-indigo);
 
   --status-positive-background: var(--blue-500);
   --status-positive-border-color: var(--white);
@@ -740,18 +964,18 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --dropdown-shadow-color: color-mix(in srgb, var(--blue-500) 30%, transparent);
   --dropdown-button-background-hover: var(--blue-500);
 
-  --progress-bar-background: var(--blue-500);
-  --progress-track-background: var(--blue-500);
-  --progress-loading-bar-100: var(--blue-500);
-  --progress-loading-bar-200: var(--blue-500);
-  --progress-syncing-bar-background: var(--blue-500);
+  --progress-bar-background: var(--white);
+  --progress-track-background: var(--blue-600);
+  --progress-loading-bar-100: var(--white);
+  --progress-loading-bar-200: var(--blue-200);
+  --progress-syncing-bar-background: var(--white);
 
   --stepper-color: var(--white);
-  --stepper-background-active: var(--blue-500);
+  --stepper-background-active: var(--white);
   --stepper-background-inactive: var(--blue-500);
   --stepper-border-color: var(--white);
   --stepper-text-color-active: var(--white);
-  --stepper-icon-color: var(--white);
+  --stepper-icon-color: var(--blue-500);
   --stepper-success-color: var(--white);
   --stepper-warning-color: var(--white);
   --stepper-error-color: var(--white);
