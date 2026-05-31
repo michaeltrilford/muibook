@@ -420,10 +420,14 @@ class MuiInput extends HTMLElement {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          color: var(--text-color-optional);
+          color: var(--input-inside-before-color, var(--text-color-optional));
           gap: var(--space-100);
           overflow: visible;
           flex: 0 0 auto;
+        }
+        .input-shell:focus-within .inside-before-slot {
+          color: var(--input-inside-before-color-focus, var(--input-inside-before-color, var(--text-color-optional)));
+          z-index: 3;
         }
         .inside-after-cluster {
           position: absolute;

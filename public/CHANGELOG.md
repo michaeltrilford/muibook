@@ -44,6 +44,7 @@
 
 - `mui-chip` and `mui-file-upload` now reset slotted `mui-button` min-height in compact internal action contexts.
 - `mui-input` focused fields now keep their focus ring above hovered before/after slotted controls, while slotted controls still win hover stacking when the input is not focused.
+- `mui-input` inside-before affordances now stay visible above the focused input surface, keeping leading search icons from being covered by the focused field.
 - `mui-prompt` fan actions now stay anchored in place after the shared action sizing token updates.
 
 ---

@@ -28,6 +28,10 @@ class storyCard extends HTMLElement {
         border: var(--border-thick);
       }
 
+      :host([composition]) mui-card {
+        overflow: hidden;
+      }
+
       .story-body {
         padding: var(--space-400);
       }

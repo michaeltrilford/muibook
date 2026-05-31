@@ -94,6 +94,8 @@ html[data-brand="paperclip"][data-theme="light"] {
   --form-default-placeholder-color-hover: var(--blue-500);
   --form-default-placeholder-color-focus: var(--blue-500);
   --form-default-placeholder-color-disabled: var(--blue-500);
+  --input-inside-before-color: var(--blue-500);
+  --input-inside-before-color-focus: var(--blue-500);
 
   /* Feedback */
   --feedback-neutral-border-color: var(--blue-500);
@@ -558,6 +560,8 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --form-default-placeholder-color-hover: var(--white);
   --form-default-placeholder-color-focus: var(--white);
   --form-default-placeholder-color-disabled: var(--white);
+  --input-inside-before-color: var(--white);
+  --input-inside-before-color-focus: var(--white);
 
   /* Feedback */
   --feedback-neutral-border-color: var(--white);
