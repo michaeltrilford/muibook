@@ -29,8 +29,14 @@ class MultiBrandTheme extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 65ch) 500px;
+          grid-template-columns: minmax(0, 85ch) 570px;
           gap: 9.6rem;
+        }
+      }
+
+      @media (min-width: 2000px) {
+        .config::part(display) {
+          grid-template-columns: minmax(0, 85ch) 690px;
         }
       }
 

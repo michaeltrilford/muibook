@@ -1,4 +1,5 @@
-import Image from "../../images/pages/muiplay.png";
+import RedactdLogin from "../../images/redactd/redactd-login.jpg";
+import DesignLoop from "../../images/redactd/design-loop.png";
 
 class MuiplayApp extends HTMLElement {
   constructor() {
@@ -18,6 +19,10 @@ class MuiplayApp extends HTMLElement {
         overflow: hidden;
       }
 
+      .media-stack {
+        align-self: start;
+      }
+
       @media (min-width: 1230px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 65ch) 400px;
@@ -29,8 +34,14 @@ class MuiplayApp extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 65ch) 500px;
+          grid-template-columns: minmax(0, 85ch) 570px;
           gap: 9.6rem;
+        }
+      }
+
+      @media (min-width: 2000px) {
+        .config::part(display) {
+          grid-template-columns: minmax(0, 85ch) 690px;
         }
       }
 
@@ -40,8 +51,8 @@ class MuiplayApp extends HTMLElement {
       <style>${styles}</style>
 
       <story-template 
-        title="Muiplay"
-        website="https://play.muibook.com"
+        title="Redactd"
+        website="https://redactd.xyz"
       >
 
           <mui-grid class="config" space="var(--space-600)">
@@ -49,37 +60,47 @@ class MuiplayApp extends HTMLElement {
             <mui-v-stack space="var(--space-600)">
 
               <mui-v-stack space="var(--space-400)">
-                <mui-body size="medium">Muiplay lets you describe the layout you want, like “a sidebar with a header and table,” and it instantly builds it using components from Michael UI. It’s designed to remove the friction of setup so you can focus on structure, flow, and functionality from the very start.</mui-body>
-                <mui-body size="medium">Whether you’re mocking up ideas, testing flows, or kicking off a real project, Muiplay speeds up the process by giving you a clean, extensible layout from a natural-language prompt. It’s your shortcut to clean code and design consistency.</mui-body>
-              </mui-v-stack>
-
-
-
-              <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">Prototype layouts at the speed of thought</mui-heading>
-                <mui-body size="medium">Skip the boilerplate. With just a prompt, Muiplay generates layout-ready MUI code so you can move from idea to structure instantly.</mui-body>
+                <mui-body size="medium"><mui-link href="https://play.muibook.com">Muiplay</mui-link> was an early experiment in prompting real interface layouts instead of drawing static mockups. It let you describe a structure, such as a sidebar with a header and table, then generate Michael UI component markup from that prompt.</mui-body>
+                <mui-body size="medium">That experiment opened the door to a bigger idea: prompting should not stop at a one-shot layout. It should help compose, inspect, refine, and export real Web Component interfaces in the browser.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">Structure-first, code-ready</mui-heading>
-                <mui-body size="medium">Focus on flow and usability while Muiplay handles the scaffolding. Use it to wireframe in real code, then refine and scale as your project grows.</mui-body>
+                <mui-heading level="3" size="5">From Muiplay to Redactd</mui-heading>
+                <mui-body size="medium">Redactd builds on the same prompt-to-layout direction, but moves closer to a production workflow: prompt, compose, adjust, and export real Web Component layouts in-browser.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">Your shortcut to smarter prototyping</mui-heading>
-                <mui-body size="medium">Explore and validate ideas in code with Muiplay, then refine your design in Figma with MuiKit. Together, they create a seamless workflow from concept to polished UI.</mui-body>
+                <mui-heading level="3" size="5">Prompting layouts, not pictures</mui-heading>
+                <mui-body size="medium">The goal is structural UI generation: layouts made from components, slots, tokens, and responsive primitives that can be edited after generation instead of flattened into an image.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">Component Library</mui-heading>
-                <mui-body size="medium">Muiplay is powered by Michael UI components. Learn more at <mui-link href="https://muibook.com/">muibook.com</mui-link>.</mui-body>
+                <mui-heading level="3" size="5">A better design loop</mui-heading>
+                <mui-body size="medium">Muiplay proved that natural-language layout generation could reduce setup friction. Redactd extends that into a loop where the generated UI remains inspectable, adjustable, and connected to the design system.</mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Design Loop</mui-heading>
+                <mui-body size="medium">Redactd Design Loop takes a generated layout and runs it through structured critique, persona feedback, and iteration passes. Instead of relying on a single prompt result, it surfaces friction, clarity, CSAT, task success, and recommended changes across different user perspectives.</mui-body>
+                <mui-body size="medium">The intent is to make prompting feel more like a product design workflow: generate a layout, inspect how it performs, compare iterations, then keep refining the strongest direction. Learn more at <mui-link href="https://redactd.xyz/design-loop">redactd.xyz/design-loop</mui-link>.</mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Component foundations</mui-heading>
+                <mui-body size="medium">Both Muiplay and Redactd are grounded in the same principle: interface generation is more useful when it outputs composable component systems, not disposable screenshots. Learn more at <mui-link href="https://redactd.xyz">redactd.xyz</mui-link>.</mui-body>
               </mui-v-stack>
 
             </mui-v-stack>
 
-            <mui-image>
-              <img slot="image" src="${Image}" alt="Create Mui App Code" />
-            </mui-image> 
+            <mui-v-stack class="media-stack" space="var(--space-800)">
+              <mui-image>
+                <img slot="image" src="${RedactdLogin}" alt="Redactd interface for composing Web Component layouts" />
+              </mui-image>
+
+              <mui-image>
+                <img slot="image" src="${DesignLoop}" alt="Redactd Design Loop interface showing iteration previews, summary metrics, and persona feedback" />
+              </mui-image>
+            </mui-v-stack>
           </mui-grid>
 
       </story-template>

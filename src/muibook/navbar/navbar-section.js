@@ -1,3 +1,5 @@
+import { isCurrentRoute } from "../utils/routes.js";
+
 class appNavbarSection extends HTMLElement {
   static get observedAttributes() {
     return ["heading"];
@@ -19,6 +21,7 @@ class appNavbarSection extends HTMLElement {
   }
 
   disconnectedCallback() {
+    window.removeEventListener("popstate", this.handleRouteChange);
     window.removeEventListener("hashchange", this.handleRouteChange);
     this._observer?.disconnect();
   }
@@ -115,7 +118,9 @@ class appNavbarSection extends HTMLElement {
   }
 
   bindEvents() {
+    window.removeEventListener("popstate", this.handleRouteChange);
     window.removeEventListener("hashchange", this.handleRouteChange);
+    window.addEventListener("popstate", this.handleRouteChange);
     window.addEventListener("hashchange", this.handleRouteChange);
 
     this._observer?.disconnect();
@@ -141,8 +146,7 @@ class appNavbarSection extends HTMLElement {
   }
 
   hasActiveRoute() {
-    const currentHash = window.location.hash || "#/home";
-    return this.links.some((link) => link.getAttribute("link") === currentHash);
+    return this.links.some((link) => isCurrentRoute(link.getAttribute("link")));
   }
 
   setOpen(isOpen, persist = true) {

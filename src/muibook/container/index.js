@@ -1,7 +1,11 @@
+import { getCurrentRoutePath, normalizeLegacyHashRoute } from "../utils/routes.js";
+
 export class AppContainer extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.handleRouteChange = this.handleRouteChange.bind(this);
+    this.handleHashRouteChange = this.handleHashRouteChange.bind(this);
 
     this.setAttribute("tabindex", "0"); // Make the app-container focusable
     this.setAttribute("role", "main"); // Helps with screen reader navigation
@@ -22,14 +26,26 @@ export class AppContainer extends HTMLElement {
     this.shadowRoot.appendChild(style);
   }
 
+  handleRouteChange() {
+    this.loadComponent();
+  }
+
+  handleHashRouteChange() {
+    if (!window.location.hash.startsWith("#/")) return;
+    normalizeLegacyHashRoute();
+    this.loadComponent();
+  }
+
   async loadComponent() {
-    const path = window.location.hash.slice(1) || "/home";
+    normalizeLegacyHashRoute();
+    const path = getCurrentRoutePath();
     const routes = {
       "/home": "home-page",
 
       "/design-guidelines": "design-guidelines",
       "/changelog": "changelog-page",
       "/license": "license-page",
+      "/redactd": "muiplay-app",
       "/muiplay": "muiplay-app",
       "/base-theme": "base-theme",
       "/multi-brand-theme": "multi-brand-theme",
@@ -284,7 +300,8 @@ export class AppContainer extends HTMLElement {
   }
 
   connectedCallback() {
-    window.addEventListener("hashchange", () => this.loadComponent());
+    window.addEventListener("popstate", this.handleRouteChange);
+    window.addEventListener("hashchange", this.handleHashRouteChange);
     this.addEventListener("blur", () => {
       this.setAttribute("tabindex", "-1"); // Reset after user tabs away
     });
@@ -292,7 +309,8 @@ export class AppContainer extends HTMLElement {
   }
 
   disconnectedCallback() {
-    window.removeEventListener("hashchange", this.loadComponent);
+    window.removeEventListener("popstate", this.handleRouteChange);
+    window.removeEventListener("hashchange", this.handleHashRouteChange);
   }
 }
 

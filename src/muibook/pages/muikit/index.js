@@ -29,8 +29,14 @@ class MuikitPage extends HTMLElement {
 
       @media (min-width: 1390px) {
         .config::part(display) {
-          grid-template-columns: minmax(0, 65ch) 500px;
+          grid-template-columns: minmax(0, 85ch) 570px;
           gap: 9.6rem;
+        }
+      }
+
+      @media (min-width: 2000px) {
+        .config::part(display) {
+          grid-template-columns: minmax(0, 85ch) 690px;
         }
       }
 
@@ -68,9 +74,9 @@ class MuikitPage extends HTMLElement {
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">Muiplay</mui-heading>
+                <mui-heading level="3" size="5">Redactd</mui-heading>
                 <mui-body size="medium">
-                  Use <mui-link href="/#/muiplay">Muiplay</mui-link> to instantly explore layout ideas using AI before refining with MuiKit in Figma. It’s a fast, flexible way to prototype with code-backed structure and then adopt proven patterns directly into your designs.
+                  Use <mui-link href="/redactd">Redactd</mui-link> to explore prompt-led layout composition before refining with MuiKit in Figma. It builds on the Muiplay experiment with a more complete browser-based workflow for real Web Component layouts.
                 </mui-body>
               </mui-v-stack>
 

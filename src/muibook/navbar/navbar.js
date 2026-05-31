@@ -174,7 +174,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-section heading="Design">
           <app-navbar-link link="#/design-guidelines" title="UX Guidelines"></app-navbar-link>
           <app-navbar-link link="#/muikit" title="Mui Kit"></app-navbar-link>
-          <app-navbar-link link="#/muiplay" title="Muiplay"></app-navbar-link>
+          <app-navbar-link link="/redactd" title="Redactd"></app-navbar-link>
         </app-navbar-section>
         <app-navbar-section heading="Theming">
           <app-navbar-link link="#/base-theme" title="Base Theme"></app-navbar-link>

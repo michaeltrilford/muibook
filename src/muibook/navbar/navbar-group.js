@@ -1,3 +1,5 @@
+import { isCurrentRoute } from "../utils/routes.js";
+
 /* myApp */
 class appNavbarGroup extends HTMLElement {
   static get observedAttributes() {
@@ -40,6 +42,7 @@ class appNavbarGroup extends HTMLElement {
   }
 
   disconnectedCallback() {
+    window.removeEventListener("popstate", this.handleRouteChange);
     window.removeEventListener("hashchange", this.handleRouteChange);
     this._observer?.disconnect();
   }
@@ -169,7 +172,9 @@ class appNavbarGroup extends HTMLElement {
   }
 
   bindEvents() {
+    window.removeEventListener("popstate", this.handleRouteChange);
     window.removeEventListener("hashchange", this.handleRouteChange);
+    window.addEventListener("popstate", this.handleRouteChange);
     window.addEventListener("hashchange", this.handleRouteChange);
 
     this._observer?.disconnect();
@@ -196,8 +201,7 @@ class appNavbarGroup extends HTMLElement {
   }
 
   hasActiveRoute() {
-    const currentHash = window.location.hash || "#/home";
-    const directMatch = this.directLinks.some((link) => link.getAttribute("link") === currentHash);
+    const directMatch = this.directLinks.some((link) => isCurrentRoute(link.getAttribute("link")));
     const sectionMatch = this.sections.some((section) => section.hasActiveRoute?.());
     return directMatch || sectionMatch;
   }

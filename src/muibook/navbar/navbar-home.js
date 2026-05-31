@@ -1,3 +1,5 @@
+import { getCleanRouteHref, navigateToRoute } from "../utils/routes.js";
+
 /* myApp */
 class appNavbarHome extends HTMLElement {
   static get observedAttributes() {
@@ -7,9 +9,11 @@ class appNavbarHome extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.handleClick = this.handleClick.bind(this);
   }
 
   connectedCallback() {
+    const href = getCleanRouteHref(this.getAttribute("link"));
     let html = /*html*/ `
     <style>
 
@@ -70,11 +74,23 @@ class appNavbarHome extends HTMLElement {
 
     </style>
 
-    <mui-link href="${this.getAttribute("link")}">${this.getAttribute("title")}</mui-link>
+    <mui-link href="${href}">${this.getAttribute("title")}</mui-link>
 
     `;
 
     this.shadowRoot.innerHTML = html;
+    this.shadowRoot.querySelector("mui-link")?.addEventListener("click", this.handleClick);
+  }
+
+  disconnectedCallback() {
+    this.shadowRoot.querySelector("mui-link")?.removeEventListener("click", this.handleClick);
+  }
+
+  handleClick(event) {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (navigateToRoute(this.getAttribute("link"))) {
+      event.preventDefault();
+    }
   }
 }
 

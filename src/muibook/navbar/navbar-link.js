@@ -1,3 +1,5 @@
+import { getCleanRouteHref, navigateToRoute } from "../utils/routes.js";
+
 /* myApp */
 class appNavbarLink extends HTMLElement {
   static get observedAttributes() {
@@ -7,12 +9,14 @@ class appNavbarLink extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.handleClick = this.handleClick.bind(this);
   }
 
   connectedCallback() {
     const badge = this.getAttribute("badge");
     const title = this.getAttribute("title");
     const link = this.getAttribute("link");
+    const href = getCleanRouteHref(link);
     const badgeClass = badge ? "has-badge" : "";
 
     let html = /*html*/ `
@@ -61,13 +65,25 @@ class appNavbarLink extends HTMLElement {
       }
     </style>
 
-    <mui-link href="${link}" class="${badgeClass}" size="small">
+    <mui-link href="${href}" class="${badgeClass}" size="small">
     ${title}
     ${badge ? `<mui-badge>${badge}</mui-badge>` : ``}
     </mui-link> 
     `;
 
     this.shadowRoot.innerHTML = html;
+    this.shadowRoot.querySelector("mui-link")?.addEventListener("click", this.handleClick);
+  }
+
+  disconnectedCallback() {
+    this.shadowRoot.querySelector("mui-link")?.removeEventListener("click", this.handleClick);
+  }
+
+  handleClick(event) {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (navigateToRoute(this.getAttribute("link"))) {
+      event.preventDefault();
+    }
   }
 }
 
