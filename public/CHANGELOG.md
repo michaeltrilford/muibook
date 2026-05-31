@@ -21,6 +21,7 @@
 - Added `mui-chip-rail` for horizontal chip overflow with scroll controls, edge masking, size propagation, and configurable mask bleed.
 - Added `mui-video-thumbnail` for reusable video poster thumbnails with themeable hover, play affordance, and opt-in border tokens.
 - `mui-video-thumbnail` composed card examples now expose `--video-thumbnail-card-hover-background`, `--video-thumbnail-card-hover-edge-width`, and `--video-thumbnail-card-hover-edge-color-token` for themed faux hover surfaces and borders.
+- `mui-prompt` now supports `preview-dialog-bordered` and `--prompt-preview-dialog-border` for turning on or customising the internal preview dialog border.
 - `mui-tab-bar` now supports `stroke="border"` and `stroke="none"` so bordered and borderless tab bars can align to the action sizing rhythm.
 - `mui-tab-bar` now supports `active-inset` for an inset active tab shadow treatment.
 - `mui-tab-bar` now supports `radius` for token-based or custom tab radius overrides.
@@ -31,6 +32,7 @@
 - `mui-slat variant="action"` now defaults to `col="minmax(0, 1fr) auto"` so trailing content aligns to the end by default.
 - `mui-chip` label color now resolves through `--chip-text-color`, with hover, focus, and active clickable states exposing matching text color tokens.
 - `mui-chip-rail` now uses 40px rail actions by default through `--chip-rail-action-size`, and focused slotted items scroll into view with a safe margin that accounts for the edge mask and rail actions.
+- `mui-chip-rail` now includes a keyboard-only Skip chip that appears when tabbed to, allowing keyboard users to jump to the final rail action and tab out of long chip collections.
 - MuiTube now uses `mui-video-thumbnail` for card poster images, with Paperclip opting into thumbnail borders from theme CSS.
 - `mui-video-thumbnail` now keeps play and overlay affordances opt-in and supports slotted metadata for linked card compositions.
 - `mui-button` and button-style `mui-link` now use explicit action size `min-height` tokens, with large actions aligned to the 5.6rem control rhythm.

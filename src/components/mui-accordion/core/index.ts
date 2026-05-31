@@ -1,6 +1,7 @@
 class MuiAccordionCore extends HTMLElement {
   private summaryEl!: HTMLElement | null;
   private detailEl!: HTMLElement | null;
+  private detailSlotEl!: HTMLSlotElement | null;
   private chevronEl!: HTMLElement | null;
   private iconToggleEl!: HTMLElement | null;
 
@@ -73,7 +74,7 @@ class MuiAccordionCore extends HTMLElement {
     this.detailEl = this.shadowRoot.querySelector(".accordion-detail");
 
     // 2. Query the real <slot> element inside shadow DOM
-    const detailSlot = this.shadowRoot.querySelector('slot[name="detail"]') as HTMLSlotElement;
+    this.detailSlotEl = this.shadowRoot.querySelector('slot[name="detail"]') as HTMLSlotElement;
 
     // 3. Setup ResizeObserver on assigned elements
     const recalcHeight = () => {
@@ -82,16 +83,17 @@ class MuiAccordionCore extends HTMLElement {
       }
     };
 
-    Array.from(detailSlot.assignedElements({ flatten: false })).forEach((el) => {
+    Array.from(this.detailSlotEl.assignedElements({ flatten: false })).forEach((el) => {
       const observer = new ResizeObserver(recalcHeight);
       observer.observe(el);
     });
 
-    detailSlot.addEventListener("slotchange", () => {
-      Array.from(detailSlot.assignedElements({ flatten: false })).forEach((el) => {
+    this.detailSlotEl.addEventListener("slotchange", () => {
+      Array.from(this.detailSlotEl?.assignedElements({ flatten: false }) || []).forEach((el) => {
         const observer = new ResizeObserver(recalcHeight);
         observer.observe(el);
       });
+      this.syncDetailInert();
       recalcHeight();
     });
 
@@ -121,6 +123,8 @@ class MuiAccordionCore extends HTMLElement {
     // Ensure initial state reflects the "open" attribute
     if (this.hasAttribute("open")) {
       this.openAccordion();
+    } else {
+      this.syncDetailInert();
     }
   }
 
@@ -147,6 +151,7 @@ class MuiAccordionCore extends HTMLElement {
     this.detailEl.setAttribute("aria-hidden", "false");
     this.summaryEl.setAttribute("aria-expanded", "true");
     this.chevronEl?.setAttribute("open", "");
+    this.syncDetailInert();
 
     if (this.iconToggleEl) {
       (this.iconToggleEl as any).toggle = true;
@@ -162,11 +167,22 @@ class MuiAccordionCore extends HTMLElement {
     this.detailEl.setAttribute("aria-hidden", "true");
     this.summaryEl.setAttribute("aria-expanded", "false");
     this.chevronEl?.removeAttribute("open");
+    this.syncDetailInert();
 
     if (this.iconToggleEl) {
       (this.iconToggleEl as any).toggle = false;
       this.iconToggleEl.setAttribute("aria-pressed", "false");
     }
+  }
+
+  private syncDetailInert() {
+    const isOpen = this.hasAttribute("open");
+    const assignedDetail = this.detailSlotEl?.assignedElements({ flatten: false }) || [];
+
+    assignedDetail.forEach((el) => {
+      if (!(el instanceof HTMLElement)) return;
+      el.toggleAttribute("inert", !isOpen);
+    });
   }
 }
 

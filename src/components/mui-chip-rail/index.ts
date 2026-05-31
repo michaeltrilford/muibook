@@ -1,10 +1,11 @@
 import "../mui-button";
+import "../mui-chip";
 import "../mui-icons/left-chevron";
 import "../mui-icons/right-chevron";
 
 class MuiChipRail extends HTMLElement {
   static get observedAttributes() {
-    return ["size", "bleed", "bleed-inline-size", "bleed-block-size", "aria-label"];
+    return ["size", "bleed", "bleed-inline-size", "bleed-block-size", "skip-label", "aria-label"];
   }
 
   private scrollEl: HTMLElement | null = null;
@@ -16,6 +17,8 @@ class MuiChipRail extends HTMLElement {
   private readonly onFocusIn = (event: FocusEvent) => this.scrollFocusedItemIntoView(event);
   private readonly onPreviousClick = () => this.scrollByPage(-1);
   private readonly onNextClick = () => this.scrollByPage(1);
+  private readonly onSkipClick = () => this.skipRail();
+  private readonly onSkipKeyDown = (event: Event) => this.handleSkipKeyDown(event);
 
   constructor() {
     super();
@@ -49,6 +52,14 @@ class MuiChipRail extends HTMLElement {
       return;
     }
 
+    if (name === "skip-label") {
+      this.render();
+      this.syncBleed();
+      this.bindEvents();
+      this.syncSlottedItems();
+      return;
+    }
+
     if (name === "aria-label" && this.scrollEl) {
       this.scrollEl.setAttribute("aria-label", newValue || "Chip rail");
     }
@@ -58,6 +69,7 @@ class MuiChipRail extends HTMLElement {
     const size = this.normalizeSize(this.getAttribute("size"));
     const ariaLabel = this.getAttribute("aria-label") || "Chip rail";
     const iconSize = this.getIconSize(size);
+    const skipLabel = this.getAttribute("skip-label") || "Skip";
 
     this.shadowRoot!.innerHTML = /*html*/ `
       <style>
@@ -120,7 +132,7 @@ class MuiChipRail extends HTMLElement {
           display: none;
         }
 
-        slot {
+        .items {
           display: flex;
           align-items: center;
           width: max-content;
@@ -128,9 +140,29 @@ class MuiChipRail extends HTMLElement {
           gap: var(--chip-rail-gap);
         }
 
+        .skip-chip,
         ::slotted(*) {
           flex: 0 0 auto;
           scroll-margin-inline: var(--chip-rail-focus-scroll-margin-inline);
+        }
+
+        .skip-chip {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip-path: inset(50%);
+          white-space: nowrap;
+        }
+
+        .skip-chip:focus,
+        .skip-chip:focus-visible {
+          position: static;
+          width: auto;
+          height: auto;
+          overflow: visible;
+          clip-path: none;
+          white-space: normal;
         }
 
         .edge {
@@ -206,16 +238,19 @@ class MuiChipRail extends HTMLElement {
 
       <div class="rail">
         <div class="scroll" role="group" aria-label="${this.escapeAttribute(ariaLabel)}">
-          <slot></slot>
-        </div>
-        <div class="edge edge-start" hidden>
-          <mui-button class="rail-action rail-action-start" variant="tertiary" size="${size}" icon-only aria-label="Previous items">
-            <mui-icon-left-chevron class="mui-icon" size="${iconSize}"></mui-icon-left-chevron>
-          </mui-button>
+          <div class="items">
+            <mui-chip class="skip-chip" variant="clickable" tabindex="0" size="${size}">${this.escapeHtml(skipLabel)}</mui-chip>
+            <slot></slot>
+          </div>
         </div>
         <div class="edge edge-end" hidden>
           <mui-button class="rail-action rail-action-end" variant="tertiary" size="${size}" icon-only aria-label="Next items">
             <mui-icon-right-chevron class="mui-icon" size="${iconSize}"></mui-icon-right-chevron>
+          </mui-button>
+        </div>
+        <div class="edge edge-start" hidden>
+          <mui-button class="rail-action rail-action-start" variant="tertiary" size="${size}" icon-only aria-label="Previous items">
+            <mui-icon-left-chevron class="mui-icon" size="${iconSize}"></mui-icon-left-chevron>
           </mui-button>
         </div>
       </div>
@@ -234,8 +269,11 @@ class MuiChipRail extends HTMLElement {
 
     const previous = this.shadowRoot?.querySelector(".rail-action-start");
     const next = this.shadowRoot?.querySelector(".rail-action-end");
+    const skip = this.shadowRoot?.querySelector(".skip-chip");
     previous?.addEventListener("click", this.onPreviousClick);
     next?.addEventListener("click", this.onNextClick);
+    skip?.addEventListener("click", this.onSkipClick);
+    skip?.addEventListener("keydown", this.onSkipKeyDown);
 
     if (typeof ResizeObserver !== "undefined" && this.scrollEl) {
       this.resizeObserver = new ResizeObserver(() => this.syncEdges());
@@ -261,6 +299,8 @@ class MuiChipRail extends HTMLElement {
     this.slotEl?.removeEventListener("slotchange", this.onSlotChange);
     this.shadowRoot?.querySelector(".rail-action-start")?.removeEventListener("click", this.onPreviousClick);
     this.shadowRoot?.querySelector(".rail-action-end")?.removeEventListener("click", this.onNextClick);
+    this.shadowRoot?.querySelector(".skip-chip")?.removeEventListener("click", this.onSkipClick);
+    this.shadowRoot?.querySelector(".skip-chip")?.removeEventListener("keydown", this.onSkipKeyDown);
     this.resizeObserver?.disconnect();
     this.mutationObserver?.disconnect();
     this.resizeObserver = null;
@@ -287,6 +327,7 @@ class MuiChipRail extends HTMLElement {
     this.shadowRoot?.querySelectorAll(".rail-action .mui-icon").forEach((icon) => {
       icon.setAttribute("size", iconSize);
     });
+    this.shadowRoot?.querySelector(".skip-chip")?.setAttribute("size", size);
   }
 
   private syncEdges() {
@@ -311,6 +352,39 @@ class MuiChipRail extends HTMLElement {
     if (!this.scrollEl) return;
     const distance = Math.max(this.scrollEl.clientWidth * 0.72, 120);
     this.scrollEl.scrollBy({ left: distance * direction, behavior: "smooth" });
+  }
+
+  private skipRail() {
+    const previous = this.shadowRoot?.querySelector(".rail-action-start") as HTMLElement | null;
+    const next = this.shadowRoot?.querySelector(".rail-action-end") as HTMLElement | null;
+    const target = previous && !previous.closest("[hidden]") ? previous : next;
+
+    if (target) {
+      this.focusRailAction(target);
+      return;
+    }
+
+    const focusable = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((el) => !el.hasAttribute("disabled") && !el.closest("[hidden]") && !el.closest("[inert]"));
+    const nextOutsideRail = focusable.find(
+      (el) => Boolean(this.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING) && !this.contains(el),
+    );
+    nextOutsideRail?.focus();
+  }
+
+  private handleSkipKeyDown(event: Event) {
+    const keyboardEvent = event as KeyboardEvent;
+    if (keyboardEvent.key !== "Enter" && keyboardEvent.key !== " ") return;
+    keyboardEvent.preventDefault();
+    this.skipRail();
+  }
+
+  private focusRailAction(action: HTMLElement) {
+    const internalButton = action.shadowRoot?.querySelector("button") as HTMLButtonElement | null;
+    (internalButton || action).focus();
   }
 
   private scrollFocusedItemIntoView(event: FocusEvent) {
@@ -360,6 +434,10 @@ class MuiChipRail extends HTMLElement {
 
   private escapeAttribute(value: string) {
     return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  }
+
+  private escapeHtml(value: string) {
+    return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 }
 

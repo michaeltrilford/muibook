@@ -55,6 +55,18 @@ export const muiApi = {
         description: "Fallback title used by the internal preview dialog.",
       },
       {
+        name: "preview-dialog-bordered",
+        type: { text: "boolean" },
+        default: "false",
+        description: "Applies `var(--border-thin)` to the internal preview dialog.",
+      },
+      {
+        name: "--prompt-preview-dialog-border",
+        type: { text: "css var" },
+        default: "var(--dialog-border), or var(--border-thin) when preview-dialog-bordered is set",
+        description: "Border value passed to the internal preview dialog for custom border styling.",
+      },
+      {
         name: "preview-overflow-to-preview",
         type: { text: "boolean" },
         default: "true",

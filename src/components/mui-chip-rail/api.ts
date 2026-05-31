@@ -32,6 +32,12 @@ export const muiApi = {
         default: "Chip rail",
         description: "Labels the scrollable chip rail for assistive technology.",
       },
+      {
+        name: "skip-label",
+        type: { text: "string" },
+        default: "Skip",
+        description: "Label for the keyboard-only skip chip that appears when tabbed to.",
+      },
     ],
     slots: [{ name: "", description: "Chip items. Usually `mui-chip` elements." }],
     cssProperties: [

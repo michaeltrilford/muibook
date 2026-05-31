@@ -140,6 +140,20 @@ class StoryPrompt extends HTMLElement {
         description: "Fallback title used by internal preview dialog.",
       },
       {
+        name: "preview-dialog-bordered",
+        type: "boolean",
+        options: "preview-dialog-bordered",
+        default: "",
+        description: "Applies var(--border-thin) to the internal preview dialog.",
+      },
+      {
+        name: "--prompt-preview-dialog-border",
+        type: "css var",
+        options: "{border}",
+        default: "var(--dialog-border)",
+        description: "Custom border value passed to the internal preview dialog.",
+      },
+      {
         name: "preview-overflow-to-preview",
         type: "string|boolean",
         options: "true, false",

@@ -30,7 +30,7 @@ class StoryAccessibilityPanel extends HTMLElement {
   }
 
   render() {
-    const heading = this.getAttribute("heading") || "Accessibility Notes";
+    const heading = this.getAttribute("heading") || "Considerations";
     const items = this.getItems();
 
     if (!items.length) {

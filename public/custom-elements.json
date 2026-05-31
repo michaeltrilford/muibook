@@ -1641,6 +1641,14 @@
               },
               "default": "Chip rail",
               "description": "Labels the scrollable chip rail for assistive technology."
+            },
+            {
+              "name": "skip-label",
+              "type": {
+                "text": "string"
+              },
+              "default": "Skip",
+              "description": "Label for the keyboard-only skip chip that appears when tabbed to."
             }
           ],
           "superclass": {
@@ -6554,6 +6562,14 @@
               "description": "Fallback title used by the internal preview dialog."
             },
             {
+              "name": "preview-dialog-bordered",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Applies `var(--border-thin)` to the internal preview dialog."
+            },
+            {
               "name": "context-mode",
               "type": {
                 "text": "\"icon\" | \"chip\""
@@ -6682,6 +6698,10 @@
             {
               "name": "--prompt-preview-code-background",
               "description": "Background passed to auto-preview `mui-code` content displayed inside Prompt."
+            },
+            {
+              "name": "--prompt-preview-dialog-border",
+              "description": "Custom border value passed to the internal preview dialog."
             },
             {
               "name": "--prompt-accent-primary-derived",

@@ -46,6 +46,7 @@ class MuiPrompt extends HTMLElement {
       "preview-loading-label",
       "preview-dialog-width",
       "preview-dialog-title",
+      "preview-dialog-bordered",
       "context-mode",
       "effects-off",
       "color-layout",
@@ -1311,6 +1312,7 @@ class MuiPrompt extends HTMLElement {
     const rows = this.getAttribute("rows") || "3";
     const disabled = this.hasAttribute("disabled");
     const previewDialogWidth = this.getAttribute("preview-dialog-width") || "560px";
+    const previewDialogBorder = this.hasAttribute("preview-dialog-bordered") ? "var(--border-thin)" : "var(--dialog-border)";
     const colorTopStart = this.getAttribute("color-top-start") || "";
     const colorTopMid = this.getAttribute("color-top-mid") || "";
     const colorTopEnd = this.getAttribute("color-top-end") || "";
@@ -1341,6 +1343,7 @@ class MuiPrompt extends HTMLElement {
         :host {
           display: block;
           --prompt-action-radius: var(--chip-radius-small, var(--radius-400));
+          --prompt-preview-dialog-border: ${previewDialogBorder};
           --prompt-color-top-start-source: ${startSource};
           --prompt-color-top-mid-source: ${midSource};
           --prompt-color-top-end-source: ${endSource};
@@ -2113,6 +2116,7 @@ class MuiPrompt extends HTMLElement {
         id="promptAutoPreviewDialog"
         width="${previewDialogWidth}"
         content-padding="none"
+        style="--dialog-border: var(--prompt-preview-dialog-border);"
       >
         <mui-heading id="promptAutoPreviewTitle" slot="title" size="5">Pasted Content</mui-heading>
         <mui-code id="promptAutoPreviewCode" size="x-small" wrap hidden></mui-code>
