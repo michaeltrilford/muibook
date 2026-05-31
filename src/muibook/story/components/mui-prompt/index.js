@@ -319,7 +319,7 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="preview-data"
-        title="Interactive Prompt Setup"
+        title="Interactive Prompt"
         description="Canonical interactive setup for this page: paste/upload previews, context toggle, submit, and prompt event telemetry."
         usage="This is the primary interactive story on this page.|||Use prompt-paste to capture clipboard payloads and append previews.|||Use prompt-preview-open to drive analytics, dialog selection, or routing.|||Use context-mode='icon|chip' with slotted <mui-prompt-toggle> (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||Theme the hover/focus mesh using --prompt-accent-primary and optional --prompt-accent-secondary.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
       >
@@ -920,7 +920,7 @@ class StoryPrompt extends HTMLElement {
       <story-card
         id="preview-media"
         title="Preview: Media"
-        description="Media badge/render check (YouTube, SoundCloud, direct media URLs). For full interactive paste/upload flow, use Interactive Prompt Setup."
+        description="Media badge/render check (YouTube, SoundCloud, direct media URLs). For full interactive paste/upload flow, use Interactive Prompt."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -1205,7 +1205,7 @@ class StoryPrompt extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       
         imports='["@muibook/components/mui-prompt"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Setup|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Code Types Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Prompt|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Code Types Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
         ${stories}
       </story-template>
     `;

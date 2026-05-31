@@ -2051,6 +2051,31 @@ class MuiPrompt extends HTMLElement {
           margin-top: var(--space-400);
           padding-left: var(--space-100);
         }
+        .debug-region mui-body {
+          min-width: 0;
+          max-width: 100%;
+        }
+        .debug-region mui-body::part(width) {
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+        }
+        .debug-payload-body::part(display) {
+          display: block;
+        }
+        .debug-payload-body::part(width) {
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+        }
+        .debug-payload-text {
+          display: block;
+          min-width: 0;
+          max-width: 100%;
+          white-space: normal;
+          overflow-wrap: anywhere;
+          word-break: break-word;
+        }
       </style>
 
         <div class="surface">
@@ -2109,7 +2134,9 @@ class MuiPrompt extends HTMLElement {
       </div>
       <mui-v-stack class="debug-region" space="var(--space-050)" ${this.hasAttribute("debug") ? "" : "hidden"}>
         <mui-body id="promptDebugStatus" size="x-small" variant="optional" weight="regular">Idle: no submit yet.</mui-body>
-        <mui-body id="promptDebugPayload" size="x-small" variant="optional" weight="regular">{"event":"idle"}</mui-body>
+        <mui-body class="debug-payload-body" size="x-small" variant="optional" weight="regular">
+          <span id="promptDebugPayload" class="debug-payload-text">{"event":"idle"}</span>
+        </mui-body>
       </mui-v-stack>
 
       <mui-dialog

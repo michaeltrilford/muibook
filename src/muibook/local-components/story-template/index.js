@@ -25,9 +25,12 @@ class StoryTemplate extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.docTabsMediaQuery = window.matchMedia("(max-width: 500px)");
+    this.handleDocTabsViewportChange = this.syncGeneratedDocTabsLayout.bind(this);
   }
 
   connectedCallback() {
+    this.docTabsMediaQuery.addEventListener("change", this.handleDocTabsViewportChange);
     const styles = /*css*/ `
       :host { display: block; width: 100%; }
 
@@ -334,6 +337,23 @@ class StoryTemplate extends HTMLElement {
         </mui-v-stack>
       </mui-container>
     `;
+
+    this.syncGeneratedDocTabsLayout();
+  }
+
+  disconnectedCallback() {
+    this.docTabsMediaQuery.removeEventListener("change", this.handleDocTabsViewportChange);
+  }
+
+  syncGeneratedDocTabsLayout() {
+    const docTabsBar = this.querySelector('[data-generated-doc-tabs] .docs-tab-bar');
+    if (!docTabsBar) return;
+
+    if (this.docTabsMediaQuery.matches) {
+      docTabsBar.setAttribute("full-width", "");
+    } else {
+      docTabsBar.removeAttribute("full-width");
+    }
   }
 }
 
