@@ -164,7 +164,7 @@ class appNavbar extends HTMLElement {
 
     const Resources = /*html*/ `
       <app-navbar-group id="resources" groupname="Resources">
-        <app-navbar-section heading="Get Started">
+        <app-navbar-section heading="Setup">
           <app-navbar-link link="#/create-mui-app" title="Create App"></app-navbar-link>
           <app-navbar-link link="#/npm" title="NPM Package"></app-navbar-link>
           <app-navbar-link link="#/storybook" title="Storybook"></app-navbar-link>
