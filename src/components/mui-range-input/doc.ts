@@ -5,11 +5,11 @@ export const muiDocs: MuiDocs = {
     title: "Range Input",
     description: "Range Input provides a reusable slider with optional floating value bubble.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17847&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-range-input--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-range-input/index.ts"],
-    website: ["https://muibook.com/#/range-input"],
-    guides: ["https://guides.muibook.com/input"],
+    website: ["https://muibook.com/range-input"],
+    guides: ["https://guides.muibook.com/range-input"],
     usage: {
       list: [
         "Use for scrubbers and bounded numeric selection.",

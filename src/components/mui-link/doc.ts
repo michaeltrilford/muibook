@@ -12,7 +12,7 @@ export const muiDocs: MuiDocs = {
     figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-663&t=fSFYVey9aCoE5oQa-1"],
     storybook: ["https://stories.muibook.com/?path=/docs/actions-link--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-link/index.ts"],
-    website: ["https://muibook.com/#/link"],
+    website: ["https://muibook.com/link"],
     guides: ["https://guides.muibook.com/link"],
 
     usage: {

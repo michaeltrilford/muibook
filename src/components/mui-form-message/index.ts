@@ -109,9 +109,3 @@ class MuiFormMessage extends HTMLElement {
 if (!customElements.get("mui-form-message")) {
   customElements.define("mui-form-message", MuiFormMessage);
 }
-
-// Backward compatibility alias
-if (!customElements.get("mui-form-hint")) {
-  class MuiFormHintAlias extends MuiFormMessage {}
-  customElements.define("mui-form-hint", MuiFormHintAlias);
-}

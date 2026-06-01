@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/actions-chip--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-chip/index.ts"],
-    website: ["https://muibook.com/#/chip"],
+    website: ["https://muibook.com/chip"],
     guides: ["https://guides.muibook.com/chip"],
 
     usage: {

@@ -7,11 +7,11 @@ export const muiDocs: MuiDocs = {
       "A status is a compact visual indicator used to communicate the state of an object, record, workflow, or system condition. It is non-interactive by default, but can be interactive when composed as a trigger or compact state action.",
 
     hero: [""],
-    figma: [""],
-    storybook: [""],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17706&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/feedback-status--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-status/index.ts"],
-    website: ["https://muibook.com/#/status"],
-    guides: [""],
+    website: ["https://muibook.com/status"],
+    guides: ["https://guides.muibook.com/status"],
 
     usage: {
       list: [

@@ -6,10 +6,10 @@ export const muiDocs: MuiDocs = {
     description:
       "A Form Section groups related form controls under a clear section heading.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17769&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-form-section--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-section/index.ts"],
-    website: ["https://muibook.com/#/form-section"],
+    website: ["https://muibook.com/form-section"],
     guides: ["https://guides.muibook.com/field"],
     usage: {
       list: [

@@ -10,9 +10,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1498-15366&t=2P2nhh7B70fl6xQ4-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/inputs-avatar--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/visuals-avatar--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts"],
-    website: ["https://muibook.com/#/avatar"],
+    website: ["https://muibook.com/avatar"],
     guides: ["https://guides.muibook.com/avatar"],
 
     usage: {

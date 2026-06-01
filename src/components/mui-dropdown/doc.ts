@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/actions-dropdown--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dropdown/index.ts"],
-    website: ["https://muibook.com/#/dropdown"],
+    website: ["https://muibook.com/dropdown"],
     guides: ["https://guides.muibook.com/dropdown"],
 
     usage: {

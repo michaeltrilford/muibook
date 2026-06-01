@@ -12,9 +12,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4194&t=0ytskb8cxriEmdz2-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/content-image--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/media-image--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-image/index.ts"],
-    website: [""],
+    website: ["https://muibook.com/image"],
     guides: ["https://guides.muibook.com/image"],
 
     usage: {

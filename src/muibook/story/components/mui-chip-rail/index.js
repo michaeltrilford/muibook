@@ -164,6 +164,10 @@ class storyChipRail extends HTMLElement {
       <story-template
         title="${data?.title || "Chip Rail"}"
         description="${data?.description || "A horizontal chip rail with scroll overflow controls."}"
+        github="${(data?.github || []).join("|||")}"
+        figma="${(data?.figma || []).join("|||")}"
+        guides="${(data?.guides || []).join("|||")}"
+        storybook="${(data?.storybook || []).join("|||")}"
         attrs-reference='${attrsReference}'
         imports='["@muibook/components/mui-chip-rail", "@muibook/components/mui-chip"]'>
         ${stories}

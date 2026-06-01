@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/navigation-stepper--docs"],
     github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stepper"],
-    website: ["https://muibook.com/#/stepper"],
+    website: ["https://muibook.com/stepper"],
     guides: ["https://guides.muibook.com/stepper"],
 
     usage: {

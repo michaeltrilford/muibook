@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/layout-grid--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-grid/index.ts"],
-    website: ["https://muibook.com/#/grid"],
+    website: ["https://muibook.com/grid"],
     guides: ["https://guides.muibook.com/grid"],
 
     usage: {

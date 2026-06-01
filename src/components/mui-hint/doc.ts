@@ -5,11 +5,11 @@ export const muiDocs: MuiDocs = {
     title: "Hint",
     description: "Hint provides a trigger + floating tooltip pattern for contextual help.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17739&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-hint--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-hint/index.ts"],
-    website: ["https://muibook.com/#/hint"],
-    guides: ["https://guides.muibook.com/field"],
+    website: ["https://muibook.com/hint"],
+    guides: ["https://guides.muibook.com/hint"],
     usage: {
       list: [
         "Use for short contextual help that appears on hover or focus.",

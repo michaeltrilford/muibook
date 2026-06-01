@@ -62,7 +62,6 @@ export default defineConfig({
         "components/mui-form-section-footer": path.resolve(__dirname, "src/components/mui-form-section-footer"),
         "components/mui-form-group": path.resolve(__dirname, "src/components/mui-form-group"),
         "components/mui-form-message": path.resolve(__dirname, "src/components/mui-form-message"),
-        "components/mui-form-hint": path.resolve(__dirname, "src/components/mui-form-hint"),
         "components/mui-hint": path.resolve(__dirname, "src/components/mui-hint"),
         "components/mui-prompt": path.resolve(__dirname, "src/components/mui-prompt"),
         "components/mui-prompt-toggle": path.resolve(__dirname, "src/components/mui-prompt-toggle"),

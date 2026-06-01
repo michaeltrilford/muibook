@@ -6,11 +6,11 @@ export const muiDocs: MuiDocs = {
     description: "Radio Group manages a related set of radios so exactly one option can be selected, labelled, and submitted together.",
 
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17899&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-radio--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-radio-group/index.ts"],
-    website: ["https://muibook.com/#/radio-group"],
-    guides: [""],
+    website: ["https://muibook.com/radio-group"],
+    guides: ["https://guides.muibook.com/radio"],
 
     usage: {
       list: [

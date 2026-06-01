@@ -11,9 +11,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=634-4686&t=aIjJqBxWOU1t0Jjp-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/inputs-checkbox--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-checkbox--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-checkbox/index.ts"],
-    website: ["https://muibook.com/#/checkbox"],
+    website: ["https://muibook.com/checkbox"],
     guides: ["https://guides.muibook.com/checkbox"],
 
     usage: {

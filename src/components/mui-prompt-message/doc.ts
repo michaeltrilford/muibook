@@ -6,11 +6,11 @@ export const muiDocs: MuiDocs = {
     description:
       "Prompt Message provides a consistent conversation row shell with avatar and message content slots.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/ai-llm-prompt-message--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-message/index.ts"],
-    website: ["https://muibook.com/#/prompt-message"],
-    guides: ["https://guides.muibook.com/body"],
+    website: ["https://muibook.com/prompt-message"],
+    guides: ["https://guides.muibook.com/prompt"],
     usage: {
       list: [
         "Use for chat-style reply rows in assistant and support interfaces.",

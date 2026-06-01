@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/feedback-badge--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts"],
-    website: ["https://muibook.com/#/badge"],
+    website: ["https://muibook.com/badge"],
     guides: ["https://guides.muibook.com/badge"],
 
     usage: {

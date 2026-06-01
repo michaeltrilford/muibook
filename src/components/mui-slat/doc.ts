@@ -88,11 +88,11 @@ export const muiDocs: MuiDocs = {
       "https://images.ctfassets.net/i5uwscj4pkk2/2SHOSwTkf7V7Ql4OaobtMg/2cacf5103d02e00f67748578213f4433/Slat_-_Home_Image.png",
     ],
     figma: [
-      "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=957-8535&t=0ytskb8cxriEmdz2-1",
+      "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=957-8535&t=P2Vr2JDCBlI425XD-1",
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/content-slat--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts"],
-    website: ["https://muibook.com/#/slat"],
+    website: ["https://muibook.com/slat"],
     guides: ["https://guides.muibook.com/slat"],
 
     usage: {
@@ -221,10 +221,10 @@ export const muiDocs: MuiDocs = {
       "Slat Group arranges multiple slats into a related set so they can be presented as one grouped list or feed.",
 
     hero: [""],
-    figma: [""],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=957-8535&t=P2Vr2JDCBlI425XD-1"],
     storybook: ["https://stories.muibook.com/?path=/docs/content-slat--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slat/index.ts"],
-    website: ["https://muibook.com/#/slat"],
+    website: ["https://muibook.com/slat"],
     guides: ["https://guides.muibook.com/slat"],
 
     usage: {

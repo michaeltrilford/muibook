@@ -6,6 +6,13 @@ export const muiDocs: MuiDocs = {
     description:
       "A Chip Rail displays a horizontal set of chips with scroll controls and edge masking for filters, quicklinks, and compact category navigation.",
 
+    hero: [""],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-18125&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/actions-chip-rail--docs"],
+    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-chip-rail/index.ts"],
+    website: ["https://muibook.com/chip-rail"],
+    guides: ["https://guides.muibook.com/chip-rail"],
+
     usage: {
       list: [
         "Use Chip Rail when chips should stay on one line and overflow horizontally.",

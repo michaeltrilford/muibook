@@ -12,9 +12,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=147-1003&t=FSv3FEahG8VQW1FZ-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/inputs-switch--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-switch--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts"],
-    website: ["https://muibook.com/#/switch"],
+    website: ["https://muibook.com/switch"],
     guides: ["https://guides.muibook.com/switch"],
 
     usage: {

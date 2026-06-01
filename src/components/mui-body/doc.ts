@@ -11,7 +11,7 @@ export const muiDocs: MuiDocs = {
     figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-892&t=fSFYVey9aCoE5oQa-1"],
     storybook: ["https://stories.muibook.com/?path=/docs/content-body--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-body/index.ts"],
-    website: ["https://muibook.com/#/button"],
+    website: ["https://muibook.com/body"],
     guides: ["https://guides.muibook.com/body"],
 
     usage: {

@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/feedback-message--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-message/index.ts"],
-    website: ["https://muibook.com/#/message"],
+    website: ["https://muibook.com/message"],
     guides: ["https://guides.muibook.com/message"],
 
     usage: {

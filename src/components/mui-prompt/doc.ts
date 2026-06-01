@@ -5,11 +5,11 @@ export const muiDocs: MuiDocs = {
     title: "Prompt",
     description: "Prompt provides a reusable prompt surface with floating actions and Enter-to-submit behavior.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
-    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt/index.ts"],
-    website: ["https://muibook.com/#/prompt"],
-    guides: ["https://guides.muibook.com/input"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/ai-llm-prompt--docs"],
+    github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-prompt"],
+    website: ["https://muibook.com/prompt"],
+    guides: ["https://guides.muibook.com/prompt"],
     usage: {
       list: [
         "Use for AI/chat prompt entry surfaces with action controls.",

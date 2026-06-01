@@ -55,7 +55,7 @@ Kickstart your project with a lightweight scaffold built on Vite. It comes prelo
 - 📱 Responsive foundation: Mobile-first CSS resets and utilities
 - 🔧 Customisable: Easy to adapt for your brand and requirements
 
-Learn more at [Muibook.com](https://muibook.com/#/create-mui-app)
+Learn more at [Muibook.com](https://muibook.com/create-mui-app)
 
 ---
 

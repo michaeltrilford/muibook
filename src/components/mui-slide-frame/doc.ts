@@ -6,10 +6,10 @@ export const muiDocs: MuiDocs = {
     description:
       "Slide Frame is a composable presentation surface for UI-builder workflows. It supports configurable ratio, variants, image composition, and overflow handling.",
     hero: [""],
-    figma: [""],
-    storybook: [""],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17666&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/media-slide-frame--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-slide-frame/index.ts"],
-    website: ["https://muibook.com/#/slide-frame"],
+    website: ["https://muibook.com/slide-frame"],
     guides: ["https://guides.muibook.com/slide-frame"],
     usage: {
       list: [

@@ -5,10 +5,10 @@ export const muiDocs: MuiDocs = {
     title: "Form Section Footer",
     description: "Footer wrapper for Form Section actions and divider patterns.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17769&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-form-section-footer--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-section-footer/index.ts"],
-    website: ["https://muibook.com/#/form-section-footer"],
+    website: ["https://muibook.com/form-section-footer"],
     guides: ["https://guides.muibook.com/form-section"],
     usage: {
       list: [

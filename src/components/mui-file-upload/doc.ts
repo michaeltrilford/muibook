@@ -11,9 +11,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4068&t=0ytskb8cxriEmdz2-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/inputs-file-upload--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-file-upload--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-upload/index.ts"],
-    website: ["https://muibook.com/#/file-upload"],
+    website: ["https://muibook.com/file-upload"],
     guides: ["https://guides.muibook.com/file-upload"],
 
     usage: {

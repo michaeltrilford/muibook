@@ -10,9 +10,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=117-2068&t=GMqx21isUVAMpLJp-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/inputs-select--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-select--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-select/index.ts"],
-    website: [""],
+    website: ["https://muibook.com/select"],
     guides: ["https://guides.muibook.com/select"],
 
     usage: {

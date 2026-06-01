@@ -12,9 +12,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=440-1250&t=FSv3FEahG8VQW1FZ-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/content-smartcard--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/visuals-smart-card--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-smart-card/index.ts"],
-    website: ["https://muibook.com/#/smart-card"],
+    website: ["https://muibook.com/smart-card"],
     guides: ["https://guides.muibook.com/smart-card"],
 
     usage: {

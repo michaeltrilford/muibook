@@ -5,11 +5,11 @@ export const muiDocs: MuiDocs = {
     title: "Skeleton",
     description: "Skeleton provides reusable placeholder blocks for loading and wireframe prototyping flows.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17873&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/loading-skeleton--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-skeleton/index.ts"],
-    website: ["https://muibook.com/#/skeleton"],
-    guides: ["https://guides.muibook.com/loader"],
+    website: ["https://muibook.com/skeleton"],
+    guides: ["https://guides.muibook.com/skeleton"],
     usage: {
       list: [
         "Use line skeletons for text placeholders and rect/circle for media/avatar placeholders.",

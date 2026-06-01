@@ -6,10 +6,10 @@ export const muiDocs: MuiDocs = {
     description:
       "Form Group organizes related form controls inside a Form Section with optional second-level headings.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17795&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-form-group--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-group/index.ts"],
-    website: ["https://muibook.com/#/form-group"],
+    website: ["https://muibook.com/form-group"],
     guides: ["https://guides.muibook.com/field"],
     usage: {
       list: [

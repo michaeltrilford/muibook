@@ -7,9 +7,9 @@ export const muiDocs: MuiDocs = {
 
     hero: [""],
     figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System"],
-    storybook: ["https://stories.muibook.com"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-textarea--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-textarea/index.ts"],
-    website: ["https://muibook.com/#/textarea"],
+    website: ["https://muibook.com/textarea"],
     guides: ["https://guides.muibook.com/textarea"],
 
     usage: {

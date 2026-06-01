@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/content-list--docs"],
     github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-list"],
-    website: ["https://muibook.com/#/list"],
+    website: ["https://muibook.com/list"],
     guides: ["https://guides.muibook.com/list"],
 
     usage: {

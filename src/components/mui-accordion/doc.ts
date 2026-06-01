@@ -12,7 +12,7 @@ export const muiDocs: MuiDocs = {
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1",
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/content-accordion--docs"],
-    website: ["https://muibook.com/#/accordion"],
+    website: ["https://muibook.com/accordion"],
     guides: ["https://guides.muibook.com/accordion"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts"],
     usage: {

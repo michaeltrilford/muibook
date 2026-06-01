@@ -12,9 +12,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/navigation-tabbar--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/navigation-tab-bar--docs"],
     github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs"],
-    website: ["https://muibook.com/#/tab-bar"],
+    website: ["https://muibook.com/tab-bar"],
     guides: ["https://guides.muibook.com/tab-bar"],
 
     usage: {

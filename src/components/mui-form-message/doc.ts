@@ -6,10 +6,10 @@ export const muiDocs: MuiDocs = {
     description:
       "Form Message provides supporting text below form controls for guidance, validation, and status messaging.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17821&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-form-message--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-message/index.ts"],
-    website: ["https://muibook.com/#/form-message"],
+    website: ["https://muibook.com/form-message"],
     guides: ["https://guides.muibook.com/field"],
     usage: {
       list: [

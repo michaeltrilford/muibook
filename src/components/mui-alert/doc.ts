@@ -13,7 +13,7 @@ export const muiDocs: MuiDocs = {
     guides: ["https://guides.muibook.com/alert"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts"],
     storybook: ["https://stories.muibook.com/?path=/docs/feedback-alert--docs"],
-    website: ["https://muibook.com/#/alert"],
+    website: ["https://muibook.com/alert"],
     usage: {
       list: [
         "Success: Confirm completed actions such as form submissions, data saves, or task completion.",

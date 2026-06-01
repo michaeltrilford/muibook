@@ -12,9 +12,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8697&t=0ytskb8cxriEmdz2-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/navigation-carousel--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/visuals-carousel--docs"],
     github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-carousel"],
-    website: ["https://muibook.com/#/carousel"],
+    website: ["https://muibook.com/carousel"],
     guides: ["https://guides.muibook.com/carousel"],
 
     usage: {

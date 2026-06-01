@@ -13,7 +13,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/layout-responsive--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts"],
-    website: ["https://muibook.com/#/responsive"],
+    website: ["https://muibook.com/responsive"],
     guides: ["https://guides.muibook.com/responsive"],
 
     usage: {

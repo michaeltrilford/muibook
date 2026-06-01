@@ -11,9 +11,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=112-620&t=GMqx21isUVAMpLJp-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/inputs-field--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-field--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-field/index.ts"],
-    website: ["https://muibook.com/#/field"],
+    website: ["https://muibook.com/field"],
     guides: ["https://guides.muibook.com/field"],
 
     usage: {

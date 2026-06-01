@@ -10,9 +10,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12710&t=BwezUSymTClm00wJ-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/feedback-loader--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/loading-loader--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-loader/index.ts"],
-    website: [""],
+    website: ["https://muibook.com/loader"],
     guides: ["https://guides.muibook.com/loader"],
 
     usage: {

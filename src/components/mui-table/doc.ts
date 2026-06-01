@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/content-table--docs"],
     github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table"],
-    website: ["https://muibook.com/#/table"],
+    website: ["https://muibook.com/table"],
     guides: ["https://guides.muibook.com/table"],
 
     usage: {

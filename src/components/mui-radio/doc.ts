@@ -6,11 +6,11 @@ export const muiDocs: MuiDocs = {
     description: "A radio control for selecting exactly one option from a set.",
 
     hero: [""],
-    figma: [""],
-    storybook: [""],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17899&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-radio--docs"],
     github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-radio"],
-    website: ["https://muibook.com/#/radio"],
-    guides: [""],
+    website: ["https://muibook.com/radio"],
+    guides: ["https://guides.muibook.com/radio"],
 
     usage: {
       list: [

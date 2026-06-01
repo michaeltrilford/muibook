@@ -152,10 +152,6 @@
       "import": "./dist/esm/components/mui-form-message/index.js",
       "types": "./dist/types/components/mui-form-message/index.d.ts"
     },
-    "./mui-form-hint": {
-      "import": "./dist/esm/components/mui-form-hint/index.js",
-      "types": "./dist/types/components/mui-form-hint/index.d.ts"
-    },
     "./mui-prompt": {
       "import": "./dist/esm/components/mui-prompt/index.js",
       "types": "./dist/types/components/mui-prompt/index.d.ts"

@@ -12,9 +12,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4161&t=0ytskb8cxriEmdz2-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/inputs-progress--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-progress--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts"],
-    website: ["https://muibook.com/#/progress"],
+    website: ["https://muibook.com/progress"],
     guides: ["https://guides.muibook.com/progress"],
 
     usage: {

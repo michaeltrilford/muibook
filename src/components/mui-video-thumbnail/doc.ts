@@ -6,6 +6,13 @@ export const muiDocs: MuiDocs = {
     description:
       "Video Thumbnail displays a video poster image with a consistent frame, optional metadata, and opt-in video affordances.",
 
+    hero: [""],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-18632&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/media-video-thumbnail--docs"],
+    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-video-thumbnail/index.ts"],
+    website: ["https://muibook.com/video-thumbnail"],
+    guides: ["https://guides.muibook.com/video-thumbnail"],
+
     usage: {
       list: [
         "Use Video Thumbnail for video-card previews and media browsing compositions.",

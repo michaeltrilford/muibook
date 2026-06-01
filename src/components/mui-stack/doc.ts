@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/layout-stack--docs"],
     github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stack"],
-    website: ["https://muibook.com/#/stack"],
+    website: ["https://muibook.com/stack"],
     guides: ["https://guides.muibook.com/stack"],
 
     usage: {

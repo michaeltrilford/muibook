@@ -12,9 +12,9 @@ export const muiDocs: MuiDocs = {
     figma: [
       "https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=780-4948&t=KhmyUmaNDWKTGtrH-1",
     ],
-    storybook: ["https://stories.muibook.com/?path=/docs/content-dialog--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/overlays-dialog--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dialog/index.ts"],
-    website: ["https://muibook.com/#/dialog"],
+    website: ["https://muibook.com/dialog"],
     guides: ["https://guides.muibook.com/dialog"],
 
     usage: {

@@ -7,9 +7,9 @@ export const muiDocs: MuiDocs = {
 
     hero: [""],
     figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1"],
-    storybook: ["https://stories.muibook.com/?path=/docs/inputs-input--docs"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-input--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts"],
-    website: ["https://muibook.com/#/input"],
+    website: ["https://muibook.com/input"],
     guides: ["https://guides.muibook.com/input"],
 
     usage: {

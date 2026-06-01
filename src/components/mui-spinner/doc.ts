@@ -5,10 +5,10 @@ export const muiDocs: MuiDocs = {
     title: "Spinner",
     description: "Spinner provides compact loading feedback for short async states.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17103&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/loading-spinner--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-spinner/index.ts"],
-    website: ["https://muibook.com/#/loader"],
+    website: ["https://muibook.com/loader"],
     guides: ["https://guides.muibook.com/loader"],
     usage: {
       list: [

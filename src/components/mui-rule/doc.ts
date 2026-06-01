@@ -13,7 +13,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/layout-rule--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-rule/index.ts"],
-    website: ["https://muibook.com/#/rule"],
+    website: ["https://muibook.com/rule"],
     guides: ["https://guides.muibook.com/rule"],
 
     usage: {

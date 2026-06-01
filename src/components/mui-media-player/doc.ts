@@ -6,11 +6,11 @@ export const muiDocs: MuiDocs = {
     description:
       "Media Player renders native audio/video and provider embeds (YouTube, SoundCloud) from a single src input. This is a new exploration for the system and will iterate over time.",
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17634&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/media-media-player--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-media-player/index.ts"],
-    website: ["https://muibook.com/#/media-player"],
-    guides: ["https://guides.muibook.com/prompt"],
+    website: ["https://muibook.com/media-player"],
+    guides: ["https://guides.muibook.com/media-player"],
     usage: {
       list: [
         "Use for pasted media links when you want consistent in-product preview behavior.",

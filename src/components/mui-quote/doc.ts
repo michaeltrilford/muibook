@@ -14,7 +14,7 @@ export const muiDocs: MuiDocs = {
     ],
     storybook: ["https://stories.muibook.com/?path=/docs/content-quote--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-quote/index.ts"],
-    website: ["https://muibook.com/#/quote"],
+    website: ["https://muibook.com/quote"],
     guides: ["https://guides.muibook.com/quote"],
 
     usage: {

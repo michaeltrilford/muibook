@@ -7,7 +7,6 @@ export * from "./components/mui-form-section";
 export * from "./components/mui-form-section-footer";
 export * from "./components/mui-form-group";
 export * from "./components/mui-form-message";
-export * from "./components/mui-form-hint";
 export * from "./components/mui-hint";
 export * from "./components/mui-prompt";
 export * from "./components/mui-prompt-toggle";

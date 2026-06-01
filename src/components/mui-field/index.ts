@@ -174,7 +174,7 @@ class MuiField extends HTMLElement {
     const slotted = messageSlot.assignedElements({ flatten: true });
     slotted.forEach((el) => {
       const tag = el.tagName.toLowerCase();
-      if (tag === "mui-form-message" || tag === "mui-form-hint" || tag === "mui-body") {
+      if (tag === "mui-form-message" || tag === "mui-body") {
         el.setAttribute("size", size);
       }
     });

@@ -7,11 +7,11 @@ export const muiDocs: MuiDocs = {
       "Large-format decorative visuals used to support empty states, onboarding moments, and explanatory content without competing with the primary interface.",
 
     hero: [""],
-    figma: [""],
-    storybook: [""],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1945-4584&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/visuals-illustrations--docs"],
     github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-illustrations"],
-    website: ["https://muibook.com/#/illustrations"],
-    guides: [""],
+    website: ["https://muibook.com/illustrations"],
+    guides: ["https://guides.muibook.com/illustrations"],
 
     usage: {
       list: [
@@ -84,4 +84,3 @@ export const muiDocs: MuiDocs = {
     },
   },
 };
-

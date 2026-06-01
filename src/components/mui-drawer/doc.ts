@@ -13,8 +13,8 @@ export const muiDocs: MuiDocs = {
     ],
     guides: ["https://guides.muibook.com/drawer"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-drawer/index.ts"],
-    storybook: ["https://stories.muibook.com/?path=/docs/content-drawer--docs"],
-    website: ["https://muibook.com/#/drawer"],
+    storybook: ["https://stories.muibook.com/?path=/docs/overlays-drawer--docs"],
+    website: ["https://muibook.com/drawer"],
     usage: {
       list: [
         "Used for navigation, settings and detailed tasks.",

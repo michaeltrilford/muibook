@@ -6,11 +6,11 @@ export const muiDocs: MuiDocs = {
     description: "Prompt Toggle switches between compact prompt actions and expanded active content inside Prompt.",
 
     hero: [""],
-    figma: [""],
-    storybook: ["https://stories.muibook.com"],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/ai-llm-prompt-toggle--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-toggle/index.ts"],
-    website: ["https://muibook.com/#/prompt-toggle"],
-    guides: [""],
+    website: ["https://muibook.com/prompt-toggle"],
+    guides: ["https://guides.muibook.com/prompt"],
 
     usage: {
       list: [

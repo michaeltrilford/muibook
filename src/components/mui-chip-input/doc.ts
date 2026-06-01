@@ -7,11 +7,11 @@ export const muiDocs: MuiDocs = {
       "A Chip Input lets users create and manage multiple discrete values, shown as Chips inside an input experience.",
 
     hero: [""],
-    figma: [""],
-    storybook: [""],
+    figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17925&t=P2Vr2JDCBlI425XD-1"],
+    storybook: ["https://stories.muibook.com/?path=/docs/forms-chip-input--docs"],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-chip-input/index.ts"],
-    website: ["https://muibook.com/#/chip-input"],
-    guides: [""],
+    website: ["https://muibook.com/chip-input"],
+    guides: ["https://guides.muibook.com/chip-input"],
 
     usage: {
       list: [
