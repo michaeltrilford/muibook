@@ -21,7 +21,7 @@ class StoryMediaPlayer extends HTMLElement {
         type: "string",
         options: "player, none",
         default: "player",
-        description: "Chooses whether Muibook controls are rendered over the native media element.",
+        description: "Chooses whether Muibook controls are rendered over the native media element. Platform-only actions, such as Picture-in-Picture, are hidden when the browser does not support them.",
       },
       {
         name: "src",
@@ -42,7 +42,7 @@ class StoryMediaPlayer extends HTMLElement {
         type: "string",
         options: "url",
         default: "",
-        description: "Poster image for native video.",
+        description: "Poster image for native video. Recommended for iOS Safari so the player does not load as a black video surface before playback.",
       },
       {
         name: "artwork",
@@ -116,7 +116,7 @@ class StoryMediaPlayer extends HTMLElement {
         id="video"
         title="Video"
         description="Direct video file rendered with the native video element and Muibook controls."
-        usage="Use Muibook controls when the player needs to match the product visual language.|||The native video element remains the playback engine underneath the UI.">
+        usage="Use Muibook controls when the player needs to match the product visual language.|||The native video element remains the playback engine underneath the UI.|||Use poster for iOS Safari so the preview has a stable image before playback.|||Picture-in-Picture only appears when the browser reports support; iPhone may hide it when the current video or browser context does not support it.|||Fullscreen may start playback first on iPhone because native video fullscreen must be triggered from the media element.">
         <mui-media-player
           slot="body"
           type="video"

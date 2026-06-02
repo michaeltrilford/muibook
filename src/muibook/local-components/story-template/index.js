@@ -221,75 +221,54 @@ class StoryTemplate extends HTMLElement {
           `
       : "";
     const quicklinksSection = hasMessageContent ? /*html*/ `<slot name="message"></slot>` : "";
+    const resourceBreakpoints = `breakpoint-low="600" breakpoint-high="1200"`;
+    const renderResourceLink = ({ href, label, icon }) => /*html*/ `
+      <mui-responsive ${resourceBreakpoints}>
+        <mui-link slot="showAbove" target="_blank" href="${href}" rel="noopener" variant="tertiary">
+          ${label}<${icon} slot="after"></${icon}>
+        </mui-link>
+        <mui-link slot="showMiddle" target="_blank" href="${href}" rel="noopener" variant="tertiary" icon-only aria-label="${label}">
+          <${icon}></${icon}>
+        </mui-link>
+        <mui-link slot="showBelow" target="_blank" href="${href}" rel="noopener" variant="tertiary" size="small" icon-only aria-label="${label}">
+          <${icon}></${icon}>
+        </mui-link>
+      </mui-responsive>
+    `;
 
     const demoLink = this.getAttribute("demo");
     const demoContent = demoLink
-      ? /*html*/ `
-        <mui-responsive breakpoint="1200">
-          <mui-link slot="showAbove" target="_blank" href="${demoLink}" rel="noopener" variant="tertiary">Demo<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${demoLink}" rel="noopener" variant="tertiary"><mui-icon-globe></mui-icon-globe></mui-link>
-        </mui-responsive>      
-      `
+      ? renderResourceLink({ href: demoLink, label: "Demo", icon: "mui-icon-globe" })
       : "";
 
     const websiteLink = this.getAttribute("website");
     const websiteContent = websiteLink
-      ? /*html*/ `
-        <mui-responsive breakpoint="1200">
-          <mui-link slot="showAbove" target="_blank" href="${websiteLink}" rel="noopener" variant="tertiary">Try Now<mui-icon-globe slot="after"></mui-icon-globe></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${websiteLink}" rel="noopener" variant="tertiary"><mui-icon-globe></mui-icon-globe></mui-link>
-        </mui-responsive>
-      `
+      ? renderResourceLink({ href: websiteLink, label: "Try Now", icon: "mui-icon-globe" })
       : "";
 
     const storybookLink = this.getAttribute("storybook");
     const storybookContent = storybookLink
-      ? /*html*/ `
-        <mui-responsive breakpoint="1200">
-          <mui-link slot="showAbove" target="_blank" href="${storybookLink}" rel="noopener" variant="tertiary">Storybook<storybook-mark slot="after"></storybook-mark></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${storybookLink}" rel="noopener" variant="tertiary"><storybook-mark></storybook-mark></mui-link>
-        </mui-responsive>
-      `
+      ? renderResourceLink({ href: storybookLink, label: "Storybook", icon: "storybook-mark" })
       : "";
 
     const npmLink = this.getAttribute("npm");
     const npmContent = npmLink
-      ? /*html*/ `
-        <mui-responsive breakpoint="1200">
-          <mui-link slot="showAbove" target="_blank" href="${npmLink}" rel="noopener" variant="tertiary">Package<npm-mark slot="after"></npm-mark></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${npmLink}" rel="noopener" variant="tertiary"><npm-mark></npm-mark></mui-link>
-        </mui-responsive>
-      `
+      ? renderResourceLink({ href: npmLink, label: "Package", icon: "npm-mark" })
       : "";
 
     const githubLink = this.getAttribute("github");
     const githubContent = githubLink
-      ? /*html*/ `
-        <mui-responsive breakpoint="1200">
-          <mui-link slot="showAbove" target="_blank" href="${githubLink}" rel="noopener" variant="tertiary">Github<github-mark slot="after"></github-mark></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${githubLink}" rel="noopener" variant="tertiary"><github-mark></github-mark></mui-link>
-        </mui-responsive>
-      `
+      ? renderResourceLink({ href: githubLink, label: "Github", icon: "github-mark" })
       : "";
 
     const figmaLink = this.getAttribute("figma");
     const figmaContent = figmaLink
-      ? /*html*/ `
-        <mui-responsive breakpoint="1200">
-         <mui-link slot="showAbove" target="_blank" href="${figmaLink}" rel="noopener" variant="tertiary">Figma<figma-mark slot="after"></figma-mark></mui-link>
-          <mui-link slot="showBelow" target="_blank" href="${figmaLink}" rel="noopener" variant="tertiary"><figma-mark></figma-mark></mui-link>
-        </mui-responsive>
-      `
+      ? renderResourceLink({ href: figmaLink, label: "Figma", icon: "figma-mark" })
       : "";
 
     const guidesLink = this.getAttribute("guides");
     const guidesContent = guidesLink
-      ? /*html*/ `
-        <mui-responsive breakpoint="1200">
-          <mui-link slot="showAbove" target="_blank" href="${guidesLink}" rel="noopener" variant="tertiary">Guides<guides-mark slot="after"></guides-mark></mui-link>
-          <mui-link slot="showBelow" target="_blank" icon-only href="${guidesLink}" rel="noopener" variant="tertiary"><guides-mark></guides-mark></mui-link>
-        </mui-responsive>
-      `
+      ? renderResourceLink({ href: guidesLink, label: "Guides", icon: "guides-mark" })
       : "";
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -298,8 +277,20 @@ class StoryTemplate extends HTMLElement {
         <mui-v-stack class="wrapper">
           <mui-v-stack class="introduction" space="var(--space-500)">
             <mui-v-stack class="header-group">
-              <mui-responsive breakpoint="1200">
+              <mui-responsive ${resourceBreakpoints}>
                 <mui-h-stack slot="showBelow" alignX="space-between" alignY="center">
+                  <mui-heading size="2" level="1" class="storefront-heading">${title}</mui-heading>
+                  <mui-h-stack space="var(--space-000)">
+                    ${demoContent}
+                    ${websiteContent}
+                    ${npmContent}
+                    ${storybookContent}
+                    ${guidesContent}
+                    ${figmaContent}
+                    ${githubContent}
+                  </mui-h-stack>
+                </mui-h-stack>
+                <mui-h-stack slot="showMiddle" alignX="space-between" alignY="center">
                   <mui-heading size="2" level="1" class="storefront-heading">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">
                     ${demoContent}

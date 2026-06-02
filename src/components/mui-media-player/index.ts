@@ -209,6 +209,14 @@ class MuiMediaPlayer extends HTMLElement {
     </mui-hint>`;
   }
 
+  private shouldRenderPictureInPictureControl() {
+    return Boolean(
+      "pictureInPictureEnabled" in document ||
+        "webkitSupportsPresentationMode" in HTMLVideoElement.prototype ||
+        "webkitSetPresentationMode" in HTMLVideoElement.prototype,
+    );
+  }
+
   private renderFullscreenControl() {
     return `<mui-hint placement="top">
       <mui-button slot="trigger" data-action="fullscreen" size="small" icon-only variant="tertiary" aria-label="Fullscreen" aria-pressed="false">
@@ -244,7 +252,8 @@ class MuiMediaPlayer extends HTMLElement {
       <span class="controls-right">
         ${this.renderMuteControl(muted)}
         ${this.renderVolumeControl(muted)}
-        ${type === "video" ? `${this.renderPictureInPictureControl()}${this.renderFullscreenControl()}` : ""}
+        ${type === "video" && this.shouldRenderPictureInPictureControl() ? this.renderPictureInPictureControl() : ""}
+        ${type === "video" ? this.renderFullscreenControl() : ""}
         ${this.renderOptionsMenu(escapedSrc, type === "video" ? "var(--space-500)" : "var(--space-400)")}
       </span>
     </div>`;
@@ -321,6 +330,7 @@ class MuiMediaPlayer extends HTMLElement {
     const volume = this.shadowRoot.querySelector('[data-action="volume"]') as HTMLInputElement | null;
     const timeToggle = this.shadowRoot.querySelector('[data-action="time-mode"]') as HTMLElement | null;
     const pipBtn = this.shadowRoot.querySelector('[data-action="pip"]') as HTMLElement | null;
+    const pipControl = pipBtn?.closest("mui-hint") as HTMLElement | null;
     const fullscreenBtn = this.shadowRoot.querySelector('[data-action="fullscreen"]') as HTMLElement | null;
     const controls = this.shadowRoot.querySelector(".controls") as HTMLElement | null;
     const controlsPeek = this.shadowRoot.querySelector(".controls-peek") as HTMLElement | null;
@@ -606,11 +616,11 @@ class MuiMediaPlayer extends HTMLElement {
         "requestPictureInPicture" in videoMedia,
       );
 
-    const hasWebKitPictureInPictureApi = () =>
-      Boolean(videoMedia?.webkitSupportsPresentationMode && videoMedia.webkitSetPresentationMode);
-
     const canUseWebKitPictureInPicture = () =>
-      Boolean(hasWebKitPictureInPictureApi() && videoMedia?.webkitSupportsPresentationMode?.("picture-in-picture"));
+      Boolean(
+        videoMedia?.webkitSupportsPresentationMode?.("picture-in-picture") &&
+          videoMedia.webkitSetPresentationMode,
+      );
 
     const isPictureInPictureActive = () =>
       Boolean(
@@ -644,11 +654,13 @@ class MuiMediaPlayer extends HTMLElement {
       }
       syncVolumeIcon();
       if (pipBtn) {
-        const canPictureInPicture = canUseStandardPictureInPicture() || hasWebKitPictureInPictureApi();
+        const canPictureInPicture = canUseStandardPictureInPicture() || canUseWebKitPictureInPicture();
         if (canPictureInPicture) {
+          pipControl?.removeAttribute("hidden");
           pipBtn.removeAttribute("disabled");
           pipBtn.setAttribute("aria-pressed", String(isPictureInPictureActive()));
         } else {
+          pipControl?.setAttribute("hidden", "");
           pipBtn.setAttribute("disabled", "");
           pipBtn.setAttribute("aria-pressed", "false");
         }
@@ -763,6 +775,12 @@ class MuiMediaPlayer extends HTMLElement {
       this.countdownMode = !this.countdownMode;
       sync();
     });
+    const playForNativeMode = async () => {
+      if (!videoMedia?.paused) return;
+      await videoMedia.play();
+      syncPlayState(false, true);
+    };
+
     on(pipBtn, "click", async () => {
       if (!videoMedia) return;
       try {
@@ -770,19 +788,18 @@ class MuiMediaPlayer extends HTMLElement {
           if (document.pictureInPictureElement === videoMedia) {
             await document.exitPictureInPicture();
           } else {
+            await playForNativeMode();
             await videoMedia.requestPictureInPicture();
           }
-        } else if (hasWebKitPictureInPictureApi()) {
-          if (!canUseWebKitPictureInPicture()) {
-            media.load();
-          }
-          if (!canUseWebKitPictureInPicture()) {
+        } else if (canUseWebKitPictureInPicture()) {
+          const isWebKitPictureInPictureActive = videoMedia.webkitPresentationMode === "picture-in-picture";
+          if (isWebKitPictureInPictureActive) {
+            videoMedia.webkitSetPresentationMode?.("inline");
             sync();
             return;
           }
-          videoMedia.webkitSetPresentationMode?.(
-            videoMedia.webkitPresentationMode === "picture-in-picture" ? "inline" : "picture-in-picture",
-          );
+          await playForNativeMode();
+          videoMedia.webkitSetPresentationMode?.("picture-in-picture");
         } else {
           return;
         }
@@ -801,12 +818,16 @@ class MuiMediaPlayer extends HTMLElement {
         } else if (videoMedia?.webkitDisplayingFullscreen && videoMedia.webkitExitFullscreen) {
           videoMedia.webkitExitFullscreen();
         } else if (fullscreenFrame.requestFullscreen) {
+          await playForNativeMode();
           await fullscreenFrame.requestFullscreen();
         } else if (fullscreenFrame.webkitRequestFullscreen) {
+          await playForNativeMode();
           await fullscreenFrame.webkitRequestFullscreen();
         } else if (fullscreenFrame.webkitRequestFullScreen) {
+          await playForNativeMode();
           await fullscreenFrame.webkitRequestFullScreen();
         } else if (videoMedia?.webkitEnterFullscreen) {
+          await playForNativeMode();
           videoMedia.webkitEnterFullscreen();
         } else {
           return;
@@ -954,6 +975,9 @@ class MuiMediaPlayer extends HTMLElement {
           --media-player-range-track-height: 0.4rem;
           --dropdown-min-width: 16rem;
           --dropdown-offset: var(--space-100);
+        }
+        mui-hint[hidden] {
+          display: none;
         }
         mui-button::part(border-radius) {
           border-radius: var(--radius-400);
