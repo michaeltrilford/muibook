@@ -186,7 +186,10 @@ class MuiMediaPlayer extends HTMLElement {
 
   private renderTimeControl() {
     return `<mui-hint placement="top">
-      <mui-button slot="trigger" data-action="time-mode" size="small" variant="tertiary" aria-pressed="false">0:00 / 0:00</mui-button>
+      <mui-button slot="trigger" data-action="time-mode" size="small" variant="tertiary" aria-pressed="false" aria-label="Toggle time display">
+        <span class="time-label-full">0:00 / 0:00</span>
+        <span class="time-label-compact">0:00</span>
+      </mui-button>
       Time
     </mui-hint>`;
   }
@@ -212,8 +215,8 @@ class MuiMediaPlayer extends HTMLElement {
   private shouldRenderPictureInPictureControl() {
     return Boolean(
       "pictureInPictureEnabled" in document ||
-        "webkitSupportsPresentationMode" in HTMLVideoElement.prototype ||
-        "webkitSetPresentationMode" in HTMLVideoElement.prototype,
+      "webkitSupportsPresentationMode" in HTMLVideoElement.prototype ||
+      "webkitSetPresentationMode" in HTMLVideoElement.prototype,
     );
   }
 
@@ -431,9 +434,16 @@ class MuiMediaPlayer extends HTMLElement {
       if (!timeToggle) return;
       const duration = Number.isFinite(media.duration) ? media.duration : 0;
       const remaining = Math.max(0, duration - media.currentTime);
-      timeToggle.textContent = this.countdownMode
+      const fullLabel = this.countdownMode
         ? `-${this.formatTime(remaining)} / ${this.formatTime(duration)}`
         : `${this.formatTime(media.currentTime)} / ${this.formatTime(duration)}`;
+      const compactLabel = media.paused || media.ended ? this.formatTime(duration) : `-${this.formatTime(remaining)}`;
+      const fullTimeLabel = timeToggle.querySelector(".time-label-full");
+      const compactTimeLabel = timeToggle.querySelector(".time-label-compact");
+
+      if (fullTimeLabel) fullTimeLabel.textContent = fullLabel;
+      if (compactTimeLabel) compactTimeLabel.textContent = compactLabel;
+      timeToggle.setAttribute("aria-label", `Toggle time display, ${fullLabel}`);
       timeToggle.setAttribute("aria-pressed", String(this.countdownMode));
     };
 
@@ -618,8 +628,7 @@ class MuiMediaPlayer extends HTMLElement {
 
     const canUseWebKitPictureInPicture = () =>
       Boolean(
-        videoMedia?.webkitSupportsPresentationMode?.("picture-in-picture") &&
-          videoMedia.webkitSetPresentationMode,
+        videoMedia?.webkitSupportsPresentationMode?.("picture-in-picture") && videoMedia.webkitSetPresentationMode,
       );
 
     const isPictureInPictureActive = () =>
@@ -654,7 +663,7 @@ class MuiMediaPlayer extends HTMLElement {
       }
       syncVolumeIcon();
       if (pipBtn) {
-        const canPictureInPicture = canUseStandardPictureInPicture() || canUseWebKitPictureInPicture();
+        const canPictureInPicture = canUseWebKitPictureInPicture() || canUseStandardPictureInPicture();
         if (canPictureInPicture) {
           pipControl?.removeAttribute("hidden");
           pipBtn.removeAttribute("disabled");
@@ -784,14 +793,7 @@ class MuiMediaPlayer extends HTMLElement {
     on(pipBtn, "click", async () => {
       if (!videoMedia) return;
       try {
-        if (canUseStandardPictureInPicture()) {
-          if (document.pictureInPictureElement === videoMedia) {
-            await document.exitPictureInPicture();
-          } else {
-            await playForNativeMode();
-            await videoMedia.requestPictureInPicture();
-          }
-        } else if (canUseWebKitPictureInPicture()) {
+        if (canUseWebKitPictureInPicture()) {
           const isWebKitPictureInPictureActive = videoMedia.webkitPresentationMode === "picture-in-picture";
           if (isWebKitPictureInPictureActive) {
             videoMedia.webkitSetPresentationMode?.("inline");
@@ -800,6 +802,13 @@ class MuiMediaPlayer extends HTMLElement {
           }
           await playForNativeMode();
           videoMedia.webkitSetPresentationMode?.("picture-in-picture");
+        } else if (canUseStandardPictureInPicture()) {
+          if (document.pictureInPictureElement === videoMedia) {
+            await document.exitPictureInPicture();
+          } else {
+            await playForNativeMode();
+            await videoMedia.requestPictureInPicture();
+          }
         } else {
           return;
         }
@@ -1064,11 +1073,14 @@ class MuiMediaPlayer extends HTMLElement {
           position: absolute;
           inset: 0;
           pointer-events: none;
-          background:
-            linear-gradient(to bottom, var(--black-opacity-50) 0%, transparent 28%),
-            linear-gradient(to top, var(--black-opacity-70) 0%, transparent 44%);
+          background: linear-gradient(to top, var(--black-opacity-80) 0%, transparent 44%);
           opacity: 1;
           transition: opacity var(--speed-300) ease;
+        }
+        .video-frame.custom-controls.has-metadata .media-shell::after {
+          background:
+            linear-gradient(to bottom, var(--black-opacity-70) 0%, transparent 28%),
+            linear-gradient(to top, var(--black-opacity-80) 0%, transparent 44%);
         }
         .video-frame.custom-controls.is-playing .media-shell::after {
           opacity: 0.42;
@@ -1175,7 +1187,7 @@ class MuiMediaPlayer extends HTMLElement {
           position: absolute;
           z-index: 2;
           left: 50%;
-          bottom: var(--space-100);
+          bottom: 0;
           width: 3.6rem;
           height: 2.4rem;
           border-radius: 999rem;
@@ -1430,10 +1442,14 @@ class MuiMediaPlayer extends HTMLElement {
           opacity: 0.5;
         }
         .audio-visual.has-artwork::after {
-          background:
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.66)),
-            radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 44%);
+          z-index: 1;
+          background: linear-gradient(to top, var(--black-opacity-80) 0%, transparent 44%);
           opacity: 1;
+        }
+        .audio-frame.custom-controls.has-artwork.has-metadata .audio-visual::after {
+          background:
+            linear-gradient(to bottom, var(--black-opacity-70) 0%, transparent 28%),
+            linear-gradient(to top, var(--black-opacity-80) 0%, transparent 44%);
         }
         .audio-artwork {
           position: relative;
@@ -1447,6 +1463,7 @@ class MuiMediaPlayer extends HTMLElement {
         }
         .audio-visual.has-artwork .audio-artwork {
           position: absolute;
+          z-index: 0;
           inset: 0;
           width: 100%;
           height: 100%;
@@ -1486,6 +1503,10 @@ class MuiMediaPlayer extends HTMLElement {
             opacity var(--speed-200) ease,
             visibility var(--speed-200) ease;
         }
+        .audio-visual.has-artwork .audio-visual-copy,
+        .audio-visual.has-artwork .media-visual-copy {
+          z-index: 2;
+        }
         .audio-visual:not(.has-artwork) .audio-visual-copy {
           background: linear-gradient(180deg, var(--media-player-surface-overlay-start), transparent);
         }
@@ -1493,6 +1514,7 @@ class MuiMediaPlayer extends HTMLElement {
         .audio-visual.has-artwork .media-visual-copy,
         .video-frame.custom-controls .media-visual-copy {
           background: linear-gradient(180deg, var(--media-player-dark-overlay-background), transparent);
+          text-shadow: 0 var(--stroke-size-100) 0 var(--media-player-dark-overlay-background);
         }
         .video-frame.custom-controls.is-playing .media-visual-copy {
           opacity: 0;
@@ -1560,6 +1582,9 @@ class MuiMediaPlayer extends HTMLElement {
           pointer-events: auto;
           --action-avatar-border: var(--border-thin);
           --action-avatar-shadow: none;
+          --text-color-optional: var(--text-color);
+          --text-font-size-m: var(--text-font-size-s);
+          --text-line-height-m: var(--text-line-height-s);
         }
         slot[name="metadata"]::slotted(*) {
           max-width: 100%;
@@ -1583,6 +1608,8 @@ class MuiMediaPlayer extends HTMLElement {
         .video-frame.custom-controls slot[name="metadata"]::slotted(mui-button) {
           --action-avatar-border: var(--media-player-dark-thumbnail-border);
           --action-avatar-shadow: var(--media-player-dark-thumbnail-shadow);
+          --text-color: var(--white);
+          --text-color-optional: var(--white);
         }
         .audio-meta-copy,
         .media-meta-copy {
@@ -1735,6 +1762,9 @@ class MuiMediaPlayer extends HTMLElement {
           white-space: nowrap;
           flex: 0 0 auto;
         }
+        .time-label-compact {
+          display: none;
+        }
         .options-menu {
           flex: 0 0 auto;
         }
@@ -1778,6 +1808,24 @@ class MuiMediaPlayer extends HTMLElement {
           }
         }
         @container (max-width: 42rem) {
+          .controls-row {
+            padding: var(--space-000) var(--space-000);
+          }
+          .controls-left {
+            gap: var(--space-000);
+          }
+          .controls-right {
+            gap: var(--space-000);
+          }
+          [data-action="pip"] {
+            display: none;
+          }
+          .time-label-full {
+            display: none;
+          }
+          .time-label-compact {
+            display: inline;
+          }
           .audio-frame.custom-controls.audio-player-only .controls {
             display: grid;
             grid-template-rows: auto auto;
@@ -1790,7 +1838,7 @@ class MuiMediaPlayer extends HTMLElement {
         }
 
       </style>
-      <div class="frame ${renderPlayerControls ? "custom-controls" : ""} ${showCenterPlay ? "has-center-play" : ""} ${type}-frame ${type === "audio" && artwork ? "has-artwork" : ""} ${type === "audio" && renderPlayerControls && !hasAudioPresentation ? "audio-player-only" : ""}">
+      <div class="frame ${renderPlayerControls ? "custom-controls" : ""} ${showCenterPlay ? "has-center-play" : ""} ${type}-frame ${(type === "video" || type === "audio") && (mediaTitle || hasMetadataSlot) ? "has-metadata" : ""} ${type === "audio" && artwork ? "has-artwork" : ""} ${type === "audio" && renderPlayerControls && !hasAudioPresentation ? "audio-player-only" : ""}">
         ${mediaMarkup}
         ${renderPlayerControls ? this.renderPlayerControls(type as "video" | "audio", hasAudioPresentation, muted, escapedSrc, showCenterPlay) : ""}
       </div>

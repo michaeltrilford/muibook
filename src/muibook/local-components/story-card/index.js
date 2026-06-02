@@ -12,6 +12,7 @@ class storyCard extends HTMLElement {
       "canvas-background",
       "canvas-guide-color",
       "no-canvas-guide",
+      "canvas-bleed",
       "body-condensed",
       "composition",
     ];
@@ -37,6 +38,7 @@ class storyCard extends HTMLElement {
       }
 
       :host([body-condensed]) .story-body,
+      :host([canvas-bleed]) .story-body,
       :host([composition]) .story-body {
         padding: 0;
       }
@@ -44,6 +46,10 @@ class storyCard extends HTMLElement {
       section {
         background-color: var(--story-card-canvas-background, var(--app-story-card));
         position: relative;
+      }
+
+      :host([canvas-bleed]) section {
+        background-color: transparent;
       }
 
       section:before,
@@ -59,6 +65,10 @@ class storyCard extends HTMLElement {
       :host([no-canvas-guide]) section:after,
       :host([no-canvas-guide]) div:before,
       :host([no-canvas-guide]) div:after,
+      :host([canvas-bleed]) section:before,
+      :host([canvas-bleed]) section:after,
+      :host([canvas-bleed]) div:before,
+      :host([canvas-bleed]) div:after,
       :host([composition]) section:before,
       :host([composition]) section:after,
       :host([composition]) div:before,
@@ -243,7 +253,7 @@ class storyCard extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) return;
     if (name === "canvas-background" || name === "canvas-guide-color") this.syncCanvasStyles();
-    if (name === "body-condensed" || name === "composition") this.syncLayoutAttrs();
+    if (name === "body-condensed" || name === "canvas-bleed" || name === "composition") this.syncLayoutAttrs();
   }
 
   syncCanvasStyles() {

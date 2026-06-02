@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T15:06:49.821Z",
+  "generatedAt": "2026-06-02T21:28:47.356Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -57,19 +57,19 @@
         "has-message"
       ]
     },
+    "mui-form-section-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "has-rule"
+      ]
+    },
     "mui-form-section": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         "has-header",
         "has-footer"
-      ]
-    },
-    "mui-form-section-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        "has-rule"
       ]
     },
     "mui-link": {
@@ -91,16 +91,6 @@
         "has-error"
       ]
     },
-    "mui-rule": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        "in-card",
-        "in-form-section",
-        "in-dialog",
-        "in-drawer"
-      ]
-    },
     "mui-slide-frame": {
       "version": 1,
       "destinationOnly": true,
@@ -115,6 +105,16 @@
         "slide-hidden"
       ]
     },
+    "mui-rule": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        "in-card",
+        "in-form-section",
+        "in-dialog",
+        "in-drawer"
+      ]
+    },
     "mui-status": {
       "version": 1,
       "destinationOnly": true,
@@ -122,11 +122,6 @@
         "has-before",
         "has-after"
       ]
-    },
-    "mui-video-thumbnail": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": []
     },
     "mui-accordion-block": {
       "version": 1,
@@ -145,6 +140,11 @@
         "has-accordion-slat-group",
         "inner-space-top"
       ]
+    },
+    "mui-video-thumbnail": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": []
     },
     "mui-card-footer": {
       "version": 1,
