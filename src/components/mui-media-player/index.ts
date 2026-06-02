@@ -18,6 +18,7 @@ import "../mui-link";
 type ResolvedType = "video" | "audio" | "youtube" | "soundcloud";
 type ControlsMode = "player" | "none";
 type VolumeIconName = "muted" | "volumeLow" | "volumeHigh";
+type WebKitVideoPresentationMode = "inline" | "fullscreen" | "picture-in-picture";
 type ControlIconName =
   | "play"
   | "pause"
@@ -29,6 +30,26 @@ type ControlIconName =
   | "pip"
   | "fullscreen"
   | "more";
+
+type WebKitVideoElement = HTMLVideoElement & {
+  webkitDisplayingFullscreen?: boolean;
+  webkitEnterFullscreen?: () => void;
+  webkitExitFullscreen?: () => void;
+  webkitPresentationMode?: WebKitVideoPresentationMode;
+  webkitSetPresentationMode?: (mode: WebKitVideoPresentationMode) => void;
+  webkitSupportsPresentationMode?: (mode: WebKitVideoPresentationMode) => boolean;
+  webkitSupportsFullscreen?: boolean;
+};
+
+type WebKitFullscreenElement = HTMLElement & {
+  webkitRequestFullscreen?: () => Promise<void> | void;
+  webkitRequestFullScreen?: () => Promise<void> | void;
+};
+
+type WebKitFullscreenDocument = Document & {
+  webkitExitFullscreen?: () => Promise<void> | void;
+  webkitFullscreenElement?: Element | null;
+};
 
 class MuiMediaPlayer extends HTMLElement {
   private countdownMode = false;
@@ -311,6 +332,9 @@ class MuiMediaPlayer extends HTMLElement {
     if (!hasCustomControls) return;
 
     const isVideo = media instanceof HTMLVideoElement;
+    const videoMedia = isVideo ? (media as WebKitVideoElement) : null;
+    const fullscreenFrame = frame as WebKitFullscreenElement | null;
+    const fullscreenDocument = document as WebKitFullscreenDocument;
     const usesHoverOverlayControls = Boolean(frame && !frame.classList.contains("audio-player-only"));
     let lastPaused: boolean | null = null;
     let lastMuted: boolean | null = null;
@@ -574,6 +598,43 @@ class MuiMediaPlayer extends HTMLElement {
       }
     };
 
+    const canUseStandardPictureInPicture = () =>
+      Boolean(
+        videoMedia &&
+          "pictureInPictureEnabled" in document &&
+          document.pictureInPictureEnabled &&
+          "requestPictureInPicture" in videoMedia,
+      );
+
+    const hasWebKitPictureInPictureApi = () =>
+      Boolean(videoMedia?.webkitSupportsPresentationMode && videoMedia.webkitSetPresentationMode);
+
+    const canUseWebKitPictureInPicture = () =>
+      Boolean(hasWebKitPictureInPictureApi() && videoMedia?.webkitSupportsPresentationMode?.("picture-in-picture"));
+
+    const isPictureInPictureActive = () =>
+      Boolean(
+        (videoMedia && document.pictureInPictureElement === videoMedia) ||
+          videoMedia?.webkitPresentationMode === "picture-in-picture",
+      );
+
+    const canUseFullscreen = () =>
+      Boolean(
+        fullscreenFrame?.requestFullscreen ||
+          fullscreenFrame?.webkitRequestFullscreen ||
+          fullscreenFrame?.webkitRequestFullScreen ||
+          videoMedia?.webkitSupportsFullscreen ||
+          videoMedia?.webkitEnterFullscreen,
+      );
+
+    const isFullscreenActive = () =>
+      Boolean(
+        document.fullscreenElement === fullscreenFrame ||
+          fullscreenDocument.webkitFullscreenElement === fullscreenFrame ||
+          videoMedia?.webkitDisplayingFullscreen ||
+          videoMedia?.webkitPresentationMode === "fullscreen",
+      );
+
     const sync = () => {
       const paused = media.paused;
       syncPlayState(paused);
@@ -583,24 +644,19 @@ class MuiMediaPlayer extends HTMLElement {
       }
       syncVolumeIcon();
       if (pipBtn) {
-        const canPictureInPicture =
-          isVideo &&
-          "pictureInPictureEnabled" in document &&
-          document.pictureInPictureEnabled &&
-          "requestPictureInPicture" in media;
+        const canPictureInPicture = canUseStandardPictureInPicture() || hasWebKitPictureInPictureApi();
         if (canPictureInPicture) {
           pipBtn.removeAttribute("disabled");
-          pipBtn.setAttribute("aria-pressed", String(document.pictureInPictureElement === media));
+          pipBtn.setAttribute("aria-pressed", String(isPictureInPictureActive()));
         } else {
           pipBtn.setAttribute("disabled", "");
           pipBtn.setAttribute("aria-pressed", "false");
         }
       }
       if (fullscreenBtn && frame) {
-        const canFullscreen = "requestFullscreen" in frame;
-        if (canFullscreen) {
+        if (canUseFullscreen()) {
           fullscreenBtn.removeAttribute("disabled");
-          fullscreenBtn.setAttribute("aria-pressed", String(document.fullscreenElement === frame));
+          fullscreenBtn.setAttribute("aria-pressed", String(isFullscreenActive()));
         } else {
           fullscreenBtn.setAttribute("disabled", "");
           fullscreenBtn.setAttribute("aria-pressed", "false");
@@ -708,12 +764,27 @@ class MuiMediaPlayer extends HTMLElement {
       sync();
     });
     on(pipBtn, "click", async () => {
-      if (!(media instanceof HTMLVideoElement) || !("requestPictureInPicture" in media)) return;
+      if (!videoMedia) return;
       try {
-        if (document.pictureInPictureElement === media) {
-          await document.exitPictureInPicture();
+        if (canUseStandardPictureInPicture()) {
+          if (document.pictureInPictureElement === videoMedia) {
+            await document.exitPictureInPicture();
+          } else {
+            await videoMedia.requestPictureInPicture();
+          }
+        } else if (hasWebKitPictureInPictureApi()) {
+          if (!canUseWebKitPictureInPicture()) {
+            media.load();
+          }
+          if (!canUseWebKitPictureInPicture()) {
+            sync();
+            return;
+          }
+          videoMedia.webkitSetPresentationMode?.(
+            videoMedia.webkitPresentationMode === "picture-in-picture" ? "inline" : "picture-in-picture",
+          );
         } else {
-          await media.requestPictureInPicture();
+          return;
         }
       } catch {
         return;
@@ -721,12 +792,24 @@ class MuiMediaPlayer extends HTMLElement {
       sync();
     });
     on(fullscreenBtn, "click", async () => {
-      if (!frame || !("requestFullscreen" in frame)) return;
+      if (!frame || !fullscreenFrame) return;
       try {
-        if (document.fullscreenElement === frame) {
+        if (document.fullscreenElement === fullscreenFrame) {
           await document.exitFullscreen();
+        } else if (fullscreenDocument.webkitFullscreenElement === fullscreenFrame) {
+          await fullscreenDocument.webkitExitFullscreen?.();
+        } else if (videoMedia?.webkitDisplayingFullscreen && videoMedia.webkitExitFullscreen) {
+          videoMedia.webkitExitFullscreen();
+        } else if (fullscreenFrame.requestFullscreen) {
+          await fullscreenFrame.requestFullscreen();
+        } else if (fullscreenFrame.webkitRequestFullscreen) {
+          await fullscreenFrame.webkitRequestFullscreen();
+        } else if (fullscreenFrame.webkitRequestFullScreen) {
+          await fullscreenFrame.webkitRequestFullScreen();
+        } else if (videoMedia?.webkitEnterFullscreen) {
+          videoMedia.webkitEnterFullscreen();
         } else {
-          await frame.requestFullscreen();
+          return;
         }
       } catch {
         return;
@@ -735,10 +818,19 @@ class MuiMediaPlayer extends HTMLElement {
     });
     on(media, "timeupdate", sync);
     on(media, "loadedmetadata", sync);
+    on(media, "loadeddata", sync);
+    on(media, "canplay", sync);
     on(media, "volumechange", sync);
     on(media, "enterpictureinpicture", sync);
     on(media, "leavepictureinpicture", sync);
+    on(media, "webkitbeginfullscreen", sync);
+    on(media, "webkitendfullscreen", sync);
+    on(media, "webkitpresentationmodechanged", sync);
     on(document, "fullscreenchange", () => {
+      sync();
+      scheduleVideoInactivity();
+    });
+    on(document, "webkitfullscreenchange", () => {
       sync();
       scheduleVideoInactivity();
     });
@@ -845,7 +937,7 @@ class MuiMediaPlayer extends HTMLElement {
           </div>`
           : type === "video"
             ? `<div class="media-shell video-shell">
-                <video part="media" ${autoplay ? "autoplay" : ""} ${muted ? "muted" : ""} ${loop ? "loop" : ""} ${poster ? `poster="${poster.replace(/"/g, "&quot;")}"` : ""} playsinline src="${escapedSrc}"></video>
+                <video part="media" ${autoplay ? "autoplay" : ""} ${muted ? "muted" : ""} ${loop ? "loop" : ""} ${poster ? `poster="${poster.replace(/"/g, "&quot;")}"` : ""} preload="metadata" playsinline webkit-playsinline src="${escapedSrc}"></video>
                 ${videoMetaMarkup}
                 ${renderPlayerControls ? `<slot name="system-controls"></slot>` : ""}
               </div>`
