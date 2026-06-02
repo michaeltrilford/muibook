@@ -290,6 +290,7 @@ class MuiMediaPlayer extends HTMLElement {
     let animationFrame = 0;
     let inactivityTimer = 0;
     let controlsRevealTimer = 0;
+    let touchRevealTimer = 0;
     let lastPointerX = 0;
     let lastPointerY = 0;
     const cleanups: (() => void)[] = [];
@@ -358,7 +359,9 @@ class MuiMediaPlayer extends HTMLElement {
 
     const clearControlsReveal = () => {
       window.clearTimeout(controlsRevealTimer);
+      window.clearTimeout(touchRevealTimer);
       controlsRevealTimer = 0;
+      touchRevealTimer = 0;
       frame?.classList.remove("is-controls-revealing", "is-controls-ready");
     };
 
@@ -373,6 +376,14 @@ class MuiMediaPlayer extends HTMLElement {
         frame.classList.remove("is-controls-revealing");
         frame.classList.add("is-controls-ready");
       }, 300);
+    };
+
+    const scheduleTouchControlsReveal = () => {
+      scheduleControlsReveal(true);
+      window.clearTimeout(touchRevealTimer);
+      touchRevealTimer = window.setTimeout(() => {
+        clearControlsReveal();
+      }, 3200);
     };
 
     const shouldUseVideoInactivity = () => frame && isVideo && !media.paused && !media.ended;
@@ -396,6 +407,7 @@ class MuiMediaPlayer extends HTMLElement {
 
     const handleOverlayPointerMove = (event: Event) => {
       if (!(event instanceof PointerEvent) || !frame) return;
+      if (event.pointerType === "touch") return;
       if (event.clientX === lastPointerX && event.clientY === lastPointerY) return;
 
       lastPointerX = event.clientX;
@@ -422,6 +434,10 @@ class MuiMediaPlayer extends HTMLElement {
     const handleFramePointerDown = (event: Event) => {
       if (!usesHoverOverlayControls) return;
       if (!isVideo) return;
+      if (event instanceof PointerEvent && event.pointerType === "touch") {
+        scheduleTouchControlsReveal();
+        return;
+      }
       if (event.composedPath().some((target) => target instanceof HTMLElement && target.classList.contains("controls"))) return;
 
       scheduleControlsReveal(true);
@@ -497,7 +513,8 @@ class MuiMediaPlayer extends HTMLElement {
     };
     playBtns.forEach((button) => on(button, "click", handlePlayClick));
 
-    on(frame, "pointerleave", () => {
+    on(frame, "pointerleave", (event) => {
+      if (event instanceof PointerEvent && event.pointerType === "touch") return;
       clearControlsReveal();
       if (!usesHoverOverlayControls || media.paused) return;
 
@@ -508,7 +525,13 @@ class MuiMediaPlayer extends HTMLElement {
     });
     on(frame, "pointerdown", handleFramePointerDown);
     on(frame, "pointermove", handleOverlayPointerMove);
-    on(controlsHoverZone, "pointerdown", () => scheduleControlsReveal(true));
+    on(controlsHoverZone, "pointerdown", (event) => {
+      if (event instanceof PointerEvent && event.pointerType === "touch") {
+        scheduleTouchControlsReveal();
+        return;
+      }
+      scheduleControlsReveal(true);
+    });
     on(muteBtn, "click", () => {
       media.muted = !media.muted;
       sync();
