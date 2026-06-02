@@ -601,9 +601,9 @@ class MuiMediaPlayer extends HTMLElement {
     const canUseStandardPictureInPicture = () =>
       Boolean(
         videoMedia &&
-          "pictureInPictureEnabled" in document &&
-          document.pictureInPictureEnabled &&
-          "requestPictureInPicture" in videoMedia,
+        "pictureInPictureEnabled" in document &&
+        document.pictureInPictureEnabled &&
+        "requestPictureInPicture" in videoMedia,
       );
 
     const hasWebKitPictureInPictureApi = () =>
@@ -615,24 +615,24 @@ class MuiMediaPlayer extends HTMLElement {
     const isPictureInPictureActive = () =>
       Boolean(
         (videoMedia && document.pictureInPictureElement === videoMedia) ||
-          videoMedia?.webkitPresentationMode === "picture-in-picture",
+        videoMedia?.webkitPresentationMode === "picture-in-picture",
       );
 
     const canUseFullscreen = () =>
       Boolean(
         fullscreenFrame?.requestFullscreen ||
-          fullscreenFrame?.webkitRequestFullscreen ||
-          fullscreenFrame?.webkitRequestFullScreen ||
-          videoMedia?.webkitSupportsFullscreen ||
-          videoMedia?.webkitEnterFullscreen,
+        fullscreenFrame?.webkitRequestFullscreen ||
+        fullscreenFrame?.webkitRequestFullScreen ||
+        videoMedia?.webkitSupportsFullscreen ||
+        videoMedia?.webkitEnterFullscreen,
       );
 
     const isFullscreenActive = () =>
       Boolean(
         document.fullscreenElement === fullscreenFrame ||
-          fullscreenDocument.webkitFullscreenElement === fullscreenFrame ||
-          videoMedia?.webkitDisplayingFullscreen ||
-          videoMedia?.webkitPresentationMode === "fullscreen",
+        fullscreenDocument.webkitFullscreenElement === fullscreenFrame ||
+        videoMedia?.webkitDisplayingFullscreen ||
+        videoMedia?.webkitPresentationMode === "fullscreen",
       );
 
     const sync = () => {
@@ -881,11 +881,7 @@ class MuiMediaPlayer extends HTMLElement {
     const escapedMediaTitle = mediaTitle.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const renderMetaContent = (image: string, fallbackIcon: string, className = "") => {
       if (!mediaTitle && !hasMetadataSlot) return "";
-      const visualCopyClass = [
-        className,
-        className === "audio" ? "audio-visual-copy" : "",
-        "media-visual-copy",
-      ]
+      const visualCopyClass = [className, className === "audio" ? "audio-visual-copy" : "", "media-visual-copy"]
         .filter(Boolean)
         .join(" ");
 
@@ -906,7 +902,8 @@ class MuiMediaPlayer extends HTMLElement {
             </slot>
           </div>`;
     };
-    const hasAudioPresentation = type === "audio" && renderPlayerControls && Boolean(metaImage || mediaTitle || hasMetadataSlot);
+    const hasAudioPresentation =
+      type === "audio" && renderPlayerControls && Boolean(metaImage || mediaTitle || hasMetadataSlot);
     const audioVisualMarkup = hasAudioPresentation
       ? `<div class="audio-visual ${artwork ? "has-artwork" : ""}" part="audio-visual"${audioHeightStyle}>
             ${
@@ -1379,7 +1376,8 @@ class MuiMediaPlayer extends HTMLElement {
         .audio-frame.custom-controls.audio-player-only .compact-action-row {
           width: 100%;
           justify-content: space-between;
-          padding-inline: var(--space-100);
+          padding-inline-start: var(--space-050);
+          padding-inline-end: var(--space-000);
         }
         /* Audio metadata and artwork presentation */
         .audio-visual {
@@ -1761,10 +1759,6 @@ class MuiMediaPlayer extends HTMLElement {
             grid-template-rows: auto auto;
             gap: var(--space-075);
             padding-block: var(--space-100);
-          }
-          .audio-frame.custom-controls.audio-player-only .compact-scrub-row,
-          .audio-frame.custom-controls.audio-player-only .compact-action-row {
-            padding-inline: var(--space-300);
           }
           .audio-frame.custom-controls.audio-player-only .compact-action-row {
             justify-content: space-between;
