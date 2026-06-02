@@ -273,6 +273,8 @@ class MuiMediaPlayer extends HTMLElement {
     const timeToggle = this.shadowRoot.querySelector('[data-action="time-mode"]') as HTMLElement | null;
     const pipBtn = this.shadowRoot.querySelector('[data-action="pip"]') as HTMLElement | null;
     const fullscreenBtn = this.shadowRoot.querySelector('[data-action="fullscreen"]') as HTMLElement | null;
+    const controls = this.shadowRoot.querySelector(".controls") as HTMLElement | null;
+    const controlsHoverZone = this.shadowRoot.querySelector(".controls-hover-zone") as HTMLElement | null;
     const hasCustomControls = Boolean(
       playBtns.length || muteBtn || seek || volume || timeToggle || pipBtn || fullscreenBtn,
     );
@@ -287,6 +289,7 @@ class MuiMediaPlayer extends HTMLElement {
     let isSeeking = false;
     let animationFrame = 0;
     let inactivityTimer = 0;
+    let controlsRevealTimer = 0;
     let lastPointerX = 0;
     let lastPointerY = 0;
     const cleanups: (() => void)[] = [];
@@ -353,6 +356,25 @@ class MuiMediaPlayer extends HTMLElement {
       animationFrame = requestAnimationFrame(tick);
     };
 
+    const clearControlsReveal = () => {
+      window.clearTimeout(controlsRevealTimer);
+      controlsRevealTimer = 0;
+      frame?.classList.remove("is-controls-revealing", "is-controls-ready");
+    };
+
+    const scheduleControlsReveal = (force = false) => {
+      if (!usesHoverOverlayControls || !frame) return;
+      if (!force && (frame.classList.contains("is-controls-ready") || frame.classList.contains("is-controls-revealing"))) return;
+
+      window.clearTimeout(controlsRevealTimer);
+      frame.classList.remove("is-controls-ready");
+      frame.classList.add("is-controls-revealing");
+      controlsRevealTimer = window.setTimeout(() => {
+        frame.classList.remove("is-controls-revealing");
+        frame.classList.add("is-controls-ready");
+      }, 300);
+    };
+
     const shouldUseVideoInactivity = () => frame && isVideo && !media.paused && !media.ended;
 
     const clearVideoInactivity = () => {
@@ -372,12 +394,37 @@ class MuiMediaPlayer extends HTMLElement {
       }, 1600);
     };
 
-    const handleVideoPointerMove = (event: Event) => {
-      if (!(event instanceof PointerEvent)) return;
+    const handleOverlayPointerMove = (event: Event) => {
+      if (!(event instanceof PointerEvent) || !frame) return;
       if (event.clientX === lastPointerX && event.clientY === lastPointerY) return;
 
       lastPointerX = event.clientX;
       lastPointerY = event.clientY;
+
+      const isPointerInsideControls = Boolean(controls && event.composedPath().includes(controls));
+      const distanceFromBottom = frame.getBoundingClientRect().bottom - event.clientY;
+      const isNearBottomEdge = distanceFromBottom >= 0 && distanceFromBottom <= 24;
+
+      if (isNearBottomEdge || isPointerInsideControls) {
+        scheduleControlsReveal(isVideo && frame.classList.contains("is-video-inactive"));
+        if (isVideo) {
+          scheduleVideoInactivity();
+        }
+        return;
+      }
+
+      clearControlsReveal();
+      if (isVideo) {
+        scheduleVideoInactivity();
+      }
+    };
+
+    const handleFramePointerDown = (event: Event) => {
+      if (!usesHoverOverlayControls) return;
+      if (!isVideo) return;
+      if (event.composedPath().some((target) => target instanceof HTMLElement && target.classList.contains("controls"))) return;
+
+      scheduleControlsReveal(true);
       scheduleVideoInactivity();
     };
 
@@ -451,6 +498,7 @@ class MuiMediaPlayer extends HTMLElement {
     playBtns.forEach((button) => on(button, "click", handlePlayClick));
 
     on(frame, "pointerleave", () => {
+      clearControlsReveal();
       if (!usesHoverOverlayControls || media.paused) return;
 
       const activeElement = this.shadowRoot?.activeElement as HTMLElement | null;
@@ -458,7 +506,9 @@ class MuiMediaPlayer extends HTMLElement {
         activeElement.blur();
       }
     });
-    on(frame, "pointermove", handleVideoPointerMove);
+    on(frame, "pointerdown", handleFramePointerDown);
+    on(frame, "pointermove", handleOverlayPointerMove);
+    on(controlsHoverZone, "pointerdown", () => scheduleControlsReveal(true));
     on(muteBtn, "click", () => {
       media.muted = !media.muted;
       sync();
@@ -544,6 +594,7 @@ class MuiMediaPlayer extends HTMLElement {
     });
     this.cleanupControlBindings = () => {
       cancelAnimationFrame(animationFrame);
+      clearControlsReveal();
       clearVideoInactivity();
       cleanups.forEach((cleanup) => cleanup());
     };
@@ -659,6 +710,7 @@ class MuiMediaPlayer extends HTMLElement {
           --media-player-range-color: var(--media-player-dark-range-color);
           --media-player-range-thumb-color: var(--media-player-dark-range-thumb-color);
           --media-player-range-track-color: var(--media-player-dark-range-track-color);
+          --media-player-range-thumb-shadow: var(--media-player-dark-range-thumb-shadow);
           --action-tertiary-background: transparent;
           --action-tertiary-background-hover: var(--media-player-dark-control-background-hover);
           --action-tertiary-background-focus: var(--media-player-dark-control-background-hover);
@@ -813,23 +865,29 @@ class MuiMediaPlayer extends HTMLElement {
           background: var(--media-player-audio-controls-peek-background);
           box-shadow: var(--media-player-audio-controls-peek-shadow);
         }
-        .video-frame.custom-controls:hover .controls-peek,
         .video-frame.custom-controls:focus-within .controls-peek,
-        .video-frame.custom-controls.is-playing .controls-peek,
         .frame.custom-controls:fullscreen .controls-peek,
-        .audio-frame.custom-controls:not(.audio-player-only) .controls-hover-zone:hover ~ .controls-peek,
-        .audio-frame.custom-controls:not(.audio-player-only) .controls:hover + .controls-peek,
+        .video-frame.custom-controls.is-controls-revealing .controls-peek,
+        .video-frame.custom-controls.is-controls-ready .controls-peek,
+        .audio-frame.custom-controls:not(.audio-player-only).is-controls-revealing .controls-peek,
+        .audio-frame.custom-controls:not(.audio-player-only).is-controls-ready .controls-peek,
         .audio-frame.custom-controls:not(.audio-player-only):focus-within .controls-peek {
           opacity: 0;
           transform: translate(-50%, var(--space-050));
         }
-        .video-frame.custom-controls:hover .controls,
         .video-frame.custom-controls:focus-within .controls,
-        .audio-frame.custom-controls:not(.audio-player-only) .controls-hover-zone:hover ~ .controls,
-        .audio-frame.custom-controls:not(.audio-player-only) .controls:hover,
+        .video-frame.custom-controls.is-controls-revealing .controls,
+        .video-frame.custom-controls.is-controls-ready .controls,
+        .audio-frame.custom-controls:not(.audio-player-only).is-controls-revealing .controls,
+        .audio-frame.custom-controls:not(.audio-player-only).is-controls-ready .controls,
         .audio-frame.custom-controls:not(.audio-player-only):focus-within .controls {
           opacity: 1;
           transform: translateY(0);
+        }
+        .video-frame.custom-controls:focus-within .controls,
+        .video-frame.custom-controls.is-controls-ready .controls,
+        .audio-frame.custom-controls:not(.audio-player-only).is-controls-ready .controls,
+        .audio-frame.custom-controls:not(.audio-player-only):focus-within .controls {
           pointer-events: auto;
         }
         .video-frame.custom-controls.is-video-inactive {

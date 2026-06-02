@@ -284,6 +284,7 @@ html[data-theme="light"] {
   --media-player-dark-range-color: var(--white);
   --media-player-dark-range-thumb-color: var(--white);
   --media-player-dark-range-track-color: var(--white-opacity-30);
+  --media-player-dark-range-thumb-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-40);
   --media-player-dark-control-background-hover: var(--white-opacity-10);
   --media-player-dark-overlay-background: var(--black-opacity-80);
   --range-input-accent-color: var(--media-player-seek-color);
@@ -750,6 +751,7 @@ html[data-theme="dark"] {
   --media-player-dark-range-color: var(--white);
   --media-player-dark-range-thumb-color: var(--white);
   --media-player-dark-range-track-color: var(--white-opacity-30);
+  --media-player-dark-range-thumb-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-40);
   --media-player-dark-control-background-hover: var(--white-opacity-10);
   --media-player-dark-overlay-background: var(--black-opacity-80);
   --range-input-accent-color: var(--media-player-seek-color);

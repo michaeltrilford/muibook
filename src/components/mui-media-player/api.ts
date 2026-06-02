@@ -50,6 +50,7 @@ export const muiApi = {
       { name: "--media-player-dark-range-color", description: "Locked dark-surface active range track color." },
       { name: "--media-player-dark-range-thumb-color", description: "Locked dark-surface range thumb color." },
       { name: "--media-player-dark-range-track-color", description: "Locked dark-surface inactive range track color." },
+      { name: "--media-player-dark-range-thumb-shadow", description: "Locked dark-surface shadow used by seek and volume range thumbs." },
       { name: "--media-player-dark-control-background-hover", description: "Locked dark-surface hover background for tertiary controls." },
       { name: "--media-player-dark-overlay-background", description: "Locked dark overlay gradient color used by video and thumbnail-backed audio." },
     ],
