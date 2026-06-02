@@ -18,10 +18,9 @@ class StoryMediaPlayer extends HTMLElement {
       {
         name: "controls",
         type: "string",
-        options: "player, thumbnail, none",
+        options: "player, none",
         default: "player",
-        description:
-          "Chooses the controls presentation. Player uses Muibook controls over the native media element; thumbnail opts audio into the richer thumbnail presentation.",
+        description: "Chooses whether Muibook controls are rendered over the native media element.",
       },
       {
         name: "src",
@@ -45,13 +44,6 @@ class StoryMediaPlayer extends HTMLElement {
         description: "Poster image for native video.",
       },
       {
-        name: "thumbnail",
-        type: "string",
-        options: "url",
-        default: "",
-        description: "Optional thumbnail image for audio thumbnail presentation.",
-      },
-      {
         name: "artwork",
         type: "string",
         options: "url",
@@ -63,7 +55,21 @@ class StoryMediaPlayer extends HTMLElement {
         type: "string",
         options: "text",
         default: "",
-        description: "Required title for the audio metadata presentation.",
+        description: "Title displayed in audio presentations or video metadata.",
+      },
+      {
+        name: "height",
+        type: "string",
+        options: "css height",
+        default: "",
+        description: "Sets the audio metadata or artwork presentation height and maps to --media-player-audio-height.",
+      },
+      {
+        name: "center-play",
+        type: "boolean",
+        options: "",
+        default: "false",
+        description: "Displays an always-visible centered play/pause action over native video.",
       },
       {
         name: "autoplay",
@@ -124,6 +130,151 @@ class StoryMediaPlayer extends HTMLElement {
       </story-card>
 
       <story-card
+        id="video-center-play"
+        title="Visible Play/Pause"
+        description="Direct video file rendered with an always-visible centered play/pause action."
+        usage="Use center-play when the preview needs an obvious primary playback action before the user explores the bottom controls.|||The centered action toggles between play and pause while the native video element remains the playback engine underneath the UI.">
+        <mui-media-player
+          slot="body"
+          type="video"
+          center-play
+          src="${videoSrc}">
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;center-play<br />
+          &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="video-metadata"
+        title="Video Metadata"
+        description="Direct video file rendered with optional top-left metadata."
+        usage="Compose avatar, title, and supporting metadata inside slot='metadata' when video needs context over the preview.|||Metadata is non-interactive by default so interacting with the composed content does not accidentally start playback.">
+        <mui-media-player
+          slot="body"
+          type="video"
+          src="${videoSrc}">
+          <mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;">
+            <mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile">
+              <mui-avatar size="medium" image="${audioThumbnailSrc}" label="Mike Trilford"></mui-avatar>
+            </mui-button>
+            <mui-v-stack space="var(--space-000)">
+              <mui-body weight="bold">Japan</mui-body>
+              <mui-body size="small" weight="medium" variant="optional">Mike Trilford</mui-body>
+            </mui-v-stack>
+          </mui-h-stack>
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size="medium" image="/audio/thumbnail.jpg" label="Mike Trilford"&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="bold"&gt;Japan&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" weight="medium" variant="optional"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="video-metadata-time"
+        title="Video Metadata Duration"
+        description="Direct video file rendered with composed title and duration metadata."
+        usage="Compose title and duration together inside slot='metadata' instead of relying on generated metadata.|||Use this pattern when duration is part of the authored metadata content.">
+        <mui-media-player
+          slot="body"
+          type="video"
+          src="${videoSrc}">
+          <mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;">
+            <mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile">
+              <mui-avatar size="medium" image="${audioThumbnailSrc}" label="Mike Trilford"></mui-avatar>
+            </mui-button>
+            <mui-v-stack space="var(--space-000)">
+              <mui-body weight="bold">Japan</mui-body>
+              <mui-body size="small" variant="optional" weight="medium">2:47</mui-body>
+            </mui-v-stack>
+          </mui-h-stack>
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size="medium" image="/audio/thumbnail.jpg" label="Mike Trilford"&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="bold"&gt;Japan&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" variant="optional" weight="medium"&gt;2:47&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="video-metadata-action"
+        title="Video Metadata Action"
+        description="Direct video file rendered with a composed metadata action."
+        usage="Slot custom leading media when the metadata needs an avatar, link, or richer visual.|||Slotted metadata actions can open dialogs or navigate without toggling playback behind the metadata row.">
+        <mui-media-player
+          slot="body"
+          type="video"
+          src="${videoSrc}">
+          <mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;">
+            <mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile">
+              <mui-avatar size="medium" image="${audioThumbnailSrc}" label="Mike Trilford"></mui-avatar>
+            </mui-button>
+            <mui-v-stack space="var(--space-000)">
+              <mui-body weight="bold">Japan</mui-body>
+              <mui-body size="small" weight="medium" variant="optional">Mike Trilford</mui-body>
+            </mui-v-stack>
+          </mui-h-stack>
+        </mui-media-player>
+        <mui-dialog
+          slot="body"
+          data-dialog="video-meta-profile"
+          width="400px"
+          aria-labelledby="video-meta-profile-title"
+          aria-describedby="video-meta-profile-desc">
+          <mui-heading size="4" level="4" slot="title" id="video-meta-profile-title">Mike Trilford</mui-heading>
+          <mui-body id="video-meta-profile-desc">Profile actions can be composed outside the media player while the metadata row hosts the trigger.</mui-body>
+        </mui-dialog>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size="medium" image="/audio/thumbnail.jpg" label="Mike Trilford"&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="bold"&gt;Japan&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" weight="medium" variant="optional"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
+          &lt;/mui-media-player&gt;<br /><br />
+          &lt;mui-dialog<br />
+          &nbsp;&nbsp;data-dialog="video-meta-profile"<br />
+          &nbsp;&nbsp;width="400px"<br />
+          &nbsp;&nbsp;aria-labelledby="video-meta-profile-title"<br />
+          &nbsp;&nbsp;aria-describedby="video-meta-profile-desc"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-heading size="4" level="4" slot="title" id="video-meta-profile-title"&gt;Mike Trilford&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body id="video-meta-profile-desc"&gt;Profile actions can be composed outside the media player while the metadata row hosts the trigger.&lt;/mui-body&gt;<br />
+          &lt;/mui-dialog&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
         id="audio"
         title="Audio"
         description="Direct audio file rendered as a compact player."
@@ -149,22 +300,34 @@ class StoryMediaPlayer extends HTMLElement {
         <mui-media-player
           slot="body"
           type="audio"
-          controls="thumbnail"
-          media-title="Twilight"
-          thumbnail="${audioThumbnailSrc}"
           artwork="${audioArtworkSrc}"
+          height="18rem"
           src="${audioSrc}">
-          <mui-body slot="meta" size="small" variant="optional">Mike Trilford</mui-body>
+          <mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;">
+            <mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile">
+              <mui-avatar size="medium" image="${audioThumbnailSrc}" label="Mike Trilford"></mui-avatar>
+            </mui-button>
+            <mui-v-stack space="var(--space-000)">
+              <mui-body weight="bold">Twilight</mui-body>
+              <mui-body size="small" weight="medium" variant="optional">Mike Trilford</mui-body>
+            </mui-v-stack>
+          </mui-h-stack>
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
-          &nbsp;&nbsp;controls="thumbnail"<br />
-          &nbsp;&nbsp;media-title="Twilight"<br />
-          &nbsp;&nbsp;thumbnail="/audio/thumbnail.jpg"<br />
-          &nbsp;&nbsp;artwork="/audio/artwork.jpg"<br />
+          &nbsp;&nbsp;artwork="/audio/artwork.png"<br />
+          &nbsp;&nbsp;height="18rem"<br />
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="meta" size="small" variant="optional"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size="medium" image="/audio/thumbnail.jpg" label="Mike Trilford"&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="bold"&gt;Twilight&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" weight="medium" variant="optional"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
@@ -173,46 +336,34 @@ class StoryMediaPlayer extends HTMLElement {
         id="audio-metadata"
         title="Audio Metadata"
         description="Direct audio file rendered with required title metadata and optional supporting metadata."
-        usage="Use media-title when audio needs context without a thumbnail.|||Slot optional metadata into slot='meta'.">
+        usage="Compose audio title and supporting metadata inside slot='metadata' when audio needs context without background artwork.">
         <mui-media-player
           slot="body"
           type="audio"
-          media-title="Twilight"
           src="${audioSrc}">
-          <mui-body slot="meta" size="small" variant="optional">Mike Trilford</mui-body>
+          <mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;">
+            <mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile">
+              <mui-avatar size="medium" label="Mike Trilford"></mui-avatar>
+            </mui-button>
+            <mui-v-stack space="var(--space-000)">
+              <mui-body weight="bold">Twilight</mui-body>
+              <mui-body size="small" variant="optional">by Mike Trilford</mui-body>
+            </mui-v-stack>
+          </mui-h-stack>
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
-          &nbsp;&nbsp;media-title="Twilight"<br />
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="meta" size="small" variant="optional"&gt;Mike Trilford&lt;/mui-body&gt;<br />
-          &lt;/mui-media-player&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card
-        id="audio-thumbnail"
-        title="Audio Thumbnail"
-        description="Direct audio file rendered with a thumbnail replacing the basic metadata presentation."
-        usage="Add a thumbnail when the audio needs a stronger visual presentation.|||The thumbnail fills the visual area while the native audio element remains the playback engine underneath the UI.">
-        <mui-media-player
-          slot="body"
-          type="audio"
-          controls="thumbnail"
-          media-title="Twilight"
-          thumbnail="${audioThumbnailSrc}"
-          src="${audioSrc}">
-          <mui-body slot="meta" size="small" variant="optional">Mike Trilford</mui-body>
-        </mui-media-player>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-media-player<br />
-          &nbsp;&nbsp;type="audio"<br />
-          &nbsp;&nbsp;controls="thumbnail"<br />
-          &nbsp;&nbsp;media-title="Twilight"<br />
-          &nbsp;&nbsp;thumbnail="/audio/thumbnail.jpg"<br />
-          &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="meta" size="small" variant="optional"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size="medium" label="Mike Trilford"&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="bold"&gt;Twilight&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="small" variant="optional"&gt;by Mike Trilford&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
@@ -256,11 +407,25 @@ class StoryMediaPlayer extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="video::Video|||audio::Audio|||audio-metadata::Audio Metadata|||audio-thumbnail::Audio Thumbnail|||audio-artwork::Audio Artwork|||youtube::YouTube Embed|||soundcloud::SoundCloud Embed"
+          links="video::Video|||video-center-play::Visible Play/Pause|||video-metadata::Video Metadata|||video-metadata-time::Video Metadata Duration|||video-metadata-action::Video Metadata Action|||audio::Audio|||audio-metadata::Audio Metadata|||audio-artwork::Audio Artwork|||youtube::YouTube Embed|||soundcloud::SoundCloud Embed"
         ></story-quicklinks>
         ${stories}
       </story-template>
     `;
+
+    this.shadowRoot.querySelectorAll("[data-dialog]").forEach((trigger) => {
+      if (trigger.tagName.toLowerCase() === "mui-dialog") return;
+
+      trigger.addEventListener("click", (event) => {
+        const target = trigger.getAttribute("data-dialog");
+        const dialog = this.shadowRoot.querySelector(`mui-dialog[data-dialog="${target}"]`);
+
+        if (!dialog) return;
+
+        event.preventDefault();
+        dialog.setAttribute("open", "");
+      });
+    });
   }
 }
 

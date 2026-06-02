@@ -16,7 +16,7 @@ import "../mui-icons/vertical-ellipsis";
 import "../mui-link";
 
 type ResolvedType = "video" | "audio" | "youtube" | "soundcloud";
-type ControlsMode = "player" | "thumbnail" | "none";
+type ControlsMode = "player" | "none";
 type VolumeIconName = "muted" | "volumeLow" | "volumeHigh";
 type ControlIconName =
   | "play"
@@ -35,7 +35,19 @@ class MuiMediaPlayer extends HTMLElement {
   private cleanupControlBindings: (() => void) | null = null;
 
   static get observedAttributes() {
-    return ["src", "type", "autoplay", "muted", "loop", "poster", "artwork", "thumbnail", "media-title", "controls"];
+    return [
+      "src",
+      "type",
+      "autoplay",
+      "muted",
+      "loop",
+      "poster",
+      "artwork",
+      "media-title",
+      "height",
+      "center-play",
+      "controls",
+    ];
   }
 
   constructor() {
@@ -128,7 +140,7 @@ class MuiMediaPlayer extends HTMLElement {
 
   private getControlsMode(): ControlsMode {
     const controls = (this.getAttribute("controls") || "").toLowerCase();
-    if (controls === "player" || controls === "thumbnail" || controls === "none") return controls;
+    if (controls === "player" || controls === "none") return controls;
     if (controls === "system" || controls === "custom") return "player";
 
     return "player";
@@ -218,20 +230,20 @@ class MuiMediaPlayer extends HTMLElement {
   }
 
   private renderCompactAudioControls(muted: boolean, escapedSrc: string) {
-    return `<span class="control-group">
-      <mui-button data-action="play" size="small" icon-only variant="tertiary" aria-label="Play media">
-        ${this.getControlIcon("play")}
-      </mui-button>
-    </span>
-    ${this.renderSeekControl()}
-    <span class="control-group">
-      <mui-button data-action="mute" size="small" icon-only variant="tertiary" aria-label="Mute media">
-        ${this.getControlIcon(this.getVolumeIconName(muted, muted ? 0 : 1))}
-      </mui-button>
-      ${this.renderVolumeControl(muted)}
-    </span>
-    <mui-button data-action="time-mode" size="small" variant="tertiary" aria-pressed="false">0:00 / 0:00</mui-button>
-    ${this.renderOptionsMenu(escapedSrc, "var(--space-400)")}`;
+    return `<div class="controls-row compact-scrub-row">
+      ${this.renderSeekControl()}
+    </div>
+    <div class="controls-row compact-action-row">
+      <span class="controls-left">
+        ${this.renderPlayHintControl()}
+        ${this.renderTimeControl()}
+      </span>
+      <span class="controls-right">
+        ${this.renderMuteControl(muted)}
+        ${this.renderVolumeControl(muted)}
+        ${this.renderOptionsMenu(escapedSrc, "var(--space-400)")}
+      </span>
+    </div>`;
   }
 
   private renderPlayerControls(
@@ -239,6 +251,7 @@ class MuiMediaPlayer extends HTMLElement {
     hasAudioPresentation: boolean,
     muted: boolean,
     escapedSrc: string,
+    showCenterPlay: boolean,
   ) {
     const centerPlaySize = type === "audio" ? "medium" : "large";
     const hasOverlayControls = type === "video" || hasAudioPresentation;
@@ -246,9 +259,21 @@ class MuiMediaPlayer extends HTMLElement {
       ? this.renderOverlayControls(type, muted, escapedSrc)
       : this.renderCompactAudioControls(muted, escapedSrc);
 
-    return `<mui-button class="center-play" data-action="play" variant="tertiary" type="button" aria-label="Play media" size="${centerPlaySize}">
+    return `${
+      type === "video"
+        ? showCenterPlay
+          ? `<mui-button class="center-play" data-action="play" variant="tertiary" type="button" aria-label="Play media" size="${centerPlaySize}">
       <mui-icon-play-fill class="control-icon" size="${centerPlaySize}" aria-hidden="true"></mui-icon-play-fill>
-    </mui-button>
+    </mui-button>`
+          : `<div class="center-play" aria-hidden="true">
+      <mui-icon-play-fill class="control-icon" size="${centerPlaySize}" aria-hidden="true"></mui-icon-play-fill>
+    </div>`
+        : hasAudioPresentation
+          ? `<mui-button class="center-play" data-action="play" variant="tertiary" type="button" aria-label="Play media" size="${centerPlaySize}">
+      <mui-icon-play-fill class="control-icon" size="${centerPlaySize}" aria-hidden="true"></mui-icon-play-fill>
+    </mui-button>`
+          : ""
+    }
     ${type === "audio" && hasAudioPresentation ? `<div class="controls-hover-zone" aria-hidden="true"></div>` : ""}
     <div class="controls" part="controls">
       ${controlsMarkup}
@@ -266,6 +291,9 @@ class MuiMediaPlayer extends HTMLElement {
 
     const frame = this.shadowRoot.querySelector(".frame") as HTMLElement | null;
     const playBtns = Array.from(this.shadowRoot.querySelectorAll('[data-action="play"]')) as HTMLElement[];
+    const centerPlay = this.shadowRoot.querySelector(".center-play") as HTMLElement | null;
+    const centerPlayButton = this.shadowRoot.querySelector('.center-play[data-action="play"]') as HTMLElement | null;
+    const inlinePlayBtns = playBtns.filter((button) => button !== centerPlayButton);
     const playHint = this.shadowRoot.querySelector('[data-hint="play"]') as HTMLElement | null;
     const muteBtn = this.shadowRoot.querySelector('[data-action="mute"]') as HTMLElement | null;
     const seek = this.shadowRoot.querySelector('[data-action="seek"]') as HTMLInputElement | null;
@@ -275,6 +303,7 @@ class MuiMediaPlayer extends HTMLElement {
     const fullscreenBtn = this.shadowRoot.querySelector('[data-action="fullscreen"]') as HTMLElement | null;
     const controls = this.shadowRoot.querySelector(".controls") as HTMLElement | null;
     const controlsHoverZone = this.shadowRoot.querySelector(".controls-hover-zone") as HTMLElement | null;
+    const optionsMenu = this.shadowRoot.querySelector(".options-menu") as HTMLElement | null;
     const hasCustomControls = Boolean(
       playBtns.length || muteBtn || seek || volume || timeToggle || pipBtn || fullscreenBtn,
     );
@@ -291,8 +320,10 @@ class MuiMediaPlayer extends HTMLElement {
     let inactivityTimer = 0;
     let controlsRevealTimer = 0;
     let touchRevealTimer = 0;
+    let playFeedbackTimer = 0;
     let lastPointerX = 0;
     let lastPointerY = 0;
+    let isOptionsMenuOpen = false;
     const cleanups: (() => void)[] = [];
     const on = (target: EventTarget | null | undefined, type: string, listener: EventListener) => {
       if (!target) return;
@@ -304,6 +335,33 @@ class MuiMediaPlayer extends HTMLElement {
       if (!input) return;
       const progress = max > 0 ? Math.max(0, Math.min(100, (value / max) * 100)) : 0;
       input.style.setProperty("--media-player-range-progress", `${progress}%`);
+      if (!input.classList.contains("is-previewing")) {
+        input.style.setProperty("--media-player-range-solid-end", `${progress}%`);
+      }
+    };
+
+    const setSeekPreview = (event: PointerEvent) => {
+      if (!seek) return;
+      const rect = seek.getBoundingClientRect();
+      const max = Number(seek.max || 0);
+      if (!rect.width || max <= 0) return;
+
+      const hoverProgress = Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100));
+      const currentProgress = Math.max(0, Math.min(100, ((Number(seek.value || 0) || 0) / max) * 100));
+      const previewStart = Math.min(currentProgress, hoverProgress);
+      const previewEnd = Math.max(currentProgress, hoverProgress);
+
+      seek.classList.add("is-previewing");
+      seek.style.setProperty("--media-player-range-solid-end", `${previewStart}%`);
+      seek.style.setProperty("--media-player-range-preview-start", `${previewStart}%`);
+      seek.style.setProperty("--media-player-range-preview-end", `${previewEnd}%`);
+    };
+
+    const clearSeekPreview = () => {
+      if (!seek) return;
+      seek.classList.remove("is-previewing");
+      const duration = Number.isFinite(media.duration) ? media.duration : 0;
+      setRangeProgress(seek, Number(seek.value || 0), duration);
     };
 
     const syncSeek = () => {
@@ -367,7 +425,11 @@ class MuiMediaPlayer extends HTMLElement {
 
     const scheduleControlsReveal = (force = false) => {
       if (!usesHoverOverlayControls || !frame) return;
-      if (!force && (frame.classList.contains("is-controls-ready") || frame.classList.contains("is-controls-revealing"))) return;
+      if (
+        !force &&
+        (frame.classList.contains("is-controls-ready") || frame.classList.contains("is-controls-revealing"))
+      )
+        return;
 
       window.clearTimeout(controlsRevealTimer);
       frame.classList.remove("is-controls-ready");
@@ -386,6 +448,21 @@ class MuiMediaPlayer extends HTMLElement {
       }, 3200);
     };
 
+    const showPlayFeedback = (nextPaused: boolean) => {
+      if (!frame) return;
+      if (frame.classList.contains("has-center-play")) return;
+
+      window.clearTimeout(playFeedbackTimer);
+      if (centerPlay) {
+        centerPlay.innerHTML = this.getControlIcon(nextPaused ? "pause" : "play");
+      }
+      frame.classList.add("show-play-feedback");
+      playFeedbackTimer = window.setTimeout(() => {
+        frame.classList.remove("show-play-feedback");
+        syncPlayState(media.paused, true);
+      }, 650);
+    };
+
     const shouldUseVideoInactivity = () => frame && isVideo && !media.paused && !media.ended;
 
     const clearVideoInactivity = () => {
@@ -399,10 +476,17 @@ class MuiMediaPlayer extends HTMLElement {
       if (!shouldUseVideoInactivity()) return;
 
       inactivityTimer = window.setTimeout(() => {
-        if (shouldUseVideoInactivity()) {
+        if (shouldUseVideoInactivity() && !isOptionsMenuOpen) {
+          clearControlsReveal();
           frame?.classList.add("is-video-inactive");
         }
       }, 1600);
+    };
+
+    const isPointerNearBottomEdge = (event: PointerEvent) => {
+      if (!frame) return false;
+      const distanceFromBottom = frame.getBoundingClientRect().bottom - event.clientY;
+      return distanceFromBottom >= 0 && distanceFromBottom <= 24;
     };
 
     const handleOverlayPointerMove = (event: Event) => {
@@ -414,8 +498,7 @@ class MuiMediaPlayer extends HTMLElement {
       lastPointerY = event.clientY;
 
       const isPointerInsideControls = Boolean(controls && event.composedPath().includes(controls));
-      const distanceFromBottom = frame.getBoundingClientRect().bottom - event.clientY;
-      const isNearBottomEdge = distanceFromBottom >= 0 && distanceFromBottom <= 24;
+      const isNearBottomEdge = isPointerNearBottomEdge(event);
 
       if (isNearBottomEdge || isPointerInsideControls) {
         scheduleControlsReveal(isVideo && frame.classList.contains("is-video-inactive"));
@@ -425,23 +508,50 @@ class MuiMediaPlayer extends HTMLElement {
         return;
       }
 
-      clearControlsReveal();
+      if (!isOptionsMenuOpen) {
+        clearControlsReveal();
+      }
       if (isVideo) {
         scheduleVideoInactivity();
       }
     };
 
+    const handleControlsPointerLeave = (event: Event) => {
+      if (!(event instanceof PointerEvent) || event.pointerType === "touch") return;
+      if (isPointerNearBottomEdge(event)) return;
+      if (isOptionsMenuOpen) return;
+
+      clearControlsReveal();
+      blurActiveControl();
+    };
+
     const handleFramePointerDown = (event: Event) => {
       if (!usesHoverOverlayControls) return;
-      if (!isVideo) return;
-      if (event instanceof PointerEvent && event.pointerType === "touch") {
-        scheduleTouchControlsReveal();
+      const path = event.composedPath();
+      if (path.includes(controls as EventTarget)) return;
+      if (centerPlay && path.includes(centerPlay)) return;
+      if (
+        path.some(
+          (target) =>
+            target instanceof HTMLElement &&
+            (target.classList.contains("controls-hover-zone") ||
+              target.classList.contains("audio-visual-copy") ||
+              target.classList.contains("media-visual-copy")),
+        )
+      ) {
         return;
       }
-      if (event.composedPath().some((target) => target instanceof HTMLElement && target.classList.contains("controls"))) return;
 
-      scheduleControlsReveal(true);
-      scheduleVideoInactivity();
+      const nextPaused = !media.paused;
+      handlePlayClick();
+      blurActiveControl();
+      clearControlsReveal();
+      if (isVideo) {
+        showPlayFeedback(nextPaused);
+      }
+      if (isVideo) {
+        scheduleVideoInactivity();
+      }
     };
 
     const syncPlayState = (paused: boolean, force = false) => {
@@ -452,7 +562,7 @@ class MuiMediaPlayer extends HTMLElement {
       frame?.classList.toggle("is-playing", !paused);
       frame?.classList.toggle("is-paused", paused);
       if (playBtns.length && (force || paused !== lastPaused)) {
-        playBtns.forEach((button) => {
+        inlinePlayBtns.forEach((button) => {
           button.innerHTML = this.getControlIcon(paused ? "play" : "pause");
         });
         if (playHint) {
@@ -502,6 +612,13 @@ class MuiMediaPlayer extends HTMLElement {
       }
     };
 
+    const blurActiveControl = () => {
+      const activeElement = this.shadowRoot?.activeElement as HTMLElement | null;
+      if (activeElement && frame?.contains(activeElement)) {
+        activeElement.blur();
+      }
+    };
+
     const handlePlayClick = () => {
       if (media.paused) {
         syncPlayState(false, true);
@@ -518,13 +635,21 @@ class MuiMediaPlayer extends HTMLElement {
       clearControlsReveal();
       if (!usesHoverOverlayControls || media.paused) return;
 
-      const activeElement = this.shadowRoot?.activeElement as HTMLElement | null;
-      if (activeElement && frame?.contains(activeElement)) {
-        activeElement.blur();
-      }
+      blurActiveControl();
     });
     on(frame, "pointerdown", handleFramePointerDown);
     on(frame, "pointermove", handleOverlayPointerMove);
+    on(controls, "pointerleave", handleControlsPointerLeave);
+    on(optionsMenu, "dropdown-toggle", (event) => {
+      isOptionsMenuOpen = Boolean((event as CustomEvent<{ open: boolean }>).detail?.open);
+      if (isOptionsMenuOpen) {
+        scheduleControlsReveal(true);
+        return;
+      }
+      if (isVideo) {
+        scheduleVideoInactivity();
+      }
+    });
     on(controlsHoverZone, "pointerdown", (event) => {
       if (event instanceof PointerEvent && event.pointerType === "touch") {
         scheduleTouchControlsReveal();
@@ -553,6 +678,12 @@ class MuiMediaPlayer extends HTMLElement {
       media.currentTime = value;
       syncTime();
     });
+    on(seek, "pointermove", (event) => {
+      if (event instanceof PointerEvent && event.pointerType !== "touch") {
+        setSeekPreview(event);
+      }
+    });
+    on(seek, "pointerleave", clearSeekPreview);
     on(volume, "input", () => {
       if (!volume) return;
       const nextVolume = Math.max(0, Math.min(1, Number(volume.value || 0)));
@@ -617,6 +748,7 @@ class MuiMediaPlayer extends HTMLElement {
     });
     this.cleanupControlBindings = () => {
       cancelAnimationFrame(animationFrame);
+      window.clearTimeout(playFeedbackTimer);
       clearControlsReveal();
       clearVideoInactivity();
       cleanups.forEach((cleanup) => cleanup());
@@ -636,37 +768,60 @@ class MuiMediaPlayer extends HTMLElement {
     const isNative = type === "video" || type === "audio";
     const controlsMode = this.getControlsMode();
     const renderPlayerControls = isNative && controlsMode !== "none";
-    const thumbnail = this.getAttribute("thumbnail") || "";
-    const artwork = this.getAttribute("artwork") || (type === "audio" && controlsMode === "thumbnail" ? poster : "");
-    const metaImage = thumbnail || artwork;
+    const showCenterPlay = this.hasAttribute("center-play");
+    const artwork = this.getAttribute("artwork") || "";
+    const metaImage = artwork;
     const mediaTitle = this.getAttribute("media-title") || "";
-    const hasAudioPresentation = type === "audio" && renderPlayerControls && Boolean(metaImage || mediaTitle);
+    const height = this.getAttribute("height") || "";
+    const audioHeightStyle = height ? ` style="--media-player-audio-height: ${height.replace(/"/g, "&quot;")}"` : "";
+    const hasMetadataSlot = this.querySelector('[slot="metadata"]') !== null;
+    const escapedMediaTitle = mediaTitle.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const renderMetaContent = (image: string, fallbackIcon: string, className = "") => {
+      if (!mediaTitle && !hasMetadataSlot) return "";
+      const visualCopyClass = [
+        className,
+        className === "audio" ? "audio-visual-copy" : "",
+        "media-visual-copy",
+      ]
+        .filter(Boolean)
+        .join(" ");
+
+      return `<div class="${visualCopyClass}">
+            <slot name="metadata">
+              <div class="media-meta">
+                <span class="media-meta-thumbnail-slot">
+                    ${
+                      image
+                        ? `<img class="media-meta-thumbnail" src="${image.replace(/"/g, "&quot;")}" alt="" loading="lazy" />`
+                        : `<span class="media-meta-icon" aria-hidden="true">${fallbackIcon}</span>`
+                    }
+                </span>
+                <div class="media-meta-copy">
+                  ${mediaTitle ? `<mui-body size="small" weight="bold">${escapedMediaTitle}</mui-body>` : ""}
+                </div>
+              </div>
+            </slot>
+          </div>`;
+    };
+    const hasAudioPresentation = type === "audio" && renderPlayerControls && Boolean(metaImage || mediaTitle || hasMetadataSlot);
     const audioVisualMarkup = hasAudioPresentation
-      ? `<div class="audio-visual ${artwork ? "has-artwork" : ""}" part="audio-visual">
+      ? `<div class="audio-visual ${artwork ? "has-artwork" : ""}" part="audio-visual"${audioHeightStyle}>
             ${
               artwork
                 ? `<img class="audio-artwork" src="${artwork.replace(/"/g, "&quot;")}" alt="" loading="lazy" />`
                 : ""
             }
-            ${
-              mediaTitle
-                ? `<div class="audio-visual-copy">
-                    <div class="audio-meta">
-                      ${
-                        metaImage
-                          ? `<img class="audio-meta-thumbnail" src="${metaImage.replace(/"/g, "&quot;")}" alt="" loading="lazy" />`
-                          : `<span class="audio-meta-icon" aria-hidden="true"><mui-icon-music-microphone size="medium"></mui-icon-music-microphone></span>`
-                      }
-                      <div class="audio-meta-copy">
-                        <mui-body size="small" weight="bold">${mediaTitle.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</mui-body>
-                        <slot name="meta"></slot>
-                      </div>
-                    </div>
-                  </div>`
-                : ""
-            }
+            ${renderMetaContent(
+              metaImage,
+              `<mui-icon-music-microphone size="medium"></mui-icon-music-microphone>`,
+              "audio",
+            )}
           </div>`
       : "";
+    const videoMetaMarkup =
+      type === "video" && (mediaTitle || hasMetadataSlot)
+        ? renderMetaContent("", `<mui-icon-play-fill size="medium"></mui-icon-play-fill>`, "video")
+        : "";
 
     const mediaMarkup =
       type === "youtube"
@@ -680,6 +835,7 @@ class MuiMediaPlayer extends HTMLElement {
           : type === "video"
             ? `<div class="media-shell video-shell">
                 <video part="media" ${autoplay ? "autoplay" : ""} ${muted ? "muted" : ""} ${loop ? "loop" : ""} ${poster ? `poster="${poster.replace(/"/g, "&quot;")}"` : ""} playsinline src="${escapedSrc}"></video>
+                ${videoMetaMarkup}
                 ${renderPlayerControls ? `<slot name="system-controls"></slot>` : ""}
               </div>`
             : `${audioVisualMarkup}<audio part="media" ${autoplay ? "autoplay" : ""} ${muted ? "muted" : ""} ${loop ? "loop" : ""} src="${escapedSrc}"></audio>`;
@@ -691,6 +847,9 @@ class MuiMediaPlayer extends HTMLElement {
           width: 100%;
           container-type: inline-size;
           --media-player-range-progress: 0%;
+          --media-player-range-solid-end: var(--media-player-range-progress);
+          --media-player-range-preview-start: var(--media-player-range-progress);
+          --media-player-range-preview-end: var(--media-player-range-progress);
           --media-player-range-thumb-size: 1.6rem;
           --media-player-range-track-height: 0.4rem;
           --dropdown-min-width: 16rem;
@@ -733,6 +892,7 @@ class MuiMediaPlayer extends HTMLElement {
           --media-player-range-color: var(--media-player-dark-range-color);
           --media-player-range-thumb-color: var(--media-player-dark-range-thumb-color);
           --media-player-range-track-color: var(--media-player-dark-range-track-color);
+          --media-player-range-preview-color: var(--white-opacity-50);
           --media-player-range-thumb-shadow: var(--media-player-dark-range-thumb-shadow);
           --action-tertiary-background: transparent;
           --action-tertiary-background-hover: var(--media-player-dark-control-background-hover);
@@ -748,6 +908,9 @@ class MuiMediaPlayer extends HTMLElement {
           --dropdown-shadow-color: var(--black-opacity-30);
           --dropdown-radius: 1.2rem;
           --hint-background: var(--black-opacity-80);
+          --hint-border-color: var(--white-opacity-30);
+          --hint-shadow: 0 var(--space-100) var(--space-200) var(--black-opacity-30);
+          --hint-text-color: var(--white);
         }
         .audio-frame.custom-controls {
           box-sizing: border-box;
@@ -805,8 +968,7 @@ class MuiMediaPlayer extends HTMLElement {
             filter var(--speed-300) ease,
             transform var(--speed-300) ease;
         }
-        .video-frame.custom-controls:hover .media-shell > video,
-        .video-frame.custom-controls:focus-within .media-shell > video {
+        .video-frame.custom-controls:hover .media-shell > video {
           filter: brightness(1.06) saturate(1.04);
           transform: scale(1.01);
         }
@@ -857,9 +1019,31 @@ class MuiMediaPlayer extends HTMLElement {
             opacity var(--speed-300) ease,
             transform var(--speed-300) ease;
         }
+        .audio-frame.custom-controls:not(.audio-player-only):not(.has-artwork) .controls {
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            color-mix(in srgb, var(--media-player-surface-overlay-end) 72%, var(--grey-100) 28%) 50%,
+            color-mix(in srgb, var(--media-player-surface-overlay-end) 62%, var(--grey-100) 38%) 100%
+          );
+        }
+        :host-context(html[data-theme="dark"])
+          .audio-frame.custom-controls:not(.audio-player-only):not(.has-artwork)
+          .controls {
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            color-mix(in srgb, var(--media-player-surface-overlay-end) 72%, var(--grey-1200) 28%) 50%,
+            color-mix(in srgb, var(--media-player-surface-overlay-end) 62%, var(--grey-1200) 38%) 100%
+          );
+        }
         .video-frame.custom-controls .controls,
         .audio-frame.custom-controls.has-artwork .controls {
-          background: linear-gradient(180deg, transparent 0%, var(--media-player-dark-overlay-background) 100%);
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            var(--media-player-dark-overlay-controls-background, var(--media-player-dark-overlay-background)) 100%
+          );
           color: var(--media-player-dark-control-color);
         }
         .controls-peek {
@@ -888,29 +1072,26 @@ class MuiMediaPlayer extends HTMLElement {
           background: var(--media-player-audio-controls-peek-background);
           box-shadow: var(--media-player-audio-controls-peek-shadow);
         }
-        .video-frame.custom-controls:focus-within .controls-peek,
         .frame.custom-controls:fullscreen .controls-peek,
         .video-frame.custom-controls.is-controls-revealing .controls-peek,
         .video-frame.custom-controls.is-controls-ready .controls-peek,
         .audio-frame.custom-controls:not(.audio-player-only).is-controls-revealing .controls-peek,
         .audio-frame.custom-controls:not(.audio-player-only).is-controls-ready .controls-peek,
-        .audio-frame.custom-controls:not(.audio-player-only):focus-within .controls-peek {
+        .frame.custom-controls .controls:focus-within + .controls-peek {
           opacity: 0;
           transform: translate(-50%, var(--space-050));
         }
-        .video-frame.custom-controls:focus-within .controls,
         .video-frame.custom-controls.is-controls-revealing .controls,
         .video-frame.custom-controls.is-controls-ready .controls,
         .audio-frame.custom-controls:not(.audio-player-only).is-controls-revealing .controls,
         .audio-frame.custom-controls:not(.audio-player-only).is-controls-ready .controls,
-        .audio-frame.custom-controls:not(.audio-player-only):focus-within .controls {
+        .frame.custom-controls .controls:focus-within {
           opacity: 1;
           transform: translateY(0);
         }
-        .video-frame.custom-controls:focus-within .controls,
         .video-frame.custom-controls.is-controls-ready .controls,
         .audio-frame.custom-controls:not(.audio-player-only).is-controls-ready .controls,
-        .audio-frame.custom-controls:not(.audio-player-only):focus-within .controls {
+        .frame.custom-controls .controls:focus-within {
           pointer-events: auto;
         }
         .video-frame.custom-controls.is-video-inactive {
@@ -920,6 +1101,14 @@ class MuiMediaPlayer extends HTMLElement {
           opacity: 0;
           transform: translateY(var(--space-300));
           pointer-events: none;
+        }
+        .video-frame.custom-controls.is-video-inactive .controls-peek {
+          opacity: 0.6;
+          transform: translateX(-50%);
+        }
+        .video-frame.custom-controls.is-video-inactive:fullscreen .controls-peek {
+          opacity: 0;
+          transform: translate(-50%, var(--space-050));
         }
         /* Bottom proximity trigger for audio presentation controls */
         .controls-hover-zone {
@@ -933,33 +1122,83 @@ class MuiMediaPlayer extends HTMLElement {
           height: 2.4rem;
           pointer-events: auto;
         }
-        /* Center play affordance */
+        /* Center play feedback */
         .center-play {
           position: absolute;
           z-index: 2;
           inset: 50% auto auto 50%;
-          transform: translate(-50%, -50%) scale(1);
+          display: grid;
+          place-items: center;
+          width: var(--action-size-large);
+          height: var(--action-size-large);
+          border-radius: 999rem;
+          color: var(--media-player-dark-control-color);
+          background: var(--media-player-center-play-background);
+          opacity: 0;
+          pointer-events: none;
+          transform: translate(-50%, -50%) scale(0.92);
           transition:
             opacity var(--speed-300) ease,
+            transform var(--speed-300) ease;
         }
-        .center-play::part(background) {
+        .video-frame.custom-controls .center-play,
+        .audio-frame.custom-controls.has-artwork .center-play {
+          background: var(--media-player-dark-overlay-background);
+        }
+        .video-frame.custom-controls .center-play {
+          width: 6rem;
+          height: 6rem;
+        }
+        .video-frame.custom-controls .center-play mui-icon-play-fill,
+        .video-frame.custom-controls .center-play mui-icon-pause-fill,
+        .video-frame.custom-controls .center-play mui-icon-pause {
+          width: 4rem;
+          height: 4rem;
+        }
+        .video-frame.custom-controls.has-center-play .center-play {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        .video-frame.custom-controls.has-center-play.is-playing .center-play {
+          opacity: 0;
+          pointer-events: none;
+          transform: translate(-50%, -50%) scale(0.92);
+        }
+        .video-frame.custom-controls.has-center-play.is-controls-revealing .center-play,
+        .video-frame.custom-controls.has-center-play.is-controls-ready .center-play {
+          opacity: 0;
+          pointer-events: none;
+          transform: translate(-50%, -50%) scale(0.92);
+        }
+        .audio-frame.custom-controls .center-play::part(background) {
           background: var(--media-player-center-play-background);
           border-radius: 100%;
         }
-        .video-frame.custom-controls .center-play::part(background),
         .audio-frame.custom-controls.has-artwork .center-play::part(background) {
           background: var(--media-player-dark-overlay-background);
         }
-        .frame.custom-controls .center-play {
-          display: grid;
+        .audio-frame.custom-controls .center-play {
+          width: var(--action-size-medium);
+          height: var(--action-size-medium);
+          opacity: 1;
+          pointer-events: auto;
+          transform: translate(-50%, -50%) scale(1);
         }
-        .audio-frame.custom-controls.audio-player-only .center-play {
-          display: none;
-        }
-        .frame.custom-controls.is-playing .center-play {
+        .audio-frame.custom-controls.is-playing .center-play {
           opacity: 0;
           transform: translate(-50%, -50%) scale(0.92);
           pointer-events: none;
+        }
+        .audio-frame.custom-controls.is-controls-revealing .center-play,
+        .audio-frame.custom-controls.is-controls-ready .center-play {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.92);
+          pointer-events: none;
+        }
+        .frame.custom-controls.show-play-feedback .center-play {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
         }
         /* Control row layout */
         .control-group {
@@ -983,10 +1222,9 @@ class MuiMediaPlayer extends HTMLElement {
         .controls-row.action-row {
           grid-row: 2;
           justify-content: space-between;
-          margin-block-end: var(--space-050);
         }
-        .audio-frame.custom-controls.audio-player-only .controls-row.action-row {
-          margin-block-end: var(--space-000);
+        .video-frame.custom-controls .controls-row.action-row {
+          margin-block-end: var(--space-050);
         }
         .controls-left,
         .controls-right {
@@ -1009,27 +1247,40 @@ class MuiMediaPlayer extends HTMLElement {
           inset: auto;
           width: 100%;
           min-height: var(--action-size-medium);
+          display: grid;
+          grid-template-rows: auto auto;
+          gap: var(--space-075);
+          align-items: stretch;
+          padding-block: var(--space-100);
           color: var(--media-player-control-color);
           background: var(--media-player-control-background);
           box-shadow: none;
         }
-        .audio-frame.custom-controls.audio-player-only .range {
-          margin-block-end: var(--space-000);
+        .audio-frame.custom-controls.audio-player-only .compact-scrub-row {
+          width: 100%;
+          padding-inline: var(--space-300);
+          padding-block-start: var(--space-100);
+          padding-block-end: var(--space-200);
         }
-        /* Audio metadata and thumbnail presentation */
+        .audio-frame.custom-controls.audio-player-only .compact-action-row {
+          width: 100%;
+          justify-content: space-between;
+          padding-inline: var(--space-100);
+        }
+        /* Audio metadata and artwork presentation */
         .audio-visual {
           display: flex;
           align-items: flex-start;
-          min-height: var(--media-player-audio-height, 18rem);
+          min-height: 9.8rem;
+          height: var(--media-player-audio-height, 9.8rem);
           gap: var(--space-300);
-          padding: var(--space-300);
+          padding: var(--space-400);
           background:
             linear-gradient(135deg, var(--media-player-surface-overlay-end), transparent 52%),
             var(--surface-elevated-100);
           position: relative;
         }
         .audio-visual.has-artwork {
-          min-height: var(--media-player-audio-height, 18rem);
           align-items: flex-start;
           color: var(--media-player-dark-control-color);
           background: var(--media-player-dark-background);
@@ -1066,29 +1317,75 @@ class MuiMediaPlayer extends HTMLElement {
           border-radius: 0;
           box-shadow: none;
           filter: saturate(1.08);
+          transform: scale(1);
+          transition:
+            filter var(--speed-300) ease,
+            transform var(--speed-300) ease;
         }
-        .audio-visual-copy {
+        .audio-frame.has-artwork:hover .audio-visual.has-artwork .audio-artwork,
+        .audio-frame.has-artwork.is-controls-revealing .audio-visual.has-artwork .audio-artwork,
+        .audio-frame.has-artwork.is-controls-ready .audio-visual.has-artwork .audio-artwork {
+          filter: saturate(1.08) brightness(1.03);
+          transform: scale(1.025);
+        }
+        .audio-visual-copy,
+        .media-visual-copy {
+          appearance: none;
+          border: 0;
           position: absolute;
           top: 0;
           left: 0;
           z-index: 1;
           min-width: 0;
           box-sizing: border-box;
-          background: linear-gradient(180deg, var(--media-player-surface-overlay-start), transparent);
           width: 100%;
           padding: var(--space-300);
+          pointer-events: none;
+          color: inherit;
+          font: inherit;
+          text-align: left;
+          opacity: 1;
+          visibility: visible;
+          transition:
+            opacity var(--speed-200) ease,
+            visibility var(--speed-200) ease;
         }
-        .audio-visual.has-artwork .audio-visual-copy {
+        .audio-visual:not(.has-artwork) .audio-visual-copy {
+          background: linear-gradient(180deg, var(--media-player-surface-overlay-start), transparent);
+        }
+        .audio-visual.has-artwork .audio-visual-copy,
+        .audio-visual.has-artwork .media-visual-copy,
+        .video-frame.custom-controls .media-visual-copy {
           background: linear-gradient(180deg, var(--media-player-dark-overlay-background), transparent);
         }
-        .audio-meta {
+        .video-frame.custom-controls.is-playing .media-visual-copy {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        }
+        .audio-meta,
+        .media-meta {
           display: flex;
-          align-items: center;
+          align-items: start;
           gap: var(--space-300);
+          width: fit-content;
+          max-width: 100%;
+          min-width: 0;
+          pointer-events: auto;
+        }
+        .media-meta-thumbnail-slot {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 4.8rem;
+          height: 4.8rem;
+          flex: 0 0 4.8rem;
           min-width: 0;
         }
         .audio-meta-icon,
-        .audio-meta-thumbnail {
+        .audio-meta-thumbnail,
+        .media-meta-icon,
+        .media-meta-thumbnail {
           width: 4.8rem;
           height: 4.8rem;
           min-width: 4.8rem;
@@ -1101,30 +1398,81 @@ class MuiMediaPlayer extends HTMLElement {
           border: var(--border-thin);
           box-shadow: var(--media-player-meta-icon-shadow);
         }
-        .audio-meta-icon {
+        .audio-meta-icon,
+        .media-meta-icon {
           display: inline-grid;
           place-items: center;
           color: var(--text-color);
           background: var(--surface-elevated-300);
         }
-        .audio-meta-thumbnail {
+        .audio-meta-thumbnail,
+        .media-meta-thumbnail {
           object-fit: cover;
           box-shadow: var(--media-player-thumbnail-shadow);
         }
-        .audio-visual.has-artwork .audio-meta-thumbnail {
+        .audio-visual.has-artwork .audio-meta-thumbnail,
+        .video-frame.custom-controls .media-meta-thumbnail {
           border: var(--media-player-dark-thumbnail-border);
           box-shadow: var(--media-player-dark-thumbnail-shadow);
         }
-        .audio-meta-copy {
+        slot[name="metadata"] {
+          display: flex;
+          align-items: center;
+          gap: var(--space-300);
+          width: fit-content;
+          max-width: 100%;
+          pointer-events: auto;
+          --action-avatar-border: var(--border-thin);
+          --action-avatar-shadow: none;
+        }
+        slot[name="metadata"]::slotted(*) {
+          max-width: 100%;
+        }
+        slot[name="metadata"]::slotted(mui-avatar) {
+          border: var(--border-thin);
+          box-shadow: none;
+        }
+        slot[name="metadata"]::slotted(mui-button) {
+          --action-avatar-border: var(--border-thin);
+          --action-avatar-shadow: none;
+        }
+        .audio-visual.has-artwork slot[name="metadata"]::slotted(mui-avatar),
+        .video-frame.custom-controls slot[name="metadata"]::slotted(mui-avatar) {
+          border: var(--media-player-dark-thumbnail-border);
+          box-shadow: var(--media-player-dark-thumbnail-shadow);
+        }
+        .audio-visual.has-artwork slot[name="metadata"],
+        .video-frame.custom-controls slot[name="metadata"],
+        .audio-visual.has-artwork slot[name="metadata"]::slotted(mui-button),
+        .video-frame.custom-controls slot[name="metadata"]::slotted(mui-button) {
+          --action-avatar-border: var(--media-player-dark-thumbnail-border);
+          --action-avatar-shadow: var(--media-player-dark-thumbnail-shadow);
+        }
+        .audio-meta-copy,
+        .media-meta-copy {
           display: grid;
-          gap: var(--space-025);
+          gap: var(--space-000);
           min-width: 0;
           text-shadow: none;
         }
-        .audio-visual.has-artwork .audio-meta-copy {
+        .audio-meta-copy mui-body,
+        .media-meta-copy mui-body {
+          margin-block-start: var(--space-025);
+        }
+        .video-meta-time[hidden] {
+          display: none;
+        }
+
+        .audio-visual.has-artwork .audio-meta-copy,
+        .video-frame.custom-controls .media-meta-copy {
           text-shadow: var(--media-player-meta-text-shadow);
         }
-        .audio-visual.has-artwork .audio-meta-copy ::slotted(*) {
+        .video-frame.custom-controls .media-meta-copy mui-body {
+          --text-color: var(--white);
+          --text-color-optional: rgba(255, 255, 255, 0.72);
+        }
+        .audio-visual.has-artwork .audio-meta-copy ::slotted(*),
+        .video-frame.custom-controls .media-meta-copy ::slotted(*) {
           --text-color: var(--white);
           --text-color-optional: rgba(255, 255, 255, 0.72);
           --icon-color-default: var(--white);
@@ -1146,9 +1494,16 @@ class MuiMediaPlayer extends HTMLElement {
           background: transparent;
           cursor: pointer;
           margin: 0;
-          margin-block-end: var(--space-050);
           transition: filter var(--speed-200) ease;
+          width: 100%;
         }
+        .video-frame.custom-controls .range {
+          margin-block-end: var(--space-050);
+        }
+        .video-frame.custom-controls .volume {
+          margin-block-end: var(--space-000);
+        }
+
         .range:hover,
         .range:focus-visible {
           filter: brightness(1.12);
@@ -1161,8 +1516,10 @@ class MuiMediaPlayer extends HTMLElement {
             linear-gradient(
               to right,
               var(--media-player-range-color, var(--white)) 0%,
-              var(--media-player-range-color, var(--white)) var(--media-player-range-progress),
-              var(--media-player-range-track-color, var(--white-opacity-30)) var(--media-player-range-progress),
+              var(--media-player-range-color, var(--white)) var(--media-player-range-solid-end),
+              var(--media-player-range-preview-color, var(--white-opacity-50)) var(--media-player-range-preview-start),
+              var(--media-player-range-preview-color, var(--white-opacity-50)) var(--media-player-range-preview-end),
+              var(--media-player-range-track-color, var(--white-opacity-30)) var(--media-player-range-preview-end),
               var(--media-player-range-track-color, var(--white-opacity-30)) 100%
             );
         }
@@ -1170,7 +1527,16 @@ class MuiMediaPlayer extends HTMLElement {
           height: var(--media-player-range-track-height);
           border: 0;
           border-radius: 999rem;
-          background: var(--media-player-range-track-color, var(--white-opacity-30));
+          background:
+            linear-gradient(
+              to right,
+              var(--media-player-range-track-color, var(--white-opacity-30)) 0%,
+              var(--media-player-range-track-color, var(--white-opacity-30)) var(--media-player-range-preview-start),
+              var(--media-player-range-preview-color, var(--white-opacity-50)) var(--media-player-range-preview-start),
+              var(--media-player-range-preview-color, var(--white-opacity-50)) var(--media-player-range-preview-end),
+              var(--media-player-range-track-color, var(--white-opacity-30)) var(--media-player-range-preview-end),
+              var(--media-player-range-track-color, var(--white-opacity-30)) 100%
+            );
         }
         .range::-moz-range-progress {
           height: var(--media-player-range-track-height);
@@ -1261,7 +1627,6 @@ class MuiMediaPlayer extends HTMLElement {
             display: none;
           }
           .audio-visual {
-            min-height: var(--media-player-audio-height, 18rem);
             gap: var(--space-200);
             padding: var(--space-200);
           }
@@ -1276,11 +1641,26 @@ class MuiMediaPlayer extends HTMLElement {
             height: 4.8rem;
           }
         }
+        @container (max-width: 42rem) {
+          .audio-frame.custom-controls.audio-player-only .controls {
+            display: grid;
+            grid-template-rows: auto auto;
+            gap: var(--space-075);
+            padding-block: var(--space-100);
+          }
+          .audio-frame.custom-controls.audio-player-only .compact-scrub-row,
+          .audio-frame.custom-controls.audio-player-only .compact-action-row {
+            padding-inline: var(--space-300);
+          }
+          .audio-frame.custom-controls.audio-player-only .compact-action-row {
+            justify-content: space-between;
+          }
+        }
 
       </style>
-      <div class="frame ${renderPlayerControls ? "custom-controls" : ""} ${type}-frame ${type === "audio" && artwork ? "has-artwork" : ""} ${type === "audio" && renderPlayerControls && !hasAudioPresentation ? "audio-player-only" : ""}">
+      <div class="frame ${renderPlayerControls ? "custom-controls" : ""} ${showCenterPlay ? "has-center-play" : ""} ${type}-frame ${type === "audio" && artwork ? "has-artwork" : ""} ${type === "audio" && renderPlayerControls && !hasAudioPresentation ? "audio-player-only" : ""}">
         ${mediaMarkup}
-        ${renderPlayerControls ? this.renderPlayerControls(type as "video" | "audio", hasAudioPresentation, muted, escapedSrc) : ""}
+        ${renderPlayerControls ? this.renderPlayerControls(type as "video" | "audio", hasAudioPresentation, muted, escapedSrc, showCenterPlay) : ""}
       </div>
     `;
   }

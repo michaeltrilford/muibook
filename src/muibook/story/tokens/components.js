@@ -302,6 +302,7 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--media-player-range-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-range-thumb-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-range-track-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-range-preview-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-control-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-control-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-center-play-background" variant="color"></story-token-slat>
@@ -309,9 +310,6 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--media-player-controls-peek-shadow" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-audio-controls-peek-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-audio-controls-peek-shadow" variant="shadow"></story-token-slat>
-            <story-token-slat slot="body" token="--media-player-shadow-thin" variant="shadow"></story-token-slat>
-            <story-token-slat slot="body" token="--media-player-shadow-medium" variant="shadow"></story-token-slat>
-            <story-token-slat slot="body" token="--media-player-shadow-thick" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-frame-shadow" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-video-shadow" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-artwork-shadow" variant="shadow"></story-token-slat>
@@ -331,6 +329,7 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--media-player-dark-range-thumb-shadow" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-dark-control-background-hover" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-dark-overlay-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-overlay-controls-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-video-ratio" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-soundcloud-ratio" variant="size"></story-token-slat>
           </spec-card>

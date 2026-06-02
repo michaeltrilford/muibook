@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T07:14:21.397Z",
+  "generatedAt": "2026-06-02T13:52:34.244Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -123,11 +123,6 @@
         "has-after"
       ]
     },
-    "mui-video-thumbnail": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": []
-    },
     "mui-accordion-block": {
       "version": 1,
       "destinationOnly": true,
@@ -136,6 +131,11 @@
         "first-child",
         "last-child"
       ]
+    },
+    "mui-video-thumbnail": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": []
     },
     "mui-card-body": {
       "version": 1,

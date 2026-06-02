@@ -375,6 +375,15 @@ class MuiDropdown extends HTMLElement {
       "--dropdown-min-width",
       "--dropdown-radius",
       "--dropdown-shadow-color",
+      "--action-tertiary-background",
+      "--action-tertiary-background-hover",
+      "--action-tertiary-background-focus",
+      "--action-tertiary-border",
+      "--action-tertiary-border-hover",
+      "--action-tertiary-border-focus",
+      "--action-tertiary-text-color",
+      "--action-tertiary-text-color-hover",
+      "--action-tertiary-text-color-focus",
     ].forEach((property) => {
       const value = styles.getPropertyValue(property);
       if (value) this.portalMenu?.style.setProperty(property, value);

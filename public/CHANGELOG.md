@@ -9,17 +9,20 @@
 ### Added
 
 - `mui-button` now supports `pending` for async actions, blocking repeat activation without applying disabled styling and exposing `aria-busy` while work is in flight.
-- `mui-media-player` now supports `controls="player" | "thumbnail" | "none"` for choosing Muibook controls, the compact thumbnail audio presentation, or no controls for direct audio/video media.
-- `mui-media-player` now supports `media-title`, `thumbnail`, `artwork`, and `slot="meta"` for audio metadata, thumbnail, and artwork presentations.
+- `mui-media-player` now supports `controls="player" | "none"` for choosing Muibook controls or no controls for direct audio/video media.
+- `mui-media-player` now supports `media-title`, `artwork`, and composed `slot="metadata"` content for audio metadata, audio artwork, and video metadata presentations.
+- `mui-media-player` now supports `height` for audio metadata and artwork presentations, mapping the prop to `--media-player-audio-height`.
+- `mui-media-player` now supports `center-play` for displaying an always-visible centered play/pause action over native video.
 - `mui-media-player` controls now include an options menu with Download and Open source actions, using the dropdown component with slotted `mui-link` menu items.
 - `mui-media-player` video controls now use a modern rounded overlay treatment with center play, smooth local seek, volume, Picture-in-Picture, fullscreen, and overflow actions.
-- `mui-media-player` audio now includes compact player, metadata, thumbnail, and artwork presentations, with richer audio states using the same hover overlay control direction as video.
+- `mui-media-player` audio now includes compact player, metadata, and artwork presentations, with richer audio states using the same hover overlay control direction as video.
 - Added media-player component tokens for light/dark surface behavior, dark artwork thumbnail border/shadow, overlay controls, range colors, and player shadows.
+- Added a media-player seek hover preview segment so users can see the skip target before committing to a new time.
 
 ### Documentation
 
 - Added a Button story showing inline async feedback with `Copy`/`Save`, spinner pending states, check-icon success states, and guidance for replacing demo delays with real async work.
-- Updated Media Player stories to lead with Muibook player controls and document compact audio, audio metadata, audio thumbnail, audio artwork, video, YouTube, and SoundCloud states.
+- Updated Media Player stories to lead with Muibook player controls and document compact audio, audio metadata, audio artwork, visible play/pause, video metadata, YouTube, and SoundCloud states.
 - Updated token stories to include semantic shadow tokens and media-player component tokens.
 
 ### Changed

@@ -8,6 +8,7 @@ class MuiHint extends HTMLElement {
   private openTimer: number | null = null;
   private closeTimer: number | null = null;
   private hasOpenedOnce = false;
+  private ignoreNextFocus = false;
   private portalTooltipElement: HTMLElement | null = null;
   private hintId = `hint-${Math.random().toString(36).slice(2)}`;
   private boundReposition = () => this.positionTooltip();
@@ -111,7 +112,18 @@ class MuiHint extends HTMLElement {
 
     trigger.addEventListener("mouseenter", () => this.openWithDelay());
     trigger.addEventListener("mouseleave", () => this.closeWithDelay());
-    trigger.addEventListener("focusin", () => this.openWithDelay());
+    trigger.addEventListener("pointerdown", (event) => {
+      if ((event as PointerEvent).pointerType !== "touch") return;
+      this.ignoreNextFocus = true;
+      this.close(true);
+      window.setTimeout(() => {
+        this.ignoreNextFocus = false;
+      }, 0);
+    });
+    trigger.addEventListener("focusin", () => {
+      if (this.ignoreNextFocus) return;
+      this.openWithDelay();
+    });
     trigger.addEventListener("focusout", () => this.close(true));
     triggerSlot?.addEventListener("slotchange", () => this.syncTriggerSize());
 

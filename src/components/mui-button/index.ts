@@ -786,8 +786,9 @@ class MuiButton extends HTMLElement {
       min-width: 0;
       min-height: 0;
       padding: var(--space-000);
-      border: none;
+      border: var(--action-avatar-border, none);
       background: transparent;
+      box-shadow: var(--action-avatar-shadow, none);
       display: inline-flex;
       align-items: center;
       justify-content: center;
