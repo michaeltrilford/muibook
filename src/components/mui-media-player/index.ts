@@ -900,6 +900,7 @@ class MuiMediaPlayer extends HTMLElement {
           left: 0;
           z-index: 1;
           min-width: 0;
+          box-sizing: border-box;
           background: linear-gradient(180deg, var(--media-player-surface-overlay-start), transparent);
           width: 100%;
           padding: var(--space-300);
@@ -917,7 +918,12 @@ class MuiMediaPlayer extends HTMLElement {
         .audio-meta-thumbnail {
           width: 4.8rem;
           height: 4.8rem;
+          min-width: 4.8rem;
+          min-height: 4.8rem;
+          max-width: 4.8rem;
+          max-height: 4.8rem;
           flex: 0 0 4.8rem;
+          box-sizing: border-box;
           border-radius: var(--radius-300);
           border: var(--border-thin);
           box-shadow: var(--media-player-meta-icon-shadow);
@@ -1082,7 +1088,7 @@ class MuiMediaPlayer extends HTMLElement {
             display: none;
           }
           .audio-visual {
-            min-height: auto;
+            min-height: var(--media-player-audio-height, 18rem);
             gap: var(--space-200);
             padding: var(--space-200);
           }
