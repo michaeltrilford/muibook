@@ -51,7 +51,7 @@ class storyLink extends HTMLElement {
         border: var(--border-thin);
         border-color: var(--form-default-border-color);
         overflow: hidden;
-        box-shadow: var(--shadow-200);
+        box-shadow: var(--shadow-medium);
         display: flex;
         align-items: end;
         justify-content: start;

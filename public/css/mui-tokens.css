@@ -78,7 +78,7 @@
   --slide-frame-padding-large: var(--space-700);
   --slide-frame-gap: var(--space-400);
   --slide-frame-radius: var(--radius-300);
-  --slide-frame-shadow: var(--shadow-200);
+  --slide-frame-shadow: var(--shadow-medium);
 }
 
 /* ==================================================================================================== */
@@ -209,6 +209,7 @@ html[data-theme="light"] {
   --surface-elevated-alpha: var(--white-opacity-50);
   --surface-elevated-100: var(--white);
   --surface-elevated-200: var(--grey-100);
+  --surface-elevated-300: var(--grey-200);
   --code-background: var(--surface-elevated-200);
   --prompt-preview-dismiss-border-color: var(--black-opacity-30);
   --prompt-preview-box-drop-shadow: drop-shadow(
@@ -254,6 +255,33 @@ html[data-theme="light"] {
   --media-player-seek-color: var(--grey-1200);
   --media-player-seek-time-background: var(--surface-elevated-100);
   --media-player-seek-time-border-color: var(--border-color);
+  --media-player-range-color: var(--media-player-seek-color);
+  --media-player-range-thumb-color: var(--media-player-seek-color);
+  --media-player-range-track-color: var(--black-opacity-20);
+  --media-player-control-background: var(--surface-elevated-200);
+  --media-player-control-color: var(--text-color);
+  --media-player-center-play-background: var(--surface-elevated-300);
+  --media-player-shadow-thin: var(--shadow-thin);
+  --media-player-shadow-medium: var(--shadow-medium);
+  --media-player-shadow-thick: var(--shadow-thick);
+  --media-player-frame-shadow: var(--media-player-shadow-medium);
+  --media-player-video-shadow: var(--media-player-shadow-thick);
+  --media-player-artwork-shadow: var(--media-player-shadow-medium);
+  --media-player-thumbnail-shadow: var(--media-player-shadow-thin);
+  --media-player-dark-thumbnail-border: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-40);
+  --media-player-dark-thumbnail-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-30);
+  --media-player-meta-icon-shadow: var(--media-player-shadow-thin);
+  --media-player-range-thumb-shadow: var(--media-player-shadow-thin);
+  --media-player-meta-text-shadow: none;
+  --media-player-surface-overlay-start: var(--surface-elevated-100);
+  --media-player-surface-overlay-end: var(--surface-elevated-200);
+  --media-player-dark-background: var(--black);
+  --media-player-dark-control-color: var(--white);
+  --media-player-dark-range-color: var(--white);
+  --media-player-dark-range-thumb-color: var(--white);
+  --media-player-dark-range-track-color: var(--white-opacity-30);
+  --media-player-dark-control-background-hover: var(--white-opacity-10);
+  --media-player-dark-overlay-background: var(--black-opacity-80);
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
@@ -266,6 +294,9 @@ html[data-theme="light"] {
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
+  --shadow-color-thin: var(--grey-300);
+  --shadow-color-medium: var(--grey-300);
+  --shadow-color-thick: var(--grey-400);
   /* Stroke */
   --outline-color: var(--blue-500);
   --border-color: var(--black-opacity-20);
@@ -686,6 +717,33 @@ html[data-theme="dark"] {
   --media-player-seek-color: var(--white);
   --media-player-seek-time-background: var(--surface-recessed-100);
   --media-player-seek-time-border-color: var(--white-opacity-20);
+  --media-player-range-color: var(--media-player-seek-color);
+  --media-player-range-thumb-color: var(--media-player-seek-color);
+  --media-player-range-track-color: var(--white-opacity-20);
+  --media-player-control-background: var(--surface-elevated-200);
+  --media-player-control-color: var(--text-color);
+  --media-player-center-play-background: var(--surface-elevated-300);
+  --media-player-shadow-thin: var(--shadow-thin);
+  --media-player-shadow-medium: var(--shadow-medium);
+  --media-player-shadow-thick: var(--shadow-thick);
+  --media-player-frame-shadow: var(--media-player-shadow-medium);
+  --media-player-video-shadow: var(--media-player-shadow-thick);
+  --media-player-artwork-shadow: var(--media-player-shadow-medium);
+  --media-player-thumbnail-shadow: var(--media-player-shadow-thin);
+  --media-player-dark-thumbnail-border: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-40);
+  --media-player-dark-thumbnail-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-30);
+  --media-player-meta-icon-shadow: var(--media-player-shadow-thin);
+  --media-player-range-thumb-shadow: var(--media-player-shadow-thin);
+  --media-player-meta-text-shadow: 0 var(--stroke-size-100) var(--stroke-size-300) var(--black-opacity-30);
+  --media-player-surface-overlay-start: var(--surface-elevated-100);
+  --media-player-surface-overlay-end: var(--surface-elevated-200);
+  --media-player-dark-background: var(--black);
+  --media-player-dark-control-color: var(--white);
+  --media-player-dark-range-color: var(--white);
+  --media-player-dark-range-thumb-color: var(--white);
+  --media-player-dark-range-track-color: var(--white-opacity-30);
+  --media-player-dark-control-background-hover: var(--white-opacity-10);
+  --media-player-dark-overlay-background: var(--black-opacity-80);
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
@@ -700,6 +758,9 @@ html[data-theme="dark"] {
   --surface-recessed-100: var(--grey-1000);
   --surface-recessed-200: var(--grey-1100);
   --surface-recessed-300: var(--grey-1200);
+  --shadow-color-thin: var(--black-opacity-20);
+  --shadow-color-medium: var(--black-opacity-20);
+  --shadow-color-thick: var(--black-opacity-30);
   /* Stroke */
   --outline-color: var(--blue-300);
   --border-color: var(--white-opacity-20);
@@ -1048,6 +1109,10 @@ html[data-theme="dark"] {
   /* Border */
   --border-thin: var(--stroke-size-100) var(--stroke-solid) var(--border-color);
   --border-thick: var(--stroke-size-200) var(--stroke-solid) var(--border-color);
+  /* Shadow */
+  --shadow-thin: 0 var(--space-050) var(--space-100) var(--shadow-color-thin);
+  --shadow-medium: 0 var(--space-100) var(--space-200) var(--shadow-color-medium);
+  --shadow-thick: 0 var(--space-500) var(--space-700) var(--shadow-color-thick);
   /* Outline */
   --outline-thin: var(--stroke-size-100) var(--stroke-outset) var(--outline-color);
   --outline-medium: var(--stroke-size-300) var(--stroke-outset) var(--outline-color);

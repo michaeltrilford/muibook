@@ -22,6 +22,15 @@ class storyDropdown extends HTMLElement {
           "dropdown-slot-last",
         ],
       },
+      {
+        component: "mui-link",
+        parentAttrs: [],
+        childAttrs: [
+          "dropdown-slot",
+          "dropdown-slot-first",
+          "dropdown-slot-last",
+        ],
+      },
     ]);
 
     const styles = /*css*/ `
@@ -43,10 +52,10 @@ class storyDropdown extends HTMLElement {
         name: "slot",
         required: true,
         type: "slot (default)",
-        options: "{mui-button}, {mui-rule}, {mui-elements}",
+        options: "{mui-button}, {mui-link}, {mui-rule}, {mui-elements}",
         default: "(required)",
         description:
-          "The button will automatically have the correct variants to be visually consistent when used within the dropdown.",
+          "Buttons and links will automatically have the correct variants to be visually consistent when used within the dropdown.",
       },
       {
         name: "zindex",
@@ -133,6 +142,29 @@ class storyDropdown extends HTMLElement {
           &nbsp;&nbsp;&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Option one&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Option two&lt;/mui-button&gt;<br>
+          &lt;/mui-dropdown&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Section Links" description="Use mui-link inside a dropdown when menu items should navigate to anchors or sections instead of acting like commands.">
+        <mui-dropdown slot="body">
+          <mui-button slot="action" variant="secondary">
+            Jump to section
+            <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
+          </mui-button>
+          <mui-link href="#dropdown-position-left" data-scroll-target="dropdown-position-left">Position: Left</mui-link>
+          <mui-link href="#dropdown-position-right" data-scroll-target="dropdown-position-right">Position: Right</mui-link>
+          <mui-link href="#dropdown-persistent" data-scroll-target="dropdown-persistent">Persistent</mui-link>
+        </mui-dropdown>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; variant=&quot;secondary&quot;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;Jump to section<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-down-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-down-chevron&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-link href=&quot;#dropdown-position-left&quot;&gt;Position: Left&lt;/mui-link&gt;<br>
+          &nbsp;&nbsp;&lt;mui-link href=&quot;#dropdown-position-right&quot;&gt;Position: Right&lt;/mui-link&gt;<br>
+          &nbsp;&nbsp;&lt;mui-link href=&quot;#dropdown-persistent&quot;&gt;Persistent&lt;/mui-link&gt;<br>
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
@@ -294,7 +326,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Position: Left">
+      <story-card id="dropdown-position-left" title="Position: Left">
         <mui-v-stack slot="body" alignX="center">
           <mui-dropdown position="left">
             <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
@@ -330,7 +362,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Position: Right">
+      <story-card id="dropdown-position-right" title="Position: Right">
         <mui-v-stack slot="body" alignX="center">
           <mui-dropdown position="right">
             <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
@@ -374,6 +406,7 @@ class storyDropdown extends HTMLElement {
       </story-card>
 
       <story-card 
+        id="dropdown-persistent"
         title="Persistent"
         description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
         usage="
@@ -618,6 +651,16 @@ class storyDropdown extends HTMLElement {
         toggle.toggle = false;
         toggle.setAttribute("aria-pressed", "false");
         dropdown.removeAttribute("persistent"); // or close your menu here
+      });
+    });
+
+    // === Section Link Logic ===
+    this.shadowRoot.querySelectorAll("[data-scroll-target]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetId = link.getAttribute("data-scroll-target");
+        const target = targetId ? this.shadowRoot.getElementById(targetId) : null;
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 

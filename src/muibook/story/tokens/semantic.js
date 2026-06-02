@@ -53,7 +53,7 @@ class tokensSemantic extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="text::Text|||font-weight::Font Weight|||border::Border|||outline::Outline|||overlay::Overlay|||feedback::Feedback|||form::Form|||action::Action|||surface::Surface"
+          links="text::Text|||font-weight::Font Weight|||border::Border|||shadow::Shadow|||outline::Outline|||overlay::Overlay|||feedback::Feedback|||form::Form|||action::Action|||surface::Surface"
         ></story-quicklinks>
 
           <spec-card id="text" title="Text">
@@ -89,6 +89,12 @@ class tokensSemantic extends HTMLElement {
           <story-token-slat slot="body" token="--border-color" variant="border-color"></story-token-slat>
           <story-token-slat slot="body" token="--border-thin" variant="border"></story-token-slat>
           <story-token-slat slot="body" token="--border-thick" variant="border"></story-token-slat>
+          </spec-card>
+
+          <spec-card id="shadow" title="Shadow">
+          <story-token-slat slot="body" token="--shadow-thin" variant="shadow"></story-token-slat>
+          <story-token-slat slot="body" token="--shadow-medium" variant="shadow"></story-token-slat>
+          <story-token-slat slot="body" token="--shadow-thick" variant="shadow"></story-token-slat>
           </spec-card>
 
           <spec-card id="outline" title="Outline">

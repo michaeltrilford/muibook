@@ -372,13 +372,49 @@
       "import": "./dist/esm/components/mui-icons/rectangle-dashed/index.js",
       "types": "./dist/types/components/mui-icons/rectangle-dashed/index.d.ts"
     },
+    "./mui-icons/fullscreen": {
+      "import": "./dist/esm/components/mui-icons/fullscreen/index.js",
+      "types": "./dist/types/components/mui-icons/fullscreen/index.d.ts"
+    },
     "./mui-icons/rectangle-left-drawer": {
       "import": "./dist/esm/components/mui-icons/rectangle-left-drawer/index.js",
       "types": "./dist/types/components/mui-icons/rectangle-left-drawer/index.d.ts"
     },
-    "./mui-icons/rectangle-bottom-panel": {
-      "import": "./dist/esm/components/mui-icons/rectangle-bottom-panel/index.js",
-      "types": "./dist/types/components/mui-icons/rectangle-bottom-panel/index.d.ts"
+    "./mui-icons/panel": {
+      "import": "./dist/esm/components/mui-icons/panel/index.js",
+      "types": "./dist/types/components/mui-icons/panel/index.d.ts"
+    },
+    "./mui-icons/pause": {
+      "import": "./dist/esm/components/mui-icons/pause/index.js",
+      "types": "./dist/types/components/mui-icons/pause/index.d.ts"
+    },
+    "./mui-icons/picture-in-picture": {
+      "import": "./dist/esm/components/mui-icons/picture-in-picture/index.js",
+      "types": "./dist/types/components/mui-icons/picture-in-picture/index.d.ts"
+    },
+    "./mui-icons/play-fill": {
+      "import": "./dist/esm/components/mui-icons/play-fill/index.js",
+      "types": "./dist/types/components/mui-icons/play-fill/index.d.ts"
+    },
+    "./mui-icons/reload": {
+      "import": "./dist/esm/components/mui-icons/reload/index.js",
+      "types": "./dist/types/components/mui-icons/reload/index.d.ts"
+    },
+    "./mui-icons/speaker-mute": {
+      "import": "./dist/esm/components/mui-icons/speaker-mute/index.js",
+      "types": "./dist/types/components/mui-icons/speaker-mute/index.d.ts"
+    },
+    "./mui-icons/speaker-one-wave": {
+      "import": "./dist/esm/components/mui-icons/speaker-one-wave/index.js",
+      "types": "./dist/types/components/mui-icons/speaker-one-wave/index.d.ts"
+    },
+    "./mui-icons/speaker-two-wave": {
+      "import": "./dist/esm/components/mui-icons/speaker-two-wave/index.js",
+      "types": "./dist/types/components/mui-icons/speaker-two-wave/index.d.ts"
+    },
+    "./mui-icons/stop-fill": {
+      "import": "./dist/esm/components/mui-icons/stop-fill/index.js",
+      "types": "./dist/types/components/mui-icons/stop-fill/index.d.ts"
     },
     "./mui-icons/pin": {
       "import": "./dist/esm/components/mui-icons/pin/index.js",
@@ -391,6 +427,10 @@
     "./mui-icons/text-below-folder": {
       "import": "./dist/esm/components/mui-icons/text-below-folder/index.js",
       "types": "./dist/types/components/mui-icons/text-below-folder/index.d.ts"
+    },
+    "./mui-icons/vertical-ellipsis": {
+      "import": "./dist/esm/components/mui-icons/vertical-ellipsis/index.js",
+      "types": "./dist/types/components/mui-icons/vertical-ellipsis/index.d.ts"
     },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",

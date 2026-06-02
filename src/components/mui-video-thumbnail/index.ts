@@ -152,7 +152,7 @@ class MuiVideoThumbnail extends HTMLElement {
           width: var(--video-thumbnail-play-size, var(--action-icon-only-size-large));
           height: var(--video-thumbnail-play-size, var(--action-icon-only-size-large));
           border-radius: var(--video-thumbnail-play-size, var(--action-icon-only-size-large));
-          background: var(--video-thumbnail-play-background, var(--black-opacity-60));
+          background: var(--video-thumbnail-play-background, var(--black-opacity-80));
           color: var(--video-thumbnail-play-color, var(--white));
           opacity: var(--video-thumbnail-play-opacity, 0);
           transform: translate(-50%, -50%);
@@ -172,7 +172,7 @@ class MuiVideoThumbnail extends HTMLElement {
           display: none;
         }
 
-        .play mui-icon-play-rectangle {
+        .play mui-icon-play-fill {
           fill: currentColor;
         }
 
@@ -196,7 +196,7 @@ class MuiVideoThumbnail extends HTMLElement {
           }
           ${showOverlay ? `<span class="overlay" aria-hidden="true"></span>` : ""}
           <span class="play" aria-hidden="true" ${showPlay ? "" : "hidden"}>
-            <mui-icon-play-rectangle size="large"></mui-icon-play-rectangle>
+            <mui-icon-play-fill size="large"></mui-icon-play-fill>
           </span>
         </figure>
         <slot name="meta"></slot>

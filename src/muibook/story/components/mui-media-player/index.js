@@ -11,6 +11,13 @@ class StoryMediaPlayer extends HTMLElement {
 
     const propItems = [
       {
+        name: "controls",
+        type: "string",
+        options: "player, thumbnail, none",
+        default: "player",
+        description: "Chooses the controls presentation. Player uses Muibook controls over the native media element; thumbnail opts audio into the richer thumbnail presentation.",
+      },
+      {
         name: "src",
         type: "string",
         options: "url",
@@ -30,6 +37,27 @@ class StoryMediaPlayer extends HTMLElement {
         options: "url",
         default: "",
         description: "Poster image for native video.",
+      },
+      {
+        name: "thumbnail",
+        type: "string",
+        options: "url",
+        default: "",
+        description: "Optional thumbnail image for audio thumbnail presentation.",
+      },
+      {
+        name: "artwork",
+        type: "string",
+        options: "url",
+        default: "",
+        description: "Optional artwork image for audio artwork presentation.",
+      },
+      {
+        name: "media-title",
+        type: "string",
+        options: "text",
+        default: "",
+        description: "Required title for the audio metadata presentation.",
       },
       {
         name: "autoplay",
@@ -71,7 +99,11 @@ class StoryMediaPlayer extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-media-player" title="Media Player"></story-api-types>
 
-      <story-card id="video-native" title="Native Video" description="Direct video file rendered with native controls.">
+      <story-card
+        id="video"
+        title="Video"
+        description="Direct video file rendered with the native video element and Muibook controls."
+        usage="Use Muibook controls when the player needs to match the product visual language.|||The native video element remains the playback engine underneath the UI.">
         <mui-media-player
           slot="body"
           type="video"
@@ -88,10 +120,10 @@ class StoryMediaPlayer extends HTMLElement {
       </story-card>
 
       <story-card
-        id="audio-native"
-        title="Native Audio"
-        description="Direct audio file rendered with native controls."
-        usage="Chrome currently does not support full theming for native media controls, so the seek bar can appear in light styling.|||Muibook defaults to native media controls for reliability and accessibility.|||If you need deeper visual customization, bring your own player UI.">
+        id="audio"
+        title="Audio"
+        description="Direct audio file rendered as a compact player."
+        usage="Use this state when the player only needs playback controls.|||The native audio element remains the playback engine underneath the UI.">
         <mui-media-player
           slot="body"
           type="audio"
@@ -101,6 +133,80 @@ class StoryMediaPlayer extends HTMLElement {
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
           &nbsp;&nbsp;src="https://www.w3schools.com/html/horse.mp3"&gt;<br />
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="audio-metadata"
+        title="Audio Metadata"
+        description="Direct audio file rendered with required title metadata and optional supporting metadata."
+        usage="Use media-title when audio needs context without a thumbnail.|||Slot optional metadata into slot='meta'.">
+        <mui-media-player
+          slot="body"
+          type="audio"
+          media-title="Web Components"
+          src="https://www.w3schools.com/html/horse.mp3">
+          <mui-body slot="meta" size="small" variant="optional">Mike Trilford</mui-body>
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="audio"<br />
+          &nbsp;&nbsp;media-title="Web Components"<br />
+          &nbsp;&nbsp;src="https://www.w3schools.com/html/horse.mp3"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="meta" size="small" variant="optional"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="audio-thumbnail"
+        title="Audio Thumbnail"
+        description="Direct audio file rendered with a thumbnail replacing the basic metadata presentation."
+        usage="Add a thumbnail when the audio needs a stronger visual presentation.|||The thumbnail fills the visual area while the native audio element remains the playback engine underneath the UI.">
+        <mui-media-player
+          slot="body"
+          type="audio"
+          controls="thumbnail"
+          media-title="Web Components"
+          thumbnail="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+          src="https://www.w3schools.com/html/horse.mp3">
+          <mui-body slot="meta" size="small" variant="optional">Mike Trilford</mui-body>
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="audio"<br />
+          &nbsp;&nbsp;controls="thumbnail"<br />
+          &nbsp;&nbsp;media-title="Web Components"<br />
+          &nbsp;&nbsp;thumbnail="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"<br />
+          &nbsp;&nbsp;src="https://www.w3schools.com/html/horse.mp3"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="meta" size="small" variant="optional"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="audio-artwork"
+        title="Audio Artwork"
+        description="Direct audio file rendered with artwork replacing the basic metadata presentation."
+        usage="Add artwork when the audio needs a stronger visual presentation.|||The artwork fills the visual area while the native audio element remains the playback engine underneath the UI.">
+        <mui-media-player
+          slot="body"
+          type="audio"
+          controls="thumbnail"
+          media-title="Web Components"
+          artwork="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+          src="https://www.w3schools.com/html/horse.mp3">
+          <mui-body slot="meta" size="small" variant="optional">Mike Trilford</mui-body>
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="audio"<br />
+          &nbsp;&nbsp;controls="thumbnail"<br />
+          &nbsp;&nbsp;media-title="Web Components"<br />
+          &nbsp;&nbsp;artwork="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"<br />
+          &nbsp;&nbsp;src="https://www.w3schools.com/html/horse.mp3"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="meta" size="small" variant="optional"&gt;Mike Trilford&lt;/mui-body&gt;<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
@@ -144,7 +250,7 @@ class StoryMediaPlayer extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="video-native::Native Video|||audio-native::Native Audio|||youtube::YouTube Embed|||soundcloud::SoundCloud Embed"
+          links="video::Video|||audio::Audio|||audio-metadata::Audio Metadata|||audio-thumbnail::Audio Thumbnail|||audio-artwork::Audio Artwork|||youtube::YouTube Embed|||soundcloud::SoundCloud Embed"
         ></story-quicklinks>
         ${stories}
       </story-template>

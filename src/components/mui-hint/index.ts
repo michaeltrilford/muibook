@@ -1,4 +1,6 @@
 class MuiHint extends HTMLElement {
+  private static portalStylesInjected = false;
+
   static get observedAttributes() {
     return ["placement", "open", "delay", "initial-delay", "size"];
   }
@@ -6,6 +8,8 @@ class MuiHint extends HTMLElement {
   private openTimer: number | null = null;
   private closeTimer: number | null = null;
   private hasOpenedOnce = false;
+  private portalTooltipElement: HTMLElement | null = null;
+  private hintId = `hint-${Math.random().toString(36).slice(2)}`;
   private boundReposition = () => this.positionTooltip();
   private boundDocPointer = (event: Event) => {
     const path = event.composedPath();
@@ -22,6 +26,13 @@ class MuiHint extends HTMLElement {
     this.render();
     this.setupEvents();
     this.syncTriggerSize();
+  }
+
+  disconnectedCallback() {
+    this.restoreTooltip();
+    window.removeEventListener("resize", this.boundReposition);
+    window.removeEventListener("scroll", this.boundReposition, true);
+    document.removeEventListener("pointerdown", this.boundDocPointer, true);
   }
 
   attributeChangedCallback() {
@@ -52,23 +63,25 @@ class MuiHint extends HTMLElement {
         }
         .tooltip {
           display: none;
-          position: absolute;
+          position: fixed;
           z-index: 1000;
           min-width: max-content;
           max-width: var(--hint-max-width, 28rem);
           padding: var(--space-200) var(--space-300);
           border-radius: var(--radius-200);
           border: var(--border-thin);
-          border-color: var(--border-color);
-          background: var(--surface-elevated-100);
-          color: var(--text-color);
-          box-shadow: var(--shadow-200, 0 6px 20px rgba(0,0,0,0.18));
+          border-color: var(--hint-border-color, var(--border-color));
+          background: var(--hint-background, var(--surface-elevated-100));
+          color: var(--hint-text-color, var(--text-color));
+          box-shadow: var(--hint-shadow, var(--shadow-medium, 0 6px 20px rgba(0,0,0,0.18)));
           opacity: 0;
           pointer-events: none;
           transition: opacity var(--speed-300, 160ms) ease;
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
           box-sizing: border-box;
+          top: 0;
+          left: 0;
         }
         :host([closing-immediate]) .tooltip {
           transition-duration: 0ms;
@@ -78,46 +91,14 @@ class MuiHint extends HTMLElement {
           opacity: 1;
           pointer-events: auto;
         }
-        .tooltip::before {
-          content: "";
-          position: absolute;
-          width: 0;
-          height: 0;
-          border-style: solid;
-        }
-        .tooltip[data-placement="top"]::before {
-          left: 50%;
-          top: 100%;
-          transform: translateX(-50%);
-          border-width: 6px 6px 0 6px;
-          border-color: var(--surface-elevated-100) transparent transparent transparent;
-        }
-        .tooltip[data-placement="bottom"]::before {
-          left: 50%;
-          bottom: 100%;
-          transform: translateX(-50%);
-          border-width: 0 6px 6px 6px;
-          border-color: transparent transparent var(--surface-elevated-100) transparent;
-        }
-        .tooltip[data-placement="left"]::before {
-          left: 100%;
-          top: 50%;
-          transform: translateY(-50%);
-          border-width: 6px 0 6px 6px;
-          border-color: transparent transparent transparent var(--surface-elevated-100);
-        }
-        .tooltip[data-placement="right"]::before {
-          right: 100%;
-          top: 50%;
-          transform: translateY(-50%);
-          border-width: 6px 6px 6px 0;
-          border-color: transparent var(--surface-elevated-100) transparent transparent;
+        :host([portaled]) .tooltip {
+          visibility: hidden;
         }
       </style>
       <span class="trigger" tabindex="0" aria-describedby="hint-tooltip">
         <slot name="trigger"></slot>
       </span>
-      <div id="hint-tooltip" class="tooltip" role="tooltip" data-placement="${placement}">
+      <div id="hint-tooltip" class="tooltip" role="tooltip" data-placement="${placement}" data-owner="${this.hintId}">
         <slot></slot>
       </div>
     `;
@@ -203,6 +184,7 @@ class MuiHint extends HTMLElement {
   private open() {
     this.hasOpenedOnce = true;
     this.removeAttribute("closing-immediate");
+    this.portalTooltip();
     this.setAttribute("open", "");
     requestAnimationFrame(() => this.positionTooltip());
     window.addEventListener("resize", this.boundReposition);
@@ -224,14 +206,90 @@ class MuiHint extends HTMLElement {
     if (immediate) {
       requestAnimationFrame(() => this.removeAttribute("closing-immediate"));
     }
+    this.restoreTooltip();
     window.removeEventListener("resize", this.boundReposition);
     window.removeEventListener("scroll", this.boundReposition, true);
     document.removeEventListener("pointerdown", this.boundDocPointer, true);
   }
 
+  private portalTooltip() {
+    const tooltip = this.shadowRoot?.querySelector(".tooltip") as HTMLElement | null;
+    const contentSlot = this.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement | null;
+    if (!tooltip || !contentSlot) return;
+
+    this.ensurePortalStyles();
+    if (!this.portalTooltipElement) {
+      this.portalTooltipElement = document.createElement("div");
+      this.portalTooltipElement.className = "mui-hint-portal";
+      this.portalTooltipElement.setAttribute("role", "tooltip");
+      this.portalTooltipElement.dataset.owner = this.hintId;
+      document.body.appendChild(this.portalTooltipElement);
+    }
+
+    this.portalTooltipElement.innerHTML = "";
+    contentSlot.assignedNodes({ flatten: true }).forEach((node) => {
+      this.portalTooltipElement?.appendChild(node.cloneNode(true));
+    });
+    this.syncPortalStyles(this.portalTooltipElement);
+    this.portalTooltipElement.classList.add("is-open");
+    this.setAttribute("portaled", "");
+  }
+
+  private restoreTooltip() {
+    this.removeAttribute("portaled");
+    this.portalTooltipElement?.remove();
+    this.portalTooltipElement = null;
+  }
+
+  private ensurePortalStyles() {
+    if (MuiHint.portalStylesInjected) return;
+
+    const style = document.createElement("style");
+    style.textContent = `
+      .mui-hint-portal {
+        display: block;
+        position: fixed;
+        z-index: 1000;
+        min-width: max-content;
+        max-width: var(--hint-max-width, 28rem);
+        padding: var(--space-200) var(--space-300);
+        border-radius: var(--radius-200);
+        border: var(--border-thin);
+        border-color: var(--hint-border-color, var(--border-color));
+        background: var(--hint-background, var(--surface-elevated-100));
+        color: var(--hint-text-color, var(--text-color));
+        box-shadow: var(--hint-shadow, var(--shadow-medium, 0 6px 20px rgba(0,0,0,0.18)));
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--speed-300, 160ms) ease;
+        font-size: var(--text-font-size-xs);
+        line-height: var(--text-line-height-xs);
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+      }
+      .mui-hint-portal.is-open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    `;
+    document.head.appendChild(style);
+    MuiHint.portalStylesInjected = true;
+  }
+
+  private syncPortalStyles(tooltip: HTMLElement) {
+    const styles = window.getComputedStyle(this);
+    ["--hint-background", "--hint-border-color", "--hint-max-width", "--hint-shadow", "--hint-text-color"].forEach((property) => {
+      const value = styles.getPropertyValue(property);
+      if (value) tooltip.style.setProperty(property, value);
+    });
+  }
+
   private positionTooltip() {
     const triggerWrapper = this.shadowRoot?.querySelector(".trigger") as HTMLElement | null;
-    const tooltip = this.shadowRoot?.querySelector(".tooltip") as HTMLElement | null;
+    const tooltip =
+      this.portalTooltipElement ||
+      (this.shadowRoot?.querySelector(".tooltip") as HTMLElement | null);
     if (!tooltip || !triggerWrapper) return;
 
     const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement | null;
@@ -240,18 +298,45 @@ class MuiHint extends HTMLElement {
 
     const desired = this.getAttribute("placement") || "top";
     const triggerRect = anchor.getBoundingClientRect();
-    const hostRect = this.getBoundingClientRect();
     const tooltipRect = tooltip.getBoundingClientRect();
     const viewportH = window.innerHeight;
     const viewportW = window.innerWidth;
     const edge = 8;
     const gap = 8;
+    const spaces = {
+      top: triggerRect.top - edge,
+      bottom: viewportH - triggerRect.bottom - edge,
+      left: triggerRect.left - edge,
+      right: viewportW - triggerRect.right - edge,
+    };
+    const required = {
+      top: tooltipRect.height + gap,
+      bottom: tooltipRect.height + gap,
+      left: tooltipRect.width + gap,
+      right: tooltipRect.width + gap,
+    };
+    const opposites: Record<string, "top" | "bottom" | "left" | "right"> = {
+      top: "bottom",
+      bottom: "top",
+      left: "right",
+      right: "left",
+    };
+    const placementOrder: ("top" | "bottom" | "left" | "right")[] = ["top", "bottom", "right", "left"];
+    const preferred = placementOrder.includes(desired as "top" | "bottom" | "left" | "right")
+      ? (desired as "top" | "bottom" | "left" | "right")
+      : "top";
 
-    let resolved = desired;
-    if (desired === "top" && triggerRect.top - tooltipRect.height - gap < edge) resolved = "bottom";
-    if (desired === "bottom" && triggerRect.bottom + tooltipRect.height + gap > viewportH - edge) resolved = "top";
-    if (desired === "left" && triggerRect.left - tooltipRect.width - gap < edge) resolved = "right";
-    if (desired === "right" && triggerRect.right + tooltipRect.width + gap > viewportW - edge) resolved = "left";
+    let resolved = preferred;
+    const opposite = opposites[preferred];
+    if (spaces[preferred] < required[preferred]) {
+      if (spaces[opposite] >= required[opposite]) {
+        resolved = opposite;
+      } else {
+        resolved = placementOrder.reduce((best, placement) =>
+          spaces[placement] > spaces[best] ? placement : best
+        , preferred);
+      }
+    }
 
     tooltip.setAttribute("data-placement", resolved);
 
@@ -275,11 +360,8 @@ class MuiHint extends HTMLElement {
     globalTop = Math.max(edge, Math.min(globalTop, viewportH - tooltipRect.height - edge));
     globalLeft = Math.max(edge, Math.min(globalLeft, viewportW - tooltipRect.width - edge));
 
-    const localTop = globalTop - hostRect.top;
-    const localLeft = globalLeft - hostRect.left;
-
-    tooltip.style.top = `${localTop}px`;
-    tooltip.style.left = `${localLeft}px`;
+    tooltip.style.top = `${globalTop}px`;
+    tooltip.style.left = `${globalLeft}px`;
   }
 }
 

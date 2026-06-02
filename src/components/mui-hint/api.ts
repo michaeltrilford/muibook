@@ -12,6 +12,12 @@ export const muiApi = {
       { name: "", description: "Tooltip content." },
       { name: "trigger", description: "Interactive hint trigger, typically an icon or badge." },
     ],
-    cssProperties: [{ name: "--hint-max-width", description: "Maximum tooltip content width." }],
+    cssProperties: [
+      { name: "--hint-background", description: "Hint surface background." },
+      { name: "--hint-border-color", description: "Hint surface border color." },
+      { name: "--hint-max-width", description: "Maximum tooltip content width." },
+      { name: "--hint-shadow", description: "Hint surface shadow." },
+      { name: "--hint-text-color", description: "Hint content text color." },
+    ],
   },
 };

@@ -438,9 +438,59 @@ class storyIcon extends HTMLElement {
           </story-icon-grid> 
           
           <story-icon-grid center>
-            <mui-icon-rectangle-bottom-panel slot="body"></mui-icon-rectangle-bottom-panel>
-            <mui-code slot="footer" scrollable>mui-icon-rectangle-bottom-panel</mui-code>
+            <mui-icon-panel slot="body"></mui-icon-panel>
+            <mui-code slot="footer" scrollable>mui-icon-panel</mui-code>
           </story-icon-grid> 
+
+          <story-icon-grid center>
+            <mui-icon-fullscreen slot="body"></mui-icon-fullscreen>
+            <mui-code slot="footer" scrollable>mui-icon-fullscreen</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-pause slot="body"></mui-icon-pause>
+            <mui-code slot="footer" scrollable>mui-icon-pause</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-picture-in-picture slot="body"></mui-icon-picture-in-picture>
+            <mui-code slot="footer" scrollable>mui-icon-picture-in-picture</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-play-fill slot="body"></mui-icon-play-fill>
+            <mui-code slot="footer" scrollable>mui-icon-play-fill</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-reload slot="body"></mui-icon-reload>
+            <mui-code slot="footer" scrollable>mui-icon-reload</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-speaker-mute slot="body"></mui-icon-speaker-mute>
+            <mui-code slot="footer" scrollable>mui-icon-speaker-mute</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-speaker-one-wave slot="body"></mui-icon-speaker-one-wave>
+            <mui-code slot="footer" scrollable>mui-icon-speaker-one-wave</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-speaker-two-wave slot="body"></mui-icon-speaker-two-wave>
+            <mui-code slot="footer" scrollable>mui-icon-speaker-two-wave</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-stop-fill slot="body"></mui-icon-stop-fill>
+            <mui-code slot="footer" scrollable>mui-icon-stop-fill</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-vertical-ellipsis slot="body"></mui-icon-vertical-ellipsis>
+            <mui-code slot="footer" scrollable>mui-icon-vertical-ellipsis</mui-code>
+          </story-icon-grid>
 
           <story-icon-grid center>
             <mui-icon-pin slot="body"></mui-icon-pin>

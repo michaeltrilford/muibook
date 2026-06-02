@@ -3,6 +3,11 @@ export const muiApi = {
     description: "Triggers an action with semantic button behaviour, visual emphasis variants, and optional leading or trailing content.",
     attributes: [
       {
+        name: "onclick",
+        type: { text: "string" },
+        description: "Inline click handler passed through to the internal native button.",
+      },
+      {
         name: "type",
         type: { text: '"button" | "submit" | "reset"' },
         default: "button",
@@ -18,6 +23,12 @@ export const muiApi = {
         type: { text: "boolean" },
         default: "false",
         description: "Disables button interaction.",
+      },
+      {
+        name: "pending",
+        type: { text: "boolean" },
+        default: "false",
+        description: "Blocks repeat activation during async work without applying disabled styling.",
       },
       {
         name: "variant",

@@ -1,5 +1,44 @@
 ## Header [Start]
 
+## v20.1.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/20.1.0)
+
+## Header [End]
+
+### Added
+
+- `mui-button` now supports `pending` for async actions, blocking repeat activation without applying disabled styling and exposing `aria-busy` while work is in flight.
+- `mui-media-player` now supports `controls="player" | "thumbnail" | "none"` for choosing Muibook controls, the compact thumbnail audio presentation, or no controls for direct audio/video media.
+- `mui-media-player` now supports `media-title`, `thumbnail`, `artwork`, and `slot="meta"` for audio metadata, thumbnail, and artwork presentations.
+- `mui-media-player` controls now include an options menu with Download and Open source actions, using the dropdown component with slotted `mui-link` menu items.
+- `mui-media-player` video controls now use a modern rounded overlay treatment with center play, smooth local seek, volume, Picture-in-Picture, fullscreen, and overflow actions.
+- `mui-media-player` audio now includes compact player, metadata, thumbnail, and artwork presentations, with richer audio states using the same hover overlay control direction as video.
+- Added media-player component tokens for light/dark surface behavior, dark artwork thumbnail border/shadow, overlay controls, range colors, and player shadows.
+
+### Documentation
+
+- Added a Button story showing inline async feedback with `Copy`/`Save`, spinner pending states, check-icon success states, and guidance for replacing demo delays with real async work.
+- Updated Media Player stories to lead with Muibook player controls and document compact audio, audio metadata, audio thumbnail, audio artwork, video, YouTube, and SoundCloud states.
+- Updated token stories to include semantic shadow tokens and media-player component tokens.
+
+### Changed
+
+- `mui-media-player` now uses dedicated local SVG icon components for play, pause, stop, restart, volume, Picture-in-Picture, fullscreen, and overflow controls.
+- `mui-media-player` now keeps image/video overlay controls locked to the dark overlay treatment while compact audio and metadata surfaces remain theme-aware.
+- `mui-media-player` control rendering was refactored into smaller helpers and now cleans up document-level fullscreen listeners on re-render/disconnect.
+- `mui-dropdown` now portals menu contents to avoid clipping in overflow-hidden media player surfaces.
+
+### Fixed
+
+- `mui-dropdown` now applies matching menu-item width, alignment, and first/last radius treatment to slotted `mui-link` items as well as slotted `mui-button` items.
+- `mui-media-player` artwork thumbnail border and shadow now stay dark over artwork in both light and dark themes.
+- `mui-media-player` volume icons now update reliably as the user adjusts the volume range.
+
+---
+
+## Header [Start]
+
 ## v20.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/20.0.0)

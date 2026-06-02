@@ -8,6 +8,7 @@ class MuiButton extends HTMLElement {
       "type",
       "aria-label",
       "disabled",
+      "pending",
       "variant",
       "stroke",
       "stroke-ring-size",
@@ -88,6 +89,14 @@ class MuiButton extends HTMLElement {
       color: var(--action-primary-text-color-disabled);
       border: var(--action-primary-border-disabled);
       cursor: not-allowed;
+    }
+
+    :host([pending]) {
+      pointer-events: none;
+    }
+
+    :host([pending]) button {
+      cursor: progress;
     }
 
     button, button:before, button:after {box-sizing: border-box;}
@@ -833,6 +842,7 @@ class MuiButton extends HTMLElement {
       onclick="${this.getAttribute("onclick")}" 
       type="${this.getAttribute("type") || "button"}" 
       aria-label="${this.getAttribute("aria-label") || ""}"
+      aria-busy="${this.hasAttribute("pending") ? "true" : "false"}"
       ${this.hasAttribute("disabled") ? "disabled" : ""}
     >
       <slot name="before"></slot>
@@ -843,6 +853,13 @@ class MuiButton extends HTMLElement {
     `;
 
     this.shadowRoot.innerHTML = html;
+
+    const button = this.shadowRoot.querySelector("button");
+    button?.addEventListener("click", (event) => {
+      if (!this.hasAttribute("pending")) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    });
 
     await customElements.whenDefined("mui-button");
 
@@ -866,6 +883,13 @@ class MuiButton extends HTMLElement {
         } else {
           button.removeAttribute("disabled");
         }
+      }
+    }
+
+    if (name === "pending") {
+      const button = this.shadowRoot?.querySelector("button");
+      if (button) {
+        button.setAttribute("aria-busy", this.hasAttribute("pending") ? "true" : "false");
       }
     }
 

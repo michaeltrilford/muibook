@@ -311,7 +311,7 @@ class MuiPromptPreview extends HTMLElement {
           border-color: var(--form-default-border-color);
           border-radius: var(--radius-200);
           box-shadow:
-            var(--shadow-200),
+            var(--shadow-medium),
             0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20),
             inset 0 0 0 1px color-mix(in srgb, ${glowTone} 12%, transparent 88%),
             inset 0 calc(var(--space-050) * -1) var(--space-300) color-mix(in srgb, #000 12%, transparent 88%);

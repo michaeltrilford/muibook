@@ -26,6 +26,7 @@ export const muiDocs: MuiDocs = {
         "Use avatar-only buttons when the avatar itself is the visible trigger, such as opening an account menu, switching profiles on a video platform, or launching a compact settings drawer.",
         "When the button only contains mui-avatar, the button collapses to the avatar footprint while preserving interaction semantics, focus, and disabled behaviour.",
         "Avatar-only buttons work well with Dropdown, Drawer, and Dialog when you want the control to read as identity-first rather than as a standard text button.",
+        "Use pending to block repeat activation during async work without applying disabled styling.",
       ],
     },
 

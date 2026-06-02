@@ -34,7 +34,7 @@ class storyButton extends HTMLElement {
         border: var(--border-thin);
         border-color: var(--form-default-border-color);
         overflow: hidden;
-        box-shadow: var(--shadow-200);
+        box-shadow: var(--shadow-medium);
         display: flex;
         align-items: end;
         justify-content: start;
@@ -100,6 +100,13 @@ class storyButton extends HTMLElement {
         options: "primary, secondary, tertiary, overlay, attention",
         default: "primary",
         description: "Describe the intent or mood of the action.",
+      },
+      {
+        name: "pending",
+        type: "boolean",
+        options: "pending",
+        default: "",
+        description: "Blocks repeat activation during async work without applying disabled styling.",
       },
       {
         name: "stroke",
@@ -266,6 +273,70 @@ class storyButton extends HTMLElement {
         &lt;mui-button&nbsp;variant="primary"&gt;<br />
         &nbsp;&nbsp;&nbsp;&nbsp;...<br />
         &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        title="Inline Async Feedback"
+        id="inline-async-feedback"
+        description="Use short-lived button text changes to confirm local async actions in place. This keeps feedback attached to the control that started the work instead of sending users to a toast or global notification."
+        usage="
+          Use for quick async actions like copying, saving, adding, or syncing|||
+          Keep the pending and success labels short so button width stays stable|||
+          Use pending while the action is in flight to prevent duplicate requests without disabled styling|||
+          Reset to the original label after the user has had time to read the success state
+        "
+      >
+        <mui-v-stack slot="body" alignx="start" space="var(--space-100)">
+          <mui-button
+            size="small"
+            variant="secondary"
+            data-async-feedback
+            data-default-label="Copy"
+            data-pending-label="Copying"
+            data-success-label="Copied"
+          >
+            Copy
+          </mui-button>
+          <mui-button
+            size="small"
+            variant="secondary"
+            data-async-feedback
+            data-default-label="Save"
+            data-pending-label="Saving"
+            data-success-label="Saved"
+          >
+            Save
+          </mui-button>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          // Construct inline async feedback by changing the button state around the real async task.<br />
+          // The pending prop prevents duplicate activation without applying disabled styling.<br />
+          // The delay below only fakes async work for this demo; replace it with your real copy, save, or sync request.<br />
+          <br />
+          const button = this.shadowRoot.querySelector("[data-async-feedback]");<br />
+          const delay = (duration) =&gt; new Promise((resolve) =&gt; setTimeout(resolve, duration));<br />
+          <br />
+          button.addEventListener("click", async () =&gt; {<br />
+          &nbsp;&nbsp;if (button.hasAttribute("pending")) return;<br />
+          <br />
+          &nbsp;&nbsp;// Set pending while work is in flight.<br />
+          &nbsp;&nbsp;button.setAttribute("pending", "");<br />
+          <br />
+          &nbsp;&nbsp;// Pending: show a spinner beside the in-progress label.<br />
+          &nbsp;&nbsp;button.innerHTML = '&lt;mui-spinner slot="before" size="x-small"&gt;&lt;/mui-spinner&gt;' + button.dataset.pendingLabel;<br />
+          <br />
+          &nbsp;&nbsp;await delay(900); // Replace with await saveChanges(), navigator.clipboard.writeText(), etc.<br />
+          &nbsp;&nbsp;// Success: briefly confirm completion with a check icon.<br />
+          &nbsp;&nbsp;button.innerHTML = '&lt;mui-icon-check slot="before" size="x-small"&gt;&lt;/mui-icon-check&gt;' + button.dataset.successLabel;<br />
+          <br />
+          &nbsp;&nbsp;await delay(1400); // Optional: keep success visible long enough to read.<br />
+          &nbsp;&nbsp;// Reset: return the control to its original label.<br />
+          &nbsp;&nbsp;button.textContent = button.dataset.defaultLabel;<br />
+          &nbsp;&nbsp;button.removeAttribute("pending");<br />
+          });<br />
+          <br />
+          &lt;mui-button data-async-feedback&gt;Copy&lt;/mui-button&gt;
         </story-code-block>
       </story-card>
 
@@ -1218,12 +1289,12 @@ class storyButton extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
         attrs-reference='${attrsReference}'
       
-        imports='["@muibook/components/mui-button"]'>
+        imports='["@muibook/components/mui-button", "@muibook/components/mui-spinner"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="form-submissions::Form submissions|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||stroke-ring::Stroke: Ring|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||button-group::Header: Button-Group|||footer-button-group::Footer: Button-Group|||button-group-layout::Button-Group: Layout|||button-group-alignment::Button-Group: Alignment|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||avatar-only-button::Avatar-only Button|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
+          links="form-submissions::Form submissions|||inline-async-feedback::Inline Async Feedback|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||stroke-ring::Stroke: Ring|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||button-group::Header: Button-Group|||footer-button-group::Footer: Button-Group|||button-group-layout::Button-Group: Layout|||button-group-alignment::Button-Group: Alignment|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||avatar-only-button::Avatar-only Button|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
         ></story-quicklinks>
 
         ${stories}
@@ -1239,6 +1310,28 @@ class storyButton extends HTMLElement {
       btn.addEventListener("click", () => {
         toggle.toggle = !toggle.toggle;
         toggle.setAttribute("aria-pressed", toggle.toggle);
+      });
+    });
+
+    const delay = (duration) => new Promise((resolve) => setTimeout(resolve, duration));
+
+    this.shadowRoot.querySelectorAll("mui-button[data-async-feedback]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        if (btn.hasAttribute("pending")) return;
+
+        const defaultLabel = btn.dataset.defaultLabel || btn.textContent.trim();
+        const pendingLabel = btn.dataset.pendingLabel || defaultLabel;
+        const successLabel = btn.dataset.successLabel || defaultLabel;
+
+        btn.setAttribute("pending", "");
+        btn.innerHTML = `<mui-spinner slot="before" size="x-small"></mui-spinner>${pendingLabel}`;
+
+        await delay(900);
+        btn.innerHTML = `<mui-icon-check slot="before" size="x-small"></mui-icon-check>${successLabel}`;
+
+        await delay(1400);
+        btn.textContent = defaultLabel;
+        btn.removeAttribute("pending");
       });
     });
 

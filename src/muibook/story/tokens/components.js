@@ -299,6 +299,33 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--media-player-seek-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-seek-time-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-seek-time-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-range-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-range-thumb-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-range-track-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-control-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-control-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-center-play-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-shadow-thin" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-shadow-medium" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-shadow-thick" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-frame-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-video-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-artwork-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-thumbnail-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-thumbnail-border" variant="border"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-thumbnail-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-meta-icon-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-range-thumb-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-meta-text-shadow" variant="shadow"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-surface-overlay-start" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-surface-overlay-end" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-control-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-range-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-range-thumb-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-range-track-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-control-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-dark-overlay-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-video-ratio" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-soundcloud-ratio" variant="size"></story-token-slat>
           </spec-card>

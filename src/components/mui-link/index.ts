@@ -811,6 +811,22 @@ class MuiLink extends HTMLElement {
         border-radius: var(--action-radius-large);
       }
 
+      :host([dropdown-slot]) a {
+        border-radius: var(--radius-000);
+        justify-content: flex-start;
+        white-space: nowrap;
+      }
+
+      :host([dropdown-slot-first]) a {
+        border-top-left-radius: calc(var(--radius-100) / 2);
+        border-top-right-radius: calc(var(--radius-100) / 2);
+      }
+
+      :host([dropdown-slot-last]) a {
+        border-bottom-left-radius: calc(var(--radius-100) / 2);
+        border-bottom-right-radius: calc(var(--radius-100) / 2);
+      }
+
       /* Keep input-composed links flush against the input edge after size radius applies. */
       :host([slot="before"][usage="input"]) a,
       :host([slot="before"][usage="input"]) a:hover,

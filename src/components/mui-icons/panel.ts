@@ -1,4 +1,4 @@
-class MuiIconRectangleBottomPanel extends HTMLElement {
+class MuiIconPanel extends HTMLElement {
   static get observedAttributes() {
     return ["size", "color"];
   }
@@ -80,6 +80,6 @@ class MuiIconRectangleBottomPanel extends HTMLElement {
   }
 }
 
-if (!customElements.get("mui-icon-rectangle-bottom-panel")) {
-  customElements.define("mui-icon-rectangle-bottom-panel", MuiIconRectangleBottomPanel);
+if (!customElements.get("mui-icon-panel")) {
+  customElements.define("mui-icon-panel", MuiIconPanel);
 }
