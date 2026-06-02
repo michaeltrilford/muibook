@@ -1,6 +1,7 @@
 import { getComponentDocs } from "../../../utils/story-data";
 
 const videoSrc = new URL("../../../video/japan.mp4", import.meta.url).href;
+const videoPosterSrc = new URL("../../../video/japan-poster.jpg", import.meta.url).href;
 const audioSrc = new URL("../../../audio/twilight.m4a", import.meta.url).href;
 const audioThumbnailSrc = new URL("../../../audio/thumbnail.jpg", import.meta.url).href;
 const audioArtworkSrc = new URL("../../../audio/artwork.png", import.meta.url).href;
@@ -119,11 +120,13 @@ class StoryMediaPlayer extends HTMLElement {
         <mui-media-player
           slot="body"
           type="video"
+          poster="${videoPosterSrc}"
           src="${videoSrc}">
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
           &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
@@ -138,12 +141,14 @@ class StoryMediaPlayer extends HTMLElement {
           slot="body"
           type="video"
           center-play
+          poster="${videoPosterSrc}"
           src="${videoSrc}">
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;center-play<br />
+          &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
           &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
@@ -157,6 +162,7 @@ class StoryMediaPlayer extends HTMLElement {
         <mui-media-player
           slot="body"
           type="video"
+          poster="${videoPosterSrc}"
           src="${videoSrc}">
           <mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;">
             <mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile">
@@ -171,6 +177,7 @@ class StoryMediaPlayer extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
           &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
           &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile"&gt;<br />
@@ -193,6 +200,7 @@ class StoryMediaPlayer extends HTMLElement {
         <mui-media-player
           slot="body"
           type="video"
+          poster="${videoPosterSrc}"
           src="${videoSrc}">
           <mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;">
             <mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile">
@@ -207,6 +215,7 @@ class StoryMediaPlayer extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
           &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
           &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile"&gt;<br />
@@ -229,6 +238,7 @@ class StoryMediaPlayer extends HTMLElement {
         <mui-media-player
           slot="body"
           type="video"
+          poster="${videoPosterSrc}"
           src="${videoSrc}">
           <mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;">
             <mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile">
@@ -252,6 +262,7 @@ class StoryMediaPlayer extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
           &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
           &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile"&gt;<br />

@@ -302,6 +302,7 @@ class MuiMediaPlayer extends HTMLElement {
     const pipBtn = this.shadowRoot.querySelector('[data-action="pip"]') as HTMLElement | null;
     const fullscreenBtn = this.shadowRoot.querySelector('[data-action="fullscreen"]') as HTMLElement | null;
     const controls = this.shadowRoot.querySelector(".controls") as HTMLElement | null;
+    const controlsPeek = this.shadowRoot.querySelector(".controls-peek") as HTMLElement | null;
     const controlsHoverZone = this.shadowRoot.querySelector(".controls-hover-zone") as HTMLElement | null;
     const optionsMenu = this.shadowRoot.querySelector(".options-menu") as HTMLElement | null;
     const hasCustomControls = Boolean(
@@ -529,6 +530,7 @@ class MuiMediaPlayer extends HTMLElement {
       if (!usesHoverOverlayControls) return;
       const path = event.composedPath();
       if (path.includes(controls as EventTarget)) return;
+      if (controlsPeek && path.includes(controlsPeek)) return;
       if (centerPlay && path.includes(centerPlay)) return;
       if (
         path.some(
@@ -651,6 +653,15 @@ class MuiMediaPlayer extends HTMLElement {
       }
     });
     on(controlsHoverZone, "pointerdown", (event) => {
+      if (event instanceof PointerEvent && event.pointerType === "touch") {
+        scheduleTouchControlsReveal();
+        return;
+      }
+      scheduleControlsReveal(true);
+    });
+    on(controlsPeek, "pointerdown", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
       if (event instanceof PointerEvent && event.pointerType === "touch") {
         scheduleTouchControlsReveal();
         return;
@@ -1051,26 +1062,37 @@ class MuiMediaPlayer extends HTMLElement {
           position: absolute;
           z-index: 2;
           left: 50%;
-          bottom: var(--space-200);
+          bottom: var(--space-100);
           width: 3.6rem;
-          height: 0.4rem;
+          height: 2.4rem;
           border-radius: 999rem;
-          background: var(--media-player-controls-peek-background);
           opacity: 0.6;
-          pointer-events: none;
+          pointer-events: auto;
           transform: translateX(-50%);
-          box-shadow: var(--media-player-controls-peek-shadow);
+          cursor: pointer;
           transition:
             opacity var(--speed-200) ease,
             transform var(--speed-200) ease;
+        }
+        .controls-peek::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 100%;
+          height: 0.4rem;
+          border-radius: inherit;
+          background: var(--media-player-controls-peek-background);
+          box-shadow: var(--media-player-controls-peek-shadow);
+          transform: translateY(-50%);
         }
         .video-frame.custom-controls .controls-peek,
         .audio-frame.custom-controls:not(.audio-player-only) .controls-peek {
           display: block;
         }
         .audio-frame.custom-controls:not(.has-artwork):not(.audio-player-only) .controls-peek {
-          background: var(--media-player-audio-controls-peek-background);
-          box-shadow: var(--media-player-audio-controls-peek-shadow);
+          --media-player-controls-peek-background: var(--media-player-audio-controls-peek-background);
+          --media-player-controls-peek-shadow: var(--media-player-audio-controls-peek-shadow);
         }
         .frame.custom-controls:fullscreen .controls-peek,
         .video-frame.custom-controls.is-controls-revealing .controls-peek,

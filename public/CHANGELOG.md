@@ -37,6 +37,7 @@
 - `mui-dropdown` now applies matching menu-item width, alignment, and first/last radius treatment to slotted `mui-link` items as well as slotted `mui-button` items.
 - `mui-media-player` artwork thumbnail border and shadow now stay dark over artwork in both light and dark themes.
 - `mui-media-player` volume icons now update reliably as the user adjusts the volume range.
+- Media Player video stories now provide a poster image so iOS Safari has a stable placeholder before playback.
 
 ---
 
