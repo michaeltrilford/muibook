@@ -1913,6 +1913,10 @@ class MuiMediaPlayer extends HTMLElement {
         [data-action="time-mode"] {
           white-space: nowrap;
           flex: 0 0 auto;
+          font-variant-numeric: tabular-nums;
+        }
+        [data-action="time-mode"]::part(font-size) {
+          font-variant-numeric: tabular-nums;
         }
         .time-label-compact {
           display: none;
