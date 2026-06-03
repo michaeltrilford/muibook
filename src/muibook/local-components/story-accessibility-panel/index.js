@@ -87,6 +87,15 @@ class StoryAccessibilityPanel extends HTMLElement {
           .list-wrap {
             padding-inline: var(--space-600);
           }
+
+          .list {
+            text-wrap: balance; 
+            max-width: 60ch; 
+            margin-bottom: var(--space-300);
+          }
+          .list:last-child {
+            margin-bottom: var(--space-050);
+          }
         }
       </style>
       <mui-card>
@@ -114,7 +123,7 @@ class StoryAccessibilityPanel extends HTMLElement {
                   ${items
                     .map(
                       (item) =>
-                        /*html*/ `<mui-list-item size="x-small" weight="regular" role="listitem" variant="default">${escapeHtml(
+                        /*html*/ `<mui-list-item class="list" size="small" weight="regular" role="listitem" variant="default">${escapeHtml(
                           item,
                         )}</mui-list-item>`,
                     )

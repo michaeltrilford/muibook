@@ -1,5 +1,18 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["has-card-slat-group", "has-accordion-slat-group", "inner-space-top"]
+  "attributes": [
+    {
+      "name": "has-card-slat-group",
+      "description": "Set when card slat group content exists, allowing the card body to tune internal spacing for grouped slats."
+    },
+    {
+      "name": "has-accordion-slat-group",
+      "description": "Set when accordion slat group content exists, allowing the card body to tune internal spacing for grouped accordions."
+    },
+    {
+      "name": "inner-space-top",
+      "description": "Set when top inner spacing is needed, allowing the card body to adjust vertical rhythm."
+    }
+  ]
 }

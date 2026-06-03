@@ -1,5 +1,26 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["has-before", "has-after", "has-video", "icon-only"]
+  "attributes": [
+    {
+      "name": "has-before",
+      "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+    },
+    {
+      "name": "has-after",
+      "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+    },
+    {
+      "name": "has-video",
+      "description": "Set when video thumbnail content exists, allowing the action to clear default chrome and let the media card own the visual surface."
+    },
+    {
+      "name": "icon-only",
+      "description": "Set when the default slot contains only icon content, allowing the component to apply icon-only sizing, padding, and accessible-name expectations."
+    },
+    {
+      "name": "avatar-only",
+      "description": "Set when the default slot contains only an avatar, allowing the component to remove normal action chrome and preserve avatar sizing."
+    }
+  ]
 }

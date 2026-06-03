@@ -13,6 +13,8 @@
 - `mui-media-player` now supports `media-title`, `artwork`, and composed `slot="metadata"` content for audio metadata, audio artwork, and video metadata presentations.
 - `mui-media-player` now supports `height` for audio metadata and artwork presentations, mapping the prop to `--media-player-audio-height`.
 - `mui-media-player` now supports `center-play` for displaying an always-visible centered play/pause action over native video.
+- `mui-media-player` now supports `waveform` for opt-in generated audio waveforms, with playback progress reflected on the canvas.
+- `mui-media-player` now supports `slot="auxiliary"` for secondary media actions, badges, sponsored placements, and related overlay content.
 - `mui-media-player` controls now include an options menu with Download and Open source actions, using the dropdown component with slotted `mui-link` menu items.
 - `mui-media-player` video controls now use a modern rounded overlay treatment with center play, smooth local seek, volume, Picture-in-Picture, fullscreen, and overflow actions.
 - `mui-media-player` audio now includes compact player, metadata, and artwork presentations, with richer audio states using the same hover overlay control direction as video.
@@ -22,23 +24,30 @@
 ### Documentation
 
 - Added a Button story showing inline async feedback with `Copy`/`Save`, spinner pending states, check-icon success states, and guidance for replacing demo delays with real async work.
-- Updated Media Player stories to lead with Muibook player controls and document compact audio, audio metadata, audio artwork, visible play/pause, video metadata, YouTube, and SoundCloud states.
+- Updated Media Player stories to lead with Muibook player controls and document compact audio, audio metadata, audio waveform, audio artwork, audio artwork waveform, visible play/pause, video metadata, auxiliary content, YouTube, and SoundCloud states.
+- Updated Media Player documentation with stronger accessibility guidance for opt-in autoplay, slotted metadata actions, and clear media context.
 - Updated token stories to include semantic shadow tokens and media-player component tokens.
 
 ### Changed
 
 - `mui-media-player` now uses dedicated local SVG icon components for play, pause, stop, restart, volume, Picture-in-Picture, fullscreen, and overflow controls.
 - `mui-media-player` now keeps image/video overlay controls locked to the dark overlay treatment while compact audio and metadata surfaces remain theme-aware.
+- `mui-media-player` artwork waveforms now use a stronger image-overlay treatment, while no-artwork waveforms use higher contrast theme-aware canvas colors.
 - `mui-media-player` control rendering was refactored into smaller helpers and now cleans up document-level fullscreen listeners on re-render/disconnect.
 - `mui-dropdown` now portals menu contents to avoid clipping in overflow-hidden media player surfaces.
+- `mui-hint` now delegates focus to slotted buttons, links, and native controls instead of adding an extra wrapper tab stop, while keeping fallback keyboard focus for plain trigger content.
+- `mui-hint` fallback trigger focus now uses the Muibook focus outline with an outset offset instead of the browser default outline.
 
 ### Fixed
 
 - `mui-dropdown` now applies matching menu-item width, alignment, and first/last radius treatment to slotted `mui-link` items as well as slotted `mui-button` items.
 - `mui-media-player` artwork thumbnail border and shadow now stay dark over artwork in both light and dark themes.
 - `mui-media-player` volume icons now update reliably as the user adjusts the volume range.
+- `mui-media-player` generated waveforms now repaint when theme or brand attributes change, avoiding stale canvas colors after light/dark theme switches.
+- `mui-media-player` no longer applies the shared audio frame shadow to audio presentation wrappers, preventing metadata and artwork surfaces from leaking a shadow outside the intended frame.
 - `mui-media-player` Picture-in-Picture and fullscreen controls now use Safari/WebKit video fallbacks, with Picture-in-Picture hidden when unsupported.
 - Media Player video stories now provide a poster image so iOS Safari has a stable placeholder before playback.
+- `mui-chip-rail` now removes the keyboard-only Skip chip from the tab order when the rail does not overflow.
 
 ---
 

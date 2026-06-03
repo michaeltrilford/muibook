@@ -13,56 +13,6 @@ class storyQuote extends HTMLElement {
       :host { display: block; }
     `;
 
-    const propItems = [
-      {
-        name: "slot",
-        required: true,
-        type: "string",
-        options: "{text}",
-        default: "(required)",
-        description: "Content for the quote element.",
-      },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            ${prop.required ? "required" : ""}
-            name="${prop.name}"
-            type="${prop.type}" 
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `
-      )
-      .join("");
-
-    const accordions = propItems
-      .map((prop, index) => {
-        // Check if it's the last item in the array
-        const isLastChild = index === propItems.length - 1 ? "last-child" : "";
-
-        return /*html*/ `
-          <mui-accordion-block 
-            size="medium" 
-            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
-            ${isLastChild}>
-            <story-type-slat
-              slot="detail"
-              ${prop.required ? "required" : ""}
-              name="${prop.name}"
-              type="${prop.type}" 
-              options="${prop.options || ""}"
-              default="${prop.default || ""}"
-              description="${prop.description}">
-            </story-type-slat>
-          </mui-accordion-block>
-        `;
-      })
-      .join("");
-
     const stories = /*html*/ `
       <story-api-types tag="mui-quote" title="Quote"></story-api-types>
 

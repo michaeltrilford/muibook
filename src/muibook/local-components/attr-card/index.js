@@ -70,7 +70,9 @@ class AttrCard extends HTMLElement {
   render() {
     if (!this.shadowRoot) return;
     const items = this.getParsedItems();
-    const title = this.getAttribute("title") || "Dynamic Attributes";
+    const title = this.getAttribute("title") || this.displayTitle || "Dynamic Attributes";
+    this.displayTitle = title;
+    if (this.hasAttribute("title")) this.removeAttribute("title");
 
     if (!items.length) {
       this.shadowRoot.innerHTML = "";

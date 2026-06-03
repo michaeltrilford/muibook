@@ -9,31 +9,6 @@ class StoryRangeInput extends HTMLElement {
   async connectedCallback() {
     const data = await getComponentDocs("RangeInput");
 
-    const propItems = [
-      { name: "min", type: "number", options: "", default: "0", description: "Minimum value." },
-      { name: "max", type: "number", options: "", default: "100", description: "Maximum value." },
-      { name: "value", type: "number", options: "", default: "0", description: "Current value." },
-      { name: "step", type: "number", options: "", default: "1", description: "Increment step." },
-      { name: "disabled", type: "boolean", options: "", default: "false", description: "Disables interaction." },
-      { name: "bubble", type: "boolean", options: "", default: "false", description: "Shows hover/drag bubble." },
-      { name: "bubble-format", type: "string", options: "number, time", default: "number", description: "Bubble formatter." },
-      { name: "label", type: "string", options: "", default: "Range input", description: "Accessible label." },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            name="${prop.name}"
-            type="${prop.type}"
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `,
-      )
-      .join("");
-
     const stories = /*html*/ `
       <story-api-types tag="mui-range-input" title="Range Input"></story-api-types>
 

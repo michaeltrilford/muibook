@@ -1,5 +1,18 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["has-actions", "has-extra-actions", "has-error"]
+  "attributes": [
+    {
+      "name": "has-actions",
+      "description": "Set when action content exists, allowing the prompt layout to reserve action space and align controls."
+    },
+    {
+      "name": "has-extra-actions",
+      "description": "Set when extra action content exists, allowing the prompt layout to switch to the expanded action treatment."
+    },
+    {
+      "name": "has-error",
+      "description": "Set when error content exists, allowing the component to expose the error layout and visual treatment."
+    }
+  ]
 }

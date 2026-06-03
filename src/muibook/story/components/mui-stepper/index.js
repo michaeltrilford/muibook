@@ -46,7 +46,7 @@ class storyStepper extends HTMLElement {
     `;
 
     const stories = /*html*/ `
-        <mui-v-stack space="var(--space-400)">
+        <mui-v-stack space="var(--space-100)">
           <story-api-types tag="mui-stepper" title="Stepper"></story-api-types>
           <story-api-types tag="mui-step" title="Step"></story-api-types>
         </mui-v-stack>

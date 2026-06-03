@@ -10,11 +10,14 @@ export const muiApi = {
     ],
     slots: [
       { name: "", description: "Tooltip content." },
-      { name: "trigger", description: "Interactive hint trigger, typically an icon or badge." },
+      { name: "trigger", description: "Hint trigger content. Plain content receives fallback keyboard focus; already-focusable controls such as mui-button or mui-link keep focus on the control." },
     ],
     cssProperties: [
       { name: "--hint-background", description: "Hint surface background." },
       { name: "--hint-border-color", description: "Hint surface border color." },
+      { name: "--hint-focus-outline", description: "Focus-visible outline used when Hint creates fallback focus for plain trigger content." },
+      { name: "--hint-focus-outline-offset", description: "Focus-visible outline offset used by the fallback trigger wrapper. Defaults to an outset stroke-size-200 offset." },
+      { name: "--hint-focus-radius", description: "Focus-visible outline radius used by the fallback trigger wrapper." },
       { name: "--hint-max-width", description: "Maximum tooltip content width." },
       { name: "--hint-shadow", description: "Hint surface shadow." },
       { name: "--hint-text-color", description: "Hint content text color." },

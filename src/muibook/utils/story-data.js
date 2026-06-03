@@ -6,6 +6,7 @@
 
 let manifestCache = null;
 let docsCache = null;
+let dynamicAttrsCache = null;
 
 async function loadManifest() {
   if (manifestCache) return manifestCache;
@@ -13,6 +14,19 @@ async function loadManifest() {
   const response = await fetch("/custom-elements.json");
   manifestCache = await response.json();
   return manifestCache;
+}
+
+async function loadDynamicAttrs() {
+  if (dynamicAttrsCache) return dynamicAttrsCache;
+
+  try {
+    const response = await fetch("/dynamic-attrs.json");
+    dynamicAttrsCache = response.ok ? await response.json() : { components: {} };
+  } catch {
+    dynamicAttrsCache = { components: {} };
+  }
+
+  return dynamicAttrsCache;
 }
 
 async function loadAllDocs() {
@@ -65,4 +79,9 @@ export async function getComponentApi(tagName) {
 
   console.warn(`Component API not found for ${tagName}`);
   return null;
+}
+
+export async function getComponentDynamicAttrs(tagName) {
+  const dynamicAttrs = await loadDynamicAttrs();
+  return dynamicAttrs.components?.[tagName] || null;
 }

@@ -25,51 +25,6 @@ class storyChipRail extends HTMLElement {
       }
     `;
 
-    const propItems = [
-      {
-        name: "slot",
-        type: "slot (default)",
-        options: "mui-chip",
-        default: "",
-        description: "Chip items rendered in the horizontal rail.",
-      },
-      {
-        name: "size",
-        type: "string",
-        options: "x-small, small, medium, large",
-        default: "medium",
-        description: "Controls rail action sizing and pushes the same size to slotted chips.",
-      },
-      {
-        name: "bleed",
-        type: "string",
-        options: "none, 000-800, CSS length",
-        default: "none",
-        description: "Sets the inline bleed size shorthand. Token values map to space tokens; raw CSS values are supported.",
-      },
-      {
-        name: "bleed-inline-size",
-        type: "string",
-        options: "none, 000-800, CSS length",
-        default: "none",
-        description: "Controls inline bleed padding and edge mask reach.",
-      },
-      {
-        name: "bleed-block-size",
-        type: "string",
-        options: "none, 000-800, CSS length",
-        default: "none",
-        description: "Controls block bleed padding around the rail.",
-      },
-      {
-        name: "aria-label",
-        type: "string",
-        options: "{text}",
-        default: "Chip rail",
-        description: "Labels the scrollable rail for assistive technology.",
-      },
-    ];
-
     const attrsReference = JSON.stringify([
       {
         component: "mui-chip-rail",

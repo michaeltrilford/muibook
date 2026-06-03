@@ -23,62 +23,6 @@ class storyProgress extends HTMLElement {
 
     `;
 
-    const propItems = [
-      {
-        name: "progress",
-        type: "number",
-        options: "0-100",
-        default: "",
-        description: "Add a value to indicate the progress of the meter",
-      },
-      {
-        name: "state",
-        type: "string",
-        options: "pending, syncing",
-        default: "",
-        description: "Select a state that demonstrates intial pending state or a retry state.",
-      },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            ${prop.required ? "required" : ""}
-            name="${prop.name}"
-            type="${prop.type}" 
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `
-      )
-      .join("");
-
-    const accordions = propItems
-      .map((prop, index) => {
-        // Check if it's the last item in the array
-        const isLastChild = index === propItems.length - 1 ? "last-child" : "";
-
-        return /*html*/ `
-          <mui-accordion-block 
-            size="medium" 
-            heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
-            ${isLastChild}>
-            <story-type-slat
-              slot="detail"
-              ${prop.required ? "required" : ""}
-              name="${prop.name}"
-              type="${prop.type}" 
-              options="${prop.options || ""}"
-              default="${prop.default || ""}"
-              description="${prop.description}">
-            </story-type-slat>
-          </mui-accordion-block>
-        `;
-      })
-      .join("");
-
     const stories = /*html*/ `
           <story-api-types tag="mui-progress" title="Progress"></story-api-types>
 

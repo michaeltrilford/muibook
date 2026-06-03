@@ -1,5 +1,10 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["has-rule"]
+  "attributes": [
+    {
+      "name": "has-rule",
+      "description": "Set when a rule is present, allowing the footer layout to account for the divider."
+    }
+  ]
 }

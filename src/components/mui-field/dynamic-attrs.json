@@ -1,5 +1,10 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["has-message"]
+  "attributes": [
+    {
+      "name": "has-message",
+      "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
+    }
+  ]
 }

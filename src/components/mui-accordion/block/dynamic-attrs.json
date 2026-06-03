@@ -1,5 +1,18 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["card-slot", "first-child", "last-child"]
+  "attributes": [
+    {
+      "name": "card-slot",
+      "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
+    },
+    {
+      "name": "first-child",
+      "description": "Applied to the first structural child, allowing edge spacing and borders to be adjusted."
+    },
+    {
+      "name": "last-child",
+      "description": "Applied to the last structural child, allowing edge spacing and borders to be adjusted."
+    }
+  ]
 }

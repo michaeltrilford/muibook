@@ -17,6 +17,7 @@ class pageCard extends HTMLElement {
     `;
 
     const title = this.getAttribute("title") || "";
+    this.removeAttribute("title");
     const description = this.hasAttribute("description")
       ? /*html*/ `<mui-body style="max-width: 86ch;">${this.getAttribute("description")}</mui-body>`
       : "";

@@ -1,5 +1,10 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["has-button-group"]
+  "attributes": [
+    {
+      "name": "has-button-group",
+      "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
+    }
+  ]
 }

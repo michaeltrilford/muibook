@@ -1,5 +1,14 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["has-header", "has-footer"]
+  "attributes": [
+    {
+      "name": "has-header",
+      "description": "Set when header content exists, allowing the component to adjust internal spacing and structural regions."
+    },
+    {
+      "name": "has-footer",
+      "description": "Set when footer content exists, allowing the component to adjust internal spacing and structural regions."
+    }
+  ]
 }

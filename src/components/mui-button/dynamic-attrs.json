@@ -2,18 +2,57 @@
   "version": 1,
   "destinationOnly": true,
   "attributes": [
-    "has-before",
-    "has-after",
-    "has-video",
-    "icon-only",
-    "avatar-only",
-    "dropdown-slot",
-    "dropdown-slot-first",
-    "dropdown-slot-last",
-    "alert-slot",
-    "alert-positive-slot",
-    "alert-info-slot",
-    "alert-warning-slot",
-    "alert-attention-slot"
+    {
+      "name": "has-before",
+      "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+    },
+    {
+      "name": "has-after",
+      "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+    },
+    {
+      "name": "has-video",
+      "description": "Set when video thumbnail content exists, allowing the action to clear default chrome and let the media card own the visual surface."
+    },
+    {
+      "name": "icon-only",
+      "description": "Set when the default slot contains only icon content, allowing the component to apply icon-only sizing, padding, and accessible-name expectations."
+    },
+    {
+      "name": "avatar-only",
+      "description": "Set when the default slot contains only an avatar, allowing the component to remove normal action chrome and preserve avatar sizing."
+    },
+    {
+      "name": "dropdown-slot",
+      "description": "Applied to actions rendered inside dropdown content, allowing the action to inherit dropdown item sizing and alignment."
+    },
+    {
+      "name": "dropdown-slot-first",
+      "description": "Applied to the first dropdown action, allowing edge radius and spacing to match the dropdown surface."
+    },
+    {
+      "name": "dropdown-slot-last",
+      "description": "Applied to the last dropdown action, allowing edge radius and spacing to match the dropdown surface."
+    },
+    {
+      "name": "alert-slot",
+      "description": "Applied to alert action content, allowing the action to match the alert layout and tone."
+    },
+    {
+      "name": "alert-positive-slot",
+      "description": "Applied to positive alert action content, allowing the action to match the positive alert tone."
+    },
+    {
+      "name": "alert-info-slot",
+      "description": "Applied to info alert action content, allowing the action to match the info alert tone."
+    },
+    {
+      "name": "alert-warning-slot",
+      "description": "Applied to warning alert action content, allowing the action to match the warning alert tone."
+    },
+    {
+      "name": "alert-attention-slot",
+      "description": "Applied to attention alert action content, allowing the action to match the attention alert tone."
+    }
   ]
 }

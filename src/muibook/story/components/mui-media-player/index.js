@@ -5,6 +5,7 @@ const videoPosterSrc = new URL("../../../video/japan-poster.jpg", import.meta.ur
 const audioSrc = new URL("../../../audio/twilight.m4a", import.meta.url).href;
 const audioThumbnailSrc = new URL("../../../audio/thumbnail.jpg", import.meta.url).href;
 const audioArtworkSrc = new URL("../../../audio/artwork.png", import.meta.url).href;
+const audioArtworkLightSrc = new URL("../../../audio/artwork-light.png", import.meta.url).href;
 
 class StoryMediaPlayer extends HTMLElement {
   constructor() {
@@ -15,120 +16,30 @@ class StoryMediaPlayer extends HTMLElement {
   async connectedCallback() {
     const data = await getComponentDocs("MediaPlayer");
 
-    const propItems = [
-      {
-        name: "controls",
-        type: "string",
-        options: "player, none",
-        default: "player",
-        description:
-          "Chooses whether Muibook controls are rendered over the native media element. Platform-only actions, such as Picture-in-Picture, are hidden when the browser does not support them.",
-      },
-      {
-        name: "src",
-        type: "string",
-        options: "url",
-        default: "",
-        description: "Media source URL. Supports direct files and provider URLs.",
-      },
-      {
-        name: "type",
-        type: "string",
-        options: "video, audio, youtube, soundcloud",
-        default: "auto",
-        description: "Optional override for media type; otherwise inferred from src.",
-      },
-      {
-        name: "poster",
-        type: "string",
-        options: "url",
-        default: "",
-        description:
-          "Poster image for native video. Recommended for iOS Safari so the player does not load as a black video surface before playback.",
-      },
-      {
-        name: "artwork",
-        type: "string",
-        options: "url",
-        default: "",
-        description: "Optional artwork image for audio artwork presentation.",
-      },
-      {
-        name: "media-title",
-        type: "string",
-        options: "text",
-        default: "",
-        description: "Title displayed in audio presentations or video metadata.",
-      },
-      {
-        name: "height",
-        type: "string",
-        options: "css height",
-        default: "",
-        description: "Sets the audio metadata or artwork presentation height and maps to --media-player-audio-height.",
-      },
-      {
-        name: "center-play",
-        type: "boolean",
-        options: "",
-        default: "false",
-        description: "Displays an always-visible centered play/pause action over native video.",
-      },
-      {
-        name: "autoplay",
-        type: "boolean",
-        options: "",
-        default: "false",
-        description: "Autoplays native media.",
-      },
-      {
-        name: "muted",
-        type: "boolean",
-        options: "",
-        default: "false",
-        description: "Starts native media muted.",
-      },
-      {
-        name: "loop",
-        type: "boolean",
-        options: "",
-        default: "false",
-        description: "Loops native media playback.",
-      },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            name="${prop.name}"
-            type="${prop.type}"
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `,
-      )
-      .join("");
-
-    const renderMetadata = ({ title, meta, avatarImage = audioThumbnailSrc, avatarLabel = "Mike Trilford" }) => {
+    const renderMetadata = ({
+      title,
+      meta,
+      compactMeta = meta,
+      avatarImage = audioThumbnailSrc,
+      avatarLabel = "Mike Trilford",
+    }) => {
       const avatarImageAttribute = avatarImage ? ` image="${avatarImage}"` : "";
-      const renderRow = (slot, avatarSize) => /*html*/ `
-        <mui-h-stack slot="${slot}" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;">
+      const renderRow = (slot, avatarSize, metaContent) => /*html*/ `
+        <mui-h-stack slot="${slot}" space="var(--space-200)" aligny="center">
           <mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile">
             <mui-avatar size="${avatarSize}"${avatarImageAttribute} label="${avatarLabel}"></mui-avatar>
           </mui-button>
           <mui-v-stack space="var(--space-000)">
             <mui-body weight="bold">${title}</mui-body>
-            ${meta}
+            ${metaContent}
           </mui-v-stack>
         </mui-h-stack>
       `;
 
       return /*html*/ `
-        <mui-responsive slot="metadata" breakpoint="500">
-          ${renderRow("showAbove", "medium")}
-          ${renderRow("showBelow", "small")}
+        <mui-responsive slot="metadata" breakpoint="700">
+          ${renderRow("showAbove", "medium", meta)}
+          ${renderRow("showBelow", "small", compactMeta)}
         </mui-responsive>
       `;
     };
@@ -136,27 +47,49 @@ class StoryMediaPlayer extends HTMLElement {
     const renderMetadataCode = ({
       title,
       meta,
+      compactMeta = meta,
       avatarImage = "/audio/thumbnail.jpg",
       avatarLabel = "Mike Trilford",
     }) => {
       const avatarImageAttribute = avatarImage ? ` image="${avatarImage}"` : "";
-      const renderRow = (slot, avatarSize) => /*html*/ `
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="${slot}" space="var(--space-200)" aligny="center" style="--stack-height: auto; --stack-width: auto;"&gt;<br />
+      const renderRow = (slot, avatarSize, metaContent) => /*html*/ `
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="${slot}" space="var(--space-200)" aligny="center"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Mike Trilford profile"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size="${avatarSize}"${avatarImageAttribute} label="${avatarLabel}"&gt;&lt;/mui-avatar&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="bold"&gt;${title}&lt;/mui-body&gt;<br />
-          ${meta}
+          ${metaContent}
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />`;
 
       return /*html*/ `
-          &nbsp;&nbsp;&lt;mui-responsive slot="metadata" breakpoint="500"&gt;<br />
-          ${renderRow("showAbove", "medium")}
-          ${renderRow("showBelow", "small")}
+          &nbsp;&nbsp;&lt;mui-responsive slot="metadata" breakpoint="700"&gt;<br />
+          ${renderRow("showAbove", "medium", meta)}
+          ${renderRow("showBelow", "small", compactMeta)}
           &nbsp;&nbsp;&lt;/mui-responsive&gt;<br />`;
     };
+
+    const renderMetadataHelperCode = () => /*html*/ `
+          const renderMetadata = ({ title, meta, compactMeta = meta, avatarImage, avatarLabel }) =&gt; {<br />
+          &nbsp;&nbsp;const avatarImageAttribute = avatarImage ? \` image="&#36;{avatarImage}"\` : "";<br />
+          &nbsp;&nbsp;const renderRow = (slot, avatarSize, metaContent) =&gt; /*html*/ &#96;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="&#36;{slot}" space="var(--space-200)" aligny="center"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open &#36;{avatarLabel} profile"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size="&#36;{avatarSize}"&#36;{avatarImageAttribute} label="&#36;{avatarLabel}"&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="bold"&gt;&#36;{title}&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{metaContent}<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;&#96;;<br />
+          <br />
+          &nbsp;&nbsp;return /*html*/ &#96;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive slot="metadata" breakpoint="700"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{renderRow("showAbove", "medium", meta)}<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{renderRow("showBelow", "small", compactMeta)}<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;&#96;;<br />
+          };<br /><br />`;
 
     const stories = /*html*/ `
       <story-api-types tag="mui-media-player" title="Media Player"></story-api-types>
@@ -210,7 +143,7 @@ class StoryMediaPlayer extends HTMLElement {
         id="video-metadata"
         title="Video Metadata"
         description="Direct video file rendered with optional top-left metadata."
-        usage="Compose avatar, title, and supporting metadata inside slot='metadata' when video needs context over the preview.|||Metadata is non-interactive by default so interacting with the composed content does not accidentally start playback.">
+        usage="Compose avatar, title, and supporting metadata inside slot='metadata' when video needs context over the preview.|||The avatar can be wrapped in a tertiary button or link when it should open a profile, dialog, or related destination.|||Keep the metadata action scoped to the composed item so interacting with it does not accidentally start playback.">
         <mui-media-player
           slot="body"
           type="video"
@@ -219,65 +152,80 @@ class StoryMediaPlayer extends HTMLElement {
           ${renderMetadata({
             title: "Japan",
             meta: `<mui-body weight="medium">Mike Trilford</mui-body>`,
+            compactMeta: `<mui-body weight="medium">Sugoi</mui-body>`,
           })}
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
+          ${renderMetadataHelperCode()}
+          const meta = &#96;&lt;mui-body weight="medium"&gt;Mike Trilford&lt;/mui-body&gt;&#96;;<br />
+          const compactMeta = &#96;&lt;mui-body weight="medium"&gt;Sugoi&lt;/mui-body&gt;&#96;;<br />
+          <br />
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
           &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
-          ${renderMetadataCode({
-            title: "Japan",
-            meta: `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="medium"&gt;Mike Trilford&lt;/mui-body&gt;<br />`,
-          })}
+          &nbsp;&nbsp;&#36;{renderMetadata({<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;title: "Japan",<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;meta,<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;compactMeta,<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;avatarImage: "/audio/thumbnail.jpg",<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;avatarLabel: "Mike Trilford",<br />
+          &nbsp;&nbsp;})}<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
 
       <story-card
         canvas-bleed
-        id="video-metadata-time"
-        title="Video Metadata Duration"
-        description="Direct video file rendered with composed title and duration metadata."
-        usage="Compose title and duration together inside slot='metadata' instead of relying on generated metadata.|||Use this pattern when duration is part of the authored metadata content.">
+        id="video-auxiliary"
+        title="Video Auxiliary"
+        description="Direct video file rendered with a secondary overlay action."
+        usage="Use slot='auxiliary' for top-right secondary content such as ads, badges, or supporting actions.|||Auxiliary actions are separate from metadata and do not toggle playback when interacted with.|||Use variant='overlay' when the action sits over video or artwork so it keeps enough contrast against image content.">
         <mui-media-player
           slot="body"
           type="video"
           poster="${videoPosterSrc}"
           src="${videoSrc}">
-          ${renderMetadata({
-            title: "Japan",
-            meta: `<mui-body weight="medium">2:47</mui-body>`,
-          })}
+          <mui-button slot="auxiliary" variant="overlay" size="small">Sponsored</mui-button>
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
           &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
-          ${renderMetadataCode({
-            title: "Japan",
-            meta: `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="medium"&gt;2:47&lt;/mui-body&gt;<br />`,
-          })}
+          &nbsp;&nbsp;&lt;mui-button slot="auxiliary" variant="overlay" size="small"&gt;Sponsored&lt;/mui-button&gt;<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
 
       <story-card
         canvas-bleed
-        id="video-metadata-action"
-        title="Video Metadata Action"
-        description="Direct video file rendered with a composed metadata action."
-        usage="Slot custom leading media when the metadata needs an avatar, link, or richer visual.|||Slotted metadata actions can open dialogs or navigate without toggling playback behind the metadata row.">
+        id="metadata-button"
+        title="Metadata Button"
+        description="Direct video file rendered with the metadata slot composed as a tertiary button."
+        usage="Use this pattern when the metadata itself should trigger an action, such as opening a profile or detail dialog.|||The button owns the interaction while the media player keeps playback interactions separate.|||Use the composed stack alignment to keep the metadata copy aligned to the start.|||Apply a small negative offset class when the button action padding needs to visually align with the overlay edge.">
         <mui-media-player
           slot="body"
           type="video"
           poster="${videoPosterSrc}"
           src="${videoSrc}">
-          ${renderMetadata({
-            title: "Japan",
-            meta: `<mui-body weight="medium">Mike Trilford</mui-body>`,
-          })}
+          <mui-link slot="auxiliary" href="#aux-link" variant="overlay" size="small">Subscribe</mui-link>
+          <mui-responsive slot="metadata" breakpoint="500">
+            <mui-button class="metadata-button-offset" slot="showAbove" data-dialog="video-meta-profile" variant="tertiary" size="large" aria-label="Open Japan details">
+              <mui-avatar slot="before" size="medium" image="${audioThumbnailSrc}" label="Mike Trilford"></mui-avatar>
+              <mui-v-stack space="var(--space-000)" alignX="start">
+                <mui-body weight="bold">Japan</mui-body>
+                <mui-body weight="medium">Sugoi Travels</mui-body>
+              </mui-v-stack>
+            </mui-button>
+            <mui-button class="metadata-button-offset" slot="showBelow" data-dialog="video-meta-profile" variant="tertiary" size="small" aria-label="Open Japan details">
+              <mui-avatar slot="before" size="small" image="${audioThumbnailSrc}" label="Mike Trilford"></mui-avatar>
+              <mui-v-stack space="var(--space-000)" alignX="start">
+                <mui-body weight="bold">Japan</mui-body>
+                <mui-body weight="medium">Sugoi Travels</mui-body>
+              </mui-v-stack>
+            </mui-button>
+          </mui-responsive>
         </mui-media-player>
         <mui-dialog
           slot="body"
@@ -289,14 +237,45 @@ class StoryMediaPlayer extends HTMLElement {
           <mui-body id="video-meta-profile-desc">Profile actions can be composed outside the media player while the metadata row hosts the trigger.</mui-body>
         </mui-dialog>
         <story-code-block slot="footer" scrollable>
+          .metadata-button-offset {<br />
+          &nbsp;&nbsp;margin-block-start: calc(var(--space-200) * -1);<br />
+          &nbsp;&nbsp;margin-inline-start: calc(var(--space-200) * -1);<br />
+          }<br />
+          @container (max-width: 52rem) {<br />
+          &nbsp;&nbsp;.metadata-button-offset {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;margin-block-start: calc(var(--space-025) * -1);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;margin-inline-start: calc(var(--space-025) * -1);<br />
+          &nbsp;&nbsp;}<br />
+          }<br />
+          <br />
+          const renderMetadataButton = ({ title, meta, avatarImage, avatarLabel }) =&gt; {<br />
+          &nbsp;&nbsp;const renderButton = (slot, buttonSize, avatarSize) =&gt; /*html*/ &#96;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button class="metadata-button-offset" slot="&#36;{slot}" data-dialog="video-meta-profile" variant="tertiary" size="&#36;{buttonSize}" aria-label="Open &#36;{title} details"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar slot="before" size="&#36;{avatarSize}" image="&#36;{avatarImage}" label="&#36;{avatarLabel}"&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)" alignX="start"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="bold"&gt;&#36;{title}&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{meta}<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;&#96;;<br />
+          <br />
+          &nbsp;&nbsp;return /*html*/ &#96;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive slot="metadata" breakpoint="500"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{renderButton("showAbove", "large", "medium")}<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{renderButton("showBelow", "small", "small")}<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;&#96;;<br />
+          };<br />
+          <br />
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
           &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
-          ${renderMetadataCode({
-            title: "Japan",
-            meta: `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="medium"&gt;Mike Trilford&lt;/mui-body&gt;<br />`,
-          })}
+          &nbsp;&nbsp;&lt;mui-link slot="auxiliary" href="#aux-link" variant="overlay" size="small"&gt;Subscribe&lt;/mui-link&gt;<br />
+          &nbsp;&nbsp;&#36;{renderMetadataButton({<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;title: "Japan",<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;meta: &#96;&lt;mui-body weight="medium"&gt;Sugoi Travels&lt;/mui-body&gt;&#96;,<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;avatarImage: "/audio/thumbnail.jpg",<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;avatarLabel: "Mike Trilford",<br />
+          &nbsp;&nbsp;})}<br />
           &lt;/mui-media-player&gt;<br /><br />
           &lt;mui-dialog<br />
           &nbsp;&nbsp;data-dialog="video-meta-profile"<br />
@@ -306,6 +285,52 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-heading size="4" level="4" slot="title" id="video-meta-profile-title"&gt;Mike Trilford&lt;/mui-heading&gt;<br />
           &nbsp;&nbsp;&lt;mui-body id="video-meta-profile-desc"&gt;Profile actions can be composed outside the media player while the metadata row hosts the trigger.&lt;/mui-body&gt;<br />
           &lt;/mui-dialog&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        canvas-bleed
+        id="metadata-links"
+        title="Metadata Links"
+        description="Direct video file rendered with metadata composed from navigational links."
+        usage="Use this pattern when metadata should navigate to related media, creators, chapters, or collections.|||Keep links as links when the destination is navigational instead of a local action.|||Group primary and secondary destinations so the overlay feels authored rather than a row of unrelated links.">
+        <mui-media-player
+          slot="body"
+          type="video"
+          poster="${videoPosterSrc}"
+          src="${videoSrc}">
+          <mui-h-stack slot="metadata" space="var(--space-200)" aligny="center">
+            <mui-link href="#metadata-button" aria-label="Open Mike Trilford profile">
+              <mui-avatar size="medium" image="${audioThumbnailSrc}" label="Mike Trilford"></mui-avatar>
+            </mui-link>
+            <mui-v-stack space="var(--space-000)">
+              <mui-body weight="bold">Garden Walk</mui-body>
+              <mui-h-stack space="var(--space-100)" aligny="center">
+                <mui-link href="#metadata-button">Mike Trilford</mui-link>
+                <span>•</span>
+                <mui-link href="#video-metadata">Field notes</mui-link>
+              </mui-h-stack>
+            </mui-v-stack>
+          </mui-h-stack>
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="video"<br />
+          &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
+          &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" space="var(--space-200)" aligny="center"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link href="#metadata-button" aria-label="Open Mike Trilford profile"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size="medium" image="/audio/thumbnail.jpg" label="Mike Trilford"&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-000)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="bold"&gt;Japan Garden Walk&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack space="var(--space-150)" aligny="center"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link href="#metadata-button"&gt;Mike Trilford&lt;/mui-link&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link href="#video-metadata"&gt;Field notes&lt;/mui-link&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
+          &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
 
@@ -330,6 +355,40 @@ class StoryMediaPlayer extends HTMLElement {
 
       <story-card
         canvas-bleed
+        id="audio-waveform"
+        title="Audio Waveform"
+        description="Direct audio file rendered with an opt-in generated waveform."
+        usage="Use waveform when audio needs a visual signature without adding artwork.|||The waveform is generated from the audio source when the browser can fetch and decode the file.|||Remote audio can fail to render a waveform when CORS blocks decoding, so keep the player usable without it.">
+        <mui-media-player
+          slot="body"
+          type="audio"
+          waveform
+          height="14rem"
+          src="${audioSrc}">
+          ${renderMetadata({
+            title: "Twilight",
+            meta: `<mui-body weight="medium">by Mike Trilford</mui-body>`,
+            avatarImage: "",
+          })}
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          ${renderMetadataHelperCode()}
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="audio"<br />
+          &nbsp;&nbsp;waveform<br />
+          &nbsp;&nbsp;height="14rem"<br />
+          &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
+          ${renderMetadataCode({
+            title: "Twilight",
+            meta: `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="medium"&gt;by Mike Trilford&lt;/mui-body&gt;<br />`,
+            avatarImage: "",
+          })}
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        canvas-bleed
         id="audio-artwork"
         title="Audio Artwork"
         description="Direct audio file rendered with artwork replacing the basic metadata presentation."
@@ -342,10 +401,11 @@ class StoryMediaPlayer extends HTMLElement {
           src="${audioSrc}">
           ${renderMetadata({
             title: "Twilight",
-            meta: `<mui-body weight="medium">Mike Trilford</mui-body>`,
+            meta: `<mui-body weight="medium">by Mike Trilford</mui-body>`,
           })}
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
+          ${renderMetadataHelperCode()}
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
           &nbsp;&nbsp;artwork="/audio/artwork.png"<br />
@@ -353,7 +413,75 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
           ${renderMetadataCode({
             title: "Twilight",
-            meta: `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="medium"&gt;Mike Trilford&lt;/mui-body&gt;<br />`,
+            meta: `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="medium"&gt;by Mike Trilford&lt;/mui-body&gt;<br />`,
+          })}
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        canvas-bleed
+        id="audio-artwork-waveform"
+        title="Audio Artwork Waveform"
+        description="Direct audio file rendered with artwork and an opt-in generated waveform."
+        usage="Use waveform with artwork when the audio needs both an image-led presentation and a visible sense of sound structure.|||The active waveform colour follows the same range colour as the player controls, while inactive bars stay quieter over the artwork.|||Keep this opt-in because waveform generation depends on the browser being able to fetch and decode the audio source.">
+        <mui-media-player
+          slot="body"
+          type="audio"
+          artwork="${audioArtworkLightSrc}"
+          waveform
+          height="18rem"
+          src="${audioSrc}">
+          ${renderMetadata({
+            title: "Twilight",
+            meta: `<mui-body weight="medium">by Mike Trilford</mui-body>`,
+          })}
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          ${renderMetadataHelperCode()}
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="audio"<br />
+          &nbsp;&nbsp;artwork="/audio/artwork.png"<br />
+          &nbsp;&nbsp;waveform<br />
+          &nbsp;&nbsp;height="18rem"<br />
+          &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
+          ${renderMetadataCode({
+            title: "Twilight",
+            meta: `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="medium"&gt;by Mike Trilford&lt;/mui-body&gt;<br />`,
+          })}
+          &lt;/mui-media-player&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        canvas-bleed
+        id="audio-artwork-auxiliary"
+        title="Audio Artwork Auxiliary"
+        description="Direct audio file rendered with artwork and a secondary overlay action."
+        usage="Use slot='auxiliary' when artwork-backed audio needs a secondary action, badge, or sponsored placement.|||Auxiliary content sits apart from metadata so the title area stays focused on media context.|||Use variant='overlay' on image-backed audio because the action is placed over artwork.">
+        <mui-media-player
+          slot="body"
+          type="audio"
+          artwork="${audioArtworkSrc}"
+          height="18rem"
+          src="${audioSrc}">
+          <mui-link slot="auxiliary" href="#aux-link" variant="overlay" size="small">Buy Album</mui-link>
+          ${renderMetadata({
+            title: "Twilight",
+            meta: `<mui-body weight="medium">by Mike Trilford</mui-body>`,
+          })}
+        </mui-media-player>
+        <story-code-block slot="footer" scrollable>
+          ${renderMetadataHelperCode()}
+          &lt;mui-media-player<br />
+          &nbsp;&nbsp;type="audio"<br />
+          &nbsp;&nbsp;artwork="/audio/artwork.png"<br />
+          &nbsp;&nbsp;height="18rem"<br />
+          &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link slot="auxiliary" href="#aux-link" variant="overlay" size="small"&gt;Buy Album&lt;/mui-link&gt;<br />
+          ${renderMetadataCode({
+            title: "Twilight",
+            meta: `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="medium"&gt;by Mike Trilford&lt;/mui-body&gt;<br />`,
           })}
           &lt;/mui-media-player&gt;
         </story-code-block>
@@ -364,11 +492,12 @@ class StoryMediaPlayer extends HTMLElement {
         id="audio-metadata"
         title="Audio Metadata"
         description="Direct audio file rendered with required title metadata and optional supporting metadata."
-        usage="Compose audio title and supporting metadata inside slot='metadata' when audio needs context without background artwork.">
+        usage="Compose audio title and supporting metadata inside slot='metadata' when audio needs context without background artwork.|||Use normal action hierarchy, such as variant='tertiary', for auxiliary links on surface-based audio because the action is not sitting over image content.">
         <mui-media-player
           slot="body"
           type="audio"
           src="${audioSrc}">
+          <mui-link slot="auxiliary" href="#aux-link" variant="tertiary" size="small">Buy Album</mui-link>
           ${renderMetadata({
             title: "Twilight",
             meta: `<mui-body weight="medium">by Mike Trilford</mui-body>`,
@@ -376,9 +505,11 @@ class StoryMediaPlayer extends HTMLElement {
           })}
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
+          ${renderMetadataHelperCode()}
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link slot="auxiliary" href="#aux-link" variant="tertiary" size="small"&gt;Buy Album&lt;/mui-link&gt;<br />
           ${renderMetadataCode({
             title: "Twilight",
             meta: `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body weight="medium"&gt;by Mike Trilford&lt;/mui-body&gt;<br />`,
@@ -414,6 +545,18 @@ class StoryMediaPlayer extends HTMLElement {
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
+      <style>
+        .metadata-button-offset {
+          margin-block-start: calc(var(--space-200) * -1);
+          margin-inline-start: calc(var(--space-200) * -1);
+        }
+        @container (max-width: 52rem) {
+          .metadata-button-offset {
+            margin-block-start: calc(var(--space-025) * -1);
+            margin-inline-start: calc(var(--space-025) * -1);
+          }
+        }
+      </style>
       <story-template
         title="${data?.title || "Media Player"}"
         description="${data?.description || "Media Player is a new exploration for the system and will iterate over time."}"
@@ -427,7 +570,7 @@ class StoryMediaPlayer extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="video::Video|||video-center-play::Visible Play/Pause|||video-metadata::Video Metadata|||video-metadata-time::Video Metadata Duration|||video-metadata-action::Video Metadata Action|||audio::Audio|||audio-metadata::Audio Metadata|||audio-artwork::Audio Artwork|||youtube::YouTube Embed|||soundcloud::SoundCloud Embed"
+          links="video::Video|||video-center-play::Visible Play/Pause|||video-metadata::Video Metadata|||video-auxiliary::Video Auxiliary|||metadata-button::Metadata Button|||metadata-links::Metadata Links|||audio::Audio|||audio-waveform::Audio Waveform|||audio-metadata::Audio Metadata|||audio-artwork::Audio Artwork|||audio-artwork-waveform::Audio Artwork Waveform|||audio-artwork-auxiliary::Audio Artwork Auxiliary|||youtube::YouTube Embed|||soundcloud::SoundCloud Embed"
         ></story-quicklinks>
         ${stories}
       </story-template>

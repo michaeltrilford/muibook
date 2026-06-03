@@ -1,6 +1,7 @@
 export const muiApi = {
   "mui-media-player": {
-    description: "Renders native or embedded audio and video media from a supplied source, with optional Muibook controls for direct media files.",
+    description:
+      "Renders native or embedded audio and video media from a supplied source, with optional Muibook controls for direct media files and composable metadata or auxiliary slots for titles, avatars, links, badges, and product actions.",
     attributes: [
       { name: "src", type: { text: "string" }, description: "Media URL to render." },
       { name: "type", type: { text: '"video" | "audio" | "youtube" | "soundcloud"' }, description: "Overrides media type detection for the source URL." },
@@ -9,13 +10,15 @@ export const muiApi = {
       { name: "artwork", type: { text: "string" }, description: "Optional artwork image URL for audio artwork presentation." },
       { name: "media-title", type: { text: "string" }, description: "Fallback title displayed in audio presentations or video metadata when slot='metadata' is not provided." },
       { name: "height", type: { text: "string" }, description: "Sets the audio metadata or artwork presentation height using any valid CSS height value. Maps to --media-player-audio-height." },
+      { name: "waveform", type: { text: "boolean" }, default: "false", description: "Opt-in generated waveform for audio presentations. The component fetches and decodes the source when possible; remote sources may not render a waveform if CORS blocks decoding." },
       { name: "center-play", type: { text: "boolean" }, default: "false", description: "Displays an always-visible centered play/pause action over native video." },
-      { name: "autoplay", type: { text: "boolean" }, default: "false", description: "Starts playback automatically when allowed by the browser." },
+      { name: "autoplay", type: { text: "boolean" }, default: "false", description: "Opt-in setting that requests automatic playback when allowed by the browser. Avoid enabling by default unless the experience clearly requires it." },
       { name: "muted", type: { text: "boolean" }, default: "false", description: "Starts native media muted." },
       { name: "loop", type: { text: "boolean" }, default: "false", description: "Restarts playback when media ends." },
     ],
     slots: [
-      { name: "metadata", description: "Optional composed metadata content for audio presentations and video metadata. Use it for avatar, title, supporting copy, links, or actions. Overrides the media-title fallback layout." },
+      { name: "metadata", description: "Optional composed metadata content for audio presentations and video metadata. Use it for avatar, title, supporting copy, links, or actions. Media Player applies contextual text and link tokens where possible so slotted content follows the current surface. Keep links and buttons scoped to the intended interactive item. Overrides the media-title fallback layout." },
+      { name: "auxiliary", description: "Optional top-right overlay content for secondary actions, advertising labels, badges, or supporting controls on video and audio presentation surfaces. Media Player applies contextual action and link tokens where possible; use overlay variants over video or artwork and normal variants on surface-based audio. Keep interactions scoped so they do not toggle playback." },
     ],
     cssProperties: [
       { name: "--media-player-audio-height", description: "Preferred height used for audio metadata and artwork presentations." },
@@ -26,6 +29,10 @@ export const muiApi = {
       { name: "--media-player-range-thumb-color", description: "Theme-aware color used for the range thumb." },
       { name: "--media-player-range-track-color", description: "Theme-aware color used for the inactive range track." },
       { name: "--media-player-range-preview-color", description: "Theme-aware color used for the seek hover preview segment." },
+      { name: "--media-player-waveform-color", description: "Theme-aware color used for the primary generated audio waveform bars." },
+      { name: "--media-player-waveform-mirror-color", description: "Theme-aware color used for the mirrored generated audio waveform bars." },
+      { name: "--media-player-waveform-active-color", description: "Theme-aware color used for generated audio waveform bars before the current playback position." },
+      { name: "--media-player-waveform-active-mirror-color", description: "Theme-aware color used for mirrored generated audio waveform bars before the current playback position." },
       { name: "--media-player-control-background", description: "Theme-aware background used by compact audio controls." },
       { name: "--media-player-control-color", description: "Theme-aware text and icon color used by compact audio controls." },
       { name: "--media-player-center-play-background", description: "Theme-aware background used by the centered play action in surface presentations." },

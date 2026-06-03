@@ -77,7 +77,9 @@ class ImportCard extends HTMLElement {
 
   render() {
     if (!this.shadowRoot) return;
-    const title = this.getAttribute("title") || "Import";
+    const title = this.getAttribute("title") || this.displayTitle || "Import";
+    this.displayTitle = title;
+    if (this.hasAttribute("title")) this.removeAttribute("title");
     const importItems = this.getImportItems();
     if (!importItems.length) {
       this.shadowRoot.innerHTML = "";

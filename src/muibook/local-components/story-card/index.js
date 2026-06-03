@@ -137,6 +137,7 @@ class storyCard extends HTMLElement {
     `;
 
     const title = this.getAttribute("title") || "";
+    this.removeAttribute("title");
     const description = this.hasAttribute("description")
       ? /*html*/ `<mui-body style="max-width: 86ch; margin-top: var(--space-200); text-wrap: pretty;" size="small">${this.getAttribute(
           "description",

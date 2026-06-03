@@ -2,13 +2,37 @@
   "version": 1,
   "destinationOnly": true,
   "attributes": [
-    "has-header",
-    "has-footer",
-    "has-notes",
-    "notes-visible",
-    "has-chrome",
-    "data-slide-section",
-    "slide-active",
-    "slide-hidden"
+    {
+      "name": "has-header",
+      "description": "Set when header content exists, allowing the component to adjust internal spacing and structural regions."
+    },
+    {
+      "name": "has-footer",
+      "description": "Set when footer content exists, allowing the component to adjust internal spacing and structural regions."
+    },
+    {
+      "name": "has-notes",
+      "description": "Set when notes content exists, allowing the slide frame to reserve and style the notes region."
+    },
+    {
+      "name": "notes-visible",
+      "description": "Set when notes are visible, allowing the slide frame to expose the notes region."
+    },
+    {
+      "name": "has-chrome",
+      "description": "Set when frame chrome is present, allowing the slide frame to adjust presentation spacing."
+    },
+    {
+      "name": "data-slide-section",
+      "description": "Applied to slide section children, allowing the slide frame to identify and manage slide sections."
+    },
+    {
+      "name": "slide-active",
+      "description": "Applied to the active slide section, allowing the slide frame to show the current section."
+    },
+    {
+      "name": "slide-hidden",
+      "description": "Applied to hidden slide sections, allowing the slide frame to hide inactive sections."
+    }
   ]
 }

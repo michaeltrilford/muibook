@@ -105,6 +105,7 @@ class StoryTemplate extends HTMLElement {
     `;
 
     const title = this.getAttribute("title") || "";
+    this.removeAttribute("title");
     const descriptionText = this.getAttribute("description") || "";
     const containerMaxWidth = this.getAttribute("container-max-width");
     const containerStyle = containerMaxWidth
@@ -166,14 +167,14 @@ class StoryTemplate extends HTMLElement {
             }
           </style>
           <mui-tab-bar class="docs-tab-bar" stroke="none" active-inset inset-size="300" size="medium" radius="400" style="justify-self: start;">
-            <mui-tab-item id="accessibility" active>Accessibility</mui-tab-item>
-            <mui-tab-item id="props">Prop Types</mui-tab-item>
+            <mui-tab-item id="props" active>Prop Types</mui-tab-item>
+            <mui-tab-item id="accessibility">Accessibility</mui-tab-item>
           </mui-tab-bar>
-          <mui-tab-panel item="accessibility">
-            <mui-v-stack space="var(--space-400)" data-panel-stack="accessibility"></mui-v-stack>
-          </mui-tab-panel>
           <mui-tab-panel item="props">
             <mui-v-stack space="var(--space-100)" data-panel-stack="props"></mui-v-stack>
+          </mui-tab-panel>
+          <mui-tab-panel item="accessibility">
+            <mui-v-stack space="var(--space-400)" data-panel-stack="accessibility"></mui-v-stack>
           </mui-tab-panel>
         </mui-v-stack>
       `;
@@ -237,9 +238,7 @@ class StoryTemplate extends HTMLElement {
     `;
 
     const demoLink = this.getAttribute("demo");
-    const demoContent = demoLink
-      ? renderResourceLink({ href: demoLink, label: "Demo", icon: "mui-icon-globe" })
-      : "";
+    const demoContent = demoLink ? renderResourceLink({ href: demoLink, label: "Demo", icon: "mui-icon-globe" }) : "";
 
     const websiteLink = this.getAttribute("website");
     const websiteContent = websiteLink
@@ -252,9 +251,7 @@ class StoryTemplate extends HTMLElement {
       : "";
 
     const npmLink = this.getAttribute("npm");
-    const npmContent = npmLink
-      ? renderResourceLink({ href: npmLink, label: "Package", icon: "npm-mark" })
-      : "";
+    const npmContent = npmLink ? renderResourceLink({ href: npmLink, label: "Package", icon: "npm-mark" }) : "";
 
     const githubLink = this.getAttribute("github");
     const githubContent = githubLink
@@ -262,9 +259,7 @@ class StoryTemplate extends HTMLElement {
       : "";
 
     const figmaLink = this.getAttribute("figma");
-    const figmaContent = figmaLink
-      ? renderResourceLink({ href: figmaLink, label: "Figma", icon: "figma-mark" })
-      : "";
+    const figmaContent = figmaLink ? renderResourceLink({ href: figmaLink, label: "Figma", icon: "figma-mark" }) : "";
 
     const guidesLink = this.getAttribute("guides");
     const guidesContent = guidesLink
@@ -337,7 +332,7 @@ class StoryTemplate extends HTMLElement {
   }
 
   syncGeneratedDocTabsLayout() {
-    const docTabsBar = this.querySelector('[data-generated-doc-tabs] .docs-tab-bar');
+    const docTabsBar = this.querySelector("[data-generated-doc-tabs] .docs-tab-bar");
     if (!docTabsBar) return;
 
     if (this.docTabsMediaQuery.matches) {

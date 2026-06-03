@@ -8,66 +8,6 @@ class StoryPromptPreview extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("PromptPreview");
-    const propItems = [
-      { name: "value", type: "string", options: "{text}", default: "", description: "Preview content used for title/snippet when text is visible." },
-      { name: "badge", type: "string", options: "{text}", default: "Auto", description: "Badge label. Auto-detects when not provided." },
-      { name: "label", type: "string", options: "{text}", default: "Pasted Content", description: "Fallback title when value is empty." },
-      {
-        name: "bg-image",
-        type: "string",
-        options: "{url}",
-        default: "",
-        description: "Background image URL. Image mode hides text by default.",
-      },
-      { name: "image-tint", type: "string", options: "{color}", default: "", description: "Tint overlay color used in image mode." },
-      { name: "accent", type: "string", options: "{color}", default: "", description: "Accent tone used for non-image surfaces." },
-      { name: "inverted", type: "boolean", options: "inverted", default: "", description: "Inverted contrast treatment." },
-      { name: "show-text", type: "boolean", options: "show-text", default: "", description: "Force text visible when bg-image is present." },
-      { name: "badge-only", type: "boolean", options: "badge-only", default: "", description: "Force badge-only mode." },
-      { name: "animated", type: "boolean", options: "animated", default: "", description: "Enable scanline/pulse animation (unless off mode)." },
-      {
-        name: "loading",
-        type: "boolean",
-        options: "loading",
-        default: "",
-        description: "Shows preview loading overlay state while async metadata/content resolves.",
-      },
-      {
-        name: "loading-label",
-        type: "string",
-        options: "{text}",
-        default: "Loading preview",
-        description: "Accessible label announced while preview is loading.",
-      },
-      {
-        name: "clickable",
-        type: "boolean",
-        options: "clickable",
-        default: "",
-        description: "Dispatches prompt-preview-open on click/Enter/Space for consumer-managed dialog flows.",
-      },
-      {
-        name: "animation-mode",
-        type: "string",
-        options: "loop, once, off",
-        default: "loop",
-        description: "Controls animation loop behavior.",
-      },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            name="${prop.name}"
-            type="${prop.type}"
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `
-      )
-      .join("");
 
     const stories = /*html*/ `
       <story-api-types tag="mui-prompt-preview" title="Prompt Preview"></story-api-types>

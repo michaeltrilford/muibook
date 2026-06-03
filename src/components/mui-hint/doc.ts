@@ -14,6 +14,8 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use for short contextual help that appears on hover or focus.",
         "Slot the trigger UI into slot='trigger' (icon, badge, text, or custom content).",
+        "When the trigger is already focusable, such as a button or link, focus remains on that control.",
+        "When the trigger is plain content, Hint adds fallback keyboard focus so the tooltip can still be discovered.",
         "Set placement to top, bottom, left, or right to control tooltip position.",
         "Delay is intentional by default: hint open is clamped to 250-2000ms (default 500ms) to prevent instant pop.",
         "Use delay and initial-delay to tune open timing when needed.",

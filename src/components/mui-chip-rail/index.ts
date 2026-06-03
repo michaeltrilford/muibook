@@ -155,6 +155,10 @@ class MuiChipRail extends HTMLElement {
           white-space: nowrap;
         }
 
+        .skip-chip[hidden] {
+          display: none;
+        }
+
         .skip-chip:focus,
         .skip-chip:focus-visible {
           position: static;
@@ -239,7 +243,7 @@ class MuiChipRail extends HTMLElement {
       <div class="rail">
         <div class="scroll" role="group" aria-label="${this.escapeAttribute(ariaLabel)}">
           <div class="items">
-            <mui-chip class="skip-chip" variant="clickable" tabindex="0" size="${size}">${this.escapeHtml(skipLabel)}</mui-chip>
+            <mui-chip class="skip-chip" variant="clickable" tabindex="-1" size="${size}" hidden aria-hidden="true">${this.escapeHtml(skipLabel)}</mui-chip>
             <slot></slot>
           </div>
         </div>
@@ -338,9 +342,13 @@ class MuiChipRail extends HTMLElement {
     const canScroll = maxScroll > 1;
     const showStart = canScroll && scrollLeft > 1;
     const showEnd = canScroll && scrollLeft < maxScroll - 1;
+    const skip = this.shadowRoot.querySelector(".skip-chip") as HTMLElement | null;
 
     this.shadowRoot.querySelector(".edge-start")?.toggleAttribute("hidden", !showStart);
     this.shadowRoot.querySelector(".edge-end")?.toggleAttribute("hidden", !showEnd);
+    skip?.toggleAttribute("hidden", !canScroll);
+    skip?.setAttribute("aria-hidden", canScroll ? "false" : "true");
+    skip?.setAttribute("tabindex", canScroll ? "0" : "-1");
   }
 
   private syncBleed() {

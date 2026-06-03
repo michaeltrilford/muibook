@@ -68,6 +68,7 @@ class PropsCard extends HTMLElement {
     `;
 
     const title = this.getAttribute("title") || "";
+    this.removeAttribute("title");
     const description = this.hasAttribute("description")
       ? /*html*/ `<mui-body style="max-width: 60ch; margin-top: var(--space-200); margin-bottom: var(--space-100);" size="small">${this.getAttribute(
           "description",

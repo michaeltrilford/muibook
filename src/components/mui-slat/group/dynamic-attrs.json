@@ -1,5 +1,10 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["usage"]
+  "attributes": [
+    {
+      "name": "usage",
+      "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+    }
+  ]
 }

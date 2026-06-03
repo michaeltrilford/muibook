@@ -1,5 +1,14 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["card-slot", "condensed-slot"]
+  "attributes": [
+    {
+      "name": "card-slot",
+      "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
+    },
+    {
+      "name": "condensed-slot",
+      "description": "Applied to a slotted child used in condensed composition, allowing the child to reduce spacing and density."
+    }
+  ]
 }

@@ -8,48 +8,6 @@ class StoryPromptToggle extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("PromptToggle");
-    const propItems = [
-      {
-        name: "mode",
-        type: "attribute",
-        options: "icon, chip",
-        default: "icon",
-        description:
-          "Controls which prompt-toggle content is visible. icon shows the collapsed trigger; chip shows the active context content.",
-      },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            name="${prop.name}"
-            type="${prop.type}"
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `,
-      )
-      .join("");
-
-    const accordions = propItems
-      .map((prop, index) => {
-        const isLast = index === propItems.length - 1 ? "last-child" : "";
-        return /*html*/ `
-          <mui-accordion-block heading="${prop.name}" class="${isLast}">
-            <story-type-slat
-              slot="detail"
-              name="${prop.name}"
-              type="${prop.type}"
-              options="${prop.options || ""}"
-              default="${prop.default || ""}"
-              description="${prop.description}">
-            </story-type-slat>
-          </mui-accordion-block>
-        `;
-      })
-      .join("");
 
     const stories = /*html*/ `
       <story-api-types tag="mui-prompt-toggle" title="Prompt Toggle"></story-api-types>

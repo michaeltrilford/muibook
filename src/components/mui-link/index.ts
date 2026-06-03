@@ -33,6 +33,17 @@ class MuiLink extends HTMLElement {
 
     this.render();
 
+    const shadow = this.shadowRoot;
+    if (!shadow) return;
+
+    const slots = [
+      shadow.querySelector("slot:not([name])"),
+      shadow.querySelector('slot[name="before"]'),
+      shadow.querySelector('slot[name="after"]'),
+    ] as (HTMLSlotElement | null)[];
+
+    slots.forEach((slot) => slot?.addEventListener("slotchange", () => this.updateSlotState()));
+
     requestAnimationFrame(() => this.updateSlotState());
   }
 
@@ -89,12 +100,15 @@ class MuiLink extends HTMLElement {
         ] as (HTMLSlotElement | null)[];
 
         const isIconOnly = this.hasAttribute("icon-only");
+        const isAvatarOnly = this.hasAttribute("avatar-only");
 
         slots.forEach((slot) => {
           if (slot) {
             const nodes = slot.assignedNodes({ flatten: true });
             this.updateIconSizes(nodes, isIconOnly);
-            this.updateAvatarSizes(nodes);
+            if (!isAvatarOnly) {
+              this.updateAvatarSizes(nodes);
+            }
             this.updateBadgeSizes(nodes);
           }
         });
@@ -146,7 +160,20 @@ class MuiLink extends HTMLElement {
 
     this.toggleAttribute("has-video", hasVideo);
 
+    const avatarOnly =
+      !hasVideo &&
+      assignedElements.length === 1 &&
+      assignedElements[0].tagName.toLowerCase() === "mui-avatar" &&
+      assignedNodes.every((node) =>
+        node.nodeType === Node.ELEMENT_NODE
+          ? (node as HTMLElement).tagName.toLowerCase() === "mui-avatar"
+          : !node.textContent?.trim()
+      );
+
+    this.toggleAttribute("avatar-only", avatarOnly);
+
     const iconOnly =
+      !avatarOnly &&
       !hasVideo &&
       assignedNodes.length > 0 &&
       assignedNodes.every((node) =>
@@ -166,7 +193,9 @@ class MuiLink extends HTMLElement {
         if (slot) {
           const nodes = slot.assignedNodes({ flatten: true });
           this.updateIconSizes(nodes, false);
-          this.updateAvatarSizes(nodes);
+          if (!avatarOnly) {
+            this.updateAvatarSizes(nodes);
+          }
           this.updateBadgeSizes(nodes);
         }
       });
@@ -525,6 +554,39 @@ class MuiLink extends HTMLElement {
       }
       /* ===================================== */
 
+      :host([avatar-only]) {
+        width: auto;
+        display: flex;
+      }
+
+      :host([avatar-only]) a,
+      :host([avatar-only]) a:hover,
+      :host([avatar-only]) a:focus,
+      :host([avatar-only]) a:focus-visible,
+      :host([avatar-only]) a[aria-disabled="true"] {
+        width: auto;
+        min-width: 0;
+        min-height: 0;
+        padding: var(--space-000);
+        border: var(--action-avatar-border, none);
+        background: transparent;
+        box-shadow: var(--action-avatar-shadow, none);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-000);
+        line-height: 0;
+        border-radius: 999rem;
+        text-decoration: none;
+        text-decoration-color: transparent;
+      }
+
+      :host([avatar-only]) a ::slotted(mui-avatar) {
+        margin-right: var(--space-000);
+        margin-left: var(--space-000);
+      }
+      /* ===================================== */
+
       :host([alert-positive-slot]) {
         --alert-text: var(--feedback-positive-text);
         --alert-icon: var(--feedback-positive-icon);
@@ -612,6 +674,11 @@ class MuiLink extends HTMLElement {
       :host(:not([variant="default"])) a:hover ::slotted(mui-avatar),
       :host(:not([variant="default"])) a:focus ::slotted(mui-avatar) {
         --avatar-background-override: var(--action-avatar-background-hover);
+      }
+
+      :host([avatar-only][variant][size]) a ::slotted(mui-avatar) {
+        margin-right: var(--space-000);
+        margin-left: var(--space-000);
       }
 
       /* Badge Spacing */

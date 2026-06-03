@@ -27,6 +27,7 @@ class MuiHint extends HTMLElement {
     this.render();
     this.setupEvents();
     this.syncTriggerSize();
+    this.syncTriggerFocus();
   }
 
   disconnectedCallback() {
@@ -55,12 +56,21 @@ class MuiHint extends HTMLElement {
           width: max-content;
           position: relative;
           vertical-align: middle;
+          --hint-focus-outline: var(--stroke-size-400) var(--stroke-outset) var(--outline-color);
+          --hint-focus-outline-offset: var(--stroke-size-200);
+          --hint-focus-radius: var(--radius-200);
         }
         .trigger {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           cursor: help;
+          border-radius: var(--hint-focus-radius);
+          outline: none;
+        }
+        .trigger:focus-visible {
+          outline: var(--hint-focus-outline);
+          outline-offset: var(--hint-focus-outline-offset);
         }
         .tooltip {
           display: none;
@@ -125,7 +135,10 @@ class MuiHint extends HTMLElement {
       this.openWithDelay();
     });
     trigger.addEventListener("focusout", () => this.close(true));
-    triggerSlot?.addEventListener("slotchange", () => this.syncTriggerSize());
+    triggerSlot?.addEventListener("slotchange", () => {
+      this.syncTriggerSize();
+      this.syncTriggerFocus();
+    });
 
     this.addEventListener("keydown", (event) => {
       if ((event as KeyboardEvent).key === "Escape") this.close(true);
@@ -162,6 +175,39 @@ class MuiHint extends HTMLElement {
         el.setAttribute("size", badgeSize);
       }
     });
+  }
+
+  private syncTriggerFocus() {
+    const trigger = this.shadowRoot?.querySelector(".trigger") as HTMLElement | null;
+    const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement | null;
+    if (!trigger || !triggerSlot) return;
+
+    const hasFocusableTrigger = triggerSlot.assignedElements({ flatten: true }).some((el) => this.isFocusableTrigger(el));
+
+    if (hasFocusableTrigger) {
+      trigger.removeAttribute("tabindex");
+      return;
+    }
+
+    trigger.setAttribute("tabindex", "0");
+  }
+
+  private isFocusableTrigger(el: Element): boolean {
+    if (!(el instanceof HTMLElement)) return false;
+    if (el.hasAttribute("disabled") || el.getAttribute("aria-disabled") === "true") return false;
+
+    const tagName = el.tagName.toLowerCase();
+    const tabindex = el.getAttribute("tabindex");
+    if (tabindex !== null && tabindex !== "-1") return true;
+    if (tagName === "a" && el.hasAttribute("href")) return true;
+    if (["button", "input", "select", "textarea", "summary"].includes(tagName)) return true;
+    if (tagName === "mui-button" || tagName === "mui-link") return true;
+
+    return Boolean(
+      el.querySelector(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"]), mui-button, mui-link',
+      ),
+    );
   }
 
   private getDelay() {

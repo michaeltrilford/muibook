@@ -52,69 +52,6 @@ class StoryIllustration extends HTMLElement {
       }
     `;
 
-    const propItems = [
-      {
-        name: "size",
-        type: "attribute",
-        options: "small, medium, large, x-large",
-        default: "medium",
-        description: "Controls the overall illustration footprint.",
-      },
-      {
-        name: "color",
-        type: "attribute",
-        options: "default, inverted, valid CSS color",
-        default: "default",
-        description: "Uses preset illustration palettes or a custom CSS color.",
-      },
-      {
-        name: "--illustration-main-color-default",
-        type: "css var",
-        options: "{color}",
-        default: "var(--white)",
-        description: "Primary fill used when color='default'.",
-      },
-      {
-        name: "--illustration-main-color-inverted",
-        type: "css var",
-        options: "{color}",
-        default: "var(--black)",
-        description: "Primary fill used when color='inverted'.",
-      },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            name="${prop.name}"
-            type="${prop.type}"
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `,
-      )
-      .join("");
-
-    const accordions = propItems
-      .map((prop, index) => {
-        const isLast = index === propItems.length - 1 ? "last-child" : "";
-        return /*html*/ `
-          <mui-accordion-block heading="${prop.name}" ${isLast}>
-            <story-type-slat
-              slot="detail"
-              name="${prop.name}"
-              type="${prop.type}"
-              options="${prop.options || ""}"
-              default="${prop.default || ""}"
-              description="${prop.description}">
-            </story-type-slat>
-          </mui-accordion-block>
-        `;
-      })
-      .join("");
-
     const stories = /*html*/ `
       <story-api-types tag="mui-illustration-trash" title="Illustrations"></story-api-types>
 

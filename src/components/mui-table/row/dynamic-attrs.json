@@ -1,5 +1,10 @@
 {
   "version": 1,
   "destinationOnly": true,
-  "attributes": ["in-card"]
+  "attributes": [
+    {
+      "name": "in-card",
+      "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
+    }
+  ]
 }

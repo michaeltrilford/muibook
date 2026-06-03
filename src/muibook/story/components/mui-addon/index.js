@@ -13,64 +13,6 @@ class storyAddon extends HTMLElement {
       :host { display: block; }
     `;
 
-    const propItems = [
-      {
-        name: "slot",
-        required: true,
-        type: "slot (default)",
-        options: "mui-body, mui-icon-[name], {elements}",
-        default: "(required)",
-        description: "Slot in text, icons or other appropriate micro compositions to support form experiences.",
-      },
-      {
-        name: "size",
-        type: "string",
-        options: "x-small, small, medium, large",
-        default: "medium",
-        description: "Optional size override. Add On also inherits input size when used in mui-input slots.",
-      },
-    ];
-
-    const rows = propItems
-      .map(
-        (prop) => /*html*/ `
-          <story-type-row
-            ${prop.required ? "required" : ""}
-            name="${prop.name}"
-            type="${prop.type}" 
-            options="${prop.options || ""}"
-            default="${prop.default || ""}"
-            description="${prop.description}">
-          </story-type-row>
-        `
-      )
-      .join("");
-
-    const accordions = propItems
-      .map((prop, index) => {
-        // Check if it's the last item in the array
-        const isLastChild = index === propItems.length - 1 ? "last-child" : "";
-
-        return /*html*/ `
-            <mui-accordion-block
-              style="position: relative; z-index: 1;" 
-              size="medium" 
-              heading=${prop.name.charAt(0).toUpperCase() + prop.name.slice(1)} 
-              ${isLastChild}>
-              <story-type-slat
-                slot="detail"
-                ${prop.required ? "required" : ""}
-                name="${prop.name}"
-                type="${prop.type}" 
-                options="${prop.options || ""}"
-                default="${prop.default || ""}"
-                description="${prop.description}">
-              </story-type-slat>
-            </mui-accordion-block>
-          `;
-      })
-      .join("");
-
     const stories = /*html*/ `
         <story-api-types tag="mui-addon" title="Add On"></story-api-types>
 
