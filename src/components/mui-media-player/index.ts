@@ -740,8 +740,7 @@ class MuiMediaPlayer extends HTMLElement {
             target instanceof HTMLElement &&
             (target.classList.contains("controls-hover-zone") ||
               target.classList.contains("audio-visual-copy") ||
-              target.classList.contains("media-visual-copy") ||
-              target.classList.contains("media-auxiliary")),
+              target.classList.contains("media-visual-copy")),
         )
       ) {
         return;
@@ -1065,48 +1064,25 @@ class MuiMediaPlayer extends HTMLElement {
     const showCenterPlay = this.hasAttribute("center-play");
     const artwork = this.getAttribute("artwork") || "";
     const showWaveform = this.hasAttribute("waveform");
-    const metaImage = artwork;
     const mediaTitle = this.getAttribute("media-title") || "";
     const height = this.getAttribute("height") || "";
     const audioHeightStyle = height ? ` style="--media-player-audio-height: ${height.replace(/"/g, "&quot;")}"` : "";
     const hasMetadataSlot = this.querySelector('[slot="metadata"]') !== null;
-    const hasAuxiliarySlot = this.querySelector('[slot="auxiliary"]') !== null;
     const escapedMediaTitle = mediaTitle.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    const auxiliaryMarkup = hasAuxiliarySlot ? `<div class="media-auxiliary"><slot name="auxiliary"></slot></div>` : "";
-    const renderMetaContent = (image: string, fallbackIcon: string, className = "", includeAuxiliary = false) => {
-      if (!mediaTitle && !hasMetadataSlot && !includeAuxiliary) return "";
+    const renderMetaContent = (className = "") => {
+      if (!mediaTitle && !hasMetadataSlot) return "";
       const visualCopyClass = [className, className === "audio" ? "audio-visual-copy" : "", "media-visual-copy"]
         .filter(Boolean)
         .join(" ");
 
       return `<div class="${visualCopyClass}">
-          <div class="media-visual-copy-inner">
-            ${
-              mediaTitle || hasMetadataSlot
-                ? `
             <slot name="metadata">
-              <div class="media-meta">
-                <span class="media-meta-thumbnail-slot">
-                    ${
-                      image
-                        ? `<img class="media-meta-thumbnail" src="${image.replace(/"/g, "&quot;")}" alt="" loading="lazy" />`
-                        : `<span class="media-meta-icon" aria-hidden="true">${fallbackIcon}</span>`
-                    }
-                </span>
-                <div class="media-meta-copy">
-                  ${mediaTitle ? `<mui-body size="small" weight="bold">${escapedMediaTitle}</mui-body>` : ""}
-                </div>
-              </div>
+              ${mediaTitle ? `<mui-body size="small" weight="bold">${escapedMediaTitle}</mui-body>` : ""}
             </slot>
-          `
-                : ""
-            }
-            ${includeAuxiliary ? auxiliaryMarkup : ""}
-          </div>
           </div>`;
     };
     const hasAudioPresentation =
-      type === "audio" && renderPlayerControls && Boolean(metaImage || mediaTitle || hasMetadataSlot || showWaveform);
+      type === "audio" && renderPlayerControls && Boolean(artwork || mediaTitle || hasMetadataSlot || showWaveform);
     const audioVisualMarkup = hasAudioPresentation
       ? `<div class="audio-visual ${artwork ? "has-artwork" : ""} ${showWaveform ? "has-waveform" : ""}" part="audio-visual"${audioHeightStyle}>
             ${
@@ -1115,17 +1091,12 @@ class MuiMediaPlayer extends HTMLElement {
                 : ""
             }
             ${showWaveform ? `<canvas class="audio-waveform" aria-hidden="true"></canvas>` : ""}
-            ${renderMetaContent(
-              metaImage,
-              `<mui-icon-music-microphone size="medium"></mui-icon-music-microphone>`,
-              "audio",
-            )}
-            ${auxiliaryMarkup}
+            ${renderMetaContent("audio")}
           </div>`
       : "";
     const videoMetaMarkup =
-      type === "video" && (mediaTitle || hasMetadataSlot || hasAuxiliarySlot)
-        ? renderMetaContent("", `<mui-icon-play-fill size="medium"></mui-icon-play-fill>`, "video", hasAuxiliarySlot)
+      type === "video" && (mediaTitle || hasMetadataSlot)
+        ? renderMetaContent("video")
         : "";
 
     const mediaMarkup =
@@ -1178,9 +1149,10 @@ class MuiMediaPlayer extends HTMLElement {
           width: 100%;
           display: grid;
           position: relative;
+          --media-player-main-radius: 2rem;
         }
         .frame.custom-controls {
-          border-radius: var(--radius-100);
+          border-radius: var(--media-player-main-radius);
           overflow: hidden;
           background: var(--surface-elevated-200);
           border: var(--border-thin);
@@ -1193,7 +1165,7 @@ class MuiMediaPlayer extends HTMLElement {
           border: 0;
           background: transparent;
           overflow: hidden;
-          border-radius: 2rem;
+          border-radius: var(--media-player-main-radius);
         }
         .video-frame.custom-controls,
         .video-frame.custom-controls .media-shell,
@@ -1243,7 +1215,7 @@ class MuiMediaPlayer extends HTMLElement {
         .audio-frame.custom-controls {
           box-sizing: border-box;
           position: relative;
-          border-radius: 2rem;
+          border-radius: var(--media-player-main-radius);
           background: var(--surface-elevated-200);
         }
         .media-shell {
@@ -1259,7 +1231,7 @@ class MuiMediaPlayer extends HTMLElement {
         }
         .video-frame.custom-controls .media-shell {
           background: var(--media-player-dark-background);
-          border-radius: 2rem;
+          border-radius: var(--media-player-main-radius);
           box-shadow: var(--media-player-video-shadow);
         }
         .video-frame.custom-controls .media-shell::after {
@@ -1621,6 +1593,7 @@ class MuiMediaPlayer extends HTMLElement {
             linear-gradient(135deg, var(--media-player-surface-overlay-end), transparent 52%),
             var(--surface-elevated-100);
           position: relative;
+          border-radius: var(--media-player-main-radius);
         }
         .audio-visual.has-artwork {
           align-items: flex-start;
@@ -1753,85 +1726,11 @@ class MuiMediaPlayer extends HTMLElement {
           visibility: hidden;
           pointer-events: none;
         }
-        .media-auxiliary {
-          position: absolute;
-          top: 0;
-          right: 0;
-          z-index: 3;
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: var(--space-100);
-          max-width: 100%;
-          padding: var(--space-400);
-          pointer-events: auto;
-        }
-        .media-auxiliary slot[name="auxiliary"] {
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: var(--space-100);
-          max-width: 100%;
-          pointer-events: auto;
-        }
-        .audio-meta,
-        .media-meta {
-          display: flex;
-          align-items: start;
-          gap: var(--space-300);
-          width: fit-content;
-          max-width: 100%;
-          min-width: 0;
-          pointer-events: auto;
-        }
-        .media-meta-thumbnail-slot {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 4.8rem;
-          height: 4.8rem;
-          flex: 0 0 4.8rem;
-          min-width: 0;
-        }
-        .audio-meta-icon,
-        .audio-meta-thumbnail,
-        .media-meta-icon,
-        .media-meta-thumbnail {
-          width: 4.8rem;
-          height: 4.8rem;
-          min-width: 4.8rem;
-          min-height: 4.8rem;
-          max-width: 4.8rem;
-          max-height: 4.8rem;
-          flex: 0 0 4.8rem;
-          box-sizing: border-box;
-          border-radius: var(--radius-300);
-          border: var(--border-thin);
-          box-shadow: var(--media-player-meta-icon-shadow);
-        }
-        .audio-meta-icon,
-        .media-meta-icon {
-          display: inline-grid;
-          place-items: center;
-          color: var(--text-color);
-          background: var(--surface-elevated-300);
-        }
-        .audio-meta-thumbnail,
-        .media-meta-thumbnail {
-          object-fit: cover;
-          box-shadow: var(--media-player-thumbnail-shadow);
-        }
-        .audio-visual.has-artwork .audio-meta-thumbnail,
-        .video-frame.custom-controls .media-meta-thumbnail {
-          border: var(--media-player-dark-thumbnail-border);
-          box-shadow: var(--media-player-dark-thumbnail-shadow);
-        }
         slot[name="metadata"] {
           display: flex;
           align-items: center;
           gap: var(--space-300);
-          width: fit-content;
+          width: 100%;
           max-width: 100%;
           pointer-events: auto;
           --action-avatar-border: var(--border-thin);
@@ -1876,36 +1775,6 @@ class MuiMediaPlayer extends HTMLElement {
         .audio-visual.has-artwork slot[name="metadata"]::slotted(*),
         .video-frame.custom-controls slot[name="metadata"]::slotted(*) {
           color: var(--white);
-        }
-        .audio-meta-copy,
-        .media-meta-copy {
-          display: grid;
-          gap: var(--space-000);
-          min-width: 0;
-          text-shadow: none;
-        }
-        .audio-meta-copy mui-body,
-        .media-meta-copy mui-body {
-          margin-block-start: var(--space-025);
-        }
-        .video-meta-time[hidden] {
-          display: none;
-        }
-
-        .audio-visual.has-artwork .audio-meta-copy,
-        .video-frame.custom-controls .media-meta-copy {
-          text-shadow: var(--media-player-meta-text-shadow);
-        }
-        .video-frame.custom-controls .media-meta-copy mui-body {
-          --text-color: var(--white);
-          --text-color-optional: rgba(255, 255, 255, 0.72);
-        }
-        .audio-visual.has-artwork .audio-meta-copy ::slotted(*),
-        .video-frame.custom-controls .media-meta-copy ::slotted(*) {
-          --text-color: var(--white);
-          --text-color-optional: rgba(255, 255, 255, 0.72);
-          --icon-color-default: var(--white);
-          --icon-color-inverted: var(--white);
         }
         .audio-frame .video-only {
           display: none;
@@ -2053,10 +1922,18 @@ class MuiMediaPlayer extends HTMLElement {
           opacity: var(--opacity-disabled);
           pointer-events: none;
         }
+        @container (max-width: 102.4rem) {
+          .frame {
+            --media-player-main-radius: 1.8rem;
+          }
+        }
         @container (max-width: 70rem) {
+          .frame {
+            --media-player-main-radius: 1.6rem;
+          }
+
           .audio-visual-copy,
-          .media-visual-copy,
-          .media-auxiliary {
+          .media-visual-copy {
             padding: var(--space-300);
           }
 
@@ -2069,6 +1946,10 @@ class MuiMediaPlayer extends HTMLElement {
 
         }
         @container (max-width: 52rem) {
+          .frame {
+            --media-player-main-radius: 1.2rem;
+          }
+
           .volume,
           .video-only {
             display: none;
@@ -2077,19 +1958,20 @@ class MuiMediaPlayer extends HTMLElement {
             gap: var(--space-200);
           }
 
-          .audio-visual-copy, .media-visual-copy, .media-auxiliary {
+          .audio-visual-copy, .media-visual-copy {
             padding: var(--space-200);
           }
 
-          .audio-meta {
-            gap: var(--space-200);
-          }
           .audio-artwork {
             width: 4.8rem;
             height: 4.8rem;
           }
         }
         @container (max-width: 42rem) {
+          .frame {
+            --media-player-main-radius: 1rem;
+          }
+
           .controls-row {
             padding: var(--space-000) var(--space-000);
           }
@@ -2120,7 +2002,7 @@ class MuiMediaPlayer extends HTMLElement {
         }
 
       </style>
-      <div class="frame ${renderPlayerControls ? "custom-controls" : ""} ${showCenterPlay ? "has-center-play" : ""} ${type}-frame ${(type === "video" || type === "audio") && (mediaTitle || hasMetadataSlot || (type === "video" && hasAuxiliarySlot)) ? "has-metadata" : ""} ${type === "audio" && artwork ? "has-artwork" : ""} ${type === "audio" && renderPlayerControls && !hasAudioPresentation ? "audio-player-only" : ""}">
+      <div class="frame ${renderPlayerControls ? "custom-controls" : ""} ${showCenterPlay ? "has-center-play" : ""} ${type}-frame ${(type === "video" || type === "audio") && (mediaTitle || hasMetadataSlot) ? "has-metadata" : ""} ${type === "audio" && artwork ? "has-artwork" : ""} ${type === "audio" && renderPlayerControls && !hasAudioPresentation ? "audio-player-only" : ""}">
         ${mediaMarkup}
         ${renderPlayerControls ? this.renderPlayerControls(type as "video" | "audio", hasAudioPresentation, muted, escapedSrc, showCenterPlay) : ""}
       </div>

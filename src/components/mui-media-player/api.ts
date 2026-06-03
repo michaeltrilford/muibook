@@ -1,7 +1,7 @@
 export const muiApi = {
   "mui-media-player": {
     description:
-      "Renders native or embedded audio and video media from a supplied source, with optional Muibook controls for direct media files and composable metadata or auxiliary slots for titles, avatars, links, badges, and product actions.",
+      "Renders native or embedded audio and video media from a supplied source, with optional Muibook controls for direct media files and composable metadata for titles, avatars, links, badges, and product actions.",
     attributes: [
       { name: "src", type: { text: "string" }, description: "Media URL to render." },
       { name: "type", type: { text: '"video" | "audio" | "youtube" | "soundcloud"' }, description: "Overrides media type detection for the source URL." },
@@ -17,10 +17,10 @@ export const muiApi = {
       { name: "loop", type: { text: "boolean" }, default: "false", description: "Restarts playback when media ends." },
     ],
     slots: [
-      { name: "metadata", description: "Optional composed metadata content for audio presentations and video metadata. Use it for avatar, title, supporting copy, links, or actions. Media Player applies contextual text and link tokens where possible so slotted content follows the current surface. Keep links and buttons scoped to the intended interactive item. Overrides the media-title fallback layout." },
-      { name: "auxiliary", description: "Optional top-right overlay content for secondary actions, advertising labels, badges, or supporting controls on video and audio presentation surfaces. Media Player applies contextual action and link tokens where possible; use overlay variants over video or artwork and normal variants on surface-based audio. Keep interactions scoped so they do not toggle playback." },
+      { name: "metadata", description: "Optional composed top-area content for audio presentations and video metadata. Use it for avatar, title, supporting copy, links, badges, or actions. Media Player applies contextual text and link tokens where possible so slotted content follows the current surface. Keep links and buttons scoped to the intended interactive item. Overrides the media-title fallback layout." },
     ],
     cssProperties: [
+      { name: "--media-player-main-radius", description: "Responsive radius used by the main media player frame and visual surfaces." },
       { name: "--media-player-audio-height", description: "Preferred height used for audio metadata and artwork presentations." },
       { name: "--media-player-video-ratio", description: "Aspect ratio used for video media." },
       { name: "--media-player-soundcloud-ratio", description: "Aspect ratio used for SoundCloud media." },
