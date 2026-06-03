@@ -229,7 +229,6 @@ class StoryMediaPlayer extends HTMLElement {
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
           &nbsp;&nbsp;waveform<br />
-          &nbsp;&nbsp;height="14rem"<br />
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
           &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" aligny="center" alignx="space-between" width="100%"&gt;<br />
           ${renderProfileChipCode({
@@ -252,7 +251,6 @@ class StoryMediaPlayer extends HTMLElement {
           type="audio"
           artwork="${audioArtworkSrc}"
           height="14rem"
-          waveform
           src="${audioSrc}">
           <mui-h-stack slot="metadata" aligny="center" alignx="start" width="100%">
             ${renderProfileChip({
@@ -266,7 +264,7 @@ class StoryMediaPlayer extends HTMLElement {
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
           &nbsp;&nbsp;artwork="/audio/artwork.png"<br />
-          &nbsp;&nbsp;height="18rem"<br />
+          &nbsp;&nbsp;height="14rem"<br />
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
           &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" aligny="center" alignx="start" width="100%"&gt;<br />
           ${renderProfileChipCode({
@@ -304,9 +302,9 @@ class StoryMediaPlayer extends HTMLElement {
           ${renderProfileChipHelperCode()}
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
-          &nbsp;&nbsp;artwork="/audio/artwork.png"<br />
+          &nbsp;&nbsp;artwork="/audio/artwork-light.png"<br />
           &nbsp;&nbsp;waveform<br />
-          &nbsp;&nbsp;height="18rem"<br />
+          &nbsp;&nbsp;height="14rem"<br />
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br />
           &nbsp;&nbsp;&lt;mui-h-stack slot="metadata" aligny="center" alignx="space-between" width="100%"&gt;<br />
           ${renderProfileChipCode({
@@ -368,7 +366,7 @@ class StoryMediaPlayer extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="video::Video|||video-center-play::Visible Play/Pause|||metadata-subscribe::Metadata Subscribe|||audio::Audio|||audio-waveform::Audio Waveform|||audio-artwork::Audio Artwork|||audio-artwork-waveform::Audio Artwork Waveform|||audio-metadata::Audio Metadata|||youtube::YouTube Embed|||soundcloud::SoundCloud Embed"
+          links="video::Video|||video-center-play::Visible Play/Pause|||metadata-subscribe::Metadata Subscribe|||audio::Audio|||audio-waveform::Audio Waveform|||audio-artwork::Audio Artwork|||audio-artwork-waveform::Audio Artwork Waveform|||youtube::YouTube Embed|||soundcloud::SoundCloud Embed"
         ></story-quicklinks>
         ${stories}
       </story-template>
