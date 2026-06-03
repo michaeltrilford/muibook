@@ -192,6 +192,24 @@ class MuiMediaPlayer extends HTMLElement {
     }
   }
 
+  private getVisibleWaveformPeaks(peaks: number[], width: number) {
+    const targetCount = Math.min(peaks.length, Math.max(72, Math.min(192, Math.floor(width / 4.5))));
+
+    if (targetCount >= peaks.length) return peaks;
+
+    return Array.from({ length: targetCount }, (_, index) => {
+      const start = Math.floor((index / targetCount) * peaks.length);
+      const end = Math.max(start + 1, Math.floor(((index + 1) / targetCount) * peaks.length));
+      let peak = 0;
+
+      for (let peakIndex = start; peakIndex < end; peakIndex += 1) {
+        peak = Math.max(peak, peaks[peakIndex] || 0);
+      }
+
+      return peak;
+    });
+  }
+
   private drawWaveform(canvas: HTMLCanvasElement, peaks: number[], progress = 0) {
     const rect = canvas.getBoundingClientRect();
     if (!rect.width || !rect.height || !peaks.length) return;
@@ -216,12 +234,14 @@ class MuiMediaPlayer extends HTMLElement {
     context.clearRect(0, 0, width, height);
 
     const centerY = height / 2;
-    const gap = Math.max(1, Math.round(1 * dpr));
-    const barWidth = Math.max(1, Math.floor(width / peaks.length - gap));
-    const activeIndex = Math.floor(Math.max(0, Math.min(1, progress)) * peaks.length);
+    const gap = Math.max(1, Math.round(2 * dpr));
+    const visiblePeaks = this.getVisibleWaveformPeaks(peaks, rect.width);
+    const step = width / visiblePeaks.length;
+    const barWidth = Math.max(1, Math.floor(step - gap) + dpr);
+    const activeIndex = Math.floor(Math.max(0, Math.min(1, progress)) * visiblePeaks.length);
 
-    peaks.forEach((peak, index) => {
-      const x = index * (barWidth + gap);
+    visiblePeaks.forEach((peak, index) => {
+      const x = index * step + (step - barWidth) / 2;
       const amplitude = Math.max(2 * dpr, peak * centerY * 0.92);
       const isActive = index <= activeIndex;
 
@@ -1094,10 +1114,7 @@ class MuiMediaPlayer extends HTMLElement {
             ${renderMetaContent("audio")}
           </div>`
       : "";
-    const videoMetaMarkup =
-      type === "video" && (mediaTitle || hasMetadataSlot)
-        ? renderMetaContent("video")
-        : "";
+    const videoMetaMarkup = type === "video" && (mediaTitle || hasMetadataSlot) ? renderMetaContent("video") : "";
 
     const mediaMarkup =
       type === "youtube"
@@ -1304,7 +1321,7 @@ class MuiMediaPlayer extends HTMLElement {
         .video-frame.custom-controls .controls,
         .audio-frame.custom-controls:not(.audio-player-only) .controls {
           position: absolute;
-          z-index: 2;
+          z-index: 5;
           inset: auto var(--space-000) var(--space-000);
           width: auto;
           display: grid;
@@ -1351,7 +1368,7 @@ class MuiMediaPlayer extends HTMLElement {
         .controls-peek {
           display: none;
           position: absolute;
-          z-index: 2;
+          z-index: 4;
           left: 50%;
           bottom: 0;
           width: 3.6rem;
@@ -1430,7 +1447,7 @@ class MuiMediaPlayer extends HTMLElement {
         .audio-frame.custom-controls:not(.audio-player-only) .controls-hover-zone {
           display: block;
           position: absolute;
-          z-index: 1;
+          z-index: 5;
           inset: auto var(--space-000) var(--space-000);
           height: 2.4rem;
           pointer-events: auto;
@@ -1438,7 +1455,7 @@ class MuiMediaPlayer extends HTMLElement {
         /* Center play feedback */
         .center-play {
           position: absolute;
-          z-index: 2;
+          z-index: 4;
           inset: 50% auto auto 50%;
           display: grid;
           place-items: center;
@@ -1573,7 +1590,7 @@ class MuiMediaPlayer extends HTMLElement {
           width: 100%;
           padding-inline: var(--space-300);
           padding-block-start: var(--space-100);
-          padding-block-end: var(--space-200);
+          padding-block-end: var(--space-000);
         }
         .audio-frame.custom-controls.audio-player-only .compact-action-row {
           width: 100%;
@@ -1585,8 +1602,8 @@ class MuiMediaPlayer extends HTMLElement {
         .audio-visual {
           display: flex;
           align-items: flex-start;
-          min-height: 9.8rem;
-          height: var(--media-player-audio-height, 9.8rem);
+          min-height: 11.6rem;
+          height: var(--media-player-audio-height, 11.6rem);
           gap: var(--space-300);
           padding: var(--space-400);
           background:
@@ -1641,7 +1658,6 @@ class MuiMediaPlayer extends HTMLElement {
           height: 100%;
           border-radius: 0;
           box-shadow: none;
-          filter: saturate(1.08);
           transform: scale(1);
           transition:
             filter var(--speed-300) ease,
@@ -1653,31 +1669,32 @@ class MuiMediaPlayer extends HTMLElement {
           inset: auto var(--space-400) var(--space-600);
           width: calc(100% - (var(--space-400) * 2));
           height: 5.6rem;
-          opacity: 0.82;
+          opacity: 1;
           pointer-events: none;
+          bottom: calc(var(--space-500) + var(--stroke-size-300));
         }
         .audio-visual.has-artwork .audio-waveform {
-          z-index: 2;
-          opacity: 0.94;
-          filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-300) var(--black-opacity-80));
-          --media-player-waveform-color: rgba(255, 255, 255, 0.7);
-          --media-player-waveform-mirror-color: rgba(255, 255, 255, 0.34);
+          z-index: 3;
+          opacity: 1;
+          filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-100) var(--black-opacity-90));
+          --media-player-waveform-color: var(--white-opacity-50);
+          --media-player-waveform-mirror-color: var(--white-opacity-30);
           --media-player-waveform-active-color: var(--white);
-          --media-player-waveform-active-mirror-color: rgba(255, 255, 255, 0.5);
+          --media-player-waveform-active-mirror-color: var(--white-opacity-60);
         }
         .audio-visual.has-waveform:not(.has-artwork) {
           --media-player-audio-height: 14rem;
-          --media-player-waveform-color: color-mix(in srgb, var(--text-color) 72%, transparent);
-          --media-player-waveform-mirror-color: color-mix(in srgb, var(--text-color) 38%, transparent);
+          --media-player-waveform-color: color-mix(in srgb, var(--text-color) 40%, transparent);
+          --media-player-waveform-mirror-color: color-mix(in srgb, var(--text-color) 20%, transparent);
           --media-player-waveform-active-color: var(--media-player-range-color);
           --media-player-waveform-active-mirror-color: color-mix(
             in srgb,
-            var(--media-player-range-color) 58%,
+            var(--media-player-range-color) 40%,
             transparent
           );
         }
         .audio-visual.has-waveform:not(.has-artwork) .audio-waveform {
-          opacity: 1;
+          opacity: 0.85;
         }
         .audio-frame.has-artwork:hover .audio-visual.has-artwork .audio-artwork,
         .audio-frame.has-artwork.is-controls-revealing .audio-visual.has-artwork .audio-artwork,
@@ -1934,7 +1951,7 @@ class MuiMediaPlayer extends HTMLElement {
 
           .audio-visual-copy,
           .media-visual-copy {
-            padding: var(--space-300);
+            padding: var(--space-300) var(--space-400);
           }
 
         .audio-visual.has-artwork .audio-visual-copy,
@@ -1959,7 +1976,7 @@ class MuiMediaPlayer extends HTMLElement {
           }
 
           .audio-visual-copy, .media-visual-copy {
-            padding: var(--space-200);
+            padding: var(--space-300) var(--space-400);
           }
 
           .audio-artwork {

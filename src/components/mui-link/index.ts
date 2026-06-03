@@ -133,6 +133,26 @@ class MuiLink extends HTMLElement {
     this.style.setProperty("--action-ring-size", isStrokeToken ? `var(--stroke-size-${tokenValue})` : raw);
   }
 
+  private isAvatarOnlyElement(element: Element): boolean {
+    const tagName = element.tagName.toLowerCase();
+
+    if (tagName === "mui-avatar") return true;
+
+    if (tagName !== "mui-responsive") return false;
+
+    const childNodes = Array.from(element.childNodes);
+    const elementChildren = childNodes.filter((node) => node.nodeType === Node.ELEMENT_NODE) as Element[];
+    const hasOnlyWhitespaceText = childNodes.every((node) =>
+      node.nodeType === Node.TEXT_NODE ? !node.textContent?.trim() : node.nodeType === Node.ELEMENT_NODE
+    );
+
+    return (
+      hasOnlyWhitespaceText &&
+      elementChildren.length > 0 &&
+      elementChildren.every((child) => child.tagName.toLowerCase() === "mui-avatar")
+    );
+  }
+
   private updateSlotState() {
     const shadow = this.shadowRoot!;
     const slotDefault = shadow.querySelector("slot:not([name])") as HTMLSlotElement | null;
@@ -163,10 +183,10 @@ class MuiLink extends HTMLElement {
     const avatarOnly =
       !hasVideo &&
       assignedElements.length === 1 &&
-      assignedElements[0].tagName.toLowerCase() === "mui-avatar" &&
+      this.isAvatarOnlyElement(assignedElements[0]) &&
       assignedNodes.every((node) =>
         node.nodeType === Node.ELEMENT_NODE
-          ? (node as HTMLElement).tagName.toLowerCase() === "mui-avatar"
+          ? this.isAvatarOnlyElement(node as Element)
           : !node.textContent?.trim()
       );
 
@@ -585,6 +605,13 @@ class MuiLink extends HTMLElement {
         margin-right: var(--space-000);
         margin-left: var(--space-000);
       }
+      :host([avatar-only]) a ::slotted(mui-responsive) {
+        display: flex;
+        margin-right: var(--space-000);
+        margin-left: var(--space-000);
+        line-height: 0;
+        text-decoration: none;
+      }
       /* ===================================== */
 
       :host([alert-positive-slot]) {
@@ -677,6 +704,10 @@ class MuiLink extends HTMLElement {
       }
 
       :host([avatar-only][variant][size]) a ::slotted(mui-avatar) {
+        margin-right: var(--space-000);
+        margin-left: var(--space-000);
+      }
+      :host([avatar-only][variant][size]) a ::slotted(mui-responsive) {
         margin-right: var(--space-000);
         margin-left: var(--space-000);
       }
