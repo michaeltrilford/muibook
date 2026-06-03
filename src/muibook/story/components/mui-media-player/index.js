@@ -1,6 +1,6 @@
 import { getComponentDocs } from "../../../utils/story-data";
 
-const videoSrc = new URL("../../../video/japan-small.mp4", import.meta.url).href;
+const videoSrc = new URL("../../../video/japan-optimised.mp4", import.meta.url).href;
 const videoPosterSrc = new URL("../../../video/japan-poster.jpg", import.meta.url).href;
 const audioSrc = new URL("../../../audio/twilight.m4a", import.meta.url).href;
 const audioThumbnailSrc = new URL("../../../audio/thumbnail.jpg", import.meta.url).href;
@@ -131,7 +131,7 @@ class StoryMediaPlayer extends HTMLElement {
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
-          &nbsp;&nbsp;src="/video/japan-small.mp4"&gt;<br />
+          &nbsp;&nbsp;src="/video/japan-optimised.mp4"&gt;<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
@@ -154,7 +154,7 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;center-play<br />
           &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
-          &nbsp;&nbsp;src="/video/japan-small.mp4"&gt;<br />
+          &nbsp;&nbsp;src="/video/japan-optimised.mp4"&gt;<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
@@ -180,7 +180,7 @@ class StoryMediaPlayer extends HTMLElement {
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
-          &nbsp;&nbsp;src="/video/japan-small.mp4"&gt;<br />
+          &nbsp;&nbsp;src="/video/japan-optimised.mp4"&gt;<br />
           &nbsp;&nbsp;&#36;{renderProfileChip({<br />
           &nbsp;&nbsp;&nbsp;&nbsp;primary: "Japan",<br />
           &nbsp;&nbsp;&nbsp;&nbsp;secondary: "Mike Trilford",<br />
@@ -210,7 +210,7 @@ class StoryMediaPlayer extends HTMLElement {
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
-          &nbsp;&nbsp;src="/video/japan-small.mp4"&gt;<br />
+          &nbsp;&nbsp;src="/video/japan-optimised.mp4"&gt;<br />
           &nbsp;&nbsp;&#36;{renderMetaLinks({ title: "Garden Walk", author: "Mike Trilford" })}<br />
           &lt;/mui-media-player&gt;
         </story-code-block>
