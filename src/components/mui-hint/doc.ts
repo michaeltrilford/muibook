@@ -19,9 +19,20 @@ export const muiDocs: MuiDocs = {
         "Set placement to top, bottom, left, or right to control tooltip position.",
         "Delay is intentional by default: hint open is clamped to 250-2000ms (default 500ms) to prevent instant pop.",
         "Use delay and initial-delay to tune open timing when needed.",
+        "Use disable-on-touch when the hint is a desktop-only enhancement and touch users already have enough visible or accessible context.",
       ],
     },
-    accessibility: { designerList: [""], engineerList: [""] },
+    accessibility: {
+      designerList: [
+        "Keep hint copy short and supportive. It should clarify an action, not carry the only critical instruction.",
+        "For familiar icon controls on touch surfaces, prefer visible labels, accessible names, or surrounding context over persistent tooltip behavior.",
+      ],
+      engineerList: [
+        "Ensure the trigger has a clear accessible name, especially for icon-only controls.",
+        "When Hint wraps a focusable control, focus stays on that control and the hint supplements the label rather than replacing it.",
+        "Use disable-on-touch for desktop-only affordances so coarse-pointer and no-hover devices do not retain awkward tooltip states.",
+      ],
+    },
     anatomy: { image: "", list: ["Trigger slot", "Tooltip content", "Placement behavior"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
     compositions: { description: "", items: [] },

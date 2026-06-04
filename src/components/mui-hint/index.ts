@@ -2,7 +2,7 @@ class MuiHint extends HTMLElement {
   private static portalStylesInjected = false;
 
   static get observedAttributes() {
-    return ["placement", "open", "delay", "initial-delay", "size"];
+    return ["placement", "open", "delay", "initial-delay", "size", "disable-on-touch"];
   }
 
   private openTimer: number | null = null;
@@ -27,7 +27,7 @@ class MuiHint extends HTMLElement {
     this.render();
     this.setupEvents();
     this.syncTriggerSize();
-    this.syncTriggerFocus();
+    this.syncDisabledState();
   }
 
   disconnectedCallback() {
@@ -40,6 +40,8 @@ class MuiHint extends HTMLElement {
   attributeChangedCallback() {
     if (!this.shadowRoot) return;
     this.syncTriggerSize();
+    this.syncDisabledState();
+    if (this.isDisabledOnCoarsePointer()) return;
     if (this.hasAttribute("open")) {
       requestAnimationFrame(() => this.positionTooltip());
     }
@@ -137,7 +139,7 @@ class MuiHint extends HTMLElement {
     trigger.addEventListener("focusout", () => this.close(true));
     triggerSlot?.addEventListener("slotchange", () => {
       this.syncTriggerSize();
-      this.syncTriggerFocus();
+      this.syncDisabledState();
     });
 
     this.addEventListener("keydown", (event) => {
@@ -182,6 +184,11 @@ class MuiHint extends HTMLElement {
     const triggerSlot = this.shadowRoot?.querySelector('slot[name="trigger"]') as HTMLSlotElement | null;
     if (!trigger || !triggerSlot) return;
 
+    if (this.isDisabledOnCoarsePointer()) {
+      trigger.removeAttribute("tabindex");
+      return;
+    }
+
     const hasFocusableTrigger = triggerSlot.assignedElements({ flatten: true }).some((el) => this.isFocusableTrigger(el));
 
     if (hasFocusableTrigger) {
@@ -190,6 +197,20 @@ class MuiHint extends HTMLElement {
     }
 
     trigger.setAttribute("tabindex", "0");
+  }
+
+  private syncDisabledState() {
+    const trigger = this.shadowRoot?.querySelector(".trigger") as HTMLElement | null;
+
+    if (this.isDisabledOnCoarsePointer()) {
+      this.close(true);
+      trigger?.removeAttribute("aria-describedby");
+      trigger?.removeAttribute("tabindex");
+      return;
+    }
+
+    trigger?.setAttribute("aria-describedby", "hint-tooltip");
+    this.syncTriggerFocus();
   }
 
   private isFocusableTrigger(el: Element): boolean {
@@ -223,6 +244,11 @@ class MuiHint extends HTMLElement {
   }
 
   private openWithDelay() {
+    if (this.isDisabledOnCoarsePointer()) {
+      this.close(true);
+      return;
+    }
+
     if (this.closeTimer) {
       window.clearTimeout(this.closeTimer);
       this.closeTimer = null;
@@ -240,6 +266,11 @@ class MuiHint extends HTMLElement {
   }
 
   private open() {
+    if (this.isDisabledOnCoarsePointer()) {
+      this.close(true);
+      return;
+    }
+
     this.hasOpenedOnce = true;
     this.removeAttribute("closing-immediate");
     this.portalTooltip();
@@ -268,6 +299,16 @@ class MuiHint extends HTMLElement {
     window.removeEventListener("resize", this.boundReposition);
     window.removeEventListener("scroll", this.boundReposition, true);
     document.removeEventListener("pointerdown", this.boundDocPointer, true);
+  }
+
+  private isDisabledOnCoarsePointer() {
+    if (!this.hasAttribute("disable-on-touch")) return false;
+
+    return Boolean(
+      window.matchMedia?.("(pointer: coarse)").matches ||
+        window.matchMedia?.("(hover: none)").matches ||
+        navigator.maxTouchPoints > 0,
+    );
   }
 
   private portalTooltip() {

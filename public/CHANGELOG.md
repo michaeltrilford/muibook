@@ -15,6 +15,7 @@
 - `mui-media-player` now supports `center-play` for displaying an always-visible centered play/pause action over native video.
 - `mui-media-player` now supports `waveform` for opt-in generated audio waveforms, with playback progress reflected on the canvas.
 - `mui-media-player` now supports `slot="auxiliary"` for secondary media actions, badges, sponsored placements, and related overlay content.
+- `mui-hint` now supports `disable-on-touch` for desktop-only hint affordances that should not open on touch-like devices.
 - `mui-media-player` controls now include an options menu with Download and Open source actions, using the dropdown component with slotted `mui-link` menu items.
 - `mui-media-player` video controls now use a modern rounded overlay treatment with center play, smooth local seek, volume, Picture-in-Picture, fullscreen, and overflow actions.
 - `mui-media-player` audio now includes compact player, metadata, and artwork presentations, with richer audio states using the same hover overlay control direction as video.
@@ -33,6 +34,7 @@
 - `mui-media-player` now uses dedicated local SVG icon components for play, pause, stop, restart, volume, Picture-in-Picture, fullscreen, and overflow controls.
 - `mui-media-player` now keeps image/video overlay controls locked to the dark overlay treatment while compact audio and metadata surfaces remain theme-aware.
 - `mui-media-player` artwork waveforms now use a stronger image-overlay treatment, while no-artwork waveforms use higher contrast theme-aware canvas colors.
+- `mui-media-player` compact time controls now toggle between elapsed and remaining time instead of presenting an inactive action.
 - `mui-media-player` control rendering was refactored into smaller helpers and now cleans up document-level fullscreen listeners on re-render/disconnect.
 - `mui-dropdown` now portals menu contents to avoid clipping in overflow-hidden media player surfaces.
 - `mui-hint` now delegates focus to slotted buttons, links, and native controls instead of adding an extra wrapper tab stop, while keeping fallback keyboard focus for plain trigger content.

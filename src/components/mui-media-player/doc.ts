@@ -22,6 +22,8 @@ export const muiDocs: MuiDocs = {
         "Slotted metadata content receives contextual text, link, and action tokens where possible so composed content follows the underlying surface or image-overlay theme.",
         "Use overlay variants for actions over video or artwork, and normal action hierarchy such as tertiary on surface-based audio.",
         "Muibook controls include local seek, volume, elapsed/remaining time toggle, and an options menu for utility actions like download and opening the source.",
+        "On compact layouts, the time action shows a single value and toggles between elapsed time and remaining time.",
+        "Media Player control hints use disable-on-touch so tooltips remain a desktop enhancement and do not persist over touch controls.",
       ],
     },
     accessibility: {
@@ -33,6 +35,7 @@ export const muiDocs: MuiDocs = {
         "Ensure slotted metadata actions have clear accessible names and do not make the entire metadata area interactive unless the whole area is intentionally actionable.",
         "Use real links for navigation and buttons for local actions such as opening a dialog, profile panel, or menu.",
         "Do not rely on visual metadata alone; titles, creator names, and action labels should remain available to assistive technology.",
+        "Keep each media control accessible through its own label because control hints are disabled on touch-like devices.",
         "Treat generated waveforms as decorative support unless the same timing or structure is also available through text or controls.",
       ],
     },

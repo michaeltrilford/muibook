@@ -344,7 +344,7 @@ class MuiMediaPlayer extends HTMLElement {
   }
 
   private renderPlayHintControl() {
-    return `<mui-hint placement="top">
+    return `<mui-hint placement="top" disable-on-touch>
       <mui-button slot="trigger" data-action="play" size="small" icon-only variant="tertiary" aria-label="Play media">
         ${this.getControlIcon("play")}
       </mui-button>
@@ -353,7 +353,7 @@ class MuiMediaPlayer extends HTMLElement {
   }
 
   private renderTimeControl() {
-    return `<mui-hint placement="top">
+    return `<mui-hint placement="top" disable-on-touch>
       <mui-button slot="trigger" data-action="time-mode" size="small" variant="tertiary" aria-pressed="false" aria-label="Toggle time display">
         <span class="time-label-full">0:00 / 0:00</span>
         <span class="time-label-compact">0:00</span>
@@ -363,7 +363,7 @@ class MuiMediaPlayer extends HTMLElement {
   }
 
   private renderMuteControl(muted: boolean) {
-    return `<mui-hint placement="top">
+    return `<mui-hint placement="top" disable-on-touch>
       <mui-button slot="trigger" data-action="mute" size="small" icon-only variant="tertiary" aria-label="Mute media">
         ${this.getControlIcon(this.getVolumeIconName(muted, muted ? 0 : 1))}
       </mui-button>
@@ -372,7 +372,7 @@ class MuiMediaPlayer extends HTMLElement {
   }
 
   private renderPictureInPictureControl() {
-    return `<mui-hint placement="top">
+    return `<mui-hint placement="top" disable-on-touch>
       <mui-button slot="trigger" data-action="pip" size="small" icon-only variant="tertiary" aria-label="Picture in picture" aria-pressed="false">
         ${this.getControlIcon("pip")}
       </mui-button>
@@ -389,7 +389,7 @@ class MuiMediaPlayer extends HTMLElement {
   }
 
   private renderFullscreenControl() {
-    return `<mui-hint placement="top">
+    return `<mui-hint placement="top" disable-on-touch>
       <mui-button slot="trigger" data-action="fullscreen" size="small" icon-only variant="tertiary" aria-label="Fullscreen" aria-pressed="false">
         ${this.getControlIcon("fullscreen")}
       </mui-button>
@@ -614,7 +614,7 @@ class MuiMediaPlayer extends HTMLElement {
       const fullLabel = this.countdownMode
         ? `-${this.formatTime(remaining)} / ${this.formatTime(duration)}`
         : `${this.formatTime(media.currentTime)} / ${this.formatTime(duration)}`;
-      const compactLabel = media.paused || media.ended ? this.formatTime(duration) : `-${this.formatTime(remaining)}`;
+      const compactLabel = this.countdownMode ? `-${this.formatTime(remaining)}` : this.formatTime(media.currentTime);
       const fullTimeLabel = timeToggle.querySelector(".time-label-full");
       const compactTimeLabel = timeToggle.querySelector(".time-label-compact");
 

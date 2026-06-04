@@ -85,6 +85,34 @@ class StoryHint extends HTMLElement {
           &lt;/mui-hint&gt;
         </story-code-block>
       </story-card>
+
+      <story-card
+        id="disable-on-touch"
+        title="Disable On Touch"
+        description="Disables hint behaviour on coarse pointer devices."
+        usage="Use this when the hint is a desktop enhancement and the trigger already communicates its action.|||This avoids persistent tooltip states on touch devices, while preserving hover and keyboard hint behaviour on desktop.">
+        <mui-v-stack slot="body" space="var(--space-200)" style="padding: var(--space-400);">
+          <mui-hint placement="top" disable-on-touch>
+            <mui-button slot="trigger" size="small" icon-only variant="tertiary" aria-label="Download">
+              <mui-icon-down-arrow-circle size="small"></mui-icon-down-arrow-circle>
+            </mui-button>
+            Download
+          </mui-hint>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-hint placement="top" disable-on-touch&gt;
+          <br />
+          &nbsp;&nbsp;&lt;mui-button slot="trigger" size="small" icon-only variant="tertiary" aria-label="Download"&gt;
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-down-arrow-circle size="small"&gt;&lt;/mui-icon-down-arrow-circle&gt;
+          <br />
+          &nbsp;&nbsp;&lt;/mui-button&gt;
+          <br />
+          &nbsp;&nbsp;Download
+          <br />
+          &lt;/mui-hint&gt;
+        </story-code-block>
+      </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -98,7 +126,7 @@ class StoryHint extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       
         imports='["@muibook/components/mui-hint"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||placements::Placements|||delay::Delay"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||placements::Placements|||delay::Delay|||disable-on-touch::Disable On Touch"></story-quicklinks>
         ${stories}
       </story-template>
     `;
