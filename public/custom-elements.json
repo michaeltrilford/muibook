@@ -4,6 +4,30 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-accordion/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-accordion/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-addon/doc.ts",
       "declarations": [
         {
@@ -78,30 +102,6 @@
           "declaration": {
             "name": "MuiAddon",
             "module": "src/components/mui-addon/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-accordion/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-accordion/doc.ts"
           }
         }
       ]
@@ -2762,74 +2762,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-form-section-footer/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ FormSectionFooter: { title: \"Form Section Footer\", description: \"Footer wrapper for Form Section actions and divider patterns.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17769&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-form-section-footer--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-section-footer/index.ts\"], website: [\"https://muibook.com/form-section-footer\"], guides: [\"https://guides.muibook.com/form-section\"], usage: { list: [ \"Use in slot='footer' on mui-form-section for consistent footer spacing.\", \"Place mui-rule first when you need a visual separation before actions.\", \"Keep responsive action layouts inside the footer wrapper.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Footer actions remain keyboard accessible based on slotted controls.\"], }, anatomy: { image: \"\", list: [\"Footer wrapper\", \"Optional divider (mui-rule)\", \"Action content\"], }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Form Section\", link: \"https://guides.muibook.com/form-section\" }, { name: \"Form Group\", link: \"https://guides.muibook.com/form-group\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-form-section-footer/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-form-section-footer/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Provides consistent spacing for actions and optional divider content in a form section footer.",
-          "name": "MuiFormSectionFooter",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-form-section-footer",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "Footer actions and optional leading `mui-rule` divider."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--form-section-footer-gap",
-              "description": "Gap between footer children without a divider."
-            },
-            {
-              "name": "--form-section-footer-gap-with-rule",
-              "description": "Gap between footer children when a divider is present."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-form-section-footer",
-          "declaration": {
-            "name": "MuiFormSectionFooter",
-            "module": "src/components/mui-form-section-footer/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-form-section/doc.ts",
       "declarations": [
         {
@@ -2923,6 +2855,326 @@
           "declaration": {
             "name": "MuiFormSection",
             "module": "src/components/mui-form-section/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-form-section-footer/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ FormSectionFooter: { title: \"Form Section Footer\", description: \"Footer wrapper for Form Section actions and divider patterns.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17769&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-form-section-footer--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-section-footer/index.ts\"], website: [\"https://muibook.com/form-section-footer\"], guides: [\"https://guides.muibook.com/form-section\"], usage: { list: [ \"Use in slot='footer' on mui-form-section for consistent footer spacing.\", \"Place mui-rule first when you need a visual separation before actions.\", \"Keep responsive action layouts inside the footer wrapper.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Footer actions remain keyboard accessible based on slotted controls.\"], }, anatomy: { image: \"\", list: [\"Footer wrapper\", \"Optional divider (mui-rule)\", \"Action content\"], }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Form Section\", link: \"https://guides.muibook.com/form-section\" }, { name: \"Form Group\", link: \"https://guides.muibook.com/form-group\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-form-section-footer/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-form-section-footer/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Provides consistent spacing for actions and optional divider content in a form section footer.",
+          "name": "MuiFormSectionFooter",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-form-section-footer",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "Footer actions and optional leading `mui-rule` divider."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--form-section-footer-gap",
+              "description": "Gap between footer children without a divider."
+            },
+            {
+              "name": "--form-section-footer-gap-with-rule",
+              "description": "Gap between footer children when a divider is present."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-form-section-footer",
+          "declaration": {
+            "name": "MuiFormSectionFooter",
+            "module": "src/components/mui-form-section-footer/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-grid/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Grid: { title: \"Grid\", description: \"A layout helper component that arranges its children into columns based on a defined structure. It is mainly intended for larger page layouts but can also be used for internal layouts or more condensed arrangements.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/5C5SvkEWzifnvzlV9nUjQ1/e3c8e9bce595cda87bc357d76b99bbb8/Grid_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12709&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/layout-grid--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-grid/index.ts\"], website: [\"https://muibook.com/grid\"], guides: [\"https://guides.muibook.com/grid\"], usage: { list: [ \"Use to organise content into multi-dimensional layouts with columns.\", \"Ideal for aligning items consistently across different screen sizes.\", \"Supports responsive design by adjusting column count, gaps, and alignment at breakpoints.\", \"Recognise it as a developer tool for layout control rather than a direct design asset.\", \"Use the space design token to maintain consistent gap spacing.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { description: \"Although not a Figma component (designers should use Figma’s layout grids), understanding this pattern helps designers anticipate how engineers manage complex, responsive layouts.\", items: [ { key: \"two-column\", title: \"Two Column\", description: \"Example of using a two-column layout within the design system, primarily for horizontal use when content needs to be presented side by side.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6VrpRKckpwss1Wp0AFDA2k/4478ad22d0bf1ced84bd2547e9f31ac3/grid-2.png\", }, { key: \"three-column\", title: \"Three Columns\", description: \"Example of using a three-column layout within the design system, optimized for horizontal use to distribute information evenly across three sections.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4iRM4fbfFK5iwtp2jetD0v/b1f62c85f3e2575644cc18e0289cd766/grid-3.png\", }, { key: \"custom-column\", title: \"Custom Columns\", description: \"Example of a custom column layout with varied column sizes, demonstrating flexibility for different content arrangements while maintaining a horizontal orientation.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3aXaQVov9cAk0RyzNLNG3Y/ef1d443f1d23e7de08883213f0e805ac/grid-custom.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"guidelines-for-muibook\", name: \"Guidelines for Muibook\", description: \"This is an example of the Guidelines website for the Muibook Design System. It demonstrates the use of the <mui-grid> component for layout, along with actions, typography, links, and theme customisation. The page also showcases how components are combined to create consistent and responsive UI patterns across the system.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5As4gsdVAyJHrbAMkIrlM/dd78a8bfe8a53a600be91b79c2f4e8eb/Guides-Grid-Composition.png\", }, ], }, related: { items: [ { name: \"Stack\", link: \"https://guides.muibook.com/stack\", }, { name: \"Responsive\", link: \"https://guides.muibook.com/responsive\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-grid/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-grid/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Arranges slotted content in a configurable grid with token-based spacing and alignment controls.",
+          "name": "MuiGrid",
+          "attributes": [
+            {
+              "name": "col",
+              "type": {
+                "text": "string"
+              },
+              "default": "1fr 1fr",
+              "description": "Column template. Accepts any valid CSS `grid-template-columns` value."
+            },
+            {
+              "name": "space",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-000)",
+              "description": "Gap between grid items. Accepts any valid CSS gap value or design token."
+            },
+            {
+              "name": "alignx",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Horizontal item alignment, mapped to CSS `justify-items`."
+            },
+            {
+              "name": "aligny",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Vertical item alignment, mapped to CSS `align-items`."
+            },
+            {
+              "name": "padding",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-000)",
+              "description": "Padding inside the grid. Accepts any valid CSS padding value or design token."
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
+            },
+            {
+              "name": "viewport",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets grid height to `100dvh` for viewport-height layouts."
+            },
+            {
+              "name": "fill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets available width and height to `100%` of the parent layout."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-grid",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Content arranged as grid items."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--grid-height",
+              "description": "Resolved grid host height. Prefer `height`, `viewport` or `fill` for common layouts."
+            },
+            {
+              "name": "--grid-width",
+              "description": "Resolved grid host width. Prefer `width` or `fill` for common layouts."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "color"
+            },
+            {
+              "name": "font-family"
+            },
+            {
+              "name": "font-size"
+            },
+            {
+              "name": "font-weight"
+            },
+            {
+              "name": "letter-spacing"
+            },
+            {
+              "name": "line-height"
+            },
+            {
+              "name": "text-transform"
+            },
+            {
+              "name": "text-decoration"
+            },
+            {
+              "name": "text-align"
+            },
+            {
+              "name": "padding"
+            },
+            {
+              "name": "margin"
+            },
+            {
+              "name": "gap"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            },
+            {
+              "name": "box-sizing"
+            },
+            {
+              "name": "display"
+            },
+            {
+              "name": "flex"
+            },
+            {
+              "name": "flex-direction"
+            },
+            {
+              "name": "flex-wrap"
+            },
+            {
+              "name": "justify-content"
+            },
+            {
+              "name": "align-items"
+            },
+            {
+              "name": "align-content"
+            },
+            {
+              "name": "align-self"
+            },
+            {
+              "name": "grid-template-columns"
+            },
+            {
+              "name": "grid-template-rows"
+            },
+            {
+              "name": "grid-column"
+            },
+            {
+              "name": "grid-row"
+            },
+            {
+              "name": "place-items"
+            },
+            {
+              "name": "place-content"
+            },
+            {
+              "name": "vertical-align"
+            },
+            {
+              "name": "background"
+            },
+            {
+              "name": "border"
+            },
+            {
+              "name": "border-radius"
+            },
+            {
+              "name": "box-shadow"
+            },
+            {
+              "name": "opacity"
+            },
+            {
+              "name": "transition"
+            },
+            {
+              "name": "outline"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-grid",
+          "declaration": {
+            "name": "MuiGrid",
+            "module": "src/components/mui-grid/index.ts"
           }
         }
       ]
@@ -3255,258 +3507,6 @@
           "declaration": {
             "name": "MuiIllustrationTrash",
             "module": "src/components/mui-illustrations/trash.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-grid/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Grid: { title: \"Grid\", description: \"A layout helper component that arranges its children into columns based on a defined structure. It is mainly intended for larger page layouts but can also be used for internal layouts or more condensed arrangements.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/5C5SvkEWzifnvzlV9nUjQ1/e3c8e9bce595cda87bc357d76b99bbb8/Grid_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12709&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/layout-grid--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-grid/index.ts\"], website: [\"https://muibook.com/grid\"], guides: [\"https://guides.muibook.com/grid\"], usage: { list: [ \"Use to organise content into multi-dimensional layouts with columns.\", \"Ideal for aligning items consistently across different screen sizes.\", \"Supports responsive design by adjusting column count, gaps, and alignment at breakpoints.\", \"Recognise it as a developer tool for layout control rather than a direct design asset.\", \"Use the space design token to maintain consistent gap spacing.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { description: \"Although not a Figma component (designers should use Figma’s layout grids), understanding this pattern helps designers anticipate how engineers manage complex, responsive layouts.\", items: [ { key: \"two-column\", title: \"Two Column\", description: \"Example of using a two-column layout within the design system, primarily for horizontal use when content needs to be presented side by side.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6VrpRKckpwss1Wp0AFDA2k/4478ad22d0bf1ced84bd2547e9f31ac3/grid-2.png\", }, { key: \"three-column\", title: \"Three Columns\", description: \"Example of using a three-column layout within the design system, optimized for horizontal use to distribute information evenly across three sections.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4iRM4fbfFK5iwtp2jetD0v/b1f62c85f3e2575644cc18e0289cd766/grid-3.png\", }, { key: \"custom-column\", title: \"Custom Columns\", description: \"Example of a custom column layout with varied column sizes, demonstrating flexibility for different content arrangements while maintaining a horizontal orientation.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3aXaQVov9cAk0RyzNLNG3Y/ef1d443f1d23e7de08883213f0e805ac/grid-custom.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"guidelines-for-muibook\", name: \"Guidelines for Muibook\", description: \"This is an example of the Guidelines website for the Muibook Design System. It demonstrates the use of the <mui-grid> component for layout, along with actions, typography, links, and theme customisation. The page also showcases how components are combined to create consistent and responsive UI patterns across the system.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5As4gsdVAyJHrbAMkIrlM/dd78a8bfe8a53a600be91b79c2f4e8eb/Guides-Grid-Composition.png\", }, ], }, related: { items: [ { name: \"Stack\", link: \"https://guides.muibook.com/stack\", }, { name: \"Responsive\", link: \"https://guides.muibook.com/responsive\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-grid/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-grid/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Arranges slotted content in a configurable grid with token-based spacing and alignment controls.",
-          "name": "MuiGrid",
-          "attributes": [
-            {
-              "name": "col",
-              "type": {
-                "text": "string"
-              },
-              "default": "1fr 1fr",
-              "description": "Column template. Accepts any valid CSS `grid-template-columns` value."
-            },
-            {
-              "name": "space",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-000)",
-              "description": "Gap between grid items. Accepts any valid CSS gap value or design token."
-            },
-            {
-              "name": "alignx",
-              "type": {
-                "text": "string"
-              },
-              "default": "normal",
-              "description": "Horizontal item alignment, mapped to CSS `justify-items`."
-            },
-            {
-              "name": "aligny",
-              "type": {
-                "text": "string"
-              },
-              "default": "normal",
-              "description": "Vertical item alignment, mapped to CSS `align-items`."
-            },
-            {
-              "name": "padding",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-000)",
-              "description": "Padding inside the grid. Accepts any valid CSS padding value or design token."
-            },
-            {
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
-            },
-            {
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
-            },
-            {
-              "name": "viewport",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Sets grid height to `100dvh` for viewport-height layouts."
-            },
-            {
-              "name": "fill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Sets available width and height to `100%` of the parent layout."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-grid",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Content arranged as grid items."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--grid-height",
-              "description": "Resolved grid host height. Prefer `height`, `viewport` or `fill` for common layouts."
-            },
-            {
-              "name": "--grid-width",
-              "description": "Resolved grid host width. Prefer `width` or `fill` for common layouts."
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "color"
-            },
-            {
-              "name": "font-family"
-            },
-            {
-              "name": "font-size"
-            },
-            {
-              "name": "font-weight"
-            },
-            {
-              "name": "letter-spacing"
-            },
-            {
-              "name": "line-height"
-            },
-            {
-              "name": "text-transform"
-            },
-            {
-              "name": "text-decoration"
-            },
-            {
-              "name": "text-align"
-            },
-            {
-              "name": "padding"
-            },
-            {
-              "name": "margin"
-            },
-            {
-              "name": "gap"
-            },
-            {
-              "name": "width"
-            },
-            {
-              "name": "height"
-            },
-            {
-              "name": "box-sizing"
-            },
-            {
-              "name": "display"
-            },
-            {
-              "name": "flex"
-            },
-            {
-              "name": "flex-direction"
-            },
-            {
-              "name": "flex-wrap"
-            },
-            {
-              "name": "justify-content"
-            },
-            {
-              "name": "align-items"
-            },
-            {
-              "name": "align-content"
-            },
-            {
-              "name": "align-self"
-            },
-            {
-              "name": "grid-template-columns"
-            },
-            {
-              "name": "grid-template-rows"
-            },
-            {
-              "name": "grid-column"
-            },
-            {
-              "name": "grid-row"
-            },
-            {
-              "name": "place-items"
-            },
-            {
-              "name": "place-content"
-            },
-            {
-              "name": "vertical-align"
-            },
-            {
-              "name": "background"
-            },
-            {
-              "name": "border"
-            },
-            {
-              "name": "border-radius"
-            },
-            {
-              "name": "box-shadow"
-            },
-            {
-              "name": "opacity"
-            },
-            {
-              "name": "transition"
-            },
-            {
-              "name": "outline"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-grid",
-          "declaration": {
-            "name": "MuiGrid",
-            "module": "src/components/mui-grid/index.ts"
           }
         }
       ]
@@ -6460,6 +6460,101 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-progress/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Progress: { title: \"Progress\", description: \"A Progress Bar visually represents completion status by filling a bar based on a percentage value. It gives users a clear indication of progress for a given task or process.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/2NPcL7tA0zGUWFLShr66fS/23d0050dce8c8379afc6deb8e351d049/Progress_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4161&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-progress--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts\"], website: [\"https://muibook.com/progress\"], guides: [\"https://guides.muibook.com/progress\"], usage: { list: [ \"Show task progress – Indicate how much of a task or process has been completed.\", \"Display loading states – Represent the progress of a background operation, such as file uploads.\", \"Track step completion – Show progress in multi-step workflows or onboarding processes.\", \"Tune visual density and motion with component tokens such as --progress-radius, --progress-syncing-width, and --progress-pending-stripe-size.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/1iPll53Pmtgjh50qYwhsgY/908da9c51dd605895bd6306290fc6bd9/Progress_-_Anatomy.png\", list: [ \"Fill (Indicator) – The colored portion inside the track that represents the progress percentage.\", \"Track – The background of the progress bar, providing the visual boundary for progress.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcome-based-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-progress/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-progress/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays determinate progress or an indeterminate pending or syncing state.",
+          "name": "MuiProgress",
+          "attributes": [
+            {
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Sets determinate progress, clamped from 0 to 100."
+            },
+            {
+              "name": "state",
+              "type": {
+                "text": "\"pending\" | \"syncing\""
+              },
+              "description": "Displays an indeterminate state instead of determinate progress."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-progress",
+          "customElement": true,
+          "slots": [],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--progress-track-background",
+              "description": "Background color of the progress track."
+            },
+            {
+              "name": "--progress-bar-background",
+              "description": "Background color of the determinate bar."
+            },
+            {
+              "name": "--progress-syncing-bar-background",
+              "description": "Background color of the syncing indicator."
+            },
+            {
+              "name": "--progress-radius",
+              "description": "Radius applied to the track and progress bar."
+            },
+            {
+              "name": "--progress-syncing-width",
+              "description": "Width of the animated syncing indicator."
+            },
+            {
+              "name": "--progress-pending-stripe-size",
+              "description": "Stripe width used by the pending state."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-progress",
+          "declaration": {
+            "name": "MuiProgress",
+            "module": "src/components/mui-progress/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-prompt/doc.ts",
       "declarations": [
         {
@@ -6918,101 +7013,6 @@
           "declaration": {
             "name": "MuiPrompt",
             "module": "src/components/mui-prompt/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-progress/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Progress: { title: \"Progress\", description: \"A Progress Bar visually represents completion status by filling a bar based on a percentage value. It gives users a clear indication of progress for a given task or process.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/2NPcL7tA0zGUWFLShr66fS/23d0050dce8c8379afc6deb8e351d049/Progress_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4161&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-progress--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts\"], website: [\"https://muibook.com/progress\"], guides: [\"https://guides.muibook.com/progress\"], usage: { list: [ \"Show task progress – Indicate how much of a task or process has been completed.\", \"Display loading states – Represent the progress of a background operation, such as file uploads.\", \"Track step completion – Show progress in multi-step workflows or onboarding processes.\", \"Tune visual density and motion with component tokens such as --progress-radius, --progress-syncing-width, and --progress-pending-stripe-size.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/1iPll53Pmtgjh50qYwhsgY/908da9c51dd605895bd6306290fc6bd9/Progress_-_Anatomy.png\", list: [ \"Fill (Indicator) – The colored portion inside the track that represents the progress percentage.\", \"Track – The background of the progress bar, providing the visual boundary for progress.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcome-based-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-progress/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-progress/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays determinate progress or an indeterminate pending or syncing state.",
-          "name": "MuiProgress",
-          "attributes": [
-            {
-              "name": "progress",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Sets determinate progress, clamped from 0 to 100."
-            },
-            {
-              "name": "state",
-              "type": {
-                "text": "\"pending\" | \"syncing\""
-              },
-              "description": "Displays an indeterminate state instead of determinate progress."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-progress",
-          "customElement": true,
-          "slots": [],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--progress-track-background",
-              "description": "Background color of the progress track."
-            },
-            {
-              "name": "--progress-bar-background",
-              "description": "Background color of the determinate bar."
-            },
-            {
-              "name": "--progress-syncing-bar-background",
-              "description": "Background color of the syncing indicator."
-            },
-            {
-              "name": "--progress-radius",
-              "description": "Radius applied to the track and progress bar."
-            },
-            {
-              "name": "--progress-syncing-width",
-              "description": "Width of the animated syncing indicator."
-            },
-            {
-              "name": "--progress-pending-stripe-size",
-              "description": "Stripe width used by the pending state."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-progress",
-          "declaration": {
-            "name": "MuiProgress",
-            "module": "src/components/mui-progress/index.ts"
           }
         }
       ]
@@ -11146,85 +11146,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/row-group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups related table rows and optionally presents them as a heading region.",
-          "name": "MuiRowGroup",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-row-group",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "heading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Applies header row styling to the contained rows."
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-row` children."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-row-group",
-          "declaration": {
-            "name": "MuiRowGroup",
-            "module": "src/components/mui-table/row-group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/controller/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
-          "name": "MuiTabController",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-controller",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-controller",
-          "declaration": {
-            "name": "MuiTabController",
-            "module": "src/components/mui-tabs/controller/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-table/row/index.ts",
       "declarations": [
         {
@@ -11279,6 +11200,120 @@
           "declaration": {
             "name": "MuiRow",
             "module": "src/components/mui-table/row/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/row-group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups related table rows and optionally presents them as a heading region.",
+          "name": "MuiRowGroup",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-row-group",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Applies header row styling to the contained rows."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-row` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-row-group",
+          "declaration": {
+            "name": "MuiRowGroup",
+            "module": "src/components/mui-table/row-group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/table/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups row collections into an accessible table layout.",
+          "name": "MuiTable",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-table",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-row-group` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-table",
+          "declaration": {
+            "name": "MuiTable",
+            "module": "src/components/mui-table/table/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/controller/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
+          "name": "MuiTabController",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-controller",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-controller",
+          "declaration": {
+            "name": "MuiTabController",
+            "module": "src/components/mui-tabs/controller/index.ts"
           }
         }
       ]
@@ -11354,41 +11389,6 @@
           "declaration": {
             "name": "MuiTabItem",
             "module": "src/components/mui-tabs/item/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-table/table/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups row collections into an accessible table layout.",
-          "name": "MuiTable",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-table",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-row-group` children."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-table",
-          "declaration": {
-            "name": "MuiTable",
-            "module": "src/components/mui-table/table/index.ts"
           }
         }
       ]
