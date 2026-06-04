@@ -1,3 +1,5 @@
+import { getCleanRouteHref, navigateToRoute } from "../utils/routes.js";
+
 class appNavbar extends HTMLElement {
   constructor() {
     super();
@@ -142,6 +144,8 @@ class appNavbar extends HTMLElement {
     const Home = /*html*/ `
       <app-navbar-home  link="/home" title="muibook.com"></app-navbar-home>
     `;
+
+    const homeHref = getCleanRouteHref("/home");
 
     const Theme = /*html*/ `
       <app-navbar-theme></app-navbar-theme>
@@ -372,7 +376,7 @@ class appNavbar extends HTMLElement {
         </mui-button>
 
         
-        <mui-link slot="home-link" data-close-menu link="/home">muibook.com</mui-link>
+        <mui-link slot="home-link" data-close-menu href="${homeHref}">muibook.com</mui-link>
       </app-navbar-toggle>
     `;
 
@@ -444,7 +448,12 @@ class appNavbar extends HTMLElement {
     const homeLinks = this.shadowRoot.querySelectorAll("mui-link[data-close-menu]");
 
     homeLinks.forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener("click", (event) => {
+        const isModifiedClick = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+        if (!isModifiedClick && navigateToRoute(homeHref)) {
+          event.preventDefault();
+        }
+
         if (this.navbarEl.hasAttribute("open")) {
           // 1. Close the mobile menu
           this.navbarEl.removeAttribute("open");
