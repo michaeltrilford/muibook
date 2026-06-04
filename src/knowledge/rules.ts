@@ -1,0 +1,171 @@
+export const rules = String.raw`
+Generate MUIBOOK component trees as JSON.
+
+Output JSON tree nodes with:
+- type: component type
+- id: unique descriptive id
+- props: component props
+- children: child nodes, or []
+
+CRITICAL RULES:
+1. Always return ONLY valid JSON - no markdown, no code blocks, no explanations
+2. Every node MUST have: type, id, props, and children
+3. IDs must be unique across the entire tree
+4. Use descriptive IDs that reflect the component's purpose
+5. Card content must be inside direct child CardBody.
+6. Container components can have children.
+7. Leaf components use children: [].
+8. Props must match the component API.
+9. Root additions use Container with center=true and size=medium.
+10. Button and Link text stays on the component; do not wrap in Body.
+11. Put visual backgrounds on layout style or SmartCard bg props.
+12. SmartCard props use kebab-case: bg-image, bg-color, logo-height.
+13. Normalize scanned Muibook/Figma names to Redactd component types before output.
+14. Do not use Message as a styled paragraph, inline note, or form helper. Message is only for persistent page-level notices with a heading and slotted body content.
+
+MUI SCAN NORMALIZATION RULES:
+- Normalize muiscan to Redactd types before output
+- Final JSON cannot contain mui-*, raw span, TEXT, or text node types
+- Core mappings:
+  - mui-v-stack -> VStack
+  - mui-h-stack -> HStack
+  - mui-button -> Button
+  - mui-link -> Link
+  - mui-input -> Input
+  - mui-select -> Select
+  - span -> Span
+  - mui-icon-[name] -> _Icon with props.icon = "mui-icon-[name]"
+- Preserve hierarchy, spacing, slots, key props, and valid style strings
+- Preserve icon slots:
+  - slot=before -> props.slot = "before"
+  - slot=after -> props.slot = "after"
+  - if an icon is the only child of Button, Link, or Chip, keep it as the default child
+
+TEXT NODE RULES FOR MUISCAN:
+- TEXT is input-only; collapse into the nearest valid Redactd text model
+- Collapse TEXT -> props.text for:
+  - mui-body -> Body.props.text
+  - mui-heading -> Heading.props.text
+  - mui-button -> Button.props.text
+  - mui-link -> Link.props.text
+  - mui-tab-item -> TabItem.props.text
+  - mui-list-item -> ListItem.props.text
+- For span:
+  - convert to Span
+  - consume direct TEXT into Span.props.text
+  - keep inline children such as Link nested inside the same Span
+- Exceptions:
+  - mui-badge: consume TEXT as the badge's direct rendered text; preserve before/after slot children; do not invent Body
+  - mui-status: consume TEXT as the status's direct rendered text; preserve before/after icon slot children; do not invent Body, Badge, or Message inside Status
+  - mui-chip: consume TEXT as the chip's direct rendered text; preserve before/after slot children; do not invent Body
+  - mui-alert: preserve variant/label, convert default content to Span, consume TEXT into Span.props.text, keep inline children such as Link, do not invent Body
+  - mui-message: map scanned heading directly to Message.props.heading, preserve variant/icon/size, keep remaining children as default message content; if there is no supporting body content, prefer Body or FormMessage instead of Message
+- Do not invent wrappers when the target already supports text
+
+Available Components:
+
+LAYOUT:
+- VStack: space, padding, alignX, alignY, height, width, fill, viewport, style
+- HStack: space, padding, alignX, alignY, height, width, fill, viewport, style
+- Grid: col, space, padding, alignX, alignY, height, width, fill, viewport, style
+- Container: size (small|medium|large), center, style
+- Responsive: breakpoint, breakpoint-low, breakpoint-high; slots showBelow/showMiddle/showAbove
+- Rule: length, weight (thin|thick|CSS size), direction (horizontal|vertical)
+
+SURFACES:
+- Card: use CardBody for card content
+- CardHeader: none
+- CardBody: condensed, style
+- CardFooter: none
+- Dialog: open, width, content-max-height, style
+- Drawer: open, variant (overlay|push|persistent), side (left|right), width, z-index, drawer-space, breakpoint, style
+- Slat: variant, col, space; slots header-start/header-end/row-start/row-end/accessory/action
+- SlatGroup: usage
+- SmartCard: state, number, variant, partner, type, logo, logo-height, bg-color, bg-image, inverted
+
+CONTENT:
+- Heading: text, size (1|2|3|4|5|6), level (1|2|3|4|5|6), truncate, clamp
+- Body: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|info|success|warning|error), truncate, clamp, style; use _Icon icon=mui-icon-info slot=before for lightweight inline guidance
+- Span: text, style; supports inline children such as Link
+- Code: size, scrollable
+- Quote: default text
+- Image: src, alt; slot caption
+- Avatar: label, image, icon, size (x-small|small|medium|large), background, backgroundColor
+- List: slot default
+- ListItem: text, variant, size (x-small|small|medium|large), weight (regular|bold)
+- _Icon: icon, size (xx-small|x-small|small|medium|large), color, slot
+- Badge: text, variant (default|positive|warning|error|overlay), color (grey|purple|violet|pink|magenta|red|orange|amber|yellow|lime|green|teal|cyan|blue|indigo|CSS background value). Use for compact non-interactive presentational metadata, counts, and lightweight state-like labels such as Offline, Online, Busy, Do not disturb, Beta, Default, IMG, or Shared when the surrounding UI already explains the object. Good inside cards, messages, chips, buttons, tabs, navigation, and hero or marketing surfaces. Use color to override the badge background only through theme-aware badge background tokens; do not use positive, warning, or attention just to get a different background colour.
+- Status: text, variant (info|positive|warning|attention), color (grey|purple|violet|pink|magenta|red|orange|amber|yellow|lime|green|teal|cyan|blue|indigo), size (small|medium); slots before/after. Use for compact object or workflow state labels such as Active, Draft, Pending, Review, Blocked, or Synced when the value is the primary state of a record, workflow, or system, especially in tables, slats, dashboards, and data-heavy pages. Status is non-interactive by default, but can be interactive when composed as a trigger or compact state action. Omit variant for default low-emphasis grey status; use variant for semantic feedback and color for non-semantic categorical labels. Use action only when the status is a trigger. Do not use for counts, helper text, paragraph guidance, page-level notices, or decorative metadata.
+- Skeleton: loading, shape (line|rect|circle), size, animation (shimmer|pulse|none), lines, width, height, radius, gap, duration, line-widths, max-width, style
+
+ACCORDION:
+- AccordionBlock: heading, level (1|2|3|4|5|6), size, detail-space
+- AccordionInline: heading, level (1|2|3|4|5|6)
+- AccordionGroup: slot default
+
+FORMS AND INPUTS:
+- FormSection: heading, hide-label, style
+- FormSectionFooter: slot, style
+- FormGroup: heading, variant (vertical|horizontal), hide-label, style
+- Field: label, variant (default|success|warning|error), message, hide-label, size (x-small|small|medium|large), optional, style
+- FormMessage: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|info|success|warning|error), style
+- Input: label, type (text|email|password|number|tel|url), placeholder, value, id, name, disabled, hide-label, variant (default|error), size (x-small|small|medium|large), optional, max-length; slots before/after
+- Textarea: label, placeholder, value, name, id, variant (default|success|warning|error), size (x-small|small|medium|large), rows, optional, hide-label, max-length, disabled, style
+- Select: label, placeholder, options, value, id, name, disabled, variant (default|error), size (x-small|small|medium|large)
+- Checkbox: text, checked, id, disabled, indeterminate, size (x-small|small|medium|large)
+- Radio: text, checked, disabled, id, name, value, aria-label, size (x-small|small|medium|large)
+- RadioGroup: name, value, label, size (x-small|small|medium|large), optional, hide-label, disabled
+- Switch: label, checked, disabled, size (x-small|small|medium|large)
+- RangeInput: min, max, value, step, bubble, bubble-format (time), disabled
+- ChipInput: label, placeholder, size (x-small|small|medium|large), placement (before|after), breakpoint, allow-custom, mobile-stack, hide-label, disabled, options, value, id
+- FileUpload: acceptedFileTypes, currentFileName
+- Addon: text, size (x-small|small|medium|large), slot (before|after), style
+
+ACTIONS:
+- Button: text, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (100|200|300|400|500), disabled, aria-label; slots default/before/after
+- ButtonGroup: slot default, right, style
+- Link: text, href, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (100|200|300|400|500), target, download, weight (regular|bold), disabled; slots default/before/after
+- Dropdown: zindex, position, persistent; slots action/default
+- Chip: text, active, dismiss, usage; slots default/before/after. Chip labels truncate when constrained; keep text short and let icons/dismiss controls remain visible.
+
+NAVIGATION:
+- TabBar: speed, controlsPosition, stroke (border|none), active-inset, radius; slots default/controls
+- TabItem: text, icon, active, id
+- TabController: slot default
+- TabPanel: item
+- Stepper: direction (horizontal|vertical), activeStep
+- Step: title
+- CarouselController: slot default, style
+- CarouselPanel: item, style
+
+FEEDBACK:
+- Message: heading, variant (neutral|positive|info|warning|attention), icon, size (small|medium|large); slot default. Use only for persistent page-level or section-level notices. Always provide a concise heading plus default slot body content, usually Body/List/Link. Do not use for inline guidance, styled text blocks, or form helper text.
+- Alert: variant (success|info|warning|error), label; slots default/action
+- Loader: loading, animation (pulsate|fade-in|translate), direction (up|right|down|left), duration; slot default
+- Spinner: size (xx-small|x-small|small|medium|large), color, duration, label, style
+- Progress: progress, state
+
+PROMPT COMPONENTS:
+- Prompt: placeholder, value, rows, enter-submit, fan-open, disabled, loading, loading-label, context-mode (icon|chip), preview-dialog-width, preview-dialog-title, preview-overflow-to-preview, preview-threshold-chars, preview-auto-clickable, preview-loading, preview-loading-label, preview-scrollbar, error-message, debug, effects-off, color-top-start, color-top-mid, color-top-end, color-top-accent, color-layout, style
+- PromptMessage: size (x-small|small|medium|large), variant (default|ghost), density (default|compact), style
+- PromptPreview: value, badge, label, bg-image, image-tint, accent, inverted, show-text, badge-only, animated, loading, loading-label, clickable, animation-mode, style
+- PromptToggle: mode (icon|chip), style
+
+PRESENTATION:
+- SlideFrame: title, footer-text, ratio (16:9|4:3|1:1|3:2|9:16), present, active-section, padding, variant (default|plain), radius, notes-open, hide-header, hide-footer, hide-counter, allow-add-section, fullscreen, scroll, style
+
+SPACING VALUES:
+000, 025, 050, 100, 200, 300, 400, 500, 600, 700, 800
+Use 100-300 for tight/form spacing and 400-800 for layout.
+
+ASSETS:
+Use real Muibook asset paths:
+- Base path: 'https://muibook.com/images/'
+- Logos: 'logo.png', 'guides.svg', 'mui.svg'
+- Backgrounds: 'placeholder.png', 'snowy-mint.png', 'buttercup.png', 'sapphire.png', 'crystal.png', 'premier.png', 'diamond.png'
+- Partners: 'mastercard.svg', 'visa-black.svg', 'visa-white.svg', 'amex.svg', 'emerald.svg', 'ruby.svg', 'sapphire.svg'
+
+FORMATTING:
+- SmartCard number: last four digits only (e.g. 1234).
+
+`;

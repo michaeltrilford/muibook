@@ -628,6 +628,22 @@
       "import": "./dist/esm/agent/keywords/index.js",
       "types": "./dist/types/agent/keywords/index.d.ts"
     },
+    "./knowledge": {
+      "import": "./dist/esm/knowledge/index.js",
+      "types": "./dist/types/knowledge/index.d.ts"
+    },
+    "./knowledge/rules": {
+      "import": "./dist/esm/knowledge/rules/index.js",
+      "types": "./dist/types/knowledge/rules.d.ts"
+    },
+    "./knowledge/compositions": {
+      "import": "./dist/esm/knowledge/compositions/index.js",
+      "types": "./dist/types/knowledge/compositions.d.ts"
+    },
+    "./knowledge/keywords": {
+      "import": "./dist/esm/knowledge/keywords/index.js",
+      "types": "./dist/types/knowledge/keywords.d.ts"
+    },
     "./custom-elements.json": "./dist/esm/custom-elements.json",
     "./dynamic-attrs.json": "./dist/esm/dynamic-attrs.json",
     "./css/mui-brand.css": "./dist/esm/css/mui-brand.css",
@@ -641,7 +657,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm run cem && rm -rf dist && tsc && vite build && npm run copy-cem",
+    "build": "npm run build:agent && npm run cem && rm -rf dist && tsc && vite build && npm run copy-cem",
+    "build:agent": "node scripts/build-agent-knowledge.mjs",
     "preview": "vite preview",
     "build:muibook": "vite build --config vite.muibook.config.ts",
     "preview:muibook": "vite preview --config vite.muibook.config.ts",
@@ -658,12 +675,14 @@
     "dist/esm/components",
     "dist/esm/utils",
     "dist/esm/agent",
+    "dist/esm/knowledge",
     "dist/esm/css",
     "dist/esm/tokens",
     "dist/types/index.d.ts",
     "dist/types/components",
     "dist/types/utils",
     "dist/types/agent",
+    "dist/types/knowledge",
     "dist/types/tokens",
     "dist/esm/custom-elements.json",
     "dist/esm/dynamic-attrs.json"

@@ -14,6 +14,7 @@ import "../mui-icons/speaker-two-wave";
 import "../mui-icons/stop-fill";
 import "../mui-icons/vertical-ellipsis";
 import "../mui-link";
+import "../mui-spinner";
 
 type ResolvedType = "video" | "audio" | "youtube" | "soundcloud";
 type ControlsMode = "player" | "none";
@@ -459,19 +460,23 @@ class MuiMediaPlayer extends HTMLElement {
     const controlsMarkup = hasOverlayControls
       ? this.renderOverlayControls(type, muted, escapedSrc)
       : this.renderCompactAudioControls(muted, escapedSrc);
+    const centerPlayContent = `<span class="center-play-icon">
+      <mui-icon-play-fill class="control-icon" size="${centerPlaySize}" aria-hidden="true"></mui-icon-play-fill>
+    </span>
+    <mui-spinner class="center-play-loader" size="${centerPlaySize}" color="inverted" label="Loading media"></mui-spinner>`;
 
     return `${
       type === "video"
         ? showCenterPlay
           ? `<mui-button class="center-play" data-action="play" variant="tertiary" type="button" aria-label="Play media" size="${centerPlaySize}">
-      <mui-icon-play-fill class="control-icon" size="${centerPlaySize}" aria-hidden="true"></mui-icon-play-fill>
+      ${centerPlayContent}
     </mui-button>`
           : `<div class="center-play" aria-hidden="true">
-      <mui-icon-play-fill class="control-icon" size="${centerPlaySize}" aria-hidden="true"></mui-icon-play-fill>
+      ${centerPlayContent}
     </div>`
         : hasAudioPresentation
           ? `<mui-button class="center-play" data-action="play" variant="tertiary" type="button" aria-label="Play media" size="${centerPlaySize}">
-      <mui-icon-play-fill class="control-icon" size="${centerPlaySize}" aria-hidden="true"></mui-icon-play-fill>
+      ${centerPlayContent}
     </mui-button>`
           : ""
     }
@@ -494,6 +499,7 @@ class MuiMediaPlayer extends HTMLElement {
     const playBtns = Array.from(this.shadowRoot.querySelectorAll('[data-action="play"]')) as HTMLElement[];
     const centerPlay = this.shadowRoot.querySelector(".center-play") as HTMLElement | null;
     const centerPlayButton = this.shadowRoot.querySelector('.center-play[data-action="play"]') as HTMLElement | null;
+    const centerPlayIcon = this.shadowRoot.querySelector(".center-play-icon") as HTMLElement | null;
     const inlinePlayBtns = playBtns.filter((button) => button !== centerPlayButton);
     const playHint = this.shadowRoot.querySelector('[data-hint="play"]') as HTMLElement | null;
     const muteBtn = this.shadowRoot.querySelector('[data-action="mute"]') as HTMLElement | null;
@@ -530,6 +536,7 @@ class MuiMediaPlayer extends HTMLElement {
     let playFeedbackTimer = 0;
     let lastPointerX = 0;
     let lastPointerY = 0;
+    let isPlaybackRequested = false;
     let isOptionsMenuOpen = false;
     const cleanups: (() => void)[] = [];
     const on = (target: EventTarget | null | undefined, type: string, listener: EventListener) => {
@@ -638,6 +645,10 @@ class MuiMediaPlayer extends HTMLElement {
       animationFrame = requestAnimationFrame(tick);
     };
 
+    const setBuffering = (buffering: boolean) => {
+      frame?.classList.toggle("is-buffering", buffering);
+    };
+
     const clearControlsReveal = () => {
       window.clearTimeout(controlsRevealTimer);
       window.clearTimeout(touchRevealTimer);
@@ -676,8 +687,8 @@ class MuiMediaPlayer extends HTMLElement {
       if (frame.classList.contains("has-center-play")) return;
 
       window.clearTimeout(playFeedbackTimer);
-      if (centerPlay) {
-        centerPlay.innerHTML = this.getControlIcon(nextPaused ? "pause" : "play");
+      if (centerPlayIcon) {
+        centerPlayIcon.innerHTML = this.getControlIcon(nextPaused ? "pause" : "play");
       }
       frame.classList.add("show-play-feedback");
       playFeedbackTimer = window.setTimeout(() => {
@@ -835,6 +846,12 @@ class MuiMediaPlayer extends HTMLElement {
     const sync = () => {
       const paused = media.paused;
       syncPlayState(paused);
+      if (paused || media.ended) {
+        isPlaybackRequested = false;
+        setBuffering(false);
+      } else if (isPlaybackRequested) {
+        setBuffering(media.readyState < HTMLMediaElement.HAVE_FUTURE_DATA);
+      }
       if (muteBtn && media.muted !== lastMuted) {
         muteBtn.setAttribute("aria-label", media.muted ? "Unmute media" : "Mute media");
         lastMuted = media.muted;
@@ -879,9 +896,16 @@ class MuiMediaPlayer extends HTMLElement {
 
     const handlePlayClick = () => {
       if (media.paused) {
+        isPlaybackRequested = true;
+        setBuffering(true);
         syncPlayState(false, true);
-        media.play().catch(() => sync());
+        media.play().catch(() => {
+          setBuffering(false);
+          sync();
+        });
       } else {
+        isPlaybackRequested = false;
+        setBuffering(false);
         syncPlayState(true, true);
         media.pause();
       }
@@ -1030,6 +1054,7 @@ class MuiMediaPlayer extends HTMLElement {
     on(media, "loadedmetadata", sync);
     on(media, "loadeddata", sync);
     on(media, "canplay", sync);
+    on(media, "canplaythrough", sync);
     on(media, "volumechange", sync);
     on(media, "enterpictureinpicture", sync);
     on(media, "leavepictureinpicture", sync);
@@ -1045,16 +1070,51 @@ class MuiMediaPlayer extends HTMLElement {
       scheduleVideoInactivity();
     });
     on(media, "play", () => {
+      isPlaybackRequested = true;
+      if (media.readyState < HTMLMediaElement.HAVE_FUTURE_DATA) {
+        setBuffering(true);
+      }
       sync();
       startTick();
       scheduleVideoInactivity();
     });
+    on(media, "waiting", () => {
+      if (isPlaybackRequested && !media.paused && !media.ended) {
+        setBuffering(true);
+      }
+    });
+    on(media, "stalled", () => {
+      if (isPlaybackRequested && !media.paused && !media.ended) {
+        setBuffering(true);
+      }
+    });
+    on(media, "seeking", () => {
+      if (isPlaybackRequested && !media.paused && !media.ended) {
+        setBuffering(true);
+      }
+    });
+    on(media, "playing", () => {
+      setBuffering(false);
+      sync();
+      startTick();
+      scheduleVideoInactivity();
+    });
+    on(media, "seeked", () => {
+      if (media.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA || media.paused || media.ended) {
+        setBuffering(false);
+      }
+      sync();
+    });
     on(media, "pause", () => {
+      isPlaybackRequested = false;
+      setBuffering(false);
       cancelAnimationFrame(animationFrame);
       clearVideoInactivity();
       sync();
     });
     on(media, "ended", () => {
+      isPlaybackRequested = false;
+      setBuffering(false);
       cancelAnimationFrame(animationFrame);
       clearVideoInactivity();
       sync();
@@ -1471,6 +1531,25 @@ class MuiMediaPlayer extends HTMLElement {
             opacity var(--speed-300) ease,
             transform var(--speed-300) ease;
         }
+        .center-play-icon,
+        .center-play-loader {
+          grid-area: 1 / 1;
+        }
+        .center-play-loader {
+          display: none;
+        }
+        .frame.custom-controls.is-buffering .center-play {
+          z-index: 6;
+          opacity: 1;
+          pointer-events: none;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        .frame.custom-controls.is-buffering .center-play-icon {
+          display: none;
+        }
+        .frame.custom-controls.is-buffering .center-play-loader {
+          display: inline-flex;
+        }
         .video-frame.custom-controls .center-play,
         .audio-frame.custom-controls.has-artwork .center-play {
           background: var(--media-player-dark-overlay-background);
@@ -1528,6 +1607,16 @@ class MuiMediaPlayer extends HTMLElement {
         }
         .frame.custom-controls.show-play-feedback .center-play {
           opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        .video-frame.custom-controls.is-buffering .center-play,
+        .audio-frame.custom-controls.is-buffering .center-play,
+        .video-frame.custom-controls.has-center-play.is-buffering.is-playing .center-play,
+        .audio-frame.custom-controls.is-buffering.is-playing .center-play,
+        .frame.custom-controls.is-buffering.show-play-feedback .center-play {
+          z-index: 6;
+          opacity: 1;
+          pointer-events: none;
           transform: translate(-50%, -50%) scale(1);
         }
         /* Control row layout */

@@ -266,6 +266,7 @@ export default defineConfig({
         // AGENT
         "agent/keywords": path.resolve(__dirname, "src/agent/keywords"),
         "agent/prompts": path.resolve(__dirname, "src/agent/prompts"),
+        "knowledge": path.resolve(__dirname, "src/knowledge"),
       },
       formats: ["es"],
       fileName: (_, entryName) => (entryName === "index" ? "index.js" : `${entryName}/index.js`),
