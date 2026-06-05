@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-04T11:03:09.651Z",
+  "generatedAt": "2026-06-05T08:11:16.114Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -88,16 +88,6 @@
         }
       ]
     },
-    "mui-field": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-message",
-          "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
-        }
-      ]
-    },
     "mui-drawer": {
       "version": 1,
       "destinationOnly": true,
@@ -109,6 +99,16 @@
         {
           "name": "has-footer",
           "description": "Set when footer content exists, allowing the component to adjust internal spacing and structural regions."
+        }
+      ]
+    },
+    "mui-field": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-message",
+          "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
         }
       ]
     },
@@ -300,6 +300,16 @@
         }
       ]
     },
+    "mui-slat-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+        }
+      ]
+    },
     "mui-slat": {
       "version": 1,
       "destinationOnly": true,
@@ -321,16 +331,6 @@
         {
           "name": "in-card",
           "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
-        }
-      ]
-    },
-    "mui-slat-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "usage",
-          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
         }
       ]
     },

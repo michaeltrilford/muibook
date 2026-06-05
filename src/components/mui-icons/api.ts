@@ -4,7 +4,7 @@ export const muiApi = {
     attributes: [
       {
         name: "size",
-        type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' },
+        type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large" | "x-large" | "xx-large"' },
         default: "small",
         description: "Sets the icon footprint.",
       },
@@ -33,7 +33,7 @@ export const muiApi = {
       },
       {
         name: "size",
-        type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' },
+        type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large" | "x-large" | "xx-large"' },
         default: "medium",
         description: "Sets the icon toggle footprint.",
       },

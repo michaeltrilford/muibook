@@ -128,6 +128,7 @@ export * from "./components/mui-loader";
 export * from "./components/mui-skeleton";
 export * from "./components/mui-spinner";
 export * from "./components/mui-media-player";
+export * from "./components/mui-profile-chip";
 export * from "./components/mui-video-thumbnail";
 export * from "./components/mui-range-input";
 

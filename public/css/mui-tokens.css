@@ -261,7 +261,9 @@ html[data-theme="light"] {
   --media-player-range-preview-color: var(--black-opacity-40);
   --media-player-control-background: var(--surface-elevated-200);
   --media-player-control-color: var(--text-color);
-  --media-player-center-play-background: var(--surface-elevated-300);
+  --media-player-center-action-background: var(--surface-elevated-300);
+  --media-player-center-action-overlay-background: var(--black-opacity-80);
+  --media-player-center-action-overlay-background-hover: var(--black-opacity-90);
   --media-player-controls-peek-background: var(--white);
   --media-player-controls-peek-shadow: 0 var(--stroke-size-100) 0 0 var(--black-opacity-30);
   --media-player-audio-controls-peek-background: var(--grey-900);
@@ -727,7 +729,9 @@ html[data-theme="dark"] {
   --media-player-range-preview-color: var(--white-opacity-50);
   --media-player-control-background: var(--surface-elevated-200);
   --media-player-control-color: var(--text-color);
-  --media-player-center-play-background: var(--surface-elevated-200);
+  --media-player-center-action-background: var(--surface-elevated-200);
+  --media-player-center-action-overlay-background: var(--black-opacity-80);
+  --media-player-center-action-overlay-background-hover: var(--black-opacity-90);
   --media-player-controls-peek-background: var(--white);
   --media-player-controls-peek-shadow: 0 var(--stroke-size-100) 0 0 var(--white-opacity-30);
   --media-player-audio-controls-peek-background: var(--white);

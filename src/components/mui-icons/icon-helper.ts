@@ -1,4 +1,4 @@
-type IconSize = "xx-small" | "x-small" | "small" | "medium" | "large";
+type IconSize = "xx-small" | "x-small" | "small" | "medium" | "large" | "x-large" | "xx-large";
 
 export function defineMuiIcon(tagName: string, paths: string, viewBox = "0 0 28 28") {
   class MuiIcon extends HTMLElement {
@@ -38,6 +38,8 @@ export function defineMuiIcon(tagName: string, paths: string, viewBox = "0 0 28 
         small: "2.1rem",
         medium: "2.4rem",
         large: "2.8rem",
+        "x-large": "3.6rem",
+        "xx-large": "4.8rem",
       };
 
       this.classList.add("mui-icon");

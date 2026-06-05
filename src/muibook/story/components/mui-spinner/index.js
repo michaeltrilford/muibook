@@ -19,13 +19,17 @@ class StorySpinner extends HTMLElement {
           <mui-spinner size="small"></mui-spinner>
           <mui-spinner size="medium"></mui-spinner>
           <mui-spinner size="large"></mui-spinner>
+          <mui-spinner size="x-large"></mui-spinner>
+          <mui-spinner size="xx-large"></mui-spinner>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-spinner size="xx-small"&gt;&lt;/mui-spinner&gt;<br>
           &lt;mui-spinner size="x-small"&gt;&lt;/mui-spinner&gt;<br>
           &lt;mui-spinner size="small"&gt;&lt;/mui-spinner&gt;<br>
           &lt;mui-spinner size="medium"&gt;&lt;/mui-spinner&gt;<br>
-          &lt;mui-spinner size="large"&gt;&lt;/mui-spinner&gt;
+          &lt;mui-spinner size="large"&gt;&lt;/mui-spinner&gt;<br>
+          &lt;mui-spinner size="x-large"&gt;&lt;/mui-spinner&gt;<br>
+          &lt;mui-spinner size="xx-large"&gt;&lt;/mui-spinner&gt;
         </story-code-block>
       </story-card>
 

@@ -305,7 +305,9 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--media-player-range-preview-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-control-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-control-color" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--media-player-center-play-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-center-action-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-center-action-overlay-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--media-player-center-action-overlay-background-hover" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-controls-peek-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-controls-peek-shadow" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-audio-controls-peek-background" variant="color"></story-token-slat>

@@ -200,6 +200,11 @@ class storyIcon extends HTMLElement {
             <mui-code slot="footer" scrollable>mui-icon-stop</mui-code>
           </story-icon-grid>
 
+          <story-icon-grid center>
+            <mui-icon-spinner slot="body"></mui-icon-spinner>
+            <mui-code slot="footer" scrollable>mui-icon-spinner</mui-code>
+          </story-icon-grid>
+
           <story-icon-grid center>              
             <mui-icon-down-arrow-circle slot="body"></mui-icon-down-arrow-circle>
             <mui-code slot="footer" scrollable>mui-icon-down-arrow-circle</mui-code>

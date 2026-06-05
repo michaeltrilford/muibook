@@ -35,6 +35,8 @@ class MuiSpinner extends HTMLElement {
       small: "2.1rem",
       medium: "2.4rem",
       large: "2.8rem",
+      "x-large": "3.6rem",
+      "xx-large": "4.8rem",
     };
 
     const spinnerSize = sizeMap[size] || sizeMap.medium;

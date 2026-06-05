@@ -4,7 +4,7 @@ export const muiApi = {
     attributes: [
       {
         name: "size",
-        type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' },
+        type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large" | "x-large" | "xx-large"' },
         default: "medium",
         description: "Controls the spinner dimensions.",
       },

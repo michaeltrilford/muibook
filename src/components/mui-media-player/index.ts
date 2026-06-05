@@ -77,6 +77,7 @@ class MuiMediaPlayer extends HTMLElement {
       "media-title",
       "height",
       "center-play",
+      "loading",
       "controls",
       "waveform",
     ];
@@ -251,6 +252,33 @@ class MuiMediaPlayer extends HTMLElement {
       context.fillStyle = isActive ? activeMirrorColor : mirrorColor;
       context.fillRect(x, centerY, barWidth, amplitude * 0.72);
     });
+  }
+
+  private syncMetadataProfileChips() {
+    const applyUsage = (element: Element) => {
+      if (element.tagName.toLowerCase() === "mui-profile-chip") {
+        element.setAttribute("usage", "media-player");
+      }
+
+      element.querySelectorAll("mui-profile-chip").forEach((profileChip) => {
+        profileChip.setAttribute("usage", "media-player");
+      });
+    };
+
+    ["meta-before", "meta-after", "metadata"].forEach((slotName) => {
+      this.querySelectorAll(`[slot="${slotName}"]`).forEach(applyUsage);
+
+      const slot = this.shadowRoot?.querySelector(`slot[name="${slotName}"]`) as HTMLSlotElement | null;
+      slot?.assignedElements({ flatten: true }).forEach(applyUsage);
+    });
+  }
+
+  private bindMetadataProfileChipSlots() {
+    this.shadowRoot
+      ?.querySelectorAll<HTMLSlotElement>('slot[name="meta-before"], slot[name="meta-after"], slot[name="metadata"]')
+      .forEach((slot) => {
+        slot.addEventListener("slotchange", () => this.syncMetadataProfileChips());
+      });
   }
 
   private async renderWaveform() {
@@ -460,10 +488,7 @@ class MuiMediaPlayer extends HTMLElement {
     const controlsMarkup = hasOverlayControls
       ? this.renderOverlayControls(type, muted, escapedSrc)
       : this.renderCompactAudioControls(muted, escapedSrc);
-    const centerPlayContent = `<span class="center-play-icon">
-      <mui-icon-play-fill class="control-icon" size="${centerPlaySize}" aria-hidden="true"></mui-icon-play-fill>
-    </span>
-    <mui-spinner class="center-play-loader" size="${centerPlaySize}" color="inverted" label="Loading media"></mui-spinner>`;
+    const centerPlayContent = `<mui-icon-play-fill class="control-icon" size="${centerPlaySize}" aria-hidden="true"></mui-icon-play-fill>`;
 
     return `${
       type === "video"
@@ -499,7 +524,6 @@ class MuiMediaPlayer extends HTMLElement {
     const playBtns = Array.from(this.shadowRoot.querySelectorAll('[data-action="play"]')) as HTMLElement[];
     const centerPlay = this.shadowRoot.querySelector(".center-play") as HTMLElement | null;
     const centerPlayButton = this.shadowRoot.querySelector('.center-play[data-action="play"]') as HTMLElement | null;
-    const centerPlayIcon = this.shadowRoot.querySelector(".center-play-icon") as HTMLElement | null;
     const inlinePlayBtns = playBtns.filter((button) => button !== centerPlayButton);
     const playHint = this.shadowRoot.querySelector('[data-hint="play"]') as HTMLElement | null;
     const muteBtn = this.shadowRoot.querySelector('[data-action="mute"]') as HTMLElement | null;
@@ -534,6 +558,7 @@ class MuiMediaPlayer extends HTMLElement {
     let controlsRevealTimer = 0;
     let touchRevealTimer = 0;
     let playFeedbackTimer = 0;
+    let bufferingTimer = 0;
     let lastPointerX = 0;
     let lastPointerY = 0;
     let isPlaybackRequested = false;
@@ -645,8 +670,42 @@ class MuiMediaPlayer extends HTMLElement {
       animationFrame = requestAnimationFrame(tick);
     };
 
-    const setBuffering = (buffering: boolean) => {
-      frame?.classList.toggle("is-buffering", buffering);
+    const getLoadingIcon = () =>
+      `<mui-spinner class="center-play-loader" size="${isVideo ? "xx-large" : "medium"}" color="inverted" label="Loading media"></mui-spinner>`;
+
+    const syncCenterPlayIcon = (paused: boolean) => {
+      if (!centerPlay) return;
+      centerPlay.innerHTML = this.getControlIcon(paused ? "play" : "pause");
+    };
+
+    const hasForcedLoading = () => this.hasAttribute("loading");
+    const hasPersistentCenterPlay = () => Boolean(frame?.classList.contains("has-center-play"));
+
+    const clearBufferingTimer = () => {
+      window.clearTimeout(bufferingTimer);
+      bufferingTimer = 0;
+    };
+
+    const applyBuffering = (buffering: boolean) => {
+      const nextBuffering = hasForcedLoading() || (buffering && !hasPersistentCenterPlay());
+      frame?.classList.toggle("is-buffering", nextBuffering);
+      if (!centerPlay) return;
+      centerPlay.innerHTML = nextBuffering ? getLoadingIcon() : this.getControlIcon(media.paused ? "play" : "pause");
+    };
+
+    const setBuffering = (buffering: boolean, delay = false) => {
+      clearBufferingTimer();
+
+      if (!buffering || hasForcedLoading() || !delay) {
+        applyBuffering(buffering);
+        return;
+      }
+
+      bufferingTimer = window.setTimeout(() => {
+        if (isPlaybackRequested && !media.paused && !media.ended) {
+          applyBuffering(true);
+        }
+      }, 200);
     };
 
     const clearControlsReveal = () => {
@@ -687,8 +746,8 @@ class MuiMediaPlayer extends HTMLElement {
       if (frame.classList.contains("has-center-play")) return;
 
       window.clearTimeout(playFeedbackTimer);
-      if (centerPlayIcon) {
-        centerPlayIcon.innerHTML = this.getControlIcon(nextPaused ? "pause" : "play");
+      if (centerPlay) {
+        centerPlay.innerHTML = this.getControlIcon(nextPaused ? "pause" : "play");
       }
       frame.classList.add("show-play-feedback");
       playFeedbackTimer = window.setTimeout(() => {
@@ -770,8 +829,8 @@ class MuiMediaPlayer extends HTMLElement {
           (target) =>
             target instanceof HTMLElement &&
             (target.classList.contains("controls-hover-zone") ||
-              target.classList.contains("audio-visual-copy") ||
-              target.classList.contains("media-visual-copy")),
+              target.classList.contains("meta-overlay-background") ||
+              target.classList.contains("media-meta-slot")),
         )
       ) {
         return;
@@ -800,6 +859,9 @@ class MuiMediaPlayer extends HTMLElement {
         inlinePlayBtns.forEach((button) => {
           button.innerHTML = this.getControlIcon(paused ? "play" : "pause");
         });
+        if (!frame?.classList.contains("is-buffering")) {
+          syncCenterPlayIcon(paused);
+        }
         if (playHint) {
           playHint.textContent = paused ? "Play" : "Pause";
         }
@@ -846,11 +908,11 @@ class MuiMediaPlayer extends HTMLElement {
     const sync = () => {
       const paused = media.paused;
       syncPlayState(paused);
-      if (paused || media.ended) {
+      if (hasForcedLoading()) {
+        setBuffering(true);
+      } else if (paused || media.ended) {
         isPlaybackRequested = false;
         setBuffering(false);
-      } else if (isPlaybackRequested) {
-        setBuffering(media.readyState < HTMLMediaElement.HAVE_FUTURE_DATA);
       }
       if (muteBtn && media.muted !== lastMuted) {
         muteBtn.setAttribute("aria-label", media.muted ? "Unmute media" : "Mute media");
@@ -1071,26 +1133,23 @@ class MuiMediaPlayer extends HTMLElement {
     });
     on(media, "play", () => {
       isPlaybackRequested = true;
-      if (media.readyState < HTMLMediaElement.HAVE_FUTURE_DATA) {
-        setBuffering(true);
-      }
       sync();
       startTick();
       scheduleVideoInactivity();
     });
     on(media, "waiting", () => {
       if (isPlaybackRequested && !media.paused && !media.ended) {
-        setBuffering(true);
+        setBuffering(true, true);
       }
     });
     on(media, "stalled", () => {
       if (isPlaybackRequested && !media.paused && !media.ended) {
-        setBuffering(true);
+        setBuffering(true, true);
       }
     });
     on(media, "seeking", () => {
       if (isPlaybackRequested && !media.paused && !media.ended) {
-        setBuffering(true);
+        setBuffering(true, true);
       }
     });
     on(media, "playing", () => {
@@ -1122,6 +1181,7 @@ class MuiMediaPlayer extends HTMLElement {
     this.cleanupControlBindings = () => {
       cancelAnimationFrame(animationFrame);
       window.clearTimeout(playFeedbackTimer);
+      clearBufferingTimer();
       clearControlsReveal();
       clearVideoInactivity();
       cleanups.forEach((cleanup) => cleanup());
@@ -1147,18 +1207,21 @@ class MuiMediaPlayer extends HTMLElement {
     const mediaTitle = this.getAttribute("media-title") || "";
     const height = this.getAttribute("height") || "";
     const audioHeightStyle = height ? ` style="--media-player-audio-height: ${height.replace(/"/g, "&quot;")}"` : "";
-    const hasMetadataSlot = this.querySelector('[slot="metadata"]') !== null;
+    const hasMetaBeforeSlot = this.querySelector('[slot="meta-before"]') !== null;
+    const hasLegacyMetadataSlot = this.querySelector('[slot="metadata"]') !== null;
+    const hasMetaAfterSlot = this.querySelector('[slot="meta-after"]') !== null;
+    const hasMetadataSlot = hasMetaBeforeSlot || hasLegacyMetadataSlot || hasMetaAfterSlot;
     const escapedMediaTitle = mediaTitle.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const renderMetaContent = (className = "") => {
       if (!mediaTitle && !hasMetadataSlot) return "";
-      const visualCopyClass = [className, className === "audio" ? "audio-visual-copy" : "", "media-visual-copy"]
-        .filter(Boolean)
-        .join(" ");
+      const overlaySurface = className === "audio" && !artwork ? "surface" : "image";
+      const beforeSlotName = hasMetaBeforeSlot ? "meta-before" : hasLegacyMetadataSlot ? "metadata" : "meta-before";
+      const beforeFallback = mediaTitle ? `<mui-body size="small" weight="bold">${escapedMediaTitle}</mui-body>` : "";
 
-      return `<div class="${visualCopyClass}">
-            <slot name="metadata">
-              ${mediaTitle ? `<mui-body size="small" weight="bold">${escapedMediaTitle}</mui-body>` : ""}
-            </slot>
+      return `<div class="meta-overlay-background" data-overlay="${className}" data-overlay-surface="${overlaySurface}"></div>
+          <div class="media-meta-zones">
+            <slot class="media-meta-slot is-before" name="${beforeSlotName}">${beforeFallback}</slot>
+            <slot class="media-meta-slot is-after" name="meta-after"></slot>
           </div>`;
     };
     const hasAudioPresentation =
@@ -1203,8 +1266,8 @@ class MuiMediaPlayer extends HTMLElement {
           --media-player-range-solid-end: var(--media-player-range-progress);
           --media-player-range-preview-start: var(--media-player-range-progress);
           --media-player-range-preview-end: var(--media-player-range-progress);
-          --media-player-range-thumb-size: 1.6rem;
-          --media-player-range-track-height: 0.4rem;
+          --media-player-range-thumb-size: var(--space-400);
+          --media-player-range-track-height: var(--space-050);
           --media-player-waveform-color: color-mix(in srgb, var(--text-color) 46%, transparent);
           --media-player-waveform-mirror-color: color-mix(in srgb, var(--text-color) 24%, transparent);
           --media-player-waveform-active-color: var(--media-player-range-color);
@@ -1386,7 +1449,6 @@ class MuiMediaPlayer extends HTMLElement {
           width: auto;
           display: grid;
           grid-template-rows: auto auto;
-          gap: var(--space-075);
           align-items: stretch;
           border-radius: 0;
           background: linear-gradient(180deg, transparent 0%, var(--media-player-surface-overlay-end) 100%);
@@ -1431,8 +1493,8 @@ class MuiMediaPlayer extends HTMLElement {
           z-index: 4;
           left: 50%;
           bottom: 0;
-          width: 3.6rem;
-          height: 2.4rem;
+          width: var(--space-600);
+          height: var(--space-500);
           border-radius: 999rem;
           opacity: 0.6;
           pointer-events: auto;
@@ -1448,7 +1510,7 @@ class MuiMediaPlayer extends HTMLElement {
           left: 0;
           top: 50%;
           width: 100%;
-          height: 0.4rem;
+          height: var(--space-050);
           border-radius: inherit;
           background: var(--media-player-controls-peek-background);
           box-shadow: var(--media-player-controls-peek-shadow);
@@ -1509,7 +1571,7 @@ class MuiMediaPlayer extends HTMLElement {
           position: absolute;
           z-index: 5;
           inset: auto var(--space-000) var(--space-000);
-          height: 2.4rem;
+          height: var(--space-500);
           pointer-events: auto;
         }
         /* Center play feedback */
@@ -1519,11 +1581,7 @@ class MuiMediaPlayer extends HTMLElement {
           inset: 50% auto auto 50%;
           display: grid;
           place-items: center;
-          width: var(--action-size-large);
-          height: var(--action-size-large);
-          border-radius: 999rem;
           color: var(--media-player-dark-control-color);
-          background: var(--media-player-center-play-background);
           opacity: 0;
           pointer-events: none;
           transform: translate(-50%, -50%) scale(0.92);
@@ -1531,32 +1589,47 @@ class MuiMediaPlayer extends HTMLElement {
             opacity var(--speed-300) ease,
             transform var(--speed-300) ease;
         }
-        .center-play-icon,
         .center-play-loader {
-          grid-area: 1 / 1;
-        }
-        .center-play-loader {
-          display: none;
-        }
-        .frame.custom-controls.is-buffering .center-play {
-          z-index: 6;
-          opacity: 1;
-          pointer-events: none;
-          transform: translate(-50%, -50%) scale(1);
-        }
-        .frame.custom-controls.is-buffering .center-play-icon {
-          display: none;
-        }
-        .frame.custom-controls.is-buffering .center-play-loader {
-          display: inline-flex;
+          margin: auto;
         }
         .video-frame.custom-controls .center-play,
         .audio-frame.custom-controls.has-artwork .center-play {
-          background: var(--media-player-dark-overlay-background);
+          color: var(--media-player-dark-control-color);
         }
-        .video-frame.custom-controls .center-play {
-          width: 6rem;
-          height: 6rem;
+        div.center-play,
+        .video-frame.custom-controls .center-play::part(background),
+        .audio-frame.custom-controls.has-artwork .center-play::part(background) {
+          border-radius: 999rem;
+          background: var(--media-player-center-action-overlay-background);
+        }
+        div.center-play {
+          appearance: none;
+          border: 0;
+          box-sizing: border-box;
+          width: var(--space-800);
+          height: var(--space-800);
+          min-height: var(--space-800);
+          padding: var(--action-icon-only-padding);
+          font: inherit;
+          line-height: 1;
+        }
+        .center-play::part(background) {
+          display: grid;
+          place-items: center;
+          padding: var(--action-icon-only-padding);
+          transition: background var(--speed-200) ease;
+        }
+        .video-frame.custom-controls .center-play:hover::part(background),
+        .video-frame.custom-controls .center-play:focus-visible::part(background),
+        .audio-frame.custom-controls.has-artwork .center-play:hover::part(background),
+        .audio-frame.custom-controls.has-artwork .center-play:focus-visible::part(background) {
+          background: var(--media-player-center-action-overlay-background-hover);
+        }
+        .video-frame.custom-controls .center-play::part(background) {
+          width: var(--space-800);
+          height: var(--space-800);
+          min-height: var(--space-800);
+          box-sizing: border-box;
         }
         .video-frame.custom-controls .center-play mui-icon-play-fill,
         .video-frame.custom-controls .center-play mui-icon-pause-fill,
@@ -1581,18 +1654,44 @@ class MuiMediaPlayer extends HTMLElement {
           transform: translate(-50%, -50%) scale(0.92);
         }
         .audio-frame.custom-controls .center-play::part(background) {
-          background: var(--media-player-center-play-background);
+          background: var(--media-player-center-action-background);
           border-radius: 100%;
         }
         .audio-frame.custom-controls.has-artwork .center-play::part(background) {
-          background: var(--media-player-dark-overlay-background);
+          background: var(--media-player-center-action-overlay-background);
+        }
+        .audio-frame.custom-controls:not(.has-artwork) .center-play:hover::part(background),
+        .audio-frame.custom-controls:not(.has-artwork) .center-play:focus-visible::part(background) {
+          background: color-mix(
+            in srgb,
+            var(--media-player-center-action-background) 82%,
+            var(--media-player-control-color) 18%
+          );
+        }
+        :host-context(html[data-theme="dark"])
+          .audio-frame.custom-controls:not(.has-artwork)
+          .center-play:hover::part(background),
+        :host-context(html[data-theme="dark"])
+          .audio-frame.custom-controls:not(.has-artwork)
+          .center-play:focus-visible::part(background) {
+          background: color-mix(
+            in srgb,
+            var(--media-player-center-action-background) 82%,
+            var(--grey-1200) 18%
+          );
         }
         .audio-frame.custom-controls .center-play {
-          width: var(--action-size-medium);
-          height: var(--action-size-medium);
+          width: auto;
+          height: auto;
           opacity: 1;
           pointer-events: auto;
           transform: translate(-50%, -50%) scale(1);
+        }
+        .audio-frame.custom-controls .center-play::part(background) {
+          width: var(--action-size-medium);
+          height: var(--action-size-medium);
+          min-height: var(--action-size-medium);
+          box-sizing: border-box;
         }
         .audio-frame.custom-controls.is-playing .center-play {
           opacity: 0;
@@ -1668,7 +1767,6 @@ class MuiMediaPlayer extends HTMLElement {
           min-height: var(--action-size-medium);
           display: grid;
           grid-template-rows: auto auto;
-          gap: var(--space-075);
           align-items: stretch;
           padding-block: var(--space-100);
           color: var(--media-player-control-color);
@@ -1791,8 +1889,7 @@ class MuiMediaPlayer extends HTMLElement {
           filter: saturate(1.08) brightness(1.03);
           transform: scale(1.025);
         }
-        .audio-visual-copy,
-        .media-visual-copy {
+        .meta-overlay-background {
           appearance: none;
           border: 0;
           position: absolute;
@@ -1802,41 +1899,41 @@ class MuiMediaPlayer extends HTMLElement {
           min-width: 0;
           box-sizing: border-box;
           width: 100%;
-          padding: var(--space-400);
+          height: var(--meta-overlay-height, 14rem);
           pointer-events: none;
-          color: inherit;
-          font: inherit;
-          text-align: left;
           opacity: 1;
           visibility: visible;
           transition:
             opacity var(--speed-200) ease,
             visibility var(--speed-200) ease;
         }
-        .audio-visual.has-artwork .audio-visual-copy,
-        .audio-visual.has-artwork .media-visual-copy {
+        .meta-overlay-background[data-overlay-surface="image"] {
+          background: linear-gradient(180deg, var(--media-player-dark-overlay-background) 28%, transparent);
+        }
+        .media-meta-zones {
+          position: absolute;
+          top: 0;
+          left: 0;
           z-index: 2;
-        }
-        .audio-visual:not(.has-artwork) .audio-visual-copy {
-          background: linear-gradient(180deg, var(--media-player-surface-overlay-start), transparent);
-        }
-        .audio-visual.has-artwork .audio-visual-copy,
-        .audio-visual.has-artwork .media-visual-copy,
-        .video-frame.custom-controls .media-visual-copy {
-          background: linear-gradient(180deg, var(--media-player-dark-overlay-background) 60%, transparent);
-          text-shadow: 0 var(--stroke-size-100) 0 var(--media-player-dark-overlay-background);
-          padding-block-end: calc(var(--space-800) * 2);
-        }
-        .video-frame.custom-controls.is-playing .media-visual-copy {
-          opacity: 0;
-          visibility: hidden;
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: var(--space-300);
+          box-sizing: border-box;
+          width: 100%;
+          padding: var(--space-400);
           pointer-events: none;
+          opacity: 1;
+          visibility: visible;
+          transition:
+            opacity var(--speed-200) ease,
+            visibility var(--speed-200) ease;
         }
-        slot[name="metadata"] {
+        .media-meta-slot {
           display: flex;
           align-items: center;
           gap: var(--space-300);
-          width: 100%;
+          min-width: 0;
           max-width: 100%;
           pointer-events: auto;
           --action-avatar-border: var(--border-thin);
@@ -1845,32 +1942,97 @@ class MuiMediaPlayer extends HTMLElement {
           --text-font-size-m: var(--text-font-size-s);
           --text-line-height-m: var(--text-line-height-s);
         }
+        .media-meta-slot.is-before {
+          justify-content: flex-start;
+        }
+        .media-meta-slot.is-after {
+          justify-content: flex-end;
+          margin-inline-start: auto;
+        }
+        .audio-visual.has-artwork .meta-overlay-background {
+          z-index: 2;
+        }
+        .meta-overlay-background[data-overlay-surface="surface"] {
+          background: linear-gradient(180deg, var(--media-player-surface-overlay-start), transparent);
+        }
+        .video-frame.custom-controls.is-playing .meta-overlay-background,
+        .video-frame.custom-controls.is-playing .media-meta-zones {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        }
+        slot[name="meta-before"],
+        slot[name="meta-after"],
+        slot[name="metadata"] {
+          display: flex;
+          align-items: center;
+          max-width: 100%;
+        }
+        slot[name="meta-before"]::slotted(*),
+        slot[name="meta-after"]::slotted(*),
         slot[name="metadata"]::slotted(*) {
           max-width: 100%;
         }
+        slot[name="meta-before"]::slotted(mui-avatar),
+        slot[name="meta-after"]::slotted(mui-avatar),
         slot[name="metadata"]::slotted(mui-avatar) {
           border: var(--border-thin);
           box-shadow: none;
         }
+        slot[name="meta-before"]::slotted(mui-button),
+        slot[name="meta-after"]::slotted(mui-button),
         slot[name="metadata"]::slotted(mui-button) {
           --action-avatar-border: var(--border-thin);
           --action-avatar-shadow: none;
         }
+        .audio-visual.has-artwork slot[name="meta-before"]::slotted(mui-avatar),
+        .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-avatar),
         .audio-visual.has-artwork slot[name="metadata"]::slotted(mui-avatar),
+        .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-avatar),
+        .video-frame.custom-controls slot[name="meta-after"]::slotted(mui-avatar),
         .video-frame.custom-controls slot[name="metadata"]::slotted(mui-avatar) {
           border: var(--media-player-dark-thumbnail-border);
           box-shadow: var(--media-player-dark-thumbnail-shadow);
         }
+        .audio-visual.has-artwork slot[name="meta-before"],
+        .audio-visual.has-artwork slot[name="meta-after"],
         .audio-visual.has-artwork slot[name="metadata"],
+        .video-frame.custom-controls slot[name="meta-before"],
+        .video-frame.custom-controls slot[name="meta-after"],
         .video-frame.custom-controls slot[name="metadata"],
+        .audio-visual.has-artwork slot[name="meta-before"]::slotted(*),
+        .audio-visual.has-artwork slot[name="meta-after"]::slotted(*),
         .audio-visual.has-artwork slot[name="metadata"]::slotted(*),
+        .video-frame.custom-controls slot[name="meta-before"]::slotted(*),
+        .video-frame.custom-controls slot[name="meta-after"]::slotted(*),
         .video-frame.custom-controls slot[name="metadata"]::slotted(*),
+        .audio-visual.has-artwork slot[name="meta-before"]::slotted(mui-button),
+        .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-button),
         .audio-visual.has-artwork slot[name="metadata"]::slotted(mui-button),
+        .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-button),
+        .video-frame.custom-controls slot[name="meta-after"]::slotted(mui-button),
         .video-frame.custom-controls slot[name="metadata"]::slotted(mui-button),
+        .audio-visual.has-artwork slot[name="meta-before"]::slotted(mui-link),
+        .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-link),
         .audio-visual.has-artwork slot[name="metadata"]::slotted(mui-link),
-        .video-frame.custom-controls slot[name="metadata"]::slotted(mui-link) {
+        .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-link),
+        .video-frame.custom-controls slot[name="meta-after"]::slotted(mui-link),
+        .video-frame.custom-controls slot[name="metadata"]::slotted(mui-link),
+        .audio-visual.has-artwork slot[name="meta-before"]::slotted(mui-profile-chip),
+        .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-profile-chip),
+        .audio-visual.has-artwork slot[name="metadata"]::slotted(mui-profile-chip),
+        .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-profile-chip),
+        .video-frame.custom-controls slot[name="meta-after"]::slotted(mui-profile-chip),
+        .video-frame.custom-controls slot[name="metadata"]::slotted(mui-profile-chip) {
           --action-avatar-border: var(--media-player-dark-thumbnail-border);
           --action-avatar-shadow: var(--media-player-dark-thumbnail-shadow);
+          --profile-chip-avatar-border: var(--media-player-dark-thumbnail-border);
+          --profile-chip-avatar-shadow: var(--media-player-dark-thumbnail-shadow);
+          --profile-chip-text-color: var(--white);
+          --profile-chip-secondary-color: var(--white);
+          --profile-chip-link-color: var(--white);
+          --profile-chip-link-color-hover: var(--white);
+          --profile-chip-link-color-focus: var(--white);
           --text-color: var(--white);
           --text-color-optional: var(--white);
           --link-text-color-default: var(--white);
@@ -1878,7 +2040,11 @@ class MuiMediaPlayer extends HTMLElement {
           --link-text-color-default-focus: var(--white);
           --link-text-color-default-disabled: rgba(255, 255, 255, 0.48);
         }
+        .audio-visual.has-artwork slot[name="meta-before"]::slotted(*),
+        .audio-visual.has-artwork slot[name="meta-after"]::slotted(*),
         .audio-visual.has-artwork slot[name="metadata"]::slotted(*),
+        .video-frame.custom-controls slot[name="meta-before"]::slotted(*),
+        .video-frame.custom-controls slot[name="meta-after"]::slotted(*),
         .video-frame.custom-controls slot[name="metadata"]::slotted(*) {
           color: var(--white);
         }
@@ -1891,7 +2057,7 @@ class MuiMediaPlayer extends HTMLElement {
           min-width: 0;
           appearance: none;
           -webkit-appearance: none;
-          height: 1.6rem;
+          height: var(--space-400);
           padding: 0;
           border: 0;
           border-radius: 999rem;
@@ -1996,8 +2162,8 @@ class MuiMediaPlayer extends HTMLElement {
           flex: 1 1 auto;
         }
         .volume {
-          width: 6rem;
-          flex: 0 0 6rem;
+          width: var(--space-800);
+          flex: 0 0 var(--space-800);
         }
         [data-action="time-mode"] {
           white-space: nowrap;
@@ -2042,17 +2208,13 @@ class MuiMediaPlayer extends HTMLElement {
             --media-player-main-radius: 1.6rem;
           }
 
-          .audio-visual-copy,
-          .media-visual-copy {
-            padding: var(--space-300) var(--space-400);
+          .media-meta-zones {
+            padding: var(--space-400) var(--space-400);
           }
 
-        .audio-visual.has-artwork .audio-visual-copy,
-        .audio-visual.has-artwork .media-visual-copy,
-        .video-frame.custom-controls .media-visual-copy {
-          background: linear-gradient(180deg, var(--media-player-dark-overlay-background) 50%, transparent);
-          padding-block-end: calc(var(--space-800) * 2);
-        }
+          .meta-overlay-background[data-overlay-surface="image"] {
+            background: linear-gradient(180deg, var(--media-player-dark-overlay-background) 28%, transparent);
+          }
 
         }
         @container (max-width: 52rem) {
@@ -2068,13 +2230,13 @@ class MuiMediaPlayer extends HTMLElement {
             gap: var(--space-200);
           }
 
-          .audio-visual-copy, .media-visual-copy {
-            padding: var(--space-300) var(--space-400);
+          .media-meta-zones {
+            padding: var(--space-300) var(--space-300);
           }
 
           .audio-artwork {
-            width: 4.8rem;
-            height: 4.8rem;
+            width: var(--space-700);
+            height: var(--space-700);
           }
         }
         @container (max-width: 42rem) {
@@ -2103,7 +2265,6 @@ class MuiMediaPlayer extends HTMLElement {
           .audio-frame.custom-controls.audio-player-only .controls {
             display: grid;
             grid-template-rows: auto auto;
-            gap: var(--space-075);
             padding-block: var(--space-100);
           }
           .audio-frame.custom-controls.audio-player-only .compact-action-row {
@@ -2117,6 +2278,8 @@ class MuiMediaPlayer extends HTMLElement {
         ${renderPlayerControls ? this.renderPlayerControls(type as "video" | "audio", hasAudioPresentation, muted, escapedSrc, showCenterPlay) : ""}
       </div>
     `;
+    this.syncMetadataProfileChips();
+    this.bindMetadataProfileChipSlots();
   }
 }
 

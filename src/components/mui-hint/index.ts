@@ -70,6 +70,9 @@ class MuiHint extends HTMLElement {
           border-radius: var(--hint-focus-radius);
           outline: none;
         }
+        .trigger.is-interactive {
+          cursor: auto;
+        }
         .trigger:focus-visible {
           outline: var(--hint-focus-outline);
           outline-offset: var(--hint-focus-outline-offset);
@@ -190,6 +193,7 @@ class MuiHint extends HTMLElement {
     }
 
     const hasFocusableTrigger = triggerSlot.assignedElements({ flatten: true }).some((el) => this.isFocusableTrigger(el));
+    trigger.classList.toggle("is-interactive", hasFocusableTrigger);
 
     if (hasFocusableTrigger) {
       trigger.removeAttribute("tabindex");

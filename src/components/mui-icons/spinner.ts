@@ -1,3 +1,5 @@
+type IconSize = "xx-small" | "x-small" | "small" | "medium" | "large" | "x-large" | "xx-large";
+
 class MuiIconSpinner extends HTMLElement {
   static get observedAttributes() {
     return ["size", "color"];
@@ -19,7 +21,7 @@ class MuiIconSpinner extends HTMLElement {
   }
 
   render(): void {
-    const size = (this.getAttribute("size") || "small") as "xx-small" | "x-small" | "small" | "medium" | "large";
+    const size = (this.getAttribute("size") || "small") as IconSize;
     const rawColor = this.getAttribute("color");
 
     const colorMap: Record<string, string> = {
@@ -29,12 +31,14 @@ class MuiIconSpinner extends HTMLElement {
 
     const iconColor: string = (rawColor && colorMap[rawColor]) || rawColor || "var(--icon-color-default)";
 
-    const sizeMap: Record<"xx-small" | "x-small" | "small" | "medium" | "large", string> = {
+    const sizeMap: Record<IconSize, string> = {
       "xx-small": "1.3rem",
       "x-small": "1.6rem",
       small: "2.1rem",
       medium: "2.4rem",
       large: "2.8rem",
+      "x-large": "3.6rem",
+      "xx-large": "4.8rem",
     };
 
     const sizeStyleMap = sizeMap[size] ?? sizeMap.small;

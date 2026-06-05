@@ -2,7 +2,7 @@ import React from "react";
 
 declare global {
   namespace JSX {
-    type MuiIconSize = "x-small" | "small" | "medium" | "large";
+    type MuiIconSize = "xx-small" | "x-small" | "small" | "medium" | "large" | "x-large" | "xx-large";
 
     interface MuiIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
       size?: MuiIconSize;
@@ -242,6 +242,20 @@ declare global {
         class?: string;
       };
 
+      "mui-profile-chip": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        primary?: string;
+        secondary?: string;
+        image?: string;
+        label?: string;
+        href?: string;
+        target?: string;
+        usage?: "default" | "media-player" | string;
+        breakpoint?: string;
+        slot?: string;
+        style?: React.CSSProperties;
+        class?: string;
+      };
+
       // ACTIONS
       "mui-button": React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
         slot?: string;
@@ -322,6 +336,13 @@ declare global {
         class?: string;
       };
 
+      "mui-spinner": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        size?: MuiIconSize;
+        color?: string;
+        duration?: string;
+        label?: string;
+      };
+
       "mui-badge": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         variant?: "neutral" | "positive" | "warning" | "attention" | string;
         style?: React.CSSProperties;
@@ -344,6 +365,7 @@ declare global {
       "mui-icon-menu": MuiIconProps;
       "mui-icon-message": MuiIconProps;
       "mui-icon-right-chevron": MuiIconProps;
+      "mui-icon-spinner": MuiIconProps;
       "mui-icon-stop": MuiIconProps;
       "mui-icon-subtract": MuiIconProps;
       "mui-icon-moon": MuiIconProps;

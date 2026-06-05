@@ -14,7 +14,8 @@
 - `mui-media-player` now supports `height` for audio metadata and artwork presentations, mapping the prop to `--media-player-audio-height`.
 - `mui-media-player` now supports `center-play` for displaying an always-visible centered play/pause action over native video.
 - `mui-media-player` now supports `waveform` for opt-in generated audio waveforms, with playback progress reflected on the canvas.
-- `mui-media-player` now supports `slot="auxiliary"` for secondary media actions, badges, sponsored placements, and related overlay content.
+- `mui-media-player` now supports `slot="meta-before"` and `slot="meta-after"` for composing metadata and supporting actions while keeping the media surface clickable between them.
+- Added `mui-profile-chip` for reusable avatar, primary, and secondary profile metadata composition.
 - `mui-hint` now supports `disable-on-touch` for desktop-only hint affordances that should not open on touch-like devices.
 - `mui-media-player` controls now include an options menu with Download and Open source actions, using the dropdown component with slotted `mui-link` menu items.
 - `mui-media-player` video controls now use a modern rounded overlay treatment with center play, smooth local seek, volume, Picture-in-Picture, fullscreen, and overflow actions.
@@ -25,7 +26,9 @@
 ### Documentation
 
 - Added a Button story showing inline async feedback with `Copy`/`Save`, spinner pending states, check-icon success states, and guidance for replacing demo delays with real async work.
-- Updated Media Player stories to lead with Muibook player controls and document compact audio, audio metadata, audio waveform, audio artwork, audio artwork waveform, visible play/pause, video metadata, auxiliary content, YouTube, and SoundCloud states.
+- Added Profile Chip stories covering default, image, linked avatar, custom secondary, and Media Player usage.
+- Updated Media Player stories to lead with Muibook player controls and document compact audio, audio metadata, audio waveform, audio artwork, audio artwork waveform, visible play/pause, video metadata, metadata actions, YouTube, and SoundCloud states.
+- Updated Media Player examples to show direct `mui-profile-chip` usage in metadata slots, with mapped responsive actions where needed.
 - Updated Media Player documentation with stronger accessibility guidance for opt-in autoplay, slotted metadata actions, and clear media context.
 - Updated token stories to include semantic shadow tokens and media-player component tokens.
 
@@ -36,6 +39,8 @@
 - `mui-media-player` artwork waveforms now use a stronger image-overlay treatment, while no-artwork waveforms use higher contrast theme-aware canvas colors.
 - `mui-media-player` compact time controls now toggle between elapsed and remaining time instead of presenting an inactive action.
 - `mui-media-player` control rendering was refactored into smaller helpers and now cleans up document-level fullscreen listeners on re-render/disconnect.
+- `mui-media-player` now applies `usage="media-player"` automatically to slotted `mui-profile-chip` content in metadata slots.
+- `mui-profile-chip` avatar border and shadow now stay opt-in to `usage="media-player"` instead of appearing on the default profile chip.
 - `mui-dropdown` now portals menu contents to avoid clipping in overflow-hidden media player surfaces.
 - `mui-hint` now delegates focus to slotted buttons, links, and native controls instead of adding an extra wrapper tab stop, while keeping fallback keyboard focus for plain trigger content.
 - `mui-hint` fallback trigger focus now uses the Muibook focus outline with an outset offset instead of the browser default outline.

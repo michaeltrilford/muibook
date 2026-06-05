@@ -608,6 +608,10 @@
       "import": "./dist/esm/components/mui-media-player/index.js",
       "types": "./dist/types/components/mui-media-player/index.d.ts"
     },
+    "./mui-profile-chip": {
+      "import": "./dist/esm/components/mui-profile-chip/index.js",
+      "types": "./dist/types/components/mui-profile-chip/index.d.ts"
+    },
     "./mui-video-thumbnail": {
       "import": "./dist/esm/components/mui-video-thumbnail/index.js",
       "types": "./dist/types/components/mui-video-thumbnail/index.d.ts"
