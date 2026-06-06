@@ -817,6 +817,19 @@ class MuiButton extends HTMLElement {
       text-align: left;
     }
 
+    :host([has-avatar-chip][size="x-small"]) button {
+      padding-left: var(--space-100);
+    }    
+    :host([has-avatar-chip][size="small"]) button {
+      padding-left: var(--space-200);
+    }
+    :host([has-avatar-chip][size="medium"]) button {
+      padding-left: var(--space-300);
+    }
+    :host([has-avatar-chip][size="large"]) button {
+      padding-left: var(--space-400);
+    }
+
     :host([has-video]) {
       display: inline-block;
       width: auto;
