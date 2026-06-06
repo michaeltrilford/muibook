@@ -89,13 +89,13 @@ class StoryMediaPlayer extends HTMLElement {
         id="metadata"
         title="Metadata"
         description="Direct video file rendered with metadata and a responsive subscribe action."
-        usage="Use this pattern when the media identity and a supporting commercial or creator action need to share the top metadata area.|||Use mui-profile-chip in slot='meta-before' for reusable avatar and profile copy composition.|||Use slot='meta-after' for the action so the space between remains available for media playback interaction.|||Use overlay action styling when the action sits over video or artwork.">
+        usage="Use this pattern when the media identity and a supporting commercial or creator action need to share the top metadata area.|||Use mui-avatar-chip in slot='meta-before' for reusable avatar and profile copy composition.|||Use slot='meta-after' for the action so the space between remains available for media playback interaction.|||Use overlay action styling when the action sits over video or artwork.">
         <mui-media-player
           slot="body"
           type="video"
           poster="${videoPosterSrc}"
           src="${videoSrc}">
-          <mui-profile-chip
+          <mui-avatar-chip
             slot="meta-before"
             href="#creator-profile"
             image="${profileAvatarSrc}"
@@ -104,7 +104,7 @@ class StoryMediaPlayer extends HTMLElement {
               <mui-link slot="secondary" href="#creator-profile" weight="medium">
                 77k subscribers
               </mui-link>
-          </mui-profile-chip>
+          </mui-avatar-chip>
           <mui-button slot="meta-after" variant="overlay" type="button">Subscribe</mui-button>
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
@@ -112,7 +112,7 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
           &nbsp;&nbsp;src="/video/japan.mp4"&gt;<br /><br />
-          &nbsp;&nbsp;&lt;mui-profile-chip<br />
+          &nbsp;&nbsp;&lt;mui-avatar-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;slot="meta-before"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;href="#creator-profile"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;image="/images/mui/avatar-mike.jpg"<br />
@@ -121,7 +121,7 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;77k subscribers<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-profile-chip&gt;<br /><br />
+          &nbsp;&nbsp;&lt;/mui-avatar-chip&gt;<br /><br />
           &nbsp;&nbsp;&lt;mui-button slot="meta-after" variant="overlay" type="button"&gt;Subscribe&lt;/mui-button&gt;<br /><br />
           &lt;/mui-media-player&gt;
         </story-code-block>
@@ -157,7 +157,7 @@ class StoryMediaPlayer extends HTMLElement {
           type="audio"
           waveform
           src="${audioSrc}">
-          <mui-profile-chip
+          <mui-avatar-chip
             slot="meta-before"
             href="#creator-profile"
             image="${profileAvatarSrc}"
@@ -166,14 +166,14 @@ class StoryMediaPlayer extends HTMLElement {
               <mui-link slot="secondary" href="#creator-profile" weight="medium">
                 by Michael Trilford
               </mui-link>
-          </mui-profile-chip>
+          </mui-avatar-chip>
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
           &nbsp;&nbsp;waveform<br />
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br /><br />
-          &nbsp;&nbsp;&lt;mui-profile-chip<br />
+          &nbsp;&nbsp;&lt;mui-avatar-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;slot="meta-before"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;href="#creator-profile"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;image="/images/mui/avatar-mike.jpg"<br />
@@ -182,7 +182,7 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Michael Trilford<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-profile-chip&gt;<br /><br />
+          &nbsp;&nbsp;&lt;/mui-avatar-chip&gt;<br /><br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
@@ -199,7 +199,7 @@ class StoryMediaPlayer extends HTMLElement {
           artwork="${audioArtworkSrc}"
           height="14rem"
           src="${audioSrc}">
-          <mui-profile-chip
+          <mui-avatar-chip
             slot="meta-before"
             href="#creator-profile"
             image="${profileAvatarSrc}"
@@ -208,7 +208,7 @@ class StoryMediaPlayer extends HTMLElement {
               <mui-link slot="secondary" href="#creator-profile" weight="medium">
                 by Michael Trilford
               </mui-link>
-          </mui-profile-chip>
+          </mui-avatar-chip>
 
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
@@ -217,7 +217,7 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;artwork="/audio/artwork.png"<br />
           &nbsp;&nbsp;height="14rem"<br />
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br /><br />
-          &nbsp;&nbsp;&lt;mui-profile-chip<br />
+          &nbsp;&nbsp;&lt;mui-avatar-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;slot="meta-before"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;href="#creator-profile"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;image="/images/mui/avatar-mike.jpg"<br />
@@ -226,7 +226,7 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Michael Trilford<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-profile-chip&gt;<br /><br />
+          &nbsp;&nbsp;&lt;/mui-avatar-chip&gt;<br /><br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
@@ -244,7 +244,7 @@ class StoryMediaPlayer extends HTMLElement {
           waveform
           height="14rem"
           src="${audioSrc}">
-          <mui-profile-chip
+          <mui-avatar-chip
             slot="meta-before"
             href="#creator-profile"
             image="${profileAvatarSrc}"
@@ -253,7 +253,7 @@ class StoryMediaPlayer extends HTMLElement {
               <mui-link slot="secondary" href="#creator-profile" weight="medium">
                 by Michael Trilford
               </mui-link>
-          </mui-profile-chip>
+          </mui-avatar-chip>
           <mui-button slot="meta-after" variant="overlay" type="button">Buy now</mui-button>
 
         </mui-media-player>
@@ -264,7 +264,7 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;waveform<br />
           &nbsp;&nbsp;height="14rem"<br />
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br /><br />
-          &nbsp;&nbsp;&lt;mui-profile-chip<br />
+          &nbsp;&nbsp;&lt;mui-avatar-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;slot="meta-before"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;href="#creator-profile"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;image="/images/mui/avatar-mike.jpg"<br />
@@ -273,7 +273,7 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Michael Trilford<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-profile-chip&gt;<br /><br />
+          &nbsp;&nbsp;&lt;/mui-avatar-chip&gt;<br /><br />
           &nbsp;&nbsp;&lt;mui-button slot="meta-after" variant="overlay" type="button"&gt;Buy now&lt;/mui-button&gt;<br /><br />
           &lt;/mui-media-player&gt;
         </story-code-block>

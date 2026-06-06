@@ -125,7 +125,7 @@ export class AppContainer extends HTMLElement {
       "/body": "story-body",
       "/image": "story-image",
       "/avatar": "story-avatar",
-      "/profile-chip": "story-profile-chip",
+      "/avatar-chip": "story-avatar-chip",
       "/link": "story-link",
       "/list": "story-list",
       "/quote": "story-quote",
@@ -141,6 +141,7 @@ export class AppContainer extends HTMLElement {
       "/wallet": "comp-wallet",
       "/onboarding": "comp-onboarding",
       "/muitube": "comp-mui-tube",
+      "/song-page": "comp-song-page",
       "/dashboard": "comp-dashboard",
     };
 
@@ -185,6 +186,7 @@ export class AppContainer extends HTMLElement {
       "comp-wallet": () => import("../story/compositions/wallet"),
       "comp-onboarding": () => import("../story/compositions/onboarding/index.js"),
       "comp-mui-tube": () => import("../story/compositions/muitube/index.js"),
+      "comp-song-page": () => import("../story/compositions/song-page/index.js"),
       "comp-dashboard": () => import("../story/compositions/dashboard/index.js"),
 
       "story-stepper": () => import("../story/components/mui-stepper"),
@@ -198,7 +200,7 @@ export class AppContainer extends HTMLElement {
       "story-illustration": () => import("../story/components/mui-illustrations"),
       "story-image": () => import("../story/components/mui-image"),
       "story-avatar": () => import("../story/components/mui-avatar"),
-      "story-profile-chip": () => import("../story/components/mui-profile-chip"),
+      "story-avatar-chip": () => import("../story/components/mui-avatar-chip"),
       "story-heading": () => import("../story/components/mui-heading"),
       "story-body": () => import("../story/components/mui-body"),
       "story-cards": () => import("../story/components/mui-card"),

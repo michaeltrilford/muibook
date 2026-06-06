@@ -242,7 +242,7 @@ declare global {
         class?: string;
       };
 
-      "mui-profile-chip": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      "mui-avatar-chip": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         primary?: string;
         secondary?: string;
         image?: string;

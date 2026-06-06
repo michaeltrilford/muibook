@@ -261,7 +261,7 @@ class MuiMediaPlayer extends HTMLElement {
     });
   }
 
-  private getMetadataProfileChipSize() {
+  private getMetadataAvatarChipSize() {
     const rootFontSize = Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 10;
     const width = this.getBoundingClientRect().width;
     const widthRem = width / rootFontSize;
@@ -282,14 +282,14 @@ class MuiMediaPlayer extends HTMLElement {
   }
 
   private syncMetaSlotItems() {
-    const profileChipSize = this.getMetadataProfileChipSize();
+    const avatarChipSize = this.getMetadataAvatarChipSize();
     const buttonSize = this.getMetadataButtonSize();
 
     Array.from(this.children).forEach((element) => {
       const slotName = element.getAttribute("slot");
       const tagName = element.tagName.toLowerCase();
       const isMetadataSlot = slotName === "meta-before" || slotName === "meta-after";
-      const nextSize = tagName === "mui-profile-chip" ? profileChipSize : tagName === "mui-button" ? buttonSize : "";
+      const nextSize = tagName === "mui-avatar-chip" ? avatarChipSize : tagName === "mui-button" ? buttonSize : "";
 
       if (!isMetadataSlot || !nextSize) return;
 
@@ -309,12 +309,12 @@ class MuiMediaPlayer extends HTMLElement {
 
   private syncMetadataSlotContent() {
     const applyUsage = (element: Element) => {
-      if (element.tagName.toLowerCase() === "mui-profile-chip") {
+      if (element.tagName.toLowerCase() === "mui-avatar-chip") {
         element.setAttribute("usage", "media-player");
       }
 
-      element.querySelectorAll("mui-profile-chip").forEach((profileChip) => {
-        profileChip.setAttribute("usage", "media-player");
+      element.querySelectorAll("mui-avatar-chip").forEach((avatarChip) => {
+        avatarChip.setAttribute("usage", "media-player");
       });
     };
 
@@ -2074,17 +2074,17 @@ class MuiMediaPlayer extends HTMLElement {
           --action-avatar-border: none;
           --action-avatar-shadow: none;
         }
-        .audio-visual.has-artwork slot[name="meta-before"]::slotted(mui-profile-chip),
-        .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-profile-chip),
-        .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-profile-chip),
-        .video-frame.custom-controls slot[name="meta-after"]::slotted(mui-profile-chip) {
-          --profile-chip-avatar-border: var(--media-player-dark-thumbnail-border);
-          --profile-chip-avatar-shadow: var(--media-player-dark-thumbnail-shadow);
+        .audio-visual.has-artwork slot[name="meta-before"]::slotted(mui-avatar-chip),
+        .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-avatar-chip),
+        .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-avatar-chip),
+        .video-frame.custom-controls slot[name="meta-after"]::slotted(mui-avatar-chip) {
+          --avatar-chip-avatar-border: var(--media-player-dark-thumbnail-border);
+          --avatar-chip-avatar-shadow: var(--media-player-dark-thumbnail-shadow);
         }
-        .audio-visual.has-artwork slot[name="meta-before"]::slotted(mui-profile-chip),
-        .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-profile-chip),
-        .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-profile-chip),
-        .video-frame.custom-controls slot[name="meta-after"]::slotted(mui-profile-chip),
+        .audio-visual.has-artwork slot[name="meta-before"]::slotted(mui-avatar-chip),
+        .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-avatar-chip),
+        .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-avatar-chip),
+        .video-frame.custom-controls slot[name="meta-after"]::slotted(mui-avatar-chip),
         .audio-visual.has-artwork slot[name="meta-before"]::slotted(mui-link),
         .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-link),
         .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-link),
@@ -2093,11 +2093,11 @@ class MuiMediaPlayer extends HTMLElement {
         .audio-visual.has-artwork slot[name="meta-after"]::slotted(mui-button),
         .video-frame.custom-controls slot[name="meta-before"]::slotted(mui-button),
         .video-frame.custom-controls slot[name="meta-after"]::slotted(mui-button) {
-          --profile-chip-text-color: var(--white);
-          --profile-chip-secondary-color: var(--white);
-          --profile-chip-link-color: var(--white);
-          --profile-chip-link-color-hover: var(--white);
-          --profile-chip-link-color-focus: var(--white);
+          --avatar-chip-text-color: var(--white);
+          --avatar-chip-secondary-color: var(--white);
+          --avatar-chip-link-color: var(--white);
+          --avatar-chip-link-color-hover: var(--white);
+          --avatar-chip-link-color-focus: var(--white);
           --text-color: var(--white);
           --text-color-optional: var(--white);
           --link-text-color-default: var(--white);

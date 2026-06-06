@@ -147,7 +147,7 @@ import "../components/mui-loader";
 import "../components/mui-skeleton";
 import "../components/mui-spinner";
 import "../components/mui-media-player";
-import "../components/mui-profile-chip";
+import "../components/mui-avatar-chip";
 import "../components/mui-video-thumbnail";
 import "../components/mui-range-input";
 import "../components/mui-stepper/step";

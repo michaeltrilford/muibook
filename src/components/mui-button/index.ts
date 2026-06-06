@@ -802,6 +802,21 @@ class MuiButton extends HTMLElement {
       margin-left: var(--space-000);
     }
 
+    :host([has-avatar-chip]) {
+      display: inline-flex;
+      width: auto;
+      text-align: left;
+    }
+
+    :host([has-avatar-chip]) button {
+      display: inline-flex;
+      width: auto;
+      min-width: 0;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
     :host([has-video]) {
       display: inline-block;
       width: auto;
@@ -940,11 +955,14 @@ class MuiButton extends HTMLElement {
     const assignedNodes = slotDefault?.assignedNodes({ flatten: true }) ?? [];
     const assignedElements = slotDefault?.assignedElements({ flatten: true }) ?? [];
     const hasVideo = assignedElements.some((element) => element.tagName.toLowerCase() === "mui-video-thumbnail");
+    const hasAvatarChip = assignedElements.some((element) => element.tagName.toLowerCase() === "mui-avatar-chip");
 
     this.toggleAttribute("has-video", hasVideo);
+    this.toggleAttribute("has-avatar-chip", hasAvatarChip);
 
     const avatarOnly =
       !hasVideo &&
+      !hasAvatarChip &&
       assignedElements.length === 1 &&
       assignedElements[0].tagName.toLowerCase() === "mui-avatar" &&
       assignedNodes.every((node: Node) => {
@@ -960,6 +978,7 @@ class MuiButton extends HTMLElement {
     const iconOnly =
       !avatarOnly &&
       !hasVideo &&
+      !hasAvatarChip &&
       assignedNodes.every((node: Node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
           const el = node as HTMLElement;

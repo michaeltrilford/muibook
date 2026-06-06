@@ -15,6 +15,10 @@
       "description": "Set when video thumbnail content exists, allowing the action to clear default chrome and let the media card own the visual surface."
     },
     {
+      "name": "has-avatar-chip",
+      "description": "Set when Avatar Chip content exists in the default slot, allowing the action surface to hug and start-align the composed identity row."
+    },
+    {
       "name": "icon-only",
       "description": "Set when the default slot contains only icon content, allowing the component to apply icon-only sizing, padding, and accessible-name expectations."
     },

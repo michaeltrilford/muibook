@@ -239,7 +239,7 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/icons" title="Icons"></app-navbar-link>
           <app-navbar-link link="/illustrations" title="Illustrations"></app-navbar-link>
           <app-navbar-link link="/avatar" title="Avatar"></app-navbar-link>
-          <app-navbar-link link="/profile-chip" title="Profile Chip"></app-navbar-link>
+          <app-navbar-link link="/avatar-chip" title="Avatar Chip"></app-navbar-link>
           <app-navbar-link link="/carousel" title="Carousel"></app-navbar-link>
           <app-navbar-link link="/smart-card" title="Smart Card"></app-navbar-link>
         </app-navbar-section>
@@ -322,6 +322,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-link link="/onboarding" title="Onboarding"></app-navbar-link> 
         <app-navbar-link link="/wallet" title="Wallet"></app-navbar-link> 
         <app-navbar-link link="/muitube" title="MuiTube"></app-navbar-link> 
+        <app-navbar-link link="/song-page" title="Song Page"></app-navbar-link>
         <app-navbar-link link="/dashboard" title="Dashboard"></app-navbar-link>
       </app-navbar-group>
     `;

@@ -1,5 +1,5 @@
 export const muiApi = {
-  "mui-profile-chip": {
+  "mui-avatar-chip": {
     description:
       "Composes an avatar, primary label, and secondary label into a compact profile identity pattern for media metadata, creator rows, and compact profile references.",
     attributes: [
@@ -13,7 +13,7 @@ export const muiApi = {
         name: "size",
         type: { text: '"x-small" | "small" | "medium" | "large"' },
         default: "medium",
-        description: "Profile chip scale. Controls the internal avatar size and primary and secondary text sizes.",
+        description: "Avatar chip scale. Controls the internal avatar size and primary and secondary text sizes.",
       },
       {
         name: "usage",
@@ -28,11 +28,11 @@ export const muiApi = {
       { name: "secondary", description: "Optional custom secondary content, such as a link, count, badge, or icon." },
     ],
     cssProperties: [
-      { name: "--profile-chip-text-color", description: "Text color used by primary and secondary labels." },
-      { name: "--profile-chip-secondary-color", description: "Secondary text color used by secondary labels." },
-      { name: "--profile-chip-link-color", description: "Default link color used inside the profile chip." },
-      { name: "--profile-chip-avatar-border", description: "Border applied to the internal avatar." },
-      { name: "--profile-chip-avatar-shadow", description: "Shadow applied to the internal avatar." },
+      { name: "--avatar-chip-text-color", description: "Text color used by primary and secondary labels." },
+      { name: "--avatar-chip-secondary-color", description: "Secondary text color used by secondary labels." },
+      { name: "--avatar-chip-link-color", description: "Default link color used inside the avatar chip." },
+      { name: "--avatar-chip-avatar-border", description: "Border applied to the internal avatar." },
+      { name: "--avatar-chip-avatar-shadow", description: "Shadow applied to the internal avatar." },
     ],
   },
 };

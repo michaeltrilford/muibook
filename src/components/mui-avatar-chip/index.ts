@@ -4,9 +4,9 @@ import "../mui-link";
 import "../mui-stack/hstack";
 import "../mui-stack/vstack";
 
-type ProfileChipSize = "x-small" | "small" | "medium" | "large";
+type AvatarChipSize = "x-small" | "small" | "medium" | "large";
 
-const profileChipSizeConfig: Record<ProfileChipSize, { avatar: string; primary: string; secondary: string }> = {
+const avatarChipSizeConfig: Record<AvatarChipSize, { avatar: string; primary: string; secondary: string }> = {
   "x-small": {
     avatar: "x-small",
     primary: "xx-small",
@@ -29,9 +29,9 @@ const profileChipSizeConfig: Record<ProfileChipSize, { avatar: string; primary: 
   },
 };
 
-type ProfileChipSizeConfig = (typeof profileChipSizeConfig)[ProfileChipSize];
+type AvatarChipSizeConfig = (typeof avatarChipSizeConfig)[AvatarChipSize];
 
-class MuiProfileChip extends HTMLElement {
+class MuiAvatarChip extends HTMLElement {
   static get observedAttributes() {
     return ["primary", "secondary", "image", "label", "href", "target", "usage", "size"];
   }
@@ -57,9 +57,9 @@ class MuiProfileChip extends HTMLElement {
     return (value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
-  private getSize(): ProfileChipSize {
+  private getSize(): AvatarChipSize {
     const size = (this.getAttribute("size") || "medium").toLowerCase();
-    return size in profileChipSizeConfig ? (size as ProfileChipSize) : "medium";
+    return size in avatarChipSizeConfig ? (size as AvatarChipSize) : "medium";
   }
 
   private renderAvatar(size: string) {
@@ -70,7 +70,7 @@ class MuiProfileChip extends HTMLElement {
     return `<mui-avatar size="${size}"${imageAttribute} label="${this.escapeAttribute(label)}"></mui-avatar>`;
   }
 
-  private syncSlottedTextSizes(sizeConfig: ProfileChipSizeConfig) {
+  private syncSlottedTextSizes(sizeConfig: AvatarChipSizeConfig) {
     const applySize = (element: Element, size: string) => {
       const tagName = element.tagName.toLowerCase();
 
@@ -101,7 +101,7 @@ class MuiProfileChip extends HTMLElement {
     const href = this.getAttribute("href");
     const target = this.getAttribute("target");
     const size = this.getSize();
-    const sizeConfig = profileChipSizeConfig[size];
+    const sizeConfig = avatarChipSizeConfig[size];
     const targetAttribute = target ? ` target="${this.escapeAttribute(target)}"` : "";
 
     const avatar = this.renderAvatar(sizeConfig.avatar);
@@ -119,17 +119,17 @@ class MuiProfileChip extends HTMLElement {
         display: inline-flex;
         min-width: 0;
         max-width: 100%;
-        --profile-chip-primary-size: ${sizeConfig.primary};
-        --profile-chip-secondary-size: ${sizeConfig.secondary};
-        color: var(--profile-chip-text-color, currentColor);
-        --text-color: var(--profile-chip-text-color, currentColor);
-        --text-color-optional: var(--profile-chip-secondary-color, var(--profile-chip-text-color, currentColor));
-        --link-text-color-default: var(--profile-chip-link-color, var(--profile-chip-text-color, currentColor));
-        --link-text-color-default-hover: var(--profile-chip-link-color-hover, var(--profile-chip-link-color, var(--profile-chip-text-color, currentColor)));
-        --link-text-color-default-focus: var(--profile-chip-link-color-focus, var(--profile-chip-link-color, var(--profile-chip-text-color, currentColor)));
+        --avatar-chip-primary-size: ${sizeConfig.primary};
+        --avatar-chip-secondary-size: ${sizeConfig.secondary};
+        color: var(--avatar-chip-text-color, currentColor);
+        --text-color: var(--avatar-chip-text-color, currentColor);
+        --text-color-optional: var(--avatar-chip-secondary-color, var(--avatar-chip-text-color, currentColor));
+        --link-text-color-default: var(--avatar-chip-link-color, var(--avatar-chip-text-color, currentColor));
+        --link-text-color-default-hover: var(--avatar-chip-link-color-hover, var(--avatar-chip-link-color, var(--avatar-chip-text-color, currentColor)));
+        --link-text-color-default-focus: var(--avatar-chip-link-color-focus, var(--avatar-chip-link-color, var(--avatar-chip-text-color, currentColor)));
       }
 
-      .profile-chip {
+      .avatar-chip {
         min-width: 0;
         max-width: 100%;
       }
@@ -152,8 +152,8 @@ class MuiProfileChip extends HTMLElement {
       }
 
       :host([usage="media-player"]) mui-avatar {
-        border: var(--profile-chip-avatar-border, var(--border-thin));
-        box-shadow: var(--profile-chip-avatar-shadow, none);
+        border: var(--avatar-chip-avatar-border, var(--border-thin));
+        box-shadow: var(--avatar-chip-avatar-shadow, none);
       }
 
       mui-body {
@@ -175,7 +175,7 @@ class MuiProfileChip extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-      <mui-h-stack class="profile-chip" space="var(--space-200)" aligny="center">
+      <mui-h-stack class="avatar-chip" space="var(--space-200)" aligny="center">
         ${avatarMarkup}
         <mui-v-stack class="copy" space="var(--space-000)">
           <slot name="primary">
@@ -199,8 +199,8 @@ class MuiProfileChip extends HTMLElement {
   }
 }
 
-if (!customElements.get("mui-profile-chip")) {
-  customElements.define("mui-profile-chip", MuiProfileChip);
+if (!customElements.get("mui-avatar-chip")) {
+  customElements.define("mui-avatar-chip", MuiAvatarChip);
 }
 
-export { MuiProfileChip };
+export { MuiAvatarChip };
