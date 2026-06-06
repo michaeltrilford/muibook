@@ -332,8 +332,6 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--media-player-dark-control-background-hover" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-dark-overlay-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--media-player-dark-overlay-controls-background" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--media-player-video-ratio" variant="size"></story-token-slat>
-            <story-token-slat slot="body" token="--media-player-soundcloud-ratio" variant="size"></story-token-slat>
           </spec-card>
 
           <spec-card id="video-thumbnail" title="Video Thumbnail" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-video-thumbnail/index.ts">

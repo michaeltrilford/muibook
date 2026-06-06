@@ -3,7 +3,7 @@ import { getComponentDocs } from "../../../utils/story-data";
 const videoSrc = new URL("../../../video/japan.mp4", import.meta.url).href;
 const videoPosterSrc = new URL("../../../video/japan-poster.jpg", import.meta.url).href;
 const audioSrc = new URL("../../../audio/twilight.m4a", import.meta.url).href;
-const audioThumbnailSrc = new URL("../../../audio/thumbnail.jpg", import.meta.url).href;
+const profileAvatarSrc = new URL("../../../images/mui/avatar-mike.jpg", import.meta.url).href;
 const audioArtworkSrc = new URL("../../../audio/artwork.png", import.meta.url).href;
 const audioArtworkLightSrc = new URL("../../../audio/artwork-light.png", import.meta.url).href;
 
@@ -15,48 +15,6 @@ class StoryMediaPlayer extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("MediaPlayer");
-
-    const renderAction = ({ label, href, slot = "meta-after" }) => {
-      const items = [
-        { slot: "showAbove", size: "small" },
-        { slot: "showBelow", size: "x-small" },
-      ];
-
-      return /*html*/ `
-        <mui-responsive slot="${slot}" breakpoint="700">
-          ${items
-            .map(
-              (item) => /*html*/ `
-                <mui-link slot="${item.slot}" href="${href}" variant="overlay" size="${item.size}">
-                  ${label}
-                </mui-link>
-              `,
-            )
-            .join("")}
-        </mui-responsive>
-      `;
-    };
-
-    const renderActionUsageCode = ({ label, href, slot = "meta-after" }) => /*html*/ `
-          &nbsp;&nbsp;&#36;{renderAction({ label: "${label}", href: "${href}", slot: "${slot}" })}<br /><br />`;
-
-    const renderActionHelperCode = () => /*html*/ `
-          const renderAction = ({ label, href, slot = "meta-after" }) =&gt; {<br />
-          &nbsp;&nbsp;const items = [<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{ slot: "showAbove", size: "small" },<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;{ slot: "showBelow", size: "x-small" },<br />
-          &nbsp;&nbsp;];<br />
-          <br />
-          &nbsp;&nbsp;return /*html*/ &#96;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive slot="&#36;{slot}" breakpoint="700"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{items<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.map((item) =&gt; /*html*/ &#96;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="&#36;{item.slot}" href="&#36;{href}" variant="overlay" size="&#36;{item.size}"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{label}<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;&#96;)<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.join("")}<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;&#96;;<br />
-          };<br /><br />`;
 
     const stories = /*html*/ `
       <story-api-types tag="mui-media-player" title="Media Player"></story-api-types>
@@ -140,18 +98,16 @@ class StoryMediaPlayer extends HTMLElement {
           <mui-profile-chip
             slot="meta-before"
             href="#creator-profile"
-            image="${audioThumbnailSrc}"
-            label="by Mike Trilford">
+            image="${profileAvatarSrc}"
+            label="Mike Trilford">
               <mui-body slot="primary" weight="bold">Sugoi Travels</mui-body>
-              <mui-link slot="secondary" href="#creator-profile" weight="medium" size="small">
+              <mui-link slot="secondary" href="#creator-profile" weight="medium">
                 77k subscribers
-                <mui-icon-right-chevron slot="after" size="x-small"></mui-icon-right-chevron>
               </mui-link>
           </mui-profile-chip>
-          ${renderAction({ label: "Subscribe", href: "#subscribe" })}
+          <mui-button slot="meta-after" variant="overlay" type="button">Subscribe</mui-button>
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
-          ${renderActionHelperCode()}
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="video"<br />
           &nbsp;&nbsp;poster="/video/japan-poster.jpg"<br />
@@ -159,15 +115,14 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-profile-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;slot="meta-before"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;href="#creator-profile"<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;image="/audio/thumbnail.jpg"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;image="/images/mui/avatar-mike.jpg"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;label="Mike Trilford"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Sugoi Travels&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium" size="medium"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;77k subscribers<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-right-chevron slot="after" size="x-small"&gt;&lt;/mui-icon-right-chevron&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
           &nbsp;&nbsp;&lt;/mui-profile-chip&gt;<br /><br />
-          ${renderActionUsageCode({ label: "Subscribe", href: "#subscribe" })}
+          &nbsp;&nbsp;&lt;mui-button slot="meta-after" variant="overlay" type="button"&gt;Subscribe&lt;/mui-button&gt;<br /><br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>
@@ -205,10 +160,10 @@ class StoryMediaPlayer extends HTMLElement {
           <mui-profile-chip
             slot="meta-before"
             href="#creator-profile"
-            image="${audioThumbnailSrc}"
+            image="${profileAvatarSrc}"
             label="Mike Trilford">
               <mui-body slot="primary" weight="bold">Twilight</mui-body>
-              <mui-link slot="secondary" href="#creator-profile" weight="medium" size="medium">
+              <mui-link slot="secondary" href="#creator-profile" weight="medium">
                 by Michael Trilford
               </mui-link>
           </mui-profile-chip>
@@ -221,10 +176,10 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-profile-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;slot="meta-before"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;href="#creator-profile"<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;image="/audio/thumbnail.jpg"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;image="/images/mui/avatar-mike.jpg"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;label="Mike Trilford"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Twilight&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium" size="medium"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Michael Trilford<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
           &nbsp;&nbsp;&lt;/mui-profile-chip&gt;<br /><br />
@@ -247,10 +202,10 @@ class StoryMediaPlayer extends HTMLElement {
           <mui-profile-chip
             slot="meta-before"
             href="#creator-profile"
-            image="${audioThumbnailSrc}"
+            image="${profileAvatarSrc}"
             label="Mike Trilford">
               <mui-body slot="primary" weight="bold">Twilight</mui-body>
-              <mui-link slot="secondary" href="#creator-profile" weight="medium" size="medium">
+              <mui-link slot="secondary" href="#creator-profile" weight="medium">
                 by Michael Trilford
               </mui-link>
           </mui-profile-chip>
@@ -265,10 +220,10 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-profile-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;slot="meta-before"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;href="#creator-profile"<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;image="/audio/thumbnail.jpg"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;image="/images/mui/avatar-mike.jpg"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;label="Mike Trilford"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Twilight&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium" size="medium"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Michael Trilford<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
           &nbsp;&nbsp;&lt;/mui-profile-chip&gt;<br /><br />
@@ -292,18 +247,17 @@ class StoryMediaPlayer extends HTMLElement {
           <mui-profile-chip
             slot="meta-before"
             href="#creator-profile"
-            image="${audioThumbnailSrc}"
-            label="by Mike Trilford">
+            image="${profileAvatarSrc}"
+            label="Mike Trilford">
               <mui-body slot="primary" weight="bold">Twilight</mui-body>
-              <mui-link slot="secondary" href="#creator-profile" weight="medium" size="medium">
+              <mui-link slot="secondary" href="#creator-profile" weight="medium">
                 by Michael Trilford
               </mui-link>
           </mui-profile-chip>
-          ${renderAction({ label: "Buy Album", href: "#buy-album" })}
+          <mui-button slot="meta-after" variant="overlay" type="button">Buy now</mui-button>
 
         </mui-media-player>
         <story-code-block slot="footer" scrollable>
-          ${renderActionHelperCode()}
           &lt;mui-media-player<br />
           &nbsp;&nbsp;type="audio"<br />
           &nbsp;&nbsp;artwork="/audio/artwork-light.png"<br />
@@ -313,14 +267,14 @@ class StoryMediaPlayer extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-profile-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;slot="meta-before"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;href="#creator-profile"<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;image="/audio/thumbnail.jpg"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;image="/images/mui/avatar-mike.jpg"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;label="Mike Trilford"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Twilight&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium" size="medium"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Michael Trilford<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
           &nbsp;&nbsp;&lt;/mui-profile-chip&gt;<br /><br />
-          ${renderActionUsageCode({ label: "Buy Album", href: "#buy-album" })}
+          &nbsp;&nbsp;&lt;mui-button slot="meta-after" variant="overlay" type="button"&gt;Buy now&lt;/mui-button&gt;<br /><br />
           &lt;/mui-media-player&gt;
         </story-code-block>
       </story-card>

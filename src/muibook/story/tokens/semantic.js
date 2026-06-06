@@ -67,11 +67,13 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--text-font-size" variant="text-size" line-height="--text-line-height"></story-token-slat>
             <story-token-slat slot="body" token="--text-line-height" variant="line-height" font-size="--text-font-size"></story-token-slat>
 
+            <story-token-slat slot="body" token="--text-line-height-xxs" variant="line-height" font-size="--text-font-size-xxs"></story-token-slat>
             <story-token-slat slot="body" token="--text-line-height-xs" variant="line-height" font-size="--text-font-size-xs"></story-token-slat>
             <story-token-slat slot="body" token="--text-line-height-s" variant="line-height" font-size="--text-font-size-s"></story-token-slat>
             <story-token-slat slot="body" token="--text-line-height-m" variant="line-height" font-size="--text-font-size-m"></story-token-slat>
             <story-token-slat slot="body" token="--text-line-height-l" variant="line-height" font-size="--text-font-size-l"></story-token-slat>
 
+            <story-token-slat slot="body" token="--text-font-size-xxs" variant="text-size" line-height="--text-line-height-xxs"></story-token-slat>
             <story-token-slat slot="body" token="--text-font-size-xs" variant="text-size" line-height="--text-line-height-xs"></story-token-slat>
             <story-token-slat slot="body" token="--text-font-size-s" variant="text-size" line-height="--text-line-height-s"></story-token-slat>
             <story-token-slat slot="body" token="--text-font-size-m" variant="text-size" line-height="--text-line-height-m"></story-token-slat>

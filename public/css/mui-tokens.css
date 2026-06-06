@@ -1103,10 +1103,12 @@ html[data-theme="dark"] {
   --row-action-l: var(--action-size-large);
 
   /* Text */
+  --text-line-height-xxs: var(--line-height-25);
   --text-line-height-xs: var(--line-height-25);
   --text-line-height-s: var(--line-height-50);
   --text-line-height-m: var(--line-height-100);
   --text-line-height-l: var(--line-height-225);
+  --text-font-size-xxs: var(--font-size-15);
   --text-font-size-xs: var(--font-size-25);
   --text-font-size-s: var(--font-size-50);
   --text-font-size-m: var(--font-size-100);

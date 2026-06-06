@@ -580,8 +580,8 @@ class MuiButton extends HTMLElement {
     :host([size="xx-small"]) button:hover,
     :host([size="xx-small"]) button:focus,
     :host([size="xx-small"]) button:disabled {
-      font-size: var(--font-size-15);
-      line-height: var(--line-height-25);
+      font-size: var(--text-font-size-xxs);
+      line-height: var(--text-line-height-xxs);
       font-weight: var(--font-weight-semi-bold);
       min-height: var(--action-size-xx-small);
       padding: var(--space-025) var(--space-100);

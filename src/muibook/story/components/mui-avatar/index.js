@@ -1,6 +1,5 @@
 import { getComponentDocs } from "../../../utils/story-data";
-import MaxAvatar from "../../../images/mui/avatar-max.png";
-import JulieAvatar from "../../../images/mui/avatar-julie.png";
+import MikeAvatar from "../../../images/mui/avatar-mike.jpg";
 
 class storyAvatar extends HTMLElement {
   constructor() {
@@ -47,19 +46,19 @@ class storyAvatar extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-h-stack alignY="center">
-            <mui-avatar size="xx-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-            <mui-avatar size="x-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-            <mui-avatar size="small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-            <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-            <mui-avatar size="large" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+            <mui-avatar size="xx-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+            <mui-avatar size="x-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+            <mui-avatar size="small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+            <mui-avatar size="medium" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+            <mui-avatar size="large" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
           </mui-h-stack>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-avatar size=&quot;xx-small&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar size=&quot;x-small&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar size=&quot;small&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar size=&quot;medium&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar size=&quot;large&quot; image=&quot;avatar-julie.png&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;
+          &lt;mui-avatar size=&quot;xx-small&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;x-small&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;small&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;medium&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;large&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;
         </story-code-block>
       </story-card>
 
@@ -74,19 +73,19 @@ class storyAvatar extends HTMLElement {
         <div class="canvas" slot="body">
           <mui-v-stack>
             <mui-h-stack alignY="center">
-              <mui-avatar size="xx-small" label="Max AI">
+              <mui-avatar size="xx-small" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
-              <mui-avatar size="x-small" label="Max AI">
+              <mui-avatar size="x-small" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
-              <mui-avatar size="small" label="Max AI">
+              <mui-avatar size="small" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
-              <mui-avatar size="medium" label="Max AI">
+              <mui-avatar size="medium" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
-              <mui-avatar size="large" label="Max AI">
+              <mui-avatar size="large" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
             </mui-h-stack>
@@ -118,35 +117,35 @@ class storyAvatar extends HTMLElement {
           <mui-v-stack>
 
             <mui-h-stack alignY="start">
-              <mui-avatar size="xx-small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              <mui-avatar size="x-small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              <mui-avatar size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              <mui-avatar size="medium" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              <mui-avatar size="large" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+              <mui-avatar size="xx-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              <mui-avatar size="x-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              <mui-avatar size="small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              <mui-avatar size="medium" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              <mui-avatar size="large" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
             </mui-h-stack>
 
             <mui-h-stack alignY="center">
-              <mui-avatar size="xx-small" label="Max AI"></mui-avatar>
-              <mui-avatar size="x-small" label="Max AI"></mui-avatar>
-              <mui-avatar size="small" label="Max AI"></mui-avatar>
-              <mui-avatar size="medium" label="Max AI"></mui-avatar>
-              <mui-avatar size="large" label="Max AI"></mui-avatar>
+              <mui-avatar size="xx-small" label="Mike Trilford"></mui-avatar>
+              <mui-avatar size="x-small" label="Mike Trilford"></mui-avatar>
+              <mui-avatar size="small" label="Mike Trilford"></mui-avatar>
+              <mui-avatar size="medium" label="Mike Trilford"></mui-avatar>
+              <mui-avatar size="large" label="Mike Trilford"></mui-avatar>
             </mui-h-stack>
             
             <mui-h-stack alignY="end">
-              <mui-avatar size="xx-small" label="Max AI">
+              <mui-avatar size="xx-small" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
-              <mui-avatar size="x-small" label="Max AI">
+              <mui-avatar size="x-small" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
-              <mui-avatar size="small" label="Max AI">
+              <mui-avatar size="small" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
-              <mui-avatar size="medium" label="Max AI">
+              <mui-avatar size="medium" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
-              <mui-avatar size="large" label="Max AI">
+              <mui-avatar size="large" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
             </mui-h-stack>
@@ -155,11 +154,11 @@ class storyAvatar extends HTMLElement {
         </div>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-avatar size=&quot;xx-small&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar size=&quot;x-small&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar size=&quot;small&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar size=&quot;medium&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar size=&quot;large&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;
+          &lt;mui-avatar size=&quot;xx-small&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;x-small&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;small&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;medium&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar size=&quot;large&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;
         </story-code-block>
       </story-card>
 
@@ -184,7 +183,7 @@ class storyAvatar extends HTMLElement {
                 Videos
               </mui-chip>
               <mui-chip>
-                <mui-avatar slot="before" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
+                <mui-avatar slot="before" label="Mike Trilford" background="neutral" image="${MikeAvatar}"></mui-avatar>
                 Videos
               </mui-chip>
               <mui-chip>
@@ -198,7 +197,7 @@ class storyAvatar extends HTMLElement {
                 Videos
               </mui-chip>
               <mui-chip>
-                <mui-avatar slot="after" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
+                <mui-avatar slot="after" label="Mike Trilford" background="neutral" image="${MikeAvatar}"></mui-avatar>
                 Videos
               </mui-chip>
             </mui-h-stack>
@@ -215,7 +214,7 @@ class storyAvatar extends HTMLElement {
                 Videos
               </mui-chip>
               <mui-chip dismiss>
-                <mui-avatar slot="before" label="Max AI" background="neutral" image="${MaxAvatar}"></mui-avatar>
+                <mui-avatar slot="before" label="Mike Trilford" background="neutral" image="${MikeAvatar}"></mui-avatar>
                 Videos
               </mui-chip>
             </mui-h-stack>
@@ -223,7 +222,7 @@ class storyAvatar extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-chip&gt;<br />
-          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; label=&quot;Max AI&quot; image=&quot;avatar-max.png&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; label=&quot;Mike Trilford&quot; image=&quot;avatar-mike.jpg&quot;&gt;&lt;/mui-avatar&gt;<br />
           &nbsp;&nbsp;Videos<br />
           &lt;/mui-chip&gt;<br /><br />
           // Slotted avatars are automatically sized to xx-small (24px).
@@ -238,32 +237,32 @@ class storyAvatar extends HTMLElement {
         accessibility=""
       >
         <mui-grid col="repeat(auto-fill, minmax(48px, 1fr))" space="var(--space-400) var(--space-400)" slot="body" class="canvas">
-          <mui-avatar label="Max AI" background="neutral"></mui-avatar>
-          <mui-avatar label="Max AI" background="positive"></mui-avatar>
-          <mui-avatar label="Max AI" background="warning"></mui-avatar>
-          <mui-avatar label="Max AI" background="attention"></mui-avatar>
-          <mui-avatar label="Max AI" background="purple"></mui-avatar>
-          <mui-avatar label="Max AI" background="violet"></mui-avatar>
-          <mui-avatar label="Max AI" background="pink"></mui-avatar>
-          <mui-avatar label="Max AI" background="magenta"></mui-avatar>
-          <mui-avatar label="Max AI" background="red"></mui-avatar>
-          <mui-avatar label="Max AI" background="orange"></mui-avatar>
-          <mui-avatar label="Max AI" background="amber"></mui-avatar>
-          <mui-avatar label="Max AI" background="yellow"></mui-avatar>
-          <mui-avatar label="Max AI" background="lime"></mui-avatar>
-          <mui-avatar label="Max AI" background="green"></mui-avatar>
-          <mui-avatar label="Max AI" background="teal"></mui-avatar>
-          <mui-avatar label="Max AI" background="cyan"></mui-avatar>
-          <mui-avatar label="Max AI" background="blue"></mui-avatar>
-          <mui-avatar label="Max AI" background="indigo"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="neutral"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="positive"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="warning"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="attention"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="purple"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="violet"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="pink"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="magenta"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="red"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="orange"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="amber"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="yellow"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="lime"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="green"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="teal"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="cyan"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="blue"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background="indigo"></mui-avatar>
         </mui-grid>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;neutral&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;positive&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;warning&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;attention&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;purple&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &lt;mui-avatar label=&quot;Max AI&quot; background=&quot;blue&quot;&gt;&lt;/mui-avatar&gt;
+          &lt;mui-avatar label=&quot;Mike Trilford&quot; background=&quot;neutral&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Mike Trilford&quot; background=&quot;positive&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Mike Trilford&quot; background=&quot;warning&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Mike Trilford&quot; background=&quot;attention&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Mike Trilford&quot; background=&quot;purple&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Mike Trilford&quot; background=&quot;blue&quot;&gt;&lt;/mui-avatar&gt;
         </story-code-block>
       </story-card>
 
@@ -275,11 +274,11 @@ class storyAvatar extends HTMLElement {
         accessibility=""
       >
         <div slot="body" class="canvas">
-          <mui-avatar label="Max AI" background-color="var(--app-avatar-background, var(--surface))"></mui-avatar>
+          <mui-avatar label="Mike Trilford" background-color="var(--app-avatar-background, var(--surface))"></mui-avatar>
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-avatar<br />
-          &nbsp;&nbsp;label=&quot;Max AI&quot;<br />
+          &nbsp;&nbsp;label=&quot;Mike Trilford&quot;<br />
           &nbsp;&nbsp;background-color=&quot;var(--surface)&quot;&gt;<br />
           &lt;/mui-avatar&gt;
         </story-code-block>
@@ -296,20 +295,20 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-button variant="primary" size="x-small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="secondary" size="x-small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="tertiary" size="x-small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button disabled variant="tertiary" size="x-small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="tertiary" size="x-small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -321,20 +320,20 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-button variant="primary" size="small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="secondary" size="small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="tertiary" size="small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button disabled variant="tertiary" size="small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="tertiary" size="small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -346,20 +345,20 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-button variant="primary" size="medium" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="secondary" size="medium" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="tertiary" size="medium" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button disabled variant="tertiary" size="medium" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="tertiary" size="medium" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -371,20 +370,20 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-button variant="primary" size="large" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="secondary" size="large" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="tertiary" size="large" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button disabled variant="tertiary" size="large" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-button>
             <mui-button variant="tertiary" size="large" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -397,12 +396,12 @@ class storyAvatar extends HTMLElement {
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-button variant=&quot;primary&quot; size=&quot;x-small&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &nbsp;&nbsp;Julie AI<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;Mike Trilford<br />
           &lt;/mui-button&gt;<br /><br />
           &lt;mui-button variant=&quot;secondary&quot; size=&quot;medium&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; image=&quot;avatar-max.png&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &nbsp;&nbsp;Max AI<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;Mike Trilford<br />
           &lt;/mui-button&gt;
         </story-code-block>
       </story-card>
@@ -418,7 +417,7 @@ class storyAvatar extends HTMLElement {
           <mui-h-stack alignY="center">
             <mui-dropdown position="left">
               <mui-button slot="action" aria-label="Open compact Julie profile menu">
-                <mui-avatar size="xx-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+                <mui-avatar size="xx-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               </mui-button>
               <mui-button variant="tertiary">Profile</mui-button>
               <mui-button variant="tertiary">Settings</mui-button>
@@ -426,8 +425,8 @@ class storyAvatar extends HTMLElement {
             </mui-dropdown>
 
             <mui-dropdown position="left">
-              <mui-button slot="action" aria-label="Open Julie profile menu">
-                <mui-avatar size="x-small" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+              <mui-button slot="action" aria-label="Open Mike profile menu">
+                <mui-avatar size="x-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               </mui-button>
               <mui-button variant="tertiary">Profile</mui-button>
               <mui-button variant="tertiary">Settings</mui-button>
@@ -435,8 +434,8 @@ class storyAvatar extends HTMLElement {
             </mui-dropdown>
 
             <mui-dropdown position="left">
-              <mui-button slot="action" aria-label="Open Max profile menu">
-                <mui-avatar size="small" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+              <mui-button slot="action" aria-label="Open Mike profile menu">
+                <mui-avatar size="small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               </mui-button>
               <mui-button variant="tertiary">Profile</mui-button>
               <mui-button variant="tertiary">Billing</mui-button>
@@ -444,8 +443,8 @@ class storyAvatar extends HTMLElement {
             </mui-dropdown>
 
             <mui-dropdown position="left">
-              <mui-button slot="action" aria-label="Open Julie profile menu">
-                <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+              <mui-button slot="action" aria-label="Open Mike profile menu">
+                <mui-avatar size="medium" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               </mui-button>
               <mui-button variant="tertiary">Profile</mui-button>
               <mui-button variant="tertiary">Notifications</mui-button>
@@ -466,8 +465,8 @@ class storyAvatar extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-dropdown position=&quot;left&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; aria-label=&quot;Open Julie profile menu&quot;&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${JulieAvatar}&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; aria-label=&quot;Open Mike profile menu&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${MikeAvatar}&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &nbsp;&nbsp;&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Profile&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Settings&lt;/mui-button&gt;<br />
@@ -485,8 +484,8 @@ class storyAvatar extends HTMLElement {
       >
         <div slot="body" class="canvas">
           <mui-h-stack alignY="center">
-            <mui-button data-dialog="avatar-profile-dialog" aria-label="Open Julie profile dialog">
-              <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+            <mui-button data-dialog="avatar-profile-dialog" aria-label="Open Mike profile dialog">
+              <mui-avatar size="medium" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
             </mui-button>
           </mui-h-stack>
 
@@ -496,7 +495,7 @@ class storyAvatar extends HTMLElement {
             aria-labelledby="avatar-profile-dialog-title"
             aria-describedby="avatar-profile-dialog-desc"
           >
-            <mui-heading size="4" level="4" slot="title" id="avatar-profile-dialog-title">Julie AI</mui-heading>
+            <mui-heading size="4" level="4" slot="title" id="avatar-profile-dialog-title">Mike Trilford</mui-heading>
             <mui-body id="avatar-profile-dialog-desc">
               This dialog shows how an avatar-only button can act as a compact trigger for profile and account actions.
             </mui-body>
@@ -504,12 +503,12 @@ class storyAvatar extends HTMLElement {
           </mui-dialog>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-button data-dialog=&quot;avatar-profile-dialog&quot; aria-label=&quot;Open Julie profile dialog&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${JulieAvatar}&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-button data-dialog=&quot;avatar-profile-dialog&quot; aria-label=&quot;Open Mike profile dialog&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${MikeAvatar}&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &lt;/mui-button&gt;<br />
           <br />
           &lt;mui-dialog data-dialog=&quot;avatar-profile-dialog&quot; width=&quot;400px&quot; aria-labelledby=&quot;avatar-profile-dialog-title&quot; aria-describedby=&quot;avatar-profile-dialog-desc&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-heading slot=&quot;title&quot; id=&quot;avatar-profile-dialog-title&quot;&gt;Julie AI&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;&lt;mui-heading slot=&quot;title&quot; id=&quot;avatar-profile-dialog-title&quot;&gt;Mike Trilford&lt;/mui-heading&gt;<br />
           &nbsp;&nbsp;&lt;mui-body id=&quot;avatar-profile-dialog-desc&quot;&gt;...&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;mui-button slot=&quot;footer&quot; variant=&quot;tertiary&quot; data-close&gt;Close&lt;/mui-button&gt;<br />
           &lt;/mui-dialog&gt;
@@ -527,24 +526,24 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="x-small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI (Not recommended)
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford (Not recommended)
             </mui-link>
             <mui-link size="x-small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link size="x-small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link size="x-small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link disabled size="x-small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI (Not recommended)
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford (Not recommended)
             </mui-link>
             <mui-link size="x-small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -556,24 +555,24 @@ class storyAvatar extends HTMLElement {
         
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI (Not recommended)
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford (Not recommended)
             </mui-link>
             <mui-link size="small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link size="small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link size="small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link disabled size="small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI (Not recommended)
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford (Not recommended)
             </mui-link>
             <mui-link size="small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -585,24 +584,24 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="medium" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI (Not recommended)
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford (Not recommended)
             </mui-link>
             <mui-link size="medium" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link size="medium" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link size="medium" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link disabled size="medium" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI (Not recommended)
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford (Not recommended)
             </mui-link>
             <mui-link size="medium" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -614,24 +613,24 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="large" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI (Not recommended)
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford (Not recommended)
             </mui-link>
             <mui-link size="large" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link size="large" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link size="large" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link disabled size="large" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI (Not recommended)
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford (Not recommended)
             </mui-link>
             <mui-link size="large" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -643,20 +642,20 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link variant="primary" size="x-small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="secondary" size="x-small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="tertiary" size="x-small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link disabled variant="tertiary" size="x-small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="tertiary" size="x-small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -668,20 +667,20 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link variant="primary" size="small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="secondary" size="small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="tertiary" size="small" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link disabled variant="tertiary" size="small" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="tertiary" size="small" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -693,20 +692,20 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link variant="primary" size="medium" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="secondary" size="medium" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="tertiary" size="medium" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link disabled variant="tertiary" size="medium" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="tertiary" size="medium" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -718,20 +717,20 @@ class storyAvatar extends HTMLElement {
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link variant="primary" size="large" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="secondary" size="large" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" image="${MaxAvatar}" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="tertiary" size="large" class="group-item" aria-label="Library">
-              <mui-avatar slot="before" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
-              Julie AI
+              <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link disabled variant="tertiary" size="large" class="group-item" aria-label="History">        
-              <mui-avatar slot="before" label="Max AI"></mui-avatar>
-              Max AI
+              <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
+              Mike Trilford
             </mui-link>
             <mui-link variant="tertiary" size="large" class="group-item" aria-label="History">        
               <mui-avatar slot="before" label="Hot Grill">
@@ -744,12 +743,12 @@ class storyAvatar extends HTMLElement {
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-link size=&quot;medium&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; image=&quot;avatar-max.png&quot; label=&quot;Max AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &nbsp;&nbsp;Max AI<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;Mike Trilford<br />
           &lt;/mui-link&gt;<br /><br />
           &lt;mui-link variant=&quot;primary&quot; size=&quot;medium&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &nbsp;&nbsp;Julie AI<br />
+          &nbsp;&nbsp;&lt;mui-avatar slot=&quot;before&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;Mike Trilford<br />
           &lt;/mui-link&gt;
         </story-code-block>
       </story-card>

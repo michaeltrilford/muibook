@@ -265,8 +265,8 @@ class MuiLink extends HTMLElement {
       }
 
       :host([size="xx-small"]) a {
-        font-size: var(--font-size-15);
-        line-height: var(--line-height-25);
+        font-size: var(--text-font-size-xxs);
+        line-height: var(--text-line-height-xxs);
       }
 
       :host([size="x-small"]) a {
@@ -588,9 +588,7 @@ class MuiLink extends HTMLElement {
         min-width: 0;
         min-height: 0;
         padding: var(--space-000);
-        border: var(--action-avatar-border, none);
         background: transparent;
-        box-shadow: var(--action-avatar-shadow, none);
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -856,8 +854,8 @@ class MuiLink extends HTMLElement {
       :host([size="xx-small"][usage="input"]) a:hover,
       :host([size="xx-small"][usage="input"]) a:focus,
       :host([size="xx-small"][usage="input"]) a[aria-disabled="true"] {
-        font-size: var(--font-size-15);
-        line-height: var(--line-height-25);
+        font-size: var(--text-font-size-xxs);
+        line-height: var(--text-line-height-xxs);
         font-weight: var(--font-weight-semi-bold);
         min-height: var(--action-size-xx-small);
         padding: var(--space-025) var(--space-100);

@@ -1,13 +1,39 @@
 import "../mui-avatar";
 import "../mui-body";
 import "../mui-link";
-import "../mui-responsive";
 import "../mui-stack/hstack";
 import "../mui-stack/vstack";
 
+type ProfileChipSize = "x-small" | "small" | "medium" | "large";
+
+const profileChipSizeConfig: Record<ProfileChipSize, { avatar: string; primary: string; secondary: string }> = {
+  "x-small": {
+    avatar: "x-small",
+    primary: "xx-small",
+    secondary: "xx-small",
+  },
+  small: {
+    avatar: "small",
+    primary: "x-small",
+    secondary: "x-small",
+  },
+  medium: {
+    avatar: "medium",
+    primary: "small",
+    secondary: "x-small",
+  },
+  large: {
+    avatar: "large",
+    primary: "medium",
+    secondary: "small",
+  },
+};
+
+type ProfileChipSizeConfig = (typeof profileChipSizeConfig)[ProfileChipSize];
+
 class MuiProfileChip extends HTMLElement {
   static get observedAttributes() {
-    return ["primary", "secondary", "image", "label", "href", "target", "usage", "breakpoint"];
+    return ["primary", "secondary", "image", "label", "href", "target", "usage", "size"];
   }
 
   constructor() {
@@ -31,12 +57,39 @@ class MuiProfileChip extends HTMLElement {
     return (value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
-  private renderAvatar(size: "medium" | "small") {
+  private getSize(): ProfileChipSize {
+    const size = (this.getAttribute("size") || "medium").toLowerCase();
+    return size in profileChipSizeConfig ? (size as ProfileChipSize) : "medium";
+  }
+
+  private renderAvatar(size: string) {
     const image = this.getAttribute("image");
     const label = this.getAttribute("label") || this.getAttribute("primary") || "Profile";
     const imageAttribute = image ? ` image="${this.escapeAttribute(image)}"` : "";
 
-    return `<mui-avatar slot="${size === "medium" ? "showAbove" : "showBelow"}" size="${size}"${imageAttribute} label="${this.escapeAttribute(label)}"></mui-avatar>`;
+    return `<mui-avatar size="${size}"${imageAttribute} label="${this.escapeAttribute(label)}"></mui-avatar>`;
+  }
+
+  private syncSlottedTextSizes(sizeConfig: ProfileChipSizeConfig) {
+    const applySize = (element: Element, size: string) => {
+      const tagName = element.tagName.toLowerCase();
+
+      if (tagName === "mui-body" || tagName === "mui-link") {
+        element.setAttribute("size", size);
+      }
+    };
+
+    const syncSlot = (slotName: "primary" | "secondary", size: string) => {
+      Array.from(this.children)
+        .filter((element) => element.getAttribute("slot") === slotName)
+        .forEach((element) => applySize(element, size));
+
+      const slot = this.shadowRoot?.querySelector<HTMLSlotElement>(`slot[name="${slotName}"]`);
+      slot?.assignedElements({ flatten: true }).forEach((element) => applySize(element, size));
+    };
+
+    syncSlot("primary", sizeConfig.primary);
+    syncSlot("secondary", sizeConfig.secondary);
   }
 
   render() {
@@ -47,15 +100,11 @@ class MuiProfileChip extends HTMLElement {
     const label = this.getAttribute("label") || primary || "Profile";
     const href = this.getAttribute("href");
     const target = this.getAttribute("target");
-    const breakpoint = this.getAttribute("breakpoint") || "700";
+    const size = this.getSize();
+    const sizeConfig = profileChipSizeConfig[size];
     const targetAttribute = target ? ` target="${this.escapeAttribute(target)}"` : "";
 
-    const avatar = /*html*/ `
-      <mui-responsive class="avatar-responsive" breakpoint="${this.escapeAttribute(breakpoint)}">
-        ${this.renderAvatar("medium")}
-        ${this.renderAvatar("small")}
-      </mui-responsive>
-    `;
+    const avatar = this.renderAvatar(sizeConfig.avatar);
 
     const avatarMarkup = href
       ? /*html*/ `
@@ -63,13 +112,15 @@ class MuiProfileChip extends HTMLElement {
             ${avatar}
           </mui-link>
         `
-      : /*html*/ `<span class="avatar-static">${avatar}</span>`;
+      : avatar;
 
     const styles = /*css*/ `
       :host {
         display: inline-flex;
         min-width: 0;
         max-width: 100%;
+        --profile-chip-primary-size: ${sizeConfig.primary};
+        --profile-chip-secondary-size: ${sizeConfig.secondary};
         color: var(--profile-chip-text-color, currentColor);
         --text-color: var(--profile-chip-text-color, currentColor);
         --text-color-optional: var(--profile-chip-secondary-color, var(--profile-chip-text-color, currentColor));
@@ -83,22 +134,21 @@ class MuiProfileChip extends HTMLElement {
         max-width: 100%;
       }
 
-      .avatar-action,
-      .avatar-static,
-      .avatar-responsive {
+      .avatar-action {
         display: inline-flex;
         align-items: center;
         flex: 0 0 auto;
       }
 
+      mui-avatar {
+        flex: 0 0 auto;
+        border: 0;
+        box-shadow: none;
+      }
+
       .copy {
         min-width: 0;
         max-width: 100%;
-      }
-
-      mui-avatar {
-        border: 0;
-        box-shadow: none;
       }
 
       :host([usage="media-player"]) mui-avatar {
@@ -113,7 +163,11 @@ class MuiProfileChip extends HTMLElement {
 
       slot[name="primary"],
       slot[name="secondary"] {
-        display: block;
+        display: contents;
+      }
+
+      slot[name="primary"]::slotted(*),
+      slot[name="secondary"]::slotted(*) {
         min-width: 0;
         max-width: 100%;
       }
@@ -125,14 +179,23 @@ class MuiProfileChip extends HTMLElement {
         ${avatarMarkup}
         <mui-v-stack class="copy" space="var(--space-000)">
           <slot name="primary">
-            <mui-body weight="bold" truncate>${this.escapeText(primary)}</mui-body>
+            <mui-body weight="bold" size="${sizeConfig.primary}" truncate>${this.escapeText(primary)}</mui-body>
           </slot>
           <slot name="secondary">
-            ${secondary ? `<mui-body weight="medium" size="small" truncate>${this.escapeText(secondary)}</mui-body>` : ""}
+            ${secondary ? `<mui-body weight="medium" size="${sizeConfig.secondary}" truncate>${this.escapeText(secondary)}</mui-body>` : ""}
           </slot>
         </mui-v-stack>
       </mui-h-stack>
     `;
+
+    this.syncSlottedTextSizes(sizeConfig);
+
+    this.shadowRoot
+      .querySelector<HTMLSlotElement>('slot[name="primary"]')
+      ?.addEventListener("slotchange", () => this.syncSlottedTextSizes(sizeConfig));
+    this.shadowRoot
+      .querySelector<HTMLSlotElement>('slot[name="secondary"]')
+      ?.addEventListener("slotchange", () => this.syncSlottedTextSizes(sizeConfig));
   }
 }
 

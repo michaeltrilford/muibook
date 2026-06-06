@@ -2,7 +2,7 @@ export const muiApi = {
   "mui-body": {
     description: "Renders body text with semantic size, weight and feedback color treatments.",
     attributes: [
-      { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets the body text size." },
+      { name: "size", type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets the body text size." },
       { name: "weight", type: { text: '"regular" | "medium" | "bold"' }, default: "regular", description: "Sets the body text weight." },
       { name: "variant", type: { text: '"default" | "optional" | "info" | "success" | "warning" | "error"' }, default: "default", description: "Sets the semantic text color treatment." },
       { name: "truncate", type: { text: "boolean" }, default: "false", description: "Clamps body text to a single line with ellipsis when the available width is constrained." },

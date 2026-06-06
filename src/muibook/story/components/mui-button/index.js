@@ -1,6 +1,5 @@
 import { getComponentDocs } from "../../../utils/story-data";
-import MaxAvatar from "../../../images/mui/avatar-max.png";
-import JulieAvatar from "../../../images/mui/avatar-julie.png";
+import MikeAvatar from "../../../images/mui/avatar-mike.jpg";
 
 class storyButton extends HTMLElement {
   constructor() {
@@ -933,12 +932,12 @@ class storyButton extends HTMLElement {
         '
       >
         <mui-h-stack slot="body" space="var(--space-200)" alignY="center">
-          <mui-button data-dialog="button-avatar-dialog" aria-label="Open Julie profile dialog">
-            <mui-avatar size="medium" image="${JulieAvatar}" label="Julie AI"></mui-avatar>
+          <mui-button data-dialog="button-avatar-dialog" aria-label="Open Mike profile dialog">
+            <mui-avatar size="medium" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
           </mui-button>
 
-          <mui-button data-dialog="button-avatar-dialog-2" aria-label="Open Max profile dialog">
-            <mui-avatar size="large" image="${MaxAvatar}" label="Max AI"></mui-avatar>
+          <mui-button data-dialog="button-avatar-dialog-2" aria-label="Open Mike profile dialog">
+            <mui-avatar size="large" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
           </mui-button>
         </mui-h-stack>
 
@@ -949,7 +948,7 @@ class storyButton extends HTMLElement {
           aria-labelledby="button-avatar-dialog-title"
           aria-describedby="button-avatar-dialog-desc"
         >
-          <mui-heading size="4" level="4" slot="title" id="button-avatar-dialog-title">Julie AI</mui-heading>
+          <mui-heading size="4" level="4" slot="title" id="button-avatar-dialog-title">Mike Trilford</mui-heading>
           <mui-body id="button-avatar-dialog-desc">
             This example shows an avatar-only button opening a dialog from the Button component page.
           </mui-body>
@@ -963,7 +962,7 @@ class storyButton extends HTMLElement {
           aria-labelledby="button-avatar-dialog-title-2"
           aria-describedby="button-avatar-dialog-desc-2"
         >
-          <mui-heading size="4" level="4" slot="title" id="button-avatar-dialog-title-2">Max AI</mui-heading>
+          <mui-heading size="4" level="4" slot="title" id="button-avatar-dialog-title-2">Mike Trilford</mui-heading>
           <mui-body id="button-avatar-dialog-desc-2">
             Avatar-only buttons can be used as compact profile and account action triggers.
           </mui-body>
@@ -971,12 +970,12 @@ class storyButton extends HTMLElement {
         </mui-dialog>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-button data-dialog=&quot;button-avatar-dialog&quot; aria-label=&quot;Open Julie profile dialog&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${JulieAvatar}&quot; label=&quot;Julie AI&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-button data-dialog=&quot;button-avatar-dialog&quot; aria-label=&quot;Open Mike profile dialog&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${MikeAvatar}&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &lt;/mui-button&gt;<br />
           <br />
           &lt;mui-dialog data-dialog=&quot;button-avatar-dialog&quot; width=&quot;400px&quot; aria-labelledby=&quot;button-avatar-dialog-title&quot; aria-describedby=&quot;button-avatar-dialog-desc&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-heading slot=&quot;title&quot; id=&quot;button-avatar-dialog-title&quot;&gt;Julie AI&lt;/mui-heading&gt;<br />
+          &nbsp;&nbsp;&lt;mui-heading slot=&quot;title&quot; id=&quot;button-avatar-dialog-title&quot;&gt;Mike Trilford&lt;/mui-heading&gt;<br />
           &nbsp;&nbsp;&lt;mui-body id=&quot;button-avatar-dialog-desc&quot;&gt;...&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;mui-button slot=&quot;footer&quot; variant=&quot;tertiary&quot; data-close&gt;Close&lt;/mui-button&gt;<br />
           &lt;/mui-dialog&gt;

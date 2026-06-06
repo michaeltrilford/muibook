@@ -40,6 +40,10 @@ class storyBody extends HTMLElement {
             <div slot="body">
               <mui-v-stack space="var(--space-500)">
                 <div>
+                  <mui-heading size="4">XX-Small</mui-heading>
+                  <mui-body size="xx-small">Risus Mollis Dapibus</mui-body>
+                </div>
+                <div>
                   <mui-heading size="4">X-Small</mui-heading>
                   <mui-body size="x-small">Risus Mollis Dapibus</mui-body>
                 </div>
@@ -59,6 +63,8 @@ class storyBody extends HTMLElement {
             </div>
 
             <story-code-block slot="footer" scrollable>
+              &lt;mui-body size="xx-small"&gt; ... &lt;/mui-body&gt;
+              <br />
               &lt;mui-body size="x-small"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body size="small"&gt; ... &lt;/mui-body&gt;
@@ -117,6 +123,10 @@ class storyBody extends HTMLElement {
             <div slot="body">
               <mui-v-stack space="var(--space-500)">
                 <div>
+                  <mui-heading size="4" style="margin-bottom: var(--space-200)">XX-Small</mui-heading>
+                  <mui-body size="xx-small" variant="info"><mui-icon-info slot="before"></mui-icon-info>Risus Mollis Dapibus</mui-body>
+                </div>
+                <div>
                   <mui-heading size="4" style="margin-bottom: var(--space-200)">X-Small</mui-heading>
                   <mui-body size="x-small" variant="success"><mui-icon-check slot="before"></mui-icon-check>Risus Mollis Dapibus</mui-body>
                 </div>
@@ -142,6 +152,15 @@ class storyBody extends HTMLElement {
             </div>
 
             <story-code-block slot="footer" scrollable>
+              &lt;mui-body size="xx-small" variant="info"&gt;
+              <br />
+              &nbsp;&nbsp;&lt;mui-icon-info slot="before"&gt;&lt;/mui-icon-info&gt;
+              <br />
+              &nbsp;&nbsp;Risus Mollis Dapibus
+              <br />
+              &lt;/mui-body&gt;
+              <br />
+              <br />
               &lt;mui-body size="x-small" variant="success"&gt;
               <br>
               &nbsp;&nbsp;&lt;mui-icon-check slot=&quot;before&quot;&gt;&lt;/mui-icon-check&gt;

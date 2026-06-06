@@ -98,6 +98,8 @@ class MuiBody extends HTMLElement {
         margin-top: var(--body-inline-icon-offset-medium, var(--body-inline-icon-offset, var(--stroke-size-200)));
       }
 
+      :host([size="xx-small"]) ::slotted([slot="before"]),
+      :host([size="xx-small"]) ::slotted([slot="after"]),
       :host([size="x-small"]) ::slotted([slot="before"]),
       :host([size="x-small"]) ::slotted([slot="after"]) {
         margin-top: var(--body-inline-icon-offset-x-small, var(--body-inline-icon-offset, var(--stroke-size-100)));
@@ -113,6 +115,11 @@ class MuiBody extends HTMLElement {
       :host([size="large"]) ::slotted([slot="before"]),
       :host([size="large"]) ::slotted([slot="after"]) {
         margin-top: var(--body-inline-icon-offset-large, var(--body-inline-icon-offset, var(--stroke-size-300)));
+      }
+
+      :host([size="xx-small"]) p {
+        font-size: var(--text-font-size-xxs);
+        line-height: var(--text-line-height-xxs);
       }
 
       :host([size="x-small"]) p {
@@ -223,6 +230,7 @@ class MuiBody extends HTMLElement {
 
   private syncInlineSlotSizes(elements: Element[]) {
     const sizeMap: Record<string, string> = {
+      "xx-small": "xx-small",
       "x-small": "x-small",
       small: "small",
       medium: "small",
@@ -231,6 +239,7 @@ class MuiBody extends HTMLElement {
 
     const iconSize = sizeMap[this.getAttribute("size") || "medium"] || "small";
     const badgeSizeMap: Record<string, string> = {
+      "xx-small": "xx-small",
       "x-small": "xx-small",
       small: "x-small",
       medium: "small",

@@ -10,7 +10,7 @@
 
 - `mui-button` now supports `pending` for async actions, blocking repeat activation without applying disabled styling and exposing `aria-busy` while work is in flight.
 - `mui-media-player` now supports `controls="player" | "none"` for choosing Muibook controls or no controls for direct audio/video media.
-- `mui-media-player` now supports `media-title`, `artwork`, and composed `slot="metadata"` content for audio metadata, audio artwork, and video metadata presentations.
+- `mui-media-player` now supports `media-title`, `artwork`, and composed `slot="meta-before"` / `slot="meta-after"` content for audio metadata, audio artwork, and video metadata presentations.
 - `mui-media-player` now supports `height` for audio metadata and artwork presentations, mapping the prop to `--media-player-audio-height`.
 - `mui-media-player` now supports `center-play` for displaying an always-visible centered play/pause action over native video.
 - `mui-media-player` now supports `waveform` for opt-in generated audio waveforms, with playback progress reflected on the canvas.

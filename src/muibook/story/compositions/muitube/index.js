@@ -8,8 +8,7 @@ import SenseiVideoLight from "../../../images/muitube/sensei-video-light.png";
 import JalVideoLight from "../../../images/muitube/jal-video-light.png";
 import AnaVideoLight from "../../../images/muitube/ana-video-light.png";
 import PaperclipVideoLight from "../../../images/muitube/paperclip-video-light.png";
-import MaxAvatar from "../../../images/mui/avatar-max.png";
-import JulieAvatar from "../../../images/mui/avatar-julie.png";
+import MikeAvatar from "../../../images/mui/avatar-mike.jpg";
 
 const videos = [
   {
@@ -191,7 +190,7 @@ const videoMenuItems = /*html*/ `
         <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
       <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">        
-        <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Real Estate Profile Image"></mui-avatar>
+        <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Real Estate Profile Image"></mui-avatar>
         Real Estate
       </mui-button>
       <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">        
@@ -199,7 +198,7 @@ const videoMenuItems = /*html*/ `
         Jazz Beats
       </mui-button>
       <mui-button variant="tertiary" class="video-menu-item" aria-label="Julie Cooks">
-        <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie Cooks Profile Image"></mui-avatar>
+        <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Mike Trilford Profile Image"></mui-avatar>
         Julie Cooks
       </mui-button>
       <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">        

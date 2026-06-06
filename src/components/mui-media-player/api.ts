@@ -20,13 +20,10 @@ export const muiApi = {
     slots: [
       { name: "meta-before", description: "Optional composed top-left metadata content for audio presentations and video metadata. Use it for avatar, title, supporting copy, links, or badges. Overrides the media-title fallback layout." },
       { name: "meta-after", description: "Optional composed top-right metadata content for actions, links, badges, or supporting controls. The space between meta-before and meta-after remains available for media playback interaction." },
-      { name: "metadata", description: "Deprecated compatibility slot for top-left metadata content. Prefer slot='meta-before'." },
     ],
     cssProperties: [
       { name: "--media-player-main-radius", description: "Responsive radius used by the main media player frame and visual surfaces." },
       { name: "--media-player-audio-height", description: "Preferred height used for audio metadata and artwork presentations." },
-      { name: "--media-player-video-ratio", description: "Aspect ratio used for video media." },
-      { name: "--media-player-soundcloud-ratio", description: "Aspect ratio used for SoundCloud media." },
       { name: "--media-player-seek-color", description: "Color used for the custom seek control." },
       { name: "--media-player-range-color", description: "Theme-aware color used for the active range track." },
       { name: "--media-player-range-thumb-color", description: "Theme-aware color used for the range thumb." },

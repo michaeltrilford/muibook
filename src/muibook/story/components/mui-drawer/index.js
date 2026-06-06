@@ -1,7 +1,6 @@
 import { getComponentDocs } from "../../../utils/story-data";
 
-import MaxAvatar from "../../../images/mui/avatar-max.png";
-import JulieAvatar from "../../../images/mui/avatar-julie.png";
+import MikeAvatar from "../../../images/mui/avatar-mike.jpg";
 
 class storyDrawer extends HTMLElement {
   constructor() {
@@ -274,7 +273,7 @@ class storyDrawer extends HTMLElement {
             <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">        
-            <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Real Estate Profile Image"></mui-avatar>
+            <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Real Estate Profile Image"></mui-avatar>
             Real Estate
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">        
@@ -282,7 +281,7 @@ class storyDrawer extends HTMLElement {
             Jazz Beats
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Julie Cooks">
-            <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie Cooks Profile Image"></mui-avatar>
+            <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Mike Trilford Profile Image"></mui-avatar>
             Julie Cooks
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">        
@@ -370,7 +369,7 @@ class storyDrawer extends HTMLElement {
             <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">        
-            <mui-avatar slot="before" size="small" image="${MaxAvatar}" label="Real Estate Profile Image"></mui-avatar>
+            <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Real Estate Profile Image"></mui-avatar>
             Real Estate
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">        
@@ -378,7 +377,7 @@ class storyDrawer extends HTMLElement {
             Jazz Beats
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Julie Cooks">
-            <mui-avatar slot="before" size="small" image="${JulieAvatar}" label="Julie Cooks Profile Image"></mui-avatar>
+            <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Mike Trilford Profile Image"></mui-avatar>
             Julie Cooks
           </mui-button>
           <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">        

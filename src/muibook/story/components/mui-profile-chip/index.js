@@ -1,6 +1,5 @@
 import { getComponentDocs } from "../../../utils/story-data";
-import MaxAvatar from "../../../images/mui/avatar-max.png";
-import JulieAvatar from "../../../images/mui/avatar-julie.png";
+import MikeAvatar from "../../../images/mui/avatar-mike.jpg";
 const audioArtworkLightSrc = new URL("../../../audio/artwork-light.png", import.meta.url).href;
 const audioSrc = new URL("../../../audio/twilight.m4a", import.meta.url).href;
 
@@ -31,8 +30,17 @@ class StoryProfileChip extends HTMLElement {
         border-radius: var(--radius-400);
         background:
           linear-gradient(180deg, var(--black-opacity-70), transparent 62%),
-          url(${MaxAvatar}) center / cover;
+          url(${MikeAvatar}) center / cover;
         color: var(--white);
+      }
+
+      .size-list {
+        display: grid;
+        width: max-content;
+        max-width: 100%;
+        gap: var(--space-300);
+        margin-inline: auto;
+        justify-items: center;
       }
     `;
 
@@ -48,7 +56,7 @@ class StoryProfileChip extends HTMLElement {
           <mui-profile-chip
             label="Sugoi Travels">
             <mui-body slot="primary" weight="bold">Sugoi Travels</mui-body>
-            <mui-body slot="secondary" weight="medium" size="small">
+            <mui-body slot="secondary" weight="medium">
               77k subscribers
             </mui-body>
           </mui-profile-chip>
@@ -57,7 +65,7 @@ class StoryProfileChip extends HTMLElement {
           &lt;mui-profile-chip<br />
           &nbsp;&nbsp;label="Sugoi Travels"&gt;<br />
           &nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Sugoi Travels&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="secondary" weight="medium" size="small"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="secondary" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;77k subscribers<br />
           &nbsp;&nbsp;&lt;/mui-body&gt;<br />
           &lt;/mui-profile-chip&gt;
@@ -71,20 +79,70 @@ class StoryProfileChip extends HTMLElement {
         usage="Use image when the identity benefits from a recognisable avatar.|||Keep label meaningful so the avatar remains accessible and initials can be generated if the image fails.">
         <div slot="body" class="canvas">
           <mui-profile-chip
-            image="${MaxAvatar}"
-            label="Max AI">
-            <mui-body slot="primary" weight="bold">Max AI</mui-body>
-            <mui-body slot="secondary" weight="medium" size="small">
+            image="${MikeAvatar}"
+            label="Mike Trilford">
+            <mui-body slot="primary" weight="bold">Mike Trilford</mui-body>
+            <mui-body slot="secondary" weight="medium">
               Product Designer
             </mui-body>
           </mui-profile-chip>
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-profile-chip<br />
-          &nbsp;&nbsp;image="avatar-max.png"<br />
-          &nbsp;&nbsp;label="Max AI"&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Max AI&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="secondary" weight="medium" size="small"&gt;<br />
+          &nbsp;&nbsp;image="avatar-mike.jpg"<br />
+          &nbsp;&nbsp;label="Mike Trilford"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="secondary" weight="medium"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;Product Designer<br />
+          &nbsp;&nbsp;&lt;/mui-body&gt;<br />
+          &lt;/mui-profile-chip&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="sizes"
+        title="Sizes"
+        description="Profile Chip supports explicit sizing for different density needs."
+        usage="Use size to scale the internal avatar, primary text, and secondary text together.|||Keep responsive behavior in the parent composition when the chip needs to change size across breakpoints.">
+        <div slot="body" class="canvas">
+          <div class="size-list">
+            <mui-profile-chip
+              size="x-small"
+              image="${MikeAvatar}"
+              label="Mike Trilford">
+              <mui-body slot="primary" weight="bold">Mike Trilford</mui-body>
+              <mui-body slot="secondary" weight="medium">x-small</mui-body>
+            </mui-profile-chip>
+            <mui-profile-chip
+              size="small"
+              image="${MikeAvatar}"
+              label="Mike Trilford">
+              <mui-body slot="primary" weight="bold">Mike Trilford</mui-body>
+              <mui-body slot="secondary" weight="medium">small</mui-body>
+            </mui-profile-chip>
+            <mui-profile-chip
+              size="medium"
+              image="${MikeAvatar}"
+              label="Mike Trilford">
+              <mui-body slot="primary" weight="bold">Mike Trilford</mui-body>
+              <mui-body slot="secondary" weight="medium">medium</mui-body>
+            </mui-profile-chip>
+            <mui-profile-chip
+              size="large"
+              image="${MikeAvatar}"
+              label="Mike Trilford">
+              <mui-body slot="primary" weight="bold">Mike Trilford</mui-body>
+              <mui-body slot="secondary" weight="medium">large</mui-body>
+            </mui-profile-chip>
+          </div>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-profile-chip<br />
+          &nbsp;&nbsp;size="small"<br />
+          &nbsp;&nbsp;image="avatar-mike.jpg"<br />
+          &nbsp;&nbsp;label="Mike Trilford"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="secondary" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;Product Designer<br />
           &nbsp;&nbsp;&lt;/mui-body&gt;<br />
           &lt;/mui-profile-chip&gt;
@@ -98,22 +156,22 @@ class StoryProfileChip extends HTMLElement {
         usage="Use href when the avatar is the profile action.|||Keep the copy separate when the profile row also includes supporting links or counts.">
         <div slot="body" class="canvas">
           <mui-profile-chip
-            image="${JulieAvatar}"
-            label="Julie AI"
+            image="${MikeAvatar}"
+            label="Mike Trilford"
             href="#linked-avatar">
-            <mui-body slot="primary" weight="bold">Julie AI</mui-body>
-            <mui-body slot="secondary" weight="medium" size="small">
+            <mui-body slot="primary" weight="bold">Mike Trilford</mui-body>
+            <mui-body slot="secondary" weight="medium">
               Content Editor
             </mui-body>
           </mui-profile-chip>
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-profile-chip<br />
-          &nbsp;&nbsp;image="avatar-julie.png"<br />
-          &nbsp;&nbsp;label="Julie AI"<br />
+          &nbsp;&nbsp;image="avatar-mike.jpg"<br />
+          &nbsp;&nbsp;label="Mike Trilford"<br />
           &nbsp;&nbsp;href="#linked-avatar"&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Julie AI&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="secondary" weight="medium" size="small"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Mike Trilford&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="secondary" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;Content Editor<br />
           &nbsp;&nbsp;&lt;/mui-body&gt;<br />
           &lt;/mui-profile-chip&gt;
@@ -127,11 +185,11 @@ class StoryProfileChip extends HTMLElement {
         usage="Use slot='secondary' for links, badges, counts, or supporting icons.|||Use attributes for simple text so the component stays quick to author.">
         <div slot="body" class="canvas">
           <mui-profile-chip
-            image="${MaxAvatar}"
-            label="Max AI"
+            image="${MikeAvatar}"
+            label="Mike Trilford"
             href="#custom-secondary">
             <mui-body slot="primary" weight="bold">Sugoi Travels</mui-body>
-            <mui-link slot="secondary" href="#custom-secondary" weight="medium" size="small">
+            <mui-link slot="secondary" href="#custom-secondary" weight="medium">
               77k subscribers
               <mui-icon-right-chevron slot="after" size="x-small"></mui-icon-right-chevron>
             </mui-link>
@@ -139,11 +197,11 @@ class StoryProfileChip extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-profile-chip<br />
-          &nbsp;&nbsp;image="avatar-max.png"<br />
-          &nbsp;&nbsp;label="Max AI"<br />
+          &nbsp;&nbsp;image="avatar-mike.jpg"<br />
+          &nbsp;&nbsp;label="Mike Trilford"<br />
           &nbsp;&nbsp;href="#custom-secondary"&gt;<br />
           &nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Sugoi Travels&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&lt;mui-link slot="secondary" href="#custom-secondary" weight="medium" size="small"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-link slot="secondary" href="#custom-secondary" weight="medium"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;77k subscribers<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-right-chevron slot="after" size="x-small"&gt;&lt;/mui-icon-right-chevron&gt;<br />
           &nbsp;&nbsp;&lt;/mui-link&gt;<br />
@@ -165,12 +223,12 @@ class StoryProfileChip extends HTMLElement {
           src="${audioSrc}">
             <mui-profile-chip
               slot="meta-before"
-              image="${MaxAvatar}"
-              label="Max AI"
+              image="${MikeAvatar}"
+              label="Mike Trilford"
               href="#media-player">
               <mui-body slot="primary" weight="bold">Twilight</mui-body>
-              <mui-link slot="secondary" href="#creator-profile" weight="medium" size="small">
-                by Max AI
+              <mui-link slot="secondary" href="#creator-profile" weight="medium">
+                by Mike Trilford
               </mui-link>
             </mui-profile-chip>
         </mui-media-player>
@@ -186,12 +244,12 @@ class StoryProfileChip extends HTMLElement {
           &nbsp;&nbsp;src="/audio/twilight.m4a"&gt;<br /><br />
           &nbsp;&nbsp;&lt;mui-profile-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;slot="meta-before"<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;image="avatar-max.png"<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;label="Max AI"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;image="avatar-mike.jpg"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;label="Mike Trilford"<br />
           &nbsp;&nbsp;&nbsp;&nbsp;href="#creator-profile"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body slot="primary" weight="bold"&gt;Twilight&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium" size="small"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Max AI<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot="secondary" href="#creator-profile" weight="medium"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Mike Trilford<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-link&gt;<br />
           &nbsp;&nbsp;&lt;/mui-profile-chip&gt;<br /><br />
           &lt;/mui-media-player&gt;
@@ -214,7 +272,7 @@ class StoryProfileChip extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="default::Default|||image::Image|||linked-avatar::Linked Avatar|||custom-secondary::Custom Secondary|||media-player::Media Player Usage">
+          links="default::Default|||image::Image|||sizes::Sizes|||linked-avatar::Linked Avatar|||custom-secondary::Custom Secondary|||media-player::Media Player Usage">
         </story-quicklinks>
         ${stories}
       </story-template>

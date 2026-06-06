@@ -29,7 +29,7 @@ export const muiDocs: MuiDocs = {
     accessibility: {
       designerList: [""],
       engineerList: [
-        "Provide meaningful context around the media purpose using surrounding copy, `media-title`, or composed `slot='metadata'` content.",
+        "Provide meaningful context around the media purpose using surrounding copy, `media-title`, or composed `slot='meta-before'` content.",
         "Keep playback user-initiated by default. If autoplay is needed, expose it as an explicit user or product setting instead of enabling it silently.",
         "When autoplay is enabled, prefer muted playback and avoid autoplaying content with speech, alerts, or important audio.",
         "Ensure slotted metadata actions have clear accessible names and do not make the entire metadata area interactive unless the whole area is intentionally actionable.",

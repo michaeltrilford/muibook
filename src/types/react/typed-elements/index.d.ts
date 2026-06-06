@@ -249,8 +249,8 @@ declare global {
         label?: string;
         href?: string;
         target?: string;
+        size?: "x-small" | "small" | "medium" | "large" | string;
         usage?: "default" | "media-player" | string;
-        breakpoint?: string;
         slot?: string;
         style?: React.CSSProperties;
         class?: string;
