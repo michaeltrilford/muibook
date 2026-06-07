@@ -1,7 +1,21 @@
 export const muiApi = {
   "mui-responsive": {
-    description: "Switches between slotted layout alternatives at one or two viewport breakpoints.",
+    description: "Switches between slotted layout alternatives at one or two viewport or container breakpoints.",
     attributes: [
+      {
+        name: "variant",
+        type: { text: '"viewport" | "container"' },
+        default: "viewport",
+        description:
+          "Chooses whether breakpoints respond to the viewport width or the mui-responsive host container width.",
+      },
+      {
+        name: "observe",
+        type: { text: '"self" | "parent" | string' },
+        default: "self",
+        description:
+          "Container query target used with `variant='container'`. Use `parent` for the direct parent, or a selector to observe the closest matching ancestor.",
+      },
       {
         name: "breakpoint",
         type: { text: "number | string" },

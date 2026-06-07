@@ -1,12 +1,13 @@
 class MuiR extends HTMLElement {
   static get observedAttributes() {
-    return ["breakpoint", "breakpoint-low", "breakpoint-high"];
+    return ["variant", "observe", "breakpoint", "breakpoint-low", "breakpoint-high"];
   }
 
   private slotEl: HTMLSlotElement | null = null;
   private mqlLow: MediaQueryList | null = null;
   private mqlHigh: MediaQueryList | null = null;
   private mqlSingle: MediaQueryList | null = null;
+  private resizeObserver: ResizeObserver | null = null;
   private cleanup: (() => void) | null = null;
 
   constructor() {
@@ -45,15 +46,71 @@ class MuiR extends HTMLElement {
     this.mqlLow = null;
     this.mqlHigh = null;
     this.mqlSingle = null;
+    this.resizeObserver?.disconnect();
+    this.resizeObserver = null;
+  }
+
+  private getSlotName(width: number, low: string | null, high: string | null, breakpoint: string | null): string | null {
+    if (low && high) {
+      const lowVal = parseInt(low);
+      const highVal = parseInt(high);
+      if (Number.isNaN(lowVal) || Number.isNaN(highVal)) return null;
+
+      return width <= lowVal ? "showBelow" : width >= highVal ? "showAbove" : "showMiddle";
+    }
+
+    if (breakpoint) {
+      const bpVal = parseInt(breakpoint);
+      if (Number.isNaN(bpVal)) return null;
+
+      return width <= bpVal ? "showBelow" : "showAbove";
+    }
+
+    return null;
+  }
+
+  private getObservedElement(): Element {
+    const observe = this.getAttribute("observe");
+    if (!observe || observe === "self") return this;
+    if (observe === "parent") return this.parentElement || this;
+
+    try {
+      return this.closest(observe) || this;
+    } catch {
+      return this;
+    }
   }
 
   private setupResponsive() {
+    const variant = this.getAttribute("variant") || "viewport";
     const breakpoint = this.getAttribute("breakpoint");
     const low = this.getAttribute("breakpoint-low");
     const high = this.getAttribute("breakpoint-high");
 
     this.teardownResponsive();
     if (!this.slotEl) return;
+
+    if (variant === "container") {
+      const observedElement = this.getObservedElement();
+      const updateSlotName = (width: number) => {
+        const slotName = this.getSlotName(width, low, high, breakpoint);
+        if (slotName) {
+          this.slotEl!.setAttribute("name", slotName);
+        } else {
+          this.slotEl!.removeAttribute("name");
+        }
+      };
+
+      updateSlotName(observedElement.getBoundingClientRect().width);
+
+      this.resizeObserver = new ResizeObserver((entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        updateSlotName(entry.contentRect.width);
+      });
+      this.resizeObserver.observe(observedElement);
+      return;
+    }
 
     if (low && high) {
       const lowVal = parseInt(low);

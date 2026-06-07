@@ -547,6 +547,7 @@ html[data-theme="light"] {
 
   /* Drawer */
   --drawer-background: var(--white);
+  --drawer-resize-rail-threshold-indicator: var(--black);
 }
 
 /* ==================================================================================================== */
@@ -1015,6 +1016,7 @@ html[data-theme="dark"] {
 
   /* Drawer */
   --drawer-background: var(--grey-800);
+  --drawer-resize-rail-threshold-indicator: var(--white);
 }
 
 /* ==================================================================================================== */

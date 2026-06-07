@@ -24,6 +24,26 @@ class storyResponsive extends HTMLElement {
         transform: translateY(0.34em);
         font-weight: bold;
       }
+      .container-query-page {
+        min-width: 0;
+        container-type: inline-size;
+        background: var(--surface-elevated-200);
+      }
+      .container-query-page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 7.7rem;
+        padding: var(--space-400) var(--space-500);
+        border-bottom: var(--border-thin);
+        box-sizing: border-box;
+      }
+      .container-query-page-content {
+        min-width: 0;
+        padding: var(--space-500);
+        box-sizing: border-box;
+        overflow: auto;
+      }
     `;
 
     const LocalRing = /*html*/ `
@@ -117,7 +137,7 @@ class storyResponsive extends HTMLElement {
           <mui-cell><mui-badge>${prop.billed}</mui-badge></mui-cell>
           <mui-cell>${prop.cost}</mui-cell>
         </mui-row>
-      `
+      `,
     ).join("");
 
     const SlatRow = TableData.map((prop, index, array) => {
@@ -198,6 +218,76 @@ class storyResponsive extends HTMLElement {
             &nbsp;&nbsp;&lt;div slot="showBelow"&gt;...&lt;/div&gt;
             <br />
             &lt;/mui-responsive&gt;
+          </story-code-block>
+        </story-card>
+
+        <story-card
+          title="Container Breakpoint"
+          description="Switches slotted content based on a resizable page region instead of the viewport."
+          usage="
+            Use variant='container' when the responsive decision should follow the parent layout or resizable drawer region.|||
+            Use observe to measure a parent or closest ancestor selector when the responsive element is nested inside wrapper elements.|||
+            This uses the same desktop-to-mobile composition pattern as the table example, but the breakpoint is measured from the drawer page content.|||
+            Drag the drawer rail to change the page width and confirm the content switches without changing the viewport.
+          "
+        >
+          <div slot="body">
+            <mui-drawer
+              variant="push"
+              resize-rail
+              drawer-space
+              width="320px"
+              resize-min-drawer-width="320"
+              resize-min-page-width="380"
+              resize-close-threshold="96"
+              open
+              data-drawer-toggle="responsive-container-drawer"
+              side="left">
+              <div slot="page" class="container-query-page">
+                <div class="container-query-page-header">
+                  <mui-h-stack space="var(--space-050)" aligny="center">
+                    <mui-button variant="tertiary" size="small" data-drawer-toggle="responsive-container-drawer">
+                      <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
+                    </mui-button>
+                    <mui-heading size="5" level="3">Automations</mui-heading>
+                  </mui-h-stack>
+                </div>
+                <div class="container-query-page-content">
+                  <mui-responsive variant="container" observe=".container-query-page" breakpoint="700">
+                    <div slot="showAbove">
+                      ${ProgressDesktopView}
+                    </div>
+                    <div slot="showBelow">
+                      ${ProgressMobileView}
+                    </div>
+                  </mui-responsive>
+                </div>
+              </div>
+              <mui-v-stack space="var(--space-300)" style="padding: var(--space-500); padding-block-start: var(--space-500);">
+                <mui-heading size="5" level="4">My accounts</mui-heading>
+                <mui-body size="small">Drag the rail to resize the drawer and shrink or expand the page region.</mui-body>
+                <mui-code wrap size="x-small">variant="container"</mui-code>
+              </mui-v-stack>
+            </mui-drawer>
+          </div>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-drawer variant="push" resize-rail open data-drawer-toggle="responsive-container-drawer" width="320px" side="left"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;div slot="page" style="min-width: 0; container-type: inline-size;"&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-drawer-toggle="responsive-container-drawer"&gt;...&lt;/mui-button&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive variant="container" observe=".container-query-page" breakpoint="700"&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="showAbove"&gt;&#x24;{ProgressDesktopView}&lt;/div&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="showBelow"&gt;&#x24;{ProgressMobileView}&lt;/div&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;
+            <br />
+            &nbsp;&nbsp;&lt;/div&gt;
+            <br />
+            &lt;/mui-drawer&gt;
           </story-code-block>
         </story-card>
 
@@ -363,10 +453,24 @@ class storyResponsive extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
       
-        imports='["@muibook/components/mui-responsive"]'>
+        imports="@muibook/components/mui-responsive">
         ${stories}
       </story-template>
     `;
+
+    this.shadowRoot.querySelectorAll("mui-button[data-drawer-toggle]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-drawer-toggle");
+        const drawer = this.shadowRoot.querySelector(`mui-drawer[data-drawer-toggle="${target}"]`);
+        if (!drawer) return;
+
+        if (drawer.hasAttribute("open")) {
+          drawer.removeAttribute("open");
+        } else {
+          drawer.setAttribute("open", "");
+        }
+      });
+    });
   }
 }
 

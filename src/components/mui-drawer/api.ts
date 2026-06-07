@@ -33,10 +33,42 @@ export const muiApi = {
         description: "Removes default padding from the drawer content region when present.",
       },
       {
+        name: "close-size",
+        type: { text: '"x-small" | "small" | "medium" | "large"' },
+        default: "medium",
+        description: "Sets the built-in header close action size.",
+      },
+      {
         name: "breakpoint",
         type: { text: "number | string" },
         default: "768",
         description: "Pixel breakpoint where push and persistent layouts switch to their narrow-screen presentation.",
+      },
+      {
+        name: "resize-rail",
+        type: { text: "boolean" },
+        default: "false",
+        description:
+          "Adds an opt-in resize rail between the drawer and page for desktop push or persistent drawers. Dragging the rail updates the drawer width while clamping to a minimum drawer width and preserving page space.",
+      },
+      {
+        name: "resize-min-drawer-width",
+        type: { text: "number | string" },
+        default: "240",
+        description: "Minimum drawer width in pixels when resize-rail is enabled.",
+      },
+      {
+        name: "resize-min-page-width",
+        type: { text: "number | string" },
+        default: "320",
+        description: "Minimum page width in pixels preserved while resize-rail is enabled.",
+      },
+      {
+        name: "resize-close-threshold",
+        type: { text: "number | string" },
+        default: "96",
+        description:
+          "Push drawer close threshold in pixels. Dragging below resize-min-drawer-width fades the drawer content; releasing below this value closes it while visible width remains clamped.",
       },
     ],
     contextualAttributes: [
@@ -62,6 +94,12 @@ export const muiApi = {
       { name: "mui-drawer-open", description: "Dispatched by `open()` when the drawer opens." },
       { name: "mui-drawer-close", description: "Dispatched by `close()` when the drawer closes." },
     ],
-    cssProperties: [{ name: "--drawer-background", description: "Drawer surface and footer background." }],
+    cssProperties: [
+      { name: "--drawer-background", description: "Drawer surface and footer background." },
+      {
+        name: "--drawer-resize-rail-threshold-indicator",
+        description: "Resize rail indicator color when the push drawer is dragged into the close threshold.",
+      },
+    ],
   },
 };
