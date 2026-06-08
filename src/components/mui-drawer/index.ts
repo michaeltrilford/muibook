@@ -452,6 +452,16 @@ class MuiDrawer extends HTMLElement {
         border-left: var(--border-thin);
       }
 
+      @media (min-width: ${this.getBreakpoint() + 1}px) {
+        :host([resize-rail]) .workspace-panel-left .inner {
+          border-right: none;
+        }
+
+        :host([resize-rail]) .workspace-panel-right .inner {
+          border-left: none;
+        }
+      }
+
       .workspace-page {
         grid-column: 2;
         min-width: 0;

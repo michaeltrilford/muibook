@@ -137,6 +137,22 @@ class storyDrawer extends HTMLElement {
         background: var(--surface-elevated-200);
       }
 
+      .left-panel-open-btn {
+        transition: opacity var(--speed-100) ease, width var(--speed-300) ease-out;
+        overflow: hidden;
+        width: var(--action-size-small);
+      }
+
+      mui-drawer[variant="workspace"][left-open] .left-panel-open-btn {
+        opacity: 0;
+        pointer-events: none;
+        width: 0;
+      }
+
+      mui-drawer[variant="workspace"]:not([left-open]) .left-panel-close-btn {
+        display: none;
+      }
+
       @container (max-width: 90rem) {
         .resize-test-grid {
           grid-template-columns: minmax(0, 1fr);
@@ -174,6 +190,8 @@ class storyDrawer extends HTMLElement {
       .video-menu-group::part(padding) {
         padding: var(--space-300) var(--space-200);
       }
+
+
 
     `;
 
@@ -515,6 +533,9 @@ class storyDrawer extends HTMLElement {
       <div class="workspace-demo-panel">
         <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
           <mui-heading size="5" level="2">Components</mui-heading>
+          <mui-button variant="tertiary" size="small" data-drawer-toggle="drawer-resize-workspace-left-rail" class="left-panel-close-btn">
+            <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
+          </mui-button>
         </mui-h-stack>
 
         <mui-v-stack space="var(--space-400)" style="padding: var(--space-400)">
@@ -591,7 +612,7 @@ class storyDrawer extends HTMLElement {
         <div class="canvas-page-header">
           <mui-h-stack space="var(--space-200)" aligny="center" alignx="space-between" width="100%">
             <mui-h-stack space="var(--space-200)" aligny="center">
-              <mui-button variant="tertiary" size="small" data-drawer-toggle="drawer-resize-workspace-left-rail">
+              <mui-button variant="tertiary" size="small" data-drawer-toggle="drawer-resize-workspace-left-rail" class="left-panel-open-btn">
                 <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
               </mui-button>
               <mui-heading size="4" level="2">Canvas</mui-heading>
