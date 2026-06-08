@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-08T06:59:21.238Z",
+  "generatedAt": "2026-06-08T12:45:22.457Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -276,16 +276,6 @@
         }
       ]
     },
-    "mui-card-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-button-group",
-          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
-        }
-      ]
-    },
     "mui-card-body": {
       "version": 1,
       "destinationOnly": true,
@@ -304,6 +294,26 @@
         }
       ]
     },
+    "mui-card-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-button-group",
+          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
+        }
+      ]
+    },
+    "mui-slat-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+        }
+      ]
+    },
     "mui-slat": {
       "version": 1,
       "destinationOnly": true,
@@ -315,16 +325,6 @@
         {
           "name": "condensed-slot",
           "description": "Applied to a slotted child used in condensed composition, allowing the child to reduce spacing and density."
-        }
-      ]
-    },
-    "mui-slat-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "usage",
-          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
         }
       ]
     },

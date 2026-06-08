@@ -143,14 +143,16 @@ class storyDrawer extends HTMLElement {
         width: var(--action-size-small);
       }
 
-      mui-drawer[variant="workspace"][left-open] .left-panel-open-btn {
+      /* Desktop: hide button if left-open is set */
+      mui-drawer[variant="workspace"]:not([mobile])[left-open] .left-panel-open-btn {
         transition: opacity var(--speed-100) ease, width var(--speed-100) ease-out;
         opacity: 0;
         pointer-events: none;
         width: 0;
       }
 
-      mui-drawer[variant="workspace"]:not([left-open]) .left-panel-close-btn {
+      mui-drawer[variant="workspace"]:not([left-open]) .left-panel-close-btn,
+      mui-drawer[variant="workspace"][mobile] .left-panel-close-btn {
         display: none;
       }
 
@@ -860,7 +862,7 @@ class storyDrawer extends HTMLElement {
             data-drawer-toggle-left="drawer-resize-workspace-left-rail"
             data-drawer-toggle-right="drawer-resize-workspace-right-rail"
             breakpoint="1400"
-            height="65dvh"
+            height="75dvh"
             >
             <div slot="left">${workspaceComponentsPanel}</div>
             <div slot="page">${workspaceCanvasPage}</div>
@@ -868,18 +870,44 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
+          &lt;!-- JS: Toggle panels responsively --&gt;<br>
+          const drawer = document.querySelector('mui-drawer');<br>
+          const side = 'left'; // or 'right'<br><br>
+          if (drawer.hasAttribute('mobile')) {<br>
+          &nbsp;&nbsp;if (drawer.hasAttribute('open') &amp;&amp; drawer.getAttribute('side') === side) {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;drawer.removeAttribute('open');<br>
+          &nbsp;&nbsp;} else {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;drawer.setAttribute('side', side);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;drawer.setAttribute('open', '');<br>
+          &nbsp;&nbsp;}<br>
+          } else {<br>
+          &nbsp;&nbsp;drawer.toggleAttribute(&#96;\${side}-open&#96;);<br>
+          }<br><br>
+
+          &lt;!-- CSS: Style page elements based on viewport state --&gt;<br>
+          &lt;style&gt;<br>
+          &nbsp;&nbsp;/* Desktop: hide open button when panel is open */<br>
+          &nbsp;&nbsp;mui-drawer[variant="workspace"]:not([mobile])[left-open] .left-panel-open-btn {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;opacity: 0;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;width: 0;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;pointer-events: none;<br>
+          &nbsp;&nbsp;}<br><br>
+          &nbsp;&nbsp;/* Hide close button if left drawer is not open (on desktop), or always on mobile */<br>
+          &nbsp;&nbsp;mui-drawer[variant="workspace"]:not([left-open]) .left-panel-close-btn,<br>
+          &nbsp;&nbsp;mui-drawer[variant="workspace"][mobile] .left-panel-close-btn {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+          &nbsp;&nbsp;}<br>
+          &lt;/style&gt;<br><br>
+
+          &lt;!-- HTML Setup --&gt;<br>
           &lt;mui-drawer<br>
           &nbsp;&nbsp;variant="workspace"<br>
-          &nbsp;&nbsp;resize-rail<br>
-          &nbsp;&nbsp;resize-min-left-width="200"<br>
-          &nbsp;&nbsp;resize-min-right-width="200"<br>
-          &nbsp;&nbsp;resize-min-page-width="400"<br>
-          &nbsp;&nbsp;resize-close-threshold="96"<br>
+          &nbsp;&nbsp;breakpoint="1400"<br>
           &nbsp;&nbsp;left-open<br>
           &nbsp;&nbsp;right-open<br>
           &nbsp;&nbsp;left-width="24rem"<br>
           &nbsp;&nbsp;right-width="30rem"<br>
-          &nbsp;&nbsp;height="65dvh"<br>
+          &nbsp;&nbsp;height="75dvh"<br>
           &nbsp;&nbsp;data-drawer-toggle-left="drawer-resize-workspace-left-rail"<br>
           &nbsp;&nbsp;data-drawer-toggle-right="drawer-resize-workspace-right-rail"&gt;<br>
           &nbsp;&nbsp;&lt;div slot="left"&gt;...component library...&lt;/div&gt;<br>
@@ -1766,10 +1794,7 @@ class storyDrawer extends HTMLElement {
             workspaceSide === "left" ? leftDrawer : workspaceSide === "right" ? rightDrawer : null;
 
           if (workspaceDrawer && workspaceSide) {
-            const breakpoint = Number(workspaceDrawer.getAttribute("breakpoint")) || 768;
-            const isMobile = window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
-
-            if (isMobile) {
+            if (workspaceDrawer.hasAttribute("mobile")) {
               if (workspaceDrawer.hasAttribute("open") && workspaceDrawer.getAttribute("side") === workspaceSide) {
                 workspaceDrawer.removeAttribute("open");
               } else {

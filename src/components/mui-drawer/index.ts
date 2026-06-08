@@ -64,6 +64,7 @@ class MuiDrawer extends HTMLElement {
   }
 
   connectedCallback() {
+    this.syncMobileState();
     this.syncHeight();
     this.render();
     this.cacheEls();
@@ -149,6 +150,10 @@ class MuiDrawer extends HTMLElement {
     this.style.setProperty("--drawer-height", this.getAttribute("height") || "100dvh");
   }
 
+  private syncMobileState() {
+    this.toggleAttribute("mobile", this.isMobileViewport());
+  }
+
   private getWorkspaceColumns(): string {
     const leftWidth = this.getAttribute("left-width") || "28rem";
     const rightWidth = this.getAttribute("right-width") || "32rem";
@@ -181,6 +186,22 @@ class MuiDrawer extends HTMLElement {
     const rightVisible = isMobile ? mobileOpen && mobileSide === "right" : this.hasAttribute("right-open");
     const leftPanel = this.getWorkspacePanel("left");
     const rightPanel = this.getWorkspacePanel("right");
+
+    if (!this.classList.contains("no-transition")) {
+      [leftPanel, rightPanel, this.overlayEl].forEach((el) => {
+        if (el) {
+          el.classList.add("is-animating");
+          let transitionCleaned = false;
+          const cleanup = () => {
+            if (transitionCleaned) return;
+            transitionCleaned = true;
+            el.classList.remove("is-animating");
+          };
+          el.addEventListener("transitionend", cleanup, { once: true });
+          setTimeout(cleanup, 400);
+        }
+      });
+    }
     leftPanel?.toggleAttribute("inert", !leftVisible);
     rightPanel?.toggleAttribute("inert", !rightVisible);
     if (leftPanel) leftPanel.hidden = !isMobile && !leftVisible;
@@ -232,6 +253,7 @@ class MuiDrawer extends HTMLElement {
 
     const width = this.getAttribute("width") || "320px";
     const variant = this.getAttribute("variant") || "overlay";
+    const breakpoint = this.getBreakpoint();
     const hasResizeRail = (variant === "push" || variant === "persistent") && this.hasAttribute("resize-rail");
     const hasWorkspaceResizeRail = variant === "workspace" && this.hasAttribute("resize-rail");
     const closeSize = this.getCloseSize();
@@ -246,7 +268,13 @@ class MuiDrawer extends HTMLElement {
     }
 
     const baseStyles = /*css*/ `
+      :host(.no-transition) *,
+      :host(.no-transition) {
+        transition: none !important;
+      }
+
       .header {
+
         display: flex;
         flex: 0 0 auto;
         justify-content: space-between;
@@ -357,6 +385,22 @@ class MuiDrawer extends HTMLElement {
         animation: resize-rail-threshold-pulse calc(var(--speed-400) * 2) ease-in-out infinite;
       }
 
+      :host([resizing]) .resize-rail.at-limit::before,
+      .workspace-resize-rail.at-limit::before {
+        width: var(--stroke-size-300);
+        background: var(--drawer-resize-rail-threshold-indicator, var(--attention-color));
+        animation: rail-limit-flash 0.25s ease-in-out 3;
+      }
+
+      @keyframes rail-limit-flash {
+        0%, 100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
       .resize-rail-icon,
       .workspace-resize-rail-icon {
         position: absolute;
@@ -384,10 +428,10 @@ class MuiDrawer extends HTMLElement {
       @keyframes resize-rail-threshold-pulse {
         0%,
         100% {
-          opacity: 0.5;
+          opacity: 0.4;
         }
         50% {
-          opacity: 0.7;
+          opacity: 0.8;
         }
       }
 
@@ -419,13 +463,23 @@ class MuiDrawer extends HTMLElement {
         min-width: 0;
         overflow: hidden;
         background: var(--drawer-background);
+        visibility: hidden;
+      }
+
+      .workspace-panel.is-animating {
         transition:
           opacity var(--speed-100) ease,
-          transform 0.3s ease;
+          transform 0.3s ease,
+          visibility var(--speed-100) ease;
       }
 
       .workspace-panel[hidden] {
         display: none !important;
+      }
+
+      :host([left-open]) .workspace-panel-left,
+      :host([right-open]) .workspace-panel-right {
+        visibility: visible;
       }
 
       :host([resizing]) .workspace-panel,
@@ -452,7 +506,7 @@ class MuiDrawer extends HTMLElement {
         border-left: var(--border-thin);
       }
 
-      @media (min-width: ${this.getBreakpoint() + 1}px) {
+      @media (min-width: ${breakpoint + 1}px) {
         :host([resize-rail]) .workspace-panel-left .inner {
           border-right: none;
         }
@@ -485,7 +539,7 @@ class MuiDrawer extends HTMLElement {
         transition: none;
       }
 
-      @media (max-width: ${this.getBreakpoint()}px) {
+      @media (max-width: ${breakpoint}px) {
         .overlay {
           position: fixed;
           display: block;
@@ -495,6 +549,9 @@ class MuiDrawer extends HTMLElement {
           background: var(--backdrop-overlay);
           opacity: 0;
           visibility: hidden;
+        }
+
+        .overlay.is-animating {
           transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
@@ -565,11 +622,14 @@ class MuiDrawer extends HTMLElement {
         width: 100%;
         height: 100dvh;
         z-index: 101;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
         background: var(--backdrop-overlay);
         opacity: 0;
         visibility: hidden;
         will-change: opacity, visibility;
+      }
+
+      .overlay.is-animating {
+        transition: opacity 0.3s ease, visibility 0.3s ease;
       }
 
       .surface {
@@ -637,7 +697,21 @@ class MuiDrawer extends HTMLElement {
       .outer {
         overflow: hidden;
         will-change: transform;
-        transition: opacity var(--speed-100) ease;
+        visibility: hidden;
+      }
+
+      .outer.is-animating {
+        transition: opacity var(--speed-100) ease, visibility var(--speed-100) ease;
+      }
+
+      :host([open]) .outer {
+        visibility: visible;
+      }
+
+      @media (min-width: ${breakpoint + 1}px) {
+        :host([variant="persistent"]) .outer {
+          visibility: visible;
+        }
       }
 
       :host([resizing]) .outer {
@@ -698,8 +772,6 @@ class MuiDrawer extends HTMLElement {
 
     `;
 
-    const breakpoint = this.getBreakpoint();
-
     const responsiveStyles = /*css*/ `
       @media (max-width: ${breakpoint}px) {
         .outer {
@@ -707,14 +779,10 @@ class MuiDrawer extends HTMLElement {
           top: 0;
           bottom: 0;
           max-height: var(--drawer-height, 100dvh);
-          transition: none;
         }
 
-        :host([variant="overlay"]) .outer {
-          left: 0;
-          right: 0;
-          width: 100%;
-          transform: translateY(100%);
+        .outer.is-animating {
+          transition: transform 0.3s ease, visibility 0.3s ease;
         }
 
         :host([variant="push"]) .outer,
@@ -727,6 +795,7 @@ class MuiDrawer extends HTMLElement {
           overflow: visible;
           transform: translateX(-100%);
           z-index: 11;
+          visibility: hidden;
         }
 
         :host([variant="push"]) .overlay,
@@ -739,6 +808,10 @@ class MuiDrawer extends HTMLElement {
           background: var(--backdrop-overlay);
           opacity: 0;
           visibility: hidden;
+        }
+
+        :host([variant="push"]) .overlay.is-animating,
+        :host([variant="persistent"]:not([mobile-presentation="stack"])) .overlay.is-animating {
           transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
@@ -755,17 +828,11 @@ class MuiDrawer extends HTMLElement {
           transform: translateX(100%);
         }
 
-        :host([open][variant="overlay"]) .outer,
-        :host([open][variant="push"]) .outer,
-        :host([open][variant="persistent"]:not([mobile-presentation="stack"])) .outer {
-          transform: translateY(0);
-          transition: transform 0.3s ease;
-          border: none;
-        }
-
         :host([open][variant="push"]) .outer,
         :host([open][variant="persistent"]:not([mobile-presentation="stack"])) .outer {
           transform: translateX(0);
+          visibility: visible;
+          border: none;
         }
 
         :host([open][variant="push"][side="left"]) .inner,
@@ -1004,6 +1071,14 @@ class MuiDrawer extends HTMLElement {
   }
 
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
+    if (name === "breakpoint") {
+      this.syncMobileState();
+      const variant = this.getAttribute("variant") || "overlay";
+      if (variant === "push" || variant === "persistent") {
+        this.updateLayout(variant, this.getLayoutOpenState(variant));
+      }
+      this.syncOpenState();
+    }
     if (name === "open") {
       this.syncOpenState();
       this.syncWorkspaceState();
@@ -1107,14 +1182,17 @@ class MuiDrawer extends HTMLElement {
     const delta = event.clientX - this.resizeState.startX;
     const variant = this.getAttribute("variant") || "overlay";
     const minDrawerWidth = this.getResizeRailMinDrawerWidth();
+    const maxDrawerWidth = this.getResizeRailMaxDrawerWidth();
     const nextWidth =
       this.resizeState.side === "left" ? this.resizeState.startWidth + delta : this.resizeState.startWidth - delta;
     const closeThreshold = Math.min(this.getResizeRailCloseThreshold(), minDrawerWidth - 1);
-    const clampedWidth = Math.max(minDrawerWidth, Math.min(nextWidth, this.getResizeRailMaxDrawerWidth()));
+    const clampedWidth = Math.max(minDrawerWidth, Math.min(nextWidth, maxDrawerWidth));
 
     this.resizeState.currentWidth = clampedWidth;
     this.resizeState.closeOnRelease = variant === "push" && nextWidth <= closeThreshold;
     this.resizeRailEl?.classList.toggle("threshold", this.resizeState.closeOnRelease);
+    const isAtLimit = (nextWidth <= minDrawerWidth || nextWidth >= maxDrawerWidth) && !this.resizeState.closeOnRelease;
+    this.resizeRailEl?.classList.toggle("at-limit", isAtLimit);
     this.syncResizeCloseOpacity(nextWidth);
     this.setAttribute("width", `${Math.round(clampedWidth)}px`);
   };
@@ -1123,7 +1201,7 @@ class MuiDrawer extends HTMLElement {
     const shouldClose = this.resizeState?.closeOnRelease && (this.getAttribute("variant") || "overlay") === "push";
     this.resizeState = null;
     this.removeAttribute("resizing");
-    this.resizeRailEl?.classList.remove("threshold");
+    this.resizeRailEl?.classList.remove("threshold", "at-limit");
     window.removeEventListener("pointermove", this._handleResizeMove);
     window.removeEventListener("pointerup", this._handleResizeEnd);
     if (shouldClose) {
@@ -1168,14 +1246,15 @@ class MuiDrawer extends HTMLElement {
     const baseWidth =
       side === "left" ? this.workspaceResizeState.startLeftWidth : this.workspaceResizeState.startRightWidth;
     const nextWidth = side === "left" ? baseWidth + delta : baseWidth - delta;
-    const closeThreshold = Math.min(this.getResizeRailCloseThreshold(), this.getResizeRailMinDrawerWidth(side) - 1);
-    const clampedWidth = Math.max(
-      this.getResizeRailMinDrawerWidth(side),
-      Math.min(nextWidth, this.getWorkspaceMaxPanelWidth(side)),
-    );
+    const minDrawerWidth = this.getResizeRailMinDrawerWidth(side);
+    const maxDrawerWidth = this.getWorkspaceMaxPanelWidth(side);
+    const closeThreshold = Math.min(this.getResizeRailCloseThreshold(), minDrawerWidth - 1);
+    const clampedWidth = Math.max(minDrawerWidth, Math.min(nextWidth, maxDrawerWidth));
 
     this.workspaceResizeState.closeOnRelease = nextWidth <= closeThreshold;
     this.getWorkspaceResizeRail(side)?.classList.toggle("threshold", this.workspaceResizeState.closeOnRelease);
+    const isAtLimit = (nextWidth <= minDrawerWidth || nextWidth >= maxDrawerWidth) && !this.workspaceResizeState.closeOnRelease;
+    this.getWorkspaceResizeRail(side)?.classList.toggle("at-limit", isAtLimit);
     this.syncWorkspaceResizeCloseOpacity(side, nextWidth);
     this.setAttribute(`${side}-width`, `${Math.round(clampedWidth)}px`);
   };
@@ -1185,7 +1264,7 @@ class MuiDrawer extends HTMLElement {
     if (state?.closeOnRelease) {
       this.removeAttribute(`${state.side}-open`);
     }
-    this.workspaceResizeRailEls.forEach((rail) => rail.classList.remove("is-resizing", "threshold"));
+    this.workspaceResizeRailEls.forEach((rail) => rail.classList.remove("is-resizing", "threshold", "at-limit"));
     this.workspaceResizeState = null;
     this.removeAttribute("resizing");
     window.removeEventListener("pointermove", this._handleWorkspaceResizeMove);
@@ -1285,6 +1364,22 @@ class MuiDrawer extends HTMLElement {
     const overlayZ = zIndexAttr ? Number(zIndexAttr) : 10;
     const drawerZ = zIndexAttr ? Number(zIndexAttr) + 1 : 11; // overlay below drawer
 
+    if (!this.classList.contains("no-transition")) {
+      [this.outer, this.overlayEl].forEach((el) => {
+        if (el) {
+          el.classList.add("is-animating");
+          let transitionCleaned = false;
+          const cleanup = () => {
+            if (transitionCleaned) return;
+            transitionCleaned = true;
+            el.classList.remove("is-animating");
+          };
+          el.addEventListener("transitionend", cleanup, { once: true });
+          setTimeout(cleanup, 400);
+        }
+      });
+    }
+
     // overlay logic (modal)
     if (variant === "overlay" && this.overlayEl) {
       this.overlayEl.style.visibility = isOpen ? "visible" : "hidden";
@@ -1326,7 +1421,9 @@ class MuiDrawer extends HTMLElement {
   }
 
   private _handleResize = () => {
+    this.syncMobileState();
     const variant = this.getAttribute("variant") || "overlay";
+    this.classList.add("no-transition");
     if (variant === "push" || variant === "persistent") {
       this.updateLayout(variant, this.getLayoutOpenState(variant));
       this.syncOpenState();
@@ -1337,6 +1434,7 @@ class MuiDrawer extends HTMLElement {
       this.syncWorkspaceState();
       requestAnimationFrame(() => shell?.classList.remove("no-transition"));
     }
+    requestAnimationFrame(() => this.classList.remove("no-transition"));
   };
 
   private updateLayout(variant: string, isOpen: boolean) {
