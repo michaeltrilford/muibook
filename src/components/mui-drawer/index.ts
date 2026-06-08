@@ -439,6 +439,9 @@ class MuiDrawer extends HTMLElement {
         width: 100%;
         height: var(--drawer-height, 100dvh);
         background: var(--drawer-background);
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        box-sizing: border-box;
       }
 
       .workspace-panel-left .inner {
