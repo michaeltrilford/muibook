@@ -380,6 +380,10 @@
       "import": "./dist/esm/components/mui-icons/rectangle-left-drawer/index.js",
       "types": "./dist/types/components/mui-icons/rectangle-left-drawer/index.d.ts"
     },
+    "./mui-icons/rectangle-right-drawer": {
+      "import": "./dist/esm/components/mui-icons/rectangle-right-drawer/index.js",
+      "types": "./dist/types/components/mui-icons/rectangle-right-drawer/index.d.ts"
+    },
     "./mui-icons/panel": {
       "import": "./dist/esm/components/mui-icons/panel/index.js",
       "types": "./dist/types/components/mui-icons/panel/index.d.ts"

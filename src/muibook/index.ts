@@ -60,6 +60,7 @@ import "../components/mui-icons/rectangle-media-text";
 import "../components/mui-icons/rectangle-dashed";
 import "../components/mui-icons/fullscreen";
 import "../components/mui-icons/rectangle-left-drawer";
+import "../components/mui-icons/rectangle-right-drawer";
 import "../components/mui-icons/panel";
 import "../components/mui-icons/pause";
 import "../components/mui-icons/picture-in-picture";
@@ -187,9 +188,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
 `;
 
 function setStatusBarColorFromCSSVar(cssVarName: string) {
-  const color = getComputedStyle(document.documentElement)
-    .getPropertyValue(cssVarName)
-    .trim();
+  const color = getComputedStyle(document.documentElement).getPropertyValue(cssVarName).trim();
 
   setStatusBarColor(color);
 }

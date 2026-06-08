@@ -304,6 +304,11 @@ class storyIcon extends HTMLElement {
             <mui-icon-rectangle-left-drawer slot="body"></mui-icon-rectangle-left-drawer>
             <mui-code slot="footer" scrollable>mui-icon-rectangle-left-drawer</mui-code>
           </story-icon-grid> 
+
+          <story-icon-grid center>
+            <mui-icon-rectangle-right-drawer slot="body"></mui-icon-rectangle-right-drawer>
+            <mui-code slot="footer" scrollable>mui-icon-rectangle-right-drawer</mui-code>
+          </story-icon-grid> 
           
           <story-icon-grid center>
             <mui-icon-panel slot="body"></mui-icon-panel>

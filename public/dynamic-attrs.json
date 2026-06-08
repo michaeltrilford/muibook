@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-07T05:51:03.310Z",
+  "generatedAt": "2026-06-08T06:59:21.238Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -276,6 +276,16 @@
         }
       ]
     },
+    "mui-card-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-button-group",
+          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
+        }
+      ]
+    },
     "mui-card-body": {
       "version": 1,
       "destinationOnly": true,
@@ -291,16 +301,6 @@
         {
           "name": "inner-space-top",
           "description": "Set when top inner spacing is needed, allowing the card body to adjust vertical rhythm."
-        }
-      ]
-    },
-    "mui-card-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-button-group",
-          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
         }
       ]
     },

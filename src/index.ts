@@ -95,6 +95,7 @@ export * from "./components/mui-icons/rectangle-media-text";
 export * from "./components/mui-icons/rectangle-dashed";
 export * from "./components/mui-icons/fullscreen";
 export * from "./components/mui-icons/rectangle-left-drawer";
+export * from "./components/mui-icons/rectangle-right-drawer";
 export * from "./components/mui-icons/panel";
 export * from "./components/mui-icons/pause";
 export * from "./components/mui-icons/picture-in-picture";

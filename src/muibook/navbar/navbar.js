@@ -73,6 +73,7 @@ class appNavbar extends HTMLElement {
         bottom: 0;
         left: 0;
         min-height: 100vh;
+        z-index: 1;
       }
 
       .grid {

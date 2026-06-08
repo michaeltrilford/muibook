@@ -42,6 +42,7 @@ import "./rectangle-media-text";
 import "./rectangle-dashed";
 import "./fullscreen";
 import "./rectangle-left-drawer";
+import "./rectangle-right-drawer";
 import "./panel";
 import "./pause";
 import "./picture-in-picture";

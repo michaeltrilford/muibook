@@ -138,38 +138,24 @@ export default defineConfig({
           __dirname,
           "src/components/mui-icons/rectangle-dashed.ts",
         ),
-        "components/mui-icons/fullscreen": path.resolve(
-          __dirname,
-          "src/components/mui-icons/fullscreen.ts",
-        ),
+        "components/mui-icons/fullscreen": path.resolve(__dirname, "src/components/mui-icons/fullscreen.ts"),
         "components/mui-icons/rectangle-left-drawer": path.resolve(
           __dirname,
           "src/components/mui-icons/rectangle-left-drawer.ts",
         ),
-        "components/mui-icons/panel": path.resolve(
+        "components/mui-icons/rectangle-right-drawer": path.resolve(
           __dirname,
-          "src/components/mui-icons/panel.ts",
+          "src/components/mui-icons/rectangle-right-drawer.ts",
         ),
-        "components/mui-icons/pause": path.resolve(
-          __dirname,
-          "src/components/mui-icons/pause.ts",
-        ),
+        "components/mui-icons/panel": path.resolve(__dirname, "src/components/mui-icons/panel.ts"),
+        "components/mui-icons/pause": path.resolve(__dirname, "src/components/mui-icons/pause.ts"),
         "components/mui-icons/picture-in-picture": path.resolve(
           __dirname,
           "src/components/mui-icons/picture-in-picture.ts",
         ),
-        "components/mui-icons/play-fill": path.resolve(
-          __dirname,
-          "src/components/mui-icons/play-fill.ts",
-        ),
-        "components/mui-icons/reload": path.resolve(
-          __dirname,
-          "src/components/mui-icons/reload.ts",
-        ),
-        "components/mui-icons/speaker-mute": path.resolve(
-          __dirname,
-          "src/components/mui-icons/speaker-mute.ts",
-        ),
+        "components/mui-icons/play-fill": path.resolve(__dirname, "src/components/mui-icons/play-fill.ts"),
+        "components/mui-icons/reload": path.resolve(__dirname, "src/components/mui-icons/reload.ts"),
+        "components/mui-icons/speaker-mute": path.resolve(__dirname, "src/components/mui-icons/speaker-mute.ts"),
         "components/mui-icons/speaker-one-wave": path.resolve(
           __dirname,
           "src/components/mui-icons/speaker-one-wave.ts",
@@ -178,10 +164,7 @@ export default defineConfig({
           __dirname,
           "src/components/mui-icons/speaker-two-wave.ts",
         ),
-        "components/mui-icons/stop-fill": path.resolve(
-          __dirname,
-          "src/components/mui-icons/stop-fill.ts",
-        ),
+        "components/mui-icons/stop-fill": path.resolve(__dirname, "src/components/mui-icons/stop-fill.ts"),
         "components/mui-icons/pin": path.resolve(__dirname, "src/components/mui-icons/pin.ts"),
         "components/mui-icons/pin-slash": path.resolve(__dirname, "src/components/mui-icons/pin-slash.ts"),
         "components/mui-icons/text-below-folder": path.resolve(
@@ -267,7 +250,7 @@ export default defineConfig({
         // AGENT
         "agent/keywords": path.resolve(__dirname, "src/agent/keywords"),
         "agent/prompts": path.resolve(__dirname, "src/agent/prompts"),
-        "knowledge": path.resolve(__dirname, "src/knowledge"),
+        knowledge: path.resolve(__dirname, "src/knowledge"),
       },
       formats: ["es"],
       fileName: (_, entryName) => (entryName === "index" ? "index.js" : `${entryName}/index.js`),

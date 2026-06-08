@@ -40,10 +40,6 @@ class storyDrawer extends HTMLElement {
       .menu-item {
         text-align: left;
       }
-      .menu-item::part(padding) {
-        padding: var(--space-300) var(--space-500);
-        border-radius: 0;
-      }
 
       .visually-hidden {
         position: absolute;
@@ -110,8 +106,35 @@ class storyDrawer extends HTMLElement {
         padding: var(--space-400);
         border: var(--border-thin);
         border-radius: var(--radius-200);
+        background: var(--surface);
+        box-sizing: border-box;
+      }
+
+      .workspace-demo-panel {
+        min-height: 100%;
+        box-sizing: border-box;
+        background: var(--drawer-background);
+      }
+
+      .workspace-demo-canvas {
+        min-height: 100%;
+        box-sizing: border-box;
+        background: var(--surface);
+      }
+
+      .workspace-demo-frame {
+        width: min(100%, 42rem);
+        margin-inline: auto;
+        border: var(--border-thin);
+        border-radius: var(--radius-300);
         background: var(--surface-elevated-100);
         box-sizing: border-box;
+      }
+
+      .workspace-demo-preview {
+        height: var(--space-800);
+        border-radius: var(--radius-200);
+        background: var(--surface-elevated-200);
       }
 
       @container (max-width: 90rem) {
@@ -488,6 +511,131 @@ class storyDrawer extends HTMLElement {
       </mui-v-stack>
     `;
 
+    const workspaceComponentsPanel = /*html*/ `
+      <div class="workspace-demo-panel">
+        <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
+          <mui-heading size="5" level="2">Components</mui-heading>
+        </mui-h-stack>
+
+        <mui-v-stack space="var(--space-400)" style="padding: var(--space-400)">
+          <mui-v-stack alignx="stretch" space="var(--space-100)">
+            <mui-button size="small" class="menu-item" variant="tertiary">
+              <mui-icon-rectangle-media-text slot="before"></mui-icon-rectangle-media-text>
+              Media Card
+            </mui-button>
+            <mui-button size="small" class="menu-item" variant="tertiary">
+              <mui-icon-left-sidebar slot="before"></mui-icon-left-sidebar>
+              Sidebar
+            </mui-button>
+            <mui-button size="small" class="menu-item" variant="tertiary">
+              <mui-icon-message slot="before"></mui-icon-message>
+              Message
+            </mui-button>
+          </mui-v-stack>
+          <mui-rule></mui-rule>
+          <mui-v-stack alignx="stretch" space="var(--space-100)">
+            <mui-body size="small" weight="bold" style="margin-bottom: var(--space-100)">Sections</mui-body>
+            <mui-button size="small" class="menu-item" variant="tertiary">
+              <mui-icon-rectangle-media-text slot="before"></mui-icon-rectangle-media-text>
+              Hero
+            </mui-button>
+            <mui-button size="small" class="menu-item" variant="tertiary">
+              <mui-icon-rectangle-media-text slot="before"></mui-icon-rectangle-media-text>
+              Feature Grid
+            </mui-button>
+            <mui-button size="small" class="menu-item" variant="tertiary">
+              <mui-icon-rectangle-media-text slot="before"></mui-icon-rectangle-media-text>
+              Action Footer
+            </mui-button>
+          </mui-v-stack>
+        </mui-v-stack>
+      </div>
+    `;
+
+    const workspaceInspectorPanel = /*html*/ `
+      <div class="workspace-demo-panel">
+        <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
+          <mui-dropdown position="left">
+            <mui-button slot="action" aria-label="Open Mike profile menu">
+              <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
+            </mui-button>
+            <mui-button size="small" variant="tertiary">Profile</mui-button>
+            <mui-button size="small" variant="tertiary">Settings</mui-button>
+            <mui-button size="small" variant="tertiary">Sign out</mui-button>
+          </mui-dropdown>
+          <mui-button size="small" variant="primary">Share</mui-button>
+        </mui-h-stack>
+
+        <mui-v-stack space="var(--space-400)" style="padding: var(--space-400)">
+          <mui-h-stack alignx="space-between" aligny="center">
+            <mui-body size="small">Styles</mui-body>
+            <mui-button size="x-small" variant="tertiary"><mui-icon-add></mui-icon-add></mui-button>
+          </mui-h-stack>
+          <mui-rule></mui-rule>
+          <mui-h-stack alignx="space-between" aligny="center">
+            <mui-body size="small">Layout</mui-body>
+            <mui-button size="x-small" variant="tertiary"><mui-icon-add></mui-icon-add></mui-button>
+          </mui-h-stack>
+          <mui-rule></mui-rule>
+          <mui-h-stack alignx="space-between" aligny="center">
+            <mui-body size="small">Export</mui-body>
+            <mui-button size="x-small" variant="tertiary"><mui-icon-add></mui-icon-add></mui-button>
+          </mui-h-stack>
+          <mui-rule></mui-rule>
+        </mui-v-stack>
+      </div>
+    `;
+
+    const workspaceCanvasPage = /*html*/ `
+      <div class="workspace-demo-canvas">
+        <div class="canvas-page-header">
+          <mui-h-stack space="var(--space-200)" aligny="center" alignx="space-between" width="100%">
+            <mui-h-stack space="var(--space-200)" aligny="center">
+              <mui-button variant="tertiary" size="small" data-drawer-toggle="drawer-resize-workspace-left-rail">
+                <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
+              </mui-button>
+              <mui-heading size="4" level="2">Canvas</mui-heading>
+              <mui-badge variant="neutral">Draft</mui-badge>
+            </mui-h-stack>
+              <mui-button variant="tertiary" size="small" data-drawer-toggle="drawer-resize-workspace-right-rail">
+                <mui-icon-rectangle-right-drawer size="small"></mui-icon-rectangle-right-drawer>
+              </mui-button>
+          </mui-h-stack>
+        </div>
+
+        <mui-v-stack class="page-content resize-page-content" space="var(--space-500)" alignx="center">
+          <mui-v-stack class="workspace-demo-frame" space="var(--space-400)" style="padding: var(--space-500);">
+            <mui-h-stack alignx="space-between" aligny="center">
+              <mui-heading size="5" level="3">Customer Portal</mui-heading>
+              <mui-badge variant="positive">Live</mui-badge>
+            </mui-h-stack>
+            <mui-grid col="1fr" space="var(--space-400)">
+              <div class="resize-test-panel">
+                <mui-v-stack space="var(--space-300)">
+                  <mui-body size="small" weight="bold">Right Drawer</mui-body>
+                  <mui-code wrap size="x-small">resize-min-right-width="200"</mui-code>
+                  <mui-code wrap size="x-small">right-width="30rem"</mui-code>
+                </mui-v-stack>
+              </div>
+              <div class="resize-test-panel">
+                <mui-v-stack space="var(--space-300)">
+                  <mui-body size="small" weight="bold">Page Content</mui-body>
+                  <mui-code wrap size="x-small">resize-min-page-width="400"</mui-code>
+                </mui-v-stack>
+              </div>
+              <div class="resize-test-panel">
+                <mui-v-stack space="var(--space-300)">
+                  <mui-body size="small" weight="bold">Left Drawer</mui-body>
+                  <mui-code wrap size="x-small">resize-min-left-width="200"</mui-code>
+                  <mui-code wrap size="x-small">left-width="24rem"</mui-code>
+                </mui-v-stack>
+              </div>
+            </mui-grid>
+          </mui-v-stack>
+        </mui-v-stack>
+      </div>
+    `;
+
     const stories = /*html*/ `
       <mui-v-stack space="var(--space-100)">
         <story-api-types tag="mui-drawer" title="Drawer"></story-api-types>
@@ -660,6 +808,65 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
+
+      <story-card
+        id="drawer-workspace"
+        title="Workspace"
+        description="Creates an editor-style workspace with left and right panels around a central page or canvas."
+        usage="
+          Use variant='workspace' when a page canvas needs independent left and right support panels.|||
+          Slot component navigation or libraries into slot='left', the main canvas into slot='page', and inspector or properties content into slot='right'.|||
+          Control panel visibility with left-open and right-open so product state can decide whether one, both, or neither panel is visible.|||
+          Tune the panel columns with left-width and right-width, then add resize-rail when both workspace panels should be user-resizable.|||
+          Use resize-min-drawer-width and resize-min-page-width to keep the side panels and central canvas usable while resizing.|||
+          Release a panel below resize-close-threshold to close that side while keeping the central page protected.|||
+          Wire page actions to left-open and right-open so each workspace panel can be toggled independently.
+        "
+      >
+        <div class="canvas" slot="body">
+          <mui-drawer
+            variant="workspace"
+            resize-rail
+            resize-min-left-width="200"
+            resize-min-right-width="200"
+            resize-min-page-width="400"
+            resize-close-threshold="96"
+            left-open
+            right-open
+            left-width="24rem"
+            right-width="30rem"
+            data-drawer-toggle-left="drawer-resize-workspace-left-rail"
+            data-drawer-toggle-right="drawer-resize-workspace-right-rail"
+            breakpoint="1400"
+            height="65dvh"
+            >
+            <div slot="left">${workspaceComponentsPanel}</div>
+            <div slot="page">${workspaceCanvasPage}</div>
+            <div slot="right">${workspaceInspectorPanel}</div>
+          </mui-drawer>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer<br>
+          &nbsp;&nbsp;variant="workspace"<br>
+          &nbsp;&nbsp;resize-rail<br>
+          &nbsp;&nbsp;resize-min-left-width="200"<br>
+          &nbsp;&nbsp;resize-min-right-width="200"<br>
+          &nbsp;&nbsp;resize-min-page-width="400"<br>
+          &nbsp;&nbsp;resize-close-threshold="96"<br>
+          &nbsp;&nbsp;left-open<br>
+          &nbsp;&nbsp;right-open<br>
+          &nbsp;&nbsp;left-width="24rem"<br>
+          &nbsp;&nbsp;right-width="30rem"<br>
+          &nbsp;&nbsp;height="65dvh"<br>
+          &nbsp;&nbsp;data-drawer-toggle-left="drawer-resize-workspace-left-rail"<br>
+          &nbsp;&nbsp;data-drawer-toggle-right="drawer-resize-workspace-right-rail"&gt;<br>
+          &nbsp;&nbsp;&lt;div slot="left"&gt;...component library...&lt;/div&gt;<br>
+          &nbsp;&nbsp;&lt;div slot="page"&gt;...canvas...&lt;/div&gt;<br>
+          &nbsp;&nbsp;&lt;div slot="right"&gt;...properties panel...&lt;/div&gt;<br>
+          &lt;/mui-drawer&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card
         id="drawer-push-left"
         title="Push Left" 
@@ -673,7 +880,7 @@ class storyDrawer extends HTMLElement {
         "
       >
         <div class="canvas" slot="body">  
-          <mui-drawer variant="push" data-drawer="drawer-3" width="320px" side="left">
+          <mui-drawer variant="push" data-drawer="drawer-3" width="320px" side="left" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 ${invoiceHeader}
@@ -717,6 +924,7 @@ class storyDrawer extends HTMLElement {
           Use resize-rail only when the push drawer benefits from user-controlled width.|||
           The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
           Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
+          Use height when a drawer needs to sit inside a contained story, workspace, or app region instead of the default 100dvh viewport height.|||
           Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
           Pull below resize-min-drawer-width to fade the drawer content while the width remains clamped, then release past resize-close-threshold to close it.|||
           The rail is hidden on the narrow-screen push layout where the drawer behaves like an overlay.
@@ -731,7 +939,9 @@ class storyDrawer extends HTMLElement {
             resize-min-page-width="320"
             resize-close-threshold="96"
             open
+            data-desktop-open
             data-drawer-toggle="drawer-resize-left-rail"
+            height="45rem"
             width="260px"
             side="left">
             <div slot="page" class="page-main resize-page-main">
@@ -805,7 +1015,8 @@ class storyDrawer extends HTMLElement {
           &nbsp;&nbsp;resize-min-page-width="320"<br>
           &nbsp;&nbsp;resize-close-threshold="96"<br>
           &nbsp;&nbsp;open<br>
-          &nbsp;&nbsp;width="320px"<br>
+          &nbsp;&nbsp;height="45rem"<br>
+          &nbsp;&nbsp;width="260px"<br>
           &nbsp;&nbsp;side="left"&gt;<br>
           &nbsp;&nbsp;&lt;div slot="page" style="min-width: 0; container-type: inline-size;"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="min-width: 0; overflow: auto;"&gt;...&lt;/div&gt;<br>
@@ -816,6 +1027,217 @@ class storyDrawer extends HTMLElement {
       </story-card>
 
       <story-card
+        id="drawer-persistent-left-resize-rail"
+        title="Persistent Left Resize Rail"
+        description="Adds a draggable boundary between a desktop persistent drawer and the page so the user can adjust the drawer width while keeping the drawer present."
+        usage="
+          Use resize-rail only when the persistent drawer benefits from user-controlled width.|||
+          The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
+          Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
+          Use height when a drawer needs to sit inside a contained story, workspace, or app region instead of the default 100dvh viewport height.|||
+          Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
+          Persistent drawers stay present by default on desktop, so resize-rail only adjusts width and does not act as an open or close gesture.|||
+          On narrow screens, persistent drawers use the overlay presentation by default and the rail is hidden.
+        "
+      >
+        <div class="canvas" slot="body">
+          <mui-drawer
+            variant="persistent"
+            resize-rail
+            drawer-space
+            resize-min-drawer-width="240"
+            resize-min-page-width="320"
+            height="45rem"
+            data-drawer-toggle="drawer-persistent-left-rail"
+            width="260px"
+            side="left">
+            <div slot="page" class="page-main resize-page-main">
+              <div class="canvas-page-header">
+                <mui-h-stack space="var(--space-050)" alignY="center">
+                  <mui-responsive breakpoint="768">
+                    <mui-button slot="showBelow" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-left-rail">
+                      <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
+                    </mui-button>
+                  </mui-responsive>
+                  <mui-heading size="5" level="1">Page 1</mui-heading>
+                </mui-h-stack>
+              </div>
+              <div class="page-content resize-page-content">
+                <mui-v-stack space="var(--space-400)">
+                  <div class="resize-test-grid">
+                    <div class="resize-test-panel">
+                      <mui-v-stack space="var(--space-200)">
+                        <mui-heading size="5" level="5">Page Minimum</mui-heading>
+                        <mui-body size="small">Set a minimum page width.</mui-body>
+                        <mui-code wrap size="x-small">resize-min-page-width</mui-code>
+                      </mui-v-stack>
+                    </div>
+                    <div class="resize-test-panel">
+                      <mui-v-stack space="var(--space-200)">
+                        <mui-heading size="5" level="5">Drawer Width</mui-heading>
+                        <mui-body size="small">Default width of the Drawer.</mui-body>
+                        <mui-code wrap size="x-small">E.g. width="260px"</mui-code>
+                      </mui-v-stack>
+                    </div>
+                    <div class="resize-test-panel">
+                      <mui-v-stack space="var(--space-200)">
+                        <mui-heading size="5" level="5">Drawer Minimum</mui-heading>
+                        <mui-body size="small">Set the min-width of the Drawer.</mui-body>
+                        <mui-code wrap size="x-small">resize-min-drawer-width</mui-code>
+                      </mui-v-stack>
+                    </div>
+                  </div>
+                </mui-v-stack>
+              </div>
+            </div>
+            <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
+              <mui-dropdown position="left">
+                <mui-button slot="action" aria-label="Open Mike profile menu">
+                  <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
+                </mui-button>
+                <mui-button size="small" variant="tertiary">Profile</mui-button>
+                <mui-button size="small" variant="tertiary">Settings</mui-button>
+                <mui-button size="small" variant="tertiary">Sign out</mui-button>
+              </mui-dropdown>
+              <mui-button size="small" variant="primary">Share</mui-button>
+            </mui-h-stack>
+
+            <mui-v-stack space="var(--space-400)" style="padding: var(--space-400)">
+              <mui-h-stack alignx="space-between" aligny="center">
+                <mui-body size="small">Styles</mui-body>
+                <mui-button size="x-small" variant="tertiary"><mui-icon-add></mui-icon-add></mui-button>
+              </mui-h-stack>
+              <mui-rule></mui-rule>
+              <mui-h-stack alignx="space-between" aligny="center">
+                <mui-body size="small">Export</mui-body>
+                <mui-button size="x-small" variant="tertiary"><mui-icon-add></mui-icon-add></mui-button>
+              </mui-h-stack>
+              <mui-rule></mui-rule>
+            </mui-v-stack>
+          </mui-drawer>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer<br>
+          &nbsp;&nbsp;variant="persistent"<br>
+          &nbsp;&nbsp;resize-rail<br>
+          &nbsp;&nbsp;resize-min-drawer-width="240"<br>
+          &nbsp;&nbsp;resize-min-page-width="320"<br>
+          &nbsp;&nbsp;height="45rem"<br>
+          &nbsp;&nbsp;data-drawer-toggle="hook"<br>
+          &nbsp;&nbsp;width="260px"<br>
+          &nbsp;&nbsp;side="left"&gt;<br>
+          &nbsp;&nbsp;&lt;div slot="page" style="min-width: 0; container-type: inline-size;"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="min-width: 0; overflow: auto;"&gt;...&lt;/div&gt;<br>
+          &nbsp;&nbsp;&lt;/div&gt;<br>
+          &nbsp;&nbsp;...<br>
+          &lt;/mui-drawer&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+       id="drawer-persistent-left"
+        title="Persistent Left"
+        description="The Persistent Drawer remains fixed in place without sliding in or out on desktop. It is positioned on the left side of the main content and becomes part of the layout itself. On mobile, it uses the overlay presentation by default."
+        usage="
+          This variant is intended for full-screen page views rather than smaller page sections.|||
+          Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
+          Use mobile-presentation='stack' when a persistent drawer should keep the older block layout on narrow screens instead of overlaying the page.|||
+          See the <mui-link size='x-small' target='_blank' href='/persistent-left'>full-screen example</mui-link>
+        "
+      >
+        <div class="canvas" slot="body">
+          <mui-drawer variant="persistent" width="320px" slot="body" side="left" data-drawer-toggle="drawer-persistent-left-demo" height="45dvh">
+            <div slot="page" class="page-main">
+              <div class="page-header">
+                <mui-h-stack space="var(--space-050)" alignY="center">
+                  <mui-responsive breakpoint="768">
+                    <mui-button slot="showBelow" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-left-demo">
+                    <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
+                    </mui-button>
+                  </mui-responsive>
+                  <mui-heading size="4" level="4">Smart Bills</mui-heading>
+                </mui-h-stack>
+              </div>
+              <div class="page-content">
+                ${bill}
+              </div>
+            </div>
+            <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
+
+            ${reviewStepper}
+
+            <form>
+              <mui-v-stack space="var(--space-400)">
+                <mui-input label="Item" value="Hank Barry"></mui-input>
+                <mui-input label="Description" value="Telstra Upfront 5G Internet"></mui-input>
+                <mui-input label="Allocate to" value="Internet"></mui-input>
+                <mui-input label="Qty" value="1"></mui-input>
+                <mui-input label="Unit price" value="85.50"></mui-input>
+              </mui-v-stack>
+            </form>
+            <mui-button slot="actions" variant="tertiary">Back</mui-button>
+            <mui-button slot="actions" variant="primary">Next</mui-button>
+          </mui-drawer>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer variant="persistent" width="320px" side="left" data-drawer-toggle="hook"&gt;<br>
+            &nbsp;&nbsp;...<br>
+          &lt;/mui-drawer&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card 
+        id="drawer-push-right"
+        title="Push Right" 
+        description="The Push Drawer slides in from the right and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
+        usage="
+          This variant is intended for full-screen page views rather than smaller page sections.|||
+          Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
+          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
+          If an alternative mobile view is required, use state or media queries to swap the drawer out.|||
+          See the <mui-link size='x-small' target='_blank' href='/push-right'>full-screen example</mui-link>
+        "
+      >
+        <div class="canvas" slot="body">
+          <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right" height="45dvh">
+            <div slot="page" class="page-main">
+              <div class="page-header">
+                ${invoiceHeader}
+                <mui-dropdown position="right">
+                  <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
+                  <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
+                  <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                </mui-dropdown>
+              </div>
+              <div class="page-content">
+                ${invoice}
+              </div>
+            </div>
+            <mui-heading size="4" level="4" slot="title">Invoice Details</mui-heading>
+            <form>
+              <mui-v-stack space="var(--space-400)">
+                <mui-input label="Customer" value="Hank Barry"></mui-input>
+                <mui-input label="Invoice ID" value="IV001"></mui-input>
+                <mui-input label="Purchase ID" value="9900"></mui-input>
+                <mui-input label="Issued" value="16/10/2025"></mui-input>
+                <mui-input label="Due" value="15/11/2025"></mui-input>
+                <mui-input label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-input>
+              </mui-v-stack>
+            </form>
+            <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
+            <mui-button slot="actions" variant="primary">Save</mui-button>
+          </mui-drawer>
+        </div>  
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
+          &nbsp;&nbsp;...<br>
+          &lt;/mui-drawer&gt;
+        </story-code-block>
+      </story-card>
+
+
+      <story-card
         id="drawer-push-right-resize-rail"
         title="Push Right Resize Rail"
         description="Adds a draggable boundary between a desktop push drawer and the page so the user can adjust the drawer width while keeping page context visible."
@@ -823,6 +1245,7 @@ class storyDrawer extends HTMLElement {
           Use resize-rail only when the push drawer benefits from user-controlled width.|||
           The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
           Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
+          Use height when a drawer needs to sit inside a contained story, workspace, or app region instead of the default 100dvh viewport height.|||
           Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
           Pull below resize-min-drawer-width to fade the drawer content while the width remains clamped, then release past resize-close-threshold to close it.|||
           The rail is hidden on the narrow-screen push layout where the drawer behaves like an overlay.
@@ -837,7 +1260,9 @@ class storyDrawer extends HTMLElement {
             resize-min-page-width="320"
             resize-close-threshold="96"
             open
+            data-desktop-open
             data-drawer-toggle="drawer-resize-right-rail"
+            height="45rem"
             width="260px"
             side="right">
             <div slot="page" class="page-main resize-page-main">
@@ -912,106 +1337,9 @@ class storyDrawer extends HTMLElement {
           &nbsp;&nbsp;resize-min-page-width="320"<br>
           &nbsp;&nbsp;resize-close-threshold="96"<br>
           &nbsp;&nbsp;open<br>
-          &nbsp;&nbsp;width="320px"<br>
+          &nbsp;&nbsp;height="45rem"<br>
+          &nbsp;&nbsp;width="260px"<br>
           &nbsp;&nbsp;side="right"&gt;<br>
-          &nbsp;&nbsp;&lt;div slot="page" style="min-width: 0; container-type: inline-size;"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="min-width: 0; overflow: auto;"&gt;...&lt;/div&gt;<br>
-          &nbsp;&nbsp;&lt;/div&gt;<br>
-          &nbsp;&nbsp;...<br>
-          &lt;/mui-drawer&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card
-        id="drawer-persistent-left-resize-rail"
-        title="Persistent Left Resize Rail"
-        description="Adds a draggable boundary between a desktop persistent drawer and the page so the user can adjust the drawer width while keeping the drawer present."
-        usage="
-          Use resize-rail only when the persistent drawer benefits from user-controlled width.|||
-          The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
-          Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
-          Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
-          Persistent drawers stay present by default, so resize-rail only adjusts width and does not act as an open or close gesture.|||
-          The rail is hidden on the narrow-screen persistent layout where the drawer stacks with the page.
-        "
-      >
-        <div class="canvas" slot="body">
-          <mui-drawer
-            variant="persistent"
-            resize-rail
-            drawer-space
-            resize-min-drawer-width="240"
-            resize-min-page-width="320"
-            width="260px"
-            side="left">
-            <div slot="page" class="page-main resize-page-main">
-              <div class="canvas-page-header">
-                <mui-h-stack space="var(--space-050)" alignY="center">
-                  <mui-heading size="5" level="1">Page 1</mui-heading>
-                </mui-h-stack>
-              </div>
-              <div class="page-content resize-page-content">
-                <mui-v-stack space="var(--space-400)">
-                  <div class="resize-test-grid">
-                    <div class="resize-test-panel">
-                      <mui-v-stack space="var(--space-200)">
-                        <mui-heading size="5" level="5">Page Minimum</mui-heading>
-                        <mui-body size="small">Set a minimum page width.</mui-body>
-                        <mui-code wrap size="x-small">resize-min-page-width</mui-code>
-                      </mui-v-stack>
-                    </div>
-                    <div class="resize-test-panel">
-                      <mui-v-stack space="var(--space-200)">
-                        <mui-heading size="5" level="5">Drawer Width</mui-heading>
-                        <mui-body size="small">Default width of the Drawer.</mui-body>
-                        <mui-code wrap size="x-small">E.g. width="260px"</mui-code>
-                      </mui-v-stack>
-                    </div>
-                    <div class="resize-test-panel">
-                      <mui-v-stack space="var(--space-200)">
-                        <mui-heading size="5" level="5">Drawer Minimum</mui-heading>
-                        <mui-body size="small">Set the min-width of the Drawer.</mui-body>
-                        <mui-code wrap size="x-small">resize-min-drawer-width</mui-code>
-                      </mui-v-stack>
-                    </div>
-                  </div>
-                </mui-v-stack>
-              </div>
-            </div>
-            <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
-              <mui-dropdown position="left">
-                <mui-button slot="action" aria-label="Open Mike profile menu">
-                  <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
-                </mui-button>
-                <mui-button size="small" variant="tertiary">Profile</mui-button>
-                <mui-button size="small" variant="tertiary">Settings</mui-button>
-                <mui-button size="small" variant="tertiary">Sign out</mui-button>
-              </mui-dropdown>
-              <mui-button size="small" variant="primary">Share</mui-button>
-            </mui-h-stack>
-
-            <mui-v-stack space="var(--space-400)" style="padding: var(--space-400)">
-              <mui-h-stack alignx="space-between" aligny="center">
-                <mui-body size="small">Styles</mui-body>
-                <mui-button size="x-small" variant="tertiary"><mui-icon-add></mui-icon-add></mui-button>
-              </mui-h-stack>
-              <mui-rule></mui-rule>
-              <mui-h-stack alignx="space-between" aligny="center">
-                <mui-body size="small">Export</mui-body>
-                <mui-button size="x-small" variant="tertiary"><mui-icon-add></mui-icon-add></mui-button>
-              </mui-h-stack>
-              <mui-rule></mui-rule>
-            </mui-v-stack>
-          </mui-drawer>
-        </div>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer<br>
-          &nbsp;&nbsp;variant="persistent"<br>
-          &nbsp;&nbsp;resize-rail<br>
-          &nbsp;&nbsp;resize-min-drawer-width="240"<br>
-          &nbsp;&nbsp;resize-min-page-width="320"<br>
-          &nbsp;&nbsp;width="320px"<br>
-          &nbsp;&nbsp;side="left"&gt;<br>
           &nbsp;&nbsp;&lt;div slot="page" style="min-width: 0; container-type: inline-size;"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="min-width: 0; overflow: auto;"&gt;...&lt;/div&gt;<br>
           &nbsp;&nbsp;&lt;/div&gt;<br>
@@ -1028,9 +1356,10 @@ class storyDrawer extends HTMLElement {
           Use resize-rail only when the persistent drawer benefits from user-controlled width.|||
           The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
           Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
+          Use height when a drawer needs to sit inside a contained story, workspace, or app region instead of the default 100dvh viewport height.|||
           Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
-          Persistent drawers stay present by default, so resize-rail only adjusts width and does not act as an open or close gesture.|||
-          The rail is hidden on the narrow-screen persistent layout where the drawer stacks with the page.
+          Persistent drawers stay present by default on desktop, so resize-rail only adjusts width and does not act as an open or close gesture.|||
+          On narrow screens, persistent drawers use the overlay presentation by default and the rail is hidden.
         "
       >
         <div class="canvas" slot="body">
@@ -1040,6 +1369,8 @@ class storyDrawer extends HTMLElement {
             resize-rail
             resize-min-drawer-width="240"
             resize-min-page-width="320"
+            height="45rem"
+            data-drawer-toggle="drawer-persistent-right-rail"
             width="260px"
             side="right">
             <div slot="page" class="page-main resize-page-main">
@@ -1047,6 +1378,11 @@ class storyDrawer extends HTMLElement {
                 <mui-h-stack space="var(--space-300)" alignY="center">
                   <mui-heading size="4" level="4">Page 1</mui-heading>
                 </mui-h-stack>
+                <mui-responsive breakpoint="768">
+                  <mui-button slot="showBelow" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-right-rail">
+                    <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
+                  </mui-button>
+                </mui-responsive>
               </div>
               <div class="page-content resize-page-content">
                 <mui-v-stack space="var(--space-400)">
@@ -1109,7 +1445,9 @@ class storyDrawer extends HTMLElement {
           &nbsp;&nbsp;resize-rail<br>
           &nbsp;&nbsp;resize-min-drawer-width="240"<br>
           &nbsp;&nbsp;resize-min-page-width="320"<br>
-          &nbsp;&nbsp;width="320px"<br>
+          &nbsp;&nbsp;height="45rem"<br>
+          &nbsp;&nbsp;data-drawer-toggle="hook"<br>
+          &nbsp;&nbsp;width="260px"<br>
           &nbsp;&nbsp;side="right"&gt;<br>
           &nbsp;&nbsp;&lt;div slot="page" style="min-width: 0; container-type: inline-size;"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="min-width: 0; overflow: auto;"&gt;...&lt;/div&gt;<br>
@@ -1120,70 +1458,27 @@ class storyDrawer extends HTMLElement {
       </story-card>
 
       <story-card 
-        id="drawer-push-right"
-        title="Push Right" 
-        description="The Push Drawer slides in from the right and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
-        usage="
-          This variant is intended for full-screen page views rather than smaller page sections.|||
-          Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
-          If an alternative mobile view is required, use state or media queries to swap the drawer out.|||
-          See the <mui-link size='x-small' target='_blank' href='/push-right'>full-screen example</mui-link>
-        "
-      >
-        <div class="canvas" slot="body">
-          <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right">
-            <div slot="page" class="page-main">
-              <div class="page-header">
-                ${invoiceHeader}
-                <mui-dropdown position="right">
-                  <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
-                  <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
-                  <mui-button disabled variant="tertiary">Add line-item</mui-button>
-                </mui-dropdown>
-              </div>
-              <div class="page-content">
-                ${invoice}
-              </div>
-            </div>
-            <mui-heading size="4" level="4" slot="title">Invoice Details</mui-heading>
-            <form>
-              <mui-v-stack space="var(--space-400)">
-                <mui-input label="Customer" value="Hank Barry"></mui-input>
-                <mui-input label="Invoice ID" value="IV001"></mui-input>
-                <mui-input label="Purchase ID" value="9900"></mui-input>
-                <mui-input label="Issued" value="16/10/2025"></mui-input>
-                <mui-input label="Due" value="15/11/2025"></mui-input>
-                <mui-input label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-input>
-              </mui-v-stack>
-            </form>
-            <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
-            <mui-button slot="actions" variant="primary">Save</mui-button>
-          </mui-drawer>
-        </div>  
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
-          &nbsp;&nbsp;...<br>
-          &lt;/mui-drawer&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card 
         id="drawer-persistent-right"
         title="Persistent Right" 
-        description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the right side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
+        description="The Persistent Drawer remains fixed in place without sliding in or out on desktop. It is positioned on the right side of the main content and becomes part of the layout itself. On mobile, it uses the overlay presentation by default."
         usage="
           This variant is intended for full-screen page views rather than smaller page sections.|||
           Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
           Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
+          Use mobile-presentation='stack' when a persistent drawer should keep the older block layout on narrow screens instead of overlaying the page.|||
           See the <mui-link size='x-small' target='_blank' href='/persistent-right'>full-screen example</mui-link>
         "
       >
         <div class="canvas" slot="body">
-          <mui-drawer variant="persistent" width="320px" slot="body" side="right">
+          <mui-drawer variant="persistent" width="320px" slot="body" side="right" data-drawer-toggle="drawer-persistent-right-demo" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 <mui-heading size="4" level="4">Smart Bills</mui-heading>
+                <mui-responsive breakpoint="768">
+                  <mui-button slot="showBelow" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-right-demo">
+                    <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
+                  </mui-button>
+                </mui-responsive>
               </div>
               <div class="page-content">
                 ${bill}
@@ -1207,53 +1502,8 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>  
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="persistent" width="320px" side="right"&gt;<br>
+          &lt;mui-drawer variant="persistent" width="320px" side="right" data-drawer-toggle="hook"&gt;<br>
           &nbsp;&nbsp;...<br>
-          &lt;/mui-drawer&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card
-       id="drawer-persistent-left"
-        title="Persistent Left"
-        description="The Persistent Drawer remains fixed in place without sliding in or out. It is positioned on the left side of the main content and becomes part of the layout itself. On mobile, the view naturally stacks vertically."
-        usage="
-          This variant is intended for full-screen page views rather than smaller page sections.|||
-          Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
-          See the <mui-link size='x-small' target='_blank' href='/persistent-left'>full-screen example</mui-link>
-        "
-      >
-        <div class="canvas" slot="body">
-          <mui-drawer variant="persistent" width="320px" slot="body" side="left">
-            <div slot="page" class="page-main">
-              <div class="page-header">
-                <mui-heading size="4" level="4">Smart Bills</mui-heading>
-              </div>
-              <div class="page-content">
-                ${bill}
-              </div>
-            </div>
-            <mui-heading size="4" level="4" slot="title">Review Items</mui-heading>
-
-            ${reviewStepper}
-
-            <form>
-              <mui-v-stack space="var(--space-400)">
-                <mui-input label="Item" value="Hank Barry"></mui-input>
-                <mui-input label="Description" value="Telstra Upfront 5G Internet"></mui-input>
-                <mui-input label="Allocate to" value="Internet"></mui-input>
-                <mui-input label="Qty" value="1"></mui-input>
-                <mui-input label="Unit price" value="85.50"></mui-input>
-              </mui-v-stack>
-            </form>
-            <mui-button slot="actions" variant="tertiary">Back</mui-button>
-            <mui-button slot="actions" variant="primary">Next</mui-button>
-          </mui-drawer>
-        </div>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="persistent" width="320px" side="left"&gt;<br>
-            &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
       </story-card>
@@ -1264,7 +1514,7 @@ class storyDrawer extends HTMLElement {
         description="Uses the built-in heading and close button to provide a clear way to close the panel, while also presenting additional context through the header section."
       >
         <div class="canvas" slot="body">
-          <mui-drawer variant="push" width="260px" side="left" data-drawer="hook" drawer-space="none">
+          <mui-drawer variant="push" width="260px" side="left" data-drawer="hook" drawer-space="none" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 <mui-h-stack space="var(--space-200)" alignY="center">
@@ -1332,6 +1582,7 @@ class storyDrawer extends HTMLElement {
               side="left" 
               data-drawer-toggle="custom-header-toggle" 
               drawer-space="none"
+              height="45dvh"
             >
               ${menuItems}
               <div slot="page" class="page-main">
@@ -1391,7 +1642,7 @@ class storyDrawer extends HTMLElement {
 
       >
         <div class="canvas" slot="body">
-          <mui-drawer slot="body" variant="push" breakpoint="1500" data-drawer="breakpoint" width="320px" side="right">
+          <mui-drawer slot="body" variant="push" breakpoint="1500" data-drawer="breakpoint" width="320px" side="right" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 ${invoiceHeader}
@@ -1447,7 +1698,7 @@ class storyDrawer extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="drawer-overlay-left::Overlay Left|||drawer-overlay-right::Overlay Right|||drawer-overlay-custom-footer::Overlay: Custom Footer Content|||drawer-overlay-no-header::Overlay: No Header|||drawer-overlay-no-footer::Overlay: No Footer|||drawer-push-left::Push Left|||drawer-push-left-resize-rail::Push Left Resize Rail|||drawer-push-right-resize-rail::Push Right Resize Rail|||drawer-push-right::Push Right|||drawer-persistent-left::Persistent Left|||drawer-persistent-left-resize-rail::Persistent Left Resize Rail|||drawer-persistent-right-resize-rail::Persistent Right Resize Rail|||drawer-persistent-right::Persistent Right|||drawer-menu::Menu|||drawer-advanced-menu::Advanced Menu|||drawer-breakpoint::Breakpoint"
+          links="drawer-overlay-left::Overlay Left|||drawer-overlay-right::Overlay Right|||drawer-overlay-no-header::Overlay: No Header|||drawer-overlay-custom-footer::Overlay: Custom Footer|||drawer-overlay-no-footer::Overlay: No Footer|||drawer-workspace::Workspace|||drawer-push-left::Push Left|||drawer-push-left-resize-rail::Push Left Resize Rail|||drawer-persistent-left-resize-rail::Persistent Left Resize Rail|||drawer-persistent-left::Persistent Left|||drawer-push-right::Push Right|||drawer-push-right-resize-rail::Push Right Resize Rail|||drawer-persistent-right-resize-rail::Persistent Right Resize Rail|||drawer-persistent-right::Persistent Right|||drawer-menu::Menu|||drawer-advanced-menu::Advanced Menu|||drawer-breakpoint::Breakpoint"
         ></story-quicklinks>
 
         ${stories}
@@ -1471,19 +1722,64 @@ class storyDrawer extends HTMLElement {
     });
 
     // Toggle drawer buttons
-    this.shadowRoot.querySelectorAll("mui-button[data-drawer-toggle]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const target = btn.getAttribute("data-drawer-toggle");
-        const drawer = this.shadowRoot.querySelector(`mui-drawer[data-drawer-toggle="${target}"]`);
-        if (!drawer) return;
+    this.shadowRoot
+      .querySelectorAll(
+        "mui-button[data-drawer-toggle], mui-button[data-drawer-toggle-left], mui-button[data-drawer-toggle-right]",
+      )
+      .forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const explicitLeftTarget = btn.getAttribute("data-drawer-toggle-left");
+          const explicitRightTarget = btn.getAttribute("data-drawer-toggle-right");
+          const target = btn.getAttribute("data-drawer-toggle") || explicitLeftTarget || explicitRightTarget;
+          const drawer = this.shadowRoot.querySelector(`mui-drawer[data-drawer-toggle="${target}"]`);
+          const leftDrawer = this.shadowRoot.querySelector(`mui-drawer[data-drawer-toggle-left="${target}"]`);
+          const rightDrawer = this.shadowRoot.querySelector(`mui-drawer[data-drawer-toggle-right="${target}"]`);
+          const workspaceSide =
+            explicitLeftTarget || (!drawer && leftDrawer)
+              ? "left"
+              : explicitRightTarget || (!drawer && rightDrawer)
+                ? "right"
+                : null;
+          const workspaceDrawer =
+            workspaceSide === "left" ? leftDrawer : workspaceSide === "right" ? rightDrawer : null;
 
-        if (drawer.hasAttribute("open")) {
-          drawer.removeAttribute("open");
-        } else {
-          drawer.setAttribute("open", "");
-        }
+          if (workspaceDrawer && workspaceSide) {
+            const breakpoint = Number(workspaceDrawer.getAttribute("breakpoint")) || 768;
+            const isMobile = window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
+
+            if (isMobile) {
+              if (workspaceDrawer.hasAttribute("open") && workspaceDrawer.getAttribute("side") === workspaceSide) {
+                workspaceDrawer.removeAttribute("open");
+              } else {
+                workspaceDrawer.setAttribute("side", workspaceSide);
+                workspaceDrawer.setAttribute("open", "");
+              }
+              return;
+            }
+
+            workspaceDrawer.toggleAttribute(`${workspaceSide}-open`);
+            return;
+          }
+
+          if (!drawer) return;
+
+          if (drawer.hasAttribute("open")) {
+            drawer.removeAttribute("open");
+          } else {
+            drawer.setAttribute("open", "");
+          }
+        });
       });
-    });
+
+    const desktopOpenQuery = window.matchMedia("(min-width: 769px)");
+    const syncDesktopOpenDrawers = () => {
+      this.shadowRoot.querySelectorAll("mui-drawer[data-desktop-open]").forEach((drawer) => {
+        drawer.toggleAttribute("open", desktopOpenQuery.matches);
+      });
+    };
+
+    syncDesktopOpenDrawers();
+    desktopOpenQuery.addEventListener("change", syncDesktopOpenDrawers);
 
     // Spec Card - Minimal scroll-to handler
     // The common href with hash could not be used because of the hash navigation

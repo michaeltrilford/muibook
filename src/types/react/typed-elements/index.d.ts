@@ -7,7 +7,7 @@ declare global {
     interface MuiIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
       size?: MuiIconSize;
       color?: string;
-       slot?: "start" | "end" | "before" | "after";
+      slot?: "start" | "end" | "before" | "after";
     }
 
     interface IntrinsicElements {
@@ -147,10 +147,7 @@ declare global {
       };
 
       "mui-card": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      "mui-card-body": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      > & {
+      "mui-card-body": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         condensed?: boolean;
       };
       "mui-card-footer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
@@ -318,7 +315,15 @@ declare global {
 
       "mui-tab-bar": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         speed?: string;
-        controlsPosition?: "top" | "right" | "bottom" | "left" | "top-right" | "top-left" | "bottom-right" | "bottom-left";
+        controlsPosition?:
+          | "top"
+          | "right"
+          | "bottom"
+          | "left"
+          | "top-right"
+          | "top-left"
+          | "bottom-right"
+          | "bottom-left";
       };
 
       // CAROUSEL
@@ -362,6 +367,7 @@ declare global {
       "mui-icon-left-arrow": MuiIconProps;
       "mui-icon-left-chevron": MuiIconProps;
       "mui-icon-left-sidebar": MuiIconProps;
+      "mui-icon-right-sidebar": MuiIconProps;
       "mui-icon-menu": MuiIconProps;
       "mui-icon-message": MuiIconProps;
       "mui-icon-right-chevron": MuiIconProps;
@@ -373,14 +379,10 @@ declare global {
       "mui-icon-up-arrow": MuiIconProps;
       "mui-icon-up-chevron": MuiIconProps;
       "mui-icon-warning": MuiIconProps;
-      "mui-icon-menu": MuiIconProps;
       "mui-icon-gear": MuiIconProps;
       "mui-icon-translate": MuiIconProps & { flip?: boolean };
 
-      "mui-icon-toggle": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      > & {
+      "mui-icon-toggle": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         slot?: "start" | "end";
         toggle?: boolean;
         rotate?: boolean;
@@ -388,7 +390,7 @@ declare global {
       };
 
       // ADD LOCAL TYPES
-      // E.g. 
+      // E.g.
       // "dark-mode-toggle": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
