@@ -219,7 +219,7 @@ class MuiMediaPlayer extends HTMLElement {
     });
   }
 
-  private drawWaveform(canvas: HTMLCanvasElement, peaks: number[], progress = 0) {
+  private drawWaveform(canvas: HTMLCanvasElement, peaks: number[], progress = 0, hoverProgress = -1) {
     const rect = canvas.getBoundingClientRect();
     if (!rect.width || !rect.height || !peaks.length) return;
 
@@ -231,6 +231,10 @@ class MuiMediaPlayer extends HTMLElement {
       styles.getPropertyValue("--media-player-waveform-active-color").trim() || "rgba(255, 255, 255, 0.78)";
     const activeMirrorColor =
       styles.getPropertyValue("--media-player-waveform-active-mirror-color").trim() || "rgba(255, 255, 255, 0.32)";
+    const currentColor =
+      styles.getPropertyValue("--media-player-waveform-current-color").trim() || "rgba(255, 255, 255, 0.64)";
+    const currentMirrorColor =
+      styles.getPropertyValue("--media-player-waveform-current-mirror-color").trim() || "rgba(255, 255, 255, 0.24)";
     const dpr = window.devicePixelRatio || 1;
     const width = Math.max(1, Math.floor(rect.width * dpr));
     const height = Math.max(1, Math.floor(rect.height * dpr));
@@ -248,17 +252,62 @@ class MuiMediaPlayer extends HTMLElement {
     const step = width / visiblePeaks.length;
     const barWidth = Math.max(1, Math.floor(step - gap) + dpr);
     const activeIndex = Math.floor(Math.max(0, Math.min(1, progress)) * visiblePeaks.length);
+    const hoverIndex =
+      hoverProgress >= 0 ? Math.floor(Math.max(0, Math.min(1, hoverProgress)) * visiblePeaks.length) : -1;
 
     visiblePeaks.forEach((peak, index) => {
       const x = index * step + (step - barWidth) / 2;
       const amplitude = Math.max(2 * dpr, peak * centerY * 0.92);
-      const isActive = index <= activeIndex;
 
-      context.fillStyle = isActive ? activeColor : color;
+      let fill = color;
+      let mirrorFill = mirrorColor;
+      let alpha = 1.0;
+
+      if (hoverIndex >= 0) {
+        if (hoverIndex < activeIndex) {
+          // Hovering behind (backward seek preview)
+          if (index <= hoverIndex) {
+            fill = activeColor;
+            mirrorFill = activeMirrorColor;
+          } else if (index <= activeIndex) {
+            fill = currentColor;
+            mirrorFill = currentMirrorColor;
+          } else {
+            fill = color;
+            mirrorFill = mirrorColor;
+          }
+        } else {
+          // Hovering ahead (forward seek preview)
+          if (index <= activeIndex) {
+            fill = activeColor;
+            mirrorFill = activeMirrorColor;
+          } else if (index <= hoverIndex) {
+            fill = activeColor;
+            mirrorFill = activeMirrorColor;
+            alpha = 0.5;
+          } else {
+            fill = color;
+            mirrorFill = mirrorColor;
+          }
+        }
+      } else {
+        // No hover active
+        if (index <= activeIndex) {
+          fill = activeColor;
+          mirrorFill = activeMirrorColor;
+        } else {
+          fill = color;
+          mirrorFill = mirrorColor;
+        }
+      }
+
+      context.globalAlpha = alpha;
+      context.fillStyle = fill;
       context.fillRect(x, centerY - amplitude, barWidth, amplitude);
-      context.fillStyle = isActive ? activeMirrorColor : mirrorColor;
+      context.fillStyle = mirrorFill;
       context.fillRect(x, centerY, barWidth, amplitude * 0.72);
     });
+    context.globalAlpha = 1.0;
   }
 
   private getMetadataAvatarChipSize() {
@@ -372,7 +421,13 @@ class MuiMediaPlayer extends HTMLElement {
       if (abortController.signal.aborted || renderId !== this.waveformRenderId || !peaks.length) return;
 
       canvas.__muiWaveformPeaks = peaks;
-      const draw = () => this.drawWaveform(canvas, peaks, Number(canvas.dataset.progress || 0));
+      const draw = () =>
+        this.drawWaveform(
+          canvas,
+          peaks,
+          Number(canvas.dataset.progress || 0),
+          canvas.dataset.hoverProgress ? Number(canvas.dataset.hoverProgress) : -1,
+        );
       const scheduleDraw = () => {
         requestAnimationFrame(draw);
         requestAnimationFrame(() => requestAnimationFrame(draw));
@@ -691,7 +746,8 @@ class MuiMediaPlayer extends HTMLElement {
       const duration = Number.isFinite(media.duration) ? media.duration : 0;
       const progress = duration > 0 ? Math.max(0, Math.min(1, (media.currentTime || 0) / duration)) : 0;
       waveform.dataset.progress = String(progress);
-      this.drawWaveform(waveform, waveform.__muiWaveformPeaks, progress);
+      const hoverProgress = waveform.dataset.hoverProgress ? Number(waveform.dataset.hoverProgress) : -1;
+      this.drawWaveform(waveform, waveform.__muiWaveformPeaks, progress, hoverProgress);
     };
 
     const syncVolume = () => {
@@ -897,6 +953,7 @@ class MuiMediaPlayer extends HTMLElement {
       if (path.includes(controls as EventTarget)) return;
       if (controlsPeek && path.includes(controlsPeek)) return;
       if (centerPlay && path.includes(centerPlay)) return;
+      if (waveform && path.includes(waveform)) return;
       if (
         path.some(
           (target) =>
@@ -1111,6 +1168,78 @@ class MuiMediaPlayer extends HTMLElement {
       }
     });
     on(seek, "pointerleave", clearSeekPreview);
+
+    let isWaveformDragging = false;
+
+    const calculateProgressFromEvent = (event: PointerEvent) => {
+      if (!waveform) return 0;
+      const rect = waveform.getBoundingClientRect();
+      if (!rect.width) return 0;
+      return Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+    };
+
+    if (waveform) {
+      on(waveform, "pointerdown", (event) => {
+        if (!(event instanceof PointerEvent)) return;
+        event.preventDefault();
+        event.stopPropagation();
+
+        isWaveformDragging = true;
+        isSeeking = true;
+        waveform.setPointerCapture(event.pointerId);
+
+        const progress = calculateProgressFromEvent(event);
+        const duration = Number.isFinite(media.duration) ? media.duration : 0;
+        media.currentTime = progress * duration;
+        waveform.dataset.hoverProgress = String(progress);
+
+        syncSeek();
+        syncTime();
+        syncWaveform();
+      });
+
+      on(waveform, "pointermove", (event) => {
+        if (!(event instanceof PointerEvent)) return;
+        if (isWaveformDragging) {
+          const progress = calculateProgressFromEvent(event);
+          const duration = Number.isFinite(media.duration) ? media.duration : 0;
+          media.currentTime = progress * duration;
+          waveform.dataset.hoverProgress = String(progress);
+
+          syncSeek();
+          syncTime();
+          syncWaveform();
+        } else if (event.pointerType !== "touch") {
+          const progress = calculateProgressFromEvent(event);
+          waveform.dataset.hoverProgress = String(progress);
+          syncWaveform();
+        }
+      });
+
+      const handleWaveformDragEnd = (event: Event) => {
+        if (!(event instanceof PointerEvent)) return;
+        if (isWaveformDragging) {
+          waveform.releasePointerCapture(event.pointerId);
+          isWaveformDragging = false;
+          isSeeking = false;
+          waveform.dataset.hoverProgress = "";
+          sync();
+          if (!media.paused) startTick();
+        }
+      };
+
+      on(waveform, "pointerup", handleWaveformDragEnd);
+      on(waveform, "pointercancel", handleWaveformDragEnd);
+
+      on(waveform, "pointerleave", (event) => {
+        if (!(event instanceof PointerEvent)) return;
+        if (!isWaveformDragging) {
+          waveform.dataset.hoverProgress = "";
+          syncWaveform();
+        }
+      });
+    }
+
     on(volume, "input", () => {
       if (!volume) return;
       const nextVolume = Math.max(0, Math.min(1, Number(volume.value || 0)));
@@ -1347,6 +1476,8 @@ class MuiMediaPlayer extends HTMLElement {
             var(--media-player-range-color) 42%,
             transparent
           );
+          --media-player-waveform-current-color: var(--black-opacity-80);
+          --media-player-waveform-current-mirror-color: var(--black-opacity-40);
           --dropdown-min-width: 16rem;
           --dropdown-offset: var(--space-100);
         }
@@ -1405,6 +1536,8 @@ class MuiMediaPlayer extends HTMLElement {
             var(--media-player-range-color) 42%,
             transparent
           );
+          --media-player-waveform-current-color: var(--white-opacity-80);
+          --media-player-waveform-current-mirror-color: var(--white-opacity-40);
           --action-tertiary-background: transparent;
           --action-tertiary-background-hover: var(--media-player-dark-control-background-hover);
           --action-tertiary-background-focus: var(--media-player-dark-control-background-hover);
@@ -1928,7 +2061,8 @@ class MuiMediaPlayer extends HTMLElement {
           width: calc(100% - (var(--space-400) * 2));
           height: 5.6rem;
           opacity: 1;
-          pointer-events: none;
+          pointer-events: auto;
+          cursor: pointer;
           bottom: calc(var(--space-500) + var(--stroke-size-300));
         }
         .audio-visual.has-artwork .audio-waveform {
@@ -1939,6 +2073,8 @@ class MuiMediaPlayer extends HTMLElement {
           --media-player-waveform-mirror-color: var(--white-opacity-30);
           --media-player-waveform-active-color: var(--white);
           --media-player-waveform-active-mirror-color: var(--white-opacity-60);
+          --media-player-waveform-current-color: var(--white-opacity-80);
+          --media-player-waveform-current-mirror-color: var(--white-opacity-40);
         }
         .audio-visual.has-waveform:not(.has-artwork) {
           --media-player-audio-height: 14rem;
@@ -1950,6 +2086,8 @@ class MuiMediaPlayer extends HTMLElement {
             var(--media-player-range-color) 40%,
             transparent
           );
+          --media-player-waveform-current-color: color-mix(in srgb, var(--text-color) 60%, transparent);
+          --media-player-waveform-current-mirror-color: color-mix(in srgb, var(--text-color) 40%, transparent);
         }
         .audio-visual.has-waveform:not(.has-artwork) .audio-waveform {
           opacity: 0.85;

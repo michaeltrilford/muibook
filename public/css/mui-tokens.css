@@ -288,6 +288,12 @@ html[data-theme="light"] {
   --media-player-dark-control-background-hover: var(--white-opacity-10);
   --media-player-dark-overlay-background: var(--black-opacity-50);
   --media-player-dark-overlay-controls-background: var(--black-opacity-80);
+  --media-player-waveform-color: var(--black-opacity-50);
+  --media-player-waveform-mirror-color: var(--black-opacity-30);
+  --media-player-waveform-active-color: var(--media-player-range-color);
+  --media-player-waveform-active-mirror-color: var(--black-opacity-40);
+  --media-player-waveform-current-color: var(--black-opacity-80);
+  --media-player-waveform-current-mirror-color: var(--black-opacity-40);
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
@@ -757,6 +763,12 @@ html[data-theme="dark"] {
   --media-player-dark-control-background-hover: var(--white-opacity-10);
   --media-player-dark-overlay-background: var(--black-opacity-50);
   --media-player-dark-overlay-controls-background: var(--black-opacity-90);
+  --media-player-waveform-color: var(--white-opacity-50);
+  --media-player-waveform-mirror-color: var(--white-opacity-30);
+  --media-player-waveform-active-color: var(--white);
+  --media-player-waveform-active-mirror-color: var(--white-opacity-60);
+  --media-player-waveform-current-color: var(--white-opacity-80);
+  --media-player-waveform-current-mirror-color: var(--white-opacity-40);
   --range-input-accent-color: var(--media-player-seek-color);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);

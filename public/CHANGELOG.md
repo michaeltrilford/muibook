@@ -9,19 +9,23 @@
 ### Added
 
 - `mui-drawer` now supports `variant="workspace"` for editor-style layouts with independent left and right panels around a central page or canvas, including `left-open`, `right-open`, `left-width`, `right-width`, `resize-rail`, `resize-min-left-width`, `resize-min-right-width`, `resize-min-page-width`, `resize-close-threshold`, `breakpoint`, and `height` for full control over panel visibility, sizing, and resize behaviour.
+- `mui-drawer` now supports a dynamic `mobile` host attribute synced to viewport breakpoints for responsive mobile layouts.
 - `mui-button` now supports `pending` for async actions, blocking repeat activation without applying disabled styling and exposing `aria-busy` while work is in flight.
 - `mui-media-player` now supports `controls="player" | "none"` for choosing Muibook controls or no controls for direct audio/video media.
 - `mui-media-player` now supports `media-title`, `artwork`, and composed `slot="meta-before"` / `slot="meta-after"` content for audio metadata, audio artwork, and video metadata presentations.
 - `mui-media-player` now supports `height` for audio metadata and artwork presentations, mapping the prop to `--media-player-audio-height`.
 - `mui-media-player` now supports `center-play` for displaying an always-visible centered play/pause action over native video.
 - `mui-media-player` now supports `waveform` for opt-in generated audio waveforms, with playback progress reflected on the canvas.
+- `mui-media-player` now supports interactive audio waveforms that can be clicked or dragged to scrub audio playback, utilizing pointer capture for seamless tracking outside bounds.
 - `mui-media-player` now supports `slot="meta-before"` and `slot="meta-after"` for composing metadata and supporting actions while keeping the media surface clickable between them.
 - Added `mui-avatar-chip` for reusable avatar, primary, and secondary profile metadata composition.
+- Added `mui-icon-rectangle-right-drawer` icon component for right-aligned panel toggle controls.
 - `mui-hint` now supports `disable-on-touch` for desktop-only hint affordances that should not open on touch-like devices.
 - `mui-media-player` controls now include an options menu with Download and Open source actions, using the dropdown component with slotted `mui-link` menu items.
 - `mui-media-player` video controls now use a modern rounded overlay treatment with center play, smooth local seek, volume, Picture-in-Picture, fullscreen, and overflow actions.
 - `mui-media-player` audio now includes compact player, metadata, and artwork presentations, with richer audio states using the same hover overlay control direction as video.
 - Added media-player component tokens for light/dark surface behavior, dark artwork thumbnail border/shadow, overlay controls, range colors, and player shadows.
+- Added new media player waveform design tokens (`--media-player-waveform-current-color` and `--media-player-waveform-current-mirror-color`) to separately style active scrub selections and the current playhead position on the waveform canvas.
 - Added a media-player seek hover preview segment so users can see the skip target before committing to a new time.
 
 ### Documentation
@@ -41,13 +45,17 @@
 - `mui-media-player` compact time controls now toggle between elapsed and remaining time instead of presenting an inactive action.
 - `mui-media-player` control rendering was refactored into smaller helpers and now cleans up document-level fullscreen listeners on re-render/disconnect.
 - `mui-media-player` now applies `usage="media-player"` automatically to slotted `mui-avatar-chip` content in metadata slots.
+- `mui-media-player` waveform canvas interactions now bypass the parent frame's play/pause click handler to prevent accidental playback toggles.
 - `mui-avatar-chip` avatar border and shadow now stay opt-in to `usage="media-player"` instead of appearing on the default avatar chip.
+- `mui-drawer` resize rails now trigger a 3-cycle flashing animation (`rail-limit-flash`) when dragging reaches the minimum or maximum width boundaries.
+- `mui-drawer` workspace panels now hide inner borders when resize rails are enabled.
 - `mui-dropdown` now portals menu contents to avoid clipping in overflow-hidden media player surfaces.
 - `mui-hint` now delegates focus to slotted buttons, links, and native controls instead of adding an extra wrapper tab stop, while keeping fallback keyboard focus for plain trigger content.
 - `mui-hint` fallback trigger focus now uses the Muibook focus outline with an outset offset instead of the browser default outline.
 
 ### Fixed
 
+- `mui-drawer` in workspace variant now properly respects top and bottom safe-area insets (`env(safe-area-inset-top)` / `env(safe-area-inset-bottom)`) in the page layout.
 - `mui-dropdown` now applies matching menu-item width, alignment, and first/last radius treatment to slotted `mui-link` items as well as slotted `mui-button` items.
 - `mui-media-player` artwork thumbnail border and shadow now stay dark over artwork in both light and dark themes.
 - `mui-media-player` volume icons now update reliably as the user adjusts the volume range.
