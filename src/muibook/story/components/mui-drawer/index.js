@@ -138,12 +138,13 @@ class storyDrawer extends HTMLElement {
       }
 
       .left-panel-open-btn {
-        transition: opacity var(--speed-100) ease, width var(--speed-300) ease-out;
+        transition: opacity var(--speed-400) ease var(--speed-200), width var(--speed-400) ease-out;
         overflow: hidden;
         width: var(--action-size-small);
       }
 
       mui-drawer[variant="workspace"][left-open] .left-panel-open-btn {
+        transition: opacity var(--speed-100) ease, width var(--speed-100) ease-out;
         opacity: 0;
         pointer-events: none;
         width: 0;
