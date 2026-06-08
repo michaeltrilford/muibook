@@ -79,7 +79,7 @@ class storyDrawer extends HTMLElement {
       }
 
       .page-content {
-        padding: var(--space-500) var(--space-500);
+        padding: var(--space-800) var(--space-500);
         box-sizing: border-box;
         overflow: scroll;
       }
@@ -119,7 +119,7 @@ class storyDrawer extends HTMLElement {
       .workspace-demo-canvas {
         min-height: 100%;
         box-sizing: border-box;
-        background: var(--surface);
+        background: var(--surface-elevated-200);
       }
 
       .workspace-demo-frame {
