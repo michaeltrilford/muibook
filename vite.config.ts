@@ -175,6 +175,8 @@ export default defineConfig({
           __dirname,
           "src/components/mui-icons/vertical-ellipsis.ts",
         ),
+        "components/mui-icons/timer": path.resolve(__dirname, "src/components/mui-icons/timer.ts"),
+        "components/mui-icons/copy": path.resolve(__dirname, "src/components/mui-icons/copy.ts"),
         // AVATAR
         "components/mui-avatar": path.resolve(__dirname, "src/components/mui-avatar"),
         // IMAGE

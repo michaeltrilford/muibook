@@ -436,6 +436,14 @@
       "import": "./dist/esm/components/mui-icons/vertical-ellipsis/index.js",
       "types": "./dist/types/components/mui-icons/vertical-ellipsis/index.d.ts"
     },
+    "./mui-icons/timer": {
+      "import": "./dist/esm/components/mui-icons/timer/index.js",
+      "types": "./dist/types/components/mui-icons/timer/index.d.ts"
+    },
+    "./mui-icons/copy": {
+      "import": "./dist/esm/components/mui-icons/copy/index.js",
+      "types": "./dist/types/components/mui-icons/copy/index.d.ts"
+    },
     "./mui-image": {
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"

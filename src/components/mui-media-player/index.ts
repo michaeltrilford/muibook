@@ -92,6 +92,9 @@ class MuiMediaPlayer extends HTMLElement {
   }
 
   connectedCallback() {
+    if (!this.hasAttribute("tabindex")) {
+      this.setAttribute("tabindex", "0");
+    }
     this.render();
     this.bindControls();
     void this.renderWaveform();
@@ -1102,6 +1105,30 @@ class MuiMediaPlayer extends HTMLElement {
         media.pause();
       }
     };
+
+    const handleHostKeyDown = (event: Event) => {
+      if (!(event instanceof KeyboardEvent)) return;
+      if (event.key !== " " && event.code !== "Space") return;
+
+      const path = event.composedPath();
+      const target = path[0] as HTMLElement;
+
+      if (
+        target.tagName.toLowerCase() === "button" ||
+        target.tagName.toLowerCase() === "input" ||
+        target.tagName.toLowerCase() === "mui-button"
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+      handlePlayClick();
+      if (isVideo) {
+        scheduleControlsReveal(true);
+      }
+    };
+
+    on(this, "keydown", handleHostKeyDown);
     playBtns.forEach((button) => on(button, "click", handlePlayClick));
 
     on(frame, "pointerleave", (event) => {
@@ -1480,6 +1507,11 @@ class MuiMediaPlayer extends HTMLElement {
           --media-player-waveform-current-mirror-color: var(--black-opacity-40);
           --dropdown-min-width: 16rem;
           --dropdown-offset: var(--space-100);
+        }
+        :host(:focus-visible) {
+          outline: var(--action-focus-outline);
+          outline-offset: var(--action-focus-outline-offset);
+          border-radius: var(--radius-200);
         }
         mui-hint[hidden] {
           display: none;

@@ -109,6 +109,8 @@ export * from "./components/mui-icons/pin";
 export * from "./components/mui-icons/pin-slash";
 export * from "./components/mui-icons/text-below-folder";
 export * from "./components/mui-icons/vertical-ellipsis";
+export * from "./components/mui-icons/timer";
+export * from "./components/mui-icons/copy";
 export * from "./components/mui-illustrations";
 export * from "./components/mui-illustrations/trash";
 

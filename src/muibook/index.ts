@@ -74,6 +74,8 @@ import "../components/mui-icons/pin";
 import "../components/mui-icons/pin-slash";
 import "../components/mui-icons/text-below-folder";
 import "../components/mui-icons/vertical-ellipsis";
+import "../components/mui-icons/timer";
+import "../components/mui-icons/copy";
 import "../components/mui-illustrations";
 import "../components/mui-link";
 import "../components/mui-button";

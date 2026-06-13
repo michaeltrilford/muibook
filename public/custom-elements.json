@@ -4,6 +4,30 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-accordion/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-accordion/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-addon/doc.ts",
       "declarations": [
         {
@@ -78,30 +102,6 @@
           "declaration": {
             "name": "MuiAddon",
             "module": "src/components/mui-addon/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-accordion/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-accordion/doc.ts"
           }
         }
       ]
@@ -1225,30 +1225,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-carousel/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Carousel: { title: \"Carousel\", description: \"A carousel component with tab-based navigation, enabling users to switch between views or content sections with ease.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/55yS6ecrFIoh0pA08R98VB/07a93872e746c5723b7b4b21f0a9d56a/Carousel_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8697&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-carousel--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-carousel\"], website: [\"https://muibook.com/carousel\"], guides: [\"https://guides.muibook.com/carousel\"], usage: { list: [ \"Use to present grouped content that benefits from both tabbed access and horizontal transitions.\", \"Ideal for feature highlights, onboarding steps, or content previews.\", \"Ensure tab labels are short and clearly indicate the content behind each panel.\", \"Avoid using for unrelated content or when vertical scrolling is more appropriate.\", \"When adding custom content, account for the placement of carousel controls and maintain sufficient whitespace for readability and alignment.\", \"Swap out default controls when a different interaction pattern better suits the content or context.\", ], }, accessibility: { designerList: [ \"Users can navigate between carousel items using the left/right arrow keys, as well as Home and End keys.\", \"The active tab is always keyboard-focusable and shows a visible focus outline for clarity.\", \"Tabs are marked up using semantic roles (like tablist and tab) to help assistive technologies understand the structure.\", \"Behind the scenes, attributes like aria-selected and tabindex update automatically to reflect which tab is active.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between carousel items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/7lrQyuy00XTDGTww5lWXsH/427804b3af03935cc06e8a691a5006a0/Carousel_-_Anatomy.png\", list: [ \"The outer wrapper that defines the structure, sliding behaviour, and background styling of the carousel.\", \"A flexible area where custom content is added. Designers are responsible for setting internal spacing, layout, and composition.\", \"Navigation elements such as tabs, dots, or arrows that float above the content. These controls can be customized or replaced based on the use case.\", ], }, variants: { items: [ { key: \"position\", title: \"Position\", description: \"Carousel controls can be positioned at any side or corner of the container, including top center, right middle, bottom center, left middle, top left, top right, bottom left, and bottom right.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/Yc6eg8YWdiiSiiPzR588D/bdfbad0967d9cc059310bd1406c656c5/position-bottom.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Tab Bar\", link: \"https://guides.muibook.com/tab-bar\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-carousel/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-checkbox/doc.ts",
       "declarations": [
         {
@@ -1360,6 +1336,30 @@
           "declaration": {
             "name": "MuiCheckbox",
             "module": "src/components/mui-checkbox/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-carousel/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Carousel: { title: \"Carousel\", description: \"A carousel component with tab-based navigation, enabling users to switch between views or content sections with ease.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/55yS6ecrFIoh0pA08R98VB/07a93872e746c5723b7b4b21f0a9d56a/Carousel_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8697&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-carousel--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-carousel\"], website: [\"https://muibook.com/carousel\"], guides: [\"https://guides.muibook.com/carousel\"], usage: { list: [ \"Use to present grouped content that benefits from both tabbed access and horizontal transitions.\", \"Ideal for feature highlights, onboarding steps, or content previews.\", \"Ensure tab labels are short and clearly indicate the content behind each panel.\", \"Avoid using for unrelated content or when vertical scrolling is more appropriate.\", \"When adding custom content, account for the placement of carousel controls and maintain sufficient whitespace for readability and alignment.\", \"Swap out default controls when a different interaction pattern better suits the content or context.\", ], }, accessibility: { designerList: [ \"Users can navigate between carousel items using the left/right arrow keys, as well as Home and End keys.\", \"The active tab is always keyboard-focusable and shows a visible focus outline for clarity.\", \"Tabs are marked up using semantic roles (like tablist and tab) to help assistive technologies understand the structure.\", \"Behind the scenes, attributes like aria-selected and tabindex update automatically to reflect which tab is active.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between carousel items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/7lrQyuy00XTDGTww5lWXsH/427804b3af03935cc06e8a691a5006a0/Carousel_-_Anatomy.png\", list: [ \"The outer wrapper that defines the structure, sliding behaviour, and background styling of the carousel.\", \"A flexible area where custom content is added. Designers are responsible for setting internal spacing, layout, and composition.\", \"Navigation elements such as tabs, dots, or arrows that float above the content. These controls can be customized or replaced based on the use case.\", ], }, variants: { items: [ { key: \"position\", title: \"Position\", description: \"Carousel controls can be positioned at any side or corner of the container, including top center, right middle, bottom center, left middle, top left, top right, bottom left, and bottom right.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/Yc6eg8YWdiiSiiPzR588D/bdfbad0967d9cc059310bd1406c656c5/position-bottom.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Tab Bar\", link: \"https://guides.muibook.com/tab-bar\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-carousel/doc.ts"
           }
         }
       ]
@@ -2375,7 +2375,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Adds opt-in desktop resize rails. Push and persistent drawers get a rail between drawer and page; workspace drawers get independent left and right rails. Dragging updates the relevant width while clamping to a minimum drawer width and preserving page space. Focused rails can be nudged with ArrowLeft/ArrowRight, or Shift plus arrow keys for larger steps."
+              "description": "Adds opt-in desktop resize rails. Push and persistent drawers get a rail between drawer and page; workspace drawers get independent left and right rails. Dragging updates the relevant width while clamping to a minimum drawer width and preserving page space. Focused rails can be nudged with ArrowLeft/ArrowRight, or Shift plus arrow keys for larger steps; when keyboard resizing reaches the minimum width, the rail shows an ESC affordance for closing."
             },
             {
               "name": "resize-min-drawer-width",
@@ -4199,6 +4199,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-icons/copy.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "MuiIconCopy",
+          "attributes": [
+            {
+              "name": "size"
+            },
+            {
+              "name": "color"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-icon-copy",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-icon-copy",
+          "declaration": {
+            "name": "MuiIconCopy",
+            "module": "src/components/mui-icons/copy.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-icons/doc.ts",
       "declarations": [
         {
@@ -5540,6 +5573,39 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-icons/timer.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "MuiIconTimer",
+          "attributes": [
+            {
+              "name": "size"
+            },
+            {
+              "name": "color"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-icon-timer",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-icon-timer",
+          "declaration": {
+            "name": "MuiIconTimer",
+            "module": "src/components/mui-icons/timer.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-icons/toggle.ts",
       "declarations": [
         {
@@ -5733,6 +5799,213 @@
           "declaration": {
             "name": "MuiIconWarning",
             "module": "src/components/mui-icons/warning.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-input/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Input: { title: \"Input\", description: \"An input component for capturing user text, styled for consistency across your UI.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-input--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts\"], website: [\"https://muibook.com/input\"], guides: [\"https://guides.muibook.com/input\"], usage: { list: [ \"Ensure the purpose of the input is clear, either through a placeholder text or surrounding context.\", \"Ensure validation feedback is considered when using an input. E.g. Error text.\", \"Ensure the experience has clear focus states to support keyboard accessibility.\", \"Select the appropriate input types for the specific use case. E.g. Text, Email, Password.\", \"Use size='x-small|small|medium|large' to align inputs with surrounding form controls.\", \"Use slot='hint' for contextual overlays, including mui-hint with interactive tooltip content.\", \"Use mui-chip in before/after slots for tag-style contextual input patterns.\", \"Use placeholder text to provide context of the input use; avoid using them as primary labels.\", \"Avoid relying solely on placeholder text for instructions, as it disappears when users start typing.\", \"Use the optional attribute when a field is not required to show a clear (optional) marker in the label.\", \"Use max-length when input limits matter; the component shows a live character count.\", \"In React controlled mode, keep value updates isolated from structural attribute updates (label, type, placeholder, variant) to avoid focus loss while typing.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"A label is required for screen reader support to describe the input's purpose.\", \"If hide-label is used, the label is visually hidden but accessible via aria-label.\", \"The label and input are linked via for and id. If no id is provided, one is generated.\", \"Clear focus styles are shown for keyboard users.\", \"The native disabled attribute is fully supported by assistive tech.\", \"Optional fields can be explicitly communicated with the optional attribute without changing label association.\", \"When max-length is set, users get visible character progress while native maxlength enforcement remains intact.\", \"For React integrations, prefer reading event.detail.value from the web component custom event instead of querying shadow DOM internals.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/5aiWlqSJ4BYCGtXn9MbGd/2734f1771c0e666806060bc85f753927/Input_-_Anatomy.png\", list: [ \"Label: Describes the purpose of the Input; required for accessibility. Can be hidden if the context is clear. Ensure the label text is still provided for developers to support screen reader access.\", \"Text: The label or placeholder text that describes the input field’s purpose.\", \"Before: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"After: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"Slot Before: Allows insertion of an Add-On, Select, or Button before the input to provide contextual or interactive elements. Some design craft may be needed to align elements visually in tools like Figma.\", \"Slot After: Allows insertion of an Add-On, Select, or Button after the input to support or clarify the user’s entry. Some design craft may be needed to ensure alignment and spacing look accurate in design tools.\", ], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"The standard Input with visible label and no interaction or validation states applied. Used for most form field scenarios.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5t0SMtVRHvOSHiuHZ8jLfS/64da2bbaf5d2f4216f1c876f205c1298/input-default.png\", }, { key: \"hide-label\", title: \"Hide Label\", description: \"The label is visually hidden but remains accessible to screen readers. Use when the label context is already clear from surrounding UI. Ensure the label name is documented for developers, as the component requires a label for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4wC0xbPgmsMGi6YhMG8PnI/f01da9a977092a2da1e128fbee3325eb/input-hide-label.png\", }, { key: \"hover\", title: \"Hover\", description: \"Displays the hover state styling when a pointer is placed over the Input. Useful for demonstrating interactive feedback.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5IXEcxa2RxqubupHmblDhd/ab41eba34289194733a87994b096e95d/input-hover.png\", }, { key: \"focus\", title: \"Focus\", description: \"Shows the focus ring or border to indicate that the Input is currently active. Supports accessible keyboard navigation.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4AA4IcIdnov9MfSeY4rSdL/bbaf44297cdd4bd09d626b707dbe5f47/input-focus.png\", }, { key: \"error\", title: \"Error\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2LYMpJwtH7f8KfPYl0vwAg/385529402b5e73399320c9581c8e1301/input-error.png\", }, { key: \"input-field\", title: \"Input + Field\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/kSXvQ6D4hvuP3c9bC0ZUa/319272dc75f0b08493753a49c0fbff75/success-message.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"user-details\", name: \"User Details (Step 1)\", description: \"This composition uses an accordion to contain a step in a multi-step flow. It focuses on input fields with labels, placeholders, and optional states, keeping the layout compact and clear.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"onboarding-form\", name: \"Onboarding Form\", description: \"Demonstrates an onboarding form within a card, using logic to confirm terms acceptance. Components include Heading, Input Fields, Checkbox, and Button.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1NrgynTcdmVVKSYCsQwlOW/5fc4776c1860b498a59a2865b4e57ecb/Card-Onboarding-Composition.png\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"File Upload\", link: \"https://guides.muibook.com/file-upload\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-input/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-input/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Captures a single text-like form value with label, validation state and composable affordance slots.",
+          "name": "MuiInput",
+          "events": [
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when the native input change event occurs with `detail.value`."
+            },
+            {
+              "name": "input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched during value entry with `detail.value`."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "\"text\" | \"password\" | \"email\" | \"number\" | \"search\" | \"tel\" | \"url\" | \"date\" | \"time\" | \"datetime-local\" | \"month\" | \"week\""
+              },
+              "default": "text",
+              "description": "Native input data type."
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Form field name."
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "",
+              "description": "Current input value."
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Hint displayed when no value is entered."
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Input identifier used to associate the visible label."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible input label. Required for labelled form usage."
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disables input interaction."
+            },
+            {
+              "name": "hide-label",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Visually hides the supplied label while preserving it as the accessible name."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"success\" | \"warning\" | \"error\""
+              },
+              "default": "default",
+              "description": "Visual validation state."
+            },
+            {
+              "name": "optional",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Displays an optional marker beside the label."
+            },
+            {
+              "name": "max-length",
+              "type": {
+                "text": "number | string"
+              },
+              "description": "Maximum character length. Providing it displays a live count."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Input and slotted affordance size scale."
+            },
+            {
+              "name": "slot-layout",
+              "type": {
+                "text": "\"inline\" | \"stack-mobile\""
+              },
+              "default": "inline",
+              "description": "Arranges external before and after slots inline or stacked around the input."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-input",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "before",
+              "description": "Flush leading control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`."
+            },
+            {
+              "name": "after",
+              "description": "Flush trailing control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`."
+            },
+            {
+              "name": "inside-before",
+              "description": "Leading content displayed inside the input edge, such as an icon or badge."
+            },
+            {
+              "name": "inside-after",
+              "description": "Trailing content displayed inside the input edge, such as an icon or badge."
+            },
+            {
+              "name": "hint",
+              "description": "Contextual hint content displayed inside the trailing input affordance area."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--input-before-slot-max-width",
+              "description": "Maximum width for leading external slot content."
+            },
+            {
+              "name": "--input-after-slot-max-width",
+              "description": "Maximum width for trailing external slot content."
+            },
+            {
+              "name": "--input-slot-wrap",
+              "description": "Wrapping behaviour for external slot content."
+            },
+            {
+              "name": "--input-slot-overflow-x",
+              "description": "Horizontal overflow behaviour for external slot content."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-input",
+          "declaration": {
+            "name": "MuiInput",
+            "module": "src/components/mui-input/index.ts"
           }
         }
       ]
@@ -6021,213 +6294,6 @@
           "declaration": {
             "name": "MuiLink",
             "module": "src/components/mui-link/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-input/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Input: { title: \"Input\", description: \"An input component for capturing user text, styled for consistency across your UI.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-input--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts\"], website: [\"https://muibook.com/input\"], guides: [\"https://guides.muibook.com/input\"], usage: { list: [ \"Ensure the purpose of the input is clear, either through a placeholder text or surrounding context.\", \"Ensure validation feedback is considered when using an input. E.g. Error text.\", \"Ensure the experience has clear focus states to support keyboard accessibility.\", \"Select the appropriate input types for the specific use case. E.g. Text, Email, Password.\", \"Use size='x-small|small|medium|large' to align inputs with surrounding form controls.\", \"Use slot='hint' for contextual overlays, including mui-hint with interactive tooltip content.\", \"Use mui-chip in before/after slots for tag-style contextual input patterns.\", \"Use placeholder text to provide context of the input use; avoid using them as primary labels.\", \"Avoid relying solely on placeholder text for instructions, as it disappears when users start typing.\", \"Use the optional attribute when a field is not required to show a clear (optional) marker in the label.\", \"Use max-length when input limits matter; the component shows a live character count.\", \"In React controlled mode, keep value updates isolated from structural attribute updates (label, type, placeholder, variant) to avoid focus loss while typing.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"A label is required for screen reader support to describe the input's purpose.\", \"If hide-label is used, the label is visually hidden but accessible via aria-label.\", \"The label and input are linked via for and id. If no id is provided, one is generated.\", \"Clear focus styles are shown for keyboard users.\", \"The native disabled attribute is fully supported by assistive tech.\", \"Optional fields can be explicitly communicated with the optional attribute without changing label association.\", \"When max-length is set, users get visible character progress while native maxlength enforcement remains intact.\", \"For React integrations, prefer reading event.detail.value from the web component custom event instead of querying shadow DOM internals.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/5aiWlqSJ4BYCGtXn9MbGd/2734f1771c0e666806060bc85f753927/Input_-_Anatomy.png\", list: [ \"Label: Describes the purpose of the Input; required for accessibility. Can be hidden if the context is clear. Ensure the label text is still provided for developers to support screen reader access.\", \"Text: The label or placeholder text that describes the input field’s purpose.\", \"Before: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"After: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"Slot Before: Allows insertion of an Add-On, Select, or Button before the input to provide contextual or interactive elements. Some design craft may be needed to align elements visually in tools like Figma.\", \"Slot After: Allows insertion of an Add-On, Select, or Button after the input to support or clarify the user’s entry. Some design craft may be needed to ensure alignment and spacing look accurate in design tools.\", ], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"The standard Input with visible label and no interaction or validation states applied. Used for most form field scenarios.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5t0SMtVRHvOSHiuHZ8jLfS/64da2bbaf5d2f4216f1c876f205c1298/input-default.png\", }, { key: \"hide-label\", title: \"Hide Label\", description: \"The label is visually hidden but remains accessible to screen readers. Use when the label context is already clear from surrounding UI. Ensure the label name is documented for developers, as the component requires a label for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4wC0xbPgmsMGi6YhMG8PnI/f01da9a977092a2da1e128fbee3325eb/input-hide-label.png\", }, { key: \"hover\", title: \"Hover\", description: \"Displays the hover state styling when a pointer is placed over the Input. Useful for demonstrating interactive feedback.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5IXEcxa2RxqubupHmblDhd/ab41eba34289194733a87994b096e95d/input-hover.png\", }, { key: \"focus\", title: \"Focus\", description: \"Shows the focus ring or border to indicate that the Input is currently active. Supports accessible keyboard navigation.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4AA4IcIdnov9MfSeY4rSdL/bbaf44297cdd4bd09d626b707dbe5f47/input-focus.png\", }, { key: \"error\", title: \"Error\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2LYMpJwtH7f8KfPYl0vwAg/385529402b5e73399320c9581c8e1301/input-error.png\", }, { key: \"input-field\", title: \"Input + Field\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/kSXvQ6D4hvuP3c9bC0ZUa/319272dc75f0b08493753a49c0fbff75/success-message.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"user-details\", name: \"User Details (Step 1)\", description: \"This composition uses an accordion to contain a step in a multi-step flow. It focuses on input fields with labels, placeholders, and optional states, keeping the layout compact and clear.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"onboarding-form\", name: \"Onboarding Form\", description: \"Demonstrates an onboarding form within a card, using logic to confirm terms acceptance. Components include Heading, Input Fields, Checkbox, and Button.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1NrgynTcdmVVKSYCsQwlOW/5fc4776c1860b498a59a2865b4e57ecb/Card-Onboarding-Composition.png\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"File Upload\", link: \"https://guides.muibook.com/file-upload\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-input/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-input/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Captures a single text-like form value with label, validation state and composable affordance slots.",
-          "name": "MuiInput",
-          "events": [
-            {
-              "name": "change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Dispatched when the native input change event occurs with `detail.value`."
-            },
-            {
-              "name": "input",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Dispatched during value entry with `detail.value`."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "type",
-              "type": {
-                "text": "\"text\" | \"password\" | \"email\" | \"number\" | \"search\" | \"tel\" | \"url\" | \"date\" | \"time\" | \"datetime-local\" | \"month\" | \"week\""
-              },
-              "default": "text",
-              "description": "Native input data type."
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "description": "Form field name."
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "",
-              "description": "Current input value."
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "description": "Hint displayed when no value is entered."
-            },
-            {
-              "name": "id",
-              "type": {
-                "text": "string"
-              },
-              "description": "Input identifier used to associate the visible label."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible input label. Required for labelled form usage."
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disables input interaction."
-            },
-            {
-              "name": "hide-label",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Visually hides the supplied label while preserving it as the accessible name."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"success\" | \"warning\" | \"error\""
-              },
-              "default": "default",
-              "description": "Visual validation state."
-            },
-            {
-              "name": "optional",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Displays an optional marker beside the label."
-            },
-            {
-              "name": "max-length",
-              "type": {
-                "text": "number | string"
-              },
-              "description": "Maximum character length. Providing it displays a live count."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Input and slotted affordance size scale."
-            },
-            {
-              "name": "slot-layout",
-              "type": {
-                "text": "\"inline\" | \"stack-mobile\""
-              },
-              "default": "inline",
-              "description": "Arranges external before and after slots inline or stacked around the input."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-input",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "before",
-              "description": "Flush leading control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`."
-            },
-            {
-              "name": "after",
-              "description": "Flush trailing control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`."
-            },
-            {
-              "name": "inside-before",
-              "description": "Leading content displayed inside the input edge, such as an icon or badge."
-            },
-            {
-              "name": "inside-after",
-              "description": "Trailing content displayed inside the input edge, such as an icon or badge."
-            },
-            {
-              "name": "hint",
-              "description": "Contextual hint content displayed inside the trailing input affordance area."
-            }
-          ],
-          "cssProperties": [
-            {
-              "name": "--input-before-slot-max-width",
-              "description": "Maximum width for leading external slot content."
-            },
-            {
-              "name": "--input-after-slot-max-width",
-              "description": "Maximum width for trailing external slot content."
-            },
-            {
-              "name": "--input-slot-wrap",
-              "description": "Wrapping behaviour for external slot content."
-            },
-            {
-              "name": "--input-slot-overflow-x",
-              "description": "Horizontal overflow behaviour for external slot content."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-input",
-          "declaration": {
-            "name": "MuiInput",
-            "module": "src/components/mui-input/index.ts"
           }
         }
       ]
@@ -8038,6 +8104,163 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-range-input/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ RangeInput: { title: \"Range Input\", description: \"Range Input provides a reusable slider with optional floating value bubble.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17847&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-range-input--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-range-input/index.ts\"], website: [\"https://muibook.com/range-input\"], guides: [\"https://guides.muibook.com/range-input\"], usage: { list: [ \"Use for scrubbers and bounded numeric selection.\", \"Set bubble to show hover/drag value feedback.\", \"Use bubble-format='time' for media timelines.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Provide a clear aria label to describe the range purpose.\"], }, anatomy: { image: \"\", list: [\"Native range control\", \"Floating value bubble (optional)\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Input\", link: \"https://guides.muibook.com/input\" }, { name: \"Media Player\", link: \"https://guides.muibook.com/prompt\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-range-input/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-range-input/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Selects a numeric value on a range track with optional formatted value feedback.",
+          "name": "MuiRangeInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "description": "Gets or sets the numeric range value."
+            }
+          ],
+          "events": [
+            {
+              "name": "input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched while the value changes with numeric `detail.value`."
+            },
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when value interaction commits with numeric `detail.value`."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "min",
+              "type": {
+                "text": "number | string"
+              },
+              "default": "0",
+              "description": "Minimum permitted value."
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "number | string"
+              },
+              "default": "100",
+              "description": "Maximum permitted value."
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "number | string"
+              },
+              "default": "0",
+              "description": "Current numeric value."
+            },
+            {
+              "name": "step",
+              "type": {
+                "text": "number | string"
+              },
+              "default": "1",
+              "description": "Permitted value increment."
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disables range interaction."
+            },
+            {
+              "name": "bubble",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Displays value feedback while the control is hovered, focused or dragged."
+            },
+            {
+              "name": "bubble-format",
+              "type": {
+                "text": "\"number\" | \"time\""
+              },
+              "default": "number",
+              "description": "Formats the feedback bubble as a number or `m:ss` time."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "Range input",
+              "description": "Accessible label for the internal range input."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-range-input",
+          "customElement": true,
+          "slots": [],
+          "cssProperties": [
+            {
+              "name": "--range-input-accent-color",
+              "description": "Track/thumb accent color."
+            },
+            {
+              "name": "--range-input-bubble-background",
+              "description": "Feedback bubble background."
+            },
+            {
+              "name": "--range-input-bubble-border-color",
+              "description": "Feedback bubble border color."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-range-input",
+          "declaration": {
+            "name": "MuiRangeInput",
+            "module": "src/components/mui-range-input/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-responsive/doc.ts",
       "declarations": [
         {
@@ -8664,163 +8887,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-range-input/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ RangeInput: { title: \"Range Input\", description: \"Range Input provides a reusable slider with optional floating value bubble.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17847&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-range-input--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-range-input/index.ts\"], website: [\"https://muibook.com/range-input\"], guides: [\"https://guides.muibook.com/range-input\"], usage: { list: [ \"Use for scrubbers and bounded numeric selection.\", \"Set bubble to show hover/drag value feedback.\", \"Use bubble-format='time' for media timelines.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Provide a clear aria label to describe the range purpose.\"], }, anatomy: { image: \"\", list: [\"Native range control\", \"Floating value bubble (optional)\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Input\", link: \"https://guides.muibook.com/input\" }, { name: \"Media Player\", link: \"https://guides.muibook.com/prompt\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-range-input/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-range-input/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Selects a numeric value on a range track with optional formatted value feedback.",
-          "name": "MuiRangeInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "number"
-              },
-              "description": "Gets or sets the numeric range value."
-            }
-          ],
-          "events": [
-            {
-              "name": "input",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Dispatched while the value changes with numeric `detail.value`."
-            },
-            {
-              "name": "change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Dispatched when value interaction commits with numeric `detail.value`."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "min",
-              "type": {
-                "text": "number | string"
-              },
-              "default": "0",
-              "description": "Minimum permitted value."
-            },
-            {
-              "name": "max",
-              "type": {
-                "text": "number | string"
-              },
-              "default": "100",
-              "description": "Maximum permitted value."
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "number | string"
-              },
-              "default": "0",
-              "description": "Current numeric value."
-            },
-            {
-              "name": "step",
-              "type": {
-                "text": "number | string"
-              },
-              "default": "1",
-              "description": "Permitted value increment."
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disables range interaction."
-            },
-            {
-              "name": "bubble",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Displays value feedback while the control is hovered, focused or dragged."
-            },
-            {
-              "name": "bubble-format",
-              "type": {
-                "text": "\"number\" | \"time\""
-              },
-              "default": "number",
-              "description": "Formats the feedback bubble as a number or `m:ss` time."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "Range input",
-              "description": "Accessible label for the internal range input."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-range-input",
-          "customElement": true,
-          "slots": [],
-          "cssProperties": [
-            {
-              "name": "--range-input-accent-color",
-              "description": "Track/thumb accent color."
-            },
-            {
-              "name": "--range-input-bubble-background",
-              "description": "Feedback bubble background."
-            },
-            {
-              "name": "--range-input-bubble-border-color",
-              "description": "Feedback bubble border color."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-range-input",
-          "declaration": {
-            "name": "MuiRangeInput",
-            "module": "src/components/mui-range-input/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-slat/doc.ts",
       "declarations": [
         {
@@ -9050,6 +9116,32 @@
           "declaration": {
             "name": "MuiSlideFrame",
             "module": "src/components/mui-slide-frame/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-slide-section/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "name": "MuiSlideSection",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-slide-section",
+          "customElement": true,
+          "attributes": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-slide-section",
+          "declaration": {
+            "name": "MuiSlideSection",
+            "module": "src/components/mui-slide-section/index.ts"
           }
         }
       ]
@@ -9421,6 +9513,161 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-switch/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Switch: { title: \"Switch\", description: \"A Switch is a UI component used to toggle between two states, typically “on” and “off.” It provides a clear visual indication of an active or inactive setting.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/0dWww7c9wOs9YLPwgsTyy/323dcb62a6be394bbba8f268c8ae62b9/Switch_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=147-1003&t=FSv3FEahG8VQW1FZ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-switch--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts\"], website: [\"https://muibook.com/switch\"], guides: [\"https://guides.muibook.com/switch\"], usage: { list: [ \"Enable or disable a setting – Toggle features like dark mode or notifications.\", \"Control device states – Switch on/off smart devices or system settings.\", \"Trigger immediate actions – Instantly apply changes without requiring confirmation.\", \"Use size='x-small|small|medium|large' to match switch density with surrounding controls.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"A label is required and applied as aria-label to describe the switch’s purpose.\", \"Uses role='switch' and updates aria-checked for assistive tech.\", \"The label isn’t shown visually—context is provided through icons or nearby text.\", \"disabled sets aria-disabled and blocks interaction.\", \"Supports keyboard navigation with visible focus styles.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/5XNIjIfzNIfo3uIavVlSCU/7bbdc09ee60c7fa03ab19ff2dab558a8/Switch_-_Anatomy.png\", list: [ \"Thumb (Handle) – The movable part that toggles between the on and off states.\", \"Off Track: The background when the switch is in the “off” state.\", \"On Track: The background when the switch is in the “on” state.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"theme-switch\", name: \"Theme Switch\", description: \"This example from the Muibook Docs website demonstrates a switch component used to toggle the interface between light and dark modes.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/19NvfLGnzRI4MebRSU2aMH/d6ffcca7dffb6c7b843cafc83b812d90/SwitchTheme-Composition.png\", }, ], }, related: { items: [ { name: \"Checkbox\", link: \"https://guides.muibook.com/checkbox\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-switch/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-switch/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Toggles a boolean state with a labelled switch control.",
+          "name": "MuiSwitch",
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Gets or sets the checked state."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when user interaction changes the checked state."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "required": true,
+              "description": "Accessible name for the switch control."
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disables switch interaction."
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Controls the selected state of the switch."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "large",
+              "description": "Switch control size."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-switch",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "on-icon",
+              "description": "Icon shown for the checked state."
+            },
+            {
+              "name": "off-icon",
+              "description": "Icon shown for the unchecked state."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--switch-track-background",
+              "description": "Track background used when the switch is unchecked."
+            },
+            {
+              "name": "--switch-track-background-checked",
+              "description": "Track background used when the switch is checked."
+            },
+            {
+              "name": "--switch-thumb-bg",
+              "description": "Thumb background used when the switch is unchecked."
+            },
+            {
+              "name": "--switch-icon",
+              "description": "Slotted icon fill used when the switch is unchecked."
+            },
+            {
+              "name": "--switch-width-computed",
+              "description": "Resolved switch track width; may be overridden for a custom size treatment."
+            },
+            {
+              "name": "--switch-height-computed",
+              "description": "Resolved switch track height; may be overridden for a custom size treatment."
+            },
+            {
+              "name": "--switch-thumb-size-computed",
+              "description": "Resolved switch thumb dimension; may be overridden for a custom size treatment."
+            },
+            {
+              "name": "--switch-offset-computed",
+              "description": "Resolved inset between switch track and thumb."
+            },
+            {
+              "name": "--switch-thumb-bg-checked",
+              "description": "Thumb background used when the switch is checked."
+            },
+            {
+              "name": "--switch-icon-checked",
+              "description": "Slotted icon fill used when the switch is checked."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-switch",
+          "declaration": {
+            "name": "MuiSwitch",
+            "module": "src/components/mui-switch/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-table/doc.ts",
       "declarations": [
         {
@@ -9624,161 +9871,6 @@
           "declaration": {
             "name": "MuiTextarea",
             "module": "src/components/mui-textarea/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-switch/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Switch: { title: \"Switch\", description: \"A Switch is a UI component used to toggle between two states, typically “on” and “off.” It provides a clear visual indication of an active or inactive setting.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/0dWww7c9wOs9YLPwgsTyy/323dcb62a6be394bbba8f268c8ae62b9/Switch_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=147-1003&t=FSv3FEahG8VQW1FZ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-switch--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-switch/index.ts\"], website: [\"https://muibook.com/switch\"], guides: [\"https://guides.muibook.com/switch\"], usage: { list: [ \"Enable or disable a setting – Toggle features like dark mode or notifications.\", \"Control device states – Switch on/off smart devices or system settings.\", \"Trigger immediate actions – Instantly apply changes without requiring confirmation.\", \"Use size='x-small|small|medium|large' to match switch density with surrounding controls.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"A label is required and applied as aria-label to describe the switch’s purpose.\", \"Uses role='switch' and updates aria-checked for assistive tech.\", \"The label isn’t shown visually—context is provided through icons or nearby text.\", \"disabled sets aria-disabled and blocks interaction.\", \"Supports keyboard navigation with visible focus styles.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/5XNIjIfzNIfo3uIavVlSCU/7bbdc09ee60c7fa03ab19ff2dab558a8/Switch_-_Anatomy.png\", list: [ \"Thumb (Handle) – The movable part that toggles between the on and off states.\", \"Off Track: The background when the switch is in the “off” state.\", \"On Track: The background when the switch is in the “on” state.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"theme-switch\", name: \"Theme Switch\", description: \"This example from the Muibook Docs website demonstrates a switch component used to toggle the interface between light and dark modes.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/19NvfLGnzRI4MebRSU2aMH/d6ffcca7dffb6c7b843cafc83b812d90/SwitchTheme-Composition.png\", }, ], }, related: { items: [ { name: \"Checkbox\", link: \"https://guides.muibook.com/checkbox\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-switch/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-switch/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Toggles a boolean state with a labelled switch control.",
-          "name": "MuiSwitch",
-          "members": [
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Gets or sets the checked state."
-            }
-          ],
-          "events": [
-            {
-              "name": "change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Dispatched when user interaction changes the checked state."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "required": true,
-              "description": "Accessible name for the switch control."
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disables switch interaction."
-            },
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Controls the selected state of the switch."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "large",
-              "description": "Switch control size."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-switch",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "on-icon",
-              "description": "Icon shown for the checked state."
-            },
-            {
-              "name": "off-icon",
-              "description": "Icon shown for the unchecked state."
-            }
-          ],
-          "cssProperties": [
-            {
-              "name": "--switch-track-background",
-              "description": "Track background used when the switch is unchecked."
-            },
-            {
-              "name": "--switch-track-background-checked",
-              "description": "Track background used when the switch is checked."
-            },
-            {
-              "name": "--switch-thumb-bg",
-              "description": "Thumb background used when the switch is unchecked."
-            },
-            {
-              "name": "--switch-icon",
-              "description": "Slotted icon fill used when the switch is unchecked."
-            },
-            {
-              "name": "--switch-width-computed",
-              "description": "Resolved switch track width; may be overridden for a custom size treatment."
-            },
-            {
-              "name": "--switch-height-computed",
-              "description": "Resolved switch track height; may be overridden for a custom size treatment."
-            },
-            {
-              "name": "--switch-thumb-size-computed",
-              "description": "Resolved switch thumb dimension; may be overridden for a custom size treatment."
-            },
-            {
-              "name": "--switch-offset-computed",
-              "description": "Resolved inset between switch track and thumb."
-            },
-            {
-              "name": "--switch-thumb-bg-checked",
-              "description": "Thumb background used when the switch is checked."
-            },
-            {
-              "name": "--switch-icon-checked",
-              "description": "Slotted icon fill used when the switch is checked."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-switch",
-          "declaration": {
-            "name": "MuiSwitch",
-            "module": "src/components/mui-switch/index.ts"
           }
         }
       ]
@@ -10133,50 +10225,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-accordion/group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups accordion blocks and can restrict expanded state to one block at a time.",
-          "name": "MuiAccordionGroup",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-accordion-group",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "exclusive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Closes other accordion blocks when a block in the group opens."
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-accordion-block` children."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-accordion-group",
-          "declaration": {
-            "name": "MuiAccordionGroup",
-            "module": "src/components/mui-accordion/group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-accordion/core/index.ts",
       "declarations": [
         {
@@ -10219,6 +10267,50 @@
           "declaration": {
             "name": "MuiAccordionCore",
             "module": "src/components/mui-accordion/core/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-accordion/group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups accordion blocks and can restrict expanded state to one block at a time.",
+          "name": "MuiAccordionGroup",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-accordion-group",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "exclusive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Closes other accordion blocks when a block in the group opens."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-accordion-block` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-accordion-group",
+          "declaration": {
+            "name": "MuiAccordionGroup",
+            "module": "src/components/mui-accordion/group/index.ts"
           }
         }
       ]
@@ -10271,32 +10363,6 @@
           "declaration": {
             "name": "MuiAccordionInline",
             "module": "src/components/mui-accordion/inline/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-slide-section/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "name": "MuiSlideSection",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-slide-section",
-          "customElement": true,
-          "attributes": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-slide-section",
-          "declaration": {
-            "name": "MuiSlideSection",
-            "module": "src/components/mui-slide-section/index.ts"
           }
         }
       ]
@@ -10434,30 +10500,22 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-carousel/panel/index.ts",
+      "path": "src/components/mui-card/header/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Displays content associated with a selected carousel control.",
-          "name": "MuiCarouselPanel",
-          "attributes": [
-            {
-              "name": "item",
-              "type": {
-                "text": "string"
-              },
-              "description": "Identifier matched by the related carousel tab item."
-            }
-          ],
+          "description": "Displays heading or summary content at the top of a card.",
+          "name": "MuiCardHeader",
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-carousel-panel",
+          "tagName": "mui-card-header",
           "customElement": true,
+          "attributes": [],
           "slots": [
             {
               "name": "",
-              "description": "Carousel panel content."
+              "description": "Header content such as headings, text, or actions."
             }
           ],
           "events": [],
@@ -10467,10 +10525,10 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-carousel-panel",
+          "name": "mui-card-header",
           "declaration": {
-            "name": "MuiCarouselPanel",
-            "module": "src/components/mui-carousel/panel/index.ts"
+            "name": "MuiCardHeader",
+            "module": "src/components/mui-card/header/index.ts"
           }
         }
       ]
@@ -10546,6 +10604,49 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-carousel/panel/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays content associated with a selected carousel control.",
+          "name": "MuiCarouselPanel",
+          "attributes": [
+            {
+              "name": "item",
+              "type": {
+                "text": "string"
+              },
+              "description": "Identifier matched by the related carousel tab item."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-carousel-panel",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Carousel panel content."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-carousel-panel",
+          "declaration": {
+            "name": "MuiCarouselPanel",
+            "module": "src/components/mui-carousel/panel/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-list/item/index.ts",
       "declarations": [
         {
@@ -10600,6 +10701,50 @@
           "declaration": {
             "name": "MuiListItem",
             "module": "src/components/mui-list/item/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-list/list/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups ordered or unordered list item content.",
+          "name": "MuiList",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-list",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "as",
+              "type": {
+                "text": "\"ul\" | \"ol\""
+              },
+              "default": "ul",
+              "description": "Sets unordered or ordered marker styling for the list."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-list-item` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-list",
+          "declaration": {
+            "name": "MuiList",
+            "module": "src/components/mui-list/list/index.ts"
           }
         }
       ]
@@ -10730,6 +10875,226 @@
           "declaration": {
             "name": "MuiSlat",
             "module": "src/components/mui-slat/slat/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-stack/vstack/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Arranges slotted content vertically with token-based spacing and alignment controls.",
+          "name": "MuiVStack",
+          "attributes": [
+            {
+              "name": "space",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-500)",
+              "description": "Gap between children. Accepts any valid CSS gap value or design token."
+            },
+            {
+              "name": "alignx",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Horizontal alignment of children, mapped to grid `justify-items`."
+            },
+            {
+              "name": "aligny",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Vertical alignment of children, mapped to grid `align-items`."
+            },
+            {
+              "name": "padding",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-000)",
+              "description": "Padding applied inside the stack. Accepts any valid CSS padding value or design token."
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
+            },
+            {
+              "name": "viewport",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region."
+            },
+            {
+              "name": "fill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets width and height to `100%` when the parent supplies a clearly bounded layout region."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-v-stack",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Content arranged vertically inside the stack."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--stack-height",
+              "description": "Resolved stack host height. Prefer the `height`, `viewport`, or `fill` attributes for common layouts."
+            },
+            {
+              "name": "--stack-width",
+              "description": "Resolved stack host width. Prefer the `width` or `fill` attributes for common layouts."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "color"
+            },
+            {
+              "name": "font-family"
+            },
+            {
+              "name": "font-size"
+            },
+            {
+              "name": "font-weight"
+            },
+            {
+              "name": "letter-spacing"
+            },
+            {
+              "name": "line-height"
+            },
+            {
+              "name": "text-transform"
+            },
+            {
+              "name": "text-decoration"
+            },
+            {
+              "name": "text-align"
+            },
+            {
+              "name": "padding"
+            },
+            {
+              "name": "margin"
+            },
+            {
+              "name": "gap"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            },
+            {
+              "name": "box-sizing"
+            },
+            {
+              "name": "display"
+            },
+            {
+              "name": "flex"
+            },
+            {
+              "name": "flex-direction"
+            },
+            {
+              "name": "flex-wrap"
+            },
+            {
+              "name": "justify-content"
+            },
+            {
+              "name": "align-items"
+            },
+            {
+              "name": "align-content"
+            },
+            {
+              "name": "align-self"
+            },
+            {
+              "name": "grid-template-columns"
+            },
+            {
+              "name": "grid-template-rows"
+            },
+            {
+              "name": "grid-column"
+            },
+            {
+              "name": "grid-row"
+            },
+            {
+              "name": "place-items"
+            },
+            {
+              "name": "place-content"
+            },
+            {
+              "name": "vertical-align"
+            },
+            {
+              "name": "background"
+            },
+            {
+              "name": "border"
+            },
+            {
+              "name": "border-radius"
+            },
+            {
+              "name": "box-shadow"
+            },
+            {
+              "name": "opacity"
+            },
+            {
+              "name": "transition"
+            },
+            {
+              "name": "outline"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-v-stack",
+          "declaration": {
+            "name": "MuiVStack",
+            "module": "src/components/mui-stack/vstack/index.ts"
           }
         }
       ]
@@ -10964,264 +11329,84 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-stack/vstack/index.ts",
+      "path": "src/components/mui-stepper/stepper/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Arranges slotted content vertically with token-based spacing and alignment controls.",
-          "name": "MuiVStack",
+          "description": "Displays progress across a multi-step flow with optional interactive navigation.",
+          "name": "MuiStepper",
+          "events": [
+            {
+              "name": "step-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Emitted when the active step changes during interactive use."
+            }
+          ],
           "attributes": [
             {
-              "name": "space",
+              "name": "direction",
               "type": {
-                "text": "string"
+                "text": "\"horizontal\" | \"vertical\""
               },
-              "default": "var(--space-500)",
-              "description": "Gap between children. Accepts any valid CSS gap value or design token."
+              "default": "horizontal",
+              "description": "Sets the step flow direction."
             },
             {
-              "name": "alignx",
+              "name": "active-step",
               "type": {
-                "text": "string"
+                "text": "number"
               },
-              "default": "normal",
-              "description": "Horizontal alignment of children, mapped to grid `justify-items`."
+              "default": "1",
+              "description": "Sets the current active step position."
             },
             {
-              "name": "aligny",
-              "type": {
-                "text": "string"
-              },
-              "default": "normal",
-              "description": "Vertical alignment of children, mapped to grid `align-items`."
-            },
-            {
-              "name": "padding",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-000)",
-              "description": "Padding applied inside the stack. Accepts any valid CSS padding value or design token."
-            },
-            {
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
-            },
-            {
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
-            },
-            {
-              "name": "viewport",
+              "name": "linear",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region."
+              "description": "Restricts interactive navigation to the current and next available step."
             },
             {
-              "name": "fill",
+              "name": "interactive",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Sets width and height to `100%` when the parent supplies a clearly bounded layout region."
+              "description": "Enables click and keyboard navigation between steps."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\""
+              },
+              "default": "medium",
+              "description": "Controls the stepper visual scale."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-v-stack",
+          "tagName": "mui-stepper",
           "customElement": true,
           "slots": [
             {
               "name": "",
-              "description": "Content arranged vertically inside the stack."
+              "description": "Accepts one or more `mui-step` children."
             }
           ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--stack-height",
-              "description": "Resolved stack host height. Prefer the `height`, `viewport`, or `fill` attributes for common layouts."
-            },
-            {
-              "name": "--stack-width",
-              "description": "Resolved stack host width. Prefer the `width` or `fill` attributes for common layouts."
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "color"
-            },
-            {
-              "name": "font-family"
-            },
-            {
-              "name": "font-size"
-            },
-            {
-              "name": "font-weight"
-            },
-            {
-              "name": "letter-spacing"
-            },
-            {
-              "name": "line-height"
-            },
-            {
-              "name": "text-transform"
-            },
-            {
-              "name": "text-decoration"
-            },
-            {
-              "name": "text-align"
-            },
-            {
-              "name": "padding"
-            },
-            {
-              "name": "margin"
-            },
-            {
-              "name": "gap"
-            },
-            {
-              "name": "width"
-            },
-            {
-              "name": "height"
-            },
-            {
-              "name": "box-sizing"
-            },
-            {
-              "name": "display"
-            },
-            {
-              "name": "flex"
-            },
-            {
-              "name": "flex-direction"
-            },
-            {
-              "name": "flex-wrap"
-            },
-            {
-              "name": "justify-content"
-            },
-            {
-              "name": "align-items"
-            },
-            {
-              "name": "align-content"
-            },
-            {
-              "name": "align-self"
-            },
-            {
-              "name": "grid-template-columns"
-            },
-            {
-              "name": "grid-template-rows"
-            },
-            {
-              "name": "grid-column"
-            },
-            {
-              "name": "grid-row"
-            },
-            {
-              "name": "place-items"
-            },
-            {
-              "name": "place-content"
-            },
-            {
-              "name": "vertical-align"
-            },
-            {
-              "name": "background"
-            },
-            {
-              "name": "border"
-            },
-            {
-              "name": "border-radius"
-            },
-            {
-              "name": "box-shadow"
-            },
-            {
-              "name": "opacity"
-            },
-            {
-              "name": "transition"
-            },
-            {
-              "name": "outline"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-v-stack",
-          "declaration": {
-            "name": "MuiVStack",
-            "module": "src/components/mui-stack/vstack/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-list/list/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups ordered or unordered list item content.",
-          "name": "MuiList",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-list",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "as",
-              "type": {
-                "text": "\"ul\" | \"ol\""
-              },
-              "default": "ul",
-              "description": "Sets unordered or ordered marker styling for the list."
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-list-item` children."
-            }
-          ],
-          "events": [],
           "cssProperties": []
         }
       ],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-list",
+          "name": "mui-stepper",
           "declaration": {
-            "name": "MuiList",
-            "module": "src/components/mui-list/list/index.ts"
+            "name": "MuiStepper",
+            "module": "src/components/mui-stepper/stepper/index.ts"
           }
         }
       ]
@@ -11364,90 +11549,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-stepper/stepper/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays progress across a multi-step flow with optional interactive navigation.",
-          "name": "MuiStepper",
-          "events": [
-            {
-              "name": "step-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Emitted when the active step changes during interactive use."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "direction",
-              "type": {
-                "text": "\"horizontal\" | \"vertical\""
-              },
-              "default": "horizontal",
-              "description": "Sets the step flow direction."
-            },
-            {
-              "name": "active-step",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Sets the current active step position."
-            },
-            {
-              "name": "linear",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Restricts interactive navigation to the current and next available step."
-            },
-            {
-              "name": "interactive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enables click and keyboard navigation between steps."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\""
-              },
-              "default": "medium",
-              "description": "Controls the stepper visual scale."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-stepper",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Accepts one or more `mui-step` children."
-            }
-          ],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-stepper",
-          "declaration": {
-            "name": "MuiStepper",
-            "module": "src/components/mui-stepper/stepper/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-table/row/index.ts",
       "declarations": [
         {
@@ -11508,22 +11609,22 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-card/header/index.ts",
+      "path": "src/components/mui-table/table/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Displays heading or summary content at the top of a card.",
-          "name": "MuiCardHeader",
+          "description": "Groups row collections into an accessible table layout.",
+          "name": "MuiTable",
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-card-header",
+          "tagName": "mui-table",
           "customElement": true,
           "attributes": [],
           "slots": [
             {
               "name": "",
-              "description": "Header content such as headings, text, or actions."
+              "description": "Related `mui-row-group` children."
             }
           ],
           "events": [],
@@ -11533,10 +11634,10 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-card-header",
+          "name": "mui-table",
           "declaration": {
-            "name": "MuiCardHeader",
-            "module": "src/components/mui-card/header/index.ts"
+            "name": "MuiTable",
+            "module": "src/components/mui-table/table/index.ts"
           }
         }
       ]
@@ -11622,41 +11723,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/table/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups row collections into an accessible table layout.",
-          "name": "MuiTable",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-table",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-row-group` children."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-table",
-          "declaration": {
-            "name": "MuiTable",
-            "module": "src/components/mui-table/table/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-tabs/item/index.ts",
       "declarations": [
         {
@@ -11726,64 +11792,6 @@
           "declaration": {
             "name": "MuiTabItem",
             "module": "src/components/mui-tabs/item/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/panel/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
-          "name": "MuiTabPanel",
-          "members": [
-            {
-              "kind": "field",
-              "name": "item",
-              "type": {
-                "text": "string | null"
-              },
-              "description": "Gets or sets the matching tab item identifier."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "item",
-              "type": {
-                "text": "string"
-              },
-              "description": "ID of the `mui-tab-item` whose selection displays this panel."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-panel",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Panel content."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--tab-panel-padding",
-              "description": "Inner padding applied to panel content."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-panel",
-          "declaration": {
-            "name": "MuiTabPanel",
-            "module": "src/components/mui-tabs/panel/index.ts"
           }
         }
       ]
@@ -11917,6 +11925,64 @@
           "declaration": {
             "name": "MuiTabBar",
             "module": "src/components/mui-tabs/tab-bar/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/panel/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
+          "name": "MuiTabPanel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "item",
+              "type": {
+                "text": "string | null"
+              },
+              "description": "Gets or sets the matching tab item identifier."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "item",
+              "type": {
+                "text": "string"
+              },
+              "description": "ID of the `mui-tab-item` whose selection displays this panel."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-panel",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Panel content."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--tab-panel-padding",
+              "description": "Inner padding applied to panel content."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-panel",
+          "declaration": {
+            "name": "MuiTabPanel",
+            "module": "src/components/mui-tabs/panel/index.ts"
           }
         }
       ]

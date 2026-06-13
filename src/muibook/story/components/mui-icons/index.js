@@ -379,6 +379,16 @@ class storyIcon extends HTMLElement {
             <mui-icon-text-below-folder slot="body"></mui-icon-text-below-folder>
             <mui-code slot="footer" scrollable>mui-icon-text-below-folder</mui-code>
           </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-timer slot="body"></mui-icon-timer>
+            <mui-code slot="footer" scrollable>mui-icon-timer</mui-code>
+          </story-icon-grid>
+
+          <story-icon-grid center>
+            <mui-icon-copy slot="body"></mui-icon-copy>
+            <mui-code slot="footer" scrollable>mui-icon-copy</mui-code>
+          </story-icon-grid>
         </mui-grid> 
 
       </story-card>
