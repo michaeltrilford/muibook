@@ -95,7 +95,7 @@ export const muiApi = {
         type: { text: "boolean" },
         default: "false",
         description:
-          "Adds opt-in desktop resize rails. Push and persistent drawers get a rail between drawer and page; workspace drawers get independent left and right rails. Dragging updates the relevant width while clamping to a minimum drawer width and preserving page space.",
+          "Adds opt-in desktop resize rails. Push and persistent drawers get a rail between drawer and page; workspace drawers get independent left and right rails. Dragging updates the relevant width while clamping to a minimum drawer width and preserving page space. Focused rails can be nudged with ArrowLeft/ArrowRight, or Shift plus arrow keys for larger steps; when keyboard resizing reaches the minimum width, the rail shows an ESC affordance for closing.",
       },
       {
         name: "resize-min-drawer-width",
@@ -160,8 +160,18 @@ export const muiApi = {
     cssProperties: [
       { name: "--drawer-background", description: "Drawer surface and footer background." },
       {
+        name: "--drawer-height",
+        description:
+          "Drawer layout height shared by the host, shell, page, and mobile overlay panels. Set through the `height` attribute or directly in CSS.",
+      },
+      {
+        name: "--drawer-resize-rail-size",
+        description: "Width of the resize rail when resize-rail is enabled.",
+      },
+      {
         name: "--drawer-resize-rail-threshold-indicator",
-        description: "Resize rail indicator color when the push drawer is dragged into the close threshold.",
+        description:
+          "Resize rail indicator color when a resizable push or workspace drawer is dragged into the close threshold.",
       },
     ],
   },

@@ -68,7 +68,7 @@ class storyDrawer extends HTMLElement {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: var(--space-400) var(--space-400) var(--space-400) var(--space-500);
+        padding: var(--space-400) var(--space-400) var(--space-400) var(--space-400);
         border-bottom: var(--border-thin);
         box-sizing: border-box;
         min-height: 7.7rem;
@@ -180,8 +180,6 @@ class storyDrawer extends HTMLElement {
         margin-left: calc(var(--space-300) + var(--space-025));
         margin-right: calc(var(--space-300) + var(--space-025));
       }
-
-      mui-avatar { margin-right: var(--space-050); }
 
       .video-menu-group-heading {
         margin-bottom: var(--space-200);
@@ -535,7 +533,7 @@ class storyDrawer extends HTMLElement {
     const workspaceComponentsPanel = /*html*/ `
       <div class="workspace-demo-panel">
         <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
-          <mui-heading size="5" level="2">Components</mui-heading>
+          <mui-heading size="5" level="2" style="margin-left: var(--space-200)">Components</mui-heading>
           <mui-button variant="tertiary" size="small" data-drawer-toggle="drawer-resize-workspace-left-rail" class="left-panel-close-btn">
             <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
           </mui-button>
@@ -842,8 +840,9 @@ class storyDrawer extends HTMLElement {
           Slot component navigation or libraries into slot='left', the main canvas into slot='page', and inspector or properties content into slot='right'.|||
           Control panel visibility with left-open and right-open so product state can decide whether one, both, or neither panel is visible.|||
           Tune the panel columns with left-width and right-width, then add resize-rail when both workspace panels should be user-resizable.|||
-          Use resize-min-drawer-width and resize-min-page-width to keep the side panels and central canvas usable while resizing.|||
+          Use resize-min-left-width, resize-min-right-width and resize-min-page-width to keep the side panels and central canvas usable while resizing.|||
           Release a panel below resize-close-threshold to close that side while keeping the central page protected.|||
+          Focus a resize rail and use ArrowLeft or ArrowRight to nudge the selected panel width. Hold Shift with an arrow key for a larger nudge. Press Escape while a workspace rail is focused to close only that side.|||
           Wire page actions to left-open and right-open so each workspace panel can be toggled independently.
         "
       >
@@ -862,7 +861,7 @@ class storyDrawer extends HTMLElement {
             data-drawer-toggle-left="drawer-resize-workspace-left-rail"
             data-drawer-toggle-right="drawer-resize-workspace-right-rail"
             breakpoint="1400"
-            height="75dvh"
+            height="80dvh"
             >
             <div slot="left">${workspaceComponentsPanel}</div>
             <div slot="page">${workspaceCanvasPage}</div>
@@ -902,6 +901,11 @@ class storyDrawer extends HTMLElement {
           &lt;!-- HTML Setup --&gt;<br>
           &lt;mui-drawer<br>
           &nbsp;&nbsp;variant="workspace"<br>
+          &nbsp;&nbsp;resize-rail<br>
+          &nbsp;&nbsp;resize-min-left-width="200"<br>
+          &nbsp;&nbsp;resize-min-right-width="200"<br>
+          &nbsp;&nbsp;resize-min-page-width="400"<br>
+          &nbsp;&nbsp;resize-close-threshold="96"<br>
           &nbsp;&nbsp;breakpoint="1400"<br>
           &nbsp;&nbsp;left-open<br>
           &nbsp;&nbsp;right-open<br>

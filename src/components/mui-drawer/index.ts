@@ -1,10 +1,14 @@
 import "../mui-icons/close";
 import "../mui-icons/left-chevron";
+import "../mui-body";
 import "../mui-button";
 
 const RESIZE_RAIL_MIN_DRAWER_WIDTH = 240;
 const RESIZE_RAIL_MIN_PAGE_WIDTH = 320;
 const RESIZE_RAIL_CLOSE_THRESHOLD = 96;
+const RESIZE_RAIL_KEYBOARD_STEP = 16;
+const RESIZE_RAIL_KEYBOARD_LARGE_STEP = 64;
+const RESIZE_RAIL_POINTER_CLICK_THRESHOLD = 4;
 
 class MuiDrawer extends HTMLElement {
   private innerEl: HTMLElement | null = null;
@@ -20,6 +24,7 @@ class MuiDrawer extends HTMLElement {
   private workspaceResizeRailEls: HTMLElement[] = [];
   private resizeState: {
     startX: number;
+    startY: number;
     startWidth: number;
     currentWidth: number;
     closeOnRelease: boolean;
@@ -28,6 +33,7 @@ class MuiDrawer extends HTMLElement {
   private workspaceResizeState: {
     side: "left" | "right";
     startX: number;
+    startY: number;
     startLeftWidth: number;
     startRightWidth: number;
     closeOnRelease: boolean;
@@ -217,7 +223,24 @@ class MuiDrawer extends HTMLElement {
 
   private _handleEscape = (e: KeyboardEvent) => {
     const variant = this.getAttribute("variant") || "overlay";
-    if (e.key === "Escape" && (variant === "overlay" || variant === "push" || this.usesMobileOverlay(variant))) {
+    if (e.key !== "Escape") return;
+
+    if (variant === "workspace") {
+      const focusedSide = this.getFocusedWorkspaceResizeSide();
+      if (focusedSide && this.hasAttribute(`${focusedSide}-open`)) {
+        e.preventDefault();
+        this.removeAttribute(`${focusedSide}-open`);
+        this.syncWorkspaceState();
+        return;
+      }
+
+      if (this.usesMobileOverlay(variant)) {
+        this.close();
+      }
+      return;
+    }
+
+    if (variant === "overlay" || variant === "push" || this.usesMobileOverlay(variant)) {
       this.close();
     }
   };
@@ -370,12 +393,22 @@ class MuiDrawer extends HTMLElement {
       }
 
       .resize-rail:hover::before,
-      .resize-rail:focus-visible::before,
       .workspace-resize-rail:hover::before,
-      .workspace-resize-rail:focus-visible::before,
+      .resize-rail.is-resizing::before,
       .workspace-resize-rail.is-resizing::before {
         width: var(--stroke-size-300);
         background: var(--outline-color);
+      }
+
+      .resize-rail:focus-visible::before,
+      .workspace-resize-rail:focus-visible::before {
+        width: var(--stroke-size-300);
+        background: var(--outline-color);
+      }
+
+      .resize-rail:focus-visible,
+      .workspace-resize-rail:focus-visible {
+        outline: none;
       }
 
       :host([resizing]) .resize-rail.threshold::before,
@@ -402,7 +435,9 @@ class MuiDrawer extends HTMLElement {
       }
 
       .resize-rail-icon,
-      .workspace-resize-rail-icon {
+      .workspace-resize-rail-icon,
+      .resize-rail-esc,
+      .workspace-resize-rail-esc {
         position: absolute;
         top: 50%;
         right: var(--space-200);
@@ -417,12 +452,38 @@ class MuiDrawer extends HTMLElement {
       .workspace-resize-rail-right .workspace-resize-rail-icon {
         right: auto;
         left: var(--space-200);
+      }
+
+      :host([side="left"]) .resize-rail-esc,
+      .workspace-resize-rail-left .workspace-resize-rail-esc {
+        left: auto;
+        right: var(--space-400);
+      }
+
+      :host([side="right"]) .resize-rail-esc,
+      .workspace-resize-rail-right .workspace-resize-rail-esc {
+        right: auto;
+        left: var(--space-400);
+      }
+
+      :host([side="right"]) .resize-rail-icon,
+      .workspace-resize-rail-right .workspace-resize-rail-icon {
         transform: translateY(-50%) rotate(180deg);
       }
 
       :host([resizing]) .resize-rail.threshold .resize-rail-icon,
       .workspace-resize-rail.threshold .workspace-resize-rail-icon {
         opacity: 0.7;
+      }
+
+      .resize-rail.keyboard-at-min .resize-rail-esc,
+      .workspace-resize-rail.keyboard-at-min .workspace-resize-rail-esc {
+        opacity: 0.85;
+      }
+
+      .resize-rail-esc,
+      .workspace-resize-rail-esc {
+        --text-color: var(--drawer-resize-rail-threshold-indicator);
       }
 
       @keyframes resize-rail-threshold-pulse {
@@ -433,12 +494,6 @@ class MuiDrawer extends HTMLElement {
         50% {
           opacity: 0.8;
         }
-      }
-
-      .resize-rail:focus-visible,
-      .workspace-resize-rail:focus-visible {
-        outline: var(--stroke-size-400) var(--stroke-outset) var(--outline-color);
-        outline-offset: calc(-1 * var(--stroke-size-400));
       }
     `;
 
@@ -955,7 +1010,7 @@ class MuiDrawer extends HTMLElement {
           </div>
           ${
             hasWorkspaceResizeRail
-              ? '<button class="workspace-resize-rail workspace-resize-rail-left" type="button" aria-label="Resize left drawer" data-workspace-resize="left"><mui-icon-left-chevron class="workspace-resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron></button>'
+              ? '<button class="workspace-resize-rail workspace-resize-rail-left" type="button" aria-label="Resize left drawer" data-workspace-resize="left"><mui-icon-left-chevron class="workspace-resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron><mui-body class="workspace-resize-rail-esc" size="xx-small" weight="bold" aria-hidden="true">ESC</mui-body></button>'
               : ""
           }
           <div class="workspace-page">
@@ -963,7 +1018,7 @@ class MuiDrawer extends HTMLElement {
           </div>
           ${
             hasWorkspaceResizeRail
-              ? '<button class="workspace-resize-rail workspace-resize-rail-right" type="button" aria-label="Resize right drawer" data-workspace-resize="right"><mui-icon-left-chevron class="workspace-resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron></button>'
+              ? '<button class="workspace-resize-rail workspace-resize-rail-right" type="button" aria-label="Resize right drawer" data-workspace-resize="right"><mui-icon-left-chevron class="workspace-resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron><mui-body class="workspace-resize-rail-esc" size="xx-small" weight="bold" aria-hidden="true">ESC</mui-body></button>'
               : ""
           }
           <div class="outer workspace-panel workspace-panel-right">
@@ -994,7 +1049,7 @@ class MuiDrawer extends HTMLElement {
     `;
     } else if (variant === "push" || variant === "persistent") {
       const resizeRail = hasResizeRail
-        ? '<button class="resize-rail" type="button" aria-label="Resize drawer"><mui-icon-left-chevron class="resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron></button>'
+        ? '<button class="resize-rail" type="button" aria-label="Resize drawer"><mui-icon-left-chevron class="resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron><mui-body class="resize-rail-esc" size="xx-small" weight="bold" aria-hidden="true">ESC</mui-body></button>'
         : "";
 
       template = /*html*/ `
@@ -1041,8 +1096,12 @@ class MuiDrawer extends HTMLElement {
     this.headerSlot?.addEventListener("slotchange", () => this.updateHeaderVisibility());
 
     this.resizeRailEl?.addEventListener("pointerdown", this._handleResizeStart);
+    this.resizeRailEl?.addEventListener("keydown", this._handleResizeKeydown);
+    this.resizeRailEl?.addEventListener("blur", () => this.clearResizeRailKeyboardHint(this.resizeRailEl));
     this.workspaceResizeRailEls.forEach((rail) => {
       rail.addEventListener("pointerdown", this._handleWorkspaceResizeStart);
+      rail.addEventListener("keydown", this._handleWorkspaceResizeKeydown);
+      rail.addEventListener("blur", () => this.clearResizeRailKeyboardHint(rail));
     });
   }
 
@@ -1068,6 +1127,19 @@ class MuiDrawer extends HTMLElement {
     if (contentEl) {
       contentEl.classList.toggle("no-heading", !hasHeader);
     }
+  }
+
+  private clearResizeRailKeyboardHint(rail?: HTMLElement | null) {
+    rail?.classList.remove("keyboard-at-min");
+  }
+
+  private syncResizeRailKeyboardHint(
+    rail: HTMLElement | null | undefined,
+    nextWidth: number,
+    minWidth: number,
+    canClose: boolean,
+  ) {
+    rail?.classList.toggle("keyboard-at-min", canClose && nextWidth <= minWidth);
   }
 
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
@@ -1162,8 +1234,10 @@ class MuiDrawer extends HTMLElement {
     if (!this.hasAttribute("resize-rail") || (variant !== "push" && variant !== "persistent")) return;
 
     event.preventDefault();
+    this.clearResizeRailKeyboardHint(this.resizeRailEl);
     this.resizeState = {
       startX: event.clientX,
+      startY: event.clientY,
       startWidth: this.getCurrentDrawerWidth(),
       currentWidth: this.getCurrentDrawerWidth(),
       closeOnRelease: false,
@@ -1171,6 +1245,7 @@ class MuiDrawer extends HTMLElement {
     };
     this.syncResizeCloseOpacity(this.resizeState.startWidth);
     this.setAttribute("resizing", "");
+    this.resizeRailEl?.classList.add("is-resizing");
 
     window.addEventListener("pointermove", this._handleResizeMove);
     window.addEventListener("pointerup", this._handleResizeEnd);
@@ -1197,11 +1272,12 @@ class MuiDrawer extends HTMLElement {
     this.setAttribute("width", `${Math.round(clampedWidth)}px`);
   };
 
-  private _handleResizeEnd = () => {
+  private _handleResizeEnd = (event: PointerEvent) => {
+    const state = this.resizeState;
     const shouldClose = this.resizeState?.closeOnRelease && (this.getAttribute("variant") || "overlay") === "push";
     this.resizeState = null;
     this.removeAttribute("resizing");
-    this.resizeRailEl?.classList.remove("threshold", "at-limit");
+    this.resizeRailEl?.classList.remove("is-resizing", "threshold", "at-limit");
     window.removeEventListener("pointermove", this._handleResizeMove);
     window.removeEventListener("pointerup", this._handleResizeEnd);
     if (shouldClose) {
@@ -1209,6 +1285,36 @@ class MuiDrawer extends HTMLElement {
     } else {
       this.syncResizeCloseOpacity(this.getCurrentDrawerWidth());
     }
+    if (state && this.isResizeRailPointerClick(state.startX, state.startY, event)) {
+      this.resizeRailEl?.focus();
+    } else {
+      this.resizeRailEl?.blur();
+    }
+  };
+
+  private _handleResizeKeydown = (event: KeyboardEvent) => {
+    const variant = this.getAttribute("variant") || "overlay";
+    if (!this.hasAttribute("resize-rail") || (variant !== "push" && variant !== "persistent")) return;
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+
+    event.preventDefault();
+    const side = (this.getAttribute("side") as "left" | "right") || this._computedSide;
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    const step = event.shiftKey ? RESIZE_RAIL_KEYBOARD_LARGE_STEP : RESIZE_RAIL_KEYBOARD_STEP;
+    const nextWidth = this.getCurrentDrawerWidth() + (side === "left" ? direction : -direction) * step;
+    const clampedWidth = Math.max(
+      this.getResizeRailMinDrawerWidth(),
+      Math.min(nextWidth, this.getResizeRailMaxDrawerWidth()),
+    );
+
+    this.syncResizeRailKeyboardHint(
+      this.resizeRailEl,
+      nextWidth,
+      this.getResizeRailMinDrawerWidth(),
+      variant === "push",
+    );
+    this.setAttribute("width", `${Math.round(clampedWidth)}px`);
+    this.syncResizeCloseOpacity(clampedWidth);
   };
 
   private _handleWorkspaceResizeStart = (event: PointerEvent) => {
@@ -1220,9 +1326,11 @@ class MuiDrawer extends HTMLElement {
     if (!this.hasAttribute(`${side}-open`)) return;
 
     event.preventDefault();
+    this.clearResizeRailKeyboardHint(rail);
     this.workspaceResizeState = {
       side,
       startX: event.clientX,
+      startY: event.clientY,
       startLeftWidth: this.getWorkspacePanelWidth("left"),
       startRightWidth: this.getWorkspacePanelWidth("right"),
       closeOnRelease: false,
@@ -1253,13 +1361,14 @@ class MuiDrawer extends HTMLElement {
 
     this.workspaceResizeState.closeOnRelease = nextWidth <= closeThreshold;
     this.getWorkspaceResizeRail(side)?.classList.toggle("threshold", this.workspaceResizeState.closeOnRelease);
-    const isAtLimit = (nextWidth <= minDrawerWidth || nextWidth >= maxDrawerWidth) && !this.workspaceResizeState.closeOnRelease;
+    const isAtLimit =
+      (nextWidth <= minDrawerWidth || nextWidth >= maxDrawerWidth) && !this.workspaceResizeState.closeOnRelease;
     this.getWorkspaceResizeRail(side)?.classList.toggle("at-limit", isAtLimit);
     this.syncWorkspaceResizeCloseOpacity(side, nextWidth);
     this.setAttribute(`${side}-width`, `${Math.round(clampedWidth)}px`);
   };
 
-  private _handleWorkspaceResizeEnd = () => {
+  private _handleWorkspaceResizeEnd = (event: PointerEvent) => {
     const state = this.workspaceResizeState;
     if (state?.closeOnRelease) {
       this.removeAttribute(`${state.side}-open`);
@@ -1272,6 +1381,43 @@ class MuiDrawer extends HTMLElement {
     if (state && !state.closeOnRelease) {
       this.syncWorkspaceResizeCloseOpacity(state.side, this.getWorkspacePanelWidth(state.side));
     }
+    const rail = state ? this.getWorkspaceResizeRail(state.side) : null;
+    if (state && !state.closeOnRelease && this.isResizeRailPointerClick(state.startX, state.startY, event)) {
+      rail?.focus();
+    } else {
+      rail?.blur();
+    }
+  };
+
+  private _handleWorkspaceResizeKeydown = (event: KeyboardEvent) => {
+    const rail = event.currentTarget as HTMLElement | null;
+    const side = rail?.dataset.workspaceResize as "left" | "right" | undefined;
+    if ((this.getAttribute("variant") || "overlay") !== "workspace" || !side || !this.hasAttribute("resize-rail")) {
+      return;
+    }
+    if (!this.hasAttribute(`${side}-open`)) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      this.removeAttribute(`${side}-open`);
+      this.syncWorkspaceState();
+      return;
+    }
+
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+
+    event.preventDefault();
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    const step = event.shiftKey ? RESIZE_RAIL_KEYBOARD_LARGE_STEP : RESIZE_RAIL_KEYBOARD_STEP;
+    const nextWidth = this.getWorkspacePanelWidth(side) + (side === "left" ? direction : -direction) * step;
+    const clampedWidth = Math.max(
+      this.getResizeRailMinDrawerWidth(side),
+      Math.min(nextWidth, this.getWorkspaceMaxPanelWidth(side)),
+    );
+
+    this.syncResizeRailKeyboardHint(rail, nextWidth, this.getResizeRailMinDrawerWidth(side), true);
+    this.setAttribute(`${side}-width`, `${Math.round(clampedWidth)}px`);
+    this.syncWorkspaceResizeCloseOpacity(side, clampedWidth);
   };
 
   private syncResizeCloseOpacity(width: number) {
@@ -1327,6 +1473,19 @@ class MuiDrawer extends HTMLElement {
 
   private getWorkspaceResizeRail(side: "left" | "right"): HTMLElement | null {
     return this.shadowRoot?.querySelector<HTMLElement>(`[data-workspace-resize="${side}"]`) || null;
+  }
+
+  private getFocusedWorkspaceResizeSide(): "left" | "right" | null {
+    const activeElement = this.shadowRoot?.activeElement as HTMLElement | null;
+    const side = activeElement?.dataset.workspaceResize;
+    return side === "left" || side === "right" ? side : null;
+  }
+
+  private isResizeRailPointerClick(startX: number, startY: number, event: PointerEvent): boolean {
+    return (
+      Math.abs(event.clientX - startX) <= RESIZE_RAIL_POINTER_CLICK_THRESHOLD &&
+      Math.abs(event.clientY - startY) <= RESIZE_RAIL_POINTER_CLICK_THRESHOLD
+    );
   }
 
   private syncWorkspaceResizeCloseOpacity(side: "left" | "right", width: number) {
@@ -1415,6 +1574,10 @@ class MuiDrawer extends HTMLElement {
         this.overlayEl.style.opacity = showOverlay ? "1" : "0";
         this.overlayEl.style.zIndex = overlayZ.toString();
       }
+      const panelZIndex = this.usesMobileOverlay(variant) && zIndexAttr ? drawerZ.toString() : "";
+      [this.getWorkspacePanel("left"), this.getWorkspacePanel("right")].forEach((panel) => {
+        if (panel) panel.style.zIndex = panelZIndex;
+      });
       this.style.zIndex = zIndexAttr ? zIndexAttr : "";
       this.syncWorkspaceState();
     }

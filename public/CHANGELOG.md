@@ -49,6 +49,8 @@
 - `mui-avatar-chip` avatar border and shadow now stay opt-in to `usage="media-player"` instead of appearing on the default avatar chip.
 - `mui-drawer` resize rails now trigger a 3-cycle flashing animation (`rail-limit-flash`) when dragging reaches the minimum or maximum width boundaries.
 - `mui-drawer` workspace panels now hide inner borders when resize rails are enabled.
+- `mui-drawer` workspace and contained-height behaviour now share the `height` value across desktop, mobile overlay, panel, and page regions, with API docs covering workspace slots, resize rail sizing, and close-threshold controls.
+- `mui-drawer` resize rails now support keyboard resizing with ArrowLeft/ArrowRight, larger Shift+arrow nudges, and focused workspace-side Escape closing.
 - `mui-dropdown` now portals menu contents to avoid clipping in overflow-hidden media player surfaces.
 - `mui-hint` now delegates focus to slotted buttons, links, and native controls instead of adding an extra wrapper tab stop, while keeping fallback keyboard focus for plain trigger content.
 - `mui-hint` fallback trigger focus now uses the Muibook focus outline with an outset offset instead of the browser default outline.
