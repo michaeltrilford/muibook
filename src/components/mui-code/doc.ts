@@ -21,6 +21,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use to present short snippets of code or commands.",
         "Ideal for inline code within paragraphs or standalone blocks.",
+        "Use the `inline` attribute to render code snippets inline with text, utilizing compact padding and baseline alignment.",
         "Ensure code is visually distinct with monospace font and background.",
         "Avoid using for long or complex code—consider specialised code blocks or editors.",
       ],
@@ -39,9 +40,9 @@ export const muiDocs: MuiDocs = {
     variants: {
       items: [
         {
-          key: "",
-          title: "",
-          description: "",
+          key: "inline",
+          title: "Inline",
+          description: "Renders the code snippet inline with regular text rather than as a separate block element.",
           image: "",
         },
       ],
@@ -80,7 +81,10 @@ export const muiDocs: MuiDocs = {
     ],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Inline code renders as an inline-block box aligned to the text baseline.",
+        "Block code expands to fill the container width and supports scrollable/wrapping properties.",
+      ],
     },
 
     writing: {

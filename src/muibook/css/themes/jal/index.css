@@ -116,6 +116,7 @@ html[data-brand="jal"][data-theme="light"] {
   --illustration-main-color-inverted: var(--gold-200);
   --illustration-shadow-color-default: color-mix(in srgb, var(--red-700) 42%, transparent);
   --illustration-shadow-color-inverted: color-mix(in srgb, var(--gold-600) 55%, transparent);
+  --illustration-size-x-small: 6.4rem;
   --illustration-size-small: 8rem;
   --illustration-size-medium: 9.6rem;
   --illustration-size-large: 11.2rem;
@@ -306,6 +307,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --illustration-main-color-inverted: var(--gold-900);
   --illustration-shadow-color-default: color-mix(in srgb, var(--gold-900) 42%, transparent);
   --illustration-shadow-color-inverted: color-mix(in srgb, var(--gold-900) 35%, transparent);
+  --illustration-size-x-small: 6.4rem;
   --illustration-size-small: 8rem;
   --illustration-size-medium: 9.6rem;
   --illustration-size-large: 11.2rem;

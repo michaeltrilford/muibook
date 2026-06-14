@@ -53,7 +53,7 @@ class tokensSemantic extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="text::Text|||font-weight::Font Weight|||border::Border|||shadow::Shadow|||outline::Outline|||overlay::Overlay|||feedback::Feedback|||form::Form|||action::Action|||surface::Surface"
+          links="text::Text|||font-weight::Font Weight|||border::Border|||shadow::Shadow|||outline::Outline|||overlay::Overlay|||categorical::Categorical|||feedback::Feedback|||form::Form|||action::Action|||surface::Surface"
         ></story-quicklinks>
 
           <spec-card id="text" title="Text">
@@ -108,6 +108,23 @@ class tokensSemantic extends HTMLElement {
 
           <spec-card id="overlay" title="Overlay">
            <story-token-slat slot="body" token="--backdrop-overlay" variant="color"></story-token-slat>  
+          </spec-card>
+
+          <spec-card id="categorical" title="Categorical" description="Theme-aware category colours for labels, avatars, statuses, and other categorized UI. Component tokens should reference these aliases instead of consuming theme-specific colour steps directly.">
+            <story-token-slat slot="body" token="--categorical-purple" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-violet" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-pink" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-magenta" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-red" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-orange" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-amber" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-yellow" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-lime" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-green" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-teal" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-cyan" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-blue" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--categorical-indigo" variant="color"></story-token-slat>
           </spec-card>
 
           <spec-card id="feedback" title="Feedback" description="User feedback (alerts, messages)">

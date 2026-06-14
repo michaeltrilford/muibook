@@ -116,6 +116,7 @@ html[data-brand="ana"][data-theme="light"] {
   --illustration-main-color-inverted: var(--white);
   --illustration-shadow-color-default: var(--black-opacity-30);
   --illustration-shadow-color-inverted: var(--white-opacity-20);
+  --illustration-size-x-small: 6.4rem;
   --illustration-size-small: 8rem;
   --illustration-size-medium: 9.6rem;
   --illustration-size-large: 11.2rem;
@@ -313,6 +314,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --illustration-main-color-inverted: var(--black);
   --illustration-shadow-color-default: var(--black-opacity-30);
   --illustration-shadow-color-inverted: var(--black-opacity-20);
+  --illustration-size-x-small: 6.4rem;
   --illustration-size-small: 8rem;
   --illustration-size-medium: 9.6rem;
   --illustration-size-large: 11.2rem;

@@ -4,7 +4,7 @@ export const muiApi = {
     attributes: [
       {
         name: "size",
-        type: { text: '"small" | "medium" | "large" | "x-large"' },
+        type: { text: '"x-small" | "small" | "medium" | "large" | "x-large"' },
         default: "medium",
         description: "Sets the illustration footprint.",
       },

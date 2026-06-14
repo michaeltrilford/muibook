@@ -19,7 +19,7 @@ class MuiIllustrationTrash extends HTMLElement {
   }
 
   render(): void {
-    const size = (this.getAttribute("size") || "medium") as "small" | "medium" | "large" | "x-large";
+    const size = (this.getAttribute("size") || "medium") as "x-small" | "small" | "medium" | "large" | "x-large";
     const rawColor = this.getAttribute("color");
 
     const colorMap: Record<string, string> = {
@@ -45,7 +45,8 @@ class MuiIllustrationTrash extends HTMLElement {
         ? "var(--illustration-shadow-color-inverted)"
         : "var(--illustration-shadow-color-default)";
 
-    const sizeMap: Record<"small" | "medium" | "large" | "x-large", string> = {
+    const sizeMap: Record<"x-small" | "small" | "medium" | "large" | "x-large", string> = {
+      "x-small": "var(--illustration-size-x-small)",
       small: "var(--illustration-size-small)",
       medium: "var(--illustration-size-medium)",
       large: "var(--illustration-size-large)",

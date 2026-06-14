@@ -32,7 +32,7 @@ class tokensComponents extends HTMLElement {
             slot="message"
             heading="Quicklinks"
             limit="10"
-            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||illustration::Illustration|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slide-frame::Slide Frame|||slat::Slat|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table|||video-thumbnail::Video Thumbnail"
+            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||illustration::Illustration|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slide-frame::Slide Frame|||slat::Slat|||status::Status|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table|||video-thumbnail::Video Thumbnail"
           ></story-quicklinks>
 
           <spec-card
@@ -62,8 +62,23 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--avatar-background-positive" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--avatar-background-warning" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--avatar-background-attention" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-purple" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-violet" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-pink" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-magenta" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-red" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-orange" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-amber" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-yellow" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-lime" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-green" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-teal" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-cyan" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-blue" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--avatar-background-indigo" variant="color"></story-token-slat>
 
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Text</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Categorical</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="badge" title="Badge" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-badge/index.ts">
@@ -91,6 +106,71 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--badge-background-cyan" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--badge-background-blue" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--badge-background-indigo" variant="color"></story-token-slat>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Categorical</mui-link> tokens</mui-body>
+          </spec-card>
+
+          <spec-card id="status" title="Status" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-status/index.ts">
+            <story-token-slat slot="body" token="--status-positive-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-positive-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-positive-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-info-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-info-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-info-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-warning-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-warning-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-warning-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-attention-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-attention-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-attention-text-color" variant="text-color"></story-token-slat>
+
+            <story-token-slat slot="body" token="--status-grey-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-grey-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-grey-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-purple-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-purple-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-purple-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-violet-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-violet-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-violet-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-pink-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-pink-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-pink-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-magenta-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-magenta-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-magenta-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-red-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-red-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-red-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-orange-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-orange-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-orange-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-amber-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-amber-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-amber-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-yellow-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-yellow-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-yellow-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-lime-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-lime-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-lime-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-green-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-green-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-green-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-teal-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-teal-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-teal-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-cyan-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-cyan-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-cyan-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-blue-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-blue-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-blue-text-color" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-indigo-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-indigo-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--status-indigo-text-color" variant="text-color"></story-token-slat>
+
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Feedback</mui-link> tokens</mui-body>
+            <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Categorical</mui-link> tokens</mui-body>
           </spec-card>
 
           <spec-card id="body" title="Body" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-card/body/index.ts">
@@ -252,6 +332,7 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--illustration-main-color-inverted" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--illustration-shadow-color-default" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--illustration-shadow-color-inverted" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--illustration-size-x-small" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--illustration-size-small" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--illustration-size-medium" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--illustration-size-large" variant="size"></story-token-slat>

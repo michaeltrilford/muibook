@@ -91,6 +91,14 @@ class StoryIllustration extends HTMLElement {
           <mui-card>
             <mui-card-body inner-space>
               <mui-v-stack space="var(--space-300)" alignx="center">
+                <mui-body size="small" variant="optional">X-Small</mui-body>
+                <mui-illustration-trash size="x-small"></mui-illustration-trash>
+              </mui-v-stack>
+            </mui-card-body>
+          </mui-card>
+          <mui-card>
+            <mui-card-body inner-space>
+              <mui-v-stack space="var(--space-300)" alignx="center">
                 <mui-body size="small" variant="optional">Small</mui-body>
                 <mui-illustration-trash size="small"></mui-illustration-trash>
               </mui-v-stack>
@@ -122,6 +130,7 @@ class StoryIllustration extends HTMLElement {
           </mui-card>
         </mui-grid>
         <story-code-block slot="footer" scrollable>
+          &lt;mui-illustration-trash size="x-small"&gt;&lt;/mui-illustration-trash&gt;<br />
           &lt;mui-illustration-trash size="small"&gt;&lt;/mui-illustration-trash&gt;<br />
           &lt;mui-illustration-trash size="medium"&gt;&lt;/mui-illustration-trash&gt;<br />
           &lt;mui-illustration-trash size="large"&gt;&lt;/mui-illustration-trash&gt;<br />

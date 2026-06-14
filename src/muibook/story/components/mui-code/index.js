@@ -90,6 +90,19 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card title="Inline" description="Displays a code snippet inline with surrounding text.">
+          <div slot="body">
+            <mui-body size="medium">
+              A curated <mui-code size="small" inline>agentCompositions</mui-code> subset for lightweight local LLM prompts.
+            </mui-body>
+          </div>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-body size="medium"&gt;<br />
+            &nbsp;&nbsp;A curated &lt;mui-code size="small" inline&gt;agentCompositions&lt;/mui-code&gt; subset for lightweight local LLM prompts.<br />
+            &lt;/mui-body&gt;
+          </story-code-block>
+        </story-card>
+
         <story-card title="Formatted Payload Types" description="Format source values before passing text into Code; Code preserves whitespace and wrapping without altering content.">
           <mui-v-stack slot="body" space="var(--space-400)">
             <mui-body size="x-small" weight="bold">JSON</mui-body>

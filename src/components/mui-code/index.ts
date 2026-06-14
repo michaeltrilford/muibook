@@ -1,7 +1,7 @@
 /* Mui Code */
 class MuiCode extends HTMLElement {
   static get observedAttributes() {
-    return ["size", "scrollable", "wrap"];
+    return ["size", "scrollable", "wrap", "inline"];
   }
 
   constructor() {
@@ -30,6 +30,9 @@ class MuiCode extends HTMLElement {
       :host {
         display: grid;
       }
+      :host([inline]) {
+        display: inline;
+      }
       :host([size="x-small"]) code {
         font-size: var(--text-font-size-xs);
         line-height: var(--text-line-height-xs);
@@ -52,7 +55,6 @@ class MuiCode extends HTMLElement {
         font-family: monospace;
         color: var(--code-text-color, var(--text-color));
         background: var(--code-background);
-        padding: var(--space-400) var(--space-500);
         box-sizing: border-box;
         width: 100%;
         overflow-x: ${isWrap ? "hidden" : isScrollable ? "auto" : "visible"};
@@ -61,13 +63,26 @@ class MuiCode extends HTMLElement {
         word-break: ${isWrap ? "break-word" : "normal"};
       }
 
+      :host(:not([inline])) code {
+        padding: var(--space-400) var(--space-500);
+      }
+
+      :host([inline]) code {
+        display: inline-block;
+        vertical-align: baseline;
+        padding: var(--space-050) var(--space-100);
+        width: auto;
+        overflow-x: visible;
+        white-space: ${isWrap ? "pre-wrap" : "nowrap"};
+      }
+
       code:focus-visible {
         outline: ${isScrollable && !isWrap ? "var(--outline-thick)" : "none"};
         outline-offset: ${isScrollable && !isWrap ? "calc(-1 * var(--stroke-size-500))" : "none"};
       }
 
       @media (min-width: 600px) {
-        code {
+        :host(:not([inline])) code {
           padding: var(--space-500) var(--space-600);
         } 
       }
@@ -76,7 +91,7 @@ class MuiCode extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <code><slot></slot></code>
-  `;
+    `;
   }
 }
 

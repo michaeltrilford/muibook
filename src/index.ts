@@ -134,6 +134,8 @@ export * from "./components/mui-media-player";
 export * from "./components/mui-avatar-chip";
 export * from "./components/mui-video-thumbnail";
 export * from "./components/mui-range-input";
+export * from "./components/mui-model-viewer";
+
 
 // Feedback
 export * from "./components/mui-alert";

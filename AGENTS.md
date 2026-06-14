@@ -9,6 +9,10 @@ This repo builds the Muibook component library: framework-agnostic, accessible W
 - Central exports: `src/index.ts`
 - Demo site: `src/muibook/index.ts`
 - Build outputs: `dist/` (published)
+- Generated component metadata: `public/custom-elements.json`
+- Runtime/destination attrs: `public/dynamic-attrs.json`
+- Authored knowledge: `src/knowledge/*`
+- Knowledge export target: sibling repo `../muibook-knowledge`
 
 ## Common Commands
 
@@ -19,6 +23,8 @@ This repo builds the Muibook component library: framework-agnostic, accessible W
 - `npm run build:create-mui-app` — scaffold build
 - `npm run preview:create-mui-app` — preview scaffold build
 - `npm run token-build` — Style Dictionary tokens
+- `npm run cem` — generate `public/custom-elements.json`
+- `npm run copy-knowledge` — copy CEM, dynamic attrs, root docs, and `src/knowledge/*` into `../muibook-knowledge`
 
 ## Adding A New Component
 
@@ -38,13 +44,19 @@ When a component uses slots:
 
 ## Notes For Agents
 
-- Always confirm with the user before making any file changes, even if they seem small or within scope.
+- If the user states something is wrong, give a short sense check before editing. If they explicitly ask for a fix, proceed after that short acknowledgement.
 - Prefer touching source under `src/`; `dist/` is generated.
 - Keep changes small and aligned with existing component patterns.
 - If unsure about behavior, search for sibling components in `src/components/` for examples.
+- Keep `AGENTS.md` and `DESIGN.md` at the repo root. They are copied to the knowledge repo for agent/plugin context.
+- Keep `src/knowledge` for importable TS knowledge only: global rules, keyword mappings, and composition examples.
+- Component API and UX guidance should live in component `api.ts` and `doc.ts` files so the CEM stays current.
 - Story props panels are often defined locally in the Muibook story page via `propItems` arrays. Do not add or reshape component `doc.ts` files just to populate a props panel unless the user explicitly wants that information added to the docs/CEM layer too.
 - Treat `dynamic-attrs.json` as a separate concern from story props. It documents destination/runtime structural attrs (often destination-only) for builder/runtime integration and should not be merged conceptually with the story `propItems` API surface.
 - When documenting dynamic attrs, prefer destination-only output: list where the attrs appear, not where they originate, unless the user explicitly asks for the source relationship.
 - Avoid persisting internal runtime state as public attributes (for example `multi-line`, `has-*`, or similar UI state flags).
 - Prefer CSS-first layout behavior over JS-driven state attrs when a stable visual result can be achieved without runtime attribute toggling.
 - Exported/component-consumed HTML should only include public API attrs; strip internal runtime attrs in export paths.
+- Do not add token escape hatches by default. Use existing semantic or component tokens unless there is a clear public customization need.
+- Do not add semantic, theme, or component tokens to the brand token JSON/source. Brand tokens are primitives only. Put semantic aliases, theme mappings, and component-level decisions in the semantic/theme/component token layer instead.
+- Do not add generated files by hand unless the build or copy script intentionally owns that output.

@@ -85,6 +85,21 @@
 /* 2. LIGHT MODE                                                                                        */
 /* ==================================================================================================== */
 html[data-theme="light"] {
+  /* Categorical */
+  --categorical-purple: var(--categorical-purple-200);
+  --categorical-violet: var(--categorical-violet-200);
+  --categorical-pink: var(--categorical-pink-200);
+  --categorical-magenta: var(--categorical-magenta-200);
+  --categorical-red: var(--categorical-red-200);
+  --categorical-orange: var(--categorical-orange-200);
+  --categorical-amber: var(--categorical-amber-200);
+  --categorical-yellow: var(--categorical-yellow-200);
+  --categorical-lime: var(--categorical-lime-200);
+  --categorical-green: var(--categorical-green-200);
+  --categorical-teal: var(--categorical-teal-200);
+  --categorical-cyan: var(--categorical-cyan-200);
+  --categorical-blue: var(--categorical-blue-200);
+  --categorical-indigo: var(--categorical-indigo-200);
   /* Form */
   --form-default-text-color: var(--grey-900);
   --form-success-text-color: var(--green-700);
@@ -336,6 +351,7 @@ html[data-theme="light"] {
   --illustration-main-color-inverted: var(--icon-color-inverted);
   --illustration-shadow-color-default: var(--black-opacity-20);
   --illustration-shadow-color-inverted: var(--white-opacity-20);
+  --illustration-size-x-small: 6.4rem;
   --illustration-size-small: 8rem;
   --illustration-size-medium: 9.6rem;
   --illustration-size-large: 11.2rem;
@@ -430,20 +446,20 @@ html[data-theme="light"] {
   --avatar-background-warning: var(--orange-200);
   --avatar-background-attention: var(--red-200);
 
-  --avatar-background-purple: var(--categorical-purple-200);
-  --avatar-background-violet: var(--categorical-violet-200);
-  --avatar-background-pink: var(--categorical-pink-200);
-  --avatar-background-magenta: var(--categorical-magenta-200);
-  --avatar-background-red: var(--categorical-red-200);
-  --avatar-background-orange: var(--categorical-orange-200);
-  --avatar-background-amber: var(--categorical-amber-200);
-  --avatar-background-yellow: var(--categorical-yellow-200);
-  --avatar-background-lime: var(--categorical-lime-200);
-  --avatar-background-green: var(--categorical-green-200);
-  --avatar-background-teal: var(--categorical-teal-200);
-  --avatar-background-cyan: var(--categorical-cyan-200);
-  --avatar-background-blue: var(--categorical-blue-200);
-  --avatar-background-indigo: var(--categorical-indigo-200);
+  --avatar-background-purple: var(--categorical-purple);
+  --avatar-background-violet: var(--categorical-violet);
+  --avatar-background-pink: var(--categorical-pink);
+  --avatar-background-magenta: var(--categorical-magenta);
+  --avatar-background-red: var(--categorical-red);
+  --avatar-background-orange: var(--categorical-orange);
+  --avatar-background-amber: var(--categorical-amber);
+  --avatar-background-yellow: var(--categorical-yellow);
+  --avatar-background-lime: var(--categorical-lime);
+  --avatar-background-green: var(--categorical-green);
+  --avatar-background-teal: var(--categorical-teal);
+  --avatar-background-cyan: var(--categorical-cyan);
+  --avatar-background-blue: var(--categorical-blue);
+  --avatar-background-indigo: var(--categorical-indigo);
 
   /* Status */
   --status-positive-background: var(--green-100);
@@ -560,6 +576,21 @@ html[data-theme="light"] {
 /* 3. DARK MODE                                                                                         */
 /* ==================================================================================================== */
 html[data-theme="dark"] {
+  /* Categorical */
+  --categorical-purple: var(--categorical-purple-800);
+  --categorical-violet: var(--categorical-violet-800);
+  --categorical-pink: var(--categorical-pink-800);
+  --categorical-magenta: var(--categorical-magenta-800);
+  --categorical-red: var(--categorical-red-800);
+  --categorical-orange: var(--categorical-orange-800);
+  --categorical-amber: var(--categorical-amber-800);
+  --categorical-yellow: var(--categorical-yellow-800);
+  --categorical-lime: var(--categorical-lime-800);
+  --categorical-green: var(--categorical-green-800);
+  --categorical-teal: var(--categorical-teal-800);
+  --categorical-cyan: var(--categorical-cyan-800);
+  --categorical-blue: var(--categorical-blue-800);
+  --categorical-indigo: var(--categorical-indigo-800);
   /* Form */
   --form-default-text-color: var(--grey-200);
   --form-success-text-color: var(--green-400);
@@ -813,6 +844,7 @@ html[data-theme="dark"] {
   --illustration-main-color-inverted: var(--icon-color-inverted);
   --illustration-shadow-color-default: var(--black-opacity-30);
   --illustration-shadow-color-inverted: var(--black-opacity-20);
+  --illustration-size-x-small: 6.4rem;
   --illustration-size-small: 8rem;
   --illustration-size-medium: 9.6rem;
   --illustration-size-large: 11.2rem;
@@ -905,20 +937,20 @@ html[data-theme="dark"] {
   --avatar-background-warning: var(--orange-900);
   --avatar-background-attention: var(--red-900);
 
-  --avatar-background-purple: var(--categorical-purple-800);
-  --avatar-background-violet: var(--categorical-violet-800);
-  --avatar-background-pink: var(--categorical-pink-800);
-  --avatar-background-magenta: var(--categorical-magenta-800);
-  --avatar-background-red: var(--categorical-red-800);
-  --avatar-background-orange: var(--categorical-orange-800);
-  --avatar-background-amber: var(--categorical-amber-800);
-  --avatar-background-yellow: var(--categorical-yellow-800);
-  --avatar-background-lime: var(--categorical-lime-800);
-  --avatar-background-green: var(--categorical-green-800);
-  --avatar-background-teal: var(--categorical-teal-800);
-  --avatar-background-cyan: var(--categorical-cyan-800);
-  --avatar-background-blue: var(--categorical-blue-800);
-  --avatar-background-indigo: var(--categorical-indigo-800);
+  --avatar-background-purple: var(--categorical-purple);
+  --avatar-background-violet: var(--categorical-violet);
+  --avatar-background-pink: var(--categorical-pink);
+  --avatar-background-magenta: var(--categorical-magenta);
+  --avatar-background-red: var(--categorical-red);
+  --avatar-background-orange: var(--categorical-orange);
+  --avatar-background-amber: var(--categorical-amber);
+  --avatar-background-yellow: var(--categorical-yellow);
+  --avatar-background-lime: var(--categorical-lime);
+  --avatar-background-green: var(--categorical-green);
+  --avatar-background-teal: var(--categorical-teal);
+  --avatar-background-cyan: var(--categorical-cyan);
+  --avatar-background-blue: var(--categorical-blue);
+  --avatar-background-indigo: var(--categorical-indigo);
 
   /* Status */
   --status-positive-background: var(--green-900);

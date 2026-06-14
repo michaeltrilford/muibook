@@ -171,11 +171,21 @@ class appNavbar extends HTMLElement {
       <app-navbar-group id="resources" groupname="Resources">
         <app-navbar-section heading="Setup">
           <app-navbar-link link="/create-mui-app" title="Create App"></app-navbar-link>
-          <app-navbar-link link="/manifest" title="Design Manifest"></app-navbar-link>
           <app-navbar-link link="/npm" title="NPM Package"></app-navbar-link>
           <app-navbar-link link="/storybook" title="Storybook"></app-navbar-link>
           <app-navbar-link link="/changelog" title="Changelog"></app-navbar-link>
           <app-navbar-link link="/license" title="License"></app-navbar-link>
+        </app-navbar-section>
+        <app-navbar-section heading="Knowledge">
+          <app-navbar-link link="/knowledge-mcp" title="Knowledge MCP"></app-navbar-link>
+          <app-navbar-link link="/manifest" title="Design Manifest"></app-navbar-link>
+          <app-navbar-link link="/knowledge-compositions" title="Compositions"></app-navbar-link>
+          <app-navbar-link link="/knowledge-rules" title="Rules"></app-navbar-link>
+          <app-navbar-link link="/knowledge-keywords" title="Keywords"></app-navbar-link>
+        </app-navbar-section>
+        <app-navbar-section heading="AI Agent">
+          <app-navbar-link link="/keywords" title="Keywords"></app-navbar-link>
+          <app-navbar-link link="/prompts" title="Prompts"></app-navbar-link>
         </app-navbar-section>
         <app-navbar-section heading="Design">
           <app-navbar-link link="/design-guidelines" title="UX Guidelines"></app-navbar-link>
@@ -187,17 +197,13 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/multi-brand-theme" title="Multi-Brand Theme"></app-navbar-link>
           <app-navbar-link link="/overrides" title="Overrides"></app-navbar-link>
         </app-navbar-section>
+        <app-navbar-section heading="Showcase">
+        <app-navbar-link link="/showcase" title="Projects"></app-navbar-link>
+        </app-navbar-section>
         <app-navbar-section heading="React Helpers">
           <app-navbar-link link="/typed-elements" title="Typed Elements"></app-navbar-link>
           <app-navbar-link link="/wrapped-components" title="Wrapped Components"></app-navbar-link>
           <app-navbar-link link="/react-input-helper" title="Input Helper"></app-navbar-link>
-        </app-navbar-section>
-        <app-navbar-section heading="AI Agent">
-          <app-navbar-link link="/keywords" title="Keywords"></app-navbar-link>
-          <app-navbar-link link="/prompts" title="Prompts"></app-navbar-link>
-        </app-navbar-section>
-        <app-navbar-section heading="Showcase">
-          <app-navbar-link link="/showcase" title="Projects"></app-navbar-link>
         </app-navbar-section>
       </app-navbar-group>
     `;
@@ -248,6 +254,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-section heading="Media" default-open>
           <app-navbar-link link="/image" title="Image"></app-navbar-link>
           <app-navbar-link link="/media-player" title="Media Player"></app-navbar-link>
+          <app-navbar-link link="/model-viewer" title="Model Viewer"></app-navbar-link>
           <app-navbar-link link="/video-thumbnail" title="Video Thumbnail"></app-navbar-link>
           <app-navbar-link link="/slide-frame" title="Slide Frame"></app-navbar-link>
         </app-navbar-section>

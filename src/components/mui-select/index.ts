@@ -5,7 +5,25 @@ class MuiSelect extends HTMLElement {
   partMap = "";
 
   static get observedAttributes() {
-    return ["name", "value", "id", "label", "options", "disabled", "hide-label", "variant", "optional", "size"];
+    return [
+      "name",
+      "value",
+      "id",
+      "label",
+      "options",
+      "disabled",
+      "hide-label",
+      "variant",
+      "optional",
+      "size",
+      "appearance",
+      "selected-content",
+      "col",
+      "space",
+      "max-height",
+      "padding-block",
+      "padding-inline",
+    ];
   }
 
   _changeHandler?: (e: Event) => void;
@@ -47,7 +65,23 @@ class MuiSelect extends HTMLElement {
       return;
     }
 
-    if (["options", "label", "hide-label", "variant", "optional", "size"].includes(name)) {
+    if (
+      [
+        "options",
+        "label",
+        "hide-label",
+        "variant",
+        "optional",
+        "size",
+        "appearance",
+        "selected-content",
+        "col",
+        "space",
+        "max-height",
+        "padding-block",
+        "padding-inline",
+      ].includes(name)
+    ) {
       this.render();
       this.setupListener();
     }
@@ -97,11 +131,7 @@ class MuiSelect extends HTMLElement {
     if (!this.shadowRoot) return;
 
     const name = this.getAttribute("name") || "";
-    const id =
-      this.getAttribute("id") ||
-      `mui-select-${Math.random()
-        .toString(36)
-        .substr(2, 9)}`;
+    const id = this.getAttribute("id") || `mui-select-${Math.random().toString(36).substr(2, 9)}`;
     const label = this.getAttribute("label") || "";
     const value = this.getAttribute("value") || "";
     const hideLabel = this.hasAttribute("hide-label");
@@ -109,6 +139,13 @@ class MuiSelect extends HTMLElement {
     const disabled = this.hasAttribute("disabled");
     const optionsAttr = this.getAttribute("options") || "[]";
     const size = this.getAttribute("size") || "medium";
+    const appearance = this.getAttribute("appearance") === "custom" ? "custom" : "native";
+    const selectedContentMode = this.getAttribute("selected-content") === "label" ? "label" : "rich";
+    const pickerCol = this.getAttribute("col") || "1fr";
+    const pickerSpace = this.getAttribute("space") || "var(--space-100)";
+    const pickerMaxHeight = this.getAttribute("max-height") || "";
+    const paddingBlock = this.getAttribute("padding-block") || "";
+    const paddingInline = this.getAttribute("padding-inline") || "";
     const allowedSizes = ["x-small", "small", "medium", "large"];
     const normalizedSize = allowedSizes.includes(size) ? size : "medium";
     const chevronSizeMap: Record<string, string> = {
@@ -134,14 +171,42 @@ class MuiSelect extends HTMLElement {
       console.error("Invalid JSON in options attribute", e);
     }
 
-    const optionsHTML = options
-      .map(
-        (opt) =>
-          `<option value="${opt.value}" ${opt.value === value ? "selected" : ""} ${opt.disabled ? "disabled" : ""}>${
-            opt.label
-          }</option>`
-      )
-      .join("");
+    const lightOptions = Array.from(this.querySelectorAll(":scope > option"));
+    const optionSource = appearance === "custom" && lightOptions.length > 0 ? lightOptions : null;
+    const optionsHTML = optionSource
+      ? optionSource
+          .map((option) => {
+            const optionValue = option.getAttribute("value") || "";
+            const selected = optionValue === value || option.hasAttribute("selected");
+            const disabledOption = option.hasAttribute("disabled");
+            return `<option value="${optionValue}" ${selected ? "selected" : ""} ${
+              disabledOption ? "disabled" : ""
+            }>${option.innerHTML}</option>`;
+          })
+          .join("")
+      : options
+          .map(
+            (opt) =>
+              `<option value="${opt.value}" ${opt.value === value ? "selected" : ""} ${
+                opt.disabled ? "disabled" : ""
+              }>${opt.label}</option>`,
+          )
+          .join("");
+    const selectedContent =
+      appearance === "custom" && selectedContentMode === "rich"
+        ? "<button><selectedcontent></selectedcontent></button>"
+        : "";
+    const chevronHTML =
+      appearance === "custom"
+        ? ""
+        : `<mui-icon-down-chevron class="chevron" size="${chevronSize}"></mui-icon-down-chevron>`;
+    const customStyle = `
+      --select-picker-col: ${pickerCol};
+      --select-picker-space: ${pickerSpace};
+      ${pickerMaxHeight ? `--select-picker-max-height: ${pickerMaxHeight};` : ""}
+      ${paddingBlock ? `--select-padding-block: ${paddingBlock}; --select-option-padding-block: ${paddingBlock};` : ""}
+      ${paddingInline ? `--select-padding-inline: ${paddingInline}; --select-option-padding-inline: ${paddingInline};` : ""}
+    `;
 
     const html = /*html*/ `
       <style>
@@ -176,7 +241,18 @@ class MuiSelect extends HTMLElement {
         select {
           min-height: 4.4rem;
           line-height: var(--text-line-height);
-          padding: var(--space-200) var(--space-300);
+          --select-padding-block-start-default: var(--space-200);
+          --select-padding-block-end-default: var(--space-200);
+          --select-padding-inline-start-default: var(--space-300);
+          --select-padding-inline-end-default: var(--space-300);
+          padding-block: var(
+            --select-padding-block,
+            var(--select-padding-block-start-default) var(--select-padding-block-end-default)
+          );
+          padding-inline: var(
+            --select-padding-inline,
+            var(--select-padding-inline-start-default) var(--select-padding-inline-end-default)
+          );
           font-size: var(--text-font-size);
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
@@ -187,29 +263,148 @@ class MuiSelect extends HTMLElement {
           box-sizing: border-box;
           appearance: none;
         }
+        select.appearance-custom,
+        select.appearance-custom::picker(select) {
+          appearance: base-select;
+          font: inherit;
+          color: var(--form-default-text-color);
+        }
+        select.appearance-custom {
+          cursor: pointer;
+        }
+        select.appearance-custom button {
+          appearance: none;
+          border: 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--space-100);
+          padding: 0;
+          width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
+          background: transparent;
+          color: inherit;
+          font: inherit;
+          text-align: left;
+        }
+        select.appearance-custom selectedcontent {
+          min-width: 0;
+          flex: 1 1 auto;
+        }
+        select.appearance-custom::picker-icon {
+          content: "";
+          display: inline-block;
+          width: var(--select-picker-icon-size, var(--space-400));
+          height: var(--select-picker-icon-size, var(--space-400));
+          flex: 0 0 auto;
+          align-self: center;
+          background: currentColor;
+          -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath d='M18 25c-.79 0-1.428-.269-2.091-.917L6.7 15.072C6.23 14.595 6 14.069 6 13.42 6 12.101 7.122 11 8.487 11c.688 0 1.326.281 1.849.795l7.69 7.617 7.65-7.617c.524-.526 1.161-.795 1.837-.795C28.878 11 30 12.1 30 13.421c0 .648-.217 1.186-.701 1.638l-9.195 9.024c-.663.636-1.288.917-2.104.917'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath d='M18 25c-.79 0-1.428-.269-2.091-.917L6.7 15.072C6.23 14.595 6 14.069 6 13.42 6 12.101 7.122 11 8.487 11c.688 0 1.326.281 1.849.795l7.69 7.617 7.65-7.617c.524-.526 1.161-.795 1.837-.795C28.878 11 30 12.1 30 13.421c0 .648-.217 1.186-.701 1.638l-9.195 9.024c-.663.636-1.288.917-2.104.917'/%3E%3C/svg%3E");
+          -webkit-mask-position: center;
+          mask-position: center;
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+          -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+          transition: transform var(--speed-200) ease;
+        }
+        select.appearance-custom:open::picker-icon {
+          transform: rotate(180deg);
+        }
+        select.appearance-custom::picker(select) {
+          display: none;
+          grid-template-columns: var(--select-picker-col, 1fr);
+          gap: var(--select-picker-space, var(--space-100));
+          max-height: var(--select-picker-max-height, none);
+          overflow: auto;
+          margin-block-start: var(--space-100);
+          padding: var(--space-100);
+          border: var(--border-thin);
+          border-color: var(--form-default-border-color);
+          border-radius: var(--radius-200);
+          background: var(--input-background);
+          box-shadow: var(--shadow-300);
+          box-sizing: border-box;
+          box-shadow: var(--shadow-thick);
+        }
+        select.appearance-custom:open::picker(select) {
+          display: grid;
+        }
+        select.appearance-custom option {
+          display: block;
+          min-width: 0;
+          padding-block: var(
+            --select-option-padding-block,
+            var(--select-padding-block-start-default) var(--select-padding-block-end-default)
+          );
+          padding-inline: var(
+            --select-option-padding-inline,
+            var(--select-padding-inline-start-default) var(--select-padding-inline-end-default)
+          );
+          border-radius: var(--radius-100);
+          background: transparent;
+          color: var(--form-default-text-color);
+        }
+        select.appearance-custom option:hover,
+        select.appearance-custom option:focus-visible {
+          background: var(--action-tertiary-background-hover);
+        }
+        select.appearance-custom option:checked {
+          background: var(--action-tertiary-background-focus);
+        }
+        select.appearance-custom option::checkmark {
+          display: none;
+        }
         select.size-x-small {
           min-height: var(--action-size-x-small);
-          padding: var(--action-padding-x-small);
+          --select-padding-block-start-default: var(--space-050);
+          --select-padding-block-end-default: var(--space-050);
+          --select-padding-inline-start-default: var(--space-100);
+          --select-padding-inline-end-default: var(--space-100);
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
         }
         select.size-small {
           min-height: var(--action-size-small);
-          padding: var(--action-padding-small);
+          --select-padding-block-start-default: var(--space-100);
+          --select-padding-block-end-default: var(--space-100);
+          --select-padding-inline-start-default: var(--space-200);
+          --select-padding-inline-end-default: var(--space-200);
           font-size: var(--text-font-size-s);
           line-height: var(--text-line-height-s);
         }
         select.size-medium {
           min-height: var(--action-size-medium);
-          padding: var(--space-200) var(--space-300);
+          --select-padding-block-start-default: var(--space-200);
+          --select-padding-block-end-default: var(--space-200);
+          --select-padding-inline-start-default: var(--space-300);
+          --select-padding-inline-end-default: var(--space-300);
           font-size: var(--text-font-size);
           line-height: var(--text-line-height);
         }
         select.size-large {
           min-height: var(--action-size-large);
-          padding: var(--space-300) var(--space-400);
+          --select-padding-block-start-default: var(--space-300);
+          --select-padding-block-end-default: var(--space-300);
+          --select-padding-inline-start-default: var(--space-400);
+          --select-padding-inline-end-default: var(--space-400);
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);
+        }
+        select.appearance-custom.size-x-small {
+          --select-picker-icon-size: 1.3rem;
+        }
+        select.appearance-custom.size-small {
+          --select-picker-icon-size: var(--space-400);
+          --select-padding-inline-end-default: var(--space-200);
+        }
+        select.appearance-custom.size-medium {
+          --select-picker-icon-size: var(--space-400);
+        }
+        select.appearance-custom.size-large {
+          --select-picker-icon-size: 2.1rem;
         }
         select:hover {
           border-color: var(--form-default-border-color-hover);
@@ -374,11 +569,12 @@ class MuiSelect extends HTMLElement {
           : ""
       }
       <div style="position: relative;">
-        <select class="${[variantClass, `size-${normalizedSize}`].filter(Boolean).join(" ")}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} 
+        <select class="${[variantClass, `size-${normalizedSize}`, `appearance-${appearance}`].filter(Boolean).join(" ")}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} style="${customStyle}"
         ${disabled ? "disabled" : ""}>
+          ${selectedContent}
           ${optionsHTML}
         </select>
-        <mui-icon-down-chevron class="chevron" size="${chevronSize}"></mui-icon-down-chevron>
+        ${chevronHTML}
       </div>
     `;
 

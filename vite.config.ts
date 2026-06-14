@@ -204,6 +204,7 @@ export default defineConfig({
         "components/mui-spinner": path.resolve(__dirname, "src/components/mui-spinner"),
         "components/mui-status": path.resolve(__dirname, "src/components/mui-status"),
         "components/mui-media-player": path.resolve(__dirname, "src/components/mui-media-player"),
+        "components/mui-model-viewer": path.resolve(__dirname, "src/components/mui-model-viewer"),
         "components/mui-avatar-chip": path.resolve(__dirname, "src/components/mui-avatar-chip"),
         "components/mui-video-thumbnail": path.resolve(__dirname, "src/components/mui-video-thumbnail"),
         "components/mui-range-input": path.resolve(__dirname, "src/components/mui-range-input"),

@@ -25,6 +25,48 @@ export const muiApi = {
         default: "default",
         description: "Visual validation state.",
       },
+      {
+        name: "appearance",
+        type: { text: '"native" | "custom"' },
+        default: "native",
+        description:
+          "Controls the select rendering model. Use `custom` for the experimental native customizable select appearance with rich option content.",
+      },
+      {
+        name: "selected-content",
+        type: { text: '"rich" | "label"' },
+        default: "rich",
+        description:
+          "Controls how custom appearance renders the closed selected value. Use `label` when rich picker options should collapse to plain option text in the trigger.",
+      },
+      {
+        name: "col",
+        type: { text: "string" },
+        default: "1fr",
+        description:
+          "Custom appearance picker grid columns. The custom picker uses grid layout by default, so `col` maps to `grid-template-columns`.",
+      },
+      {
+        name: "space",
+        type: { text: "string" },
+        default: "var(--space-100)",
+        description: "Custom appearance picker gap between options.",
+      },
+      {
+        name: "max-height",
+        type: { text: "string" },
+        description: "Optional max height for the custom appearance picker before it scrolls.",
+      },
+      {
+        name: "padding-block",
+        type: { text: "string" },
+        description: "Custom appearance trigger and option vertical padding. Accepts one or two CSS padding values.",
+      },
+      {
+        name: "padding-inline",
+        type: { text: "string" },
+        description: "Custom appearance trigger and option horizontal padding. Accepts one or two CSS padding values.",
+      },
       { name: "optional", type: { text: "boolean" }, default: "false", description: "Displays an optional marker beside the label." },
       {
         name: "size",
