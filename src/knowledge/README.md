@@ -72,7 +72,11 @@ When adding new keyword groups, update `agentKeywordKeys` only if the group shou
 
 The standalone [`muibook-knowledge`](https://github.com/michaeltrilford/muibook-knowledge) repo can expose these files through an MCP server. This is useful when an AI coding tool should query Muibook component APIs, dynamic attributes, rules, keywords, compositions, and design guidance without copying the full content into every prompt.
 
-When using the local knowledge repo, point your MCP client at the server entry file:
+The server supports two transport modes: **Stdio** (for Antigravity, Claude Code, Claude Desktop) and **SSE/HTTP** (for OpenCode Desktop).
+
+### 1. Stdio Mode (Antigravity, Claude Code, Claude Desktop)
+
+Configure your client to launch the script directly using standard I/O:
 
 ```json
 {
@@ -84,12 +88,6 @@ When using the local knowledge repo, point your MCP client at the server entry f
   }
 }
 ```
-
-Use the same server shape in tools that accept JSON MCP configuration, including Antigravity, Codex, Claude Code, OpenCode, and Claude Desktop. The exact config file location is client-specific, but the server entry remains the same:
-
-- `command`: `node`
-- `args`: absolute path to `mcp-server.js` in the `muibook-knowledge` repo
-- server name: `muibook`
 
 If `@muibook/knowledge` is installed as a package, clients can also use the package binary when supported:
 
@@ -105,3 +103,16 @@ If `@muibook/knowledge` is installed as a package, clients can also use the pack
 ```
 
 Prefer the absolute local path during development so the MCP server always reads the latest exported knowledge files from the local `muibook-knowledge` repo.
+
+### 2. SSE Mode (OpenCode Desktop)
+
+Start the server in Server-Sent Events (SSE) mode in your terminal:
+
+```bash
+node mcp-server.js --sse --port 22222
+```
+
+Then, configure OpenCode Desktop's server connections page:
+
+- **Server Address**: `http://localhost:22222/sse`
+- **Server Name**: `Muibook Knowledge`
