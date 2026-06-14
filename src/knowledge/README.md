@@ -72,11 +72,46 @@ When adding new keyword groups, update `agentKeywordKeys` only if the group shou
 
 The standalone [`muibook-knowledge`](https://github.com/michaeltrilford/muibook-knowledge) repo can expose these files through an MCP server. This is useful when an AI coding tool should query Muibook component APIs, dynamic attributes, rules, keywords, compositions, and design guidance without copying the full content into every prompt.
 
-The server supports two transport modes: **Stdio** (for Antigravity, Claude Code, Claude Desktop) and **SSE/HTTP** (for OpenCode Desktop).
+The local server is used over **stdio** by default. OpenCode also uses this local stdio setup through its `mcp` config block.
 
-### 1. Stdio Mode (Antigravity, Claude Code, Claude Desktop)
+### 1. OpenCode
 
-Configure your client to launch the script directly using standard I/O:
+Add the server to `~/.config/opencode/opencode.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "muibook-knowledge": {
+      "type": "local",
+      "command": [
+        "node",
+        "/Users/michaeltrilford/Github/muibook-knowledge/mcp-server.js"
+      ],
+      "cwd": "/Users/michaeltrilford/Github/muibook-knowledge",
+      "enabled": true
+    }
+  }
+}
+```
+
+If the config already has other keys such as `model` or `provider`, keep them and only add or update the `mcp` block.
+
+Verify the install with:
+
+```bash
+opencode mcp list
+```
+
+OpenCode should show `muibook-knowledge` as connected.
+
+During development, prefer the absolute local path so OpenCode always reads the latest exported knowledge files from the local `muibook-knowledge` repo.
+
+Local folder naming note: this README documents the standalone exported knowledge repo at `../muibook-knowledge`. If you are intentionally using the separate Codex/plugin prototype at `../MuibookKnowledge`, keep the same OpenCode config shape but use `node /Users/michaeltrilford/Github/MuibookKnowledge/src/index.js` and `cwd` `/Users/michaeltrilford/Github/MuibookKnowledge`.
+
+### 2. Other Stdio MCP Clients
+
+For clients that use the common `mcpServers` shape, launch the script directly using standard I/O:
 
 ```json
 {
@@ -103,16 +138,3 @@ If `@muibook/knowledge` is installed as a package, clients can also use the pack
 ```
 
 Prefer the absolute local path during development so the MCP server always reads the latest exported knowledge files from the local `muibook-knowledge` repo.
-
-### 2. SSE Mode (OpenCode Desktop)
-
-Start the server in Server-Sent Events (SSE) mode in your terminal:
-
-```bash
-node mcp-server.js --sse --port 22222
-```
-
-Then, configure OpenCode Desktop's server connections page:
-
-- **Server Address**: `http://localhost:22222/sse`
-- **Server Name**: `Muibook Knowledge`

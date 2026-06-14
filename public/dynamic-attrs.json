@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-14T06:40:04.856Z",
+  "generatedAt": "2026-06-14T09:04:11.671Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -92,16 +92,6 @@
         }
       ]
     },
-    "mui-field": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-message",
-          "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
-        }
-      ]
-    },
     "mui-drawer": {
       "version": 1,
       "destinationOnly": true,
@@ -113,6 +103,16 @@
         {
           "name": "has-footer",
           "description": "Set when footer content exists, allowing the component to adjust internal spacing and structural regions."
+        }
+      ]
+    },
+    "mui-field": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-message",
+          "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
         }
       ]
     },
@@ -184,6 +184,28 @@
         }
       ]
     },
+    "mui-rule": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "in-card",
+          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
+        },
+        {
+          "name": "in-form-section",
+          "description": "Set when rendered inside a form section, allowing the component to inherit form-section divider treatment."
+        },
+        {
+          "name": "in-dialog",
+          "description": "Set when rendered inside a dialog, allowing the component to inherit dialog-aware divider treatment."
+        },
+        {
+          "name": "in-drawer",
+          "description": "Set when rendered inside a drawer, allowing the component to inherit drawer-aware divider treatment."
+        }
+      ]
+    },
     "mui-slide-frame": {
       "version": 1,
       "destinationOnly": true,
@@ -219,28 +241,6 @@
         {
           "name": "slide-hidden",
           "description": "Applied to hidden slide sections, allowing the slide frame to hide inactive sections."
-        }
-      ]
-    },
-    "mui-rule": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "in-card",
-          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
-        },
-        {
-          "name": "in-form-section",
-          "description": "Set when rendered inside a form section, allowing the component to inherit form-section divider treatment."
-        },
-        {
-          "name": "in-dialog",
-          "description": "Set when rendered inside a dialog, allowing the component to inherit dialog-aware divider treatment."
-        },
-        {
-          "name": "in-drawer",
-          "description": "Set when rendered inside a drawer, allowing the component to inherit drawer-aware divider treatment."
         }
       ]
     },
@@ -328,16 +328,6 @@
         }
       ]
     },
-    "mui-row": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "in-card",
-          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
-        }
-      ]
-    },
     "mui-tab-item": {
       "version": 1,
       "destinationOnly": true,
@@ -349,6 +339,16 @@
         {
           "name": "has-after",
           "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        }
+      ]
+    },
+    "mui-row": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "in-card",
+          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
         }
       ]
     }
