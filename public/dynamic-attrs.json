@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-14T11:26:18.695Z",
+  "generatedAt": "2026-06-14T12:01:27.047Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -116,16 +116,6 @@
         }
       ]
     },
-    "mui-form-section-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-rule",
-          "description": "Set when a rule is present, allowing the footer layout to account for the divider."
-        }
-      ]
-    },
     "mui-form-section": {
       "version": 1,
       "destinationOnly": true,
@@ -137,6 +127,16 @@
         {
           "name": "has-footer",
           "description": "Set when footer content exists, allowing the component to adjust internal spacing and structural regions."
+        }
+      ]
+    },
+    "mui-form-section-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-rule",
+          "description": "Set when a rule is present, allowing the footer layout to account for the divider."
         }
       ]
     },
@@ -304,6 +304,16 @@
         }
       ]
     },
+    "mui-slat-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+        }
+      ]
+    },
     "mui-slat": {
       "version": 1,
       "destinationOnly": true,
@@ -315,16 +325,6 @@
         {
           "name": "condensed-slot",
           "description": "Applied to a slotted child used in condensed composition, allowing the child to reduce spacing and density."
-        }
-      ]
-    },
-    "mui-slat-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "usage",
-          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
         }
       ]
     },

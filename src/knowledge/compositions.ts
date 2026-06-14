@@ -561,6 +561,7 @@ export const compositions = {
           alignX: "stretch",
           alignY: "start",
           space: "var(--space-000)",
+          style: "background: var(--surface-elevated-100);",
         },
         children: [
           {
@@ -575,24 +576,95 @@ export const compositions = {
               {
                 type: "HStack",
                 id: "header_left",
-                props: { alignX: "start", alignY: "center", space: "var(--space-200)" },
+                props: { alignX: "start", alignY: "center", space: "var(--space-000)" },
                 children: [
-                  { type: "Heading", id: "logo", props: { text: "Premium", size: "3" }, children: [] },
-                  { type: "Badge", id: "country", props: { text: "AU" }, children: [] },
+                  {
+                    type: "Responsive",
+                    id: "muitube_menu_button",
+                    props: { breakpoint: "768" },
+                    children: [
+                      {
+                        type: "Button",
+                        id: "muitube_menu_toggle_desktop",
+                        props: { slot: "showAbove", variant: "tertiary", "aria-label": "Toggle menu", size: "medium" },
+                        children: [{ type: "_Icon", id: "muitube_menu_icon_desktop", props: { icon: "mui-icon-menu", size: "medium" }, children: [] }],
+                      },
+                      {
+                        type: "Button",
+                        id: "muitube_menu_toggle_mobile",
+                        props: { slot: "showBelow", variant: "tertiary", "aria-label": "Open menu", size: "medium" },
+                        children: [{ type: "_Icon", id: "muitube_menu_icon_mobile", props: { icon: "mui-icon-menu", size: "medium" }, children: [] }],
+                      },
+                    ],
+                  },
+                  {
+                    type: "HStack",
+                    id: "muitube_brand",
+                    props: { alignX: "start", alignY: "center", space: "var(--space-200)" },
+                    children: [
+                      { type: "Heading", id: "logo", props: { text: "Premium", size: "3", level: "1" }, children: [] },
+                      { type: "Badge", id: "country", props: { text: "AU" }, children: [] },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "Responsive",
+                id: "header_search",
+                props: { breakpoint: "768", style: "max-width: 70rem; width: 100%;" },
+                children: [
+                  {
+                    type: "HStack",
+                    id: "header_search_desktop",
+                    props: { slot: "showAbove", alignX: "center", alignY: "center", space: "var(--space-300)", width: "100%" },
+                    children: [
+                      {
+                        type: "Input",
+                        id: "search_input",
+                        props: { placeholder: "Search" },
+                        children: [
+                          {
+                            type: "Button",
+                            id: "search_btn",
+                            props: { slot: "after", variant: "secondary", "aria-label": "Search" },
+                            children: [{ type: "_Icon", id: "search_icon", props: { icon: "mui-icon-search", size: "medium" }, children: [] }],
+                          },
+                        ],
+                      },
+                      {
+                        type: "Button",
+                        id: "settings_btn",
+                        props: { variant: "tertiary", "aria-label": "Settings" },
+                        children: [{ type: "_Icon", id: "settings_icon", props: { icon: "mui-icon-gear", size: "medium" }, children: [] }],
+                      },
+                    ],
+                  },
                 ],
               },
               {
                 type: "HStack",
-                id: "header_search",
-                props: { alignX: "center", alignY: "center" },
+                id: "header_actions",
+                props: { alignX: "start", alignY: "center", space: "var(--space-300)" },
                 children: [
                   {
-                    type: "Input",
-                    id: "search_input",
-                    props: { placeholder: "Search" },
+                    type: "Responsive",
+                    id: "create_action",
+                    props: { breakpoint: "768" },
                     children: [
-                      { type: "Button", id: "search_btn", props: { variant: "secondary" }, children: [] },
+                      { type: "Button", id: "create_desktop", props: { slot: "showAbove", text: "Create", variant: "primary" }, children: [] },
+                      {
+                        type: "Button",
+                        id: "create_mobile",
+                        props: { slot: "showBelow", variant: "primary", "aria-label": "Create" },
+                        children: [{ type: "_Icon", id: "create_mobile_icon", props: { icon: "mui-icon-add", size: "medium" }, children: [] }],
+                      },
                     ],
+                  },
+                  {
+                    type: "Button",
+                    id: "notifications",
+                    props: { variant: "tertiary", "aria-label": "Notifications" },
+                    children: [{ type: "_Icon", id: "notification_icon", props: { icon: "mui-icon-notification", size: "medium" }, children: [] }],
                   },
                 ],
               },
@@ -606,7 +678,7 @@ export const compositions = {
               {
                 type: "Drawer",
                 id: "sidebar_drawer",
-                props: { width: "240px", variant: "push", open: true, side: "left" },
+                props: { slot: "showAbove", width: "240px", variant: "push", open: true, side: "left", "drawer-space": "none" },
                 children: [
                   {
                     type: "VStack",
@@ -615,6 +687,157 @@ export const compositions = {
                     children: [
                       { type: "Button", id: "menu_home", props: { text: "Home", variant: "tertiary" }, children: [] },
                       { type: "Button", id: "menu_shorts", props: { text: "Shorts", variant: "tertiary" }, children: [] },
+                      { type: "Button", id: "menu_subscriptions", props: { text: "Subscriptions", variant: "tertiary" }, children: [] },
+                    ],
+                  },
+                  {
+                    type: "VStack",
+                    id: "muitube_page_desktop",
+                    props: { slot: "page", space: "var(--space-000)", alignX: "stretch" },
+                    children: [
+                      {
+                        type: "ChipRail",
+                        id: "video_filters_desktop",
+                        props: { size: "medium", "aria-label": "Video filters" },
+                        children: [
+                          { type: "Chip", id: "filter_all", props: { text: "All", active: true, variant: "clickable" }, children: [] },
+                          { type: "Chip", id: "filter_gaming", props: { text: "Gaming", variant: "clickable" }, children: [] },
+                          { type: "Chip", id: "filter_music", props: { text: "Music", variant: "clickable" }, children: [] },
+                          { type: "Chip", id: "filter_japan", props: { text: "Japan", variant: "clickable" }, children: [] },
+                        ],
+                      },
+                      {
+                        type: "Grid",
+                        id: "video_grid_desktop",
+                        props: { col: "repeat(auto-fit, minmax(268px, 1fr))", space: "var(--space-600)", alignX: "start", alignY: "start" },
+                        children: [
+                          {
+                            type: "Link",
+                            id: "video_card_1",
+                            props: { href: "#", variant: "tertiary" },
+                            children: [
+                              {
+                                type: "VStack",
+                                id: "video_card_1_stack",
+                                props: { alignX: "start", alignY: "start", space: "var(--space-300)" },
+                                children: [
+                                  {
+                                    type: "VideoThumbnail",
+                                    id: "video_card_1_thumbnail",
+                                    props: {
+                                      src: "/images/muitube/mui-video-light.png",
+                                      "src-light": "/images/muitube/mui-video-light.png",
+                                      "src-dark": "/images/muitube/mui-video-dark.png",
+                                      "src-mui-light": "/images/muitube/mui-video-light.png",
+                                      "src-mui-dark": "/images/muitube/mui-video-dark.png",
+                                      alt: "Muibook video thumbnail",
+                                    },
+                                    children: [],
+                                  },
+                                  { type: "Body", id: "video_card_1_title", props: { text: "Designing with Muibook", size: "large", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "video_card_1_author", props: { text: "Michael Trilford", size: "x-small", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "video_card_1_meta", props: { text: "12K views · 4 days ago", size: "x-small", weight: "bold" }, children: [] },
+                                ],
+                              },
+                            ],
+                          },
+                          {
+                            type: "Link",
+                            id: "video_card_2",
+                            props: { href: "#", variant: "tertiary" },
+                            children: [
+                              {
+                                type: "VStack",
+                                id: "video_card_2_stack",
+                                props: { alignX: "start", alignY: "start", space: "var(--space-300)" },
+                                children: [
+                                  {
+                                    type: "VideoThumbnail",
+                                    id: "video_card_2_thumbnail",
+                                    props: {
+                                      src: "/images/muitube/sensei-video-light.png",
+                                      "src-light": "/images/muitube/sensei-video-light.png",
+                                      "src-dark": "/images/muitube/sensei-video-dark.png",
+                                      alt: "Sensei video thumbnail",
+                                    },
+                                    children: [],
+                                  },
+                                  { type: "Body", id: "video_card_2_title", props: { text: "Building design system flows", size: "large", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "video_card_2_author", props: { text: "Sensei", size: "x-small", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "video_card_2_meta", props: { text: "8.4K views · 1 week ago", size: "x-small", weight: "bold" }, children: [] },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "VStack",
+                id: "muitube_mobile",
+                props: { slot: "showBelow", alignX: "stretch", space: "var(--space-000)" },
+                children: [
+                  {
+                    type: "Drawer",
+                    id: "sidebar_drawer_mobile",
+                    props: { variant: "overlay", width: "260px", side: "left", "z-index": "200", "drawer-space": "none" },
+                    children: [
+                      {
+                        type: "VStack",
+                        id: "mobile_sidebar_menu",
+                        props: { space: "var(--space-000)" },
+                        children: [
+                          { type: "Button", id: "mobile_menu_home", props: { text: "Home", variant: "tertiary" }, children: [] },
+                          { type: "Button", id: "mobile_menu_shorts", props: { text: "Shorts", variant: "tertiary" }, children: [] },
+                          { type: "Button", id: "mobile_menu_subscriptions", props: { text: "Subscriptions", variant: "tertiary" }, children: [] },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    type: "VStack",
+                    id: "muitube_page_mobile",
+                    props: { space: "var(--space-000)", alignX: "stretch" },
+                    children: [
+                      {
+                        type: "ChipRail",
+                        id: "video_filters_mobile",
+                        props: { size: "medium", "aria-label": "Video filters" },
+                        children: [
+                          { type: "Chip", id: "mobile_filter_all", props: { text: "All", active: true, variant: "clickable" }, children: [] },
+                          { type: "Chip", id: "mobile_filter_music", props: { text: "Music", variant: "clickable" }, children: [] },
+                          { type: "Chip", id: "mobile_filter_japan", props: { text: "Japan", variant: "clickable" }, children: [] },
+                        ],
+                      },
+                      {
+                        type: "Grid",
+                        id: "video_grid_mobile",
+                        props: { col: "repeat(auto-fit, minmax(268px, 1fr))", space: "var(--space-600)" },
+                        children: [
+                          {
+                            type: "Link",
+                            id: "mobile_video_card",
+                            props: { href: "#", variant: "tertiary" },
+                            children: [
+                              {
+                                type: "VideoThumbnail",
+                                id: "mobile_video_thumbnail",
+                                props: {
+                                  src: "/images/muitube/mui-video-light.png",
+                                  "src-light": "/images/muitube/mui-video-light.png",
+                                  "src-dark": "/images/muitube/mui-video-dark.png",
+                                  alt: "Muibook video thumbnail",
+                                },
+                                children: [],
+                              },
+                              { type: "Body", id: "mobile_video_title", props: { text: "Designing with Muibook", size: "large", weight: "bold" }, children: [] },
+                            ],
+                          },
+                        ],
+                      },
                     ],
                   },
                 ],
@@ -942,7 +1165,7 @@ export const compositions = {
       dashboard: {
         type: "VStack",
         id: "dashboard_root",
-        props: { space: "var(--space-500)", alignX: "stretch" },
+        props: { space: "var(--space-500)", alignX: "stretch", style: "max-width: 112rem; margin: 0 auto;" },
         children: [
           {
             type: "HStack",
@@ -965,6 +1188,331 @@ export const compositions = {
                 children: [
                   { type: "Button", id: "export_btn", props: { text: "Export report", variant: "secondary" }, children: [] },
                   { type: "Button", id: "create_btn", props: { text: "Create task", variant: "primary" }, children: [] },
+                ],
+              },
+            ],
+          },
+          {
+            type: "Grid",
+            id: "dashboard_metric_grid",
+            props: { col: "repeat(4, minmax(0, 1fr))", space: "var(--space-300)", alignX: "stretch" },
+            children: [
+              {
+                type: "Card",
+                id: "metric_revenue_card",
+                props: {},
+                children: [
+                  {
+                    type: "CardBody",
+                    id: "metric_revenue_body",
+                    props: {},
+                    children: [
+                      {
+                        type: "VStack",
+                        id: "metric_revenue_stack",
+                        props: { space: "var(--space-200)", alignX: "stretch" },
+                        children: [
+                          { type: "Body", id: "metric_revenue_label", props: { text: "Monthly revenue", size: "small", variant: "optional" }, children: [] },
+                          { type: "Heading", id: "metric_revenue_value", props: { text: "$128.4K", size: "3", level: "2" }, children: [] },
+                          { type: "Badge", id: "metric_revenue_delta", props: { text: "+12.8%", size: "small", variant: "positive" }, children: [] },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "Card",
+                id: "metric_accounts_card",
+                props: {},
+                children: [
+                  {
+                    type: "CardBody",
+                    id: "metric_accounts_body",
+                    props: {},
+                    children: [
+                      {
+                        type: "VStack",
+                        id: "metric_accounts_stack",
+                        props: { space: "var(--space-200)", alignX: "stretch" },
+                        children: [
+                          { type: "Body", id: "metric_accounts_label", props: { text: "Active accounts", size: "small", variant: "optional" }, children: [] },
+                          { type: "Heading", id: "metric_accounts_value", props: { text: "24,892", size: "3", level: "2" }, children: [] },
+                          { type: "Badge", id: "metric_accounts_delta", props: { text: "+4.2%", size: "small", variant: "positive" }, children: [] },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "Card",
+                id: "metric_conversion_card",
+                props: {},
+                children: [
+                  {
+                    type: "CardBody",
+                    id: "metric_conversion_body",
+                    props: {},
+                    children: [
+                      {
+                        type: "VStack",
+                        id: "metric_conversion_stack",
+                        props: { space: "var(--space-200)", alignX: "stretch" },
+                        children: [
+                          { type: "Body", id: "metric_conversion_label", props: { text: "Trial conversion", size: "small", variant: "optional" }, children: [] },
+                          { type: "Heading", id: "metric_conversion_value", props: { text: "8.6%", size: "3", level: "2" }, children: [] },
+                          { type: "Badge", id: "metric_conversion_delta", props: { text: "-1.1%", size: "small", variant: "warning" }, children: [] },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "Card",
+                id: "metric_uptime_card",
+                props: {},
+                children: [
+                  {
+                    type: "CardBody",
+                    id: "metric_uptime_body",
+                    props: {},
+                    children: [
+                      {
+                        type: "VStack",
+                        id: "metric_uptime_stack",
+                        props: { space: "var(--space-200)", alignX: "stretch" },
+                        children: [
+                          { type: "Body", id: "metric_uptime_label", props: { text: "Platform uptime", size: "small", variant: "optional" }, children: [] },
+                          { type: "Heading", id: "metric_uptime_value", props: { text: "99.98%", size: "3", level: "2" }, children: [] },
+                          { type: "Badge", id: "metric_uptime_delta", props: { text: "Stable", size: "small", variant: "neutral" }, children: [] },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "Grid",
+            id: "dashboard_main_grid",
+            props: { col: "minmax(0, 1.55fr) minmax(26rem, 1fr)", space: "var(--space-300)", alignX: "stretch" },
+            children: [
+              {
+                type: "Card",
+                id: "activation_health_card",
+                props: {},
+                children: [
+                  {
+                    type: "CardHeader",
+                    id: "activation_health_header",
+                    props: {},
+                    children: [
+                      { type: "Heading", id: "activation_health_title", props: { text: "Activation health", size: "3", level: "2" }, children: [] },
+                      { type: "Body", id: "activation_health_description", props: { text: "Performance across the last 30 days.", size: "small", variant: "optional" }, children: [] },
+                    ],
+                  },
+                  {
+                    type: "CardBody",
+                    id: "activation_health_body",
+                    props: {},
+                    children: [
+                      {
+                        type: "VStack",
+                        id: "activation_health_stack",
+                        props: { space: "var(--space-400)", alignX: "stretch" },
+                        children: [
+                          {
+                            type: "VStack",
+                            id: "feature_adoption",
+                            props: { space: "var(--space-100)", alignX: "stretch" },
+                            children: [
+                              {
+                                type: "HStack",
+                                id: "feature_adoption_header",
+                                props: { alignX: "space-between", alignY: "center" },
+                                children: [
+                                  { type: "Body", id: "feature_adoption_label", props: { text: "Feature adoption", size: "small", weight: "bold" }, children: [] },
+                                  { type: "Badge", id: "feature_adoption_delta", props: { text: "+15%", size: "x-small", variant: "positive" }, children: [] },
+                                ],
+                              },
+                              { type: "Progress", id: "feature_adoption_progress", props: { progress: "45" }, children: [] },
+                            ],
+                          },
+                          {
+                            type: "VStack",
+                            id: "retention",
+                            props: { space: "var(--space-100)", alignX: "stretch" },
+                            children: [
+                              {
+                                type: "HStack",
+                                id: "retention_header",
+                                props: { alignX: "space-between", alignY: "center" },
+                                children: [
+                                  { type: "Body", id: "retention_label", props: { text: "30-day retention", size: "small", weight: "bold" }, children: [] },
+                                  { type: "Badge", id: "retention_delta", props: { text: "+4%", size: "x-small", variant: "positive" }, children: [] },
+                                ],
+                              },
+                              { type: "Progress", id: "retention_progress", props: { progress: "68" }, children: [] },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "Card",
+                id: "priority_tasks_card",
+                props: {},
+                children: [
+                  {
+                    type: "CardHeader",
+                    id: "priority_tasks_header",
+                    props: {},
+                    children: [{ type: "Heading", id: "priority_tasks_title", props: { text: "Priority tasks", size: "3", level: "2" }, children: [] }],
+                  },
+                  {
+                    type: "CardBody",
+                    id: "priority_tasks_body",
+                    props: {},
+                    children: [
+                      {
+                        type: "SlatGroup",
+                        id: "priority_tasks",
+                        props: {},
+                        children: [
+                          {
+                            type: "Slat",
+                            id: "billing_alerts_task",
+                            props: { variant: "action" },
+                            children: [
+                              {
+                                type: "VStack",
+                                id: "billing_alerts_copy",
+                                props: { slot: "start", space: "var(--space-000)" },
+                                children: [
+                                  { type: "Body", id: "billing_alerts_title", props: { text: "Review billing alerts", size: "small", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "billing_alerts_meta", props: { text: "Finance operations", size: "x-small", variant: "optional" }, children: [] },
+                                ],
+                              },
+                              { type: "Badge", id: "billing_alerts_badge", props: { slot: "end", text: "Urgent", size: "x-small", variant: "attention" }, children: [] },
+                            ],
+                          },
+                          {
+                            type: "Slat",
+                            id: "campaign_task",
+                            props: { variant: "action" },
+                            children: [
+                              {
+                                type: "VStack",
+                                id: "campaign_copy",
+                                props: { slot: "start", space: "var(--space-000)" },
+                                children: [
+                                  { type: "Body", id: "campaign_title", props: { text: "Approve campaign launch", size: "small", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "campaign_meta", props: { text: "Growth team", size: "x-small", variant: "optional" }, children: [] },
+                                ],
+                              },
+                              { type: "Badge", id: "campaign_badge", props: { slot: "end", text: "Pending", size: "x-small", variant: "warning" }, children: [] },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "Responsive",
+            id: "dashboard_activity",
+            props: { breakpoint: "767" },
+            children: [
+              {
+                type: "Card",
+                id: "activity_table_card",
+                props: { slot: "showAbove" },
+                children: [
+                  {
+                    type: "CardHeader",
+                    id: "activity_table_header",
+                    props: {},
+                    children: [{ type: "Heading", id: "activity_table_title", props: { text: "Recent account activity", size: "3", level: "2" }, children: [] }],
+                  },
+                  {
+                    type: "CardBody",
+                    id: "activity_table_body",
+                    props: {},
+                    children: [
+                      {
+                        type: "Table",
+                        id: "activity_table",
+                        props: {},
+                        children: [
+                          {
+                            type: "RowGroup",
+                            id: "activity_rows",
+                            props: {},
+                            children: [
+                              {
+                                type: "Row",
+                                id: "activity_acme",
+                                props: { columns: "1.5fr 1fr 1fr auto", size: "small" },
+                                children: [
+                                  { type: "Cell", id: "activity_acme_account", props: {}, children: [{ type: "Body", id: "activity_acme_name", props: { text: "Acme Studios", size: "small" }, children: [] }] },
+                                  { type: "Cell", id: "activity_acme_event", props: {}, children: [{ type: "Body", id: "activity_acme_event_text", props: { text: "Renewal", size: "small" }, children: [] }] },
+                                  { type: "Cell", id: "activity_acme_status", props: {}, children: [{ type: "Badge", id: "activity_acme_paid", props: { text: "Paid", size: "small", variant: "positive" }, children: [] }] },
+                                  { type: "Cell", id: "activity_acme_action", props: { action: true }, children: [{ type: "Button", id: "activity_acme_view", props: { text: "View", size: "small", variant: "tertiary" }, children: [] }] },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "Card",
+                id: "activity_slat_card",
+                props: { slot: "showBelow" },
+                children: [
+                  {
+                    type: "CardBody",
+                    id: "activity_slat_body",
+                    props: {},
+                    children: [
+                      {
+                        type: "SlatGroup",
+                        id: "activity_mobile_slats",
+                        props: {},
+                        children: [
+                          {
+                            type: "Slat",
+                            id: "activity_mobile_acme",
+                            props: { variant: "action" },
+                            children: [
+                              {
+                                type: "VStack",
+                                id: "activity_mobile_acme_copy",
+                                props: { slot: "start", space: "var(--space-000)" },
+                                children: [
+                                  { type: "Body", id: "activity_mobile_acme_title", props: { text: "Acme Studios", size: "small", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "activity_mobile_acme_meta", props: { text: "Renewal payment", size: "x-small", variant: "optional" }, children: [] },
+                                ],
+                              },
+                              { type: "Badge", id: "activity_mobile_acme_status", props: { slot: "end", text: "Paid", size: "x-small", variant: "positive" }, children: [] },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
                 ],
               },
             ],

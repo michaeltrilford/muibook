@@ -35,7 +35,12 @@ MUI SCAN NORMALIZATION RULES:
   - mui-select -> Select
   - mui-avatar-chip -> AvatarChip
   - mui-media-player -> MediaPlayer
+  - mui-video-thumbnail -> VideoThumbnail
   - mui-model-viewer -> ModelViewer
+  - mui-table -> Table
+  - mui-row-group -> RowGroup
+  - mui-row -> Row
+  - mui-cell -> Cell
   - span -> Span
   - mui-icon-[name] -> _Icon with props.icon = "mui-icon-[name]"
   - mui-illustration-[name] -> _Illustration with props.illustration = "mui-illustration-[name]"
@@ -101,9 +106,13 @@ CONTENT:
 - ListItem: text, variant, size (x-small|small|medium|large), weight (regular|bold)
 - _Icon: icon, size (xx-small|x-small|small|medium|large), color, slot
 - _Illustration: illustration, size (x-small|small|medium|large|x-large), color, slot
-- Badge: text, variant (default|positive|warning|error|overlay), color (grey|purple|violet|pink|magenta|red|orange|amber|yellow|lime|green|teal|cyan|blue|indigo|CSS background value). Use for compact non-interactive presentational metadata, counts, and lightweight state-like labels such as Offline, Online, Busy, Do not disturb, Beta, Default, IMG, or Shared when the surrounding UI already explains the object. Good inside cards, messages, chips, buttons, tabs, navigation, and hero or marketing surfaces. Use color to override the badge background only through theme-aware badge background tokens; do not use positive, warning, or attention just to get a different background colour.
+- Badge: text, variant (default|neutral|positive|warning|error|overlay), color (grey|purple|violet|pink|magenta|red|orange|amber|yellow|lime|green|teal|cyan|blue|indigo|CSS background value). Use for compact non-interactive presentational metadata, counts, and lightweight state-like labels such as Offline, Online, Busy, Do not disturb, Beta, Default, IMG, or Shared when the surrounding UI already explains the object. Good inside cards, messages, chips, buttons, tabs, navigation, and hero or marketing surfaces. Use color to override the badge background only through theme-aware badge background tokens; do not use positive, warning, or attention just to get a different background colour.
 - Status: text, variant (info|positive|warning|attention), color (grey|purple|violet|pink|magenta|red|orange|amber|yellow|lime|green|teal|cyan|blue|indigo), size (small|medium); slots before/after. Use for compact object or workflow state labels such as Active, Draft, Pending, Review, Blocked, or Synced when the value is the primary state of a record, workflow, or system, especially in tables, slats, dashboards, and data-heavy pages. Status is non-interactive by default, but can be interactive when composed as a trigger or compact state action. Omit variant for default low-emphasis grey status; use variant for semantic feedback and color for non-semantic categorical labels. Use action only when the status is a trigger. Do not use for counts, helper text, paragraph guidance, page-level notices, or decorative metadata.
 - Skeleton: loading, shape (line|rect|circle), size, animation (shimmer|pulse|none), lines, width, height, radius, gap, duration, line-widths, max-width, style
+- Table: slot default. Use for dense desktop data layouts.
+- RowGroup: heading; children Row.
+- Row: columns, size (x-small|small|medium); children Cell.
+- Cell: action, align-y; children content or action controls.
 
 ACCORDION:
 - AccordionBlock: heading, level (1|2|3|4|5|6), size, detail-space
@@ -135,6 +144,7 @@ ACTIONS:
 - Link: text, href, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (100|200|300|400|500), target, download, weight (regular|bold), disabled; slots default/before/after
 - Dropdown: zindex, position, persistent; slots action/default
 - Chip: text, active, dismiss, usage; slots default/before/after. Chip labels truncate when constrained; keep text short and let icons/dismiss controls remain visible.
+- ChipRail: size, aria-label; children Chip. Use for horizontally scrollable filters and category rails.
 
 NAVIGATION:
 - TabBar: speed, controlsPosition, stroke (border|none), active-inset, radius; slots default/controls
@@ -155,6 +165,7 @@ FEEDBACK:
 
 MEDIA:
 - MediaPlayer: src, type (video|audio|youtube|soundcloud), controls (player|none), poster, artwork, media-title, height, waveform, center-play, loading, autoplay, muted, loop; slots meta-before/meta-after. Use meta-before for AvatarChip/title metadata and meta-after for overlay actions such as Subscribe or Buy now. Use variant=overlay on Button/Link actions when over video or artwork.
+- VideoThumbnail: src, src-light, src-dark, src-mui-light, src-mui-dark, src-jal-light, src-jal-dark, src-ana-light, src-ana-dark, src-sensei-light, src-sensei-dark, src-paperclip-light, src-paperclip-dark, alt, play, overlay. Use inside video cards when the thumbnail needs to react to brand and light/dark theme.
 - ModelViewer: src, ios-src, poster, alt, controls, camera-controls, auto-rotate, ar, loading; slots default/poster. Always include alt and fallback content when a model is important to understanding the page.
 
 PROMPT COMPONENTS:
