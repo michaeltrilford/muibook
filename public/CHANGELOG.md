@@ -20,6 +20,7 @@
 - `mui-media-player` now supports interactive audio waveforms that can be clicked or dragged to scrub audio playback, utilizing pointer capture for seamless tracking outside bounds.
 - `mui-media-player` now supports `slot="meta-before"` and `slot="meta-after"` for composing metadata and supporting actions while keeping the media surface clickable between them.
 - Added `mui-avatar-chip` for reusable avatar, primary, and secondary profile metadata composition.
+- Added `mui-model-viewer` for interactive 3D model previews with GLB/GLTF sources, USDZ Quick Look support, optional AR entry, posters, camera controls, and auto-rotation.
 - Added `mui-icon-rectangle-right-drawer` icon component for right-aligned panel toggle controls.
 - `mui-hint` now supports `disable-on-touch` for desktop-only hint affordances that should not open on touch-like devices.
 - `mui-media-player` controls now include an options menu with Download and Open source actions, using the dropdown component with slotted `mui-link` menu items.
@@ -32,6 +33,7 @@
 ### Documentation
 
 - Added an overview page for Knowledge MCP with descriptions of MCP tools, local command, and links to the standalone repository.
+- Added Knowledge Resource pages for Design Manifest, Compositions, Rules, and Keywords, including package import paths, dist output paths, and how Knowledge rules/keywords feed the optimized AI Agent outputs.
 - Added an Inline story card to the Code story page demonstrating inline code snippets within text.
 - Added a Button story showing inline async feedback with `Copy`/`Save`, spinner pending states, check-icon success states, and guidance for replacing demo delays with real async work.
 - Added Avatar Chip stories covering default, image, linked avatar, custom secondary, and Media Player usage.
@@ -57,9 +59,11 @@
 - `mui-dropdown` now portals menu contents to avoid clipping in overflow-hidden media player surfaces.
 - `mui-hint` now delegates focus to slotted buttons, links, and native controls instead of adding an extra wrapper tab stop, while keeping fallback keyboard focus for plain trigger content.
 - `mui-hint` fallback trigger focus now uses the Muibook focus outline with an outset offset instead of the browser default outline.
+- Resource navigation now moves Design Manifest out of Setup and into the new Knowledge section.
 
 ### Fixed
 
+- Story template descriptions now escape angle-bracket text so docs can reference element names such as model-viewer without rendering accidental HTML.
 - `mui-drawer` in workspace variant now properly respects top and bottom safe-area insets (`env(safe-area-inset-top)` / `env(safe-area-inset-bottom)`) in the page layout.
 - `mui-dropdown` now applies matching menu-item width, alignment, and first/last radius treatment to slotted `mui-link` items as well as slotted `mui-button` items.
 - `mui-media-player` artwork thumbnail border and shadow now stay dark over artwork in both light and dark themes.

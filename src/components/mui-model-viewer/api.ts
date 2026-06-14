@@ -1,7 +1,7 @@
 export const muiApi = {
   "mui-model-viewer": {
     description:
-      "Renders interactive 3D models using Google's <model-viewer> custom element, with native <model> element support in Safari on visionOS 2+ as a progressive enhancement.",
+      "Renders interactive 3D models using Google's model-viewer custom element, with native model element support in Safari on visionOS 2+ as a progressive enhancement.",
     attributes: [
       { name: "src", type: { text: "string" }, description: "Path to the primary 3D model (typically GLB or GLTF)." },
       { name: "ios-src", type: { text: "string" }, description: "Path to the USDZ fallback model for Apple Quick Look on iOS and visionOS." },

@@ -111,8 +111,12 @@ class StoryTemplate extends HTMLElement {
     const containerStyle = containerMaxWidth
       ? `style="--story-template-container-max-width: ${containerMaxWidth};"`
       : "";
+    const escapedDescriptionText = descriptionText
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;");
     const description = descriptionText
-      ? /*html*/ `<mui-body size="medium" style="max-width: 70ch; text-wrap: pretty;">${descriptionText}</mui-body>`
+      ? /*html*/ `<mui-body size="medium" style="max-width: 70ch; text-wrap: pretty;">${escapedDescriptionText}</mui-body>`
       : "";
 
     const accessibilityItems = this.getAttribute("accessibility");

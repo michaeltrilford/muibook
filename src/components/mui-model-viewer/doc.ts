@@ -4,7 +4,7 @@ export const muiDocs: MuiDocs = {
   ModelViewer: {
     title: "Model Viewer",
     description:
-      "Model Viewer renders interactive 3D models and enables AR experiences directly in the browser. It progressively enhances native Apple Quick Look (USDZ) and native visionOS 2+ <model> tags with cross-browser support powered by Google's <model-viewer> custom element.",
+      "Model Viewer renders interactive 3D models and enables AR experiences directly in the browser. It progressively enhances native Apple Quick Look (USDZ) and native visionOS model tags with cross-browser support powered by Google's model-viewer custom element.",
     hero: [""],
     figma: [""],
     storybook: ["https://stories.muibook.com/?path=/docs/media-model-viewer--docs"],
