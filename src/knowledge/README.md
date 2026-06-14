@@ -5,7 +5,7 @@ This directory contains authored Muibook knowledge that can be consumed by tooli
 The source files in `src/knowledge` are intentionally small and direct:
 
 - `rules.ts` contains global generation rules.
-- `compositions.ts` contains full composition examples and the curated `agentCompositions` subset.
+- `compositions.ts` contains full composition examples, `compositionConfig` curation metadata, and the generated `agentCompositions` subset.
 - `keywords.ts` contains full keyword mappings and the curated `agentKeywords` subset.
 - `index.ts` exports the combined `knowledge` object.
 
@@ -18,7 +18,7 @@ After `npm run build`, consumers can import:
 ```ts
 import { knowledge } from "@muibook/components/knowledge";
 import { rules } from "@muibook/components/knowledge/rules";
-import { compositions, agentCompositions } from "@muibook/components/knowledge/compositions";
+import { compositions, compositionConfig, agentCompositions } from "@muibook/components/knowledge/compositions";
 import { keywords, agentKeywords } from "@muibook/components/knowledge/keywords";
 ```
 
@@ -64,7 +64,9 @@ The split is intentional:
 
 `src/agent` is generated from this directory and remains the lightweight local LLM compatibility surface.
 
-When adding new composition examples, update `agentCompositionKeys` only if the example should be included in `@muibook/components/agent/prompts`.
+When adding new composition examples, add the full example to `compositions` and add a matching entry to `compositionConfig`.
+
+Use `includeInAgent: true` only for compact, broadly reusable examples that should be bundled into `@muibook/components/agent/prompts`. Keep richer or newer examples in the full knowledge export with `includeInAgent: false` so Codex/MCP tooling can query them without bloating the local lightweight agent prompt.
 
 When adding new keyword groups, update `agentKeywordKeys` only if the group should be included in `@muibook/components/agent/keywords`.
 

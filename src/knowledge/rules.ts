@@ -33,8 +33,12 @@ MUI SCAN NORMALIZATION RULES:
   - mui-link -> Link
   - mui-input -> Input
   - mui-select -> Select
+  - mui-avatar-chip -> AvatarChip
+  - mui-media-player -> MediaPlayer
+  - mui-model-viewer -> ModelViewer
   - span -> Span
   - mui-icon-[name] -> _Icon with props.icon = "mui-icon-[name]"
+  - mui-illustration-[name] -> _Illustration with props.illustration = "mui-illustration-[name]"
 - Preserve hierarchy, spacing, slots, key props, and valid style strings
 - Preserve icon slots:
   - slot=before -> props.slot = "before"
@@ -78,22 +82,25 @@ SURFACES:
 - CardBody: condensed, style
 - CardFooter: none
 - Dialog: open, width, content-max-height, style
-- Drawer: open, variant (overlay|push|persistent), side (left|right), width, z-index, drawer-space, breakpoint, style
+- Drawer: open, variant (overlay|push|persistent|workspace), side (left|right), width, z-index, drawer-space, breakpoint, style
+- Drawer workspace: variant=workspace, left-open, right-open, left-width, right-width, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, height; slots left/page/right. Use when an editor/canvas has independent left and right panels around a central page. Keep direct slot wrappers plain in HTML exports when possible.
 - Slat: variant, col, space; slots header-start/header-end/row-start/row-end/accessory/action
 - SlatGroup: usage
 - SmartCard: state, number, variant, partner, type, logo, logo-height, bg-color, bg-image, inverted
 
 CONTENT:
 - Heading: text, size (1|2|3|4|5|6), level (1|2|3|4|5|6), truncate, clamp
-- Body: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|info|success|warning|error), truncate, clamp, style; use _Icon icon=mui-icon-info slot=before for lightweight inline guidance
+- Body: text, size (xx-small|x-small|small|medium|large), weight (regular|bold), variant (default|optional|info|success|warning|error), truncate, clamp, style; use _Icon icon=mui-icon-info slot=before for lightweight inline guidance
 - Span: text, style; supports inline children such as Link
 - Code: size, scrollable
 - Quote: default text
 - Image: src, alt; slot caption
 - Avatar: label, image, icon, size (x-small|small|medium|large), background, backgroundColor
+- AvatarChip: primary, secondary, image, label, href, target, size (x-small|small|medium|large), usage (default|media-player); slots primary/secondary. Use for compact identity metadata with an avatar and one or two text/link lines. MediaPlayer applies usage=media-player automatically when slotted into media metadata.
 - List: slot default
 - ListItem: text, variant, size (x-small|small|medium|large), weight (regular|bold)
 - _Icon: icon, size (xx-small|x-small|small|medium|large), color, slot
+- _Illustration: illustration, size (x-small|small|medium|large|x-large), color, slot
 - Badge: text, variant (default|positive|warning|error|overlay), color (grey|purple|violet|pink|magenta|red|orange|amber|yellow|lime|green|teal|cyan|blue|indigo|CSS background value). Use for compact non-interactive presentational metadata, counts, and lightweight state-like labels such as Offline, Online, Busy, Do not disturb, Beta, Default, IMG, or Shared when the surrounding UI already explains the object. Good inside cards, messages, chips, buttons, tabs, navigation, and hero or marketing surfaces. Use color to override the badge background only through theme-aware badge background tokens; do not use positive, warning, or attention just to get a different background colour.
 - Status: text, variant (info|positive|warning|attention), color (grey|purple|violet|pink|magenta|red|orange|amber|yellow|lime|green|teal|cyan|blue|indigo), size (small|medium); slots before/after. Use for compact object or workflow state labels such as Active, Draft, Pending, Review, Blocked, or Synced when the value is the primary state of a record, workflow, or system, especially in tables, slats, dashboards, and data-heavy pages. Status is non-interactive by default, but can be interactive when composed as a trigger or compact state action. Omit variant for default low-emphasis grey status; use variant for semantic feedback and color for non-semantic categorical labels. Use action only when the status is a trigger. Do not use for counts, helper text, paragraph guidance, page-level notices, or decorative metadata.
 - Skeleton: loading, shape (line|rect|circle), size, animation (shimmer|pulse|none), lines, width, height, radius, gap, duration, line-widths, max-width, style
@@ -111,7 +118,8 @@ FORMS AND INPUTS:
 - FormMessage: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|info|success|warning|error), style
 - Input: label, type (text|email|password|number|tel|url), placeholder, value, id, name, disabled, hide-label, variant (default|error), size (x-small|small|medium|large), optional, max-length; slots before/after
 - Textarea: label, placeholder, value, name, id, variant (default|success|warning|error), size (x-small|small|medium|large), rows, optional, hide-label, max-length, disabled, style
-- Select: label, placeholder, options, value, id, name, disabled, variant (default|error), size (x-small|small|medium|large)
+- Select: label, placeholder, options, value, id, name, disabled, variant (default|error), size (x-small|small|medium|large), appearance (native|custom), selected-content (rich|label), col, space, max-height, padding-block, padding-inline. Use options for simple data selects; use Option children only when appearance=custom needs rich composed native option content.
+- Option: value, label; children can contain layout/content for Select appearance=custom. Keep Option inside Select only.
 - Checkbox: text, checked, id, disabled, indeterminate, size (x-small|small|medium|large)
 - Radio: text, checked, disabled, id, name, value, aria-label, size (x-small|small|medium|large)
 - RadioGroup: name, value, label, size (x-small|small|medium|large), optional, hide-label, disabled
@@ -142,8 +150,12 @@ FEEDBACK:
 - Message: heading, variant (neutral|positive|info|warning|attention), icon, size (small|medium|large); slot default. Use only for persistent page-level or section-level notices. Always provide a concise heading plus default slot body content, usually Body/List/Link. Do not use for inline guidance, styled text blocks, or form helper text.
 - Alert: variant (success|info|warning|error), label; slots default/action
 - Loader: loading, animation (pulsate|fade-in|translate), direction (up|right|down|left), duration; slot default
-- Spinner: size (xx-small|x-small|small|medium|large), color, duration, label, style
+- Spinner: size (xx-small|x-small|small|medium|large|x-large|xx-large), color, duration, label, style
 - Progress: progress, state
+
+MEDIA:
+- MediaPlayer: src, type (video|audio|youtube|soundcloud), controls (player|none), poster, artwork, media-title, height, waveform, center-play, loading, autoplay, muted, loop; slots meta-before/meta-after. Use meta-before for AvatarChip/title metadata and meta-after for overlay actions such as Subscribe or Buy now. Use variant=overlay on Button/Link actions when over video or artwork.
+- ModelViewer: src, ios-src, poster, alt, controls, camera-controls, auto-rotate, ar, loading; slots default/poster. Always include alt and fallback content when a model is important to understanding the page.
 
 PROMPT COMPONENTS:
 - Prompt: placeholder, value, rows, enter-submit, fan-open, disabled, loading, loading-label, context-mode (icon|chip), preview-dialog-width, preview-dialog-title, preview-overflow-to-preview, preview-threshold-chars, preview-auto-clickable, preview-loading, preview-loading-label, preview-scrollbar, error-message, debug, effects-off, color-top-start, color-top-mid, color-top-end, color-top-accent, color-layout, style

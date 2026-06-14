@@ -627,7 +627,7 @@ export const compositions = {
       songPage: {
         type: "Container",
         id: "song_container",
-        props: { large: true, center: true },
+        props: { size: "large", center: true },
         children: [
           {
             type: "HStack",
@@ -643,7 +643,12 @@ export const compositions = {
                   {
                     type: "AvatarChip",
                     id: "user_avatar",
-                    props: { label: "Mike Trilford" },
+                    props: {
+                      primary: "Mike Trilford",
+                      secondary: "Creator",
+                      image: "https://muibook.com/images/mui/avatar-mike.jpg",
+                      label: "Mike Trilford",
+                    },
                     children: [],
                   },
                 ],
@@ -658,23 +663,278 @@ export const compositions = {
               {
                 type: "MediaPlayer",
                 id: "song_player",
-                props: { type: "audio", waveform: true, height: "14rem" },
+                props: {
+                  type: "audio",
+                  src: "https://muibook.com/audio/twilight.m4a",
+                  artwork: "https://muibook.com/audio/artwork-light.png",
+                  waveform: true,
+                  height: "14rem",
+                },
                 children: [
                   {
                     type: "AvatarChip",
                     id: "player_meta",
-                    props: { slot: "meta-before", label: "Mike Trilford" },
-                    children: [],
+                    props: {
+                      slot: "meta-before",
+                      href: "#creator-profile",
+                      image: "https://muibook.com/images/mui/avatar-mike.jpg",
+                      label: "Mike Trilford",
+                    },
+                    children: [
+                      {
+                        type: "Body",
+                        id: "song_title",
+                        props: { slot: "primary", text: "Twilight", weight: "bold" },
+                        children: [],
+                      },
+                      {
+                        type: "Link",
+                        id: "song_creator",
+                        props: { slot: "secondary", href: "#creator-profile", text: "by Michael Trilford", weight: "medium" },
+                        children: [],
+                      },
+                    ],
                   },
                   {
-                    type: "Link",
+                    type: "Button",
                     id: "player_buy",
-                    props: { slot: "meta-after", text: "Buy Album" },
+                    props: { slot: "meta-after", text: "Buy now", variant: "overlay" },
                     children: [],
                   },
                 ],
               },
             ],
+          },
+        ],
+      },
+
+      videoMetadataAction: {
+        type: "MediaPlayer",
+        id: "video_metadata_action",
+        props: {
+          type: "video",
+          src: "https://muibook.com/video/japan.mp4",
+          poster: "https://muibook.com/video/japan-poster.jpg",
+        },
+        children: [
+          {
+            type: "AvatarChip",
+            id: "video_creator",
+            props: {
+              slot: "meta-before",
+              href: "#creator-profile",
+              image: "https://muibook.com/images/mui/avatar-mike.jpg",
+              label: "Mike Trilford",
+            },
+            children: [
+              {
+                type: "Body",
+                id: "video_channel",
+                props: { slot: "primary", text: "Sugoi Travels", weight: "bold" },
+                children: [],
+              },
+              {
+                type: "Link",
+                id: "video_subscribers",
+                props: { slot: "secondary", href: "#creator-profile", text: "77k subscribers", weight: "medium" },
+                children: [],
+              },
+            ],
+          },
+          {
+            type: "Button",
+            id: "video_subscribe",
+            props: { slot: "meta-after", text: "Subscribe", variant: "overlay" },
+            children: [],
+          },
+        ],
+      },
+
+      customSelectWastePicker: {
+        type: "Select",
+        id: "waste_picker",
+        props: {
+          label: "Waste stream",
+          appearance: "custom",
+          "selected-content": "label",
+          col: "1fr 1fr",
+          space: "var(--space-100)",
+        },
+        children: [
+          {
+            type: "Option",
+            id: "waste_recyclable",
+            props: { value: "recyclable", label: "Recyclable" },
+            children: [
+              {
+                type: "VStack",
+                id: "waste_recyclable_stack",
+                props: { space: "var(--space-100)", alignX: "center" },
+                children: [
+                  {
+                    type: "_Illustration",
+                    id: "waste_recyclable_bin",
+                    props: { illustration: "mui-illustration-trash", size: "medium", color: "var(--feedback-positive-border-color)" },
+                    children: [],
+                  },
+                  { type: "Body", id: "waste_recyclable_label", props: { text: "Recyclable", weight: "bold" }, children: [] },
+                ],
+              },
+            ],
+          },
+          {
+            type: "Option",
+            id: "waste_general",
+            props: { value: "waste", label: "Waste" },
+            children: [
+              {
+                type: "VStack",
+                id: "waste_general_stack",
+                props: { space: "var(--space-100)", alignX: "center" },
+                children: [
+                  {
+                    type: "_Illustration",
+                    id: "waste_general_bin",
+                    props: { illustration: "mui-illustration-trash", size: "medium", color: "var(--feedback-info-border-color)" },
+                    children: [],
+                  },
+                  { type: "Body", id: "waste_general_label", props: { text: "Waste", weight: "bold" }, children: [] },
+                ],
+              },
+            ],
+          },
+          {
+            type: "Option",
+            id: "waste_organic",
+            props: { value: "organic", label: "Organic" },
+            children: [
+              {
+                type: "VStack",
+                id: "waste_organic_stack",
+                props: { space: "var(--space-100)", alignX: "center" },
+                children: [
+                  {
+                    type: "_Illustration",
+                    id: "waste_organic_bin",
+                    props: { illustration: "mui-illustration-trash", size: "medium", color: "var(--feedback-warning-border-color)" },
+                    children: [],
+                  },
+                  { type: "Body", id: "waste_organic_label", props: { text: "Organic", weight: "bold" }, children: [] },
+                ],
+              },
+            ],
+          },
+          {
+            type: "Option",
+            id: "waste_burnable",
+            props: { value: "burnable", label: "Burnable" },
+            children: [
+              {
+                type: "VStack",
+                id: "waste_burnable_stack",
+                props: { space: "var(--space-100)", alignX: "center" },
+                children: [
+                  {
+                    type: "_Illustration",
+                    id: "waste_burnable_bin",
+                    props: { illustration: "mui-illustration-trash", size: "medium", color: "var(--feedback-attention-border-color)" },
+                    children: [],
+                  },
+                  { type: "Body", id: "waste_burnable_label", props: { text: "Burnable", weight: "bold" }, children: [] },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+
+      drawerWorkspace: {
+        type: "Drawer",
+        id: "workspace_drawer",
+        props: {
+          variant: "workspace",
+          "resize-rail": true,
+          "left-open": true,
+          "right-open": true,
+          "left-width": "24rem",
+          "right-width": "30rem",
+          "resize-min-left-width": "200",
+          "resize-min-right-width": "200",
+          "resize-min-page-width": "400",
+          "resize-close-threshold": "96",
+          breakpoint: "1400",
+          height: "80dvh",
+        },
+        children: [
+          {
+            type: "VStack",
+            id: "workspace_left_panel",
+            props: { slot: "left", space: "var(--space-300)", padding: "var(--space-400)" },
+            children: [
+              { type: "Heading", id: "workspace_left_heading", props: { text: "Components", size: "4", level: "2" }, children: [] },
+              { type: "Button", id: "workspace_media_card", props: { text: "Media Card", variant: "tertiary" }, children: [] },
+              { type: "Button", id: "workspace_sidebar", props: { text: "Sidebar", variant: "tertiary" }, children: [] },
+            ],
+          },
+          {
+            type: "VStack",
+            id: "workspace_canvas",
+            props: { slot: "page", space: "var(--space-400)", padding: "var(--space-500)", alignX: "center" },
+            children: [
+              { type: "Heading", id: "workspace_canvas_heading", props: { text: "Canvas", size: "3", level: "1" }, children: [] },
+              {
+                type: "Card",
+                id: "workspace_selected_card",
+                props: {},
+                children: [
+                  {
+                    type: "CardBody",
+                    id: "workspace_selected_body",
+                    props: {},
+                    children: [
+                      { type: "Heading", id: "workspace_selected_title", props: { text: "Customer Portal", size: "4", level: "2" }, children: [] },
+                      {
+                        type: "Body",
+                        id: "workspace_selected_description",
+                        props: { text: "A selected page region sits between the component library and inspector panels." },
+                        children: [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "VStack",
+            id: "workspace_right_panel",
+            props: { slot: "right", space: "var(--space-300)", padding: "var(--space-400)" },
+            children: [
+              { type: "Heading", id: "workspace_right_heading", props: { text: "Inspector", size: "4", level: "2" }, children: [] },
+              { type: "AccordionBlock", id: "workspace_styles", props: { heading: "Styles" }, children: [] },
+              { type: "AccordionBlock", id: "workspace_layout", props: { heading: "Layout" }, children: [] },
+            ],
+          },
+        ],
+      },
+
+      modelViewerProductPreview: {
+        type: "ModelViewer",
+        id: "model_viewer_product_preview",
+        props: {
+          src: "https://muibook.com/models/chair.glb",
+          "ios-src": "https://muibook.com/models/chair.usdz",
+          poster: "https://muibook.com/models/chair-poster.jpg",
+          alt: "Three dimensional preview of a lounge chair.",
+          controls: true,
+          ar: true,
+        },
+        children: [
+          {
+            type: "Body",
+            id: "model_viewer_fallback",
+            props: { text: "Download the product model or view the gallery if 3D preview is unavailable.", size: "small" },
+            children: [],
           },
         ],
       },
@@ -713,7 +973,27 @@ export const compositions = {
       },
     } as const;
 
-export const agentCompositionKeys = ["signupFlow", "rewardsCard", "contactForm"] as const;
+export const compositionConfig = {
+  signupFlow: { includeInAgent: true, detail: "compact" },
+  rewardsCard: { includeInAgent: true, detail: "compact" },
+  contactForm: { includeInAgent: true, detail: "compact" },
+  analyticsSummary: { includeInAgent: false, detail: "full" },
+  onboarding: { includeInAgent: false, detail: "full" },
+  wallet: { includeInAgent: false, detail: "full" },
+  muitube: { includeInAgent: false, detail: "full" },
+  songPage: { includeInAgent: false, detail: "full" },
+  videoMetadataAction: { includeInAgent: false, detail: "full" },
+  customSelectWastePicker: { includeInAgent: false, detail: "full" },
+  drawerWorkspace: { includeInAgent: false, detail: "full" },
+  modelViewerProductPreview: { includeInAgent: false, detail: "full" },
+  dashboard: { includeInAgent: false, detail: "full" },
+} satisfies Record<keyof typeof compositions, { includeInAgent: boolean; detail: "compact" | "full" }>;
+
+type CompositionKey = keyof typeof compositions;
+
+export const agentCompositionKeys = (Object.keys(compositionConfig) as CompositionKey[]).filter(
+  (key) => compositionConfig[key].includeInAgent,
+);
 
 export type AgentCompositionKey = (typeof agentCompositionKeys)[number];
 

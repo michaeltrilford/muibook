@@ -34,6 +34,7 @@
 
 - Added an overview page for Knowledge MCP with descriptions of MCP tools, local command, and links to the standalone repository.
 - Added Knowledge Resource pages for Design Manifest, Compositions, Rules, and Keywords, including package import paths, dist output paths, and how Knowledge rules/keywords feed the optimized AI Agent outputs.
+- Added richer full Knowledge composition examples for media metadata, custom select, drawer workspace, and model viewer patterns, with explicit `compositionConfig` curation so only compact examples ship in the lightweight AI Agent prompt.
 - Added an Inline story card to the Code story page demonstrating inline code snippets within text.
 - Added a Button story showing inline async feedback with `Copy`/`Save`, spinner pending states, check-icon success states, and guidance for replacing demo delays with real async work.
 - Added Avatar Chip stories covering default, image, linked avatar, custom secondary, and Media Player usage.
