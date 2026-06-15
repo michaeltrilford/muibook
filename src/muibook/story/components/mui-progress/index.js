@@ -70,7 +70,7 @@ class storyProgress extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
       
-        imports='["@muibook/components/mui-code"]'>
+        imports='["@muibook/components/mui-progress"]'>
         ${stories}
       </story-template>
     `;

@@ -570,7 +570,7 @@ class storyCarousel extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
       
-        imports='["@muibook/components/mui-carousel", "@muibook/components/mui-tabs"]'>
+        imports='["@muibook/components/mui-carousel"]'>
         ${stories}
       </story-template>
     `;

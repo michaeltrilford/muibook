@@ -229,7 +229,7 @@ class storyLoader extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
       
-        imports='["@muibook/components/mui-loader", "@muibook/components/mui-spinner"]'>
+        imports='["@muibook/components/mui-loader"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

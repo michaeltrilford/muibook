@@ -1098,7 +1098,7 @@ class storyButton extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
         attrs-reference='${attrsReference}'
       
-        imports='["@muibook/components/mui-button", "@muibook/components/mui-spinner"]'>
+        imports='["@muibook/components/mui-button"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

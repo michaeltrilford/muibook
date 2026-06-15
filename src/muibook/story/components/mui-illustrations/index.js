@@ -13,13 +13,7 @@ class StoryIllustration extends HTMLElement {
       :host { display: block; }
 
       .swatch-grid::part(internal) {
-        grid-template-columns: 1fr;
-      }
-
-      @media (min-width: 768px) {
-        .swatch-grid::part(internal) {
-          grid-template-columns: 1fr 1fr;
-        }
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
       }
 
       .illustration-shell {
@@ -42,13 +36,7 @@ class StoryIllustration extends HTMLElement {
       }
 
       .size-grid::part(internal) {
-        grid-template-columns: 1fr;
-      }
-
-      @media (min-width: 960px) {
-        .size-grid::part(internal) {
-          grid-template-columns: 1fr 1fr;
-        }
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
       }
     `;
 

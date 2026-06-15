@@ -367,7 +367,7 @@ class StoryAvatarChip extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-        imports='["@muibook/components/mui-avatar-chip","@muibook/components/mui-dropdown","@muibook/components/mui-button","@muibook/components/mui-rule","@muibook/components/mui-media-player"]'>
+        imports='["@muibook/components/mui-avatar-chip"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
