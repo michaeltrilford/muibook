@@ -679,7 +679,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:agent && npm run cem && rm -rf dist && tsc && vite build && npm run copy-cem && npm run copy-knowledge",
+    "build": "npm run build:agent && npm run cem && rm -rf dist && tsc && vite build && npm run copy-cem && npm run copy-knowledge && npm run copy-knowledge:redactd-canvas",
     "build:agent": "node scripts/build-agent-knowledge.mjs",
     "preview": "vite preview",
     "build:muibook": "vite build --config vite.muibook.config.ts",
@@ -691,7 +691,8 @@
     "copy-knowledge": "node scripts/copy-knowledge.mjs",
     "token-build": "node token-build/index.js",
     "token-build:watch": "nodemon --watch token-build --ext json --exec \"npm run token-build\"",
-    "prebuild": "npm run token-build"
+    "prebuild": "npm run token-build",
+    "copy-knowledge:redactd-canvas": "node scripts/copy-redactd-canvas-knowledge.mjs"
   },
   "files": [
     "dist/esm/index.js",
