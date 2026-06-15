@@ -586,13 +586,13 @@ export const compositions = {
                       {
                         type: "Button",
                         id: "muitube_menu_toggle_desktop",
-                        props: { slot: "showAbove", variant: "tertiary", "aria-label": "Toggle menu", size: "medium" },
+                        slot: "showAbove", props: { variant: "tertiary", "aria-label": "Toggle menu", size: "medium" },
                         children: [{ type: "_Icon", id: "muitube_menu_icon_desktop", props: { icon: "mui-icon-menu", size: "medium" }, children: [] }],
                       },
                       {
                         type: "Button",
                         id: "muitube_menu_toggle_mobile",
-                        props: { slot: "showBelow", variant: "tertiary", "aria-label": "Open menu", size: "medium" },
+                        slot: "showBelow", props: { variant: "tertiary", "aria-label": "Open menu", size: "medium" },
                         children: [{ type: "_Icon", id: "muitube_menu_icon_mobile", props: { icon: "mui-icon-menu", size: "medium" }, children: [] }],
                       },
                     ],
@@ -616,7 +616,7 @@ export const compositions = {
                   {
                     type: "HStack",
                     id: "header_search_desktop",
-                    props: { slot: "showAbove", alignX: "center", alignY: "center", space: "var(--space-300)", width: "100%" },
+                    slot: "showAbove", props: { alignX: "center", alignY: "center", space: "var(--space-300)", width: "100%" },
                     children: [
                       {
                         type: "Input",
@@ -626,7 +626,7 @@ export const compositions = {
                           {
                             type: "Button",
                             id: "search_btn",
-                            props: { slot: "after", variant: "secondary", "aria-label": "Search" },
+                            slot: "after", props: { variant: "secondary", "aria-label": "Search" },
                             children: [{ type: "_Icon", id: "search_icon", props: { icon: "mui-icon-search", size: "medium" }, children: [] }],
                           },
                         ],
@@ -651,11 +651,11 @@ export const compositions = {
                     id: "create_action",
                     props: { breakpoint: "768" },
                     children: [
-                      { type: "Button", id: "create_desktop", props: { slot: "showAbove", text: "Create", variant: "primary" }, children: [] },
+                      { type: "Button", id: "create_desktop", slot: "showAbove", props: { text: "Create", variant: "primary" }, children: [] },
                       {
                         type: "Button",
                         id: "create_mobile",
-                        props: { slot: "showBelow", variant: "primary", "aria-label": "Create" },
+                        slot: "showBelow", props: { variant: "primary", "aria-label": "Create" },
                         children: [{ type: "_Icon", id: "create_mobile_icon", props: { icon: "mui-icon-add", size: "medium" }, children: [] }],
                       },
                     ],
@@ -678,7 +678,7 @@ export const compositions = {
               {
                 type: "Drawer",
                 id: "sidebar_drawer",
-                props: { slot: "showAbove", width: "240px", variant: "push", open: true, side: "left", "drawer-space": "none" },
+                slot: "showAbove", props: { width: "240px", variant: "push", open: true, side: "left", "drawer-space": "none" },
                 children: [
                   {
                     type: "VStack",
@@ -693,7 +693,7 @@ export const compositions = {
                   {
                     type: "VStack",
                     id: "muitube_page_desktop",
-                    props: { slot: "page", space: "var(--space-000)", alignX: "stretch" },
+                    slot: "page", props: { space: "var(--space-000)", alignX: "stretch" },
                     children: [
                       {
                         type: "ChipRail",
@@ -778,7 +778,7 @@ export const compositions = {
               {
                 type: "VStack",
                 id: "muitube_mobile",
-                props: { slot: "showBelow", alignX: "stretch", space: "var(--space-000)" },
+                slot: "showBelow", props: { alignX: "stretch", space: "var(--space-000)" },
                 children: [
                   {
                     type: "Drawer",
@@ -907,13 +907,13 @@ export const compositions = {
                       {
                         type: "Body",
                         id: "song_title",
-                        props: { slot: "primary", text: "Twilight", weight: "bold" },
+                        slot: "primary", props: { text: "Twilight", weight: "bold" },
                         children: [],
                       },
                       {
                         type: "Link",
                         id: "song_creator",
-                        props: { slot: "secondary", href: "#creator-profile", text: "by Michael Trilford", weight: "medium" },
+                        slot: "secondary", props: { href: "#creator-profile", text: "by Michael Trilford", weight: "medium" },
                         children: [],
                       },
                     ],
@@ -921,7 +921,7 @@ export const compositions = {
                   {
                     type: "Button",
                     id: "player_buy",
-                    props: { slot: "meta-after", text: "Buy now", variant: "overlay" },
+                    slot: "meta-after", props: { text: "Buy now", variant: "overlay" },
                     children: [],
                   },
                 ],
@@ -953,13 +953,13 @@ export const compositions = {
               {
                 type: "Body",
                 id: "video_channel",
-                props: { slot: "primary", text: "Sugoi Travels", weight: "bold" },
+                slot: "primary", props: { text: "Sugoi Travels", weight: "bold" },
                 children: [],
               },
               {
                 type: "Link",
                 id: "video_subscribers",
-                props: { slot: "secondary", href: "#creator-profile", text: "77k subscribers", weight: "medium" },
+                slot: "secondary", props: { href: "#creator-profile", text: "77k subscribers", weight: "medium" },
                 children: [],
               },
             ],
@@ -967,7 +967,7 @@ export const compositions = {
           {
             type: "Button",
             id: "video_subscribe",
-            props: { slot: "meta-after", text: "Subscribe", variant: "overlay" },
+            slot: "meta-after", props: { text: "Subscribe", variant: "overlay" },
             children: [],
           },
         ],
@@ -1092,7 +1092,7 @@ export const compositions = {
           {
             type: "VStack",
             id: "workspace_left_panel",
-            props: { slot: "left", space: "var(--space-300)", padding: "var(--space-400)" },
+            slot: "left", props: { space: "var(--space-300)", padding: "var(--space-400)" },
             children: [
               { type: "Heading", id: "workspace_left_heading", props: { text: "Components", size: "4", level: "2" }, children: [] },
               { type: "Button", id: "workspace_media_card", props: { text: "Media Card", variant: "tertiary" }, children: [] },
@@ -1102,7 +1102,7 @@ export const compositions = {
           {
             type: "VStack",
             id: "workspace_canvas",
-            props: { slot: "page", space: "var(--space-400)", padding: "var(--space-500)", alignX: "center" },
+            slot: "page", props: { space: "var(--space-400)", padding: "var(--space-500)", alignX: "center" },
             children: [
               { type: "Heading", id: "workspace_canvas_heading", props: { text: "Canvas", size: "3", level: "1" }, children: [] },
               {
@@ -1131,7 +1131,7 @@ export const compositions = {
           {
             type: "VStack",
             id: "workspace_right_panel",
-            props: { slot: "right", space: "var(--space-300)", padding: "var(--space-400)" },
+            slot: "right", props: { space: "var(--space-300)", padding: "var(--space-400)" },
             children: [
               { type: "Heading", id: "workspace_right_heading", props: { text: "Inspector", size: "4", level: "2" }, children: [] },
               { type: "AccordionBlock", id: "workspace_styles", props: { heading: "Styles" }, children: [] },
@@ -1393,13 +1393,13 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "billing_alerts_copy",
-                                props: { slot: "start", space: "var(--space-000)" },
+                                slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "billing_alerts_title", props: { text: "Review billing alerts", size: "small", weight: "bold" }, children: [] },
                                   { type: "Body", id: "billing_alerts_meta", props: { text: "Finance operations", size: "x-small", variant: "optional" }, children: [] },
                                 ],
                               },
-                              { type: "Badge", id: "billing_alerts_badge", props: { slot: "end", text: "Urgent", size: "x-small", variant: "attention" }, children: [] },
+                              { type: "Badge", id: "billing_alerts_badge", slot: "end", props: { text: "Urgent", size: "x-small", variant: "attention" }, children: [] },
                             ],
                           },
                           {
@@ -1410,13 +1410,13 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "campaign_copy",
-                                props: { slot: "start", space: "var(--space-000)" },
+                                slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "campaign_title", props: { text: "Approve campaign launch", size: "small", weight: "bold" }, children: [] },
                                   { type: "Body", id: "campaign_meta", props: { text: "Growth team", size: "x-small", variant: "optional" }, children: [] },
                                 ],
                               },
-                              { type: "Badge", id: "campaign_badge", props: { slot: "end", text: "Pending", size: "x-small", variant: "warning" }, children: [] },
+                              { type: "Badge", id: "campaign_badge", slot: "end", props: { text: "Pending", size: "x-small", variant: "warning" }, children: [] },
                             ],
                           },
                         ],
@@ -1435,7 +1435,7 @@ export const compositions = {
               {
                 type: "Card",
                 id: "activity_table_card",
-                props: { slot: "showAbove" },
+                slot: "showAbove", props: {},
                 children: [
                   {
                     type: "CardHeader",
@@ -1480,7 +1480,7 @@ export const compositions = {
               {
                 type: "Card",
                 id: "activity_slat_card",
-                props: { slot: "showBelow" },
+                slot: "showBelow", props: {},
                 children: [
                   {
                     type: "CardBody",
@@ -1500,13 +1500,13 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "activity_mobile_acme_copy",
-                                props: { slot: "start", space: "var(--space-000)" },
+                                slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "activity_mobile_acme_title", props: { text: "Acme Studios", size: "small", weight: "bold" }, children: [] },
                                   { type: "Body", id: "activity_mobile_acme_meta", props: { text: "Renewal payment", size: "x-small", variant: "optional" }, children: [] },
                                 ],
                               },
-                              { type: "Badge", id: "activity_mobile_acme_status", props: { slot: "end", text: "Paid", size: "x-small", variant: "positive" }, children: [] },
+                              { type: "Badge", id: "activity_mobile_acme_status", slot: "end", props: { text: "Paid", size: "x-small", variant: "positive" }, children: [] },
                             ],
                           },
                         ],

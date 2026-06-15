@@ -22,6 +22,7 @@ CRITICAL RULES:
 12. SmartCard props use kebab-case: bg-image, bg-color, logo-height.
 13. Normalize scanned Muibook/Figma names to Redactd component types before output.
 14. Do not use Message as a styled paragraph, inline note, or form helper. Message is only for persistent page-level notices with a heading and slotted body content.
+15. In Redactd JSON trees, slot placement belongs on the node as top-level slot, not inside props. Example: { type: "VStack", slot: "start", props: {...}, children: [...] }.
 
 MUI SCAN NORMALIZATION RULES:
 - Normalize muiscan to Redactd types before output
@@ -46,8 +47,8 @@ MUI SCAN NORMALIZATION RULES:
   - mui-illustration-[name] -> _Illustration with props.illustration = "mui-illustration-[name]"
 - Preserve hierarchy, spacing, slots, key props, and valid style strings
 - Preserve icon slots:
-  - slot=before -> props.slot = "before"
-  - slot=after -> props.slot = "after"
+  - slot=before -> node.slot = "before"
+  - slot=after -> node.slot = "after"
   - if an icon is the only child of Button, Link, or Chip, keep it as the default child
 
 TEXT NODE RULES FOR MUISCAN:
@@ -89,7 +90,7 @@ SURFACES:
 - Dialog: open, width, content-max-height, style
 - Drawer: open, variant (overlay|push|persistent|workspace), side (left|right), width, z-index, drawer-space, breakpoint, style
 - Drawer workspace: variant=workspace, left-open, right-open, left-width, right-width, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, height; slots left/page/right. Use when an editor/canvas has independent left and right panels around a central page. Keep direct slot wrappers plain in HTML exports when possible.
-- Slat: variant, col, space; slots header-start/header-end/row-start/row-end/accessory/action
+- Slat: variant, col, space; slots accessory/start/end. Do not use header-start, header-end, row-start, row-end, action, or unslotted wrapper children. Put primary row content in a direct child with slot="start", trailing value/status/action content in a direct child with slot="end", and optional leading avatar/icon content in a direct child with slot="accessory".
 - SlatGroup: usage
 - SmartCard: state, number, variant, partner, type, logo, logo-height, bg-color, bg-image, inverted
 

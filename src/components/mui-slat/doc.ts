@@ -104,6 +104,8 @@ export const muiDocs: MuiDocs = {
         "Can include expandable sections to reveal more content on demand",
         "Use col and space to tune slat columns and spacing, including action slats.",
         "Use with SlatGroup when rows need to be presented as a related set, such as wallet activity, settings lists, grouped account records, or transaction histories.",
+        "Place row content directly into the supported slots: slot='accessory' for a leading avatar or icon, slot='start' for primary content, and slot='end' for trailing values, statuses, or actions.",
+        "Do not wrap all slat content in an unslotted layout child. Unslotted children do not map to Slat's start/end regions.",
       ],
     },
 
@@ -116,12 +118,10 @@ export const muiDocs: MuiDocs = {
       image:
         "https://images.ctfassets.net/i5uwscj4pkk2/0OzwVoT0EyK1sR1ufn3Vw/3cbee51beec1240ebeaaad485bff5970/Slat_-_Anatomy.png",
       list: [
-        "Header (Start): Slot for the header of slat items.",
-        "Header (End): Optional area for secondary information.",
-        "Row (Start): Primary content slot in a slat layout.",
-        "Row (End): Secondary content slot in a slat layout.",
-        "Accessory: Use for an icon or other suitable elements within the limited space available.",
-        "Action: Enables the slat to become a clickable action.",
+        "Accessory slot: Optional leading avatar, icon, or compact supporting element.",
+        "Start slot: Primary row content, such as title and supporting metadata.",
+        "End slot: Trailing value, status, badge, or action content.",
+        "Action variant: Makes the whole slat behave as a clickable row while still using the same accessory, start, and end slots.",
       ],
     },
 
@@ -206,6 +206,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use the default variant when the slat is primarily informational, and use the action variant when the entire row should be interactive.",
         "Header slats work well as structural labels before a grouped run of related slats.",
+        "Slat only renders content assigned to its named slots: accessory, start, and end.",
       ],
     },
 
