@@ -23,6 +23,7 @@ CRITICAL RULES:
 13. Normalize scanned Muibook/Figma names to Redactd component types before output.
 14. Do not use Message as a styled paragraph, inline note, or form helper. Message is only for persistent page-level notices with a heading and slotted body content.
 15. In Redactd JSON trees, slot placement belongs inside props, matching Muibook/MuiScan output. Example: { type: "VStack", props: { "slot": "start", ... }, children: [...] }. Do not put slot as a top-level node field.
+16. Do not add CardBody.props.condensed just because CardBody contains SlatGroup. SlatGroup inside CardBody already triggers card-aware spacing; only use condensed when the user explicitly asks for a tight edge-to-edge condensed card layout.
 
 MUI SCAN NORMALIZATION RULES:
 - Normalize muiscan to Redactd types before output
@@ -85,13 +86,13 @@ LAYOUT:
 SURFACES:
 - Card: use CardBody for card content
 - CardHeader: none
-- CardBody: condensed, style
+- CardBody: condensed, style. Do not set condensed by default for SlatGroup layouts; leave props empty unless the user explicitly asks for condensed card spacing.
 - CardFooter: none
 - Dialog: open, width, content-max-height, style
 - Drawer: open, variant (overlay|push|persistent|workspace), side (left|right), width, z-index, drawer-space, breakpoint, style
 - Drawer workspace: variant=workspace, left-open, right-open, left-width, right-width, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, height; slots left/page/right. Use when an editor/canvas has independent left and right panels around a central page. Keep direct slot wrappers plain in HTML exports when possible.
 - Slat: variant, col, space; child slots accessory/start/end. Do not use header-start, header-end, row-start, row-end, action, or unslotted wrapper children. Put primary row content in a direct child with props.slot="start", trailing value/status/action content in a direct child with props.slot="end", and optional leading avatar/icon content in a direct child with props.slot="accessory".
-- SlatGroup: usage
+- SlatGroup: usage. When SlatGroup is inside CardBody, keep CardBody uncondensed by default; CardBody detects SlatGroup and applies the correct card spacing automatically.
 - SmartCard: state, number, variant, partner, type, logo, logo-height, bg-color, bg-image, inverted
 
 CONTENT:

@@ -234,6 +234,7 @@ export const muiDocs: MuiDocs = {
         "Works well for wallet and account activity feeds where a header slat is followed by action or detail slats.",
         "A strong pattern is a header slat followed by grouped item slats for balances, recent activity, account options, or grouped settings.",
         "Use inside Card when grouped rows need a shared container or section framing.",
+        "When SlatGroup is inside CardBody, do not add condensed to CardBody by default; CardBody detects SlatGroup and applies the correct card spacing automatically.",
         "Pair with Rule between header and item sets when additional separation is needed.",
         "Use Slat for the individual row content and SlatGroup for the grouped structure.",
       ],
@@ -300,9 +301,13 @@ export const muiDocs: MuiDocs = {
             image: "",
           },
         ],
-        dontContent: [
+      dontContent: [
           {
             description: "Avoid using SlatGroup as a generic spacing wrapper when the rows do not share a clear relationship.",
+            image: "",
+          },
+          {
+            description: "Avoid adding condensed to CardBody just because it contains SlatGroup; use condensed only for explicitly tight edge-to-edge card layouts.",
             image: "",
           },
         ],
