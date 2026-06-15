@@ -37,6 +37,26 @@ import "@muibook/components/agent/prompts";
 import "@muibook/components/agent/keywords";
 ```
 
+#### Knowledge Usage
+
+The package also exposes Muibook knowledge for AI tooling and plugins:
+
+```javascript
+import { knowledge } from "@muibook/components/knowledge";
+import { rules } from "@muibook/components/knowledge/rules";
+import { compositions } from "@muibook/components/knowledge/compositions";
+import { keywords } from "@muibook/components/knowledge/keywords";
+```
+
+Generated metadata is published alongside the package:
+
+```txt
+@muibook/components/custom-elements.json
+@muibook/components/dynamic-attrs.json
+@muibook/components/AGENTS.md
+@muibook/components/DESIGN.md
+```
+
 Links •
 [npmjs.com](https://www.npmjs.com/package/@muibook/components?activeTab=readme) •
 [Docs](https://muibook.com) •
@@ -179,6 +199,31 @@ Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=To
 ## Style Dictionary
 
 - npm run token-build
+
+---
+
+## Knowledge Build
+
+Muibook keeps authored AI knowledge in `src/knowledge`:
+
+- `rules.ts` contains global component-tree generation rules.
+- `keywords.ts` contains full keyword mappings and the curated local-agent keyword subset.
+- `compositions.ts` contains full composition examples, curation metadata, and the generated local-agent composition subset.
+- `index.ts` exports the combined `knowledge` object.
+
+The full package build also generates and copies related knowledge files:
+
+- `public/custom-elements.json` from component `api.ts` and `doc.ts` files.
+- `public/dynamic-attrs.json` for runtime/destination structural attrs.
+- root `AGENTS.md` and `DESIGN.md`.
+
+`npm run build` runs `npm run copy-knowledge`, which syncs the exported bundle into the sibling `../muibook-knowledge` repo:
+
+```bash
+npm run build
+```
+
+Use `includeInAgent: true` in `compositionConfig` only for compact examples that should be bundled into `@muibook/components/agent/prompts`. Keep richer examples in the full knowledge export with `includeInAgent: false`.
 
 ---
 
