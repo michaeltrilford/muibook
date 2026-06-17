@@ -11,6 +11,7 @@
 - `mui-code` now supports an `inline` boolean attribute for displaying code snippets inline with surrounding text (with compact padding, baseline alignment, and nowrap layout by default).
 - `mui-drawer` now supports `variant="workspace"` for editor-style layouts with independent left and right panels around a central page or canvas, including `left-open`, `right-open`, `left-width`, `right-width`, `resize-rail`, `resize-min-left-width`, `resize-min-right-width`, `resize-min-page-width`, `resize-close-threshold`, `breakpoint`, and `height` for full control over panel visibility, sizing, and resize behaviour.
 - `mui-drawer` now supports a dynamic `mobile` host attribute synced to viewport breakpoints for responsive mobile layouts.
+- `mui-container` now supports `x-medium` / `size="x-medium"` for a 96rem container between medium and large, plus a string `width` max-width override for precise page constraints. Existing `large` behaviour remains unchanged.
 - `mui-button` now supports `pending` for async actions, blocking repeat activation without applying disabled styling and exposing `aria-busy` while work is in flight.
 - `mui-media-player` now supports `controls="player" | "none"` for choosing Muibook controls or no controls for direct audio/video media.
 - `mui-media-player` now supports `media-title`, `artwork`, and composed `slot="meta-before"` / `slot="meta-after"` content for audio metadata, audio artwork, and video metadata presentations.
@@ -35,6 +36,7 @@
 - Added an overview page for Knowledge MCP with descriptions of MCP tools, local command, and links to the standalone repository.
 - Added Knowledge Resource pages for Design Manifest, Compositions, Rules, and Keywords, including package import paths, dist output paths, and how Knowledge rules/keywords feed the optimized AI Agent outputs.
 - Added richer full Knowledge composition examples for media metadata, custom select, drawer workspace, and model viewer patterns, with explicit `compositionConfig` curation so only compact examples ship in the lightweight AI Agent prompt.
+- Added Container story quicklinks for jumping between size, width, fluid, and centered examples.
 - Added an Inline story card to the Code story page demonstrating inline code snippets within text.
 - Added a Button story showing inline async feedback with `Copy`/`Save`, spinner pending states, check-icon success states, and guidance for replacing demo delays with real async work.
 - Added Avatar Chip stories covering default, image, linked avatar, custom secondary, and Media Player usage.

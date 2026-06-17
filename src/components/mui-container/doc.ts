@@ -22,6 +22,7 @@ export const muiDocs: MuiDocs = {
         "Use to wrap page or section content within a consistent width.",
         "Ideal for creating clear margins and maintaining visual rhythm.",
         "Supports responsive layouts by adjusting padding or max-width at breakpoints.",
+        "Use t-shirt sizes for common layout rhythm; use width when a page needs a precise max-width without changing the semantic size scale.",
         "Avoid nesting multiple containers unless necessary for layout control.",
       ],
     },
