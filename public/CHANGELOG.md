@@ -8,6 +8,7 @@
 
 ### Added
 
+- Added `mui-time` as a standalone component for handling time selection, supporting a default scrolling wheel dial and a discrete `variant="slots"` interface with `start`, `end`, and `step` configuration.
 - `mui-code` now supports an `inline` boolean attribute for displaying code snippets inline with surrounding text (with compact padding, baseline alignment, and nowrap layout by default).
 - `mui-drawer` now supports `variant="workspace"` for editor-style layouts with independent left and right panels around a central page or canvas, including `left-open`, `right-open`, `left-width`, `right-width`, `resize-rail`, `resize-min-left-width`, `resize-min-right-width`, `resize-min-page-width`, `resize-close-threshold`, `breakpoint`, and `height` for full control over panel visibility, sizing, and resize behaviour.
 - `mui-drawer` now supports a dynamic `mobile` host attribute synced to viewport breakpoints for responsive mobile layouts.
@@ -33,6 +34,7 @@
 
 ### Documentation
 
+- Added standalone component documentation story for `mui-time`.
 - Added an overview page for Knowledge MCP with descriptions of MCP tools, local command, and links to the standalone repository.
 - Added Knowledge Resource pages for Design Manifest, Compositions, Rules, and Keywords, including package import paths, dist output paths, and how Knowledge rules/keywords feed the optimized AI Agent outputs.
 - Added richer full Knowledge composition examples for media metadata, custom select, drawer workspace, and model viewer patterns, with explicit `compositionConfig` curation so only compact examples ship in the lightweight AI Agent prompt.
@@ -47,6 +49,9 @@
 
 ### Changed
 
+- `mui-time-picker` and `mui-date-picker` now compose the standalone `mui-time` component instead of implementing inner time selection logic.
+- Standardized inner day and time slot buttons in calendars and pickers to reuse the core `mui-button` styles with dynamic styling variants based on selection, maintaining focus styles across the UI.
+- Removed custom radius CSS variables from `mui-time-picker` and `mui-date-picker` inner elements and standardized on `slotted` host styles to apply dropdown radius configurations.
 - `mui-media-player` now uses dedicated local SVG icon components for play, pause, stop, restart, volume, Picture-in-Picture, fullscreen, and overflow controls.
 - `mui-media-player` now keeps image/video overlay controls locked to the dark overlay treatment while compact audio and metadata surfaces remain theme-aware.
 - `mui-media-player` artwork waveforms now use a stronger image-overlay treatment, while no-artwork waveforms use higher contrast theme-aware canvas colors.
