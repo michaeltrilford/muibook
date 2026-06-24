@@ -220,6 +220,10 @@ export default defineConfig({
         "components/mui-rule": path.resolve(__dirname, "src/components/mui-rule"),
         // SELECT
         "components/mui-select": path.resolve(__dirname, "src/components/mui-select"),
+        // CALENDAR & DATE
+        "components/mui-calendar": path.resolve(__dirname, "src/components/mui-calendar"),
+        "components/mui-time-picker": path.resolve(__dirname, "src/components/mui-time-picker"),
+        "components/mui-date-picker": path.resolve(__dirname, "src/components/mui-date-picker"),
         // SLAT
         "components/mui-slat": path.resolve(__dirname, "src/components/mui-slat"),
         "components/mui-slat/slat": path.resolve(__dirname, "src/components/mui-slat/slat"),

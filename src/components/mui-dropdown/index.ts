@@ -63,10 +63,63 @@ class MuiDropdown extends HTMLElement {
   };
 
   private handleActionKeyDown = (event: KeyboardEvent) => {
+    // Intercept Tab to move focus into the menu when open
+    if (event.key === "Tab" && !event.shiftKey && this.activeMenu?.classList.contains("show")) {
+      event.preventDefault();
+      this.focusFirstItem();
+      return;
+    }
+
     if (event.key !== "Enter" && event.key !== " ") return;
     event.preventDefault();
     this.toggleMenu(event);
   };
+
+  private focusFirstItem() {
+    const root = this.portalInner || this.menu;
+    if (!root) return;
+
+    const getFirstFocusable = (node: HTMLElement | DocumentFragment): HTMLElement | null => {
+      const focusableSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+      if (node instanceof HTMLElement && node.matches(focusableSelector)) {
+        return node;
+      }
+
+      const children = node.children;
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i] as HTMLElement;
+
+        if (child.shadowRoot) {
+          const found = getFirstFocusable(child.shadowRoot);
+          if (found) return found;
+        }
+
+        if (child.tagName === 'SLOT') {
+          const assigned = (child as HTMLSlotElement).assignedElements({ flatten: true });
+          for (const assignedEl of assigned) {
+             if (assignedEl instanceof HTMLElement) {
+               const found = getFirstFocusable(assignedEl);
+               if (found) return found;
+             }
+          }
+        }
+
+        if (child.matches(focusableSelector)) {
+          return child;
+        }
+
+        const foundInChild = getFirstFocusable(child);
+        if (foundInChild) return foundInChild;
+      }
+      return null;
+    };
+
+    const first = getFirstFocusable(root);
+    if (first) {
+      first.focus();
+    }
+  }
 
   static get observedAttributes() {
     return ["zindex", "position", "vertical-position", "persistent"];
@@ -174,7 +227,7 @@ class MuiDropdown extends HTMLElement {
       if (!this.button) return;
 
       const tagName = this.button.tagName.toLowerCase();
-      const isNativeTrigger = tagName === "mui-button" || tagName === "button" || tagName === "a";
+      const isNativeTrigger = tagName === "mui-button" || tagName === "button" || tagName === "a" || tagName === "mui-input";
       if (!isNativeTrigger) {
         if (!this.button.hasAttribute("tabindex")) this.button.setAttribute("tabindex", "0");
         this.button.setAttribute("role", "button");

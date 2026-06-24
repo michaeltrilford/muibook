@@ -42,7 +42,7 @@ class storyDropdown extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-dropdown" title="Dropdown"></story-api-types>
 
-      <story-card title="Ellipsis Action">
+      <story-card id="default" title="Ellipsis Action">
         <mui-dropdown slot="body">
           <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
           <mui-button>Option one</mui-button>
@@ -59,30 +59,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Section Links" description="Use mui-link inside a dropdown when menu items should navigate to anchors or sections instead of acting like commands.">
-        <mui-dropdown slot="body">
-          <mui-button slot="action" variant="secondary">
-            Jump to section
-            <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
-          </mui-button>
-          <mui-link href="#dropdown-position-left" data-scroll-target="dropdown-position-left">Position: Left</mui-link>
-          <mui-link href="#dropdown-position-right" data-scroll-target="dropdown-position-right">Position: Right</mui-link>
-          <mui-link href="#dropdown-persistent" data-scroll-target="dropdown-persistent">Persistent</mui-link>
-        </mui-dropdown>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; variant=&quot;secondary&quot;&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;Jump to section<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-down-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-down-chevron&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-link href=&quot;#dropdown-position-left&quot;&gt;Position: Left&lt;/mui-link&gt;<br>
-          &nbsp;&nbsp;&lt;mui-link href=&quot;#dropdown-position-right&quot;&gt;Position: Right&lt;/mui-link&gt;<br>
-          &nbsp;&nbsp;&lt;mui-link href=&quot;#dropdown-persistent&quot;&gt;Persistent&lt;/mui-link&gt;<br>
-          &lt;/mui-dropdown&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card title="Action Sizes">
+      <story-card id="action-sizes" title="Action Sizes">
         <mui-v-stack slot="body" space="var(--space-300)" alignX="start">
           <mui-dropdown>
             <mui-button slot="action" size="x-small"><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
@@ -166,7 +143,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Z-Index Customisation" description="Use this feature if a fixed navigation or other elements in your application conflict with the default z-index. Adjust the value to ensure your UI layers display correctly.">
+      <story-card id="z-index" title="Z-Index Customisation" description="Use this feature if a fixed navigation or other elements in your application conflict with the default z-index. Adjust the value to ensure your UI layers display correctly.">
         <mui-dropdown slot="body" zindex="999" position="left">
           <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
           <mui-button>Option one</mui-button>
@@ -187,7 +164,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Custom Offset" description="Override the vertical gap between the trigger and menu using the --dropdown-offset token.">
+      <story-card id="custom-offset" title="Custom Offset" description="Override the vertical gap between the trigger and menu using the --dropdown-offset token.">
         <mui-dropdown slot="body" style="--dropdown-offset: var(--space-500);">
           <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
           <mui-button>Option one</mui-button>
@@ -204,7 +181,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Menu Min-Width" description="Override the minimum menu width using the --dropdown-min-width token.">
+      <story-card id="min-width" title="Menu Min-Width" description="Override the minimum menu width using the --dropdown-min-width token.">
         <mui-dropdown slot="body" style="--dropdown-min-width: 9rem;">
           <mui-button slot="action" size="small"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
           <mui-button>One</mui-button>
@@ -221,7 +198,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Dropdown w/ Icon">
+      <story-card id="with-icon" title="Dropdown w/ Icon">
         <mui-button-group align="right" slot="body">
           <mui-dropdown>
             <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
@@ -256,7 +233,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Vertical Position: Up">
+      <story-card id="vertical-position-up" title="Vertical Position: Up">
         <mui-v-stack slot="body" alignX="center">
           <mui-dropdown position="left" vertical-position="up">
             <mui-button slot="action" variant="secondary">Actions<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
@@ -292,7 +269,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Position: Center">
+      <story-card id="position-center" title="Position: Center">
         <mui-v-stack slot="body" alignX="center">
           <mui-dropdown position="center">
             <mui-button slot="action" variant="secondary"><mui-icon-info size="medium"></mui-icon-info></mui-button>
@@ -400,6 +377,7 @@ class storyDropdown extends HTMLElement {
       </story-card>
 
       <story-card 
+        id="advanced-persistent"
         title="Advanced: Persistent"
         description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
         usage="
@@ -517,6 +495,19 @@ class storyDropdown extends HTMLElement {
 
         </story-code-block>
       </story-card>
+
+      <story-card 
+        id="date-picker-composition"
+        title="Date Picker Composition"
+        description="A practical example composing a calendar and time picker inside a dropdown to form a Date Picker."
+        usage="This utilizes the mui-dropdown's persistent behavior so users can interact with the calendar and time picker without closing the menu.">
+        <mui-h-stack slot="body" alignX="center">
+          <mui-date-picker type="datetime" value="2026-06-24 14:30"></mui-date-picker>
+        </mui-h-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-date-picker type="datetime" value="2026-06-24 14:30"&gt;&lt;/mui-date-picker&gt;
+        </story-code-block>
+      </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -533,6 +524,11 @@ class storyDropdown extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
       
         imports='["@muibook/components/mui-dropdown"]'>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          links="default::Ellipsis Action|||action-sizes::Action Sizes|||z-index::Z-Index Customisation|||custom-offset::Custom Offset|||min-width::Menu Min-Width|||with-icon::Dropdown w/ Icon|||dropdown-position-left::Position: Left|||vertical-position-up::Vertical Position: Up|||dropdown-position-right::Position: Right|||position-center::Position: Center|||dropdown-persistent::Persistent|||advanced-persistent::Advanced: Persistent|||date-picker-composition::Date Picker Composition"
+        ></story-quicklinks>
         ${stories}
       </story-template>
     `;
@@ -567,15 +563,7 @@ class storyDropdown extends HTMLElement {
       });
     });
 
-    // === Section Link Logic ===
-    this.shadowRoot.querySelectorAll("[data-scroll-target]").forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        const targetId = link.getAttribute("data-scroll-target");
-        const target = targetId ? this.shadowRoot.getElementById(targetId) : null;
-        target?.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
+    // Removed Section Link Logic
 
     // === File Upload Logic ===
     this.shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) => {

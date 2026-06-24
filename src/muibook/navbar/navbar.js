@@ -284,8 +284,12 @@ class appNavbar extends HTMLElement {
 
         <app-navbar-section heading="Forms" default-open>
           <app-navbar-link link="/addon" title="Add On"></app-navbar-link>
-          <app-navbar-link link="/chip-input" title="Chip Input"></app-navbar-link>
+          <app-navbar-link link="/calendar" title="Calendar"></app-navbar-link>
           <app-navbar-link link="/checkbox" title="Checkbox"></app-navbar-link>
+          <app-navbar-link link="/chip-input" title="Chip Input"></app-navbar-link>
+          <app-navbar-link link="/date-picker" title="Date Picker"></app-navbar-link>
+          <app-navbar-link link="/time" title="Time"></app-navbar-link>
+          <app-navbar-link link="/time-picker" title="Time Picker"></app-navbar-link>
           <app-navbar-link link="/field" title="Field"></app-navbar-link>
           <app-navbar-link link="/form-section" title="Form Section"></app-navbar-link>
           <app-navbar-link link="/form-section-footer" title="Form Section Footer"></app-navbar-link>

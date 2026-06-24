@@ -516,6 +516,18 @@
       "import": "./dist/esm/components/mui-select/index.js",
       "types": "./dist/types/components/mui-select/index.d.ts"
     },
+    "./mui-calendar": {
+      "import": "./dist/esm/components/mui-calendar/index.js",
+      "types": "./dist/types/components/mui-calendar/index.d.ts"
+    },
+    "./mui-time-picker": {
+      "import": "./dist/esm/components/mui-time-picker/index.js",
+      "types": "./dist/types/components/mui-time-picker/index.d.ts"
+    },
+    "./mui-date-picker": {
+      "import": "./dist/esm/components/mui-date-picker/index.js",
+      "types": "./dist/types/components/mui-date-picker/index.d.ts"
+    },
     "./mui-slat": {
       "import": "./dist/esm/components/mui-slat/index.js",
       "types": "./dist/types/components/mui-slat/index.d.ts"
