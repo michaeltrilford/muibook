@@ -72,7 +72,7 @@ class MuiDatePicker extends HTMLElement {
           const input = this.shadowRoot?.querySelector("mui-input");
           const cal = this.shadowRoot?.querySelector("mui-calendar");
           const time = this.shadowRoot?.querySelector("mui-time");
-          if (input) input.setAttribute("value", this.getAttribute("value") || "");
+          if (input) input.setAttribute("value", this.formatDisplayValue(this.getAttribute("value") || ""));
           if (cal && this.selectedDate) cal.setAttribute("value", this.selectedDate);
           if (time && this.selectedTime) time.setAttribute("value", this.selectedTime);
         }
@@ -98,6 +98,31 @@ class MuiDatePicker extends HTMLElement {
     }
   }
 
+  private formatDisplayValue(val: string): string {
+    if (!val) return "";
+    const parts = val.split(" ");
+    if (parts.length > 0 && parts[0].includes("-")) {
+      const dateParts = parts[0].split("-");
+      if (dateParts.length === 3) {
+        const year = parseInt(dateParts[0], 10);
+        const monthIndex = parseInt(dateParts[1], 10) - 1;
+        const day = parseInt(dateParts[2], 10);
+        
+        if (!isNaN(year) && !isNaN(monthIndex) && !isNaN(day)) {
+          const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          const formattedDate = `${day} ${monthNames[monthIndex]} ${year}`;
+          
+          if (parts.length > 1) {
+            const timeStr = parts.slice(1).join(" ");
+            return `${timeStr}, ${formattedDate}`;
+          }
+          return formattedDate;
+        }
+      }
+    }
+    return val;
+  }
+
   private setupListeners() {
     if (!this.shadowRoot) return;
 
@@ -111,10 +136,14 @@ class MuiDatePicker extends HTMLElement {
       if (type === "date") {
         newVal = this.selectedDate;
       } else if (type === "datetimeslot") {
-        newVal = `${this.selectedDate} ${this.selectedTime}`.trim();
+        if (this.selectedDate && this.selectedTime) {
+          newVal = `${this.selectedDate} ${this.selectedTime}`.trim();
+        } else {
+          newVal = this.selectedDate || this.selectedTime;
+        }
       }
       this.setAttribute("value", newVal);
-      if (input) input.setAttribute("value", newVal);
+      if (input) input.setAttribute("value", this.formatDisplayValue(newVal));
       this.dispatchEvent(new CustomEvent("change", { detail: { value: newVal }, bubbles: true, composed: true }));
     };
 
@@ -152,6 +181,7 @@ class MuiDatePicker extends HTMLElement {
     if (!this.shadowRoot) return;
 
     const value = this.getAttribute("value") || "";
+    const displayValue = this.formatDisplayValue(value);
     const type = this.getAttribute("type") || "date";
     const label = this.getAttribute("label") || "";
     const hideLabel = this.hasAttribute("hide-label") ? "hide-label" : "";
@@ -180,7 +210,7 @@ class MuiDatePicker extends HTMLElement {
       <mui-dropdown persistent>
         <mui-input 
           slot="action" 
-          value="${value}"
+          value="${displayValue}"
           label="${label}"
           size="${size}"
           variant="${variant}"
