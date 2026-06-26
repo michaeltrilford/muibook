@@ -15,7 +15,7 @@ class MuiDropdown extends HTMLElement {
   private handleKeyDown(event: KeyboardEvent) {
     if (event.key === "Escape") {
       const menu = this.activeMenu;
-      if (!menu) return;
+      if (!menu || !menu.classList.contains("show")) return;
 
       // Close menu visually
       menu.classList.remove("show");
@@ -27,6 +27,7 @@ class MuiDropdown extends HTMLElement {
       // Clear open dropdown if needed
       if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
       this.button?.setAttribute("aria-expanded", "false");
+      this.button?.focus();
 
       // Fire event
       this.dispatchEvent(
@@ -37,6 +38,32 @@ class MuiDropdown extends HTMLElement {
       );
     }
   }
+
+  close() {
+    const menu = this.activeMenu;
+    if (!menu || !menu.classList.contains("show")) return;
+
+    // Close menu visually
+    menu.classList.remove("show");
+
+    // Restore inert
+    menu.setAttribute("inert", "true");
+    this.restorePortalItems();
+
+    // Clear open dropdown if needed
+    if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
+    this.button?.setAttribute("aria-expanded", "false");
+    this.button?.focus();
+
+    // Fire event
+    this.dispatchEvent(
+      new CustomEvent("dropdown-toggle", {
+        detail: { open: false },
+        bubbles: true,
+      })
+    );
+  }
+
   private handleResize = () => {
     if (this.activeMenu?.classList.contains("show")) {
       this.adjustPosition();
@@ -197,6 +224,7 @@ class MuiDropdown extends HTMLElement {
                 this.restorePortalItems();
                 if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
                 this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
+                this.button?.focus();
               }
             });
             (item as any)._dropdownListenerAdded = true;
@@ -337,9 +365,34 @@ class MuiDropdown extends HTMLElement {
       this.portalMenu.className = "mui-dropdown-portal";
       this.portalMenu.setAttribute("inert", "true");
       this.portalMenu.style.zIndex = this.getAttribute("zindex") || "1";
+
+      const createGuard = () => {
+        const guard = document.createElement("div");
+        guard.tabIndex = 0;
+        guard.style.position = "absolute";
+        guard.style.opacity = "0";
+        guard.style.pointerEvents = "none";
+        guard.addEventListener("focus", () => {
+          if (!this.persistent) {
+            this.activeMenu?.classList.remove("show");
+            this.activeMenu?.setAttribute("inert", "true");
+            this.restorePortalItems();
+            if (MuiDropdown.openDropdown === this) MuiDropdown.openDropdown = null;
+            this.dispatchEvent(new CustomEvent("dropdown-toggle", { detail: { open: false }, bubbles: true }));
+          }
+          this.button?.focus();
+        });
+        return guard;
+      };
+
+      this.portalMenu.appendChild(createGuard());
+
       this.portalInner = document.createElement("div");
       this.portalInner.className = "inner";
       this.portalMenu.appendChild(this.portalInner);
+
+      this.portalMenu.appendChild(createGuard());
+
       this.portalMenu.addEventListener("focusout", this.handleFocusOut);
       document.body.appendChild(this.portalMenu);
     }

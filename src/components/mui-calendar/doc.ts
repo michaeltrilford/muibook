@@ -21,7 +21,7 @@ export const muiDocs: MuiDocs = {
 
     accessibility: {
       designerList: [
-        "If overriding theme colors, ensure the contrast of today's date and the selected date still meets WCAG AA standards.",
+        "When overriding theme colors, the contrast of today's date and the selected date still meets WCAG AA standards.",
         "The component inherently avoids using only color to indicate selection, providing a solid background shape.",
       ],
       engineerList: [

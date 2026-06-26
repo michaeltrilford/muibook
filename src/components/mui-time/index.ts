@@ -20,10 +20,53 @@ class MuiTime extends HTMLElement {
     this.render();
   }
 
-  attributeChangedCallback(_name: string, oldValue: string | null, newValue: string | null) {
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
     if (oldValue !== newValue) {
       this.syncAttributes();
-      this.render();
+      if (name === "value" && (this.shadowRoot?.querySelector(".time-picker-container") || this.shadowRoot?.querySelector(".slots-container"))) {
+        this.updateDOMForValue();
+      } else {
+        this.render();
+      }
+    }
+  }
+
+  private updateDOMForValue() {
+    const variant = this.getAttribute("variant") || "dial";
+    if (variant === "slots") {
+      const allBtns = this.shadowRoot?.querySelectorAll(".slot-btn");
+      if (allBtns) {
+        allBtns.forEach((btn) => {
+          if (btn.getAttribute("data-value") === this.getAttribute("value")) {
+            btn.classList.add("selected");
+            btn.setAttribute("variant", "primary");
+            btn.setAttribute("aria-selected", "true");
+          } else {
+            btn.classList.remove("selected");
+            btn.removeAttribute("variant");
+            btn.setAttribute("aria-selected", "false");
+          }
+        });
+      }
+    } else {
+      const is12h = (this.getAttribute("format") || "12h") === "12h";
+      const h12 = this.hour % 12 || 12;
+      const colHours = this.shadowRoot?.getElementById("col-hours");
+      const colMinutes = this.shadowRoot?.getElementById("col-minutes");
+      const colAmpm = this.shadowRoot?.getElementById("col-ampm");
+      
+      if (colHours) this.scrollToValue(colHours, is12h ? h12 : this.hour);
+      if (colMinutes) this.scrollToValue(colMinutes, this.minute);
+      if (colAmpm) this.scrollToValue(colAmpm, this.ampm);
+    }
+  }
+
+  private scrollToValue(col: HTMLElement, val: string | number) {
+    const item = col.querySelector(`[data-value="${val}"]`) as HTMLElement;
+    if (item) {
+      const itemCenter = item.offsetTop + item.offsetHeight / 2;
+      const colCenter = col.offsetHeight / 2;
+      col.scrollTop = itemCenter - colCenter;
     }
   }
 
@@ -180,6 +223,32 @@ class MuiTime extends HTMLElement {
       });
     });
 
+    const scrollContainer = this.shadowRoot.querySelector(".slots-scroll");
+    scrollContainer?.addEventListener("keydown", (e: Event) => {
+      const kbEvent = e as KeyboardEvent;
+      if (kbEvent.key === "ArrowDown" || kbEvent.key === "ArrowUp") {
+        kbEvent.preventDefault();
+        const activeItem = (this.shadowRoot ? this.shadowRoot.activeElement : null) as HTMLElement | null;
+        let slotBtn = activeItem?.classList.contains("slot-btn") ? activeItem : null;
+        
+        if (!slotBtn) {
+          slotBtn = (this.shadowRoot?.querySelector(".slot-btn[variant='primary']") || this.shadowRoot?.querySelector(".slot-btn")) as HTMLElement | null;
+          slotBtn?.focus();
+          return;
+        }
+
+        const allBtns = Array.from(this.shadowRoot?.querySelectorAll(".slot-btn") || []);
+        const idx = allBtns.indexOf(slotBtn);
+        if (idx === -1) return;
+
+        let nextIdx = kbEvent.key === "ArrowDown" ? idx + 1 : idx - 1;
+        if (nextIdx < 0) nextIdx = 0;
+        if (nextIdx >= allBtns.length) nextIdx = allBtns.length - 1;
+
+        (allBtns[nextIdx] as HTMLElement).focus();
+      }
+    });
+
     // Initial scroll to selected
     requestAnimationFrame(() => {
       const selected = this.shadowRoot?.querySelector(".slot-btn.selected");
@@ -256,11 +325,15 @@ class MuiTime extends HTMLElement {
           flex: 1;
           display: flex;
           flex-direction: column;
-          overflow-y: auto;
-          overflow-x: hidden;
+          overflow-y: scroll;
           scroll-snap-type: y mandatory;
-          scroll-behavior: smooth;
-          scrollbar-width: none; /* Firefox */
+          scrollbar-width: none;
+          z-index: 2;
+          border-radius: var(--radius-100);
+        }
+        .column:focus-visible {
+          outline: 2px solid var(--action-primary-background);
+          outline-offset: -2px;
         }
         .column::-webkit-scrollbar {
           display: none; /* Chrome/Safari */
@@ -316,17 +389,6 @@ class MuiTime extends HTMLElement {
     const colHours = this.shadowRoot.getElementById("col-hours")!;
     const colMinutes = this.shadowRoot.getElementById("col-minutes")!;
     const colAmpm = this.shadowRoot.getElementById("col-ampm");
-
-    // Helper to scroll to a specific value immediately without smooth scrolling for initial render
-    const scrollToValue = (col: HTMLElement, val: string | number) => {
-      const item = col.querySelector(`[data-value="${val}"]`) as HTMLElement;
-      if (item) {
-        // Calculate offset to center the item
-        const itemCenter = item.offsetTop + item.offsetHeight / 2;
-        const colCenter = col.offsetHeight / 2;
-        col.scrollTop = itemCenter - colCenter;
-      }
-    };
 
     // Scroll handlers to update internal state when snapped
     let scrollTimeout: any;
@@ -391,16 +453,56 @@ class MuiTime extends HTMLElement {
       });
     };
 
+    const addKeyboardNav = (col: HTMLElement) => {
+      col.setAttribute("tabindex", "0");
+      col.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+          e.preventDefault();
+          const items = Array.from(col.querySelectorAll(".item")) as HTMLElement[];
+          const center = col.scrollTop + col.offsetHeight / 2;
+          let closestIdx = 0;
+          let minDist = Infinity;
+          
+          items.forEach((item, idx) => {
+            const itemCenter = item.offsetTop + item.offsetHeight / 2;
+            const dist = Math.abs(center - itemCenter);
+            if (dist < minDist) {
+              minDist = dist;
+              closestIdx = idx;
+            }
+          });
+
+          let nextIdx = e.key === "ArrowUp" ? closestIdx - 1 : closestIdx + 1;
+          if (nextIdx < 0) nextIdx = 0;
+          if (nextIdx >= items.length) nextIdx = items.length - 1;
+
+          items[nextIdx].scrollIntoView({ behavior: "smooth", block: "center" });
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          const prev = col.previousElementSibling as HTMLElement;
+          if (prev && prev.classList.contains("column")) prev.focus();
+        } else if (e.key === "ArrowRight") {
+          e.preventDefault();
+          const next = col.nextElementSibling as HTMLElement;
+          if (next && next.classList.contains("column")) next.focus();
+        }
+      });
+    };
+
     addClickToScroll(colHours);
     addClickToScroll(colMinutes);
     if (colAmpm) addClickToScroll(colAmpm);
 
+    addKeyboardNav(colHours);
+    addKeyboardNav(colMinutes);
+    if (colAmpm) addKeyboardNav(colAmpm);
+
     // Initial positioning (need to wait for paint)
     requestAnimationFrame(() => {
       const h12 = this.hour % 12 || 12;
-      scrollToValue(colHours, is12h ? h12 : this.hour);
-      scrollToValue(colMinutes, this.minute);
-      if (colAmpm) scrollToValue(colAmpm, this.ampm);
+      this.scrollToValue(colHours, is12h ? h12 : this.hour);
+      this.scrollToValue(colMinutes, this.minute);
+      if (colAmpm) this.scrollToValue(colAmpm, this.ampm);
     });
   }
 }

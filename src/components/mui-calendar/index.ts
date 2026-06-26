@@ -216,6 +216,60 @@ class MuiCalendar extends HTMLElement {
         }
       });
     });
+
+    this.shadowRoot.querySelector(".calendar-container")?.addEventListener("keydown", (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (!target.classList.contains("day") || target.classList.contains("empty")) return;
+      
+      const kbEvent = e as KeyboardEvent;
+      const key = kbEvent.key;
+      
+      if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(key)) {
+        kbEvent.preventDefault();
+        const dateStr = target.getAttribute("data-date");
+        if (!dateStr) return;
+        const [y, m, d] = dateStr.split("-").map(Number);
+        const focusedDate = new Date(y, m - 1, d);
+        
+        if (key === "ArrowLeft") focusedDate.setDate(focusedDate.getDate() - 1);
+        if (key === "ArrowRight") focusedDate.setDate(focusedDate.getDate() + 1);
+        if (key === "ArrowUp") focusedDate.setDate(focusedDate.getDate() - 7);
+        if (key === "ArrowDown") focusedDate.setDate(focusedDate.getDate() + 7);
+        
+        const focusNext = () => {
+          const nextYear = focusedDate.getFullYear();
+          const nextMonthStr = String(focusedDate.getMonth() + 1).padStart(2, "0");
+          const nextDayStr = String(focusedDate.getDate()).padStart(2, "0");
+          const nextDateStr = `${nextYear}-${nextMonthStr}-${nextDayStr}`;
+          const nextBtn = this.shadowRoot?.querySelector(`.day[data-date="${nextDateStr}"]`) as HTMLElement;
+          nextBtn?.focus();
+        };
+
+        const currentViewMonth = this.currentDate.getMonth();
+        const currentViewYear = this.currentDate.getFullYear();
+        const nextViewMonth = focusedDate.getMonth();
+        const nextViewYear = focusedDate.getFullYear();
+
+        // Check if we need to change the displayed month
+        let isVisible = false;
+        if (this.viewMode === "single") {
+          isVisible = currentViewMonth === nextViewMonth && currentViewYear === nextViewYear;
+        } else {
+          // Double view shows current and next month
+          const secondMonth = new Date(currentViewYear, currentViewMonth + 1, 1);
+          isVisible = (currentViewMonth === nextViewMonth && currentViewYear === nextViewYear) || 
+                      (secondMonth.getMonth() === nextViewMonth && secondMonth.getFullYear() === nextViewYear);
+        }
+
+        if (!isVisible) {
+          this.currentDate = new Date(nextViewYear, nextViewMonth, 1);
+          this.render();
+          setTimeout(focusNext, 0);
+        } else {
+          focusNext();
+        }
+      }
+    });
   }
 }
 

@@ -25,6 +25,15 @@ class MuiInput extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  focus(options?: FocusOptions) {
+    const input = this.shadowRoot?.querySelector("input");
+    if (input) {
+      input.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.render();

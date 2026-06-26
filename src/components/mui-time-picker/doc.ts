@@ -20,11 +20,11 @@ export const muiDocs: MuiDocs = {
 
     accessibility: {
       designerList: [
-        "Ensure any custom time options passed to the slots variant are clear and sequential.",
-        "If overriding styles, maintain high contrast between selected and unselected time slots.",
+        "Any custom time options passed to the slots variant are clear and sequential.",
+        "Overridden styles maintain high contrast between selected and unselected time slots.",
       ],
       engineerList: [
-        "The component provides native keyboard navigation (Up/Down) within time columns.",
+        "The component provides native keyboard navigation (Up/Down/Left/Right) within time columns.",
         "The component automatically announces the selected time via standard input bindings.",
       ],
     },
@@ -40,10 +40,12 @@ export const muiDocs: MuiDocs = {
     variants: {
       items: [
         {
+          key: "time",
           title: "Time",
           description: "Default type. Shows columnar scrolling lists for hours and minutes.",
         },
         {
+          key: "time-slot",
           title: "Time Slot",
           description: "type='timeslot'. Shows a flat list of time chips, perfect for appointments.",
         }

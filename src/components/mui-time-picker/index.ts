@@ -93,6 +93,14 @@ class MuiTimePicker extends HTMLElement {
         if (detail && detail.value) {
           this.selectedTime = detail.value;
           updateValue();
+          
+          const type = this.getAttribute("type") || "time";
+          if (type === "timeslot") {
+            requestAnimationFrame(() => {
+              const dropdown = this.shadowRoot?.querySelector("mui-dropdown") as any;
+              if (dropdown && typeof dropdown.close === 'function') dropdown.close();
+            });
+          }
         }
       });
     }

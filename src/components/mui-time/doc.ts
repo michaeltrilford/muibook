@@ -20,7 +20,7 @@ export const muiDocs: MuiDocs = {
     accessibility: {
       designerList: [
         "The component natively sizes time slots to be large enough for reliable touch targets.",
-        "If overriding styles, ensure you clearly distinguish selected slots from unavailable slots.",
+        "Overridden styles clearly distinguish selected slots from unavailable slots.",
       ],
       engineerList: [
         "The component automatically handles arrow key navigation between time slots or wheels.",

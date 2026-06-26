@@ -153,8 +153,14 @@ class MuiDatePicker extends HTMLElement {
         if (detail && detail.value) {
           this.selectedDate = detail.value;
           updateValue();
-          this.render();
-          this.setupListeners();
+          
+          const type = this.getAttribute("type") || "date";
+          if (type === "date") {
+            requestAnimationFrame(() => {
+              const dropdown = this.shadowRoot?.querySelector("mui-dropdown") as any;
+              if (dropdown && typeof dropdown.close === 'function') dropdown.close();
+            });
+          }
         }
       });
     }
@@ -165,6 +171,14 @@ class MuiDatePicker extends HTMLElement {
         if (detail && detail.value) {
           this.selectedTime = detail.value;
           updateValue();
+          
+          const type = this.getAttribute("type") || "date";
+          if (type === "datetimeslot") {
+            requestAnimationFrame(() => {
+              const dropdown = this.shadowRoot?.querySelector("mui-dropdown") as any;
+              if (dropdown && typeof dropdown.close === 'function') dropdown.close();
+            });
+          }
         }
       });
     }

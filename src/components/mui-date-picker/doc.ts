@@ -20,11 +20,11 @@ export const muiDocs: MuiDocs = {
 
     accessibility: {
       designerList: [
-        "Ensure the label clearly conveys the input's required format and purpose.",
+        "The label clearly conveys the input's required format and purpose.",
         "The component natively avoids relying solely on color to indicate the current date or selected state in the popover.",
       ],
       engineerList: [
-        "When composing, ensure the trigger input has an appropriate aria-label if a visible label is not used.",
+        "When composing, the trigger input has an appropriate aria-label if a visible label is not used.",
         "The popover automatically traps focus when open and supports ESC to close.",
       ],
     },

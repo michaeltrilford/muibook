@@ -23,6 +23,15 @@ class MuiButton extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  focus(options?: FocusOptions) {
+    const btn = this.shadowRoot?.querySelector("button");
+    if (btn) {
+      btn.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   async connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.syncRingSizeAttribute();
