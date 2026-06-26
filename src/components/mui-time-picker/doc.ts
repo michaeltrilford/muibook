@@ -19,8 +19,14 @@ export const muiDocs: MuiDocs = {
     },
 
     accessibility: {
-      designerList: [""],
-      engineerList: [""],
+      designerList: [
+        "Ensure any custom time options passed to the slots variant are clear and sequential.",
+        "If overriding styles, maintain high contrast between selected and unselected time slots.",
+      ],
+      engineerList: [
+        "The component provides native keyboard navigation (Up/Down) within time columns.",
+        "The component automatically announces the selected time via standard input bindings.",
+      ],
     },
 
     anatomy: {
@@ -50,13 +56,21 @@ export const muiDocs: MuiDocs = {
     },
 
     related: {
-      items: [],
+      items: [
+        { name: "Time", link: "https://guides.muibook.com/time" },
+        { name: "Date Picker", link: "https://guides.muibook.com/date-picker" },
+        { name: "Dropdown", link: "https://guides.muibook.com/dropdown" },
+      ],
     },
 
     rules: [],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Clicking the trigger opens the dropdown containing the time component.",
+        "In slot mode, selecting a time chip immediately updates the value.",
+        "In wheel mode, scrolling updates the time selection smoothly.",
+      ],
     },
 
     writing: {

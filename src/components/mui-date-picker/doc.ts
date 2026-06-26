@@ -19,8 +19,14 @@ export const muiDocs: MuiDocs = {
     },
 
     accessibility: {
-      designerList: [""],
-      engineerList: [""],
+      designerList: [
+        "Ensure the label clearly conveys the input's required format and purpose.",
+        "The component natively avoids relying solely on color to indicate the current date or selected state in the popover.",
+      ],
+      engineerList: [
+        "When composing, ensure the trigger input has an appropriate aria-label if a visible label is not used.",
+        "The popover automatically traps focus when open and supports ESC to close.",
+      ],
     },
 
     anatomy: {
@@ -34,10 +40,12 @@ export const muiDocs: MuiDocs = {
     variants: {
       items: [
         {
+          key: "date",
           title: "Date",
           description: "Default type. Shows just the calendar.",
         },
         {
+          key: "date-timeslot",
           title: "Date & Timeslot",
           description: "type='datetimeslot'. Shows the calendar alongside a list of time chips, perfect for scheduling appointments.",
         }
@@ -50,13 +58,21 @@ export const muiDocs: MuiDocs = {
     },
 
     related: {
-      items: [],
+      items: [
+        { name: "Calendar", link: "https://guides.muibook.com/calendar" },
+        { name: "Time Picker", link: "https://guides.muibook.com/time-picker" },
+        { name: "Input", link: "https://guides.muibook.com/input" },
+      ],
     },
 
     rules: [],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Clicking the trigger opens the dropdown containing the calendar and optional time picker.",
+        "Clicking outside the popover closes it.",
+        "Selecting a date automatically updates the input to a human-readable display string.",
+      ],
     },
 
     writing: {

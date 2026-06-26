@@ -18,8 +18,14 @@ export const muiDocs: MuiDocs = {
       ],
     },
     accessibility: {
-      designerList: [""],
-      engineerList: [""],
+      designerList: [
+        "The component natively sizes time slots to be large enough for reliable touch targets.",
+        "If overriding styles, ensure you clearly distinguish selected slots from unavailable slots.",
+      ],
+      engineerList: [
+        "The component automatically handles arrow key navigation between time slots or wheels.",
+        "The component natively prevents disabled slots from receiving keyboard focus.",
+      ],
     },
 
     anatomy: {
@@ -34,10 +40,12 @@ export const muiDocs: MuiDocs = {
     variants: {
       items: [
         {
+          key: "wheels",
           title: "Wheels",
           description: "A columnar, scrolling picker (the default variant) suitable for desktop or dense layouts.",
         },
         {
+          key: "slots",
           title: "Slots",
           description: "A chip-based layout for time slots, suitable for quick selection from a limited set of options (e.g. appointment times).",
         }
@@ -50,13 +58,21 @@ export const muiDocs: MuiDocs = {
     },
 
     related: {
-      items: [],
+      items: [
+        { name: "Time Picker", link: "https://guides.muibook.com/time-picker" },
+        { name: "Date Picker", link: "https://guides.muibook.com/date-picker" },
+        { name: "Calendar", link: "https://guides.muibook.com/calendar" },
+      ],
     },
 
     rules: [],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Users can scroll the wheels to select hours and minutes.",
+        "In slot mode, clicking a chip selects that specific time.",
+        "The component automatically formats to 12h or 24h based on locale settings.",
+      ],
     },
 
     writing: {

@@ -20,8 +20,14 @@ export const muiDocs: MuiDocs = {
     },
 
     accessibility: {
-      designerList: [""],
-      engineerList: [""],
+      designerList: [
+        "If overriding theme colors, ensure the contrast of today's date and the selected date still meets WCAG AA standards.",
+        "The component inherently avoids using only color to indicate selection, providing a solid background shape.",
+      ],
+      engineerList: [
+        "The component natively implements arrow key navigation to move between days, weeks, and months.",
+        "The component automatically ensures the current month and year are announced to screen readers when navigating.",
+      ],
     },
 
     anatomy: {
@@ -43,13 +49,20 @@ export const muiDocs: MuiDocs = {
     },
 
     related: {
-      items: [],
+      items: [
+        { name: "Date Picker", link: "https://guides.muibook.com/date-picker" },
+        { name: "Time", link: "https://guides.muibook.com/time" },
+      ],
     },
 
     rules: [],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Clicking a day selects that date.",
+        "Clicking the next/previous arrows changes the displayed month.",
+        "Days outside the current month may be visible but disabled or styled differently.",
+      ],
     },
 
     writing: {
