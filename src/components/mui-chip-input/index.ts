@@ -56,12 +56,7 @@ class MuiChipInput extends HTMLElement {
   connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     if (!this.hasAttribute("id")) {
-      this.setAttribute(
-        "id",
-        `mui-chip-input-${Math.random()
-          .toString(36)
-          .slice(2, 9)}`
-      );
+      this.setAttribute("id", `mui-chip-input-${Math.random().toString(36).slice(2, 9)}`);
     }
 
     this.syncSelectedFromAttribute();
@@ -150,9 +145,7 @@ class MuiChipInput extends HTMLElement {
 
     if (!Array.isArray(parsed)) return [];
 
-    return parsed
-      .map((item) => this.normalizeOption(item))
-      .filter((item): item is ChipInputOption => Boolean(item));
+    return parsed.map((item) => this.normalizeOption(item)).filter((item): item is ChipInputOption => Boolean(item));
   }
 
   private parseValueAttribute(): ChipInputOption[] {
@@ -262,7 +255,7 @@ class MuiChipInput extends HTMLElement {
         detail: { query: this.inputValue },
         bubbles: true,
         composed: true,
-      })
+      }),
     );
   }
 
@@ -428,7 +421,8 @@ class MuiChipInput extends HTMLElement {
     if (!listbox) return;
 
     const options = this.filteredOptions;
-    const showList = !this.disabled && (options.length > 0 || this.showCreateOption) && this.inputValue.trim().length > 0;
+    const showList =
+      !this.disabled && (options.length > 0 || this.showCreateOption) && this.inputValue.trim().length > 0;
 
     if (!showList) {
       listbox.hidden = true;
@@ -480,7 +474,8 @@ class MuiChipInput extends HTMLElement {
 
     const options = this.filteredOptions;
     const listId = `${id}-listbox`;
-    const showList = !this.disabled && (options.length > 0 || this.showCreateOption) && this.inputValue.trim().length > 0;
+    const showList =
+      !this.disabled && (options.length > 0 || this.showCreateOption) && this.inputValue.trim().length > 0;
 
     const optionsMarkup = options
       .map((option, index) => {
@@ -533,7 +528,7 @@ class MuiChipInput extends HTMLElement {
                     data-remove-value="${item.value}"
                     aria-label="Remove ${item.label}"
                   >${item.label}</mui-chip>
-                `
+                `,
               )
               .join("")}
           </mui-h-stack>
@@ -558,18 +553,29 @@ class MuiChipInput extends HTMLElement {
         .listbox {
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
-          border-radius: var(--radius-100);
+          border-radius: var(--form-radius-medium);
           background: var(--surface-elevated-100);
           overflow: hidden;
+        }
+        :host([size="x-small"]) {
+          --chip-input-border-radius: var(--form-radius-x-small);
+        }
+        :host([size="small"]) {
+          --chip-input-border-radius: var(--form-radius-small);
+        }
+        :host([size="medium"]) {
+          --chip-input-border-radius: var(--form-radius-medium);
+        }
+        :host([size="large"]) {
+          --chip-input-border-radius: var(--form-radius-large);
         }
         mui-h-stack.chip-slot-shell {
           background: var(--chip-input-background);
           padding: var(--space-025);
-          border: var(--chip-input-shell-border, 1px solid var(--form-default-border-color));
+          border: var(--chip-input-shell-border, var(--stroke-size-100) solid var(--form-default-border-color));
           box-sizing: border-box;
           width: 100%;
           min-width: 0;
-          border-radius: var(--radius-100);
         }
         mui-h-stack.chip-slot-shell.mobile-stack {
           overflow-x: auto;
@@ -578,29 +584,27 @@ class MuiChipInput extends HTMLElement {
         }
         mui-h-stack.chip-slot-shell.before-shell {
           border-right: none;
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
+          border-top-left-radius: var(--chip-input-border-radius);
+          border-bottom-left-radius: var(--chip-input-border-radius);
         }
         mui-h-stack.chip-slot-shell.after-shell {
           border-left: none;
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
+          border-top-right-radius: var(--chip-input-border-radius);
+          border-bottom-right-radius: var(--chip-input-border-radius);
         }
         mui-h-stack.chip-slot-shell.mobile-stack.before-shell {
-          border-right: var(--chip-input-shell-border, 1px solid var(--form-default-border-color));
+          border-right: var(--chip-input-shell-border, var(--stroke-size-100) solid var(--form-default-border-color));
           border-bottom: none;
-          border-top-left-radius: var(--radius-100);
-          border-top-right-radius: var(--radius-100);
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
         }
         mui-h-stack.chip-slot-shell.mobile-stack.after-shell {
-          border-left: var(--chip-input-shell-border, 1px solid var(--form-default-border-color));
+          border-left: var(--chip-input-shell-border, var(--stroke-size-100) solid var(--form-default-border-color));
           border-top: none;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          border-bottom-left-radius: var(--radius-100);
-          border-bottom-right-radius: var(--radius-100);
+        }
+        mui-h-stack.chip-slot-shell.before-shell mui-chip:first-child {
+          --chip-radius-left: var(--chip-input-border-radius);
+        }
+        mui-h-stack.chip-slot-shell.after-shell mui-chip:last-child {
+          --chip-radius-right: var(--chip-input-border-radius);
         }
         .option {
           width: 100%;

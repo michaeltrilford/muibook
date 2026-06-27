@@ -31,6 +31,7 @@
 - Added media-player component tokens for light/dark surface behavior, dark artwork thumbnail border/shadow, overlay controls, range colors, and player shadows.
 - Added new media player waveform design tokens (`--media-player-waveform-current-color` and `--media-player-waveform-current-mirror-color`) to separately style active scrub selections and the current playhead position on the waveform canvas.
 - Added a media-player seek hover preview segment so users can see the skip target before committing to a new time.
+- Added global semantic form radius tokens (`--form-radius-[size]`) for standardized component radii.
 
 ### Documentation
 
@@ -46,6 +47,7 @@
 - Updated Media Player examples to show direct `mui-avatar-chip` usage in metadata slots, with mapped responsive actions where needed.
 - Updated Media Player documentation with stronger accessibility guidance for opt-in autoplay, slotted metadata actions, and clear media context.
 - Updated token stories to include semantic shadow tokens and media-player component tokens.
+- Removed standalone `Type: Date` and `Type: Time` stories from the `mui-input` docs, relying on dedicated date/time pickers for explicit examples while preserving native `mui-input` functionality.
 
 ### Changed
 
@@ -68,6 +70,8 @@
 - `mui-hint` now delegates focus to slotted buttons, links, and native controls instead of adding an extra wrapper tab stop, while keeping fallback keyboard focus for plain trigger content.
 - `mui-hint` fallback trigger focus now uses the Muibook focus outline with an outset offset instead of the browser default outline.
 - Resource navigation now moves Design Manifest out of Setup and into the new Knowledge section.
+- `mui-chip` and `mui-chip-input` now dynamically inherit corner radii based on the host input size via `--chip-input-border-radius` to ensure perfectly parallel nested curves.
+- `mui-input` slotted inline and hint icons now use slightly larger relative icon sizes for `medium` and `large` inputs.
 
 ### Fixed
 

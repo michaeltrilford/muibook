@@ -64,7 +64,8 @@ class storyDrawer extends HTMLElement {
         min-height: 7.7rem;
       }
 
-      .canvas-page-header {
+      .canvas-page-header,
+      .canvas-drawer-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -72,6 +73,11 @@ class storyDrawer extends HTMLElement {
         border-bottom: var(--border-thin);
         box-sizing: border-box;
         min-height: 7.7rem;
+        transition: padding var(--speed-100) ease;
+      }
+
+      mui-drawer[variant="workspace"]:not([mobile])[left-open] .canvas-page-header {
+        padding-inline-start: calc(var(--space-400) + var(--space-100));
       }
 
       .page-main {
@@ -138,17 +144,29 @@ class storyDrawer extends HTMLElement {
       }
 
       .left-panel-open-btn {
-        transition: opacity var(--speed-400) ease var(--speed-200), width var(--speed-400) ease-out;
+        transition: 
+          opacity var(--speed-400) ease var(--speed-200), 
+          width var(--speed-400) ease-out, 
+          margin var(--speed-400) ease-out, 
+          padding var(--speed-400) ease-out;
         overflow: hidden;
         width: var(--action-size-small);
+        margin-right: 0;
       }
 
       /* Desktop: hide button if left-open is set */
       mui-drawer[variant="workspace"]:not([mobile])[left-open] .left-panel-open-btn {
-        transition: opacity var(--speed-100) ease, width var(--speed-100) ease-out;
+        transition: 
+          opacity var(--speed-100) ease, 
+          width var(--speed-100) ease-out, 
+          margin var(--speed-100) ease-out, 
+          padding var(--speed-100) ease-out;
         opacity: 0;
         pointer-events: none;
         width: 0;
+        min-width: 0;
+        padding: 0;
+        margin-right: calc(-1 * var(--space-200));
       }
 
       mui-drawer[variant="workspace"]:not([left-open]) .left-panel-close-btn,
@@ -532,7 +550,7 @@ class storyDrawer extends HTMLElement {
 
     const workspaceComponentsPanel = /*html*/ `
       <div class="workspace-demo-panel">
-        <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
+        <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
           <mui-heading size="5" level="2" style="margin-left: var(--space-200)">Components</mui-heading>
           <mui-button variant="tertiary" size="small" data-drawer-toggle="drawer-resize-workspace-left-rail" class="left-panel-close-btn">
             <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
@@ -576,7 +594,7 @@ class storyDrawer extends HTMLElement {
 
     const workspaceInspectorPanel = /*html*/ `
       <div class="workspace-demo-panel">
-        <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
+        <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
           <mui-dropdown position="left">
             <mui-button slot="action" aria-label="Open Mike profile menu">
               <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
@@ -872,6 +890,7 @@ class storyDrawer extends HTMLElement {
           &lt;!-- JS: Toggle panels responsively --&gt;<br>
           const drawer = document.querySelector('mui-drawer');<br>
           const side = 'left'; // or 'right'<br><br>
+          // 1. Toggle drawer state<br>
           if (drawer.hasAttribute('mobile')) {<br>
           &nbsp;&nbsp;if (drawer.hasAttribute('open') &amp;&amp; drawer.getAttribute('side') === side) {<br>
           &nbsp;&nbsp;&nbsp;&nbsp;drawer.removeAttribute('open');<br>
@@ -882,20 +901,32 @@ class storyDrawer extends HTMLElement {
           } else {<br>
           &nbsp;&nbsp;drawer.toggleAttribute(&#96;\${side}-open&#96;);<br>
           }<br><br>
-
+          // 2. Prevent focus when open button visually hides<br>
+          const isMobile = drawer.hasAttribute('mobile');<br>
+          const triggerBtn = drawer.querySelector('.left-panel-open-btn');<br>
+          if (triggerBtn) {<br>
+          &nbsp;&nbsp;triggerBtn.inert = !isMobile &amp;&amp; drawer.hasAttribute('left-open');<br>
+          }<br><br>
           &lt;!-- CSS: Style page elements based on viewport state --&gt;<br>
           &lt;style&gt;<br>
-          &nbsp;&nbsp;/* Desktop: hide open button when panel is open */<br>
+          &nbsp;&nbsp;/* Desktop: visually hide open button, consume flex gap */<br>
           &nbsp;&nbsp;mui-drawer[variant="workspace"]:not([mobile])[left-open] .left-panel-open-btn {<br>
           &nbsp;&nbsp;&nbsp;&nbsp;opacity: 0;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;width: 0;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;min-width: 0;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;padding: 0;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;margin-right: calc(-1 * var(--space-200));<br>
           &nbsp;&nbsp;&nbsp;&nbsp;pointer-events: none;<br>
+          &nbsp;&nbsp;}<br><br>
+          &nbsp;&nbsp;/* Desktop: maintain visual balance by replacing missing button width with padding */<br>
+          &nbsp;&nbsp;mui-drawer[variant="workspace"]:not([mobile])[left-open] .canvas-page-header {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;padding-inline-start: calc(var(--space-400) + var(--space-100));<br>
           &nbsp;&nbsp;}<br><br>
           &nbsp;&nbsp;/* Hide close button if left drawer is not open (on desktop), or always on mobile */<br>
           &nbsp;&nbsp;mui-drawer[variant="workspace"]:not([left-open]) .left-panel-close-btn,<br>
           &nbsp;&nbsp;mui-drawer[variant="workspace"][mobile] .left-panel-close-btn {<br>
           &nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
-          &nbsp;&nbsp;}<br>
+          &nbsp;&nbsp;}<br><br>
           &lt;/style&gt;<br><br>
 
           &lt;!-- HTML Setup --&gt;<br>
@@ -1035,7 +1066,7 @@ class storyDrawer extends HTMLElement {
                 </mui-v-stack>
               </div>
             </div>
-            <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
+            <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
               <mui-dropdown position="left">
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
@@ -1144,7 +1175,7 @@ class storyDrawer extends HTMLElement {
                 </mui-v-stack>
               </div>
             </div>
-            <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
+            <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
               <mui-dropdown position="left">
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
@@ -1357,7 +1388,7 @@ class storyDrawer extends HTMLElement {
               </div>
             </div>
 
-            <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
+            <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
               <mui-dropdown position="left">
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
@@ -1467,7 +1498,7 @@ class storyDrawer extends HTMLElement {
               </div>
             </div>
 
-            <mui-h-stack class="canvas-page-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
+            <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
               <mui-dropdown position="left">
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
@@ -1831,6 +1862,38 @@ class storyDrawer extends HTMLElement {
 
     syncDesktopOpenDrawers();
     desktopOpenQuery.addEventListener("change", syncDesktopOpenDrawers);
+
+    // Sync inert property for workspace buttons
+    const workspaceDrawers = this.shadowRoot.querySelectorAll('mui-drawer[variant="workspace"]');
+    if (workspaceDrawers.length > 0) {
+      const syncInert = (drawer) => {
+        const isMobile = drawer.hasAttribute("mobile");
+        const leftBtn = drawer.querySelector(".left-panel-open-btn");
+        if (leftBtn) {
+          leftBtn.inert = !isMobile && drawer.hasAttribute("left-open");
+        }
+        const rightBtn = drawer.querySelector(".right-panel-open-btn");
+        if (rightBtn) {
+          rightBtn.inert = !isMobile && drawer.hasAttribute("right-open");
+        }
+      };
+
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === "attributes") {
+            syncInert(mutation.target);
+          }
+        });
+      });
+
+      workspaceDrawers.forEach((drawer) => {
+        observer.observe(drawer, {
+          attributes: true,
+          attributeFilter: ["left-open", "right-open", "mobile"],
+        });
+        syncInert(drawer);
+      });
+    }
 
     // Spec Card - Minimal scroll-to handler
     // The common href with hash could not be used because of the hash navigation

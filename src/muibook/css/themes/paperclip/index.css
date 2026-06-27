@@ -338,7 +338,13 @@ html[data-brand="paperclip"][data-theme="light"] {
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--paperclip-avatar-base);
   --paperclip-avatar-pattern-red:
-    conic-gradient(from 90deg, var(--paperclip-avatar-ink) 25%, transparent 0 50%, var(--paperclip-avatar-ink) 0 75%, transparent 0)
+    conic-gradient(
+        from 90deg,
+        var(--paperclip-avatar-ink) 25%,
+        transparent 0 50%,
+        var(--paperclip-avatar-ink) 0 75%,
+        transparent 0
+      )
       50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--paperclip-avatar-base);
@@ -521,6 +527,8 @@ html[data-brand="paperclip"][data-theme="light"] {
 
   --dialog-background: var(--white);
   --drawer-background: var(--white);
+  --drawer-resize-rail-background: var(--white);
+  --drawer-resize-rail-inner-background: var(--blue-500);
 
   --illustration-main-color-default: var(--blue-500);
   --illustration-main-color-inverted: var(--white);
@@ -756,8 +764,8 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --slat-card-avatar-background-hover: var(--blue-500);
 
   --paperclip-avatar-pattern-dark:
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--white) 22%, transparent) 0.8px, transparent 1px) 50% 50% /
-      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--white) 22%, transparent) 0.8px, transparent 1px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-alt:
@@ -774,9 +782,8 @@ html[data-brand="paperclip"][data-theme="dark"] {
     repeating-linear-gradient(45deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 5px) 50%
       50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
-    repeating-linear-gradient(-45deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 5px)
-      50% 50% /
-      var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+    repeating-linear-gradient(-45deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 5px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-purple:
@@ -793,7 +800,12 @@ html[data-brand="paperclip"][data-theme="dark"] {
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-pink:
-    radial-gradient(circle at 50% 50%, transparent 0 1.6px, color-mix(in srgb, var(--white) 14%, transparent) 1.8px 2.4px, transparent 2.6px)
+    radial-gradient(
+        circle at 50% 50%,
+        transparent 0 1.6px,
+        color-mix(in srgb, var(--white) 14%, transparent) 1.8px 2.4px,
+        transparent 2.6px
+      )
       50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
@@ -803,7 +815,13 @@ html[data-brand="paperclip"][data-theme="dark"] {
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-red:
-    conic-gradient(from 90deg, color-mix(in srgb, var(--white) 14%, transparent) 25%, transparent 0 50%, color-mix(in srgb, var(--white) 14%, transparent) 0 75%, transparent 0)
+    conic-gradient(
+        from 90deg,
+        color-mix(in srgb, var(--white) 14%, transparent) 25%,
+        transparent 0 50%,
+        color-mix(in srgb, var(--white) 14%, transparent) 0 75%,
+        transparent 0
+      )
       50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
@@ -821,8 +839,8 @@ html[data-brand="paperclip"][data-theme="dark"] {
     repeating-linear-gradient(45deg, color-mix(in srgb, var(--white) 14%, transparent) 0 1px, transparent 1px 4px) 50%
       50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
-    repeating-linear-gradient(135deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 4px)
-      50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--white) 10%, transparent) 0 1px, transparent 1px 4px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-lime:
@@ -855,8 +873,8 @@ html[data-brand="paperclip"][data-theme="dark"] {
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-blue:
-    repeating-linear-gradient(30deg, color-mix(in srgb, var(--white) 14%, transparent) 0 2px, transparent 2px 7px)
-      50% 50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
+    repeating-linear-gradient(30deg, color-mix(in srgb, var(--white) 14%, transparent) 0 2px, transparent 2px 7px) 50%
+      50% / var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4))
       var(--paperclip-avatar-pattern-size, calc(var(--avatar-medium) / 4)),
     var(--blue-700);
   --paperclip-avatar-pattern-dark-indigo:
@@ -986,6 +1004,8 @@ html[data-brand="paperclip"][data-theme="dark"] {
 
   --dialog-background: var(--blue-500);
   --drawer-background: var(--blue-500);
+  --drawer-resize-rail-background: var(--blue-700);
+  --drawer-resize-rail-inner-background: var(--blue-300);
 
   --illustration-main-color-inverted: var(--blue-500);
   --illustration-main-color-default: var(--white);

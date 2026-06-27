@@ -256,7 +256,7 @@ class MuiSelect extends HTMLElement {
           font-size: var(--text-font-size);
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
-          border-radius: var(--radius-100);
+          border-radius: var(--form-radius-medium);
           color: var(--form-default-text-color);
           background: var(--input-background);
           width: 100%;

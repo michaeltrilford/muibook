@@ -169,6 +169,14 @@ export const muiApi = {
         description: "Width of the resize rail when resize-rail is enabled.",
       },
       {
+        name: "--drawer-resize-rail-background",
+        description: "Background color of the resize rail outer container.",
+      },
+      {
+        name: "--drawer-resize-rail-inner-background",
+        description: "Background color of the visual line indicator in the resize rail.",
+      },
+      {
         name: "--drawer-resize-rail-threshold-indicator",
         description:
           "Resize rail indicator color when a resizable push or workspace drawer is dragged into the close threshold.",

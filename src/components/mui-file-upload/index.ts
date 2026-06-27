@@ -80,7 +80,7 @@ class MuiFileUpload extends HTMLElement {
           line-height: var(--text-line-height-s);
           box-sizing: border-box;
           font-size: var(--text-font-size-s);
-          border-radius: var(--radius-100);
+          border-radius: var(--form-radius-medium);
           border: var(--border-thin);
           border-style: dashed;
           border-color: var(--form-default-border-color);

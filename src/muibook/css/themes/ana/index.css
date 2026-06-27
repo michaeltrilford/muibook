@@ -208,6 +208,8 @@ html[data-brand="ana"][data-theme="light"] {
   /* Drawer */
   --dialog-background: var(--white);
   --drawer-background: var(--white);
+  --drawer-resize-rail-background: var(--white);
+  --drawer-resize-rail-inner-background: var(--grey-200);
 }
 
 /* =============================================================================== */
@@ -402,6 +404,8 @@ html[data-brand="ana"][data-theme="dark"] {
   /* Drawer */
   --dialog-background: var(--grey-800);
   --drawer-background: var(--grey-800);
+  --drawer-resize-rail-background: var(--grey-1200);
+  --drawer-resize-rail-inner-background: var(--grey-700);
 }
 
 /* ================================================================= */

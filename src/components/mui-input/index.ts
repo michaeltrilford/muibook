@@ -181,8 +181,8 @@ class MuiInput extends HTMLElement {
       const inlineIconSizeMap: Record<string, string> = {
         "x-small": "xx-small",
         small: "x-small",
-        medium: "x-small",
-        large: "small",
+        medium: "small",
+        large: "medium",
       };
       const inlineBadgeSizeMap: Record<string, string> = {
         "x-small": "xx-small",
@@ -220,8 +220,8 @@ class MuiInput extends HTMLElement {
         const hintIconSizeMap: Record<string, string> = {
           "x-small": "xx-small",
           small: "x-small",
-          medium: "x-small",
-          large: "small",
+          medium: "small",
+          large: "medium",
         };
         const hintBadgeSizeMap: Record<string, string> = {
           "x-small": "xx-small",
@@ -581,7 +581,7 @@ class MuiInput extends HTMLElement {
           padding: var(--space-200) var(--space-300);
           box-sizing: border-box;
           font-size: var(--text-font-size);
-          border-radius: var(--radius-100);
+          border-radius: var(--form-radius-medium);
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
           color: var(--form-default-text-color);
@@ -592,6 +592,7 @@ class MuiInput extends HTMLElement {
           padding: var(--action-padding-x-small);
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
+          border-radius: var(--form-radius-x-small);
           --input-inline-padding-current: var(--space-200);
         }
         input.size-x-small.inside-before:not(.before) {
@@ -606,6 +607,7 @@ class MuiInput extends HTMLElement {
           padding: var(--action-padding-small);
           font-size: var(--text-font-size-s);
           line-height: var(--text-line-height-s);
+          border-radius: var(--form-radius-small);
           --input-inline-padding-current: var(--space-300);
         }
         input.size-small.inside-before:not(.before) {
@@ -620,6 +622,7 @@ class MuiInput extends HTMLElement {
           padding: var(--space-200) var(--space-300);
           font-size: var(--text-font-size);
           line-height: var(--text-line-height);
+          border-radius: var(--form-radius-medium);
           --input-inline-padding-current: var(--space-300);
         }
         input.size-medium.inside-before:not(.before) {
@@ -634,6 +637,7 @@ class MuiInput extends HTMLElement {
           padding: var(--space-300) var(--space-400);
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);
+          border-radius: var(--form-radius-large);
           --input-inline-padding-current: var(--space-400);
         }
         input.size-large.inside-before:not(.before) {

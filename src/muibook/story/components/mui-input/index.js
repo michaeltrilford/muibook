@@ -631,51 +631,6 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Type: Date" description="Allows the user to pick a calendar date."
-        usageLink="https://guides.muibook.com/input"
-      >
-        <div slot="body">
-          <mui-input label="Birthdate" type="date" id="birthdate-input" name="birthdate" value="1990-01-01"></mui-input>
-        </div>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
-          <br />
-          &nbsp;&nbsp;label="Birthdate"
-          <br />
-          &nbsp;&nbsp;type="date" 
-          <br />
-          &nbsp;&nbsp;id="birthdate-input" 
-          <br />
-          &nbsp;&nbsp;name="birthdate"
-          <br />
-          &nbsp;&nbsp;value="1990-01-01"
-          <br />
-          &gt;&lt;/mui-input&gt;
-        </story-code-block>
-      </story-card>
-
-      <story-card title="Type: Time" description="Provides a time picker for hour and minute selection."
-        usageLink="https://guides.muibook.com/input"
-      >
-        <div slot="body">
-          <mui-input label="Meeting Time" type="time" id="meeting-time-input" name="meetingTime" value="14:30"></mui-input>
-        </div>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
-          <br />
-          &nbsp;&nbsp;label="Meeting Time"
-          <br />
-          &nbsp;&nbsp;type="time" 
-          <br />
-          &nbsp;&nbsp;id="meeting-time-input" 
-          <br />
-          &nbsp;&nbsp;name="meetingTime"
-          <br />
-          &nbsp;&nbsp;value="14:30"
-          <br />
-          &gt;&lt;/mui-input&gt;
-        </story-code-block>
-      </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `

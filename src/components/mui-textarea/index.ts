@@ -177,7 +177,7 @@ class MuiTextarea extends HTMLElement {
           padding-inline: var(--textarea-padding-inline-current);
           box-sizing: border-box;
           font-size: var(--textarea-font-size-current);
-          border-radius: var(--radius-100);
+          border-radius: var(--form-radius-medium);
           border: var(--border-thin);
           border-color: var(--form-default-border-color);
           color: var(--form-default-text-color);
@@ -194,24 +194,28 @@ class MuiTextarea extends HTMLElement {
           --textarea-line-height-current: var(--text-line-height-xs);
           --textarea-padding-block-current: var(--space-050);
           --textarea-padding-inline-current: var(--space-200);
+          border-radius: var(--form-radius-x-small);
         }
         textarea.size-small {
           --textarea-font-size-current: var(--text-font-size-s);
           --textarea-line-height-current: var(--text-line-height-s);
           --textarea-padding-block-current: calc(var(--space-100) - (var(--stroke-size-100) / 2));
           --textarea-padding-inline-current: var(--space-300);
+          border-radius: var(--form-radius-small);
         }
         textarea.size-medium {
           --textarea-font-size-current: var(--text-font-size);
           --textarea-line-height-current: var(--text-line-height);
           --textarea-padding-block-current: var(--space-200);
           --textarea-padding-inline-current: var(--space-300);
+          border-radius: var(--form-radius-medium);
         }
         textarea.size-large {
           --textarea-font-size-current: var(--text-font-size-l);
           --textarea-line-height-current: var(--text-line-height-l);
           --textarea-padding-block-current: var(--space-300);
           --textarea-padding-inline-current: var(--space-400);
+          border-radius: var(--form-radius-large);
         }
 
         textarea:hover {

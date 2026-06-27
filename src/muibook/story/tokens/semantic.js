@@ -183,6 +183,10 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--form-success-border-color-hover" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--form-warning-border-color-hover" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--form-error-border-color-hover" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--form-radius-x-small" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--form-radius-small" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--form-radius-medium" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--form-radius-large" variant="radius"></story-token-slat>
           </spec-card>
 
           <spec-card id="action" title="Action" description="Defines the visual style and interaction behavior of elements like buttons and links, reflecting their intended purpose.">

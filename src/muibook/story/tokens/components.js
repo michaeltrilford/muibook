@@ -283,6 +283,8 @@ class tokensComponents extends HTMLElement {
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-drawer/index.ts"
           >
             <story-token-slat slot="body" token="--drawer-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--drawer-resize-rail-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--drawer-resize-rail-inner-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--drawer-resize-rail-threshold-indicator" variant="color"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Border</mui-link> tokens</mui-body>

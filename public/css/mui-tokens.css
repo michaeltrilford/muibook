@@ -569,6 +569,8 @@ html[data-theme="light"] {
 
   /* Drawer */
   --drawer-background: var(--white);
+  --drawer-resize-rail-background: var(--grey-200);
+  --drawer-resize-rail-inner-background: var(--white);
   --drawer-resize-rail-threshold-indicator: var(--black);
 }
 
@@ -1060,6 +1062,8 @@ html[data-theme="dark"] {
 
   /* Drawer */
   --drawer-background: var(--grey-800);
+  --drawer-resize-rail-background: var(--grey-1200);
+  --drawer-resize-rail-inner-background: var(--grey-700);
   --drawer-resize-rail-threshold-indicator: var(--white);
 }
 
@@ -1294,6 +1298,11 @@ html[data-theme="dark"] {
   --chip-gap-small: var(--space-200);
   --chip-gap-medium: var(--space-200);
   --chip-gap-large: var(--space-300);
+  /* Form */
+  --form-radius-x-small: var(--radius-100);
+  --form-radius-small: var(--radius-100);
+  --form-radius-medium: var(--radius-200);
+  --form-radius-large: var(--radius-300);
   /* Dropdown */
   --dropdown-radius: var(--radius-100);
   /* Dialog */

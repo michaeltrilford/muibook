@@ -10,6 +10,7 @@ const RESIZE_RAIL_KEYBOARD_STEP = 16;
 const RESIZE_RAIL_KEYBOARD_LARGE_STEP = 64;
 const RESIZE_RAIL_POINTER_CLICK_THRESHOLD = 4;
 
+
 class MuiDrawer extends HTMLElement {
   private innerEl: HTMLElement | null = null;
   private overlayEl: HTMLElement | null = null;
@@ -366,7 +367,7 @@ class MuiDrawer extends HTMLElement {
         height: 100%;
         padding: 0;
         border: 0;
-        background: transparent;
+        background: var(--drawer-resize-rail-background, transparent);
         cursor: col-resize;
         appearance: none;
         touch-action: none;
@@ -385,7 +386,7 @@ class MuiDrawer extends HTMLElement {
         bottom: 0;
         left: 50%;
         width: var(--stroke-size-100);
-        background: var(--border-color);
+        background: var(--drawer-resize-rail-inner-background);
         transform: translateX(-50%);
         transition:
           width var(--speed-100) ease,
@@ -400,14 +401,14 @@ class MuiDrawer extends HTMLElement {
         background: var(--outline-color);
       }
 
-      .resize-rail:focus-visible::before,
-      .workspace-resize-rail:focus-visible::before {
+      .resize-rail:focus::before,
+      .workspace-resize-rail:focus::before {
         width: var(--stroke-size-300);
         background: var(--outline-color);
       }
 
-      .resize-rail:focus-visible,
-      .workspace-resize-rail:focus-visible {
+      .resize-rail:focus,
+      .workspace-resize-rail:focus {
         outline: none;
       }
 

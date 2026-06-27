@@ -251,6 +251,8 @@ class storyTabBar extends HTMLElement {
                 <mui-tab-item active id="pair-x-1">Tab</mui-tab-item>
                 <mui-tab-item id="pair-x-2">Tab</mui-tab-item>
               </mui-tab-bar>
+              <mui-input style="width: 30rem;" size="x-small"></mui-input>
+              <mui-button size="x-small">Action</mui-button>
             </mui-h-stack>
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-button size="small">Action</mui-button>
@@ -258,6 +260,8 @@ class storyTabBar extends HTMLElement {
                 <mui-tab-item active id="pair-s-1">Tab</mui-tab-item>
                 <mui-tab-item id="pair-s-2">Tab</mui-tab-item>
               </mui-tab-bar>
+              <mui-input style="width: 30rem;" size="small"></mui-input>
+              <mui-button size="small">Action</mui-button>
             </mui-h-stack>
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-button size="medium">Action</mui-button>
@@ -265,6 +269,8 @@ class storyTabBar extends HTMLElement {
                 <mui-tab-item active id="pair-m-1">Tab</mui-tab-item>
                 <mui-tab-item id="pair-m-2">Tab</mui-tab-item>
               </mui-tab-bar>
+              <mui-input style="width: 30rem;" size="medium"></mui-input>
+              <mui-button size="medium">Action</mui-button>
             </mui-h-stack>
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-button size="large">Action</mui-button>
@@ -272,6 +278,8 @@ class storyTabBar extends HTMLElement {
                 <mui-tab-item active id="pair-l-1">Tab</mui-tab-item>
                 <mui-tab-item id="pair-l-2">Tab</mui-tab-item>
               </mui-tab-bar>
+              <mui-input style="width: 30rem;" size="large"></mui-input>
+              <mui-button size="large">Action</mui-button>
             </mui-h-stack>
           </mui-v-stack>
           <story-code-block slot="footer" scrollable>

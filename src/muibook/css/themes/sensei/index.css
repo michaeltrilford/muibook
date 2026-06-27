@@ -276,6 +276,8 @@ html[data-brand="sensei"][data-theme="light"] {
 
   /* Drawer */
   --drawer-background: var(--green-300);
+  --drawer-resize-rail-background: var(--green-400);
+  --drawer-resize-rail-inner-background: var(--green-800);
 }
 
 /* ==================================================================================================== */
@@ -542,6 +544,8 @@ html[data-brand="sensei"][data-theme="dark"] {
 
   /* Drawer */
   --drawer-background: var(--green-1300);
+  --drawer-resize-rail-background: var(--green-1500);
+  --drawer-resize-rail-inner-background: var(--green-1100);
 }
 
 /* ==================================================================================================== */
