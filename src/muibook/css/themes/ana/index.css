@@ -137,8 +137,6 @@ html[data-brand="ana"][data-theme="light"] {
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
-  --chip-input-background: var(--surface-recessed-100);
-
   /* Switch */
   --switch-track-background: var(--grey-300);
   --switch-track-background-checked: var(--blue-500);
@@ -189,8 +187,7 @@ html[data-brand="ana"][data-theme="light"] {
   --chip-icon-fill: var(--black);
   --chip-dismiss-action-background: var(--grey-100);
   --chip-dismiss-action-background-hover: var(--black-opacity-0);
-  --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20));
-  --chip-dismiss-action-filter: var(--chip-filter);
+  --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-0));
 
   /* Media Player */
   --media-player-seek-color: var(--grey-1200);
@@ -337,8 +334,6 @@ html[data-brand="ana"][data-theme="dark"] {
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
   --surface-recessed-200: var(--grey-1100);
-  --chip-input-background: var(--surface-recessed-100);
-
   /* Switch */
   --switch-track-background: var(--grey-700);
   --switch-track-background-checked: var(--blue-400);
@@ -385,8 +380,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --chip-icon-fill: var(--white);
   --chip-dismiss-action-background: var(--grey-700);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
-  --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-40));
-  --chip-dismiss-action-filter: var(--chip-filter);
+  --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-0));
 
   /* Media Player */
   --media-player-seek-color: var(--white);
@@ -426,6 +420,7 @@ html[data-brand="ana"] {
   /* Tab */
   --tab-radius: var(--radius-400);
   /* Chip */
+  --chip-input-background: var(--form-default-border-color);
   --chip-icon-fill: var(--icon-color-default);
   /* Dialog */
   --dialog-radius: var(--radius-400);

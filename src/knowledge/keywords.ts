@@ -199,6 +199,16 @@ export const keywords: Record<string, string[]> = {
 
   // FORMS AND INPUTS
   input: ["input", "text field", "text input", "field", "entry", "form field"],
+  searchInput: [
+    "search input",
+    "search",
+    "filter",
+    "search field",
+    "search box",
+    "toolbar search",
+    "reveal search",
+    "search tabs",
+  ],
   textarea: ["textarea", "text area", "multiline", "long text", "message", "description", "rows"],
   select: ["select", "dropdown", "picker", "options", "choose", "combobox"],
   checkbox: ["checkbox", "check", "tick", "agree", "terms", "boolean", "toggle"],
@@ -271,6 +281,7 @@ export const agentKeywordKeys = [
   "table",
   "smartCard",
   "input",
+  "searchInput",
   "textarea",
   "select",
   "checkbox",

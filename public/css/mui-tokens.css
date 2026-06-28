@@ -317,7 +317,6 @@ html[data-theme="light"] {
   --skeleton-radius: var(--radius-200);
   --skeleton-animation-speed: 2000ms;
   --skeleton-gap: var(--space-200);
-  --chip-input-background: var(--surface-elevated-alpha);
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
@@ -526,15 +525,18 @@ html[data-theme="light"] {
   --chip-background-hover: var(--white);
   --chip-background-focus: var(--white);
   --chip-background-active: var(--white);
+  --chip-background-disabled: var(--grey-100);
   --chip-border-color: var(--grey-200);
   --chip-border-color-hover: var(--grey-300);
   --chip-border-color-focus: var(--grey-300);
   --chip-border-color-active: var(--grey-1000);
   --chip-text-color-active: var(--grey-1000);
+  --chip-text-color-disabled: var(--grey-400);
   --chip-icon-fill: var(--black);
   --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-5));
   --chip-dismiss-action-background: var(--grey-150);
   --chip-dismiss-action-background-hover: var(--black-opacity-0);
+  --chip-dismiss-action-background-disabled: var(--grey-200);
   --chip-dismiss-action-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-0));
 
   /* Dropdown */
@@ -810,7 +812,6 @@ html[data-theme="dark"] {
   --skeleton-radius: var(--radius-200);
   --skeleton-animation-speed: 2000ms;
   --skeleton-gap: var(--space-200);
-  --chip-input-background: var(--grey-900);
   --surface-elevated-300: var(--grey-1000);
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
@@ -1019,16 +1020,19 @@ html[data-theme="dark"] {
   --chip-background-hover: var(--grey-800);
   --chip-background-focus: var(--grey-800);
   --chip-background-active: var(--grey-800);
+  --chip-background-disabled: var(--grey-800);
   --chip-border-color: var(--grey-600);
   --chip-border-color-hover: var(--grey-700);
   --chip-border-color-focus: var(--grey-700);
   --chip-border-color-active: var(--grey-100);
   --chip-text-color-active: var(--grey-100);
+  --chip-text-color-disabled: var(--grey-400);
   --chip-icon-fill: var(--white);
   --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20));
   --chip-dismiss-action-background: var(--grey-700);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
-  --chip-dismiss-action-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-5));
+  --chip-dismiss-action-background-disabled: var(--grey-900);
+  --chip-dismiss-action-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-0));
 
   /* Dropdown */
   --dropdown-background: var(--grey-1000);
@@ -1281,19 +1285,20 @@ html[data-theme="dark"] {
   --radio-size: calc(var(--space-500) - 2px);
 
   /* Chip */
+  --chip-input-background: var(--form-default-border-color);
   --chip-radius: var(--chip-radius-medium);
   --chip-radius-x-small: var(--radius-300);
   --chip-radius-small: var(--radius-400);
   --chip-radius-medium: var(--radius-500);
   --chip-radius-large: var(--radius-600);
-  --chip-height-x-small: 2.8rem;
-  --chip-height-small: 3.6rem;
-  --chip-height-medium: 4rem;
-  --chip-height-large: 5.2rem;
-  --chip-padding-x-small: 0 var(--space-200);
-  --chip-padding-small: var(--space-100) var(--space-300);
-  --chip-padding-medium: var(--space-100) var(--space-300);
-  --chip-padding-large: var(--space-200) var(--space-400);
+  --chip-height-x-small: 2.6rem;
+  --chip-height-small: 3.4rem;
+  --chip-height-medium: 4.2rem;
+  --chip-height-large: 5.4rem;
+  --chip-padding-x-small: 0 calc(var(--space-200) + var(--space-025));
+  --chip-padding-small: var(--space-050) var(--space-300);
+  --chip-padding-medium: var(--space-100) calc(var(--space-300) + var(--space-050));
+  --chip-padding-large: var(--space-200) calc(var(--space-400) + var(--space-100));
   --chip-gap-x-small: var(--space-100);
   --chip-gap-small: var(--space-200);
   --chip-gap-medium: var(--space-200);
@@ -1308,6 +1313,7 @@ html[data-theme="dark"] {
   /* Dialog */
   --dialog-radius: var(--radius-150);
   /* Avatar */
+  --avatar-xxx-small: 1.8rem; /* 18px */
   --avatar-xx-small: var(--space-500); /* 24px */
   --avatar-x-small: calc(var(--space-500) + var(--space-200)); /* 32px */
   --avatar-small: calc(var(--space-600) + var(--space-025)); /* 38px */

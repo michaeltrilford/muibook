@@ -9,6 +9,10 @@ class MuiChip extends HTMLElement {
   }
 
   connectedCallback() {
+    if (!this.hasAttribute("size")) {
+      this.setAttribute("size", "medium");
+    }
+
     this.render();
     this.updateIconSlots();
 
@@ -65,10 +69,10 @@ class MuiChip extends HTMLElement {
 
     const size = this.getAttribute("size") || "medium";
     const iconSizeMap: Record<string, string> = {
-      "x-small": "xx-small",
-      small: "x-small",
+      "x-small": "x-small",
+      small: "small",
       medium: "medium",
-      large: "medium",
+      large: "large",
     };
     const iconSize = iconSizeMap[size] || "medium";
 
@@ -79,7 +83,23 @@ class MuiChip extends HTMLElement {
         const tagName = element.tagName.toLowerCase();
 
         if (tagName === "mui-avatar") {
-          element.setAttribute("size", "xx-small");
+          const avatarSizeMap: Record<string, string> = {
+            "x-small": "xxx-small",
+            small: "xx-small",
+            medium: "xx-small",
+            large: "x-small",
+          };
+          const avatarSize = avatarSizeMap[size] || "xx-small";
+          element.setAttribute("size", avatarSize);
+        } else if (tagName === "mui-badge") {
+          const badgeSizeMap: Record<string, string> = {
+            "x-small": "xx-small",
+            small: "small",
+            medium: "medium",
+            large: "large",
+          };
+          const badgeSize = badgeSizeMap[size] || "medium";
+          element.setAttribute("size", badgeSize);
         } else if (tagName.startsWith("mui-icon-")) {
           element.setAttribute("size", iconSize);
         }
@@ -90,7 +110,7 @@ class MuiChip extends HTMLElement {
   render() {
     const size = this.getAttribute("size") || "medium";
     const bodySizeMap: Record<string, string> = {
-      "x-small": "x-small",
+      "x-small": "xx-small",
       small: "x-small",
       medium: "small",
       large: "medium",
@@ -122,20 +142,18 @@ class MuiChip extends HTMLElement {
         --chip-dismiss-action-size: var(--avatar-xx-small);
       }
       :host([disabled]) {
-        opacity: 0.4;
+        --chip-background: var(--chip-background-disabled);
+        --chip-text-color: var(--chip-text-color-disabled);
+        --chip-dismiss-action-background: var(--chip-dismiss-action-background-disabled);
       }
 
       .container {
         display: inline-grid;
         align-items: center;
-        height: var(--chip-height-medium);
         box-sizing: border-box;
         border: var(--border-thin);
-        padding: var(--chip-padding-medium);
-        gap: var(--chip-gap-medium);
         background: var(--chip-background);
         border-color: var(--chip-border-color);
-        border-radius: var(--chip-radius);
         min-width: 0;
         max-width: 100%;
         filter: var(
@@ -153,11 +171,34 @@ class MuiChip extends HTMLElement {
         color: var(--chip-text-color, var(--text-color));
       }
 
+      /* Base Before & After Slot Layout
+      ========================================= */
+      
+      :host([has-after][has-before]) .container {
+        grid-template-columns: auto 1fr auto;
+      }
+
+      :host([has-after]) .container {
+        grid-template-columns: 1fr auto;
+      }
+
+      :host([has-before]) .container {
+        grid-template-columns: auto 1fr;
+      }
+
       :host([size="x-small"]) .container {
         height: var(--chip-height-x-small);
         padding: var(--chip-padding-x-small);
         gap: var(--chip-gap-x-small);
         border-radius: var(--chip-radius-x-small);
+        --chip-dismiss-action-size: var(--avatar-xxx-small);
+      }
+
+      :host([size="x-small"][has-before]) .container {
+        padding-left: calc(var(--space-025) + var(--space-025));
+      }
+      :host([size="x-small"][has-after]) .container {
+        padding-right: calc(var(--space-025) + var(--space-025));
       }
 
       :host([size="small"]) .container {
@@ -167,9 +208,25 @@ class MuiChip extends HTMLElement {
         border-radius: var(--chip-radius-small);
       }
 
+      :host([size="small"][has-before]) .container {
+        padding-left: calc(var(--space-050) + var(--space-025));
+      }
+      :host([size="small"][has-after]) .container {
+        padding-right: calc(var(--space-050) + var(--space-025));
+      }
+
       :host([size="medium"]) .container {
         height: var(--chip-height-medium);
+        padding: var(--chip-padding-medium);
+        gap: var(--chip-gap-medium);
         border-radius: var(--chip-radius-medium);
+      }
+
+      :host([size="medium"][has-before]) .container {
+        padding-left: calc(var(--space-200) + var(--space-025));
+      }
+      :host([size="medium"][has-after]) .container {
+        padding-right: calc(var(--space-200) + var(--space-025));
       }
 
       :host([size="large"]) .container {
@@ -178,6 +235,13 @@ class MuiChip extends HTMLElement {
         gap: var(--chip-gap-large);
         border-radius: var(--chip-radius-large);
         --chip-dismiss-action-size: var(--avatar-x-small);
+      }
+
+      :host([size="large"][has-before]) .container {
+        padding-left: var(--space-300);
+      }
+      :host([size="large"][has-after]) .container {
+        padding-right: var(--space-300);
       }
 
       :host([size="x-small"]) {
@@ -203,24 +267,7 @@ class MuiChip extends HTMLElement {
         transition: border-color var(--speed-200), background-color var(--speed-200);
       }
 
-      /* Before & After Slot
-      ========================================= */
-      
-      :host([has-after][has-before]) .container {
-        grid-template-columns: auto 1fr auto;
-        padding-right: var(--space-200);
-        padding-left: var(--space-200);
-      }
 
-      :host([has-after]) .container {
-        grid-template-columns: 1fr auto;
-        padding-right: var(--space-200);
-      }
-
-      :host([has-before]) .container {
-        grid-template-columns: auto 1fr;
-        padding-left: var(--space-200);
-      }
 
       /* Usage: input */
       :host([usage="input"]) .container {
@@ -330,12 +377,55 @@ class MuiChip extends HTMLElement {
         flex-shrink: 0;
       }
 
-      :host([has-before]) ::slotted(.mui-icon) { 
-        margin-right: -4px;
+      :host([size="x-small"]) ::slotted(.mui-icon) {
+        padding: var(--space-025);
       }
 
-      :host([has-after]) ::slotted(.mui-icon) { 
-        margin-left: -4px;
+      :host([size="small"]) ::slotted(.mui-icon) {
+        padding: var(--space-025);
+      }
+
+      :host([size="medium"]) ::slotted(.mui-icon) {
+        padding: var(--space-025);
+      }
+
+      :host([size="large"]) ::slotted(.mui-icon) {
+        padding: var(--space-025);
+      }
+
+      slot[name="before"]::slotted(.mui-icon) { 
+        margin-right: calc(var(--space-050) * -1);
+      }
+      slot[name="after"]::slotted(.mui-icon) { 
+        margin-left: calc(var(--space-050) * -1);
+      }
+
+      :host([size="x-small"]) slot[name="before"]::slotted(.mui-icon) { 
+        margin-left: var(--space-050);
+      }
+      :host([size="x-small"]) slot[name="after"]::slotted(.mui-icon) { 
+        margin-right: var(--space-050);
+      }
+
+      :host([size="small"]) slot[name="before"]::slotted(.mui-icon) { 
+        margin-left: var(--space-025);
+      }
+      :host([size="small"]) slot[name="after"]::slotted(.mui-icon) { 
+        margin-right: var(--space-025);
+      }
+
+      :host([size="medium"]) slot[name="before"]::slotted(.mui-icon) { 
+        margin-left: var(--space-025);
+      }
+      :host([size="medium"]) slot[name="after"]::slotted(.mui-icon) { 
+        margin-right: var(--space-025);
+      }
+
+      :host([size="large"]) slot[name="before"]::slotted(.mui-icon) { 
+        margin-left: var(--space-025);
+      }
+      :host([size="large"]) slot[name="after"]::slotted(.mui-icon) { 
+        margin-right: var(--space-025);
       }
 
           
@@ -345,7 +435,6 @@ class MuiChip extends HTMLElement {
       /* Disable pointer and focus styles when dismiss attribute is present */
       :host([dismiss]) .container {
         grid-template-columns: 1fr auto;
-        padding-right: calc(var(--space-200) + 0.1rem);
       }
 
       :host([dismiss][size="x-small"]) .container {
@@ -356,14 +445,17 @@ class MuiChip extends HTMLElement {
         padding-right: calc(var(--space-100) + 0.1rem);
       }
 
+      :host([dismiss][size="medium"]) .container {
+        padding-right: calc(var(--space-200) + 0.1rem);
+      }
+
       :host([dismiss][size="large"]) .container {
-        padding-right: calc(var(--space-300) + 0.1rem);
+        padding-right: calc(var(--space-200) + 0.1rem);
       }
 
       /* Has Before */
       :host([dismiss][has-before]) .container {
         grid-template-columns: auto 1fr auto;
-        padding-left: var(--space-200);
       }
 
       /* Dismiss Icon */

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Don't edit directly • Generated on Fri, 26 Jun 2026 07:00:00 GMT • muibook.com  
+  Don't edit directly • Generated on Sun, 28 Jun 2026 06:59:22 GMT • muibook.com  
 -->
 <resources>
+    <dimen name="font_size_10">14.4sp</dimen>
     <dimen name="font_size_15">17.6sp</dimen>
     <dimen name="font_size_25">19.2sp</dimen>
     <dimen name="font_size_50">22.4sp</dimen>

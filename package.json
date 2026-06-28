@@ -456,6 +456,10 @@
       "import": "./dist/esm/components/mui-input/index.js",
       "types": "./dist/types/components/mui-input/index.d.ts"
     },
+    "./mui-search-input": {
+      "import": "./dist/esm/components/mui-search-input/index.js",
+      "types": "./dist/types/components/mui-search-input/index.d.ts"
+    },
     "./mui-chip-input": {
       "import": "./dist/esm/components/mui-chip-input/index.js",
       "types": "./dist/types/components/mui-chip-input/index.d.ts"

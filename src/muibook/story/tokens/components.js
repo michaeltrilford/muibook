@@ -244,6 +244,7 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--chip-border-color-focus" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-border-color-active" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-text-color-active" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-text-color-disabled" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-icon-fill" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-filter" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--chip-ghost-background" variant="color"></story-token-slat>
@@ -256,6 +257,7 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--chip-ghost-border-color-active" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-dismiss-action-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-dismiss-action-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--chip-dismiss-action-background-disabled" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--chip-dismiss-action-filter" variant="shadow"></story-token-slat>
           </spec-card>
 

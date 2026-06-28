@@ -4,6 +4,7 @@
 
 export const FontFamily =
   'system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"';
+export const FontSize10 = "0.9rem";
 export const FontSize15 = "1.1rem";
 export const FontSize25 = "1.2rem";
 export const FontSize50 = "1.4rem";
@@ -21,6 +22,7 @@ export const FontWeight400 = 400;
 export const FontWeight500 = 500;
 export const FontWeight600 = 600;
 export const FontWeight700 = 700;
+export const LineHeight10 = 1.5;
 export const LineHeight15 = 1.63636364;
 export const LineHeight25 = 1.5;
 export const LineHeight50 = 1.5;

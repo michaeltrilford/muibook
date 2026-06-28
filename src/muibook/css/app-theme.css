@@ -13,6 +13,7 @@ html[data-theme="light"] {
   --app-theme-toggle-thumb-bg-checked: var(--app-theme-toggle-thumb-bg);
   --app-theme-toggle-icon: var(--icon-color-default);
   --app-theme-toggle-icon-checked: var(--app-theme-toggle-icon);
+  --app-story-canvas-100: var(--grey-100);
 }
 
 html[data-theme="dark"] {
@@ -20,6 +21,7 @@ html[data-theme="dark"] {
   --app-theme-toggle-thumb-bg-checked: var(--app-theme-toggle-thumb-bg);
   --app-theme-toggle-icon: var(--icon-color-default);
   --app-theme-toggle-icon-checked: var(--app-theme-toggle-icon);
+  --app-story-canvas-100: var(--grey-1000);
 }
 
 /* =============================================================================== */
@@ -51,6 +53,7 @@ html[data-brand="mui"][data-theme="light"] {
   /* Home Page */
   --home-page-body-text: var(--black);
   --app-story-card: var(--grey-200);
+  --app-story-canvas-100: var(--grey-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   /* Story Types */
   --app-story-type-header-background: var(--grey-100);
@@ -82,6 +85,7 @@ html[data-brand="mui"][data-theme="dark"] {
   /* Home Page */
   --home-page-body-text: var(--white);
   --app-story-card: var(--grey-1000);
+  --app-story-canvas-100: var(--grey-1000);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   /* Story Types */
   --app-story-type-header-background: var(--grey-900);
@@ -109,6 +113,7 @@ html[data-brand="jal"][data-theme="light"] {
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--grey-100);
   --app-story-card: var(--grey-200);
+  --app-story-canvas-100: var(--grey-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--red-300);
   --app-muitube-background: var(--grey-100);
@@ -128,6 +133,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-navbar-surface-100: color-mix(in srgb, var(--app-navbar-surface) 76%, black);
   --app-navbar-accordion-chevron-hover: var(--grey-900);
   --app-story-card: var(--grey-1000);
+  --app-story-canvas-100: var(--grey-1100);
   --app-navbar-border-color: var(--grey-900);
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-story-banner-border-color: var(--app-navbar-border-color);
@@ -163,6 +169,7 @@ html[data-brand="ana"][data-theme="light"] {
   --home-page-body-text: var(--blue-500);
   --app-navbar-accordion-chevron-hover: var(--grey-100);
   --app-story-card: var(--grey-200);
+  --app-story-canvas-100: var(--grey-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--blue-300);
   --app-muitube-background: var(--grey-100);
@@ -186,6 +193,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --home-page-body-text: var(--white);
   --app-navbar-accordion-chevron-hover: var(--grey-900);
   --app-story-card: var(--grey-800);
+  --app-story-canvas-100: var(--grey-700);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--blue-300);
   --app-muitube-background: var(--grey-800);
@@ -213,6 +221,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--green-1200);
   --app-story-card: var(--white-opacity-60);
+  --app-story-canvas-100: var(--green-300);
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--green-800);
@@ -237,6 +246,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--green-400);
   --app-story-card: var(--green-1400);
+  --app-story-canvas-100: var(--green-1500);
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   --app-navbar-section-chevron: var(--green-400);
@@ -268,6 +278,7 @@ html[data-brand="paperclip"][data-theme="light"] {
   --app-navbar-accordion-chevron-hover: var(--blue-100);
   --home-page-body-text: var(--blue-500);
   --app-story-card: var(--white);
+  --app-story-canvas-100: var(--blue-100);
   --app-story-card-canvas-guide-color: var(--blue-500);
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
@@ -303,6 +314,7 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --app-navbar-accordion-chevron-hover: var(--blue-500);
   --home-page-body-text: var(--white);
   --app-story-card: var(--blue-500);
+  --app-story-canvas-100: var(--blue-600);
   --app-story-card-canvas-guide-color: var(--blue-400);
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);

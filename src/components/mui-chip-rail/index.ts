@@ -96,16 +96,19 @@ class MuiChipRail extends HTMLElement {
         }
 
         :host([size="x-small"]) {
+          --chip-rail-action-size: var(--chip-height-x-small);
           --chip-rail-gap: var(--space-100);
           --chip-rail-edge-size: calc(var(--action-icon-only-size-x-small) + var(--space-500));
         }
 
         :host([size="small"]) {
+          --chip-rail-action-size: var(--chip-height-small);
           --chip-rail-gap: var(--space-100);
           --chip-rail-edge-size: calc(var(--action-icon-only-size-small) + var(--space-600));
         }
 
         :host([size="large"]) {
+          --chip-rail-action-size: var(--chip-height-large);
           --chip-rail-gap: var(--space-300);
           --chip-rail-edge-size: calc(var(--action-icon-only-size-large) + var(--space-800));
         }

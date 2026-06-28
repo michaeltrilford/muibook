@@ -1,6 +1,6 @@
 
 /* ================================================================================================== */
-/*  Don't edit directly • Generated on Fri, 26 Jun 2026 07:00:00 GMT • muibook.com                                        */
+/*  Don't edit directly • Generated on Sun, 28 Jun 2026 06:59:22 GMT • muibook.com                                        */
 /* ================================================================================================== */
 
 /* ================================================================================================== */
@@ -41,6 +41,7 @@
 
 :where(html) {
   --font-family: system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-size-10: 0.9rem;
   --font-size-15: 1.1rem;
   --font-size-25: 1.2rem;
   --font-size-50: 1.4rem;
@@ -58,6 +59,7 @@
   --font-weight-500: 500;
   --font-weight-600: 600;
   --font-weight-700: 700;
+  --line-height-10: 1.5;
   --line-height-15: 1.63636364;
   --line-height-25: 1.5;
   --line-height-50: 1.5;

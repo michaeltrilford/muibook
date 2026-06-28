@@ -46,6 +46,7 @@ class storyAvatar extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-h-stack alignY="center">
+            <mui-avatar size="xxx-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
             <mui-avatar size="xx-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
             <mui-avatar size="x-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
             <mui-avatar size="small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
@@ -54,6 +55,7 @@ class storyAvatar extends HTMLElement {
           </mui-h-stack>
         </div>
         <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar size=&quot;xxx-small&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &lt;mui-avatar size=&quot;xx-small&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &lt;mui-avatar size=&quot;x-small&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &lt;mui-avatar size=&quot;small&quot; image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
@@ -73,6 +75,9 @@ class storyAvatar extends HTMLElement {
         <div class="canvas" slot="body">
           <mui-v-stack>
             <mui-h-stack alignY="center">
+              <mui-avatar size="xxx-small" label="Mike Trilford">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
               <mui-avatar size="xx-small" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
@@ -93,6 +98,9 @@ class storyAvatar extends HTMLElement {
         </div>
 
         <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar size=&quot;xxx-small&quot; label=&quot;Calendar&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-calendar&gt;&lt;/mui-icon-calendar&gt;<br />
+          &lt;/mui-avatar&gt;<br /><br />
           &lt;mui-avatar size=&quot;xx-small&quot; label=&quot;Calendar&quot;&gt;<br />
           &nbsp;&nbsp;&lt;mui-icon-calendar&gt;&lt;/mui-icon-calendar&gt;<br />
           &lt;/mui-avatar&gt;<br /><br />
@@ -117,6 +125,7 @@ class storyAvatar extends HTMLElement {
           <mui-v-stack>
 
             <mui-h-stack alignY="start">
+              <mui-avatar size="xxx-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               <mui-avatar size="xx-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               <mui-avatar size="x-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               <mui-avatar size="small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
@@ -125,6 +134,7 @@ class storyAvatar extends HTMLElement {
             </mui-h-stack>
 
             <mui-h-stack alignY="center">
+              <mui-avatar size="xxx-small" label="Mike Trilford"></mui-avatar>
               <mui-avatar size="xx-small" label="Mike Trilford"></mui-avatar>
               <mui-avatar size="x-small" label="Mike Trilford"></mui-avatar>
               <mui-avatar size="small" label="Mike Trilford"></mui-avatar>
@@ -133,6 +143,9 @@ class storyAvatar extends HTMLElement {
             </mui-h-stack>
             
             <mui-h-stack alignY="end">
+              <mui-avatar size="xxx-small" label="Mike Trilford">
+                <mui-icon-calendar size="large"></mui-icon-calendar>
+              </mui-avatar>
               <mui-avatar size="xx-small" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
               </mui-avatar>
@@ -154,6 +167,7 @@ class storyAvatar extends HTMLElement {
         </div>
 
         <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar size=&quot;xxx-small&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &lt;mui-avatar size=&quot;xx-small&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &lt;mui-avatar size=&quot;x-small&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
           &lt;mui-avatar size=&quot;small&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
@@ -219,6 +233,28 @@ class storyAvatar extends HTMLElement {
               </mui-chip>
             </mui-h-stack>
           </mui-v-stack>
+
+            <mui-h-stack wrap space="var(--space-100)">
+              <mui-chip dismiss size="x-small">
+                <mui-avatar slot="before" label="Mike Trilford" background="neutral" image="${MikeAvatar}"></mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip dismiss size="small">
+                <mui-avatar slot="before" label="Mike Trilford" background="neutral" image="${MikeAvatar}"></mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip dismiss size="medium">
+                <mui-avatar slot="before" label="Mike Trilford" background="neutral" image="${MikeAvatar}"></mui-avatar>
+                Videos
+              </mui-chip>
+              <mui-chip dismiss size="large">
+                <mui-avatar slot="before" label="Mike Trilford" background="neutral" image="${MikeAvatar}"></mui-avatar>
+                Videos
+              </mui-chip>
+            </mui-h-stack>
+          </mui-v-stack>
+
+
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-chip&gt;<br />

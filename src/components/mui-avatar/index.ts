@@ -91,6 +91,7 @@ class MuiAvatar extends HTMLElement {
 
     // Token-based size map
     const sizeMap: Record<string, string> = {
+      "xxx-small": "var(--avatar-xxx-small)",
       "xx-small": "var(--avatar-xx-small)",
       "x-small": "var(--avatar-x-small)",
       small: "var(--avatar-small)",
@@ -101,6 +102,7 @@ class MuiAvatar extends HTMLElement {
 
     // Font size map for initials
     const fontSizeMap: Record<string, string> = {
+      "xxx-small": "var(--font-size-10)",
       "xx-small": "var(--font-size-15)",
       "x-small": "var(--font-size-100)",
       small: "var(--font-size-200)",
@@ -111,6 +113,7 @@ class MuiAvatar extends HTMLElement {
 
     // Icon size map for slotted icons
     const iconSizeMap: Record<string, string> = {
+      "xxx-small": "xx-small",
       "xx-small": "x-small",
       "x-small": "x-small",
       small: "small",

@@ -2,11 +2,12 @@
 // MuiBrandTokens.swift
 //
 
-// Don't edit directly • Generated on Fri, 26 Jun 2026 07:00:00 GMT • muibook.com
+// Don't edit directly • Generated on Sun, 28 Jun 2026 06:59:22 GMT • muibook.com
 
 import UIKit
 
 public class BrandTokens {
+    public static let fontSize_10 = CGFloat(14.4)
     public static let fontSize_15 = CGFloat(17.6)
     public static let fontSize_25 = CGFloat(19.2)
     public static let fontSize_50 = CGFloat(22.4)
@@ -24,6 +25,7 @@ public class BrandTokens {
     public static let fontWeight_500 = UIFont.Weight.medium
     public static let fontWeight_600 = UIFont.Weight.semibold
     public static let fontWeight_700 = UIFont.Weight.bold
+    public static let lineHeight_10 = CGFloat(1.5)
     public static let lineHeight_15 = CGFloat(1.636)
     public static let lineHeight_25 = CGFloat(1.5)
     public static let lineHeight_50 = CGFloat(1.5)

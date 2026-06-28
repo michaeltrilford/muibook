@@ -32,10 +32,17 @@
 - Added new media player waveform design tokens (`--media-player-waveform-current-color` and `--media-player-waveform-current-mirror-color`) to separately style active scrub selections and the current playhead position on the waveform canvas.
 - Added a media-player seek hover preview segment so users can see the skip target before committing to a new time.
 - Added global semantic form radius tokens (`--form-radius-[size]`) for standardized component radii.
+- Added new token variables for avatar sizing and typography: `--avatar-xxx-small` and `--font-size-10`.
+- Added disabled color tokens for chip surfaces and actions: `--chip-text-color-disabled` and `--chip-dismiss-action-background-disabled`.
+- Added `mui-search-input` as a composed search control with a default search field, optional compact action slot, optional after slot for adjacent controls, controlled `open` state, autofocus support, and cancel-to-collapse behavior.
+- `mui-input` now supports the native `autofocus` attribute for components and forms that need immediate field focus.
+- Added `--app-story-canvas-100` for story-level canvas background overrides across Muibook app themes.
 
 ### Documentation
 
 - Added standalone component documentation story for `mui-time`.
+- Added standalone component documentation story for `mui-search-input`, including default, after-slot tab composition, custom-width after content, and controlled-open examples.
+- Updated Search Input, Tabs, and Chip stories to use the app-level story canvas background token for contrast-sensitive examples.
 - Added an overview page for Knowledge MCP with descriptions of MCP tools, local command, and links to the standalone repository.
 - Added Knowledge Resource pages for Design Manifest, Compositions, Rules, and Keywords, including package import paths, dist output paths, and how Knowledge rules/keywords feed the optimized AI Agent outputs.
 - Added richer full Knowledge composition examples for media metadata, custom select, drawer workspace, and model viewer patterns, with explicit `compositionConfig` curation so only compact examples ship in the lightweight AI Agent prompt.
@@ -72,6 +79,11 @@
 - Resource navigation now moves Design Manifest out of Setup and into the new Knowledge section.
 - `mui-chip` and `mui-chip-input` now dynamically inherit corner radii based on the host input size via `--chip-input-border-radius` to ensure perfectly parallel nested curves.
 - `mui-input` slotted inline and hint icons now use slightly larger relative icon sizes for `medium` and `large` inputs.
+- `mui-chip` now defaults to `size="medium"`.
+- `mui-chip` layout now binds container height explicitly to token heights for all sizes (`x-small`, `small`, `medium`, `large`).
+- `mui-chip` slot styling for `before` and `after` icons now targets slots directly (`slot[name="before"]::slotted` and `slot[name="after"]::slotted`) utilizing token math (`calc(var(--space-050) * -1)`) for perfect inner margin alignment, fixing spacing regressions when both before and after icons/avatars are present.
+- `mui-chip-rail` rail action controls now scale dynamically across sizes to perfectly match the height of the chips inside the rail.
+- Slotted sizing mapped: `mui-avatar` and `mui-badge` slotted inside `mui-chip[size="x-small"]` now resolve to `xx-small`.
 
 ### Fixed
 

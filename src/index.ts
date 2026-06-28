@@ -15,6 +15,7 @@ export * from "./components/mui-prompt-preview";
 export * from "./components/mui-file-upload";
 export * from "./components/mui-addon";
 export * from "./components/mui-input";
+export * from "./components/mui-search-input";
 export * from "./components/mui-chip-input";
 export * from "./components/mui-textarea";
 export * from "./components/mui-checkbox";

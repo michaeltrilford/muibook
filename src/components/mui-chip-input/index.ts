@@ -514,7 +514,7 @@ class MuiChipInput extends HTMLElement {
           <mui-h-stack
             slot="${chipSlot}"
             class="${shellClass} ${isMobileStack ? "mobile-stack" : ""}"
-            space="var(--stroke-size-200)"
+            space="var(--stroke-size-100)"
             aligny="center"
           >
             ${this.selectedItems
@@ -571,7 +571,6 @@ class MuiChipInput extends HTMLElement {
         }
         mui-h-stack.chip-slot-shell {
           background: var(--chip-input-background);
-          padding: var(--space-025);
           border: var(--chip-input-shell-border, var(--stroke-size-100) solid var(--form-default-border-color));
           box-sizing: border-box;
           width: 100%;
@@ -601,10 +600,10 @@ class MuiChipInput extends HTMLElement {
           border-top: none;
         }
         mui-h-stack.chip-slot-shell.before-shell mui-chip:first-child {
-          --chip-radius-left: var(--chip-input-border-radius);
+          --chip-radius-left: calc(var(--chip-input-border-radius) + var(--stroke-size-200));
         }
         mui-h-stack.chip-slot-shell.after-shell mui-chip:last-child {
-          --chip-radius-right: var(--chip-input-border-radius);
+          --chip-radius-right: calc(var(--chip-input-border-radius) + var(--stroke-size-200));
         }
         .option {
           width: 100%;

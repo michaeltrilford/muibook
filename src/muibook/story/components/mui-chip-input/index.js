@@ -111,7 +111,7 @@ class storyChipInput extends HTMLElement {
           <mui-chip-input size="x-small" label="X-Small" options='["Alpha","Beta","Gamma"]' value='["Alpha"]'></mui-chip-input>
           <mui-chip-input size="small" label="Small" options='["Alpha","Beta","Gamma"]' value='["Beta"]'></mui-chip-input>
           <mui-chip-input size="medium" label="Medium" options='["Alpha","Beta","Gamma"]' value='["Gamma"]'></mui-chip-input>
-          <mui-chip-input size="large" label="Large" options='["Alpha","Beta","Gamma"]'></mui-chip-input>
+          <mui-chip-input size="large" label="Large" options='["Alpha","Beta","Gamma"]' value='["Beta"]'></mui-chip-input>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-chip-input size="x-small" label="X-Small" options='["Alpha","Beta","Gamma"]' value='["Alpha"]'&gt;&lt;/mui-chip-input&gt;<br />

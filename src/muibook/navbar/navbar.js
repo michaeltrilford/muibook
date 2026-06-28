@@ -237,7 +237,6 @@ class appNavbar extends HTMLElement {
         <app-navbar-section heading="Actions" default-open>
           <app-navbar-link link="/button" title="Button"></app-navbar-link>
           <app-navbar-link link="/chip" title="Chip"></app-navbar-link>
-          <app-navbar-link link="/chip-rail" title="Chip Rail"></app-navbar-link>
           <app-navbar-link link="/dropdown" title="Dropdown"></app-navbar-link>
           <app-navbar-link link="/link" title="Link"></app-navbar-link>
         </app-navbar-section>
@@ -275,6 +274,7 @@ class appNavbar extends HTMLElement {
         <app-navbar-section heading="Navigation" default-open>
           <app-navbar-link link="/stepper" title="Stepper"></app-navbar-link>
           <app-navbar-link link="/tab-bar" title="Tab Bar"></app-navbar-link>
+          <app-navbar-link link="/chip-rail" title="Chip Rail"></app-navbar-link>
         </app-navbar-section>
 
         <app-navbar-section heading="Overlays" default-open>
@@ -283,27 +283,28 @@ class appNavbar extends HTMLElement {
         </app-navbar-section>
 
         <app-navbar-section heading="Forms" default-open>
-          <app-navbar-link link="/addon" title="Add On"></app-navbar-link>
-          <app-navbar-link link="/calendar" title="Calendar"></app-navbar-link>
+          <app-navbar-link link="/form-section" title="Form Section"></app-navbar-link>
+          <app-navbar-link link="/form-section-footer" title="Form Section Footer"></app-navbar-link>
+          <app-navbar-link link="/form-group" title="Form Group"></app-navbar-link>
+          <app-navbar-link link="/field" title="Field"></app-navbar-link>
+          <app-navbar-link link="/input" title="Input"></app-navbar-link>
+          <app-navbar-link link="/textarea" title="Textarea"></app-navbar-link>
+          <app-navbar-link link="/select" title="Select"></app-navbar-link>
           <app-navbar-link link="/checkbox" title="Checkbox"></app-navbar-link>
+          <app-navbar-link link="/radio" title="Radio"></app-navbar-link>
+          <app-navbar-link link="/switch" title="Switch"></app-navbar-link>
+          <app-navbar-link link="/search-input" title="Search Input"></app-navbar-link>
           <app-navbar-link link="/chip-input" title="Chip Input"></app-navbar-link>
           <app-navbar-link link="/date-picker" title="Date Picker"></app-navbar-link>
           <app-navbar-link link="/time" title="Time"></app-navbar-link>
           <app-navbar-link link="/time-picker" title="Time Picker"></app-navbar-link>
-          <app-navbar-link link="/field" title="Field"></app-navbar-link>
-          <app-navbar-link link="/form-section" title="Form Section"></app-navbar-link>
-          <app-navbar-link link="/form-section-footer" title="Form Section Footer"></app-navbar-link>
-          <app-navbar-link link="/form-group" title="Form Group"></app-navbar-link>
-          <app-navbar-link link="/form-message" title="Form Message"></app-navbar-link>
-          <app-navbar-link link="/file-upload" title="File Upload"></app-navbar-link>
-          <app-navbar-link link="/hint" title="Hint"></app-navbar-link>
-          <app-navbar-link link="/input" title="Input"></app-navbar-link>
-          <app-navbar-link link="/progress" title="Progress"></app-navbar-link>
-          <app-navbar-link link="/radio" title="Radio"></app-navbar-link>
+          <app-navbar-link link="/calendar" title="Calendar"></app-navbar-link>
           <app-navbar-link link="/range-input" title="Range Input"></app-navbar-link>
-          <app-navbar-link link="/select" title="Select"></app-navbar-link>
-          <app-navbar-link link="/switch" title="Switch"></app-navbar-link>
-          <app-navbar-link link="/textarea" title="Textarea"></app-navbar-link>
+          <app-navbar-link link="/file-upload" title="File Upload"></app-navbar-link>
+          <app-navbar-link link="/addon" title="Add On"></app-navbar-link>
+          <app-navbar-link link="/form-message" title="Form Message"></app-navbar-link>
+          <app-navbar-link link="/hint" title="Hint"></app-navbar-link>
+          <app-navbar-link link="/progress" title="Progress"></app-navbar-link>
         </app-navbar-section>
 
         <app-navbar-section heading="Content" default-open>

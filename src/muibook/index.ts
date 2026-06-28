@@ -145,6 +145,7 @@ import "../components/mui-tabs/panel";
 import "../components/mui-list/list";
 import "../components/mui-list/item";
 import "../components/mui-input";
+import "../components/mui-search-input";
 import "../components/mui-chip-input";
 import "../components/mui-textarea";
 import "../components/mui-checkbox";

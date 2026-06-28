@@ -4,6 +4,7 @@
       "value": "system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\""
     },
     "size": {
+      "10": { "value": "0.9rem" },
       "15": { "value": "1.1rem" },
       "25": { "value": "1.2rem" },
       "50": { "value": "1.4rem" },
@@ -26,6 +27,7 @@
     }
   },
   "line-height": {
+    "10": { "value": 1.5 },
     "15": { "value": 1.63636364 },
     "25": { "value": 1.5 },
     "50": { "value": 1.5 },

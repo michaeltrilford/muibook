@@ -185,7 +185,6 @@ html[data-brand="paperclip"][data-theme="light"] {
   --surface-recessed-100: var(--blue-500);
   --surface-recessed-200: var(--blue-500);
   --code-text-color: var(--blue-500);
-  --chip-input-background: var(--white);
   --code-background: var(--blue-100);
   --media-player-seek-color: var(--blue-500);
   --media-player-seek-time-background: var(--white);
@@ -659,7 +658,6 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --surface-recessed-100: var(--blue-500);
   --surface-recessed-200: var(--blue-500);
   --surface-recessed-300: var(--blue-500);
-  --chip-input-background: var(--blue-500);
   --code-text-color: var(--white);
   --code-background: var(--blue-600);
   --media-player-seek-color: var(--white);
@@ -1013,4 +1011,12 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --video-thumbnail-card-hover-background: var(--blue-500);
   --video-thumbnail-card-hover-edge-width: var(--stroke-size-100);
   --video-thumbnail-card-hover-edge-color-token: var(--white);
+}
+
+/* ==================================================================================================== */
+/* 4. SET THE FOUNDATION                                                                                */
+/* ==================================================================================================== */
+html[data-brand="paperclip"] {
+  /* Chip */
+  --chip-input-background: var(--form-default-border-color);
 }

@@ -18,6 +18,7 @@ export const muiApi = {
     ],
     slots: [{ name: "", description: "Optional icon or custom visible avatar content." }],
     cssProperties: [
+      { name: "--avatar-xxx-small", description: "Dimension for `size=\"xxx-small\"`; defaults to 18px." },
       { name: "--avatar-xx-small", description: "Dimension for `size=\"xx-small\"`; defaults to 24px." },
       { name: "--avatar-x-small", description: "Dimension for `size=\"x-small\"`; defaults to 32px." },
       { name: "--avatar-background-override", description: "Overrides the resolved avatar background color." },

@@ -18,15 +18,6 @@ class storyTabBar extends HTMLElement {
 
     const styles = /*css*/ `
       :host { display: block; }
-
-      :host([data-theme="light"]) {
-        --custom-canvas: var(--grey-100);
-      }
-
-      :host([data-theme="dark"]) {
-        --custom-canvas: var(--grey-1000);
-      }
-
     `;
 
     const tabData = [
@@ -50,7 +41,7 @@ class storyTabBar extends HTMLElement {
         </mui-v-stack>
 
 
-        <story-card title="Default" canvas-background="var(--custom-canvas)">
+        <story-card title="Default" canvas-background="var(--app-story-canvas-100)">
           <mui-tab-bar slot="body">
             <mui-tab-item active id="item1">Item</mui-tab-item>
             <mui-tab-item id="item2">Item</mui-tab-item>
@@ -69,7 +60,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Stroke: None" description="Use when the surrounding surface already defines the tab area." canvas-background="var(--custom-canvas)">
+        <story-card title="Stroke: None" description="Use when the surrounding surface already defines the tab area." canvas-background="var(--app-story-canvas-100)">
           <mui-tab-bar slot="body" stroke="none">
             <mui-tab-item active id="stroke-none-1">Item</mui-tab-item>
             <mui-tab-item id="stroke-none-2">Item</mui-tab-item>
@@ -84,7 +75,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Inset Tab" description="Use for a more modern, floating pill treatment." canvas-background="var(--custom-canvas)">
+        <story-card title="Inset Tab" description="Use for a more modern, floating pill treatment." canvas-background="var(--app-story-canvas-100)">
           <mui-tab-bar slot="body" stroke="none" active-inset>
             <mui-tab-item active id="active-inset-none-1">Item</mui-tab-item>
             <mui-tab-item id="active-inset-none-2">Item</mui-tab-item>
@@ -99,7 +90,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Radius" description="Use radius to adjust the base tab radius." canvas-background="var(--custom-canvas)">
+        <story-card title="Radius" description="Use radius to adjust the base tab radius." canvas-background="var(--app-story-canvas-100)">
           <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
             <mui-tab-bar radius="200">
               <mui-tab-item active id="radius-200-1">Radius 200</mui-tab-item>
@@ -128,7 +119,7 @@ class storyTabBar extends HTMLElement {
           title="Tab Controller & Tab Panel"
           description="Pair a controller with a tab bar and matching panels when tab selection needs to swap visible page content."
           usage="Use active-inset with stroke=&quot;none&quot; for a softer selected tab treatment.|||Use full-width when the tabs should divide the available tab bar width evenly.|||Constrain the tab bar with max-width and auto margins when the controller lives inside a wider content area.|||Use radius to tune the pill shape for the surrounding surface."
-          canvas-background="var(--custom-canvas)"
+          canvas-background="var(--app-story-canvas-100)"
         >
           <mui-tab-controller slot="body">
             <mui-tab-bar active-inset radius="500" stroke="none" full-width style="max-width: 370px; margin: 0 auto;">
@@ -181,7 +172,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Animation Speed 500ms" canvas-background="var(--custom-canvas)">
+        <story-card title="Animation Speed 500ms" canvas-background="var(--app-story-canvas-100)">
           <mui-tab-bar slot="body" speed="500">
             ${tabItemsHTML}
           </mui-tab-bar>
@@ -216,7 +207,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Size Variants" canvas-background="var(--custom-canvas)">
+        <story-card title="Size Variants" canvas-background="var(--app-story-canvas-100)">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-tab-bar size="x-small">
               <mui-tab-item active id="x-small-1">Item</mui-tab-item>
@@ -243,7 +234,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Size Parity with Button" canvas-background="var(--custom-canvas)">
+        <story-card title="Size Parity with Button" canvas-background="var(--app-story-canvas-100)">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-button size="x-small">Action</mui-button>
@@ -291,7 +282,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Before and After Slots" canvas-background="var(--custom-canvas)">
+        <story-card title="Before and After Slots" canvas-background="var(--app-story-canvas-100)">
           <mui-v-stack slot="body" space="var(--space-300)" alignx='start'>
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-tab-bar size="x-small">
@@ -371,7 +362,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Default Width" canvas-background="var(--custom-canvas)">
+        <story-card title="Default Width" canvas-background="var(--app-story-canvas-100)">
           <mui-tab-bar slot="body">
             ${tabItemsHTML}
           </mui-tab-bar>
@@ -406,7 +397,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Dots Variant" canvas-background="var(--custom-canvas)">
+        <story-card title="Dots Variant" canvas-background="var(--app-story-canvas-100)">
           <mui-tab-bar slot="body" variant="dots">
             <mui-tab-item active id="dots-1">Slide 1</mui-tab-item>
             <mui-tab-item id="dots-2">Slide 2</mui-tab-item>
@@ -421,7 +412,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Ghost Variant" canvas-background="var(--custom-canvas)">
+        <story-card title="Ghost Variant" canvas-background="var(--app-story-canvas-100)">
           <mui-tab-bar slot="body" variant="ghost">
             <mui-tab-item active id="ghost-1">Item</mui-tab-item>
             <mui-tab-item id="ghost-2">Item</mui-tab-item>
@@ -436,7 +427,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Full width" canvas-background="var(--custom-canvas)">
+        <story-card title="Full width" canvas-background="var(--app-story-canvas-100)">
           <mui-tab-bar full-width slot="body">
             ${tabItemsHTML}
           </mui-tab-bar>

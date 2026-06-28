@@ -14,6 +14,7 @@ class MuiInput extends HTMLElement {
       "max-length",
       "size",
       "slot-layout",
+      "autofocus",
     ];
   }
 
@@ -65,11 +66,12 @@ class MuiInput extends HTMLElement {
       return;
     }
 
-    if (
-      ["type", "placeholder", "label", "hide-label", "variant", "optional", "max-length", "size", "slot-layout"].includes(
-        name
-      )
-    ) {
+    if (name === "autofocus" && newValue !== null) {
+      requestAnimationFrame(() => this.focus({ preventScroll: true }));
+      return;
+    }
+
+    if (["type", "placeholder", "label", "hide-label", "variant", "optional", "max-length", "size", "slot-layout"].includes(name)) {
       this.render();
       this.setupListener();
     }
@@ -115,6 +117,10 @@ class MuiInput extends HTMLElement {
     inputEl.addEventListener("change", this._changeHandler);
     inputEl.addEventListener("input", this._changeHandler);
     this.updateCharacterCount();
+
+    if (this.hasAttribute("autofocus")) {
+      requestAnimationFrame(() => this.focus({ preventScroll: true }));
+    }
   }
 
   updateCharacterCount() {
@@ -307,6 +313,7 @@ class MuiInput extends HTMLElement {
     const size = this.getAttribute("size") || "medium";
     const allowedSizes = ["x-small", "small", "medium", "large"];
     const normalizedSize = allowedSizes.includes(size) ? size : "medium";
+    const autofocus = this.hasAttribute("autofocus");
 
     const variant = this.getAttribute("variant") || "";
     const variantClass = variant ? variant : "";
@@ -838,6 +845,7 @@ class MuiInput extends HTMLElement {
           ${disabled ? 'disabled aria-disabled="true"' : ""}
           ${maxLength ? `maxlength="${maxLength}"` : ""}
           ${ariaLabel}
+          ${autofocus ? "autofocus" : ""}
         />
         ${
           hasInsideAfter || hasHint

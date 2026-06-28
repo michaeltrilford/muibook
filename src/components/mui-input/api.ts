@@ -54,6 +54,12 @@ export const muiApi = {
         default: "inline",
         description: "Arranges external before and after slots inline or stacked around the input.",
       },
+      {
+        name: "autofocus",
+        type: { text: "boolean" },
+        default: "false",
+        description: "Focuses the input after it renders.",
+      },
     ],
     slots: [
       { name: "before", description: "Flush leading control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`." },
