@@ -74,7 +74,7 @@ export const androidDimensFormat = {
 
     return `<?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Don't edit directly • Generated on ${new Date().toUTCString()} • muibook.com  
+  Don't edit directly • Generated on ${new Date().toUTCString()} • muibook.com
 -->
 <resources>
 ${dimensions}

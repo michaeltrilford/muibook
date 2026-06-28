@@ -104,6 +104,8 @@ export const muiDocs: MuiDocs = {
         "Can include expandable sections to reveal more content on demand",
         "Use col and space to tune slat columns and spacing, including action slats.",
         "Use with SlatGroup when rows need to be presented as a related set, such as wallet activity, settings lists, grouped account records, or transaction histories.",
+        "Use Status in the end slot when the slat communicates row state, such as Paid, Pending, Urgent, Open, or Unlodged.",
+        "Use Badge in the end slot only for supporting labels, counts, or presentational metadata.",
         "Place row content directly into the supported slots: slot='accessory' for a leading avatar or icon, slot='start' for primary content, and slot='end' for trailing values, statuses, or actions.",
         "Do not wrap all slat content in an unslotted layout child. Unslotted children do not map to Slat's start/end regions.",
       ],
@@ -184,6 +186,22 @@ export const muiDocs: MuiDocs = {
     },
 
     rules: [
+      {
+        heading: "Use Status for row state",
+        description: "When a slat end value communicates object, record, or workflow state, use Status. Reserve Badge for supporting labels, counts, or presentational metadata.",
+        doContent: [
+          {
+            description: "Use Status in the end slot for row states such as Paid, Pending, Urgent, Open, or Unlodged.",
+            image: "",
+          },
+        ],
+        dontContent: [
+          {
+            description: "Do not use Badge as the primary state value in operational slat rows.",
+            image: "",
+          },
+        ],
+      },
       {
         heading: "Choose the right slat variant",
         description: "Use the slat variant that matches the row’s job so grouped lists stay clear and predictable.",

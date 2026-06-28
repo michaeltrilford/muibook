@@ -305,6 +305,7 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/form-message" title="Form Message"></app-navbar-link>
           <app-navbar-link link="/hint" title="Hint"></app-navbar-link>
           <app-navbar-link link="/progress" title="Progress"></app-navbar-link>
+          <app-navbar-link link="/progress-ring" title="Progress Ring"></app-navbar-link>
         </app-navbar-section>
 
         <app-navbar-section heading="Content" default-open>

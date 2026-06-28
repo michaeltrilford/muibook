@@ -1,7 +1,7 @@
 export const muiApi = {
   "mui-status": {
     description:
-      "Communicates a compact object, record, workflow, or system state with optional before and after icons. Status is non-interactive by default, but can be interactive when composed as a trigger or compact state action.",
+      "Communicates a compact object, record, workflow, or system state with optional before and after icons. Use for state values in tables and slats. Status is non-interactive by default, but can be interactive when composed as a trigger or compact state action.",
     attributes: [
       {
         name: "variant",

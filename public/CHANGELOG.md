@@ -37,6 +37,7 @@
 - Added `mui-search-input` as a composed search control with a default search field, optional compact action slot, optional after slot for adjacent controls, controlled `open` state, autofocus support, and cancel-to-collapse behavior.
 - `mui-input` now supports the native `autofocus` attribute for components and forms that need immediate field focus.
 - Added `--app-story-canvas-100` for story-level canvas background overrides across Muibook app themes.
+- `mui-table` now supports opt-in animated row highlights with separate `highlight="hover"` and `highlight="select"` modes, `highlight-row` / `row-id`, and `highlight-row-index`.
 
 ### Documentation
 

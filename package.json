@@ -516,6 +516,10 @@
       "import": "./dist/esm/components/mui-progress/index.js",
       "types": "./dist/types/components/mui-progress/index.d.ts"
     },
+    "./mui-progress-ring": {
+      "import": "./dist/esm/components/mui-progress-ring/index.js",
+      "types": "./dist/types/components/mui-progress-ring/index.d.ts"
+    },
     "./mui-select": {
       "import": "./dist/esm/components/mui-select/index.js",
       "types": "./dist/types/components/mui-select/index.d.ts"

@@ -213,6 +213,7 @@ export default defineConfig({
         "components/mui-message": path.resolve(__dirname, "src/components/mui-message"),
         // PROGRESS
         "components/mui-progress": path.resolve(__dirname, "src/components/mui-progress"),
+        "components/mui-progress-ring": path.resolve(__dirname, "src/components/mui-progress-ring"),
         // QUOTE
         "components/mui-quote": path.resolve(__dirname, "src/components/mui-quote"),
         // RESPONSIVE

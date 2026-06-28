@@ -17,6 +17,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Use Status for short object, record, workflow, or system state labels such as Active, Draft, Pending, Synced, or Review.",
         "Use Status for data-heavy pages where the state needs to read as a field value rather than decorative metadata.",
+        "Use Status for state values in table cells and slat end slots, such as Paid, Pending, Urgent, Open, or Unlodged.",
         "Omit variant for the default low-emphasis grey status.",
         "Use variant for semantic feedback states and color for non-semantic categorical labels.",
         "Use size='small' in dense lists, tables, and slats; use medium as the default.",

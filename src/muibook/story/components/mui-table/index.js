@@ -26,36 +26,10 @@ class storyTable extends HTMLElement {
         margin-left: calc(var(--space-400) * -1);
         margin-right: calc(var(--space-400) * -1);
       }
-
-      .local-ring {
-        height: 6rem;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-      .local-ring_text {
-        fill: #1b2830;
-        font-size: 1.2rem;
-        -webkit-transform: translateY(0.34em);
-        transform: translateY(0.34em);
-        font-weight: bold;
-      }
     `;
 
     const LocalRing = /*html*/ `
-      <div class="local-ring">
-        <svg 
-          width="100%" 
-          height="100%" 
-          viewBox="0 0 42 42" 
-          style="text-anchor: middle; width: 100%;"
-        >
-          <circle class="local-ring__hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
-          <circle class="local-ring__ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="4"></circle>
-          <circle class="local-ring__segment VE4Mc" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#000000" stroke-width="4" stroke-dasharray="50,50" stroke-dashoffset="25"></circle>
-          <g><text x="50%" y="50%" class="local-ring_text">2/4</text></g>
-        </svg>
-      </div>
+      <mui-progress-ring value="2" max="4" label="Transactions automated" style="margin-inline: auto;">2/4</mui-progress-ring>
     `;
 
     const Columns = `1fr 1fr 1fr`;
@@ -75,8 +49,8 @@ class storyTable extends HTMLElement {
         <mui-row-group> 
           <mui-row columns="${Columns_ProgressTable}"> 
             <mui-cell align-y="center"><mui-body size="small">Alison Max</mui-body></mui-cell> 
-            <mui-cell align-y="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-badge>Quarterly</mui-badge></mui-v-stack></mui-cell> 
-            <mui-cell align-y="center"><mui-badge>Unlodged</mui-badge></mui-cell> 
+            <mui-cell align-y="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-status size="small" color="blue">Quarterly</mui-status></mui-v-stack></mui-cell>
+            <mui-cell align-y="center"><mui-status size="small" color="orange">Unlodged</mui-status></mui-cell>
             <mui-cell align-y="center">${LocalRing}</mui-cell> 
           </mui-row> 
         </mui-row-group> 
@@ -130,10 +104,10 @@ class storyTable extends HTMLElement {
       (prop) => /*html*/ `
         <mui-row columns="${Columns}">
           <mui-cell>${prop.name}</mui-cell>
-          <mui-cell><mui-badge>${prop.billed}</mui-badge></mui-cell>
+          <mui-cell><mui-status size="small" color="blue">${prop.billed}</mui-status></mui-cell>
           <mui-cell>${prop.cost}</mui-cell>
         </mui-row>
-      `
+      `,
     ).join("");
 
     const stories = /*html*/ `
@@ -224,6 +198,129 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&lt;/mui-row-group&gt;
               <br />
               <br />
+              &lt;/mui-table&gt;
+            </story-code-block>
+          </story-card>
+
+          <story-card title="Hover Row Highlight">
+            <div class="canvas" slot="body">
+              <mui-table highlight="hover">
+                <mui-row-group heading>
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Product</mui-cell>
+                    <mui-cell>Billed</mui-cell>
+                    <mui-cell>Cost</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  <mui-row row-id="figma" columns="${Columns}">
+                    <mui-cell>Figma</mui-cell>
+                    <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                    <mui-cell>$20.00</mui-cell>
+                  </mui-row>
+                  <mui-row row-id="sketch" columns="${Columns}">
+                    <mui-cell>Sketch</mui-cell>
+                    <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                    <mui-cell>$12.00</mui-cell>
+                  </mui-row>
+                  <mui-row row-id="notion" columns="${Columns}">
+                    <mui-cell>Notion</mui-cell>
+                    <mui-cell><mui-status size="small" color="green">Annual</mui-status></mui-cell>
+                    <mui-cell>$96.00</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              &lt;mui-table highlight="hover"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-row-group heading&gt;...&lt;/mui-row-group&gt;<br />
+              &nbsp;&nbsp;&lt;mui-row-group&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="figma" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="sketch" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="notion" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-row-group&gt;<br />
+              &lt;/mui-table&gt;
+            </story-code-block>
+          </story-card>
+
+          <story-card title="Select Row Highlight">
+            <div class="canvas" slot="body">
+              <mui-table highlight="select" highlight-row="sketch">
+                <mui-row-group heading>
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Product</mui-cell>
+                    <mui-cell>Billed</mui-cell>
+                    <mui-cell>Cost</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  <mui-row row-id="figma" columns="${Columns}">
+                    <mui-cell>Figma</mui-cell>
+                    <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                    <mui-cell>$20.00</mui-cell>
+                  </mui-row>
+                  <mui-row row-id="sketch" columns="${Columns}">
+                    <mui-cell>Sketch</mui-cell>
+                    <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                    <mui-cell>$12.00</mui-cell>
+                  </mui-row>
+                  <mui-row row-id="notion" columns="${Columns}">
+                    <mui-cell>Notion</mui-cell>
+                    <mui-cell><mui-status size="small" color="green">Annual</mui-status></mui-cell>
+                    <mui-cell>$96.00</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              &lt;mui-table highlight="select" highlight-row="sketch"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-row-group heading&gt;...&lt;/mui-row-group&gt;<br />
+              &nbsp;&nbsp;&lt;mui-row-group&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="figma" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="sketch" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="notion" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-row-group&gt;<br />
+              &lt;/mui-table&gt;
+            </story-code-block>
+          </story-card>
+
+          <story-card title="Index Row Highlight">
+            <div class="canvas" slot="body">
+              <mui-table highlight-row-index="1">
+                <mui-row-group heading>
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Product</mui-cell>
+                    <mui-cell>Billed</mui-cell>
+                    <mui-cell>Cost</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+                <mui-row-group>
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Figma</mui-cell>
+                    <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                    <mui-cell>$20.00</mui-cell>
+                  </mui-row>
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Sketch</mui-cell>
+                    <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                    <mui-cell>$12.00</mui-cell>
+                  </mui-row>
+                  <mui-row columns="${Columns}">
+                    <mui-cell>Notion</mui-cell>
+                    <mui-cell><mui-status size="small" color="green">Annual</mui-status></mui-cell>
+                    <mui-cell>$96.00</mui-cell>
+                  </mui-row>
+                </mui-row-group>
+              </mui-table>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              &lt;mui-table highlight-row-index="1"&gt;<br />
+              &nbsp;&nbsp;&lt;mui-row-group heading&gt;...&lt;/mui-row-group&gt;<br />
+              &nbsp;&nbsp;&lt;mui-row-group&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br />
+              &nbsp;&nbsp;&lt;/mui-row-group&gt;<br />
               &lt;/mui-table&gt;
             </story-code-block>
           </story-card>
@@ -553,7 +650,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns=&quot;\${Columns}&quot;&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;\${prop.name}&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge&gt;\${prop.billed}&lt;/mui-badge&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-status size="small" color="blue"&gt;\${prop.billed}&lt;/mui-status&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;\${prop.cost}&lt;/mui-cell&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
@@ -838,6 +935,120 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
               <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-table&gt;<br>
+              &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
+              &lt;/mui-card&gt;
+            </story-code-block>
+          </story-card>
+
+          <story-card title="Card: Hover Row Highlight">
+            <div slot="body">
+              <mui-card>
+                <mui-card-header>
+                  <mui-heading size="3">Design Tools</mui-heading>
+                </mui-card-header>
+                <mui-rule></mui-rule>
+                <mui-card-body>
+                  <mui-table highlight="hover">
+                    <mui-row-group heading>
+                      <mui-row columns="${Columns}">
+                        <mui-cell>Company</mui-cell>
+                        <mui-cell>Billing</mui-cell>
+                        <mui-cell>Monthly Cost</mui-cell>
+                      </mui-row>
+                    </mui-row-group>
+                    <mui-row-group>
+                      <mui-row row-id="figma" columns="${Columns}">
+                        <mui-cell>Figma</mui-cell>
+                        <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                        <mui-cell>$20.00</mui-cell>
+                      </mui-row>
+                      <mui-row row-id="sketch" columns="${Columns}">
+                        <mui-cell>Sketch</mui-cell>
+                        <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                        <mui-cell>$12.00</mui-cell>
+                      </mui-row>
+                      <mui-row row-id="notion" columns="${Columns}">
+                        <mui-cell>Notion</mui-cell>
+                        <mui-cell><mui-status size="small" color="green">Annual</mui-status></mui-cell>
+                        <mui-cell>$96.00</mui-cell>
+                      </mui-row>
+                    </mui-row-group>
+                  </mui-table>
+                </mui-card-body>
+              </mui-card>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              &lt;mui-card&gt;<br>
+              &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;Design Tools&lt;/mui-heading&gt;<br>
+              &nbsp;&nbsp;&lt;/mui-card-header&gt;<br>
+              &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+              &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-table highlight="hover"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group heading&gt;...&lt;/mui-row-group&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="figma" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="sketch" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="notion" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-table&gt;<br>
+              &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
+              &lt;/mui-card&gt;
+            </story-code-block>
+          </story-card>
+
+          <story-card title="Card: Select Row Highlight">
+            <div slot="body">
+              <mui-card>
+                <mui-card-header>
+                  <mui-heading size="3">Design Tools</mui-heading>
+                </mui-card-header>
+                <mui-rule></mui-rule>
+                <mui-card-body>
+                  <mui-table highlight="select" highlight-row="notion">
+                    <mui-row-group heading>
+                      <mui-row columns="${Columns}">
+                        <mui-cell>Company</mui-cell>
+                        <mui-cell>Billing</mui-cell>
+                        <mui-cell>Monthly Cost</mui-cell>
+                      </mui-row>
+                    </mui-row-group>
+                    <mui-row-group>
+                      <mui-row row-id="figma" columns="${Columns}">
+                        <mui-cell>Figma</mui-cell>
+                        <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                        <mui-cell>$20.00</mui-cell>
+                      </mui-row>
+                      <mui-row row-id="sketch" columns="${Columns}">
+                        <mui-cell>Sketch</mui-cell>
+                        <mui-cell><mui-status size="small" color="blue">Monthly</mui-status></mui-cell>
+                        <mui-cell>$12.00</mui-cell>
+                      </mui-row>
+                      <mui-row row-id="notion" columns="${Columns}">
+                        <mui-cell>Notion</mui-cell>
+                        <mui-cell><mui-status size="small" color="green">Annual</mui-status></mui-cell>
+                        <mui-cell>$96.00</mui-cell>
+                      </mui-row>
+                    </mui-row-group>
+                  </mui-table>
+                </mui-card-body>
+              </mui-card>
+            </div>
+            <story-code-block slot="footer" scrollable>
+              &lt;mui-card&gt;<br>
+              &nbsp;&nbsp;&lt;mui-card-header&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;Design Tools&lt;/mui-heading&gt;<br>
+              &nbsp;&nbsp;&lt;/mui-card-header&gt;<br>
+              &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br>
+              &nbsp;&nbsp;&lt;mui-card-body&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-table highlight="select" highlight-row="notion"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group heading&gt;...&lt;/mui-row-group&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="figma" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="sketch" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row row-id="notion" columns="\${Columns}"&gt;...&lt;/mui-row&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-table&gt;<br>
               &nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
               &lt;/mui-card&gt;

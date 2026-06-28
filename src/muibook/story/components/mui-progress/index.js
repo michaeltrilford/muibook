@@ -24,9 +24,9 @@ class storyProgress extends HTMLElement {
     `;
 
     const stories = /*html*/ `
-          <story-api-types tag="mui-progress" title="Progress"></story-api-types>
+          <story-api-types tag="mui-progress" title="Progress Bar"></story-api-types>
 
-        <story-card title="Progress" description="Displays a numeric value to indicate loading or completion state.">
+        <story-card title="Progress Bar" description="Displays a numeric value to indicate loading or completion state.">
           <div class="canvas" slot="body">
             <mui-progress progress="50"></mui-progress>
           </div>

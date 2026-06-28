@@ -1,14 +1,14 @@
 export const muiApi = {
   "mui-badge": {
     description:
-      "Displays compact, non-interactive presentational labels, counts, or lightweight metadata. Use for labels such as Offline, Online, Busy, Do not disturb, Beta, Default, IMG, or Shared when they support the surrounding UI rather than acting as the primary state field for a record.",
+      "Displays compact, non-interactive presentational labels, counts, or lightweight metadata. Use for labels such as Beta, Default, IMG, or Shared when they support the surrounding UI rather than acting as the primary state field for a record. Use Status for state values in tables and slats.",
     attributes: [
       {
         name: "variant",
         type: { text: '"neutral" | "positive" | "warning" | "attention" | "overlay"' },
         default: "neutral",
         description:
-          "Sets the badge intent style for lightweight non-interactive metadata. Use Status when the value is the primary state of an object, record, workflow, or system.",
+          "Sets the badge intent style for lightweight non-interactive metadata. Use Status when the value is the primary state of an object, record, workflow, or system, especially in tables and slats.",
       },
       {
         name: "size",

@@ -2,9 +2,9 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Progress: {
-    title: "Progress",
+    title: "Progress Bar",
     description:
-      "A Progress Bar visually represents completion status by filling a bar based on a percentage value. It gives users a clear indication of progress for a given task or process.",
+      "A Progress Bar visually represents completion status by filling a horizontal bar based on a percentage value. It gives users a clear indication of progress for a given task or process.",
 
     hero: [
       "https://images.ctfassets.net/i5uwscj4pkk2/2NPcL7tA0zGUWFLShr66fS/23d0050dce8c8379afc6deb8e351d049/Progress_-_Home_Image.png",
@@ -22,6 +22,7 @@ export const muiDocs: MuiDocs = {
         "Show task progress – Indicate how much of a task or process has been completed.",
         "Display loading states – Represent the progress of a background operation, such as file uploads.",
         "Track step completion – Show progress in multi-step workflows or onboarding processes.",
+        "Use Progress Ring when the progress value needs to sit in a compact dashboard, card, table cell, or responsive summary.",
         "Tune visual density and motion with component tokens such as --progress-radius, --progress-syncing-width, and --progress-pending-stripe-size.",
       ],
     },
@@ -68,8 +69,8 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         {
-          name: "",
-          link: "",
+          name: "Progress Ring",
+          link: "https://guides.muibook.com/progress",
         },
       ],
     },

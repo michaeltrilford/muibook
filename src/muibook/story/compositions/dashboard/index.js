@@ -197,21 +197,21 @@ class CompDashboard extends HTMLElement {
                             <mui-body size="small" weight="bold">Review billing alerts</mui-body>
                             <mui-body size="x-small" variant="optional">Finance operations</mui-body>
                           </mui-v-stack>
-                          <mui-badge slot="end" size="x-small" variant="attention">Urgent</mui-badge>
+                          <mui-status slot="end" size="small" variant="attention">Urgent</mui-status>
                         </mui-slat>
                         <mui-slat variant="action">
                           <mui-v-stack slot="start" space="var(--space-000)">
                             <mui-body size="small" weight="bold">Approve campaign launch</mui-body>
                             <mui-body size="x-small" variant="optional">Growth team</mui-body>
                           </mui-v-stack>
-                          <mui-badge slot="end" size="x-small" variant="warning">Pending</mui-badge>
+                          <mui-status slot="end" size="small" variant="warning">Pending</mui-status>
                         </mui-slat>
                         <mui-slat variant="action">
                           <mui-v-stack slot="start" space="var(--space-000)">
                             <mui-body size="small" weight="bold">Invite finance reviewer</mui-body>
                             <mui-body size="x-small" variant="optional">Workspace admin</mui-body>
                           </mui-v-stack>
-                          <mui-badge slot="end" size="x-small" variant="neutral">Open</mui-badge>
+                          <mui-status slot="end" size="small">Open</mui-status>
                         </mui-slat>
                       </mui-slat-group>
                       <mui-button variant="tertiary" size="small">View all tasks</mui-button>
@@ -246,13 +246,13 @@ class CompDashboard extends HTMLElement {
                         <mui-row columns="1.5fr 1fr 1fr auto" size="small">
                           <mui-cell><mui-body size="small">Acme Studios</mui-body></mui-cell>
                           <mui-cell><mui-body size="small">Renewal</mui-body></mui-cell>
-                          <mui-cell><mui-badge size="small" variant="positive">Paid</mui-badge></mui-cell>
+                          <mui-cell><mui-status size="small" variant="positive">Paid</mui-status></mui-cell>
                           <mui-cell action><mui-button size="small" variant="tertiary">View</mui-button></mui-cell>
                         </mui-row>
                         <mui-row columns="1.5fr 1fr 1fr auto" size="small">
                           <mui-cell><mui-body size="small">Northwind Labs</mui-body></mui-cell>
                           <mui-cell><mui-body size="small">Trial review</mui-body></mui-cell>
-                          <mui-cell><mui-badge size="small" variant="warning">Pending</mui-badge></mui-cell>
+                          <mui-cell><mui-status size="small" variant="warning">Pending</mui-status></mui-cell>
                           <mui-cell action><mui-button size="small" variant="tertiary">View</mui-button></mui-cell>
                         </mui-row>
                       </mui-row-group>
@@ -272,14 +272,14 @@ class CompDashboard extends HTMLElement {
                           <mui-body size="small" weight="bold">Acme Studios</mui-body>
                           <mui-body size="x-small" variant="optional">Renewal payment</mui-body>
                         </mui-v-stack>
-                        <mui-badge slot="end" size="x-small" variant="positive">Paid</mui-badge>
+                        <mui-status slot="end" size="small" variant="positive">Paid</mui-status>
                       </mui-slat>
                       <mui-slat variant="action">
                         <mui-v-stack slot="start" space="var(--space-000)">
                           <mui-body size="small" weight="bold">Northwind Labs</mui-body>
                           <mui-body size="x-small" variant="optional">Trial review</mui-body>
                         </mui-v-stack>
-                        <mui-badge slot="end" size="x-small" variant="warning">Pending</mui-badge>
+                        <mui-status slot="end" size="small" variant="warning">Pending</mui-status>
                       </mui-slat>
                     </mui-slat-group>
                   </mui-card-body>

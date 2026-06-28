@@ -24,6 +24,7 @@ export * from "./components/mui-radio-group";
 export * from "./components/mui-select";
 export * from "./components/mui-switch";
 export * from "./components/mui-progress";
+export * from "./components/mui-progress-ring";
 export * from "./components/mui-dropdown/index";
 export * from "./components/mui-time/index";
 export * from "./components/mui-time-picker/index";

@@ -206,14 +206,13 @@ class storySlat extends HTMLElement {
                 <mui-body size="medium" weight="bold">Billing Details</mui-body>
                 <mui-body size="small" variant="optional">Manage invoice address and payment metadata</mui-body>
               </mui-v-stack>
-              <mui-badge slot="end">Optional</mui-badge>
             </mui-slat>
             <mui-slat variant="action" col="1fr auto" space="var(--space-800)">
               <mui-v-stack space="0" slot="start">
                 <mui-body size="medium" weight="bold">Team Seats</mui-body>
                 <mui-body size="small" variant="optional">Review active seats before renewal</mui-body>
               </mui-v-stack>
-              <mui-badge slot="end" variant="warning">Review</mui-badge>
+              <mui-status slot="end" size="small" variant="warning">Review</mui-status>
             </mui-slat>
           </mui-slat-group>
 
@@ -231,8 +230,6 @@ class storySlat extends HTMLElement {
             <br />
             &nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;...&lt;/mui-v-stack&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-badge slot="end"&gt;Optional&lt;/mui-badge&gt;
-            <br />
             &lt;/mui-slat&gt;
             <br />
             <br />
@@ -246,7 +243,7 @@ class storySlat extends HTMLElement {
             <br />
             &nbsp;&nbsp;&lt;mui-v-stack slot="start" space="0"&gt;...&lt;/mui-v-stack&gt;
             <br />
-            &nbsp;&nbsp;&lt;mui-badge slot="end" variant="warning"&gt;Review&lt;/mui-badge&gt;
+            &nbsp;&nbsp;&lt;mui-status slot="end" size="small" variant="warning"&gt;Review&lt;/mui-status&gt;
             <br />
             &lt;/mui-slat&gt;
             <br />
@@ -495,7 +492,7 @@ class storySlat extends HTMLElement {
                   <mui-body size="small" weight="bold">Billed</mui-body>
                 </mui-v-stack>
                 <mui-v-stack space="0" slot="end" alignX="end">
-                  <mui-badge usage="slat-end" size="x-small">Monthly</mui-badge>
+                  <mui-status size="small" color="blue">Monthly</mui-status>
                 </mui-v-stack>
               </mui-slat>
               <mui-slat>
@@ -522,7 +519,7 @@ class storySlat extends HTMLElement {
                   <mui-body size="small" weight="bold">Billed</mui-body>
                 </mui-v-stack>
                 <mui-v-stack space="0" slot="end" alignX="end">
-                  <mui-badge usage="slat-end" size="x-small">Monthly</mui-badge>
+                  <mui-status size="small" color="blue">Monthly</mui-status>
                 </mui-v-stack>
               </mui-slat>
               <mui-slat>
@@ -554,7 +551,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Billed&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge usage=&quot;slat-end&quot; size=&quot;x-small&quot;&gt;Monthly&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-status size=&quot;small&quot; color=&quot;blue&quot;&gt;Monthly&lt;/mui-status&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
@@ -581,7 +578,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Billed&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge usage=&quot;slat-end&quot; size=&quot;x-small&quot;&gt;Monthly&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-status size=&quot;small&quot; color=&quot;blue&quot;&gt;Monthly&lt;/mui-status&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
@@ -609,7 +606,7 @@ class storySlat extends HTMLElement {
             Default mui-slat is used, which has no padding applied|||
             Wrapping the slat in the group will add predefined margin beneath the rows|||
             Utilise layout helpers to craft your desired layout|||
-            mui-badge has a helper (usage='slat-end') to adjust the alignment when used in a slat-end position.
+            Use mui-status for state-like row values in the slat end position.
           "
         >
           <mui-card slot="body">
@@ -634,7 +631,7 @@ class storySlat extends HTMLElement {
                     <mui-body size="small" weight="bold">Billed</mui-body>
                   </mui-v-stack>
                   <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-badge usage="slat-end" size="x-small">Monthly</mui-badge>
+                    <mui-status size="small" color="blue">Monthly</mui-status>
                   </mui-v-stack>
                 </mui-slat>
                 <mui-slat>
@@ -661,7 +658,7 @@ class storySlat extends HTMLElement {
                     <mui-body size="small" weight="bold">Billed</mui-body>
                   </mui-v-stack>
                   <mui-v-stack space="0" slot="end" alignX="end">
-                    <mui-badge usage="slat-end" size="x-small">Monthly</mui-badge>
+                    <mui-status size="small" color="blue">Monthly</mui-status>
                   </mui-v-stack>
                 </mui-slat>
                 <mui-slat>
@@ -700,7 +697,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Billed&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge usage=&quot;slat-end&quot; size=&quot;x-small&quot;&gt;Monthly&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-status size=&quot;small&quot; color=&quot;blue&quot;&gt;Monthly&lt;/mui-status&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>
@@ -727,7 +724,7 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;small&quot; weight=&quot;bold&quot;&gt;Billed&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge usage=&quot;slat-end&quot; size=&quot;x-small&quot;&gt;Monthly&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-status size=&quot;small&quot; color=&quot;blue&quot;&gt;Monthly&lt;/mui-status&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat&gt;<br>

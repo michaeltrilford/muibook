@@ -71,6 +71,8 @@ class MuiCardBody extends HTMLElement {
           const table = isTable ? element : element.querySelector("mui-table");
 
           if (table instanceof HTMLElement) {
+            table.setAttribute("card-slot", "");
+
             const cells = table.querySelectorAll("mui-cell");
             cells.forEach((cell: Element) => {
               (cell as HTMLElement).setAttribute("card-slot", "");

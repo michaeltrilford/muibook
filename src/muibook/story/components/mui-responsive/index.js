@@ -11,19 +11,6 @@ class storyResponsive extends HTMLElement {
 
     const styles = /*css*/ `
       :host { display: block; }
-      .local-ring {
-        height: 6rem;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-      .local-ring_text {
-        fill: #1b2830;
-        font-size: 1.2rem;
-        -webkit-transform: translateY(0.34em);
-        transform: translateY(0.34em);
-        font-weight: bold;
-      }
       .container-query-page {
         min-width: 0;
         container-type: inline-size;
@@ -47,19 +34,7 @@ class storyResponsive extends HTMLElement {
     `;
 
     const LocalRing = /*html*/ `
-      <div class="local-ring">
-        <svg 
-          width="100%" 
-          height="100%" 
-          viewBox="0 0 42 42" 
-          style="text-anchor: middle; width: 100%;"
-        >
-          <circle class="local-ring__hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
-          <circle class="local-ring__ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="4"></circle>
-          <circle class="local-ring__segment VE4Mc" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#000000" stroke-width="4" stroke-dasharray="50,50" stroke-dashoffset="25"></circle>
-          <g><text x="50%" y="50%" class="local-ring_text">2/4</text></g>
-        </svg>
-      </div>
+      <mui-progress-ring value="2" max="4" label="Transactions automated" style="margin-inline: auto;">2/4</mui-progress-ring>
     `;
 
     const ProgressTableColumns = `1fr 1fr 1fr 126px`;
@@ -77,8 +52,8 @@ class storyResponsive extends HTMLElement {
         <mui-row-group> 
           <mui-row columns="${ProgressTableColumns}"> 
             <mui-cell align-y="center"><mui-body size="small">Alison Max</mui-body></mui-cell> 
-            <mui-cell align-y="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-badge>Quarterly</mui-badge></mui-v-stack></mui-cell> 
-            <mui-cell align-y="center"><mui-badge>Unlodged</mui-badge></mui-cell> 
+            <mui-cell align-y="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-status size="small" color="blue">Quarterly</mui-status></mui-v-stack></mui-cell>
+            <mui-cell align-y="center"><mui-status size="small" color="orange">Unlodged</mui-status></mui-cell>
             <mui-cell align-y="center">${LocalRing}</mui-cell> 
           </mui-row> 
         </mui-row-group> 
@@ -134,7 +109,7 @@ class storyResponsive extends HTMLElement {
       (prop) => /*html*/ `
         <mui-row columns="${Columns}">
           <mui-cell>${prop.name}</mui-cell>
-          <mui-cell><mui-badge>${prop.billed}</mui-badge></mui-cell>
+          <mui-cell><mui-status size="small" color="blue">${prop.billed}</mui-status></mui-cell>
           <mui-cell>${prop.cost}</mui-cell>
         </mui-row>
       `,
@@ -156,7 +131,7 @@ class storyResponsive extends HTMLElement {
           <mui-body size="small" weight="bold">Billed</mui-body>
         </mui-v-stack>
         <mui-v-stack space="0" slot="end" alignX="end">
-          <mui-badge usage="slat-end" size="x-small">${prop.billed}</mui-badge>
+          <mui-status size="small" color="blue">${prop.billed}</mui-status>
         </mui-v-stack>
       </mui-slat>
       <mui-slat>
@@ -331,7 +306,7 @@ class storyResponsive extends HTMLElement {
             &nbsp;&nbsp;(prop)&nbsp;=&gt;&nbsp;/*html*/&nbsp;&#96;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row&nbsp;columns="&#36;{Columns}"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;&#36;{prop.name}&lt;/mui-cell&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;&lt;mui-badge&gt;&#36;{prop.billed}&lt;/mui-badge&gt;&lt;/mui-cell&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;&lt;mui-status size="small" color="blue"&gt;&#36;{prop.billed}&lt;/mui-status&gt;&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;&#36;{prop.cost}&lt;/mui-cell&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
             &nbsp;&nbsp;&#96;<br>
@@ -354,7 +329,7 @@ class storyResponsive extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&nbsp;size="small"&nbsp;weight="bold"&gt;Billed&lt;/mui-body&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&nbsp;space="0"&nbsp;slot="end"&nbsp;alignX="end"&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-badge&nbsp;usage="slat-end"&nbsp;size="x-small"&gt;&#36;{prop.billed}&lt;/mui-badge&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-status&nbsp;size="small"&nbsp;color="blue"&gt;&#36;{prop.billed}&lt;/mui-status&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br>
             <br>

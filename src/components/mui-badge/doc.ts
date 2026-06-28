@@ -23,7 +23,7 @@ export const muiDocs: MuiDocs = {
         "Use Badge for counts and short labels inside cards, messages, chips, buttons, tabs, navigation, and hero or marketing surfaces.",
         "Use Badge as a non-interactive label; use Status with action when the state itself needs to behave as a trigger.",
         "Use Badge when the surrounding UI already explains the object and the label is supporting context.",
-        "Use Status instead when the value is the primary state of an object, record, workflow, or system, especially in tables, slats, dashboards, and data-heavy pages.",
+        "Use Status instead when the value is the primary state of an object, record, workflow, or system, especially in table cells, slat end slots, dashboards, and data-heavy pages.",
         "Use color to override the badge background with a shared named colour or custom CSS background value; named colours resolve through theme-aware badge background tokens.",
         "Use Message for persistent page-level or section-level notices; Badge can appear inside message content when it remains supporting metadata.",
         "Use size variants (xx-small, x-small, small, medium, large) to match surrounding component scale.",
@@ -141,7 +141,7 @@ export const muiDocs: MuiDocs = {
       {
         heading: "Badge vs Status",
         description:
-          "Badge is for non-interactive presentational metadata. Status is for explicit record, workflow, or system state.",
+          "Badge is for non-interactive presentational metadata. Status is for explicit record, workflow, or system state, especially inside tables and slats.",
         doContent: [{ description: "Use Badge for labels that support a card, message, hero, or control.", image: "" }],
         dontContent: [{ description: "Do not use Badge as the main state field in dense operational or data-heavy layouts.", image: "" }],
       },

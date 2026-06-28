@@ -22,6 +22,8 @@ export const muiDocs: MuiDocs = {
         "Use for structured content that benefits from a grid format.",
         "Ideal for comparing data across multiple rows and columns.",
         "Supports sorting, filtering, or action buttons if needed.",
+        "Use Status for state fields in table cells, such as Paid, Pending, Active, Review, or Unlodged.",
+        "Use Badge only for supporting labels, counts, deltas, or presentational metadata inside a table.",
         "Avoid for unstructured, visual, or narrative-based content.",
         "Tables should adapt for smaller viewports by switching to the Slat component.",
         "Prioritise key content and simplify structure when transitioning to mobile views.",
@@ -105,6 +107,22 @@ export const muiDocs: MuiDocs = {
     },
 
     rules: [
+      {
+        heading: "Use Status for row state",
+        description: "When a table cell communicates record or workflow state, use Status. Reserve Badge for supporting labels, counts, deltas, or presentational metadata.",
+        doContent: [
+          {
+            description: "Use Status for table state values such as Paid, Pending, Active, Review, or Unlodged.",
+            image: "",
+          },
+        ],
+        dontContent: [
+          {
+            description: "Do not use Badge as the main state field in operational table rows.",
+            image: "",
+          },
+        ],
+      },
       {
         heading: "Icon-Only Actions",
         description: "",
