@@ -7,6 +7,9 @@ class MuiDropdown extends HTMLElement {
   private portalInner: HTMLElement | null = null;
   private portaledItems: HTMLElement[] = [];
   private originalNextSibling = new Map<HTMLElement, Node | null>();
+  private positionFrameId: number | null = null;
+  private positionTimeoutIds: number[] = [];
+  private menuResizeObserver: ResizeObserver | null = null;
 
   private get activeMenu() {
     return this.portalMenu || this.menu;
@@ -75,6 +78,46 @@ class MuiDropdown extends HTMLElement {
       this.adjustPosition();
     }
   };
+
+  private clearPositionSchedules() {
+    if (this.positionFrameId !== null) {
+      cancelAnimationFrame(this.positionFrameId);
+      this.positionFrameId = null;
+    }
+
+    this.positionTimeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+    this.positionTimeoutIds = [];
+  }
+
+  private schedulePositionUpdate() {
+    this.clearPositionSchedules();
+
+    let frameCount = 0;
+    const reposition = () => {
+      if (!this.activeMenu?.classList.contains("show")) {
+        this.positionFrameId = null;
+        return;
+      }
+
+      this.adjustPosition();
+      frameCount += 1;
+
+      if (frameCount < 4) {
+        this.positionFrameId = requestAnimationFrame(reposition);
+      } else {
+        this.positionFrameId = null;
+      }
+    };
+
+    this.positionFrameId = requestAnimationFrame(reposition);
+    [80, 180, 320].forEach((delay) => {
+      const timeoutId = window.setTimeout(() => {
+        this.positionTimeoutIds = this.positionTimeoutIds.filter((id) => id !== timeoutId);
+        if (this.activeMenu?.classList.contains("show")) this.adjustPosition();
+      }, delay);
+      this.positionTimeoutIds.push(timeoutId);
+    });
+  }
 
   private handleFocusOut = (event: FocusEvent) => {
     if (this.persistent) return; // skip closing if attribute is present
@@ -278,6 +321,9 @@ class MuiDropdown extends HTMLElement {
   disconnectedCallback() {
     this.button?.removeEventListener("click", this.toggleMenu);
     this.button?.removeEventListener("keydown", this.handleActionKeyDown);
+    this.clearPositionSchedules();
+    this.menuResizeObserver?.disconnect();
+    this.menuResizeObserver = null;
     document.removeEventListener("click", this.closeMenu);
     document.removeEventListener("keydown", this.handleKeyDown);
 
@@ -331,7 +377,7 @@ class MuiDropdown extends HTMLElement {
       requestAnimationFrame(() => {
         menu.classList.add("show");
         menu.removeAttribute("inert"); // enable interaction
-        this.adjustPosition();
+        this.schedulePositionUpdate();
       });
       this.button?.setAttribute("aria-expanded", "true");
       MuiDropdown.openDropdown = this;
@@ -405,10 +451,22 @@ class MuiDropdown extends HTMLElement {
       }
       this.portalInner?.appendChild(item);
     });
+
+    if (typeof ResizeObserver !== "undefined" && this.portalMenu) {
+      this.menuResizeObserver?.disconnect();
+      this.menuResizeObserver = new ResizeObserver(() => {
+        if (this.activeMenu?.classList.contains("show")) this.adjustPosition();
+      });
+      this.menuResizeObserver.observe(this.portalMenu);
+    }
   }
 
   private restorePortalItems() {
     if (!this.portalMenu) return;
+
+    this.clearPositionSchedules();
+    this.menuResizeObserver?.disconnect();
+    this.menuResizeObserver = null;
 
     this.portaledItems.forEach((item) => {
       const nextSibling = this.originalNextSibling.get(item);

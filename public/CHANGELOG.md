@@ -97,6 +97,7 @@
 - `mui-media-player` Picture-in-Picture and fullscreen controls now use Safari/WebKit video fallbacks, with Picture-in-Picture hidden when unsupported.
 - Media Player video stories now provide a poster image so iOS Safari has a stable placeholder before playback.
 - `mui-chip-rail` now removes the keyboard-only Skip chip from the tab order when the rail does not overflow.
+- `mui-dropdown` portaled menus now continue repositioning briefly after open and react to menu resize changes, preventing stale placement until window resize.
 
 ---
 

@@ -11,14 +11,18 @@ class compWallet extends HTMLElement {
       :host { 
         display: block;
       }
-        .canvas {
-          background: var(--app-story-wallet-card);
-          padding: var(--space-400);
-          margin-top: calc(var(--space-400) * -1);
-          margin-bottom: calc(var(--space-400) * -1);
-          margin-left: calc(var(--space-400) * -1);
-          margin-right: calc(var(--space-400) * -1);
-        }
+      .canvas {
+        background: var(--app-story-wallet-card);
+        padding: var(--space-400);
+        margin-top: calc(var(--space-400) * -1);
+        margin-bottom: calc(var(--space-400) * -1);
+        margin-left: calc(var(--space-400) * -1);
+        margin-right: calc(var(--space-400) * -1);
+      }
+
+      .card-artwork {
+        --dropdown-radius: var(--radius-400) var(--radius-400) var(--radius-300) var(--radius-300);
+      }
 
     `;
 
@@ -227,8 +231,8 @@ class compWallet extends HTMLElement {
               </mui-v-stack>
               <mui-h-stack space="0" slot="end" alignX="end">
                 <mui-button data-background-reset variant="tertiary" style="display: none;">Reset</mui-button>
-                <mui-dropdown data-toggle-dropdown="background" data-file-preview="true" position="center">
-                  <mui-button slot="action" variant="secondary">
+                <mui-dropdown data-toggle-dropdown="background" data-file-preview="true" position="center" class="card-artwork">
+                  <mui-button slot="action" variant="tertiary">
                     <mui-icon-toggle data-toggle-control="background" rotate>
                       <mui-icon-add slot="start"></mui-icon-add>
                       <mui-icon-subtract slot="end"></mui-icon-subtract>

@@ -1036,7 +1036,7 @@ html[data-theme="dark"] {
 
   /* Dropdown */
   --dropdown-background: var(--grey-1000);
-  --dropdown-border-color: var(--black-opacity-20);
+  --dropdown-border-color: var(--white-opacity-20);
   --dropdown-shadow-color: var(--black-opacity-20);
   --dropdown-button-background-hover: var(--grey-900);
 

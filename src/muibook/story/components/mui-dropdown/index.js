@@ -16,20 +16,12 @@ class storyDropdown extends HTMLElement {
       {
         component: "mui-button",
         parentAttrs: [],
-        childAttrs: [
-          "dropdown-slot",
-          "dropdown-slot-first",
-          "dropdown-slot-last",
-        ],
+        childAttrs: ["dropdown-slot", "dropdown-slot-first", "dropdown-slot-last"],
       },
       {
         component: "mui-link",
         parentAttrs: [],
-        childAttrs: [
-          "dropdown-slot",
-          "dropdown-slot-first",
-          "dropdown-slot-last",
-        ],
+        childAttrs: ["dropdown-slot", "dropdown-slot-first", "dropdown-slot-last"],
       },
     ]);
 
@@ -37,6 +29,14 @@ class storyDropdown extends HTMLElement {
       :host { display: block; }
 
       mui-container { min-width: initial; } 
+
+      .card-artwork {
+        --dropdown-radius: var(--radius-400) var(--radius-400) var(--radius-300) var(--radius-300);
+      }
+
+      .info {
+        --dropdown-radius: var(--radius-400);
+      }
     `;
 
     const stories = /*html*/ `
@@ -271,7 +271,7 @@ class storyDropdown extends HTMLElement {
 
       <story-card id="position-center" title="Position: Center">
         <mui-v-stack slot="body" alignX="center">
-          <mui-dropdown position="center">
+          <mui-dropdown position="center" class="info">
             <mui-button slot="action" variant="secondary"><mui-icon-info size="medium"></mui-icon-info></mui-button>
 
             <mui-v-stack space="var(--space-300)" style="padding: var(--space-300); width: 300px;">
@@ -288,7 +288,7 @@ class storyDropdown extends HTMLElement {
           </mui-dropdown>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown position="center"&gt;<br>
+          &lt;mui-dropdown position="center" class="info"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;...&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-v-stack&gt;...&lt;/mui-v-stack&gt;<br>
           &lt;/mui-dropdown&gt;
@@ -305,7 +305,7 @@ class storyDropdown extends HTMLElement {
           This story demonstrates a card preview where you can upload an image as the card background|||
           Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
-          <mui-dropdown position="center" persistent data-file-preview="true">
+          <mui-dropdown position="center" persistent data-file-preview="true" class="card-artwork">
             <mui-button slot="action" variant="secondary">
                 Card Artwork
                 <mui-icon-add slot="after"></mui-icon-add>
@@ -326,7 +326,7 @@ class storyDropdown extends HTMLElement {
           </mui-dropdown>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown persistent data-file-preview="true" position="center"&gt;<br>
+          &lt;mui-dropdown persistent data-file-preview="true" position="center" class="card-artwork"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="after"&gt;&lt;/mui-icon-add&gt;<br>
@@ -391,7 +391,7 @@ class storyDropdown extends HTMLElement {
           Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
 
-          <mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center">
+          <mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center" class="card-artwork">
             <mui-button slot="action" variant="secondary">
               Card Artwork
               <mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate>
@@ -416,7 +416,7 @@ class storyDropdown extends HTMLElement {
 
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center"&gt;<br>
+          &lt;mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center" class="card-artwork"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate&gt;<br>
@@ -550,7 +550,7 @@ class storyDropdown extends HTMLElement {
         dropdown.toggleAttribute("persistent", open);
       });
 
-      dropdown.addEventListener("focusout", function(event) {
+      dropdown.addEventListener("focusout", function (event) {
         var relatedTarget = event.relatedTarget;
 
         // Ignore if focus is still within the dropdown
@@ -572,7 +572,7 @@ class storyDropdown extends HTMLElement {
       const smartCard = dropdown.querySelector("mui-smart-card");
 
       // Handle file upload
-      dropdown.addEventListener("file-upload", function(event) {
+      dropdown.addEventListener("file-upload", function (event) {
         const file = event.detail.file;
         if (!file) return;
 
