@@ -53,7 +53,7 @@ class tokensSemantic extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="text::Text|||font-weight::Font Weight|||border::Border|||shadow::Shadow|||outline::Outline|||overlay::Overlay|||categorical::Categorical|||feedback::Feedback|||form::Form|||action::Action|||surface::Surface"
+          links="text::Text|||font-weight::Font Weight|||border::Border|||shadow::Shadow|||outline::Outline|||backdrop::Backdrop|||categorical::Categorical|||feedback::Feedback|||form::Form|||action::Action|||surface::Surface"
         ></story-quicklinks>
 
           <spec-card id="text" title="Text">
@@ -106,7 +106,7 @@ class tokensSemantic extends HTMLElement {
           <story-token-slat slot="body" token="--outline-thick" variant="outline"></story-token-slat>
           </spec-card>
 
-          <spec-card id="overlay" title="Overlay">
+          <spec-card id="backdrop" title="Backdrop">
            <story-token-slat slot="body" token="--backdrop-overlay" variant="color"></story-token-slat>  
           </spec-card>
 
@@ -290,6 +290,18 @@ class tokensSemantic extends HTMLElement {
 
           <spec-card id="surface" title="Surface" description="Surface tokens define the background layers of the interface. They create depth and support elevation across contexts. Light and dark modes aren’t simple color inversions; they’re carefully designed to preserve consistent elevation and stacking across all surfaces.">
 
+            <story-token-slat slot="body" token="--surface-recessed-300" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-recessed-200" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-recessed-100" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-recessed-alpha" variant="color">
+            </story-token-slat>
+
             <story-token-slat slot="body" token="--surface" variant="color">
             </story-token-slat>
 
@@ -302,13 +314,7 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--surface-elevated-200" variant="color">
             </story-token-slat>
 
-            <story-token-slat slot="body" token="--surface-recessed-alpha" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface-recessed-100" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface-recessed-200" variant="color">
+            <story-token-slat slot="body" token="--surface-elevated-300" variant="color">
             </story-token-slat>
 
           </spec-card>

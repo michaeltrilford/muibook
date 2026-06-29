@@ -42,7 +42,7 @@
   --categorical-indigo-200: oklch(69.039% 0.10593 274.775);
   --categorical-indigo-800: oklch(38.197% 0.13614 269.807);
 
-  /* Avatar colour aliases. Prefer --categorical-* for shared component colour foundations. */
+  /* Avatar colour aliases */
   --avatar-purple-200: var(--categorical-purple-200);
   --avatar-purple-800: var(--categorical-purple-800);
   --avatar-violet-200: var(--categorical-violet-200);
@@ -100,6 +100,7 @@ html[data-theme="light"] {
   --categorical-cyan: var(--categorical-cyan-200);
   --categorical-blue: var(--categorical-blue-200);
   --categorical-indigo: var(--categorical-indigo-200);
+
   /* Form */
   --form-default-text-color: var(--grey-900);
   --form-success-text-color: var(--green-700);
@@ -117,45 +118,45 @@ html[data-theme="light"] {
   --form-success-border-color-hover: var(--green-700);
   --form-warning-border-color-hover: var(--orange-700);
   --form-error-border-color-hover: var(--red-700);
-  --form-default-placeholder-color: var(--grey-500);
   --form-default-placeholder-color-hover: var(--grey-700);
   --form-default-placeholder-color-focus: var(--grey-700);
-  --form-default-placeholder-color-disabled: var(--grey-500);
+
   /* Feedback - Border (Alerts & Messages) */
   --feedback-neutral-border-color: var(--black-opacity-20);
   --feedback-positive-border-color: var(--green-600);
   --feedback-info-border-color: var(--blue-600);
   --feedback-warning-border-color: var(--orange-600);
   --feedback-attention-border-color: var(--red-600);
+
   /* Feedback - Background (Alerts & Messages) */
   --feedback-neutral-background: var(--white);
   --feedback-positive-background: var(--green-100);
   --feedback-info-background: var(--blue-100);
   --feedback-warning-background: var(--orange-100);
   --feedback-attention-background: var(--red-100);
+
   /* Feedback - Icon (Alerts & Messages) */
   --feedback-neutral-icon: var(--grey-600);
   --feedback-positive-icon: var(--green-600);
   --feedback-info-icon: var(--blue-600);
   --feedback-warning-icon: var(--orange-600);
   --feedback-attention-icon: var(--red-600);
+
   /* Feedback - Text (Alerts & Messages) */
   --feedback-neutral-text: var(--grey-900);
   --feedback-positive-text: var(--green-900);
   --feedback-info-text: var(--blue-900);
   --feedback-warning-text: var(--orange-900);
   --feedback-attention-text: var(--red-900);
+
   /* Feedback - Action (Button & Link) */
   --feedback-neutral-action-background: var(--grey-200);
   --feedback-positive-action-background: var(--green-200);
   --feedback-info-action-background: var(--blue-200);
   --feedback-warning-action-background: var(--orange-200);
   --feedback-attention-action-background: var(--red-200);
+
   /* Action - Primary (Button & Link) */
-  --action-primary-border-color: var(--black-opacity-0);
-  --action-primary-border-color-hover: var(--black-opacity-0);
-  --action-primary-border-color-focus: var(--black-opacity-0);
-  --action-primary-border-color-disabled: var(--black-opacity-0);
   --action-primary-background: var(--grey-900);
   --action-primary-background-hover: var(--grey-1000);
   --action-primary-background-focus: var(--grey-1000);
@@ -163,7 +164,7 @@ html[data-theme="light"] {
   --action-primary-text-color: var(--white);
   --action-primary-text-color-hover: var(--white);
   --action-primary-text-color-focus: var(--white);
-  --action-primary-text-color-disabled: var(--grey-400);
+
   /* Action - Secondary (Button & Link) */
   --action-secondary-border-color: var(--grey-800);
   --action-secondary-border-color-hover: var(--grey-800);
@@ -177,11 +178,8 @@ html[data-theme="light"] {
   --action-secondary-text-color-hover: var(--grey-1000);
   --action-secondary-text-color-focus: var(--grey-1000);
   --action-secondary-text-color-disabled: var(--grey-400);
+
   /* Action - Tertiary (Button & Link) */
-  --action-tertiary-border-color: var(--black-opacity-0);
-  --action-tertiary-border-color-hover: var(--black-opacity-0);
-  --action-tertiary-border-color-focus: var(--black-opacity-0);
-  --action-tertiary-border-color-disabled: var(--black-opacity-0);
   --action-tertiary-background: var(--white-opacity-0);
   --action-tertiary-background-hover: var(--black-opacity-10);
   --action-tertiary-background-focus: var(--black-opacity-10);
@@ -190,48 +188,34 @@ html[data-theme="light"] {
   --action-tertiary-text-color-hover: var(--grey-1000);
   --action-tertiary-text-color-focus: var(--grey-1000);
   --action-tertiary-text-color-disabled: var(--grey-400);
-  /* Action - Overlay (Button & Link) */
-  --action-overlay-border-color: var(--white-opacity-30);
-  --action-overlay-border-color-hover: var(--white-opacity-30);
-  --action-overlay-border-color-focus: var(--white-opacity-30);
-  --action-overlay-border-color-disabled: var(--white-opacity-20);
-  --action-overlay-background: var(--black-opacity-60);
-  --action-overlay-background-hover: var(--black-opacity-70);
-  --action-overlay-background-focus: var(--black-opacity-70);
-  --action-overlay-background-disabled: var(--black-opacity-40);
-  --action-overlay-text-color: var(--white);
-  --action-overlay-text-color-hover: var(--white);
-  --action-overlay-text-color-focus: var(--white);
-  --action-overlay-text-color-disabled: var(--white-opacity-40);
+
   /* Action - Attention (Button & Link) */
-  --action-attention-border-color: var(--black-opacity-0);
-  --action-attention-border-color-hover: var(--black-opacity-0);
-  --action-attention-border-color-focus: var(--black-opacity-0);
-  --action-attention-border-color-disabled: var(--black-opacity-0);
   --action-attention-background: var(--red-500);
   --action-attention-background-hover: var(--red-600);
   --action-attention-background-focus: var(--red-600);
   --action-attention-background-disabled: var(--red-100);
-  --action-attention-text-color: var(--white);
-  --action-attention-text-color-hover: var(--white);
-  --action-attention-text-color-focus: var(--white);
-  --action-attention-text-color-disabled: var(--red-300);
+
   /* Action - Avatar (Button & Link) */
   --action-avatar-background: var(--grey-200);
   --action-avatar-background-hover: var(--grey-300);
+
   /* Surface */
   --surface: var(--grey-200);
   --surface-elevated-alpha: var(--white-opacity-50);
   --surface-elevated-100: var(--white);
   --surface-elevated-200: var(--grey-100);
   --surface-elevated-300: var(--grey-200);
-  --code-background: var(--surface-elevated-200);
+  --surface-recessed-alpha: var(--black-opacity-10);
+  --surface-recessed-100: var(--grey-300);
+  --surface-recessed-200: var(--grey-400);
+  --surface-recessed-300: var(--grey-500);
+
+  /* Prompt */
   --prompt-preview-dismiss-border-color: var(--black-opacity-30);
   --prompt-preview-box-drop-shadow: drop-shadow(
     0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-10)
   );
   --prompt-preview-surface: var(--surface-elevated-100);
-  --prompt-preview-code-background: var(--code-background);
   --prompt-preview-accent-mix-100: 10%;
   --prompt-preview-accent-mix-200: 8%;
   --prompt-preview-accent-mix-300: 6%;
@@ -241,67 +225,27 @@ html[data-theme="light"] {
   --prompt-preview-dismiss-secondary-background-hover: var(--grey-200);
   --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--black-opacity-30);
   --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--black-opacity-50);
-  --prompt-preview-top-shade-height: calc(var(--space-600) + var(--space-100));
   --prompt-preview-top-shade-start: var(--black-opacity-10);
-  --prompt-preview-top-shade-end: var(--black-opacity-0);
-  --prompt-preview-top-shade-start-overlay: var(--black-opacity-50);
-  --prompt-preview-top-shade-end-overlay: var(--black-opacity-0);
-  --prompt-border-color-hover: var(--form-default-border-color-hover);
   --prompt-border-color-focus: var(--blue-500);
-  --prompt-hover-ring-color: var(--outline-color);
   --prompt-hover-glow-color: var(--mui-brand-400);
   --prompt-focus-ring-color: var(--mui-brand-400);
   --prompt-focus-glow-color: var(--mui-brand-400);
   --prompt-spectrum-start: var(--mui-brand-400);
-  --prompt-spectrum-mid: var(--outline-color);
   --prompt-spectrum-end: var(--blue-500);
   --prompt-focus-surface-background: var(--surface-elevated-100);
-  --prompt-accent-primary: var(--prompt-spectrum-start);
-  --prompt-accent-secondary: var(--prompt-spectrum-end);
-  --prompt-hover-sweep-speed: 1400ms;
-  --prompt-focus-pulse-speed: 1400ms;
   --prompt-surface-filter: drop-shadow(0 var(--stroke-size-100) 0 var(--black-opacity-5));
-  --prompt-placeholder-color: var(--form-default-placeholder-color);
-  --prompt-placeholder-color-hover: var(--form-default-placeholder-color-hover);
-  --prompt-placeholder-color-focus: var(--form-default-placeholder-color-focus);
-  --slide-frame-background: var(--surface-elevated-100);
-  --slide-frame-border-color: var(--border-color);
-  --slide-frame-background-present: var(--slide-frame-background);
+
+  /* Media Player */
   --media-player-seek-color: var(--grey-1200);
   --media-player-seek-time-background: var(--surface-elevated-100);
   --media-player-seek-time-border-color: var(--border-color);
-  --media-player-range-color: var(--media-player-seek-color);
-  --media-player-range-thumb-color: var(--media-player-seek-color);
   --media-player-range-track-color: var(--black-opacity-20);
   --media-player-range-preview-color: var(--black-opacity-40);
-  --media-player-control-background: var(--surface-elevated-200);
-  --media-player-control-color: var(--text-color);
   --media-player-center-action-background: var(--surface-elevated-300);
-  --media-player-center-action-overlay-background: var(--black-opacity-80);
-  --media-player-center-action-overlay-background-hover: var(--black-opacity-90);
-  --media-player-controls-peek-background: var(--white);
   --media-player-controls-peek-shadow: 0 var(--stroke-size-100) 0 0 var(--black-opacity-30);
   --media-player-audio-controls-peek-background: var(--grey-900);
   --media-player-audio-controls-peek-shadow: 0 var(--stroke-size-100) 0 0 var(--white-opacity-30);
-  --media-player-frame-shadow: var(--shadow-medium);
-  --media-player-video-shadow: var(--shadow-thick);
-  --media-player-artwork-shadow: var(--shadow-medium);
-  --media-player-thumbnail-shadow: var(--shadow-thin);
-  --media-player-dark-thumbnail-border: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-40);
-  --media-player-dark-thumbnail-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-30);
-  --media-player-meta-icon-shadow: var(--shadow-thin);
-  --media-player-range-thumb-shadow: var(--shadow-thin);
   --media-player-meta-text-shadow: none;
-  --media-player-surface-overlay-start: var(--surface-elevated-100);
-  --media-player-surface-overlay-end: var(--surface-elevated-200);
-  --media-player-dark-background: var(--black);
-  --media-player-dark-control-color: var(--white);
-  --media-player-dark-range-color: var(--white);
-  --media-player-dark-range-thumb-color: var(--white);
-  --media-player-dark-range-track-color: var(--white-opacity-30);
-  --media-player-dark-range-thumb-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-40);
-  --media-player-dark-control-background-hover: var(--white-opacity-10);
-  --media-player-dark-overlay-background: var(--black-opacity-50);
   --media-player-dark-overlay-controls-background: var(--black-opacity-80);
   --media-player-waveform-color: var(--black-opacity-50);
   --media-player-waveform-mirror-color: var(--black-opacity-30);
@@ -309,23 +253,19 @@ html[data-theme="light"] {
   --media-player-waveform-active-mirror-color: var(--black-opacity-40);
   --media-player-waveform-current-color: var(--black-opacity-80);
   --media-player-waveform-current-mirror-color: var(--black-opacity-40);
-  --range-input-accent-color: var(--media-player-seek-color);
-  --range-input-bubble-background: var(--media-player-seek-time-background);
-  --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
-  --skeleton-background: var(--surface-elevated-200);
+
+  /* Skeleton */
   --skeleton-highlight: var(--white-opacity-70);
-  --skeleton-radius: var(--radius-200);
-  --skeleton-animation-speed: 2000ms;
-  --skeleton-gap: var(--space-200);
-  --surface-recessed-alpha: var(--black-opacity-10);
-  --surface-recessed-100: var(--grey-300);
-  --surface-recessed-200: var(--grey-400);
+
+  /* Shadow */
   --shadow-color-thin: var(--grey-300);
   --shadow-color-medium: var(--grey-300);
   --shadow-color-thick: var(--grey-400);
+
   /* Stroke */
   --outline-color: var(--blue-500);
   --border-color: var(--black-opacity-20);
+
   /* Text */
   --text-color: var(--grey-900);
   --text-color-info: var(--blue-600);
@@ -333,35 +273,25 @@ html[data-theme="light"] {
   --text-color-warning: var(--orange-600);
   --text-color-error: var(--red-600);
   --text-color-optional: var(--grey-500);
-  /* Overlay */
-  --backdrop-overlay: var(--black-opacity-70);
+
   /* ================================================================================================== */
   /* Components                                                                                         */
   /* ================================================================================================== */
   /* Switch */
   --switch-track-background: var(--grey-300);
-  --switch-track-background-checked: var(--green-500);
   --switch-thumb-bg: var(--white);
-  --switch-icon: var(--icon-color-default);
+
   /* Icon */
   --icon-color-default: var(--black);
   --icon-color-inverted: var(--white);
-  --illustration-main-color-default: var(--icon-color-default);
-  --illustration-main-color-inverted: var(--icon-color-inverted);
   --illustration-shadow-color-default: var(--black-opacity-20);
   --illustration-shadow-color-inverted: var(--white-opacity-20);
-  --illustration-size-x-small: 6.4rem;
-  --illustration-size-small: 8rem;
-  --illustration-size-medium: 9.6rem;
-  --illustration-size-large: 11.2rem;
-  --illustration-size-x-large: 12.8rem;
+
   /* Badge */
-  --badge-text-color: var(--grey-900);
   --badge-background-neutral: var(--grey-200);
   --badge-background-positive: color-mix(in srgb, var(--green-300) 100%, white 30%);
   --badge-background-warning: color-mix(in srgb, var(--orange-300) 100%, white 30%);
   --badge-background-attention: color-mix(in srgb, var(--red-300) 100%, white 30%);
-  --badge-background-overlay: var(--black-opacity-60);
   --badge-background-grey: color-mix(in srgb, var(--grey-200) 100%, black 0%);
   --badge-background-purple: color-mix(in srgb, var(--categorical-purple-200) 100%, white 60%);
   --badge-background-violet: color-mix(in srgb, var(--categorical-violet-200) 100%, white 60%);
@@ -378,14 +308,16 @@ html[data-theme="light"] {
   --badge-background-blue: color-mix(in srgb, var(--categorical-blue-200) 100%, white 40%);
   --badge-background-indigo: color-mix(in srgb, var(--categorical-indigo-200) 100%, white 40%);
   --badge-text-color-overlay: var(--white);
-  --badge-border-overlay: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
+
   /* Heading */
   --heading-text-color: var(--grey-1000);
+
   /* Link */
   --link-text-color-default: var(--grey-900);
   --link-text-color-default-hover: var(--grey-1000);
   --link-text-color-default-focus: var(--grey-1000);
   --link-text-color-default-disabled: var(--grey-800);
+
   /* Input */
   --input-background: var(--white);
   --input-background-disabled: var(--grey-100);
@@ -394,35 +326,29 @@ html[data-theme="light"] {
   --checkbox-background: var(--white);
   --checkbox-background-checked: var(--grey-900);
   --checkbox-icon-color-checked: var(--grey-200);
-
   --checkbox-background-disabled: var(--grey-100);
   --checkbox-background-checked-disabled: var(--grey-800);
   --checkbox-icon-color-checked-disabled: var(--grey-100);
+
   /* Radio */
   --radio-background: var(--white);
-  --radio-border-color: var(--form-default-border-color);
-  --radio-border-color-hover: var(--form-default-border-color-hover);
   --radio-border-color-checked: var(--grey-900);
   --radio-dot-color-checked: var(--grey-900);
   --radio-background-disabled: var(--grey-100);
   --radio-border-color-disabled: var(--grey-300);
-  --radio-dot-color-checked-disabled: var(--grey-500);
 
   /* Addon */
   --addon-background: var(--grey-100);
+
   /* Tabs */
   --tab-border-color: var(--grey-300);
-
   --tab-background: var(--grey-200);
   --tab-icon: var(--grey-900);
   --tab-text-color: var(--grey-900);
-
   --tab-background-active: var(--white);
   --tab-icon-active: var(--black);
   --tab-text-color-active: var(--black);
   --tab-shadow-active-color: var(--black-opacity-10);
-  --tab-shadow-active: 0 0 var(--stroke-size-400) var(--stroke-size-400) var(--tab-shadow-active-color);
-  --tabs-ghost-box-shadow: none;
   --tab-dot-color: var(--grey-300);
   --tab-dot-color-active: var(--grey-900);
 
@@ -432,8 +358,6 @@ html[data-theme="light"] {
   /* Slat */
   --slat-background: var(--white-opacity-60);
   --slat-background-hover: var(--white-opacity-90);
-  --slat-card-background: var(--surface-elevated-100);
-  --slat-card-background-hover: var(--surface-elevated-200);
   --slat-avatar-background: var(--black-opacity-10);
   --slat-avatar-background-hover: var(--black-opacity-20);
   --slat-card-avatar-background: var(--black-opacity-10);
@@ -444,21 +368,6 @@ html[data-theme="light"] {
   --avatar-background-positive: var(--green-200);
   --avatar-background-warning: var(--orange-200);
   --avatar-background-attention: var(--red-200);
-
-  --avatar-background-purple: var(--categorical-purple);
-  --avatar-background-violet: var(--categorical-violet);
-  --avatar-background-pink: var(--categorical-pink);
-  --avatar-background-magenta: var(--categorical-magenta);
-  --avatar-background-red: var(--categorical-red);
-  --avatar-background-orange: var(--categorical-orange);
-  --avatar-background-amber: var(--categorical-amber);
-  --avatar-background-yellow: var(--categorical-yellow);
-  --avatar-background-lime: var(--categorical-lime);
-  --avatar-background-green: var(--categorical-green);
-  --avatar-background-teal: var(--categorical-teal);
-  --avatar-background-cyan: var(--categorical-cyan);
-  --avatar-background-blue: var(--categorical-blue);
-  --avatar-background-indigo: var(--categorical-indigo);
 
   /* Status */
   --status-positive-background: var(--green-100);
@@ -473,7 +382,6 @@ html[data-theme="light"] {
   --status-attention-background: var(--red-100);
   --status-attention-border-color: var(--red-500);
   --status-attention-text-color: var(--red-1000);
-
   --status-grey-background: color-mix(in srgb, var(--grey-200) 72%, white 28%);
   --status-grey-border-color: var(--grey-400);
   --status-grey-text-color: color-mix(in srgb, var(--grey-1000) 72%, black 28%);
@@ -531,13 +439,11 @@ html[data-theme="light"] {
   --chip-border-color-focus: var(--grey-300);
   --chip-border-color-active: var(--grey-1000);
   --chip-text-color-active: var(--grey-1000);
-  --chip-text-color-disabled: var(--grey-400);
   --chip-icon-fill: var(--black);
   --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-5));
   --chip-dismiss-action-background: var(--grey-150);
   --chip-dismiss-action-background-hover: var(--black-opacity-0);
   --chip-dismiss-action-background-disabled: var(--grey-200);
-  --chip-dismiss-action-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-0));
 
   /* Dropdown */
   --dropdown-background: var(--grey-100);
@@ -547,30 +453,20 @@ html[data-theme="light"] {
 
   /* Progress */
   --progress-bar-background: var(--blue-600);
-  --progress-bar-background-positive: var(--feedback-positive-border-color);
-  --progress-bar-background-warning: var(--feedback-warning-border-color);
-  --progress-bar-background-attention: var(--feedback-attention-border-color);
   --progress-track-background: var(--grey-200);
   --progress-loading-bar-100: var(--grey-200);
   --progress-loading-bar-200: var(--grey-300);
-  --progress-syncing-bar-background: var(--progress-bar-background);
 
   /* Stepper */
   --stepper-color: var(--grey-700);
-  --stepper-background-active: var(--stepper-color);
   --stepper-background-inactive: var(--white);
-  --stepper-border-color: var(--stepper-color);
-  --stepper-text-color-active: var(--stepper-color);
   --stepper-icon-color: var(--white);
-  --stepper-success-color: var(--stepper-color);
   --stepper-warning-color: var(--orange-700);
   --stepper-error-color: var(--text-color-error);
-  --stepper-disabled-color: var(--text-color-optional);
   --stepper-disabled-opacity: 0.75;
 
   /* Dialog */
   --dialog-background: var(--white);
-  --dialog-border: none;
 
   /* Drawer */
   --drawer-background: var(--white);
@@ -598,6 +494,7 @@ html[data-theme="dark"] {
   --categorical-cyan: var(--categorical-cyan-800);
   --categorical-blue: var(--categorical-blue-800);
   --categorical-indigo: var(--categorical-indigo-800);
+
   /* Form */
   --form-default-text-color: var(--grey-200);
   --form-success-text-color: var(--green-400);
@@ -615,45 +512,45 @@ html[data-theme="dark"] {
   --form-success-border-color-hover: var(--green-300);
   --form-warning-border-color-hover: var(--orange-300);
   --form-error-border-color-hover: var(--red-300);
-  --form-default-placeholder-color: var(--grey-500);
   --form-default-placeholder-color-hover: var(--grey-400);
   --form-default-placeholder-color-focus: var(--grey-400);
-  --form-default-placeholder-color-disabled: var(--grey-500);
+
   /* Feedback - Border (Alerts & Messages) */
   --feedback-neutral-border-color: var(--white-opacity-20);
   --feedback-positive-border-color: var(--green-400);
   --feedback-info-border-color: var(--blue-400);
   --feedback-warning-border-color: var(--orange-400);
   --feedback-attention-border-color: var(--red-400);
+
   /* Feedback - Background (Alerts & Messages) */
   --feedback-neutral-background: var(--grey-800);
   --feedback-positive-background: var(--green-800);
   --feedback-info-background: var(--blue-800);
   --feedback-warning-background: var(--orange-800);
   --feedback-attention-background: var(--red-800);
+
   /* Feedback - Icon (Alerts & Messages) */
   --feedback-neutral-icon: var(--grey-200);
   --feedback-positive-icon: var(--green-200);
   --feedback-info-icon: var(--blue-200);
   --feedback-warning-icon: var(--orange-200);
   --feedback-attention-icon: var(--red-200);
+
   /* Feedback - Text (Alerts & Messages) */
   --feedback-neutral-text: var(--grey-100);
   --feedback-positive-text: var(--green-100);
   --feedback-info-text: var(--blue-100);
   --feedback-warning-text: var(--orange-100);
   --feedback-attention-text: var(--red-100);
+
   /* Feedback - Action (Button & Link) */
   --feedback-neutral-action-background: var(--grey-900);
   --feedback-positive-action-background: var(--green-900);
   --feedback-info-action-background: var(--blue-900);
   --feedback-warning-action-background: var(--orange-900);
   --feedback-attention-action-background: var(--red-900);
+
   /* Action - Primary (Button & Link) */
-  --action-primary-border-color: var(--black-opacity-0);
-  --action-primary-border-color-hover: var(--black-opacity-0);
-  --action-primary-border-color-focus: var(--black-opacity-0);
-  --action-primary-border-color-disabled: var(--black-opacity-0);
   --action-primary-background: var(--grey-200);
   --action-primary-background-hover: var(--grey-100);
   --action-primary-background-focus: var(--grey-100);
@@ -661,7 +558,7 @@ html[data-theme="dark"] {
   --action-primary-text-color: var(--grey-900);
   --action-primary-text-color-hover: var(--grey-900);
   --action-primary-text-color-focus: var(--grey-900);
-  --action-primary-text-color-disabled: var(--grey-400);
+
   /* Action - Secondary (Button & Link) */
   --action-secondary-border-color: var(--grey-200);
   --action-secondary-border-color-hover: var(--grey-200);
@@ -675,11 +572,8 @@ html[data-theme="dark"] {
   --action-secondary-text-color-hover: var(--grey-100);
   --action-secondary-text-color-focus: var(--grey-100);
   --action-secondary-text-color-disabled: var(--grey-600);
+
   /* Action - Tertiary (Button & Link) */
-  --action-tertiary-border-color: var(--black-opacity-0);
-  --action-tertiary-border-color-hover: var(--black-opacity-0);
-  --action-tertiary-border-color-focus: var(--black-opacity-0);
-  --action-tertiary-border-color-disabled: var(--black-opacity-0);
   --action-tertiary-background: var(--black-opacity-0);
   --action-tertiary-background-hover: var(--white-opacity-10);
   --action-tertiary-background-focus: var(--white-opacity-10);
@@ -688,32 +582,13 @@ html[data-theme="dark"] {
   --action-tertiary-text-color-hover: var(--grey-100);
   --action-tertiary-text-color-focus: var(--grey-100);
   --action-tertiary-text-color-disabled: var(--grey-600);
-  /* Action - Overlay (Button & Link) */
-  --action-overlay-border-color: var(--white-opacity-30);
-  --action-overlay-border-color-hover: var(--white-opacity-30);
-  --action-overlay-border-color-focus: var(--white-opacity-30);
-  --action-overlay-border-color-disabled: var(--white-opacity-20);
-  --action-overlay-background: var(--black-opacity-60);
-  --action-overlay-background-hover: var(--black-opacity-70);
-  --action-overlay-background-focus: var(--black-opacity-70);
-  --action-overlay-background-disabled: var(--black-opacity-40);
-  --action-overlay-text-color: var(--white);
-  --action-overlay-text-color-hover: var(--white);
-  --action-overlay-text-color-focus: var(--white);
-  --action-overlay-text-color-disabled: var(--white-opacity-40);
+
   /* Action - Attention (Button & Link) */
-  --action-attention-border-color: var(--black-opacity-0);
-  --action-attention-border-color-hover: var(--black-opacity-0);
-  --action-attention-border-color-focus: var(--black-opacity-0);
-  --action-attention-border-color-disabled: var(--black-opacity-0);
   --action-attention-background: var(--red-600);
   --action-attention-background-hover: var(--red-700);
   --action-attention-background-focus: var(--red-700);
   --action-attention-background-disabled: var(--red-900);
-  --action-attention-text-color: var(--white);
-  --action-attention-text-color-hover: var(--white);
-  --action-attention-text-color-focus: var(--white);
-  --action-attention-text-color-disabled: var(--red-300);
+
   /* Action - Avatar (Button & Link) */
   --action-avatar-background: var(--grey-1000);
   --action-avatar-background-hover: var(--grey-1100);
@@ -723,13 +598,18 @@ html[data-theme="dark"] {
   --surface-elevated-alpha: var(--white-opacity-10);
   --surface-elevated-100: var(--grey-800);
   --surface-elevated-200: var(--grey-900);
-  --code-background: var(--surface-elevated-200);
+  --surface-elevated-300: var(--grey-1000);
+  --surface-recessed-alpha: var(--black-opacity-30);
+  --surface-recessed-100: var(--grey-1000);
+  --surface-recessed-200: var(--grey-1100);
+  --surface-recessed-300: var(--grey-1200);
+
+  /* Prompt */
   --prompt-preview-dismiss-border-color: var(--white-opacity-30);
   --prompt-preview-box-drop-shadow: drop-shadow(
     0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20)
   );
   --prompt-preview-surface: var(--surface-elevated-200);
-  --prompt-preview-code-background: var(--code-background);
   --prompt-preview-accent-mix-100: 14%;
   --prompt-preview-accent-mix-200: 10%;
   --prompt-preview-accent-mix-300: 8%;
@@ -739,67 +619,27 @@ html[data-theme="dark"] {
   --prompt-preview-dismiss-secondary-background-hover: var(--surface-recessed-200);
   --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
   --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-50);
-  --prompt-preview-top-shade-height: calc(var(--space-600) + var(--space-100));
   --prompt-preview-top-shade-start: var(--black-opacity-30);
-  --prompt-preview-top-shade-end: var(--black-opacity-0);
-  --prompt-preview-top-shade-start-overlay: var(--black-opacity-50);
-  --prompt-preview-top-shade-end-overlay: var(--black-opacity-0);
-  --prompt-border-color-hover: var(--form-default-border-color-hover);
   --prompt-border-color-focus: var(--blue-300);
-  --prompt-hover-ring-color: var(--outline-color);
   --prompt-hover-glow-color: var(--mui-brand-300);
   --prompt-focus-ring-color: var(--mui-brand-300);
   --prompt-focus-glow-color: var(--mui-brand-300);
   --prompt-spectrum-start: var(--mui-brand-300);
-  --prompt-spectrum-mid: var(--outline-color);
   --prompt-spectrum-end: var(--blue-300);
   --prompt-focus-surface-background: var(--grey-1200);
-  --prompt-accent-primary: var(--prompt-spectrum-start);
-  --prompt-accent-secondary: var(--prompt-spectrum-end);
-  --prompt-hover-sweep-speed: 1400ms;
-  --prompt-focus-pulse-speed: 1400ms;
   --prompt-surface-filter: drop-shadow(0 var(--stroke-size-100) 0 var(--black-opacity-10));
-  --prompt-placeholder-color: var(--form-default-placeholder-color);
-  --prompt-placeholder-color-hover: var(--form-default-placeholder-color-hover);
-  --prompt-placeholder-color-focus: var(--form-default-placeholder-color-focus);
-  --slide-frame-background: var(--surface-elevated-100);
-  --slide-frame-border-color: var(--border-color);
-  --slide-frame-background-present: var(--slide-frame-background);
+
+  /* Media Player */
   --media-player-seek-color: var(--white);
   --media-player-seek-time-background: var(--surface-recessed-100);
   --media-player-seek-time-border-color: var(--white-opacity-20);
-  --media-player-range-color: var(--media-player-seek-color);
-  --media-player-range-thumb-color: var(--media-player-seek-color);
   --media-player-range-track-color: var(--white-opacity-20);
   --media-player-range-preview-color: var(--white-opacity-50);
-  --media-player-control-background: var(--surface-elevated-200);
-  --media-player-control-color: var(--text-color);
   --media-player-center-action-background: var(--surface-elevated-200);
-  --media-player-center-action-overlay-background: var(--black-opacity-80);
-  --media-player-center-action-overlay-background-hover: var(--black-opacity-90);
-  --media-player-controls-peek-background: var(--white);
   --media-player-controls-peek-shadow: 0 var(--stroke-size-100) 0 0 var(--white-opacity-30);
   --media-player-audio-controls-peek-background: var(--white);
   --media-player-audio-controls-peek-shadow: 0 var(--stroke-size-100) 0 0 var(--black-opacity-30);
-  --media-player-frame-shadow: var(--shadow-medium);
-  --media-player-video-shadow: var(--shadow-thick);
-  --media-player-artwork-shadow: var(--shadow-medium);
-  --media-player-thumbnail-shadow: var(--shadow-thin);
-  --media-player-dark-thumbnail-border: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-40);
-  --media-player-dark-thumbnail-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-30);
-  --media-player-meta-icon-shadow: var(--shadow-thin);
-  --media-player-range-thumb-shadow: var(--shadow-thin);
   --media-player-meta-text-shadow: 0 var(--stroke-size-100) var(--stroke-size-300) var(--black-opacity-30);
-  --media-player-surface-overlay-start: var(--surface-elevated-100);
-  --media-player-surface-overlay-end: var(--surface-elevated-200);
-  --media-player-dark-background: var(--black);
-  --media-player-dark-control-color: var(--white);
-  --media-player-dark-range-color: var(--white);
-  --media-player-dark-range-thumb-color: var(--white);
-  --media-player-dark-range-track-color: var(--white-opacity-30);
-  --media-player-dark-range-thumb-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-40);
-  --media-player-dark-control-background-hover: var(--white-opacity-10);
-  --media-player-dark-overlay-background: var(--black-opacity-50);
   --media-player-dark-overlay-controls-background: var(--black-opacity-90);
   --media-player-waveform-color: var(--white-opacity-50);
   --media-player-waveform-mirror-color: var(--white-opacity-30);
@@ -807,25 +647,19 @@ html[data-theme="dark"] {
   --media-player-waveform-active-mirror-color: var(--white-opacity-60);
   --media-player-waveform-current-color: var(--white-opacity-80);
   --media-player-waveform-current-mirror-color: var(--white-opacity-40);
-  --range-input-accent-color: var(--media-player-seek-color);
-  --range-input-bubble-background: var(--media-player-seek-time-background);
-  --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
-  --skeleton-background: var(--surface-elevated-200);
+
+  /* Skeleton */
   --skeleton-highlight: var(--white-opacity-30);
-  --skeleton-radius: var(--radius-200);
-  --skeleton-animation-speed: 2000ms;
-  --skeleton-gap: var(--space-200);
-  --surface-elevated-300: var(--grey-1000);
-  --surface-recessed-alpha: var(--black-opacity-30);
-  --surface-recessed-100: var(--grey-1000);
-  --surface-recessed-200: var(--grey-1100);
-  --surface-recessed-300: var(--grey-1200);
+
+  /* Shadow */
   --shadow-color-thin: var(--black-opacity-20);
   --shadow-color-medium: var(--black-opacity-20);
   --shadow-color-thick: var(--black-opacity-30);
+
   /* Stroke */
   --outline-color: var(--blue-300);
   --border-color: var(--white-opacity-20);
+
   /* Text */
   --text-color: var(--grey-200);
   --text-color-info: var(--blue-400);
@@ -833,35 +667,25 @@ html[data-theme="dark"] {
   --text-color-warning: var(--orange-400);
   --text-color-error: var(--red-400);
   --text-color-optional: var(--grey-400);
-  /* Overlay */
-  --backdrop-overlay: var(--black-opacity-70);
+
   /* ================================================================================================== */
   /* Components                                                                                         */
   /* ================================================================================================== */
   /* Switch */
   --switch-track-background: var(--grey-600);
-  --switch-track-background-checked: var(--green-500);
   --switch-thumb-bg: var(--black);
-  --switch-icon: var(--icon-color-default);
+
   /* Icon */
   --icon-color-default: var(--white);
   --icon-color-inverted: var(--black);
-  --illustration-main-color-default: var(--icon-color-default);
-  --illustration-main-color-inverted: var(--icon-color-inverted);
   --illustration-shadow-color-default: var(--black-opacity-30);
   --illustration-shadow-color-inverted: var(--black-opacity-20);
-  --illustration-size-x-small: 6.4rem;
-  --illustration-size-small: 8rem;
-  --illustration-size-medium: 9.6rem;
-  --illustration-size-large: 11.2rem;
-  --illustration-size-x-large: 12.8rem;
+
   /* Badge */
-  --badge-text-color: var(--grey-900);
   --badge-background-neutral: var(--grey-400);
   --badge-background-positive: var(--green-400);
   --badge-background-warning: color-mix(in srgb, var(--orange-400) 100%, white 25%);
   --badge-background-attention: color-mix(in srgb, var(--red-400) 100%, white 25%);
-  --badge-background-overlay: var(--black-opacity-60);
   --badge-background-grey: color-mix(in srgb, var(--grey-400) 100%, white 0%);
   --badge-background-purple: color-mix(in srgb, var(--categorical-purple-200) 100%, white 0%);
   --badge-background-violet: color-mix(in srgb, var(--categorical-violet-200) 100%, white 0%);
@@ -878,17 +702,20 @@ html[data-theme="dark"] {
   --badge-background-blue: color-mix(in srgb, var(--categorical-blue-200) 100%, white 0%);
   --badge-background-indigo: color-mix(in srgb, var(--categorical-indigo-200) 100%, white 0%);
   --badge-text-color-overlay: var(--grey-300);
-  --badge-border-overlay: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
+
   /* Heading */
   --heading-text-color: var(--grey-100);
+
   /* Link */
   --link-text-color-default: var(--grey-200);
   --link-text-color-default-hover: var(--grey-100);
   --link-text-color-default-focus: var(--grey-100);
   --link-text-color-default-disabled: var(--grey-600);
+
   /* Input */
   --input-background: var(--grey-900);
   --input-background-disabled: var(--grey-800);
+
   /* Checkbox */
   --checkbox-background: var(--grey-900);
   --checkbox-background-checked: var(--grey-200);
@@ -896,31 +723,26 @@ html[data-theme="dark"] {
   --checkbox-background-disabled: var(--grey-800);
   --checkbox-background-checked-disabled: var(--grey-500);
   --checkbox-icon-color-checked-disabled: var(--grey-900);
+
   /* Radio */
   --radio-background: var(--grey-900);
-  --radio-border-color: var(--form-default-border-color);
-  --radio-border-color-hover: var(--form-default-border-color-hover);
   --radio-border-color-checked: var(--grey-200);
   --radio-dot-color-checked: var(--grey-200);
   --radio-background-disabled: var(--grey-800);
   --radio-border-color-disabled: var(--grey-600);
-  --radio-dot-color-checked-disabled: var(--grey-500);
+
   /* Addon */
   --addon-background: var(--grey-1000);
+
   /* Tabs */
   --tab-border-color: var(--grey-800);
-
   --tab-background: var(--grey-1100);
   --tab-icon: var(--grey-400);
   --tab-text-color: var(--grey-400);
-
   --tab-background-active: var(--grey-700);
   --tab-icon-active: var(--white);
   --tab-text-color-active: var(--white);
   --tab-shadow-active-color: var(--black-opacity-40);
-  --tab-shadow-active: 0 0 var(--stroke-size-400) var(--stroke-size-400) var(--tab-shadow-active-color);
-  --tabs-ghost-box-shadow: none;
-
   --tab-dot-color: var(--grey-800);
   --tab-dot-color-active: var(--grey-400);
 
@@ -930,8 +752,6 @@ html[data-theme="dark"] {
   /* Slat */
   --slat-background: var(--black-opacity-20);
   --slat-background-hover: var(--black-opacity-50);
-  --slat-card-background: var(--surface-elevated-100);
-  --slat-card-background-hover: var(--surface-elevated-200);
   --slat-avatar-background: var(--black-opacity-20);
   --slat-avatar-background-hover: var(--black-opacity-40);
   --slat-card-avatar-background: var(--black-opacity-30);
@@ -942,21 +762,6 @@ html[data-theme="dark"] {
   --avatar-background-positive: var(--green-900);
   --avatar-background-warning: var(--orange-900);
   --avatar-background-attention: var(--red-900);
-
-  --avatar-background-purple: var(--categorical-purple);
-  --avatar-background-violet: var(--categorical-violet);
-  --avatar-background-pink: var(--categorical-pink);
-  --avatar-background-magenta: var(--categorical-magenta);
-  --avatar-background-red: var(--categorical-red);
-  --avatar-background-orange: var(--categorical-orange);
-  --avatar-background-amber: var(--categorical-amber);
-  --avatar-background-yellow: var(--categorical-yellow);
-  --avatar-background-lime: var(--categorical-lime);
-  --avatar-background-green: var(--categorical-green);
-  --avatar-background-teal: var(--categorical-teal);
-  --avatar-background-cyan: var(--categorical-cyan);
-  --avatar-background-blue: var(--categorical-blue);
-  --avatar-background-indigo: var(--categorical-indigo);
 
   /* Status */
   --status-positive-background: var(--green-900);
@@ -971,7 +776,6 @@ html[data-theme="dark"] {
   --status-attention-background: var(--red-900);
   --status-attention-border-color: var(--red-300);
   --status-attention-text-color: var(--red-100);
-
   --status-grey-background: color-mix(in srgb, var(--grey-800) 86%, black 14%);
   --status-grey-border-color: var(--grey-500);
   --status-grey-text-color: color-mix(in srgb, var(--grey-500) 72%, white 85%);
@@ -1029,13 +833,11 @@ html[data-theme="dark"] {
   --chip-border-color-focus: var(--grey-700);
   --chip-border-color-active: var(--grey-100);
   --chip-text-color-active: var(--grey-100);
-  --chip-text-color-disabled: var(--grey-400);
   --chip-icon-fill: var(--white);
   --chip-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20));
   --chip-dismiss-action-background: var(--grey-700);
   --chip-dismiss-action-background-hover: var(--white-opacity-0);
   --chip-dismiss-action-background-disabled: var(--grey-900);
-  --chip-dismiss-action-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-0));
 
   /* Dropdown */
   --dropdown-background: var(--grey-1000);
@@ -1045,30 +847,20 @@ html[data-theme="dark"] {
 
   /* Progress */
   --progress-bar-background: var(--blue-500);
-  --progress-bar-background-positive: var(--feedback-positive-border-color);
-  --progress-bar-background-warning: var(--feedback-warning-border-color);
-  --progress-bar-background-attention: var(--feedback-attention-border-color);
   --progress-track-background: var(--grey-700);
   --progress-loading-bar-100: var(--grey-900);
   --progress-loading-bar-200: var(--grey-1000);
-  --progress-syncing-bar-background: var(--progress-bar-background);
 
   /* Stepper */
   --stepper-color: var(--white);
-  --stepper-background-active: var(--stepper-color);
   --stepper-background-inactive: var(--black);
-  --stepper-border-color: var(--stepper-color);
-  --stepper-text-color-active: var(--stepper-color);
   --stepper-icon-color: var(--grey-1100);
-  --stepper-success-color: var(--stepper-color);
   --stepper-warning-color: var(--orange-300);
   --stepper-error-color: var(--red-300);
-  --stepper-disabled-color: var(--text-color-optional);
   --stepper-disabled-opacity: 0.8;
 
   /* Dialog */
   --dialog-background: var(--grey-800);
-  --dialog-border: none;
 
   /* Drawer */
   --drawer-background: var(--grey-800);
@@ -1085,12 +877,187 @@ html[data-theme="dark"] {
   --dropdown-offset: var(--space-200);
   --dropdown-min-width: 15rem;
 
+  /* Form */
+  --form-default-placeholder-color: var(--grey-500);
+  --form-default-placeholder-color-disabled: var(--grey-500);
+
+  /* Action - Primary (Button & Link) */
+  --action-primary-border-color: var(--black-opacity-0);
+  --action-primary-border-color-hover: var(--black-opacity-0);
+  --action-primary-border-color-focus: var(--black-opacity-0);
+  --action-primary-border-color-disabled: var(--black-opacity-0);
+  --action-primary-text-color-disabled: var(--grey-400);
+
+  /* Action - Tertiary (Button & Link) */
+  --action-tertiary-border-color: var(--black-opacity-0);
+  --action-tertiary-border-color-hover: var(--black-opacity-0);
+  --action-tertiary-border-color-focus: var(--black-opacity-0);
+  --action-tertiary-border-color-disabled: var(--black-opacity-0);
+
+  /* Action - Overlay (Button & Link) */
+  --action-overlay-border-color: var(--white-opacity-30);
+  --action-overlay-border-color-hover: var(--white-opacity-30);
+  --action-overlay-border-color-focus: var(--white-opacity-30);
+  --action-overlay-border-color-disabled: var(--white-opacity-20);
+  --action-overlay-background: var(--black-opacity-60);
+  --action-overlay-background-hover: var(--black-opacity-70);
+  --action-overlay-background-focus: var(--black-opacity-70);
+  --action-overlay-background-disabled: var(--black-opacity-40);
+  --action-overlay-text-color: var(--white);
+  --action-overlay-text-color-hover: var(--white);
+  --action-overlay-text-color-focus: var(--white);
+  --action-overlay-text-color-disabled: var(--white-opacity-40);
+
+  /* Action - Attention (Button & Link) */
+  --action-attention-border-color: var(--black-opacity-0);
+  --action-attention-border-color-hover: var(--black-opacity-0);
+  --action-attention-border-color-focus: var(--black-opacity-0);
+  --action-attention-border-color-disabled: var(--black-opacity-0);
+  --action-attention-text-color: var(--white);
+  --action-attention-text-color-hover: var(--white);
+  --action-attention-text-color-focus: var(--white);
+  --action-attention-text-color-disabled: var(--red-300);
+
+  /* Code */
+  --code-background: var(--surface-elevated-200);
+
+  /* Backdrop */
+  --backdrop-overlay: var(--black-opacity-70);
+
+  /* Switch */
+  --switch-track-background-checked: var(--green-500);
+  --switch-icon: var(--icon-color-default);
+
+  /* Illustration */
+  --illustration-main-color-default: var(--icon-color-default);
+  --illustration-main-color-inverted: var(--icon-color-inverted);
+  --illustration-size-x-small: 6.4rem;
+  --illustration-size-small: 8rem;
+  --illustration-size-medium: 9.6rem;
+  --illustration-size-large: 11.2rem;
+  --illustration-size-x-large: 12.8rem;
+
+  /* Badge */
+  --badge-text-color: var(--grey-900);
+  --badge-background-overlay: var(--black-opacity-60);
+  --badge-border-overlay: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
+
+  /* Avatar */
+  --avatar-background-purple: var(--categorical-purple);
+  --avatar-background-violet: var(--categorical-violet);
+  --avatar-background-pink: var(--categorical-pink);
+  --avatar-background-magenta: var(--categorical-magenta);
+  --avatar-background-red: var(--categorical-red);
+  --avatar-background-orange: var(--categorical-orange);
+  --avatar-background-amber: var(--categorical-amber);
+  --avatar-background-yellow: var(--categorical-yellow);
+  --avatar-background-lime: var(--categorical-lime);
+  --avatar-background-green: var(--categorical-green);
+  --avatar-background-teal: var(--categorical-teal);
+  --avatar-background-cyan: var(--categorical-cyan);
+  --avatar-background-blue: var(--categorical-blue);
+  --avatar-background-indigo: var(--categorical-indigo);
+
+  /* Radio */
+  --radio-border-color: var(--form-default-border-color);
+  --radio-border-color-hover: var(--form-default-border-color-hover);
+  --radio-dot-color-checked-disabled: var(--grey-500);
+
+  /* Tab */
+  --tab-shadow-active: 0 0 var(--stroke-size-400) var(--stroke-size-400) var(--tab-shadow-active-color);
+  --tabs-ghost-box-shadow: none;
+
+  /* Slat */
+  --slat-card-background: var(--surface-elevated-100);
+  --slat-card-background-hover: var(--surface-elevated-200);
+
+  /* Chip */
+  --chip-text-color-disabled: var(--grey-400);
+  --chip-dismiss-action-filter: drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-0));
+
+  /* Progress */
+  --progress-bar-background-positive: var(--feedback-positive-border-color);
+  --progress-bar-background-warning: var(--feedback-warning-border-color);
+  --progress-bar-background-attention: var(--feedback-attention-border-color);
+  --progress-syncing-bar-background: var(--progress-bar-background);
+
+  /* Stepper */
+  --stepper-background-active: var(--stepper-color);
+  --stepper-border-color: var(--stepper-color);
+  --stepper-text-color-active: var(--stepper-color);
+  --stepper-success-color: var(--stepper-color);
+  --stepper-disabled-color: var(--text-color-optional);
+
+  /* Dialog */
+  --dialog-border: none;
+
+  /* Prompt */
+  --prompt-preview-code-background: var(--code-background);
+  --prompt-preview-top-shade-height: calc(var(--space-600) + var(--space-100));
+  --prompt-preview-top-shade-end: var(--black-opacity-0);
+  --prompt-preview-top-shade-start-overlay: var(--black-opacity-50);
+  --prompt-preview-top-shade-end-overlay: var(--black-opacity-0);
+  --prompt-border-color-hover: var(--form-default-border-color-hover);
+  --prompt-hover-ring-color: var(--outline-color);
+  --prompt-spectrum-mid: var(--outline-color);
+  --prompt-accent-primary: var(--prompt-spectrum-start);
+  --prompt-accent-secondary: var(--prompt-spectrum-end);
+  --prompt-hover-sweep-speed: 1400ms;
+  --prompt-focus-pulse-speed: 1400ms;
+  --prompt-placeholder-color: var(--form-default-placeholder-color);
+  --prompt-placeholder-color-hover: var(--form-default-placeholder-color-hover);
+  --prompt-placeholder-color-focus: var(--form-default-placeholder-color-focus);
+
+  /* Slide Frame */
+  --slide-frame-background: var(--surface-elevated-100);
+  --slide-frame-border-color: var(--border-color);
+  --slide-frame-background-present: var(--slide-frame-background);
+
+  /* Media Player */
+  --media-player-range-color: var(--media-player-seek-color);
+  --media-player-range-thumb-color: var(--media-player-seek-color);
+  --media-player-control-background: var(--surface-elevated-200);
+  --media-player-control-color: var(--text-color);
+  --media-player-center-action-overlay-background: var(--black-opacity-80);
+  --media-player-center-action-overlay-background-hover: var(--black-opacity-90);
+  --media-player-controls-peek-background: var(--white);
+  --media-player-frame-shadow: var(--shadow-medium);
+  --media-player-video-shadow: var(--shadow-thick);
+  --media-player-artwork-shadow: var(--shadow-medium);
+  --media-player-thumbnail-shadow: var(--shadow-thin);
+  --media-player-dark-thumbnail-border: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-40);
+  --media-player-dark-thumbnail-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-30);
+  --media-player-meta-icon-shadow: var(--shadow-thin);
+  --media-player-range-thumb-shadow: var(--shadow-thin);
+  --media-player-surface-overlay-start: var(--surface-elevated-100);
+  --media-player-surface-overlay-end: var(--surface-elevated-200);
+  --media-player-dark-background: var(--black);
+  --media-player-dark-control-color: var(--white);
+  --media-player-dark-range-color: var(--white);
+  --media-player-dark-range-thumb-color: var(--white);
+  --media-player-dark-range-track-color: var(--white-opacity-30);
+  --media-player-dark-range-thumb-shadow: 0 var(--space-050) var(--space-100) var(--black-opacity-40);
+  --media-player-dark-control-background-hover: var(--white-opacity-10);
+  --media-player-dark-overlay-background: var(--black-opacity-50);
+
+  /* Range Input */
+  --range-input-accent-color: var(--media-player-seek-color);
+  --range-input-bubble-background: var(--media-player-seek-time-background);
+  --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
+
+  /* Skeleton */
+  --skeleton-background: var(--surface-elevated-200);
+  --skeleton-radius: var(--radius-200);
+  --skeleton-animation-speed: 2000ms;
+  --skeleton-gap: var(--space-200);
+
   /* Feedback - Border (Alerts & Messages) */
   --feedback-neutral-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-neutral-border-color);
   --feedback-positive-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-positive-border-color);
   --feedback-info-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-info-border-color);
   --feedback-warning-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-warning-border-color);
   --feedback-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-attention-border-color);
+
   /* Action (Button & Link) */
   --action-primary-border: var(--stroke-size-200) var(--stroke-solid) var(--action-primary-border-color);
   --action-primary-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-primary-border-color-hover);
@@ -1155,7 +1122,6 @@ html[data-theme="dark"] {
   --action-before-slot-padding-large: var(--space-400);
   --action-after-slot-padding-large: var(--space-400);
   --action-icon-only-size-large: var(--action-size-large);
-
   --row-action-xxs: var(--action-size-xx-small);
   --row-action-xs: var(--action-size-x-small);
   --row-action-s: var(--action-size-small);
@@ -1175,35 +1141,44 @@ html[data-theme="dark"] {
   --text-font-size-l: var(--font-size-200);
   --text-font-size: var(--text-font-size-m);
   --text-line-height: var(--text-line-height-m);
+
   /* Font-Weight */
   --font-weight-regular: var(--font-weight-400);
   --font-weight-medium: var(--font-weight-500);
   --font-weight-semi-bold: var(--font-weight-600);
   --font-weight-bold: var(--font-weight-700);
+
   /* Border */
   --border-thin: var(--stroke-size-100) var(--stroke-solid) var(--border-color);
   --border-thick: var(--stroke-size-200) var(--stroke-solid) var(--border-color);
+
   /* Shadow */
   --shadow-thin: 0 var(--space-050) var(--space-100) var(--shadow-color-thin);
   --shadow-medium: 0 var(--space-100) var(--space-200) var(--shadow-color-medium);
   --shadow-thick: 0 var(--space-500) var(--space-700) var(--shadow-color-thick);
+
   /* Outline */
   --outline-thin: var(--stroke-size-100) var(--stroke-outset) var(--outline-color);
   --outline-medium: var(--stroke-size-300) var(--stroke-outset) var(--outline-color);
   --outline-thick: var(--stroke-size-500) var(--stroke-outset) var(--outline-color);
+
   /* ================================================================================================== */
   /* Components                                                                                         */
   /* ================================================================================================== */
+
   /* Switch */
   --switch-offset: 1px;
   --switch-thumb-size: 3.6rem;
   --switch-width: calc(var(--switch-height) * 1.6);
   --switch-height: calc(var(--switch-thumb-size) + (var(--switch-offset) * 2));
+
   /* Card */
   --card-radius: var(--radius-150);
+
   /* Badge */
   --badge-radius: var(--radius-300);
   --badge-font-weight: var(--font-weight-bold);
+
   /* Heading */
   --heading-font-weight: var(--font-weight-bold);
   --heading-font-size-100: var(--font-size-600);
@@ -1218,6 +1193,7 @@ html[data-theme="dark"] {
   --heading-line-height-400: var(--line-height-300);
   --heading-line-height-500: var(--line-height-200);
   --heading-line-height-600: var(--line-height-100);
+
   /* Alert */
   --alert-radius: var(--radius-100);
   --alert-padding-large: var(--space-400);
@@ -1225,19 +1201,23 @@ html[data-theme="dark"] {
   --alert-padding-small: var(--space-200);
   --alert-gap-horizontal-mobile: var(--space-300);
   --alert-gap-horizontal-desktop: var(--space-100);
+
   /* Messages */
   --message-radius: var(--radius-150);
   --message-padding: var(--space-400);
   --message-gap-horizontal: var(--space-300);
   --message-gap-vertical: var(--space-100);
+
   /* Progress */
   --progress-radius: var(--space-300);
   --progress-syncing-width: 30%;
   --progress-pending-stripe-size: 1rem;
+
   /* Stepper */
   --stepper-dot-size: var(--action-size-x-small);
   --stepper-dot-size-small: calc(var(--stepper-dot-size) - var(--space-050));
   --stepper-dot-size-x-small: calc(var(--stepper-dot-size-small) - var(--space-050));
+
   /* Tab */
   --tab-radius: var(--radius-200);
   --tab-font-size: var(--text-font-size-m);
@@ -1278,15 +1258,19 @@ html[data-theme="dark"] {
   --tab-badge-offset-large: var(--space-050);
   --tab-dot-size: 1rem;
   --tab-dot-gap: var(--space-100);
+
   /* Carousel */
   --carousel-radius: var(--radius-300);
   --carousel-tab-position: var(--space-400);
   --carousel-tab-offset: calc(4.4rem + var(--carousel-tab-position)); /* Tab Height */
+
   /* Slat [Action] */
   --slat-radius: var(--radius-200);
+
   /* Checkbox */
   --checkbox-radius: var(--radius-100);
   --checkbox-size: calc(var(--space-500) - var(--stroke-size-500));
+
   /* Radio */
   --radio-size: calc(var(--space-500) - 2px);
 
@@ -1309,15 +1293,19 @@ html[data-theme="dark"] {
   --chip-gap-small: var(--space-200);
   --chip-gap-medium: var(--space-200);
   --chip-gap-large: var(--space-300);
+
   /* Form */
   --form-radius-x-small: var(--radius-100);
   --form-radius-small: var(--radius-100);
   --form-radius-medium: var(--radius-200);
   --form-radius-large: var(--radius-300);
+
   /* Dropdown */
   --dropdown-radius: var(--radius-100);
+
   /* Dialog */
   --dialog-radius: var(--radius-150);
+
   /* Avatar */
   --avatar-xxx-small: 1.8rem; /* 18px */
   --avatar-xx-small: var(--space-500); /* 24px */
