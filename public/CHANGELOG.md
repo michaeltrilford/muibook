@@ -8,6 +8,8 @@
 
 ### Added
 
+- Added `mui-progress-ring` as a standalone component for circular progress visualization, supporting explicit `progress` or `value`/`max` configurations.
+- `mui-progress-ring` supports configurable data formatting through `display="auto|none|percent|value|fraction"`, size variants via `size`, and built-in interactive tooltips (`tooltip`, `tooltip-trigger`, `tooltip-placement`).
 - Added `mui-time` as a standalone component for handling time selection, supporting a default scrolling wheel dial and a discrete `variant="slots"` interface with `start`, `end`, and `step` configuration.
 - `mui-code` now supports an `inline` boolean attribute for displaying code snippets inline with surrounding text (with compact padding, baseline alignment, and nowrap layout by default).
 - `mui-drawer` now supports `variant="workspace"` for editor-style layouts with independent left and right panels around a central page or canvas, including `left-open`, `right-open`, `left-width`, `right-width`, `resize-rail`, `resize-min-left-width`, `resize-min-right-width`, `resize-min-page-width`, `resize-close-threshold`, `breakpoint`, and `height` for full control over panel visibility, sizing, and resize behaviour.
