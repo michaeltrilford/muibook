@@ -33,10 +33,6 @@ class storyResponsive extends HTMLElement {
       }
     `;
 
-    const LocalRing = /*html*/ `
-      <mui-progress-ring value="2" max="4" label="Transactions automated" style="margin-inline: auto;">2/4</mui-progress-ring>
-    `;
-
     const ProgressTableColumns = `1fr 1fr 1fr 126px`;
 
     const ProgressDesktopView = /*html*/ `
@@ -54,7 +50,9 @@ class storyResponsive extends HTMLElement {
             <mui-cell align-y="center"><mui-body size="small">Alison Max</mui-body></mui-cell> 
             <mui-cell align-y="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-status size="small" color="blue">Quarterly</mui-status></mui-v-stack></mui-cell>
             <mui-cell align-y="center"><mui-status size="small" color="orange">Unlodged</mui-status></mui-cell>
-            <mui-cell align-y="center">${LocalRing}</mui-cell> 
+            <mui-cell align-y="center">
+              <mui-progress-ring value="2" max="4" label="Transactions automated" style="margin-inline: auto;" size="small"></mui-progress-ring>
+            </mui-cell> 
           </mui-row> 
         </mui-row-group> 
       </mui-table>
@@ -62,7 +60,7 @@ class storyResponsive extends HTMLElement {
 
     const ProgressMobileView = /*html*/ `
         <mui-v-stack space="var(--space-400)">
-          ${LocalRing}
+          <mui-progress-ring value="2" max="4" label="Transactions automated" style="margin-inline: auto;" size="large"></mui-progress-ring>
           <mui-heading 
             size="6" 
             style="width: 100%; text-align: center;"
