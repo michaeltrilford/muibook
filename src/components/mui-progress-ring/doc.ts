@@ -4,7 +4,7 @@ export const muiDocs: MuiDocs = {
   ProgressRing: {
     title: "Progress Ring",
     description:
-      "Progress Ring displays circular determinate progress with generated center text. It belongs to the Progress family and is best for compact progress summaries in dashboards, cards, tables, and responsive layouts.",
+      "Progress Ring displays circular determinate progress with optional generated center text. It belongs to the Progress family and is best for compact progress summaries in dashboards, cards, tables, and responsive layouts.",
 
     hero: [""],
     figma: [""],
@@ -16,9 +16,11 @@ export const muiDocs: MuiDocs = {
     usage: {
       list: [
         "Use Progress Ring for compact determinate progress where a linear bar would take too much horizontal space.",
-        "Use display to choose generated center text such as a fraction, numeric percent value, value, or no text.",
+        "Use display='value' only when the progress value should appear in the center.",
+        "Use display-value for a short custom center value, such as a completed count, remaining count, grade, or time value.",
+        "Use color='positive', color='warning', or color='attention' for semantic score bands or stateful progress summaries.",
         "Use progress for percentage-based values, or value and max for count-based values.",
-        "Use the default auto display when plain progress values should stay quiet but count-based progress should still show a fraction.",
+        "Use the default auto display when the ring should stay quiet and leave detail to the tooltip.",
         "Use x-small as an icon-sized indicator only; it does not render center text.",
         "Use a clear label when the generated center text is abbreviated or absent.",
         "Use tooltip to override the automatically generated tooltip text when the ring needs more specific context.",
@@ -35,7 +37,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Track: The circular background stroke.",
         "Indicator: The circular foreground stroke representing progress.",
-        "Center text: Generated short text inside small, medium, and large rings.",
+        "Center text: Optional generated short text inside small, medium, and large rings.",
         "Tooltip: Optional embedded text disclosure for hover, focus, or click interaction.",
       ],
     },
@@ -77,7 +79,11 @@ export const muiDocs: MuiDocs = {
         "Progress Ring is determinate only.",
         "Progress is clamped between 0 and 100.",
         "When progress is omitted, value and max are used to calculate progress.",
-        "When display is auto, value and max render as a fraction, while progress-only values render no center text.",
+        "When display is auto, center text is not rendered; value and max still calculate progress and generated tooltip text.",
+        "When display is value, value and max render as a compact fraction when it fits, while progress-only values render the rounded numeric progress value.",
+        "When display-value is set, it overrides generated center text while the ring still uses progress, or value and max, for the determinate value.",
+        "When color is set, the ring uses progress color tokens for the indicator while center text keeps the default text color.",
+        "When a generated fraction is too dense for the ring size, center text is omitted and the generated tooltip keeps the full value.",
         "When progress reaches 100, the center text is replaced by a checkmark for small, medium, and large rings.",
         "When size is x-small, generated center text is not rendered, but the completion icon is still shown.",
         "When tooltip is omitted, tooltip text is derived automatically from value and max, or from progress as natural language such as '50% complete'.",
@@ -88,7 +94,8 @@ export const muiDocs: MuiDocs = {
 
     writing: {
       list: [
-        "Keep generated center text short, ideally a count, fraction, or numeric percent value. Do not use center text at x-small.",
+        "Keep generated center text short, ideally a count or compact fraction. Do not use center text at x-small.",
+        "Keep display-value short when using grades or time values, such as B+, D-, 3d, or 6h.",
         "Keep tooltip text concise and descriptive, such as '2 of 4 transactions automated'.",
       ],
     },

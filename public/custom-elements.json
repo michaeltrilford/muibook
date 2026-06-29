@@ -220,124 +220,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-avatar/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Avatar: { title: \"Avatar\", description: \"Avatar components are used to represent users or entities visually, often through images, initials, or icons.\", hero: [\"https://images.ctfassets.net/i5uwscj4pkk2/2Qj1aPRsHVZZs6eF8XO6XC/54dd3c04d5a0ac379050cfa6f45d9732/Avatar_-_Home_Image.png\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1498-15366&t=2P2nhh7B70fl6xQ4-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-avatar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts\"], website: [\"https://muibook.com/avatar\"], guides: [\"https://guides.muibook.com/avatar\"], usage: { list: [ \"Represent a user or entity visually in lists, chats, comments, or profiles.\", \"Display a profile photo, initials, or icon associated with a person or object.\", \"Use in compact UI elements where space is limited (e.g., tables, cards).\", \"Pair with user metadata (name, role, status) for context.\", \"Indicate presence, status, or selection in collaborative interfaces.\", \"Avatar can be slotted into Button for identity-led actions such as switching video platform profiles, opening an account menu, or accessing workspace controls.\", \"Use an avatar-only button when the avatar itself is the visible trigger for a profile dropdown, account settings drawer, workspace switcher, or compact dialog action.\", \"In global app headers, avatar-only buttons are a good fit for account settings, billing, support, or team context menus.\", \"When Avatar is the only content inside Button, let the avatar define the final size and treat Button as the interactive wrapper.\", ], }, accessibility: { designerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], engineerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], }, anatomy: { image: \"\", list: [ \"Image / Initials / Icon: The visible identity marker shown inside the avatar.\", \"Label: Accessible name announced to assistive technology.\", \"Status or Context (optional): Additional meaning can be conveyed through surrounding UI such as presence, role, or action context.\", ], }, variants: { items: [ { key: \"image\", title: \"Image\", description: \"Use when a profile or entity image is available and recognition matters.\", image: \"\", }, { key: \"initials\", title: \"Initials\", description: \"Use as the default fallback when no image is present but the entity has a clear name.\", image: \"\", }, { key: \"icon\", title: \"Icon\", description: \"Use for generic entities, products, or utility actions where a person-specific identity is not required.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how Avatar fits into identity, communication, and account-oriented UI patterns.\", items: [ { key: \"account-menu\", name: \"Account Menu Trigger\", description: \"An avatar-only button used in a global app header to open account, billing, or support actions.\", image: \"\", }, { key: \"profile-switcher\", name: \"Profile Switcher\", description: \"A compact avatar trigger used to switch between people, channels, or workspace identities in a media or collaboration product.\", image: \"\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Chip\", link: \"https://guides.muibook.com/chip\", }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\", }, ], }, rules: [ { heading: \"Use the right identity source\", description: \"Choose the avatar content type based on confidence in the identity data and the importance of recognition.\", doContent: [ { description: \"Use a real image when recognition matters, initials when a name is available, and an icon for generic or product-level identities.\", image: \"\", }, ], dontContent: [ { description: \"Do not force decorative imagery or inconsistent fallback logic when the identity is unclear.\", image: \"\", }, ], }, ], behaviour: { list: [ \"Avatar is presentational by default and becomes interactive when wrapped by Button or another interactive parent.\", \"When used inside an avatar-only button, Avatar owns the visible size while Button owns interaction semantics, focus, and disabled behaviour.\", ], }, writing: { list: [ \"Provide a meaningful label so assistive technology can identify the person, entity, or action context represented by the avatar.\", ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-avatar/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-avatar/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays an image, initials, or slotted icon for a represented person or entity.",
-          "name": "MuiAvatar",
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible name and initials source when no image or slotted content is present."
-            },
-            {
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Image URL used when no slotted content is supplied."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Avatar dimensions. Defaults map `xx-small` to 24px and `x-small` to 32px."
-            },
-            {
-              "name": "background",
-              "type": {
-                "text": "\"neutral\" | \"positive\" | \"warning\" | \"attention\" | \"purple\" | \"violet\" | \"pink\" | \"magenta\" | \"red\" | \"orange\" | \"amber\" | \"yellow\" | \"lime\" | \"green\" | \"teal\" | \"cyan\" | \"blue\" | \"indigo\""
-              },
-              "default": "neutral",
-              "description": "Named semantic or profile color background."
-            },
-            {
-              "name": "background-color",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom CSS color overriding the named background treatment."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-avatar",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Optional icon or custom visible avatar content."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--avatar-xxx-small",
-              "description": "Dimension for `size=\"xxx-small\"`; defaults to 18px."
-            },
-            {
-              "name": "--avatar-xx-small",
-              "description": "Dimension for `size=\"xx-small\"`; defaults to 24px."
-            },
-            {
-              "name": "--avatar-x-small",
-              "description": "Dimension for `size=\"x-small\"`; defaults to 32px."
-            },
-            {
-              "name": "--avatar-background-override",
-              "description": "Overrides the resolved avatar background color."
-            },
-            {
-              "name": "--avatar-icon-color",
-              "description": "Controls the fill color of slotted icon content inside the avatar. Falls back to currentColor."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-avatar",
-          "declaration": {
-            "name": "MuiAvatar",
-            "module": "src/components/mui-avatar/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-avatar-chip/doc.ts",
       "declarations": [
         {
@@ -591,6 +473,124 @@
           "declaration": {
             "name": "MuiBadge",
             "module": "src/components/mui-badge/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Avatar: { title: \"Avatar\", description: \"Avatar components are used to represent users or entities visually, often through images, initials, or icons.\", hero: [\"https://images.ctfassets.net/i5uwscj4pkk2/2Qj1aPRsHVZZs6eF8XO6XC/54dd3c04d5a0ac379050cfa6f45d9732/Avatar_-_Home_Image.png\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1498-15366&t=2P2nhh7B70fl6xQ4-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-avatar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts\"], website: [\"https://muibook.com/avatar\"], guides: [\"https://guides.muibook.com/avatar\"], usage: { list: [ \"Represent a user or entity visually in lists, chats, comments, or profiles.\", \"Display a profile photo, initials, or icon associated with a person or object.\", \"Use in compact UI elements where space is limited (e.g., tables, cards).\", \"Pair with user metadata (name, role, status) for context.\", \"Indicate presence, status, or selection in collaborative interfaces.\", \"Avatar can be slotted into Button for identity-led actions such as switching video platform profiles, opening an account menu, or accessing workspace controls.\", \"Use an avatar-only button when the avatar itself is the visible trigger for a profile dropdown, account settings drawer, workspace switcher, or compact dialog action.\", \"In global app headers, avatar-only buttons are a good fit for account settings, billing, support, or team context menus.\", \"When Avatar is the only content inside Button, let the avatar define the final size and treat Button as the interactive wrapper.\", ], }, accessibility: { designerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], engineerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], }, anatomy: { image: \"\", list: [ \"Image / Initials / Icon: The visible identity marker shown inside the avatar.\", \"Label: Accessible name announced to assistive technology.\", \"Status or Context (optional): Additional meaning can be conveyed through surrounding UI such as presence, role, or action context.\", ], }, variants: { items: [ { key: \"image\", title: \"Image\", description: \"Use when a profile or entity image is available and recognition matters.\", image: \"\", }, { key: \"initials\", title: \"Initials\", description: \"Use as the default fallback when no image is present but the entity has a clear name.\", image: \"\", }, { key: \"icon\", title: \"Icon\", description: \"Use for generic entities, products, or utility actions where a person-specific identity is not required.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how Avatar fits into identity, communication, and account-oriented UI patterns.\", items: [ { key: \"account-menu\", name: \"Account Menu Trigger\", description: \"An avatar-only button used in a global app header to open account, billing, or support actions.\", image: \"\", }, { key: \"profile-switcher\", name: \"Profile Switcher\", description: \"A compact avatar trigger used to switch between people, channels, or workspace identities in a media or collaboration product.\", image: \"\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Chip\", link: \"https://guides.muibook.com/chip\", }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\", }, ], }, rules: [ { heading: \"Use the right identity source\", description: \"Choose the avatar content type based on confidence in the identity data and the importance of recognition.\", doContent: [ { description: \"Use a real image when recognition matters, initials when a name is available, and an icon for generic or product-level identities.\", image: \"\", }, ], dontContent: [ { description: \"Do not force decorative imagery or inconsistent fallback logic when the identity is unclear.\", image: \"\", }, ], }, ], behaviour: { list: [ \"Avatar is presentational by default and becomes interactive when wrapped by Button or another interactive parent.\", \"When used inside an avatar-only button, Avatar owns the visible size while Button owns interaction semantics, focus, and disabled behaviour.\", ], }, writing: { list: [ \"Provide a meaningful label so assistive technology can identify the person, entity, or action context represented by the avatar.\", ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-avatar/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays an image, initials, or slotted icon for a represented person or entity.",
+          "name": "MuiAvatar",
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name and initials source when no image or slotted content is present."
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image URL used when no slotted content is supplied."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Avatar dimensions. Defaults map `xx-small` to 24px and `x-small` to 32px."
+            },
+            {
+              "name": "background",
+              "type": {
+                "text": "\"neutral\" | \"positive\" | \"warning\" | \"attention\" | \"purple\" | \"violet\" | \"pink\" | \"magenta\" | \"red\" | \"orange\" | \"amber\" | \"yellow\" | \"lime\" | \"green\" | \"teal\" | \"cyan\" | \"blue\" | \"indigo\""
+              },
+              "default": "neutral",
+              "description": "Named semantic or profile color background."
+            },
+            {
+              "name": "background-color",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom CSS color overriding the named background treatment."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-avatar",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Optional icon or custom visible avatar content."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--avatar-xxx-small",
+              "description": "Dimension for `size=\"xxx-small\"`; defaults to 18px."
+            },
+            {
+              "name": "--avatar-xx-small",
+              "description": "Dimension for `size=\"xx-small\"`; defaults to 24px."
+            },
+            {
+              "name": "--avatar-x-small",
+              "description": "Dimension for `size=\"x-small\"`; defaults to 32px."
+            },
+            {
+              "name": "--avatar-background-override",
+              "description": "Overrides the resolved avatar background color."
+            },
+            {
+              "name": "--avatar-icon-color",
+              "description": "Controls the fill color of slotted icon content inside the avatar. Falls back to currentColor."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-avatar",
+          "declaration": {
+            "name": "MuiAvatar",
+            "module": "src/components/mui-avatar/index.ts"
           }
         }
       ]
@@ -1121,90 +1121,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-button-group/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ ButtonGroup: { title: \"Button Group\", description: \"Example of actions that are present at the top of a page or card footer use.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=930-9942&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/actions-button--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-button-group/index.ts\"], website: [\"https://muibook.com/button\"], guides: [\"https://guides.muibook.com/button\"], usage: { list: [ \"Use layout='row|column' to match the intended action arrangement.\", \"Use align='left|right' to control action alignment for row layouts.\", \"Column layout is intended for full-width stacked actions.\", \"Prefer align='right' instead of the legacy right attribute.\", \"Use small (default) size icon when paired with text-based action is used in a button group.\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-button-group/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-button-group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Arranges related buttons horizontally or as full-width stacked actions.",
-          "name": "MuiButtonGroup",
-          "attributes": [
-            {
-              "name": "layout",
-              "type": {
-                "text": "\"row\" | \"column\""
-              },
-              "default": "row",
-              "description": "Controls group direction; column provides full-width stacked actions."
-            },
-            {
-              "name": "align",
-              "type": {
-                "text": "\"left\" | \"right\""
-              },
-              "default": "left",
-              "description": "Controls horizontal alignment for row layouts."
-            },
-            {
-              "name": "right",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Legacy right alignment flag. Prefer `align=\"right\"`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-button-group",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Related action controls, typically `mui-button` elements."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-button-group",
-          "declaration": {
-            "name": "MuiButtonGroup",
-            "module": "src/components/mui-button-group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-calendar/doc.ts",
       "declarations": [
         {
@@ -1299,6 +1215,90 @@
           "declaration": {
             "name": "MuiCalendar",
             "module": "src/components/mui-calendar/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-button-group/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ ButtonGroup: { title: \"Button Group\", description: \"Example of actions that are present at the top of a page or card footer use.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=930-9942&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/actions-button--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-button-group/index.ts\"], website: [\"https://muibook.com/button\"], guides: [\"https://guides.muibook.com/button\"], usage: { list: [ \"Use layout='row|column' to match the intended action arrangement.\", \"Use align='left|right' to control action alignment for row layouts.\", \"Column layout is intended for full-width stacked actions.\", \"Prefer align='right' instead of the legacy right attribute.\", \"Use small (default) size icon when paired with text-based action is used in a button group.\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-button-group/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-button-group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Arranges related buttons horizontally or as full-width stacked actions.",
+          "name": "MuiButtonGroup",
+          "attributes": [
+            {
+              "name": "layout",
+              "type": {
+                "text": "\"row\" | \"column\""
+              },
+              "default": "row",
+              "description": "Controls group direction; column provides full-width stacked actions."
+            },
+            {
+              "name": "align",
+              "type": {
+                "text": "\"left\" | \"right\""
+              },
+              "default": "left",
+              "description": "Controls horizontal alignment for row layouts."
+            },
+            {
+              "name": "right",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Legacy right alignment flag. Prefer `align=\"right\"`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-button-group",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Related action controls, typically `mui-button` elements."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-button-group",
+          "declaration": {
+            "name": "MuiButtonGroup",
+            "module": "src/components/mui-button-group/index.ts"
           }
         }
       ]
@@ -2453,6 +2453,119 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-dropdown/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Dropdown: { title: \"Dropdown\", description: \"The dropdown has a trigger action and an overlay menu. The action can use any mui-button variant, while menu options follow a predefined style. The menu auto-positions to stay within the viewport.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/18QqPc8T5r5WXHiKAxhrCz/69e6bb23e3b9875b574d6f49966e6e73/Dropdown_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12740&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/actions-dropdown--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dropdown/index.ts\"], website: [\"https://muibook.com/dropdown\"], guides: [\"https://guides.muibook.com/dropdown\"], usage: { list: [ \"Dropdowns are ideal for actions that are contextual or used infrequently and do not require constant visibility.\", \"Ensure the trigger is clear by using a label, icon, or ellipsis, and include accessible labels for icon-only triggers.\", \"Keep menu items concise (around 5–7 options). Group related actions and use dividers for clarity to avoid overwhelming users.\", \"Ensure dropdowns remain visible and are not covered by other interface elements. Adjust z-index as needed.\", \"Ensure essential or frequently-used actions are not hidden within a dropdown visible outside the dropdown.\", ], }, accessibility: { designerList: [ \"Built-in Accessibility: The dropdown trigger uses the system button component, providing keyboard navigation, focus states, and ARIA roles out of the box.\", \"Icon-Only Triggers: Ensure tooltips or labels are present so screen readers can interpret the action.\", \"Persistent Dropdowns: Users can interact with inputs or buttons inside the dropdown without losing focus or accessibility support.\", ], engineerList: [ \"Built-in Accessibility: The dropdown trigger uses the system button component, providing keyboard navigation, focus states, and ARIA roles out of the box.\", \"Icon-Only Triggers: Ensure tooltips or labels are present so screen readers can interpret the action.\", \"Persistent Dropdowns: Users can interact with inputs or buttons inside the dropdown without losing focus or accessibility support.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/62rDy7PEOfeUJMNBF6qxw6/568ea65c17aca538a30397cf2eedc00e/Dropdown_-_Anatomy.png\", list: [ \"ICON ONLY: Use for compact dropdown triggers when the meaning is obvious and space is limited.\", \"LABEL & ICON: Use when clarity is needed. Pair a short label with an icon to indicate the menu opens or expands.\", \"MENU ITEMS: Keep options concise (5–7 items). Group related actions logically and avoid overwhelming users with long lists.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcomes-dashboard\", name: \"Outcomes Dashboard\", description: \"Example of the Dropdown component used in the Outcomes-based Roadmap tool at outcomes.gurusuite.xyz.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/nSSSCoxGl5rQRu6PD7uIZ/a1ed437e57fea99aaa50e6fe34d743ba/outcomes-dropdown-composition.gif\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Icons\", link: \"https://guides.muibook.com/icons\", }, ], }, rules: [ { heading: \"Text & Icon Actions\", description: \"\", doContent: [ { description: \"Use the 'small' size icon within a medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2W1xs6NPj3jRrW6ZaVGRvZ/3a11566b68fffda85bf5f780c4d6a394/dropdown-bar-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within a medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6BgHzCgKqk44piisNH4tE6/c08d91a1cf5231a089844d20f6ab968c/dropdown-bar-icon-dont.png\", }, ], }, { heading: \"Icon-Only Actions\", description: \"\", doContent: [ { description: \"Use a 'medium' size icon when using an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3syzrNBEXbBjp5hGEUvF4M/0471f4b16939d8ee54deaf48997ff455/action-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5V2TE85dY848jz1dP6Y0lC/b8e433c8abad5a4402ff1f86ddb8c848/action-icon-dont.png\", }, ], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-dropdown/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-dropdown/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays a triggered overlay menu with configurable alignment, direction, and persistent interaction behaviour.",
+          "name": "MuiDropdown",
+          "events": [
+            {
+              "name": "dropdown-toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when the dropdown opens or closes with `detail.open`."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "zindex",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "1",
+              "description": "Stacking level applied to the dropdown menu surface."
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "\"left\" | \"center\" | \"right\""
+              },
+              "default": "left",
+              "description": "Horizontal menu alignment relative to its trigger."
+            },
+            {
+              "name": "vertical-position",
+              "type": {
+                "text": "\"auto\" | \"up\" | \"down\""
+              },
+              "default": "auto",
+              "description": "Preferred vertical direction with viewport-aware fallback."
+            },
+            {
+              "name": "persistent",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Keeps the menu open while users interact with slotted menu content."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-dropdown",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "action",
+              "description": "Dropdown trigger, typically a `mui-button`."
+            },
+            {
+              "name": "",
+              "description": "Menu contents, typically `mui-button` options and separating rules."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--dropdown-offset",
+              "description": "Vertical distance between the trigger and menu surface."
+            },
+            {
+              "name": "--dropdown-min-width",
+              "description": "Minimum menu width."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-dropdown",
+          "declaration": {
+            "name": "MuiDropdown",
+            "module": "src/components/mui-dropdown/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-drawer/doc.ts",
       "declarations": [
         {
@@ -2756,210 +2869,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-dropdown/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Dropdown: { title: \"Dropdown\", description: \"The dropdown has a trigger action and an overlay menu. The action can use any mui-button variant, while menu options follow a predefined style. The menu auto-positions to stay within the viewport.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/18QqPc8T5r5WXHiKAxhrCz/69e6bb23e3b9875b574d6f49966e6e73/Dropdown_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12740&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/actions-dropdown--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dropdown/index.ts\"], website: [\"https://muibook.com/dropdown\"], guides: [\"https://guides.muibook.com/dropdown\"], usage: { list: [ \"Dropdowns are ideal for actions that are contextual or used infrequently and do not require constant visibility.\", \"Ensure the trigger is clear by using a label, icon, or ellipsis, and include accessible labels for icon-only triggers.\", \"Keep menu items concise (around 5–7 options). Group related actions and use dividers for clarity to avoid overwhelming users.\", \"Ensure dropdowns remain visible and are not covered by other interface elements. Adjust z-index as needed.\", \"Ensure essential or frequently-used actions are not hidden within a dropdown visible outside the dropdown.\", ], }, accessibility: { designerList: [ \"Built-in Accessibility: The dropdown trigger uses the system button component, providing keyboard navigation, focus states, and ARIA roles out of the box.\", \"Icon-Only Triggers: Ensure tooltips or labels are present so screen readers can interpret the action.\", \"Persistent Dropdowns: Users can interact with inputs or buttons inside the dropdown without losing focus or accessibility support.\", ], engineerList: [ \"Built-in Accessibility: The dropdown trigger uses the system button component, providing keyboard navigation, focus states, and ARIA roles out of the box.\", \"Icon-Only Triggers: Ensure tooltips or labels are present so screen readers can interpret the action.\", \"Persistent Dropdowns: Users can interact with inputs or buttons inside the dropdown without losing focus or accessibility support.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/62rDy7PEOfeUJMNBF6qxw6/568ea65c17aca538a30397cf2eedc00e/Dropdown_-_Anatomy.png\", list: [ \"ICON ONLY: Use for compact dropdown triggers when the meaning is obvious and space is limited.\", \"LABEL & ICON: Use when clarity is needed. Pair a short label with an icon to indicate the menu opens or expands.\", \"MENU ITEMS: Keep options concise (5–7 items). Group related actions logically and avoid overwhelming users with long lists.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcomes-dashboard\", name: \"Outcomes Dashboard\", description: \"Example of the Dropdown component used in the Outcomes-based Roadmap tool at outcomes.gurusuite.xyz.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/nSSSCoxGl5rQRu6PD7uIZ/a1ed437e57fea99aaa50e6fe34d743ba/outcomes-dropdown-composition.gif\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Icons\", link: \"https://guides.muibook.com/icons\", }, ], }, rules: [ { heading: \"Text & Icon Actions\", description: \"\", doContent: [ { description: \"Use the 'small' size icon within a medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2W1xs6NPj3jRrW6ZaVGRvZ/3a11566b68fffda85bf5f780c4d6a394/dropdown-bar-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within a medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6BgHzCgKqk44piisNH4tE6/c08d91a1cf5231a089844d20f6ab968c/dropdown-bar-icon-dont.png\", }, ], }, { heading: \"Icon-Only Actions\", description: \"\", doContent: [ { description: \"Use a 'medium' size icon when using an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3syzrNBEXbBjp5hGEUvF4M/0471f4b16939d8ee54deaf48997ff455/action-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5V2TE85dY848jz1dP6Y0lC/b8e433c8abad5a4402ff1f86ddb8c848/action-icon-dont.png\", }, ], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-dropdown/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-dropdown/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays a triggered overlay menu with configurable alignment, direction, and persistent interaction behaviour.",
-          "name": "MuiDropdown",
-          "events": [
-            {
-              "name": "dropdown-toggle",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Dispatched when the dropdown opens or closes with `detail.open`."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "zindex",
-              "type": {
-                "text": "string | number"
-              },
-              "default": "1",
-              "description": "Stacking level applied to the dropdown menu surface."
-            },
-            {
-              "name": "position",
-              "type": {
-                "text": "\"left\" | \"center\" | \"right\""
-              },
-              "default": "left",
-              "description": "Horizontal menu alignment relative to its trigger."
-            },
-            {
-              "name": "vertical-position",
-              "type": {
-                "text": "\"auto\" | \"up\" | \"down\""
-              },
-              "default": "auto",
-              "description": "Preferred vertical direction with viewport-aware fallback."
-            },
-            {
-              "name": "persistent",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Keeps the menu open while users interact with slotted menu content."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-dropdown",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "action",
-              "description": "Dropdown trigger, typically a `mui-button`."
-            },
-            {
-              "name": "",
-              "description": "Menu contents, typically `mui-button` options and separating rules."
-            }
-          ],
-          "cssProperties": [
-            {
-              "name": "--dropdown-offset",
-              "description": "Vertical distance between the trigger and menu surface."
-            },
-            {
-              "name": "--dropdown-min-width",
-              "description": "Minimum menu width."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-dropdown",
-          "declaration": {
-            "name": "MuiDropdown",
-            "module": "src/components/mui-dropdown/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-file-upload/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ FileUpload: { title: \"File Upload\", description: \"A simple file input that displays the selected file name and emits a file-upload event.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1rEfpEQEyCvvmkfC4qKrvb/b27ffb14d215b37bb98707c87ed2838c/FileUpload_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4068&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-file-upload--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-upload/index.ts\"], website: [\"https://muibook.com/file-upload\"], guides: [\"https://guides.muibook.com/file-upload\"], usage: { list: [ \"Use when users need to upload a file, such as documents, images, or other assets.\", \"Keep labels and instructions clear so users understand what file types and sizes are allowed.\", \"Display the selected file name once uploaded to confirm selection.\", \"Validate file type and size before submission and provide helpful error messages.\", \"Only use this component when uploading is essential to completing a task — avoid optional uploads unless necessary.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/2sqEWKOyrgyXbePd1Y0QY1/36670de55b4f68391d073275b94b11e8/FileUpload_-_Anatomy.png\", list: [ \"Message: This text indicates that no file has been selected.\", \"Action: Use this element as a call to action for the user to add a file.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Input\", link: \"https://guides.muibook.com/input\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-file-upload/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-file-upload/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Provides a file picker control that displays the current or newly selected file name.",
-          "name": "MuiFileUpload",
-          "events": [
-            {
-              "name": "file-upload",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Dispatched when a user selects a file, with the selected file in `detail.file`."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "accepted-file-types",
-              "type": {
-                "text": "string"
-              },
-              "description": "Comma-separated file extensions or MIME types accepted by the native file picker."
-            },
-            {
-              "name": "current-file-name",
-              "type": {
-                "text": "string"
-              },
-              "description": "Initial label displayed before a file is selected."
-            },
-            {
-              "name": "acceptedfiletypes",
-              "type": {
-                "text": "string"
-              },
-              "description": "Compatibility alias for `accepted-file-types`; prefer the kebab-case attribute."
-            },
-            {
-              "name": "currentfilename",
-              "type": {
-                "text": "string"
-              },
-              "description": "Compatibility alias for `current-file-name`; prefer the kebab-case attribute."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-file-upload",
-          "customElement": true,
-          "slots": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-file-upload",
-          "declaration": {
-            "name": "MuiFileUpload",
-            "module": "src/components/mui-file-upload/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-field/doc.ts",
       "declarations": [
         {
@@ -3064,6 +2973,97 @@
           "declaration": {
             "name": "MuiField",
             "module": "src/components/mui-field/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-file-upload/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ FileUpload: { title: \"File Upload\", description: \"A simple file input that displays the selected file name and emits a file-upload event.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1rEfpEQEyCvvmkfC4qKrvb/b27ffb14d215b37bb98707c87ed2838c/FileUpload_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4068&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-file-upload--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-upload/index.ts\"], website: [\"https://muibook.com/file-upload\"], guides: [\"https://guides.muibook.com/file-upload\"], usage: { list: [ \"Use when users need to upload a file, such as documents, images, or other assets.\", \"Keep labels and instructions clear so users understand what file types and sizes are allowed.\", \"Display the selected file name once uploaded to confirm selection.\", \"Validate file type and size before submission and provide helpful error messages.\", \"Only use this component when uploading is essential to completing a task — avoid optional uploads unless necessary.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/2sqEWKOyrgyXbePd1Y0QY1/36670de55b4f68391d073275b94b11e8/FileUpload_-_Anatomy.png\", list: [ \"Message: This text indicates that no file has been selected.\", \"Action: Use this element as a call to action for the user to add a file.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Input\", link: \"https://guides.muibook.com/input\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-file-upload/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-file-upload/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Provides a file picker control that displays the current or newly selected file name.",
+          "name": "MuiFileUpload",
+          "events": [
+            {
+              "name": "file-upload",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when a user selects a file, with the selected file in `detail.file`."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "accepted-file-types",
+              "type": {
+                "text": "string"
+              },
+              "description": "Comma-separated file extensions or MIME types accepted by the native file picker."
+            },
+            {
+              "name": "current-file-name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initial label displayed before a file is selected."
+            },
+            {
+              "name": "acceptedfiletypes",
+              "type": {
+                "text": "string"
+              },
+              "description": "Compatibility alias for `accepted-file-types`; prefer the kebab-case attribute."
+            },
+            {
+              "name": "currentfilename",
+              "type": {
+                "text": "string"
+              },
+              "description": "Compatibility alias for `current-file-name`; prefer the kebab-case attribute."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-file-upload",
+          "customElement": true,
+          "slots": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-file-upload",
+          "declaration": {
+            "name": "MuiFileUpload",
+            "module": "src/components/mui-file-upload/index.ts"
           }
         }
       ]
@@ -3209,6 +3209,98 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-form-message/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ FormMessage: { title: \"Form Message\", description: \"Form Message provides supporting text below form controls for guidance, validation, and status messaging.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17821&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-form-message--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-message/index.ts\"], website: [\"https://muibook.com/form-message\"], guides: [\"https://guides.muibook.com/field\"], usage: { list: [ \"Use for supporting text below form controls.\", \"Use inside mui-field with slot='message' for consistent spacing and placement.\", \"When used in Form Group layouts, attach each Form Message to its specific Field using slot='message'.\", \"Form Message wraps Mui Body with form-oriented defaults.\", \"Form Message renders an info icon by default; provide slot='before' to replace it.\", \"Use variant='info' for lighter informational guidance that should remain less visually impactful than warning, success, or error states.\", \"Supporting copy is intentionally knocked back so inputs and selections stay visually primary.\", \"Slot icons in before/after using Mui Body slot behavior.\", \"Style state feedback through slotted icon color and text styling in usage context.\", \"Use size to match nearby body text (x-small, small, medium, large).\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"] }, anatomy: { image: \"\", list: [\"Optional leading slot\", \"Hint text\", \"Optional trailing slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Input\", link: \"https://guides.muibook.com/input\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-form-message/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-form-message/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays helper or validation copy for a form control with optional semantic icon content.",
+          "name": "MuiFormMessage",
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "small",
+              "description": "Sets the message text and inferred icon size."
+            },
+            {
+              "name": "weight",
+              "type": {
+                "text": "\"regular\" | \"bold\""
+              },
+              "default": "regular",
+              "description": "Sets the message text weight."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"optional\" | \"info\" | \"warning\" | \"success\" | \"error\""
+              },
+              "default": "optional",
+              "description": "Sets the semantic message color and default icon treatment."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-form-message",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Message text or supporting inline content."
+            },
+            {
+              "name": "before",
+              "description": "Leading icon; defaults to an information icon."
+            },
+            {
+              "name": "after",
+              "description": "Optional trailing content."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-form-message",
+          "declaration": {
+            "name": "MuiFormMessage",
+            "module": "src/components/mui-form-message/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-form-section/doc.ts",
       "declarations": [
         {
@@ -3302,98 +3394,6 @@
           "declaration": {
             "name": "MuiFormSection",
             "module": "src/components/mui-form-section/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-form-message/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ FormMessage: { title: \"Form Message\", description: \"Form Message provides supporting text below form controls for guidance, validation, and status messaging.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17821&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-form-message--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-message/index.ts\"], website: [\"https://muibook.com/form-message\"], guides: [\"https://guides.muibook.com/field\"], usage: { list: [ \"Use for supporting text below form controls.\", \"Use inside mui-field with slot='message' for consistent spacing and placement.\", \"When used in Form Group layouts, attach each Form Message to its specific Field using slot='message'.\", \"Form Message wraps Mui Body with form-oriented defaults.\", \"Form Message renders an info icon by default; provide slot='before' to replace it.\", \"Use variant='info' for lighter informational guidance that should remain less visually impactful than warning, success, or error states.\", \"Supporting copy is intentionally knocked back so inputs and selections stay visually primary.\", \"Slot icons in before/after using Mui Body slot behavior.\", \"Style state feedback through slotted icon color and text styling in usage context.\", \"Use size to match nearby body text (x-small, small, medium, large).\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"] }, anatomy: { image: \"\", list: [\"Optional leading slot\", \"Hint text\", \"Optional trailing slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Input\", link: \"https://guides.muibook.com/input\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-form-message/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-form-message/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays helper or validation copy for a form control with optional semantic icon content.",
-          "name": "MuiFormMessage",
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "small",
-              "description": "Sets the message text and inferred icon size."
-            },
-            {
-              "name": "weight",
-              "type": {
-                "text": "\"regular\" | \"bold\""
-              },
-              "default": "regular",
-              "description": "Sets the message text weight."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"optional\" | \"info\" | \"warning\" | \"success\" | \"error\""
-              },
-              "default": "optional",
-              "description": "Sets the semantic message color and default icon treatment."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-form-message",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Message text or supporting inline content."
-            },
-            {
-              "name": "before",
-              "description": "Leading icon; defaults to an information icon."
-            },
-            {
-              "name": "after",
-              "description": "Optional trailing content."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-form-message",
-          "declaration": {
-            "name": "MuiFormMessage",
-            "module": "src/components/mui-form-message/index.ts"
           }
         }
       ]
@@ -3720,113 +3720,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-heading/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Heading: { title: \"Heading\", description: \"The Heading component includes six levels (H1–H6) for structured heading usage, supporting a range of hierarchies in text presentation.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/mGURbbhEBEMoMv5KlrbhD/46b2fdc16823b3750955a6bfd451e3ed/Heading_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1120&t=fSFYVey9aCoE5oQa-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-heading--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-heading/index.ts\"], website: [\"https://muibook.com/heading\"], guides: [\"https://guides.muibook.com/heading\"], usage: { list: [ \"Blog/Info Pages: Follow a structured, descending order to create clear sections. E.g. H1 → H2 → H3.\", \"Rich Data or Workflows: Headings may be used out of strict order to maintain visual balance and usability. E.g. Skip an H3 if H4 better suits the layout.\", \"Use only one H1 per page to establish a clear primary title and improve accessibility.\", \"Use H2–H6 to structure content logically, maintaining a clear hierarchy.\", ], }, accessibility: { designerList: [ \"Use the level property (H1–H6) to maintain correct semantic structure.\", \"Follow a logical order — don’t skip heading levels.\", \"Helps screen readers understand and navigate the page hierarchy.\", ], engineerList: [ \"Use the level property (H1–H6) to maintain correct semantic structure.\", \"Follow a logical order — don’t skip heading levels.\", \"Helps screen readers understand and navigate the page hierarchy.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"heading-1\", title: \"Heading 1\", description: \"The primary heading is typically the page's main title. It plays a crucial role in accessibility and SEO, as screen readers and search engines rely on H1s to understand page structure.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4qDOWEyMtO0U40Ot9aSKNb/a3ae2d059cb9caeb26c6c65e36df71b2/heading-1.png\", }, { key: \"heading-2\", title: \"Heading 2\", description: \"A secondary heading that introduces major sections within a page, following the H1.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/WXCjRrpLpqzGUhY8auOMv/66d0cd721db330f68547a16a63feec4f/heading-2.png\", }, { key: \"heading-3\", title: \"Heading 3\", description: \"A heading is used to structure content under H2, providing additional hierarchy.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/146ZPfxWf50ahUf35SAMWU/ffaacafbe9f905da81850a60d00e48d7/heading-3.png\", }, { key: \"heading-4\", title: \"Heading 4\", description: \"A heading for organising detailed content under H3, maintaining readability.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/53f9iMdJUV7DPsiZhPToiY/83141d25fb2de26bcb7c0e66a4fd14f6/heading-4.png\", }, { key: \"heading-5\", title: \"Heading 5\", description: \"A heading that introduces lower-level content, often for minor divisions within H4 sections.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1pocISFs6Ht66gXn4EHn59/f43d402c6cbe3dafbc06d35ef1097cad/heading-5.png\", }, { key: \"heading-6\", title: \"Heading 6\", description: \"The lowest level heading, used for minimal emphasis or supplementary labeling.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3CV5CHrrNrkeTkZDfhpRGA/29d6f9b6da53f4174f8c4d45aee01939/heading-6.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"muibook-resource\", name: \"Muibook Resource\", description: \"The Muibook documentation site uses MUI components to compose its layout, including headings, text, lists, buttons, icons, and image components.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3LVvuYDZWRnMhxNy6GMLNd/c5074a05eacb2c22c50ea172b3567c48/Muibook-List-Composition.png\", }, { key: \"guru-outcomes-roadmap\", name: \"Guru Outcomes - Roadmap\", description: \"The Loader component in action on the roadmap page, smoothly loading the UI while masking delays and improving perceived performance.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7Hebis0o1mlvvDZlQRZfzl/f0c06679ab417f2ee624b570226da77d/outcomes-roadmap.gif\", }, { key: \"guru-outcomes-dashboard\", name: \"Guru Outcomes - Dashboard\", description: \"Use the <mui-loader> component to mask slow network or initial data load times. Combine its features to create a seamless loading experience.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7fsKn4mqKGieVh2D1EdyuR/a9afa145001e13470054aa9d7004127d/outcomes-home.gif\", }, ], }, related: { items: [ { name: \"Body\", link: \"https://guides.muibook.com/body\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-heading/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-heading/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Renders a semantic heading with an independently configurable visual size.",
-          "name": "MuiHeading",
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "1 | 2 | 3 | 4 | 5 | 6"
-              },
-              "default": "1",
-              "description": "Sets the visual heading size."
-            },
-            {
-              "name": "level",
-              "type": {
-                "text": "1 | 2 | 3 | 4 | 5 | 6"
-              },
-              "description": "Sets the semantic heading level; defaults to the selected visual size."
-            },
-            {
-              "name": "truncate",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Clamps heading text to a single line with ellipsis when the available width is constrained."
-            },
-            {
-              "name": "clamp",
-              "type": {
-                "text": "number"
-              },
-              "description": "Limits heading text to the provided number of lines. Ignored when truncate is present."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-heading",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Heading text content."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--heading-font-family",
-              "description": "Font family applied to heading text."
-            },
-            {
-              "name": "--heading-font-weight",
-              "description": "Font weight applied to heading text."
-            },
-            {
-              "name": "--heading-text-color",
-              "description": "Color applied to heading text."
-            },
-            {
-              "name": "--heading-line-clamp",
-              "description": "Resolved number of visible lines used by the clamp attribute."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-heading",
-          "declaration": {
-            "name": "MuiHeading",
-            "module": "src/components/mui-heading/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-hint/doc.ts",
       "declarations": [
         {
@@ -3972,6 +3865,113 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-heading/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Heading: { title: \"Heading\", description: \"The Heading component includes six levels (H1–H6) for structured heading usage, supporting a range of hierarchies in text presentation.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/mGURbbhEBEMoMv5KlrbhD/46b2fdc16823b3750955a6bfd451e3ed/Heading_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-1120&t=fSFYVey9aCoE5oQa-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-heading--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-heading/index.ts\"], website: [\"https://muibook.com/heading\"], guides: [\"https://guides.muibook.com/heading\"], usage: { list: [ \"Blog/Info Pages: Follow a structured, descending order to create clear sections. E.g. H1 → H2 → H3.\", \"Rich Data or Workflows: Headings may be used out of strict order to maintain visual balance and usability. E.g. Skip an H3 if H4 better suits the layout.\", \"Use only one H1 per page to establish a clear primary title and improve accessibility.\", \"Use H2–H6 to structure content logically, maintaining a clear hierarchy.\", ], }, accessibility: { designerList: [ \"Use the level property (H1–H6) to maintain correct semantic structure.\", \"Follow a logical order — don’t skip heading levels.\", \"Helps screen readers understand and navigate the page hierarchy.\", ], engineerList: [ \"Use the level property (H1–H6) to maintain correct semantic structure.\", \"Follow a logical order — don’t skip heading levels.\", \"Helps screen readers understand and navigate the page hierarchy.\", ], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"heading-1\", title: \"Heading 1\", description: \"The primary heading is typically the page's main title. It plays a crucial role in accessibility and SEO, as screen readers and search engines rely on H1s to understand page structure.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4qDOWEyMtO0U40Ot9aSKNb/a3ae2d059cb9caeb26c6c65e36df71b2/heading-1.png\", }, { key: \"heading-2\", title: \"Heading 2\", description: \"A secondary heading that introduces major sections within a page, following the H1.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/WXCjRrpLpqzGUhY8auOMv/66d0cd721db330f68547a16a63feec4f/heading-2.png\", }, { key: \"heading-3\", title: \"Heading 3\", description: \"A heading is used to structure content under H2, providing additional hierarchy.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/146ZPfxWf50ahUf35SAMWU/ffaacafbe9f905da81850a60d00e48d7/heading-3.png\", }, { key: \"heading-4\", title: \"Heading 4\", description: \"A heading for organising detailed content under H3, maintaining readability.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/53f9iMdJUV7DPsiZhPToiY/83141d25fb2de26bcb7c0e66a4fd14f6/heading-4.png\", }, { key: \"heading-5\", title: \"Heading 5\", description: \"A heading that introduces lower-level content, often for minor divisions within H4 sections.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1pocISFs6Ht66gXn4EHn59/f43d402c6cbe3dafbc06d35ef1097cad/heading-5.png\", }, { key: \"heading-6\", title: \"Heading 6\", description: \"The lowest level heading, used for minimal emphasis or supplementary labeling.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3CV5CHrrNrkeTkZDfhpRGA/29d6f9b6da53f4174f8c4d45aee01939/heading-6.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"muibook-resource\", name: \"Muibook Resource\", description: \"The Muibook documentation site uses MUI components to compose its layout, including headings, text, lists, buttons, icons, and image components.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3LVvuYDZWRnMhxNy6GMLNd/c5074a05eacb2c22c50ea172b3567c48/Muibook-List-Composition.png\", }, { key: \"guru-outcomes-roadmap\", name: \"Guru Outcomes - Roadmap\", description: \"The Loader component in action on the roadmap page, smoothly loading the UI while masking delays and improving perceived performance.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7Hebis0o1mlvvDZlQRZfzl/f0c06679ab417f2ee624b570226da77d/outcomes-roadmap.gif\", }, { key: \"guru-outcomes-dashboard\", name: \"Guru Outcomes - Dashboard\", description: \"Use the <mui-loader> component to mask slow network or initial data load times. Combine its features to create a seamless loading experience.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7fsKn4mqKGieVh2D1EdyuR/a9afa145001e13470054aa9d7004127d/outcomes-home.gif\", }, ], }, related: { items: [ { name: \"Body\", link: \"https://guides.muibook.com/body\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-heading/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-heading/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Renders a semantic heading with an independently configurable visual size.",
+          "name": "MuiHeading",
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "1 | 2 | 3 | 4 | 5 | 6"
+              },
+              "default": "1",
+              "description": "Sets the visual heading size."
+            },
+            {
+              "name": "level",
+              "type": {
+                "text": "1 | 2 | 3 | 4 | 5 | 6"
+              },
+              "description": "Sets the semantic heading level; defaults to the selected visual size."
+            },
+            {
+              "name": "truncate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Clamps heading text to a single line with ellipsis when the available width is constrained."
+            },
+            {
+              "name": "clamp",
+              "type": {
+                "text": "number"
+              },
+              "description": "Limits heading text to the provided number of lines. Ignored when truncate is present."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-heading",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Heading text content."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--heading-font-family",
+              "description": "Font family applied to heading text."
+            },
+            {
+              "name": "--heading-font-weight",
+              "description": "Font weight applied to heading text."
+            },
+            {
+              "name": "--heading-text-color",
+              "description": "Color applied to heading text."
+            },
+            {
+              "name": "--heading-line-clamp",
+              "description": "Resolved number of visible lines used by the clamp attribute."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-heading",
+          "declaration": {
+            "name": "MuiHeading",
+            "module": "src/components/mui-heading/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-illustrations/doc.ts",
       "declarations": [
         {
@@ -4046,6 +4046,138 @@
           "declaration": {
             "name": "MuiIllustrationTrash",
             "module": "src/components/mui-illustrations/trash.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-image/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Image: { title: \"Image\", description: \"Displays an image alongside an optional caption to provide context, explanation, or attribution. Useful for supporting content visually while maintaining clarity through descriptive labelling.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/14eozXMPlzipgAfqaIR2Py/4e211990a30b4a08549deccfd30c71a9/Image_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4194&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/media-image--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-image/index.ts\"], website: [\"https://muibook.com/image\"], guides: [\"https://guides.muibook.com/image\"], usage: { list: [ \"Use to display images that require additional context or explanation.\", \"Use height + crop + fit=cover when you need fixed-height visual crops.\", \"Use max-height with aspect-ratio for responsive image frames that should not exceed a visual cap.\", \"Use focal-x/focal-y or position to keep important content in frame.\", \"Use zoom carefully to tighten framing without switching to background-image.\", \"Captions should clarify the relevance of the image, not repeat surrounding content.\", \"Ideal for diagrams, UI examples, or content requiring attribution.\", \"Ensure images are accessible with alt text and meaningful captions.\", ], }, accessibility: { designerList: [ \"Use meaningful alt text that describes the image’s purpose.\", \"Use alt=&#8220;&#8221; for decorative images that don’t convey information.\", \"Use the caption slot for extended context, especially for diagrams or UI patterns.\", ], engineerList: [ \"Use meaningful alt text that describes the image’s purpose.\", \"Use alt=&#8220;&#8221; for decorative images that don’t convey information.\", \"Use the caption slot for extended context, especially for diagrams or UI patterns.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/3BSbMl1cqUOB6oDmFLQjRx/193889c0f6d3da6178d51e5fff06b8ed/Image_-_Anatomy.png\", list: [\"Standard styling for a hero image.\", \"Optional caption for the image.\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"muibook-resource\", name: \"Muibook Resource\", description: \"The Muibook documentation site uses MUI components to compose its layout, including headings, text, lists, buttons, icons, and image components.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3LVvuYDZWRnMhxNy6GMLNd/c5074a05eacb2c22c50ea172b3567c48/Muibook-List-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-image/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-image/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Frames a slotted image with optional cropping, focal positioning and caption content.",
+          "name": "MuiImage",
+          "attributes": [
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the rendered image container height using any valid CSS height value."
+            },
+            {
+              "name": "fit",
+              "type": {
+                "text": "\"contain\" | \"cover\" | \"fill\" | \"none\" | \"scale-down\""
+              },
+              "default": "contain",
+              "description": "Controls how the image fits its container."
+            },
+            {
+              "name": "crop",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enables cropped image presentation."
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "default": "center center",
+              "description": "Sets the object position when a focal position is not supplied."
+            },
+            {
+              "name": "zoom",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Scales the image around its focal position."
+            },
+            {
+              "name": "focal-x",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the horizontal focal point used for cropped images."
+            },
+            {
+              "name": "focal-y",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the vertical focal point used for cropped images."
+            },
+            {
+              "name": "radius",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--radius-300)",
+              "description": "Sets the frame border radius."
+            },
+            {
+              "name": "aspect-ratio",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the media aspect ratio using any valid CSS aspect-ratio value."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-image",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "image",
+              "description": "Image media, normally an `img` element."
+            },
+            {
+              "name": "caption",
+              "description": "Optional caption content, normally a `figcaption` element."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-image",
+          "declaration": {
+            "name": "MuiImage",
+            "module": "src/components/mui-image/index.ts"
           }
         }
       ]
@@ -5936,138 +6068,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-image/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Image: { title: \"Image\", description: \"Displays an image alongside an optional caption to provide context, explanation, or attribution. Useful for supporting content visually while maintaining clarity through descriptive labelling.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/14eozXMPlzipgAfqaIR2Py/4e211990a30b4a08549deccfd30c71a9/Image_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4194&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/media-image--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-image/index.ts\"], website: [\"https://muibook.com/image\"], guides: [\"https://guides.muibook.com/image\"], usage: { list: [ \"Use to display images that require additional context or explanation.\", \"Use height + crop + fit=cover when you need fixed-height visual crops.\", \"Use max-height with aspect-ratio for responsive image frames that should not exceed a visual cap.\", \"Use focal-x/focal-y or position to keep important content in frame.\", \"Use zoom carefully to tighten framing without switching to background-image.\", \"Captions should clarify the relevance of the image, not repeat surrounding content.\", \"Ideal for diagrams, UI examples, or content requiring attribution.\", \"Ensure images are accessible with alt text and meaningful captions.\", ], }, accessibility: { designerList: [ \"Use meaningful alt text that describes the image’s purpose.\", \"Use alt=&#8220;&#8221; for decorative images that don’t convey information.\", \"Use the caption slot for extended context, especially for diagrams or UI patterns.\", ], engineerList: [ \"Use meaningful alt text that describes the image’s purpose.\", \"Use alt=&#8220;&#8221; for decorative images that don’t convey information.\", \"Use the caption slot for extended context, especially for diagrams or UI patterns.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/3BSbMl1cqUOB6oDmFLQjRx/193889c0f6d3da6178d51e5fff06b8ed/Image_-_Anatomy.png\", list: [\"Standard styling for a hero image.\", \"Optional caption for the image.\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"muibook-resource\", name: \"Muibook Resource\", description: \"The Muibook documentation site uses MUI components to compose its layout, including headings, text, lists, buttons, icons, and image components.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3LVvuYDZWRnMhxNy6GMLNd/c5074a05eacb2c22c50ea172b3567c48/Muibook-List-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-image/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-image/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Frames a slotted image with optional cropping, focal positioning and caption content.",
-          "name": "MuiImage",
-          "attributes": [
-            {
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the rendered image container height using any valid CSS height value."
-            },
-            {
-              "name": "fit",
-              "type": {
-                "text": "\"contain\" | \"cover\" | \"fill\" | \"none\" | \"scale-down\""
-              },
-              "default": "contain",
-              "description": "Controls how the image fits its container."
-            },
-            {
-              "name": "crop",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enables cropped image presentation."
-            },
-            {
-              "name": "position",
-              "type": {
-                "text": "string"
-              },
-              "default": "center center",
-              "description": "Sets the object position when a focal position is not supplied."
-            },
-            {
-              "name": "zoom",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Scales the image around its focal position."
-            },
-            {
-              "name": "focal-x",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the horizontal focal point used for cropped images."
-            },
-            {
-              "name": "focal-y",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the vertical focal point used for cropped images."
-            },
-            {
-              "name": "radius",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--radius-300)",
-              "description": "Sets the frame border radius."
-            },
-            {
-              "name": "aspect-ratio",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the media aspect ratio using any valid CSS aspect-ratio value."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-image",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "image",
-              "description": "Image media, normally an `img` element."
-            },
-            {
-              "name": "caption",
-              "description": "Optional caption content, normally a `figcaption` element."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-image",
-          "declaration": {
-            "name": "MuiImage",
-            "module": "src/components/mui-image/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-input/doc.ts",
       "declarations": [
         {
@@ -7335,6 +7335,18 @@
               "description": "Background color of the determinate bar."
             },
             {
+              "name": "--progress-bar-background-positive",
+              "description": "Background color of positive semantic progress indicators."
+            },
+            {
+              "name": "--progress-bar-background-warning",
+              "description": "Background color of warning semantic progress indicators."
+            },
+            {
+              "name": "--progress-bar-background-attention",
+              "description": "Background color of attention semantic progress indicators."
+            },
+            {
               "name": "--progress-syncing-bar-background",
               "description": "Background color of the syncing indicator."
             },
@@ -7374,7 +7386,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ ProgressRing: { title: \"Progress Ring\", description: \"Progress Ring displays circular determinate progress with generated center text. It belongs to the Progress family and is best for compact progress summaries in dashboards, cards, tables, and responsive layouts.\", hero: [\"\"], figma: [\"\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-progress-ring--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress-ring/index.ts\"], website: [\"https://muibook.com/progress\"], guides: [\"https://guides.muibook.com/progress\"], usage: { list: [ \"Use Progress Ring for compact determinate progress where a linear bar would take too much horizontal space.\", \"Use display to choose generated center text such as a fraction, numeric percent value, value, or no text.\", \"Use progress for percentage-based values, or value and max for count-based values.\", \"Use the default auto display when plain progress values should stay quiet but count-based progress should still show a fraction.\", \"Use x-small as an icon-sized indicator only; it does not render center text.\", \"Use a clear label when the generated center text is abbreviated or absent.\", \"Use tooltip to override the automatically generated tooltip text when the ring needs more specific context.\", ], }, accessibility: { designerList: [\"Do not rely on ring color alone; pair important progress with text or surrounding labels.\"], engineerList: [\"Progress Ring sets role='progressbar' and exposes aria-valuemin, aria-valuemax, and aria-valuenow.\"], }, anatomy: { image: \"\", list: [ \"Track: The circular background stroke.\", \"Indicator: The circular foreground stroke representing progress.\", \"Center text: Generated short text inside small, medium, and large rings.\", \"Tooltip: Optional embedded text disclosure for hover, focus, or click interaction.\", ], }, variants: { items: [ { key: \"x-small\", title: \"X-Small\", description: \"Use as an icon-sized indicator without center text.\", image: \"\" }, { key: \"small\", title: \"Small\", description: \"Use in dense table cells and compact summaries.\", image: \"\" }, { key: \"medium\", title: \"Medium\", description: \"Default ring size.\", image: \"\" }, { key: \"large\", title: \"Large\", description: \"Use in larger dashboard or card summaries.\", image: \"\" }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [], }, related: { items: [ { name: \"Progress\", link: \"https://guides.muibook.com/progress\" }, { name: \"Hint\", link: \"https://guides.muibook.com/hint\" }, { name: \"Table\", link: \"https://guides.muibook.com/table\" }, { name: \"Responsive\", link: \"https://guides.muibook.com/responsive\" }, ], }, rules: [ { heading: \"Use for compact progress\", description: \"Progress Ring is for compact progress summaries. Use Progress for full-width linear progress across a surface.\", doContent: [{ description: \"Use Progress Ring in dashboard summaries, table cells, or responsive compact views.\", image: \"\" }], dontContent: [{ description: \"Do not use Progress Ring for indeterminate pending or syncing states.\", image: \"\" }], }, ], behaviour: { list: [ \"Progress Ring is determinate only.\", \"Progress is clamped between 0 and 100.\", \"When progress is omitted, value and max are used to calculate progress.\", \"When display is auto, value and max render as a fraction, while progress-only values render no center text.\", \"When progress reaches 100, the center text is replaced by a checkmark for small, medium, and large rings.\", \"When size is x-small, generated center text is not rendered, but the completion icon is still shown.\", \"When tooltip is omitted, tooltip text is derived automatically from value and max, or from progress as natural language such as '50% complete'.\", \"When tooltip is set, it overrides the automatic tooltip text and opens on hover and focus by default.\", \"Use tooltip-trigger='click' when the disclosure should stay open until selected again or dismissed.\", ], }, writing: { list: [ \"Keep generated center text short, ideally a count, fraction, or numeric percent value. Do not use center text at x-small.\", \"Keep tooltip text concise and descriptive, such as '2 of 4 transactions automated'.\", ], }, }, }"
+          "default": "{ ProgressRing: { title: \"Progress Ring\", description: \"Progress Ring displays circular determinate progress with optional generated center text. It belongs to the Progress family and is best for compact progress summaries in dashboards, cards, tables, and responsive layouts.\", hero: [\"\"], figma: [\"\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-progress-ring--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress-ring/index.ts\"], website: [\"https://muibook.com/progress\"], guides: [\"https://guides.muibook.com/progress\"], usage: { list: [ \"Use Progress Ring for compact determinate progress where a linear bar would take too much horizontal space.\", \"Use display='value' only when the progress value should appear in the center.\", \"Use display-value for a short custom center value, such as a completed count, remaining count, grade, or time value.\", \"Use color='positive', color='warning', or color='attention' for semantic score bands or stateful progress summaries.\", \"Use progress for percentage-based values, or value and max for count-based values.\", \"Use the default auto display when the ring should stay quiet and leave detail to the tooltip.\", \"Use x-small as an icon-sized indicator only; it does not render center text.\", \"Use a clear label when the generated center text is abbreviated or absent.\", \"Use tooltip to override the automatically generated tooltip text when the ring needs more specific context.\", ], }, accessibility: { designerList: [\"Do not rely on ring color alone; pair important progress with text or surrounding labels.\"], engineerList: [\"Progress Ring sets role='progressbar' and exposes aria-valuemin, aria-valuemax, and aria-valuenow.\"], }, anatomy: { image: \"\", list: [ \"Track: The circular background stroke.\", \"Indicator: The circular foreground stroke representing progress.\", \"Center text: Optional generated short text inside small, medium, and large rings.\", \"Tooltip: Optional embedded text disclosure for hover, focus, or click interaction.\", ], }, variants: { items: [ { key: \"x-small\", title: \"X-Small\", description: \"Use as an icon-sized indicator without center text.\", image: \"\" }, { key: \"small\", title: \"Small\", description: \"Use in dense table cells and compact summaries.\", image: \"\" }, { key: \"medium\", title: \"Medium\", description: \"Default ring size.\", image: \"\" }, { key: \"large\", title: \"Large\", description: \"Use in larger dashboard or card summaries.\", image: \"\" }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [], }, related: { items: [ { name: \"Progress\", link: \"https://guides.muibook.com/progress\" }, { name: \"Hint\", link: \"https://guides.muibook.com/hint\" }, { name: \"Table\", link: \"https://guides.muibook.com/table\" }, { name: \"Responsive\", link: \"https://guides.muibook.com/responsive\" }, ], }, rules: [ { heading: \"Use for compact progress\", description: \"Progress Ring is for compact progress summaries. Use Progress for full-width linear progress across a surface.\", doContent: [{ description: \"Use Progress Ring in dashboard summaries, table cells, or responsive compact views.\", image: \"\" }], dontContent: [{ description: \"Do not use Progress Ring for indeterminate pending or syncing states.\", image: \"\" }], }, ], behaviour: { list: [ \"Progress Ring is determinate only.\", \"Progress is clamped between 0 and 100.\", \"When progress is omitted, value and max are used to calculate progress.\", \"When display is auto, center text is not rendered; value and max still calculate progress and generated tooltip text.\", \"When display is value, value and max render as a compact fraction when it fits, while progress-only values render the rounded numeric progress value.\", \"When display-value is set, it overrides generated center text while the ring still uses progress, or value and max, for the determinate value.\", \"When color is set, the ring uses progress color tokens for the indicator while center text keeps the default text color.\", \"When a generated fraction is too dense for the ring size, center text is omitted and the generated tooltip keeps the full value.\", \"When progress reaches 100, the center text is replaced by a checkmark for small, medium, and large rings.\", \"When size is x-small, generated center text is not rendered, but the completion icon is still shown.\", \"When tooltip is omitted, tooltip text is derived automatically from value and max, or from progress as natural language such as '50% complete'.\", \"When tooltip is set, it overrides the automatic tooltip text and opens on hover and focus by default.\", \"Use tooltip-trigger='click' when the disclosure should stay open until selected again or dismissed.\", ], }, writing: { list: [ \"Keep generated center text short, ideally a count or compact fraction. Do not use center text at x-small.\", \"Keep display-value short when using grades or time values, such as B+, D-, 3d, or 6h.\", \"Keep tooltip text concise and descriptive, such as '2 of 4 transactions automated'.\", ], }, }, }"
         }
       ],
       "exports": [
@@ -7394,7 +7406,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Displays circular determinate progress with generated center text. Use for compact progress summaries in dashboards, cards, tables, and responsive summaries.",
+          "description": "Displays circular determinate progress with optional generated center text. Use for compact progress summaries in dashboards, cards, tables, and responsive summaries.",
           "name": "MuiProgressRing",
           "attributes": [
             {
@@ -7438,10 +7450,24 @@
             {
               "name": "display",
               "type": {
-                "text": "\"auto\" | \"fraction\" | \"percent\" | \"value\" | \"none\""
+                "text": "\"auto\" | \"value\" | \"none\""
               },
               "default": "auto",
-              "description": "Controls the generated center text. Auto shows value/max fractions, hides plain progress values, and uses a checkmark at completion. Ignored for size='x-small'."
+              "description": "Controls the generated center text. Auto keeps center text empty, value derives compact text from value/max or rounded progress, and completion uses a checkmark. Ignored for size='x-small'."
+            },
+            {
+              "name": "display-value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides generated center text with a short custom value while progress, value, max, and tooltip continue to describe the underlying progress."
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "\"positive\" | \"warning\" | \"attention\""
+              },
+              "description": "Applies a semantic progress color to the ring indicator. Use for score bands or stateful progress summaries."
             },
             {
               "name": "tooltip",
@@ -7474,7 +7500,28 @@
           "customElement": true,
           "slots": [],
           "events": [],
-          "cssProperties": []
+          "cssProperties": [
+            {
+              "name": "--progress-track-background",
+              "description": "Stroke color of the progress ring track."
+            },
+            {
+              "name": "--progress-bar-background",
+              "description": "Stroke color of the default progress ring indicator."
+            },
+            {
+              "name": "--progress-bar-background-positive",
+              "description": "Stroke color of positive semantic progress ring indicators."
+            },
+            {
+              "name": "--progress-bar-background-warning",
+              "description": "Stroke color of warning semantic progress ring indicators."
+            },
+            {
+              "name": "--progress-bar-background-attention",
+              "description": "Stroke color of attention semantic progress ring indicators."
+            }
+          ]
         }
       ],
       "exports": [
@@ -10457,30 +10504,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-tabs/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Tabs: { title: \"Tabs\", description: \"Allows users to switch between views or content sections by selecting from a group of tabs. Tabs keep related content within a single surface, reducing the need for navigation and maintaining context.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/5EC8Uj4pMaQGe2UcNntYLX/040eb1feec8def04504dfa3729494b52/Tab_bar_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/navigation-tab-bar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs\"], website: [\"https://muibook.com/tab-bar\"], guides: [\"https://guides.muibook.com/tab-bar\"], usage: { list: [ \"Use to organise related content or views at the same level of hierarchy.\", \"Ideal for toggling between sections without navigating away from the page.\", \"Use the size API (x-small, small, medium, large) to align tabs with adjacent buttons.\", \"Use named slots (before/after) to compose icons and badges in tab items.\", \"Use variant='dots' for compact pagination controls such as carousel navigation.\", \"Use variant='ghost' when you want only active-tab emphasis without outer tab bar chrome.\", \"Keep labels short, clear, and consistently styled.\", \"Avoid using when content is unrelated or exceeds a manageable number of tabs.\", ], }, accessibility: { designerList: [ \"Keyboard users can navigate across tabs using the left/right arrow keys, as well as Home and End keys to jump to the first or last tab.\", \"The active tab always shows a clear focus outline and can be navigated to using the keyboard.\", \"Tabs are grouped in a way that assistive technologies can understand, using standard roles and attributes.\", \"The system keeps track of which tab is active behind the scenes, so screen readers and keyboard users always stay in sync.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/koeu63xbKYOWZgs8i0eev/983e09362714a2dcdcc7262889ba1236/Tabs_-_Anatomy.png\", list: [ \"Active: Indicates the currently selected tab.\", \"Inactive: Indicates a tab that is not selected and is waiting for user interaction.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"wallet\", name: \"Wallet\", description: \"This example shows a wallet view featuring a digital card, transaction and statement tabs. It demonstrates how foundational components like tabs, slats, and buttons can be composed to create flexible, real-world layouts.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6RoGBcahh63o16PAcEsgyX/36f5c8d9bf0e8754a574955b32ee6eda/Tab_Bar_-_Composition.png\", }, { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Carousel\", link: \"https://guides.muibook.com/carousel\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-tabs/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-textarea/doc.ts",
       "declarations": [
         {
@@ -10636,6 +10659,30 @@
           "declaration": {
             "name": "MuiTextarea",
             "module": "src/components/mui-textarea/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Tabs: { title: \"Tabs\", description: \"Allows users to switch between views or content sections by selecting from a group of tabs. Tabs keep related content within a single surface, reducing the need for navigation and maintaining context.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/5EC8Uj4pMaQGe2UcNntYLX/040eb1feec8def04504dfa3729494b52/Tab_bar_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/navigation-tab-bar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs\"], website: [\"https://muibook.com/tab-bar\"], guides: [\"https://guides.muibook.com/tab-bar\"], usage: { list: [ \"Use to organise related content or views at the same level of hierarchy.\", \"Ideal for toggling between sections without navigating away from the page.\", \"Use the size API (x-small, small, medium, large) to align tabs with adjacent buttons.\", \"Use named slots (before/after) to compose icons and badges in tab items.\", \"Use variant='dots' for compact pagination controls such as carousel navigation.\", \"Use variant='ghost' when you want only active-tab emphasis without outer tab bar chrome.\", \"Keep labels short, clear, and consistently styled.\", \"Avoid using when content is unrelated or exceeds a manageable number of tabs.\", ], }, accessibility: { designerList: [ \"Keyboard users can navigate across tabs using the left/right arrow keys, as well as Home and End keys to jump to the first or last tab.\", \"The active tab always shows a clear focus outline and can be navigated to using the keyboard.\", \"Tabs are grouped in a way that assistive technologies can understand, using standard roles and attributes.\", \"The system keeps track of which tab is active behind the scenes, so screen readers and keyboard users always stay in sync.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/koeu63xbKYOWZgs8i0eev/983e09362714a2dcdcc7262889ba1236/Tabs_-_Anatomy.png\", list: [ \"Active: Indicates the currently selected tab.\", \"Inactive: Indicates a tab that is not selected and is waiting for user interaction.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"wallet\", name: \"Wallet\", description: \"This example shows a wallet view featuring a digital card, transaction and statement tabs. It demonstrates how foundational components like tabs, slats, and buttons can be composed to create flexible, real-world layouts.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6RoGBcahh63o16PAcEsgyX/36f5c8d9bf0e8754a574955b32ee6eda/Tab_Bar_-_Composition.png\", }, { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Carousel\", link: \"https://guides.muibook.com/carousel\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-tabs/doc.ts"
           }
         }
       ]
@@ -11669,6 +11716,50 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-list/list/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups ordered or unordered list item content.",
+          "name": "MuiList",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-list",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "as",
+              "type": {
+                "text": "\"ul\" | \"ol\""
+              },
+              "default": "ul",
+              "description": "Sets unordered or ordered marker styling for the list."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-list-item` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-list",
+          "declaration": {
+            "name": "MuiList",
+            "module": "src/components/mui-list/list/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-list/item/index.ts",
       "declarations": [
         {
@@ -11723,93 +11814,6 @@
           "declaration": {
             "name": "MuiListItem",
             "module": "src/components/mui-list/item/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-list/list/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups ordered or unordered list item content.",
-          "name": "MuiList",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-list",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "as",
-              "type": {
-                "text": "\"ul\" | \"ol\""
-              },
-              "default": "ul",
-              "description": "Sets unordered or ordered marker styling for the list."
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-list-item` children."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-list",
-          "declaration": {
-            "name": "MuiList",
-            "module": "src/components/mui-list/list/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-slat/group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups related slats and rules with context-aware alignment spacing.",
-          "name": "MuiSlatGroup",
-          "attributes": [
-            {
-              "name": "usage",
-              "type": {
-                "text": "\"card\" | \"accordion\""
-              },
-              "description": "Applies spacing and offsets appropriate to card or accordion contexts."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-slat-group",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-slat` elements and optional `mui-rule` dividers."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-slat-group",
-          "declaration": {
-            "name": "MuiSlatGroup",
-            "module": "src/components/mui-slat/group/index.ts"
           }
         }
       ]
@@ -11897,6 +11901,269 @@
           "declaration": {
             "name": "MuiSlat",
             "module": "src/components/mui-slat/slat/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-slat/group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups related slats and rules with context-aware alignment spacing.",
+          "name": "MuiSlatGroup",
+          "attributes": [
+            {
+              "name": "usage",
+              "type": {
+                "text": "\"card\" | \"accordion\""
+              },
+              "description": "Applies spacing and offsets appropriate to card or accordion contexts."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-slat-group",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-slat` elements and optional `mui-rule` dividers."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-slat-group",
+          "declaration": {
+            "name": "MuiSlatGroup",
+            "module": "src/components/mui-slat/group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-stack/vstack/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Arranges slotted content vertically with token-based spacing and alignment controls.",
+          "name": "MuiVStack",
+          "attributes": [
+            {
+              "name": "space",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-500)",
+              "description": "Gap between children. Accepts any valid CSS gap value or design token."
+            },
+            {
+              "name": "alignx",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Horizontal alignment of children, mapped to grid `justify-items`."
+            },
+            {
+              "name": "aligny",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Vertical alignment of children, mapped to grid `align-items`."
+            },
+            {
+              "name": "padding",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-000)",
+              "description": "Padding applied inside the stack. Accepts any valid CSS padding value or design token."
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
+            },
+            {
+              "name": "viewport",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region."
+            },
+            {
+              "name": "fill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets width and height to `100%` when the parent supplies a clearly bounded layout region."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-v-stack",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Content arranged vertically inside the stack."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--stack-height",
+              "description": "Resolved stack host height. Prefer the `height`, `viewport`, or `fill` attributes for common layouts."
+            },
+            {
+              "name": "--stack-width",
+              "description": "Resolved stack host width. Prefer the `width` or `fill` attributes for common layouts."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "color"
+            },
+            {
+              "name": "font-family"
+            },
+            {
+              "name": "font-size"
+            },
+            {
+              "name": "font-weight"
+            },
+            {
+              "name": "letter-spacing"
+            },
+            {
+              "name": "line-height"
+            },
+            {
+              "name": "text-transform"
+            },
+            {
+              "name": "text-decoration"
+            },
+            {
+              "name": "text-align"
+            },
+            {
+              "name": "padding"
+            },
+            {
+              "name": "margin"
+            },
+            {
+              "name": "gap"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            },
+            {
+              "name": "box-sizing"
+            },
+            {
+              "name": "display"
+            },
+            {
+              "name": "flex"
+            },
+            {
+              "name": "flex-direction"
+            },
+            {
+              "name": "flex-wrap"
+            },
+            {
+              "name": "justify-content"
+            },
+            {
+              "name": "align-items"
+            },
+            {
+              "name": "align-content"
+            },
+            {
+              "name": "align-self"
+            },
+            {
+              "name": "grid-template-columns"
+            },
+            {
+              "name": "grid-template-rows"
+            },
+            {
+              "name": "grid-column"
+            },
+            {
+              "name": "grid-row"
+            },
+            {
+              "name": "place-items"
+            },
+            {
+              "name": "place-content"
+            },
+            {
+              "name": "vertical-align"
+            },
+            {
+              "name": "background"
+            },
+            {
+              "name": "border"
+            },
+            {
+              "name": "border-radius"
+            },
+            {
+              "name": "box-shadow"
+            },
+            {
+              "name": "opacity"
+            },
+            {
+              "name": "transition"
+            },
+            {
+              "name": "outline"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-v-stack",
+          "declaration": {
+            "name": "MuiVStack",
+            "module": "src/components/mui-stack/vstack/index.ts"
           }
         }
       ]
@@ -12125,226 +12392,6 @@
           "declaration": {
             "name": "MuiHStack",
             "module": "src/components/mui-stack/hstack/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-stack/vstack/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Arranges slotted content vertically with token-based spacing and alignment controls.",
-          "name": "MuiVStack",
-          "attributes": [
-            {
-              "name": "space",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-500)",
-              "description": "Gap between children. Accepts any valid CSS gap value or design token."
-            },
-            {
-              "name": "alignx",
-              "type": {
-                "text": "string"
-              },
-              "default": "normal",
-              "description": "Horizontal alignment of children, mapped to grid `justify-items`."
-            },
-            {
-              "name": "aligny",
-              "type": {
-                "text": "string"
-              },
-              "default": "normal",
-              "description": "Vertical alignment of children, mapped to grid `align-items`."
-            },
-            {
-              "name": "padding",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-000)",
-              "description": "Padding applied inside the stack. Accepts any valid CSS padding value or design token."
-            },
-            {
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
-            },
-            {
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
-            },
-            {
-              "name": "viewport",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region."
-            },
-            {
-              "name": "fill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Sets width and height to `100%` when the parent supplies a clearly bounded layout region."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-v-stack",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Content arranged vertically inside the stack."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--stack-height",
-              "description": "Resolved stack host height. Prefer the `height`, `viewport`, or `fill` attributes for common layouts."
-            },
-            {
-              "name": "--stack-width",
-              "description": "Resolved stack host width. Prefer the `width` or `fill` attributes for common layouts."
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "color"
-            },
-            {
-              "name": "font-family"
-            },
-            {
-              "name": "font-size"
-            },
-            {
-              "name": "font-weight"
-            },
-            {
-              "name": "letter-spacing"
-            },
-            {
-              "name": "line-height"
-            },
-            {
-              "name": "text-transform"
-            },
-            {
-              "name": "text-decoration"
-            },
-            {
-              "name": "text-align"
-            },
-            {
-              "name": "padding"
-            },
-            {
-              "name": "margin"
-            },
-            {
-              "name": "gap"
-            },
-            {
-              "name": "width"
-            },
-            {
-              "name": "height"
-            },
-            {
-              "name": "box-sizing"
-            },
-            {
-              "name": "display"
-            },
-            {
-              "name": "flex"
-            },
-            {
-              "name": "flex-direction"
-            },
-            {
-              "name": "flex-wrap"
-            },
-            {
-              "name": "justify-content"
-            },
-            {
-              "name": "align-items"
-            },
-            {
-              "name": "align-content"
-            },
-            {
-              "name": "align-self"
-            },
-            {
-              "name": "grid-template-columns"
-            },
-            {
-              "name": "grid-template-rows"
-            },
-            {
-              "name": "grid-column"
-            },
-            {
-              "name": "grid-row"
-            },
-            {
-              "name": "place-items"
-            },
-            {
-              "name": "place-content"
-            },
-            {
-              "name": "vertical-align"
-            },
-            {
-              "name": "background"
-            },
-            {
-              "name": "border"
-            },
-            {
-              "name": "border-radius"
-            },
-            {
-              "name": "box-shadow"
-            },
-            {
-              "name": "opacity"
-            },
-            {
-              "name": "transition"
-            },
-            {
-              "name": "outline"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-v-stack",
-          "declaration": {
-            "name": "MuiVStack",
-            "module": "src/components/mui-stack/vstack/index.ts"
           }
         }
       ]
@@ -12765,41 +12812,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-tabs/controller/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
-          "name": "MuiTabController",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-controller",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-controller",
-          "declaration": {
-            "name": "MuiTabController",
-            "module": "src/components/mui-tabs/controller/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-tabs/item/index.ts",
       "declarations": [
         {
@@ -12869,6 +12881,41 @@
           "declaration": {
             "name": "MuiTabItem",
             "module": "src/components/mui-tabs/item/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/controller/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
+          "name": "MuiTabController",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-controller",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-controller",
+          "declaration": {
+            "name": "MuiTabController",
+            "module": "src/components/mui-tabs/controller/index.ts"
           }
         }
       ]

@@ -1,8 +1,26 @@
 import "../mui-icons/checkmark";
 
+type CenterContent =
+  | { text: string; variant: "empty" | "text" }
+  | { text: string; value: string; max: string; variant: "fraction" };
+
+type RingColor = "positive" | "warning" | "attention";
+
 class MuiProgressRing extends HTMLElement {
   static get observedAttributes() {
-    return ["progress", "value", "max", "label", "size", "display", "tooltip", "tooltip-trigger", "tooltip-placement"];
+    return [
+      "progress",
+      "value",
+      "max",
+      "label",
+      "size",
+      "display",
+      "display-value",
+      "color",
+      "tooltip",
+      "tooltip-trigger",
+      "tooltip-placement",
+    ];
   }
 
   private tooltipOpen = false;
@@ -17,6 +35,10 @@ class MuiProgressRing extends HTMLElement {
   }
 
   connectedCallback() {
+    if (!this.hasAttribute("size")) {
+      this.setAttribute("size", "medium");
+      return;
+    }
     this.render();
   }
 
@@ -41,19 +63,49 @@ class MuiProgressRing extends HTMLElement {
     return Math.min(Math.max((value / max) * 100, 0), 100);
   }
 
-  private getDisplayText(progress: number) {
+  private getDisplayContent(progress: number, size: string): CenterContent {
     const display = this.getAttribute("display") || "auto";
+    const displayValue = this.getAttribute("display-value");
     const valueAttr = this.getAttribute("value");
     const maxAttr = this.getAttribute("max");
 
-    if (display === "none") return "";
-    if (display === "percent") return String(Math.round(progress));
-    if (display === "value") return valueAttr || String(Math.round(progress));
-    if (display === "fraction" && valueAttr !== null && maxAttr !== null) return `${valueAttr}/${maxAttr}`;
+    if (display === "none") return { text: "", variant: "empty" };
+    if (displayValue !== null) {
+      const text = displayValue.trim();
+      return text ? { text, variant: "text" } : { text: "", variant: "empty" };
+    }
+    if (display === "value") {
+      if (valueAttr !== null && maxAttr !== null) return this.getFractionContent(valueAttr, maxAttr, size);
+      return { text: String(Math.round(progress)), variant: "text" };
+    }
+    if (display === "fraction" && valueAttr !== null && maxAttr !== null)
+      return this.getFractionContent(valueAttr, maxAttr, size);
+    if (display === "percent") return { text: String(Math.round(progress)), variant: "text" };
 
-    if (valueAttr !== null && maxAttr !== null) return `${valueAttr}/${maxAttr}`;
+    // Auto keeps the ring quiet; the data still drives progress and tooltip text.
+    return { text: "", variant: "empty" };
+  }
 
-    return "";
+  private getFractionContent(value: string, max: string, size: string): CenterContent {
+    const valueText = value.trim();
+    const maxText = max.trim();
+    const inlineText = `${valueText}/${maxText}`;
+    const isWholeNumberPair = /^\d+$/.test(valueText) && /^\d+$/.test(maxText);
+
+    if (inlineText.length <= 3) {
+      return { text: inlineText, variant: "text" };
+    }
+
+    if (
+      isWholeNumberPair &&
+      valueText.length <= 2 &&
+      maxText.length <= 2 &&
+      (size === "small" || size === "medium" || size === "large")
+    ) {
+      return { text: inlineText, value: valueText, max: maxText, variant: "fraction" };
+    }
+
+    return { text: "", variant: "empty" };
   }
 
   private getTooltipText(progress: number) {
@@ -79,6 +131,17 @@ class MuiProgressRing extends HTMLElement {
   private getTooltipPlacement() {
     const placement = this.getAttribute("tooltip-placement") || "top";
     return ["top", "bottom", "left", "right"].includes(placement) ? placement : "top";
+  }
+
+  private getIndicatorColor() {
+    const color = this.getAttribute("color") as RingColor | null;
+    const colorMap: Record<RingColor, string> = {
+      positive: "var(--progress-bar-background-positive)",
+      warning: "var(--progress-bar-background-warning)",
+      attention: "var(--progress-bar-background-attention)",
+    };
+
+    return color && colorMap[color] ? colorMap[color] : "var(--progress-bar-background)";
   }
 
   private hasTooltip() {
@@ -198,7 +261,10 @@ class MuiProgressRing extends HTMLElement {
       if (spaces[opposite] >= required[opposite]) {
         resolved = opposite;
       } else {
-        resolved = placementOrder.reduce((best, placement) => (spaces[placement] > spaces[best] ? placement : best), resolved);
+        resolved = placementOrder.reduce(
+          (best, placement) => (spaces[placement] > spaces[best] ? placement : best),
+          resolved,
+        );
       }
     }
 
@@ -231,13 +297,22 @@ class MuiProgressRing extends HTMLElement {
     const progress = this.getProgress();
     const size = this.getAttribute("size") || "medium";
     const hasCenterContent = size !== "x-small";
+    const hasDisplayValue = this.hasAttribute("display-value") && Boolean(this.getAttribute("display-value")?.trim());
     const isComplete = progress >= 100;
-    const displayText = hasCenterContent && !isComplete ? this.getDisplayText(progress) : "";
-    const showCompleteIcon = isComplete;
-    const strokeWidth = size === "x-small" || size === "small" ? 4 : 5;
+    const displayContent: CenterContent =
+      hasCenterContent && (!isComplete || hasDisplayValue)
+        ? this.getDisplayContent(progress, size)
+        : { text: "", variant: "empty" };
+    const showCompleteIcon = isComplete && !(hasCenterContent && hasDisplayValue);
+    const strokeWidth = size === "x-small" ? 6 : 5;
     const radius = 21 - strokeWidth / 2;
     const circumference = 2 * Math.PI * radius;
-    const dashOffset = circumference - (progress / 100) * circumference;
+    const rawIndicatorLength = (progress / 100) * circumference;
+    const minimumPathGap = progress > 0 && progress < 100 ? strokeWidth * 1.4 : 0;
+    const indicatorLength =
+      progress >= 100 ? circumference : Math.max(0, Math.min(rawIndicatorLength, circumference - minimumPathGap));
+    const indicatorGap = circumference - indicatorLength;
+    const indicatorLinecap = progress <= 0 ? "butt" : "round";
     const sizeMap: Record<string, string> = {
       "x-small": "var(--action-icon-only-size-x-small)",
       small: "var(--action-icon-only-size-small)",
@@ -262,6 +337,34 @@ class MuiProgressRing extends HTMLElement {
         lineHeight: "1",
       },
     };
+    // Tune compact fraction center text per visual size.
+    const fractionMap: Record<string, { fontSize: string; lineHeight: string; width: string; dividerMargin: string }> =
+      {
+        "x-small": {
+          fontSize: "0",
+          lineHeight: "1",
+          width: "0",
+          dividerMargin: "0",
+        },
+        small: {
+          fontSize: "var(--font-size-10)",
+          lineHeight: "1",
+          width: "1em",
+          dividerMargin: "var(--stroke-size-100)",
+        },
+        medium: {
+          fontSize: "var(--font-size-15)",
+          lineHeight: "1",
+          width: "1em",
+          dividerMargin: "var(--stroke-size-200)",
+        },
+        large: {
+          fontSize: "var(--font-size-50)",
+          lineHeight: "1",
+          width: "1.2em",
+          dividerMargin: "var(--stroke-size-200)",
+        },
+      };
     const iconSizeMap: Record<string, string> = {
       "x-small": "xx-small",
       small: "x-small",
@@ -270,12 +373,20 @@ class MuiProgressRing extends HTMLElement {
     };
     const ringSize = sizeMap[size] || sizeMap.medium;
     const textSize = textMap[size] || textMap.medium;
+    const fractionSize = fractionMap[size] || fractionMap.medium;
     const completeIconSize = iconSizeMap[size] || iconSizeMap.medium;
     const tooltip = this.getTooltipText(progress);
     const hasTooltip = Boolean(tooltip);
     const tooltipId = "progress-ring-tooltip";
     const tooltipTrigger = this.getTooltipTrigger();
     const tooltipPlacement = this.getTooltipPlacement();
+    const indicatorColor = this.getIndicatorColor();
+    let contentHtml = this.escapeHtml(displayContent.text);
+    if (showCompleteIcon) {
+      contentHtml = `<mui-icon-checkmark class="complete-icon" size="${completeIconSize}" color="currentColor" aria-hidden="true"></mui-icon-checkmark>`;
+    } else if (displayContent.variant === "fraction") {
+      contentHtml = `<span class="fraction" aria-hidden="true"><span class="fraction__value">${this.escapeHtml(displayContent.value)}</span><span class="fraction__divider"></span><span class="fraction__max">${this.escapeHtml(displayContent.max)}</span></span>`;
+    }
 
     this.syncAria(progress);
 
@@ -286,6 +397,10 @@ class MuiProgressRing extends HTMLElement {
         inline-size: ${ringSize};
         block-size: ${ringSize};
         color: var(--text-color);
+        --progress-ring-fraction-font-size: ${fractionSize.fontSize};
+        --progress-ring-fraction-line-height: ${fractionSize.lineHeight};
+        --progress-ring-fraction-width: ${fractionSize.width};
+        --progress-ring-fraction-divider-margin: ${fractionSize.dividerMargin};
       }
       .ring {
         inline-size: 100%;
@@ -302,16 +417,16 @@ class MuiProgressRing extends HTMLElement {
         stroke: var(--progress-track-background);
       }
       .indicator {
-        stroke: var(--progress-bar-background);
-        stroke-linecap: round;
-        stroke-dasharray: ${circumference};
-        stroke-dashoffset: ${dashOffset};
-        transition: stroke-dashoffset var(--speed-300) ease;
+        stroke: ${indicatorColor};
+        stroke-linecap: ${indicatorLinecap};
+        stroke-dasharray: ${indicatorLength} ${indicatorGap};
+        stroke-dashoffset: 0;
+        transition: stroke-dasharray var(--speed-300) ease;
       }
       .content {
         position: absolute;
         inset: 0;
-        display: ${displayText || showCompleteIcon ? "grid" : "none"};
+        display: ${displayContent.text || showCompleteIcon ? "grid" : "none"};
         place-items: center;
         font-size: ${textSize.fontSize};
         line-height: ${textSize.lineHeight};
@@ -323,6 +438,31 @@ class MuiProgressRing extends HTMLElement {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+      .fraction {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto auto;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        inline-size: min(var(--progress-ring-fraction-width), 100%);
+        line-height: var(--progress-ring-fraction-line-height);
+        font-size: var(--progress-ring-fraction-font-size);
+      }
+      .fraction__value {
+        justify-self: center;
+      }
+      .fraction__divider {
+        inline-size: 100%;
+        block-size: var(--stroke-size-100);
+        margin-block: var(--progress-ring-fraction-divider-margin);
+        border-radius: var(--radius-500);
+        background: currentColor;
+        opacity: 0.7;
+      }
+      .fraction__max {
+        justify-self: center;
       }
       mui-icon-checkmark.complete-icon {
         color: currentColor;
@@ -378,11 +518,7 @@ class MuiProgressRing extends HTMLElement {
           <circle class="track" cx="21" cy="21" r="${radius}"></circle>
           <circle class="indicator" cx="21" cy="21" r="${radius}"></circle>
         </svg>
-        <div class="content">${
-          showCompleteIcon
-            ? `<mui-icon-checkmark class="complete-icon" size="${completeIconSize}" color="currentColor" aria-hidden="true"></mui-icon-checkmark>`
-            : this.escapeHtml(displayText)
-        }</div>
+        <div class="content">${contentHtml}</div>
       </div>
       ${
         hasTooltip

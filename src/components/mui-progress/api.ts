@@ -8,6 +8,9 @@ export const muiApi = {
     cssProperties: [
       { name: "--progress-track-background", description: "Background color of the progress track." },
       { name: "--progress-bar-background", description: "Background color of the determinate bar." },
+      { name: "--progress-bar-background-positive", description: "Background color of positive semantic progress indicators." },
+      { name: "--progress-bar-background-warning", description: "Background color of warning semantic progress indicators." },
+      { name: "--progress-bar-background-attention", description: "Background color of attention semantic progress indicators." },
       { name: "--progress-syncing-bar-background", description: "Background color of the syncing indicator." },
       { name: "--progress-radius", description: "Radius applied to the track and progress bar." },
       { name: "--progress-syncing-width", description: "Width of the animated syncing indicator." },

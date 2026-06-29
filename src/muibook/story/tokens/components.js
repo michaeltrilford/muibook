@@ -512,6 +512,9 @@ class tokensComponents extends HTMLElement {
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts"
           >
             <story-token-slat slot="body" token="--progress-bar-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--progress-bar-background-positive" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--progress-bar-background-warning" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--progress-bar-background-attention" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--progress-syncing-bar-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--progress-track-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--progress-loading-bar-100" variant="color"></story-token-slat>
