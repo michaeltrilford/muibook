@@ -271,7 +271,7 @@ class storyCards extends HTMLElement {
                 <mui-row-group heading>
                   <mui-row columns="${Columns_Action}">
                     <mui-cell>Company</mui-cell>
-                    <mui-cell>Monthly Cost</mui-cell>
+                    <mui-cell>Cost</mui-cell>
                     <mui-cell action>
                     </mui-cell>
                   </mui-row>

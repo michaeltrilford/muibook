@@ -370,7 +370,7 @@ html[data-theme="light"] {
   --badge-background-red: color-mix(in srgb, var(--categorical-red-200) 100%, white 40%);
   --badge-background-orange: color-mix(in srgb, var(--categorical-orange-200) 100%, white 20%);
   --badge-background-amber: color-mix(in srgb, var(--categorical-amber-200) 92%, white 0%);
-  --badge-background-yellow: color-mix(in srgb, var(--categorical-yellow-200) 88%, white 00%);
+  --badge-background-yellow: color-mix(in srgb, var(--categorical-yellow-200) 88%, white 0%);
   --badge-background-lime: color-mix(in srgb, var(--categorical-lime-200) 100%, black 0%);
   --badge-background-green: color-mix(in srgb, var(--categorical-green-200) 100%, black 0%);
   --badge-background-teal: color-mix(in srgb, var(--categorical-teal-200) 100%, black 0%);

@@ -848,7 +848,7 @@ class storyTable extends HTMLElement {
                     <mui-row-group heading>
                       <mui-row columns="${Columns_Action}">
                         <mui-cell>Company</mui-cell>
-                        <mui-cell>Monthly Cost</mui-cell>
+                        <mui-cell>Cost</mui-cell>
                         <mui-cell action>
                         </mui-cell>
                       </mui-row>
@@ -952,7 +952,7 @@ class storyTable extends HTMLElement {
                       <mui-row columns="${Columns}">
                         <mui-cell>Company</mui-cell>
                         <mui-cell>Billing</mui-cell>
-                        <mui-cell>Monthly Cost</mui-cell>
+                        <mui-cell>Cost</mui-cell>
                       </mui-row>
                     </mui-row-group>
                     <mui-row-group>
@@ -1009,7 +1009,7 @@ class storyTable extends HTMLElement {
                       <mui-row columns="${Columns}">
                         <mui-cell>Company</mui-cell>
                         <mui-cell>Billing</mui-cell>
-                        <mui-cell>Monthly Cost</mui-cell>
+                        <mui-cell>Cost</mui-cell>
                       </mui-row>
                     </mui-row-group>
                     <mui-row-group>
