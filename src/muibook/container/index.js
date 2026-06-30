@@ -3,11 +3,11 @@ import { getCurrentRoutePath, normalizeLegacyHashRoute } from "../utils/routes.j
 export class AppContainer extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open", delegatesFocus: true });
     this.handleRouteChange = this.handleRouteChange.bind(this);
     this.handleHashRouteChange = this.handleHashRouteChange.bind(this);
 
-    this.setAttribute("tabindex", "0"); // Make the app-container focusable
+    this.setAttribute("tabindex", "-1"); // Keep app-container available for programmatic focus.
     this.setAttribute("role", "main"); // Helps with screen reader navigation
 
     const style = document.createElement("style");
@@ -19,7 +19,7 @@ export class AppContainer extends HTMLElement {
       }
 
       :host(.focused) {
-        outline-offset: calc(var(--stroke-size-500) * -1);
+        outline-offset: calc(var(--stroke-size-400) * -1);
       }
     `;
 
@@ -333,7 +333,7 @@ export class AppContainer extends HTMLElement {
     window.addEventListener("popstate", this.handleRouteChange);
     window.addEventListener("hashchange", this.handleHashRouteChange);
     this.addEventListener("blur", () => {
-      this.setAttribute("tabindex", "-1"); // Reset after user tabs away
+      this.classList.remove("focused");
     });
     this.loadComponent();
   }

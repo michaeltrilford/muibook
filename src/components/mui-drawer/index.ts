@@ -75,6 +75,7 @@ class MuiDrawer extends HTMLElement {
     this.syncHeight();
     this.render();
     this.cacheEls();
+    this.syncDrawerWidth();
     this.attachEvents();
     this.updateFooterVisibility();
     this.updateHeaderVisibility();
@@ -155,6 +156,35 @@ class MuiDrawer extends HTMLElement {
 
   private syncHeight() {
     this.style.setProperty("--drawer-height", this.getAttribute("height") || "100dvh");
+  }
+
+  private syncDrawerWidth() {
+    if (!this.innerEl) return;
+
+    const variant = this.getAttribute("variant") || "overlay";
+    if (variant === "workspace") return;
+
+    if (this.isMobileViewport()) {
+      this.innerEl.style.removeProperty("width");
+      return;
+    }
+
+    this.innerEl.style.width = this.getAttribute("width") || "320px";
+  }
+
+  private syncResizeRailDrawerWidthBounds() {
+    const variant = this.getAttribute("variant") || "overlay";
+    if (!this.hasAttribute("resize-rail") || (variant !== "push" && variant !== "persistent")) return;
+    if (this.isMobileViewport()) return;
+
+    const currentWidth = this.getCurrentDrawerWidth();
+    const minDrawerWidth = this.getResizeRailMinDrawerWidth();
+    const maxDrawerWidth = this.getResizeRailMaxDrawerWidth();
+    const clampedWidth = Math.round(Math.max(minDrawerWidth, Math.min(currentWidth, maxDrawerWidth)));
+
+    if (Math.round(currentWidth) !== clampedWidth) {
+      this.setAttribute("width", `${clampedWidth}px`);
+    }
   }
 
   private syncMobileState() {
@@ -241,10 +271,21 @@ class MuiDrawer extends HTMLElement {
       return;
     }
 
+    if (variant === "push" && !this.isEventInsideDrawer(e)) return;
+
     if (variant === "overlay" || variant === "push" || this.usesMobileOverlay(variant)) {
       this.close();
     }
   };
+
+  private isEventInsideDrawer(event: Event) {
+    const path = event.composedPath();
+    return Boolean(
+      (this.outer && path.includes(this.outer)) ||
+        (this.resizeRailEl && path.includes(this.resizeRailEl)) ||
+        (this.overlayEl && path.includes(this.overlayEl)),
+    );
+  }
 
   private getDrawerTemplate(hasCloseButton = true) {
     const noPadding = this.hasAttribute("drawer-space") ? "no-padding" : "";
@@ -826,6 +867,14 @@ class MuiDrawer extends HTMLElement {
         -webkit-overflow-scrolling: touch;
       }
 
+      :host([variant="push"]:not([open])) ::slotted([slot="page"]) {
+        --home-page-shell-padding-block: var(--space-600);
+        --home-page-shell-padding-inline: var(--space-600);
+        --home-page-shell-padding-block-start-large: var(--space-800);
+        --home-page-shell-padding-block-end-large: var(--space-800);
+        --home-page-shell-padding-inline-large: var(--space-800);
+      }
+
     `;
 
     const responsiveStyles = /*css*/ `
@@ -1143,9 +1192,10 @@ class MuiDrawer extends HTMLElement {
     rail?.classList.toggle("keyboard-at-min", canClose && nextWidth <= minWidth);
   }
 
-  attributeChangedCallback(name: string, _old: string | null, value: string | null) {
+  attributeChangedCallback(name: string, _old: string | null, _value: string | null) {
     if (name === "breakpoint") {
       this.syncMobileState();
+      this.syncDrawerWidth();
       const variant = this.getAttribute("variant") || "overlay";
       if (variant === "push" || variant === "persistent") {
         this.updateLayout(variant, this.getLayoutOpenState(variant));
@@ -1170,13 +1220,14 @@ class MuiDrawer extends HTMLElement {
       }
     }
     if (name === "width" && this.innerEl) {
-      this.innerEl.style.width = value || "320px";
+      this.syncDrawerWidth();
       const variant = this.getAttribute("variant") || "overlay";
       if (variant === "push" || variant === "persistent") {
         this.updateLayout(variant, this.getLayoutOpenState(variant));
       }
     }
     if (name === "mobile-presentation") {
+      this.syncDrawerWidth();
       const variant = this.getAttribute("variant") || "overlay";
       if (variant === "push" || variant === "persistent") {
         this.updateLayout(variant, this.getLayoutOpenState(variant));
@@ -1191,6 +1242,7 @@ class MuiDrawer extends HTMLElement {
     if (name === "side" || name === "resize-rail") {
       this.render();
       this.cacheEls();
+      this.syncDrawerWidth();
       this.attachEvents();
       this.syncOpenState();
       this.syncWorkspaceState();
@@ -1198,13 +1250,8 @@ class MuiDrawer extends HTMLElement {
     if (name === "resize-min-drawer-width" || name === "resize-min-page-width") {
       const variant = this.getAttribute("variant") || "overlay";
       if ((variant === "push" || variant === "persistent") && this.hasAttribute("resize-rail")) {
-        const minDrawerWidth = this.getResizeRailMinDrawerWidth();
-        const currentWidth = this.getCurrentDrawerWidth();
-        if (currentWidth < minDrawerWidth) {
-          this.setAttribute("width", `${minDrawerWidth}px`);
-        } else {
-          this.updateLayout(variant, variant === "persistent" ? true : this.hasAttribute("open"));
-        }
+        this.syncResizeRailDrawerWidthBounds();
+        this.updateLayout(variant, variant === "persistent" ? true : this.hasAttribute("open"));
       }
       if (variant === "workspace" && this.hasAttribute("resize-rail")) {
         const minDrawerWidth = this.getResizeRailMinDrawerWidth();
@@ -1225,6 +1272,7 @@ class MuiDrawer extends HTMLElement {
     if (name === "variant") {
       this.render();
       this.cacheEls();
+      this.syncDrawerWidth();
       this.attachEvents();
       this.syncOpenState();
     }
@@ -1557,6 +1605,10 @@ class MuiDrawer extends HTMLElement {
       this.outer.style.zIndex = zIndexAttr ? drawerZ.toString() : "";
       this.style.zIndex = zIndexAttr ? zIndexAttr : "";
       this.outer.inert = !isOpen; // only push should disable when closed
+      if (this.resizeRailEl) {
+        this.resizeRailEl.tabIndex = isOpen ? 0 : -1;
+        this.resizeRailEl.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      }
     }
 
     if (variant === "persistent" && this.outer) {
@@ -1566,6 +1618,10 @@ class MuiDrawer extends HTMLElement {
       this.outer.style.zIndex = usesMobileOverlay && zIndexAttr ? drawerZ.toString() : "";
       this.style.zIndex = zIndexAttr ? zIndexAttr : "";
       this.outer.inert = usesMobileOverlay ? !isOpen : false;
+      if (this.resizeRailEl) {
+        this.resizeRailEl.tabIndex = 0;
+        this.resizeRailEl.setAttribute("aria-hidden", "false");
+      }
     }
 
     if (variant === "workspace") {
@@ -1586,6 +1642,8 @@ class MuiDrawer extends HTMLElement {
 
   private _handleResize = () => {
     this.syncMobileState();
+    this.syncResizeRailDrawerWidthBounds();
+    this.syncDrawerWidth();
     const variant = this.getAttribute("variant") || "overlay";
     this.classList.add("no-transition");
     if (variant === "push" || variant === "persistent") {

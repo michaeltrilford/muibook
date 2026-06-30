@@ -1,5 +1,3 @@
-import { getCleanRouteHref, navigateToRoute } from "../utils/routes.js";
-
 class appNavbar extends HTMLElement {
   constructor() {
     super();
@@ -8,24 +6,12 @@ class appNavbar extends HTMLElement {
 
     const styles = /*css*/ `
       :host { 
-        display: grid;
-        position: fixed;
-        z-index: 100;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-      }
-
-
-      #desktop {
-        display: none;
-      }
-      #mobile {
         display: block;
-      }
-
-      .color-icon {
-        fill: var(--app-nav-accent);
+        position: static;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        z-index: auto;
       }
 
       .menu-shell {
@@ -62,18 +48,8 @@ class appNavbar extends HTMLElement {
         --input-background: var(--app-navbar-surface-opacity);
         --border-thin: none;
         --outline-thick: none;
-        padding-inline: var(--space-300);
+        padding-inline: var(--space-200);
         box-sizing: border-box;
-      }
-
-      @media (min-width: 960px) {
-
-      :host { 
-        position: static;
-        bottom: 0;
-        left: 0;
-        min-height: 100vh;
-        z-index: 1;
       }
 
       .grid {
@@ -81,32 +57,15 @@ class appNavbar extends HTMLElement {
         grid-template-rows: auto 1fr;
         height: 100%;
       }
-      .spacer {background: var(--app-navbar-surface-opacity)}
 
-        .nav-search {
-          background: var(--app-navbar-surface-opacity);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-        }
+      .spacer {
+        background: var(--app-navbar-surface-opacity);
+      }
 
-        #desktop {
-          display: block;
-          box-shadow: var(--stroke-size-100) 0 0 0 var(--app-navbar-border-color);
-        }
-        #mobile {
-          display: none;
-        }
-      }
-    
-      #mobile {
-        opacity: 0;
-        transform: translate(0, 100%);
-        transition: transform 100ms linear, width 100ms linear, opacity 100ms linear;
-      }
-      #mobile[open] {
-        opacity: 1;
-        transform: translate(0, 0);
-        transition: transform 200ms ease-in, width 200ms ease-in, opacity 200ms ease-in;
+      .nav-search {
+        background: var(--app-navbar-surface-opacity);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
 
       mui-link::part(color),
@@ -145,8 +104,6 @@ class appNavbar extends HTMLElement {
     const Home = /*html*/ `
       <app-navbar-home  link="/home" title="muibook.com"></app-navbar-home>
     `;
-
-    const homeHref = getCleanRouteHref("/home");
 
     const Theme = /*html*/ `
       <app-navbar-theme></app-navbar-theme>
@@ -345,8 +302,7 @@ class appNavbar extends HTMLElement {
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <app-navbar-menu desktop id="desktop">
-        <slot name="skip"></slot>
+      <app-navbar-menu id="menu">
         <div class="grid">
           <div class="menu-shell">
             <div class="menu-top">
@@ -365,35 +321,6 @@ class appNavbar extends HTMLElement {
           <div class="spacer"></div>
         </div>
       </app-navbar-menu>
-
-      <app-navbar-menu mobile id="mobile">
-        <slot name="skip"></slot>
-        <div class="menu-shell">
-          <div class="menu-top">
-            ${Theme}
-            ${Search}
-          </div>
-          <div class="menu-scroll">
-            ${Resources}
-            ${Required}
-            ${Parts}
-            ${Components}
-            ${Compositions}
-          </div>
-        </div>
-      </app-navbar-menu>
-
-      <app-navbar-toggle>
-        <mui-button variant="tertiary">
-          <mui-icon-toggle rotate size="medium">
-            <mui-icon-menu class="color-icon" slot="start"></mui-icon-menu>
-            <mui-icon-close class="color-icon" slot="end"></mui-icon-close>
-          </mui-icon-toggle>
-        </mui-button>
-
-        
-        <mui-link slot="home-link" data-close-menu href="${homeHref}">muibook.com</mui-link>
-      </app-navbar-toggle>
     `;
 
     // Measure theme element and position home element
@@ -415,104 +342,8 @@ class appNavbar extends HTMLElement {
     // Re-measure on resize
     window.addEventListener("resize", measureAndPositionHome);
 
-    const btn = shadowRoot.querySelector("mui-button");
-    const toggle = shadowRoot.querySelector("mui-icon-toggle");
-
-    btn.addEventListener("click", () => {
-      toggle.toggle = !toggle.toggle;
-      toggle.setAttribute("aria-pressed", toggle.toggle);
-    });
-
-    // Query elements
-    this.menuIconEl = this.shadowRoot.querySelector("mui-button");
-    this.navbarEl = this.shadowRoot.getElementById("mobile");
     this.searchInputs = Array.from(this.shadowRoot.querySelectorAll(".nav-search-input"));
     this.navGroups = Array.from(this.shadowRoot.querySelectorAll("app-navbar-group"));
-
-    // Helper method to update tabindex
-    this.updateTabIndexForMenuLinks = (container, enable) => {
-      const links = container.querySelectorAll("app-navbar-link");
-      links.forEach((link) => {
-        if (enable) {
-          link.removeAttribute("tabindex");
-        } else {
-          link.setAttribute("tabindex", "-1");
-        }
-      });
-    };
-
-    // Close mobile menu when a link is clicked
-    const mobileLinks = this.navbarEl.querySelectorAll("app-navbar-link");
-    mobileLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        if (this.navbarEl.hasAttribute("open")) {
-          // 1. Close the mobile menu
-          this.navbarEl.removeAttribute("open");
-
-          // 2. Update tabindex
-          this.updateTabIndexForMenuLinks(this.navbarEl, false);
-
-          // 3. Reset the menu icon toggle state
-          toggle.toggle = false;
-          toggle.removeAttribute("aria-pressed");
-          toggle.removeAttribute("toggle");
-        }
-      });
-    });
-
-    // Close mobile menu when a home link is clicked
-    const homeLinks = this.shadowRoot.querySelectorAll("mui-link[data-close-menu]");
-
-    homeLinks.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        const isModifiedClick = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
-        if (!isModifiedClick && navigateToRoute(homeHref)) {
-          event.preventDefault();
-        }
-
-        if (this.navbarEl.hasAttribute("open")) {
-          // 1. Close the mobile menu
-          this.navbarEl.removeAttribute("open");
-
-          // 2. Update tabindex
-          this.updateTabIndexForMenuLinks(this.navbarEl, false);
-
-          // 3. Reset the menu icon toggle state
-          toggle.toggle = false;
-          toggle.removeAttribute("aria-pressed");
-          toggle.removeAttribute("toggle");
-        }
-      });
-    });
-
-    // Method to handle responsive behavior
-    this.handleResponsiveTabIndex = () => {
-      const isDesktop = window.innerWidth >= 961;
-      if (isDesktop) {
-        this.updateTabIndexForMenuLinks(this.navbarEl, true);
-      } else {
-        const isOpen = this.navbarEl.hasAttribute("open");
-        this.updateTabIndexForMenuLinks(this.navbarEl, isOpen);
-      }
-    };
-
-    // Call initially and on resize
-    this.handleResponsiveTabIndex();
-    window.addEventListener("resize", this.handleResponsiveTabIndex);
-
-    // Reveal navigation on mobile
-    this.menuIconEl.addEventListener("click", () => {
-      this.navbarEl.toggleAttribute("open");
-      const isNowOpen = this.navbarEl.hasAttribute("open");
-      this.updateTabIndexForMenuLinks(this.navbarEl, isNowOpen);
-
-      if (isNowOpen) {
-        requestAnimationFrame(() => {
-          const homeLink = this.shadowRoot.querySelector("app-navbar-home");
-          if (homeLink) homeLink.focus();
-        });
-      }
-    });
 
     this.applySearchQuery = (value = "") => {
       const query = value.trim();
@@ -533,58 +364,12 @@ class appNavbar extends HTMLElement {
     });
 
     this.applySearchQuery("");
-  }
 
-  connectedCallback() {
-    const desktopNav = this.shadowRoot.querySelector("#desktop");
-    const mobileNav = this.shadowRoot.querySelector("#mobile");
-
-    const setOverflowHidden = (shouldHide) => {
-      document.documentElement.style.overflow = shouldHide ? "hidden" : "";
-      document.body.style.overflow = shouldHide ? "hidden" : "";
-    };
-
-    const checkAndUpdateOverflow = () => {
-      const isHovered = this._isHovered;
-      const isMobileOpen = mobileNav?.hasAttribute("open");
-      setOverflowHidden(isHovered || isMobileOpen);
-    };
-
-    // Track hover state for desktop
-    this._isHovered = false;
-
-    const handleMouseEnter = () => {
-      this._isHovered = true;
-      checkAndUpdateOverflow();
-    };
-
-    const handleMouseLeave = () => {
-      this._isHovered = false;
-      checkAndUpdateOverflow();
-    };
-
-    if (desktopNav) {
-      desktopNav.addEventListener("mouseenter", handleMouseEnter);
-      desktopNav.addEventListener("mouseleave", handleMouseLeave);
-    }
-
-    // Observe mobile 'open' attribute
-    let observer = null;
-    if (mobileNav) {
-      observer = new MutationObserver(checkAndUpdateOverflow);
-      observer.observe(mobileNav, { attributes: true, attributeFilter: ["open"] });
-    }
-
-    // Save references for cleanup
-    this._cleanup = () => {
-      if (desktopNav) {
-        desktopNav.removeEventListener("mouseenter", handleMouseEnter);
-        desktopNav.removeEventListener("mouseleave", handleMouseLeave);
-      }
-      if (observer) observer.disconnect();
-    };
-
-    checkAndUpdateOverflow();
+    this.shadowRoot.querySelectorAll("app-navbar-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        this.dispatchEvent(new CustomEvent("app-navbar-link-activate", { bubbles: true, composed: true }));
+      });
+    });
   }
 }
 

@@ -7,6 +7,12 @@ class AgentKeywordsPage extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
     
+      .content-container {
+        container-type: inline-size;
+        display: grid;
+        gap: var(--space-600);
+      }
+
       .config::part(display) {
         grid-template-columns: 1fr;
       }
@@ -18,7 +24,7 @@ class AgentKeywordsPage extends HTMLElement {
         overflow: hidden;
       }
 
-      @media (min-width: 1230px) {
+      @container (min-width: 960px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
@@ -27,14 +33,14 @@ class AgentKeywordsPage extends HTMLElement {
         }
       }
 
-      @media (min-width: 1390px) {
+      @container (min-width: 1120px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 85ch) 570px;
           gap: 9.6rem;
         }
       }
 
-      @media (min-width: 2000px) {
+      @container (min-width: 1730px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 85ch) 690px;
         }
@@ -50,6 +56,7 @@ class AgentKeywordsPage extends HTMLElement {
         github="https://github.com/michaeltrilford/muibook/blob/main/src/agent/keywords/index.ts" 
       >
           
+          <div class="content-container">
           <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
@@ -98,6 +105,7 @@ class AgentKeywordsPage extends HTMLElement {
               <img slot="image" src="${Image}" alt="Agent Keywords" />
             </mui-image>  
           </mui-grid>
+        </div>
 
       </story-template>
     `;

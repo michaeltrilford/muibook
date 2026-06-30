@@ -87,8 +87,8 @@ class storyCheckbox extends HTMLElement {
       > 
       <mui-h-stack slot="body">
         <mui-checkbox disabled>Disabled</mui-checkbox>
-        <mui-checkbox disabled checked>Disabled Selected</mui-checkbox>
-        <mui-checkbox disabled indeterminate>Disabled Mixed</mui-checkbox>
+        <mui-checkbox disabled checked>Disabled</mui-checkbox>
+        <mui-checkbox disabled indeterminate>Disabled</mui-checkbox>
       </mui-h-stack>
       <story-code-block slot="footer" scrollable>
         &nbsp;&nbsp;&lt;mui-checkbox disabled&gt;Disabled&lt;/mui-checkbox&gt;<br />

@@ -32,13 +32,26 @@
 }
 
 #app {
-  display: grid;
-  grid-template-rows: 1fr 7.6rem;
+  display: block;
   min-height: 100vh;
 }
-@media (min-width: 960px) {
-  #app {
-    grid-template-rows: 1fr;
-    grid-template-columns: 26rem 1fr;
-  }
+
+#app-shell {
+  display: block;
+  min-height: 100vh;
+  --border-thin: var(--app-navbar-border);
+  --drawer-resize-rail-background: var(--app-rail-background);
+}
+
+.floating-menu {
+  --action-ring-color: var(--border-color);
+}
+
+.floating-menu::part(border-radius) {
+  border-radius: 100%;
+}
+
+.floating-menu::part(border-radius):focus-visible {
+  outline: var(--outline-thick);
+  outline-offset: var(--stroke-size-200);
 }

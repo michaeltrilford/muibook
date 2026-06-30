@@ -7,7 +7,11 @@ class pageBannerPlugin extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
 
     const styles = /*css*/ `
-      :host { display: block; }
+      :host { 
+        display: block; 
+        container-name: banner;
+        container-type: inline-size;
+      }
 
       .banner {
         display: flex;
@@ -20,7 +24,7 @@ class pageBannerPlugin extends HTMLElement {
         border-color: var(--app-story-banner-border-color);
       }
 
-      @media (min-width: 1288px) {
+      @container banner (min-width: 960px) {
         .banner {
           padding: var(--space-700) var(--space-700) var(--space-000) var(--space-700);
         } 
@@ -30,25 +34,19 @@ class pageBannerPlugin extends HTMLElement {
         width: 100%;
       }
 
-      .banner-grid::part(align-items) {
-        align-items: center;
+      .banner-grid::part(gap) {
+        gap: var(--space-600);
       }
 
-      @media (min-width: 1288px) {
+      .banner-grid::part(align-items) {
+        align-items: start;
+      }
 
+      @container banner (min-width: 960px) {
         .banner-grid::part(gap) {
           gap: var(--space-000);
         }
       }
-
-
-        .banner-grid::part(gap) {
-          gap: var(--space-600);
-        }
-
-        .banner-grid::part(align-items) {
-          align-items: start;
-        }
       
 
       .banner-grid::part(width) {
@@ -64,7 +62,7 @@ class pageBannerPlugin extends HTMLElement {
 
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-        <mui-responsive breakpoint="1287" class="banner">
+        <mui-responsive variant="container" breakpoint="960" observe="parent" class="banner">
           <mui-grid slot="showBelow" space="var(--space-600)" col="1fr" class="banner-grid">
             <mui-v-stack space="var(--space-500)" alignY="start">
               <mui-v-stack  space="var(--space-100)">
@@ -81,7 +79,7 @@ class pageBannerPlugin extends HTMLElement {
               <mui-button-group>
                 <mui-link variant="primary" href="https://www.figma.com/community/plugin/1471341082690554711/guru-guides" target="_blank">Install Plugin</mui-link>
                 <mui-link class="mui-button-secondary" variant="secondary" href="https://gurusuite.xyz/guides" target="_blank">About Guru</mui-link>
-              <mui-button-group>
+              </mui-button-group>
             </mui-v-stack>
             <img class="hero" src="${Image}" alt="Hero" />
           </mui-grid>
@@ -101,7 +99,7 @@ class pageBannerPlugin extends HTMLElement {
               <mui-button-group>
                 <mui-link variant="primary" href="https://www.figma.com/community/plugin/1471341082690554711/guru-guides" target="_blank">Install Plugin</mui-link>
                 <mui-link class="mui-button-secondary" variant="secondary" href="https://gurusuite.xyz/guides" target="_blank">About Guru</mui-link>
-              <mui-button-group>
+              </mui-button-group>
             </mui-v-stack>
             <img class="hero" src="${Image}" alt="Hero" />
           </mui-grid>

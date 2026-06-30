@@ -75,27 +75,27 @@ class HomePage extends HTMLElement {
     // Return different HTML depending on brand
     if (brand === "mui") {
       return `
-      <mui-link 
-        href="/create-mui-app" 
+      <mui-link
+        href="/create-mui-app"
         variant="primary">
         Get Started
       </mui-link>
       <mui-link
-        href="/npm" 
+        href="/npm"
         variant="secondary">
         NPM Package
       </mui-link>
     `;
     } else {
       return `
-      <mui-link 
-        href="/create-mui-app" 
+      <mui-link
+        href="/create-mui-app"
         variant="primary">
         Get Started
       </mui-link>
       <mui-link
-        class="link-secondary" 
-        href="/multi-brand-theme" 
+        class="link-secondary"
+        href="/multi-brand-theme"
         variant="secondary">
         Theming Guide
       </mui-link>
@@ -107,50 +107,32 @@ class HomePage extends HTMLElement {
     const { desktop, tablet, phone } = this.getLogos();
 
     const versionText = `${version}`;
-
     const intro = /*html*/ `
-      Muibook is the home of the MichaelUI Design System — native Web Components with clean, composable patterns that help you write less code —
+      Muibook is the MichaelUI Design System. Native Web Components with clean, composable patterns to help you write less code.
     `;
 
     const styles = /*css*/ `
-    
-      :host { 
-        display: flex; 
-        width: 100%; 
+
+      :host {
+        display: flex;
+        width: 100%;
         align-items: stretch;
         position: relative;
+        container-name: home-page;
+        container-type: inline-size;
       }
 
-      .main-content__grid { 
-        display: grid; 
-        min-height: 100%; 
-        width: 100%; 
+      .main-content__grid {
+        display: grid;
+        min-height: 100%;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .body-text::part(color) {
         color: var(--home-page-body-text)
       }
 
-      @media (min-width: 960px) {
-        :host {
-          box-sizing: border-box;
-          padding-bottom: calc(var(--space-800) + env(safe-area-inset-bottom));
-          padding-top: calc(var(--space-800) + env(safe-area-inset-top)); 
-          padding-right: var(--space-800);   
-          padding-left: var(--space-800); 
-        } 
-      }
-
-      @media (min-width: 1400px) {
-        :host {
-          box-sizing: border-box;
-          padding-bottom: calc(var(--space-800) + env(safe-area-inset-bottom));
-          padding-top: calc((var(--space-800) * 2) + env(safe-area-inset-top)); 
-          padding-right: calc(var(--space-800) * 2);   
-          padding-left: calc(var(--space-800) * 2);         
-        } 
-      }
-      
       main {
         display: grid;
         align-content: center;
@@ -167,16 +149,20 @@ class HomePage extends HTMLElement {
         justify-content: center;
       }
 
-      @media (min-width: 960px) {
+      @container home-page (min-width: 720px) {
+        :host([data-brand="jal"][data-theme="dark"]) .logo-wrapper {
+          --app-logo-color: var(--gold-900);
+        }
+
         .logo-wrapper { grid-column: 5 / 13; }
 
-        .introduction { 
-          grid-column: 1 / 13; 
+        .introduction {
+          grid-column: 1 / 13;
           grid-row: initial;
           align-content: end;
         }
 
-        .introduction::part(display) { 
+        .introduction::part(display) {
           grid-template-columns: 1fr;
           gap: var(--space-500);
         }
@@ -187,54 +173,63 @@ class HomePage extends HTMLElement {
           column-gap: var(--space-200);
           row-gap: var(--space-400);
           grid-template-columns: repeat(12, 1fr);
-          grid-template-rows: 1fr auto;
-          padding: var(--space-000);
+          grid-template-rows: auto 1fr;
+          padding-bottom: calc(var(--home-page-shell-padding-block, var(--space-800)) + env(safe-area-inset-bottom));
+          padding-top: calc(var(--home-page-shell-padding-block, var(--space-800)) + env(safe-area-inset-top));
+          padding-right: var(--home-page-shell-padding-inline, var(--space-800));
+          padding-left: var(--home-page-shell-padding-inline, var(--space-800));
         }
-         
+
       }
 
-      @media (min-width: 1200px) {
-        main { 
-          column-gap: var(--space-800); 
-          row-gap: var(--space-800); 
+      @container home-page (min-width: 960px) {
+        main {
+          column-gap: var(--space-800);
+          row-gap: var(--space-800);
         }
-        .introduction { 
-          grid-row: initial; 
-          align-content: end; 
+        .introduction {
+          grid-row: initial;
+          align-content: end;
         }
 
-        .introduction::part(display) { 
+        .introduction::part(display) {
           grid-template-columns: 1fr auto;
           gap: var(--space-600);
         }
-       
+
       }
 
-      @media (min-width: 1400px) {
-        main {grid-template-rows: auto 1fr; }
+      @container home-page (min-width: 1200px) {
+        main {
+          grid-template-rows: auto 1fr;
+          padding-bottom: calc(var(--home-page-shell-padding-block-end-large, var(--space-800)) + env(safe-area-inset-bottom));
+          padding-top: calc(var(--home-page-shell-padding-block-start-large, calc(var(--space-800) * 2)) + env(safe-area-inset-top));
+          padding-right: var(--home-page-shell-padding-inline-large, calc(var(--space-800) * 2));
+          padding-left: var(--home-page-shell-padding-inline-large, calc(var(--space-800) * 2));
+        }
         .logo-wrapper { grid-column: 6 / 13; }
         .introduction { grid-column: 1 / 13; }
         .introduction::part(align-items) { align-items: center; }
       }
 
-      @media (min-width: 960px) {
+      @container home-page (min-width: 720px) {
         .body-text { max-width: 58ch; }
       }
 
-      @media (min-width: 1400px) {
+      @container home-page (min-width: 1200px) {
         .body-text { max-width: 66ch; }
       }
 
-      @media (min-width: 1877px) {
+      @container home-page (min-width: 1460px) {
         .body-text { max-width: 74ch; }
       }
 
       /* Brand + theme combinations */
-      :host([data-brand="jal"]),
-      :host([data-brand="ana"]) { 
-        background-size: cover; 
-        background-position: center; 
-        background-attachment: fixed; 
+      :host([data-brand="jal"]) .main-content__grid,
+      :host([data-brand="ana"]) .main-content__grid {
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
       }
 
       :host([data-brand="jal"][data-theme="light"]) .link-secondary::part(background),
@@ -248,7 +243,7 @@ class HomePage extends HTMLElement {
       }
 
       /* Brand logo layouts */
-      @media (min-width: 960px) {
+      @container home-page (min-width: 720px) {
         :host([data-brand="jal"]) .logo-wrapper { grid-column: 9 / 13; }
 
         :host([data-brand="ana"]) .logo-wrapper { grid-column: 8 / 13; }
@@ -260,8 +255,8 @@ class HomePage extends HTMLElement {
         :host([data-brand="jal"]) .introduction,
         :host([data-brand="ana"]) .introduction,
         :host([data-brand="paperclip"]) .introduction,
-        :host([data-brand="sensei"]) .introduction { 
-          grid-column: 1 / 13; 
+        :host([data-brand="sensei"]) .introduction {
+          grid-column: 1 / 13;
           grid-row: initial;
           align-content: end;
         }
@@ -276,49 +271,41 @@ class HomePage extends HTMLElement {
           row-gap: var(--space-400);
           grid-template-columns: repeat(12, 1fr);
           grid-template-rows: auto 1fr;
-          padding: var(--space-000);
         }
       }
 
 
-      @media (min-width: 1300px) {
+      @container home-page (min-width: 1040px) {
         :host([data-brand="jal"]) main,
         :host([data-brand="ana"]) main,
         :host([data-brand="paperclip"]) main,
-        :host([data-brand="sensei"]) main { 
-          column-gap: var(--space-800); 
-          row-gap: var(--space-800); 
+        :host([data-brand="sensei"]) main {
+          column-gap: var(--space-800);
+          row-gap: var(--space-800);
         }
         :host([data-brand="jal"]) .introduction,
         :host([data-brand="ana"]) .introduction,
         :host([data-brand="paperclip"]) .introduction,
-        :host([data-brand="sensei"]) .introduction { 
-          grid-row: initial; 
-          align-content: end; 
+        :host([data-brand="sensei"]) .introduction {
+          grid-row: initial;
+          align-content: end;
         }
       }
 
-      @media (min-width: 1400px) {
-
-        :host([data-brand="jal"]),
-        :host([data-brand="ana"]),
-        :host([data-brand="paperclip"]),
-        :host([data-brand="sensei"]) {          
-          padding-top: calc((var(--space-600) * 2) + env(safe-area-inset-top)); 
-
-        } 
+      @container home-page (min-width: 1200px) {
 
         :host([data-brand="jal"]) main,
         :host([data-brand="ana"]) main,
         :host([data-brand="paperclip"]) main,
         :host([data-brand="sensei"]) main {
-          grid-template-rows: auto 1fr; 
+          padding-top: calc((var(--space-600) * 2) + env(safe-area-inset-top));
+          grid-template-rows: auto 1fr;
         }
-        :host([data-brand="jal"]) .logo-wrapper { 
-          grid-column: 10 / 13; 
+        :host([data-brand="jal"]) .logo-wrapper {
+          grid-column: 10 / 13;
         }
-        :host([data-brand="ana"]) .logo-wrapper { 
-          grid-column: 9 / 13; 
+        :host([data-brand="ana"]) .logo-wrapper {
+          grid-column: 9 / 13;
         }
         :host([data-brand="paperclip"]) .logo-wrapper {
           grid-column: 7 / 13;
@@ -329,57 +316,57 @@ class HomePage extends HTMLElement {
         :host([data-brand="jal"]) .introduction,
         :host([data-brand="ana"]) .introduction,
         :host([data-brand="paperclip"]) .introduction,
-        :host([data-brand="sensei"]) .introduction { 
-          grid-column: 1 / 13; 
+        :host([data-brand="sensei"]) .introduction {
+          grid-column: 1 / 13;
         }
         :host([data-brand="jal"]) .introduction::part(align-items),
         :host([data-brand="ana"]) .introduction::part(align-items),
         :host([data-brand="paperclip"]) .introduction::part(align-items),
-        :host([data-brand="sensei"]) .introduction::part(align-items) { 
-          align-items: center; 
+        :host([data-brand="sensei"]) .introduction::part(align-items) {
+          align-items: center;
         }
       }
 
       /* Brand logo layouts - GRID END */
-      
-      :host([data-brand="jal"][data-theme="light"]) {
+
+      :host([data-brand="jal"][data-theme="light"]) .main-content__grid {
         background-image:
           linear-gradient(to top, var(--white-opacity-70) 0%, var(--white-opacity-70) 100%),
           url(${Jal});
       }
-      :host([data-brand="jal"][data-theme="dark"]) {
+      :host([data-brand="jal"][data-theme="dark"]) .main-content__grid {
         background-image:
           linear-gradient(to top, var(--black-opacity-70) 0%, var(--black-opacity-70) 100%),
           url(${Jal});
       }
-      :host([data-brand="ana"][data-theme="light"]) {
+      :host([data-brand="ana"][data-theme="light"]) .main-content__grid {
         background-image:
           linear-gradient(to top, var(--white-opacity-50) 0%, var(--white-opacity-50) 100%),
           url(${AnaLight});
       }
-      :host([data-brand="ana"][data-theme="dark"]) {
+      :host([data-brand="ana"][data-theme="dark"]) .main-content__grid {
         background-image:
           linear-gradient(to top, var(--black-opacity-80) 0%, var(--black-opacity-80) 100%),
           url(${AnaNight});
       }
 
-      @media (min-width: 960px) {
-        :host([data-brand="jal"][data-theme="light"]) {
+      @container home-page (min-width: 720px) {
+        :host([data-brand="jal"][data-theme="light"]) .main-content__grid {
           background-image:
             linear-gradient(to top, var(--white-opacity-80) 0%, var(--white-opacity-0) 40%),
             url(${Jal});
         }
-        :host([data-brand="jal"][data-theme="dark"]) {
+        :host([data-brand="jal"][data-theme="dark"]) .main-content__grid {
           background-image:
             linear-gradient(to top, var(--black-opacity-90) 0%, var(--black-opacity-0) 40%),
             url(${Jal});
         }
-        :host([data-brand="ana"][data-theme="light"]) {
+        :host([data-brand="ana"][data-theme="light"]) .main-content__grid {
           background-image:
             linear-gradient(45deg, var(--white-opacity-60) 0%, var(--white-opacity-80) 100%),
             url(${AnaLight});
         }
-        :host([data-brand="ana"][data-theme="dark"]) {
+        :host([data-brand="ana"][data-theme="dark"]) .main-content__grid {
           background-image:
             linear-gradient(45deg, var(--black-opacity-50) 0%, var(--black-opacity-0) 100%),
             url(${AnaNight});
@@ -387,17 +374,17 @@ class HomePage extends HTMLElement {
       }
 
 
-      @media (min-width: 960px) {
+      @container home-page (min-width: 720px) {
         :host([data-brand="jal"]) .body-text,
         :host([data-brand="ana"]) .body-text { max-width: 62ch; }
       }
 
-      @media (min-width: 1400px) {
+      @container home-page (min-width: 1200px) {
         :host([data-brand="jal"]) .body-text,
         :host([data-brand="ana"]) .body-text { max-width: 70ch }
       }
 
-      @media (min-width: 1877px) {
+      @container home-page (min-width: 1460px) {
         :host([data-brand="jal"]) .body-text,
         :host([data-brand="ana"]) .body-text  { max-width: 78ch;}
       }
@@ -408,7 +395,7 @@ class HomePage extends HTMLElement {
         justify-content: end;
       }
 
-      @media (min-width: 1400px) {
+      @container home-page (min-width: 1200px) {
         .intro-outer {
           display: block;
         }
@@ -421,29 +408,29 @@ class HomePage extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-        <mui-responsive breakpoint="959" class="main-content__grid">
-          
+        <mui-responsive variant="container" breakpoint="719" class="main-content__grid">
+
           <!-- Main content above -->
           <main slot="showAbove">
-            
+
             <div class="logo-wrapper">
               ${desktop}
             </div>
             <mui-grid class="introduction">
 
-              <mui-responsive breakpoint-high="1877" breakpoint-low="1400" class="intro-outer">
+              <mui-responsive variant="container" observe=".main-content__grid" breakpoint-high="1460" breakpoint-low="1200" class="intro-outer">
                 <mui-body class="body-text" size="large" weight="bold" slot="showAbove">
                   ${intro}<mui-link size="large" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="large" weight="regular" href='/changelog'>Changelog</mui-link>
-                </mui-body> 
+                </mui-body>
                 <mui-body class="body-text" size="medium" weight="bold" slot="showMiddle">
                   ${intro}<mui-link size="medium" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="medium" weight="regular" href='/changelog'>Changelog</mui-link>
-                </mui-body> 
+                </mui-body>
                 <mui-body class="body-text" style="text-align: right;"  size="small" weight="bold" slot="showBelow">
                   ${intro}<mui-link size="small" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="small" weight="regular" href='/changelog'>Changelog</mui-link>
-                </mui-body> 
+                </mui-body>
               </mui-responsive>
 
-              <mui-responsive breakpoint-high="1877" breakpoint-low="1400">
+              <mui-responsive variant="container" observe=".main-content__grid" breakpoint-high="1460" breakpoint-low="1200">
                 <mui-h-stack slot="showAbove" space="var(--space-300)">
                   ${actions}
                 </mui-h-stack>
@@ -462,7 +449,7 @@ class HomePage extends HTMLElement {
           <main slot="showBelow">
             <mui-v-stack space="var(--space-600)" style="text-align: center;" alignX="center">
               <div class="logo-wrapper">
-                <mui-responsive breakpoint="420">
+                <mui-responsive variant="container" observe="parent" breakpoint="420">
                   ${phone}
                   ${tablet}
                 </mui-responsive>
@@ -470,10 +457,10 @@ class HomePage extends HTMLElement {
               <mui-v-stack space="var(--space-500)" style="max-width: 31rem; padding-left: var(--space-300); padding-right: var(--space-300);">
                 <mui-body class="body-text" size="small" weight="bold">
                   ${intro}<mui-link size="small" weight="bold" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="small" weight="bold" href='/changelog'>Changelog</mui-link>
-                </mui-body> 
+                </mui-body>
               </mui-v-stack>
-       
-              <mui-responsive breakpoint="420">
+
+              <mui-responsive variant="container" observe=".main-content__grid" breakpoint="420">
               <mui-h-stack slot="showAbove" space="var(--space-300)">
                 ${actions}
               </mui-h-stack>
@@ -481,7 +468,7 @@ class HomePage extends HTMLElement {
                 ${actions}
               </mui-v-stack>
               </mui-responsive>
-         
+
             </mui-v-stack>
           </main>
 

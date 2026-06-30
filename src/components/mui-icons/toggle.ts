@@ -1,6 +1,6 @@
 class MuiIconToggle extends HTMLElement {
   static get observedAttributes() {
-    return ["toggle", "rotate", "size"];
+    return ["toggle", "rotate", "morph", "size"];
   }
 
   constructor() {
@@ -56,6 +56,13 @@ class MuiIconToggle extends HTMLElement {
     this.toggleAttribute("rotate", !!val);
   }
 
+  get morph() {
+    return this.hasAttribute("morph");
+  }
+  set morph(val: boolean) {
+    this.toggleAttribute("morph", !!val);
+  }
+
   /* ------------------------------------------------------------------ */
   /* PRIVATE: force size="small" on all assigned elements               */
   /* ------------------------------------------------------------------ */
@@ -85,8 +92,12 @@ class MuiIconToggle extends HTMLElement {
           position: absolute;
           transform-origin: 50% 50%;
           translate: 0 0;
-          transition: transform var(--speed-200) ease-in-out, translate var(--speed-200) ease-in-out;
           fill: currentColor; 
+        }
+
+        :host([morph]) ::slotted(*),
+        :host([rotate]) ::slotted(*) {
+          transition: transform var(--speed-200) ease-in-out, translate var(--speed-200) ease-in-out;
         }
 
         ::slotted([slot="start"]) {

@@ -7,6 +7,12 @@ class CreateMuiApp extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
     
+      .content-container {
+        container-type: inline-size;
+        display: grid;
+        gap: var(--space-600);
+      }
+
       .config::part(display) {
         grid-template-columns: 1fr;
       }
@@ -27,7 +33,7 @@ class CreateMuiApp extends HTMLElement {
         flex-wrap: wrap;
       }
 
-      @media (min-width: 1230px) {
+      @container (min-width: 960px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
@@ -36,7 +42,7 @@ class CreateMuiApp extends HTMLElement {
         }
       }
 
-      @media (min-width: 1390px) {
+      @container (min-width: 1120px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
@@ -54,6 +60,7 @@ class CreateMuiApp extends HTMLElement {
         demo="https://create.muibook.com"
         github="https://github.com/michaeltrilford/create-mui-app"
       >
+          <div class="content-container">
           <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
@@ -117,6 +124,7 @@ class CreateMuiApp extends HTMLElement {
               <img slot="image" src="${Image}" alt="Create Mui App Code" />
             </mui-image> 
           </mui-grid>
+        </div>
 
       </story-template>
     `;

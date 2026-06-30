@@ -12,11 +12,17 @@ class ShowcasePage extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
     
+      .content-container {
+        container-type: inline-size;
+        display: grid;
+        gap: var(--space-600);
+      }
+
       .config::part(display) {
         grid-template-columns: 1fr;
       }
 
-      @media (min-width: 1230px) {
+      @container (min-width: 960px) {
         .config::part(display) {
           grid-template-columns: 1fr 1fr;
           gap: var(--space-800);
@@ -25,7 +31,7 @@ class ShowcasePage extends HTMLElement {
         }
       }
 
-      @media (min-width: 1390px) {
+      @container (min-width: 1120px) {
         .config::part(display) {
           column-gap: var(--space-800);
           row-gap: var(--space-800);
@@ -60,6 +66,7 @@ class ShowcasePage extends HTMLElement {
         description="Products and websites that utilise the Muibook Design System."
       >
           
+          <div class="content-container">
           <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
@@ -149,6 +156,7 @@ class ShowcasePage extends HTMLElement {
             </mui-v-stack>
 
           </mui-grid>
+        </div>
 
       </story-template>
     `;

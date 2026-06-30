@@ -34,8 +34,7 @@ class ThemeSwitcher extends HTMLElement {
         },
         {
           rel: "stylesheet",
-          href:
-            "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&family=Aleo:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,600;1,600&family=Sansita+Swashed:wght@300..900&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&family=Aleo:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,600;1,600&family=Sansita+Swashed:wght@300..900&display=swap",
         },
       ],
       paperclip: [
@@ -82,6 +81,7 @@ class ThemeSwitcher extends HTMLElement {
       </style>
       <mui-grid class="grid" col="1fr" space="var(--space-100)">
         <mui-select
+          size="small"
           id="brand-switcher" 
           label="Brand"
           hide-label
@@ -138,7 +138,7 @@ class ThemeSwitcher extends HTMLElement {
         detail: { themeEnabled: capabilities.theme },
         bubbles: true,
         composed: true,
-      })
+      }),
     );
   }
 

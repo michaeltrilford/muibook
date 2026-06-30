@@ -1152,7 +1152,7 @@ html[data-theme="dark"] {
   /* Outline */
   --outline-thin: var(--stroke-size-100) var(--stroke-outset) var(--outline-color);
   --outline-medium: var(--stroke-size-300) var(--stroke-outset) var(--outline-color);
-  --outline-thick: var(--stroke-size-500) var(--stroke-outset) var(--outline-color);
+  --outline-thick: var(--stroke-size-400) var(--stroke-outset) var(--outline-color);
 
   /* ================================================================================================== */
   /* Components                                                                                         */

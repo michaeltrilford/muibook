@@ -5,11 +5,17 @@ class KnowledgeKeywordsPage extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
+      .content-container {
+        container-type: inline-size;
+        display: grid;
+        gap: var(--space-600);
+      }
+
       .config::part(display) {
         grid-template-columns: 1fr;
       }
 
-      @media (min-width: 1230px) {
+      @container (min-width: 960px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 70ch) 480px;
           gap: 7.2rem;
@@ -26,7 +32,8 @@ class KnowledgeKeywordsPage extends HTMLElement {
         title="Knowledge Keywords"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/knowledge/keywords.ts"
       >
-        <mui-grid class="config" space="var(--space-600)">
+        <div class="content-container">
+          <mui-grid class="config" space="var(--space-600)">
           <mui-v-stack space="var(--space-600)">
             <mui-v-stack space="var(--space-400)">
               <mui-body size="medium">
@@ -83,6 +90,7 @@ class KnowledgeKeywordsPage extends HTMLElement {
             </mui-v-stack>
           </mui-v-stack>
         </mui-grid>
+        </div>
       </story-template>
     `;
   }

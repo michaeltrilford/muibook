@@ -5,7 +5,16 @@ class NpmPage extends HTMLElement {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
     const styles = /*css*/ `
-      :host { display: block; }
+      :host { 
+        display: block; 
+      }
+
+      .content-container {
+        container-name: npm-page;
+        container-type: inline-size;
+        display: grid;
+        gap: var(--space-600);
+      }
     
       .config::part(display) {
         grid-template-columns: 1fr;
@@ -18,7 +27,7 @@ class NpmPage extends HTMLElement {
         overflow: hidden;
       }
 
-      @media (min-width: 1230px) {
+      @container npm-page (min-width: 960px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
@@ -27,7 +36,7 @@ class NpmPage extends HTMLElement {
         }
       }
 
-      @media (min-width: 1390px) {
+      @container npm-page (min-width: 1120px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 65ch) 500px;
           gap: 9.6rem;
@@ -43,43 +52,44 @@ class NpmPage extends HTMLElement {
         title="NPM Package"
         npm="https://www.npmjs.com/package/@muibook/components"
       >        
-        <mui-grid class="config" space="var(--space-600)">
+        <div class="content-container">
+          <mui-grid class="config" space="var(--space-600)">
 
-          <mui-v-stack space="var(--space-600)">
+            <mui-v-stack space="var(--space-600)">
 
-            <mui-v-stack space="var(--space-400)">
-              <mui-body size="medium">
-                Get the latest muibook packages and learn how to use them in your project. Leverage reusable vanilla Web Components built with the Mui Design System in your project.
-              </mui-body>
-              <mui-body size="medium">
-                Simply install the <mui-link size="medium" href="https://www.npmjs.com/package/@muibook/components" target="_blank">@muibook/components</mui-link> package to access a framework-agnostic, accessible, and customizable component library.
-              </mui-body>
+              <mui-v-stack space="var(--space-400)">
+                <mui-body size="medium">
+                  Get the latest muibook packages and learn how to use them in your project. Leverage reusable vanilla Web Components built with the Mui Design System in your project.
+                </mui-body>
+                <mui-body size="medium">
+                  Simply install the <mui-link size="medium" href="https://www.npmjs.com/package/@muibook/components" target="_blank">@muibook/components</mui-link> package to access a framework-agnostic, accessible, and customizable component library.
+                </mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-400)">
+                <mui-heading level="3" size="5">Getting started</mui-heading>
+                <mui-code size="small">npm install @muibook/components</mui-code>
+              </mui-v-stack>
+                
+
+              <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">📦 What’s in the package</mui-heading>
+                <mui-list as="ul">
+                  <mui-list-item size="medium">Components</mui-list-item>
+                  <mui-list-item size="medium">CSS</mui-list-item>
+                  <mui-list-item size="medium">Utils (part map for internal use)</mui-list-item>
+                  <mui-list-item size="medium">Manifest metadata (custom-elements.json and dynamic-attrs.json)</mui-list-item>
+                  <mui-list-item size="medium">Agent references (keywords and prompts)</mui-list-item>
+                </mui-list>
+              </mui-v-stack>
+
             </mui-v-stack>
 
-            <mui-v-stack space="var(--space-400)">
-              <mui-heading level="3" size="5">Getting started</mui-heading>
-              <mui-code size="small">npm install @muibook/components</mui-code>
-            </mui-v-stack>
-              
-
-            <mui-v-stack space="var(--space-300)">
-              <mui-heading level="3" size="5">📦 What’s in the package</mui-heading>
-              <mui-list as="ul">
-                <mui-list-item size="medium">Components</mui-list-item>
-                <mui-list-item size="medium">CSS</mui-list-item>
-                <mui-list-item size="medium">Utils (part map for internal use)</mui-list-item>
-                <mui-list-item size="medium">Manifest metadata (custom-elements.json and dynamic-attrs.json)</mui-list-item>
-                <mui-list-item size="medium">Agent references (keywords and prompts)</mui-list-item>
-              </mui-list>
-            </mui-v-stack>
-
-          </mui-v-stack>
-
-          <mui-image>
-            <img slot="image" src="${Image}" alt="npmjs website" />
-          </mui-image> 
-        </mui-grid>
-
+            <mui-image>
+              <img slot="image" src="${Image}" alt="npmjs website" />
+            </mui-image> 
+          </mui-grid>
+        </div>
       </story-template>
     `;
   }

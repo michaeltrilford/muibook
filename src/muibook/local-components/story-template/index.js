@@ -19,7 +19,21 @@ class StoryTemplate extends HTMLElement {
       "guides",
       "npm",
       "container-max-width",
+      "menu-closed",
     ];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "menu-closed") {
+      const wrapper = this.shadowRoot?.querySelector(".wrapper");
+      if (wrapper) {
+        if (newValue !== null) {
+          wrapper.classList.add("closed");
+        } else {
+          wrapper.classList.remove("closed");
+        }
+      }
+    }
   }
 
   constructor() {
@@ -27,12 +41,34 @@ class StoryTemplate extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.docTabsMediaQuery = window.matchMedia("(max-width: 500px)");
     this.handleDocTabsViewportChange = this.syncGeneratedDocTabsLayout.bind(this);
+    this.handleAppShellMutation = this.handleAppShellMutation.bind(this);
+  }
+
+  handleAppShellMutation() {
+    if (this.appShell) {
+      const isClosed = !this.appShell.hasAttribute("open");
+      if (isClosed) {
+        this.setAttribute("menu-closed", "");
+      } else {
+        this.removeAttribute("menu-closed");
+      }
+    }
   }
 
   connectedCallback() {
     this.docTabsMediaQuery.addEventListener("change", this.handleDocTabsViewportChange);
+    this.appShell = document.querySelector("#app-shell");
+    if (this.appShell) {
+      this.appShellObserver = new MutationObserver(this.handleAppShellMutation);
+      this.appShellObserver.observe(this.appShell, { attributes: true, attributeFilter: ["open"] });
+      this.handleAppShellMutation(); // Initialize state
+    }
     const styles = /*css*/ `
-      :host { display: block; width: 100%; }
+      :host { 
+        display: block; 
+        width: 100%; 
+        container-type: inline-size;
+      }
 
       .storefront-heading { 
         --heading-text-color: var(--app-heading-color);
@@ -41,10 +77,15 @@ class StoryTemplate extends HTMLElement {
       .container {
         padding-top: calc(var(--space-500) + env(safe-area-inset-top)); 
         padding-bottom: calc(var(--space-500) + env(safe-area-inset-bottom));
-        width: calc(100% - (var(--space-500) * 2));
+        width: 100%;
         max-width: var(--story-template-container-max-width, none);
         margin-inline: auto;
         box-sizing: border-box;
+        container-type: inline-size;
+      }
+
+      .wrapper {
+        padding-inline: var(--space-500);
       }
 
       .wrapper::part(gap) {
@@ -59,7 +100,7 @@ class StoryTemplate extends HTMLElement {
         gap: var(--space-500);
       }
 
-      @media (min-width: 768px) {
+      @container (min-width: 768px) {
         .wrapper::part(gap) {
           gap: var(--space-500);
         }
@@ -74,12 +115,26 @@ class StoryTemplate extends HTMLElement {
 
       }
 
-      @media (min-width: 960px) {
+      @container (min-width: 700px) {
+        .wrapper {
+          padding-inline: var(--space-600);
+        }
+      }
+
+
+      @container (min-width: 960px) {
 
         .container {
           padding-top: calc(var(--space-600) + env(safe-area-inset-top)); 
           padding-bottom: calc(var(--space-600) + env(safe-area-inset-bottom));
-          width: calc(100% - (var(--space-800) * 2));
+        }
+
+        .wrapper {
+          padding-inline: var(--space-800);
+        }
+
+        .wrapper.closed {
+          padding-left: 10rem;
         }
 
         .wrapper::part(gap) {
@@ -95,9 +150,19 @@ class StoryTemplate extends HTMLElement {
         }
       }
 
-      @media (min-width: 1550px) {
+      @container (min-width: 1200px) {
+
+
+        .wrapper.closed {
+          padding-left: 12rem;
+        }
+
+
+      }
+
+      @container (min-width: 1550px) {
         .container {
-          padding-top: calc(var(--space-800) + env(safe-area-inset-top)); 
+          padding-top: calc(var(--space-600) + env(safe-area-inset-top)); 
           padding-bottom: calc(var(--space-800) + env(safe-area-inset-bottom));
         }
       }
@@ -111,6 +176,8 @@ class StoryTemplate extends HTMLElement {
     const containerStyle = containerMaxWidth
       ? `style="--story-template-container-max-width: ${containerMaxWidth};"`
       : "";
+    const isMenuClosed = this.hasAttribute("menu-closed");
+    const closedClass = isMenuClosed ? "closed" : "";
     const escapedDescriptionText = descriptionText
       .replaceAll("&", "&amp;")
       .replaceAll("<", "&lt;")
@@ -164,7 +231,7 @@ class StoryTemplate extends HTMLElement {
               margin: 0 auto;
             }
 
-            @media (min-width: 960px) {
+            @container (min-width: 960px) {
               [data-generated-doc-tabs] .docs-tab-bar {
                 margin: 0;
               }
@@ -226,7 +293,7 @@ class StoryTemplate extends HTMLElement {
           `
       : "";
     const quicklinksSection = hasMessageContent ? /*html*/ `<slot name="message"></slot>` : "";
-    const resourceBreakpoints = `breakpoint-low="600" breakpoint-high="1200"`;
+    const resourceBreakpoints = `variant="container" observe=".container" breakpoint-low="600" breakpoint-high="1200"`;
     const renderResourceLink = ({ href, label, icon }) => /*html*/ `
       <mui-responsive ${resourceBreakpoints}>
         <mui-link slot="showAbove" target="_blank" href="${href}" rel="noopener" variant="tertiary">
@@ -273,7 +340,7 @@ class StoryTemplate extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <mui-container center class="container" ${containerStyle}>
-        <mui-v-stack class="wrapper">
+        <mui-v-stack class="wrapper ${closedClass}">
           <mui-v-stack class="introduction" space="var(--space-500)">
             <mui-v-stack class="header-group">
               <mui-responsive ${resourceBreakpoints}>
@@ -333,6 +400,9 @@ class StoryTemplate extends HTMLElement {
 
   disconnectedCallback() {
     this.docTabsMediaQuery.removeEventListener("change", this.handleDocTabsViewportChange);
+    if (this.appShellObserver) {
+      this.appShellObserver.disconnect();
+    }
   }
 
   syncGeneratedDocTabsLayout() {

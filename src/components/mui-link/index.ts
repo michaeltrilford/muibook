@@ -23,6 +23,15 @@ class MuiLink extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  focus(options?: FocusOptions) {
+    const anchor = this.shadowRoot?.querySelector("a");
+    if (anchor) {
+      anchor.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   async connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     if (!this.hasAttribute("weight")) this.setAttribute("weight", "regular");

@@ -253,7 +253,7 @@ class storyButton extends HTMLElement {
         "
       >  
         <mui-v-stack slot="body">
-          <mui-responsive breakpoint="1280">
+          <mui-responsive variant="container" observe="parent" breakpoint="700">
             <mui-h-stack alignx="space-between" aligny="center" slot="showAbove" style="border-radius: var(--radius-200); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
               <mui-h-stack space="var(--space-300)">
               <mui-input size="small" label="Search" hide-label placeholder="Search by name, email, or ID..." style="min-width: 25rem; max-width: 25rem;"></mui-input>
@@ -988,7 +988,8 @@ class storyButton extends HTMLElement {
           Use small (default) size icon when paired with text-based action is used in a button group.
         '
       >
-        <mui-h-stack slot="body" space="var(--space-100)">
+        <mui-v-stack slot="body" space="var(--space-400)">
+        <mui-h-stack space="var(--space-100)">
           <mui-button variant="primary">  
             <mui-icon-toggle size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
@@ -1014,6 +1015,220 @@ class storyButton extends HTMLElement {
             </mui-icon-toggle>
           </mui-button>
         </mui-h-stack>
+        <mui-h-stack space="var(--space-100)" wrap>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-sun slot="start"></mui-icon-sun>
+              <mui-icon-moon slot="end"></mui-icon-moon>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-play-fill slot="start"></mui-icon-play-fill>
+              <mui-icon-pause slot="end"></mui-icon-pause>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-menu slot="start"></mui-icon-menu>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-search slot="start"></mui-icon-search>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-speaker-two-wave slot="start"></mui-icon-speaker-two-wave>
+              <mui-icon-speaker-mute slot="end"></mui-icon-speaker-mute>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-pin slot="start"></mui-icon-pin>
+              <mui-icon-pin-slash slot="end"></mui-icon-pin-slash>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-grid slot="start"></mui-icon-grid>
+              <mui-icon-list-and-film slot="end"></mui-icon-list-and-film>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-down-chevron slot="start"></mui-icon-down-chevron>
+              <mui-icon-up-chevron slot="end"></mui-icon-up-chevron>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-fullscreen slot="start"></mui-icon-fullscreen>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-left-sidebar slot="start"></mui-icon-left-sidebar>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-ellipsis slot="start"></mui-icon-ellipsis>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-notification slot="start"></mui-icon-notification>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle size="medium">
+              <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
+              <mui-icon-down-arrow-circle slot="end"></mui-icon-down-arrow-circle>
+            </mui-icon-toggle>
+          </mui-button>
+        </mui-h-stack>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          const btn = document.getElementById('btn');<br />
+          const toggle = btn.querySelector('mui-icon-toggle');<br />
+          <br />
+          btn.addEventListener('click', () =&gt; {<br />
+          &nbsp;&nbsp;toggle.toggle = !toggle.toggle;<br />
+          &nbsp;&nbsp;toggle.setAttribute('aria-pressed', toggle.toggle);<br />
+          });
+          <br />
+          <br />
+          &lt;mui-button id="btn" variant="primary"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-icon-toggle&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br />
+          &lt;/mui-button&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card title="Icon Toggle: Morph" id="icon-toggle-morph"
+        usage='
+          Use medium size icon when the icon-only action appears on its own. E.g. Menu|||
+          Use small (default) size icon when paired with text-based action is used in a button group.
+        '
+      >
+        <mui-v-stack slot="body" space="var(--space-400)">
+        <mui-h-stack space="var(--space-100)">
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-add slot="start"></mui-icon-add>
+              <mui-icon-subtract slot="end"></mui-icon-subtract>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="secondary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-add slot="start"></mui-icon-add>
+              <mui-icon-subtract slot="end"></mui-icon-subtract>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="tertiary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-add slot="start"></mui-icon-add>
+              <mui-icon-subtract slot="end"></mui-icon-subtract>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="attention">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-add slot="start"></mui-icon-add>
+              <mui-icon-subtract slot="end"></mui-icon-subtract>
+            </mui-icon-toggle>
+          </mui-button>
+        </mui-h-stack>
+        <mui-h-stack space="var(--space-100)" wrap>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-sun slot="start"></mui-icon-sun>
+              <mui-icon-moon slot="end"></mui-icon-moon>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-play-fill slot="start"></mui-icon-play-fill>
+              <mui-icon-pause slot="end"></mui-icon-pause>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-menu slot="start"></mui-icon-menu>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-search slot="start"></mui-icon-search>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-speaker-two-wave slot="start"></mui-icon-speaker-two-wave>
+              <mui-icon-speaker-mute slot="end"></mui-icon-speaker-mute>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-pin slot="start"></mui-icon-pin>
+              <mui-icon-pin-slash slot="end"></mui-icon-pin-slash>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-grid slot="start"></mui-icon-grid>
+              <mui-icon-list-and-film slot="end"></mui-icon-list-and-film>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-down-chevron slot="start"></mui-icon-down-chevron>
+              <mui-icon-up-chevron slot="end"></mui-icon-up-chevron>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-fullscreen slot="start"></mui-icon-fullscreen>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-left-sidebar slot="start"></mui-icon-left-sidebar>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-ellipsis slot="start"></mui-icon-ellipsis>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-notification slot="start"></mui-icon-notification>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle morph size="medium">
+              <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
+              <mui-icon-down-arrow-circle slot="end"></mui-icon-down-arrow-circle>
+            </mui-icon-toggle>
+          </mui-button>
+        </mui-h-stack>
+        </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           const btn = document.getElementById('btn');<br />
           const toggle = btn.querySelector('mui-icon-toggle');<br />
@@ -1039,7 +1254,8 @@ class storyButton extends HTMLElement {
           Use small (default) size icon when paired with text-based action is used in a button group.
         '
       >
-        <mui-h-stack slot="body" space="var(--space-100)">
+        <mui-v-stack slot="body" space="var(--space-400)">
+        <mui-h-stack space="var(--space-100)">
           <mui-button variant="primary">  
             <mui-icon-toggle rotate size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
@@ -1065,6 +1281,87 @@ class storyButton extends HTMLElement {
             </mui-icon-toggle>
           </mui-button>
         </mui-h-stack>
+        <mui-h-stack space="var(--space-100)" wrap>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-sun slot="start"></mui-icon-sun>
+              <mui-icon-moon slot="end"></mui-icon-moon>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-play-fill slot="start"></mui-icon-play-fill>
+              <mui-icon-pause slot="end"></mui-icon-pause>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-menu slot="start"></mui-icon-menu>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-search slot="start"></mui-icon-search>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-speaker-two-wave slot="start"></mui-icon-speaker-two-wave>
+              <mui-icon-speaker-mute slot="end"></mui-icon-speaker-mute>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-pin slot="start"></mui-icon-pin>
+              <mui-icon-pin-slash slot="end"></mui-icon-pin-slash>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-grid slot="start"></mui-icon-grid>
+              <mui-icon-list-and-film slot="end"></mui-icon-list-and-film>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-down-chevron slot="start"></mui-icon-down-chevron>
+              <mui-icon-up-chevron slot="end"></mui-icon-up-chevron>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-fullscreen slot="start"></mui-icon-fullscreen>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-left-sidebar slot="start"></mui-icon-left-sidebar>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-ellipsis slot="start"></mui-icon-ellipsis>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-notification slot="start"></mui-icon-notification>
+              <mui-icon-close slot="end"></mui-icon-close>
+            </mui-icon-toggle>
+          </mui-button>
+          <mui-button variant="primary">  
+            <mui-icon-toggle rotate size="medium">
+              <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
+              <mui-icon-down-arrow-circle slot="end"></mui-icon-down-arrow-circle>
+            </mui-icon-toggle>
+          </mui-button>
+        </mui-h-stack>
+        </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           const btn = document.getElementById('btn');<br />
           const toggle = btn.querySelector('mui-icon-toggle');<br />
@@ -1103,7 +1400,7 @@ class storyButton extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="form-submissions::Form submissions|||inline-async-feedback::Inline Async Feedback|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||stroke-ring::Stroke: Ring|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||button-group::Header: Button-Group|||footer-button-group::Footer: Button-Group|||button-group-layout::Button-Group: Layout|||button-group-alignment::Button-Group: Alignment|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||avatar-only-button::Avatar-only Button|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-rotate::Icon Toggle: Rotate"
+          links="form-submissions::Form submissions|||inline-async-feedback::Inline Async Feedback|||size-x-small::Size: X-Small|||size-small::Size: Small|||size-medium::Size: Medium|||size-large::Size: Large|||primary::Primary|||secondary::Secondary|||stroke-ring::Stroke: Ring|||tertiary::Tertiary|||overlay::Overlay|||attention::Attention|||disabled::Disabled|||button-group::Header: Button-Group|||footer-button-group::Footer: Button-Group|||button-group-layout::Button-Group: Layout|||button-group-alignment::Button-Group: Alignment|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||avatar-only-button::Avatar-only Button|||icon-toggle-default::Icon Toggle: Default|||icon-toggle-morph::Icon Toggle: Morph|||icon-toggle-rotate::Icon Toggle: Rotate"
         ></story-quicklinks>
 
         ${stories}

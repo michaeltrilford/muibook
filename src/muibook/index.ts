@@ -12,7 +12,6 @@ import "./css/app-theme.css";
 // Utils
 import "./utils/tabbing-true";
 import "./utils/reveal-loader";
-import "./utils/focus-skip";
 
 // Mui Compopnents
 import "../components/mui-icons/accessibility";
@@ -190,11 +189,111 @@ import "./local-components/story-types";
 import "./local-components/changelog";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
-  <app-navbar>
-    <app-navbar-skip slot="skip"></app-navbar-skip>
-  </app-navbar>
-  <app-container />
+  <app-navbar-toggle id="app-nav-toggle" floating hidden inert>
+    <mui-responsive breakpoint-low="960" breakpoint-high="1200">
+      <mui-button slot="showBelow" class="floating-menu" variant="primary" size="medium" icon-only aria-label="Open navigation" inert>
+        <mui-icon-rectangle-left-drawer size="medium"></mui-icon-rectangle-left-drawer>
+      </mui-button>
+      <mui-button slot="showMiddle" class="floating-menu" variant="secondary" stroke="ring" size="medium" icon-only aria-label="Open navigation" inert>
+        <mui-icon-rectangle-left-drawer size="medium"></mui-icon-rectangle-left-drawer>
+      </mui-button>
+      <mui-button slot="showAbove" class="floating-menu" variant="secondary" stroke="ring" size="large" icon-only aria-label="Open navigation" inert>
+        <mui-icon-rectangle-left-drawer size="large"></mui-icon-rectangle-left-drawer>
+      </mui-button>
+    </mui-responsive>
+  </app-navbar-toggle>
+  <mui-drawer
+    id="app-shell"
+    variant="push"
+    side="left"
+    width="26rem"
+    breakpoint="960"
+    resize-rail
+    resize-min-page-width="596"
+    drawer-space
+  >
+  <app-navbar></app-navbar>
+  <app-container slot="page"></app-container>
+  </mui-drawer>
 `;
+
+const appShell = document.querySelector<HTMLElement>("#app-shell");
+const appNavToggle = document.querySelector<HTMLElement>("app-navbar-toggle");
+const appNavToggleButtons = appNavToggle?.querySelectorAll<HTMLElement>("mui-button");
+
+function getAppShellBreakpoint() {
+  return Number(appShell?.getAttribute("breakpoint")) || 960;
+}
+
+function getAppShellMobileQuery() {
+  return window.matchMedia(`(max-width: ${getAppShellBreakpoint()}px)`);
+}
+
+function syncAppNavToggle() {
+  if (!appShell || !appNavToggle) return;
+  const isOpen = appShell.hasAttribute("open");
+  appNavToggle.hidden = isOpen;
+  appNavToggle.inert = isOpen;
+  if (appNavToggleButtons) {
+    appNavToggleButtons.forEach((btn) => {
+      btn.inert = isOpen;
+      btn.setAttribute("aria-label", "Open navigation");
+    });
+  }
+}
+
+function focusAppNavToggle() {
+  syncAppNavToggle();
+  requestAnimationFrame(() => {
+    const responsive = appNavToggle?.querySelector("mui-responsive");
+    if (responsive && responsive.shadowRoot) {
+      const slotName = responsive.shadowRoot.querySelector("slot")?.getAttribute("name");
+      if (slotName) {
+        const activeBtn = appNavToggle?.querySelector<HTMLElement>(`mui-button[slot="${slotName}"]`);
+        activeBtn?.focus();
+        return;
+      }
+    }
+    appNavToggleButtons?.[0]?.focus();
+  });
+}
+
+if (appNavToggleButtons) {
+  appNavToggleButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      appShell?.setAttribute("open", "");
+      syncAppNavToggle();
+    });
+  });
+}
+
+appShell?.addEventListener("app-navbar-close", () => {
+  appShell.removeAttribute("open");
+  focusAppNavToggle();
+});
+
+appShell?.addEventListener("mui-drawer-close", () => {
+  focusAppNavToggle();
+});
+
+appShell?.addEventListener("app-navbar-link-activate", () => {
+  if (!appShell.hasAttribute("mobile")) return;
+  appShell.removeAttribute("open");
+  syncAppNavToggle();
+});
+
+if (appShell) {
+  const mobileQuery = getAppShellMobileQuery();
+  appShell.toggleAttribute("open", !mobileQuery.matches);
+  mobileQuery.addEventListener("change", (event) => {
+    if (event.matches) appShell.removeAttribute("open");
+    syncAppNavToggle();
+  });
+
+  const shellObserver = new MutationObserver(syncAppNavToggle);
+  shellObserver.observe(appShell, { attributes: true, attributeFilter: ["open", "mobile"] });
+  syncAppNavToggle();
+}
 
 function setStatusBarColorFromCSSVar(cssVarName: string) {
   const color = getComputedStyle(document.documentElement).getPropertyValue(cssVarName).trim();

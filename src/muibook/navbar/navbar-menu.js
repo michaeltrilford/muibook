@@ -11,26 +11,9 @@ class appNavbarMenu extends HTMLElement {
         display: block;
         overflow: hidden;
         background: var(--app-navbar-surface);
-        position: fixed;
-        bottom: 0;
-        top: 0;
-      }
-      :host([mobile]) {
-        height: calc(100vh - 7.6rem);
-        z-index: 1;
         width: 100%;
-      }
-      :host([desktop]) {
-        align-items: center;
-        text-align: left;
-        opacity: 1;
-        z-index: 100;
-        width: 26rem;
         height: 100%;
       }
-      :host([desktop])::-webkit-scrollbar {
-        display: none; 
-      } 
 
     `;
 

@@ -34,10 +34,16 @@ class appNavbarLink extends HTMLElement {
       }
 
       mui-link {
-        transition: opacity 400ms ease-in, transform 100ms ease-in;
+        transition: opacity 400ms ease-in;
         opacity: 1;
         display: inline-block;
         width: 100%;
+      }
+      
+      .scale-wrapper {
+        display: inline-block;
+        transition: transform 100ms ease-in;
+        transform-origin: center center;
       }
 
       mui-link:hover,
@@ -46,7 +52,7 @@ class appNavbarLink extends HTMLElement {
       }
 
       @media (min-width: 960px) {
-        mui-link:hover { 
+        mui-link:hover .scale-wrapper { 
           transform: scale(1.1); 
         } 
       } 
@@ -66,8 +72,8 @@ class appNavbarLink extends HTMLElement {
     </style>
 
     <mui-link href="${href}" class="${badgeClass}" size="small">
-    ${title}
-    ${badge ? `<mui-badge>${badge}</mui-badge>` : ``}
+      <span class="scale-wrapper">${title}</span>
+      ${badge ? `<mui-badge class="scale-wrapper">${badge}</mui-badge>` : ``}
     </mui-link> 
     `;
 

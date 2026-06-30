@@ -365,6 +365,7 @@ class MuiSelect extends HTMLElement {
           --select-padding-inline-end-default: var(--space-100);
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
+          border-radius: var(--form-radius-x-small);
         }
         select.size-small {
           min-height: var(--action-size-small);
@@ -374,6 +375,7 @@ class MuiSelect extends HTMLElement {
           --select-padding-inline-end-default: var(--space-200);
           font-size: var(--text-font-size-s);
           line-height: var(--text-line-height-s);
+          border-radius: var(--form-radius-small);
         }
         select.size-medium {
           min-height: var(--action-size-medium);
@@ -383,6 +385,7 @@ class MuiSelect extends HTMLElement {
           --select-padding-inline-end-default: var(--space-300);
           font-size: var(--text-font-size);
           line-height: var(--text-line-height);
+          border-radius: var(--form-radius-medium);
         }
         select.size-large {
           min-height: var(--action-size-large);
@@ -392,6 +395,7 @@ class MuiSelect extends HTMLElement {
           --select-padding-inline-end-default: var(--space-400);
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);
+          border-radius: var(--form-radius-large);
         }
         select.appearance-custom.size-x-small {
           --select-picker-icon-size: 1.3rem;

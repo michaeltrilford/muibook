@@ -48,7 +48,7 @@ class StoryIllustration extends HTMLElement {
         title="Default"
         usage="Import from @muibook/components/mui-illustrations and use the named illustration tag directly.|||Use the default palette for standard light surfaces."
       >
-        <mui-grid slot="body" class="swatch-grid" space="var(--space-400)">
+        <mui-grid slot="body" class="swatch-grid" col="repeat(auto-fit, minmax(28rem, 1fr))" space="var(--space-400)">
           <mui-card>
             <mui-card-body inner-space>
               <div class="illustration-shell">
@@ -75,7 +75,7 @@ class StoryIllustration extends HTMLElement {
         title="Sizes"
         usage="Use one illustration size consistently within the same surface or flow."
       >
-        <mui-grid slot="body" class="size-grid" space="var(--space-400)">
+        <mui-grid slot="body" class="size-grid" col="repeat(auto-fit, minmax(28rem, 1fr))" space="var(--space-400)">
           <mui-card>
             <mui-card-body inner-space>
               <mui-v-stack space="var(--space-300)" alignx="center">
@@ -131,7 +131,7 @@ class StoryIllustration extends HTMLElement {
         title="Custom Color"
         usage="Pass a direct CSS color when the illustration needs to align to a product accent or special state."
       >
-        <mui-grid slot="body" class="swatch-grid" space="var(--space-400)">
+        <mui-grid slot="body" class="swatch-grid" col="repeat(auto-fit, minmax(28rem, 1fr))" space="var(--space-400)">
           <mui-card>
             <mui-card-body inner-space>
               <div class="illustration-shell">

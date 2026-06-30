@@ -8,6 +8,12 @@ class ReactInputHelper extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
+      .content-container {
+        container-type: inline-size;
+        display: grid;
+        gap: var(--space-600);
+      }
+
       .config::part(display) {
         grid-template-columns: 1fr;
       }
@@ -19,7 +25,7 @@ class ReactInputHelper extends HTMLElement {
         overflow: hidden;
       }
 
-      @media (min-width: 1230px) {
+      @container (min-width: 960px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 65ch) 400px;
           gap: 7.2rem;
@@ -28,14 +34,14 @@ class ReactInputHelper extends HTMLElement {
         }
       }
 
-      @media (min-width: 1390px) {
+      @container (min-width: 1120px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 85ch) 570px;
           gap: 9.6rem;
         }
       }
 
-      @media (min-width: 2000px) {
+      @container (min-width: 1730px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 85ch) 690px;
         }
@@ -49,7 +55,8 @@ class ReactInputHelper extends HTMLElement {
         title="React Input Helper"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/readme.md"
       >
-        <mui-grid class="config" space="var(--space-600)">
+        <div class="content-container">
+          <mui-grid class="config" space="var(--space-600)">
           <mui-v-stack space="var(--space-500)">
             <mui-v-stack space="var(--space-300)">
               <mui-body size="medium">

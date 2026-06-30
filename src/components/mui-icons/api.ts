@@ -32,6 +32,12 @@ export const muiApi = {
         description: "Rotates the icon when switching state.",
       },
       {
+        name: "morph",
+        type: { text: "boolean" },
+        default: "false",
+        description: "Applies a transition when switching between states.",
+      },
+      {
         name: "size",
         type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large" | "x-large" | "xx-large"' },
         default: "medium",

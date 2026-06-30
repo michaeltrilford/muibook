@@ -5,11 +5,17 @@ class KnowledgePage extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
+      .content-container {
+        container-type: inline-size;
+        display: grid;
+        gap: var(--space-600);
+      }
+
       .config::part(display) {
         grid-template-columns: 1fr;
       }
 
-      @media (min-width: 1230px) {
+      @container (min-width: 960px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 70ch) 420px;
           gap: 7.2rem;
@@ -18,7 +24,7 @@ class KnowledgePage extends HTMLElement {
         }
       }
 
-      @media (min-width: 1390px) {
+      @container (min-width: 1120px) {
         .config::part(display) {
           grid-template-columns: minmax(0, 85ch) 560px;
           gap: 9.6rem;
@@ -33,7 +39,8 @@ class KnowledgePage extends HTMLElement {
         title="Knowledge"
         github="https://github.com/michaeltrilford/muibook/tree/main/src/knowledge"
       >
-        <mui-grid class="config" space="var(--space-600)">
+        <div class="content-container">
+          <mui-grid class="config" space="var(--space-600)">
           <mui-v-stack space="var(--space-600)">
             <mui-v-stack space="var(--space-400)">
               <mui-body size="medium">
@@ -159,6 +166,7 @@ class KnowledgePage extends HTMLElement {
             </mui-v-stack>
           </mui-v-stack>
         </mui-grid>
+        </div>
       </story-template>
     `;
   }
