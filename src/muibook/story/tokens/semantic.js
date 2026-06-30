@@ -28,7 +28,7 @@ class tokensSemantic extends HTMLElement {
       }
 
       .surface-recessed {
-        background: var(--surface-recessed-200);
+        background: var(--surface-recessed-100);
       }
 
       .token-item-menu::part(flex-wrap) {
@@ -369,7 +369,7 @@ class tokensSemantic extends HTMLElement {
               <br />
               .surface-recessed {
               <br />
-              &nbsp;&nbsp;background: var(--surface-recessed-200);
+              &nbsp;&nbsp;background: var(--surface-recessed-100);
               <br />
               }
             </mui-code>

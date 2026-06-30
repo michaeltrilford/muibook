@@ -30,8 +30,8 @@ Black alpha tokens use suffixes 0, 5, 10, 20…100. White alpha tokens use 0, 10
 
 | Token | Value |
 | --- | --- |
-| `--grey-100` | `oklch(97.015% 0.00011 271.152)` |
-| `--grey-150` | `oklch(94.047% 0.00009 271.152)` |
+| `--grey-50` | `oklch(97.015% 0.00011 271.152)` |
+| `--grey-100` | `oklch(94.047% 0.00009 271.152)` |
 | `--grey-200` | `oklch(92.191% 0.0001 271.152)` |
 | `--grey-300` | `oklch(84.522% 0.0001 271.152)` |
 | `--grey-400` | `oklch(73.802% 0.00008 271.152)` |
@@ -40,9 +40,11 @@ Black alpha tokens use suffixes 0, 5, 10, 20…100. White alpha tokens use 0, 10
 | `--grey-700` | `oklch(44.953% 0.00005 271.152)` |
 | `--grey-800` | `oklch(38.666% 0.00004 271.152)` |
 | `--grey-900` | `oklch(32.109% 0.00004 271.152)` |
-| `--grey-1000` | `oklch(25.197% 0.00003 271.152)` |
-| `--grey-1100` | `oklch(17.764% 0.00002 271.152)` |
-| `--grey-1200` | `oklch(11.492% 0.00001 271.152)` |
+| `--grey-1000` | `oklch(28.5% 0.00003 271.152)` |
+| `--grey-1100` | `oklch(25.197% 0.00003 271.152)` |
+| `--grey-1200` | `oklch(21.4% 0.00002 271.152)` |
+| `--grey-1300` | `oklch(17.764% 0.00002 271.152)` |
+| `--grey-1400` | `oklch(11.492% 0.00001 271.152)` |
 
 #### Feedback ramps
 
@@ -171,7 +173,7 @@ Semantic tokens assign meaning and resolve raw foundations differently in light 
 | Semantic token | Light | Dark | Use |
 | --- | --- | --- | --- |
 | `--text-color` | `--grey-900` | `--grey-200` | Body, label, and UI text |
-| `--heading-text-color` | `--grey-1000` | `--grey-100` | Headings |
+| `--heading-text-color` | `--grey-1000` | `--grey-50` | Headings |
 | `--text-color-optional` | `--grey-500` | `--grey-400` | Secondary and optional text |
 | `--text-color-info` | `--blue-600` | `--blue-400` | Information |
 | `--text-color-success` | `--green-600` | `--green-400` | Positive confirmation |
@@ -184,12 +186,13 @@ Body colour variants change meaning, not size or weight.
 
 | Semantic token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--surface` | `--grey-200` | `--grey-1000` | Base page |
+| `--surface` | `--grey-200` | `--grey-1100` | Base page |
 | `--surface-elevated-100` | `--white` | `--grey-800` | Highest elevation |
-| `--surface-elevated-200` | `--grey-100` | `--grey-900` | Secondary elevation |
+| `--surface-elevated-200` | `--grey-50` | `--grey-900` | Secondary elevation |
 | `--surface-elevated-300` | `--grey-200` | `--grey-1000` | Low-contrast elevation |
-| `--surface-recessed-100` | `--grey-300` | `--grey-1000` | Subtle recess |
-| `--surface-recessed-200` | `--grey-400` | `--grey-1100` | Deeper recess |
+| `--surface-recessed-100` | `--grey-300` | `--grey-1200` | Subtle recess |
+| `--surface-recessed-200` | `--grey-400` | `--grey-1300` | Deeper recess |
+| `--surface-recessed-300` | `--grey-500` | `--grey-1400` | Deepest recess |
 | `--backdrop-overlay` | `--black-opacity-70` | `--black-opacity-70` | Modal and drawer scrim |
 
 ### Border, Focus, And Shadow

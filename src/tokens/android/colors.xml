@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Don't edit directly • Generated on Mon, 29 Jun 2026 08:03:41 GMT • muibook.com
+  Don't edit directly • Generated on Mon, 29 Jun 2026 15:21:17 GMT • muibook.com
 -->
 <resources>
     <color name="black">#FF000000</color>
@@ -28,8 +28,8 @@
     <color name="white_opacity_80">#CCFFFFFF</color>
     <color name="white_opacity_90">#E6FFFFFF</color>
     <color name="white_opacity_100">#FFFFFFFF</color>
-    <color name="grey_100">#FFF5F5F5</color>
-    <color name="grey_150">#FFEBEBEB</color>
+    <color name="grey_50">#FFF5F5F5</color>
+    <color name="grey_100">#FFEBEBEB</color>
     <color name="grey_200">#FFE5E5E5</color>
     <color name="grey_300">#FFCCCCCC</color>
     <color name="grey_400">#FFAAAAAA</color>
@@ -38,9 +38,11 @@
     <color name="grey_700">#FF555555</color>
     <color name="grey_800">#FF444444</color>
     <color name="grey_900">#FF333333</color>
-    <color name="grey_1000">#FF222222</color>
-    <color name="grey_1100">#FF111111</color>
-    <color name="grey_1200">#FF050505</color>
+    <color name="grey_1000">#FF2A2A2A</color>
+    <color name="grey_1100">#FF222222</color>
+    <color name="grey_1200">#FF191919</color>
+    <color name="grey_1300">#FF111111</color>
+    <color name="grey_1400">#FF050505</color>
     <color name="red_100">#FFFFF1EE</color>
     <color name="red_200">#FFFFD5CD</color>
     <color name="red_300">#FFFF9E96</color>

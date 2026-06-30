@@ -486,10 +486,8 @@ class tokensComponents extends HTMLElement {
 
           <spec-card id="prompt-preview" title="Prompt Preview" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-preview/index.ts">
             <story-token-slat slot="body" token="--prompt-preview-accent" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-surface" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-preview-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-code-background" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-box-drop-shadow" variant="shadow"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-dismiss-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-dismiss-secondary-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-dismiss-secondary-background-hover" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-preview-dismiss-secondary-border" variant="border-color"></story-token-slat>

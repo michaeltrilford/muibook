@@ -118,12 +118,12 @@ html[data-brand="insert-your-brand"] {
   --color-bg: var(--white);
   --text-color: var(--grey-900);
   --text-color-error: var(--red-400);
-  --surface-elevated: var(--grey-100);
+  --surface-elevated: var(--grey-50);
 }
 
 html[data-theme="dark"] {
   --color-bg: var(--grey-900);
-  --text-color: var(--grey-100);
+  --text-color: var(--grey-50);
   --text-color-error: var(--red-200);
 }
 ```

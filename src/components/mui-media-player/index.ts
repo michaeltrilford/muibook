@@ -1700,8 +1700,8 @@ class MuiMediaPlayer extends HTMLElement {
           background: linear-gradient(
             180deg,
             transparent 0%,
-            color-mix(in srgb, var(--media-player-surface-overlay-end) 72%, var(--grey-100) 28%) 50%,
-            color-mix(in srgb, var(--media-player-surface-overlay-end) 62%, var(--grey-100) 38%) 100%
+            color-mix(in srgb, var(--media-player-surface-overlay-end) 72%, var(--grey-50) 28%) 50%,
+            color-mix(in srgb, var(--media-player-surface-overlay-end) 62%, var(--grey-50) 38%) 100%
           );
         }
         :host-context(html[data-theme="dark"])

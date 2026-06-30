@@ -32,7 +32,7 @@ export const muiApi = {
     ],
     cssProperties: [
       { name: "--prompt-preview-accent", description: "Default preview effect accent when no `accent` attribute is provided." },
-      { name: "--prompt-preview-box-drop-shadow", description: "Filter drop shadow applied to the preview surface." },
+      { name: "--prompt-preview-background", description: "Base background layer for non-image previews." },
       { name: "--prompt-preview-dismiss-secondary-background", description: "Background of the dismiss action on standard previews." },
       { name: "--prompt-preview-dismiss-secondary-border", description: "Border of the dismiss action on standard previews." },
     ],

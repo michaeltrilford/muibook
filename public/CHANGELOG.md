@@ -61,6 +61,8 @@
 
 ### Changed
 
+- Updated the default Mui grey ramp, replacing `--grey-150` with `--grey-50` and adding `--grey-1300` / `--grey-1400` so surface depth tokens can map to distinct named stops without runtime color mixing.
+- Updated default surface depth mappings so dark mode now separates `--surface`, elevated, and recessed surface stops.
 - `mui-time-picker` and `mui-date-picker` now compose the standalone `mui-time` component instead of implementing inner time selection logic.
 - Standardized inner day and time slot buttons in calendars and pickers to reuse the core `mui-button` styles with dynamic styling variants based on selection, maintaining focus styles across the UI.
 - Removed custom radius CSS variables from `mui-time-picker` and `mui-date-picker` inner elements and standardized on `slotted` host styles to apply dropdown radius configurations.

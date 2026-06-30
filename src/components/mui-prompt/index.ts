@@ -364,9 +364,7 @@ class MuiPrompt extends HTMLElement {
     if (!this.shadowRoot) return;
     const mode = this.normalizeContextMode(this.getAttribute("context-mode"));
     const slots = Array.from(
-      this.shadowRoot.querySelectorAll(
-        'slot[name="actions"], slot[name="actions-right"]',
-      ),
+      this.shadowRoot.querySelectorAll('slot[name="actions"], slot[name="actions-right"]'),
     ) as HTMLSlotElement[];
     const actionNodes = slots.flatMap((slot) => slot.assignedElements({ flatten: true }) as HTMLElement[]);
     actionNodes.forEach((root) => {
@@ -385,7 +383,11 @@ class MuiPrompt extends HTMLElement {
           return;
         }
         if (isToggle || isActive) {
-          if (el.hasAttribute("context-chip") && el.tagName.toLowerCase() === "mui-chip" && !el.hasAttribute("variant")) {
+          if (
+            el.hasAttribute("context-chip") &&
+            el.tagName.toLowerCase() === "mui-chip" &&
+            !el.hasAttribute("variant")
+          ) {
             el.setAttribute("variant", "ghost");
           }
           const show = isToggle ? mode === "icon" : mode === "chip";
@@ -983,7 +985,8 @@ class MuiPrompt extends HTMLElement {
     const badge = normalized.badge;
     const mediaUrl = value ? this.detectMediaUrl(value) : null;
     const hasMediaByBadge = !bgImage && value.length > 0 && (badge === "VIDEO" || badge === "MUSIC");
-    const hasMedia = !bgImage && (Boolean(mediaUrl && (mediaUrl.kind === "video" || mediaUrl.kind === "audio")) || hasMediaByBadge);
+    const hasMedia =
+      !bgImage && (Boolean(mediaUrl && (mediaUrl.kind === "video" || mediaUrl.kind === "audio")) || hasMediaByBadge);
     const hasImage = bgImage.length > 0;
     const hasCode = value.length > 0;
     const isDirectAudioFileUrl = (() => {
@@ -1312,7 +1315,9 @@ class MuiPrompt extends HTMLElement {
     const rows = this.getAttribute("rows") || "3";
     const disabled = this.hasAttribute("disabled");
     const previewDialogWidth = this.getAttribute("preview-dialog-width") || "560px";
-    const previewDialogBorder = this.hasAttribute("preview-dialog-bordered") ? "var(--border-thin)" : "var(--dialog-border)";
+    const previewDialogBorder = this.hasAttribute("preview-dialog-bordered")
+      ? "var(--border-thin)"
+      : "var(--dialog-border)";
     const colorTopStart = this.getAttribute("color-top-start") || "";
     const colorTopMid = this.getAttribute("color-top-mid") || "";
     const colorTopEnd = this.getAttribute("color-top-end") || "";
@@ -1566,7 +1571,7 @@ class MuiPrompt extends HTMLElement {
               var(--prompt-layer-accent-tint) 0%,
               transparent 64%
             ),
-            var(--prompt-focus-surface-background, var(--surface-elevated-100));
+            var(--prompt-focus-surface-background);
           mix-blend-mode: var(--prompt-spectrum-blend-mode-hover);
           animation: none;
         }

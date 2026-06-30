@@ -110,10 +110,10 @@ class MuiBadge extends HTMLElement {
 
     const sizeMap: Record<Size, { fontSize: string; lineHeight: string; padding: string; minHeight?: string }> = {
       "xx-small": {
-        fontSize: "var(--font-size-15)",
+        fontSize: "var(--font-size-10)",
         lineHeight: "1",
         padding: "0 var(--space-050)",
-        minHeight: "1.6rem",
+        minHeight: "1.8rem",
       },
       "x-small": {
         fontSize: "var(--font-size-15)",

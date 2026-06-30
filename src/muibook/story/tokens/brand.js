@@ -180,10 +180,10 @@ class tokensBrand extends HTMLElement {
 
           <spec-card title="Colors / Grey">
 
+            <story-token-slat slot="body" token="--grey-50" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--grey-100" variant="color">
               <div slot="visual" style="width: 16px; height: 16px; background: var(--grey-100); border-radius: 4px;"></div>
             </story-token-slat>
-            <story-token-slat slot="body" token="--grey-150" variant="color"></story-token-slat>
 
             <story-token-slat slot="body" token="--grey-200" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--grey-300" variant="color"></story-token-slat>
@@ -194,6 +194,10 @@ class tokensBrand extends HTMLElement {
             <story-token-slat slot="body" token="--grey-800" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--grey-900" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--grey-1000" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--grey-1100" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--grey-1200" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--grey-1300" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--grey-1400" variant="color"></story-token-slat>
           </spec-card>
 
           <spec-card title="Colors / Red">

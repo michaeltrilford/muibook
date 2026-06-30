@@ -152,7 +152,8 @@ class MuiPromptPreview extends HTMLElement {
         const host = url.hostname.toLowerCase();
         const path = url.pathname.toLowerCase();
         if (/\.(png|jpe?g|gif|webp|svg|avif|bmp)$/.test(path)) return "IMG";
-        if (host === "youtu.be" || host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com")) return "VIDEO";
+        if (host === "youtu.be" || host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com"))
+          return "VIDEO";
         if (host.endsWith("vimeo.com") || host.endsWith("twitch.tv")) return "VIDEO";
         if (
           host.endsWith("soundcloud.com") ||
@@ -284,6 +285,10 @@ class MuiPromptPreview extends HTMLElement {
               color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-400), transparent) 0%,
               color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-500), transparent) 30%,
               transparent 100%
+            ),
+            linear-gradient(
+              var(--prompt-preview-background),
+              var(--prompt-preview-background)
             )
       `;
     const boxClasses = `box${bgImage ? " has-image" : ""}${isOverlayVariant ? " variant-overlay" : ""}${isInverted ? " inverted" : ""}`;
@@ -308,17 +313,9 @@ class MuiPromptPreview extends HTMLElement {
         .box {
           position: relative;
           border: var(--border-thin);
-          border-color: var(--form-default-border-color);
           border-radius: var(--radius-200);
           box-shadow:
-            var(--shadow-medium),
-            0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20),
-            inset 0 0 0 1px color-mix(in srgb, ${glowTone} 12%, transparent 88%),
-            inset 0 calc(var(--space-050) * -1) var(--space-300) color-mix(in srgb, #000 12%, transparent 88%);
-          filter: var(
-            --prompt-preview-box-drop-shadow,
-            drop-shadow(0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-20))
-          );
+            0 var(--stroke-size-100) var(--stroke-size-200) var(--black-opacity-5);
           background: ${imageBackground};
           box-sizing: border-box;
           width: 100%;
@@ -393,14 +390,6 @@ class MuiPromptPreview extends HTMLElement {
           );
           filter: blur(var(--space-050));
         }
-        .box::after {
-          background: radial-gradient(
-            120% 90% at 50% 110%,
-            color-mix(in srgb, #000 14%, transparent 86%) 0%,
-            transparent 72%
-          );
-          filter: blur(var(--space-100));
-        }
         .box.animated::before {
           animation: previewPulse 2400ms ease-in-out var(--prompt-preview-iterations);
         }
@@ -474,7 +463,7 @@ class MuiPromptPreview extends HTMLElement {
         mui-badge {
           position: absolute;
           z-index: 3;
-          top: calc(var(--space-100) + var(--stroke-size-100));
+          top: calc(var(--space-100) + var(--stroke-size-200));
           left: calc(var(--space-100) + var(--stroke-size-100));
 
         }
@@ -596,7 +585,7 @@ class MuiPromptPreview extends HTMLElement {
         <mui-button class="${dismissClass}" icon-only size="xx-small" variant="${dismissVariant}" aria-label="Dismiss preview">
           <mui-icon-close size="xx-small"></mui-icon-close>
         </mui-button>
-        <mui-badge variant="${badgeVariant}" size="x-small">${badge}</mui-badge>
+        <mui-badge variant="${badgeVariant}" size="xx-small">${badge}</mui-badge>
         <mui-v-stack class="inner${mediaIconOnly ? " media-inline" : ""}" space="var(--space-025)" alignX="stretch">
           ${
             textVisible
@@ -643,7 +632,6 @@ class MuiPromptPreview extends HTMLElement {
       if (this.getAttribute("role") === "button") this.removeAttribute("role");
       if (this.getAttribute("aria-haspopup") === "dialog") this.removeAttribute("aria-haspopup");
     }
-
   }
 }
 
