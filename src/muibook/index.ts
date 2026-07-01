@@ -188,6 +188,24 @@ import "./local-components/story-token-types";
 import "./local-components/story-types";
 import "./local-components/changelog";
 
+function syncAppViewportHeight() {
+  const height = window.visualViewport?.height || window.innerHeight;
+  if (!Number.isFinite(height) || height <= 0) return;
+  document.documentElement.style.setProperty("--app-viewport-height", `${height}px`);
+}
+
+function scheduleAppViewportHeightSync() {
+  syncAppViewportHeight();
+  requestAnimationFrame(syncAppViewportHeight);
+}
+
+syncAppViewportHeight();
+window.addEventListener("resize", scheduleAppViewportHeightSync);
+window.addEventListener("orientationchange", scheduleAppViewportHeightSync);
+window.addEventListener("pageshow", scheduleAppViewportHeightSync);
+window.visualViewport?.addEventListener("resize", scheduleAppViewportHeightSync);
+[50, 250, 750].forEach((delay) => window.setTimeout(scheduleAppViewportHeightSync, delay));
+
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   <app-navbar-toggle id="app-nav-toggle" floating hidden inert>
     <mui-responsive breakpoint-low="960" breakpoint-high="1200">
@@ -207,6 +225,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
     variant="push"
     side="left"
     width="26rem"
+    height="var(--app-viewport-height)"
     breakpoint="960"
     resize-rail
     resize-min-page-width="596"
