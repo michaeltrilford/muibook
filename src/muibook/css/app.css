@@ -20,9 +20,17 @@
   --mui-brand-500: #ffbb00;
   --mui-brand-600: #ffa500;
   --mui-brand-700: #ff9800;
+  --app-viewport-height: 100dvh;
 
   /* App Surface */
   background: var(--app-container-surface);
+}
+
+html,
+body {
+  height: var(--app-viewport-height);
+  min-height: var(--app-viewport-height);
+  overflow: hidden;
 }
 
 ::view-transition-old(body),
@@ -33,13 +41,16 @@
 
 #app {
   display: block;
-  min-height: 100vh;
+  height: var(--app-viewport-height);
+  min-height: 0;
 }
 
 #app-shell {
   display: block;
-  min-height: 100vh;
+  height: var(--app-viewport-height);
+  min-height: 0;
   --border-thin: var(--app-navbar-border);
+  --drawer-height: var(--app-viewport-height);
   --drawer-resize-rail-background: var(--app-rail-background);
 }
 
