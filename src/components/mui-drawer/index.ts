@@ -641,7 +641,7 @@ class MuiDrawer extends HTMLElement {
           position: fixed;
           display: block;
           inset: 0;
-          height: var(--drawer-height, 100dvh);
+          height: 100dvh;
           z-index: 10;
           background: var(--backdrop-overlay);
           opacity: 0;
@@ -675,15 +675,15 @@ class MuiDrawer extends HTMLElement {
           z-index: 11;
           width: 90%;
           max-width: 32rem;
-          height: var(--drawer-height, 100dvh);
-          max-height: var(--drawer-height, 100dvh);
+          height: 100dvh;
+          max-height: 100dvh;
           overflow: visible;
           visibility: hidden;
           pointer-events: none;
         }
 
         .workspace-panel .inner {
-          height: var(--drawer-height, 100dvh);
+          height: 100dvh;
         }
 
         .workspace-panel-left {
@@ -717,7 +717,7 @@ class MuiDrawer extends HTMLElement {
         top: 0;
         left: 0;
         width: 100%;
-        height: var(--drawer-height, 100dvh);
+        height: 100dvh;
         z-index: 101;
         background: var(--backdrop-overlay);
         opacity: 0;
@@ -895,8 +895,8 @@ class MuiDrawer extends HTMLElement {
           bottom: auto;
           width: 90%;
           max-width: ${width};
-          height: var(--drawer-height, 100dvh);
-          max-height: var(--drawer-height, 100dvh);
+          height: 100dvh;
+          max-height: 100dvh;
           overflow: visible;
           transform: translateX(-100%);
           z-index: 11;
@@ -908,7 +908,7 @@ class MuiDrawer extends HTMLElement {
           position: fixed;
           display: block;
           inset: 0;
-          height: var(--drawer-height, 100dvh);
+          height: 100dvh;
           z-index: 10;
           background: var(--backdrop-overlay);
           opacity: 0;
@@ -968,7 +968,7 @@ class MuiDrawer extends HTMLElement {
         :host([variant="persistent"]:not([mobile-presentation="stack"])) .inner {
           position: static;
           width: 100%;
-          height: var(--drawer-height, 100dvh);
+          height: 100dvh;
         }
 
         :host([variant="push"]),
