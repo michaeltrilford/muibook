@@ -221,11 +221,6 @@ const appShell = document.querySelector<HTMLElement>("#app-shell");
 const appNavToggle = document.querySelector<HTMLElement>("app-navbar-toggle");
 const appNavToggleButtons = appNavToggle?.querySelectorAll<HTMLElement>("mui-button");
 
-function syncAppViewportHeight() {
-  const viewportHeight = window.visualViewport?.height || window.innerHeight;
-  document.documentElement.style.setProperty("--app-viewport-height", `${viewportHeight}px`);
-}
-
 function getAppShellBreakpoint() {
   return Number(appShell?.getAttribute("breakpoint")) || 960;
 }
@@ -288,11 +283,6 @@ appShell?.addEventListener("app-navbar-link-activate", () => {
 });
 
 if (appShell) {
-  syncAppViewportHeight();
-  window.addEventListener("resize", syncAppViewportHeight);
-  window.visualViewport?.addEventListener("resize", syncAppViewportHeight);
-  window.visualViewport?.addEventListener("scroll", syncAppViewportHeight);
-
   const mobileQuery = getAppShellMobileQuery();
   appShell.toggleAttribute("open", !mobileQuery.matches);
   mobileQuery.addEventListener("change", (event) => {
