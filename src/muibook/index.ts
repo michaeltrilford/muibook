@@ -191,13 +191,13 @@ import "./local-components/changelog";
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   <app-navbar-toggle id="app-nav-toggle" floating hidden inert>
     <mui-responsive breakpoint-low="960" breakpoint-high="1200">
-      <mui-button slot="showBelow" class="floating-menu" variant="primary" size="medium" icon-only aria-label="Open navigation" inert>
+      <mui-button slot="showBelow" class="floating-menu" variant="tertiary" stroke="ring" size="medium" aria-label="Open navigation" inert>
         <mui-icon-rectangle-left-drawer size="medium"></mui-icon-rectangle-left-drawer>
       </mui-button>
-      <mui-button slot="showMiddle" class="floating-menu" variant="secondary" stroke="ring" size="medium" icon-only aria-label="Open navigation" inert>
+      <mui-button slot="showMiddle" class="floating-menu" variant="tertiary" stroke="ring" size="medium" aria-label="Open navigation" inert>
         <mui-icon-rectangle-left-drawer size="medium"></mui-icon-rectangle-left-drawer>
       </mui-button>
-      <mui-button slot="showAbove" class="floating-menu" variant="secondary" stroke="ring" size="large" icon-only aria-label="Open navigation" inert>
+      <mui-button slot="showAbove" class="floating-menu" variant="tertiary" stroke="ring" size="large" aria-label="Open navigation" inert>
         <mui-icon-rectangle-left-drawer size="large"></mui-icon-rectangle-left-drawer>
       </mui-button>
     </mui-responsive>
@@ -231,6 +231,7 @@ function getAppShellMobileQuery() {
 
 function syncAppNavToggle() {
   if (!appShell || !appNavToggle) return;
+  syncAppNavTogglePlacement();
   const isOpen = appShell.hasAttribute("open");
   appNavToggle.hidden = isOpen;
   appNavToggle.inert = isOpen;
@@ -239,6 +240,18 @@ function syncAppNavToggle() {
       btn.inert = isOpen;
       btn.setAttribute("aria-label", "Open navigation");
     });
+  }
+}
+
+function syncAppNavTogglePlacement() {
+  if (!appNavToggle) return;
+  const hashRoute = window.location.hash.startsWith("#/") ? window.location.hash.slice(1) : "";
+  const route = hashRoute || window.location.pathname;
+  const isHome = route === "/" || route === "/home";
+  if (isHome) {
+    appNavToggle.setAttribute("placement", "home");
+  } else {
+    appNavToggle.removeAttribute("placement");
   }
 }
 
@@ -294,6 +307,9 @@ if (appShell) {
   shellObserver.observe(appShell, { attributes: true, attributeFilter: ["open", "mobile"] });
   syncAppNavToggle();
 }
+
+window.addEventListener("popstate", syncAppNavTogglePlacement);
+window.addEventListener("hashchange", syncAppNavTogglePlacement);
 
 function setStatusBarColorFromCSSVar(cssVarName: string) {
   const color = getComputedStyle(document.documentElement).getPropertyValue(cssVarName).trim();

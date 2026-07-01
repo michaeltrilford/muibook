@@ -333,18 +333,27 @@ class MuiDrawer extends HTMLElement {
     }
 
     const baseStyles = /*css*/ `
+      :host {
+        --drawer-safe-top: 0px;
+        --drawer-safe-bottom: 0px;
+      }
+
+      :host([variant="overlay"]:not([contained])) {
+        --drawer-safe-top: env(safe-area-inset-top);
+        --drawer-safe-bottom: env(safe-area-inset-bottom);
+      }
+
       :host(.no-transition) *,
       :host(.no-transition) {
         transition: none !important;
       }
 
       .header {
-
         display: flex;
         flex: 0 0 auto;
         justify-content: space-between;
         align-items: center;
-        padding: calc(var(--space-400) + env(safe-area-inset-top)) var(--space-400) var(--space-400) var(--space-500);
+        padding: calc(var(--space-400) + var(--drawer-safe-top)) var(--space-400) var(--space-400) var(--space-500);
         border-bottom: var(--border-thin);
         box-sizing: border-box;
       }
@@ -357,6 +366,8 @@ class MuiDrawer extends HTMLElement {
         flex: 1 1 auto;
         min-height: 0;
         overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
         height: auto;
         padding: var(--space-500);
         box-sizing: border-box;
@@ -366,11 +377,11 @@ class MuiDrawer extends HTMLElement {
       }
 
       .content.no-heading {
-        padding-top: calc(var(--space-500) + env(safe-area-inset-top));
+        padding-top: calc(var(--space-500) + var(--drawer-safe-top));
       }
 
       .content.no-padding.no-heading {
-        padding-top: env(safe-area-inset-top);
+        padding-top: var(--drawer-safe-top);
       }
 
 
@@ -379,7 +390,7 @@ class MuiDrawer extends HTMLElement {
         flex: 0 0 auto;
         align-items: center;
         justify-content: flex-end;
-        padding: var(--space-400) var(--space-500) calc(var(--space-400) + env(safe-area-inset-bottom));
+        padding: var(--space-400) var(--space-500) calc(var(--space-400) + var(--drawer-safe-bottom));
         border-top: var(--border-thin);
         background: var(--drawer-background);
         gap: var(--space-300);
@@ -590,8 +601,8 @@ class MuiDrawer extends HTMLElement {
         width: 100%;
         height: var(--drawer-height, 100dvh);
         background: var(--drawer-background);
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
+        padding-top: var(--drawer-safe-top);
+        padding-bottom: var(--drawer-safe-bottom);
         box-sizing: border-box;
       }
 
@@ -637,6 +648,12 @@ class MuiDrawer extends HTMLElement {
       }
 
       @media (max-width: ${breakpoint}px) {
+        :host([variant="workspace"]) {
+          --drawer-safe-top: env(safe-area-inset-top);
+          --drawer-safe-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* Mobile overlay surfaces must use the viewport, not --drawer-height, so desktop/contained heights do not clip them. */
         .overlay {
           position: fixed;
           display: block;
@@ -864,6 +881,7 @@ class MuiDrawer extends HTMLElement {
       ::slotted([slot="page"]) {
         height: var(--drawer-height, 100dvh);
         overflow-y: auto;
+        overscroll-behavior: contain;
         -webkit-overflow-scrolling: touch;
       }
 
@@ -879,6 +897,17 @@ class MuiDrawer extends HTMLElement {
 
     const responsiveStyles = /*css*/ `
       @media (max-width: ${breakpoint}px) {
+        :host([variant="push"]),
+        :host([variant="persistent"]:not([mobile-presentation="stack"])) {
+          --drawer-safe-top: env(safe-area-inset-top);
+          --drawer-safe-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* Mobile overlay surfaces must use the viewport, not --drawer-height, so desktop/contained heights do not clip them. */
+        .actions {
+          padding-bottom: calc(var(--space-400) + max(env(safe-area-inset-bottom), var(--space-400)));
+        }
+
         .outer {
           position: fixed;
           top: 0;
@@ -960,7 +989,7 @@ class MuiDrawer extends HTMLElement {
         :host([variant="overlay"]) .inner {
           max-width: ${width};
           width: 90%;
-          height: var(--drawer-height, 100dvh);
+          height: 100dvh;
         }
 
         /* Push */
@@ -977,7 +1006,9 @@ class MuiDrawer extends HTMLElement {
         :host([variant="persistent"]:not([mobile-presentation="stack"])),
         :host([variant="persistent"]:not([mobile-presentation="stack"])) .shell,
         :host([variant="persistent"]:not([mobile-presentation="stack"])) ::slotted([slot="page"]) {
-          height: var(--drawer-height, 100dvh);
+          height: auto;
+          min-height: var(--drawer-height, 100dvh);
+          overflow: visible;
         }
 
         :host([variant="persistent"]:not([mobile-presentation="stack"])) .close {

@@ -206,6 +206,7 @@ class storyResponsive extends HTMLElement {
         >
           <div slot="body">
             <mui-drawer
+              contained
               variant="push"
               resize-rail
               drawer-space
@@ -244,7 +245,7 @@ class storyResponsive extends HTMLElement {
             </mui-drawer>
           </div>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-drawer variant="push" resize-rail open data-drawer-toggle="responsive-container-drawer" width="320px" side="left"&gt;
+            &lt;mui-drawer contained variant="push" resize-rail open data-drawer-toggle="responsive-container-drawer" width="320px" side="left"&gt;
             <br />
             &nbsp;&nbsp;&lt;div slot="page" style="min-width: 0; container-type: inline-size;"&gt;
             <br />

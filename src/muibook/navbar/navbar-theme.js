@@ -14,7 +14,7 @@ class appNavbarTheme extends HTMLElement {
         z-index: 3;
         position: sticky;
         top: 0;
-        padding-top: calc(env(safe-area-inset-top) + var(--space-400));
+        padding-top: var(--space-400);
         box-shadow: 0 var(--stroke-size-100) 0 0 var(--app-navbar-border-color);
       }
 

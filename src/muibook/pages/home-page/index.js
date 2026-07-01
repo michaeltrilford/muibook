@@ -207,7 +207,7 @@ class HomePage extends HTMLElement {
           padding-right: var(--home-page-shell-padding-inline-large, calc(var(--space-800) * 2));
           padding-left: var(--home-page-shell-padding-inline-large, calc(var(--space-800) * 2));
         }
-        .logo-wrapper { grid-column: 6 / 13; }
+        .logo-wrapper { grid-column: 7 / 13; }
         .introduction { grid-column: 1 / 13; }
         .introduction::part(align-items) { align-items: center; }
       }
@@ -222,6 +222,7 @@ class HomePage extends HTMLElement {
 
       @container home-page (min-width: 1460px) {
         .body-text { max-width: 74ch; }
+        .logo-wrapper { grid-column: 9 / 13; }
       }
 
       /* Brand + theme combinations */

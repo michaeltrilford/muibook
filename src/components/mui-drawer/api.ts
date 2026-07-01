@@ -71,6 +71,13 @@ export const muiApi = {
         description: "Removes default padding from the drawer content region when present.",
       },
       {
+        name: "contained",
+        type: { text: "boolean" },
+        default: "false",
+        description:
+          "Keeps narrow-screen push, persistent, and workspace overlay presentation bounded by the drawer container. Use for story canvases, cards, and nested layouts.",
+      },
+      {
         name: "close-size",
         type: { text: '"x-small" | "small" | "medium" | "large"' },
         default: "medium",

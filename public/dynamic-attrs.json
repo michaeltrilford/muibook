@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-01T01:45:30.621Z",
+  "generatedAt": "2026-07-01T03:51:42.692Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -304,16 +304,6 @@
         }
       ]
     },
-    "mui-slat-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "usage",
-          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
-        }
-      ]
-    },
     "mui-slat": {
       "version": 1,
       "destinationOnly": true,
@@ -325,6 +315,16 @@
         {
           "name": "condensed-slot",
           "description": "Applied to a slotted child used in condensed composition, allowing the child to reduce spacing and density."
+        }
+      ]
+    },
+    "mui-slat-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
         }
       ]
     },

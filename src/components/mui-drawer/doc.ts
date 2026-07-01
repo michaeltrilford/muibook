@@ -24,6 +24,7 @@ export const muiDocs: MuiDocs = {
         "For push and persistent drawers, use a plain div as the direct slot='page' wrapper and compose layout components inside it.",
         "Use variant='workspace' when a canvas or editor needs independently controlled left and right side panels around a central page.",
         "Use height when the drawer is contained inside a story, panel, or application region rather than occupying the full viewport.",
+        "Use contained when a push, persistent, or workspace drawer is rendered inside a bounded story canvas, card, or nested layout.",
         "Use resize-rail when desktop users need to tune drawer width; on narrow screens the rail is hidden and the drawer behaves like an overlay.",
         "Resize rails can be focused with the keyboard; use ArrowLeft and ArrowRight to nudge width, Shift with arrow keys for larger steps, and Escape to close the focused workspace side.",
         "Avoid assigning slot='page' directly to Stack or other sized layout components because Drawer owns the page viewport sizing.",

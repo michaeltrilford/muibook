@@ -27,9 +27,15 @@
 
 html,
 body {
-  height: 100dvh;
   min-height: 100dvh;
-  overflow: hidden;
+}
+
+@media (min-width: 961px) {
+  html,
+  body {
+    height: 100dvh;
+    overflow: hidden;
+  }
 }
 
 ::view-transition-old(body),
@@ -40,27 +46,55 @@ body {
 
 #app {
   display: block;
-  height: 100dvh;
   min-height: 0;
+}
+
+@media (min-width: 961px) {
+  #app {
+    height: 100dvh;
+  }
 }
 
 #app-shell {
   display: block;
-  height: 100dvh;
   min-height: 0;
   --border-thin: var(--app-navbar-border);
   --drawer-resize-rail-background: var(--app-rail-background);
 }
 
+@media (min-width: 961px) {
+  #app-shell {
+    height: 100dvh;
+  }
+}
+
 .floating-menu {
   --action-ring-color: var(--border-color);
+  --action-ring-color-hover: var(--border-color);
+  --action-tertiary-background: var(--surface-elevated-alpha);
+  --action-tertiary-background-hover: var(--surface-recessed-alpha);
 }
 
 .floating-menu::part(border-radius) {
   border-radius: 100%;
+  backdrop-filter: blur(var(--space-200));
+  box-shadow:
+    1px 0 1px 0 rgba(0, 0, 0, 0.3),
+    -1px 0 1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .floating-menu::part(border-radius):focus-visible {
   outline: var(--outline-thick);
   outline-offset: var(--stroke-size-200);
+}
+
+app-navbar-toggle[placement="home"] {
+  --app-navbar-toggle-floating-bottom: calc(var(--space-500) + env(safe-area-inset-bottom));
+  --app-navbar-toggle-floating-left: var(--space-500);
+  --app-navbar-toggle-floating-top-medium: calc(3.2rem + env(safe-area-inset-top));
+  --app-navbar-toggle-floating-left-medium: 3.2rem;
+  --app-navbar-toggle-floating-top-large: calc(5.6rem + env(safe-area-inset-top));
+  --app-navbar-toggle-floating-left-large: 4.4rem;
 }

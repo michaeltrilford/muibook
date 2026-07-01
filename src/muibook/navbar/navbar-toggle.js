@@ -31,11 +31,12 @@ class appNavbarToggle extends HTMLElement {
       }
 
       :host([floating]) {
-        position: fixed;
-        bottom: calc(var(--space-400) + env(safe-area-inset-bottom));
-        top: auto;
-        left: var(--space-400);
-        z-index: 100;
+        position: var(--app-navbar-toggle-floating-position, fixed);
+        bottom: var(--app-navbar-toggle-floating-bottom, calc(var(--space-400) + env(safe-area-inset-bottom)));
+        top: var(--app-navbar-toggle-floating-top, auto);
+        left: var(--app-navbar-toggle-floating-left, var(--space-400));
+        right: var(--app-navbar-toggle-floating-right, auto);
+        z-index: 1;
         width: auto;
         background: transparent;
         backdrop-filter: none;
@@ -47,17 +48,19 @@ class appNavbarToggle extends HTMLElement {
 
       @media (min-width: 961px) {
         :host([floating]) {
-          top: calc(4rem + env(safe-area-inset-top));
-          bottom: auto;
-          left: 3rem;
+          top: var(--app-navbar-toggle-floating-top-medium, calc(4rem + env(safe-area-inset-top)));
+          bottom: var(--app-navbar-toggle-floating-bottom-medium, auto);
+          left: var(--app-navbar-toggle-floating-left-medium, 2.8rem);
+          right: var(--app-navbar-toggle-floating-right-medium, auto);
         }
       }
 
       @media (min-width: 1200px) {
         :host([floating]) {
-          top: calc(3.8rem + env(safe-area-inset-top));
-          bottom: auto;
-          left: 3.4rem;
+          top: var(--app-navbar-toggle-floating-top-large, calc(3.8rem + env(safe-area-inset-top)));
+          bottom: var(--app-navbar-toggle-floating-bottom-large, auto);
+          left: var(--app-navbar-toggle-floating-left-large, 3.2rem);
+          right: var(--app-navbar-toggle-floating-right-large, auto);
         }
       }
 

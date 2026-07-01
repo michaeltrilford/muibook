@@ -866,6 +866,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer
+            contained
             variant="workspace"
             resize-rail
             resize-min-left-width="200"
@@ -931,6 +932,7 @@ class storyDrawer extends HTMLElement {
 
           &lt;!-- HTML Setup --&gt;<br>
           &lt;mui-drawer<br>
+          &nbsp;&nbsp;contained<br>
           &nbsp;&nbsp;variant="workspace"<br>
           &nbsp;&nbsp;resize-rail<br>
           &nbsp;&nbsp;resize-min-left-width="200"<br>
@@ -965,7 +967,7 @@ class storyDrawer extends HTMLElement {
         "
       >
         <div class="canvas" slot="body">  
-          <mui-drawer variant="push" data-drawer="drawer-3" width="320px" side="left" height="45dvh">
+          <mui-drawer contained variant="push" data-drawer="drawer-3" width="320px" side="left" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 ${invoiceHeader}
@@ -995,7 +997,7 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="left"&gt;<br>
+          &lt;mui-drawer contained variant="push" data-drawer="hook" width="320px" side="left"&gt;<br>
           &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
@@ -1017,6 +1019,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer
+            contained
             variant="push"
             resize-rail
             drawer-space
@@ -1094,6 +1097,7 @@ class storyDrawer extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer<br>
+          &nbsp;&nbsp;contained<br>
           &nbsp;&nbsp;variant="push"<br>
           &nbsp;&nbsp;resize-rail<br>
           &nbsp;&nbsp;resize-min-drawer-width="240"<br>
@@ -1127,6 +1131,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer
+            contained
             variant="persistent"
             resize-rail
             drawer-space
@@ -1203,6 +1208,7 @@ class storyDrawer extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer<br>
+          &nbsp;&nbsp;contained<br>
           &nbsp;&nbsp;variant="persistent"<br>
           &nbsp;&nbsp;resize-rail<br>
           &nbsp;&nbsp;resize-min-drawer-width="240"<br>
@@ -1232,7 +1238,7 @@ class storyDrawer extends HTMLElement {
         "
       >
         <div class="canvas" slot="body">
-          <mui-drawer variant="persistent" width="320px" slot="body" side="left" data-drawer-toggle="drawer-persistent-left-demo" height="45dvh">
+          <mui-drawer contained variant="persistent" width="320px" slot="body" side="left" data-drawer-toggle="drawer-persistent-left-demo" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 <mui-h-stack space="var(--space-050)" alignY="center">
@@ -1266,7 +1272,7 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="persistent" width="320px" side="left" data-drawer-toggle="hook"&gt;<br>
+          &lt;mui-drawer contained variant="persistent" width="320px" side="left" data-drawer-toggle="hook"&gt;<br>
             &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
@@ -1285,7 +1291,7 @@ class storyDrawer extends HTMLElement {
         "
       >
         <div class="canvas" slot="body">
-          <mui-drawer slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right" height="45dvh">
+          <mui-drawer contained slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 ${invoiceHeader}
@@ -1315,7 +1321,7 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>  
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
+          &lt;mui-drawer contained variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
           &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
@@ -1338,6 +1344,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer
+            contained
             variant="push"
             drawer-space
             resize-rail
@@ -1416,6 +1423,7 @@ class storyDrawer extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer<br>
+          &nbsp;&nbsp;contained<br>
           &nbsp;&nbsp;variant="push"<br>
           &nbsp;&nbsp;resize-rail<br>
           &nbsp;&nbsp;resize-min-drawer-width="240"<br>
@@ -1449,6 +1457,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer
+            contained
             variant="persistent"
             drawer-space
             resize-rail
@@ -1526,6 +1535,7 @@ class storyDrawer extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer<br>
+          &nbsp;&nbsp;contained<br>
           &nbsp;&nbsp;variant="persistent"<br>
           &nbsp;&nbsp;resize-rail<br>
           &nbsp;&nbsp;resize-min-drawer-width="240"<br>
@@ -1555,7 +1565,7 @@ class storyDrawer extends HTMLElement {
         "
       >
         <div class="canvas" slot="body">
-          <mui-drawer variant="persistent" width="320px" slot="body" side="right" data-drawer-toggle="drawer-persistent-right-demo" height="45dvh">
+          <mui-drawer contained variant="persistent" width="320px" slot="body" side="right" data-drawer-toggle="drawer-persistent-right-demo" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 <mui-heading size="4" level="4">Smart Bills</mui-heading>
@@ -1587,7 +1597,7 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>  
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="persistent" width="320px" side="right" data-drawer-toggle="hook"&gt;<br>
+          &lt;mui-drawer contained variant="persistent" width="320px" side="right" data-drawer-toggle="hook"&gt;<br>
           &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
@@ -1599,7 +1609,7 @@ class storyDrawer extends HTMLElement {
         description="Uses the built-in heading and close button to provide a clear way to close the panel, while also presenting additional context through the header section."
       >
         <div class="canvas" slot="body">
-          <mui-drawer variant="push" width="260px" side="left" data-drawer="hook" drawer-space="none" height="45dvh">
+          <mui-drawer contained variant="push" width="260px" side="left" data-drawer="hook" drawer-space="none" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 <mui-h-stack space="var(--space-200)" alignY="center">
@@ -1622,7 +1632,7 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="push" width="320px" side="left" data-drawer="hook" drawer-space="none"&gt;<br>
+          &lt;mui-drawer contained variant="push" width="320px" side="left" data-drawer="hook" drawer-space="none"&gt;<br>
             &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
@@ -1661,6 +1671,7 @@ class storyDrawer extends HTMLElement {
           <mui-responsive breakpoint="768">
 
             <mui-drawer 
+              contained
               slot="showAbove" 
               variant="push" 
               width="260px" 
@@ -1710,7 +1721,7 @@ class storyDrawer extends HTMLElement {
 
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="push" width="320px" side="left" data-drawer-toggle="hook" drawer-space="none"&gt;<br>
+          &lt;mui-drawer contained variant="push" width="320px" side="left" data-drawer-toggle="hook" drawer-space="none"&gt;<br>
             &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
@@ -1727,7 +1738,7 @@ class storyDrawer extends HTMLElement {
 
       >
         <div class="canvas" slot="body">
-          <mui-drawer slot="body" variant="push" breakpoint="1500" data-drawer="breakpoint" width="320px" side="right" height="45dvh">
+          <mui-drawer contained slot="body" variant="push" breakpoint="1500" data-drawer="breakpoint" width="320px" side="right" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 ${invoiceHeader}
@@ -1757,7 +1768,7 @@ class storyDrawer extends HTMLElement {
           </mui-drawer>
         </div>  
         <story-code-block slot="footer" scrollable>
-          &lt;mui-drawer variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
+          &lt;mui-drawer contained variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
           &nbsp;&nbsp;...<br>
           &lt;/mui-drawer&gt;
         </story-code-block>

@@ -521,7 +521,7 @@ class compMuiTube extends HTMLElement {
           </mui-h-stack>
         </mui-h-stack>
         <mui-responsive variant="container" breakpoint="768" observe=".content-container">
-          <mui-drawer width="240px" variant="push" drawer-space="none" open side="left" slot="showAbove" data-drawer-toggle="video-header-toggle">
+          <mui-drawer contained width="240px" variant="push" drawer-space="none" open side="left" slot="showAbove" data-drawer-toggle="video-header-toggle">
             ${videoMenuItems}
             ${videoPageContent}
           </mui-drawer>
