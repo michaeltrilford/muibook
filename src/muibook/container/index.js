@@ -7,7 +7,6 @@ export class AppContainer extends HTMLElement {
     this.handleRouteChange = this.handleRouteChange.bind(this);
     this.handleHashRouteChange = this.handleHashRouteChange.bind(this);
 
-    this.setAttribute("tabindex", "-1"); // Keep app-container available for programmatic focus.
     this.setAttribute("role", "main"); // Helps with screen reader navigation
 
     const style = document.createElement("style");
