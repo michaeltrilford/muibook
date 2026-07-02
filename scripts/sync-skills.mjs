@@ -7,8 +7,8 @@ const sourceDir = path.resolve(__dirname, "..");
 
 const filesToCopy = [
   {
-    src: "src/knowledge/skills/muibook-web-components.md",
-    dest: "public/skills/muibook-web-components.md",
+    src: "src/knowledge/web-component-skill.md",
+    dest: "public/web-component-skill.md",
   },
 ];
 

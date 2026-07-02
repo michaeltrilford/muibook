@@ -17,7 +17,7 @@ const filesToCopy = [
   { src: "src/knowledge/rules.ts", dest: "rules.ts" },
   { src: "src/knowledge/compositions.ts", dest: "compositions.ts" },
   { src: "src/knowledge/keywords.ts", dest: "keywords.ts" },
-  { src: "src/knowledge/skills/muibook-web-components.md", dest: "skills/muibook-web-components.md" },
+  { src: "src/knowledge/web-component-skill.md", dest: "web-component-skill.md" },
 ];
 
 console.log(`Copying knowledge files to: ${destDir}`);

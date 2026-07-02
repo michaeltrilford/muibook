@@ -52,17 +52,17 @@ class SkillsPage extends HTMLElement {
 
       <story-template
         title="Web Component Skill"
-        github="https://github.com/michaeltrilford/muibook/blob/main/public/skills/muibook-web-components.md"
+        github="https://github.com/michaeltrilford/muibook/blob/main/public/web-component-skill.md"
       >
         <div class="content-container">
           <mui-grid class="config" space="var(--space-600)">
             <mui-v-stack space="var(--space-600)">
               <mui-v-stack space="var(--space-400)">
                 <mui-body size="medium">
-                  The Muibook Web Components skill is a compact instruction file for agents and developers building native, token-led custom elements.
+                  The Web Component Skill is a compact instruction file for agents and developers building native, token-led custom elements.
                 </mui-body>
                 <mui-body size="medium">
-                  It explains the component architecture behind Muibook: shadow-contained styles, explicit APIs, part maps, slot-aware composition, dynamic attrs, and thin framework wrappers.
+                  It explains a portable Web Component architecture: shadow-contained styles, explicit APIs, part maps, slot-aware composition, dynamic attrs, and thin framework wrappers.
                 </mui-body>
                 <mui-body size="medium">
                   Use it as a public starting point for creating Web Components in this style, or adapt the same architecture to another design system.
@@ -71,7 +71,7 @@ class SkillsPage extends HTMLElement {
 
               <div class="download-actions">
                 <mui-link
-                  href="/skills/muibook-web-components.md"
+                  href="/web-component-skill.md"
                   download
                   variant="primary"
                   size="medium"
@@ -79,7 +79,7 @@ class SkillsPage extends HTMLElement {
                   Download Skill
                 </mui-link>
                 <mui-link
-                  href="/skills/muibook-web-components.md"
+                  href="/web-component-skill.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="secondary"
@@ -173,8 +173,8 @@ class SkillsPage extends HTMLElement {
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">File Path</mui-heading>
                 <div class="path-list">
-                  <mui-code size="small" inline>/public/skills/muibook-web-components.md</mui-code>
-                  <mui-code size="small" inline>/skills/muibook-web-components.md</mui-code>
+                  <mui-code size="small" inline>/public/web-component-skill.md</mui-code>
+                  <mui-code size="small" inline>/web-component-skill.md</mui-code>
                 </div>
               </mui-v-stack>
 
@@ -182,10 +182,10 @@ class SkillsPage extends HTMLElement {
                 <mui-heading level="3" size="5">Skill Preview</mui-heading>
                 <mui-code scrollable>
                   ---<br />
-                  name: muibook-web-components<br />
-                  description: Build and review native Web Components using the Muibook architecture...<br />
+                  name: web-component-skill<br />
+                  description: Build and review native Web Components using a portable architecture...<br />
                   ---<br /><br />
-                  # Muibook Web Components<br /><br />
+                  # Web Component Skill<br /><br />
                   ## Component Anatomy<br />
                   ## Public API Discipline<br />
                   ## Styling Model<br />

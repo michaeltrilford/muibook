@@ -1,11 +1,11 @@
 ---
-name: muibook-web-components
-description: Build and review native Web Components using the Muibook architecture: shadow-contained styles, token-first CSS variables, part maps, slot composition, destination/runtime dynamic attrs, component API metadata, documentation guidance, and lightweight framework wrappers. Use when creating Muibook-style custom elements, reviewing component architecture, writing wrappers, or adapting these patterns to another design system.
+name: web-component-skill
+description: Build and review native Web Components using a portable architecture: shadow-contained styles, token-first CSS variables, part maps, slot composition, destination/runtime dynamic attrs, component API metadata, documentation guidance, and lightweight framework wrappers. Use when creating custom elements, reviewing component architecture, writing wrappers, or adapting these patterns to a design system.
 ---
 
-# Muibook Web Components
+# Web Component Skill
 
-Use this skill to build native Web Components in the Muibook style: framework-agnostic components with explicit APIs, contained styles, accessible native semantics, token-led theming, structured metadata, and composition behavior that can be understood by humans and AI tools.
+Use this skill to build native Web Components with a framework-agnostic architecture: explicit APIs, contained styles, accessible native semantics, token-led theming, structured metadata, and composition behavior that can be understood by humans and AI tools.
 
 ## Component Anatomy
 
@@ -56,7 +56,7 @@ Good component styling is predictable, contained, theme-aware, and overrideable 
 
 Use part maps to expose trusted styling surfaces without exposing the whole internal DOM.
 
-Muibook groups part names by intent:
+Group part names by intent:
 
 - `text`: `color`, `font-family`, `font-size`, `font-weight`, `letter-spacing`, `line-height`, `text-transform`, `text-decoration`, `text-align`
 - `spacing`: `padding`, `margin`, `gap`, `width`, `height`, `box-sizing`
