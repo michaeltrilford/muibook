@@ -19,7 +19,7 @@ export const muiApi = {
         type: { text: "string" },
         default: "100dvh",
         description:
-          "Drawer layout height. Accepts any valid CSS height value and is useful for contained story, demo, or app regions.",
+          "Drawer layout height. Accepts any valid CSS height value, such as 100dvh, 100lvh, a product-owned CSS custom property, or a fixed contained demo height. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.",
       },
       {
         name: "side",

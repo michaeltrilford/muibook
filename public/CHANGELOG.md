@@ -56,6 +56,7 @@
 - Updated Media Player stories to lead with Muibook player controls and document compact audio, audio metadata, audio waveform, audio artwork, audio artwork waveform, visible play/pause, video metadata, metadata actions, YouTube, and SoundCloud states.
 - Updated Media Player examples to show direct `mui-avatar-chip` usage in metadata slots, with mapped responsive actions where needed.
 - Updated Media Player documentation with stronger accessibility guidance for opt-in autoplay, slotted metadata actions, and clear media context.
+- Updated Drawer documentation and story usage details with clearer height guidance for app-shell, contained, and workspace layouts.
 - Updated token stories to include semantic shadow tokens and media-player component tokens.
 - Removed standalone `Type: Date` and `Type: Time` stories from the `mui-input` docs, relying on dedicated date/time pickers for explicit examples while preserving native `mui-input` functionality.
 
@@ -94,6 +95,7 @@
 
 - Story template descriptions now escape angle-bracket text so docs can reference element names such as model-viewer without rendering accidental HTML.
 - `mui-drawer` in workspace variant now properly respects top and bottom safe-area insets (`env(safe-area-inset-top)` / `env(safe-area-inset-bottom)`) in the page layout.
+- `mui-drawer` mobile overlay panels now respect physical left and right safe-area insets in landscape, keeping drawer content clear of device cutouts while preserving the intended usable drawer width.
 - `mui-dropdown` now applies matching menu-item width, alignment, and first/last radius treatment to slotted `mui-link` items as well as slotted `mui-button` items.
 - `mui-media-player` artwork thumbnail border and shadow now stay dark over artwork in both light and dark themes.
 - `mui-media-player` volume icons now update reliably as the user adjusts the volume range.

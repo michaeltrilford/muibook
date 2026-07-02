@@ -856,6 +856,7 @@ class storyDrawer extends HTMLElement {
         usage="
           Use variant='workspace' when a page canvas needs independent left and right support panels.|||
           Slot component navigation or libraries into slot='left', the main canvas into slot='page', and inspector or properties content into slot='right'.|||
+          Set height to the app shell or canvas height so the workspace, page, panels, and mobile overlay resolve from the same layout box. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
           Control panel visibility with left-open and right-open so product state can decide whether one, both, or neither panel is visible.|||
           Tune the panel columns with left-width and right-width, then add resize-rail when both workspace panels should be user-resizable.|||
           Use resize-min-left-width, resize-min-right-width and resize-min-page-width to keep the side panels and central canvas usable while resizing.|||
@@ -1011,7 +1012,7 @@ class storyDrawer extends HTMLElement {
           Use resize-rail only when the push drawer benefits from user-controlled width.|||
           The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
           Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
-          Use height when a drawer needs to sit inside a contained story, workspace, or app region instead of the default 100dvh viewport height.|||
+          Set height when a drawer needs to sit inside a contained story, workspace, or app region. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
           Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
           Pull below resize-min-drawer-width to fade the drawer content while the width remains clamped, then release past resize-close-threshold to close it.|||
           The rail is hidden on the narrow-screen push layout where the drawer behaves like an overlay.
@@ -1123,7 +1124,7 @@ class storyDrawer extends HTMLElement {
           Use resize-rail only when the persistent drawer benefits from user-controlled width.|||
           The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
           Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
-          Use height when a drawer needs to sit inside a contained story, workspace, or app region instead of the default 100dvh viewport height.|||
+          Set height when a drawer needs to sit inside a contained story, workspace, or app region. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
           Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
           Persistent drawers stay present by default on desktop, so resize-rail only adjusts width and does not act as an open or close gesture.|||
           On narrow screens, persistent drawers use the overlay presentation by default and the rail is hidden.
@@ -1336,7 +1337,7 @@ class storyDrawer extends HTMLElement {
           Use resize-rail only when the push drawer benefits from user-controlled width.|||
           The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
           Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
-          Use height when a drawer needs to sit inside a contained story, workspace, or app region instead of the default 100dvh viewport height.|||
+          Set height when a drawer needs to sit inside a contained story, workspace, or app region. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
           Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
           Pull below resize-min-drawer-width to fade the drawer content while the width remains clamped, then release past resize-close-threshold to close it.|||
           The rail is hidden on the narrow-screen push layout where the drawer behaves like an overlay.
@@ -1449,7 +1450,7 @@ class storyDrawer extends HTMLElement {
           Use resize-rail only when the persistent drawer benefits from user-controlled width.|||
           The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
           Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
-          Use height when a drawer needs to sit inside a contained story, workspace, or app region instead of the default 100dvh viewport height.|||
+          Set height when a drawer needs to sit inside a contained story, workspace, or app region. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
           Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
           Persistent drawers stay present by default on desktop, so resize-rail only adjusts width and does not act as an open or close gesture.|||
           On narrow screens, persistent drawers use the overlay presentation by default and the rail is hidden.

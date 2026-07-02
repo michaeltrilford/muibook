@@ -336,11 +336,24 @@ class MuiDrawer extends HTMLElement {
       :host {
         --drawer-safe-top: 0px;
         --drawer-safe-bottom: 0px;
+        --drawer-safe-left: 0px;
+        --drawer-safe-right: 0px;
+        --drawer-safe-inline: 0px;
       }
 
       :host([variant="overlay"]:not([contained])) {
         --drawer-safe-top: env(safe-area-inset-top);
         --drawer-safe-bottom: env(safe-area-inset-bottom);
+      }
+
+      :host([variant="overlay"]:not([contained])[side="left"]) {
+        --drawer-safe-left: env(safe-area-inset-left);
+        --drawer-safe-inline: env(safe-area-inset-left);
+      }
+
+      :host([variant="overlay"]:not([contained])[side="right"]) {
+        --drawer-safe-right: env(safe-area-inset-right);
+        --drawer-safe-inline: env(safe-area-inset-right);
       }
 
       :host(.no-transition) *,
@@ -361,6 +374,8 @@ class MuiDrawer extends HTMLElement {
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
+        padding-left: var(--drawer-safe-left);
+        padding-right: var(--drawer-safe-right);
       }
       .content {
         flex: 1 1 auto;
@@ -653,6 +668,16 @@ class MuiDrawer extends HTMLElement {
           --drawer-safe-bottom: env(safe-area-inset-bottom);
         }
 
+        :host([variant="workspace"][side="left"]) {
+          --drawer-safe-left: env(safe-area-inset-left);
+          --drawer-safe-inline: env(safe-area-inset-left);
+        }
+
+        :host([variant="workspace"][side="right"]) {
+          --drawer-safe-right: env(safe-area-inset-right);
+          --drawer-safe-inline: env(safe-area-inset-right);
+        }
+
         /* Mobile overlay surfaces must use the viewport, not --drawer-height, so desktop/contained heights do not clip them. */
         .overlay {
           position: fixed;
@@ -691,7 +716,7 @@ class MuiDrawer extends HTMLElement {
           bottom: auto;
           z-index: 11;
           width: 90%;
-          max-width: 32rem;
+          max-width: calc(32rem + var(--drawer-safe-inline));
           height: 100dvh;
           max-height: 100dvh;
           overflow: visible;
@@ -885,14 +910,6 @@ class MuiDrawer extends HTMLElement {
         -webkit-overflow-scrolling: touch;
       }
 
-      :host([variant="push"]:not([open])) ::slotted([slot="page"]) {
-        --home-page-shell-padding-block: var(--space-600);
-        --home-page-shell-padding-inline: var(--space-600);
-        --home-page-shell-padding-block-start-large: var(--space-800);
-        --home-page-shell-padding-block-end-large: var(--space-800);
-        --home-page-shell-padding-inline-large: var(--space-800);
-      }
-
     `;
 
     const responsiveStyles = /*css*/ `
@@ -901,6 +918,18 @@ class MuiDrawer extends HTMLElement {
         :host([variant="persistent"]:not([mobile-presentation="stack"])) {
           --drawer-safe-top: env(safe-area-inset-top);
           --drawer-safe-bottom: env(safe-area-inset-bottom);
+        }
+
+        :host([variant="push"][side="left"]),
+        :host([variant="persistent"]:not([mobile-presentation="stack"])[side="left"]) {
+          --drawer-safe-left: env(safe-area-inset-left);
+          --drawer-safe-inline: env(safe-area-inset-left);
+        }
+
+        :host([variant="push"][side="right"]),
+        :host([variant="persistent"]:not([mobile-presentation="stack"])[side="right"]) {
+          --drawer-safe-right: env(safe-area-inset-right);
+          --drawer-safe-inline: env(safe-area-inset-right);
         }
 
         /* Mobile overlay surfaces must use the viewport, not --drawer-height, so desktop/contained heights do not clip them. */
@@ -923,7 +952,7 @@ class MuiDrawer extends HTMLElement {
         :host([variant="persistent"]:not([mobile-presentation="stack"])) .outer {
           bottom: auto;
           width: 90%;
-          max-width: ${width};
+          max-width: calc(${width} + var(--drawer-safe-inline));
           height: 100dvh;
           max-height: 100dvh;
           overflow: visible;
@@ -987,7 +1016,7 @@ class MuiDrawer extends HTMLElement {
 
         /* Overlay */
         :host([variant="overlay"]) .inner {
-          max-width: ${width};
+          max-width: calc(${width} + var(--drawer-safe-inline));
           width: 90%;
           height: 100dvh;
         }

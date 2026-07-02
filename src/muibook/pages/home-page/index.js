@@ -155,17 +155,11 @@ class HomePage extends HTMLElement {
           --app-logo-color: var(--gold-900);
         }
 
-        .logo-wrapper { grid-column: 5 / 13; }
+        .logo-wrapper { grid-column: 7 / 13; }
 
         .introduction {
           grid-column: 1 / 13;
-          grid-row: initial;
           align-content: end;
-        }
-
-        .introduction::part(display) {
-          grid-template-columns: 1fr;
-          gap: var(--space-500);
         }
 
         main {
@@ -175,54 +169,37 @@ class HomePage extends HTMLElement {
           row-gap: var(--space-400);
           grid-template-columns: repeat(12, 1fr);
           grid-template-rows: auto 1fr;
-          padding-bottom: calc(var(--home-page-shell-padding-block, var(--space-800)) + env(safe-area-inset-bottom));
-          padding-top: calc(var(--home-page-shell-padding-block, var(--space-800)) + env(safe-area-inset-top));
-          padding-right: var(--home-page-shell-padding-inline, var(--space-800));
-          padding-left: var(--home-page-shell-padding-inline, var(--space-800));
+          padding-bottom: calc(var(--space-800) + env(safe-area-inset-bottom));
+          padding-top: calc(var(--space-800) + env(safe-area-inset-top));
+          padding-right: var(--space-800);
+          padding-left: var(--space-800);
         }
 
       }
 
-      @container home-page (min-width: 960px) {
+      @container home-page (min-width: 1200px) {
         main {
           column-gap: var(--space-800);
           row-gap: var(--space-800);
         }
-        .introduction {
-          grid-row: initial;
-          align-content: end;
-        }
 
-        .introduction::part(display) {
-          grid-template-columns: 1fr auto;
-          gap: var(--space-600);
-        }
+
 
       }
 
       @container home-page (min-width: 1200px) {
         main {
           grid-template-rows: auto 1fr;
-          padding-bottom: calc(var(--home-page-shell-padding-block-end-large, var(--space-800)) + env(safe-area-inset-bottom));
-          padding-top: calc(var(--home-page-shell-padding-block-start-large, calc(var(--space-800) * 2)) + env(safe-area-inset-top));
-          padding-right: var(--home-page-shell-padding-inline-large, calc(var(--space-800) * 2));
-          padding-left: var(--home-page-shell-padding-inline-large, calc(var(--space-800) * 2));
+          padding-bottom: calc(var(--space-800) + env(safe-area-inset-bottom));
+          padding-top: calc((var(--space-600) * 2) + env(safe-area-inset-top));
+          padding-right: calc(var(--space-800) * 2);
+          padding-left: calc(var(--space-800) * 2);
         }
         .logo-wrapper { grid-column: 7 / 13; }
-        .introduction { grid-column: 1 / 13; }
-        .introduction::part(align-items) { align-items: center; }
-      }
 
-      @container home-page (min-width: 720px) {
-        .body-text { max-width: 58ch; }
-      }
-
-      @container home-page (min-width: 1200px) {
-        .body-text { max-width: 66ch; }
       }
 
       @container home-page (min-width: 1460px) {
-        .body-text { max-width: 74ch; }
         .logo-wrapper { grid-column: 9 / 13; }
       }
 
@@ -254,15 +231,6 @@ class HomePage extends HTMLElement {
 
         :host([data-brand="sensei"]) .logo-wrapper { grid-column: 6 / 13; }
 
-        :host([data-brand="jal"]) .introduction,
-        :host([data-brand="ana"]) .introduction,
-        :host([data-brand="paperclip"]) .introduction,
-        :host([data-brand="sensei"]) .introduction {
-          grid-column: 1 / 13;
-          grid-row: initial;
-          align-content: end;
-        }
-
         :host([data-brand="jal"]) main,
         :host([data-brand="ana"]) main,
         :host([data-brand="paperclip"]) main,
@@ -285,24 +253,9 @@ class HomePage extends HTMLElement {
           column-gap: var(--space-800);
           row-gap: var(--space-800);
         }
-        :host([data-brand="jal"]) .introduction,
-        :host([data-brand="ana"]) .introduction,
-        :host([data-brand="paperclip"]) .introduction,
-        :host([data-brand="sensei"]) .introduction {
-          grid-row: initial;
-          align-content: end;
-        }
       }
 
       @container home-page (min-width: 1200px) {
-
-        :host([data-brand="jal"]) main,
-        :host([data-brand="ana"]) main,
-        :host([data-brand="paperclip"]) main,
-        :host([data-brand="sensei"]) main {
-          padding-top: calc((var(--space-600) * 2) + env(safe-area-inset-top));
-          grid-template-rows: auto 1fr;
-        }
         :host([data-brand="jal"]) .logo-wrapper {
           grid-column: 10 / 13;
         }
@@ -315,18 +268,7 @@ class HomePage extends HTMLElement {
         :host([data-brand="sensei"]) .logo-wrapper {
           grid-column: 7 / 13;
         }
-        :host([data-brand="jal"]) .introduction,
-        :host([data-brand="ana"]) .introduction,
-        :host([data-brand="paperclip"]) .introduction,
-        :host([data-brand="sensei"]) .introduction {
-          grid-column: 1 / 13;
-        }
-        :host([data-brand="jal"]) .introduction::part(align-items),
-        :host([data-brand="ana"]) .introduction::part(align-items),
-        :host([data-brand="paperclip"]) .introduction::part(align-items),
-        :host([data-brand="sensei"]) .introduction::part(align-items) {
-          align-items: center;
-        }
+
       }
 
       /* Brand logo layouts - GRID END */
@@ -375,23 +317,6 @@ class HomePage extends HTMLElement {
         }
       }
 
-
-      @container home-page (min-width: 720px) {
-        :host([data-brand="jal"]) .body-text,
-        :host([data-brand="ana"]) .body-text { max-width: 62ch; }
-      }
-
-      @container home-page (min-width: 1200px) {
-        :host([data-brand="jal"]) .body-text,
-        :host([data-brand="ana"]) .body-text { max-width: 70ch }
-      }
-
-      @container home-page (min-width: 1460px) {
-        :host([data-brand="jal"]) .body-text,
-        :host([data-brand="ana"]) .body-text  { max-width: 78ch;}
-      }
-      /* ---- */
-
       .intro-outer {
         display: flex;
         justify-content: end;
@@ -418,32 +343,34 @@ class HomePage extends HTMLElement {
             <div class="logo-wrapper">
               ${desktop}
             </div>
-            <mui-grid class="introduction">
-
-              <mui-responsive variant="container" observe=".main-content__grid" breakpoint-high="1460" breakpoint-low="1200" class="intro-outer">
-                <mui-body class="body-text" size="large" weight="bold" slot="showAbove">
-                  ${intro}<mui-link size="large" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="large" weight="regular" href='/changelog'>Changelog</mui-link>
-                </mui-body>
-                <mui-body class="body-text" size="medium" weight="bold" slot="showMiddle">
-                  ${intro}<mui-link size="medium" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="medium" weight="regular" href='/changelog'>Changelog</mui-link>
-                </mui-body>
-                <mui-body class="body-text" style="text-align: right;"  size="small" weight="bold" slot="showBelow">
-                  ${intro}<mui-link size="small" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="small" weight="regular" href='/changelog'>Changelog</mui-link>
-                </mui-body>
-              </mui-responsive>
-
+            <div class="introduction">
               <mui-responsive variant="container" observe=".main-content__grid" breakpoint-high="1460" breakpoint-low="1200">
-                <mui-h-stack slot="showAbove" space="var(--space-300)">
-                  ${actions}
-                </mui-h-stack>
-                <mui-h-stack  slot="showMiddle" space="var(--space-300)">
-                  ${actions}
-                </mui-h-stack>
-                <mui-h-stack alignX="end" slot="showBelow" space="var(--space-300)">
-                  ${actions}
-                </mui-h-stack>
+                <mui-grid col="1fr auto" aligny="center" slot="showAbove">
+                  <mui-body style="max-width: 75ch;" size="large" weight="bold">
+                    ${intro}<mui-link size="large" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="large" weight="regular" href='/changelog'>Changelog</mui-link>
+                  </mui-body>
+                  <mui-h-stack space="var(--space-300)">
+                    ${actions}
+                  </mui-h-stack>
+                </mui-grid>
+                <mui-grid slot="showMiddle" col="1fr" aligny="end" alignx="end" space="var(--space-600)">
+                  <mui-body size="medium" weight="bold" style="text-align: right; max-width: 70ch;">
+                    ${intro}<mui-link size="medium" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="medium" weight="regular" href='/changelog'>Changelog</mui-link>
+                  </mui-body>
+                  <mui-h-stack space="var(--space-300)">
+                    ${actions}
+                  </mui-h-stack>
+                </mui-grid>
+                <mui-grid slot="showBelow" col="1fr" aligny="end" alignx="end" space="var(--space-600)">
+                  <mui-body size="small" weight="bold" style="text-align: right; max-width: 60ch;">
+                    ${intro}<mui-link size="small" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="medium" weight="regular" href='/changelog'>Changelog</mui-link>
+                  </mui-body>
+                  <mui-h-stack space="var(--space-300)">
+                    ${actions}
+                  </mui-h-stack>
+                </mui-grid>
               </mui-responsive>
-            </mui-grid>
+            </div>
 
           </main>
 
@@ -457,7 +384,7 @@ class HomePage extends HTMLElement {
                 </mui-responsive>
               </div>
               <mui-v-stack space="var(--space-500)" style="max-width: 31rem; padding-left: var(--space-300); padding-right: var(--space-300);">
-                <mui-body class="body-text" size="small" weight="bold">
+                <mui-body size="small" weight="bold">
                   ${intro}<mui-link size="small" weight="bold" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="small" weight="bold" href='/changelog'>Changelog</mui-link>
                 </mui-body>
               </mui-v-stack>

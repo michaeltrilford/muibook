@@ -70,6 +70,7 @@ body {
   display: block;
   min-height: 0;
   --border-thin: var(--app-navbar-border);
+  --drawer-background: var(--app-navbar-surface);
   --drawer-resize-rail-background: var(--app-rail-background);
 }
 
@@ -82,8 +83,9 @@ body {
 .floating-menu {
   --action-ring-color: var(--border-color);
   --action-ring-color-hover: var(--border-color);
-  --action-tertiary-background: var(--surface-elevated-alpha);
-  --action-tertiary-background-hover: var(--surface-recessed-alpha);
+  --action-tertiary-background-hover: var(--app-floating-menu-background-hover);
+  --action-tertiary-text-color: var(--app-floating-menu-color);
+  --action-tertiary-text-color-hover: var(--app-floating-menu-color);
 }
 
 .floating-menu::part(border-radius) {
@@ -94,6 +96,14 @@ body {
     -1px 0 1px 0 rgba(0, 0, 0, 0.3),
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
     inset 0 -1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.floating-menu::part(background) {
+  background: var(--app-floating-menu-background);
+}
+
+.floating-menu::part(background):hover {
+  background: var(--app-floating-menu-background-hover);
 }
 
 .floating-menu::part(border-radius):focus-visible {
