@@ -139,6 +139,7 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/knowledge-compositions" title="Compositions"></app-navbar-link>
           <app-navbar-link link="/knowledge-rules" title="Rules"></app-navbar-link>
           <app-navbar-link link="/knowledge-keywords" title="Keywords"></app-navbar-link>
+          <app-navbar-link link="/skills" title="Web Component Skill"></app-navbar-link>
         </app-navbar-section>
         <app-navbar-section heading="AI Agent">
           <app-navbar-link link="/keywords" title="Keywords"></app-navbar-link>
@@ -231,7 +232,6 @@ class appNavbar extends HTMLElement {
         <app-navbar-section heading="Navigation" default-open>
           <app-navbar-link link="/stepper" title="Stepper"></app-navbar-link>
           <app-navbar-link link="/tab-bar" title="Tab Bar"></app-navbar-link>
-          <app-navbar-link link="/chip-rail" title="Chip Rail"></app-navbar-link>
         </app-navbar-section>
 
         <app-navbar-section heading="Overlays" default-open>

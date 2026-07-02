@@ -17,6 +17,7 @@ const filesToCopy = [
   { src: "src/knowledge/rules.ts", dest: "rules.ts" },
   { src: "src/knowledge/compositions.ts", dest: "compositions.ts" },
   { src: "src/knowledge/keywords.ts", dest: "keywords.ts" },
+  { src: "src/knowledge/skills/muibook-web-components.md", dest: "skills/muibook-web-components.md" },
 ];
 
 console.log(`Copying knowledge files to: ${destDir}`);
@@ -30,6 +31,7 @@ for (const { src, dest } of filesToCopy) {
   const destPath = path.join(destDir, dest);
 
   if (fs.existsSync(srcPath)) {
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
     fs.copyFileSync(srcPath, destPath);
     console.log(`✓ Copied: ${src} -> ${dest}`);
   } else {

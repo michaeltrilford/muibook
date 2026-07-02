@@ -48,6 +48,7 @@ When a component uses slots:
 - Prefer touching source under `src/`; `dist/` is generated.
 - Keep changes small and aligned with existing component patterns.
 - If unsure about behavior, search for sibling components in `src/components/` for examples.
+- When using `mui-code` inside body copy or list text, add the `inline` attr; otherwise it renders as a block code surface.
 - Keep `AGENTS.md` and `DESIGN.md` at the repo root. They are copied to the knowledge repo for agent/plugin context.
 - Keep `src/knowledge` for importable TS knowledge only: global rules, keyword mappings, and composition examples.
 - Component API and UX guidance should live in component `api.ts` and `doc.ts` files so the CEM stays current.
