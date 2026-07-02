@@ -116,6 +116,7 @@ class HomePage extends HTMLElement {
       :host {
         display: flex;
         width: 100%;
+        min-height: var(--drawer-height, 100dvh);
         align-items: stretch;
         position: relative;
         container-name: home-page;
@@ -124,7 +125,7 @@ class HomePage extends HTMLElement {
 
       .main-content__grid {
         display: grid;
-        min-height: 100%;
+        min-height: var(--drawer-height, 100dvh);
         width: 100%;
         box-sizing: border-box;
       }
