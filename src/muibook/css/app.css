@@ -46,7 +46,7 @@ body {
 
 #app {
   display: block;
-  min-height: 0;
+  min-height: 100dvh;
 }
 
 @media (min-width: 961px) {
@@ -57,7 +57,7 @@ body {
 
 #app-shell {
   display: block;
-  min-height: 0;
+  min-height: 100dvh;
   --border-thin: var(--app-navbar-border);
   --drawer-resize-rail-background: var(--app-rail-background);
 }
