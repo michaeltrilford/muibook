@@ -207,6 +207,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
     variant="push"
     side="left"
     width="26rem"
+    height="var(--app-viewport-height)"
     breakpoint="960"
     resize-rail
     resize-min-page-width="596"

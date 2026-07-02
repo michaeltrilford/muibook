@@ -13,6 +13,17 @@
 /*   Component theme alignment across storefront                                   */
 /* =============================================================================== */
 :where(html) {
+  --app-viewport-height: 100dvh;
+}
+
+@media (display-mode: standalone) {
+  :where(html) {
+    /* iOS Home Screen can resolve 100dvh short on first paint; 100lvh matches the settled viewport. */
+    --app-viewport-height: 100lvh;
+  }
+}
+
+:where(html) {
   --mui-brand-100: #fffde7;
   --mui-brand-200: #fff59d;
   --mui-brand-300: #ffeb3b;
@@ -27,13 +38,13 @@
 
 html,
 body {
-  min-height: 100dvh;
+  min-height: var(--app-viewport-height);
 }
 
 @media (min-width: 961px) {
   html,
   body {
-    height: 100dvh;
+    height: var(--app-viewport-height);
     overflow: hidden;
   }
 }
@@ -46,25 +57,25 @@ body {
 
 #app {
   display: block;
-  min-height: 100dvh;
+  min-height: 0;
 }
 
 @media (min-width: 961px) {
   #app {
-    height: 100dvh;
+    height: var(--app-viewport-height);
   }
 }
 
 #app-shell {
   display: block;
-  min-height: 100dvh;
+  min-height: 0;
   --border-thin: var(--app-navbar-border);
   --drawer-resize-rail-background: var(--app-rail-background);
 }
 
 @media (min-width: 961px) {
   #app-shell {
-    height: 100dvh;
+    height: var(--app-viewport-height);
   }
 }
 
