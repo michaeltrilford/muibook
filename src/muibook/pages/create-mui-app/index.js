@@ -59,8 +59,9 @@ class CreateMuiApp extends HTMLElement {
         description=""
         demo="https://create.muibook.com"
         github="https://github.com/michaeltrilford/create-mui-app"
+        x-large
       >
-          <div class="content-container">
+          <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">

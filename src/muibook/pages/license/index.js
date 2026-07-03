@@ -12,7 +12,7 @@ class LicensePage extends HTMLElement {
       <story-template
         title="License"
         description="Muibook is source-available. Source visibility is open, and usage rights are governed by the repository license plus any signed commercial agreement. Commercial and redistribution rights require separate commercial terms."
-        container-max-width="78rem"
+        x-large
       >
 
           <mui-v-stack space="var(--space-800)">

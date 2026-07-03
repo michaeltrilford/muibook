@@ -54,9 +54,10 @@ class BaseTheme extends HTMLElement {
       <story-template 
         title="Base Theme"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/css/mui-tokens.css"
+        x-large
       >
           
-          <div class="content-container">
+          <div class="content-container resource-page">
           <mui-grid class="config"  space="var(--space-400)">
 
             <mui-v-stack space="var(--space-600)">

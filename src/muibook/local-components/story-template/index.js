@@ -19,6 +19,9 @@ class StoryTemplate extends HTMLElement {
       "guides",
       "npm",
       "container-max-width",
+      "x-medium",
+      "large",
+      "x-large",
       "menu-closed",
     ];
   }
@@ -78,10 +81,13 @@ class StoryTemplate extends HTMLElement {
         padding-top: calc(var(--space-500) + env(safe-area-inset-top)); 
         padding-bottom: calc(var(--space-500) + env(safe-area-inset-bottom));
         width: 100%;
-        max-width: var(--story-template-container-max-width, none);
         margin-inline: auto;
         box-sizing: border-box;
         container-type: inline-size;
+      }
+
+      .container:not([x-medium]):not([large]):not([x-large]):not([width]) {
+        max-width: none;
       }
 
       .wrapper {
@@ -173,9 +179,12 @@ class StoryTemplate extends HTMLElement {
     this.removeAttribute("title");
     const descriptionText = this.getAttribute("description") || "";
     const containerMaxWidth = this.getAttribute("container-max-width");
-    const containerStyle = containerMaxWidth
-      ? `style="--story-template-container-max-width: ${containerMaxWidth};"`
+    const containerWidthAttr = containerMaxWidth
+      ? `width="${containerMaxWidth.replaceAll("&", "&amp;").replaceAll('"', "&quot;")}"`
       : "";
+    const containerXMediumAttr = this.hasAttribute("x-medium") ? "x-medium" : "";
+    const containerLargeAttr = this.hasAttribute("large") ? "large" : "";
+    const containerXLargeAttr = this.hasAttribute("x-large") ? "x-large" : "";
     const isMenuClosed = this.hasAttribute("menu-closed");
     const closedClass = isMenuClosed ? "closed" : "";
     const escapedDescriptionText = descriptionText
@@ -339,7 +348,7 @@ class StoryTemplate extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-      <mui-container center class="container" ${containerStyle}>
+      <mui-container center class="container" ${containerWidthAttr} ${containerXMediumAttr} ${containerLargeAttr} ${containerXLargeAttr}>
         <mui-v-stack class="wrapper ${closedClass}">
           <mui-v-stack class="introduction" space="var(--space-500)">
             <mui-v-stack class="header-group">

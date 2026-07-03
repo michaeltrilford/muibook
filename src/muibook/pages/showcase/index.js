@@ -64,9 +64,10 @@ class ShowcasePage extends HTMLElement {
       <story-template 
         title="Projects"
         description="Products and websites that utilise the Muibook Design System."
+        x-large
       >
           
-          <div class="content-container">
+          <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">

@@ -54,9 +54,10 @@ class WrappedComponents extends HTMLElement {
       <story-template 
         title="Wrapped Components"
         github="https://github.com/michaeltrilford/muibook/tree/main/src/types/react/wrapped-components"
+        x-large
       >
           
-          <div class="content-container">
+          <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
@@ -121,7 +122,7 @@ class WrappedComponents extends HTMLElement {
             <br />
             import React from &quot;react&quot;;<br>
             import "@muibook/components/mui-container";<br><br>
-            type Size = &quot;small&quot; | &quot;medium&quot; | &quot;large&quot; | &quot;fluid&quot;;<br><br>
+            type Size = &quot;small&quot; | &quot;medium&quot; | &quot;large&quot; | &quot;x-large&quot; | &quot;fluid&quot;;<br><br>
             interface MuiContainerProps extends React.HTMLAttributes&lt;HTMLElement&gt; {<br>
             &nbsp;&nbsp;size?: Size;<br>
             &nbsp;&nbsp;center?: boolean;<br>
@@ -142,7 +143,7 @@ class WrappedComponents extends HTMLElement {
             import MuiContainer from "./components/mui-container";
             <br>
             <br>
-            &lt;MuiContainer size="large" center&gt;
+            &lt;MuiContainer size="x-large" center&gt;
             <br>
             &nbsp;&nbsp;...
             <br>

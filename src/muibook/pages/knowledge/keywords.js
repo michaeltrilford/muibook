@@ -31,8 +31,9 @@ class KnowledgeKeywordsPage extends HTMLElement {
       <story-template
         title="Knowledge Keywords"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/knowledge/keywords.ts"
+        x-large
       >
-        <div class="content-container">
+        <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
           <mui-v-stack space="var(--space-600)">
             <mui-v-stack space="var(--space-400)">

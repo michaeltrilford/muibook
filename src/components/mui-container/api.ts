@@ -8,9 +8,10 @@ export const muiApi = {
       { name: "medium", type: { text: "boolean" }, default: "false", description: "Constrains the container to the medium width." },
       { name: "x-medium", type: { text: "boolean" }, default: "false", description: "Constrains the container to the extra-medium width between medium and large." },
       { name: "large", type: { text: "boolean" }, default: "false", description: "Constrains the container to the large width." },
+      { name: "x-large", type: { text: "boolean" }, default: "false", description: "Constrains the container to the extra-large width for wide documentation and resource layouts." },
       {
         name: "size",
-        type: { text: "small | medium | x-medium | large | fluid" },
+        type: { text: "small | medium | x-medium | large | x-large | fluid" },
         default: "",
         description: "Attribute-based size API for choosing a container width while preserving the legacy boolean size attributes.",
       },

@@ -70,8 +70,11 @@ body {
   display: block;
   min-height: 0;
   --border-thin: var(--app-navbar-border);
-  --drawer-background: var(--app-navbar-surface);
   --drawer-resize-rail-background: var(--app-rail-background);
+}
+
+.storefront-drawer {
+  --drawer-background: var(--app-navbar-surface);
 }
 
 @media (min-width: 961px) {

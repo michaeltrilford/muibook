@@ -204,6 +204,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   </app-navbar-toggle>
   <mui-drawer
     id="app-shell"
+    class="storefront-drawer"
     variant="push"
     side="left"
     width="26rem"

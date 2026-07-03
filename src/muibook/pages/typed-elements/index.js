@@ -54,9 +54,10 @@ class TypedElements extends HTMLElement {
       <story-template 
         title="Typed Elements"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/typed-elements/index.d.ts"
+        x-large
       >
           
-          <div class="content-container">
+          <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
@@ -124,6 +125,7 @@ class TypedElements extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;small?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;medium?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;large?:&nbsp;boolean;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"x-large"?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fluid?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;center?:&nbsp;boolean;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br><br>

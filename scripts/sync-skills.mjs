@@ -7,8 +7,20 @@ const sourceDir = path.resolve(__dirname, "..");
 
 const filesToCopy = [
   {
-    src: "src/knowledge/web-component-skill.md",
-    dest: "public/web-component-skill.md",
+    src: "src/knowledge/create-web-components-skill.md",
+    dest: "public/create-web-components-skill.md",
+  },
+  {
+    src: "src/knowledge/create-ux-guidelines-skill.md",
+    dest: "public/create-ux-guidelines-skill.md",
+  },
+  {
+    src: "src/knowledge/compose-web-components-skill.md",
+    dest: "public/compose-web-components-skill.md",
+  },
+  {
+    src: "src/knowledge/style-web-components-skill.md",
+    dest: "public/style-web-components-skill.md",
   },
 ];
 

@@ -54,6 +54,15 @@ class storyContainer extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="x-large" title="X Large">
+        <mui-container x-large slot="body">
+          <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
+        </mui-container>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-container x-large&gt;...&lt;/mui-container&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card
         id="width"
         title="Width"
@@ -102,7 +111,7 @@ class storyContainer extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="small::Small|||medium::Medium|||x-medium::X Medium|||large::Large|||width::Width|||fluid::Fluid|||center::Center"
+          links="small::Small|||medium::Medium|||x-medium::X Medium|||large::Large|||x-large::X Large|||width::Width|||fluid::Fluid|||center::Center"
         ></story-quicklinks>
 
         ${stories}

@@ -14,6 +14,7 @@ class ChangelogPage extends HTMLElement {
         title="Changelog"
         description="Keep track of updates, fixes, and new features for your components."
         github="https://github.com/michaeltrilford/muibook/blob/main/public/CHANGELOG.md"
+        x-large
       >
         <design-changelog>${changelog}</design-changelog>
       </story-template>

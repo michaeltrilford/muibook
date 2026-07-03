@@ -1,7 +1,7 @@
 import React from "react";
 import "@muibook/components/mui-container";
 
-type Size = "small" | "medium" | "large" | "fluid";
+type Size = "small" | "medium" | "large" | "x-large" | "fluid";
 
 interface MuiContainerProps extends React.HTMLAttributes<HTMLElement> {
   size?: Size;

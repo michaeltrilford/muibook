@@ -32,8 +32,9 @@ class KnowledgeMcpPage extends HTMLElement {
       <story-template
         title="Knowledge MCP"
         github="https://github.com/michaeltrilford/muibook-knowledge"
+        x-large
       >
-        <div class="content-container">
+        <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
             <mui-v-stack space="var(--space-600)">
               <mui-v-stack space="var(--space-400)">

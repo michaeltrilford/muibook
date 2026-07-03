@@ -54,8 +54,9 @@ class ReactInputHelper extends HTMLElement {
       <story-template
         title="React Input Helper"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/types/react/readme.md"
+        x-large
       >
-        <div class="content-container">
+        <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
           <mui-v-stack space="var(--space-500)">
             <mui-v-stack space="var(--space-300)">

@@ -59,6 +59,7 @@ class MuiplayApp extends HTMLElement {
       <story-template 
         title="Redactd"
         website="https://redactd.xyz"
+        x-large
       >
 
           <div class="content-container">

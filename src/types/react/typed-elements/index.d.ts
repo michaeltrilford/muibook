@@ -157,6 +157,7 @@ declare global {
         small?: boolean;
         medium?: boolean;
         large?: boolean;
+        "x-large"?: boolean;
         fluid?: boolean;
         center?: boolean;
       };

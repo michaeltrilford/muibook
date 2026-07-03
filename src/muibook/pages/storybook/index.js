@@ -48,11 +48,12 @@ class StorybookPage extends HTMLElement {
       <story-template 
         title="Storybook"
         storybook="https://stories.muibook.com/"
+        x-large
       >
 
   
           
-          <div class="content-container">
+          <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">

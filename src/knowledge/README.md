@@ -12,6 +12,7 @@ It is generated from [`@muibook/components`](https://github.com/michaeltrilford/
 - `keywords.ts` — lightweight keyword mappings that help route natural-language intent to Muibook components.
 - `compositions.ts` — curated component-tree examples that show realistic Muibook composition patterns.
 - `web-component-skill.md` — public Codex-compatible skill for building and reviewing native Web Components with this architecture.
+- `guidelines-skill.md` — public Codex-compatible skill for writing and reviewing component guidelines.
 - `AGENTS.md` — operating guidance for coding agents working with Muibook.
 - `DESIGN.md` — Muibook design language, token architecture, and theming guidance.
 - `index.ts` — convenience export for the knowledge files.

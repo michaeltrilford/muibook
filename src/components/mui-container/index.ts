@@ -88,6 +88,11 @@ class MuiContainer extends HTMLElement {
         :host([size="large"]) {
           --container-max-width: 118rem;
         }
+
+        :host([x-large]),
+        :host([size="x-large"]) {
+          --container-max-width: 148rem;
+        }
       </style>
       <slot></slot>
     `;

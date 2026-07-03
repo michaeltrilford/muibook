@@ -38,8 +38,9 @@ class KnowledgePage extends HTMLElement {
       <story-template
         title="Knowledge"
         github="https://github.com/michaeltrilford/muibook/tree/main/src/knowledge"
+        x-large
       >
-        <div class="content-container">
+        <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
           <mui-v-stack space="var(--space-600)">
             <mui-v-stack space="var(--space-400)">

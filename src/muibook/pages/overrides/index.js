@@ -53,9 +53,10 @@ class OverridesPage extends HTMLElement {
 
       <story-template 
         title="Overrides"
+        x-large
       >
           
-          <div class="content-container">
+          <div class="content-container resource-page">
           <mui-grid class="config"  space="var(--space-400)">
 
             <mui-v-stack space="var(--space-600)">

@@ -15,7 +15,7 @@ class DesignGuidelines extends HTMLElement {
 
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
-      <story-template title="Guidelines" description="Access the UX Guidelines in browser or direct within Figma.">
+      <story-template title="Guidelines" description="Access the UX Guidelines in browser or direct within Figma." x-large>
         <page-banner-plugin></page-banner-plugin>    
         <page-banner-browser></page-banner-browser>
       </story-template>

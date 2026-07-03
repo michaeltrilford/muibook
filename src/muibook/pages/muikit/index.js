@@ -54,11 +54,12 @@ class MuikitPage extends HTMLElement {
       <story-template 
         title="Mui Kit"
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=0-1&t=5A8fWmORS1XTiPBQ-1"
+        x-large
       >
 
 
           
-          <div class="content-container">
+          <div class="content-container resource-page">
           <mui-grid class="config" space="var(--space-600)">
 
             <mui-v-stack space="var(--space-600)">
