@@ -24,7 +24,6 @@ class tokensSemantic extends HTMLElement {
         width: 100%;
         height: 200px;
         box-sizing: border-box;
-        border-radius: var(--radius-300);
       }
 
       .surface-elevated-200,
@@ -32,6 +31,21 @@ class tokensSemantic extends HTMLElement {
       .surface-recessed-200,
       .surface-recessed-300 {
         height: 100%;
+      }
+
+      .surface-elevated,
+      .surface-recessed {
+        border-radius: var(--radius-400);
+      }
+
+      .surface-elevated-200,
+      .surface-recessed-200 {
+        border-radius: var(--radius-300);
+      }
+
+      .surface-elevated-300,
+      .surface-recessed-300 {
+        border-radius: var(--radius-200);
       }
 
       .surface-elevated {
@@ -142,6 +156,8 @@ class tokensSemantic extends HTMLElement {
               <br />
               &nbsp;&nbsp;background: var(--surface-elevated-100);
               <br />
+              &nbsp;&nbsp;border-radius: var(--radius-400);
+              <br />
               }
               <br />
               <br />
@@ -149,12 +165,16 @@ class tokensSemantic extends HTMLElement {
               <br />
               &nbsp;&nbsp;background: var(--surface-elevated-200);
               <br />
+              &nbsp;&nbsp;border-radius: var(--radius-300);
+              <br />
               }
               <br />
               <br />
               .surface-elevated-300 {
               <br />
               &nbsp;&nbsp;background: var(--surface-elevated-300);
+              <br />
+              &nbsp;&nbsp;border-radius: var(--radius-200);
               <br />
               }
             </mui-code>
@@ -188,6 +208,8 @@ class tokensSemantic extends HTMLElement {
               <br />
               &nbsp;&nbsp;background: var(--surface-recessed-100);
               <br />
+              &nbsp;&nbsp;border-radius: var(--radius-400);
+              <br />
               }
               <br />
               <br />
@@ -195,12 +217,16 @@ class tokensSemantic extends HTMLElement {
               <br />
               &nbsp;&nbsp;background: var(--surface-recessed-200);
               <br />
+              &nbsp;&nbsp;border-radius: var(--radius-300);
+              <br />
               }
               <br />
               <br />
               .surface-recessed-300 {
               <br />
               &nbsp;&nbsp;background: var(--surface-recessed-300);
+              <br />
+              &nbsp;&nbsp;border-radius: var(--radius-200);
               <br />
               }
             </mui-code>
