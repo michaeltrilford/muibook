@@ -916,17 +916,35 @@ class MuiLink extends HTMLElement {
         border-radius: var(--action-radius-large);
       }
 
+      :host([size][dropdown-slot]) a,
+      :host([size][dropdown-slot]) a:hover,
+      :host([size][dropdown-slot]) a:focus,
+      :host([size][dropdown-slot]) a[aria-disabled="true"],
+      :host([size][dropdown-slot][has-after]) a,
+      :host([size][dropdown-slot][has-before]) a,
       :host([dropdown-slot]) a {
         border-radius: var(--radius-000);
         justify-content: flex-start;
         white-space: nowrap;
       }
 
+      :host([size][dropdown-slot-first]) a,
+      :host([size][dropdown-slot-first]) a:hover,
+      :host([size][dropdown-slot-first]) a:focus,
+      :host([size][dropdown-slot-first]) a[aria-disabled="true"],
+      :host([size][dropdown-slot-first][has-after]) a,
+      :host([size][dropdown-slot-first][has-before]) a,
       :host([dropdown-slot-first]) a {
         border-top-left-radius: calc(var(--radius-100) / 2);
         border-top-right-radius: calc(var(--radius-100) / 2);
       }
 
+      :host([size][dropdown-slot-last]) a,
+      :host([size][dropdown-slot-last]) a:hover,
+      :host([size][dropdown-slot-last]) a:focus,
+      :host([size][dropdown-slot-last]) a[aria-disabled="true"],
+      :host([size][dropdown-slot-last][has-after]) a,
+      :host([size][dropdown-slot-last][has-before]) a,
       :host([dropdown-slot-last]) a {
         border-bottom-left-radius: calc(var(--radius-100) / 2);
         border-bottom-right-radius: calc(var(--radius-100) / 2);

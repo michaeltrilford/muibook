@@ -72,6 +72,9 @@ class ManifestPage extends HTMLElement {
               </mui-list>
             </mui-v-stack>
 
+          </mui-v-stack>
+
+          <mui-v-stack space="var(--space-400)">
             <mui-v-stack space="var(--space-300)">
               <mui-heading level="3" size="5">Package Exports</mui-heading>
               <mui-code scrollable>
@@ -92,9 +95,8 @@ class ManifestPage extends HTMLElement {
                 /dist/esm/dynamic-attrs.json
               </mui-code>
             </mui-v-stack>
-          </mui-v-stack>
 
-          <mui-v-stack space="var(--space-400)">
+            <mui-heading level="3" size="5">Manifest Structure</mui-heading>
             <mui-code scrollable>
               {<br />
               &nbsp;&nbsp;&quot;schemaVersion&quot;: &quot;1.0.0&quot;,<br />

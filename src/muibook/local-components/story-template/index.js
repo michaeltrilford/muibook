@@ -303,48 +303,41 @@ class StoryTemplate extends HTMLElement {
       : "";
     const quicklinksSection = hasMessageContent ? /*html*/ `<slot name="message"></slot>` : "";
     const resourceBreakpoints = `variant="container" observe=".container" breakpoint-low="600" breakpoint-high="1200"`;
-    const renderResourceLink = ({ href, label, icon }) => /*html*/ `
-      <mui-responsive ${resourceBreakpoints}>
-        <mui-link slot="showAbove" target="_blank" href="${href}" rel="noopener" variant="tertiary">
-          ${label}<${icon} slot="after"></${icon}>
-        </mui-link>
-        <mui-link slot="showMiddle" target="_blank" href="${href}" rel="noopener" variant="tertiary" icon-only aria-label="${label}">
-          <${icon}></${icon}>
-        </mui-link>
-        <mui-link slot="showBelow" target="_blank" href="${href}" rel="noopener" variant="tertiary" size="small" icon-only aria-label="${label}">
-          <${icon}></${icon}>
-        </mui-link>
-      </mui-responsive>
-    `;
 
-    const demoLink = this.getAttribute("demo");
-    const demoContent = demoLink ? renderResourceLink({ href: demoLink, label: "Demo", icon: "mui-icon-globe" }) : "";
+    const links = [
+      { href: this.getAttribute("demo"), label: "Demo", icon: "mui-icon-globe" },
+      { href: this.getAttribute("website"), label: "Try Now", icon: "mui-icon-globe" },
+      { href: this.getAttribute("npm"), label: "Package", icon: "npm-mark" },
+      { href: this.getAttribute("storybook"), label: "Storybook", icon: "storybook-mark" },
+      { href: this.getAttribute("guides"), label: "Guides", icon: "guides-mark" },
+      { href: this.getAttribute("figma"), label: "Figma", icon: "figma-mark" },
+      { href: this.getAttribute("github"), label: "Github", icon: "github-mark" }
+    ].filter(link => link.href);
 
-    const websiteLink = this.getAttribute("website");
-    const websiteContent = websiteLink
-      ? renderResourceLink({ href: websiteLink, label: "Try Now", icon: "mui-icon-globe" })
-      : "";
+    const linksAboveContent = links.map(link => /*html*/`
+      <mui-link target="_blank" href="${link.href}" rel="noopener" variant="tertiary" size="medium" weight="regular" has-after>
+        ${link.label}<${link.icon} slot="after" class="mui-icon" size="small"></${link.icon}>
+      </mui-link>
+    `).join("");
 
-    const storybookLink = this.getAttribute("storybook");
-    const storybookContent = storybookLink
-      ? renderResourceLink({ href: storybookLink, label: "Storybook", icon: "storybook-mark" })
-      : "";
+    const linksMiddleContent = links.map(link => /*html*/`
+      <mui-link target="_blank" href="${link.href}" rel="noopener" variant="tertiary" icon-only aria-label="${link.label}" size="medium" weight="regular">
+        <${link.icon} class="mui-icon" size="medium"></${link.icon}>
+      </mui-link>
+    `).join("");
 
-    const npmLink = this.getAttribute("npm");
-    const npmContent = npmLink ? renderResourceLink({ href: npmLink, label: "Package", icon: "npm-mark" }) : "";
-
-    const githubLink = this.getAttribute("github");
-    const githubContent = githubLink
-      ? renderResourceLink({ href: githubLink, label: "Github", icon: "github-mark" })
-      : "";
-
-    const figmaLink = this.getAttribute("figma");
-    const figmaContent = figmaLink ? renderResourceLink({ href: figmaLink, label: "Figma", icon: "figma-mark" }) : "";
-
-    const guidesLink = this.getAttribute("guides");
-    const guidesContent = guidesLink
-      ? renderResourceLink({ href: guidesLink, label: "Guides", icon: "guides-mark" })
-      : "";
+    const linksBelowContent = links.length ? /*html*/`
+      <mui-dropdown position="right">
+        <mui-button slot="action" variant="tertiary" icon-only size="small" aria-label="More options">
+          <mui-icon-ellipsis size="small"></mui-icon-ellipsis>
+        </mui-button>
+        ${links.map(link => /*html*/`
+          <mui-link target="_blank" href="${link.href}" rel="noopener" variant="tertiary" size="small">
+            ${link.label}<${link.icon} slot="after"></${link.icon}>
+          </mui-link>
+        `).join("")}
+      </mui-dropdown>
+    ` : "";
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
@@ -356,37 +349,19 @@ class StoryTemplate extends HTMLElement {
                 <mui-h-stack slot="showBelow" alignX="space-between" alignY="center">
                   <mui-heading size="2" level="1" class="storefront-heading">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">
-                    ${demoContent}
-                    ${websiteContent}
-                    ${npmContent}
-                    ${storybookContent}
-                    ${guidesContent}
-                    ${figmaContent}
-                    ${githubContent}
+                    ${linksBelowContent}
                   </mui-h-stack>
                 </mui-h-stack>
                 <mui-h-stack slot="showMiddle" alignX="space-between" alignY="center">
                   <mui-heading size="2" level="1" class="storefront-heading">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">
-                    ${demoContent}
-                    ${websiteContent}
-                    ${npmContent}
-                    ${storybookContent}
-                    ${guidesContent}
-                    ${figmaContent}
-                    ${githubContent}
+                    ${linksMiddleContent}
                   </mui-h-stack>
                 </mui-h-stack>
                 <mui-h-stack slot="showAbove" alignX="space-between" alignY="center">
-                  <mui-heading size="1"level="1" class="storefront-heading">${title}</mui-heading>
+                  <mui-heading size="1" level="1" class="storefront-heading">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">
-                    ${demoContent}
-                    ${websiteContent}
-                    ${npmContent}
-                    ${storybookContent}
-                    ${guidesContent}
-                    ${figmaContent}
-                    ${githubContent}
+                    ${linksAboveContent}
                   </mui-h-stack>
                 </mui-h-stack>
               </mui-responsive>

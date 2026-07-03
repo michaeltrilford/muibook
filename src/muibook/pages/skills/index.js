@@ -76,12 +76,6 @@ class SkillsPage extends HTMLElement {
         x-large
       >
         <div class="content-container resource-page">
-          <mui-v-stack class="intro" space="var(--space-400)">
-            <mui-body size="medium">
-              Skills are compact instruction files for agents and developers that need to build from a clear architecture, not loose examples. These files share portable Web Component and guidelines patterns that can be adapted to another design system.
-            </mui-body>
-          </mui-v-stack>
-
           <div class="skill-sections">
 
           <mui-grid id="web-components" class="skill-section" space="var(--space-600)">

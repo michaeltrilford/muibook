@@ -69,7 +69,7 @@ class MuiDropdown extends HTMLElement {
 
   private handleResize = () => {
     if (this.activeMenu?.classList.contains("show")) {
-      this.adjustPosition();
+      this.closeMenu();
     }
   };
 
@@ -385,13 +385,15 @@ class MuiDropdown extends HTMLElement {
     }
   }
 
-  closeMenu(event: Event) {
-    const path = event.composedPath(); // array of nodes the event passes through
+  closeMenu(event?: Event) {
+    if (event) {
+      const path = event.composedPath(); // array of nodes the event passes through
 
-    // If click was inside menu or button, ignore
-    if (this.menu && path.includes(this.menu)) return;
-    if (this.portalMenu && path.includes(this.portalMenu)) return;
-    if (this.button && path.includes(this.button)) return;
+      // If click was inside menu or button, ignore
+      if (this.menu && path.includes(this.menu)) return;
+      if (this.portalMenu && path.includes(this.portalMenu)) return;
+      if (this.button && path.includes(this.button)) return;
+    }
 
     // Otherwise, close
     this.closeWithAnimation();

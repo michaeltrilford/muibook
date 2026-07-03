@@ -176,7 +176,7 @@ class MuiChipRail extends HTMLElement {
           position: absolute;
           top: calc(-1 * var(--chip-rail-bleed-block-size));
           bottom: calc(-1 * var(--chip-rail-bleed-block-size));
-          z-index: 2;
+          z-index: 1;
           display: flex;
           align-items: center;
           width: calc(var(--chip-rail-edge-size) + var(--chip-rail-bleed-inline-size));
