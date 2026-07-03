@@ -2,6 +2,7 @@ import "../../../components/mui-heading";
 import "../../images/github-mark";
 import "../../images/figma-mark";
 import "../../images/guides-mark";
+import "../../images/npm-mark";
 import "../../images/storybook-mark";
 
 class StoryTemplate extends HTMLElement {
@@ -333,7 +334,7 @@ class StoryTemplate extends HTMLElement {
         </mui-button>
         ${links.map(link => /*html*/`
           <mui-link target="_blank" href="${link.href}" rel="noopener" variant="tertiary" size="small">
-            ${link.label}<${link.icon} slot="after"></${link.icon}>
+            ${link.label}<${link.icon} slot="after" size="xx-small"></${link.icon}>
           </mui-link>
         `).join("")}
       </mui-dropdown>

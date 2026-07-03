@@ -233,7 +233,7 @@ class CompDashboard extends HTMLElement {
                   </mui-card-header>
                   <mui-card-body>
                     <mui-rule></mui-rule>
-                    <mui-table>
+                    <mui-table highlight="hover">
                       <mui-row-group heading>
                         <mui-row columns="1.5fr 1fr 1fr auto" size="small">
                           <mui-cell><mui-heading size="6" level="3">Account</mui-heading></mui-cell>

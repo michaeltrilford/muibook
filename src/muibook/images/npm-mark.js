@@ -1,6 +1,6 @@
 class npmMark extends HTMLElement {
   static get observedAttributes() {
-    return ["color"];
+    return ["size", "color"];
   }
 
   constructor() {
@@ -13,12 +13,13 @@ class npmMark extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === "color" && oldValue !== newValue) {
+    if ((name === "size" || name === "color") && oldValue !== newValue) {
       this.render();
     }
   }
 
   render() {
+    const size = this.getAttribute("size") || "small";
     const rawColor = this.getAttribute("color"); // Raw color
 
     // Color map for predefined color options
@@ -29,14 +30,22 @@ class npmMark extends HTMLElement {
 
     // Resolve color based on the color attribute
     let iconColor = colorMap[rawColor] || rawColor || "var(--icon-color-default)";
+    const sizeMap = {
+      "xx-small": "1.3rem",
+      "x-small": "1.6rem",
+      small: "2.1rem",
+      medium: "2.4rem",
+      large: "2.8rem",
+    };
+    const sizeStyleMap = sizeMap[size] || sizeMap.small;
 
     this.classList.add("mui-icon");
 
     this.shadowRoot.innerHTML = `
       <style>
         :host {
-          width: 21px;
-          height: 21px;
+          width: ${sizeStyleMap};
+          height: ${sizeStyleMap};
           display: inline-flex;
           align-items: center;
           justify-content: center;

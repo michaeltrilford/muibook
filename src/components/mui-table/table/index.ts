@@ -97,7 +97,13 @@ class MuiTable extends HTMLElement {
     if (!this.isHoverHighlightEnabled()) return;
 
     const row = this.getEventRow(event);
-    if (!row || !this.isBodyRow(row)) return;
+    if (!row || !this.isBodyRow(row)) {
+      if (this.hoverRow) {
+        this.hoverRow = null;
+        this.scheduleHighlightUpdate();
+      }
+      return;
+    }
 
     if (this.hoverRow !== row) {
       this.hoverRow = row;
@@ -193,11 +199,22 @@ class MuiTable extends HTMLElement {
     const tableRect = this.getBoundingClientRect();
     const rowRect = row.getBoundingClientRect();
     const top = rowRect.top - tableRect.top;
+    const wasVisible = highlight.hasAttribute("data-visible");
+
+    if (!wasVisible) {
+      highlight.setAttribute("data-positioning", "");
+    }
 
     highlight.style.transform = `translate3d(0, ${top}px, 0)`;
     highlight.style.height = `${rowRect.height}px`;
     highlight.toggleAttribute("data-last-row", rows.at(-1) === row);
     highlight.setAttribute("data-visible", "");
+
+    if (!wasVisible) {
+      requestAnimationFrame(() => {
+        highlight.removeAttribute("data-positioning");
+      });
+    }
   }
 
   private render() {
@@ -238,6 +255,9 @@ class MuiTable extends HTMLElement {
         }
         .row-highlight[data-visible] {
           opacity: 1;
+        }
+        .row-highlight[data-positioning] {
+          transition: opacity var(--speed-100) ease;
         }
         slot {
           position: relative;
