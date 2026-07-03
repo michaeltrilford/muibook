@@ -115,9 +115,9 @@ html[data-brand="jal"][data-theme="light"] {
   --app-navbar-section-chevron: var(--red-300);
   --app-muitube-background: var(--grey-50);
   --app-rail-background: var(--grey-100);
-  --app-floating-menu-color: var(--red-500);
-  --app-floating-menu-background: var(--white-opacity-10);
-  --app-floating-menu-background-hover: var(--white-opacity-20);
+  --app-floating-menu-color: var(--red-600);
+  --app-floating-menu-background: var(--white-opacity-50);
+  --app-floating-menu-background-hover: var(--white-opacity-60);
 }
 
 html[data-brand="jal"][data-theme="dark"] {
@@ -140,9 +140,9 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-navbar-section-chevron: var(--gold-400);
   --app-muitube-background: var(--grey-1000);
   --app-rail-background: var(--black);
-  --app-floating-menu-color: var(--gold-800);
-  --app-floating-menu-background: var(--white-opacity-10);
-  --app-floating-menu-background-hover: var(--white-opacity-20);
+  --app-floating-menu-color: var(--gold-900);
+  --app-floating-menu-background: var(--white-opacity-50);
+  --app-floating-menu-background-hover: var(--white-opacity-60);
 }
 
 /* =============================================================================== */
