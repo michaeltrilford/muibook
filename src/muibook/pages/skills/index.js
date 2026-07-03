@@ -163,7 +163,7 @@ class SkillsPage extends HTMLElement {
                 <mui-heading level="3" size="5">Related Resources</mui-heading>
                 <mui-list as="ul">
                   <mui-list-item size="medium">
-                    <mui-link size="medium" href="/knowledge">Knowledge</mui-link>
+                    <mui-link size="medium" href="/knowledge-overview">Knowledge</mui-link>
                   </mui-list-item>
                   <mui-list-item size="medium">
                     <mui-link size="medium" href="/manifest">Design Manifest</mui-link>
@@ -292,7 +292,7 @@ class SkillsPage extends HTMLElement {
                     <mui-link size="medium" href="/design-guidelines">UX Guidelines</mui-link>
                   </mui-list-item>
                   <mui-list-item size="medium">
-                    <mui-link size="medium" href="/knowledge">Knowledge</mui-link>
+                    <mui-link size="medium" href="/knowledge-overview">Knowledge</mui-link>
                   </mui-list-item>
                   <mui-list-item size="medium">
                     <mui-link size="medium" href="/knowledge-compositions">Compositions</mui-link>
@@ -384,7 +384,7 @@ class SkillsPage extends HTMLElement {
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Related Resources</mui-heading>
                 <mui-list as="ul">
-                  <mui-list-item size="medium"><mui-link size="medium" href="/knowledge">Knowledge</mui-link></mui-list-item>
+                  <mui-list-item size="medium"><mui-link size="medium" href="/knowledge-overview">Knowledge</mui-link></mui-list-item>
                   <mui-list-item size="medium"><mui-link size="medium" href="/knowledge-compositions">Compositions</mui-link></mui-list-item>
                 </mui-list>
               </mui-v-stack>
@@ -458,7 +458,7 @@ class SkillsPage extends HTMLElement {
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Related Resources</mui-heading>
                 <mui-list as="ul">
-                  <mui-list-item size="medium"><mui-link size="medium" href="/knowledge">Knowledge</mui-link></mui-list-item>
+                  <mui-list-item size="medium"><mui-link size="medium" href="/knowledge-overview">Knowledge</mui-link></mui-list-item>
                   <mui-list-item size="medium"><mui-link size="medium" href="/manifest">Design Manifest</mui-link></mui-list-item>
                 </mui-list>
               </mui-v-stack>

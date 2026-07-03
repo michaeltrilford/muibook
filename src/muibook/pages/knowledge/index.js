@@ -63,7 +63,7 @@ class KnowledgePage extends HTMLElement {
             <mui-v-stack id="design-manifest" space="var(--space-300)">
               <mui-heading level="3" size="5">Design Manifest</mui-heading>
               <mui-body size="medium">
-                The design manifest is published as <mui-code size="small">custom-elements.json</mui-code>. It carries component names, API metadata, slots, CSS parts, types, and component UX guidance generated from the component docs layer.
+                The design manifest is published as <mui-code inline size="small">custom-elements.json</mui-code>. It carries component names, API metadata, slots, CSS parts, types, and component UX guidance generated from the component docs layer.
               </mui-body>
               <mui-list as="ul">
                 <mui-list-item size="medium">Components: the tag inventory and source module metadata.</mui-list-item>
@@ -120,8 +120,8 @@ class KnowledgePage extends HTMLElement {
                 The AI Agent resources are optimised outputs built from Knowledge. They are intentionally smaller than the full knowledge base so local app prompts have more room for user context.
               </mui-body>
               <mui-list as="ul">
-                <mui-list-item size="medium"><mui-code size="small">agent/prompts</mui-code> combines Knowledge rules with the curated composition examples.</mui-list-item>
-                <mui-list-item size="medium"><mui-code size="small">agent/keywords</mui-code> exports the curated keyword groups for lightweight intent matching.</mui-list-item>
+                <mui-list-item size="medium"><mui-code inline size="small">agent/prompts</mui-code> combines Knowledge rules with the curated composition examples.</mui-list-item>
+                <mui-list-item size="medium"><mui-code inline size="small">agent/keywords</mui-code> exports the curated keyword groups for lightweight intent matching.</mui-list-item>
               </mui-list>
             </mui-v-stack>
           </mui-v-stack>

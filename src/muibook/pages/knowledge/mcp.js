@@ -60,7 +60,7 @@ class KnowledgeMcpPage extends HTMLElement {
               <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">How to Use It</mui-heading>
                 <mui-body size="medium">
-                  You can install and run the MCP server locally using <code>npx</code> or configure it directly in your AI assistant's configuration file (e.g. <code>claude_desktop_config.json</code>).
+                  You can install and run the MCP server locally using <mui-code inline size="small">npx</mui-code> or configure it directly in your AI assistant's configuration file (e.g. <mui-code inline size="small">claude_desktop_config.json</mui-code>).
                 </mui-body>
               </mui-v-stack>
             </mui-v-stack>

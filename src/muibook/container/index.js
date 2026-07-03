@@ -50,7 +50,7 @@ export class AppContainer extends HTMLElement {
       "/multi-brand-theme": "multi-brand-theme",
       "/overrides": "overrides-page",
       "/create-mui-app": "create-mui-app",
-      "/knowledge": "knowledge-page",
+      "/knowledge-overview": "knowledge-page",
       "/knowledge-compositions": "knowledge-compositions-page",
       "/knowledge-rules": "knowledge-rules-page",
       "/knowledge-keywords": "knowledge-keywords-page",
