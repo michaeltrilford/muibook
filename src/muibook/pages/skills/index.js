@@ -325,7 +325,6 @@ class SkillsPage extends HTMLElement {
                   ---<br /><br />
                   # Create UX Guidelines Skill<br /><br />
                   ## Guidelines Structure<br />
-                  ## Guidelines Structure<br />
                   ## Header And Links<br />
                   ## Usage<br />
                   ## Accessibility<br />
@@ -410,7 +409,6 @@ class SkillsPage extends HTMLElement {
                   ---<br /><br />
                   # Compose Web Components Skill<br /><br />
                   ## Building Layouts<br />
-                  ## Building Layouts<br />
                   ## Component Combinations (Deep Dive)<br />
                   ## Slotting & Automated Context<br />
                   ## Prop Knowledge<br />
@@ -484,7 +482,6 @@ class SkillsPage extends HTMLElement {
                   description: Add your own theme to Muibook components using CSS variables and HTML attributes.<br />
                   ---<br /><br />
                   # Style Web Components Skill<br /><br />
-                  ## Token Architecture<br />
                   ## Token Architecture<br />
                   ## Base Theme Structure<br />
                   ## Multi-Brand Theming<br />
