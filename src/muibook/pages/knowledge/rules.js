@@ -29,7 +29,7 @@ class KnowledgeRulesPage extends HTMLElement {
       <style>${styles}</style>
 
       <story-template
-        title="Knowledge Rules"
+        title="Rules"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/knowledge/rules.ts"
         x-large
       >

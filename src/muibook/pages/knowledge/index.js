@@ -57,11 +57,11 @@ class KnowledgePage extends HTMLElement {
 
             <story-quicklinks
               heading="Knowledge Areas"
-              links="design-manifest::Design Manifest|||compositions::Compositions|||rules::Rules|||keywords::Keywords|||knowledge-mcp::Knowledge MCP|||agent-output::AI Agent Output|||package-paths::Package Paths"
+              links="manifest::Manifest|||compositions::Compositions|||rules::Rules|||keywords::Keywords|||knowledge-mcp::MCP|||agent-output::AI Agent Output|||package-paths::Package Paths"
             ></story-quicklinks>
 
-            <mui-v-stack id="design-manifest" space="var(--space-300)">
-              <mui-heading level="3" size="5">Design Manifest</mui-heading>
+            <mui-v-stack id="manifest" space="var(--space-300)">
+              <mui-heading level="3" size="5">Manifest</mui-heading>
               <mui-body size="medium">
                 The design manifest is published as <mui-code inline size="small">custom-elements.json</mui-code>. It carries component names, API metadata, slots, CSS parts, types, and component UX guidance generated from the component docs layer.
               </mui-body>
@@ -105,7 +105,7 @@ class KnowledgePage extends HTMLElement {
             </mui-v-stack>
 
             <mui-v-stack id="knowledge-mcp" space="var(--space-300)">
-              <mui-heading level="3" size="5">Knowledge MCP</mui-heading>
+              <mui-heading level="3" size="5">MCP</mui-heading>
               <mui-body size="medium">
                 The Model Context Protocol (MCP) server allows AI assistants to retrieve Muibook specs, UX guidelines, component contracts, and copy-pasteable compositions in real-time.
               </mui-body>

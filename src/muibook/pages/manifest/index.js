@@ -42,7 +42,7 @@ class ManifestPage extends HTMLElement {
       <style>${styles}</style>
 
       <story-template
-        title="Design Manifest"
+        title="Manifest"
         github="https://github.com/michaeltrilford/muibook/blob/main/public/custom-elements.json"
         x-large
       >

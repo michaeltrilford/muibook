@@ -30,7 +30,7 @@ class KnowledgeMcpPage extends HTMLElement {
       <style>${styles}</style>
 
       <story-template
-        title="Knowledge MCP"
+        title="MCP"
         github="https://github.com/michaeltrilford/muibook-knowledge"
         x-large
       >

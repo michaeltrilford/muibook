@@ -29,7 +29,7 @@ class KnowledgeKeywordsPage extends HTMLElement {
       <style>${styles}</style>
 
       <story-template
-        title="Knowledge Keywords"
+        title="Keywords"
         github="https://github.com/michaeltrilford/muibook/blob/main/src/knowledge/keywords.ts"
         x-large
       >

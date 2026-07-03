@@ -135,8 +135,8 @@ class appNavbar extends HTMLElement {
         </app-navbar-section>
         <app-navbar-section heading="Knowledge">
           <app-navbar-link link="/knowledge-overview" title="Overview"></app-navbar-link>
-          <app-navbar-link link="/knowledge-mcp" title="Knowledge MCP"></app-navbar-link>
-          <app-navbar-link link="/manifest" title="Design Manifest"></app-navbar-link>
+          <app-navbar-link link="/knowledge-mcp" title="MCP"></app-navbar-link>
+          <app-navbar-link link="/manifest" title="Manifest"></app-navbar-link>
           <app-navbar-link link="/skills" title="Skills"></app-navbar-link>
           <app-navbar-link link="/knowledge-compositions" title="Compositions"></app-navbar-link>
           <app-navbar-link link="/knowledge-rules" title="Rules"></app-navbar-link>

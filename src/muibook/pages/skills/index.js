@@ -166,7 +166,7 @@ class SkillsPage extends HTMLElement {
                     <mui-link size="medium" href="/knowledge-overview">Knowledge</mui-link>
                   </mui-list-item>
                   <mui-list-item size="medium">
-                    <mui-link size="medium" href="/manifest">Design Manifest</mui-link>
+                    <mui-link size="medium" href="/manifest">Manifest</mui-link>
                   </mui-list-item>
                   <mui-list-item size="medium">
                     <mui-link size="medium" href="/dynamic-attrs.json" target="_blank" rel="noopener noreferrer">Dynamic Attrs</mui-link>
@@ -298,7 +298,7 @@ class SkillsPage extends HTMLElement {
                     <mui-link size="medium" href="/knowledge-compositions">Compositions</mui-link>
                   </mui-list-item>
                   <mui-list-item size="medium">
-                    <mui-link size="medium" href="/manifest">Design Manifest</mui-link>
+                    <mui-link size="medium" href="/manifest">Manifest</mui-link>
                   </mui-list-item>
                 </mui-list>
               </mui-v-stack>
@@ -457,7 +457,7 @@ class SkillsPage extends HTMLElement {
                 <mui-heading level="3" size="5">Related Resources</mui-heading>
                 <mui-list as="ul">
                   <mui-list-item size="medium"><mui-link size="medium" href="/knowledge-overview">Knowledge</mui-link></mui-list-item>
-                  <mui-list-item size="medium"><mui-link size="medium" href="/manifest">Design Manifest</mui-link></mui-list-item>
+                  <mui-list-item size="medium"><mui-link size="medium" href="/manifest">Manifest</mui-link></mui-list-item>
                 </mui-list>
               </mui-v-stack>
 
