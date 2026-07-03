@@ -164,6 +164,16 @@ export const muiApi = {
       { name: "mui-drawer-open", description: "Dispatched by `open()` when the drawer opens." },
       { name: "mui-drawer-close", description: "Dispatched by `close()` when the drawer closes." },
     ],
+    cssParts: [
+      { name: "background", description: "Visual part applied to the drawer panel background." },
+      { name: "border", description: "Visual part applied to the drawer panel border." },
+      { name: "border-radius", description: "Visual part applied to the drawer panel radius." },
+      { name: "box-shadow", description: "Visual part applied to the drawer panel shadow." },
+      { name: "opacity", description: "Visual part applied to the drawer panel opacity." },
+      { name: "transition", description: "Visual part applied to the drawer panel transition." },
+      { name: "outline", description: "Visual part applied to the drawer panel outline." },
+      { name: "color", description: "Visual part applied to the drawer panel text color." },
+    ],
     cssProperties: [
       { name: "--drawer-background", description: "Drawer surface and footer background." },
       {

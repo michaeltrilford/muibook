@@ -73,8 +73,8 @@ body {
   --drawer-resize-rail-background: var(--app-rail-background);
 }
 
-.storefront-drawer {
-  --drawer-background: var(--app-navbar-surface);
+.storefront-drawer::part(background) {
+  background: var(--app-navbar-surface);
 }
 
 @media (min-width: 961px) {

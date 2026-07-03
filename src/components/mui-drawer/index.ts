@@ -2,6 +2,7 @@ import "../mui-icons/close";
 import "../mui-icons/left-chevron";
 import "../mui-body";
 import "../mui-button";
+import { getPartMap } from "../../utils/part-map";
 
 const RESIZE_RAIL_MIN_DRAWER_WIDTH = 240;
 const RESIZE_RAIL_MIN_PAGE_WIDTH = 320;
@@ -10,7 +11,16 @@ const RESIZE_RAIL_KEYBOARD_STEP = 16;
 const RESIZE_RAIL_KEYBOARD_LARGE_STEP = 64;
 const RESIZE_RAIL_POINTER_CLICK_THRESHOLD = 4;
 
-
+/**
+ * @csspart background - Visual part applied to the drawer panel background.
+ * @csspart border - Visual part applied to the drawer panel border.
+ * @csspart border-radius - Visual part applied to the drawer panel radius.
+ * @csspart box-shadow - Visual part applied to the drawer panel shadow.
+ * @csspart opacity - Visual part applied to the drawer panel opacity.
+ * @csspart transition - Visual part applied to the drawer panel transition.
+ * @csspart outline - Visual part applied to the drawer panel outline.
+ * @csspart color - Visual part applied to the drawer panel text color.
+ */
 class MuiDrawer extends HTMLElement {
   private innerEl: HTMLElement | null = null;
   private overlayEl: HTMLElement | null = null;
@@ -290,10 +300,11 @@ class MuiDrawer extends HTMLElement {
   private getDrawerTemplate(hasCloseButton = true) {
     const noPadding = this.hasAttribute("drawer-space") ? "no-padding" : "";
     const closeSize = this.getCloseSize();
+    const partMap = getPartMap("visual");
 
     return /*html*/ `
     <div class="outer">
-      <div class="inner" role="complementary">
+      <div class="inner" part="${partMap}" role="complementary">
         <div class="header">
           <slot name="title"></slot>
           ${
@@ -322,6 +333,7 @@ class MuiDrawer extends HTMLElement {
     const hasResizeRail = (variant === "push" || variant === "persistent") && this.hasAttribute("resize-rail");
     const hasWorkspaceResizeRail = variant === "workspace" && this.hasAttribute("resize-rail");
     const closeSize = this.getCloseSize();
+    const partMap = getPartMap("visual");
 
     // Determine side: attribute takes priority, otherwise fallback to slot logic
     const hasBefore = !!this.querySelector('[slot="before"]');
@@ -1142,7 +1154,7 @@ class MuiDrawer extends HTMLElement {
       template = /*html*/ `
       <style>${baseStyles}${overlayStyles}${responsiveStyles}</style>
       <div class="overlay"></div>
-      <div class="inner" role="dialog" aria-modal="true">
+      <div class="inner" part="${partMap}" role="dialog" aria-modal="true">
         <div class="header" hidden>
           <slot name="title"></slot>
           <mui-button class="close" variant="tertiary" size="${closeSize}" aria-label="Close drawer">

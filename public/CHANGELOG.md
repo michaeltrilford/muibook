@@ -14,6 +14,7 @@
 - `mui-code` now supports an `inline` boolean attribute for displaying code snippets inline with surrounding text (with compact padding, baseline alignment, and nowrap layout by default).
 - `mui-drawer` now supports `variant="workspace"` for editor-style layouts with independent left and right panels around a central page or canvas, including `left-open`, `right-open`, `left-width`, `right-width`, `resize-rail`, `resize-min-left-width`, `resize-min-right-width`, `resize-min-page-width`, `resize-close-threshold`, `breakpoint`, and `height` for full control over panel visibility, sizing, and resize behaviour.
 - `mui-drawer` now supports a dynamic `mobile` host attribute synced to viewport breakpoints for responsive mobile layouts.
+- `mui-drawer` now exposes the shared visual part map on its drawer panel, including `background`, `border`, `border-radius`, `box-shadow`, `opacity`, `transition`, `outline`, and `color`.
 - `mui-container` now supports `x-medium` / `size="x-medium"` for a 96rem container between medium and large, plus a string `width` max-width override for precise page constraints. Existing `large` behaviour remains unchanged.
 - `mui-button` now supports `pending` for async actions, blocking repeat activation without applying disabled styling and exposing `aria-busy` while work is in flight.
 - `mui-media-player` now supports `controls="player" | "none"` for choosing Muibook controls or no controls for direct audio/video media.
@@ -97,6 +98,7 @@
 - Story template descriptions now escape angle-bracket text so docs can reference element names such as model-viewer without rendering accidental HTML.
 - `mui-drawer` in workspace variant now properly respects top and bottom safe-area insets (`env(safe-area-inset-top)` / `env(safe-area-inset-bottom)`) in the page layout.
 - `mui-drawer` mobile overlay panels now respect physical left and right safe-area insets in landscape, keeping drawer content clear of device cutouts while preserving the intended usable drawer width.
+- Muibook storefront drawer styling now targets `mui-drawer::part(background)` instead of setting `--drawer-background` on the app shell host, preventing drawer surface styling from leaking into nested component stories.
 - `mui-dropdown` now applies matching menu-item width, alignment, and first/last radius treatment to slotted `mui-link` items as well as slotted `mui-button` items.
 - `mui-media-player` artwork thumbnail border and shadow now stay dark over artwork in both light and dark themes.
 - `mui-media-player` volume icons now update reliably as the user adjusts the volume range.
