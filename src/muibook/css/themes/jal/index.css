@@ -12,6 +12,10 @@
 /* 1. BRAND PRIMITIVES  ------> jal/brand.css                                      */
 /* =============================================================================== */
 
+html[data-brand="jal"] {
+  --heading-font-family: "Montserrat", sans-serif;
+}
+
 /* =============================================================================== */
 /* 2. LIGHT MODE                                                                   */
 /* =============================================================================== */
@@ -149,9 +153,9 @@ html[data-brand="jal"][data-theme="light"] {
   /* Tabs */
   --tab-border-color: var(--red-800);
 
-  --tab-background: var(--red-500);
+  --tab-background: var(--grey-200);
   --tab-icon: var(--white);
-  --tab-text-color: var(--white);
+  --tab-text-color: var(--grey-1000);
 
   --tab-background-active: var(--white);
   --tab-icon-active: var(--red-500);
@@ -342,13 +346,13 @@ html[data-brand="jal"][data-theme="dark"] {
   /* Tabs */
   --tab-border-color: var(--gold-800);
 
-  --tab-background: var(--gold-900);
+  --tab-background: var(--grey-800);
   --tab-icon: var(--white);
   --tab-text-color: var(--white);
 
-  --tab-background-active: var(--gold-500);
+  --tab-background-active: var(--gold-200);
   --tab-icon-active: var(--white);
-  --tab-text-color-active: var(--white);
+  --tab-text-color-active: var(--gold-900);
   --tab-shadow-active: var(--black-opacity-20);
   --tabs-ghost-box-shadow: none;
 

@@ -22,7 +22,7 @@ class ThemeSwitcher extends HTMLElement {
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&family=Noto+Sans+JP:wght@100..900&display=swap",
         },
       ],
       sensei: [

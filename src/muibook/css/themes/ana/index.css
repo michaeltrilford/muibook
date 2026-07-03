@@ -341,13 +341,13 @@ html[data-brand="ana"][data-theme="dark"] {
   /* Tabs */
   --tab-border-color: var(--blue-500);
 
-  --tab-background: var(--blue-800);
+  --tab-background: var(--grey-1000);
   --tab-icon: var(--blue-100);
   --tab-text-color: var(--blue-100);
 
-  --tab-background-active: var(--blue-100);
+  --tab-background-active: var(--blue-300);
   --tab-icon-active: var(--blue-800);
-  --tab-text-color-active: var(--blue-800);
+  --tab-text-color-active: var(--blue-900);
   --tab-shadow-active: var(--black-opacity-10);
   --tabs-ghost-box-shadow: none;
 
