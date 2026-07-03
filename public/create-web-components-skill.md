@@ -1,6 +1,7 @@
 ---
 name: create-web-components-skill
 description: Help make your own framework-agnostic, portable web components using native APIs, shadow DOM, and slots.
+---
 
 # Create Web Components Skill
 
@@ -80,7 +81,7 @@ Keep human guidance, generated metadata, and runtime/export metadata separate.
 - `DESIGN.md`: portable design direction, token architecture, theme behavior, and component mappings.
 - `AGENTS.md`: coding-agent operating rules for working in the component repo.
 - `rules.ts`, `keywords.ts`, and `compositions.ts`: AI-oriented generation rules, keyword routing, and example component trees.
-- `web-component-skill.md`: a compact skill file for agents and developers that need the architectural pattern without loading every repo file.
+- `create-web-components-skill.md`: a compact skill guide for agents and developers that need the architectural pattern without loading every repo file.
 
 Do not put destination/runtime attrs into the CEM as if they are public user API. Keep the CEM for authored component contracts and use `dynamic-attrs.json` for builder, wrapper, and export behavior.
 
@@ -184,10 +185,11 @@ Use slots as the primary structure model.
 Slot-state pattern:
 
 ```ts
-const hasBefore = slotBefore.assignedNodes({ flatten: true }).some((node) =>
-  node.nodeType === Node.ELEMENT_NODE ||
-  (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim())
-);
+const hasBefore = slotBefore
+  .assignedNodes({ flatten: true })
+  .some(
+    (node) => node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim()),
+  );
 
 this.toggleAttribute("has-before", hasBefore);
 ```

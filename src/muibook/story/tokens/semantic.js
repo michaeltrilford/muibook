@@ -15,7 +15,11 @@ class tokensSemantic extends HTMLElement {
         margin-right: calc(var(--space-400) * -1);
       }
       .surface-elevated,
-      .surface-recessed {
+      .surface-elevated-200,
+      .surface-elevated-300,
+      .surface-recessed,
+      .surface-recessed-200,
+      .surface-recessed-300 {
         padding: var(--space-400);
         width: 100%;
         height: 200px;
@@ -23,12 +27,35 @@ class tokensSemantic extends HTMLElement {
         border-radius: var(--radius-300);
       }
 
+      .surface-elevated-200,
+      .surface-elevated-300,
+      .surface-recessed-200,
+      .surface-recessed-300 {
+        height: 100%;
+      }
+
       .surface-elevated {
         background: var(--surface-elevated-100);
       }
 
+      .surface-elevated-200 {
+        background: var(--surface-elevated-200);
+      }
+
+      .surface-elevated-300 {
+        background: var(--surface-elevated-300);
+      }
+
       .surface-recessed {
         background: var(--surface-recessed-100);
+      }
+
+      .surface-recessed-200 {
+        background: var(--surface-recessed-200);
+      }
+
+      .surface-recessed-300 {
+        background: var(--surface-recessed-300);
       }
 
       .token-item-menu::part(flex-wrap) {
@@ -53,8 +80,131 @@ class tokensSemantic extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="text::Text|||font-weight::Font Weight|||border::Border|||shadow::Shadow|||outline::Outline|||backdrop::Backdrop|||categorical::Categorical|||feedback::Feedback|||form::Form|||action::Action|||surface::Surface"
+          links="surface::Surface|||text::Text|||font-weight::Font Weight|||border::Border|||shadow::Shadow|||outline::Outline|||backdrop::Backdrop|||categorical::Categorical|||feedback::Feedback|||form::Form|||action::Action"
         ></story-quicklinks>
+
+          <spec-card id="surface" title="Surface" description="Surface tokens define the background layers of the interface. They create depth and support elevation across contexts. Light and dark modes aren’t simple color inversions; they’re carefully designed to preserve consistent elevation and stacking across all surfaces.">
+
+            <story-token-slat slot="body" token="--surface-recessed-300" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-recessed-200" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-recessed-100" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-recessed-alpha" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-elevated-alpha" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-elevated-100" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-elevated-200" variant="color">
+            </story-token-slat>
+
+            <story-token-slat slot="body" token="--surface-elevated-300" variant="color">
+            </story-token-slat>
+
+          </spec-card>
+
+          <story-card title="Surface: Elevated" description="The Surface tokens are tailored to have a great tone for both light and dark settings">
+            <div slot="body">
+              <div class="surface">
+                <div class="surface-elevated">
+                  <div class="surface-elevated-200">
+                    <div class="surface-elevated-300"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <mui-code slot="footer">
+              <br />
+              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
+              <br />
+              /* =================================== */
+              <br />
+              <br />
+              .surface {
+              <br />
+              &nbsp;&nbsp;background: var(--surface);
+              <br />
+              }
+              <br />
+              <br />
+              .surface-elevated {
+              <br />
+              &nbsp;&nbsp;background: var(--surface-elevated-100);
+              <br />
+              }
+              <br />
+              <br />
+              .surface-elevated-200 {
+              <br />
+              &nbsp;&nbsp;background: var(--surface-elevated-200);
+              <br />
+              }
+              <br />
+              <br />
+              .surface-elevated-300 {
+              <br />
+              &nbsp;&nbsp;background: var(--surface-elevated-300);
+              <br />
+              }
+            </mui-code>
+          </story-card>
+
+          <story-card title="Surface: Recessed" description="The Surface tokens are tailored to have a great tone for both light and dark settings">
+            <div slot="body">
+              <div class="surface">
+                <div class="surface-recessed">
+                  <div class="surface-recessed-200">
+                    <div class="surface-recessed-300"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <mui-code slot="footer">
+              <br />
+              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
+              <br />
+              /* =================================== */
+              <br />
+              <br />
+              .surface {
+              <br />
+              &nbsp;&nbsp;background: var(--surface);
+              <br />
+              }
+              <br />
+              <br />
+              .surface-recessed {
+              <br />
+              &nbsp;&nbsp;background: var(--surface-recessed-100);
+              <br />
+              }
+              <br />
+              <br />
+              .surface-recessed-200 {
+              <br />
+              &nbsp;&nbsp;background: var(--surface-recessed-200);
+              <br />
+              }
+              <br />
+              <br />
+              .surface-recessed-300 {
+              <br />
+              &nbsp;&nbsp;background: var(--surface-recessed-300);
+              <br />
+              }
+            </mui-code>
+          </story-card>
 
           <spec-card id="text" title="Text">
             <story-token-slat slot="body" token="--text-color" variant="text-color"></story-token-slat>
@@ -62,7 +212,6 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--text-color-success" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--text-color-warning" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--text-color-error" variant="text-color"></story-token-slat>
-            <story-token-slat slot="body" token="--text-color-optional" variant="text-color"></story-token-slat>
 
             <story-token-slat slot="body" token="--text-font-size" variant="text-size" line-height="--text-line-height"></story-token-slat>
             <story-token-slat slot="body" token="--text-line-height" variant="line-height" font-size="--text-font-size"></story-token-slat>
@@ -287,93 +436,6 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--action-attention-border-focus" variant="border"></story-token-slat>
             <story-token-slat slot="body" token="--action-attention-border-disabled" variant="border"></story-token-slat>
           </spec-card>
-
-          <spec-card id="surface" title="Surface" description="Surface tokens define the background layers of the interface. They create depth and support elevation across contexts. Light and dark modes aren’t simple color inversions; they’re carefully designed to preserve consistent elevation and stacking across all surfaces.">
-
-            <story-token-slat slot="body" token="--surface-recessed-300" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface-recessed-200" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface-recessed-100" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface-recessed-alpha" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface-elevated-alpha" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface-elevated-100" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface-elevated-200" variant="color">
-            </story-token-slat>
-
-            <story-token-slat slot="body" token="--surface-elevated-300" variant="color">
-            </story-token-slat>
-
-          </spec-card>
-
-          <story-card title="Surface: Elevated" description="The Surface tokens are tailored to have a great tone for both light and dark settings">
-            <div slot="body">
-              <div class="surface">
-                <div class="surface-elevated"></div>
-              </div>
-            </div>
-            <mui-code slot="footer">
-              <br />
-              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
-              <br />
-              /* =================================== */
-              <br />
-              <br />
-              .surface {
-              <br />
-              &nbsp;&nbsp;background: var(--surface);
-              <br />
-              }
-              <br />
-              <br />
-              .surface-elevated {
-              <br />
-              &nbsp;&nbsp;background: var(--surface-elevated-100);
-              <br />
-              }
-            </mui-code>
-          </story-card>
-
-          <story-card title="Surface: Recessed" description="The Surface tokens are tailored to have a great tone for both light and dark settings">
-            <div slot="body">
-              <div class="surface">
-                <div class="surface-recessed"></div>
-              </div>
-            </div>
-            <mui-code slot="footer">
-              <br />
-              <mui-body size="x-small">Learn about <mui-Link size="x-small" href="/semantic-design-tokens">Surface Tokens</mui-link></mui-body>
-              <br />
-              /* =================================== */
-              <br />
-              <br />
-              .surface {
-              <br />
-              &nbsp;&nbsp;background: var(--surface);
-              <br />
-              }
-              <br />
-              <br />
-              .surface-recessed {
-              <br />
-              &nbsp;&nbsp;background: var(--surface-recessed-100);
-              <br />
-              }
-            </mui-code>
-          </story-card>
 
       </story-template>
     `;

@@ -11,8 +11,10 @@ It is generated from [`@muibook/components`](https://github.com/michaeltrilford/
 - `rules.ts` — global Muibook component-tree generation rules for AI tools.
 - `keywords.ts` — lightweight keyword mappings that help route natural-language intent to Muibook components.
 - `compositions.ts` — curated component-tree examples that show realistic Muibook composition patterns.
-- `web-component-skill.md` — public Codex-compatible skill for building and reviewing native Web Components with this architecture.
-- `guidelines-skill.md` — public Codex-compatible skill for writing and reviewing component guidelines.
+- `create-web-components-skill.md` — public skill guide for building and reviewing native Web Components with this architecture.
+- `compose-web-components-skill.md` — public skill guide for composing Muibook components into complete interfaces.
+- `style-web-components-skill.md` — public skill guide for theming Muibook components with tokens and CSS variables.
+- `create-ux-guidelines-skill.md` — public skill guide for writing and reviewing component UX guidelines.
 - `AGENTS.md` — operating guidance for coding agents working with Muibook.
 - `DESIGN.md` — Muibook design language, token architecture, and theming guidance.
 - `index.ts` — convenience export for the knowledge files.
@@ -102,6 +104,7 @@ During local development, prefer the absolute local path so the MCP server reads
 - Ask for rules before generating Muibook component trees.
 - Ask for compositions when you need realistic page, app, or workflow examples.
 - Ask for design guidance when making token, theme, layout, or visual decisions.
+- Ask for skill guides when you need authored guidance on creating, composing, styling, or documenting Web Components.
 
 ## Source Of Truth
 
