@@ -83,7 +83,6 @@ class storyBody extends HTMLElement {
                 <div>
                   <mui-heading size="4">Optional</mui-heading>
                   <mui-body variant="optional">Risus Mollis Dapibus</mui-body>
-                  <mui-body>Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
                   <mui-heading size="4">Info</mui-heading>

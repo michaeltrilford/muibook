@@ -266,7 +266,7 @@ html[data-theme="light"] {
   --text-color-success: var(--green-600);
   --text-color-warning: var(--orange-600);
   --text-color-error: var(--red-600);
-  --text-color-optional: var(--grey-500);
+  --text-color-optional: var(--grey-600);
 
   /* ================================================================================================== */
   /* Components                                                                                         */
@@ -649,12 +649,12 @@ html[data-theme="dark"] {
   --border-color: var(--white-opacity-20);
 
   /* Text */
-  --text-color: var(--grey-200);
+  --text-color: var(--grey-100);
   --text-color-info: var(--blue-400);
   --text-color-success: var(--green-400);
   --text-color-warning: var(--orange-400);
   --text-color-error: var(--red-400);
-  --text-color-optional: var(--grey-400);
+  --text-color-optional: var(--grey-300);
 
   /* ================================================================================================== */
   /* Components                                                                                         */
