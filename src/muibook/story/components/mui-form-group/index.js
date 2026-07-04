@@ -160,7 +160,7 @@ class StoryFormGroup extends HTMLElement {
           margin-inline: calc(var(--space-400) * -1);
           margin-block: calc(var(--space-400) * -1);
           padding: var(--space-400);
-          background: var(--surface-elevated-200);
+          background: var(--surface-elevated-100);
           box-sizing: border-box;
         }
       </style>

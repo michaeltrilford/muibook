@@ -43,13 +43,13 @@ html[data-brand="mui"][data-theme="light"] {
   --app-navbar-accordion-chevron-hover: var(--surface-elevated-200);
   /* Home Page */
   --home-page-body-text: var(--black);
-  --app-story-card: var(--grey-200);
+  --app-story-card: var(--surface);
   --app-story-canvas-100: var(--grey-50);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   /* Story Types */
-  --app-story-type-header-background: var(--grey-50);
+  --app-story-type-header-background: var(--surface-elevated-200);
   --app-navbar-section-chevron: var(--grey-400);
-  --app-muitube-background: var(--grey-50);
+  --app-muitube-background: var(--surface);
   --app-rail-background: var(--grey-100);
   --app-floating-menu-color: var(--black);
   --app-floating-menu-background: var(--app-container-surface);
@@ -78,13 +78,13 @@ html[data-brand="mui"][data-theme="dark"] {
   --app-navbar-accordion-chevron-hover: var(--surface-elevated-200);
   /* Home Page */
   --home-page-body-text: var(--white);
-  --app-story-card: var(--grey-1000);
+  --app-story-card: var(--surface);
   --app-story-canvas-100: var(--grey-1000);
   --app-story-banner-border-color: var(--app-navbar-border-color);
   /* Story Types */
-  --app-story-type-header-background: var(--grey-900);
+  --app-story-type-header-background: var(--surface-elevated-200);
   --app-navbar-section-chevron: var(--grey-600);
-  --app-muitube-background: var(--grey-900);
+  --app-muitube-background: var(--surface);
   --app-rail-background: var(--grey-1200);
   --app-floating-menu-color: var(--white);
   --app-floating-menu-background: var(--app-container-surface);

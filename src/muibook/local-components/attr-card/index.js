@@ -109,7 +109,6 @@ class AttrCard extends HTMLElement {
       <style>
         :host { display: block; scroll-margin-top: var(--space-600); }
 
-        mui-card { border: var(--border-thick); }
         mui-card-header {
           padding: var(--space-400);
         }

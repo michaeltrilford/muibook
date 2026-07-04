@@ -32,7 +32,7 @@ class storyBadge extends HTMLElement {
           title="Default"
           description="A compact, non-interactive supporting label for presentational metadata."
           usage="Use Badge when the label adds context to the surrounding UI.|||Good for labels like New, Beta, Default, Shared, Paid, Busy, or Offline.|||Use Status when the label is the main state value for a record or workflow, especially when that value needs to be interactive."
-          canvas-background="var(--surface-elevated-100)"
+
         >
           <div slot="body">
             <mui-badge>Offline</mui-badge>
@@ -50,7 +50,7 @@ class storyBadge extends HTMLElement {
           title="Sizes"
           description="Use size to match the badge to the surrounding component scale."
           usage="Use smaller badges in dense controls, chips, nav, and compact metadata rows.|||Use medium or large when the badge sits in roomier cards, messages, or hero content."
-          canvas-background="var(--surface-elevated-100)"
+
         >
           <div slot="body">
             <mui-v-stack space="var(--space-200)" alignx="start">
@@ -74,7 +74,7 @@ class storyBadge extends HTMLElement {
           title="Variants"
           description="Use variants to give lightweight metadata the right visual emphasis."
           usage="Use neutral for default supporting labels such as Offline or Shared.|||Use positive, warning, or attention when the metadata needs lightweight semantic emphasis.|||Use color when you only want to change the badge background.|||Use overlay for labels on media or image surfaces.|||Use Status when the value is the primary state of a record, workflow, or system."
-          canvas-background="var(--surface-elevated-100)"
+
         >
           <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
             <mui-badge variant="neutral">Offline</mui-badge>
@@ -96,7 +96,7 @@ class storyBadge extends HTMLElement {
           title="Standalone Colors"
           description="Use color to override the badge background with a shared named colour."
           usage="Use shared names for consistent palette selection.|||Named colors resolve through theme-aware badge background tokens.|||Do not use positive, warning, or attention only to get a different background colour.|||The color attribute affects background only; text colour still follows the badge variant."
-          canvas-background="var(--surface-elevated-100)"
+
         >
           <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
             <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
@@ -145,7 +145,7 @@ class storyBadge extends HTMLElement {
           title="Custom Color"
           description="Use a CSS background value when a badge needs a one-off custom colour."
           usage="Prefer shared standalone colors for system consistency.|||Use custom values sparingly for brand, partner, or campaign-specific labels.|||The custom color still affects background only; text colour follows the badge variant."
-          canvas-background="var(--surface-elevated-100)"
+
         >
           <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
             <mui-badge color="var(--custom-badge-orange)">Orange Gradient</mui-badge>

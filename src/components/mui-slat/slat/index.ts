@@ -82,6 +82,20 @@ class MuiSlat extends HTMLElement {
         border-radius: var(--slat-radius);
       }
 
+      :host([variant="row"][card-slot][condensed-slot]) {
+        border-radius: 0;
+      }
+
+      :host([variant="row"][card-slot][condensed-slot-first]) {
+        border-top-left-radius: var(--card-radius);
+        border-top-right-radius: var(--card-radius);
+      }
+
+      :host([variant="row"][card-slot][condensed-slot-last]) {
+        border-bottom-left-radius: var(--card-radius);
+        border-bottom-right-radius: var(--card-radius);
+      }
+
       :host([variant="header"]) {
         padding: var(--space-200) var(--space-400);
         padding-top: var(--space-400);
@@ -146,12 +160,12 @@ class MuiSlat extends HTMLElement {
         border-radius: 0;
       }
 
-      :host([radius="none"][condensed-slot]:first-of-type) .action::part(border-radius) {
+      :host([radius="none"][condensed-slot-first]) .action::part(border-radius) {
         border-top-left-radius: var(--card-radius);
         border-top-right-radius: var(--card-radius);
       }
 
-      :host([radius="none"][condensed-slot]:last-of-type) .action::part(border-radius) {
+      :host([radius="none"][condensed-slot-last]) .action::part(border-radius) {
         border-bottom-left-radius: var(--card-radius);
         border-bottom-right-radius: var(--card-radius);
       }

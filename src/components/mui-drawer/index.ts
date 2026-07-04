@@ -1132,7 +1132,7 @@ class MuiDrawer extends HTMLElement {
           </div>
           ${
             hasWorkspaceResizeRail
-              ? '<button class="workspace-resize-rail workspace-resize-rail-left" type="button" aria-label="Resize left drawer" data-workspace-resize="left"><mui-icon-left-chevron class="workspace-resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron><mui-body class="workspace-resize-rail-esc" size="xx-small" weight="bold" aria-hidden="true">ESC</mui-body></button>'
+              ? '<button class="workspace-resize-rail workspace-resize-rail-left" part="resize-rail" type="button" aria-label="Resize left drawer" data-workspace-resize="left"><mui-icon-left-chevron class="workspace-resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron><mui-body class="workspace-resize-rail-esc" size="xx-small" weight="bold" aria-hidden="true">ESC</mui-body></button>'
               : ""
           }
           <div class="workspace-page">
@@ -1140,7 +1140,7 @@ class MuiDrawer extends HTMLElement {
           </div>
           ${
             hasWorkspaceResizeRail
-              ? '<button class="workspace-resize-rail workspace-resize-rail-right" type="button" aria-label="Resize right drawer" data-workspace-resize="right"><mui-icon-left-chevron class="workspace-resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron><mui-body class="workspace-resize-rail-esc" size="xx-small" weight="bold" aria-hidden="true">ESC</mui-body></button>'
+              ? '<button class="workspace-resize-rail workspace-resize-rail-right" part="resize-rail" type="button" aria-label="Resize right drawer" data-workspace-resize="right"><mui-icon-left-chevron class="workspace-resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron><mui-body class="workspace-resize-rail-esc" size="xx-small" weight="bold" aria-hidden="true">ESC</mui-body></button>'
               : ""
           }
           <div class="outer workspace-panel workspace-panel-right">
@@ -1171,7 +1171,7 @@ class MuiDrawer extends HTMLElement {
     `;
     } else if (variant === "push" || variant === "persistent") {
       const resizeRail = hasResizeRail
-        ? '<button class="resize-rail" type="button" aria-label="Resize drawer"><mui-icon-left-chevron class="resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron><mui-body class="resize-rail-esc" size="xx-small" weight="bold" aria-hidden="true">ESC</mui-body></button>'
+        ? '<button class="resize-rail" part="resize-rail" type="button" aria-label="Resize drawer"><mui-icon-left-chevron class="resize-rail-icon" size="x-small" color="var(--drawer-resize-rail-threshold-indicator)" aria-hidden="true"></mui-icon-left-chevron><mui-body class="resize-rail-esc" size="xx-small" weight="bold" aria-hidden="true">ESC</mui-body></button>'
         : "";
 
       template = /*html*/ `

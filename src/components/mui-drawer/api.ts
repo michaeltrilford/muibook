@@ -173,6 +173,7 @@ export const muiApi = {
       { name: "transition", description: "Visual part applied to the drawer panel transition." },
       { name: "outline", description: "Visual part applied to the drawer panel outline." },
       { name: "color", description: "Visual part applied to the drawer panel text color." },
+      { name: "resize-rail", description: "Resize rail surface when the resize-rail attribute is enabled." },
     ],
     cssProperties: [
       { name: "--drawer-background", description: "Drawer surface and footer background." },

@@ -9,6 +9,14 @@
     {
       "name": "condensed-slot",
       "description": "Applied to a slotted child used in condensed composition, allowing the child to reduce spacing and density."
+    },
+    {
+      "name": "condensed-slot-first",
+      "description": "Applied to the first slat in condensed card body content, allowing exposed top edge radius to match the card."
+    },
+    {
+      "name": "condensed-slot-last",
+      "description": "Applied to the last slat in condensed card body content, allowing exposed bottom edge radius to match the card."
     }
   ]
 }

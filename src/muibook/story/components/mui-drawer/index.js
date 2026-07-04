@@ -125,7 +125,7 @@ class storyDrawer extends HTMLElement {
       .workspace-demo-canvas {
         min-height: 100%;
         box-sizing: border-box;
-        background: var(--surface-elevated-200);
+        background: var(--surface);
       }
 
       .workspace-demo-frame {

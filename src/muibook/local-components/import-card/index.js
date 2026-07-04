@@ -89,7 +89,6 @@ class ImportCard extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
         :host { display: block; scroll-margin-top: var(--space-600); }
-        mui-card { border: var(--border-thick); }
         mui-card-footer { overflow: hidden; background: var(--surface-elevated-100); padding-inline-end: var(--space-200); border-radius: calc(var(--card-radius) - var(--stroke-size-200)); }
         @media (min-width: 500px) {
           mui-card-footer {

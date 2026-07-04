@@ -150,7 +150,7 @@ class storyResponsive extends HTMLElement {
 
     const stories = /*html*/ `
 
-          <mui-message variant="info" heading="Working with Web Components and Shadow DOM">
+          <mui-message variant="neutral" heading="Working with Web Components and Shadow DOM">
             <mui-v-stack space="var(--space-200)">
               <mui-body size="small">
                 mui-responsive works in both light and shadow DOM contexts. However, using multiple 'slot' elements inside a component that’s placed within mui-responsive will not project content as expected. This is a browser-level limitation, not a bug.

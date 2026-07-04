@@ -37,7 +37,6 @@ class DesignChangelog extends HTMLElement {
       }
 
       mui-list { margin-top: var(--space-025); }
-      mui-card { border: var(--border-thick); }
       mui-card-body { padding-top: var(--space-400);}
 
       @media (min-width: 768px) {
@@ -97,7 +96,7 @@ class DesignChangelog extends HTMLElement {
         inHeader = false;
         const headerContent = headerLines.join("\n");
         cardContent.push(
-          `<mui-h-stack alignX="space-between" alignY="center" class="header">${headerContent}</mui-h-stack>`
+          `<mui-h-stack alignX="space-between" alignY="center" class="header">${headerContent}</mui-h-stack>`,
         );
         continue;
       }
@@ -144,7 +143,7 @@ class DesignChangelog extends HTMLElement {
       <mui-link slot="showAbove" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark>$1</mui-link>
       <mui-link slot="showBelow" variant="tertiary" href="$2"><npm-mark slot="after"></npm-mark></mui-link>
     </mui-responsive>
-  `
+  `,
     );
 
     // Replace list items

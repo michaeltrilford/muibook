@@ -9,7 +9,7 @@ export const muiApi = {
     ],
     slots: [{ name: "", description: "Code or preformatted text content." }],
     cssProperties: [
-      { name: "--code-background", description: "Background surface applied to the code block." },
+      { name: "--code-background", description: "Background surface applied to the code block. Defaults to surface-elevated-100 and shifts to surface-elevated-200 in card contexts." },
       { name: "--code-text-color", description: "Text color applied to the code content." },
     ],
   },

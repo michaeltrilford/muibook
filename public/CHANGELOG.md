@@ -45,6 +45,8 @@
 - `mui-input` now supports the native `autofocus` attribute for components and forms that need immediate field focus.
 - Added `--app-story-canvas-100` for story-level canvas background overrides across Muibook app themes.
 - `mui-table` now supports opt-in animated row highlights with separate `highlight="hover"` and `highlight="select"` modes, `highlight-row` / `row-id`, and `highlight-row-index`.
+- `mui-drawer` now exposes its workspace resize rail as `part="resize-rail"` for targeted resize rail styling without leaking drawer tokens into nested surfaces.
+- `mui-code` now documents the destination-only `card-slot` context attr and adjusts its background token when used inside card content.
 
 ### Documentation
 
@@ -56,6 +58,7 @@
 - Added richer full Knowledge composition examples for media metadata, custom select, drawer workspace, and model viewer patterns, with explicit `compositionConfig` curation so only compact examples ship in the lightweight AI Agent prompt.
 - Added Container story quicklinks for jumping between size, width, fluid, and centered examples.
 - Added an Inline story card to the Code story page demonstrating inline code snippets within text.
+- Added Code story coverage for default and card surface contexts.
 - Added a Button story showing inline async feedback with `Copy`/`Save`, spinner pending states, check-icon success states, and guidance for replacing demo delays with real async work.
 - Added Avatar Chip stories covering default, image, linked avatar, custom secondary, and Media Player usage.
 - Updated Media Player stories to lead with Muibook player controls and document compact audio, audio metadata, audio waveform, audio artwork, audio artwork waveform, visible play/pause, video metadata, metadata actions, YouTube, and SoundCloud states.
@@ -95,6 +98,7 @@
 - `mui-chip` layout now binds container height explicitly to token heights for all sizes (`x-small`, `small`, `medium`, `large`).
 - `mui-chip` slot styling for `before` and `after` icons now targets slots directly (`slot[name="before"]::slotted` and `slot[name="after"]::slotted`) utilizing token math (`calc(var(--space-050) * -1)`) for perfect inner margin alignment, fixing spacing regressions when both before and after icons/avatars are present.
 - `mui-chip-rail` rail action controls now scale dynamically across sizes to perfectly match the height of the chips inside the rail.
+- `mui-chip-rail` now adjusts its rail mask surface automatically when card content applies `card-slot`, while still supporting explicit `--chip-rail-background` overrides.
 - Slotted sizing mapped: `mui-avatar` and `mui-badge` slotted inside `mui-chip[size="x-small"]` now resolve to `xx-small`.
 
 ### Fixed
@@ -117,6 +121,8 @@
 - `mui-dropdown` now cleanly closes itself when the viewport is resized instead of attempting to blindly adjust its open position.
 - `mui-link` now applies higher specificity rules for dropdown slot border radii to prevent action size radii and icon slot styling from overriding them.
 - Story template resource links now collapse into a single `mui-dropdown` on smaller viewports instead of wrapping as individual links.
+- `mui-slat variant="row"` now matches condensed card body corner treatment, including single-row cases that need all exposed corners to follow the card radius.
+- `mui-card-body` now marks first and last condensed slats with destination-only context attrs so wrapped slats can style exposed card edges correctly.
 
 ---
 

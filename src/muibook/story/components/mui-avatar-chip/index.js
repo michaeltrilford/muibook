@@ -18,7 +18,7 @@ class StoryAvatarChip extends HTMLElement {
       }
 
       .canvas {
-        background: var(--surface-elevated-100);
+        background: var(--surface);
         padding: var(--space-600);
         margin: calc(var(--space-400) * -1);
       }

@@ -14,7 +14,7 @@ class storyAvatar extends HTMLElement {
       :host { display: block; }
 
       .canvas {
-        background: var(--surface-elevated-100);
+        background: var(--surface);
         padding: var(--space-600);
         margin-top: calc(var(--space-400) * -1);
         margin-bottom: calc(var(--space-400) * -1);
@@ -29,7 +29,7 @@ class storyAvatar extends HTMLElement {
         margin: 0 auto;
         padding: var(--space-100);
         box-sizing: border-box;
-        background: var(--surface-elevated-100);
+        background: var(--surface);
       } 
 
     `;
@@ -383,7 +383,7 @@ class storyAvatar extends HTMLElement {
         usageLink=""
         accessibility=""
       >
-        <mui-v-stack slot="body">
+        <mui-v-stack slot="body" class="canvas">
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-button variant="primary" size="x-small" class="group-item" aria-label="Library">
@@ -614,7 +614,7 @@ class storyAvatar extends HTMLElement {
         usageLink=""
         accessibility=""
       >
-        <mui-v-stack slot="body">
+        <mui-v-stack slot="body" class="canvas">
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="x-small" class="group-item" aria-label="Library">

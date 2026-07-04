@@ -70,6 +70,9 @@ body {
   display: block;
   min-height: 0;
   --border-thin: var(--app-navbar-border);
+}
+
+.storefront-drawer::part(resize-rail) {
   --drawer-resize-rail-background: var(--app-rail-background);
 }
 

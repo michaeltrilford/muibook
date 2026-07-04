@@ -5,6 +5,11 @@ class KnowledgeRulesPage extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
+      .resource-page mui-code {
+        border-radius: var(--radius-200);
+        --code-background: var(--surface);
+      }
+
       .content-container {
         container-type: inline-size;
         display: grid;

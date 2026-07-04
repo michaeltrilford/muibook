@@ -20,7 +20,6 @@ class pageBannerPlugin extends HTMLElement {
         border-radius: var(--radius-300);
         background: var(--app-story-banner-gradient-start);
         background: linear-gradient(0deg, var(--app-story-banner-gradient-start) 0%, var(--app-story-banner-gradient-end) 100%);
-        border: var(--border-thick);
         border-color: var(--app-story-banner-border-color);
       }
 

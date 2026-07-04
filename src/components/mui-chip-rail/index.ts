@@ -83,10 +83,11 @@ class MuiChipRail extends HTMLElement {
           contain: inline-size;
           padding-block: var(--chip-rail-bleed-block-size);
           padding-inline: var(--chip-rail-bleed-inline-size);
-          --chip-rail-background: var(--surface-elevated-100);
+          --chip-rail-background: var(--surface);
           --chip-rail-bleed-inline-size: 0px;
           --chip-rail-bleed-block-size: 0px;
           --chip-rail-gap: var(--space-200);
+          --chip-rail-shadow-padding-block: var(--stroke-size-200);
           --chip-rail-action-size: var(--chip-height-medium, 4rem);
           --chip-rail-edge-size: calc(var(--action-icon-only-size-medium) + var(--space-700));
           --chip-rail-focus-scroll-margin-inline: calc(
@@ -113,6 +114,10 @@ class MuiChipRail extends HTMLElement {
           --chip-rail-edge-size: calc(var(--action-icon-only-size-large) + var(--space-800));
         }
 
+        :host([card-slot]) {
+          --chip-rail-background: var(--surface-elevated-100);
+        }
+
         .rail {
           position: relative;
           width: 100%;
@@ -126,6 +131,7 @@ class MuiChipRail extends HTMLElement {
           max-width: 100%;
           overflow-x: auto;
           overflow-y: hidden;
+          padding-block: var(--chip-rail-shadow-padding-block);
           scrollbar-width: none;
           scroll-behavior: smooth;
           overscroll-behavior-inline: contain;

@@ -63,30 +63,24 @@ class MuiRow extends HTMLElement {
     const table = this.closest("mui-table");
     if (!table) return;
 
-    const hasActionColumn = Boolean(
-      table.querySelector("mui-cell[action]")
-    );
+    const hasActionColumn = Boolean(table.querySelector("mui-cell[action]"));
     this.toggleAttribute("has-action-column", hasActionColumn);
 
     const directCells = Array.from(this.children).filter(
-      (child) => child.tagName.toLowerCase() === "mui-cell"
+      (child) => child.tagName.toLowerCase() === "mui-cell",
     ) as HTMLElement[];
     const lastCell = directCells[directCells.length - 1];
 
     if (!lastCell) return;
 
-    const rowHasExplicitAction = directCells.some((cell) =>
-      cell.hasAttribute("action")
-    );
+    const rowHasExplicitAction = directCells.some((cell) => cell.hasAttribute("action"));
 
     if (!hasActionColumn || rowHasExplicitAction) {
       this.clearActionPlaceholderStyles(lastCell);
       return;
     }
 
-    const hasElementChildren = Array.from(lastCell.children).some(
-      (child) => child.nodeType === Node.ELEMENT_NODE
-    );
+    const hasElementChildren = Array.from(lastCell.children).some((child) => child.nodeType === Node.ELEMENT_NODE);
     const text = (lastCell.textContent || "").trim();
     const isPlaceholder = !hasElementChildren && text.length === 0;
 

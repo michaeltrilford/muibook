@@ -200,7 +200,7 @@ html[data-theme="light"] {
   --action-avatar-background-hover: var(--grey-300);
 
   /* Surface */
-  --surface: var(--grey-200);
+  --surface: var(--grey-50);
   --surface-elevated-alpha: var(--white-opacity-50);
   --surface-elevated-100: var(--white);
   --surface-elevated-200: var(--grey-50);
@@ -348,14 +348,6 @@ html[data-theme="light"] {
 
   /* Carousel */
   --carousel-background: var(--white);
-
-  /* Slat */
-  --slat-background: var(--white-opacity-60);
-  --slat-background-hover: var(--white-opacity-90);
-  --slat-avatar-background: var(--black-opacity-10);
-  --slat-avatar-background-hover: var(--black-opacity-20);
-  --slat-card-avatar-background: var(--black-opacity-10);
-  --slat-card-avatar-background-hover: var(--black-opacity-20);
 
   /* Avatar */
   --avatar-background-neutral: var(--grey-200);
@@ -588,7 +580,7 @@ html[data-theme="dark"] {
   --action-avatar-background-hover: var(--grey-1100);
 
   /* Surface */
-  --surface: var(--grey-1100);
+  --surface: var(--grey-900);
   --surface-elevated-alpha: var(--white-opacity-10);
   --surface-elevated-100: var(--grey-800);
   --surface-elevated-200: var(--grey-900);
@@ -724,29 +716,21 @@ html[data-theme="dark"] {
 
   /* Tabs */
   --tab-border-color: var(--grey-800);
-  --tab-background: var(--grey-1100);
+  --tab-background: var(--grey-1000);
   --tab-icon: var(--grey-400);
   --tab-text-color: var(--grey-400);
   --tab-background-active: var(--grey-700);
   --tab-icon-active: var(--white);
   --tab-text-color-active: var(--white);
-  --tab-shadow-active-color: var(--black-opacity-40);
-  --tab-dot-color: var(--grey-800);
+  --tab-shadow-active-color: var(--black-opacity-20);
+  --tab-dot-color: var(--grey-900);
   --tab-dot-color-active: var(--grey-400);
 
   /* Carousel */
   --carousel-background: var(--grey-700);
 
-  /* Slat */
-  --slat-background: var(--black-opacity-20);
-  --slat-background-hover: var(--black-opacity-50);
-  --slat-avatar-background: var(--black-opacity-20);
-  --slat-avatar-background-hover: var(--black-opacity-40);
-  --slat-card-avatar-background: var(--black-opacity-30);
-  --slat-card-avatar-background-hover: var(--black-opacity-40);
-
   /* Avatar */
-  --avatar-background-neutral: var(--grey-900);
+  --avatar-background-neutral: var(--grey-1000);
   --avatar-background-positive: var(--green-900);
   --avatar-background-warning: var(--orange-900);
   --avatar-background-attention: var(--red-900);
@@ -852,7 +836,7 @@ html[data-theme="dark"] {
 
   /* Drawer */
   --drawer-background: var(--grey-800);
-  --drawer-resize-rail-background: var(--grey-1200);
+  --drawer-resize-rail-background: var(--grey-1000);
   --drawer-resize-rail-inner-background: var(--grey-700);
   --drawer-resize-rail-threshold-indicator: var(--white);
 }
@@ -907,7 +891,7 @@ html[data-theme="dark"] {
   --action-attention-text-color-disabled: var(--red-300);
 
   /* Code */
-  --code-background: var(--surface-elevated-200);
+  --code-background: var(--surface-elevated-100);
 
   /* Prompt */
   --prompt-focus-surface-background: var(--surface-elevated-100);
@@ -959,8 +943,14 @@ html[data-theme="dark"] {
   --tabs-ghost-box-shadow: none;
 
   /* Slat */
+  --slat-background: var(--surface);
+  --slat-background-hover: var(--surface-elevated-100);
   --slat-card-background: var(--surface-elevated-100);
   --slat-card-background-hover: var(--surface-elevated-200);
+  --slat-avatar-background: var(--surface-elevated-100);
+  --slat-avatar-background-hover: var(--surface-elevated-200);
+  --slat-card-avatar-background: var(--surface-elevated-200);
+  --slat-card-avatar-background-hover: var(--surface-elevated-100);
 
   /* Chip */
   --chip-text-color-disabled: var(--grey-400);
@@ -1038,7 +1028,7 @@ html[data-theme="dark"] {
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
 
   /* Skeleton */
-  --skeleton-background: var(--surface-elevated-200);
+  --skeleton-background: var(--surface-elevated-100);
   --skeleton-radius: var(--radius-200);
   --skeleton-animation-speed: 2000ms;
   --skeleton-gap: var(--space-200);

@@ -19,7 +19,6 @@ class storyTable extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
       .canvas {
-        background: var(--surface-elevated-200);
         padding: var(--space-400);
         margin-top: calc(var(--space-400) * -1);
         margin-bottom: calc(var(--space-400) * -1);

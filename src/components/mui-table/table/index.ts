@@ -64,9 +64,11 @@ class MuiTable extends HTMLElement {
   }
 
   private getEventRow(event: Event) {
-    return event.composedPath().find((node) =>
-      node instanceof HTMLElement && node.tagName.toLowerCase() === "mui-row"
-    ) as HTMLElement | undefined;
+    return event
+      .composedPath()
+      .find((node) => node instanceof HTMLElement && node.tagName.toLowerCase() === "mui-row") as
+      | HTMLElement
+      | undefined;
   }
 
   private isBodyRow(row: HTMLElement) {
@@ -139,7 +141,7 @@ class MuiTable extends HTMLElement {
       new CustomEvent("row-highlight-change", {
         detail: { row, rowId, rowIndex, source: "select" },
         bubbles: true,
-      })
+      }),
     );
   };
 
@@ -242,7 +244,7 @@ class MuiTable extends HTMLElement {
           inset-inline: 0;
           height: 0;
           border-radius: var(--table-row-highlight-radius, var(--radius-000));
-          background: var(--table-row-highlight-background, var(--surface-elevated-300));
+          background: var(--table-row-highlight-background, var(--surface-elevated-100));
           box-shadow: var(--table-row-highlight-shadow, none);
           opacity: 0;
           pointer-events: none;

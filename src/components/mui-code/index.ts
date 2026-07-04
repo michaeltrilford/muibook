@@ -29,9 +29,13 @@ class MuiCode extends HTMLElement {
     const styles = /*css*/ `
       :host {
         display: grid;
+        --code-background: var(--surface-elevated-100);
       }
       :host([inline]) {
         display: inline;
+      }
+      :host([card-slot]) {
+        --code-background: var(--surface-elevated-200);
       }
       :host([size="x-small"]) code {
         font-size: var(--text-font-size-xs);

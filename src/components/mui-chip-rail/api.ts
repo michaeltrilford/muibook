@@ -43,11 +43,16 @@ export const muiApi = {
     cssProperties: [
       {
         name: "--chip-rail-background",
-        description: "Background used by the edge masks to cover scrolling chips underneath the arrows.",
+        description:
+          "Background used by the edge masks to cover scrolling chips underneath the arrows. Defaults to `--surface`; card context uses `--surface-elevated-100`; override this variable for custom surfaces.",
       },
       {
         name: "--chip-rail-action-size",
         description: "Controls the internal width and height of the previous/next rail actions. Defaults to the medium chip height.",
+      },
+      {
+        name: "--chip-rail-shadow-padding-block",
+        description: "Small vertical padding inside the scroll area so chip shadows are not clipped.",
       },
       {
         name: "--chip-rail-focus-scroll-margin-inline",

@@ -32,6 +32,7 @@ class MuiCardBody extends HTMLElement {
       this.removeAttribute("has-accordion-slat-group");
 
       let hasLayoutComponent = false;
+      const condensedSlats: HTMLElement[] = [];
 
       nodes.forEach((node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
@@ -58,8 +59,11 @@ class MuiCardBody extends HTMLElement {
             const variant = slat.getAttribute("variant");
             if (variant === "action" || variant === "row") {
               slat.setAttribute("card-slot", "");
+              slat.removeAttribute("condensed-slot-first");
+              slat.removeAttribute("condensed-slot-last");
               if (this.hasAttribute("condensed")) {
                 slat.setAttribute("condensed-slot", "");
+                condensedSlats.push(slat);
               } else {
                 slat.removeAttribute("condensed-slot");
               }
@@ -89,6 +93,22 @@ class MuiCardBody extends HTMLElement {
             (avatarGroup as HTMLElement).setAttribute("card-slot", "");
           });
 
+          // Check for <mui-chip-rail>
+          const isChipRail = element.tagName.toLowerCase() === "mui-chip-rail";
+          const chipRails = isChipRail ? [element] : Array.from(element.querySelectorAll("mui-chip-rail"));
+
+          chipRails.forEach((chipRail) => {
+            (chipRail as HTMLElement).setAttribute("card-slot", "");
+          });
+
+          // Check for <mui-code>
+          const isCode = element.tagName.toLowerCase() === "mui-code";
+          const codeBlocks = isCode ? [element] : Array.from(element.querySelectorAll("mui-code"));
+
+          codeBlocks.forEach((codeBlock) => {
+            (codeBlock as HTMLElement).setAttribute("card-slot", "");
+          });
+
           // Check for <mui-slat-group>
           const isSlatGroup = element.tagName.toLowerCase() === "mui-slat-group";
           const slatGroups = isSlatGroup ? [element] : Array.from(element.querySelectorAll("mui-slat-group"));
@@ -113,6 +133,26 @@ class MuiCardBody extends HTMLElement {
           }
         }
       });
+
+      if (condensedSlats.length) {
+        const allSlats = nodes.flatMap((node) => {
+          if (node.nodeType !== Node.ELEMENT_NODE) return [];
+          const element = node as HTMLElement;
+          return element.tagName.toLowerCase() === "mui-slat"
+            ? [element]
+            : Array.from(element.querySelectorAll("mui-slat"));
+        });
+
+        const firstSlat = allSlats[0] as HTMLElement | undefined;
+        const lastSlat = allSlats[allSlats.length - 1] as HTMLElement | undefined;
+
+        if (firstSlat?.hasAttribute("condensed-slot")) {
+          firstSlat.setAttribute("condensed-slot-first", "");
+        }
+        if (lastSlat?.hasAttribute("condensed-slot")) {
+          lastSlat.setAttribute("condensed-slot-last", "");
+        }
+      }
 
       if (!hasLayoutComponent && !this.hasAttribute("condensed")) {
         this.setAttribute("inner-space", "");

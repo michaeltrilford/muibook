@@ -454,7 +454,7 @@ class compMuiTube extends HTMLElement {
     const videoPageContent = /*html*/ `
       <mui-v-stack slot="page" class="video-page" space="var(--space-000)" alignx="stretch" aligny="start" id="main-content">
         <div class="filter">
-          <mui-chip-rail size="medium" aria-label="Video filters" style="--chip-rail-background: var(--app-muitube-background, var(--surface-elevated-100));">
+          <mui-chip-rail size="medium" aria-label="Video filters" style="--chip-rail-background: var(--app-muitube-background, var(--surface));">
             <mui-chip active variant="clickable">All</mui-chip>
             <mui-chip variant="clickable">Gaming</mui-chip>
             <mui-chip variant="clickable">Podcasts</mui-chip>
@@ -482,7 +482,7 @@ class compMuiTube extends HTMLElement {
 
     const Comp = /*html*/ `
       <style>${styles}</style>
-      <mui-v-stack class="content-container" alignx="stretch" aligny="start" space="var(--space-000)" style="background: var(--app-muitube-background, var(--surface-elevated-100))" slot="body">
+      <mui-v-stack class="content-container" alignx="stretch" aligny="start" space="var(--space-000)" style="background: var(--app-muitube-background, var(--surface))" slot="body">
         <mui-h-stack style="padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color);" alignx="space-between" aligny="center">
           <mui-h-stack alignx="start" aligny="center" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000);">
             <mui-responsive variant="container" breakpoint="768" observe=".content-container">
@@ -627,7 +627,6 @@ class compMuiTube extends HTMLElement {
         }
       });
     });
-
   }
 }
 

@@ -54,7 +54,7 @@ class storyChipRail extends HTMLElement {
         title="Default"
         description="A horizontal rail for filters, quicklinks, and compact category navigation."
         usage="Use Chip Rail when chip items should stay on one line and scroll horizontally.|||The rail automatically shows previous and next actions only when overflow exists."
-        canvas-background="var(--surface-elevated-100)"
+        canvas-background="var(--surface)"
       >
         <div slot="body" class="rail-canvas">
           <mui-chip-rail aria-label="Video filters">
@@ -73,7 +73,7 @@ class storyChipRail extends HTMLElement {
       <story-card
         title="Sizes"
         description="The rail size is pushed to the slotted chips and internal arrow actions."
-        canvas-background="var(--surface-elevated-100)"
+        canvas-background="var(--surface)"
       >
         <mui-v-stack slot="body" width="100%" alignx="stretch" space="var(--space-400)" class="rail-canvas">
           <mui-chip-rail size="x-small" aria-label="X-small filters">
@@ -95,13 +95,35 @@ class storyChipRail extends HTMLElement {
       </story-card>
 
       <story-card
+        title="Card Surface"
+        description="When Chip Rail is placed inside card body content, the card applies card-slot so the rail edge masks match the elevated card surface."
+        usage="Use the default rail background on page surfaces.|||Inside card surfaces, let card-slot switch the rail mask to surface-elevated-100.|||Use --chip-rail-background only when the rail sits on a custom surface."
+        canvas-background="var(--surface)"
+      >
+        <mui-card slot="body">
+          <mui-card-body>
+            <mui-chip-rail aria-label="Card filters">
+              ${chipItems}
+            </mui-chip-rail>
+          </mui-card-body>
+        </mui-card>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-card&gt;<br />
+          &nbsp;&nbsp;&lt;mui-card-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-chip-rail aria-label="Card filters"&gt;...&lt;/mui-chip-rail&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+          &lt;/mui-card&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
         title="Bleed"
         description="Use bleed sizing when the rail needs internal edge space for overflow controls."
         usage="Use bleed-inline-size for horizontal edge space.|||Use bleed-block-size when the rail needs vertical breathing room too."
-        canvas-background="var(--surface-elevated-200)"
+        canvas-background="var(--surface-recessed-100)"
       >
         <div slot="body" class="bleed-canvas">
-          <mui-chip-rail size="small" bleed-inline-size="300" bleed-block-size="300" aria-label="Bleed filters" style="--chip-rail-background: var(--surface-elevated-200);">
+          <mui-chip-rail size="small" bleed-inline-size="300" bleed-block-size="300" aria-label="Bleed filters" style="--chip-rail-background: var(--surface-recessed-100);">
             ${chipItems}
           </mui-chip-rail>
         </div>

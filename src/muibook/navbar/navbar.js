@@ -232,6 +232,7 @@ class appNavbar extends HTMLElement {
         </app-navbar-section>
 
         <app-navbar-section heading="Navigation" default-open>
+          <app-navbar-link link="/chip-rail" title="Chip Rail"></app-navbar-link>
           <app-navbar-link link="/stepper" title="Stepper"></app-navbar-link>
           <app-navbar-link link="/tab-bar" title="Tab Bar"></app-navbar-link>
         </app-navbar-section>

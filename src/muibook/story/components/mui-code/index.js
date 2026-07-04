@@ -124,6 +124,44 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
+        <story-card title="Surface Contexts" description="Code defaults to surface-elevated-100, then shifts to surface-elevated-200 when the card context applies card-slot.">
+          <mui-v-stack slot="body" space="var(--space-600)">
+            <mui-v-stack space="var(--space-200)">
+              <mui-body size="x-small" weight="bold">Default</mui-body>
+              <mui-code size="x-small" wrap>--code-background: var(--surface-elevated-100);</mui-code>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-200)">
+              <mui-body size="x-small" weight="bold">Card Body</mui-body>
+              <mui-card>
+                <mui-card-body>
+                  <mui-code size="x-small" wrap>Card body dynamically applies card-slot to nested code.</mui-code>
+                </mui-card-body>
+              </mui-card>
+            </mui-v-stack>
+
+            <mui-v-stack space="var(--space-200)">
+              <mui-body size="x-small" weight="bold">Card Footer</mui-body>
+              <mui-card>
+                <mui-card-body>
+                  <mui-body size="medium">Footer code should sit one elevation above the card surface.</mui-body>
+                </mui-card-body>
+                <mui-card-footer>
+                  <mui-code size="x-small" wrap>Card footer dynamically applies card-slot to direct code.</mui-code>
+                </mui-card-footer>
+              </mui-card>
+            </mui-v-stack>
+          </mui-v-stack>
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-code&gt;...&lt;/mui-code&gt;<br /><br />
+            &lt;mui-card&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-code&gt;...&lt;/mui-code&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+            &lt;/mui-card&gt;
+          </story-code-block>
+        </story-card>
+
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `

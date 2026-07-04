@@ -10,9 +10,6 @@ class pageCard extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
-      mui-card {
-        border: var(--border-thick);
-      }
 
     `;
 
@@ -40,7 +37,7 @@ class pageCard extends HTMLElement {
           ${orderedListItems
             .map(
               (orderedList) =>
-                /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${orderedList}</mui-list-item>`
+                /*html*/ `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${orderedList}</mui-list-item>`,
             )
             .join("")}
         </mui-list>
@@ -65,7 +62,7 @@ class pageCard extends HTMLElement {
           ${unorderedListItems
             .map(
               (unorderedList) =>
-                `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${unorderedList}</mui-list-item>`
+                `<mui-list-item size="small" weight="medium" style="margin-bottom: var(--space-050)">${unorderedList}</mui-list-item>`,
             )
             .join("")}
         </mui-list>

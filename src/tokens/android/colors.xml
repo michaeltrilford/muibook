@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Don't edit directly • Generated on Sat, 04 Jul 2026 02:32:44 GMT • muibook.com
+  Don't edit directly • Generated on Sat, 04 Jul 2026 07:06:45 GMT • muibook.com
 -->
 <resources>
     <color name="black">#FF000000</color>
@@ -28,7 +28,7 @@
     <color name="white_opacity_80">#CCFFFFFF</color>
     <color name="white_opacity_90">#E6FFFFFF</color>
     <color name="white_opacity_100">#FFFFFFFF</color>
-    <color name="grey_50">#FFF5F5F5</color>
+    <color name="grey_50">#FFF2F2F2</color>
     <color name="grey_100">#FFEBEBEB</color>
     <color name="grey_200">#FFE5E5E5</color>
     <color name="grey_300">#FFCCCCCC</color>
@@ -36,8 +36,8 @@
     <color name="grey_500">#FF888888</color>
     <color name="grey_600">#FF666666</color>
     <color name="grey_700">#FF555555</color>
-    <color name="grey_800">#FF444444</color>
-    <color name="grey_900">#FF333333</color>
+    <color name="grey_800">#FF494949</color>
+    <color name="grey_900">#FF3B3B3B</color>
     <color name="grey_1000">#FF2A2A2A</color>
     <color name="grey_1100">#FF222222</color>
     <color name="grey_1200">#FF191919</color>

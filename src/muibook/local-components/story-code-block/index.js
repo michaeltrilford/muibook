@@ -16,7 +16,7 @@ class StoryCodeBlock extends HTMLElement {
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <mui-accordion-block
-        class="card-slot" 
+        card-slot
         slot="footer"
         detail-space="none"
         heading="
@@ -30,7 +30,7 @@ class StoryCodeBlock extends HTMLElement {
           >👨‍💻</span>
           <span style='display: inline-flex; margin-bottom: var(--space-050);'>View Code</span>" 
       >
-        <mui-code slot="detail" scrollable>
+        <mui-code slot="detail" scrollable card-slot>
           <slot></slot>
         </mui-code>
       </mui-accordion-block>

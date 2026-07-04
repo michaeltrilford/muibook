@@ -20,7 +20,7 @@ class StorySearchInput extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-search-input" title="Search Input"></story-api-types>
 
-      <story-card title="Default" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--app-story-canvas-100)">
+      <story-card title="Default" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--surface)">
         <div slot="body" class="demo-row">
           <mui-search-input label="Search projects"></mui-search-input>
         </div>
@@ -29,7 +29,7 @@ class StorySearchInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="After Slot: Tabs" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--app-story-canvas-100)">
+      <story-card title="After Slot: Tabs" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--surface)">
         <div slot="body" class="demo-row">
           <mui-search-input label="Search tabs" autofocus>
             <mui-button slot="action" variant="tertiary" icon-only aria-label="Search tabs">
@@ -54,7 +54,7 @@ class StorySearchInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="After Slot: Custom Width" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--app-story-canvas-100)">
+      <story-card title="After Slot: Custom Width" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--surface)">
         <div slot="body" class="demo-row">
           <mui-search-input label="Search tabs" autofocus>
             <mui-button slot="action" variant="tertiary" icon-only aria-label="Search tabs">
@@ -83,7 +83,7 @@ class StorySearchInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Controlled Open" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--app-story-canvas-100)">
+      <story-card title="Controlled Open" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--surface)">
         <div slot="body" class="demo-row">
           <mui-search-input label="Search orders" open value="Button">
             <mui-button slot="action" variant="tertiary" icon-only aria-label="Search tabs">

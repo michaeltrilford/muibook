@@ -24,25 +24,6 @@ class storySlat extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
-      .slat {
-        --slat-background: var(--black-opacity-0);
-        --slat-radius: var(--radius-000);
-        --slat-background-hover: var(--surface-recessed-alpha);
-        border-bottom: var(--border-thin);
-      }
-      .slat:last-of-type {
-        border-bottom: none;
-      }
-
-      .card-slat {
-        --slat-radius: var(--radius-000);
-        border-bottom: var(--border-thin);
-      }
-      .card-slat:last-of-type {
-        margin-bottom: var(--space-400);
-        border-bottom: none;
-      }
-
       .token-item-menu::part(flex-wrap) {
         flex-wrap: wrap;
         column-gap: var(--space-300);

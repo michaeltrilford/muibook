@@ -16,7 +16,7 @@ class StoryAvatarGroup extends HTMLElement {
       }
 
       .custom-ring {
-        --avatar-group-ring-color: var(--surface-recessed-300);
+        --avatar-group-ring-color: var(--surface-recessed-100);
         --avatar-group-ring-width: var(--stroke-size-300);
       }
     `;
@@ -189,6 +189,22 @@ class StoryAvatarGroup extends HTMLElement {
             </mui-card-body>
           </mui-card>
 
+          <mui-card>
+            <mui-card-body>
+              <mui-slat variant="action">
+                <mui-avatar-group slot="accessory" size="small" label="Assigned reviewers">
+                  <mui-avatar image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+                  <mui-avatar label="Alex Morgan" background="purple"></mui-avatar>
+                  <mui-avatar label="Riley Chen" background="blue"></mui-avatar>
+                </mui-avatar-group>
+                <mui-v-stack slot="start" space="0">
+                  <mui-body size="medium" weight="bold">Assigned reviewers</mui-body>
+                  <mui-body size="small">Ring follows the slat surface and hover state</mui-body>
+                </mui-v-stack>
+              </mui-slat>
+            </mui-card-body>
+          </mui-card>
+
           <mui-slat variant="action">
             <mui-avatar-group slot="accessory" size="small" label="Assigned reviewers">
               <mui-avatar image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
@@ -201,7 +217,7 @@ class StoryAvatarGroup extends HTMLElement {
             </mui-v-stack>
           </mui-slat>
 
-          <mui-v-stack style="background: var(--surface-recessed-300); padding: var(--space-400); border-radius: var(--radius-400);">    
+          <mui-v-stack style="background: var(--surface-recessed-100); padding: var(--space-400); border-radius: var(--radius-400);">
             <mui-avatar-group class="custom-ring" size="medium" label="Collaborators on custom elevated surface">
               <mui-avatar image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               <mui-avatar label="Alex Morgan" background="purple"></mui-avatar>
@@ -221,12 +237,12 @@ class StoryAvatarGroup extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-avatar-group slot=&quot;accessory&quot;&gt;...&lt;/mui-avatar-group&gt;<br />
           &lt;/mui-slat&gt;<br />
           <br />
-          &lt;mui-v-stack style=&quot;background: var(--surface-recessed-300); padding: var(--space-400); border-radius: var(--radius-400);&quot;&gt;<br />
+          &lt;mui-v-stack style=&quot;background: var(--surface-recessed-100); padding: var(--space-400); border-radius: var(--radius-400);&quot;&gt;<br />
           &nbsp;&nbsp;&lt;mui-avatar-group class=&quot;custom-ring&quot;&gt;...&lt;/mui-avatar-group&gt;<br />
           &lt;/mui-v-stack&gt;<br />
           <br />
           .custom-ring {<br />
-          &nbsp;&nbsp;--avatar-group-ring-color: var(--surface-recessed-300);<br />
+          &nbsp;&nbsp;--avatar-group-ring-color: var(--surface-recessed-100);<br />
           &nbsp;&nbsp;--avatar-group-ring-width: var(--stroke-size-300);<br />
           }
         </story-code-block>
@@ -244,7 +260,7 @@ class StoryAvatarGroup extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-        imports='["@muibook/components/mui-avatar-group", "@muibook/components/mui-avatar", "@muibook/components/mui-card", "@muibook/components/mui-slat"]'>
+        imports='["@muibook/components/mui-avatar-group"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"

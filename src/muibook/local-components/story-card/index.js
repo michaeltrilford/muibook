@@ -25,9 +25,6 @@ class storyCard extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
-      mui-card {
-        border: var(--border-thick);
-      }
 
       :host([composition]) mui-card {
         overflow: hidden;

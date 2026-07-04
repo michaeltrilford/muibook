@@ -12,7 +12,7 @@ class compWallet extends HTMLElement {
         display: block;
       }
       .canvas {
-        background: var(--app-story-wallet-card);
+        background: var(--app-story-wallet-card, var(--surface));
         padding: var(--space-400);
         margin-top: calc(var(--space-400) * -1);
         margin-bottom: calc(var(--space-400) * -1);
@@ -63,12 +63,12 @@ class compWallet extends HTMLElement {
                   <mui-slat variant="row" col="1fr auto">
 
                     <mui-avatar slot="accessory">
-                      <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+                      <mui-icon-movie-clapper size="small"></mui-icon-movie-clapper>
                     </mui-avatar>
 
                     <mui-v-stack slot="start" space="0">
-                      <mui-body size="medium" weight="bold">Espresso Bar</mui-body>
-                      <mui-body size="small">Food & Drink</mui-body>
+                      <mui-body size="medium" weight="bold">Palace Cinema</mui-body>
+                      <mui-body size="small">Entertainment</mui-body>
                     </mui-v-stack>
                     <mui-v-stack space="0" slot="end" alignX="end">
                       <mui-body size="small">Pending</mui-body>
@@ -78,7 +78,7 @@ class compWallet extends HTMLElement {
                   <mui-slat variant="row" col="1fr auto">
 
                     <mui-avatar slot="accessory">
-                      <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+                      <mui-icon-game-controller size="small"></mui-icon-game-controller>
                     </mui-avatar>
 
                     <mui-v-stack slot="start" space="0">
@@ -99,12 +99,12 @@ class compWallet extends HTMLElement {
                   <mui-slat variant="row" col="1fr auto">
 
                     <mui-avatar slot="accessory">
-                      <mui-icon-left-sidebar size="small"></mui-icon-left-sidebar>
+                      <mui-icon-music-microphone size="small"></mui-icon-music-microphone>
                     </mui-avatar>
 
                     <mui-v-stack slot="start" space="0">
-                      <mui-body size="medium" weight="bold">IGA South Yarra</mui-body>
-                      <mui-body size="small">Groceries</mui-body>
+                      <mui-body size="medium" weight="bold">Record South Yarra</mui-body>
+                      <mui-body size="small">Entertainment</mui-body>
                     </mui-v-stack>
                     <mui-v-stack space="0" slot="end" alignX="end">
                       <mui-body size="small">Pending</mui-body>
@@ -121,21 +121,34 @@ class compWallet extends HTMLElement {
                     <mui-heading size="6" slot="start">Recents</mui-heading>
                   </mui-slat>
                   <mui-slat variant="action">
+                    <mui-avatar slot="accessory">
+                      <mui-icon-rectangle-media-text size="small"></mui-icon-rectangle-media-text>
+                    </mui-avatar>
+
                     <mui-v-stack space="0" slot="start">
-                      <mui-body size="medium" weight="bold">Get a Transactions Report</mui-body>
-                      <mui-body size="small">Generate a PDF of your recent transactions</mui-body>
+                      <mui-body size="medium" weight="bold">Transactions Report</mui-body>
+                      <mui-body size="small">Generate a PDF</mui-body>
                     </mui-v-stack>
                   </mui-slat>
                   <mui-slat variant="action">
+                    <mui-avatar slot="accessory">
+                      <mui-icon-calendar size="small"></mui-icon-calendar>
+                    </mui-avatar>
                     <mui-body size="medium" weight="bold" slot="start">21 Mar 2025</mui-body>
                   </mui-slat>
                   <mui-slat variant="header">
                     <mui-heading size="6" slot="start">All</mui-heading>
                   </mui-slat>
                   <mui-slat variant="action">
+                    <mui-avatar slot="accessory">
+                      <mui-icon-calendar size="small"></mui-icon-calendar>
+                    </mui-avatar>
                     <mui-body size="medium" weight="bold" slot="start">2025</mui-body>
                   </mui-slat>
                   <mui-slat variant="action">
+                    <mui-avatar slot="accessory">
+                      <mui-icon-calendar size="small"></mui-icon-calendar>
+                    </mui-avatar>
                     <mui-body size="medium" weight="bold" slot="start">2024</mui-body>
                   </mui-slat>
                 </mui-slat-group>
@@ -221,7 +234,8 @@ class compWallet extends HTMLElement {
 
           <mui-heading size="3" level="2">Personalise Card</mui-heading>
 
-          <mui-slat-group data-group="card-artwork">
+          <mui-card data-group="card-artwork">
+            <mui-card-body condensed>
 
             <mui-slat variant="row" style="grid-template-columns: 2fr auto; background: var(--app-wallet-slat-background, var(--slat-background));">
               <mui-v-stack slot="start" space="0">
@@ -232,8 +246,8 @@ class compWallet extends HTMLElement {
               <mui-h-stack space="0" slot="end" alignX="end">
                 <mui-button data-background-reset variant="tertiary" style="display: none;">Reset</mui-button>
                 <mui-dropdown data-toggle-dropdown="background" data-file-preview="true" position="center" class="card-artwork">
-                  <mui-button slot="action" variant="tertiary">
-                    <mui-icon-toggle data-toggle-control="background" rotate>
+                  <mui-button slot="action" variant="tertiary" size="small">
+                    <mui-icon-toggle data-toggle-control="background" rotate size="small">
                       <mui-icon-add slot="start"></mui-icon-add>
                       <mui-icon-subtract slot="end"></mui-icon-subtract>
                     </mui-icon-toggle>
@@ -256,7 +270,9 @@ class compWallet extends HTMLElement {
               </mui-h-stack>
             </mui-slat>
 
-          </mui-slat-group>
+            </mui-card-body>
+
+          </mui-card>
 
 
         </mui-v-stack>
@@ -274,7 +290,7 @@ class compWallet extends HTMLElement {
           &nbsp;&nbsp;&quot;&gt;<br><br>
 
           &nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot; level=&quot;2&quot;&gt;Personalise Card&lt;/mui-heading&gt;<br/><br/>
-          &nbsp;&nbsp;&lt;mui-slat-group data-group=&quot;card-artwork&quot;&gt;<br/>
+          &nbsp;&nbsp;&lt;mui-card data-group=&quot;card-artwork&quot;&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant=&quot;row&quot; style=&quot;grid-template-columns: 2fr auto;&quot;&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;start&quot; space=&quot;0&quot;&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;medium&quot; weight=&quot;bold&quot;&gt;Artwork&lt;/mui-body&gt;<br/>
@@ -284,8 +300,8 @@ class compWallet extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-background-reset variant=&quot;tertiary&quot; style=&quot;display: none;&quot;&gt;Reset&lt;/mui-button&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown data-toggle-dropdown=&quot;background&quot; data-file-preview=&quot;true&quot; position=&quot;center&quot;&gt;<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control=&quot;background&quot; rotate&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size=&quot;small&quot; slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle size=&quot;small&quot data-toggle-control=&quot;background&quot; rotate&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot=&quot;start&quot;&gt;&lt;/mui-icon-add&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot=&quot;end&quot;&gt;&lt;/mui-icon-subtract&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br/>
@@ -308,7 +324,7 @@ class compWallet extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br/>
-          &nbsp;&nbsp;&lt;/mui-slat-group&gt;<br/>
+          &nbsp;&nbsp;&lt;/mui-card&gt;<br/>
           &lt;/mui-v-stack&gt;
 
           <br><br><br>

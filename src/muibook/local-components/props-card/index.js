@@ -23,10 +23,6 @@ class PropsCard extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; scroll-margin-top: var(--space-600); }
 
-      mui-card {
-        border: var(--border-thick);
-      }
-
       mui-card-body {
         padding: 0;
       }

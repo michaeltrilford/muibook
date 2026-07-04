@@ -37,7 +37,8 @@ class SkillsPage extends HTMLElement {
       }
 
       .resource-page mui-code {
-        border-radius: var(--radius-300);
+        border-radius: var(--radius-200);
+        --code-background: var(--surface);
       }
 
       .sticky-panel {
