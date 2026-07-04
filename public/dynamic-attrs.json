@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-04T09:28:42.722Z",
+  "generatedAt": "2026-07-04T11:23:46.695Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -286,16 +286,6 @@
         }
       ]
     },
-    "mui-card-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-button-group",
-          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
-        }
-      ]
-    },
     "mui-card-body": {
       "version": 1,
       "destinationOnly": true,
@@ -314,13 +304,13 @@
         }
       ]
     },
-    "mui-slat-group": {
+    "mui-card-footer": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         {
-          "name": "usage",
-          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+          "name": "has-button-group",
+          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
         }
       ]
     },
@@ -346,13 +336,13 @@
         }
       ]
     },
-    "mui-row": {
+    "mui-slat-group": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         {
-          "name": "in-card",
-          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
+          "name": "usage",
+          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
         }
       ]
     },
@@ -363,6 +353,16 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
+        }
+      ]
+    },
+    "mui-row": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "in-card",
+          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
         }
       ]
     },

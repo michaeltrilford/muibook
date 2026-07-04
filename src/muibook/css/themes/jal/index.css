@@ -136,11 +136,13 @@ html[data-brand="jal"][data-theme="light"] {
   /* Surface */
   --surface: var(--grey-200);
   --surface-elevated-alpha: var(--white-opacity-50);
-  --surface-elevated-100: var(--white);
-  --surface-elevated-200: var(--grey-100);
+  --surface-elevated-100: var(--grey-100);
+  --surface-elevated-200: var(--grey-200);
+  --surface-elevated-300: var(--grey-300);
   --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
+  --surface-recessed-300: var(--grey-500);
   --drawer-background: var(--white);
   --drawer-resize-rail-background: var(--white);
   --drawer-resize-rail-inner-background: var(--grey-300);
@@ -329,11 +331,13 @@ html[data-brand="jal"][data-theme="dark"] {
   /* Surface */
   --surface: var(--grey-900);
   --surface-elevated-alpha: var(--white-opacity-10);
-  --surface-elevated-100: var(--grey-900);
-  --surface-elevated-200: var(--grey-1000);
+  --surface-elevated-100: var(--grey-1000);
+  --surface-elevated-200: var(--grey-1100);
+  --surface-elevated-300: var(--grey-1200);
   --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
   --surface-recessed-200: var(--grey-1200);
+  --surface-recessed-300: var(--grey-1300);
   --drawer-background: var(--surface-recessed-100);
   --drawer-resize-rail-background: var(--grey-1200);
   --drawer-resize-rail-inner-background: var(--grey-900);

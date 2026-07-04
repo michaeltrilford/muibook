@@ -221,7 +221,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--green-1200);
-  --app-story-card: var(--white-opacity-60);
+  --app-story-card: var(--surface);
   --app-story-canvas-100: var(--green-300);
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);
@@ -249,7 +249,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-navbar-border: var(--stroke-size-100) solid var(--app-navbar-border-color);
   --app-navbar-accordion-chevron-hover: var(--app-navbar-surface-100);
   --home-page-body-text: var(--green-400);
-  --app-story-card: var(--green-1400);
+  --app-story-card: var(--surface);
   --app-story-canvas-100: var(--green-1500);
   --app-story-wallet-card: var(--surface-elevated-100);
   --app-story-banner-border-color: var(--app-navbar-border-color);

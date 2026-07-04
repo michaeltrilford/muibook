@@ -63,7 +63,7 @@ class MuiCardBody extends HTMLElement {
               slat.removeAttribute("condensed-slot-last");
               if (this.hasAttribute("condensed")) {
                 slat.setAttribute("condensed-slot", "");
-                condensedSlats.push(slat);
+                condensedSlats.push(slat as HTMLElement);
               } else {
                 slat.removeAttribute("condensed-slot");
               }

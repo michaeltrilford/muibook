@@ -181,9 +181,11 @@ html[data-brand="paperclip"][data-theme="light"] {
   --surface-elevated-alpha: color-mix(in srgb, var(--blue-500) 80%, transparent);
   --surface-elevated-100: var(--white);
   --surface-elevated-200: var(--blue-100);
+  --surface-elevated-300: var(--blue-100);
   --surface-recessed-alpha: color-mix(in srgb, var(--blue-500) 10%, transparent);
   --surface-recessed-100: var(--blue-500);
   --surface-recessed-200: var(--blue-500);
+  --surface-recessed-300: var(--blue-500);
   --code-text-color: var(--blue-500);
   --code-background: var(--blue-100);
   --media-player-seek-color: var(--blue-500);
@@ -654,6 +656,7 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --surface-elevated-alpha: color-mix(in srgb, var(--blue-500) 10%, transparent);
   --surface-elevated-100: var(--blue-500);
   --surface-elevated-200: var(--blue-600);
+  --surface-elevated-300: var(--blue-600);
   --surface-recessed-alpha: color-mix(in srgb, var(--blue-500) 40%, transparent);
   --surface-recessed-100: var(--blue-500);
   --surface-recessed-200: var(--blue-500);
