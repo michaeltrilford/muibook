@@ -98,6 +98,32 @@ Forms require a strict hierarchy for accessibility and grouping. Use `<mui-form-
 </mui-form-section>
 ```
 
+### React And Form Values
+
+When composing these Web Components in React, keep React at the boundary and let the Web Component own its internals.
+
+- Use wrapper props such as `onValueChange` or `onCheckedChange` that attach native listeners to the custom element host.
+- Read `event.detail.value` or `event.detail.checked` from `input` and `change` events.
+- Set `value`, `checked`, `disabled`, and similar state on the host element; do not recreate the internal input in React.
+- Keep draft typing state local in property panels, then commit to the component tree after debounce, blur, Enter, or an explicit action when live tree updates would disrupt focus or selection.
+- Stop keyboard propagation inside property panel inputs when global canvas shortcuts would otherwise delete nodes or trigger builder actions.
+- Use `shadowRoot.querySelector(...)` only for direct internal focus or legacy readbacks. Prefer host `focus()` and event detail for normal application logic.
+
+```tsx
+<MuiInput
+  label="Name"
+  value={draftName}
+  onValueChange={(value) => setDraftName(String(value))}
+/>
+
+<MuiCheckbox
+  checked={isEnabled}
+  onCheckedChange={(checked) => setIsEnabled(checked)}
+/>
+```
+
+This matters in builder/property-panel UIs because the same input is both a React control and a Web Component host. React should coordinate state and persistence; the Web Component should keep native input behavior, shadow DOM, accessibility, and emitted events.
+
 ### Media and Presentations
 
 Media components like `<mui-media-player>` rely heavily on slots to overlay metadata and controls natively.

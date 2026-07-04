@@ -53,6 +53,15 @@ class MuiChipInput extends HTMLElement {
     this.rerenderAndPreserveFocus(0, 0);
   }
 
+  focus(options?: FocusOptions) {
+    const inner = this.getInnerInput();
+    if (inner) {
+      inner.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     if (!this.hasAttribute("id")) {

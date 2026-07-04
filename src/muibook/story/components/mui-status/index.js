@@ -1,10 +1,17 @@
 import { getComponentDocs } from "../../../utils/story-data";
 import "../../../../components/mui-status";
 
+const statusDropdownOptions = [
+  { value: "active", label: "Active", variant: "positive" },
+  { value: "review", label: "Review", variant: "warning" },
+  { value: "blocked", label: "Blocked", variant: "attention" },
+];
+
 class storyStatus extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.selectedStatus = statusDropdownOptions[0];
   }
 
   async connectedCallback() {
@@ -166,20 +173,49 @@ class storyStatus extends HTMLElement {
       <story-card
         title="Dropdown Composition"
         description="Status can be composed inside other controls when the state is also the selected value."
+        usage="Own the selected value in the parent app or composition.|||Use Dropdown for menu behavior and Status for the visible selected state.|||Do not rely on Dropdown to mutate the slotted Status automatically."
       >
-        <mui-dropdown slot="body">
-          <mui-status slot="action" action variant="positive">
+        <mui-dropdown slot="body" data-status-dropdown>
+          <mui-status slot="action" action variant="positive" data-status-trigger>
             <mui-icon-check slot="before"></mui-icon-check>
             Active
             <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
           </mui-status>
-          <mui-button size="x-small" variant="primary">Active</mui-button>
-          <mui-button size="x-small" variant="tertiary">Review</mui-button>
-          <mui-button size="x-small" variant="tertiary">Blocked</mui-button>
+          <mui-button size="x-small" variant="primary" data-status-option="active">Active</mui-button>
+          <mui-button size="x-small" variant="tertiary" data-status-option="review">Review</mui-button>
+          <mui-button size="x-small" variant="tertiary" data-status-option="blocked">Blocked</mui-button>
         </mui-dropdown>
         <story-code-block slot="footer" scrollable>
+          const statuses = [<br />
+          &nbsp;&nbsp;{ value: &quot;active&quot;, label: &quot;Active&quot;, variant: &quot;positive&quot; },<br />
+          &nbsp;&nbsp;{ value: &quot;review&quot;, label: &quot;Review&quot;, variant: &quot;warning&quot; },<br />
+          &nbsp;&nbsp;{ value: &quot;blocked&quot;, label: &quot;Blocked&quot;, variant: &quot;attention&quot; },<br />
+          ];<br />
+          <br />
+          let selectedStatus = statuses[0];<br />
+          <br />
+          function syncStatusDropdown(root) {<br />
+          &nbsp;&nbsp;const trigger = root.querySelector(&quot;[data-status-trigger]&quot;);<br />
+          &nbsp;&nbsp;trigger.setAttribute(&quot;variant&quot;, selectedStatus.variant);<br />
+          &nbsp;&nbsp;trigger.replaceChildren(selectedStatus.label);<br />
+          <br />
+          &nbsp;&nbsp;root.querySelectorAll(&quot;[data-status-option]&quot;).forEach((option) =&gt; {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;option.setAttribute(&quot;variant&quot;, option.dataset.statusOption === selectedStatus.value ? &quot;primary&quot; : &quot;tertiary&quot;);<br />
+          &nbsp;&nbsp;});<br />
+          }<br />
+          <br />
+          root.querySelectorAll(&quot;[data-status-option]&quot;).forEach((option) =&gt; {<br />
+          &nbsp;&nbsp;option.addEventListener(&quot;click&quot;, () =&gt; {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;selectedStatus = statuses.find((status) =&gt; status.value === option.dataset.statusOption);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;syncStatusDropdown(root);<br />
+          &nbsp;&nbsp;});<br />
+          });<br />
+          <br />
           &lt;mui-dropdown&gt;<br />
-          &nbsp;&nbsp;&lt;mui-status slot=&quot;action&quot; action variant=&quot;positive&quot; size=&quot;small&quot;&gt;Active&lt;/mui-status&gt;<br />
+          &nbsp;&nbsp;&lt;mui-status slot=&quot;action&quot; action data-status-trigger&gt;Active&lt;/mui-status&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button data-status-option=&quot;active&quot;&gt;Active&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button data-status-option=&quot;review&quot;&gt;Review&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button data-status-option=&quot;blocked&quot;&gt;Blocked&lt;/mui-button&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
@@ -200,6 +236,39 @@ class storyStatus extends HTMLElement {
         ${stories}
       </story-template>
     `;
+
+    this.bindStatusDropdown();
+    this.syncStatusDropdown();
+  }
+
+  bindStatusDropdown() {
+    const dropdown = this.shadowRoot.querySelector("[data-status-dropdown]");
+    if (!dropdown) return;
+
+    dropdown.querySelectorAll("[data-status-option]").forEach((option) => {
+      option.addEventListener("click", () => {
+        const nextStatus = statusDropdownOptions.find((status) => status.value === option.dataset.statusOption);
+        if (!nextStatus) return;
+
+        this.selectedStatus = nextStatus;
+        this.syncStatusDropdown();
+      });
+    });
+  }
+
+  syncStatusDropdown() {
+    const trigger = this.shadowRoot.querySelector("[data-status-trigger]");
+    if (!trigger) return;
+
+    trigger.setAttribute("variant", this.selectedStatus.variant);
+    Array.from(trigger.childNodes).forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) node.remove();
+    });
+    trigger.insertBefore(document.createTextNode(this.selectedStatus.label), trigger.querySelector('[slot="after"]'));
+
+    this.shadowRoot.querySelectorAll("[data-status-option]").forEach((option) => {
+      option.setAttribute("variant", option.dataset.statusOption === this.selectedStatus.value ? "primary" : "tertiary");
+    });
   }
 }
 

@@ -29,6 +29,15 @@ class MuiRangeInput extends HTMLElement {
     this.setAttribute("value", String(Number.isFinite(next) ? next : 0));
   }
 
+  focus(options?: FocusOptions) {
+    const input = this.shadowRoot?.querySelector("input");
+    if (input) {
+      input.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   private getThumbSize() {
     return Number(this.getAttribute("thumb-size") || "16");
   }

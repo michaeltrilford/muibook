@@ -112,6 +112,11 @@ class SkillsPage extends HTMLElement {
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Events And Form Controls</mui-heading>
+                <mui-body size="medium">Emit composed, bubbling custom events from the host with useful detail payloads so React wrappers, builders, and app code can read values without owning shadow DOM internals.</mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Knowledge Bundle</mui-heading>
                 <mui-body size="medium">Keep generated API metadata, dynamic attrs, design guidance, agent rules, keyword mappings, composition examples, and downloadable skill files as separate knowledge surfaces.</mui-body>
               </mui-v-stack>
@@ -199,6 +204,7 @@ class SkillsPage extends HTMLElement {
                   ## What This Approach Optimizes For<br />
                   ## Component Anatomy<br />
                   ## Public API Discipline<br />
+                  ## Events And Form Controls<br />
                   ## Knowledge Bundle<br />
                   ## Token Architecture<br />
                   ## Styling Model<br />
@@ -364,6 +370,11 @@ class SkillsPage extends HTMLElement {
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">React And Form Values</mui-heading>
+                <mui-body size="medium">Use host listeners and wrapper callbacks like onValueChange or onCheckedChange, reading event detail while leaving input behavior inside the Web Component.</mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-300)">
                 <mui-heading level="3" size="5">Slotting & Automated Context</mui-heading>
                 <mui-body size="medium">Understand standard slots (start, end, action, meta) and how parents react to them.</mui-body>
               </mui-v-stack>
@@ -410,6 +421,7 @@ class SkillsPage extends HTMLElement {
                   # Compose Web Components Skill<br /><br />
                   ## Building Layouts<br />
                   ## Component Combinations (Deep Dive)<br />
+                  ## React And Form Values<br />
                   ## Slotting & Automated Context<br />
                   ## Prop Knowledge<br />
                   ## Do's and Don'ts
@@ -428,7 +440,7 @@ class SkillsPage extends HTMLElement {
                     <mui-link href="/style-web-components-skill.md" target="_blank" rel="noopener noreferrer" variant="tertiary" size="small" weight="regular">View</mui-link>
                   </mui-h-stack>
                 </mui-h-stack>
-                <mui-rule direction="horizontal" role="presentation"></mui-rule><mui-body size="large" weight="regular" variant="default">Add your own theme to Muibook components.</mui-body>
+                <mui-rule direction="horizontal" role="presentation"></mui-rule><mui-body size="large" weight="regular" variant="default">Add themes and targeted visual overrides to Web Components.</mui-body>
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
@@ -447,8 +459,18 @@ class SkillsPage extends HTMLElement {
               </mui-v-stack>
 
               <mui-v-stack space="var(--space-300)">
-                <mui-heading level="3" size="5">Overrides</mui-heading>
-                <mui-body size="medium">Apply isolated component overrides without breaking the global theme or adding escape hatches.</mui-body>
+                <mui-heading level="3" size="5">Targeted Overrides</mui-heading>
+                <mui-body size="medium">Apply isolated component overrides with scoped classes, component variables, and intentional parts without leaking styling across the app.</mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Adding Theme Surface</mui-heading>
+                <mui-body size="medium">Map brand primitives through light and dark semantic surfaces before adding component tokens or local variables.</mui-body>
+              </mui-v-stack>
+
+              <mui-v-stack space="var(--space-300)">
+                <mui-heading level="3" size="5">Override Review</mui-heading>
+                <mui-body size="medium">Check whether an adjustment belongs at the brand, semantic, component token, page class, instance class, or part level.</mui-body>
               </mui-v-stack>
             </mui-v-stack>
 
@@ -479,13 +501,15 @@ class SkillsPage extends HTMLElement {
                 <mui-code size="x-small" scrollable>
                   ---<br />
                   name: style-web-components-skill<br />
-                  description: Add your own theme to Muibook components using CSS variables and HTML attributes.<br />
+                  description: Add themes and targeted visual overrides to Web Components using layered CSS variables, parts, classes, and HTML attributes.<br />
                   ---<br /><br />
                   # Style Web Components Skill<br /><br />
                   ## Token Architecture<br />
                   ## Base Theme Structure<br />
                   ## Multi-Brand Theming<br />
-                  ## Overrides
+                  ## Targeted Overrides<br />
+                  ## Adding Theme Surface<br />
+                  ## Override Review
                 </mui-code>
               </mui-v-stack>
             </mui-v-stack>

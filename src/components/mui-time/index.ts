@@ -15,6 +15,23 @@ class MuiTime extends HTMLElement {
     this.minute = now.getMinutes();
   }
 
+  get value(): string {
+    return this.getAttribute("value") || "";
+  }
+
+  set value(next: string) {
+    this.setAttribute("value", next ?? "");
+  }
+
+  focus(options?: FocusOptions) {
+    const target = this.shadowRoot?.querySelector(".selected, .slot-btn, .column") as HTMLElement | null;
+    if (target && typeof target.focus === "function") {
+      target.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   connectedCallback() {
     this.syncAttributes();
     this.render();

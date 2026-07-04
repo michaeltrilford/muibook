@@ -57,6 +57,61 @@ Build each component as a custom element that owns its rendered contract.
 
 Prefer native browser behavior before custom JavaScript. Add JavaScript for state sync, accessibility, slot inspection, and controlled behavior, not for layout that CSS can handle.
 
+## Events And Form Controls
+
+For form-like components, make the host element the integration boundary and let the internal native control stay inside shadow DOM.
+
+- Mirror user-editable state onto a host property and, when useful for serialization, a host attribute such as `value` or `checked`.
+- Dispatch `CustomEvent` from the host with `bubbles: true` and `composed: true` so app code, wrappers, builders, and delegated listeners can hear the event outside the shadow root.
+- Put the useful state in `event.detail`: text controls emit `detail.value`; checkbox, radio, and switch emit `detail.checked` and include `detail.value` or `detail.name` where relevant.
+- Dispatch native-shaped event names such as `input` and `change` for form controls so wrappers can use familiar boundaries.
+- Do not rely on React synthetic `onChange` for custom element value flow unless the wrapper has proven support. Attach native listeners to the custom element host with `addEventListener`.
+- Provide `focus()` on the host and forward it to the internal native input, textarea, select, or button.
+
+Current form event contracts in this architecture:
+
+| Component family | Host state surface | Event names | Event detail |
+| --- | --- | --- | --- |
+| Text input, textarea, select, search | `value` attribute; host `value` property where implemented | `input`, `change` | `detail.value` |
+| Checkbox and switch | `checked` attribute and host `checked` property | `change` | `detail.checked` |
+| Radio | `checked`, `value`, and `name` attributes | `change` | `detail.checked`, `detail.value`, `detail.name` |
+| Range input | `value` attribute and host `value` property | `input`, `change` | numeric `detail.value` |
+| Chip input | `value` attribute and host `value` property with selected option objects | `chip-input-query-change`, `chip-input-change`, `input`, `change` | `detail.query` for query changes; `detail.action`, `detail.values`, `detail.items`, `detail.added`, and `detail.removed` for selection changes |
+| Date, time, calendar, and date-time pickers | `value` attribute or selected internal value | `change` | `detail.value` |
+| File upload | selected file from the host event | `file-upload` | `detail.file` |
+
+Example:
+
+```ts
+const eventDetail = {
+  detail: { value: input.value },
+  bubbles: true,
+  composed: true,
+};
+
+this.dispatchEvent(new CustomEvent("input", eventDetail));
+this.dispatchEvent(new CustomEvent("change", eventDetail));
+```
+
+React wrappers should treat the Web Component as the source of behavior and translate only at the boundary:
+
+```tsx
+useEffect(() => {
+  const el = ref.current;
+  if (!el || !onValueChange) return;
+
+  const handler = (event: Event) => {
+    const value = (event as CustomEvent<{ value: string }>).detail?.value;
+    if (value !== undefined) onValueChange(value);
+  };
+
+  el.addEventListener("input", handler);
+  return () => el.removeEventListener("input", handler);
+}, [onValueChange]);
+```
+
+Use `shadowRoot.querySelector(...)` only when the integration genuinely needs the internal native element, such as focus recovery, legacy wrappers, browser autofill/autocomplete details, or tests. When doing that, wait until the custom element is defined and rendered before reading `.value` or `.checked`.
+
 ## Public API Discipline
 
 Keep the component's public surface small, documented, and stable.
@@ -140,7 +195,7 @@ Group part names by intent:
 
 - `text`: `color`, `font-family`, `font-size`, `font-weight`, `letter-spacing`, `line-height`, `text-transform`, `text-decoration`, `text-align`
 - `spacing`: `padding`, `margin`, `gap`, `width`, `height`, `box-sizing`
-- `layout`: `display`, `flex`, `grid-template-columns`, alignment, placement, and related layout controls
+- `layout`: `display`, `flex`, `flex-direction`, `flex-wrap`, `justify-content`, `align-items`, `align-content`, `align-self`, `grid-template-columns`, `grid-template-rows`, `grid-column`, `grid-row`, `place-items`, `place-content`, `vertical-align`
 - `visual`: `background`, `border`, `border-radius`, `box-shadow`, `opacity`, `transition`, `outline`, `color`
 
 Use `getPartMap("text", "spacing", "layout", "visual")` only for elements that should support those override categories. Prefer the smallest useful set, because every part is a public override promise.
@@ -252,6 +307,10 @@ Keep wrappers thin. Native Web Components own behavior.
 - Keep typed wrappers generated or mechanically simple when possible.
 - Use `custom-elements.json` for public types and props.
 - Use `dynamic-attrs.json` for destination/runtime attrs that wrappers, canvases, and exporters must pass through, apply, or remove correctly.
+- For form elements, set host attributes/properties from React state, then read changes from host custom events such as `input` and `change`.
+- Prefer wrapper conveniences such as `onValueChange` or `onCheckedChange` that read `event.detail` from native host listeners.
+- Keep value updates separate from structural props such as `label`, `type`, `placeholder`, `variant`, and `size` so typing does not cause unnecessary rerenders or focus loss.
+- Do not move the component's validation, slot sizing, or internal input behavior into the React wrapper.
 
 Wrappers should improve ergonomics without making the framework version the source of truth.
 
@@ -261,6 +320,8 @@ Use this checklist when creating or reviewing a component.
 
 - API: Public attrs are documented in `api.ts`; UX guidance belongs in `doc.ts`.
 - Accessibility: Interactive components use native controls, clear labels, keyboard focus, and `focus()` forwarding where useful.
+- Events: Custom events that must cross shadow DOM use `bubbles: true`, `composed: true`, and useful `detail` payloads.
+- Forms: Form controls expose host value/checked state and wrappers listen on the host instead of owning shadow DOM internals.
 - Styling: Styles are shadow-contained, token-led, and theme-aware.
 - Parts: `part` exposure is intentional and uses the smallest useful part map.
 - Slots: Named slots are documented; slotted content adapts without brittle wrappers.

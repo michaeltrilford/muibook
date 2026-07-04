@@ -9,6 +9,23 @@ class MuiTimePickerPopover extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  get value(): string {
+    return this.getAttribute("value") || "";
+  }
+
+  set value(next: string) {
+    this.setAttribute("value", next ?? "");
+  }
+
+  focus(options?: FocusOptions) {
+    const input = this.shadowRoot?.querySelector("mui-input") as HTMLElement | null;
+    if (input && typeof input.focus === "function") {
+      input.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   connectedCallback() {
     if (!this.shadowRoot) return;
     this.shadowRoot.innerHTML = /*html*/ `

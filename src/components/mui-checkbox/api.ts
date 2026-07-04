@@ -10,6 +10,7 @@ export const muiApi = {
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Checkbox control and label size scale." },
     ],
     slots: [{ name: "", description: "Visible label content for the checkbox." }],
-    events: [{ name: "change", description: "Dispatched when user interaction changes state with `detail.checked`." }],
+    events: [{ name: "change", description: "Composed, bubbling event dispatched when user interaction changes state with `detail.checked`." }],
+    methods: [{ name: "focus", description: "Moves focus to the internal native checkbox." }],
   },
 };

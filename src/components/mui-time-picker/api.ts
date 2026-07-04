@@ -1,6 +1,7 @@
 export const muiApi = {
   "mui-time-picker": {
     description: "A time selection input field with an interactive popover.",
+    members: [{ kind: "field", name: "value", type: { text: "string" }, description: "Gets or sets the selected time value." }],
     attributes: [
       {
         name: "value",
@@ -42,6 +43,10 @@ export const muiApi = {
       }
     ],
     slots: [],
+    events: [
+      { name: "change", description: "Composed, bubbling event dispatched when the selected time value changes with `detail.value`." },
+    ],
+    methods: [{ name: "focus", description: "Moves focus to the visible picker input." }],
     cssProperties: []
   }
 };

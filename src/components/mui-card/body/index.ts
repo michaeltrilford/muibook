@@ -81,6 +81,14 @@ class MuiCardBody extends HTMLElement {
             hasLayoutComponent = true;
           }
 
+          // Check for <mui-avatar-group>
+          const isAvatarGroup = element.tagName.toLowerCase() === "mui-avatar-group";
+          const avatarGroups = isAvatarGroup ? [element] : Array.from(element.querySelectorAll("mui-avatar-group"));
+
+          avatarGroups.forEach((avatarGroup) => {
+            (avatarGroup as HTMLElement).setAttribute("card-slot", "");
+          });
+
           // Check for <mui-slat-group>
           const isSlatGroup = element.tagName.toLowerCase() === "mui-slat-group";
           const slatGroups = isSlatGroup ? [element] : Array.from(element.querySelectorAll("mui-slat-group"));

@@ -2,6 +2,7 @@ export const muiApi = {
   "mui-search-input": {
     description:
       "Composes mui-input, mui-button and icons into a search affordance that can vertically reveal over adjacent slotted controls.",
+    members: [{ kind: "field", name: "value", type: { text: "string" }, description: "Gets or sets the current search query." }],
     attributes: [
       { name: "id", type: { text: "string" }, description: "Identifier forwarded to the internal search input." },
       { name: "label", type: { text: "string" }, default: "Search", description: "Accessible label for the search input." },
@@ -50,9 +51,9 @@ export const muiApi = {
       },
     ],
     events: [
-      { name: "input", description: "Dispatched during query entry with `detail.value`." },
-      { name: "change", description: "Dispatched when the internal search input changes with `detail.value`." },
-      { name: "toggle", description: "Dispatched when revealed state changes with `detail.open`." },
+      { name: "input", description: "Composed, bubbling event dispatched during query entry with `detail.value`." },
+      { name: "change", description: "Composed, bubbling event dispatched when the internal search input changes with `detail.value`." },
+      { name: "toggle", description: "Composed, bubbling event dispatched when revealed state changes with `detail.open`." },
     ],
     methods: [
       { name: "focus", description: "Moves focus to the internal search input." },

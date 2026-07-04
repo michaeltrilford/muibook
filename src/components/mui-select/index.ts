@@ -33,6 +33,24 @@ class MuiSelect extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  get value(): string {
+    const select = this.shadowRoot?.querySelector("select") as HTMLSelectElement | null;
+    return select?.value ?? this.getAttribute("value") ?? "";
+  }
+
+  set value(next: string) {
+    this.setAttribute("value", next ?? "");
+  }
+
+  focus(options?: FocusOptions) {
+    const select = this.shadowRoot?.querySelector("select");
+    if (select) {
+      select.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   async connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     await this.waitForPartMap();

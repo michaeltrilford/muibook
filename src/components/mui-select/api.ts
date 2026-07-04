@@ -1,6 +1,7 @@
 export const muiApi = {
   "mui-select": {
     description: "Captures one selection from a supplied option list with label and validation styling.",
+    members: [{ kind: "field", name: "value", type: { text: "string" }, description: "Gets or sets the selected option value." }],
     attributes: [
       { name: "name", type: { text: "string" }, description: "Form field name." },
       { name: "value", type: { text: "string" }, default: "", description: "Value of the selected option." },
@@ -76,8 +77,9 @@ export const muiApi = {
       },
     ],
     events: [
-      { name: "input", description: "Dispatched during selection updates with `detail.value`." },
-      { name: "change", description: "Dispatched when the selected option changes with `detail.value`." },
+      { name: "input", description: "Composed, bubbling event dispatched during selection updates with `detail.value`." },
+      { name: "change", description: "Composed, bubbling event dispatched when the selected option changes with `detail.value`." },
     ],
+    methods: [{ name: "focus", description: "Moves focus to the internal native select." }],
   },
 };

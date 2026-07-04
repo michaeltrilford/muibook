@@ -1,6 +1,7 @@
 export const muiApi = {
   "mui-textarea": {
     description: "Captures multi-line text with label, validation state, visible rows and optional character counting.",
+    members: [{ kind: "field", name: "value", type: { text: "string" }, description: "Gets or sets the current textarea value." }],
     attributes: [
       { name: "name", type: { text: "string" }, description: "Form field name." },
       { name: "value", type: { text: "string" }, default: "", description: "Current textarea value." },
@@ -16,8 +17,9 @@ export const muiApi = {
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Textarea size scale." },
     ],
     events: [
-      { name: "input", description: "Dispatched during value entry with `detail.value`." },
-      { name: "change", description: "Dispatched when the native textarea change event occurs with `detail.value`." },
+      { name: "input", description: "Composed, bubbling event dispatched during value entry with `detail.value`." },
+      { name: "change", description: "Composed, bubbling event dispatched when the native textarea change event occurs with `detail.value`." },
     ],
+    methods: [{ name: "focus", description: "Moves focus to the internal native textarea." }],
   },
 };

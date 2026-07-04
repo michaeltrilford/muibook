@@ -47,7 +47,7 @@ export const muiDocs: MuiDocs = {
         {
           key: "date-timeslot",
           title: "Date & Timeslot",
-          description: "type='datetimeslot'. Shows the calendar alongside a list of time chips, perfect for scheduling appointments.",
+          description: "type='datetime' or type='datetimeslot'. Shows the calendar alongside a list of time chips, perfect for scheduling appointments.",
         }
       ],
     },

@@ -12,6 +12,33 @@ class MuiRadio extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  get checked(): boolean {
+    const input = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
+    return input?.checked ?? this.hasAttribute("checked");
+  }
+
+  set checked(value: boolean) {
+    this.toggleAttribute("checked", Boolean(value));
+  }
+
+  get value(): string {
+    const input = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
+    return input?.value ?? this.getAttribute("value") ?? "";
+  }
+
+  set value(next: string) {
+    this.setAttribute("value", next ?? "");
+  }
+
+  focus(options?: FocusOptions) {
+    const input = this.shadowRoot?.querySelector("input");
+    if (input) {
+      input.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.render();

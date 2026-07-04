@@ -452,6 +452,10 @@
       "import": "./dist/esm/components/mui-avatar/index.js",
       "types": "./dist/types/components/mui-avatar/index.d.ts"
     },
+    "./mui-avatar-group": {
+      "import": "./dist/esm/components/mui-avatar-group/index.js",
+      "types": "./dist/types/components/mui-avatar-group/index.d.ts"
+    },
     "./mui-input": {
       "import": "./dist/esm/components/mui-input/index.js",
       "types": "./dist/types/components/mui-input/index.d.ts"

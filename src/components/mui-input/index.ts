@@ -26,6 +26,15 @@ class MuiInput extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  get value(): string {
+    const input = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
+    return input?.value ?? this.getAttribute("value") ?? "";
+  }
+
+  set value(next: string) {
+    this.setAttribute("value", next ?? "");
+  }
+
   focus(options?: FocusOptions) {
     const input = this.shadowRoot?.querySelector("input");
     if (input) {

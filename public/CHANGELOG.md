@@ -36,6 +36,10 @@
 - Added a media-player seek hover preview segment so users can see the skip target before committing to a new time.
 - Added global semantic form radius tokens (`--form-radius-[size]`) for standardized component radii.
 - Added new token variables for avatar sizing and typography: `--avatar-xxx-small` and `--font-size-10`.
+- Added `mui-avatar-group` for stacked avatar compositions with configurable size, overlap, accessible group labels, and separating rings.
+- `mui-avatar-group` now supports `fan` for opt-in fan-out expansion on hover and keyboard focus.
+- `mui-avatar-group` now adjusts its separating ring in supported Card Body and Slat contexts so the ring matches the surrounding surface by default.
+- `mui-avatar` now supports activity status indicators via `status`, mapping online/away/busy/do-not-disturb/offline states to badge semantic color tokens.
 - Added disabled color tokens for chip surfaces and actions: `--chip-text-color-disabled` and `--chip-dismiss-action-background-disabled`.
 - Added `mui-search-input` as a composed search control with a default search field, optional compact action slot, optional after slot for adjacent controls, controlled `open` state, autofocus support, and cancel-to-collapse behavior.
 - `mui-input` now supports the native `autofocus` attribute for components and forms that need immediate field focus.
@@ -95,6 +99,7 @@
 
 ### Fixed
 
+- `mui-date-picker type="datetime"` now preserves preselected date/time values when the user changes the calendar or time selection instead of writing `value=""`.
 - Story template descriptions now escape angle-bracket text so docs can reference element names such as model-viewer without rendering accidental HTML.
 - `mui-drawer` in workspace variant now properly respects top and bottom safe-area insets (`env(safe-area-inset-top)` / `env(safe-area-inset-bottom)`) in the page layout.
 - `mui-drawer` mobile overlay panels now respect physical left and right safe-area insets in landscape, keeping drawer content clear of device cutouts while preserving the intended usable drawer width.

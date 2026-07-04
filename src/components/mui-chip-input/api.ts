@@ -35,11 +35,24 @@ export const muiApi = {
       { name: "breakpoint", type: { text: "number | string" }, description: "Pixel breakpoint at which the layout stacks." },
     ],
     events: [
-      { name: "chip-input-query-change", description: "Dispatched while query text changes with `detail.query`." },
-      { name: "chip-input-change", description: "Dispatched after selected chips change with action, values, items, added and removed detail." },
-      { name: "input", description: "Compatibility change event carrying the same selected-chip detail as `chip-input-change`." },
-      { name: "change", description: "Compatibility change event carrying the same selected-chip detail as `chip-input-change`." },
+      { name: "chip-input-query-change", description: "Composed, bubbling event dispatched while query text changes with `detail.query`." },
+      {
+        name: "chip-input-change",
+        description:
+          "Composed, bubbling event dispatched after selected chips change with `detail.action`, `detail.values`, `detail.items`, `detail.added` and `detail.removed`.",
+      },
+      {
+        name: "input",
+        description:
+          "Composed, bubbling compatibility event carrying the same `detail.action`, `detail.values`, `detail.items`, `detail.added` and `detail.removed` payload as `chip-input-change`.",
+      },
+      {
+        name: "change",
+        description:
+          "Composed, bubbling compatibility event carrying the same `detail.action`, `detail.values`, `detail.items`, `detail.added` and `detail.removed` payload as `chip-input-change`.",
+      },
     ],
+    methods: [{ name: "focus", description: "Moves focus to the internal chip entry input." }],
     cssProperties: [
       { name: "--chip-input-background", description: "Background of the composed chip entry surface." },
       { name: "--chip-input-shell-border", description: "Border applied to the composed chip entry surface." },

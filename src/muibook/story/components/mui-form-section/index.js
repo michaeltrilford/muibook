@@ -315,6 +315,63 @@ class StoryFormSection extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="host-contracts" title="Host Event Contracts" description="Form logic listens on the custom element host, reads event.detail, and checks host value or checked properties without querying shadow DOM internals.">
+        <div slot="body" class="story-form-surface">
+          <mui-v-stack space="var(--space-400)">
+            <mui-form-section heading="Host Event Contracts">
+              <mui-form-group variant="horizontal" heading="Text Controls" hide-heading>
+                <mui-field label="Name">
+                  <mui-input id="contractInput" value="Ada"></mui-input>
+                </mui-field>
+                <mui-field label="Role">
+                  <mui-select
+                    id="contractSelect"
+                    value="design"
+                    options='[{"label":"Design","value":"design"},{"label":"Engineering","value":"engineering"},{"label":"Product","value":"product"}]'
+                  ></mui-select>
+                </mui-field>
+              </mui-form-group>
+              <mui-form-group variant="horizontal" heading="Boolean Controls" hide-heading>
+                <mui-field label="Enabled">
+                  <mui-switch id="contractSwitch" label="Enabled" checked></mui-switch>
+                </mui-field>
+                <mui-field label="Terms">
+                  <mui-checkbox id="contractCheckbox" checked>Accepted</mui-checkbox>
+                </mui-field>
+              </mui-form-group>
+              <mui-form-group variant="horizontal" heading="Special Controls" hide-heading>
+                <mui-field label="Priority">
+                  <mui-range-input id="contractRange" min="0" max="10" value="4"></mui-range-input>
+                </mui-field>
+                <mui-field label="Tags">
+                  <mui-chip-input
+                    id="contractChipInput"
+                    value='["alpha"]'
+                    options='["alpha","beta","gamma"]'
+                    allow-custom
+                  ></mui-chip-input>
+                </mui-field>
+              </mui-form-group>
+              <mui-form-group variant="horizontal" heading="Picker Controls" hide-heading>
+                <mui-field label="Date">
+                  <mui-date-picker id="contractDatePicker" value="2026-07-04"></mui-date-picker>
+                </mui-field>
+                <mui-field label="Time">
+                  <mui-time-picker id="contractTimePicker" value="09:30 AM"></mui-time-picker>
+                </mui-field>
+              </mui-form-group>
+            </mui-form-section>
+            <mui-code id="hostContractOutput" size="x-small"></mui-code>
+          </mui-v-stack>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          control.addEventListener("input", updateFromHost);<br />
+          control.addEventListener("change", updateFromHost);<br />
+          const value = event.detail?.value ?? event.currentTarget.value;<br />
+          const checked = event.detail?.checked ?? event.currentTarget.checked;
+        </story-code-block>
+      </story-card>
+
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -333,6 +390,9 @@ class StoryFormSection extends HTMLElement {
         .form-group + .form-group {
           margin-top: var(--space-300);
           padding-top: var(--space-500);
+        }
+        #hostContractOutput {
+          display: block;
         }
         @media (max-width: 767px) {
           .story-form-surface {
@@ -356,11 +416,64 @@ class StoryFormSection extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="account-setup::Account Setup Section|||billing::Billing Preferences Section|||no-legend::No Legend|||header-footer-slots::Header + Footer Slots|||card-compare::Card Spacing Compare|||license-intake-simple::License Intake"
+          links="account-setup::Account Setup Section|||billing::Billing Preferences Section|||no-legend::No Legend|||header-footer-slots::Header + Footer Slots|||card-compare::Card Spacing Compare|||license-intake-simple::License Intake|||host-contracts::Host Event Contracts"
         ></story-quicklinks>
         ${stories}
       </story-template>
     `;
+    this.setupHostContractDemo();
+  }
+
+  setupHostContractDemo() {
+    const output = this.shadowRoot.getElementById("hostContractOutput");
+    if (!output) return;
+
+    const ids = [
+      "contractInput",
+      "contractSelect",
+      "contractSwitch",
+      "contractCheckbox",
+      "contractRange",
+      "contractChipInput",
+      "contractDatePicker",
+      "contractTimePicker",
+    ];
+
+    const getValue = (control) => {
+      if ("checked" in control && (control.localName === "mui-checkbox" || control.localName === "mui-switch")) {
+        return control.checked;
+      }
+      if ("value" in control) return control.value;
+      return control.getAttribute("value") || "";
+    };
+
+    const update = (event) => {
+      const values = Object.fromEntries(
+        ids.map((id) => {
+          const control = this.shadowRoot.getElementById(id);
+          return [id.replace("contract", ""), control ? getValue(control) : null];
+        }),
+      );
+
+      if (event) {
+        values.lastEvent = {
+          type: event.type,
+          target: event.currentTarget.id,
+          detail: event.detail || null,
+        };
+      }
+
+      output.textContent = JSON.stringify(values, null, 2);
+    };
+
+    ids.forEach((id) => {
+      const control = this.shadowRoot.getElementById(id);
+      if (!control) return;
+      control.addEventListener("input", update);
+      control.addEventListener("change", update);
+    });
+
+    update();
   }
 }
 

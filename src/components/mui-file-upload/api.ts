@@ -23,6 +23,7 @@ export const muiApi = {
         description: "Compatibility alias for `current-file-name`; prefer the kebab-case attribute.",
       },
     ],
-    events: [{ name: "file-upload", description: "Dispatched when a user selects a file, with the selected file in `detail.file`." }],
+    events: [{ name: "file-upload", description: "Composed, bubbling event dispatched when a user selects a file with the selected file in `detail.file`." }],
+    methods: [{ name: "focus", description: "Moves focus to the visible file picker control." }],
   },
 };

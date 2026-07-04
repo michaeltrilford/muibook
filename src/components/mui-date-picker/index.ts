@@ -11,6 +11,23 @@ class MuiDatePickerPopover extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  get value(): string {
+    return this.getAttribute("value") || "";
+  }
+
+  set value(next: string) {
+    this.setAttribute("value", next ?? "");
+  }
+
+  focus(options?: FocusOptions) {
+    const input = this.shadowRoot?.querySelector("mui-input") as HTMLElement | null;
+    if (input && typeof input.focus === "function") {
+      input.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   connectedCallback() {
     if (!this.shadowRoot) return;
     this.shadowRoot.innerHTML = /*html*/ `
@@ -73,8 +90,14 @@ class MuiDatePicker extends HTMLElement {
           const cal = this.shadowRoot?.querySelector("mui-calendar");
           const time = this.shadowRoot?.querySelector("mui-time");
           if (input) input.setAttribute("value", this.formatDisplayValue(this.getAttribute("value") || ""));
-          if (cal && this.selectedDate) cal.setAttribute("value", this.selectedDate);
-          if (time && this.selectedTime) time.setAttribute("value", this.selectedTime);
+          if (cal) {
+            if (this.selectedDate) cal.setAttribute("value", this.selectedDate);
+            else cal.removeAttribute("value");
+          }
+          if (time) {
+            if (this.selectedTime) time.setAttribute("value", this.selectedTime);
+            else time.removeAttribute("value");
+          }
         }
       } else {
         this.render();
@@ -85,6 +108,13 @@ class MuiDatePicker extends HTMLElement {
 
   private syncAttributes() {
     const val = this.getAttribute("value") || "";
+    this.selectedDate = "";
+    this.selectedTime = "";
+
+    if (!val) {
+      return;
+    }
+
     if (val) {
       const parts = val.split(" ");
       if (parts.length > 0) {
@@ -96,6 +126,10 @@ class MuiDatePicker extends HTMLElement {
         }
       }
     }
+  }
+
+  private isDateTimeType(type: string): boolean {
+    return type === "datetime" || type === "datetimeslot";
   }
 
   private formatDisplayValue(val: string): string {
@@ -135,7 +169,7 @@ class MuiDatePicker extends HTMLElement {
       let newVal = "";
       if (type === "date") {
         newVal = this.selectedDate;
-      } else if (type === "datetimeslot") {
+      } else if (this.isDateTimeType(type)) {
         if (this.selectedDate && this.selectedTime) {
           newVal = `${this.selectedDate} ${this.selectedTime}`.trim();
         } else {
@@ -173,7 +207,7 @@ class MuiDatePicker extends HTMLElement {
           updateValue();
           
           const type = this.getAttribute("type") || "date";
-          if (type === "datetimeslot") {
+          if (this.isDateTimeType(type)) {
             requestAnimationFrame(() => {
               const dropdown = this.shadowRoot?.querySelector("mui-dropdown") as any;
               if (dropdown && typeof dropdown.close === 'function') dropdown.close();
@@ -204,7 +238,7 @@ class MuiDatePicker extends HTMLElement {
     const variant = this.getAttribute("variant") || "";
 
     const showDate = true; // Always true for date picker
-    const showTime = type === "datetimeslot";
+    const showTime = this.isDateTimeType(type);
     const timeVariant = "slots";
 
     const html = /*html*/ `

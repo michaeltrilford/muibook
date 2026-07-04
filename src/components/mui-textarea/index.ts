@@ -23,6 +23,24 @@ class MuiTextarea extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  get value(): string {
+    const textarea = this.shadowRoot?.querySelector("textarea") as HTMLTextAreaElement | null;
+    return textarea?.value ?? this.getAttribute("value") ?? "";
+  }
+
+  set value(next: string) {
+    this.setAttribute("value", next ?? "");
+  }
+
+  focus(options?: FocusOptions) {
+    const textarea = this.shadowRoot?.querySelector("textarea");
+    if (textarea) {
+      textarea.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   connectedCallback() {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.render();

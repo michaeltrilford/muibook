@@ -179,6 +179,7 @@ export default defineConfig({
         "components/mui-icons/copy": path.resolve(__dirname, "src/components/mui-icons/copy.ts"),
         // AVATAR
         "components/mui-avatar": path.resolve(__dirname, "src/components/mui-avatar"),
+        "components/mui-avatar-group": path.resolve(__dirname, "src/components/mui-avatar-group"),
         // IMAGE
         "components/mui-image": path.resolve(__dirname, "src/components/mui-image"),
         // INPUT

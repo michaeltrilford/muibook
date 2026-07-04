@@ -18,6 +18,23 @@ class MuiCalendar extends HTMLElement {
     this.currentDate = new Date(today.getFullYear(), today.getMonth(), 1);
   }
 
+  get value(): string {
+    return this.getAttribute("value") || "";
+  }
+
+  set value(next: string) {
+    this.setAttribute("value", next ?? "");
+  }
+
+  focus(options?: FocusOptions) {
+    const target = this.shadowRoot?.querySelector(".selected, .today, .day:not(.empty)") as HTMLElement | null;
+    if (target && typeof target.focus === "function") {
+      target.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   connectedCallback() {
     this.syncAttributes();
     this.render();

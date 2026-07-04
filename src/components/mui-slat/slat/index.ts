@@ -159,17 +159,31 @@ class MuiSlat extends HTMLElement {
       ::slotted(mui-avatar) {
         --avatar-background-override: var(--slat-avatar-background);
       }
+      ::slotted(mui-avatar-group) {
+        --avatar-group-ring-color: var(--slat-background);
+      }
       .action:hover ::slotted(mui-avatar),
       .action:focus ::slotted(mui-avatar) {
         --avatar-background-override: var(--slat-avatar-background-hover);
+      }
+      .action:hover ::slotted(mui-avatar-group),
+      .action:focus ::slotted(mui-avatar-group) {
+        --avatar-group-ring-color: var(--slat-background-hover);
       }
 
       :host([card-slot]) ::slotted(mui-avatar) {
         --avatar-background-override: var(--slat-card-avatar-background);
       }
+      :host([card-slot]) ::slotted(mui-avatar-group) {
+        --avatar-group-ring-color: var(--slat-card-background);
+      }
       :host([card-slot]) .action:hover ::slotted(mui-avatar),
       :host([card-slot]) .action:focus ::slotted(mui-avatar) {
         --avatar-background-override: var(--slat-card-avatar-background-hover);
+      }
+      :host([card-slot]) .action:hover ::slotted(mui-avatar-group),
+      :host([card-slot]) .action:focus ::slotted(mui-avatar-group) {
+        --avatar-group-ring-color: var(--slat-card-background-hover);
       }
 
     `;

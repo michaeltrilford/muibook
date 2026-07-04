@@ -1,6 +1,7 @@
 export const muiApi = {
   "mui-input": {
     description: "Captures a single text-like form value with label, validation state and composable affordance slots.",
+    members: [{ kind: "field", name: "value", type: { text: "string" }, description: "Gets or sets the current input value." }],
     attributes: [
       {
         name: "type",
@@ -69,9 +70,10 @@ export const muiApi = {
       { name: "hint", description: "Contextual hint content displayed inside the trailing input affordance area." },
     ],
     events: [
-      { name: "input", description: "Dispatched during value entry with `detail.value`." },
-      { name: "change", description: "Dispatched when the native input change event occurs with `detail.value`." },
+      { name: "input", description: "Composed, bubbling event dispatched during value entry with `detail.value`." },
+      { name: "change", description: "Composed, bubbling event dispatched when the native input change event occurs with `detail.value`." },
     ],
+    methods: [{ name: "focus", description: "Moves focus to the internal native input." }],
     cssProperties: [
       { name: "--input-before-slot-max-width", description: "Maximum width for leading external slot content." },
       { name: "--input-after-slot-max-width", description: "Maximum width for trailing external slot content." },

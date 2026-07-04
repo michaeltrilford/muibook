@@ -14,7 +14,8 @@ export const muiApi = {
       { name: "on-icon", description: "Icon shown for the checked state." },
       { name: "off-icon", description: "Icon shown for the unchecked state." },
     ],
-    events: [{ name: "change", description: "Dispatched when user interaction changes the checked state." }],
+    events: [{ name: "change", description: "Composed, bubbling event dispatched when user interaction changes state with `detail.checked`." }],
+    methods: [{ name: "focus", description: "Moves focus to the internal native checkbox used for the switch." }],
     cssProperties: [
       { name: "--switch-track-background", description: "Track background used when the switch is unchecked." },
       { name: "--switch-track-background-checked", description: "Track background used when the switch is checked." },

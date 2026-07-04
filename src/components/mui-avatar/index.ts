@@ -1,7 +1,7 @@
 class MuiAvatar extends HTMLElement {
   private _imageFailed?: boolean;
   static get observedAttributes() {
-    return ["label", "image", "size", "background", "background-color"];
+    return ["label", "image", "size", "background", "background-color", "status", "status-label"];
   }
 
   constructor() {
@@ -75,12 +75,50 @@ class MuiAvatar extends HTMLElement {
     return map[background] ?? map["neutral"];
   }
 
+  getStatusLabel(status: string) {
+    const label = this.getAttribute("status-label");
+    if (label) return label;
+
+    const map: Record<string, string> = {
+      online: "Online",
+      active: "Online",
+      away: "Away",
+      busy: "Busy",
+      dnd: "Do not disturb",
+      offline: "Offline",
+      positive: "Online",
+      warning: "Away",
+      attention: "Do not disturb",
+      neutral: "Offline",
+    };
+
+    return map[status] || status;
+  }
+
+  getStatusBackground(status: string) {
+    const map: Record<string, string> = {
+      online: "var(--avatar-status-background-positive, var(--badge-background-positive))",
+      active: "var(--avatar-status-background-positive, var(--badge-background-positive))",
+      away: "var(--avatar-status-background-warning, var(--badge-background-warning))",
+      busy: "var(--avatar-status-background-attention, var(--badge-background-attention))",
+      dnd: "var(--avatar-status-background-attention, var(--badge-background-attention))",
+      offline: "var(--avatar-status-background-neutral, var(--badge-background-neutral))",
+      positive: "var(--avatar-status-background-positive, var(--badge-background-positive))",
+      warning: "var(--avatar-status-background-warning, var(--badge-background-warning))",
+      attention: "var(--avatar-status-background-attention, var(--badge-background-attention))",
+      neutral: "var(--avatar-status-background-neutral, var(--badge-background-neutral))",
+    };
+
+    return map[status] || map.neutral;
+  }
+
   render() {
     const label = this.getAttribute("label");
     const image = this.getAttribute("image");
     const size = (this.getAttribute("size") || "medium").toLowerCase();
     const background = this.getAttribute("background") || "neutral";
     const backgroundColorAttr = this.getAttribute("background-color");
+    const status = this.getAttribute("status")?.trim().toLowerCase() || "";
     const altText = label || "Avatar";
 
     // Priority: slot content > image > initials
@@ -124,6 +162,8 @@ class MuiAvatar extends HTMLElement {
 
     // Get background CSS
     const backgroundCSS = this.getBackgroundCSS();
+    const statusBackground = this.getStatusBackground(status);
+    const statusLabel = status ? this.getStatusLabel(status) : "";
 
     // Only allow override if background is neutral (default) AND no background-color is set
     const finalBackground =
@@ -134,9 +174,17 @@ class MuiAvatar extends HTMLElement {
     const styles = /*css*/ `
     :host {
       display: inline-flex;
+      position: relative;
       width: ${resolvedSize};
       height: ${resolvedSize};
       border-radius: ${resolvedSize};
+      flex: none;
+    }
+    .avatar-frame {
+      display: inline-flex;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
       font-weight: var(--font-weight-bold);
       letter-spacing: -0.05rem;
       font-size: ${resolvedFontSize};
@@ -148,7 +196,6 @@ class MuiAvatar extends HTMLElement {
       user-select: none;
       box-sizing: border-box;
       padding: ${showInitials || hasSlot ? `calc(${resolvedSize} * 0.1)` : "0"}; 
-      flex: none;
     }
     img {
       width: 100%;
@@ -175,13 +222,29 @@ class MuiAvatar extends HTMLElement {
     ::slotted([class*="mui-icon"]) {
       fill: var(--avatar-icon-color, currentColor);
     }
+    .status {
+      display: ${status ? "block" : "none"};
+      position: absolute;
+      right: var(--avatar-status-offset, 0);
+      bottom: var(--avatar-status-offset, 0);
+      width: var(--avatar-status-size, max(0.8rem, calc(${resolvedSize} * 0.28)));
+      height: var(--avatar-status-size, max(0.8rem, calc(${resolvedSize} * 0.28)));
+      border-radius: 999px;
+      background: ${statusBackground};
+      border: var(--avatar-status-border, var(--stroke-size-200) solid var(--surface));
+      box-sizing: border-box;
+      pointer-events: none;
+    }
   `;
 
     this.shadowRoot!.innerHTML = `
     <style>${styles}</style>
-    ${showImage ? `<img src="${image}" alt="${altText}" />` : ""}
-    <div class="initials" role="img" aria-label="${altText}">${initials}</div>
-    <slot></slot>
+    <span class="avatar-frame">
+      ${showImage ? `<img src="${image}" alt="${altText}" />` : ""}
+      <div class="initials" role="img" aria-label="${altText}">${initials}</div>
+      <slot></slot>
+    </span>
+    <span class="status" aria-label="${statusLabel}" title="${statusLabel}"></span>
   `;
 
     // Enforce size on slotted icon elements based on avatar size

@@ -1,6 +1,7 @@
 export const muiApi = {
   "mui-time": {
     description: "A scrolling columnar interface for selecting a specific time of day.",
+    members: [{ kind: "field", name: "value", type: { text: "string" }, description: "Gets or sets the selected time value." }],
     attributes: [
       {
         name: "value",
@@ -44,6 +45,10 @@ export const muiApi = {
       }
     ],
     slots: [],
+    events: [
+      { name: "change", description: "Composed, bubbling event dispatched when the selected time changes with `detail.value`." },
+    ],
+    methods: [{ name: "focus", description: "Moves focus to the selected time option or first interactive time control." }],
     cssProperties: [
       {
         name: "--time-picker-height",

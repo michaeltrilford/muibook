@@ -4,7 +4,13 @@ export const muiApi = {
     attributes: [
       { name: "label", type: { text: "string" }, description: "Accessible name and initials source when no image or slotted content is present." },
       { name: "image", type: { text: "string" }, description: "Image URL used when no slotted content is supplied." },
-      { name: "size", type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Avatar dimensions. Defaults map `xx-small` to 24px and `x-small` to 32px." },
+      { name: "size", type: { text: '"xxx-small" | "xx-small" | "x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Avatar dimensions. Defaults map `xxx-small` to 18px, `xx-small` to 24px, and `x-small` to 32px." },
+      {
+        name: "status",
+        type: { text: '"online" | "active" | "away" | "busy" | "dnd" | "offline" | "positive" | "warning" | "attention" | "neutral"' },
+        description: "Optional activity status shown as a bottom-right presence dot. Status colors map to badge semantic tokens.",
+      },
+      { name: "status-label", type: { text: "string" }, description: "Accessible label for the activity status indicator." },
       {
         name: "background",
         type: {
@@ -21,6 +27,13 @@ export const muiApi = {
       { name: "--avatar-xxx-small", description: "Dimension for `size=\"xxx-small\"`; defaults to 18px." },
       { name: "--avatar-xx-small", description: "Dimension for `size=\"xx-small\"`; defaults to 24px." },
       { name: "--avatar-x-small", description: "Dimension for `size=\"x-small\"`; defaults to 32px." },
+      { name: "--avatar-status-size", description: "Size of the activity status indicator." },
+      { name: "--avatar-status-offset", description: "Bottom/right offset for the activity status indicator." },
+      { name: "--avatar-status-border", description: "Border applied around the activity status indicator." },
+      { name: "--avatar-status-background-neutral", description: "Neutral/offline activity status color. Falls back to the matching badge token." },
+      { name: "--avatar-status-background-positive", description: "Positive/online activity status color. Falls back to the matching badge token." },
+      { name: "--avatar-status-background-warning", description: "Warning/away activity status color. Falls back to the matching badge token." },
+      { name: "--avatar-status-background-attention", description: "Attention/busy activity status color. Falls back to the matching badge token." },
       { name: "--avatar-background-override", description: "Overrides the resolved avatar background color." },
       { name: "--avatar-icon-color", description: "Controls the fill color of slotted icon content inside the avatar. Falls back to currentColor." },
     ],

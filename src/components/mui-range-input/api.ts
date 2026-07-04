@@ -13,9 +13,10 @@ export const muiApi = {
       { name: "label", type: { text: "string" }, default: "Range input", description: "Accessible label for the internal range input." },
     ],
     events: [
-      { name: "input", description: "Dispatched while the value changes with numeric `detail.value`." },
-      { name: "change", description: "Dispatched when value interaction commits with numeric `detail.value`." },
+      { name: "input", description: "Composed, bubbling event dispatched while the value changes with numeric `detail.value`." },
+      { name: "change", description: "Composed, bubbling event dispatched when value interaction commits with numeric `detail.value`." },
     ],
+    methods: [{ name: "focus", description: "Moves focus to the internal native range input." }],
     cssProperties: [
       { name: "--range-input-accent-color", description: "Track/thumb accent color." },
       { name: "--range-input-bubble-background", description: "Feedback bubble background." },

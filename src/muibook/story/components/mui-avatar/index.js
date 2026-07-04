@@ -64,6 +64,62 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card
+        title="Activity Status"
+        description="Use status when the avatar needs to show compact presence or availability."
+        usage="Status is visual only and maps to semantic badge status tokens.|||Use online or active for available people.|||Use away, busy, dnd, or offline for availability states."
+      >
+        <div class="canvas" slot="body">
+          <mui-h-stack alignY="center">
+            <mui-avatar size="large" image="${MikeAvatar}" label="Mike Trilford" status="online"></mui-avatar>
+            <mui-avatar size="large" label="Alex Morgan" status="away"></mui-avatar>
+            <mui-avatar size="large" label="Riley Chen" status="busy"></mui-avatar>
+            <mui-avatar size="large" label="Sam Taylor" status="dnd" status-label="Do not disturb"></mui-avatar>
+            <mui-avatar size="large" label="Jordan Lee" status="offline"></mui-avatar>
+          </mui-h-stack>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot; status=&quot;online&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Alex Morgan&quot; status=&quot;away&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Riley Chen&quot; status=&quot;busy&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Sam Taylor&quot; status=&quot;dnd&quot; status-label=&quot;Do not disturb&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;mui-avatar label=&quot;Jordan Lee&quot; status=&quot;offline&quot;&gt;&lt;/mui-avatar&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        title="Avatar Group"
+        description="Stack avatars when a compact surface needs to show multiple people."
+        usage="Avatar Group owns the overlap, ring, and default size.|||Each slotted Avatar still owns its image, initials, background, and status.|||Use label to describe the group when surrounding text does not already name it."
+      >
+        <div class="canvas" slot="body">
+          <mui-v-stack alignX="start">
+            <mui-avatar-group size="medium" label="Project collaborators">
+              <mui-avatar image="${MikeAvatar}" label="Mike Trilford" status="online"></mui-avatar>
+              <mui-avatar label="Alex Morgan" background="purple" status="away"></mui-avatar>
+              <mui-avatar label="Riley Chen" background="blue" status="busy"></mui-avatar>
+              <mui-avatar label="Sam Taylor" background="green"></mui-avatar>
+            </mui-avatar-group>
+
+            <mui-avatar-group size="small" overlap="compact" label="Compact assigned team">
+              <mui-avatar image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
+              <mui-avatar label="Alex Morgan" background="purple"></mui-avatar>
+              <mui-avatar label="Riley Chen" background="blue"></mui-avatar>
+              <mui-avatar label="Sam Taylor" background="green"></mui-avatar>
+              <mui-avatar label="Jordan Lee" background="orange"></mui-avatar>
+            </mui-avatar-group>
+          </mui-v-stack>
+        </div>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-avatar-group size=&quot;medium&quot; label=&quot;Project collaborators&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar image=&quot;avatar-mike.jpg&quot; label=&quot;Mike Trilford&quot; status=&quot;online&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar label=&quot;Alex Morgan&quot; background=&quot;purple&quot; status=&quot;away&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar label=&quot;Riley Chen&quot; background=&quot;blue&quot; status=&quot;busy&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &nbsp;&nbsp;&lt;mui-avatar label=&quot;Sam Taylor&quot; background=&quot;green&quot;&gt;&lt;/mui-avatar&gt;<br />
+          &lt;/mui-avatar-group&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card 
         title="Icon" 
         description="" 
@@ -908,7 +964,7 @@ class storyAvatar extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
       
-        imports='["@muibook/components/mui-avatar"]'>
+        imports='["@muibook/components/mui-avatar", "@muibook/components/mui-avatar-group"]'>
         ${stories}
       </story-template>
     `;

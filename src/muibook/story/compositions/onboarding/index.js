@@ -2,6 +2,14 @@ class Onboarding extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.formValues = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      agreed: false,
+    };
   }
 
   connectedCallback() {
@@ -21,20 +29,20 @@ class Onboarding extends HTMLElement {
         storybook="https://stories.muibook.com/?path=/docs/compositions-onboarding--docs"
       >
 
-          <mui-message variant="info" heading="Working with Web Components and Shadow DOM">
+          <mui-message variant="neutral" heading="Working with Web Component Form Controls">
             <mui-v-stack space="var(--space-200)">
               <mui-body size="small">
-                Accessing internal input values and handling actions requires awareness of Shadow DOM boundaries.
+                Form logic should use the custom element host contract before reaching into Shadow DOM internals.
                 </mui-body>
                 <mui-list as="ul">
-                  <mui-list-item size="small">Use shadowRoot.querySelector(...) to target elements inside Web Components.</mui-list-item>
-                  <mui-list-item size="small">Use await to ensure components are defined and their internal state (like .value or .checked) is ready.</mui-list-item>
-                  <mui-list-item size="small">Ensures accurate state reading and avoids race conditions during form logic or validation.</mui-list-item>
+                  <mui-list-item size="small">Listen for composed, bubbling input/change events on the custom element host.</mui-list-item>
+                  <mui-list-item size="small">Read values from event.detail.value or event.detail.checked.</mui-list-item>
+                  <mui-list-item size="small">Use shadowRoot.querySelector(...) only for focus recovery, legacy fallbacks, or tests.</mui-list-item>
                 </mui-list>
             </mui-v-stack>
           </mui-message>
 
-        <story-card title="Sign Up" description="This composition demonstrates how foundational components can be arranged to create a sign-up form. Due to Shadow DOM boundaries, native form submission via type='submit' doesn’t behave as expected. Instead, manual logic is applied to ensure proper submission — a pattern often required when working with Web Components.">
+        <story-card title="Sign Up" description="This composition demonstrates how foundational components can be arranged to create a sign-up form. The form listens to Web Component host events and reads event detail for validation instead of querying internal shadow inputs.">
 
           <mui-container small center slot="body">
             <mui-card>
@@ -45,25 +53,25 @@ class Onboarding extends HTMLElement {
                 <form>
                   <mui-v-stack space="var(--space-400)">
                     <mui-field id="firstNameField" label="First Name">
-                      <mui-input type="text" placeholder="John" />
+                      <mui-input id="firstNameInput" type="text" placeholder="John" />
                     </mui-field>
                     <mui-field id="lastNameField" label="Last Name">
-                      <mui-input type="text" placeholder="Doe" />
+                      <mui-input id="lastNameInput" type="text" placeholder="Doe" />
                     </mui-field>
                     <mui-field id="emailField" label="Email">
-                      <mui-input type="email" placeholder="john@example.com" />
+                      <mui-input id="emailInput" type="email" placeholder="john@example.com" />
                     </mui-field>
                     <mui-field id="passwordField" label="Password">
-                      <mui-input type="password" />
+                      <mui-input id="passwordInput" type="password" />
                     </mui-field>
                     <mui-field id="confirmPasswordField" label="Confirm Password">
-                      <mui-input type="password" />
+                      <mui-input id="confirmPasswordInput" type="password" />
                     </mui-field>
                     <mui-field id="termsField">
                       <mui-checkbox id="agreeTerms">I agree to the <mui-link href="/terms" size="small">terms and conditions</mui-link></mui-checkbox>
                     </mui-field>
                     <mui-button-group align="right">
-                      <mui-button variant="primary">Sign up</mui-button>
+                      <mui-button id="signUpButton" variant="primary">Sign up</mui-button>
                     </mui-button-group>
                   </mui-v-stack>
                 </form>
@@ -76,29 +84,34 @@ class Onboarding extends HTMLElement {
             <br /><br /><br /><br />
             // Example: Submit Logic<br />
             ///////////////////////////////////// <br /><br />
-            const&nbsp;signUpButton&nbsp;=&nbsp;this.shadowRoot.querySelector("mui-button");<br /><br />
+            const&nbsp;signUpButton&nbsp;=&nbsp;this.shadowRoot.getElementById("signUpButton");<br /><br />
             if&nbsp;(signUpButton)&nbsp;{<br />
             &nbsp;&nbsp;&nbsp;&nbsp;signUpButton.addEventListener("click",&nbsp;()&nbsp;=&gt;&nbsp;this.handleSubmit());<br />
             }<br /><br /><br /><br />
 
-            // Example: Validation Query<br />
+            // Example: Host Event Binding<br />
             ///////////////////////////////////// <br /><br />
-            async _gatherFormValues() {<br />
-              &nbsp;&nbsp;const getField = (id) => this.shadowRoot.getElementById(id);<br /><br />
+            const&nbsp;bindInput&nbsp;=&nbsp;(id,&nbsp;key)&nbsp;=&gt;&nbsp;{<br />
+            &nbsp;&nbsp;const&nbsp;input&nbsp;=&nbsp;this.shadowRoot.getElementById(id);<br />
+            &nbsp;&nbsp;if&nbsp;(!input)&nbsp;return;<br /><br />
+            &nbsp;&nbsp;input.addEventListener("input",&nbsp;(event)&nbsp;=&gt;&nbsp;{<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;this.formValues[key]&nbsp;=&nbsp;event.detail?.value?.trim()&nbsp;??&nbsp;"";<br />
+            &nbsp;&nbsp;});<br />
+            };<br /><br />
 
-              &nbsp;&nbsp;const fields = {<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;firstName: getField("firstNameField"),<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;lastName: getField("lastNameField"),<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;...<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;terms: getField("termsField"),<br />
-              &nbsp;&nbsp;};<br /><br />
+            bindInput("firstNameInput", "firstName");<br />
+            bindInput("lastNameInput", "lastName");<br />
+            bindInput("emailInput", "email");<br />
+            bindInput("passwordInput", "password");<br />
+            bindInput("confirmPasswordInput", "confirmPassword");<br /><br />
 
-              &nbsp;&nbsp;return {<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;firstName: await this.getInputValue(fields.firstName),<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;lastName: await this.getInputValue(fields.lastName),<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;...<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;agreed: await this.getCheckboxChecked(fields.terms),<br />
-              &nbsp;&nbsp;};<br />
+            const&nbsp;agreeTerms&nbsp;=&nbsp;this.shadowRoot.getElementById("agreeTerms");<br />
+            agreeTerms.addEventListener("change",&nbsp;(event)&nbsp;=&gt;&nbsp;{<br />
+            &nbsp;&nbsp;this.formValues.agreed&nbsp;=&nbsp;Boolean(event.detail?.checked);<br />
+            });<br /><br />
+
+            _gatherFormValues() {<br />
+            &nbsp;&nbsp;return&nbsp;{&nbsp;...this.formValues&nbsp;};<br />
             }<br /><br /><br /><br />
 
             // Sign Up Form<br />
@@ -112,19 +125,19 @@ class Onboarding extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&nbsp;space="var(--space-400)"&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="firstNameField"&nbsp;label="First&nbsp;Name"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="text"&nbsp;placeholder="John"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;id="firstNameInput"&nbsp;type="text"&nbsp;placeholder="John"&nbsp;/&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="lastNameField"&nbsp;label="Last&nbsp;Name"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="text"&nbsp;placeholder="Doe"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;id="lastNameInput"&nbsp;type="text"&nbsp;placeholder="Doe"&nbsp;/&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="emailField"&nbsp;label="Email"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="email"&nbsp;placeholder="john@example.com"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;id="emailInput"&nbsp;type="email"&nbsp;placeholder="john@example.com"&nbsp;/&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="passwordField"&nbsp;label="Password"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="password"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;id="passwordInput"&nbsp;type="password"&nbsp;/&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="confirmPasswordField"&nbsp;label="Confirm&nbsp;Password"&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;type="password"&nbsp;/&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-input&nbsp;id="confirmPasswordInput"&nbsp;type="password"&nbsp;/&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-field&nbsp;id="termsField"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-checkbox&nbsp;id="agreeTerms"&gt;<br />
@@ -132,7 +145,7 @@ class Onboarding extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-checkbox&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-field&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button-group&nbsp;align=&quot;right&quot;&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&nbsp;variant="primary"&gt;Sign&nbsp;up&lt;/mui-button&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&nbsp;id="signUpButton"&nbsp;variant="primary"&gt;Sign&nbsp;up&lt;/mui-button&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button-group&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form&gt;<br />
@@ -147,7 +160,9 @@ class Onboarding extends HTMLElement {
       </story-template>
     `;
 
-    const agree = this.shadowRoot.querySelector("#agreeTerms");
+    this._bindFormState();
+
+    const agree = this.shadowRoot.getElementById("agreeTerms");
     if (agree) {
       agree.addEventListener("change", () => {
         const termsField = this.shadowRoot.getElementById("termsField");
@@ -158,38 +173,40 @@ class Onboarding extends HTMLElement {
       });
     }
 
-    const signUpButton = this.shadowRoot.querySelector("mui-button");
+    const signUpButton = this.shadowRoot.getElementById("signUpButton");
     if (signUpButton) {
       signUpButton.addEventListener("click", () => this.handleSubmit());
     }
   }
 
-  async _getShadowInputValue(selector) {
-    const el = this.shadowRoot.querySelector(selector);
-    if (!el) return "";
-    await customElements.whenDefined(el.tagName.toLowerCase());
-    const inner = el.shadowRoot?.querySelector("input, textarea");
-    return inner?.value.trim() || "";
+  _bindFormState() {
+    const bindInput = (id, key) => {
+      const input = this.shadowRoot.getElementById(id);
+      if (!input) return;
+
+      input.addEventListener("input", (event) => {
+        this.formValues[key] = event.detail?.value?.trim() ?? "";
+      });
+    };
+
+    bindInput("firstNameInput", "firstName");
+    bindInput("lastNameInput", "lastName");
+    bindInput("emailInput", "email");
+    bindInput("passwordInput", "password");
+    bindInput("confirmPasswordInput", "confirmPassword");
+
+    const agreeTerms = this.shadowRoot.getElementById("agreeTerms");
+    if (agreeTerms) {
+      agreeTerms.addEventListener("change", (event) => {
+        this.formValues.agreed = Boolean(event.detail?.checked);
+      });
+    }
   }
 
-  async getInputValue(field) {
-    if (!field) return "";
-    return this._getShadowInputValue(`#${field.id} mui-input`);
-  }
-
-  async getCheckboxChecked(field) {
-    if (!field) return false;
-    const checkbox = field.querySelector("mui-checkbox");
-    if (!checkbox) return false;
-    await customElements.whenDefined("mui-checkbox");
-    const inner = checkbox.shadowRoot?.querySelector("input[type='checkbox']");
-    return inner?.checked ?? false;
-  }
-
-  async handleSubmit(event) {
+  handleSubmit(event) {
     if (event && typeof event.preventDefault === "function") event.preventDefault();
 
-    const values = await this._gatherFormValues();
+    const values = this._gatherFormValues();
     this._clearValidation();
 
     const errors = this._validate(values);
@@ -202,27 +219,8 @@ class Onboarding extends HTMLElement {
     console.log("Form submitted:", values);
   }
 
-  async _gatherFormValues() {
-    const getField = (id) => this.shadowRoot.getElementById(id);
-
-    const fields = {
-      firstName: getField("firstNameField"),
-      lastName: getField("lastNameField"),
-      email: getField("emailField"),
-      password: getField("passwordField"),
-      confirmPassword: getField("confirmPasswordField"),
-      terms: getField("termsField"),
-    };
-
-    return {
-      firstName: await this.getInputValue(fields.firstName),
-      lastName: await this.getInputValue(fields.lastName),
-      email: await this.getInputValue(fields.email),
-      password: await this.getInputValue(fields.password),
-      confirmPassword: await this.getInputValue(fields.confirmPassword),
-      agreed: await this.getCheckboxChecked(fields.terms),
-      fields, // keep for validation display
-    };
+  _gatherFormValues() {
+    return { ...this.formValues };
   }
 
   _clearValidation() {
@@ -234,7 +232,7 @@ class Onboarding extends HTMLElement {
           field.removeAttribute("message");
           field.removeAttribute("variant");
         }
-      }
+      },
     );
   }
 

@@ -1,6 +1,7 @@
 export const muiApi = {
   "mui-calendar": {
     description: "A flexible, accessible calendar grid for selecting dates.",
+    members: [{ kind: "field", name: "value", type: { text: "string" }, description: "Gets or sets the selected ISO date value." }],
     attributes: [
       {
         name: "value",
@@ -25,6 +26,10 @@ export const muiApi = {
       }
     ],
     slots: [],
+    events: [
+      { name: "change", description: "Composed, bubbling event dispatched when the selected date changes with ISO date string `detail.value`." },
+    ],
+    methods: [{ name: "focus", description: "Moves focus to the selected, current, or first available day control." }],
     cssProperties: [
       {
         name: "--calendar-width",

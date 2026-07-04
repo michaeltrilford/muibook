@@ -80,6 +80,14 @@ class MuiSwitch extends HTMLElement {
     }
   }
 
+  focus(options?: FocusOptions) {
+    if (this._checkbox) {
+      this._checkbox.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   private _cleanupListeners() {
     if (this._checkbox && this._changeHandler) {
       this._checkbox.removeEventListener("change", this._changeHandler);

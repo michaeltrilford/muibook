@@ -10,6 +10,7 @@ class MuiFileUpload extends HTMLElement {
   selectedFileName: string | null;
 
   private _wrapperClickHandler?: () => void;
+  private _wrapperKeydownHandler?: (event: KeyboardEvent) => void;
   private _inputChangeHandler?: (e: Event) => void;
 
   shadowRoot!: ShadowRoot;
@@ -61,6 +62,14 @@ class MuiFileUpload extends HTMLElement {
     this.attachEvents();
   }
 
+  focus(options?: FocusOptions) {
+    if (this.wrapper) {
+      this.wrapper.focus(options);
+    } else {
+      super.focus(options);
+    }
+  }
+
   disconnectedCallback() {
     this.cleanupListeners();
   }
@@ -90,6 +99,10 @@ class MuiFileUpload extends HTMLElement {
         }
         .wrapper:hover {
           border-color: var(--form-default-border-color-hover);
+        }
+        .wrapper:focus-visible {
+          outline: var(--outline-medium);
+          outline-offset: var(--outline-offset);
         }
         .label {
           width: 90px;
@@ -134,7 +147,7 @@ class MuiFileUpload extends HTMLElement {
           display: none;
         }
       </style>
-      <div class="wrapper">
+      <div class="wrapper" role="button" tabindex="0">
         <span class="label">${this.selectedFileName || this.currentFileName || "No file selected"}</span>
         <mui-button variant="tertiary">Browse</mui-button>
         <input type="file" accept="${this.acceptedFileTypes}" />
@@ -154,6 +167,9 @@ class MuiFileUpload extends HTMLElement {
     if (this.wrapper && this._wrapperClickHandler) {
       this.wrapper.removeEventListener("click", this._wrapperClickHandler);
     }
+    if (this.wrapper && this._wrapperKeydownHandler) {
+      this.wrapper.removeEventListener("keydown", this._wrapperKeydownHandler);
+    }
     if (this.input && this._inputChangeHandler) {
       this.input.removeEventListener("change", this._inputChangeHandler);
     }
@@ -163,10 +179,16 @@ class MuiFileUpload extends HTMLElement {
     this._wrapperClickHandler = () => {
       this.input.click();
     };
+    this._wrapperKeydownHandler = (event: KeyboardEvent) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      this.input.click();
+    };
 
     this._inputChangeHandler = this.handleFileChange.bind(this);
 
     this.wrapper.addEventListener("click", this._wrapperClickHandler);
+    this.wrapper.addEventListener("keydown", this._wrapperKeydownHandler);
     this.input.addEventListener("change", this._inputChangeHandler);
   }
 

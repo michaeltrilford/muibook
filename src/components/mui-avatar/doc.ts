@@ -22,6 +22,8 @@ export const muiDocs: MuiDocs = {
         "Use in compact UI elements where space is limited (e.g., tables, cards).",
         "Pair with user metadata (name, role, status) for context.",
         "Indicate presence, status, or selection in collaborative interfaces.",
+        "Use status on Avatar when the activity state belongs to the represented person or entity.",
+        "Use Avatar Group when showing stacked collaborators, participants, or assigned people.",
         "Avatar can be slotted into Button for identity-led actions such as switching video platform profiles, opening an account menu, or accessing workspace controls.",
         "Use an avatar-only button when the avatar itself is the visible trigger for a profile dropdown, account settings drawer, workspace switcher, or compact dialog action.",
         "In global app headers, avatar-only buttons are a good fit for account settings, billing, support, or team context menus.",
@@ -48,6 +50,7 @@ export const muiDocs: MuiDocs = {
         "Image / Initials / Icon: The visible identity marker shown inside the avatar.",
         "Label: Accessible name announced to assistive technology.",
         "Status or Context (optional): Additional meaning can be conveyed through surrounding UI such as presence, role, or action context.",
+        "Activity Status (optional): A bottom-right presence indicator mapped to semantic badge status tokens.",
       ],
     },
 
@@ -71,6 +74,12 @@ export const muiDocs: MuiDocs = {
           description: "Use for generic entities, products, or utility actions where a person-specific identity is not required.",
           image: "",
         },
+        {
+          key: "status",
+          title: "Status",
+          description: "Use status for compact presence states such as online, away, busy, do not disturb, or offline.",
+          image: "",
+        },
       ],
     },
 
@@ -89,6 +98,12 @@ export const muiDocs: MuiDocs = {
           description: "A compact avatar trigger used to switch between people, channels, or workspace identities in a media or collaboration product.",
           image: "",
         },
+        {
+          key: "avatar-group",
+          name: "Avatar Group",
+          description: "A stacked group of avatars used for collaborators, participants, or assigned people.",
+          image: "",
+        },
       ],
     },
 
@@ -101,6 +116,10 @@ export const muiDocs: MuiDocs = {
         {
           name: "Chip",
           link: "https://guides.muibook.com/chip",
+        },
+        {
+          name: "Avatar Group",
+          link: "https://guides.muibook.com/avatar-group",
         },
         {
           name: "Slat",
