@@ -97,7 +97,7 @@ class tokensSemantic extends HTMLElement {
           links="surface::Surface|||text::Text|||font-weight::Font Weight|||border::Border|||shadow::Shadow|||outline::Outline|||backdrop::Backdrop|||categorical::Categorical|||feedback::Feedback|||form::Form|||action::Action"
         ></story-quicklinks>
 
-          <spec-card id="surface" title="Surface" description="Surface tokens define the background layers of the interface. They create depth and support elevation across contexts. Light and dark modes aren’t simple color inversions; they’re carefully designed to preserve consistent elevation and stacking across all surfaces.">
+          <spec-card id="surface" title="Surface" description="Surface tokens define the background layers of the interface. The base surface represents the app or page level, with elevated surfaces moving forward and recessed surfaces moving backwards. Use surface tokens primarily for components that sit flush with the background, such as cards or slats, rather than on every element. This ensures typography is easily adjusted and allows users to craft color contrast through themes and brand ranges. Light and dark modes aren’t simple color inversions; they’re carefully designed to preserve consistent elevation and stacking across all surfaces.">
 
             <story-token-slat slot="body" token="--surface-recessed-300" variant="color">
             </story-token-slat>

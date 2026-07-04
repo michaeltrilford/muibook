@@ -44,7 +44,7 @@ The default theme is built into four specific layers within the CSS foundation (
 
 Switching between light and dark mode is done simply by toggling the `data-theme` attribute on the HTML element.
 
-Surface tokens are especially important. Use `--surface`, `--surface-elevated-*`, and `--surface-recessed-*` for depth and page structure. Do not replace them with raw greys in component or page CSS unless you are defining the theme mapping itself.
+Surface tokens are especially important. The base `--surface` represents the app or HTML page level. Elevated surfaces (`--surface-elevated-*`) move forward, while recessed surfaces (`--surface-recessed-*`) move backwards. Use surface tokens mainly for components that sit flush with the background (e.g., cards, slats). Avoid applying surface tokens to every element; instead, let typography color contrast be driven by themes and brand ranges. Do not replace them with raw greys in component or page CSS unless you are defining the theme mapping itself.
 
 ## Multi-Brand Theming
 
