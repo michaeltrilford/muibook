@@ -135,11 +135,9 @@ html[data-brand="jal"][data-theme="light"] {
 
   /* Surface */
   --surface: var(--grey-200);
-  --surface-elevated-alpha: var(--white-opacity-50);
   --surface-elevated-100: var(--grey-100);
   --surface-elevated-200: var(--grey-200);
   --surface-elevated-300: var(--grey-300);
-  --surface-recessed-alpha: var(--black-opacity-10);
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
   --surface-recessed-300: var(--grey-500);
@@ -330,11 +328,9 @@ html[data-brand="jal"][data-theme="dark"] {
 
   /* Surface */
   --surface: var(--grey-900);
-  --surface-elevated-alpha: var(--white-opacity-10);
   --surface-elevated-100: var(--grey-1000);
   --surface-elevated-200: var(--grey-1100);
   --surface-elevated-300: var(--grey-1200);
-  --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--grey-1000);
   --surface-recessed-200: var(--grey-1200);
   --surface-recessed-300: var(--grey-1300);

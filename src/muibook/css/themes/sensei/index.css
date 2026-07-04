@@ -124,11 +124,9 @@ html[data-brand="sensei"][data-theme="light"] {
   --action-avatar-background-hover: var(--green-300);
   /* Surface */
   --surface: var(--green-200);
-  --surface-elevated-alpha: var(--green-300);
   --surface-elevated-100: var(--green-300);
   --surface-elevated-200: var(--green-400);
   --surface-elevated-300: var(--green-500);
-  --surface-recessed-alpha: var(--green-400);
   --surface-recessed-100: var(--green-300);
   --surface-recessed-200: var(--green-400);
   --surface-recessed-300: var(--green-500);
@@ -383,11 +381,9 @@ html[data-brand="sensei"][data-theme="dark"] {
 
   /* Surface */
   --surface: var(--green-1200);
-  --surface-elevated-alpha: var(--green-1200);
   --surface-elevated-100: var(--green-1300);
   --surface-elevated-200: var(--green-1400);
   --surface-elevated-300: var(--green-1500);
-  --surface-recessed-alpha: var(--black-opacity-30);
   --surface-recessed-100: var(--green-1000);
   --surface-recessed-200: var(--green-1100);
   --surface-recessed-300: var(--green-1200);

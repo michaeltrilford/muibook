@@ -108,14 +108,10 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--surface-recessed-100" variant="color">
             </story-token-slat>
 
-            <story-token-slat slot="body" token="--surface-recessed-alpha" variant="color">
-            </story-token-slat>
 
             <story-token-slat slot="body" token="--surface" variant="color">
             </story-token-slat>
 
-            <story-token-slat slot="body" token="--surface-elevated-alpha" variant="color">
-            </story-token-slat>
 
             <story-token-slat slot="body" token="--surface-elevated-100" variant="color">
             </story-token-slat>

@@ -352,7 +352,7 @@ const styles = /*css*/ `
     box-shadow:
       0 0 0 var(--space-400) var(--video-thumbnail-card-hover-background, var(--surface-elevated-100)),
       0 0 0 calc(var(--space-400) + var(--video-thumbnail-card-hover-edge-width, 0px)) var(--video-thumbnail-card-hover-edge-color-token, transparent),
-      0 var(--space-200) var(--space-400) var(--space-300) var(--surface-recessed-alpha);
+      0 var(--space-200) var(--space-400) var(--space-300) var(--shadow-color-medium);
   }
   .card::part(background):focus-visible {
     outline: var(--outline-thick);

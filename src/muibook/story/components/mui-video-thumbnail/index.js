@@ -47,7 +47,7 @@ class StoryVideoThumbnail extends HTMLElement {
       .border-demo {
         --video-thumbnail-border: var(--stroke-size-100) solid var(--border-color);
         --video-thumbnail-border-hover: var(--stroke-size-100) solid var(--outline-color);
-        --video-thumbnail-box-shadow-hover: 0 var(--space-100) var(--space-300) var(--surface-recessed-alpha);
+        --video-thumbnail-box-shadow-hover: 0 var(--space-100) var(--space-300) var(--shadow-color-medium);
       }
 
       .card-demo {
@@ -86,7 +86,7 @@ class StoryVideoThumbnail extends HTMLElement {
         box-shadow:
           0 0 0 var(--space-400) var(--video-thumbnail-card-hover-background),
           0 0 0 calc(var(--space-400) + var(--video-thumbnail-card-hover-edge)) var(--video-thumbnail-card-hover-edge-color),
-          0 var(--space-200) var(--space-400) var(--space-300) var(--surface-recessed-alpha);
+          0 var(--space-200) var(--space-400) var(--space-300) var(--shadow-color-medium);
       }
 
       .card-demo mui-link::part(background):focus-visible,
@@ -246,7 +246,7 @@ class StoryVideoThumbnail extends HTMLElement {
           .media-surface {<br />
           &nbsp;&nbsp;--video-thumbnail-border: var(--stroke-size-100) solid var(--border-color);<br />
           &nbsp;&nbsp;--video-thumbnail-border-hover: var(--stroke-size-100) solid var(--outline-color);<br />
-          &nbsp;&nbsp;--video-thumbnail-box-shadow-hover: 0 var(--space-100) var(--space-300) var(--surface-recessed-alpha);<br />
+          &nbsp;&nbsp;--video-thumbnail-box-shadow-hover: 0 var(--space-100) var(--space-300) var(--shadow-color-medium);<br />
           }<br />
           <br />
           &lt;mui-video-thumbnail play overlay src="thumbnail-light.png" src-dark="thumbnail-dark.png" alt="Video title"&gt;&lt;/mui-video-thumbnail&gt;
