@@ -17,6 +17,24 @@ Style components externally via a predictable, cascading theme layer.
 
 Control the look and feel by overriding CSS variables at the document, brand, theme, page, component instance, or part level.
 
+## CSS Setup & Theme Activation
+
+The Michael UI System requires a specific CSS architecture to function properly. You must include the core CSS files in the correct order to establish resets, base styles, brand primitives, and semantic tokens.
+
+Load them in this order:
+1. **mui-reset.css**: Resets default browser styles. Normalizes spacing, font inheritance, list styles, and box-sizing.
+2. **mui-base.css**: Defines global layout and typography defaults (body, headings, links, buttons).
+3. **mui-brand.css**: Contains raw brand primitives for a specific brand (e.g., colors, font scales, radii).
+4. **mui-tokens.css**: Maps semantic purposes to brand primitives and handles themes (light/dark).
+
+To activate the correct color tokens for your UI, you must set the default theme using the \`data-theme\` attribute on your HTML tag:
+
+\`\`\`html
+<html lang="en" data-theme="light">
+  ...
+</html>
+\`\`\`
+
 ## Token Architecture
 
 Design tokens are generated using Style Dictionary and organized into three tiers:

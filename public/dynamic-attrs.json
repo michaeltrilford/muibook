@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-04T11:40:13.900Z",
+  "generatedAt": "2026-07-05T05:56:34.057Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -346,16 +346,6 @@
         }
       ]
     },
-    "mui-row": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "in-card",
-          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
-        }
-      ]
-    },
     "mui-table": {
       "version": 1,
       "destinationOnly": true,
@@ -363,6 +353,16 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
+        }
+      ]
+    },
+    "mui-row": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "in-card",
+          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
         }
       ]
     },

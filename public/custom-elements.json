@@ -6819,6 +6819,30 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-list/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ List: { title: \"List\", description: \"Used to display related items in a clear, readable sequence. Lists can be ordered (numbered) to suggest priority or sequence, or unordered (bulleted) for grouped information without hierarchy.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/OSwQtL8kK29OUOG0oLMSJ/0a488efb3f6cf8f6e6faa40e124aa975/List_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8673&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-list--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-list\"], website: [\"https://muibook.com/list\"], guides: [\"https://guides.muibook.com/list\"], usage: { list: [ \"Use ordered lists when the order or steps matter (e.g. instructions).\", \"Use unordered lists for grouped or related items without a set order.\", \"Keep items concise and consistent in structure for scanability.\", \"void using lists for complex content — consider a table or grid instead.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"muibook-resource\", name: \"Muibook Resource\", description: \"The Muibook documentation site uses MUI components to compose its layout, including headings, text, lists, buttons, icons, and image components.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3LVvuYDZWRnMhxNy6GMLNd/c5074a05eacb2c22c50ea172b3567c48/Muibook-List-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-list/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-loader/doc.ts",
       "declarations": [
         {
@@ -6905,291 +6929,6 @@
           "declaration": {
             "name": "MuiLoader",
             "module": "src/components/mui-loader/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-list/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ List: { title: \"List\", description: \"Used to display related items in a clear, readable sequence. Lists can be ordered (numbered) to suggest priority or sequence, or unordered (bulleted) for grouped information without hierarchy.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/OSwQtL8kK29OUOG0oLMSJ/0a488efb3f6cf8f6e6faa40e124aa975/List_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8673&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-list--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-list\"], website: [\"https://muibook.com/list\"], guides: [\"https://guides.muibook.com/list\"], usage: { list: [ \"Use ordered lists when the order or steps matter (e.g. instructions).\", \"Use unordered lists for grouped or related items without a set order.\", \"Keep items concise and consistent in structure for scanability.\", \"void using lists for complex content — consider a table or grid instead.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"muibook-resource\", name: \"Muibook Resource\", description: \"The Muibook documentation site uses MUI components to compose its layout, including headings, text, lists, buttons, icons, and image components.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3LVvuYDZWRnMhxNy6GMLNd/c5074a05eacb2c22c50ea172b3567c48/Muibook-List-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-list/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-model-viewer/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ ModelViewer: { title: \"Model Viewer\", description: \"Model Viewer renders interactive 3D models and enables AR experiences directly in the browser. It progressively enhances native Apple Quick Look (USDZ) and native visionOS model tags with cross-browser support powered by Google's model-viewer custom element.\", hero: [\"\"], figma: [\"\"], storybook: [\"https://stories.muibook.com/?path=/docs/media-model-viewer--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-model-viewer/index.ts\"], website: [\"https://muibook.com/model-viewer\"], guides: [\"https://guides.muibook.com/model-viewer\"], usage: { list: [ \"Use for interactive product previews (e.g. 3D assets, furniture, models).\", \"Set src to point to a standard GLB/GLTF model for general evergreen browsers.\", \"Set ios-src to point to a USDZ model to enable Quick Look on iPhone, iPad, and visionOS.\", \"Define poster to show a clean placeholder image while the model file is fetching or loading.\", \"Enable ar and camera-controls to allow users to interact with and place models in their space.\", \"Keep controls responsive and design clean fallback elements for non-3D devices.\" ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Always provide a meaningful alt description to describe the model to screen readers.\", \"Ensure the default slot provides static HTML text, images, or download links for older environments where WebGL is unsupported.\", \"Avoid auto-rotate unless the user can explicitly pause it, or it stops after one full rotation.\" ], }, anatomy: { image: \"\", list: [\"Model frame\", \"Fallback poster\", \"Loading spinner\", \"3D WebGL viewport\", \"AR trigger button\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Image\", link: \"https://guides.muibook.com/image\" }, { name: \"Media Player\", link: \"https://guides.muibook.com/media-player\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-model-viewer/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-model-viewer/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Renders interactive 3D models using Google's model-viewer custom element, with native model element support in Safari on visionOS 2+ as a progressive enhancement.",
-          "name": "MuiModelViewer",
-          "attributes": [
-            {
-              "name": "src",
-              "type": {
-                "text": "string"
-              },
-              "description": "Path to the primary 3D model (typically GLB or GLTF)."
-            },
-            {
-              "name": "ios-src",
-              "type": {
-                "text": "string"
-              },
-              "description": "Path to the USDZ fallback model for Apple Quick Look on iOS and visionOS."
-            },
-            {
-              "name": "poster",
-              "type": {
-                "text": "string"
-              },
-              "description": "Placeholder or loading preview image URL."
-            },
-            {
-              "name": "alt",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible description of the 3D model for screen readers."
-            },
-            {
-              "name": "controls",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enables orbit / zoom interactive controls."
-            },
-            {
-              "name": "camera-controls",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Explicit control override for model-viewer's camera controls."
-            },
-            {
-              "name": "auto-rotate",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enables automatic rotation of the model camera."
-            },
-            {
-              "name": "ar",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enables AR entry trigger where supported."
-            },
-            {
-              "name": "loading",
-              "type": {
-                "text": "\"lazy\" | \"eager\""
-              },
-              "default": "lazy",
-              "description": "Configures loading priority for the model."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-model-viewer",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Fallback or additional content rendered when the 3D viewers are unsupported or loading."
-            },
-            {
-              "name": "poster",
-              "description": "Custom UI elements overlaying the model before it initializes."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--mui-model-viewer-background",
-              "description": "Theme-aware background color for the viewport."
-            },
-            {
-              "name": "--mui-model-viewer-radius",
-              "description": "Corner radius of the viewer container."
-            },
-            {
-              "name": "--mui-model-viewer-aspect-ratio",
-              "description": "Locked aspect-ratio constraint for the viewer container."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-model-viewer",
-          "declaration": {
-            "name": "MuiModelViewer",
-            "module": "src/components/mui-model-viewer/index.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "MuiModelViewer",
-          "declaration": {
-            "name": "MuiModelViewer",
-            "module": "src/components/mui-model-viewer/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-message/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Message: { title: \"Message\", description: \"Message is a persistent page-level notification for durable status, guidance, or system context that needs more weight than inline body copy. It should include a clear heading and slotted supporting body content, and should not be used as a styled paragraph, field helper, or routine inline callout.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/01OU9JbOlDZGvbpkq2ismi/b0410cb8002858ded88987d9556daa04/Message_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=9-1053&t=ZA9uH4LK37tSuk6r-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/feedback-message--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-message/index.ts\"], website: [\"https://muibook.com/message\"], guides: [\"https://guides.muibook.com/message\"], usage: { list: [ \"Use Message for persistent page-level or section-level notices that apply to the surrounding workflow.\", \"Always provide a specific heading and place the supporting copy in the default slot using Body, List, Link, or other content components.\", \"Do not use Message as a styled text block, generic inline note, or mid-content emphasis treatment.\", \"For form guidance, validation, or field status, use Form Message inside Field with slot='message'.\", \"For lightweight inline context, use Body size='small' with an info icon in slot='before'.\", \"Reserve positive, warning, and attention variants for meaningful page-level status or severity; avoid using them for routine explanatory copy.\", ], }, accessibility: { designerList: [ \"ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.\", \"Neutral, Postive, Info support the role of STATUS for screen reader feedback.\", \"Warning, Attention support the role of ALERT for screen reader feedback.\", ], engineerList: [ \"ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.\", \"Neutral, Postive, Info support the role of STATUS for screen reader feedback.\", \"Warning, Attention support the role of ALERT for screen reader feedback.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/6S1MOtZZKP2bxYuIUNScSC/993a910363fbfbba29a3de384ecb182a/Message_-_Anatomy.png\", list: [ \"Preset icon: Communicates the type of message visually. E.g. neutral, positive, info, warning, attention.\", \"Heading: Summarises the page-level notice. Keep this short and do not place the full message body here.\", \"Default slot: Contains the supporting body content, such as Body, List, Link, or related message actions.\", ], }, variants: { items: [ { key: \"plain\", title: \"Plain\", description: \"A subtle, transparent style for passive page-level notices on vibrant backgrounds. Use sparingly for durable non-critical information, not inline helper copy. This variant sets aria-live='polite' and role='status' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/21KWc3TZOJPqZ2BtZ3ngrY/3cbf4aa6df3a72f195eebaa8fe8ecfde/message-plain.png\", }, { key: \"neutral\", title: \"Neutral\", description: \"The Neutral state offers a calm, balanced tone for non-critical persistent notices. Use it for page-level information such as background status or workflow guidance. This variant uses aria-live='polite' and role='status' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2VF8KPxaXCm6P4dlpsAnXs/5a2011d1a63a900dcdd6669ec5c097e9/message-neutral.png\", }, { key: \"positive\", title: \"Positive\", description: \"The Positive state conveys durable success or completion status at page level. Avoid using it for small inline confirmations where Body or Form Message would be lighter. This variant uses aria-live='polite' and role='status' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2HOuPOpHOuMGuVUoPAs5MI/ff1e156bc8f31e580972289fcc7bf3d7/message-positive.png\", }, { key: \"info\", title: \"Info\", description: \"The Info state supports page-level system information, feature changes, or workflow context. For inline notes, use Body with an info icon instead. This variant uses aria-live='polite' and role='status' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1x63W880Trpx0GYiYQJhCt/72c09a93d6ec34a18bc15310927fe9ef/message-info.png\", }, { key: \"warning\", title: \"Warning\", description: \"The Warning state alerts users to page-level issues that may require attention, such as unsaved changes, consequences, limitations, or expirations. Use Form Message for field-specific warnings. This variant uses aria-live='assertive' and role='alert' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/50V1Ap7vVxPUWRbbKh0kx5/2fe4c203befa779087c8b23984d951b7/message-warning.png\", }, { key: \"attention\", title: \"Attention\", description: \"The Attention state demands immediate focus for critical page-level issues, such as system errors, security problems, or time-sensitive interruptions. Do not use it for ordinary content emphasis. This variant uses aria-live='assertive' and role='alert' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5GXIEuluNJBlg8h4hDCfWH/ddeec560354ab06af73bf5c5d8749c12/message-attention.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"plain-message\", name: \"Plain message\", description: \"This example uses the Plain variant, suitable for both white and colored backgrounds. It’s ideal for presenting information passively, without demanding user attention. In this case, it’s used to deliver accessibility notes.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3akJJDd28DOIhQrYq6g4y2/456c02f32dc9c40d84d92371b7ddbead/message-composition-neutral.png\", }, { key: \"info-message\", name: \"Info message\", description: \"Use a page-level Info message to remind users to log in to the provided tools, ensuring the MUI Guidelines are shown instead of the default guidelines.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1ySFimf3eEleYLPKomWuem/34772aed4257db976f2ca8cb633d3d5b/message-composition-info.png\", }, ], }, related: { items: [ { name: \"Alert\", link: \"https://guides.muibook.com/alert\", }, { name: \"Form Message\", link: \"https://guides.muibook.com/field\", }, { name: \"Body\", link: \"https://guides.muibook.com/body\", }, ], }, rules: [ { heading: \"Use as a page-level notification\", description: \"Message should feel like a heavier persistent notice, not a general-purpose text style.\", doContent: [ { description: \"Use a concise heading with slotted Body, List, or Link content for supporting detail.\", image: \"\", }, ], dontContent: [ { description: \"Do not use Message for inline guidance, form helper text, or routine status copy; use Form Message or Body instead.\", image: \"\", }, ], }, ], behaviour: { list: [ \"Message is persistent and integrated into the page layout.\", \"Neutral, Positive, and Info use role='status' with polite live-region behaviour.\", \"Warning and Attention use role='alert' with assertive live-region behaviour.\", ], }, writing: { list: [ \"Write the heading as the short status or notice title.\", \"Write the body as the supporting context, impact, or next action.\", \"Keep inline helper copy out of Message; use lighter text treatments for routine guidance.\", ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-message/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-message/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Presents a persistent page-level notification with an intent icon, heading, and slotted supporting body content. Use Form Message for form guidance and Body with an info icon for lightweight inline notes.",
-          "name": "MuiMessage",
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"neutral\" | \"positive\" | \"info\" | \"warning\" | \"attention\""
-              },
-              "default": "neutral",
-              "description": "Sets the page-level intent style and default icon. Reserve positive, warning, and attention for meaningful status or severity, not routine inline emphasis."
-            },
-            {
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "Heading...",
-              "description": "Sets the concise message title. Do not put full body copy here; supporting content belongs in the default slot."
-            },
-            {
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides the default variant icon with a `mui-icon-*` tag name."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"small\" | \"medium\" | \"large\""
-              },
-              "default": "large",
-              "description": "Controls the message density and typography scale."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-message",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Required supporting content below the heading. Use `mui-body`, `mui-list`, `mui-link`, or related content; avoid leaving the slot empty."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--message-padding",
-              "description": "Controls the message inset spacing."
-            },
-            {
-              "name": "--message-gap-horizontal",
-              "description": "Controls horizontal spacing between icon and content."
-            },
-            {
-              "name": "--message-gap-vertical",
-              "description": "Controls vertical spacing between stacked content rows."
-            },
-            {
-              "name": "--message-radius",
-              "description": "Controls the message corner radius."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-message",
-          "declaration": {
-            "name": "MuiMessage",
-            "module": "src/components/mui-message/index.ts"
           }
         }
       ]
@@ -7620,6 +7359,267 @@
           "declaration": {
             "name": "MuiProgress",
             "module": "src/components/mui-progress/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-message/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Message: { title: \"Message\", description: \"Message is a persistent page-level notification for durable status, guidance, or system context that needs more weight than inline body copy. It should include a clear heading and slotted supporting body content, and should not be used as a styled paragraph, field helper, or routine inline callout.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/01OU9JbOlDZGvbpkq2ismi/b0410cb8002858ded88987d9556daa04/Message_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=9-1053&t=ZA9uH4LK37tSuk6r-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/feedback-message--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-message/index.ts\"], website: [\"https://muibook.com/message\"], guides: [\"https://guides.muibook.com/message\"], usage: { list: [ \"Use Message for persistent page-level or section-level notices that apply to the surrounding workflow.\", \"Always provide a specific heading and place the supporting copy in the default slot using Body, List, Link, or other content components.\", \"Do not use Message as a styled text block, generic inline note, or mid-content emphasis treatment.\", \"For form guidance, validation, or field status, use Form Message inside Field with slot='message'.\", \"For lightweight inline context, use Body size='small' with an info icon in slot='before'.\", \"Reserve positive, warning, and attention variants for meaningful page-level status or severity; avoid using them for routine explanatory copy.\", ], }, accessibility: { designerList: [ \"ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.\", \"Neutral, Postive, Info support the role of STATUS for screen reader feedback.\", \"Warning, Attention support the role of ALERT for screen reader feedback.\", ], engineerList: [ \"ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.\", \"Neutral, Postive, Info support the role of STATUS for screen reader feedback.\", \"Warning, Attention support the role of ALERT for screen reader feedback.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/6S1MOtZZKP2bxYuIUNScSC/993a910363fbfbba29a3de384ecb182a/Message_-_Anatomy.png\", list: [ \"Preset icon: Communicates the type of message visually. E.g. neutral, positive, info, warning, attention.\", \"Heading: Summarises the page-level notice. Keep this short and do not place the full message body here.\", \"Default slot: Contains the supporting body content, such as Body, List, Link, or related message actions.\", ], }, variants: { items: [ { key: \"plain\", title: \"Plain\", description: \"A subtle, transparent style for passive page-level notices on vibrant backgrounds. Use sparingly for durable non-critical information, not inline helper copy. This variant sets aria-live='polite' and role='status' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/21KWc3TZOJPqZ2BtZ3ngrY/3cbf4aa6df3a72f195eebaa8fe8ecfde/message-plain.png\", }, { key: \"neutral\", title: \"Neutral\", description: \"The Neutral state offers a calm, balanced tone for non-critical persistent notices. Use it for page-level information such as background status or workflow guidance. This variant uses aria-live='polite' and role='status' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2VF8KPxaXCm6P4dlpsAnXs/5a2011d1a63a900dcdd6669ec5c097e9/message-neutral.png\", }, { key: \"positive\", title: \"Positive\", description: \"The Positive state conveys durable success or completion status at page level. Avoid using it for small inline confirmations where Body or Form Message would be lighter. This variant uses aria-live='polite' and role='status' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2HOuPOpHOuMGuVUoPAs5MI/ff1e156bc8f31e580972289fcc7bf3d7/message-positive.png\", }, { key: \"info\", title: \"Info\", description: \"The Info state supports page-level system information, feature changes, or workflow context. For inline notes, use Body with an info icon instead. This variant uses aria-live='polite' and role='status' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1x63W880Trpx0GYiYQJhCt/72c09a93d6ec34a18bc15310927fe9ef/message-info.png\", }, { key: \"warning\", title: \"Warning\", description: \"The Warning state alerts users to page-level issues that may require attention, such as unsaved changes, consequences, limitations, or expirations. Use Form Message for field-specific warnings. This variant uses aria-live='assertive' and role='alert' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/50V1Ap7vVxPUWRbbKh0kx5/2fe4c203befa779087c8b23984d951b7/message-warning.png\", }, { key: \"attention\", title: \"Attention\", description: \"The Attention state demands immediate focus for critical page-level issues, such as system errors, security problems, or time-sensitive interruptions. Do not use it for ordinary content emphasis. This variant uses aria-live='assertive' and role='alert' for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5GXIEuluNJBlg8h4hDCfWH/ddeec560354ab06af73bf5c5d8749c12/message-attention.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"plain-message\", name: \"Plain message\", description: \"This example uses the Plain variant, suitable for both white and colored backgrounds. It’s ideal for presenting information passively, without demanding user attention. In this case, it’s used to deliver accessibility notes.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3akJJDd28DOIhQrYq6g4y2/456c02f32dc9c40d84d92371b7ddbead/message-composition-neutral.png\", }, { key: \"info-message\", name: \"Info message\", description: \"Use a page-level Info message to remind users to log in to the provided tools, ensuring the MUI Guidelines are shown instead of the default guidelines.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1ySFimf3eEleYLPKomWuem/34772aed4257db976f2ca8cb633d3d5b/message-composition-info.png\", }, ], }, related: { items: [ { name: \"Alert\", link: \"https://guides.muibook.com/alert\", }, { name: \"Form Message\", link: \"https://guides.muibook.com/field\", }, { name: \"Body\", link: \"https://guides.muibook.com/body\", }, ], }, rules: [ { heading: \"Use as a page-level notification\", description: \"Message should feel like a heavier persistent notice, not a general-purpose text style.\", doContent: [ { description: \"Use a concise heading with slotted Body, List, or Link content for supporting detail.\", image: \"\", }, ], dontContent: [ { description: \"Do not use Message for inline guidance, form helper text, or routine status copy; use Form Message or Body instead.\", image: \"\", }, ], }, ], behaviour: { list: [ \"Message is persistent and integrated into the page layout.\", \"Neutral, Positive, and Info use role='status' with polite live-region behaviour.\", \"Warning and Attention use role='alert' with assertive live-region behaviour.\", ], }, writing: { list: [ \"Write the heading as the short status or notice title.\", \"Write the body as the supporting context, impact, or next action.\", \"Keep inline helper copy out of Message; use lighter text treatments for routine guidance.\", ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-message/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-message/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Presents a persistent page-level notification with an intent icon, heading, and slotted supporting body content. Use Form Message for form guidance and Body with an info icon for lightweight inline notes.",
+          "name": "MuiMessage",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"neutral\" | \"positive\" | \"info\" | \"warning\" | \"attention\""
+              },
+              "default": "neutral",
+              "description": "Sets the page-level intent style and default icon. Reserve positive, warning, and attention for meaningful status or severity, not routine inline emphasis."
+            },
+            {
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "Heading...",
+              "description": "Sets the concise message title. Do not put full body copy here; supporting content belongs in the default slot."
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides the default variant icon with a `mui-icon-*` tag name."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"small\" | \"medium\" | \"large\""
+              },
+              "default": "large",
+              "description": "Controls the message density and typography scale."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-message",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Required supporting content below the heading. Use `mui-body`, `mui-list`, `mui-link`, or related content; avoid leaving the slot empty."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--message-padding",
+              "description": "Controls the message inset spacing."
+            },
+            {
+              "name": "--message-gap-horizontal",
+              "description": "Controls horizontal spacing between icon and content."
+            },
+            {
+              "name": "--message-gap-vertical",
+              "description": "Controls vertical spacing between stacked content rows."
+            },
+            {
+              "name": "--message-radius",
+              "description": "Controls the message corner radius."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-message",
+          "declaration": {
+            "name": "MuiMessage",
+            "module": "src/components/mui-message/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-model-viewer/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ ModelViewer: { title: \"Model Viewer\", description: \"Model Viewer renders interactive 3D models and enables AR experiences directly in the browser. It progressively enhances native Apple Quick Look (USDZ) and native visionOS model tags with cross-browser support powered by Google's model-viewer custom element.\", hero: [\"\"], figma: [\"\"], storybook: [\"https://stories.muibook.com/?path=/docs/media-model-viewer--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-model-viewer/index.ts\"], website: [\"https://muibook.com/model-viewer\"], guides: [\"https://guides.muibook.com/model-viewer\"], usage: { list: [ \"Use for interactive product previews (e.g. 3D assets, furniture, models).\", \"Set src to point to a standard GLB/GLTF model for general evergreen browsers.\", \"Set ios-src to point to a USDZ model to enable Quick Look on iPhone, iPad, and visionOS.\", \"Define poster to show a clean placeholder image while the model file is fetching or loading.\", \"Enable ar and camera-controls to allow users to interact with and place models in their space.\", \"Keep controls responsive and design clean fallback elements for non-3D devices.\" ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Always provide a meaningful alt description to describe the model to screen readers.\", \"Ensure the default slot provides static HTML text, images, or download links for older environments where WebGL is unsupported.\", \"Avoid auto-rotate unless the user can explicitly pause it, or it stops after one full rotation.\" ], }, anatomy: { image: \"\", list: [\"Model frame\", \"Fallback poster\", \"Loading spinner\", \"3D WebGL viewport\", \"AR trigger button\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Image\", link: \"https://guides.muibook.com/image\" }, { name: \"Media Player\", link: \"https://guides.muibook.com/media-player\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-model-viewer/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-model-viewer/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Renders interactive 3D models using Google's model-viewer custom element, with native model element support in Safari on visionOS 2+ as a progressive enhancement.",
+          "name": "MuiModelViewer",
+          "attributes": [
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "description": "Path to the primary 3D model (typically GLB or GLTF)."
+            },
+            {
+              "name": "ios-src",
+              "type": {
+                "text": "string"
+              },
+              "description": "Path to the USDZ fallback model for Apple Quick Look on iOS and visionOS."
+            },
+            {
+              "name": "poster",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder or loading preview image URL."
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible description of the 3D model for screen readers."
+            },
+            {
+              "name": "controls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enables orbit / zoom interactive controls."
+            },
+            {
+              "name": "camera-controls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Explicit control override for model-viewer's camera controls."
+            },
+            {
+              "name": "auto-rotate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enables automatic rotation of the model camera."
+            },
+            {
+              "name": "ar",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enables AR entry trigger where supported."
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "\"lazy\" | \"eager\""
+              },
+              "default": "lazy",
+              "description": "Configures loading priority for the model."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-model-viewer",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Fallback or additional content rendered when the 3D viewers are unsupported or loading."
+            },
+            {
+              "name": "poster",
+              "description": "Custom UI elements overlaying the model before it initializes."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--mui-model-viewer-background",
+              "description": "Theme-aware background color for the viewport."
+            },
+            {
+              "name": "--mui-model-viewer-radius",
+              "description": "Corner radius of the viewer container."
+            },
+            {
+              "name": "--mui-model-viewer-aspect-ratio",
+              "description": "Locked aspect-ratio constraint for the viewer container."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-model-viewer",
+          "declaration": {
+            "name": "MuiModelViewer",
+            "module": "src/components/mui-model-viewer/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MuiModelViewer",
+          "declaration": {
+            "name": "MuiModelViewer",
+            "module": "src/components/mui-model-viewer/index.ts"
           }
         }
       ]
@@ -8709,6 +8709,124 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-radio-group/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ RadioGroup: { title: \"Radio Group\", description: \"Radio Group manages a related set of radios so exactly one option can be selected, labelled, and submitted together.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17899&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-radio--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-radio-group/index.ts\"], website: [\"https://muibook.com/radio-group\"], guides: [\"https://guides.muibook.com/radio\"], usage: { list: [ \"Use mui-radio-group when a user must select exactly one option from a known set.\", \"Set label when the group needs a visible question or section prompt.\", \"Use hide-label when nearby context already explains the group but an accessible label is still required.\", \"Use optional when the user may leave the group unselected.\", \"Set value on the group to control which radio is selected across the entire set.\", \"Use one size on the group so all child radios stay visually aligned.\", ], }, accessibility: { designerList: [ \"Use a clear group label so the set reads as one question rather than isolated controls.\", \"Reserve radio groups for mutually exclusive choices. If users can choose more than one option, use Checkbox instead.\", ], engineerList: [ \"mui-radio-group provides radiogroup semantics and forwards a shared name to child radios.\", \"Use the group label or aria-labelledby so assistive technology can announce the question before the options.\", \"Emit and listen to the group change event when app state should update from the selected value.\", ], }, anatomy: { image: \"\", list: [\"Group label\", \"Optional indicator\", \"Radio set\"], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"A standard labelled radio group for one required choice.\", image: \"\", }, { key: \"optional\", title: \"Optional\", description: \"Use when the group is supplementary and can be left unselected.\", image: \"\", }, { key: \"hidden-label\", title: \"Hidden Label\", description: \"Use when surrounding layout already provides the visible context but the group still needs an accessible label.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"settings-choice\", name: \"Settings Choice\", description: \"A group of mutually exclusive account or preference options controlled as one field.\", image: \"\", }, ], }, related: { items: [ { name: \"Radio\", link: \"https://guides.muibook.com/radio\" }, { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Checkbox\", link: \"https://guides.muibook.com/checkbox\" }, ], }, rules: [ { heading: \"Use for single selection\", description: \"Radio Group is for one choice from a fixed set, not for independent toggles.\", doContent: [ { description: \"Use a radio group for choices like plan, delivery speed, or notification preference where only one answer is valid.\", image: \"\", }, ], dontContent: [ { description: \"Do not use radio group when users may select multiple options or when each option is an independent setting.\", image: \"\", }, ], }, ], behaviour: { list: [ \"The group syncs a shared name and size to all child radios.\", \"When value is set on the group, the matching child radio becomes checked and other checked radios are cleared.\", \"When disabled is set on the group, all child radios are disabled together.\", ], }, writing: { list: [ \"Write the label as the question or decision the radios answer, and keep option text mutually exclusive and easy to compare.\", ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-radio-group/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-radio-group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates a labelled group of `mui-radio` choices and owns the selected value.",
+          "name": "MuiRadioGroup",
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Group name forwarded to descendant radios."
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Selected descendant radio value."
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disables all descendant radios."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Size forwarded to descendant radios."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible group label."
+            },
+            {
+              "name": "hide-label",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Visually hides the group label while retaining its association."
+            },
+            {
+              "name": "optional",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Displays an optional marker beside the group label."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-radio-group",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "The `mui-radio` options owned by this group."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Dispatched when group selection changes with `detail.value` and `detail.name`."
+            }
+          ],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-radio-group",
+          "declaration": {
+            "name": "MuiRadioGroup",
+            "module": "src/components/mui-radio-group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-radio/doc.ts",
       "declarations": [
         {
@@ -8841,124 +8959,6 @@
           "declaration": {
             "name": "MuiRadio",
             "module": "src/components/mui-radio/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-radio-group/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ RadioGroup: { title: \"Radio Group\", description: \"Radio Group manages a related set of radios so exactly one option can be selected, labelled, and submitted together.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17899&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-radio--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-radio-group/index.ts\"], website: [\"https://muibook.com/radio-group\"], guides: [\"https://guides.muibook.com/radio\"], usage: { list: [ \"Use mui-radio-group when a user must select exactly one option from a known set.\", \"Set label when the group needs a visible question or section prompt.\", \"Use hide-label when nearby context already explains the group but an accessible label is still required.\", \"Use optional when the user may leave the group unselected.\", \"Set value on the group to control which radio is selected across the entire set.\", \"Use one size on the group so all child radios stay visually aligned.\", ], }, accessibility: { designerList: [ \"Use a clear group label so the set reads as one question rather than isolated controls.\", \"Reserve radio groups for mutually exclusive choices. If users can choose more than one option, use Checkbox instead.\", ], engineerList: [ \"mui-radio-group provides radiogroup semantics and forwards a shared name to child radios.\", \"Use the group label or aria-labelledby so assistive technology can announce the question before the options.\", \"Emit and listen to the group change event when app state should update from the selected value.\", ], }, anatomy: { image: \"\", list: [\"Group label\", \"Optional indicator\", \"Radio set\"], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"A standard labelled radio group for one required choice.\", image: \"\", }, { key: \"optional\", title: \"Optional\", description: \"Use when the group is supplementary and can be left unselected.\", image: \"\", }, { key: \"hidden-label\", title: \"Hidden Label\", description: \"Use when surrounding layout already provides the visible context but the group still needs an accessible label.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"settings-choice\", name: \"Settings Choice\", description: \"A group of mutually exclusive account or preference options controlled as one field.\", image: \"\", }, ], }, related: { items: [ { name: \"Radio\", link: \"https://guides.muibook.com/radio\" }, { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Checkbox\", link: \"https://guides.muibook.com/checkbox\" }, ], }, rules: [ { heading: \"Use for single selection\", description: \"Radio Group is for one choice from a fixed set, not for independent toggles.\", doContent: [ { description: \"Use a radio group for choices like plan, delivery speed, or notification preference where only one answer is valid.\", image: \"\", }, ], dontContent: [ { description: \"Do not use radio group when users may select multiple options or when each option is an independent setting.\", image: \"\", }, ], }, ], behaviour: { list: [ \"The group syncs a shared name and size to all child radios.\", \"When value is set on the group, the matching child radio becomes checked and other checked radios are cleared.\", \"When disabled is set on the group, all child radios are disabled together.\", ], }, writing: { list: [ \"Write the label as the question or decision the radios answer, and keep option text mutually exclusive and easy to compare.\", ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-radio-group/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-radio-group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a labelled group of `mui-radio` choices and owns the selected value.",
-          "name": "MuiRadioGroup",
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "description": "Group name forwarded to descendant radios."
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "Selected descendant radio value."
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disables all descendant radios."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Size forwarded to descendant radios."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible group label."
-            },
-            {
-              "name": "hide-label",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Visually hides the group label while retaining its association."
-            },
-            {
-              "name": "optional",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Displays an optional marker beside the group label."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-radio-group",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "The `mui-radio` options owned by this group."
-            }
-          ],
-          "events": [
-            {
-              "name": "change",
-              "description": "Dispatched when group selection changes with `detail.value` and `detail.name`."
-            }
-          ],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-radio-group",
-          "declaration": {
-            "name": "MuiRadioGroup",
-            "module": "src/components/mui-radio-group/index.ts"
           }
         }
       ]
@@ -12138,6 +12138,136 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-slat/group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups related slats and rules with context-aware alignment spacing.",
+          "name": "MuiSlatGroup",
+          "attributes": [
+            {
+              "name": "usage",
+              "type": {
+                "text": "\"card\" | \"accordion\""
+              },
+              "description": "Applies spacing and offsets appropriate to card or accordion contexts."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-slat-group",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-slat` elements and optional `mui-rule` dividers."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-slat-group",
+          "declaration": {
+            "name": "MuiSlatGroup",
+            "module": "src/components/mui-slat/group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-slat/slat/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Arranges leading and trailing row content with optional action and accessory treatments.",
+          "name": "MuiSlat",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"header\" | \"row\" | \"action\""
+              },
+              "description": "Sets the slat layout and interactive presentation."
+            },
+            {
+              "name": "col",
+              "type": {
+                "text": "string"
+              },
+              "default": "1fr 1fr; action: minmax(0, 1fr) auto",
+              "description": "Sets grid columns using any valid `grid-template-columns` value. Action slats default to `minmax(0, 1fr) auto` so trailing content stays aligned to the end."
+            },
+            {
+              "name": "space",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-500)",
+              "description": "Sets spacing between slat columns using any valid CSS gap value or token, including action slats."
+            },
+            {
+              "name": "radius",
+              "type": {
+                "text": "\"none\""
+              },
+              "description": "Removes the button radius for grouped action slats."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-slat",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "accessory",
+              "description": "Optional leading avatar, icon or compact supporting element."
+            },
+            {
+              "name": "start",
+              "description": "Primary row content."
+            },
+            {
+              "name": "end",
+              "description": "Trailing value, status or action content."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--slat-background",
+              "description": "Background color for row and action slats."
+            },
+            {
+              "name": "--slat-background-hover",
+              "description": "Hover background color for action slats."
+            },
+            {
+              "name": "--slat-radius",
+              "description": "Radius applied to row and action slats."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-slat",
+          "declaration": {
+            "name": "MuiSlat",
+            "module": "src/components/mui-slat/slat/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-stack/hstack/index.ts",
       "declarations": [
         {
@@ -12366,119 +12496,65 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-slat/group/index.ts",
+      "path": "src/components/mui-stepper/step/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Groups related slats and rules with context-aware alignment spacing.",
-          "name": "MuiSlatGroup",
+          "description": "Defines an individual step inside `mui-stepper` with a title, state, and optional secondary content.",
+          "name": "MuiStep",
           "attributes": [
             {
-              "name": "usage",
+              "name": "state",
               "type": {
-                "text": "\"card\" | \"accordion\""
+                "text": "\"upcoming\" | \"active\" | \"completed\" | \"success\" | \"pending\" | \"error\" | \"disabled\""
               },
-              "description": "Applies spacing and offsets appropriate to card or accordion contexts."
+              "default": "upcoming",
+              "description": "Overrides the visual state for the individual step."
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the step label text."
+            },
+            {
+              "name": "hide-icon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hides the step state icon and dot marker."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-slat-group",
+          "tagName": "mui-step",
           "customElement": true,
           "slots": [
             {
-              "name": "",
-              "description": "Related `mui-slat` elements and optional `mui-rule` dividers."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-slat-group",
-          "declaration": {
-            "name": "MuiSlatGroup",
-            "module": "src/components/mui-slat/group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-slat/slat/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Arranges leading and trailing row content with optional action and accessory treatments.",
-          "name": "MuiSlat",
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"header\" | \"row\" | \"action\""
-              },
-              "description": "Sets the slat layout and interactive presentation."
-            },
-            {
-              "name": "col",
-              "type": {
-                "text": "string"
-              },
-              "default": "1fr 1fr; action: minmax(0, 1fr) auto",
-              "description": "Sets grid columns using any valid `grid-template-columns` value. Action slats default to `minmax(0, 1fr) auto` so trailing content stays aligned to the end."
-            },
-            {
-              "name": "space",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-500)",
-              "description": "Sets spacing between slat columns using any valid CSS gap value or token, including action slats."
-            },
-            {
-              "name": "radius",
-              "type": {
-                "text": "\"none\""
-              },
-              "description": "Removes the button radius for grouped action slats."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-slat",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "accessory",
-              "description": "Optional leading avatar, icon or compact supporting element."
-            },
-            {
-              "name": "start",
-              "description": "Primary row content."
-            },
-            {
-              "name": "end",
-              "description": "Trailing value, status or action content."
+              "name": "secondary",
+              "description": "Secondary supporting content rendered with the step title."
             }
           ],
           "events": [],
           "cssProperties": [
             {
-              "name": "--slat-background",
-              "description": "Background color for row and action slats."
+              "name": "--stepper-color",
+              "description": "Controls the default step text and connector color."
             },
             {
-              "name": "--slat-background-hover",
-              "description": "Hover background color for action slats."
+              "name": "--stepper-success-color",
+              "description": "Controls the success state color."
             },
             {
-              "name": "--slat-radius",
-              "description": "Radius applied to row and action slats."
+              "name": "--stepper-error-color",
+              "description": "Controls the error state color."
+            },
+            {
+              "name": "--stepper-title-only",
+              "description": "Controls the vertical title offset when a step has no secondary slot content."
             }
           ]
         }
@@ -12486,10 +12562,94 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-slat",
+          "name": "mui-step",
           "declaration": {
-            "name": "MuiSlat",
-            "module": "src/components/mui-slat/slat/index.ts"
+            "name": "MuiStep",
+            "module": "src/components/mui-stepper/step/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-stepper/stepper/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays progress across a multi-step flow with optional interactive navigation.",
+          "name": "MuiStepper",
+          "events": [
+            {
+              "name": "step-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Emitted when the active step changes during interactive use."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "direction",
+              "type": {
+                "text": "\"horizontal\" | \"vertical\""
+              },
+              "default": "horizontal",
+              "description": "Sets the step flow direction."
+            },
+            {
+              "name": "active-step",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Sets the current active step position."
+            },
+            {
+              "name": "linear",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Restricts interactive navigation to the current and next available step."
+            },
+            {
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enables click and keyboard navigation between steps."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\""
+              },
+              "default": "medium",
+              "description": "Controls the stepper visual scale."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-stepper",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Accepts one or more `mui-step` children."
+            }
+          ],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-stepper",
+          "declaration": {
+            "name": "MuiStepper",
+            "module": "src/components/mui-stepper/stepper/index.ts"
           }
         }
       ]
@@ -12776,233 +12936,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-stepper/stepper/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays progress across a multi-step flow with optional interactive navigation.",
-          "name": "MuiStepper",
-          "events": [
-            {
-              "name": "step-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Emitted when the active step changes during interactive use."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "direction",
-              "type": {
-                "text": "\"horizontal\" | \"vertical\""
-              },
-              "default": "horizontal",
-              "description": "Sets the step flow direction."
-            },
-            {
-              "name": "active-step",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Sets the current active step position."
-            },
-            {
-              "name": "linear",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Restricts interactive navigation to the current and next available step."
-            },
-            {
-              "name": "interactive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enables click and keyboard navigation between steps."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\""
-              },
-              "default": "medium",
-              "description": "Controls the stepper visual scale."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-stepper",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Accepts one or more `mui-step` children."
-            }
-          ],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-stepper",
-          "declaration": {
-            "name": "MuiStepper",
-            "module": "src/components/mui-stepper/stepper/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-stepper/step/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Defines an individual step inside `mui-stepper` with a title, state, and optional secondary content.",
-          "name": "MuiStep",
-          "attributes": [
-            {
-              "name": "state",
-              "type": {
-                "text": "\"upcoming\" | \"active\" | \"completed\" | \"success\" | \"pending\" | \"error\" | \"disabled\""
-              },
-              "default": "upcoming",
-              "description": "Overrides the visual state for the individual step."
-            },
-            {
-              "name": "title",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the step label text."
-            },
-            {
-              "name": "hide-icon",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hides the step state icon and dot marker."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-step",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "secondary",
-              "description": "Secondary supporting content rendered with the step title."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--stepper-color",
-              "description": "Controls the default step text and connector color."
-            },
-            {
-              "name": "--stepper-success-color",
-              "description": "Controls the success state color."
-            },
-            {
-              "name": "--stepper-error-color",
-              "description": "Controls the error state color."
-            },
-            {
-              "name": "--stepper-title-only",
-              "description": "Controls the vertical title offset when a step has no secondary slot content."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-step",
-          "declaration": {
-            "name": "MuiStep",
-            "module": "src/components/mui-stepper/step/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-table/row/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Arranges table cells in a configurable column grid.",
-          "name": "MuiRow",
-          "attributes": [
-            {
-              "name": "columns",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets column sizing using any valid `grid-template-columns` value."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Sets row cell typography and action-column sizing."
-            },
-            {
-              "name": "row-id",
-              "type": {
-                "text": "string"
-              },
-              "description": "Stable row identifier used by parent table features such as `highlight-row`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-row",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-cell` children."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--row-action-size",
-              "description": "Resolved square action-cell size for the current row."
-            },
-            {
-              "name": "--row-min-height",
-              "description": "Minimum row height."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-row",
-          "declaration": {
-            "name": "MuiRow",
-            "module": "src/components/mui-table/row/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-table/row-group/index.ts",
       "declarations": [
         {
@@ -13041,41 +12974,6 @@
           "declaration": {
             "name": "MuiRowGroup",
             "module": "src/components/mui-table/row-group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/controller/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
-          "name": "MuiTabController",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-controller",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-controller",
-          "declaration": {
-            "name": "MuiTabController",
-            "module": "src/components/mui-tabs/controller/index.ts"
           }
         }
       ]
@@ -13165,62 +13063,89 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-tabs/item/index.ts",
+      "path": "src/components/mui-table/row/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Interactive tab label controlled by a parent `mui-tab-bar`.",
-          "name": "MuiTabItem",
+          "description": "Arranges table cells in a configurable column grid.",
+          "name": "MuiRow",
           "attributes": [
             {
-              "name": "active",
+              "name": "columns",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "default": "false",
-              "description": "Marks the selected tab item."
+              "description": "Sets column sizing using any valid `grid-template-columns` value."
             },
             {
               "name": "size",
               "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
               },
               "default": "medium",
-              "description": "Tab item size, normally forwarded by `mui-tab-bar`."
+              "description": "Sets row cell typography and action-column sizing."
             },
             {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"dots\" | \"ghost\""
-              },
-              "default": "default",
-              "description": "Tab item presentation, normally forwarded by `mui-tab-bar`."
-            },
-            {
-              "name": "id",
+              "name": "row-id",
               "type": {
                 "text": "string"
               },
-              "description": "Identifier matched by a related `mui-tab-panel[item]`."
+              "description": "Stable row identifier used by parent table features such as `highlight-row`."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-tab-item",
+          "tagName": "mui-row",
           "customElement": true,
           "slots": [
             {
               "name": "",
-              "description": "Visible tab label."
+              "description": "Related `mui-cell` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--row-action-size",
+              "description": "Resolved square action-cell size for the current row."
             },
             {
-              "name": "before",
-              "description": "Optional leading icon, badge or custom affordance."
-            },
+              "name": "--row-min-height",
+              "description": "Minimum row height."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-row",
+          "declaration": {
+            "name": "MuiRow",
+            "module": "src/components/mui-table/row/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/controller/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
+          "name": "MuiTabController",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-controller",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
             {
-              "name": "after",
-              "description": "Optional trailing icon, badge or custom affordance."
+              "name": "",
+              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
             }
           ],
           "events": [],
@@ -13230,10 +13155,10 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-tab-item",
+          "name": "mui-tab-controller",
           "declaration": {
-            "name": "MuiTabItem",
-            "module": "src/components/mui-tabs/item/index.ts"
+            "name": "MuiTabController",
+            "module": "src/components/mui-tabs/controller/index.ts"
           }
         }
       ]
@@ -13425,6 +13350,81 @@
           "declaration": {
             "name": "MuiTabPanel",
             "module": "src/components/mui-tabs/panel/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/item/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Interactive tab label controlled by a parent `mui-tab-bar`.",
+          "name": "MuiTabItem",
+          "attributes": [
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Marks the selected tab item."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Tab item size, normally forwarded by `mui-tab-bar`."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"dots\" | \"ghost\""
+              },
+              "default": "default",
+              "description": "Tab item presentation, normally forwarded by `mui-tab-bar`."
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Identifier matched by a related `mui-tab-panel[item]`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-item",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible tab label."
+            },
+            {
+              "name": "before",
+              "description": "Optional leading icon, badge or custom affordance."
+            },
+            {
+              "name": "after",
+              "description": "Optional trailing icon, badge or custom affordance."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-item",
+          "declaration": {
+            "name": "MuiTabItem",
+            "module": "src/components/mui-tabs/item/index.ts"
           }
         }
       ]
