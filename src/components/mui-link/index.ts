@@ -325,7 +325,7 @@ class MuiLink extends HTMLElement {
         text-decoration: none;
         padding: var(--action-padding);
         min-height: var(--action-size-medium);
-        border-radius: var(--action-radius);
+        border-radius: var(--action-radius-medium);
         font-size: var(--action-font-size);
         font-weight: var(--action-font-weight);
         line-height: var(--action-line-height);

@@ -193,7 +193,7 @@ class MuiCarouselController extends HTMLElement {
       /* Base positioning for all control slots */
       ::slotted([slot="controls"]) {
         position: absolute;
-        z-index: 10;
+        z-index: 1;
       }
 
       ::slotted([slot="controls"][controlsPosition="top"]) {
