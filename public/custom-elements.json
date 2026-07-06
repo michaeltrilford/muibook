@@ -220,166 +220,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-avatar/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Avatar: { title: \"Avatar\", description: \"Avatar components are used to represent users or entities visually, often through images, initials, or icons.\", hero: [\"https://images.ctfassets.net/i5uwscj4pkk2/2Qj1aPRsHVZZs6eF8XO6XC/54dd3c04d5a0ac379050cfa6f45d9732/Avatar_-_Home_Image.png\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1498-15366&t=2P2nhh7B70fl6xQ4-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-avatar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts\"], website: [\"https://muibook.com/avatar\"], guides: [\"https://guides.muibook.com/avatar\"], usage: { list: [ \"Represent a user or entity visually in lists, chats, comments, or profiles.\", \"Display a profile photo, initials, or icon associated with a person or object.\", \"Use in compact UI elements where space is limited (e.g., tables, cards).\", \"Pair with user metadata (name, role, status) for context.\", \"Indicate presence, status, or selection in collaborative interfaces.\", \"Use status on Avatar when the activity state belongs to the represented person or entity.\", \"Use Avatar Group when showing stacked collaborators, participants, or assigned people.\", \"Avatar can be slotted into Button for identity-led actions such as switching video platform profiles, opening an account menu, or accessing workspace controls.\", \"Use an avatar-only button when the avatar itself is the visible trigger for a profile dropdown, account settings drawer, workspace switcher, or compact dialog action.\", \"In global app headers, avatar-only buttons are a good fit for account settings, billing, support, or team context menus.\", \"When Avatar is the only content inside Button, let the avatar define the final size and treat Button as the interactive wrapper.\", ], }, accessibility: { designerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], engineerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], }, anatomy: { image: \"\", list: [ \"Image / Initials / Icon: The visible identity marker shown inside the avatar.\", \"Label: Accessible name announced to assistive technology.\", \"Status or Context (optional): Additional meaning can be conveyed through surrounding UI such as presence, role, or action context.\", \"Activity Status (optional): A bottom-right presence indicator mapped to semantic badge status tokens.\", ], }, variants: { items: [ { key: \"image\", title: \"Image\", description: \"Use when a profile or entity image is available and recognition matters.\", image: \"\", }, { key: \"initials\", title: \"Initials\", description: \"Use as the default fallback when no image is present but the entity has a clear name.\", image: \"\", }, { key: \"icon\", title: \"Icon\", description: \"Use for generic entities, products, or utility actions where a person-specific identity is not required.\", image: \"\", }, { key: \"status\", title: \"Status\", description: \"Use status for compact presence states such as online, away, busy, do not disturb, or offline.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how Avatar fits into identity, communication, and account-oriented UI patterns.\", items: [ { key: \"account-menu\", name: \"Account Menu Trigger\", description: \"An avatar-only button used in a global app header to open account, billing, or support actions.\", image: \"\", }, { key: \"profile-switcher\", name: \"Profile Switcher\", description: \"A compact avatar trigger used to switch between people, channels, or workspace identities in a media or collaboration product.\", image: \"\", }, { key: \"avatar-group\", name: \"Avatar Group\", description: \"A stacked group of avatars used for collaborators, participants, or assigned people.\", image: \"\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Chip\", link: \"https://guides.muibook.com/chip\", }, { name: \"Avatar Group\", link: \"https://guides.muibook.com/avatar-group\", }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\", }, ], }, rules: [ { heading: \"Use the right identity source\", description: \"Choose the avatar content type based on confidence in the identity data and the importance of recognition.\", doContent: [ { description: \"Use a real image when recognition matters, initials when a name is available, and an icon for generic or product-level identities.\", image: \"\", }, ], dontContent: [ { description: \"Do not force decorative imagery or inconsistent fallback logic when the identity is unclear.\", image: \"\", }, ], }, ], behaviour: { list: [ \"Avatar is presentational by default and becomes interactive when wrapped by Button or another interactive parent.\", \"When used inside an avatar-only button, Avatar owns the visible size while Button owns interaction semantics, focus, and disabled behaviour.\", ], }, writing: { list: [ \"Provide a meaningful label so assistive technology can identify the person, entity, or action context represented by the avatar.\", ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-avatar/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-avatar/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays an image, initials, or slotted icon for a represented person or entity.",
-          "name": "MuiAvatar",
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible name and initials source when no image or slotted content is present."
-            },
-            {
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Image URL used when no slotted content is supplied."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"xxx-small\" | \"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Avatar dimensions. Defaults map `xxx-small` to 18px, `xx-small` to 24px, and `x-small` to 32px."
-            },
-            {
-              "name": "background",
-              "type": {
-                "text": "\"neutral\" | \"positive\" | \"warning\" | \"attention\" | \"purple\" | \"violet\" | \"pink\" | \"magenta\" | \"red\" | \"orange\" | \"amber\" | \"yellow\" | \"lime\" | \"green\" | \"teal\" | \"cyan\" | \"blue\" | \"indigo\""
-              },
-              "default": "neutral",
-              "description": "Named semantic or profile color background."
-            },
-            {
-              "name": "background-color",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom CSS color overriding the named background treatment."
-            },
-            {
-              "name": "status",
-              "type": {
-                "text": "\"online\" | \"active\" | \"away\" | \"busy\" | \"dnd\" | \"offline\" | \"positive\" | \"warning\" | \"attention\" | \"neutral\""
-              },
-              "description": "Optional activity status shown as a bottom-right presence dot. Status colors map to badge semantic tokens."
-            },
-            {
-              "name": "status-label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible label for the activity status indicator."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-avatar",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Optional icon or custom visible avatar content."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--avatar-xxx-small",
-              "description": "Dimension for `size=\"xxx-small\"`; defaults to 18px."
-            },
-            {
-              "name": "--avatar-xx-small",
-              "description": "Dimension for `size=\"xx-small\"`; defaults to 24px."
-            },
-            {
-              "name": "--avatar-x-small",
-              "description": "Dimension for `size=\"x-small\"`; defaults to 32px."
-            },
-            {
-              "name": "--avatar-status-size",
-              "description": "Size of the activity status indicator."
-            },
-            {
-              "name": "--avatar-status-offset",
-              "description": "Bottom/right offset for the activity status indicator."
-            },
-            {
-              "name": "--avatar-status-border",
-              "description": "Border applied around the activity status indicator."
-            },
-            {
-              "name": "--avatar-status-background-neutral",
-              "description": "Neutral/offline activity status color. Falls back to the matching badge token."
-            },
-            {
-              "name": "--avatar-status-background-positive",
-              "description": "Positive/online activity status color. Falls back to the matching badge token."
-            },
-            {
-              "name": "--avatar-status-background-warning",
-              "description": "Warning/away activity status color. Falls back to the matching badge token."
-            },
-            {
-              "name": "--avatar-status-background-attention",
-              "description": "Attention/busy activity status color. Falls back to the matching badge token."
-            },
-            {
-              "name": "--avatar-background-override",
-              "description": "Overrides the resolved avatar background color."
-            },
-            {
-              "name": "--avatar-icon-color",
-              "description": "Controls the fill color of slotted icon content inside the avatar. Falls back to currentColor."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-avatar",
-          "declaration": {
-            "name": "MuiAvatar",
-            "module": "src/components/mui-avatar/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-avatar-chip/doc.ts",
       "declarations": [
         {
@@ -638,6 +478,166 @@
           "declaration": {
             "name": "MuiAvatarGroup",
             "module": "src/components/mui-avatar-group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Avatar: { title: \"Avatar\", description: \"Avatar components are used to represent users or entities visually, often through images, initials, or icons.\", hero: [\"https://images.ctfassets.net/i5uwscj4pkk2/2Qj1aPRsHVZZs6eF8XO6XC/54dd3c04d5a0ac379050cfa6f45d9732/Avatar_-_Home_Image.png\"], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1498-15366&t=2P2nhh7B70fl6xQ4-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-avatar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar/index.ts\"], website: [\"https://muibook.com/avatar\"], guides: [\"https://guides.muibook.com/avatar\"], usage: { list: [ \"Represent a user or entity visually in lists, chats, comments, or profiles.\", \"Display a profile photo, initials, or icon associated with a person or object.\", \"Use in compact UI elements where space is limited (e.g., tables, cards).\", \"Pair with user metadata (name, role, status) for context.\", \"Indicate presence, status, or selection in collaborative interfaces.\", \"Use status on Avatar when the activity state belongs to the represented person or entity.\", \"Use Avatar Group when showing stacked collaborators, participants, or assigned people.\", \"Avatar can be slotted into Button for identity-led actions such as switching video platform profiles, opening an account menu, or accessing workspace controls.\", \"Use an avatar-only button when the avatar itself is the visible trigger for a profile dropdown, account settings drawer, workspace switcher, or compact dialog action.\", \"In global app headers, avatar-only buttons are a good fit for account settings, billing, support, or team context menus.\", \"When Avatar is the only content inside Button, let the avatar define the final size and treat Button as the interactive wrapper.\", ], }, accessibility: { designerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], engineerList: [ \"Avatars should always include an accessible label via the label attribute to ensure screen readers can convey their purpose.\", \"When using images, ensure they are clear and appropriately sized for the avatar component.\", \"For avatars representing users, consider using initials or icons when images are not available to maintain visual consistency.\", ], }, anatomy: { image: \"\", list: [ \"Image / Initials / Icon: The visible identity marker shown inside the avatar.\", \"Label: Accessible name announced to assistive technology.\", \"Status or Context (optional): Additional meaning can be conveyed through surrounding UI such as presence, role, or action context.\", \"Activity Status (optional): A bottom-right presence indicator mapped to semantic badge status tokens.\", ], }, variants: { items: [ { key: \"image\", title: \"Image\", description: \"Use when a profile or entity image is available and recognition matters.\", image: \"\", }, { key: \"initials\", title: \"Initials\", description: \"Use as the default fallback when no image is present but the entity has a clear name.\", image: \"\", }, { key: \"icon\", title: \"Icon\", description: \"Use for generic entities, products, or utility actions where a person-specific identity is not required.\", image: \"\", }, { key: \"status\", title: \"Status\", description: \"Use status for compact presence states such as online, away, busy, do not disturb, or offline.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how Avatar fits into identity, communication, and account-oriented UI patterns.\", items: [ { key: \"account-menu\", name: \"Account Menu Trigger\", description: \"An avatar-only button used in a global app header to open account, billing, or support actions.\", image: \"\", }, { key: \"profile-switcher\", name: \"Profile Switcher\", description: \"A compact avatar trigger used to switch between people, channels, or workspace identities in a media or collaboration product.\", image: \"\", }, { key: \"avatar-group\", name: \"Avatar Group\", description: \"A stacked group of avatars used for collaborators, participants, or assigned people.\", image: \"\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Chip\", link: \"https://guides.muibook.com/chip\", }, { name: \"Avatar Group\", link: \"https://guides.muibook.com/avatar-group\", }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\", }, ], }, rules: [ { heading: \"Use the right identity source\", description: \"Choose the avatar content type based on confidence in the identity data and the importance of recognition.\", doContent: [ { description: \"Use a real image when recognition matters, initials when a name is available, and an icon for generic or product-level identities.\", image: \"\", }, ], dontContent: [ { description: \"Do not force decorative imagery or inconsistent fallback logic when the identity is unclear.\", image: \"\", }, ], }, ], behaviour: { list: [ \"Avatar is presentational by default and becomes interactive when wrapped by Button or another interactive parent.\", \"When used inside an avatar-only button, Avatar owns the visible size while Button owns interaction semantics, focus, and disabled behaviour.\", ], }, writing: { list: [ \"Provide a meaningful label so assistive technology can identify the person, entity, or action context represented by the avatar.\", ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-avatar/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays an image, initials, or slotted icon for a represented person or entity.",
+          "name": "MuiAvatar",
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name and initials source when no image or slotted content is present."
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image URL used when no slotted content is supplied."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"xxx-small\" | \"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Avatar dimensions. Defaults map `xxx-small` to 18px, `xx-small` to 24px, and `x-small` to 32px."
+            },
+            {
+              "name": "background",
+              "type": {
+                "text": "\"neutral\" | \"positive\" | \"warning\" | \"attention\" | \"purple\" | \"violet\" | \"pink\" | \"magenta\" | \"red\" | \"orange\" | \"amber\" | \"yellow\" | \"lime\" | \"green\" | \"teal\" | \"cyan\" | \"blue\" | \"indigo\""
+              },
+              "default": "neutral",
+              "description": "Named semantic or profile color background."
+            },
+            {
+              "name": "background-color",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom CSS color overriding the named background treatment."
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "\"online\" | \"active\" | \"away\" | \"busy\" | \"dnd\" | \"offline\" | \"positive\" | \"warning\" | \"attention\" | \"neutral\""
+              },
+              "description": "Optional activity status shown as a bottom-right presence dot. Status colors map to badge semantic tokens."
+            },
+            {
+              "name": "status-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible label for the activity status indicator."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-avatar",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Optional icon or custom visible avatar content."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--avatar-xxx-small",
+              "description": "Dimension for `size=\"xxx-small\"`; defaults to 18px."
+            },
+            {
+              "name": "--avatar-xx-small",
+              "description": "Dimension for `size=\"xx-small\"`; defaults to 24px."
+            },
+            {
+              "name": "--avatar-x-small",
+              "description": "Dimension for `size=\"x-small\"`; defaults to 32px."
+            },
+            {
+              "name": "--avatar-status-size",
+              "description": "Size of the activity status indicator."
+            },
+            {
+              "name": "--avatar-status-offset",
+              "description": "Bottom/right offset for the activity status indicator."
+            },
+            {
+              "name": "--avatar-status-border",
+              "description": "Border applied around the activity status indicator."
+            },
+            {
+              "name": "--avatar-status-background-neutral",
+              "description": "Neutral/offline activity status color. Falls back to the matching badge token."
+            },
+            {
+              "name": "--avatar-status-background-positive",
+              "description": "Positive/online activity status color. Falls back to the matching badge token."
+            },
+            {
+              "name": "--avatar-status-background-warning",
+              "description": "Warning/away activity status color. Falls back to the matching badge token."
+            },
+            {
+              "name": "--avatar-status-background-attention",
+              "description": "Attention/busy activity status color. Falls back to the matching badge token."
+            },
+            {
+              "name": "--avatar-background-override",
+              "description": "Overrides the resolved avatar background color."
+            },
+            {
+              "name": "--avatar-icon-color",
+              "description": "Controls the fill color of slotted icon content inside the avatar. Falls back to currentColor."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-avatar",
+          "declaration": {
+            "name": "MuiAvatar",
+            "module": "src/components/mui-avatar/index.ts"
           }
         }
       ]
@@ -7258,113 +7258,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-progress/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Progress: { title: \"Progress Bar\", description: \"A Progress Bar visually represents completion status by filling a horizontal bar based on a percentage value. It gives users a clear indication of progress for a given task or process.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/2NPcL7tA0zGUWFLShr66fS/23d0050dce8c8379afc6deb8e351d049/Progress_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4161&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-progress--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts\"], website: [\"https://muibook.com/progress\"], guides: [\"https://guides.muibook.com/progress\"], usage: { list: [ \"Show task progress – Indicate how much of a task or process has been completed.\", \"Display loading states – Represent the progress of a background operation, such as file uploads.\", \"Track step completion – Show progress in multi-step workflows or onboarding processes.\", \"Use Progress Ring when the progress value needs to sit in a compact dashboard, card, table cell, or responsive summary.\", \"Tune visual density and motion with component tokens such as --progress-radius, --progress-syncing-width, and --progress-pending-stripe-size.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/1iPll53Pmtgjh50qYwhsgY/908da9c51dd605895bd6306290fc6bd9/Progress_-_Anatomy.png\", list: [ \"Fill (Indicator) – The colored portion inside the track that represents the progress percentage.\", \"Track – The background of the progress bar, providing the visual boundary for progress.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcome-based-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, ], }, related: { items: [ { name: \"Progress Ring\", link: \"https://guides.muibook.com/progress\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-progress/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-progress/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays determinate progress or an indeterminate pending or syncing state.",
-          "name": "MuiProgress",
-          "attributes": [
-            {
-              "name": "progress",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Sets determinate progress, clamped from 0 to 100."
-            },
-            {
-              "name": "state",
-              "type": {
-                "text": "\"pending\" | \"syncing\""
-              },
-              "description": "Displays an indeterminate state instead of determinate progress."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-progress",
-          "customElement": true,
-          "slots": [],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--progress-track-background",
-              "description": "Background color of the progress track."
-            },
-            {
-              "name": "--progress-bar-background",
-              "description": "Background color of the determinate bar."
-            },
-            {
-              "name": "--progress-bar-background-positive",
-              "description": "Background color of positive semantic progress indicators."
-            },
-            {
-              "name": "--progress-bar-background-warning",
-              "description": "Background color of warning semantic progress indicators."
-            },
-            {
-              "name": "--progress-bar-background-attention",
-              "description": "Background color of attention semantic progress indicators."
-            },
-            {
-              "name": "--progress-syncing-bar-background",
-              "description": "Background color of the syncing indicator."
-            },
-            {
-              "name": "--progress-radius",
-              "description": "Radius applied to the track and progress bar."
-            },
-            {
-              "name": "--progress-syncing-width",
-              "description": "Width of the animated syncing indicator."
-            },
-            {
-              "name": "--progress-pending-stripe-size",
-              "description": "Stripe width used by the pending state."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-progress",
-          "declaration": {
-            "name": "MuiProgress",
-            "module": "src/components/mui-progress/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-message/doc.ts",
       "declarations": [
         {
@@ -7620,6 +7513,113 @@
           "declaration": {
             "name": "MuiModelViewer",
             "module": "src/components/mui-model-viewer/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-progress/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Progress: { title: \"Progress Bar\", description: \"A Progress Bar visually represents completion status by filling a horizontal bar based on a percentage value. It gives users a clear indication of progress for a given task or process.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/2NPcL7tA0zGUWFLShr66fS/23d0050dce8c8379afc6deb8e351d049/Progress_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4161&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-progress--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-progress/index.ts\"], website: [\"https://muibook.com/progress\"], guides: [\"https://guides.muibook.com/progress\"], usage: { list: [ \"Show task progress – Indicate how much of a task or process has been completed.\", \"Display loading states – Represent the progress of a background operation, such as file uploads.\", \"Track step completion – Show progress in multi-step workflows or onboarding processes.\", \"Use Progress Ring when the progress value needs to sit in a compact dashboard, card, table cell, or responsive summary.\", \"Tune visual density and motion with component tokens such as --progress-radius, --progress-syncing-width, and --progress-pending-stripe-size.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/1iPll53Pmtgjh50qYwhsgY/908da9c51dd605895bd6306290fc6bd9/Progress_-_Anatomy.png\", list: [ \"Fill (Indicator) – The colored portion inside the track that represents the progress percentage.\", \"Track – The background of the progress bar, providing the visual boundary for progress.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcome-based-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, ], }, related: { items: [ { name: \"Progress Ring\", link: \"https://guides.muibook.com/progress\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-progress/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-progress/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays determinate progress or an indeterminate pending or syncing state.",
+          "name": "MuiProgress",
+          "attributes": [
+            {
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Sets determinate progress, clamped from 0 to 100."
+            },
+            {
+              "name": "state",
+              "type": {
+                "text": "\"pending\" | \"syncing\""
+              },
+              "description": "Displays an indeterminate state instead of determinate progress."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-progress",
+          "customElement": true,
+          "slots": [],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--progress-track-background",
+              "description": "Background color of the progress track."
+            },
+            {
+              "name": "--progress-bar-background",
+              "description": "Background color of the determinate bar."
+            },
+            {
+              "name": "--progress-bar-background-positive",
+              "description": "Background color of positive semantic progress indicators."
+            },
+            {
+              "name": "--progress-bar-background-warning",
+              "description": "Background color of warning semantic progress indicators."
+            },
+            {
+              "name": "--progress-bar-background-attention",
+              "description": "Background color of attention semantic progress indicators."
+            },
+            {
+              "name": "--progress-syncing-bar-background",
+              "description": "Background color of the syncing indicator."
+            },
+            {
+              "name": "--progress-radius",
+              "description": "Radius applied to the track and progress bar."
+            },
+            {
+              "name": "--progress-syncing-width",
+              "description": "Width of the animated syncing indicator."
+            },
+            {
+              "name": "--progress-pending-stripe-size",
+              "description": "Stripe width used by the pending state."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-progress",
+          "declaration": {
+            "name": "MuiProgress",
+            "module": "src/components/mui-progress/index.ts"
           }
         }
       ]
@@ -8709,124 +8709,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-radio-group/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ RadioGroup: { title: \"Radio Group\", description: \"Radio Group manages a related set of radios so exactly one option can be selected, labelled, and submitted together.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17899&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-radio--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-radio-group/index.ts\"], website: [\"https://muibook.com/radio-group\"], guides: [\"https://guides.muibook.com/radio\"], usage: { list: [ \"Use mui-radio-group when a user must select exactly one option from a known set.\", \"Set label when the group needs a visible question or section prompt.\", \"Use hide-label when nearby context already explains the group but an accessible label is still required.\", \"Use optional when the user may leave the group unselected.\", \"Set value on the group to control which radio is selected across the entire set.\", \"Use one size on the group so all child radios stay visually aligned.\", ], }, accessibility: { designerList: [ \"Use a clear group label so the set reads as one question rather than isolated controls.\", \"Reserve radio groups for mutually exclusive choices. If users can choose more than one option, use Checkbox instead.\", ], engineerList: [ \"mui-radio-group provides radiogroup semantics and forwards a shared name to child radios.\", \"Use the group label or aria-labelledby so assistive technology can announce the question before the options.\", \"Emit and listen to the group change event when app state should update from the selected value.\", ], }, anatomy: { image: \"\", list: [\"Group label\", \"Optional indicator\", \"Radio set\"], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"A standard labelled radio group for one required choice.\", image: \"\", }, { key: \"optional\", title: \"Optional\", description: \"Use when the group is supplementary and can be left unselected.\", image: \"\", }, { key: \"hidden-label\", title: \"Hidden Label\", description: \"Use when surrounding layout already provides the visible context but the group still needs an accessible label.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"settings-choice\", name: \"Settings Choice\", description: \"A group of mutually exclusive account or preference options controlled as one field.\", image: \"\", }, ], }, related: { items: [ { name: \"Radio\", link: \"https://guides.muibook.com/radio\" }, { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Checkbox\", link: \"https://guides.muibook.com/checkbox\" }, ], }, rules: [ { heading: \"Use for single selection\", description: \"Radio Group is for one choice from a fixed set, not for independent toggles.\", doContent: [ { description: \"Use a radio group for choices like plan, delivery speed, or notification preference where only one answer is valid.\", image: \"\", }, ], dontContent: [ { description: \"Do not use radio group when users may select multiple options or when each option is an independent setting.\", image: \"\", }, ], }, ], behaviour: { list: [ \"The group syncs a shared name and size to all child radios.\", \"When value is set on the group, the matching child radio becomes checked and other checked radios are cleared.\", \"When disabled is set on the group, all child radios are disabled together.\", ], }, writing: { list: [ \"Write the label as the question or decision the radios answer, and keep option text mutually exclusive and easy to compare.\", ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-radio-group/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-radio-group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a labelled group of `mui-radio` choices and owns the selected value.",
-          "name": "MuiRadioGroup",
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "description": "Group name forwarded to descendant radios."
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "Selected descendant radio value."
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disables all descendant radios."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Size forwarded to descendant radios."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible group label."
-            },
-            {
-              "name": "hide-label",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Visually hides the group label while retaining its association."
-            },
-            {
-              "name": "optional",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Displays an optional marker beside the group label."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-radio-group",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "The `mui-radio` options owned by this group."
-            }
-          ],
-          "events": [
-            {
-              "name": "change",
-              "description": "Dispatched when group selection changes with `detail.value` and `detail.name`."
-            }
-          ],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-radio-group",
-          "declaration": {
-            "name": "MuiRadioGroup",
-            "module": "src/components/mui-radio-group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-radio/doc.ts",
       "declarations": [
         {
@@ -8959,6 +8841,124 @@
           "declaration": {
             "name": "MuiRadio",
             "module": "src/components/mui-radio/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-radio-group/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ RadioGroup: { title: \"Radio Group\", description: \"Radio Group manages a related set of radios so exactly one option can be selected, labelled, and submitted together.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17899&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-radio--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-radio-group/index.ts\"], website: [\"https://muibook.com/radio-group\"], guides: [\"https://guides.muibook.com/radio\"], usage: { list: [ \"Use mui-radio-group when a user must select exactly one option from a known set.\", \"Set label when the group needs a visible question or section prompt.\", \"Use hide-label when nearby context already explains the group but an accessible label is still required.\", \"Use optional when the user may leave the group unselected.\", \"Set value on the group to control which radio is selected across the entire set.\", \"Use one size on the group so all child radios stay visually aligned.\", ], }, accessibility: { designerList: [ \"Use a clear group label so the set reads as one question rather than isolated controls.\", \"Reserve radio groups for mutually exclusive choices. If users can choose more than one option, use Checkbox instead.\", ], engineerList: [ \"mui-radio-group provides radiogroup semantics and forwards a shared name to child radios.\", \"Use the group label or aria-labelledby so assistive technology can announce the question before the options.\", \"Emit and listen to the group change event when app state should update from the selected value.\", ], }, anatomy: { image: \"\", list: [\"Group label\", \"Optional indicator\", \"Radio set\"], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"A standard labelled radio group for one required choice.\", image: \"\", }, { key: \"optional\", title: \"Optional\", description: \"Use when the group is supplementary and can be left unselected.\", image: \"\", }, { key: \"hidden-label\", title: \"Hidden Label\", description: \"Use when surrounding layout already provides the visible context but the group still needs an accessible label.\", image: \"\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"settings-choice\", name: \"Settings Choice\", description: \"A group of mutually exclusive account or preference options controlled as one field.\", image: \"\", }, ], }, related: { items: [ { name: \"Radio\", link: \"https://guides.muibook.com/radio\" }, { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Checkbox\", link: \"https://guides.muibook.com/checkbox\" }, ], }, rules: [ { heading: \"Use for single selection\", description: \"Radio Group is for one choice from a fixed set, not for independent toggles.\", doContent: [ { description: \"Use a radio group for choices like plan, delivery speed, or notification preference where only one answer is valid.\", image: \"\", }, ], dontContent: [ { description: \"Do not use radio group when users may select multiple options or when each option is an independent setting.\", image: \"\", }, ], }, ], behaviour: { list: [ \"The group syncs a shared name and size to all child radios.\", \"When value is set on the group, the matching child radio becomes checked and other checked radios are cleared.\", \"When disabled is set on the group, all child radios are disabled together.\", ], }, writing: { list: [ \"Write the label as the question or decision the radios answer, and keep option text mutually exclusive and easy to compare.\", ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-radio-group/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-radio-group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates a labelled group of `mui-radio` choices and owns the selected value.",
+          "name": "MuiRadioGroup",
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Group name forwarded to descendant radios."
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Selected descendant radio value."
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disables all descendant radios."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Size forwarded to descendant radios."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible group label."
+            },
+            {
+              "name": "hide-label",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Visually hides the group label while retaining its association."
+            },
+            {
+              "name": "optional",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Displays an optional marker beside the group label."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-radio-group",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "The `mui-radio` options owned by this group."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Dispatched when group selection changes with `detail.value` and `detail.name`."
+            }
+          ],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-radio-group",
+          "declaration": {
+            "name": "MuiRadioGroup",
+            "module": "src/components/mui-radio-group/index.ts"
           }
         }
       ]
@@ -12572,90 +12572,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-stepper/stepper/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays progress across a multi-step flow with optional interactive navigation.",
-          "name": "MuiStepper",
-          "events": [
-            {
-              "name": "step-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Emitted when the active step changes during interactive use."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "direction",
-              "type": {
-                "text": "\"horizontal\" | \"vertical\""
-              },
-              "default": "horizontal",
-              "description": "Sets the step flow direction."
-            },
-            {
-              "name": "active-step",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Sets the current active step position."
-            },
-            {
-              "name": "linear",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Restricts interactive navigation to the current and next available step."
-            },
-            {
-              "name": "interactive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enables click and keyboard navigation between steps."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\""
-              },
-              "default": "medium",
-              "description": "Controls the stepper visual scale."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-stepper",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Accepts one or more `mui-step` children."
-            }
-          ],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-stepper",
-          "declaration": {
-            "name": "MuiStepper",
-            "module": "src/components/mui-stepper/stepper/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-stack/vstack/index.ts",
       "declarations": [
         {
@@ -12876,6 +12792,90 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-stepper/stepper/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays progress across a multi-step flow with optional interactive navigation.",
+          "name": "MuiStepper",
+          "events": [
+            {
+              "name": "step-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Emitted when the active step changes during interactive use."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "direction",
+              "type": {
+                "text": "\"horizontal\" | \"vertical\""
+              },
+              "default": "horizontal",
+              "description": "Sets the step flow direction."
+            },
+            {
+              "name": "active-step",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Sets the current active step position."
+            },
+            {
+              "name": "linear",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Restricts interactive navigation to the current and next available step."
+            },
+            {
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enables click and keyboard navigation between steps."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\""
+              },
+              "default": "medium",
+              "description": "Controls the stepper visual scale."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-stepper",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Accepts one or more `mui-step` children."
+            }
+          ],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-stepper",
+          "declaration": {
+            "name": "MuiStepper",
+            "module": "src/components/mui-stepper/stepper/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-table/cell/index.ts",
       "declarations": [
         {
@@ -12930,6 +12930,183 @@
           "declaration": {
             "name": "MuiCell",
             "module": "src/components/mui-table/cell/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/row/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Arranges table cells in a configurable column grid.",
+          "name": "MuiRow",
+          "attributes": [
+            {
+              "name": "columns",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets column sizing using any valid `grid-template-columns` value."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Sets row cell typography and action-column sizing."
+            },
+            {
+              "name": "row-id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Stable row identifier used by parent table features such as `highlight-row`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-row",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-cell` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--row-action-size",
+              "description": "Resolved square action-cell size for the current row."
+            },
+            {
+              "name": "--row-min-height",
+              "description": "Minimum row height."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-row",
+          "declaration": {
+            "name": "MuiRow",
+            "module": "src/components/mui-table/row/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/controller/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
+          "name": "MuiTabController",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-controller",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-controller",
+          "declaration": {
+            "name": "MuiTabController",
+            "module": "src/components/mui-tabs/controller/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/item/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Interactive tab label controlled by a parent `mui-tab-bar`.",
+          "name": "MuiTabItem",
+          "attributes": [
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Marks the selected tab item."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Tab item size, normally forwarded by `mui-tab-bar`."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"dots\" | \"ghost\""
+              },
+              "default": "default",
+              "description": "Tab item presentation, normally forwarded by `mui-tab-bar`."
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Identifier matched by a related `mui-tab-panel[item]`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-item",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible tab label."
+            },
+            {
+              "name": "before",
+              "description": "Optional leading icon, badge or custom affordance."
+            },
+            {
+              "name": "after",
+              "description": "Optional trailing icon, badge or custom affordance."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-item",
+          "declaration": {
+            "name": "MuiTabItem",
+            "module": "src/components/mui-tabs/item/index.ts"
           }
         }
       ]
@@ -13063,56 +13240,47 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/row/index.ts",
+      "path": "src/components/mui-tabs/panel/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Arranges table cells in a configurable column grid.",
-          "name": "MuiRow",
+          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
+          "name": "MuiTabPanel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "item",
+              "type": {
+                "text": "string | null"
+              },
+              "description": "Gets or sets the matching tab item identifier."
+            }
+          ],
           "attributes": [
             {
-              "name": "columns",
+              "name": "item",
               "type": {
                 "text": "string"
               },
-              "description": "Sets column sizing using any valid `grid-template-columns` value."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Sets row cell typography and action-column sizing."
-            },
-            {
-              "name": "row-id",
-              "type": {
-                "text": "string"
-              },
-              "description": "Stable row identifier used by parent table features such as `highlight-row`."
+              "description": "ID of the `mui-tab-item` whose selection displays this panel."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-row",
+          "tagName": "mui-tab-panel",
           "customElement": true,
           "slots": [
             {
               "name": "",
-              "description": "Related `mui-cell` children."
+              "description": "Panel content."
             }
           ],
           "events": [],
           "cssProperties": [
             {
-              "name": "--row-action-size",
-              "description": "Resolved square action-cell size for the current row."
-            },
-            {
-              "name": "--row-min-height",
-              "description": "Minimum row height."
+              "name": "--tab-panel-padding",
+              "description": "Inner padding applied to panel content."
             }
           ]
         }
@@ -13120,45 +13288,10 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-row",
+          "name": "mui-tab-panel",
           "declaration": {
-            "name": "MuiRow",
-            "module": "src/components/mui-table/row/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/controller/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
-          "name": "MuiTabController",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-controller",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-controller",
-          "declaration": {
-            "name": "MuiTabController",
-            "module": "src/components/mui-tabs/controller/index.ts"
+            "name": "MuiTabPanel",
+            "module": "src/components/mui-tabs/panel/index.ts"
           }
         }
       ]
@@ -13292,139 +13425,6 @@
           "declaration": {
             "name": "MuiTabBar",
             "module": "src/components/mui-tabs/tab-bar/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/panel/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
-          "name": "MuiTabPanel",
-          "members": [
-            {
-              "kind": "field",
-              "name": "item",
-              "type": {
-                "text": "string | null"
-              },
-              "description": "Gets or sets the matching tab item identifier."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "item",
-              "type": {
-                "text": "string"
-              },
-              "description": "ID of the `mui-tab-item` whose selection displays this panel."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-panel",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Panel content."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--tab-panel-padding",
-              "description": "Inner padding applied to panel content."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-panel",
-          "declaration": {
-            "name": "MuiTabPanel",
-            "module": "src/components/mui-tabs/panel/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/item/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Interactive tab label controlled by a parent `mui-tab-bar`.",
-          "name": "MuiTabItem",
-          "attributes": [
-            {
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Marks the selected tab item."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Tab item size, normally forwarded by `mui-tab-bar`."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"dots\" | \"ghost\""
-              },
-              "default": "default",
-              "description": "Tab item presentation, normally forwarded by `mui-tab-bar`."
-            },
-            {
-              "name": "id",
-              "type": {
-                "text": "string"
-              },
-              "description": "Identifier matched by a related `mui-tab-panel[item]`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-item",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Visible tab label."
-            },
-            {
-              "name": "before",
-              "description": "Optional leading icon, badge or custom affordance."
-            },
-            {
-              "name": "after",
-              "description": "Optional trailing icon, badge or custom affordance."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-item",
-          "declaration": {
-            "name": "MuiTabItem",
-            "module": "src/components/mui-tabs/item/index.ts"
           }
         }
       ]
