@@ -2,12 +2,26 @@
 
 This repo contains the exported Muibook knowledge bundle used by AI coding tools, local LLM flows, and MCP clients.
 
-It is generated from [`@muibook/components`](https://github.com/michaeltrilford/muibook) and published separately so tools can read Muibook context without pulling the whole component source repo into every prompt.
+It is generated from [`@muibook/components`](https://github.com/michaeltrilford/muibook) and published separately at [`michaeltrilford/muibook-knowledge`](https://github.com/michaeltrilford/muibook-knowledge) so tools can read Muibook context without pulling the whole component source repo into every prompt.
+
+## Agent Setup
+
+After installing the Muibook knowledge MCP in a project that uses Muibook components, add an instruction like this to that project's `AGENTS.md` or equivalent agent guidance file:
+
+```md
+When the Muibook MCP is available, call its `start_here` tool before answering questions or doing work about Muibook components, markup, styling, wrappers, dynamic attrs, knowledge, skills, or component documentation.
+```
+
+This helps clients such as Codex, Antigravity, Claude Code, and OpenCode choose the Muibook MCP without you having to repeatedly say "use the MCP" in each prompt. The client still controls whether tools are called automatically, but this gives the agent a clear project-level instruction.
 
 ## Contents
 
 - `custom-elements.json` — component API, types, slots, CSS properties, events, and component UX guidance generated from Muibook component docs.
 - `dynamic-attrs.json` — runtime and destination-only attributes used when builders or exporters need to recreate Muibook component behavior.
+- `resource-index.json` — machine-readable index of the knowledge bundle and when to use each file.
+- `skill-index.json` — machine-readable index of authored skill guides.
+- `knowledge-map.md` — the recommended front door for agents and humans exploring the bundle.
+- `mcp-instructions.md` — short MCP routing instructions for agent clients.
 - `rules.ts` — global Muibook component-tree generation rules for AI tools.
 - `keywords.ts` — lightweight keyword mappings that help route natural-language intent to Muibook components.
 - `compositions.ts` — curated component-tree examples that show realistic Muibook composition patterns.
@@ -32,6 +46,8 @@ import { compositions } from "./compositions";
 ```
 
 Use the CEM for component APIs and UX guidance. Use `dynamic-attrs.json` for destination/runtime structural behavior. Use `rules`, `keywords`, and `compositions` as AI context.
+
+Start with `knowledge-map.md` when exploring the bundle. Use `resource-index.json` and `skill-index.json` as compact routing indexes, then use MCP tools such as `find_component` and `lookup_component` before loading larger files such as `custom-elements.json`.
 
 ## MCP Server
 
@@ -99,6 +115,7 @@ During local development, prefer the absolute local path so the MCP server reads
 
 ## Recommended Tool Usage
 
+- Start with the MCP `start_here` tool when it is available.
 - Ask for component API details when generating or reviewing Muibook markup.
 - Ask for dynamic attrs when wiring builder/export/runtime behavior.
 - Ask for rules before generating Muibook component trees.

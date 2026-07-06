@@ -707,6 +707,7 @@
     "build:agent": "node scripts/build-agent-knowledge.mjs",
     "preview": "vite preview",
     "build:muibook": "npm run sync-skills && vite build --config vite.muibook.config.ts",
+    "build:knowledge-indexes": "node scripts/build-knowledge-indexes.mjs",
     "preview:muibook": "vite preview --config vite.muibook.config.ts",
     "build:create-mui-app": "vite build --config vite.create-mui-app.config.ts",
     "preview:create-mui-app": "vite preview --config vite.create-mui-app.config.ts",

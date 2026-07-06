@@ -2,6 +2,10 @@
 
 This repo builds the Muibook component library: framework-agnostic, accessible Web Components for the Mui (MichaelUI) Design System, plus supporting docs/builds.
 
+## MCP Usage
+
+- When working in this repo and the Muibook MCP is available, call its `start_here` tool before answering questions or doing work about Muibook components, markup, styling, wrappers, dynamic attrs, knowledge, skills, or component documentation.
+
 ## Quick Context
 
 - Package: `@muibook/components`
@@ -50,7 +54,7 @@ When a component uses slots:
 - If unsure about behavior, search for sibling components in `src/components/` for examples.
 - When using `mui-code` inside body copy or list text, add the `inline` attr; otherwise it renders as a block code surface.
 - Keep `AGENTS.md` and `DESIGN.md` at the repo root. They are copied to the knowledge repo for agent/plugin context.
-- Keep `src/knowledge` for importable TS knowledge only: global rules, keyword mappings, and composition examples.
+- Keep `src/knowledge` for authored knowledge sources: global rules, keyword mappings, composition examples, skill files, and MCP/front-door docs.
 - Component API and UX guidance should live in component `api.ts` and `doc.ts` files so the CEM stays current.
 - Story props panels are often defined locally in the Muibook story page via `propItems` arrays. Do not add or reshape component `doc.ts` files just to populate a props panel unless the user explicitly wants that information added to the docs/CEM layer too.
 - Treat `dynamic-attrs.json` as a separate concern from story props. It documents destination/runtime structural attrs (often destination-only) for builder/runtime integration and should not be merged conceptually with the story `propItems` API surface.

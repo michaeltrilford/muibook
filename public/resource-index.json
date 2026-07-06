@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "description": "Machine-readable front door for the Muibook knowledge bundle.",
+  "recommendedFirstResource": "knowledge-map.md",
+  "recommendedFirstMcpTool": "start_here",
+  "resources": [
+    {
+      "id": "knowledge-map",
+      "file": "knowledge-map.md",
+      "mcpUri": "muibook://index",
+      "kind": "front-door",
+      "useWhen": "Starting any Muibook knowledge task."
+    },
+    {
+      "id": "mcp-instructions",
+      "file": "mcp-instructions.md",
+      "mcpUri": "muibook://mcp-instructions",
+      "kind": "agent-instructions",
+      "useWhen": "Teaching an agent how to route Muibook MCP calls."
+    },
+    {
+      "id": "resource-index",
+      "file": "resource-index.json",
+      "mcpUri": "muibook://resources",
+      "kind": "resource-index",
+      "useWhen": "Finding the available knowledge files and their MCP resource URIs."
+    },
+    {
+      "id": "custom-elements",
+      "file": "custom-elements.json",
+      "mcpUri": "muibook://custom-elements",
+      "kind": "generated-api",
+      "useWhen": "Reading full public component API metadata."
+    },
+    {
+      "id": "dynamic-attrs",
+      "file": "dynamic-attrs.json",
+      "mcpUri": "muibook://dynamic-attrs",
+      "kind": "runtime-metadata",
+      "useWhen": "Handling runtime or destination-only attrs for wrappers, builders, exporters, and canvases."
+    },
+    {
+      "id": "design",
+      "file": "DESIGN.md",
+      "mcpUri": "muibook://design",
+      "kind": "design-system",
+      "useWhen": "Making token, theme, surface, typography, spacing, radius, or layout decisions."
+    },
+    {
+      "id": "rules",
+      "file": "rules.ts",
+      "mcpUri": "muibook://rules",
+      "kind": "generation-rules",
+      "useWhen": "Generating or reviewing component trees."
+    },
+    {
+      "id": "keywords",
+      "file": "keywords.ts",
+      "mcpUri": "muibook://keywords",
+      "kind": "routing-data",
+      "useWhen": "Mapping natural-language intent to components."
+    },
+    {
+      "id": "compositions",
+      "file": "compositions.ts",
+      "mcpUri": "muibook://compositions",
+      "kind": "examples",
+      "useWhen": "Finding realistic component-tree examples."
+    },
+    {
+      "id": "skills",
+      "file": "skill-index.json",
+      "mcpUri": "muibook://skills",
+      "kind": "skill-index",
+      "useWhen": "Choosing a deeper task-specific skill guide."
+    }
+  ]
+}

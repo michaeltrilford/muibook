@@ -37,6 +37,12 @@ import "@muibook/components/agent/prompts";
 import "@muibook/components/agent/keywords";
 ```
 
+For MCP-based agent context, use the exported knowledge repo at [michaeltrilford/muibook-knowledge](https://github.com/michaeltrilford/muibook-knowledge). After installing the Muibook knowledge MCP in a project that uses Muibook components, add an instruction like this to that project's `AGENTS.md` or equivalent agent guidance file:
+
+```md
+When the Muibook MCP is available, call its `start_here` tool before answering questions or doing work about Muibook components, markup, styling, wrappers, dynamic attrs, knowledge, skills, or component documentation.
+```
+
 #### Knowledge Usage
 
 The package also exposes Muibook knowledge for AI tooling and plugins:
@@ -217,7 +223,7 @@ The full package build also generates and copies related knowledge files:
 - `public/dynamic-attrs.json` for runtime/destination structural attrs.
 - root `AGENTS.md` and `DESIGN.md`.
 
-`npm run build` runs `npm run copy-knowledge`, which syncs the exported bundle into the sibling `../muibook-knowledge` repo:
+`npm run build` runs `npm run copy-knowledge`, which syncs the exported bundle into the sibling `../muibook-knowledge` repo used for [michaeltrilford/muibook-knowledge](https://github.com/michaeltrilford/muibook-knowledge):
 
 ```bash
 npm run build

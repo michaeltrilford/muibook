@@ -7,13 +7,19 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const sourceDir = path.resolve(__dirname, "..");
 const destDir = path.resolve(sourceDir, "../muibook-knowledge");
 
+await import("./build-knowledge-indexes.mjs");
+
 const filesToCopy = [
   { src: "public/custom-elements.json", dest: "custom-elements.json" },
   { src: "public/dynamic-attrs.json", dest: "dynamic-attrs.json" },
+  { src: "public/resource-index.json", dest: "resource-index.json" },
+  { src: "public/skill-index.json", dest: "skill-index.json" },
   { src: "AGENTS.md", dest: "AGENTS.md" },
   { src: "DESIGN.md", dest: "DESIGN.md" },
   { src: "src/knowledge/README.md", dest: "README.md" },
   { src: "src/knowledge/index.ts", dest: "index.ts" },
+  { src: "src/knowledge/knowledge-map.md", dest: "knowledge-map.md" },
+  { src: "src/knowledge/mcp-instructions.md", dest: "mcp-instructions.md" },
   { src: "src/knowledge/rules.ts", dest: "rules.ts" },
   { src: "src/knowledge/compositions.ts", dest: "compositions.ts" },
   { src: "src/knowledge/keywords.ts", dest: "keywords.ts" },
