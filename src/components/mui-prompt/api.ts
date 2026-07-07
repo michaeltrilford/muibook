@@ -145,6 +145,26 @@ export const muiApi = {
         default: "default",
         description: "Selects the mapping of top mesh color positions.",
       },
+      {
+        name: "ring",
+        type: { text: "boolean" },
+        description: "Enable a glowing animated stroke variant for the prompt surface.",
+      },
+      {
+        name: "ring-start",
+        type: { text: "string" },
+        description: "Overrides the start color of the glowing animated stroke.",
+      },
+      {
+        name: "ring-mid",
+        type: { text: "string" },
+        description: "Overrides the middle color of the glowing animated stroke. If omitted, uses ring-start.",
+      },
+      {
+        name: "ring-end",
+        type: { text: "string" },
+        description: "Overrides the end color of the glowing animated stroke. If omitted, uses ring-start.",
+      },
     ],
     slots: [
       { name: "preview", description: "Preview items displayed above the prompt input, typically `mui-prompt-preview`." },

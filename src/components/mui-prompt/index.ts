@@ -61,6 +61,7 @@ class MuiPrompt extends HTMLElement {
       "debug",
       "loading",
       "loading-label",
+      "ring-option",
     ];
   }
 
@@ -1325,36 +1326,42 @@ class MuiPrompt extends HTMLElement {
     const colorLayout = (this.getAttribute("color-layout") || "default").toLowerCase();
     const swapLayout = colorLayout === "swap";
     const startSource = swapLayout
-      ? colorTopEnd || "var(--prompt-color-top-end, var(--green-500))"
-      : colorTopStart || "var(--prompt-color-top-start, var(--blue-500))";
+      ? colorTopEnd || "var(--prompt-color-top-end)"
+      : colorTopStart || "var(--prompt-color-top-start)";
     const midSource = swapLayout
-      ? colorTopAccent || "var(--prompt-color-top-accent, var(--orange-500))"
-      : colorTopMid || "var(--prompt-color-top-mid, var(--blue-500))";
+      ? colorTopAccent || "var(--prompt-color-top-accent)"
+      : colorTopMid || "var(--prompt-color-top-mid)";
     const endSource = swapLayout
-      ? colorTopStart || "var(--prompt-color-top-start, var(--blue-500))"
-      : colorTopEnd || "var(--prompt-color-top-end, var(--green-500))";
+      ? colorTopStart || "var(--prompt-color-top-start)"
+      : colorTopEnd || "var(--prompt-color-top-end)";
     const accentSource = swapLayout
-      ? colorTopMid || "var(--prompt-color-top-mid, var(--blue-500))"
-      : colorTopAccent || "var(--prompt-color-top-accent, var(--orange-500))";
+      ? colorTopMid || "var(--prompt-color-top-mid)"
+      : colorTopAccent || "var(--prompt-color-top-accent)";
     const ariaLabel = this.getAttribute("aria-label");
     const ariaLabelledBy = this.getAttribute("aria-labelledby");
     const ariaDescribedBy = this.getAttribute("aria-describedby");
     const fallbackAriaLabel = !ariaLabel && !ariaLabelledBy ? "Prompt input" : "";
     const errorMessage = (this.getAttribute("error-message") || "").trim();
     const errorText = errorMessage;
+    const hasRingStart = this.hasAttribute("ring-start");
+    const ringStart = this.getAttribute("ring-start") || "var(--prompt-ring-primary)";
+    const ringMid = this.getAttribute("ring-mid") || (hasRingStart ? ringStart : "var(--prompt-ring-secondary)");
+    const ringEnd = this.getAttribute("ring-end") || (hasRingStart ? ringStart : "var(--prompt-ring-tertiary)");
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
         :host {
           display: block;
-          --prompt-action-radius: var(--chip-radius-small, var(--radius-400));
           --prompt-preview-dialog-border: ${previewDialogBorder};
           --prompt-color-top-start-source: ${startSource};
           --prompt-color-top-mid-source: ${midSource};
           --prompt-color-top-end-source: ${endSource};
           --prompt-color-top-accent-source: ${accentSource};
-          --prompt-accent-primary-derived: var(--prompt-accent-primary, var(--prompt-spectrum-start, var(--blue-500)));
-          --prompt-accent-secondary-derived: var(--prompt-accent-secondary, var(--blue-500));
+          --prompt-ring-start: ${ringStart};
+          --prompt-ring-mid: ${ringMid};
+          --prompt-ring-end: ${ringEnd};
+          --prompt-accent-primary-derived: var(--prompt-accent-primary);
+          --prompt-accent-secondary-derived: var(--prompt-accent-secondary);
           --prompt-accent-mid: color-mix(
             in srgb,
             var(--prompt-accent-primary-derived) 52%,
@@ -1410,26 +1417,26 @@ class MuiPrompt extends HTMLElement {
             var(--prompt-focus-border-color) 25%,
             transparent 75%
           );
-          --prompt-ring-shadow-color: var(--black-opacity-5);
+          --prompt-ring-shadow-color: var(--black-opacity-0);
           --prompt-ring-gap-color: var(--grey-300);
           --prompt-border-hover-primary-soft: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-primary, var(--prompt-accent-primary-derived)) 46%,
+            var(--prompt-border-color-hover-primary) 46%,
             var(--form-default-border-color-hover) 54%
           );
           --prompt-border-hover-primary-strong: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-primary, var(--prompt-accent-primary-derived)) 70%,
+            var(--prompt-border-color-hover-primary) 70%,
             var(--form-default-border-color-hover) 30%
           );
           --prompt-border-hover-secondary-soft: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-secondary, var(--prompt-accent-secondary-derived)) 46%,
+            var(--prompt-border-color-hover-secondary) 46%,
             var(--form-default-border-color-hover) 54%
           );
           --prompt-border-hover-secondary-strong: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-secondary, var(--prompt-accent-secondary-derived)) 70%,
+            var(--prompt-border-color-hover-secondary) 70%,
             var(--form-default-border-color-hover) 30%
           );
           overflow: visible;
@@ -1456,15 +1463,15 @@ class MuiPrompt extends HTMLElement {
           aspect-ratio: 1;
           background: conic-gradient(
             from 0deg,
-            var(--prompt-layer-start-source) 0%,
-            var(--prompt-layer-mid-source) 20%,
-            var(--prompt-layer-accent-source) 40%,
+            var(--prompt-ring-start) 0%,
+            var(--prompt-ring-start) 20%,
+            var(--prompt-ring-mid) 40%,
             var(--prompt-ring-gap-color) 50%,
-            var(--prompt-layer-end-source) 70%,
-            var(--prompt-layer-start-source) 100%
+            var(--prompt-ring-end) 70%,
+            var(--prompt-ring-start) 100%
           );
           transform: translate(-50%, -50%) rotate(0deg);
-          animation: promptRingSpin 4s linear infinite;
+          animation: promptRingSpin 2s linear infinite;
           filter: blur(var(--space-050));
         }
         :host([ring]) .ring-container {
@@ -1473,6 +1480,11 @@ class MuiPrompt extends HTMLElement {
         :host([ring]) .surface {
           border-color: transparent !important;
           animation: none !important;
+          box-shadow: 0 var(--space-100) var(--space-200) var(--prompt-ring-shadow-color) !important;
+          filter: none !important;
+        }
+        :host([ring]:hover) .surface,
+        :host([ring]:focus-within) .surface {
           box-shadow: 0 var(--space-100) var(--space-200) var(--prompt-ring-shadow-color) !important;
         }
         :host([ring]) .surface::before,
@@ -1483,7 +1495,6 @@ class MuiPrompt extends HTMLElement {
         :host([ring]) .surface:focus-within::after {
           opacity: 0 !important;
           animation: none !important;
-          background: transparent !important;
         }
         @keyframes promptRingSpin {
           100% {
@@ -1556,7 +1567,7 @@ class MuiPrompt extends HTMLElement {
         .surface:hover {
           overflow: visible;
           background: var(--surface-elevated-100);
-          animation: promptBorderHoverPulse var(--prompt-hover-border-pulse-speed, var(--speed-500)) ease-in-out infinite;
+          animation: promptBorderHoverPulse var(--prompt-hover-border-pulse-speed) ease-in-out infinite;
         }
         :host(:has(.actions-slot:hover)) .surface,
         :host(:has(.actions-slot:focus-within)) .surface {
@@ -1588,7 +1599,7 @@ class MuiPrompt extends HTMLElement {
             var(--surface-elevated-100);
           mix-blend-mode: var(--prompt-spectrum-blend-mode-hover);
           filter: none;
-          animation: promptMeshPulse calc(var(--prompt-hover-sweep-speed, var(--speed-500)) * 1.15) ease-in-out infinite;
+          animation: promptMeshPulse calc(var(--prompt-hover-sweep-speed) * 1.15) ease-in-out infinite;
         }
         .surface:hover::after {
           opacity: 0;
@@ -1851,7 +1862,7 @@ class MuiPrompt extends HTMLElement {
           box-sizing: border-box;
         }
         textarea::placeholder {
-          color: var(--prompt-placeholder-color, var(--form-default-placeholder-color, var(--text-color-optional)));
+          color: var(--prompt-placeholder-color);
           opacity: 1;
           transition: color var(--speed-200) cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -1873,12 +1884,9 @@ class MuiPrompt extends HTMLElement {
         :host-context([theme="dark"]),
         :host-context(.theme-dark) {
           --prompt-focus-surface-opacity: 0.35;
-          --prompt-ring-shadow-color: var(--black-opacity-5);
+          --prompt-ring-shadow-color: var(--black-opacity-0);
           --prompt-ring-gap-color: var(--grey-600);
-          --prompt-accent-secondary-derived: var(
-            --prompt-accent-secondary,
-            color-mix(in srgb, var(--prompt-accent-primary-derived) 64%, var(--grey-1200) 36%)
-          );
+          --prompt-accent-secondary-derived: var(--prompt-accent-secondary);
           --prompt-accent-mid: color-mix(
             in srgb,
             var(--prompt-accent-primary-derived) 56%,
@@ -1894,22 +1902,22 @@ class MuiPrompt extends HTMLElement {
           );
           --prompt-border-hover-primary-soft: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-primary, var(--prompt-accent-primary-derived)) 56%,
+            var(--prompt-border-color-hover-primary) 56%,
             var(--form-default-border-color-hover) 44%
           );
           --prompt-border-hover-primary-strong: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-primary, var(--prompt-accent-primary-derived)) 78%,
+            var(--prompt-border-color-hover-primary) 78%,
             var(--form-default-border-color-hover) 22%
           );
           --prompt-border-hover-secondary-soft: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-secondary, var(--prompt-accent-secondary-derived)) 56%,
+            var(--prompt-border-color-hover-secondary) 56%,
             var(--form-default-border-color-hover) 44%
           );
           --prompt-border-hover-secondary-strong: color-mix(
             in srgb,
-            var(--prompt-border-color-hover-secondary, var(--prompt-accent-secondary-derived)) 78%,
+            var(--prompt-border-color-hover-secondary) 78%,
             var(--form-default-border-color-hover) 22%
           );
           --prompt-hover-border-pulse-start: color-mix(

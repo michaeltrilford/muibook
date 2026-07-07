@@ -170,13 +170,42 @@ class StoryPrompt extends HTMLElement {
       <story-card
         id="glowing-ring"
         title="Glowing Ring"
-        description="Enable the ring attribute for a highly modern and fluid glowing animated stroke."
+        description="Enable the ring attribute for a highly modern and fluid glowing animated stroke. Use ring-start, ring-mid, and ring-end to define the color sweep."
       >
-        <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt ring placeholder="Ask anything..."></mui-prompt>
-        </mui-v-stack>
-        <story-code-block slot="footer">
-          &lt;mui-prompt ring placeholder="Ask anything..."&gt;&lt;/mui-prompt&gt;
+        <mui-grid slot="body" col="1fr" space="var(--space-200)">
+          <div class="prompt-story-shell">
+            <mui-v-stack style="width: 100%; --stack-height: auto; --stack-width: auto;" space="var(--space-400)">
+              <mui-heading size="6">Default</mui-heading>
+              <mui-prompt ring placeholder="Type at least 5 characters..." context-mode="icon"></mui-prompt>
+            </mui-v-stack>
+          </div>
+
+          <div class="prompt-story-shell">
+            <mui-v-stack style="width: 100%; --stack-height: auto; --stack-width: auto;" space="var(--space-400)">
+              <mui-heading size="6">Ring Start: Primary</mui-heading>
+              <mui-prompt ring ring-start="var(--prompt-ring-primary)" placeholder="Type at least 5 characters..." context-mode="icon"></mui-prompt>
+            </mui-v-stack>
+          </div>
+
+          <div class="prompt-story-shell">
+            <mui-v-stack style="width: 100%; --stack-height: auto; --stack-width: auto;" space="var(--space-400)">
+              <mui-heading size="6">Ring Start: Secondary</mui-heading>
+              <mui-prompt ring ring-start="var(--prompt-ring-secondary)" placeholder="Type at least 5 characters..." context-mode="icon"></mui-prompt>
+            </mui-v-stack>
+          </div>
+
+          <div class="prompt-story-shell">
+            <mui-v-stack style="width: 100%; --stack-height: auto; --stack-width: auto;" space="var(--space-400)">
+              <mui-heading size="6">Ring Start: Tertiary</mui-heading>
+              <mui-prompt ring ring-start="var(--prompt-ring-tertiary)" placeholder="Type at least 5 characters..." context-mode="icon"></mui-prompt>
+            </mui-v-stack>
+          </div>
+        </mui-grid>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt ring placeholder="Type at least 5 characters..."&gt;&lt;/mui-prompt&gt;<br />
+          &lt;mui-prompt ring ring-start="var(--prompt-ring-primary)" placeholder="Type at least 5 characters..."&gt;&lt;/mui-prompt&gt;<br />
+          &lt;mui-prompt ring ring-start="var(--prompt-ring-secondary)" placeholder="Type at least 5 characters..."&gt;&lt;/mui-prompt&gt;<br />
+          &lt;mui-prompt ring ring-start="var(--prompt-ring-tertiary)" placeholder="Type at least 5 characters..."&gt;&lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
 
@@ -926,7 +955,7 @@ class StoryPrompt extends HTMLElement {
     `;
 
     this.shadowRoot.querySelectorAll("mui-prompt").forEach((promptEl) => {
-      if (!promptEl.parentElement || promptEl.parentElement.classList.contains("prompt-story-shell")) return;
+      if (promptEl.closest(".prompt-story-shell")) return;
       const shell = document.createElement("div");
       shell.className = "prompt-story-shell";
       promptEl.parentElement.insertBefore(shell, promptEl);

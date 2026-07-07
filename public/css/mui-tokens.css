@@ -209,6 +209,21 @@ html[data-theme="light"] {
   --surface-recessed-300: var(--grey-500);
 
   /* Prompt */
+  --prompt-color-top-start: var(--blue-500);
+  --prompt-color-top-mid: var(--blue-500);
+  --prompt-color-top-end: var(--green-500);
+  --prompt-color-top-accent: var(--orange-500);
+  --prompt-ring-primary: var(--green-500);
+  --prompt-ring-secondary: var(--orange-500);
+  --prompt-ring-tertiary: var(--blue-500);
+  --prompt-action-radius: var(--chip-radius-small, 9999px);
+  --prompt-accent-primary: var(--prompt-spectrum-start);
+  --prompt-accent-secondary: var(--blue-500);
+  --prompt-border-color-hover-primary: var(--prompt-accent-primary);
+  --prompt-border-color-hover-secondary: var(--prompt-accent-secondary);
+  --prompt-hover-border-pulse-speed: var(--speed-500);
+  --prompt-hover-sweep-speed: var(--speed-500);
+  --prompt-placeholder-color: var(--form-default-placeholder-color);
   --prompt-preview-background: var(--white-opacity-10);
   --prompt-preview-accent-mix-100: 10%;
   --prompt-preview-accent-mix-200: 8%;
@@ -587,6 +602,21 @@ html[data-theme="dark"] {
   --surface-recessed-300: var(--grey-1400);
 
   /* Prompt */
+  --prompt-color-top-start: var(--blue-500);
+  --prompt-color-top-mid: var(--blue-500);
+  --prompt-color-top-end: var(--green-500);
+  --prompt-color-top-accent: var(--orange-500);
+  --prompt-ring-primary: var(--green-500);
+  --prompt-ring-secondary: var(--orange-500);
+  --prompt-ring-tertiary: var(--blue-500);
+  --prompt-action-radius: var(--chip-radius-small, 9999px);
+  --prompt-accent-primary: var(--prompt-spectrum-start);
+  --prompt-accent-secondary: color-mix(in srgb, var(--prompt-accent-primary) 64%, var(--grey-1200) 36%);
+  --prompt-border-color-hover-primary: var(--prompt-accent-primary);
+  --prompt-border-color-hover-secondary: var(--prompt-accent-secondary);
+  --prompt-hover-border-pulse-speed: var(--speed-500);
+  --prompt-hover-sweep-speed: var(--speed-500);
+  --prompt-placeholder-color: var(--form-default-placeholder-color);
   --prompt-preview-background: var(--black-opacity-10);
   --prompt-preview-accent-mix-100: 14%;
   --prompt-preview-accent-mix-200: 10%;
