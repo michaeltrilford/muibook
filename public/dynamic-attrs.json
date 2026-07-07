@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-06T06:17:22.738Z",
+  "generatedAt": "2026-07-07T04:13:41.521Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -102,6 +102,16 @@
         }
       ]
     },
+    "mui-field": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-message",
+          "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
+        }
+      ]
+    },
     "mui-drawer": {
       "version": 1,
       "destinationOnly": true,
@@ -113,16 +123,6 @@
         {
           "name": "has-footer",
           "description": "Set when footer content exists, allowing the component to adjust internal spacing and structural regions."
-        }
-      ]
-    },
-    "mui-field": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-message",
-          "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
         }
       ]
     },
@@ -324,28 +324,6 @@
         }
       ]
     },
-    "mui-slat": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "card-slot",
-          "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
-        },
-        {
-          "name": "condensed-slot",
-          "description": "Applied to a slotted child used in condensed composition, allowing the child to reduce spacing and density."
-        },
-        {
-          "name": "condensed-slot-first",
-          "description": "Applied to the first slat in condensed card body content, allowing exposed top edge radius to match the card."
-        },
-        {
-          "name": "condensed-slot-last",
-          "description": "Applied to the last slat in condensed card body content, allowing exposed bottom edge radius to match the card."
-        }
-      ]
-    },
     "mui-row": {
       "version": 1,
       "destinationOnly": true,
@@ -377,6 +355,28 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
+        }
+      ]
+    },
+    "mui-slat": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "card-slot",
+          "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
+        },
+        {
+          "name": "condensed-slot",
+          "description": "Applied to a slotted child used in condensed composition, allowing the child to reduce spacing and density."
+        },
+        {
+          "name": "condensed-slot-first",
+          "description": "Applied to the first slat in condensed card body content, allowing exposed top edge radius to match the card."
+        },
+        {
+          "name": "condensed-slot-last",
+          "description": "Applied to the last slat in condensed card body content, allowing exposed bottom edge radius to match the card."
         }
       ]
     }

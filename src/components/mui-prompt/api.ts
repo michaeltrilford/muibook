@@ -23,6 +23,7 @@ export const muiApi = {
         description: "Explicitly enables fan-mode actions; this is otherwise derived from slotted actions.",
       },
       { name: "fan-open", type: { text: "boolean" }, default: "false", description: "Opens fan actions by default." },
+      { name: "ring", type: { text: "boolean" }, default: "false", description: "Replaces the default border with a lively animated glowing stroke ring." },
       { name: "disabled", type: { text: "boolean" }, default: "false", description: "Disables prompt input." },
       {
         name: "loading",
@@ -187,6 +188,8 @@ export const muiApi = {
       { name: "--prompt-layer-accent-tint", description: "Final accent tint used after color layout ordering is applied." },
       { name: "--prompt-spectrum-blend-mode-hover", description: "Blend mode applied to prompt hover effect layers." },
       { name: "--prompt-spectrum-blend-mode-focus", description: "Blend mode applied to prompt focus effect layers." },
+      { name: "--prompt-ring-shadow-color", description: "Color of the drop shadow applied when the ring variant is active." },
+      { name: "--prompt-ring-gap-color", description: "Color of the gap segment in the ring variant conic gradient." },
     ],
   },
 };

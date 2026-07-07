@@ -168,6 +168,19 @@ class StoryPrompt extends HTMLElement {
       </story-card>
 
       <story-card
+        id="glowing-ring"
+        title="Glowing Ring"
+        description="Enable the ring attribute for a highly modern and fluid glowing animated stroke."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt ring placeholder="Ask anything..."></mui-prompt>
+        </mui-v-stack>
+        <story-code-block slot="footer">
+          &lt;mui-prompt ring placeholder="Ask anything..."&gt;&lt;/mui-prompt&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
         id="submit-guard-api"
         title="Submit Guard + API"
         description="Use before-submit to block invalid sends, then call submit/clear/focus from app controls."

@@ -461,6 +461,8 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--prompt-hover-border-pulse-speed" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-focus-ring-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-focus-glow-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-ring-gap-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--prompt-ring-shadow-color" variant="shadow"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-focus-border-color" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-focus-surface-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--prompt-spectrum-start" variant="color"></story-token-slat>

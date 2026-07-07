@@ -1372,6 +1372,10 @@ class MuiPrompt extends HTMLElement {
           --prompt-layer-mid-tint: ${swapLayout ? "var(--prompt-accent-tint)" : "var(--prompt-mid-tint)"};
           --prompt-layer-end-tint: ${swapLayout ? "var(--prompt-start-tint)" : "var(--prompt-end-tint)"};
           --prompt-layer-accent-tint: ${swapLayout ? "var(--prompt-mid-tint)" : "var(--prompt-accent-tint)"};
+          --prompt-layer-start-source: ${swapLayout ? "var(--prompt-color-top-end-source)" : "var(--prompt-color-top-start-source)"};
+          --prompt-layer-mid-source: ${swapLayout ? "var(--prompt-color-top-accent-source)" : "var(--prompt-color-top-mid-source)"};
+          --prompt-layer-end-source: ${swapLayout ? "var(--prompt-color-top-start-source)" : "var(--prompt-color-top-end-source)"};
+          --prompt-layer-accent-source: ${swapLayout ? "var(--prompt-color-top-mid-source)" : "var(--prompt-color-top-accent-source)"};
           --prompt-spectrum-blend-mode-hover: normal;
           --prompt-spectrum-blend-mode-focus: normal;
           --prompt-placeholder-color-hover-light: var(--grey-1200);
@@ -1406,6 +1410,8 @@ class MuiPrompt extends HTMLElement {
             var(--prompt-focus-border-color) 25%,
             transparent 75%
           );
+          --prompt-ring-shadow-color: var(--black-opacity-5);
+          --prompt-ring-gap-color: var(--grey-300);
           --prompt-border-hover-primary-soft: color-mix(
             in srgb,
             var(--prompt-border-color-hover-primary, var(--prompt-accent-primary-derived)) 46%,
@@ -1427,6 +1433,62 @@ class MuiPrompt extends HTMLElement {
             var(--form-default-border-color-hover) 30%
           );
           overflow: visible;
+        }
+        .ring-container {
+          position: absolute;
+          inset: calc(var(--stroke-size-100, 1px) * -1);
+          border-radius: var(--radius-300);
+          overflow: hidden;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity var(--speed-200) ease;
+          z-index: -1;
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+          padding: var(--stroke-size-200);
+        }
+        .ring-gradient {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 300%;
+          aspect-ratio: 1;
+          background: conic-gradient(
+            from 0deg,
+            var(--prompt-layer-start-source) 0%,
+            var(--prompt-layer-mid-source) 20%,
+            var(--prompt-layer-accent-source) 40%,
+            var(--prompt-ring-gap-color) 50%,
+            var(--prompt-layer-end-source) 70%,
+            var(--prompt-layer-start-source) 100%
+          );
+          transform: translate(-50%, -50%) rotate(0deg);
+          animation: promptRingSpin 4s linear infinite;
+          filter: blur(var(--space-050));
+        }
+        :host([ring]) .ring-container {
+          opacity: 0.5;
+        }
+        :host([ring]) .surface {
+          border-color: transparent !important;
+          animation: none !important;
+          box-shadow: 0 var(--space-100) var(--space-200) var(--prompt-ring-shadow-color) !important;
+        }
+        :host([ring]) .surface::before,
+        :host([ring]) .surface::after,
+        :host([ring]) .surface:hover::before,
+        :host([ring]) .surface:hover::after,
+        :host([ring]) .surface:focus-within::before,
+        :host([ring]) .surface:focus-within::after {
+          opacity: 0 !important;
+          animation: none !important;
+          background: transparent !important;
+        }
+        @keyframes promptRingSpin {
+          100% {
+            transform: translate(-50%, -50%) rotate(360deg);
+          }
         }
         .surface {
           position: relative;
@@ -1811,6 +1873,8 @@ class MuiPrompt extends HTMLElement {
         :host-context([theme="dark"]),
         :host-context(.theme-dark) {
           --prompt-focus-surface-opacity: 0.35;
+          --prompt-ring-shadow-color: var(--black-opacity-5);
+          --prompt-ring-gap-color: var(--grey-600);
           --prompt-accent-secondary-derived: var(
             --prompt-accent-secondary,
             color-mix(in srgb, var(--prompt-accent-primary-derived) 64%, var(--grey-1200) 36%)
@@ -2084,6 +2148,9 @@ class MuiPrompt extends HTMLElement {
       </style>
 
         <div class="surface">
+          <div class="ring-container">
+            <div class="ring-gradient"></div>
+          </div>
         <div class="input-wrap">
           <div class="preview-shell" part="preview-shell">
             <mui-h-stack class="preview-row" part="preview-row" aligny="stretch" alignx="start" space="var(--space-100)">

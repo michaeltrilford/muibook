@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  :root {
+    --border-thin: 5px;
+    --radius-300: 10px;
+  }
+  .surface {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    border: var(--border-thin) solid transparent;
+    border-radius: var(--radius-300);
+    background: #333;
+    /* background-clip: padding-box; */
+    isolation: isolate;
+  }
+  .ring-container {
+    position: absolute;
+    inset: calc(var(--border-thin) * -1);
+    border-radius: calc(var(--radius-300) + var(--border-thin));
+    overflow: hidden;
+    z-index: -1;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: var(--border-thin);
+  }
+  .ring-gradient {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    aspect-ratio: 1;
+    background: conic-gradient(red, yellow, green, blue, red);
+    transform: translate(-50%, -50%);
+  }
+</style>
+</head>
+<body>
+  <div class="surface">
+    <div class="ring-container">
+      <div class="ring-gradient"></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,10 +1,19 @@
 ## Header [Start]
 
+## v20.2.0
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/20.2.0)
+
+## Header [End]
+
+### Added
+
+- Added `ring` boolean attribute to `mui-prompt` for an optional glowing animated stroke variant.
+- Added `--prompt-ring-gap-color` and `--prompt-ring-shadow-color` tokens to customize the `mui-prompt` ring variant.
+
 ## v20.1.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/20.1.0)
-
-## Header [End]
 
 ### Added
 
