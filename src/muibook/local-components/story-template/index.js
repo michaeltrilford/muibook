@@ -2,6 +2,7 @@ import "../../../components/mui-heading";
 import "../../images/github-mark";
 import "../../images/figma-mark";
 import "../../images/guides-mark";
+import "../../images/redactd-mark";
 import "../../images/npm-mark";
 import "../../images/storybook-mark";
 
@@ -313,6 +314,7 @@ class StoryTemplate extends HTMLElement {
       { href: this.getAttribute("guides"), label: "Guides", icon: "guides-mark" },
       { href: this.getAttribute("figma"), label: "Figma", icon: "figma-mark" },
       { href: this.getAttribute("github"), label: "Github", icon: "github-mark" },
+      { href: this.getAttribute("redactd") || "https://redactd.xyz/", label: "Redactd", icon: "redactd-mark" },
     ].filter((link) => link.href);
 
     const linksAboveContent = links
