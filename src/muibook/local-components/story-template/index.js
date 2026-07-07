@@ -313,8 +313,8 @@ class StoryTemplate extends HTMLElement {
       { href: this.getAttribute("storybook"), label: "Storybook", icon: "storybook-mark" },
       { href: this.getAttribute("guides"), label: "Guides", icon: "guides-mark" },
       { href: this.getAttribute("figma"), label: "Figma", icon: "figma-mark" },
-      { href: this.getAttribute("github"), label: "Github", icon: "github-mark" },
       { href: this.getAttribute("redactd") || "https://redactd.xyz/", label: "Redactd", icon: "redactd-mark" },
+      { href: this.getAttribute("github"), label: "Github", icon: "github-mark" },
     ].filter((link) => link.href);
 
     const linksAboveContent = links
