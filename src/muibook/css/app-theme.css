@@ -54,6 +54,7 @@ html[data-brand="mui"][data-theme="light"] {
   --app-floating-menu-color: var(--black);
   --app-floating-menu-background: var(--app-container-surface);
   --app-floating-menu-background-hover: var(--app-navbar-surface-100);
+  --app-story-tab-bar-background: var(--grey-100);
 }
 html[data-brand="mui"][data-theme="dark"] {
   --app-logo-color: var(--mui-brand-300);
@@ -89,6 +90,7 @@ html[data-brand="mui"][data-theme="dark"] {
   --app-floating-menu-color: var(--white);
   --app-floating-menu-background: var(--app-container-surface);
   --app-floating-menu-background-hover: var(--app-navbar-surface-100);
+  --app-story-tab-bar-background: var(--grey-1100);
 }
 
 /* =============================================================================== */
@@ -118,6 +120,7 @@ html[data-brand="jal"][data-theme="light"] {
   --app-floating-menu-color: var(--red-600);
   --app-floating-menu-background: var(--white-opacity-50);
   --app-floating-menu-background-hover: var(--white-opacity-60);
+  --app-story-tab-bar-background: var(--grey-100);
 }
 
 html[data-brand="jal"][data-theme="dark"] {
@@ -143,6 +146,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-floating-menu-color: var(--gold-900);
   --app-floating-menu-background: var(--white-opacity-50);
   --app-floating-menu-background-hover: var(--white-opacity-60);
+  --app-story-tab-bar-background: var(--grey-1100);
 }
 
 /* =============================================================================== */
@@ -173,6 +177,7 @@ html[data-brand="ana"][data-theme="light"] {
   --app-floating-menu-color: var(--blue-500);
   --app-floating-menu-background: var(--white-opacity-10);
   --app-floating-menu-background-hover: var(--white-opacity-20);
+  --app-story-tab-bar-background: var(--grey-100);
 }
 
 html[data-brand="ana"][data-theme="dark"] {
@@ -199,6 +204,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --app-floating-menu-color: var(--blue-200);
   --app-floating-menu-background: var(--white-opacity-0);
   --app-floating-menu-background-hover: var(--black-opacity-10);
+  --app-story-tab-bar-background: var(--grey-700);
 }
 
 /* =============================================================================== */
@@ -231,6 +237,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --app-floating-menu-color: var(--green-1000);
   --app-floating-menu-background: var(--app-container-surface);
   --app-floating-menu-background-hover: var(--app-navbar-surface-100);
+  --app-story-tab-bar-background: var(--green-300);
 }
 
 html[data-brand="sensei"][data-theme="dark"] {
@@ -259,6 +266,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-floating-menu-color: var(--green-300);
   --app-floating-menu-background: var(--app-container-surface);
   --app-floating-menu-background-hover: var(--app-navbar-surface-100);
+  --app-story-tab-bar-background: var(--green-1200);
 }
 
 /* =============================================================================== */
@@ -298,6 +306,7 @@ html[data-brand="paperclip"][data-theme="light"] {
   --app-floating-menu-color: var(--blue-500);
   --app-floating-menu-background: var(--app-container-surface);
   --app-floating-menu-background-hover: var(--app-navbar-surface-100);
+  --app-story-tab-bar-background: var(--blue-500);
 }
 
 html[data-brand="paperclip"][data-theme="dark"] {
@@ -333,4 +342,5 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --app-floating-menu-color: var(--white);
   --app-floating-menu-background: var(--app-container-surface);
   --app-floating-menu-background-hover: var(--app-navbar-surface-100);
+  --app-story-tab-bar-background: var(--white);
 }

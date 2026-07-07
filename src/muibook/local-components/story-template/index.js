@@ -247,7 +247,7 @@ class StoryTemplate extends HTMLElement {
               }
             }
           </style>
-          <mui-tab-bar class="docs-tab-bar" stroke="none" active-inset inset-size="300" size="medium" radius="400" style="justify-self: start;">
+          <mui-tab-bar class="docs-tab-bar" stroke="none" active-inset inset-size="300" size="medium" radius="400" style="justify-self: start; --tab-background: var(--app-story-tab-bar-background);">
             <mui-tab-item id="props" active>Prop Types</mui-tab-item>
             <mui-tab-item id="accessibility">Accessibility</mui-tab-item>
           </mui-tab-bar>
@@ -312,33 +312,47 @@ class StoryTemplate extends HTMLElement {
       { href: this.getAttribute("storybook"), label: "Storybook", icon: "storybook-mark" },
       { href: this.getAttribute("guides"), label: "Guides", icon: "guides-mark" },
       { href: this.getAttribute("figma"), label: "Figma", icon: "figma-mark" },
-      { href: this.getAttribute("github"), label: "Github", icon: "github-mark" }
-    ].filter(link => link.href);
+      { href: this.getAttribute("github"), label: "Github", icon: "github-mark" },
+    ].filter((link) => link.href);
 
-    const linksAboveContent = links.map(link => /*html*/`
+    const linksAboveContent = links
+      .map(
+        (link) => /*html*/ `
       <mui-link target="_blank" href="${link.href}" rel="noopener" variant="tertiary" size="medium" weight="regular" has-after>
         ${link.label}<${link.icon} slot="after" class="mui-icon" size="small"></${link.icon}>
       </mui-link>
-    `).join("");
+    `,
+      )
+      .join("");
 
-    const linksMiddleContent = links.map(link => /*html*/`
+    const linksMiddleContent = links
+      .map(
+        (link) => /*html*/ `
       <mui-link target="_blank" href="${link.href}" rel="noopener" variant="tertiary" icon-only aria-label="${link.label}" size="medium" weight="regular">
         <${link.icon} class="mui-icon" size="medium"></${link.icon}>
       </mui-link>
-    `).join("");
+    `,
+      )
+      .join("");
 
-    const linksBelowContent = links.length ? /*html*/`
+    const linksBelowContent = links.length
+      ? /*html*/ `
       <mui-dropdown position="right">
         <mui-button slot="action" variant="tertiary" icon-only size="small" aria-label="More options">
           <mui-icon-ellipsis size="small"></mui-icon-ellipsis>
         </mui-button>
-        ${links.map(link => /*html*/`
+        ${links
+          .map(
+            (link) => /*html*/ `
           <mui-link target="_blank" href="${link.href}" rel="noopener" variant="tertiary" size="small">
             ${link.label}<${link.icon} slot="after" size="xx-small"></${link.icon}>
           </mui-link>
-        `).join("")}
+        `,
+          )
+          .join("")}
       </mui-dropdown>
-    ` : "";
+    `
+      : "";
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
