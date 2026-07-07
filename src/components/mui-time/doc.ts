@@ -1,16 +1,16 @@
 import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
-  TimePicker: {
-    title: "mui-time",
-    description: "The Time Picker allows users to select a specific time of day.",
+  Time: {
+    title: "Time",
+    description: "The Time component allows users to select a specific time of day.",
 
     hero: [],
     figma: [],
     storybook: [],
-    github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-time-picker"],
-    website: ["https://muibook.com/time-picker"],
-    guides: ["https://guides.muibook.com/time-picker"],
+    github: ["https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-time"],
+    website: ["https://muibook.com/time"],
+    guides: ["https://guides.muibook.com/time"],
     usage: {
       list: [
         "Use the Time component when a specific hour and minute is required.",

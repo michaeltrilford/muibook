@@ -151,7 +151,7 @@ export const compositions = {
                   {
                     type: "Heading",
                     id: "title",
-                    props: { text: "Rewards", size: "4", level: "4" },
+                    props: { text: "Diamond Rewards", size: "4", level: "4" },
                     children: [],
                   },
                 ],
@@ -171,12 +171,11 @@ export const compositions = {
                         id: "smart-card",
                         props: {
                           inverted: true,
-                          "bg-image": "https://muibook.com/images/diamond.png",
-                          partner: "https://muibook.com/images/emerald.svg",
+                          "bg-image": "https://muibook.com/diamond.png",
+                          partner: "https://muibook.com/emerald.svg",
                           number: "1234",
-                          type: "Rewards",
-                          variant: "plain",
-                          state: "default",
+                          type: "Diamond",
+                          variant: "animated",
                         },
                         children: [],
                       },
@@ -491,9 +490,12 @@ export const compositions = {
             id: "wallet_card",
             props: {
               variant: "animated",
-              partner: "Visa",
+              partner: "https://muibook.com/visa-black.svg",
               type: "Debit",
               number: "1234",
+              logo: "https://muibook.com/mui.svg",
+              "logo-height": "100",
+              "bg-image": "https://muibook.com/snowy-mint.png",
             },
             children: [],
           },
@@ -510,16 +512,16 @@ export const compositions = {
                   {
                     type: "TabBar",
                     id: "tab_bar",
-                    props: { inset: true, stroke: "none", radius: "500" },
+                    props: { inset: true, stroke: "none", "active-inset": true, radius: "500" },
                     children: [
-                      { type: "TabItem", id: "tab_item_tx", props: { active: true, text: "Transactions" }, children: [] },
-                      { type: "TabItem", id: "tab_item_st", props: { text: "Statements" }, children: [] },
+                      { type: "TabItem", id: "transactions", props: { active: true, text: "Transactions" }, children: [] },
+                      { type: "TabItem", id: "statements", props: { text: "Statements" }, children: [] },
                     ],
                   },
                   {
                     type: "TabPanel",
                     id: "panel_tx",
-                    props: { item: "tab_item_tx" },
+                    props: { item: "transactions" },
                     children: [
                       {
                         type: "SlatGroup",
@@ -532,15 +534,250 @@ export const compositions = {
                             props: { variant: "header" },
                             children: [
                               { type: "Heading", id: "tx_header_title", props: { text: "Today", size: "6" }, children: [] },
+                              { type: "Body", id: "tx_header_date", slot: "end", props: { text: "22 July 2025", size: "small" }, children: [] },
                             ],
                           },
                           {
                             type: "Slat",
-                            id: "tx_item_1",
+                            id: "palace_cinema",
                             props: { variant: "row", col: "1fr auto" },
                             children: [
-                              { type: "Avatar", id: "tx_item_1_icon", props: {}, children: [] },
-                              { type: "VStack", id: "tx_item_1_details", props: {}, children: [] },
+                              {
+                                type: "Avatar",
+                                id: "palace_icon",
+                                slot: "accessory", props: {},
+                                children: [{ type: "_Icon", id: "palace_icon_glyph", props: { icon: "mui-icon-movie-clapper", size: "small" }, children: [] }],
+                              },
+                              {
+                                type: "VStack",
+                                id: "palace_details",
+                                slot: "start", props: { space: "0" },
+                                children: [
+                                  { type: "Body", id: "palace_title", props: { text: "Palace Cinema", size: "medium", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "palace_meta", props: { text: "Entertainment", size: "small" }, children: [] },
+                                ],
+                              },
+                              {
+                                type: "VStack",
+                                id: "palace_amount",
+                                slot: "end", props: { space: "0", alignX: "end" },
+                                children: [
+                                  { type: "Body", id: "palace_status", props: { text: "Pending", size: "small" }, children: [] },
+                                  { type: "Body", id: "palace_value", props: { text: "-$8.12", size: "small" }, children: [] },
+                                ],
+                              },
+                            ],
+                          },
+                          {
+                            type: "Slat",
+                            id: "app_store",
+                            props: { variant: "row", col: "1fr auto" },
+                            children: [
+                              {
+                                type: "Avatar",
+                                id: "app_store_icon",
+                                slot: "accessory", props: {},
+                                children: [{ type: "_Icon", id: "app_store_icon_glyph", props: { icon: "mui-icon-game-controller", size: "small" }, children: [] }],
+                              },
+                              {
+                                type: "VStack",
+                                id: "app_store_details",
+                                slot: "start", props: { space: "0" },
+                                children: [
+                                  { type: "Body", id: "app_store_title", props: { text: "Apple App Store", size: "medium", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "app_store_meta", props: { text: "Entertainment", size: "small" }, children: [] },
+                                ],
+                              },
+                              {
+                                type: "VStack",
+                                id: "app_store_amount",
+                                slot: "end", props: { space: "0", alignX: "end" },
+                                children: [
+                                  { type: "Body", id: "app_store_status", props: { text: "Pending", size: "small" }, children: [] },
+                                  { type: "Body", id: "app_store_value", props: { text: "-$4.99", size: "small" }, children: [] },
+                                ],
+                              },
+                            ],
+                          },
+                          {
+                            type: "Slat",
+                            id: "tx_yesterday_header",
+                            props: { variant: "header" },
+                            children: [
+                              { type: "Heading", id: "tx_yesterday_title", props: { text: "Yesterday", size: "6" }, children: [] },
+                              { type: "Body", id: "tx_yesterday_date", slot: "end", props: { text: "21 July 2025", size: "small" }, children: [] },
+                            ],
+                          },
+                          {
+                            type: "Slat",
+                            id: "record_south_yarra",
+                            props: { variant: "row", col: "1fr auto" },
+                            children: [
+                              {
+                                type: "Avatar",
+                                id: "record_icon",
+                                slot: "accessory", props: {},
+                                children: [{ type: "_Icon", id: "record_icon_glyph", props: { icon: "mui-icon-music-microphone", size: "small" }, children: [] }],
+                              },
+                              {
+                                type: "VStack",
+                                id: "record_details",
+                                slot: "start", props: { space: "0" },
+                                children: [
+                                  { type: "Body", id: "record_title", props: { text: "Record South Yarra", size: "medium", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "record_meta", props: { text: "Entertainment", size: "small" }, children: [] },
+                                ],
+                              },
+                              {
+                                type: "VStack",
+                                id: "record_amount",
+                                slot: "end", props: { space: "0", alignX: "end" },
+                                children: [
+                                  { type: "Body", id: "record_status", props: { text: "Pending", size: "small" }, children: [] },
+                                  { type: "Body", id: "record_value", props: { text: "-$26.89", size: "medium" }, children: [] },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    type: "TabPanel",
+                    id: "panel_statements",
+                    props: { item: "statements" },
+                    children: [
+                      {
+                        type: "SlatGroup",
+                        id: "statement_group",
+                        props: {},
+                        children: [
+                          {
+                            type: "Slat",
+                            id: "statement_recent_header",
+                            props: { variant: "header" },
+                            children: [{ type: "Heading", id: "statement_recent_title", props: { text: "Recents", size: "6" }, children: [] }],
+                          },
+                          {
+                            type: "Slat",
+                            id: "statement_report",
+                            props: { variant: "action" },
+                            children: [
+                              {
+                                type: "Avatar",
+                                id: "statement_report_icon",
+                                slot: "accessory", props: {},
+                                children: [{ type: "_Icon", id: "statement_report_glyph", props: { icon: "mui-icon-rectangle-media-text", size: "small" }, children: [] }],
+                              },
+                              {
+                                type: "VStack",
+                                id: "statement_report_copy",
+                                slot: "start", props: { space: "0" },
+                                children: [
+                                  { type: "Body", id: "statement_report_title", props: { text: "Transactions Report", size: "medium", weight: "bold" }, children: [] },
+                                  { type: "Body", id: "statement_report_meta", props: { text: "Generate a PDF", size: "small" }, children: [] },
+                                ],
+                              },
+                            ],
+                          },
+                          {
+                            type: "Slat",
+                            id: "statement_2025",
+                            props: { variant: "action" },
+                            children: [
+                              {
+                                type: "Avatar",
+                                id: "statement_2025_icon",
+                                slot: "accessory", props: {},
+                                children: [{ type: "_Icon", id: "statement_2025_glyph", props: { icon: "mui-icon-calendar", size: "small" }, children: [] }],
+                              },
+                              { type: "Body", id: "statement_2025_label", slot: "start", props: { text: "2025", size: "medium", weight: "bold" }, children: [] },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "VStack",
+            id: "wallet_settings",
+            props: { alignX: "stretch", space: "var(--space-200)" },
+            children: [
+              { type: "Heading", id: "wallet_settings_title", props: { text: "Personalise Card", size: "3", level: "2" }, children: [] },
+              {
+                type: "Card",
+                id: "wallet_artwork_card",
+                props: { "data-group": "card-artwork" },
+                children: [
+                  {
+                    type: "CardBody",
+                    id: "wallet_artwork_body",
+                    props: { condensed: true },
+                    children: [
+                      {
+                        type: "Slat",
+                        id: "wallet_artwork_slat",
+                        props: { variant: "row", style: "grid-template-columns: 2fr auto; background: var(--app-wallet-slat-background, var(--slat-background));" },
+                        children: [
+                          {
+                            type: "VStack",
+                            id: "wallet_artwork_copy",
+                            slot: "start", props: { space: "0" },
+                            children: [
+                              { type: "Body", id: "wallet_artwork_title", props: { text: "Artwork", size: "medium", weight: "bold" }, children: [] },
+                              { type: "Body", id: "wallet_artwork_preferred_size", props: { text: "Preferred size: 395x248", size: "small", "data-preferred-size": true }, children: [] },
+                            ],
+                          },
+                          {
+                            type: "HStack",
+                            id: "wallet_artwork_actions",
+                            slot: "end", props: { space: "0", alignX: "end" },
+                            children: [
+                              { type: "Button", id: "wallet_artwork_reset", props: { text: "Reset", variant: "tertiary", "data-background-reset": true, style: "display: none;" }, children: [] },
+                              {
+                                type: "Dropdown",
+                                id: "wallet_artwork_dropdown",
+                                props: { "data-toggle-dropdown": "background", "data-file-preview": true, position: "center", class: "card-artwork" },
+                                children: [
+                                  {
+                                    type: "Button",
+                                    id: "wallet_artwork_action",
+                                    slot: "action", props: { variant: "tertiary", size: "small" },
+                                    children: [{ type: "_IconToggle", id: "wallet_artwork_toggle", props: { "data-toggle-control": "background", rotate: true, size: "small" }, children: [] }],
+                                  },
+                                  {
+                                    type: "VStack",
+                                    id: "wallet_artwork_menu",
+                                    props: { space: "var(--space-300)", style: "padding: var(--space-300) var(--space-500) var(--space-500) var(--space-500);" },
+                                    children: [
+                                      { type: "Heading", id: "wallet_artwork_preview_title", props: { text: "Preview", size: "3", level: "2" }, children: [] },
+                                      {
+                                        type: "SmartCard",
+                                        id: "wallet_artwork_preview",
+                                        props: {
+                                          type: "Debit",
+                                          number: "1234",
+                                          partner: "https://muibook.com/visa-black.svg",
+                                          logo: "https://muibook.com/image-220.png",
+                                          variant: "plain",
+                                        },
+                                        children: [],
+                                      },
+                                      {
+                                        type: "FileUpload",
+                                        id: "wallet_artwork_upload",
+                                        props: { acceptedFileTypes: ".pdf,.jpg,.png,.svg", currentFileName: "Upload Artwork" },
+                                        children: [],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
                             ],
                           },
                         ],
