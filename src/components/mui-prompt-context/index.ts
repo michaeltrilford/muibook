@@ -48,10 +48,10 @@ class MuiPromptContext extends HTMLElement {
 
     assigned.forEach((el) => {
       if (!(el instanceof HTMLElement)) return;
-      const bodyEls = [
-        ...(el.tagName.toLowerCase() === "mui-body" ? [el] : []),
-        ...(Array.from(el.querySelectorAll("mui-body")) as HTMLElement[]),
-      ];
+
+      // Only truncate the slotted element itself if it's a mui-body.
+      // Deeply querying for all mui-body descendants breaks layouts (like h-stack).
+      const bodyEls = el.tagName.toLowerCase() === "mui-body" ? [el] : [];
 
       bodyEls.forEach((bodyEl) => {
         this.bodyEls.add(bodyEl);
@@ -89,7 +89,7 @@ class MuiPromptContext extends HTMLElement {
           border: var(--border-thin);
           border-bottom: 0;
           border-color: var(--form-default-border-color);
-          border-radius: var(--radius-300) var(--radius-300) 0 0;
+          border-radius: var(--radius-200) var(--radius-200) 0 0;
           background: var(--surface-elevated-100);
         }
         .summary {
