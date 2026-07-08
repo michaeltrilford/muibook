@@ -44,6 +44,18 @@ export const muiApi = {
         description: "Controls which content inside `mui-prompt-toggle` is visible.",
       },
       {
+        name: "context-sheet-collapsed",
+        type: { text: "boolean" },
+        default: "false",
+        description: "Collapses the slotted context sheet while keeping its header visible.",
+      },
+      {
+        name: "context-sheet-label",
+        type: { text: "string" },
+        default: "Prompt context",
+        description: "Accessible header label for the slotted context sheet toggle.",
+      },
+      {
         name: "preview-dialog-width",
         type: { text: "string" },
         default: "560px",
@@ -167,6 +179,8 @@ export const muiApi = {
       },
     ],
     slots: [
+      { name: "context-summary", description: "Compact context sheet header content displayed above the prompt input, useful for truncated task rows and always-visible actions." },
+      { name: "context", description: "Expanded context sheet detail content displayed below the context summary when present." },
       { name: "preview", description: "Preview items displayed above the prompt input, typically `mui-prompt-preview`." },
       { name: "input", description: "Optional replacement content for the built-in textarea region." },
       { name: "actions", description: "Leading prompt actions such as buttons, icons, toggles, or rules." },
@@ -186,6 +200,7 @@ export const muiApi = {
       { name: "before-submit", description: "Cancelable event dispatched before submission; prevent it to block submission." },
       { name: "submit", description: "Dispatched after an accepted submit request with value and source details." },
       { name: "prompt-paste", description: "Dispatched when pasted or uploaded content is converted into prompt preview data." },
+      { name: "prompt-context-sheet-toggle", description: "Dispatched when the slotted context sheet is collapsed or expanded." },
       { name: "prompt-context-change", description: "Dispatched when prompt context is changed." },
       { name: "prompt-context-dismiss", description: "Dispatched when prompt context is dismissed." },
       { name: "prompt-error-set", description: "Dispatched when an error message is set programmatically." },

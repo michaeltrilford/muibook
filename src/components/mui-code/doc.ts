@@ -22,6 +22,7 @@ export const muiDocs: MuiDocs = {
         "Use to present short snippets of code or commands.",
         "Ideal for inline code within paragraphs or standalone blocks.",
         "Use the `inline` attribute to render code snippets inline with text, utilizing compact padding and baseline alignment.",
+        "Inline code inside Body or List Item prose receives tighter vertical padding so it sits naturally with the line-height.",
         "Ensure code is visually distinct with monospace font and background.",
         "Avoid using for long or complex code—consider specialised code blocks or editors.",
       ],
@@ -83,6 +84,7 @@ export const muiDocs: MuiDocs = {
     behaviour: {
       list: [
         "Inline code renders as an inline-block box aligned to the text baseline.",
+        "Inline code inside prose contexts uses `padding: var(--space-000) var(--space-100)`.",
         "Block code expands to fill the container width and supports scrollable/wrapping properties.",
       ],
     },

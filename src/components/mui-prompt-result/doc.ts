@@ -1,0 +1,59 @@
+import type { MuiDocs } from "../../types/guidelines";
+
+export const muiDocs: MuiDocs = {
+  PromptResult: {
+    title: "Prompt Result",
+    description:
+      "Prompt Result provides a compact card/slat shell for agent outputs and generated artefact actions.",
+    hero: [""],
+    figma: [""],
+    storybook: [""],
+    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-result/index.ts"],
+    website: ["https://muibook.com/prompt-result"],
+    guides: ["https://guides.muibook.com/prompt"],
+    usage: {
+      list: [
+        "Use inside Prompt Message content when an agent produces a file edit, generated artefact, preview, or reviewable result.",
+        "Use slot='accessory' for the compact result marker.",
+        "Use slot='start' for the primary result label and supporting copy.",
+        "Use slot='actions' for controls such as Undo, Review, Open, Approve, or Dismiss.",
+        "Prefer this component over hand-authored card, card body, and slat markup in prompt/agent surfaces.",
+      ],
+    },
+    accessibility: {
+      designerList: [""],
+      engineerList: [
+        "Keep action labels explicit and avoid icon-only actions unless an aria-label is provided.",
+        "Use semantic buttons or links in the actions slot.",
+      ],
+    },
+    anatomy: { image: "", list: ["Card shell", "Accessory slot", "Start slot", "Actions slot"] },
+    variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    compositions: { description: "", items: [] },
+    related: {
+      items: [
+        { name: "Prompt Message", link: "https://guides.muibook.com/prompt-message" },
+        { name: "Slat", link: "https://guides.muibook.com/slat" },
+        { name: "Card", link: "https://guides.muibook.com/card" },
+      ],
+    },
+    rules: [
+      {
+        heading: "Keep Result Rows Focused",
+        description: "Use Prompt Result for one generated object or reviewable action group.",
+        doContent: [{ description: "Show a clear title, supporting metadata, and one or two direct actions.", image: "" }],
+        dontContent: [{ description: "Do not turn Prompt Result into a full dashboard or unrelated card layout.", image: "" }],
+      },
+    ],
+    behaviour: {
+      list: [
+        "Prompt Result uses a condensed card body and row slat internally.",
+      ],
+    },
+    writing: {
+      list: [
+        "Keep result titles short and action labels direct.",
+      ],
+    },
+  },
+};

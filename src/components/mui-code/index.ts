@@ -25,6 +25,8 @@ class MuiCode extends HTMLElement {
 
     const isScrollable = this.hasAttribute("scrollable");
     const isWrap = this.hasAttribute("wrap");
+    const isInProse = Boolean(this.closest("mui-body, mui-list-item"));
+    this.toggleAttribute("prose-slot", isInProse);
 
     const styles = /*css*/ `
       :host {
@@ -78,6 +80,9 @@ class MuiCode extends HTMLElement {
         width: auto;
         overflow-x: visible;
         white-space: ${isWrap ? "pre-wrap" : "nowrap"};
+      }
+      :host([inline][prose-slot]) code {
+        padding: var(--space-000) var(--space-100);
       }
 
       code:focus-visible {

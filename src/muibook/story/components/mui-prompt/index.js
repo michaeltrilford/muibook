@@ -114,6 +114,64 @@ class StoryPrompt extends HTMLElement {
       </story-card>
 
       <story-card
+        id="context-sheet"
+        title="Context Sheet"
+        description="A generic attached sheet for prompt-affecting context, rendered above the input only when slot content exists."
+        usage="Use slot='context' for feature-owned prompt context such as steer, persona, constraints, selected context, examples, or attachments.|||Set context-sheet-collapsed when the sheet should start collapsed.|||Listen for prompt-context-sheet-toggle when app state needs to mirror the collapsed state."
+      >
+        <mui-v-stack slot="body" space="var(--space-200)">
+          <mui-prompt
+            debug
+            id="promptContextSheetDemo"
+            placeholder="Ask for follow-up changes..."
+            context-sheet-label="Active prompt context"
+            enter-submit
+            context-mode="icon"
+          >
+            <mui-v-stack slot="context" space="var(--space-150)">
+              <mui-h-stack space="var(--space-100)" aligny="center">
+                <mui-chip size="small" variant="ghost">Steer</mui-chip>
+                <mui-body size="small" variant="secondary">Use concise implementation notes and preserve existing component API.</mui-body>
+              </mui-h-stack>
+              <mui-h-stack space="var(--space-100)" aligny="center">
+                <mui-chip size="small" variant="ghost">Output</mui-chip>
+                <mui-body size="small" variant="secondary">Return code changes, verification, and docs updates.</mui-body>
+              </mui-h-stack>
+            </mui-v-stack>
+            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
+            <mui-prompt-toggle slot="actions">
+              <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
+                <mui-icon-globe size="small"></mui-icon-globe>
+              </mui-button>
+              <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
+            </mui-prompt-toggle>
+          </mui-prompt>
+
+          <mui-prompt
+            id="promptContextSheetCollapsedDemo"
+            placeholder="Collapsed by default..."
+            context-sheet-label="Selected context"
+            context-sheet-collapsed
+            enter-submit
+          >
+            <mui-h-stack slot="context" space="var(--space-100)" aligny="center">
+              <mui-chip size="small" variant="ghost">Persona</mui-chip>
+              <mui-body size="small" variant="secondary">Senior engineer reviewing a small component API change.</mui-body>
+            </mui-h-stack>
+          </mui-prompt>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-prompt context-sheet-label="Active prompt context"&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack slot="context"&gt;...any prompt-affecting content...&lt;/mui-v-stack&gt;<br />
+          &lt;/mui-prompt&gt;<br />
+          <br />
+          &lt;mui-prompt context-sheet-collapsed&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="context"&gt;...collapsed by default...&lt;/mui-h-stack&gt;<br />
+          &lt;/mui-prompt&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
         id="default"
         title="Empty"
         usage="This is a reusable offering extracted from Agent UI compositions.|||Use it as the shared prompt primitive across products."
@@ -949,7 +1007,7 @@ class StoryPrompt extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       
         imports='["@muibook/components/mui-prompt"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Prompt|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Code Types Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Prompt|||context-sheet::Context Sheet|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Code Types Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
         ${stories}
       </story-template>
     `;
@@ -968,6 +1026,7 @@ class StoryPrompt extends HTMLElement {
     const promptApiClearBtn = this.shadowRoot.querySelector("#promptApiClearBtn");
     const promptApiFocusBtn = this.shadowRoot.querySelector("#promptApiFocusBtn");
     const promptLoadingDemo = this.shadowRoot.querySelector("#promptLoadingDemo");
+    const promptContextSheetDemo = this.shadowRoot.querySelector("#promptContextSheetDemo");
     const promptLoadingStartBtn = this.shadowRoot.querySelector("#promptLoadingStartBtn");
     const promptLoadingStopBtn = this.shadowRoot.querySelector("#promptLoadingStopBtn");
     const promptPreviewLoadingFlow = this.shadowRoot.querySelector("#promptPreviewLoadingFlow");
@@ -1094,6 +1153,10 @@ class StoryPrompt extends HTMLElement {
     bindPromptSimulation({
       promptEl: promptLoadingDemo,
       label: "Agent prompt (async loading)",
+    });
+    bindPromptSimulation({
+      promptEl: promptContextSheetDemo,
+      label: "Agent prompt (context sheet)",
     });
     bindPromptSimulation({
       promptEl: promptPreviewLoadingFlow,

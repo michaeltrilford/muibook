@@ -1,6 +1,7 @@
 import "../mui-stack/hstack";
 import "../mui-stack/vstack";
 import "../mui-dialog";
+import "../mui-accordion/core";
 import "../mui-heading";
 import "../mui-code";
 import "../mui-media-player";
@@ -12,6 +13,8 @@ import "../mui-icons/grid";
 import "../mui-icons/close";
 import "../mui-icons/toggle";
 import "../mui-icons/up-arrow";
+import "../mui-icons/down-chevron";
+import "../mui-icons/right-chevron";
 import "../mui-icons/stop";
 import "../mui-icons/attention";
 import "../mui-rule";
@@ -47,6 +50,8 @@ class MuiPrompt extends HTMLElement {
       "preview-dialog-width",
       "preview-dialog-title",
       "preview-dialog-bordered",
+      "context-sheet-collapsed",
+      "context-sheet-label",
       "context-mode",
       "effects-off",
       "color-layout",
@@ -69,6 +74,10 @@ class MuiPrompt extends HTMLElement {
   private previewShellEl: HTMLElement | null = null;
   private previewRowEl: HTMLElement | null = null;
   private previewSlotEl: HTMLSlotElement | null = null;
+  private contextSheetSlotEl: HTMLSlotElement | null = null;
+  private contextSheetSummarySlotEl: HTMLSlotElement | null = null;
+  private contextSheetSummaryEls = new Set<HTMLElement>();
+  private contextSheetSummaryBodyEls = new Set<HTMLElement>();
   private previewResizeObserver: ResizeObserver | null = null;
   private fanAnimations = new Map<HTMLElement, Animation>();
   private pendingColorFade = false;
@@ -329,6 +338,30 @@ class MuiPrompt extends HTMLElement {
     this.syncPreviewEdgeShadows();
   };
 
+  private onContextSheetSlotChange = () => {
+    this.syncContextSheetSummaryTruncation();
+    this.syncContextSheetVisibility();
+  };
+
+  private onContextSheetToggleClick = (event: Event) => {
+    if (event instanceof KeyboardEvent && event.key !== "Enter" && event.key !== " ") return;
+    const wasCollapsed = this.hasAttribute("context-sheet-collapsed");
+    queueMicrotask(() => {
+      const accordion = this.shadowRoot?.querySelector("#promptContextSheetAccordion") as HTMLElement | null;
+      const nextCollapsed = !accordion?.hasAttribute("open");
+      if (nextCollapsed === wasCollapsed) return;
+      this.toggleAttribute("context-sheet-collapsed", nextCollapsed);
+      this.syncContextSheetVisibility();
+      this.dispatchEvent(
+        new CustomEvent("prompt-context-sheet-toggle", {
+          detail: { collapsed: nextCollapsed },
+          bubbles: true,
+          composed: true,
+        }),
+      );
+    });
+  };
+
   private onPreviewOpen = (event: Event) => {
     const customEvent = event as CustomEvent;
     const detail = this.normalizePreviewDetail(customEvent.detail || {});
@@ -508,6 +541,11 @@ class MuiPrompt extends HTMLElement {
       }
       this.syncContextModeUI();
       this.updateActionsLayout();
+      return;
+    }
+
+    if (name === "context-sheet-collapsed" || name === "context-sheet-label") {
+      this.syncContextSheetVisibility();
       return;
     }
 
@@ -841,7 +879,10 @@ class MuiPrompt extends HTMLElement {
     actionRightSlot?.addEventListener("slotchange", this.onActionsSlotChange);
     if (typeof MutationObserver !== "undefined") {
       this.lightDomObserver?.disconnect();
-      this.lightDomObserver = new MutationObserver(() => this.updateActionsLayout());
+      this.lightDomObserver = new MutationObserver(() => {
+        this.updateActionsLayout();
+        this.syncContextSheetVisibility();
+      });
       this.lightDomObserver.observe(this, {
         childList: true,
         subtree: true,
@@ -855,6 +896,7 @@ class MuiPrompt extends HTMLElement {
     this.addEventListener("dismiss", this.onContextChipDismiss as EventListener);
     this.syncErrorVisibility();
     this.bindPreviewOverflow();
+    this.bindContextSheet();
     this.bindActionTrigger();
     this.syncLoadingState();
   }
@@ -881,6 +923,12 @@ class MuiPrompt extends HTMLElement {
     }
     this.previewRowEl?.removeEventListener("scroll", this.onPreviewScroll);
     this.previewSlotEl?.removeEventListener("slotchange", this.onPreviewSlotChange);
+    this.contextSheetSlotEl?.removeEventListener("slotchange", this.onContextSheetSlotChange);
+    this.contextSheetSummarySlotEl?.removeEventListener("slotchange", this.onContextSheetSlotChange);
+    this.clearContextSheetSummaryTruncation();
+    const contextSheetAccordion = this.shadowRoot.querySelector("#promptContextSheetAccordion") as HTMLElement | null;
+    contextSheetAccordion?.removeEventListener("click", this.onContextSheetToggleClick);
+    contextSheetAccordion?.removeEventListener("keydown", this.onContextSheetToggleClick);
     this.previewResizeObserver?.disconnect();
     this.previewResizeObserver = null;
     this.lightDomObserver?.disconnect();
@@ -888,6 +936,8 @@ class MuiPrompt extends HTMLElement {
     this.previewShellEl = null;
     this.previewRowEl = null;
     this.previewSlotEl = null;
+    this.contextSheetSlotEl = null;
+    this.contextSheetSummarySlotEl = null;
   }
 
   private bindPreviewOverflow() {
@@ -906,6 +956,81 @@ class MuiPrompt extends HTMLElement {
 
     this.syncPreviewVisibility();
     this.syncPreviewEdgeShadows();
+  }
+
+  private bindContextSheet() {
+    if (!this.shadowRoot) return;
+    this.contextSheetSlotEl = this.shadowRoot.querySelector('slot[name="context"]') as HTMLSlotElement | null;
+    this.contextSheetSummarySlotEl = this.shadowRoot.querySelector(
+      'slot[name="context-summary"]',
+    ) as HTMLSlotElement | null;
+    const contextSheetAccordion = this.shadowRoot.querySelector("#promptContextSheetAccordion") as HTMLElement | null;
+    this.contextSheetSlotEl?.addEventListener("slotchange", this.onContextSheetSlotChange);
+    this.contextSheetSummarySlotEl?.addEventListener("slotchange", this.onContextSheetSlotChange);
+    contextSheetAccordion?.addEventListener("click", this.onContextSheetToggleClick);
+    contextSheetAccordion?.addEventListener("keydown", this.onContextSheetToggleClick);
+    this.syncContextSheetSummaryTruncation();
+    this.syncContextSheetVisibility();
+  }
+
+  private clearContextSheetSummaryTruncation() {
+    this.contextSheetSummaryEls.forEach((el) => {
+      el.removeAttribute("data-prompt-context-summary");
+    });
+    this.contextSheetSummaryBodyEls.forEach((el) => {
+      if (el.getAttribute("data-prompt-context-summary-truncate") === "true") {
+        el.removeAttribute("truncate");
+        el.removeAttribute("data-prompt-context-summary-truncate");
+      }
+    });
+    this.contextSheetSummaryEls.clear();
+    this.contextSheetSummaryBodyEls.clear();
+  }
+
+  private syncContextSheetSummaryTruncation() {
+    this.clearContextSheetSummaryTruncation();
+    const assigned = (this.contextSheetSummarySlotEl?.assignedElements({ flatten: false }) || []) as HTMLElement[];
+
+    assigned.forEach((el) => {
+      if (!(el instanceof HTMLElement)) return;
+      el.setAttribute("data-prompt-context-summary", "");
+      this.contextSheetSummaryEls.add(el);
+
+      const bodyEls = [
+        ...(el.tagName.toLowerCase() === "mui-body" ? [el] : []),
+        ...(Array.from(el.querySelectorAll("mui-body")) as HTMLElement[]),
+      ];
+
+      bodyEls.forEach((bodyEl) => {
+        this.contextSheetSummaryBodyEls.add(bodyEl);
+        if (bodyEl.hasAttribute("truncate")) return;
+        bodyEl.setAttribute("truncate", "");
+        bodyEl.setAttribute("data-prompt-context-summary-truncate", "true");
+      });
+    });
+  }
+
+  private syncContextSheetVisibility() {
+    if (!this.shadowRoot) return;
+    const shell = this.shadowRoot.querySelector(".context-sheet") as HTMLElement | null;
+    const accordion = this.shadowRoot.querySelector("#promptContextSheetAccordion") as HTMLElement | null;
+    const label = this.shadowRoot.querySelector(".context-sheet-label") as HTMLElement | null;
+    const assigned = [
+      ...(this.contextSheetSummarySlotEl?.assignedElements({ flatten: false }) || []),
+      ...(this.contextSheetSlotEl?.assignedElements({ flatten: false }) || []),
+    ];
+    const hasContent = assigned.some((el) => {
+      if (!(el instanceof HTMLElement)) return true;
+      return !el.hasAttribute("hidden");
+    });
+    const collapsed = this.hasAttribute("context-sheet-collapsed");
+    const labelText = this.getAttribute("context-sheet-label") || "Prompt context";
+
+    shell?.toggleAttribute("hidden", !hasContent);
+    if (!hasContent) return;
+
+    if (label) label.textContent = labelText;
+    accordion?.toggleAttribute("open", !collapsed);
   }
 
   private syncPreviewVisibility() {
@@ -1722,12 +1847,115 @@ class MuiPrompt extends HTMLElement {
         @media (prefers-reduced-motion: reduce) {
           .surface,
           .surface::before,
-          .surface::after {
+          .surface::after,
+          .context-sheet-panel,
+          .context-sheet-icon {
             transition: none;
             animation: none !important;
           }
           .surface:focus-within {
             animation: none !important;
+          }
+        }
+        .context-sheet {
+          position: relative;
+          z-index: 0;
+          display: block;
+          overflow: hidden;
+          margin-inline: var(--prompt-context-sheet-inset, var(--space-500));
+          border: var(--border-thin);
+          border-color: var(--form-default-border-color);
+          border-bottom: 0;
+          border-radius: var(--radius-300) var(--radius-300) 0 0;
+          background:
+            linear-gradient(
+              180deg,
+              color-mix(in srgb, var(--surface-elevated-200) 74%, transparent 26%) 0%,
+              color-mix(in srgb, var(--surface-elevated-100) 94%, transparent 6%) 100%
+            );
+        }
+        .context-sheet[hidden] {
+          display: none !important;
+        }
+        .context-sheet-summary {
+          padding-inline-start: var(--space-400);
+          padding-inline-end: var(--space-200);
+          padding-block: var(--space-200);
+          box-sizing: border-box;
+          width: 100%;
+        }
+        .context-sheet-summary::part(display) {
+          display: flex;
+        }
+        .context-sheet-summary::part(width) {
+          width: 100%;
+        }
+        .context-sheet-summary::part(height) {
+          height: 100%;
+        }
+        slot[name="context-summary"] {
+          display: block;
+          width: 100%;
+          min-width: 0;
+        }
+        slot[name="context-summary"]::slotted([data-prompt-context-summary]) {
+          min-width: 0;
+          max-width: 100%;
+        }
+        slot[name="context-summary"]::slotted(mui-body) {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .context-sheet-fallback {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--space-200);
+          width: 100%;
+          min-width: 0;
+        }
+        .context-sheet-label {
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .context-sheet-label::part(display) {
+          display: block;
+        }
+        .context-sheet-label::part(width) {
+          width: 100%;
+        }
+        .context-sheet-label::part(white-space) {
+          white-space: nowrap;
+        }
+        .context-sheet-label::part(overflow) {
+          overflow: hidden;
+        }
+        .context-sheet-label::part(text-overflow) {
+          text-overflow: ellipsis;
+        }
+        .context-sheet-icon {
+          flex: 0 0 auto;
+          display: inline-flex;
+          color: var(--icon-color-default);
+        }
+        .context-sheet-panel {
+          display: block;
+          overflow: auto;
+          padding-inline: var(--space-300);
+          padding-block: 0 var(--space-300);
+          box-sizing: border-box;
+          max-height: min(18rem, 42vh);
+        }
+        ::slotted([slot="context"]) {
+          display: block;
+          min-width: 0;
+        }
+        @media (max-width: 599px) {
+          .context-sheet {
+            margin-inline: var(--prompt-context-sheet-inset, var(--space-200));
           }
         }
         .input-wrap {
@@ -2155,6 +2383,26 @@ class MuiPrompt extends HTMLElement {
         }
       </style>
 
+        <div class="context-sheet" part="context-sheet" hidden>
+          <mui-accordion-core id="promptContextSheetAccordion" ${this.hasAttribute("context-sheet-collapsed") ? "" : "open"}>
+            <mui-h-stack slot="summary" class="context-sheet-summary" alignY="center" alignX="space-between" space="var(--space-200)">
+              <slot name="context-summary">
+                <div class="context-sheet-fallback">
+                  <mui-body id="promptContextSheetLabel" class="context-sheet-label" size="x-small" variant="tertiary" weight="regular">
+                    ${(this.getAttribute("context-sheet-label") || "Prompt context").replace(/</g, "&lt;").replace(/>/g, "&gt;")}
+                  </mui-body>
+                  <mui-icon-toggle class="context-sheet-icon" rotate size="xx-small">
+                    <mui-icon-right-chevron slot="start" size="xx-small"></mui-icon-right-chevron>
+                    <mui-icon-down-chevron slot="end" size="xx-small"></mui-icon-down-chevron>
+                  </mui-icon-toggle>
+                </div>
+              </slot>
+            </mui-h-stack>
+            <div slot="detail" id="promptContextSheetPanel" class="context-sheet-panel">
+            <slot name="context"></slot>
+            </div>
+          </mui-accordion-core>
+        </div>
         <div class="surface">
           <div class="ring-container">
             <div class="ring-gradient"></div>

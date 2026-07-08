@@ -91,15 +91,21 @@ class storyCode extends HTMLElement {
         </story-card>
 
         <story-card title="Inline" description="Displays a code snippet inline with surrounding text.">
-          <div slot="body">
+          <mui-v-stack slot="body" space="var(--space-300)">
             <mui-body size="medium">
               A curated <mui-code size="small" inline>agentCompositions</mui-code> subset for lightweight local LLM prompts.
             </mui-body>
-          </div>
+            <mui-list as="ul">
+              <mui-list-item size="small">Use <mui-code size="small" inline>inline</mui-code> when code appears inside list prose.</mui-list-item>
+            </mui-list>
+          </mui-v-stack>
           <story-code-block slot="footer" scrollable>
             &lt;mui-body size="medium"&gt;<br />
             &nbsp;&nbsp;A curated &lt;mui-code size="small" inline&gt;agentCompositions&lt;/mui-code&gt; subset for lightweight local LLM prompts.<br />
-            &lt;/mui-body&gt;
+            &lt;/mui-body&gt;<br /><br />
+            &lt;mui-list as="ul"&gt;<br />
+            &nbsp;&nbsp;&lt;mui-list-item size="small"&gt;Use &lt;mui-code size="small" inline&gt;inline&lt;/mui-code&gt; inside list prose.&lt;/mui-list-item&gt;<br />
+            &lt;/mui-list&gt;
           </story-code-block>
         </story-card>
 

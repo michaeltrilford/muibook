@@ -89,6 +89,8 @@ export class AppContainer extends HTMLElement {
       "/prompt-toggle": "story-prompt-toggle",
       "/prompt-message": "story-prompt-message",
       "/agent-bubble": "story-prompt-message",
+      "/prompt-result": "story-prompt-result",
+      "/prompt-work": "story-prompt-work",
       "/prompt-preview": "story-prompt-preview",
       "/media-player": "story-media-player",
       "/model-viewer": "story-model-viewer",
@@ -154,6 +156,7 @@ export class AppContainer extends HTMLElement {
 
       "/wallet": "comp-wallet",
       "/onboarding": "comp-onboarding",
+      "/agent-chat": "comp-agent-chat",
       "/muitube": "comp-mui-tube",
       "/song-page": "comp-song-page",
       "/dashboard": "comp-dashboard",
@@ -206,6 +209,7 @@ export class AppContainer extends HTMLElement {
 
       "comp-wallet": () => import("../story/compositions/wallet"),
       "comp-onboarding": () => import("../story/compositions/onboarding/index.js"),
+      "comp-agent-chat": () => import("../story/compositions/agent-chat/index.js"),
       "comp-mui-tube": () => import("../story/compositions/muitube/index.js"),
       "comp-song-page": () => import("../story/compositions/song-page/index.js"),
       "comp-dashboard": () => import("../story/compositions/dashboard/index.js"),
@@ -265,6 +269,8 @@ export class AppContainer extends HTMLElement {
       "story-prompt": () => import("../story/components/mui-prompt"),
       "story-prompt-toggle": () => import("../story/components/mui-prompt-toggle"),
       "story-prompt-message": () => import("../story/components/mui-prompt-message"),
+      "story-prompt-result": () => import("../story/components/mui-prompt-result"),
+      "story-prompt-work": () => import("../story/components/mui-prompt-work"),
       "story-prompt-preview": () => import("../story/components/mui-prompt-preview"),
       "story-media-player": () => import("../story/components/mui-media-player"),
       "story-model-viewer": () => import("../story/components/mui-model-viewer"),

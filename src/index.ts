@@ -11,6 +11,8 @@ export * from "./components/mui-hint";
 export * from "./components/mui-prompt";
 export * from "./components/mui-prompt-toggle";
 export * from "./components/mui-prompt-message";
+export * from "./components/mui-prompt-result";
+export * from "./components/mui-prompt-work";
 export * from "./components/mui-prompt-preview";
 export * from "./components/mui-file-upload";
 export * from "./components/mui-addon";

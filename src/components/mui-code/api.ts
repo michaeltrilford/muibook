@@ -12,5 +12,9 @@ export const muiApi = {
       { name: "--code-background", description: "Background surface applied to the code block. Defaults to surface-elevated-100 and shifts to surface-elevated-200 in card contexts." },
       { name: "--code-text-color", description: "Text color applied to the code content." },
     ],
+    customAttributes: [
+      { name: "card-slot", description: "Destination/runtime context attribute applied when code is used inside card content." },
+      { name: "prose-slot", description: "Destination/runtime context attribute applied when inline code is used inside body or list item prose." },
+    ],
   },
 };

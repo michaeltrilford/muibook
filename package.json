@@ -164,6 +164,14 @@
       "import": "./dist/esm/components/mui-prompt-message/index.js",
       "types": "./dist/types/components/mui-prompt-message/index.d.ts"
     },
+    "./mui-prompt-result": {
+      "import": "./dist/esm/components/mui-prompt-result/index.js",
+      "types": "./dist/types/components/mui-prompt-result/index.d.ts"
+    },
+    "./mui-prompt-work": {
+      "import": "./dist/esm/components/mui-prompt-work/index.js",
+      "types": "./dist/types/components/mui-prompt-work/index.d.ts"
+    },
     "./mui-prompt-preview": {
       "import": "./dist/esm/components/mui-prompt-preview/index.js",
       "types": "./dist/types/components/mui-prompt-preview/index.d.ts"
