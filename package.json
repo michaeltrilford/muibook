@@ -160,6 +160,10 @@
       "import": "./dist/esm/components/mui-prompt-toggle/index.js",
       "types": "./dist/types/components/mui-prompt-toggle/index.d.ts"
     },
+    "./mui-prompt-context": {
+      "import": "./dist/esm/components/mui-prompt-context/index.js",
+      "types": "./dist/types/components/mui-prompt-context/index.d.ts"
+    },
     "./mui-prompt-message": {
       "import": "./dist/esm/components/mui-prompt-message/index.js",
       "types": "./dist/types/components/mui-prompt-message/index.d.ts"

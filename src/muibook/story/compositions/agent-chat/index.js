@@ -37,14 +37,6 @@ class CompAgentChat extends HTMLElement {
           gap: var(--space-700);
         }
 
-        .context-task {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) auto;
-          align-items: center;
-          gap: var(--space-300);
-          min-width: 0;
-        }
-
         .context-task-title {
           min-width: 0;
         }
@@ -249,8 +241,6 @@ class CompAgentChat extends HTMLElement {
 
               <mui-prompt
                 actions-fan
-                context-sheet-label="Task context"
-                context-sheet-collapsed
                 placeholder="Ask for follow-up changes..."
                 enter-submit
                 context-mode="icon"
@@ -260,35 +250,21 @@ class CompAgentChat extends HTMLElement {
                 color-top-accent="var(--orange-500)"
                 style="--prompt-accent-primary: var(--mui-brand-400); --prompt-accent-secondary: var(--blue-500);"
               >
-                <div slot="context-summary" class="context-task">
-                  <mui-h-stack class="context-task-title" alignY="center" space="var(--space-100)">
-                    <mui-icon-right-chevron size="xx-small"></mui-icon-right-chevron>
-                    <mui-body size="x-small">
-                      Tighten release notes for prompt context sheet, action bars, and agent chat story before publishing
-                    </mui-body>
-                  </mui-h-stack>
-                  <mui-h-stack aria-label="Task context actions" space="var(--space-000)">
+                <mui-prompt-context slot="context">
+                  <mui-body size="x-small">
+                    Tighten release notes for prompt context, action bars, and agent chat story before publishing
+                  </mui-body>
+                  <mui-h-stack slot="actions" aria-label="Task context actions" space="var(--space-000)">
                     <mui-button variant="tertiary" size="x-small" onclick="event.stopPropagation()">
                       Steer
                     </mui-button>
-                    <mui-button variant="tertiary" size="x-small" aria-label="Remove task context" onclick="event.stopPropagation()">
-                      <mui-icon-close size="x-small"></mui-icon-close>
-                    </mui-button>
-                    <mui-dropdown position="right">
+                    <mui-dropdown position="right" style="--dropdown-min-width: 9rem;">
                       <mui-button variant="tertiary" slot="action" size="x-small"><mui-icon-ellipsis size="x-small" class="mui-icon"></mui-icon-ellipsis></mui-button>
-                      <mui-button size="x-small">Option one</mui-button>
-                      <mui-button size="x-small">Option two</mui-button>
+                      <mui-button size="x-small">Edit</mui-button>
+                      <mui-button size="x-small">Delete</mui-button>
                     </mui-dropdown>
                   </mui-h-stack>
-                </div>
-
-                <mui-v-stack slot="context" space="var(--space-300)">
-                  <mui-rule></mui-rule>
-                  <mui-list>
-                    <mui-list-item size="x-small" variant="tertiary">Source: public changelog and Agent Chat composition story.</mui-list-item>
-                    <mui-list-item size="x-small" variant="tertiary">Keep the scope to wording, docs clarity, and release confidence.</mui-list-item>
-                  </mui-list>
-                </mui-v-stack>
+                </mui-prompt-context>
 
                 <mui-prompt-toggle slot="actions">
                   <mui-button context-toggle variant="tertiary" size="small" aria-label="Toggle web context">
@@ -308,9 +284,8 @@ class CompAgentChat extends HTMLElement {
             &lt;mui-v-stack class=&quot;steering-page&quot;&gt;<br />
             &nbsp;&nbsp;&lt;mui-prompt-message align=&quot;end&quot;&gt;...user request...&lt;/mui-prompt-message&gt;<br />
             &nbsp;&nbsp;&lt;mui-prompt-message variant=&quot;ghost&quot;&gt;...agent response...&lt;/mui-prompt-message&gt;<br />
-            &nbsp;&nbsp;&lt;mui-prompt context-sheet-label=&quot;Task context&quot; enter-submit context-mode=&quot;icon&quot;&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot=&quot;context-summary&quot; class=&quot;context-task&quot;&gt;...truncated task and actions...&lt;/div&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;context&quot;&gt;...expanded task details...&lt;/mui-v-stack&gt;<br />
+            &nbsp;&nbsp;&lt;mui-prompt enter-submit context-mode=&quot;icon&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-prompt-context slot=&quot;context&quot;&gt;...active task and actions...&lt;/mui-prompt-context&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-prompt-toggle slot=&quot;actions&quot;&gt;...web context toggle...&lt;/mui-prompt-toggle&gt;<br />
             &nbsp;&nbsp;&lt;/mui-prompt&gt;<br />
             &lt;/mui-v-stack&gt;

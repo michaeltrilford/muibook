@@ -65,6 +65,7 @@ export default defineConfig({
         "components/mui-hint": path.resolve(__dirname, "src/components/mui-hint"),
         "components/mui-prompt": path.resolve(__dirname, "src/components/mui-prompt"),
         "components/mui-prompt-toggle": path.resolve(__dirname, "src/components/mui-prompt-toggle"),
+        "components/mui-prompt-context": path.resolve(__dirname, "src/components/mui-prompt-context"),
         "components/mui-prompt-message": path.resolve(__dirname, "src/components/mui-prompt-message"),
         "components/mui-prompt-result": path.resolve(__dirname, "src/components/mui-prompt-result"),
         "components/mui-prompt-work": path.resolve(__dirname, "src/components/mui-prompt-work"),

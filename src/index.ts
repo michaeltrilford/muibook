@@ -10,6 +10,7 @@ export * from "./components/mui-form-message";
 export * from "./components/mui-hint";
 export * from "./components/mui-prompt";
 export * from "./components/mui-prompt-toggle";
+export * from "./components/mui-prompt-context";
 export * from "./components/mui-prompt-message";
 export * from "./components/mui-prompt-result";
 export * from "./components/mui-prompt-work";

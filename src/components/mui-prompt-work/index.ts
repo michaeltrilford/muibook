@@ -52,6 +52,9 @@ class MuiPromptWork extends HTMLElement {
           min-height: ${isNested ? "var(--space-500)" : "auto"};
           width: 100%;
         }
+        .summary::part(width) {
+          width: 100%;
+        }
         .summary[rule] {
           border-bottom: var(--border-thin);
           padding-block-end: var(--space-200);

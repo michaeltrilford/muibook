@@ -131,6 +131,7 @@ import "../components/mui-form-message";
 import "../components/mui-hint";
 import "../components/mui-prompt";
 import "../components/mui-prompt-toggle";
+import "../components/mui-prompt-context";
 import "../components/mui-prompt-message";
 import "../components/mui-prompt-result";
 import "../components/mui-prompt-work";

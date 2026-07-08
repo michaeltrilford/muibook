@@ -114,30 +114,29 @@ class StoryPrompt extends HTMLElement {
       </story-card>
 
       <story-card
-        id="context-sheet"
-        title="Context Sheet"
-        description="A generic attached sheet for prompt-affecting context, rendered above the input only when slot content exists."
-        usage="Use slot='context' for feature-owned prompt context such as steer, persona, constraints, selected context, examples, or attachments.|||Set context-sheet-collapsed when the sheet should start collapsed.|||Listen for prompt-context-sheet-toggle when app state needs to mirror the collapsed state."
+        id="context"
+        title="Context"
+        description="Prompt positions explicit context content above the input when product state has context to show."
+        usage="Use slot='context' for feature-owned prompt context such as steer, persona, constraints, selected context, examples, or attachments.|||Use mui-prompt-context for the compact row treatment.|||Omit the slotted context entirely when there is no active context."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
             debug
-            id="promptContextSheetDemo"
+            id="promptContextDemo"
             placeholder="Ask for follow-up changes..."
-            context-sheet-label="Active prompt context"
             enter-submit
             context-mode="icon"
           >
-            <mui-v-stack slot="context" space="var(--space-150)">
+            <mui-prompt-context slot="context">
               <mui-h-stack space="var(--space-100)" aligny="center">
-                <mui-chip size="small" variant="ghost">Steer</mui-chip>
-                <mui-body size="small" variant="secondary">Use concise implementation notes and preserve existing component API.</mui-body>
+                <mui-icon-right-chevron size="xx-small"></mui-icon-right-chevron>
+                <mui-body size="x-small">Use concise implementation notes and preserve existing component API.</mui-body>
               </mui-h-stack>
-              <mui-h-stack space="var(--space-100)" aligny="center">
-                <mui-chip size="small" variant="ghost">Output</mui-chip>
-                <mui-body size="small" variant="secondary">Return code changes, verification, and docs updates.</mui-body>
-              </mui-h-stack>
-            </mui-v-stack>
+              <mui-button slot="actions" variant="tertiary" size="x-small">Steer</mui-button>
+              <mui-button slot="actions" variant="tertiary" size="x-small" aria-label="Remove context">
+                <mui-icon-close size="x-small"></mui-icon-close>
+              </mui-button>
+            </mui-prompt-context>
             <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-prompt-toggle slot="actions">
               <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
@@ -148,26 +147,17 @@ class StoryPrompt extends HTMLElement {
           </mui-prompt>
 
           <mui-prompt
-            id="promptContextSheetCollapsedDemo"
-            placeholder="Collapsed by default..."
-            context-sheet-label="Selected context"
-            context-sheet-collapsed
+            id="promptContextEmptyDemo"
+            placeholder="No active context..."
             enter-submit
-          >
-            <mui-h-stack slot="context" space="var(--space-100)" aligny="center">
-              <mui-chip size="small" variant="ghost">Persona</mui-chip>
-              <mui-body size="small" variant="secondary">Senior engineer reviewing a small component API change.</mui-body>
-            </mui-h-stack>
-          </mui-prompt>
+          ></mui-prompt>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-prompt context-sheet-label="Active prompt context"&gt;<br />
-          &nbsp;&nbsp;&lt;mui-v-stack slot="context"&gt;...any prompt-affecting content...&lt;/mui-v-stack&gt;<br />
+          &lt;mui-prompt&gt;<br />
+          &nbsp;&nbsp;&lt;mui-prompt-context slot="context"&gt;...active context...&lt;/mui-prompt-context&gt;<br />
           &lt;/mui-prompt&gt;<br />
           <br />
-          &lt;mui-prompt context-sheet-collapsed&gt;<br />
-          &nbsp;&nbsp;&lt;mui-h-stack slot="context"&gt;...collapsed by default...&lt;/mui-h-stack&gt;<br />
-          &lt;/mui-prompt&gt;
+          &lt;mui-prompt&gt;&lt;/mui-prompt&gt; // no context row renders
         </story-code-block>
       </story-card>
 
@@ -1007,7 +997,7 @@ class StoryPrompt extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
       
         imports='["@muibook/components/mui-prompt"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Prompt|||context-sheet::Context Sheet|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Code Types Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Prompt|||context::Context|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Code Types Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
         ${stories}
       </story-template>
     `;
