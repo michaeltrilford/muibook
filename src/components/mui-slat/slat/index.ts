@@ -66,6 +66,7 @@ class MuiSlat extends HTMLElement {
       this.getAttribute("col") || (isAction ? "minmax(0, 1fr) auto" : "1fr 1fr");
     const space = this.getAttribute("space") || "var(--space-500)";
     const hasAccessory = this.hasAccessorySlot();
+    const isFileDiff = this.hasAttribute("file-diff-slot");
 
     const styles = /*css*/ `
       :host {
@@ -128,6 +129,10 @@ class MuiSlat extends HTMLElement {
         padding: var(--space-300) var(--space-400);
       }
 
+      :host([file-diff-slot]) .action::part(padding) {
+        padding: var(--space-100) var(--space-400);
+      }
+
       .action::part(border) {
         border: var(--space-000);
       }
@@ -151,13 +156,20 @@ class MuiSlat extends HTMLElement {
         text-align: right;
       }
       
-      :host([card-slot]) {
+      :host([card-slot]),
+      :host([result-slot]) {
         --slat-background: var(--slat-card-background);
         --slat-background-hover: var(--slat-card-background-hover);
       }
 
-      :host([radius="none"]) .action::part(border-radius) {
+      :host([radius="none"]) .action::part(border-radius),
+      :host([result-slot]) .action::part(border-radius) {
         border-radius: 0;
+      }
+
+      :host([result-slot][result-slot-last]) .action::part(border-radius) {
+        border-bottom-left-radius: var(--card-radius);
+        border-bottom-right-radius: var(--card-radius);
       }
 
       :host([radius="none"][condensed-slot-first]) .action::part(border-radius) {
@@ -185,18 +197,24 @@ class MuiSlat extends HTMLElement {
         --avatar-group-ring-color: var(--slat-background-hover);
       }
 
-      :host([card-slot]) ::slotted(mui-avatar) {
+      :host([card-slot]) ::slotted(mui-avatar),
+      :host([result-slot]) ::slotted(mui-avatar) {
         --avatar-background-override: var(--slat-card-avatar-background);
       }
-      :host([card-slot]) ::slotted(mui-avatar-group) {
+      :host([card-slot]) ::slotted(mui-avatar-group),
+      :host([result-slot]) ::slotted(mui-avatar-group) {
         --avatar-group-ring-color: var(--slat-card-background);
       }
       :host([card-slot]) .action:hover ::slotted(mui-avatar),
-      :host([card-slot]) .action:focus ::slotted(mui-avatar) {
+      :host([card-slot]) .action:focus ::slotted(mui-avatar),
+      :host([result-slot]) .action:hover ::slotted(mui-avatar),
+      :host([result-slot]) .action:focus ::slotted(mui-avatar) {
         --avatar-background-override: var(--slat-card-avatar-background-hover);
       }
       :host([card-slot]) .action:hover ::slotted(mui-avatar-group),
-      :host([card-slot]) .action:focus ::slotted(mui-avatar-group) {
+      :host([card-slot]) .action:focus ::slotted(mui-avatar-group),
+      :host([result-slot]) .action:hover ::slotted(mui-avatar-group),
+      :host([result-slot]) .action:focus ::slotted(mui-avatar-group) {
         --avatar-group-ring-color: var(--slat-card-background-hover);
       }
 
@@ -218,7 +236,7 @@ class MuiSlat extends HTMLElement {
           ${startSlotMarkup}
           <div class="end" slot="after">
             <slot name="end"></slot>
-            <mui-icon-right-chevron size="x-small"></mui-icon-right-chevron>
+            <mui-icon-right-chevron size="${isFileDiff ? 'xx-small' : 'x-small'}"></mui-icon-right-chevron>
           </div>
           
         </mui-button>

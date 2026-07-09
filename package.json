@@ -160,25 +160,29 @@
       "import": "./dist/esm/components/mui-prompt-toggle/index.js",
       "types": "./dist/types/components/mui-prompt-toggle/index.d.ts"
     },
-    "./mui-prompt-context": {
-      "import": "./dist/esm/components/mui-prompt-context/index.js",
-      "types": "./dist/types/components/mui-prompt-context/index.d.ts"
+    "./mui-context-bar": {
+      "import": "./dist/esm/components/mui-context-bar/index.js",
+      "types": "./dist/types/components/mui-context-bar/index.d.ts"
     },
     "./mui-prompt-message": {
       "import": "./dist/esm/components/mui-prompt-message/index.js",
       "types": "./dist/types/components/mui-prompt-message/index.d.ts"
     },
-    "./mui-prompt-result": {
-      "import": "./dist/esm/components/mui-prompt-result/index.js",
-      "types": "./dist/types/components/mui-prompt-result/index.d.ts"
+    "./mui-result-bar": {
+      "import": "./dist/esm/components/mui-result-bar/index.js",
+      "types": "./dist/types/components/mui-result-bar/index.d.ts"
     },
-    "./mui-prompt-work": {
-      "import": "./dist/esm/components/mui-prompt-work/index.js",
-      "types": "./dist/types/components/mui-prompt-work/index.d.ts"
+    "./mui-work-log": {
+      "import": "./dist/esm/components/mui-work-log/index.js",
+      "types": "./dist/types/components/mui-work-log/index.d.ts"
     },
     "./mui-prompt-preview": {
       "import": "./dist/esm/components/mui-prompt-preview/index.js",
       "types": "./dist/types/components/mui-prompt-preview/index.d.ts"
+    },
+    "./mui-file-diff": {
+      "import": "./dist/esm/components/mui-file-diff/index.js",
+      "types": "./dist/types/components/mui-file-diff/index.d.ts"
     },
     "./mui-hint": {
       "import": "./dist/esm/components/mui-hint/index.js",

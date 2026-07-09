@@ -7,7 +7,7 @@ import "../mui-rule";
 import "../mui-stack/hstack";
 import "../mui-stack/vstack";
 
-class MuiPromptWork extends HTMLElement {
+class MuiWorkLog extends HTMLElement {
   static get observedAttributes() {
     return ["label", "open", "rule", "nested", "pending", "status"];
   }
@@ -19,7 +19,7 @@ class MuiPromptWork extends HTMLElement {
 
   connectedCallback() {
     if (!this.hasAttribute("label")) this.setAttribute("label", "Worked");
-    if (this.parentElement?.closest("mui-prompt-work")) this.setAttribute("nested", "");
+    if (this.parentElement?.closest("mui-work-log")) this.setAttribute("nested", "");
     this.render();
   }
 
@@ -68,10 +68,10 @@ class MuiPromptWork extends HTMLElement {
         }
 
         .summary-label[pending]::part(color) {
-          animation: promptWorkPulse 1.4s ease-in-out infinite;
+          animation: workerPulse 1.4s ease-in-out infinite;
         }
 
-        @keyframes promptWorkPulse {
+        @keyframes workerPulse {
           0%,
           100% {
             opacity: 0.45;
@@ -94,21 +94,25 @@ class MuiPromptWork extends HTMLElement {
         ${
           isStatus
             ? `<mui-h-stack class="status-summary" alignY="center" space="var(--space-100)">
+                <slot name="before"></slot>
                 <slot name="icon"></slot>
                 <mui-body class="summary-label" size="x-small" variant="tertiary" ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
+                <slot name="after"></slot>
               </mui-h-stack>`
             : `<mui-accordion-core ${open ? "open" : ""}>
                 <mui-h-stack slot="summary" class="summary" ${hasSummaryRule ? "rule" : ""} alignY="center" space="var(--space-100)">
+                  <slot name="before"></slot>
                   <slot name="icon"></slot>
                   <mui-body class="summary-label" size="x-small" variant="tertiary" ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
+                  <slot name="after"></slot>
                   <mui-icon-toggle rotate size="xx-small">
                     <mui-icon-right-chevron slot="start"></mui-icon-right-chevron>
                     <mui-icon-down-chevron slot="end"></mui-icon-down-chevron>
                   </mui-icon-toggle>
                 </mui-h-stack>
-                <mui-v-stack slot="detail" class="detail" space="var(--space-100)">
+                <div slot="detail" class="detail">
                   <slot></slot>
-                </mui-v-stack>
+                </div>
               </mui-accordion-core>`
         }
         ${hasTrailingRule ? "<mui-rule></mui-rule>" : ""}
@@ -117,6 +121,6 @@ class MuiPromptWork extends HTMLElement {
   }
 }
 
-if (!customElements.get("mui-prompt-work")) {
-  customElements.define("mui-prompt-work", MuiPromptWork);
+if (!customElements.get("mui-work-log")) {
+  customElements.define("mui-work-log", MuiWorkLog);
 }

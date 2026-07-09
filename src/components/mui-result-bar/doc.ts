@@ -1,15 +1,15 @@
 import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
-  PromptResult: {
-    title: "Prompt Result",
+  ResultBar: {
+    title: "Result Bar",
     description:
-      "Prompt Result provides a compact card/slat shell for agent outputs and generated artefact actions.",
+      "Result bar provides a compact card/slat shell for agent outputs and generated artefact actions.",
     hero: [""],
     figma: [""],
     storybook: [""],
-    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-result/index.ts"],
-    website: ["https://muibook.com/prompt-result"],
+    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-result-bar/index.ts"],
+    website: ["https://muibook.com/result"],
     guides: ["https://guides.muibook.com/prompt"],
     usage: {
       list: [
@@ -40,14 +40,14 @@ export const muiDocs: MuiDocs = {
     rules: [
       {
         heading: "Keep Result Rows Focused",
-        description: "Use Prompt Result for one generated object or reviewable action group.",
+        description: "Use Result for one generated object or reviewable action group.",
         doContent: [{ description: "Show a clear title, supporting metadata, and one or two direct actions.", image: "" }],
-        dontContent: [{ description: "Do not turn Prompt Result into a full dashboard or unrelated card layout.", image: "" }],
+        dontContent: [{ description: "Do not turn Result into a full dashboard or unrelated card layout.", image: "" }],
       },
     ],
     behaviour: {
       list: [
-        "Prompt Result uses a condensed card body and row slat internally.",
+        "Result uses a condensed card body and row slat internally.",
       ],
     },
     writing: {

@@ -1,7 +1,7 @@
 import { getPartMap } from "../../utils/part-map";
 import "../mui-stack/hstack";
 
-class MuiPromptContext extends HTMLElement {
+class MuiContextBar extends HTMLElement {
   private contentSlotEl: HTMLSlotElement | null = null;
   private bodyEls = new Set<HTMLElement>();
 
@@ -34,9 +34,9 @@ class MuiPromptContext extends HTMLElement {
 
   private clearGeneratedTruncation() {
     this.bodyEls.forEach((el) => {
-      if (el.getAttribute("data-prompt-context-truncate") === "true") {
+      if (el.getAttribute("data-context-bar-truncate") === "true") {
         el.removeAttribute("truncate");
-        el.removeAttribute("data-prompt-context-truncate");
+        el.removeAttribute("data-context-bar-truncate");
       }
     });
     this.bodyEls.clear();
@@ -57,7 +57,7 @@ class MuiPromptContext extends HTMLElement {
         this.bodyEls.add(bodyEl);
         if (bodyEl.hasAttribute("truncate")) return;
         bodyEl.setAttribute("truncate", "");
-        bodyEl.setAttribute("data-prompt-context-truncate", "true");
+        bodyEl.setAttribute("data-context-bar-truncate", "true");
       });
     });
   }
@@ -129,6 +129,6 @@ class MuiPromptContext extends HTMLElement {
   }
 }
 
-if (!customElements.get("mui-prompt-context")) {
-  customElements.define("mui-prompt-context", MuiPromptContext);
+if (!customElements.get("mui-context-bar")) {
+  customElements.define("mui-context-bar", MuiContextBar);
 }

@@ -70,6 +70,7 @@ class MuiPrompt extends HTMLElement {
   private previewSlotEl: HTMLSlotElement | null = null;
   private previewResizeObserver: ResizeObserver | null = null;
   private fanAnimations = new Map<HTMLElement, Animation>();
+  private previousFanOpen = false;
   private pendingColorFade = false;
   private lastDebugPayload = '{"event":"idle"}';
   private lightDomObserver: MutationObserver | null = null;
@@ -1114,17 +1115,13 @@ class MuiPrompt extends HTMLElement {
     this.updateActionsLayout();
   };
 
-  private isContextOnlyAction(action: HTMLElement) {
-    const tag = action.tagName.toLowerCase();
-    if (tag === "mui-prompt-toggle") return true;
-    if (action.hasAttribute("context-toggle")) return true;
-    return Boolean(action.querySelector("[context-toggle]"));
-  }
+
 
   private bindActionTrigger() {
     if (!this.shadowRoot || !this.isFanModeEnabled()) return;
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
     const defaultTrigger = this.shadowRoot.querySelector("#promptDefaultActionsTrigger") as HTMLElement | null;
+    const defaultRule = this.shadowRoot.querySelector("#promptDefaultActionsRule") as HTMLElement | null;
     if (!actionSlot) return;
 
     if (this.triggerEl) {
@@ -1141,14 +1138,23 @@ class MuiPrompt extends HTMLElement {
         defaultTrigger.setAttribute("hidden", "");
         defaultTrigger.style.display = "none";
       }
+      if (defaultRule) {
+        defaultRule.setAttribute("hidden", "");
+        defaultRule.style.display = "none";
+      }
       return;
     }
-    const contextOnlySingle = slottedActions.length === 1 && this.isContextOnlyAction(slottedActions[0] as HTMLElement);
+
+    const hideDefaultTrigger = !hasToolbarActions;
     if (defaultTrigger) {
-      defaultTrigger.toggleAttribute("hidden", contextOnlySingle);
-      defaultTrigger.style.display = contextOnlySingle ? "none" : "inline-flex";
+      defaultTrigger.toggleAttribute("hidden", hideDefaultTrigger);
+      defaultTrigger.style.display = hideDefaultTrigger ? "none" : "inline-flex";
     }
-    const trigger = contextOnlySingle || !hasToolbarActions ? null : defaultTrigger;
+    if (defaultRule) {
+      defaultRule.toggleAttribute("hidden", hideDefaultTrigger);
+      defaultRule.style.display = hideDefaultTrigger ? "none" : "inline-flex";
+    }
+    const trigger = hideDefaultTrigger ? null : defaultTrigger;
     if (!trigger) return;
 
     this.triggerEl = trigger;
@@ -1191,6 +1197,7 @@ class MuiPrompt extends HTMLElement {
     this.syncContextModeUI();
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
     const defaultTrigger = this.shadowRoot.querySelector("#promptDefaultActionsTrigger") as HTMLElement | null;
+    const defaultRule = this.shadowRoot.querySelector("#promptDefaultActionsRule") as HTMLElement | null;
     if (!actionSlot) return;
 
     const slottedActions = (actionSlot.assignedElements({ flatten: true }) as HTMLElement[]).filter(
@@ -1199,15 +1206,20 @@ class MuiPrompt extends HTMLElement {
     const hasToolbarActions = slottedActions.length > 0;
     const leftActionsSlot = this.shadowRoot.querySelector(".actions-slot-left") as HTMLElement | null;
     if (leftActionsSlot) leftActionsSlot.style.display = hasToolbarActions ? "inline-flex" : "none";
-    const contextOnlySingle = slottedActions.length === 1 && this.isContextOnlyAction(slottedActions[0] as HTMLElement);
+
+    const hideDefaultTrigger = !hasToolbarActions;
     if (defaultTrigger) {
-      const hideDefaultTrigger = !hasToolbarActions || contextOnlySingle;
       defaultTrigger.toggleAttribute("hidden", hideDefaultTrigger);
       defaultTrigger.style.display = hideDefaultTrigger ? "none" : "inline-flex";
     }
-    const trigger = contextOnlySingle || !hasToolbarActions ? null : defaultTrigger;
+    if (defaultRule) {
+      defaultRule.toggleAttribute("hidden", hideDefaultTrigger);
+      defaultRule.style.display = hideDefaultTrigger ? "none" : "inline-flex";
+    }
+    const trigger = hideDefaultTrigger ? null : defaultTrigger;
+    const ruleItem = hideDefaultTrigger ? null : defaultRule;
     const nonTriggerActions = slottedActions.filter((action) => action !== trigger);
-    const actions = trigger ? [trigger, ...nonTriggerActions] : slottedActions;
+    const actions = trigger ? [trigger, ...(ruleItem ? [ruleItem] : []), ...nonTriggerActions] : slottedActions;
     const rightActionSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
     const rightActions = (rightActionSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[];
     const hasExtraFanActions = nonTriggerActions.length > 0;
@@ -1237,6 +1249,16 @@ class MuiPrompt extends HTMLElement {
       }
 
       if (index === 0) {
+        this.setFanItemInert(action, false);
+        action.style.transitionDelay = "";
+        action.style.transform = "translateX(0)";
+        action.style.opacity = "1";
+        action.style.pointerEvents = "";
+        action.style.filter = "";
+        return;
+      }
+
+      if (fanOpen && this.previousFanOpen) {
         this.setFanItemInert(action, false);
         action.style.transitionDelay = "";
         action.style.transform = "translateX(0)";
@@ -1307,6 +1329,7 @@ class MuiPrompt extends HTMLElement {
 
     this.bindActionTrigger();
     this.syncTriggerIconState();
+    this.previousFanOpen = fanOpen;
   }
 
   render() {
@@ -2195,6 +2218,7 @@ class MuiPrompt extends HTMLElement {
               <mui-icon-close slot="end" size="small"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
+          <mui-rule id="promptDefaultActionsRule" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
           <slot name="actions"></slot>
         </div>
       <div class="actions-slot actions-slot-right">

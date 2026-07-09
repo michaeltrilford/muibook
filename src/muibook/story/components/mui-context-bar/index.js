@@ -1,13 +1,13 @@
 import { getComponentDocs } from "../../../utils/story-data";
 
-class StoryPromptContext extends HTMLElement {
+class StoryContextBar extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   async connectedCallback() {
-    const data = await getComponentDocs("PromptContext");
+    const data = await getComponentDocs("ContextBar");
 
     const getComposer = (options = {}) => /*html*/ `
       <mui-prompt
@@ -38,7 +38,7 @@ class StoryPromptContext extends HTMLElement {
             slot="preview"
             clickable
             badge="JSON"
-            value='{"story":"agent-chat","components":["mui-prompt-message","mui-prompt-work","mui-prompt-result","mui-prompt-preview","mui-prompt-toggle"],"status":"draft"}'
+            value='{"story":"agent-chat","components":["mui-prompt-message","mui-worker","mui-result-bar","mui-prompt-preview","mui-prompt-toggle"],"status":"draft"}'
           ></mui-prompt-preview>
         `
             : ""
@@ -46,7 +46,7 @@ class StoryPromptContext extends HTMLElement {
         ${
           options.context === "informational"
             ? /*html*/ `
-          <mui-prompt-context slot="context">
+          <mui-context-bar slot="context">
             <mui-body size="x-small" weight="regular" variant="default">
               Tighten release notes for prompt context, action bars, and agent chat story before publishing
             </mui-body>
@@ -58,29 +58,47 @@ class StoryPromptContext extends HTMLElement {
               <mui-button size="x-small">Edit</mui-button>
               <mui-button size="x-small">Delete</mui-button>
             </mui-dropdown>
-          </mui-prompt-context>
+          </mui-context-bar>
         `
             : options.context === "status"
               ? /*html*/ `
-          <mui-prompt-context slot="context">
-            <mui-h-stack aligny="center" space="var(--space-100)" style="--stack-height: auto; --stack-width: auto;">
+          <mui-context-bar slot="context">
+            <mui-h-stack aligny="center" space="var(--space-100)">
               <mui-body size="x-small" weight="regular" variant="default">8 files changed</mui-body>
               <mui-body size="x-small" weight="regular" variant="success">+44</mui-body>
               <mui-body size="x-small" weight="regular" variant="error">-20</mui-body>
             </mui-h-stack>
-            <mui-button slot="actions" variant="tertiary" size="x-small">Undo</mui-button>
-            <mui-button slot="actions" variant="tertiary" size="x-small">Review</mui-button>
-          </mui-prompt-context>
+            <mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400">
+              <mui-button slot="showAbove" variant="tertiary" size="x-small">Undo</mui-button>
+              <mui-button slot="showAbove" variant="tertiary" size="x-small">Review</mui-button>
+              <mui-dropdown slot="showBelow" position="right" style="--dropdown-min-width: 9rem;">
+                <mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More">
+                  <mui-icon-ellipsis size="x-small" class="mui-icon"></mui-icon-ellipsis>
+                </mui-button>
+                <mui-button size="x-small">Undo</mui-button>
+                <mui-button size="x-small">Review</mui-button>
+              </mui-dropdown>
+            </mui-responsive>
+          </mui-context-bar>
         `
               : options.context === "approval"
                 ? /*html*/ `
-          <mui-prompt-context slot="context">
+          <mui-context-bar slot="context">
             <mui-body size="x-small" weight="regular" variant="default">
               The agent wants to delete 12 unused files
             </mui-body>
-            <mui-button slot="actions" variant="tertiary" size="x-small">Deny</mui-button>
-            <mui-button slot="actions" variant="primary" size="x-small">Allow</mui-button>
-          </mui-prompt-context>
+            <mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400">
+              <mui-button slot="showAbove" variant="tertiary" size="x-small">Deny</mui-button>
+              <mui-button slot="showAbove" variant="primary" size="x-small">Allow</mui-button>
+              <mui-dropdown slot="showBelow" position="right" style="--dropdown-min-width: 9rem;">
+                <mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More">
+                  <mui-icon-ellipsis size="x-small" class="mui-icon"></mui-icon-ellipsis>
+                </mui-button>
+                <mui-button size="x-small">Deny</mui-button>
+                <mui-button size="x-small">Allow</mui-button>
+              </mui-dropdown>
+            </mui-responsive>
+          </mui-context-bar>
         `
                 : ""
         }
@@ -131,36 +149,7 @@ class StoryPromptContext extends HTMLElement {
     `;
 
     const stories = /*html*/ `
-      <story-api-types tag="mui-prompt-context" title="Prompt Context"></story-api-types>
-
-      <story-card
-        id="default"
-        title="Default"
-        usage="Use Prompt Context for a compact active task or selected context row.|||Slot actions separately so product code can wire Steer, Remove, and More behavior.|||Long Body text truncates by default."
-      >
-        <mui-prompt-context slot="body">
-          <mui-body size="x-small" weight="regular" variant="default">
-            Tighten release notes for prompt context, action bars, and the agent chat composition before publishing
-          </mui-body>
-          <mui-button slot="actions" variant="tertiary" size="x-small">Steer</mui-button>
-          <mui-dropdown slot="actions" position="right" style="--dropdown-min-width: 9rem;">
-            <mui-button variant="tertiary" slot="action" size="x-small" aria-label="More context actions">
-              <mui-icon-ellipsis size="x-small"></mui-icon-ellipsis>
-            </mui-button>
-            <mui-button size="x-small">Edit</mui-button>
-            <mui-button size="x-small">Delete</mui-button>
-          </mui-dropdown>
-        </mui-prompt-context>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-prompt-context&gt;<br />
-          &nbsp;&nbsp;&lt;mui-h-stack alignY="center" space="var(--space-100)"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-right-chevron size="xx-small"&gt;&lt;/mui-icon-right-chevron&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small"&gt;Tighten release notes...&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="tertiary" size="x-small"&gt;Steer&lt;/mui-button&gt;<br />
-          &lt;/mui-prompt-context&gt;
-        </story-code-block>
-      </story-card>
+      <story-api-types tag="mui-context-bar" title="Context Bar"></story-api-types>
 
       <story-card
         id="in-prompt"
@@ -170,7 +159,11 @@ class StoryPromptContext extends HTMLElement {
         ${getComposer({ previews: true, context: "informational", simpleActions: true, placeholder: "Paste, click preview, or submit..." })}
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt&gt;<br />
-          &nbsp;&nbsp;&lt;mui-prompt-context slot="context"&gt;...active task...&lt;/mui-prompt-context&gt;<br />
+          &nbsp;&nbsp;&lt;mui-context-bar slot="context"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="regular" variant="default"&gt;Tighten release notes...&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="tertiary" size="x-small"&gt;Steer&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown slot="actions" position="right"&gt;...&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
@@ -178,12 +171,23 @@ class StoryPromptContext extends HTMLElement {
       <story-card
         id="status-prompt"
         title="Status Context"
-        usage="Slot Prompt Context into Prompt context when app state has an active task.|||Omit the component entirely when there is no active context.|||Prompt only positions the slotted context; it does not create context chrome."
+        usage="Slot Prompt Context into Prompt context when app state has an active task.|||Swap actions to a dropdown menu below 400px container width to ensure the layout remains compact.|||Omit the component entirely when there is no active context."
       >
         ${getComposer({ previews: true, context: "status", simpleActions: true, placeholder: "Paste, click preview, or submit..." })}
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt&gt;<br />
-          &nbsp;&nbsp;&lt;mui-prompt-context slot="context"&gt;...active task...&lt;/mui-prompt-context&gt;<br />
+          &nbsp;&nbsp;&lt;mui-context-bar slot="context"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack aligny="center" space="var(--space-100)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="default"&gt;8 files changed&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="success"&gt;+44&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="error"&gt;-20&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="showAbove"&gt;Undo&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="showAbove"&gt;Review&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown slot="showBelow" position="right"&gt;...&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
@@ -191,12 +195,19 @@ class StoryPromptContext extends HTMLElement {
       <story-card
         id="approval-prompt"
         title="Approval Context"
-        usage="Slot Prompt Context into Prompt context when app state has an active task.|||Omit the component entirely when there is no active context.|||Prompt only positions the slotted context; it does not create context chrome."
+        usage="Slot Prompt Context into Prompt context when app state has an active task.|||Swap actions to a dropdown menu below 400px container width to ensure the layout remains compact.|||Omit the component entirely when there is no active context."
       >
         ${getComposer({ previews: true, context: "approval", simpleActions: true, placeholder: "Paste, click preview, or submit..." })}
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt&gt;<br />
-          &nbsp;&nbsp;&lt;mui-prompt-context slot="context"&gt;...active task...&lt;/mui-prompt-context&gt;<br />
+          &nbsp;&nbsp;&lt;mui-context-bar slot="context"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="regular" variant="default"&gt;The agent wants to delete 12 unused files&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="showAbove" variant="tertiary"&gt;Deny&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="showAbove" variant="primary"&gt;Allow&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown slot="showBelow" position="right"&gt;...&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>
@@ -204,14 +215,14 @@ class StoryPromptContext extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <story-template
-        title="${data?.title || "Prompt Context"}"
+        title="${data?.title || "Context Bar"}"
         description="${data?.description || ""}"
         github="${(data?.github || []).join("|||")}"
         figma="${(data?.figma || []).join("|||")}"
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-        imports='["@muibook/components/mui-prompt-context"]'>
+        imports='["@muibook/components/mui-context-bar"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||in-prompt::In Prompt"></story-quicklinks>
         ${stories}
       </story-template>
@@ -219,4 +230,4 @@ class StoryPromptContext extends HTMLElement {
   }
 }
 
-customElements.define("story-prompt-context", StoryPromptContext);
+customElements.define("story-context-bar", StoryContextBar);

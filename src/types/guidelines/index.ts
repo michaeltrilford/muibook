@@ -76,6 +76,16 @@ export interface ComponentDoc {
   writing?: {
     list: string[];
   };
+
+  stories?: {
+    description?: string;
+    items: {
+      key: string;
+      title: string;
+      description?: string;
+      list: string[];
+    }[];
+  };
 }
 
 export type MuiDocs = Record<string, ComponentDoc>;

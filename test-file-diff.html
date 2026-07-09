@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test MuiFileDiff</title>
+  <script type="module" src="/src/components/mui-file-diff/index.ts"></script>
+  <style>
+    body { background: #1a1a1a; color: white; padding: 2rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <h1>Mui File Diff Test</h1>
+  <mui-file-diff filename="index.js" filepath="src/components/mui-worker/" additions="+182" deletions="-2">
+    <div slot="icon">ICON</div>
+  </mui-file-diff>
+</body>
+</html>

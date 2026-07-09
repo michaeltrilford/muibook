@@ -10,19 +10,32 @@
 
 - Added `ring` boolean attribute to `mui-prompt` for an optional glowing animated stroke variant.
 - Added `--prompt-ring-gap-color` and `--prompt-ring-shadow-color` tokens to customize the `mui-prompt` ring variant.
-- Added `mui-prompt-result` and `mui-prompt-work` as dedicated AI & LLM components for agent result rows and collapsible work summaries.
-- Added `mui-prompt-context` as a dedicated slottable context row for active task, steering, or attachment context above Prompt.
+- Added `mui-result` and `mui-worker` as dedicated AI & LLM components for agent result rows and collapsible work summaries.
+- Added `mui-file-diff` for inline code diffing and file change visualization.
+- Added `mui-context-bar` as a dedicated slottable context row for active task, steering, or attachment context above Prompt.
 - `mui-prompt-message` now applies default body rhythm between direct response children, with `--prompt-message-body-space` as the escape hatch for tighter or looser messages.
 - `mui-prompt-message` footer actions now reveal on hover/focus by default and support `footer-visibility="always"` for app-pinned message action bars.
-- `mui-prompt-work` now adds balanced open-detail spacing with `padding-block-start` and `padding-block-end` set to `var(--space-200)`.
-- `mui-prompt-work` now supports `status`, `nested`, and `pending` states for non-interactive Thinking rows, compact child work rows, and Thinking-only shimmer labels.
-- Top-level `mui-prompt-work` rows in the `mui-prompt-message` header slot now draw the divider on the summary row, while nested and status rows remain unruled.
-- `mui-prompt` now exposes a plain `slot="context"` above the prompt surface and no longer creates an internal context sheet; use `mui-prompt-context` when a composed context row is needed.
+- `mui-worker` now adds balanced open-detail spacing with `padding-block-start` and `padding-block-end` set to `var(--space-200)`.
+- `mui-worker` now supports `status`, `nested`, and `pending` states for non-interactive Thinking rows, compact child work rows, and Thinking-only shimmer labels.
+- Top-level `mui-worker` rows in the `mui-prompt-message` header slot now draw the divider on the summary row, while nested and status rows remain unruled.
+- `mui-prompt` now exposes a plain `slot="context"` above the prompt surface and no longer creates an internal context sheet; use `mui-context-bar` when a composed context row is needed.
 - `mui-code` inline snippets now use tighter prose padding, `var(--space-000) var(--space-100)`, when placed inside `mui-body` or `mui-list-item`.
+
+### Fixed
+
+- `mui-prompt` fan behavior now correctly keeps the fan trigger visible when the fan is closed, hiding it only if there are no slotted actions.
+- `mui-prompt` now prevents nested fan actions (like `mui-prompt-toggle`) from redundantly replaying their stagger-bounce animation when clicked while the fan is already open.
+- `mui-prompt` now supplies the action separator natively; manual `<mui-rule>` elements are no longer required inside the `actions` slot.
+
+---
+
+## Header [Start]
 
 ## v20.1.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/20.1.0)
+
+## Header [End]
 
 ### Added
 

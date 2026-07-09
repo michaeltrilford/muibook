@@ -125,6 +125,14 @@ Keep the component's public surface small, documented, and stable.
 - Do not expose internal runtime attrs as public API.
 - Exported or builder-consumed HTML should include only public API attrs.
 
+### Documentation Structure (`doc.ts`)
+
+When writing or reviewing UX guidance in `doc.ts`, classify examples and behavior correctly:
+
+- **variants**: Named visual/design choices shown in UX guidelines. These are usually image-led.
+- **stories**: Live/story examples, usage groups, behaviors, sizes, color demos, and implementation-facing guidance.
+- **compositions**: Component used inside a larger UI. Usually multi-component, closer to a page, card, or full flow (e.g., onboarding form, promo card, settings drawer, dialog footer).
+
 When a component needs a behavior that is only relevant to an exporter, builder, or destination component, document it as a dynamic attr instead of mixing it into the public API.
 
 ## Knowledge Bundle

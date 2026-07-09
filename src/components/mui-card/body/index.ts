@@ -51,12 +51,14 @@ class MuiCardBody extends HTMLElement {
             hasLayoutComponent = true;
           }
 
-          // Check for all <mui-slat> elements
-          const slats =
-            element.tagName.toLowerCase() === "mui-slat" ? [element] : Array.from(element.querySelectorAll("mui-slat"));
+          // Check for all <mui-slat> and <mui-file-diff> elements
+          const slats = Array.from(element.querySelectorAll("mui-slat, mui-file-diff"));
+          if (element.tagName.toLowerCase() === "mui-slat" || element.tagName.toLowerCase() === "mui-file-diff") {
+            slats.unshift(element);
+          }
 
           slats.forEach((slat) => {
-            const variant = slat.getAttribute("variant");
+            const variant = slat.getAttribute("variant") || "action"; // default for file-diff is action
             if (variant === "action" || variant === "row") {
               slat.setAttribute("card-slot", "");
               slat.removeAttribute("condensed-slot-first");
@@ -138,9 +140,11 @@ class MuiCardBody extends HTMLElement {
         const allSlats = nodes.flatMap((node) => {
           if (node.nodeType !== Node.ELEMENT_NODE) return [];
           const element = node as HTMLElement;
-          return element.tagName.toLowerCase() === "mui-slat"
-            ? [element]
-            : Array.from(element.querySelectorAll("mui-slat"));
+          const found = Array.from(element.querySelectorAll("mui-slat, mui-file-diff"));
+          if (element.tagName.toLowerCase() === "mui-slat" || element.tagName.toLowerCase() === "mui-file-diff") {
+            found.unshift(element);
+          }
+          return found;
         });
 
         const firstSlat = allSlats[0] as HTMLElement | undefined;
@@ -191,7 +195,7 @@ class MuiCardBody extends HTMLElement {
         :host([condensed][inner-space]),
         :host([condensed][has-card-slat-group]),
         :host([condensed][has-accordion-slat-group]) {
-          padding: var(--stroke-size-100);
+          padding: var(--space-000);
         }
         
       </style>

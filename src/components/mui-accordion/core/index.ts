@@ -154,7 +154,7 @@ class MuiAccordionCore extends HTMLElement {
     this.syncDetailInert();
 
     if (this.iconToggleEl) {
-      (this.iconToggleEl as any).toggle = true;
+      this.iconToggleEl.toggleAttribute("toggle", true);
       this.iconToggleEl.setAttribute("aria-pressed", "true");
     }
   }
@@ -170,7 +170,7 @@ class MuiAccordionCore extends HTMLElement {
     this.syncDetailInert();
 
     if (this.iconToggleEl) {
-      (this.iconToggleEl as any).toggle = false;
+      this.iconToggleEl.toggleAttribute("toggle", false);
       this.iconToggleEl.setAttribute("aria-pressed", "false");
     }
   }

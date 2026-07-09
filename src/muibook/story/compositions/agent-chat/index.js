@@ -69,7 +69,7 @@ class CompAgentChat extends HTMLElement {
             slot="preview"
             clickable
             badge="JSON"
-            value='{"story":"agent-chat","components":["mui-prompt-message","mui-prompt-work","mui-prompt-result","mui-prompt-preview","mui-prompt-toggle"],"status":"draft"}'
+            value='{"story":"agent-chat","components":["mui-prompt-message","mui-work-log","mui-result-bar","mui-prompt-preview","mui-prompt-toggle"],"status":"draft"}'
           ></mui-prompt-preview>
         `
             : ""
@@ -77,21 +77,21 @@ class CompAgentChat extends HTMLElement {
         ${
           options.context
             ? /*html*/ `
-          <mui-prompt-context slot="context">
+          <mui-context-bar slot="context">
             <mui-body size="x-small">
               Tighten release notes for prompt context, action bars, and agent chat story before publishing
             </mui-body>
-            <mui-h-stack slot="actions" aria-label="Task context actions" space="var(--space-000)">
-              <mui-button variant="tertiary" size="x-small" onclick="event.stopPropagation()">
-                Steer
+            <mui-button slot="actions" variant="tertiary" size="x-small" onclick="event.stopPropagation()">
+              Steer
+            </mui-button>
+            <mui-dropdown slot="actions" position="right" style="--dropdown-min-width: 9rem;">
+              <mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More">
+                <mui-icon-ellipsis size="x-small"></mui-icon-ellipsis>
               </mui-button>
-              <mui-dropdown position="right" style="--dropdown-min-width: 9rem;">
-                <mui-button variant="tertiary" slot="action" size="x-small"><mui-icon-ellipsis size="x-small" class="mui-icon"></mui-icon-ellipsis></mui-button>
-                <mui-button size="x-small">Edit</mui-button>
-                <mui-button size="x-small">Delete</mui-button>
-              </mui-dropdown>
-            </mui-h-stack>
-          </mui-prompt-context>
+              <mui-button size="x-small" variant="tertiary">Edit</mui-button>
+              <mui-button size="x-small" variant="tertiary">Delete</mui-button>
+            </mui-dropdown>
+          </mui-context-bar>
         `
             : ""
         }
@@ -161,7 +161,7 @@ class CompAgentChat extends HTMLElement {
 
               <mui-prompt-message size="medium" align="end" width="medium" footer-position="outside">
                 <mui-body size="medium">
-                  Can you turn the agent chat example into a real composition using Prompt Message, Prompt Work, Prompt Result, previews, and the prompt composer?
+                  Can you turn the agent chat example into a real composition using Prompt Message, Worker, Result, previews, and the prompt composer?
                 </mui-body>
                 <div slot="footer" class="response-actions" aria-label="Prompt actions">
                   <mui-body variant="tertiary" size="x-small">18:33</mui-body>
@@ -172,16 +172,16 @@ class CompAgentChat extends HTMLElement {
               </mui-prompt-message>
 
               <mui-prompt-message id="agentChatLatestMessage" size="medium" variant="ghost">
-                <mui-prompt-work slot="header" label="Worked for 4m 10s" rule>
+                <mui-work-log slot="header" label="Worked for 4m 10s" rule>
                   <mui-body size="x-small" variant="tertiary">Reviewed the prompt component APIs and AI & LLM navigation.</mui-body>
                   <mui-body size="x-small" variant="tertiary">Replaced one-off response markup with dedicated prompt components.</mui-body>
                   <mui-body size="x-small" variant="tertiary">Checked the composition against the Prompt Message body rhythm.</mui-body>
-                </mui-prompt-work>
+                </mui-work-log>
 
                 <mui-v-stack space="var(--space-200)">
                   <mui-heading level="2" size="6">Built a reusable agent chat composition.</mui-heading>
                   <mui-body size="small">
-                    The response now uses the prompt family as a coherent system: Prompt Message owns the message shell, Prompt Work explains what happened, and Prompt Result presents reviewable output.
+                    The response now uses the prompt family as a coherent system: Prompt Message owns the message shell, Worker explains what happened, and Result presents reviewable output.
                   </mui-body>
                 </mui-v-stack>
 
@@ -189,13 +189,13 @@ class CompAgentChat extends HTMLElement {
                   <mui-heading level="3" size="6">Changes</mui-heading>
                   <mui-list as="ul">
                     <mui-list-item size="small"><mui-code inline>mui-prompt-message</mui-code> frames assistant and user turns with alignment, width, header, body, and footer slots.</mui-list-item>
-                    <mui-list-item size="small"><mui-code inline>mui-prompt-work</mui-code> provides the collapsible work summary for elapsed time and implementation notes.</mui-list-item>
-                    <mui-list-item size="small"><mui-code inline>mui-prompt-result</mui-code> turns generated files or reviewable edits into a consistent action row.</mui-list-item>
+                    <mui-list-item size="small"><mui-code inline>mui-work-log</mui-code> provides the collapsible work summary for elapsed time and implementation notes.</mui-list-item>
+                    <mui-list-item size="small"><mui-code inline>mui-result-bar</mui-code> turns generated files or reviewable edits into a consistent action row.</mui-list-item>
                     <mui-list-item size="small">Prompt previews stay attached to the composer so users can inspect context before submitting.</mui-list-item>
                   </mui-list>
                 </mui-v-stack>
 
-                <mui-prompt-result>
+                <mui-result-bar>
                   <mui-avatar slot="accessory" label="Code" background="neutral">
                     <mui-icon-copy size="small"></mui-icon-copy>
                   </mui-avatar>
@@ -205,7 +205,7 @@ class CompAgentChat extends HTMLElement {
                   </mui-v-stack>
                   <mui-button slot="actions" variant="tertiary" size="x-small">Undo</mui-button>
                   <mui-button slot="actions" variant="secondary" size="x-small">Review</mui-button>
-                </mui-prompt-result>
+                </mui-result-bar>
 
                 <div slot="footer" class="response-actions" aria-label="Response actions">
                   <mui-button variant="tertiary" size="x-small" icon-only aria-label="Copy response">
@@ -222,10 +222,10 @@ class CompAgentChat extends HTMLElement {
 
           <story-code-block slot="footer" scrollable>
             &lt;mui-prompt-message size=&quot;medium&quot; variant=&quot;ghost&quot;&gt;<br />
-            &nbsp;&nbsp;&lt;mui-prompt-work slot=&quot;header&quot; label=&quot;Worked for 4m 10s&quot; rule&gt;...work detail...&lt;/mui-prompt-work&gt;<br />
+            &nbsp;&nbsp;&lt;mui-work-log slot=&quot;header&quot; label=&quot;Worked for 4m 10s&quot; rule&gt;...work detail...&lt;/mui-work-log&gt;<br />
             &nbsp;&nbsp;&lt;mui-heading level=&quot;2&quot; size=&quot;6&quot;&gt;Built a reusable agent chat composition.&lt;/mui-heading&gt;<br />
             &nbsp;&nbsp;&lt;mui-list as=&quot;ul&quot;&gt;...&lt;/mui-list&gt;<br />
-            &nbsp;&nbsp;&lt;mui-prompt-result&gt;...generated file result...&lt;/mui-prompt-result&gt;<br />
+            &nbsp;&nbsp;&lt;mui-result-bar&gt;...generated file result...&lt;/mui-result-bar&gt;<br />
             &nbsp;&nbsp;&lt;div slot=&quot;footer&quot;&gt;...copy and timestamp...&lt;/div&gt;<br />
             &lt;/mui-prompt-message&gt;<br /><br />
             &lt;mui-prompt enter-submit context-mode=&quot;icon&quot;&gt;<br />
@@ -257,14 +257,14 @@ class CompAgentChat extends HTMLElement {
               </mui-prompt-message>
 
               <mui-prompt-message size="medium" variant="ghost">
-                <mui-prompt-work slot="header" label="Working for 31s" pending>
-                  <mui-prompt-work label="Working for 31s" nested pending>
+                <mui-work-log slot="header" label="Working for 31s" pending>
+                  <mui-work-log label="Working for 31s" nested pending>
                     <mui-body size="x-small" variant="tertiary">Checking the release note wording against prompt component changes.</mui-body>
-                  </mui-prompt-work>
-                  <mui-prompt-work label="Read 4 files" nested>
-                    <mui-body size="x-small" variant="tertiary">Reviewed Prompt, Prompt Work, Agent Chat story, and changelog.</mui-body>
-                  </mui-prompt-work>
-                </mui-prompt-work>
+                  </mui-work-log>
+                  <mui-work-log label="Read 4 files" nested>
+                    <mui-body size="x-small" variant="tertiary">Reviewed Prompt, Worker, Agent Chat story, and changelog.</mui-body>
+                  </mui-work-log>
+                </mui-work-log>
 
                 <mui-v-stack space="var(--space-200)">
                   <mui-heading level="2" size="6">I can tighten this before release.</mui-heading>
@@ -288,7 +288,7 @@ class CompAgentChat extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-prompt-message align=&quot;end&quot;&gt;...user request...&lt;/mui-prompt-message&gt;<br />
             &nbsp;&nbsp;&lt;mui-prompt-message variant=&quot;ghost&quot;&gt;...agent response...&lt;/mui-prompt-message&gt;<br />
             &nbsp;&nbsp;&lt;mui-prompt enter-submit context-mode=&quot;icon&quot;&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-prompt-context slot=&quot;context&quot;&gt;...active task and actions...&lt;/mui-prompt-context&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-context-bar slot=&quot;context&quot;&gt;...active task and actions...&lt;/mui-context-bar&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-prompt-toggle slot=&quot;actions&quot;&gt;...web context toggle...&lt;/mui-prompt-toggle&gt;<br />
             &nbsp;&nbsp;&lt;/mui-prompt&gt;<br />
             &lt;/mui-v-stack&gt;
@@ -298,7 +298,7 @@ class CompAgentChat extends HTMLElement {
         <story-card
           title="Thinking"
           description="A response state where the agent is still processing and only the top-level work status is visible."
-          usage="Use pending on Prompt Work for active thinking states.|||Omit rule when the work status should sit as a quiet top-level status without a divider."
+          usage="Use pending on Worker for active thinking states.|||Omit rule when the work status should sit as a quiet top-level status without a divider."
         >
           <mui-v-stack class="chat-shell" space="var(--space-600)" alignX="stretch" slot="body">
             <mui-v-stack space="var(--space-600)">
@@ -313,7 +313,7 @@ class CompAgentChat extends HTMLElement {
               </mui-prompt-message>
 
               <mui-prompt-message size="medium" variant="ghost">
-                <mui-prompt-work slot="header" label="Thinking..." status pending></mui-prompt-work>
+                <mui-work-log slot="header" label="Thinking..." status pending></mui-work-log>
               </mui-prompt-message>
             </mui-v-stack>
 
@@ -322,7 +322,7 @@ class CompAgentChat extends HTMLElement {
 
           <story-code-block slot="footer" scrollable>
             &lt;mui-prompt-message variant=&quot;ghost&quot;&gt;<br />
-            &nbsp;&nbsp;&lt;mui-prompt-work slot=&quot;header&quot; label=&quot;Thinking...&quot; status pending&gt;&lt;/mui-prompt-work&gt;<br />
+            &nbsp;&nbsp;&lt;mui-work-log slot=&quot;header&quot; label=&quot;Thinking...&quot; status pending&gt;&lt;/mui-work-log&gt;<br />
             &lt;/mui-prompt-message&gt;
           </story-code-block>
         </story-card>
@@ -330,13 +330,13 @@ class CompAgentChat extends HTMLElement {
         <story-card
           title="Working"
           description="A response state where the top-level work row contains nested execution detail such as elapsed work and files read."
-          usage="Nest Prompt Work rows to show secondary execution detail inside the parent disclosure.|||Use pending on nested rows that are still in progress.|||Keep nested rows compact so the response body remains the main content."
+          usage="Nest Worker rows to show secondary execution detail inside the parent disclosure.|||Use pending on nested rows that are still in progress.|||Keep nested rows compact so the response body remains the main content."
         >
           <mui-v-stack slot="body" class="chat-shell" space="var(--space-600)" alignX="stretch">
             <mui-v-stack space="var(--space-600)">
               <mui-prompt-message size="medium" align="end" width="medium" footer-position="outside">
                 <mui-body size="medium">
-                  Can you turn the agent chat example into a real composition using Prompt Message, Prompt Work, Prompt Result, previews, and the prompt composer?
+                  Can you turn the agent chat example into a real composition using Prompt Message, Worker, Result, previews, and the prompt composer?
                 </mui-body>
                 <div slot="footer" class="response-actions" aria-label="Prompt actions">
                   <mui-body variant="tertiary" size="x-small">18:33</mui-body>
@@ -347,14 +347,14 @@ class CompAgentChat extends HTMLElement {
               </mui-prompt-message>
 
               <mui-prompt-message size="medium" variant="ghost">
-                <mui-prompt-work slot="header" label="Working for 4s" pending>
-                  <mui-prompt-work label="Read 4 files">
-                    <mui-body size="x-small" variant="tertiary">Checked Prompt, Prompt Work, Agent Chat, and changelog sources.</mui-body>
-                  </mui-prompt-work>
-                  <mui-prompt-work label="Updating docs" pending>
+                <mui-work-log slot="header" label="Working for 4s" pending>
+                  <mui-work-log label="Read 4 files">
+                    <mui-body size="x-small" variant="tertiary">Checked Prompt, Worker, Agent Chat, and changelog sources.</mui-body>
+                  </mui-work-log>
+                  <mui-work-log label="Updating docs" pending>
                     <mui-body size="x-small" variant="tertiary">Refreshing API metadata and examples for release review.</mui-body>
-                  </mui-prompt-work>
-                </mui-prompt-work>
+                  </mui-work-log>
+                </mui-work-log>
               </mui-prompt-message>
 
               </mui-v-stack>
@@ -365,10 +365,10 @@ class CompAgentChat extends HTMLElement {
 
           <story-code-block slot="footer" scrollable>
             &lt;mui-prompt-message variant=&quot;ghost&quot;&gt;<br />
-            &nbsp;&nbsp;&lt;mui-prompt-work slot=&quot;header&quot; label=&quot;Working for 31s&quot; pending&gt;<br />
-            &nbsp;&nbsp;&lt;mui-prompt-work label=&quot;Read 4 files&quot;&gt;...&lt;/mui-prompt-work&gt;<br />
-            &nbsp;&nbsp;&lt;mui-prompt-work label=&quot;Updating docs&quot; pending&gt;...&lt;/mui-prompt-work&gt;<br />
-            &nbsp;&nbsp;&lt;/mui-prompt-work&gt;<br />
+            &nbsp;&nbsp;&lt;mui-work-log slot=&quot;header&quot; label=&quot;Working for 31s&quot; pending&gt;<br />
+            &nbsp;&nbsp;&lt;mui-work-log label=&quot;Read 4 files&quot;&gt;...&lt;/mui-work-log&gt;<br />
+            &nbsp;&nbsp;&lt;mui-work-log label=&quot;Updating docs&quot; pending&gt;...&lt;/mui-work-log&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-work-log&gt;<br />
             &lt;/mui-prompt-message&gt;
           </story-code-block>
         </story-card>

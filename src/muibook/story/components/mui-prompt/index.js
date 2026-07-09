@@ -57,7 +57,7 @@ class StoryPrompt extends HTMLElement {
               value=""
             ></mui-prompt-preview>
        
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
+
             <mui-dropdown slot="actions" position="left" vertical-position="up">
               <mui-button slot="action" variant="tertiary" icon-only size="small">
                 <mui-icon-add size="small"></mui-icon-add>
@@ -117,7 +117,7 @@ class StoryPrompt extends HTMLElement {
         id="context"
         title="Context"
         description="Prompt positions explicit context content above the input when product state has context to show."
-        usage="Use slot='context' for feature-owned prompt context such as steer, persona, constraints, selected context, examples, or attachments.|||Use mui-prompt-context for the compact row treatment.|||Omit the slotted context entirely when there is no active context."
+        usage="Use slot='context' for feature-owned prompt context such as steer, persona, constraints, selected context, examples, or attachments.|||Use mui-context-bar for the compact row treatment.|||Omit the slotted context entirely when there is no active context."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
@@ -127,37 +127,30 @@ class StoryPrompt extends HTMLElement {
             enter-submit
             context-mode="icon"
           >
-            <mui-prompt-context slot="context">
-              <mui-h-stack space="var(--space-100)" aligny="center">
-                <mui-icon-right-chevron size="xx-small"></mui-icon-right-chevron>
-                <mui-body size="x-small">Use concise implementation notes and preserve existing component API.</mui-body>
-              </mui-h-stack>
+            <mui-context-bar slot="context">
+              <mui-body size="x-small" weight="regular" variant="default">
+                Tighten release notes for prompt context, action bars, and agent chat story before publishing
+              </mui-body>
               <mui-button slot="actions" variant="tertiary" size="x-small">Steer</mui-button>
-              <mui-button slot="actions" variant="tertiary" size="x-small" aria-label="Remove context">
-                <mui-icon-close size="x-small"></mui-icon-close>
-              </mui-button>
-            </mui-prompt-context>
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
+              <mui-dropdown slot="actions" position="right" style="--dropdown-min-width: 9rem;">
+                <mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More">
+                  <mui-icon-ellipsis size="x-small"></mui-icon-ellipsis>
+                </mui-button>
+                <mui-button size="x-small" variant="tertiary">Edit</mui-button>
+                <mui-button size="x-small" variant="tertiary">Delete</mui-button>
+              </mui-dropdown>
+            </mui-context-bar>
             <mui-prompt-toggle slot="actions">
               <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                 <mui-icon-globe size="small"></mui-icon-globe>
               </mui-button>
               <mui-chip context-chip dismiss size="small" hidden>Search</mui-chip>
             </mui-prompt-toggle>
-          </mui-prompt>
-
-          <mui-prompt
-            id="promptContextEmptyDemo"
-            placeholder="No active context..."
-            enter-submit
-          ></mui-prompt>
-        </mui-v-stack>
+          </mui-prompt>        </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt&gt;<br />
-          &nbsp;&nbsp;&lt;mui-prompt-context slot="context"&gt;...active context...&lt;/mui-prompt-context&gt;<br />
+          &nbsp;&nbsp;&lt;mui-context-bar slot="context"&gt;...active context...&lt;/mui-context-bar&gt;<br />
           &lt;/mui-prompt&gt;<br />
-          <br />
-          &lt;mui-prompt&gt;&lt;/mui-prompt&gt; // no context row renders
         </story-code-block>
       </story-card>
 
@@ -175,7 +168,6 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -271,7 +263,6 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -331,7 +322,6 @@ class StoryPrompt extends HTMLElement {
             context-mode="icon"
             loading-label="Sending request"
           >
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -395,7 +385,6 @@ class StoryPrompt extends HTMLElement {
               animated
               value='{"source":"crm","query":"summarise support backlog"}'
             ></mui-prompt-preview>
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-prompt-toggle slot="actions">
               <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                 <mui-icon-globe size="small"></mui-icon-globe>
@@ -434,7 +423,6 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -491,7 +479,6 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -549,7 +536,6 @@ class StoryPrompt extends HTMLElement {
            
             context-mode="icon"
           >
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -669,7 +655,6 @@ class StoryPrompt extends HTMLElement {
               bg-image="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1400&q=80"
               value=""
             ></mui-prompt-preview>
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -852,7 +837,6 @@ class StoryPrompt extends HTMLElement {
               animated
               value='SELECT feature_area, AVG(csat) FROM survey_responses WHERE quarter = "Q4" GROUP BY feature_area;'
             ></mui-prompt-preview>
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">
@@ -917,7 +901,6 @@ class StoryPrompt extends HTMLElement {
               bg-image="https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png"
               value=""
             ></mui-prompt-preview>
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-h-stack slot="actions" space="var(--space-050)">
               <mui-dropdown position="right" vertical-position="up">
                 <mui-button slot="action" variant="tertiary" icon-only size="small">

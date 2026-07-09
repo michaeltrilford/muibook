@@ -1,5 +1,5 @@
 export const muiApi = {
-  "mui-prompt-work": {
+  "mui-work-log": {
     description:
       "Displays a compact expandable work summary for agent responses, such as elapsed work time, steps reviewed, checks run, or supporting execution detail.",
     attributes: [
@@ -17,12 +17,12 @@ export const muiApi = {
       {
         name: "rule",
         type: { text: "boolean" },
-        description: "Adds a trailing rule when Prompt Work is used outside the Prompt Message header slot. Top-level header rows draw their divider on the summary row.",
+        description: "Adds a trailing rule when Worker is used outside the Prompt Message header slot. Top-level header rows draw their divider on the summary row.",
       },
       {
         name: "nested",
         type: { text: "boolean" },
-        description: "Applies compact nested work-row treatment. This is also applied automatically when Prompt Work is placed inside another Prompt Work.",
+        description: "Applies compact nested work-row treatment. This is also applied automatically when Worker is placed inside another Worker.",
       },
       {
         name: "pending",
@@ -38,11 +38,19 @@ export const muiApi = {
     slots: [
       {
         name: "icon",
-        description: "Optional icon displayed before the summary label.",
+        description: "Optional leading status or task icon. Typically used for an activity indicator.",
+      },
+      {
+        name: "before",
+        description: "Optional composable area before the main text label.",
+      },
+      {
+        name: "after",
+        description: "Optional composable area after the main text label. Can be used for extra actions, badges, etc.",
       },
       {
         name: "default",
-        description: "Work detail content, usually compact body rows describing reviewed files, applied changes, or checks.",
+        description: "Worker execution detail rows. Renders as accordion content.",
       },
     ],
   },

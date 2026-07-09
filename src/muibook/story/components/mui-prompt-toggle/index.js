@@ -19,7 +19,6 @@ class StoryPromptToggle extends HTMLElement {
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt id="promptToggleInteractive" placeholder="Try toggle + submit..." fan-open context-mode="icon" enter-submit debug>
-            <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
             <mui-prompt-toggle slot="actions">
               <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                 <mui-icon-accessibility size="small"></mui-icon-accessibility>
@@ -47,7 +46,6 @@ class StoryPromptToggle extends HTMLElement {
 
       <story-card id="toggle-private" title="Private Mode" usage="Toggle into a private-mode chip and dismiss to return to icon mode.">
         <mui-prompt debug slot="body" placeholder="Private Mode" fan-open context-mode="icon">
-        <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
         <mui-prompt-toggle slot="actions">
           <mui-hint placement="top">
             <mui-button slot="trigger" context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
@@ -70,7 +68,6 @@ class StoryPromptToggle extends HTMLElement {
 
       <story-card id="toggle-chip" title="Button to Chip" usage="Swap an icon action to a contextual chip state, then dismiss back.">
         <mui-prompt debug slot="body" placeholder="Button > Chip" fan-open context-mode="icon">
-          <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
           <mui-prompt-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
               <mui-icon-play-rectangle size="small"></mui-icon-play-rectangle>
@@ -88,7 +85,6 @@ class StoryPromptToggle extends HTMLElement {
 
       <story-card id="toggle-spinner" title="Button to Input" usage="Toggle into a spinner action with Stop button.">
         <mui-prompt debug slot="body" placeholder="Button > Spinner" fan-open context-mode="icon">
-          <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
           <mui-prompt-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
               <mui-icon-search size="small"></mui-icon-search>
@@ -113,7 +109,6 @@ class StoryPromptToggle extends HTMLElement {
 
       <story-card id="toggle-spinner" title="Button to Spinner" usage="Toggle into a spinner action with Stop button.">
         <mui-prompt debug slot="body" placeholder="Button > Spinner" fan-open context-mode="icon">
-          <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
           <mui-prompt-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="x-small" aria-label="Toggle context">
               Refresh
@@ -136,7 +131,6 @@ class StoryPromptToggle extends HTMLElement {
 
       <story-card id="toggle-button" title="Button to Button" usage="Toggle to custom action group, then close.">
         <mui-prompt debug slot="body" placeholder="Button > Button" fan-open context-mode="icon">
-          <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
           <mui-prompt-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
               <mui-icon-globe size="small"></mui-icon-globe>
@@ -160,7 +154,6 @@ class StoryPromptToggle extends HTMLElement {
 
       <story-card id="toggle-calendar" title="Button to Calendar" usage="Toggle from a calendar icon into date-range actions with a close fallback. Selecting a range updates prompt value.">
         <mui-prompt id="toggleCalendarPrompt" debug slot="body" placeholder="Calendar tools" fan-open context-mode="icon">
-          <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
           <mui-prompt-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
               <mui-icon-calendar size="small"></mui-icon-calendar>
@@ -198,7 +191,6 @@ class StoryPromptToggle extends HTMLElement {
 
       <story-card id="toggle-dropdown" title="Accessibility tools" usage="Toggle into accessibility controls and close back to icon mode. Menu actions apply live prompt settings.">
         <mui-prompt id="toggleAccessibilityPrompt" debug slot="body" placeholder="Accessibility tools" fan-open context-mode="icon">
-          <mui-rule slot="actions" direction="vertical" length="var(--space-400)" weight="var(--stroke-size-100)" style="margin-inline: var(--space-200); pointer-events: none;" aria-hidden="true"></mui-rule>
           <mui-prompt-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
               <mui-icon-accessibility size="small"></mui-icon-accessibility>

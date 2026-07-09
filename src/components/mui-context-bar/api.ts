@@ -1,5 +1,5 @@
 export const muiApi = {
-  "mui-prompt-context": {
+  "mui-context-bar": {
     description:
       "Displays a compact prompt context row that can be slotted above `mui-prompt`, usually for an active task, selected context, steering target, or attached instruction.",
     slots: [

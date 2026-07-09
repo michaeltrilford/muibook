@@ -189,12 +189,13 @@ class appNavbar extends HTMLElement {
       <app-navbar-group id="web-components" groupname="Components">
         <app-navbar-section heading="AI & LLM" default-open>
           <app-navbar-link link="/prompt" title="Prompt"></app-navbar-link>
-          <app-navbar-link link="/prompt-context" title="Prompt Context"></app-navbar-link>
           <app-navbar-link link="/prompt-message" title="Prompt Message"></app-navbar-link>
-          <app-navbar-link link="/prompt-result" title="Prompt Result"></app-navbar-link>
-          <app-navbar-link link="/prompt-work" title="Prompt Work"></app-navbar-link>
           <app-navbar-link link="/prompt-preview" title="Prompt Preview"></app-navbar-link>
           <app-navbar-link link="/prompt-toggle" title="Prompt Toggle"></app-navbar-link>
+          <app-navbar-link link="/context-bar" title="Context Bar"></app-navbar-link>
+          <app-navbar-link link="/result-bar" title="Result Bar"></app-navbar-link>
+          <app-navbar-link link="/work-log" title="Work Log"></app-navbar-link>
+          <app-navbar-link link="/file-diff" title="File Diff"></app-navbar-link>
         </app-navbar-section>
 
         <app-navbar-section heading="Actions" default-open>
