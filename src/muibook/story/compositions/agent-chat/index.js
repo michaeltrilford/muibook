@@ -157,7 +157,7 @@ class CompAgentChat extends HTMLElement {
         >
 
           <mui-v-stack slot="body" class="chat-shell" space="var(--space-600)" alignX="stretch">
-            <mui-v-stack space="var(--space-600)">
+            <mui-v-stack space="var(--space-300)">
 
               <mui-prompt-message size="medium" align="end" width="medium" footer-position="outside">
                 <mui-body size="medium">
@@ -173,9 +173,11 @@ class CompAgentChat extends HTMLElement {
 
               <mui-prompt-message id="agentChatLatestMessage" size="medium" variant="ghost">
                 <mui-work-log slot="header" label="Worked for 4m 10s" rule>
-                  <mui-body size="x-small" variant="tertiary">Reviewed the prompt component APIs and AI & LLM navigation.</mui-body>
-                  <mui-body size="x-small" variant="tertiary">Replaced one-off response markup with dedicated prompt components.</mui-body>
-                  <mui-body size="x-small" variant="tertiary">Checked the composition against the Prompt Message body rhythm.</mui-body>
+                  <mui-list>
+                    <mui-list-item size="x-small" variant="tertiary">Reviewed the prompt component APIs and AI & LLM navigation.</mui-list-item>
+                    <mui-list-item size="x-small" variant="tertiary">Replaced one-off response markup with dedicated prompt components.</mui-list-item>
+                    <mui-list-item size="x-small" variant="tertiary">Checked the composition against the Prompt Message body rhythm.</mui-list-item>
+                  </mui-list>
                 </mui-work-log>
 
                 <mui-v-stack space="var(--space-200)">
@@ -195,16 +197,48 @@ class CompAgentChat extends HTMLElement {
                   </mui-list>
                 </mui-v-stack>
 
-                <mui-result-bar>
-                  <mui-avatar slot="accessory" label="Code" background="neutral">
-                    <mui-icon-copy size="small"></mui-icon-copy>
-                  </mui-avatar>
-                  <mui-v-stack slot="start" space="0">
-                    <mui-body size="small" weight="bold">Edited agent-chat/index.js</mui-body>
-                    <mui-body size="x-small">Prompt family composition updated</mui-body>
-                  </mui-v-stack>
+                <mui-result-bar variant="accordion" label="Edited 4 files" rule open>
+                  <mui-h-stack slot="after-label" alignY="center" space="var(--space-100)">
+                    <mui-body size="x-small" weight="regular" variant="success">+251</mui-body>
+                    <mui-body size="x-small" weight="regular" variant="error">-14</mui-body>
+                  </mui-h-stack>
                   <mui-button slot="actions" variant="tertiary" size="x-small">Undo</mui-button>
                   <mui-button slot="actions" variant="secondary" size="x-small">Review</mui-button>
+
+                  <div slot="content">
+                    <mui-file-diff
+                      filename="index.js"
+                      filepath="src/muibook/story/compositions/agent-chat/"
+                      additions="+142"
+                      deletions="-8"
+                    >
+                      <mui-file-icon slot="icon" icon="javascript"></mui-file-icon>
+                    </mui-file-diff>
+                    <mui-file-diff
+                      filename="index.ts"
+                      filepath="src/components/mui-prompt-message/"
+                      additions="+44"
+                      deletions="-2"
+                    >
+                      <mui-file-icon slot="icon" icon="typescript"></mui-file-icon>
+                    </mui-file-diff>
+                    <mui-file-diff
+                      filename="index.ts"
+                      filepath="src/components/mui-work-log/"
+                      additions="+38"
+                      deletions="-3"
+                    >
+                      <mui-file-icon slot="icon" icon="typescript"></mui-file-icon>
+                    </mui-file-diff>
+                    <mui-file-diff
+                      filename="index.ts"
+                      filepath="src/components/mui-result-bar/"
+                      additions="+27"
+                      deletions="-1"
+                    >
+                      <mui-file-icon slot="icon" icon="typescript"></mui-file-icon>
+                    </mui-file-diff>
+                  </div>
                 </mui-result-bar>
 
                 <div slot="footer" class="response-actions" aria-label="Response actions">
@@ -225,7 +259,49 @@ class CompAgentChat extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-work-log slot=&quot;header&quot; label=&quot;Worked for 4m 10s&quot; rule&gt;...work detail...&lt;/mui-work-log&gt;<br />
             &nbsp;&nbsp;&lt;mui-heading level=&quot;2&quot; size=&quot;6&quot;&gt;Built a reusable agent chat composition.&lt;/mui-heading&gt;<br />
             &nbsp;&nbsp;&lt;mui-list as=&quot;ul&quot;&gt;...&lt;/mui-list&gt;<br />
-            &nbsp;&nbsp;&lt;mui-result-bar&gt;...generated file result...&lt;/mui-result-bar&gt;<br />
+            &nbsp;&nbsp;&lt;mui-result-bar variant=&quot;accordion&quot; label=&quot;Edited 4 files&quot; rule open&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot=&quot;after-label&quot; alignY=&quot;center&quot; space=&quot;var(--space-100)&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot; variant=&quot;success&quot;&gt;+251&lt;/mui-body&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot; variant=&quot;error&quot;&gt;-14&lt;/mui-body&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;actions&quot; variant=&quot;tertiary&quot; size=&quot;x-small&quot;&gt;Undo&lt;/mui-button&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot=&quot;actions&quot; variant=&quot;secondary&quot; size=&quot;x-small&quot;&gt;Review&lt;/mui-button&gt;<br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot=&quot;content&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename=&quot;index.js&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filepath=&quot;src/muibook/story/compositions/agent-chat/&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additions=&quot;+142&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletions=&quot;-8&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon slot=&quot;icon&quot; icon=&quot;javascript&quot;&gt;&lt;/mui-file-icon&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename=&quot;index.ts&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filepath=&quot;src/components/mui-prompt-message/&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additions=&quot;+44&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletions=&quot;-2&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon slot=&quot;icon&quot; icon=&quot;typescript&quot;&gt;&lt;/mui-file-icon&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename=&quot;index.ts&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filepath=&quot;src/components/mui-work-log/&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additions=&quot;+38&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletions=&quot;-3&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon slot=&quot;icon&quot; icon=&quot;typescript&quot;&gt;&lt;/mui-file-icon&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename=&quot;index.ts&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filepath=&quot;src/components/mui-result-bar/&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additions=&quot;+27&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletions=&quot;-1&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon slot=&quot;icon&quot; icon=&quot;typescript&quot;&gt;&lt;/mui-file-icon&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-result-bar&gt;<br />
             &nbsp;&nbsp;&lt;div slot=&quot;footer&quot;&gt;...copy and timestamp...&lt;/div&gt;<br />
             &lt;/mui-prompt-message&gt;<br /><br />
             &lt;mui-prompt enter-submit context-mode=&quot;icon&quot;&gt;<br />
@@ -243,7 +319,7 @@ class CompAgentChat extends HTMLElement {
         >
 
           <mui-v-stack slot="body" class="chat-shell steering-page" space="var(--space-600)" alignX="stretch">
-            <mui-v-stack space="var(--space-600)">
+            <mui-v-stack space="var(--space-300)">
               <mui-prompt-message size="medium" align="end" width="medium" footer-position="outside">
                 <mui-body size="medium">
                   Can you tighten the release notes and make sure the prompt changes are clear before I publish?
@@ -301,7 +377,7 @@ class CompAgentChat extends HTMLElement {
           usage="Use pending on Worker for active thinking states.|||Omit rule when the work status should sit as a quiet top-level status without a divider."
         >
           <mui-v-stack class="chat-shell" space="var(--space-600)" alignX="stretch" slot="body">
-            <mui-v-stack space="var(--space-600)">
+            <mui-v-stack space="var(--space-300)">
               <mui-prompt-message size="medium" align="end" width="medium" footer-position="outside">
                 <mui-body size="medium">Can you audit the release notes before I publish?</mui-body>
                 <div slot="footer" class="response-actions" aria-label="Prompt actions">

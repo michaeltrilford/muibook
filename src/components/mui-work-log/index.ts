@@ -45,11 +45,12 @@ class MuiWorkLog extends HTMLElement {
       <style>
         :host {
           display: block;
-          color: var(--text-color-secondary);
+        }
+        :host([nested]:not(:last-child)) {
+          margin-block-end: var(--space-300);
         }
         .summary {
-          color: var(--text-color-secondary);
-          min-height: ${isNested ? "var(--space-500)" : "auto"};
+          min-height: ${isNested ? "auto" : "auto"};
           width: 100%;
         }
         .summary::part(width) {
@@ -58,9 +59,6 @@ class MuiWorkLog extends HTMLElement {
         .summary[rule] {
           border-bottom: var(--border-thin);
           padding-block-end: var(--space-200);
-        }
-        .status-summary {
-          color: var(--text-color-secondary);
         }
         .detail {
           padding-block-start: ${isNested ? "var(--space-100)" : "var(--space-400)"};

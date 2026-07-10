@@ -74,7 +74,7 @@ class MuiCalendar extends HTMLElement {
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
     const formatted = `${year}-${month}-${day}`;
-    
+
     this.setAttribute("value", formatted);
     this.dispatchEvent(new CustomEvent("change", { detail: { value: formatted }, bubbles: true, composed: true }));
   }
@@ -110,7 +110,7 @@ class MuiCalendar extends HTMLElement {
       daysHtml += `<mui-button variant="${variant}" size="small" class="${classList.join(" ")}" data-date="${dateStr}" aria-label="${monthName} ${i}, ${year}">${i}</mui-button>`;
     }
 
-    return /*html*/`
+    return /*html*/ `
       <div class="month">
         <div class="month-header">
           <div class="month-title">${monthName} ${year}</div>
@@ -178,7 +178,6 @@ class MuiCalendar extends HTMLElement {
         }
         .weekday {
           font-size: var(--text-font-size-xs);
-          color: var(--text-color-secondary);
           font-weight: var(--font-weight-medium);
           width: var(--calendar-day-size);
           height: var(--calendar-day-size);
@@ -226,7 +225,7 @@ class MuiCalendar extends HTMLElement {
         const target = e.target as HTMLElement;
         const dateStr = target.getAttribute("data-date");
         if (dateStr) {
-          // Because dates parsed via 'YYYY-MM-DD' without time can shift due to UTC/timezone, 
+          // Because dates parsed via 'YYYY-MM-DD' without time can shift due to UTC/timezone,
           // parse it locally:
           const [y, m, d] = dateStr.split("-").map(Number);
           this.selectDate(new Date(y, m - 1, d));
@@ -237,22 +236,22 @@ class MuiCalendar extends HTMLElement {
     this.shadowRoot.querySelector(".calendar-container")?.addEventListener("keydown", (e: Event) => {
       const target = e.target as HTMLElement;
       if (!target.classList.contains("day") || target.classList.contains("empty")) return;
-      
+
       const kbEvent = e as KeyboardEvent;
       const key = kbEvent.key;
-      
+
       if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(key)) {
         kbEvent.preventDefault();
         const dateStr = target.getAttribute("data-date");
         if (!dateStr) return;
         const [y, m, d] = dateStr.split("-").map(Number);
         const focusedDate = new Date(y, m - 1, d);
-        
+
         if (key === "ArrowLeft") focusedDate.setDate(focusedDate.getDate() - 1);
         if (key === "ArrowRight") focusedDate.setDate(focusedDate.getDate() + 1);
         if (key === "ArrowUp") focusedDate.setDate(focusedDate.getDate() - 7);
         if (key === "ArrowDown") focusedDate.setDate(focusedDate.getDate() + 7);
-        
+
         const focusNext = () => {
           const nextYear = focusedDate.getFullYear();
           const nextMonthStr = String(focusedDate.getMonth() + 1).padStart(2, "0");
@@ -274,8 +273,9 @@ class MuiCalendar extends HTMLElement {
         } else {
           // Double view shows current and next month
           const secondMonth = new Date(currentViewYear, currentViewMonth + 1, 1);
-          isVisible = (currentViewMonth === nextViewMonth && currentViewYear === nextViewYear) || 
-                      (secondMonth.getMonth() === nextViewMonth && secondMonth.getFullYear() === nextViewYear);
+          isVisible =
+            (currentViewMonth === nextViewMonth && currentViewYear === nextViewYear) ||
+            (secondMonth.getMonth() === nextViewMonth && secondMonth.getFullYear() === nextViewYear);
         }
 
         if (!isVisible) {

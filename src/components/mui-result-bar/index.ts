@@ -70,9 +70,6 @@ class MuiResultBar extends HTMLElement {
           .trigger {
             width: 100%;
           }
-          .label {
-            color: var(--text-color-secondary);
-          }
           .actions-wrapper {
             /* Prevent clicks on actions from bubbling up and toggling the accordion */
           }
