@@ -2,8 +2,6 @@
 
 ## v20.2.0
 
-_Status: WIP_
-
 [Package](https://www.npmjs.com/package/@muibook/components/v/20.2.0)
 
 ## Header [End]
