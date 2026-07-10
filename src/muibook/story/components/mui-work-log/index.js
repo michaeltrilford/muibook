@@ -43,30 +43,90 @@ class StoryWorkLog extends HTMLElement {
             <mui-body size="x-small" weight="regular" variant="success">+251</mui-body>
             <mui-body size="x-small" weight="regular" variant="error">-14</mui-body>
           </mui-h-stack>
-          <mui-file-diff filename="index.js" filepath="src/components/mui-work-log/" additions="+182" deletions="-2">
-            <mui-icon-list-and-film slot="icon" size="xx-small"></mui-icon-list-and-film>
+          <mui-file-diff
+            filename="index.js"
+            filepath="src/components/mui-work-log/"
+            additions="+182"
+            deletions="-2"
+          >
+            <mui-file-icon slot="icon" icon="javascript"></mui-file-icon>
           </mui-file-diff>
-          <mui-file-diff filename="api.ts" filepath="src/components/mui-work-log/" additions="+9" deletions="-1">
-            <mui-icon-list-and-film slot="icon" size="xx-small"></mui-icon-list-and-film>
+          <mui-file-diff
+            filename="api.ts"
+            filepath="src/components/mui-work-log/"
+            additions="+9"
+            deletions="-1"
+          >
+            <mui-file-icon slot="icon" icon="typescript"></mui-file-icon>
           </mui-file-diff>
-          <mui-file-diff filename="doc.ts" filepath="src/components/mui-work-log/" additions="+12" deletions="-2">
-            <mui-icon-list-and-film slot="icon" size="xx-small"></mui-icon-list-and-film>
+          <mui-file-diff
+            filename="doc.ts"
+            filepath="src/components/mui-work-log/"
+            additions="+12"
+            deletions="-2"
+          >
+            <mui-file-icon slot="icon" icon="typescript"></mui-file-icon>
           </mui-file-diff>
-          <mui-file-diff filename="index.js" filepath="src/muibook/story/components/mui-work-log/" additions="+48" deletions="-9">
-            <mui-icon-list-and-film slot="icon" size="xx-small"></mui-icon-list-and-film>
+          <mui-file-diff
+            filename="index.js"
+            filepath="src/muibook/story/components/mui-work-log/"
+            additions="+48"
+            deletions="-9"
+          >
+            <mui-file-icon slot="icon" icon="javascript"></mui-file-icon>
           </mui-file-diff>
         </mui-work-log>
         <story-code-block slot="footer" scrollable>
           &lt;mui-work-log label="Edited 4 files" open rule&gt;<br />
-          &nbsp;&nbsp;&lt;mui-h-stack slot="after" ...&gt;<br />
+          &nbsp;&nbsp;&lt;mui-h-stack slot="after" alignY="center" space="var(--space-100)"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="success"&gt;+251&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="error"&gt;-14&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-100)"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff filename="index.js" ...&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-list-and-film slot="icon" size="xx-small"&gt;&lt;/mui-icon-list-and-film&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          <br />
+          &nbsp;&nbsp;&lt;mui-file-diff<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;filename="index.js"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;filepath="src/components/mui-work-log/"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;additions="+182"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;deletions="-2"<br />
+          &nbsp;&nbsp;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slot="icon"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon="javascript"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-file-icon&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+          &nbsp;&nbsp;&lt;mui-file-diff<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;filename="api.ts"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;filepath="src/components/mui-work-log/"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;additions="+9"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;deletions="-1"<br />
+          &nbsp;&nbsp;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slot="icon"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon="typescript"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-file-icon&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+          &nbsp;&nbsp;&lt;mui-file-diff<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;filename="doc.ts"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;filepath="src/components/mui-work-log/"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;additions="+12"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;deletions="-2"<br />
+          &nbsp;&nbsp;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slot="icon"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon="typescript"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-file-icon&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+          &nbsp;&nbsp;&lt;mui-file-diff<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;filename="index.js"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;filepath="src/muibook/story/components/mui-work-log/"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;additions="+48"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;deletions="-9"<br />
+          &nbsp;&nbsp;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slot="icon"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon="javascript"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-file-icon&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
           &lt;/mui-work-log&gt;
         </story-code-block>
       </story-card>
@@ -114,7 +174,7 @@ class StoryWorkLog extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-        imports='["@muibook/components/mui-work-log", "@muibook/components/mui-file-diff"]'>
+        imports='["@muibook/components/mui-work-log"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="single::Single Work Log|||composable::Composable Summary|||thinking::Thinking|||nested::Nested Work Log"></story-quicklinks>
         ${stories}
       </story-template>

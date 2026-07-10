@@ -12,6 +12,9 @@
 - Added `--prompt-ring-gap-color` and `--prompt-ring-shadow-color` tokens to customize the `mui-prompt` ring variant.
 - Added `mui-result` and `mui-worker` as dedicated AI & LLM components for agent result rows and collapsible work summaries.
 - Added `mui-file-diff` for inline code diffing and file change visualization.
+- Added `mui-file-icon` for rendering pinned VSCode file-type icons from `vscode-icons@v12.19.0`, with `icon` / `type`, `small | medium | large` sizing, `label`, and `decorative` accessibility support.
+- Added the full generated VSCode file-type icon map with 1,150 supported `file_type_*` icons, plus a Muibook story gallery for browsing every available icon.
+- Added `--file-icon-filter` to `mui-tokens.css`, using `brightness(0.8) contrast(1)` in light mode and `brightness(2) contrast(2)` in dark mode.
 - Added `mui-context-bar` as a dedicated slottable context row for active task, steering, or attachment context above Prompt.
 - `mui-prompt-message` now applies default body rhythm between direct response children, with `--prompt-message-body-space` as the escape hatch for tighter or looser messages.
 - `mui-prompt-message` footer actions now reveal on hover/focus by default and support `footer-visibility="always"` for app-pinned message action bars.

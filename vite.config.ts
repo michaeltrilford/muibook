@@ -186,6 +186,7 @@ export default defineConfig({
         "components/mui-avatar-group": path.resolve(__dirname, "src/components/mui-avatar-group"),
         // IMAGE
         "components/mui-image": path.resolve(__dirname, "src/components/mui-image"),
+        "components/mui-file-icon": path.resolve(__dirname, "src/components/mui-file-icon"),
         // INPUT
         "components/mui-input": path.resolve(__dirname, "src/components/mui-input"),
         "components/mui-search-input": path.resolve(__dirname, "src/components/mui-search-input"),

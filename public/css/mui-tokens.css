@@ -291,6 +291,7 @@ html[data-theme="light"] {
   /* Icon */
   --icon-color-default: var(--black);
   --icon-color-inverted: var(--white);
+  --file-icon-filter: brightness(0.8) contrast(1);
   --illustration-shadow-color-default: var(--black-opacity-20);
   --illustration-shadow-color-inverted: var(--white-opacity-20);
 
@@ -684,6 +685,7 @@ html[data-theme="dark"] {
   /* Icon */
   --icon-color-default: var(--white);
   --icon-color-inverted: var(--black);
+  --file-icon-filter: brightness(2) contrast(2);
   --illustration-shadow-color-default: var(--black-opacity-30);
   --illustration-shadow-color-inverted: var(--black-opacity-20);
 

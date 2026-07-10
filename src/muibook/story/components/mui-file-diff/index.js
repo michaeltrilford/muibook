@@ -24,17 +24,21 @@ class StoryFileDiff extends HTMLElement {
             additions="+182"
             deletions="-2"
           >
-            <mui-icon-list-and-film slot="icon" size="xx-small"></mui-icon-list-and-film>
+            <mui-file-icon slot="icon" icon="javascript" size="large"></mui-file-icon>
           </mui-file-diff>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-file-diff
-            filename="index.js"
+            filename="index.ts"
             filepath="src/components/mui-worker/"
             additions="+182"
             deletions="-2"
           &gt;
-            &lt;mui-icon-list-and-film slot="icon" size="xx-small"&gt;&lt;/mui-icon-list-and-film&gt;
+            &lt;mui-file-icon
+              slot="icon"
+              icon="javascript"
+              size="large"
+            &gt;&lt;/mui-file-icon&gt;
           &lt;/mui-file-diff&gt;
         </story-code-block>
       </story-card>

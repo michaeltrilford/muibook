@@ -86,6 +86,7 @@ import "../components/mui-slide-section";
 import "../components/mui-avatar";
 import "../components/mui-avatar-group";
 import "../components/mui-image";
+import "../components/mui-file-icon";
 import "../components/mui-select";
 import "../components/mui-calendar";
 import "../components/mui-time";

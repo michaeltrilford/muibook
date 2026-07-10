@@ -76,17 +76,37 @@ class StoryResultBar extends HTMLElement {
           <mui-button slot="actions" variant="secondary" size="x-small">Review</mui-button>
 
           <div slot="content">
-            <mui-file-diff filename="index.js" filepath="src/components/mui-worker/" additions="+182" deletions="-2">
-              <mui-icon-list-and-film slot="icon" size="xx-small"></mui-icon-list-and-film>
+            <mui-file-diff
+              filename="index.js"
+              filepath="src/components/mui-work-log/"
+              additions="+182"
+              deletions="-2"
+            >
+              <mui-file-icon slot="icon" icon="javascript"></mui-file-icon>
             </mui-file-diff>
-            <mui-file-diff filename="api.ts" filepath="src/components/mui-worker/" additions="+9" deletions="-1">
-              <mui-icon-list-and-film slot="icon" size="xx-small"></mui-icon-list-and-film>
+            <mui-file-diff
+              filename="api.ts"
+              filepath="src/components/mui-work-log/"
+              additions="+9"
+              deletions="-1"
+            >
+              <mui-file-icon slot="icon" icon="typescript"></mui-file-icon>
             </mui-file-diff>
-            <mui-file-diff filename="doc.ts" filepath="src/components/mui-worker/" additions="+12" deletions="-2">
-              <mui-icon-list-and-film slot="icon" size="xx-small"></mui-icon-list-and-film>
+            <mui-file-diff
+              filename="doc.ts"
+              filepath="src/components/mui-work-log/"
+              additions="+12"
+              deletions="-2"
+            >
+              <mui-file-icon slot="icon" icon="typescript"></mui-file-icon>
             </mui-file-diff>
-            <mui-file-diff filename="index.js" filepath="src/muibook/story/components/mui-worker/" additions="+48" deletions="-9">
-              <mui-icon-list-and-film slot="icon" size="xx-small"></mui-icon-list-and-film>
+            <mui-file-diff
+              filename="index.js"
+              filepath="src/muibook/story/components/mui-work-log/"
+              additions="+48"
+              deletions="-9"
+            >
+              <mui-file-icon slot="icon" icon="javascript"></mui-file-icon>
             </mui-file-diff>
           </div>
         </mui-result-bar>
@@ -100,12 +120,52 @@ class StoryResultBar extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-button slot="actions" variant="tertiary" size="x-small"&gt;Undo&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" size="x-small"&gt;Review&lt;/mui-button&gt;<br />
           <br />
-          &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-100)" slot="content"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff filename="index.js" ...&gt;...&lt;/mui-file-diff&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff filename="api.ts" ...&gt;...&lt;/mui-file-diff&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff filename="doc.ts" ...&gt;...&lt;/mui-file-diff&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff filename="index.js" ...&gt;...&lt;/mui-file-diff&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;div slot="content"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename="index.js"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filepath="src/components/mui-work-log/"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additions="+182"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletions="-2"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slot="icon"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon="javascript"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-file-icon&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename="api.ts"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filepath="src/components/mui-work-log/"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additions="+9"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletions="-1"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slot="icon"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon="typescript"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-file-icon&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename="doc.ts"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filepath="src/components/mui-work-log/"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additions="+12"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletions="-2"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slot="icon"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon="typescript"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-file-icon&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-diff<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename="index.js"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filepath="src/muibook/story/components/mui-work-log/"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;additions="+48"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletions="-9"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slot="icon"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon="javascript"<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-file-icon&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-file-diff&gt;<br />
+          &nbsp;&nbsp;&lt;/div&gt;<br />
           &lt;/mui-result-bar&gt;
         </story-code-block>
       </story-card>
@@ -120,7 +180,7 @@ class StoryResultBar extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-        imports='["@muibook/components/mui-result-bar", "@muibook/components/mui-file-diff"]'>
+        imports='["@muibook/components/mui-result-bar"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="accessory::Accessory|||without-accessory::Without Accessory|||file-edits::Accordion Result"></story-quicklinks>
         ${stories}
       </story-template>

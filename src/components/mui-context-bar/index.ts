@@ -84,8 +84,8 @@ class MuiContextBar extends HTMLElement {
           min-width: 0;
           box-sizing: border-box;
           padding-inline-start: var(--space-400);
-          padding-inline-end: var(--space-200);
-          padding-block: var(--space-200);
+          padding-inline-end: var(--space-100);
+          padding-block: var(--space-100);
           border: var(--border-thin);
           border-bottom: 0;
           border-color: var(--form-default-border-color);

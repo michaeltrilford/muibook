@@ -59,6 +59,7 @@ export * from "./components/mui-drawer";
 export * from "./components/mui-avatar";
 export * from "./components/mui-avatar-group";
 export * from "./components/mui-image";
+export * from "./components/mui-file-icon";
 export * from "./components/mui-smart-card";
 export * from "./components/mui-icons/ai";
 export * from "./components/mui-icons/accessibility";

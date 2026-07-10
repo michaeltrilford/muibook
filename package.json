@@ -464,6 +464,10 @@
       "import": "./dist/esm/components/mui-image/index.js",
       "types": "./dist/types/components/mui-image/index.d.ts"
     },
+    "./mui-file-icon": {
+      "import": "./dist/esm/components/mui-file-icon/index.js",
+      "types": "./dist/types/components/mui-file-icon/index.d.ts"
+    },
     "./mui-avatar": {
       "import": "./dist/esm/components/mui-avatar/index.js",
       "types": "./dist/types/components/mui-avatar/index.d.ts"

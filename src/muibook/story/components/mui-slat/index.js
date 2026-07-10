@@ -177,6 +177,49 @@ class storySlat extends HTMLElement {
         </story-card>
 
         <story-card
+          id="truncation"
+          title="Truncation (File Diff)"
+          description="Demonstrates how to properly truncate text within a slat. By setting col to minmax(0, 1fr) auto and adding min-width: 0 to the mui-h-stack, the text can shrink and display an ellipsis."
+          usage="Use minmax(0, 1fr) for grid columns that need to shrink."
+          usageLink="https://guides.muibook.com/slat">
+
+          <mui-slat slot="body" variant="action" col="minmax(0, 1fr) auto">
+            <mui-h-stack slot="start" space="var(--space-100)" aligny="center" style="min-width: 0;">
+              <mui-file-icon slot="icon" icon="javascript" size="small"></mui-file-icon>
+              <mui-body size="x-small" weight="medium" style="text-wrap: nowrap;">file-name.ts</mui-body>
+              <mui-body variant="optional" size="x-small" weight="regular" truncate>src/components/very/long/path/to/some/nested/file-name.ts</mui-body>
+            </mui-h-stack>
+            <mui-h-stack slot="end" aligny="center" space="var(--space-100)">
+              <mui-body size="x-small" weight="regular" variant="success">+120</mui-body>
+              <mui-body size="x-small" weight="regular" variant="error">-34</mui-body>
+            </mui-h-stack>
+          </mui-slat>
+
+          <story-code-block slot="footer" scrollable>
+            &lt;mui-slat variant="action" col="minmax(0, 1fr) auto"&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-h-stack slot="start" style="min-width: 0;"&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="medium" style="text-wrap: nowrap;"&gt;file-name.ts&lt;/mui-body&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body variant="optional" size="x-small" weight="regular" truncate&gt;...&lt;/mui-body&gt;
+            <br />
+            &nbsp;&nbsp;&lt;/mui-h-stack&gt;
+            <br />
+            &nbsp;&nbsp;&lt;mui-h-stack slot="end"&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body variant="success"&gt;+120&lt;/mui-body&gt;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body variant="error"&gt;-34&lt;/mui-body&gt;
+            <br />
+            &nbsp;&nbsp;&lt;/mui-h-stack&gt;
+            <br />
+            &lt;/mui-slat&gt;
+          </story-code-block>
+
+        </story-card>
+
+        <story-card
           title="Action: Custom Columns and Space"
           description="Action slats support col and space for custom column sizing and gap control inside grouped rows."
           usage="Use col to tune the relationship between start and end content across repeated action rows.|||Use space to control the gap between those columns.">
@@ -1328,7 +1371,7 @@ class storySlat extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="default::Default|||header::Header|||row::Row|||row-accessory::Row Accessory|||action::Action|||action-accessory::Action Accessory|||slat-and-group::Slat & Group|||card-slat-and-group::Card: Slat & Group|||card-variant-slat-group::Card: Variant Slat & Group|||card-slat-group-divider::Card: Slat Group Dividers|||card-slat-group-accordion::Card: Slat Group & Accordion|||card-condensed::Card: Condensed"
+          links="default::Default|||header::Header|||row::Row|||row-accessory::Row Accessory|||action::Action|||truncation::Truncation (File Diff)|||action-accessory::Action Accessory|||slat-and-group::Slat & Group|||card-slat-and-group::Card: Slat & Group|||card-variant-slat-group::Card: Variant Slat & Group|||card-slat-group-divider::Card: Slat Group Dividers|||card-slat-group-accordion::Card: Slat Group & Accordion|||card-condensed::Card: Condensed"
         ></story-quicklinks>
 
         ${stories}

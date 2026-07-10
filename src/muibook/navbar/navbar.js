@@ -189,11 +189,11 @@ class appNavbar extends HTMLElement {
       <app-navbar-group id="web-components" groupname="Components">
         <app-navbar-section heading="AI & LLM" default-open>
           <app-navbar-link link="/prompt" title="Prompt"></app-navbar-link>
+          <app-navbar-link link="/context-bar" title="Context Bar"></app-navbar-link>
           <app-navbar-link link="/prompt-message" title="Prompt Message"></app-navbar-link>
           <app-navbar-link link="/prompt-preview" title="Prompt Preview"></app-navbar-link>
-          <app-navbar-link link="/prompt-toggle" title="Prompt Toggle"></app-navbar-link>
-          <app-navbar-link link="/context-bar" title="Context Bar"></app-navbar-link>
           <app-navbar-link link="/result-bar" title="Result Bar"></app-navbar-link>
+          <app-navbar-link link="/prompt-toggle" title="Prompt Toggle"></app-navbar-link>
           <app-navbar-link link="/work-log" title="Work Log"></app-navbar-link>
           <app-navbar-link link="/file-diff" title="File Diff"></app-navbar-link>
         </app-navbar-section>
@@ -211,6 +211,7 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/avatar" title="Avatar"></app-navbar-link>
           <app-navbar-link link="/avatar-group" title="Avatar Group"></app-navbar-link>
           <app-navbar-link link="/avatar-chip" title="Avatar Chip"></app-navbar-link>
+          <app-navbar-link link="/file-icon" title="File Icon"></app-navbar-link>
           <app-navbar-link link="/carousel" title="Carousel"></app-navbar-link>
           <app-navbar-link link="/smart-card" title="Smart Card"></app-navbar-link>
         </app-navbar-section>

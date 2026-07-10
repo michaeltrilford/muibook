@@ -8,6 +8,8 @@ export class MuiFileDiff extends HTMLElement {
     return ["filename", "filepath", "additions", "deletions", "result-slot", "card-slot", "result-slot-last"];
   }
 
+  private iconObserver: MutationObserver | null = null;
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -17,10 +19,39 @@ export class MuiFileDiff extends HTMLElement {
     this.render();
   }
 
+  disconnectedCallback() {
+    this.iconObserver?.disconnect();
+    this.iconObserver = null;
+  }
+
   attributeChangedCallback(_name: string, oldValue: string | null, newValue: string | null) {
     if (oldValue !== newValue) {
       this.render();
     }
+  }
+
+  private syncIconSlot() {
+    if (!this.shadowRoot) return;
+
+    const slot = this.shadowRoot.querySelector<HTMLSlotElement>('slot[name="icon"]');
+    const icons = slot?.assignedElements({ flatten: true }) || [];
+
+    this.iconObserver?.disconnect();
+    this.iconObserver = null;
+
+    icons.forEach((icon) => {
+      if (icon.tagName.toLowerCase() !== "mui-file-icon") return;
+      icon.setAttribute("file-diff-icon", "");
+      if (icon.getAttribute("size") !== "small") icon.setAttribute("size", "small");
+    });
+
+    const fileIcons = icons.filter((icon) => icon.tagName.toLowerCase() === "mui-file-icon");
+    if (!fileIcons.length) return;
+
+    this.iconObserver = new MutationObserver(() => this.syncIconSlot());
+    fileIcons.forEach((icon) => {
+      this.iconObserver?.observe(icon, { attributes: true, attributeFilter: ["size", "file-diff-icon"] });
+    });
   }
 
   render() {
@@ -37,11 +68,11 @@ export class MuiFileDiff extends HTMLElement {
           display: block;
         }
       </style>
-      <mui-slat variant="action" col="1fr auto" role="row" file-diff-slot ${this.hasAttribute("result-slot") ? "result-slot" : ""} ${this.hasAttribute("card-slot") ? "card-slot" : ""} ${this.hasAttribute("result-slot-last") ? "result-slot-last" : ""}>
+      <mui-slat variant="action" role="row" file-diff-slot ${this.hasAttribute("result-slot") ? "result-slot" : ""} ${this.hasAttribute("card-slot") ? "card-slot" : ""} ${this.hasAttribute("result-slot-last") ? "result-slot-last" : ""}>
         <mui-h-stack slot="start" space="var(--space-100)" aligny="center" role="cell">
           <slot name="icon"></slot>
-          ${filename ? `<mui-link variant="tertiary" size="x-small" weight="regular">${filename}</mui-link>` : ""}
-          ${filepath ? `<mui-body variant="tertiary" size="x-small" weight="regular">${filepath}</mui-body>` : ""}
+          ${filename ? `<mui-body size="x-small" weight="medium">${filename}</mui-body>` : ""}
+          ${filepath ? `<mui-body variant="optional" size="x-small" weight="regular" truncate>${filepath}</mui-body>` : ""}
         </mui-h-stack>
         <mui-h-stack slot="end" aligny="center" space="var(--space-100)" role="cell">
           ${additions ? `<mui-body size="x-small" weight="regular" variant="success">${additions}</mui-body>` : ""}
@@ -49,6 +80,10 @@ export class MuiFileDiff extends HTMLElement {
         </mui-h-stack>
       </mui-slat>
     `;
+
+    const iconSlot = this.shadowRoot.querySelector<HTMLSlotElement>('slot[name="icon"]');
+    iconSlot?.addEventListener("slotchange", () => this.syncIconSlot());
+    this.syncIconSlot();
   }
 }
 
