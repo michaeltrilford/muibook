@@ -20,7 +20,7 @@ export const muiDocs: MuiDocs = {
         "Use Status for state values in table cells and slat end slots, such as Paid, Pending, Urgent, Open, or Unlodged.",
         "Omit variant for the default low-emphasis grey status.",
         "Use variant for semantic feedback states and color for non-semantic categorical labels.",
-        "Use size='small' in dense lists, tables, and slats; use medium as the default.",
+        "Use size='x-small' next to badges or in very dense context rows, use size='small' in dense lists, tables, and slats, and use medium as the default.",
         "Use the before and after slots for icons only when they clarify the state.",
         "Add action only when the status itself should be interactive, such as performing an action or opening another control.",
         "Use Badge for cleaner presentational metadata on cards, messages, hero areas, controls, and marketing-style UI.",
@@ -90,7 +90,7 @@ export const muiDocs: MuiDocs = {
 
     behaviour: {
       list: [
-        "Status supports small and medium sizes only.",
+        "Status supports x-small, small, and medium sizes.",
         "Status is non-interactive by default.",
         "Use action when Status is composed as a trigger, such as a dropdown action.",
         "Status can be composed inside other components, including dropdown actions or slat accessories.",

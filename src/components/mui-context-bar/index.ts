@@ -3,7 +3,10 @@ import "../mui-stack/hstack";
 
 class MuiContextBar extends HTMLElement {
   private contentSlotEl: HTMLSlotElement | null = null;
+  private actionsSlotEl: HTMLSlotElement | null = null;
   private bodyEls = new Set<HTMLElement>();
+  private managedSizeEls = new Set<HTMLElement>();
+  private sizeObserver: MutationObserver | null = null;
 
   constructor() {
     super();
@@ -17,19 +20,28 @@ class MuiContextBar extends HTMLElement {
 
   disconnectedCallback() {
     this.clearGeneratedTruncation();
+    this.clearManagedSizes();
     this.contentSlotEl?.removeEventListener("slotchange", this.onContentSlotChange);
+    this.actionsSlotEl?.removeEventListener("slotchange", this.onContentSlotChange);
     this.contentSlotEl = null;
+    this.actionsSlotEl = null;
+    this.sizeObserver?.disconnect();
+    this.sizeObserver = null;
   }
 
   private onContentSlotChange = () => {
     this.syncBodyTruncation();
+    this.syncSlottedSizes();
   };
 
   private bindSlots() {
     if (!this.shadowRoot) return;
     this.contentSlotEl = this.shadowRoot.querySelector("slot:not([name])") as HTMLSlotElement | null;
+    this.actionsSlotEl = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
     this.contentSlotEl?.addEventListener("slotchange", this.onContentSlotChange);
+    this.actionsSlotEl?.addEventListener("slotchange", this.onContentSlotChange);
     this.syncBodyTruncation();
+    this.syncSlottedSizes();
   }
 
   private clearGeneratedTruncation() {
@@ -59,6 +71,49 @@ class MuiContextBar extends HTMLElement {
         bodyEl.setAttribute("truncate", "");
         bodyEl.setAttribute("data-context-bar-truncate", "true");
       });
+    });
+  }
+
+  private clearManagedSizes() {
+    this.managedSizeEls.clear();
+    this.sizeObserver?.disconnect();
+  }
+
+  private getSlottedRoots() {
+    return [
+      ...(this.contentSlotEl?.assignedElements({ flatten: true }) || []),
+      ...(this.actionsSlotEl?.assignedElements({ flatten: true }) || []),
+    ] as HTMLElement[];
+  }
+
+  private getSizeManagedElements(root: HTMLElement) {
+    const elements = [root, ...(Array.from(root.querySelectorAll("*")) as HTMLElement[])];
+    return elements.filter((el) => {
+      const tagName = el.tagName.toLowerCase();
+      return tagName === "mui-body" || tagName === "mui-link" || tagName === "mui-button" || tagName === "mui-status";
+    });
+  }
+
+  private syncSlottedSizes() {
+    this.clearManagedSizes();
+    const roots = this.getSlottedRoots();
+
+    roots.forEach((root) => {
+      if (!(root instanceof HTMLElement)) return;
+
+      this.getSizeManagedElements(root).forEach((el) => {
+        this.managedSizeEls.add(el);
+        if (el.getAttribute("size") !== "x-small") {
+          el.setAttribute("size", "x-small");
+        }
+      });
+    });
+
+    if (!this.managedSizeEls.size) return;
+
+    this.sizeObserver = new MutationObserver(() => this.syncSlottedSizes());
+    this.managedSizeEls.forEach((el) => {
+      this.sizeObserver?.observe(el, { attributes: true, attributeFilter: ["size"] });
     });
   }
 
@@ -98,7 +153,9 @@ class MuiContextBar extends HTMLElement {
           max-width: 100%;
         }
         .summary slot {
-          display: block;
+          display: flex;
+          align-items: center;
+          gap: var(--space-100);
           min-width: 0;
           max-width: 100%;
         }

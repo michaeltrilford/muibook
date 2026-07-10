@@ -22,6 +22,10 @@ class DesignChangelog extends HTMLElement {
         margin-bottom: var(--space-400);
       }
 
+      .header-title {
+        min-width: 0;
+      }
+
       .section {
         padding: var(--space-500) var(--space-500) var(--space-500) var(--space-500);
         background: var(--surface-elevated-200);
@@ -94,9 +98,12 @@ class DesignChangelog extends HTMLElement {
 
       if (trimmed === "## Header [End]") {
         inHeader = false;
-        const headerContent = headerLines.join("\n");
+        const titleLines = headerLines.filter((headerLine) => !this.isPackageLink(headerLine));
+        const packageLines = headerLines.filter((headerLine) => this.isPackageLink(headerLine));
+        const titleContent = titleLines.join("\n");
+        const packageContent = packageLines.join("\n");
         cardContent.push(
-          `<mui-h-stack alignX="space-between" alignY="center" class="header">${headerContent}</mui-h-stack>`,
+          `<mui-h-stack alignX="space-between" alignY="center" class="header"><mui-h-stack alignY="center" space="var(--space-200)" class="header-title">${titleContent}</mui-h-stack>${packageContent}</mui-h-stack>`,
         );
         continue;
       }
@@ -135,6 +142,13 @@ class DesignChangelog extends HTMLElement {
     // Replace ### headings inside sections (already added with <mui-heading>)
     html = html.replace(/^## (.*)$/gm, "<mui-heading level='2' size='3'>$1</mui-heading>");
 
+    // Replace status metadata
+    html = html.replace(/^_Status:\s*([^_]+)_$/gm, (_, status) => {
+      const label = status.trim();
+      const variant = this.getStatusVariant(label);
+      return `<mui-status size="small" variant="${variant}">${label}</mui-status>`;
+    });
+
     // Replace links
     html = html.replace(
       /\[([^\]]+)\]\(([^)]+)\)/g,
@@ -157,6 +171,17 @@ class DesignChangelog extends HTMLElement {
     });
 
     return html;
+  }
+
+  isPackageLink(line) {
+    return /^\[Package\]\([^)]+\)$/.test(line.trim());
+  }
+
+  getStatusVariant(label) {
+    const normalized = label.toLowerCase();
+    if (normalized === "released") return "positive";
+    if (normalized === "wip" || normalized === "in-progress" || normalized === "in progress") return "warning";
+    return "info";
   }
 }
 

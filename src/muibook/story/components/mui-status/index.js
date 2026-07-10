@@ -58,10 +58,12 @@ class storyStatus extends HTMLElement {
 
       <story-card title="Sizes">
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
+          <mui-status size="x-small">Draft</mui-status>
           <mui-status size="small">Draft</mui-status>
           <mui-status size="medium">Draft</mui-status>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
+          &lt;mui-status size=&quot;x-small&quot;&gt;Draft&lt;/mui-status&gt;<br />
           &lt;mui-status size=&quot;small&quot;&gt;Draft&lt;/mui-status&gt;<br />
           &lt;mui-status size=&quot;medium&quot;&gt;Draft&lt;/mui-status&gt;
         </story-code-block>

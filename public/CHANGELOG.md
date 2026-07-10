@@ -2,6 +2,8 @@
 
 ## v20.2.0
 
+_Status: WIP_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/20.2.0)
 
 ## Header [End]
@@ -16,12 +18,14 @@
 - Added the full generated VSCode file-type icon map with 1,150 supported `file_type_*` icons, plus a Muibook story gallery for browsing every available icon.
 - Added `--file-icon-filter` to `mui-tokens.css`, using `brightness(0.8) contrast(1)` in light mode and `brightness(2) contrast(2)` in dark mode.
 - Added `mui-context-bar` as a dedicated slottable context row for active task, steering, or attachment context above Prompt.
+- `mui-status` now supports `size="x-small"` with the same compact footprint as `mui-badge size="x-small"` for dense rows and Context Bar compositions.
 - `mui-prompt-message` now applies default body rhythm between direct response children, with `--prompt-message-body-space` as the escape hatch for tighter or looser messages.
 - `mui-prompt-message` footer actions now reveal on hover/focus by default and support `footer-visibility="always"` for app-pinned message action bars.
 - `mui-worker` now adds balanced open-detail spacing with `padding-block-start` and `padding-block-end` set to `var(--space-200)`.
 - `mui-worker` now supports `status`, `nested`, and `pending` states for non-interactive Thinking rows, compact child work rows, and Thinking-only shimmer labels.
 - Top-level `mui-worker` rows in the `mui-prompt-message` header slot now draw the divider on the summary row, while nested and status rows remain unruled.
 - `mui-prompt` now exposes a plain `slot="context"` above the prompt surface and no longer creates an internal context sheet; use `mui-context-bar` when a composed context row is needed.
+- `mui-context-bar` now normalizes slotted `mui-body`, `mui-link`, `mui-button`, and `mui-status` content to `size="x-small"` and vertically centers summary slot content such as text paired with badges or statuses.
 - `mui-code` inline snippets now use tighter prose padding, `var(--space-000) var(--space-100)`, when placed inside `mui-body` or `mui-list-item`.
 
 ### Fixed
@@ -130,6 +134,7 @@
 - `mui-input` slotted inline and hint icons now use slightly larger relative icon sizes for `medium` and `large` inputs.
 - `mui-chip` now defaults to `size="medium"`.
 - `mui-chip` layout now binds container height explicitly to token heights for all sizes (`x-small`, `small`, `medium`, `large`).
+- `mui-chip` dismiss padding for `x-small` and `small` sizes now uses tighter token-based spacing to better align the close action.
 - `mui-chip` slot styling for `before` and `after` icons now targets slots directly (`slot[name="before"]::slotted` and `slot[name="after"]::slotted`) utilizing token math (`calc(var(--space-050) * -1)`) for perfect inner margin alignment, fixing spacing regressions when both before and after icons/avatars are present.
 - `mui-chip-rail` rail action controls now scale dynamically across sizes to perfectly match the height of the chips inside the rail.
 - `mui-chip-rail` now adjusts its rail mask surface automatically when card content applies `card-slot`, while still supporting explicit `--chip-rail-background` overrides.

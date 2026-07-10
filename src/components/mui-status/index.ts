@@ -1,5 +1,5 @@
 type Variant = "info" | "positive" | "warning" | "attention";
-type Size = "small" | "medium";
+type Size = "x-small" | "small" | "medium";
 type StatusColor =
   | "grey"
   | "purple"
@@ -116,6 +116,12 @@ class MuiStatus extends HTMLElement {
     };
 
     const sizeMap: Record<Size, { fontSize: string; minHeight: string; padding: string; gap: string }> = {
+      "x-small": {
+        fontSize: "var(--font-size-15)",
+        minHeight: "2rem",
+        padding: "0 var(--space-100)",
+        gap: "var(--space-050)",
+      },
       small: {
         fontSize: "var(--text-font-size-xs)",
         minHeight: "2.2rem",

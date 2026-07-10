@@ -11,10 +11,10 @@ export const muiApi = {
       },
       {
         name: "size",
-        type: { text: '"small" | "medium"' },
+        type: { text: '"x-small" | "small" | "medium"' },
         default: "medium",
         description:
-          "Controls the compact scale. Use small for dense lists, tables, and slats; use medium as the default.",
+          "Controls the compact scale. Use x-small next to badges or in very dense context rows, small for dense lists, tables, and slats, and medium as the default.",
       },
       {
         name: "color",

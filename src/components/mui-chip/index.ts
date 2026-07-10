@@ -438,11 +438,11 @@ class MuiChip extends HTMLElement {
       }
 
       :host([dismiss][size="x-small"]) .container {
-        padding-right: calc(var(--space-050) + 0.1rem);
+        padding-right: calc(var(--space-050) - var(--stroke-size-100));
       }
 
       :host([dismiss][size="small"]) .container {
-        padding-right: calc(var(--space-100) + 0.1rem);
+        padding-right: var(--space-050);
       }
 
       :host([dismiss][size="medium"]) .container {
