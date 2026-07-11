@@ -36,38 +36,38 @@ class storyResponsive extends HTMLElement {
     const ProgressTableColumns = `1fr 1fr 1fr 126px`;
 
     const ProgressDesktopView = /*html*/ `
-      <mui-table> 
-        <mui-row-group heading> 
-          <mui-row columns="${ProgressTableColumns}"> 
-            <mui-cell>File</mui-cell> 
-            <mui-cell>Due date</mui-cell> 
-            <mui-cell>Status</mui-cell> 
-            <mui-cell>Automation</mui-cell> 
-          </mui-row> 
-        </mui-row-group> 
-        <mui-row-group> 
-          <mui-row columns="${ProgressTableColumns}"> 
-            <mui-cell align-y="center"><mui-body size="small">Alison Max</mui-body></mui-cell> 
+      <mui-table>
+        <mui-row-group heading>
+          <mui-row columns="${ProgressTableColumns}">
+            <mui-cell>File</mui-cell>
+            <mui-cell>Due date</mui-cell>
+            <mui-cell>Status</mui-cell>
+            <mui-cell>Automation</mui-cell>
+          </mui-row>
+        </mui-row-group>
+        <mui-row-group>
+          <mui-row columns="${ProgressTableColumns}">
+            <mui-cell align-y="center"><mui-body size="small">Alison Max</mui-body></mui-cell>
             <mui-cell align-y="center"><mui-v-stack space="var(--space-050)"><mui-body size="small">27/07/2020</mui-body><mui-status size="small" color="blue">Quarterly</mui-status></mui-v-stack></mui-cell>
             <mui-cell align-y="center"><mui-status size="small" color="orange">Unlodged</mui-status></mui-cell>
             <mui-cell align-y="center">
               <mui-progress-ring value="2" max="4" label="Transactions automated" style="margin-inline: auto;" size="small"></mui-progress-ring>
-            </mui-cell> 
-          </mui-row> 
-        </mui-row-group> 
+            </mui-cell>
+          </mui-row>
+        </mui-row-group>
       </mui-table>
     `;
 
     const ProgressMobileView = /*html*/ `
         <mui-v-stack space="var(--space-400)">
           <mui-progress-ring value="2" max="4" label="Transactions automated" style="margin-inline: auto;" size="large"></mui-progress-ring>
-          <mui-heading 
-            size="6" 
+          <mui-heading
+            size="6"
             style="width: 100%; text-align: center;"
           >
             Transactions automated
           </mui-heading>
-          
+
           <mui-rule></mui-rule>
 
           <mui-grid col="1fr 1fr 1fr">
@@ -418,7 +418,7 @@ class storyResponsive extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -426,7 +426,7 @@ class storyResponsive extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports="@muibook/components/mui-responsive">
         ${stories}
       </story-template>

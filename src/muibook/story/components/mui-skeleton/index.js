@@ -92,7 +92,7 @@ class StorySkeleton extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
+
         imports='["@muibook/components/mui-skeleton"]'>
         <story-quicklinks
           slot="message"

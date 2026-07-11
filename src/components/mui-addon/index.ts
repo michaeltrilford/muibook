@@ -71,13 +71,13 @@ class MuiAddon extends HTMLElement {
         }
         :host([slot="before"]) {
           border-right: none;
-          border-top-left-radius: var(--radius-100);
-          border-bottom-left-radius: var(--radius-100);
+          border-top-left-radius: var(--input-composed-radius, var(--radius-100));
+          border-bottom-left-radius: var(--input-composed-radius, var(--radius-100));
         }
         :host([slot="after"]) {
           border-left: none;
-          border-top-right-radius: var(--radius-100);
-          border-bottom-right-radius: var(--radius-100);
+          border-top-right-radius: var(--input-composed-radius, var(--radius-100));
+          border-bottom-right-radius: var(--input-composed-radius, var(--radius-100));
         }
       </style>
       <slot></slot>

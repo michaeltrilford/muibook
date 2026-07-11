@@ -574,14 +574,14 @@ class MuiSlideFrame extends HTMLElement {
                     aria-label="Slide ratio">
                   </mui-select>
                   <mui-button id="slideFrameExitPresentBtn" size="x-small" variant="tertiary" hidden style="margin-right: var(--space-025)">Exit Fullscreen</mui-button>
-                  <mui-body class="footer-counter" id="footerCounter" size="x-small" variant="optional" hidden>Section 1/1</mui-body>
+                  <mui-body class="footer-counter" id="footerCounter" size="x-small" variant="secondary" hidden>Section 1/1</mui-body>
                   <slot name="footer-after"></slot>
                 </mui-h-stack>
               </mui-h-stack>
             </mui-v-stack>
           </div>
         </div>
-        <div class="notes"><mui-body variant="optional" size="x-small">Notes...</mui-body><slot name="notes"></slot></div>
+        <div class="notes"><mui-body variant="secondary" size="x-small">Notes...</mui-body><slot name="notes"></slot></div>
       </div>
     `;
     this.defaultSlot = this.shadowRoot.querySelector("slot:not([name])");

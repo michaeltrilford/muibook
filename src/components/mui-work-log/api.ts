@@ -17,7 +17,7 @@ export const muiApi = {
       {
         name: "rule",
         type: { text: "boolean" },
-        description: "Adds a trailing rule when Worker is used outside the Prompt Message header slot. Top-level header rows draw their divider on the summary row.",
+        description: "Adds a trailing rule when Worker is used outside the Chat Message header slot. Top-level header rows draw their divider on the summary row.",
       },
       {
         name: "nested",

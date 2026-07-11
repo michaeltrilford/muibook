@@ -53,7 +53,7 @@ class storyStepper extends HTMLElement {
 
         <story-card
           id="horizontal"
-          title="Horizontal" 
+          title="Horizontal"
           description="Horizontal direction"
         >
           <div slot="body">
@@ -242,7 +242,7 @@ class storyStepper extends HTMLElement {
 
         <story-card
           id="vertical"
-          title="Vertical" 
+          title="Vertical"
           description="Vertical direction"
         >
           <div slot="body">
@@ -266,7 +266,7 @@ class storyStepper extends HTMLElement {
 
         <story-card
           id="horizontal-secondary"
-          title="Horizontal: Secondary" 
+          title="Horizontal: Secondary"
           description="Horizontal direction"
         >
           <div slot="body">
@@ -299,7 +299,7 @@ class storyStepper extends HTMLElement {
 
         <story-card
           id="vertical-secondary"
-          title="Vertical: Secondary" 
+          title="Vertical: Secondary"
           description="Vertical direction"
         >
           <div slot="body">
@@ -336,7 +336,7 @@ class storyStepper extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -344,7 +344,7 @@ class storyStepper extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-stepper"]'>
         <story-quicklinks
           slot="message"

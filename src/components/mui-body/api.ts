@@ -4,7 +4,7 @@ export const muiApi = {
     attributes: [
       { name: "size", type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets the body text size." },
       { name: "weight", type: { text: '"regular" | "medium" | "bold"' }, default: "regular", description: "Sets the body text weight." },
-      { name: "variant", type: { text: '"default" | "optional" | "info" | "success" | "warning" | "error"' }, default: "default", description: "Sets the semantic text color treatment." },
+      { name: "variant", type: { text: '"default" | "secondary" | "info" | "positive" | "warning" | "attention"' }, default: "default", description: "Sets the semantic text color treatment." },
       { name: "truncate", type: { text: "boolean" }, default: "false", description: "Clamps body text to a single line with ellipsis when the available width is constrained." },
       { name: "clamp", type: { text: "number" }, description: "Limits body text to the provided number of lines. Ignored when truncate is present." },
     ],

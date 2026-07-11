@@ -1,14 +1,14 @@
 import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
-  PromptPreview: {
-    title: "Prompt Preview",
-    description: "Prompt Preview shows long pasted content in a structured box with title and badge context.",
+  PreviewChip: {
+    title: "Preview Chip",
+    description: "Preview Chip shows long pasted content in a structured box with title and badge context.",
     hero: [""],
     figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1"],
-    storybook: ["https://stories.muibook.com/?path=/docs/ai-llm-prompt-preview--docs"],
-    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-preview/index.ts"],
-    website: ["https://muibook.com/prompt-preview"],
+    storybook: ["https://stories.muibook.com/?path=/docs/ai-llm-preview-chip--docs"],
+    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-preview-chip/index.ts"],
+    website: ["https://muibook.com/preview-chip"],
     guides: ["https://guides.muibook.com/prompt"],
     usage: {
       list: [

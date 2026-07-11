@@ -93,14 +93,14 @@ class storySlideFrame extends HTMLElement {
         usage="Each mui-slide-section in the default slot is a slide section/page.|||Use one mui-slide-section per page for clean composition.|||Use active-section (0-based) to control which page is visible.">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
-          <mui-body slot="header-description" size="small" variant="optional">Core metrics and roadmap outcomes.</mui-body>
+          <mui-body slot="header-description" size="small" variant="secondary">Core metrics and roadmap outcomes.</mui-body>
           ${quarterlyPageOne}
           ${quarterlyPageTwo}
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
           &lt;mui-slide-frame ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." scroll&gt;<br />
           &nbsp;&nbsp;&lt;mui-badge slot="header" variant="neutral" size="small"&gt;Q1&lt;/mui-badge&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="optional"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="secondary"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
           &nbsp;&nbsp;&lt;mui-slide-section&gt;...&lt;/mui-slide-section&gt;<br />
           &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
@@ -114,14 +114,14 @@ class storySlideFrame extends HTMLElement {
         usage="Use hide-header to suppress the header row while preserving slide navigation and footer metadata.">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." hide-header scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
-          <mui-body slot="header-description" size="small" variant="optional">Core metrics and roadmap outcomes.</mui-body>
+          <mui-body slot="header-description" size="small" variant="secondary">Core metrics and roadmap outcomes.</mui-body>
           ${quarterlyPageOne}
           ${quarterlyPageTwo}
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
           &lt;mui-slide-frame ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." hide-header scroll&gt;<br />
           &nbsp;&nbsp;&lt;mui-badge slot="header" variant="neutral" size="small"&gt;Q1&lt;/mui-badge&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="optional"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="secondary"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
           &nbsp;&nbsp;&lt;mui-slide-section&gt;...&lt;/mui-slide-section&gt;<br />
           &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
@@ -135,14 +135,14 @@ class storySlideFrame extends HTMLElement {
         usage="Use hide-footer to suppress footer content and counter together.">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." hide-footer scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
-          <mui-body slot="header-description" size="small" variant="optional">Core metrics and roadmap outcomes.</mui-body>
+          <mui-body slot="header-description" size="small" variant="secondary">Core metrics and roadmap outcomes.</mui-body>
           ${quarterlyPageOne}
           ${quarterlyPageTwo}
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
           &lt;mui-slide-frame ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." hide-footer scroll&gt;<br />
           &nbsp;&nbsp;&lt;mui-badge slot="header" variant="neutral" size="small"&gt;Q1&lt;/mui-badge&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="optional"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="secondary"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
           &nbsp;&nbsp;&lt;mui-slide-section&gt;...&lt;/mui-slide-section&gt;<br />
           &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
@@ -156,20 +156,20 @@ class storySlideFrame extends HTMLElement {
         usage="Notes can be open in normal mode for review.|||When entering fullscreen, notes are intentionally hidden so presentation layout stays stable.">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." notes-open scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
-          <mui-body slot="header-description" size="small" variant="optional">Core metrics and roadmap outcomes.</mui-body>
+          <mui-body slot="header-description" size="small" variant="secondary">Core metrics and roadmap outcomes.</mui-body>
           ${quarterlyPageOne}
           ${quarterlyPageTwo}
-          <mui-body slot="notes" size="small" variant="optional">Speaker notes: these are visible in normal mode and hidden in fullscreen.</mui-body>
+          <mui-body slot="notes" size="small" variant="secondary">Speaker notes: these are visible in normal mode and hidden in fullscreen.</mui-body>
         </mui-slide-frame>
         <story-code-block slot="footer" scrollable>
           &lt;mui-slide-frame ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." notes-open scroll&gt;<br />
           &nbsp;&nbsp;&lt;mui-badge slot="header" variant="neutral" size="small"&gt;Q1&lt;/mui-badge&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="optional"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="header-description" size="small" variant="secondary"&gt;Core metrics and roadmap outcomes.&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;!-- Page 1 --&gt;<br />
           &nbsp;&nbsp;&lt;mui-slide-section&gt;...&lt;/mui-slide-section&gt;<br />
           &nbsp;&nbsp;&lt;!-- Page 2 --&gt;<br />
           &nbsp;&nbsp;&lt;mui-slide-section&gt;...&lt;/mui-slide-section&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body slot="notes" size="small" variant="optional"&gt;Speaker notes...&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body slot="notes" size="small" variant="secondary"&gt;Speaker notes...&lt;/mui-body&gt;<br />
           &lt;/mui-slide-frame&gt;
         </story-code-block>
       </story-card>
@@ -203,7 +203,7 @@ class storySlideFrame extends HTMLElement {
         guides="${data?.guides || ""}"
         storybook="${data?.storybook || ""}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
+
         imports='["@muibook/components/mui-slide-frame", "@muibook/components/mui-slide-section"]'>
         ${stories}
       </story-template>

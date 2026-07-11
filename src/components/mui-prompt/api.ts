@@ -41,7 +41,7 @@ export const muiApi = {
         name: "context-mode",
         type: { text: '"icon" | "chip"' },
         default: "icon",
-        description: "Controls which content inside `mui-prompt-toggle` is visible.",
+        description: "Controls which content inside `mui-action-toggle` is visible.",
       },
       {
         name: "preview-dialog-width",
@@ -62,7 +62,7 @@ export const muiApi = {
         description: "Applies `var(--border-thin)` to the internal preview dialog.",
       },
       {
-        name: "--prompt-preview-dialog-border",
+        name: "--preview-chip-dialog-border",
         type: { text: "css var" },
         default: "var(--dialog-border), or var(--border-thin) when preview-dialog-bordered is set",
         description: "Border value passed to the internal preview dialog for custom border styling.",
@@ -168,7 +168,7 @@ export const muiApi = {
     ],
     slots: [
       { name: "context", description: "Optional context content displayed above the prompt input, usually `mui-context-bar`." },
-      { name: "preview", description: "Preview items displayed above the prompt input, typically `mui-prompt-preview`." },
+      { name: "preview", description: "Preview items displayed above the prompt input, typically `mui-preview-chip`." },
       { name: "input", description: "Optional replacement content for the built-in textarea region." },
       { name: "actions", description: "Leading prompt actions such as buttons, icons, toggles, or rules." },
       { name: "actions-right", description: "Trailing action override for the built-in submit or state action." },
@@ -195,7 +195,7 @@ export const muiApi = {
     cssProperties: [
       { name: "--prompt-accent-primary", description: "Primary accent used to synthesize prompt hover and focus effects." },
       { name: "--prompt-accent-secondary", description: "Optional secondary accent used in prompt hover and focus effects." },
-      { name: "--prompt-preview-code-background", description: "Background passed to auto-preview `mui-code` content displayed inside Prompt." },
+      { name: "--preview-chip-code-background", description: "Background passed to auto-preview `mui-code` content displayed inside Prompt." },
       { name: "--prompt-accent-primary-derived", description: "Resolved primary effect accent; can be overridden to tune prompt effects." },
       { name: "--prompt-accent-secondary-derived", description: "Resolved secondary effect accent; can be overridden to tune prompt effects." },
       { name: "--prompt-accent-mid", description: "Intermediate effect accent blended from the prompt accent colors." },

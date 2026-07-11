@@ -45,10 +45,10 @@ export const muiDocs: MuiDocs = {
             "https://images.ctfassets.net/i5uwscj4pkk2/2NAalFsBAkeBz69hO093eb/b9390132c50df11749aaa47dafdb2b93/default.png",
         },
         {
-          key: "optional",
-          title: "Optional",
+          key: "secondary",
+          title: "Secondary",
           description:
-            "Optional text is visually lighter, providing subtle contrast to Standard body text. It comes in four sizes—x-small, small, medium, and large—for tailored readability. Font weights of regular and bold are also available, giving flexibility for emphasis or hierarchy.",
+            "Secondary text is visually lighter, providing subtle contrast to standard body text. It supports the full Body size and weight range for hierarchy and supporting content.",
           image:
             "",
         },
@@ -61,8 +61,8 @@ export const muiDocs: MuiDocs = {
             "",
         },
         {
-          key: "success",
-          title: "Success",
+          key: "positive",
+          title: "Positive",
           description:
             "Indicates positive feedback with the option of x-small, small, medium and large for tailored readability. In addition to the size, font weight of regular and bold is available.",
           image:
@@ -77,10 +77,10 @@ export const muiDocs: MuiDocs = {
             "https://images.ctfassets.net/i5uwscj4pkk2/2UJaVEXU2fbKPi3L7afjt/e82b06ef54e92cf2d6f6e984d8a27079/warning.png",
         },
         {
-          key: "error",
-          title: "Error",
+          key: "attention",
+          title: "Attention",
           description:
-            "Highlights error messages with the option of x-small, small, medium, and large for tailored readability. In addition to the size, font weight of regular and bold is available.",
+            "Highlights content requiring attention with the option of x-small, small, medium, and large for tailored readability. In addition to the size, font weight of regular and bold is available.",
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/egb4l4ubM0A6T44xAxDgz/5d94fa59f0069b689da537710650e22b/error.png",
         },

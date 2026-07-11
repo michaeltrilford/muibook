@@ -117,13 +117,13 @@ html[data-brand="insert-your-brand"] {
 :where(html) {
   --color-bg: var(--white);
   --text-color: var(--grey-900);
-  --text-color-error: var(--red-400);
+  --text-color-attention: var(--red-400);
   --surface-elevated: var(--grey-50);
 }
 
 html[data-theme="dark"] {
   --color-bg: var(--grey-900);
   --text-color: var(--grey-50);
-  --text-color-error: var(--red-200);
+  --text-color-attention: var(--red-200);
 }
 ```

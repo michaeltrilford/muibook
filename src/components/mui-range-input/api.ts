@@ -11,6 +11,7 @@ export const muiApi = {
       { name: "bubble", type: { text: "boolean" }, default: "false", description: "Displays value feedback while the control is hovered, focused or dragged." },
       { name: "bubble-format", type: { text: '"number" | "time"' }, default: "number", description: "Formats the feedback bubble as a number or `m:ss` time." },
       { name: "label", type: { text: "string" }, default: "Range input", description: "Accessible label for the internal range input." },
+      { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Controls the thumb and track scale." },
     ],
     events: [
       { name: "input", description: "Composed, bubbling event dispatched while the value changes with numeric `detail.value`." },
@@ -18,7 +19,12 @@ export const muiApi = {
     ],
     methods: [{ name: "focus", description: "Moves focus to the internal native range input." }],
     cssProperties: [
-      { name: "--range-input-accent-color", description: "Track/thumb accent color." },
+      { name: "--range-input-accent-color", description: "Filled track color." },
+      { name: "--range-input-track-color", description: "Unfilled track color." },
+      { name: "--range-input-track-height", description: "Visible track thickness." },
+      { name: "--range-input-track-radius", description: "Track corner radius." },
+      { name: "--range-input-thumb-color", description: "Draggable thumb background." },
+      { name: "--range-input-thumb-size", description: "Draggable thumb width and height." },
       { name: "--range-input-bubble-background", description: "Feedback bubble background." },
       { name: "--range-input-bubble-border-color", description: "Feedback bubble border color." },
     ],

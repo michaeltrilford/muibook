@@ -56,7 +56,7 @@ class storyTextarea extends HTMLElement {
           <mui-textarea label="Feedback" variant="error" value="Needs correction"></mui-textarea>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-textarea label="Feedback" variant="error" value="Needs correction"&gt;&lt;/mui-textarea&gt;
+          &lt;mui-textarea label="Feedback" variant="attention" value="Needs correction"&gt;&lt;/mui-textarea&gt;
         </story-code-block>
       </story-card>
 
@@ -108,7 +108,7 @@ class storyTextarea extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
+
         imports='["@muibook/components/mui-textarea"]'>
         ${stories}
       </story-template>

@@ -339,19 +339,21 @@ class StoryTemplate extends HTMLElement {
 
     const linksBelowContent = links.length
       ? /*html*/ `
-      <mui-dropdown position="right">
+      <mui-dropdown position="right" size="small">
         <mui-button slot="action" variant="tertiary" icon-only size="small" aria-label="More options">
           <mui-icon-ellipsis size="small"></mui-icon-ellipsis>
         </mui-button>
-        ${links
+        <mui-menu>
+          ${links
           .map(
-            (link) => /*html*/ `
+          (link) => /*html*/ `
           <mui-link target="_blank" href="${link.href}" rel="noopener" variant="tertiary" size="small">
-            ${link.label}<${link.icon} slot="after" size="xx-small"></${link.icon}>
+          ${link.label}<${link.icon} slot="after" size="xx-small"></${link.icon}>
           </mui-link>
-        `,
+          `,
           )
           .join("")}
+        </mui-menu>
       </mui-dropdown>
     `
       : "";

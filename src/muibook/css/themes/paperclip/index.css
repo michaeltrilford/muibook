@@ -192,10 +192,10 @@ html[data-brand="paperclip"][data-theme="light"] {
   --range-input-accent-color: var(--blue-500);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
-  --prompt-preview-dismiss-secondary-background: var(--blue-500);
-  --prompt-preview-dismiss-secondary-background-hover: var(--blue-600);
-  --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--blue-500);
-  --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--blue-600);
+  --preview-chip-dismiss-secondary-background: var(--blue-500);
+  --preview-chip-dismiss-secondary-background-hover: var(--blue-600);
+  --preview-chip-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--blue-500);
+  --preview-chip-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--blue-600);
 
   /* Stroke */
   --outline-color: var(--blue-500);
@@ -204,10 +204,10 @@ html[data-brand="paperclip"][data-theme="light"] {
   /* Text */
   --text-color: var(--blue-500);
   --text-color-info: var(--blue-500);
-  --text-color-success: var(--blue-500);
+  --text-color-positive: var(--blue-500);
   --text-color-warning: var(--blue-500);
-  --text-color-error: var(--blue-500);
-  --text-color-optional: var(--blue-500);
+  --text-color-attention: var(--blue-500);
+  --text-color-secondary: var(--blue-500);
 
   /* Components */
   --switch-track-background: var(--blue-500);
@@ -503,9 +503,9 @@ html[data-brand="paperclip"][data-theme="light"] {
   --chip-dismiss-action-background-hover: color-mix(in srgb, var(--blue-100) 0%, transparent);
   --chip-dismiss-action-filter: none;
 
-  --dropdown-background: var(--white);
-  --dropdown-border-color: var(--blue-500);
-  --dropdown-shadow-color: color-mix(in srgb, var(--blue-500) 10%, transparent);
+  --menu-background: var(--white);
+  --menu-border-color: var(--blue-500);
+  --menu-shadow-color: color-mix(in srgb, var(--blue-500) 10%, transparent);
   --dropdown-button-background-hover: var(--blue-500);
 
   --progress-bar-background: var(--blue-500);
@@ -665,10 +665,10 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --range-input-accent-color: var(--white);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
-  --prompt-preview-dismiss-secondary-background: var(--blue-500);
-  --prompt-preview-dismiss-secondary-background-hover: var(--blue-600);
-  --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--white);
-  --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--white);
+  --preview-chip-dismiss-secondary-background: var(--blue-500);
+  --preview-chip-dismiss-secondary-background-hover: var(--blue-600);
+  --preview-chip-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--white);
+  --preview-chip-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--white);
 
   /* Stroke */
   --outline-color: var(--white);
@@ -677,10 +677,10 @@ html[data-brand="paperclip"][data-theme="dark"] {
   /* Text */
   --text-color: var(--white);
   --text-color-info: var(--white);
-  --text-color-success: var(--white);
+  --text-color-positive: var(--white);
   --text-color-warning: var(--white);
-  --text-color-error: var(--white);
-  --text-color-optional: var(--white);
+  --text-color-attention: var(--white);
+  --text-color-secondary: var(--white);
 
   /* Components */
   --switch-track-background: var(--white);
@@ -978,9 +978,9 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --chip-dismiss-action-background-hover: color-mix(in srgb, var(--blue-700) 0%, transparent);
   --chip-dismiss-action-filter: none;
 
-  --dropdown-background: var(--blue-500);
-  --dropdown-border-color: var(--white);
-  --dropdown-shadow-color: color-mix(in srgb, var(--blue-500) 30%, transparent);
+  --menu-background: var(--blue-500);
+  --menu-border-color: var(--white);
+  --menu-shadow-color: color-mix(in srgb, var(--blue-500) 30%, transparent);
   --dropdown-button-background-hover: var(--blue-500);
 
   --progress-bar-background: var(--white);

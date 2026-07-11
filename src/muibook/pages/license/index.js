@@ -28,7 +28,7 @@ class LicensePage extends HTMLElement {
                 <mui-field label="Contact Email">
                   <mui-input id="license-contact-email" type="email" placeholder="you@company.com"></mui-input>
                   <mui-form-message slot="message" size="small">
-                    <mui-icon-info slot="before" size="small" color="var(--text-color-optional)"></mui-icon-info>
+                    <mui-icon-info slot="before" size="small" color="var(--text-color-secondary)"></mui-icon-info>
                     We reply with a commercial licensing path based on your use case.
                   </mui-form-message>
                 </mui-field>

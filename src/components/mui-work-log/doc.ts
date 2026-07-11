@@ -13,10 +13,10 @@ export const muiDocs: MuiDocs = {
     guides: ["https://guides.muibook.com/prompt"],
     usage: {
       list: [
-        "Use inside the header slot of Prompt Message when an agent response needs a collapsible work summary.",
+        "Use inside the header slot of Chat Message when an agent response needs a collapsible work summary.",
         "Set label to the short summary, such as elapsed work time.",
         "Use the default slot for compact work detail rows.",
-        "Top-level Worker in a Prompt Message header draws its divider on the summary row.",
+        "Top-level Worker in a Chat Message header draws its divider on the summary row.",
         "Use rule when a trailing separator is needed outside the header slot.",
         "Use status with pending for active Thinking states that should shimmer without accordion interaction.",
         "Use pending without status for expandable active work states such as Working for 5s, without applying the Thinking shimmer.",
@@ -36,7 +36,7 @@ export const muiDocs: MuiDocs = {
     compositions: { description: "", items: [] },
     related: {
       items: [
-        { name: "Prompt Message", link: "https://guides.muibook.com/prompt-message" },
+        { name: "Chat Message", link: "https://guides.muibook.com/chat-message" },
         { name: "Accordion Core", link: "https://guides.muibook.com/accordion-core" },
       ],
     },

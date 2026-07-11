@@ -116,9 +116,9 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
-          title="Logo" 
-          description="The logo area, positioned at the top-right of the card, has a maximum size of 220×126px and scales down responsively on smaller devices." 
+        <story-card
+          title="Logo"
+          description="The logo area, positioned at the top-right of the card, has a maximum size of 220×126px and scales down responsively on smaller devices."
           usage="
             Import the logo using the logo property|||
             Set the logo-height to an appropriate size no larger than 126px|||
@@ -184,8 +184,8 @@ class storySmartCard extends HTMLElement {
         </story-card>
 
 
-        <story-card 
-          title="Background-Image" 
+        <story-card
+          title="Background-Image"
           description="Add a unique background image or an alternative to logo placement"
           usageLink="https://guides.muibook.com/smart-card"
         >
@@ -232,7 +232,7 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Background-Color" 
+        <story-card title="Background-Color"
           description="Apply a background colour that aligns with your organisation’s brand."
           usageLink="https://guides.muibook.com/smart-card">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
@@ -309,7 +309,7 @@ class storySmartCard extends HTMLElement {
         </story-card>
 
 
-        <story-card title="Reward Cards" 
+        <story-card title="Reward Cards"
           description="Utilising the provided props to create bespoke digital cards."
           usageLink="https://guides.muibook.com/smart-card"
         >
@@ -441,7 +441,7 @@ class storySmartCard extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -449,7 +449,7 @@ class storySmartCard extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-smart-card"]'>
         ${stories}
       </story-template>

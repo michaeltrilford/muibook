@@ -2,7 +2,7 @@ import "../mui-body";
 
 class MuiRangeInput extends HTMLElement {
   static get observedAttributes() {
-    return ["min", "max", "value", "step", "disabled", "bubble", "bubble-format"];
+    return ["min", "max", "value", "step", "disabled", "bubble", "bubble-format", "size"];
   }
 
   constructor() {
@@ -11,12 +11,19 @@ class MuiRangeInput extends HTMLElement {
   }
 
   connectedCallback() {
+    if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.render();
     this.bind();
   }
 
-  attributeChangedCallback(oldValue: string | null, newValue: string | null) {
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
     if (oldValue === newValue) return;
+    if (name === "value") {
+      const input = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
+      if (input && input.value !== (newValue || "0")) input.value = newValue || "0";
+      this.updateVisuals();
+      return;
+    }
     this.render();
     this.bind();
   }
@@ -38,8 +45,17 @@ class MuiRangeInput extends HTMLElement {
     }
   }
 
-  private getThumbSize() {
-    return Number(this.getAttribute("thumb-size") || "16");
+  private getThumbSize(input: HTMLInputElement) {
+    const value = getComputedStyle(input).getPropertyValue("--range-input-thumb-size-current").trim();
+    const amount = Number.parseFloat(value);
+    if (!Number.isFinite(amount)) return 16;
+    if (value.endsWith("rem")) {
+      return amount * Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
+    }
+    if (value.endsWith("em")) {
+      return amount * Number.parseFloat(getComputedStyle(input).fontSize);
+    }
+    return amount;
   }
 
   private formatTime(seconds: number) {
@@ -66,10 +82,22 @@ class MuiRangeInput extends HTMLElement {
     const value = Number(input.value || "0");
     const range = Math.max(0, max - min);
     const progress = range > 0 ? Math.max(0, Math.min(1, (value - min) / range)) : 0;
-    const thumbSize = this.getThumbSize();
+    const thumbSize = this.getThumbSize(input);
 
     bubble.textContent = this.formatBubble(value);
     bubble.style.left = `calc(${progress * 100}% - ${(progress - 0.5) * thumbSize}px)`;
+  }
+
+  private updateVisuals() {
+    const input = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
+    if (!input) return;
+    const min = Number(input.min || "0");
+    const max = Number(input.max || "100");
+    const value = Number(input.value || "0");
+    const range = Math.max(0, max - min);
+    const progress = range > 0 ? Math.max(0, Math.min(1, (value - min) / range)) : 0;
+    input.style.setProperty("--range-input-progress", `${progress * 100}%`);
+    this.updateBubble();
   }
 
   private bind() {
@@ -81,7 +109,7 @@ class MuiRangeInput extends HTMLElement {
     const show = () => {
       if (!this.hasAttribute("bubble")) return;
       wrap.classList.add("show-bubble");
-      this.updateBubble();
+      this.updateVisuals();
     };
     const hide = () => wrap.classList.remove("show-bubble");
 
@@ -95,7 +123,7 @@ class MuiRangeInput extends HTMLElement {
           composed: true,
         }),
       );
-      this.updateBubble();
+      this.updateVisuals();
     };
     input.onchange = () => {
       this.dispatchEvent(
@@ -114,10 +142,10 @@ class MuiRangeInput extends HTMLElement {
     input.onmouseleave = hide;
     input.onmousemove = () => {
       if (!wrap.classList.contains("show-bubble")) return;
-      this.updateBubble();
+      this.updateVisuals();
     };
 
-    this.updateBubble();
+    this.updateVisuals();
   }
 
   render() {
@@ -134,6 +162,20 @@ class MuiRangeInput extends HTMLElement {
         :host {
           display: inline-flex;
           width: 100%;
+          --range-input-thumb-size-current: var(--range-input-thumb-size);
+          --range-input-track-height-current: var(--range-input-track-height);
+        }
+        :host([size="x-small"]) {
+          --range-input-thumb-size-current: calc(var(--range-input-thumb-size) - var(--space-200));
+          --range-input-track-height-current: var(--stroke-size-100);
+        }
+        :host([size="small"]) {
+          --range-input-thumb-size-current: calc(var(--range-input-thumb-size) - var(--space-100));
+          --range-input-track-height-current: var(--stroke-size-200);
+        }
+        :host([size="large"]) {
+          --range-input-thumb-size-current: calc(var(--range-input-thumb-size) + var(--space-200));
+          --range-input-track-height-current: calc(var(--range-input-track-height) + var(--stroke-size-200));
         }
         .range-wrap {
           position: relative;
@@ -143,9 +185,71 @@ class MuiRangeInput extends HTMLElement {
           align-items: center;
         }
         input[type="range"] {
+          appearance: none;
+          -webkit-appearance: none;
           width: 100%;
+          height: var(--range-input-thumb-size-current);
           margin: 0;
-          accent-color: var(--range-input-accent-color, var(--grey-1200));
+          padding: 0;
+          border: 0;
+          background:
+            linear-gradient(
+              to right,
+              var(--range-input-accent-color) 0 var(--range-input-progress),
+              var(--range-input-track-color) var(--range-input-progress) 100%
+            ) center / 100% var(--range-input-track-height-current) no-repeat;
+          cursor: grab;
+          touch-action: none;
+        }
+        input[type="range"]:active {
+          cursor: grabbing;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+          height: var(--range-input-track-height-current);
+          border-radius: var(--range-input-track-radius);
+          background: transparent;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+          appearance: none;
+          -webkit-appearance: none;
+          width: var(--range-input-thumb-size-current);
+          height: var(--range-input-thumb-size-current);
+          margin-top: calc((var(--range-input-track-height-current) - var(--range-input-thumb-size-current)) / 2);
+          border: 0;
+          border-radius: 50%;
+          background: var(--range-input-thumb-color);
+        }
+        input[type="range"]::-moz-range-track {
+          height: var(--range-input-track-height-current);
+          border-radius: var(--range-input-track-radius);
+          background: var(--range-input-track-color);
+        }
+        input[type="range"]::-moz-range-progress {
+          height: var(--range-input-track-height-current);
+          border-radius: var(--range-input-track-radius);
+          background: var(--range-input-accent-color);
+        }
+        input[type="range"]::-moz-range-thumb {
+          width: var(--range-input-thumb-size-current);
+          height: var(--range-input-thumb-size-current);
+          border: 0;
+          border-radius: 50%;
+          background: var(--range-input-thumb-color);
+        }
+        input[type="range"]:focus-visible {
+          outline: none;
+        }
+        input[type="range"]:focus-visible::-webkit-slider-thumb {
+          outline: var(--outline-thick);
+          outline-offset: var(--stroke-size-200);
+        }
+        input[type="range"]:focus-visible::-moz-range-thumb {
+          outline: var(--outline-thick);
+          outline-offset: var(--stroke-size-200);
+        }
+        input[type="range"]:disabled {
+          cursor: not-allowed;
+          opacity: 0.4;
         }
         [data-role="bubble"] {
           position: absolute;
@@ -177,7 +281,7 @@ class MuiRangeInput extends HTMLElement {
           aria-label="${label.replace(/"/g, "&quot;")}"
           ${disabled ? "disabled" : ""}
         />
-        <mui-body data-role="bubble" size="x-small" variant="optional" aria-hidden="true">0</mui-body>
+        <mui-body data-role="bubble" size="x-small" variant="secondary" aria-hidden="true">0</mui-body>
       </div>
     `;
   }

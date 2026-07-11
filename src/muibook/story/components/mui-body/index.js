@@ -81,38 +81,38 @@ class storyBody extends HTMLElement {
             <div slot="body">
               <mui-v-stack space="var(--space-500)">
                 <div>
-                  <mui-heading size="4">Optional</mui-heading>
-                  <mui-body variant="optional">Risus Mollis Dapibus</mui-body>
+                  <mui-heading size="4">Secondary</mui-heading>
+                  <mui-body variant="secondary">Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
                   <mui-heading size="4">Info</mui-heading>
                   <mui-body variant="info">Helpful context for this section.</mui-body>
                 </div>
                 <div>
-                  <mui-heading size="4">Success</mui-heading>
-                  <mui-body variant="success">Risus Mollis Dapibus</mui-body>
+                  <mui-heading size="4">Positive</mui-heading>
+                  <mui-body variant="positive">Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
                   <mui-heading size="4">Warning</mui-heading>
                   <mui-body variant="warning">Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
-                  <mui-heading size="4">Error</mui-heading>
-                  <mui-body variant="error">Risus Mollis Dapibus</mui-body>
+                  <mui-heading size="4">Attention</mui-heading>
+                  <mui-body variant="attention">Risus Mollis Dapibus</mui-body>
                 </div>
               </mui-v-stack>
             </div>
 
             <story-code-block slot="footer" scrollable>
-              &lt;mui-body variant="optional"&gt; ... &lt;/mui-body&gt;
+              &lt;mui-body variant="secondary"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body variant="info"&gt; ... &lt;/mui-body&gt;
               <br />
-              &lt;mui-body variant="success"&gt; ... &lt;/mui-body&gt;
+              &lt;mui-body variant="positive"&gt; ... &lt;/mui-body&gt;
               <br />
               &lt;mui-body variant="warning"&gt; ... &lt;/mui-body&gt;
               <br />
-              &lt;mui-body variant="error"&gt; ... &lt;/mui-body&gt;
+              &lt;mui-body variant="attention"&gt; ... &lt;/mui-body&gt;
             </story-code-block>
 
           </story-card>
@@ -127,7 +127,7 @@ class storyBody extends HTMLElement {
                 </div>
                 <div>
                   <mui-heading size="4" style="margin-bottom: var(--space-200)">X-Small</mui-heading>
-                  <mui-body size="x-small" variant="success"><mui-icon-check slot="before"></mui-icon-check>Risus Mollis Dapibus</mui-body>
+                  <mui-body size="x-small" variant="positive"><mui-icon-check slot="before"></mui-icon-check>Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
                   <mui-heading size="4" style="margin-bottom: var(--space-200)">Small</mui-heading>
@@ -135,7 +135,7 @@ class storyBody extends HTMLElement {
                 </div>
                 <div>
                   <mui-heading size="4" style="margin-bottom: var(--space-200)">Medium</mui-heading>
-                  <mui-body size="medium" variant="error"><mui-icon-attention slot="before"></mui-icon-attention>Risus Mollis Dapibus</mui-body>
+                  <mui-body size="medium" variant="attention"><mui-icon-attention slot="before"></mui-icon-attention>Risus Mollis Dapibus</mui-body>
                 </div>
                 <div>
                   <mui-heading size="4" style="margin-bottom: var(--space-200)">Large</mui-heading>
@@ -160,7 +160,7 @@ class storyBody extends HTMLElement {
               &lt;/mui-body&gt;
               <br />
               <br />
-              &lt;mui-body size="x-small" variant="success"&gt;
+              &lt;mui-body size="x-small" variant="positive"&gt;
               <br>
               &nbsp;&nbsp;&lt;mui-icon-check slot=&quot;before&quot;&gt;&lt;/mui-icon-check&gt;
               <br>
@@ -178,7 +178,7 @@ class storyBody extends HTMLElement {
               &lt;/mui-body&gt;
               <br>
               <br />
-              &lt;mui-body size="medium" variant="error"&gt;
+              &lt;mui-body size="medium" variant="attention"&gt;
               <br>
               &nbsp;&nbsp;&lt;mui-icon-attention slot=&quot;before&quot;&gt;&lt;/mui-icon-attention&gt;
               <br>
@@ -223,13 +223,13 @@ class storyBody extends HTMLElement {
                     <mui-icon-warning slot="before"></mui-icon-warning>
                     This helper message wraps across multiple lines so the icon remains aligned at the start of the content.
                     <mui-hint slot="after" placement="top" style="display: inline-flex;">
-                      <mui-icon-info slot="trigger" color="var(--text-color-optional)"></mui-icon-info>
+                      <mui-icon-info slot="trigger" color="var(--text-color-secondary)"></mui-icon-info>
                       Warning details
                     </mui-hint>
                   </mui-body>
                 </div>
                 <div style="max-width: 28rem;">
-                  <mui-body size="medium" variant="error">
+                  <mui-body size="medium" variant="attention">
                     <mui-icon-attention slot="before"></mui-icon-attention>
                     This is a longer multi-line message with before and after content to validate start alignment for wrapped body text.
                     <mui-hint slot="after" placement="top" style="display: inline-flex;">
@@ -239,11 +239,11 @@ class storyBody extends HTMLElement {
                   </mui-body>
                 </div>
                 <div style="max-width: 28rem;">
-                  <mui-body size="large" variant="success">
+                  <mui-body size="large" variant="positive">
                     <mui-icon-check slot="before"></mui-icon-check>
                     Large body wrapping also keeps the leading icon top-aligned while the line-height and text block expand.
                     <mui-hint slot="after" placement="top" style="display: inline-flex;">
-                      <mui-icon-info slot="trigger" color="var(--text-color-optional)"></mui-icon-info>
+                      <mui-icon-info slot="trigger" color="var(--text-color-secondary)"></mui-icon-info>
                       Success details
                     </mui-hint>
                   </mui-body>
@@ -262,7 +262,7 @@ class storyBody extends HTMLElement {
               <br>
               &nbsp;&nbsp;&lt;mui-hint slot=&quot;after&quot; placement=&quot;top&quot;&gt;
               <br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot; color=&quot;var(--text-color-optional)&quot;&gt;&lt;/mui-icon-info&gt;
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot; color=&quot;var(--text-color-secondary)&quot;&gt;&lt;/mui-icon-info&gt;
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;Warning details
               <br>
@@ -270,7 +270,7 @@ class storyBody extends HTMLElement {
               <br>
               &lt;/mui-body&gt;
               <br>
-              &lt;mui-body size=&quot;medium&quot; variant=&quot;error&quot;&gt;
+              &lt;mui-body size=&quot;medium&quot; variant=&quot;attention&quot;&gt;
               <br>
               &nbsp;&nbsp;{long wrapping text}
               <br>
@@ -284,13 +284,13 @@ class storyBody extends HTMLElement {
               <br>
               &lt;/mui-body&gt;
               <br>
-              &lt;mui-body size=&quot;large&quot; variant=&quot;success&quot;&gt;
+              &lt;mui-body size=&quot;large&quot; variant=&quot;positive&quot;&gt;
               <br>
               &nbsp;&nbsp;{long wrapping text}
               <br>
               &nbsp;&nbsp;&lt;mui-hint slot=&quot;after&quot; placement=&quot;top&quot;&gt;
               <br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot; color=&quot;var(--text-color-optional)&quot;&gt;&lt;/mui-icon-info&gt;
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-info slot=&quot;trigger&quot; color=&quot;var(--text-color-secondary)&quot;&gt;&lt;/mui-icon-info&gt;
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;Success details
               <br>
@@ -378,7 +378,7 @@ class storyBody extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-body"]'>
         ${stories}
       </story-template>

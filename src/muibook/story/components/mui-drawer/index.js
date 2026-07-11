@@ -35,7 +35,7 @@ class storyDrawer extends HTMLElement {
         margin-right: calc(var(--space-400) * -1);
       }
 
-      mui-container { min-width: initial; } 
+      mui-container { min-width: initial; }
 
       .menu-item {
         text-align: left;
@@ -144,10 +144,10 @@ class storyDrawer extends HTMLElement {
       }
 
       .left-panel-open-btn {
-        transition: 
-          opacity var(--speed-400) ease var(--speed-200), 
-          width var(--speed-400) ease-out, 
-          margin var(--speed-400) ease-out, 
+        transition:
+          opacity var(--speed-400) ease var(--speed-200),
+          width var(--speed-400) ease-out,
+          margin var(--speed-400) ease-out,
           padding var(--speed-400) ease-out;
         overflow: hidden;
         width: var(--action-size-small);
@@ -156,10 +156,10 @@ class storyDrawer extends HTMLElement {
 
       /* Desktop: hide button if left-open is set */
       mui-drawer[variant="workspace"]:not([mobile])[left-open] .left-panel-open-btn {
-        transition: 
-          opacity var(--speed-100) ease, 
-          width var(--speed-100) ease-out, 
-          margin var(--speed-100) ease-out, 
+        transition:
+          opacity var(--speed-100) ease,
+          width var(--speed-100) ease-out,
+          margin var(--speed-100) ease-out,
           padding var(--speed-100) ease-out;
         opacity: 0;
         pointer-events: none;
@@ -185,7 +185,7 @@ class storyDrawer extends HTMLElement {
           height: auto;
         }
       }
-      
+
       .video-menu-item,
       .video-menu-more,
       .video-menu-group-heading { text-align: left; }
@@ -223,31 +223,31 @@ class storyDrawer extends HTMLElement {
 
     const content = /*html*/ `
       <mui-v-stack space="var(--space-300);">
-        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
-        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
-        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
-        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
-        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
-        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
-        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
-        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
-        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>  
+        <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 200px; background:var(--surface); border-radius:var(--radius-200);"></div>
         <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface); border-radius:var(--radius-200);"></div>
       </mui-v-stack>
@@ -255,10 +255,10 @@ class storyDrawer extends HTMLElement {
 
     const invoice = /*html*/ `
       <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
-      
+
         <mui-h-stack alignX="space-between">
           <mui-v-stack space="var(--space-300);">
-            <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>  
+            <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
             <div style="height:var(--heading-font-size-100); width: 100px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
             <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
           </mui-v-stack>
@@ -322,24 +322,24 @@ class storyDrawer extends HTMLElement {
 
     const reviewStepper = /*html*/ `
         <mui-v-stack space="0" style="margin-bottom: var(--space-400);">
-          <div 
+          <div
             style="
               background: var(--surface-elevated-200);
               padding: var(--space-400);
-              border-top-left-radius: var(--radius-300); 
-              border-top-right-radius: var(--radius-300); 
+              border-top-left-radius: var(--radius-300);
+              border-top-right-radius: var(--radius-300);
               border: var(--border-thin);
             "
           >
             <mui-body size="small" weight="bold">Guru has prefilled the fields</mui-body>
             <mui-body size="small">Review the items and proceed</mui-body>
           </div>
-          <div 
+          <div
             style="
               background: var(--surface-elevated-200);
               padding: var(--space-400) 0 var(--space-500);
-              border-bottom-left-radius: var(--radius-300); 
-              border-bottom-right-radius: var(--radius-300); 
+              border-bottom-left-radius: var(--radius-300);
+              border-bottom-right-radius: var(--radius-300);
               border: var(--border-thin);
                 border-top: none;
             "
@@ -374,11 +374,11 @@ class storyDrawer extends HTMLElement {
             Subscriptions
             <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
           </mui-button>
-          <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">        
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">
             <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Real Estate Profile Image"></mui-avatar>
             Real Estate
           </mui-button>
-          <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">        
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">
             <mui-avatar slot="before" size="small" label="Jazz Beats"></mui-avatar>
             Jazz Beats
           </mui-button>
@@ -386,13 +386,13 @@ class storyDrawer extends HTMLElement {
             <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Mike Trilford Profile Image"></mui-avatar>
             Julie Cooks
           </mui-button>
-          <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">        
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">
             <mui-avatar slot="before" size="small" label="Sidebar Court">
               <mui-icon-left-sidebar></mui-icon-left-sidebar>
             </mui-avatar>
             Sidebar Court
           </mui-button>
-          <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">        
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">
             <mui-avatar slot="before" size="small" label="Hot Grill" background="attention">
               <mui-icon-sun></mui-icon-sun>
             </mui-avatar>
@@ -470,11 +470,11 @@ class storyDrawer extends HTMLElement {
             Subscriptions
             <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
           </mui-button>
-          <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">        
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">
             <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Real Estate Profile Image"></mui-avatar>
             Real Estate
           </mui-button>
-          <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">        
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">
             <mui-avatar slot="before" size="small" label="Jazz Beats"></mui-avatar>
             Jazz Beats
           </mui-button>
@@ -482,13 +482,13 @@ class storyDrawer extends HTMLElement {
             <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Mike Trilford Profile Image"></mui-avatar>
             Julie Cooks
           </mui-button>
-          <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">        
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">
             <mui-avatar slot="before" size="small" label="Sidebar Court">
               <mui-icon-left-sidebar></mui-icon-left-sidebar>
             </mui-avatar>
             Sidebar Court
           </mui-button>
-          <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">        
+          <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">
             <mui-avatar slot="before" size="small" label="Hot Grill" background="attention">
               <mui-icon-sun></mui-icon-sun>
             </mui-avatar>
@@ -595,13 +595,15 @@ class storyDrawer extends HTMLElement {
     const workspaceInspectorPanel = /*html*/ `
       <div class="workspace-demo-panel">
         <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
-          <mui-dropdown position="left">
+          <mui-dropdown position="left" size="medium">
             <mui-button slot="action" aria-label="Open Mike profile menu">
               <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
             </mui-button>
-            <mui-button size="small" variant="tertiary">Profile</mui-button>
-            <mui-button size="small" variant="tertiary">Settings</mui-button>
-            <mui-button size="small" variant="tertiary">Sign out</mui-button>
+            <mui-menu>
+              <mui-button size="small" variant="tertiary">Profile</mui-button>
+              <mui-button size="small" variant="tertiary">Settings</mui-button>
+              <mui-button size="small" variant="tertiary">Sign out</mui-button>
+            </mui-menu>
           </mui-dropdown>
           <mui-button size="small" variant="primary">Share</mui-button>
         </mui-h-stack>
@@ -683,7 +685,7 @@ class storyDrawer extends HTMLElement {
 
       <story-card id="drawer-overlay-left" title="Overlay Left" description="The drawer is positioned fixed to the viewport edge">
         <mui-button variant="primary" data-drawer="drawer-1" slot="body">Open</mui-button>
-        
+
         <mui-drawer variant="overlay" data-drawer="drawer-1" side="left" slot="body">
             <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
               <guides-logo style="width: 24px;"></guides-logo>
@@ -719,7 +721,7 @@ class storyDrawer extends HTMLElement {
 
       <story-card id="drawer-overlay-right" title="Overlay Right" description="The drawer is positioned fixed to the viewport edge">
         <mui-button variant="primary" data-drawer="drawer-2" slot="body">Open</mui-button>
-        
+
         <mui-drawer variant="overlay" data-drawer="drawer-2" width="400px" side="right" slot="body">
           <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
             <guides-logo style="width: 24px;"></guides-logo>
@@ -755,7 +757,7 @@ class storyDrawer extends HTMLElement {
 
       <story-card id="drawer-overlay-no-header" title="Overlay: No Header" description="If no header if used, ensure there is a way for the user to cancel out of the view, especially on mobile.">
         <mui-button variant="primary" data-drawer="overlay-no-header" slot="body">Open</mui-button>
-        
+
         <mui-drawer variant="overlay" data-drawer="overlay-no-header" width="400px" side="left" slot="body">
           ${content}
           <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
@@ -817,7 +819,7 @@ class storyDrawer extends HTMLElement {
 
       <story-card id="drawer-overlay-no-footer" title="Overlay: No Footer" description="If no footer if used, ensure there is a way for the user to cancel out of the view, especially on mobile.">
         <mui-button variant="primary" data-drawer="overlay-no-footer" slot="body">Open</mui-button>
-        
+
         <mui-drawer variant="overlay" data-drawer="overlay-no-footer" width="400px" side="left" slot="body">
           <mui-h-stack slot="title" space="var(--space-100)" alignY="center">
             <guides-logo style="width: 24px;"></guides-logo>
@@ -957,7 +959,7 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-push-left"
-        title="Push Left" 
+        title="Push Left"
         description="The Push Drawer slides in from the left and shifts the page content to the right. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
         usage="
           This variant is intended for full-screen page views rather than smaller page sections.|||
@@ -967,15 +969,17 @@ class storyDrawer extends HTMLElement {
           See the <mui-link size='x-small' target='_blank' href='/push-left'>full-screen example</mui-link>
         "
       >
-        <div class="canvas" slot="body">  
+        <div class="canvas" slot="body">
           <mui-drawer contained variant="push" data-drawer="drawer-3" width="320px" side="left" height="45dvh">
             <div slot="page" class="page-main">
               <div class="page-header">
                 ${invoiceHeader}
-                <mui-dropdown position="right">
+                <mui-dropdown position="right" size="medium">
                   <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
-                  <mui-button variant="tertiary" data-drawer="drawer-3">Edit Details</mui-button>
-                  <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                  <mui-menu>
+                    <mui-button variant="tertiary" data-drawer="drawer-3">Edit Details</mui-button>
+                    <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                  </mui-menu>
                 </mui-dropdown>
               </div>
               <div class="page-content">
@@ -1071,13 +1075,15 @@ class storyDrawer extends HTMLElement {
               </div>
             </div>
             <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
-              <mui-dropdown position="left">
+              <mui-dropdown position="left" size="medium">
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
                 </mui-button>
-                <mui-button size="small" variant="tertiary">Profile</mui-button>
-                <mui-button size="small" variant="tertiary">Settings</mui-button>
-                <mui-button size="small" variant="tertiary">Sign out</mui-button>
+                <mui-menu>
+                  <mui-button size="small" variant="tertiary">Profile</mui-button>
+                  <mui-button size="small" variant="tertiary">Settings</mui-button>
+                  <mui-button size="small" variant="tertiary">Sign out</mui-button>
+                </mui-menu>
               </mui-dropdown>
               <mui-button size="small" variant="primary">Share</mui-button>
             </mui-h-stack>
@@ -1182,13 +1188,15 @@ class storyDrawer extends HTMLElement {
               </div>
             </div>
             <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
-              <mui-dropdown position="left">
+              <mui-dropdown position="left" size="medium">
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
                 </mui-button>
-                <mui-button size="small" variant="tertiary">Profile</mui-button>
-                <mui-button size="small" variant="tertiary">Settings</mui-button>
-                <mui-button size="small" variant="tertiary">Sign out</mui-button>
+                <mui-menu>
+                  <mui-button size="small" variant="tertiary">Profile</mui-button>
+                  <mui-button size="small" variant="tertiary">Settings</mui-button>
+                  <mui-button size="small" variant="tertiary">Sign out</mui-button>
+                </mui-menu>
               </mui-dropdown>
               <mui-button size="small" variant="primary">Share</mui-button>
             </mui-h-stack>
@@ -1279,9 +1287,9 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card
         id="drawer-push-right"
-        title="Push Right" 
+        title="Push Right"
         description="The Push Drawer slides in from the right and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
         usage="
           This variant is intended for full-screen page views rather than smaller page sections.|||
@@ -1296,10 +1304,12 @@ class storyDrawer extends HTMLElement {
             <div slot="page" class="page-main">
               <div class="page-header">
                 ${invoiceHeader}
-                <mui-dropdown position="right">
+                <mui-dropdown position="right" size="medium">
                   <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
-                  <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
-                  <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                  <mui-menu>
+                    <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
+                    <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                  </mui-menu>
                 </mui-dropdown>
               </div>
               <div class="page-content">
@@ -1320,7 +1330,7 @@ class storyDrawer extends HTMLElement {
             <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
             <mui-button slot="actions" variant="primary">Save</mui-button>
           </mui-drawer>
-        </div>  
+        </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer contained variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
           &nbsp;&nbsp;...<br>
@@ -1397,13 +1407,15 @@ class storyDrawer extends HTMLElement {
             </div>
 
             <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
-              <mui-dropdown position="left">
+              <mui-dropdown position="left" size="medium">
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
                 </mui-button>
-                <mui-button size="small" variant="tertiary">Profile</mui-button>
-                <mui-button size="small" variant="tertiary">Settings</mui-button>
-                <mui-button size="small" variant="tertiary">Sign out</mui-button>
+                <mui-menu>
+                  <mui-button size="small" variant="tertiary">Profile</mui-button>
+                  <mui-button size="small" variant="tertiary">Settings</mui-button>
+                  <mui-button size="small" variant="tertiary">Sign out</mui-button>
+                </mui-menu>
               </mui-dropdown>
               <mui-button size="small" variant="primary">Share</mui-button>
             </mui-h-stack>
@@ -1509,13 +1521,15 @@ class storyDrawer extends HTMLElement {
             </div>
 
             <mui-h-stack class="canvas-drawer-header" space="var(--space-200)" alignx="space-between" aligny="center" width="100%">
-              <mui-dropdown position="left">
+              <mui-dropdown position="left" size="medium">
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
                 </mui-button>
-                <mui-button size="small" variant="tertiary">Profile</mui-button>
-                <mui-button size="small" variant="tertiary">Settings</mui-button>
-                <mui-button size="small" variant="tertiary">Sign out</mui-button>
+                <mui-menu>
+                  <mui-button size="small" variant="tertiary">Profile</mui-button>
+                  <mui-button size="small" variant="tertiary">Settings</mui-button>
+                  <mui-button size="small" variant="tertiary">Sign out</mui-button>
+                </mui-menu>
               </mui-dropdown>
               <mui-button size="small" variant="primary">Share</mui-button>
             </mui-h-stack>
@@ -1553,9 +1567,9 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card
         id="drawer-persistent-right"
-        title="Persistent Right" 
+        title="Persistent Right"
         description="The Persistent Drawer remains fixed in place without sliding in or out on desktop. It is positioned on the right side of the main content and becomes part of the layout itself. On mobile, it uses the overlay presentation by default."
         usage="
           This variant is intended for full-screen page views rather than smaller page sections.|||
@@ -1596,7 +1610,7 @@ class storyDrawer extends HTMLElement {
             <mui-button slot="actions" variant="tertiary">Back</mui-button>
             <mui-button slot="actions" variant="primary">Next</mui-button>
           </mui-drawer>
-        </div>  
+        </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer contained variant="persistent" width="320px" side="right" data-drawer-toggle="hook"&gt;<br>
           &nbsp;&nbsp;...<br>
@@ -1671,13 +1685,13 @@ class storyDrawer extends HTMLElement {
 
           <mui-responsive breakpoint="768">
 
-            <mui-drawer 
+            <mui-drawer
               contained
-              slot="showAbove" 
-              variant="push" 
-              width="260px" 
-              side="left" 
-              data-drawer-toggle="custom-header-toggle" 
+              slot="showAbove"
+              variant="push"
+              width="260px"
+              side="left"
+              data-drawer-toggle="custom-header-toggle"
               drawer-space="none"
               height="45dvh"
             >
@@ -1687,18 +1701,18 @@ class storyDrawer extends HTMLElement {
                   ${bill}
                 </div>
               </div>
-              
+
             </mui-drawer>
 
             <div slot="showBelow">
-              <mui-drawer 
-                variant="overlay" 
-                width="260px" 
-                side="left" 
-                data-drawer="custom-header-overlay" 
+              <mui-drawer
+                variant="overlay"
+                width="260px"
+                side="left"
+                data-drawer="custom-header-overlay"
                 drawer-space="none"
               >
-                
+
               <mui-h-stack space="var(--space-300)" alignY="center" style="padding: var(--space-300) var(--space-500) var(--space-300) var(--space-400)">
                 <mui-button variant="tertiary" data-close>
                   <mui-icon-menu size="medium"></mui-icon-menu>
@@ -1728,9 +1742,9 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card
         id="drawer-breakpoint"
-        title="Breakpoint" 
+        title="Breakpoint"
         description="Adjust the default breakpoint for the mobile view."
         usage="
           If you want to use media queries or state to introudce a completely different mobile view, you can set the breakpoint '0' to avoid the mobile view from appearing.|||
@@ -1743,10 +1757,12 @@ class storyDrawer extends HTMLElement {
             <div slot="page" class="page-main">
               <div class="page-header">
                 ${invoiceHeader}
-                <mui-dropdown position="right">
+                <mui-dropdown position="right" size="medium">
                   <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
-                  <mui-button variant="tertiary" data-drawer="breakpoint">Edit Details</mui-button>
-                  <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                  <mui-menu>
+                    <mui-button variant="tertiary" data-drawer="breakpoint">Edit Details</mui-button>
+                    <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                  </mui-menu>
                 </mui-dropdown>
               </div>
               <div class="page-content">
@@ -1767,7 +1783,7 @@ class storyDrawer extends HTMLElement {
             <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
             <mui-button slot="actions" variant="primary">Save</mui-button>
           </mui-drawer>
-        </div>  
+        </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-drawer contained variant="push" data-drawer="hook" width="320px" side="right"&gt;<br>
           &nbsp;&nbsp;...<br>
@@ -1780,7 +1796,7 @@ class storyDrawer extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -1789,7 +1805,7 @@ class storyDrawer extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
         attrs-reference='${attrsReference}'
-      
+
         imports='["@muibook/components/mui-drawer"]'>
         <story-quicklinks
           slot="message"

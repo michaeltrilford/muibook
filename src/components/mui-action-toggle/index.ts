@@ -1,4 +1,4 @@
-class MuiPromptToggle extends HTMLElement {
+class MuiActionToggle extends HTMLElement {
   static get observedAttributes() {
     return ["mode"];
   }
@@ -66,6 +66,6 @@ class MuiPromptToggle extends HTMLElement {
   }
 }
 
-if (!customElements.get("mui-prompt-toggle")) {
-  customElements.define("mui-prompt-toggle", MuiPromptToggle);
+if (!customElements.get("mui-action-toggle")) {
+  customElements.define("mui-action-toggle", MuiActionToggle);
 }

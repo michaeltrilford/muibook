@@ -228,7 +228,7 @@ class MuiModelViewer extends HTMLElement {
         position: absolute;
         background: var(--feedback-error-background, rgba(255, 235, 235, 0.9));
         border: var(--stroke-size-100, 1px) solid var(--feedback-error-border-color, #ff453a);
-        color: var(--text-color-error, #ff453a);
+        color: var(--text-color-attention, #ff453a);
         padding: var(--space-300, 1.2rem) var(--space-400, 1.6rem);
         border-radius: var(--radius-200, 0.8rem);
         font-family: var(--font-family, system-ui, sans-serif);

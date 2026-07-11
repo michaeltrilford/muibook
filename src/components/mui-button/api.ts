@@ -58,7 +58,7 @@ export const muiApi = {
         name: "size",
         type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' },
         default: "medium",
-        description: "Button scale; also controls automatic icon, avatar, and badge sizing.",
+        description: "Button scale; also controls automatic icon, File Icon, avatar, badge, and Switch sizing.",
       },
       {
         name: "usage",
@@ -69,7 +69,7 @@ export const muiApi = {
     slots: [
       { name: "", description: "Action label or a single icon or avatar for a compact action." },
       { name: "before", description: "Leading icon, avatar, badge, or other supporting content." },
-      { name: "after", description: "Trailing icon, avatar, badge, or other supporting content." },
+      { name: "after", description: "Trailing icon, avatar, badge, Switch, or other supporting content. Activating the Button toggles a direct slotted Switch." },
     ],
     cssProperties: [
       {

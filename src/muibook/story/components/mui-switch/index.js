@@ -156,7 +156,7 @@ class storySwitch extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-switch"]'>
         ${stories}
       </story-template>

@@ -21,14 +21,14 @@ class tokensBrand extends HTMLElement {
       }
 
       #colors {
-        scroll-margin-top: var(--space-600); 
+        scroll-margin-top: var(--space-600);
       }
     `;
 
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="Brand"
         description="Brand values include core attributes such as color, typography, spacing, and size. These tokens don’t carry meaning or intent; they simply establish the brand’s visual foundation."
         figma="https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-527&t=fSFYVey9aCoE5oQa-1"
@@ -43,13 +43,13 @@ class tokensBrand extends HTMLElement {
           ></story-quicklinks>
 
           <spec-card id="font-family" title="Font Family">
-            <story-token-slat 
-              slot="body" 
+            <story-token-slat
+              slot="body"
               token="--font-family"
               variant="font-family">
             </story-token-slat>
           </spec-card>
-            
+
           <spec-card id="font-scale" title="Font Scale" description="The font size scale follows a consistent type ramp, using fluid rem values to establish visual hierarchy. Each step in the scale pairs directly with a calculated line-height, enabling predictable, harmonious typography across components and layouts." usage="E.g. --font-size-15 and --line-height-15 is paired.">
             <story-token-slat slot="body" token="--font-size-15" variant="text-size" line-height="--line-height-15"></story-token-slat>
             <story-token-slat slot="body" token="--font-size-25" variant="text-size" line-height="--line-height-25"></story-token-slat>
@@ -136,10 +136,10 @@ class tokensBrand extends HTMLElement {
               <mui-body size="small">
                 This page displays colors from the core MUI brand. Since brand tokens can vary, users are expected to bring their own color ranges and map them to the appropriate tokens that apply styles to components.
                 </mui-body>
-                
+
                 <mui-body size="small">
-                What matters is how those brand values are mapped to the 
-                <mui-link size="small" href="/semantic-design-tokens">Semantic</mui-link> and 
+                What matters is how those brand values are mapped to the
+                <mui-link size="small" href="/semantic-design-tokens">Semantic</mui-link> and
                 <mui-link size="small" href="/components-design-tokens">Components</mui-link> tokens — these pages will reflect the selected theme.
               </mui-body>
             </mui-v-stack>
@@ -248,8 +248,8 @@ class tokensBrand extends HTMLElement {
             <story-token-slat slot="body" token="--blue-600" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--blue-700" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--blue-800" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--blue-900" variant="color"></story-token-slat> 
-            <story-token-slat slot="body" token="--blue-1000" variant="color"></story-token-slat> 
+            <story-token-slat slot="body" token="--blue-900" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--blue-1000" variant="color"></story-token-slat>
           </spec-card>
 
       </story-template>

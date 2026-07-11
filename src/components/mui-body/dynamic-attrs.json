@@ -9,6 +9,10 @@
     {
       "name": "has-after",
       "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+    },
+    {
+      "name": "menu-slot",
+      "description": "Applied to direct Body content inside Menu so it inherits Menu sizing and action-aligned padding."
     }
   ]
 }

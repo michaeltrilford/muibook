@@ -66,7 +66,7 @@ class storyCards extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-card-header&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;...&lt;/mui-heading&gt;            
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;...&lt;/mui-heading&gt;
           <br />
           &nbsp;&nbsp;&lt;/mui-card-header&gt;
           <br />
@@ -102,7 +102,7 @@ class storyCards extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-card-header&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;...&lt;/mui-heading&gt;            
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;...&lt;/mui-heading&gt;
           <br />
           &nbsp;&nbsp;&lt;/mui-card-header&gt;
           <br />
@@ -144,7 +144,7 @@ class storyCards extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-card-header&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;...&lt;/mui-heading&gt;            
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="3"&gt;...&lt;/mui-heading&gt;
           <br />
           &nbsp;&nbsp;&lt;/mui-card-header&gt;
           <br />
@@ -162,7 +162,7 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card
         title="Card: Table"
         description="When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout."
       >
@@ -182,10 +182,12 @@ class storyCards extends HTMLElement {
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
-                      <mui-dropdown position="right">
+                      <mui-dropdown position="right" size="medium">
                         <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-                        <mui-button>Option one</mui-button>
-                        <mui-button>Option two</mui-button>
+                        <mui-menu>
+                          <mui-button>Option one</mui-button>
+                          <mui-button>Option two</mui-button>
+                        </mui-menu>
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
@@ -193,10 +195,12 @@ class storyCards extends HTMLElement {
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
-                      <mui-dropdown position="right">
+                      <mui-dropdown position="right" size="medium">
                         <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-                        <mui-button>Option one</mui-button>
-                        <mui-button>Option two</mui-button>
+                        <mui-menu>
+                          <mui-button>Option one</mui-button>
+                          <mui-button>Option two</mui-button>
+                        </mui-menu>
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
@@ -246,9 +250,9 @@ class storyCards extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;medium&quot; position="right"&gt;&lt;mui-menu&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-menu&gt;&lt;/mui-dropdown&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
@@ -281,10 +285,12 @@ class storyCards extends HTMLElement {
                     <mui-cell>Figma</mui-cell>
                     <mui-cell>$20.00</mui-cell>
                     <mui-cell action>
-                      <mui-dropdown position="right">
+                      <mui-dropdown position="right" size="medium">
                         <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-                        <mui-button>Option one</mui-button>
-                        <mui-button>Option two</mui-button>
+                        <mui-menu>
+                          <mui-button>Option one</mui-button>
+                          <mui-button>Option two</mui-button>
+                        </mui-menu>
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
@@ -292,10 +298,12 @@ class storyCards extends HTMLElement {
                     <mui-cell>Sketch</mui-cell>
                     <mui-cell>$12.00</mui-cell>
                     <mui-cell action>
-                      <mui-dropdown position="right">
+                      <mui-dropdown position="right" size="medium">
                         <mui-button variant="tertiary" slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-                        <mui-button>Option one</mui-button>
-                        <mui-button>Option two</mui-button>
+                        <mui-menu>
+                          <mui-button>Option one</mui-button>
+                          <mui-button>Option two</mui-button>
+                        </mui-menu>
                       </mui-dropdown>
                     </mui-cell>
                   </mui-row>
@@ -332,7 +340,7 @@ class storyCards extends HTMLElement {
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Table Body
           <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/////////////////////////////////////             
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/////////////////////////////////////
           <br />
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&gt;<br>
@@ -340,18 +348,18 @@ class storyCards extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;medium&quot; position="right"&gt;&lt;mui-menu&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-menu&gt;&lt;/mui-dropdown&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row columns="\${Columns_Action}"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;...&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell action&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;medium&quot; position="right"&gt;&lt;mui-menu&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-menu&gt;&lt;/mui-dropdown&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-cell&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
@@ -362,11 +370,11 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card
         id="slat-group"
         title="Slat Group"
         description="
-          If a mui-slat is slotted directly into the mui-card-body, 
+          If a mui-slat is slotted directly into the mui-card-body,
           if will automatically align the slats with the heading to ensure consistent alignment within a card.
         "
         usage="
@@ -427,7 +435,7 @@ class storyCards extends HTMLElement {
               </mui-slat>
             </mui-slat-group>
           </mui-card-body>
-          
+
         </mui-card>
 
         <story-code-block slot="footer" scrollable>
@@ -490,11 +498,11 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card
         id="slat-group-divider"
-        title="Slat Group: Dividers" 
+        title="Slat Group: Dividers"
         description="
-          If a mui-slat is slotted directly into the mui-card-body, 
+          If a mui-slat is slotted directly into the mui-card-body,
           if will automatically align the slats with the heading to ensure consistent alignment within a card.
         "
         usage="
@@ -557,7 +565,7 @@ class storyCards extends HTMLElement {
               </mui-slat>
             </mui-slat-group>
           </mui-card-body>
-          
+
         </mui-card>
 
         <story-code-block slot="footer" scrollable>
@@ -680,7 +688,7 @@ class storyCards extends HTMLElement {
                       </mui-slat>
                     </mui-slat-group>
                   </mui-v-stack>
-        
+
                 </mui-accordion-block>
                 <mui-accordion-block heading="Opt-out">
                   <mui-v-stack slot="detail" space="var(--space-200)" style="max-width: 400px; margin: var(--space-200) auto 0;">
@@ -877,7 +885,7 @@ class storyCards extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         attrs-reference='${attrsReference}'
@@ -886,7 +894,7 @@ class storyCards extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-card"]'>
 
         <story-quicklinks

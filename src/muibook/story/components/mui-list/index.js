@@ -175,14 +175,14 @@ class storyList extends HTMLElement {
           <br />
           &lt;/mui-list&gt;
         </story-code-block>
-        
+
       </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -190,7 +190,7 @@ class storyList extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-list"]'>
         ${stories}
       </story-template>

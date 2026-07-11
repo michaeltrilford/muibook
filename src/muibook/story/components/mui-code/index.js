@@ -60,8 +60,8 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Scrollable" 
-          description="When using the scrollable option, you’re likely displaying large code examples. Please ensure your content is properly formatted with line breaks and spacing. This component provides minimal formatting support, so you’ll need to handle this yourself or consider using a more advanced third-party code viewer." 
+        <story-card title="Scrollable"
+          description="When using the scrollable option, you’re likely displaying large code examples. Please ensure your content is properly formatted with line breaks and spacing. This component provides minimal formatting support, so you’ll need to handle this yourself or consider using a more advanced third-party code viewer."
           usage="
              Line wrapping is disabled when scrollable is set;
               Use the nbsp element to insert non-breaking spaces;
@@ -173,7 +173,7 @@ class storyCode extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -181,7 +181,7 @@ class storyCode extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-code"]'>
         ${stories}
       </story-template>

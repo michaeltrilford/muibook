@@ -4,7 +4,7 @@ import "../mui-input";
 
 class MuiSearchInput extends HTMLElement {
   static get observedAttributes() {
-    return ["id", "label", "placeholder", "value", "name", "size", "disabled", "open", "autofocus", "cancel-label"];
+    return ["id", "label", "placeholder", "value", "name", "size", "disabled", "open", "autofocus", "cancel-label", "menu-slot"];
   }
 
   private slotChangeHandler = () => this.syncAfterSlotState();
@@ -110,6 +110,7 @@ class MuiSearchInput extends HTMLElement {
     if (!trigger) return;
 
     trigger.classList.add("search-trigger");
+    trigger.setAttribute("size", this.getAttribute("size") || "medium");
     trigger.setAttribute("aria-expanded", this.open ? "true" : "false");
     if (!trigger.hasAttribute("aria-label") && !trigger.textContent?.trim()) {
       trigger.setAttribute("aria-label", "Search");
@@ -141,6 +142,11 @@ class MuiSearchInput extends HTMLElement {
     );
 
     this.toggleAttribute("has-after", hasAfter);
+    const size = this.getAttribute("size") || "medium";
+    slot?.assignedElements({ flatten: true }).forEach((element) => {
+      if (element.tagName.toLowerCase() === "mui-tab-bar") element.setAttribute("size", size);
+    });
+    if (!hasAfter && this.open) this.removeAttribute("open");
     this.syncOpenState();
   }
 
@@ -402,6 +408,7 @@ class MuiSearchInput extends HTMLElement {
               hide-label
               placeholder="${placeholder}"
               value="${value}"
+              ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
               ${disabled ? "disabled" : ""}
               ${this.hasAttribute("autofocus") ? "autofocus" : ""}
             >
@@ -409,7 +416,7 @@ class MuiSearchInput extends HTMLElement {
             </mui-input>
           </div>
           <div class="cancel-wrap">
-            <mui-button class="cancel" variant="tertiary" ${disabled ? "disabled" : ""} ${this.open ? "" : "tabindex=\"-1\""}>
+            <mui-button class="cancel" variant="tertiary" size="${size}" ${disabled ? "disabled" : ""} ${this.open ? "" : "tabindex=\"-1\""}>
               ${cancelLabel}
             </mui-button>
           </div>

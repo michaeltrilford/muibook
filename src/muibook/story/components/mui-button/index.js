@@ -168,7 +168,7 @@ class storyButton extends HTMLElement {
 
       <story-card
         id="size-x-small"
-        title="Size: X-Small" 
+        title="Size: X-Small"
         description="When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set."
         usage="
           Micro-interactions that require clear, compact buttons|||
@@ -178,7 +178,7 @@ class storyButton extends HTMLElement {
           Icon buttons in tight spaces|||
           Inline editing actions
         "
-      >    
+      >
 
         <mui-v-stack slot="body" alignx="stretch">
           <mui-h-stack alignx="end" alignY="center" space="var(--space-300)">
@@ -245,13 +245,13 @@ class storyButton extends HTMLElement {
 
       <story-card
         id="size-small"
-        title="Size: Small" 
+        title="Size: Small"
         description="When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set."
-        usage=" 
+        usage="
           Small/medium form inputs|||
           Toolbar actions or discrete filter controls
         "
-      >  
+      >
         <mui-v-stack slot="body">
           <mui-responsive variant="container" observe="parent" breakpoint="700">
             <mui-h-stack alignx="space-between" aligny="center" slot="showAbove" style="border-radius: var(--radius-200); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
@@ -341,9 +341,9 @@ class storyButton extends HTMLElement {
 
       <story-card
         id="size-medium"
-        title="Size: Medium (Default)" 
+        title="Size: Medium (Default)"
         description="When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set."
-        usage=" 
+        usage="
           Standard form inputs (text fields, selects)|||
           Card components (primary and secondary actions)|||
           Modal dialogs|||
@@ -437,9 +437,9 @@ class storyButton extends HTMLElement {
 
       <story-card
         id="size-large"
-        title="Size: Large" 
+        title="Size: Large"
         description="When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set."
-        usage=" 
+        usage="
           Large headings (H1, H2)|||
           Hero sections|||
           Large form inputs (search bars, prominent forms)|||
@@ -663,7 +663,7 @@ class storyButton extends HTMLElement {
 
       <story-card
         id="button-group"
-        title="Header: Button-Group" 
+        title="Header: Button-Group"
         description="Example of actions that are present at the top of a page or card use."
         usage='
           Use small (default) size icon when paired with text-based action is used in a button group|||
@@ -693,7 +693,7 @@ class storyButton extends HTMLElement {
 
       <story-card
         id="footer-button-group"
-        title="Footer: Button-Group" 
+        title="Footer: Button-Group"
         description="Example of actions in a card, dialog or drawer."
       >
         <mui-button-group align="right" slot="body">
@@ -781,18 +781,18 @@ class storyButton extends HTMLElement {
       >
 
         <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
-          <mui-button 
+          <mui-button
             variant="primary">
               Add New
               <mui-icon-add slot="before"></mui-icon-add>
           </mui-button>
-          <mui-button 
+          <mui-button
             variant="primary">
               More
               <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
           </mui-button>
         </mui-v-stack>
-        
+
         <story-code-block slot="footer" scrollable>
           &lt;mui-button variant="primary"&gt;
           <br />
@@ -869,7 +869,7 @@ class storyButton extends HTMLElement {
 
       <story-card
         id="tertiary-icon-only"
-        title="Tertiary: Icon-Only" 
+        title="Tertiary: Icon-Only"
         usage='
           Use small (default) size icon when paired with text-based action is used in a button group|||
           Use medium size icon when the icon-only action appears on its own. E.g. Menu
@@ -990,25 +990,25 @@ class storyButton extends HTMLElement {
       >
         <mui-v-stack slot="body" space="var(--space-400)">
         <mui-h-stack space="var(--space-100)">
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="secondary">  
+          <mui-button variant="secondary">
             <mui-icon-toggle size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="tertiary">  
+          <mui-button variant="tertiary">
             <mui-icon-toggle size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="attention">  
+          <mui-button variant="attention">
             <mui-icon-toggle size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
@@ -1016,79 +1016,79 @@ class storyButton extends HTMLElement {
           </mui-button>
         </mui-h-stack>
         <mui-h-stack space="var(--space-100)" wrap>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-sun slot="start"></mui-icon-sun>
               <mui-icon-moon slot="end"></mui-icon-moon>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-play-fill slot="start"></mui-icon-play-fill>
               <mui-icon-pause slot="end"></mui-icon-pause>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-menu slot="start"></mui-icon-menu>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-search slot="start"></mui-icon-search>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-speaker-two-wave slot="start"></mui-icon-speaker-two-wave>
               <mui-icon-speaker-mute slot="end"></mui-icon-speaker-mute>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-pin slot="start"></mui-icon-pin>
               <mui-icon-pin-slash slot="end"></mui-icon-pin-slash>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-grid slot="start"></mui-icon-grid>
               <mui-icon-list-and-film slot="end"></mui-icon-list-and-film>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-down-chevron slot="start"></mui-icon-down-chevron>
               <mui-icon-up-chevron slot="end"></mui-icon-up-chevron>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-fullscreen slot="start"></mui-icon-fullscreen>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-left-sidebar slot="start"></mui-icon-left-sidebar>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-ellipsis slot="start"></mui-icon-ellipsis>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-notification slot="start"></mui-icon-notification>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle size="medium">
               <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
               <mui-icon-down-arrow-circle slot="end"></mui-icon-down-arrow-circle>
@@ -1123,25 +1123,25 @@ class storyButton extends HTMLElement {
       >
         <mui-v-stack slot="body" space="var(--space-400)">
         <mui-h-stack space="var(--space-100)">
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="secondary">  
+          <mui-button variant="secondary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="tertiary">  
+          <mui-button variant="tertiary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="attention">  
+          <mui-button variant="attention">
             <mui-icon-toggle morph size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
@@ -1149,79 +1149,79 @@ class storyButton extends HTMLElement {
           </mui-button>
         </mui-h-stack>
         <mui-h-stack space="var(--space-100)" wrap>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-sun slot="start"></mui-icon-sun>
               <mui-icon-moon slot="end"></mui-icon-moon>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-play-fill slot="start"></mui-icon-play-fill>
               <mui-icon-pause slot="end"></mui-icon-pause>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-menu slot="start"></mui-icon-menu>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-search slot="start"></mui-icon-search>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-speaker-two-wave slot="start"></mui-icon-speaker-two-wave>
               <mui-icon-speaker-mute slot="end"></mui-icon-speaker-mute>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-pin slot="start"></mui-icon-pin>
               <mui-icon-pin-slash slot="end"></mui-icon-pin-slash>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-grid slot="start"></mui-icon-grid>
               <mui-icon-list-and-film slot="end"></mui-icon-list-and-film>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-down-chevron slot="start"></mui-icon-down-chevron>
               <mui-icon-up-chevron slot="end"></mui-icon-up-chevron>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-fullscreen slot="start"></mui-icon-fullscreen>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-left-sidebar slot="start"></mui-icon-left-sidebar>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-ellipsis slot="start"></mui-icon-ellipsis>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-notification slot="start"></mui-icon-notification>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle morph size="medium">
               <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
               <mui-icon-down-arrow-circle slot="end"></mui-icon-down-arrow-circle>
@@ -1256,25 +1256,25 @@ class storyButton extends HTMLElement {
       >
         <mui-v-stack slot="body" space="var(--space-400)">
         <mui-h-stack space="var(--space-100)">
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="secondary">  
+          <mui-button variant="secondary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="tertiary">  
+          <mui-button variant="tertiary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="attention">  
+          <mui-button variant="attention">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-add slot="start"></mui-icon-add>
               <mui-icon-subtract slot="end"></mui-icon-subtract>
@@ -1282,79 +1282,79 @@ class storyButton extends HTMLElement {
           </mui-button>
         </mui-h-stack>
         <mui-h-stack space="var(--space-100)" wrap>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-sun slot="start"></mui-icon-sun>
               <mui-icon-moon slot="end"></mui-icon-moon>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-play-fill slot="start"></mui-icon-play-fill>
               <mui-icon-pause slot="end"></mui-icon-pause>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-menu slot="start"></mui-icon-menu>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-search slot="start"></mui-icon-search>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-speaker-two-wave slot="start"></mui-icon-speaker-two-wave>
               <mui-icon-speaker-mute slot="end"></mui-icon-speaker-mute>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-pin slot="start"></mui-icon-pin>
               <mui-icon-pin-slash slot="end"></mui-icon-pin-slash>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-grid slot="start"></mui-icon-grid>
               <mui-icon-list-and-film slot="end"></mui-icon-list-and-film>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-down-chevron slot="start"></mui-icon-down-chevron>
               <mui-icon-up-chevron slot="end"></mui-icon-up-chevron>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-fullscreen slot="start"></mui-icon-fullscreen>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-left-sidebar slot="start"></mui-icon-left-sidebar>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-ellipsis slot="start"></mui-icon-ellipsis>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-notification slot="start"></mui-icon-notification>
               <mui-icon-close slot="end"></mui-icon-close>
             </mui-icon-toggle>
           </mui-button>
-          <mui-button variant="primary">  
+          <mui-button variant="primary">
             <mui-icon-toggle rotate size="medium">
               <mui-icon-up-arrow slot="start"></mui-icon-up-arrow>
               <mui-icon-down-arrow-circle slot="end"></mui-icon-down-arrow-circle>
@@ -1385,7 +1385,7 @@ class storyButton extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template title="Button" 
+      <story-template title="Button"
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -1394,7 +1394,7 @@ class storyButton extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
         attrs-reference='${attrsReference}'
-      
+
         imports='["@muibook/components/mui-button"]'>
         <story-quicklinks
           slot="message"

@@ -16,10 +16,10 @@ class storyTime extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-time" title="Time"></story-api-types>
 
-        <story-card 
+        <story-card
           id="default"
-          title="Default (Dial)" 
-          description="The default time picker uses a scrolling wheel dial interface." 
+          title="Default (Dial)"
+          description="The default time picker uses a scrolling wheel dial interface."
         >
           <mui-v-stack slot="body">
             <mui-time value="10:30 AM"></mui-time>
@@ -29,10 +29,10 @@ class storyTime extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
+        <story-card
           id="slots"
-          title="Time Slots" 
-          description="Use variant='slots' to show discrete time chips." 
+          title="Time Slots"
+          description="Use variant='slots' to show discrete time chips."
         >
           <mui-v-stack slot="body">
             <mui-time variant="slots" start="9" end="17" step="30"></mui-time>
@@ -53,7 +53,7 @@ class storyTime extends HTMLElement {
         guides="${data?.guides || ''}"
         storybook="${data?.storybook || ''}"
         accessibility="${data?.accessibility?.engineerList?.join("|||") || ''}"
-      
+
         imports='["@muibook/components/mui-time"]'>
         <story-quicklinks
           slot="message"

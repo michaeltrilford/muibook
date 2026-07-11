@@ -19,6 +19,8 @@ export const muiDocs: MuiDocs = {
 
     usage: {
       list: [
+        "Compose one direct mui-menu child for the dropdown surface; direct button and link options are not supported.",
+        "Set size='x-small|small|medium|large' on Dropdown to enforce a shared size on its trigger, Menu, and direct Menu actions.",
         "Dropdowns are ideal for actions that are contextual or used infrequently and do not require constant visibility.",
         "Ensure the trigger is clear by using a label, icon, or ellipsis, and include accessible labels for icon-only triggers.",
         "Keep menu items concise (around 5–7 options). Group related actions and use dividers for clarity to avoid overwhelming users.",

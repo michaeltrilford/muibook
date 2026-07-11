@@ -14,7 +14,7 @@ class Onboarding extends HTMLElement {
 
   connectedCallback() {
     const styles = /*css*/ `
-      :host { 
+      :host {
         display: block;
       }
     `;
@@ -22,7 +22,7 @@ class Onboarding extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="Onboarding"
         description="Creating compositions provide the Design System a view of how the system is working and where it needs flexibility."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/onboarding/index.js"
@@ -153,7 +153,7 @@ class Onboarding extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-card&gt;<br />
             &lt;/mui-container&gt;
             </story-code-block>
-      
+
 
         </story-card>
 

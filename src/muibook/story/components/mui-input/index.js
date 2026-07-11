@@ -60,7 +60,7 @@ class storyInput extends HTMLElement {
           <mui-input variant="success"  value="value" type="password" label="Password"></mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input variant="success" value="value" type="password" label="Password"&gt;&lt;/mui-input&gt;
+          &lt;mui-input variant="positive" value="value" type="password" label="Password"&gt;&lt;/mui-input&gt;
           <br />
         </story-code-block>
       </story-card>
@@ -84,7 +84,7 @@ class storyInput extends HTMLElement {
           <mui-input variant="error" value="michael.mui.com" label="Email"></mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input variant="error" value="michael.mui.com" label="Email"&gt;&lt;/mui-input&gt;
+          &lt;mui-input variant="attention" value="michael.mui.com" label="Email"&gt;&lt;/mui-input&gt;
           <br />
         </story-code-block>
       </story-card>
@@ -153,7 +153,7 @@ class storyInput extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
           <br />
           &nbsp;&nbsp;&lt;/mui-addon&gt;
-          <br />            
+          <br />
 
           &lt;/mui-input&gt;
           <br />
@@ -176,7 +176,7 @@ class storyInput extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
           <br />
           &nbsp;&nbsp;&lt;/mui-addon&gt;
-          <br />            
+          <br />
 
           &lt;/mui-input&gt;
           <br />
@@ -249,7 +249,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Button: Before & After" 
+      <story-card title="Button: Before & After"
         usageLink="https://guides.muibook.com/input"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
@@ -288,7 +288,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Link: Before & After" 
+      <story-card title="Link: Before & After"
         usageLink="https://guides.muibook.com/input"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
@@ -476,13 +476,13 @@ class storyInput extends HTMLElement {
           <mui-input label="Name" type="text" id="name-input" name="name" value="John Doe"></mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
+          &lt;mui-input
           <br />
           &nbsp;&nbsp;label="Name"
           <br />
-          &nbsp;&nbsp;type="text" 
+          &nbsp;&nbsp;type="text"
           <br />
-          &nbsp;&nbsp;id="name-input" 
+          &nbsp;&nbsp;id="name-input"
           <br />
           &nbsp;&nbsp;name="name"
           <br />
@@ -499,13 +499,13 @@ class storyInput extends HTMLElement {
           <mui-input label="Email" type="email" id="email-input" name="email" value="user@example.com"></mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
+          &lt;mui-input
           <br />
           &nbsp;&nbsp;label="Email"
           <br />
-          &nbsp;&nbsp;type="email" 
+          &nbsp;&nbsp;type="email"
           <br />
-          &nbsp;&nbsp;id="email-input" 
+          &nbsp;&nbsp;id="email-input"
           <br />
           &nbsp;&nbsp;name="email"
           <br />
@@ -522,13 +522,13 @@ class storyInput extends HTMLElement {
           <mui-input label="Password" type="password" id="password-input" name="password" value="abcde1234"></mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
+          &lt;mui-input
           <br />
           &nbsp;&nbsp;label="Password"
           <br />
-          &nbsp;&nbsp;type="password" 
+          &nbsp;&nbsp;type="password"
           <br />
-          &nbsp;&nbsp;id="password-input" 
+          &nbsp;&nbsp;id="password-input"
           <br />
           &nbsp;&nbsp;name="password"
           <br />
@@ -546,13 +546,13 @@ class storyInput extends HTMLElement {
           <mui-input label="Age" type="number" id="age-input" name="age" value="30"></mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
+          &lt;mui-input
           <br />
           &nbsp;&nbsp;label="Age"
           <br />
-          &nbsp;&nbsp;type="number" 
+          &nbsp;&nbsp;type="number"
           <br />
-          &nbsp;&nbsp;id="age-input" 
+          &nbsp;&nbsp;id="age-input"
           <br />
           &nbsp;&nbsp;name="age"
           <br />
@@ -569,13 +569,13 @@ class storyInput extends HTMLElement {
           <mui-input label="Website" type="url" id="url-input" name="website" value="https://example.com"></mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
+          &lt;mui-input
           <br />
           &nbsp;&nbsp;label="Website"
           <br />
-          &nbsp;&nbsp;type="url" 
+          &nbsp;&nbsp;type="url"
           <br />
-          &nbsp;&nbsp;id="url-input" 
+          &nbsp;&nbsp;id="url-input"
           <br />
           &nbsp;&nbsp;name="website"
           <br />
@@ -592,13 +592,13 @@ class storyInput extends HTMLElement {
           <mui-input label="Phone" type="tel" id="phone-input" name="phone" value="+1234567890"></mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
+          &lt;mui-input
           <br />
           &nbsp;&nbsp;label="Phone"
           <br />
-          &nbsp;&nbsp;type="tel" 
+          &nbsp;&nbsp;type="tel"
           <br />
-          &nbsp;&nbsp;id="phone-input" 
+          &nbsp;&nbsp;id="phone-input"
           <br />
           &nbsp;&nbsp;name="phone"
           <br />
@@ -615,13 +615,13 @@ class storyInput extends HTMLElement {
           <mui-input label="Search" type="search" id="search-input" name="search" value="Query"></mui-input>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-input 
+          &lt;mui-input
           <br />
           &nbsp;&nbsp;label="Search"
           <br />
-          &nbsp;&nbsp;type="search" 
+          &nbsp;&nbsp;type="search"
           <br />
-          &nbsp;&nbsp;id="search-input" 
+          &nbsp;&nbsp;id="search-input"
           <br />
           &nbsp;&nbsp;name="search"
           <br />
@@ -636,7 +636,7 @@ class storyInput extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         attrs-reference='${attrsReference}'
@@ -645,7 +645,7 @@ class storyInput extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-input"]'>
         ${stories}
       </story-template>

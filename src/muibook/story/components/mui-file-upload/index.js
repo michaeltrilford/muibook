@@ -16,7 +16,7 @@ class storyFileUpload extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-file-upload" title="File Upload"></story-api-types>
 
-      <story-card 
+      <story-card
         title="Default"
         description="A simple file input that displays the selected file name and emits a file-upload event."
         usageLink="https://guides.muibook.com/file-upload"
@@ -31,7 +31,7 @@ class storyFileUpload extends HTMLElement {
           &nbsp;&nbsp;currentFileName="No file selected"<br />
           &gt;&lt;/mui-file-upload&gt;
         </story-code-block>
-      </story-card> 
+      </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -45,7 +45,7 @@ class storyFileUpload extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-file-upload"]'>
         ${stories}
       </story-template>

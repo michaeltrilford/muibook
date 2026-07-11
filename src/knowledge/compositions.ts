@@ -41,7 +41,7 @@ export const compositions = {
                         props: {
                           text: "Start with your work email and a secure password.",
                           size: "small",
-                          variant: "optional",
+                          variant: "secondary",
                         },
                         children: [],
                       },
@@ -318,7 +318,7 @@ export const compositions = {
                           {
                             type: "Body",
                             id: "metric_revenue_label",
-                            props: { text: "Revenue", size: "small", variant: "optional" },
+                            props: { text: "Revenue", size: "small", variant: "secondary" },
                             children: [],
                           },
                           {
@@ -337,7 +337,7 @@ export const compositions = {
                           {
                             type: "Body",
                             id: "metric_orders_label",
-                            props: { text: "Orders", size: "small", variant: "optional" },
+                            props: { text: "Orders", size: "small", variant: "secondary" },
                             children: [],
                           },
                           {
@@ -356,7 +356,7 @@ export const compositions = {
                           {
                             type: "Body",
                             id: "metric_conversion_label",
-                            props: { text: "Conversion", size: "small", variant: "optional" },
+                            props: { text: "Conversion", size: "small", variant: "secondary" },
                             children: [],
                           },
                           {
@@ -1449,7 +1449,7 @@ export const compositions = {
                         id: "metric_revenue_stack",
                         props: { space: "var(--space-200)", alignX: "stretch" },
                         children: [
-                          { type: "Body", id: "metric_revenue_label", props: { text: "Monthly revenue", size: "small", variant: "optional" }, children: [] },
+                          { type: "Body", id: "metric_revenue_label", props: { text: "Monthly revenue", size: "small", variant: "secondary" }, children: [] },
                           { type: "Heading", id: "metric_revenue_value", props: { text: "$128.4K", size: "3", level: "2" }, children: [] },
                           { type: "Badge", id: "metric_revenue_delta", props: { text: "+12.8%", size: "small", variant: "positive" }, children: [] },
                         ],
@@ -1473,7 +1473,7 @@ export const compositions = {
                         id: "metric_accounts_stack",
                         props: { space: "var(--space-200)", alignX: "stretch" },
                         children: [
-                          { type: "Body", id: "metric_accounts_label", props: { text: "Active accounts", size: "small", variant: "optional" }, children: [] },
+                          { type: "Body", id: "metric_accounts_label", props: { text: "Active accounts", size: "small", variant: "secondary" }, children: [] },
                           { type: "Heading", id: "metric_accounts_value", props: { text: "24,892", size: "3", level: "2" }, children: [] },
                           { type: "Badge", id: "metric_accounts_delta", props: { text: "+4.2%", size: "small", variant: "positive" }, children: [] },
                         ],
@@ -1497,7 +1497,7 @@ export const compositions = {
                         id: "metric_conversion_stack",
                         props: { space: "var(--space-200)", alignX: "stretch" },
                         children: [
-                          { type: "Body", id: "metric_conversion_label", props: { text: "Trial conversion", size: "small", variant: "optional" }, children: [] },
+                          { type: "Body", id: "metric_conversion_label", props: { text: "Trial conversion", size: "small", variant: "secondary" }, children: [] },
                           { type: "Heading", id: "metric_conversion_value", props: { text: "8.6%", size: "3", level: "2" }, children: [] },
                           { type: "Badge", id: "metric_conversion_delta", props: { text: "-1.1%", size: "small", variant: "warning" }, children: [] },
                         ],
@@ -1521,7 +1521,7 @@ export const compositions = {
                         id: "metric_uptime_stack",
                         props: { space: "var(--space-200)", alignX: "stretch" },
                         children: [
-                          { type: "Body", id: "metric_uptime_label", props: { text: "Platform uptime", size: "small", variant: "optional" }, children: [] },
+                          { type: "Body", id: "metric_uptime_label", props: { text: "Platform uptime", size: "small", variant: "secondary" }, children: [] },
                           { type: "Heading", id: "metric_uptime_value", props: { text: "99.98%", size: "3", level: "2" }, children: [] },
                           { type: "Badge", id: "metric_uptime_delta", props: { text: "Stable", size: "small", variant: "neutral" }, children: [] },
                         ],
@@ -1548,7 +1548,7 @@ export const compositions = {
                     props: {},
                     children: [
                       { type: "Heading", id: "activation_health_title", props: { text: "Activation health", size: "3", level: "2" }, children: [] },
-                      { type: "Body", id: "activation_health_description", props: { text: "Performance across the last 30 days.", size: "small", variant: "optional" }, children: [] },
+                      { type: "Body", id: "activation_health_description", props: { text: "Performance across the last 30 days.", size: "small", variant: "secondary" }, children: [] },
                     ],
                   },
                   {
@@ -1633,7 +1633,7 @@ export const compositions = {
                                 slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "billing_alerts_title", props: { text: "Review billing alerts", size: "small", weight: "bold" }, children: [] },
-                                  { type: "Body", id: "billing_alerts_meta", props: { text: "Finance operations", size: "x-small", variant: "optional" }, children: [] },
+                                  { type: "Body", id: "billing_alerts_meta", props: { text: "Finance operations", size: "x-small", variant: "secondary" }, children: [] },
                                 ],
                               },
                               { type: "Badge", id: "billing_alerts_badge", slot: "end", props: { text: "Urgent", size: "x-small", variant: "attention" }, children: [] },
@@ -1650,7 +1650,7 @@ export const compositions = {
                                 slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "campaign_title", props: { text: "Approve campaign launch", size: "small", weight: "bold" }, children: [] },
-                                  { type: "Body", id: "campaign_meta", props: { text: "Growth team", size: "x-small", variant: "optional" }, children: [] },
+                                  { type: "Body", id: "campaign_meta", props: { text: "Growth team", size: "x-small", variant: "secondary" }, children: [] },
                                 ],
                               },
                               { type: "Badge", id: "campaign_badge", slot: "end", props: { text: "Pending", size: "x-small", variant: "warning" }, children: [] },
@@ -1740,7 +1740,7 @@ export const compositions = {
                                 slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "activity_mobile_acme_title", props: { text: "Acme Studios", size: "small", weight: "bold" }, children: [] },
-                                  { type: "Body", id: "activity_mobile_acme_meta", props: { text: "Renewal payment", size: "x-small", variant: "optional" }, children: [] },
+                                  { type: "Body", id: "activity_mobile_acme_meta", props: { text: "Renewal payment", size: "x-small", variant: "secondary" }, children: [] },
                                 ],
                               },
                               { type: "Badge", id: "activity_mobile_acme_status", slot: "end", props: { text: "Paid", size: "x-small", variant: "positive" }, children: [] },

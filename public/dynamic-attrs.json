@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-10T01:30:27.913Z",
+  "generatedAt": "2026-07-11T09:10:48.525Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -13,6 +13,10 @@
         {
           "name": "has-after",
           "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "menu-slot",
+          "description": "Applied to direct Body content inside Menu so it inherits Menu sizing and action-aligned padding."
         }
       ]
     },
@@ -45,16 +49,16 @@
           "description": "Set when the default slot contains only an avatar, allowing the component to remove normal action chrome and preserve avatar sizing."
         },
         {
-          "name": "dropdown-slot",
-          "description": "Applied to actions rendered inside dropdown content, allowing the action to inherit dropdown item sizing and alignment."
+          "name": "menu-slot",
+          "description": "Applied to direct actions inside Menu so they inherit Menu sizing, alignment, and joined corner treatment."
         },
         {
-          "name": "dropdown-slot-first",
-          "description": "Applied to the first dropdown action, allowing edge radius and spacing to match the dropdown surface."
+          "name": "menu-slot-first",
+          "description": "Applied to the first menu action only when no direct Body heading precedes it, allowing edge radius to match the menu surface."
         },
         {
-          "name": "dropdown-slot-last",
-          "description": "Applied to the last dropdown action, allowing edge radius and spacing to match the dropdown surface."
+          "name": "menu-slot-last",
+          "description": "Applied to the last menu action, allowing edge radius and spacing to match the menu surface."
         },
         {
           "name": "alert-slot",
@@ -350,6 +354,20 @@
         }
       ]
     },
+    "mui-tab-item": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-before",
+          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "has-after",
+          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        }
+      ]
+    },
     "mui-row": {
       "version": 1,
       "destinationOnly": true,
@@ -367,20 +385,6 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
-        }
-      ]
-    },
-    "mui-tab-item": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-before",
-          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
-        },
-        {
-          "name": "has-after",
-          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
         }
       ]
     }

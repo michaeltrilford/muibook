@@ -88,7 +88,7 @@ class CompDashboard extends HTMLElement {
               <mui-h-stack class="page-header" space="var(--space-400)" alignx="space-between" aligny="center">
                 <mui-v-stack space="var(--space-000)" alignx="stretch">
                   <mui-heading size="2" level="1">Revenue operations</mui-heading>
-                  <mui-body size="small" variant="optional">Track recurring revenue, activation health, and actions requiring review.</mui-body>
+                  <mui-body size="small" variant="secondary">Track recurring revenue, activation health, and actions requiring review.</mui-body>
                 </mui-v-stack>
                 <mui-button-group align="right">
                   <mui-button size="small" variant="secondary">Export report</mui-button>
@@ -101,7 +101,7 @@ class CompDashboard extends HTMLElement {
                 <mui-card>
                   <mui-card-body>
                     <mui-v-stack space="var(--space-200)" alignx="stretch">
-                      <mui-body size="small" variant="optional">Monthly revenue</mui-body>
+                      <mui-body size="small" variant="secondary">Monthly revenue</mui-body>
                       <mui-heading class="metric-value" size="3" level="2">$128.4K</mui-heading>
                       <mui-badge size="small" variant="positive">+12.8%</mui-badge>
                     </mui-v-stack>
@@ -110,7 +110,7 @@ class CompDashboard extends HTMLElement {
                 <mui-card>
                   <mui-card-body>
                     <mui-v-stack space="var(--space-200)" alignx="stretch">
-                      <mui-body size="small" variant="optional">Active accounts</mui-body>
+                      <mui-body size="small" variant="secondary">Active accounts</mui-body>
                       <mui-heading class="metric-value" size="3" level="2">24,892</mui-heading>
                       <mui-badge size="small" variant="positive">+4.2%</mui-badge>
                     </mui-v-stack>
@@ -119,7 +119,7 @@ class CompDashboard extends HTMLElement {
                 <mui-card>
                   <mui-card-body>
                     <mui-v-stack space="var(--space-200)" alignx="stretch">
-                      <mui-body size="small" variant="optional">Trial conversion</mui-body>
+                      <mui-body size="small" variant="secondary">Trial conversion</mui-body>
                       <mui-heading class="metric-value" size="3" level="2">8.6%</mui-heading>
                       <mui-badge size="small" variant="warning">-1.1%</mui-badge>
                     </mui-v-stack>
@@ -128,7 +128,7 @@ class CompDashboard extends HTMLElement {
                 <mui-card>
                   <mui-card-body>
                     <mui-v-stack space="var(--space-200)" alignx="stretch">
-                      <mui-body size="small" variant="optional">Platform uptime</mui-body>
+                      <mui-body size="small" variant="secondary">Platform uptime</mui-body>
                       <mui-heading class="metric-value" size="3" level="2">99.98%</mui-heading>
                       <mui-badge size="small" variant="neutral">Stable</mui-badge>
                     </mui-v-stack>
@@ -142,7 +142,7 @@ class CompDashboard extends HTMLElement {
                     <mui-h-stack alignx="space-between" aligny="center">
                       <mui-v-stack space="var(--space-000)">
                         <mui-heading size="3" level="2">Activation health</mui-heading>
-                        <mui-body size="small" variant="optional">Performance across the last 30 days.</mui-body>
+                        <mui-body size="small" variant="secondary">Performance across the last 30 days.</mui-body>
                       </mui-v-stack>
                       <mui-badge size="small" variant="neutral">Last 30 days</mui-badge>
                     </mui-h-stack>
@@ -186,7 +186,7 @@ class CompDashboard extends HTMLElement {
                 <mui-card>
                   <mui-card-header>
                     <mui-heading size="3" level="2">Priority tasks</mui-heading>
-                    <mui-body size="small" variant="optional">Items requiring owner review today.</mui-body>
+                    <mui-body size="small" variant="secondary">Items requiring owner review today.</mui-body>
                   </mui-card-header>
                   <mui-card-body>
                     <mui-v-stack space="var(--space-300)" alignx="stretch">
@@ -194,21 +194,21 @@ class CompDashboard extends HTMLElement {
                         <mui-slat variant="action">
                           <mui-v-stack slot="start" space="var(--space-000)">
                             <mui-body size="small" weight="bold">Review billing alerts</mui-body>
-                            <mui-body size="x-small" variant="optional">Finance operations</mui-body>
+                            <mui-body size="x-small" variant="secondary">Finance operations</mui-body>
                           </mui-v-stack>
                           <mui-status slot="end" size="small" variant="attention">Urgent</mui-status>
                         </mui-slat>
                         <mui-slat variant="action">
                           <mui-v-stack slot="start" space="var(--space-000)">
                             <mui-body size="small" weight="bold">Approve campaign launch</mui-body>
-                            <mui-body size="x-small" variant="optional">Growth team</mui-body>
+                            <mui-body size="x-small" variant="secondary">Growth team</mui-body>
                           </mui-v-stack>
                           <mui-status slot="end" size="small" variant="warning">Pending</mui-status>
                         </mui-slat>
                         <mui-slat variant="action">
                           <mui-v-stack slot="start" space="var(--space-000)">
                             <mui-body size="small" weight="bold">Invite finance reviewer</mui-body>
-                            <mui-body size="x-small" variant="optional">Workspace admin</mui-body>
+                            <mui-body size="x-small" variant="secondary">Workspace admin</mui-body>
                           </mui-v-stack>
                           <mui-status slot="end" size="small">Open</mui-status>
                         </mui-slat>
@@ -225,7 +225,7 @@ class CompDashboard extends HTMLElement {
                     <mui-h-stack alignx="space-between" aligny="center">
                       <mui-v-stack space="var(--space-000)">
                         <mui-heading size="3" level="2">Recent account activity</mui-heading>
-                        <mui-body size="small" variant="optional">Latest billing and onboarding events.</mui-body>
+                        <mui-body size="small" variant="secondary">Latest billing and onboarding events.</mui-body>
                       </mui-v-stack>
                       <mui-link size="small" variant="primary">See all</mui-link>
                     </mui-h-stack>
@@ -262,21 +262,21 @@ class CompDashboard extends HTMLElement {
                 <mui-card slot="showBelow">
                   <mui-card-header>
                     <mui-heading size="3" level="2">Recent account activity</mui-heading>
-                    <mui-body size="small" variant="optional">Latest billing and onboarding events.</mui-body>
+                    <mui-body size="small" variant="secondary">Latest billing and onboarding events.</mui-body>
                   </mui-card-header>
                   <mui-card-body>
                     <mui-slat-group>
                       <mui-slat variant="action">
                         <mui-v-stack slot="start" space="var(--space-000)">
                           <mui-body size="small" weight="bold">Acme Studios</mui-body>
-                          <mui-body size="x-small" variant="optional">Renewal payment</mui-body>
+                          <mui-body size="x-small" variant="secondary">Renewal payment</mui-body>
                         </mui-v-stack>
                         <mui-status slot="end" size="small" variant="positive">Paid</mui-status>
                       </mui-slat>
                       <mui-slat variant="action">
                         <mui-v-stack slot="start" space="var(--space-000)">
                           <mui-body size="small" weight="bold">Northwind Labs</mui-body>
-                          <mui-body size="x-small" variant="optional">Trial review</mui-body>
+                          <mui-body size="x-small" variant="secondary">Trial review</mui-body>
                         </mui-v-stack>
                         <mui-status slot="end" size="small" variant="warning">Pending</mui-status>
                       </mui-slat>

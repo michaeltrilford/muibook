@@ -1,117 +1,117 @@
 import { getComponentDocs } from "../../../utils/story-data";
 
-class StoryPromptPreview extends HTMLElement {
+class StoryPreviewChip extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   async connectedCallback() {
-    const data = await getComponentDocs("PromptPreview");
+    const data = await getComponentDocs("PreviewChip");
 
     const stories = /*html*/ `
-      <story-api-types tag="mui-prompt-preview" title="Prompt Preview"></story-api-types>
+      <story-api-types tag="mui-preview-chip" title="Preview Chip"></story-api-types>
 
       <story-card id="predropped" title="Pre-dropped Preview" description="Shows long pasted input before submit.">
-        <mui-prompt-preview
+        <mui-preview-chip
           slot="body"
           badge="JSON"
           animated
           value='{"source":"crm","query":"CSAT by feature","range":"Q4","include":["pain_points","sentiment"]}'
-        ></mui-prompt-preview>
+        ></mui-preview-chip>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-prompt-preview<br />
+          &lt;mui-preview-chip<br />
           &nbsp;&nbsp;badge="JSON"<br />
           &nbsp;&nbsp;value='{"source":"crm","query":"CSAT by feature"}'<br />
-          &gt;&lt;/mui-prompt-preview&gt;
+          &gt;&lt;/mui-preview-chip&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="types" title="Payload Types" description="Set badge directly or let the component infer it from value.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt-preview
+          <mui-preview-chip
             badge="JSON"
             animated
             value='{"name":"dashboard","version":"2.0.0","mode":"compact"}'
-          ></mui-prompt-preview>
-          <mui-prompt-preview
+          ></mui-preview-chip>
+          <mui-preview-chip
             badge="CSS"
             animated
             value=":root { --surface: #111; --text: #f5f5f5; --radius: 8px; }"
-          ></mui-prompt-preview>
-          <mui-prompt-preview
+          ></mui-preview-chip>
+          <mui-preview-chip
             badge="JS"
             animated
             value="const summary = data.filter(active).map(normalize).slice(0, 10);"
-          ></mui-prompt-preview>
-          <mui-prompt-preview
+          ></mui-preview-chip>
+          <mui-preview-chip
             badge="TS"
             animated
             value="type PromptPayload = { source: string; query: string; include: string[] };"
-          ></mui-prompt-preview>
-          <mui-prompt-preview
+          ></mui-preview-chip>
+          <mui-preview-chip
             badge="MD"
             animated
             value="## Q4 Notes\n- Churn up in SMB\n- CSAT strongest in onboarding"
-          ></mui-prompt-preview>
-          <mui-prompt-preview
+          ></mui-preview-chip>
+          <mui-preview-chip
             badge="SQL"
             animated
             value="SELECT feature_area, AVG(csat) FROM survey_responses GROUP BY feature_area;"
-          ></mui-prompt-preview>
+          ></mui-preview-chip>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-prompt-preview badge="JSON" ...&gt;&lt;/mui-prompt-preview&gt;<br />
-          &lt;mui-prompt-preview badge="CSS" ...&gt;&lt;/mui-prompt-preview&gt;<br />
-          &lt;mui-prompt-preview badge="JS" ...&gt;&lt;/mui-prompt-preview&gt;<br />
-          &lt;mui-prompt-preview badge="TS" ...&gt;&lt;/mui-prompt-preview&gt;<br />
-          &lt;mui-prompt-preview badge="MD" ...&gt;&lt;/mui-prompt-preview&gt;<br />
-          &lt;mui-prompt-preview badge="SQL" ...&gt;&lt;/mui-prompt-preview&gt;
+          &lt;mui-preview-chip badge="JSON" ...&gt;&lt;/mui-preview-chip&gt;<br />
+          &lt;mui-preview-chip badge="CSS" ...&gt;&lt;/mui-preview-chip&gt;<br />
+          &lt;mui-preview-chip badge="JS" ...&gt;&lt;/mui-preview-chip&gt;<br />
+          &lt;mui-preview-chip badge="TS" ...&gt;&lt;/mui-preview-chip&gt;<br />
+          &lt;mui-preview-chip badge="MD" ...&gt;&lt;/mui-preview-chip&gt;<br />
+          &lt;mui-preview-chip badge="SQL" ...&gt;&lt;/mui-preview-chip&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="loading" title="Loading State" description="Use loading while async preview metadata or media checks resolve.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt-preview
+          <mui-preview-chip
             badge="JSON"
             value='{"source":"crm","query":"CSAT by feature","range":"Q4"}'
-          ></mui-prompt-preview>
-          <mui-prompt-preview
+          ></mui-preview-chip>
+          <mui-preview-chip
             badge="JSON"
             loading
             loading-label="Resolving preview"
             value='{"source":"crm","query":"CSAT by feature","range":"Q4"}'
-          ></mui-prompt-preview>
+          ></mui-preview-chip>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-prompt-preview badge="JSON" value='{"source":"crm","query":"CSAT"}'&gt;&lt;/mui-prompt-preview&gt;<br />
-          &lt;mui-prompt-preview badge="JSON" loading loading-label="Resolving preview" value='{"source":"crm","query":"CSAT"}'&gt;&lt;/mui-prompt-preview&gt;
+          &lt;mui-preview-chip badge="JSON" value='{"source":"crm","query":"CSAT"}'&gt;&lt;/mui-preview-chip&gt;<br />
+          &lt;mui-preview-chip badge="JSON" loading loading-label="Resolving preview" value='{"source":"crm","query":"CSAT"}'&gt;&lt;/mui-preview-chip&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="pasted-image" title="Pasted Image" description="Image previews default to badge-only, with no text overlay.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt-preview
+          <mui-preview-chip
             badge="IMG"
             bg-image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80"
             image-tint="var(--grey-1200)"
             value=""
-          ></mui-prompt-preview>
+          ></mui-preview-chip>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-prompt-preview badge="IMG" bg-image="{url}" image-tint="var(--grey-1200)"&gt;&lt;/mui-prompt-preview&gt;
+          &lt;mui-preview-chip badge="IMG" bg-image="{url}" image-tint="var(--grey-1200)"&gt;&lt;/mui-preview-chip&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="dismiss-tracking" title="Dismiss Tracking" description="Capture dismiss payloads for API calls and analytics before removing.">
         <mui-v-stack slot="body" space="var(--space-100)">
-          <mui-prompt-preview
+          <mui-preview-chip
             id="trackingPreview"
             badge="JSON"
             animated
             value='{"query":"Retention risk users","window":"30d"}'
-          ></mui-prompt-preview>
-          <mui-body id="trackingStatus" size="x-small" variant="optional">Waiting for dismiss…</mui-body>
+          ></mui-preview-chip>
+          <mui-body id="trackingStatus" size="x-small" variant="secondary">Waiting for dismiss…</mui-body>
           <mui-button id="trackingReset" size="x-small" variant="primary">Reset Example</mui-button>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -125,37 +125,37 @@ class StoryPromptPreview extends HTMLElement {
 
       <story-card id="open-dialog" title="Formatted JSON Dialog" description="Format the emitted value before presenting it in a consumer-managed dialog.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt-preview
+          <mui-preview-chip
             id="dialogTriggerPreview"
             clickable
             badge="JSON"
             animated
             value='{"source":"crm","query":"CSAT by feature","range":"Q4","include":["pain_points","sentiment","churn_drivers"]}'
-          ></mui-prompt-preview>
+          ></mui-preview-chip>
           <mui-dialog id="previewDialog" width="560px" content-padding="none">
             <mui-heading slot="title" size="5">Pasted Content</mui-heading>
             <mui-code id="previewDialogCode" size="small" wrap></mui-code>
           </mui-dialog>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          preview.addEventListener("prompt-preview-open", (event) =&gt; {<br />
+          preview.addEventListener("preview-chip-open", (event) =&gt; {<br />
           &nbsp;&nbsp;dialogCode.textContent = JSON.stringify(JSON.parse(event.detail.value), null, 2);<br />
           &nbsp;&nbsp;dialog.open();<br />
           });<br /><br />
-          &lt;mui-prompt-preview clickable ...&gt;&lt;/mui-prompt-preview&gt;
+          &lt;mui-preview-chip clickable ...&gt;&lt;/mui-preview-chip&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="open-dialog-image" title="Click Image to Open Dialog" description="Open a dialog with the full pasted image preview.">
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt-preview
+          <mui-preview-chip
             id="dialogImageTriggerPreview"
             clickable
             badge="IMG"
             bg-image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80"
             image-tint="var(--grey-1200)"
             value=""
-          ></mui-prompt-preview>
+          ></mui-preview-chip>
           <mui-dialog id="previewImageDialog" width="640px" content-padding="none">
             <mui-heading slot="title" size="5">Pasted Image</mui-heading>
             <img
@@ -166,26 +166,26 @@ class StoryPromptPreview extends HTMLElement {
           </mui-dialog>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          preview.addEventListener("prompt-preview-open", (event) =&gt; {<br />
+          preview.addEventListener("preview-chip-open", (event) =&gt; {<br />
           &nbsp;&nbsp;dialogImage.src = event.detail.bgImage;<br />
           &nbsp;&nbsp;dialog.open();<br />
           });<br /><br />
-          &lt;mui-prompt-preview clickable badge="IMG" bg-image="{url}" ...&gt;&lt;/mui-prompt-preview&gt;
+          &lt;mui-preview-chip clickable badge="IMG" bg-image="{url}" ...&gt;&lt;/mui-preview-chip&gt;
         </story-code-block>
       </story-card>
     `;
 
     this.shadowRoot.innerHTML = /*html*/ `
       <story-template
-        title="${data?.title || "Prompt Preview"}"
+        title="${data?.title || "Preview Chip"}"
         description="${data?.description || ""}"
         github="${(data?.github || []).join("|||")}"
         figma="${(data?.figma || []).join("|||")}"
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
-        imports='["@muibook/components/mui-prompt-preview"]'>
+
+        imports='["@muibook/components/mui-preview-chip"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="predropped::Pre-dropped Preview|||types::Payload Types|||loading::Loading State|||pasted-image::Pasted Image|||dismiss-tracking::Dismiss Tracking|||open-dialog::Formatted JSON Dialog|||open-dialog-image::Open Image Dialog"></story-quicklinks>
         ${stories}
       </story-template>
@@ -216,7 +216,7 @@ class StoryPromptPreview extends HTMLElement {
       const stack = this.shadowRoot.querySelector("#dismiss-tracking [slot=\"body\"]");
       if (!stack || this.shadowRoot.querySelector("#trackingPreview")) return;
 
-      const preview = document.createElement("mui-prompt-preview");
+      const preview = document.createElement("mui-preview-chip");
       preview.id = "trackingPreview";
       preview.setAttribute("badge", "JSON");
       preview.setAttribute("animated", "");
@@ -233,7 +233,7 @@ class StoryPromptPreview extends HTMLElement {
     const previewImageDialog = this.shadowRoot.querySelector("#previewImageDialog");
     const previewDialogImage = this.shadowRoot.querySelector("#previewDialogImage");
 
-    dialogTriggerPreview?.addEventListener("prompt-preview-open", (event) => {
+    dialogTriggerPreview?.addEventListener("preview-chip-open", (event) => {
       const payload = event.detail || {};
       if (previewDialogCode) {
         try {
@@ -245,7 +245,7 @@ class StoryPromptPreview extends HTMLElement {
       previewDialog?.open();
     });
 
-    dialogImageTriggerPreview?.addEventListener("prompt-preview-open", (event) => {
+    dialogImageTriggerPreview?.addEventListener("preview-chip-open", (event) => {
       const payload = event.detail || {};
       if (previewDialogImage) {
         previewDialogImage.setAttribute("src", payload.bgImage || "");
@@ -255,4 +255,4 @@ class StoryPromptPreview extends HTMLElement {
   }
 }
 
-customElements.define("story-prompt-preview", StoryPromptPreview);
+customElements.define("story-preview-chip", StoryPreviewChip);

@@ -415,6 +415,22 @@ class MuiSelect extends HTMLElement {
           line-height: var(--text-line-height-l);
           border-radius: var(--form-radius-large);
         }
+        :host([menu-slot]) select.size-x-small {
+          border-radius: calc(var(--form-radius-x-small) - var(--space-050));
+        }
+        :host([menu-slot]) select.size-small {
+          border-radius: calc(var(--form-radius-small) - var(--space-050));
+        }
+        :host([menu-slot]) select.size-medium {
+          border-radius: calc(var(--form-radius-medium) - var(--space-100));
+        }
+        :host([menu-slot]) select.size-large {
+          border-radius: calc(var(--form-radius-large) - var(--space-200));
+        }
+        :host([menu-slot]) select.size-x-small:focus,
+        :host([menu-slot]) select.size-small:focus {
+          border-radius: 0;
+        }
         select.appearance-custom.size-x-small {
           --select-picker-icon-size: 1.3rem;
         }
@@ -482,7 +498,7 @@ class MuiSelect extends HTMLElement {
           border: 0;
         }
         .optional {
-          color: var(--text-color-optional);
+          color: var(--text-color-secondary);
           display: inline-flex;
           align-items: center;
           gap: var(--space-050);

@@ -16,10 +16,10 @@ class storyCalendar extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-calendar" title="Calendar"></story-api-types>
 
-        <story-card 
+        <story-card
           id="default"
-          title="Default" 
-          description="A standard monthly calendar for single date selection." 
+          title="Default"
+          description="A standard monthly calendar for single date selection."
         >
           <mui-h-stack slot="body" alignX="center">
             <mui-calendar></mui-calendar>
@@ -29,10 +29,10 @@ class storyCalendar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
+        <story-card
           id="double-view"
-          title="Double View" 
-          description="Shows two consecutive months side-by-side, ideal for range selection." 
+          title="Double View"
+          description="Shows two consecutive months side-by-side, ideal for range selection."
         >
           <mui-h-stack slot="body" alignX="center">
             <mui-calendar view="double"></mui-calendar>
@@ -42,10 +42,10 @@ class storyCalendar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
+        <story-card
           id="default-value"
-          title="Default Value" 
-          description="Set the initial selected date using an ISO date string." 
+          title="Default Value"
+          description="Set the initial selected date using an ISO date string."
         >
           <mui-h-stack slot="body" alignX="center">
             <mui-calendar value="2026-06-24"></mui-calendar>
@@ -68,7 +68,7 @@ class storyCalendar extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-calendar"]'>
         <story-quicklinks
           slot="message"

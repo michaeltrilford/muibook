@@ -53,7 +53,7 @@ if (!customElements.get("mui-time-picker-popover")) {
 
 class MuiTimePicker extends HTMLElement {
   static get observedAttributes() {
-    return ["value", "type", "label", "hide-label", "optional", "size", "variant"];
+    return ["value", "type", "label", "hide-label", "optional", "size", "variant", "menu-slot"];
   }
 
   private selectedTime: string = "";
@@ -155,27 +155,29 @@ class MuiTimePicker extends HTMLElement {
         }
         mui-dropdown {
           width: 100%;
-          --dropdown-min-width: auto;
+          --menu-min-width: auto;
         }
       </style>
-      <mui-dropdown persistent>
+      <mui-dropdown persistent size="${size}">
         <mui-input 
           slot="action" 
           value="${value}"
           label="${label}"
           size="${size}"
           variant="${variant}"
+          ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
           ${hideLabel}
           ${optional}
           readonly>
           <mui-button slot="after"><mui-icon-timer></mui-icon-timer></mui-button>
         </mui-input>
-
-        <mui-time-picker-popover>
+        <mui-menu>
+          <mui-time-picker-popover>
           <div class="time-pane">
-            <mui-time variant="${timeVariant}" value="${this.selectedTime}" slotted style="--time-picker-radius: var(--stroke-size-200);"></mui-time>
+          <mui-time variant="${timeVariant}" value="${this.selectedTime}" slotted style="--time-picker-radius: var(--stroke-size-200);"></mui-time>
           </div>
-        </mui-time-picker-popover>
+          </mui-time-picker-popover>
+        </mui-menu>
       </mui-dropdown>
     `;
 

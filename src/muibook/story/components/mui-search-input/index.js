@@ -17,6 +17,22 @@ class StorySearchInput extends HTMLElement {
       }
     `;
 
+    const sizeExamples = ["x-small", "small", "medium", "large"]
+      .map(
+        (size) => /*html*/ `
+          <mui-search-input label="Search ${size} tabs" size="${size}">
+            <mui-button slot="action" variant="tertiary" icon-only aria-label="Search ${size} tabs">
+              <mui-icon-search></mui-icon-search>
+            </mui-button>
+            <mui-tab-bar slot="after" active-inset radius="500" stroke="none" full-width>
+              <mui-tab-item active>Overview</mui-tab-item>
+              <mui-tab-item>Activity</mui-tab-item>
+            </mui-tab-bar>
+          </mui-search-input>
+        `,
+      )
+      .join("");
+
     const stories = /*html*/ `
       <story-api-types tag="mui-search-input" title="Search Input"></story-api-types>
 
@@ -26,6 +42,29 @@ class StorySearchInput extends HTMLElement {
         </div>
         <story-code-block slot="footer" scrollable>
           &lt;mui-search-input label="Search projects"&gt;&lt;/mui-search-input&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="sizes"
+        title="Sizes"
+        usage="Search Input supports x-small, small, medium, and large.|||Use the same size as adjacent actions and controls so the composed row remains aligned."
+        canvas-background="var(--surface)"
+      >
+        <mui-v-stack slot="body" space="var(--space-300)">
+          ${sizeExamples}
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-search-input label=&quot;Search small tabs&quot; size=&quot;small&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; variant=&quot;tertiary&quot; icon-only aria-label=&quot;Search small tabs&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-search&gt;&lt;/mui-icon-search&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-tab-bar slot=&quot;after&quot; active-inset radius=&quot;500&quot; stroke=&quot;none&quot; full-width&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item active&gt;Overview&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-tab-item&gt;Activity&lt;/mui-tab-item&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-tab-bar&gt;<br />
+          &lt;/mui-search-input&gt;<br /><br />
+          &lt;!-- Repeat with size=&quot;x-small&quot;, &quot;medium&quot;, and &quot;large&quot;. --&gt;
         </story-code-block>
       </story-card>
 
@@ -116,7 +155,13 @@ class StorySearchInput extends HTMLElement {
         description="A composed search control that can reveal over slotted trailing content."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-search-input/index.ts"
         guides="https://guides.muibook.com/search-input"
+        imports='["@muibook/components/mui-search-input"]'
       >
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          links="sizes::Sizes"
+        ></story-quicklinks>
         ${stories}
       </story-template>
     `;

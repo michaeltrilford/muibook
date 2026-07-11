@@ -1,5 +1,5 @@
 export const muiApi = {
-  "mui-prompt-toggle": {
+  "mui-action-toggle": {
     description: "Switches a prompt action between its compact trigger and expanded active content.",
     attributes: [
       {

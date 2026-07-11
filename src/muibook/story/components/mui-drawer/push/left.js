@@ -55,10 +55,10 @@ class storyPushLeft extends HTMLElement {
 
     const invoice = /*html*/ `
       <mui-v-stack space="var(--space-600);" style="margin-bottom: var(--space-500)">
-      
+
         <mui-h-stack alignX="space-between">
           <mui-v-stack space="var(--space-300);">
-            <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>  
+            <div style="height:var(--heading-font-size-400); width: 90px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
             <div style="height:var(--heading-font-size-100); width: 100px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
             <div style="height:var(--heading-font-size-400); width: 150px; background:var(--surface-elevated-100); border-radius:var(--radius-200);"></div>
           </mui-v-stack>
@@ -90,10 +90,12 @@ class storyPushLeft extends HTMLElement {
           <div slot="page" class="page-main">
             <div class="page-header">
               ${invoiceHeader}
-              <mui-dropdown position="right">
+              <mui-dropdown position="right" size="medium">
                 <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
-                <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
-                <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                <mui-menu>
+                  <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
+                  <mui-button disabled variant="tertiary">Add line-item</mui-button>
+                </mui-menu>
               </mui-dropdown>
             </div>
             <div class="page-content">

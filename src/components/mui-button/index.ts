@@ -490,22 +490,6 @@ class MuiButton extends HTMLElement {
       fill: var(--alert-icon);
     }
 
-    /* Dropdown Slot */
-    :host([size][dropdown-slot]) button {
-      border-radius: var(--radius-000);
-      white-space: nowrap;
-    }
-
-    :host([size][dropdown-slot-first]) button {
-      border-top-left-radius: calc(var(--radius-100) / 2);
-      border-top-right-radius: calc(var(--radius-100) / 2);
-    }
-
-    :host([size][dropdown-slot-last]) button   {
-      border-bottom-left-radius: calc(var(--radius-100) / 2);
-      border-bottom-right-radius: calc(var(--radius-100) / 2);
-    }
-
     :host button ::slotted(mui-avatar) {
       --avatar-background-override: var(--action-avatar-background);
     }
@@ -634,7 +618,20 @@ class MuiButton extends HTMLElement {
       border-radius: var(--action-radius-large);
     }
 
-    /* Keep input-composed buttons flush against the input edge after size radius applies. */
+    :host([size="x-small"][usage="input"]) { --input-action-radius: var(--input-composed-radius, min(var(--action-radius-x-small), var(--form-radius-x-small))); }
+    :host([size="small"][usage="input"]) { --input-action-radius: var(--input-composed-radius, min(var(--action-radius-small), var(--form-radius-small))); }
+    :host([size="medium"][usage="input"]) { --input-action-radius: var(--input-composed-radius, min(var(--action-radius-medium), var(--form-radius-medium))); }
+    :host([size="large"][usage="input"]) { --input-action-radius: var(--input-composed-radius, min(var(--action-radius-large), var(--form-radius-large))); }
+
+    :host([usage="input"]) button,
+    :host([usage="input"]) button:hover,
+    :host([usage="input"]) button:focus,
+    :host([usage="input"]) button:focus-visible,
+    :host([usage="input"]) button:disabled {
+      border-radius: var(--input-action-radius);
+    }
+
+    /* Keep input-composed buttons flush against the input edge after radius capping. */
     :host([slot="before"][usage="input"]) button,
     :host([slot="before"][usage="input"]) button:hover,
     :host([slot="before"][usage="input"]) button:focus,
@@ -653,29 +650,34 @@ class MuiButton extends HTMLElement {
       border-bottom-left-radius: var(--radius-000);
     }
 
-    /* Dropdown slot corner radius must win over size radius rules */
-    :host([size][dropdown-slot]) button,
-    :host([size][dropdown-slot]) button:hover,
-    :host([size][dropdown-slot]) button:focus,
-    :host([size][dropdown-slot]) button:disabled {
+    :host([size="x-small"][menu-slot]) { --menu-action-radius: calc(min(var(--action-radius-x-small), var(--form-radius-x-small)) - var(--stroke-size-100)); }
+    :host([size="small"][menu-slot]) { --menu-action-radius: calc(min(var(--action-radius-small), var(--form-radius-small)) - var(--stroke-size-100)); }
+    :host([size="medium"][menu-slot]) { --menu-action-radius: calc(min(var(--action-radius-medium), var(--form-radius-medium)) - var(--stroke-size-100)); }
+    :host([size="large"][menu-slot]) { --menu-action-radius: calc(min(var(--action-radius-large), var(--form-radius-large)) - var(--stroke-size-100)); }
+
+    /* Menu slot corner radius must win over size radius rules */
+    :host([size][menu-slot]) button,
+    :host([size][menu-slot]) button:hover,
+    :host([size][menu-slot]) button:focus,
+    :host([size][menu-slot]) button:disabled {
       border-radius: var(--radius-000);
       white-space: nowrap;
     }
 
-    :host([size][dropdown-slot-first]) button,
-    :host([size][dropdown-slot-first]) button:hover,
-    :host([size][dropdown-slot-first]) button:focus,
-    :host([size][dropdown-slot-first]) button:disabled {
-      border-top-left-radius: calc(var(--radius-100) / 2);
-      border-top-right-radius: calc(var(--radius-100) / 2);
+    :host([size][menu-slot-first]) button,
+    :host([size][menu-slot-first]) button:hover,
+    :host([size][menu-slot-first]) button:focus,
+    :host([size][menu-slot-first]) button:disabled {
+      border-top-left-radius: var(--menu-action-radius);
+      border-top-right-radius: var(--menu-action-radius);
     }
 
-    :host([size][dropdown-slot-last]) button,
-    :host([size][dropdown-slot-last]) button:hover,
-    :host([size][dropdown-slot-last]) button:focus,
-    :host([size][dropdown-slot-last]) button:disabled {
-      border-bottom-left-radius: calc(var(--radius-100) / 2);
-      border-bottom-right-radius: calc(var(--radius-100) / 2);
+    :host([size][menu-slot-last]) button,
+    :host([size][menu-slot-last]) button:hover,
+    :host([size][menu-slot-last]) button:focus,
+    :host([size][menu-slot-last]) button:disabled {
+      border-bottom-left-radius: var(--menu-action-radius);
+      border-bottom-right-radius: var(--menu-action-radius);
     }
 
     :host([size="xx-small"][icon-only]) button {
@@ -894,9 +896,25 @@ class MuiButton extends HTMLElement {
 
     const button = this.shadowRoot.querySelector("button");
     button?.addEventListener("click", (event) => {
-      if (!this.hasAttribute("pending")) return;
-      event.preventDefault();
-      event.stopImmediatePropagation();
+      if (this.hasAttribute("pending")) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return;
+      }
+
+      const path = event.composedPath();
+      if (path.some((node) => node instanceof HTMLElement && node.tagName.toLowerCase() === "mui-switch")) return;
+
+      const slottedSwitch = this.querySelector(":scope > mui-switch") as (HTMLElement & { checked: boolean }) | null;
+      if (!slottedSwitch || slottedSwitch.hasAttribute("disabled")) return;
+      slottedSwitch.checked = !slottedSwitch.checked;
+      slottedSwitch.dispatchEvent(
+        new CustomEvent("change", {
+          detail: { checked: slottedSwitch.checked },
+          bubbles: true,
+          composed: true,
+        })
+      );
     });
 
     await customElements.whenDefined("mui-button");
@@ -1026,6 +1044,32 @@ class MuiButton extends HTMLElement {
         this.updateAvatarSizes(nodes);
       }
       this.updateBadgeSizes(nodes);
+      this.updateComposedControlSizes(nodes);
+    });
+  }
+
+  updateComposedControlSizes(nodes: Node[]): void {
+    const buttonSize = this.getAttribute("size") || "medium";
+    const fileIconSizeMap: Record<string, string> = {
+      "xx-small": "small",
+      "x-small": "small",
+      small: "small",
+      medium: "medium",
+      large: "large",
+    };
+    const switchSizeMap: Record<string, string> = {
+      "xx-small": "x-small",
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+
+    nodes.forEach((node) => {
+      if (!(node instanceof HTMLElement)) return;
+      const tagName = node.tagName.toLowerCase();
+      if (tagName === "mui-file-icon") node.setAttribute("size", fileIconSizeMap[buttonSize] || "medium");
+      if (tagName === "mui-switch") node.setAttribute("size", switchSizeMap[buttonSize] || "small");
     });
   }
 

@@ -190,6 +190,7 @@ Use contained component styles first and token-led customization second.
 - Use component tokens for repeated component decisions and semantic tokens for meaning.
 - Preserve light and dark theme meaning rather than hardcoding one-off colors.
 - Use CSS-first layout behavior when stable results can be achieved without runtime attributes.
+- Apply `box-sizing: border-box` whenever component CSS adds padding or borders to an element with constrained width or height. Parent components should own shared inset spacing for composed children; avoid story-only padding fixes that unexpectedly change control dimensions.
 
 Good component styling is predictable, contained, theme-aware, and overrideable only through intentional surfaces.
 
@@ -295,7 +296,7 @@ Common dynamic attr families in this codebase include:
 
 - Slot presence and affordance state: `has-before`, `has-after`, `has-actions`, `has-extra-actions`, `has-message`, `has-rule`, `has-header`, `has-footer`, `has-notes`.
 - Content-shape state: `icon-only`, `avatar-only`, `has-video`, `has-avatar-chip`, `has-error`, `has-chrome`.
-- Destination context attrs: `card-slot`, `condensed-slot`, `dropdown-slot`, `dropdown-slot-first`, `dropdown-slot-last`, `alert-slot`, `alert-positive-slot`, `alert-info-slot`, `alert-warning-slot`, `alert-attention-slot`.
+- Destination context attrs: `card-slot`, `condensed-slot`, `menu-slot`, `menu-slot-first`, `menu-slot-last`, `alert-slot`, `alert-positive-slot`, `alert-info-slot`, `alert-warning-slot`, `alert-attention-slot`.
 - Layout/container context attrs: `in-card`, `in-form-section`, `in-dialog`, `in-drawer`, `usage`, `first-child`, `last-child`.
 - Presentation/runtime attrs: `notes-visible`, `data-slide-section`, `slide-active`, `slide-hidden`, `inner-space-top`.
 

@@ -24,9 +24,9 @@ class storyQuote extends HTMLElement {
         euismod. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu
         leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Cum
         sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</mui-body>
-        
+
         <mui-quote>Risus Mollis Dapibus</mui-quote>
-        
+
         <mui-body>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non
         mi porta gravida at eget metus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor
         id nibh ultricies vehicula ut id elit.</mui-body>
@@ -43,7 +43,7 @@ class storyQuote extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -51,7 +51,7 @@ class storyQuote extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-quote"]'>
         ${stories}
       </story-template>

@@ -100,7 +100,7 @@ class storyImage extends HTMLElement {
       <style>${styles}</style>
 
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -108,7 +108,7 @@ class storyImage extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-image"]'>
         ${stories}
       </story-template>

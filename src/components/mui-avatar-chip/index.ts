@@ -123,7 +123,7 @@ class MuiAvatarChip extends HTMLElement {
         --avatar-chip-secondary-size: ${sizeConfig.secondary};
         color: var(--avatar-chip-text-color, currentColor);
         --text-color: var(--avatar-chip-text-color, currentColor);
-        --text-color-optional: var(--avatar-chip-secondary-color, var(--avatar-chip-text-color, currentColor));
+        --text-color-secondary: var(--avatar-chip-secondary-color, var(--avatar-chip-text-color, currentColor));
         --link-text-color-default: var(--avatar-chip-link-color, var(--avatar-chip-text-color, currentColor));
         --link-text-color-default-hover: var(--avatar-chip-link-color-hover, var(--avatar-chip-link-color, var(--avatar-chip-text-color, currentColor)));
         --link-text-color-default-focus: var(--avatar-chip-link-color-focus, var(--avatar-chip-link-color, var(--avatar-chip-text-color, currentColor)));

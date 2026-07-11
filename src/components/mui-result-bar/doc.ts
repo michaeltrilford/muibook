@@ -13,7 +13,7 @@ export const muiDocs: MuiDocs = {
     guides: ["https://guides.muibook.com/prompt"],
     usage: {
       list: [
-        "Use inside Prompt Message content when an agent produces a file edit, generated artefact, preview, or reviewable result.",
+        "Use inside Chat Message content when an agent produces a file edit, generated artefact, preview, or reviewable result.",
         "Use slot='accessory' for the compact result marker.",
         "Use slot='start' for the primary result label and supporting copy.",
         "Use slot='actions' for controls such as Undo, Review, Open, Approve, or Dismiss.",
@@ -32,7 +32,7 @@ export const muiDocs: MuiDocs = {
     compositions: { description: "", items: [] },
     related: {
       items: [
-        { name: "Prompt Message", link: "https://guides.muibook.com/prompt-message" },
+        { name: "Chat Message", link: "https://guides.muibook.com/chat-message" },
         { name: "Slat", link: "https://guides.muibook.com/slat" },
         { name: "Card", link: "https://guides.muibook.com/card" },
       ],

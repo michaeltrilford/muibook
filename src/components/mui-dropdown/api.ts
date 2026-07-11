@@ -3,6 +3,12 @@ export const muiApi = {
     description: "Displays a triggered overlay menu with configurable alignment, direction, and persistent interaction behaviour.",
     attributes: [
       {
+        name: "size",
+        type: { text: '"x-small" | "small" | "medium" | "large"' },
+        default: "medium",
+        description: "Enforces a shared size on the trigger action and slotted `mui-menu` surface.",
+      },
+      {
         name: "zindex",
         type: { text: "string | number" },
         default: "1",
@@ -29,14 +35,13 @@ export const muiApi = {
     ],
     slots: [
       { name: "action", description: "Dropdown trigger, typically a `mui-button`." },
-      { name: "", description: "Menu contents, typically `mui-button` options and separating rules." },
+      { name: "", description: "A required `mui-menu` surface containing menu actions and grouped overlay content." },
     ],
     events: [
       { name: "dropdown-toggle", description: "Dispatched when the dropdown opens or closes with `detail.open`." },
     ],
     cssProperties: [
       { name: "--dropdown-offset", description: "Vertical distance between the trigger and menu surface." },
-      { name: "--dropdown-min-width", description: "Minimum menu width." },
     ],
   },
 };

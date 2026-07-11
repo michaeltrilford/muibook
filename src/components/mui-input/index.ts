@@ -15,6 +15,7 @@ class MuiInput extends HTMLElement {
       "size",
       "slot-layout",
       "autofocus",
+      "menu-slot",
     ];
   }
 
@@ -80,7 +81,24 @@ class MuiInput extends HTMLElement {
       return;
     }
 
-    if (["type", "placeholder", "label", "hide-label", "variant", "optional", "max-length", "size", "slot-layout"].includes(name)) {
+    if (name === "menu-slot") {
+      this.updateSlottedButtons();
+      return;
+    }
+
+    if (
+      [
+        "type",
+        "placeholder",
+        "label",
+        "hide-label",
+        "variant",
+        "optional",
+        "max-length",
+        "size",
+        "slot-layout",
+      ].includes(name)
+    ) {
       this.render();
       this.setupListener();
     }
@@ -157,6 +175,19 @@ class MuiInput extends HTMLElement {
         large: "var(--action-size-large)",
       };
       const slotMinHeight = slotMinHeightMap[normalizedSize] || "var(--action-size-medium)";
+      const menuInsetMap: Record<string, string> = {
+        "x-small": "var(--space-050)",
+        small: "var(--space-050)",
+        medium: "var(--space-100)",
+        large: "var(--space-200)",
+      };
+      const formRadiusMap: Record<string, string> = {
+        "x-small": "var(--form-radius-x-small)",
+        small: "var(--form-radius-small)",
+        medium: "var(--form-radius-medium)",
+        large: "var(--form-radius-large)",
+      };
+      const menuComposedRadius = `calc(${formRadiusMap[normalizedSize]} - ${menuInsetMap[normalizedSize]})`;
 
       const updateButtonsInSlot = (slot: HTMLSlotElement | null) => {
         if (!slot) return;
@@ -172,6 +203,11 @@ class MuiInput extends HTMLElement {
               // Keep add-on controls aligned with input size.
               el.setAttribute("size", normalizedSize);
               el.style.setProperty("--input-slot-min-height", slotMinHeight);
+              if (this.hasAttribute("menu-slot")) {
+                el.style.setProperty("--input-composed-radius", menuComposedRadius);
+              } else {
+                el.style.removeProperty("--input-composed-radius");
+              }
               // Remove variant attribute completely
               el.removeAttribute("variant");
               // Remove weight attribute completely
@@ -181,10 +217,20 @@ class MuiInput extends HTMLElement {
               // Keep chip aligned with input affordance sizing.
               el.setAttribute("usage", "input");
               el.setAttribute("size", normalizedSize);
+              if (this.hasAttribute("menu-slot")) {
+                el.style.setProperty("--chip-input-border-radius", menuComposedRadius);
+              } else {
+                el.style.removeProperty("--chip-input-border-radius");
+              }
             }
             if (tagName === "mui-addon") {
               // Keep add-on spacing/height aligned with input size.
               el.setAttribute("size", normalizedSize);
+              if (this.hasAttribute("menu-slot")) {
+                el.style.setProperty("--input-composed-radius", menuComposedRadius);
+              } else {
+                el.style.removeProperty("--input-composed-radius");
+              }
             }
           }
         });
@@ -307,11 +353,7 @@ class MuiInput extends HTMLElement {
     const name = this.getAttribute("name") || "";
     const value = this.getAttribute("value") || "";
     const placeholder = this.getAttribute("placeholder") || "";
-    const id =
-      this.getAttribute("id") ||
-      `mui-input-${Math.random()
-        .toString(36)
-        .substr(2, 9)}`;
+    const id = this.getAttribute("id") || `mui-input-${Math.random().toString(36).substr(2, 9)}`;
     const label = this.getAttribute("label") || "";
     const optional = this.hasAttribute("optional");
     const hideLabel = this.hasAttribute("hide-label");
@@ -445,13 +487,13 @@ class MuiInput extends HTMLElement {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          color: var(--input-inside-before-color, var(--text-color-optional));
+          color: var(--input-inside-before-color, var(--text-color-secondary));
           gap: var(--space-100);
           overflow: visible;
           flex: 0 0 auto;
         }
         .input-shell:focus-within .inside-before-slot {
-          color: var(--input-inside-before-color-focus, var(--input-inside-before-color, var(--text-color-optional)));
+          color: var(--input-inside-before-color-focus, var(--input-inside-before-color, var(--text-color-secondary)));
           z-index: 3;
         }
         .inside-after-cluster {
@@ -472,7 +514,7 @@ class MuiInput extends HTMLElement {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          color: var(--text-color-optional);
+          color: var(--text-color-secondary);
           gap: var(--space-100);
           overflow: visible;
           flex: 0 0 auto;
@@ -554,7 +596,7 @@ class MuiInput extends HTMLElement {
           opacity: 0.7;
         }
         .optional {
-          color: var(--text-color-optional);
+          color: var(--text-color-secondary);
           display: inline-flex;
           align-items: center;
           gap: var(--space-050);
@@ -656,6 +698,18 @@ class MuiInput extends HTMLElement {
           border-radius: var(--form-radius-large);
           --input-inline-padding-current: var(--space-400);
         }
+
+        :host([menu-slot]) input.size-x-small { --menu-input-radius: calc(var(--form-radius-x-small) - var(--space-050)); }
+        :host([menu-slot]) input.size-small { --menu-input-radius: calc(var(--form-radius-small) - var(--space-050)); }
+        :host([menu-slot]) input.size-medium { --menu-input-radius: calc(var(--form-radius-medium) - var(--space-100)); }
+        :host([menu-slot]) input.size-large { --menu-input-radius: calc(var(--form-radius-large) - var(--space-200)); }
+        :host([menu-slot]) input {
+          border-radius: var(--menu-input-radius);
+        }
+        :host([menu-slot]) input.size-x-small:focus,
+        :host([menu-slot]) input.size-small:focus {
+          border-radius: 0;
+        }
         input.size-large.inside-before:not(.before) {
           padding-left: calc(var(--input-inline-padding-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
         }
@@ -747,6 +801,16 @@ class MuiInput extends HTMLElement {
 
            input.before { border-top-left-radius: 0; border-bottom-left-radius: 0;}
            input.after { border-top-right-radius: 0; border-bottom-right-radius: 0;}
+
+           :host([menu-slot]) input.before:not(.after) {
+             border-radius: 0 var(--menu-input-radius) var(--menu-input-radius) 0;
+           }
+           :host([menu-slot]) input.after:not(.before) {
+             border-radius: var(--menu-input-radius) 0 0 var(--menu-input-radius);
+           }
+           :host([menu-slot]) input.before.after {
+             border-radius: 0;
+           }
 
         /* ========================================================================== */
         /* LOGIC FOR FOCUS ORDER of BEFORE, AFTER & INPUT                             */

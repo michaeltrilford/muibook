@@ -2,7 +2,7 @@
 // MuiBrandTokens.swift
 //
 
-// Don't edit directly • Generated on Fri, 10 Jul 2026 01:30:26 GMT • muibook.com
+// Don't edit directly • Generated on Sat, 11 Jul 2026 09:10:46 GMT • muibook.com
 
 import UIKit
 

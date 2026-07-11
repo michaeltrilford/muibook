@@ -1,5 +1,5 @@
 export const muiApi = {
-  "mui-prompt-message": {
+  "mui-chat-message": {
     description: "Provides a conversation message row with optional avatar content and consistently scaled message content.",
     attributes: [
       {
@@ -47,7 +47,7 @@ export const muiApi = {
     ],
     cssProperties: [
       {
-        name: "--prompt-message-body-space",
+        name: "--chat-message-body-space",
         description: "Overrides the vertical rhythm between direct body slot children. Defaults to `var(--space-500)`.",
       },
     ],

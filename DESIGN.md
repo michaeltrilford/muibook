@@ -174,11 +174,11 @@ Semantic tokens assign meaning and resolve raw foundations differently in light 
 | --- | --- | --- | --- |
 | `--text-color` | `--grey-900` | `--grey-200` | Body, label, and UI text |
 | `--heading-text-color` | `--grey-1000` | `--grey-50` | Headings |
-| `--text-color-optional` | `--grey-500` | `--grey-400` | Secondary and optional text |
+| `--text-color-secondary` | `--grey-500` | `--grey-400` | Secondary supporting text |
 | `--text-color-info` | `--blue-600` | `--blue-400` | Information |
-| `--text-color-success` | `--green-600` | `--green-400` | Positive confirmation |
+| `--text-color-positive` | `--green-600` | `--green-400` | Positive confirmation |
 | `--text-color-warning` | `--orange-600` | `--orange-400` | Warning |
-| `--text-color-error` | `--red-600` | `--red-400` | Error and urgent attention |
+| `--text-color-attention` | `--red-600` | `--red-400` | Content requiring attention |
 
 Body colour variants change meaning, not size or weight.
 

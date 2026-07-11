@@ -32,7 +32,7 @@ class tokensComponents extends HTMLElement {
             slot="message"
             heading="Quicklinks"
             limit="10"
-            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||illustration::Illustration|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||prompt-preview::Prompt Preview|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slide-frame::Slide Frame|||slat::Slat|||status::Status|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table|||video-thumbnail::Video Thumbnail"
+            links="addon::Add On|||alert::Alert|||avatar::Avatar|||badge::Badge|||body::Body|||button::Button|||card::Card|||carousel::Carousel|||checkbox::Checkbox|||chip::Chip|||code::Code|||dialog::Dialog|||drawer::Drawer|||dropdown::Dropdown|||heading::Heading|||icon::Icon|||illustration::Illustration|||image::Image|||input::Input|||label::Label|||link-button::Link Button|||link-default::Link Default|||list::List|||media-player::Media Player|||message::Message|||prompt::Prompt|||preview-chip::Preview Chip|||progress::Progress|||radio::Radio|||range-input::Range Input|||skeleton::Skeleton|||slide-frame::Slide Frame|||slat::Slat|||status::Status|||stepper::Stepper|||switch::Switch|||tab::Tab Bar|||table::Table|||video-thumbnail::Video Thumbnail"
           ></story-quicklinks>
 
           <spec-card
@@ -297,13 +297,13 @@ class tokensComponents extends HTMLElement {
             title="Dropdown"
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-dropdown/index.ts"
           >
-            <story-token-slat slot="body" token="--dropdown-radius" variant="radius"></story-token-slat>
-            <story-token-slat slot="body" token="--dropdown-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--menu-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--menu-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--dropdown-button-background-hover" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--dropdown-border-color" variant="border-color"></story-token-slat>
-            <story-token-slat slot="body" token="--dropdown-shadow-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--menu-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--menu-shadow-color" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--dropdown-offset" variant="size"></story-token-slat>
-            <story-token-slat slot="body" token="--dropdown-min-width" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--menu-min-width" variant="size"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
 
@@ -486,24 +486,24 @@ class tokensComponents extends HTMLElement {
             <story-token-slat slot="body" token="--prompt-placeholder-color-focus" variant="text-color"></story-token-slat>
           </spec-card>
 
-          <spec-card id="prompt-preview" title="Prompt Preview" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-preview/index.ts">
-            <story-token-slat slot="body" token="--prompt-preview-accent" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-background" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-code-background" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-dismiss-secondary-background" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-dismiss-secondary-background-hover" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-dismiss-secondary-border" variant="border-color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-dismiss-secondary-border-hover" variant="border-color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-top-shade-height" variant="size"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-top-shade-start" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-top-shade-end" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-top-shade-start-overlay" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-top-shade-end-overlay" variant="color"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-accent-mix-100" variant="size"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-accent-mix-200" variant="size"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-accent-mix-300" variant="size"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-accent-mix-400" variant="size"></story-token-slat>
-            <story-token-slat slot="body" token="--prompt-preview-accent-mix-500" variant="size"></story-token-slat>
+          <spec-card id="preview-chip" title="Preview Chip" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-preview-chip/index.ts">
+            <story-token-slat slot="body" token="--preview-chip-accent" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-code-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-dismiss-secondary-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-dismiss-secondary-background-hover" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-dismiss-secondary-border" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-dismiss-secondary-border-hover" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-top-shade-height" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-top-shade-start" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-top-shade-end" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-top-shade-start-overlay" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-top-shade-end-overlay" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-accent-mix-100" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-accent-mix-200" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-accent-mix-300" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-accent-mix-400" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--preview-chip-accent-mix-500" variant="size"></story-token-slat>
           </spec-card>
 
           <spec-card
@@ -542,6 +542,11 @@ class tokensComponents extends HTMLElement {
 
           <spec-card id="range-input" title="Range Input" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-range-input/index.ts">
             <story-token-slat slot="body" token="--range-input-accent-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--range-input-track-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--range-input-track-height" variant="size"></story-token-slat>
+            <story-token-slat slot="body" token="--range-input-track-radius" variant="radius"></story-token-slat>
+            <story-token-slat slot="body" token="--range-input-thumb-color" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--range-input-thumb-size" variant="size"></story-token-slat>
             <story-token-slat slot="body" token="--range-input-bubble-background" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--range-input-bubble-border-color" variant="border-color"></story-token-slat>
           </spec-card>

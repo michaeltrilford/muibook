@@ -113,7 +113,7 @@ class StoryAvatarChip extends HTMLElement {
         usage="Wrap Avatar Chip in the dropdown action when the visible trigger should carry avatar and profile copy.|||Keep dropdown behavior in the parent composition; Avatar Chip remains responsible for the identity layout only.|||Match the Avatar Chip size to the surrounding action size so the trigger density stays consistent.">
         <div slot="body" class="canvas">
           <div class="dropdown-list">
-            <mui-dropdown>
+            <mui-dropdown size="x-small">
               <mui-button slot="action" size="x-small">
                 <mui-avatar-chip
                   image="${MikeAvatar}"
@@ -123,13 +123,15 @@ class StoryAvatarChip extends HTMLElement {
                   <mui-body slot="secondary" weight="medium">Product Designer</mui-body>
                 </mui-avatar-chip>
               </mui-button>
-              <mui-button size="x-small">Profile</mui-button>
-              <mui-button size="x-small">Settings</mui-button>
-              <mui-rule></mui-rule>
-              <mui-button size="x-small">Log out</mui-button>
+              <mui-menu>
+                <mui-button size="x-small">Profile</mui-button>
+                <mui-button size="x-small">Settings</mui-button>
+                <mui-rule></mui-rule>
+                <mui-button size="x-small">Log out</mui-button>
+              </mui-menu>
             </mui-dropdown>
 
-            <mui-dropdown>
+            <mui-dropdown size="small">
               <mui-button slot="action" size="small" variant="secondary">
                 <mui-avatar-chip
                   image="${MikeAvatar}"
@@ -139,13 +141,15 @@ class StoryAvatarChip extends HTMLElement {
                   <mui-body slot="secondary" weight="medium">Product Designer</mui-body>
                 </mui-avatar-chip>
               </mui-button>
-              <mui-button size="small">Profile</mui-button>
-              <mui-button size="small">Settings</mui-button>
-              <mui-rule></mui-rule>
-              <mui-button size="small">Log out</mui-button>
+              <mui-menu>
+                <mui-button size="small">Profile</mui-button>
+                <mui-button size="small">Settings</mui-button>
+                <mui-rule></mui-rule>
+                <mui-button size="small">Log out</mui-button>
+              </mui-menu>
             </mui-dropdown>
 
-            <mui-dropdown>
+            <mui-dropdown size="medium">
               <mui-button slot="action" size="medium" variant="secondary">
                 <mui-avatar-chip
                   image="${MikeAvatar}"
@@ -155,13 +159,15 @@ class StoryAvatarChip extends HTMLElement {
                   <mui-body slot="secondary" weight="medium">Product Designer</mui-body>
                 </mui-avatar-chip>
               </mui-button>
-              <mui-button size="medium">Profile</mui-button>
-              <mui-button size="medium">Settings</mui-button>
-              <mui-rule></mui-rule>
-              <mui-button size="medium">Log out</mui-button>
+              <mui-menu>
+                <mui-button size="medium">Profile</mui-button>
+                <mui-button size="medium">Settings</mui-button>
+                <mui-rule></mui-rule>
+                <mui-button size="medium">Log out</mui-button>
+              </mui-menu>
             </mui-dropdown>
 
-            <mui-dropdown>
+            <mui-dropdown size="large">
               <mui-button slot="action" size="large" variant="secondary">
                 <mui-avatar-chip
                   image="${MikeAvatar}"
@@ -171,15 +177,17 @@ class StoryAvatarChip extends HTMLElement {
                   <mui-body slot="secondary" weight="medium">Product Designer</mui-body>
                 </mui-avatar-chip>
               </mui-button>
-              <mui-button size="large">Profile</mui-button>
-              <mui-button size="large">Settings</mui-button>
-              <mui-rule></mui-rule>
-              <mui-button size="large">Log out</mui-button>
+              <mui-menu>
+                <mui-button size="large">Profile</mui-button>
+                <mui-button size="large">Settings</mui-button>
+                <mui-rule></mui-rule>
+                <mui-button size="large">Log out</mui-button>
+              </mui-menu>
             </mui-dropdown>
           </div>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown&gt;<br />
+          &lt;mui-dropdown size=&quot;small&quot;&gt;<br />
           &nbsp;&nbsp;&lt;mui-button slot="action" size="small" variant="secondary"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar-chip<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image="avatar-mike.jpg"<br />
@@ -189,10 +197,13 @@ class StoryAvatarChip extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body slot="secondary" weight="medium"&gt;Product Designer&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-avatar-chip&gt;<br />
           &nbsp;&nbsp;&lt;/mui-button&gt;<br /><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br /><br />
           &nbsp;&nbsp;&lt;mui-button size="small"&gt;Profile&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button size="small"&gt;Settings&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
           &nbsp;&nbsp;&lt;mui-button size="small"&gt;Log out&lt;/mui-button&gt;<br />
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>

@@ -79,7 +79,7 @@ class StoryIllustration extends HTMLElement {
           <mui-card>
             <mui-card-body inner-space>
               <mui-v-stack space="var(--space-300)" alignx="center">
-                <mui-body size="small" variant="optional">X-Small</mui-body>
+                <mui-body size="small" variant="secondary">X-Small</mui-body>
                 <mui-illustration-trash size="x-small"></mui-illustration-trash>
               </mui-v-stack>
             </mui-card-body>
@@ -87,7 +87,7 @@ class StoryIllustration extends HTMLElement {
           <mui-card>
             <mui-card-body inner-space>
               <mui-v-stack space="var(--space-300)" alignx="center">
-                <mui-body size="small" variant="optional">Small</mui-body>
+                <mui-body size="small" variant="secondary">Small</mui-body>
                 <mui-illustration-trash size="small"></mui-illustration-trash>
               </mui-v-stack>
             </mui-card-body>
@@ -95,7 +95,7 @@ class StoryIllustration extends HTMLElement {
           <mui-card>
             <mui-card-body inner-space>
               <mui-v-stack space="var(--space-300)" alignx="center">
-                <mui-body size="small" variant="optional">Medium</mui-body>
+                <mui-body size="small" variant="secondary">Medium</mui-body>
                 <mui-illustration-trash size="medium"></mui-illustration-trash>
               </mui-v-stack>
             </mui-card-body>
@@ -103,7 +103,7 @@ class StoryIllustration extends HTMLElement {
           <mui-card>
             <mui-card-body inner-space>
               <mui-v-stack space="var(--space-300)" alignx="center">
-                <mui-body size="small" variant="optional">Large</mui-body>
+                <mui-body size="small" variant="secondary">Large</mui-body>
                 <mui-illustration-trash size="large"></mui-illustration-trash>
               </mui-v-stack>
             </mui-card-body>
@@ -111,7 +111,7 @@ class StoryIllustration extends HTMLElement {
           <mui-card>
             <mui-card-body inner-space>
               <mui-v-stack space="var(--space-300)" alignx="center">
-                <mui-body size="small" variant="optional">X-Large</mui-body>
+                <mui-body size="small" variant="secondary">X-Large</mui-body>
                 <mui-illustration-trash size="x-large"></mui-illustration-trash>
               </mui-v-stack>
             </mui-card-body>
@@ -164,7 +164,7 @@ class StoryIllustration extends HTMLElement {
               <mui-illustration-trash size="large"></mui-illustration-trash>
               <mui-v-stack space="var(--space-100)" alignx="center" style="text-wrap: balance;">
                 <mui-heading size="4" level="2">Trash is empty</mui-heading>
-                <mui-body size="medium" variant="optional" style="max-width: 42ch; text-align: center;">
+                <mui-body size="medium" variant="secondary" style="max-width: 42ch; text-align: center;">
                   Deleted items will appear here until they are permanently removed.
                 </mui-body>
               </mui-v-stack>
@@ -177,7 +177,7 @@ class StoryIllustration extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space="var(--space-400)" alignx="center"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-illustration-trash size="large"&gt;&lt;/mui-illustration-trash&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size="4" level="2"&gt;Trash is empty&lt;/mui-heading&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" variant="optional"&gt;Deleted items will appear here...&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="medium" variant="secondary"&gt;Deleted items will appear here...&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="secondary"&gt;Browse items&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
           &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />

@@ -190,10 +190,10 @@ class appNavbar extends HTMLElement {
         <app-navbar-section heading="AI & LLM" default-open>
           <app-navbar-link link="/prompt" title="Prompt"></app-navbar-link>
           <app-navbar-link link="/context-bar" title="Context Bar"></app-navbar-link>
-          <app-navbar-link link="/prompt-message" title="Prompt Message"></app-navbar-link>
-          <app-navbar-link link="/prompt-preview" title="Prompt Preview"></app-navbar-link>
+          <app-navbar-link link="/chat-message" title="Chat Message"></app-navbar-link>
+          <app-navbar-link link="/preview-chip" title="Preview Chip"></app-navbar-link>
           <app-navbar-link link="/result-bar" title="Result Bar"></app-navbar-link>
-          <app-navbar-link link="/prompt-toggle" title="Prompt Toggle"></app-navbar-link>
+          <app-navbar-link link="/action-toggle" title="Action Toggle"></app-navbar-link>
           <app-navbar-link link="/work-log" title="Work Log"></app-navbar-link>
           <app-navbar-link link="/file-diff" title="File Diff"></app-navbar-link>
         </app-navbar-section>
@@ -202,6 +202,7 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/button" title="Button"></app-navbar-link>
           <app-navbar-link link="/chip" title="Chip"></app-navbar-link>
           <app-navbar-link link="/dropdown" title="Dropdown"></app-navbar-link>
+          <app-navbar-link link="/menu" title="Menu"></app-navbar-link>
           <app-navbar-link link="/link" title="Link"></app-navbar-link>
         </app-navbar-section>
 

@@ -103,7 +103,7 @@ class StoryFormSectionFooter extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
+
         imports='["@muibook/components/mui-form-section-footer"]'>
         <story-quicklinks
           slot="message"

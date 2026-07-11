@@ -27,19 +27,19 @@ class StoryContextBar extends HTMLElement {
         ${
           options.previews
             ? /*html*/ `
-          <mui-prompt-preview
+          <mui-preview-chip
             slot="preview"
             clickable
             badge="MD"
             animated
             value="Review the agent chat response, tighten the content hierarchy, and keep the prompt components reusable."
-          ></mui-prompt-preview>
-          <mui-prompt-preview
+          ></mui-preview-chip>
+          <mui-preview-chip
             slot="preview"
             clickable
             badge="JSON"
-            value='{"story":"agent-chat","components":["mui-prompt-message","mui-worker","mui-result-bar","mui-prompt-preview","mui-prompt-toggle"],"status":"draft"}'
-          ></mui-prompt-preview>
+            value='{"story":"agent-chat","components":["mui-chat-message","mui-worker","mui-result-bar","mui-preview-chip","mui-action-toggle"],"status":"draft"}'
+          ></mui-preview-chip>
         `
             : ""
         }
@@ -53,12 +53,14 @@ class StoryContextBar extends HTMLElement {
 
             <mui-h-stack slot="actions" aligny="center" space="var(--space-000)">
               <mui-button variant="tertiary" size="x-small">Steer</mui-button>
-              <mui-dropdown position="right" style="--dropdown-min-width: 9rem;">
+              <mui-dropdown position="right" style="--menu-min-width: 9rem;" size="x-small">
                 <mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More">
                   <mui-icon-ellipsis size="x-small" class="mui-icon"></mui-icon-ellipsis>
                 </mui-button>
-                <mui-button size="x-small">Edit</mui-button>
-                <mui-button size="x-small">Delete</mui-button>
+                <mui-menu>
+                  <mui-button size="x-small">Edit</mui-button>
+                  <mui-button size="x-small">Delete</mui-button>
+                </mui-menu>
               </mui-dropdown>
             </mui-h-stack>
 
@@ -69,8 +71,8 @@ class StoryContextBar extends HTMLElement {
           <mui-context-bar slot="context">
             <mui-h-stack aligny="center" space="var(--space-100)">
               <mui-body size="x-small" weight="regular" variant="default">8 files changed</mui-body>
-              <mui-body size="x-small" weight="regular" variant="success">+44</mui-body>
-              <mui-body size="x-small" weight="regular" variant="error">-20</mui-body>
+              <mui-body size="x-small" weight="regular" variant="positive">+44</mui-body>
+              <mui-body size="x-small" weight="regular" variant="attention">-20</mui-body>
             </mui-h-stack>
             <mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400">
 
@@ -79,12 +81,14 @@ class StoryContextBar extends HTMLElement {
                 <mui-button variant="tertiary" size="x-small">Review</mui-button>
               </mui-h-stack>
 
-              <mui-dropdown slot="showBelow" position="right" style="--dropdown-min-width: 9rem;">
+              <mui-dropdown slot="showBelow" position="right" style="--menu-min-width: 9rem;" size="x-small">
                 <mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More">
                   <mui-icon-ellipsis size="x-small" class="mui-icon"></mui-icon-ellipsis>
                 </mui-button>
-                <mui-button size="x-small">Undo</mui-button>
-                <mui-button size="x-small">Review</mui-button>
+                <mui-menu>
+                  <mui-button size="x-small">Undo</mui-button>
+                  <mui-button size="x-small">Review</mui-button>
+                </mui-menu>
               </mui-dropdown>
             </mui-responsive>
           </mui-context-bar>
@@ -102,12 +106,14 @@ class StoryContextBar extends HTMLElement {
                 <mui-button variant="primary" size="x-small">Allow</mui-button>
               </mui-h-stack>
 
-              <mui-dropdown slot="showBelow" position="right" style="--dropdown-min-width: 9rem;">
+              <mui-dropdown slot="showBelow" position="right" style="--menu-min-width: 9rem;" size="x-small">
                 <mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More">
                   <mui-icon-ellipsis size="x-small" class="mui-icon"></mui-icon-ellipsis>
                 </mui-button>
-                <mui-button size="x-small">Deny</mui-button>
-                <mui-button size="x-small">Allow</mui-button>
+                <mui-menu>
+                  <mui-button size="x-small">Deny</mui-button>
+                  <mui-button size="x-small">Allow</mui-button>
+                </mui-menu>
               </mui-dropdown>
             </mui-responsive>
           </mui-context-bar>
@@ -118,42 +124,46 @@ class StoryContextBar extends HTMLElement {
         ${
           options.simpleActions
             ? /*html*/ `
-          <mui-prompt-toggle slot="actions">
+          <mui-action-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" size="small" aria-label="Toggle web context">
               <mui-icon-globe size="small"></mui-icon-globe>
             </mui-button>
             <mui-chip context-chip dismiss size="small" hidden>Web</mui-chip>
-          </mui-prompt-toggle>
+          </mui-action-toggle>
 
           <mui-button slot="actions" variant="tertiary" size="small" aria-label="Attach files">
             <mui-icon-add size="small"></mui-icon-add>
           </mui-button>
         `
             : /*html*/ `
-          <mui-dropdown slot="actions" position="left" vertical-position="up">
+          <mui-dropdown slot="actions" position="left" vertical-position="up" size="small">
             <mui-button slot="action" variant="tertiary" icon-only size="small" aria-label="Attach context">
               <mui-icon-add size="small"></mui-icon-add>
             </mui-button>
-            <mui-button variant="tertiary" size="small">Attach File</mui-button>
-            <mui-button variant="tertiary" size="small">Add Screenshot</mui-button>
-            <mui-button variant="tertiary" size="small">Paste JSON</mui-button>
+            <mui-menu>
+              <mui-button variant="tertiary" size="small">Attach File</mui-button>
+              <mui-button variant="tertiary" size="small">Add Screenshot</mui-button>
+              <mui-button variant="tertiary" size="small">Paste JSON</mui-button>
+            </mui-menu>
           </mui-dropdown>
 
-          <mui-prompt-toggle slot="actions">
+          <mui-action-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle web context">
               <mui-icon-globe size="small"></mui-icon-globe>
             </mui-button>
             <mui-chip context-chip dismiss size="small" hidden>Web</mui-chip>
-          </mui-prompt-toggle>
+          </mui-action-toggle>
 
-          <mui-dropdown slot="actions" position="right" vertical-position="up">
+          <mui-dropdown slot="actions" position="right" vertical-position="up" size="small">
             <mui-button slot="action" variant="tertiary" size="small">
               MPT-4
               <mui-icon-down-chevron slot="after" size="x-small"></mui-icon-down-chevron>
             </mui-button>
-            <mui-button variant="tertiary" size="small">MPT-4</mui-button>
-            <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
-            <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            <mui-menu>
+              <mui-button variant="tertiary" size="small">MPT-4</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-4 Mini</mui-button>
+              <mui-button variant="tertiary" size="small">MPT-Reasoning</mui-button>
+            </mui-menu>
           </mui-dropdown>
         `
         }
@@ -176,13 +186,16 @@ class StoryContextBar extends HTMLElement {
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="actions" aligny="center" space="var(--space-000)"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" size="x-small"&gt;Steer&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown position="right" style="--dropdown-min-width: 9rem;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;x-small&quot; position="right" style="--menu-min-width: 9rem;"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="x-small" class="mui-icon"&gt;&lt;/mui-icon-ellipsis&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br /><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Edit&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Delete&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
+          &lt;/mui-dropdown&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           &nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
           &lt;/mui-prompt&gt;
@@ -200,8 +213,8 @@ class StoryContextBar extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-context-bar slot="context"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack aligny="center" space="var(--space-100)"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="default"&gt;8 files changed&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="success"&gt;+44&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="error"&gt;-20&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="positive"&gt;+44&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="attention"&gt;-20&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="showAbove" aligny="center" space="var(--space-100)"&gt;<br />
@@ -209,13 +222,16 @@ class StoryContextBar extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" size="x-small"&gt;Review&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown slot="showBelow" position="right" style="--dropdown-min-width: 9rem;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;x-small&quot; slot="showBelow" position="right" style="--menu-min-width: 9rem;"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="x-small" class="mui-icon"&gt;&lt;/mui-icon-ellipsis&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br /><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Undo&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Review&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
+          &lt;/mui-dropdown&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;<br />
           &nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
           &lt;/mui-prompt&gt;
@@ -238,13 +254,16 @@ class StoryContextBar extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="primary" size="x-small"&gt;Allow&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown slot="showBelow" position="right" style="--dropdown-min-width: 9rem;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;x-small&quot; slot="showBelow" position="right" style="--menu-min-width: 9rem;"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="x-small" class="mui-icon"&gt;&lt;/mui-icon-ellipsis&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br /><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Deny&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Allow&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
+          &lt;/mui-dropdown&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;<br />
           &nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
           &lt;/mui-prompt&gt;

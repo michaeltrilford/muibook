@@ -20,7 +20,7 @@ class StoryWorkLog extends HTMLElement {
         <mui-work-log slot="body" label="Worked for 4m 10s" open rule>
           <mui-list>
             <mui-list-item size="x-small" variant="tertiary">Reviewed the composition story structure.</mui-list-item>
-            <mui-list-item size="x-small" variant="tertiary">Updated prompt-message layout, header, and footer slots.</mui-list-item>
+            <mui-list-item size="x-small" variant="tertiary">Updated chat-message layout, header, and footer slots.</mui-list-item>
             <mui-list-item size="x-small" variant="tertiary">Ran CEM and Muibook build checks.</mui-list-item>
           </mui-list>
         </mui-work-log>
@@ -40,8 +40,8 @@ class StoryWorkLog extends HTMLElement {
       >
         <mui-work-log slot="body" label="Edited 4 files" open rule>
           <mui-h-stack slot="after" alignY="center" space="var(--space-100)">
-            <mui-body size="x-small" weight="regular" variant="success">+251</mui-body>
-            <mui-body size="x-small" weight="regular" variant="error">-14</mui-body>
+            <mui-body size="x-small" weight="regular" variant="positive">+251</mui-body>
+            <mui-body size="x-small" weight="regular" variant="attention">-14</mui-body>
           </mui-h-stack>
           <mui-file-diff
             filename="index.js"
@@ -79,8 +79,8 @@ class StoryWorkLog extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-work-log label="Edited 4 files" open rule&gt;<br />
           &nbsp;&nbsp;&lt;mui-h-stack slot="after" alignY="center" space="var(--space-100)"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="success"&gt;+251&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="error"&gt;-14&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="positive"&gt;+251&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="attention"&gt;-14&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           <br />
           &nbsp;&nbsp;&lt;mui-file-diff<br />

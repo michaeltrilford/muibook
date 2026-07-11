@@ -62,7 +62,7 @@ if (!customElements.get("mui-date-picker-popover")) {
 
 class MuiDatePicker extends HTMLElement {
   static get observedAttributes() {
-    return ["value", "type", "label", "hide-label", "optional", "size", "variant"];
+    return ["value", "type", "label", "hide-label", "optional", "size", "variant", "menu-slot"];
   }
 
   private selectedDate: string = "";
@@ -249,30 +249,32 @@ class MuiDatePicker extends HTMLElement {
         }
         mui-dropdown {
           width: 100%;
-          --dropdown-min-width: auto;
+          --menu-min-width: auto;
         }
         .time-pane {
           width: 130px;
         }
       </style>
-      <mui-dropdown persistent>
+      <mui-dropdown persistent size="${size}">
         <mui-input 
           slot="action" 
           value="${displayValue}"
           label="${label}"
           size="${size}"
           variant="${variant}"
+          ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
           ${hideLabel}
           ${optional}
           readonly>
           ${showDate ? '<mui-button slot="after"><mui-icon-calendar></mui-icon-calendar></mui-button>' : ""}
         </mui-input>
-
-        <mui-date-picker-popover>
+        <mui-menu>
+          <mui-date-picker-popover>
           ${showDate ? `<div class="calendar-pane"><mui-calendar value="${this.selectedDate}" slotted></mui-calendar></div>` : ""}
           ${showDate && showTime ? `<mui-rule direction="vertical" length="auto"></mui-rule>` : ""}
           ${showTime ? `<div class="time-pane" style="position: relative;"><div style="position: absolute; inset: 0;"><mui-time variant="${timeVariant}" value="${this.selectedTime}" style="--time-picker-height: 100%; height: 100%; --time-picker-radius: var(--stroke-size-200);" slotted></mui-time></div></div>` : ""}
-        </mui-date-picker-popover>
+          </mui-date-picker-popover>
+        </mui-menu>
       </mui-dropdown>
     `;
 

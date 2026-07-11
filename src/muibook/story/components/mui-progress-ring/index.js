@@ -324,7 +324,7 @@ class StoryProgressRing extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-progress-ring"]'>
         ${stories}
       </story-template>

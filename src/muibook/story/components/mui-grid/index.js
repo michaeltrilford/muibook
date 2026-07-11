@@ -34,7 +34,7 @@ class storyGrid extends HTMLElement {
           ${Box}
           ${Box}
         </mui-grid>
-        
+
         <story-code-block slot="footer" scrollable>
           &lt;mui-grid col="1fr 1fr" space="var(--space-200)"&gt;
           <br />
@@ -82,7 +82,7 @@ class storyGrid extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -90,7 +90,7 @@ class storyGrid extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-grid"]'>
         ${stories}
       </story-template>

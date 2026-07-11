@@ -230,10 +230,10 @@ class tokensSemantic extends HTMLElement {
 
           <spec-card id="text" title="Text">
             <story-token-slat slot="body" token="--text-color" variant="text-color"></story-token-slat>
-            <story-token-slat slot="body" token="--text-color-optional" variant="text-color"></story-token-slat>
-            <story-token-slat slot="body" token="--text-color-success" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--text-color-secondary" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--text-color-positive" variant="text-color"></story-token-slat>
             <story-token-slat slot="body" token="--text-color-warning" variant="text-color"></story-token-slat>
-            <story-token-slat slot="body" token="--text-color-error" variant="text-color"></story-token-slat>
+            <story-token-slat slot="body" token="--text-color-attention" variant="text-color"></story-token-slat>
 
             <story-token-slat slot="body" token="--text-font-size" variant="text-size" line-height="--text-line-height"></story-token-slat>
             <story-token-slat slot="body" token="--text-line-height" variant="line-height" font-size="--text-font-size"></story-token-slat>

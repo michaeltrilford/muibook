@@ -34,7 +34,7 @@ class storyAddon extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body&gt;USD&lt;/mui-body&gt;
             <br />
             &nbsp;&nbsp;&lt;/mui-addon&gt;
-            <br />            
+            <br />
 
             &lt;/mui-input&gt;
             <br />
@@ -70,7 +70,7 @@ class storyAddon extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-hint&gt;
             <br />
             &nbsp;&nbsp;&lt;/mui-addon&gt;
-            <br />            
+            <br />
 
             &lt;/mui-input&gt;
             <br />
@@ -118,14 +118,14 @@ class storyAddon extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
         figma="${data.figma}"
         guides="${data.guides}"
         storybook="${data.storybook}"
-      
+
         imports='["@muibook/components/mui-addon"]'>
         ${stories}
       </story-template>

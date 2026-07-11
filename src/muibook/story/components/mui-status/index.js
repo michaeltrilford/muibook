@@ -177,15 +177,17 @@ class storyStatus extends HTMLElement {
         description="Status can be composed inside other controls when the state is also the selected value."
         usage="Own the selected value in the parent app or composition.|||Use Dropdown for menu behavior and Status for the visible selected state.|||Do not rely on Dropdown to mutate the slotted Status automatically."
       >
-        <mui-dropdown slot="body" data-status-dropdown>
+        <mui-dropdown slot="body" data-status-dropdown size="medium">
           <mui-status slot="action" action variant="positive" data-status-trigger>
             <mui-icon-check slot="before"></mui-icon-check>
             Active
             <mui-icon-down-chevron slot="after"></mui-icon-down-chevron>
           </mui-status>
-          <mui-button size="x-small" variant="primary" data-status-option="active">Active</mui-button>
-          <mui-button size="x-small" variant="tertiary" data-status-option="review">Review</mui-button>
-          <mui-button size="x-small" variant="tertiary" data-status-option="blocked">Blocked</mui-button>
+          <mui-menu>
+            <mui-button size="x-small" variant="primary" data-status-option="active">Active</mui-button>
+            <mui-button size="x-small" variant="tertiary" data-status-option="review">Review</mui-button>
+            <mui-button size="x-small" variant="tertiary" data-status-option="blocked">Blocked</mui-button>
+          </mui-menu>
         </mui-dropdown>
         <story-code-block slot="footer" scrollable>
           const statuses = [<br />
@@ -213,11 +215,14 @@ class storyStatus extends HTMLElement {
           &nbsp;&nbsp;});<br />
           });<br />
           <br />
-          &lt;mui-dropdown&gt;<br />
-          &nbsp;&nbsp;&lt;mui-status slot=&quot;action&quot; action data-status-trigger&gt;Active&lt;/mui-status&gt;<br />
+          &lt;mui-dropdown size=&quot;medium&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-status slot=&quot;action&quot; action data-status-trigger&gt;Active&lt;/mui-status&gt;<br /><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button data-status-option=&quot;active&quot;&gt;Active&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button data-status-option=&quot;review&quot;&gt;Review&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button data-status-option=&quot;blocked&quot;&gt;Blocked&lt;/mui-button&gt;<br />
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
@@ -226,7 +231,7 @@ class storyStatus extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"

@@ -235,6 +235,22 @@ class MuiTextarea extends HTMLElement {
           --textarea-padding-inline-current: var(--space-400);
           border-radius: var(--form-radius-large);
         }
+        :host([menu-slot]) textarea.size-x-small {
+          border-radius: calc(var(--form-radius-x-small) - var(--space-050));
+        }
+        :host([menu-slot]) textarea.size-small {
+          border-radius: calc(var(--form-radius-small) - var(--space-050));
+        }
+        :host([menu-slot]) textarea.size-medium {
+          border-radius: calc(var(--form-radius-medium) - var(--space-100));
+        }
+        :host([menu-slot]) textarea.size-large {
+          border-radius: calc(var(--form-radius-large) - var(--space-200));
+        }
+        :host([menu-slot]) textarea.size-x-small:focus,
+        :host([menu-slot]) textarea.size-small:focus {
+          border-radius: 0;
+        }
 
         textarea:hover {
           border-color: var(--form-default-border-color-hover);
@@ -328,7 +344,7 @@ class MuiTextarea extends HTMLElement {
           opacity: 0.7;
         }
         .optional {
-          color: var(--text-color-optional);
+          color: var(--text-color-secondary);
           display: inline-flex;
           align-items: center;
           gap: var(--space-050);

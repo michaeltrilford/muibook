@@ -558,16 +558,18 @@ class MuiMediaPlayer extends HTMLElement {
   }
 
   private renderOptionsMenu(escapedSrc: string, offset: string) {
-    return `<mui-dropdown class="options-menu" position="right" vertical-position="up" zindex="4" style="--dropdown-offset: ${offset};">
+    return `<mui-dropdown class="options-menu" position="right" vertical-position="up" zindex="4" style="--dropdown-offset: ${offset};" size="small">
       <mui-button slot="action" data-action="options" size="small" icon-only variant="tertiary" aria-label="Media options">
         ${this.getControlIcon("more")}
       </mui-button>
-      <mui-link class="options-item" role="menuitem" variant="tertiary" size="small" href="${escapedSrc}" download>
+      <mui-menu>
+        <mui-link class="options-item" role="menuitem" variant="tertiary" size="small" href="${escapedSrc}" download>
         Download
-      </mui-link>
-      <mui-link class="options-item" role="menuitem" variant="tertiary" size="small" href="${escapedSrc}" target="_blank">
+        </mui-link>
+        <mui-link class="options-item" role="menuitem" variant="tertiary" size="small" href="${escapedSrc}" target="_blank">
         Open source
-      </mui-link>
+        </mui-link>
+      </mui-menu>
     </mui-dropdown>`;
   }
 
@@ -1505,7 +1507,7 @@ class MuiMediaPlayer extends HTMLElement {
           );
           --media-player-waveform-current-color: var(--black-opacity-80);
           --media-player-waveform-current-mirror-color: var(--black-opacity-40);
-          --dropdown-min-width: 16rem;
+          --menu-min-width: 16rem;
           --dropdown-offset: var(--space-100);
         }
         :host(:focus-visible) {
@@ -1548,7 +1550,7 @@ class MuiMediaPlayer extends HTMLElement {
         .audio-frame.custom-controls.has-artwork .controls,
         .audio-visual.has-artwork {
           --text-color: var(--white);
-          --text-color-optional: rgba(255, 255, 255, 0.72);
+          --text-color-secondary: rgba(255, 255, 255, 0.72);
           --link-text-color-default: var(--white);
           --link-text-color-default-hover: var(--white);
           --link-text-color-default-focus: var(--white);
@@ -1579,10 +1581,10 @@ class MuiMediaPlayer extends HTMLElement {
           --action-tertiary-text-color: var(--white);
           --action-tertiary-text-color-hover: var(--white);
           --action-tertiary-text-color-focus: var(--white);
-          --dropdown-background: var(--black-opacity-80);
-          --dropdown-border-color: var(--white-opacity-30);
-          --dropdown-shadow-color: var(--black-opacity-30);
-          --dropdown-radius: 1.2rem;
+          --menu-background: var(--black-opacity-80);
+          --menu-border-color: var(--white-opacity-30);
+          --menu-shadow-color: var(--black-opacity-30);
+          --menu-radius: 1.2rem;
           --hint-background: var(--black-opacity-80);
           --hint-border-color: var(--white-opacity-30);
           --hint-shadow: 0 var(--space-100) var(--space-200) var(--black-opacity-30);
@@ -2180,7 +2182,7 @@ class MuiMediaPlayer extends HTMLElement {
           min-width: 0;
           max-width: 100%;
           pointer-events: auto;
-          --text-color-optional: var(--text-color);
+          --text-color-secondary: var(--text-color);
           --text-font-size-m: var(--text-font-size-s);
           --text-line-height-m: var(--text-line-height-s);
         }
@@ -2269,7 +2271,7 @@ class MuiMediaPlayer extends HTMLElement {
           --avatar-chip-link-color-hover: var(--white);
           --avatar-chip-link-color-focus: var(--white);
           --text-color: var(--white);
-          --text-color-optional: var(--white);
+          --text-color-secondary: var(--white);
           --link-text-color-default: var(--white);
           --link-text-color-default-hover: var(--white);
           --link-text-color-default-focus: var(--white);

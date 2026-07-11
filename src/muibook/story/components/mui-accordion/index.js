@@ -62,7 +62,7 @@ class storyAccordion extends HTMLElement {
 
         <story-card
           id="accordion-inline"
-          title="Accordion Inline" 
+          title="Accordion Inline"
           description="The inline accordion is typically used within a block layout as a secondary UI element to a block element."
           usageLink="https://guides.muibook.com/accordion"
         >
@@ -90,7 +90,7 @@ class storyAccordion extends HTMLElement {
 
         <story-card
           id="accordion-group-and-block"
-          title="Accordion Group & Block" 
+          title="Accordion Group & Block"
           description="The block accordion is typically used within a page layout full-width to the parent container."
           usageLink="https://guides.muibook.com/accordion"
         >
@@ -108,7 +108,7 @@ class storyAccordion extends HTMLElement {
           </mui-accordion-group>
           <story-code-block slot="footer">
             &lt;mui-accordion-group&gt;
-            <br />  
+            <br />
             &nbsp;&nbsp;&lt;mui-accordion-block heading="Heading"&gt;
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="detail"&gt;
@@ -135,7 +135,7 @@ class storyAccordion extends HTMLElement {
 
         <story-card
           id="accordion-group-and-block-exclusive"
-          title="Accordion Group & Block: Exclusive" 
+          title="Accordion Group & Block: Exclusive"
           description="The block accordion is typically used within a page layout full-width to the parent container."
           usageLink="https://guides.muibook.com/accordion"
         >
@@ -153,7 +153,7 @@ class storyAccordion extends HTMLElement {
           </mui-accordion-group>
           <story-code-block slot="footer">
             &lt;mui-accordion-group exclusive&gt;
-            <br />  
+            <br />
             &nbsp;&nbsp;&lt;mui-accordion-block heading="Heading"&gt;
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="detail"&gt;
@@ -180,7 +180,7 @@ class storyAccordion extends HTMLElement {
 
         <story-card
           id="tab-behaviour-button"
-          title="Tab Behaviour: Button" 
+          title="Tab Behaviour: Button"
           description="A demo showcasing how a nested button will be ignored by the tabbing functionality if collapsed."
         >
           <div slot="body">
@@ -205,7 +205,7 @@ class storyAccordion extends HTMLElement {
 
         <story-card
           id="tab-behaviour-link"
-          title="Tab Behaviour: Link" 
+          title="Tab Behaviour: Link"
           description="A demo showcasing how a nested link will be ignored by the tabbing functionality if collapsed."
         >
           <div slot="body">
@@ -230,7 +230,7 @@ class storyAccordion extends HTMLElement {
 
         <story-card
           id="detail-space-none"
-          title="Detail Space: None" 
+          title="Detail Space: None"
           description="In accordion-block, you are able to turn off the space within the detail section."
           usage="
             Ideal for using the accordion block to contain navigation items|||
@@ -263,9 +263,9 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
-          id="card-accordion" 
-          title="Card w/ Accordion" 
+        <story-card
+          id="card-accordion"
+          title="Card w/ Accordion"
           usage="
             When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding|||
             If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.
@@ -309,12 +309,12 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card id="card-header-accordion" title="Card Header w/ Accordion" 
+        <story-card id="card-header-accordion" title="Card Header w/ Accordion"
           description="You can add in a mui-rule to help add a division between the header and body of the card"
           usage="
             When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding|||
             If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.
-          "  
+          "
         >
           <div slot="body">
             <mui-card>
@@ -419,7 +419,7 @@ class storyAccordion extends HTMLElement {
                     </mui-slat>
                   </mui-slat-group>
                 </mui-v-stack>
-      
+
               </mui-accordion-block>
               <mui-accordion-block heading="Opt-out">
                 <mui-v-stack slot="detail" space="var(--space-200)" style="max-width: 400px; margin: var(--space-200) auto 0;">
@@ -577,7 +577,7 @@ class storyAccordion extends HTMLElement {
                         </mui-slat>
                       </mui-slat-group>
                     </mui-v-stack>
-          
+
                   </mui-accordion-block>
                   <mui-accordion-block heading="Opt-out">
                     <mui-v-stack slot="detail" space="var(--space-200)" style="max-width: 400px; margin: var(--space-200) auto 0;">
@@ -680,12 +680,12 @@ class storyAccordion extends HTMLElement {
 
         <story-card
           id="accordion-core"
-          title="Accordion Core" 
+          title="Accordion Core"
           description="Use your imagination and compose your own accordion experience with some overhead in effort. Below is a variety of examples using cards and different techniques to toggle an icon based on the open state."
         >
           <mui-v-stack slot="body">
 
-            <mui-accordion-core>              
+            <mui-accordion-core>
               <mui-h-stack space="var(--space-200)" alignY="center" slot="summary">
                 <mui-icon-right-chevron></mui-icon-right-chevron>
                 <mui-heading size="3">Accordion Inline</mui-heading>
@@ -696,8 +696,8 @@ class storyAccordion extends HTMLElement {
             </mui-accordion-core>
 
             <mui-card>
-              <mui-accordion-core>              
-                <mui-card-header slot="summary">                
+              <mui-accordion-core>
+                <mui-card-header slot="summary">
                   <mui-h-stack space="var(--space-100)" alignX="space-between" alignY="center">
                     <mui-heading size="3">Accordion Block</mui-heading>
                     <mui-icon-down-chevron></mui-icon-down-chevron>
@@ -713,8 +713,8 @@ class storyAccordion extends HTMLElement {
             </mui-card>
 
             <mui-card>
-              <mui-accordion-core>              
-                <mui-card-header slot="summary">                
+              <mui-accordion-core>
+                <mui-card-header slot="summary">
                   <mui-h-stack space="var(--space-100)" alignX="space-between" alignY="center">
                     <mui-heading size="3">Accordion w/ Icon Toggle</mui-heading>
                     <mui-icon-toggle rotate>
@@ -731,14 +731,14 @@ class storyAccordion extends HTMLElement {
                 </div>
               </mui-accordion-core>
             </mui-card>
-                    
+
           </mui-v-stack>
 
           <story-code-block slot="footer">
 
             // Custom: Accordion Inline<br>
             /* ================================================================ */<br><br>
-            
+
             // Styles must be added where the component is used to pierce the shadow DOM.<br>
             // This only works with &lt;mui-icon-right-chevron&gt;<br>
             // Attributes are set by &lt;mui-accordion-core&gt;.<br><br>
@@ -761,10 +761,10 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
             &nbsp;&nbsp;&lt;/mui-accordion-core&gt;<br><br><br><br>
 
-            
+
             // Custom: Accordion Block<br>
             /* ================================================================ */<br><br>
-            
+
             // Styles must be added where the component is used to pierce the shadow DOM.<br>
             // This only works with &lt;mui-icon-down-chevron&gt;<br>
             // Attributes are set by &lt;mui-accordion-core&gt;.<br><br>
@@ -794,10 +794,10 @@ class storyAccordion extends HTMLElement {
             &nbsp;&nbsp;&lt;/mui-accordion-core&gt;<br>
             &lt;/mui-card&gt;<br><br><br><br>
 
-            
+
             // Custom: Accordion (Icon-Toggle)<br>
             /* ================================================================ */<br><br>
-            
+
             // Experiment with the &lt;mui-icon-toggle&gt; to utilise the toggle behaviour for the accordion.<br>
             // Attributes are set by &lt;mui-accordion-core&gt;.<br><br>
 
@@ -830,7 +830,7 @@ class storyAccordion extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         attrs-reference='${attrsReference}'
@@ -840,7 +840,7 @@ class storyAccordion extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
-      
+
         imports='["@muibook/components/mui-accordion"]'>
         <story-quicklinks
           slot="message"

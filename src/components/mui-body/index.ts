@@ -57,6 +57,27 @@ class MuiBody extends HTMLElement {
         width: 100%;
       }
 
+      :host([menu-slot]) p {
+        box-sizing: border-box;
+        border: var(--action-tertiary-border);
+      }
+
+      :host([menu-slot][size="x-small"]) p {
+        padding: var(--action-padding-x-small);
+      }
+
+      :host([menu-slot][size="small"]) p {
+        padding: var(--action-padding-small);
+      }
+
+      :host([menu-slot][size="medium"]) p {
+        padding: var(--action-padding);
+      }
+
+      :host([menu-slot][size="large"]) p {
+        padding: var(--action-padding-large);
+      }
+
       :host([has-before]) p,
       :host([has-after]) p {
         display: inline-flex;
@@ -151,40 +172,40 @@ class MuiBody extends HTMLElement {
         color: var(--text-color);
       }
 
-      :host([variant="optional"]) p {
-        color: var(--text-color-optional);
+      :host([variant="secondary"]) p {
+        color: var(--text-color-secondary);
       }
 
       :host([variant="info"]) p {
         color: var(--text-color-info);
       }
-      :host([variant="success"]) p {
-        color: var(--text-color-success);
+      :host([variant="positive"]) p {
+        color: var(--text-color-positive);
       }
       :host([variant="warning"]) p {
         color: var(--text-color-warning);
       }
-      :host([variant="error"]) p {
-        color: var(--text-color-error);
+      :host([variant="attention"]) p {
+        color: var(--text-color-attention);
       }
 
       :host([variant="default"]) ::slotted(.mui-icon) {
         fill: var(--text-color);
       }
-      :host([variant="optional"]) ::slotted(.mui-icon) {
-        fill: var(--text-color-optional);
+      :host([variant="secondary"]) ::slotted(.mui-icon) {
+        fill: var(--text-color-secondary);
       }
       :host([variant="info"]) ::slotted(.mui-icon) {
         fill: var(--text-color-info);
       }
-      :host([variant="success"]) ::slotted(.mui-icon) {
-        fill: var(--text-color-success);
+      :host([variant="positive"]) ::slotted(.mui-icon) {
+        fill: var(--text-color-positive);
       }
       :host([variant="warning"]) ::slotted(.mui-icon) {
         fill: var(--text-color-warning);
       }
-      :host([variant="error"]) ::slotted(.mui-icon) {
-        fill: var(--text-color-error);
+      :host([variant="attention"]) ::slotted(.mui-icon) {
+        fill: var(--text-color-attention);
       }
 
     </style>

@@ -1,5 +1,5 @@
 export const muiApi = {
-  "mui-prompt-preview": {
+  "mui-preview-chip": {
     description: "Displays a compact preview of pasted or attached prompt context and optionally opens fuller content.",
     members: [
       { kind: "field", name: "value", type: { text: "string" }, description: "Gets or sets source preview content." },
@@ -22,19 +22,19 @@ export const muiApi = {
       { name: "animated", type: { text: "boolean" }, default: "false", description: "Enables preview sheen and pulse animation." },
       { name: "animation-mode", type: { text: '"loop" | "once" | "off"' }, default: "loop", description: "Controls animation repetition." },
       { name: "variant", type: { text: '"default" | "overlay"' }, default: "default", description: "Visual treatment of the preview surface." },
-      { name: "clickable", type: { text: "boolean" }, default: "false", description: "Enables keyboard/click activation and `prompt-preview-open` events." },
+      { name: "clickable", type: { text: "boolean" }, default: "false", description: "Enables keyboard/click activation and `preview-chip-open` events." },
       { name: "loading", type: { text: "boolean" }, default: "false", description: "Displays loading feedback and prevents preview activation." },
       { name: "loading-label", type: { text: "string" }, default: "Loading preview", description: "Accessible label for loading feedback." },
     ],
     events: [
       { name: "dismiss", description: "Cancelable event dispatched when the dismiss action is activated; includes preview details." },
-      { name: "prompt-preview-open", description: "Dispatched when clickable preview content is activated; includes preview details." },
+      { name: "preview-chip-open", description: "Dispatched when clickable preview content is activated; includes preview details." },
     ],
     cssProperties: [
-      { name: "--prompt-preview-accent", description: "Default preview effect accent when no `accent` attribute is provided." },
-      { name: "--prompt-preview-background", description: "Base background layer for non-image previews." },
-      { name: "--prompt-preview-dismiss-secondary-background", description: "Background of the dismiss action on standard previews." },
-      { name: "--prompt-preview-dismiss-secondary-border", description: "Border of the dismiss action on standard previews." },
+      { name: "--preview-chip-accent", description: "Default preview effect accent when no `accent` attribute is provided." },
+      { name: "--preview-chip-background", description: "Base background layer for non-image previews." },
+      { name: "--preview-chip-dismiss-secondary-background", description: "Background of the dismiss action on standard previews." },
+      { name: "--preview-chip-dismiss-secondary-border", description: "Border of the dismiss action on standard previews." },
     ],
   },
 };

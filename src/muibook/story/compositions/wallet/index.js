@@ -8,7 +8,7 @@ class compWallet extends HTMLElement {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
     const styles = /*css*/ `
-      :host { 
+      :host {
         display: block;
       }
       .canvas {
@@ -21,7 +21,7 @@ class compWallet extends HTMLElement {
       }
 
       .card-artwork {
-        --dropdown-radius: var(--radius-400) var(--radius-400) var(--radius-300) var(--radius-300);
+        --menu-radius: var(--radius-400) var(--radius-400) var(--radius-300) var(--radius-300);
       }
 
     `;
@@ -221,7 +221,7 @@ class compWallet extends HTMLElement {
     `;
 
     const settings = /*html*/ `
-      <story-card 
+      <story-card
         title="Settings"
         description="An example of a settings screen where users can personalise their card by uploading custom artwork for the card background and logo."
         usage="
@@ -229,7 +229,7 @@ class compWallet extends HTMLElement {
         Learn more about the <mui-link size='x-small' href='/dropdown'>dropdown</mui-link> component and its events in the documentation.|||
         The code in this example is prototype code and not production ready, but it demonstrates how you can build this type of interaction with the MUI components.">
         ">
-        
+
         <mui-v-stack alignX="stretch" space="var(--space-200)" slot="body" style="max-width: 365px; margin: 0 auto; padding-top: var(--space-700); padding-bottom: var(--space-700)">
 
           <mui-heading size="3" level="2">Personalise Card</mui-heading>
@@ -245,27 +245,29 @@ class compWallet extends HTMLElement {
               </mui-v-stack>
               <mui-h-stack space="0" slot="end" alignX="end">
                 <mui-button data-background-reset variant="tertiary" style="display: none;">Reset</mui-button>
-                <mui-dropdown data-toggle-dropdown="background" data-file-preview="true" position="center" class="card-artwork">
+                <mui-dropdown data-toggle-dropdown="background" data-file-preview="true" position="center" class="card-artwork" size="small">
                   <mui-button slot="action" variant="tertiary" size="small">
                     <mui-icon-toggle data-toggle-control="background" rotate size="small">
                       <mui-icon-add slot="start"></mui-icon-add>
                       <mui-icon-subtract slot="end"></mui-icon-subtract>
                     </mui-icon-toggle>
                   </mui-button>
-                  <mui-v-stack space="var(--space-300)" style="padding: var(--space-300) var(--space-500) var(--space-500) var(--space-500);">
-                  <mui-heading size="3" level="2">Preview</mui-heading>
+                  <mui-menu>
+                    <mui-v-stack space="var(--space-300)" style="padding: var(--space-300) var(--space-500) var(--space-500) var(--space-500);">
+                    <mui-heading size="3" level="2">Preview</mui-heading>
                     <mui-smart-card
-                      type="Debit"
-                      number="1234"
-                      partner="${Visa}"
-                      logo="${LogoPlaceholder}"
-                      variant="plain"
+                    type="Debit"
+                    number="1234"
+                    partner="${Visa}"
+                    logo="${LogoPlaceholder}"
+                    variant="plain"
                     >
                     </mui-smart-card>
                     <mui-file-upload
-                      acceptedFileTypes=".pdf,.jpg,.png,.svg"
-                      currentFileName="Upload Artwork"></mui-file-upload>
+                    acceptedFileTypes=".pdf,.jpg,.png,.svg"
+                    currentFileName="Upload Artwork"></mui-file-upload>
                     </mui-v-stack>
+                  </mui-menu>
                 </mui-dropdown>
               </mui-h-stack>
             </mui-slat>
@@ -277,7 +279,7 @@ class compWallet extends HTMLElement {
 
         </mui-v-stack>
 
-        <story-code-block slot="footer" scrollable>    
+        <story-code-block slot="footer" scrollable>
 
           &lt;mui-v-stack<br>
           &nbsp;&nbsp;alignX=&quot;stretch&quot;<br>
@@ -299,13 +301,14 @@ class compWallet extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack space=&quot;0&quot; slot=&quot;end&quot; alignX=&quot;end&quot;&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button data-background-reset variant=&quot;tertiary&quot; style=&quot;display: none;&quot;&gt;Reset&lt;/mui-button&gt;<br/><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown data-toggle-dropdown=&quot;background&quot; data-file-preview=&quot;true&quot; position=&quot;center&quot;&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;small&quot; data-toggle-dropdown=&quot;background&quot; data-file-preview=&quot;true&quot; position=&quot;center&quot;&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size=&quot;small&quot; slot=&quot;action&quot; variant=&quot;secondary&quot;&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle size=&quot;small&quot data-toggle-control=&quot;background&quot; rotate&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot=&quot;start&quot;&gt;&lt;/mui-icon-add&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot=&quot;end&quot;&gt;&lt;/mui-icon-subtract&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br/><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br/><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br /><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;var(--space-300)&quot; style=&quot;padding: var(--space-300) var(--space-500) var(--space-500) var(--space-500);&quot;&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot; level=&quot;2&quot;&gt;Preview&lt;/mui-heading&gt;<br/>
 
@@ -321,7 +324,9 @@ class compWallet extends HTMLElement {
 
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-upload acceptedFileTypes=&quot;.pdf,.jpg,.png,.svg&quot; currentFileName=&quot;Upload Artwork&quot;&gt;&lt;/mui-file-upload&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br/><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-dropdown&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
+          &lt;/mui-dropdown&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br/><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-slat&gt;<br/>
           &nbsp;&nbsp;&lt;/mui-card&gt;<br/>
@@ -355,7 +360,7 @@ class compWallet extends HTMLElement {
           &nbsp;&nbsp;});
 
           <br><br><br>
-          
+
           // File Upload Logic<br>
           ///////////////////////////////////////////////////////////////////<br><br>
           shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) =&gt; {<br>
@@ -385,7 +390,7 @@ class compWallet extends HTMLElement {
           });<br>
 
 
-          
+
         </story-code-block>
       </story-card>
     `;
@@ -393,7 +398,7 @@ class compWallet extends HTMLElement {
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="Wallet"
         description="Creating compositions provide the Design System a view of how the system is working and where it needs flexibility."
         github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/wallet/index.js"

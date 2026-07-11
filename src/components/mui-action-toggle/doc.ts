@@ -1,15 +1,15 @@
 import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
-  PromptToggle: {
-    title: "Prompt Toggle",
-    description: "Prompt Toggle switches between compact prompt actions and expanded active content inside Prompt.",
+  ActionToggle: {
+    title: "Action Toggle",
+    description: "Action Toggle switches between compact prompt actions and expanded active content inside Prompt.",
 
     hero: [""],
     figma: ["https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1"],
-    storybook: ["https://stories.muibook.com/?path=/docs/ai-llm-prompt-toggle--docs"],
-    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-prompt-toggle/index.ts"],
-    website: ["https://muibook.com/prompt-toggle"],
+    storybook: ["https://stories.muibook.com/?path=/docs/ai-llm-action-toggle--docs"],
+    github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-action-toggle/index.ts"],
+    website: ["https://muibook.com/action-toggle"],
     guides: ["https://guides.muibook.com/prompt"],
 
     usage: {
@@ -29,7 +29,7 @@ export const muiDocs: MuiDocs = {
         "Use clear affordances for close or dismiss actions when expanded state can be exited independently.",
       ],
       engineerList: [
-        "Treat Prompt Toggle as a display-mode switcher; app state should still own the action, context, and dismissal logic.",
+        "Treat Action Toggle as a display-mode switcher; app state should still own the action, context, and dismissal logic.",
         "Ensure slotted toggle and active controls expose their own accessible labels when they are icon-only.",
       ],
     },
@@ -79,7 +79,7 @@ export const muiDocs: MuiDocs = {
     rules: [
       {
         heading: "Use for stateful prompt actions",
-        description: "Prompt Toggle is for prompt actions that need a compact state and a richer active state in the same position.",
+        description: "Action Toggle is for prompt actions that need a compact state and a richer active state in the same position.",
         doContent: [
           {
             description: "Use it for context, source, or tool actions that start as a small trigger and then become an active chip, dropdown launcher, or dismissible action.",
@@ -99,7 +99,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "mode='icon' shows toggle content and hides active, chip, close, and spinner content.",
         "mode='chip' shows active, chip, close, and spinner content and hides the compact toggle content.",
-        "Prompt Toggle reacts to slotted content marked with slot names or context-* attributes so composed prompt actions can be shown or hidden consistently.",
+        "Action Toggle reacts to slotted content marked with slot names or context-* attributes so composed prompt actions can be shown or hidden consistently.",
       ],
     },
 

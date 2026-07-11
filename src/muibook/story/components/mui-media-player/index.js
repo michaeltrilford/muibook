@@ -315,7 +315,7 @@ class StoryMediaPlayer extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
+
         imports='@muibook/components/mui-media-player'>
         <story-quicklinks
           slot="message"

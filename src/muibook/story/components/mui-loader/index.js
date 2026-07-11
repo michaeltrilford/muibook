@@ -12,11 +12,11 @@ class storyLoader extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
-      mui-container { min-width: initial; } 
+      mui-container { min-width: initial; }
     `;
 
-    const Skeleton = /*html*/ `   
-      <mui-grid col="2fr 1fr">       
+    const Skeleton = /*html*/ `
+      <mui-grid col="2fr 1fr">
         <mui-v-stack space="var(--space-600);" style="padding: var(--space-600)">
           <mui-v-stack space="var(--space-400);">
             <mui-v-stack space="var(--space-300);" alignx="start">
@@ -80,7 +80,7 @@ class storyLoader extends HTMLElement {
           &nbsp;&nbsp;&lt;/mui-grid&gt;<br>
           &lt;/mui-loader&gt;
         </story-code-block>
-        
+
       </story-card>
 
       <story-card title="Translate: Up" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
@@ -220,7 +220,7 @@ class storyLoader extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -228,7 +228,7 @@ class storyLoader extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-loader"]'>
         <story-quicklinks
           slot="message"

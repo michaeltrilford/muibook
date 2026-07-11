@@ -25,7 +25,7 @@ export const muiApi = {
         name: "open",
         type: { text: "boolean" },
         default: "false",
-        description: "Reveals the search row and hides after-slot content when present.",
+        description: "Reveals the search row and hides populated after-slot content. Ignored when the after slot is empty.",
       },
       {
         name: "autofocus",
@@ -47,7 +47,7 @@ export const muiApi = {
       },
       {
         name: "after",
-        description: "Adjacent controls that appear beside the compact search action before search is revealed.",
+        description: "Adjacent controls that appear beside the compact search action before search is revealed. A direct Tab Bar inherits Search Input sizing.",
       },
     ],
     events: [

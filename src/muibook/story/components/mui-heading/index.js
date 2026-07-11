@@ -75,7 +75,7 @@ class storyHeading extends HTMLElement {
           <mui-v-stack space="var(--space-400)" alignx="start">
             <div style="width: min(100%, 28rem); border: var(--border-thin); border-radius: var(--radius-200); padding: var(--space-300);">
               <mui-v-stack space="var(--space-100)">
-                <mui-body size="small" variant="optional">Truncate</mui-body>
+                <mui-body size="small" variant="secondary">Truncate</mui-body>
                 <mui-heading size="4" level="3" truncate>
                   Enterprise subscription analytics workspace overview
                 </mui-heading>
@@ -84,7 +84,7 @@ class storyHeading extends HTMLElement {
 
             <div style="width: min(100%, 28rem); border: var(--border-thin); border-radius: var(--radius-200); padding: var(--space-300);">
               <mui-v-stack space="var(--space-100)">
-                <mui-body size="small" variant="optional">Clamp</mui-body>
+                <mui-body size="small" variant="secondary">Clamp</mui-body>
                 <mui-heading size="3" level="3" clamp="2">
                   Enterprise subscription analytics and lifecycle reporting workspace overview
                 </mui-heading>
@@ -112,7 +112,7 @@ class storyHeading extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -120,7 +120,7 @@ class storyHeading extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-heading"]'>
         ${stories}
       </story-template>

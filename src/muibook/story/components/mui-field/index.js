@@ -23,8 +23,8 @@ class storyField extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-field" title="Field"></story-api-types>
 
-        <story-card 
-          title="Input: Default" 
+        <story-card
+          title="Input: Default"
           description="The label prop is forwarded from the parent field to the input element to associate the label with the input correctly."
           usageLink="https://guides.muibook.com/field"
         >
@@ -199,28 +199,28 @@ class storyField extends HTMLElement {
             </mui-button>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">x-small</mui-body>
+              <mui-body size="small" variant="secondary">x-small</mui-body>
               <mui-field id="field-success-toggle-xs" label="Password" size="x-small">
                 <mui-input type="password" value="temp1234"></mui-input>
               </mui-field>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">small</mui-body>
+              <mui-body size="small" variant="secondary">small</mui-body>
               <mui-field id="field-success-toggle-s" label="Password" size="small">
                 <mui-input type="password" value="temp1234"></mui-input>
               </mui-field>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">medium</mui-body>
+              <mui-body size="small" variant="secondary">medium</mui-body>
               <mui-field id="field-success-toggle-m" label="Password" size="medium">
                 <mui-input type="password" value="temp1234"></mui-input>
               </mui-field>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">large</mui-body>
+              <mui-body size="small" variant="secondary">large</mui-body>
               <mui-field id="field-success-toggle-l" label="Password" size="large">
                 <mui-input type="password" value="temp1234"></mui-input>
               </mui-field>
@@ -275,28 +275,28 @@ class storyField extends HTMLElement {
             </mui-button>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">x-small</mui-body>
+              <mui-body size="small" variant="secondary">x-small</mui-body>
               <mui-field id="field-warning-toggle-xs" label="Email" size="x-small">
                 <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
               </mui-field>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">small</mui-body>
+              <mui-body size="small" variant="secondary">small</mui-body>
               <mui-field id="field-warning-toggle-s" label="Email" size="small">
                 <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
               </mui-field>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">medium</mui-body>
+              <mui-body size="small" variant="secondary">medium</mui-body>
               <mui-field id="field-warning-toggle-m" label="Email" size="medium">
                 <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
               </mui-field>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">large</mui-body>
+              <mui-body size="small" variant="secondary">large</mui-body>
               <mui-field id="field-warning-toggle-l" label="Email" size="large">
                 <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
               </mui-field>
@@ -341,8 +341,8 @@ class storyField extends HTMLElement {
         >
           <mui-v-stack slot="body" space="var(--space-400)">
             <mui-button
-              variant="secondary" 
-              data-toggle="field-error-toggle-xs,field-error-toggle-s,field-error-toggle-m,field-error-toggle-l" 
+              variant="secondary"
+              data-toggle="field-error-toggle-xs,field-error-toggle-s,field-error-toggle-m,field-error-toggle-l"
               data-message="Enter a valid email to proceed"
               data-variant="error"
             >
@@ -350,28 +350,28 @@ class storyField extends HTMLElement {
             </mui-button>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">x-small</mui-body>
+              <mui-body size="small" variant="secondary">x-small</mui-body>
               <mui-field id="field-error-toggle-xs" label="Email" size="x-small">
                 <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
               </mui-field>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">small</mui-body>
+              <mui-body size="small" variant="secondary">small</mui-body>
               <mui-field id="field-error-toggle-s" label="Email" size="small">
                 <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
               </mui-field>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">medium</mui-body>
+              <mui-body size="small" variant="secondary">medium</mui-body>
               <mui-field id="field-error-toggle-m" label="Email" size="medium">
                 <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
               </mui-field>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">large</mui-body>
+              <mui-body size="small" variant="secondary">large</mui-body>
               <mui-field id="field-error-toggle-l" label="Email" size="large">
                 <mui-input placeholder="you@example.com" value="michael@muibook.com"></mui-input>
               </mui-field>
@@ -416,8 +416,8 @@ class storyField extends HTMLElement {
         >
           <mui-v-stack slot="body" space="var(--space-400)">
             <mui-button
-              variant="secondary" 
-              data-toggle="select-field-error-toggle-xs,select-field-error-toggle-s,select-field-error-toggle-m,select-field-error-toggle-l" 
+              variant="secondary"
+              data-toggle="select-field-error-toggle-xs,select-field-error-toggle-s,select-field-error-toggle-m,select-field-error-toggle-l"
               data-message="Please select one option"
               data-variant="error"
             >
@@ -425,7 +425,7 @@ class storyField extends HTMLElement {
             </mui-button>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">x-small</mui-body>
+              <mui-body size="small" variant="secondary">x-small</mui-body>
               <mui-field id="select-field-error-toggle-xs" label="Brand" size="x-small">
                 <mui-select
                     options='[
@@ -439,7 +439,7 @@ class storyField extends HTMLElement {
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">small</mui-body>
+              <mui-body size="small" variant="secondary">small</mui-body>
               <mui-field id="select-field-error-toggle-s" label="Brand" size="small">
                 <mui-select
                     options='[
@@ -453,7 +453,7 @@ class storyField extends HTMLElement {
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">medium</mui-body>
+              <mui-body size="small" variant="secondary">medium</mui-body>
               <mui-field id="select-field-error-toggle-m" label="Brand" size="medium">
                 <mui-select
                     options='[
@@ -467,7 +467,7 @@ class storyField extends HTMLElement {
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
-              <mui-body size="small" variant="optional">large</mui-body>
+              <mui-body size="small" variant="secondary">large</mui-body>
               <mui-field id="select-field-error-toggle-l" label="Brand" size="large">
                 <mui-select
                     options='[
@@ -515,8 +515,8 @@ class storyField extends HTMLElement {
         </story-card>
 
 
-        <story-card 
-          title="Input & Select: Error w/ Message" 
+        <story-card
+          title="Input & Select: Error w/ Message"
           description="The form logic will inject the error message onto the field component and render"
           usage="
             Add input is the primary element, so this item should have validation|||
@@ -529,10 +529,10 @@ class storyField extends HTMLElement {
         >
           <!-- Change here: remove onclick, add data-toggle attribute -->
           <mui-button
-            variant="secondary" 
-            style="margin-bottom: var(--space-500)" 
-            slot="body" 
-            data-toggle="field-input-select-error-toggle" 
+            variant="secondary"
+            style="margin-bottom: var(--space-500)"
+            slot="body"
+            data-toggle="field-input-select-error-toggle"
             data-message="Enter an amount to transfer"
             data-variant="error"
           >
@@ -589,7 +589,7 @@ class storyField extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         attrs-reference='${attrsReference}'
@@ -598,7 +598,7 @@ class storyField extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-field"]'>
         ${stories}
       </story-template>

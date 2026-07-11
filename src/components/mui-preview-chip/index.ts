@@ -8,7 +8,7 @@ import "../mui-spinner";
 import "../mui-stack/vstack";
 import { getPartMap } from "../../utils/part-map";
 
-class MuiPromptPreview extends HTMLElement {
+class MuiPreviewChip extends HTMLElement {
   static get observedAttributes() {
     return [
       "value",
@@ -58,7 +58,7 @@ class MuiPromptPreview extends HTMLElement {
   private onOpenPreview = (event: Event) => {
     event.preventDefault();
     this.dispatchEvent(
-      new CustomEvent("prompt-preview-open", {
+      new CustomEvent("preview-chip-open", {
         detail: {
           id: this.id || "",
           value: this.getAttribute("value") || "",
@@ -214,9 +214,9 @@ class MuiPromptPreview extends HTMLElement {
   private applyAnimationDelayOffset() {
     const parent = this.parentElement;
     if (!parent) return;
-    const siblings = Array.from(parent.querySelectorAll("mui-prompt-preview"));
+    const siblings = Array.from(parent.querySelectorAll("mui-preview-chip"));
     const index = Math.max(0, siblings.indexOf(this));
-    this.style.setProperty("--prompt-preview-sheen-delay", `${index * 220}ms`);
+    this.style.setProperty("--preview-chip-sheen-delay", `${index * 220}ms`);
   }
 
   render() {
@@ -226,7 +226,7 @@ class MuiPromptPreview extends HTMLElement {
     const snippet = value.trim() || "Paste long content to preview it here.";
     const badge = this.getBadge(value);
     const partMap = getPartMap("text", "spacing", "layout", "visual");
-    const accent = this.getAttribute("accent") || "var(--prompt-preview-accent, var(--surface-elevated-200))";
+    const accent = this.getAttribute("accent") || "var(--preview-chip-accent, var(--surface-elevated-200))";
     const bgImage = this.getAttribute("bg-image") || "";
     const imageTint = this.getAttribute("image-tint") || accent;
     const glowTone = bgImage ? imageTint : accent;
@@ -262,33 +262,33 @@ class MuiPromptPreview extends HTMLElement {
       : `
             radial-gradient(
               circle at 12% 18%,
-              color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-100), transparent) 0 14%,
+              color-mix(in srgb, ${accent} var(--preview-chip-accent-mix-100), transparent) 0 14%,
               transparent 46%
             ),
             radial-gradient(
               circle at 82% 22%,
-              color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-200), transparent) 0 11%,
+              color-mix(in srgb, ${accent} var(--preview-chip-accent-mix-200), transparent) 0 11%,
               transparent 42%
             ),
             radial-gradient(
               circle at 34% 76%,
-              color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-300), transparent) 0 12%,
+              color-mix(in srgb, ${accent} var(--preview-chip-accent-mix-300), transparent) 0 12%,
               transparent 44%
             ),
             radial-gradient(
               circle at 74% 70%,
-              color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-400), transparent) 0 9%,
+              color-mix(in srgb, ${accent} var(--preview-chip-accent-mix-400), transparent) 0 9%,
               transparent 40%
             ),
             linear-gradient(
               180deg,
-              color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-400), transparent) 0%,
-              color-mix(in srgb, ${accent} var(--prompt-preview-accent-mix-500), transparent) 30%,
+              color-mix(in srgb, ${accent} var(--preview-chip-accent-mix-400), transparent) 0%,
+              color-mix(in srgb, ${accent} var(--preview-chip-accent-mix-500), transparent) 30%,
               transparent 100%
             ),
             linear-gradient(
-              var(--prompt-preview-background),
-              var(--prompt-preview-background)
+              var(--preview-chip-background),
+              var(--preview-chip-background)
             )
       `;
     const boxClasses = `box${bgImage ? " has-image" : ""}${isOverlayVariant ? " variant-overlay" : ""}${isInverted ? " inverted" : ""}`;
@@ -325,10 +325,10 @@ class MuiPromptPreview extends HTMLElement {
           padding: var(--space-200);
           display: flex;
           flex-direction: column;
-          --prompt-preview-text-color: var(--text-color);
-          --prompt-preview-top-shade-start-active: var(--prompt-preview-top-shade-start);
-          --prompt-preview-top-shade-end-active: var(--prompt-preview-top-shade-end);
-          color: var(--prompt-preview-text-color);
+          --preview-chip-text-color: var(--text-color);
+          --preview-chip-top-shade-start-active: var(--preview-chip-top-shade-start);
+          --preview-chip-top-shade-end-active: var(--preview-chip-top-shade-end);
+          color: var(--preview-chip-text-color);
         }
         .box.loading .inner,
         .box.loading mui-badge,
@@ -355,22 +355,22 @@ class MuiPromptPreview extends HTMLElement {
         .box.variant-overlay,
         .box.has-image,
         .box.inverted {
-          --prompt-preview-text-color: var(--white);
-          --prompt-preview-top-shade-start-active: var(--prompt-preview-top-shade-start-overlay);
-          --prompt-preview-top-shade-end-active: var(--prompt-preview-top-shade-end-overlay);
+          --preview-chip-text-color: var(--white);
+          --preview-chip-top-shade-start-active: var(--preview-chip-top-shade-start-overlay);
+          --preview-chip-top-shade-end-active: var(--preview-chip-top-shade-end-overlay);
         }
         .top-shade {
           position: absolute;
           top: 0;
           right: 0;
           left: 0;
-          height: var(--prompt-preview-top-shade-height);
+          height: var(--preview-chip-top-shade-height);
           pointer-events: none;
           z-index: 1;
           background: linear-gradient(
             180deg,
-            var(--prompt-preview-top-shade-start-active) 0%,
-            var(--prompt-preview-top-shade-end-active) 100%
+            var(--preview-chip-top-shade-start-active) 0%,
+            var(--preview-chip-top-shade-end-active) 100%
           );
         }
         .box::before,
@@ -391,13 +391,13 @@ class MuiPromptPreview extends HTMLElement {
           filter: blur(var(--space-050));
         }
         .box.animated::before {
-          animation: previewPulse 2400ms ease-in-out var(--prompt-preview-iterations);
+          animation: previewPulse 2400ms ease-in-out var(--preview-chip-iterations);
         }
         .box.animated::after {
-          animation: previewPulse 3000ms ease-in-out var(--prompt-preview-iterations) reverse;
+          animation: previewPulse 3000ms ease-in-out var(--preview-chip-iterations) reverse;
         }
         .box.animated .snippet {
-          animation: previewSnippetPulse 2600ms ease-in-out var(--prompt-preview-iterations);
+          animation: previewSnippetPulse 2600ms ease-in-out var(--preview-chip-iterations);
         }
         .box.animated:not(.has-image)::before,
         .box.animated:not(.has-image)::after {
@@ -423,8 +423,8 @@ class MuiPromptPreview extends HTMLElement {
             transparent 100%
           );
           transform: translateX(-120%);
-          animation: previewScanline 3600ms cubic-bezier(0.22, 1, 0.36, 1) var(--prompt-preview-iterations);
-          animation-delay: var(--prompt-preview-sheen-delay, 0ms);
+          animation: previewScanline 3600ms cubic-bezier(0.22, 1, 0.36, 1) var(--preview-chip-iterations);
+          animation-delay: var(--preview-chip-sheen-delay, 0ms);
           opacity: 0.16;
         }
         .box.animated:not(.has-image) .scanline {
@@ -484,18 +484,18 @@ class MuiPromptPreview extends HTMLElement {
           transform: translateY(0);
         }
         .dismiss-secondary::part(background) {
-          background: var(--prompt-preview-dismiss-secondary-background);
+          background: var(--preview-chip-dismiss-secondary-background);
         }
         .dismiss-secondary:hover::part(background),
         .dismiss-secondary:focus-visible::part(background) {
-          background: var(--prompt-preview-dismiss-secondary-background-hover);
+          background: var(--preview-chip-dismiss-secondary-background-hover);
         }
         .dismiss-secondary::part(border) {
-          border: var(--prompt-preview-dismiss-secondary-border);
+          border: var(--preview-chip-dismiss-secondary-border);
         }
         .dismiss-secondary:hover::part(border),
         .dismiss-secondary:focus-visible::part(border) {
-          border: var(--prompt-preview-dismiss-secondary-border-hover);
+          border: var(--preview-chip-dismiss-secondary-border-hover);
         }
         .dismiss-action::part(outline) {
           outline-width: var(--stroke-size-200);
@@ -530,7 +530,7 @@ class MuiPromptPreview extends HTMLElement {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          color: var(--prompt-preview-text-color);
+          color: var(--preview-chip-text-color);
         }
 
         .snippet {
@@ -542,7 +542,7 @@ class MuiPromptPreview extends HTMLElement {
           white-space: normal;
           overflow-wrap: anywhere;
           word-break: break-word;
-          color: color-mix(in srgb, var(--prompt-preview-text-color) 84%, transparent 16%);
+          color: color-mix(in srgb, var(--preview-chip-text-color) 84%, transparent 16%);
         }
         .snippet-media-only {
           display: inline-flex;
@@ -575,11 +575,11 @@ class MuiPromptPreview extends HTMLElement {
 
 
         .box.inverted .snippet {
-          color: color-mix(in srgb, var(--prompt-preview-text-color) 88%, transparent 12%);
+          color: color-mix(in srgb, var(--preview-chip-text-color) 88%, transparent 12%);
         }
       </style>
 
-      <div class="${boxClasses}${animated ? " animated" : ""}${isLoading ? " loading" : ""}" part="${partMap}" style="--prompt-preview-iterations: ${animationIterations};" ${isLoading ? 'aria-busy="true"' : ""}>
+      <div class="${boxClasses}${animated ? " animated" : ""}${isLoading ? " loading" : ""}" part="${partMap}" style="--preview-chip-iterations: ${animationIterations};" ${isLoading ? 'aria-busy="true"' : ""}>
         <span class="top-shade"></span>
         <span class="scanline"></span>
         <mui-button class="${dismissClass}" icon-only size="xx-small" variant="${dismissVariant}" aria-label="Dismiss preview">
@@ -591,7 +591,7 @@ class MuiPromptPreview extends HTMLElement {
             textVisible
               ? previewHasImageUrl && !bgImage
                 ? `<img class="snippet-image" src="${safePreviewUrl}" alt="${this.escapeHtml(badge)} preview image" />`
-                : `<mui-body class="snippet" size="x-small" variant="optional">${
+                : `<mui-body class="snippet" size="x-small" variant="secondary">${
                     previewUrl
                       ? `${
                           badge === "VIDEO"
@@ -635,6 +635,6 @@ class MuiPromptPreview extends HTMLElement {
   }
 }
 
-if (!customElements.get("mui-prompt-preview")) {
-  customElements.define("mui-prompt-preview", MuiPromptPreview);
+if (!customElements.get("mui-preview-chip")) {
+  customElements.define("mui-preview-chip", MuiPreviewChip);
 }

@@ -103,7 +103,7 @@ class storyRule extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -112,7 +112,7 @@ class storyRule extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
         attrs-reference='${attrsReference}'
-      
+
         imports='["@muibook/components/mui-rule"]'>
         ${stories}
       </story-template>

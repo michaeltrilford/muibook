@@ -40,7 +40,7 @@ class storySlat extends HTMLElement {
 
         <story-card
           id="default"
-          title="Default" 
+          title="Default"
           description="Slats offer flexibility to surface key content and support custom layouts, or stacking."
           usage="Bring your own padding or margin."
           usageLink="https://guides.muibook.com/slat">
@@ -51,7 +51,7 @@ class storySlat extends HTMLElement {
               <mui-body width="20px">Body</mui-body>
             </mui-h-stack>
           </mui-slat>
-          
+
           <story-code-block slot="footer" scrollable>
             &lt;mui-slat&gt;
             <br />
@@ -70,7 +70,7 @@ class storySlat extends HTMLElement {
 
         <story-card
           id="header"
-          title="Header" 
+          title="Header"
           description="Used at the top of a list or repeatable layout to label or introduce the content below."
           usage="Use with Row and Action variants where required||| Use heading size of 6 and choose the appropriate level for accessibility."
           usageLink="https://guides.muibook.com/slat">
@@ -81,7 +81,7 @@ class storySlat extends HTMLElement {
               <mui-body size="6" level="4">End slot</mui-body>
             </mui-h-stack>
           </mui-slat>
-          
+
           <story-code-block slot="footer" scrollable>
             &lt;mui-slat variant="header"&gt;
             <br />
@@ -100,7 +100,7 @@ class storySlat extends HTMLElement {
 
         <story-card
           id="row"
-          title="Row" 
+          title="Row"
           description="The default variant, used to display individual items in a list or repeatable layout."
           usage="Use with Header and Action variants where required."
           usageLink="https://guides.muibook.com/slat">
@@ -115,7 +115,7 @@ class storySlat extends HTMLElement {
               <mui-body size="small">-$8.12</mui-body>
             </mui-v-stack>
           </mui-slat>
-          
+
           <story-code-block slot="footer" scrollable>
             &lt;mui-slat variant="row"&gt;
             <br />
@@ -143,9 +143,9 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card 
+        <story-card
           id="action"
-          title="Action" 
+          title="Action"
           description="Used for interactive controls placed within or at the end of a list or repeatable layout."
           usage="Use with Row and Header variants where required."
           usageLink="https://guides.muibook.com/slat">
@@ -157,7 +157,7 @@ class storySlat extends HTMLElement {
             </mui-v-stack>
             <mui-badge slot="end">PDF</mui-badge>
           </mui-slat>
-          
+
           <story-code-block slot="footer" scrollable>
             &lt;mui-slat variant="action"&gt;
             <br />
@@ -187,11 +187,11 @@ class storySlat extends HTMLElement {
             <mui-h-stack slot="start" space="var(--space-100)" aligny="center" style="min-width: 0;">
               <mui-file-icon slot="icon" icon="javascript" size="small"></mui-file-icon>
               <mui-body size="x-small" weight="medium" style="text-wrap: nowrap;">file-name.ts</mui-body>
-              <mui-body variant="optional" size="x-small" weight="regular" truncate>src/components/very/long/path/to/some/nested/file-name.ts</mui-body>
+              <mui-body variant="secondary" size="x-small" weight="regular" truncate>src/components/very/long/path/to/some/nested/file-name.ts</mui-body>
             </mui-h-stack>
             <mui-h-stack slot="end" aligny="center" space="var(--space-100)">
-              <mui-body size="x-small" weight="regular" variant="success">+120</mui-body>
-              <mui-body size="x-small" weight="regular" variant="error">-34</mui-body>
+              <mui-body size="x-small" weight="regular" variant="positive">+120</mui-body>
+              <mui-body size="x-small" weight="regular" variant="attention">-34</mui-body>
             </mui-h-stack>
           </mui-slat>
 
@@ -202,15 +202,15 @@ class storySlat extends HTMLElement {
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="medium" style="text-wrap: nowrap;"&gt;file-name.ts&lt;/mui-body&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body variant="optional" size="x-small" weight="regular" truncate&gt;...&lt;/mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body variant="secondary" size="x-small" weight="regular" truncate&gt;...&lt;/mui-body&gt;
             <br />
             &nbsp;&nbsp;&lt;/mui-h-stack&gt;
             <br />
             &nbsp;&nbsp;&lt;mui-h-stack slot="end"&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body variant="success"&gt;+120&lt;/mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body variant="positive"&gt;+120&lt;/mui-body&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body variant="error"&gt;-34&lt;/mui-body&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body variant="attention"&gt;-34&lt;/mui-body&gt;
             <br />
             &nbsp;&nbsp;&lt;/mui-h-stack&gt;
             <br />
@@ -228,13 +228,13 @@ class storySlat extends HTMLElement {
             <mui-slat variant="action" col="1fr auto" space="var(--space-800)">
               <mui-v-stack space="0" slot="start">
                 <mui-body size="medium" weight="bold">Billing Details</mui-body>
-                <mui-body size="small" variant="optional">Manage invoice address and payment metadata</mui-body>
+                <mui-body size="small" variant="secondary">Manage invoice address and payment metadata</mui-body>
               </mui-v-stack>
             </mui-slat>
             <mui-slat variant="action" col="1fr auto" space="var(--space-800)">
               <mui-v-stack space="0" slot="start">
                 <mui-body size="medium" weight="bold">Team Seats</mui-body>
-                <mui-body size="small" variant="optional">Review active seats before renewal</mui-body>
+                <mui-body size="small" variant="secondary">Review active seats before renewal</mui-body>
               </mui-v-stack>
               <mui-status slot="end" size="small" variant="warning">Review</mui-status>
             </mui-slat>
@@ -277,9 +277,9 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card 
+        <story-card
           id="row-accessory"
-          title="Row: Accessory" 
+          title="Row: Accessory"
           description="Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout."
           usage="Use with Row and Header variants where required."
           usageLink="https://guides.muibook.com/slat">
@@ -301,7 +301,7 @@ class storySlat extends HTMLElement {
             </mui-v-stack>
 
           </mui-slat>
-          
+
           <story-code-block slot="footer" scrollable>
             &lt;mui-slat variant="row"&gt;
             <br />
@@ -335,9 +335,9 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card 
+        <story-card
           id="action-accessory"
-          title="Action: Accessory" 
+          title="Action: Accessory"
           description="Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout."
           usage="Use with Row and Header variants where required.|||When used inside a condensed card body, set radius='none' on action slats."
           usageLink="https://guides.muibook.com/slat">
@@ -382,7 +382,7 @@ class storySlat extends HTMLElement {
                     </mui-v-stack>
                   </mui-slat>
                 </mui-slat-group>
-              </mui-card-body>          
+              </mui-card-body>
             </mui-card>
 
             <mui-card>
@@ -405,11 +405,11 @@ class storySlat extends HTMLElement {
                     </mui-v-stack>
                   </mui-slat>
                 </mui-v-stack>
-              </mui-card-body>          
+              </mui-card-body>
             </mui-card>
 
           </mui-v-stack>
-          
+
           <story-code-block slot="footer" scrollable>
             // PAGE USE
             <br />
@@ -828,7 +828,7 @@ class storySlat extends HTMLElement {
                 </mui-slat>
               </mui-slat-group>
             </mui-card-body>
-            
+
           </mui-card>
 
           <story-code-block slot="footer" scrollable>
@@ -894,9 +894,9 @@ class storySlat extends HTMLElement {
         </story-card>
 
 
-        <story-card 
+        <story-card
           id="card-slat-group-divider"
-          title="Card: Slat Group Dividers" 
+          title="Card: Slat Group Dividers"
           description="When a mui-slat is placed directly inside mui-card-body, it aligns with the card heading to maintain consistent layout. Automatic styles are applied only when the slat variant is set to header, row, or action."
           usage="
             mui-slat-group is added within the mui-card-body to apply an offset for the slat items|||
@@ -959,7 +959,7 @@ class storySlat extends HTMLElement {
                 </mui-slat>
               </mui-slat-group>
             </mui-card-body>
-            
+
           </mui-card>
 
           <story-code-block slot="footer" scrollable>
@@ -1028,7 +1028,7 @@ class storySlat extends HTMLElement {
 
         <story-card
           id="card-slat-group-accordion"
-          title="Card: Slat Group & Accordion" 
+          title="Card: Slat Group & Accordion"
           description="When a Slat Group is used within an accordion that is nested within a card, the slat group will automatically append the usage='card' attribute, to ensure the slat styles are correctly used in this situation. Automatic styles are applied only when the slat variant is set to header, row, or action."
         >
             <mui-card slot="body">
@@ -1226,9 +1226,9 @@ class storySlat extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
+        <story-card
           id="card-condensed"
-          title="Card: Condensed" 
+          title="Card: Condensed"
           description="For tighter layouts on desktop or <mui-link size='small' href='/responsive'>mobile responsive views</mui-link>, apply condensed boolean to the card-body. Slats are already condensed, so edge-to-edge layouts work well as the viewport narrows. Again, the Slat is intentionally flexible — good design decisions are still important."
           usage="Use radius='none' on action slats inside condensed card body layouts."
           usageLink="https://guides.muibook.com/slat"
@@ -1293,7 +1293,7 @@ class storySlat extends HTMLElement {
               </mui-v-stack>
             </mui-card-body>
           </mui-card>
-          
+
           <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br />
             &nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br />
@@ -1355,7 +1355,7 @@ class storySlat extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -1364,7 +1364,7 @@ class storySlat extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
         attrs-reference='${attrsReference}'
-      
+
         imports='["@muibook/components/mui-slat"]'>
 
         <story-quicklinks

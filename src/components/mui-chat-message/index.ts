@@ -1,6 +1,6 @@
 import "../mui-body";
 
-class MuiPromptMessage extends HTMLElement {
+class MuiChatMessage extends HTMLElement {
   private avatarSlotEl: HTMLSlotElement | null = null;
   private headerSlotEl: HTMLSlotElement | null = null;
   private contentSlotEl: HTMLSlotElement | null = null;
@@ -62,7 +62,7 @@ class MuiPromptMessage extends HTMLElement {
           margin-inline-start: auto;
         }
         :host([width="medium"]) {
-          width: min(100%, var(--prompt-message-width-medium, 62rem));
+          width: min(100%, var(--chat-message-width-medium, 62rem));
         }
         :host([width="content"]) {
           width: fit-content;
@@ -104,7 +104,7 @@ class MuiPromptMessage extends HTMLElement {
         }
         .body {
           display: grid;
-          gap: var(--prompt-message-body-space, var(--space-500));
+          gap: var(--chat-message-body-space, var(--space-500));
           min-width: 0;
           text-align: start;
         }
@@ -243,6 +243,6 @@ class MuiPromptMessage extends HTMLElement {
   }
 }
 
-if (!customElements.get("mui-prompt-message")) {
-  customElements.define("mui-prompt-message", MuiPromptMessage);
+if (!customElements.get("mui-chat-message")) {
+  customElements.define("mui-chat-message", MuiChatMessage);
 }

@@ -30,16 +30,16 @@ class storyAvatar extends HTMLElement {
         padding: var(--space-100);
         box-sizing: border-box;
         background: var(--surface);
-      } 
+      }
 
     `;
 
     const stories = /*html*/ `
       <story-api-types tag="mui-avatar" title="Avatar"></story-api-types>
 
-      <story-card 
-        title="Image" 
-        description="" 
+      <story-card
+        title="Image"
+        description=""
         usage=""
         usageLink=""
         accessibility=""
@@ -120,9 +120,9 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Icon" 
-        description="" 
+      <story-card
+        title="Icon"
+        description=""
         usage=""
         usageLink=""
         accessibility=""
@@ -169,9 +169,9 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Size" 
-        description="" 
+      <story-card
+        title="Size"
+        description=""
         usage=""
         usageLink=""
         accessibility=""
@@ -197,7 +197,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar size="medium" label="Mike Trilford"></mui-avatar>
               <mui-avatar size="large" label="Mike Trilford"></mui-avatar>
             </mui-h-stack>
-            
+
             <mui-h-stack alignY="end">
               <mui-avatar size="xxx-small" label="Mike Trilford">
                 <mui-icon-calendar size="large"></mui-icon-calendar>
@@ -233,7 +233,7 @@ class storyAvatar extends HTMLElement {
       </story-card>
 
       <story-card
-        title="Chip Avatars" 
+        title="Chip Avatars"
         description="When an Avatar is used within a Chip, it is set to xx-small so compact chips retain the 24px avatar footprint."
         usage=""
         usageLink=""
@@ -321,9 +321,9 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Background" 
-        description="Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes." 
+      <story-card
+        title="Background"
+        description="Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes."
         usage=""
         usageLink=""
         accessibility=""
@@ -358,9 +358,9 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Background Colors" 
-        description="Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes." 
+      <story-card
+        title="Background Colors"
+        description="Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes."
         usage=""
         usageLink=""
         accessibility=""
@@ -376,9 +376,9 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Buttons" 
-        description="Buttons can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size." 
+      <story-card
+        title="Buttons"
+        description="Buttons can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size."
         usage=""
         usageLink=""
         accessibility=""
@@ -390,7 +390,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button variant="secondary" size="x-small" class="group-item" aria-label="History">        
+            <mui-button variant="secondary" size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
@@ -398,11 +398,11 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button disabled variant="tertiary" size="x-small" class="group-item" aria-label="History">        
+            <mui-button disabled variant="tertiary" size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button variant="tertiary" size="x-small" class="group-item" aria-label="History">        
+            <mui-button variant="tertiary" size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -415,7 +415,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button variant="secondary" size="small" class="group-item" aria-label="History">        
+            <mui-button variant="secondary" size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
@@ -423,11 +423,11 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button disabled variant="tertiary" size="small" class="group-item" aria-label="History">        
+            <mui-button disabled variant="tertiary" size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button variant="tertiary" size="small" class="group-item" aria-label="History">        
+            <mui-button variant="tertiary" size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -440,7 +440,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button variant="secondary" size="medium" class="group-item" aria-label="History">        
+            <mui-button variant="secondary" size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
@@ -448,11 +448,11 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button disabled variant="tertiary" size="medium" class="group-item" aria-label="History">        
+            <mui-button disabled variant="tertiary" size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button variant="tertiary" size="medium" class="group-item" aria-label="History">        
+            <mui-button variant="tertiary" size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -465,7 +465,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button variant="secondary" size="large" class="group-item" aria-label="History">        
+            <mui-button variant="secondary" size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
@@ -473,11 +473,11 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button disabled variant="tertiary" size="large" class="group-item" aria-label="History">        
+            <mui-button disabled variant="tertiary" size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-button>
-            <mui-button variant="tertiary" size="large" class="group-item" aria-label="History">        
+            <mui-button variant="tertiary" size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -507,62 +507,75 @@ class storyAvatar extends HTMLElement {
       >
         <div slot="body" class="canvas">
           <mui-h-stack alignY="center">
-            <mui-dropdown position="left">
+            <mui-dropdown position="left" size="medium">
               <mui-button slot="action" aria-label="Open compact Julie profile menu">
                 <mui-avatar size="xx-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               </mui-button>
-              <mui-button variant="tertiary">Profile</mui-button>
-              <mui-button variant="tertiary">Settings</mui-button>
-              <mui-button variant="tertiary">Sign out</mui-button>
+              <mui-menu>
+                <mui-button variant="tertiary">Profile</mui-button>
+                <mui-button variant="tertiary">Settings</mui-button>
+                <mui-button variant="tertiary">Sign out</mui-button>
+              </mui-menu>
             </mui-dropdown>
 
-            <mui-dropdown position="left">
+            <mui-dropdown position="left" size="medium">
               <mui-button slot="action" aria-label="Open Mike profile menu">
                 <mui-avatar size="x-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               </mui-button>
-              <mui-button variant="tertiary">Profile</mui-button>
-              <mui-button variant="tertiary">Settings</mui-button>
-              <mui-button variant="tertiary">Sign out</mui-button>
+              <mui-menu>
+                <mui-button variant="tertiary">Profile</mui-button>
+                <mui-button variant="tertiary">Settings</mui-button>
+                <mui-button variant="tertiary">Sign out</mui-button>
+              </mui-menu>
             </mui-dropdown>
 
-            <mui-dropdown position="left">
+            <mui-dropdown position="left" size="medium">
               <mui-button slot="action" aria-label="Open Mike profile menu">
                 <mui-avatar size="small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               </mui-button>
-              <mui-button variant="tertiary">Profile</mui-button>
-              <mui-button variant="tertiary">Billing</mui-button>
-              <mui-button variant="tertiary">Sign out</mui-button>
+              <mui-menu>
+                <mui-button variant="tertiary">Profile</mui-button>
+                <mui-button variant="tertiary">Billing</mui-button>
+                <mui-button variant="tertiary">Sign out</mui-button>
+              </mui-menu>
             </mui-dropdown>
 
-            <mui-dropdown position="left">
+            <mui-dropdown position="left" size="medium">
               <mui-button slot="action" aria-label="Open Mike profile menu">
                 <mui-avatar size="medium" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               </mui-button>
-              <mui-button variant="tertiary">Profile</mui-button>
-              <mui-button variant="tertiary">Notifications</mui-button>
-              <mui-button variant="tertiary">Sign out</mui-button>
+              <mui-menu>
+                <mui-button variant="tertiary">Profile</mui-button>
+                <mui-button variant="tertiary">Notifications</mui-button>
+                <mui-button variant="tertiary">Sign out</mui-button>
+              </mui-menu>
             </mui-dropdown>
 
-            <mui-dropdown position="left">
+            <mui-dropdown position="left" size="medium">
               <mui-button slot="action" aria-label="Open team calendar menu">
                 <mui-avatar size="large" label="Team calendar">
                   <mui-icon-calendar size="large"></mui-icon-calendar>
                 </mui-avatar>
               </mui-button>
-              <mui-button variant="tertiary">Calendar</mui-button>
-              <mui-button variant="tertiary">Availability</mui-button>
-              <mui-button variant="tertiary">Close</mui-button>
+              <mui-menu>
+                <mui-button variant="tertiary">Calendar</mui-button>
+                <mui-button variant="tertiary">Availability</mui-button>
+                <mui-button variant="tertiary">Close</mui-button>
+              </mui-menu>
             </mui-dropdown>
           </mui-h-stack>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown position=&quot;left&quot;&gt;<br />
+          &lt;mui-dropdown size=&quot;medium&quot; position=&quot;left&quot;&gt;<br />
           &nbsp;&nbsp;&lt;mui-button slot=&quot;action&quot; aria-label=&quot;Open Mike profile menu&quot;&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-avatar size=&quot;medium&quot; image=&quot;${MikeAvatar}&quot; label=&quot;Mike Trilford&quot;&gt;&lt;/mui-avatar&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br /><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Profile&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Settings&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Sign out&lt;/mui-button&gt;<br />
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
@@ -607,9 +620,9 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Links" 
-        description="Links can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size." 
+      <story-card
+        title="Links"
+        description="Links can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size."
         usage=""
         usageLink=""
         accessibility=""
@@ -621,7 +634,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford (Not recommended)
             </mui-link>
-            <mui-link size="x-small" class="group-item" aria-label="History">        
+            <mui-link size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
@@ -629,28 +642,28 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link size="x-small" class="group-item" aria-label="History">        
+            <mui-link size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link disabled size="x-small" class="group-item" aria-label="History">        
+            <mui-link disabled size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford (Not recommended)
             </mui-link>
-            <mui-link size="x-small" class="group-item" aria-label="History">        
+            <mui-link size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
               Hot Grill
             </mui-link>
           </mui-v-stack>
-        
+
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
             <mui-link size="small" class="group-item" aria-label="Library">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford (Not recommended)
             </mui-link>
-            <mui-link size="small" class="group-item" aria-label="History">        
+            <mui-link size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
@@ -658,15 +671,15 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link size="small" class="group-item" aria-label="History">        
+            <mui-link size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link disabled size="small" class="group-item" aria-label="History">        
+            <mui-link disabled size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford (Not recommended)
             </mui-link>
-            <mui-link size="small" class="group-item" aria-label="History">        
+            <mui-link size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -679,7 +692,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford (Not recommended)
             </mui-link>
-            <mui-link size="medium" class="group-item" aria-label="History">        
+            <mui-link size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
@@ -687,15 +700,15 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link size="medium" class="group-item" aria-label="History">        
+            <mui-link size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link disabled size="medium" class="group-item" aria-label="History">        
+            <mui-link disabled size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford (Not recommended)
             </mui-link>
-            <mui-link size="medium" class="group-item" aria-label="History">        
+            <mui-link size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -708,7 +721,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford (Not recommended)
             </mui-link>
-            <mui-link size="large" class="group-item" aria-label="History">        
+            <mui-link size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
@@ -716,15 +729,15 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link size="large" class="group-item" aria-label="History">        
+            <mui-link size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link disabled size="large" class="group-item" aria-label="History">        
+            <mui-link disabled size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford (Not recommended)
             </mui-link>
-            <mui-link size="large" class="group-item" aria-label="History">        
+            <mui-link size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -737,7 +750,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link variant="secondary" size="x-small" class="group-item" aria-label="History">        
+            <mui-link variant="secondary" size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
@@ -745,11 +758,11 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link disabled variant="tertiary" size="x-small" class="group-item" aria-label="History">        
+            <mui-link disabled variant="tertiary" size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link variant="tertiary" size="x-small" class="group-item" aria-label="History">        
+            <mui-link variant="tertiary" size="x-small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -762,7 +775,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link variant="secondary" size="small" class="group-item" aria-label="History">        
+            <mui-link variant="secondary" size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
@@ -770,11 +783,11 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link disabled variant="tertiary" size="small" class="group-item" aria-label="History">        
+            <mui-link disabled variant="tertiary" size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link variant="tertiary" size="small" class="group-item" aria-label="History">        
+            <mui-link variant="tertiary" size="small" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -787,7 +800,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link variant="secondary" size="medium" class="group-item" aria-label="History">        
+            <mui-link variant="secondary" size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
@@ -795,11 +808,11 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link disabled variant="tertiary" size="medium" class="group-item" aria-label="History">        
+            <mui-link disabled variant="tertiary" size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link variant="tertiary" size="medium" class="group-item" aria-label="History">        
+            <mui-link variant="tertiary" size="medium" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -812,7 +825,7 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link variant="secondary" size="large" class="group-item" aria-label="History">        
+            <mui-link variant="secondary" size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
@@ -820,11 +833,11 @@ class storyAvatar extends HTMLElement {
               <mui-avatar slot="before" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link disabled variant="tertiary" size="large" class="group-item" aria-label="History">        
+            <mui-link disabled variant="tertiary" size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Mike Trilford"></mui-avatar>
               Mike Trilford
             </mui-link>
-            <mui-link variant="tertiary" size="large" class="group-item" aria-label="History">        
+            <mui-link variant="tertiary" size="large" class="group-item" aria-label="History">
               <mui-avatar slot="before" label="Hot Grill">
                 <mui-icon-calendar></mui-icon-calendar>
               </mui-avatar>
@@ -845,9 +858,9 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Slat & Card Avatars" 
-        description="" 
+      <story-card
+        title="Slat & Card Avatars"
+        description=""
         usage=""
         usageLink=""
         accessibility=""
@@ -893,7 +906,7 @@ class storyAvatar extends HTMLElement {
                     </mui-v-stack>
                   </mui-slat>
                 </mui-slat-group>
-              </mui-card-body>          
+              </mui-card-body>
             </mui-card>
 
             <mui-slat variant="action">
@@ -932,7 +945,7 @@ class storyAvatar extends HTMLElement {
                     </mui-v-stack>
                   </mui-slat>
                 </mui-slat-group>
-              </mui-card-body>          
+              </mui-card-body>
             </mui-card>
 
           </mui-v-stack>
@@ -963,7 +976,7 @@ class storyAvatar extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-avatar", "@muibook/components/mui-avatar-group"]'>
         ${stories}
       </story-template>

@@ -62,7 +62,7 @@ class StoryFileIcon extends HTMLElement {
         (name) => /*html*/ `
           <div class="icon-tile" title="${name}">
             <mui-file-icon icon="${name}" decorative></mui-file-icon>
-            <mui-body class="icon-name" size="x-small" variant="optional">${name}</mui-body>
+            <mui-body class="icon-name" size="x-small" variant="secondary">${name}</mui-body>
           </div>
         `,
       )

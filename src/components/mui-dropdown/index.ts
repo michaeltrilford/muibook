@@ -1,3 +1,5 @@
+import "../mui-menu";
+
 class MuiDropdown extends HTMLElement {
   static openDropdown: MuiDropdown | null = null;
   private static portalStylesInjected = false;
@@ -192,7 +194,7 @@ class MuiDropdown extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["zindex", "position", "vertical-position", "persistent"];
+    return ["zindex", "position", "vertical-position", "persistent", "size"];
   }
 
   get persistent() {
@@ -208,6 +210,8 @@ class MuiDropdown extends HTMLElement {
     if ((name === "position" || name === "vertical-position") && this.menu) {
       this.adjustPosition();
     }
+
+    if (name === "size") this.syncSize();
   }
 
   constructor() {
@@ -216,6 +220,7 @@ class MuiDropdown extends HTMLElement {
   }
 
   connectedCallback() {
+    if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.render();
 
     // Get the dropdown menu container
@@ -238,26 +243,14 @@ class MuiDropdown extends HTMLElement {
     if (defaultSlot) {
       const updateButtons = () => {
         const optionNodes = defaultSlot.assignedElements({ flatten: true }) as HTMLElement[];
-        const optionItems = optionNodes.filter((el) => {
-          const tagName = el.tagName.toLowerCase();
-          return tagName === "mui-button" || tagName === "mui-link";
-        });
-
-        optionItems.forEach((item) => {
-          item.removeAttribute("dropdown-slot");
-          item.removeAttribute("dropdown-slot-first");
-          item.removeAttribute("dropdown-slot-last");
-        });
-
-        optionItems.forEach((item, i) => {
-          if (!item.hasAttribute("variant")) {
-            item.setAttribute("variant", "tertiary");
+        const optionItems = optionNodes.flatMap((el) => {
+          if (el.tagName.toLowerCase() === "mui-menu") {
+            return Array.from(el.querySelectorAll(":scope > mui-button, :scope > mui-link")) as HTMLElement[];
           }
-          item.setAttribute("dropdown-slot", "");
-
-          if (i === 0) item.setAttribute("dropdown-slot-first", "");
-          if (i === optionItems.length - 1) item.setAttribute("dropdown-slot-last", "");
-
+          const tagName = el.tagName.toLowerCase();
+          return tagName === "mui-button" || tagName === "mui-link" ? [el] : [];
+        });
+        optionItems.forEach((item) => {
           // click listener once
           if (!(item as any)._dropdownListenerAdded) {
             item.addEventListener("click", () => {
@@ -273,6 +266,7 @@ class MuiDropdown extends HTMLElement {
             (item as any)._dropdownListenerAdded = true;
           }
         });
+        this.syncSize();
       };
 
       defaultSlot.addEventListener("slotchange", updateButtons);
@@ -307,15 +301,30 @@ class MuiDropdown extends HTMLElement {
       this.button.setAttribute("aria-expanded", this.menu?.classList.contains("show") ? "true" : "false");
       this.button.addEventListener("click", this.toggleMenu);
       this.button.addEventListener("keydown", this.handleActionKeyDown);
+      this.syncSize();
     };
     actionSlot?.addEventListener("slotchange", syncActionTrigger);
     syncActionTrigger();
+    this.syncSize();
 
     document.addEventListener("click", this.closeMenu);
     document.addEventListener("keydown", this.handleKeyDown); // ESC listener
 
     window.addEventListener("resize", this.handleResize);
     window.addEventListener("scroll", this.handleScroll, true); // capture scroll on parents
+  }
+
+  private syncSize() {
+    const requestedSize = this.getAttribute("size");
+    const size = requestedSize && ["x-small", "small", "medium", "large"].includes(requestedSize) ? requestedSize : "medium";
+    if (requestedSize !== size) {
+      this.setAttribute("size", size);
+      return;
+    }
+    this.button?.setAttribute("size", size);
+    Array.from(this.children).forEach((child) => {
+      if (child.tagName.toLowerCase() === "mui-menu") child.setAttribute("size", size);
+    });
   }
 
   disconnectedCallback() {
@@ -405,7 +414,8 @@ class MuiDropdown extends HTMLElement {
   private portalItems() {
     const defaultSlot = this.shadowRoot?.querySelector("slot:not([name])") as HTMLSlotElement | null;
     const items = (defaultSlot?.assignedElements({ flatten: true }) || []) as HTMLElement[];
-    if (!items.length) return;
+    const menus = items.filter((item) => item.tagName.toLowerCase() === "mui-menu");
+    if (!menus.length) return;
 
     this.ensurePortalStyles();
     if (!this.portalMenu) {
@@ -446,8 +456,8 @@ class MuiDropdown extends HTMLElement {
     }
     this.syncPortalStyles();
 
-    this.portaledItems = items;
-    items.forEach((item) => {
+    this.portaledItems = menus;
+    menus.forEach((item) => {
       if (!this.originalNextSibling.has(item)) {
         this.originalNextSibling.set(item, item.nextSibling);
       }
@@ -496,27 +506,16 @@ class MuiDropdown extends HTMLElement {
         opacity: 0;
         transform: translateY(-0.25rem);
         transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
-        min-width: var(--dropdown-min-width, 15rem);
         position: fixed;
         z-index: 1;
         box-sizing: border-box;
-        border: var(--border-thin);
-        background: var(--dropdown-background);
-        border-color: var(--dropdown-border-color);
-        box-shadow: 0 var(--space-100) var(--space-200) var(--dropdown-shadow-color);
-        border-radius: var(--dropdown-radius);
-        padding: 1px;
       }
       .mui-dropdown-portal.show {
         visibility: visible;
         opacity: 1;
         transform: translateY(0);
       }
-      .mui-dropdown-portal .inner {
-        display: flex;
-        flex-direction: column;
-        gap: 1px;
-      }
+      .mui-dropdown-portal .inner { display: block; }
       .mui-dropdown-portal mui-button,
       .mui-dropdown-portal mui-link {
         width: 100%;
@@ -536,11 +535,11 @@ class MuiDropdown extends HTMLElement {
 
     const styles = window.getComputedStyle(this);
     [
-      "--dropdown-background",
-      "--dropdown-border-color",
-      "--dropdown-min-width",
-      "--dropdown-radius",
-      "--dropdown-shadow-color",
+      "--menu-background",
+      "--menu-border-color",
+      "--menu-min-width",
+      "--menu-radius",
+      "--menu-shadow-color",
       "--action-tertiary-background",
       "--action-tertiary-background-hover",
       "--action-tertiary-background-focus",
@@ -647,17 +646,9 @@ class MuiDropdown extends HTMLElement {
           transform: translateY(-0.25rem);
           transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
           /* End */
-          min-width: var(--dropdown-min-width, 15rem);
           position: absolute;
           z-index: 1;
           box-sizing: border-box;
-          border: var(--border-thin);
-          /* Unique Styles */
-          background: var(--dropdown-background);
-          border-color: var(--dropdown-border-color);
-          box-shadow: 0 var(--space-100) var(--space-200) var(--dropdown-shadow-color);
-          border-radius: var(--dropdown-radius);
-          padding: 1px;
         }
 
         .dropdown-menu.show {
@@ -678,11 +669,7 @@ class MuiDropdown extends HTMLElement {
           z-index: 1;
         }
 
-        .inner {
-          display: flex;
-          flex-direction: column;
-          gap: 1px;
-        }
+        .inner { display: block; }
 
       </style>
 

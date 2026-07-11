@@ -129,7 +129,7 @@ class MuiRadioGroup extends HTMLElement {
           border: 0;
         }
         .optional {
-          color: var(--text-color-optional);
+          color: var(--text-color-secondary);
           display: inline-flex;
           align-items: center;
           gap: var(--space-050);

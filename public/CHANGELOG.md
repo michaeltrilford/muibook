@@ -1,5 +1,44 @@
 ## Header [Start]
 
+## v21.0.0
+
+_Status: WIP_
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/21.0.0)
+
+## Header [End]
+
+### Added
+
+- Added `mui-menu` as the reusable visual surface for Dropdown menus and standalone overlay composition exploration. `mui-dropdown` continues to own portal positioning, focus, and dismissal behaviour.
+- Added coordinated `x-small | small | medium | large` sizing to `mui-dropdown` and `mui-menu`; Dropdown enforces the size on its trigger and Menu, while Menu enforces it on direct button and link actions and owns their joined corner treatment.
+- Added `x-small | small | medium | large` sizing to `mui-range-input`, retaining the previous thumb and track dimensions as medium. Date Picker, Time Picker, and Range Input stories now demonstrate every supported size.
+- Direct `mui-body` content inside `mui-menu` now inherits the Menu size, enforces `weight="bold"`, and receives `var(--action-padding)` through its spacing part.
+- Direct Input, Select, Textarea, Date Picker, Time Picker, Search Input, Range Input, and Chip Input controls inside `mui-menu` now inherit Menu size and receive control-only inset padding: `var(--space-050)` for x-small/small, `var(--space-100)` for medium, and `var(--space-200)` for large. Menu container padding remains unchanged.
+- `mui-menu` no longer applies first-action top corner radius when a direct `mui-body` heading precedes that action.
+- Menu surfaces, Menu edge actions, and Input compositions now use size-aware form radius caps. Before/after Buttons, Links, Add Ons, and Chips preserve square joined corners while exposed corners receive the matching Menu inset radius.
+- Renamed `mui-prompt-message` to `mui-chat-message` and moved its component export, story, documentation, and route to Chat Message.
+- Renamed `mui-prompt-preview` to `mui-preview-chip`, including its `preview-chip-open` event and component-scoped CSS custom properties.
+- Renamed `mui-prompt-toggle` to `mui-action-toggle` across the component export, stories, documentation, and Prompt compositions.
+
+### Breaking Changes
+
+- Removed the `mui-prompt-message`, `mui-prompt-preview`, and `mui-prompt-toggle` component names and package exports. Use `mui-chat-message`, `mui-preview-chip`, and `mui-action-toggle` respectively.
+- Renamed `mui-body` variants: `optional` to `secondary`, `success` to `positive`, and `error` to `attention`. The old variant values are no longer supported.
+- Renamed semantic text tokens: `--text-color-optional` to `--text-color-secondary`, `--text-color-success` to `--text-color-positive`, and `--text-color-error` to `--text-color-attention`.
+- `mui-dropdown` now requires a direct `mui-menu` child. Direct button/link options and the `dropdown-slot`, `dropdown-slot-first`, and `dropdown-slot-last` internal contracts have been removed; Menu now owns action normalization through `menu-slot*` markers.
+
+### Fixed
+
+- `mui-search-input` now reserves controlled `open` behaviour for populated `after` slot compositions, normalizes its Cancel action and direct Tab Bar to the input size, and removes meaningless Cancel state from standalone search fields.
+- `mui-range-input` now uses a theme-aware solid thumb, custom filled track, correctly centered value bubble, and stable value updates that do not replace the native input during an active drag.
+- `mui-button` and `mui-link` now enforce their composed File Icon and Switch sizes. Activating a Button row also toggles its direct slotted Switch while preserving direct Switch interaction.
+- Date Picker and Time Picker now pass their resolved size to the internal Dropdown instead of forcing medium, preserving the correct Input and action radius at every Menu size.
+
+---
+
+## Header [Start]
+
 ## v20.2.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/20.2.0)

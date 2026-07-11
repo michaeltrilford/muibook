@@ -14,7 +14,7 @@ import "../mui-icons/toggle";
 import "../mui-icons/up-arrow";
 import "../mui-icons/stop";
 import "../mui-icons/attention";
-import "../mui-prompt-toggle";
+import "../mui-action-toggle";
 
 type PromptItem = {
   kind: "text" | "image" | "video" | "audio" | "file";
@@ -372,7 +372,7 @@ class MuiPrompt extends HTMLElement {
       const nodes: HTMLElement[] = [root, ...(Array.from(root.querySelectorAll("*")) as HTMLElement[])];
       nodes.forEach((el) => {
         const tag = el.tagName.toLowerCase();
-        const isToggleWrapper = tag === "mui-prompt-toggle";
+        const isToggleWrapper = tag === "mui-action-toggle";
         const isToggle = el.hasAttribute("context-toggle");
         const isActive =
           el.hasAttribute("context-active") ||
@@ -852,7 +852,7 @@ class MuiPrompt extends HTMLElement {
       });
     }
     defaultSubmit?.addEventListener("click", this.onDefaultSubmitClick);
-    this.addEventListener("prompt-preview-open", this.onPreviewOpen as EventListener);
+    this.addEventListener("preview-chip-open", this.onPreviewOpen as EventListener);
     this.addEventListener("click", this.onContextToggleClick);
     this.addEventListener("dismiss", this.onContextChipDismiss as EventListener);
     this.syncErrorVisibility();
@@ -874,7 +874,7 @@ class MuiPrompt extends HTMLElement {
     defaultSubmit?.removeEventListener("click", this.onDefaultSubmitClick);
     actionSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
     actionRightSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
-    this.removeEventListener("prompt-preview-open", this.onPreviewOpen as EventListener);
+    this.removeEventListener("preview-chip-open", this.onPreviewOpen as EventListener);
     this.removeEventListener("click", this.onContextToggleClick);
     this.removeEventListener("dismiss", this.onContextChipDismiss as EventListener);
     if (this.triggerEl) {
@@ -923,7 +923,7 @@ class MuiPrompt extends HTMLElement {
     if (this.getAttribute("preview-auto-clickable") === "false") return;
     const previews = (assigned || this.previewSlotEl?.assignedElements({ flatten: true }) || []) as HTMLElement[];
     previews.forEach((el) => {
-      if (el.tagName.toLowerCase() !== "mui-prompt-preview") return;
+      if (el.tagName.toLowerCase() !== "mui-preview-chip") return;
       if (el.getAttribute("clickable") === "false") return;
       el.setAttribute("clickable", "");
     });
@@ -935,14 +935,14 @@ class MuiPrompt extends HTMLElement {
     const previews = (assigned || this.previewSlotEl?.assignedElements({ flatten: true }) || []) as HTMLElement[];
     if (!mode) {
       previews.forEach((el) => {
-        if (el.tagName.toLowerCase() !== "mui-prompt-preview") return;
+        if (el.tagName.toLowerCase() !== "mui-preview-chip") return;
         el.removeAttribute("loading");
       });
       return;
     }
     const shouldLoad = mode === "auto" ? this.hasAttribute("loading") : true;
     previews.forEach((el) => {
-      if (el.tagName.toLowerCase() !== "mui-prompt-preview") return;
+      if (el.tagName.toLowerCase() !== "mui-preview-chip") return;
       if (shouldLoad) {
         el.setAttribute("loading", "");
       } else {
@@ -1376,7 +1376,7 @@ class MuiPrompt extends HTMLElement {
       <style>
         :host {
           display: block;
-          --prompt-preview-dialog-border: ${previewDialogBorder};
+          --preview-chip-dialog-border: ${previewDialogBorder};
           --prompt-color-top-start-source: ${startSource};
           --prompt-color-top-mid-source: ${midSource};
           --prompt-color-top-end-source: ${endSource};
@@ -1832,7 +1832,7 @@ class MuiPrompt extends HTMLElement {
           padding-top:  var(--stroke-size-200);
           padding-bottom:  var(--stroke-size-200);
           scrollbar-width: thin;
-          scrollbar-color: color-mix(in srgb, var(--text-color-optional) 65%, transparent) transparent;
+          scrollbar-color: color-mix(in srgb, var(--text-color-secondary) 65%, transparent) transparent;
         }
         .preview-row::-webkit-scrollbar {
           height: var(--space-100);
@@ -1841,13 +1841,13 @@ class MuiPrompt extends HTMLElement {
           background: transparent;
         }
         .preview-row::-webkit-scrollbar-thumb {
-          background: color-mix(in srgb, var(--text-color-optional) 65%, transparent);
+          background: color-mix(in srgb, var(--text-color-secondary) 65%, transparent);
           border-radius: var(--radius-300);
           border: var(--stroke-size-100) solid transparent;
           background-clip: padding-box;
         }
         .preview-row::-webkit-scrollbar-thumb:hover {
-          background: color-mix(in srgb, var(--text-color-optional) 85%, transparent);
+          background: color-mix(in srgb, var(--text-color-secondary) 85%, transparent);
           background-clip: padding-box;
         }
         :host([preview-scrollbar="hidden"]) .preview-row {
@@ -2058,8 +2058,8 @@ class MuiPrompt extends HTMLElement {
           --action-radius-medium: var(--prompt-action-radius);
           --action-radius-large: var(--prompt-action-radius);
         }
-        slot[name="actions"]::slotted(mui-prompt-toggle),
-        slot[name="actions-right"]::slotted(mui-prompt-toggle) {
+        slot[name="actions"]::slotted(mui-action-toggle),
+        slot[name="actions-right"]::slotted(mui-action-toggle) {
           --action-radius-x-small: var(--prompt-action-radius);
           --action-radius-small: var(--prompt-action-radius);
           --action-radius-medium: var(--prompt-action-radius);
@@ -2107,7 +2107,7 @@ class MuiPrompt extends HTMLElement {
           text-overflow: ellipsis;
         }
         #promptAutoPreviewCode {
-          --code-background: var(--prompt-preview-code-background);
+          --code-background: var(--preview-chip-code-background);
         }
         #promptAutoPreviewCode[hidden],
         #promptAutoPreviewImage[hidden],
@@ -2239,7 +2239,7 @@ class MuiPrompt extends HTMLElement {
         </div>
         <div class="error-region" hidden>
    
-        <mui-body size="x-small" variant="error" class="error-default" ${errorMessage ? "" : "hidden"}>
+        <mui-body size="x-small" variant="attention" class="error-default" ${errorMessage ? "" : "hidden"}>
           <mui-icon-attention slot="before"></mui-icon-attention>
           <span class="error-text">${errorText}</span>
         </mui-body>
@@ -2247,8 +2247,8 @@ class MuiPrompt extends HTMLElement {
       </div>
       </div>
       <mui-v-stack class="debug-region" space="var(--space-050)" ${this.hasAttribute("debug") ? "" : "hidden"}>
-        <mui-body id="promptDebugStatus" size="x-small" variant="optional" weight="regular">Idle: no submit yet.</mui-body>
-        <mui-body class="debug-payload-body" size="x-small" variant="optional" weight="regular">
+        <mui-body id="promptDebugStatus" size="x-small" variant="secondary" weight="regular">Idle: no submit yet.</mui-body>
+        <mui-body class="debug-payload-body" size="x-small" variant="secondary" weight="regular">
           <span id="promptDebugPayload" class="debug-payload-text">{"event":"idle"}</span>
         </mui-body>
       </mui-v-stack>
@@ -2257,7 +2257,7 @@ class MuiPrompt extends HTMLElement {
         id="promptAutoPreviewDialog"
         width="${previewDialogWidth}"
         content-padding="none"
-        style="--dialog-border: var(--prompt-preview-dialog-border);"
+        style="--dialog-border: var(--preview-chip-dialog-border);"
       >
         <mui-heading id="promptAutoPreviewTitle" slot="title" size="5">Pasted Content</mui-heading>
         <mui-code id="promptAutoPreviewCode" size="x-small" wrap hidden></mui-code>

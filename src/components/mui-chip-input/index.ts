@@ -27,6 +27,7 @@ class MuiChipInput extends HTMLElement {
       "placement",
       "mobile-stack",
       "breakpoint",
+      "menu-slot",
     ];
   }
 
@@ -635,6 +636,7 @@ class MuiChipInput extends HTMLElement {
           size="${this.normalizedSize}"
           placeholder="${placeholder}"
           value="${this.inputValue}"
+          ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
           ${isMobileStack ? 'slot-layout="stack-mobile"' : ""}
           ${this.disabled ? "disabled" : ""}
           aria-controls="${listId}"

@@ -35,9 +35,9 @@ class storyProgress extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
-          title="State: Pending" 
-          description="Use when the system is waiting for an external response, such as a server request or sync, and progress cannot be measured."  
+        <story-card
+          title="State: Pending"
+          description="Use when the system is waiting for an external response, such as a server request or sync, and progress cannot be measured."
         >
           <div class="canvas" slot="body">
             <mui-progress state="pending"></mui-progress>
@@ -61,7 +61,7 @@ class storyProgress extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -69,7 +69,7 @@ class storyProgress extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-progress"]'>
         ${stories}
       </story-template>

@@ -17,10 +17,10 @@ class storySelect extends HTMLElement {
         <story-api-types tag="mui-select" title="Select"></story-api-types>
 
 
-        <story-card 
+        <story-card
           id="default"
-          title="Default" 
-          description="Use for common form inputs where users must choose a single value from a clear and limited set." 
+          title="Default"
+          description="Use for common form inputs where users must choose a single value from a clear and limited set."
           usageLink="https://guides.muibook.com/select"
         >
           <div slot="body">
@@ -51,9 +51,9 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
+        <story-card
           id="optional-label"
-          title="Optional Label" 
+          title="Optional Label"
           description="Adds optional guidance while keeping the same accessible label pattern."
           usageLink="https://guides.muibook.com/select"
         >
@@ -85,14 +85,14 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
+        <story-card
           id="hide-label"
-          title="Hide Label" 
+          title="Hide Label"
           description="Ensures the label is accessible to screen readers while visually hiding it to avoid redundancy."
           usageLink="https://guides.muibook.com/select"
         >
           <div slot="body">
-            <mui-select 
+            <mui-select
               label="Density"
               hide-label
               options='[
@@ -122,9 +122,9 @@ class storySelect extends HTMLElement {
         </story-card>
 
 
-        <story-card 
+        <story-card
           id="value"
-          title="Value" 
+          title="Value"
           description="Define which option is selected by default."
           usageLink="https://guides.muibook.com/select"
         >
@@ -284,7 +284,7 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
+        <story-card
           id="after-select"
           title="After: Select"
           description="The Select component is placed after the input area; use for complementary context like currency type. Select width should be defined in code to ensure layout consistency."
@@ -320,9 +320,9 @@ class storySelect extends HTMLElement {
         </story-card>
 
 
-        <story-card 
+        <story-card
           id="custom-appearance-vertical"
-          title="Custom Appearance Vertical" 
+          title="Custom Appearance Vertical"
           description="Uses the experimental native customizable select appearance while keeping options stacked in a single column."
           usage="Use appearance='custom' when option content needs richer composed markup while still using native select behaviour.|||The custom appearance picker uses a grid internally with one column by default, so space controls the gap between options."
           usageLink="https://guides.muibook.com/select"
@@ -342,7 +342,7 @@ class storySelect extends HTMLElement {
                   </mui-avatar>
                   <mui-v-stack space="var(--space-000)">
                     <mui-body weight="bold" size="x-small">Design</mui-body>
-                    <mui-body size="xx-small" variant="optional">Design systems and product polish</mui-body>
+                    <mui-body size="xx-small" variant="secondary">Design systems and product polish</mui-body>
                   </mui-v-stack>
                 </mui-h-stack>
               </option>
@@ -353,7 +353,7 @@ class storySelect extends HTMLElement {
                   </mui-avatar>
                   <mui-v-stack space="var(--space-000)">
                     <mui-body weight="bold" size="x-small">Engineering</mui-body>
-                    <mui-body size="xx-small" variant="optional">Components, APIs, and releases</mui-body>
+                    <mui-body size="xx-small" variant="secondary">Components, APIs, and releases</mui-body>
                   </mui-v-stack>
                 </mui-h-stack>
               </option>
@@ -372,7 +372,7 @@ class storySelect extends HTMLElement {
                   </mui-avatar>
                   <mui-v-stack space="var(--space-000)">
                     <mui-body weight="bold" size="small">Design</mui-body>
-                    <mui-body size="x-small" variant="optional">Design systems and product polish</mui-body>
+                    <mui-body size="x-small" variant="secondary">Design systems and product polish</mui-body>
                   </mui-v-stack>
                 </mui-h-stack>
               </option>
@@ -383,7 +383,7 @@ class storySelect extends HTMLElement {
                   </mui-avatar>
                   <mui-v-stack space="var(--space-000)">
                     <mui-body weight="bold" size="small">Engineering</mui-body>
-                    <mui-body size="x-small" variant="optional">Components, APIs, and releases</mui-body>
+                    <mui-body size="x-small" variant="secondary">Components, APIs, and releases</mui-body>
                   </mui-v-stack>
                 </mui-h-stack>
               </option>
@@ -402,7 +402,7 @@ class storySelect extends HTMLElement {
                   </mui-avatar>
                   <mui-v-stack space="var(--space-000)">
                     <mui-body weight="bold" size="small">Design</mui-body>
-                    <mui-body size="x-small" variant="optional">Design systems and product polish</mui-body>
+                    <mui-body size="x-small" variant="secondary">Design systems and product polish</mui-body>
                   </mui-v-stack>
                 </mui-h-stack>
               </option>
@@ -413,7 +413,7 @@ class storySelect extends HTMLElement {
                   </mui-avatar>
                   <mui-v-stack space="var(--space-000)">
                     <mui-body weight="bold" size="small">Engineering</mui-body>
-                    <mui-body size="x-small" variant="optional">Components, APIs, and releases</mui-body>
+                    <mui-body size="x-small" variant="secondary">Components, APIs, and releases</mui-body>
                   </mui-v-stack>
                 </mui-h-stack>
               </option>
@@ -432,7 +432,7 @@ class storySelect extends HTMLElement {
                   </mui-avatar>
                   <mui-v-stack space="var(--space-000)">
                     <mui-body weight="bold">Design</mui-body>
-                    <mui-body size="small" variant="optional">Design systems and product polish</mui-body>
+                    <mui-body size="small" variant="secondary">Design systems and product polish</mui-body>
                   </mui-v-stack>
                 </mui-h-stack>
               </option>
@@ -443,7 +443,7 @@ class storySelect extends HTMLElement {
                   </mui-avatar>
                   <mui-v-stack space="var(--space-000)">
                     <mui-body weight="bold">Engineering</mui-body>
-                    <mui-body size="small" variant="optional">Components, APIs, and releases</mui-body>
+                    <mui-body size="small" variant="secondary">Components, APIs, and releases</mui-body>
                   </mui-v-stack>
                 </mui-h-stack>
               </option>
@@ -474,9 +474,9 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card 
+        <story-card
           id="custom-appearance-grid"
-          title="Custom Appearance Grid" 
+          title="Custom Appearance Grid"
           description="Uses the experimental native customizable select appearance with a two-column picker."
           usage="Use col to change the custom picker grid columns.|||Use space with col to control the gap between richer option cards.|||Use selected-content='label' when the picker uses larger visual tiles but the closed select should stay compact."
           usageLink="https://guides.muibook.com/select"
@@ -658,7 +658,7 @@ class storySelect extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-select"]'>
         <story-quicklinks
           slot="message"

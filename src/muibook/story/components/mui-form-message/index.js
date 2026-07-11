@@ -15,7 +15,7 @@ class StoryFormMessage extends HTMLElement {
       <story-card id="patterns" title="Message Patterns" description="Icon-led supporting text with semantic color from usage context." usage="Use a colored mui-form-message when the static message needs more emphasis.|||Use the default greyscale version for lighter supporting copy.|||This component does not replace mui-field slot=&quot;message&quot; when the message belongs to a specific field; it is the message content used within that pattern.">
         <div slot="body" class="story-card-surface">
           <mui-v-stack space="var(--space-200)">
-            <mui-form-message variant="optional">
+            <mui-form-message variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
               Optional: Add a referral code.
             </mui-form-message>
@@ -80,7 +80,7 @@ class StoryFormMessage extends HTMLElement {
                 <mui-form-group variant="horizontal" hide-heading>
                   <mui-field label="Billing Contact">
                     <mui-input type="email" placeholder="billing@company.com"></mui-input>
-                    <mui-form-message slot="message" variant="optional">
+                    <mui-form-message slot="message" variant="secondary">
                       <mui-icon-message slot="before"></mui-icon-message>
                       You can update these preferences at any time
                     </mui-form-message>
@@ -109,8 +109,8 @@ class StoryFormMessage extends HTMLElement {
       <story-card id="sizes" title="Sizes" description="Form Message sizing across x-small, small, medium, and large, including all variant options.">
         <mui-v-stack slot="body" space="var(--space-400)" class="story-card-surface">
           <mui-v-stack space="var(--space-200)">
-            <mui-body size="small" variant="optional">x-small</mui-body>
-            <mui-form-message size="x-small" variant="optional">
+            <mui-body size="small" variant="secondary">x-small</mui-body>
+            <mui-form-message size="x-small" variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
               X Small optional helper content
             </mui-form-message>
@@ -133,8 +133,8 @@ class StoryFormMessage extends HTMLElement {
           </mui-v-stack>
 
           <mui-v-stack space="var(--space-200)">
-            <mui-body size="small" variant="optional">small</mui-body>
-            <mui-form-message size="small" variant="optional">
+            <mui-body size="small" variant="secondary">small</mui-body>
+            <mui-form-message size="small" variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
               Small optional helper content
             </mui-form-message>
@@ -157,8 +157,8 @@ class StoryFormMessage extends HTMLElement {
           </mui-v-stack>
 
           <mui-v-stack space="var(--space-200)">
-            <mui-body size="small" variant="optional">medium</mui-body>
-            <mui-form-message size="medium" variant="optional">
+            <mui-body size="small" variant="secondary">medium</mui-body>
+            <mui-form-message size="medium" variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
               Medium optional helper content
             </mui-form-message>
@@ -181,8 +181,8 @@ class StoryFormMessage extends HTMLElement {
           </mui-v-stack>
 
           <mui-v-stack space="var(--space-200)">
-            <mui-body size="small" variant="optional">large</mui-body>
-            <mui-form-message size="large" variant="optional">
+            <mui-body size="small" variant="secondary">large</mui-body>
+            <mui-form-message size="large" variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
               Large optional helper content
             </mui-form-message>
@@ -205,7 +205,7 @@ class StoryFormMessage extends HTMLElement {
           </mui-v-stack>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-form-message size="small" variant="optional"&gt;
+          &lt;mui-form-message size="small" variant="secondary"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-icon-message slot="before"&gt;&lt;/mui-icon-message&gt;
           <br />
@@ -232,7 +232,7 @@ class StoryFormMessage extends HTMLElement {
           &lt;/mui-form-message&gt;
           <br />
           <br />
-          &lt;mui-form-message size="small" variant="success"&gt;
+          &lt;mui-form-message size="small" variant="positive"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-icon-check slot="before"&gt;&lt;/mui-icon-check&gt;
           <br />
@@ -241,7 +241,7 @@ class StoryFormMessage extends HTMLElement {
           &lt;/mui-form-message&gt;
           <br />
           <br />
-          &lt;mui-form-message size="small" variant="error"&gt;
+          &lt;mui-form-message size="small" variant="attention"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-icon-attention slot="before"&gt;&lt;/mui-icon-attention&gt;
           <br />
@@ -277,7 +277,7 @@ class StoryFormMessage extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
+
         imports='["@muibook/components/mui-form-message"]'>
         <story-quicklinks
           slot="message"

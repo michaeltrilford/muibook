@@ -65,7 +65,7 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         { name: "Prompt", link: "https://guides.muibook.com/prompt" },
-        { name: "Prompt Toggle", link: "https://guides.muibook.com/prompt-toggle" },
+        { name: "Action Toggle", link: "https://guides.muibook.com/action-toggle" },
       ],
     },
     rules: [

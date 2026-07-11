@@ -52,7 +52,7 @@ export const keywords: Record<string, string[]> = {
     "minus",
   ],
   heading: ["heading", "title", "h1", "h2", "h3", "size", "level"],
-  body: ["body", "text", "paragraph", "copy", "default", "optional", "success", "warning", "error"],
+  body: ["body", "text", "paragraph", "copy", "default", "secondary", "info", "positive", "warning", "attention"],
   span: ["span", "inline", "text", "rich text", "inline link"],
   code: ["code", "snippet", "monospace", "pre", "syntax"],
   quote: ["quote", "blockquote", "citation", "pull quote"],
@@ -236,9 +236,9 @@ export const keywords: Record<string, string[]> = {
   prompt: ["prompt", "ai prompt", "chat input", "message input", "fan", "context", "preview", "submit"],
   agentPrompt: ["agent prompt", "assistant prompt", "system prompt", "llm prompt", "agent input"],
   agentBubble: ["agent bubble", "assistant bubble", "chat bubble", "ai response", "agent message"],
-  promptMessage: ["prompt message", "chat message", "ai message", "ghost", "compact", "density"],
-  promptPreview: ["prompt preview", "preview", "badge", "image preview", "animated preview"],
-  promptToggle: ["prompt toggle", "toggle", "icon mode", "chip mode"],
+  chatMessage: ["chat message", "prompt message", "ai message", "ghost", "compact", "density"],
+  previewChip: ["preview chip", "prompt preview", "preview", "badge", "image preview", "animated preview"],
+  actionToggle: ["action toggle", "prompt toggle", "toggle", "icon mode", "chip mode"],
 
   // PRESENTATION
   slideFrame: ["slide", "slides", "presentation", "slide frame", "deck", "ratio", "fullscreen", "section", "notes"],
@@ -299,9 +299,9 @@ export const agentKeywordKeys = [
   "carousel",
   "stepper",
   "prompt",
-  "promptMessage",
-  "promptPreview",
-  "promptToggle",
+  "chatMessage",
+  "previewChip",
+  "actionToggle",
   "slideFrame",
 ] as const;
 

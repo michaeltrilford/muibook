@@ -22,9 +22,9 @@ class storyAlert extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-alert" title="Alert"></story-api-types>
 
-      <story-card 
-        title="Success" 
-        description="Indicates that an operation or action has been completed successfully." 
+      <story-card
+        title="Success"
+        description="Indicates that an operation or action has been completed successfully."
         usage="Form submissions that have been processed without errors|||Successful data updates or saves|||Confirmation of completed tasks or actions."
         usageLink="https://guides.muibook.com/alert"
         accessibility="ARIA-live of POLITE is set on this variant."
@@ -33,7 +33,7 @@ class storyAlert extends HTMLElement {
           <mui-alert variant="success" size="medium">Your message has been sent successfully.</mui-alert>
         </div>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-alert variant="success" size="medium"&gt;
+          &lt;mui-alert variant="positive" size="medium"&gt;
           <br />
           &nbsp;&nbsp;...
           <br />
@@ -90,7 +90,7 @@ class storyAlert extends HTMLElement {
           <mui-alert variant="error" size="medium">Please read the comments carefully. <mui-link href="#">Learn more</mui-link></mui-alert>
         </div>
         <story-code-block slot="footer" scrollable>
-        &lt;mui-alert variant="error" size="medium"&gt;
+        &lt;mui-alert variant="attention" size="medium"&gt;
         <br />
         &nbsp;&nbsp;...
         <br />
@@ -203,8 +203,8 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Small / Undo" 
+      <story-card
+        title="Small / Undo"
         description="Small alerts with text actions."
         usageLink="https://guides.muibook.com/alert"
       >
@@ -228,7 +228,7 @@ class storyAlert extends HTMLElement {
         </mui-v-stack>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-alert variant="success" size="small"&gt;
+          &lt;mui-alert variant="positive" size="small"&gt;
           <br />
           &nbsp;&nbsp;Message sent.
           <br />
@@ -238,8 +238,8 @@ class storyAlert extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Link Action / Sizes" 
+      <story-card
+        title="Link Action / Sizes"
         description="Link actions slotted across large, medium, and small alert sizes."
         usageLink="https://guides.muibook.com/alert"
         usage="Use for inline link actions across all alert density options."
@@ -299,7 +299,7 @@ class storyAlert extends HTMLElement {
         </mui-v-stack>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-alert variant="success" size="large"&gt;
+          &lt;mui-alert variant="positive" size="large"&gt;
           <br />
           &nbsp;&nbsp;Large success alert with link action.
           <br />
@@ -325,8 +325,8 @@ class storyAlert extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Small / Icon Action" 
+      <story-card
+        title="Small / Icon Action"
         description="Small alerts with icon actions sized to match."
         usageLink="https://guides.muibook.com/alert"
       >
@@ -375,8 +375,8 @@ class storyAlert extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Action / Close button" 
+      <story-card
+        title="Action / Close button"
         description="Optional close action shown across alert sizes."
         usageLink="https://guides.muibook.com/alert"
         usage="Use large for default prominence.|||Use medium for balanced density.|||Use small for compact interfaces."
@@ -420,8 +420,8 @@ class storyAlert extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Action / Undo" 
+      <story-card
+        title="Action / Undo"
         description="Optional action to for tasks like undoing an action."
         usageLink="https://guides.muibook.com/alert"
       >
@@ -456,7 +456,7 @@ class storyAlert extends HTMLElement {
         </mui-v-stack>
 
         <story-code-block slot="footer" scrollable>
-          &lt;mui-alert variant="success" size="medium"&gt;
+          &lt;mui-alert variant="positive" size="medium"&gt;
           <br />
           &nbsp;&nbsp;&lt;mui-button slot="action"&gt;
           <br />
@@ -469,8 +469,8 @@ class storyAlert extends HTMLElement {
       </story-card>
 
 
-      <story-card 
-        title="Action / Link" 
+      <story-card
+        title="Action / Link"
         description="Optional action to for tasks like undoing an action."
         usageLink="https://guides.muibook.com/alert"
       >
@@ -531,7 +531,7 @@ class storyAlert extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-alert"]'>
         ${stories}
       </story-template>

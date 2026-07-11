@@ -124,7 +124,7 @@ class StoryHint extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
+
         imports='["@muibook/components/mui-hint"]'>
         <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||placements::Placements|||delay::Delay|||disable-on-touch::Disable On Touch"></story-quicklinks>
         ${stories}

@@ -16,6 +16,8 @@ Treat compositions as a strict HTML tree of custom elements.
 
 ## Building Layouts
 
+When composition CSS adds padding or borders to a constrained component host, set `box-sizing: border-box` so its declared width and height include that inset. Keep shared spacing in the component that owns the composition instead of adding story-only padding classes.
+
 Build 1D and 2D page layouts strictly using the primitive layout components. Pass layout instructions via standard attributes.
 
 ```html
@@ -135,7 +137,7 @@ Media components like `<mui-media-player>` rely heavily on slots to overlay meta
     <mui-avatar src="artist.jpg"></mui-avatar>
     <mui-v-stack space="var(--space-000)">
       <mui-heading size="5">Song Title</mui-heading>
-      <mui-body size="small" variant="optional">Artist Name</mui-body>
+      <mui-body size="small" variant="secondary">Artist Name</mui-body>
     </mui-v-stack>
   </mui-h-stack>
   

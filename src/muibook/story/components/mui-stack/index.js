@@ -135,16 +135,16 @@ class storyStack extends HTMLElement {
           <mui-v-stack space="var(--space-300)">
             <mui-v-stack class="viewport-child" padding="var(--space-300)" space="var(--space-200)">
               <mui-body size="small" weight="bold">Nested VStack</mui-body>
-              <mui-body size="x-small" variant="optional">Intrinsic height inside an outer viewport stack.</mui-body>
+              <mui-body size="x-small" variant="secondary">Intrinsic height inside an outer viewport stack.</mui-body>
             </mui-v-stack>
             <mui-h-stack class="viewport-child" padding="var(--space-300)" space="var(--space-200)" aligny="center">
               <mui-v-stack class="viewport-child-nested" padding="var(--space-200)" space="var(--space-100)">
                 <mui-body size="x-small" weight="bold">Child A</mui-body>
-                <mui-body size="x-small" variant="optional">auto height</mui-body>
+                <mui-body size="x-small" variant="secondary">auto height</mui-body>
               </mui-v-stack>
               <mui-v-stack class="viewport-child-nested" padding="var(--space-200)" space="var(--space-100)">
                 <mui-body size="x-small" weight="bold">Child B</mui-body>
-                <mui-body size="x-small" variant="optional">auto height</mui-body>
+                <mui-body size="x-small" variant="secondary">auto height</mui-body>
               </mui-v-stack>
             </mui-h-stack>
           </mui-v-stack>
@@ -287,7 +287,7 @@ class storyStack extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -295,7 +295,7 @@ class storyStack extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-stack"]'>
         ${stories}
       </story-template>

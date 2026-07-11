@@ -16,26 +16,26 @@ class storyDropdown extends HTMLElement {
       {
         component: "mui-button",
         parentAttrs: [],
-        childAttrs: ["dropdown-slot", "dropdown-slot-first", "dropdown-slot-last"],
+        childAttrs: ["menu-slot", "menu-slot-first", "menu-slot-last"],
       },
       {
         component: "mui-link",
         parentAttrs: [],
-        childAttrs: ["dropdown-slot", "dropdown-slot-first", "dropdown-slot-last"],
+        childAttrs: ["menu-slot", "menu-slot-first", "menu-slot-last"],
       },
     ]);
 
     const styles = /*css*/ `
       :host { display: block; }
 
-      mui-container { min-width: initial; } 
+      mui-container { min-width: initial; }
 
       .card-artwork {
-        --dropdown-radius: var(--radius-400) var(--radius-400) var(--radius-300) var(--radius-300);
+        --menu-radius: var(--radius-400) var(--radius-400) var(--radius-300) var(--radius-300);
       }
 
       .info {
-        --dropdown-radius: var(--radius-400);
+        --menu-radius: var(--radius-400);
       }
     `;
 
@@ -43,294 +43,371 @@ class storyDropdown extends HTMLElement {
       <story-api-types tag="mui-dropdown" title="Dropdown"></story-api-types>
 
       <story-card id="default" title="Ellipsis Action">
-        <mui-dropdown slot="body">
+        <mui-dropdown slot="body" size="medium">
           <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-          <mui-button>Option one</mui-button>
-          <mui-button>Option two</mui-button>
+          <mui-menu>
+            <mui-button>Option one</mui-button>
+            <mui-button>Option two</mui-button>
+          </mui-menu>
         </mui-dropdown>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot;&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="&#8220;"action&#8221;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
           &nbsp;&nbsp;&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button&gt;Option one&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button&gt;Option two&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;Option one&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;Option two&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br>
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="action-sizes" title="Action Sizes">
         <mui-v-stack slot="body" space="var(--space-300)" alignX="start">
-          <mui-dropdown>
+          <mui-dropdown size="x-small">
             <mui-button slot="action" size="x-small"><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
-            <mui-button size="x-small">Option one</mui-button>
-            <mui-button size="x-small">Option two</mui-button>
+            <mui-menu>
+              <mui-button size="x-small">Option one</mui-button>
+              <mui-button size="x-small">Option two</mui-button>
+            </mui-menu>
           </mui-dropdown>
-          <mui-dropdown>
+          <mui-dropdown size="small">
             <mui-button slot="action" size="small"><mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
-            <mui-button size="small">Option one</mui-button>
-            <mui-button size="small">Option two</mui-button>
+            <mui-menu>
+              <mui-button size="small">Option one</mui-button>
+              <mui-button size="small">Option two</mui-button>
+            </mui-menu>
           </mui-dropdown>
-          <mui-dropdown>
+          <mui-dropdown size="medium">
             <mui-button slot="action" size="medium"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-            <mui-button size="medium">Option one</mui-button>
-            <mui-button size="medium">Option two</mui-button>
+            <mui-menu>
+              <mui-button size="medium">Option one</mui-button>
+              <mui-button size="medium">Option two</mui-button>
+            </mui-menu>
           </mui-dropdown>
-          <mui-dropdown>
+          <mui-dropdown size="large">
             <mui-button slot="action" size="large"><mui-icon-ellipsis size="large"></mui-icon-ellipsis></mui-button>
-            <mui-button size="large">Option one</mui-button>
-            <mui-button size="large">Option two</mui-button>
+            <mui-menu>
+              <mui-button size="large">Option one</mui-button>
+              <mui-button size="large">Option two</mui-button>
+            </mui-menu>
           </mui-dropdown>
-          <mui-dropdown>
+          <mui-dropdown size="x-small">
             <mui-button slot="action" size="x-small"><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
-            <mui-button size="x-small" variant="primary">Option active</mui-button>
-            <mui-button size="x-small">Option two</mui-button>
+            <mui-menu>
+              <mui-button size="x-small" variant="primary">Option active</mui-button>
+              <mui-button size="x-small">Option two</mui-button>
+            </mui-menu>
           </mui-dropdown>
-          <mui-dropdown>
+          <mui-dropdown size="small">
             <mui-button slot="action" size="small"><mui-icon-ellipsis size="small"></mui-icon-ellipsis></mui-button>
-            <mui-button size="small" variant="primary">Option active</mui-button>
-            <mui-button size="small">Option two</mui-button>
+            <mui-menu>
+              <mui-button size="small" variant="primary">Option active</mui-button>
+              <mui-button size="small">Option two</mui-button>
+            </mui-menu>
           </mui-dropdown>
-          <mui-dropdown>
+          <mui-dropdown size="medium">
             <mui-button slot="action" size="medium"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-            <mui-button size="medium" variant="primary">Option active</mui-button>
-            <mui-button size="medium">Option two</mui-button>
+            <mui-menu>
+              <mui-button size="medium" variant="primary">Option active</mui-button>
+              <mui-button size="medium">Option two</mui-button>
+            </mui-menu>
           </mui-dropdown>
-          <mui-dropdown>
+          <mui-dropdown size="large">
             <mui-button slot="action" size="large"><mui-icon-ellipsis size="large"></mui-icon-ellipsis></mui-button>
-            <mui-button size="large" variant="primary">Option active</mui-button>
-            <mui-button size="large">Option two</mui-button>
+            <mui-menu>
+              <mui-button size="large" variant="primary">Option active</mui-button>
+              <mui-button size="large">Option two</mui-button>
+            </mui-menu>
           </mui-dropdown>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;!-- Default (x-small, small, medium, large) --&gt;<br>
-          &lt;mui-dropdown&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;x-small&quot;&gt;&lt;mui-icon-ellipsis size=&quot;x-small&quot;&gt;&lt;/mui-icon-ellipsis&gt;&lt;/mui-button&gt;<br>
+          &lt;mui-dropdown size=&quot;x-small&quot;&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;x-small&quot;&gt;&lt;mui-icon-ellipsis size=&quot;x-small&quot;&gt;&lt;/mui-icon-ellipsis&gt;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button size=&quot;x-small&quot;&gt;Option one&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button size=&quot;x-small&quot;&gt;Option two&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;<br><br>
           &lt;!-- Repeat for small / medium / large --&gt;<br><br>
 
           &lt;!-- Active-first (x-small, small, medium, large) --&gt;<br>
-          &lt;mui-dropdown&gt;<br>
+          &lt;mui-dropdown size=&quot;x-small&quot;&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;x-small&quot;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size=&quot;x-small&quot;&gt;&lt;/mui-icon-ellipsis&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button size=&quot;x-small&quot; variant=&quot;primary&quot;&gt;Option active&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button size=&quot;x-small&quot;&gt;Option two&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;<br><br>
-          &lt;mui-dropdown&gt;<br>
+          &lt;mui-dropdown size=&quot;small&quot;&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;small&quot;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size=&quot;small&quot;&gt;&lt;/mui-icon-ellipsis&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button size=&quot;small&quot; variant=&quot;primary&quot;&gt;Option active&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button size=&quot;small&quot;&gt;Option two&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;<br><br>
-          &lt;mui-dropdown&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot;&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;medium&quot;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size=&quot;medium&quot;&gt;&lt;/mui-icon-ellipsis&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button size=&quot;medium&quot; variant=&quot;primary&quot;&gt;Option active&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button size=&quot;medium&quot;&gt;Option two&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;<br><br>
-          &lt;mui-dropdown&gt;<br>
+          &lt;mui-dropdown size=&quot;large&quot;&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size=&quot;large&quot;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size=&quot;large&quot;&gt;&lt;/mui-icon-ellipsis&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button size=&quot;large&quot; variant=&quot;primary&quot;&gt;Option active&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button size=&quot;large&quot;&gt;Option two&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="z-index" title="Z-Index Customisation" description="Use this feature if a fixed navigation or other elements in your application conflict with the default z-index. Adjust the value to ensure your UI layers display correctly.">
-        <mui-dropdown slot="body" zindex="999" position="left">
+        <mui-dropdown slot="body" zindex="999" position="left" size="medium">
           <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-          <mui-button>Option one</mui-button>
-          <mui-button>Option two</mui-button>
-          <mui-button>Option two</mui-button>
-          <mui-button>Option two</mui-button>
-          <mui-button>Option two</mui-button>
-          <mui-button>Option two</mui-button>
+          <mui-menu>
+            <mui-button>Option one</mui-button>
+            <mui-button>Option two</mui-button>
+            <mui-button>Option two</mui-button>
+            <mui-button>Option two</mui-button>
+            <mui-button>Option two</mui-button>
+            <mui-button>Option two</mui-button>
+          </mui-menu>
         </mui-dropdown>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown zindex="999"&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot; zindex="999"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Option one&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Option two&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="custom-offset" title="Custom Offset" description="Override the vertical gap between the trigger and menu using the --dropdown-offset token.">
-        <mui-dropdown slot="body" style="--dropdown-offset: var(--space-500);">
+        <mui-dropdown slot="body" style="--dropdown-offset: var(--space-500);" size="medium">
           <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-          <mui-button>Option one</mui-button>
-          <mui-button>Option two</mui-button>
+          <mui-menu>
+            <mui-button>Option one</mui-button>
+            <mui-button>Option two</mui-button>
+          </mui-menu>
         </mui-dropdown>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown style="--dropdown-offset: var(--space-500);"&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot; style="--dropdown-offset: var(--space-500);"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Option one&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Option two&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
-      <story-card id="min-width" title="Menu Min-Width" description="Override the minimum menu width using the --dropdown-min-width token.">
-        <mui-dropdown slot="body" style="--dropdown-min-width: 9rem;">
+      <story-card id="min-width" title="Menu Min-Width" description="Override the minimum menu width using the --menu-min-width token.">
+        <mui-dropdown slot="body" style="--menu-min-width: 9rem;" size="small">
           <mui-button slot="action" size="small"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-          <mui-button>One</mui-button>
-          <mui-button>Two</mui-button>
+          <mui-menu>
+            <mui-button>One</mui-button>
+            <mui-button>Two</mui-button>
+          </mui-menu>
         </mui-dropdown>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown style="--dropdown-min-width: 9rem;"&gt;<br>
+          &lt;mui-dropdown size=&quot;small&quot; style="--menu-min-width: 9rem;"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221; size="small"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;One&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Two&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="with-icon" title="Dropdown w/ Icon">
         <mui-button-group align="right" slot="body">
-          <mui-dropdown>
+          <mui-dropdown size="medium">
             <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
-            <mui-button>PDF</mui-button>
-            <mui-button>CSV</mui-button>
+            <mui-menu>
+              <mui-button>PDF</mui-button>
+              <mui-button>CSV</mui-button>
+            </mui-menu>
           </mui-dropdown>
           <mui-button variant="primary">New Report</mui-button>
         </mui-button-group>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot;&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;PDF&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;CSV&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="dropdown-position-left" title="Position: Left">
         <mui-v-stack slot="body" alignX="center">
-          <mui-dropdown position="left">
+          <mui-dropdown position="left" size="medium">
             <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
-            <mui-button>PDF</mui-button>
-            <mui-button>CSV</mui-button>
+            <mui-menu>
+              <mui-button>PDF</mui-button>
+              <mui-button>CSV</mui-button>
+            </mui-menu>
           </mui-dropdown>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown position="left"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot; position="left"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;PDF&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;CSV&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="vertical-position-up" title="Vertical Position: Up">
         <mui-v-stack slot="body" alignX="center">
-          <mui-dropdown position="left" vertical-position="up">
+          <mui-dropdown position="left" vertical-position="up" size="medium">
             <mui-button slot="action" variant="secondary">Actions<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
-            <mui-button>Edit</mui-button>
-            <mui-button>Duplicate</mui-button>
-            <mui-button>Archive</mui-button>
+            <mui-menu>
+              <mui-button>Edit</mui-button>
+              <mui-button>Duplicate</mui-button>
+              <mui-button>Archive</mui-button>
+            </mui-menu>
           </mui-dropdown>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown position="left" vertical-position="up"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Actions&lt;/mui-button&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot; position="left" vertical-position="up"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Actions&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Edit&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Duplicate&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;Archive&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="dropdown-position-right" title="Position: Right">
         <mui-v-stack slot="body" alignX="center">
-          <mui-dropdown position="right">
+          <mui-dropdown position="right" size="medium">
             <mui-button slot="action" variant="secondary">Export<mui-icon-down-chevron slot="after"></mui-icon-down-chevron></mui-button>
-            <mui-button>PDF</mui-button>
-            <mui-button>CSV</mui-button>
+            <mui-menu>
+              <mui-button>PDF</mui-button>
+              <mui-button>CSV</mui-button>
+            </mui-menu>
           </mui-dropdown>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown position="right"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot; position="right"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;Export&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;PDF&lt;/mui-button&gt;<br>
           &nbsp;&nbsp;&lt;mui-button&gt;CSV&lt;/mui-button&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
       <story-card id="position-center" title="Position: Center">
         <mui-v-stack slot="body" alignX="center">
-          <mui-dropdown position="center" class="info">
+          <mui-dropdown position="center" class="info" size="medium">
             <mui-button slot="action" variant="secondary"><mui-icon-info size="medium"></mui-icon-info></mui-button>
-
-            <mui-v-stack space="var(--space-300)" style="padding: var(--space-300); width: 300px;">
+            <mui-menu>
+              <mui-v-stack space="var(--space-300)" style="padding: var(--space-300); width: 300px;">
               <mui-smart-card
-                variant="animated"
-                number="1234"
-                type="Debit"
-                bg-image="${Butter}"
-                logo="${Guides}"
-                partner="${VisaBlack}"
+              variant="animated"
+              number="1234"
+              type="Debit"
+              bg-image="${Butter}"
+              logo="${Guides}"
+              partner="${VisaBlack}"
               >
               </mui-smart-card>
               </mui-v-stack>
+            </mui-menu>
           </mui-dropdown>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown position="center" class="info"&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;...&lt;/mui-button&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot; position="center" class="info"&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot=&#8220;action&#8221;&gt;...&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-v-stack&gt;...&lt;/mui-v-stack&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card
         id="dropdown-persistent"
         title="Persistent"
         description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
         usage="
-          Use the 'persistent' boolean so users can interact with the dropdown content without it closing||| 
+          Use the 'persistent' boolean so users can interact with the dropdown content without it closing|||
           For instance, users can input data, click buttons, or interact with other elements inside the dropdown while it remains open|||
           This story demonstrates a card preview where you can upload an image as the card background|||
           Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
-          <mui-dropdown position="center" persistent data-file-preview="true" class="card-artwork">
+          <mui-dropdown position="center" persistent data-file-preview="true" class="card-artwork" size="medium">
             <mui-button slot="action" variant="secondary">
                 Card Artwork
                 <mui-icon-add slot="after"></mui-icon-add>
             </mui-button>
-            <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
+            <mui-menu>
+              <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
               <mui-smart-card
-                type="Debit"
-                number="1234"
-                partner="${VisaBlack}"
-                logo="${LogoPlaceholder}"
-                variant="plain"
+              type="Debit"
+              number="1234"
+              partner="${VisaBlack}"
+              logo="${LogoPlaceholder}"
+              variant="plain"
               >
               </mui-smart-card>
               <mui-file-upload
-                acceptedFileTypes=".pdf,.jpg,.png"
-                currentFileName="Upload Image"></mui-file-upload>
+              acceptedFileTypes=".pdf,.jpg,.png"
+              currentFileName="Upload Image"></mui-file-upload>
               </mui-v-stack>
+            </mui-menu>
           </mui-dropdown>
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown persistent data-file-preview="true" position="center" class="card-artwork"&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot; persistent data-file-preview="true" position="center" class="card-artwork"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="after"&gt;&lt;/mui-icon-add&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="Debit"<br>
@@ -341,10 +418,12 @@ class storyDropdown extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-smart-card&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-upload acceptedFileTypes=".pdf,.jpg,.png" currentFileName="Upload Artwork"&gt;&lt;/mui-file-upload&gt;<br>
           &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
 
           <br><br><br>
-          
+
           // File Upload Logic<br>
           ///////////////////////////////////////////////////////////////////<br><br>
           shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) =&gt; {<br>
@@ -376,7 +455,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card
         id="advanced-persistent"
         title="Advanced: Persistent"
         description="The persistent option lets users interact with dropdown content, such as entering data, clicking buttons, or using other elements, without the dropdown closing automatically."
@@ -391,7 +470,7 @@ class storyDropdown extends HTMLElement {
           Download this <mui-link size='small' download href='${Butter}'>card artwork</mui-link> and upload it to see the effect">
         <mui-h-stack slot="body" alignX="center" space="80px">
 
-          <mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center" class="card-artwork">
+          <mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center" class="card-artwork" size="medium">
             <mui-button slot="action" variant="secondary">
               Card Artwork
               <mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate>
@@ -399,31 +478,34 @@ class storyDropdown extends HTMLElement {
                 <mui-icon-subtract slot="end"></mui-icon-subtract>
               </mui-icon-toggle>
             </mui-button>
-            <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
+            <mui-menu>
+              <mui-v-stack space="var(--space-300)" style="padding: var(--space-300)">
               <mui-smart-card
-                type="Debit"
-                number="1234"
-                partner="${VisaBlack}"
-                logo="${LogoPlaceholder}"
-                variant="plain"
+              type="Debit"
+              number="1234"
+              partner="${VisaBlack}"
+              logo="${LogoPlaceholder}"
+              variant="plain"
               >
               </mui-smart-card>
               <mui-file-upload
-                acceptedFileTypes=".pdf,.jpg,.png"
-                currentFileName="Upload Image"></mui-file-upload>
+              acceptedFileTypes=".pdf,.jpg,.png"
+              currentFileName="Upload Image"></mui-file-upload>
               </mui-v-stack>
+            </mui-menu>
           </mui-dropdown>
 
         </mui-h-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown data-toggle-dropdown="hook-1" data-file-preview="true" position="center" class="card-artwork"&gt;<br>
+          &lt;mui-dropdown size=&quot;medium&quot; data-toggle-dropdown="hook-1" data-file-preview="true" position="center" class="card-artwork"&gt;<br>
           &nbsp;&nbsp;&lt;mui-button slot="action" variant="secondary"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;Card Artwork<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-toggle data-toggle-control="hook-1" slot="after" rotate&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-add slot="start"&gt;&lt;/mui-icon-add&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot="end"&gt;&lt;/mui-icon-subtract&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;/mui-button&gt;<br><br />
+          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
           &nbsp;&nbsp;&lt;mui-v-stack space="var(--space-300)" style="padding: var(--space-300)"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-smart-card<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="Debit"<br>
@@ -434,6 +516,8 @@ class storyDropdown extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-smart-card&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-upload acceptedFileTypes=".pdf,.jpg,.png" currentFileName="Upload Artwork"&gt;&lt;/mui-file-upload&gt;<br>
           &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
+
+          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
           &lt;/mui-dropdown&gt;
 
           <br><br><br>
@@ -464,7 +548,7 @@ class storyDropdown extends HTMLElement {
           &nbsp;&nbsp;});
 
           <br><br><br>
-          
+
           // File Upload Logic<br>
           ///////////////////////////////////////////////////////////////////<br><br>
           shadowRoot.querySelectorAll("[data-file-preview]").forEach((dropdown) =&gt; {<br>
@@ -496,7 +580,7 @@ class storyDropdown extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
+      <story-card
         id="date-picker-composition"
         title="Date Picker Composition"
         description="A practical example composing a calendar and time picker inside a dropdown to form a Date Picker."
@@ -513,7 +597,7 @@ class storyDropdown extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         attrs-reference='${attrsReference}'
@@ -522,7 +606,7 @@ class storyDropdown extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-dropdown"]'>
         <story-quicklinks
           slot="message"

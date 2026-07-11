@@ -50,7 +50,7 @@ export const muiApi = {
         name: "size",
         type: { text: '"xx-small" | "x-small" | "small" | "medium" | "large"' },
         default: "medium",
-        description: "Link scale; also controls automatic icon, avatar, and badge sizing.",
+        description: "Link scale; also controls automatic icon, File Icon, avatar, badge, and Switch sizing.",
       },
       {
         name: "download",

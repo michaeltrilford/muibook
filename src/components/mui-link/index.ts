@@ -119,6 +119,7 @@ class MuiLink extends HTMLElement {
               this.updateAvatarSizes(nodes);
             }
             this.updateBadgeSizes(nodes);
+            this.updateComposedControlSizes(nodes);
           }
         });
       });
@@ -226,9 +227,35 @@ class MuiLink extends HTMLElement {
             this.updateAvatarSizes(nodes);
           }
           this.updateBadgeSizes(nodes);
+          this.updateComposedControlSizes(nodes);
         }
       });
     }
+  }
+
+  private updateComposedControlSizes(nodes: Node[]): void {
+    const linkSize = this.getAttribute("size") || "medium";
+    const fileIconSizeMap: Record<string, string> = {
+      "xx-small": "small",
+      "x-small": "small",
+      small: "small",
+      medium: "medium",
+      large: "large",
+    };
+    const switchSizeMap: Record<string, string> = {
+      "xx-small": "x-small",
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+
+    nodes.forEach((node) => {
+      if (!(node instanceof HTMLElement)) return;
+      const tagName = node.tagName.toLowerCase();
+      if (tagName === "mui-file-icon") node.setAttribute("size", fileIconSizeMap[linkSize] || "medium");
+      if (tagName === "mui-switch") node.setAttribute("size", switchSizeMap[linkSize] || "small");
+    });
   }
 
   render() {
@@ -869,7 +896,7 @@ class MuiLink extends HTMLElement {
         min-height: var(--action-size-xx-small);
         padding: var(--space-025) var(--space-100);
         border-width: var(--stroke-size-100);
-        border-radius: var(--action-radius-x-small);
+        border-radius: var(--input-composed-radius, var(--action-radius-x-small));
       }
 
       :host([size="x-small"][variant]:not([variant="default"])) a,
@@ -886,7 +913,7 @@ class MuiLink extends HTMLElement {
         min-height: var(--action-size-x-small);
         padding: var(--action-padding-x-small);
         border-width: var(--stroke-size-100);
-        border-radius: var(--action-radius-x-small);
+        border-radius: var(--input-composed-radius, var(--action-radius-x-small));
       }
 
       :host([size="small"][variant]:not([variant="default"])) a,
@@ -895,7 +922,7 @@ class MuiLink extends HTMLElement {
         line-height: var(--text-line-height-s);
         min-height: var(--action-size-small);
         padding: var(--action-padding-small);
-        border-radius: var(--action-radius-small);
+        border-radius: var(--input-composed-radius, var(--action-radius-small));
       }
 
       :host([size="medium"][variant]:not([variant="default"])) a,
@@ -904,7 +931,7 @@ class MuiLink extends HTMLElement {
         line-height: var(--text-line-height-m);
         min-height: var(--action-size-medium);
         padding: var(--action-padding);
-        border-radius: var(--action-radius-medium);
+        border-radius: var(--input-composed-radius, var(--action-radius-medium));
       }
 
       :host([size="large"][variant]:not([variant="default"])) a,
@@ -913,41 +940,37 @@ class MuiLink extends HTMLElement {
         line-height: var(--text-line-height-l);
         min-height: var(--action-size-large);
         padding: var(--action-padding-large);
-        border-radius: var(--action-radius-large);
+        border-radius: var(--input-composed-radius, var(--action-radius-large));
       }
 
-      :host([size][dropdown-slot]) a,
-      :host([size][dropdown-slot]) a:hover,
-      :host([size][dropdown-slot]) a:focus,
-      :host([size][dropdown-slot]) a[aria-disabled="true"],
-      :host([size][dropdown-slot][has-after]) a,
-      :host([size][dropdown-slot][has-before]) a,
-      :host([dropdown-slot]) a {
+      :host([size="x-small"][menu-slot]) { --menu-action-radius: calc(min(var(--action-radius-x-small), var(--form-radius-x-small)) - var(--stroke-size-100)); }
+      :host([size="small"][menu-slot]) { --menu-action-radius: calc(min(var(--action-radius-small), var(--form-radius-small)) - var(--stroke-size-100)); }
+      :host([size="medium"][menu-slot]) { --menu-action-radius: calc(min(var(--action-radius-medium), var(--form-radius-medium)) - var(--stroke-size-100)); }
+      :host([size="large"][menu-slot]) { --menu-action-radius: calc(min(var(--action-radius-large), var(--form-radius-large)) - var(--stroke-size-100)); }
+
+      :host([size][menu-slot]) a,
+      :host([size][menu-slot]) a:hover,
+      :host([size][menu-slot]) a:focus,
+      :host([size][menu-slot]) a[aria-disabled="true"] {
         border-radius: var(--radius-000);
         justify-content: flex-start;
         white-space: nowrap;
       }
 
-      :host([size][dropdown-slot-first]) a,
-      :host([size][dropdown-slot-first]) a:hover,
-      :host([size][dropdown-slot-first]) a:focus,
-      :host([size][dropdown-slot-first]) a[aria-disabled="true"],
-      :host([size][dropdown-slot-first][has-after]) a,
-      :host([size][dropdown-slot-first][has-before]) a,
-      :host([dropdown-slot-first]) a {
-        border-top-left-radius: calc(var(--radius-100) / 2);
-        border-top-right-radius: calc(var(--radius-100) / 2);
+      :host([size][menu-slot-first]) a,
+      :host([size][menu-slot-first]) a:hover,
+      :host([size][menu-slot-first]) a:focus,
+      :host([size][menu-slot-first]) a[aria-disabled="true"] {
+        border-top-left-radius: var(--menu-action-radius);
+        border-top-right-radius: var(--menu-action-radius);
       }
 
-      :host([size][dropdown-slot-last]) a,
-      :host([size][dropdown-slot-last]) a:hover,
-      :host([size][dropdown-slot-last]) a:focus,
-      :host([size][dropdown-slot-last]) a[aria-disabled="true"],
-      :host([size][dropdown-slot-last][has-after]) a,
-      :host([size][dropdown-slot-last][has-before]) a,
-      :host([dropdown-slot-last]) a {
-        border-bottom-left-radius: calc(var(--radius-100) / 2);
-        border-bottom-right-radius: calc(var(--radius-100) / 2);
+      :host([size][menu-slot-last]) a,
+      :host([size][menu-slot-last]) a:hover,
+      :host([size][menu-slot-last]) a:focus,
+      :host([size][menu-slot-last]) a[aria-disabled="true"] {
+        border-bottom-left-radius: var(--menu-action-radius);
+        border-bottom-right-radius: var(--menu-action-radius);
       }
 
       /* Keep input-composed links flush against the input edge after size radius applies. */

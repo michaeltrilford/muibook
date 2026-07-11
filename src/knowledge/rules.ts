@@ -97,7 +97,7 @@ SURFACES:
 
 CONTENT:
 - Heading: text, size (1|2|3|4|5|6), level (1|2|3|4|5|6), truncate, clamp
-- Body: text, size (xx-small|x-small|small|medium|large), weight (regular|bold), variant (default|optional|info|success|warning|error), truncate, clamp, style; use _Icon icon=mui-icon-info slot=before for lightweight inline guidance
+- Body: text, size (xx-small|x-small|small|medium|large), weight (regular|bold), variant (default|secondary|info|positive|warning|attention), truncate, clamp, style; use _Icon icon=mui-icon-info slot=before for lightweight inline guidance
 - Span: text, style; supports inline children such as Link
 - Code: size, scrollable
 - Quote: default text
@@ -144,7 +144,8 @@ ACTIONS:
 - Button: text, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (100|200|300|400|500), disabled, aria-label; slots default/before/after
 - ButtonGroup: slot default, right, style
 - Link: text, href, variant (primary|secondary|tertiary|overlay|attention), size (xx-small|x-small|small|medium|large), stroke (border|ring), stroke-ring-size (100|200|300|400|500), target, download, weight (regular|bold), disabled; slots default/before/after
-- Dropdown: zindex, position, persistent; slots action/default
+- Dropdown: size (x-small|small|medium|large), zindex, position, vertical-position, persistent; slot action plus one direct Menu child. Dropdown enforces its size on the trigger and Menu. Do not place menu actions directly inside Dropdown.
+- Menu: size (x-small|small|medium|large); direct Body, Button, Link, Input, Select, DatePicker, TimePicker, Textarea, SearchInput, RangeInput, and ChipInput children inherit Menu size. Menu applies size-based inset padding only to direct form-control hosts, without changing the Menu container inset. Direct Body receives action padding; Button and Link receive joined corner treatment.
 - Chip: text, active, dismiss, usage; slots default/before/after. Chip labels truncate when constrained; keep text short and let icons/dismiss controls remain visible.
 - ChipRail: size, aria-label; children Chip. Use for horizontally scrollable filters and category rails.
 
@@ -172,9 +173,9 @@ MEDIA:
 
 PROMPT COMPONENTS:
 - Prompt: placeholder, value, rows, enter-submit, fan-open, disabled, loading, loading-label, context-mode (icon|chip), preview-dialog-width, preview-dialog-title, preview-overflow-to-preview, preview-threshold-chars, preview-auto-clickable, preview-loading, preview-loading-label, preview-scrollbar, error-message, debug, effects-off, color-top-start, color-top-mid, color-top-end, color-top-accent, color-layout, style
-- PromptMessage: size (x-small|small|medium|large), variant (default|ghost), density (default|compact), style
-- PromptPreview: value, badge, label, bg-image, image-tint, accent, inverted, show-text, badge-only, animated, loading, loading-label, clickable, animation-mode, style
-- PromptToggle: mode (icon|chip), style
+- ChatMessage: size (x-small|small|medium|large), variant (default|ghost), density (default|compact), style
+- PreviewChip: value, badge, label, bg-image, image-tint, accent, inverted, show-text, badge-only, animated, loading, loading-label, clickable, animation-mode, style
+- ActionToggle: mode (icon|chip), style
 
 PRESENTATION:
 - SlideFrame: title, footer-text, ratio (16:9|4:3|1:1|3:2|9:16), present, active-section, padding, variant (default|plain), radius, notes-open, hide-header, hide-footer, hide-counter, allow-add-section, fullscreen, scroll, style

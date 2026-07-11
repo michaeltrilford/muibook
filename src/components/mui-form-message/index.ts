@@ -13,11 +13,11 @@ class MuiFormMessage extends HTMLElement {
 
   private getIconColor(variant: string): string {
     const variantColorMap: Record<string, string> = {
-      optional: "var(--text-color-optional)",
+      optional: "var(--text-color-secondary)",
       info: "var(--text-color-info)",
       warning: "var(--text-color-warning)",
-      success: "var(--text-color-success)",
-      error: "var(--text-color-error)",
+      success: "var(--text-color-positive)",
+      error: "var(--text-color-attention)",
     };
     return variantColorMap[variant] || "var(--text-color)";
   }

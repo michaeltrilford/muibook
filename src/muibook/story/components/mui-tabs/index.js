@@ -468,7 +468,7 @@ class storyTabBar extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
         attrs-reference='${attrsReference}'
-      
+
         imports='["@muibook/components/mui-tabs"]'>
         ${stories}
       </story-template>

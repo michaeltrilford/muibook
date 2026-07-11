@@ -276,10 +276,10 @@ html[data-theme="light"] {
   /* Text */
   --text-color: var(--grey-900);
   --text-color-info: var(--blue-600);
-  --text-color-success: var(--green-600);
+  --text-color-positive: var(--green-600);
   --text-color-warning: var(--orange-600);
-  --text-color-error: var(--red-600);
-  --text-color-optional: var(--grey-600);
+  --text-color-attention: var(--red-600);
+  --text-color-secondary: var(--grey-600);
 
   /* ================================================================================================== */
   /* Components                                                                                         */
@@ -446,9 +446,9 @@ html[data-theme="light"] {
   --chip-dismiss-action-background-disabled: var(--grey-200);
 
   /* Dropdown */
-  --dropdown-background: var(--grey-50);
-  --dropdown-border-color: var(--black-opacity-20);
-  --dropdown-shadow-color: var(--black-opacity-10);
+  --menu-background: var(--grey-50);
+  --menu-border-color: var(--black-opacity-20);
+  --menu-shadow-color: var(--black-opacity-10);
   --dropdown-button-background-hover: var(--white);
 
   /* Progress */
@@ -457,12 +457,15 @@ html[data-theme="light"] {
   --progress-loading-bar-100: var(--grey-200);
   --progress-loading-bar-200: var(--grey-300);
 
+  /* Range Input */
+  --range-input-thumb-color: var(--black);
+
   /* Stepper */
   --stepper-color: var(--grey-700);
   --stepper-background-inactive: var(--white);
   --stepper-icon-color: var(--white);
   --stepper-warning-color: var(--orange-700);
-  --stepper-error-color: var(--text-color-error);
+  --stepper-error-color: var(--text-color-attention);
   --stepper-disabled-opacity: 0.75;
 
   /* Dialog */
@@ -670,10 +673,10 @@ html[data-theme="dark"] {
   /* Text */
   --text-color: var(--grey-100);
   --text-color-info: var(--blue-400);
-  --text-color-success: var(--green-400);
+  --text-color-positive: var(--green-400);
   --text-color-warning: var(--orange-400);
-  --text-color-error: var(--red-400);
-  --text-color-optional: var(--grey-300);
+  --text-color-attention: var(--red-400);
+  --text-color-secondary: var(--grey-300);
 
   /* ================================================================================================== */
   /* Components                                                                                         */
@@ -840,9 +843,9 @@ html[data-theme="dark"] {
   --chip-dismiss-action-background-disabled: var(--grey-900);
 
   /* Dropdown */
-  --dropdown-background: var(--grey-1000);
-  --dropdown-border-color: var(--white-opacity-20);
-  --dropdown-shadow-color: var(--black-opacity-20);
+  --menu-background: var(--grey-1000);
+  --menu-border-color: var(--white-opacity-20);
+  --menu-shadow-color: var(--black-opacity-20);
   --dropdown-button-background-hover: var(--grey-900);
 
   /* Progress */
@@ -850,6 +853,9 @@ html[data-theme="dark"] {
   --progress-track-background: var(--grey-700);
   --progress-loading-bar-100: var(--grey-900);
   --progress-loading-bar-200: var(--grey-1000);
+
+  /* Range Input */
+  --range-input-thumb-color: var(--white);
 
   /* Stepper */
   --stepper-color: var(--white);
@@ -875,7 +881,7 @@ html[data-theme="dark"] {
 :where(html) {
   /* Dropdown */
   --dropdown-offset: var(--space-200);
-  --dropdown-min-width: 15rem;
+  --menu-min-width: 15rem;
 
   /* Form */
   --form-default-placeholder-color: var(--grey-500);
@@ -995,7 +1001,7 @@ html[data-theme="dark"] {
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
   --stepper-success-color: var(--stepper-color);
-  --stepper-disabled-color: var(--text-color-optional);
+  --stepper-disabled-color: var(--text-color-secondary);
 
   /* Dialog */
   --dialog-border: none;
@@ -1052,8 +1058,12 @@ html[data-theme="dark"] {
 
   /* Range Input */
   --range-input-accent-color: var(--media-player-seek-color);
+  --range-input-track-color: var(--black-opacity-20);
   --range-input-bubble-background: var(--media-player-seek-time-background);
   --range-input-bubble-border-color: var(--media-player-seek-time-border-color);
+  --range-input-track-height: var(--space-100);
+  --range-input-track-radius: var(--radius-500);
+  --range-input-thumb-size: var(--space-400);
 
   /* Skeleton */
   --skeleton-background: var(--surface-elevated-100);
@@ -1311,7 +1321,7 @@ html[data-theme="dark"] {
   --form-radius-large: var(--radius-300);
 
   /* Dropdown */
-  --dropdown-radius: var(--radius-100);
+  --menu-radius: var(--radius-100);
 
   /* Dialog */
   --dialog-radius: var(--radius-150);

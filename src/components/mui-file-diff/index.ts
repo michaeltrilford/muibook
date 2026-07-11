@@ -72,11 +72,11 @@ export class MuiFileDiff extends HTMLElement {
         <mui-h-stack slot="start" space="var(--space-100)" aligny="center" role="cell">
           <slot name="icon"></slot>
           ${filename ? `<mui-body size="x-small" weight="medium">${filename}</mui-body>` : ""}
-          ${filepath ? `<mui-body variant="optional" size="x-small" weight="regular" truncate>${filepath}</mui-body>` : ""}
+          ${filepath ? `<mui-body variant="secondary" size="x-small" weight="regular" truncate>${filepath}</mui-body>` : ""}
         </mui-h-stack>
         <mui-h-stack slot="end" aligny="center" space="var(--space-100)" role="cell">
-          ${additions ? `<mui-body size="x-small" weight="regular" variant="success">${additions}</mui-body>` : ""}
-          ${deletions ? `<mui-body size="x-small" weight="regular" variant="error">${deletions}</mui-body>` : ""}
+          ${additions ? `<mui-body size="x-small" weight="regular" variant="positive">${additions}</mui-body>` : ""}
+          ${deletions ? `<mui-body size="x-small" weight="regular" variant="attention">${deletions}</mui-body>` : ""}
         </mui-h-stack>
       </mui-slat>
     `;

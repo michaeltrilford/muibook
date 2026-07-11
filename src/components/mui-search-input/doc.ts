@@ -18,7 +18,7 @@ export const muiDocs: MuiDocs = {
         "Use for filtering a nearby view, list, table, or navigation surface.",
         "Use the action slot only when the default compact search button needs to be replaced.",
         "Use the after slot for adjacent controls that should yield to search when the user activates it.",
-        "Use open when application state should control whether search is revealed.",
+        "Use open only when the after slot is populated and application state should control whether search replaces that content.",
         "Use autofocus when the search input should receive focus as soon as it is shown.",
       ],
     },
@@ -37,7 +37,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Search action: Compact icon button shown when after-slot content is present; replaceable with slot='action'.",
         "Input: Search field with leading search icon.",
-        "Cancel: Returns to the compact state.",
+        "Cancel: Matches the input size and returns to populated after-slot content.",
         "After: Optional slotted content hidden during search reveal.",
       ],
     },
@@ -47,7 +47,7 @@ export const muiDocs: MuiDocs = {
         {
           key: "default",
           title: "Default",
-          description: "Search input without slotted trailing content.",
+          description: "Search input without slotted trailing content. It stays visible and does not render a meaningful cancel state.",
           image: "",
         },
         {

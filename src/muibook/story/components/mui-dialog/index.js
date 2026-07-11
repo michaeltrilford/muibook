@@ -14,7 +14,7 @@ class storyDialog extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
-      mui-container { min-width: initial; } 
+      mui-container { min-width: initial; }
 
       .visually-hidden {
         position: absolute;
@@ -53,7 +53,7 @@ class storyDialog extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
             &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-dialog&gt;
-          
+
           <br><br>
 
           &lt;!-- Open dialog buttons --&gt;<br>
@@ -277,7 +277,7 @@ class storyDialog extends HTMLElement {
           &lt;mui-dialog data-dialog="hook-4" width="600px" aria-labelledby="dialog-title-4" aria-describedby="dialog-desc-4"&gt;<br>
 
             <br>
-          
+
             &nbsp;&nbsp;&lt;mui-heading slot="title" id="dialog-title-4"&gt;Preview Card&lt;/mui-heading&gt;<br>
 
             <br>
@@ -333,7 +333,7 @@ class storyDialog extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-loader&gt;<br>
           &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
           &lt;/mui-dialog&gt;
-          
+
           <br><br>
 
           &lt;!-- Open dialog buttons --&gt;<br>
@@ -354,7 +354,7 @@ class storyDialog extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -362,7 +362,7 @@ class storyDialog extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-dialog"]'>
         ${stories}
       </story-template>

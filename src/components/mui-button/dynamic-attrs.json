@@ -27,16 +27,16 @@
       "description": "Set when the default slot contains only an avatar, allowing the component to remove normal action chrome and preserve avatar sizing."
     },
     {
-      "name": "dropdown-slot",
-      "description": "Applied to actions rendered inside dropdown content, allowing the action to inherit dropdown item sizing and alignment."
+      "name": "menu-slot",
+      "description": "Applied to direct actions inside Menu so they inherit Menu sizing, alignment, and joined corner treatment."
     },
     {
-      "name": "dropdown-slot-first",
-      "description": "Applied to the first dropdown action, allowing edge radius and spacing to match the dropdown surface."
+      "name": "menu-slot-first",
+      "description": "Applied to the first menu action only when no direct Body heading precedes it, allowing edge radius to match the menu surface."
     },
     {
-      "name": "dropdown-slot-last",
-      "description": "Applied to the last dropdown action, allowing edge radius and spacing to match the dropdown surface."
+      "name": "menu-slot-last",
+      "description": "Applied to the last menu action, allowing edge radius and spacing to match the menu surface."
     },
     {
       "name": "alert-slot",

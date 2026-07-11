@@ -189,11 +189,11 @@ const videoMenuItems = /*html*/ `
         Subscriptions
         <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">        
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Real Estate">
         <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Real Estate Profile Image"></mui-avatar>
         Real Estate
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">        
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Jazz Beats">
         <mui-avatar slot="before" size="small" label="Jazz Beats"></mui-avatar>
         Jazz Beats
       </mui-button>
@@ -201,13 +201,13 @@ const videoMenuItems = /*html*/ `
         <mui-avatar slot="before" size="small" image="${MikeAvatar}" label="Mike Trilford Profile Image"></mui-avatar>
         Julie Cooks
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">        
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Sidebar Court">
         <mui-avatar slot="before" size="small" label="Sidebar Court">
           <mui-icon-left-sidebar></mui-icon-left-sidebar>
         </mui-avatar>
         Sidebar Court
       </mui-button>
-      <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">        
+      <mui-button variant="tertiary" class="video-menu-item" aria-label="Hot Grill">
         <mui-avatar slot="before" size="small" label="Hot Grill" background="attention">
           <mui-icon-sun></mui-icon-sun>
         </mui-avatar>
@@ -218,7 +218,7 @@ const videoMenuItems = /*html*/ `
         Show more
       </mui-button>
     </mui-v-stack>
-    
+
     <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
 
     <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
@@ -243,7 +243,7 @@ const videoMenuItems = /*html*/ `
         Show more
       </mui-button>
     </mui-v-stack>
-    
+
     <mui-rule weight="var(--stroke-size-100)" width="100%" direction="horizontal"></mui-rule>
 
     <mui-v-stack alignx="stretch" aligny="start" space="var(--space-000)" class="video-menu-group">
@@ -329,7 +329,7 @@ const styles = /*css*/ `
     box-sizing: border-box;
     padding: var(--space-600) var(--space-500) var(--space-500);
   }
-  
+
   .card_content { padding-left: var(--space-100); }
 
   .card::part(background) {
@@ -369,8 +369,8 @@ const styles = /*css*/ `
   }
 
   .video_grid {
-    width: 100%; 
-    padding: var(--space-500); 
+    width: 100%;
+    padding: var(--space-500);
     padding-top: var(--space-200);
     box-sizing: border-box;
   }
@@ -394,7 +394,7 @@ const styles = /*css*/ `
 
     .video_grid {
       width: 100%;
-      padding: var(--space-700); 
+      padding: var(--space-700);
       padding-top: var(--space-200);
     }
 
@@ -526,14 +526,14 @@ class compMuiTube extends HTMLElement {
             ${videoPageContent}
           </mui-drawer>
           <div slot="showBelow">
-            <mui-drawer 
-              variant="overlay" 
-              width="260px" 
-              side="left" 
-              z-index="200" 
-              data-drawer="video-header-overlay" 
+            <mui-drawer
+              variant="overlay"
+              width="260px"
+              side="left"
+              z-index="200"
+              data-drawer="video-header-overlay"
               drawer-space="none"
-            >    
+            >
             <mui-h-stack style="padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color);" alignx="space-between" aligny="center">
               <mui-h-stack alignx="start" aligny="center" space="var(--space-000)">
                 <mui-button variant="tertiary" aria-label="Open menu" size="medium" data-close>
@@ -556,7 +556,7 @@ class compMuiTube extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="MuiTube"
         description="
           A composition demonstrating how to build a YouTube-like experience using components from the Design System, arranged in a way that effectively supports real content.

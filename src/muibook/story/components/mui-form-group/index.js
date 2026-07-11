@@ -64,7 +64,7 @@ class StoryFormGroup extends HTMLElement {
               </mui-field>
             </mui-form-group>
             <mui-form-message>
-              <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+              <mui-icon-info slot="before" color="var(--text-color-secondary)"></mui-icon-info>
               You can update these preferences at any time.
             </mui-form-message>
           </mui-v-stack>
@@ -172,7 +172,7 @@ class StoryFormGroup extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
+
         imports='["@muibook/components/mui-form-group"]'>
         <story-quicklinks
           slot="message"

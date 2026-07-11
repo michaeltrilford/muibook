@@ -12,7 +12,7 @@ class storyContainer extends HTMLElement {
     const styles = /*css*/ `
       :host { display: block; }
 
-      mui-container { min-width: initial; } 
+      mui-container { min-width: initial; }
     `;
 
     const stories = /*html*/ `
@@ -98,7 +98,7 @@ class storyContainer extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -106,7 +106,7 @@ class storyContainer extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-container"]'>
         <story-quicklinks
           slot="message"

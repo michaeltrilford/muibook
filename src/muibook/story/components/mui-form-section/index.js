@@ -28,8 +28,8 @@ class StoryFormSection extends HTMLElement {
               </mui-field>
               <mui-field label="Role">
                 <mui-select options='[{"label":"Product","value":"product"},{"label":"Engineering","value":"engineering"},{"label":"Design","value":"design"}]'></mui-select>
-                <mui-form-message slot="message" style="color: var(--text-color-optional);">
-                  <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+                <mui-form-message slot="message" style="color: var(--text-color-secondary);">
+                  <mui-icon-info slot="before" color="var(--text-color-secondary)"></mui-icon-info>
                   We only use this information to tailor onboarding content.
                 </mui-form-message>
               </mui-field>
@@ -83,8 +83,8 @@ class StoryFormSection extends HTMLElement {
                 <mui-form-group variant="horizontal" hide-heading>
                   <mui-field label="Billing Contact">
                     <mui-input type="email" placeholder="billing@company.com"></mui-input>
-                    <mui-form-message slot="message" style="color: var(--text-color-optional);">
-                      <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+                    <mui-form-message slot="message" style="color: var(--text-color-secondary);">
+                      <mui-icon-info slot="before" color="var(--text-color-secondary)"></mui-icon-info>
                       You can update these preferences at any time
                     </mui-form-message>
                   </mui-field>
@@ -136,8 +136,8 @@ class StoryFormSection extends HTMLElement {
                   <mui-radio value="sms">SMS</mui-radio>
                   <mui-radio value="none">None</mui-radio>
                 </mui-radio-group>
-                <mui-form-message slot="message" style="color: var(--text-color-optional);">
-                  <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+                <mui-form-message slot="message" style="color: var(--text-color-secondary);">
+                  <mui-icon-info slot="before" color="var(--text-color-secondary)"></mui-icon-info>
                   Use this when the surrounding card
                 </mui-form-message>
               </mui-field>
@@ -242,8 +242,8 @@ class StoryFormSection extends HTMLElement {
                   <mui-radio value="sms">SMS</mui-radio>
                   <mui-radio value="none">None</mui-radio>
                 </mui-radio-group>
-                <mui-form-message slot="message" style="color: var(--text-color-optional);">
-                  <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+                <mui-form-message slot="message" style="color: var(--text-color-secondary);">
+                  <mui-icon-info slot="before" color="var(--text-color-secondary)"></mui-icon-info>
                   Use this card example to compare internal spacing against form-section
                 </mui-form-message>
               </mui-field>
@@ -275,8 +275,8 @@ class StoryFormSection extends HTMLElement {
               </mui-field>
               <mui-field label="Contact Email">
                 <mui-input type="email" placeholder="you@company.com"></mui-input>
-                <mui-form-message slot="message" style="color: var(--text-color-optional);">
-                  <mui-icon-info slot="before" color="var(--text-color-optional)"></mui-icon-info>
+                <mui-form-message slot="message" style="color: var(--text-color-secondary);">
+                  <mui-icon-info slot="before" color="var(--text-color-secondary)"></mui-icon-info>
                   We reply with commercial licensing options based on your use case.
                 </mui-form-message>
               </mui-field>
@@ -411,7 +411,7 @@ class StoryFormSection extends HTMLElement {
         guides="${(data?.guides || []).join("|||")}"
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
-      
+
         imports='["@muibook/components/mui-form-section"]'>
         <story-quicklinks
           slot="message"

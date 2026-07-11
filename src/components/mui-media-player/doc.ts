@@ -45,7 +45,7 @@ export const muiDocs: MuiDocs = {
     related: {
       items: [
         { name: "Prompt", link: "https://guides.muibook.com/prompt" },
-        { name: "Prompt Preview", link: "https://guides.muibook.com/prompt-preview" },
+        { name: "Preview Chip", link: "https://guides.muibook.com/preview-chip" },
       ],
     },
     rules: [{ heading: "", description: "", doContent: [{ description: "", image: "" }], dontContent: [{ description: "", image: "" }] }],

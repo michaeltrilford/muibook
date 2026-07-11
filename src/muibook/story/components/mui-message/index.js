@@ -18,7 +18,7 @@ class storyMessage extends HTMLElement {
       <story-api-types tag="mui-message" title="Message"></story-api-types>
 
       <story-card
-        title="Default" 
+        title="Default"
         description="Use Message as a persistent page-level notice with a heading and slotted body content."
         accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
       >
@@ -40,7 +40,7 @@ class storyMessage extends HTMLElement {
         usage="Use Body with an info icon for lightweight inline guidance.|||Use Form Message inside Field for form guidance, validation, or status copy.|||When Form Message is used inside mui-field it inherits size='medium'."
       >
         <mui-v-stack slot="body" space="var(--space-600)" style="padding: var(--space-600)">
-          <mui-body variant="optional">
+          <mui-body variant="secondary">
             <mui-icon-info slot="before"></mui-icon-info>
             Use this pattern for lightweight inline guidance.
           </mui-body>
@@ -55,7 +55,7 @@ class storyMessage extends HTMLElement {
           </mui-field>
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-body variant="optional"&gt;
+          &lt;mui-body variant="secondary"&gt;
           <br>
           &nbsp;&nbsp;&lt;mui-icon-info slot="before"&gt;&lt;/mui-icon-info&gt;
           <br>
@@ -78,8 +78,8 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Slot: Body text" 
+      <story-card
+        title="Slot: Body text"
         description="Supporting content belongs in the default slot; the heading should stay short."
       >
         <mui-message heading="Message heading" slot="body">
@@ -94,8 +94,8 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Slot: List" 
+      <story-card
+        title="Slot: List"
         description="Use list content when the page-level notice needs several supporting points."
       >
 
@@ -132,8 +132,8 @@ class storyMessage extends HTMLElement {
 
       </story-card>
 
-      <story-card 
-        title="Slot: Icon" 
+      <story-card
+        title="Slot: Icon"
         description="Icon is customised via the icon property, which accepts any mui-icon-[name] from the mui icon-set."
       >
         <mui-message slot="body" heading="Accessibility" icon="mui-icon-accessibility">
@@ -148,8 +148,8 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Size: Large, Medium, Small" 
+      <story-card
+        title="Size: Large, Medium, Small"
         description="Message supports size density for layout and content."
         usage="Use large for prominent explanatory content blocks.|||Use medium for standard page-level guidance in denser layouts.|||Use small for compact regions where space is limited."
         accessibility="Keep heading and body concise at smaller sizes to preserve readability."
@@ -181,9 +181,9 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Variant: Neutral" 
-        description="A calm, balanced tone for non-critical, persistent messages." 
+      <story-card
+        title="Variant: Neutral"
+        description="A calm, balanced tone for non-critical, persistent messages."
         usage="Use on settings or system pages to display non-urgent information||| Suitable for background status like sync confirmation or feature explanations."
         usageLink="https://guides.muibook.com/message"
         accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
@@ -194,7 +194,7 @@ class storyMessage extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-message
           <br />
-          &nbsp;&nbsp;heading="Sync Settings" 
+          &nbsp;&nbsp;heading="Sync Settings"
           <br />
           &nbsp;&nbsp;variant="neutral"
           <br />
@@ -208,8 +208,8 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Variant: Positive" 
+      <story-card
+        title="Variant: Positive"
         description="The Positive state conveys durable page-level success or completion status."
         usage="Use for persistent success notices that apply to the page or workflow.|||Use lighter Body or Form Message patterns for small inline confirmations."
         usageLink="https://guides.muibook.com/message"
@@ -220,9 +220,9 @@ class storyMessage extends HTMLElement {
           <mui-link>Download Your Report</mui-link>
         </mui-message>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-message 
+          &lt;mui-message
           <br />
-          &nbsp;&nbsp;heading="Message heading" 
+          &nbsp;&nbsp;heading="Message heading"
           <br />
           &nbsp;&nbsp;variant="positive"
           <br />
@@ -236,8 +236,8 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card 
-        title="Variant: Info" 
+      <story-card
+        title="Variant: Info"
         description="The Info state provides page-level system information, feature changes, or workflow context."
         usage="Use for durable page-level information.|||For inline context, use Body size='small' with mui-icon-info in slot='before'."
         usageLink="https://guides.muibook.com/message"
@@ -248,9 +248,9 @@ class storyMessage extends HTMLElement {
           <mui-link>Try the New Layout</mui-link>
         </mui-message>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-message 
+          &lt;mui-message
           <br />
-          &nbsp;&nbsp;heading="Message heading" 
+          &nbsp;&nbsp;heading="Message heading"
           <br />
           &nbsp;&nbsp;variant="info"
           <br />
@@ -276,9 +276,9 @@ class storyMessage extends HTMLElement {
           <mui-link>Update Your Password</mui-link>
         </mui-message>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-message 
+          &lt;mui-message
           <br />
-          &nbsp;&nbsp;heading="Message heading" 
+          &nbsp;&nbsp;heading="Message heading"
           <br />
           &nbsp;&nbsp;variant="warning"
           <br />
@@ -304,9 +304,9 @@ class storyMessage extends HTMLElement {
           <mui-link>View Maintenance Schedule</mui-link>
         </mui-message>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-message 
+          &lt;mui-message
           <br />
-          &nbsp;&nbsp;heading="Message heading" 
+          &nbsp;&nbsp;heading="Message heading"
           <br />
           &nbsp;&nbsp;variant="attention"
           <br />
@@ -324,7 +324,7 @@ class storyMessage extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
 
-      <story-template 
+      <story-template
         title="${data.title}"
         description="${data.description}"
         github="${data.github}"
@@ -332,7 +332,7 @@ class storyMessage extends HTMLElement {
         guides="${data.guides}"
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
-      
+
         imports='["@muibook/components/mui-message"]'>
         ${stories}
       </story-template>

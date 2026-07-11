@@ -152,21 +152,25 @@
       "import": "./dist/esm/components/mui-form-message/index.js",
       "types": "./dist/types/components/mui-form-message/index.d.ts"
     },
+    "./mui-menu": {
+      "import": "./dist/esm/components/mui-menu/index.js",
+      "types": "./dist/types/components/mui-menu/index.d.ts"
+    },
     "./mui-prompt": {
       "import": "./dist/esm/components/mui-prompt/index.js",
       "types": "./dist/types/components/mui-prompt/index.d.ts"
     },
-    "./mui-prompt-toggle": {
-      "import": "./dist/esm/components/mui-prompt-toggle/index.js",
-      "types": "./dist/types/components/mui-prompt-toggle/index.d.ts"
+    "./mui-action-toggle": {
+      "import": "./dist/esm/components/mui-action-toggle/index.js",
+      "types": "./dist/types/components/mui-action-toggle/index.d.ts"
     },
     "./mui-context-bar": {
       "import": "./dist/esm/components/mui-context-bar/index.js",
       "types": "./dist/types/components/mui-context-bar/index.d.ts"
     },
-    "./mui-prompt-message": {
-      "import": "./dist/esm/components/mui-prompt-message/index.js",
-      "types": "./dist/types/components/mui-prompt-message/index.d.ts"
+    "./mui-chat-message": {
+      "import": "./dist/esm/components/mui-chat-message/index.js",
+      "types": "./dist/types/components/mui-chat-message/index.d.ts"
     },
     "./mui-result-bar": {
       "import": "./dist/esm/components/mui-result-bar/index.js",
@@ -176,9 +180,9 @@
       "import": "./dist/esm/components/mui-work-log/index.js",
       "types": "./dist/types/components/mui-work-log/index.d.ts"
     },
-    "./mui-prompt-preview": {
-      "import": "./dist/esm/components/mui-prompt-preview/index.js",
-      "types": "./dist/types/components/mui-prompt-preview/index.d.ts"
+    "./mui-preview-chip": {
+      "import": "./dist/esm/components/mui-preview-chip/index.js",
+      "types": "./dist/types/components/mui-preview-chip/index.d.ts"
     },
     "./mui-file-diff": {
       "import": "./dist/esm/components/mui-file-diff/index.js",

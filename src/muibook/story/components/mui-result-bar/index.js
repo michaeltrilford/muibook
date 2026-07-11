@@ -24,8 +24,8 @@ class StoryResultBar extends HTMLElement {
           <mui-v-stack slot="start" space="0">
             <mui-body size="small" weight="bold">Edited compositions.ts</mui-body>
             <mui-h-stack aligny="center" space="var(--space-100)">
-              <mui-body size="x-small" weight="regular" variant="success">+251</mui-body>
-              <mui-body size="x-small" weight="regular" variant="error">-14</mui-body>
+              <mui-body size="x-small" weight="regular" variant="positive">+251</mui-body>
+              <mui-body size="x-small" weight="regular" variant="attention">-14</mui-body>
             </mui-h-stack>
           </mui-v-stack>
           <mui-button slot="actions" variant="tertiary" size="x-small">Undo</mui-button>
@@ -68,8 +68,8 @@ class StoryResultBar extends HTMLElement {
       >
         <mui-result-bar slot="body" variant="accordion" label="Edited 4 files" rule>
           <mui-h-stack slot="after-label" alignY="center" space="var(--space-100)">
-            <mui-body size="x-small" weight="regular" variant="success">+251</mui-body>
-            <mui-body size="x-small" weight="regular" variant="error">-14</mui-body>
+            <mui-body size="x-small" weight="regular" variant="positive">+251</mui-body>
+            <mui-body size="x-small" weight="regular" variant="attention">-14</mui-body>
           </mui-h-stack>
 
           <mui-button slot="actions" variant="tertiary" size="x-small">Undo</mui-button>
@@ -113,8 +113,8 @@ class StoryResultBar extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-result-bar variant="accordion" label="Edited 4 files" rule&gt;<br />
           &nbsp;&nbsp;&lt;mui-h-stack slot="after-label" alignY="center" space="var(--space-100)"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="success"&gt;+251&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="error"&gt;-14&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="positive"&gt;+251&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="attention"&gt;-14&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           <br />
           &nbsp;&nbsp;&lt;mui-button slot="actions" variant="tertiary" size="x-small"&gt;Undo&lt;/mui-button&gt;<br />
