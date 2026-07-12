@@ -43,7 +43,6 @@ class StoryMenu extends HTMLElement {
 
     const menuSizes = ["x-small", "small", "medium", "large"];
     const themeActions = () => /*html*/ `
-      <mui-body variant="secondary">Theme actions</mui-body>
       <mui-button>Preview theme</mui-button>
       <mui-button>Set as default</mui-button>
       <mui-button>Edit design tokens</mui-button>
@@ -51,7 +50,6 @@ class StoryMenu extends HTMLElement {
       <mui-button>Export theme</mui-button>
     `;
     const dateActions = () => /*html*/ `
-      <mui-body variant="secondary">Selected date</mui-body>
       <mui-button>View schedule</mui-button>
       <mui-button>Create event</mui-button>
       <mui-button>Copy date</mui-button>
@@ -133,7 +131,6 @@ class StoryMenu extends HTMLElement {
               <mui-icon-search slot="inside-before"></mui-icon-search>
             </mui-input>
             <mui-rule></mui-rule>
-            <mui-body variant="secondary">Metrics</mui-body>
             <mui-button data-search-option>Ending headcount</mui-button>
             <mui-button data-search-option>Seats per team</mui-button>
             <mui-button data-search-option>Expansion seats</mui-button>
@@ -151,7 +148,6 @@ class StoryMenu extends HTMLElement {
               <mui-icon-search slot="inside-before"></mui-icon-search>
             </mui-input>
             <mui-rule></mui-rule>
-            <mui-body variant="secondary">Metrics</mui-body>
             <mui-button data-search-option>Ending headcount</mui-button>
             <mui-button data-search-option>Seats per team</mui-button>
             <mui-button data-search-option>Expansion seats</mui-button>
@@ -169,7 +165,6 @@ class StoryMenu extends HTMLElement {
               <mui-icon-search slot="inside-before"></mui-icon-search>
             </mui-input>
             <mui-rule></mui-rule>
-            <mui-body variant="secondary">Metrics</mui-body>
             <mui-button data-search-option>Ending headcount</mui-button>
             <mui-button data-search-option>Seats per team</mui-button>
             <mui-button data-search-option>Expansion seats</mui-button>
@@ -187,7 +182,6 @@ class StoryMenu extends HTMLElement {
               <mui-icon-search slot="inside-before"></mui-icon-search>
             </mui-input>
             <mui-rule></mui-rule>
-            <mui-body variant="secondary">Metrics</mui-body>
             <mui-button data-search-option>Ending headcount</mui-button>
             <mui-button data-search-option>Seats per team</mui-button>
             <mui-button data-search-option>Expansion seats</mui-button>
@@ -208,7 +202,6 @@ class StoryMenu extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-search slot=&quot;inside-before&quot;&gt;&lt;/mui-icon-search&gt;<br />
           &nbsp;&nbsp;&lt;/mui-input&gt;<br />
           &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body variant=&quot;secondary&quot;&gt;Metrics&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Ending headcount&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Seats per team&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Expansion seats&lt;/mui-button&gt;<br />
@@ -242,7 +235,6 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-file-icon slot="before" type="typescript" decorative></mui-file-icon>app.ts</mui-button>
           <mui-button><mui-file-icon slot="before" type="js" decorative></mui-file-icon>index.js</mui-button>
           <mui-button><mui-file-icon slot="before" type="css" decorative></mui-file-icon>styles.css</mui-button>
-          <mui-rule></mui-rule>
           <mui-body variant="secondary">Project files</mui-body>
           <mui-button><mui-file-icon slot="before" type="markdown" decorative></mui-file-icon>README.md</mui-button>
           <mui-button><mui-file-icon slot="before" type="json" decorative></mui-file-icon>package.json</mui-button>
@@ -257,7 +249,6 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-file-icon slot="before" type="typescript" decorative></mui-file-icon>app.ts</mui-button>
           <mui-button><mui-file-icon slot="before" type="js" decorative></mui-file-icon>index.js</mui-button>
           <mui-button><mui-file-icon slot="before" type="css" decorative></mui-file-icon>styles.css</mui-button>
-          <mui-rule></mui-rule>
           <mui-body variant="secondary">Project files</mui-body>
           <mui-button><mui-file-icon slot="before" type="markdown" decorative></mui-file-icon>README.md</mui-button>
           <mui-button><mui-file-icon slot="before" type="json" decorative></mui-file-icon>package.json</mui-button>
@@ -272,7 +263,6 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-file-icon slot="before" type="typescript" decorative></mui-file-icon>app.ts</mui-button>
           <mui-button><mui-file-icon slot="before" type="js" decorative></mui-file-icon>index.js</mui-button>
           <mui-button><mui-file-icon slot="before" type="css" decorative></mui-file-icon>styles.css</mui-button>
-          <mui-rule></mui-rule>
           <mui-body variant="secondary">Project files</mui-body>
           <mui-button><mui-file-icon slot="before" type="markdown" decorative></mui-file-icon>README.md</mui-button>
           <mui-button><mui-file-icon slot="before" type="json" decorative></mui-file-icon>package.json</mui-button>
@@ -288,7 +278,6 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-file-icon slot="before" type="typescript" decorative></mui-file-icon>app.ts</mui-button>
           <mui-button><mui-file-icon slot="before" type="js" decorative></mui-file-icon>index.js</mui-button>
           <mui-button><mui-file-icon slot="before" type="css" decorative></mui-file-icon>styles.css</mui-button>
-          <mui-rule></mui-rule>
           <mui-body variant="secondary">Project files</mui-body>
           <mui-button><mui-file-icon slot="before" type="markdown" decorative></mui-file-icon>README.md</mui-button>
           <mui-button><mui-file-icon slot="before" type="json" decorative></mui-file-icon>package.json</mui-button>
@@ -303,7 +292,6 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-icon-home slot="before"></mui-icon-home>Overview</mui-button>
           <mui-button><mui-icon-reload slot="before"></mui-icon-reload>Recent activity</mui-button>
           <mui-button><mui-icon-copy slot="before"></mui-icon-copy>Duplicate workspace</mui-button>
-          <mui-rule></mui-rule>
           <mui-body variant="secondary">Preferences</mui-body>
           <mui-button><mui-icon-notification slot="before"></mui-icon-notification>Notifications</mui-button>
           <mui-button><mui-icon-accessibility slot="before"></mui-icon-accessibility>Accessibility</mui-button>
@@ -318,7 +306,6 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-icon-home slot="before"></mui-icon-home>Overview</mui-button>
           <mui-button><mui-icon-reload slot="before"></mui-icon-reload>Recent activity</mui-button>
           <mui-button><mui-icon-copy slot="before"></mui-icon-copy>Duplicate workspace</mui-button>
-          <mui-rule></mui-rule>
           <mui-body variant="secondary">Preferences</mui-body>
           <mui-button><mui-icon-notification slot="before"></mui-icon-notification>Notifications</mui-button>
           <mui-button><mui-icon-accessibility slot="before"></mui-icon-accessibility>Accessibility</mui-button>
@@ -333,7 +320,6 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-icon-home slot="before"></mui-icon-home>Overview</mui-button>
           <mui-button><mui-icon-reload slot="before"></mui-icon-reload>Recent activity</mui-button>
           <mui-button><mui-icon-copy slot="before"></mui-icon-copy>Duplicate workspace</mui-button>
-          <mui-rule></mui-rule>
           <mui-body variant="secondary">Preferences</mui-body>
           <mui-button><mui-icon-notification slot="before"></mui-icon-notification>Notifications</mui-button>
           <mui-button><mui-icon-accessibility slot="before"></mui-icon-accessibility>Accessibility</mui-button>
@@ -348,7 +334,6 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-icon-home slot="before"></mui-icon-home>Overview</mui-button>
           <mui-button><mui-icon-reload slot="before"></mui-icon-reload>Recent activity</mui-button>
           <mui-button><mui-icon-copy slot="before"></mui-icon-copy>Duplicate workspace</mui-button>
-          <mui-rule></mui-rule>
           <mui-body variant="secondary">Preferences</mui-body>
           <mui-button><mui-icon-notification slot="before"></mui-icon-notification>Notifications</mui-button>
           <mui-button><mui-icon-accessibility slot="before"></mui-icon-accessibility>Accessibility</mui-button>
@@ -397,7 +382,6 @@ class StoryMenu extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-menu size=&quot;small&quot;&gt;<br />
           &nbsp;&nbsp;&lt;mui-select hide-label label=&quot;Theme&quot; options='[{&quot;value&quot;:&quot;mui&quot;,&quot;label&quot;:&quot;Mui&quot;},{&quot;value&quot;:&quot;jal&quot;,&quot;label&quot;:&quot;JAL&quot;}]'&gt;&lt;/mui-select&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body variant=&quot;secondary&quot;&gt;Theme actions&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Preview theme&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Set as default&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Edit design tokens&lt;/mui-button&gt;<br />
@@ -415,7 +399,6 @@ class StoryMenu extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-menu size=&quot;small&quot;&gt;<br />
           &nbsp;&nbsp;&lt;mui-date-picker hide-label label=&quot;Select date&quot; value=&quot;2026-07-09&quot;&gt;&lt;/mui-date-picker&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body variant=&quot;secondary&quot;&gt;Selected date&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;View schedule&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Create event&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Copy date&lt;/mui-button&gt;<br />
@@ -433,7 +416,6 @@ class StoryMenu extends HTMLElement {
         <story-code-block slot="footer" scrollable>
           &lt;mui-menu size=&quot;small&quot;&gt;<br />
           &nbsp;&nbsp;&lt;mui-date-picker hide-label label=&quot;Select date&quot; value=&quot;2026-07-09&quot;&gt;&lt;/mui-date-picker&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body variant=&quot;secondary&quot;&gt;Selected date&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;View schedule&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Create event&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Copy date&lt;/mui-button&gt;<br />

@@ -68,22 +68,26 @@ class MuiBody extends HTMLElement {
 
       :host([menu-slot][size="xx-small"]) p {
         padding: var(--action-padding-x-small);
-        padding-block-end: 0;
+        padding-block-start: var(--space-100);
+        padding-block-end: var(--space-025);
       }
 
       :host([menu-slot][size="x-small"]) p {
         padding: var(--action-padding-small);
-        padding-block-end: 0;
+        padding-block-start: var(--space-200);
+        padding-block-end: var(--space-050);
       }
 
       :host([menu-slot][size="small"]) p {
         padding: var(--action-padding);
-        padding-block-end: 0;
+        padding-block-start: var(--space-300);
+        padding-block-end: var(--space-050);
       }
 
       :host([menu-slot][size="medium"]) p {
         padding: var(--action-padding-large);
-        padding-block-end: 0;
+        padding-block-start: var(--space-400);
+        padding-block-end: var(--space-100);
       }
 
       :host([has-before]) p,
