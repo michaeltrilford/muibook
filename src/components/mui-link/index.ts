@@ -207,7 +207,8 @@ class MuiLink extends HTMLElement {
       assignedNodes.every((node) =>
         node.nodeType === Node.ELEMENT_NODE
           ? (node as HTMLElement).classList.contains("mui-icon") ||
-            (node as HTMLElement).tagName.toLowerCase() === "svg"
+            (node as HTMLElement).tagName.toLowerCase() === "svg" ||
+            (node as HTMLElement).tagName.toLowerCase() === "mui-file-icon"
           : !node.textContent?.trim(),
       );
 
@@ -215,6 +216,7 @@ class MuiLink extends HTMLElement {
 
     if (iconOnly) {
       this.updateIconSizes(assignedNodes, true);
+      this.updateComposedControlSizes(assignedNodes);
     } else {
       const allSlots = [slotBefore, slotDefault, slotAfter];
       allSlots.forEach((slot) => {
@@ -234,7 +236,7 @@ class MuiLink extends HTMLElement {
   private updateComposedControlSizes(nodes: Node[]): void {
     const linkSize = this.getAttribute("size") || "medium";
     const fileIconSizeMap: Record<string, string> = {
-      "xx-small": "xx-small",
+      "xx-small": "x-small",
       "x-small": "x-small",
       small: "x-small",
       medium: "small",
@@ -1113,6 +1115,13 @@ class MuiLink extends HTMLElement {
 
       :host([size="large"][variant]:not([variant="default"])[has-before]) a {
         padding-left: var(--action-before-slot-padding-large);
+      }
+
+      :host([menu-slot][size][variant]) a,
+      :host([menu-slot][size][variant]) a:hover,
+      :host([menu-slot][size][variant]) a:focus,
+      :host([menu-slot][size][variant]) a[aria-disabled="true"] {
+        font-weight: var(--font-weight-regular);
       }
 
       :host([has-video]) {

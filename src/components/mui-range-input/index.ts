@@ -89,14 +89,15 @@ class MuiRangeInput extends HTMLElement {
   }
 
   private updateVisuals() {
+    const wrap = this.shadowRoot?.querySelector(".range-wrap") as HTMLElement | null;
     const input = this.shadowRoot?.querySelector("input") as HTMLInputElement | null;
-    if (!input) return;
+    if (!wrap || !input) return;
     const min = Number(input.min || "0");
     const max = Number(input.max || "100");
     const value = Number(input.value || "0");
     const range = Math.max(0, max - min);
     const progress = range > 0 ? Math.max(0, Math.min(1, (value - min) / range)) : 0;
-    input.style.setProperty("--range-input-progress", `${progress * 100}%`);
+    wrap.style.setProperty("--range-input-progress", `${progress * 100}%`);
     this.updateBubble();
   }
 
@@ -184,20 +185,31 @@ class MuiRangeInput extends HTMLElement {
           display: flex;
           align-items: center;
         }
+        .range-wrap::before {
+          content: "";
+          position: absolute;
+          inset-inline: 0;
+          top: 50%;
+          height: var(--range-input-track-height-current);
+          border-radius: var(--range-input-track-radius);
+          background: linear-gradient(
+            to right,
+            var(--range-input-accent-color) 0 var(--range-input-progress),
+            var(--range-input-track-color) var(--range-input-progress) 100%
+          );
+          transform: translateY(-50%);
+          pointer-events: none;
+        }
         input[type="range"] {
           appearance: none;
           -webkit-appearance: none;
+          position: relative;
           width: 100%;
           height: var(--range-input-thumb-size-current);
           margin: 0;
           padding: 0;
           border: 0;
-          background:
-            linear-gradient(
-              to right,
-              var(--range-input-accent-color) 0 var(--range-input-progress),
-              var(--range-input-track-color) var(--range-input-progress) 100%
-            ) center / 100% var(--range-input-track-height-current) no-repeat;
+          background: transparent;
           cursor: grab;
           touch-action: none;
         }
@@ -222,12 +234,12 @@ class MuiRangeInput extends HTMLElement {
         input[type="range"]::-moz-range-track {
           height: var(--range-input-track-height-current);
           border-radius: var(--range-input-track-radius);
-          background: var(--range-input-track-color);
+          background: transparent;
         }
         input[type="range"]::-moz-range-progress {
           height: var(--range-input-track-height-current);
           border-radius: var(--range-input-track-radius);
-          background: var(--range-input-accent-color);
+          background: transparent;
         }
         input[type="range"]::-moz-range-thumb {
           width: var(--range-input-thumb-size-current);

@@ -42,7 +42,8 @@ export const muiApi = {
         type: { text: '"default" | "filled" | "ghost"' },
         default: "default",
         description: "The visual variant of the input field.",
-      }
+      },
+      { name: "surface", type: { text: '"default" | "seamless"' }, default: "default", description: "Visual surface style. Seamless removes borders and backgrounds." }
     ],
     slots: [],
     events: [

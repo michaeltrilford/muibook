@@ -30,6 +30,7 @@ class MuiChipInput extends HTMLElement {
       "menu-slot",
       "padding-block",
       "padding-inline",
+      "surface",
     ];
   }
 
@@ -619,6 +620,24 @@ class MuiChipInput extends HTMLElement {
         mui-h-stack.chip-slot-shell.after-shell mui-chip:last-child {
           --chip-radius-right: calc(var(--chip-input-border-radius) + var(--stroke-size-200));
         }
+        :host([surface="seamless"]) mui-h-stack.chip-slot-shell,
+        :host([surface="seamless"]) mui-h-stack.chip-slot-shell.mobile-stack.before-shell,
+        :host([surface="seamless"]) mui-h-stack.chip-slot-shell.mobile-stack.after-shell {
+          background: transparent;
+          border-color: transparent;
+        }
+        :host([surface="seamless"][slot="top"]) mui-h-stack.chip-slot-shell.before-shell mui-chip:first-child {
+          --chip-radius-bottom-left: 0px;
+        }
+        :host([surface="seamless"][slot="top"]) mui-h-stack.chip-slot-shell.after-shell mui-chip:last-child {
+          --chip-radius-bottom-right: 0px;
+        }
+        :host([surface="seamless"][slot="bottom"]) mui-h-stack.chip-slot-shell.before-shell mui-chip:first-child {
+          --chip-radius-top-left: 0px;
+        }
+        :host([surface="seamless"][slot="bottom"]) mui-h-stack.chip-slot-shell.after-shell mui-chip:last-child {
+          --chip-radius-top-right: 0px;
+        }
         .option {
           width: 100%;
           justify-content: flex-start;
@@ -642,6 +661,7 @@ class MuiChipInput extends HTMLElement {
           value="${this.inputValue}"
           ${paddingBlock ? `padding-block="${paddingBlock}"` : ""}
           ${paddingInline ? `padding-inline="${paddingInline}"` : ""}
+          ${this.hasAttribute("surface") ? `surface="${this.getAttribute("surface")}"` : ""}
           ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
           ${isMobileStack ? 'slot-layout="stack-mobile"' : ""}
           ${this.disabled ? "disabled" : ""}

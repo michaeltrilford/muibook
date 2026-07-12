@@ -784,6 +784,22 @@ class MuiButton extends HTMLElement {
       padding-left: var(--action-before-slot-padding-large);
     }
 
+    :host([menu-slot][size="x-small"]:is([has-before], [has-after])) button {
+      padding: var(--action-padding-x-small);
+    }
+
+    :host([menu-slot][size="small"]:is([has-before], [has-after])) button {
+      padding: var(--action-padding-small);
+    }
+
+    :host([menu-slot][size="medium"]:is([has-before], [has-after])) button {
+      padding: var(--action-padding);
+    }
+
+    :host([menu-slot][size="large"]:is([has-before], [has-after])) button {
+      padding: var(--action-padding-large);
+    }
+
     :host([avatar-only]) {
       width: auto;
       display: flex;
@@ -1023,7 +1039,8 @@ class MuiButton extends HTMLElement {
       assignedNodes.every((node: Node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
           const el = node as HTMLElement;
-          return el.tagName.toLowerCase() === "svg" || el.classList.contains("mui-icon");
+          const tagName = el.tagName.toLowerCase();
+          return tagName === "svg" || tagName === "mui-file-icon" || el.classList.contains("mui-icon");
         }
         return node.nodeType === Node.TEXT_NODE && !node.textContent?.trim();
       });
@@ -1031,6 +1048,7 @@ class MuiButton extends HTMLElement {
     if (iconOnly) {
       this.setAttribute("icon-only", "");
       this.updateIconSizes(assignedNodes, true);
+      this.updateComposedControlSizes(assignedNodes);
       return;
     }
 
@@ -1052,7 +1070,7 @@ class MuiButton extends HTMLElement {
   updateComposedControlSizes(nodes: Node[]): void {
     const buttonSize = this.getAttribute("size") || "medium";
     const fileIconSizeMap: Record<string, string> = {
-      "xx-small": "xx-small",
+      "xx-small": "x-small",
       "x-small": "x-small",
       small: "x-small",
       medium: "small",

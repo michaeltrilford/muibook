@@ -26,7 +26,8 @@ export const muiApi = {
         description: "Size of the input field.",
       },
       { name: "padding-block", type: { text: "string" }, description: "Overrides internal Input block padding." },
-      { name: "padding-inline", type: { text: "string" }, description: "Overrides internal Input inline padding." }
+      { name: "padding-inline", type: { text: "string" }, description: "Overrides internal Input inline padding." },
+      { name: "surface", type: { text: '"default" | "seamless"' }, default: "default", description: "Visual surface style. Seamless removes borders and backgrounds." }
     ],
     slots: [],
     events: [

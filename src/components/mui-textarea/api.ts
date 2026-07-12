@@ -17,6 +17,7 @@ export const muiApi = {
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Textarea size scale." },
       { name: "padding-block", type: { text: "string" }, description: "Overrides native textarea block padding with a CSS length or token." },
       { name: "padding-inline", type: { text: "string" }, description: "Overrides native textarea inline padding with a CSS length or token." },
+      { name: "surface", type: { text: '"default" | "seamless"' }, default: "default", description: "Visual surface style. Seamless removes borders and backgrounds." },
     ],
     events: [
       { name: "input", description: "Composed, bubbling event dispatched during value entry with `detail.value`." },

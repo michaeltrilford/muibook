@@ -25,7 +25,7 @@ class StoryMenu extends HTMLElement {
       }
 
       mui-menu[size="large"] {
-        width: min(100%, 30rem);
+        width: min(100%, 40rem);
       }
 
       #menuSearchEmpty[hidden] {
@@ -56,16 +56,21 @@ class StoryMenu extends HTMLElement {
       <mui-button>Export day</mui-button>
       <mui-button>Clear schedule</mui-button>
     `;
+    const inputActions = () => /*html*/ `
+      <mui-button>Home</mui-button>
+      <mui-button>About</mui-button>
+      <mui-button>Contact</mui-button>
+    `;
     const selectMenus = menuSizes
       .map(
         (size) => /*html*/ `
       <mui-menu size="${size}" class="select-menu">
         <mui-select
+          slot="top"
           hide-label
           label="Theme"
           options='[{"value":"mui","label":"Mui"},{"value":"jal","label":"JAL"},{"value":"ana","label":"ANA"}]'
         ></mui-select>
-        <mui-rule></mui-rule>
         ${themeActions()}
       </mui-menu>
     `,
@@ -75,9 +80,8 @@ class StoryMenu extends HTMLElement {
       .map(
         (size) => /*html*/ `
       <mui-menu size="${size}" class="date-menu">
-        <mui-date-picker hide-label label="Select date" value="2026-07-09"></mui-date-picker>
-        <mui-rule></mui-rule>
         ${dateActions()}
+        <mui-date-picker slot="bottom" hide-label label="Select date" value="2026-07-09"></mui-date-picker>
       </mui-menu>
     `,
       )
@@ -86,9 +90,8 @@ class StoryMenu extends HTMLElement {
       .map(
         (size) => /*html*/ `
       <mui-menu size="${size}" class="input-menu">
-        <mui-input hide-label label="Input" value="Hello"></mui-input>
-        <mui-rule></mui-rule>
-        ${dateActions()}
+        ${inputActions()}
+        <mui-input slot="bottom" hide-label label="Input" placeholder="Type to add..."></mui-input>
       </mui-menu>
     `,
       )
@@ -127,10 +130,7 @@ class StoryMenu extends HTMLElement {
         <mui-v-stack slot="body">
 
           <mui-menu size="x-small" class="search-menu">
-            <mui-input id="menuSearch" type="search" label="Search metrics" hide-label placeholder="Search..." size="x-small">
-              <mui-icon-search slot="inside-before"></mui-icon-search>
-            </mui-input>
-            <mui-rule></mui-rule>
+            <mui-search-input slot="top" id="menuSearch" label="Search metrics" placeholder="Search..." size="x-small"></mui-search-input>
             <mui-button data-search-option>Ending headcount</mui-button>
             <mui-button data-search-option>Seats per team</mui-button>
             <mui-button data-search-option>Expansion seats</mui-button>
@@ -144,10 +144,7 @@ class StoryMenu extends HTMLElement {
           </mui-menu>
 
           <mui-menu size="small" class="search-menu">
-            <mui-input id="menuSearch" type="search" label="Search metrics" hide-label placeholder="Search..." size="small">
-              <mui-icon-search slot="inside-before"></mui-icon-search>
-            </mui-input>
-            <mui-rule></mui-rule>
+            <mui-search-input slot="top" id="menuSearch" label="Search metrics" placeholder="Search..." size="small"></mui-search-input>
             <mui-button data-search-option>Ending headcount</mui-button>
             <mui-button data-search-option>Seats per team</mui-button>
             <mui-button data-search-option>Expansion seats</mui-button>
@@ -161,10 +158,7 @@ class StoryMenu extends HTMLElement {
           </mui-menu>
 
           <mui-menu size="medium" class="search-menu">
-            <mui-input id="menuSearch" type="search" label="Search metrics" hide-label placeholder="Search..." size="medium">
-              <mui-icon-search slot="inside-before"></mui-icon-search>
-            </mui-input>
-            <mui-rule></mui-rule>
+            <mui-search-input slot="top" id="menuSearch" label="Search metrics" placeholder="Search..." size="medium"></mui-search-input>
             <mui-button data-search-option>Ending headcount</mui-button>
             <mui-button data-search-option>Seats per team</mui-button>
             <mui-button data-search-option>Expansion seats</mui-button>
@@ -178,10 +172,7 @@ class StoryMenu extends HTMLElement {
           </mui-menu>
 
           <mui-menu size="large" class="search-menu">
-            <mui-input id="menuSearch" type="search" label="Search metrics" hide-label placeholder="Search..." size="large">
-              <mui-icon-search slot="inside-before"></mui-icon-search>
-            </mui-input>
-            <mui-rule></mui-rule>
+            <mui-search-input slot="top" id="menuSearch" label="Search metrics" placeholder="Search..." size="large"></mui-search-input>
             <mui-button data-search-option>Ending headcount</mui-button>
             <mui-button data-search-option>Seats per team</mui-button>
             <mui-button data-search-option>Expansion seats</mui-button>
@@ -198,10 +189,7 @@ class StoryMenu extends HTMLElement {
 
         <story-code-block slot="footer" scrollable>
           &lt;mui-menu size=&quot;small&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-input type=&quot;search&quot; label=&quot;Search metrics&quot; hide-label placeholder=&quot;Search...&quot; size=&quot;small&quot;&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-search slot=&quot;inside-before&quot;&gt;&lt;/mui-icon-search&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-input&gt;<br />
-          &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
+          &nbsp;&nbsp;&lt;mui-search-input slot=&quot;top&quot; label=&quot;Search metrics&quot; placeholder=&quot;Search...&quot; size=&quot;small&quot;&gt;&lt;/mui-search-input&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Ending headcount&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Seats per team&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Expansion seats&lt;/mui-button&gt;<br />
@@ -221,16 +209,226 @@ class StoryMenu extends HTMLElement {
       </story-card>
 
       <story-card
+        id="compact-regions"
+        title="Compact Regions"
+        usage="Place form controls in the top or bottom slot to seamlessly merge them into the Menu surface without an inset field container.|||Form controls retain their outer corner radius and separator while their surfaces become transparent."
+      >
+        <mui-v-stack slot="body" space="var(--space-400)">
+
+          <mui-menu size="x-small">
+            <mui-input slot="bottom" hide-label label="Input" placeholder="Type to add..."></mui-input>
+            <mui-button>View deployment</mui-button>
+            <mui-button>Compare changes</mui-button>
+            <mui-button>Open logs</mui-button>
+          </mui-menu>
+
+          <mui-menu size="small">
+            <mui-select
+              slot="top"
+              hide-label
+              label="Environment"
+              options='[{"value":"development","label":"Development"},{"value":"staging","label":"Staging"},{"value":"production","label":"Production"}]'
+            ></mui-select>
+            <mui-button>View deployment</mui-button>
+            <mui-button>Compare changes</mui-button>
+            <mui-button>Open logs</mui-button>
+          </mui-menu>
+
+          <mui-menu size="medium">
+            <mui-select
+              slot="top"
+              hide-label
+              label="Environment"
+              options='[{"value":"development","label":"Development"},{"value":"staging","label":"Staging"},{"value":"production","label":"Production"}]'
+            ></mui-select>
+            <mui-button>View deployment</mui-button>
+            <mui-button>Compare changes</mui-button>
+            <mui-button>Open logs</mui-button>
+          </mui-menu>
+
+          <mui-menu size="large">
+            <mui-button>View schedule</mui-button>
+            <mui-button>Create event</mui-button>
+            <mui-link href="#compact-regions">Open calendar</mui-link>
+            <mui-date-picker slot="bottom" hide-label label="Select date" value="2026-07-12"></mui-date-picker>
+          </mui-menu>
+
+          <mui-menu size="large">
+            <mui-button>View schedule</mui-button>
+            <mui-button>Create event</mui-button>
+            <mui-link href="#compact-regions">Open calendar</mui-link>
+            <mui-time-picker slot="bottom" hide-label label="Select date" value="09:30"></mui-time-picker>
+          </mui-menu>
+
+          <mui-menu size="large">
+            <mui-button>View schedule</mui-button>
+            <mui-button>Create event</mui-button>
+            <mui-link href="#compact-regions">Open calendar</mui-link>
+            <mui-search-input slot="top" label="Search files" placeholder="Search files..."></mui-search-input>
+          </mui-menu>
+
+          <mui-menu size="large">
+            <mui-chip-input
+              slot="top"
+              hide-label
+              label="Select tags"
+              value='[{"value":"design","label":"Design"}]'
+              options='[{"value":"design","label":"Design"},{"value":"development","label":"Development"},{"value":"marketing","label":"Marketing"}]'
+            ></mui-chip-input>
+            <mui-button>Save changes</mui-button>
+            <mui-button>Cancel</mui-button>
+          </mui-menu>
+
+        </mui-v-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-menu size=&quot;x-small&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-input slot=&quot;bottom&quot; hide-label label=&quot;Input&quot; placeholder=&quot;Type to add...&quot;&gt;&lt;/mui-input&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;View deployment&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;small&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-select slot=&quot;top&quot; hide-label label=&quot;Environment&quot; options=&quot;...&quot;&gt;&lt;/mui-select&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;View deployment&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;medium&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-select slot=&quot;top&quot; hide-label label=&quot;Environment&quot; options=&quot;...&quot;&gt;&lt;/mui-select&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Compare changes&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;large&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;View schedule&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-date-picker slot=&quot;bottom&quot; hide-label label=&quot;Select date&quot;&gt;&lt;/mui-date-picker&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;large&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;View schedule&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-time-picker slot=&quot;bottom&quot; hide-label label=&quot;Select time&quot;&gt;&lt;/mui-time-picker&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;large&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-search-input slot=&quot;top&quot; label=&quot;Search files&quot;&gt;&lt;/mui-search-input&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;View schedule&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;large&quot;&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip-input slot=&quot;top&quot; hide-label label=&quot;Select tags&quot; value=&quot;...&quot; options=&quot;...&quot;&gt;&lt;/mui-chip-input&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Save changes&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Cancel&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="inset"
+        title="Inset Content"
+        usage="Use the inset attribute to add padding to the menu's scrollable region, allowing buttons and other nested items to retain their natural border radius instead of spanning edge-to-edge."
+      >
+        <mui-v-stack slot="body" space="var(--space-400)">
+          <mui-menu size="x-small" inset>
+            <mui-button>Create new file</mui-button>
+            <mui-button>Upload file</mui-button>
+            <mui-button>New folder</mui-button>
+          </mui-menu>
+          <mui-menu size="x-small" inset>
+            <mui-search-input slot="top" label="Search files" placeholder="Search files..."></mui-search-input>
+            <mui-button>Create new file</mui-button>
+            <mui-button>Upload file</mui-button>
+            <mui-button>New folder</mui-button>
+          </mui-menu>
+
+          <mui-menu size="small" inset>
+            <mui-button>Create new file</mui-button>
+            <mui-button>Upload file</mui-button>
+            <mui-button>New folder</mui-button>
+          </mui-menu>
+          <mui-menu size="small" inset>
+            <mui-button>Create new file</mui-button>
+            <mui-button>Upload file</mui-button>
+            <mui-button>New folder</mui-button>
+            <mui-input slot="bottom" label="Add tag" hide-label placeholder="Add tag"></mui-input>
+          </mui-menu>
+
+          <mui-menu size="medium" inset>
+            <mui-button>Create new file</mui-button>
+            <mui-button>Upload file</mui-button>
+            <mui-button>New folder</mui-button>
+          </mui-menu>
+          <mui-menu size="medium" inset>
+            <mui-search-input slot="top" label="Search" placeholder="Search..."></mui-search-input>
+            <mui-button>Create new file</mui-button>
+            <mui-button>Upload file</mui-button>
+            <mui-button>New folder</mui-button>
+            <mui-date-picker slot="bottom" hide-label label="Select date" value="2026-07-12"></mui-date-picker>
+          </mui-menu>
+
+          <mui-menu size="large" inset>
+            <mui-button>Create new file</mui-button>
+            <mui-button>Upload file</mui-button>
+            <mui-button>New folder</mui-button>
+          </mui-menu>
+          <mui-menu size="large" inset>
+            <mui-chip-input slot="top" hide-label label="Select tags" value='[{"value":"design","label":"Design"}]' options='[{"value":"design","label":"Design"},{"value":"development","label":"Development"}]'></mui-chip-input>
+            <mui-button>Create new file</mui-button>
+            <mui-button>Upload file</mui-button>
+            <mui-button>New folder</mui-button>
+            <mui-time-picker slot="bottom" hide-label label="Select time" value="09:30"></mui-time-picker>
+          </mui-menu>
+        </mui-v-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-menu size=&quot;x-small&quot; inset&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Create new file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Upload file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;New folder&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;x-small&quot; inset&gt;<br />
+          &nbsp;&nbsp;&lt;mui-search-input slot=&quot;top&quot; label=&quot;Search files&quot; placeholder=&quot;Search files...&quot;&gt;&lt;/mui-search-input&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Create new file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Upload file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;New folder&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;small&quot; inset&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Create new file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Upload file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;New folder&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;small&quot; inset&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Create new file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Upload file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;New folder&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-input slot=&quot;bottom&quot; label=&quot;Add tag&quot; hide-label placeholder=&quot;Add tag&quot;&gt;&lt;/mui-input&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;medium&quot; inset&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Create new file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Upload file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;New folder&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;medium&quot; inset&gt;<br />
+          &nbsp;&nbsp;&lt;mui-search-input slot=&quot;top&quot; label=&quot;Search&quot; placeholder=&quot;Search...&quot;&gt;&lt;/mui-search-input&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Create new file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Upload file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;New folder&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-date-picker slot=&quot;bottom&quot; hide-label label=&quot;Select date&quot; value=&quot;2026-07-12&quot;&gt;&lt;/mui-date-picker&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;large&quot; inset&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Create new file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Upload file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;New folder&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;mui-menu size=&quot;large&quot; inset&gt;<br />
+          &nbsp;&nbsp;&lt;mui-chip-input slot=&quot;top&quot; hide-label label=&quot;Select tags&quot; value='...' options='...'&gt;&lt;/mui-chip-input&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Create new file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Upload file&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;New folder&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-time-picker slot=&quot;bottom&quot; hide-label label=&quot;Select time&quot; value=&quot;09:30&quot;&gt;&lt;/mui-time-picker&gt;<br />
+          &lt;/mui-menu&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
         id="sections"
         title="Sections"
         usage="Use labelled sections when one Menu contains distinct groups of related files or actions.|||Place Search before the section headings when it filters content across the complete Menu.|||Use File Icon for file-type recognition and standard system icons for destinations or commands; both inherit sizing from the containing Button."
       >
         <mui-v-stack slot="body" space="var(--space-400)">
         <mui-menu size="x-small">
-          <mui-input type="search" label="Search files" hide-label placeholder="Search files...">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
-          </mui-input>
-          <mui-rule></mui-rule>
+          <mui-search-input slot="top" label="Search files" placeholder="Search files..."></mui-search-input>
           <mui-body variant="secondary">Source</mui-body>
           <mui-button><mui-file-icon slot="before" type="typescript" decorative></mui-file-icon>app.ts</mui-button>
           <mui-button><mui-file-icon slot="before" type="js" decorative></mui-file-icon>index.js</mui-button>
@@ -241,10 +439,7 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-file-icon slot="before" type="yaml" decorative></mui-file-icon>workflow.yml</mui-button>
         </mui-menu>
         <mui-menu size="small">
-          <mui-input type="search" label="Search files" hide-label placeholder="Search files...">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
-          </mui-input>
-          <mui-rule></mui-rule>
+          <mui-search-input slot="top" label="Search files" placeholder="Search files..."></mui-search-input>
           <mui-body variant="secondary">Source</mui-body>
           <mui-button><mui-file-icon slot="before" type="typescript" decorative></mui-file-icon>app.ts</mui-button>
           <mui-button><mui-file-icon slot="before" type="js" decorative></mui-file-icon>index.js</mui-button>
@@ -255,10 +450,7 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-file-icon slot="before" type="yaml" decorative></mui-file-icon>workflow.yml</mui-button>
         </mui-menu>
         <mui-menu size="medium">
-          <mui-input type="search" label="Search files" hide-label placeholder="Search files...">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
-          </mui-input>
-          <mui-rule></mui-rule>
+          <mui-search-input slot="top" label="Search files" placeholder="Search files..."></mui-search-input>
           <mui-body variant="secondary">Source</mui-body>
           <mui-button><mui-file-icon slot="before" type="typescript" decorative></mui-file-icon>app.ts</mui-button>
           <mui-button><mui-file-icon slot="before" type="js" decorative></mui-file-icon>index.js</mui-button>
@@ -270,10 +462,7 @@ class StoryMenu extends HTMLElement {
         </mui-menu>
         </mui-menu>
         <mui-menu size="large">
-          <mui-input type="search" label="Search files" hide-label placeholder="Search files...">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
-          </mui-input>
-          <mui-rule></mui-rule>
+          <mui-search-input slot="top" label="Search files" placeholder="Search files..."></mui-search-input>
           <mui-body variant="secondary">Source</mui-body>
           <mui-button><mui-file-icon slot="before" type="typescript" decorative></mui-file-icon>app.ts</mui-button>
           <mui-button><mui-file-icon slot="before" type="js" decorative></mui-file-icon>index.js</mui-button>
@@ -284,10 +473,7 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-file-icon slot="before" type="yaml" decorative></mui-file-icon>workflow.yml</mui-button>
         </mui-menu>
         <mui-menu size="x-small">
-          <mui-input type="search" label="Search actions" hide-label placeholder="Search actions...">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
-          </mui-input>
-          <mui-rule></mui-rule>
+          <mui-search-input slot="top" label="Search actions" placeholder="Search actions..."></mui-search-input>
           <mui-body variant="secondary">Workspace</mui-body>
           <mui-button><mui-icon-home slot="before"></mui-icon-home>Overview</mui-button>
           <mui-button><mui-icon-reload slot="before"></mui-icon-reload>Recent activity</mui-button>
@@ -298,10 +484,7 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-icon-gear slot="before"></mui-icon-gear>Settings</mui-button>
         </mui-menu>
         <mui-menu size="small">
-          <mui-input type="search" label="Search actions" hide-label placeholder="Search actions...">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
-          </mui-input>
-          <mui-rule></mui-rule>
+          <mui-search-input slot="top" label="Search actions" placeholder="Search actions..."></mui-search-input>
           <mui-body variant="secondary">Workspace</mui-body>
           <mui-button><mui-icon-home slot="before"></mui-icon-home>Overview</mui-button>
           <mui-button><mui-icon-reload slot="before"></mui-icon-reload>Recent activity</mui-button>
@@ -312,10 +495,7 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-icon-gear slot="before"></mui-icon-gear>Settings</mui-button>
         </mui-menu>
         <mui-menu size="medium">
-          <mui-input type="search" label="Search actions" hide-label placeholder="Search actions...">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
-          </mui-input>
-          <mui-rule></mui-rule>
+          <mui-search-input slot="top" label="Search actions" placeholder="Search actions..."></mui-search-input>
           <mui-body variant="secondary">Workspace</mui-body>
           <mui-button><mui-icon-home slot="before"></mui-icon-home>Overview</mui-button>
           <mui-button><mui-icon-reload slot="before"></mui-icon-reload>Recent activity</mui-button>
@@ -326,10 +506,7 @@ class StoryMenu extends HTMLElement {
           <mui-button><mui-icon-gear slot="before"></mui-icon-gear>Settings</mui-button>
         </mui-menu>
         <mui-menu size="large">
-          <mui-input type="search" label="Search actions" hide-label placeholder="Search actions...">
-            <mui-icon-search slot="inside-before"></mui-icon-search>
-          </mui-input>
-          <mui-rule></mui-rule>
+          <mui-search-input slot="top" label="Search actions" placeholder="Search actions..."></mui-search-input>
           <mui-body variant="secondary">Workspace</mui-body>
           <mui-button><mui-icon-home slot="before"></mui-icon-home>Overview</mui-button>
           <mui-button><mui-icon-reload slot="before"></mui-icon-reload>Recent activity</mui-button>
@@ -342,9 +519,7 @@ class StoryMenu extends HTMLElement {
         </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-menu size=&quot;medium&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-input type=&quot;search&quot; label=&quot;Search files&quot; hide-label placeholder=&quot;Search files...&quot;&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-search slot=&quot;inside-before&quot;&gt;&lt;/mui-icon-search&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-input&gt;<br />
+          &nbsp;&nbsp;&lt;mui-search-input slot=&quot;top&quot; label=&quot;Search files&quot; placeholder=&quot;Search files...&quot;&gt;&lt;/mui-search-input&gt;<br />
           &nbsp;&nbsp;&lt;mui-body variant=&quot;secondary&quot;&gt;Source&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-file-icon slot=&quot;before&quot; type=&quot;typescript&quot; decorative&gt;&lt;/mui-file-icon&gt;<br />
@@ -381,7 +556,7 @@ class StoryMenu extends HTMLElement {
         <mui-v-stack slot="body">${selectMenus}</mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-menu size=&quot;small&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-select hide-label label=&quot;Theme&quot; options='[{&quot;value&quot;:&quot;mui&quot;,&quot;label&quot;:&quot;Mui&quot;},{&quot;value&quot;:&quot;jal&quot;,&quot;label&quot;:&quot;JAL&quot;}]'&gt;&lt;/mui-select&gt;<br />
+          &nbsp;&nbsp;&lt;mui-select slot=&quot;top&quot; hide-label label=&quot;Theme&quot; options='[{&quot;value&quot;:&quot;mui&quot;,&quot;label&quot;:&quot;Mui&quot;},{&quot;value&quot;:&quot;jal&quot;,&quot;label&quot;:&quot;JAL&quot;}]'&gt;&lt;/mui-select&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Preview theme&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Set as default&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Edit design tokens&lt;/mui-button&gt;<br />
@@ -393,16 +568,16 @@ class StoryMenu extends HTMLElement {
       <story-card
         id="date-menu"
         title="Date Menu"
-        usage="Use a direct Date Picker when every action below operates on the selected date.|||This example supports reviewing the day, creating an event, copying the date, or exporting its schedule.|||Menu propagates its size and inset field radius to the Date Picker and its composed calendar action."
+        usage="Use a bottom-slotted Date Picker when the selected date applies to the actions grouped above it.|||This example supports reviewing the day, creating an event, copying the date, or exporting its schedule.|||Menu propagates its size and inset field radius to the Date Picker and its composed calendar action."
       >
         <mui-v-stack slot="body">${dateMenus}</mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-menu size=&quot;small&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-date-picker hide-label label=&quot;Select date&quot; value=&quot;2026-07-09&quot;&gt;&lt;/mui-date-picker&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;View schedule&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Create event&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Copy date&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-button&gt;Export day&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-date-picker slot=&quot;bottom&quot; hide-label label=&quot;Select date&quot; value=&quot;2026-07-09&quot;&gt;&lt;/mui-date-picker&gt;<br />
           &lt;/mui-menu&gt;
         </story-code-block>
       </story-card>
@@ -415,11 +590,10 @@ class StoryMenu extends HTMLElement {
         <mui-v-stack slot="body">${inputMenus}</mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-menu size=&quot;small&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-date-picker hide-label label=&quot;Select date&quot; value=&quot;2026-07-09&quot;&gt;&lt;/mui-date-picker&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button&gt;View schedule&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button&gt;Create event&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button&gt;Copy date&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button&gt;Export day&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Home&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;About&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Contact&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-input slot=&quot;bottom&quot; hide-label label=&quot;Input&quot; placeholder=&quot;Type to add...&quot;&gt;&lt;/mui-input&gt;<br />
           &lt;/mui-menu&gt;
         </story-code-block>
       </story-card>
@@ -712,7 +886,7 @@ class StoryMenu extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="action-menu::Action Menu|||states::States|||sizes::Sizes|||searchable-menu::Searchable Menu|||sections::Sections|||select-menu::Select Menu|||date-menu::Date Menu|||range-input-menu::Range Input Menu|||language-toggles::Language Toggles|||grouped-content::Grouped Content"
+          links="action-menu::Action Menu|||states::States|||sizes::Sizes|||searchable-menu::Searchable Menu|||compact-regions::Compact Regions|||inset::Inset Content|||sections::Sections|||select-menu::Select Menu|||date-menu::Date Menu|||range-input-menu::Range Input Menu|||language-toggles::Language Toggles|||grouped-content::Grouped Content"
         ></story-quicklinks>
         ${stories}
       </story-template>

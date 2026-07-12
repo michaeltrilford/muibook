@@ -74,7 +74,7 @@ class MuiFileIcon extends HTMLElement {
     const src = `${VSCODE_ICONS_BASE_URL}/${filename}`;
     const label = this.getAttribute("label") || (iconName ? `${iconName} file icon` : "File icon");
     const isDecorative = this.hasAttribute("decorative");
-    const size = this.hasAttribute("file-diff-icon") ? "small" : this.getSize();
+    const size = this.getSize();
 
     this.shadowRoot.innerHTML = /*html*/ `
       <style>

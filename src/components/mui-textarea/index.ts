@@ -15,10 +15,16 @@ class MuiTextarea extends HTMLElement {
       "size",
       "padding-block",
       "padding-inline",
+      "surface",
     ];
   }
 
   private _changeHandler?: (e: Event) => void;
+  private _documentPointerDownHandler = (event: PointerEvent) => {
+    if (event.composedPath().includes(this)) return;
+    const textarea = this.shadowRoot?.querySelector("textarea") as HTMLTextAreaElement | null;
+    if (this.shadowRoot?.activeElement === textarea) textarea?.blur();
+  };
 
   constructor() {
     super();
@@ -47,10 +53,12 @@ class MuiTextarea extends HTMLElement {
     if (!this.hasAttribute("size")) this.setAttribute("size", "medium");
     this.render();
     this.setupListener();
+    document.addEventListener("pointerdown", this._documentPointerDownHandler, true);
   }
 
   disconnectedCallback() {
     this.cleanupListeners();
+    document.removeEventListener("pointerdown", this._documentPointerDownHandler, true);
   }
 
   attributeChangedCallback(name: string, _oldValue: string | null, newValue: string | null): void {
@@ -79,7 +87,7 @@ class MuiTextarea extends HTMLElement {
       return;
     }
 
-    if (["placeholder", "label", "hide-label", "variant", "optional", "max-length", "size", "padding-block", "padding-inline"].includes(name)) {
+    if (["placeholder", "label", "hide-label", "variant", "optional", "max-length", "size", "padding-block", "padding-inline", "surface"].includes(name)) {
       this.render();
       this.setupListener();
     }
@@ -161,6 +169,12 @@ class MuiTextarea extends HTMLElement {
           display: inline-block;
           width: 100%;
         }
+        :host([surface="seamless"]) {
+          --input-background: transparent;
+          --addon-background: transparent;
+          --form-default-border-color: transparent;
+          --form-default-border-color-hover: transparent;
+        }
 
         label {
           display: block;
@@ -212,6 +226,7 @@ class MuiTextarea extends HTMLElement {
           --textarea-padding-inline-current: var(--space-300);
         }
         textarea.size-x-small {
+          --textarea-focus-outline: var(--outline-thin);
           --textarea-font-size-current: var(--text-font-size-xs);
           --textarea-line-height-current: var(--text-line-height-xs);
           --textarea-padding-block-current: var(--space-050);
@@ -219,6 +234,7 @@ class MuiTextarea extends HTMLElement {
           border-radius: var(--form-radius-x-small);
         }
         textarea.size-small {
+          --textarea-focus-outline: var(--outline-thin);
           --textarea-font-size-current: var(--text-font-size-s);
           --textarea-line-height-current: var(--text-line-height-s);
           --textarea-padding-block-current: calc(var(--space-100) - (var(--stroke-size-100) / 2));
@@ -226,6 +242,7 @@ class MuiTextarea extends HTMLElement {
           border-radius: var(--form-radius-small);
         }
         textarea.size-medium {
+          --textarea-focus-outline: var(--outline-medium);
           --textarea-font-size-current: var(--text-font-size);
           --textarea-line-height-current: var(--text-line-height);
           --textarea-padding-block-current: var(--space-200);
@@ -233,6 +250,7 @@ class MuiTextarea extends HTMLElement {
           border-radius: var(--form-radius-medium);
         }
         textarea.size-large {
+          --textarea-focus-outline: var(--outline-thick);
           --textarea-font-size-current: var(--text-font-size-l);
           --textarea-line-height-current: var(--text-line-height-l);
           --textarea-padding-block-current: var(--space-300);
@@ -251,18 +269,13 @@ class MuiTextarea extends HTMLElement {
         :host([menu-slot]) textarea.size-large {
           border-radius: calc(var(--form-radius-large) - var(--space-200));
         }
-        :host([menu-slot]) textarea.size-x-small:focus,
-        :host([menu-slot]) textarea.size-small:focus {
-          border-radius: 0;
-        }
-
         textarea:hover {
           border-color: var(--form-default-border-color-hover);
           color: var(--form-default-text-color-hover);
         }
 
         textarea:focus {
-          outline: var(--outline-thick);
+          outline: var(--textarea-focus-outline, var(--outline-medium));
         }
 
         textarea:disabled {
@@ -394,11 +407,10 @@ class MuiTextarea extends HTMLElement {
       }
 
         <textarea
-          style="${paddingBlock ? `--textarea-padding-block: ${paddingBlock};` : ""}${paddingInline ? `--textarea-padding-inline: ${paddingInline};` : ""}"
         id="${id}"
         name="${name}"
         class="${[variantClass, `size-${normalizedSize}`].filter(Boolean).join(" ")}"
-        style="--textarea-rows: ${rows};"
+        style="--textarea-rows: ${rows};${paddingBlock ? `--textarea-padding-block: ${paddingBlock};` : ""}${paddingInline ? `--textarea-padding-inline: ${paddingInline};` : ""}"
         rows="${rows}"
         placeholder="${placeholder}"
         ${maxLength ? `maxlength="${maxLength}"` : ""}

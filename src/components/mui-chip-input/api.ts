@@ -31,6 +31,7 @@ export const muiApi = {
       },
       { name: "padding-block", type: { text: "string" }, description: "Overrides internal Input block padding." },
       { name: "padding-inline", type: { text: "string" }, description: "Overrides internal Input inline padding." },
+      { name: "surface", type: { text: '"default" | "seamless"' }, default: "default", description: "Visual surface style. Seamless removes borders and backgrounds." },
       { name: "name", type: { text: "string" }, description: "Form field name." },
       { name: "placement", type: { text: '"before" | "after"' }, default: "before", description: "Places selected chips before or after the entry field." },
       { name: "mobile-stack", type: { text: "boolean" }, default: "false", description: "Always stacks chip content and entry field." },

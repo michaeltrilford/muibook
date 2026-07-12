@@ -41,8 +41,7 @@ export class MuiFileDiff extends HTMLElement {
 
     icons.forEach((icon) => {
       if (icon.tagName.toLowerCase() !== "mui-file-icon") return;
-      icon.setAttribute("file-diff-icon", "");
-      if (icon.getAttribute("size") !== "small") icon.setAttribute("size", "small");
+      if (icon.getAttribute("size") !== "x-small") icon.setAttribute("size", "x-small");
     });
 
     const fileIcons = icons.filter((icon) => icon.tagName.toLowerCase() === "mui-file-icon");
@@ -50,7 +49,7 @@ export class MuiFileDiff extends HTMLElement {
 
     this.iconObserver = new MutationObserver(() => this.syncIconSlot());
     fileIcons.forEach((icon) => {
-      this.iconObserver?.observe(icon, { attributes: true, attributeFilter: ["size", "file-diff-icon"] });
+      this.iconObserver?.observe(icon, { attributes: true, attributeFilter: ["size"] });
     });
   }
 

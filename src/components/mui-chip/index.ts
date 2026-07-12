@@ -272,10 +272,10 @@ class MuiChip extends HTMLElement {
       /* Usage: input */
       :host([usage="input"]) .container {
         border-radius: var(--radius-000);
-        border-top-left-radius: calc(var(--chip-radius-left, 0px) - (var(--space-025) + var(--stroke-size-100)));
-        border-bottom-left-radius: calc(var(--chip-radius-left, 0px) - (var(--space-025) + var(--stroke-size-100)));
-        border-top-right-radius: calc(var(--chip-radius-right, 0px) - (var(--space-025) + var(--stroke-size-100)));
-        border-bottom-right-radius: calc(var(--chip-radius-right, 0px) - (var(--space-025) + var(--stroke-size-100)));
+        border-top-left-radius: calc(var(--chip-radius-top-left, var(--chip-radius-left, 0px)) - (var(--space-025) + var(--stroke-size-100)));
+        border-bottom-left-radius: calc(var(--chip-radius-bottom-left, var(--chip-radius-left, 0px)) - (var(--space-025) + var(--stroke-size-100)));
+        border-top-right-radius: calc(var(--chip-radius-top-right, var(--chip-radius-right, 0px)) - (var(--space-025) + var(--stroke-size-100)));
+        border-bottom-right-radius: calc(var(--chip-radius-bottom-right, var(--chip-radius-right, 0px)) - (var(--space-025) + var(--stroke-size-100)));
         border: none;
       }
 

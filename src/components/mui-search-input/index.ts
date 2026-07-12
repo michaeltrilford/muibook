@@ -4,7 +4,22 @@ import "../mui-input";
 
 class MuiSearchInput extends HTMLElement {
   static get observedAttributes() {
-    return ["id", "label", "placeholder", "value", "name", "size", "disabled", "open", "autofocus", "cancel-label", "menu-slot", "padding-block", "padding-inline"];
+    return [
+      "id",
+      "label",
+      "placeholder",
+      "value",
+      "name",
+      "size",
+      "disabled",
+      "open",
+      "autofocus",
+      "cancel-label",
+      "menu-slot",
+      "padding-block",
+      "padding-inline",
+      "surface",
+    ];
   }
 
   private slotChangeHandler = () => this.syncAfterSlotState();
@@ -327,11 +342,16 @@ class MuiSearchInput extends HTMLElement {
           transition:
             opacity 180ms ease,
             transform var(--search-transition-duration) var(--search-transition-easing);
-          z-index: 2;
+          z-index: 1;
         }
 
         :host(:not([open])) .search-panel {
           grid-template-columns: minmax(0, 1fr) 0fr;
+        }
+
+        :host(:not([has-after])) .search-panel {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 0;
         }
 
         :host([has-after]:not([open])) .search-panel {
@@ -350,6 +370,10 @@ class MuiSearchInput extends HTMLElement {
         :host(:not([open])) .cancel-wrap {
           opacity: 0;
           pointer-events: none;
+        }
+
+        :host(:not([has-after])) .cancel-wrap {
+          display: none;
         }
 
         .search-trigger {
@@ -412,6 +436,7 @@ class MuiSearchInput extends HTMLElement {
               value="${value}"
               ${paddingBlock ? `padding-block="${paddingBlock}"` : ""}
               ${paddingInline ? `padding-inline="${paddingInline}"` : ""}
+              ${this.hasAttribute("surface") ? `surface="${this.getAttribute("surface")}"` : ""}
               ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
               ${disabled ? "disabled" : ""}
               ${this.hasAttribute("autofocus") ? "autofocus" : ""}
@@ -420,7 +445,7 @@ class MuiSearchInput extends HTMLElement {
             </mui-input>
           </div>
           <div class="cancel-wrap">
-            <mui-button class="cancel" variant="tertiary" size="${size}" ${disabled ? "disabled" : ""} ${this.open ? "" : "tabindex=\"-1\""}>
+            <mui-button class="cancel" variant="tertiary" size="${size}" ${disabled ? "disabled" : ""} ${this.open ? "" : 'tabindex="-1"'}>
               ${cancelLabel}
             </mui-button>
           </div>

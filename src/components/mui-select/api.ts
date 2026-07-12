@@ -75,6 +75,12 @@ export const muiApi = {
         default: "medium",
         description: "Select size scale.",
       },
+      {
+        name: "surface",
+        type: { text: '"default" | "seamless"' },
+        default: "default",
+        description: "Visual surface style. Seamless removes borders and backgrounds.",
+      },
     ],
     events: [
       { name: "input", description: "Composed, bubbling event dispatched during selection updates with `detail.value`." },

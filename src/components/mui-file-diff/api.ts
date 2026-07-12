@@ -26,7 +26,7 @@ export const muiApi = {
     slots: [
       {
         name: "icon",
-        description: "`mui-file-icon` content is normalized to size='small' in this slot.",
+        description: "`mui-file-icon` content is normalized to size='x-small' in this slot.",
       },
     ],
   }

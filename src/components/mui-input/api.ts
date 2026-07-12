@@ -56,6 +56,12 @@ export const muiApi = {
         description: "Arranges external before and after slots inline or stacked around the input.",
       },
       {
+        name: "surface",
+        type: { text: '"default" | "seamless"' },
+        default: "default",
+        description: "Visual surface style. Seamless removes borders and backgrounds.",
+      },
+      {
         name: "autofocus",
         type: { text: "boolean" },
         default: "false",

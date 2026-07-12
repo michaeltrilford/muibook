@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-12T00:25:12.328Z",
+  "generatedAt": "2026-07-12T09:23:12.967Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -110,16 +110,6 @@
         }
       ]
     },
-    "mui-field": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-message",
-          "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
-        }
-      ]
-    },
     "mui-drawer": {
       "version": 1,
       "destinationOnly": true,
@@ -131,6 +121,16 @@
         {
           "name": "has-footer",
           "description": "Set when footer content exists, allowing the component to adjust internal spacing and structural regions."
+        }
+      ]
+    },
+    "mui-field": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-message",
+          "description": "Set when supporting message content exists, allowing the field layout to reserve space and connect the message treatment."
         }
       ]
     },
@@ -276,6 +276,24 @@
         }
       ]
     },
+    "mui-accordion-block": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "card-slot",
+          "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
+        },
+        {
+          "name": "first-child",
+          "description": "Applied to the first structural child, allowing edge spacing and borders to be adjusted."
+        },
+        {
+          "name": "last-child",
+          "description": "Applied to the last structural child, allowing edge spacing and borders to be adjusted."
+        }
+      ]
+    },
     "mui-card-body": {
       "version": 1,
       "destinationOnly": true,
@@ -314,24 +332,6 @@
         }
       ]
     },
-    "mui-accordion-block": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "card-slot",
-          "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
-        },
-        {
-          "name": "first-child",
-          "description": "Applied to the first structural child, allowing edge spacing and borders to be adjusted."
-        },
-        {
-          "name": "last-child",
-          "description": "Applied to the last structural child, allowing edge spacing and borders to be adjusted."
-        }
-      ]
-    },
     "mui-slat": {
       "version": 1,
       "destinationOnly": true,
@@ -354,13 +354,17 @@
         }
       ]
     },
-    "mui-table": {
+    "mui-tab-item": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         {
-          "name": "card-slot",
-          "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
+          "name": "has-before",
+          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "has-after",
+          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
         }
       ]
     },
@@ -374,17 +378,13 @@
         }
       ]
     },
-    "mui-tab-item": {
+    "mui-table": {
       "version": 1,
       "destinationOnly": true,
       "attributes": [
         {
-          "name": "has-before",
-          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
-        },
-        {
-          "name": "has-after",
-          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+          "name": "card-slot",
+          "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
         }
       ]
     }

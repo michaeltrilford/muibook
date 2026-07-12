@@ -41,6 +41,12 @@ export const muiApi = {
         default: "Cancel",
         description: "Visible label for the cancel action.",
       },
+      {
+        name: "surface",
+        type: { text: '"default" | "seamless"' },
+        default: "default",
+        description: "Visual surface style. Seamless removes borders and backgrounds.",
+      },
     ],
     slots: [
       {

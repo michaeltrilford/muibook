@@ -64,6 +64,7 @@ class MuiTimePicker extends HTMLElement {
       "menu-slot",
       "padding-block",
       "padding-inline",
+      "surface",
     ];
   }
 
@@ -183,6 +184,7 @@ class MuiTimePicker extends HTMLElement {
           variant="${variant}"
           ${paddingBlock ? `padding-block="${paddingBlock}"` : ""}
           ${paddingInline ? `padding-inline="${paddingInline}"` : ""}
+          ${this.hasAttribute("surface") ? `surface="${this.getAttribute("surface")}"` : ""}
           ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
           ${hideLabel}
           ${optional}

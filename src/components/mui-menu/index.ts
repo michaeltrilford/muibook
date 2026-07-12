@@ -1,9 +1,12 @@
 class MuiMenu extends HTMLElement {
   private slotElement: HTMLSlotElement | null = null;
+  private topSlotElement: HTMLSlotElement | null = null;
+  private bottomSlotElement: HTMLSlotElement | null = null;
   private observer: MutationObserver | null = null;
+  private managedFormControls = new Map<HTMLElement, Record<"size" | "menu-slot" | "padding-inline" | "surface", string | null>>();
 
   static get observedAttributes() {
-    return ["size"];
+    return ["size", "inset"];
   }
 
   constructor() {
@@ -14,22 +17,31 @@ class MuiMenu extends HTMLElement {
   connectedCallback() {
     this.normalizeSize();
     this.render();
-    this.slotElement = this.shadowRoot!.querySelector("slot");
+    this.slotElement = this.shadowRoot!.querySelector("slot:not([name])");
+    this.topSlotElement = this.shadowRoot!.querySelector('slot[name="top"]');
+    this.bottomSlotElement = this.shadowRoot!.querySelector('slot[name="bottom"]');
     this.slotElement?.addEventListener("slotchange", this.syncActions);
+    this.topSlotElement?.addEventListener("slotchange", this.syncRegions);
+    this.bottomSlotElement?.addEventListener("slotchange", this.syncRegions);
     this.syncActions();
+    this.syncRegions();
     this.observer = new MutationObserver(this.syncActions);
     this.observer.observe(this, { attributes: true, childList: true, subtree: true, attributeFilter: ["size"] });
   }
 
   disconnectedCallback() {
     this.slotElement?.removeEventListener("slotchange", this.syncActions);
+    this.topSlotElement?.removeEventListener("slotchange", this.syncRegions);
+    this.bottomSlotElement?.removeEventListener("slotchange", this.syncRegions);
     this.observer?.disconnect();
     this.observer = null;
+    this.managedFormControls.forEach((attributes, control) => this.restoreFormControl(control, attributes));
+    this.managedFormControls.clear();
   }
 
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
-    if (name !== "size" || oldValue === newValue) return;
-    this.normalizeSize();
+    if (oldValue === newValue) return;
+    if (name === "size") this.normalizeSize();
     this.syncActions();
   }
 
@@ -40,8 +52,35 @@ class MuiMenu extends HTMLElement {
     }
   }
 
+  private syncRegions = () => {
+    this.toggleAttribute("has-top", Boolean(this.topSlotElement?.assignedElements({ flatten: true }).length));
+    this.toggleAttribute("has-bottom", Boolean(this.bottomSlotElement?.assignedElements({ flatten: true }).length));
+    this.syncActions();
+  };
+
+  private restoreAttribute(control: HTMLElement, name: string, value: string | null) {
+    if (value === null) {
+      control.removeAttribute(name);
+    } else {
+      control.setAttribute(name, value);
+    }
+  }
+
+  private restoreFormControl(
+    control: HTMLElement,
+    attributes: Record<"size" | "menu-slot" | "padding-inline" | "surface", string | null>,
+  ) {
+    Object.entries(attributes).forEach(([name, value]) => this.restoreAttribute(control, name, value));
+  }
+
   private syncActions = () => {
     const size = this.getAttribute("size") || "medium";
+    const compactPaddingMap: Record<string, string> = {
+      "x-small": "var(--space-200)",
+      small: "calc(var(--space-300) + var(--stroke-size-100))",
+      medium: "calc(var(--space-400) + var(--stroke-size-300))",
+      large: "calc(var(--space-500) + var(--stroke-size-100))",
+    };
     const directChildren = Array.from(this.children) as HTMLElement[];
     const formControlTags = new Set([
       "mui-input",
@@ -56,6 +95,12 @@ class MuiMenu extends HTMLElement {
     const formControls = directChildren.filter((element): element is HTMLElement =>
       formControlTags.has(element.tagName.toLowerCase()),
     );
+    const currentFormControls = new Set(formControls);
+    this.managedFormControls.forEach((attributes, control) => {
+      if (currentFormControls.has(control)) return;
+      this.restoreFormControl(control, attributes);
+      this.managedFormControls.delete(control);
+    });
     const bodies = directChildren.filter(
       (element): element is HTMLElement => element.tagName.toLowerCase() === "mui-body",
     );
@@ -64,9 +109,16 @@ class MuiMenu extends HTMLElement {
       return tagName === "mui-button" || tagName === "mui-link";
     });
     const firstActionIndex = actions.length > 0 ? directChildren.indexOf(actions[0]) : -1;
-    const hasBodyBeforeFirstAction =
+    const lastActionIndex = actions.length > 0 ? directChildren.indexOf(actions[actions.length - 1]) : -1;
+    const hasBufferBeforeFirstAction =
       firstActionIndex > 0 &&
-      directChildren.slice(0, firstActionIndex).some((element) => element.tagName.toLowerCase() === "mui-body");
+      directChildren.slice(0, firstActionIndex).some((element) => {
+        const tagName = element.tagName.toLowerCase();
+        return element.getAttribute("slot") === "top" || tagName === "mui-body" || tagName === "mui-rule";
+      });
+    const hasBufferAfterLastAction =
+      lastActionIndex >= 0 &&
+      directChildren.slice(lastActionIndex + 1).some((element) => element.getAttribute("slot") === "bottom");
     const bodySizeMap: Record<string, string> = {
       "x-small": "xx-small",
       small: "x-small",
@@ -82,15 +134,58 @@ class MuiMenu extends HTMLElement {
     });
 
     formControls.forEach((control) => {
+      if (!this.managedFormControls.has(control)) {
+        this.managedFormControls.set(control, {
+          size: control.getAttribute("size"),
+          "menu-slot": control.getAttribute("menu-slot"),
+          "padding-inline": control.getAttribute("padding-inline"),
+          surface: control.getAttribute("surface"),
+        });
+      }
+      const originalAttributes = this.managedFormControls.get(control)!;
       if (control.getAttribute("size") !== size) control.setAttribute("size", size);
-      control.setAttribute("menu-slot", "");
+
+      if (!this.hasAttribute("inset")) {
+        control.setAttribute("menu-slot", "");
+      } else {
+        this.restoreAttribute(control, "menu-slot", originalAttributes["menu-slot"]);
+      }
+
+      const slot = control.getAttribute("slot");
+      const isCompact = slot === "top" || slot === "bottom";
+      const tagName = control.tagName.toLowerCase();
+      const supportsCompactPadding =
+        tagName === "mui-input" ||
+        tagName === "mui-select" ||
+        tagName === "mui-date-picker" ||
+        tagName === "mui-time-picker";
+
+      if (isCompact && supportsCompactPadding) {
+        control.setAttribute("padding-inline", compactPaddingMap[size] || compactPaddingMap.medium);
+      } else if (supportsCompactPadding) {
+        this.restoreAttribute(control, "padding-inline", originalAttributes["padding-inline"]);
+      }
+
+      if (isCompact) {
+        control.setAttribute("surface", "seamless");
+      } else {
+        this.restoreAttribute(control, "surface", originalAttributes.surface);
+      }
     });
 
     actions.forEach((action, index) => {
       if (action.getAttribute("size") !== size) action.setAttribute("size", size);
-      action.setAttribute("menu-slot", "");
-      action.toggleAttribute("menu-slot-first", index === 0 && !hasBodyBeforeFirstAction);
-      action.toggleAttribute("menu-slot-last", index === actions.length - 1);
+
+      if (!this.hasAttribute("inset")) {
+        action.setAttribute("menu-slot", "");
+        action.toggleAttribute("menu-slot-first", index === 0 && !hasBufferBeforeFirstAction);
+        action.toggleAttribute("menu-slot-last", index === actions.length - 1 && !hasBufferAfterLastAction);
+      } else {
+        action.removeAttribute("menu-slot");
+        action.removeAttribute("menu-slot-first");
+        action.removeAttribute("menu-slot-last");
+      }
+
       if (!action.hasAttribute("variant")) action.setAttribute("variant", "tertiary");
     });
   };
@@ -112,55 +207,94 @@ class MuiMenu extends HTMLElement {
           padding: 0;
         }
 
-        :host([size="x-small"]) { border-radius: min(var(--action-radius-x-small), var(--form-radius-x-small)); }
-        :host([size="small"]) { border-radius: min(var(--action-radius-small), var(--form-radius-small)); }
-        :host([size="medium"]) { border-radius: min(var(--action-radius-medium), var(--form-radius-medium)); }
-        :host([size="large"]) { border-radius: min(var(--action-radius-large), var(--form-radius-large)); }
-        
-        :host([size="x-small"]) ::slotted(mui-input),
-        :host([size="x-small"]) ::slotted(mui-select),
-        :host([size="x-small"]) ::slotted(mui-date-picker),
-        :host([size="x-small"]) ::slotted(mui-time-picker),
-        :host([size="x-small"]) ::slotted(mui-textarea),
-        :host([size="x-small"]) ::slotted(mui-search-input),
-        :host([size="x-small"]) ::slotted(mui-range-input),
-        :host([size="x-small"]) ::slotted(mui-chip-input),
-        :host([size="small"]) ::slotted(mui-input),
-        :host([size="small"]) ::slotted(mui-select),
-        :host([size="small"]) ::slotted(mui-date-picker),
-        :host([size="small"]) ::slotted(mui-time-picker),
-        :host([size="small"]) ::slotted(mui-textarea),
-        :host([size="small"]) ::slotted(mui-search-input),
-        :host([size="small"]) ::slotted(mui-range-input),
-        :host([size="small"]) ::slotted(mui-chip-input) {
-          padding: var(--space-050);
-          box-sizing: border-box;
+        :host([size="x-small"]) {
+          --menu-region-radius: calc(min(var(--action-radius-x-small), var(--form-radius-x-small)) - var(--stroke-size-100));
+          border-radius: min(var(--action-radius-x-small), var(--form-radius-x-small));
+        }
+        :host([size="small"]) {
+          --menu-region-radius: calc(min(var(--action-radius-small), var(--form-radius-small)) - var(--stroke-size-100));
+          border-radius: min(var(--action-radius-small), var(--form-radius-small));
+        }
+        :host([size="medium"]) {
+          --menu-region-radius: calc(min(var(--action-radius-medium), var(--form-radius-medium)) - var(--stroke-size-100));
+          border-radius: min(var(--action-radius-medium), var(--form-radius-medium));
+        }
+        :host([size="large"]) {
+          --menu-region-radius: calc(min(var(--action-radius-large), var(--form-radius-large)) - var(--stroke-size-100));
+          border-radius: min(var(--action-radius-large), var(--form-radius-large));
         }
 
-        :host([size="medium"]) ::slotted(mui-input),
-        :host([size="medium"]) ::slotted(mui-select),
-        :host([size="medium"]) ::slotted(mui-date-picker),
-        :host([size="medium"]) ::slotted(mui-time-picker),
-        :host([size="medium"]) ::slotted(mui-textarea),
-        :host([size="medium"]) ::slotted(mui-search-input),
-        :host([size="medium"]) ::slotted(mui-range-input),
-        :host([size="medium"]) ::slotted(mui-chip-input) {
-          padding: var(--space-100);
-          box-sizing: border-box;
+        :host([size="x-small"][inset]) {
+          --menu-inset-radius: calc(min(var(--action-radius-x-small), var(--form-radius-x-small)) - var(--stroke-size-100));
+          --menu-inset-padding-default: var(--space-025);
+        }
+        :host([size="small"][inset]) {
+          --menu-inset-radius: calc(min(var(--action-radius-small), var(--form-radius-small)) - var(--stroke-size-200));
+          --menu-inset-padding-default: var(--space-025);
+        }
+        :host([size="medium"][inset]) {
+          --menu-inset-radius: calc(min(var(--action-radius-medium), var(--form-radius-medium)) - var(--stroke-size-300));
+          --menu-inset-padding-default: var(--space-050);
+        }
+        :host([size="large"][inset]) {
+          --menu-inset-radius: calc(min(var(--action-radius-large), var(--form-radius-large)) - var(--stroke-size-400));
+          --menu-inset-padding-default: var(--space-100);
         }
 
-        :host([size="large"]) ::slotted(mui-input),
-        :host([size="large"]) ::slotted(mui-select),
-        :host([size="large"]) ::slotted(mui-date-picker),
-        :host([size="large"]) ::slotted(mui-time-picker),
-        :host([size="large"]) ::slotted(mui-textarea),
-        :host([size="large"]) ::slotted(mui-search-input),
-        :host([size="large"]) ::slotted(mui-range-input),
-        :host([size="large"]) ::slotted(mui-chip-input) {
-          padding: var(--space-200);
-          box-sizing: border-box;
+        :host([size="x-small"][inset]) .content {
+          --action-radius-x-small: var(--menu-inset-radius);
+          --form-radius-x-small: var(--menu-inset-radius);
+        }
+        :host([size="small"][inset]) .content {
+          --action-radius-small: var(--menu-inset-radius);
+          --form-radius-small: var(--menu-inset-radius);
+        }
+        :host([size="medium"][inset]) .content {
+          --action-radius-medium: var(--menu-inset-radius);
+          --form-radius-medium: var(--menu-inset-radius);
+        }
+        :host([size="large"][inset]) .content {
+          --action-radius-large: var(--menu-inset-radius);
+          --form-radius-large: var(--menu-inset-radius);
         }
 
+        .top,
+        .bottom {
+          display: none;
+          flex: none;
+          box-sizing: border-box;
+          background: var(--menu-background);
+          padding: 0;
+        }
+
+        :host([has-top]) .top,
+        :host([has-bottom]) .bottom {
+          display: flex;
+        }
+
+        :host([has-top]) .top {
+          border-bottom: var(--border-thin);
+          border-color: var(--menu-border-color);
+          border-top-left-radius: var(--menu-region-radius);
+          border-top-right-radius: var(--menu-region-radius);
+        }
+
+        :host([has-bottom]) .bottom {
+          border-top: var(--border-thin);
+          border-color: var(--menu-border-color);
+          border-bottom-left-radius: var(--menu-region-radius);
+          border-bottom-right-radius: var(--menu-region-radius);
+        }
+
+        .content {
+          min-height: 0;
+          overflow-y: auto;
+        }
+
+        :host([inset]) .content {
+          padding-block: var(--menu-inset-padding-block, var(--menu-inset-padding-default, var(--space-100)));
+          padding-inline: var(--menu-inset-padding-inline, var(--menu-inset-padding-default, var(--space-100)));
+        }
         ::slotted(mui-button),
         ::slotted(mui-link) {
           width: 100%;
@@ -172,7 +306,9 @@ class MuiMenu extends HTMLElement {
           z-index: 1;
         }
       </style>
-      <slot></slot>
+      <div class="top"><slot name="top"></slot></div>
+      <div class="content" part="content"><slot></slot></div>
+      <div class="bottom"><slot name="bottom"></slot></div>
     `;
   }
 }

@@ -23,10 +23,16 @@ class MuiSelect extends HTMLElement {
       "max-height",
       "padding-block",
       "padding-inline",
+      "surface",
     ];
   }
 
   _changeHandler?: (e: Event) => void;
+  private _documentPointerDownHandler = (event: PointerEvent) => {
+    if (event.composedPath().includes(this)) return;
+    const select = this.shadowRoot?.querySelector("select") as HTMLSelectElement | null;
+    if (this.shadowRoot?.activeElement === select) select?.blur();
+  };
 
   constructor() {
     super();
@@ -57,11 +63,13 @@ class MuiSelect extends HTMLElement {
     this.partMap = getPartMap("text", "visual");
     this.render();
     this.setupListener();
+    document.addEventListener("pointerdown", this._documentPointerDownHandler, true);
   }
 
   disconnectedCallback() {
     // Clean up event listeners
     this.cleanupListeners();
+    document.removeEventListener("pointerdown", this._documentPointerDownHandler, true);
   }
 
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
@@ -225,12 +233,27 @@ class MuiSelect extends HTMLElement {
       ${paddingBlock ? `--select-padding-block: ${paddingBlock}; --select-option-padding-block: ${paddingBlock};` : ""}
       ${paddingInline ? `--select-padding-inline: ${paddingInline}; --select-option-padding-inline: ${paddingInline};` : ""}
     `;
+    const chevronStyle = paddingInline ? `--select-chevron-inset: ${paddingInline};` : "";
 
     const html = /*html*/ `
       <style>
         :host {
           display: inline-block;
           width: 100%;
+          --select-chevron-inset: var(--space-300);
+        }
+        :host([surface="seamless"]) {
+          --input-background: transparent;
+          --addon-background: transparent;
+          --form-default-border-color: transparent;
+          --form-default-border-color-hover: transparent;
+        }
+        :host([size="x-small"]),
+        :host([size="small"]) {
+          --select-chevron-inset: var(--space-200);
+        }
+        :host([size="large"]) {
+          --select-chevron-inset: var(--space-400);
         }
         label {
           font-size: var(--text-font-size);
@@ -376,6 +399,7 @@ class MuiSelect extends HTMLElement {
           display: none;
         }
         select.size-x-small {
+          --select-focus-outline: var(--outline-thin);
           min-height: var(--action-size-x-small);
           --select-padding-block-start-default: var(--space-050);
           --select-padding-block-end-default: var(--space-050);
@@ -386,31 +410,34 @@ class MuiSelect extends HTMLElement {
           border-radius: var(--form-radius-x-small);
         }
         select.size-small {
+          --select-focus-outline: var(--outline-thin);
           min-height: var(--action-size-small);
           --select-padding-block-start-default: var(--space-100);
           --select-padding-block-end-default: var(--space-100);
-          --select-padding-inline-start-default: var(--space-200);
-          --select-padding-inline-end-default: var(--space-200);
+          --select-padding-inline-start-default: calc(var(--space-200) + var(--stroke-size-100));
+          --select-padding-inline-end-default: calc(var(--space-200) + var(--stroke-size-100));
           font-size: var(--text-font-size-s);
           line-height: var(--text-line-height-s);
           border-radius: var(--form-radius-small);
         }
         select.size-medium {
+          --select-focus-outline: var(--outline-medium);
           min-height: var(--action-size-medium);
           --select-padding-block-start-default: var(--space-200);
           --select-padding-block-end-default: var(--space-200);
-          --select-padding-inline-start-default: var(--space-300);
-          --select-padding-inline-end-default: var(--space-300);
+          --select-padding-inline-start-default: calc(var(--space-300) + var(--stroke-size-100));
+          --select-padding-inline-end-default: calc(var(--space-300) + var(--stroke-size-100));
           font-size: var(--text-font-size);
           line-height: var(--text-line-height);
           border-radius: var(--form-radius-medium);
         }
         select.size-large {
+          --select-focus-outline: var(--outline-thick);
           min-height: var(--action-size-large);
           --select-padding-block-start-default: var(--space-300);
           --select-padding-block-end-default: var(--space-300);
-          --select-padding-inline-start-default: var(--space-400);
-          --select-padding-inline-end-default: var(--space-400);
+          --select-padding-inline-start-default: calc(var(--space-400) + var(--stroke-size-100));
+          --select-padding-inline-end-default: calc(var(--space-400) + var(--stroke-size-100));
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);
           border-radius: var(--form-radius-large);
@@ -426,10 +453,6 @@ class MuiSelect extends HTMLElement {
         }
         :host([menu-slot]) select.size-large {
           border-radius: calc(var(--form-radius-large) - var(--space-200));
-        }
-        :host([menu-slot]) select.size-x-small:focus,
-        :host([menu-slot]) select.size-small:focus {
-          border-radius: 0;
         }
         select.appearance-custom.size-x-small {
           --select-picker-icon-size: 1.3rem;
@@ -449,7 +472,7 @@ class MuiSelect extends HTMLElement {
           color: var(--form-default-text-color-hover);
         }
         select:focus {
-          outline: var(--outline-thick);
+          outline: var(--select-focus-outline, var(--outline-medium));
         }
         select:disabled {
           opacity: 0.4;
@@ -533,7 +556,7 @@ class MuiSelect extends HTMLElement {
         }
         .chevron {
           position: absolute; 
-          right: var(--space-300);
+          right: var(--select-chevron-inset);
           top: 50%;
           transform: translateY(-50%);
           padding: var(--space-200);
@@ -545,12 +568,10 @@ class MuiSelect extends HTMLElement {
         }
         :host([size="x-small"]) .chevron,
         :host([size="small"]) .chevron {
-          right: var(--space-200);
           padding: var(--space-000);
           box-shadow: none;
         }
         :host([size="large"]) .chevron {
-          right: var(--space-400);
           padding: var(--space-300);
           padding-left: var(--space-000);
           padding-right: var(--space-000);
@@ -606,7 +627,7 @@ class MuiSelect extends HTMLElement {
             }</label>`
           : ""
       }
-      <div style="position: relative;">
+      <div style="position: relative; ${chevronStyle}">
         <select class="${[variantClass, `size-${normalizedSize}`, `appearance-${appearance}`].filter(Boolean).join(" ")}" part="${this.partMap || ""}" name="${name}" id="${id}" ${ariaLabelAttr} style="${customStyle}"
         ${disabled ? "disabled" : ""}>
           ${selectedContent}

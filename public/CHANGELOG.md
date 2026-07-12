@@ -14,11 +14,13 @@ _Status: WIP_
 - Added coordinated `x-small | small | medium | large` sizing to `mui-dropdown` and `mui-menu`; Dropdown enforces the size on its trigger and Menu, while Menu enforces it on direct button and link actions and owns their joined corner treatment.
 - Added `x-small | small | medium | large` sizing to `mui-range-input`, retaining the previous thumb and track dimensions as medium. Date Picker, Time Picker, and Range Input stories now demonstrate every supported size.
 - Direct `mui-body` content inside `mui-menu` now uses regular weight at one size below the Menu (`xx-small | x-small | small | medium`) while retaining padding matched to the parent Menu action size.
-- Direct Input, Select, Textarea, Date Picker, Time Picker, Search Input, Range Input, and Chip Input controls inside `mui-menu` now inherit Menu size and receive control-only inset padding: `var(--space-050)` for x-small/small, `var(--space-100)` for medium, and `var(--space-200)` for large. Menu container padding remains unchanged.
+- Direct Input, Select, Textarea, Date Picker, Time Picker, Search Input, Range Input, and Chip Input controls inside `mui-menu` now inherit Menu size. Controls in the fixed `top` and `bottom` slots use the reusable `surface="seamless"` treatment and size-aware inline padding, while the new Menu `inset` option pads scrollable content and preserves each child control or action radius.
+- Added `surface="seamless"` to Input, Select, Textarea, Search Input, Chip Input, Date Picker, and Time Picker for transparent composition against a parent Menu or Dropdown surface.
 - `mui-menu` no longer applies first-action top corner radius when a direct `mui-body` heading precedes that action.
 - Menu surfaces, Menu edge actions, and Input compositions now use size-aware form radius caps. Before/after Buttons, Links, Add Ons, and Chips preserve square joined corners while exposed corners receive the matching Menu inset radius.
 - Direct Button and Link actions inside Menu now use `var(--font-weight-regular)` for a consistent action hierarchy.
 - Input and Textarea now support public `padding-block` and `padding-inline` overrides matching Select; Date Picker, Time Picker, Search Input, and Chip Input forward those values to their internal Input.
+- Plain Input and Select controls now use matching inline padding at every size, including `space-100` at x-small and `space-200` at small.
 - Renamed `mui-prompt-message` to `mui-chat-message` and moved its component export, story, documentation, and route to Chat Message.
 - Renamed `mui-prompt-preview` to `mui-preview-chip`, including its `preview-chip-open` event and component-scoped CSS custom properties.
 - Renamed `mui-prompt-toggle` to `mui-action-toggle` across the component export, stories, documentation, and Prompt compositions.
@@ -33,11 +35,14 @@ _Status: WIP_
 
 ### Fixed
 
+- Menu now restores authored form-control `size`, `menu-slot`, `padding-inline`, and `surface` attributes when controls leave the Menu or the Menu disconnects.
+- Textarea now combines row and padding custom properties in one style attribute so both configurations apply reliably.
+- Input, Select, and Textarea now retain their size-resolved Menu radius when focused at x-small and small instead of forcing square corners.
 - `mui-search-input` now reserves controlled `open` behaviour for populated `after` slot compositions, normalizes its Cancel action and direct Tab Bar to the input size, and removes meaningless Cancel state from standalone search fields.
 - `mui-range-input` now uses a theme-aware solid thumb, custom filled track, correctly centered value bubble, and stable value updates that do not replace the native input during an active drag.
 - Completed the prompt-component rename audit: restored the complete `--preview-chip-*` token family in the main light, dark, and shared theme layers, removed the remaining stale `--prompt-preview-*` declarations, and renamed the final Prompt Toggle story identifier to Action Toggle terminology.
 - `mui-button` and `mui-link` now enforce their composed File Icon and Switch sizes. Activating a Button row also toggles its direct slotted Switch while preserving direct Switch interaction.
-- File Icon now supports `x-small | small | medium | large` at 16px, 21px, 24px, and 28px. Button and Link pass only the mapped `size` attribute to composed File Icons.
+- File Icon now supports `x-small | small | medium | large` at 16px, 21px, 24px, and 28px. Button and Link pass only the mapped `size` attribute to composed File Icons, and a lone File Icon uses their icon-only layout.
 - Date Picker and Time Picker now pass their resolved size to the internal Dropdown instead of forcing medium, preserving the correct Input and action radius at every Menu size.
 
 ---
