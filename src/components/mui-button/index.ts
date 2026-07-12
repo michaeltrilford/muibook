@@ -661,6 +661,7 @@ class MuiButton extends HTMLElement {
     :host([size][menu-slot]) button:focus,
     :host([size][menu-slot]) button:disabled {
       border-radius: var(--radius-000);
+      font-weight: var(--font-weight-regular);
       white-space: nowrap;
     }
 
@@ -913,7 +914,7 @@ class MuiButton extends HTMLElement {
           detail: { checked: slottedSwitch.checked },
           bubbles: true,
           composed: true,
-        })
+        }),
       );
     });
 
@@ -1051,11 +1052,11 @@ class MuiButton extends HTMLElement {
   updateComposedControlSizes(nodes: Node[]): void {
     const buttonSize = this.getAttribute("size") || "medium";
     const fileIconSizeMap: Record<string, string> = {
-      "xx-small": "small",
-      "x-small": "small",
-      small: "small",
-      medium: "medium",
-      large: "large",
+      "xx-small": "xx-small",
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
     };
     const switchSizeMap: Record<string, string> = {
       "xx-small": "x-small",

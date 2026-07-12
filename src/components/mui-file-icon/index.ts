@@ -1,6 +1,6 @@
 import { VSCODE_ICONS_BASE_URL, fileIconMap, type FileIconName } from "./icons";
 
-type FileIconSize = "small" | "medium" | "large";
+type FileIconSize = "x-small" | "small" | "medium" | "large";
 
 const iconAliases: Record<string, FileIconName> = {
   javascript: "js",
@@ -10,9 +10,10 @@ const iconAliases: Record<string, FileIconName> = {
 };
 
 const sizeMap: Record<FileIconSize, string> = {
-  small: "var(--space-400)",
+  "x-small": "var(--space-400)",
+  small: "calc(var(--space-500) - var(--stroke-size-300))",
   medium: "var(--space-500)",
-  large: "var(--space-600)",
+  large: "calc(var(--space-500) + var(--stroke-size-400))",
 };
 
 class MuiFileIcon extends HTMLElement {
@@ -54,7 +55,7 @@ class MuiFileIcon extends HTMLElement {
 
   private getSize() {
     const size = this.getAttribute("size") as FileIconSize | null;
-    return size && size in sizeMap ? size : "small";
+    return size && size in sizeMap ? size : "x-small";
   }
 
   private escapeAttribute(value: string) {

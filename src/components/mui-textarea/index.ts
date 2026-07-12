@@ -13,6 +13,8 @@ class MuiTextarea extends HTMLElement {
       "optional",
       "max-length",
       "size",
+      "padding-block",
+      "padding-inline",
     ];
   }
 
@@ -77,7 +79,7 @@ class MuiTextarea extends HTMLElement {
       return;
     }
 
-    if (["placeholder", "label", "hide-label", "variant", "optional", "max-length", "size"].includes(name)) {
+    if (["placeholder", "label", "hide-label", "variant", "optional", "max-length", "size", "padding-block", "padding-inline"].includes(name)) {
       this.render();
       this.setupListener();
     }
@@ -147,6 +149,8 @@ class MuiTextarea extends HTMLElement {
     const allowedSizes = ["x-small", "small", "medium", "large"];
     const normalizedSize = allowedSizes.includes(size) ? size : "medium";
     const ariaLabel = hideLabel && label ? `aria-label="${label}"` : "";
+    const paddingBlock = this.getAttribute("padding-block") || "";
+    const paddingInline = this.getAttribute("padding-inline") || "";
 
     const variant = this.getAttribute("variant") || "";
     const variantClass = variant ? variant : "";
@@ -191,8 +195,8 @@ class MuiTextarea extends HTMLElement {
             (var(--stroke-size-100) * 2)
           );
           line-height: var(--textarea-line-height-current);
-          padding-block: var(--textarea-padding-block-current);
-          padding-inline: var(--textarea-padding-inline-current);
+          padding-block: var(--textarea-padding-block, var(--textarea-padding-block-current));
+          padding-inline: var(--textarea-padding-inline, var(--textarea-padding-inline-current));
           box-sizing: border-box;
           font-size: var(--textarea-font-size-current);
           border-radius: var(--form-radius-medium);
@@ -236,13 +240,13 @@ class MuiTextarea extends HTMLElement {
           border-radius: var(--form-radius-large);
         }
         :host([menu-slot]) textarea.size-x-small {
-          border-radius: calc(var(--form-radius-x-small) - var(--space-050));
+          border-radius: calc(var(--form-radius-x-small) - var(--stroke-size-200));
         }
         :host([menu-slot]) textarea.size-small {
-          border-radius: calc(var(--form-radius-small) - var(--space-050));
+          border-radius: calc(var(--form-radius-small) - var(--stroke-size-200));
         }
         :host([menu-slot]) textarea.size-medium {
-          border-radius: calc(var(--form-radius-medium) - var(--space-100));
+          border-radius: calc(var(--form-radius-medium) - var(--stroke-size-400));
         }
         :host([menu-slot]) textarea.size-large {
           border-radius: calc(var(--form-radius-large) - var(--space-200));
@@ -389,7 +393,8 @@ class MuiTextarea extends HTMLElement {
           : ""
       }
 
-      <textarea
+        <textarea
+          style="${paddingBlock ? `--textarea-padding-block: ${paddingBlock};` : ""}${paddingInline ? `--textarea-padding-inline: ${paddingInline};` : ""}"
         id="${id}"
         name="${name}"
         class="${[variantClass, `size-${normalizedSize}`].filter(Boolean).join(" ")}"

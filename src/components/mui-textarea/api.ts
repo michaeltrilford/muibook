@@ -15,6 +15,8 @@ export const muiApi = {
       { name: "optional", type: { text: "boolean" }, default: "false", description: "Displays an optional marker beside the label." },
       { name: "max-length", type: { text: "number | string" }, description: "Maximum character length. Providing it displays a live count." },
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Textarea size scale." },
+      { name: "padding-block", type: { text: "string" }, description: "Overrides native textarea block padding with a CSS length or token." },
+      { name: "padding-inline", type: { text: "string" }, description: "Overrides native textarea inline padding with a CSS length or token." },
     ],
     events: [
       { name: "input", description: "Composed, bubbling event dispatched during value entry with `detail.value`." },

@@ -53,7 +53,18 @@ if (!customElements.get("mui-time-picker-popover")) {
 
 class MuiTimePicker extends HTMLElement {
   static get observedAttributes() {
-    return ["value", "type", "label", "hide-label", "optional", "size", "variant", "menu-slot"];
+    return [
+      "value",
+      "type",
+      "label",
+      "hide-label",
+      "optional",
+      "size",
+      "variant",
+      "menu-slot",
+      "padding-block",
+      "padding-inline",
+    ];
   }
 
   private selectedTime: string = "";
@@ -101,7 +112,9 @@ class MuiTimePicker extends HTMLElement {
     const updateValue = () => {
       this.setAttribute("value", this.selectedTime);
       if (input) input.setAttribute("value", this.selectedTime);
-      this.dispatchEvent(new CustomEvent("change", { detail: { value: this.selectedTime }, bubbles: true, composed: true }));
+      this.dispatchEvent(
+        new CustomEvent("change", { detail: { value: this.selectedTime }, bubbles: true, composed: true }),
+      );
     };
 
     if (time) {
@@ -110,12 +123,12 @@ class MuiTimePicker extends HTMLElement {
         if (detail && detail.value) {
           this.selectedTime = detail.value;
           updateValue();
-          
+
           const type = this.getAttribute("type") || "time";
           if (type === "timeslot") {
             requestAnimationFrame(() => {
               const dropdown = this.shadowRoot?.querySelector("mui-dropdown") as any;
-              if (dropdown && typeof dropdown.close === 'function') dropdown.close();
+              if (dropdown && typeof dropdown.close === "function") dropdown.close();
             });
           }
         }
@@ -140,6 +153,8 @@ class MuiTimePicker extends HTMLElement {
     const optional = this.hasAttribute("optional") ? "optional" : "";
     const size = this.getAttribute("size") || "medium";
     const variant = this.getAttribute("variant") || "";
+    const paddingBlock = this.getAttribute("padding-block") || "";
+    const paddingInline = this.getAttribute("padding-inline") || "";
 
     const timeVariant = type === "timeslot" ? "slots" : "wheels";
 
@@ -156,6 +171,7 @@ class MuiTimePicker extends HTMLElement {
         mui-dropdown {
           width: 100%;
           --menu-min-width: auto;
+          display: flex;
         }
       </style>
       <mui-dropdown persistent size="${size}">
@@ -165,6 +181,8 @@ class MuiTimePicker extends HTMLElement {
           label="${label}"
           size="${size}"
           variant="${variant}"
+          ${paddingBlock ? `padding-block="${paddingBlock}"` : ""}
+          ${paddingInline ? `padding-inline="${paddingInline}"` : ""}
           ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
           ${hideLabel}
           ${optional}

@@ -14,8 +14,8 @@ export const muiApi = {
       },
       {
         name: "size",
-        type: { text: '"small" | "medium" | "large"' },
-        default: "small",
+        type: { text: '"x-small" | "small" | "medium" | "large"' },
+        default: "x-small",
         description: "Sets the rendered icon footprint using Muibook spacing tokens.",
       },
       {

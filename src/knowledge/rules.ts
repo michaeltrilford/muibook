@@ -126,7 +126,7 @@ FORMS AND INPUTS:
 - FormSectionFooter: slot, style
 - FormGroup: heading, variant (vertical|horizontal), hide-label, style
 - Field: label, variant (default|success|warning|error), message, hide-label, size (x-small|small|medium|large), optional, style
-- FormMessage: text, size (x-small|small|medium|large), weight (regular|bold), variant (default|optional|info|success|warning|error), style
+- FormMessage: text, size (x-small|small|medium|large), weight (regular|bold), variant (secondary|info|positive|warning|attention), style
 - Input: label, type (text|email|password|number|tel|url), placeholder, value, id, name, disabled, hide-label, variant (default|error), size (x-small|small|medium|large), optional, max-length; slots before/after
 - Textarea: label, placeholder, value, name, id, variant (default|success|warning|error), size (x-small|small|medium|large), rows, optional, hide-label, max-length, disabled, style
 - Select: label, placeholder, options, value, id, name, disabled, variant (default|error), size (x-small|small|medium|large), appearance (native|custom), selected-content (rich|label), col, space, max-height, padding-block, padding-inline. Use options for simple data selects; use Option children only when appearance=custom needs rich composed native option content.

@@ -53,8 +53,8 @@ class MuiMenu extends HTMLElement {
       "mui-range-input",
       "mui-chip-input",
     ]);
-    const formControls = directChildren.filter(
-      (element): element is HTMLElement => formControlTags.has(element.tagName.toLowerCase()),
+    const formControls = directChildren.filter((element): element is HTMLElement =>
+      formControlTags.has(element.tagName.toLowerCase()),
     );
     const bodies = directChildren.filter(
       (element): element is HTMLElement => element.tagName.toLowerCase() === "mui-body",
@@ -65,11 +65,19 @@ class MuiMenu extends HTMLElement {
     });
     const firstActionIndex = actions.length > 0 ? directChildren.indexOf(actions[0]) : -1;
     const hasBodyBeforeFirstAction =
-      firstActionIndex > 0 && directChildren.slice(0, firstActionIndex).some((element) => element.tagName.toLowerCase() === "mui-body");
+      firstActionIndex > 0 &&
+      directChildren.slice(0, firstActionIndex).some((element) => element.tagName.toLowerCase() === "mui-body");
+    const bodySizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+    const bodySize = bodySizeMap[size] || "small";
 
     bodies.forEach((body) => {
-      if (body.getAttribute("size") !== size) body.setAttribute("size", size);
-      if (body.getAttribute("weight") !== "bold") body.setAttribute("weight", "bold");
+      if (body.getAttribute("size") !== bodySize) body.setAttribute("size", bodySize);
+      if (body.getAttribute("weight") !== "regular") body.setAttribute("weight", "regular");
       body.setAttribute("menu-slot", "");
     });
 
@@ -93,7 +101,7 @@ class MuiMenu extends HTMLElement {
         :host {
           display: flex;
           flex-direction: column;
-          gap: 1px;
+          gap: 0;
           min-width: var(--menu-min-width);
           box-sizing: border-box;
           border: var(--border-thin);
@@ -101,14 +109,14 @@ class MuiMenu extends HTMLElement {
           border-radius: var(--menu-radius);
           background: var(--menu-background);
           box-shadow: 0 var(--space-100) var(--space-200) var(--menu-shadow-color);
-          padding: 1px;
+          padding: 0;
         }
 
         :host([size="x-small"]) { border-radius: min(var(--action-radius-x-small), var(--form-radius-x-small)); }
         :host([size="small"]) { border-radius: min(var(--action-radius-small), var(--form-radius-small)); }
         :host([size="medium"]) { border-radius: min(var(--action-radius-medium), var(--form-radius-medium)); }
         :host([size="large"]) { border-radius: min(var(--action-radius-large), var(--form-radius-large)); }
-
+        
         :host([size="x-small"]) ::slotted(mui-input),
         :host([size="x-small"]) ::slotted(mui-select),
         :host([size="x-small"]) ::slotted(mui-date-picker),

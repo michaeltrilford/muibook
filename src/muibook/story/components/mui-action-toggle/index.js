@@ -18,7 +18,7 @@ class StoryActionToggle extends HTMLElement {
         usage="Use mui-action-toggle only in slot='actions'.|||Prompt includes a default submit control in actions-right; override only when needed.|||Wire submit and context events from the parent mui-prompt."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
-          <mui-prompt id="promptToggleInteractive" placeholder="Try toggle + submit..." fan-open context-mode="icon" enter-submit debug>
+          <mui-prompt id="actionToggleInteractive" placeholder="Try toggle + submit..." fan-open context-mode="icon" enter-submit debug>
             <mui-action-toggle slot="actions">
               <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
                 <mui-icon-accessibility size="small"></mui-icon-accessibility>

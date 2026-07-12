@@ -18,7 +18,7 @@ export const muiDocs: MuiDocs = {
         "When used in Form Group layouts, attach each Form Message to its specific Field using slot='message'.",
         "Form Message wraps Mui Body with form-oriented defaults.",
         "Form Message renders an info icon by default; provide slot='before' to replace it.",
-        "Use variant='info' for lighter informational guidance that should remain less visually impactful than warning, success, or error states.",
+        "Use variant='info' for lighter informational guidance that should remain less visually impactful than warning, positive, or attention states.",
         "Supporting copy is intentionally knocked back so inputs and selections stay visually primary.",
         "Slot icons in before/after using Mui Body slot behavior.",
         "Style state feedback through slotted icon color and text styling in usage context.",

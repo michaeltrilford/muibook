@@ -35,6 +35,8 @@ export const muiApi = {
         default: "medium",
         description: "The physical size of the input.",
       },
+      { name: "padding-block", type: { text: "string" }, description: "Overrides internal Input block padding." },
+      { name: "padding-inline", type: { text: "string" }, description: "Overrides internal Input inline padding." },
       {
         name: "variant",
         type: { text: '"default" | "filled" | "ghost"' },

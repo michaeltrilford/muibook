@@ -61,6 +61,8 @@ export const muiApi = {
         default: "false",
         description: "Focuses the input after it renders.",
       },
+      { name: "padding-block", type: { text: "string" }, description: "Overrides native input block padding with a CSS length or token." },
+      { name: "padding-inline", type: { text: "string" }, description: "Overrides native input inline padding with a CSS length or token." },
     ],
     slots: [
       { name: "before", description: "Flush leading control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`." },

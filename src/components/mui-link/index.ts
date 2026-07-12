@@ -153,7 +153,7 @@ class MuiLink extends HTMLElement {
     const childNodes = Array.from(element.childNodes);
     const elementChildren = childNodes.filter((node) => node.nodeType === Node.ELEMENT_NODE) as Element[];
     const hasOnlyWhitespaceText = childNodes.every((node) =>
-      node.nodeType === Node.TEXT_NODE ? !node.textContent?.trim() : node.nodeType === Node.ELEMENT_NODE
+      node.nodeType === Node.TEXT_NODE ? !node.textContent?.trim() : node.nodeType === Node.ELEMENT_NODE,
     );
 
     return (
@@ -175,7 +175,7 @@ class MuiLink extends HTMLElement {
         .assignedNodes({ flatten: true })
         .some(
           (node) =>
-            node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim())
+            node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim()),
         );
 
     const hasBefore = hasAssignedContent(slotBefore);
@@ -195,9 +195,7 @@ class MuiLink extends HTMLElement {
       assignedElements.length === 1 &&
       this.isAvatarOnlyElement(assignedElements[0]) &&
       assignedNodes.every((node) =>
-        node.nodeType === Node.ELEMENT_NODE
-          ? this.isAvatarOnlyElement(node as Element)
-          : !node.textContent?.trim()
+        node.nodeType === Node.ELEMENT_NODE ? this.isAvatarOnlyElement(node as Element) : !node.textContent?.trim(),
       );
 
     this.toggleAttribute("avatar-only", avatarOnly);
@@ -210,7 +208,7 @@ class MuiLink extends HTMLElement {
         node.nodeType === Node.ELEMENT_NODE
           ? (node as HTMLElement).classList.contains("mui-icon") ||
             (node as HTMLElement).tagName.toLowerCase() === "svg"
-          : !node.textContent?.trim()
+          : !node.textContent?.trim(),
       );
 
     this.toggleAttribute("icon-only", iconOnly);
@@ -236,11 +234,11 @@ class MuiLink extends HTMLElement {
   private updateComposedControlSizes(nodes: Node[]): void {
     const linkSize = this.getAttribute("size") || "medium";
     const fileIconSizeMap: Record<string, string> = {
-      "xx-small": "small",
-      "x-small": "small",
-      small: "small",
-      medium: "medium",
-      large: "large",
+      "xx-small": "xx-small",
+      "x-small": "x-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
     };
     const switchSizeMap: Record<string, string> = {
       "xx-small": "x-small",
@@ -953,6 +951,7 @@ class MuiLink extends HTMLElement {
       :host([size][menu-slot]) a:focus,
       :host([size][menu-slot]) a[aria-disabled="true"] {
         border-radius: var(--radius-000);
+        font-weight: var(--font-weight-regular);
         justify-content: flex-start;
         white-space: nowrap;
       }

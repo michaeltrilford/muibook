@@ -224,17 +224,17 @@ html[data-theme="light"] {
   --prompt-hover-border-pulse-speed: var(--speed-500);
   --prompt-hover-sweep-speed: var(--speed-500);
   --prompt-placeholder-color: var(--form-default-placeholder-color);
-  --prompt-preview-background: var(--white-opacity-10);
-  --prompt-preview-accent-mix-100: 10%;
-  --prompt-preview-accent-mix-200: 8%;
-  --prompt-preview-accent-mix-300: 6%;
-  --prompt-preview-accent-mix-400: 8%;
-  --prompt-preview-accent-mix-500: 4%;
-  --prompt-preview-dismiss-secondary-background: var(--grey-50);
-  --prompt-preview-dismiss-secondary-background-hover: var(--grey-200);
-  --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--black-opacity-20);
-  --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--black-opacity-30);
-  --prompt-preview-top-shade-start: var(--white-opacity-20);
+  --preview-chip-background: var(--white-opacity-10);
+  --preview-chip-accent-mix-100: 10%;
+  --preview-chip-accent-mix-200: 8%;
+  --preview-chip-accent-mix-300: 6%;
+  --preview-chip-accent-mix-400: 8%;
+  --preview-chip-accent-mix-500: 4%;
+  --preview-chip-dismiss-secondary-background: var(--grey-50);
+  --preview-chip-dismiss-secondary-background-hover: var(--grey-200);
+  --preview-chip-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--black-opacity-20);
+  --preview-chip-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--black-opacity-30);
+  --preview-chip-top-shade-start: var(--white-opacity-20);
   --prompt-border-color-focus: var(--blue-500);
   --prompt-hover-glow-color: var(--mui-brand-400);
   --prompt-focus-ring-color: var(--mui-brand-400);
@@ -449,6 +449,7 @@ html[data-theme="light"] {
   --menu-background: var(--grey-50);
   --menu-border-color: var(--black-opacity-20);
   --menu-shadow-color: var(--black-opacity-10);
+  --menu-section-header: var(--grey-600);
   --dropdown-button-background-hover: var(--white);
 
   /* Progress */
@@ -621,17 +622,17 @@ html[data-theme="dark"] {
   --prompt-hover-border-pulse-speed: var(--speed-500);
   --prompt-hover-sweep-speed: var(--speed-500);
   --prompt-placeholder-color: var(--form-default-placeholder-color);
-  --prompt-preview-background: var(--black-opacity-10);
-  --prompt-preview-accent-mix-100: 14%;
-  --prompt-preview-accent-mix-200: 10%;
-  --prompt-preview-accent-mix-300: 8%;
-  --prompt-preview-accent-mix-400: 12%;
-  --prompt-preview-accent-mix-500: 6%;
-  --prompt-preview-dismiss-secondary-background: var(--surface-recessed-100);
-  --prompt-preview-dismiss-secondary-background-hover: var(--surface-recessed-200);
-  --prompt-preview-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
-  --prompt-preview-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-50);
-  --prompt-preview-top-shade-start: var(--black-opacity-0);
+  --preview-chip-background: var(--black-opacity-10);
+  --preview-chip-accent-mix-100: 14%;
+  --preview-chip-accent-mix-200: 10%;
+  --preview-chip-accent-mix-300: 8%;
+  --preview-chip-accent-mix-400: 12%;
+  --preview-chip-accent-mix-500: 6%;
+  --preview-chip-dismiss-secondary-background: var(--surface-recessed-100);
+  --preview-chip-dismiss-secondary-background-hover: var(--surface-recessed-200);
+  --preview-chip-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-30);
+  --preview-chip-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--white-opacity-50);
+  --preview-chip-top-shade-start: var(--black-opacity-0);
   --prompt-border-color-focus: var(--blue-300);
   --prompt-hover-glow-color: var(--mui-brand-300);
   --prompt-focus-ring-color: var(--mui-brand-300);
@@ -846,6 +847,7 @@ html[data-theme="dark"] {
   --menu-background: var(--grey-1000);
   --menu-border-color: var(--white-opacity-20);
   --menu-shadow-color: var(--black-opacity-20);
+  --menu-section-header: var(--grey-400);
   --dropdown-button-background-hover: var(--grey-900);
 
   /* Progress */
@@ -1007,11 +1009,11 @@ html[data-theme="dark"] {
   --dialog-border: none;
 
   /* Prompt */
-  --prompt-preview-code-background: var(--code-background);
-  --prompt-preview-top-shade-height: calc(var(--space-600) + var(--space-100));
-  --prompt-preview-top-shade-end: var(--black-opacity-0);
-  --prompt-preview-top-shade-start-overlay: var(--black-opacity-50);
-  --prompt-preview-top-shade-end-overlay: var(--black-opacity-0);
+  --preview-chip-code-background: var(--code-background);
+  --preview-chip-top-shade-height: calc(var(--space-600) + var(--space-100));
+  --preview-chip-top-shade-end: var(--black-opacity-0);
+  --preview-chip-top-shade-start-overlay: var(--black-opacity-50);
+  --preview-chip-top-shade-end-overlay: var(--black-opacity-0);
   --prompt-border-color-hover: var(--form-default-border-color-hover);
   --prompt-hover-ring-color: var(--outline-color);
   --prompt-spectrum-mid: var(--outline-color);

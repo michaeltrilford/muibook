@@ -62,7 +62,18 @@ if (!customElements.get("mui-date-picker-popover")) {
 
 class MuiDatePicker extends HTMLElement {
   static get observedAttributes() {
-    return ["value", "type", "label", "hide-label", "optional", "size", "variant", "menu-slot"];
+    return [
+      "value",
+      "type",
+      "label",
+      "hide-label",
+      "optional",
+      "size",
+      "variant",
+      "menu-slot",
+      "padding-block",
+      "padding-inline",
+    ];
   }
 
   private selectedDate: string = "";
@@ -141,11 +152,24 @@ class MuiDatePicker extends HTMLElement {
         const year = parseInt(dateParts[0], 10);
         const monthIndex = parseInt(dateParts[1], 10) - 1;
         const day = parseInt(dateParts[2], 10);
-        
+
         if (!isNaN(year) && !isNaN(monthIndex) && !isNaN(day)) {
-          const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          const monthNames = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ];
           const formattedDate = `${day} ${monthNames[monthIndex]} ${year}`;
-          
+
           if (parts.length > 1) {
             const timeStr = parts.slice(1).join(" ");
             return `${timeStr}, ${formattedDate}`;
@@ -187,12 +211,12 @@ class MuiDatePicker extends HTMLElement {
         if (detail && detail.value) {
           this.selectedDate = detail.value;
           updateValue();
-          
+
           const type = this.getAttribute("type") || "date";
           if (type === "date") {
             requestAnimationFrame(() => {
               const dropdown = this.shadowRoot?.querySelector("mui-dropdown") as any;
-              if (dropdown && typeof dropdown.close === 'function') dropdown.close();
+              if (dropdown && typeof dropdown.close === "function") dropdown.close();
             });
           }
         }
@@ -205,12 +229,12 @@ class MuiDatePicker extends HTMLElement {
         if (detail && detail.value) {
           this.selectedTime = detail.value;
           updateValue();
-          
+
           const type = this.getAttribute("type") || "date";
           if (this.isDateTimeType(type)) {
             requestAnimationFrame(() => {
               const dropdown = this.shadowRoot?.querySelector("mui-dropdown") as any;
-              if (dropdown && typeof dropdown.close === 'function') dropdown.close();
+              if (dropdown && typeof dropdown.close === "function") dropdown.close();
             });
           }
         }
@@ -236,6 +260,8 @@ class MuiDatePicker extends HTMLElement {
     const optional = this.hasAttribute("optional") ? "optional" : "";
     const size = this.getAttribute("size") || "medium";
     const variant = this.getAttribute("variant") || "";
+    const paddingBlock = this.getAttribute("padding-block") || "";
+    const paddingInline = this.getAttribute("padding-inline") || "";
 
     const showDate = true; // Always true for date picker
     const showTime = this.isDateTimeType(type);
@@ -250,6 +276,7 @@ class MuiDatePicker extends HTMLElement {
         mui-dropdown {
           width: 100%;
           --menu-min-width: auto;
+          display: flex;
         }
         .time-pane {
           width: 130px;
@@ -262,6 +289,8 @@ class MuiDatePicker extends HTMLElement {
           label="${label}"
           size="${size}"
           variant="${variant}"
+          ${paddingBlock ? `padding-block="${paddingBlock}"` : ""}
+          ${paddingInline ? `padding-inline="${paddingInline}"` : ""}
           ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
           ${hideLabel}
           ${optional}

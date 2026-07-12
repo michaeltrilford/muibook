@@ -17,7 +17,7 @@ class StoryFormMessage extends HTMLElement {
           <mui-v-stack space="var(--space-200)">
             <mui-form-message variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
-              Optional: Add a referral code.
+              Secondary: Add a referral code.
             </mui-form-message>
             <mui-form-message variant="info">
               Confirm billing details before saving changes.
@@ -26,11 +26,11 @@ class StoryFormMessage extends HTMLElement {
               <mui-icon-warning slot="before"></mui-icon-warning>
               Your password expires in 5 days.
             </mui-form-message>
-            <mui-form-message variant="success">
+            <mui-form-message variant="positive">
               <mui-icon-check slot="before"></mui-icon-check>
               Email looks good and is available.
             </mui-form-message>
-            <mui-form-message variant="error">
+            <mui-form-message variant="attention">
               <mui-icon-attention slot="before"></mui-icon-attention>
               Enter a valid email address.
             </mui-form-message>
@@ -112,7 +112,7 @@ class StoryFormMessage extends HTMLElement {
             <mui-body size="small" variant="secondary">x-small</mui-body>
             <mui-form-message size="x-small" variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
-              X Small optional helper content
+              X Small secondary helper content
             </mui-form-message>
             <mui-form-message size="x-small" variant="info">
               <mui-icon-info slot="before"></mui-icon-info>
@@ -122,13 +122,13 @@ class StoryFormMessage extends HTMLElement {
               <mui-icon-warning slot="before"></mui-icon-warning>
               X Small warning helper content
             </mui-form-message>
-            <mui-form-message size="x-small" variant="success">
+            <mui-form-message size="x-small" variant="positive">
               <mui-icon-check slot="before"></mui-icon-check>
-              X Small success helper content
+              X Small positive helper content
             </mui-form-message>
-            <mui-form-message size="x-small" variant="error">
+            <mui-form-message size="x-small" variant="attention">
               <mui-icon-attention slot="before"></mui-icon-attention>
-              X Small error helper content
+              X Small attention helper content
             </mui-form-message>
           </mui-v-stack>
 
@@ -136,7 +136,7 @@ class StoryFormMessage extends HTMLElement {
             <mui-body size="small" variant="secondary">small</mui-body>
             <mui-form-message size="small" variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
-              Small optional helper content
+              Small secondary helper content
             </mui-form-message>
             <mui-form-message size="small" variant="info">
               <mui-icon-info slot="before"></mui-icon-info>
@@ -146,13 +146,13 @@ class StoryFormMessage extends HTMLElement {
               <mui-icon-warning slot="before"></mui-icon-warning>
               Small warning helper content
             </mui-form-message>
-            <mui-form-message size="small" variant="success">
+            <mui-form-message size="small" variant="positive">
               <mui-icon-check slot="before"></mui-icon-check>
-              Small success helper content
+              Small positive helper content
             </mui-form-message>
-            <mui-form-message size="small" variant="error">
+            <mui-form-message size="small" variant="attention">
               <mui-icon-attention slot="before"></mui-icon-attention>
-              Small error helper content
+              Small attention helper content
             </mui-form-message>
           </mui-v-stack>
 
@@ -160,7 +160,7 @@ class StoryFormMessage extends HTMLElement {
             <mui-body size="small" variant="secondary">medium</mui-body>
             <mui-form-message size="medium" variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
-              Medium optional helper content
+              Medium secondary helper content
             </mui-form-message>
             <mui-form-message size="medium" variant="info">
               <mui-icon-info slot="before"></mui-icon-info>
@@ -170,13 +170,13 @@ class StoryFormMessage extends HTMLElement {
               <mui-icon-warning slot="before"></mui-icon-warning>
               Medium warning helper content
             </mui-form-message>
-            <mui-form-message size="medium" variant="success">
+            <mui-form-message size="medium" variant="positive">
               <mui-icon-check slot="before"></mui-icon-check>
-              Medium success helper content
+              Medium positive helper content
             </mui-form-message>
-            <mui-form-message size="medium" variant="error">
+            <mui-form-message size="medium" variant="attention">
               <mui-icon-attention slot="before"></mui-icon-attention>
-              Medium error helper content
+              Medium attention helper content
             </mui-form-message>
           </mui-v-stack>
 
@@ -184,7 +184,7 @@ class StoryFormMessage extends HTMLElement {
             <mui-body size="small" variant="secondary">large</mui-body>
             <mui-form-message size="large" variant="secondary">
               <mui-icon-message slot="before"></mui-icon-message>
-              Large optional helper content
+              Large secondary helper content
             </mui-form-message>
             <mui-form-message size="large" variant="info">
               <mui-icon-info slot="before"></mui-icon-info>
@@ -194,13 +194,13 @@ class StoryFormMessage extends HTMLElement {
               <mui-icon-warning slot="before"></mui-icon-warning>
               Large warning helper content
             </mui-form-message>
-            <mui-form-message size="large" variant="success">
+            <mui-form-message size="large" variant="positive">
               <mui-icon-check slot="before"></mui-icon-check>
-              Large success helper content
+              Large positive helper content
             </mui-form-message>
-            <mui-form-message size="large" variant="error">
+            <mui-form-message size="large" variant="attention">
               <mui-icon-attention slot="before"></mui-icon-attention>
-              Large error helper content
+              Large attention helper content
             </mui-form-message>
           </mui-v-stack>
         </mui-v-stack>
@@ -209,7 +209,7 @@ class StoryFormMessage extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-icon-message slot="before"&gt;&lt;/mui-icon-message&gt;
           <br />
-          &nbsp;&nbsp;Small optional helper content
+          &nbsp;&nbsp;Small secondary helper content
           <br />
           &lt;/mui-form-message&gt;
           <br />
@@ -236,7 +236,7 @@ class StoryFormMessage extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-icon-check slot="before"&gt;&lt;/mui-icon-check&gt;
           <br />
-          &nbsp;&nbsp;Small success helper content
+          &nbsp;&nbsp;Small positive helper content
           <br />
           &lt;/mui-form-message&gt;
           <br />
@@ -245,7 +245,7 @@ class StoryFormMessage extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-icon-attention slot="before"&gt;&lt;/mui-icon-attention&gt;
           <br />
-          &nbsp;&nbsp;Small error helper content
+          &nbsp;&nbsp;Small attention helper content
           <br />
           &lt;/mui-form-message&gt;
         </story-code-block>

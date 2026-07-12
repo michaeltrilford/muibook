@@ -13,11 +13,11 @@ class MuiFormMessage extends HTMLElement {
 
   private getIconColor(variant: string): string {
     const variantColorMap: Record<string, string> = {
-      optional: "var(--text-color-secondary)",
+      secondary: "var(--text-color-secondary)",
       info: "var(--text-color-info)",
       warning: "var(--text-color-warning)",
-      success: "var(--text-color-positive)",
-      error: "var(--text-color-attention)",
+      positive: "var(--text-color-positive)",
+      attention: "var(--text-color-attention)",
     };
     return variantColorMap[variant] || "var(--text-color)";
   }
@@ -35,7 +35,7 @@ class MuiFormMessage extends HTMLElement {
   private syncBeforeIcon() {
     if (!this.shadowRoot) return;
     const beforeSlot = this.shadowRoot.querySelector('slot[name="before"]') as HTMLSlotElement | null;
-    const iconColor = this.getIconColor(this.getAttribute("variant") || "optional");
+    const iconColor = this.getIconColor(this.getAttribute("variant") || "secondary");
     const iconSize = this.getIconSize(this.getAttribute("size") || "small");
 
     const assigned = beforeSlot?.assignedElements({ flatten: true }) ?? [];
@@ -65,7 +65,7 @@ class MuiFormMessage extends HTMLElement {
 
     const size = this.getAttribute("size") || "small";
     const weight = this.getAttribute("weight") || "regular";
-    const variant = this.getAttribute("variant") || "optional";
+    const variant = this.getAttribute("variant") || "secondary";
     const hasAfterSlot = this.querySelector('[slot="after"]') !== null;
 
     this.shadowRoot.innerHTML = /*html*/ `

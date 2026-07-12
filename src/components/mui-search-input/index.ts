@@ -4,7 +4,7 @@ import "../mui-input";
 
 class MuiSearchInput extends HTMLElement {
   static get observedAttributes() {
-    return ["id", "label", "placeholder", "value", "name", "size", "disabled", "open", "autofocus", "cancel-label", "menu-slot"];
+    return ["id", "label", "placeholder", "value", "name", "size", "disabled", "open", "autofocus", "cancel-label", "menu-slot", "padding-block", "padding-inline"];
   }
 
   private slotChangeHandler = () => this.syncAfterSlotState();
@@ -254,6 +254,8 @@ class MuiSearchInput extends HTMLElement {
     const placeholder = this.getAttribute("placeholder") || "Search...";
     const name = this.getAttribute("name") || "";
     const value = this.value;
+    const paddingBlock = this.getAttribute("padding-block") || "";
+    const paddingInline = this.getAttribute("padding-inline") || "";
     const size = this.getAttribute("size") || "medium";
     const disabled = this.hasAttribute("disabled");
     const cancelLabel = this.getAttribute("cancel-label") || "Cancel";
@@ -408,6 +410,8 @@ class MuiSearchInput extends HTMLElement {
               hide-label
               placeholder="${placeholder}"
               value="${value}"
+              ${paddingBlock ? `padding-block="${paddingBlock}"` : ""}
+              ${paddingInline ? `padding-inline="${paddingInline}"` : ""}
               ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
               ${disabled ? "disabled" : ""}
               ${this.hasAttribute("autofocus") ? "autofocus" : ""}

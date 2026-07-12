@@ -16,6 +16,8 @@ class MuiInput extends HTMLElement {
       "slot-layout",
       "autofocus",
       "menu-slot",
+      "padding-block",
+      "padding-inline",
     ];
   }
 
@@ -97,6 +99,8 @@ class MuiInput extends HTMLElement {
         "max-length",
         "size",
         "slot-layout",
+        "padding-block",
+        "padding-inline",
       ].includes(name)
     ) {
       this.render();
@@ -176,9 +180,9 @@ class MuiInput extends HTMLElement {
       };
       const slotMinHeight = slotMinHeightMap[normalizedSize] || "var(--action-size-medium)";
       const menuInsetMap: Record<string, string> = {
-        "x-small": "var(--space-050)",
-        small: "var(--space-050)",
-        medium: "var(--space-100)",
+        "x-small": "var(--stroke-size-200)",
+        small: "var(--stroke-size-200)",
+        medium: "var(--stroke-size-400)",
         large: "var(--space-200)",
       };
       const formRadiusMap: Record<string, string> = {
@@ -365,6 +369,8 @@ class MuiInput extends HTMLElement {
     const allowedSizes = ["x-small", "small", "medium", "large"];
     const normalizedSize = allowedSizes.includes(size) ? size : "medium";
     const autofocus = this.hasAttribute("autofocus");
+    const paddingBlock = this.getAttribute("padding-block") || "";
+    const paddingInline = this.getAttribute("padding-inline") || "";
 
     const variant = this.getAttribute("variant") || "";
     const variantClass = variant ? variant : "";
@@ -647,61 +653,77 @@ class MuiInput extends HTMLElement {
         }
         input.size-x-small {
           min-height: var(--action-size-x-small);
-          padding: var(--action-padding-x-small);
+          padding-block-start: var(--input-padding-block-start, var(--input-padding-block, var(--space-050)));
+          padding-block-end: var(--input-padding-block-end, var(--input-padding-block, var(--space-050)));
+          padding-inline-start: var(--input-padding-inline-start, var(--input-padding-inline, var(--space-200)));
+          padding-inline-end: var(--input-padding-inline-end, var(--input-padding-inline, var(--space-200)));
           font-size: var(--text-font-size-xs);
           line-height: var(--text-line-height-xs);
           border-radius: var(--form-radius-x-small);
-          --input-inline-padding-current: var(--space-200);
+          --input-inline-padding-start-current: var(--input-padding-inline-start, var(--input-padding-inline, var(--space-200)));
+          --input-inline-padding-end-current: var(--input-padding-inline-end, var(--input-padding-inline, var(--space-200)));
         }
         input.size-x-small.inside-before:not(.before) {
-          padding-left: calc(var(--input-inline-padding-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
+          padding-inline-start: calc(var(--input-inline-padding-start-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
         }
         input.size-x-small.inside-after:not(.after),
         input.size-x-small.hint:not(.after) {
-          padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
+          padding-inline-end: calc(var(--input-inline-padding-end-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-small {
           min-height: var(--action-size-small);
-          padding: var(--action-padding-small);
+          padding-block-start: var(--input-padding-block-start, var(--input-padding-block, var(--space-100)));
+          padding-block-end: var(--input-padding-block-end, var(--input-padding-block, var(--space-100)));
+          padding-inline-start: var(--input-padding-inline-start, var(--input-padding-inline, var(--space-300)));
+          padding-inline-end: var(--input-padding-inline-end, var(--input-padding-inline, var(--space-300)));
           font-size: var(--text-font-size-s);
           line-height: var(--text-line-height-s);
           border-radius: var(--form-radius-small);
-          --input-inline-padding-current: var(--space-300);
+          --input-inline-padding-start-current: var(--input-padding-inline-start, var(--input-padding-inline, var(--space-300)));
+          --input-inline-padding-end-current: var(--input-padding-inline-end, var(--input-padding-inline, var(--space-300)));
         }
         input.size-small.inside-before:not(.before) {
-          padding-left: calc(var(--input-inline-padding-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
+          padding-inline-start: calc(var(--input-inline-padding-start-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
         }
         input.size-small.inside-after:not(.after),
         input.size-small.hint:not(.after) {
-          padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
+          padding-inline-end: calc(var(--input-inline-padding-end-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-medium {
           min-height: var(--action-size-medium);
-          padding: var(--space-200) var(--space-300);
+          padding-block-start: var(--input-padding-block-start, var(--input-padding-block, var(--space-200)));
+          padding-block-end: var(--input-padding-block-end, var(--input-padding-block, var(--space-200)));
+          padding-inline-start: var(--input-padding-inline-start, var(--input-padding-inline, var(--space-300)));
+          padding-inline-end: var(--input-padding-inline-end, var(--input-padding-inline, var(--space-300)));
           font-size: var(--text-font-size);
           line-height: var(--text-line-height);
           border-radius: var(--form-radius-medium);
-          --input-inline-padding-current: var(--space-300);
+          --input-inline-padding-start-current: var(--input-padding-inline-start, var(--input-padding-inline, var(--space-300)));
+          --input-inline-padding-end-current: var(--input-padding-inline-end, var(--input-padding-inline, var(--space-300)));
         }
         input.size-medium.inside-before:not(.before) {
-          padding-left: calc(var(--input-inline-padding-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
+          padding-inline-start: calc(var(--input-inline-padding-start-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
         }
         input.size-medium.inside-after:not(.after),
         input.size-medium.hint:not(.after) {
-          padding-right: calc(var(--input-inline-padding-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
+          padding-inline-end: calc(var(--input-inline-padding-end-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-large {
           min-height: var(--action-size-large);
-          padding: var(--space-300) var(--space-400);
+          padding-block-start: var(--input-padding-block-start, var(--input-padding-block, var(--space-300)));
+          padding-block-end: var(--input-padding-block-end, var(--input-padding-block, var(--space-300)));
+          padding-inline-start: var(--input-padding-inline-start, var(--input-padding-inline, var(--space-400)));
+          padding-inline-end: var(--input-padding-inline-end, var(--input-padding-inline, var(--space-400)));
           font-size: var(--text-font-size-l);
           line-height: var(--text-line-height-l);
           border-radius: var(--form-radius-large);
-          --input-inline-padding-current: var(--space-400);
+          --input-inline-padding-start-current: var(--input-padding-inline-start, var(--input-padding-inline, var(--space-400)));
+          --input-inline-padding-end-current: var(--input-padding-inline-end, var(--input-padding-inline, var(--space-400)));
         }
 
-        :host([menu-slot]) input.size-x-small { --menu-input-radius: calc(var(--form-radius-x-small) - var(--space-050)); }
-        :host([menu-slot]) input.size-small { --menu-input-radius: calc(var(--form-radius-small) - var(--space-050)); }
-        :host([menu-slot]) input.size-medium { --menu-input-radius: calc(var(--form-radius-medium) - var(--space-100)); }
+        :host([menu-slot]) input.size-x-small { --menu-input-radius: calc(var(--form-radius-x-small) - var(--stroke-size-200)); }
+        :host([menu-slot]) input.size-small { --menu-input-radius: calc(var(--form-radius-small) - var(--stroke-size-200)); }
+        :host([menu-slot]) input.size-medium { --menu-input-radius: calc(var(--form-radius-medium) - var(--stroke-size-400)); }
         :host([menu-slot]) input.size-large { --menu-input-radius: calc(var(--form-radius-large) - var(--space-200)); }
         :host([menu-slot]) input {
           border-radius: var(--menu-input-radius);
@@ -711,7 +733,7 @@ class MuiInput extends HTMLElement {
           border-radius: 0;
         }
         input.size-large.inside-before:not(.before) {
-          padding-left: calc(var(--input-inline-padding-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
+          padding-inline-start: calc(var(--input-inline-padding-start-current) + var(--input-inside-before-space, 0px) + var(--input-inline-gap));
         }
         input.size-large.inside-after:not(.after),
         input.size-large.hint:not(.after) {
@@ -909,6 +931,7 @@ class MuiInput extends HTMLElement {
           <slot name="inside-before"></slot>
         </div>
         <input
+          style="${paddingBlock ? `--input-padding-block: ${paddingBlock};` : ""}${paddingInline ? `--input-padding-inline: ${paddingInline};` : ""}"
           class="${[inputClasses, `size-${normalizedSize}`].filter(Boolean).join(" ")}"
           type="${type}"
           name="${name}"

@@ -24,7 +24,9 @@ export const muiApi = {
         type: { text: '"x-small" | "small" | "medium" | "large"' },
         default: "medium",
         description: "Size of the input field.",
-      }
+      },
+      { name: "padding-block", type: { text: "string" }, description: "Overrides internal Input block padding." },
+      { name: "padding-inline", type: { text: "string" }, description: "Overrides internal Input inline padding." }
     ],
     slots: [],
     events: [

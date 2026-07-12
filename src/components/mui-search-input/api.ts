@@ -20,6 +20,8 @@ export const muiApi = {
         default: "medium",
         description: "Search input and action size scale.",
       },
+      { name: "padding-block", type: { text: "string" }, description: "Overrides internal Input block padding." },
+      { name: "padding-inline", type: { text: "string" }, description: "Overrides internal Input inline padding." },
       { name: "disabled", type: { text: "boolean" }, default: "false", description: "Disables search interaction." },
       {
         name: "open",

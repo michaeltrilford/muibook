@@ -28,6 +28,8 @@ class MuiChipInput extends HTMLElement {
       "mobile-stack",
       "breakpoint",
       "menu-slot",
+      "padding-block",
+      "padding-inline",
     ];
   }
 
@@ -548,6 +550,8 @@ class MuiChipInput extends HTMLElement {
     const hiddenInputs = name
       ? this.selectedValues.map((value) => `<input type="hidden" name="${name}" value="${value}" />`).join("")
       : "";
+    const paddingBlock = this.getAttribute("padding-block") || "";
+    const paddingInline = this.getAttribute("padding-inline") || "";
 
     this.shadowRoot!.innerHTML = /*html*/ `
       <style>
@@ -636,6 +640,8 @@ class MuiChipInput extends HTMLElement {
           size="${this.normalizedSize}"
           placeholder="${placeholder}"
           value="${this.inputValue}"
+          ${paddingBlock ? `padding-block="${paddingBlock}"` : ""}
+          ${paddingInline ? `padding-inline="${paddingInline}"` : ""}
           ${this.hasAttribute("menu-slot") ? "menu-slot" : ""}
           ${isMobileStack ? 'slot-layout="stack-mobile"' : ""}
           ${this.disabled ? "disabled" : ""}

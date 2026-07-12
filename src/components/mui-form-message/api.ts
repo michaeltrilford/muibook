@@ -16,8 +16,8 @@ export const muiApi = {
       },
       {
         name: "variant",
-        type: { text: '"optional" | "info" | "warning" | "success" | "error"' },
-        default: "optional",
+        type: { text: '"secondary" | "info" | "positive" | "warning" | "attention"' },
+        default: "secondary",
         description: "Sets the semantic message color and default icon treatment.",
       },
     ],

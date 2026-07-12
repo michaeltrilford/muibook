@@ -29,6 +29,8 @@ export const muiApi = {
         default: "medium",
         description: "Size scale shared by the internal input and selected chips.",
       },
+      { name: "padding-block", type: { text: "string" }, description: "Overrides internal Input block padding." },
+      { name: "padding-inline", type: { text: "string" }, description: "Overrides internal Input inline padding." },
       { name: "name", type: { text: "string" }, description: "Form field name." },
       { name: "placement", type: { text: '"before" | "after"' }, default: "before", description: "Places selected chips before or after the entry field." },
       { name: "mobile-stack", type: { text: "boolean" }, default: "false", description: "Always stacks chip content and entry field." },
