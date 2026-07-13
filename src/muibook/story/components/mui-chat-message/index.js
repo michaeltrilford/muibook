@@ -8,14 +8,21 @@ class StoryChatMessage extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("ChatMessage");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Chat Message"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-chat-message" title="Chat Message"></story-api-types>
 
       <story-card
         id="default"
-        title="Default"
-        usage="Use as the default conversation row shell.|||Set size='medium' for standard chat density."
+        title="${storyMeta["default"].title}"
+        description="${storyMeta["default"].description || ""}"
+        usage="${storyMeta["default"].usage}"
       >
         <mui-chat-message slot="body" size="medium">
           <mui-avatar size="small" slot="avatar" label="Michael Trilford" background="neutral"></mui-avatar>
@@ -32,7 +39,12 @@ class StoryChatMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="list" title="Conversation List" usage="Mix sizes by speaker priority and layout density.">
+      <story-card
+        id="list"
+        title="${storyMeta["list"].title}"
+        description="${storyMeta["list"].description || ""}"
+        usage="${storyMeta["list"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-chat-message size="small">
             <mui-avatar size="small" slot="avatar" label="Support Agent" background="neutral"></mui-avatar>
@@ -54,7 +66,12 @@ class StoryChatMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="sizes" title="Sizes" usage="size controls avatar and body scale together.">
+      <story-card
+        id="sizes"
+        title="${storyMeta["sizes"].title}"
+        description="${storyMeta["sizes"].description || ""}"
+        usage="${storyMeta["sizes"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-chat-message size="x-small">
             <mui-avatar slot="avatar" label="XS"></mui-avatar>
@@ -81,7 +98,12 @@ class StoryChatMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="ghost" title="Ghost Variant" usage="variant='ghost' removes border and background while preserving structure.">
+      <story-card
+        id="ghost"
+        title="${storyMeta["ghost"].title}"
+        description="${storyMeta["ghost"].description || ""}"
+        usage="${storyMeta["ghost"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-chat-message size="x-small" variant="ghost">
             <mui-avatar slot="avatar" label="G"></mui-avatar>
@@ -108,7 +130,12 @@ class StoryChatMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="no-avatar" title="No Avatar" usage="Omit slot='avatar' for agent/system messages that should not reserve avatar layout space.|||variant='ghost' removes the bubble padding so content aligns like normal document text.|||Use align and width props for left/right chat layout instead of custom inline styles.">
+      <story-card
+        id="no-avatar"
+        title="${storyMeta["no-avatar"].title}"
+        description="${storyMeta["no-avatar"].description || ""}"
+        usage="${storyMeta["no-avatar"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-400)">
           <mui-chat-message size="medium" variant="ghost" align="start" width="full">
             <mui-body slot="header" size="x-small" variant="tertiary">Worked for 4m 10s</mui-body>
@@ -135,7 +162,12 @@ class StoryChatMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="body-rhythm" title="Body Rhythm" usage="Chat Message adds default vertical rhythm between direct body children.|||Override --chat-message-body-space only when a response needs a tighter or looser stack.">
+      <story-card
+        id="body-rhythm"
+        title="${storyMeta["body-rhythm"].title}"
+        description="${storyMeta["body-rhythm"].description || ""}"
+        usage="${storyMeta["body-rhythm"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-500)">
           <mui-chat-message size="medium" variant="ghost">
             <mui-heading level="3" size="6">Default response rhythm.</mui-heading>
@@ -162,16 +194,16 @@ class StoryChatMessage extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <story-template
-        title="${data?.title || "Chat Message"}"
-        description="${data?.description || ""}"
-        github="${(data?.github || []).join("|||")}"
-        figma="${(data?.figma || []).join("|||")}"
-        guides="${(data?.guides || []).join("|||")}"
-        storybook="${(data?.storybook || []).join("|||")}"
-        accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-chat-message"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||list::Conversation List|||sizes::Sizes|||ghost::Ghost Variant|||no-avatar::No Avatar|||body-rhythm::Body Rhythm"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

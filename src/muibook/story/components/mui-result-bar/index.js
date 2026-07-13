@@ -8,14 +8,21 @@ class StoryResultBar extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("ResultBar");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Result Bar"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-result-bar" title="Result Bar"></story-api-types>
 
       <story-card
         id="accessory"
-        title="Accessory"
-        usage="Use inside prompt responses for generated files, edits, artefacts, and reviewable results.|||Use accessory for a compact marker, start for result copy, and actions for direct controls."
+        title="${storyMeta["accessory"].title}"
+        description="${storyMeta["accessory"].description || ""}"
+        usage="${storyMeta["accessory"].usage}"
       >
         <mui-result-bar slot="body">
           <mui-avatar slot="accessory" label="Code" background="neutral">
@@ -43,8 +50,9 @@ class StoryResultBar extends HTMLElement {
 
       <story-card
         id="without-accessory"
-        title="Without Accessory"
-        usage="Omit the accessory slot when the result should read as a simple action row."
+        title="${storyMeta["without-accessory"].title}"
+        description="${storyMeta["without-accessory"].description || ""}"
+        usage="${storyMeta["without-accessory"].usage}"
       >
         <mui-result-bar slot="body">
           <mui-v-stack slot="start" space="0">
@@ -63,8 +71,9 @@ class StoryResultBar extends HTMLElement {
 
       <story-card
         id="file-edits"
-        title="Accordion Result"
-        usage="Opt into the accordion variant to present worker outputs with interactive actions and collapsible accordion content."
+        title="${storyMeta["file-edits"].title}"
+        description="${storyMeta["file-edits"].description || ""}"
+        usage="${storyMeta["file-edits"].usage}"
       >
         <mui-result-bar slot="body" variant="accordion" label="Edited 4 files" rule>
           <mui-h-stack slot="after-label" alignY="center" space="var(--space-100)">
@@ -173,15 +182,15 @@ class StoryResultBar extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <story-template
-        title="${data?.title || "Result Bar"}"
-        description="${data?.description || ""}"
-        github="${(data?.github || []).join("|||")}"
-        figma="${(data?.figma || []).join("|||")}"
-        guides="${(data?.guides || []).join("|||")}"
-        storybook="${(data?.storybook || []).join("|||")}"
-        accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
         imports='["@muibook/components/mui-result-bar"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="accessory::Accessory|||without-accessory::Without Accessory|||file-edits::Accordion Result"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

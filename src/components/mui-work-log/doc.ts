@@ -33,6 +33,12 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Status row", "Summary row", "Optional icon slot", "Toggle icon", "Detail slot", "Nested work rows", "Optional rule"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: { items: [
+      { key: "single", title: "Single Work Log", list: ["Use in the prompt message header slot when an agent response needs a compact work summary.", "Keep detail rows short and supporting, not the main response."] },
+      { key: "composable", title: "Composable Summary", list: ["Use the before and after slots to insert custom elements into the Work Log summary row.", "Good for showing line diffs, file counts, or badges next to the label."] },
+      { key: "thinking", title: "Thinking", list: ["Use status and pending together to represent an active Thinking state.", "This creates a non-interactive row with a shimmer animation and no toggle icon."] },
+      { key: "nested", title: "Nested Work Log", list: ["Use pending for active work states.", "Place Work Log inside another Work Log for secondary rows such as reading files, running checks, or applying changes.", "Nested rows are compact supporting detail."] },
+    ] },
     compositions: { description: "", items: [] },
     related: {
       items: [

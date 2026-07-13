@@ -29,6 +29,11 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Card shell", "Accessory slot", "Start slot", "Actions slot"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: { items: [
+      { key: "accessory", title: "Accessory", list: ["Use inside prompt responses for generated files, edits, artefacts, and reviewable results.", "Use accessory for a compact marker, start for result copy, and actions for direct controls."] },
+      { key: "without-accessory", title: "Without Accessory", list: ["Omit the accessory slot when the result should read as a simple action row."] },
+      { key: "file-edits", title: "Accordion Result", list: ["Opt into the accordion variant to present worker outputs with interactive actions and collapsible accordion content."] },
+    ] },
     compositions: { description: "", items: [] },
     related: {
       items: [

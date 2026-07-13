@@ -8,14 +8,21 @@ class StoryFileDiff extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("FileDiff");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="File Diff"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-file-diff" title="File Diff"></story-api-types>
 
       <story-card
         id="file-diff"
-        title="File Diff"
-        usage="Use to show file diff summaries."
+        title="${storyMeta["file-diff"].title}"
+        description="${storyMeta["file-diff"].description || ""}"
+        usage="${storyMeta["file-diff"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-file-diff
@@ -46,15 +53,15 @@ class StoryFileDiff extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <story-template
-        title="${data?.title || "File Diff"}"
-        description="${data?.description || ""}"
-        github="${(data?.github || []).join("|||")}"
-        figma="${(data?.figma || []).join("|||")}"
-        guides="${(data?.guides || []).join("|||")}"
-        storybook="${(data?.storybook || []).join("|||")}"
-        accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
         imports='["@muibook/components/mui-file-diff"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

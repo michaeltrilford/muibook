@@ -8,11 +8,22 @@ class StoryPreviewChip extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("PreviewChip");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Preview Chip"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-preview-chip" title="Preview Chip"></story-api-types>
 
-      <story-card id="predropped" title="Pre-dropped Preview" description="Shows long pasted input before submit.">
+      <story-card
+        id="predropped"
+        title="${storyMeta["predropped"].title}"
+        description="${storyMeta["predropped"].description || ""}"
+        usage="${storyMeta["predropped"].usage}"
+      >
         <mui-preview-chip
           slot="body"
           badge="JSON"
@@ -27,7 +38,12 @@ class StoryPreviewChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="types" title="Payload Types" description="Set badge directly or let the component infer it from value.">
+      <story-card
+        id="types"
+        title="${storyMeta["types"].title}"
+        description="${storyMeta["types"].description || ""}"
+        usage="${storyMeta["types"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-preview-chip
             badge="JSON"
@@ -70,7 +86,12 @@ class StoryPreviewChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="loading" title="Loading State" description="Use loading while async preview metadata or media checks resolve.">
+      <story-card
+        id="loading"
+        title="${storyMeta["loading"].title}"
+        description="${storyMeta["loading"].description || ""}"
+        usage="${storyMeta["loading"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-preview-chip
             badge="JSON"
@@ -89,7 +110,12 @@ class StoryPreviewChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="pasted-image" title="Pasted Image" description="Image previews default to badge-only, with no text overlay.">
+      <story-card
+        id="pasted-image"
+        title="${storyMeta["pasted-image"].title}"
+        description="${storyMeta["pasted-image"].description || ""}"
+        usage="${storyMeta["pasted-image"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-preview-chip
             badge="IMG"
@@ -103,7 +129,12 @@ class StoryPreviewChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="dismiss-tracking" title="Dismiss Tracking" description="Capture dismiss payloads for API calls and analytics before removing.">
+      <story-card
+        id="dismiss-tracking"
+        title="${storyMeta["dismiss-tracking"].title}"
+        description="${storyMeta["dismiss-tracking"].description || ""}"
+        usage="${storyMeta["dismiss-tracking"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-100)">
           <mui-preview-chip
             id="trackingPreview"
@@ -123,7 +154,12 @@ class StoryPreviewChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="open-dialog" title="Formatted JSON Dialog" description="Format the emitted value before presenting it in a consumer-managed dialog.">
+      <story-card
+        id="open-dialog"
+        title="${storyMeta["open-dialog"].title}"
+        description="${storyMeta["open-dialog"].description || ""}"
+        usage="${storyMeta["open-dialog"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-preview-chip
             id="dialogTriggerPreview"
@@ -146,7 +182,12 @@ class StoryPreviewChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="open-dialog-image" title="Click Image to Open Dialog" description="Open a dialog with the full pasted image preview.">
+      <story-card
+        id="open-dialog-image"
+        title="${storyMeta["open-dialog-image"].title}"
+        description="${storyMeta["open-dialog-image"].description || ""}"
+        usage="${storyMeta["open-dialog-image"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-preview-chip
             id="dialogImageTriggerPreview"
@@ -177,16 +218,16 @@ class StoryPreviewChip extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <story-template
-        title="${data?.title || "Preview Chip"}"
-        description="${data?.description || ""}"
-        github="${(data?.github || []).join("|||")}"
-        figma="${(data?.figma || []).join("|||")}"
-        guides="${(data?.guides || []).join("|||")}"
-        storybook="${(data?.storybook || []).join("|||")}"
-        accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-preview-chip"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="predropped::Pre-dropped Preview|||types::Payload Types|||loading::Loading State|||pasted-image::Pasted Image|||dismiss-tracking::Dismiss Tracking|||open-dialog::Formatted JSON Dialog|||open-dialog-image::Open Image Dialog"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

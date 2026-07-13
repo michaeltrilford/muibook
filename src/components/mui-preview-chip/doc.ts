@@ -28,6 +28,15 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Preview box", "Image surface (optional)", "Name line", "Type badge", "Snippet body"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: { items: [
+      { key: "predropped", title: "Pre-dropped Preview", description: "Shows long pasted input before submit.", list: [] },
+      { key: "types", title: "Payload Types", description: "Set badge directly or let the component infer it from value.", list: [] },
+      { key: "loading", title: "Loading State", description: "Use loading while async preview metadata or media checks resolve.", list: [] },
+      { key: "pasted-image", title: "Pasted Image", description: "Image previews default to badge-only, with no text overlay.", list: [] },
+      { key: "dismiss-tracking", title: "Dismiss Tracking", description: "Capture dismiss payloads for API calls and analytics before removing.", list: [] },
+      { key: "open-dialog", title: "Formatted JSON Dialog", description: "Format the emitted value before presenting it in a consumer-managed dialog.", list: [] },
+      { key: "open-dialog-image", title: "Click Image to Open Dialog", description: "Open a dialog with the full pasted image preview.", list: [] },
+    ] },
     compositions: { description: "", items: [] },
     related: {
       items: [

@@ -8,14 +8,21 @@ class StoryWorkLog extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("WorkLog");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Work Log"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-work-log" title="Work Log"></story-api-types>
 
       <story-card
         id="single"
-        title="Single Work Log"
-        usage="Use in the prompt message header slot when an agent response needs a compact work summary.|||Keep detail rows short and supporting, not the main response."
+        title="${storyMeta["single"].title}"
+        description="${storyMeta["single"].description || ""}"
+        usage="${storyMeta["single"].usage}"
       >
         <mui-work-log slot="body" label="Worked for 4m 10s" open rule>
           <mui-list>
@@ -35,8 +42,9 @@ class StoryWorkLog extends HTMLElement {
       </story-card>
       <story-card
         id="composable"
-        title="Composable Summary"
-        usage="Use the before and after slots to insert custom elements into the Work Log summary row.|||Good for showing line diffs, file counts, or badges next to the label."
+        title="${storyMeta["composable"].title}"
+        description="${storyMeta["composable"].description || ""}"
+        usage="${storyMeta["composable"].usage}"
       >
         <mui-work-log slot="body" label="Edited 4 files" open rule>
           <mui-h-stack slot="after" alignY="center" space="var(--space-100)">
@@ -134,8 +142,9 @@ class StoryWorkLog extends HTMLElement {
 
       <story-card
         id="thinking"
-        title="Thinking"
-        usage="Use status and pending together to represent an active Thinking state.|||This creates a non-interactive row with a shimmer animation and no toggle icon."
+        title="${storyMeta["thinking"].title}"
+        description="${storyMeta["thinking"].description || ""}"
+        usage="${storyMeta["thinking"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-500)">
           <mui-work-log label="Thinking" status pending></mui-work-log>
@@ -147,8 +156,9 @@ class StoryWorkLog extends HTMLElement {
 
       <story-card
         id="nested"
-        title="Nested Work Log"
-        usage="Use pending for active work states.|||Place Work Log inside another Work Log for secondary rows such as reading files, running checks, or applying changes.|||Nested rows are compact supporting detail."
+        title="${storyMeta["nested"].title}"
+        description="${storyMeta["nested"].description || ""}"
+        usage="${storyMeta["nested"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-500)">
           <mui-work-log label="Working for 31s" pending>
@@ -167,15 +177,15 @@ class StoryWorkLog extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <story-template
-        title="${data?.title || "Work Log"}"
-        description="${data?.description || ""}"
-        github="${(data?.github || []).join("|||")}"
-        figma="${(data?.figma || []).join("|||")}"
-        guides="${(data?.guides || []).join("|||")}"
-        storybook="${(data?.storybook || []).join("|||")}"
-        accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
         imports='["@muibook/components/mui-work-log"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="single::Single Work Log|||composable::Composable Summary|||thinking::Thinking|||nested::Nested Work Log"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -8,14 +8,21 @@ class StoryActionToggle extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("ActionToggle");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Action Toggle"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-action-toggle" title="Action Toggle"></story-api-types>
 
       <story-card
         id="recommended-prompt"
-        title="Recommended Prompt Composition"
-        usage="Use mui-action-toggle only in slot='actions'.|||Prompt includes a default submit control in actions-right; override only when needed.|||Wire submit and context events from the parent mui-prompt."
+        title="${storyMeta["recommended-prompt"].title}"
+        description="${storyMeta["recommended-prompt"].description || ""}"
+        usage="${storyMeta["recommended-prompt"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt id="actionToggleInteractive" placeholder="Try toggle + submit..." fan-open context-mode="icon" enter-submit debug>
@@ -44,7 +51,12 @@ class StoryActionToggle extends HTMLElement {
       </story-card>
 
 
-      <story-card id="toggle-private" title="Private Mode" usage="Toggle into a private-mode chip and dismiss to return to icon mode.">
+      <story-card
+        id="toggle-private"
+        title="${storyMeta["toggle-private"].title}"
+        description="${storyMeta["toggle-private"].description || ""}"
+        usage="${storyMeta["toggle-private"].usage}"
+      >
         <mui-prompt debug slot="body" placeholder="Private Mode" fan-open context-mode="icon">
         <mui-action-toggle slot="actions">
           <mui-hint placement="top">
@@ -66,7 +78,12 @@ class StoryActionToggle extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="toggle-chip" title="Button to Chip" usage="Swap an icon action to a contextual chip state, then dismiss back.">
+      <story-card
+        id="toggle-chip"
+        title="${storyMeta["toggle-chip"].title}"
+        description="${storyMeta["toggle-chip"].description || ""}"
+        usage="${storyMeta["toggle-chip"].usage}"
+      >
         <mui-prompt debug slot="body" placeholder="Button > Chip" fan-open context-mode="icon">
           <mui-action-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
@@ -83,7 +100,12 @@ class StoryActionToggle extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="toggle-spinner" title="Button to Input" usage="Toggle into a spinner action with Stop button.">
+      <story-card
+        id="toggle-input"
+        title="${storyMeta["toggle-input"].title}"
+        description="${storyMeta["toggle-input"].description || ""}"
+        usage="${storyMeta["toggle-input"].usage}"
+      >
         <mui-prompt debug slot="body" placeholder="Button > Spinner" fan-open context-mode="icon">
           <mui-action-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
@@ -107,7 +129,12 @@ class StoryActionToggle extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="toggle-spinner" title="Button to Spinner" usage="Toggle into a spinner action with Stop button.">
+      <story-card
+        id="toggle-spinner"
+        title="${storyMeta["toggle-spinner"].title}"
+        description="${storyMeta["toggle-spinner"].description || ""}"
+        usage="${storyMeta["toggle-spinner"].usage}"
+      >
         <mui-prompt debug slot="body" placeholder="Button > Spinner" fan-open context-mode="icon">
           <mui-action-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="x-small" aria-label="Toggle context">
@@ -129,7 +156,12 @@ class StoryActionToggle extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="toggle-button" title="Button to Button" usage="Toggle to custom action group, then close.">
+      <story-card
+        id="toggle-button"
+        title="${storyMeta["toggle-button"].title}"
+        description="${storyMeta["toggle-button"].description || ""}"
+        usage="${storyMeta["toggle-button"].usage}"
+      >
         <mui-prompt debug slot="body" placeholder="Button > Button" fan-open context-mode="icon">
           <mui-action-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
@@ -152,7 +184,12 @@ class StoryActionToggle extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="toggle-calendar" title="Button to Calendar" usage="Toggle from a calendar icon into date-range actions with a close fallback. Selecting a range updates prompt value.">
+      <story-card
+        id="toggle-calendar"
+        title="${storyMeta["toggle-calendar"].title}"
+        description="${storyMeta["toggle-calendar"].description || ""}"
+        usage="${storyMeta["toggle-calendar"].usage}"
+      >
         <mui-prompt id="toggleCalendarPrompt" debug slot="body" placeholder="Calendar tools" fan-open context-mode="icon">
           <mui-action-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
@@ -191,7 +228,12 @@ class StoryActionToggle extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="toggle-dropdown" title="Accessibility tools" usage="Toggle into accessibility controls and close back to icon mode. Menu actions apply live prompt settings.">
+      <story-card
+        id="toggle-dropdown"
+        title="${storyMeta["toggle-dropdown"].title}"
+        description="${storyMeta["toggle-dropdown"].description || ""}"
+        usage="${storyMeta["toggle-dropdown"].usage}"
+      >
         <mui-prompt id="toggleAccessibilityPrompt" debug slot="body" placeholder="Accessibility tools" fan-open context-mode="icon">
           <mui-action-toggle slot="actions">
             <mui-button context-toggle variant="tertiary" icon-only size="small" aria-label="Toggle context">
@@ -228,19 +270,19 @@ class StoryActionToggle extends HTMLElement {
 
     this.shadowRoot.innerHTML = /*html*/ `
       <story-template
-        title="${data?.title || "Action Toggle"}"
-        description="${data?.description || "Toggle wrapper for context icon/chip states inside Prompt actions."}"
-        github="${(data?.github || []).join("|||")}"
-        figma="${(data?.figma || []).join("|||")}"
-        guides="${(data?.guides || []).join("|||")}"
-        storybook="${(data?.storybook || []).join("|||")}"
-        accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-action-toggle"]'>
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="recommended-prompt::Recommended Prompt Composition|||toggle-private::Private Mode|||toggle-chip::Button to Chip|||toggle-spinner::Button to Spinner|||toggle-button::Button to Button|||toggle-calendar::Button to Calendar|||toggle-dropdown::Accessibility Tools"
+          links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"
         ></story-quicklinks>
         ${stories}
       </story-template>

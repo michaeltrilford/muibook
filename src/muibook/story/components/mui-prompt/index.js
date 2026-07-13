@@ -8,6 +8,12 @@ class StoryPrompt extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Prompt");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Prompt"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-prompt",
@@ -21,9 +27,10 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="preview-data"
-        title="Interactive Prompt"
-        description="Canonical interactive setup for this page: paste/upload previews, context toggle, submit, and prompt event telemetry."
-        usage="This is the primary interactive story on this page.|||Use prompt-paste to capture clipboard payloads and append previews.|||Use preview-chip-open to drive analytics, dialog selection, or routing.|||Use context-mode='icon|chip' with slotted <mui-action-toggle> (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||Theme the hover/focus mesh using --prompt-accent-primary and optional --prompt-accent-secondary.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
+        title="${storyMeta["preview-data"].title}"
+        description="${storyMeta["preview-data"].description || ""}"
+        usage="${storyMeta["preview-data"].usage}"
+      > (containing [context-toggle] and [context-chip]) to switch toolbar state from app logic.|||Theme the hover/focus mesh using --prompt-accent-primary and optional --prompt-accent-secondary.|||React expectation: keep value controlled, then map CustomEvent handlers to state updates."
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -119,9 +126,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="context"
-        title="Context"
-        description="Prompt positions explicit context content above the input when product state has context to show."
-        usage="Use slot='context' for feature-owned prompt context such as steer, persona, constraints, selected context, examples, or attachments.|||Use mui-context-bar for the compact row treatment.|||Omit the slotted context entirely when there is no active context."
+        title="${storyMeta["context"].title}"
+        description="${storyMeta["context"].description || ""}"
+        usage="${storyMeta["context"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
@@ -162,8 +169,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="default"
-        title="Empty"
-        usage="This is a reusable offering extracted from Agent UI compositions.|||Use it as the shared prompt primitive across products."
+        title="${storyMeta["default"].title}"
+        description="${storyMeta["default"].description || ""}"
+        usage="${storyMeta["default"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-100)">
           <mui-prompt actions-fan debug
@@ -219,8 +227,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="glowing-ring"
-        title="Glowing Ring"
-        description="Enable the ring attribute for a highly modern and fluid glowing animated stroke. Use ring-start, ring-mid, and ring-end to define the color sweep."
+        title="${storyMeta["glowing-ring"].title}"
+        description="${storyMeta["glowing-ring"].description || ""}"
+        usage="${storyMeta["glowing-ring"].usage}"
       >
         <mui-grid slot="body" col="1fr" space="var(--space-200)">
           <div class="prompt-story-shell">
@@ -261,8 +270,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="submit-guard-api"
-        title="Submit Guard + API"
-        description="Use before-submit to block invalid sends, then call submit/clear/focus from app controls."
+        title="${storyMeta["submit-guard-api"].title}"
+        description="${storyMeta["submit-guard-api"].description || ""}"
+        usage="${storyMeta["submit-guard-api"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -323,8 +333,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="loading"
-        title="Async Loading"
-        description="Show async spinner feedback next to submit while a request is in flight."
+        title="${storyMeta["loading"].title}"
+        description="${storyMeta["loading"].description || ""}"
+        usage="${storyMeta["loading"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -381,9 +392,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="preview-loading-flow"
-        title="Preview Loading Flow"
-        description="Working async flow: toggle preview loading based on LLM/tooling lifecycle."
-        usage="Typical pattern: set prompt loading during request, and mirror preview loading using preview-loading='auto'.|||If a preview is still being enriched after send completes, force loading with preview-loading='true' and then clear it."
+        title="${storyMeta["preview-loading-flow"].title}"
+        description="${storyMeta["preview-loading-flow"].description || ""}"
+        usage="${storyMeta["preview-loading-flow"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt
@@ -428,9 +439,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="error-feedback"
-        title="Error Feedback"
-        description="Inject direct error text or custom slot content. Long errors can expand for review."
-        usage="Use Bad Data for raw machine/system validation output.|||Use Custom Data for humanised, user-facing guidance copy.|||Use Reset to clear both direct error-message and custom slotted error content."
+        title="${storyMeta["error-feedback"].title}"
+        description="${storyMeta["error-feedback"].description || ""}"
+        usage="${storyMeta["error-feedback"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -488,8 +499,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="effects-off"
-        title="Effects Off"
-        description="Disable prompt hover/focus visuals for a flatter surface."
+        title="${storyMeta["effects-off"].title}"
+        description="${storyMeta["effects-off"].description || ""}"
+        usage="${storyMeta["effects-off"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -545,8 +557,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="color-swap"
-        title="Color Layout Swap"
-        description="Remap the top color positions without changing the supplied color values."
+        title="${storyMeta["color-swap"].title}"
+        description="${storyMeta["color-swap"].description || ""}"
+        usage="${storyMeta["color-swap"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -611,7 +624,12 @@ class StoryPrompt extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="preview-open-image-dialog" title="Preview: Image" description="Click image preview to open the built-in prompt dialog.">
+      <story-card
+        id="preview-open-image-dialog"
+        title="${storyMeta["preview-open-image-dialog"].title}"
+        description="${storyMeta["preview-open-image-dialog"].description || ""}"
+        usage="${storyMeta["preview-open-image-dialog"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
@@ -730,8 +748,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="preview-media"
-        title="Preview: Media"
-        description="Media badge/render check (YouTube, SoundCloud, direct media URLs). For full interactive paste/upload flow, use Interactive Prompt."
+        title="${storyMeta["preview-media"].title}"
+        description="${storyMeta["preview-media"].description || ""}"
+        usage="${storyMeta["preview-media"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -765,8 +784,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="preview-native-video"
-        title="Preview: Native Video"
-        description="Prompt preview wired to a direct .mp4 URL so dialog opens with native video controls."
+        title="${storyMeta["preview-native-video"].title}"
+        description="${storyMeta["preview-native-video"].description || ""}"
+        usage="${storyMeta["preview-native-video"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -793,8 +813,9 @@ class StoryPrompt extends HTMLElement {
 
       <story-card
         id="preview-native-audio"
-        title="Preview: Native Audio"
-        description="Prompt preview wired to a direct .mp3 URL so dialog opens with native audio controls."
+        title="${storyMeta["preview-native-audio"].title}"
+        description="${storyMeta["preview-native-audio"].description || ""}"
+        usage="${storyMeta["preview-native-audio"].usage}"
       >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
@@ -819,7 +840,12 @@ class StoryPrompt extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="preview-open-dialog" title="Preview: Code Types" description="JSON and CSS are formatted by the built-in dialog; the remaining types render source content for comparison.">
+      <story-card
+        id="preview-open-dialog"
+        title="${storyMeta["preview-open-dialog"].title}"
+        description="${storyMeta["preview-open-dialog"].description || ""}"
+        usage="${storyMeta["preview-open-dialog"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
@@ -915,7 +941,12 @@ class StoryPrompt extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="preview-off" title="Preview: Off" description="Disable preview auto-click so items stay non-interactive.">
+      <story-card
+        id="preview-off"
+        title="${storyMeta["preview-off"].title}"
+        description="${storyMeta["preview-off"].description || ""}"
+        usage="${storyMeta["preview-off"].usage}"
+      >
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-prompt actions-fan debug
             preview-scrollbar="hidden"
@@ -1012,17 +1043,17 @@ class StoryPrompt extends HTMLElement {
         }
       </style>
       <story-template
-        title="${data?.title || "Prompt"}"
-        description="${data?.description || ""}"
+        title="${data.title}"
+        description="${data.description}"
         attrs-reference='${attrsReference}'
-        github="${(data?.github || []).join("|||")}"
-        figma="${(data?.figma || []).join("|||")}"
-        guides="${(data?.guides || []).join("|||")}"
-        storybook="${(data?.storybook || []).join("|||")}"
-        accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-prompt"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="preview-data::Interactive Prompt|||context::Context|||default::Default|||submit-guard-api::Submit Guard + API|||loading::Async Loading|||preview-loading-flow::Preview Loading Flow|||error-feedback::Error Feedback|||preview-open-dialog::Code Types Dialog|||preview-open-image-dialog::Open Image Dialog|||preview-media::Media Detection|||preview-native-video::Native Video|||preview-native-audio::Native Audio|||preview-off::Preview Off"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

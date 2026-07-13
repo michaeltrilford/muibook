@@ -4,7 +4,7 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-action-toggle/doc.ts",
+      "path": "src/components/mui-accordion/doc.ts",
       "declarations": [
         {
           "kind": "variable",
@@ -12,7 +12,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ ActionToggle: { title: \"Action Toggle\", description: \"Action Toggle switches between compact prompt actions and expanded active content inside Prompt.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-action-toggle--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-action-toggle/index.ts\"], website: [\"https://muibook.com/action-toggle\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use inside mui-prompt when a compact action needs to expand into an active state, chip state, spinner, or close action.\", \"Use mode='icon' for the collapsed trigger state and mode='chip' for the expanded active state.\", \"Slot toggle content for the collapsed action and active or chip content for the expanded state.\", \"This pattern works well for context selectors, source pickers, tool toggles, or lightweight prompt-side dropdown triggers.\", \"Pair with Dropdown when the expanded state needs to reveal additional actions or menu choices.\", \"Use close or active controls when the expanded state should be dismissible without clearing the entire prompt.\", ], }, accessibility: { designerList: [ \"Keep the compact and expanded states visually related so users understand they represent the same prompt action.\", \"Use clear affordances for close or dismiss actions when expanded state can be exited independently.\", ], engineerList: [ \"Treat Action Toggle as a display-mode switcher; app state should still own the action, context, and dismissal logic.\", \"Ensure slotted toggle and active controls expose their own accessible labels when they are icon-only.\", ], }, anatomy: { image: \"\", list: [\"Collapsed toggle content\", \"Expanded active or chip content\", \"Optional close or spinner content\"], }, variants: { items: [ { key: \"icon\", title: \"Icon\", description: \"Collapsed state showing the prompt action trigger.\", image: \"\", }, { key: \"chip\", title: \"Chip\", description: \"Expanded or active state showing the selected context, dismiss action, or loading state.\", image: \"\", }, ], }, compositions: { description: \"Showcases prompt-side action patterns that transform from compact controls into richer active states.\", items: [ { key: \"context-toggle\", name: \"Prompt Context Toggle\", description: \"A compact prompt action that expands into an active chip with dismiss or close behavior.\", image: \"\", }, ], }, related: { items: [ { name: \"Prompt\", link: \"https://guides.muibook.com/prompt\" }, { name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }, { name: \"Button\", link: \"https://guides.muibook.com/button\" }, ], }, rules: [ { heading: \"Use for stateful prompt actions\", description: \"Action Toggle is for prompt actions that need a compact state and a richer active state in the same position.\", doContent: [ { description: \"Use it for context, source, or tool actions that start as a small trigger and then become an active chip, dropdown launcher, or dismissible action.\", image: \"\", }, ], dontContent: [ { description: \"Do not use it for static prompt actions that never change shape or state.\", image: \"\", }, ], }, ], behaviour: { list: [ \"mode='icon' shows toggle content and hides active, chip, close, and spinner content.\", \"mode='chip' shows active, chip, close, and spinner content and hides the compact toggle content.\", \"Action Toggle reacts to slotted content marked with slot names or context-* attributes so composed prompt actions can be shown or hidden consistently.\", ], }, writing: { list: [ \"Use short labels so the expanded chip or active state stays compact inside the prompt action rail.\", ], }, }, }"
+          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
         }
       ],
       "exports": [
@@ -21,51 +21,7 @@
           "name": "muiDocs",
           "declaration": {
             "name": "muiDocs",
-            "module": "src/components/mui-action-toggle/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-action-toggle/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Switches a prompt action between its compact trigger and expanded active content.",
-          "name": "MuiActionToggle",
-          "attributes": [
-            {
-              "name": "mode",
-              "type": {
-                "text": "\"icon\" | \"chip\""
-              },
-              "default": "icon",
-              "description": "Shows collapsed trigger content in icon mode and active, chip, close, or spinner content in chip mode."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-action-toggle",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Prompt action controls marked with `context-toggle`, `context-active`, `context-chip`, `context-close`, or `context-spinner`."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-action-toggle",
-          "declaration": {
-            "name": "MuiActionToggle",
-            "module": "src/components/mui-action-toggle/index.ts"
+            "module": "src/components/mui-accordion/doc.ts"
           }
         }
       ]
@@ -146,30 +102,6 @@
           "declaration": {
             "name": "MuiAddon",
             "module": "src/components/mui-addon/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-accordion/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-accordion/doc.ts"
           }
         }
       ]
@@ -336,6 +268,186 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-action-toggle/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ ActionToggle: { title: \"Action Toggle\", description: \"Action Toggle switches between compact prompt actions and expanded active content inside Prompt.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-action-toggle--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-action-toggle/index.ts\"], website: [\"https://muibook.com/action-toggle\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use inside mui-prompt when a compact action needs to expand into an active state, chip state, spinner, or close action.\", \"Use mode='icon' for the collapsed trigger state and mode='chip' for the expanded active state.\", \"Slot toggle content for the collapsed action and active or chip content for the expanded state.\", \"This pattern works well for context selectors, source pickers, tool toggles, or lightweight prompt-side dropdown triggers.\", \"Pair with Dropdown when the expanded state needs to reveal additional actions or menu choices.\", \"Use close or active controls when the expanded state should be dismissible without clearing the entire prompt.\", ], }, accessibility: { designerList: [ \"Keep the compact and expanded states visually related so users understand they represent the same prompt action.\", \"Use clear affordances for close or dismiss actions when expanded state can be exited independently.\", ], engineerList: [ \"Treat Action Toggle as a display-mode switcher; app state should still own the action, context, and dismissal logic.\", \"Ensure slotted toggle and active controls expose their own accessible labels when they are icon-only.\", ], }, anatomy: { image: \"\", list: [\"Collapsed toggle content\", \"Expanded active or chip content\", \"Optional close or spinner content\"], }, variants: { items: [ { key: \"icon\", title: \"Icon\", description: \"Collapsed state showing the prompt action trigger.\", image: \"\", }, { key: \"chip\", title: \"Chip\", description: \"Expanded or active state showing the selected context, dismiss action, or loading state.\", image: \"\", }, ], }, stories: { items: [ { key: \"recommended-prompt\", title: \"Recommended Prompt Composition\", list: [\"Use mui-action-toggle only in slot='actions'.\", \"Prompt includes a default submit control in actions-right; override only when needed.\", \"Wire submit and context events from the parent mui-prompt.\"] }, { key: \"toggle-private\", title: \"Private Mode\", list: [\"Toggle into a private-mode chip and dismiss to return to icon mode.\"] }, { key: \"toggle-chip\", title: \"Button to Chip\", list: [\"Swap an icon action to a contextual chip state, then dismiss back.\"] }, { key: \"toggle-input\", title: \"Button to Input\", list: [\"Toggle into an input action with a close fallback.\"] }, { key: \"toggle-spinner\", title: \"Button to Spinner\", list: [\"Toggle into a spinner action with a Stop button.\"] }, { key: \"toggle-button\", title: \"Button to Button\", list: [\"Toggle to a custom action group, then close.\"] }, { key: \"toggle-calendar\", title: \"Button to Calendar\", list: [\"Toggle from a calendar icon into date-range actions with a close fallback.\", \"Selecting a range updates the Prompt value.\"] }, { key: \"toggle-dropdown\", title: \"Accessibility Tools\", list: [\"Toggle into accessibility controls and close back to icon mode.\", \"Menu actions apply live Prompt settings.\"] }, ] }, compositions: { description: \"Showcases prompt-side action patterns that transform from compact controls into richer active states.\", items: [ { key: \"context-toggle\", name: \"Prompt Context Toggle\", description: \"A compact prompt action that expands into an active chip with dismiss or close behavior.\", image: \"\", }, ], }, related: { items: [ { name: \"Prompt\", link: \"https://guides.muibook.com/prompt\" }, { name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }, { name: \"Button\", link: \"https://guides.muibook.com/button\" }, ], }, rules: [ { heading: \"Use for stateful prompt actions\", description: \"Action Toggle is for prompt actions that need a compact state and a richer active state in the same position.\", doContent: [ { description: \"Use it for context, source, or tool actions that start as a small trigger and then become an active chip, dropdown launcher, or dismissible action.\", image: \"\", }, ], dontContent: [ { description: \"Do not use it for static prompt actions that never change shape or state.\", image: \"\", }, ], }, ], behaviour: { list: [ \"mode='icon' shows toggle content and hides active, chip, close, and spinner content.\", \"mode='chip' shows active, chip, close, and spinner content and hides the compact toggle content.\", \"Action Toggle reacts to slotted content marked with slot names or context-* attributes so composed prompt actions can be shown or hidden consistently.\", ], }, writing: { list: [ \"Use short labels so the expanded chip or active state stays compact inside the prompt action rail.\", ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-action-toggle/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-action-toggle/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Switches a prompt action between its compact trigger and expanded active content.",
+          "name": "MuiActionToggle",
+          "attributes": [
+            {
+              "name": "mode",
+              "type": {
+                "text": "\"icon\" | \"chip\""
+              },
+              "default": "icon",
+              "description": "Shows collapsed trigger content in icon mode and active, chip, close, or spinner content in chip mode."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-action-toggle",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Prompt action controls marked with `context-toggle`, `context-active`, `context-chip`, `context-close`, or `context-spinner`."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-action-toggle",
+          "declaration": {
+            "name": "MuiActionToggle",
+            "module": "src/components/mui-action-toggle/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-alert/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Alert: { title: \"Alert\", description: \"Alerts surface meaningful system messages related to the users' current task or action.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/7GnGBCbpMF3wyjCDC06hX7/24739b86a907d15400fe8e9e240a9619/Alert_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-4444&t=ZA9uH4LK37tSuk6r-1\", ], guides: [\"https://guides.muibook.com/alert\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts\"], storybook: [\"https://stories.muibook.com/?path=/docs/feedback-alert--docs\"], website: [\"https://muibook.com/alert\"], usage: { list: [ \"Success: Confirm completed actions such as form submissions, data saves, or task completion.\", \"Info: For sharing new features, updates, contextual tips, or non-urgent system statuses.\", \"Warning: Alert users to unsaved changes, deprecated features, or risky actions.\", \"Error: Alert users of form validation issues, system failures, or tasks that need attention.\", ], }, accessibility: { designerList: [ \"ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.\", \"The role is set to ALERT for immediate screen reader feedback.\", ], engineerList: [ \"ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.\", \"The role is set to ALERT for immediate screen reader feedback.\", ], }, anatomy: { list: [ \"Preset icon: Communicates the type of alert visually. E.g. info, success, warning, error.\", \"Preset title: Provides a clear, predefined heading that reflects the alert’s purpose.\", \"Customisable text: Allows for specific details or guidance relevant to the situation.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/17j3DxAFlne6rvMi6QUXqZ/aedab2c349c8f8b0a8414b41132cda51/Alert_-_Anatomy.png\", }, variants: { items: [ { key: \"success\", title: \"Success\", description: \"Indicates that an operation or action has been completed successfully. Use this variant for scenarios such as form submissions processed without errors, successful data updates or saves, and confirmations of completed tasks or actions. For accessibility, this variant uses an aria-live value of polite.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2EbJsP3GZ98WPOiF4PbGh2/bc3e020b37b73f949be745e4e26b6e5a/alert-success.png\", }, { key: \"info\", title: \"Info\", description: \"Provides general information or updates that are helpful but not critical. This variant is used for announcing new features or updates, offering contextual information or tips, and informing users about non-urgent system statuses. For accessibility, it uses an aria-live value of polite.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1SDh1JVNouysPHylu9lTUj/6793dd8aa854d08045c2159b450b762c/alert-info.png\", }, { key: \"warning\", title: \"Warning\", description: \"Alerts users to potential issues or situations that require caution. Common use cases include notifying about unsaved changes, indicating deprecated features or upcoming changes, and highlighting actions that may have unintended consequences. For accessibility, this variant uses an aria-live value of assertive.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2zympGRb3wlU5P36FsKWsL/dd9bde33646345e65d5bff505d512e22/alert-warning.png\", }, { key: \"error\", title: \"Error\", description: \"Indicates that an error has occurred, requiring user attention or action. This variant is typically used for form validation errors, system failures or exceptions, and failed operations or transactions. For accessibility, it uses an aria-live value of assertive.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zOH2Xinum4ZjIv3qp6LJM/180a2306dd624b6bc2fa55c0ad81ea0e/alert-error.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"ai-playground-error-1\", name: \"AI Playground (Error)\", description: \"Demonstrates the Muiplay AI Playground showing a floating error positioned close to the field where a prompt is required to generate a task.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/40RfRPVAN9dvWO7UFuIiUC/52de3cffd69a5bcc2e457f8de03bb9cf/Play-Alert-Composition.png\", }, { key: \"ai-playground-error-2\", name: \"AI Playground (Error)\", description: \"Demonstrates the Muiplay AI Playground showing a floating error positioned close to the field where a prompt is required to generate a task.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/40RfRPVAN9dvWO7UFuIiUC/52de3cffd69a5bcc2e457f8de03bb9cf/Play-Alert-Composition.png\", }, ], }, related: { items: [ { name: \"Message\", link: \"https://guides.muibook.com/message\" }, { name: \"Link\", link: \"https://guides.muibook.com/link\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-alert/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-alert/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Surfaces task-related feedback with an intent icon, message content and optional action.",
+          "name": "MuiAlert",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"positive\" | \"info\" | \"warning\" | \"attention\" | \"success\" | \"error\""
+              },
+              "default": "positive",
+              "description": "Feedback intent. `success` normalises to `positive`; `error` normalises to `attention`."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides the intent prefix label."
+            },
+            {
+              "name": "hide-label",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hides the visible intent prefix label."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Alert density and coordinated icon/action size."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-alert",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Alert message content, including optional inline links."
+            },
+            {
+              "name": "action",
+              "description": "Optional `mui-button` or `mui-link` action aligned and sized for the alert."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--alert-radius",
+              "description": "Alert surface corner radius."
+            },
+            {
+              "name": "--alert-padding-small",
+              "description": "Surface padding for small alerts."
+            },
+            {
+              "name": "--alert-padding-medium",
+              "description": "Surface padding for medium alerts."
+            },
+            {
+              "name": "--alert-padding-large",
+              "description": "Surface padding for large alerts."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-alert",
+          "declaration": {
+            "name": "MuiAlert",
+            "module": "src/components/mui-alert/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-avatar-chip/doc.ts",
       "declarations": [
         {
@@ -482,118 +594,6 @@
           "declaration": {
             "name": "MuiAvatarChip",
             "module": "src/components/mui-avatar-chip/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-alert/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Alert: { title: \"Alert\", description: \"Alerts surface meaningful system messages related to the users' current task or action.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/7GnGBCbpMF3wyjCDC06hX7/24739b86a907d15400fe8e9e240a9619/Alert_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-4444&t=ZA9uH4LK37tSuk6r-1\", ], guides: [\"https://guides.muibook.com/alert\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-alert/index.ts\"], storybook: [\"https://stories.muibook.com/?path=/docs/feedback-alert--docs\"], website: [\"https://muibook.com/alert\"], usage: { list: [ \"Success: Confirm completed actions such as form submissions, data saves, or task completion.\", \"Info: For sharing new features, updates, contextual tips, or non-urgent system statuses.\", \"Warning: Alert users to unsaved changes, deprecated features, or risky actions.\", \"Error: Alert users of form validation issues, system failures, or tasks that need attention.\", ], }, accessibility: { designerList: [ \"ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.\", \"The role is set to ALERT for immediate screen reader feedback.\", ], engineerList: [ \"ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.\", \"The role is set to ALERT for immediate screen reader feedback.\", ], }, anatomy: { list: [ \"Preset icon: Communicates the type of alert visually. E.g. info, success, warning, error.\", \"Preset title: Provides a clear, predefined heading that reflects the alert’s purpose.\", \"Customisable text: Allows for specific details or guidance relevant to the situation.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/17j3DxAFlne6rvMi6QUXqZ/aedab2c349c8f8b0a8414b41132cda51/Alert_-_Anatomy.png\", }, variants: { items: [ { key: \"success\", title: \"Success\", description: \"Indicates that an operation or action has been completed successfully. Use this variant for scenarios such as form submissions processed without errors, successful data updates or saves, and confirmations of completed tasks or actions. For accessibility, this variant uses an aria-live value of polite.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2EbJsP3GZ98WPOiF4PbGh2/bc3e020b37b73f949be745e4e26b6e5a/alert-success.png\", }, { key: \"info\", title: \"Info\", description: \"Provides general information or updates that are helpful but not critical. This variant is used for announcing new features or updates, offering contextual information or tips, and informing users about non-urgent system statuses. For accessibility, it uses an aria-live value of polite.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1SDh1JVNouysPHylu9lTUj/6793dd8aa854d08045c2159b450b762c/alert-info.png\", }, { key: \"warning\", title: \"Warning\", description: \"Alerts users to potential issues or situations that require caution. Common use cases include notifying about unsaved changes, indicating deprecated features or upcoming changes, and highlighting actions that may have unintended consequences. For accessibility, this variant uses an aria-live value of assertive.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2zympGRb3wlU5P36FsKWsL/dd9bde33646345e65d5bff505d512e22/alert-warning.png\", }, { key: \"error\", title: \"Error\", description: \"Indicates that an error has occurred, requiring user attention or action. This variant is typically used for form validation errors, system failures or exceptions, and failed operations or transactions. For accessibility, it uses an aria-live value of assertive.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zOH2Xinum4ZjIv3qp6LJM/180a2306dd624b6bc2fa55c0ad81ea0e/alert-error.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"ai-playground-error-1\", name: \"AI Playground (Error)\", description: \"Demonstrates the Muiplay AI Playground showing a floating error positioned close to the field where a prompt is required to generate a task.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/40RfRPVAN9dvWO7UFuIiUC/52de3cffd69a5bcc2e457f8de03bb9cf/Play-Alert-Composition.png\", }, { key: \"ai-playground-error-2\", name: \"AI Playground (Error)\", description: \"Demonstrates the Muiplay AI Playground showing a floating error positioned close to the field where a prompt is required to generate a task.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/40RfRPVAN9dvWO7UFuIiUC/52de3cffd69a5bcc2e457f8de03bb9cf/Play-Alert-Composition.png\", }, ], }, related: { items: [ { name: \"Message\", link: \"https://guides.muibook.com/message\" }, { name: \"Link\", link: \"https://guides.muibook.com/link\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-alert/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-alert/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Surfaces task-related feedback with an intent icon, message content and optional action.",
-          "name": "MuiAlert",
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"positive\" | \"info\" | \"warning\" | \"attention\" | \"success\" | \"error\""
-              },
-              "default": "positive",
-              "description": "Feedback intent. `success` normalises to `positive`; `error` normalises to `attention`."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides the intent prefix label."
-            },
-            {
-              "name": "hide-label",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hides the visible intent prefix label."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Alert density and coordinated icon/action size."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-alert",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Alert message content, including optional inline links."
-            },
-            {
-              "name": "action",
-              "description": "Optional `mui-button` or `mui-link` action aligned and sized for the alert."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--alert-radius",
-              "description": "Alert surface corner radius."
-            },
-            {
-              "name": "--alert-padding-small",
-              "description": "Surface padding for small alerts."
-            },
-            {
-              "name": "--alert-padding-medium",
-              "description": "Surface padding for medium alerts."
-            },
-            {
-              "name": "--alert-padding-large",
-              "description": "Surface padding for large alerts."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-alert",
-          "declaration": {
-            "name": "MuiAlert",
-            "module": "src/components/mui-alert/index.ts"
           }
         }
       ]
@@ -1594,7 +1594,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ ChatMessage: { title: \"Chat Message\", description: \"Chat Message provides a consistent conversation row shell with optional avatar and message content slots.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-chat-message--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-chat-message/index.ts\"], website: [\"https://muibook.com/chat-message\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use for chat-style reply rows in assistant and support interfaces.\", \"This component is extracted from composition patterns to keep conversation shells consistent.\", \"Slot avatar content into slot='avatar' when speaker identity needs profile treatment.\", \"Use slot='header' for message metadata, work summaries, timing, or disclosure controls.\", \"Use slot='footer' for response actions such as copy, retry, review, or timestamps.\", \"Use footer-position='outside' when message actions should sit below the bubble while still belonging to the message component.\", \"Footer actions reveal on hover/focus by default; use footer-visibility='always' when app state should keep actions pinned.\", \"Omit the avatar slot for agent/system messages that should render as plain response content.\", \"Use body/content components for message text.\", \"Chat Message applies default vertical rhythm between direct body children.\", \"Override --chat-message-body-space when a specific response needs tighter or looser body spacing.\", \"Use size='x-small|small|medium|large' to scale avatar/text rhythm across dense and spacious layouts.\", \"Use variant='ghost' when the message row should render without surface treatment or bubble padding.\", \"Use align='start|end' to position assistant and user messages in a conversation column.\", \"Use width='full|medium|content' instead of inline width or margin styles for common chat layouts.\", \"Prefer this component over ad hoc grid wrappers when building threaded chat content.\", ], }, accessibility: { designerList: [ \"Maintain clear speaker distinction through avatar + message pairing.\", \"Keep contrast and typography readable in long conversation threads.\", ], engineerList: [ \"Provide meaningful avatar labels where identity context matters.\", \"Preserve DOM reading order (identity first, then message content).\", \"Avoid injecting decorative-only text into message content; keep semantics focused on conversation copy.\", ], }, anatomy: { image: \"\", list: [\"Bubble container\", \"Avatar slot\", \"Message content slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Avatar\", link: \"https://guides.muibook.com/avatar\" }, { name: \"Body\", link: \"https://guides.muibook.com/body\" }, ], }, rules: [ { heading: \"Pattern Rule\", description: \"Use Chat Message as the base conversation row primitive.\", doContent: [{ description: \"Compose identity + message content through avatar and body slots.\", image: \"\" }], dontContent: [{ description: \"Avoid custom one-off bubble containers per page.\", image: \"\" }], }, ], behaviour: { list: [ \"Avatar and message content align consistently across rows when an avatar is provided.\", \"Messages without an avatar collapse to a single-column content layout.\", \"Message alignment and width are controlled by host attributes so chat layout does not require custom inline styles.\", \"Footer content reveals on hover and keyboard focus, or stays visible when footer-visibility='always'.\", ], }, writing: { list: [ \"Keep message copy concise and scannable in multi-row threads.\", ], }, }, }"
+          "default": "{ ChatMessage: { title: \"Chat Message\", description: \"Chat Message provides a consistent conversation row shell with optional avatar and message content slots.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-chat-message--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-chat-message/index.ts\"], website: [\"https://muibook.com/chat-message\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use for chat-style reply rows in assistant and support interfaces.\", \"This component is extracted from composition patterns to keep conversation shells consistent.\", \"Slot avatar content into slot='avatar' when speaker identity needs profile treatment.\", \"Use slot='header' for message metadata, work summaries, timing, or disclosure controls.\", \"Use slot='footer' for response actions such as copy, retry, review, or timestamps.\", \"Use footer-position='outside' when message actions should sit below the bubble while still belonging to the message component.\", \"Footer actions reveal on hover/focus by default; use footer-visibility='always' when app state should keep actions pinned.\", \"Omit the avatar slot for agent/system messages that should render as plain response content.\", \"Use body/content components for message text.\", \"Chat Message applies default vertical rhythm between direct body children.\", \"Override --chat-message-body-space when a specific response needs tighter or looser body spacing.\", \"Use size='x-small|small|medium|large' to scale avatar/text rhythm across dense and spacious layouts.\", \"Use variant='ghost' when the message row should render without surface treatment or bubble padding.\", \"Use align='start|end' to position assistant and user messages in a conversation column.\", \"Use width='full|medium|content' instead of inline width or margin styles for common chat layouts.\", \"Prefer this component over ad hoc grid wrappers when building threaded chat content.\", ], }, accessibility: { designerList: [ \"Maintain clear speaker distinction through avatar + message pairing.\", \"Keep contrast and typography readable in long conversation threads.\", ], engineerList: [ \"Provide meaningful avatar labels where identity context matters.\", \"Preserve DOM reading order (identity first, then message content).\", \"Avoid injecting decorative-only text into message content; keep semantics focused on conversation copy.\", ], }, anatomy: { image: \"\", list: [\"Bubble container\", \"Avatar slot\", \"Message content slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { key: \"default\", title: \"Default\", list: [\"Use as the default conversation row shell.\", \"Set size='medium' for standard chat density.\"] }, { key: \"list\", title: \"Conversation List\", list: [\"Mix sizes by speaker priority and layout density.\"] }, { key: \"sizes\", title: \"Sizes\", list: [\"Size controls avatar and body scale together.\"] }, { key: \"ghost\", title: \"Ghost Variant\", list: [\"variant='ghost' removes border and background while preserving structure.\"] }, { key: \"no-avatar\", title: \"No Avatar\", list: [\"Omit slot='avatar' for agent or system messages that should not reserve avatar layout space.\", \"variant='ghost' removes bubble padding so content aligns like document text.\", \"Use align and width for left and right chat layout instead of inline styles.\"] }, { key: \"body-rhythm\", title: \"Body Rhythm\", list: [\"Chat Message adds default vertical rhythm between direct body children.\", \"Override --chat-message-body-space only when a response needs a tighter or looser stack.\"] }, ] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Avatar\", link: \"https://guides.muibook.com/avatar\" }, { name: \"Body\", link: \"https://guides.muibook.com/body\" }, ], }, rules: [ { heading: \"Pattern Rule\", description: \"Use Chat Message as the base conversation row primitive.\", doContent: [{ description: \"Compose identity + message content through avatar and body slots.\", image: \"\" }], dontContent: [{ description: \"Avoid custom one-off bubble containers per page.\", image: \"\" }], }, ], behaviour: { list: [ \"Avatar and message content align consistently across rows when an avatar is provided.\", \"Messages without an avatar collapse to a single-column content layout.\", \"Message alignment and width are controlled by host attributes so chat layout does not require custom inline styles.\", \"Footer content reveals on hover and keyboard focus, or stays visible when footer-visibility='always'.\", ], }, writing: { list: [ \"Keep message copy concise and scannable in multi-row threads.\", ], }, }, }"
         }
       ],
       "exports": [
@@ -3534,7 +3534,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ FileDiff: { title: \"File Diff\", description: \"File Diff represents a single file and its additions/deletions in a change summary.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-diff/index.ts\"], website: [\"https://muibook.com/file-diff\"], guides: [\"\"], usage: { list: [ \"Use this component to display a file and its addition/deletion counts.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [] }, variants: { items: [] }, compositions: { description: \"\", items: [] }, related: { items: [], }, rules: [], behaviour: { list: [], }, writing: { list: [], }, }, }"
+          "default": "{ FileDiff: { title: \"File Diff\", description: \"File Diff represents a single file and its additions/deletions in a change summary.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-diff/index.ts\"], website: [\"https://muibook.com/file-diff\"], guides: [\"\"], usage: { list: [ \"Use this component to display a file and its addition/deletion counts.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [] }, variants: { items: [] }, stories: { items: [ { key: \"file-diff\", title: \"File Diff\", list: [\"Use to show file diff summaries.\"] }, ] }, compositions: { description: \"\", items: [] }, related: { items: [], }, rules: [], behaviour: { list: [], }, writing: { list: [], }, }, }"
         }
       ],
       "exports": [
@@ -3834,6 +3834,97 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-file-upload/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ FileUpload: { title: \"File Upload\", description: \"A simple file input that displays the selected file name and emits a file-upload event.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1rEfpEQEyCvvmkfC4qKrvb/b27ffb14d215b37bb98707c87ed2838c/FileUpload_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4068&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-file-upload--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-upload/index.ts\"], website: [\"https://muibook.com/file-upload\"], guides: [\"https://guides.muibook.com/file-upload\"], usage: { list: [ \"Use when users need to upload a file, such as documents, images, or other assets.\", \"Keep labels and instructions clear so users understand what file types and sizes are allowed.\", \"Display the selected file name once uploaded to confirm selection.\", \"Validate file type and size before submission and provide helpful error messages.\", \"Only use this component when uploading is essential to completing a task — avoid optional uploads unless necessary.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/2sqEWKOyrgyXbePd1Y0QY1/36670de55b4f68391d073275b94b11e8/FileUpload_-_Anatomy.png\", list: [ \"Message: This text indicates that no file has been selected.\", \"Action: Use this element as a call to action for the user to add a file.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Input\", link: \"https://guides.muibook.com/input\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-file-upload/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-file-upload/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Provides a file picker control that displays the current or newly selected file name.",
+          "name": "MuiFileUpload",
+          "events": [
+            {
+              "name": "file-upload",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Composed, bubbling event dispatched when a user selects a file with the selected file in `detail.file`."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "accepted-file-types",
+              "type": {
+                "text": "string"
+              },
+              "description": "Comma-separated file extensions or MIME types accepted by the native file picker."
+            },
+            {
+              "name": "current-file-name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initial label displayed before a file is selected."
+            },
+            {
+              "name": "acceptedfiletypes",
+              "type": {
+                "text": "string"
+              },
+              "description": "Compatibility alias for `accepted-file-types`; prefer the kebab-case attribute."
+            },
+            {
+              "name": "currentfilename",
+              "type": {
+                "text": "string"
+              },
+              "description": "Compatibility alias for `current-file-name`; prefer the kebab-case attribute."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-file-upload",
+          "customElement": true,
+          "slots": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-file-upload",
+          "declaration": {
+            "name": "MuiFileUpload",
+            "module": "src/components/mui-file-upload/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-form-group/doc.ts",
       "declarations": [
         {
@@ -3967,97 +4058,6 @@
           "declaration": {
             "name": "MuiFormGroup",
             "module": "src/components/mui-form-group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-file-upload/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ FileUpload: { title: \"File Upload\", description: \"A simple file input that displays the selected file name and emits a file-upload event.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1rEfpEQEyCvvmkfC4qKrvb/b27ffb14d215b37bb98707c87ed2838c/FileUpload_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4068&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-file-upload--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-file-upload/index.ts\"], website: [\"https://muibook.com/file-upload\"], guides: [\"https://guides.muibook.com/file-upload\"], usage: { list: [ \"Use when users need to upload a file, such as documents, images, or other assets.\", \"Keep labels and instructions clear so users understand what file types and sizes are allowed.\", \"Display the selected file name once uploaded to confirm selection.\", \"Validate file type and size before submission and provide helpful error messages.\", \"Only use this component when uploading is essential to completing a task — avoid optional uploads unless necessary.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/2sqEWKOyrgyXbePd1Y0QY1/36670de55b4f68391d073275b94b11e8/FileUpload_-_Anatomy.png\", list: [ \"Message: This text indicates that no file has been selected.\", \"Action: Use this element as a call to action for the user to add a file.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Input\", link: \"https://guides.muibook.com/input\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-file-upload/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-file-upload/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Provides a file picker control that displays the current or newly selected file name.",
-          "name": "MuiFileUpload",
-          "events": [
-            {
-              "name": "file-upload",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Composed, bubbling event dispatched when a user selects a file with the selected file in `detail.file`."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "accepted-file-types",
-              "type": {
-                "text": "string"
-              },
-              "description": "Comma-separated file extensions or MIME types accepted by the native file picker."
-            },
-            {
-              "name": "current-file-name",
-              "type": {
-                "text": "string"
-              },
-              "description": "Initial label displayed before a file is selected."
-            },
-            {
-              "name": "acceptedfiletypes",
-              "type": {
-                "text": "string"
-              },
-              "description": "Compatibility alias for `accepted-file-types`; prefer the kebab-case attribute."
-            },
-            {
-              "name": "currentfilename",
-              "type": {
-                "text": "string"
-              },
-              "description": "Compatibility alias for `current-file-name`; prefer the kebab-case attribute."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-file-upload",
-          "customElement": true,
-          "slots": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-file-upload",
-          "declaration": {
-            "name": "MuiFileUpload",
-            "module": "src/components/mui-file-upload/index.ts"
           }
         }
       ]
@@ -6931,6 +6931,260 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-input/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Input: { title: \"Input\", description: \"An input component for capturing user text, styled for consistency across your UI.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-input--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts\"], website: [\"https://muibook.com/input\"], guides: [\"https://guides.muibook.com/input\"], usage: { list: [ \"Ensure the purpose of the input is clear, either through a placeholder text or surrounding context.\", \"Ensure validation feedback is considered when using an input. E.g. Error text.\", \"Ensure the experience has clear focus states to support keyboard accessibility.\", \"Select the appropriate input types for the specific use case. E.g. Text, Email, Password.\", \"Use size='x-small|small|medium|large' to align inputs with surrounding form controls.\", \"Use slot='hint' for contextual overlays, including mui-hint with interactive tooltip content.\", \"Use mui-chip in before/after slots for tag-style contextual input patterns.\", \"Use placeholder text to provide context of the input use; avoid using them as primary labels.\", \"Avoid relying solely on placeholder text for instructions, as it disappears when users start typing.\", \"Use the optional attribute when a field is not required to show a clear (optional) marker in the label.\", \"Use max-length when input limits matter; the component shows a live character count.\", \"In React controlled mode, keep value updates isolated from structural attribute updates (label, type, placeholder, variant) to avoid focus loss while typing.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"A label is required for screen reader support to describe the input's purpose.\", \"If hide-label is used, the label is visually hidden but accessible via aria-label.\", \"The label and input are linked via for and id. If no id is provided, one is generated.\", \"Clear focus styles are shown for keyboard users.\", \"The native disabled attribute is fully supported by assistive tech.\", \"Optional fields can be explicitly communicated with the optional attribute without changing label association.\", \"When max-length is set, users get visible character progress while native maxlength enforcement remains intact.\", \"For React integrations, prefer reading event.detail.value from the web component custom event instead of querying shadow DOM internals.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/5aiWlqSJ4BYCGtXn9MbGd/2734f1771c0e666806060bc85f753927/Input_-_Anatomy.png\", list: [ \"Label: Describes the purpose of the Input; required for accessibility. Can be hidden if the context is clear. Ensure the label text is still provided for developers to support screen reader access.\", \"Text: The label or placeholder text that describes the input field’s purpose.\", \"Before: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"After: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"Slot Before: Allows insertion of an Add-On, Select, or Button before the input to provide contextual or interactive elements. Some design craft may be needed to align elements visually in tools like Figma.\", \"Slot After: Allows insertion of an Add-On, Select, or Button after the input to support or clarify the user’s entry. Some design craft may be needed to ensure alignment and spacing look accurate in design tools.\", ], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"The standard Input with visible label and no interaction or validation states applied. Used for most form field scenarios.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5t0SMtVRHvOSHiuHZ8jLfS/64da2bbaf5d2f4216f1c876f205c1298/input-default.png\", }, { key: \"hide-label\", title: \"Hide Label\", description: \"The label is visually hidden but remains accessible to screen readers. Use when the label context is already clear from surrounding UI. Ensure the label name is documented for developers, as the component requires a label for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4wC0xbPgmsMGi6YhMG8PnI/f01da9a977092a2da1e128fbee3325eb/input-hide-label.png\", }, { key: \"hover\", title: \"Hover\", description: \"Displays the hover state styling when a pointer is placed over the Input. Useful for demonstrating interactive feedback.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5IXEcxa2RxqubupHmblDhd/ab41eba34289194733a87994b096e95d/input-hover.png\", }, { key: \"focus\", title: \"Focus\", description: \"Shows the focus ring or border to indicate that the Input is currently active. Supports accessible keyboard navigation.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4AA4IcIdnov9MfSeY4rSdL/bbaf44297cdd4bd09d626b707dbe5f47/input-focus.png\", }, { key: \"error\", title: \"Error\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2LYMpJwtH7f8KfPYl0vwAg/385529402b5e73399320c9581c8e1301/input-error.png\", }, { key: \"input-field\", title: \"Input + Field\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/kSXvQ6D4hvuP3c9bC0ZUa/319272dc75f0b08493753a49c0fbff75/success-message.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"user-details\", name: \"User Details (Step 1)\", description: \"This composition uses an accordion to contain a step in a multi-step flow. It focuses on input fields with labels, placeholders, and optional states, keeping the layout compact and clear.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"onboarding-form\", name: \"Onboarding Form\", description: \"Demonstrates an onboarding form within a card, using logic to confirm terms acceptance. Components include Heading, Input Fields, Checkbox, and Button.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1NrgynTcdmVVKSYCsQwlOW/5fc4776c1860b498a59a2865b4e57ecb/Card-Onboarding-Composition.png\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"File Upload\", link: \"https://guides.muibook.com/file-upload\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-input/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-input/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Captures a single text-like form value with label, validation state and composable affordance slots.",
+          "name": "MuiInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Gets or sets the current input value."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Composed, bubbling event dispatched when the native input change event occurs with `detail.value`."
+            },
+            {
+              "name": "input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Composed, bubbling event dispatched during value entry with `detail.value`."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "\"text\" | \"password\" | \"email\" | \"number\" | \"search\" | \"tel\" | \"url\" | \"date\" | \"time\" | \"datetime-local\" | \"month\" | \"week\""
+              },
+              "default": "text",
+              "description": "Native input data type."
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Form field name."
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "",
+              "description": "Current input value."
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Hint displayed when no value is entered."
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Input identifier used to associate the visible label."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible input label. Required for labelled form usage."
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disables input interaction."
+            },
+            {
+              "name": "hide-label",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Visually hides the supplied label while preserving it as the accessible name."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"success\" | \"warning\" | \"error\""
+              },
+              "default": "default",
+              "description": "Visual validation state."
+            },
+            {
+              "name": "optional",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Displays an optional marker beside the label."
+            },
+            {
+              "name": "max-length",
+              "type": {
+                "text": "number | string"
+              },
+              "description": "Maximum character length. Providing it displays a live count."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Input and slotted affordance size scale."
+            },
+            {
+              "name": "slot-layout",
+              "type": {
+                "text": "\"inline\" | \"stack-mobile\""
+              },
+              "default": "inline",
+              "description": "Arranges external before and after slots inline or stacked around the input."
+            },
+            {
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Focuses the input after it renders."
+            },
+            {
+              "name": "menu-slot"
+            },
+            {
+              "name": "padding-block",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides native input block padding with a CSS length or token."
+            },
+            {
+              "name": "padding-inline",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides native input inline padding with a CSS length or token."
+            },
+            {
+              "name": "surface",
+              "type": {
+                "text": "\"default\" | \"seamless\""
+              },
+              "default": "default",
+              "description": "Visual surface style. Seamless removes borders and backgrounds."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-input",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "before",
+              "description": "Flush leading control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`."
+            },
+            {
+              "name": "after",
+              "description": "Flush trailing control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`."
+            },
+            {
+              "name": "inside-before",
+              "description": "Leading content displayed inside the input edge, such as an icon or badge."
+            },
+            {
+              "name": "inside-after",
+              "description": "Trailing content displayed inside the input edge, such as an icon or badge."
+            },
+            {
+              "name": "hint",
+              "description": "Contextual hint content displayed inside the trailing input affordance area."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--input-focus-outline",
+              "description": "Overrides the size-specific focus outline, including `none` for composed instances that provide another visible focus treatment."
+            },
+            {
+              "name": "--input-before-slot-max-width",
+              "description": "Maximum width for leading external slot content."
+            },
+            {
+              "name": "--input-after-slot-max-width",
+              "description": "Maximum width for trailing external slot content."
+            },
+            {
+              "name": "--input-slot-wrap",
+              "description": "Wrapping behaviour for external slot content."
+            },
+            {
+              "name": "--input-slot-overflow-x",
+              "description": "Horizontal overflow behaviour for external slot content."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-input",
+          "declaration": {
+            "name": "MuiInput",
+            "module": "src/components/mui-input/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-link/doc.ts",
       "declarations": [
         {
@@ -7213,260 +7467,6 @@
           "declaration": {
             "name": "MuiLink",
             "module": "src/components/mui-link/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-input/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Input: { title: \"Input\", description: \"An input component for capturing user text, styled for consistency across your UI.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-795&t=GMqx21isUVAMpLJp-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-input--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-input/index.ts\"], website: [\"https://muibook.com/input\"], guides: [\"https://guides.muibook.com/input\"], usage: { list: [ \"Ensure the purpose of the input is clear, either through a placeholder text or surrounding context.\", \"Ensure validation feedback is considered when using an input. E.g. Error text.\", \"Ensure the experience has clear focus states to support keyboard accessibility.\", \"Select the appropriate input types for the specific use case. E.g. Text, Email, Password.\", \"Use size='x-small|small|medium|large' to align inputs with surrounding form controls.\", \"Use slot='hint' for contextual overlays, including mui-hint with interactive tooltip content.\", \"Use mui-chip in before/after slots for tag-style contextual input patterns.\", \"Use placeholder text to provide context of the input use; avoid using them as primary labels.\", \"Avoid relying solely on placeholder text for instructions, as it disappears when users start typing.\", \"Use the optional attribute when a field is not required to show a clear (optional) marker in the label.\", \"Use max-length when input limits matter; the component shows a live character count.\", \"In React controlled mode, keep value updates isolated from structural attribute updates (label, type, placeholder, variant) to avoid focus loss while typing.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"A label is required for screen reader support to describe the input's purpose.\", \"If hide-label is used, the label is visually hidden but accessible via aria-label.\", \"The label and input are linked via for and id. If no id is provided, one is generated.\", \"Clear focus styles are shown for keyboard users.\", \"The native disabled attribute is fully supported by assistive tech.\", \"Optional fields can be explicitly communicated with the optional attribute without changing label association.\", \"When max-length is set, users get visible character progress while native maxlength enforcement remains intact.\", \"For React integrations, prefer reading event.detail.value from the web component custom event instead of querying shadow DOM internals.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/5aiWlqSJ4BYCGtXn9MbGd/2734f1771c0e666806060bc85f753927/Input_-_Anatomy.png\", list: [ \"Label: Describes the purpose of the Input; required for accessibility. Can be hidden if the context is clear. Ensure the label text is still provided for developers to support screen reader access.\", \"Text: The label or placeholder text that describes the input field’s purpose.\", \"Before: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"After: Optional icons can be placed before or after the text input for additional functionality or clarity (e.g., search or password visibility icons).\", \"Slot Before: Allows insertion of an Add-On, Select, or Button before the input to provide contextual or interactive elements. Some design craft may be needed to align elements visually in tools like Figma.\", \"Slot After: Allows insertion of an Add-On, Select, or Button after the input to support or clarify the user’s entry. Some design craft may be needed to ensure alignment and spacing look accurate in design tools.\", ], }, variants: { items: [ { key: \"default\", title: \"Default\", description: \"The standard Input with visible label and no interaction or validation states applied. Used for most form field scenarios.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5t0SMtVRHvOSHiuHZ8jLfS/64da2bbaf5d2f4216f1c876f205c1298/input-default.png\", }, { key: \"hide-label\", title: \"Hide Label\", description: \"The label is visually hidden but remains accessible to screen readers. Use when the label context is already clear from surrounding UI. Ensure the label name is documented for developers, as the component requires a label for accessibility.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4wC0xbPgmsMGi6YhMG8PnI/f01da9a977092a2da1e128fbee3325eb/input-hide-label.png\", }, { key: \"hover\", title: \"Hover\", description: \"Displays the hover state styling when a pointer is placed over the Input. Useful for demonstrating interactive feedback.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5IXEcxa2RxqubupHmblDhd/ab41eba34289194733a87994b096e95d/input-hover.png\", }, { key: \"focus\", title: \"Focus\", description: \"Shows the focus ring or border to indicate that the Input is currently active. Supports accessible keyboard navigation.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4AA4IcIdnov9MfSeY4rSdL/bbaf44297cdd4bd09d626b707dbe5f47/input-focus.png\", }, { key: \"error\", title: \"Error\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2LYMpJwtH7f8KfPYl0vwAg/385529402b5e73399320c9581c8e1301/input-error.png\", }, { key: \"input-field\", title: \"Input + Field\", description: \"Displays a visual error style to indicate invalid input. Used with the Field component to surface validation messaging.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/kSXvQ6D4hvuP3c9bC0ZUa/319272dc75f0b08493753a49c0fbff75/success-message.png\", }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"user-details\", name: \"User Details (Step 1)\", description: \"This composition uses an accordion to contain a step in a multi-step flow. It focuses on input fields with labels, placeholders, and optional states, keeping the layout compact and clear.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"onboarding-form\", name: \"Onboarding Form\", description: \"Demonstrates an onboarding form within a card, using logic to confirm terms acceptance. Components include Heading, Input Fields, Checkbox, and Button.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1NrgynTcdmVVKSYCsQwlOW/5fc4776c1860b498a59a2865b4e57ecb/Card-Onboarding-Composition.png\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\", }, { name: \"Select\", link: \"https://guides.muibook.com/select\", }, { name: \"File Upload\", link: \"https://guides.muibook.com/file-upload\", }, { name: \"Add on\", link: \"https://guides.muibook.com/add-on\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-input/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-input/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Captures a single text-like form value with label, validation state and composable affordance slots.",
-          "name": "MuiInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "description": "Gets or sets the current input value."
-            }
-          ],
-          "events": [
-            {
-              "name": "change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Composed, bubbling event dispatched when the native input change event occurs with `detail.value`."
-            },
-            {
-              "name": "input",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Composed, bubbling event dispatched during value entry with `detail.value`."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "type",
-              "type": {
-                "text": "\"text\" | \"password\" | \"email\" | \"number\" | \"search\" | \"tel\" | \"url\" | \"date\" | \"time\" | \"datetime-local\" | \"month\" | \"week\""
-              },
-              "default": "text",
-              "description": "Native input data type."
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "description": "Form field name."
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "",
-              "description": "Current input value."
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "description": "Hint displayed when no value is entered."
-            },
-            {
-              "name": "id",
-              "type": {
-                "text": "string"
-              },
-              "description": "Input identifier used to associate the visible label."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible input label. Required for labelled form usage."
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disables input interaction."
-            },
-            {
-              "name": "hide-label",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Visually hides the supplied label while preserving it as the accessible name."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"success\" | \"warning\" | \"error\""
-              },
-              "default": "default",
-              "description": "Visual validation state."
-            },
-            {
-              "name": "optional",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Displays an optional marker beside the label."
-            },
-            {
-              "name": "max-length",
-              "type": {
-                "text": "number | string"
-              },
-              "description": "Maximum character length. Providing it displays a live count."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Input and slotted affordance size scale."
-            },
-            {
-              "name": "slot-layout",
-              "type": {
-                "text": "\"inline\" | \"stack-mobile\""
-              },
-              "default": "inline",
-              "description": "Arranges external before and after slots inline or stacked around the input."
-            },
-            {
-              "name": "autofocus",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Focuses the input after it renders."
-            },
-            {
-              "name": "menu-slot"
-            },
-            {
-              "name": "padding-block",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides native input block padding with a CSS length or token."
-            },
-            {
-              "name": "padding-inline",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides native input inline padding with a CSS length or token."
-            },
-            {
-              "name": "surface",
-              "type": {
-                "text": "\"default\" | \"seamless\""
-              },
-              "default": "default",
-              "description": "Visual surface style. Seamless removes borders and backgrounds."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-input",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "before",
-              "description": "Flush leading control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`."
-            },
-            {
-              "name": "after",
-              "description": "Flush trailing control, such as `mui-addon`, `mui-select`, `mui-button` or `mui-chip`."
-            },
-            {
-              "name": "inside-before",
-              "description": "Leading content displayed inside the input edge, such as an icon or badge."
-            },
-            {
-              "name": "inside-after",
-              "description": "Trailing content displayed inside the input edge, such as an icon or badge."
-            },
-            {
-              "name": "hint",
-              "description": "Contextual hint content displayed inside the trailing input affordance area."
-            }
-          ],
-          "cssProperties": [
-            {
-              "name": "--input-focus-outline",
-              "description": "Overrides the size-specific focus outline, including `none` for composed instances that provide another visible focus treatment."
-            },
-            {
-              "name": "--input-before-slot-max-width",
-              "description": "Maximum width for leading external slot content."
-            },
-            {
-              "name": "--input-after-slot-max-width",
-              "description": "Maximum width for trailing external slot content."
-            },
-            {
-              "name": "--input-slot-wrap",
-              "description": "Wrapping behaviour for external slot content."
-            },
-            {
-              "name": "--input-slot-overflow-x",
-              "description": "Horizontal overflow behaviour for external slot content."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-input",
-          "declaration": {
-            "name": "MuiInput",
-            "module": "src/components/mui-input/index.ts"
           }
         }
       ]
@@ -8320,7 +8320,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ PreviewChip: { title: \"Preview Chip\", description: \"Preview Chip shows long pasted content in a structured box with title and badge context.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-preview-chip--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-preview-chip/index.ts\"], website: [\"https://muibook.com/preview-chip\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use before prompt submission when users paste long content.\", \"Show first-line identity and concise snippet for fast scanning.\", \"Use badge to classify payload types like JSON, CSS, or Insightful.\", \"Use `bg-image` to render a visual source and `image-tint` to tune color tone.\", \"Use `inverted` for high-contrast white-on-dark surfaces.\", \"Use `loading` during async enrichment flows (metadata, URL checks, or media probing).\", \"Set `loading-label` to provide clear accessible loading feedback.\", \"Use the `dismiss` event to track analytics/API updates before removing a preview.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Keep preview text readable and avoid replacing the editable source input.\"], }, anatomy: { image: \"\", list: [\"Preview box\", \"Image surface (optional)\", \"Name line\", \"Type badge\", \"Snippet body\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Prompt\", link: \"https://guides.muibook.com/input\" }, { name: \"Badge\", link: \"https://guides.muibook.com/badge\" }, { name: \"Body\", link: \"https://guides.muibook.com/body\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
+          "default": "{ PreviewChip: { title: \"Preview Chip\", description: \"Preview Chip shows long pasted content in a structured box with title and badge context.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-preview-chip--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-preview-chip/index.ts\"], website: [\"https://muibook.com/preview-chip\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use before prompt submission when users paste long content.\", \"Show first-line identity and concise snippet for fast scanning.\", \"Use badge to classify payload types like JSON, CSS, or Insightful.\", \"Use `bg-image` to render a visual source and `image-tint` to tune color tone.\", \"Use `inverted` for high-contrast white-on-dark surfaces.\", \"Use `loading` during async enrichment flows (metadata, URL checks, or media probing).\", \"Set `loading-label` to provide clear accessible loading feedback.\", \"Use the `dismiss` event to track analytics/API updates before removing a preview.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Keep preview text readable and avoid replacing the editable source input.\"], }, anatomy: { image: \"\", list: [\"Preview box\", \"Image surface (optional)\", \"Name line\", \"Type badge\", \"Snippet body\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { key: \"predropped\", title: \"Pre-dropped Preview\", description: \"Shows long pasted input before submit.\", list: [] }, { key: \"types\", title: \"Payload Types\", description: \"Set badge directly or let the component infer it from value.\", list: [] }, { key: \"loading\", title: \"Loading State\", description: \"Use loading while async preview metadata or media checks resolve.\", list: [] }, { key: \"pasted-image\", title: \"Pasted Image\", description: \"Image previews default to badge-only, with no text overlay.\", list: [] }, { key: \"dismiss-tracking\", title: \"Dismiss Tracking\", description: \"Capture dismiss payloads for API calls and analytics before removing.\", list: [] }, { key: \"open-dialog\", title: \"Formatted JSON Dialog\", description: \"Format the emitted value before presenting it in a consumer-managed dialog.\", list: [] }, { key: \"open-dialog-image\", title: \"Click Image to Open Dialog\", description: \"Open a dialog with the full pasted image preview.\", list: [] }, ] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Prompt\", link: \"https://guides.muibook.com/input\" }, { name: \"Badge\", link: \"https://guides.muibook.com/badge\" }, { name: \"Body\", link: \"https://guides.muibook.com/body\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
         }
       ],
       "exports": [
@@ -8831,7 +8831,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ Prompt: { title: \"Prompt\", description: \"Prompt provides a reusable prompt surface with floating actions and Enter-to-submit behavior.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-prompt--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-prompt\"], website: [\"https://muibook.com/prompt\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use for AI/chat prompt entry surfaces with action controls.\", \"In Muibook stories, use the Interactive Prompt story at the top of the page as the primary end-to-end reference (paste/upload/context/submit).\", \"This component is extracted from composition patterns to standardize prompt behavior across experiences.\", \"Keep prompt as a controlled input in app state: write value via attribute/property and sync from input events.\", \"Use Enter submit for fast send flows; keep Shift+Enter for multiline authoring.\", \"Press Enter to submit and Shift+Enter to add a newline.\", \"Set enter-submit='false' to disable Enter submit behavior.\", \"Use slot='actions' for utility actions (attach, source, tools).\", \"Prompt includes a default submit control in actions-right; override by slotting your own actions-right control when needed.\", \"All utility actions are intended to be slotted so product teams can wire behavior from app state.\", \"A default fan trigger is included out-of-the-box for action fan behavior.\", \"Use slot='actions-right' when you need a custom submit/toggle action instead of the default.\", \"Set loading to show built-in async feedback spinner beside actions-right while requests are in flight.\", \"Use loading-label to provide accessible status text for the spinner.\", \"Fan behavior derives from slotted actions by default; use fan-open when you want the fan open by default.\", \"fan-open normalizes fan behavior in composed trees by enabling fan mode when needed.\", \"Use context-mode='icon|chip' with slotted <mui-action-toggle> for app-driven context state.\", \"Use slot='context' for explicit context content above the input, usually <mui-context-bar>.\", \"Only render slotted context when product state has real context to show.\", \"Keep feature-specific context controls inside the slotted context component; Prompt only positions the slot.\", \"Fan spread, speed, and amplitude are fixed to system defaults; tune through component tokens/CSS where needed.\", \"Built-in preview dialog handling is enabled for preview-chip-open events.\", \"Set preview-threshold-chars to control when pasted text is converted into preview attachments.\", \"Set preview-overflow-to-preview='false' to always paste text directly into the textarea.\", \"When internal preview dialog handling is enabled, slotted prompt previews are auto-clickable by default.\", \"Set preview-auto-clickable='false' to keep previews non-clickable unless explicitly configured.\", \"Set preview-loading to force slotted previews into loading state while async metadata resolves.\", \"Set preview-loading='auto' to mirror prompt loading state onto slotted previews.\", \"Use preview-loading-label to provide accessible loading text for preview spinners.\", \"Use error-message for direct prompt-level error feedback rendered below the input.\", \"Set debug to render built-in submit debug telemetry (status + JSON payload) below the prompt.\", \"Use slot='error' to render fully custom error content when product needs bespoke treatment.\", \"Use setError(message) and clearError() for app-driven validation and transport error handling.\", \"Use prompt-paste to ingest user clipboard payloads and convert them into preview-chip items.\", \"Use preview-chip-open to react to preview activation and update app-level analytics/state.\", \"For native media previews, use direct .mp4/.mp3 values so the built-in dialog opens with native media controls.\", \"Prefer system/semantic tokens for color-top-* values when theming prompt color surfaces.\", \"For React wrappers, map CustomEvent handlers to props (onSubmit, onPromptPaste, onPreviewChipOpen, onEscape).\", \"Mark the trigger action with fan-trigger; if omitted, the first action is used.\", \"Prefer this component instead of ad hoc prompt wrappers when the same interaction model is needed.\", ], }, accessibility: { designerList: [ \"Provide clear prompt intent through nearby heading/body context; placeholder alone should not carry all instruction.\", \"Ensure action icons are understandable and consistently positioned (utility actions left, submit/state action right).\", \"Keep status text low-emphasis visually, but persistent enough to communicate send state changes.\", ], engineerList: [ \"Support keyboard parity: Enter submits, Shift+Enter adds newline.\", \"If showing send status, use an aria-live region so updates are announced to assistive tech.\", \"Do not trap focus; users must be able to tab into and out of the prompt and actions naturally.\", \"Ensure slotted context controls have their own labels and keyboard behavior.\", \"Ensure a clear placeholder or label context for prompt intent.\", \"Provide aria-label values for icon-only action buttons slotted into actions.\", \"When authoring themes, rely on public --prompt-* tokens and attributes rather than internal prompt CSS variables.\", ], }, anatomy: { image: \"\", list: [\"Prompt surface\", \"Context slot\", \"Input area\", \"Action slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Input\", link: \"https://guides.muibook.com/input\" }, { name: \"Button\", link: \"https://guides.muibook.com/button\" }, ], }, rules: [ { heading: \"Pattern Rule\", description: \"Use Prompt as the shared prompt-surface primitive; keep product-specific flows in compositions.\", doContent: [ { description: \"Reuse this component when Enter submit + floating actions are expected.\", image: \"\" }, ], dontContent: [ { description: \"Do not rebuild the prompt shell in each composition with custom wrappers.\", image: \"\" }, ], }, ], behaviour: { list: [ \"Enter emits a submit event with current value.\", \"Shift+Enter inserts a newline.\", \"Pasting emits prompt-paste with detected payload metadata for consumers to store and render previews.\", \"Short text paste remains in the textarea; long text and binary paste can be converted to preview items based on threshold settings.\", \"Clicking a preview emits preview-chip-open with normalized preview payload (badge, value, image metadata).\", \"Escape emits escape and closes fan actions when open.\", \"Error feedback supports dismiss and optional expand/collapse for long copy.\", \"Clicking content inside a slotted <mui-action-toggle> emits prompt-context-change and switches to context chip mode.\", \"Dismissing content marked with [context-chip] emits prompt-context-dismiss and returns to icon mode.\", \"Slotted context content appears above the prompt input when provided by the consumer.\", \"Actions remain anchored at the prompt edge while text grows.\", \"Action behavior should be equivalent whether triggered by keyboard submit or click.\", \"When loading is set, prompt shows async spinner feedback near submit and blocks additional submits.\", ], }, writing: { list: [\"Use clear placeholder prompts that describe expected user input.\"], }, }, }"
+          "default": "{ Prompt: { title: \"Prompt\", description: \"Prompt provides a reusable prompt surface with floating actions and Enter-to-submit behavior.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2117-17601&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/ai-llm-prompt--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-prompt\"], website: [\"https://muibook.com/prompt\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use for AI/chat prompt entry surfaces with action controls.\", \"In Muibook stories, use the Interactive Prompt story at the top of the page as the primary end-to-end reference (paste/upload/context/submit).\", \"This component is extracted from composition patterns to standardize prompt behavior across experiences.\", \"Keep prompt as a controlled input in app state: write value via attribute/property and sync from input events.\", \"Use Enter submit for fast send flows; keep Shift+Enter for multiline authoring.\", \"Press Enter to submit and Shift+Enter to add a newline.\", \"Set enter-submit='false' to disable Enter submit behavior.\", \"Use slot='actions' for utility actions (attach, source, tools).\", \"Prompt includes a default submit control in actions-right; override by slotting your own actions-right control when needed.\", \"All utility actions are intended to be slotted so product teams can wire behavior from app state.\", \"A default fan trigger is included out-of-the-box for action fan behavior.\", \"Use slot='actions-right' when you need a custom submit/toggle action instead of the default.\", \"Set loading to show built-in async feedback spinner beside actions-right while requests are in flight.\", \"Use loading-label to provide accessible status text for the spinner.\", \"Fan behavior derives from slotted actions by default; use fan-open when you want the fan open by default.\", \"fan-open normalizes fan behavior in composed trees by enabling fan mode when needed.\", \"Use context-mode='icon|chip' with slotted <mui-action-toggle> for app-driven context state.\", \"Use slot='context' for explicit context content above the input, usually <mui-context-bar>.\", \"Only render slotted context when product state has real context to show.\", \"Keep feature-specific context controls inside the slotted context component; Prompt only positions the slot.\", \"Fan spread, speed, and amplitude are fixed to system defaults; tune through component tokens/CSS where needed.\", \"Built-in preview dialog handling is enabled for preview-chip-open events.\", \"Set preview-threshold-chars to control when pasted text is converted into preview attachments.\", \"Set preview-overflow-to-preview='false' to always paste text directly into the textarea.\", \"When internal preview dialog handling is enabled, slotted prompt previews are auto-clickable by default.\", \"Set preview-auto-clickable='false' to keep previews non-clickable unless explicitly configured.\", \"Set preview-loading to force slotted previews into loading state while async metadata resolves.\", \"Set preview-loading='auto' to mirror prompt loading state onto slotted previews.\", \"Use preview-loading-label to provide accessible loading text for preview spinners.\", \"Use error-message for direct prompt-level error feedback rendered below the input.\", \"Set debug to render built-in submit debug telemetry (status + JSON payload) below the prompt.\", \"Use slot='error' to render fully custom error content when product needs bespoke treatment.\", \"Use setError(message) and clearError() for app-driven validation and transport error handling.\", \"Use prompt-paste to ingest user clipboard payloads and convert them into preview-chip items.\", \"Use preview-chip-open to react to preview activation and update app-level analytics/state.\", \"For native media previews, use direct .mp4/.mp3 values so the built-in dialog opens with native media controls.\", \"Prefer system/semantic tokens for color-top-* values when theming prompt color surfaces.\", \"For React wrappers, map CustomEvent handlers to props (onSubmit, onPromptPaste, onPreviewChipOpen, onEscape).\", \"Mark the trigger action with fan-trigger; if omitted, the first action is used.\", \"Prefer this component instead of ad hoc prompt wrappers when the same interaction model is needed.\", ], }, accessibility: { designerList: [ \"Provide clear prompt intent through nearby heading/body context; placeholder alone should not carry all instruction.\", \"Ensure action icons are understandable and consistently positioned (utility actions left, submit/state action right).\", \"Keep status text low-emphasis visually, but persistent enough to communicate send state changes.\", ], engineerList: [ \"Support keyboard parity: Enter submits, Shift+Enter adds newline.\", \"If showing send status, use an aria-live region so updates are announced to assistive tech.\", \"Do not trap focus; users must be able to tab into and out of the prompt and actions naturally.\", \"Ensure slotted context controls have their own labels and keyboard behavior.\", \"Ensure a clear placeholder or label context for prompt intent.\", \"Provide aria-label values for icon-only action buttons slotted into actions.\", \"When authoring themes, rely on public --prompt-* tokens and attributes rather than internal prompt CSS variables.\", ], }, anatomy: { image: \"\", list: [\"Prompt surface\", \"Context slot\", \"Input area\", \"Action slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { key: \"preview-data\", title: \"Interactive Prompt\", description: \"Canonical interactive setup for this page: paste and upload previews, context toggle, submit, and Prompt event telemetry.\", list: [] }, { key: \"context\", title: \"Context\", description: \"Prompt positions explicit context content above the input when product state has context to show.\", list: [\"Use slot='context' for feature-owned Prompt context such as steering, persona, constraints, selected context, examples, or attachments.\", \"Use mui-context-bar for the compact row treatment.\", \"Omit the slotted context entirely when there is no active context.\"] }, { key: \"default\", title: \"Empty\", list: [\"Use this shared Prompt primitive across products.\"] }, { key: \"glowing-ring\", title: \"Glowing Ring\", description: \"Enable ring for an animated glowing stroke. Use ring-start, ring-mid, and ring-end to define the color sweep.\", list: [] }, { key: \"submit-guard-api\", title: \"Submit Guard + API\", description: \"Use before-submit to block invalid sends, then call submit, clear, or focus from application controls.\", list: [] }, { key: \"loading\", title: \"Async Loading\", description: \"Show async spinner feedback next to submit while a request is in flight.\", list: [] }, { key: \"preview-loading-flow\", title: \"Preview Loading Flow\", description: \"Working async flow that toggles preview loading from an LLM or tooling lifecycle.\", list: [\"Set Prompt loading during the request and mirror preview loading using preview-loading='auto'.\", \"If enrichment continues after send completes, force preview-loading='true' and clear it when finished.\"] }, { key: \"error-feedback\", title: \"Error Feedback\", description: \"Inject direct error text or custom slot content. Long errors can expand for review.\", list: [\"Use Bad Data for raw machine or system validation output.\", \"Use Custom Data for humanised guidance.\", \"Use Reset to clear both direct error-message and custom slotted error content.\"] }, { key: \"effects-off\", title: \"Effects Off\", description: \"Disable Prompt hover and focus visuals for a flatter surface.\", list: [] }, { key: \"color-swap\", title: \"Color Layout Swap\", description: \"Remap the top color positions without changing the supplied color values.\", list: [] }, { key: \"preview-open-image-dialog\", title: \"Preview: Image\", description: \"Click an image preview to open the built-in Prompt dialog.\", list: [] }, { key: \"preview-media\", title: \"Preview: Media\", description: \"Checks media badges and rendering for YouTube, SoundCloud, and direct media URLs.\", list: [\"Use Interactive Prompt for the complete paste and upload flow.\"] }, { key: \"preview-native-video\", title: \"Preview: Native Video\", description: \"Uses a direct MP4 URL so the dialog opens with native video controls.\", list: [] }, { key: \"preview-native-audio\", title: \"Preview: Native Audio\", description: \"Uses a direct MP3 URL so the dialog opens with native audio controls.\", list: [] }, { key: \"preview-open-dialog\", title: \"Preview: Code Types\", description: \"Formats JSON and CSS in the built-in dialog while other types render source content for comparison.\", list: [] }, { key: \"preview-off\", title: \"Preview: Off\", description: \"Disable preview auto-click so items remain non-interactive.\", list: [] }, ] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Input\", link: \"https://guides.muibook.com/input\" }, { name: \"Button\", link: \"https://guides.muibook.com/button\" }, ], }, rules: [ { heading: \"Pattern Rule\", description: \"Use Prompt as the shared prompt-surface primitive; keep product-specific flows in compositions.\", doContent: [ { description: \"Reuse this component when Enter submit + floating actions are expected.\", image: \"\" }, ], dontContent: [ { description: \"Do not rebuild the prompt shell in each composition with custom wrappers.\", image: \"\" }, ], }, ], behaviour: { list: [ \"Enter emits a submit event with current value.\", \"Shift+Enter inserts a newline.\", \"Pasting emits prompt-paste with detected payload metadata for consumers to store and render previews.\", \"Short text paste remains in the textarea; long text and binary paste can be converted to preview items based on threshold settings.\", \"Clicking a preview emits preview-chip-open with normalized preview payload (badge, value, image metadata).\", \"Escape emits escape and closes fan actions when open.\", \"Error feedback supports dismiss and optional expand/collapse for long copy.\", \"Clicking content inside a slotted <mui-action-toggle> emits prompt-context-change and switches to context chip mode.\", \"Dismissing content marked with [context-chip] emits prompt-context-dismiss and returns to icon mode.\", \"Slotted context content appears above the prompt input when provided by the consumer.\", \"Actions remain anchored at the prompt edge while text grows.\", \"Action behavior should be equivalent whether triggered by keyboard submit or click.\", \"When loading is set, prompt shows async spinner feedback near submit and blocks additional submits.\", ], }, writing: { list: [\"Use clear placeholder prompts that describe expected user input.\"], }, }, }"
         }
       ],
       "exports": [
@@ -9955,7 +9955,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ ResultBar: { title: \"Result Bar\", description: \"Result bar provides a compact card/slat shell for agent outputs and generated artefact actions.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-result-bar/index.ts\"], website: [\"https://muibook.com/result\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use inside Chat Message content when an agent produces a file edit, generated artefact, preview, or reviewable result.\", \"Use slot='accessory' for the compact result marker.\", \"Use slot='start' for the primary result label and supporting copy.\", \"Use slot='actions' for controls such as Undo, Review, Open, Approve, or Dismiss.\", \"Prefer this component over hand-authored card, card body, and slat markup in prompt/agent surfaces.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Keep action labels explicit and avoid icon-only actions unless an aria-label is provided.\", \"Use semantic buttons or links in the actions slot.\", ], }, anatomy: { image: \"\", list: [\"Card shell\", \"Accessory slot\", \"Start slot\", \"Actions slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Chat Message\", link: \"https://guides.muibook.com/chat-message\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, { name: \"Card\", link: \"https://guides.muibook.com/card\" }, ], }, rules: [ { heading: \"Keep Result Rows Focused\", description: \"Use Result for one generated object or reviewable action group.\", doContent: [{ description: \"Show a clear title, supporting metadata, and one or two direct actions.\", image: \"\" }], dontContent: [{ description: \"Do not turn Result into a full dashboard or unrelated card layout.\", image: \"\" }], }, ], behaviour: { list: [ \"Result uses a condensed card body and row slat internally.\", ], }, writing: { list: [ \"Keep result titles short and action labels direct.\", ], }, }, }"
+          "default": "{ ResultBar: { title: \"Result Bar\", description: \"Result bar provides a compact card/slat shell for agent outputs and generated artefact actions.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-result-bar/index.ts\"], website: [\"https://muibook.com/result\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use inside Chat Message content when an agent produces a file edit, generated artefact, preview, or reviewable result.\", \"Use slot='accessory' for the compact result marker.\", \"Use slot='start' for the primary result label and supporting copy.\", \"Use slot='actions' for controls such as Undo, Review, Open, Approve, or Dismiss.\", \"Prefer this component over hand-authored card, card body, and slat markup in prompt/agent surfaces.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Keep action labels explicit and avoid icon-only actions unless an aria-label is provided.\", \"Use semantic buttons or links in the actions slot.\", ], }, anatomy: { image: \"\", list: [\"Card shell\", \"Accessory slot\", \"Start slot\", \"Actions slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { key: \"accessory\", title: \"Accessory\", list: [\"Use inside prompt responses for generated files, edits, artefacts, and reviewable results.\", \"Use accessory for a compact marker, start for result copy, and actions for direct controls.\"] }, { key: \"without-accessory\", title: \"Without Accessory\", list: [\"Omit the accessory slot when the result should read as a simple action row.\"] }, { key: \"file-edits\", title: \"Accordion Result\", list: [\"Opt into the accordion variant to present worker outputs with interactive actions and collapsible accordion content.\"] }, ] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Chat Message\", link: \"https://guides.muibook.com/chat-message\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, { name: \"Card\", link: \"https://guides.muibook.com/card\" }, ], }, rules: [ { heading: \"Keep Result Rows Focused\", description: \"Use Result for one generated object or reviewable action group.\", doContent: [{ description: \"Show a clear title, supporting metadata, and one or two direct actions.\", image: \"\" }], dontContent: [{ description: \"Do not turn Result into a full dashboard or unrelated card layout.\", image: \"\" }], }, ], behaviour: { list: [ \"Result uses a condensed card body and row slat internally.\", ], }, writing: { list: [ \"Keep result titles short and action labels direct.\", ], }, }, }"
         }
       ],
       "exports": [
@@ -12468,7 +12468,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ WorkLog: { title: \"Work Log\", description: \"Work log provides a compact expandable work summary for agent responses.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-work-log/index.ts\"], website: [\"https://muibook.com/work-log\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use inside the header slot of Chat Message when an agent response needs a collapsible work summary.\", \"Set label to the short summary, such as elapsed work time.\", \"Use the default slot for compact work detail rows.\", \"Top-level Worker in a Chat Message header draws its divider on the summary row.\", \"Use rule when a trailing separator is needed outside the header slot.\", \"Use status with pending for active Thinking states that should shimmer without accordion interaction.\", \"Use pending without status for expandable active work states such as Working for 5s, without applying the Thinking shimmer.\", \"Nest Worker inside another Worker for compact child work rows such as Read files or Ran checks.\", \"Nested work rows are treated as secondary detail inside the parent work disclosure.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Worker uses Accordion Core internally, so the summary remains keyboard reachable and exposes expanded state.\", \"Keep work detail content short and non-essential; the main response should remain understandable while collapsed.\", ], }, anatomy: { image: \"\", list: [\"Status row\", \"Summary row\", \"Optional icon slot\", \"Toggle icon\", \"Detail slot\", \"Nested work rows\", \"Optional rule\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Chat Message\", link: \"https://guides.muibook.com/chat-message\" }, { name: \"Accordion Core\", link: \"https://guides.muibook.com/accordion-core\" }, ], }, rules: [ { heading: \"Keep Work Detail Secondary\", description: \"Use Worker for supporting execution detail, not as the main answer.\", doContent: [{ description: \"Show short checked/applied/validated lines.\", image: \"\" }], dontContent: [{ description: \"Do not hide the useful answer only inside Worker.\", image: \"\" }], }, ], behaviour: { list: [ \"Worker wraps Accordion Core and forwards the open attribute to its internal disclosure.\", \"When status is set, Worker renders a non-interactive row without Accordion Core or a toggle icon.\", \"Nested Worker rows are automatically marked with nested treatment when placed inside another Worker.\", \"Pending only applies the shimmer treatment when combined with status for Thinking-style rows.\", ], }, writing: { list: [ \"Keep the label short and factual.\", ], }, }, }"
+          "default": "{ WorkLog: { title: \"Work Log\", description: \"Work log provides a compact expandable work summary for agent responses.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-work-log/index.ts\"], website: [\"https://muibook.com/work-log\"], guides: [\"https://guides.muibook.com/prompt\"], usage: { list: [ \"Use inside the header slot of Chat Message when an agent response needs a collapsible work summary.\", \"Set label to the short summary, such as elapsed work time.\", \"Use the default slot for compact work detail rows.\", \"Top-level Worker in a Chat Message header draws its divider on the summary row.\", \"Use rule when a trailing separator is needed outside the header slot.\", \"Use status with pending for active Thinking states that should shimmer without accordion interaction.\", \"Use pending without status for expandable active work states such as Working for 5s, without applying the Thinking shimmer.\", \"Nest Worker inside another Worker for compact child work rows such as Read files or Ran checks.\", \"Nested work rows are treated as secondary detail inside the parent work disclosure.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Worker uses Accordion Core internally, so the summary remains keyboard reachable and exposes expanded state.\", \"Keep work detail content short and non-essential; the main response should remain understandable while collapsed.\", ], }, anatomy: { image: \"\", list: [\"Status row\", \"Summary row\", \"Optional icon slot\", \"Toggle icon\", \"Detail slot\", \"Nested work rows\", \"Optional rule\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { key: \"single\", title: \"Single Work Log\", list: [\"Use in the prompt message header slot when an agent response needs a compact work summary.\", \"Keep detail rows short and supporting, not the main response.\"] }, { key: \"composable\", title: \"Composable Summary\", list: [\"Use the before and after slots to insert custom elements into the Work Log summary row.\", \"Good for showing line diffs, file counts, or badges next to the label.\"] }, { key: \"thinking\", title: \"Thinking\", list: [\"Use status and pending together to represent an active Thinking state.\", \"This creates a non-interactive row with a shimmer animation and no toggle icon.\"] }, { key: \"nested\", title: \"Nested Work Log\", list: [\"Use pending for active work states.\", \"Place Work Log inside another Work Log for secondary rows such as reading files, running checks, or applying changes.\", \"Nested rows are compact supporting detail.\"] }, ] }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Chat Message\", link: \"https://guides.muibook.com/chat-message\" }, { name: \"Accordion Core\", link: \"https://guides.muibook.com/accordion-core\" }, ], }, rules: [ { heading: \"Keep Work Detail Secondary\", description: \"Use Worker for supporting execution detail, not as the main answer.\", doContent: [{ description: \"Show short checked/applied/validated lines.\", image: \"\" }], dontContent: [{ description: \"Do not hide the useful answer only inside Worker.\", image: \"\" }], }, ], behaviour: { list: [ \"Worker wraps Accordion Core and forwards the open attribute to its internal disclosure.\", \"When status is set, Worker renders a non-interactive row without Accordion Core or a toggle icon.\", \"Nested Worker rows are automatically marked with nested treatment when placed inside another Worker.\", \"Pending only applies the shimmer treatment when combined with status for Thinking-style rows.\", ], }, writing: { list: [ \"Keep the label short and factual.\", ], }, }, }"
         }
       ],
       "exports": [
@@ -13914,50 +13914,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/row-group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups related table rows and optionally presents them as a heading region.",
-          "name": "MuiRowGroup",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-row-group",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "heading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Applies header row styling to the contained rows."
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-row` children."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-row-group",
-          "declaration": {
-            "name": "MuiRowGroup",
-            "module": "src/components/mui-table/row-group/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-table/cell/index.ts",
       "declarations": [
         {
@@ -14085,6 +14041,50 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-table/row-group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups related table rows and optionally presents them as a heading region.",
+          "name": "MuiRowGroup",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-row-group",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Applies header row styling to the contained rows."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-row` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-row-group",
+          "declaration": {
+            "name": "MuiRowGroup",
+            "module": "src/components/mui-table/row-group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-table/table/index.ts",
       "declarations": [
         {
@@ -14203,64 +14203,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-tabs/panel/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
-          "name": "MuiTabPanel",
-          "members": [
-            {
-              "kind": "field",
-              "name": "item",
-              "type": {
-                "text": "string | null"
-              },
-              "description": "Gets or sets the matching tab item identifier."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "item",
-              "type": {
-                "text": "string"
-              },
-              "description": "ID of the `mui-tab-item` whose selection displays this panel."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-panel",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Panel content."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--tab-panel-padding",
-              "description": "Inner padding applied to panel content."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-panel",
-          "declaration": {
-            "name": "MuiTabPanel",
-            "module": "src/components/mui-tabs/panel/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-tabs/item/index.ts",
       "declarations": [
         {
@@ -14330,6 +14272,64 @@
           "declaration": {
             "name": "MuiTabItem",
             "module": "src/components/mui-tabs/item/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/panel/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
+          "name": "MuiTabPanel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "item",
+              "type": {
+                "text": "string | null"
+              },
+              "description": "Gets or sets the matching tab item identifier."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "item",
+              "type": {
+                "text": "string"
+              },
+              "description": "ID of the `mui-tab-item` whose selection displays this panel."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-panel",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Panel content."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--tab-panel-padding",
+              "description": "Inner padding applied to panel content."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-panel",
+          "declaration": {
+            "name": "MuiTabPanel",
+            "module": "src/components/mui-tabs/panel/index.ts"
           }
         }
       ]

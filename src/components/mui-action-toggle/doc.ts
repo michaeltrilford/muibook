@@ -55,6 +55,16 @@ export const muiDocs: MuiDocs = {
         },
       ],
     },
+    stories: { items: [
+      { key: "recommended-prompt", title: "Recommended Prompt Composition", list: ["Use mui-action-toggle only in slot='actions'.", "Prompt includes a default submit control in actions-right; override only when needed.", "Wire submit and context events from the parent mui-prompt."] },
+      { key: "toggle-private", title: "Private Mode", list: ["Toggle into a private-mode chip and dismiss to return to icon mode."] },
+      { key: "toggle-chip", title: "Button to Chip", list: ["Swap an icon action to a contextual chip state, then dismiss back."] },
+      { key: "toggle-input", title: "Button to Input", list: ["Toggle into an input action with a close fallback."] },
+      { key: "toggle-spinner", title: "Button to Spinner", list: ["Toggle into a spinner action with a Stop button."] },
+      { key: "toggle-button", title: "Button to Button", list: ["Toggle to a custom action group, then close."] },
+      { key: "toggle-calendar", title: "Button to Calendar", list: ["Toggle from a calendar icon into date-range actions with a close fallback.", "Selecting a range updates the Prompt value."] },
+      { key: "toggle-dropdown", title: "Accessibility Tools", list: ["Toggle into accessibility controls and close back to icon mode.", "Menu actions apply live Prompt settings."] },
+    ] },
 
     compositions: {
       description: "Showcases prompt-side action patterns that transform from compact controls into richer active states.",

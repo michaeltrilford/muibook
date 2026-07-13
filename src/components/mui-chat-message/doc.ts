@@ -44,6 +44,14 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Bubble container", "Avatar slot", "Message content slot"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: { items: [
+      { key: "default", title: "Default", list: ["Use as the default conversation row shell.", "Set size='medium' for standard chat density."] },
+      { key: "list", title: "Conversation List", list: ["Mix sizes by speaker priority and layout density."] },
+      { key: "sizes", title: "Sizes", list: ["Size controls avatar and body scale together."] },
+      { key: "ghost", title: "Ghost Variant", list: ["variant='ghost' removes border and background while preserving structure."] },
+      { key: "no-avatar", title: "No Avatar", list: ["Omit slot='avatar' for agent or system messages that should not reserve avatar layout space.", "variant='ghost' removes bubble padding so content aligns like document text.", "Use align and width for left and right chat layout instead of inline styles."] },
+      { key: "body-rhythm", title: "Body Rhythm", list: ["Chat Message adds default vertical rhythm between direct body children.", "Override --chat-message-body-space only when a response needs a tighter or looser stack."] },
+    ] },
     compositions: { description: "", items: [] },
     related: {
       items: [

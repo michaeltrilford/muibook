@@ -21,6 +21,9 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: [] },
     variants: { items: [] },
+    stories: { items: [
+      { key: "file-diff", title: "File Diff", list: ["Use to show file diff summaries."] },
+    ] },
     compositions: { description: "", items: [] },
     related: {
       items: [],
