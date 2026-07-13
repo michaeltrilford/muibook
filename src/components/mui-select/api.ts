@@ -87,5 +87,8 @@ export const muiApi = {
       { name: "change", description: "Composed, bubbling event dispatched when the selected option changes with `detail.value`." },
     ],
     methods: [{ name: "focus", description: "Moves focus to the internal native select." }],
+    cssProperties: [
+      { name: "--select-focus-outline", description: "Overrides the size-specific focus outline, including `none` when another visible focus treatment is provided." },
+    ],
   },
 };

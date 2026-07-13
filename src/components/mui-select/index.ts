@@ -399,7 +399,7 @@ class MuiSelect extends HTMLElement {
           display: none;
         }
         select.size-x-small {
-          --select-focus-outline: var(--outline-thin);
+          --select-focus-outline-default: var(--outline-thin);
           min-height: var(--action-size-x-small);
           --select-padding-block-start-default: var(--space-050);
           --select-padding-block-end-default: var(--space-050);
@@ -410,7 +410,7 @@ class MuiSelect extends HTMLElement {
           border-radius: var(--form-radius-x-small);
         }
         select.size-small {
-          --select-focus-outline: var(--outline-thin);
+          --select-focus-outline-default: var(--outline-thin);
           min-height: var(--action-size-small);
           --select-padding-block-start-default: var(--space-100);
           --select-padding-block-end-default: var(--space-100);
@@ -421,7 +421,7 @@ class MuiSelect extends HTMLElement {
           border-radius: var(--form-radius-small);
         }
         select.size-medium {
-          --select-focus-outline: var(--outline-medium);
+          --select-focus-outline-default: var(--outline-medium);
           min-height: var(--action-size-medium);
           --select-padding-block-start-default: var(--space-200);
           --select-padding-block-end-default: var(--space-200);
@@ -432,7 +432,7 @@ class MuiSelect extends HTMLElement {
           border-radius: var(--form-radius-medium);
         }
         select.size-large {
-          --select-focus-outline: var(--outline-thick);
+          --select-focus-outline-default: var(--outline-thick);
           min-height: var(--action-size-large);
           --select-padding-block-start-default: var(--space-300);
           --select-padding-block-end-default: var(--space-300);
@@ -472,7 +472,7 @@ class MuiSelect extends HTMLElement {
           color: var(--form-default-text-color-hover);
         }
         select:focus {
-          outline: var(--select-focus-outline, var(--outline-medium));
+          outline: var(--select-focus-outline, var(--select-focus-outline-default, var(--outline-medium)));
         }
         select:disabled {
           opacity: 0.4;

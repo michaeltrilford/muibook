@@ -46,8 +46,8 @@ class appNavbar extends HTMLElement {
 
       .nav-search-input {
         --input-background: var(--app-navbar-surface-opacity);
+        --input-focus-outline: none;
         --border-thin: none;
-        --outline-thick: none;
         padding-inline: var(--space-200);
         box-sizing: border-box;
       }

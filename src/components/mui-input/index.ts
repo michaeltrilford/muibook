@@ -666,7 +666,7 @@ class MuiInput extends HTMLElement {
           background: var(--input-background);
         }
         input.size-x-small {
-          --input-focus-outline: var(--outline-thin);
+          --input-focus-outline-default: var(--outline-thin);
           min-height: var(--action-size-x-small);
           padding-block-start: var(--input-padding-block-start, var(--input-padding-block, var(--space-050)));
           padding-block-end: var(--input-padding-block-end, var(--input-padding-block, var(--space-050)));
@@ -686,7 +686,7 @@ class MuiInput extends HTMLElement {
           padding-inline-end: calc(var(--input-inline-padding-end-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-small {
-          --input-focus-outline: var(--outline-thin);
+          --input-focus-outline-default: var(--outline-thin);
           min-height: var(--action-size-small);
           --input-padding-inline-start-default: calc(var(--space-200) + var(--stroke-size-100));
           --input-padding-inline-end-default: calc(var(--space-200) + var(--stroke-size-100));
@@ -708,7 +708,7 @@ class MuiInput extends HTMLElement {
           padding-inline-end: calc(var(--input-inline-padding-end-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-medium {
-          --input-focus-outline: var(--outline-medium);
+          --input-focus-outline-default: var(--outline-medium);
           min-height: var(--action-size-medium);
           --input-padding-inline-start-default: calc(var(--space-300) + var(--stroke-size-100));
           --input-padding-inline-end-default: calc(var(--space-300) + var(--stroke-size-100));
@@ -730,7 +730,7 @@ class MuiInput extends HTMLElement {
           padding-inline-end: calc(var(--input-inline-padding-end-current) + var(--input-inside-after-space, 0px) + var(--input-inline-gap));
         }
         input.size-large {
-          --input-focus-outline: var(--outline-thick);
+          --input-focus-outline-default: var(--outline-thick);
           min-height: var(--action-size-large);
           --input-padding-inline-start-default: calc(var(--space-400) + var(--stroke-size-100));
           --input-padding-inline-end-default: calc(var(--space-400) + var(--stroke-size-100));
@@ -764,7 +764,7 @@ class MuiInput extends HTMLElement {
           color: var(--form-default-text-color-hover);
         }
         input:focus {
-          outline: var(--input-focus-outline, var(--outline-medium));
+          outline: var(--input-focus-outline, var(--input-focus-outline-default, var(--outline-medium)));
         }
         input:disabled {
           opacity: 0.4;

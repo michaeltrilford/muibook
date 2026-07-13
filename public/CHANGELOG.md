@@ -41,6 +41,7 @@ _Status: WIP_
 
 ### Fixed
 
+- Input, Select, and Textarea now keep their size-specific focus outlines as internal defaults, allowing instance-level `--input-focus-outline`, `--select-focus-outline`, and `--textarea-focus-outline` overrides to take effect without changing shared outline primitives.
 - Menu now restores authored form-control `size`, `menu-slot`, `padding-inline`, and `surface` attributes when controls leave the Menu or the Menu disconnects.
 - Textarea now combines row and padding custom properties in one style attribute so both configurations apply reliably.
 - Input, Select, and Textarea now retain their size-resolved Menu radius when focused at x-small and small instead of forcing square corners.

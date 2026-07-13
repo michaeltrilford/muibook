@@ -226,7 +226,7 @@ class MuiTextarea extends HTMLElement {
           --textarea-padding-inline-current: var(--space-300);
         }
         textarea.size-x-small {
-          --textarea-focus-outline: var(--outline-thin);
+          --textarea-focus-outline-default: var(--outline-thin);
           --textarea-font-size-current: var(--text-font-size-xs);
           --textarea-line-height-current: var(--text-line-height-xs);
           --textarea-padding-block-current: var(--space-050);
@@ -234,7 +234,7 @@ class MuiTextarea extends HTMLElement {
           border-radius: var(--form-radius-x-small);
         }
         textarea.size-small {
-          --textarea-focus-outline: var(--outline-thin);
+          --textarea-focus-outline-default: var(--outline-thin);
           --textarea-font-size-current: var(--text-font-size-s);
           --textarea-line-height-current: var(--text-line-height-s);
           --textarea-padding-block-current: calc(var(--space-100) - (var(--stroke-size-100) / 2));
@@ -242,7 +242,7 @@ class MuiTextarea extends HTMLElement {
           border-radius: var(--form-radius-small);
         }
         textarea.size-medium {
-          --textarea-focus-outline: var(--outline-medium);
+          --textarea-focus-outline-default: var(--outline-medium);
           --textarea-font-size-current: var(--text-font-size);
           --textarea-line-height-current: var(--text-line-height);
           --textarea-padding-block-current: var(--space-200);
@@ -250,7 +250,7 @@ class MuiTextarea extends HTMLElement {
           border-radius: var(--form-radius-medium);
         }
         textarea.size-large {
-          --textarea-focus-outline: var(--outline-thick);
+          --textarea-focus-outline-default: var(--outline-thick);
           --textarea-font-size-current: var(--text-font-size-l);
           --textarea-line-height-current: var(--text-line-height-l);
           --textarea-padding-block-current: var(--space-300);
@@ -275,7 +275,7 @@ class MuiTextarea extends HTMLElement {
         }
 
         textarea:focus {
-          outline: var(--textarea-focus-outline, var(--outline-medium));
+          outline: var(--textarea-focus-outline, var(--textarea-focus-outline-default, var(--outline-medium)));
         }
 
         textarea:disabled {

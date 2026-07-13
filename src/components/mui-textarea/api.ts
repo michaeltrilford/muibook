@@ -24,5 +24,8 @@ export const muiApi = {
       { name: "change", description: "Composed, bubbling event dispatched when the native textarea change event occurs with `detail.value`." },
     ],
     methods: [{ name: "focus", description: "Moves focus to the internal native textarea." }],
+    cssProperties: [
+      { name: "--textarea-focus-outline", description: "Overrides the size-specific focus outline, including `none` when another visible focus treatment is provided." },
+    ],
   },
 };

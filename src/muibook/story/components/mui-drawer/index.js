@@ -10,6 +10,16 @@ class storyDrawer extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Drawer");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Drawer"></story-metadata-empty>`;
+      return;
+    }
+
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
+
     const attrsReference = JSON.stringify([
       {
         component: "mui-drawer",
@@ -683,7 +693,7 @@ class storyDrawer extends HTMLElement {
         <story-api-types tag="mui-drawer" title="Drawer"></story-api-types>
       </mui-v-stack>
 
-      <story-card id="drawer-overlay-left" title="Overlay Left" description="The drawer is positioned fixed to the viewport edge">
+      <story-card id="drawer-overlay-left" title="${storyMeta["drawer-overlay-left"].title}" description="${storyMeta["drawer-overlay-left"].description}" usage="${storyMeta["drawer-overlay-left"].usage}">
         <mui-button variant="primary" data-drawer="drawer-1" slot="body">Open</mui-button>
 
         <mui-drawer variant="overlay" data-drawer="drawer-1" side="left" slot="body">
@@ -719,7 +729,7 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="drawer-overlay-right" title="Overlay Right" description="The drawer is positioned fixed to the viewport edge">
+      <story-card id="drawer-overlay-right" title="${storyMeta["drawer-overlay-right"].title}" description="${storyMeta["drawer-overlay-right"].description}" usage="${storyMeta["drawer-overlay-right"].usage}">
         <mui-button variant="primary" data-drawer="drawer-2" slot="body">Open</mui-button>
 
         <mui-drawer variant="overlay" data-drawer="drawer-2" width="400px" side="right" slot="body">
@@ -755,7 +765,7 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="drawer-overlay-no-header" title="Overlay: No Header" description="If no header if used, ensure there is a way for the user to cancel out of the view, especially on mobile.">
+      <story-card id="drawer-overlay-no-header" title="${storyMeta["drawer-overlay-no-header"].title}" description="${storyMeta["drawer-overlay-no-header"].description}" usage="${storyMeta["drawer-overlay-no-header"].usage}">
         <mui-button variant="primary" data-drawer="overlay-no-header" slot="body">Open</mui-button>
 
         <mui-drawer variant="overlay" data-drawer="overlay-no-header" width="400px" side="left" slot="body">
@@ -788,11 +798,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-overlay-custom-footer"
-        title="Overlay: Custom Footer Content"
-        description="Footer content uses its rendered height while the drawer body remains scrollable."
-        usage="
-          Use close-size when the built-in header close action needs to scale with a denser or roomier drawer header.
-        ">
+        title="${storyMeta["drawer-overlay-custom-footer"].title}"
+        description="${storyMeta["drawer-overlay-custom-footer"].description}"
+        usage="${storyMeta["drawer-overlay-custom-footer"].usage}">
         <mui-button variant="primary" data-drawer="overlay-custom-footer" slot="body">Open</mui-button>
 
         <mui-drawer variant="overlay" data-drawer="overlay-custom-footer" width="400px" side="right" close-size="small" slot="body">
@@ -817,7 +825,7 @@ class storyDrawer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="drawer-overlay-no-footer" title="Overlay: No Footer" description="If no footer if used, ensure there is a way for the user to cancel out of the view, especially on mobile.">
+      <story-card id="drawer-overlay-no-footer" title="${storyMeta["drawer-overlay-no-footer"].title}" description="${storyMeta["drawer-overlay-no-footer"].description}" usage="${storyMeta["drawer-overlay-no-footer"].usage}">
         <mui-button variant="primary" data-drawer="overlay-no-footer" slot="body">Open</mui-button>
 
         <mui-drawer variant="overlay" data-drawer="overlay-no-footer" width="400px" side="left" slot="body">
@@ -853,19 +861,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-workspace"
-        title="Workspace"
-        description="Creates an editor-style workspace with left and right panels around a central page or canvas."
-        usage="
-          Use variant='workspace' when a page canvas needs independent left and right support panels.|||
-          Slot component navigation or libraries into slot='left', the main canvas into slot='page', and inspector or properties content into slot='right'.|||
-          Set height to the app shell or canvas height so the workspace, page, panels, and mobile overlay resolve from the same layout box. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
-          Control panel visibility with left-open and right-open so product state can decide whether one, both, or neither panel is visible.|||
-          Tune the panel columns with left-width and right-width, then add resize-rail when both workspace panels should be user-resizable.|||
-          Use resize-min-left-width, resize-min-right-width and resize-min-page-width to keep the side panels and central canvas usable while resizing.|||
-          Release a panel below resize-close-threshold to close that side while keeping the central page protected.|||
-          Focus a resize rail and use ArrowLeft or ArrowRight to nudge the selected panel width. Hold Shift with an arrow key for a larger nudge. Press Escape while a workspace rail is focused to close only that side.|||
-          Wire page actions to left-open and right-open so each workspace panel can be toggled independently.
-        "
+        title="${storyMeta["drawer-workspace"].title}"
+        description="${storyMeta["drawer-workspace"].description}"
+        usage="${storyMeta["drawer-workspace"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer
@@ -959,15 +957,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-push-left"
-        title="Push Left"
-        description="The Push Drawer slides in from the left and shifts the page content to the right. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
-        usage="
-          This variant is intended for full-screen page views rather than smaller page sections.|||
-          Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
-          If an alternative mobile view is required, use state or media queries to swap the drawer out.|||
-          See the <mui-link size='x-small' target='_blank' href='/push-left'>full-screen example</mui-link>
-        "
+        title="${storyMeta["drawer-push-left"].title}"
+        description="${storyMeta["drawer-push-left"].description}"
+        usage="${storyMeta["drawer-push-left"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer contained variant="push" data-drawer="drawer-3" width="320px" side="left" height="45dvh">
@@ -1010,17 +1002,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-push-left-resize-rail"
-        title="Push Left Resize Rail"
-        description="Adds a draggable boundary between a desktop push drawer and the page so the user can adjust the drawer width while keeping page context visible."
-        usage="
-          Use resize-rail only when the push drawer benefits from user-controlled width.|||
-          The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
-          Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
-          Set height when a drawer needs to sit inside a contained story, workspace, or app region. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
-          Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
-          Pull below resize-min-drawer-width to fade the drawer content while the width remains clamped, then release past resize-close-threshold to close it.|||
-          The rail is hidden on the narrow-screen push layout where the drawer behaves like an overlay.
-        "
+        title="${storyMeta["drawer-push-left-resize-rail"].title}"
+        description="${storyMeta["drawer-push-left-resize-rail"].description}"
+        usage="${storyMeta["drawer-push-left-resize-rail"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer
@@ -1124,17 +1108,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-persistent-left-resize-rail"
-        title="Persistent Left Resize Rail"
-        description="Adds a draggable boundary between a desktop persistent drawer and the page so the user can adjust the drawer width while keeping the drawer present."
-        usage="
-          Use resize-rail only when the persistent drawer benefits from user-controlled width.|||
-          The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
-          Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
-          Set height when a drawer needs to sit inside a contained story, workspace, or app region. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
-          Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
-          Persistent drawers stay present by default on desktop, so resize-rail only adjusts width and does not act as an open or close gesture.|||
-          On narrow screens, persistent drawers use the overlay presentation by default and the rail is hidden.
-        "
+        title="${storyMeta["drawer-persistent-left-resize-rail"].title}"
+        description="${storyMeta["drawer-persistent-left-resize-rail"].description}"
+        usage="${storyMeta["drawer-persistent-left-resize-rail"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer
@@ -1236,15 +1212,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
        id="drawer-persistent-left"
-        title="Persistent Left"
-        description="The Persistent Drawer remains fixed in place without sliding in or out on desktop. It is positioned on the left side of the main content and becomes part of the layout itself. On mobile, it uses the overlay presentation by default."
-        usage="
-          This variant is intended for full-screen page views rather than smaller page sections.|||
-          Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
-          Use mobile-presentation='stack' when a persistent drawer should keep the older block layout on narrow screens instead of overlaying the page.|||
-          See the <mui-link size='x-small' target='_blank' href='/persistent-left'>full-screen example</mui-link>
-        "
+        title="${storyMeta["drawer-persistent-left"].title}"
+        description="${storyMeta["drawer-persistent-left"].description}"
+        usage="${storyMeta["drawer-persistent-left"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer contained variant="persistent" width="320px" slot="body" side="left" data-drawer-toggle="drawer-persistent-left-demo" height="45dvh">
@@ -1289,15 +1259,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-push-right"
-        title="Push Right"
-        description="The Push Drawer slides in from the right and shifts the page content to the left. It creates a clear separation between the drawer and the main content, keeping focus while ensuring the full page remains accessible. On mobile, the drawer overlays the content."
-        usage="
-          This variant is intended for full-screen page views rather than smaller page sections.|||
-          Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
-          If an alternative mobile view is required, use state or media queries to swap the drawer out.|||
-          See the <mui-link size='x-small' target='_blank' href='/push-right'>full-screen example</mui-link>
-        "
+        title="${storyMeta["drawer-push-right"].title}"
+        description="${storyMeta["drawer-push-right"].description}"
+        usage="${storyMeta["drawer-push-right"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer contained slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right" height="45dvh">
@@ -1341,17 +1305,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-push-right-resize-rail"
-        title="Push Right Resize Rail"
-        description="Adds a draggable boundary between a desktop push drawer and the page so the user can adjust the drawer width while keeping page context visible."
-        usage="
-          Use resize-rail only when the push drawer benefits from user-controlled width.|||
-          The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
-          Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
-          Set height when a drawer needs to sit inside a contained story, workspace, or app region. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
-          Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
-          Pull below resize-min-drawer-width to fade the drawer content while the width remains clamped, then release past resize-close-threshold to close it.|||
-          The rail is hidden on the narrow-screen push layout where the drawer behaves like an overlay.
-        "
+        title="${storyMeta["drawer-push-right-resize-rail"].title}"
+        description="${storyMeta["drawer-push-right-resize-rail"].description}"
+        usage="${storyMeta["drawer-push-right-resize-rail"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer
@@ -1456,17 +1412,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-persistent-right-resize-rail"
-        title="Persistent Right Resize Rail"
-        description="Adds a draggable boundary between a desktop persistent drawer and the page so the user can adjust the drawer width while keeping the drawer present."
-        usage="
-          Use resize-rail only when the persistent drawer benefits from user-controlled width.|||
-          The rail is only rendered for push or persistent drawers when resize-rail is present. Existing overlay and non-rail drawer structures remain unchanged.|||
-          Drag the rail to resize the drawer between the minimum drawer width and the available width left after preserving the page minimum.|||
-          Set height when a drawer needs to sit inside a contained story, workspace, or app region. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.|||
-          Keep the page region resilient with min-width: 0, scrollable content, and container-query-aware layouts so dense page content does not force the split layout wider than the available space.|||
-          Persistent drawers stay present by default on desktop, so resize-rail only adjusts width and does not act as an open or close gesture.|||
-          On narrow screens, persistent drawers use the overlay presentation by default and the rail is hidden.
-        "
+        title="${storyMeta["drawer-persistent-right-resize-rail"].title}"
+        description="${storyMeta["drawer-persistent-right-resize-rail"].description}"
+        usage="${storyMeta["drawer-persistent-right-resize-rail"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer
@@ -1569,15 +1517,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-persistent-right"
-        title="Persistent Right"
-        description="The Persistent Drawer remains fixed in place without sliding in or out on desktop. It is positioned on the right side of the main content and becomes part of the layout itself. On mobile, it uses the overlay presentation by default."
-        usage="
-          This variant is intended for full-screen page views rather than smaller page sections.|||
-          Use a plain div with slot='page' as the direct page wrapper; place layout components inside it rather than slotting a Stack directly.|||
-          Use dynamic width/height or positioning (left, right, top, bottom) so the UI is edge-to-edge.|||
-          Use mobile-presentation='stack' when a persistent drawer should keep the older block layout on narrow screens instead of overlaying the page.|||
-          See the <mui-link size='x-small' target='_blank' href='/persistent-right'>full-screen example</mui-link>
-        "
+        title="${storyMeta["drawer-persistent-right"].title}"
+        description="${storyMeta["drawer-persistent-right"].description}"
+        usage="${storyMeta["drawer-persistent-right"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer contained variant="persistent" width="320px" slot="body" side="right" data-drawer-toggle="drawer-persistent-right-demo" height="45dvh">
@@ -1620,8 +1562,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
        id="drawer-menu"
-        title="Menu"
-        description="Uses the built-in heading and close button to provide a clear way to close the panel, while also presenting additional context through the header section."
+        title="${storyMeta["drawer-menu"].title}"
+        description="${storyMeta["drawer-menu"].description}"
+        usage="${storyMeta["drawer-menu"].usage}"
       >
         <div class="canvas" slot="body">
           <mui-drawer contained variant="push" width="260px" side="left" data-drawer="hook" drawer-space="none" height="45dvh">
@@ -1655,12 +1598,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
        id="drawer-advanced-menu"
-        title="Advanced Menu"
-        description="Crafting the responsive behaviour using mui-responsive and alternative variants."
-        usage="
-          Omit the header and using a custom header and action that has 'data-close' to toggle the view|||
-          Use mui-responsive component to toggle state and components between desktop and mobile.
-        "
+        title="${storyMeta["drawer-advanced-menu"].title}"
+        description="${storyMeta["drawer-advanced-menu"].description}"
+        usage="${storyMeta["drawer-advanced-menu"].usage}"
       >
         <div class="canvas" slot="body">
 
@@ -1744,12 +1684,9 @@ class storyDrawer extends HTMLElement {
 
       <story-card
         id="drawer-breakpoint"
-        title="Breakpoint"
-        description="Adjust the default breakpoint for the mobile view."
-        usage="
-          If you want to use media queries or state to introudce a completely different mobile view, you can set the breakpoint '0' to avoid the mobile view from appearing.|||
-          Alternatively, if you need to override the default 768px cutoff, you can provide a custom value for breakpoint (for example, 1024) to control when the drawer switches to its mobile behavior.
-        "
+        title="${storyMeta["drawer-breakpoint"].title}"
+        description="${storyMeta["drawer-breakpoint"].description}"
+        usage="${storyMeta["drawer-breakpoint"].usage}"
 
       >
         <div class="canvas" slot="body">
@@ -1811,7 +1748,7 @@ class storyDrawer extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="drawer-overlay-left::Overlay Left|||drawer-overlay-right::Overlay Right|||drawer-overlay-no-header::Overlay: No Header|||drawer-overlay-custom-footer::Overlay: Custom Footer|||drawer-overlay-no-footer::Overlay: No Footer|||drawer-workspace::Workspace|||drawer-push-left::Push Left|||drawer-push-left-resize-rail::Push Left Resize Rail|||drawer-persistent-left-resize-rail::Persistent Left Resize Rail|||drawer-persistent-left::Persistent Left|||drawer-push-right::Push Right|||drawer-push-right-resize-rail::Push Right Resize Rail|||drawer-persistent-right-resize-rail::Persistent Right Resize Rail|||drawer-persistent-right::Persistent Right|||drawer-menu::Menu|||drawer-advanced-menu::Advanced Menu|||drawer-breakpoint::Breakpoint"
+          links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"
         ></story-quicklinks>
 
         ${stories}

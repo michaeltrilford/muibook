@@ -83,6 +83,7 @@ export const muiApi = {
     ],
     methods: [{ name: "focus", description: "Moves focus to the internal native input." }],
     cssProperties: [
+      { name: "--input-focus-outline", description: "Overrides the size-specific focus outline, including `none` for composed instances that provide another visible focus treatment." },
       { name: "--input-before-slot-max-width", description: "Maximum width for leading external slot content." },
       { name: "--input-after-slot-max-width", description: "Maximum width for trailing external slot content." },
       { name: "--input-slot-wrap", description: "Wrapping behaviour for external slot content." },
