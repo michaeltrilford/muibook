@@ -135,6 +135,21 @@ When writing or reviewing UX guidance in `doc.ts`, classify examples and behavio
 
 When a component needs a behavior that is only relevant to an exporter, builder, or destination component, document it as a dynamic attr instead of mixing it into the public API.
 
+### Reusable Story Metadata
+
+Treat `doc.ts` as the source of truth for descriptive story metadata that should be shared across documentation experiences.
+
+- Add an ordered `stories.items` collection containing a stable `key`, `title`, optional `description`, and a `list` of usage details.
+- Keep the key aligned with the rendered story id so quicklinks, deep links, and external renderers can address the same example.
+- Generate `custom-elements.json` after changing story metadata. The CEM is the transport layer consumed by Muibook, Storybook-style documentation, and other component explorers.
+- In the Muibook storefront, load the component docs from the CEM, map each story record by key, and use the ordered collection to build quicklinks. Join `list` only at the renderer boundary when a local component requires a delimited string.
+- Do not duplicate titles, descriptions, or usage guidance in the story implementation. Duplicated fallback copy hides stale CEM output and allows documentation surfaces to drift.
+- Render the shared story-metadata empty state when metadata is unavailable. The empty state should tell maintainers to regenerate the CEM rather than silently using embedded fallback content.
+- Keep executable story markup, imported assets, event handlers, controls, and framework-specific parameters in the local renderer. The CEM record describes the example; it does not own its runtime implementation.
+- A Storybook-style renderer should read the same ordered records and adapt them into story titles, descriptions, docs blocks, and navigation without changing the source metadata.
+
+This separation allows one authored story description to remain consistent while Muibook, Storybook, tests, and future documentation tools render it using their own component and interaction primitives.
+
 ## Knowledge Bundle
 
 Keep human guidance, generated metadata, and runtime/export metadata separate.

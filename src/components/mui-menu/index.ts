@@ -11,7 +11,7 @@ class MuiMenu extends HTMLElement {
   private managedInsetActions = new Set<HTMLElement>();
 
   static get observedAttributes() {
-    return ["size", "inset"];
+    return ["size", "inset", "width"];
   }
 
   constructor() {
@@ -21,6 +21,7 @@ class MuiMenu extends HTMLElement {
 
   connectedCallback() {
     this.normalizeSize();
+    this.syncWidth();
     this.render();
     this.slotElement = this.shadowRoot!.querySelector("slot:not([name])");
     this.topSlotElement = this.shadowRoot!.querySelector('slot[name="top"]');
@@ -55,7 +56,17 @@ class MuiMenu extends HTMLElement {
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
     if (oldValue === newValue) return;
     if (name === "size") this.normalizeSize();
+    if (name === "width") this.syncWidth();
     this.syncActions();
+  }
+
+  private syncWidth() {
+    const width = this.getAttribute("width")?.trim();
+    if (width) {
+      this.style.setProperty("--menu-width-current", width);
+    } else {
+      this.style.removeProperty("--menu-width-current");
+    }
   }
 
   private normalizeSize() {
@@ -221,10 +232,13 @@ class MuiMenu extends HTMLElement {
     this.shadowRoot!.innerHTML = /*html*/ `
       <style>
         :host {
+          --menu-width-current: var(--menu-width);
           display: flex;
           flex-direction: column;
           gap: 0;
           min-width: var(--menu-min-width);
+          width: var(--menu-width-current);
+          max-width: 100%;
           box-sizing: border-box;
           border: var(--border-thin);
           border-color: var(--menu-border-color);

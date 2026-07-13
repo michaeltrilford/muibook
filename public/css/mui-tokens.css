@@ -894,6 +894,7 @@ html[data-theme="dark"] {
   /* Dropdown */
   --dropdown-offset: var(--space-200);
   --menu-min-width: 15rem;
+  --menu-width: max-content;
 
   /* Form */
   --form-default-placeholder-color: var(--grey-500);

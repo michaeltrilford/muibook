@@ -194,7 +194,7 @@ class MuiDropdown extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["zindex", "position", "vertical-position", "persistent", "size"];
+    return ["zindex", "position", "vertical-position", "persistent", "size", "offset"];
   }
 
   get persistent() {
@@ -207,7 +207,7 @@ class MuiDropdown extends HTMLElement {
       if (this.portalMenu) this.portalMenu.style.zIndex = newValue ?? "1";
     }
 
-    if ((name === "position" || name === "vertical-position") && this.menu) {
+    if ((name === "position" || name === "vertical-position" || name === "offset") && this.menu) {
       this.adjustPosition();
     }
 
@@ -509,13 +509,22 @@ class MuiDropdown extends HTMLElement {
         position: fixed;
         z-index: 1;
         box-sizing: border-box;
+        width: max-content;
+        max-width: calc(100vw - 16px);
       }
       .mui-dropdown-portal.show {
         visibility: visible;
         opacity: 1;
         transform: translateY(0);
       }
-      .mui-dropdown-portal .inner { display: block; }
+      .mui-dropdown-portal .inner {
+        display: inline-block;
+        width: max-content;
+        max-width: 100%;
+      }
+      .mui-dropdown-portal .inner > mui-menu {
+        max-width: 100%;
+      }
       .mui-dropdown-portal mui-button,
       .mui-dropdown-portal mui-link {
         width: 100%;
@@ -538,6 +547,7 @@ class MuiDropdown extends HTMLElement {
       "--menu-background",
       "--menu-border-color",
       "--menu-min-width",
+      "--menu-width",
       "--menu-radius",
       "--menu-shadow-color",
       "--action-tertiary-background",
@@ -555,16 +565,28 @@ class MuiDropdown extends HTMLElement {
     });
   }
 
+  private resolveCssLength(value: string, fallback: number) {
+    const probe = document.createElement("div");
+    probe.style.position = "absolute";
+    probe.style.visibility = "hidden";
+    probe.style.pointerEvents = "none";
+    probe.style.width = value;
+    const accepted = Boolean(probe.style.width);
+    this.shadowRoot?.appendChild(probe);
+    const resolved = probe.getBoundingClientRect().width;
+    probe.remove();
+    return accepted ? resolved : fallback;
+  }
+
   adjustPosition() {
     const menu = this.activeMenu;
     if (!menu) return;
 
     const margin = 8; // viewport inset
-    const offsetRaw = getComputedStyle(this).getPropertyValue("--dropdown-offset").trim() || "0.8rem";
-    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 10;
-    const offsetY = offsetRaw.endsWith("rem")
-      ? parseFloat(offsetRaw) * fontSize
-      : parseFloat(offsetRaw) || 8; // vertical gap from trigger
+    const offsetRaw = this.getAttribute("offset")?.trim()
+      || getComputedStyle(this).getPropertyValue("--dropdown-offset").trim()
+      || "0.8rem";
+    const offsetY = this.resolveCssLength(offsetRaw, 8);
 
     // Reset so we measure cleanly
     menu.style.top = "";
@@ -572,12 +594,28 @@ class MuiDropdown extends HTMLElement {
     menu.style.left = "";
     menu.style.right = "";
     menu.style.maxWidth = "";
+    if (this.portalMenu) menu.style.width = "";
 
     const hostRect = this.getBoundingClientRect();
-    const menuW = menu.offsetWidth;
-    const menuH = menu.offsetHeight;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
+    const maxMenuWidth = vw - margin * 2;
+
+    if (this.portalMenu && this.portalInner) {
+      // Give percentage-based Menu widths a definite available width before
+      // shrinking the portal wrapper to the rendered surface.
+      this.portalInner.style.width = `${maxMenuWidth}px`;
+      const menuSurface = this.portalInner.querySelector(":scope > mui-menu") as HTMLElement | null;
+      const surfaceWidth = menuSurface?.getBoundingClientRect().width || 0;
+      if (surfaceWidth > 0) {
+        const resolvedWidth = Math.min(surfaceWidth, maxMenuWidth);
+        menu.style.width = `${resolvedWidth}px`;
+        this.portalInner.style.width = `${resolvedWidth}px`;
+      }
+    }
+
+    const menuW = menu.offsetWidth;
+    const menuH = menu.offsetHeight;
 
     // ---- Vertical position ----
     const verticalPosition = (this.getAttribute("vertical-position") || "auto").toLowerCase();
@@ -623,8 +661,8 @@ class MuiDropdown extends HTMLElement {
     left = Math.max(minLeft, Math.min(left, maxLeft));
 
     // ---- Cap width if too wide ----
-    if (menuW > vw - margin * 2) {
-      menu.style.maxWidth = `${vw - margin * 2}px`;
+    if (menuW > maxMenuWidth) {
+      menu.style.maxWidth = `${maxMenuWidth}px`;
     }
 
     // ---- Apply offsets ----

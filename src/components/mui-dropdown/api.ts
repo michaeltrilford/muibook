@@ -32,6 +32,11 @@ export const muiApi = {
         default: "false",
         description: "Keeps the menu open while users interact with slotted menu content.",
       },
+      {
+        name: "offset",
+        type: { text: "string" },
+        description: "Vertical distance between the trigger and menu. Accepts any valid CSS length, including tokens and `calc()`.",
+      },
     ],
     slots: [
       { name: "action", description: "Dropdown trigger, typically a `mui-button`." },
@@ -41,7 +46,7 @@ export const muiApi = {
       { name: "dropdown-toggle", description: "Dispatched when the dropdown opens or closes with `detail.open`." },
     ],
     cssProperties: [
-      { name: "--dropdown-offset", description: "Vertical distance between the trigger and menu surface." },
+      { name: "--dropdown-offset", description: "Default vertical distance used when the `offset` attribute is absent." },
     ],
   },
 };

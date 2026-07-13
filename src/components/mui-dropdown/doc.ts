@@ -21,6 +21,7 @@ export const muiDocs: MuiDocs = {
       list: [
         "Compose one direct mui-menu child for the dropdown surface; direct button and link options are not supported.",
         "Set size='x-small|small|medium|large' on Dropdown to enforce a shared size on its trigger, Menu, and direct Menu actions.",
+        "Use the offset attribute when a composition needs a custom distance between its trigger and Menu surface.",
         "Dropdowns are ideal for actions that are contextual or used infrequently and do not require constant visibility.",
         "Ensure the trigger is clear by using a label, icon, or ellipsis, and include accessible labels for icon-only triggers.",
         "Keep menu items concise (around 5–7 options). Group related actions and use dividers for clarity to avoid overwhelming users.",
@@ -60,6 +61,24 @@ export const muiDocs: MuiDocs = {
           description: "",
           image: "",
         },
+      ],
+    },
+
+    stories: {
+      items: [
+        { key: "default", title: "Ellipsis Action", list: ["Use an icon-only trigger for familiar contextual actions where a visible label would add unnecessary weight.", "Give the trigger an accessible label that describes the available actions."] },
+        { key: "action-sizes", title: "Action Sizes", list: ["Set size on Dropdown; it keeps the trigger and direct Menu actions aligned.", "Choose the size that matches the surrounding controls and available space."] },
+        { key: "z-index", title: "Z-Index Customisation", description: "Control the portaled menu layer when it must appear above other positioned content.", list: ["Set zindex only when the default overlay layer conflicts with application chrome or another overlay.", "Keep application layer values documented and consistent."] },
+        { key: "custom-offset", title: "Custom Offset", description: "Adjust the space between the trigger and its menu.", list: ["Set offset when the default gap does not suit the trigger or surrounding layout.", "Pass any valid CSS length, including a system spacing token or calc() expression."] },
+        { key: "menu-width", title: "Menu Width", description: "Set an explicit width for the composed Menu surface.", list: ["Pass any valid CSS width to Menu using the width attribute.", "Use min(100%, value) to cap the preferred width within its available viewport space."] },
+        { key: "with-icon", title: "Dropdown w/ Icon", list: ["Use a chevron to indicate that a labelled action opens additional choices.", "Place Dropdown beside related primary actions when it contains secondary commands."] },
+        { key: "dropdown-position-left", title: "Position: Left", list: ["Use left alignment when the menu should share its leading edge with the trigger.", "Add persistent when the menu contains form controls that require continued interaction."] },
+        { key: "position-up", title: "Position: Up", list: ["Open upward when space below the trigger is constrained or the trigger sits near the bottom of a view.", "Use persistent for adjustable controls such as Range Input."] },
+        { key: "dropdown-position-right", title: "Position: Right", list: ["Use right alignment when the menu should share its trailing edge with the trigger.", "Set Menu width explicitly when composed rows need more room than the trigger."] },
+        { key: "position-center", title: "Position: Center", list: ["Use center alignment when the menu should be balanced around its trigger.", "Prefer left or right alignment when a predictable shared edge improves scanning."] },
+        { key: "dropdown-persistent", title: "Persistent", description: "Keep the menu open while users interact with controls inside it.", list: ["Use persistent for forms, previews, or controls that require multiple interactions.", "This example previews an uploaded image as a card background."] },
+        { key: "advanced-persistent", title: "Advanced: Persistent", description: "Synchronise persistence and trigger affordance with the Dropdown open state.", list: ["Associate the Dropdown and Icon Toggle with matching data-toggle-dropdown and data-toggle-control values.", "Retain a reference to the Menu because it is portaled while open; see Persistent Toggle Logic in View Code."] },
+        { key: "grouped-menu-composition", title: "Grouped Menu Composition", description: "Dropdown provides trigger, portal, positioning, focus, and dismissal behavior around a composed Menu surface.", list: ["Compose the same Body, Button, Link, and Rule patterns available to standalone Menu.", "Use inset when grouped actions should retain individual radii inside the overlay surface."] },
       ],
     },
 

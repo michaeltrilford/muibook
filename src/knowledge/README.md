@@ -47,6 +47,8 @@ import { compositions } from "./compositions";
 
 Use the CEM for component APIs and UX guidance. Use `dynamic-attrs.json` for destination/runtime structural behavior. Use `rules`, `keywords`, and `compositions` as AI context.
 
+Component `doc.ts` files also provide reusable story metadata through ordered `stories.items` records. Documentation renderers should consume those records from the generated CEM for story titles, descriptions, usage guidance, and navigation. Muibook maps them onto its local story cards and quicklinks; Storybook-style experiences can map the same records onto their own docs blocks. Runtime markup, imported assets, and interaction logic remain local to each renderer. Do not embed duplicate metadata fallbacks; show a rebuild-oriented empty state when the CEM is stale or missing the story records.
+
 Start with `knowledge-map.md` when exploring the bundle. Use `resource-index.json` and `skill-index.json` as compact routing indexes, then use MCP tools such as `find_component` and `lookup_component` before loading larger files such as `custom-elements.json`.
 
 ## MCP Server

@@ -12,6 +12,7 @@ _Status: WIP_
 
 - Added `mui-menu` as the reusable visual surface for Dropdown menus and standalone overlay composition exploration. `mui-dropdown` continues to own portal positioning, focus, and dismissal behaviour.
 - Added coordinated `x-small | small | medium | large` sizing to `mui-dropdown` and `mui-menu`; Dropdown enforces the size on its trigger and Menu, while Menu enforces it on direct button and link actions and owns their joined corner treatment.
+- Added `offset` to `mui-dropdown` for CSS-length positioning values and `width` to `mui-menu` for explicit responsive surface sizing; the existing custom properties remain available as theme defaults.
 - Added `x-small | small | medium | large` sizing to `mui-range-input`, retaining the previous thumb and track dimensions as medium. Date Picker, Time Picker, and Range Input stories now demonstrate every supported size.
 - Direct `mui-body` content inside `mui-menu` now uses regular weight at one size below the Menu (`xx-small | x-small | small | medium`) while retaining padding matched to the parent Menu action size.
 - Direct Input, Select, Textarea, Date Picker, Time Picker, Search Input, Range Input, and Chip Input controls inside `mui-menu` now inherit Menu size. Controls in the fixed `top` and `bottom` slots use the reusable `surface="seamless"` treatment and size-aware inline padding, while the new Menu `inset` option pads scrollable content and preserves each child control or action radius.
