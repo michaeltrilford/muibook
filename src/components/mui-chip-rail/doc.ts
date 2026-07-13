@@ -27,6 +27,15 @@ export const muiDocs: MuiDocs = {
       engineerList: ["Provide an `aria-label` when the rail purpose is not obvious from surrounding heading text."],
     },
 
+    stories: {
+      items: [
+        { key: "default", title: "Default", description: "A single-line horizontal rail for filters, quicklinks, and compact categories.", list: ["Use when chips should remain on one line and scroll horizontally.", "Overflow actions appear only when more content is available."] },
+        { key: "sizes", title: "Sizes", description: "Keeps slotted chips and overflow actions at the same scale.", list: ["Set size on Chip Rail and allow it to enforce the size of its direct Chip children."] },
+        { key: "card-surface", title: "Card Surface", description: "Adapts edge masking to an elevated Card surface.", list: ["Let the Card composition supply the matching rail background.", "Use --chip-rail-background only on a custom surface."] },
+        { key: "bleed", title: "Bleed", description: "Adds edge space for overflow controls and surrounding content.", list: ["Use bleed-inline-size for horizontal space.", "Add bleed-block-size only when vertical breathing room is required."] },
+      ],
+    },
+
     related: {
       items: [
         {

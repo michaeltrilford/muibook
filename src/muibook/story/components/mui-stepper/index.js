@@ -8,6 +8,12 @@ class storyStepper extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Stepper");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Stepper"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -51,11 +57,7 @@ class storyStepper extends HTMLElement {
           <story-api-types tag="mui-step" title="Step"></story-api-types>
         </mui-v-stack>
 
-        <story-card
-          id="horizontal"
-          title="Horizontal"
-          description="Horizontal direction"
-        >
+        <story-card id="horizontal" title="${storyMeta["horizontal"].title}" description="${storyMeta["horizontal"].description}" usage="${storyMeta["horizontal"].usage}">
           <div slot="body">
             <mui-stepper direction="horizontal" active-step="1">
               <mui-step title="Details">
@@ -75,11 +77,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="interactive"
-          title="Interactive"
-          description="Use arrow keys, Home/End, or click a step. Emits step-change."
-        >
+        <story-card id="interactive" title="${storyMeta["interactive"].title}" description="${storyMeta["interactive"].description}" usage="${storyMeta["interactive"].usage}">
           <div slot="body">
             <mui-stepper id="stepper-interactive" direction="horizontal" active-step="2" interactive>
               <mui-step title="Details"></mui-step>
@@ -98,11 +96,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="small"
-          title="Small"
-          description="Compact stepper variant for dense layouts."
-        >
+        <story-card id="small" title="${storyMeta["small"].title}" description="${storyMeta["small"].description}" usage="${storyMeta["small"].usage}">
           <div slot="body">
             <mui-stepper direction="horizontal" size="small" active-step="2">
               <mui-step title="Details"></mui-step>
@@ -119,11 +113,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="x-small"
-          title="X-Small"
-          description="Extra compact variant using xx-small state icons."
-        >
+        <story-card id="x-small" title="${storyMeta["x-small"].title}" description="${storyMeta["x-small"].description}" usage="${storyMeta["x-small"].usage}">
           <div slot="body">
             <mui-stepper direction="horizontal" size="x-small" active-step="2">
               <mui-step title="Details"></mui-step>
@@ -140,11 +130,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="error-example"
-          title="Error Example"
-          description="Representative validation failure in a multi-step flow."
-        >
+        <story-card id="error" title="${storyMeta["error"].title}" description="${storyMeta["error"].description}" usage="${storyMeta["error"].usage}">
           <div slot="body">
             <mui-stepper direction="horizontal" active-step="2">
               <mui-step title="Details" state="success"></mui-step>
@@ -163,11 +149,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="disabled-example"
-          title="Disabled Example"
-          description="Representative flow where downstream steps are locked."
-        >
+        <story-card id="disabled" title="${storyMeta["disabled"].title}" description="${storyMeta["disabled"].description}" usage="${storyMeta["disabled"].usage}">
           <div slot="body">
             <mui-stepper direction="horizontal" active-step="2">
               <mui-step title="Profile" state="success"></mui-step>
@@ -186,11 +168,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="checkout-flow"
-          title="Checkout Flow States"
-          description="Representative payment flow with success, active processing, and blocked completion."
-        >
+        <story-card id="checkout" title="${storyMeta["checkout"].title}" description="${storyMeta["checkout"].description}" usage="${storyMeta["checkout"].usage}">
           <div slot="body">
             <mui-stepper direction="horizontal" active-step="3">
               <mui-step title="Cart" state="success"></mui-step>
@@ -209,11 +187,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="verification-flow"
-          title="Verification Timeline"
-          description="Representative account verification sequence with a failed review and follow-up check."
-        >
+        <story-card id="verification" title="${storyMeta["verification"].title}" description="${storyMeta["verification"].description}" usage="${storyMeta["verification"].usage}">
           <div slot="body">
             <mui-stepper direction="vertical" active-step="3">
               <mui-step title="Identity submitted" state="success">
@@ -240,11 +214,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="vertical"
-          title="Vertical"
-          description="Vertical direction"
-        >
+        <story-card id="vertical" title="${storyMeta["vertical"].title}" description="${storyMeta["vertical"].description}" usage="${storyMeta["vertical"].usage}">
           <div slot="body">
             <mui-stepper direction="vertical" active-step="1">
               <mui-step title="Details">
@@ -264,11 +234,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="horizontal-secondary"
-          title="Horizontal: Secondary"
-          description="Horizontal direction"
-        >
+        <story-card id="horizontal-secondary" title="${storyMeta["horizontal-secondary"].title}" description="${storyMeta["horizontal-secondary"].description}" usage="${storyMeta["horizontal-secondary"].usage}">
           <div slot="body">
             <mui-stepper direction="horizontal" active-step="1">
               <mui-step title="Details">
@@ -297,11 +263,7 @@ class storyStepper extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="vertical-secondary"
-          title="Vertical: Secondary"
-          description="Vertical direction"
-        >
+        <story-card id="vertical-secondary" title="${storyMeta["vertical-secondary"].title}" description="${storyMeta["vertical-secondary"].description}" usage="${storyMeta["vertical-secondary"].usage}">
           <div slot="body">
             <mui-stepper direction="vertical" active-step="1">
               <mui-step title="Details">
@@ -350,7 +312,7 @@ class storyStepper extends HTMLElement {
           slot="message"
           heading="Quicklinks"
           limit="10"
-          links="horizontal::Horizontal|||x-small::X-Small|||small::Small|||error-example::Error Example|||disabled-example::Disabled Example|||checkout-flow::Checkout Flow States|||verification-flow::Verification Timeline|||vertical::Vertical|||horizontal-secondary::Horizontal: Secondary|||vertical-secondary::Vertical: Secondary"
+          links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"
         ></story-quicklinks>
 
         ${stories}

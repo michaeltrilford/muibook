@@ -20,6 +20,12 @@ export const muiDocs: MuiDocs = {
     accessibility: { designerList: [""], engineerList: ["Provide a meaningful label when context is unclear."] },
     anatomy: { image: "", list: ["Animated ring", "Accessible label"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: {
+      items: [
+        { key: "sizes", title: "Sizes", description: "Matches the Spinner to the surrounding interface density.", list: ["Use compact sizes inside actions and larger sizes for standalone loading regions.", "Do not resize a surrounding control when its Spinner appears."] },
+        { key: "color-duration", title: "Color and Duration", description: "Customises Spinner emphasis and animation speed.", list: ["Maintain sufficient contrast against the current surface.", "Use duration changes sparingly and preserve reduced-motion support."] },
+      ],
+    },
     compositions: { description: "", items: [] },
     related: { items: [{ name: "Loader", link: "https://guides.muibook.com/loader" }] },
     rules: [{ heading: "", description: "", doContent: [{ description: "", image: "" }], dontContent: [{ description: "", image: "" }] }],

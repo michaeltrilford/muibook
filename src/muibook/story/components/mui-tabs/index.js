@@ -8,6 +8,12 @@ class storyTabBar extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Tabs");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Tab Bar"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-tab-item",
@@ -41,7 +47,7 @@ class storyTabBar extends HTMLElement {
         </mui-v-stack>
 
 
-        <story-card title="Default" canvas-background="var(--surface-elevated-100)">
+        <story-card canvas-background="var(--surface-elevated-100)" id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
           <mui-tab-bar slot="body">
             <mui-tab-item active id="item1">Item</mui-tab-item>
             <mui-tab-item id="item2">Item</mui-tab-item>
@@ -60,7 +66,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Stroke: None" description="Use when the surrounding surface already defines the tab area." canvas-background="var(--surface)">
+        <story-card canvas-background="var(--surface)" id="stroke-none" title="${storyMeta["stroke-none"].title}" description="${storyMeta["stroke-none"].description}" usage="${storyMeta["stroke-none"].usage}">
           <mui-tab-bar slot="body" stroke="none">
             <mui-tab-item active id="stroke-none-1">Item</mui-tab-item>
             <mui-tab-item id="stroke-none-2">Item</mui-tab-item>
@@ -75,7 +81,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Inset Tab" description="Use for a more modern, floating pill treatment." canvas-background="var(--surface)">
+        <story-card canvas-background="var(--surface)" id="inset" title="${storyMeta["inset"].title}" description="${storyMeta["inset"].description}" usage="${storyMeta["inset"].usage}">
           <mui-tab-bar slot="body" stroke="none" active-inset>
             <mui-tab-item active id="active-inset-none-1">Item</mui-tab-item>
             <mui-tab-item id="active-inset-none-2">Item</mui-tab-item>
@@ -90,7 +96,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Radius" description="Use radius to adjust the base tab radius." canvas-background="var(--surface)">
+        <story-card canvas-background="var(--surface)" id="radius" title="${storyMeta["radius"].title}" description="${storyMeta["radius"].description}" usage="${storyMeta["radius"].usage}">
           <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
             <mui-tab-bar radius="200">
               <mui-tab-item active id="radius-200-1">Radius 200</mui-tab-item>
@@ -115,12 +121,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          title="Tab Controller & Tab Panel"
-          description="Pair a controller with a tab bar and matching panels when tab selection needs to swap visible page content."
-          usage="Use active-inset with stroke=&quot;none&quot; for a softer selected tab treatment.|||Use full-width when the tabs should divide the available tab bar width evenly.|||Constrain the tab bar with max-width and auto margins when the controller lives inside a wider content area.|||Use radius to tune the pill shape for the surrounding surface."
-          canvas-background="var(--surface-elevated-100)"
-        >
+        <story-card canvas-background="var(--surface-elevated-100)" id="controller" title="${storyMeta["controller"].title}" description="${storyMeta["controller"].description}" usage="${storyMeta["controller"].usage}">
           <mui-tab-controller slot="body">
             <mui-tab-bar active-inset radius="500" stroke="none" full-width style="max-width: 370px; margin: 0 auto;">
               <mui-tab-item active id="item1">Item</mui-tab-item>
@@ -172,7 +173,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Animation Speed 500ms" canvas-background="var(--surface-elevated-100)">
+        <story-card canvas-background="var(--surface-elevated-100)" id="speed" title="${storyMeta["speed"].title}" description="${storyMeta["speed"].description}" usage="${storyMeta["speed"].usage}">
           <mui-tab-bar slot="body" speed="500">
             ${tabItemsHTML}
           </mui-tab-bar>
@@ -207,7 +208,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Size Variants" canvas-background="var(--surface-elevated-100)">
+        <story-card canvas-background="var(--surface-elevated-100)" id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-tab-bar size="x-small">
               <mui-tab-item active id="x-small-1">Item</mui-tab-item>
@@ -234,7 +235,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Size Parity with Button" canvas-background="var(--surface-elevated-100)">
+        <story-card canvas-background="var(--surface-elevated-100)" id="button-parity" title="${storyMeta["button-parity"].title}" description="${storyMeta["button-parity"].description}" usage="${storyMeta["button-parity"].usage}">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-button size="x-small">Action</mui-button>
@@ -274,7 +275,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Before and After Slots" canvas-background="var(--surface-elevated-100)">
+        <story-card canvas-background="var(--surface-elevated-100)" id="slots" title="${storyMeta["slots"].title}" description="${storyMeta["slots"].description}" usage="${storyMeta["slots"].usage}">
           <mui-v-stack slot="body" space="var(--space-300)" alignx='start'>
             <mui-h-stack alignY="center" space="var(--space-300)">
               <mui-tab-bar size="x-small">
@@ -354,7 +355,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Default Width" canvas-background="var(--surface-elevated-100)">
+        <story-card canvas-background="var(--surface-elevated-100)" id="default-width" title="${storyMeta["default-width"].title}" description="${storyMeta["default-width"].description}" usage="${storyMeta["default-width"].usage}">
           <mui-tab-bar slot="body">
             ${tabItemsHTML}
           </mui-tab-bar>
@@ -389,7 +390,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Dots Variant" canvas-background="var(--carousel-background)">
+        <story-card canvas-background="var(--carousel-background)" id="dots" title="${storyMeta["dots"].title}" description="${storyMeta["dots"].description}" usage="${storyMeta["dots"].usage}">
           <mui-tab-bar slot="body" variant="dots">
             <mui-tab-item active id="dots-1">Slide 1</mui-tab-item>
             <mui-tab-item id="dots-2">Slide 2</mui-tab-item>
@@ -404,7 +405,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Ghost Variant" canvas-background="var(--surface-elevated-100)">
+        <story-card canvas-background="var(--surface-elevated-100)" id="ghost" title="${storyMeta["ghost"].title}" description="${storyMeta["ghost"].description}" usage="${storyMeta["ghost"].usage}">
           <mui-tab-bar slot="body" variant="ghost">
             <mui-tab-item active id="ghost-1">Item</mui-tab-item>
             <mui-tab-item id="ghost-2">Item</mui-tab-item>
@@ -419,7 +420,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Full width" canvas-background="var(--surface-elevated-100)">
+        <story-card canvas-background="var(--surface-elevated-100)" id="full-width" title="${storyMeta["full-width"].title}" description="${storyMeta["full-width"].description}" usage="${storyMeta["full-width"].usage}">
           <mui-tab-bar full-width slot="body">
             ${tabItemsHTML}
           </mui-tab-bar>
@@ -470,6 +471,7 @@ class storyTabBar extends HTMLElement {
         attrs-reference='${attrsReference}'
 
         imports='["@muibook/components/mui-tabs"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

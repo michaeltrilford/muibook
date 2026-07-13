@@ -8,11 +8,17 @@ class StorySpinner extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Spinner");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Spinner"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-spinner" title="Spinner"></story-api-types>
 
-      <story-card id="sizes" title="Sizes">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-h-stack slot="body" alignX="start" alignY="center" space="var(--space-400)" style="padding: var(--space-500);">
           <mui-spinner size="xx-small"></mui-spinner>
           <mui-spinner size="x-small"></mui-spinner>
@@ -33,7 +39,7 @@ class StorySpinner extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="custom" title="Color and Duration">
+      <story-card id="color-duration" title="${storyMeta["color-duration"].title}" description="${storyMeta["color-duration"].description}" usage="${storyMeta["color-duration"].usage}">
         <mui-h-stack slot="body" alignX="start" alignY="center" space="var(--space-500)" style="padding: var(--space-500);">
           <mui-spinner color="var(--text-color-warning)" label="Loading warning content"></mui-spinner>
           <mui-spinner color="var(--text-color-positive)" duration="1.2s" label="Loading success content"></mui-spinner>
@@ -61,7 +67,7 @@ class StorySpinner extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="sizes::Sizes|||custom::Color and Duration"
+          links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"
         ></story-quicklinks>
         ${stories}
       </story-template>

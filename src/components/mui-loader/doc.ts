@@ -96,6 +96,19 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        { key: "pulsate", title: "Pulsate", description: "Applies a subtle opacity pulse to loading content.", list: ["Use for skeleton layouts where the placeholder structure should remain visible.", "Mirror the loaded content hierarchy to reduce layout shift."] },
+        { key: "fade-in", title: "Fade-In", description: "Reveals loaded content with a simple opacity transition.", list: ["Use when movement would distract from the content change."] },
+        { key: "translate-up", title: "Translate: Up", description: "Reveals content while translating upward.", list: ["Use directional motion consistently within the same workflow."] },
+        { key: "translate-down", title: "Translate: Down", description: "Reveals content while translating downward.", list: ["Match the direction to the spatial origin of the content when possible."] },
+        { key: "translate-left", title: "Translate: Left", description: "Reveals content while translating left.", list: ["Reserve lateral movement for interfaces where direction carries meaning."] },
+        { key: "translate-right", title: "Translate: Right", description: "Reveals content while translating right.", list: ["Reserve lateral movement for interfaces where direction carries meaning."] },
+        { key: "duration", title: "Duration", description: "Customises the loading animation duration.", list: ["Keep durations restrained and verify reduced-motion behavior."] },
+        { key: "spinner", title: "Loader + Spinner", description: "Combines container animation with immediate progress feedback.", list: ["Use Spinner when progress is indeterminate and the loading region needs a clear focal indicator."] },
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

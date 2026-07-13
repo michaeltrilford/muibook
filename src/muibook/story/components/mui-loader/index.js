@@ -8,6 +8,12 @@ class storyLoader extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Loader");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Loader"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -38,10 +44,7 @@ class storyLoader extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-loader" title="Loader"></story-api-types>
 
-      <story-card
-        id="pulsate"
-        title="Pulsate"
-        usage="Prefer token, rem, and percentage sizing over fixed pixel values for skeleton placeholders.|||Use mui-v-stack, mui-h-stack, and mui-grid to compose loading layouts.|||Keep the skeleton structure aligned to the real content hierarchy for smoother transitions.">
+      <story-card id="pulsate" title="${storyMeta["pulsate"].title}" description="${storyMeta["pulsate"].description}" usage="${storyMeta["pulsate"].usage}">
         <mui-loader data-loading loading animation="pulsate" slot="body">
           ${Skeleton}
         </mui-loader>
@@ -61,7 +64,7 @@ class storyLoader extends HTMLElement {
       </story-card>
 
 
-      <story-card id="fade-in" title="Fade-In">
+      <story-card id="fade-in" title="${storyMeta["fade-in"].title}" description="${storyMeta["fade-in"].description}" usage="${storyMeta["fade-in"].usage}">
         <mui-loader data-loading loading animation="fade-in" slot="body">
            ${Skeleton}
         </mui-loader>
@@ -83,7 +86,7 @@ class storyLoader extends HTMLElement {
 
       </story-card>
 
-      <story-card title="Translate: Up" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+      <story-card id="translate-up" title="${storyMeta["translate-up"].title}" description="${storyMeta["translate-up"].description}" usage="${storyMeta["translate-up"].usage}">
         <mui-loader data-loading loading animation="translate" slot="body" direction="up">
            ${Skeleton}
         </mui-loader>
@@ -105,7 +108,7 @@ class storyLoader extends HTMLElement {
 
       </story-card>
 
-      <story-card title="Translate: Down" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+      <story-card id="translate-down" title="${storyMeta["translate-down"].title}" description="${storyMeta["translate-down"].description}" usage="${storyMeta["translate-down"].usage}">
         <mui-loader data-loading loading animation="translate" slot="body" direction="down">
            ${Skeleton}
         </mui-loader>
@@ -128,7 +131,7 @@ class storyLoader extends HTMLElement {
       </story-card>
 
 
-      <story-card title="Translate: Left" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+      <story-card id="translate-left" title="${storyMeta["translate-left"].title}" description="${storyMeta["translate-left"].description}" usage="${storyMeta["translate-left"].usage}">
         <mui-loader data-loading loading animation="translate" slot="body" direction="left">
            ${Skeleton}
         </mui-loader>
@@ -151,7 +154,7 @@ class storyLoader extends HTMLElement {
       </story-card>
 
 
-      <story-card title="Translate: Right" description="Default direction is Up. Ability to define the preferred direction: Up, Right, Down, Left.">
+      <story-card id="translate-right" title="${storyMeta["translate-right"].title}" description="${storyMeta["translate-right"].description}" usage="${storyMeta["translate-right"].usage}">
         <mui-loader data-loading loading animation="translate" slot="body" direction="right">
            ${Skeleton}
         </mui-loader>
@@ -173,7 +176,7 @@ class storyLoader extends HTMLElement {
 
       </story-card>
 
-      <story-card id="duration" title="Duration" description="10s animation duration">
+      <story-card id="duration" title="${storyMeta["duration"].title}" description="${storyMeta["duration"].description}" usage="${storyMeta["duration"].usage}">
         <mui-loader data-loading loading animation="translate" duration="10s" slot="body">
            ${Skeleton}
         </mui-loader>
@@ -195,7 +198,7 @@ class storyLoader extends HTMLElement {
 
       </story-card>
 
-      <story-card id="loader-spinner" title="Loader + Spinner" description="Use Loader to animate the container while Spinner gives immediate loading feedback.">
+      <story-card id="spinner" title="${storyMeta["spinner"].title}" description="${storyMeta["spinner"].description}" usage="${storyMeta["spinner"].usage}">
         <mui-loader data-loading loading animation="fade-in" slot="body">
           <mui-v-stack alignX="center" alignY="center" space="var(--space-300)" style="padding: var(--space-700);">
             <mui-spinner size="medium" label="Loading dashboard"></mui-spinner>
@@ -233,7 +236,7 @@ class storyLoader extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="pulsate::Pulsate|||fade-in::Fade-In|||duration::Duration|||loader-spinner::Loader + Spinner">
+          links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}">
         </story-quicklinks>
         ${stories}
       </story-template>

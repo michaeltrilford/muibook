@@ -8,6 +8,12 @@ class storyChipRail extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("ChipRail");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Chip Rail"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -50,12 +56,7 @@ class storyChipRail extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-chip-rail" title="Chip Rail"></story-api-types>
 
-      <story-card
-        title="Default"
-        description="A horizontal rail for filters, quicklinks, and compact category navigation."
-        usage="Use Chip Rail when chip items should stay on one line and scroll horizontally.|||The rail automatically shows previous and next actions only when overflow exists."
-        canvas-background="var(--surface)"
-      >
+      <story-card canvas-background="var(--surface)" id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <div slot="body" class="rail-canvas">
           <mui-chip-rail aria-label="Video filters">
             ${chipItems}
@@ -70,11 +71,7 @@ class storyChipRail extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Sizes"
-        description="The rail size is pushed to the slotted chips and internal arrow actions."
-        canvas-background="var(--surface)"
-      >
+      <story-card canvas-background="var(--surface)" id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-v-stack slot="body" width="100%" alignx="stretch" space="var(--space-400)" class="rail-canvas">
           <mui-chip-rail size="x-small" aria-label="X-small filters">
             ${chipItems}
@@ -94,12 +91,7 @@ class storyChipRail extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Card Surface"
-        description="When Chip Rail is placed inside card body content, the card applies card-slot so the rail edge masks match the elevated card surface."
-        usage="Use the default rail background on page surfaces.|||Inside card surfaces, let card-slot switch the rail mask to surface-elevated-100.|||Use --chip-rail-background only when the rail sits on a custom surface."
-        canvas-background="var(--surface)"
-      >
+      <story-card canvas-background="var(--surface)" id="card-surface" title="${storyMeta["card-surface"].title}" description="${storyMeta["card-surface"].description}" usage="${storyMeta["card-surface"].usage}">
         <mui-card slot="body">
           <mui-card-body>
             <mui-chip-rail aria-label="Card filters">
@@ -116,12 +108,7 @@ class storyChipRail extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Bleed"
-        description="Use bleed sizing when the rail needs internal edge space for overflow controls."
-        usage="Use bleed-inline-size for horizontal edge space.|||Use bleed-block-size when the rail needs vertical breathing room too."
-        canvas-background="var(--surface-recessed-100)"
-      >
+      <story-card canvas-background="var(--surface-recessed-100)" id="bleed" title="${storyMeta["bleed"].title}" description="${storyMeta["bleed"].description}" usage="${storyMeta["bleed"].usage}">
         <div slot="body" class="bleed-canvas">
           <mui-chip-rail size="small" bleed-inline-size="300" bleed-block-size="300" aria-label="Bleed filters" style="--chip-rail-background: var(--surface-recessed-100);">
             ${chipItems}
@@ -147,6 +134,7 @@ class storyChipRail extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         attrs-reference='${attrsReference}'
         imports='["@muibook/components/mui-chip-rail", "@muibook/components/mui-chip"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

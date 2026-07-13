@@ -54,6 +54,22 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        { key: "horizontal", title: "Horizontal", description: "Presents progress across a compact horizontal workflow.", list: ["Use when all steps fit without crowding or wrapping."] },
+        { key: "interactive", title: "Interactive", description: "Allows pointer and keyboard navigation between steps.", list: ["Use only when users may revisit or directly select steps.", "Use linear to prevent skipping beyond the next available step."] },
+        { key: "small", title: "Small", description: "Reduces Stepper density for compact layouts.", list: ["Use when labels remain readable at the reduced size."] },
+        { key: "x-small", title: "X-Small", description: "Provides the most compact Stepper treatment.", list: ["Use for short labels and constrained secondary workflows."] },
+        { key: "error", title: "Error Example", description: "Shows a validation failure within a multi-step flow.", list: ["Identify the failed step and provide recovery guidance in the related content."] },
+        { key: "disabled", title: "Disabled Example", description: "Shows downstream steps that are not yet available.", list: ["Disable steps only when progression rules prevent access."] },
+        { key: "checkout", title: "Checkout Flow States", description: "Combines completed, active, processing, and blocked payment states.", list: ["Use explicit states when progress depends on asynchronous work or validation."] },
+        { key: "verification", title: "Verification Timeline", description: "Combines failed review and follow-up verification states.", list: ["Keep state labels specific enough to explain current progress."] },
+        { key: "vertical", title: "Vertical", description: "Presents progress in a vertical sequence.", list: ["Use for longer labels, narrow layouts, or workflows with supporting detail."] },
+        { key: "horizontal-secondary", title: "Horizontal: Secondary", description: "Uses the lower-emphasis treatment in a horizontal sequence.", list: ["Use when the Stepper supports rather than dominates the page hierarchy."] },
+        { key: "vertical-secondary", title: "Vertical: Secondary", description: "Uses the lower-emphasis treatment in a vertical sequence.", list: ["Use when the Stepper supports rather than dominates the page hierarchy."] },
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

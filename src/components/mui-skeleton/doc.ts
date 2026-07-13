@@ -30,6 +30,16 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Before slot", "Skeleton blocks", "After slot", "Optional content reveal slot"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: {
+      items: [
+        { key: "multi-line", title: "Multi-line", description: "Represents several lines of loading copy.", list: ["Match line count and approximate width to the loaded content.", "Use responsive units and layout tokens rather than fixed pixels."] },
+        { key: "line", title: "Line", description: "Represents a single line of loading text.", list: ["Use for headings, labels, and isolated text values."] },
+        { key: "duration", title: "Shimmer Duration", description: "Adjusts the shimmer animation speed.", list: ["Use a consistent duration across placeholders in the same loading region."] },
+        { key: "shapes", title: "Shapes", description: "Represents rectangular media and circular avatars.", list: ["Match the shape and dimensions of the content that will replace it."] },
+        { key: "slots", title: "Before and After Slots", description: "Composes leading and trailing placeholders around content lines.", list: ["Use slots when the loaded layout includes avatars, actions, or other accessories."] },
+        { key: "toggle", title: "Loading Toggle", description: "Reveals real content in the same layout shell.", list: ["Set loading='false' only after the replacement content is ready to display."] },
+      ],
+    },
     compositions: { description: "", items: [] },
     related: {
       items: [

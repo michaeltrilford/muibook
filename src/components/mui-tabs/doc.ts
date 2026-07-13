@@ -65,6 +65,24 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        { key: "default", title: "Default", description: "Switches between related views at the same hierarchy level.", list: ["Keep labels short and use tabs only for closely related content."] },
+        { key: "stroke-none", title: "Stroke: None", description: "Removes the outer stroke when the surrounding surface defines the tab area.", list: ["Use only when another boundary clearly contains the Tab Bar."] },
+        { key: "inset", title: "Inset Tab", description: "Applies a floating inset treatment to the active tab.", list: ["Use for compact tool surfaces where a pill treatment suits the surrounding controls."] },
+        { key: "radius", title: "Radius", description: "Adjusts the base radius of the Tab Bar and items.", list: ["Match the radius to adjacent controls and the containing surface."] },
+        { key: "controller", title: "Tab Controller and Tab Panel", description: "Connects tab selection to matching content panels.", list: ["Use matching values between each Tab Item and Tab Panel.", "Use full-width only when tabs should divide the available width evenly."] },
+        { key: "speed", title: "Animation Speed", description: "Customises the active indicator transition duration.", list: ["Keep transitions brief and consistent with nearby navigation."] },
+        { key: "sizes", title: "Size Variants", description: "Matches Tab Bar density to its layout context.", list: ["Use one size consistently within a tab group."] },
+        { key: "button-parity", title: "Size Parity with Button", description: "Aligns Tab Bar and Button dimensions in shared toolbars.", list: ["Use matching size values for controls that share a row."] },
+        { key: "slots", title: "Before and After Slots", description: "Adds icons, badges, or compact accessories to tab labels.", list: ["Keep accessories concise and preserve clear tab names."] },
+        { key: "default-width", title: "Default Width", description: "Sizes the Tab Bar to its content.", list: ["Use content width when tabs do not need to fill their container."] },
+        { key: "dots", title: "Dots Variant", description: "Provides compact pagination controls for carousels and similar views.", list: ["Use only when position is understandable without text labels."] },
+        { key: "ghost", title: "Ghost Variant", description: "Emphasises only the active tab without outer Tab Bar chrome.", list: ["Use when the surrounding surface already provides enough structure."] },
+        { key: "full-width", title: "Full Width", description: "Distributes tab items evenly across the available width.", list: ["Use for a small, stable set of peer views.", "Avoid full width when labels vary substantially in length."] },
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [
