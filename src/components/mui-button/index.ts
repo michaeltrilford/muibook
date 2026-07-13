@@ -2,6 +2,8 @@ import { getPartMap } from "../../utils/part-map";
 
 /* Mui Button */
 class MuiButton extends HTMLElement {
+  private autoSizedIcons = new WeakMap<HTMLElement, string>();
+
   static get observedAttributes() {
     return [
       "onclick",
@@ -75,6 +77,15 @@ class MuiButton extends HTMLElement {
       color: var(--action-primary-text-color);
       border: var(--action-primary-border);
       text-align: inherit;
+    }
+
+    :host([align="start"]) button {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    :host([align="start"][has-after]) button ::slotted([slot="after"]) {
+      margin-inline-start: auto;
     }
 
     /* Turned back on for focus-visible
@@ -1146,7 +1157,7 @@ class MuiButton extends HTMLElement {
     // Map button sizes to icon sizes
     const iconSizeMap: Record<string, string> = {
       "xx-small": "xx-small",
-      "x-small": "x-small",
+      "x-small": "xx-small",
       small: "x-small",
       medium: isIconOnly ? "medium" : "small", // small for regular, medium for icon-only
       large: isIconOnly ? "large" : "medium",
@@ -1162,9 +1173,15 @@ class MuiButton extends HTMLElement {
           el.classList.contains("mui-icon") ||
           el.tagName.toLowerCase() === "mui-icon";
 
-        // Only set size if the element doesn't already have one
-        if (isIcon && !el.hasAttribute("size")) {
+        if (!isIcon) return;
+
+        const currentSize = el.getAttribute("size");
+        const previousAutoSize = this.autoSizedIcons.get(el);
+        if (currentSize === null || currentSize === previousAutoSize) {
           el.setAttribute("size", targetIconSize);
+          this.autoSizedIcons.set(el, targetIconSize);
+        } else {
+          this.autoSizedIcons.delete(el);
         }
       }
     });

@@ -37,6 +37,7 @@ class StoryMenu extends HTMLElement {
         gap: var(--space-200);
         padding: var(--action-padding);
       }
+
     `;
 
     const menuSizes = ["x-small", "small", "medium", "large"];
@@ -51,6 +52,12 @@ class StoryMenu extends HTMLElement {
       small: "min(100%, 32rem)",
       medium: "min(100%, 36rem)",
       large: "min(100%, 40rem)",
+    };
+    const submenuWidths = {
+      "x-small": "min(100%, 15rem)",
+      small: "min(100%, 17rem)",
+      medium: "min(100%, 19rem)",
+      large: "min(100%, 22rem)",
     };
     const themeActions = () => /*html*/ `
       <mui-button>Preview theme</mui-button>
@@ -71,6 +78,52 @@ class StoryMenu extends HTMLElement {
       <mui-button>About</mui-button>
       <mui-button>Contact</mui-button>
     `;
+    const submenuTrigger = (size, label) => /*html*/ `
+      <mui-submenu>
+        <mui-button aria-haspopup="menu" aria-expanded="false">
+          ${label}
+          <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
+        </mui-button>
+        <mui-menu size="${size}" width="${submenuWidths[size]}">
+          <mui-button>Dictation</mui-button>
+          <mui-button>Voice control</mui-button>
+          <mui-button>Read aloud</mui-button>
+        </mui-menu>
+      </mui-submenu>
+    `;
+    const submenuExamples = [
+      {
+        size: "x-small",
+        actions: `${submenuTrigger("x-small", "Speech")}<mui-button>Writing</mui-button><mui-button>Translation</mui-button>`,
+      },
+      {
+        size: "small",
+        actions: `<mui-button>Writing</mui-button>${submenuTrigger("small", "Speech")}<mui-button>Translation</mui-button>`,
+      },
+      {
+        size: "medium",
+        actions: `<mui-button>Writing</mui-button><mui-button>Translation</mui-button>${submenuTrigger("medium", "Speech")}`,
+      },
+      {
+        size: "large",
+        actions: `<mui-button>Writing</mui-button>${submenuTrigger("large", "Speech")}<mui-button>Translation</mui-button>`,
+      },
+    ]
+      .map(
+        ({ size, actions }) => /*html*/ `
+          <mui-menu size="${size}" width="${menuWidths[size]}" inset>
+            <mui-search-input slot="top" label="Search language actions" placeholder="Search..."></mui-search-input>
+            ${actions}
+            <mui-body class="menu-search-empty" variant="secondary" role="status" aria-live="polite" hidden>
+              No matching language actions
+            </mui-body>
+          </mui-menu>
+          <mui-menu size="${size}" width="${menuWidths[size]}">
+            ${actions}
+          </mui-menu>
+        `,
+      )
+      .join("");
     const selectMenus = menuSizes
       .map(
         (size) => /*html*/ `
@@ -156,6 +209,37 @@ class StoryMenu extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Duplicate&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&lt;mui-rule&gt;&lt;/mui-rule&gt;<br />
           &nbsp;&nbsp;&lt;mui-button variant=&quot;tertiary&quot;&gt;Archive&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
+        id="submenu"
+        title="${storyMeta.submenu.title}"
+        description="${storyMeta.submenu.description}"
+        usage="${storyMeta.submenu.usage}"
+      >
+        <mui-v-stack slot="body" space="var(--space-400)">
+          ${submenuExamples}
+        </mui-v-stack>
+
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-menu size=&quot;small&quot; width=&quot;min(100%, 20rem)&quot; inset&gt;<br />
+          &nbsp;&nbsp;&lt;mui-search-input slot=&quot;top&quot; label=&quot;Search language actions&quot; placeholder=&quot;Search...&quot;&gt;&lt;/mui-search-input&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Writing&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-submenu&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button aria-haspopup=&quot;menu&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Speech<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-right-chevron slot=&quot;after&quot;&gt;&lt;/mui-icon-right-chevron&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-menu size=&quot;small&quot; width=&quot;min(100%, 18rem)&quot;&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;Dictation&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;Voice control&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;Read aloud&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-menu&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-submenu&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button&gt;Translation&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body role=&quot;status&quot; aria-live=&quot;polite&quot; hidden&gt;No matching language actions&lt;/mui-body&gt;<br />
           &lt;/mui-menu&gt;
         </story-code-block>
       </story-card>
@@ -838,23 +922,39 @@ class StoryMenu extends HTMLElement {
       </story-card>
 
       <story-card
-        id="states"
-        title="${storyMeta.states.title}"
-        usage="${storyMeta.states.usage}"
+        id="selectable-actions"
+        title="${storyMeta["selectable-actions"].title}"
+        description="${storyMeta["selectable-actions"].description}"
+        usage="${storyMeta["selectable-actions"].usage}"
       >
-        <mui-menu slot="body" size="medium" width="min(100%, 24rem)">
-          <mui-body variant="secondary">Action states</mui-body>
-          <mui-button>Default action</mui-button>
-          <mui-button variant="primary">Active action</mui-button>
-          <mui-button disabled>Disabled action</mui-button>
+        <mui-menu slot="body" size="medium" width="min(100%, 24rem)" data-selectable-menu>
+          <mui-body variant="secondary">Editor mode</mui-body>
+          <mui-button data-selectable-action aria-pressed="false">Write</mui-button>
+          <mui-button data-selectable-action variant="primary" aria-pressed="true">Review</mui-button>
+          <mui-button data-selectable-action aria-pressed="false">Preview</mui-button>
+          <mui-button disabled>Unavailable mode</mui-button>
         </mui-menu>
         <story-code-block slot="footer" scrollable>
-          &lt;mui-menu size=&quot;medium&quot; width=&quot;min(100%, 24rem)&quot;&gt;<br />
-          &nbsp;&nbsp;&lt;mui-body variant=&quot;secondary&quot;&gt;Action states&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button&gt;Default action&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button variant=&quot;primary&quot;&gt;Active action&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&lt;mui-button disabled&gt;Disabled action&lt;/mui-button&gt;<br />
-          &lt;/mui-menu&gt;
+          &lt;mui-menu size=&quot;medium&quot; width=&quot;min(100%, 24rem)&quot; data-selectable-menu&gt;<br />
+          &nbsp;&nbsp;&lt;mui-body variant=&quot;secondary&quot;&gt;Editor mode&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button data-selectable-action aria-pressed=&quot;false&quot;&gt;Write&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button data-selectable-action variant=&quot;primary&quot; aria-pressed=&quot;true&quot;&gt;Review&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button data-selectable-action aria-pressed=&quot;false&quot;&gt;Preview&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-button disabled&gt;Unavailable mode&lt;/mui-button&gt;<br />
+          &lt;/mui-menu&gt;<br /><br />
+          &lt;script&gt;<br />
+          &nbsp;&nbsp;const menu = document.querySelector(&quot;[data-selectable-menu]&quot;);<br />
+          &nbsp;&nbsp;const actions = menu.querySelectorAll(&quot;[data-selectable-action]&quot;);<br /><br />
+          &nbsp;&nbsp;actions.forEach((action) =&gt; {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;action.addEventListener(&quot;click&quot;, () =&gt; {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions.forEach((item) =&gt; {<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const selected = item === action;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.setAttribute(&quot;variant&quot;, selected ? &quot;primary&quot; : &quot;tertiary&quot;);<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item.setAttribute(&quot;aria-pressed&quot;, String(selected));<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;});<br />
+          &nbsp;&nbsp;});<br />
+          &lt;/script&gt;
         </story-code-block>
       </story-card>
 
@@ -885,7 +985,10 @@ class StoryMenu extends HTMLElement {
       const search = menu.querySelector(':scope > mui-search-input[slot="top"]');
       if (!search) return;
 
-      const menuOptions = Array.from(menu.querySelectorAll(":scope > mui-button"));
+      const menuOptions = [
+        ...Array.from(menu.querySelectorAll(":scope > mui-button")),
+        ...Array.from(menu.querySelectorAll(":scope > mui-submenu > mui-button")),
+      ];
       const sectionHeadings = Array.from(menu.querySelectorAll(":scope > mui-body:not(.menu-search-empty)"));
       const empty = menu.querySelector(".menu-search-empty");
 
@@ -899,6 +1002,8 @@ class StoryMenu extends HTMLElement {
         menuOptions.forEach((option) => {
           const hidden = query.length > 0 && !option.textContent.toLowerCase().includes(query);
           option.hidden = hidden;
+          const submenu = option.parentElement?.tagName.toLowerCase() === "mui-submenu" ? option.parentElement : null;
+          if (submenu?.parentElement === menu) submenu.hidden = hidden;
           if (!hidden) visibleCount += 1;
         });
 
@@ -914,12 +1019,16 @@ class StoryMenu extends HTMLElement {
 
         if (empty) empty.hidden = visibleCount > 0;
       });
+    });
 
-      menuOptions.forEach((option) => {
-        option.addEventListener("click", () => {
-          if (option.hasAttribute("disabled")) return;
-          menuOptions.forEach((item) => {
-            if (!item.hasAttribute("disabled")) item.setAttribute("variant", item === option ? "primary" : "tertiary");
+    this.shadowRoot.querySelectorAll("[data-selectable-menu]").forEach((menu) => {
+      const actions = Array.from(menu.querySelectorAll(":scope > [data-selectable-action]"));
+      actions.forEach((action) => {
+        action.addEventListener("click", () => {
+          actions.forEach((item) => {
+            const selected = item === action;
+            item.setAttribute("variant", selected ? "primary" : "tertiary");
+            item.setAttribute("aria-pressed", String(selected));
           });
         });
       });

@@ -63,6 +63,7 @@ export default defineConfig({
         "components/mui-form-group": path.resolve(__dirname, "src/components/mui-form-group"),
         "components/mui-form-message": path.resolve(__dirname, "src/components/mui-form-message"),
         "components/mui-menu": path.resolve(__dirname, "src/components/mui-menu"),
+        "components/mui-submenu": path.resolve(__dirname, "src/components/mui-submenu"),
         "components/mui-hint": path.resolve(__dirname, "src/components/mui-hint"),
         "components/mui-prompt": path.resolve(__dirname, "src/components/mui-prompt"),
         "components/mui-action-toggle": path.resolve(__dirname, "src/components/mui-action-toggle"),

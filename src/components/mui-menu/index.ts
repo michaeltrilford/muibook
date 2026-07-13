@@ -130,18 +130,26 @@ class MuiMenu extends HTMLElement {
     );
     const contentHasBody = bodies.some((body) => !body.hasAttribute("slot") && !body.hidden);
     this.contentElement?.toggleAttribute("has-body", contentHasBody);
-    const actions = directChildren.filter((element): element is HTMLElement => {
+    const actionEntries = directChildren.flatMap((element) => {
       const tagName = element.tagName.toLowerCase();
-      return tagName === "mui-button" || tagName === "mui-link";
+      if (tagName === "mui-button" || tagName === "mui-link") {
+        return [{ action: element, positionElement: element }];
+      }
+      if (tagName !== "mui-submenu") return [];
+
+      const action = element.querySelector<HTMLElement>(":scope > mui-button");
+      return action ? [{ action, positionElement: element }] : [];
     });
+    const actions = actionEntries.map(({ action }) => action);
     const currentActions = new Set(actions);
     this.managedInsetActions.forEach((action) => {
       if (currentActions.has(action)) return;
       action.removeAttribute("menu-inset");
       this.managedInsetActions.delete(action);
     });
-    const firstActionIndex = actions.length > 0 ? directChildren.indexOf(actions[0]) : -1;
-    const lastActionIndex = actions.length > 0 ? directChildren.indexOf(actions[actions.length - 1]) : -1;
+    const firstActionIndex = actionEntries.length > 0 ? directChildren.indexOf(actionEntries[0].positionElement) : -1;
+    const lastActionIndex =
+      actionEntries.length > 0 ? directChildren.indexOf(actionEntries[actionEntries.length - 1].positionElement) : -1;
     const hasBufferBeforeFirstAction =
       firstActionIndex > 0 &&
       directChildren.slice(0, firstActionIndex).some((element) => {
@@ -191,7 +199,8 @@ class MuiMenu extends HTMLElement {
         tagName === "mui-input" ||
         tagName === "mui-select" ||
         tagName === "mui-date-picker" ||
-        tagName === "mui-time-picker";
+        tagName === "mui-time-picker" ||
+        tagName === "mui-search-input";
 
       if (isCompact && supportsCompactPadding) {
         control.setAttribute("padding-inline", compactPaddingMap[size] || compactPaddingMap.medium);
@@ -209,6 +218,7 @@ class MuiMenu extends HTMLElement {
     actions.forEach((action, index) => {
       if (action.getAttribute("size") !== size) action.setAttribute("size", size);
       if (action.getAttribute("weight") !== "regular") action.setAttribute("weight", "regular");
+      if (action.getAttribute("align") !== "start") action.setAttribute("align", "start");
 
       if (!this.hasAttribute("inset")) {
         action.removeAttribute("menu-inset");
@@ -308,7 +318,6 @@ class MuiMenu extends HTMLElement {
 
         .content {
           min-height: 0;
-          overflow-y: auto;
         }
 
         :host([inset]) .content {
@@ -344,7 +353,6 @@ class MuiMenu extends HTMLElement {
         ::slotted(mui-button),
         ::slotted(mui-link) {
           width: 100%;
-          text-align: left;
         }
 
         ::slotted(mui-button:focus),

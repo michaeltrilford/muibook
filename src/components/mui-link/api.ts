@@ -53,6 +53,11 @@ export const muiApi = {
         description: "Link scale; also controls automatic icon, File Icon, avatar, badge, and Switch sizing.",
       },
       {
+        name: "align",
+        type: { text: '"start"' },
+        description: "Aligns content to the inline start and pushes trailing slot content to the inline end.",
+      },
+      {
         name: "download",
         type: { text: "string | boolean" },
         description: "Downloads the linked resource; provide a value to set a download filename.",

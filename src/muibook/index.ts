@@ -130,6 +130,7 @@ import "../components/mui-form-section-footer";
 import "../components/mui-form-group";
 import "../components/mui-form-message";
 import "../components/mui-menu";
+import "../components/mui-submenu";
 import "../components/mui-hint";
 import "../components/mui-prompt";
 import "../components/mui-action-toggle";

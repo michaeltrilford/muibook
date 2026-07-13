@@ -156,6 +156,10 @@
       "import": "./dist/esm/components/mui-menu/index.js",
       "types": "./dist/types/components/mui-menu/index.d.ts"
     },
+    "./mui-submenu": {
+      "import": "./dist/esm/components/mui-submenu/index.js",
+      "types": "./dist/types/components/mui-submenu/index.d.ts"
+    },
     "./mui-prompt": {
       "import": "./dist/esm/components/mui-prompt/index.js",
       "types": "./dist/types/components/mui-prompt/index.d.ts"

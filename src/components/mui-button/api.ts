@@ -61,6 +61,11 @@ export const muiApi = {
         description: "Button scale; also controls automatic icon, File Icon, avatar, badge, and Switch sizing.",
       },
       {
+        name: "align",
+        type: { text: '"start"' },
+        description: "Aligns content to the inline start and pushes trailing slot content to the inline end.",
+      },
+      {
         name: "usage",
         type: { text: '"input"' },
         description: "Uses field-compatible styling when the button is slotted before or after an input.",

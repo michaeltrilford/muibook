@@ -31,6 +31,7 @@ export * from "./components/mui-progress";
 export * from "./components/mui-progress-ring";
 export * from "./components/mui-dropdown/index";
 export * from "./components/mui-menu";
+export * from "./components/mui-submenu";
 export * from "./components/mui-time/index";
 export * from "./components/mui-time-picker/index";
 export * from "./components/mui-calendar";

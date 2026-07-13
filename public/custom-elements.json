@@ -72,6 +72,86 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-addon/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ AddOn: { title: \"Add on\", description: \"Enhances form inputs by displaying supplementary information such as units, prefixes, or suffixes adjacent to the input field. Add Ons improve clarity by providing context without adding clutter to the input area.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/3GH67kZLZAjADf3kTIoSV3/82a1ab87bc13b25e6dc1e81c81f69532/AddOn_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4065&t=rIU93UcpsUxOVNN9-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-add-on--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-addon/index.ts\"], website: [\"https://muibook.com/addon\"], guides: [\"https://guides.muibook.com/add-on\"], usage: { list: [ \"Use to display units (e.g. %, $, kg) or fixed prefixes/suffixes alongside inputs.\", \"Ideal for improving data entry accuracy and user understanding.\", \"Use size (x-small to large) to match compact and dense input layouts.\", \"Ensure Add Ons are visually distinct but do not overpower the main input content.\", \"Avoid overcrowding inputs with multiple Add Ons to maintain clarity.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { list: [ \"Add-on placed before the Input Field\", \"Add-on placed after the Input Field\", \"Short text, an icon, or both to support input context.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/13NH06kdHIzm8hDGNBgihx/f5715279e5ab5e2ce6bfd5d38f5f2d1d/Add_on_-_Anatomy.png\", }, variants: { items: [ { key: \"text\", title: \"Text\", description: \"Use for units, currency, or short static labels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/VfAoQuP8u7icg5s6Shwd6/f5f838a3ffda0d0839ef062af308fc97/text-variant.png\", }, { key: \"icon\", title: \"Icon\", description: \"Use for symbolic cues or clarification of the input’s intent.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1LY5GdVijhp7bpfRs3WyFc/6d1708bd25496d7f33acba796b8b2aa6/icon-variant.png\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Input\", link: \"https://guides.muibook.com/input\" }, { name: \"Select\", link: \"https://guides.muibook.com/select\" }, { name: \"File Upload\", link: \"https://guides.muibook.com/file-upload\" }, { name: \"Icons\", link: \"https://guides.muibook.com/icons\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], stories: { items: [ { \"key\": \"text\", \"title\": \"Text\", \"description\": \"Use for units, currency, or short static labels\", \"list\": [ \"Use Add On for non-editable content composed immediately before or after a form control.\" ] }, { \"key\": \"icon\", \"title\": \"Icon\", \"description\": \"Use for symbolic cues or clarification of the input’s intent\", \"list\": [ \"Use Add On for non-editable content composed immediately before or after a form control.\" ] }, { \"key\": \"input-sizes\", \"title\": \"Input Sizes\", \"description\": \"Add On across large, medium, small, and x-small input sizes.\", \"list\": [ \"Use Add On for non-editable content composed immediately before or after a form control.\" ] } ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-addon/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-addon/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Adds compact leading or trailing supporting content to an input control.",
+          "name": "MuiAddon",
+          "attributes": [
+            {
+              "name": "slot",
+              "type": {
+                "text": "\"before\" | \"after\""
+              },
+              "description": "Places the add on before or after content when used within `mui-input`."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Sets the add on size, normally aligned to the owning input size."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-addon",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Text, icon or compact supporting content."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--addon-background",
+              "description": "Background color applied to the add on surface."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-addon",
+          "declaration": {
+            "name": "MuiAddon",
+            "module": "src/components/mui-addon/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-accordion/doc.ts",
       "declarations": [
         {
@@ -202,86 +282,6 @@
           "declaration": {
             "name": "MuiAlert",
             "module": "src/components/mui-alert/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-addon/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ AddOn: { title: \"Add on\", description: \"Enhances form inputs by displaying supplementary information such as units, prefixes, or suffixes adjacent to the input field. Add Ons improve clarity by providing context without adding clutter to the input area.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/3GH67kZLZAjADf3kTIoSV3/82a1ab87bc13b25e6dc1e81c81f69532/AddOn_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4065&t=rIU93UcpsUxOVNN9-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/forms-add-on--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-addon/index.ts\"], website: [\"https://muibook.com/addon\"], guides: [\"https://guides.muibook.com/add-on\"], usage: { list: [ \"Use to display units (e.g. %, $, kg) or fixed prefixes/suffixes alongside inputs.\", \"Ideal for improving data entry accuracy and user understanding.\", \"Use size (x-small to large) to match compact and dense input layouts.\", \"Ensure Add Ons are visually distinct but do not overpower the main input content.\", \"Avoid overcrowding inputs with multiple Add Ons to maintain clarity.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { list: [ \"Add-on placed before the Input Field\", \"Add-on placed after the Input Field\", \"Short text, an icon, or both to support input context.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/13NH06kdHIzm8hDGNBgihx/f5715279e5ab5e2ce6bfd5d38f5f2d1d/Add_on_-_Anatomy.png\", }, variants: { items: [ { key: \"text\", title: \"Text\", description: \"Use for units, currency, or short static labels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/VfAoQuP8u7icg5s6Shwd6/f5f838a3ffda0d0839ef062af308fc97/text-variant.png\", }, { key: \"icon\", title: \"Icon\", description: \"Use for symbolic cues or clarification of the input’s intent.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1LY5GdVijhp7bpfRs3WyFc/6d1708bd25496d7f33acba796b8b2aa6/icon-variant.png\", }, ], }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Input\", link: \"https://guides.muibook.com/input\" }, { name: \"Select\", link: \"https://guides.muibook.com/select\" }, { name: \"File Upload\", link: \"https://guides.muibook.com/file-upload\" }, { name: \"Icons\", link: \"https://guides.muibook.com/icons\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], stories: { items: [ { \"key\": \"text\", \"title\": \"Text\", \"description\": \"Use for units, currency, or short static labels\", \"list\": [ \"Use Add On for non-editable content composed immediately before or after a form control.\" ] }, { \"key\": \"icon\", \"title\": \"Icon\", \"description\": \"Use for symbolic cues or clarification of the input’s intent\", \"list\": [ \"Use Add On for non-editable content composed immediately before or after a form control.\" ] }, { \"key\": \"input-sizes\", \"title\": \"Input Sizes\", \"description\": \"Add On across large, medium, small, and x-small input sizes.\", \"list\": [ \"Use Add On for non-editable content composed immediately before or after a form control.\" ] } ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-addon/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-addon/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Adds compact leading or trailing supporting content to an input control.",
-          "name": "MuiAddon",
-          "attributes": [
-            {
-              "name": "slot",
-              "type": {
-                "text": "\"before\" | \"after\""
-              },
-              "description": "Places the add on before or after content when used within `mui-input`."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Sets the add on size, normally aligned to the owning input size."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-addon",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Text, icon or compact supporting content."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--addon-background",
-              "description": "Background color applied to the add on surface."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-addon",
-          "declaration": {
-            "name": "MuiAddon",
-            "module": "src/components/mui-addon/index.ts"
           }
         }
       ]
@@ -1175,6 +1175,13 @@
                 "text": "\"input\""
               },
               "description": "Uses field-compatible styling when the button is slotted before or after an input."
+            },
+            {
+              "name": "align",
+              "type": {
+                "text": "\"start\""
+              },
+              "description": "Aligns content to the inline start and pushes trailing slot content to the inline end."
             }
           ],
           "superclass": {
@@ -4255,6 +4262,74 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-form-section-footer/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ FormSectionFooter: { title: \"Form Section Footer\", description: \"Footer wrapper for Form Section actions and divider patterns.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17769&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-form-section-footer--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-section-footer/index.ts\"], website: [\"https://muibook.com/form-section-footer\"], guides: [\"https://guides.muibook.com/form-section\"], usage: { list: [ \"Use in slot='footer' on mui-form-section for consistent footer spacing.\", \"Place mui-rule first when you need a visual separation before actions.\", \"Keep responsive action layouts inside the footer wrapper.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Footer actions remain keyboard accessible based on slotted controls.\"], }, anatomy: { image: \"\", list: [\"Footer wrapper\", \"Optional divider (mui-rule)\", \"Action content\"], }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { \"key\": \"default-footer-wrapper\", \"title\": \"Default Footer Wrapper\", \"description\": \"Use form-section-footer in slot='footer' to standardise action spacing.\", \"list\": [ \"Use Form Section Footer for actions or supporting content that conclude a form section.\" ] }, { \"key\": \"with-divider\", \"title\": \"With Divider\", \"description\": \"Place mui-rule first and the footer wrapper applies divider spacing without inline margins.\", \"list\": [ \"Use Form Section Footer for actions or supporting content that conclude a form section.\" ] } ], }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Form Section\", link: \"https://guides.muibook.com/form-section\" }, { name: \"Form Group\", link: \"https://guides.muibook.com/form-group\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-form-section-footer/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-form-section-footer/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Provides consistent spacing for actions and optional divider content in a form section footer.",
+          "name": "MuiFormSectionFooter",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-form-section-footer",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "Footer actions and optional leading `mui-rule` divider."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--form-section-footer-gap",
+              "description": "Gap between footer children without a divider."
+            },
+            {
+              "name": "--form-section-footer-gap-with-rule",
+              "description": "Gap between footer children when a divider is present."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-form-section-footer",
+          "declaration": {
+            "name": "MuiFormSectionFooter",
+            "module": "src/components/mui-form-section-footer/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-grid/doc.ts",
       "declarations": [
         {
@@ -4759,74 +4834,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-form-section-footer/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ FormSectionFooter: { title: \"Form Section Footer\", description: \"Footer wrapper for Form Section actions and divider patterns.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17769&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-form-section-footer--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-section-footer/index.ts\"], website: [\"https://muibook.com/form-section-footer\"], guides: [\"https://guides.muibook.com/form-section\"], usage: { list: [ \"Use in slot='footer' on mui-form-section for consistent footer spacing.\", \"Place mui-rule first when you need a visual separation before actions.\", \"Keep responsive action layouts inside the footer wrapper.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Footer actions remain keyboard accessible based on slotted controls.\"], }, anatomy: { image: \"\", list: [\"Footer wrapper\", \"Optional divider (mui-rule)\", \"Action content\"], }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { \"key\": \"default-footer-wrapper\", \"title\": \"Default Footer Wrapper\", \"description\": \"Use form-section-footer in slot='footer' to standardise action spacing.\", \"list\": [ \"Use Form Section Footer for actions or supporting content that conclude a form section.\" ] }, { \"key\": \"with-divider\", \"title\": \"With Divider\", \"description\": \"Place mui-rule first and the footer wrapper applies divider spacing without inline margins.\", \"list\": [ \"Use Form Section Footer for actions or supporting content that conclude a form section.\" ] } ], }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Form Section\", link: \"https://guides.muibook.com/form-section\" }, { name: \"Form Group\", link: \"https://guides.muibook.com/form-group\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-form-section-footer/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-form-section-footer/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Provides consistent spacing for actions and optional divider content in a form section footer.",
-          "name": "MuiFormSectionFooter",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-form-section-footer",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "Footer actions and optional leading `mui-rule` divider."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--form-section-footer-gap",
-              "description": "Gap between footer children without a divider."
-            },
-            {
-              "name": "--form-section-footer-gap-with-rule",
-              "description": "Gap between footer children when a divider is present."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-form-section-footer",
-          "declaration": {
-            "name": "MuiFormSectionFooter",
-            "module": "src/components/mui-form-section-footer/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-illustrations/doc.ts",
       "declarations": [
         {
@@ -4901,6 +4908,138 @@
           "declaration": {
             "name": "MuiIllustrationTrash",
             "module": "src/components/mui-illustrations/trash.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-image/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Image: { title: \"Image\", description: \"Displays an image alongside an optional caption to provide context, explanation, or attribution. Useful for supporting content visually while maintaining clarity through descriptive labelling.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/14eozXMPlzipgAfqaIR2Py/4e211990a30b4a08549deccfd30c71a9/Image_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4194&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/media-image--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-image/index.ts\"], website: [\"https://muibook.com/image\"], guides: [\"https://guides.muibook.com/image\"], usage: { list: [ \"Use to display images that require additional context or explanation.\", \"Use height + crop + fit=cover when you need fixed-height visual crops.\", \"Use max-height with aspect-ratio for responsive image frames that should not exceed a visual cap.\", \"Use focal-x/focal-y or position to keep important content in frame.\", \"Use zoom carefully to tighten framing without switching to background-image.\", \"Captions should clarify the relevance of the image, not repeat surrounding content.\", \"Ideal for diagrams, UI examples, or content requiring attribution.\", \"Ensure images are accessible with alt text and meaningful captions.\", ], }, accessibility: { designerList: [ \"Use meaningful alt text that describes the image’s purpose.\", \"Use alt=&#8220;&#8221; for decorative images that don’t convey information.\", \"Use the caption slot for extended context, especially for diagrams or UI patterns.\", ], engineerList: [ \"Use meaningful alt text that describes the image’s purpose.\", \"Use alt=&#8220;&#8221; for decorative images that don’t convey information.\", \"Use the caption slot for extended context, especially for diagrams or UI patterns.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/3BSbMl1cqUOB6oDmFLQjRx/193889c0f6d3da6178d51e5fff06b8ed/Image_-_Anatomy.png\", list: [\"Standard styling for a hero image.\", \"Optional caption for the image.\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"single-image\", \"title\": \"Single image\", \"description\": \"Renders a responsive image with accessible alternative text.\", \"list\": [ \"Use meaningful alt text unless the image is purely decorative.\" ] }, { \"key\": \"image-with-caption\", \"title\": \"Image with caption\", \"description\": \"Associates supporting caption text with the image.\", \"list\": [ \"Use captions for context that is useful beyond the alternative text.\" ] }, { \"key\": \"cropped-height\", \"title\": \"Cropped Height\", \"description\": \"Crops an image to a constrained height.\", \"list\": [ \"Use object positioning to keep the important subject visible.\" ] }, { \"key\": \"cropped-centered\", \"title\": \"Cropped Centered\", \"description\": \"Centers the subject within a cropped image frame.\", \"list\": [ \"Use when the source composition supports central cropping.\" ] }, { \"key\": \"zoom-aspect-ratio\", \"title\": \"Zoom + Aspect Ratio\", \"description\": \"Combines a stable aspect ratio with image zoom.\", \"list\": [ \"Use a fixed ratio to prevent layout shift and zoom only when inspection is useful.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"muibook-resource\", name: \"Muibook Resource\", description: \"The Muibook documentation site uses MUI components to compose its layout, including headings, text, lists, buttons, icons, and image components.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3LVvuYDZWRnMhxNy6GMLNd/c5074a05eacb2c22c50ea172b3567c48/Muibook-List-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-image/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-image/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Frames a slotted image with optional cropping, focal positioning and caption content.",
+          "name": "MuiImage",
+          "attributes": [
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the rendered image container height using any valid CSS height value."
+            },
+            {
+              "name": "fit",
+              "type": {
+                "text": "\"contain\" | \"cover\" | \"fill\" | \"none\" | \"scale-down\""
+              },
+              "default": "contain",
+              "description": "Controls how the image fits its container."
+            },
+            {
+              "name": "crop",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enables cropped image presentation."
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "default": "center center",
+              "description": "Sets the object position when a focal position is not supplied."
+            },
+            {
+              "name": "zoom",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Scales the image around its focal position."
+            },
+            {
+              "name": "focal-x",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the horizontal focal point used for cropped images."
+            },
+            {
+              "name": "focal-y",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the vertical focal point used for cropped images."
+            },
+            {
+              "name": "radius",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--radius-300)",
+              "description": "Sets the frame border radius."
+            },
+            {
+              "name": "aspect-ratio",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the media aspect ratio using any valid CSS aspect-ratio value."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-image",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "image",
+              "description": "Image media, normally an `img` element."
+            },
+            {
+              "name": "caption",
+              "description": "Optional caption content, normally a `figcaption` element."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-image",
+          "declaration": {
+            "name": "MuiImage",
+            "module": "src/components/mui-image/index.ts"
           }
         }
       ]
@@ -6799,7 +6938,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-image/doc.ts",
+      "path": "src/components/mui-link/doc.ts",
       "declarations": [
         {
           "kind": "variable",
@@ -6807,7 +6946,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ Image: { title: \"Image\", description: \"Displays an image alongside an optional caption to provide context, explanation, or attribution. Useful for supporting content visually while maintaining clarity through descriptive labelling.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/14eozXMPlzipgAfqaIR2Py/4e211990a30b4a08549deccfd30c71a9/Image_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=948-4194&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/media-image--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-image/index.ts\"], website: [\"https://muibook.com/image\"], guides: [\"https://guides.muibook.com/image\"], usage: { list: [ \"Use to display images that require additional context or explanation.\", \"Use height + crop + fit=cover when you need fixed-height visual crops.\", \"Use max-height with aspect-ratio for responsive image frames that should not exceed a visual cap.\", \"Use focal-x/focal-y or position to keep important content in frame.\", \"Use zoom carefully to tighten framing without switching to background-image.\", \"Captions should clarify the relevance of the image, not repeat surrounding content.\", \"Ideal for diagrams, UI examples, or content requiring attribution.\", \"Ensure images are accessible with alt text and meaningful captions.\", ], }, accessibility: { designerList: [ \"Use meaningful alt text that describes the image’s purpose.\", \"Use alt=&#8220;&#8221; for decorative images that don’t convey information.\", \"Use the caption slot for extended context, especially for diagrams or UI patterns.\", ], engineerList: [ \"Use meaningful alt text that describes the image’s purpose.\", \"Use alt=&#8220;&#8221; for decorative images that don’t convey information.\", \"Use the caption slot for extended context, especially for diagrams or UI patterns.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/3BSbMl1cqUOB6oDmFLQjRx/193889c0f6d3da6178d51e5fff06b8ed/Image_-_Anatomy.png\", list: [\"Standard styling for a hero image.\", \"Optional caption for the image.\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"single-image\", \"title\": \"Single image\", \"description\": \"Renders a responsive image with accessible alternative text.\", \"list\": [ \"Use meaningful alt text unless the image is purely decorative.\" ] }, { \"key\": \"image-with-caption\", \"title\": \"Image with caption\", \"description\": \"Associates supporting caption text with the image.\", \"list\": [ \"Use captions for context that is useful beyond the alternative text.\" ] }, { \"key\": \"cropped-height\", \"title\": \"Cropped Height\", \"description\": \"Crops an image to a constrained height.\", \"list\": [ \"Use object positioning to keep the important subject visible.\" ] }, { \"key\": \"cropped-centered\", \"title\": \"Cropped Centered\", \"description\": \"Centers the subject within a cropped image frame.\", \"list\": [ \"Use when the source composition supports central cropping.\" ] }, { \"key\": \"zoom-aspect-ratio\", \"title\": \"Zoom + Aspect Ratio\", \"description\": \"Combines a stable aspect ratio with image zoom.\", \"list\": [ \"Use a fixed ratio to prevent layout shift and zoom only when inspection is useful.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"muibook-resource\", name: \"Muibook Resource\", description: \"The Muibook documentation site uses MUI components to compose its layout, including headings, text, lists, buttons, icons, and image components.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3LVvuYDZWRnMhxNy6GMLNd/c5074a05eacb2c22c50ea172b3567c48/Muibook-List-Composition.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+          "default": "{ Link: { title: \"Link\", description: \"Links are used to navigate between pages or external content. They are visually distinct from surrounding text by using underlines — a familiar and accessible pattern that ensures clarity and consistency.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/7bK1593sNzW75ZoqBupCRj/0420d8ef12472208403efa48d2fe98d6/Link_-_Home_Image.png\", ], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-663&t=fSFYVey9aCoE5oQa-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/actions-link--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-link/index.ts\"], website: [\"https://muibook.com/link\"], guides: [\"https://guides.muibook.com/link\"], usage: { list: [ \"Use links to navigate to related content or different pages.\", \"Use for navigation only — use buttons for actions like submitting forms or changing data.\", \"Keep link text concise and descriptive. Avoid vague labels like 'Click here.'\", \"Use full sentences or phrases that clearly describe the destination.\", \"Prefer inline links within body text unless a more prominent callout is needed.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/6Rbr0KRWAiNRuPsagpreV7/2adc3626aa45ddc95ddf7d0a508c7917/Link_-_Anatomy.png\", list: [ \"LABEL: Text describing the link / link button action. Use action verbs or phrases to tell the user what will happen next, and follow the link label content guidelines.\", \"BEFORE: An optional area to include an icon before the label. Use an icon to add additional affordance where the icon has a clear and well-established meaning. Most links don't require an icon, so be consistent and deliberate when you do.\", \"AFTER: An optional area to include an icon after the label, often used for a chevron-down-arrow icon to indicate a dropdown menu or accordion experiences where the placement is on the far right of the link.\", \"ICON ONLY: Use when the action is easily understood and space is limited.\", ], }, variants: { items: [ { key: \"size-large\", title: \"Size: Large\", description: \"Used when a link needs to stand out in layouts, such as hero sections or alongside large headings. If used inline, it should match the surrounding text size to maintain visual hierarchy and scale consistency. E.g. Use medium size icon when it is paired with large sized link.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/Tbxhps7s88CFzROYc0Lqs/3440df9aefca7cb9de3ce5015a3a4e82/Default_-_Large.png\", }, { key: \"size-medium\", title: \"Size: Medium (Default)\", description: \"The standard size for most link usage. Works well inline with body text or as standalone links within common page layouts. When used inline, it aligns with default body text for consistent reading flow. E.g. Use small size icon when it is paired with medium sized link.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3NbinCPLEbtetN63xh18Sy/e0a0e9bbcd11a71faefc6ad1fc0e064d/Default_-_Medium.png\", }, { key: \"size-small\", title: \"Size: Small\", description: \"Ideal for dense interfaces or compact areas such as cards, side panels, or footnotes. When used inline, it should match the smaller text size to preserve a balanced visual rhythm. E.g. Use x-small size icon when it is paired with small sized link.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4uaoT2KHM6ux4X30BxwGYo/91137cc74414f2f32b869fae59f9625d/Default_-_Small.png\", }, { key: \"size-x-small\", title: \"Size: XSmall\", description: \"Used sparingly in tight spaces like toolbars, metadata, or inline legal text. Should align with surrounding text to avoid disrupting scale and hierarchy. E.g. Use xx-small size icon when it is paired with x-small sized link.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/27dAzNJ6Q5XHVKv5ROXq36/ace1f6540b5f363624730be001bf91ce/Default_-_XSmall.png\", }, { key: \"primary\", title: \"Primary\", description: \"A high emphasis link style used for key navigation or calls to action. Visually aligned with the primary button to ensure consistency across components. When an icon is slotted into a link, it automatically inherits the link button’s default icon size. If you need a different look or emphasis, you can override the size as required.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7wDlLjYvZEOgP8bQ6mfOuY/51b39a09c73f93ee9291e1e053df308a/Primary.png\", }, { key: \"primary-icon-only\", title: \"Primary - IconOnly\", description: \"An icon only version of the primary link. Best used when the icon meaning is immediately clear, such as external links, arrows, or downloads. Uses a small size icon when pairing with other buttons, or medium size icon for standalone actions.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5sEr4Bhu2mwobKt6yPO9T7/a248fc0fe630ddd7f837c256a9aac126/Primary_-_IconOnly.png\", }, { key: \"secondary\", title: \"Secondary\", description: \"An icon only version of the primary link. Best used when the icon meaning is immediately clear, such as external links, arrows, or downloads. Uses a small size icon when pairing with other buttons, or medium size icon for standalone actions.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1y7LN0FWjqrAQim9y289YN/2a65b13be6f42399404fb5bb68014700/Secondary.png\", }, { key: \"secondary-icon-only\", title: \"Secondary - IconOnly\", description: \"An icon only version of the secondary link. Ideal for contextual actions placed beside content or inside user interface components. Uses a small size icon when pairing with other buttons, or medium size icon for standalone actions.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/nWMRYy5KcAqFxnrRdBXJS/d02dc2a67ae81bca02b82645c998fb9b/Secondary_-_IconOnly.png\", }, { key: \"tertiary\", title: \"Tertiary\", description: \"A subtle and low emphasis style often used inline with body text or in subdued areas of the interface. Mirrors the styling of the tertiary button for visual harmony in dense content. When an icon is slotted into a link, it automatically inherits the link button’s default icon size. If you need a different look or emphasis, you can override the size as required.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/ydUs1pJsUgg7JBX7xpIOW/8e8cd367963506e35f39a97a8f41d616/Tertiary.png\", }, { key: \"tertiary-icon-only\", title: \"Tertiary - IconOnly\", description: \"A minimal visual style with just an icon. Best for lightweight or background interactions in compact spaces. Uses a small size icon when pairing with other buttons, or medium size icon for standalone actions.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/79wxg2B2u21x1qAKTsFOIM/d8c1665de85c90983bbe50d3762f2298/Tertiary_-_IconOnly.png\", }, { key: \"overlay\", title: \"Overlay\", description: \"Use on layered media or tinted surfaces where link actions need contrast without heavy visual weight. Works well for controls rendered over previews and imagery.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1y7LN0FWjqrAQim9y289YN/2a65b13be6f42399404fb5bb68014700/Secondary.png\", }, { key: \"attention\", title: \"Attention\", description: \"A visually distinct style intended to highlight urgency, important information, or warnings. Styled to match the attention button, typically used in upgrade prompts or legal notices. When an icon is slotted into a link, it automatically inherits the link button’s default icon size. If you need a different look or emphasis, you can override the size as required.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6grNjw60gY1ShYuexn23oX/b1cd5e10f9a1f5b8e5e3df4bf4780a0a/Attention.png\", }, { key: \"attention-icon-only\", title: \"Attention - IconOnly\", description: \"An icon only variant that draws attention to critical actions or time sensitive content. Uses a small size icon.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5osepffgbQtuUmunLgCDPH/83490dc2ac0ef308a53e16e5b992efc5/Attention_-_IconOnly.png\", }, ], }, stories: { items: [ { \"key\": \"link-sizes\", \"title\": \"Link: Sizes\", \"description\": \"Link sizes should match the surrounding body text size when nested within a paragraph.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"link-button-x-small\", \"title\": \"Link Button: X-Small\", \"description\": \"When a link includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.\", \"list\": [ \"Highly compact UI regions\", \"Dense application toolbars\", \"Tight data tables\", \"Compact control panels\" ] }, { \"key\": \"link-button-small\", \"title\": \"Link Button: Small\", \"description\": \"When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.\", \"list\": [ \"Toolbar actions with mixed icon/text\", \"Discrete filters and utility actions\", \"Secondary or supporting navigation\" ] }, { \"key\": \"link-button-medium-default\", \"title\": \"Link Button: Medium (Default)\", \"description\": \"When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.\", \"list\": [ \"Standard text-level actions\", \"Card actions (primary/secondary)\", \"Modal and dialog interactions\", \"Navigation elements within body text\", \"Places where links appear in default reading flow\", \"Form inputs (e.g., hero search bars)\" ] }, { \"key\": \"link-button-large\", \"title\": \"Link Button: Large\", \"description\": \"When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.\", \"list\": [ \"Large headings (H1/H2) and hero layouts\", \"Prominent calls to action in content\", \"Empty states and marketing content\", \"Interfaces where the link must stand out more than standard body actions\" ] }, { \"key\": \"url\", \"title\": \"URL\", \"description\": \"Uses Link for a standard URL destination.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"external-link\", \"title\": \"External link\", \"description\": \"Navigates to an external resource with an explicit affordance.\", \"list\": [ \"Indicate when a destination opens another site or context.\" ] }, { \"key\": \"primary-link\", \"title\": \"Primary Link\", \"description\": \"Demonstrates primary link with Link.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"secondary-link\", \"title\": \"Secondary Link\", \"description\": \"Demonstrates secondary link with Link.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"stroke-ring\", \"title\": \"Stroke: Ring\", \"description\": \"Use a ring shadow when you prefer that approach for action-style link borders.\", \"list\": [ \"Use stroke=\\\"ring\\\" to draw the action-style link stroke with an inset shadow instead of a physical border.\", \"Pair ring-stroked links with ring-stroked buttons when they need to share the same visual border treatment.\", \"Use stroke-ring-size=\\\"100\\\" for the default ring, and increase only when more contrast is needed.\" ] }, { \"key\": \"tertiary-link\", \"title\": \"Tertiary Link\", \"description\": \"Demonstrates tertiary link with Link.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"attention-link\", \"title\": \"Attention Link\", \"description\": \"Demonstrates attention link with Link.\", \"list\": [ \"Use for navigation associated with destructive or high-risk content, not for destructive commands.\" ] }, { \"key\": \"overlay-link\", \"title\": \"Overlay Link\", \"description\": \"Overlay links on image surfaces using the overlay variant.\", \"list\": [ \"Use over media only when contrast remains sufficient in every image state.\" ] }, { \"key\": \"link-before-and-after\", \"title\": \"Link (Before & After)\", \"description\": \"Composes leading and trailing content with Link.\", \"list\": [ \"Use x-small size icon when it is paired with text\" ] }, { \"key\": \"link-button-before-and-after\", \"title\": \"Link Button (Before & After)\", \"description\": \"Composes leading and trailing content with Link.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"primary-icon-only\", \"title\": \"Primary: Icon-Only\", \"description\": \"Uses an icon-only Link with the primary treatment.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"secondary-icon-only\", \"title\": \"Secondary: Icon-Only\", \"description\": \"Uses an icon-only Link with the secondary treatment.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"tertiary-icon-only\", \"title\": \"Tertiary: Icon-Only\", \"description\": \"Uses an icon-only Link with the tertiary treatment.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"attention-icon-only\", \"title\": \"Attention: Icon-Only\", \"description\": \"Uses an icon-only Link with the attention treatment.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"part-selectors\", \"title\": \"Part Selectors\", \"description\": \"Ideal for building custom web-component compositions using MUI and scoped CSS styles.\", \"list\": [ \"Prefer semantic tokens before applying one-off part customisation.\" ] } ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Icons\", link: \"https://guides.muibook.com/icons\", }, ], }, rules: [ { heading: \"Link vs Button\", description: \"Links and Buttons may look similar, but links are for navigating between pages or sections of your app or site, while buttons are for triggering actions.\", doContent: [ { description: \"Use a link when navigating to another page or view.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7xOE9DNKWgy1lZoT0FbMOW/cc13fbeeaa85b2507087645d925d7323/button-vs-link-do.png\", }, ], dontContent: [ { description: \"Don’t use a link to trigger tasks like submitting a form or saving data.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6tSAw6uBvg142Gzw7tenBc/4b8db682687b42f3c53fc32557cc4eee/button-vs-link-do-not.png\", }, ], }, { heading: \"Text & Icon Actions\", description: \"\", doContent: [ { description: \"Use the 'small' size icon within a medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2W1xs6NPj3jRrW6ZaVGRvZ/3a11566b68fffda85bf5f780c4d6a394/dropdown-bar-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within a medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6BgHzCgKqk44piisNH4tE6/c08d91a1cf5231a089844d20f6ab968c/dropdown-bar-icon-dont.png\", }, ], }, { heading: \"Icon-Only Actions\", description: \"\", doContent: [ { description: \"Use a 'medium' size icon when using an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3syzrNBEXbBjp5hGEUvF4M/0471f4b16939d8ee54deaf48997ff455/action-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5V2TE85dY848jz1dP6Y0lC/b8e433c8abad5a4402ff1f86ddb8c848/action-icon-dont.png\", }, ], }, ], behaviour: { list: [\"\"], image: \"https://images.ctfassets.net/i5uwscj4pkk2/qS1BAkfK7TDpy9rq4cdF1/d2535f48b4d2711f9dba6d056f21e3ec/Link_-_Behaviour.png\", }, writing: { list: [\"\"], }, }, }"
         }
       ],
       "exports": [
@@ -6816,115 +6955,278 @@
           "name": "muiDocs",
           "declaration": {
             "name": "muiDocs",
-            "module": "src/components/mui-image/doc.ts"
+            "module": "src/components/mui-link/doc.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-image/index.ts",
+      "path": "src/components/mui-link/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Frames a slotted image with optional cropping, focal positioning and caption content.",
-          "name": "MuiImage",
+          "description": "Provides anchor navigation as an inline link or action-styled link with optional supporting content.",
+          "name": "MuiLink",
           "attributes": [
             {
-              "name": "height",
+              "name": "target",
               "type": {
                 "text": "string"
               },
-              "description": "Sets the rendered image container height using any valid CSS height value."
+              "default": "_self",
+              "description": "Anchor browsing context, such as `_self` or `_blank`."
             },
             {
-              "name": "fit",
+              "name": "href",
               "type": {
-                "text": "\"contain\" | \"cover\" | \"fill\" | \"none\" | \"scale-down\""
+                "text": "string"
               },
-              "default": "contain",
-              "description": "Controls how the image fits its container."
+              "default": "#",
+              "description": "Navigation destination URL."
             },
             {
-              "name": "crop",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"primary\" | \"secondary\" | \"tertiary\" | \"overlay\" | \"attention\""
+              },
+              "default": "default",
+              "description": "Uses standard inline-link styling or an action-style treatment."
+            },
+            {
+              "name": "disabled",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Enables cropped image presentation."
+              "description": "Disables navigation and exposes the anchor as aria-disabled."
             },
             {
-              "name": "position",
+              "name": "weight",
               "type": {
-                "text": "string"
+                "text": "\"regular\" | \"medium\" | \"bold\""
               },
-              "default": "center center",
-              "description": "Sets the object position when a focal position is not supplied."
+              "default": "regular",
+              "description": "Font weight of link content."
             },
             {
-              "name": "zoom",
+              "name": "stroke",
               "type": {
-                "text": "number"
+                "text": "\"border\" | \"ring\""
               },
-              "default": "1",
-              "description": "Scales the image around its focal position."
+              "default": "border",
+              "description": "Controls whether action-style link strokes are drawn with the normal border or an inset ring shadow."
             },
             {
-              "name": "focal-x",
+              "name": "stroke-ring-size",
               "type": {
-                "text": "string"
+                "text": "\"100\" | \"200\" | \"300\" | \"400\" | \"500\" | string"
               },
-              "description": "Sets the horizontal focal point used for cropped images."
+              "default": "100",
+              "description": "Ring stroke width when `stroke=\"ring\"` is used on action-style links. Token values map to `--stroke-size-*`."
             },
             {
-              "name": "focal-y",
+              "name": "focus-ring",
               "type": {
-                "text": "string"
+                "text": "\"inset\" | \"outset\""
               },
-              "description": "Sets the vertical focal point used for cropped images."
+              "default": "default",
+              "description": "Controls focus outline placement. The default is inset; use `outset` only when the focus ring should sit outside the action."
             },
             {
-              "name": "radius",
+              "name": "size",
               "type": {
-                "text": "string"
+                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
               },
-              "default": "var(--radius-300)",
-              "description": "Sets the frame border radius."
+              "default": "medium",
+              "description": "Link scale; also controls automatic icon, File Icon, avatar, badge, and Switch sizing."
             },
             {
-              "name": "aspect-ratio",
+              "name": "download",
               "type": {
-                "text": "string"
+                "text": "string | boolean"
               },
-              "description": "Sets the media aspect ratio using any valid CSS aspect-ratio value."
+              "description": "Downloads the linked resource; provide a value to set a download filename."
+            },
+            {
+              "name": "usage",
+              "type": {
+                "text": "\"input\""
+              },
+              "description": "Uses field-compatible styling when the link is slotted before or after an input."
+            },
+            {
+              "name": "align",
+              "type": {
+                "text": "\"start\""
+              },
+              "description": "Aligns content to the inline start and pushes trailing slot content to the inline end."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-image",
+          "tagName": "mui-link",
           "customElement": true,
           "slots": [
             {
-              "name": "image",
-              "description": "Image media, normally an `img` element."
+              "name": "",
+              "description": "Link label or a single icon for an icon-only link action."
             },
             {
-              "name": "caption",
-              "description": "Optional caption content, normally a `figcaption` element."
+              "name": "before",
+              "description": "Leading icon, avatar, badge, or other supporting content."
+            },
+            {
+              "name": "after",
+              "description": "Trailing icon, avatar, badge, or other supporting content."
             }
           ],
           "events": [],
-          "cssProperties": []
+          "cssProperties": [
+            {
+              "name": "--action-focus-outline",
+              "description": "Controls the link focus-visible outline. Defaults to stroke-size-400."
+            },
+            {
+              "name": "--action-focus-outline-offset",
+              "description": "Controls the link focus-visible outline offset. Defaults to an inset stroke-size-400 offset."
+            },
+            {
+              "name": "--action-focus-outline-inset-offset",
+              "description": "Controls the default inset focus outline offset. Defaults to stroke-size-400."
+            },
+            {
+              "name": "--action-focus-outline-outset-offset",
+              "description": "Controls the positive outline offset when `focus-ring=\"outset\"` is used. Defaults to stroke-size-200."
+            },
+            {
+              "name": "--link-focus-radius",
+              "description": "Controls the default inline link focus outline radius. Defaults to radius-200."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "color"
+            },
+            {
+              "name": "font-family"
+            },
+            {
+              "name": "font-size"
+            },
+            {
+              "name": "font-weight"
+            },
+            {
+              "name": "letter-spacing"
+            },
+            {
+              "name": "line-height"
+            },
+            {
+              "name": "text-transform"
+            },
+            {
+              "name": "text-decoration"
+            },
+            {
+              "name": "text-align"
+            },
+            {
+              "name": "padding"
+            },
+            {
+              "name": "margin"
+            },
+            {
+              "name": "gap"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            },
+            {
+              "name": "box-sizing"
+            },
+            {
+              "name": "display"
+            },
+            {
+              "name": "flex"
+            },
+            {
+              "name": "flex-direction"
+            },
+            {
+              "name": "flex-wrap"
+            },
+            {
+              "name": "justify-content"
+            },
+            {
+              "name": "align-items"
+            },
+            {
+              "name": "align-content"
+            },
+            {
+              "name": "align-self"
+            },
+            {
+              "name": "grid-template-columns"
+            },
+            {
+              "name": "grid-template-rows"
+            },
+            {
+              "name": "grid-column"
+            },
+            {
+              "name": "grid-row"
+            },
+            {
+              "name": "place-items"
+            },
+            {
+              "name": "place-content"
+            },
+            {
+              "name": "vertical-align"
+            },
+            {
+              "name": "background"
+            },
+            {
+              "name": "border"
+            },
+            {
+              "name": "border-radius"
+            },
+            {
+              "name": "box-shadow"
+            },
+            {
+              "name": "opacity"
+            },
+            {
+              "name": "transition"
+            },
+            {
+              "name": "outline"
+            }
+          ]
         }
       ],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-image",
+          "name": "mui-link",
           "declaration": {
-            "name": "MuiImage",
-            "module": "src/components/mui-image/index.ts"
+            "name": "MuiLink",
+            "module": "src/components/mui-link/index.ts"
           }
         }
       ]
@@ -7179,294 +7481,6 @@
           "declaration": {
             "name": "MuiInput",
             "module": "src/components/mui-input/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-link/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Link: { title: \"Link\", description: \"Links are used to navigate between pages or external content. They are visually distinct from surrounding text by using underlines — a familiar and accessible pattern that ensures clarity and consistency.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/7bK1593sNzW75ZoqBupCRj/0420d8ef12472208403efa48d2fe98d6/Link_-_Home_Image.png\", ], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=3-663&t=fSFYVey9aCoE5oQa-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/actions-link--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-link/index.ts\"], website: [\"https://muibook.com/link\"], guides: [\"https://guides.muibook.com/link\"], usage: { list: [ \"Use links to navigate to related content or different pages.\", \"Use for navigation only — use buttons for actions like submitting forms or changing data.\", \"Keep link text concise and descriptive. Avoid vague labels like 'Click here.'\", \"Use full sentences or phrases that clearly describe the destination.\", \"Prefer inline links within body text unless a more prominent callout is needed.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/6Rbr0KRWAiNRuPsagpreV7/2adc3626aa45ddc95ddf7d0a508c7917/Link_-_Anatomy.png\", list: [ \"LABEL: Text describing the link / link button action. Use action verbs or phrases to tell the user what will happen next, and follow the link label content guidelines.\", \"BEFORE: An optional area to include an icon before the label. Use an icon to add additional affordance where the icon has a clear and well-established meaning. Most links don't require an icon, so be consistent and deliberate when you do.\", \"AFTER: An optional area to include an icon after the label, often used for a chevron-down-arrow icon to indicate a dropdown menu or accordion experiences where the placement is on the far right of the link.\", \"ICON ONLY: Use when the action is easily understood and space is limited.\", ], }, variants: { items: [ { key: \"size-large\", title: \"Size: Large\", description: \"Used when a link needs to stand out in layouts, such as hero sections or alongside large headings. If used inline, it should match the surrounding text size to maintain visual hierarchy and scale consistency. E.g. Use small size icon when it is paired with large sized link.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/Tbxhps7s88CFzROYc0Lqs/3440df9aefca7cb9de3ce5015a3a4e82/Default_-_Large.png\", }, { key: \"size-medium\", title: \"Size: Medium (Default)\", description: \"The standard size for most link usage. Works well inline with body text or as standalone links within common page layouts. When used inline, it aligns with default body text for consistent reading flow. E.g. Use x-small size icon when it is paired with medium sized link.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3NbinCPLEbtetN63xh18Sy/e0a0e9bbcd11a71faefc6ad1fc0e064d/Default_-_Medium.png\", }, { key: \"size-small\", title: \"Size: Small\", description: \"Ideal for dense interfaces or compact areas such as cards, side panels, or footnotes. When used inline, it should match the smaller text size to preserve a balanced visual rhythm. E.g. Use x-small size icon when it is paired with small sized link.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4uaoT2KHM6ux4X30BxwGYo/91137cc74414f2f32b869fae59f9625d/Default_-_Small.png\", }, { key: \"size-x-small\", title: \"Size: XSmall\", description: \"Used sparingly in tight spaces like toolbars, metadata, or inline legal text. Should align with surrounding text to avoid disrupting scale and hierarchy. E.g. Use x-small size icon when it is paired with x-small sized link.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/27dAzNJ6Q5XHVKv5ROXq36/ace1f6540b5f363624730be001bf91ce/Default_-_XSmall.png\", }, { key: \"primary\", title: \"Primary\", description: \"A high emphasis link style used for key navigation or calls to action. Visually aligned with the primary button to ensure consistency across components. When an icon is slotted into a link, it automatically inherits the link button’s default icon size. If you need a different look or emphasis, you can override the size as required.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7wDlLjYvZEOgP8bQ6mfOuY/51b39a09c73f93ee9291e1e053df308a/Primary.png\", }, { key: \"primary-icon-only\", title: \"Primary - IconOnly\", description: \"An icon only version of the primary link. Best used when the icon meaning is immediately clear, such as external links, arrows, or downloads. Uses a small size icon when pairing with other buttons, or medium size icon for standalone actions.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5sEr4Bhu2mwobKt6yPO9T7/a248fc0fe630ddd7f837c256a9aac126/Primary_-_IconOnly.png\", }, { key: \"secondary\", title: \"Secondary\", description: \"An icon only version of the primary link. Best used when the icon meaning is immediately clear, such as external links, arrows, or downloads. Uses a small size icon when pairing with other buttons, or medium size icon for standalone actions.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1y7LN0FWjqrAQim9y289YN/2a65b13be6f42399404fb5bb68014700/Secondary.png\", }, { key: \"secondary-icon-only\", title: \"Secondary - IconOnly\", description: \"An icon only version of the secondary link. Ideal for contextual actions placed beside content or inside user interface components. Uses a small size icon when pairing with other buttons, or medium size icon for standalone actions.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/nWMRYy5KcAqFxnrRdBXJS/d02dc2a67ae81bca02b82645c998fb9b/Secondary_-_IconOnly.png\", }, { key: \"tertiary\", title: \"Tertiary\", description: \"A subtle and low emphasis style often used inline with body text or in subdued areas of the interface. Mirrors the styling of the tertiary button for visual harmony in dense content. When an icon is slotted into a link, it automatically inherits the link button’s default icon size. If you need a different look or emphasis, you can override the size as required.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/ydUs1pJsUgg7JBX7xpIOW/8e8cd367963506e35f39a97a8f41d616/Tertiary.png\", }, { key: \"tertiary-icon-only\", title: \"Tertiary - IconOnly\", description: \"A minimal visual style with just an icon. Best for lightweight or background interactions in compact spaces. Uses a small size icon when pairing with other buttons, or medium size icon for standalone actions.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/79wxg2B2u21x1qAKTsFOIM/d8c1665de85c90983bbe50d3762f2298/Tertiary_-_IconOnly.png\", }, { key: \"overlay\", title: \"Overlay\", description: \"Use on layered media or tinted surfaces where link actions need contrast without heavy visual weight. Works well for controls rendered over previews and imagery.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1y7LN0FWjqrAQim9y289YN/2a65b13be6f42399404fb5bb68014700/Secondary.png\", }, { key: \"attention\", title: \"Attention\", description: \"A visually distinct style intended to highlight urgency, important information, or warnings. Styled to match the attention button, typically used in upgrade prompts or legal notices. When an icon is slotted into a link, it automatically inherits the link button’s default icon size. If you need a different look or emphasis, you can override the size as required.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6grNjw60gY1ShYuexn23oX/b1cd5e10f9a1f5b8e5e3df4bf4780a0a/Attention.png\", }, { key: \"attention-icon-only\", title: \"Attention - IconOnly\", description: \"An icon only variant that draws attention to critical actions or time sensitive content. Uses a small size icon.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5osepffgbQtuUmunLgCDPH/83490dc2ac0ef308a53e16e5b992efc5/Attention_-_IconOnly.png\", }, ], }, stories: { items: [ { \"key\": \"link-sizes\", \"title\": \"Link: Sizes\", \"description\": \"Link sizes should match the surrounding body text size when nested within a paragraph.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"link-button-x-small\", \"title\": \"Link Button: X-Small\", \"description\": \"When a link includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.\", \"list\": [ \"Highly compact UI regions\", \"Dense application toolbars\", \"Tight data tables\", \"Compact control panels\" ] }, { \"key\": \"link-button-small\", \"title\": \"Link Button: Small\", \"description\": \"When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.\", \"list\": [ \"Toolbar actions with mixed icon/text\", \"Discrete filters and utility actions\", \"Secondary or supporting navigation\" ] }, { \"key\": \"link-button-medium-default\", \"title\": \"Link Button: Medium (Default)\", \"description\": \"When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.\", \"list\": [ \"Standard text-level actions\", \"Card actions (primary/secondary)\", \"Modal and dialog interactions\", \"Navigation elements within body text\", \"Places where links appear in default reading flow\", \"Form inputs (e.g., hero search bars)\" ] }, { \"key\": \"link-button-large\", \"title\": \"Link Button: Large\", \"description\": \"When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.\", \"list\": [ \"Large headings (H1/H2) and hero layouts\", \"Prominent calls to action in content\", \"Empty states and marketing content\", \"Interfaces where the link must stand out more than standard body actions\" ] }, { \"key\": \"url\", \"title\": \"URL\", \"description\": \"Uses Link for a standard URL destination.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"external-link\", \"title\": \"External link\", \"description\": \"Navigates to an external resource with an explicit affordance.\", \"list\": [ \"Indicate when a destination opens another site or context.\" ] }, { \"key\": \"primary-link\", \"title\": \"Primary Link\", \"description\": \"Demonstrates primary link with Link.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"secondary-link\", \"title\": \"Secondary Link\", \"description\": \"Demonstrates secondary link with Link.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"stroke-ring\", \"title\": \"Stroke: Ring\", \"description\": \"Use a ring shadow when you prefer that approach for action-style link borders.\", \"list\": [ \"Use stroke=\\\"ring\\\" to draw the action-style link stroke with an inset shadow instead of a physical border.\", \"Pair ring-stroked links with ring-stroked buttons when they need to share the same visual border treatment.\", \"Use stroke-ring-size=\\\"100\\\" for the default ring, and increase only when more contrast is needed.\" ] }, { \"key\": \"tertiary-link\", \"title\": \"Tertiary Link\", \"description\": \"Demonstrates tertiary link with Link.\", \"list\": [ \"Use Link for navigation to another location or resource; use Button for an immediate command.\" ] }, { \"key\": \"attention-link\", \"title\": \"Attention Link\", \"description\": \"Demonstrates attention link with Link.\", \"list\": [ \"Use for navigation associated with destructive or high-risk content, not for destructive commands.\" ] }, { \"key\": \"overlay-link\", \"title\": \"Overlay Link\", \"description\": \"Overlay links on image surfaces using the overlay variant.\", \"list\": [ \"Use over media only when contrast remains sufficient in every image state.\" ] }, { \"key\": \"link-before-and-after\", \"title\": \"Link (Before & After)\", \"description\": \"Composes leading and trailing content with Link.\", \"list\": [ \"Use x-small size icon when it is paired with text\" ] }, { \"key\": \"link-button-before-and-after\", \"title\": \"Link Button (Before & After)\", \"description\": \"Composes leading and trailing content with Link.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"primary-icon-only\", \"title\": \"Primary: Icon-Only\", \"description\": \"Uses an icon-only Link with the primary treatment.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"secondary-icon-only\", \"title\": \"Secondary: Icon-Only\", \"description\": \"Uses an icon-only Link with the secondary treatment.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"tertiary-icon-only\", \"title\": \"Tertiary: Icon-Only\", \"description\": \"Uses an icon-only Link with the tertiary treatment.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"attention-icon-only\", \"title\": \"Attention: Icon-Only\", \"description\": \"Uses an icon-only Link with the attention treatment.\", \"list\": [ \"Use small (default) size icon when paired with text-based action is used in a button group\", \"Use medium size icon when the icon-only action appears on its own. E.g. Menu\" ] }, { \"key\": \"part-selectors\", \"title\": \"Part Selectors\", \"description\": \"Ideal for building custom web-component compositions using MUI and scoped CSS styles.\", \"list\": [ \"Prefer semantic tokens before applying one-off part customisation.\" ] } ], }, compositions: { description: \"\", items: [ { key: \"\", name: \"\", description: \"\", image: \"\", }, ], }, related: { items: [ { name: \"Button\", link: \"https://guides.muibook.com/button\", }, { name: \"Icons\", link: \"https://guides.muibook.com/icons\", }, ], }, rules: [ { heading: \"Link vs Button\", description: \"Links and Buttons may look similar, but links are for navigating between pages or sections of your app or site, while buttons are for triggering actions.\", doContent: [ { description: \"Use a link when navigating to another page or view.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7xOE9DNKWgy1lZoT0FbMOW/cc13fbeeaa85b2507087645d925d7323/button-vs-link-do.png\", }, ], dontContent: [ { description: \"Don’t use a link to trigger tasks like submitting a form or saving data.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6tSAw6uBvg142Gzw7tenBc/4b8db682687b42f3c53fc32557cc4eee/button-vs-link-do-not.png\", }, ], }, { heading: \"Text & Icon Actions\", description: \"\", doContent: [ { description: \"Use the 'small' size icon within a medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2W1xs6NPj3jRrW6ZaVGRvZ/3a11566b68fffda85bf5f780c4d6a394/dropdown-bar-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within a medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6BgHzCgKqk44piisNH4tE6/c08d91a1cf5231a089844d20f6ab968c/dropdown-bar-icon-dont.png\", }, ], }, { heading: \"Icon-Only Actions\", description: \"\", doContent: [ { description: \"Use a 'medium' size icon when using an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3syzrNBEXbBjp5hGEUvF4M/0471f4b16939d8ee54deaf48997ff455/action-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5V2TE85dY848jz1dP6Y0lC/b8e433c8abad5a4402ff1f86ddb8c848/action-icon-dont.png\", }, ], }, ], behaviour: { list: [\"\"], image: \"https://images.ctfassets.net/i5uwscj4pkk2/qS1BAkfK7TDpy9rq4cdF1/d2535f48b4d2711f9dba6d056f21e3ec/Link_-_Behaviour.png\", }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-link/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-link/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Provides anchor navigation as an inline link or action-styled link with optional supporting content.",
-          "name": "MuiLink",
-          "attributes": [
-            {
-              "name": "target",
-              "type": {
-                "text": "string"
-              },
-              "default": "_self",
-              "description": "Anchor browsing context, such as `_self` or `_blank`."
-            },
-            {
-              "name": "href",
-              "type": {
-                "text": "string"
-              },
-              "default": "#",
-              "description": "Navigation destination URL."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"primary\" | \"secondary\" | \"tertiary\" | \"overlay\" | \"attention\""
-              },
-              "default": "default",
-              "description": "Uses standard inline-link styling or an action-style treatment."
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disables navigation and exposes the anchor as aria-disabled."
-            },
-            {
-              "name": "weight",
-              "type": {
-                "text": "\"regular\" | \"medium\" | \"bold\""
-              },
-              "default": "regular",
-              "description": "Font weight of link content."
-            },
-            {
-              "name": "stroke",
-              "type": {
-                "text": "\"border\" | \"ring\""
-              },
-              "default": "border",
-              "description": "Controls whether action-style link strokes are drawn with the normal border or an inset ring shadow."
-            },
-            {
-              "name": "stroke-ring-size",
-              "type": {
-                "text": "\"100\" | \"200\" | \"300\" | \"400\" | \"500\" | string"
-              },
-              "default": "100",
-              "description": "Ring stroke width when `stroke=\"ring\"` is used on action-style links. Token values map to `--stroke-size-*`."
-            },
-            {
-              "name": "focus-ring",
-              "type": {
-                "text": "\"inset\" | \"outset\""
-              },
-              "default": "default",
-              "description": "Controls focus outline placement. The default is inset; use `outset` only when the focus ring should sit outside the action."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Link scale; also controls automatic icon, File Icon, avatar, badge, and Switch sizing."
-            },
-            {
-              "name": "download",
-              "type": {
-                "text": "string | boolean"
-              },
-              "description": "Downloads the linked resource; provide a value to set a download filename."
-            },
-            {
-              "name": "usage",
-              "type": {
-                "text": "\"input\""
-              },
-              "description": "Uses field-compatible styling when the link is slotted before or after an input."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-link",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Link label or a single icon for an icon-only link action."
-            },
-            {
-              "name": "before",
-              "description": "Leading icon, avatar, badge, or other supporting content."
-            },
-            {
-              "name": "after",
-              "description": "Trailing icon, avatar, badge, or other supporting content."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--action-focus-outline",
-              "description": "Controls the link focus-visible outline. Defaults to stroke-size-400."
-            },
-            {
-              "name": "--action-focus-outline-offset",
-              "description": "Controls the link focus-visible outline offset. Defaults to an inset stroke-size-400 offset."
-            },
-            {
-              "name": "--action-focus-outline-inset-offset",
-              "description": "Controls the default inset focus outline offset. Defaults to stroke-size-400."
-            },
-            {
-              "name": "--action-focus-outline-outset-offset",
-              "description": "Controls the positive outline offset when `focus-ring=\"outset\"` is used. Defaults to stroke-size-200."
-            },
-            {
-              "name": "--link-focus-radius",
-              "description": "Controls the default inline link focus outline radius. Defaults to radius-200."
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "color"
-            },
-            {
-              "name": "font-family"
-            },
-            {
-              "name": "font-size"
-            },
-            {
-              "name": "font-weight"
-            },
-            {
-              "name": "letter-spacing"
-            },
-            {
-              "name": "line-height"
-            },
-            {
-              "name": "text-transform"
-            },
-            {
-              "name": "text-decoration"
-            },
-            {
-              "name": "text-align"
-            },
-            {
-              "name": "padding"
-            },
-            {
-              "name": "margin"
-            },
-            {
-              "name": "gap"
-            },
-            {
-              "name": "width"
-            },
-            {
-              "name": "height"
-            },
-            {
-              "name": "box-sizing"
-            },
-            {
-              "name": "display"
-            },
-            {
-              "name": "flex"
-            },
-            {
-              "name": "flex-direction"
-            },
-            {
-              "name": "flex-wrap"
-            },
-            {
-              "name": "justify-content"
-            },
-            {
-              "name": "align-items"
-            },
-            {
-              "name": "align-content"
-            },
-            {
-              "name": "align-self"
-            },
-            {
-              "name": "grid-template-columns"
-            },
-            {
-              "name": "grid-template-rows"
-            },
-            {
-              "name": "grid-column"
-            },
-            {
-              "name": "grid-row"
-            },
-            {
-              "name": "place-items"
-            },
-            {
-              "name": "place-content"
-            },
-            {
-              "name": "vertical-align"
-            },
-            {
-              "name": "background"
-            },
-            {
-              "name": "border"
-            },
-            {
-              "name": "border-radius"
-            },
-            {
-              "name": "box-shadow"
-            },
-            {
-              "name": "opacity"
-            },
-            {
-              "name": "transition"
-            },
-            {
-              "name": "outline"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-link",
-          "declaration": {
-            "name": "MuiLink",
-            "module": "src/components/mui-link/index.ts"
           }
         }
       ]
@@ -7920,7 +7934,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ Menu: { title: \"Menu\", description: \"Menu provides a reusable visual surface for dropdown and anchored overlay content.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-menu/index.ts\"], website: [\"https://muibook.com/menu\"], guides: [\"\"], usage: { list: [\"Use inside mui-dropdown to compose the portalled menu surface.\", \"Use size='x-small|small|medium|large' to scale the surface radius and all direct button or link actions together.\", \"Render independently when reviewing menu layouts and grouped overlay content.\"] }, accessibility: { designerList: [\"Keep menu actions concise and easy to scan.\"], engineerList: [\"Use Dropdown when trigger, focus, dismissal, and positioning behaviour is required.\"] }, anatomy: { image: \"\", list: [\"Surface\", \"Menu content\"] }, variants: { items: [] }, stories: { items: [ { key: \"action-menu\", title: \"Action Menu\", list: [\"Use Menu to provide the visual surface and vertical layout for a related set of actions.\", \"Menu accepts direct Button or Link actions and remains fully composable with system components and their slots.\", \"Compose Menu inside Dropdown when the surface needs trigger, portal, positioning, focus, and dismissal behaviour.\"] }, { key: \"searchable-menu\", title: \"Searchable Menu\", list: [\"Place search and filtering controls before a scrollable action set when menus contain many options.\", \"Keep filtering in application state; Menu provides the visual surface and composition boundary.\", \"Use a hidden Body with role=status and aria-live=polite for the empty-state message. Reveal it only when every searchable action is hidden.\"] }, { key: \"inset\", title: \"Inset Content\", list: [\"Use the inset attribute to add padding to the menu's scrollable region, allowing buttons and other nested items to retain their natural border radius instead of spanning edge-to-edge.\"] }, { key: \"sections\", title: \"Sections\", list: [\"Use labelled sections when one Menu contains distinct groups of related files or actions.\", \"Place Search before the section headings when it filters content across the complete Menu.\", \"Use File Icon for file-type recognition and standard system icons for destinations or commands; both inherit sizing from the containing Button.\"] }, { key: \"select-menu\", title: \"Select Menu\", list: [\"Use a direct Select when the chosen option establishes the context for the actions below it.\", \"This example selects a design-system theme before previewing, editing, duplicating, or exporting that theme.\", \"Set size on Menu only; Menu enforces the same size and inset treatment on the Select and direct actions.\"] }, { key: \"date-menu\", title: \"Date Menu\", list: [\"Use a bottom-slotted Date Picker when the selected date applies to the actions grouped above it.\", \"This example supports reviewing the day, creating an event, copying the date, or exporting its schedule.\", \"Menu propagates its size and inset field radius to the Date Picker and its composed calendar action.\"] }, { key: \"input-menu\", title: \"Input Menu\", list: [\"Use a bottom-slotted Input when actions above provide context for the value being entered.\", \"Set size on Menu only; Menu keeps the Input and actions aligned while inset preserves their individual radii.\"] }, { key: \"time-menu\", title: \"Time Menu\", list: [\"Use a bottom-slotted Time Picker when the selected time applies to the actions grouped above it.\", \"The examples cover every Menu size and inherit the same size in the composed Time Picker input.\"] }, { key: \"chip-input-menu\", title: \"Chip Input Menu\", list: [\"Use a top-slotted Chip Input to filter or assign multiple values before acting on the selection.\", \"The examples cover every Menu size and keep the selected chips seamless with the Menu surface.\"] }, { key: \"language-toggles\", title: \"Language Toggles\", list: [\"Use composed rows for independent settings rather than menu commands.\", \"File Icon adds fast language recognition while Switch owns each boolean selection.\"] }, { key: \"range-input-menu\", title: \"Range Input Menu\", list: [\"Use Range Input for an adjustable value within a compact settings or playback menu.\", \"Nested controls are sized explicitly from the same Menu size because only direct Menu children inherit size automatically.\"] }, { key: \"sizes\", title: \"Sizes\", list: [\"Menu supports x-small, small, medium, and large.\", \"The selected size controls the surface radius and is enforced on direct button and link actions.\"] }, { key: \"grouped-content\", title: \"Grouped Content\", list: [\"Use concise headings and rules to separate related groups without turning the menu into a full page layout.\", \"Menu accepts composed content, but interactive actions should remain easy to scan and operate.\", \"Use inset when grouped actions should retain their individual radii and sit inside the Menu edge.\"] }, { key: \"states\", title: \"States\", list: [\"Use the primary treatment to show the current or selected menu action.\", \"The active appearance shown here is the base theme treatment; customize it to suit your product theme.\", \"Disable an action only when it must remain visible but cannot currently be used.\"] }, ], }, compositions: { description: \"\", items: [] }, related: { items: [{ name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }] }, rules: [], behaviour: { list: [\"Menu owns presentation only; Dropdown owns overlay interaction and portal behaviour.\", \"Menu enforces its size on direct body, button, and link children while leaving rules and custom grouped content untouched.\", \"Menu radius is capped by the matching form radius so circular action tokens cannot turn the surface into a pill.\", \"Direct Body content receives action padding so headings and labels align with Menu actions.\", \"Top and bottom slots remain fixed around the scrollable default content, apply seamless form-control surfaces, and add a separator only when populated.\", \"Use inset when a Menu includes top or bottom content; keep action-only menus edge-to-edge.\", \"Inset state is passed to direct Button and Link actions so each component applies its own size-specific action padding independently from Menu content padding.\", \"When a direct Body heading precedes the first action, that action remains square at the top because the heading already buffers it from the Menu edge.\"] }, writing: { list: [\"Use short action labels and group related commands together.\"] }, }, }"
+          "default": "{ Menu: { title: \"Menu\", description: \"Menu provides a reusable visual surface for dropdown and anchored overlay content.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-menu/index.ts\"], website: [\"https://muibook.com/menu\"], guides: [\"\"], usage: { list: [\"Use inside mui-dropdown to compose the portalled menu surface.\", \"Use size='x-small|small|medium|large' to scale the surface radius and all direct button or link actions together.\", \"Render independently when reviewing menu layouts and grouped overlay content.\"] }, accessibility: { designerList: [\"Keep menu actions concise and easy to scan.\"], engineerList: [\"Use Dropdown when trigger, focus, dismissal, and positioning behaviour is required.\"] }, anatomy: { image: \"\", list: [\"Surface\", \"Menu content\"] }, variants: { items: [] }, stories: { items: [ { key: \"action-menu\", title: \"Action Menu\", list: [\"Use Menu to provide the visual surface and vertical layout for a related set of actions.\", \"Menu accepts direct Button or Link actions and remains fully composable with system components and their slots.\", \"Compose Menu inside Dropdown when the surface needs trigger, portal, positioning, focus, and dismissal behaviour.\"] }, { key: \"submenu\", title: \"Submenu\", description: \"Provides a viewport-aware nested Menu from a parent Menu action.\", list: [\"Use a direct Button as the Submenu trigger because opening nested actions is disclosure behavior, not navigation or selection.\", \"Hover the trigger or move keyboard focus into the Submenu to reveal its Menu.\", \"Submenu flips sides when space is constrained and may overlap the parent Menu as a final fallback instead of clipping outside the viewport.\", \"Use a top-slotted Search Input on the parent Menu when its top-level actions benefit from filtering.\", \"The examples cover every Menu size with the Submenu shown in first, middle, and last positions.\"] }, { key: \"searchable-menu\", title: \"Searchable Menu\", list: [\"Place search and filtering controls before a scrollable action set when menus contain many options.\", \"Keep filtering in application state; Menu provides the visual surface and composition boundary.\", \"Use a hidden Body with role=status and aria-live=polite for the empty-state message. Reveal it only when every searchable action is hidden.\"] }, { key: \"inset\", title: \"Inset Content\", list: [\"Use the inset attribute to add padding to the menu's scrollable region, allowing buttons and other nested items to retain their natural border radius instead of spanning edge-to-edge.\"] }, { key: \"sections\", title: \"Sections\", list: [\"Use labelled sections when one Menu contains distinct groups of related files or actions.\", \"Place Search before the section headings when it filters content across the complete Menu.\", \"Use File Icon for file-type recognition and standard system icons for destinations or commands; both inherit sizing from the containing Button.\"] }, { key: \"select-menu\", title: \"Select Menu\", list: [\"Use a direct Select when the chosen option establishes the context for the actions below it.\", \"This example selects a design-system theme before previewing, editing, duplicating, or exporting that theme.\", \"Set size on Menu only; Menu enforces the same size and inset treatment on the Select and direct actions.\"] }, { key: \"date-menu\", title: \"Date Menu\", list: [\"Use a bottom-slotted Date Picker when the selected date applies to the actions grouped above it.\", \"This example supports reviewing the day, creating an event, copying the date, or exporting its schedule.\", \"Menu propagates its size and inset field radius to the Date Picker and its composed calendar action.\"] }, { key: \"input-menu\", title: \"Input Menu\", list: [\"Use a bottom-slotted Input when actions above provide context for the value being entered.\", \"Set size on Menu only; Menu keeps the Input and actions aligned while inset preserves their individual radii.\"] }, { key: \"time-menu\", title: \"Time Menu\", list: [\"Use a bottom-slotted Time Picker when the selected time applies to the actions grouped above it.\", \"The examples cover every Menu size and inherit the same size in the composed Time Picker input.\"] }, { key: \"chip-input-menu\", title: \"Chip Input Menu\", list: [\"Use a top-slotted Chip Input to filter or assign multiple values before acting on the selection.\", \"The examples cover every Menu size and keep the selected chips seamless with the Menu surface.\"] }, { key: \"language-toggles\", title: \"Language Toggles\", list: [\"Use composed rows for independent settings rather than menu commands.\", \"File Icon adds fast language recognition while Switch owns each boolean selection.\"] }, { key: \"range-input-menu\", title: \"Range Input Menu\", list: [\"Use Range Input for an adjustable value within a compact settings or playback menu.\", \"Nested controls are sized explicitly from the same Menu size because only direct Menu children inherit size automatically.\"] }, { key: \"sizes\", title: \"Sizes\", list: [\"Menu supports x-small, small, medium, and large.\", \"The selected size controls the surface radius and is enforced on direct button and link actions.\"] }, { key: \"grouped-content\", title: \"Grouped Content\", list: [\"Use concise headings and rules to separate related groups without turning the menu into a full page layout.\", \"Menu accepts composed content, but interactive actions should remain easy to scan and operate.\", \"Use inset when grouped actions should retain their individual radii and sit inside the Menu edge.\"] }, { key: \"selectable-actions\", title: \"Selectable Actions\", description: \"Adds application-owned single-selection behavior to a composed Menu.\", list: [\"Menu does not select actions automatically; manage the selected value and visual treatment in application state.\", \"Use the primary treatment only when an action represents the current selection, not for ordinary commands or Submenu triggers.\", \"Update aria-pressed with the visual variant so assistive technology receives the same selected state.\", \"The active appearance shown here is the base theme treatment; customize it to suit your product theme.\", \"Disable an action only when it must remain visible but cannot currently be used.\"] }, ], }, compositions: { description: \"\", items: [] }, related: { items: [{ name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }] }, rules: [], behaviour: { list: [\"Menu owns presentation only; Dropdown owns overlay interaction and portal behaviour.\", \"Menu enforces its size and align='start' on direct Button and Link children while leaving rules and custom grouped content independently composed.\", \"A direct Submenu passes the same Menu action context to its direct Button trigger.\", \"Menu radius is capped by the matching form radius so circular action tokens cannot turn the surface into a pill.\", \"Direct Body content receives action padding so headings and labels align with Menu actions.\", \"Top and bottom slots provide compositional regions, apply seamless form-control surfaces, and add a separator only when populated.\", \"Use inset when a Menu includes top or bottom content; keep action-only menus edge-to-edge.\", \"Inset state is passed to direct Button and Link actions so each component applies its own size-specific action padding independently from Menu content padding.\", \"When a direct Body heading precedes the first action, that action remains square at the top because the heading already buffers it from the Menu edge.\"] }, writing: { list: [\"Use short action labels and group related commands together.\"] }, }, }"
         }
       ],
       "exports": [
@@ -7956,7 +7970,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Applies padding to the menu's scrollable content region and prevents direct action and form-control children from stretching to the menu's edge, allowing them to retain their natural border radius."
+              "description": "Applies padding to the Menu content region and prevents direct action and form-control children from stretching to the Menu edge, allowing them to retain their natural border radius."
             },
             {
               "name": "width",
@@ -7974,15 +7988,15 @@
           "slots": [
             {
               "name": "",
-              "description": "Scrollable Menu content. Direct body, action, and supported form-control children inherit Menu sizing; rules and custom grouped content remain independently composed."
+              "description": "Menu content. Direct body, action, Submenu, and supported form-control children inherit Menu sizing; rules and custom grouped content remain independently composed."
             },
             {
               "name": "top",
-              "description": "Fixed top content with a bottom separator. Direct form controls merge seamlessly into the Menu surface."
+              "description": "Top content with a bottom separator. Direct form controls merge seamlessly into the Menu surface."
             },
             {
               "name": "bottom",
-              "description": "Fixed bottom content with a top separator. Direct form controls merge seamlessly into the Menu surface."
+              "description": "Bottom content with a top separator. Direct form controls merge seamlessly into the Menu surface."
             }
           ],
           "events": [],
@@ -8021,11 +8035,11 @@
             },
             {
               "name": "--menu-inset-padding-block",
-              "description": "Block padding applied to the scrollable content region when the inset attribute is used."
+              "description": "Block padding applied to the content region when the inset attribute is used."
             },
             {
               "name": "--menu-inset-padding-inline",
-              "description": "Inline padding applied to the scrollable content region when the inset attribute is used."
+              "description": "Inline padding applied to the content region when the inset attribute is used."
             }
           ]
         }
@@ -11482,6 +11496,73 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-submenu/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Submenu: { title: \"Submenu\", description: \"Submenu reveals a viewport-aware nested Menu from a parent Menu action.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-submenu/index.ts\"], website: [\"https://muibook.com/menu\"], guides: [\"\"], usage: { list: [ \"Place Submenu directly inside Menu.\", \"Use a direct Button as its trigger and a direct Menu for the nested actions.\", ], }, accessibility: { designerList: [\"Keep nested action labels concise and related to the parent trigger.\"], engineerList: [\"Submenu synchronizes aria-haspopup and aria-expanded on its direct Button trigger.\"], }, anatomy: { image: \"\", list: [\"Button trigger\", \"Nested Menu\"] }, variants: { items: [] }, stories: { items: [] }, compositions: { description: \"\", items: [] }, related: { items: [{ name: \"Menu\", link: \"https://guides.muibook.com/menu\" }, { name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }] }, rules: [], behaviour: { list: [ \"The nested Menu opens on pointer hover or when focus moves into Submenu.\", \"An invisible bridge covers the visual gap, and a short close delay supports diagonal pointer movement into the nested Menu.\", \"The nested Menu prefers the inline end, flips to the inline start when space is constrained, and overlaps the parent Menu as a final fallback instead of clipping outside the viewport.\", \"Vertical placement shifts as needed to keep the nested Menu visible.\", \"Position is recalculated while open when the viewport, a scroll container, or the nested Menu size changes.\", \"The active Submenu is raised above adjacent controls so overlapping content cannot intercept its pointer interaction.\", \"Pointer activation does not retain focus on the trigger, and selecting a nested action closes the Submenu.\", \"The parent Menu passes its action size, weight, variant, inset, and radius context to the trigger.\", ], }, writing: { list: [\"Name the trigger for the category of actions contained in the nested Menu.\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-submenu/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-submenu/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Reveals a viewport-aware nested Menu from a Button inside a parent Menu.",
+          "name": "MuiSubmenu",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-submenu",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "A direct Button trigger followed by the direct Menu containing the nested actions."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-submenu",
+          "declaration": {
+            "name": "MuiSubmenu",
+            "module": "src/components/mui-submenu/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MuiSubmenu",
+          "declaration": {
+            "name": "MuiSubmenu",
+            "module": "src/components/mui-submenu/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-switch/doc.ts",
       "declarations": [
         {
@@ -13072,50 +13153,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-list/list/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups ordered or unordered list item content.",
-          "name": "MuiList",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-list",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "as",
-              "type": {
-                "text": "\"ul\" | \"ol\""
-              },
-              "default": "ul",
-              "description": "Sets unordered or ordered marker styling for the list."
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-list-item` children."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-list",
-          "declaration": {
-            "name": "MuiList",
-            "module": "src/components/mui-list/list/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-list/item/index.ts",
       "declarations": [
         {
@@ -13213,6 +13250,226 @@
           "declaration": {
             "name": "MuiSlatGroup",
             "module": "src/components/mui-slat/group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-stack/vstack/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Arranges slotted content vertically with token-based spacing and alignment controls.",
+          "name": "MuiVStack",
+          "attributes": [
+            {
+              "name": "space",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-500)",
+              "description": "Gap between children. Accepts any valid CSS gap value or design token."
+            },
+            {
+              "name": "alignx",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Horizontal alignment of children, mapped to grid `justify-items`."
+            },
+            {
+              "name": "aligny",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Vertical alignment of children, mapped to grid `align-items`."
+            },
+            {
+              "name": "padding",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-000)",
+              "description": "Padding applied inside the stack. Accepts any valid CSS padding value or design token."
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
+            },
+            {
+              "name": "viewport",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region."
+            },
+            {
+              "name": "fill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets width and height to `100%` when the parent supplies a clearly bounded layout region."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-v-stack",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Content arranged vertically inside the stack."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--stack-height",
+              "description": "Resolved stack host height. Prefer the `height`, `viewport`, or `fill` attributes for common layouts."
+            },
+            {
+              "name": "--stack-width",
+              "description": "Resolved stack host width. Prefer the `width` or `fill` attributes for common layouts."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "color"
+            },
+            {
+              "name": "font-family"
+            },
+            {
+              "name": "font-size"
+            },
+            {
+              "name": "font-weight"
+            },
+            {
+              "name": "letter-spacing"
+            },
+            {
+              "name": "line-height"
+            },
+            {
+              "name": "text-transform"
+            },
+            {
+              "name": "text-decoration"
+            },
+            {
+              "name": "text-align"
+            },
+            {
+              "name": "padding"
+            },
+            {
+              "name": "margin"
+            },
+            {
+              "name": "gap"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            },
+            {
+              "name": "box-sizing"
+            },
+            {
+              "name": "display"
+            },
+            {
+              "name": "flex"
+            },
+            {
+              "name": "flex-direction"
+            },
+            {
+              "name": "flex-wrap"
+            },
+            {
+              "name": "justify-content"
+            },
+            {
+              "name": "align-items"
+            },
+            {
+              "name": "align-content"
+            },
+            {
+              "name": "align-self"
+            },
+            {
+              "name": "grid-template-columns"
+            },
+            {
+              "name": "grid-template-rows"
+            },
+            {
+              "name": "grid-column"
+            },
+            {
+              "name": "grid-row"
+            },
+            {
+              "name": "place-items"
+            },
+            {
+              "name": "place-content"
+            },
+            {
+              "name": "vertical-align"
+            },
+            {
+              "name": "background"
+            },
+            {
+              "name": "border"
+            },
+            {
+              "name": "border-radius"
+            },
+            {
+              "name": "box-shadow"
+            },
+            {
+              "name": "opacity"
+            },
+            {
+              "name": "transition"
+            },
+            {
+              "name": "outline"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-v-stack",
+          "declaration": {
+            "name": "MuiVStack",
+            "module": "src/components/mui-stack/vstack/index.ts"
           }
         }
       ]
@@ -13534,6 +13791,50 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-list/list/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups ordered or unordered list item content.",
+          "name": "MuiList",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-list",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "as",
+              "type": {
+                "text": "\"ul\" | \"ol\""
+              },
+              "default": "ul",
+              "description": "Sets unordered or ordered marker styling for the list."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-list-item` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-list",
+          "declaration": {
+            "name": "MuiList",
+            "module": "src/components/mui-list/list/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-stepper/step/index.ts",
       "declarations": [
         {
@@ -13604,66 +13905,6 @@
           "declaration": {
             "name": "MuiStep",
             "module": "src/components/mui-stepper/step/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-table/cell/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays content inside a table row with optional checkbox or action-column alignment.",
-          "name": "MuiCell",
-          "attributes": [
-            {
-              "name": "align-y",
-              "type": {
-                "text": "string"
-              },
-              "default": "initial",
-              "description": "Sets vertical alignment using any valid CSS `align-self` value."
-            },
-            {
-              "name": "action",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Aligns a final-column action control using the parent row action size."
-            },
-            {
-              "name": "checkbox",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Applies compact alignment for a checkbox column."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-cell",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Cell text or component content."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-cell",
-          "declaration": {
-            "name": "MuiCell",
-            "module": "src/components/mui-table/cell/index.ts"
           }
         }
       ]
@@ -13754,220 +13995,60 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-stack/vstack/index.ts",
+      "path": "src/components/mui-table/cell/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Arranges slotted content vertically with token-based spacing and alignment controls.",
-          "name": "MuiVStack",
+          "description": "Displays content inside a table row with optional checkbox or action-column alignment.",
+          "name": "MuiCell",
           "attributes": [
             {
-              "name": "space",
+              "name": "align-y",
               "type": {
                 "text": "string"
               },
-              "default": "var(--space-500)",
-              "description": "Gap between children. Accepts any valid CSS gap value or design token."
+              "default": "initial",
+              "description": "Sets vertical alignment using any valid CSS `align-self` value."
             },
             {
-              "name": "alignx",
-              "type": {
-                "text": "string"
-              },
-              "default": "normal",
-              "description": "Horizontal alignment of children, mapped to grid `justify-items`."
-            },
-            {
-              "name": "aligny",
-              "type": {
-                "text": "string"
-              },
-              "default": "normal",
-              "description": "Vertical alignment of children, mapped to grid `align-items`."
-            },
-            {
-              "name": "padding",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-000)",
-              "description": "Padding applied inside the stack. Accepts any valid CSS padding value or design token."
-            },
-            {
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
-            },
-            {
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
-            },
-            {
-              "name": "viewport",
+              "name": "action",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region."
+              "description": "Aligns a final-column action control using the parent row action size."
             },
             {
-              "name": "fill",
+              "name": "checkbox",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Sets width and height to `100%` when the parent supplies a clearly bounded layout region."
+              "description": "Applies compact alignment for a checkbox column."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-v-stack",
+          "tagName": "mui-cell",
           "customElement": true,
           "slots": [
             {
               "name": "",
-              "description": "Content arranged vertically inside the stack."
+              "description": "Cell text or component content."
             }
           ],
           "events": [],
-          "cssProperties": [
-            {
-              "name": "--stack-height",
-              "description": "Resolved stack host height. Prefer the `height`, `viewport`, or `fill` attributes for common layouts."
-            },
-            {
-              "name": "--stack-width",
-              "description": "Resolved stack host width. Prefer the `width` or `fill` attributes for common layouts."
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "color"
-            },
-            {
-              "name": "font-family"
-            },
-            {
-              "name": "font-size"
-            },
-            {
-              "name": "font-weight"
-            },
-            {
-              "name": "letter-spacing"
-            },
-            {
-              "name": "line-height"
-            },
-            {
-              "name": "text-transform"
-            },
-            {
-              "name": "text-decoration"
-            },
-            {
-              "name": "text-align"
-            },
-            {
-              "name": "padding"
-            },
-            {
-              "name": "margin"
-            },
-            {
-              "name": "gap"
-            },
-            {
-              "name": "width"
-            },
-            {
-              "name": "height"
-            },
-            {
-              "name": "box-sizing"
-            },
-            {
-              "name": "display"
-            },
-            {
-              "name": "flex"
-            },
-            {
-              "name": "flex-direction"
-            },
-            {
-              "name": "flex-wrap"
-            },
-            {
-              "name": "justify-content"
-            },
-            {
-              "name": "align-items"
-            },
-            {
-              "name": "align-content"
-            },
-            {
-              "name": "align-self"
-            },
-            {
-              "name": "grid-template-columns"
-            },
-            {
-              "name": "grid-template-rows"
-            },
-            {
-              "name": "grid-column"
-            },
-            {
-              "name": "grid-row"
-            },
-            {
-              "name": "place-items"
-            },
-            {
-              "name": "place-content"
-            },
-            {
-              "name": "vertical-align"
-            },
-            {
-              "name": "background"
-            },
-            {
-              "name": "border"
-            },
-            {
-              "name": "border-radius"
-            },
-            {
-              "name": "box-shadow"
-            },
-            {
-              "name": "opacity"
-            },
-            {
-              "name": "transition"
-            },
-            {
-              "name": "outline"
-            }
-          ]
+          "cssProperties": []
         }
       ],
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-v-stack",
+          "name": "mui-cell",
           "declaration": {
-            "name": "MuiVStack",
-            "module": "src/components/mui-stack/vstack/index.ts"
+            "name": "MuiCell",
+            "module": "src/components/mui-table/cell/index.ts"
           }
         }
       ]
@@ -14203,139 +14284,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-tabs/tab-bar/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups related tab items and renders an active selection highlight.",
-          "name": "MuiTabBar",
-          "events": [
-            {
-              "name": "tab-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Dispatched when the active tab changes."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Size applied to child tab items."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"dots\" | \"ghost\""
-              },
-              "default": "default",
-              "description": "Visual treatment for the tab bar and its children."
-            },
-            {
-              "name": "stroke",
-              "type": {
-                "text": "\"border\" | \"none\""
-              },
-              "default": "border",
-              "description": "Controls whether the default tab bar border is rendered. When border is used, child tab item heights are reduced so the total control height stays aligned to action sizing."
-            },
-            {
-              "name": "radius",
-              "type": {
-                "text": "\"000\" | \"100\" | \"150\" | \"200\" | \"300\" | \"400\" | \"500\" | \"600\" | string"
-              },
-              "default": "var(--tab-radius)",
-              "description": "Overrides the tab bar radius. Token values map to `--radius-*`; raw CSS radius values are also accepted."
-            },
-            {
-              "name": "active-inset",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Uses an inset active shadow recipe for the selected tab surface instead of the default active shadow."
-            },
-            {
-              "name": "orientation",
-              "type": {
-                "text": "\"horizontal\" | \"vertical\""
-              },
-              "default": "horizontal",
-              "description": "ARIA orientation and keyboard navigation axis."
-            },
-            {
-              "name": "speed",
-              "type": {
-                "text": "string"
-              },
-              "default": "200",
-              "description": "Active indicator transition duration in milliseconds."
-            },
-            {
-              "name": "full-width",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Expands the tab bar across the available width."
-            },
-            {
-              "name": "controlsPosition",
-              "type": {
-                "text": "\"top\" | \"right\" | \"bottom\" | \"left\" | \"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\""
-              },
-              "default": "bottom",
-              "description": "Positions tab controls when the tab bar is slotted into a `mui-carousel-controller`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-bar",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Tab items controlled by the tab bar."
-            }
-          ],
-          "cssProperties": [
-            {
-              "name": "--tab-shadow-active-color",
-              "description": "Default color used to construct the active highlight shadow."
-            },
-            {
-              "name": "--tab-shadow-active",
-              "description": "Full box-shadow value for the active tab highlight, allowing geometry and color overrides."
-            },
-            {
-              "name": "--tab-active-shadow",
-              "description": "Resolved active tab shadow used by the highlight layer."
-            },
-            {
-              "name": "--tab-active-inset-width",
-              "description": "Inset width used to create the inner active surface when `active-inset` is present."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-bar",
-          "declaration": {
-            "name": "MuiTabBar",
-            "module": "src/components/mui-tabs/tab-bar/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-tabs/item/index.ts",
       "declarations": [
         {
@@ -14463,6 +14411,139 @@
           "declaration": {
             "name": "MuiTabPanel",
             "module": "src/components/mui-tabs/panel/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/tab-bar/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups related tab items and renders an active selection highlight.",
+          "name": "MuiTabBar",
+          "events": [
+            {
+              "name": "tab-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when the active tab changes."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Size applied to child tab items."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"dots\" | \"ghost\""
+              },
+              "default": "default",
+              "description": "Visual treatment for the tab bar and its children."
+            },
+            {
+              "name": "stroke",
+              "type": {
+                "text": "\"border\" | \"none\""
+              },
+              "default": "border",
+              "description": "Controls whether the default tab bar border is rendered. When border is used, child tab item heights are reduced so the total control height stays aligned to action sizing."
+            },
+            {
+              "name": "radius",
+              "type": {
+                "text": "\"000\" | \"100\" | \"150\" | \"200\" | \"300\" | \"400\" | \"500\" | \"600\" | string"
+              },
+              "default": "var(--tab-radius)",
+              "description": "Overrides the tab bar radius. Token values map to `--radius-*`; raw CSS radius values are also accepted."
+            },
+            {
+              "name": "active-inset",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Uses an inset active shadow recipe for the selected tab surface instead of the default active shadow."
+            },
+            {
+              "name": "orientation",
+              "type": {
+                "text": "\"horizontal\" | \"vertical\""
+              },
+              "default": "horizontal",
+              "description": "ARIA orientation and keyboard navigation axis."
+            },
+            {
+              "name": "speed",
+              "type": {
+                "text": "string"
+              },
+              "default": "200",
+              "description": "Active indicator transition duration in milliseconds."
+            },
+            {
+              "name": "full-width",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Expands the tab bar across the available width."
+            },
+            {
+              "name": "controlsPosition",
+              "type": {
+                "text": "\"top\" | \"right\" | \"bottom\" | \"left\" | \"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\""
+              },
+              "default": "bottom",
+              "description": "Positions tab controls when the tab bar is slotted into a `mui-carousel-controller`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-bar",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Tab items controlled by the tab bar."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--tab-shadow-active-color",
+              "description": "Default color used to construct the active highlight shadow."
+            },
+            {
+              "name": "--tab-shadow-active",
+              "description": "Full box-shadow value for the active tab highlight, allowing geometry and color overrides."
+            },
+            {
+              "name": "--tab-active-shadow",
+              "description": "Resolved active tab shadow used by the highlight layer."
+            },
+            {
+              "name": "--tab-active-inset-width",
+              "description": "Inset width used to create the inner active surface when `active-inset` is present."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-bar",
+          "declaration": {
+            "name": "MuiTabBar",
+            "module": "src/components/mui-tabs/tab-bar/index.ts"
           }
         }
       ]

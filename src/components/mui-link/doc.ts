@@ -47,7 +47,7 @@ export const muiDocs: MuiDocs = {
           key: "size-large",
           title: "Size: Large",
           description:
-            "Used when a link needs to stand out in layouts, such as hero sections or alongside large headings. If used inline, it should match the surrounding text size to maintain visual hierarchy and scale consistency. E.g. Use small size icon when it is paired with large sized link.",
+            "Used when a link needs to stand out in layouts, such as hero sections or alongside large headings. If used inline, it should match the surrounding text size to maintain visual hierarchy and scale consistency. E.g. Use medium size icon when it is paired with large sized link.",
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/Tbxhps7s88CFzROYc0Lqs/3440df9aefca7cb9de3ce5015a3a4e82/Default_-_Large.png",
         },
@@ -56,7 +56,7 @@ export const muiDocs: MuiDocs = {
           key: "size-medium",
           title: "Size: Medium (Default)",
           description:
-            "The standard size for most link usage. Works well inline with body text or as standalone links within common page layouts. When used inline, it aligns with default body text for consistent reading flow. E.g. Use x-small size icon when it is paired with medium sized link.",
+            "The standard size for most link usage. Works well inline with body text or as standalone links within common page layouts. When used inline, it aligns with default body text for consistent reading flow. E.g. Use small size icon when it is paired with medium sized link.",
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/3NbinCPLEbtetN63xh18Sy/e0a0e9bbcd11a71faefc6ad1fc0e064d/Default_-_Medium.png",
         },
@@ -72,7 +72,7 @@ export const muiDocs: MuiDocs = {
           key: "size-x-small",
           title: "Size: XSmall",
           description:
-            "Used sparingly in tight spaces like toolbars, metadata, or inline legal text. Should align with surrounding text to avoid disrupting scale and hierarchy. E.g. Use x-small size icon when it is paired with x-small sized link.",
+            "Used sparingly in tight spaces like toolbars, metadata, or inline legal text. Should align with surrounding text to avoid disrupting scale and hierarchy. E.g. Use xx-small size icon when it is paired with x-small sized link.",
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/27dAzNJ6Q5XHVKv5ROXq36/ace1f6540b5f363624730be001bf91ce/Default_-_XSmall.png",
         },

@@ -2,6 +2,8 @@ import { getPartMap } from "../../utils/part-map";
 
 /* Mui Link */
 class MuiLink extends HTMLElement {
+  private autoSizedIcons = new WeakMap<HTMLElement, string>();
+
   static get observedAttributes() {
     return [
       "target",
@@ -287,6 +289,15 @@ class MuiLink extends HTMLElement {
         width: inherit;
         display: inherit;
         border-radius: var(--link-focus-radius, var(--radius-200));
+      }
+
+      :host([align="start"]) a {
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      :host([align="start"][has-after]) a ::slotted([slot="after"]) {
+        margin-inline-start: auto;
       }
 
       /* Turned back on for focus-visible */
@@ -954,7 +965,6 @@ class MuiLink extends HTMLElement {
       :host([size][menu-slot]) a[aria-disabled="true"] {
         border-radius: var(--radius-000);
         font-weight: var(--font-weight-regular);
-        justify-content: flex-start;
         white-space: nowrap;
       }
 
@@ -1128,8 +1138,6 @@ class MuiLink extends HTMLElement {
       :host([menu-inset][size]) a:hover,
       :host([menu-inset][size]) a:focus,
       :host([menu-inset][size]) a[aria-disabled="true"] {
-        justify-content: flex-start;
-        text-align: left;
         font-weight: var(--font-weight-regular);
         white-space: nowrap;
       }
@@ -1250,7 +1258,7 @@ class MuiLink extends HTMLElement {
     // Map link sizes to icon sizes
     const iconSizeMap: Record<string, string> = {
       "xx-small": "xx-small",
-      "x-small": "x-small",
+      "x-small": "xx-small",
       small: "x-small",
       medium: isIconOnly ? "medium" : "small",
       large: isIconOnly ? "large" : "medium",
@@ -1264,9 +1272,15 @@ class MuiLink extends HTMLElement {
         const tagName = el.tagName.toLowerCase();
         const isIcon = tagName === "svg" || el.classList.contains("mui-icon") || tagName === "mui-icon";
 
-        // Only set size if the element doesn't already have one
-        if (isIcon && !el.hasAttribute("size")) {
+        if (!isIcon) return;
+
+        const currentSize = el.getAttribute("size");
+        const previousAutoSize = this.autoSizedIcons.get(el);
+        if (currentSize === null || currentSize === previousAutoSize) {
           el.setAttribute("size", targetIconSize);
+          this.autoSizedIcons.set(el, targetIconSize);
+        } else {
+          this.autoSizedIcons.delete(el);
         }
       }
     });
