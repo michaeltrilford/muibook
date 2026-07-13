@@ -429,6 +429,7 @@ html[data-theme="light"] {
   --status-indigo-text-color: color-mix(in srgb, var(--categorical-indigo-800) 72%, black 28%);
 
   /* Chip */
+  --chip-background-menu: var(--white);
   --chip-background: var(--white);
   --chip-background-hover: var(--white);
   --chip-background-focus: var(--white);
@@ -831,6 +832,7 @@ html[data-theme="dark"] {
   --status-indigo-text-color: color-mix(in srgb, var(--categorical-indigo-200) 78%, white 82%);
 
   /* Chip */
+  --chip-background-menu: var(--grey-900);
   --chip-background: var(--grey-800);
   --chip-background-hover: var(--grey-800);
   --chip-background-focus: var(--grey-800);

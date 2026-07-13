@@ -16,6 +16,7 @@
 /* 2. LIGHT MODE                                                                                        */
 /* ==================================================================================================== */
 html[data-brand="sensei"][data-theme="light"] {
+  --chip-background-menu: var(--green-200);
   --work-log-shimmer-color-primary: var(--green-1400);
   --work-log-shimmer-color-secondary: var(--green-900);
 
@@ -275,6 +276,7 @@ html[data-brand="sensei"][data-theme="light"] {
 /* 3. DARK MODE                                                                                         */
 /* ==================================================================================================== */
 html[data-brand="sensei"][data-theme="dark"] {
+  --chip-background-menu: var(--green-1400);
   --work-log-shimmer-color-primary: var(--green-100);
   --work-log-shimmer-color-secondary: var(--green-400);
 

@@ -322,6 +322,11 @@ class MuiMenu extends HTMLElement {
           margin-block: var(--menu-inset);
         }
 
+        ::slotted(mui-chip),
+        ::slotted(mui-chip-input) {
+          --chip-background: var(--chip-background-menu);
+        }
+
         ::slotted(mui-button),
         ::slotted(mui-link) {
           width: 100%;

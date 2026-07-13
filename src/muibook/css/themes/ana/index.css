@@ -16,6 +16,7 @@
 /* 2. LIGHT MODE                                                                   */
 /* =============================================================================== */
 html[data-brand="ana"][data-theme="light"] {
+  --chip-background-menu: var(--white);
   --work-log-shimmer-color-primary: var(--grey-1100);
   --work-log-shimmer-color-secondary: var(--grey-400);
 
@@ -214,6 +215,7 @@ html[data-brand="ana"][data-theme="light"] {
 /* 3. DARK MODE                                                                    */
 /* =============================================================================== */
 html[data-brand="ana"][data-theme="dark"] {
+  --chip-background-menu: var(--grey-900);
   --work-log-shimmer-color-primary: var(--grey-100);
   --work-log-shimmer-color-secondary: var(--grey-500);
 

@@ -21,6 +21,7 @@ _Status: WIP_
 - Direct Button and Link actions inside Menu now use `var(--font-weight-regular)` for a consistent action hierarchy.
 - Added directional `--action-padding-block-*` and `--action-padding-inline-*` tokens for every action size. Existing `--action-padding-*` shorthand tokens now compose those values, allowing inset compositions to adjust inline padding without reconstructing the full shorthand.
 - Added the resolved, size-aware `--menu-inset` custom property. Menu content, direct Body headings, Button and Link actions, and inset Rule spacing now share the same inset measurement.
+- Added `--chip-background-menu` for direct Chip and Chip Input compositions inside Menu. Mui keeps the existing white treatment in light mode and uses `grey-900` in dark mode without changing the global Chip background; JAL, ANA, Sensei, and Paperclip provide matching brand mappings.
 - Added the `content` CSS part to `mui-body`, exposing the internal span that wraps default body text for targeted composed-component styling.
 - Pending Thinking states in `mui-work-log` now use a text-clipped linear-gradient shimmer with reduced-motion support. The theme-aware `--work-log-shimmer-color-primary` and `--work-log-shimmer-color-secondary` tokens are mapped for Mui, JAL, ANA, Sensei, and Paperclip themes.
 - Input and Textarea now support public `padding-block` and `padding-inline` overrides matching Select; Date Picker, Time Picker, Search Input, and Chip Input forward those values to their internal Input.
