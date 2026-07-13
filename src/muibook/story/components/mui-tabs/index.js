@@ -13,7 +13,9 @@ class storyTabBar extends HTMLElement {
       this.shadowRoot.innerHTML = `<story-metadata-empty component="Tab Bar"></story-metadata-empty>`;
       return;
     }
-    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
     const attrsReference = JSON.stringify([
       {
         component: "mui-tab-item",
@@ -405,7 +407,7 @@ class storyTabBar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card canvas-background="var(--surface-elevated-100)" id="ghost" title="${storyMeta["ghost"].title}" description="${storyMeta["ghost"].description}" usage="${storyMeta["ghost"].usage}">
+        <story-card canvas-background="var(--surface-elevated-300)" id="ghost" title="${storyMeta["ghost"].title}" description="${storyMeta["ghost"].description}" usage="${storyMeta["ghost"].usage}">
           <mui-tab-bar slot="body" variant="ghost">
             <mui-tab-item active id="ghost-1">Item</mui-tab-item>
             <mui-tab-item id="ghost-2">Item</mui-tab-item>

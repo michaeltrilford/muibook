@@ -72,6 +72,7 @@ export default defineConfig({
         "components/mui-result-bar": path.resolve(__dirname, "src/components/mui-result-bar"),
         "components/mui-work-log": path.resolve(__dirname, "src/components/mui-work-log"),
         "components/mui-file-diff": path.resolve(__dirname, "src/components/mui-file-diff"),
+        "components/mui-financial-chart": path.resolve(__dirname, "src/components/mui-financial-chart"),
         "components/mui-preview-chip": path.resolve(__dirname, "src/components/mui-preview-chip"),
         "components/mui-file-upload": path.resolve(__dirname, "src/components/mui-file-upload"),
         "components/mui-grid": path.resolve(__dirname, "src/components/mui-grid"),

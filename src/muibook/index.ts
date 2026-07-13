@@ -139,6 +139,7 @@ import "../components/mui-chat-message";
 import "../components/mui-result-bar";
 import "../components/mui-work-log";
 import "../components/mui-file-diff";
+import "../components/mui-financial-chart";
 import "../components/mui-preview-chip";
 import "../components/mui-alert";
 import "../components/mui-message";

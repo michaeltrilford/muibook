@@ -17,6 +17,7 @@ export * from "./components/mui-work-log";
 export * from "./components/mui-preview-chip";
 export * from "./components/mui-file-upload";
 export * from "./components/mui-file-diff";
+export * from "./components/mui-financial-chart";
 export * from "./components/mui-addon";
 export * from "./components/mui-input";
 export * from "./components/mui-search-input";

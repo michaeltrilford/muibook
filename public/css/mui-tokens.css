@@ -466,6 +466,24 @@ html[data-theme="light"] {
   /* Range Input */
   --range-input-thumb-color: var(--black);
 
+  /* Financial Chart */
+  --financial-chart-background: var(--surface-elevated-100);
+  --financial-chart-border-color: var(--border-color);
+  --financial-chart-text-color: var(--text-color);
+  --financial-chart-text-color-secondary: var(--text-color-secondary);
+  --financial-chart-grid-color: var(--black-opacity-10);
+  --financial-chart-crosshair-color: var(--black-opacity-50);
+  --financial-chart-positive-color: var(--feedback-positive-border-color);
+  --financial-chart-negative-color: var(--feedback-attention-border-color);
+  --financial-chart-series-color: var(--categorical-blue);
+  --financial-chart-area-top-color: color-mix(in srgb, var(--categorical-blue) 38%, transparent);
+  --financial-chart-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 2%, transparent);
+  --financial-chart-volume-positive-color: color-mix(in srgb, var(--feedback-positive-border-color) 45%, transparent);
+  --financial-chart-volume-negative-color: color-mix(in srgb, var(--feedback-attention-border-color) 45%, transparent);
+  --financial-chart-action-background-hover: var(--action-tertiary-background-hover);
+  --financial-chart-action-background-active: var(--action-primary-background);
+  --financial-chart-action-text-color-active: var(--action-primary-text-color);
+
   /* Stepper */
   --stepper-color: var(--grey-700);
   --stepper-background-inactive: var(--white);
@@ -865,6 +883,24 @@ html[data-theme="dark"] {
   /* Range Input */
   --range-input-thumb-color: var(--white);
 
+  /* Financial Chart */
+  --financial-chart-background: var(--surface-elevated-100);
+  --financial-chart-border-color: var(--border-color);
+  --financial-chart-text-color: var(--text-color);
+  --financial-chart-text-color-secondary: var(--text-color-secondary);
+  --financial-chart-grid-color: var(--white-opacity-10);
+  --financial-chart-crosshair-color: var(--white-opacity-50);
+  --financial-chart-positive-color: var(--feedback-positive-border-color);
+  --financial-chart-negative-color: var(--feedback-attention-border-color);
+  --financial-chart-series-color: var(--categorical-blue);
+  --financial-chart-area-top-color: color-mix(in srgb, var(--categorical-blue) 42%, transparent);
+  --financial-chart-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 3%, transparent);
+  --financial-chart-volume-positive-color: color-mix(in srgb, var(--feedback-positive-border-color) 50%, transparent);
+  --financial-chart-volume-negative-color: color-mix(in srgb, var(--feedback-attention-border-color) 50%, transparent);
+  --financial-chart-action-background-hover: var(--action-tertiary-background-hover);
+  --financial-chart-action-background-active: var(--action-primary-background);
+  --financial-chart-action-text-color-active: var(--action-primary-text-color);
+
   /* Stepper */
   --stepper-color: var(--white);
   --stepper-background-inactive: var(--black);
@@ -895,6 +931,10 @@ html[data-theme="dark"] {
   --dropdown-offset: var(--space-200);
   --menu-min-width: 15rem;
   --menu-width: max-content;
+
+  /* Financial Chart */
+  --financial-chart-border: var(--stroke-size-100) var(--stroke-solid) var(--financial-chart-border-color);
+  --financial-chart-radius: var(--form-radius-medium);
 
   /* Form */
   --form-default-placeholder-color: var(--grey-500);

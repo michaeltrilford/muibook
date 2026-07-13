@@ -5,6 +5,7 @@ class MuiTabBar extends HTMLElement {
   private _hasInitialized: boolean;
   private _animationSpeed: number = 200;
   private _resizeObserver: ResizeObserver;
+  private _slot: HTMLSlotElement | null = null;
   static get observedAttributes() {
     return ["size", "variant", "stroke", "radius"];
   }
@@ -111,19 +112,7 @@ class MuiTabBar extends HTMLElement {
       }
     });
 
-    children.forEach((el, idx) => {
-      el.classList.remove("first", "middle", "last", "only");
-
-      if (children.length === 1) {
-        el.classList.add("only");
-      } else if (idx === 0) {
-        el.classList.add("first");
-      } else if (idx === children.length - 1) {
-        el.classList.add("last");
-      } else {
-        el.classList.add("middle");
-      }
-    });
+    this._applyChildPositions(children as HTMLElement[]);
 
     this.addEventListener("click", (e: Event) => {
       const path = typeof (e as Event).composedPath === "function" ? (e as Event).composedPath() : [];
@@ -261,6 +250,9 @@ class MuiTabBar extends HTMLElement {
       <slot></slot>
     `;
 
+    this._slot = this.shadowRoot.querySelector("slot");
+    this._slot?.addEventListener("slotchange", this._handleSlotChange);
+
     // Attach resize handler
     window.addEventListener("resize", this._handleResize);
 
@@ -316,6 +308,43 @@ class MuiTabBar extends HTMLElement {
     });
   }
 
+  private _applyChildPositions(children: HTMLElement[]) {
+    children.forEach((child, index) => {
+      child.classList.remove("first", "middle", "last", "only");
+
+      if (children.length === 1) child.classList.add("only");
+      else if (index === 0) child.classList.add("first");
+      else if (index === children.length - 1) child.classList.add("last");
+      else child.classList.add("middle");
+    });
+  }
+
+  private _handleSlotChange = () => {
+    const children = Array.from(this.children) as HTMLElement[];
+    this._applySizeToChildren(children);
+    this._applyVariantToChildren(children);
+    this._applyChildPositions(children);
+
+    const active = children.find((child) => child.hasAttribute("active")) || children[0] || null;
+    if (!active) {
+      this._activeTab = null;
+      this._observedTab = null;
+      const highlight = this.shadowRoot?.querySelector<HTMLElement>(".highlight");
+      if (highlight) highlight.style.width = "0";
+      return;
+    }
+
+    children.forEach((child) => child.toggleAttribute("active", child === active));
+    if (this._observedTab && this._observedTab !== active) this._resizeObserver.unobserve(this._observedTab);
+    this._activeTab = active;
+    this._observedTab = active;
+    this._resizeObserver.observe(active);
+
+    requestAnimationFrame(() => {
+      if (this.isConnected && this._activeTab === active) this._updateHighlight(active);
+    });
+  };
+
   private _syncRadiusAttribute() {
     const raw = this.getAttribute("radius")?.trim();
 
@@ -331,6 +360,8 @@ class MuiTabBar extends HTMLElement {
 
   disconnectedCallback() {
     window.removeEventListener("resize", this._handleResize);
+    this._slot?.removeEventListener("slotchange", this._handleSlotChange);
+    this._slot = null;
 
     // Clean up all ResizeObserver observations
     if (this._observedTab) {

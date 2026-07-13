@@ -14,6 +14,7 @@ _Status: WIP_
 - Added `mui-submenu` for composing a hover- and focus-revealed nested Menu from a direct Button trigger. It inherits the parent Menu action context, maintains a forgiving pointer bridge, closes cleanly after nested actions, and synchronizes `aria-haspopup` and `aria-expanded`.
 - `mui-submenu` portals its nested Menu to a body-level overlay while open so focused controls, parent stacking contexts, and overflow containers cannot paint above or clip it. The authored Menu is restored when the Submenu closes or disconnects.
 - `mui-submenu` provides viewport-aware collision handling: it prefers the inline end, flips to the inline start when constrained, shifts vertically, and overlaps the parent Menu as a final fallback instead of clipping outside the viewport. Position is recalculated during resize, ancestor scrolling, and nested Menu resizing.
+- Added `mui-financial-chart`, powered by pinned `lightweight-charts@5.2.0`, for responsive candlestick and area market charts with a dedicated volume pane, local time-range controls, streaming updates, theme synchronization, and loading, empty, and error states. The component preserves the required TradingView attribution and provides a live accessible summary of the visible data.
 - Added coordinated `x-small | small | medium | large` sizing to `mui-dropdown` and `mui-menu`; Dropdown enforces the size on its trigger and Menu, while Menu enforces it on direct button and link actions and owns their joined corner treatment.
 - Added `offset` to `mui-dropdown` for CSS-length positioning values and `width` to `mui-menu` for explicit responsive surface sizing; the existing custom properties remain available as theme defaults.
 - Added `x-small | small | medium | large` sizing to `mui-range-input`, retaining the previous thumb and track dimensions as medium. Date Picker, Time Picker, and Range Input stories now demonstrate every supported size.
@@ -44,6 +45,7 @@ _Status: WIP_
 
 ### Fixed
 
+- `mui-tab-bar` now synchronizes size, variant, position, active state, and highlight when Tab Items are added dynamically. Financial Chart range controls now retain `x-small` sizing, preserve focus during arrow-key navigation, and update the visible dataset without replacing the Tab Bar instance. The required TradingView attribution remains visible and clickable but no longer interrupts sequential keyboard navigation.
 - Input, Select, and Textarea now keep their size-specific focus outlines as internal defaults, allowing instance-level `--input-focus-outline`, `--select-focus-outline`, and `--textarea-focus-outline` overrides to take effect without changing shared outline primitives.
 - Menu now restores authored form-control `size`, `menu-slot`, `padding-inline`, and `surface` attributes when controls leave the Menu or the Menu disconnects.
 - Textarea now combines row and padding custom properties in one style attribute so both configurations apply reliably.

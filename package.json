@@ -192,6 +192,10 @@
       "import": "./dist/esm/components/mui-file-diff/index.js",
       "types": "./dist/types/components/mui-file-diff/index.d.ts"
     },
+    "./mui-financial-chart": {
+      "import": "./dist/esm/components/mui-financial-chart/index.js",
+      "types": "./dist/types/components/mui-financial-chart/index.d.ts"
+    },
     "./mui-hint": {
       "import": "./dist/esm/components/mui-hint/index.js",
       "types": "./dist/types/components/mui-hint/index.d.ts"
@@ -774,7 +778,8 @@
     "typescript": "5.8.3",
     "vite": "6.3.5"
   },
-  "peerDependencies": {},
-  "dependencies": {},
+  "dependencies": {
+    "lightweight-charts": "^5.2.0"
+  },
   "customElements": "public/custom-elements.json"
 }
