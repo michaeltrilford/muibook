@@ -68,6 +68,9 @@ html[data-brand="paperclip"] mui-avatar[size="large"] {
 /* 2. LIGHT MODE                                                                                        */
 /* ==================================================================================================== */
 html[data-brand="paperclip"][data-theme="light"] {
+  --work-log-shimmer-color-primary: var(--blue-1000);
+  --work-log-shimmer-color-secondary: var(--blue-500);
+
   --paperclip-standalone-background: var(--blue-500);
   --paperclip-standalone-border-color: var(--blue-500);
   --paperclip-standalone-text-color: var(--white);
@@ -541,6 +544,9 @@ html[data-brand="paperclip"][data-theme="light"] {
 /* 3. DARK MODE                                                                                         */
 /* ==================================================================================================== */
 html[data-brand="paperclip"][data-theme="dark"] {
+  --work-log-shimmer-color-primary: var(--blue-100);
+  --work-log-shimmer-color-secondary: var(--blue-300);
+
   --paperclip-standalone-background: var(--blue-500);
   --paperclip-standalone-border-color: var(--white);
   --paperclip-standalone-text-color: var(--white);

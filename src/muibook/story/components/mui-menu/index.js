@@ -8,6 +8,15 @@ class StoryMenu extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Menu");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Menu"></story-metadata-empty>`;
+      return;
+    }
+
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -148,8 +157,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="action-menu"
-        title="Action Menu"
-        usage="Use Menu to provide the visual surface and vertical layout for a related set of actions.|||Menu accepts direct Button or Link actions and remains fully composable with system components and their slots.|||Compose Menu inside Dropdown when the surface needs trigger, portal, positioning, focus, and dismissal behaviour."
+        title="${storyMeta["action-menu"].title}"
+        usage="${storyMeta["action-menu"].usage}"
       >
         <mui-menu slot="body">
           <mui-button variant="tertiary">Rename</mui-button>
@@ -169,8 +178,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="searchable-menu"
-        title="Searchable Menu"
-        usage="Place search and filtering controls before a scrollable action set when menus contain many options.|||Keep filtering in application state; Menu provides the visual surface and composition boundary.|||Use a hidden Body with role=status and aria-live=polite for the empty-state message. Reveal it only when every searchable action is hidden."
+        title="${storyMeta["searchable-menu"].title}"
+        usage="${storyMeta["searchable-menu"].usage}"
       >
 
         <mui-v-stack slot="body">
@@ -264,8 +273,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="inset"
-        title="Inset Content"
-        usage="Use the inset attribute to add padding to the menu's scrollable region, allowing buttons and other nested items to retain their natural border radius instead of spanning edge-to-edge."
+        title="${storyMeta.inset.title}"
+        usage="${storyMeta.inset.usage}"
       >
         <mui-v-stack slot="body" space="var(--space-400)">
           <mui-menu size="x-small" inset data-filter-menu>
@@ -339,8 +348,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="sections"
-        title="Sections"
-        usage="Use labelled sections when one Menu contains distinct groups of related files or actions.|||Place Search before the section headings when it filters content across the complete Menu.|||Use File Icon for file-type recognition and standard system icons for destinations or commands; both inherit sizing from the containing Button."
+        title="${storyMeta.sections.title}"
+        usage="${storyMeta.sections.usage}"
       >
         <mui-v-stack slot="body" space="var(--space-400)">
         <mui-menu size="x-small" inset>
@@ -476,8 +485,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="select-menu"
-        title="Select Menu"
-        usage="Use a direct Select when the chosen option establishes the context for the actions below it.|||This example selects a design-system theme before previewing, editing, duplicating, or exporting that theme.|||Set size on Menu only; Menu enforces the same size and inset treatment on the Select and direct actions."
+        title="${storyMeta["select-menu"].title}"
+        usage="${storyMeta["select-menu"].usage}"
       >
         <mui-v-stack slot="body">${selectMenus}</mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -493,8 +502,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="date-menu"
-        title="Date Menu"
-        usage="Use a bottom-slotted Date Picker when the selected date applies to the actions grouped above it.|||This example supports reviewing the day, creating an event, copying the date, or exporting its schedule.|||Menu propagates its size and inset field radius to the Date Picker and its composed calendar action."
+        title="${storyMeta["date-menu"].title}"
+        usage="${storyMeta["date-menu"].usage}"
       >
         <mui-v-stack slot="body">${dateMenus}</mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -510,8 +519,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="input-menu"
-        title="Input Menu"
-        usage="Use a bottom-slotted Input when actions above provide context for the value being entered.|||Set size on Menu only; Menu keeps the Input and actions aligned while inset preserves their individual radii."
+        title="${storyMeta["input-menu"].title}"
+        usage="${storyMeta["input-menu"].usage}"
       >
         <mui-v-stack slot="body">${inputMenus}</mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -526,8 +535,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="time-menu"
-        title="Time Menu"
-        usage="Use a bottom-slotted Time Picker when the selected time applies to the actions grouped above it.|||The examples cover every Menu size and inherit the same size in the composed Time Picker input."
+        title="${storyMeta["time-menu"].title}"
+        usage="${storyMeta["time-menu"].usage}"
       >
         <mui-v-stack slot="body">${timeMenus}</mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -542,8 +551,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="chip-input-menu"
-        title="Chip Input Menu"
-        usage="Use a top-slotted Chip Input to filter or assign multiple values before acting on the selection.|||The examples cover every Menu size and keep the selected chips seamless with the Menu surface."
+        title="${storyMeta["chip-input-menu"].title}"
+        usage="${storyMeta["chip-input-menu"].usage}"
       >
         <mui-v-stack slot="body">${chipInputMenus}</mui-v-stack>
         <story-code-block slot="footer" scrollable>
@@ -557,8 +566,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="language-toggles"
-        title="Language Toggles"
-        usage="Use composed rows for independent settings rather than menu commands.|||File Icon adds fast language recognition while Switch owns each boolean selection."
+        title="${storyMeta["language-toggles"].title}"
+        usage="${storyMeta["language-toggles"].usage}"
       >
 
         <mui-v-stack slot="body">
@@ -676,8 +685,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="range-input-menu"
-        title="Range Input Menu"
-        usage="Use Range Input for an adjustable value within a compact settings or playback menu.|||Nested controls are sized explicitly from the same Menu size because only direct Menu children inherit size automatically."
+        title="${storyMeta["range-input-menu"].title}"
+        usage="${storyMeta["range-input-menu"].usage}"
       >
         <mui-v-stack slot="body">
         
@@ -719,8 +728,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="sizes"
-        title="Sizes"
-        usage="Menu supports x-small, small, medium, and large.|||The selected size controls the surface radius and is enforced on direct button and link actions."
+        title="${storyMeta.sizes.title}"
+        usage="${storyMeta.sizes.usage}"
       >
         <mui-v-stack slot="body" space="var(--space-400)">
           <mui-menu size="x-small">
@@ -754,8 +763,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="grouped-content"
-        title="Grouped Content"
-        usage="Use concise headings and rules to separate related groups without turning the menu into a full page layout.|||Menu accepts composed content, but interactive actions should remain easy to scan and operate.|||Use inset when grouped actions should retain their individual radii and sit inside the Menu edge."
+        title="${storyMeta["grouped-content"].title}"
+        usage="${storyMeta["grouped-content"].usage}"
       >
 
         <mui-v-stack slot="body" space="var(--space-400)">
@@ -846,8 +855,8 @@ class StoryMenu extends HTMLElement {
 
       <story-card
         id="states"
-        title="States"
-        usage="Use the primary treatment to show the current or selected menu action.|||The active appearance shown here is the base theme treatment; customize it to suit your product theme.|||Disable an action only when it must remain visible but cannot currently be used."
+        title="${storyMeta.states.title}"
+        usage="${storyMeta.states.usage}"
       >
         <mui-menu slot="body" size="medium">
           <mui-body variant="secondary">Action states</mui-body>
@@ -882,7 +891,7 @@ class StoryMenu extends HTMLElement {
         <story-quicklinks
           slot="message"
           heading="Quicklinks"
-          links="action-menu::Action Menu|||states::States|||sizes::Sizes|||searchable-menu::Searchable Menu|||inset::Inset Content|||sections::Sections|||select-menu::Select Menu|||date-menu::Date Menu|||time-menu::Time Menu|||input-menu::Input Menu|||chip-input-menu::Chip Input Menu|||range-input-menu::Range Input Menu|||language-toggles::Language Toggles|||grouped-content::Grouped Content"
+          links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"
         ></story-quicklinks>
         ${stories}
       </story-template>

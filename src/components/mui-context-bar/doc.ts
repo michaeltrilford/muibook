@@ -30,8 +30,8 @@ export const muiDocs: MuiDocs = {
     stories: {
       items: [
         {
-          key: "informational",
-          title: "Informational",
+          key: "in-prompt",
+          title: "Informational Context",
           description: "",
           list: [
             "Slot Context Bar into Prompt context when app state has an active task.",
@@ -40,8 +40,8 @@ export const muiDocs: MuiDocs = {
           ],
         },
         {
-          key: "status",
-          title: "Status",
+          key: "status-prompt",
+          title: "Status Context",
           description: "",
           list: [
             "Slot Context Bar into Prompt context when app state has an active task.",
@@ -50,8 +50,8 @@ export const muiDocs: MuiDocs = {
           ],
         },
         {
-          key: "approval",
-          title: "Approval",
+          key: "approval-prompt",
+          title: "Approval Context",
           description: "",
           list: [
             "Slot Context Bar into Prompt context when app state has an active task.",

@@ -452,6 +452,10 @@ html[data-theme="light"] {
   --menu-section-header: var(--grey-600);
   --dropdown-button-background-hover: var(--white);
 
+  /* Work Log */
+  --work-log-shimmer-color-primary: var(--grey-1100);
+  --work-log-shimmer-color-secondary: var(--grey-400);
+
   /* Progress */
   --progress-bar-background: var(--blue-600);
   --progress-track-background: var(--grey-200);
@@ -875,6 +879,10 @@ html[data-theme="dark"] {
   --drawer-resize-rail-background: var(--grey-1000);
   --drawer-resize-rail-inner-background: var(--grey-700);
   --drawer-resize-rail-threshold-indicator: var(--white);
+
+  /* Work Log */
+  --work-log-shimmer-color-primary: var(--white);
+  --work-log-shimmer-color-secondary: var(--grey-500);
 }
 
 /* ==================================================================================================== */

@@ -244,7 +244,7 @@ class MuiBody extends HTMLElement {
     
     <p part="${partMap}">
       <slot name="before"></slot>
-      <span class="content"><slot></slot></span>
+      <span class="content" part="content"><slot></slot></span>
       <slot name="after"></slot>
     </p>
     `;

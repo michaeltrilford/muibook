@@ -16,6 +16,9 @@
 /* 2. LIGHT MODE                                                                                        */
 /* ==================================================================================================== */
 html[data-brand="sensei"][data-theme="light"] {
+  --work-log-shimmer-color-primary: var(--green-1400);
+  --work-log-shimmer-color-secondary: var(--green-900);
+
   /* Form */
   --form-default-text-color: var(--green-1000);
   --form-success-text-color: var(--green-700);
@@ -272,6 +275,9 @@ html[data-brand="sensei"][data-theme="light"] {
 /* 3. DARK MODE                                                                                         */
 /* ==================================================================================================== */
 html[data-brand="sensei"][data-theme="dark"] {
+  --work-log-shimmer-color-primary: var(--green-100);
+  --work-log-shimmer-color-secondary: var(--green-400);
+
   /* Form */
   --form-default-text-color: var(--green-400);
   --form-success-text-color: var(--green-400);

@@ -13,6 +13,7 @@ export const muiApi = {
       { name: "before", description: "Leading icon or badge, automatically aligned to the text size." },
       { name: "after", description: "Trailing icon or badge, automatically aligned to the text size." },
     ],
+    cssParts: [{ name: "content", description: "The internal span wrapping the default body text slot." }],
     cssProperties: [
       { name: "--body-inline-icon-offset", description: "Shared vertical alignment offset for slotted inline icons." },
       { name: "--body-inline-icon-offset-x-small", description: "Vertical alignment offset for icons in x-small text." },

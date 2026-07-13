@@ -65,24 +65,34 @@ class MuiWorkLog extends HTMLElement {
           padding-block-end: ${isNested ? "var(--space-100)" : "var(--space-400)"};
         }
 
-        .summary-label[pending]::part(color) {
-          animation: workerPulse 1.4s ease-in-out infinite;
+        .summary-label[pending]::part(content) {
+          color: transparent;
+          background: linear-gradient(
+            90deg,
+            var(--work-log-shimmer-color-secondary) 0%,
+            var(--work-log-shimmer-color-primary) 50%,
+            var(--work-log-shimmer-color-secondary) 100%
+          );
+          background-size: 200% 100%;
+          background-position: 100% 0;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: workLogShimmer 1.6s linear infinite;
         }
 
-        @keyframes workerPulse {
-          0%,
-          100% {
-            opacity: 0.45;
-          }
-          50% {
-            opacity: 1;
+        @keyframes workLogShimmer {
+          to {
+            background-position: -100% 0;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .summary-label[pending]::part(color) {
+          .summary-label[pending]::part(content) {
             animation: none;
-            opacity: 1;
+            color: var(--work-log-shimmer-color-secondary);
+            background: none;
+            -webkit-text-fill-color: currentColor;
           }
         }
 
@@ -94,14 +104,14 @@ class MuiWorkLog extends HTMLElement {
             ? `<mui-h-stack class="status-summary" alignY="center" space="var(--space-100)">
                 <slot name="before"></slot>
                 <slot name="icon"></slot>
-                <mui-body class="summary-label" size="x-small" variant="tertiary" ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
+                <mui-body class="summary-label" size="x-small" ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
                 <slot name="after"></slot>
               </mui-h-stack>`
             : `<mui-accordion-core ${open ? "open" : ""}>
                 <mui-h-stack slot="summary" class="summary" ${hasSummaryRule ? "rule" : ""} alignY="center" space="var(--space-100)">
                   <slot name="before"></slot>
                   <slot name="icon"></slot>
-                  <mui-body class="summary-label" size="x-small" variant="tertiary" ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
+                  <mui-body class="summary-label" size="x-small" ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
                   <slot name="after"></slot>
                   <mui-icon-toggle rotate size="xx-small">
                     <mui-icon-right-chevron slot="start"></mui-icon-right-chevron>

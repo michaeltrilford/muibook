@@ -8,6 +8,21 @@ class StoryContextBar extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("ContextBar");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Context Bar"></story-metadata-empty>`;
+      return;
+    }
+
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [
+        story.key,
+        {
+          ...story,
+          usage: story.list.join("|||"),
+        },
+      ]),
+    );
 
     const getComposer = (options = {}) => /*html*/ `
       <mui-prompt
@@ -175,8 +190,8 @@ class StoryContextBar extends HTMLElement {
 
       <story-card
         id="in-prompt"
-        title="Informational Context"
-        usage="Slot Prompt Context into Prompt context when app state has an active task.|||Omit the component entirely when there is no active context.|||Prompt only positions the slotted context; it does not create context chrome."
+        title="${storyMeta["in-prompt"].title}"
+        usage="${storyMeta["in-prompt"].usage}"
       >
         ${getComposer({ previews: true, context: "informational", simpleActions: true, placeholder: "Paste, click preview, or submit..." })}
         <story-code-block slot="footer" scrollable>
@@ -204,8 +219,8 @@ class StoryContextBar extends HTMLElement {
 
       <story-card
         id="status-prompt"
-        title="Status Context"
-        usage="Slot Prompt Context into Prompt context when app state has an active task.|||Swap actions to a dropdown menu below 400px container width to ensure the layout remains compact.|||Omit the component entirely when there is no active context."
+        title="${storyMeta["status-prompt"].title}"
+        usage="${storyMeta["status-prompt"].usage}"
       >
         ${getComposer({ previews: true, context: "status", simpleActions: true, placeholder: "Paste, click preview, or submit..." })}
         <story-code-block slot="footer" scrollable>
@@ -240,8 +255,8 @@ class StoryContextBar extends HTMLElement {
 
       <story-card
         id="approval-prompt"
-        title="Approval Context"
-        usage="Slot Prompt Context into Prompt context when app state has an active task.|||Swap actions to a dropdown menu below 400px container width to ensure the layout remains compact.|||Omit the component entirely when there is no active context."
+        title="${storyMeta["approval-prompt"].title}"
+        usage="${storyMeta["approval-prompt"].usage}"
       >
         ${getComposer({ previews: true, context: "approval", simpleActions: true, placeholder: "Paste, click preview, or submit..." })}
         <story-code-block slot="footer" scrollable>
@@ -281,7 +296,11 @@ class StoryContextBar extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
         imports='["@muibook/components/mui-context-bar"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="in-prompt::Informational Context|||status-prompt::Status Context|||approval-prompt::Approval Context"></story-quicklinks>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"
+        ></story-quicklinks>
         ${stories}
       </story-template>
     `;

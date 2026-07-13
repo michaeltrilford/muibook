@@ -16,6 +16,9 @@
 /* 2. LIGHT MODE                                                                   */
 /* =============================================================================== */
 html[data-brand="ana"][data-theme="light"] {
+  --work-log-shimmer-color-primary: var(--grey-1100);
+  --work-log-shimmer-color-secondary: var(--grey-400);
+
   /* Feedback */
   --feedback-neutral-border-color: var(--black-opacity-20);
   --feedback-positive-border-color: var(--green-50);
@@ -211,6 +214,9 @@ html[data-brand="ana"][data-theme="light"] {
 /* 3. DARK MODE                                                                    */
 /* =============================================================================== */
 html[data-brand="ana"][data-theme="dark"] {
+  --work-log-shimmer-color-primary: var(--grey-100);
+  --work-log-shimmer-color-secondary: var(--grey-500);
+
   /* Feedback */
   --feedback-neutral-border-color: var(--white-opacity-20);
   --feedback-positive-border-color: var(--green-700);

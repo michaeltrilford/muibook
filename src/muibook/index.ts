@@ -187,6 +187,7 @@ import "./local-components/story-code-block";
 import "./local-components/story-code-snippet";
 import "./local-components/story-demo";
 import "./local-components/story-icon-grid";
+import "./local-components/story-metadata-empty";
 import "./local-components/story-part-slat";
 import "./local-components/story-quicklinks";
 import "./local-components/story-template";
