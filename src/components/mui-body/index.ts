@@ -67,27 +67,47 @@ class MuiBody extends HTMLElement {
       }
 
       :host([menu-slot][size="xx-small"]) p {
-        padding: var(--action-padding-x-small);
+        padding-block: var(--action-padding-block-x-small);
+        padding-inline: var(--action-padding-inline-x-small);
         padding-block-start: var(--space-100);
         padding-block-end: var(--space-025);
       }
 
       :host([menu-slot][size="x-small"]) p {
-        padding: var(--action-padding-small);
+        padding-block: var(--action-padding-block-small);
+        padding-inline: var(--action-padding-inline-small);
         padding-block-start: var(--space-200);
         padding-block-end: var(--space-050);
       }
 
       :host([menu-slot][size="small"]) p {
-        padding: var(--action-padding);
+        padding-block: var(--action-padding-block);
+        padding-inline: var(--action-padding-inline);
         padding-block-start: var(--space-300);
         padding-block-end: var(--space-050);
       }
 
       :host([menu-slot][size="medium"]) p {
-        padding: var(--action-padding-large);
+        padding-block: var(--action-padding-block-large);
+        padding-inline: var(--action-padding-inline-large);
         padding-block-start: var(--space-400);
         padding-block-end: var(--space-100);
+      }
+
+      :host([menu-slot][menu-inset][size="xx-small"]) p {
+        padding-inline: calc(var(--action-padding-inline-x-small) - var(--menu-inset));
+      }
+
+      :host([menu-slot][menu-inset][size="x-small"]) p {
+        padding-inline: calc(var(--action-padding-inline-small) - var(--menu-inset));
+      }
+
+      :host([menu-slot][menu-inset][size="small"]) p {
+        padding-inline: calc(var(--action-padding-inline) - var(--menu-inset));
+      }
+
+      :host([menu-slot][menu-inset][size="medium"]) p {
+        padding-inline: calc(var(--action-padding-inline-large) - var(--menu-inset));
       }
 
       :host([has-before]) p,

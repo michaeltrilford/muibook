@@ -858,6 +858,27 @@ class MuiButton extends HTMLElement {
       padding-left: var(--space-400);
     }
 
+    :host([menu-inset][size="x-small"]) button {
+      padding-inline: calc(var(--action-padding-inline-x-small) - var(--menu-inset)) !important;
+      border-radius: var(--action-radius-x-small);
+      font-weight: var(--font-weight-regular);
+    }
+    :host([menu-inset][size="small"]) button {
+      padding-inline: calc(var(--action-padding-inline-small) - var(--menu-inset)) !important;
+      border-radius: var(--action-radius-small);
+      font-weight: var(--font-weight-regular);
+    }
+    :host([menu-inset][size="medium"]) button {
+      padding-inline: calc(var(--action-padding-inline) - var(--menu-inset)) !important;
+      border-radius: var(--action-radius-medium);
+      font-weight: var(--font-weight-regular);
+    }
+    :host([menu-inset][size="large"]) button {
+      padding-inline: calc(var(--action-padding-inline-large) - var(--menu-inset)) !important;
+      border-radius: var(--action-radius-large);
+      font-weight: var(--font-weight-regular);
+    }
+
     :host([has-video]) {
       display: inline-block;
       width: auto;

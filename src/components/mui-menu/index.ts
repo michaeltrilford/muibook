@@ -2,8 +2,13 @@ class MuiMenu extends HTMLElement {
   private slotElement: HTMLSlotElement | null = null;
   private topSlotElement: HTMLSlotElement | null = null;
   private bottomSlotElement: HTMLSlotElement | null = null;
+  private contentElement: HTMLElement | null = null;
   private observer: MutationObserver | null = null;
-  private managedFormControls = new Map<HTMLElement, Record<"size" | "menu-slot" | "padding-inline" | "surface", string | null>>();
+  private managedFormControls = new Map<
+    HTMLElement,
+    Record<"size" | "menu-slot" | "padding-inline" | "surface", string | null>
+  >();
+  private managedInsetActions = new Set<HTMLElement>();
 
   static get observedAttributes() {
     return ["size", "inset"];
@@ -20,13 +25,19 @@ class MuiMenu extends HTMLElement {
     this.slotElement = this.shadowRoot!.querySelector("slot:not([name])");
     this.topSlotElement = this.shadowRoot!.querySelector('slot[name="top"]');
     this.bottomSlotElement = this.shadowRoot!.querySelector('slot[name="bottom"]');
+    this.contentElement = this.shadowRoot!.querySelector(".content");
     this.slotElement?.addEventListener("slotchange", this.syncActions);
     this.topSlotElement?.addEventListener("slotchange", this.syncRegions);
     this.bottomSlotElement?.addEventListener("slotchange", this.syncRegions);
     this.syncActions();
     this.syncRegions();
     this.observer = new MutationObserver(this.syncActions);
-    this.observer.observe(this, { attributes: true, childList: true, subtree: true, attributeFilter: ["size"] });
+    this.observer.observe(this, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+      attributeFilter: ["size", "hidden", "slot"],
+    });
   }
 
   disconnectedCallback() {
@@ -37,6 +48,8 @@ class MuiMenu extends HTMLElement {
     this.observer = null;
     this.managedFormControls.forEach((attributes, control) => this.restoreFormControl(control, attributes));
     this.managedFormControls.clear();
+    this.managedInsetActions.forEach((action) => action.removeAttribute("menu-inset"));
+    this.managedInsetActions.clear();
   }
 
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
@@ -104,9 +117,17 @@ class MuiMenu extends HTMLElement {
     const bodies = directChildren.filter(
       (element): element is HTMLElement => element.tagName.toLowerCase() === "mui-body",
     );
+    const contentHasBody = bodies.some((body) => !body.hasAttribute("slot") && !body.hidden);
+    this.contentElement?.toggleAttribute("has-body", contentHasBody);
     const actions = directChildren.filter((element): element is HTMLElement => {
       const tagName = element.tagName.toLowerCase();
       return tagName === "mui-button" || tagName === "mui-link";
+    });
+    const currentActions = new Set(actions);
+    this.managedInsetActions.forEach((action) => {
+      if (currentActions.has(action)) return;
+      action.removeAttribute("menu-inset");
+      this.managedInsetActions.delete(action);
     });
     const firstActionIndex = actions.length > 0 ? directChildren.indexOf(actions[0]) : -1;
     const lastActionIndex = actions.length > 0 ? directChildren.indexOf(actions[actions.length - 1]) : -1;
@@ -131,6 +152,7 @@ class MuiMenu extends HTMLElement {
       if (body.getAttribute("size") !== bodySize) body.setAttribute("size", bodySize);
       if (body.getAttribute("weight") !== "regular") body.setAttribute("weight", "regular");
       body.setAttribute("menu-slot", "");
+      body.toggleAttribute("menu-inset", this.hasAttribute("inset"));
     });
 
     formControls.forEach((control) => {
@@ -175,12 +197,17 @@ class MuiMenu extends HTMLElement {
 
     actions.forEach((action, index) => {
       if (action.getAttribute("size") !== size) action.setAttribute("size", size);
+      if (action.getAttribute("weight") !== "regular") action.setAttribute("weight", "regular");
 
       if (!this.hasAttribute("inset")) {
+        action.removeAttribute("menu-inset");
+        this.managedInsetActions.delete(action);
         action.setAttribute("menu-slot", "");
         action.toggleAttribute("menu-slot-first", index === 0 && !hasBufferBeforeFirstAction);
         action.toggleAttribute("menu-slot-last", index === actions.length - 1 && !hasBufferAfterLastAction);
       } else {
+        action.setAttribute("menu-inset", "");
+        this.managedInsetActions.add(action);
         action.removeAttribute("menu-slot");
         action.removeAttribute("menu-slot-first");
         action.removeAttribute("menu-slot-last");
@@ -225,37 +252,16 @@ class MuiMenu extends HTMLElement {
         }
 
         :host([size="x-small"][inset]) {
-          --menu-inset-radius: calc(min(var(--action-radius-x-small), var(--form-radius-x-small)) - var(--stroke-size-100));
-          --menu-inset-padding-default: var(--space-025);
+          --menu-inset: var(--space-025);
         }
         :host([size="small"][inset]) {
-          --menu-inset-radius: calc(min(var(--action-radius-small), var(--form-radius-small)) - var(--stroke-size-200));
-          --menu-inset-padding-default: var(--space-025);
+          --menu-inset: var(--space-050);
         }
         :host([size="medium"][inset]) {
-          --menu-inset-radius: calc(min(var(--action-radius-medium), var(--form-radius-medium)) - var(--stroke-size-300));
-          --menu-inset-padding-default: var(--space-050);
+          --menu-inset: var(--space-100);
         }
         :host([size="large"][inset]) {
-          --menu-inset-radius: calc(min(var(--action-radius-large), var(--form-radius-large)) - var(--stroke-size-400));
-          --menu-inset-padding-default: var(--space-100);
-        }
-
-        :host([size="x-small"][inset]) .content {
-          --action-radius-x-small: var(--menu-inset-radius);
-          --form-radius-x-small: var(--menu-inset-radius);
-        }
-        :host([size="small"][inset]) .content {
-          --action-radius-small: var(--menu-inset-radius);
-          --form-radius-small: var(--menu-inset-radius);
-        }
-        :host([size="medium"][inset]) .content {
-          --action-radius-medium: var(--menu-inset-radius);
-          --form-radius-medium: var(--menu-inset-radius);
-        }
-        :host([size="large"][inset]) .content {
-          --action-radius-large: var(--menu-inset-radius);
-          --form-radius-large: var(--menu-inset-radius);
+          --menu-inset: var(--space-200);
         }
 
         .top,
@@ -292,9 +298,30 @@ class MuiMenu extends HTMLElement {
         }
 
         :host([inset]) .content {
-          padding-block: var(--menu-inset-padding-block, var(--menu-inset-padding-default, var(--space-100)));
-          padding-inline: var(--menu-inset-padding-inline, var(--menu-inset-padding-default, var(--space-100)));
+          padding-block: var(--menu-inset-padding-block, var(--menu-inset));
+          padding-inline: var(--menu-inset-padding-inline, var(--menu-inset));
         }
+
+        :host([inset][size="x-small"]) .content[has-body] {
+          padding-bottom: var(--space-200);
+        }
+
+        :host([inset][size="small"]) .content[has-body] {
+          padding-bottom: var(--space-300);
+        }
+
+        :host([inset][size="medium"]) .content[has-body] {
+          padding-bottom: var(--space-400);
+        }
+
+        :host([inset][size="large"]) .content[has-body] {
+          padding-bottom: var(--space-500);
+        }
+
+        :host([inset]) ::slotted(mui-rule) {
+          margin-block: var(--menu-inset);
+        }
+
         ::slotted(mui-button),
         ::slotted(mui-link) {
           width: 100%;

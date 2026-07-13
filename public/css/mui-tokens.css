@@ -1114,7 +1114,9 @@ html[data-theme="dark"] {
   --action-size-xx-small: calc(var(--action-size-x-small) - var(--space-100));
   --action-size-x-small: 2.8rem;
   --action-radius-x-small: var(--radius-100);
-  --action-padding-x-small: var(--space-050) var(--space-200);
+  --action-padding-block-x-small: var(--space-050);
+  --action-padding-inline-x-small: var(--space-200);
+  --action-padding-x-small: var(--action-padding-block-x-small) var(--action-padding-inline-x-small);
   --action-before-slot-padding-x-small: var(--space-100);
   --action-after-slot-padding-x-small: var(--space-100);
   --action-icon-only-size-x-small: var(--action-size-x-small);
@@ -1122,7 +1124,9 @@ html[data-theme="dark"] {
   /* SIZE: SMALL */
   --action-size-small: 3.6rem;
   --action-radius-small: var(--radius-100);
-  --action-padding-small: calc(var(--space-100) - (var(--stroke-size-100) / 2)) var(--space-300);
+  --action-padding-block-small: calc(var(--space-100) - (var(--stroke-size-100) / 2));
+  --action-padding-inline-small: var(--space-300);
+  --action-padding-small: var(--action-padding-block-small) var(--action-padding-inline-small);
   --action-before-slot-padding-small: var(--space-200);
   --action-after-slot-padding-small: var(--space-200);
   --action-icon-only-size-small: var(--action-size-small);
@@ -1130,7 +1134,9 @@ html[data-theme="dark"] {
   /* SIZE: MEDIUM: DEFAULT */
   --action-size-medium: 4.4rem;
   --action-radius-medium: var(--radius-200);
-  --action-padding: var(--space-200) calc(var(--space-300) + var(--space-100));
+  --action-padding-block: var(--space-200);
+  --action-padding-inline: calc(var(--space-300) + var(--space-100));
+  --action-padding: var(--action-padding-block) var(--action-padding-inline);
   --action-before-slot-padding: var(--space-300);
   --action-after-slot-padding: var(--space-300);
   --action-icon-only-padding: var(--space-000);
@@ -1140,7 +1146,9 @@ html[data-theme="dark"] {
   /* SIZE: LARGE */
   --action-size-large: 5.6rem;
   --action-radius-large: var(--radius-300);
-  --action-padding-large: var(--space-200) var(--space-500);
+  --action-padding-block-large: var(--space-200);
+  --action-padding-inline-large: var(--space-500);
+  --action-padding-large: var(--action-padding-block-large) var(--action-padding-inline-large);
   --action-before-slot-padding-large: var(--space-400);
   --action-after-slot-padding-large: var(--space-400);
   --action-icon-only-size-large: var(--action-size-large);

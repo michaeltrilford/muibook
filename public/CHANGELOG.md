@@ -19,6 +19,8 @@ _Status: WIP_
 - `mui-menu` no longer applies first-action top corner radius when a direct `mui-body` heading precedes that action.
 - Menu surfaces, Menu edge actions, and Input compositions now use size-aware form radius caps. Before/after Buttons, Links, Add Ons, and Chips preserve square joined corners while exposed corners receive the matching Menu inset radius.
 - Direct Button and Link actions inside Menu now use `var(--font-weight-regular)` for a consistent action hierarchy.
+- Added directional `--action-padding-block-*` and `--action-padding-inline-*` tokens for every action size. Existing `--action-padding-*` shorthand tokens now compose those values, allowing inset compositions to adjust inline padding without reconstructing the full shorthand.
+- Added the resolved, size-aware `--menu-inset` custom property. Menu content, direct Body headings, Button and Link actions, and inset Rule spacing now share the same inset measurement.
 - Input and Textarea now support public `padding-block` and `padding-inline` overrides matching Select; Date Picker, Time Picker, Search Input, and Chip Input forward those values to their internal Input.
 - Plain Input and Select controls now use matching inline padding at every size, including `space-100` at x-small and `space-200` at small.
 - Renamed `mui-prompt-message` to `mui-chat-message` and moved its component export, story, documentation, and route to Chat Message.
@@ -38,6 +40,14 @@ _Status: WIP_
 - Menu now restores authored form-control `size`, `menu-slot`, `padding-inline`, and `surface` attributes when controls leave the Menu or the Menu disconnects.
 - Textarea now combines row and padding custom properties in one style attribute so both configurations apply reliably.
 - Input, Select, and Textarea now retain their size-resolved Menu radius when focused at x-small and small instead of forcing square corners.
+- Menu stories now reserve `inset` for compositions with top or bottom regions, keep action-only menus edge-to-edge, and include dedicated all-size Time Picker and Chip Input examples.
+- Inset Menu now passes internal inset state to direct Button and Link actions, which apply size-specific padding independently from Menu content padding.
+- Inset Menu actions and form controls now retain their normal size-specific radius instead of inheriting a reduced Menu-derived content radius.
+- Inset Button and Link actions now share one-to-one padding, radius, regular-weight, and leading-alignment behavior at every Menu size.
+- Inset Menu content now adds size-aware bottom spacing only when a visible direct `mui-body` is present. Hidden live-region Bodies and Bodies assigned to fixed regions no longer affect content spacing.
+- Direct `mui-rule` children inside inset Menu now use the resolved Menu inset for block margin, while default edge-to-edge Menu rules remain flush.
+- Menu search stories now share independently scoped filtering behavior, explicitly hide unmatched custom-element actions, hide empty section headings, and reveal polite live-region Body messages when no results remain. Searchable, Inset Content, and Sections examples are wired across every demonstrated size.
+- Grouped Content stories now demonstrate both edge-to-edge and inset compositions at `x-small`, `small`, `medium`, and `large` sizes.
 - `mui-search-input` now reserves controlled `open` behaviour for populated `after` slot compositions, normalizes its Cancel action and direct Tab Bar to the input size, and removes meaningless Cancel state from standalone search fields.
 - `mui-range-input` now uses a theme-aware solid thumb, custom filled track, correctly centered value bubble, and stable value updates that do not replace the native input during an active drag.
 - Completed the prompt-component rename audit: restored the complete `--preview-chip-*` token family in the main light, dark, and shared theme layers, removed the remaining stale `--prompt-preview-*` declarations, and renamed the final Prompt Toggle story identifier to Action Toggle terminology.

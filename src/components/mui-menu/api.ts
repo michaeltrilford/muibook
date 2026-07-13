@@ -16,6 +16,7 @@ export const muiApi = {
       { name: "--menu-shadow-color", description: "Menu surface shadow color." },
       { name: "--menu-radius", description: "Menu surface corner radius." },
       { name: "--menu-min-width", description: "Minimum width of the menu surface." },
+      { name: "--menu-inset", description: "Resolved size-based inset shared by the content region and direct Menu actions." },
       { name: "--menu-inset-padding-block", description: "Block padding applied to the scrollable content region when the inset attribute is used." },
       { name: "--menu-inset-padding-inline", description: "Inline padding applied to the scrollable content region when the inset attribute is used." },
     ],

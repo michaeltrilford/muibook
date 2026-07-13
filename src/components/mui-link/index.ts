@@ -1124,6 +1124,33 @@ class MuiLink extends HTMLElement {
         font-weight: var(--font-weight-regular);
       }
 
+      :host([menu-inset][size]) a,
+      :host([menu-inset][size]) a:hover,
+      :host([menu-inset][size]) a:focus,
+      :host([menu-inset][size]) a[aria-disabled="true"] {
+        justify-content: flex-start;
+        text-align: left;
+        font-weight: var(--font-weight-regular);
+        white-space: nowrap;
+      }
+
+      :host([menu-inset][size="x-small"]) a {
+        padding-inline: calc(var(--action-padding-inline-x-small) - var(--menu-inset)) !important;
+        border-radius: var(--action-radius-x-small);
+      }
+      :host([menu-inset][size="small"]) a {
+        padding-inline: calc(var(--action-padding-inline-small) - var(--menu-inset)) !important;
+        border-radius: var(--action-radius-small);
+      }
+      :host([menu-inset][size="medium"]) a {
+        padding-inline: calc(var(--action-padding-inline) - var(--menu-inset)) !important;
+        border-radius: var(--action-radius-medium);
+      }
+      :host([menu-inset][size="large"]) a {
+        padding-inline: calc(var(--action-padding-inline-large) - var(--menu-inset)) !important;
+        border-radius: var(--action-radius-large);
+      }
+
       :host([has-video]) {
         display: inline-block;
         width: auto;
