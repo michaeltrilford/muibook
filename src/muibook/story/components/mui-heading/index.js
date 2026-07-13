@@ -8,6 +8,12 @@ class storyHeading extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Heading");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Heading"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,7 +22,7 @@ class storyHeading extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-heading" title="Heading"></story-api-types>
 
-      <story-card noHeader>
+      <story-card noHeader id="size-1" title="${storyMeta["size-1"].title}" description="${storyMeta["size-1"].description}" usage="${storyMeta["size-1"].usage}">
         <div slot="body">
           <mui-heading size="1">Heading 1</mui-heading>
         </div>
@@ -25,7 +31,7 @@ class storyHeading extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card noHeader>
+      <story-card noHeader id="size-2" title="${storyMeta["size-2"].title}" description="${storyMeta["size-2"].description}" usage="${storyMeta["size-2"].usage}">
         <div slot="body">
           <mui-heading size="2">Heading 2</mui-heading>
         </div>
@@ -34,7 +40,7 @@ class storyHeading extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card noHeader>
+      <story-card noHeader id="size-3" title="${storyMeta["size-3"].title}" description="${storyMeta["size-3"].description}" usage="${storyMeta["size-3"].usage}">
         <div slot="body">
           <mui-heading size="3">Heading 3</mui-heading>
         </div>
@@ -43,7 +49,7 @@ class storyHeading extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card noHeader>
+      <story-card noHeader id="size-4" title="${storyMeta["size-4"].title}" description="${storyMeta["size-4"].description}" usage="${storyMeta["size-4"].usage}">
         <div slot="body">
           <mui-heading size="4">Heading 4</mui-heading>
         </div>
@@ -52,7 +58,7 @@ class storyHeading extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card noHeader>
+      <story-card noHeader id="size-5" title="${storyMeta["size-5"].title}" description="${storyMeta["size-5"].description}" usage="${storyMeta["size-5"].usage}">
         <div slot="body">
           <mui-heading size="5">Heading 5</mui-heading>
         </div>
@@ -61,7 +67,7 @@ class storyHeading extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card noHeader>
+      <story-card noHeader id="size-6" title="${storyMeta["size-6"].title}" description="${storyMeta["size-6"].description}" usage="${storyMeta["size-6"].usage}">
         <div slot="body">
           <mui-heading size="6">Heading 6</mui-heading>
         </div>
@@ -70,7 +76,7 @@ class storyHeading extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Overflow" description="Use truncate for one-line heading overflow and clamp for bounded multi-line headings.">
+      <story-card id="overflow" title="${storyMeta["overflow"].title}" description="${storyMeta["overflow"].description}" usage="${storyMeta["overflow"].usage}">
         <div slot="body">
           <mui-v-stack space="var(--space-400)" alignx="start">
             <div style="width: min(100%, 28rem); border: var(--border-thin); border-radius: var(--radius-200); padding: var(--space-300);">
@@ -122,6 +128,7 @@ class storyHeading extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-heading"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

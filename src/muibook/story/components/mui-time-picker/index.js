@@ -8,6 +8,12 @@ class storyTimePicker extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("TimePicker");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Time Picker"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,11 +22,7 @@ class storyTimePicker extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-time-picker" title="Time Picker"></story-api-types>
 
-        <story-card
-          id="default"
-          title="Default"
-          description="A composition time picker input with a scrolling wheels popover."
-        >
+        <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
           <mui-v-stack slot="body">
             <mui-time-picker label="Time" type="time"></mui-time-picker>
           </mui-v-stack>
@@ -29,11 +31,7 @@ class storyTimePicker extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="timeslot"
-          title="Time Slot"
-          description="Use type='timeslot' to show discrete time chips."
-        >
+        <story-card id="time-slot" title="${storyMeta["time-slot"].title}" description="${storyMeta["time-slot"].description}" usage="${storyMeta["time-slot"].usage}">
           <mui-v-stack slot="body">
             <mui-time-picker label="Select Appointment" type="timeslot"></mui-time-picker>
           </mui-v-stack>
@@ -42,7 +40,7 @@ class storyTimePicker extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card id="sizes" title="Sizes" description="Time Picker supports x-small, small, medium, and large input sizes.">
+        <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
           <mui-v-stack slot="body">
             <mui-time-picker size="x-small" label="X-small time" type="time" value="09:30"></mui-time-picker>
             <mui-time-picker size="small" label="Small time" type="time" value="09:30"></mui-time-picker>
@@ -70,11 +68,7 @@ class storyTimePicker extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-time-picker"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Default|||sizes::Sizes|||timeslot::Time Slot"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

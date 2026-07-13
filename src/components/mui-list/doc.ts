@@ -47,6 +47,35 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares List Item density across supported sizes.",
+          "list": [
+            "Use List when items form a meaningful ordered or unordered group."
+          ]
+        },
+        {
+          "key": "unordered",
+          "title": "Unordered",
+          "description": "Groups related items without sequence priority.",
+          "list": [
+            "Use List when items form a meaningful ordered or unordered group."
+          ]
+        },
+        {
+          "key": "ordered",
+          "title": "Ordered",
+          "description": "Communicates a meaningful item sequence.",
+          "list": [
+            "Use List when items form a meaningful ordered or unordered group."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

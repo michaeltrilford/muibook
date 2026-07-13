@@ -107,6 +107,102 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "input-default",
+          "title": "Input: Default",
+          "description": "The label prop is forwarded from the parent field to the input element to associate the label with the input correctly.",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "input-sizes",
+          "title": "Input: Sizes",
+          "description": "Field forwards size to the slotted control.",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "select-sizes",
+          "title": "Select: Sizes",
+          "description": "Field forwards size to select controls.",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "textarea-sizes",
+          "title": "Textarea: Sizes",
+          "description": "Field forwards size to textarea controls.",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "input-default-with-message",
+          "title": "Input: Default w/ Message",
+          "description": "A supporting field message can be displayed by default without validation or interaction logic.",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "input-info-with-message",
+          "title": "Input: Info w/ Message",
+          "description": "An informational field message can be displayed without requiring a validation event.",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "input-success-with-message",
+          "title": "Input: Success w/ Message",
+          "description": "The form logic will inject the success message onto the field component and render",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "input-warning-with-message",
+          "title": "Input: Warning w/ Message",
+          "description": "The form logic will inject the warning message onto the field component and render",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "input-error-with-message",
+          "title": "Input: Error w/ Message",
+          "description": "The form logic will inject the error message onto the field component and render",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "select-error-with-message",
+          "title": "Select: Error w/ Message",
+          "description": "The form logic will inject the error message onto the field component and render",
+          "list": [
+            "Use Field to connect a control with its label, optional state, and validation or helper message."
+          ]
+        },
+        {
+          "key": "input-and-select-error-with-message",
+          "title": "Input & Select: Error w/ Message",
+          "description": "The form logic will inject the error message onto the field component and render",
+          "list": [
+            "Add input is the primary element, so this item should have validation",
+            "The select isn’t the primary input: It’s more of a supporting control (Filter | Unit | Currency)",
+            "Grouped but semantically separate: While it’s next to the input, it’s not part of the input’s value",
+            "Validation usually targets primary fields like text, email, number — not auxiliary UI."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

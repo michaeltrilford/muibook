@@ -8,11 +8,17 @@ class StoryFormGroup extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("FormGroup");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Form Group"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-form-group" title="Form Group"></story-api-types>
 
-      <story-card id="vertical" title="Vertical Group" description="Stacked group with heading, choice controls, and field-level guidance." usage="Use a stacked group when the controls belong to the same decision area.|||Keep helper and status copy attached to the relevant field.|||When the message belongs to a specific mui-field inside the group, use slot=&quot;message&quot; on that field.|||Use a colored mui-form-message for static guidance that needs more emphasis; use the default greyscale version for lighter supporting copy.">
+      <story-card id="vertical-group" title="${storyMeta["vertical-group"].title}" description="${storyMeta["vertical-group"].description}" usage="${storyMeta["vertical-group"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-form-group heading="Billing Cycle">
             <mui-field label="Invoice Frequency">
@@ -52,7 +58,7 @@ class StoryFormGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="horizontal" title="Horizontal Group" description="Split row layout with responsive stack on mobile." usage="Use a horizontal group for paired follow-up fields.|||Wrap the group in a mui-v-stack with appropriate spacing when supporting content needs to sit above or below it.|||Keep helper or status copy outside the horizontal group rather than inserting mui-form-message directly into the group.|||Because the supporting message sits outside the field/group in this pattern, slot=&quot;message&quot; is not required.|||Use a colored mui-form-message when the note needs more emphasis, or leave it greyscale for lighter supporting copy.">
+      <story-card id="horizontal-group" title="${storyMeta["horizontal-group"].title}" description="${storyMeta["horizontal-group"].description}" usage="${storyMeta["horizontal-group"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-300)">
             <mui-form-group variant="horizontal" hide-heading>
@@ -94,12 +100,7 @@ class StoryFormGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="select-action"
-        title="Select + Action"
-        description="Use space and aligny to build an input-family row with a trailing action."
-        usage="Pair stroke=&quot;ring&quot; with inputs or selects when you want an action to visually align with a thinner form-control stroke.|||Keep the ring explicit on the action, rather than relying on form-group to change descendant button styling."
-      >
+      <story-card id="select-action" title="${storyMeta["select-action"].title}" description="${storyMeta["select-action"].description}" usage="${storyMeta["select-action"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-form-group variant="horizontal" space="var(--space-300)" aligny="end">
             <mui-select
@@ -124,7 +125,7 @@ class StoryFormGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="heading-controls" title="Heading Level + Space" description="Heading semantics and heading spacing can be adjusted independently of grouped control spacing.">
+      <story-card id="heading-level-space" title="${storyMeta["heading-level-space"].title}" description="${storyMeta["heading-level-space"].description}" usage="${storyMeta["heading-level-space"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-500)">
             <mui-form-group heading="Billing Cycle" heading-level="3">
@@ -174,11 +175,7 @@ class StoryFormGroup extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-form-group"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="vertical::Vertical Group|||horizontal::Horizontal Group|||select-action::Select + Action|||heading-controls::Heading Level + Space"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

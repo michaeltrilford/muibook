@@ -8,6 +8,12 @@ class storyCalendar extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Calendar");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Calendar"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,11 +22,7 @@ class storyCalendar extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-calendar" title="Calendar"></story-api-types>
 
-        <story-card
-          id="default"
-          title="Default"
-          description="A standard monthly calendar for single date selection."
-        >
+        <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
           <mui-h-stack slot="body" alignX="center">
             <mui-calendar></mui-calendar>
           </mui-h-stack>
@@ -29,11 +31,7 @@ class storyCalendar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="double-view"
-          title="Double View"
-          description="Shows two consecutive months side-by-side, ideal for range selection."
-        >
+        <story-card id="double-view" title="${storyMeta["double-view"].title}" description="${storyMeta["double-view"].description}" usage="${storyMeta["double-view"].usage}">
           <mui-h-stack slot="body" alignX="center">
             <mui-calendar view="double"></mui-calendar>
           </mui-h-stack>
@@ -42,11 +40,7 @@ class storyCalendar extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="default-value"
-          title="Default Value"
-          description="Set the initial selected date using an ISO date string."
-        >
+        <story-card id="default-value" title="${storyMeta["default-value"].title}" description="${storyMeta["default-value"].description}" usage="${storyMeta["default-value"].usage}">
           <mui-h-stack slot="body" alignX="center">
             <mui-calendar value="2026-06-24"></mui-calendar>
           </mui-h-stack>
@@ -70,11 +64,7 @@ class storyCalendar extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-calendar"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Default|||double-view::Double View|||default-value::Default Value"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

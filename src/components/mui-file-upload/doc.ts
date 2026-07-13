@@ -51,6 +51,19 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "A simple file input that displays the selected file name and emits a file-upload event.",
+          "list": [
+            "Use File Upload when users need to select files and clearly communicate accepted formats and limits."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [

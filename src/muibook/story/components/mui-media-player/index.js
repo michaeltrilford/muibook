@@ -15,16 +15,17 @@ class StoryMediaPlayer extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("MediaPlayer");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Media Player"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-media-player" title="Media Player"></story-api-types>
 
-      <story-card
-        canvas-bleed
-        id="video"
-        title="Video"
-        description="Direct video file rendered with the native video element and Muibook controls."
-        usage="Use Muibook controls when the player needs to match the product visual language.|||The native video element remains the playback engine underneath the UI.|||Use poster for iOS Safari so the preview has a stable image before playback.|||Picture-in-Picture only appears when the browser reports support; iPhone may hide it when the current video or browser context does not support it.|||Fullscreen may start playback first on iPhone because native video fullscreen must be triggered from the media element.">
+      <story-card canvas-bleed id="video" title="${storyMeta["video"].title}" description="${storyMeta["video"].description}" usage="${storyMeta["video"].usage}">
         <mui-media-player
           slot="body"
           type="video"
@@ -40,12 +41,7 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        canvas-bleed
-        id="center-action"
-        title="Center Action"
-        description="Direct video file rendered with an always-visible centered play/pause action."
-        usage="Use center-play when the preview needs an obvious primary playback action before the user explores the bottom controls.|||The centered action toggles between play and pause while the native video element remains the playback engine underneath the UI.">
+      <story-card canvas-bleed id="center-action" title="${storyMeta["center-action"].title}" description="${storyMeta["center-action"].description}" usage="${storyMeta["center-action"].usage}">
         <mui-media-player
           slot="body"
           type="video"
@@ -63,12 +59,7 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        canvas-bleed
-        id="video-loading"
-        title="Video Loading"
-        description="Direct video file rendered with the centered loading affordance forced on."
-        usage="Use loading when an externally managed media load needs visible feedback.|||This story forces the state so spinner size, placement, and contrast can be inspected without waiting for real buffering.|||Remove loading for normal playback; the player still shows the affordance automatically during native buffering events.">
+      <story-card canvas-bleed id="video-loading" title="${storyMeta["video-loading"].title}" description="${storyMeta["video-loading"].description}" usage="${storyMeta["video-loading"].usage}">
         <mui-media-player
           slot="body"
           type="video"
@@ -84,12 +75,7 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        canvas-bleed
-        id="metadata"
-        title="Metadata"
-        description="Direct video file rendered with metadata and a responsive subscribe action."
-        usage="Use this pattern when the media identity and a supporting commercial or creator action need to share the top metadata area.|||Use mui-avatar-chip in slot='meta-before' for reusable avatar and profile copy composition.|||Use slot='meta-after' for the action so the space between remains available for media playback interaction.|||Use overlay action styling when the action sits over video or artwork.">
+      <story-card canvas-bleed id="metadata" title="${storyMeta["metadata"].title}" description="${storyMeta["metadata"].description}" usage="${storyMeta["metadata"].usage}">
         <mui-media-player
           slot="body"
           type="video"
@@ -127,12 +113,7 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        canvas-bleed
-        id="audio"
-        title="Audio"
-        description="Direct audio file rendered as a compact player."
-        usage="Use this state when the player only needs playback controls.|||The native audio element remains the playback engine underneath the UI.">
+      <story-card canvas-bleed id="audio" title="${storyMeta["audio"].title}" description="${storyMeta["audio"].description}" usage="${storyMeta["audio"].usage}">
         <mui-media-player
           slot="body"
           type="audio"
@@ -146,12 +127,7 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        canvas-bleed
-        id="audio-waveform"
-        title="Audio Waveform"
-        description="Direct audio file rendered with an opt-in generated waveform."
-        usage="Use waveform when audio needs a visual signature without adding artwork.|||The waveform is generated from the audio source when the browser can fetch and decode the file.|||Remote audio can fail to render a waveform when CORS blocks decoding, so keep the player usable without it.">
+      <story-card canvas-bleed id="audio-waveform" title="${storyMeta["audio-waveform"].title}" description="${storyMeta["audio-waveform"].description}" usage="${storyMeta["audio-waveform"].usage}">
         <mui-media-player
           slot="body"
           type="audio"
@@ -187,12 +163,7 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        canvas-bleed
-        id="audio-artwork"
-        title="Audio Artwork"
-        description="Direct audio file rendered with artwork replacing the basic metadata presentation."
-        usage="Add artwork when the audio needs a stronger visual presentation.|||The artwork fills the visual area while the native audio element remains the playback engine underneath the UI.">
+      <story-card canvas-bleed id="audio-artwork" title="${storyMeta["audio-artwork"].title}" description="${storyMeta["audio-artwork"].description}" usage="${storyMeta["audio-artwork"].usage}">
         <mui-media-player
           slot="body"
           type="audio"
@@ -231,12 +202,7 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        canvas-bleed
-        id="audio-artwork-waveform"
-        title="Audio Artwork Waveform"
-        description="Direct audio file rendered with artwork and an opt-in generated waveform."
-        usage="Use waveform with artwork when the audio needs both an image-led presentation and a visible sense of sound structure.|||The active waveform colour follows the same range colour as the player controls, while inactive bars stay quieter over the artwork.|||Keep this opt-in because waveform generation depends on the browser being able to fetch and decode the audio source.">
+      <story-card canvas-bleed id="audio-artwork-waveform" title="${storyMeta["audio-artwork-waveform"].title}" description="${storyMeta["audio-artwork-waveform"].description}" usage="${storyMeta["audio-artwork-waveform"].usage}">
         <mui-media-player
           slot="body"
           type="audio"
@@ -279,7 +245,7 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card canvas-bleed id="youtube" title="YouTube Embed" description="Auto-detected YouTube URL rendered as embed.">
+      <story-card canvas-bleed id="youtube-embed" title="${storyMeta["youtube-embed"].title}" description="${storyMeta["youtube-embed"].description}" usage="${storyMeta["youtube-embed"].usage}">
         <mui-media-player
           slot="body"
           src="https://youtu.be/2HTtfmXkeZQ?si=uM5dXCf3fb2M_9YB">
@@ -291,7 +257,7 @@ class StoryMediaPlayer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card canvas-bleed id="soundcloud" title="SoundCloud Embed" description="Auto-detected SoundCloud URL rendered as embed.">
+      <story-card canvas-bleed id="soundcloud-embed" title="${storyMeta["soundcloud-embed"].title}" description="${storyMeta["soundcloud-embed"].description}" usage="${storyMeta["soundcloud-embed"].usage}">
         <mui-media-player
           slot="body"
           src="https://soundcloud.com/dustinlynch/ridin-roads?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
@@ -317,11 +283,7 @@ class StoryMediaPlayer extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='@muibook/components/mui-media-player'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="video::Video|||center-action::Center Action|||video-loading::Video Loading|||metadata::Metadata|||audio::Audio|||audio-waveform::Audio Waveform|||audio-artwork::Audio Artwork|||audio-artwork-waveform::Audio Artwork Waveform|||youtube::YouTube Embed|||soundcloud::SoundCloud Embed"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

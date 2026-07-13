@@ -87,6 +87,59 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Renders standard body copy using the default text treatment.",
+          "list": [
+            "Choose size and variant from the surrounding content hierarchy rather than using Body for decorative emphasis."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares the supported Body size scale.",
+          "list": [
+            "Choose size and variant from the surrounding content hierarchy rather than using Body for decorative emphasis."
+          ]
+        },
+        {
+          "key": "variants",
+          "title": "Variants",
+          "description": "Communicates secondary, informational, positive, warning, and attention intent.",
+          "list": [
+            "Choose size and variant from the surrounding content hierarchy rather than using Body for decorative emphasis."
+          ]
+        },
+        {
+          "key": "before-and-after-slots",
+          "title": "Before and After Slots",
+          "description": "Compose icons and inline helpers without part-selector styling.",
+          "list": [
+            "Choose size and variant from the surrounding content hierarchy rather than using Body for decorative emphasis."
+          ]
+        },
+        {
+          "key": "before-and-after-wrapping",
+          "title": "Before and After Wrapping",
+          "description": "Before/after slots stay aligned when body text wraps to multiple lines.",
+          "list": [
+            "Choose size and variant from the surrounding content hierarchy rather than using Body for decorative emphasis."
+          ]
+        },
+        {
+          "key": "overflow",
+          "title": "Overflow",
+          "description": "Use truncate for one-line overflow and clamp for bounded multi-line copy.",
+          "list": [
+            "Choose size and variant from the surrounding content hierarchy rather than using Body for decorative emphasis."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

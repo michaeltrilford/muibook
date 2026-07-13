@@ -8,6 +8,12 @@ class storyTextarea extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Textarea");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Textarea"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,7 +22,7 @@ class storyTextarea extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-textarea" title="Textarea"></story-api-types>
 
-      <story-card title="Default">
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <div slot="body">
           <mui-textarea label="Description" placeholder="Write your notes..."></mui-textarea>
         </div>
@@ -25,7 +31,7 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Rows">
+      <story-card id="rows" title="${storyMeta["rows"].title}" description="${storyMeta["rows"].description}" usage="${storyMeta["rows"].usage}">
         <div slot="body">
           <mui-textarea label="Summary" rows="6" placeholder="6 visible rows"></mui-textarea>
         </div>
@@ -34,7 +40,7 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Sizes">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <div slot="body">
           <mui-v-stack space="var(--space-300)">
             <mui-textarea size="x-small" label="X-Small" placeholder="X-Small textarea"></mui-textarea>
@@ -51,7 +57,7 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Variant: Error">
+      <story-card id="variant-error" title="${storyMeta["variant-error"].title}" description="${storyMeta["variant-error"].description}" usage="${storyMeta["variant-error"].usage}">
         <div slot="body">
           <mui-textarea label="Feedback" variant="error" value="Needs correction"></mui-textarea>
         </div>
@@ -60,7 +66,7 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Hide Label">
+      <story-card id="hide-label" title="${storyMeta["hide-label"].title}" description="${storyMeta["hide-label"].description}" usage="${storyMeta["hide-label"].usage}">
         <div slot="body">
           <mui-textarea label="Hidden Label" hide-label placeholder="Accessible without visible label"></mui-textarea>
         </div>
@@ -69,7 +75,7 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Disabled">
+      <story-card id="disabled" title="${storyMeta["disabled"].title}" description="${storyMeta["disabled"].description}" usage="${storyMeta["disabled"].usage}">
         <div slot="body">
           <mui-textarea label="Disabled" disabled value="Read-only content"></mui-textarea>
         </div>
@@ -78,7 +84,7 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Optional Label">
+      <story-card id="optional-label" title="${storyMeta["optional-label"].title}" description="${storyMeta["optional-label"].description}" usage="${storyMeta["optional-label"].usage}">
         <div slot="body">
           <mui-textarea label="Additional Context" optional placeholder="Optional details..."></mui-textarea>
         </div>
@@ -87,7 +93,7 @@ class storyTextarea extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Character Count">
+      <story-card id="character-count" title="${storyMeta["character-count"].title}" description="${storyMeta["character-count"].description}" usage="${storyMeta["character-count"].usage}">
         <div slot="body">
           <mui-textarea label="Summary" max-length="180" placeholder="Up to 180 characters"></mui-textarea>
         </div>
@@ -110,6 +116,7 @@ class storyTextarea extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-textarea"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

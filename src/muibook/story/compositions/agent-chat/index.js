@@ -1,7 +1,18 @@
+import { compositionStories } from "../../../../knowledge/compositions";
+
 class CompAgentChat extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
+    const compositionDoc = compositionStories.agentChat;
+    const storyItems = compositionDoc?.stories?.items;
+    if (!storyItems?.length) {
+      shadowRoot.innerHTML = `<story-metadata-empty component="Agent Chat" source="src/knowledge/compositions.ts" command=""></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
     const styles = /*css*/ `
       :host {
         display: block;
@@ -151,15 +162,17 @@ class CompAgentChat extends HTMLElement {
       <style>${styles}</style>
 
       <story-template
-        title="Agent Chat"
-        description="Composition example for an agent chat surface with response content, generated previews, message framing, and a prompt composer."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/agent-chat/index.js"
-        storybook="https://storybook.muibook.com/?path=/story/compositions-agent-chat--agent-chat"
+        title="${compositionDoc.title}"
+        description="${compositionDoc.description}"
+        github="${compositionDoc.github}"
+        storybook="${compositionDoc.storybook}"
       >
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         <story-card
-          title="Agent Chat"
-          description="A chat layout composed from prompt, prompt message, prompt preview, slats, lists, body text, code, and action controls."
-          usage="Use mui-chat-message for response framing.|||Use mui-preview-chip for generated or attached context.|||Use mui-action-toggle inside the prompt actions slot for app-controlled context state.|||Keep chat content as normal document structure so answers can include headings, paragraphs, lists, code, previews, and controls."
+          id="agent-chat"
+          title="${storyMeta["agent-chat"].title}"
+          description="${storyMeta["agent-chat"].description}"
+          usage="${storyMeta["agent-chat"].usage}"
         >
 
           <mui-v-stack slot="body" class="chat-shell" space="var(--space-600)" alignX="stretch">
@@ -319,9 +332,10 @@ class CompAgentChat extends HTMLElement {
         </story-card>
 
         <story-card
-          title="Steer"
-          description="A full agent page where the composer carries a compact, editable task context row above the prompt input."
-          usage="Use slot='context' for composed task context, selected text, constraints, examples, or attachments.|||Keep the context row compact and truncated so it can stay attached to the composer.|||Use action-toggle in the actions slot for app-controlled context state such as Web, Files, or Canvas."
+          id="steer"
+          title="${storyMeta["steer"].title}"
+          description="${storyMeta["steer"].description}"
+          usage="${storyMeta["steer"].usage}"
         >
 
           <mui-v-stack slot="body" class="chat-shell steering-page" space="var(--space-600)" alignX="stretch">
@@ -378,9 +392,10 @@ class CompAgentChat extends HTMLElement {
         </story-card>
 
         <story-card
-          title="Thinking"
-          description="A response state where the agent is still processing and only the top-level work status is visible."
-          usage="Use pending on Worker for active thinking states.|||Omit rule when the work status should sit as a quiet top-level status without a divider."
+          id="thinking"
+          title="${storyMeta["thinking"].title}"
+          description="${storyMeta["thinking"].description}"
+          usage="${storyMeta["thinking"].usage}"
         >
           <mui-v-stack class="chat-shell" space="var(--space-600)" alignX="stretch" slot="body">
             <mui-v-stack space="var(--space-300)">
@@ -410,9 +425,10 @@ class CompAgentChat extends HTMLElement {
         </story-card>
 
         <story-card
-          title="Working"
-          description="A response state where the top-level work row contains nested execution detail such as elapsed work and files read."
-          usage="Nest Worker rows to show secondary execution detail inside the parent disclosure.|||Use pending on nested rows that are still in progress.|||Keep nested rows compact so the response body remains the main content."
+          id="working"
+          title="${storyMeta["working"].title}"
+          description="${storyMeta["working"].description}"
+          usage="${storyMeta["working"].usage}"
         >
           <mui-v-stack slot="body" class="chat-shell" space="var(--space-600)" alignX="stretch">
             <mui-v-stack space="var(--space-600)">

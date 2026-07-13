@@ -8,6 +8,12 @@ class storyGrid extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Grid");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Grid"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -28,7 +34,7 @@ class storyGrid extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-grid" title="Grid"></story-api-types>
 
-      <story-card title="Default">
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
 
         <mui-grid slot="body" space="var(--space-200)">
           ${Box}
@@ -46,7 +52,7 @@ class storyGrid extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Three Column">
+      <story-card id="three-column" title="${storyMeta["three-column"].title}" description="${storyMeta["three-column"].description}" usage="${storyMeta["three-column"].usage}">
         <mui-grid col="1fr 1fr 1fr" slot="body" space="var(--space-200)">
           ${Box}
           ${Box}
@@ -65,7 +71,7 @@ class storyGrid extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Sized Alignment" description="Set a height to align items within a defined layout area.">
+      <story-card id="sized-alignment" title="${storyMeta["sized-alignment"].title}" description="${storyMeta["sized-alignment"].description}" usage="${storyMeta["sized-alignment"].usage}">
         <mui-grid class="sized-grid" height="20rem" padding="var(--space-300)" col="1fr 1fr" aligny="center" space="var(--space-200)" slot="body">
           ${Box}
           ${Box}
@@ -92,6 +98,7 @@ class storyGrid extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-grid"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

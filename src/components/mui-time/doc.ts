@@ -52,6 +52,27 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default-dial",
+          "title": "Default (Dial)",
+          "description": "The default time picker uses a scrolling wheel dial interface.",
+          "list": [
+            "Use Time for a dial or predefined time-slot selection experience."
+          ]
+        },
+        {
+          "key": "time-slots",
+          "title": "Time Slots",
+          "description": "Use variant='slots' to show discrete time chips.",
+          "list": [
+            "Use Time for a dial or predefined time-slot selection experience."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Time Picker can be composed with a Calendar to form a Date Picker.",
       items: [],

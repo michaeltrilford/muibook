@@ -8,6 +8,12 @@ class StoryFormSectionFooter extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("FormSectionFooter");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Form Section Footer"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-form-section-footer",
@@ -19,7 +25,7 @@ class StoryFormSectionFooter extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-form-section-footer" title="Form Section Footer"></story-api-types>
 
-      <story-card id="default" title="Default Footer Wrapper" description="Use form-section-footer in slot='footer' to standardise action spacing.">
+      <story-card id="default-footer-wrapper" title="${storyMeta["default-footer-wrapper"].title}" description="${storyMeta["default-footer-wrapper"].description}" usage="${storyMeta["default-footer-wrapper"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Commercial Licensing">
             <mui-field label="Company">
@@ -51,7 +57,7 @@ class StoryFormSectionFooter extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="divider" title="With Divider" description="Place mui-rule first and the footer wrapper applies divider spacing without inline margins.">
+      <story-card id="with-divider" title="${storyMeta["with-divider"].title}" description="${storyMeta["with-divider"].description}" usage="${storyMeta["with-divider"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Commercial Licensing">
             <mui-field label="Contact Email">
@@ -105,11 +111,7 @@ class StoryFormSectionFooter extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-form-section-footer"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Default Footer Wrapper|||divider::With Divider"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

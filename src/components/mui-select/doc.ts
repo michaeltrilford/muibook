@@ -114,6 +114,94 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Use for common form inputs where users must choose a single value from a clear and limited set.",
+          "list": [
+            "Use Select when users must choose one value from a known option set."
+          ]
+        },
+        {
+          "key": "optional-label",
+          "title": "Optional Label",
+          "description": "Adds optional guidance while keeping the same accessible label pattern.",
+          "list": [
+            "Use Select when users must choose one value from a known option set."
+          ]
+        },
+        {
+          "key": "hide-label",
+          "title": "Hide Label",
+          "description": "Ensures the label is accessible to screen readers while visually hiding it to avoid redundancy.",
+          "list": [
+            "Use Select when users must choose one value from a known option set."
+          ]
+        },
+        {
+          "key": "value",
+          "title": "Value",
+          "description": "Define which option is selected by default.",
+          "list": [
+            "Use Select when users must choose one value from a known option set."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Use size to align the select with adjacent form controls.",
+          "list": [
+            "Use Select when users must choose one value from a known option set."
+          ]
+        },
+        {
+          "key": "disabled",
+          "title": "Disabled",
+          "description": "Use when options are not currently applicable but should still be visible for context.",
+          "list": [
+            "Use Select when users must choose one value from a known option set."
+          ]
+        },
+        {
+          "key": "before-select",
+          "title": "Before: Select",
+          "description": "The Select component is placed before the input area; use for supporting context like filter type. Select width should be defined in code to ensure layout consistency.",
+          "list": [
+            "Use Select when users must choose one value from a known option set."
+          ]
+        },
+        {
+          "key": "after-select",
+          "title": "After: Select",
+          "description": "The Select component is placed after the input area; use for complementary context like currency type. Select width should be defined in code to ensure layout consistency.",
+          "list": [
+            "Use Select when users must choose one value from a known option set."
+          ]
+        },
+        {
+          "key": "custom-appearance-vertical",
+          "title": "Custom Appearance Vertical",
+          "description": "Uses the experimental native customizable select appearance while keeping options stacked in a single column.",
+          "list": [
+            "Use appearance='custom' when option content needs richer composed markup while still using native select behaviour.",
+            "The custom appearance picker uses a grid internally with one column by default, so space controls the gap between options."
+          ]
+        },
+        {
+          "key": "custom-appearance-grid",
+          "title": "Custom Appearance Grid",
+          "description": "Uses the experimental native customizable select appearance with a two-column picker.",
+          "list": [
+            "Use col to change the custom picker grid columns.",
+            "Use space with col to control the gap between richer option cards.",
+            "Use selected-content='label' when the picker uses larger visual tiles but the closed select should stay compact."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [

@@ -46,6 +46,54 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "single-breakpoint",
+          "title": "Single Breakpoint",
+          "description": "Demonstrates the Single Breakpoint Responsive treatment.",
+          "list": [
+            "Use Responsive to swap intentionally designed compositions at defined breakpoints."
+          ]
+        },
+        {
+          "key": "dual-breakpoint",
+          "title": "Dual Breakpoint",
+          "description": "Demonstrates the Dual Breakpoint Responsive treatment.",
+          "list": [
+            "Use Responsive to swap intentionally designed compositions at defined breakpoints."
+          ]
+        },
+        {
+          "key": "container-breakpoint",
+          "title": "Container Breakpoint",
+          "description": "Switches slotted content based on a resizable page region instead of the viewport.",
+          "list": [
+            "Use variant='container' when the responsive decision should follow the parent layout or resizable drawer region.",
+            "Use observe to measure a parent or closest ancestor selector when the responsive element is nested inside wrapper elements.",
+            "This uses the same desktop-to-mobile composition pattern as the table example, but the breakpoint is measured from the drawer page content.",
+            "Drag the drawer rail to change the page width and confirm the content switches without changing the viewport."
+          ]
+        },
+        {
+          "key": "slat-to-table",
+          "title": "Slat to Table",
+          "description": "Showcasing how to loop data on to the mui-table and mui-slat within the mui-responsive component.",
+          "list": [
+            "Use Responsive to swap intentionally designed compositions at defined breakpoints."
+          ]
+        },
+        {
+          "key": "table-desktop-to-mobile",
+          "title": "Table: Desktop to Mobile",
+          "description": "Demonstrates the Table: Desktop to Mobile Responsive treatment.",
+          "list": [
+            "Use Responsive to swap intentionally designed compositions at defined breakpoints."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

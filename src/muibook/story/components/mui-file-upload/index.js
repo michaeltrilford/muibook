@@ -8,6 +8,12 @@ class storyFileUpload extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("FileUpload");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="File Upload"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,11 +22,7 @@ class storyFileUpload extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-file-upload" title="File Upload"></story-api-types>
 
-      <story-card
-        title="Default"
-        description="A simple file input that displays the selected file name and emits a file-upload event."
-        usageLink="https://guides.muibook.com/file-upload"
-      >
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-file-upload slot="body"
           acceptedFileTypes=".pdf,.jpg"
           currentFileName="No file selected"
@@ -47,6 +49,7 @@ class storyFileUpload extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-file-upload"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

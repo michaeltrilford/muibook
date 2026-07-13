@@ -9,6 +9,12 @@ class storyAvatar extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Avatar");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Avatar"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -37,13 +43,7 @@ class storyAvatar extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-avatar" title="Avatar"></story-api-types>
 
-      <story-card
-        title="Image"
-        description=""
-        usage=""
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="image" title="${storyMeta["image"].title}" description="${storyMeta["image"].description}" usage="${storyMeta["image"].usage}">
         <div class="canvas" slot="body">
           <mui-h-stack alignY="center">
             <mui-avatar size="xxx-small" image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
@@ -64,11 +64,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Activity Status"
-        description="Use status when the avatar needs to show compact presence or availability."
-        usage="Status is visual only and maps to semantic badge status tokens.|||Use online or active for available people.|||Use away, busy, dnd, or offline for availability states."
-      >
+      <story-card id="activity-status" title="${storyMeta["activity-status"].title}" description="${storyMeta["activity-status"].description}" usage="${storyMeta["activity-status"].usage}">
         <div class="canvas" slot="body">
           <mui-h-stack alignY="center">
             <mui-avatar size="large" image="${MikeAvatar}" label="Mike Trilford" status="online"></mui-avatar>
@@ -87,11 +83,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Avatar Group"
-        description="Stack avatars when a compact surface needs to show multiple people."
-        usage="Avatar Group owns the overlap, ring, and default size.|||Each slotted Avatar still owns its image, initials, background, and status.|||Use label to describe the group when surrounding text does not already name it."
-      >
+      <story-card id="avatar-group" title="${storyMeta["avatar-group"].title}" description="${storyMeta["avatar-group"].description}" usage="${storyMeta["avatar-group"].usage}">
         <div class="canvas" slot="body">
           <mui-v-stack alignX="start">
             <mui-avatar-group size="medium" label="Project collaborators">
@@ -120,13 +112,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Icon"
-        description=""
-        usage=""
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="icon" title="${storyMeta["icon"].title}" description="${storyMeta["icon"].description}" usage="${storyMeta["icon"].usage}">
 
         <div class="canvas" slot="body">
           <mui-v-stack>
@@ -169,13 +155,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Size"
-        description=""
-        usage=""
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="size" title="${storyMeta["size"].title}" description="${storyMeta["size"].description}" usage="${storyMeta["size"].usage}">
 
         <div class="canvas" slot="body">
           <mui-v-stack>
@@ -232,13 +212,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Chip Avatars"
-        description="When an Avatar is used within a Chip, it is set to xx-small so compact chips retain the 24px avatar footprint."
-        usage=""
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="chip-avatars" title="${storyMeta["chip-avatars"].title}" description="${storyMeta["chip-avatars"].description}" usage="${storyMeta["chip-avatars"].usage}">
         <div slot="body" class="canvas">
           <mui-v-stack>
             <mui-h-stack wrap space="var(--space-100)">
@@ -321,13 +295,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Background"
-        description="Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes."
-        usage=""
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="background" title="${storyMeta["background"].title}" description="${storyMeta["background"].description}" usage="${storyMeta["background"].usage}">
         <mui-grid col="repeat(auto-fill, minmax(48px, 1fr))" space="var(--space-400) var(--space-400)" slot="body" class="canvas">
           <mui-avatar label="Mike Trilford" background="neutral"></mui-avatar>
           <mui-avatar label="Mike Trilford" background="positive"></mui-avatar>
@@ -358,13 +326,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Background Colors"
-        description="Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes."
-        usage=""
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="background-colors" title="${storyMeta["background-colors"].title}" description="${storyMeta["background-colors"].description}" usage="${storyMeta["background-colors"].usage}">
         <div slot="body" class="canvas">
           <mui-avatar label="Mike Trilford" background-color="var(--app-avatar-background, var(--surface))"></mui-avatar>
         </div>
@@ -376,13 +338,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Buttons"
-        description="Buttons can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size."
-        usage=""
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="buttons" title="${storyMeta["buttons"].title}" description="${storyMeta["buttons"].description}" usage="${storyMeta["buttons"].usage}">
         <mui-v-stack slot="body" class="canvas">
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
@@ -498,13 +454,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Avatar-only Dropdown"
-        description="When a button only contains an Avatar, the button collapses to a primitive wrapper and the avatar drives the final size. This example uses that pattern as a dropdown trigger."
-        usage="Use this when the avatar itself is the interactive target.|||The button keeps interaction semantics and states, while the avatar controls the footprint.|||This works well for profile menus and compact account actions."
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="avatar-only-dropdown" title="${storyMeta["avatar-only-dropdown"].title}" description="${storyMeta["avatar-only-dropdown"].description}" usage="${storyMeta["avatar-only-dropdown"].usage}">
         <div slot="body" class="canvas">
           <mui-h-stack alignY="center">
             <mui-dropdown position="left" size="medium">
@@ -580,13 +530,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Avatar-only Button"
-        description="Avatar-only buttons also work as standalone actions. This example opens a dialog using the avatar as the trigger."
-        usage="Use this when the avatar itself is the only visible action.|||The button keeps semantics and focus behavior, while the avatar defines the final size."
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="avatar-only-button" title="${storyMeta["avatar-only-button"].title}" description="${storyMeta["avatar-only-button"].description}" usage="${storyMeta["avatar-only-button"].usage}">
         <div slot="body" class="canvas">
           <mui-h-stack alignY="center">
             <mui-button data-dialog="avatar-profile-dialog" aria-label="Open Mike profile dialog">
@@ -620,13 +564,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Links"
-        description="Links can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size."
-        usage=""
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="links" title="${storyMeta["links"].title}" description="${storyMeta["links"].description}" usage="${storyMeta["links"].usage}">
         <mui-v-stack slot="body" class="canvas">
 
           <mui-v-stack alignx="start" aligny="start" space="var(--space-100)" class="group">
@@ -858,13 +796,7 @@ class storyAvatar extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Slat & Card Avatars"
-        description=""
-        usage=""
-        usageLink=""
-        accessibility=""
-      >
+      <story-card id="slat-and-card-avatars" title="${storyMeta["slat-and-card-avatars"].title}" description="${storyMeta["slat-and-card-avatars"].description}" usage="${storyMeta["slat-and-card-avatars"].usage}">
         <div slot="body">
           <mui-v-stack slot="body">
 
@@ -978,6 +910,7 @@ class storyAvatar extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-avatar", "@muibook/components/mui-avatar-group"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

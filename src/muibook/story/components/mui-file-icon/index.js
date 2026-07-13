@@ -14,6 +14,12 @@ class StoryFileIcon extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("File Icon");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="File Icon"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const featuredIcons = ["js", "typescript", "pdf", "html", "css", "json", "markdown", "reactjs", "vue", "zip"];
 
     const styles = /*css*/ `
@@ -82,11 +88,7 @@ class StoryFileIcon extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-file-icon" title="File Icon"></story-api-types>
 
-      <story-card
-        id="default"
-        title="Default"
-        usage="Use icon to select a mapped vscode-icons file-type SVG.|||The component is pinned to vscode-icons ${VSCODE_ICONS_VERSION}."
-      >
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-grid slot="body" class="size-grid" col="repeat(auto-fit, minmax(14rem, 1fr))" space="var(--space-300)">
           ${featuredGallery}
         </mui-grid>
@@ -97,11 +99,7 @@ class StoryFileIcon extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="sizes"
-        title="Sizes"
-        usage="Use small for standard inline file icons, then scale up to medium or large for larger preview surfaces."
-      >
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-grid slot="body" class="size-grid" col="repeat(auto-fit, minmax(14rem, 1fr))" space="var(--space-300)">
           <div class="icon-tile">
             <mui-file-icon icon="typescript" size="small" decorative></mui-file-icon>
@@ -123,11 +121,7 @@ class StoryFileIcon extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="composition"
-        title="File Row"
-        usage="Use decorative when the filename or adjacent text already identifies the file type."
-      >
+      <story-card id="file-row" title="${storyMeta["file-row"].title}" description="${storyMeta["file-row"].description}" usage="${storyMeta["file-row"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)">
           <div class="usage-row">
             <mui-file-icon icon="typescript" size="small" decorative></mui-file-icon>
@@ -147,11 +141,7 @@ class StoryFileIcon extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="all-icons"
-        title="All Icons"
-        usage="${fileIconNames.length} file-type icons are available from the pinned vscode-icons ${VSCODE_ICONS_VERSION} map."
-      >
+      <story-card id="all-icons" title="${storyMeta["all-icons"].title}" description="${storyMeta["all-icons"].description}" usage="${storyMeta["all-icons"].usage}">
         <div slot="body" class="icon-gallery">
           ${iconGallery}
         </div>
@@ -169,6 +159,7 @@ class StoryFileIcon extends HTMLElement {
         storybook="${data?.storybook || ""}"
         accessibility="${data?.accessibility?.engineerList?.join("|||") || ""}"
         imports='["@muibook/components/mui-file-icon"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

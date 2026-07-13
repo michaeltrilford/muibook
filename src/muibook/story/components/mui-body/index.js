@@ -8,6 +8,12 @@ class storyBody extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Body");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Body"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-body",
@@ -23,7 +29,7 @@ class storyBody extends HTMLElement {
     const stories = /*html*/ `
           <story-api-types tag="mui-body" title="Body"></story-api-types>
 
-        <story-card title="Default">
+        <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
 
           <div slot="body">
             <mui-body>Risus Mollis Dapibus</mui-body>
@@ -35,7 +41,7 @@ class storyBody extends HTMLElement {
 
         </story-card>
 
-        <story-card title="Sizes">
+        <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
 
             <div slot="body">
               <mui-v-stack space="var(--space-500)">
@@ -76,7 +82,7 @@ class storyBody extends HTMLElement {
 
           </story-card>
 
-          <story-card title="Variants">
+          <story-card id="variants" title="${storyMeta["variants"].title}" description="${storyMeta["variants"].description}" usage="${storyMeta["variants"].usage}">
 
             <div slot="body">
               <mui-v-stack space="var(--space-500)">
@@ -117,7 +123,7 @@ class storyBody extends HTMLElement {
 
           </story-card>
 
-          <story-card title="Before and After Slots" description="Compose icons and inline helpers without part-selector styling.">
+          <story-card id="before-and-after-slots" title="${storyMeta["before-and-after-slots"].title}" description="${storyMeta["before-and-after-slots"].description}" usage="${storyMeta["before-and-after-slots"].usage}">
 
             <div slot="body">
               <mui-v-stack space="var(--space-500)">
@@ -204,7 +210,7 @@ class storyBody extends HTMLElement {
 
           </story-card>
 
-          <story-card title="Before and After Wrapping" description="Before/after slots stay aligned when body text wraps to multiple lines.">
+          <story-card id="before-and-after-wrapping" title="${storyMeta["before-and-after-wrapping"].title}" description="${storyMeta["before-and-after-wrapping"].description}" usage="${storyMeta["before-and-after-wrapping"].usage}">
 
             <div slot="body">
               <mui-v-stack space="var(--space-300)" alignx="start">
@@ -301,7 +307,7 @@ class storyBody extends HTMLElement {
 
           </story-card>
 
-          <story-card title="Overflow" description="Use truncate for one-line overflow and clamp for bounded multi-line copy.">
+          <story-card id="overflow" title="${storyMeta["overflow"].title}" description="${storyMeta["overflow"].description}" usage="${storyMeta["overflow"].usage}">
 
             <div slot="body">
               <mui-v-stack space="var(--space-400)" alignx="start">
@@ -380,6 +386,7 @@ class storyBody extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-body"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

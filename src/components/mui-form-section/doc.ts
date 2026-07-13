@@ -31,6 +31,74 @@ export const muiDocs: MuiDocs = {
     accessibility: { designerList: [""], engineerList: [""], },
     anatomy: { image: "", list: ["Legend heading", "Slotted form content"], },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: {
+      items: [
+        {
+          "key": "account-setup-section",
+          "title": "Account Setup Section",
+          "description": "Real form grouping with Field, Input, Select, and Form Message. Intended for use on a surface background.",
+          "list": [
+            "Use one form section for each major form area.",
+            "Use form group to cluster related fields.",
+            "Hide group labels when they repeat the section title.",
+            "Use the default greyscale mui-form-message for lighter supporting copy tied to a specific field."
+          ]
+        },
+        {
+          "key": "billing-preferences-section",
+          "title": "Billing Preferences Section",
+          "description": "Grouped controls with radio choices and inline guidance. Intended for use on a surface background.",
+          "list": [
+            "Use horizontal groups for paired fields.",
+            "Default split is 1fr / 20rem and stacks on mobile.",
+            "Use form hints for helper or status text.",
+            "Use a colored mui-form-message for stronger static section/group guidance, or the default greyscale version for lighter supporting copy."
+          ]
+        },
+        {
+          "key": "no-legend",
+          "title": "No Legend",
+          "description": "Form section composition without a section heading/legend.",
+          "list": [
+            "Use the default greyscale mui-form-message when the supporting copy should stay visually quiet within the section."
+          ]
+        },
+        {
+          "key": "header-footer-slots",
+          "title": "Header + Footer Slots",
+          "description": "Custom section chrome/actions using form-section header/footer slots while keeping fieldset semantics.",
+          "list": [
+            "Use header/footer slots for custom section chrome while retaining fieldset semantics.",
+            "If header/footer uses mui-h-stack, switch to mui-v-stack at smaller breakpoints."
+          ]
+        },
+        {
+          "key": "card-spacing-compare",
+          "title": "Card Spacing Compare",
+          "description": "Reference spacing using mui-card and mui-card-body for side-by-side comparison.",
+          "list": [
+            "Use Form Section to group related fields under a clear section heading and description."
+          ]
+        },
+        {
+          "key": "license-intake",
+          "title": "License Intake",
+          "description": "Lean licensing inquiry pattern using Form Section with Field-level messaging.",
+          "list": [
+            "Use Form Section to group related fields under a clear section heading and description."
+          ]
+        },
+        {
+          "key": "host-event-contracts",
+          "title": "Host Event Contracts",
+          "description": "Form logic listens on the custom element host, reads event.detail, and checks host value or checked properties without querying shadow DOM internals.",
+          "list": [
+            "Use Form Section to group related fields under a clear section heading and description."
+          ]
+        }
+      ],
+    },
+
     compositions: { description: "", items: [] },
     related: {
       items: [

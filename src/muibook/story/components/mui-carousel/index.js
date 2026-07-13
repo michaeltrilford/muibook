@@ -10,6 +10,12 @@ class storyCarousel extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Carousel");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Carousel"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -132,18 +138,7 @@ class storyCarousel extends HTMLElement {
         <story-api-types tag="mui-carousel-panel" title="Carousel Panel"></story-api-types>
       </mui-v-stack>
 
-      <story-card
-        title="Default"
-        description="A flexible, composable carousel that gives you full control over the content and internal layout."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js"
-        usage="
-          Carousel controls are set to bottom-center by default|||
-          Internal padding is required|||
-          The var(--carousel-tab-offset) is available to help with control spacing - though, not required|||
-          You will need knowledge of CSS to add your specific custom content.
-        "
-        usageLink="https://guides.muibook.com/carousel"
-      >
+      <story-card github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js" id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-carousel-controller slot="body">
           <mui-tab-bar slot="controls">
             <mui-tab-item active id="one">1</mui-tab-item>
@@ -218,11 +213,7 @@ class storyCarousel extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Auto Rotate"
-        description="Demonstrates how to add set-up auto-rotate of the carousel panels."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js"
-      >
+      <story-card github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js" id="auto-rotate" title="${storyMeta["auto-rotate"].title}" description="${storyMeta["auto-rotate"].description}" usage="${storyMeta["auto-rotate"].usage}">
         <mui-carousel-controller slot="body" auto-rotate rotate-interval="10000">
           <mui-tab-bar slot="controls" controlsPosition="bottom-right">
             ${carouselTabItems}
@@ -313,11 +304,7 @@ class storyCarousel extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Dots Controls"
-        description="Uses the Tabs dots variant for compact carousel pagination."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js"
-      >
+      <story-card github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js" id="dots-controls" title="${storyMeta["dots-controls"].title}" description="${storyMeta["dots-controls"].description}" usage="${storyMeta["dots-controls"].usage}">
         <mui-carousel-controller slot="body" auto-rotate rotate-interval="10000">
           <mui-tab-bar slot="controls" controlsPosition="bottom" variant="dots">
             ${carouselTabItems}
@@ -335,11 +322,7 @@ class storyCarousel extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Custom Layout"
-        description="Demonstrates how to add custom compositions and layouts within the carousel panels."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js"
-      >
+      <story-card github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js" id="custom-layout" title="${storyMeta["custom-layout"].title}" description="${storyMeta["custom-layout"].description}" usage="${storyMeta["custom-layout"].usage}">
         <mui-carousel-controller slot="body">
           <mui-tab-bar slot="controls" controlsPosition="bottom-right">
             ${carouselTabItems}
@@ -430,11 +413,7 @@ class storyCarousel extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Map Data"
-        description="Map dynamic data to generate carousel tabs and panels."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js"
-      >
+      <story-card github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js" id="map-data" title="${storyMeta["map-data"].title}" description="${storyMeta["map-data"].description}" usage="${storyMeta["map-data"].usage}">
         <mui-carousel-controller slot="body">
           <mui-tab-bar slot="controls" controlsPosition="bottom-right">
             ${carouselTabItems}
@@ -571,6 +550,7 @@ class storyCarousel extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-carousel"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

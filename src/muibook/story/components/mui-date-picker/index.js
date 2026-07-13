@@ -8,6 +8,12 @@ class storyDatePicker extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("DatePicker");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Date Picker"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,11 +22,7 @@ class storyDatePicker extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-date-picker" title="Date Picker"></story-api-types>
 
-        <story-card
-          id="default"
-          title="Date picker"
-          description="A standard date picker using the default type='date'."
-        >
+        <story-card id="date-picker" title="${storyMeta["date-picker"].title}" description="${storyMeta["date-picker"].description}" usage="${storyMeta["date-picker"].usage}">
           <mui-h-stack slot="body" alignX="center">
             <mui-date-picker label="Select Date"></mui-date-picker>
           </mui-h-stack>
@@ -29,11 +31,7 @@ class storyDatePicker extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="datetimeslot"
-          title="Date & Timeslot"
-          description="Combine the calendar and timeslot picker using type='datetimeslot'."
-        >
+        <story-card id="date-and-timeslot" title="${storyMeta["date-and-timeslot"].title}" description="${storyMeta["date-and-timeslot"].description}" usage="${storyMeta["date-and-timeslot"].usage}">
           <mui-h-stack slot="body" alignX="center">
             <mui-date-picker type="datetimeslot" label="Date & Timeslot"></mui-date-picker>
           </mui-h-stack>
@@ -42,7 +40,7 @@ class storyDatePicker extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card id="sizes" title="Sizes" description="Date Picker supports x-small, small, medium, and large input sizes.">
+        <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
           <mui-v-stack slot="body">
             <mui-date-picker size="x-small" label="X-small date" value="2026-07-09"></mui-date-picker>
             <mui-date-picker size="small" label="Small date" value="2026-07-09"></mui-date-picker>
@@ -71,11 +69,7 @@ class storyDatePicker extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-date-picker"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Default|||sizes::Sizes|||datetimeslot::Date & Timeslot"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

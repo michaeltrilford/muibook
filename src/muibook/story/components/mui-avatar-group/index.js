@@ -9,6 +9,12 @@ class StoryAvatarGroup extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("AvatarGroup");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Avatar Group"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host {
@@ -24,12 +30,7 @@ class StoryAvatarGroup extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-avatar-group" title="Avatar Group"></story-api-types>
 
-      <story-card
-        id="default"
-        title="Default"
-        description="Stack avatars when a compact surface needs to show multiple people."
-        usage="Avatar Group owns the overlap, ring, and default size.|||Each slotted Avatar still owns its image, initials, background, and status.|||Use label to describe the group when surrounding text does not already name it."
-      >
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <div class="canvas" slot="body">
           <mui-avatar-group size="medium" label="Project collaborators">
             <mui-avatar image="${MikeAvatar}" label="Mike Trilford"></mui-avatar>
@@ -48,12 +49,7 @@ class StoryAvatarGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="overlap"
-        title="Overlap"
-        description="Tune overlap density for recognition or compact layout."
-        usage="Use loose when recognition matters.|||Use tight as the default balance.|||Use compact for dense tables, cards, and headers."
-      >
+      <story-card id="overlap" title="${storyMeta["overlap"].title}" description="${storyMeta["overlap"].description}" usage="${storyMeta["overlap"].usage}">
         <div class="canvas" slot="body">
           <mui-v-stack alignX="start">
             <mui-avatar-group size="medium" overlap="loose" label="Loose collaborator group">
@@ -83,12 +79,7 @@ class StoryAvatarGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="sizes"
-        title="Sizes"
-        description="Set size on the group to size slotted avatars that do not declare their own size."
-        usage="Use group size when all avatars should share the same footprint.|||Set size directly on an individual Avatar only when it should intentionally differ from the group."
-      >
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <div class="canvas" slot="body">
           <mui-v-stack alignX="start">
             <mui-avatar-group size="xx-small" label="Extra small team">
@@ -121,12 +112,7 @@ class StoryAvatarGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="hover-fan"
-        title="Hover Fan"
-        description="Use fan when a stacked group should expand temporarily for easier recognition."
-        usage="The group fans on pointer hover and keyboard focus within the group.|||Use this for dense collaborator groups where recognition matters on inspection.|||Keep the default static overlap when layout stability matters more than inspection."
-      >
+      <story-card id="hover-fan" title="${storyMeta["hover-fan"].title}" description="${storyMeta["hover-fan"].description}" usage="${storyMeta["hover-fan"].usage}">
         <div class="canvas" slot="body">
           <mui-avatar-group size="medium" overlap="compact" fan label="Project collaborators with hover fan">
             <mui-avatar image="${MikeAvatar}" label="Mike Trilford" status="online"></mui-avatar>
@@ -147,12 +133,7 @@ class StoryAvatarGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="status"
-        title="With Status"
-        description="Avatar Group composes with Avatar status indicators without owning presence state itself."
-        usage="Use status on each Avatar when availability belongs to that individual.|||Keep the group label focused on what the collection represents."
-      >
+      <story-card id="with-status" title="${storyMeta["with-status"].title}" description="${storyMeta["with-status"].description}" usage="${storyMeta["with-status"].usage}">
         <div class="canvas" slot="body">
           <mui-avatar-group size="medium" label="Active project collaborators">
             <mui-avatar image="${MikeAvatar}" label="Mike Trilford" status="online"></mui-avatar>
@@ -171,12 +152,7 @@ class StoryAvatarGroup extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="context-ring"
-        title="Context Ring"
-        description="Avatar Group adjusts its separating ring in supported surface contexts."
-        usage="Card Body marks nested Avatar Groups so their ring matches the card surface.|||Slat slots pass their default and hover surfaces to the group.|||Use the custom property only for one-off custom surfaces outside known component contexts."
-      >
+      <story-card id="context-ring" title="${storyMeta["context-ring"].title}" description="${storyMeta["context-ring"].description}" usage="${storyMeta["context-ring"].usage}">
         <mui-v-stack slot="body" class="canvas">
           <mui-card>
             <mui-card-body>
@@ -261,11 +237,7 @@ class StoryAvatarGroup extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
         imports='["@muibook/components/mui-avatar-group"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Default|||overlap::Overlap|||sizes::Sizes|||hover-fan::Hover Fan|||status::With Status|||context-ring::Context Ring">
-        </story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

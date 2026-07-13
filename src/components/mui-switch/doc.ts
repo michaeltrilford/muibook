@@ -58,6 +58,67 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "unchecked",
+          "title": "Unchecked",
+          "description": "Shows Switch in its unselected state.",
+          "list": [
+            "Use Switch for settings that take effect immediately; use Checkbox for submitted form choices."
+          ]
+        },
+        {
+          "key": "checked",
+          "title": "Checked",
+          "description": "Shows Switch in its selected state.",
+          "list": [
+            "Use Switch for settings that take effect immediately; use Checkbox for submitted form choices."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Explore x-small, small, medium, and large switch sizes.",
+          "list": [
+            "Use Switch for settings that take effect immediately; use Checkbox for submitted form choices."
+          ]
+        },
+        {
+          "key": "disabled-with-unchecked",
+          "title": "Disabled w/ Unchecked",
+          "description": "Shows Switch in a disabled state.",
+          "list": [
+            "Use Switch for settings that take effect immediately; use Checkbox for submitted form choices."
+          ]
+        },
+        {
+          "key": "disabled-with-checked",
+          "title": "Disabled w/ Checked",
+          "description": "Shows Switch in a disabled state.",
+          "list": [
+            "Use Switch for settings that take effect immediately; use Checkbox for submitted form choices."
+          ]
+        },
+        {
+          "key": "icons-off",
+          "title": "Icons: Off",
+          "description": "Demonstrates icons: off with Switch.",
+          "list": [
+            "Use Switch for settings that take effect immediately; use Checkbox for submitted form choices."
+          ]
+        },
+        {
+          "key": "icons-on",
+          "title": "Icons: On",
+          "description": "Demonstrates icons: on with Switch.",
+          "list": [
+            "Use Switch for settings that take effect immediately; use Checkbox for submitted form choices."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

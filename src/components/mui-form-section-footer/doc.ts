@@ -26,6 +26,27 @@ export const muiDocs: MuiDocs = {
       list: ["Footer wrapper", "Optional divider (mui-rule)", "Action content"],
     },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: {
+      items: [
+        {
+          "key": "default-footer-wrapper",
+          "title": "Default Footer Wrapper",
+          "description": "Use form-section-footer in slot='footer' to standardise action spacing.",
+          "list": [
+            "Use Form Section Footer for actions or supporting content that conclude a form section."
+          ]
+        },
+        {
+          "key": "with-divider",
+          "title": "With Divider",
+          "description": "Place mui-rule first and the footer wrapper applies divider spacing without inline margins.",
+          "list": [
+            "Use Form Section Footer for actions or supporting content that conclude a form section."
+          ]
+        }
+      ],
+    },
+
     compositions: { description: "", items: [] },
     related: {
       items: [

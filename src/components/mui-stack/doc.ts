@@ -60,6 +60,75 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "horizontal-default",
+          "title": "Horizontal: Default",
+          "description": "Arranges children in a horizontal sequence.",
+          "list": [
+            "Use Stack for one-dimensional layout and control spacing from the parent composition."
+          ]
+        },
+        {
+          "key": "vertical-default",
+          "title": "Vertical: Default",
+          "description": "Arranges children in a vertical sequence.",
+          "list": [
+            "Use Stack for one-dimensional layout and control spacing from the parent composition."
+          ]
+        },
+        {
+          "key": "horizontal-custom-space",
+          "title": "Horizontal: Custom Space",
+          "description": "Applies custom spacing between horizontal children.",
+          "list": [
+            "Use Stack for one-dimensional layout and control spacing from the parent composition."
+          ]
+        },
+        {
+          "key": "vertical-custom-space",
+          "title": "Vertical: Custom Space",
+          "description": "Applies custom spacing between vertical children.",
+          "list": [
+            "Use Stack for one-dimensional layout and control spacing from the parent composition."
+          ]
+        },
+        {
+          "key": "horizontal-wrap",
+          "title": "Horizontal: Wrap",
+          "description": "Use wrap when chips, badges, actions, or metadata rows need to continue onto a new line without switching layout primitives.",
+          "list": [
+            "Use Stack for one-dimensional layout and control spacing from the parent composition."
+          ]
+        },
+        {
+          "key": "padding",
+          "title": "Padding",
+          "description": "Applies internal spacing to the Stack.",
+          "list": [
+            "Use Stack for one-dimensional layout and control spacing from the parent composition."
+          ]
+        },
+        {
+          "key": "vertical-alignment-in-a-set-height",
+          "title": "Vertical: Alignment in a Set Height",
+          "description": "Aligns children within a fixed-height vertical region.",
+          "list": [
+            "Use Stack for one-dimensional layout and control spacing from the parent composition."
+          ]
+        },
+        {
+          "key": "vertical-viewport-with-nested-stacks",
+          "title": "Vertical: Viewport With Nested Stacks",
+          "description": "Use viewport on a stack that owns the viewport region. Nested stacks remain content-sized; shared header or panel layouts should define their height structure explicitly.",
+          "list": [
+            "Use Stack for one-dimensional layout and control spacing from the parent composition."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

@@ -76,6 +76,35 @@ export const muiDocs: MuiDocs = {
         dontContent: [{ description: "" }, { description: "" }],
       },
     ],
+    stories: {
+      items: [
+        {
+          "key": "text",
+          "title": "Text",
+          "description": "Use for units, currency, or short static labels",
+          "list": [
+            "Use Add On for non-editable content composed immediately before or after a form control."
+          ]
+        },
+        {
+          "key": "icon",
+          "title": "Icon",
+          "description": "Use for symbolic cues or clarification of the input’s intent",
+          "list": [
+            "Use Add On for non-editable content composed immediately before or after a form control."
+          ]
+        },
+        {
+          "key": "input-sizes",
+          "title": "Input Sizes",
+          "description": "Add On across large, medium, small, and x-small input sizes.",
+          "list": [
+            "Use Add On for non-editable content composed immediately before or after a form control."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [

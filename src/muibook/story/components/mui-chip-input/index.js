@@ -8,6 +8,12 @@ class storyChipInput extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("ChipInput");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Chip Input"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,7 +22,7 @@ class storyChipInput extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-chip-input" title="Chip Input"></story-api-types>
 
-      <story-card title="Default">
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <div slot="body">
           <mui-chip-input
             label="Tags"
@@ -40,7 +46,7 @@ class storyChipInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Allow Custom">
+      <story-card id="allow-custom" title="${storyMeta["allow-custom"].title}" description="${storyMeta["allow-custom"].description}" usage="${storyMeta["allow-custom"].usage}">
         <div slot="body">
           <mui-chip-input
             label="Topics"
@@ -64,7 +70,7 @@ class storyChipInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Breakpoint Layout">
+      <story-card id="breakpoint-layout" title="${storyMeta["breakpoint-layout"].title}" description="${storyMeta["breakpoint-layout"].description}" usage="${storyMeta["breakpoint-layout"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-chip-input
             label="Before @ 900"
@@ -86,7 +92,7 @@ class storyChipInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Object Data">
+      <story-card id="object-data" title="${storyMeta["object-data"].title}" description="${storyMeta["object-data"].description}" usage="${storyMeta["object-data"].usage}">
         <div slot="body">
           <mui-chip-input
             label="Assets"
@@ -106,7 +112,7 @@ class storyChipInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Sizes">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-chip-input size="x-small" label="X-Small" options='["Alpha","Beta","Gamma"]' value='["Alpha"]'></mui-chip-input>
           <mui-chip-input size="small" label="Small" options='["Alpha","Beta","Gamma"]' value='["Beta"]'></mui-chip-input>
@@ -121,7 +127,7 @@ class storyChipInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Disabled">
+      <story-card id="disabled" title="${storyMeta["disabled"].title}" description="${storyMeta["disabled"].description}" usage="${storyMeta["disabled"].usage}">
         <div slot="body">
           <mui-chip-input
             label="Disabled"
@@ -149,6 +155,7 @@ class storyChipInput extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-chip-input"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

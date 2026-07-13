@@ -8,6 +8,12 @@ class StoryProgressRing extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("ProgressRing");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Progress Ring"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -39,7 +45,7 @@ class StoryProgressRing extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-progress-ring" title="Progress Ring"></story-api-types>
 
-      <story-card title="Start State" description="Shows the generated start state for count-based and progress-based data.">
+      <story-card id="start-state" title="${storyMeta["start-state"].title}" description="${storyMeta["start-state"].description}" usage="${storyMeta["start-state"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring value="0" max="4" display="value" label="Transactions automated"></mui-progress-ring>
           <mui-progress-ring progress="0" display="value" label="Transactions automated"></mui-progress-ring>
@@ -52,7 +58,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Progress" description="Use progress for percentage-based values.">
+      <story-card id="progress" title="${storyMeta["progress"].title}" description="${storyMeta["progress"].description}" usage="${storyMeta["progress"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring size="x-small" progress="50" label="Transactions automated"></mui-progress-ring>
           <mui-progress-ring size="small" progress="50" label="Transactions automated"></mui-progress-ring>
@@ -68,7 +74,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Value and Max" description="Use value and max when progress is based on completed items.">
+      <story-card id="value-and-max" title="${storyMeta["value-and-max"].title}" description="${storyMeta["value-and-max"].description}" usage="${storyMeta["value-and-max"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring size="x-small" value="2" max="4" label="Transactions automated"></mui-progress-ring>
           <mui-progress-ring size="small" value="2" max="4" label="Transactions automated"></mui-progress-ring>
@@ -84,7 +90,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Complete" description="Progress at 100 renders a completion icon automatically.">
+      <story-card id="complete" title="${storyMeta["complete"].title}" description="${storyMeta["complete"].description}" usage="${storyMeta["complete"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring size="x-small" progress="100" label="Transactions automated"></mui-progress-ring>
           <mui-progress-ring size="small" progress="100" label="Transactions automated"></mui-progress-ring>
@@ -100,7 +106,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Display" description="Center value is opt-in. The value is derived from value/max or progress.">
+      <story-card id="display" title="${storyMeta["display"].title}" description="${storyMeta["display"].description}" usage="${storyMeta["display"].usage}">
         <div class="canvas canvas-column" slot="body">
           <div class="canvas-row">
             <mui-progress-ring size="x-small" value="2" max="4" label="Transactions automated"></mui-progress-ring>
@@ -140,7 +146,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Formatting" description="Generated center text is constrained so dense values do not crowd the ring.">
+      <story-card id="formatting" title="${storyMeta["formatting"].title}" description="${storyMeta["formatting"].description}" usage="${storyMeta["formatting"].usage}">
         <div class="canvas canvas-column" slot="body">
           <div class="canvas-row">
             <mui-progress-ring size="x-small" value="12" max="40" display="value" label="Transactions automated"></mui-progress-ring>
@@ -169,7 +175,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Display Value: Completed" description="Use display-value when the center text should show a custom completed count.">
+      <story-card id="display-value-completed" title="${storyMeta["display-value-completed"].title}" description="${storyMeta["display-value-completed"].description}" usage="${storyMeta["display-value-completed"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring value="12" max="40" display-value="12" tooltip="12 of 40 completed" label="Transactions completed"></mui-progress-ring>
         </div>
@@ -185,7 +191,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Display Value: Remaining" description="Use display-value when the center text should show a custom remaining count.">
+      <story-card id="display-value-remaining" title="${storyMeta["display-value-remaining"].title}" description="${storyMeta["display-value-remaining"].description}" usage="${storyMeta["display-value-remaining"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring value="12" max="40" display-value="28" tooltip="28 remaining" label="Transactions remaining"></mui-progress-ring>
         </div>
@@ -201,7 +207,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Display Value: Hours" description="Use display-value for short time values while progress still drives the ring.">
+      <story-card id="display-value-hours" title="${storyMeta["display-value-hours"].title}" description="${storyMeta["display-value-hours"].description}" usage="${storyMeta["display-value-hours"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring progress="72" display-value="3d" tooltip="3 days remaining" label="SLA remaining"></mui-progress-ring>
           <mui-progress-ring value="18" max="24" display-value="6h" tooltip="6 hours remaining" label="Daily window remaining"></mui-progress-ring>
@@ -234,7 +240,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Display Value: Grade" description="Use color for score bands while center text keeps the default text color.">
+      <story-card id="display-value-grade" title="${storyMeta["display-value-grade"].title}" description="${storyMeta["display-value-grade"].description}" usage="${storyMeta["display-value-grade"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring progress="86" display-value="B+" color="positive" tooltip="B+ grade, 86 score" label="Grade B plus"></mui-progress-ring>
           <mui-progress-ring progress="68" display-value="C-" color="warning" tooltip="C- grade, 68 score" label="Grade C minus"></mui-progress-ring>
@@ -248,7 +254,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Tooltip: Hover" description="Add tooltip text when the visible value needs extra context.">
+      <story-card id="tooltip-hover" title="${storyMeta["tooltip-hover"].title}" description="${storyMeta["tooltip-hover"].description}" usage="${storyMeta["tooltip-hover"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring size="x-small" value="2" max="4" tooltip="2 of 4 transactions automated" label="Transactions automated"></mui-progress-ring>
           <mui-progress-ring size="small" value="2" max="4" tooltip="2 of 4 transactions automated" label="Transactions automated"></mui-progress-ring>
@@ -264,7 +270,7 @@ class StoryProgressRing extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Tooltip: Click" description="Use click when the tooltip should be an explicit disclosure.">
+      <story-card id="tooltip-click" title="${storyMeta["tooltip-click"].title}" description="${storyMeta["tooltip-click"].description}" usage="${storyMeta["tooltip-click"].usage}">
         <div class="canvas" slot="body">
           <mui-progress-ring
             size="x-small"
@@ -326,6 +332,7 @@ class StoryProgressRing extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-progress-ring"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

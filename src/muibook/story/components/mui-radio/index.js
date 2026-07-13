@@ -8,6 +8,12 @@ class storyRadio extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Radio");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Radio"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -20,21 +26,21 @@ class storyRadio extends HTMLElement {
         <story-api-types tag="mui-radio-group" title="Radio Group"></story-api-types>
       </mui-v-stack>
 
-      <story-card title="Default">
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-radio slot="body">Option</mui-radio>
         <story-code-block slot="footer" scrollable>
           &lt;mui-radio&gt;Option&lt;/mui-radio&gt;
         </story-code-block>
       </story-card>
 
-      <story-card title="Checked">
+      <story-card id="checked" title="${storyMeta["checked"].title}" description="${storyMeta["checked"].description}" usage="${storyMeta["checked"].usage}">
         <mui-radio checked slot="body">Option</mui-radio>
         <story-code-block slot="footer" scrollable>
           &lt;mui-radio checked&gt;Option&lt;/mui-radio&gt;
         </story-code-block>
       </story-card>
 
-      <story-card title="Sizes">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-radio size="x-small" checked>X-Small</mui-radio>
           <mui-radio size="small" checked>Small</mui-radio>
@@ -49,7 +55,7 @@ class storyRadio extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Disabled">
+      <story-card id="disabled" title="${storyMeta["disabled"].title}" description="${storyMeta["disabled"].description}" usage="${storyMeta["disabled"].usage}">
         <mui-h-stack slot="body" space="var(--space-300)">
           <mui-radio disabled>Disabled</mui-radio>
           <mui-radio disabled checked>Disabled Selected</mui-radio>
@@ -60,7 +66,7 @@ class storyRadio extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Radio Group">
+      <story-card id="radio-group" title="${storyMeta["radio-group"].title}" description="${storyMeta["radio-group"].description}" usage="${storyMeta["radio-group"].usage}">
         <mui-radio-group slot="body" value="pro">
           <mui-radio value="starter">Starter</mui-radio>
           <mui-radio value="pro">Pro</mui-radio>
@@ -75,7 +81,7 @@ class storyRadio extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Checkbox + Radio (Side By Side)">
+      <story-card id="checkbox-radio-side-by-side" title="${storyMeta["checkbox-radio-side-by-side"].title}" description="${storyMeta["checkbox-radio-side-by-side"].description}" usage="${storyMeta["checkbox-radio-side-by-side"].usage}">
         <mui-h-stack slot="body" space="var(--space-400)" alignY="center">
           <mui-checkbox checked>Checkbox</mui-checkbox>
           <mui-radio checked>Radio</mui-radio>
@@ -101,6 +107,7 @@ class storyRadio extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-radio", "@muibook/components/mui-radio-group"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -8,6 +8,12 @@ class storyIcon extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Icons");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Icons"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -53,7 +59,7 @@ class storyIcon extends HTMLElement {
         <story-api-types tag="mui-icon-toggle" title="Icon Toggle"></story-api-types>
       </mui-v-stack>
 
-      <story-card title="Sizes" description="The default size of the icon is size: small">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
 
         <mui-grid space="var(--space-400)" slot="body" col="repeat(auto-fit, minmax(28rem, 1fr))">
 
@@ -81,7 +87,7 @@ class storyIcon extends HTMLElement {
 
       </story-card>
 
-      <story-card title="Icon Toggle: Default">
+      <story-card id="icon-toggle-default" title="${storyMeta["icon-toggle-default"].title}" description="${storyMeta["icon-toggle-default"].description}" usage="${storyMeta["icon-toggle-default"].usage}">
         <mui-v-stack slot="body" space="var(--space-400)">
           <mui-h-stack space="var(--space-100)" wrap>
             <mui-button variant="primary">
@@ -209,7 +215,7 @@ class storyIcon extends HTMLElement {
         </story-code-block>
       </story-card>
 
-<story-card title="Icon Toggle: Morph">
+<story-card id="icon-toggle-morph" title="${storyMeta["icon-toggle-morph"].title}" description="${storyMeta["icon-toggle-morph"].description}" usage="${storyMeta["icon-toggle-morph"].usage}">
         <mui-v-stack slot="body" space="var(--space-400)">
           <mui-h-stack space="var(--space-100)" wrap>
             <mui-button variant="primary">
@@ -337,7 +343,7 @@ class storyIcon extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Icon Toggle: Rotate">
+      <story-card id="icon-toggle-rotate" title="${storyMeta["icon-toggle-rotate"].title}" description="${storyMeta["icon-toggle-rotate"].description}" usage="${storyMeta["icon-toggle-rotate"].usage}">
         <mui-v-stack slot="body" space="var(--space-400)">
           <mui-h-stack space="var(--space-100)">
             <mui-button variant="primary">
@@ -465,7 +471,7 @@ class storyIcon extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Icon Type" description="Icons are set to size 'small' by default." >
+      <story-card id="icon-type" title="${storyMeta["icon-type"].title}" description="${storyMeta["icon-type"].description}" usage="${storyMeta["icon-type"].usage}">
 
         <mui-grid space="var(--space-400)" slot="body" col="repeat(auto-fit, minmax(28rem, 1fr))">
 
@@ -792,7 +798,7 @@ class storyIcon extends HTMLElement {
 
       </story-card>
 
-      <story-card title="Color Options" description="The icons have default color of var(--black). The color can be inverted or a custom color applied." >
+      <story-card id="color-options" title="${storyMeta["color-options"].title}" description="${storyMeta["color-options"].description}" usage="${storyMeta["color-options"].usage}">
 
         <mui-grid space="var(--space-400)" slot="body" col="repeat(auto-fit, minmax(28rem, 1fr))">
 
@@ -833,6 +839,7 @@ class storyIcon extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-icons"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
 

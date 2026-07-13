@@ -8,6 +8,12 @@ class StoryIllustration extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Illustrations");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Illustrations"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -43,11 +49,7 @@ class StoryIllustration extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-illustration-trash" title="Illustrations"></story-api-types>
 
-      <story-card
-        id="default"
-        title="Default"
-        usage="Import from @muibook/components/mui-illustrations and use the named illustration tag directly.|||Use the default palette for standard light surfaces."
-      >
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-grid slot="body" class="swatch-grid" col="repeat(auto-fit, minmax(28rem, 1fr))" space="var(--space-400)">
           <mui-card>
             <mui-card-body inner-space>
@@ -70,11 +72,7 @@ class StoryIllustration extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="sizes"
-        title="Sizes"
-        usage="Use one illustration size consistently within the same surface or flow."
-      >
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-grid slot="body" class="size-grid" col="repeat(auto-fit, minmax(28rem, 1fr))" space="var(--space-400)">
           <mui-card>
             <mui-card-body inner-space>
@@ -126,11 +124,7 @@ class StoryIllustration extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="color"
-        title="Custom Color"
-        usage="Pass a direct CSS color when the illustration needs to align to a product accent or special state."
-      >
+      <story-card id="custom-color" title="${storyMeta["custom-color"].title}" description="${storyMeta["custom-color"].description}" usage="${storyMeta["custom-color"].usage}">
         <mui-grid slot="body" class="swatch-grid" col="repeat(auto-fit, minmax(28rem, 1fr))" space="var(--space-400)">
           <mui-card>
             <mui-card-body inner-space>
@@ -153,11 +147,7 @@ class StoryIllustration extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="empty-state"
-        title="Empty State"
-        usage="Pair illustrations with a heading, supporting body copy, and a single clear action."
-      >
+      <story-card id="empty-state" title="${storyMeta["empty-state"].title}" description="${storyMeta["empty-state"].description}" usage="${storyMeta["empty-state"].usage}">
         <mui-card slot="body">
           <mui-card-body inner-space>
             <mui-v-stack space="var(--space-600)" alignx="center" style="margin-block-start: var(--space-400); margin-block-end: var(--space-500);">
@@ -197,6 +187,7 @@ class StoryIllustration extends HTMLElement {
         storybook="${data?.storybook || ""}"
         accessibility="${data?.accessibility?.engineerList?.join("|||") || ""}"
         imports='["@muibook/components/mui-illustrations"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -46,6 +46,44 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Renders an illustration with its standard palette.",
+          "list": [
+            "Import from @muibook/components/mui-illustrations and use the named illustration tag directly.",
+            "Use the default palette for standard light surfaces."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares the supported Illustration size scale.",
+          "list": [
+            "Use one illustration size consistently within the same surface or flow."
+          ]
+        },
+        {
+          "key": "custom-color",
+          "title": "Custom Color",
+          "description": "Applies a custom illustration accent.",
+          "list": [
+            "Pass a direct CSS color when the illustration needs to align to a product accent or special state."
+          ]
+        },
+        {
+          "key": "empty-state",
+          "title": "Empty State",
+          "description": "Composes Illustration with empty-state content and an action.",
+          "list": [
+            "Pair illustrations with a heading, supporting body copy, and a single clear action."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Illustrations are typically paired with heading, body copy, and one primary action.",
       items: [

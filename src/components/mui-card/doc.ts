@@ -51,6 +51,94 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "card",
+          "title": "Card",
+          "description": "Demonstrates the Card Card treatment.",
+          "list": [
+            "Use Card to group related content and actions on a distinct surface."
+          ]
+        },
+        {
+          "key": "card-footer",
+          "title": "Card: Footer",
+          "description": "Demonstrates the Card: Footer Card treatment.",
+          "list": [
+            "Use Card to group related content and actions on a distinct surface."
+          ]
+        },
+        {
+          "key": "card-image",
+          "title": "Card: Image",
+          "description": "Demonstrates the Card: Image Card treatment.",
+          "list": [
+            "Use Card to group related content and actions on a distinct surface."
+          ]
+        },
+        {
+          "key": "card-table",
+          "title": "Card: Table",
+          "description": "When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout.",
+          "list": [
+            "Use Card to group related content and actions on a distinct surface."
+          ]
+        },
+        {
+          "key": "card-header-and-table",
+          "title": "Card: Header & Table",
+          "description": "You can add in a mui-rule to help add a division between the header and body of the card",
+          "list": [
+            "Use Card to group related content and actions on a distinct surface."
+          ]
+        },
+        {
+          "key": "slat-group",
+          "title": "Slat Group",
+          "description": "If a mui-slat is slotted directly into the mui-card-body,\n          if will automatically align the slats with the heading to ensure consistent alignment within a card.",
+          "list": [
+            "mui-slat-group is added within the mui-card-body to apply an offset for the slat items",
+            "Place slats directly inside mui-card-body to inherit alignment",
+            "Use this layout only for cards with limited width. For wider layouts, consider using a table."
+          ]
+        },
+        {
+          "key": "slat-group-dividers",
+          "title": "Slat Group: Dividers",
+          "description": "If a mui-slat is slotted directly into the mui-card-body,\n          if will automatically align the slats with the heading to ensure consistent alignment within a card.",
+          "list": [
+            "mui-slat-group is added within the mui-card-body to apply an offset for the slat items;\n          Place slats directly inside mui-card-body to inherit alignment",
+            "Use this layout only for cards with limited width. For wider layouts, consider using a table."
+          ]
+        },
+        {
+          "key": "card-slat-detection",
+          "title": "Card: Slat Detection",
+          "description": "When you opt-out, you will have to craft your own spacing.",
+          "list": [
+            "Use Card to group related content and actions on a distinct surface."
+          ]
+        },
+        {
+          "key": "card-accordion",
+          "title": "Card: Accordion",
+          "description": "Demonstrates the Card: Accordion Card treatment.",
+          "list": [
+            "Use Card to group related content and actions on a distinct surface."
+          ]
+        },
+        {
+          "key": "card-header-and-accordion",
+          "title": "Card: Header & Accordion",
+          "description": "Demonstrates the Card: Header & Accordion Card treatment.",
+          "list": [
+            "Use Card to group related content and actions on a distinct surface."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

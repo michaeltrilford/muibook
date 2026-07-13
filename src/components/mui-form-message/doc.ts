@@ -28,6 +28,41 @@ export const muiDocs: MuiDocs = {
     accessibility: { designerList: [""], engineerList: [""] },
     anatomy: { image: "", list: ["Optional leading slot", "Hint text", "Optional trailing slot"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: {
+      items: [
+        {
+          "key": "message-patterns",
+          "title": "Message Patterns",
+          "description": "Icon-led supporting text with semantic color from usage context.",
+          "list": [
+            "Use a colored mui-form-message when the static message needs more emphasis.",
+            "Use the default greyscale version for lighter supporting copy.",
+            "This component does not replace mui-field slot=&quot;message&quot; when the message belongs to a specific field; it is the message content used within that pattern."
+          ]
+        },
+        {
+          "key": "billing-preferences-section",
+          "title": "Billing Preferences Section",
+          "description": "Grouped controls with radio choices and inline guidance. Intended for use on a surface background.",
+          "list": [
+            "Use Form Message on the owning field for helper and validation copy.",
+            "Use horizontal groups for paired follow-up fields.",
+            "Default split is 1fr / 20rem and stacks on mobile.",
+            "Use a colored mui-form-message for stronger static guidance, or the default greyscale version for lighter supporting copy.",
+            "This component does not replace the message functionality on mui-field; when the copy belongs to one field, keep it in that field’s slot=&quot;message&quot;."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Form Message sizing across x-small, small, medium, and large, including all variant options.",
+          "list": [
+            "Use Form Message inside Field for helper, validation, or control status copy."
+          ]
+        }
+      ],
+    },
+
     compositions: { description: "", items: [] },
     related: {
       items: [

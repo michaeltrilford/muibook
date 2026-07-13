@@ -8,6 +8,12 @@ class storyProgress extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Progress");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Progress"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -26,7 +32,7 @@ class storyProgress extends HTMLElement {
     const stories = /*html*/ `
           <story-api-types tag="mui-progress" title="Progress Bar"></story-api-types>
 
-        <story-card title="Progress Bar" description="Displays a numeric value to indicate loading or completion state.">
+        <story-card id="progress-bar" title="${storyMeta["progress-bar"].title}" description="${storyMeta["progress-bar"].description}" usage="${storyMeta["progress-bar"].usage}">
           <div class="canvas" slot="body">
             <mui-progress progress="50"></mui-progress>
           </div>
@@ -35,10 +41,7 @@ class storyProgress extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          title="State: Pending"
-          description="Use when the system is waiting for an external response, such as a server request or sync, and progress cannot be measured."
-        >
+        <story-card id="state-pending" title="${storyMeta["state-pending"].title}" description="${storyMeta["state-pending"].description}" usage="${storyMeta["state-pending"].usage}">
           <div class="canvas" slot="body">
             <mui-progress state="pending"></mui-progress>
           </div>
@@ -47,7 +50,7 @@ class storyProgress extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="State: Syncing" description="Use when the system is actively retrying, cycling, or performing time-based checks, where exact progress is unknown.">
+        <story-card id="state-syncing" title="${storyMeta["state-syncing"].title}" description="${storyMeta["state-syncing"].description}" usage="${storyMeta["state-syncing"].usage}">
           <div class="canvas" slot="body">
             <mui-progress state="syncing"></mui-progress>
           </div>
@@ -71,6 +74,7 @@ class storyProgress extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-progress"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

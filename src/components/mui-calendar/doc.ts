@@ -43,6 +43,35 @@ export const muiDocs: MuiDocs = {
       items: [],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "A standard monthly calendar for single date selection.",
+          "list": [
+            "Use Calendar for visible date selection or date-oriented navigation."
+          ]
+        },
+        {
+          "key": "double-view",
+          "title": "Double View",
+          "description": "Shows two consecutive months side-by-side, ideal for range selection.",
+          "list": [
+            "Use Calendar for visible date selection or date-oriented navigation."
+          ]
+        },
+        {
+          "key": "default-value",
+          "title": "Default Value",
+          "description": "Set the initial selected date using an ISO date string.",
+          "list": [
+            "Use Calendar for visible date selection or date-oriented navigation."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [],

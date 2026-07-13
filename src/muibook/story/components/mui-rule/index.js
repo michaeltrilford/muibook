@@ -8,6 +8,12 @@ class storyRule extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Rule");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Rule"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-rule",
@@ -23,7 +29,7 @@ class storyRule extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-rule" title="Rule"></story-api-types>
 
-      <story-card title="Horizontal">
+      <story-card id="horizontal" title="${storyMeta["horizontal"].title}" description="${storyMeta["horizontal"].description}" usage="${storyMeta["horizontal"].usage}">
         <div slot="body">
           <mui-rule direction="horizontal" length="100%" style="margin: var(--space-700) 0;"></mui-rule>
         </div>
@@ -38,7 +44,7 @@ class storyRule extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Vertical">
+      <story-card id="vertical" title="${storyMeta["vertical"].title}" description="${storyMeta["vertical"].description}" usage="${storyMeta["vertical"].usage}">
         <div slot="body">
           <mui-rule direction="vertical" length="100px"></mui-rule>
         </div>
@@ -53,7 +59,7 @@ class storyRule extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Horizontal: Custom Weight">
+      <story-card id="horizontal-custom-weight" title="${storyMeta["horizontal-custom-weight"].title}" description="${storyMeta["horizontal-custom-weight"].description}" usage="${storyMeta["horizontal-custom-weight"].usage}">
         <div slot="body">
           <mui-rule direction="horizontal" length="100%" weight="2px" style="margin: var(--space-700) 0;"></mui-rule>
         </div>
@@ -70,7 +76,7 @@ class storyRule extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Vertical: Custom Weight">
+      <story-card id="vertical-custom-weight" title="${storyMeta["vertical-custom-weight"].title}" description="${storyMeta["vertical-custom-weight"].description}" usage="${storyMeta["vertical-custom-weight"].usage}">
         <div slot="body">
           <mui-rule direction="vertical" length="100px" weight="2px"></mui-rule>
         </div>
@@ -87,7 +93,7 @@ class storyRule extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Weight: Thin and Thick">
+      <story-card id="weight-thin-and-thick" title="${storyMeta["weight-thin-and-thick"].title}" description="${storyMeta["weight-thin-and-thick"].description}" usage="${storyMeta["weight-thin-and-thick"].usage}">
         <mui-v-stack slot="body" space="var(--space-700)">
           <mui-rule direction="horizontal" length="100%" weight="thin"></mui-rule>
           <mui-rule direction="horizontal" length="100%" weight="thick"></mui-rule>
@@ -114,6 +120,7 @@ class storyRule extends HTMLElement {
         attrs-reference='${attrsReference}'
 
         imports='["@muibook/components/mui-rule"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -8,11 +8,17 @@ class StoryHint extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Hint");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Hint"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-hint" title="Hint"></story-api-types>
 
-      <story-card id="default" title="Default">
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)" style="padding: var(--space-400);">
           <mui-hint>
             <mui-icon-info slot="trigger" color="default" size="small"></mui-icon-info>
@@ -34,7 +40,7 @@ class StoryHint extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="placements" title="Placements">
+      <story-card id="placements" title="${storyMeta["placements"].title}" description="${storyMeta["placements"].description}" usage="${storyMeta["placements"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)" style="padding: var(--space-400);">
           <mui-hint placement="top">
             <mui-icon-info slot="trigger" color="default" size="small"></mui-icon-info>
@@ -64,7 +70,7 @@ class StoryHint extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="delay" title="Delay">
+      <story-card id="delay" title="${storyMeta["delay"].title}" description="${storyMeta["delay"].description}" usage="${storyMeta["delay"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)" style="padding: var(--space-400);">
           <mui-hint placement="top">
             <mui-icon-info slot="trigger" color="default" size="small"></mui-icon-info>
@@ -86,11 +92,7 @@ class StoryHint extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="disable-on-touch"
-        title="Disable On Touch"
-        description="Disables hint behaviour on coarse pointer devices."
-        usage="Use this when the hint is a desktop enhancement and the trigger already communicates its action.|||This avoids persistent tooltip states on touch devices, while preserving hover and keyboard hint behaviour on desktop.">
+      <story-card id="disable-on-touch" title="${storyMeta["disable-on-touch"].title}" description="${storyMeta["disable-on-touch"].description}" usage="${storyMeta["disable-on-touch"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)" style="padding: var(--space-400);">
           <mui-hint placement="top" disable-on-touch>
             <mui-button slot="trigger" size="small" icon-only variant="tertiary" aria-label="Download">
@@ -126,7 +128,7 @@ class StoryHint extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-hint"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||placements::Placements|||delay::Delay|||disable-on-touch::Disable On Touch"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

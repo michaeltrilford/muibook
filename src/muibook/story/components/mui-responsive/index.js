@@ -8,6 +8,12 @@ class storyResponsive extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Responsive");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Responsive"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -159,7 +165,7 @@ class storyResponsive extends HTMLElement {
           </mui-message>
         <story-api-types tag="mui-responsive" title="Responsive"></story-api-types>
 
-        <story-card title="Single Breakpoint">
+        <story-card id="single-breakpoint" title="${storyMeta["single-breakpoint"].title}" description="${storyMeta["single-breakpoint"].description}" usage="${storyMeta["single-breakpoint"].usage}">
           <mui-responsive slot="body" breakpoint="600">
             <mui-heading slot="showBelow" size="5" level="3">Mobile / Below 600</mui-heading>
             <mui-heading slot="showAbove" size="3" level="3">Desktop / Above 600</mui-heading>
@@ -175,7 +181,7 @@ class storyResponsive extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Dual Breakpoint">
+        <story-card id="dual-breakpoint" title="${storyMeta["dual-breakpoint"].title}" description="${storyMeta["dual-breakpoint"].description}" usage="${storyMeta["dual-breakpoint"].usage}">
           <mui-responsive slot="body" breakpoint-low="600" breakpoint-high="1024">
             <mui-heading slot="showBelow" size="5" level="3">Mobile / Below 600</mui-heading>
             <mui-heading slot="showMiddle" size="4" level="3">Tablet / Between 600-1200</mui-heading>
@@ -194,16 +200,7 @@ class storyResponsive extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          title="Container Breakpoint"
-          description="Switches slotted content based on a resizable page region instead of the viewport."
-          usage="
-            Use variant='container' when the responsive decision should follow the parent layout or resizable drawer region.|||
-            Use observe to measure a parent or closest ancestor selector when the responsive element is nested inside wrapper elements.|||
-            This uses the same desktop-to-mobile composition pattern as the table example, but the breakpoint is measured from the drawer page content.|||
-            Drag the drawer rail to change the page width and confirm the content switches without changing the viewport.
-          "
-        >
+        <story-card id="container-breakpoint" title="${storyMeta["container-breakpoint"].title}" description="${storyMeta["container-breakpoint"].description}" usage="${storyMeta["container-breakpoint"].usage}">
           <div slot="body">
             <mui-drawer
               contained
@@ -265,7 +262,7 @@ class storyResponsive extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Slat to Table" description="Showcasing how to loop data on to the mui-table and mui-slat within the mui-responsive component.">
+        <story-card id="slat-to-table" title="${storyMeta["slat-to-table"].title}" description="${storyMeta["slat-to-table"].description}" usage="${storyMeta["slat-to-table"].usage}">
           <mui-responsive slot="body" breakpoint="1080">
             <mui-table slot="showAbove">
               <mui-row-group heading>
@@ -371,7 +368,7 @@ class storyResponsive extends HTMLElement {
 
         </story-card>
 
-        <story-card title="Table: Desktop to Mobile">
+        <story-card id="table-desktop-to-mobile" title="${storyMeta["table-desktop-to-mobile"].title}" description="${storyMeta["table-desktop-to-mobile"].description}" usage="${storyMeta["table-desktop-to-mobile"].usage}">
 
           <mui-responsive slot="body" breakpoint="1080">
             <mui-h-stack slot="showAbove" space="16px" alignY="center">
@@ -428,6 +425,7 @@ class storyResponsive extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports="@muibook/components/mui-responsive">
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

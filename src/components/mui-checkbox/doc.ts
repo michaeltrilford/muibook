@@ -58,6 +58,64 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "unchecked-default",
+          "title": "Unchecked (Default)",
+          "description": "No option or all options are unselected. The checkbox appears empty, indicating nothing is chosen.",
+          "list": [
+            "Use Checkbox for independent binary choices or multi-select option groups."
+          ]
+        },
+        {
+          "key": "checked",
+          "title": "Checked",
+          "description": "A single option or all options are selected. The checkbox is fully marked, showing complete selection.",
+          "list": [
+            "Use Checkbox for independent binary choices or multi-select option groups."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Scale checkbox size from x-small to large.",
+          "list": [
+            "Use Checkbox for independent binary choices or multi-select option groups."
+          ]
+        },
+        {
+          "key": "indeterminate",
+          "title": "Indeterminate",
+          "description": "Demonstrates indeterminate with Checkbox.",
+          "list": [
+            "Used on parent checkboxes in multi-select groups to show partial selection.",
+            "Often acts as a control to clear selected child options.",
+            "Parent reflects children: unchecked (none), checked (all), indeterminate (some).",
+            "States switch based on user input and child selection.",
+            "Your app controls the logic. The component renders the static UI."
+          ]
+        },
+        {
+          "key": "disabled",
+          "title": "Disabled",
+          "description": "The option is unavailable for interaction. It may be selected or unselected but cannot be changed by the user.",
+          "list": [
+            "Use Checkbox for independent binary choices or multi-select option groups."
+          ]
+        },
+        {
+          "key": "usage-terms-and-conditions",
+          "title": "Usage: Terms & conditions",
+          "description": "This checkbox is often used to confirm user agreement with legal terms. It typically starts unchecked and must be checked to proceed. It may become disabled if the form is locked or certain conditions aren’t met.",
+          "list": [
+            "Slot in a string of text and accompanied link or supporting elements.",
+            "No body component is required as this is built in."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

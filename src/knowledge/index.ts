@@ -1,8 +1,8 @@
-import { agentCompositionKeys, agentCompositions, compositionConfig, compositions } from "./compositions";
+import { agentCompositionKeys, agentCompositions, compositionConfig, compositionStories, compositions } from "./compositions";
 import { agentKeywordKeys, agentKeywords, keywords } from "./keywords";
 import { rules } from "./rules";
 
-export { agentCompositionKeys, agentCompositions, agentKeywordKeys, agentKeywords, compositionConfig, compositions, keywords, rules };
+export { agentCompositionKeys, agentCompositions, agentKeywordKeys, agentKeywords, compositionConfig, compositionStories, compositions, keywords, rules };
 
 export const knowledge = {
   global: {
@@ -10,6 +10,7 @@ export const knowledge = {
     keywords,
     compositions,
     compositionConfig,
+    compositionStories,
   },
   agent: {
     compositionKeys: agentCompositionKeys,

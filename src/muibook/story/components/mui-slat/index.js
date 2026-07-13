@@ -8,6 +8,12 @@ class storySlat extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Slat");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Slat"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-slat",
@@ -38,12 +44,7 @@ class storySlat extends HTMLElement {
           <story-api-types tag="mui-slat-group" title="Slat Group"></story-api-types>
         </mui-v-stack>
 
-        <story-card
-          id="default"
-          title="Default"
-          description="Slats offer flexibility to surface key content and support custom layouts, or stacking."
-          usage="Bring your own padding or margin."
-          usageLink="https://guides.muibook.com/slat">
+        <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
 
           <mui-slat slot="body">
             <mui-heading slot="start" size="5">Heading</mui-heading>
@@ -68,12 +69,7 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card
-          id="header"
-          title="Header"
-          description="Used at the top of a list or repeatable layout to label or introduce the content below."
-          usage="Use with Row and Action variants where required||| Use heading size of 6 and choose the appropriate level for accessibility."
-          usageLink="https://guides.muibook.com/slat">
+        <story-card id="header" title="${storyMeta["header"].title}" description="${storyMeta["header"].description}" usage="${storyMeta["header"].usage}">
 
           <mui-slat slot="body" variant="header">
             <mui-heading slot="start" size="6" level="4">Heading</mui-heading>
@@ -98,12 +94,7 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card
-          id="row"
-          title="Row"
-          description="The default variant, used to display individual items in a list or repeatable layout."
-          usage="Use with Header and Action variants where required."
-          usageLink="https://guides.muibook.com/slat">
+        <story-card id="row" title="${storyMeta["row"].title}" description="${storyMeta["row"].description}" usage="${storyMeta["row"].usage}">
 
           <mui-slat slot="body" variant="row">
             <mui-v-stack slot="start" space="0">
@@ -143,12 +134,7 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card
-          id="action"
-          title="Action"
-          description="Used for interactive controls placed within or at the end of a list or repeatable layout."
-          usage="Use with Row and Header variants where required."
-          usageLink="https://guides.muibook.com/slat">
+        <story-card id="action" title="${storyMeta["action"].title}" description="${storyMeta["action"].description}" usage="${storyMeta["action"].usage}">
 
           <mui-slat slot="body" variant="action">
             <mui-v-stack space="0" slot="start">
@@ -176,12 +162,7 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card
-          id="truncation"
-          title="Truncation (File Diff)"
-          description="Demonstrates how to properly truncate text within a slat. By setting col to minmax(0, 1fr) auto and adding min-width: 0 to the mui-h-stack, the text can shrink and display an ellipsis."
-          usage="Use minmax(0, 1fr) for grid columns that need to shrink."
-          usageLink="https://guides.muibook.com/slat">
+        <story-card id="truncation-file-diff" title="${storyMeta["truncation-file-diff"].title}" description="${storyMeta["truncation-file-diff"].description}" usage="${storyMeta["truncation-file-diff"].usage}">
 
           <mui-slat slot="body" variant="action" col="minmax(0, 1fr) auto">
             <mui-h-stack slot="start" space="var(--space-100)" aligny="center" style="min-width: 0;">
@@ -219,10 +200,7 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card
-          title="Action: Custom Columns and Space"
-          description="Action slats support col and space for custom column sizing and gap control inside grouped rows."
-          usage="Use col to tune the relationship between start and end content across repeated action rows.|||Use space to control the gap between those columns.">
+        <story-card id="action-custom-columns-and-space" title="${storyMeta["action-custom-columns-and-space"].title}" description="${storyMeta["action-custom-columns-and-space"].description}" usage="${storyMeta["action-custom-columns-and-space"].usage}">
 
           <mui-slat-group slot="body">
             <mui-slat variant="action" col="1fr auto" space="var(--space-800)">
@@ -277,12 +255,7 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card
-          id="row-accessory"
-          title="Row: Accessory"
-          description="Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout."
-          usage="Use with Row and Header variants where required."
-          usageLink="https://guides.muibook.com/slat">
+        <story-card id="row-accessory" title="${storyMeta["row-accessory"].title}" description="${storyMeta["row-accessory"].description}" usage="${storyMeta["row-accessory"].usage}">
 
           <mui-slat slot="body" variant="row">
 
@@ -335,12 +308,7 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card
-          id="action-accessory"
-          title="Action: Accessory"
-          description="Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout."
-          usage="Use with Row and Header variants where required.|||When used inside a condensed card body, set radius='none' on action slats."
-          usageLink="https://guides.muibook.com/slat">
+        <story-card id="action-accessory" title="${storyMeta["action-accessory"].title}" description="${storyMeta["action-accessory"].description}" usage="${storyMeta["action-accessory"].usage}">
 
           <mui-v-stack slot="body">
 
@@ -489,15 +457,9 @@ class storySlat extends HTMLElement {
 
         <story-card
           id="slat-and-group"
-          title="Slat & Group"
-          description="
-            This example demonstrates the default mui-slat within a mui-slat-group. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/responsive'>Slat to Table</mui-link> demo.
-          "
-          usage="
-            Default mui-slat is used, which has no padding applied|||
-            Wrapping the slat in the group will add predefined margin beneath the rows|||
-            Utilise layout helpers to craft your desired layout.
-          "
+          title="${storyMeta["slat-and-group"].title}"
+          description="${storyMeta["slat-and-group"].description}"
+          usage="${storyMeta["slat-and-group"].usage}"
         >
 
           <mui-v-stack slot="body" space="var(--space-400)">
@@ -622,16 +584,9 @@ class storySlat extends HTMLElement {
 
         <story-card
           id="card-slat-and-group"
-          title="Card: Slat & Group"
-          description="
-            This example demonstrates the mui-slat and mui-slat-group used within a mui-card. It’s commonly used as a responsive fallback for table data in mobile or narrow-width views. View the <mui-link size='small' href='/responsive'>Slat to Table</mui-link> demo.
-          "
-          usage="
-            Default mui-slat is used, which has no padding applied|||
-            Wrapping the slat in the group will add predefined margin beneath the rows|||
-            Utilise layout helpers to craft your desired layout|||
-            Use mui-status for state-like row values in the slat end position.
-          "
+          title="${storyMeta["card-slat-and-group"].title}"
+          description="${storyMeta["card-slat-and-group"].description}"
+          usage="${storyMeta["card-slat-and-group"].usage}"
         >
           <mui-card slot="body">
             <mui-card-header>
@@ -768,16 +723,7 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card
-          id="card-variant-slat-group"
-          title="Card: Variant Slat & Group"
-          description="When a mui-slat is placed directly inside mui-card-body, it aligns with the card heading to maintain consistent layout. Automatic styles are applied only when the slat variant is set to header, row, or action."
-          usage="
-            mui-slat-group is added within the mui-card-body to apply an offset for the slat items|||
-            Place slats directly inside mui-card-body to inherit alignment|||
-            Use this layout only for cards with limited width. For wider layouts, consider using a table.
-          "
-        >
+        <story-card id="card-variant-slat-and-group" title="${storyMeta["card-variant-slat-and-group"].title}" description="${storyMeta["card-variant-slat-and-group"].description}" usage="${storyMeta["card-variant-slat-and-group"].usage}">
           <mui-card slot="body">
             <mui-card-header>
               <mui-heading size="3">Account Activity</mui-heading>
@@ -894,17 +840,7 @@ class storySlat extends HTMLElement {
         </story-card>
 
 
-        <story-card
-          id="card-slat-group-divider"
-          title="Card: Slat Group Dividers"
-          description="When a mui-slat is placed directly inside mui-card-body, it aligns with the card heading to maintain consistent layout. Automatic styles are applied only when the slat variant is set to header, row, or action."
-          usage="
-            mui-slat-group is added within the mui-card-body to apply an offset for the slat items|||
-            mui-rule can be used between slats for visual separation|||
-            Place slats directly inside mui-card-body to inherit alignment|||
-            Use this layout only for cards with limited width. For wider layouts, consider using a table.
-          "
-        >
+        <story-card id="card-slat-group-dividers" title="${storyMeta["card-slat-group-dividers"].title}" description="${storyMeta["card-slat-group-dividers"].description}" usage="${storyMeta["card-slat-group-dividers"].usage}">
           <mui-card slot="body">
 
             <mui-card-header>
@@ -1026,11 +962,7 @@ class storySlat extends HTMLElement {
 
         </story-card>
 
-        <story-card
-          id="card-slat-group-accordion"
-          title="Card: Slat Group & Accordion"
-          description="When a Slat Group is used within an accordion that is nested within a card, the slat group will automatically append the usage='card' attribute, to ensure the slat styles are correctly used in this situation. Automatic styles are applied only when the slat variant is set to header, row, or action."
-        >
+        <story-card id="card-slat-group-and-accordion" title="${storyMeta["card-slat-group-and-accordion"].title}" description="${storyMeta["card-slat-group-and-accordion"].description}" usage="${storyMeta["card-slat-group-and-accordion"].usage}">
             <mui-card slot="body">
               <mui-card-header>
                 <mui-heading size="3">Title</mui-heading>
@@ -1228,12 +1160,10 @@ class storySlat extends HTMLElement {
 
         <story-card
           id="card-condensed"
-          title="Card: Condensed"
-          description="For tighter layouts on desktop or <mui-link size='small' href='/responsive'>mobile responsive views</mui-link>, apply condensed boolean to the card-body. Slats are already condensed, so edge-to-edge layouts work well as the viewport narrows. Again, the Slat is intentionally flexible — good design decisions are still important."
-          usage="Use radius='none' on action slats inside condensed card body layouts."
-          usageLink="https://guides.muibook.com/slat"
-          github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-slat/index.js"
-          >
+          title="${storyMeta["card-condensed"].title}"
+          description="${storyMeta["card-condensed"].description}"
+          usage="${storyMeta["card-condensed"].usage}"
+        >
 
           <mui-card slot="body">
             <mui-card-body condensed>
@@ -1366,13 +1296,7 @@ class storySlat extends HTMLElement {
         attrs-reference='${attrsReference}'
 
         imports='["@muibook/components/mui-slat"]'>
-
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          limit="10"
-          links="default::Default|||header::Header|||row::Row|||row-accessory::Row Accessory|||action::Action|||truncation::Truncation (File Diff)|||action-accessory::Action Accessory|||slat-and-group::Slat & Group|||card-slat-and-group::Card: Slat & Group|||card-variant-slat-group::Card: Variant Slat & Group|||card-slat-group-divider::Card: Slat Group Dividers|||card-slat-group-accordion::Card: Slat Group & Accordion|||card-condensed::Card: Condensed"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
 
         ${stories}
 

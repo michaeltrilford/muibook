@@ -9,7 +9,7 @@ Use this map as the front door for the Muibook knowledge bundle. The bundle is s
 - `DESIGN.md`: design language, token architecture, surface usage, theme layers, typography, spacing, radius, and layout guidance.
 - `rules.ts`: global rules for generating valid Muibook component trees.
 - `keywords.ts`: natural-language routing from user intent to likely components.
-- `compositions.ts`: curated component-tree examples for realistic layouts and workflows.
+- `compositions.ts`: curated component-tree examples plus reusable composition-page story metadata for realistic layouts and workflows.
 - `resource-index.json`: machine-readable index of the knowledge files and when to use them.
 - `skill-index.json`: machine-readable index of authored skill guides.
 - `*-skill.md`: portable instruction files for creating, composing, styling, and documenting Web Components.

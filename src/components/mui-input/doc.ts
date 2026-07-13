@@ -109,6 +109,227 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "The label is required, if not set there will be a console warning.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares the supported Input size scale.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "variant-success",
+          "title": "Variant: Success",
+          "description": "The label is required, if not set there will be a console warning.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "variant-warning",
+          "title": "Variant: Warning",
+          "description": "The label is required, if not set there will be a console warning.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "variant-error",
+          "title": "Variant: Error",
+          "description": "The label is required, if not set there will be a console warning.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "hide-label",
+          "title": "Hide Label",
+          "description": "The visible label is hidden and an aria-label is generated from the label to maintain screen reader support.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "disabled",
+          "title": "Disabled",
+          "description": "Shows Input in a disabled state.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "optional-label",
+          "title": "Optional Label",
+          "description": "Marks the field as optional without weakening its label.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "character-count",
+          "title": "Character Count",
+          "description": "Communicates entered characters against the allowed limit.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "before-add-on",
+          "title": "Before: Add On",
+          "description": "Composes before: add on content with Input.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "after-add-on",
+          "title": "After: Add On",
+          "description": "Composes after: add on content with Input.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "before-select",
+          "title": "Before: Select",
+          "description": "Composes before: select content with Input.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "after-select",
+          "title": "After: Select",
+          "description": "Composes after: select content with Input.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "button-before-and-after",
+          "title": "Button: Before & After",
+          "description": "Demonstrates button: before & after with Input.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "link-before-and-after",
+          "title": "Link: Before & After",
+          "description": "Demonstrates link: before & after with Input.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "before-chip",
+          "title": "Before: Chip",
+          "description": "Composes before: chip content with Input.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "after-chip",
+          "title": "After: Chip",
+          "description": "Composes after: chip content with Input.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "hint-overlay",
+          "title": "Hint: Overlay",
+          "description": "Use slot='hint' for overlay markers and contextual hints.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "inside-before-icons",
+          "title": "Inside Before: Icons",
+          "description": "Use slot='inside-before' for internal leading affordances. Slotted icon sizes are normalized to the input size.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "inside-after-icons",
+          "title": "Inside After: Icons",
+          "description": "Use slot='inside-after' for internal trailing affordances. Slotted icon sizes are normalized to the input size.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "type-text",
+          "title": "Type: Text",
+          "description": "The default input type for plain text.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "type-email",
+          "title": "Type: Email",
+          "description": "Ensures the entered value follows email format.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "type-password",
+          "title": "Type: Password",
+          "description": "Using type password masks the user-filled content.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "type-number",
+          "title": "Type: Number",
+          "description": "Restricts input to numeric values.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "type-url",
+          "title": "Type: URL",
+          "description": "Validates URL format.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "type-tel",
+          "title": "Type: Tel",
+          "description": "Input for telephone numbers, no formatting enforced.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        },
+        {
+          "key": "type-search",
+          "title": "Type: Search",
+          "description": "Styled and optimized for search fields.",
+          "list": [
+            "Use Input for a single-line value and provide a visible label unless surrounding context makes the purpose unambiguous."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

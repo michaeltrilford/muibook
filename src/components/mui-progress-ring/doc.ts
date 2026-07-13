@@ -51,6 +51,107 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "start-state",
+          "title": "Start State",
+          "description": "Shows the generated start state for count-based and progress-based data.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "progress",
+          "title": "Progress",
+          "description": "Use progress for percentage-based values.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "value-and-max",
+          "title": "Value and Max",
+          "description": "Use value and max when progress is based on completed items.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "complete",
+          "title": "Complete",
+          "description": "Progress at 100 renders a completion icon automatically.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "display",
+          "title": "Display",
+          "description": "Center value is opt-in. The value is derived from value/max or progress.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "formatting",
+          "title": "Formatting",
+          "description": "Generated center text is constrained so dense values do not crowd the ring.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "display-value-completed",
+          "title": "Display Value: Completed",
+          "description": "Use display-value when the center text should show a custom completed count.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "display-value-remaining",
+          "title": "Display Value: Remaining",
+          "description": "Use display-value when the center text should show a custom remaining count.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "display-value-hours",
+          "title": "Display Value: Hours",
+          "description": "Use display-value for short time values while progress still drives the ring.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "display-value-grade",
+          "title": "Display Value: Grade",
+          "description": "Use color for score bands while center text keeps the default text color.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "tooltip-hover",
+          "title": "Tooltip: Hover",
+          "description": "Add tooltip text when the visible value needs extra context.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        },
+        {
+          "key": "tooltip-click",
+          "title": "Tooltip: Click",
+          "description": "Use click when the tooltip should be an explicit disclosure.",
+          "list": [
+            "Use Progress Ring for compact determinate progress where a circular display suits the layout."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [],

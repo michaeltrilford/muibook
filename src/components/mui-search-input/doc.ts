@@ -59,6 +59,52 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Shows the standard Search Input treatment.",
+          "list": [
+            "Use Search Input for query-driven filtering and keep result state owned by the parent composition."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares the supported Search Input size scale.",
+          "list": [
+            "Search Input supports x-small, small, medium, and large.",
+            "Use the same size as adjacent actions and controls so the composed row remains aligned."
+          ]
+        },
+        {
+          "key": "after-slot-tabs",
+          "title": "After Slot: Tabs",
+          "description": "Demonstrates after slot: tabs with Search Input.",
+          "list": [
+            "Use Search Input for query-driven filtering and keep result state owned by the parent composition."
+          ]
+        },
+        {
+          "key": "after-slot-custom-width",
+          "title": "After Slot: Custom Width",
+          "description": "Demonstrates after slot: custom width with Search Input.",
+          "list": [
+            "Use Search Input for query-driven filtering and keep result state owned by the parent composition."
+          ]
+        },
+        {
+          "key": "controlled-open",
+          "title": "Controlled Open",
+          "description": "Demonstrates controlled open with Search Input.",
+          "list": [
+            "Use Search Input for query-driven filtering and keep result state owned by the parent composition."
+          ]
+        }
+      ],
+    },
+
     related: {
       items: [
         { name: "Input", link: "https://guides.muibook.com/input" },

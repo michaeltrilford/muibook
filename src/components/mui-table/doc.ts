@@ -68,6 +68,131 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "table",
+          "title": "Table",
+          "description": "Demonstrates the Table Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "hover-row-highlight",
+          "title": "Hover Row Highlight",
+          "description": "Demonstrates the Hover Row Highlight Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "select-row-highlight",
+          "title": "Select Row Highlight",
+          "description": "Demonstrates the Select Row Highlight Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "index-row-highlight",
+          "title": "Index Row Highlight",
+          "description": "Demonstrates the Index Row Highlight Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "xx-small-action-size",
+          "title": "XX-Small Action Size",
+          "description": "Demonstrates the XX-Small Action Size Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "x-small-action-size",
+          "title": "X-Small Action Size",
+          "description": "Demonstrates the X-Small Action Size Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "small-action-size",
+          "title": "Small Action Size",
+          "description": "Demonstrates the Small Action Size Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "medium-action-size",
+          "title": "Medium Action Size",
+          "description": "Demonstrates the Medium Action Size Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "large-action-size",
+          "title": "Large Action Size",
+          "description": "Demonstrates the Large Action Size Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "mapping-data",
+          "title": "Mapping Data",
+          "description": "Use the .map() method to dynamically inject rows into your table based on your data set.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "responsive-table",
+          "title": "Responsive Table",
+          "description": "Demonstrates the Responsive Table Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "card-with-table",
+          "title": "Card with Table",
+          "description": "When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "card-header-w-table",
+          "title": "Card Header w/ Table",
+          "description": "You can add in a mui-rule to help add a division between the header and body of the card",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "card-hover-row-highlight",
+          "title": "Card: Hover Row Highlight",
+          "description": "Demonstrates the Card: Hover Row Highlight Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        },
+        {
+          "key": "card-select-row-highlight",
+          "title": "Card: Select Row Highlight",
+          "description": "Demonstrates the Card: Select Row Highlight Table treatment.",
+          "list": [
+            "Use Table for comparable structured data and preserve headers when adapting it for smaller screens."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

@@ -49,6 +49,54 @@ export const muiDocs: MuiDocs = {
         },
       ],
     },
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Presents a navigable sequence of slide sections.",
+          "list": [
+            "Each mui-slide-section in the default slot is a slide section/page.",
+            "Use one mui-slide-section per page for clean composition.",
+            "Use active-section (0-based) to control which page is visible."
+          ]
+        },
+        {
+          "key": "header-hidden",
+          "title": "Header Hidden",
+          "description": "Removes the header while preserving navigation and footer metadata.",
+          "list": [
+            "Use hide-header to suppress the header row while preserving slide navigation and footer metadata."
+          ]
+        },
+        {
+          "key": "footer-hidden",
+          "title": "Footer Hidden",
+          "description": "Removes footer content and the slide counter.",
+          "list": [
+            "Use hide-footer to suppress footer content and counter together."
+          ]
+        },
+        {
+          "key": "notes-hidden-in-fullscreen",
+          "title": "Notes Hidden in Fullscreen",
+          "description": "Keeps notes available for review but removes them during presentation.",
+          "list": [
+            "Notes can be open in normal mode for review.",
+            "When entering fullscreen, notes are intentionally hidden so presentation layout stays stable."
+          ]
+        },
+        {
+          "key": "variant-plain",
+          "title": "Variant: Plain",
+          "description": "Removes decorative frame treatment for embedded or custom slide surfaces.",
+          "list": [
+            "Use when the surrounding layout already supplies sufficient framing."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [],

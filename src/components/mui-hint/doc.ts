@@ -35,6 +35,44 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Trigger slot", "Tooltip content", "Placement behavior"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Shows the standard Hint treatment.",
+          "list": [
+            "Use Hint for brief contextual assistance that does not need to remain visible."
+          ]
+        },
+        {
+          "key": "placements",
+          "title": "Placements",
+          "description": "Demonstrates placements with Hint.",
+          "list": [
+            "Use Hint for brief contextual assistance that does not need to remain visible."
+          ]
+        },
+        {
+          "key": "delay",
+          "title": "Delay",
+          "description": "Demonstrates delay with Hint.",
+          "list": [
+            "Use Hint for brief contextual assistance that does not need to remain visible."
+          ]
+        },
+        {
+          "key": "disable-on-touch",
+          "title": "Disable On Touch",
+          "description": "Disables hint behaviour on coarse pointer devices.",
+          "list": [
+            "Use this when the hint is a desktop enhancement and the trigger already communicates its action.",
+            "This avoids persistent tooltip states on touch devices, while preserving hover and keyboard hint behaviour on desktop."
+          ]
+        }
+      ],
+    },
+
     compositions: { description: "", items: [] },
     related: {
       items: [

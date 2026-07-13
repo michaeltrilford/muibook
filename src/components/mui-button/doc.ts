@@ -143,6 +143,260 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "form-submissions",
+          "title": "Form submissions",
+          "description": "Unfortunately, Web Components can’t rely on type='submit' to handle form submissions due to Shadow DOM boundaries. Instead, manual submission logic needs to be applied to ensure expected behavior.",
+          "list": [
+            "Use type=\"submit\" for the primary form action and keep secondary actions visually quieter."
+          ]
+        },
+        {
+          "key": "inline-async-feedback",
+          "title": "Inline Async Feedback",
+          "description": "Use short-lived button text changes to confirm local async actions in place. This keeps feedback attached to the control that started the work instead of sending users to a toast or global notification.",
+          "list": [
+            "Use for quick async actions like copying, saving, adding, or syncing",
+            "Keep the pending and success labels short so button width stays stable",
+            "Use pending while the action is in flight to prevent duplicate requests without disabled styling",
+            "Reset to the original label after the user has had time to read the success state"
+          ]
+        },
+        {
+          "key": "size-xx-small",
+          "title": "Size: XX-Small",
+          "description": "Ultra-compact button size for dense utility actions.",
+          "list": [
+            "Use Button for an immediate command or state-changing action; use Link for navigation."
+          ]
+        },
+        {
+          "key": "size-x-small",
+          "title": "Size: X-Small",
+          "description": "When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set.",
+          "list": [
+            "Micro-interactions that require clear, compact buttons",
+            "Application toolbars",
+            "Dense data tables",
+            "Compact control panels",
+            "Icon buttons in tight spaces",
+            "Inline editing actions"
+          ]
+        },
+        {
+          "key": "size-small",
+          "title": "Size: Small",
+          "description": "When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set.",
+          "list": [
+            "Small/medium form inputs",
+            "Toolbar actions or discrete filter controls"
+          ]
+        },
+        {
+          "key": "size-medium-default",
+          "title": "Size: Medium (Default)",
+          "description": "When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set.",
+          "list": [
+            "Standard form inputs (text fields, selects)",
+            "Card components (primary and secondary actions)",
+            "Modal dialogs",
+            "Navigation elements",
+            "Default body text context"
+          ]
+        },
+        {
+          "key": "size-large",
+          "title": "Size: Large",
+          "description": "When a button includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the button will respect the value you set.",
+          "list": [
+            "Large headings (H1, H2)",
+            "Hero sections",
+            "Large form inputs (search bars, prominent forms)",
+            "Empty states with calls-to-action",
+            "Marketing/landing page content"
+          ]
+        },
+        {
+          "key": "primary",
+          "title": "Primary",
+          "description": "Shows the primary Button treatment.",
+          "list": [
+            "Use Button for an immediate command or state-changing action; use Link for navigation."
+          ]
+        },
+        {
+          "key": "secondary",
+          "title": "Secondary",
+          "description": "Shows the secondary Button treatment.",
+          "list": [
+            "Use Button for an immediate command or state-changing action; use Link for navigation."
+          ]
+        },
+        {
+          "key": "tertiary",
+          "title": "Tertiary",
+          "description": "Shows the tertiary Button treatment.",
+          "list": [
+            "Use Button for an immediate command or state-changing action; use Link for navigation."
+          ]
+        },
+        {
+          "key": "attention",
+          "title": "Attention",
+          "description": "Shows the attention Button treatment.",
+          "list": [
+            "Use only for destructive or high-risk commands and label the exact consequence."
+          ]
+        },
+        {
+          "key": "stroke-ring",
+          "title": "Stroke: Ring",
+          "description": "If you prefer using a ring shadow to style your borders, you can adopt that approach.",
+          "list": [
+            "Use stroke=\"ring\" to draw the button stroke with an inset shadow instead of a physical border.",
+            "Prefer ring when you want to adjust the visible stroke without changing the button height, padding, or alignment against adjacent controls.",
+            "Pair stroke=\"ring\" with inputs or selects when you want an action to visually align with a thinner form-control stroke.",
+            "Use stroke-ring-size=\"100\" for the default ring. This maps to var(--stroke-size-100).",
+            "Increase stroke-ring-size when the ring needs more visual contrast; supported token values are 100 through 500."
+          ]
+        },
+        {
+          "key": "overlay",
+          "title": "Overlay",
+          "description": "Overlay actions on image surfaces using the overlay variant.",
+          "list": [
+            "Use Button for an immediate command or state-changing action; use Link for navigation."
+          ]
+        },
+        {
+          "key": "disabled",
+          "title": "Disabled",
+          "description": "Shows the disabled Button treatment.",
+          "list": [
+            "Disable an action only when it must remain visible but cannot currently be used."
+          ]
+        },
+        {
+          "key": "header-button-group",
+          "title": "Header: Button-Group",
+          "description": "Example of actions that are present at the top of a page or card use.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "footer-button-group",
+          "title": "Footer: Button-Group",
+          "description": "Example of actions in a card, dialog or drawer.",
+          "list": [
+            "Use Button for an immediate command or state-changing action; use Link for navigation."
+          ]
+        },
+        {
+          "key": "button-group-layout",
+          "title": "Button-Group: Layout",
+          "description": "Use layout to control the group direction.",
+          "list": [
+            "Use layout=&quot;row|column&quot; to define the group direction",
+            "Column layout is intended for full-width stacked actions"
+          ]
+        },
+        {
+          "key": "button-group-alignment",
+          "title": "Button-Group: Alignment",
+          "description": "Use align to control button-group placement.",
+          "list": [
+            "Use align=&quot;left|right&quot; to control placement within row groups",
+            "The legacy right attribute is deprecated; prefer align=&quot;right&quot;"
+          ]
+        },
+        {
+          "key": "icon-before-and-after",
+          "title": "Icon (Before & After)",
+          "description": "Composes leading and trailing content with Button.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "primary-icon-only",
+          "title": "Primary: Icon-Only",
+          "description": "Uses an icon-only Button with the primary treatment.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "secondary-icon-only",
+          "title": "Secondary: Icon-Only",
+          "description": "Uses an icon-only Button with the secondary treatment.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "tertiary-icon-only",
+          "title": "Tertiary: Icon-Only",
+          "description": "Uses an icon-only Button with the tertiary treatment.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "attention-icon-only",
+          "title": "Attention: Icon-Only",
+          "description": "Uses an icon-only Button with the attention treatment.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "avatar-only-button",
+          "title": "Avatar-only Button",
+          "description": "When a button only contains an Avatar, it collapses to a primitive interactive wrapper and the avatar drives the final size.",
+          "list": [
+            "Use this when the avatar itself is the visible action target",
+            "The button keeps semantics and interaction states while the avatar controls the footprint"
+          ]
+        },
+        {
+          "key": "icon-toggle-default",
+          "title": "Icon Toggle: Default",
+          "description": "Transitions between related icon states using the default treatment.",
+          "list": [
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu",
+            "Use small (default) size icon when paired with text-based action is used in a button group."
+          ]
+        },
+        {
+          "key": "icon-toggle-morph",
+          "title": "Icon Toggle: Morph",
+          "description": "Transitions between related icon states using the morph treatment.",
+          "list": [
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu",
+            "Use small (default) size icon when paired with text-based action is used in a button group."
+          ]
+        },
+        {
+          "key": "icon-toggle-rotate",
+          "title": "Icon Toggle: Rotate",
+          "description": "Transitions between related icon states using the rotate treatment.",
+          "list": [
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu",
+            "Use small (default) size icon when paired with text-based action is used in a button group."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

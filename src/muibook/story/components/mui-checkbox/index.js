@@ -8,6 +8,12 @@ class storyCheckbox extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Checkbox");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Checkbox"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -17,11 +23,7 @@ class storyCheckbox extends HTMLElement {
       <story-api-types tag="mui-checkbox" title="Checkbox"></story-api-types>
 
 
-      <story-card
-      title="Unchecked (Default)"
-      description="No option or all options are unselected. The checkbox appears empty, indicating nothing is chosen."
-      usageLink="https://guides.muibook.com/checkbox"
-      >
+      <story-card id="unchecked-default" title="${storyMeta["unchecked-default"].title}" description="${storyMeta["unchecked-default"].description}" usage="${storyMeta["unchecked-default"].usage}">
 
       <mui-checkbox slot="body"></mui-checkbox>
       <story-code-block slot="footer" scrollable>
@@ -30,11 +32,7 @@ class storyCheckbox extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-      title="Checked"
-      description="A single option or all options are selected. The checkbox is fully marked, showing complete selection."
-      usageLink="https://guides.muibook.com/checkbox"
-      >
+      <story-card id="checked" title="${storyMeta["checked"].title}" description="${storyMeta["checked"].description}" usage="${storyMeta["checked"].usage}">
       <mui-checkbox checked slot="body"></mui-checkbox>
       <story-code-block slot="footer" scrollable>
         &nbsp;&nbsp;&lt;mui-checkbox checked&gt;&lt;/mui-checkbox&gt;
@@ -42,11 +40,7 @@ class storyCheckbox extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-      title="Sizes"
-      description="Scale checkbox size from x-small to large."
-      usageLink="https://guides.muibook.com/checkbox"
-      >
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
       <mui-v-stack slot="body" space="var(--space-200)">
         <mui-checkbox size="x-small" checked>X-Small</mui-checkbox>
         <mui-checkbox size="small" checked>Small</mui-checkbox>
@@ -62,17 +56,7 @@ class storyCheckbox extends HTMLElement {
       </story-card>
 
 
-      <story-card
-      title="Indeterminate"
-      usage="
-        Used on parent checkboxes in multi-select groups to show partial selection.|||
-        Often acts as a control to clear selected child options.|||
-        Parent reflects children: unchecked (none), checked (all), indeterminate (some).|||
-        States switch based on user input and child selection.|||
-        Your app controls the logic. The component renders the static UI.
-      "
-      usageLink="https://guides.muibook.com/checkbox"
-      >
+      <story-card id="indeterminate" title="${storyMeta["indeterminate"].title}" description="${storyMeta["indeterminate"].description}" usage="${storyMeta["indeterminate"].usage}">
       <mui-checkbox indeterminate slot="body"></mui-checkbox>
       <story-code-block slot="footer" scrollable>
         &nbsp;&nbsp;&lt;mui-checkbox indeterminate&gt;&lt;/mui-checkbox&gt;
@@ -80,11 +64,7 @@ class storyCheckbox extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-      title="Disabled"
-      description="The option is unavailable for interaction. It may be selected or unselected but cannot be changed by the user."
-      usageLink="https://guides.muibook.com/checkbox"
-      >
+      <story-card id="disabled" title="${storyMeta["disabled"].title}" description="${storyMeta["disabled"].description}" usage="${storyMeta["disabled"].usage}">
       <mui-h-stack slot="body">
         <mui-checkbox disabled>Disabled</mui-checkbox>
         <mui-checkbox disabled checked>Disabled</mui-checkbox>
@@ -97,14 +77,7 @@ class storyCheckbox extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-      title="Usage: Terms & conditions"
-      description="This checkbox is often used to confirm user agreement with legal terms. It typically starts unchecked and must be checked to proceed. It may become disabled if the form is locked or certain conditions aren’t met."
-      usage="
-        Slot in a string of text and accompanied link or supporting elements.|||
-        No body component is required as this is built in."
-      usageLink="https://guides.muibook.com/checkbox"
-      >
+      <story-card id="usage-terms-and-conditions" title="${storyMeta["usage-terms-and-conditions"].title}" description="${storyMeta["usage-terms-and-conditions"].description}" usage="${storyMeta["usage-terms-and-conditions"].usage}">
       <mui-field id="termsField" slot="body">
         <mui-checkbox id="agreeTerms">I agree to the <mui-link href="/terms" size="small">terms and conditions</mui-link></mui-checkbox>
       </mui-field>
@@ -137,6 +110,7 @@ class storyCheckbox extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-checkbox"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

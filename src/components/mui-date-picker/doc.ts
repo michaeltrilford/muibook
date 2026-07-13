@@ -52,6 +52,35 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "date-picker",
+          "title": "Date picker",
+          "description": "A standard date picker using the default type='date'.",
+          "list": [
+            "Use Date Picker when a calendar supports selecting the required date more effectively than free text."
+          ]
+        },
+        {
+          "key": "date-and-timeslot",
+          "title": "Date & Timeslot",
+          "description": "Combine the calendar and timeslot picker using type='datetimeslot'.",
+          "list": [
+            "Use Date Picker when a calendar supports selecting the required date more effectively than free text."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Date Picker supports x-small, small, medium, and large input sizes.",
+          "list": [
+            "Use Date Picker when a calendar supports selecting the required date more effectively than free text."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [],

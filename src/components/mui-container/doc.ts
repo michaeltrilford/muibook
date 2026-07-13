@@ -48,6 +48,77 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "small",
+          "title": "Small",
+          "description": "Demonstrates the Small Container treatment.",
+          "list": [
+            "Use Container to constrain page content and maintain consistent horizontal alignment."
+          ]
+        },
+        {
+          "key": "medium",
+          "title": "Medium",
+          "description": "Demonstrates the Medium Container treatment.",
+          "list": [
+            "Use Container to constrain page content and maintain consistent horizontal alignment."
+          ]
+        },
+        {
+          "key": "x-medium",
+          "title": "X Medium",
+          "description": "Demonstrates the X Medium Container treatment.",
+          "list": [
+            "Use Container to constrain page content and maintain consistent horizontal alignment."
+          ]
+        },
+        {
+          "key": "large",
+          "title": "Large",
+          "description": "Demonstrates the Large Container treatment.",
+          "list": [
+            "Use Container to constrain page content and maintain consistent horizontal alignment."
+          ]
+        },
+        {
+          "key": "x-large",
+          "title": "X Large",
+          "description": "Demonstrates the X Large Container treatment.",
+          "list": [
+            "Use Container to constrain page content and maintain consistent horizontal alignment."
+          ]
+        },
+        {
+          "key": "width",
+          "title": "Width",
+          "description": "Use width when a layout needs an explicit max-width without changing the shared t-shirt size scale.",
+          "list": [
+            "Width overrides the selected size.",
+            "Use size for common layout rhythm and width for one-off page constraints.",
+            "Numeric values map to the design rem scale, so width='960' resolves to 96rem. CSS lengths like width='64rem' are also supported."
+          ]
+        },
+        {
+          "key": "fluid",
+          "title": "Fluid",
+          "description": "Demonstrates the Fluid Container treatment.",
+          "list": [
+            "Use Container to constrain page content and maintain consistent horizontal alignment."
+          ]
+        },
+        {
+          "key": "center",
+          "title": "Center",
+          "description": "Demonstrates the Center Container treatment.",
+          "list": [
+            "Use Container to constrain page content and maintain consistent horizontal alignment."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

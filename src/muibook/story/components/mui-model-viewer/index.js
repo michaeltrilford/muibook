@@ -12,16 +12,17 @@ class StoryModelViewer extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("ModelViewer");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Model Viewer"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-model-viewer" title="Model Viewer"></story-api-types>
 
-      <story-card
-        canvas-bleed
-        id="default"
-        title="Interactive 3D Viewport"
-        description="Renders a 3D model with orbiting/zooming controls enabled."
-        usage="Allows users to orbit, zoom, and inspect the 3D model.|||The component loads the library script asynchronously when first used.|||Fallback poster is rendered while the model is downloading.">
+      <story-card canvas-bleed id="interactive-3d-viewport" title="${storyMeta["interactive-3d-viewport"].title}" description="${storyMeta["interactive-3d-viewport"].description}" usage="${storyMeta["interactive-3d-viewport"].usage}">
         <mui-model-viewer
           slot="body"
           src="${astronautGlb}"
@@ -43,12 +44,7 @@ class StoryModelViewer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        canvas-bleed
-        id="auto-rotate"
-        title="Auto Rotation"
-        description="Displays the model with automatic camera rotation enabled."
-        usage="Perfect for product highlights or landing pages where a spinning preview is desired.|||Users can still interact with the model to override the automatic rotation.">
+      <story-card canvas-bleed id="auto-rotation" title="${storyMeta["auto-rotation"].title}" description="${storyMeta["auto-rotation"].description}" usage="${storyMeta["auto-rotation"].usage}">
         <mui-model-viewer
           slot="body"
           src="${astronautGlb}"
@@ -72,12 +68,7 @@ class StoryModelViewer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        canvas-bleed
-        id="ar-mode"
-        title="AR Quick Look & WebXR Placement"
-        description="Enables AR entry triggers where supported."
-        usage="Adds a floating AR entry button on mobile devices.|||Allows placing the 3D model directly into physical space on iOS Safari and WebXR browsers.">
+      <story-card canvas-bleed id="ar-quick-look-and-webxr-placement" title="${storyMeta["ar-quick-look-and-webxr-placement"].title}" description="${storyMeta["ar-quick-look-and-webxr-placement"].description}" usage="${storyMeta["ar-quick-look-and-webxr-placement"].usage}">
         <mui-model-viewer
           slot="body"
           src="${astronautGlb}"
@@ -114,11 +105,7 @@ class StoryModelViewer extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
         imports='@muibook/components/mui-model-viewer'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Interactive 3D Viewport|||auto-rotate::Auto Rotation|||ar-mode::AR & Quick Look"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

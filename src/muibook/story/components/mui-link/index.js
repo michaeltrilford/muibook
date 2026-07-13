@@ -8,6 +8,12 @@ class storyLink extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Link");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Link"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-link",
@@ -83,7 +89,7 @@ class storyLink extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-link" title="Link"></story-api-types>
 
-      <story-card title="Link: Sizes" id="link-sizes" description="Link sizes should match the surrounding body text size when nested within a paragraph.">
+      <story-card id="link-sizes" title="${storyMeta["link-sizes"].title}" description="${storyMeta["link-sizes"].description}" usage="${storyMeta["link-sizes"].usage}">
 
           <div slot="body">
             <mui-v-stack space="var(--space-500)">
@@ -148,17 +154,7 @@ class storyLink extends HTMLElement {
 
       </story-card>
 
-      <story-card
-        id="link-button-x-small"
-        title="Link Button: X-Small"
-        description="When a link includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
-        usage="
-          Highly compact UI regions|||
-          Dense application toolbars|||
-          Tight data tables|||
-          Compact control panels
-        "
-      >
+      <story-card id="link-button-x-small" title="${storyMeta["link-button-x-small"].title}" description="${storyMeta["link-button-x-small"].description}" usage="${storyMeta["link-button-x-small"].usage}">
 
         <mui-v-stack slot="body" alignx="stretch">
           <mui-h-stack alignx="end" alignY="center" space="var(--space-050)">
@@ -190,16 +186,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="link-button-small"
-        title="Link Button: Small"
-        description="When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
-        usage="
-          Toolbar actions with mixed icon/text|||
-          Discrete filters and utility actions|||
-          Secondary or supporting navigation
-        "
-      >
+      <story-card id="link-button-small" title="${storyMeta["link-button-small"].title}" description="${storyMeta["link-button-small"].description}" usage="${storyMeta["link-button-small"].usage}">
         <mui-v-stack slot="body">
 
           <mui-responsive breakpoint="1280">
@@ -268,19 +255,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="link-button-medium"
-        title="Link Button: Medium (Default)"
-        description="When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
-        usage="
-          Standard text-level actions|||
-          Card actions (primary/secondary)|||
-          Modal and dialog interactions|||
-          Navigation elements within body text|||
-          Places where links appear in default reading flow|||
-          Form inputs (e.g., hero search bars)
-        "
-      >
+      <story-card id="link-button-medium-default" title="${storyMeta["link-button-medium-default"].title}" description="${storyMeta["link-button-medium-default"].description}" usage="${storyMeta["link-button-medium-default"].usage}">
         <mui-v-stack slot="body">
           <mui-v-stack space="var(--space-050)">
             <mui-body size="medium" weight="bold">Default Icon Size</mui-body>
@@ -324,17 +299,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="link-button-large"
-        title="Link Button: Large"
-        description="When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set."
-        usage="
-          Large headings (H1/H2) and hero layouts|||
-          Prominent calls to action in content|||
-          Empty states and marketing content|||
-          Interfaces where the link must stand out more than standard body actions
-        "
-      >
+      <story-card id="link-button-large" title="${storyMeta["link-button-large"].title}" description="${storyMeta["link-button-large"].description}" usage="${storyMeta["link-button-large"].usage}">
         <mui-v-stack slot="body">
           <mui-v-stack space="var(--space-050)">
             <mui-body size="medium" weight="bold">Default Icon Size</mui-body>
@@ -357,7 +322,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="URL" id="url">
+      <story-card id="url" title="${storyMeta["url"].title}" description="${storyMeta["url"].description}" usage="${storyMeta["url"].usage}">
         <div slot="body">
           <mui-link target="_blank" href="links.html">Unsubscribe</mui-link>
         </div>
@@ -366,7 +331,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="External link" id="external">
+      <story-card id="external-link" title="${storyMeta["external-link"].title}" description="${storyMeta["external-link"].description}" usage="${storyMeta["external-link"].usage}">
         <div slot="body">
           <mui-link target="_blank">Unsubscribe</mui-link>
         </div>
@@ -375,7 +340,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Primary Link" id="primary-link">
+      <story-card id="primary-link" title="${storyMeta["primary-link"].title}" description="${storyMeta["primary-link"].description}" usage="${storyMeta["primary-link"].usage}">
         <div slot="body">
           <mui-link target="_blank" variant="primary">Fork Github</mui-link>
         </div>
@@ -384,7 +349,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Secondary Link" id="secondary-link">
+      <story-card id="secondary-link" title="${storyMeta["secondary-link"].title}" description="${storyMeta["secondary-link"].description}" usage="${storyMeta["secondary-link"].usage}">
         <div slot="body">
           <mui-link target="_blank" variant="secondary">View report</mui-link>
         </div>
@@ -393,16 +358,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Stroke: Ring"
-        id="stroke-ring"
-        description="Use a ring shadow when you prefer that approach for action-style link borders."
-        usage='
-          Use stroke="ring" to draw the action-style link stroke with an inset shadow instead of a physical border.|||
-          Pair ring-stroked links with ring-stroked buttons when they need to share the same visual border treatment.|||
-          Use stroke-ring-size="100" for the default ring, and increase only when more contrast is needed.
-        '
-      >
+      <story-card id="stroke-ring" title="${storyMeta["stroke-ring"].title}" description="${storyMeta["stroke-ring"].description}" usage="${storyMeta["stroke-ring"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
           <mui-link size="xx-small" variant="secondary" stroke="ring">XX-Small</mui-link>
           <mui-link size="x-small" variant="secondary" stroke="ring">X-Small</mui-link>
@@ -454,7 +410,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Tertiary Link" id="tertiary-link">
+      <story-card id="tertiary-link" title="${storyMeta["tertiary-link"].title}" description="${storyMeta["tertiary-link"].description}" usage="${storyMeta["tertiary-link"].usage}">
         <div slot="body">
           <mui-link target="_blank" variant="tertiary">View report</mui-link>
         </div>
@@ -463,7 +419,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Attention Link" id="attention-link">
+      <story-card id="attention-link" title="${storyMeta["attention-link"].title}" description="${storyMeta["attention-link"].description}" usage="${storyMeta["attention-link"].usage}">
         <div slot="body">
           <mui-link target="_blank" variant="attention">Fork Github</mui-link>
         </div>
@@ -472,7 +428,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Overlay Link" id="overlay-link" description="Overlay links on image surfaces using the overlay variant.">
+      <story-card id="overlay-link" title="${storyMeta["overlay-link"].title}" description="${storyMeta["overlay-link"].description}" usage="${storyMeta["overlay-link"].usage}">
         <mui-grid slot="body" col="1fr 1fr" space="var(--space-200)">
           <div
             class="overlay-canvas"
@@ -502,14 +458,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Link (Before & After)"
-        id="link"
-        usage='
-          Use x-small size icon when it is paired with text
-        '
-        usageLink="https://guides.muibook.com/link"
-      >
+      <story-card id="link-before-and-after" title="${storyMeta["link-before-and-after"].title}" description="${storyMeta["link-before-and-after"].description}" usage="${storyMeta["link-before-and-after"].usage}">
 
         <mui-v-stack slot="body" space="var(--space-400)" alignX="start">
 
@@ -557,15 +506,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Link Button (Before & After)"
-        id="link-button"
-        usage='
-          Use small (default) size icon when paired with text-based action is used in a button group|||
-          Use medium size icon when the icon-only action appears on its own. E.g. Menu
-        '
-        usageLink="https://guides.muibook.com/link"
-      >
+      <story-card id="link-button-before-and-after" title="${storyMeta["link-button-before-and-after"].title}" description="${storyMeta["link-button-before-and-after"].description}" usage="${storyMeta["link-button-before-and-after"].usage}">
 
         <mui-v-stack slot="body" space="var(--space-200)" alignX="start">
 
@@ -603,15 +544,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Primary: Icon-Only"
-        id="primary-icon-only"
-        usage='
-          Use small (default) size icon when paired with text-based action is used in a button group|||
-          Use medium size icon when the icon-only action appears on its own. E.g. Menu
-        '
-        usageLink="https://guides.muibook.com/link"
-      >
+      <story-card id="primary-icon-only" title="${storyMeta["primary-icon-only"].title}" description="${storyMeta["primary-icon-only"].description}" usage="${storyMeta["primary-icon-only"].usage}">
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-link variant="primary">Share</mui-link>
@@ -631,15 +564,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Secondary: Icon-Only"
-        id="secondary-icon-only"
-        usage='
-          Use small (default) size icon when paired with text-based action is used in a button group|||
-          Use medium size icon when the icon-only action appears on its own. E.g. Menu
-        '
-        usageLink="https://guides.muibook.com/link"
-      >
+      <story-card id="secondary-icon-only" title="${storyMeta["secondary-icon-only"].title}" description="${storyMeta["secondary-icon-only"].description}" usage="${storyMeta["secondary-icon-only"].usage}">
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-link variant="secondary">Share</mui-link>
@@ -659,15 +584,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Tertiary: Icon-Only"
-        id="tertiary-icon-only"
-        usage='
-          Use small (default) size icon when paired with text-based action is used in a button group|||
-          Use medium size icon when the icon-only action appears on its own. E.g. Menu
-        '
-        usageLink="https://guides.muibook.com/link"
-      >
+      <story-card id="tertiary-icon-only" title="${storyMeta["tertiary-icon-only"].title}" description="${storyMeta["tertiary-icon-only"].description}" usage="${storyMeta["tertiary-icon-only"].usage}">
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-link variant="tertiary">Share</mui-link>
@@ -687,15 +604,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Attention: Icon-Only"
-        id="attention-icon-only"
-        usage='
-          Use small (default) size icon when paired with text-based action is used in a button group|||
-          Use medium size icon when the icon-only action appears on its own. E.g. Menu
-        '
-        usageLink="https://guides.muibook.com/link"
-      >
+      <story-card id="attention-icon-only" title="${storyMeta["attention-icon-only"].title}" description="${storyMeta["attention-icon-only"].description}" usage="${storyMeta["attention-icon-only"].usage}">
         <mui-h-stack slot="body" space="var(--space-100)">
           <mui-button-group>
             <mui-link variant="attention">Share</mui-link>
@@ -715,7 +624,7 @@ class storyLink extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Part Selectors" id="part" description="Ideal for building custom web-component compositions using MUI and scoped CSS styles.">
+      <story-card id="part-selectors" title="${storyMeta["part-selectors"].title}" description="${storyMeta["part-selectors"].description}" usage="${storyMeta["part-selectors"].usage}">
         <div slot="body">
           <mui-link class="custom-wc" target="_blank" href="links.html">Unsubscribe</mui-link>
         </div>
@@ -797,13 +706,7 @@ class storyLink extends HTMLElement {
         attrs-reference='${attrsReference}'
 
         imports='["@muibook/components/mui-link"]'>
-
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          limit="10"
-          links="link-sizes::Link: Sizes|||link-button-x-small::Link Button: X-Small|||link-button-small::Link Button: Small|||link-button-medium::Link Button: Medium|||link-button-large::Link Button: Large|||url::URL|||external::External Link|||primary-link::Primary Link|||secondary-link::Secondary Link|||stroke-ring::Stroke: Ring|||tertiary-link::Tertiary Link|||overlay-link::Overlay Link|||attention-link::Attention Link|||disabled::Disabled Link|||link::Link (Before & After)|||link-button::Link Button (Before & After)|||primary-icon-only::Primary: Icon-Only|||secondary-icon-only::Secondary: Icon-Only|||tertiary-icon-only::Tertiary: Icon-Only|||attention-icon-only::Attention: Icon-Only|||part::Part Selectors"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
 
         ${stories}
       </story-template>

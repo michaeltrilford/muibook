@@ -8,6 +8,12 @@ class storySlideFrame extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("SlideFrame");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Slide Frame"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-slide-frame",
@@ -88,9 +94,7 @@ class storySlideFrame extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-slide-frame" title="Slide Frame"></story-api-types>
 
-      <story-card
-        title="Default"
-        usage="Each mui-slide-section in the default slot is a slide section/page.|||Use one mui-slide-section per page for clean composition.|||Use active-section (0-based) to control which page is visible.">
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
           <mui-body slot="header-description" size="small" variant="secondary">Core metrics and roadmap outcomes.</mui-body>
@@ -109,9 +113,7 @@ class storySlideFrame extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Header Hidden"
-        usage="Use hide-header to suppress the header row while preserving slide navigation and footer metadata.">
+      <story-card id="header-hidden" title="${storyMeta["header-hidden"].title}" description="${storyMeta["header-hidden"].description}" usage="${storyMeta["header-hidden"].usage}">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." hide-header scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
           <mui-body slot="header-description" size="small" variant="secondary">Core metrics and roadmap outcomes.</mui-body>
@@ -130,9 +132,7 @@ class storySlideFrame extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Footer Hidden"
-        usage="Use hide-footer to suppress footer content and counter together.">
+      <story-card id="footer-hidden" title="${storyMeta["footer-hidden"].title}" description="${storyMeta["footer-hidden"].description}" usage="${storyMeta["footer-hidden"].usage}">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." hide-footer scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
           <mui-body slot="header-description" size="small" variant="secondary">Core metrics and roadmap outcomes.</mui-body>
@@ -151,9 +151,7 @@ class storySlideFrame extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Notes Hidden in Fullscreen"
-        usage="Notes can be open in normal mode for review.|||When entering fullscreen, notes are intentionally hidden so presentation layout stays stable.">
+      <story-card id="notes-hidden-in-fullscreen" title="${storyMeta["notes-hidden-in-fullscreen"].title}" description="${storyMeta["notes-hidden-in-fullscreen"].description}" usage="${storyMeta["notes-hidden-in-fullscreen"].usage}">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" title="Quarterly Product Review" footer-text="Q1 snapshot: growth, adoption, and retention metrics." notes-open scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
           <mui-body slot="header-description" size="small" variant="secondary">Core metrics and roadmap outcomes.</mui-body>
@@ -174,7 +172,7 @@ class storySlideFrame extends HTMLElement {
         </story-code-block>
       </story-card>
 
-            <story-card title="Variant: Plain">
+            <story-card id="variant-plain" title="${storyMeta["variant-plain"].title}" description="${storyMeta["variant-plain"].description}" usage="${storyMeta["variant-plain"].usage}">
         <mui-slide-frame class="shell" slot="body" ratio="16:9" variant="plain" padding="small" title="Quarterly Product Review" footer-text="Plain variant." scroll>
           <mui-badge slot="header" variant="neutral" size="small">Q1</mui-badge>
           ${quarterlyPageOne}
@@ -205,6 +203,7 @@ class storySlideFrame extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-slide-frame", "@muibook/components/mui-slide-section"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

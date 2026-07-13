@@ -1756,7 +1756,93 @@ export const compositions = {
           },
         ],
       },
+      agentChat: {
+        type: "VStack",
+        id: "agent_chat_root",
+        props: { space: "var(--space-600)", alignX: "stretch", style: "max-width: 78rem; margin: 0 auto;" },
+        children: [
+          {
+            type: "ChatMessage",
+            id: "agent_chat_user_message",
+            props: { align: "end", width: "medium", "footer-position": "outside" },
+            children: [
+              { type: "Body", id: "agent_chat_user_copy", props: { text: "Review this implementation and summarise the changed files.", size: "medium" }, children: [] },
+            ],
+          },
+          {
+            type: "ChatMessage",
+            id: "agent_chat_response",
+            props: { variant: "ghost", size: "medium" },
+            children: [
+              {
+                type: "WorkLog",
+                id: "agent_chat_work_log",
+                slot: "header",
+                props: { label: "Worked for 4m 10s", rule: true },
+                children: [
+                  { type: "Body", id: "agent_chat_work_summary", props: { text: "Reviewed the component APIs, composition, and generated documentation.", size: "x-small" }, children: [] },
+                ],
+              },
+              { type: "Heading", id: "agent_chat_response_title", props: { text: "Updated the implementation and documentation.", level: "2", size: "6" }, children: [] },
+              { type: "Body", id: "agent_chat_response_copy", props: { text: "The response keeps work detail, reviewable output, and follow-up context within one document flow.", size: "small" }, children: [] },
+              {
+                type: "ResultBar",
+                id: "agent_chat_result",
+                props: { variant: "accordion", label: "Edited 4 files", rule: true, open: true },
+                children: [
+                  { type: "Button", id: "agent_chat_undo", slot: "actions", props: { text: "Undo", variant: "tertiary", size: "x-small" }, children: [] },
+                  { type: "Button", id: "agent_chat_review", slot: "actions", props: { text: "Review", variant: "secondary", size: "x-small" }, children: [] },
+                ],
+              },
+            ],
+          },
+          {
+            type: "Prompt",
+            id: "agent_chat_prompt",
+            props: { placeholder: "Ask for follow-up changes...", "enter-submit": true, "context-mode": "icon", "actions-fan": true },
+            children: [
+              { type: "PreviewChip", id: "agent_chat_preview", slot: "preview", props: { value: "Review the agent chat response", badge: "MD", clickable: true }, children: [] },
+              {
+                type: "ContextBar",
+                id: "agent_chat_context",
+                slot: "context",
+                props: {},
+                children: [
+                  { type: "Body", id: "agent_chat_context_copy", props: { text: "Keep the current implementation scope", size: "x-small" }, children: [] },
+                ],
+              },
+              {
+                type: "ActionToggle",
+                id: "agent_chat_web_toggle",
+                slot: "actions",
+                props: {},
+                children: [
+                  { type: "Button", id: "agent_chat_web_action", props: { "context-toggle": true, variant: "tertiary", "icon-only": true, "aria-label": "Toggle web context" }, children: [] },
+                  { type: "Chip", id: "agent_chat_web_chip", props: { "context-chip": true, dismiss: true, hidden: true, text: "Web" }, children: [] },
+                ],
+              },
+            ],
+          },
+        ],
+      },
     } as const;
+
+export const compositionStories = {
+  agentChat: {
+    title: "Agent Chat",
+    description: "Composition example for an agent chat surface with response content, generated previews, work detail, reviewable results, and a prompt composer.",
+    github: "https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/compositions/agent-chat/index.js",
+    storybook: "https://storybook.muibook.com/?path=/story/compositions-agent-chat--agent-chat",
+    stories: {
+      items: [
+        { key: "agent-chat", title: "Agent Chat", description: "A complete chat layout composed from message framing, work detail, reviewable output, previews, and prompt controls.", list: ["Use Chat Message for user and agent turns.", "Use Work Log for collapsible execution detail and Result Bar for reviewable output.", "Keep response content as normal document structure so it can contain headings, paragraphs, lists, code, previews, and controls."] },
+        { key: "steer", title: "Steer", description: "Keeps compact, editable task context attached to the follow-up composer.", list: ["Use the Prompt context slot for task context, selected text, constraints, examples, or attachments.", "Keep the context row compact and truncated.", "Use Action Toggle for application-controlled context state such as Web, Files, or Canvas."] },
+        { key: "thinking", title: "Thinking", description: "Shows an agent response while only the top-level work status is available.", list: ["Use pending on Work Log for active thinking states.", "Omit rule when the status should remain a quiet top-level indicator."] },
+        { key: "working", title: "Working", description: "Shows nested execution detail such as elapsed work, files read, and active updates.", list: ["Nest Work Log rows for secondary execution detail.", "Use pending only on work that is still active.", "Keep nested rows compact so the response remains the primary content."] },
+      ],
+    },
+  },
+} as const;
 
 export const compositionConfig = {
   signupFlow: { includeInAgent: true, detail: "compact" },
@@ -1772,6 +1858,7 @@ export const compositionConfig = {
   drawerWorkspace: { includeInAgent: false, detail: "full" },
   modelViewerProductPreview: { includeInAgent: false, detail: "full" },
   dashboard: { includeInAgent: false, detail: "full" },
+  agentChat: { includeInAgent: true, detail: "full" },
 } satisfies Record<keyof typeof compositions, { includeInAgent: boolean; detail: "compact" | "full" }>;
 
 type CompositionKey = keyof typeof compositions;

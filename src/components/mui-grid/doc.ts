@@ -67,6 +67,35 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Creates an explicit two-column grid.",
+          "list": [
+            "Use Grid for two-dimensional layout where columns and rows need explicit alignment."
+          ]
+        },
+        {
+          "key": "three-column",
+          "title": "Three Column",
+          "description": "Creates three equal-width columns.",
+          "list": [
+            "Use Grid for two-dimensional layout where columns and rows need explicit alignment."
+          ]
+        },
+        {
+          "key": "sized-alignment",
+          "title": "Sized Alignment",
+          "description": "Set a height to align items within a defined layout area.",
+          "list": [
+            "Use Grid for two-dimensional layout where columns and rows need explicit alignment."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

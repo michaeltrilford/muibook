@@ -8,6 +8,12 @@ class storyQuote extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Quote");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Quote"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,7 +22,7 @@ class storyQuote extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-quote" title="Quote"></story-api-types>
 
-      <story-card title="Quote">
+      <story-card id="quote" title="${storyMeta["quote"].title}" description="${storyMeta["quote"].description}" usage="${storyMeta["quote"].usage}">
 
       <div slot="body">
 
@@ -53,6 +59,7 @@ class storyQuote extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-quote"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

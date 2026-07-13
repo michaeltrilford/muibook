@@ -69,6 +69,104 @@ export const muiDocs: MuiDocs = {
         },
       ],
     },
+    stories: {
+      items: [
+        {
+          "key": "accordion-inline",
+          "title": "Accordion Inline",
+          "description": "The inline accordion is typically used within a block layout as a secondary UI element to a block element.",
+          "list": [
+            "Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail."
+          ]
+        },
+        {
+          "key": "accordion-group-and-block",
+          "title": "Accordion Group & Block",
+          "description": "The block accordion is typically used within a page layout full-width to the parent container.",
+          "list": [
+            "Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail."
+          ]
+        },
+        {
+          "key": "accordion-group-and-block-exclusive",
+          "title": "Accordion Group & Block: Exclusive",
+          "description": "The block accordion is typically used within a page layout full-width to the parent container.",
+          "list": [
+            "Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail."
+          ]
+        },
+        {
+          "key": "tab-behaviour-button",
+          "title": "Tab Behaviour: Button",
+          "description": "A demo showcasing how a nested button will be ignored by the tabbing functionality if collapsed.",
+          "list": [
+            "Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail."
+          ]
+        },
+        {
+          "key": "tab-behaviour-link",
+          "title": "Tab Behaviour: Link",
+          "description": "A demo showcasing how a nested link will be ignored by the tabbing functionality if collapsed.",
+          "list": [
+            "Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail."
+          ]
+        },
+        {
+          "key": "detail-space-none",
+          "title": "Detail Space: None",
+          "description": "In accordion-block, you are able to turn off the space within the detail section.",
+          "list": [
+            "Ideal for using the accordion block to contain navigation items",
+            "Support full-bleed content such as images or documents."
+          ]
+        },
+        {
+          "key": "card-w-accordion",
+          "title": "Card w/ Accordion",
+          "description": "Demonstrates the Card w/ Accordion Accordion treatment.",
+          "list": [
+            "When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding",
+            "If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually."
+          ]
+        },
+        {
+          "key": "card-header-w-accordion",
+          "title": "Card Header w/ Accordion",
+          "description": "You can add in a mui-rule to help add a division between the header and body of the card",
+          "list": [
+            "When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding",
+            "If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually."
+          ]
+        },
+        {
+          "key": "accordion-slat-detection",
+          "title": "Accordion: Slat Detection",
+          "description": "Demonstrates the Accordion: Slat Detection Accordion treatment.",
+          "list": [
+            "When an accordion is used with mui-slat-group, the attribute of usage='accordion' is applied automatically",
+            "Opt-out by not using the mui-slat-group, but you will have to craft your own layout."
+          ]
+        },
+        {
+          "key": "card-slat-detection",
+          "title": "Card: Slat Detection",
+          "description": "Demonstrates the Card: Slat Detection Accordion treatment.",
+          "list": [
+            "When a card and accordion is used togther with mui-slat-group, the attribute of usage='card' is applied automatically.",
+            "Opt-out by not using the mui-slat-group, but you will have to craft your own layout."
+          ]
+        },
+        {
+          "key": "accordion-core",
+          "title": "Accordion Core",
+          "description": "Use your imagination and compose your own accordion experience with some overhead in effort. Below is a variety of examples using cards and different techniques to toggle an icon based on the open state.",
+          "list": [
+            "Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

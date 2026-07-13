@@ -51,6 +51,69 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Stack avatars when a compact surface needs to show multiple people.",
+          "list": [
+            "Avatar Group owns the overlap, ring, and default size.",
+            "Each slotted Avatar still owns its image, initials, background, and status.",
+            "Use label to describe the group when surrounding text does not already name it."
+          ]
+        },
+        {
+          "key": "overlap",
+          "title": "Overlap",
+          "description": "Tune overlap density for recognition or compact layout.",
+          "list": [
+            "Use loose when recognition matters.",
+            "Use tight as the default balance.",
+            "Use compact for dense tables, cards, and headers."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Set size on the group to size slotted avatars that do not declare their own size.",
+          "list": [
+            "Use group size when all avatars should share the same footprint.",
+            "Set size directly on an individual Avatar only when it should intentionally differ from the group."
+          ]
+        },
+        {
+          "key": "hover-fan",
+          "title": "Hover Fan",
+          "description": "Use fan when a stacked group should expand temporarily for easier recognition.",
+          "list": [
+            "The group fans on pointer hover and keyboard focus within the group.",
+            "Use this for dense collaborator groups where recognition matters on inspection.",
+            "Keep the default static overlap when layout stability matters more than inspection."
+          ]
+        },
+        {
+          "key": "with-status",
+          "title": "With Status",
+          "description": "Avatar Group composes with Avatar status indicators without owning presence state itself.",
+          "list": [
+            "Use status on each Avatar when availability belongs to that individual.",
+            "Keep the group label focused on what the collection represents."
+          ]
+        },
+        {
+          "key": "context-ring",
+          "title": "Context Ring",
+          "description": "Avatar Group adjusts its separating ring in supported surface contexts.",
+          "list": [
+            "Card Body marks nested Avatar Groups so their ring matches the card surface.",
+            "Slat slots pass their default and hover surfaces to the group.",
+            "Use the custom property only for one-off custom surfaces outside known component contexts."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [],

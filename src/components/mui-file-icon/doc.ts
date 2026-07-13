@@ -46,6 +46,44 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Renders a mapped VS Code file-type icon.",
+          "list": [
+            "Use icon to select a mapped vscode-icons file-type SVG.",
+            "The component is pinned to vscode-icons pinned version."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares the supported File Icon size scale.",
+          "list": [
+            "Use small for standard inline file icons, then scale up to medium or large for larger preview surfaces."
+          ]
+        },
+        {
+          "key": "file-row",
+          "title": "File Row",
+          "description": "Composes File Icon with a filename and supporting metadata.",
+          "list": [
+            "Use decorative when the filename or adjacent text already identifies the file type."
+          ]
+        },
+        {
+          "key": "all-icons",
+          "title": "All Icons",
+          "description": "Displays every file type available in the pinned icon map.",
+          "list": [
+            "The supported file-type icons are available from the pinned vscode-icons pinned version map."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "File icons are usually used inside compact file rows, buttons, and code-oriented cards.",
       items: [

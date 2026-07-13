@@ -8,6 +8,12 @@ class StoryFormSection extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("FormSection");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Form Section"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-form-section",
@@ -19,7 +25,7 @@ class StoryFormSection extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-form-section" title="Form Section"></story-api-types>
 
-      <story-card id="account-setup" title="Account Setup Section" description="Real form grouping with Field, Input, Select, and Form Message. Intended for use on a surface background." usage="Use one form section for each major form area.|||Use form group to cluster related fields.|||Hide group labels when they repeat the section title.|||Use the default greyscale mui-form-message for lighter supporting copy tied to a specific field.">
+      <story-card id="account-setup-section" title="${storyMeta["account-setup-section"].title}" description="${storyMeta["account-setup-section"].description}" usage="${storyMeta["account-setup-section"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Account Setup">
             <mui-form-group heading="Account Details" hide-heading>
@@ -51,7 +57,7 @@ class StoryFormSection extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="billing" title="Billing Preferences Section" description="Grouped controls with radio choices and inline guidance. Intended for use on a surface background." usage="Use horizontal groups for paired fields.|||Default split is 1fr / 20rem and stacks on mobile.|||Use form hints for helper or status text.|||Use a colored mui-form-message for stronger static section/group guidance, or the default greyscale version for lighter supporting copy.">
+      <story-card id="billing-preferences-section" title="${storyMeta["billing-preferences-section"].title}" description="${storyMeta["billing-preferences-section"].description}" usage="${storyMeta["billing-preferences-section"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-400)">
             <mui-form-section heading="Billing Preferences">
@@ -126,7 +132,7 @@ class StoryFormSection extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="no-legend" title="No Legend" description="Form section composition without a section heading/legend." usage="Use the default greyscale mui-form-message when the supporting copy should stay visually quiet within the section.">
+      <story-card id="no-legend" title="${storyMeta["no-legend"].title}" description="${storyMeta["no-legend"].description}" usage="${storyMeta["no-legend"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-form-section>
             <mui-form-group heading="Contact Preferences">
@@ -157,7 +163,7 @@ class StoryFormSection extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="header-footer-slots" title="Header + Footer Slots" description="Custom section chrome/actions using form-section header/footer slots while keeping fieldset semantics." usage="Use header/footer slots for custom section chrome while retaining fieldset semantics.|||If header/footer uses mui-h-stack, switch to mui-v-stack at smaller breakpoints.">
+      <story-card id="header-footer-slots" title="${storyMeta["header-footer-slots"].title}" description="${storyMeta["header-footer-slots"].description}" usage="${storyMeta["header-footer-slots"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Commercial Licensing">
             <mui-responsive slot="header" breakpoint="1000">
@@ -232,7 +238,7 @@ class StoryFormSection extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="card-compare" title="Card Spacing Compare" description="Reference spacing using mui-card and mui-card-body for side-by-side comparison.">
+      <story-card id="card-spacing-compare" title="${storyMeta["card-spacing-compare"].title}" description="${storyMeta["card-spacing-compare"].description}" usage="${storyMeta["card-spacing-compare"].usage}">
         <mui-card slot="body">
           <mui-card-body>
             <mui-form-group heading="Contact Preferences">
@@ -263,7 +269,7 @@ class StoryFormSection extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="license-intake-simple" title="License Intake" description="Lean licensing inquiry pattern using Form Section with Field-level messaging.">
+      <story-card id="license-intake" title="${storyMeta["license-intake"].title}" description="${storyMeta["license-intake"].description}" usage="${storyMeta["license-intake"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-400)">
             <mui-form-section heading="Commercial Licensing">
@@ -315,7 +321,7 @@ class StoryFormSection extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="host-contracts" title="Host Event Contracts" description="Form logic listens on the custom element host, reads event.detail, and checks host value or checked properties without querying shadow DOM internals.">
+      <story-card id="host-event-contracts" title="${storyMeta["host-event-contracts"].title}" description="${storyMeta["host-event-contracts"].description}" usage="${storyMeta["host-event-contracts"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-400)">
             <mui-form-section heading="Host Event Contracts">
@@ -413,11 +419,7 @@ class StoryFormSection extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-form-section"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="account-setup::Account Setup Section|||billing::Billing Preferences Section|||no-legend::No Legend|||header-footer-slots::Header + Footer Slots|||card-compare::Card Spacing Compare|||license-intake-simple::License Intake|||host-contracts::Host Event Contracts"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

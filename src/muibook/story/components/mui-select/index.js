@@ -8,6 +8,12 @@ class storySelect extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Select");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Select"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -17,12 +23,7 @@ class storySelect extends HTMLElement {
         <story-api-types tag="mui-select" title="Select"></story-api-types>
 
 
-        <story-card
-          id="default"
-          title="Default"
-          description="Use for common form inputs where users must choose a single value from a clear and limited set."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
           <div slot="body">
             <mui-select
               label="Default"
@@ -51,12 +52,7 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="optional-label"
-          title="Optional Label"
-          description="Adds optional guidance while keeping the same accessible label pattern."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="optional-label" title="${storyMeta["optional-label"].title}" description="${storyMeta["optional-label"].description}" usage="${storyMeta["optional-label"].usage}">
           <div slot="body">
             <mui-select
               label="Region"
@@ -85,12 +81,7 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="hide-label"
-          title="Hide Label"
-          description="Ensures the label is accessible to screen readers while visually hiding it to avoid redundancy."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="hide-label" title="${storyMeta["hide-label"].title}" description="${storyMeta["hide-label"].description}" usage="${storyMeta["hide-label"].usage}">
           <div slot="body">
             <mui-select
               label="Density"
@@ -122,12 +113,7 @@ class storySelect extends HTMLElement {
         </story-card>
 
 
-        <story-card
-          id="value"
-          title="Value"
-          description="Define which option is selected by default."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="value" title="${storyMeta["value"].title}" description="${storyMeta["value"].description}" usage="${storyMeta["value"].usage}">
           <div slot="body">
             <mui-select
               value="compact"
@@ -159,12 +145,7 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="sizes"
-          title="Sizes"
-          description="Use size to align the select with adjacent form controls."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
           <mui-v-stack slot="body" space="var(--space-200)">
             <mui-select
               size="x-small"
@@ -207,12 +188,7 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="disabled"
-          title="Disabled"
-          description="Use when options are not currently applicable but should still be visible for context."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="disabled" title="${storyMeta["disabled"].title}" description="${storyMeta["disabled"].description}" usage="${storyMeta["disabled"].usage}">
           <div slot="body">
             <mui-select
               disabled
@@ -247,12 +223,7 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="before-select"
-          title="Before: Select"
-          description="The Select component is placed before the input area; use for supporting context like filter type. Select width should be defined in code to ensure layout consistency."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="before-select" title="${storyMeta["before-select"].title}" description="${storyMeta["before-select"].description}" usage="${storyMeta["before-select"].usage}">
           <div slot="body">
             <mui-input type="search" label="Search">
               <mui-select
@@ -284,12 +255,7 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="after-select"
-          title="After: Select"
-          description="The Select component is placed after the input area; use for complementary context like currency type. Select width should be defined in code to ensure layout consistency."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="after-select" title="${storyMeta["after-select"].title}" description="${storyMeta["after-select"].description}" usage="${storyMeta["after-select"].usage}">
           <div slot="body">
             <mui-input type="number" label="Amount to transfer">
               <mui-select
@@ -320,13 +286,7 @@ class storySelect extends HTMLElement {
         </story-card>
 
 
-        <story-card
-          id="custom-appearance-vertical"
-          title="Custom Appearance Vertical"
-          description="Uses the experimental native customizable select appearance while keeping options stacked in a single column."
-          usage="Use appearance='custom' when option content needs richer composed markup while still using native select behaviour.|||The custom appearance picker uses a grid internally with one column by default, so space controls the gap between options."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="custom-appearance-vertical" title="${storyMeta["custom-appearance-vertical"].title}" description="${storyMeta["custom-appearance-vertical"].description}" usage="${storyMeta["custom-appearance-vertical"].usage}">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-select
               label="Team x-small"
@@ -474,13 +434,7 @@ class storySelect extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="custom-appearance-grid"
-          title="Custom Appearance Grid"
-          description="Uses the experimental native customizable select appearance with a two-column picker."
-          usage="Use col to change the custom picker grid columns.|||Use space with col to control the gap between richer option cards.|||Use selected-content='label' when the picker uses larger visual tiles but the closed select should stay compact."
-          usageLink="https://guides.muibook.com/select"
-        >
+        <story-card id="custom-appearance-grid" title="${storyMeta["custom-appearance-grid"].title}" description="${storyMeta["custom-appearance-grid"].description}" usage="${storyMeta["custom-appearance-grid"].usage}">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-select
               label="Waste x-small"
@@ -660,11 +614,7 @@ class storySelect extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-select"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Default|||optional-label::Optional Label|||hide-label::Hide Label|||value::Value|||sizes::Sizes|||disabled::Disabled|||before-select::Before: Select|||after-select::After: Select|||custom-appearance-vertical::Custom Appearance Vertical|||custom-appearance-grid::Custom Appearance Grid"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

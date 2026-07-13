@@ -48,6 +48,59 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "The default size of the icon is size: small",
+          "list": [
+            "Match icon size to the surrounding control or text density."
+          ]
+        },
+        {
+          "key": "icon-toggle-default",
+          "title": "Icon Toggle: Default",
+          "description": "Switches between two icon states without additional motion.",
+          "list": [
+            "Use when the state change is clear from the icon shape alone."
+          ]
+        },
+        {
+          "key": "icon-toggle-morph",
+          "title": "Icon Toggle: Morph",
+          "description": "Morphs between icon states.",
+          "list": [
+            "Use for closely related states where the transition improves continuity."
+          ]
+        },
+        {
+          "key": "icon-toggle-rotate",
+          "title": "Icon Toggle: Rotate",
+          "description": "Rotates between icon states.",
+          "list": [
+            "Use for disclosure or directional state changes."
+          ]
+        },
+        {
+          "key": "icon-type",
+          "title": "Icon Type",
+          "description": "Icons are set to size 'small' by default.",
+          "list": [
+            "Use one icon type consistently within the same control group."
+          ]
+        },
+        {
+          "key": "color-options",
+          "title": "Color Options",
+          "description": "The icons have default color of var(--black). The color can be inverted or a custom color applied.",
+          "list": [
+            "Prefer inherited semantic colour and use custom values only for specific visual meaning."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

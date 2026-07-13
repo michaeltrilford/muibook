@@ -7,7 +7,15 @@ class StorySearchInput extends HTMLElement {
   }
 
   async connectedCallback() {
-    await getComponentDocs("Search Input");
+    const data = await getComponentDocs("Search Input");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Search Input"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -36,7 +44,7 @@ class StorySearchInput extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-search-input" title="Search Input"></story-api-types>
 
-      <story-card title="Default" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--surface)">
+      <story-card canvas-background="var(--surface)" id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <div slot="body" class="demo-row">
           <mui-search-input label="Search projects"></mui-search-input>
         </div>
@@ -45,12 +53,7 @@ class StorySearchInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="sizes"
-        title="Sizes"
-        usage="Search Input supports x-small, small, medium, and large.|||Use the same size as adjacent actions and controls so the composed row remains aligned."
-        canvas-background="var(--surface)"
-      >
+      <story-card canvas-background="var(--surface)" id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)">
           ${sizeExamples}
         </mui-v-stack>
@@ -68,7 +71,7 @@ class StorySearchInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="After Slot: Tabs" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--surface)">
+      <story-card canvas-background="var(--surface)" id="after-slot-tabs" title="${storyMeta["after-slot-tabs"].title}" description="${storyMeta["after-slot-tabs"].description}" usage="${storyMeta["after-slot-tabs"].usage}">
         <div slot="body" class="demo-row">
           <mui-search-input label="Search tabs" autofocus>
             <mui-button slot="action" variant="tertiary" icon-only aria-label="Search tabs">
@@ -93,7 +96,7 @@ class StorySearchInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="After Slot: Custom Width" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--surface)">
+      <story-card canvas-background="var(--surface)" id="after-slot-custom-width" title="${storyMeta["after-slot-custom-width"].title}" description="${storyMeta["after-slot-custom-width"].description}" usage="${storyMeta["after-slot-custom-width"].usage}">
         <div slot="body" class="demo-row">
           <mui-search-input label="Search tabs" autofocus>
             <mui-button slot="action" variant="tertiary" icon-only aria-label="Search tabs">
@@ -122,7 +125,7 @@ class StorySearchInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Controlled Open" usageLink="https://guides.muibook.com/search-input" canvas-background="var(--surface)">
+      <story-card canvas-background="var(--surface)" id="controlled-open" title="${storyMeta["controlled-open"].title}" description="${storyMeta["controlled-open"].description}" usage="${storyMeta["controlled-open"].usage}">
         <div slot="body" class="demo-row">
           <mui-search-input label="Search orders" open value="Button">
             <mui-button slot="action" variant="tertiary" icon-only aria-label="Search tabs">
@@ -151,17 +154,16 @@ class StorySearchInput extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <story-template
-        title="Search Input"
-        description="A composed search control that can reveal over slotted trailing content."
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-search-input/index.ts"
-        guides="https://guides.muibook.com/search-input"
+        title="${data.title}"
+        description="${data.description}"
+        github="${data.github}"
+        figma="${data.figma}"
+        guides="${data.guides}"
+        storybook="${data.storybook}"
+        accessibility="${data.accessibility.engineerList.join("|||")}"
         imports='["@muibook/components/mui-search-input"]'
       >
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="sizes::Sizes"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -1,82 +1,4 @@
-// UX guideline documentation is stored in each component’s Doc.ts file.
-// We include generic content that supports the Muibook storefront, but we intentionally
-// exclude Storybook-specific data since it isn’t reused across the system.
-
-interface VariantItem {
-  key: string;
-  title: string;
-  description: string;
-  image?: string;
-}
-
-interface CompositionItem {
-  key: string;
-  name: string;
-  description: string;
-  image?: string;
-}
-
-interface RuleItem {
-  description?: string;
-  image?: string;
-}
-
-interface ComponentDoc {
-  title?: string;
-  hero?: string[];
-  figma?: string[];
-  github?: string[];
-  guides?: string[];
-  storybook?: string[];
-  website?: string[];
-  description: string;
-
-  usage?: {
-    list: string[];
-  };
-
-  accessibility?: {
-    designerList?: string[];
-    engineerList?: string[];
-  };
-
-  anatomy?: {
-    image?: string;
-    list: string[];
-  };
-
-  variants?: {
-    items: VariantItem[];
-  };
-
-  compositions?: {
-    description?: string;
-    items: CompositionItem[];
-  };
-
-  related?: {
-    items: { name: string; link: string }[];
-  };
-
-  rules?: {
-    heading: string;
-    description: string;
-    doContent?: RuleItem[];
-    dontContent?: RuleItem[];
-  }[];
-
-  behaviour?: {
-    image?: string;
-    description?: string;
-    list: string[];
-  };
-
-  writing?: {
-    list: string[];
-  };
-}
-
-type MuiDocs = Record<string, ComponentDoc>;
+import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Slat: {
@@ -147,6 +69,136 @@ export const muiDocs: MuiDocs = {
           description: "Use when the whole slat acts as the trigger, such as opening details, drilling into settings, or selecting a transaction.",
           image: "",
         },
+      ],
+    },
+
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Slats offer flexibility to surface key content and support custom layouts, or stacking.",
+          "list": [
+            "Bring your own padding or margin."
+          ]
+        },
+        {
+          "key": "header",
+          "title": "Header",
+          "description": "Used at the top of a list or repeatable layout to label or introduce the content below.",
+          "list": [
+            "Use with Row and Action variants where required",
+            "Use heading size of 6 and choose the appropriate level for accessibility."
+          ]
+        },
+        {
+          "key": "row",
+          "title": "Row",
+          "description": "The default variant, used to display individual items in a list or repeatable layout.",
+          "list": [
+            "Use with Header and Action variants where required."
+          ]
+        },
+        {
+          "key": "action",
+          "title": "Action",
+          "description": "Used for interactive controls placed within or at the end of a list or repeatable layout.",
+          "list": [
+            "Use with Row and Header variants where required."
+          ]
+        },
+        {
+          "key": "truncation-file-diff",
+          "title": "Truncation (File Diff)",
+          "description": "Demonstrates how to properly truncate text within a slat. By setting col to minmax(0, 1fr) auto and adding min-width: 0 to the mui-h-stack, the text can shrink and display an ellipsis.",
+          "list": [
+            "Use minmax(0, 1fr) for grid columns that need to shrink."
+          ]
+        },
+        {
+          "key": "action-custom-columns-and-space",
+          "title": "Action: Custom Columns and Space",
+          "description": "Action slats support col and space for custom column sizing and gap control inside grouped rows.",
+          "list": [
+            "Use col to tune the relationship between start and end content across repeated action rows.",
+            "Use space to control the gap between those columns."
+          ]
+        },
+        {
+          "key": "row-accessory",
+          "title": "Row: Accessory",
+          "description": "Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout.",
+          "list": [
+            "Use with Row and Header variants where required."
+          ]
+        },
+        {
+          "key": "action-accessory",
+          "title": "Action: Accessory",
+          "description": "Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout.",
+          "list": [
+            "Use with Row and Header variants where required.",
+            "When used inside a condensed card body, set radius='none' on action slats."
+          ]
+        },
+        {
+          "key": "slat-and-group",
+          "title": "Slat & Group",
+          "description": "Shows default Slats inside Slat Group as a compact alternative to tabular data in narrow layouts.",
+          "list": [
+            "Default Slat has no internal padding.",
+            "Slat Group applies consistent spacing between rows.",
+            "Use layout helpers to compose row content for the available width."
+          ]
+        },
+        {
+          "key": "card-slat-and-group",
+          "title": "Card: Slat & Group",
+          "description": "Composes Slat Group inside Card for compact structured data on narrow surfaces.",
+          "list": [
+            "Card and Slat Group own the surrounding spacing and surface treatment.",
+            "Use layout helpers to keep row content aligned across repeated items.",
+            "Prefer Table for wider layouts that require column comparison."
+          ]
+        },
+        {
+          "key": "card-variant-slat-and-group",
+          "title": "Card: Variant Slat & Group",
+          "description": "When a mui-slat is placed directly inside mui-card-body, it aligns with the card heading to maintain consistent layout. Automatic styles are applied only when the slat variant is set to header, row, or action.",
+          "list": [
+            "mui-slat-group is added within the mui-card-body to apply an offset for the slat items",
+            "Place slats directly inside mui-card-body to inherit alignment",
+            "Use this layout only for cards with limited width. For wider layouts, consider using a table."
+          ]
+        },
+        {
+          "key": "card-slat-group-dividers",
+          "title": "Card: Slat Group Dividers",
+          "description": "When a mui-slat is placed directly inside mui-card-body, it aligns with the card heading to maintain consistent layout. Automatic styles are applied only when the slat variant is set to header, row, or action.",
+          "list": [
+            "mui-slat-group is added within the mui-card-body to apply an offset for the slat items",
+            "mui-rule can be used between slats for visual separation",
+            "Place slats directly inside mui-card-body to inherit alignment",
+            "Use this layout only for cards with limited width. For wider layouts, consider using a table."
+          ]
+        },
+        {
+          "key": "card-slat-group-and-accordion",
+          "title": "Card: Slat Group & Accordion",
+          "description": "When a Slat Group is used within an accordion that is nested within a card, the slat group will automatically append the usage='card' attribute, to ensure the slat styles are correctly used in this situation. Automatic styles are applied only when the slat variant is set to header, row, or action.",
+          "list": [
+            "card"
+          ]
+        },
+        {
+          "key": "card-condensed",
+          "title": "Card: Condensed",
+          "description": "Uses condensed Card Body spacing for edge-to-edge Slat layouts on constrained surfaces.",
+          "list": [
+            "Use radius='none' on action slats inside condensed Card Body layouts.",
+            "Keep content hierarchy clear as the card narrows."
+          ]
+        }
       ],
     },
 

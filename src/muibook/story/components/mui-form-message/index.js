@@ -8,11 +8,17 @@ class StoryFormMessage extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("FormMessage");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Form Message"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-form-message" title="Form Message"></story-api-types>
 
-      <story-card id="patterns" title="Message Patterns" description="Icon-led supporting text with semantic color from usage context." usage="Use a colored mui-form-message when the static message needs more emphasis.|||Use the default greyscale version for lighter supporting copy.|||This component does not replace mui-field slot=&quot;message&quot; when the message belongs to a specific field; it is the message content used within that pattern.">
+      <story-card id="message-patterns" title="${storyMeta["message-patterns"].title}" description="${storyMeta["message-patterns"].description}" usage="${storyMeta["message-patterns"].usage}">
         <div slot="body" class="story-card-surface">
           <mui-v-stack space="var(--space-200)">
             <mui-form-message variant="secondary">
@@ -47,7 +53,7 @@ class StoryFormMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="billing" title="Billing Preferences Section" description="Grouped controls with radio choices and inline guidance. Intended for use on a surface background." usage="Use Form Message on the owning field for helper and validation copy.|||Use horizontal groups for paired follow-up fields.|||Default split is 1fr / 20rem and stacks on mobile.|||Use a colored mui-form-message for stronger static guidance, or the default greyscale version for lighter supporting copy.|||This component does not replace the message functionality on mui-field; when the copy belongs to one field, keep it in that field’s slot=&quot;message&quot;.">
+      <story-card id="billing-preferences-section" title="${storyMeta["billing-preferences-section"].title}" description="${storyMeta["billing-preferences-section"].description}" usage="${storyMeta["billing-preferences-section"].usage}">
         <div slot="body" class="story-form-surface">
           <mui-v-stack space="var(--space-400)">
             <mui-form-section heading="Billing Preferences">
@@ -106,7 +112,7 @@ class StoryFormMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="sizes" title="Sizes" description="Form Message sizing across x-small, small, medium, and large, including all variant options.">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-v-stack slot="body" space="var(--space-400)" class="story-card-surface">
           <mui-v-stack space="var(--space-200)">
             <mui-body size="small" variant="secondary">x-small</mui-body>
@@ -279,11 +285,7 @@ class StoryFormMessage extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-form-message"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="patterns::Message Patterns|||billing::Billing Preferences Section|||sizes::Sizes"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

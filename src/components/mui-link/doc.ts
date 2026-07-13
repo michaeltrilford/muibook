@@ -153,6 +153,191 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "link-sizes",
+          "title": "Link: Sizes",
+          "description": "Link sizes should match the surrounding body text size when nested within a paragraph.",
+          "list": [
+            "Use Link for navigation to another location or resource; use Button for an immediate command."
+          ]
+        },
+        {
+          "key": "link-button-x-small",
+          "title": "Link Button: X-Small",
+          "description": "When a link includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.",
+          "list": [
+            "Highly compact UI regions",
+            "Dense application toolbars",
+            "Tight data tables",
+            "Compact control panels"
+          ]
+        },
+        {
+          "key": "link-button-small",
+          "title": "Link Button: Small",
+          "description": "When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.",
+          "list": [
+            "Toolbar actions with mixed icon/text",
+            "Discrete filters and utility actions",
+            "Secondary or supporting navigation"
+          ]
+        },
+        {
+          "key": "link-button-medium-default",
+          "title": "Link Button: Medium (Default)",
+          "description": "When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.",
+          "list": [
+            "Standard text-level actions",
+            "Card actions (primary/secondary)",
+            "Modal and dialog interactions",
+            "Navigation elements within body text",
+            "Places where links appear in default reading flow",
+            "Form inputs (e.g., hero search bars)"
+          ]
+        },
+        {
+          "key": "link-button-large",
+          "title": "Link Button: Large",
+          "description": "When an action includes an icon, the system automatically applies an appropriate icon size. If needed, you can override this by providing a custom size—the action will respect the value you set.",
+          "list": [
+            "Large headings (H1/H2) and hero layouts",
+            "Prominent calls to action in content",
+            "Empty states and marketing content",
+            "Interfaces where the link must stand out more than standard body actions"
+          ]
+        },
+        {
+          "key": "url",
+          "title": "URL",
+          "description": "Uses Link for a standard URL destination.",
+          "list": [
+            "Use Link for navigation to another location or resource; use Button for an immediate command."
+          ]
+        },
+        {
+          "key": "external-link",
+          "title": "External link",
+          "description": "Navigates to an external resource with an explicit affordance.",
+          "list": [
+            "Indicate when a destination opens another site or context."
+          ]
+        },
+        {
+          "key": "primary-link",
+          "title": "Primary Link",
+          "description": "Demonstrates primary link with Link.",
+          "list": [
+            "Use Link for navigation to another location or resource; use Button for an immediate command."
+          ]
+        },
+        {
+          "key": "secondary-link",
+          "title": "Secondary Link",
+          "description": "Demonstrates secondary link with Link.",
+          "list": [
+            "Use Link for navigation to another location or resource; use Button for an immediate command."
+          ]
+        },
+        {
+          "key": "stroke-ring",
+          "title": "Stroke: Ring",
+          "description": "Use a ring shadow when you prefer that approach for action-style link borders.",
+          "list": [
+            "Use stroke=\"ring\" to draw the action-style link stroke with an inset shadow instead of a physical border.",
+            "Pair ring-stroked links with ring-stroked buttons when they need to share the same visual border treatment.",
+            "Use stroke-ring-size=\"100\" for the default ring, and increase only when more contrast is needed."
+          ]
+        },
+        {
+          "key": "tertiary-link",
+          "title": "Tertiary Link",
+          "description": "Demonstrates tertiary link with Link.",
+          "list": [
+            "Use Link for navigation to another location or resource; use Button for an immediate command."
+          ]
+        },
+        {
+          "key": "attention-link",
+          "title": "Attention Link",
+          "description": "Demonstrates attention link with Link.",
+          "list": [
+            "Use for navigation associated with destructive or high-risk content, not for destructive commands."
+          ]
+        },
+        {
+          "key": "overlay-link",
+          "title": "Overlay Link",
+          "description": "Overlay links on image surfaces using the overlay variant.",
+          "list": [
+            "Use over media only when contrast remains sufficient in every image state."
+          ]
+        },
+        {
+          "key": "link-before-and-after",
+          "title": "Link (Before & After)",
+          "description": "Composes leading and trailing content with Link.",
+          "list": [
+            "Use x-small size icon when it is paired with text"
+          ]
+        },
+        {
+          "key": "link-button-before-and-after",
+          "title": "Link Button (Before & After)",
+          "description": "Composes leading and trailing content with Link.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "primary-icon-only",
+          "title": "Primary: Icon-Only",
+          "description": "Uses an icon-only Link with the primary treatment.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "secondary-icon-only",
+          "title": "Secondary: Icon-Only",
+          "description": "Uses an icon-only Link with the secondary treatment.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "tertiary-icon-only",
+          "title": "Tertiary: Icon-Only",
+          "description": "Uses an icon-only Link with the tertiary treatment.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "attention-icon-only",
+          "title": "Attention: Icon-Only",
+          "description": "Uses an icon-only Link with the attention treatment.",
+          "list": [
+            "Use small (default) size icon when paired with text-based action is used in a button group",
+            "Use medium size icon when the icon-only action appears on its own. E.g. Menu"
+          ]
+        },
+        {
+          "key": "part-selectors",
+          "title": "Part Selectors",
+          "description": "Ideal for building custom web-component compositions using MUI and scoped CSS styles.",
+          "list": [
+            "Prefer semantic tokens before applying one-off part customisation."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [

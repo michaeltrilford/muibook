@@ -92,6 +92,67 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "size-1",
+          "title": "Size 1",
+          "description": "Renders Heading 1 using size='1'.",
+          "list": [
+            "Keep heading level semantic and choose size independently to match the visual hierarchy."
+          ]
+        },
+        {
+          "key": "size-2",
+          "title": "Size 2",
+          "description": "Renders Heading 2 using size='2'.",
+          "list": [
+            "Keep heading level semantic and choose size independently to match the visual hierarchy."
+          ]
+        },
+        {
+          "key": "size-3",
+          "title": "Size 3",
+          "description": "Renders Heading 3 using size='3'.",
+          "list": [
+            "Keep heading level semantic and choose size independently to match the visual hierarchy."
+          ]
+        },
+        {
+          "key": "size-4",
+          "title": "Size 4",
+          "description": "Renders Heading 4 using size='4'.",
+          "list": [
+            "Keep heading level semantic and choose size independently to match the visual hierarchy."
+          ]
+        },
+        {
+          "key": "size-5",
+          "title": "Size 5",
+          "description": "Renders Heading 5 using size='5'.",
+          "list": [
+            "Keep heading level semantic and choose size independently to match the visual hierarchy."
+          ]
+        },
+        {
+          "key": "size-6",
+          "title": "Size 6",
+          "description": "Renders Heading 6 using size='6'.",
+          "list": [
+            "Keep heading level semantic and choose size independently to match the visual hierarchy."
+          ]
+        },
+        {
+          "key": "overflow",
+          "title": "Overflow",
+          "description": "Use truncate for one-line heading overflow and clamp for bounded multi-line headings.",
+          "list": [
+            "Keep heading level semantic and choose size independently to match the visual hierarchy."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

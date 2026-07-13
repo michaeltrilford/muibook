@@ -47,6 +47,19 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "quote",
+          "title": "Quote",
+          "description": "Presents attributed quoted content with semantic structure.",
+          "list": [
+            "Use Quote for attributed or externally sourced text, not general visual indentation."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [

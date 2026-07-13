@@ -66,6 +66,54 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "A flexible, composable carousel that gives you full control over the content and internal layout.",
+          "list": [
+            "Carousel controls are set to bottom-center by default",
+            "Internal padding is required",
+            "The var(--carousel-tab-offset) is available to help with control spacing - though, not required",
+            "You will need knowledge of CSS to add your specific custom content."
+          ]
+        },
+        {
+          "key": "auto-rotate",
+          "title": "Auto Rotate",
+          "description": "Demonstrates how to add set-up auto-rotate of the carousel panels.",
+          "list": [
+            "Use auto rotation only when users can pause it and content remains readable."
+          ]
+        },
+        {
+          "key": "dots-controls",
+          "title": "Dots Controls",
+          "description": "Uses the Tabs dots variant for compact carousel pagination.",
+          "list": [
+            "Use dots for a small set of slides where labels are unnecessary."
+          ]
+        },
+        {
+          "key": "custom-layout",
+          "title": "Custom Layout",
+          "description": "Demonstrates how to add custom compositions and layouts within the carousel panels.",
+          "list": [
+            "Keep each panel structurally consistent and reserve internal layout decisions for panel content."
+          ]
+        },
+        {
+          "key": "map-data",
+          "title": "Map Data",
+          "description": "Map dynamic data to generate carousel tabs and panels.",
+          "list": [
+            "Use stable values to connect generated tabs and panels."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

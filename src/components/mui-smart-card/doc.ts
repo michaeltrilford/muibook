@@ -54,6 +54,86 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "plain",
+          "title": "Plain",
+          "description": "An example of composing a light coloured payment card.",
+          "list": [
+            "Use for a static digital card representation with standard contrast."
+          ]
+        },
+        {
+          "key": "plain-inverted",
+          "title": "Plain / Inverted",
+          "description": "An example of composing a dark coloured payment card.",
+          "list": [
+            "Use the inverted treatment on dark or high-contrast card artwork."
+          ]
+        },
+        {
+          "key": "animated",
+          "title": "Animated",
+          "description": "Use animation to bring vibrancy and life to what is often a static representation of a digital card.",
+          "list": [
+            "Use motion sparingly and preserve reduced-motion behavior."
+          ]
+        },
+        {
+          "key": "logo",
+          "title": "Logo",
+          "description": "The logo area, positioned at the top-right of the card, has a maximum size of 220×126px and scales down responsively on smaller devices.",
+          "list": [
+            "Import the logo using the logo property",
+            "Set the logo-height to an appropriate size no larger than 126px",
+            "If your SVG is at intended height, then logo-height isn't required",
+            "When using a 2x/3x PNGs and resize with logo-height"
+          ]
+        },
+        {
+          "key": "frozen",
+          "title": "Frozen",
+          "description": "Use the frozen state to clearly indicate when a card is inactive or temporarily disabled.",
+          "list": [
+            "Use only when the card is inactive or temporarily unavailable."
+          ]
+        },
+        {
+          "key": "background-image",
+          "title": "Background-Image",
+          "description": "Add a unique background image or an alternative to logo placement",
+          "list": [
+            "Choose artwork that preserves legibility for card details and controls."
+          ]
+        },
+        {
+          "key": "background-color",
+          "title": "Background-Color",
+          "description": "Apply a background colour that aligns with your organisation’s brand.",
+          "list": [
+            "Maintain sufficient contrast between the background and all card content."
+          ]
+        },
+        {
+          "key": "payment-networks",
+          "title": "Payment Networks",
+          "description": "Use the partner prop to slot in other payment networks",
+          "list": [
+            "Use the partner API for the supported payment network identity."
+          ]
+        },
+        {
+          "key": "reward-cards",
+          "title": "Reward Cards",
+          "description": "Utilising the provided props to create bespoke digital cards.",
+          "list": [
+            "Use the same content hierarchy for branded reward and membership cards."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

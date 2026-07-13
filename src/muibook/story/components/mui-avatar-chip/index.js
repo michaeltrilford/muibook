@@ -11,6 +11,12 @@ class StoryAvatarChip extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("AvatarChip");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Avatar Chip"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host {
@@ -54,11 +60,7 @@ class StoryAvatarChip extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-avatar-chip" title="Avatar Chip"></story-api-types>
 
-      <story-card
-        id="default"
-        title="Default"
-        description="A compact profile identity row with initials fallback."
-        usage="Use primary and secondary for simple profile text.|||When image is omitted, the internal avatar derives initials from label.">
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <div slot="body" class="canvas">
           <mui-avatar-chip
             label="Sugoi Travels">
@@ -79,11 +81,7 @@ class StoryAvatarChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="image"
-        title="Image"
-        description="Profile identity row with an avatar image."
-        usage="Use image when the identity benefits from a recognisable avatar.|||Keep label meaningful so the avatar remains accessible and initials can be generated if the image fails.">
+      <story-card id="image" title="${storyMeta["image"].title}" description="${storyMeta["image"].description}" usage="${storyMeta["image"].usage}">
         <div slot="body" class="canvas">
           <mui-avatar-chip
             image="${MikeAvatar}"
@@ -106,11 +104,7 @@ class StoryAvatarChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="dropdown"
-        title="Dropdown"
-        description="Avatar Chip can sit inside a dropdown trigger when an identity row opens account or profile actions."
-        usage="Wrap Avatar Chip in the dropdown action when the visible trigger should carry avatar and profile copy.|||Keep dropdown behavior in the parent composition; Avatar Chip remains responsible for the identity layout only.|||Match the Avatar Chip size to the surrounding action size so the trigger density stays consistent.">
+      <story-card id="dropdown" title="${storyMeta["dropdown"].title}" description="${storyMeta["dropdown"].description}" usage="${storyMeta["dropdown"].usage}">
         <div slot="body" class="canvas">
           <div class="dropdown-list">
             <mui-dropdown size="x-small">
@@ -208,11 +202,7 @@ class StoryAvatarChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="sizes"
-        title="Sizes"
-        description="Avatar Chip supports explicit sizing for different density needs."
-        usage="Use size to scale the internal avatar, primary text, and secondary text together.|||Keep responsive behavior in the parent composition when the chip needs to change size across breakpoints.">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <div slot="body" class="canvas">
           <div class="size-list">
             <mui-avatar-chip
@@ -258,11 +248,7 @@ class StoryAvatarChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="linked-avatar"
-        title="Linked Avatar"
-        description="Profile identity row where the avatar opens the profile."
-        usage="Use href when the avatar is the profile action.|||Keep the copy separate when the profile row also includes supporting links or counts.">
+      <story-card id="linked-avatar" title="${storyMeta["linked-avatar"].title}" description="${storyMeta["linked-avatar"].description}" usage="${storyMeta["linked-avatar"].usage}">
         <div slot="body" class="canvas">
           <mui-avatar-chip
             image="${MikeAvatar}"
@@ -287,11 +273,7 @@ class StoryAvatarChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="custom-secondary"
-        title="Custom Secondary"
-        description="Secondary content can be slotted when it needs richer composition."
-        usage="Use slot='secondary' for links, badges, counts, or supporting icons.|||Use attributes for simple text so the component stays quick to author.">
+      <story-card id="custom-secondary" title="${storyMeta["custom-secondary"].title}" description="${storyMeta["custom-secondary"].description}" usage="${storyMeta["custom-secondary"].usage}">
         <div slot="body" class="canvas">
           <mui-avatar-chip
             image="${MikeAvatar}"
@@ -318,11 +300,7 @@ class StoryAvatarChip extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="media-player"
-        title="Media Player Usage"
-        description="Avatar Chip can be slotted into Media Player metadata."
-        usage="Slot Avatar Chip into Media Player metadata when the player needs reusable avatar and profile copy composition.|||Media Player applies usage='media-player' automatically, so consumers do not need to set it by hand.">
+      <story-card id="media-player-usage" title="${storyMeta["media-player-usage"].title}" description="${storyMeta["media-player-usage"].description}" usage="${storyMeta["media-player-usage"].usage}">
         <mui-media-player
           slot="body"
           type="audio"
@@ -379,11 +357,7 @@ class StoryAvatarChip extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
         imports='["@muibook/components/mui-avatar-chip"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Default|||image::Image|||dropdown::Dropdown|||sizes::Sizes|||linked-avatar::Linked Avatar|||custom-secondary::Custom Secondary|||media-player::Media Player Usage">
-        </story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -26,6 +26,12 @@ class storySmartCard extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("SmartCard");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Smart Card"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -34,10 +40,7 @@ class storySmartCard extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-smart-card" title="Smart Card"></story-api-types>
 
-        <story-card title="Plain"
-          description="An example of composing a light coloured payment card."
-          usageLink="https://guides.muibook.com/smart-card"
-        >
+        <story-card id="plain" title="${storyMeta["plain"].title}" description="${storyMeta["plain"].description}" usage="${storyMeta["plain"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
           <mui-smart-card
             type="Debit"
@@ -60,10 +63,7 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Plain / Inverted"
-          description="An example of composing a dark coloured payment card."
-          usageLink="https://guides.muibook.com/smart-card"
-        >
+        <story-card id="plain-inverted" title="${storyMeta["plain-inverted"].title}" description="${storyMeta["plain-inverted"].description}" usage="${storyMeta["plain-inverted"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
           <mui-smart-card
             inverted
@@ -88,10 +88,7 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Animated"
-          description="Use animation to bring vibrancy and life to what is often a static representation of a digital card."
-          usageLink="https://guides.muibook.com/smart-card"
-        >
+        <story-card id="animated" title="${storyMeta["animated"].title}" description="${storyMeta["animated"].description}" usage="${storyMeta["animated"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
           <mui-smart-card
             variant="animated"
@@ -116,17 +113,7 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          title="Logo"
-          description="The logo area, positioned at the top-right of the card, has a maximum size of 220×126px and scales down responsively on smaller devices."
-          usage="
-            Import the logo using the logo property|||
-            Set the logo-height to an appropriate size no larger than 126px|||
-            If your SVG is at intended height, then logo-height isn't required|||
-            When using a 2x/3x PNGs and resize with logo-height
-          "
-          usageLink="https://guides.muibook.com/smart-card"
-        >
+        <story-card id="logo" title="${storyMeta["logo"].title}" description="${storyMeta["logo"].description}" usage="${storyMeta["logo"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"
@@ -159,10 +146,7 @@ class storySmartCard extends HTMLElement {
             </story-code-block>
         </story-card>
 
-        <story-card title="Frozen"
-          description="Use the frozen state to clearly indicate when a card is inactive or temporarily disabled."
-          usageLink="https://guides.muibook.com/smart-card"
-        >
+        <story-card id="frozen" title="${storyMeta["frozen"].title}" description="${storyMeta["frozen"].description}" usage="${storyMeta["frozen"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               partner="${VisaBlack}"
@@ -184,11 +168,7 @@ class storySmartCard extends HTMLElement {
         </story-card>
 
 
-        <story-card
-          title="Background-Image"
-          description="Add a unique background image or an alternative to logo placement"
-          usageLink="https://guides.muibook.com/smart-card"
-        >
+        <story-card id="background-image" title="${storyMeta["background-image"].title}" description="${storyMeta["background-image"].description}" usage="${storyMeta["background-image"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"
@@ -232,9 +212,7 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Background-Color"
-          description="Apply a background colour that aligns with your organisation’s brand."
-          usageLink="https://guides.muibook.com/smart-card">
+        <story-card id="background-color" title="${storyMeta["background-color"].title}" description="${storyMeta["background-color"].description}" usage="${storyMeta["background-color"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"
@@ -282,9 +260,7 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Payment Networks" description="Use the partner prop to slot in other payment networks"
-          usageLink="https://guides.muibook.com/smart-card"
-        >
+        <story-card id="payment-networks" title="${storyMeta["payment-networks"].title}" description="${storyMeta["payment-networks"].description}" usage="${storyMeta["payment-networks"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"
@@ -309,10 +285,7 @@ class storySmartCard extends HTMLElement {
         </story-card>
 
 
-        <story-card title="Reward Cards"
-          description="Utilising the provided props to create bespoke digital cards."
-          usageLink="https://guides.muibook.com/smart-card"
-        >
+        <story-card id="reward-cards" title="${storyMeta["reward-cards"].title}" description="${storyMeta["reward-cards"].description}" usage="${storyMeta["reward-cards"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
           <mui-smart-card
             inverted
@@ -451,6 +424,7 @@ class storySmartCard extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-smart-card"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

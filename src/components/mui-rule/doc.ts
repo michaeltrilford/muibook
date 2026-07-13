@@ -48,6 +48,51 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "horizontal",
+          "title": "Horizontal",
+          "description": "Separates vertically stacked regions.",
+          "list": [
+            "Use Rule to separate related regions without creating unnecessary visual hierarchy."
+          ]
+        },
+        {
+          "key": "vertical",
+          "title": "Vertical",
+          "description": "Separates horizontally arranged regions.",
+          "list": [
+            "Use Rule to separate related regions without creating unnecessary visual hierarchy."
+          ]
+        },
+        {
+          "key": "horizontal-custom-weight",
+          "title": "Horizontal: Custom Weight",
+          "description": "Customises horizontal separator thickness.",
+          "list": [
+            "Use Rule to separate related regions without creating unnecessary visual hierarchy."
+          ]
+        },
+        {
+          "key": "vertical-custom-weight",
+          "title": "Vertical: Custom Weight",
+          "description": "Customises vertical separator thickness.",
+          "list": [
+            "Use Rule to separate related regions without creating unnecessary visual hierarchy."
+          ]
+        },
+        {
+          "key": "weight-thin-and-thick",
+          "title": "Weight: Thin and Thick",
+          "description": "Compares semantic Rule weight options.",
+          "list": [
+            "Use Rule to separate related regions without creating unnecessary visual hierarchy."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [

@@ -83,6 +83,122 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "image",
+          "title": "Image",
+          "description": "Represents a person with a profile image.",
+          "list": [
+            "Provide meaningful alt text through the Avatar label and retain initials as a fallback."
+          ]
+        },
+        {
+          "key": "activity-status",
+          "title": "Activity Status",
+          "description": "Use status when the avatar needs to show compact presence or availability.",
+          "list": [
+            "Status is visual only and maps to semantic badge status tokens.",
+            "Use online or active for available people.",
+            "Use away, busy, dnd, or offline for availability states."
+          ]
+        },
+        {
+          "key": "avatar-group",
+          "title": "Avatar Group",
+          "description": "Stack avatars when a compact surface needs to show multiple people.",
+          "list": [
+            "Avatar Group owns the overlap, ring, and default size.",
+            "Each slotted Avatar still owns its image, initials, background, and status.",
+            "Use label to describe the group when surrounding text does not already name it."
+          ]
+        },
+        {
+          "key": "icon",
+          "title": "Icon",
+          "description": "Uses an icon when a person image or initials are not appropriate.",
+          "list": [
+            "Use for generic accounts, services, or anonymous identities."
+          ]
+        },
+        {
+          "key": "size",
+          "title": "Size",
+          "description": "Compares the supported Avatar size scale.",
+          "list": [
+            "Match Avatar size to the density of the containing control or layout."
+          ]
+        },
+        {
+          "key": "chip-avatars",
+          "title": "Chip Avatars",
+          "description": "When an Avatar is used within a Chip, it is set to xx-small so compact chips retain the 24px avatar footprint.",
+          "list": [
+            "Allow Chip to enforce the compact Avatar footprint."
+          ]
+        },
+        {
+          "key": "background",
+          "title": "Background",
+          "description": "Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes.",
+          "list": [
+            "Use this treatment when it matches the surrounding content and interaction context."
+          ]
+        },
+        {
+          "key": "background-colors",
+          "title": "Background Colors",
+          "description": "Escape hatch to use a custom background color inside the avatar. Ensure the background color stays accessible with the design system text color in all themes.",
+          "list": [
+            "Use this treatment when it matches the surrounding content and interaction context."
+          ]
+        },
+        {
+          "key": "buttons",
+          "title": "Buttons",
+          "description": "Buttons can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size.",
+          "list": [
+            "Use this treatment when it matches the surrounding content and interaction context."
+          ]
+        },
+        {
+          "key": "avatar-only-dropdown",
+          "title": "Avatar-only Dropdown",
+          "description": "When a button only contains an Avatar, the button collapses to a primitive wrapper and the avatar drives the final size. This example uses that pattern as a dropdown trigger.",
+          "list": [
+            "Use this when the avatar itself is the interactive target.",
+            "The button keeps interaction semantics and states, while the avatar controls the footprint.",
+            "This works well for profile menus and compact account actions."
+          ]
+        },
+        {
+          "key": "avatar-only-button",
+          "title": "Avatar-only Button",
+          "description": "Avatar-only buttons also work as standalone actions. This example opens a dialog using the avatar as the trigger.",
+          "list": [
+            "Use this when the avatar itself is the only visible action.",
+            "The button keeps semantics and focus behavior, while the avatar defines the final size."
+          ]
+        },
+        {
+          "key": "links",
+          "title": "Links",
+          "description": "Links can include avatars to represent user actions, they will automatically adjust the size of the avatar based on the button size.",
+          "list": [
+            "Use this treatment when it matches the surrounding content and interaction context."
+          ]
+        },
+        {
+          "key": "slat-and-card-avatars",
+          "title": "Slat & Card Avatars",
+          "description": "Shows Avatar composition across structured surfaces.",
+          "list": [
+            "Let the containing Slat or Card provide spacing and surface context."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how Avatar fits into identity, communication, and account-oriented UI patterns.",
       items: [

@@ -8,6 +8,12 @@ class storyTime extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Time");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Time"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,11 +22,7 @@ class storyTime extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-time" title="Time"></story-api-types>
 
-        <story-card
-          id="default"
-          title="Default (Dial)"
-          description="The default time picker uses a scrolling wheel dial interface."
-        >
+        <story-card id="default-dial" title="${storyMeta["default-dial"].title}" description="${storyMeta["default-dial"].description}" usage="${storyMeta["default-dial"].usage}">
           <mui-v-stack slot="body">
             <mui-time value="10:30 AM"></mui-time>
           </mui-v-stack>
@@ -29,11 +31,7 @@ class storyTime extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="slots"
-          title="Time Slots"
-          description="Use variant='slots' to show discrete time chips."
-        >
+        <story-card id="time-slots" title="${storyMeta["time-slots"].title}" description="${storyMeta["time-slots"].description}" usage="${storyMeta["time-slots"].usage}">
           <mui-v-stack slot="body">
             <mui-time variant="slots" start="9" end="17" step="30"></mui-time>
           </mui-v-stack>
@@ -55,11 +53,7 @@ class storyTime extends HTMLElement {
         accessibility="${data?.accessibility?.engineerList?.join("|||") || ''}"
 
         imports='["@muibook/components/mui-time"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Default|||slots::Time Slots"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

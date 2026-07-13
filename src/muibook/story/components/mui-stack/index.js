@@ -8,6 +8,12 @@ class storyStack extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Stack");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Stack"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -170,7 +176,7 @@ class storyStack extends HTMLElement {
           <story-api-types tag="mui-v-stack" title="VStack"></story-api-types>
         </mui-v-stack>
 
-        <story-card title="Horizontal: Default">
+        <story-card id="horizontal-default" title="${storyMeta["horizontal-default"].title}" description="${storyMeta["horizontal-default"].description}" usage="${storyMeta["horizontal-default"].usage}">
           ${DefaultHStack}
           <story-code-block slot="footer" scrollable>
             &lt;mui-h-stack&gt;
@@ -183,7 +189,7 @@ class storyStack extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Vertical: Default">
+        <story-card id="vertical-default" title="${storyMeta["vertical-default"].title}" description="${storyMeta["vertical-default"].description}" usage="${storyMeta["vertical-default"].usage}">
           ${DefaultVStack}
           <story-code-block slot="footer" scrollable>
             &lt;mui-v-stack&gt;
@@ -196,7 +202,7 @@ class storyStack extends HTMLElement {
           </story-code-block>
         </story-card>
 
-      <story-card title="Horizontal: Custom Space">
+      <story-card id="horizontal-custom-space" title="${storyMeta["horizontal-custom-space"].title}" description="${storyMeta["horizontal-custom-space"].description}" usage="${storyMeta["horizontal-custom-space"].usage}">
         ${HStackSpace}
         <story-code-block slot="footer" scrollable>
           &lt;mui-h-stack space="var(--space-400)"&gt;
@@ -209,7 +215,7 @@ class storyStack extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Vertical: Custom Space">
+      <story-card id="vertical-custom-space" title="${storyMeta["vertical-custom-space"].title}" description="${storyMeta["vertical-custom-space"].description}" usage="${storyMeta["vertical-custom-space"].usage}">
         ${VStackSpace}
         <story-code-block slot="footer" scrollable>
           &lt;mui-v-stack space="var(--space-400)"&gt;
@@ -222,7 +228,7 @@ class storyStack extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Horizontal: Wrap" description="Use wrap when chips, badges, actions, or metadata rows need to continue onto a new line without switching layout primitives.">
+      <story-card id="horizontal-wrap" title="${storyMeta["horizontal-wrap"].title}" description="${storyMeta["horizontal-wrap"].description}" usage="${storyMeta["horizontal-wrap"].usage}">
         ${HStackWrap}
         <story-code-block slot="footer" scrollable>
           &lt;mui-h-stack wrap="wrap" space="var(--space-200)" aligny="center"&gt;<br />
@@ -235,7 +241,7 @@ class storyStack extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Padding">
+      <story-card id="padding" title="${storyMeta["padding"].title}" description="${storyMeta["padding"].description}" usage="${storyMeta["padding"].usage}">
         <mui-v-stack class="vertical-align-canvas" padding="var(--space-400)" space="var(--space-300)" slot="body">
           <mui-h-stack padding="var(--space-300)" space="var(--space-200)" style="background: var(--surface-elevated-100);">
             ${Box}
@@ -250,7 +256,7 @@ class storyStack extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Vertical: Alignment in a Set Height">
+      <story-card id="vertical-alignment-in-a-set-height" title="${storyMeta["vertical-alignment-in-a-set-height"].title}" description="${storyMeta["vertical-alignment-in-a-set-height"].description}" usage="${storyMeta["vertical-alignment-in-a-set-height"].usage}">
         ${VStackAlignment}
         <story-code-block slot="footer" scrollable>
           &lt;mui-v-stack height="28rem" aligny="center"&gt;
@@ -261,7 +267,7 @@ class storyStack extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Vertical: Viewport With Nested Stacks" description="Use viewport on a stack that owns the viewport region. Nested stacks remain content-sized; shared header or panel layouts should define their height structure explicitly.">
+      <story-card id="vertical-viewport-with-nested-stacks" title="${storyMeta["vertical-viewport-with-nested-stacks"].title}" description="${storyMeta["vertical-viewport-with-nested-stacks"].description}" usage="${storyMeta["vertical-viewport-with-nested-stacks"].usage}">
         ${VStackViewportChildren}
         <story-code-block slot="footer" scrollable>
           &lt;mui-v-stack viewport aligny="start" padding="var(--space-300)"&gt;
@@ -297,6 +303,7 @@ class storyStack extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-stack"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

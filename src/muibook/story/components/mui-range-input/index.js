@@ -8,25 +8,31 @@ class StoryRangeInput extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("RangeInput");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Range Input"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const stories = /*html*/ `
       <story-api-types tag="mui-range-input" title="Range Input"></story-api-types>
 
-      <story-card id="default" title="Default" description="Numeric range input with a custom track and thumb.">
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-range-input slot="body" min="0" max="100" value="40" step="1" label="Volume"></mui-range-input>
         <story-code-block slot="footer" scrollable>
           &lt;mui-range-input min="0" max="100" value="40" step="1" label="Volume"&gt;&lt;/mui-range-input&gt;
         </story-code-block>
       </story-card>
 
-      <story-card id="bubble" title="Bubble + Time Format" description="Shows formatted bubble for scrubber usage.">
+      <story-card id="bubble-time-format" title="${storyMeta["bubble-time-format"].title}" description="${storyMeta["bubble-time-format"].description}" usage="${storyMeta["bubble-time-format"].usage}">
         <mui-range-input slot="body" min="0" max="320" value="74" step="1" bubble bubble-format="time" label="Seek"></mui-range-input>
         <story-code-block slot="footer" scrollable>
           &lt;mui-range-input min="0" max="320" value="74" bubble bubble-format="time" label="Seek"&gt;&lt;/mui-range-input&gt;
         </story-code-block>
       </story-card>
 
-      <story-card id="sizes" title="Sizes" description="Range Input scales its thumb and track from x-small through large; medium preserves the original size.">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-v-stack slot="body">
           <mui-range-input size="x-small" min="0" max="100" value="40" label="X-small volume"></mui-range-input>
           <mui-range-input size="small" min="0" max="100" value="40" label="Small volume"></mui-range-input>
@@ -41,7 +47,7 @@ class StoryRangeInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="disabled" title="Disabled" description="Disabled state for read-only displays.">
+      <story-card id="disabled" title="${storyMeta["disabled"].title}" description="${storyMeta["disabled"].description}" usage="${storyMeta["disabled"].usage}">
         <mui-range-input slot="body" min="0" max="100" value="25" disabled label="Disabled range"></mui-range-input>
         <story-code-block slot="footer" scrollable>
           &lt;mui-range-input min="0" max="100" value="25" disabled label="Disabled range"&gt;&lt;/mui-range-input&gt;
@@ -63,7 +69,7 @@ class StoryRangeInput extends HTMLElement {
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
 
         imports='["@muibook/components/mui-range-input"]'>
-        <story-quicklinks slot="message" heading="Quicklinks" links="default::Default|||sizes::Sizes|||bubble::Bubble + Time Format|||disabled::Disabled"></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

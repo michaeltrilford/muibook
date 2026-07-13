@@ -8,6 +8,12 @@ class storyAddon extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("AddOn");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Add On"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,10 +22,7 @@ class storyAddon extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-addon" title="Add On"></story-api-types>
 
-        <story-card title="Text"
-          description="Use for units, currency, or short static labels"
-          usageLink="https://guides.muibook.com/add-on"
-        >
+        <story-card id="text" title="${storyMeta["text"].title}" description="${storyMeta["text"].description}" usage="${storyMeta["text"].usage}">
           <div slot="body">
             <mui-input label="Enter amount">
               <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
@@ -41,10 +44,7 @@ class storyAddon extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Icon"
-          description="Use for symbolic cues or clarification of the input’s intent"
-          usageLink="${data.guides}"
-        >
+        <story-card id="icon" title="${storyMeta["icon"].title}" description="${storyMeta["icon"].description}" usage="${storyMeta["icon"].usage}">
           <div slot="body">
             <mui-input label="Enter your date">
               <mui-addon slot="after">
@@ -77,10 +77,7 @@ class storyAddon extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Input Sizes"
-          description="Add On across large, medium, small, and x-small input sizes."
-          usageLink="${data.guides}"
-        >
+        <story-card id="input-sizes" title="${storyMeta["input-sizes"].title}" description="${storyMeta["input-sizes"].description}" usage="${storyMeta["input-sizes"].usage}">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-input label="Large" size="large">
               <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
@@ -127,6 +124,7 @@ class storyAddon extends HTMLElement {
         storybook="${data.storybook}"
 
         imports='["@muibook/components/mui-addon"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

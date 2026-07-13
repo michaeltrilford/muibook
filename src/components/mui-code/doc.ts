@@ -49,6 +49,83 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "large",
+          "title": "Large",
+          "description": "Demonstrates the Large Code treatment.",
+          "list": [
+            "Use Code for technical values and examples; preserve readable wrapping or scrolling for long content."
+          ]
+        },
+        {
+          "key": "medium",
+          "title": "Medium",
+          "description": "Demonstrates the Medium Code treatment.",
+          "list": [
+            "Use Code for technical values and examples; preserve readable wrapping or scrolling for long content."
+          ]
+        },
+        {
+          "key": "small",
+          "title": "Small",
+          "description": "Demonstrates the Small Code treatment.",
+          "list": [
+            "Use Code for technical values and examples; preserve readable wrapping or scrolling for long content."
+          ]
+        },
+        {
+          "key": "x-small",
+          "title": "X-Small",
+          "description": "Demonstrates the X-Small Code treatment.",
+          "list": [
+            "Use Code for technical values and examples; preserve readable wrapping or scrolling for long content."
+          ]
+        },
+        {
+          "key": "scrollable",
+          "title": "Scrollable",
+          "description": "When using the scrollable option, you’re likely displaying large code examples. Please ensure your content is properly formatted with line breaks and spacing. This component provides minimal formatting support, so you’ll need to handle this yourself or consider using a more advanced third-party code viewer.",
+          "list": [
+            "Line wrapping is disabled when scrollable is set;\n              Use the nbsp element to insert non-breaking spaces;\n              Use br element to manually add line breaks;\n              Structure and format your code manually to ensure readability"
+          ]
+        },
+        {
+          "key": "wrap",
+          "title": "Wrap",
+          "description": "Demonstrates the Wrap Code treatment.",
+          "list": [
+            "Use Code for technical values and examples; preserve readable wrapping or scrolling for long content."
+          ]
+        },
+        {
+          "key": "inline",
+          "title": "Inline",
+          "description": "Displays a code snippet inline with surrounding text.",
+          "list": [
+            "Use Code for technical values and examples; preserve readable wrapping or scrolling for long content."
+          ]
+        },
+        {
+          "key": "formatted-payload-types",
+          "title": "Formatted Payload Types",
+          "description": "Format source values before passing text into Code; Code preserves whitespace and wrapping without altering content.",
+          "list": [
+            "Use Code for technical values and examples; preserve readable wrapping or scrolling for long content."
+          ]
+        },
+        {
+          "key": "surface-contexts",
+          "title": "Surface Contexts",
+          "description": "Code defaults to surface-elevated-100, then shifts to surface-elevated-200 when the card context applies card-slot.",
+          "list": [
+            "Use Code for technical values and examples; preserve readable wrapping or scrolling for long content."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

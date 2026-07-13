@@ -9,6 +9,12 @@ class storyChip extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Chip");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Chip"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-chip",
@@ -39,7 +45,7 @@ class storyChip extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-chip" title="Chip"></story-api-types>
 
-        <story-card title="Default" usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
           <div slot="body">
             <mui-chip>Branding</mui-chip>
           </div>
@@ -52,7 +58,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Icon Before" usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="icon-before" title="${storyMeta["icon-before"].title}" description="${storyMeta["icon-before"].description}" usage="${storyMeta["icon-before"].usage}">
            <mui-v-stack slot="body" space="var(--space-200)">
             <mui-chip size="x-small">
               <mui-icon-movie-clapper slot="before"></mui-icon-movie-clapper>
@@ -81,7 +87,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Icon After" usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="icon-after" title="${storyMeta["icon-after"].title}" description="${storyMeta["icon-after"].description}" usage="${storyMeta["icon-after"].usage}">
           <mui-v-stack slot="body" space="var(--space-200)">
             <mui-chip size="x-small">
               Films
@@ -109,7 +115,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Icon Before & After" usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="icon-before-and-after" title="${storyMeta["icon-before-and-after"].title}" description="${storyMeta["icon-before-and-after"].description}" usage="${storyMeta["icon-before-and-after"].usage}">
            <mui-v-stack slot="body" space="var(--space-200)">
             <mui-chip size="x-small">
               <mui-icon-movie-clapper slot="before"></mui-icon-movie-clapper>
@@ -165,7 +171,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Active" usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="active" title="${storyMeta["active"].title}" description="${storyMeta["active"].description}" usage="${storyMeta["active"].usage}">
           <div slot="body">
             <mui-chip active>
               Videos
@@ -180,7 +186,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Sizes" usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
           <mui-h-stack slot="body" space="var(--space-200)" alignY="center" wrap="wrap">
             <mui-chip size="x-small">X-Small</mui-chip>
             <mui-chip size="small">Small</mui-chip>
@@ -195,7 +201,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Badge: Before" usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="badge-before" title="${storyMeta["badge-before"].title}" description="${storyMeta["badge-before"].description}" usage="${storyMeta["badge-before"].usage}">
           <mui-h-stack slot="body" space="var(--space-200)" alignY="center" wrap="wrap">
             <mui-chip size="x-small">
               Videos
@@ -223,7 +229,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Badge: After" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="badge-after" title="${storyMeta["badge-after"].title}" description="${storyMeta["badge-after"].description}" usage="${storyMeta["badge-after"].usage}">
           <mui-h-stack slot="body" space="var(--space-200)" alignY="center" wrap="wrap">
             <mui-chip size="x-small">
               Offers
@@ -251,7 +257,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Avatar: Before" description="Return results specific to one or multiple categories the user selects." usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="avatar-before" title="${storyMeta["avatar-before"].title}" description="${storyMeta["avatar-before"].description}" usage="${storyMeta["avatar-before"].usage}">
           <mui-v-stack slot="body" space="var(--space-200)">
             <mui-h-stack space="var(--space-200)">
               <mui-chip id="chip-one" size="x-small">
@@ -299,7 +305,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Avatar: After" description="Return results specific to one or multiple categories the user selects." usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="avatar-after" title="${storyMeta["avatar-after"].title}" description="${storyMeta["avatar-after"].description}" usage="${storyMeta["avatar-after"].usage}">
           <mui-v-stack slot="body" space="var(--space-200)">
             <mui-h-stack space="var(--space-200)">
               <mui-chip id="chip-one" size="x-small">
@@ -347,7 +353,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Filters" description="Return results specific to one or multiple categories the user selects." usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="filters" title="${storyMeta["filters"].title}" description="${storyMeta["filters"].description}" usage="${storyMeta["filters"].usage}">
           <mui-v-stack slot="body" space="var(--space-200)">
             <mui-h-stack space="var(--space-200)">
               <mui-chip id="chip-one" size="x-small" dismiss>
@@ -458,7 +464,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Filters: Icon Before" description="Return results specific to one or multiple categories the user selects." usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="filters-icon-before" title="${storyMeta["filters-icon-before"].title}" description="${storyMeta["filters-icon-before"].description}" usage="${storyMeta["filters-icon-before"].usage}">
           <mui-h-stack slot="body" space="var(--space-200)">
             <mui-chip id="chip-three" dismiss>
               <mui-icon-music-quarter-note slot="before"></mui-icon-music-quarter-note>
@@ -495,7 +501,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Overflow" description="Long chip labels truncate when the chip is constrained by the surrounding layout." usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="overflow" title="${storyMeta["overflow"].title}" description="${storyMeta["overflow"].description}" usage="${storyMeta["overflow"].usage}">
           <div slot="body" class="chip-overflow-example">
             <mui-chip dismiss>
               <mui-icon-music-quarter-note slot="before"></mui-icon-music-quarter-note>
@@ -514,7 +520,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Sub Navigation" description="It is often used to view page results for a single category." usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="sub-navigation" title="${storyMeta["sub-navigation"].title}" description="${storyMeta["sub-navigation"].description}" usage="${storyMeta["sub-navigation"].usage}">
           <mui-h-stack id="sub-navigation" slot="body" space="var(--space-200)">
             <mui-chip>
               All
@@ -562,7 +568,7 @@ class storyChip extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Multi-Select Groups" usageLink="https://guides.muibook.com/chip" canvas-background="var(--app-story-canvas-100)">
+        <story-card canvas-background="var(--app-story-canvas-100)" id="multi-select-groups" title="${storyMeta["multi-select-groups"].title}" description="${storyMeta["multi-select-groups"].description}" usage="${storyMeta["multi-select-groups"].usage}">
           <mui-h-stack id="multi-chip-select" slot="body" class="multi-select">
             <mui-chip active>
               All
@@ -661,6 +667,7 @@ class storyChip extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-chip"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

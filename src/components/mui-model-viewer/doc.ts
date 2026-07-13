@@ -31,6 +31,39 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Model frame", "Fallback poster", "Loading spinner", "3D WebGL viewport", "AR trigger button"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: {
+      items: [
+        {
+          "key": "interactive-3d-viewport",
+          "title": "Interactive 3D Viewport",
+          "description": "Renders a 3D model with orbiting/zooming controls enabled.",
+          "list": [
+            "Allows users to orbit, zoom, and inspect the 3D model.",
+            "The component loads the library script asynchronously when first used.",
+            "Fallback poster is rendered while the model is downloading."
+          ]
+        },
+        {
+          "key": "auto-rotation",
+          "title": "Auto Rotation",
+          "description": "Displays the model with automatic camera rotation enabled.",
+          "list": [
+            "Perfect for product highlights or landing pages where a spinning preview is desired.",
+            "Users can still interact with the model to override the automatic rotation."
+          ]
+        },
+        {
+          "key": "ar-quick-look-and-webxr-placement",
+          "title": "AR Quick Look & WebXR Placement",
+          "description": "Enables AR entry triggers where supported.",
+          "list": [
+            "Adds a floating AR entry button on mobile devices.",
+            "Allows placing the 3D model directly into physical space on iOS Safari and WebXR browsers."
+          ]
+        }
+      ],
+    },
+
     compositions: { description: "", items: [] },
     related: {
       items: [

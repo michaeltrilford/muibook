@@ -52,6 +52,35 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "A composition time picker input with a scrolling wheels popover.",
+          "list": [
+            "Use Time Picker when users need to enter or choose a specific time."
+          ]
+        },
+        {
+          "key": "time-slot",
+          "title": "Time Slot",
+          "description": "Use type='timeslot' to show discrete time chips.",
+          "list": [
+            "Use Time Picker when users need to enter or choose a specific time."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Time Picker supports x-small, small, medium, and large input sizes.",
+          "list": [
+            "Use Time Picker when users need to enter or choose a specific time."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Time Picker is composed of an Input, Dropdown, and Time component.",
       items: [],

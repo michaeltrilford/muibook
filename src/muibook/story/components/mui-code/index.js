@@ -8,6 +8,12 @@ class storyCode extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Code");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Code"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -16,7 +22,7 @@ class storyCode extends HTMLElement {
     const stories = /*html*/ `
           <story-api-types tag="mui-code" title="Code"></story-api-types>
 
-        <story-card title="Large">
+        <story-card id="large" title="${storyMeta["large"].title}" description="${storyMeta["large"].description}" usage="${storyMeta["large"].usage}">
           <div slot="body">
             <mui-code size="large">
               A tooltip drifted so far from its anchor it was officially lost at sea.
@@ -27,7 +33,7 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
-       <story-card title="Medium">
+       <story-card id="medium" title="${storyMeta["medium"].title}" description="${storyMeta["medium"].description}" usage="${storyMeta["medium"].usage}">
           <div slot="body">
             <mui-code size="medium">
               The modal refused to close, holding focus hostage forever.
@@ -38,7 +44,7 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Small">
+        <story-card id="small" title="${storyMeta["small"].title}" description="${storyMeta["small"].description}" usage="${storyMeta["small"].usage}">
           <div slot="body">
             <mui-code size="small">
               The fox tried to tab into a hidden element, but focus was trapped in a loop.
@@ -49,7 +55,7 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="X-Small">
+        <story-card id="x-small" title="${storyMeta["x-small"].title}" description="${storyMeta["x-small"].description}" usage="${storyMeta["x-small"].usage}">
           <div slot="body">
             <mui-code size="x-small">
               A rogue component ignored the theme and styled itself in pure chaos.
@@ -60,15 +66,7 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Scrollable"
-          description="When using the scrollable option, you’re likely displaying large code examples. Please ensure your content is properly formatted with line breaks and spacing. This component provides minimal formatting support, so you’ll need to handle this yourself or consider using a more advanced third-party code viewer."
-          usage="
-             Line wrapping is disabled when scrollable is set;
-              Use the nbsp element to insert non-breaking spaces;
-              Use br element to manually add line breaks;
-              Structure and format your code manually to ensure readability
-          "
-          >
+        <story-card id="scrollable" title="${storyMeta["scrollable"].title}" description="${storyMeta["scrollable"].description}" usage="${storyMeta["scrollable"].usage}">
           <div slot="body">
             <mui-code size="large" scrollable>
               A tooltip drifted so far from its anchor it was officially lost at sea.
@@ -79,7 +77,7 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Wrap">
+        <story-card id="wrap" title="${storyMeta["wrap"].title}" description="${storyMeta["wrap"].description}" usage="${storyMeta["wrap"].usage}">
           <div slot="body">
             <mui-code size="small" wrap>
               {"source":"crm","query":"CSAT by feature","range":"Q4","include":["pain_points","sentiment","churn_drivers","top_requests"]}
@@ -90,7 +88,7 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Inline" description="Displays a code snippet inline with surrounding text.">
+        <story-card id="inline" title="${storyMeta["inline"].title}" description="${storyMeta["inline"].description}" usage="${storyMeta["inline"].usage}">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-body size="medium">
               A curated <mui-code size="small" inline>agentCompositions</mui-code> subset for lightweight local LLM prompts.
@@ -109,7 +107,7 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Formatted Payload Types" description="Format source values before passing text into Code; Code preserves whitespace and wrapping without altering content.">
+        <story-card id="formatted-payload-types" title="${storyMeta["formatted-payload-types"].title}" description="${storyMeta["formatted-payload-types"].description}" usage="${storyMeta["formatted-payload-types"].usage}">
           <mui-v-stack slot="body" space="var(--space-400)">
             <mui-body size="x-small" weight="bold">JSON</mui-body>
             <mui-code id="formattedJsonExample" size="small" wrap></mui-code>
@@ -130,7 +128,7 @@ class storyCode extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Surface Contexts" description="Code defaults to surface-elevated-100, then shifts to surface-elevated-200 when the card context applies card-slot.">
+        <story-card id="surface-contexts" title="${storyMeta["surface-contexts"].title}" description="${storyMeta["surface-contexts"].description}" usage="${storyMeta["surface-contexts"].usage}">
           <mui-v-stack slot="body" space="var(--space-600)">
             <mui-v-stack space="var(--space-200)">
               <mui-body size="x-small" weight="bold">Default</mui-body>
@@ -183,6 +181,7 @@ class storyCode extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-code"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

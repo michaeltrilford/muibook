@@ -41,6 +41,107 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Media frame", "Native media element", "Optional audio visual section", "Controls row", "Progress/time control"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: {
+      items: [
+        {
+          "key": "video",
+          "title": "Video",
+          "description": "Direct video file rendered with the native video element and Muibook controls.",
+          "list": [
+            "Use Muibook controls when the player needs to match the product visual language.",
+            "The native video element remains the playback engine underneath the UI.",
+            "Use poster for iOS Safari so the preview has a stable image before playback.",
+            "Picture-in-Picture only appears when the browser reports support; iPhone may hide it when the current video or browser context does not support it.",
+            "Fullscreen may start playback first on iPhone because native video fullscreen must be triggered from the media element."
+          ]
+        },
+        {
+          "key": "center-action",
+          "title": "Center Action",
+          "description": "Direct video file rendered with an always-visible centered play/pause action.",
+          "list": [
+            "Use center-play when the preview needs an obvious primary playback action before the user explores the bottom controls.",
+            "The centered action toggles between play and pause while the native video element remains the playback engine underneath the UI."
+          ]
+        },
+        {
+          "key": "video-loading",
+          "title": "Video Loading",
+          "description": "Direct video file rendered with the centered loading affordance forced on.",
+          "list": [
+            "Use loading when an externally managed media load needs visible feedback.",
+            "This story forces the state so spinner size, placement, and contrast can be inspected without waiting for real buffering.",
+            "Remove loading for normal playback; the player still shows the affordance automatically during native buffering events."
+          ]
+        },
+        {
+          "key": "metadata",
+          "title": "Metadata",
+          "description": "Direct video file rendered with metadata and a responsive subscribe action.",
+          "list": [
+            "Use this pattern when the media identity and a supporting commercial or creator action need to share the top metadata area.",
+            "Use mui-avatar-chip in slot='meta-before' for reusable avatar and profile copy composition.",
+            "Use slot='meta-after' for the action so the space between remains available for media playback interaction.",
+            "Use overlay action styling when the action sits over video or artwork."
+          ]
+        },
+        {
+          "key": "audio",
+          "title": "Audio",
+          "description": "Direct audio file rendered as a compact player.",
+          "list": [
+            "Use this state when the player only needs playback controls.",
+            "The native audio element remains the playback engine underneath the UI."
+          ]
+        },
+        {
+          "key": "audio-waveform",
+          "title": "Audio Waveform",
+          "description": "Direct audio file rendered with an opt-in generated waveform.",
+          "list": [
+            "Use waveform when audio needs a visual signature without adding artwork.",
+            "The waveform is generated from the audio source when the browser can fetch and decode the file.",
+            "Remote audio can fail to render a waveform when CORS blocks decoding, so keep the player usable without it."
+          ]
+        },
+        {
+          "key": "audio-artwork",
+          "title": "Audio Artwork",
+          "description": "Direct audio file rendered with artwork replacing the basic metadata presentation.",
+          "list": [
+            "Add artwork when the audio needs a stronger visual presentation.",
+            "The artwork fills the visual area while the native audio element remains the playback engine underneath the UI."
+          ]
+        },
+        {
+          "key": "audio-artwork-waveform",
+          "title": "Audio Artwork Waveform",
+          "description": "Direct audio file rendered with artwork and an opt-in generated waveform.",
+          "list": [
+            "Use waveform with artwork when the audio needs both an image-led presentation and a visible sense of sound structure.",
+            "The active waveform colour follows the same range colour as the player controls, while inactive bars stay quieter over the artwork.",
+            "Keep this opt-in because waveform generation depends on the browser being able to fetch and decode the audio source."
+          ]
+        },
+        {
+          "key": "youtube-embed",
+          "title": "YouTube Embed",
+          "description": "Auto-detected YouTube URL rendered as embed.",
+          "list": [
+            "Use a supported YouTube URL and provide surrounding context for the embedded media."
+          ]
+        },
+        {
+          "key": "soundcloud-embed",
+          "title": "SoundCloud Embed",
+          "description": "Auto-detected SoundCloud URL rendered as embed.",
+          "list": [
+            "Use a supported SoundCloud URL and expect provider-owned controls and behavior."
+          ]
+        }
+      ],
+    },
+
     compositions: { description: "", items: [] },
     related: {
       items: [

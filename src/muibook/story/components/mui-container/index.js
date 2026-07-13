@@ -8,6 +8,12 @@ class storyContainer extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Container");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Container"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -18,7 +24,7 @@ class storyContainer extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-container" title="Container"></story-api-types>
 
-      <story-card id="small" title="Small">
+      <story-card id="small" title="${storyMeta["small"].title}" description="${storyMeta["small"].description}" usage="${storyMeta["small"].usage}">
         <mui-container small slot="body">
           <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
         </mui-container>
@@ -27,7 +33,7 @@ class storyContainer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="medium" title="Medium">
+      <story-card id="medium" title="${storyMeta["medium"].title}" description="${storyMeta["medium"].description}" usage="${storyMeta["medium"].usage}">
       <mui-container medium slot="body">
         <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
       </mui-container>
@@ -36,7 +42,7 @@ class storyContainer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="x-medium" title="X Medium">
+      <story-card id="x-medium" title="${storyMeta["x-medium"].title}" description="${storyMeta["x-medium"].description}" usage="${storyMeta["x-medium"].usage}">
         <mui-container x-medium slot="body">
           <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
         </mui-container>
@@ -45,7 +51,7 @@ class storyContainer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="large" title="Large">
+      <story-card id="large" title="${storyMeta["large"].title}" description="${storyMeta["large"].description}" usage="${storyMeta["large"].usage}">
         <mui-container large slot="body">
           <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
         </mui-container>
@@ -54,7 +60,7 @@ class storyContainer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="x-large" title="X Large">
+      <story-card id="x-large" title="${storyMeta["x-large"].title}" description="${storyMeta["x-large"].description}" usage="${storyMeta["x-large"].usage}">
         <mui-container x-large slot="body">
           <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
         </mui-container>
@@ -63,11 +69,7 @@ class storyContainer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="width"
-        title="Width"
-        description="Use width when a layout needs an explicit max-width without changing the shared t-shirt size scale."
-        usage="Width overrides the selected size.|||Use size for common layout rhythm and width for one-off page constraints.|||Numeric values map to the design rem scale, so width='960' resolves to 96rem. CSS lengths like width='64rem' are also supported.">
+      <story-card id="width" title="${storyMeta["width"].title}" description="${storyMeta["width"].description}" usage="${storyMeta["width"].usage}">
         <mui-container width="960" slot="body">
           <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
         </mui-container>
@@ -76,7 +78,7 @@ class storyContainer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="fluid" title="Fluid">
+      <story-card id="fluid" title="${storyMeta["fluid"].title}" description="${storyMeta["fluid"].description}" usage="${storyMeta["fluid"].usage}">
         <mui-container fluid slot="body">
           <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
         </mui-container>
@@ -85,7 +87,7 @@ class storyContainer extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="center" title="Center">
+      <story-card id="center" title="${storyMeta["center"].title}" description="${storyMeta["center"].description}" usage="${storyMeta["center"].usage}">
         <mui-container small center slot="body">
           <mui-card><mui-card-body>{Content}</mui-card-body></mui-card>
         </mui-container>
@@ -108,11 +110,7 @@ class storyContainer extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-container"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="small::Small|||medium::Medium|||x-medium::X Medium|||large::Large|||x-large::X Large|||width::Width|||fluid::Fluid|||center::Center"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
 
         ${stories}
       </story-template>

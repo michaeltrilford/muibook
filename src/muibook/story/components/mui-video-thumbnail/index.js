@@ -34,6 +34,12 @@ class StoryVideoThumbnail extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("VideoThumbnail");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Video Thumbnail"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host {
@@ -102,12 +108,7 @@ class StoryVideoThumbnail extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-video-thumbnail" title="Video Thumbnail"></story-api-types>
 
-      <story-card
-        id="default"
-        title="Default"
-        description="A reusable video poster thumbnail with no icon or shade overlay by default."
-        usage="Use Video Thumbnail when a card, list, or composition needs a consistent poster surface.|||Use src-light, src-dark, or src-{brand}-{theme} when artwork needs to follow the active theme or brand.|||The border is none by default so themes can opt into a framed treatment with tokens."
-      >
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <div slot="body" class="thumbnail-demo">
           <mui-video-thumbnail ${themedThumbnailAttributes} alt="MuiTube video thumbnail"></mui-video-thumbnail>
         </div>
@@ -123,12 +124,7 @@ class StoryVideoThumbnail extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="play"
-        title="Play Affordance"
-        description="Use play and overlay when the thumbnail should expose a stronger video affordance."
-        usage="Use play to reveal the centered video icon on hover.|||Use overlay to opt into the shade layer; it is transparent until tokens or hover state style it."
-      >
+      <story-card id="play-affordance" title="${storyMeta["play-affordance"].title}" description="${storyMeta["play-affordance"].description}" usage="${storyMeta["play-affordance"].usage}">
         <div slot="body" class="thumbnail-demo">
           <mui-video-thumbnail play overlay ${themedThumbnailAttributes} alt="MuiTube video thumbnail with play affordance"></mui-video-thumbnail>
         </div>
@@ -149,12 +145,7 @@ class StoryVideoThumbnail extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="composition"
-        title="Linked Card"
-        description="Compose the thumbnail inside a link or button surface and slot metadata into the thumbnail."
-        usage="Keep interaction semantics on the outer control.|||When mui-link contains mui-video-thumbnail it receives has-video internally, which removes the default action chrome.|||Use the meta slot when the thumbnail and text should move as one composed media card."
-      >
+      <story-card id="linked-card" title="${storyMeta["linked-card"].title}" description="${storyMeta["linked-card"].description}" usage="${storyMeta["linked-card"].usage}">
         <mui-v-stack slot="body" class="card-demo" width="100%" alignx="center" aligny="start" padding="var(--space-500)" space="var(--space-000)">
           <mui-link href="#">
             <mui-video-thumbnail play overlay ${themedThumbnailAttributes} alt="Urban Photography Tips">
@@ -199,12 +190,7 @@ class StoryVideoThumbnail extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="button-card"
-        title="Button Card"
-        description="Use a button surface when the thumbnail card performs an in-page action."
-        usage="Keep button semantics when the card triggers behaviour instead of navigating.|||When mui-button contains mui-video-thumbnail it receives has-video internally, which removes size and variant visual styling.|||The thumbnail remains the media surface, while the button owns the interaction."
-      >
+      <story-card id="button-card" title="${storyMeta["button-card"].title}" description="${storyMeta["button-card"].description}" usage="${storyMeta["button-card"].usage}">
         <mui-v-stack slot="body" class="card-demo" width="100%" alignx="center" aligny="start" padding="var(--space-500)" space="var(--space-000)">
           <mui-button aria-label="Play Urban Photography Tips">
             <mui-video-thumbnail play overlay ${themedThumbnailAttributes} alt="Urban Photography Tips">
@@ -233,12 +219,7 @@ class StoryVideoThumbnail extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="border"
-        title="Token Border"
-        description="Use tokens to opt into a framed thumbnail treatment."
-        usage="Use --video-thumbnail-border when the image frame itself needs a line.|||Use --video-thumbnail-box-shadow-hover when the hover ring should sit on the faux card surface instead of changing the image border."
-      >
+      <story-card id="token-border" title="${storyMeta["token-border"].title}" description="${storyMeta["token-border"].description}" usage="${storyMeta["token-border"].usage}">
         <div slot="body" class="thumbnail-demo border-demo">
           <mui-video-thumbnail play overlay ${themedThumbnailAttributes} alt="MuiTube video thumbnail with border"></mui-video-thumbnail>
         </div>
@@ -253,12 +234,7 @@ class StoryVideoThumbnail extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="custom-ratio"
-        title="Custom Ratio"
-        description="Use aspect-ratio when the poster should match a different media format."
-        usage="Use the aspect-ratio attribute for one-off layout changes.|||Use --video-thumbnail-aspect-ratio when a theme or page should adjust multiple thumbnails consistently."
-      >
+      <story-card id="custom-ratio" title="${storyMeta["custom-ratio"].title}" description="${storyMeta["custom-ratio"].description}" usage="${storyMeta["custom-ratio"].usage}">
         <div slot="body" class="thumbnail-demo">
           <mui-video-thumbnail aspect-ratio="4 / 3" ${themedThumbnailAttributes} alt="Four by three video thumbnail"></mui-video-thumbnail>
         </div>
@@ -285,11 +261,7 @@ class StoryVideoThumbnail extends HTMLElement {
         storybook="${(data?.storybook || []).join("|||")}"
         accessibility="${(data?.accessibility?.engineerList || []).join("|||")}"
         imports='["@muibook/components/mui-video-thumbnail"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          links="default::Default|||play::Play Affordance|||composition::Linked Card|||button-card::Button Card|||border::Token Border|||custom-ratio::Custom Ratio"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -8,6 +8,12 @@ class storyInput extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Input");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Input"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-input",
@@ -24,9 +30,7 @@ class storyInput extends HTMLElement {
       <story-api-types tag="mui-input" title="Input"></story-api-types>
 
 
-      <story-card title="Default" description="The label is required, if not set there will be a console warning."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <div slot="body">
           <mui-input label="Default"></mui-input>
         </div>
@@ -36,9 +40,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Sizes"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" label="X-Small"></mui-input>
           <mui-input size="small" label="Small"></mui-input>
@@ -53,9 +55,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Variant: Success" description="The label is required, if not set there will be a console warning."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="variant-success" title="${storyMeta["variant-success"].title}" description="${storyMeta["variant-success"].description}" usage="${storyMeta["variant-success"].usage}">
         <div slot="body">
           <mui-input variant="success"  value="value" type="password" label="Password"></mui-input>
         </div>
@@ -65,9 +65,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Variant: Warning" description="The label is required, if not set there will be a console warning."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="variant-warning" title="${storyMeta["variant-warning"].title}" description="${storyMeta["variant-warning"].description}" usage="${storyMeta["variant-warning"].usage}">
         <div slot="body">
           <mui-input variant="warning" value="michael.mui.com" label="Email"></mui-input>
         </div>
@@ -77,9 +75,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Variant: Error" description="The label is required, if not set there will be a console warning."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="variant-error" title="${storyMeta["variant-error"].title}" description="${storyMeta["variant-error"].description}" usage="${storyMeta["variant-error"].usage}">
         <div slot="body">
           <mui-input variant="error" value="michael.mui.com" label="Email"></mui-input>
         </div>
@@ -89,9 +85,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Hide Label" description="The visible label is hidden and an aria-label is generated from the label to maintain screen reader support."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="hide-label" title="${storyMeta["hide-label"].title}" description="${storyMeta["hide-label"].description}" usage="${storyMeta["hide-label"].usage}">
         <div slot="body">
           <mui-input label="Hide Label" hide-label></mui-input>
         </div>
@@ -101,9 +95,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Disabled"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="disabled" title="${storyMeta["disabled"].title}" description="${storyMeta["disabled"].description}" usage="${storyMeta["disabled"].usage}">
         <div slot="body">
           <mui-input label="Disabled" disabled></mui-input>
         </div>
@@ -113,9 +105,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Optional Label"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="optional-label" title="${storyMeta["optional-label"].title}" description="${storyMeta["optional-label"].description}" usage="${storyMeta["optional-label"].usage}">
         <div slot="body">
           <mui-input label="Company Website" optional placeholder="https://"></mui-input>
         </div>
@@ -125,9 +115,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Character Count"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="character-count" title="${storyMeta["character-count"].title}" description="${storyMeta["character-count"].description}" usage="${storyMeta["character-count"].usage}">
         <div slot="body">
           <mui-input label="Username" max-length="24" placeholder="up to 24 characters"></mui-input>
         </div>
@@ -137,9 +125,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Before: Add On"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="before-add-on" title="${storyMeta["before-add-on"].title}" description="${storyMeta["before-add-on"].description}" usage="${storyMeta["before-add-on"].usage}">
         <div slot="body">
           <mui-input label="Enter amount">
             <mui-addon slot="before"><mui-body>USD</mui-body></mui-addon>
@@ -160,9 +146,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="After: Add On"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="after-add-on" title="${storyMeta["after-add-on"].title}" description="${storyMeta["after-add-on"].description}" usage="${storyMeta["after-add-on"].usage}">
         <div slot="body">
           <mui-input label="Enter amount">
             <mui-addon slot="after"><mui-body>USD</mui-body></mui-input></mui-addon>
@@ -183,9 +167,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Before: Select"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="before-select" title="${storyMeta["before-select"].title}" description="${storyMeta["before-select"].description}" usage="${storyMeta["before-select"].usage}">
         <div slot="body">
           <mui-input type="search" label="Search">
             <mui-select
@@ -217,9 +199,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="After: Select"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="after-select" title="${storyMeta["after-select"].title}" description="${storyMeta["after-select"].description}" usage="${storyMeta["after-select"].usage}">
         <div slot="body">
           <mui-input type="number" label="Amount to transfer">
             <mui-select
@@ -249,9 +229,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Button: Before & After"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="button-before-and-after" title="${storyMeta["button-before-and-after"].title}" description="${storyMeta["button-before-and-after"].description}" usage="${storyMeta["button-before-and-after"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" type="search" label="Search docs">
             <mui-button slot="before">Search</mui-button>
@@ -288,9 +266,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Link: Before & After"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="link-before-and-after" title="${storyMeta["link-before-and-after"].title}" description="${storyMeta["link-before-and-after"].description}" usage="${storyMeta["link-before-and-after"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" type="search" label="Search docs">
             <mui-link href="/input" slot="before">Docs</mui-link>
@@ -327,9 +303,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Before: Chip"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="before-chip" title="${storyMeta["before-chip"].title}" description="${storyMeta["before-chip"].description}" usage="${storyMeta["before-chip"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" label="Search tags">
             <mui-chip slot="before" dismiss>Tag</mui-chip>
@@ -351,9 +325,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="After: Chip"
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="after-chip" title="${storyMeta["after-chip"].title}" description="${storyMeta["after-chip"].description}" usage="${storyMeta["after-chip"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" label="Search tags">
             <mui-chip slot="after" dismiss>Tag</mui-chip>
@@ -375,9 +347,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Hint: Overlay" description="Use slot='hint' for overlay markers and contextual hints."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="hint-overlay" title="${storyMeta["hint-overlay"].title}" description="${storyMeta["hint-overlay"].description}" usage="${storyMeta["hint-overlay"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" label="Username" placeholder="Enter your username">
             <mui-hint slot="hint" placement="top">
@@ -421,9 +391,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Inside Before: Icons" description="Use slot='inside-before' for internal leading affordances. Slotted icon sizes are normalized to the input size."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="inside-before-icons" title="${storyMeta["inside-before-icons"].title}" description="${storyMeta["inside-before-icons"].description}" usage="${storyMeta["inside-before-icons"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" label="Search">
             <mui-icon-search slot="inside-before"></mui-icon-search>
@@ -445,9 +413,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Inside After: Icons" description="Use slot='inside-after' for internal trailing affordances. Slotted icon sizes are normalized to the input size."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="inside-after-icons" title="${storyMeta["inside-after-icons"].title}" description="${storyMeta["inside-after-icons"].description}" usage="${storyMeta["inside-after-icons"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-input size="x-small" label="Search">
             <mui-icon-calendar slot="inside-after"></mui-icon-calendar>
@@ -469,9 +435,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Type: Text" description="The default input type for plain text."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="type-text" title="${storyMeta["type-text"].title}" description="${storyMeta["type-text"].description}" usage="${storyMeta["type-text"].usage}">
         <div slot="body">
           <mui-input label="Name" type="text" id="name-input" name="name" value="John Doe"></mui-input>
         </div>
@@ -492,9 +456,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Type: Email" description="Ensures the entered value follows email format."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="type-email" title="${storyMeta["type-email"].title}" description="${storyMeta["type-email"].description}" usage="${storyMeta["type-email"].usage}">
         <div slot="body">
           <mui-input label="Email" type="email" id="email-input" name="email" value="user@example.com"></mui-input>
         </div>
@@ -515,9 +477,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Type: Password" description="Using type password masks the user-filled content."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="type-password" title="${storyMeta["type-password"].title}" description="${storyMeta["type-password"].description}" usage="${storyMeta["type-password"].usage}">
         <div slot="body">
           <mui-input label="Password" type="password" id="password-input" name="password" value="abcde1234"></mui-input>
         </div>
@@ -539,9 +499,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Type: Number" description="Restricts input to numeric values."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="type-number" title="${storyMeta["type-number"].title}" description="${storyMeta["type-number"].description}" usage="${storyMeta["type-number"].usage}">
         <div slot="body">
           <mui-input label="Age" type="number" id="age-input" name="age" value="30"></mui-input>
         </div>
@@ -562,9 +520,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Type: URL" description="Validates URL format."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="type-url" title="${storyMeta["type-url"].title}" description="${storyMeta["type-url"].description}" usage="${storyMeta["type-url"].usage}">
         <div slot="body">
           <mui-input label="Website" type="url" id="url-input" name="website" value="https://example.com"></mui-input>
         </div>
@@ -585,9 +541,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Type: Tel" description="Input for telephone numbers, no formatting enforced."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="type-tel" title="${storyMeta["type-tel"].title}" description="${storyMeta["type-tel"].description}" usage="${storyMeta["type-tel"].usage}">
         <div slot="body">
           <mui-input label="Phone" type="tel" id="phone-input" name="phone" value="+1234567890"></mui-input>
         </div>
@@ -608,9 +562,7 @@ class storyInput extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Type: Search" description="Styled and optimized for search fields."
-        usageLink="https://guides.muibook.com/input"
-      >
+      <story-card id="type-search" title="${storyMeta["type-search"].title}" description="${storyMeta["type-search"].description}" usage="${storyMeta["type-search"].usage}">
         <div slot="body">
           <mui-input label="Search" type="search" id="search-input" name="search" value="Query"></mui-input>
         </div>
@@ -647,6 +599,7 @@ class storyInput extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-input"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

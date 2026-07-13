@@ -8,6 +8,12 @@ class storyTable extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Table");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Table"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-row",
@@ -115,7 +121,7 @@ class storyTable extends HTMLElement {
             <story-api-types tag="mui-cell" title="Table Cell"></story-api-types>
           </mui-v-stack>
 
-          <story-card title="Table">
+          <story-card id="table" title="${storyMeta["table"].title}" description="${storyMeta["table"].description}" usage="${storyMeta["table"].usage}">
             <div class="canvas" slot="body">
               <mui-table>
                 <mui-row-group heading>
@@ -199,7 +205,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Hover Row Highlight">
+          <story-card id="hover-row-highlight" title="${storyMeta["hover-row-highlight"].title}" description="${storyMeta["hover-row-highlight"].description}" usage="${storyMeta["hover-row-highlight"].usage}">
             <div class="canvas" slot="body">
               <mui-table highlight="hover">
                 <mui-row-group heading>
@@ -240,7 +246,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Select Row Highlight">
+          <story-card id="select-row-highlight" title="${storyMeta["select-row-highlight"].title}" description="${storyMeta["select-row-highlight"].description}" usage="${storyMeta["select-row-highlight"].usage}">
             <div class="canvas" slot="body">
               <mui-table highlight="select" highlight-row="sketch">
                 <mui-row-group heading>
@@ -281,7 +287,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Index Row Highlight">
+          <story-card id="index-row-highlight" title="${storyMeta["index-row-highlight"].title}" description="${storyMeta["index-row-highlight"].description}" usage="${storyMeta["index-row-highlight"].usage}">
             <div class="canvas" slot="body">
               <mui-table highlight-row-index="1">
                 <mui-row-group heading>
@@ -322,7 +328,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="XX-Small Action Size">
+          <story-card id="xx-small-action-size" title="${storyMeta["xx-small-action-size"].title}" description="${storyMeta["xx-small-action-size"].description}" usage="${storyMeta["xx-small-action-size"].usage}">
             <div class="canvas" slot="body">
               <mui-table>
                 <mui-row-group heading>
@@ -384,7 +390,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="X-Small Action Size">
+          <story-card id="x-small-action-size" title="${storyMeta["x-small-action-size"].title}" description="${storyMeta["x-small-action-size"].description}" usage="${storyMeta["x-small-action-size"].usage}">
             <div class="canvas" slot="body">
               <mui-table>
                 <mui-row-group heading>
@@ -446,7 +452,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Small Action Size">
+          <story-card id="small-action-size" title="${storyMeta["small-action-size"].title}" description="${storyMeta["small-action-size"].description}" usage="${storyMeta["small-action-size"].usage}">
             <div class="canvas" slot="body">
               <mui-table>
                 <mui-row-group heading>
@@ -508,7 +514,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Medium Action Size">
+          <story-card id="medium-action-size" title="${storyMeta["medium-action-size"].title}" description="${storyMeta["medium-action-size"].description}" usage="${storyMeta["medium-action-size"].usage}">
             <div class="canvas" slot="body">
               <mui-table>
                 <mui-row-group heading>
@@ -570,7 +576,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Large Action Size">
+          <story-card id="large-action-size" title="${storyMeta["large-action-size"].title}" description="${storyMeta["large-action-size"].description}" usage="${storyMeta["large-action-size"].usage}">
             <div class="canvas" slot="body">
               <mui-table>
                 <mui-row-group heading>
@@ -632,10 +638,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card
-            title="Mapping Data"
-            description="Use the .map() method to dynamically inject rows into your table based on your data set."
-          >
+          <story-card id="mapping-data" title="${storyMeta["mapping-data"].title}" description="${storyMeta["mapping-data"].description}" usage="${storyMeta["mapping-data"].usage}">
             <div class="canvas" slot="body">
               <mui-table>
                 <mui-row-group heading>
@@ -729,7 +732,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Responsive Table" github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-table/index.js">
+          <story-card github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-table/index.js" id="responsive-table" title="${storyMeta["responsive-table"].title}" description="${storyMeta["responsive-table"].description}" usage="${storyMeta["responsive-table"].usage}">
             <div class="canvas" slot="body">
               <mui-responsive breakpoint="1080">
                 <mui-h-stack slot="showAbove" space="16px" alignY="center">
@@ -773,10 +776,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card
-            title="Card with Table"
-            description="When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout."
-          >
+          <story-card id="card-with-table" title="${storyMeta["card-with-table"].title}" description="${storyMeta["card-with-table"].description}" usage="${storyMeta["card-with-table"].usage}">
             <div slot="body">
               <mui-card>
                 <mui-card-body>
@@ -874,7 +874,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Card Header w/ Table" description="You can add in a mui-rule to help add a division between the header and body of the card">
+          <story-card id="card-header-w-table" title="${storyMeta["card-header-w-table"].title}" description="${storyMeta["card-header-w-table"].description}" usage="${storyMeta["card-header-w-table"].usage}">
             <div slot="body">
               <mui-card>
                 <mui-card-header>
@@ -981,7 +981,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Card: Hover Row Highlight">
+          <story-card id="card-hover-row-highlight" title="${storyMeta["card-hover-row-highlight"].title}" description="${storyMeta["card-hover-row-highlight"].description}" usage="${storyMeta["card-hover-row-highlight"].usage}">
             <div slot="body">
               <mui-card>
                 <mui-card-header>
@@ -1038,7 +1038,7 @@ class storyTable extends HTMLElement {
             </story-code-block>
           </story-card>
 
-          <story-card title="Card: Select Row Highlight">
+          <story-card id="card-select-row-highlight" title="${storyMeta["card-select-row-highlight"].title}" description="${storyMeta["card-select-row-highlight"].description}" usage="${storyMeta["card-select-row-highlight"].usage}">
             <div slot="body">
               <mui-card>
                 <mui-card-header>
@@ -1110,6 +1110,7 @@ class storyTable extends HTMLElement {
         attrs-reference='${attrsReference}'
 
         imports='["@muibook/components/mui-table"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

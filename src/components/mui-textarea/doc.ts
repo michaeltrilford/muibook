@@ -48,6 +48,75 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Shows the standard Textarea treatment.",
+          "list": [
+            "Use Textarea for multi-line content and choose rows from the expected response length."
+          ]
+        },
+        {
+          "key": "rows",
+          "title": "Rows",
+          "description": "Demonstrates rows with Textarea.",
+          "list": [
+            "Use Textarea for multi-line content and choose rows from the expected response length."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares the supported Textarea size scale.",
+          "list": [
+            "Use Textarea for multi-line content and choose rows from the expected response length."
+          ]
+        },
+        {
+          "key": "variant-error",
+          "title": "Variant: Error",
+          "description": "Shows the error validation treatment.",
+          "list": [
+            "Use Textarea for multi-line content and choose rows from the expected response length."
+          ]
+        },
+        {
+          "key": "hide-label",
+          "title": "Hide Label",
+          "description": "Visually hides the label while preserving its accessible name.",
+          "list": [
+            "Use Textarea for multi-line content and choose rows from the expected response length."
+          ]
+        },
+        {
+          "key": "disabled",
+          "title": "Disabled",
+          "description": "Shows Textarea in a disabled state.",
+          "list": [
+            "Use Textarea for multi-line content and choose rows from the expected response length."
+          ]
+        },
+        {
+          "key": "optional-label",
+          "title": "Optional Label",
+          "description": "Marks the field as optional without weakening its label.",
+          "list": [
+            "Use Textarea for multi-line content and choose rows from the expected response length."
+          ]
+        },
+        {
+          "key": "character-count",
+          "title": "Character Count",
+          "description": "Communicates entered characters against the allowed limit.",
+          "list": [
+            "Use Textarea for multi-line content and choose rows from the expected response length."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Common use cases for multiline text input.",
       items: [],

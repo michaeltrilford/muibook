@@ -75,6 +75,59 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Shows the standard Chip Input treatment.",
+          "list": [
+            "Use Chip Input for entering or selecting multiple discrete values."
+          ]
+        },
+        {
+          "key": "allow-custom",
+          "title": "Allow Custom",
+          "description": "Demonstrates allow custom with Chip Input.",
+          "list": [
+            "Use Chip Input for entering or selecting multiple discrete values."
+          ]
+        },
+        {
+          "key": "breakpoint-layout",
+          "title": "Breakpoint Layout",
+          "description": "Demonstrates breakpoint layout with Chip Input.",
+          "list": [
+            "Use Chip Input for entering or selecting multiple discrete values."
+          ]
+        },
+        {
+          "key": "object-data",
+          "title": "Object Data",
+          "description": "Demonstrates object data with Chip Input.",
+          "list": [
+            "Use Chip Input for entering or selecting multiple discrete values."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares the supported Chip Input size scale.",
+          "list": [
+            "Use Chip Input for entering or selecting multiple discrete values."
+          ]
+        },
+        {
+          "key": "disabled",
+          "title": "Disabled",
+          "description": "Shows Chip Input in a disabled state.",
+          "list": [
+            "Use Chip Input for entering or selecting multiple discrete values."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [],

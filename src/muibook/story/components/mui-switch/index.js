@@ -8,6 +8,12 @@ class storySwitch extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Switch");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Switch"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -17,9 +23,7 @@ class storySwitch extends HTMLElement {
         <story-api-types tag="mui-switch" title="Switch" open></story-api-types>
 
 
-        <story-card title="Unchecked"
-          usageLink="https://guides.muibook.com/switch"
-        >
+        <story-card id="unchecked" title="${storyMeta["unchecked"].title}" description="${storyMeta["unchecked"].description}" usage="${storyMeta["unchecked"].usage}">
           <div slot="body">
             <mui-switch label="Unchecked"></mui-switch>
           </div>
@@ -28,9 +32,7 @@ class storySwitch extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Checked"
-          usageLink="https://guides.muibook.com/switch"
-        >
+        <story-card id="checked" title="${storyMeta["checked"].title}" description="${storyMeta["checked"].description}" usage="${storyMeta["checked"].usage}">
           <div slot="body">
             <mui-switch label="On Example" checked></mui-switch>
           </div>
@@ -39,10 +41,7 @@ class storySwitch extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Sizes"
-          description="Explore x-small, small, medium, and large switch sizes."
-          usageLink="https://guides.muibook.com/switch"
-        >
+        <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
           <mui-v-stack slot="body" space="var(--space-300)">
             <mui-h-stack space="var(--space-300)" alignY="center">
               <mui-switch label="X-Small" size="x-small"></mui-switch>
@@ -82,9 +81,7 @@ class storySwitch extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Disabled w/ Unchecked"
-          usageLink="https://guides.muibook.com/switch"
-        >
+        <story-card id="disabled-with-unchecked" title="${storyMeta["disabled-with-unchecked"].title}" description="${storyMeta["disabled-with-unchecked"].description}" usage="${storyMeta["disabled-with-unchecked"].usage}">
           <div slot="body">
             <mui-switch label="Unchecked w/ Disabled" disabled></mui-switch>
           </div>
@@ -93,9 +90,7 @@ class storySwitch extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Disabled w/ Checked"
-          usageLink="https://guides.muibook.com/switch"
-        >
+        <story-card id="disabled-with-checked" title="${storyMeta["disabled-with-checked"].title}" description="${storyMeta["disabled-with-checked"].description}" usage="${storyMeta["disabled-with-checked"].usage}">
           <div slot="body">
             <mui-switch disabled label="Checked w/ Disabled" checked></mui-switch>
           </div>
@@ -104,9 +99,7 @@ class storySwitch extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Icons: Off"
-          usageLink="https://guides.muibook.com/switch"
-        >
+        <story-card id="icons-off" title="${storyMeta["icons-off"].title}" description="${storyMeta["icons-off"].description}" usage="${storyMeta["icons-off"].usage}">
           <div slot="body">
             <mui-switch label="Dark mode toggle">
               <mui-icon-sun slot="off-icon"></mui-icon-sun>
@@ -124,9 +117,7 @@ class storySwitch extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Icons: On"
-          usageLink="https://guides.muibook.com/switch"
-        >
+        <story-card id="icons-on" title="${storyMeta["icons-on"].title}" description="${storyMeta["icons-on"].description}" usage="${storyMeta["icons-on"].usage}">
           <div slot="body">
             <mui-switch label="Dark mode toggle" checked>
               <mui-icon-sun slot="off-icon"></mui-icon-sun>
@@ -158,6 +149,7 @@ class storySwitch extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-switch"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

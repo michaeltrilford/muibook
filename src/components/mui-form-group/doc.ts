@@ -31,6 +31,51 @@ export const muiDocs: MuiDocs = {
         { key: "horizontal", title: "Horizontal", description: "Two-column group that stacks on mobile.", image: "" },
       ],
     },
+    stories: {
+      items: [
+        {
+          "key": "vertical-group",
+          "title": "Vertical Group",
+          "description": "Stacked group with heading, choice controls, and field-level guidance.",
+          "list": [
+            "Use a stacked group when the controls belong to the same decision area.",
+            "Keep helper and status copy attached to the relevant field.",
+            "When the message belongs to a specific mui-field inside the group, use slot=&quot;message&quot; on that field.",
+            "Use a colored mui-form-message for static guidance that needs more emphasis; use the default greyscale version for lighter supporting copy."
+          ]
+        },
+        {
+          "key": "horizontal-group",
+          "title": "Horizontal Group",
+          "description": "Split row layout with responsive stack on mobile.",
+          "list": [
+            "Use a horizontal group for paired follow-up fields.",
+            "Wrap the group in a mui-v-stack with appropriate spacing when supporting content needs to sit above or below it.",
+            "Keep helper or status copy outside the horizontal group rather than inserting mui-form-message directly into the group.",
+            "Because the supporting message sits outside the field/group in this pattern, slot=&quot;message&quot; is not required.",
+            "Use a colored mui-form-message when the note needs more emphasis, or leave it greyscale for lighter supporting copy."
+          ]
+        },
+        {
+          "key": "select-action",
+          "title": "Select + Action",
+          "description": "Use space and aligny to build an input-family row with a trailing action.",
+          "list": [
+            "Pair stroke=&quot;ring&quot; with inputs or selects when you want an action to visually align with a thinner form-control stroke.",
+            "Keep the ring explicit on the action, rather than relying on form-group to change descendant button styling."
+          ]
+        },
+        {
+          "key": "heading-level-space",
+          "title": "Heading Level + Space",
+          "description": "Heading semantics and heading spacing can be adjusted independently of grouped control spacing.",
+          "list": [
+            "Use Form Group to control spacing and direction for a related set of fields or controls."
+          ]
+        }
+      ],
+    },
+
     compositions: { description: "", items: [] },
     related: {
       items: [

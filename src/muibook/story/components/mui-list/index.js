@@ -8,6 +8,12 @@ class storyList extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("List");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="List"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -51,7 +57,7 @@ class storyList extends HTMLElement {
         <story-api-types tag="mui-list-item" title="List Item"></story-api-types>
       </mui-v-stack>
 
-      <story-card title="Sizes">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
 
           <div slot="body">
             <mui-v-stack space="var(--space-500)">
@@ -130,7 +136,7 @@ class storyList extends HTMLElement {
       </story-card>
 
 
-      <story-card title="Unordered">
+      <story-card id="unordered" title="${storyMeta["unordered"].title}" description="${storyMeta["unordered"].description}" usage="${storyMeta["unordered"].usage}">
 
         <div slot="body">
         <mui-list as="ol">
@@ -154,7 +160,7 @@ class storyList extends HTMLElement {
 
       </story-card>
 
-      <story-card title="Ordered">
+      <story-card id="ordered" title="${storyMeta["ordered"].title}" description="${storyMeta["ordered"].description}" usage="${storyMeta["ordered"].usage}">
 
         <div slot="body">
           <mui-list as="ul">
@@ -192,6 +198,7 @@ class storyList extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-list"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

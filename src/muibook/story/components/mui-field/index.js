@@ -8,6 +8,12 @@ class storyField extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Field");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Field"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-field",
@@ -23,11 +29,7 @@ class storyField extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-field" title="Field"></story-api-types>
 
-        <story-card
-          title="Input: Default"
-          description="The label prop is forwarded from the parent field to the input element to associate the label with the input correctly."
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="input-default" title="${storyMeta["input-default"].title}" description="${storyMeta["input-default"].description}" usage="${storyMeta["input-default"].usage}">
           <mui-field label="Email" slot="body">
             <mui-input type="email" placeholder="you@example.com"></mui-input>
           </mui-field>
@@ -41,11 +43,7 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          title="Input: Sizes"
-          description="Field forwards size to the slotted control."
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="input-sizes" title="${storyMeta["input-sizes"].title}" description="${storyMeta["input-sizes"].description}" usage="${storyMeta["input-sizes"].usage}">
           <mui-v-stack slot="body" space="var(--space-200)">
             <mui-field label="X-Small" size="x-small">
               <mui-input placeholder="X-Small"></mui-input>
@@ -67,11 +65,7 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          title="Select: Sizes"
-          description="Field forwards size to select controls."
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="select-sizes" title="${storyMeta["select-sizes"].title}" description="${storyMeta["select-sizes"].description}" usage="${storyMeta["select-sizes"].usage}">
           <mui-v-stack slot="body" space="var(--space-200)">
             <mui-field label="X-Small" size="x-small">
               <mui-select
@@ -113,11 +107,7 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          title="Textarea: Sizes"
-          description="Field forwards size to textarea controls."
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="textarea-sizes" title="${storyMeta["textarea-sizes"].title}" description="${storyMeta["textarea-sizes"].description}" usage="${storyMeta["textarea-sizes"].usage}">
           <mui-v-stack slot="body" space="var(--space-200)">
             <mui-field label="X-Small" size="x-small">
               <mui-textarea placeholder="X-Small"></mui-textarea>
@@ -139,11 +129,7 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          title="Input: Default w/ Message"
-          description="A supporting field message can be displayed by default without validation or interaction logic."
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="input-default-with-message" title="${storyMeta["input-default-with-message"].title}" description="${storyMeta["input-default-with-message"].description}" usage="${storyMeta["input-default-with-message"].usage}">
           <mui-field
             label="Display name"
             message="Shown on your profile and visible to other members."
@@ -161,11 +147,7 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          title="Input: Info w/ Message"
-          description="An informational field message can be displayed without requiring a validation event."
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="input-info-with-message" title="${storyMeta["input-info-with-message"].title}" description="${storyMeta["input-info-with-message"].description}" usage="${storyMeta["input-info-with-message"].usage}">
           <mui-field
             label="Project URL"
             variant="info"
@@ -185,9 +167,7 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Input: Success w/ Message" description="The form logic will inject the success message onto the field component and render"
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="input-success-with-message" title="${storyMeta["input-success-with-message"].title}" description="${storyMeta["input-success-with-message"].description}" usage="${storyMeta["input-success-with-message"].usage}">
           <mui-v-stack slot="body" space="var(--space-400)">
             <mui-button
               variant="secondary"
@@ -261,9 +241,7 @@ class storyField extends HTMLElement {
         </story-card>
 
 
-        <story-card title="Input: Warning w/ Message" description="The form logic will inject the warning message onto the field component and render"
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="input-warning-with-message" title="${storyMeta["input-warning-with-message"].title}" description="${storyMeta["input-warning-with-message"].description}" usage="${storyMeta["input-warning-with-message"].usage}">
           <mui-v-stack slot="body" space="var(--space-400)">
             <mui-button
               variant="secondary"
@@ -336,9 +314,7 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Input: Error w/ Message" description="The form logic will inject the error message onto the field component and render"
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="input-error-with-message" title="${storyMeta["input-error-with-message"].title}" description="${storyMeta["input-error-with-message"].description}" usage="${storyMeta["input-error-with-message"].usage}">
           <mui-v-stack slot="body" space="var(--space-400)">
             <mui-button
               variant="secondary"
@@ -411,9 +387,7 @@ class storyField extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card title="Select: Error w/ Message" description="The form logic will inject the error message onto the field component and render"
-          usageLink="https://guides.muibook.com/field"
-        >
+        <story-card id="select-error-with-message" title="${storyMeta["select-error-with-message"].title}" description="${storyMeta["select-error-with-message"].description}" usage="${storyMeta["select-error-with-message"].usage}">
           <mui-v-stack slot="body" space="var(--space-400)">
             <mui-button
               variant="secondary"
@@ -515,18 +489,7 @@ class storyField extends HTMLElement {
         </story-card>
 
 
-        <story-card
-          title="Input & Select: Error w/ Message"
-          description="The form logic will inject the error message onto the field component and render"
-          usage="
-            Add input is the primary element, so this item should have validation|||
-            The select isn’t the primary input: It’s more of a supporting control (Filter | Unit | Currency)|||
-            Grouped but semantically separate: While it’s next to the input, it’s not part of the input’s value|||
-            Validation usually targets primary fields like text, email, number — not auxiliary UI.
-          "
-          usageLink="https://guides.muibook.com/field"
-
-        >
+        <story-card id="input-and-select-error-with-message" title="${storyMeta["input-and-select-error-with-message"].title}" description="${storyMeta["input-and-select-error-with-message"].description}" usage="${storyMeta["input-and-select-error-with-message"].usage}">
           <!-- Change here: remove onclick, add data-toggle attribute -->
           <mui-button
             variant="secondary"
@@ -600,6 +563,7 @@ class storyField extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-field"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

@@ -8,6 +8,12 @@ class storyAccordion extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Accordion");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Accordion"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-accordion-block",
@@ -60,12 +66,7 @@ class storyAccordion extends HTMLElement {
           <story-api-types tag="mui-accordion-core" title="Accordion Core"></story-api-types>
         </mui-v-stack>
 
-        <story-card
-          id="accordion-inline"
-          title="Accordion Inline"
-          description="The inline accordion is typically used within a block layout as a secondary UI element to a block element."
-          usageLink="https://guides.muibook.com/accordion"
-        >
+        <story-card id="accordion-inline" title="${storyMeta["accordion-inline"].title}" description="${storyMeta["accordion-inline"].description}" usage="${storyMeta["accordion-inline"].usage}">
           <div slot="body">
             <mui-accordion-inline heading="Heading">
               <mui-list as="ul" slot="detail">
@@ -88,12 +89,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="accordion-group-and-block"
-          title="Accordion Group & Block"
-          description="The block accordion is typically used within a page layout full-width to the parent container."
-          usageLink="https://guides.muibook.com/accordion"
-        >
+        <story-card id="accordion-group-and-block" title="${storyMeta["accordion-group-and-block"].title}" description="${storyMeta["accordion-group-and-block"].description}" usage="${storyMeta["accordion-group-and-block"].usage}">
           <mui-accordion-group slot="body">
             <mui-accordion-block heading="Heading">
               <div slot="detail">
@@ -133,12 +129,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="accordion-group-and-block-exclusive"
-          title="Accordion Group & Block: Exclusive"
-          description="The block accordion is typically used within a page layout full-width to the parent container."
-          usageLink="https://guides.muibook.com/accordion"
-        >
+        <story-card id="accordion-group-and-block-exclusive" title="${storyMeta["accordion-group-and-block-exclusive"].title}" description="${storyMeta["accordion-group-and-block-exclusive"].description}" usage="${storyMeta["accordion-group-and-block-exclusive"].usage}">
           <mui-accordion-group exclusive slot="body">
             <mui-accordion-block heading="Heading">
               <div slot="detail">
@@ -178,11 +169,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="tab-behaviour-button"
-          title="Tab Behaviour: Button"
-          description="A demo showcasing how a nested button will be ignored by the tabbing functionality if collapsed."
-        >
+        <story-card id="tab-behaviour-button" title="${storyMeta["tab-behaviour-button"].title}" description="${storyMeta["tab-behaviour-button"].description}" usage="${storyMeta["tab-behaviour-button"].usage}">
           <div slot="body">
             <mui-accordion-inline heading="Heading">
               <div slot="detail">
@@ -203,11 +190,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="tab-behaviour-link"
-          title="Tab Behaviour: Link"
-          description="A demo showcasing how a nested link will be ignored by the tabbing functionality if collapsed."
-        >
+        <story-card id="tab-behaviour-link" title="${storyMeta["tab-behaviour-link"].title}" description="${storyMeta["tab-behaviour-link"].description}" usage="${storyMeta["tab-behaviour-link"].usage}">
           <div slot="body">
             <mui-accordion-inline heading="Heading">
               <div slot="detail">
@@ -228,16 +211,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="detail-space-none"
-          title="Detail Space: None"
-          description="In accordion-block, you are able to turn off the space within the detail section."
-          usage="
-            Ideal for using the accordion block to contain navigation items|||
-            Support full-bleed content such as images or documents.
-          "
-          usageLink="https://guides.muibook.com/accordion"
-        >
+        <story-card id="detail-space-none" title="${storyMeta["detail-space-none"].title}" description="${storyMeta["detail-space-none"].description}" usage="${storyMeta["detail-space-none"].usage}">
           <mui-accordion-block heading="Design Tokens" detail-space="none" slot="body" style="width: 26rem;">
             <mui-v-stack slot="detail" space="var(--space-000)" style="padding: var(--space-100)">
               <mui-link variant="tertiary" class="nav-link">Brand</mui-link>
@@ -263,14 +237,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="card-accordion"
-          title="Card w/ Accordion"
-          usage="
-            When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding|||
-            If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.
-          "
-        >
+        <story-card id="card-w-accordion" title="${storyMeta["card-w-accordion"].title}" description="${storyMeta["card-w-accordion"].description}" usage="${storyMeta["card-w-accordion"].usage}">
           <div slot="body">
             <mui-card>
               <mui-card-body>
@@ -309,13 +276,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card id="card-header-accordion" title="Card Header w/ Accordion"
-          description="You can add in a mui-rule to help add a division between the header and body of the card"
-          usage="
-            When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding|||
-            If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.
-          "
-        >
+        <story-card id="card-header-w-accordion" title="${storyMeta["card-header-w-accordion"].title}" description="${storyMeta["card-header-w-accordion"].description}" usage="${storyMeta["card-header-w-accordion"].usage}">
           <div slot="body">
             <mui-card>
               <mui-card-header>
@@ -362,14 +323,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="accordion-slat-detect"
-          title="Accordion: Slat Detection"
-          usage="
-            When an accordion is used with mui-slat-group, the attribute of usage='accordion' is applied automatically|||
-            Opt-out by not using the mui-slat-group, but you will have to craft your own layout.
-          "
-        >
+        <story-card id="accordion-slat-detection" title="${storyMeta["accordion-slat-detection"].title}" description="${storyMeta["accordion-slat-detection"].description}" usage="${storyMeta["accordion-slat-detection"].usage}">
           <div slot="body">
             <mui-accordion-group exclusive>
               <mui-accordion-block heading="Default">
@@ -518,14 +472,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="card-slat-detect"
-          title="Card: Slat Detection"
-          usage="
-            When a card and accordion is used togther with mui-slat-group, the attribute of usage='card' is applied automatically.|||
-            Opt-out by not using the mui-slat-group, but you will have to craft your own layout.
-          "
-        >
+        <story-card id="card-slat-detection" title="${storyMeta["card-slat-detection"].title}" description="${storyMeta["card-slat-detection"].description}" usage="${storyMeta["card-slat-detection"].usage}">
           <div slot="body">
             <mui-card>
               <mui-card-body>
@@ -678,11 +625,7 @@ class storyAccordion extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card
-          id="accordion-core"
-          title="Accordion Core"
-          description="Use your imagination and compose your own accordion experience with some overhead in effort. Below is a variety of examples using cards and different techniques to toggle an icon based on the open state."
-        >
+        <story-card id="accordion-core" title="${storyMeta["accordion-core"].title}" description="${storyMeta["accordion-core"].description}" usage="${storyMeta["accordion-core"].usage}">
           <mui-v-stack slot="body">
 
             <mui-accordion-core>
@@ -842,12 +785,7 @@ class storyAccordion extends HTMLElement {
 
 
         imports='["@muibook/components/mui-accordion"]'>
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          limit="10"
-          links="accordion-inline::Inline|||accordion-group-and-block::Group & Block|||accordion-group-and-block-exclusive::Group & Block: Exclusive|||tab-behaviour-button::Tab Behaviour: Button|||tab-behaviour-link::Tab Behaviour: Link|||detail-space-none::Detail Space: None|||card-accordion::Card: Accordion|||card-header-accordion::Card Header: Accordion|||accordion-slat-detect::Accordion: Slat Detection|||card-slat-detect::Card: Slat Detection|||accordion-core::Accordion Core"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
 
 
         ${stories}

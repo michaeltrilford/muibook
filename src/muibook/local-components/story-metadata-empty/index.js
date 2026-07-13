@@ -1,6 +1,6 @@
 class StoryMetadataEmpty extends HTMLElement {
   static get observedAttributes() {
-    return ["component"];
+    return ["component", "source", "command"];
   }
 
   constructor() {
@@ -18,6 +18,8 @@ class StoryMetadataEmpty extends HTMLElement {
 
   render() {
     const component = this.getAttribute("component") || "Component";
+    const source = this.getAttribute("source") || "custom-elements.json";
+    const command = this.hasAttribute("command") ? this.getAttribute("command") : "npm run cem";
     const getCard = ({ slot, headingSize, textSize, codeSize }) => /*html*/ `
       <mui-container slot="${slot}" width="560px" center>
         <mui-card>
@@ -27,10 +29,10 @@ class StoryMetadataEmpty extends HTMLElement {
               <mui-list>
                 <mui-list-item size="${textSize}">
                   ${component} story metadata is missing from
-                  <mui-code inline size="${codeSize}">custom-elements.json</mui-code>
+                  <mui-code inline size="${codeSize}">${source}</mui-code>
                 </mui-list-item>
                 <mui-list-item size="${textSize}">
-                  Run <mui-code inline size="${codeSize}">npm run cem</mui-code> and reload this page.
+                  ${command ? `Run <mui-code inline size="${codeSize}">${command}</mui-code> and reload this page.` : "Update the metadata source and reload this page."}
                 </mui-list-item>
               </mui-list>
             </mui-v-stack>

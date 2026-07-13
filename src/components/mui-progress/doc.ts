@@ -52,6 +52,35 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "progress-bar",
+          "title": "Progress Bar",
+          "description": "Displays a numeric value to indicate loading or completion state.",
+          "list": [
+            "Use Progress for determinate work and communicate the operation represented by the value."
+          ]
+        },
+        {
+          "key": "state-pending",
+          "title": "State: Pending",
+          "description": "Use when the system is waiting for an external response, such as a server request or sync, and progress cannot be measured.",
+          "list": [
+            "Use Progress for determinate work and communicate the operation represented by the value."
+          ]
+        },
+        {
+          "key": "state-syncing",
+          "title": "State: Syncing",
+          "description": "Use when the system is actively retrying, cycling, or performing time-based checks, where exact progress is unknown.",
+          "list": [
+            "Use Progress for determinate work and communicate the operation represented by the value."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

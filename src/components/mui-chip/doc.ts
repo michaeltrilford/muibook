@@ -88,6 +88,131 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Shows the standard Chip treatment.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "icon-before",
+          "title": "Icon Before",
+          "description": "Demonstrates icon before with Chip.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "icon-after",
+          "title": "Icon After",
+          "description": "Demonstrates icon after with Chip.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "icon-before-and-after",
+          "title": "Icon Before & After",
+          "description": "Composes leading and trailing content with Chip.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "active",
+          "title": "Active",
+          "description": "Shows Chip in its selected state.",
+          "list": [
+            "Use active to represent a selected filter or option and ensure selection is communicated beyond colour."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares the Sizes Chip size treatment.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "badge-before",
+          "title": "Badge: Before",
+          "description": "Composes a Badge with Chip.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "badge-after",
+          "title": "Badge: After",
+          "description": "Composes a Badge with Chip.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "avatar-before",
+          "title": "Avatar: Before",
+          "description": "Return results specific to one or multiple categories the user selects.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "avatar-after",
+          "title": "Avatar: After",
+          "description": "Return results specific to one or multiple categories the user selects.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "filters",
+          "title": "Filters",
+          "description": "Return results specific to one or multiple categories the user selects.",
+          "list": [
+            "Keep filter state in the parent application and update active chips from that state."
+          ]
+        },
+        {
+          "key": "filters-icon-before",
+          "title": "Filters: Icon Before",
+          "description": "Return results specific to one or multiple categories the user selects.",
+          "list": [
+            "Use Chip for compact selections, filters, or metadata actions and keep labels concise."
+          ]
+        },
+        {
+          "key": "overflow",
+          "title": "Overflow",
+          "description": "Long chip labels truncate when the chip is constrained by the surrounding layout.",
+          "list": [
+            "Truncate only when the full label remains available through surrounding context or another accessible mechanism."
+          ]
+        },
+        {
+          "key": "sub-navigation",
+          "title": "Sub Navigation",
+          "description": "It is often used to view page results for a single category.",
+          "list": [
+            "Use only for peer destinations in a compact secondary navigation context."
+          ]
+        },
+        {
+          "key": "multi-select-groups",
+          "title": "Multi-Select Groups",
+          "description": "Groups independently selectable chips under clear labels.",
+          "list": [
+            "Use clear group labels and allow each chip to toggle independently."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [

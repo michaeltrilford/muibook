@@ -38,6 +38,59 @@ export const muiDocs: MuiDocs = {
       items: [{ key: "", title: "", description: "", image: "" }],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Shows the standard Radio treatment.",
+          "list": [
+            "Use Radio Group when users must choose exactly one option from a visible set."
+          ]
+        },
+        {
+          "key": "checked",
+          "title": "Checked",
+          "description": "Shows Radio in its selected state.",
+          "list": [
+            "Use Radio Group when users must choose exactly one option from a visible set."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Compares the supported Radio size scale.",
+          "list": [
+            "Use Radio Group when users must choose exactly one option from a visible set."
+          ]
+        },
+        {
+          "key": "disabled",
+          "title": "Disabled",
+          "description": "Shows Radio in a disabled state.",
+          "list": [
+            "Use Radio Group when users must choose exactly one option from a visible set."
+          ]
+        },
+        {
+          "key": "radio-group",
+          "title": "Radio Group",
+          "description": "Demonstrates radio group with Radio.",
+          "list": [
+            "Use Radio Group when users must choose exactly one option from a visible set."
+          ]
+        },
+        {
+          "key": "checkbox-radio-side-by-side",
+          "title": "Checkbox + Radio (Side By Side)",
+          "description": "Demonstrates checkbox + radio (side by side) with Radio.",
+          "list": [
+            "Use Radio Group when users must choose exactly one option from a visible set."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "",
       items: [],

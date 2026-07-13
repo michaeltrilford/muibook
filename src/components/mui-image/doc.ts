@@ -60,6 +60,51 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        {
+          "key": "single-image",
+          "title": "Single image",
+          "description": "Renders a responsive image with accessible alternative text.",
+          "list": [
+            "Use meaningful alt text unless the image is purely decorative."
+          ]
+        },
+        {
+          "key": "image-with-caption",
+          "title": "Image with caption",
+          "description": "Associates supporting caption text with the image.",
+          "list": [
+            "Use captions for context that is useful beyond the alternative text."
+          ]
+        },
+        {
+          "key": "cropped-height",
+          "title": "Cropped Height",
+          "description": "Crops an image to a constrained height.",
+          "list": [
+            "Use object positioning to keep the important subject visible."
+          ]
+        },
+        {
+          "key": "cropped-centered",
+          "title": "Cropped Centered",
+          "description": "Centers the subject within a cropped image frame.",
+          "list": [
+            "Use when the source composition supports central cropping."
+          ]
+        },
+        {
+          "key": "zoom-aspect-ratio",
+          "title": "Zoom + Aspect Ratio",
+          "description": "Combines a stable aspect ratio with image zoom.",
+          "list": [
+            "Use a fixed ratio to prevent layout shift and zoom only when inspection is useful."
+          ]
+        }
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

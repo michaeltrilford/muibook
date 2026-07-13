@@ -23,6 +23,43 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Native range control", "Floating value bubble (optional)"] },
     variants: { items: [{ key: "", title: "", description: "", image: "" }] },
+    stories: {
+      items: [
+        {
+          "key": "default",
+          "title": "Default",
+          "description": "Numeric range input with a custom track and thumb.",
+          "list": [
+            "Use Range Input when users can choose an approximate value within a bounded range."
+          ]
+        },
+        {
+          "key": "bubble-time-format",
+          "title": "Bubble + Time Format",
+          "description": "Shows formatted bubble for scrubber usage.",
+          "list": [
+            "Use Range Input when users can choose an approximate value within a bounded range."
+          ]
+        },
+        {
+          "key": "sizes",
+          "title": "Sizes",
+          "description": "Range Input scales its thumb and track from x-small through large; medium preserves the original size.",
+          "list": [
+            "Use Range Input when users can choose an approximate value within a bounded range."
+          ]
+        },
+        {
+          "key": "disabled",
+          "title": "Disabled",
+          "description": "Disabled state for read-only displays.",
+          "list": [
+            "Use Range Input when users can choose an approximate value within a bounded range."
+          ]
+        }
+      ],
+    },
+
     compositions: { description: "", items: [] },
     related: {
       items: [

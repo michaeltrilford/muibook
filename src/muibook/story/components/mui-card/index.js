@@ -9,6 +9,12 @@ class storyCards extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Card");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Card"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
     const attrsReference = JSON.stringify([
       {
         component: "mui-card",
@@ -47,7 +53,7 @@ class storyCards extends HTMLElement {
         <story-api-types tag="mui-card-footer" title="Card Footer"></story-api-types>
       </mui-v-stack>
 
-      <story-card id="card" title="Card">
+      <story-card id="card" title="${storyMeta["card"].title}" description="${storyMeta["card"].description}" usage="${storyMeta["card"].usage}">
         <div slot="body">
           <mui-card>
             <mui-card-header>
@@ -77,7 +83,7 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="card-footer" title="Card: Footer">
+      <story-card id="card-footer" title="${storyMeta["card-footer"].title}" description="${storyMeta["card-footer"].description}" usage="${storyMeta["card-footer"].usage}">
         <div slot="body">
           <mui-card>
             <mui-card-header>
@@ -126,7 +132,7 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card id="card-image" title="Card: Image">
+      <story-card id="card-image" title="${storyMeta["card-image"].title}" description="${storyMeta["card-image"].description}" usage="${storyMeta["card-image"].usage}">
         <div slot="body">
           <mui-card>
             <mui-card-header>
@@ -162,10 +168,7 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Card: Table"
-        description="When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout."
-      >
+      <story-card id="card-table" title="${storyMeta["card-table"].title}" description="${storyMeta["card-table"].description}" usage="${storyMeta["card-table"].usage}">
         <div slot="body">
           <mui-card>
             <mui-card-body>
@@ -263,7 +266,7 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Card: Header & Table" description="You can add in a mui-rule to help add a division between the header and body of the card">
+      <story-card id="card-header-and-table" title="${storyMeta["card-header-and-table"].title}" description="${storyMeta["card-header-and-table"].description}" usage="${storyMeta["card-header-and-table"].usage}">
         <div slot="body">
           <mui-card>
             <mui-card-header>
@@ -370,19 +373,7 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="slat-group"
-        title="Slat Group"
-        description="
-          If a mui-slat is slotted directly into the mui-card-body,
-          if will automatically align the slats with the heading to ensure consistent alignment within a card.
-        "
-        usage="
-          mui-slat-group is added within the mui-card-body to apply an offset for the slat items|||
-          Place slats directly inside mui-card-body to inherit alignment|||
-          Use this layout only for cards with limited width. For wider layouts, consider using a table.
-        "
-      >
+      <story-card id="slat-group" title="${storyMeta["slat-group"].title}" description="${storyMeta["slat-group"].description}" usage="${storyMeta["slat-group"].usage}">
         <mui-card slot="body">
 
           <mui-card-header>
@@ -498,19 +489,7 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="slat-group-divider"
-        title="Slat Group: Dividers"
-        description="
-          If a mui-slat is slotted directly into the mui-card-body,
-          if will automatically align the slats with the heading to ensure consistent alignment within a card.
-        "
-        usage="
-          mui-slat-group is added within the mui-card-body to apply an offset for the slat items;
-          Place slats directly inside mui-card-body to inherit alignment|||
-          Use this layout only for cards with limited width. For wider layouts, consider using a table.
-        "
-      >
+      <story-card id="slat-group-dividers" title="${storyMeta["slat-group-dividers"].title}" description="${storyMeta["slat-group-dividers"].description}" usage="${storyMeta["slat-group-dividers"].usage}">
         <mui-card slot="body">
 
           <mui-card-header>
@@ -632,11 +611,7 @@ class storyCards extends HTMLElement {
 
       </story-card>
 
-      <story-card
-        id="slat-group-detection"
-        title="Card: Slat Detection"
-        description="When you opt-out, you will have to craft your own spacing."
-      >
+      <story-card id="card-slat-detection" title="${storyMeta["card-slat-detection"].title}" description="${storyMeta["card-slat-detection"].description}" usage="${storyMeta["card-slat-detection"].usage}">
         <div slot="body">
           <mui-card>
             <mui-card-body>
@@ -789,10 +764,7 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="card-accordion"
-        title="Card: Accordion"
-      >
+      <story-card id="card-accordion" title="${storyMeta["card-accordion"].title}" description="${storyMeta["card-accordion"].description}" usage="${storyMeta["card-accordion"].usage}">
         <div slot="body">
           <mui-card>
             <mui-card-body>
@@ -831,10 +803,7 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        id="card-header-accordion"
-        title="Card: Header & Accordion"
-      >
+      <story-card id="card-header-and-accordion" title="${storyMeta["card-header-and-accordion"].title}" description="${storyMeta["card-header-and-accordion"].description}" usage="${storyMeta["card-header-and-accordion"].usage}">
         <div slot="body">
           <mui-card>
             <mui-card-header>
@@ -896,13 +865,7 @@ class storyCards extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-card"]'>
-
-        <story-quicklinks
-          slot="message"
-          heading="Quicklinks"
-          limit="10"
-          links="card::Card|||card-footer::Card: Footer|||card-image::Card: Image|||card-table::Card: Table|||card-header-table::Card: Header & Table|||slat-group::Slat Group|||slat-group-divider::Slat Group: Dividers|||slat-group-detection::Slat Group: Detection|||card-accordion::Card: Accordion|||card-header-accordion::Card: Header & Accordion"
-        ></story-quicklinks>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;
