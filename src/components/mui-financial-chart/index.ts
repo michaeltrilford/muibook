@@ -13,6 +13,7 @@ import {
   type UTCTimestamp,
 } from "lightweight-charts";
 import "../mui-body";
+import "../mui-responsive";
 import "../mui-stack";
 import "../mui-tabs";
 
@@ -36,15 +37,14 @@ class MuiFinancialChart extends HTMLElement {
   private priceSeries: ISeriesApi<"Candlestick"> | ISeriesApi<"Area"> | null = null;
   private volumeSeries: ISeriesApi<"Histogram"> | null = null;
   private chartContainer: HTMLElement | null = null;
-  private resizeObserver: ResizeObserver | null = null;
   private themeObserver: MutationObserver | null = null;
   private attributionObserver: MutationObserver | null = null;
   private chartFrame = 0;
-  private hasInitialLayout = false;
   private chartData: MuiFinancialChartDatum[] = [];
   private handleRangeChange = (event: Event) => {
-    const activeId = (event as CustomEvent<{ activeId: string }>).detail.activeId;
-    this.setAttribute("selected-range", activeId.replace(/^range-/, ""));
+    const activeRange = (event.currentTarget as HTMLElement | null)?.querySelector<HTMLElement>("mui-tab-item[active]")
+      ?.dataset.range;
+    if (activeRange) this.setAttribute("selected-range", activeRange);
   };
 
   get data() {
@@ -72,8 +72,6 @@ class MuiFinancialChart extends HTMLElement {
   disconnectedCallback() {
     if (this.chartFrame) cancelAnimationFrame(this.chartFrame);
     this.chartFrame = 0;
-    this.resizeObserver?.disconnect();
-    this.resizeObserver = null;
     this.themeObserver?.disconnect();
     this.themeObserver = null;
     this.attributionObserver?.disconnect();
@@ -82,7 +80,6 @@ class MuiFinancialChart extends HTMLElement {
     this.chart = null;
     this.priceSeries = null;
     this.volumeSeries = null;
-    this.hasInitialLayout = false;
   }
 
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
@@ -141,7 +138,6 @@ class MuiFinancialChart extends HTMLElement {
           display: block;
           width: 100%;
           min-width: 0;
-          container-type: inline-size;
           font-family: var(--font-family);
           color: var(--financial-chart-text-color);
         }
@@ -152,6 +148,7 @@ class MuiFinancialChart extends HTMLElement {
 
         .chart-shell {
           display: grid;
+          grid-template-columns: minmax(0, 1fr);
           grid-template-rows: auto minmax(0, 1fr);
           width: 100%;
           min-width: 0;
@@ -162,7 +159,13 @@ class MuiFinancialChart extends HTMLElement {
         }
 
         [part="toolbar"] {
+          min-width: 0;
           border-bottom: var(--financial-chart-border);
+        }
+
+        mui-responsive {
+          width: 100%;
+          min-width: 0;
         }
 
         [part="summary"] {
@@ -172,13 +175,18 @@ class MuiFinancialChart extends HTMLElement {
         .chart-region {
           position: relative;
           width: 100%;
+          min-width: 0;
           height: var(--financial-chart-height-current);
           min-height: 20rem;
+          overflow: hidden;
         }
 
         .chart {
           width: 100%;
+          min-width: 0;
+          max-width: 100%;
           height: 100%;
+          overflow: hidden;
         }
 
         .state {
@@ -211,32 +219,33 @@ class MuiFinancialChart extends HTMLElement {
           border: 0;
         }
 
-        @container (max-width: 38rem) {
-          [part="toolbar"]::part(flex-direction) {
-            flex-direction: column;
-          }
-
-          [part="toolbar"]::part(align-items) {
-            align-items: stretch;
-          }
-
-          [part="toolbar"]::part(justify-content) {
-            justify-content: flex-start;
-          }
-        }
       </style>
       <section class="chart-shell">
-        <mui-h-stack
-          part="toolbar"
-          width="100%"
-          space="var(--space-300)"
-          padding="var(--space-400)"
-          alignx="space-between"
-          aligny="flex-start"
-        >
-          <mui-v-stack part="summary" space="var(--space-050)"></mui-v-stack>
-          <mui-tab-bar size="x-small" stroke="none" aria-label="Chart time range" active-inset></mui-tab-bar>
-        </mui-h-stack>
+        <mui-responsive variant="container" observe="parent" breakpoint="608">
+          <mui-v-stack
+            slot="showBelow"
+            part="toolbar"
+            width="100%"
+            space="var(--space-300)"
+            padding="var(--space-400)"
+            alignx="stretch"
+          >
+            <mui-v-stack part="summary" space="var(--space-050)"></mui-v-stack>
+            <mui-tab-bar data-range-layout="compact" size="x-small" stroke="none" aria-label="Chart time range" active-inset full-width></mui-tab-bar>
+          </mui-v-stack>
+          <mui-h-stack
+            slot="showAbove"
+            part="toolbar"
+            width="100%"
+            space="var(--space-300)"
+            padding="var(--space-400)"
+            alignx="space-between"
+            aligny="flex-start"
+          >
+            <mui-v-stack part="summary" space="var(--space-050)"></mui-v-stack>
+            <mui-tab-bar data-range-layout="wide" size="x-small" stroke="none" aria-label="Chart time range" active-inset></mui-tab-bar>
+          </mui-h-stack>
+        </mui-responsive>
         <div class="chart-region" part="chart-region">
           <div class="chart" role="img"></div>
           <div class="state loading" role="status" hidden>Loading market data</div>
@@ -247,7 +256,9 @@ class MuiFinancialChart extends HTMLElement {
       </section>
     `;
     this.chartContainer = this.shadowRoot.querySelector(".chart");
-    this.shadowRoot.querySelector("mui-tab-bar")?.addEventListener("tab-change", this.handleRangeChange);
+    this.shadowRoot
+      .querySelectorAll("mui-tab-bar")
+      .forEach((tabBar) => tabBar.addEventListener("tab-change", this.handleRangeChange));
     this.renderChrome();
   }
 
@@ -261,8 +272,7 @@ class MuiFinancialChart extends HTMLElement {
     const change = latest && previous ? latest.close - previous.close : 0;
     const changePercent = previous?.close ? (change / previous.close) * 100 : 0;
     const changeVariant = change < 0 ? "attention" : "positive";
-    const summary = root.querySelector('[part="summary"]');
-    if (summary) {
+    root.querySelectorAll('[part="summary"]').forEach((summary) => {
       summary.innerHTML = /*html*/ `
         <mui-h-stack space="var(--space-100)" aligny="baseline" wrap>
           <mui-body size="small" weight="bold">${this.escape(this.getAttribute("symbol") || "Instrument")}</mui-body>
@@ -274,27 +284,27 @@ class MuiFinancialChart extends HTMLElement {
           <mui-body size="x-small" weight="medium" variant="${changeVariant}">${latest && previous ? `${change >= 0 ? "+" : ""}${this.formatPrice(change)} (${changePercent >= 0 ? "+" : ""}${changePercent.toFixed(2)}%)` : ""}</mui-body>
         </mui-h-stack>
       `;
-    }
+    });
 
     const ranges = this.rangeValues();
-    const rangeContainer = root.querySelector("mui-tab-bar");
-    if (rangeContainer) {
+    root.querySelectorAll("mui-tab-bar").forEach((rangeContainer) => {
       const renderedRanges = Array.from(rangeContainer.querySelectorAll<HTMLElement>("mui-tab-item"), (item) =>
         item.dataset.range,
       );
       const rangesChanged = renderedRanges.length !== ranges.length || ranges.some((range, index) => range !== renderedRanges[index]);
 
       if (rangesChanged) {
+        const layout = rangeContainer.getAttribute("data-range-layout") || "default";
         rangeContainer.innerHTML = ranges
           .map(
             (range) =>
-              `<mui-tab-item id="range-${this.escape(range)}" data-range="${this.escape(range)}"${range === this.selectedRange ? " active" : ""}>${this.escape(range)}</mui-tab-item>`,
+              `<mui-tab-item id="range-${layout}-${this.escape(range)}" data-range="${this.escape(range)}"${range === this.selectedRange ? " active" : ""}>${this.escape(range)}</mui-tab-item>`,
           )
           .join("");
       } else {
         this.syncRangeButtons();
       }
-    }
+    });
 
     const loading = this.hasAttribute("loading");
     const error = this.getAttribute("error") || "";
@@ -325,16 +335,6 @@ class MuiFinancialChart extends HTMLElement {
       if (!datum) return;
       this.dispatchEvent(new CustomEvent("financial-chart-crosshair-change", { detail: { datum }, bubbles: true }));
     });
-    this.resizeObserver = new ResizeObserver(([entry]) => {
-      if (!entry || !this.chart) return;
-      const { width, height } = entry.contentRect;
-      this.chart.resize(Math.floor(width), Math.floor(height));
-      if (!this.hasInitialLayout && this.chartData.length) {
-        this.chart.timeScale().fitContent();
-        this.hasInitialLayout = true;
-      }
-    });
-    this.resizeObserver.observe(this.chartContainer);
   }
 
   private suppressAttributionFocus() {
@@ -444,6 +444,7 @@ class MuiFinancialChart extends HTMLElement {
   private chartOptions() {
     const colors = this.colors();
     return {
+      autoSize: true,
       layout: {
         background: { type: ColorType.Solid, color: colors.background },
         textColor: colors.text,
