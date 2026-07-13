@@ -30,14 +30,12 @@ export const muiDocs: MuiDocs = {
 
     accessibility: {
       designerList: [
-        "ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.",
-        "Neutral, Postive, Info support the role of STATUS for screen reader feedback.",
-        "Warning, Attention support the role of ALERT for screen reader feedback.",
+        "Plain, Neutral, Positive, and Info use aria-live='polite' with role='status'.",
+        "Warning and Attention use aria-live='assertive' with role='alert'.",
       ],
       engineerList: [
-        "ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.",
-        "Neutral, Postive, Info support the role of STATUS for screen reader feedback.",
-        "Warning, Attention support the role of ALERT for screen reader feedback.",
+        "Plain, Neutral, Positive, and Info use aria-live='polite' with role='status'.",
+        "Warning and Attention use aria-live='assertive' with role='alert'.",
       ],
     },
 
@@ -101,6 +99,22 @@ export const muiDocs: MuiDocs = {
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/5GXIEuluNJBlg8h4hDCfWH/ddeec560354ab06af73bf5c5d8749c12/message-attention.png",
         },
+      ],
+    },
+
+    stories: {
+      items: [
+        { key: "default", title: "Default", description: "A persistent page-level notice with a heading and supporting content.", list: ["Use Message for information that remains relevant within the current page or workflow."] },
+        { key: "lighter-guidance", title: "Use Lighter Guidance", description: "Uses lighter components for inline context and form guidance.", list: ["Use Body with an info icon for lightweight inline guidance.", "Use Form Message inside Field for validation, status, or helper copy."] },
+        { key: "body-text", title: "Slot: Body Text", description: "Places supporting text in the default slot.", list: ["Keep the heading short and put explanatory copy in the body."] },
+        { key: "list", title: "Slot: List", description: "Groups several related supporting points.", list: ["Use a list only when each point is independently useful and scannable."] },
+        { key: "icon", title: "Slot: Icon", description: "Replaces the preset icon with another Muibook icon.", list: ["Choose an icon that reinforces the message intent without replacing the heading."] },
+        { key: "sizes", title: "Sizes", description: "Adjusts Message density for its layout context.", list: ["Use large for prominent explanatory content, medium for standard page guidance, and small in compact regions.", "Keep heading and body concise at smaller sizes."] },
+        { key: "neutral", title: "Variant: Neutral", description: "Provides a calm treatment for non-critical persistent information.", list: ["Use for background status, settings information, or feature explanations."] },
+        { key: "positive", title: "Variant: Positive", description: "Communicates durable page-level success or completion.", list: ["Use for persistent success that applies to the page or workflow.", "Use lighter patterns for small inline confirmations."] },
+        { key: "info", title: "Variant: Info", description: "Provides page-level system information, feature changes, or workflow context.", list: ["Use for durable page-level information.", "Use Body with an info icon for lightweight inline context."] },
+        { key: "warning", title: "Variant: Warning", description: "Highlights a page-level issue that may require attention.", list: ["Use for unsaved changes, limitations, expirations, or action consequences.", "Use Form Message for field-specific warnings."] },
+        { key: "attention", title: "Variant: Attention", description: "Demands immediate focus for a critical page-level issue.", list: ["Use for urgent system errors, security issues, or time-sensitive interruptions.", "Do not use Attention for ordinary visual emphasis."] },
       ],
     },
 

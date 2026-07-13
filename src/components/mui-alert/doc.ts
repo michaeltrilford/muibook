@@ -24,12 +24,12 @@ export const muiDocs: MuiDocs = {
     },
     accessibility: {
       designerList: [
-        "ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.",
-        "The role is set to ALERT for immediate screen reader feedback.",
+        "Success and Info use aria-live='polite'; Warning and Error use aria-live='assertive'.",
+        "All variants use role='alert' for screen reader feedback.",
       ],
       engineerList: [
-        "ARIA-live is built in, using POLITE + ASSERTIVE for screen readers.",
-        "The role is set to ALERT for immediate screen reader feedback.",
+        "Success and Info use aria-live='polite'; Warning and Error use aria-live='assertive'.",
+        "All variants use role='alert' for screen reader feedback.",
       ],
     },
     anatomy: {
@@ -75,6 +75,27 @@ export const muiDocs: MuiDocs = {
           image:
             "https://images.ctfassets.net/i5uwscj4pkk2/zOH2Xinum4ZjIv3qp6LJM/180a2306dd624b6bc2fa55c0ad81ea0e/alert-error.png",
         },
+      ],
+    },
+
+    stories: {
+      items: [
+        { key: "success", title: "Success", description: "Confirms that an operation completed successfully.", list: ["Use for completed submissions, saves, or tasks.", "Keep the message specific to the completed action."] },
+        { key: "info", title: "Info", description: "Provides helpful, non-critical information or updates.", list: ["Use for contextual updates, tips, and non-urgent system information.", "Avoid using Info for content that does not need feedback emphasis."] },
+        { key: "warning", title: "Warning", description: "Highlights a potential issue or consequence that requires caution.", list: ["Use for unsaved changes, upcoming changes, or risky actions.", "Explain what users can do to avoid the consequence."] },
+        { key: "error", title: "Error", description: "Communicates a failed operation that requires attention or action.", list: ["Use for validation failures, system errors, or failed transactions.", "Describe the problem and provide a recovery path when possible."] },
+        { key: "custom-label", title: "Custom Label", description: "Replaces the preset label with context-specific text.", list: ["Keep the custom label short and consistent with the alert intent."] },
+        { key: "label-hidden", title: "Label Hidden", description: "Removes the visible label prefix when the content is self-explanatory.", list: ["Hide the label only when the remaining copy clearly communicates the alert intent."] },
+        { key: "large", title: "Large", description: "Provides higher prominence in spacious layouts.", list: ["Use for high-visibility feedback or longer content."] },
+        { key: "medium", title: "Medium", description: "Provides balanced readability and density.", list: ["Use for most in-flow feedback in forms and content pages."] },
+        { key: "small", title: "Small", description: "Provides compact feedback in dense layouts.", list: ["Use in side panels, tables, and compact control groups.", "Avoid long multi-line copy at this size."] },
+        { key: "size-scale", title: "Size Scale", description: "Compares all Alert sizes in one composition.", list: ["Choose size from layout density first, then message prominence.", "Keep Alert sizing consistent within a section."] },
+        { key: "small-undo", title: "Small / Undo", description: "Pairs a compact Alert with a short recovery action.", list: ["Use Undo only while the previous action can still be reversed."] },
+        { key: "link-sizes", title: "Link Action / Sizes", description: "Adds a navigational action across Alert sizes.", list: ["Use a Link when the next step navigates to supporting information."] },
+        { key: "small-icon", title: "Small / Icon Action", description: "Pairs a compact Alert with an icon-only action.", list: ["Give icon-only actions an accessible name."] },
+        { key: "close-action", title: "Action / Close Button", description: "Adds a dismiss action across Alert sizes.", list: ["Use only when dismissing the Alert does not hide required information.", "Give the close action an accessible name."] },
+        { key: "undo-action", title: "Action / Undo", description: "Adds a reversible follow-up action.", list: ["Keep Undo available only for the period in which reversal remains possible."] },
+        { key: "link-action", title: "Action / Link", description: "Adds a navigational follow-up action.", list: ["Use a Link for navigation and a Button for an immediate command."] },
       ],
     },
 

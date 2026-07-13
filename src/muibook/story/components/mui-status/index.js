@@ -16,6 +16,14 @@ class storyStatus extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Status");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Status"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -24,11 +32,7 @@ class storyStatus extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-status" title="Status"></story-api-types>
 
-      <story-card
-        title="Default"
-        description="A compact visual indicator for records, workflows, or system conditions."
-        usage="Use Status when the text describes the state of an object.|||Status is non-interactive by default, but can be interactive when composed as a trigger or compact state action.|||Use Badge for counts or tiny non-interactive metadata.|||Use Message for persistent page-level notices."
-      >
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
           <mui-status>Active</mui-status>
         </mui-v-stack>
@@ -37,11 +41,7 @@ class storyStatus extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Variants"
-        description="Use variant for semantic status intent."
-        usage="Omit variant for the default neutral status.|||Use info for informational state.|||Use positive, warning, or attention when the state has semantic feedback meaning."
-      >
+      <story-card id="variants" title="${storyMeta["variants"].title}" description="${storyMeta["variants"].description}" usage="${storyMeta["variants"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
           <mui-status variant="info">Queued</mui-status>
           <mui-status variant="positive">Synced</mui-status>
@@ -56,7 +56,7 @@ class storyStatus extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Sizes">
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
           <mui-status size="x-small">Draft</mui-status>
           <mui-status size="small">Draft</mui-status>
@@ -69,11 +69,7 @@ class storyStatus extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Standalone Colors"
-        description="Use color for categorical labels that are not semantic feedback states."
-        usage="Colors map to the shared categorical colour range.|||Use variant for semantic intent such as positive, warning, or attention.|||Use color for categories, teams, tags, or grouped workflow labels."
-      >
+      <story-card id="standalone-colors" title="${storyMeta["standalone-colors"].title}" description="${storyMeta["standalone-colors"].description}" usage="${storyMeta["standalone-colors"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
           <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
             <mui-status color="grey">Grey</mui-status>
@@ -104,11 +100,7 @@ class storyStatus extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Before and After Slots"
-        description="Use slots when the status benefits from an icon or compact accessory."
-        usage="Icons are sized down inside Status so they remain proportional.|||Check slot alignment across status sizes before using a status in dense layouts."
-      >
+      <story-card id="slots" title="${storyMeta["slots"].title}" description="${storyMeta["slots"].description}" usage="${storyMeta["slots"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
           <mui-h-stack space="var(--space-200)" aligny="center" alignx="start">
             <mui-status size="small" variant="positive">
@@ -153,11 +145,7 @@ class storyStatus extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Action"
-        description="Use action only when the status itself is interactive."
-        usage="Status is non-interactive by default.|||Add action when it opens a menu, changes a filter, or performs a compact state action.|||Action applies button semantics, keyboard activation, focus styling, and pointer cursor."
-      >
+      <story-card id="action" title="${storyMeta["action"].title}" description="${storyMeta["action"].description}" usage="${storyMeta["action"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)" alignx="start">
           <mui-status action variant="info">
             <mui-icon-right-chevron slot="after"></mui-icon-right-chevron>
@@ -172,11 +160,7 @@ class storyStatus extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Dropdown Composition"
-        description="Status can be composed inside other controls when the state is also the selected value."
-        usage="Own the selected value in the parent app or composition.|||Use Dropdown for menu behavior and Status for the visible selected state.|||Do not rely on Dropdown to mutate the slotted Status automatically."
-      >
+      <story-card id="dropdown" title="${storyMeta["dropdown"].title}" description="${storyMeta["dropdown"].description}" usage="${storyMeta["dropdown"].usage}">
         <mui-dropdown slot="body" data-status-dropdown size="medium">
           <mui-status slot="action" action variant="positive" data-status-trigger>
             <mui-icon-check slot="before"></mui-icon-check>
@@ -240,6 +224,7 @@ class storyStatus extends HTMLElement {
         storybook="${data.storybook}"
         accessibility="${data.accessibility.engineerList.join("|||")}"
         imports='["@muibook/components/mui-status"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

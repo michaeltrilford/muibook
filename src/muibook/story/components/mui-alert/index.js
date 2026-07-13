@@ -8,6 +8,14 @@ class storyAlert extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Alert");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Alert"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
     const attrsReference = JSON.stringify([
       {
         component: "mui-button",
@@ -22,13 +30,7 @@ class storyAlert extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-alert" title="Alert"></story-api-types>
 
-      <story-card
-        title="Success"
-        description="Indicates that an operation or action has been completed successfully."
-        usage="Form submissions that have been processed without errors|||Successful data updates or saves|||Confirmation of completed tasks or actions."
-        usageLink="https://guides.muibook.com/alert"
-        accessibility="ARIA-live of POLITE is set on this variant."
-      >
+      <story-card id="success" title="${storyMeta["success"].title}" description="${storyMeta["success"].description}" usage="${storyMeta["success"].usage}">
         <div slot="body">
           <mui-alert variant="success" size="medium">Your message has been sent successfully.</mui-alert>
         </div>
@@ -41,13 +43,7 @@ class storyAlert extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Info"
-        description="Provides general information or updates that are helpful but not critical."
-        usage="Announcing new features or updates|||Providing contextual information or tips|||Informing users about non-urgent system statuses."
-        usageLink="https://guides.muibook.com/alert"
-        accessibility="ARIA-live of POLITE is set on this variant."
-      >
+      <story-card id="info" title="${storyMeta["info"].title}" description="${storyMeta["info"].description}" usage="${storyMeta["info"].usage}">
         <div slot="body">
           <mui-alert variant="info" size="medium">Please read the comments carefully.</mui-alert>
         </div>
@@ -60,13 +56,7 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-        title="Warning"
-        description="Alerts users to potential issues or situations that require caution."
-        usage="Notifying about unsaved changes||| Indicating deprecated features or upcoming changes||| Highlighting actions that may have unintended consequences."
-        usageLink="https://guides.muibook.com/alert"
-        accessibility="ARIA-live of ASSERTIVE is set on this variant."
-      >
+      <story-card id="warning" title="${storyMeta["warning"].title}" description="${storyMeta["warning"].description}" usage="${storyMeta["warning"].usage}">
         <div slot="body">
           <mui-alert variant="warning" size="medium">There was a problem with your network connection. <mui-link href="#">Learn more</mui-link></mui-alert>
         </div>
@@ -79,13 +69,7 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-        title="Error"
-        description="Indicates that an error has occurred, requiring user attention or action."
-        usage="Form validation errors||| System failures or exceptions||| Failed operations or transactions."
-        usageLink="https://guides.muibook.com/alert"
-        accessibility="ARIA-live of ASSERTIVE is set on this variant."
-      >
+      <story-card id="error" title="${storyMeta["error"].title}" description="${storyMeta["error"].description}" usage="${storyMeta["error"].usage}">
         <div slot="body">
           <mui-alert variant="error" size="medium">Please read the comments carefully. <mui-link href="#">Learn more</mui-link></mui-alert>
         </div>
@@ -98,10 +82,7 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-        title="Custom Label"
-        description="Override the default label text with your own message prefix."
-      >
+      <story-card id="custom-label" title="${storyMeta["custom-label"].title}" description="${storyMeta["custom-label"].description}" usage="${storyMeta["custom-label"].usage}">
         <div slot="body">
           <mui-alert variant="warning" size="medium" label="Maintenance:">Scheduled downtime starts at 11:30 PM.</mui-alert>
         </div>
@@ -114,10 +95,7 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-        title="Label Hidden"
-        description="Hide the default/custom label prefix and render only your content."
-      >
+      <story-card id="label-hidden" title="${storyMeta["label-hidden"].title}" description="${storyMeta["label-hidden"].description}" usage="${storyMeta["label-hidden"].usage}">
         <div slot="body">
           <mui-alert variant="info" size="medium" hide-label>System status updated successfully.</mui-alert>
         </div>
@@ -130,11 +108,7 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-        title="Large"
-        description="Large alert size for higher prominence."
-        usage="Use large for high-visibility feedback in spacious layouts.|||Prefer large when long content or strong emphasis is needed."
-      >
+      <story-card id="large" title="${storyMeta["large"].title}" description="${storyMeta["large"].description}" usage="${storyMeta["large"].usage}">
         <div slot="body">
           <mui-alert variant="info" size="large">Please read the comments carefully.</mui-alert>
         </div>
@@ -147,11 +121,7 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-        title="Medium"
-        description="Medium alert size for denser layouts."
-        usage="Use medium for most in-flow feedback in forms and content pages.|||This is the default size for balanced readability and density."
-      >
+      <story-card id="medium" title="${storyMeta["medium"].title}" description="${storyMeta["medium"].description}" usage="${storyMeta["medium"].usage}">
         <div slot="body">
           <mui-alert variant="info" size="medium">Please read the comments carefully.</mui-alert>
         </div>
@@ -164,11 +134,7 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-        title="Small"
-        description="Compact alert size for dense layouts."
-        usage="Use small in compact UI areas such as side panels, data tables, and dense control groups.|||Avoid long multi-line copy at this size."
-      >
+      <story-card id="small" title="${storyMeta["small"].title}" description="${storyMeta["small"].description}" usage="${storyMeta["small"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-alert variant="success" size="small">Saved successfully.</mui-alert>
           <mui-alert variant="info" size="small">Your settings were updated.</mui-alert>
@@ -184,11 +150,7 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-        title="Size Scale"
-        description="Compare Large, Medium, and Small in one view."
-        usage="Choose size based on layout density first, then message emphasis.|||Keep a consistent size within the same section unless hierarchy requires a change."
-      >
+      <story-card id="size-scale" title="${storyMeta["size-scale"].title}" description="${storyMeta["size-scale"].description}" usage="${storyMeta["size-scale"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-alert variant="info" size="large">Large alert size.</mui-alert>
           <mui-alert variant="info" size="medium">Medium alert size.</mui-alert>
@@ -203,11 +165,7 @@ class storyAlert extends HTMLElement {
       </story-code-block>
       </story-card>
 
-      <story-card
-        title="Small / Undo"
-        description="Small alerts with text actions."
-        usageLink="https://guides.muibook.com/alert"
-      >
+      <story-card id="small-undo" title="${storyMeta["small-undo"].title}" description="${storyMeta["small-undo"].description}" usage="${storyMeta["small-undo"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-alert variant="success" size="small">
             Message sent.
@@ -238,13 +196,7 @@ class storyAlert extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Link Action / Sizes"
-        description="Link actions slotted across large, medium, and small alert sizes."
-        usageLink="https://guides.muibook.com/alert"
-        usage="Use for inline link actions across all alert density options."
-        accessibility="Keep action links keyboard-focusable and readable at each size."
-      >
+      <story-card id="link-sizes" title="${storyMeta["link-sizes"].title}" description="${storyMeta["link-sizes"].description}" usage="${storyMeta["link-sizes"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-alert variant="success" size="large">
             Large success alert with link action.
@@ -325,11 +277,7 @@ class storyAlert extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Small / Icon Action"
-        description="Small alerts with icon actions sized to match."
-        usageLink="https://guides.muibook.com/alert"
-      >
+      <story-card id="small-icon" title="${storyMeta["small-icon"].title}" description="${storyMeta["small-icon"].description}" usage="${storyMeta["small-icon"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-alert variant="success" size="small">
             Saved successfully.
@@ -375,13 +323,7 @@ class storyAlert extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Action / Close button"
-        description="Optional close action shown across alert sizes."
-        usageLink="https://guides.muibook.com/alert"
-        usage="Use large for default prominence.|||Use medium for balanced density.|||Use small for compact interfaces."
-        accessibility="Ensure close action has an accessible name and remains keyboard focusable."
-      >
+      <story-card id="close-action" title="${storyMeta["close-action"].title}" description="${storyMeta["close-action"].description}" usage="${storyMeta["close-action"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-alert variant="success" size="large">
             Large alert with close action. <mui-link href="#">Learn more</mui-link>
@@ -420,11 +362,7 @@ class storyAlert extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Action / Undo"
-        description="Optional action to for tasks like undoing an action."
-        usageLink="https://guides.muibook.com/alert"
-      >
+      <story-card id="undo-action" title="${storyMeta["undo-action"].title}" description="${storyMeta["undo-action"].description}" usage="${storyMeta["undo-action"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-alert variant="success" size="medium">
             Your message has been sent successfully.
@@ -469,11 +407,7 @@ class storyAlert extends HTMLElement {
       </story-card>
 
 
-      <story-card
-        title="Action / Link"
-        description="Optional action to for tasks like undoing an action."
-        usageLink="https://guides.muibook.com/alert"
-      >
+      <story-card id="link-action" title="${storyMeta["link-action"].title}" description="${storyMeta["link-action"].description}" usage="${storyMeta["link-action"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
 
           <mui-alert variant="success" size="medium">
@@ -533,6 +467,7 @@ class storyAlert extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-alert"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

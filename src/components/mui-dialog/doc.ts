@@ -66,6 +66,18 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        { key: "confirmation", title: "Confirmation Dialog", description: "Requests a focused decision without leaving the current context.", list: ["Use for decisions that require explicit confirmation or cancellation.", "Connect the title and supporting copy with aria-labelledby and aria-describedby."] },
+        { key: "bordered", title: "Bordered Dialog", description: "Adds a visible boundary to the Dialog surface.", list: ["Use --dialog-border only when the surrounding surface does not provide enough separation.", "Keep the semantic Dialog structure unchanged when adjusting its visual treatment."] },
+        { key: "headerless", title: "Headerless Dialog", description: "Omits the title slot and built-in close action.", list: ["Use only when the body provides an accessible name or description and the footer offers clear dismissal.", "Do not remove both the header close action and an equivalent cancel path."] },
+        { key: "delete-confirmation", title: "Delete Confirmation", description: "Confirms an irreversible destructive action.", list: ["State what will be deleted and that the action cannot be undone.", "Keep Cancel visually neutral and label the attention action with the specific destructive verb."] },
+        { key: "tip", title: "Tip Dialog", description: "Presents concise reference or guidance content.", list: ["Use for short supporting information that benefits from focused presentation.", "Provide an accessible description even when explanatory copy is visually hidden."] },
+        { key: "media", title: "Media Dialog with Close", description: "Presents a larger preview with natural-height content.", list: ["Use content-max-height='none' when media should determine the Dialog body height.", "Keep a title or another clear close action available for preview-only Dialogs."] },
+        { key: "loading", title: "Loading Dialog", description: "Communicates progress for a blocking asynchronous task.", list: ["Use only when users must wait before returning to the underlying workflow.", "Expose a concise live status and provide cancellation when the operation can safely stop."] },
+      ],
+    },
+
     compositions: {
       description: "",
       items: [

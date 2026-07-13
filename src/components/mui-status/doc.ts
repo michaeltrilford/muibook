@@ -65,6 +65,18 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        { key: "default", title: "Default", description: "A compact visual indicator for records, workflows, or system conditions.", list: ["Use Status when the text describes the state of an object.", "Use Badge for supporting labels and Message for persistent page-level notices."] },
+        { key: "variants", title: "Variants", description: "Communicates semantic status intent.", list: ["Omit variant for a neutral state.", "Use info, positive, warning, or attention according to the state meaning."] },
+        { key: "sizes", title: "Sizes", description: "Matches Status density to its surrounding content.", list: ["Use x-small in compact controls and dense tables.", "Use small or medium when the state needs more prominence or includes accessories."] },
+        { key: "standalone-colors", title: "Standalone Colors", description: "Applies categorical colour without implying feedback severity.", list: ["Use color for categories, teams, tags, or grouped workflow labels.", "Use variant for semantic intent such as positive, warning, or attention."] },
+        { key: "slots", title: "Before and After Slots", description: "Adds an icon or compact accessory to the Status.", list: ["Icons inherit proportional sizing from Status.", "Keep accessories concise in dense layouts."] },
+        { key: "action", title: "Action", description: "Makes Status an interactive compact state control.", list: ["Add action only when Status opens a menu, changes a filter, or performs a state action.", "The action treatment supplies button semantics, keyboard activation, and focus styling."] },
+        { key: "dropdown", title: "Dropdown Composition", description: "Uses Status as the selected value and trigger for a Dropdown.", list: ["Own the selected value in the parent application.", "Use Dropdown for menu behavior and Status for the visible state."] },
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [],

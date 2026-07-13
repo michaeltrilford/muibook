@@ -8,6 +8,14 @@ class storyMessage extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Message");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Message"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -17,11 +25,7 @@ class storyMessage extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-message" title="Message"></story-api-types>
 
-      <story-card
-        title="Default"
-        description="Use Message as a persistent page-level notice with a heading and slotted body content."
-        accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
-      >
+      <story-card id="default" title="${storyMeta["default"].title}" description="${storyMeta["default"].description}" usage="${storyMeta["default"].usage}">
         <mui-message heading="Workspace notice" slot="body">
           <mui-body>This notice applies to the current workspace and remains visible while the status is relevant.</mui-body>
         </mui-message>
@@ -34,11 +38,7 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Use Lighter Guidance"
-        description="For inline context or form helper copy, use lighter components instead of Message."
-        usage="Use Body with an info icon for lightweight inline guidance.|||Use Form Message inside Field for form guidance, validation, or status copy.|||When Form Message is used inside mui-field it inherits size='medium'."
-      >
+      <story-card id="lighter-guidance" title="${storyMeta["lighter-guidance"].title}" description="${storyMeta["lighter-guidance"].description}" usage="${storyMeta["lighter-guidance"].usage}">
         <mui-v-stack slot="body" space="var(--space-600)" style="padding: var(--space-600)">
           <mui-body variant="secondary">
             <mui-icon-info slot="before"></mui-icon-info>
@@ -78,10 +78,7 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Slot: Body text"
-        description="Supporting content belongs in the default slot; the heading should stay short."
-      >
+      <story-card id="body-text" title="${storyMeta["body-text"].title}" description="${storyMeta["body-text"].description}" usage="${storyMeta["body-text"].usage}">
         <mui-message heading="Message heading" slot="body">
           <mui-body>This is an informational message about updates.</mui-body>
         </mui-message>
@@ -94,10 +91,7 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Slot: List"
-        description="Use list content when the page-level notice needs several supporting points."
-      >
+      <story-card id="list" title="${storyMeta["list"].title}" description="${storyMeta["list"].description}" usage="${storyMeta["list"].usage}">
 
         <mui-message heading="Message heading" slot="body">
           <mui-list as="ul">
@@ -132,10 +126,7 @@ class storyMessage extends HTMLElement {
 
       </story-card>
 
-      <story-card
-        title="Slot: Icon"
-        description="Icon is customised via the icon property, which accepts any mui-icon-[name] from the mui icon-set."
-      >
+      <story-card id="icon" title="${storyMeta["icon"].title}" description="${storyMeta["icon"].description}" usage="${storyMeta["icon"].usage}">
         <mui-message slot="body" heading="Accessibility" icon="mui-icon-accessibility">
           <mui-body>Body content...</mui-body>
         </mui-message>
@@ -148,12 +139,7 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Size: Large, Medium, Small"
-        description="Message supports size density for layout and content."
-        usage="Use large for prominent explanatory content blocks.|||Use medium for standard page-level guidance in denser layouts.|||Use small for compact regions where space is limited."
-        accessibility="Keep heading and body concise at smaller sizes to preserve readability."
-      >
+      <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-v-stack slot="body" space="var(--space-200)">
           <mui-message heading="Large Message" variant="info" size="large">
             <mui-body>Large message body content.</mui-body>
@@ -181,13 +167,7 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Variant: Neutral"
-        description="A calm, balanced tone for non-critical, persistent messages."
-        usage="Use on settings or system pages to display non-urgent information||| Suitable for background status like sync confirmation or feature explanations."
-        usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
-      >
+      <story-card id="neutral" title="${storyMeta["neutral"].title}" description="${storyMeta["neutral"].description}" usage="${storyMeta["neutral"].usage}">
         <mui-message heading="Sync Settings" slot="body" variant="neutral">
             <mui-body size="small">Your preferences are backed up and synced across devices.</mui-body>
         </mui-message>
@@ -208,13 +188,7 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Variant: Positive"
-        description="The Positive state conveys durable page-level success or completion status."
-        usage="Use for persistent success notices that apply to the page or workflow.|||Use lighter Body or Form Message patterns for small inline confirmations."
-        usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
-      >
+      <story-card id="positive" title="${storyMeta["positive"].title}" description="${storyMeta["positive"].description}" usage="${storyMeta["positive"].usage}">
         <mui-message heading="Report Ready for Download" slot="body" variant="positive">
           <mui-body>The report has been generated and is ready for download.</mui-body>
           <mui-link>Download Your Report</mui-link>
@@ -236,13 +210,7 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Variant: Info"
-        description="The Info state provides page-level system information, feature changes, or workflow context."
-        usage="Use for durable page-level information.|||For inline context, use Body size='small' with mui-icon-info in slot='before'."
-        usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of POLITE is set on this variant||| Role of STATUS is set on this variant."
-      >
+      <story-card id="info" title="${storyMeta["info"].title}" description="${storyMeta["info"].description}" usage="${storyMeta["info"].usage}">
         <mui-message heading="New Feature Available" slot="body" variant="info">
           <mui-body>A new dashboard layout is now available. Explore the enhanced features.</mui-body>
           <mui-link>Try the New Layout</mui-link>
@@ -264,13 +232,7 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Variant: Warning"
-        description="The Warning state alerts users to page-level issues that may require attention."
-        usage="Use for unsaved changes, action consequences, limitations, or expirations.|||Use Form Message for field-specific warnings."
-        usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of ASSERTIVE is set on this variant||| Role of ALERT is set on this variant."
-      >
+      <story-card id="warning" title="${storyMeta["warning"].title}" description="${storyMeta["warning"].description}" usage="${storyMeta["warning"].usage}">
         <mui-message heading="Password Expiry Warning" slot="body" variant="warning">
           <mui-body>Your password will expire in 3 days. Please update it to maintain account security.</mui-body>
           <mui-link>Update Your Password</mui-link>
@@ -292,13 +254,7 @@ class storyMessage extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card
-        title="Variant: Attention"
-        description="The Attention state demands immediate focus for critical page-level issues."
-        usage='Use for urgent problems such as system errors, security issues, or time-sensitive interruptions.|||Do not use Attention for ordinary content emphasis.'
-        usageLink="https://guides.muibook.com/message"
-        accessibility="ARIA-live of ASSERTIVE is set on this variant||| Role of ALERT is set on this variant."
-      >
+      <story-card id="attention" title="${storyMeta["attention"].title}" description="${storyMeta["attention"].description}" usage="${storyMeta["attention"].usage}">
         <mui-message heading="Scheduled Maintenance" slot="body" variant="attention">
           <mui-body>Our website will be undergoing maintenance on [Date] from [Time] to [Time]. Some features may be unavailable during this period.</mui-body>
           <mui-link>View Maintenance Schedule</mui-link>
@@ -334,6 +290,7 @@ class storyMessage extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-message"]'>
+        <story-quicklinks slot="message" heading="Quicklinks" links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"></story-quicklinks>
         ${stories}
       </story-template>
     `;

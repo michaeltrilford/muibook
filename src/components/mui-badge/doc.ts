@@ -79,6 +79,16 @@ export const muiDocs: MuiDocs = {
       ],
     },
 
+    stories: {
+      items: [
+        { key: "default", title: "Default", description: "A compact, non-interactive supporting label for presentational metadata.", list: ["Use Badge when the label adds context to the surrounding UI.", "Use Status when the label is the primary state value for a record or workflow."] },
+        { key: "sizes", title: "Sizes", description: "Matches Badge density to the surrounding component scale.", list: ["Use smaller sizes in dense controls, navigation, and metadata rows.", "Use medium or large in roomier cards, messages, or prominent content."] },
+        { key: "variants", title: "Variants", description: "Applies lightweight semantic emphasis to supporting metadata.", list: ["Use neutral for default supporting labels.", "Use positive, warning, or attention only when the metadata carries semantic meaning.", "Use overlay for labels placed on media surfaces."] },
+        { key: "standalone-colors", title: "Standalone Colors", description: "Applies a shared categorical colour to the Badge background.", list: ["Use named colours for categories rather than semantic feedback.", "The color attribute changes the background only; text colour follows the selected variant."] },
+        { key: "custom-color", title: "Custom Color", description: "Applies a one-off CSS background value.", list: ["Prefer shared named colours for system consistency.", "Reserve custom values for brand, partner, or campaign-specific labels."] },
+      ],
+    },
+
     compositions: {
       description: "Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.",
       items: [

@@ -10,6 +10,14 @@ class storyDialog extends HTMLElement {
 
   async connectedCallback() {
     const data = await getComponentDocs("Dialog");
+    const storyItems = data?.stories?.items;
+    if (!storyItems?.length) {
+      this.shadowRoot.innerHTML = `<story-metadata-empty component="Dialog"></story-metadata-empty>`;
+      return;
+    }
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -35,7 +43,7 @@ class storyDialog extends HTMLElement {
       </mui-v-stack>
 
       <!-- Dialog with Actions -->
-      <story-card title="Confirmation Dialog">
+      <story-card id="confirmation" title="${storyMeta["confirmation"].title}" description="${storyMeta["confirmation"].description}" usage="${storyMeta["confirmation"].usage}">
         <mui-button variant="primary" data-dialog="hook-1" slot="body">Open Dialog</mui-button>
         <mui-dialog data-dialog="hook-1" width="400px" slot="body" aria-labelledby="dialog-title-1" aria-describedby="dialog-desc-1">
           <mui-heading size="4" level="4" slot="title" id="dialog-title-1">Dialog Title</mui-heading>
@@ -75,7 +83,7 @@ class storyDialog extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Bordered Dialog">
+      <story-card id="bordered" title="${storyMeta["bordered"].title}" description="${storyMeta["bordered"].description}" usage="${storyMeta["bordered"].usage}">
         <mui-button variant="secondary" data-dialog="hook-border" slot="body">Open Bordered Dialog</mui-button>
         <mui-dialog
           data-dialog="hook-border"
@@ -97,7 +105,7 @@ class storyDialog extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Headerless Dialog">
+      <story-card id="headerless" title="${storyMeta["headerless"].title}" description="${storyMeta["headerless"].description}" usage="${storyMeta["headerless"].usage}">
         <mui-button variant="secondary" data-dialog="hook-headerless" slot="body">Open Headerless</mui-button>
         <mui-dialog
           data-dialog="hook-headerless"
@@ -124,7 +132,7 @@ class storyDialog extends HTMLElement {
         </story-code-block>
       </story-card>
 
-      <story-card title="Delete Confirmation">
+      <story-card id="delete-confirmation" title="${storyMeta["delete-confirmation"].title}" description="${storyMeta["delete-confirmation"].description}" usage="${storyMeta["delete-confirmation"].usage}">
         <mui-button data-dialog="hook-2" slot="body" variant="attention">Delete</mui-button>
 
         <mui-dialog data-dialog="hook-2" width="400px" slot="body" aria-labelledby="dialog-title-2" aria-describedby="dialog-desc-2">
@@ -168,7 +176,7 @@ class storyDialog extends HTMLElement {
       </story-card>
 
       <!-- Tip / Guidance Dialog -->
-      <story-card title="Tip Dialog">
+      <story-card id="tip" title="${storyMeta["tip"].title}" description="${storyMeta["tip"].description}" usage="${storyMeta["tip"].usage}">
         <mui-button data-dialog="hook-3" slot="body">Show Tip</mui-button>
         <mui-dialog data-dialog="hook-3" width="400px" slot="body" aria-labelledby="dialog-title-3" aria-describedby="dialog-desc-3">
           <mui-heading size="4" level="4" slot="title" id="dialog-title-3">Keyboard Shortcuts</mui-heading>
@@ -234,7 +242,7 @@ class storyDialog extends HTMLElement {
       </story-card>
 
       <!-- Media Dialog with Close Action -->
-      <story-card title="Media Dialog w/ Close">
+      <story-card id="media" title="${storyMeta["media"].title}" description="${storyMeta["media"].description}" usage="${storyMeta["media"].usage}">
         <mui-button data-dialog="hook-4" slot="body">Open Preview</mui-button>
         <mui-dialog data-dialog="hook-4" width="600px" slot="body" aria-labelledby="dialog-title-4" aria-describedby="dialog-desc-4">
           <mui-heading size="4" level="4" slot="title" id="dialog-title-4">Preview Card</mui-heading>
@@ -310,7 +318,7 @@ class storyDialog extends HTMLElement {
       </story-card>
 
       <!-- Loading / Progress Dialog -->
-      <story-card title="Loading Dialog">
+      <story-card id="loading" title="${storyMeta["loading"].title}" description="${storyMeta["loading"].description}" usage="${storyMeta["loading"].usage}">
         <mui-button data-dialog="hook-5" slot="body">Start Upload</mui-button>
         <mui-dialog data-dialog="hook-5" width="500px" slot="body" aria-labelledby="dialog-title-5" aria-describedby="dialog-desc-5">
           <mui-heading size="4" level="4" slot="title" id="dialog-title-5">Uploading</mui-heading>
@@ -364,6 +372,11 @@ class storyDialog extends HTMLElement {
         accessibility="${data.accessibility.engineerList.join("|||")}"
 
         imports='["@muibook/components/mui-dialog"]'>
+        <story-quicklinks
+          slot="message"
+          heading="Quicklinks"
+          links="${storyItems.map((story) => `${story.key}::${story.title}`).join("|||")}"
+        ></story-quicklinks>
         ${stories}
       </story-template>
     `;
