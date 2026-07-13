@@ -1,6 +1,6 @@
 export const muiApi = {
   "mui-submenu": {
-    description: "Reveals a viewport-aware nested Menu from a Button inside a parent Menu.",
+    description: "Reveals a portalled, viewport-aware nested Menu from a Button inside a parent Menu.",
     attributes: [],
     slots: [
       {
