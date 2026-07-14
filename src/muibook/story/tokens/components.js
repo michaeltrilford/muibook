@@ -263,6 +263,7 @@ class tokensComponents extends HTMLElement {
 
           <spec-card id="code" title="Code" github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-code/index.ts">
             <story-token-slat slot="body" token="--code-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--code-background-surface" variant="color"></story-token-slat>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Text</mui-link> tokens</mui-body>
             <mui-body size="x-small" class="reference" slot="body">Refer to <mui-link size="x-small" href="/semantic-design-tokens">Surface</mui-link> tokens</mui-body>
           </spec-card>
@@ -633,8 +634,11 @@ class tokensComponents extends HTMLElement {
             github="https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-tabs"
           >
             <story-token-slat slot="body" token="--tab-border-color" variant="border-color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-border-color-surface" variant="border-color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-background" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-background-surface" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-background-active" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--tab-background-active-surface" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-icon" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-icon-active" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--tab-text-color" variant="text-color"></story-token-slat>

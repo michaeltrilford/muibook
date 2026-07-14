@@ -33,6 +33,10 @@ _Status: WIP_
 - Added `--chip-background-menu` for direct Chip and Chip Input compositions inside Menu. Mui keeps the existing white treatment in light mode and uses `grey-900` in dark mode without changing the global Chip background; JAL, ANA, Sensei, and Paperclip provide matching brand mappings.
 - Added the `content` CSS part to `mui-body`, exposing the internal span that wraps default body text for targeted composed-component styling.
 - Pending Thinking states in `mui-work-log` now use a text-clipped linear-gradient shimmer with reduced-motion support. The theme-aware `--work-log-shimmer-color-primary` and `--work-log-shimmer-color-secondary` tokens are mapped for Mui, JAL, ANA, Sensei, and Paperclip themes.
+- Added `--surface-elevated-50` and `--surface-recessed-50` as theme-aware OKLCH interpolations between the base surface and existing `100` depth. Shared semantic aliases now drive Tab Bar, Carousel, Dialog, Drawer, and financial-chart surfaces without duplicating light and dark mappings.
+- `mui-tab-bar` now supports `usage="surface"` with dedicated `--tab-border-color-surface`, `--tab-background-surface`, and `--tab-background-active-surface` tokens. Card, Card Body, Dialog, Drawer, and Carousel apply the usage automatically through neutral layout wrappers while preserving the nearest nested surface owner.
+- `mui-code` now supports `usage="surface"` and `--code-background-surface`, defaulting to `--surface-elevated-200`. Code detects Card, Card Body, Dialog, Drawer, and Carousel ancestors automatically, replacing the previous Card-only `card-slot` runtime treatment.
+- Dialog and Drawer backgrounds now map through `--surface-elevated-100`, Carousel uses the same elevated semantic background, and Slide Frame content uses the base `--surface` so composed surfaces retain a consistent depth hierarchy across themes.
 - Input and Textarea now support public `padding-block` and `padding-inline` overrides matching Select; Date Picker, Time Picker, Search Input, and Chip Input forward those values to their internal Input.
 - Plain Input and Select controls now use matching inline padding at every size, including `space-100` at x-small and `space-200` at small.
 - Renamed `mui-prompt-message` to `mui-chat-message` and moved its component export, story, documentation, and route to Chat Message.
@@ -50,6 +54,9 @@ _Status: WIP_
 ### Fixed
 
 - `mui-tab-bar` now synchronizes size, variant, position, active state, and highlight when Tab Items are added dynamically. Financial Chart range controls now retain `x-small` sizing, preserve focus during arrow-key navigation, and update the visible dataset without replacing the Tab Bar instance. The required TradingView attribution remains visible and clickable but no longer interrupts sequential keyboard navigation.
+- Financial Chart now remains unframed for flexible composition, uses Card in its framed examples, and applies surface usage to its internal range Tabs when composed inside a recognized surface.
+- Reduced the default active Tab shadow opacity in both light and dark themes while preserving branded theme control through the surface-specific Tab tokens.
+- Drawer resize rails now use a compact `--stroke-size-500` interaction column with a clearer `--stroke-size-200` inner divider. Rail colors map through the shared border and elevated-surface semantics, improving consistency across Mui and branded themes without app-shell token leakage.
 - Input, Select, and Textarea now keep their size-specific focus outlines as internal defaults, allowing instance-level `--input-focus-outline`, `--select-focus-outline`, and `--textarea-focus-outline` overrides to take effect without changing shared outline primitives.
 - Menu now restores authored form-control `size`, `menu-slot`, `padding-inline`, and `surface` attributes when controls leave the Menu or the Menu disconnects.
 - Textarea now combines row and padding custom properties in one style attribute so both configurations apply reliably.

@@ -349,19 +349,13 @@ html[data-theme="light"] {
   --addon-background: var(--grey-50);
 
   /* Tabs */
-  --tab-border-color: var(--grey-300);
-  --tab-background: var(--grey-200);
   --tab-icon: var(--grey-900);
   --tab-text-color: var(--grey-900);
-  --tab-background-active: var(--white);
   --tab-icon-active: var(--black);
   --tab-text-color-active: var(--black);
-  --tab-shadow-active-color: var(--black-opacity-10);
+  --tab-shadow-active-color: var(--black-opacity-5);
   --tab-dot-color: var(--grey-300);
   --tab-dot-color-active: var(--grey-900);
-
-  /* Carousel */
-  --carousel-background: var(--white);
 
   /* Avatar */
   --avatar-background-neutral: var(--grey-200);
@@ -467,7 +461,6 @@ html[data-theme="light"] {
   --range-input-thumb-color: var(--black);
 
   /* Financial Chart */
-  --financial-chart-background: var(--surface-elevated-100);
   --financial-chart-border-color: var(--border-color);
   --financial-chart-text-color: var(--text-color);
   --financial-chart-text-color-secondary: var(--text-color-secondary);
@@ -485,20 +478,34 @@ html[data-theme="light"] {
   --financial-chart-action-text-color-active: var(--action-primary-text-color);
 
   /* Market Sparkline */
-  --market-sparkline-background: var(--surface-elevated-100);
   --market-sparkline-text-color: var(--text-color-secondary);
   --market-sparkline-positive-color: var(--feedback-positive-border-color);
   --market-sparkline-negative-color: var(--feedback-attention-border-color);
   --market-sparkline-neutral-color: var(--categorical-blue);
-  --market-sparkline-positive-area-top-color: color-mix(in srgb, var(--feedback-positive-border-color) 32%, transparent);
-  --market-sparkline-positive-area-bottom-color: color-mix(in srgb, var(--feedback-positive-border-color) 2%, transparent);
-  --market-sparkline-negative-area-top-color: color-mix(in srgb, var(--feedback-attention-border-color) 32%, transparent);
-  --market-sparkline-negative-area-bottom-color: color-mix(in srgb, var(--feedback-attention-border-color) 2%, transparent);
+  --market-sparkline-positive-area-top-color: color-mix(
+    in srgb,
+    var(--feedback-positive-border-color) 32%,
+    transparent
+  );
+  --market-sparkline-positive-area-bottom-color: color-mix(
+    in srgb,
+    var(--feedback-positive-border-color) 2%,
+    transparent
+  );
+  --market-sparkline-negative-area-top-color: color-mix(
+    in srgb,
+    var(--feedback-attention-border-color) 32%,
+    transparent
+  );
+  --market-sparkline-negative-area-bottom-color: color-mix(
+    in srgb,
+    var(--feedback-attention-border-color) 2%,
+    transparent
+  );
   --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--categorical-blue) 32%, transparent);
   --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 2%, transparent);
 
   /* Financial Bar Chart */
-  --financial-bar-chart-background: var(--surface-elevated-100);
   --financial-bar-chart-text-color: var(--text-color-secondary);
   --financial-bar-chart-border-color: var(--border-color);
   --financial-bar-chart-grid-color: var(--black-opacity-10);
@@ -509,7 +516,6 @@ html[data-theme="light"] {
   --financial-bar-chart-baseline-color: var(--border-color);
 
   /* Comparison Chart */
-  --comparison-chart-background: var(--surface-elevated-100);
   --comparison-chart-text-color: var(--text-color-secondary);
   --comparison-chart-border-color: var(--border-color);
   --comparison-chart-grid-color: var(--black-opacity-10);
@@ -530,13 +536,7 @@ html[data-theme="light"] {
   --stepper-error-color: var(--text-color-attention);
   --stepper-disabled-opacity: 0.75;
 
-  /* Dialog */
-  --dialog-background: var(--white);
-
   /* Drawer */
-  --drawer-background: var(--white);
-  --drawer-resize-rail-background: var(--grey-200);
-  --drawer-resize-rail-inner-background: var(--white);
   --drawer-resize-rail-threshold-indicator: var(--black);
 }
 
@@ -808,19 +808,13 @@ html[data-theme="dark"] {
   --addon-background: var(--grey-1000);
 
   /* Tabs */
-  --tab-border-color: var(--grey-800);
-  --tab-background: var(--grey-1000);
   --tab-icon: var(--grey-400);
   --tab-text-color: var(--grey-400);
-  --tab-background-active: var(--grey-700);
   --tab-icon-active: var(--white);
   --tab-text-color-active: var(--white);
-  --tab-shadow-active-color: var(--black-opacity-20);
+  --tab-shadow-active-color: var(--black-opacity-10);
   --tab-dot-color: var(--grey-900);
   --tab-dot-color-active: var(--grey-400);
-
-  /* Carousel */
-  --carousel-background: var(--grey-700);
 
   /* Avatar */
   --avatar-background-neutral: var(--grey-1000);
@@ -888,7 +882,7 @@ html[data-theme="dark"] {
   --status-indigo-text-color: color-mix(in srgb, var(--categorical-indigo-200) 78%, white 82%);
 
   /* Chip */
-  --chip-background-menu: var(--grey-900);
+  --chip-background-menu: var(--grey-800);
   --chip-background: var(--grey-800);
   --chip-background-hover: var(--grey-800);
   --chip-background-focus: var(--grey-800);
@@ -906,7 +900,7 @@ html[data-theme="dark"] {
   --chip-dismiss-action-background-disabled: var(--grey-900);
 
   /* Dropdown */
-  --menu-background: var(--grey-1000);
+  --menu-background: var(--grey-900);
   --menu-border-color: var(--white-opacity-20);
   --menu-shadow-color: var(--black-opacity-20);
   --menu-section-header: var(--grey-400);
@@ -922,7 +916,6 @@ html[data-theme="dark"] {
   --range-input-thumb-color: var(--white);
 
   /* Financial Chart */
-  --financial-chart-background: var(--surface-elevated-100);
   --financial-chart-border-color: var(--border-color);
   --financial-chart-text-color: var(--text-color);
   --financial-chart-text-color-secondary: var(--text-color-secondary);
@@ -940,20 +933,34 @@ html[data-theme="dark"] {
   --financial-chart-action-text-color-active: var(--action-primary-text-color);
 
   /* Market Sparkline */
-  --market-sparkline-background: var(--surface-elevated-100);
   --market-sparkline-text-color: var(--text-color-secondary);
   --market-sparkline-positive-color: var(--feedback-positive-border-color);
   --market-sparkline-negative-color: var(--feedback-attention-border-color);
   --market-sparkline-neutral-color: var(--categorical-blue);
-  --market-sparkline-positive-area-top-color: color-mix(in srgb, var(--feedback-positive-border-color) 36%, transparent);
-  --market-sparkline-positive-area-bottom-color: color-mix(in srgb, var(--feedback-positive-border-color) 3%, transparent);
-  --market-sparkline-negative-area-top-color: color-mix(in srgb, var(--feedback-attention-border-color) 36%, transparent);
-  --market-sparkline-negative-area-bottom-color: color-mix(in srgb, var(--feedback-attention-border-color) 3%, transparent);
+  --market-sparkline-positive-area-top-color: color-mix(
+    in srgb,
+    var(--feedback-positive-border-color) 36%,
+    transparent
+  );
+  --market-sparkline-positive-area-bottom-color: color-mix(
+    in srgb,
+    var(--feedback-positive-border-color) 3%,
+    transparent
+  );
+  --market-sparkline-negative-area-top-color: color-mix(
+    in srgb,
+    var(--feedback-attention-border-color) 36%,
+    transparent
+  );
+  --market-sparkline-negative-area-bottom-color: color-mix(
+    in srgb,
+    var(--feedback-attention-border-color) 3%,
+    transparent
+  );
   --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--categorical-blue) 36%, transparent);
   --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 3%, transparent);
 
   /* Financial Bar Chart */
-  --financial-bar-chart-background: var(--surface-elevated-100);
   --financial-bar-chart-text-color: var(--text-color-secondary);
   --financial-bar-chart-border-color: var(--border-color);
   --financial-bar-chart-grid-color: var(--white-opacity-10);
@@ -964,7 +971,6 @@ html[data-theme="dark"] {
   --financial-bar-chart-baseline-color: var(--border-color);
 
   /* Comparison Chart */
-  --comparison-chart-background: var(--surface-elevated-100);
   --comparison-chart-text-color: var(--text-color-secondary);
   --comparison-chart-border-color: var(--border-color);
   --comparison-chart-grid-color: var(--white-opacity-10);
@@ -985,13 +991,7 @@ html[data-theme="dark"] {
   --stepper-error-color: var(--red-300);
   --stepper-disabled-opacity: 0.8;
 
-  /* Dialog */
-  --dialog-background: var(--grey-800);
-
   /* Drawer */
-  --drawer-background: var(--grey-800);
-  --drawer-resize-rail-background: var(--grey-1000);
-  --drawer-resize-rail-inner-background: var(--grey-700);
   --drawer-resize-rail-threshold-indicator: var(--white);
 
   /* Work Log */
@@ -1003,6 +1003,35 @@ html[data-theme="dark"] {
 /* 4. SET THE FOUNDATION                                                                                */
 /* ==================================================================================================== */
 :where(html) {
+  /* Surface */
+  --surface-elevated-50: color-mix(in oklch, var(--surface) 50%, var(--surface-elevated-100));
+  --surface-recessed-50: color-mix(in oklch, var(--surface) 50%, var(--surface-recessed-100));
+
+  /* Tabs */
+  --tab-border-color: var(--surface-recessed-50);
+  --tab-border-color-surface: var(--surface);
+  --tab-background: var(--surface-recessed-50);
+  --tab-background-surface: var(--surface);
+  --tab-background-active: var(--surface);
+  --tab-background-active-surface: var(--surface-elevated-100);
+
+  /* Carousel */
+  --carousel-background: var(--surface-elevated-100);
+
+  /* Dialog */
+  --dialog-background: var(--surface-elevated-100);
+
+  /* Drawer */
+  --drawer-background: var(--surface-elevated-100);
+  --drawer-resize-rail-background: var(--border-color);
+  --drawer-resize-rail-inner-background: var(--surface-elevated-100);
+
+  /* Charts */
+  --financial-chart-background: var(--surface-elevated-100);
+  --market-sparkline-background: var(--surface-elevated-100);
+  --financial-bar-chart-background: var(--surface-elevated-100);
+  --comparison-chart-background: var(--surface-elevated-100);
+
   /* Dropdown */
   --dropdown-offset: var(--space-200);
   --menu-min-width: 15rem;
@@ -1010,7 +1039,6 @@ html[data-theme="dark"] {
 
   /* Financial Chart */
   --financial-chart-border: var(--stroke-size-100) var(--stroke-solid) var(--financial-chart-border-color);
-  --financial-chart-radius: var(--form-radius-medium);
 
   /* Form */
   --form-default-placeholder-color: var(--grey-500);
@@ -1055,6 +1083,7 @@ html[data-theme="dark"] {
 
   /* Code */
   --code-background: var(--surface-elevated-100);
+  --code-background-surface: var(--surface-elevated-200);
 
   /* Prompt */
   --prompt-focus-surface-background: var(--surface-elevated-100);

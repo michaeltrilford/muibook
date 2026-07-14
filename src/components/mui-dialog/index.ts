@@ -1,5 +1,6 @@
 import "../mui-icons/close";
 import "../mui-button";
+import { applySurfaceUsage } from "../../utils/surface-usage";
 
 class MuiDialog extends HTMLElement {
   private dialogEl!: HTMLDialogElement;
@@ -109,6 +110,8 @@ class MuiDialog extends HTMLElement {
     this.actionsSlot = this.shadowRoot.querySelector('slot[name="actions"]');
     this.headerEl = this.shadowRoot.querySelector(".header");
     this.titleSlot = this.shadowRoot.querySelector('slot[name="title"]');
+
+    applySurfaceUsage(this);
 
     const closeBtn = this.shadowRoot.querySelector(".close");
     closeBtn?.addEventListener("click", () => this.close());

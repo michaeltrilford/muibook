@@ -70,10 +70,6 @@ class MuiCardFooter extends HTMLElement {
 
           if (tag === "mui-code" || element.querySelector?.("mui-code")) {
             hasCode = true;
-            const codeBlocks = tag === "mui-code" ? [element] : Array.from(element.querySelectorAll("mui-code"));
-            codeBlocks.forEach((codeBlock) => {
-              (codeBlock as HTMLElement).setAttribute("card-slot", "");
-            });
           }
 
           if (tag === "mui-button-group" || element.querySelector?.("mui-button-group")) {

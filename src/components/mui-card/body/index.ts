@@ -1,3 +1,5 @@
+import { applySurfaceUsage } from "../../../utils/surface-usage";
+
 class MuiCardBody extends HTMLElement {
   static get observedAttributes() {
     return ["condensed"];
@@ -33,6 +35,8 @@ class MuiCardBody extends HTMLElement {
 
       let hasLayoutComponent = false;
       const condensedSlats: HTMLElement[] = [];
+
+      applySurfaceUsage(this);
 
       nodes.forEach((node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
@@ -103,14 +107,6 @@ class MuiCardBody extends HTMLElement {
             (chipRail as HTMLElement).setAttribute("card-slot", "");
           });
 
-          // Check for <mui-code>
-          const isCode = element.tagName.toLowerCase() === "mui-code";
-          const codeBlocks = isCode ? [element] : Array.from(element.querySelectorAll("mui-code"));
-
-          codeBlocks.forEach((codeBlock) => {
-            (codeBlock as HTMLElement).setAttribute("card-slot", "");
-          });
-
           // Check for <mui-slat-group>
           const isSlatGroup = element.tagName.toLowerCase() === "mui-slat-group";
           const slatGroups = isSlatGroup ? [element] : Array.from(element.querySelectorAll("mui-slat-group"));
@@ -172,7 +168,7 @@ class MuiCardBody extends HTMLElement {
           display: block;
           box-sizing: border-box;
         }
-        
+
         :host([inner-space]) {
           padding: var(--space-500);
         }

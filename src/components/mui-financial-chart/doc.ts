@@ -10,7 +10,7 @@ export const muiDocs: MuiDocs = {
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-financial-chart/index.ts"],
     website: ["https://muibook.com/financial-chart"],
     guides: [""],
-    usage: { list: ["Use candlesticks when open, high, low, and close values matter; use area for a simpler price trend.", "Assign data through the host data property rather than serializing large market datasets into HTML attributes.", "Preserve the TradingView attribution rendered by the chart engine."] },
+    usage: { list: ["Use candlesticks when open, high, low, and close values matter; use area for a simpler price trend.", "Compose Financial Chart inside Card when the chart needs a framed surface; Financial Chart remains unframed so it can also fit existing panels and full-width layouts.", "Assign data through the host data property rather than serializing large market datasets into HTML attributes.", "Preserve the TradingView attribution rendered by the chart engine."] },
     accessibility: { designerList: ["Do not rely on positive and negative color alone; retain price and change text in the summary."], engineerList: ["Provide a meaningful symbol and currency. Financial Chart maintains a live textual summary of the visible data."] },
     anatomy: { image: "", list: ["Instrument summary", "Range controls", "Price pane", "Volume pane", "Price scale", "Time scale"] },
     variants: { items: [] },

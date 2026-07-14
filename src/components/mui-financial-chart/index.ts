@@ -16,6 +16,7 @@ import "../mui-body";
 import "../mui-responsive";
 import "../mui-stack";
 import "../mui-tabs";
+import { hasSurfaceOwner } from "../../utils/surface-usage";
 
 export type MuiFinancialChartType = "candlestick" | "area";
 
@@ -131,6 +132,7 @@ class MuiFinancialChart extends HTMLElement {
 
   private render() {
     if (!this.shadowRoot) return;
+    const tabUsage = hasSurfaceOwner(this) ? ' usage="surface"' : "";
     this.style.setProperty("--financial-chart-height-current", this.getAttribute("height") || "32rem");
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
@@ -152,10 +154,6 @@ class MuiFinancialChart extends HTMLElement {
           grid-template-rows: auto minmax(0, 1fr);
           width: 100%;
           min-width: 0;
-          background: var(--financial-chart-background);
-          border: var(--financial-chart-border);
-          border-radius: var(--financial-chart-radius);
-          overflow: hidden;
         }
 
         [part="toolbar"] {
@@ -231,7 +229,7 @@ class MuiFinancialChart extends HTMLElement {
             alignx="stretch"
           >
             <mui-v-stack part="summary" space="var(--space-050)"></mui-v-stack>
-            <mui-tab-bar data-range-layout="compact" size="x-small" stroke="none" aria-label="Chart time range" active-inset full-width></mui-tab-bar>
+            <mui-tab-bar${tabUsage} data-range-layout="compact" size="x-small" stroke="none" aria-label="Chart time range" active-inset full-width></mui-tab-bar>
           </mui-v-stack>
           <mui-h-stack
             slot="showAbove"
@@ -243,7 +241,7 @@ class MuiFinancialChart extends HTMLElement {
             aligny="flex-start"
           >
             <mui-v-stack part="summary" space="var(--space-050)"></mui-v-stack>
-            <mui-tab-bar data-range-layout="wide" size="x-small" stroke="none" aria-label="Chart time range" active-inset></mui-tab-bar>
+            <mui-tab-bar${tabUsage} data-range-layout="wide" size="x-small" stroke="none" aria-label="Chart time range" active-inset></mui-tab-bar>
           </mui-h-stack>
         </mui-responsive>
         <div class="chart-region" part="chart-region">

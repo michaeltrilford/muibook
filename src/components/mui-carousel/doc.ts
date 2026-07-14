@@ -74,6 +74,7 @@ export const muiDocs: MuiDocs = {
           "description": "A flexible, composable carousel that gives you full control over the content and internal layout.",
           "list": [
             "Carousel controls are set to bottom-center by default",
+            "Carousel automatically applies usage='surface' to its Tab Bar controls so the controls match the elevated Carousel surface.",
             "Internal padding is required",
             "The var(--carousel-tab-offset) is available to help with control spacing - though, not required",
             "You will need knowledge of CSS to add your specific custom content."

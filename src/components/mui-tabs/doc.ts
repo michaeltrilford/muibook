@@ -68,6 +68,7 @@ export const muiDocs: MuiDocs = {
     stories: {
       items: [
         { key: "default", title: "Default", description: "Switches between related views at the same hierarchy level.", list: ["Keep labels short and use tabs only for closely related content."] },
+        { key: "surface-usage", title: "Surface Usage", description: "Adapts the Tab Bar hierarchy when composed inside a framed surface.", list: ["Card, Card Body, Drawer, Dialog, and Carousel automatically apply usage='surface' through neutral layout wrappers while preserving the nearest nested surface owner.", "Surface usage applies the base surface to the Tab Bar background and border, with the elevated surface behind the active tab."] },
         { key: "stroke-none", title: "Stroke: None", description: "Removes the outer stroke when the surrounding surface defines the tab area.", list: ["Use only when another boundary clearly contains the Tab Bar."] },
         { key: "inset", title: "Inset Tab", description: "Applies a floating inset treatment to the active tab.", list: ["Use for compact tool surfaces where a pill treatment suits the surrounding controls."] },
         { key: "radius", title: "Radius", description: "Adjusts the base radius of the Tab Bar and items.", list: ["Match the radius to adjacent controls and the containing surface."] },

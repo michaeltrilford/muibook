@@ -271,10 +271,13 @@ html[data-brand="paperclip"][data-theme="light"] {
   --badge-text-color-overlay: var(--white);
 
   --tab-border-color: var(--blue-500);
+  --tab-border-color-surface: var(--blue-500);
   --tab-background: var(--blue-500);
+  --tab-background-surface: var(--blue-500);
   --tab-icon: var(--white);
   --tab-text-color: var(--white);
   --tab-background-active: var(--white);
+  --tab-background-active-surface: var(--white);
   --tab-icon-active: var(--blue-500);
   --tab-text-color-active: var(--blue-600);
   --tab-shadow-active-color: color-mix(in srgb, var(--blue-500) 10%, transparent);
@@ -528,8 +531,6 @@ html[data-brand="paperclip"][data-theme="light"] {
   --stepper-warning-color: var(--blue-500);
   --stepper-error-color: var(--blue-500);
 
-  --dialog-background: var(--white);
-  --drawer-background: var(--white);
   --drawer-resize-rail-background: var(--white);
   --drawer-resize-rail-inner-background: var(--blue-500);
 
@@ -748,10 +749,13 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --badge-text-color-overlay: var(--blue-500);
 
   --tab-border-color: var(--white);
+  --tab-border-color-surface: var(--white);
   --tab-background: var(--blue-100);
+  --tab-background-surface: var(--blue-100);
   --tab-icon: var(--white);
   --tab-text-color: var(--blue-500);
   --tab-background-active: var(--blue-500);
+  --tab-background-active-surface: var(--blue-500);
   --tab-icon-active: var(--white);
   --tab-text-color-active: var(--white);
   --tab-shadow-active-color: color-mix(in srgb, var(--blue-500) 40%, transparent);
@@ -1007,8 +1011,6 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --stepper-warning-color: var(--white);
   --stepper-error-color: var(--white);
 
-  --dialog-background: var(--blue-500);
-  --drawer-background: var(--blue-500);
   --drawer-resize-rail-background: var(--blue-700);
   --drawer-resize-rail-inner-background: var(--blue-300);
 

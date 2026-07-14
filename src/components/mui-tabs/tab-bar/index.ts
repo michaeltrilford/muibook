@@ -152,6 +152,12 @@ class MuiTabBar extends HTMLElement {
           --tab-active-shadow: none;
         }
 
+        :host([usage="surface"]) {
+          --tab-border-color: var(--tab-border-color-surface);
+          --tab-background: var(--tab-background-surface);
+          --tab-background-active: var(--tab-background-active-surface);
+        }
+
         :host([stroke="none"]) {
           --tab-stroke-size: 0px;
           --tab-item-size-x-small: var(--action-size-x-small);

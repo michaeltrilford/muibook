@@ -50,27 +50,6 @@ class storyDropdown extends HTMLElement {
     const stories = /*html*/ `
       <story-api-types tag="mui-dropdown" title="Dropdown"></story-api-types>
 
-      <story-card id="default" title="${storyMeta["default"].title}" usage="${storyMeta["default"].usage}">
-        <mui-dropdown slot="body" size="medium">
-          <mui-button slot="action"><mui-icon-ellipsis size="medium"></mui-icon-ellipsis></mui-button>
-          <mui-menu>
-            <mui-button>Option one</mui-button>
-            <mui-button>Option two</mui-button>
-          </mui-menu>
-        </mui-dropdown>
-        <story-code-block slot="footer" scrollable>
-          &lt;mui-dropdown size=&quot;medium&quot;&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="&#8220;"action&#8221;&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis&gt;&lt;/mui-icon-ellipsis&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-menu&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;Option one&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button&gt;Option two&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;/mui-menu&gt;<br>
-          &lt;/mui-dropdown&gt;
-        </story-code-block>
-      </story-card>
-
       <story-card id="action-sizes" title="${storyMeta["action-sizes"].title}" usage="${storyMeta["action-sizes"].usage}">
         <mui-v-stack slot="body" space="var(--space-300)" alignX="start">
           <mui-h-stack width="100%" wrap space="var(--space-300)">

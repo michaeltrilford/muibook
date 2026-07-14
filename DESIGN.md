@@ -187,9 +187,11 @@ Body colour variants change meaning, not size or weight.
 | Semantic token | Light | Dark | Use |
 | --- | --- | --- | --- |
 | `--surface` | `--grey-200` | `--grey-1100` | Base page |
+| `--surface-elevated-50` | Surface/elevated 100 mix | Surface/elevated 100 mix | Subtle elevation |
 | `--surface-elevated-100` | `--white` | `--grey-800` | Highest elevation |
 | `--surface-elevated-200` | `--grey-50` | `--grey-900` | Secondary elevation |
 | `--surface-elevated-300` | `--grey-200` | `--grey-1000` | Low-contrast elevation |
+| `--surface-recessed-50` | Surface/recessed 100 mix | Surface/recessed 100 mix | Subtle recess |
 | `--surface-recessed-100` | `--grey-300` | `--grey-1200` | Subtle recess |
 | `--surface-recessed-200` | `--grey-400` | `--grey-1300` | Deeper recess |
 | `--surface-recessed-300` | `--grey-500` | `--grey-1400` | Deepest recess |

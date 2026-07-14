@@ -29,9 +29,8 @@ export const muiApi = {
       { name: "chart-region", description: "Interactive chart and state-overlay region." },
     ],
     cssProperties: [
-      { name: "--financial-chart-background", description: "Chart and component surface." },
-      { name: "--financial-chart-border", description: "Component and toolbar border shorthand." },
-      { name: "--financial-chart-radius", description: "Component surface radius." },
+      { name: "--financial-chart-background", description: "Chart canvas and state-overlay surface." },
+      { name: "--financial-chart-border", description: "Toolbar divider border shorthand." },
       { name: "--financial-chart-grid-color", description: "Canvas grid-line color." },
       { name: "--financial-chart-crosshair-color", description: "Canvas crosshair color." },
       { name: "--financial-chart-positive-color", description: "Positive candles and values." },

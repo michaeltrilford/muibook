@@ -3,6 +3,7 @@ export const muiApi = {
     description: "Groups related tab items and renders an active selection highlight.",
     attributes: [
       { name: "size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Size applied to child tab items." },
+      { name: "usage", type: { text: '"surface"' }, description: "Applies the contextual treatment used when Tab Bar sits inside a framed surface such as Card, Drawer, Dialog, or Carousel." },
       { name: "variant", type: { text: '"default" | "dots" | "ghost"' }, default: "default", description: "Visual treatment for the tab bar and its children." },
       { name: "stroke", type: { text: '"border" | "none"' }, default: "border", description: "Controls whether the default tab bar border is rendered. When border is used, child tab item heights are reduced so the total control height stays aligned to action sizing." },
       { name: "active-inset", type: { text: "boolean" }, default: "false", description: "Uses an inset active shadow recipe for the selected tab surface instead of the default active shadow." },
@@ -15,6 +16,9 @@ export const muiApi = {
     slots: [{ name: "", description: "Tab items controlled by the tab bar." }],
     events: [{ name: "tab-change", description: "Dispatched when the active tab changes." }],
     cssProperties: [
+      { name: "--tab-border-color-surface", description: "Tab Bar border color used when `usage='surface'` is applied." },
+      { name: "--tab-background-surface", description: "Tab Bar background used when `usage='surface'` is applied." },
+      { name: "--tab-background-active-surface", description: "Active tab background used when `usage='surface'` is applied." },
       { name: "--tab-shadow-active-color", description: "Default color used to construct the active highlight shadow." },
       { name: "--tab-shadow-active", description: "Full box-shadow value for the active tab highlight, allowing geometry and color overrides." },
       { name: "--tab-active-shadow", description: "Resolved active tab shadow used by the highlight layer." },

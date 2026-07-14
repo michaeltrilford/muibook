@@ -139,7 +139,7 @@ class storyCode extends HTMLElement {
               <mui-body size="x-small" weight="bold">Card Body</mui-body>
               <mui-card>
                 <mui-card-body>
-                  <mui-code size="x-small" wrap>Card body dynamically applies card-slot to nested code.</mui-code>
+                  <mui-code size="x-small" wrap>Card body automatically applies surface usage to nested code.</mui-code>
                 </mui-card-body>
               </mui-card>
             </mui-v-stack>
@@ -151,7 +151,7 @@ class storyCode extends HTMLElement {
                   <mui-body size="medium">Footer code should sit one elevation above the card surface.</mui-body>
                 </mui-card-body>
                 <mui-card-footer>
-                  <mui-code size="x-small" wrap>Card footer dynamically applies card-slot to direct code.</mui-code>
+                  <mui-code size="x-small" wrap>Card footer automatically applies surface usage to code.</mui-code>
                 </mui-card-footer>
               </mui-card>
             </mui-v-stack>

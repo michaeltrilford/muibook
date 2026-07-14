@@ -52,6 +52,10 @@ class tokensSemantic extends HTMLElement {
         background: var(--surface-elevated-100);
       }
 
+      .surface-elevated-50 {
+        background: var(--surface-elevated-50);
+      }
+
       .surface-elevated-200 {
         background: var(--surface-elevated-200);
       }
@@ -62,6 +66,10 @@ class tokensSemantic extends HTMLElement {
 
       .surface-recessed {
         background: var(--surface-recessed-100);
+      }
+
+      .surface-recessed-50 {
+        background: var(--surface-recessed-50);
       }
 
       .surface-recessed-200 {
@@ -108,10 +116,15 @@ class tokensSemantic extends HTMLElement {
             <story-token-slat slot="body" token="--surface-recessed-100" variant="color">
             </story-token-slat>
 
+            <story-token-slat slot="body" token="--surface-recessed-50" variant="color">
+            </story-token-slat>
+
 
             <story-token-slat slot="body" token="--surface" variant="color">
             </story-token-slat>
 
+            <story-token-slat slot="body" token="--surface-elevated-50" variant="color">
+            </story-token-slat>
 
             <story-token-slat slot="body" token="--surface-elevated-100" variant="color">
             </story-token-slat>

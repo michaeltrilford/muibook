@@ -69,7 +69,6 @@ body {
 #app-shell {
   display: block;
   min-height: 0;
-  --border-thin: var(--app-navbar-border);
 }
 
 .storefront-drawer::part(resize-rail) {

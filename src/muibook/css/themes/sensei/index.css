@@ -196,19 +196,22 @@ html[data-brand="sensei"][data-theme="light"] {
   --addon-background: var(--green-200);
   /* Tabs */
   --tab-border-color: var(--green-700);
+  --tab-border-color-surface: var(--green-700);
 
   --tab-background: var(--green-300);
+  --tab-background-surface: var(--green-300);
   --tab-icon: var(--green-1100);
   --tab-text-color: var(--green-1100);
 
   --tab-background-active: var(--green-200);
+  --tab-background-active-surface: var(--green-200);
   --tab-icon-active: var(--green-1000);
   --tab-text-color-active: var(--green-1000);
   --tab-shadow-active: var(--black-opacity-10);
   --tabs-ghost-box-shadow: none;
 
   /* Carousel */
-  --carousel-background: var(--green-200);
+  --carousel-background: var(--surface-elevated-100);
 
   /* Avatar */
   --avatar-background-neutral: var(--green-400);
@@ -263,11 +266,7 @@ html[data-brand="sensei"][data-theme="light"] {
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
 
-  /* Dialog */
-  --dialog-background: var(--green-300);
-
   /* Drawer */
-  --drawer-background: var(--green-300);
   --drawer-resize-rail-background: var(--green-400);
   --drawer-resize-rail-inner-background: var(--green-800);
 }
@@ -454,19 +453,22 @@ html[data-brand="sensei"][data-theme="dark"] {
   --addon-background: var(--green-1400);
   /* Tabs */
   --tab-border-color: var(--green-1200);
+  --tab-border-color-surface: var(--green-1200);
 
   --tab-background: var(--green-1500);
+  --tab-background-surface: var(--green-1500);
   --tab-icon: var(--green-400);
   --tab-text-color: var(--green-400);
 
   --tab-background-active: var(--green-300);
+  --tab-background-active-surface: var(--green-300);
   --tab-icon-active: var(--green-1200);
   --tab-text-color-active: var(--green-1200);
   --tab-shadow-active: var(--green-1400);
   --tabs-ghost-box-shadow: none;
 
   /* Carousel */
-  --carousel-background: var(--green-1200);
+  --carousel-background: var(--surface-elevated-100);
 
   /* Avatar */
   --avatar-background-neutral: var(--green-900);
@@ -521,11 +523,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --stepper-border-color: var(--stepper-color);
   --stepper-text-color-active: var(--stepper-color);
 
-  /* Dialog */
-  --dialog-background: var(--green-1300);
-
   /* Drawer */
-  --drawer-background: var(--green-1300);
   --drawer-resize-rail-background: var(--green-1500);
   --drawer-resize-rail-inner-background: var(--green-1100);
 }

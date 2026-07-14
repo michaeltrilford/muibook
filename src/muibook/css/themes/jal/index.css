@@ -145,10 +145,8 @@ html[data-brand="jal"][data-theme="light"] {
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
   --surface-recessed-300: var(--grey-500);
-  --drawer-background: var(--white);
   --drawer-resize-rail-background: var(--white);
   --drawer-resize-rail-inner-background: var(--grey-300);
-  --dialog-background: var(--grey-400);
 
   /* Switch */
   --switch-track-background: var(--grey-300);
@@ -156,19 +154,22 @@ html[data-brand="jal"][data-theme="light"] {
 
   /* Tabs */
   --tab-border-color: var(--red-800);
+  --tab-border-color-surface: var(--red-800);
 
   --tab-background: var(--grey-200);
+  --tab-background-surface: var(--grey-200);
   --tab-icon: var(--white);
   --tab-text-color: var(--grey-1000);
 
   --tab-background-active: var(--white);
+  --tab-background-active-surface: var(--white);
   --tab-icon-active: var(--red-500);
   --tab-text-color-active: var(--red-500);
   --tab-shadow-active: var(--red-600);
   --tabs-ghost-box-shadow: none;
 
   /* Carousel */
-  --carousel-background: var(--grey-100);
+  --carousel-background: var(--surface-elevated-100);
 
   /* Stepper */
   --stepper-color: var(--red-500);
@@ -342,10 +343,8 @@ html[data-brand="jal"][data-theme="dark"] {
   --surface-recessed-100: var(--grey-1000);
   --surface-recessed-200: var(--grey-1200);
   --surface-recessed-300: var(--grey-1300);
-  --drawer-background: var(--surface-recessed-100);
   --drawer-resize-rail-background: var(--grey-1200);
   --drawer-resize-rail-inner-background: var(--grey-900);
-  --dialog-background: var(--surface-recessed-100);
 
   /* Switch */
   --switch-track-background: var(--grey-500);
@@ -353,19 +352,22 @@ html[data-brand="jal"][data-theme="dark"] {
 
   /* Tabs */
   --tab-border-color: var(--gold-800);
+  --tab-border-color-surface: var(--gold-800);
 
   --tab-background: var(--grey-800);
+  --tab-background-surface: var(--grey-800);
   --tab-icon: var(--white);
   --tab-text-color: var(--white);
 
   --tab-background-active: var(--gold-200);
+  --tab-background-active-surface: var(--gold-200);
   --tab-icon-active: var(--white);
   --tab-text-color-active: var(--gold-900);
   --tab-shadow-active: var(--black-opacity-20);
   --tabs-ghost-box-shadow: none;
 
   /* Carousel */
-  --carousel-background: var(--grey-900);
+  --carousel-background: var(--surface-elevated-100);
 
   /* Stepper */
   --stepper-color: var(--gold-200);

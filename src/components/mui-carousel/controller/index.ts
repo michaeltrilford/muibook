@@ -1,3 +1,5 @@
+import { applySurfaceUsage } from "../../../utils/surface-usage";
+
 class MuiCarouselController extends HTMLElement {
   private shadow: ShadowRoot;
   private autoRotateInterval?: number;
@@ -29,6 +31,7 @@ class MuiCarouselController extends HTMLElement {
     this.render();
 
     this.addEventListener("tab-change", this.handleTabChange);
+    applySurfaceUsage(this);
 
     // Show the initially active panel (based on tab-bar)
     const tabBar = this.querySelector("mui-tab-bar");

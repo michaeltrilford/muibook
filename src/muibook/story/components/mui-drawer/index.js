@@ -74,6 +74,10 @@ class storyDrawer extends HTMLElement {
         min-height: 7.7rem;
       }
 
+      .canvas-page-header {
+        background: var(--surface-elevated-100);
+      }
+
       .canvas-page-header,
       .canvas-drawer-header {
         display: flex;
@@ -91,7 +95,7 @@ class storyDrawer extends HTMLElement {
       }
 
       .page-main {
-        background: var(--surface-elevated-200);
+        background: var(--surface-elevated-100);
       }
 
       .page-content {
@@ -122,7 +126,7 @@ class storyDrawer extends HTMLElement {
         padding: var(--space-400);
         border: var(--border-thin);
         border-radius: var(--radius-200);
-        background: var(--surface);
+        background: var(--surface-elevated-100);
         box-sizing: border-box;
       }
 
@@ -963,7 +967,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer contained variant="push" data-drawer="drawer-3" width="320px" side="left" height="45dvh">
-            <div slot="page" class="page-main">
+            <div slot="page" class="page-main workspace-demo-canvas">
               <div class="page-header">
                 ${invoiceHeader}
                 <mui-dropdown position="right" size="medium">
@@ -1021,7 +1025,7 @@ class storyDrawer extends HTMLElement {
             height="45rem"
             width="260px"
             side="left">
-            <div slot="page" class="page-main resize-page-main">
+            <div slot="page" class="page-main resize-page-main workspace-demo-canvas">
               <div class="canvas-page-header">
                 <mui-h-stack space="var(--space-050)" alignY="center">
                   <mui-button variant="tertiary" size="small" data-drawer-toggle="drawer-resize-left-rail">
@@ -1033,13 +1037,15 @@ class storyDrawer extends HTMLElement {
               <div class="page-content resize-page-content">
                 <mui-v-stack space="var(--space-400)">
                   <div class="resize-test-grid">
-                    <div class="resize-test-panel">
-                      <mui-v-stack space="var(--space-200)">
-                        <mui-heading size="5" level="5">Page Minimum</mui-heading>
-                        <mui-body size="small">Set a minimum page width.</mui-body>
-                        <mui-code wrap size="x-small">resize-min-page-width</mui-code>
-                      </mui-v-stack>
-                    </div>
+                    <mui-card>
+                      <mui-card-body>
+                        <mui-v-stack space="var(--space-200)">
+                          <mui-heading size="5" level="5">Page Minimum</mui-heading>
+                          <mui-body size="small">Set a minimum page width.</mui-body>
+                          <mui-code wrap size="x-small">resize-min-page-width</mui-code>
+                        </mui-v-stack>
+                      </mui-card-body>
+                    </mui-card>
                     <div class="resize-test-panel">
                       <mui-v-stack space="var(--space-200)">
                         <mui-heading size="5" level="5">Drawer Width</mui-heading>
@@ -1124,7 +1130,7 @@ class storyDrawer extends HTMLElement {
             data-drawer-toggle="drawer-persistent-left-rail"
             width="260px"
             side="left">
-            <div slot="page" class="page-main resize-page-main">
+            <div slot="page" class="page-main resize-page-main workspace-demo-canvas">
               <div class="canvas-page-header">
                 <mui-h-stack space="var(--space-050)" alignY="center">
                   <mui-responsive breakpoint="768">
@@ -1218,7 +1224,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer contained variant="persistent" width="320px" slot="body" side="left" data-drawer-toggle="drawer-persistent-left-demo" height="45dvh">
-            <div slot="page" class="page-main">
+            <div slot="page" class="page-main workspace-demo-canvas">
               <div class="page-header">
                 <mui-h-stack space="var(--space-050)" alignY="center">
                   <mui-responsive breakpoint="768">
@@ -1265,7 +1271,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer contained slot="body" variant="push" data-drawer="drawer-4" width="320px" side="right" height="45dvh">
-            <div slot="page" class="page-main">
+            <div slot="page" class="page-main workspace-demo-canvas">
               <div class="page-header">
                 ${invoiceHeader}
                 <mui-dropdown position="right" size="medium">
@@ -1324,7 +1330,7 @@ class storyDrawer extends HTMLElement {
             height="45rem"
             width="260px"
             side="right">
-            <div slot="page" class="page-main resize-page-main">
+            <div slot="page" class="page-main resize-page-main workspace-demo-canvas">
               <div class="canvas-page-header">
                 <mui-h-stack space="var(--space-300)" alignY="center">
                   <mui-heading size="4" level="4">Page 1</mui-heading>
@@ -1428,7 +1434,7 @@ class storyDrawer extends HTMLElement {
             data-drawer-toggle="drawer-persistent-right-rail"
             width="260px"
             side="right">
-            <div slot="page" class="page-main resize-page-main">
+            <div slot="page" class="page-main resize-page-main workspace-demo-canvas">
               <div class="canvas-page-header">
                 <mui-h-stack space="var(--space-300)" alignY="center">
                   <mui-heading size="4" level="4">Page 1</mui-heading>
@@ -1523,7 +1529,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer contained variant="persistent" width="320px" slot="body" side="right" data-drawer-toggle="drawer-persistent-right-demo" height="45dvh">
-            <div slot="page" class="page-main">
+            <div slot="page" class="page-main workspace-demo-canvas">
               <div class="page-header">
                 <mui-heading size="4" level="4">Smart Bills</mui-heading>
                 <mui-responsive breakpoint="768">
@@ -1568,7 +1574,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer contained variant="push" width="260px" side="left" data-drawer="hook" drawer-space="none" height="45dvh">
-            <div slot="page" class="page-main">
+            <div slot="page" class="page-main workspace-demo-canvas">
               <div class="page-header">
                 <mui-h-stack space="var(--space-200)" alignY="center">
                   <mui-button variant="tertiary" data-drawer="hook">
@@ -1636,7 +1642,7 @@ class storyDrawer extends HTMLElement {
               height="45dvh"
             >
               ${menuItems}
-              <div slot="page" class="page-main">
+              <div slot="page" class="page-main workspace-demo-canvas">
                 <div class="page-content">
                   ${bill}
                 </div>
@@ -1691,7 +1697,7 @@ class storyDrawer extends HTMLElement {
       >
         <div class="canvas" slot="body">
           <mui-drawer contained slot="body" variant="push" breakpoint="1500" data-drawer="breakpoint" width="320px" side="right" height="45dvh">
-            <div slot="page" class="page-main">
+            <div slot="page" class="page-main workspace-demo-canvas">
               <div class="page-header">
                 ${invoiceHeader}
                 <mui-dropdown position="right" size="medium">

@@ -1,4 +1,6 @@
 /* Mui Card */
+import { applySurfaceUsage } from "../../../utils/surface-usage";
+
 class MuiCard extends HTMLElement {
   static get observedAttributes() {
     return ["footer", "borderless"];
@@ -43,6 +45,8 @@ class MuiCard extends HTMLElement {
         const nodes = slot.assignedElements();
         const hasHeader = nodes.some((node) => node.tagName?.toLowerCase() === "mui-card-header");
         const body = nodes.find((node) => node.tagName?.toLowerCase() === "mui-card-body");
+
+        applySurfaceUsage(this);
 
         if (body) {
           if (hasHeader) {

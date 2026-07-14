@@ -52,10 +52,14 @@ class StoryMarketSparkline extends HTMLElement {
             ${this.marketCard("treasuryYield", "US 10Y yield", "US10Y", "4.38%", "+0.12%", "positive", "View treasury yields")}
           </mui-grid>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-market-sparkline id=&quot;marketCap&quot; label=&quot;Crypto market cap&quot; currency=&quot;USD&quot;&gt;<br />
-            &nbsp;&nbsp;&lt;mui-v-stack slot=&quot;header&quot;&gt;...&lt;/mui-v-stack&gt;<br />
-            &nbsp;&nbsp;&lt;mui-link slot=&quot;footer&quot; href=&quot;/markets&quot;&gt;See all markets&lt;/mui-link&gt;<br />
-            &lt;/mui-market-sparkline&gt;<br /><br />
+            &lt;mui-card&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body inner-space&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-market-sparkline id=&quot;marketCap&quot; label=&quot;Crypto market cap&quot; currency=&quot;USD&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack slot=&quot;header&quot;&gt;...&lt;/mui-v-stack&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-link slot=&quot;footer&quot; href=&quot;/markets&quot;&gt;See all markets&lt;/mui-link&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-market-sparkline&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+            &lt;/mui-card&gt;<br /><br />
             &lt;script&gt;<br />
             &nbsp;&nbsp;document.querySelector(&quot;#marketCap&quot;).data = marketData;<br />
             &lt;/script&gt;
@@ -69,22 +73,58 @@ class StoryMarketSparkline extends HTMLElement {
             ${this.typeExample("baselineSparkline", "baseline", "Baseline", " baseline=\"100\"")}
           </mui-grid>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-market-sparkline type=&quot;area&quot; label=&quot;Area trend&quot;&gt;&lt;/mui-market-sparkline&gt;<br />
-            &lt;mui-market-sparkline type=&quot;line&quot; label=&quot;Line trend&quot;&gt;&lt;/mui-market-sparkline&gt;<br />
-            &lt;mui-market-sparkline type=&quot;baseline&quot; baseline=&quot;100&quot; label=&quot;Baseline trend&quot;&gt;&lt;/mui-market-sparkline&gt;
+            &lt;mui-card&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body inner-space&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-market-sparkline type=&quot;area&quot; label=&quot;Area trend&quot;&gt;&lt;/mui-market-sparkline&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+            &lt;/mui-card&gt;<br /><br />
+            &lt;mui-card&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body inner-space&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-market-sparkline type=&quot;line&quot; label=&quot;Line trend&quot;&gt;&lt;/mui-market-sparkline&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+            &lt;/mui-card&gt;<br /><br />
+            &lt;mui-card&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body inner-space&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-market-sparkline type=&quot;baseline&quot; baseline=&quot;100&quot; label=&quot;Baseline trend&quot;&gt;&lt;/mui-market-sparkline&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+            &lt;/mui-card&gt;
           </story-code-block>
         </story-card>
 
         <story-card id="states" title="${storyMeta.states.title}" usage="${storyMeta.states.usage}">
           <mui-grid slot="body" col="repeat(auto-fit, minmax(16rem, 1fr))" space="var(--space-400)">
-            <mui-market-sparkline label="Loading market" loading></mui-market-sparkline>
-            <mui-market-sparkline label="Empty market"></mui-market-sparkline>
-            <mui-market-sparkline label="Unavailable market" error="Market data could not be loaded"></mui-market-sparkline>
+            <mui-card>
+              <mui-card-body inner-space>
+                <mui-market-sparkline label="Loading market" loading></mui-market-sparkline>
+              </mui-card-body>
+            </mui-card>
+            <mui-card>
+              <mui-card-body inner-space>
+                <mui-market-sparkline label="Empty market"></mui-market-sparkline>
+              </mui-card-body>
+            </mui-card>
+            <mui-card>
+              <mui-card-body inner-space>
+                <mui-market-sparkline label="Unavailable market" error="Market data could not be loaded"></mui-market-sparkline>
+              </mui-card-body>
+            </mui-card>
           </mui-grid>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-market-sparkline label=&quot;Loading market&quot; loading&gt;&lt;/mui-market-sparkline&gt;<br />
-            &lt;mui-market-sparkline label=&quot;Empty market&quot;&gt;&lt;/mui-market-sparkline&gt;<br />
-            &lt;mui-market-sparkline label=&quot;Unavailable market&quot; error=&quot;Market data could not be loaded&quot;&gt;&lt;/mui-market-sparkline&gt;
+            &lt;mui-card&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body inner-space&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-market-sparkline label=&quot;Loading market&quot; loading&gt;&lt;/mui-market-sparkline&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+            &lt;/mui-card&gt;<br /><br />
+            &lt;mui-card&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body inner-space&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-market-sparkline label=&quot;Empty market&quot;&gt;&lt;/mui-market-sparkline&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+            &lt;/mui-card&gt;<br /><br />
+            &lt;mui-card&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body inner-space&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-market-sparkline label=&quot;Unavailable market&quot; error=&quot;Market data could not be loaded&quot;&gt;&lt;/mui-market-sparkline&gt;<br />
+            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
+            &lt;/mui-card&gt;
           </story-code-block>
         </story-card>
       </story-template>
@@ -99,11 +139,31 @@ class StoryMarketSparkline extends HTMLElement {
   }
 
   marketCard(id, title, symbol, value, change, variant, action) {
-    return `<mui-card><mui-card-body inner-space><mui-market-sparkline id="${id}" label="${title}" height="10rem"><mui-v-stack slot="header" space="var(--space-100)"><mui-h-stack space="var(--space-100)" aligny="center"><mui-body weight="bold">${title}</mui-body><mui-badge size="x-small">${symbol}</mui-badge></mui-h-stack><mui-body size="large" weight="bold">${value}</mui-body><mui-body size="small" variant="${variant}">${change}</mui-body></mui-v-stack><mui-link slot="footer" size="small" variant="tertiary" href="#">${action}</mui-link></mui-market-sparkline></mui-card-body></mui-card>`;
+    return `<mui-card>
+      <mui-card-body inner-space>
+        <mui-market-sparkline id="${id}" label="${title}" height="10rem">
+          <mui-v-stack slot="header" space="var(--space-100)">
+            <mui-h-stack space="var(--space-100)" aligny="center">
+              <mui-body weight="bold">${title}</mui-body>
+              <mui-badge size="x-small">${symbol}</mui-badge>
+            </mui-h-stack>
+            <mui-body size="large" weight="bold">${value}</mui-body>
+            <mui-body size="small" variant="${variant}">${change}</mui-body>
+          </mui-v-stack>
+          <mui-link slot="footer" size="small" variant="tertiary" href="#">${action}</mui-link>
+        </mui-market-sparkline>
+      </mui-card-body>
+    </mui-card>`;
   }
 
   typeExample(id, type, title, extra = "") {
-    return `<mui-market-sparkline id="${id}" type="${type}"${extra} label="${title} trend"><mui-body slot="header" size="small" weight="bold">${title}</mui-body></mui-market-sparkline>`;
+    return `<mui-card>
+      <mui-card-body inner-space>
+        <mui-market-sparkline id="${id}" type="${type}"${extra} label="${title} trend">
+          <mui-body slot="header" size="small" weight="bold">${title}</mui-body>
+        </mui-market-sparkline>
+      </mui-card-body>
+    </mui-card>`;
   }
 }
 

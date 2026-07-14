@@ -345,7 +345,7 @@ class MuiSlideFrame extends HTMLElement {
           height: 100%;
           gap: 0;
           padding: var(--space-400);
-          background: var(--surface-recessed-100);
+          background: var(--surface);
           box-sizing: border-box;
         }
         :host([fullscreen]) .frame {

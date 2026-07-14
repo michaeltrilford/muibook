@@ -66,8 +66,7 @@ export const muiDocs: MuiDocs = {
 
     stories: {
       items: [
-        { key: "default", title: "Ellipsis Action", list: ["Use an icon-only trigger for familiar contextual actions where a visible label would add unnecessary weight.", "Give the trigger an accessible label that describes the available actions."] },
-        { key: "action-sizes", title: "Action Sizes", list: ["Set size on Dropdown; it keeps the trigger and direct Menu actions aligned.", "Choose the size that matches the surrounding controls and available space."] },
+        { key: "action-sizes", title: "Action Sizes", list: ["Set size on Dropdown; it keeps the trigger and direct Menu actions aligned.", "Choose the size that matches the surrounding controls and available space.", "The composed Menu uses max-content width with a 15rem minimum by default; set width on Menu when the content needs a specific measure."] },
         { key: "z-index", title: "Z-Index Customisation", description: "Control the portaled menu layer when it must appear above other positioned content.", list: ["Set zindex only when the default overlay layer conflicts with application chrome or another overlay.", "Keep application layer values documented and consistent."] },
         { key: "custom-offset", title: "Custom Offset", description: "Adjust the space between the trigger and its menu.", list: ["Set offset when the default gap does not suit the trigger or surrounding layout.", "Pass any valid CSS length, including a system spacing token or calc() expression."] },
         { key: "menu-width", title: "Menu Width", description: "Set an explicit width for the composed Menu surface.", list: ["Pass any valid CSS width to Menu using the width attribute.", "Use min(100%, value) to cap the preferred width within its available viewport space."] },

@@ -3,6 +3,7 @@ import "../mui-icons/left-chevron";
 import "../mui-body";
 import "../mui-button";
 import { getPartMap } from "../../utils/part-map";
+import { applySurfaceUsage } from "../../utils/surface-usage";
 
 const RESIZE_RAIL_MIN_DRAWER_WIDTH = 240;
 const RESIZE_RAIL_MIN_PAGE_WIDTH = 320;
@@ -91,6 +92,7 @@ class MuiDrawer extends HTMLElement {
     this.updateHeaderVisibility();
     this.syncOpenState();
     this.syncWorkspaceState();
+    applySurfaceUsage(this);
     document.addEventListener("keydown", this._handleEscape);
 
     // 👇 Watch for resize
@@ -210,7 +212,7 @@ class MuiDrawer extends HTMLElement {
       return `${leftColumn} minmax(0, 1fr) ${rightColumn}`;
     }
 
-    const rail = "var(--drawer-resize-rail-size, var(--space-100))";
+    const rail = "var(--drawer-resize-rail-size, var(--stroke-size-500))";
     const leftRail = this.hasAttribute("left-open") ? rail : "0";
     const rightRail = this.hasAttribute("right-open") ? rail : "0";
     return `${leftColumn} ${leftRail} minmax(0, 1fr) ${rightRail} ${rightColumn}`;
@@ -292,8 +294,8 @@ class MuiDrawer extends HTMLElement {
     const path = event.composedPath();
     return Boolean(
       (this.outer && path.includes(this.outer)) ||
-        (this.resizeRailEl && path.includes(this.resizeRailEl)) ||
-        (this.overlayEl && path.includes(this.overlayEl)),
+      (this.resizeRailEl && path.includes(this.resizeRailEl)) ||
+      (this.overlayEl && path.includes(this.overlayEl)),
     );
   }
 
@@ -442,7 +444,7 @@ class MuiDrawer extends HTMLElement {
         position: relative;
         z-index: 2;
         display: block;
-        width: var(--drawer-resize-rail-size, var(--space-100));
+        width: var(--drawer-resize-rail-size, var(--stroke-size-500));
         height: 100%;
         padding: 0;
         border: 0;
@@ -464,7 +466,7 @@ class MuiDrawer extends HTMLElement {
         top: 0;
         bottom: 0;
         left: 50%;
-        width: var(--stroke-size-100);
+        width: var(--stroke-size-200);
         background: var(--drawer-resize-rail-inner-background);
         transform: translateX(-50%);
         transition:
@@ -1762,10 +1764,10 @@ class MuiDrawer extends HTMLElement {
         layout.style.gridTemplateColumns =
           side === "left"
             ? isOpen
-              ? `${drawerWidth} var(--drawer-resize-rail-size, var(--space-100)) minmax(0, 1fr)`
+              ? `${drawerWidth} var(--drawer-resize-rail-size, var(--stroke-size-500)) minmax(0, 1fr)`
               : `0 0 minmax(0, 1fr)`
             : isOpen
-              ? `minmax(0, 1fr) var(--drawer-resize-rail-size, var(--space-100)) ${drawerWidth}`
+              ? `minmax(0, 1fr) var(--drawer-resize-rail-size, var(--stroke-size-500)) ${drawerWidth}`
               : `minmax(0, 1fr) 0 0`;
       } else {
         layout.style.gridTemplateColumns =
@@ -1775,8 +1777,8 @@ class MuiDrawer extends HTMLElement {
       if (this.hasAttribute("resize-rail")) {
         layout.style.gridTemplateColumns =
           side === "left"
-            ? `${drawerWidth} var(--drawer-resize-rail-size, var(--space-100)) minmax(0, 1fr)`
-            : `minmax(0, 1fr) var(--drawer-resize-rail-size, var(--space-100)) ${drawerWidth}`;
+            ? `${drawerWidth} var(--drawer-resize-rail-size, var(--stroke-size-500)) minmax(0, 1fr)`
+            : `minmax(0, 1fr) var(--drawer-resize-rail-size, var(--stroke-size-500)) ${drawerWidth}`;
       } else {
         layout.style.gridTemplateColumns = side === "left" ? `${drawerWidth} auto` : `auto ${drawerWidth}`;
       }

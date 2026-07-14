@@ -1,4 +1,6 @@
 /* Mui Code */
+import { hasSurfaceOwner } from "../../utils/surface-usage";
+
 class MuiCode extends HTMLElement {
   static get observedAttributes() {
     return ["size", "scrollable", "wrap", "inline"];
@@ -10,6 +12,9 @@ class MuiCode extends HTMLElement {
   }
 
   connectedCallback() {
+    if (hasSurfaceOwner(this)) {
+      this.setAttribute("usage", "surface");
+    }
     if (!this.hasAttribute("size")) {
       this.setAttribute("size", "x-small");
     }
@@ -31,13 +36,12 @@ class MuiCode extends HTMLElement {
     const styles = /*css*/ `
       :host {
         display: grid;
-        --code-background: var(--surface-elevated-100);
       }
       :host([inline]) {
         display: inline;
       }
-      :host([card-slot]) {
-        --code-background: var(--surface-elevated-200);
+      :host([usage="surface"]) {
+        --code-background: var(--code-background-surface);
       }
       :host([size="x-small"]) code {
         font-size: var(--text-font-size-xs);

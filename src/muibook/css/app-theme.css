@@ -16,6 +16,10 @@ html[data-theme="dark"] {
   --app-story-canvas-100: var(--grey-1000);
 }
 
+:where(html) {
+  --app-story-tab-bar-background-active: var(--app-container-surface);
+}
+
 /* =============================================================================== */
 /*   Theme Storefront: MUI                                                         */
 /*   Component theme alignment across storefront                                   */
@@ -90,7 +94,7 @@ html[data-brand="mui"][data-theme="dark"] {
   --app-floating-menu-color: var(--white);
   --app-floating-menu-background: var(--app-container-surface);
   --app-floating-menu-background-hover: var(--app-navbar-surface-100);
-  --app-story-tab-bar-background: var(--grey-1100);
+  --app-story-tab-bar-background: var(--grey-1200);
 }
 
 /* =============================================================================== */
@@ -147,6 +151,7 @@ html[data-brand="jal"][data-theme="dark"] {
   --app-floating-menu-background: var(--white-opacity-50);
   --app-floating-menu-background-hover: var(--white-opacity-60);
   --app-story-tab-bar-background: var(--grey-1100);
+  --app-story-tab-bar-background-active: var(--gold-200);
 }
 
 /* =============================================================================== */
@@ -178,6 +183,7 @@ html[data-brand="ana"][data-theme="light"] {
   --app-floating-menu-background: var(--white-opacity-10);
   --app-floating-menu-background-hover: var(--white-opacity-20);
   --app-story-tab-bar-background: var(--grey-100);
+  --app-story-tab-bar-background-active: var(--blue-500);
 }
 
 html[data-brand="ana"][data-theme="dark"] {
@@ -205,6 +211,7 @@ html[data-brand="ana"][data-theme="dark"] {
   --app-floating-menu-background: var(--white-opacity-0);
   --app-floating-menu-background-hover: var(--black-opacity-10);
   --app-story-tab-bar-background: var(--grey-700);
+  --app-story-tab-bar-background-active: var(--white);
 }
 
 /* =============================================================================== */
@@ -219,7 +226,6 @@ html[data-brand="sensei"][data-theme="light"] {
   --app-story-snippet-code-text: var(--green-1200);
   /* App Surface */
   --app-container-surface: var(--green-400);
-  --app-navbar-border: var(--border-thin);
   --app-navbar-surface-opacity: var(--green-400-opacity-80);
   --app-navbar-surface: var(--green-400);
   --app-navbar-surface-100: var(--green-300);
@@ -248,7 +254,6 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-story-snippet-code-text: var(--green-1200);
   /* App Surface */
   --app-container-surface: var(--green-1400);
-  --app-navbar-border: var(--border-thin);
   --app-navbar-surface-opacity: var(--green-1400-opacity-80);
   --app-navbar-surface: var(--green-1400);
   --app-navbar-surface-100: var(--green-1300);
@@ -267,6 +272,7 @@ html[data-brand="sensei"][data-theme="dark"] {
   --app-floating-menu-background: var(--app-container-surface);
   --app-floating-menu-background-hover: var(--app-navbar-surface-100);
   --app-story-tab-bar-background: var(--green-1200);
+  --app-story-tab-bar-background-active: var(--green-300);
 }
 
 /* =============================================================================== */

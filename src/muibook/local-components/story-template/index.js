@@ -248,7 +248,7 @@ class StoryTemplate extends HTMLElement {
               }
             }
           </style>
-          <mui-tab-bar class="docs-tab-bar" stroke="none" active-inset inset-size="300" size="medium" radius="400" style="justify-self: start; --tab-background: var(--app-story-tab-bar-background);">
+          <mui-tab-bar class="docs-tab-bar" stroke="none" active-inset inset-size="300" size="medium" radius="400" style="justify-self: start; --tab-background: var(--app-story-tab-bar-background); --tab-background-active: var(--app-story-tab-bar-background-active);">
             <mui-tab-item id="props" active>Prop Types</mui-tab-item>
             <mui-tab-item id="accessibility">Accessibility</mui-tab-item>
           </mui-tab-bar>
@@ -345,14 +345,14 @@ class StoryTemplate extends HTMLElement {
         </mui-button>
         <mui-menu>
           ${links
-          .map(
-          (link) => /*html*/ `
+            .map(
+              (link) => /*html*/ `
           <mui-link target="_blank" href="${link.href}" rel="noopener" variant="tertiary" size="small">
           ${link.label}<${link.icon} slot="after" size="xx-small"></${link.icon}>
           </mui-link>
           `,
-          )
-          .join("")}
+            )
+            .join("")}
         </mui-menu>
       </mui-dropdown>
     `

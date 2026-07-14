@@ -12,7 +12,7 @@ class compWallet extends HTMLElement {
         display: block;
       }
       .canvas {
-        background: var(--app-story-wallet-card, var(--surface));
+        background: var(--surface);
         padding: var(--space-400);
         margin-top: calc(var(--space-400) * -1);
         margin-bottom: calc(var(--space-400) * -1);

@@ -118,8 +118,9 @@ export const muiDocs: MuiDocs = {
         {
           "key": "surface-contexts",
           "title": "Surface Contexts",
-          "description": "Code defaults to surface-elevated-100, then shifts to surface-elevated-200 when the card context applies card-slot.",
+          "description": "Code defaults to surface-elevated-100, then shifts to surface-elevated-200 when used inside a recognized surface.",
           "list": [
+            "Card, Card Body, Drawer, Dialog, and Carousel automatically apply surface usage through the nearest recognized ancestor.",
             "Use Code for technical values and examples; preserve readable wrapping or scrolling for long content."
           ]
         }
