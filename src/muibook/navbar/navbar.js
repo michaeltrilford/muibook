@@ -221,9 +221,15 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/image" title="Image"></app-navbar-link>
           <app-navbar-link link="/media-player" title="Media Player"></app-navbar-link>
           <app-navbar-link link="/model-viewer" title="Model Viewer"></app-navbar-link>
-          <app-navbar-link link="/financial-chart" title="Financial Chart"></app-navbar-link>
           <app-navbar-link link="/video-thumbnail" title="Video Thumbnail"></app-navbar-link>
           <app-navbar-link link="/slide-frame" title="Slide Frame"></app-navbar-link>
+        </app-navbar-section>
+
+        <app-navbar-section heading="Charts" default-open>
+          <app-navbar-link link="/financial-chart" title="Financial Chart"></app-navbar-link>
+          <app-navbar-link link="/financial-bar-chart" title="Financial Bar Chart"></app-navbar-link>
+          <app-navbar-link link="/comparison-chart" title="Comparison Chart"></app-navbar-link>
+          <app-navbar-link link="/market-sparkline" title="Market Sparkline"></app-navbar-link>
         </app-navbar-section>
 
         <app-navbar-section heading="Feedback" default-open>

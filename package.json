@@ -196,6 +196,18 @@
       "import": "./dist/esm/components/mui-financial-chart/index.js",
       "types": "./dist/types/components/mui-financial-chart/index.d.ts"
     },
+    "./mui-financial-bar-chart": {
+      "import": "./dist/esm/components/mui-financial-bar-chart/index.js",
+      "types": "./dist/types/components/mui-financial-bar-chart/index.d.ts"
+    },
+    "./mui-comparison-chart": {
+      "import": "./dist/esm/components/mui-comparison-chart/index.js",
+      "types": "./dist/types/components/mui-comparison-chart/index.d.ts"
+    },
+    "./mui-market-sparkline": {
+      "import": "./dist/esm/components/mui-market-sparkline/index.js",
+      "types": "./dist/types/components/mui-market-sparkline/index.d.ts"
+    },
     "./mui-hint": {
       "import": "./dist/esm/components/mui-hint/index.js",
       "types": "./dist/types/components/mui-hint/index.d.ts"

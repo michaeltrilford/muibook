@@ -1,0 +1,46 @@
+export const muiApi = {
+  "mui-comparison-chart": {
+    description: "Compares multiple financial time series as absolute, indexed, or percentage-change lines.",
+    attributes: [
+      { name: "mode", values: ["absolute", "indexed", "percent"], default: "indexed", description: "Preserves values, rebases each series to 100, or calculates percentage change from its first value." },
+      { name: "label", description: "Accessible chart comparison label." },
+      { name: "value-format", values: ["decimal", "percent", "currency"], default: "decimal", description: "Formats absolute values. Indexed and percent modes use their corresponding formats automatically." },
+      { name: "currency", default: "USD", description: "Currency code used by currency formatting." },
+      { name: "height", default: "24rem", description: "CSS length applied to the plot region." },
+      { name: "scale", values: ["both", "time", "price", "none"], default: "both", description: "Controls visible time and price scales." },
+      { name: "interactive", type: "boolean", description: "Enables crosshair, scrolling, and scale gestures." },
+      { name: "attribution", values: ["logo", "none"], default: "logo", description: "Controls the TradingView attribution logo. Use none only when the consuming page provides the required attribution." },
+      { name: "loading", type: "boolean", description: "Displays the loading state over the plot." },
+      { name: "error", description: "Displays an error message over the plot." },
+    ],
+    properties: [{ name: "series", description: "Array of named series with id, label, optional color, and time/value data." }],
+    methods: [
+      { name: "update", description: "Adds or replaces one datum in the identified series." },
+      { name: "fitContent", description: "Fits all current series into the visible time scale." },
+    ],
+    events: [{ name: "comparison-chart-crosshair-change", description: "Fires with matching values from every series when an interactive crosshair moves." }],
+    slots: [
+      { name: "header", description: "Muibook content rendered before the plot." },
+      { name: "legend", description: "Composable series legend rendered before the plot." },
+      { name: "footer", description: "Muibook content rendered after the plot." },
+    ],
+    cssParts: [
+      { name: "header", description: "Header slot." },
+      { name: "legend", description: "Legend slot." },
+      { name: "plot", description: "Chart and state-overlay region." },
+      { name: "footer", description: "Footer slot." },
+    ],
+    cssProperties: [
+      { name: "--comparison-chart-background", description: "Canvas and state background." },
+      { name: "--comparison-chart-grid-color", description: "Canvas grid lines." },
+      { name: "--comparison-chart-crosshair-color", description: "Interactive crosshair." },
+      { name: "--comparison-chart-reference-color", description: "Indexed or percent reference line." },
+      { name: "--comparison-chart-series-1", description: "First automatic series color." },
+      { name: "--comparison-chart-series-2", description: "Second automatic series color." },
+      { name: "--comparison-chart-series-3", description: "Third automatic series color." },
+      { name: "--comparison-chart-series-4", description: "Fourth automatic series color." },
+      { name: "--comparison-chart-series-5", description: "Fifth automatic series color." },
+      { name: "--comparison-chart-series-6", description: "Sixth automatic series color." },
+    ],
+  },
+};

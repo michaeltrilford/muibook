@@ -484,6 +484,44 @@ html[data-theme="light"] {
   --financial-chart-action-background-active: var(--action-primary-background);
   --financial-chart-action-text-color-active: var(--action-primary-text-color);
 
+  /* Market Sparkline */
+  --market-sparkline-background: var(--surface-elevated-100);
+  --market-sparkline-text-color: var(--text-color-secondary);
+  --market-sparkline-positive-color: var(--feedback-positive-border-color);
+  --market-sparkline-negative-color: var(--feedback-attention-border-color);
+  --market-sparkline-neutral-color: var(--categorical-blue);
+  --market-sparkline-positive-area-top-color: color-mix(in srgb, var(--feedback-positive-border-color) 32%, transparent);
+  --market-sparkline-positive-area-bottom-color: color-mix(in srgb, var(--feedback-positive-border-color) 2%, transparent);
+  --market-sparkline-negative-area-top-color: color-mix(in srgb, var(--feedback-attention-border-color) 32%, transparent);
+  --market-sparkline-negative-area-bottom-color: color-mix(in srgb, var(--feedback-attention-border-color) 2%, transparent);
+  --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--categorical-blue) 32%, transparent);
+  --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 2%, transparent);
+
+  /* Financial Bar Chart */
+  --financial-bar-chart-background: var(--surface-elevated-100);
+  --financial-bar-chart-text-color: var(--text-color-secondary);
+  --financial-bar-chart-border-color: var(--border-color);
+  --financial-bar-chart-grid-color: var(--black-opacity-10);
+  --financial-bar-chart-crosshair-color: var(--black-opacity-50);
+  --financial-bar-chart-neutral-color: var(--categorical-blue);
+  --financial-bar-chart-positive-color: var(--feedback-positive-border-color);
+  --financial-bar-chart-negative-color: var(--feedback-attention-border-color);
+  --financial-bar-chart-baseline-color: var(--border-color);
+
+  /* Comparison Chart */
+  --comparison-chart-background: var(--surface-elevated-100);
+  --comparison-chart-text-color: var(--text-color-secondary);
+  --comparison-chart-border-color: var(--border-color);
+  --comparison-chart-grid-color: var(--black-opacity-10);
+  --comparison-chart-crosshair-color: var(--black-opacity-50);
+  --comparison-chart-reference-color: var(--border-color);
+  --comparison-chart-series-1: var(--categorical-blue);
+  --comparison-chart-series-2: var(--categorical-green);
+  --comparison-chart-series-3: var(--categorical-magenta);
+  --comparison-chart-series-4: var(--categorical-orange);
+  --comparison-chart-series-5: var(--categorical-cyan);
+  --comparison-chart-series-6: var(--categorical-purple);
+
   /* Stepper */
   --stepper-color: var(--grey-700);
   --stepper-background-inactive: var(--white);
@@ -900,6 +938,44 @@ html[data-theme="dark"] {
   --financial-chart-action-background-hover: var(--action-tertiary-background-hover);
   --financial-chart-action-background-active: var(--action-primary-background);
   --financial-chart-action-text-color-active: var(--action-primary-text-color);
+
+  /* Market Sparkline */
+  --market-sparkline-background: var(--surface-elevated-100);
+  --market-sparkline-text-color: var(--text-color-secondary);
+  --market-sparkline-positive-color: var(--feedback-positive-border-color);
+  --market-sparkline-negative-color: var(--feedback-attention-border-color);
+  --market-sparkline-neutral-color: var(--categorical-blue);
+  --market-sparkline-positive-area-top-color: color-mix(in srgb, var(--feedback-positive-border-color) 36%, transparent);
+  --market-sparkline-positive-area-bottom-color: color-mix(in srgb, var(--feedback-positive-border-color) 3%, transparent);
+  --market-sparkline-negative-area-top-color: color-mix(in srgb, var(--feedback-attention-border-color) 36%, transparent);
+  --market-sparkline-negative-area-bottom-color: color-mix(in srgb, var(--feedback-attention-border-color) 3%, transparent);
+  --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--categorical-blue) 36%, transparent);
+  --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 3%, transparent);
+
+  /* Financial Bar Chart */
+  --financial-bar-chart-background: var(--surface-elevated-100);
+  --financial-bar-chart-text-color: var(--text-color-secondary);
+  --financial-bar-chart-border-color: var(--border-color);
+  --financial-bar-chart-grid-color: var(--white-opacity-10);
+  --financial-bar-chart-crosshair-color: var(--white-opacity-50);
+  --financial-bar-chart-neutral-color: var(--categorical-blue);
+  --financial-bar-chart-positive-color: var(--feedback-positive-border-color);
+  --financial-bar-chart-negative-color: var(--feedback-attention-border-color);
+  --financial-bar-chart-baseline-color: var(--border-color);
+
+  /* Comparison Chart */
+  --comparison-chart-background: var(--surface-elevated-100);
+  --comparison-chart-text-color: var(--text-color-secondary);
+  --comparison-chart-border-color: var(--border-color);
+  --comparison-chart-grid-color: var(--white-opacity-10);
+  --comparison-chart-crosshair-color: var(--white-opacity-50);
+  --comparison-chart-reference-color: var(--border-color);
+  --comparison-chart-series-1: var(--categorical-blue);
+  --comparison-chart-series-2: var(--categorical-green);
+  --comparison-chart-series-3: var(--categorical-magenta);
+  --comparison-chart-series-4: var(--categorical-orange);
+  --comparison-chart-series-5: var(--categorical-cyan);
+  --comparison-chart-series-6: var(--categorical-purple);
 
   /* Stepper */
   --stepper-color: var(--white);
