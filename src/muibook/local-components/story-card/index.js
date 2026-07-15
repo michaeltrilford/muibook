@@ -13,7 +13,6 @@ class storyCard extends HTMLElement {
       "canvas-guide-color",
       "no-canvas-guide",
       "canvas-bleed",
-      "body-condensed",
       "composition",
     ];
   }
@@ -34,7 +33,6 @@ class storyCard extends HTMLElement {
         padding: var(--space-400);
       }
 
-      :host([body-condensed]) .story-body,
       :host([canvas-bleed]) .story-body,
       :host([composition]) .story-body {
         padding: 0;
@@ -232,7 +230,7 @@ class storyCard extends HTMLElement {
           </mui-card-header>
         `
         }
-        <mui-card-body ${this.hasAttribute("body-condensed") || this.hasAttribute("composition") ? "condensed" : ""}>
+        <mui-card-body ${this.hasAttribute("composition") ? 'size="none"' : ""}>
           <section>
             <div class="story-body">
               <slot name="body"></slot>
@@ -251,7 +249,7 @@ class storyCard extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) return;
     if (name === "canvas-background" || name === "canvas-guide-color") this.syncCanvasStyles();
-    if (name === "body-condensed" || name === "canvas-bleed" || name === "composition") this.syncLayoutAttrs();
+    if (name === "canvas-bleed" || name === "composition") this.syncLayoutAttrs();
   }
 
   syncCanvasStyles() {
@@ -273,7 +271,11 @@ class storyCard extends HTMLElement {
   syncLayoutAttrs() {
     const cardBody = this.shadowRoot?.querySelector("mui-card-body");
     if (!cardBody) return;
-    cardBody.toggleAttribute("condensed", this.hasAttribute("body-condensed") || this.hasAttribute("composition"));
+    if (this.hasAttribute("composition")) {
+      cardBody.setAttribute("size", "none");
+    } else {
+      cardBody.removeAttribute("size");
+    }
   }
 
   bindFooterSlot() {

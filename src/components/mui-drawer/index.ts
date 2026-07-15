@@ -141,8 +141,15 @@ class MuiDrawer extends HTMLElement {
     return closeSize && ["x-small", "small", "medium", "large"].includes(closeSize) ? closeSize : "medium";
   }
 
+  private getCloseButtonSize(): string {
+    const closeSize = this.getCloseSize();
+    if (closeSize === "large") return "medium";
+    if (closeSize === "medium") return "small";
+    return closeSize;
+  }
+
   private getCloseActionSizeToken(): string {
-    return `var(--action-size-${this.getCloseSize()})`;
+    return `var(--action-size-${this.getCloseButtonSize()})`;
   }
 
   private getMobilePresentation(): "overlay" | "stack" {
@@ -302,6 +309,7 @@ class MuiDrawer extends HTMLElement {
   private getDrawerTemplate(hasCloseButton = true) {
     const noPadding = this.hasAttribute("drawer-space") ? "no-padding" : "";
     const closeSize = this.getCloseSize();
+    const closeButtonSize = this.getCloseButtonSize();
     const partMap = getPartMap("visual");
 
     return /*html*/ `
@@ -312,7 +320,7 @@ class MuiDrawer extends HTMLElement {
           ${
             hasCloseButton
               ? `
-            <mui-button class="close" variant="tertiary" size="${closeSize}" aria-label="Close drawer">
+            <mui-button class="close" variant="tertiary" size="${closeButtonSize}" aria-label="Close drawer">
               <mui-icon-close size="${closeSize}"></mui-icon-close>
             </mui-button>`
               : "<span class='spacer'></span>"
@@ -378,6 +386,7 @@ class MuiDrawer extends HTMLElement {
       .header {
         display: flex;
         flex: 0 0 auto;
+        min-height: var(--header-min-height-${closeSize});
         justify-content: space-between;
         align-items: center;
         padding: calc(var(--space-400) + var(--drawer-safe-top)) var(--space-400) var(--space-400) var(--space-500);
@@ -442,7 +451,7 @@ class MuiDrawer extends HTMLElement {
       .resize-rail,
       .workspace-resize-rail {
         position: relative;
-        z-index: 2;
+        z-index: 1;
         display: block;
         width: var(--drawer-resize-rail-size, var(--stroke-size-500));
         height: 100%;
@@ -1159,7 +1168,7 @@ class MuiDrawer extends HTMLElement {
       <div class="inner" part="${partMap}" role="dialog" aria-modal="true">
         <div class="header" hidden>
           <slot name="title"></slot>
-          <mui-button class="close" variant="tertiary" size="${closeSize}" aria-label="Close drawer">
+          <mui-button class="close" variant="tertiary" size="${this.getCloseButtonSize()}" aria-label="Close drawer">
             <mui-icon-close size="${closeSize}"></mui-icon-close>
           </mui-button>
         </div>
@@ -1318,6 +1327,17 @@ class MuiDrawer extends HTMLElement {
       this.cacheEls();
       this.syncDrawerWidth();
       this.attachEvents();
+      this.syncOpenState();
+      this.syncWorkspaceState();
+    }
+    if (name === "close-size") {
+      if (!this.isConnected) return;
+      this.render();
+      this.cacheEls();
+      this.syncDrawerWidth();
+      this.attachEvents();
+      this.updateFooterVisibility();
+      this.updateHeaderVisibility();
       this.syncOpenState();
       this.syncWorkspaceState();
     }

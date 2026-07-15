@@ -2,7 +2,7 @@
 // MuiBrandTokens.swift
 //
 
-// Don't edit directly • Generated on Tue, 14 Jul 2026 07:51:16 GMT • muibook.com
+// Don't edit directly • Generated on Wed, 15 Jul 2026 06:18:47 GMT • muibook.com
 
 import UIKit
 
@@ -55,6 +55,7 @@ public class BrandTokens {
     public static let blackOpacity_100 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.0)
     public static let white = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.0)
     public static let whiteOpacity_0 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
+    public static let whiteOpacity_5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.051)
     public static let whiteOpacity_10 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.102)
     public static let whiteOpacity_20 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.200)
     public static let whiteOpacity_30 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.302)

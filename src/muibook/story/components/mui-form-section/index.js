@@ -13,7 +13,9 @@ class StoryFormSection extends HTMLElement {
       this.shadowRoot.innerHTML = `<story-metadata-empty component="Form Section"></story-metadata-empty>`;
       return;
     }
-    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
     const attrsReference = JSON.stringify([
       {
         component: "mui-form-section",
@@ -201,8 +203,8 @@ class StoryFormSection extends HTMLElement {
                 </div>
                 <div slot="showAbove">
                   <mui-h-stack alignx="end" space="var(--space-200)">
-                    <mui-button variant="primary" size="medium">Request now</mui-button>
                     <mui-link variant="tertiary" href="#" weight="regular">License</mui-link>
+                    <mui-button variant="primary" size="medium">Request now</mui-button>
                   </mui-h-stack>
                 </div>
               </mui-responsive>

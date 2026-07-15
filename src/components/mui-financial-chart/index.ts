@@ -16,6 +16,7 @@ import "../mui-body";
 import "../mui-responsive";
 import "../mui-stack";
 import "../mui-tabs";
+import "../mui-work-log";
 import { hasSurfaceOwner } from "../../utils/surface-usage";
 
 export type MuiFinancialChartType = "candlestick" | "area";
@@ -31,7 +32,7 @@ export interface MuiFinancialChartDatum {
 
 class MuiFinancialChart extends HTMLElement {
   static get observedAttributes() {
-    return ["type", "symbol", "currency", "interval", "height", "selected-range", "ranges", "loading", "error"];
+    return ["type", "symbol", "currency", "interval", "height", "selected-range", "ranges", "attribution", "loading", "error"];
   }
 
   private chart: IChartApi | null = null;
@@ -106,6 +107,7 @@ class MuiFinancialChart extends HTMLElement {
       );
     }
 
+    if (name === "attribution") this.chart?.applyOptions(this.chartOptions());
     if (name === "type") this.rebuildSeries();
   }
 
@@ -161,6 +163,10 @@ class MuiFinancialChart extends HTMLElement {
           border-bottom: var(--financial-chart-border);
         }
 
+        :host([header-stroke="none"]) [part="toolbar"] {
+          border-bottom: 0;
+        }
+
         mui-responsive {
           width: 100%;
           min-width: 0;
@@ -195,10 +201,7 @@ class MuiFinancialChart extends HTMLElement {
           place-items: center;
           padding: var(--space-400);
           background: var(--financial-chart-background);
-          color: var(--financial-chart-text-color-secondary);
           text-align: center;
-          font-size: var(--text-font-size-s);
-          line-height: var(--text-line-height-s);
         }
 
         .state[hidden] {
@@ -246,9 +249,13 @@ class MuiFinancialChart extends HTMLElement {
         </mui-responsive>
         <div class="chart-region" part="chart-region">
           <div class="chart" role="img"></div>
-          <div class="state loading" role="status" hidden>Loading market data</div>
-          <div class="state empty" role="status" hidden>No market data available</div>
-          <div class="state error" role="alert" hidden></div>
+          <div class="state loading" role="status" hidden>
+            <mui-work-log label="Loading market data" status pending></mui-work-log>
+          </div>
+          <mui-body class="state empty" size="x-small" variant="secondary" role="status" hidden>No market data available</mui-body>
+          <div class="state error" role="alert" hidden>
+            <mui-work-log status variant="error"></mui-work-log>
+          </div>
         </div>
         <p class="sr-only" aria-live="polite"></p>
       </section>
@@ -314,7 +321,7 @@ class MuiFinancialChart extends HTMLElement {
     if (emptyState) emptyState.hidden = !empty;
     if (errorState) {
       errorState.hidden = !error;
-      errorState.textContent = error;
+      errorState.querySelector("mui-work-log")?.setAttribute("label", error);
     }
     this.updateSummary();
   }
@@ -447,7 +454,7 @@ class MuiFinancialChart extends HTMLElement {
         background: { type: ColorType.Solid, color: colors.background },
         textColor: colors.text,
         fontFamily: getComputedStyle(this).fontFamily,
-        attributionLogo: true,
+        attributionLogo: this.getAttribute("attribution") !== "none",
       },
       grid: {
         vertLines: { color: colors.grid },

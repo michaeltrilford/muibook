@@ -11,6 +11,7 @@ import {
   type UTCTimestamp,
 } from "lightweight-charts";
 import "../mui-body";
+import "../mui-work-log";
 
 export type MuiComparisonChartMode = "absolute" | "indexed" | "percent";
 export type MuiComparisonChartValueFormat = "decimal" | "percent" | "currency";
@@ -30,7 +31,18 @@ export interface MuiComparisonChartSeries {
 
 class MuiComparisonChart extends HTMLElement {
   static get observedAttributes() {
-    return ["mode", "label", "value-format", "currency", "height", "scale", "interactive", "attribution", "loading", "error"];
+    return [
+      "mode",
+      "label",
+      "value-format",
+      "currency",
+      "height",
+      "scale",
+      "interactive",
+      "attribution",
+      "loading",
+      "error",
+    ];
   }
 
   private chart: IChartApi | null = null;
@@ -138,6 +150,19 @@ class MuiComparisonChart extends HTMLElement {
           min-width: 0;
         }
 
+        .header {
+          padding: var(--space-500);
+          border-bottom: var(--comparison-chart-border);
+        }
+
+        :host([header-stroke="none"]) .header {
+          border-bottom: 0;
+        }
+
+        .header[hidden] {
+          display: none;
+        }
+
         .plot {
           position: relative;
           width: 100%;
@@ -183,19 +208,32 @@ class MuiComparisonChart extends HTMLElement {
         }
       </style>
       <section class="shell">
-        <slot name="header" part="header"></slot>
+        <div class="header" part="header" hidden>
+          <slot name="header"></slot>
+        </div>
         <slot name="legend" part="legend"></slot>
         <div class="plot" part="plot">
           <div class="chart" role="img"></div>
-          <mui-body class="state loading" size="x-small" variant="secondary" role="status" hidden>Loading comparison data</mui-body>
-          <mui-body class="state empty" size="x-small" variant="secondary" role="status" hidden>No comparison data available</mui-body>
-          <mui-body class="state error" size="x-small" variant="attention" role="alert" hidden></mui-body>
+          <div class="state loading" role="status" hidden>
+            <mui-work-log label="Loading" status pending></mui-work-log>
+          </div>
+          <mui-body class="state empty" size="x-small" variant="secondary" role="status" hidden>No data available</mui-body>
+          <div class="state error" role="alert" hidden>
+            <mui-work-log status variant="error"></mui-work-log>
+          </div>
         </div>
         <slot name="footer" part="footer"></slot>
         <p class="sr-only" aria-live="polite"></p>
       </section>
     `;
     this.chartContainer = this.shadowRoot.querySelector(".chart");
+    const header = this.shadowRoot.querySelector<HTMLElement>(".header");
+    const headerSlot = this.shadowRoot.querySelector<HTMLSlotElement>('slot[name="header"]');
+    const syncHeader = () => {
+      if (header && headerSlot) header.hidden = headerSlot.assignedElements({ flatten: true }).length === 0;
+    };
+    headerSlot?.addEventListener("slotchange", syncHeader);
+    syncHeader();
     this.renderState();
   }
 
@@ -215,7 +253,9 @@ class MuiComparisonChart extends HTMLElement {
           return datum ? { id: series.id, label: series.label, value: datum.value } : null;
         })
         .filter(Boolean);
-      this.dispatchEvent(new CustomEvent("comparison-chart-crosshair-change", { detail: { time: event.time, values }, bubbles: true }));
+      this.dispatchEvent(
+        new CustomEvent("comparison-chart-crosshair-change", { detail: { time: event.time, values }, bubbles: true }),
+      );
     });
   }
 
@@ -339,7 +379,7 @@ class MuiComparisonChart extends HTMLElement {
     if (emptyState) emptyState.hidden = !empty;
     if (errorState) {
       errorState.hidden = !error;
-      errorState.textContent = error;
+      errorState.querySelector("mui-work-log")?.setAttribute("label", error);
     }
     this.updateSummary();
   }
@@ -351,7 +391,7 @@ class MuiComparisonChart extends HTMLElement {
     const populated = this.comparisonSeries.filter((series) => series.data.length > 0);
     const message = populated.length
       ? `${label} ${this.mode} comparison chart. ${populated.length} series: ${populated.map((series) => series.label).join(", ")}.`
-      : `${label} ${this.mode} comparison chart. No comparison data available.`;
+      : `${label} ${this.mode} comparison chart. No data available.`;
     root.querySelector<HTMLElement>(".sr-only")!.textContent = message;
     root.querySelector<HTMLElement>(".chart")?.setAttribute("aria-label", message);
   }

@@ -32,9 +32,10 @@ export const muiApi = {
       },
       {
         name: "variant",
-        type: { text: '"primary" | "secondary" | "tertiary" | "overlay" | "attention"' },
+        type: { text: '"primary" | "secondary" | "tertiary" | "overlay" | "attention" | "unstyled"' },
         default: "primary",
-        description: "Visual emphasis and intent of the action.",
+        description:
+          "Visual emphasis and intent of the action. Unstyled removes action chrome, sizing, padding, and typography so structured slotted content such as Card owns the presentation.",
       },
       {
         name: "stroke",

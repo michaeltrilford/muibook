@@ -52,6 +52,7 @@ export const BlackOpacity90 = "oklch(0% 0 0 / 0.9)";
 export const BlackOpacity100 = "oklch(0% 0 0)";
 export const White = "#ffffff";
 export const WhiteOpacity0 = "oklch(100% 0.00011 271.152 / 0)";
+export const WhiteOpacity5 = "oklch(100% 0.00011 271.152 / 0.05)";
 export const WhiteOpacity10 = "oklch(100% 0.00011 271.152 / 0.1)";
 export const WhiteOpacity20 = "oklch(100% 0.00011 271.152 / 0.2)";
 export const WhiteOpacity30 = "oklch(100% 0.00011 271.152 / 0.3)";

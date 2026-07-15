@@ -11,9 +11,10 @@ export const muiApi = {
       },
       {
         name: "variant",
-        type: { text: '"default" | "primary" | "secondary" | "tertiary" | "overlay" | "attention"' },
+        type: { text: '"default" | "primary" | "secondary" | "tertiary" | "overlay" | "attention" | "unstyled"' },
         default: "default",
-        description: "Uses standard inline-link styling or an action-style treatment.",
+        description:
+          "Uses standard inline-link styling, an action-style treatment, or Unstyled for structured slotted content such as Card without link decoration, action sizing, padding, or typography.",
       },
       {
         name: "stroke",

@@ -27,6 +27,7 @@ export const muiDocs: MuiDocs = {
         "Use contained when a push, persistent, or workspace drawer is rendered inside a bounded story canvas, card, or nested layout.",
         "Use resize-rail when desktop users need to tune drawer width; on narrow screens the rail is hidden and the drawer behaves like an overlay.",
         "Resize rails can be focused with the keyboard; use ArrowLeft and ArrowRight to nudge width, Shift with arrow keys for larger steps, and Escape to close the focused workspace side.",
+        "Resize rails remain beneath Menu and overlay content so resizing affordances do not cover open actions.",
         "Avoid assigning slot='page' directly to Stack or other sized layout components because Drawer owns the page viewport sizing.",
         "Use app-level CSS to map Drawer surface tokens such as --drawer-background to product navigation or shell colors.",
       ],

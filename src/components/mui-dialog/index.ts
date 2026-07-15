@@ -10,7 +10,7 @@ class MuiDialog extends HTMLElement {
   private titleSlot!: HTMLSlotElement | null;
 
   static get observedAttributes() {
-    return ["open", "width", "content-max-height"];
+    return ["open", "width", "content-max-height", "close-size"];
   }
 
   constructor() {
@@ -18,10 +18,26 @@ class MuiDialog extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  private getCloseSize(): "x-small" | "small" | "medium" | "large" {
+    const closeSize = this.getAttribute("close-size");
+    return closeSize && ["x-small", "small", "medium", "large"].includes(closeSize)
+      ? (closeSize as "x-small" | "small" | "medium" | "large")
+      : "medium";
+  }
+
+  private getCloseButtonSize(): "x-small" | "small" | "medium" {
+    const closeSize = this.getCloseSize();
+    if (closeSize === "large") return "medium";
+    if (closeSize === "medium") return "small";
+    return closeSize;
+  }
+
   connectedCallback() {
     if (!this.shadowRoot) return;
 
     const width = this.getAttribute("width") || "350px";
+    const closeSize = this.getCloseSize();
+    const closeButtonSize = this.getCloseButtonSize();
 
     const styles = /*css*/ `
       :host {
@@ -51,10 +67,12 @@ class MuiDialog extends HTMLElement {
 
       .header {
         display: flex;
+        min-height: var(--header-min-height-${closeSize});
         justify-content: space-between;
         align-items: center;
         padding: var(--space-400) var(--space-400) var(--space-400) var(--space-500);
         border-bottom: var(--border-thin);
+        box-sizing: border-box;
       }
 
       .content {
@@ -94,7 +112,7 @@ class MuiDialog extends HTMLElement {
       <dialog>
         <div class="header">
           <slot name="title"></slot>
-          <mui-button class="close" aria-label="Close" variant="tertiary"><mui-icon-close size="medium"></mui-icon-close></mui-button>
+          <mui-button class="close" aria-label="Close" variant="tertiary" size="${closeButtonSize}"><mui-icon-close size="${closeSize}"></mui-icon-close></mui-button>
         </div>
         <div class="content">
           <slot></slot>
@@ -156,6 +174,12 @@ class MuiDialog extends HTMLElement {
     if (name === "open") this.syncOpenState();
     if (name === "width" && this.dialogEl) {
       this.dialogEl.style.width = value || "350px";
+    }
+    if (name === "close-size" && this.shadowRoot) {
+      const closeSize = this.getCloseSize();
+      this.shadowRoot.querySelector(".header")?.setAttribute("style", `min-height: var(--header-min-height-${closeSize})`);
+      this.shadowRoot.querySelector(".close")?.setAttribute("size", this.getCloseButtonSize());
+      this.shadowRoot.querySelector("mui-icon-close")?.setAttribute("size", closeSize);
     }
   }
 

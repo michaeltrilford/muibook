@@ -34,6 +34,11 @@ export const muiApi = {
         type: { text: "boolean" },
         description: "Renders a non-interactive status row without accordion behavior or toggle icon, useful for Thinking states.",
       },
+      {
+        name: "variant",
+        type: { text: '"error"' },
+        description: "Applies the attention text treatment to an error status.",
+      },
     ],
     slots: [
       {

@@ -280,7 +280,7 @@ Do not persist internal slot-state attrs in exported markup unless the destinati
 Use parent-derived context when the right styling depends on where a child is placed.
 
 - Let the parent inspect its slotted children and derive structural context.
-- Put context on the destination element as an attr or class, such as `card-slot`, `condensed-slot`, `usage="card"`, or `usage="input"`.
+- Put context on the destination element as an attr or class, such as `card-slot`, `card-body-size-none-slot`, `usage="card"`, or `usage="input"`.
 - Let the child own the actual styling with `:host([card-slot])`, `:host([usage="input"])`, or a matching host class.
 - Keep this one-directional: parent detects context, child styles itself for that context.
 - Prefer context attrs over global CSS selectors that reach across component boundaries.
@@ -311,7 +311,7 @@ Common dynamic attr families in this codebase include:
 
 - Slot presence and affordance state: `has-before`, `has-after`, `has-actions`, `has-extra-actions`, `has-message`, `has-rule`, `has-header`, `has-footer`, `has-notes`.
 - Content-shape state: `icon-only`, `avatar-only`, `has-video`, `has-avatar-chip`, `has-error`, `has-chrome`.
-- Destination context attrs: `card-slot`, `condensed-slot`, `menu-slot`, `menu-slot-first`, `menu-slot-last`, `alert-slot`, `alert-positive-slot`, `alert-info-slot`, `alert-warning-slot`, `alert-attention-slot`.
+- Destination context attrs: `card-slot`, `card-body-size-none-slot`, `menu-slot`, `menu-slot-first`, `menu-slot-last`, `alert-slot`, `alert-positive-slot`, `alert-info-slot`, `alert-warning-slot`, `alert-attention-slot`.
 - Layout/container context attrs: `in-card`, `in-form-section`, `in-dialog`, `in-drawer`, `usage`, `first-child`, `last-child`.
 - Presentation/runtime attrs: `notes-visible`, `data-slide-section`, `slide-active`, `slide-hidden`, `inner-space-top`.
 

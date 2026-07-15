@@ -19,6 +19,7 @@ export const muiDocs: MuiDocs = {
         "Top-level Worker in a Chat Message header draws its divider on the summary row.",
         "Use rule when a trailing separator is needed outside the header slot.",
         "Use status with pending for active Thinking states that should shimmer without accordion interaction.",
+        "Use status with variant='error' for a non-interactive failure state using the attention text treatment.",
         "Use pending without status for expandable active work states such as Working for 5s, without applying the Thinking shimmer.",
         "Nest Worker inside another Worker for compact child work rows such as Read files or Ran checks.",
         "Nested work rows are treated as secondary detail inside the parent work disclosure.",
@@ -37,6 +38,7 @@ export const muiDocs: MuiDocs = {
       { key: "single", title: "Single Work Log", list: ["Use in the prompt message header slot when an agent response needs a compact work summary.", "Keep detail rows short and supporting, not the main response."] },
       { key: "composable", title: "Composable Summary", list: ["Use the before and after slots to insert custom elements into the Work Log summary row.", "Good for showing line diffs, file counts, or badges next to the label."] },
       { key: "thinking", title: "Thinking", list: ["Use status and pending together to represent an active Thinking state.", "This creates a non-interactive row with a shimmer animation and no toggle icon."] },
+      { key: "status", title: "Status", list: ["Use status and pending together for an active loading state.", "Use variant='error' with status for a non-interactive failure state using the attention treatment.", "Status rows have no disclosure toggle or accordion interaction."] },
       { key: "nested", title: "Nested Work Log", list: ["Use pending for active work states.", "Place Work Log inside another Work Log for secondary rows such as reading files, running checks, or applying changes.", "Nested rows are compact supporting detail."] },
     ] },
     compositions: { description: "", items: [] },
@@ -60,6 +62,7 @@ export const muiDocs: MuiDocs = {
         "When status is set, Worker renders a non-interactive row without Accordion Core or a toggle icon.",
         "Nested Worker rows are automatically marked with nested treatment when placed inside another Worker.",
         "Pending only applies the shimmer treatment when combined with status for Thinking-style rows.",
+        "The error variant maps the Work Log label to Body's attention treatment.",
       ],
     },
     writing: {

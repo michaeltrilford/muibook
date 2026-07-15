@@ -360,7 +360,7 @@ const styles = /*css*/ `
   }
 
   .video-page {
-    height: calc(100dvh - 7.7rem);
+    height: calc(100dvh - var(--header-min-height));
     overflow-y: scroll;
   }
   .video-page:focus-visible {
@@ -483,7 +483,7 @@ class compMuiTube extends HTMLElement {
     const Comp = /*html*/ `
       <style>${styles}</style>
       <mui-v-stack class="content-container" alignx="stretch" aligny="start" space="var(--space-000)" style="background: var(--app-muitube-background, var(--surface))" slot="body">
-        <mui-h-stack style="padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color);" alignx="space-between" aligny="center">
+        <mui-h-stack style="min-height: var(--header-min-height); padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color); box-sizing: border-box;" alignx="space-between" aligny="center">
           <mui-h-stack alignx="start" aligny="center" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000);">
             <mui-responsive variant="container" breakpoint="768" observe=".content-container">
               <mui-button slot="showAbove" variant="tertiary" aria-label="Open menu" size="medium" data-drawer-toggle="video-header-toggle">
@@ -534,7 +534,7 @@ class compMuiTube extends HTMLElement {
               data-drawer="video-header-overlay"
               drawer-space="none"
             >
-            <mui-h-stack style="padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color);" alignx="space-between" aligny="center">
+            <mui-h-stack style="min-height: var(--header-min-height); padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color); box-sizing: border-box;" alignx="space-between" aligny="center">
               <mui-h-stack alignx="start" aligny="center" space="var(--space-000)">
                 <mui-button variant="tertiary" aria-label="Open menu" size="medium" data-close>
                   <mui-icon-menu size="medium"></mui-icon-menu>

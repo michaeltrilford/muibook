@@ -4,7 +4,7 @@ export const muiDocs: MuiDocs = {
   Heading: {
     title: "Heading",
     description:
-      "The Heading component includes six levels (H1–H6) for structured heading usage, supporting a range of hierarchies in text presentation.",
+      "The Heading component includes six semantic levels (H1–H6) for structured hierarchy and a display-only mode for prominent non-heading text.",
 
     hero: [
       "https://images.ctfassets.net/i5uwscj4pkk2/mGURbbhEBEMoMv5KlrbhD/46b2fdc16823b3750955a6bfd451e3ed/Heading_-_Home_Image.png",
@@ -23,6 +23,7 @@ export const muiDocs: MuiDocs = {
         "Rich Data or Workflows: Headings may be used out of strict order to maintain visual balance and usability. E.g. Skip an H3 if H4 better suits the layout.",
         "Use only one H1 per page to establish a clear primary title and improve accessibility.",
         "Use H2–H6 to structure content logically, maintaining a clear hierarchy.",
+        "Use level='none' only when Heading typography is needed for display text, such as a prominent metric or financial value, that does not introduce a section.",
       ],
     },
 
@@ -31,11 +32,13 @@ export const muiDocs: MuiDocs = {
         "Use the level property (H1–H6) to maintain correct semantic structure.",
         "Follow a logical order — don’t skip heading levels.",
         "Helps screen readers understand and navigate the page hierarchy.",
+        "Do not use level='none' for content that introduces or labels a section.",
       ],
       engineerList: [
         "Use the level property (H1–H6) to maintain correct semantic structure.",
         "Follow a logical order — don’t skip heading levels.",
         "Helps screen readers understand and navigate the page hierarchy.",
+        "Level none renders readable text without adding an entry to the document heading outline.",
       ],
     },
 
@@ -140,6 +143,15 @@ export const muiDocs: MuiDocs = {
           "description": "Renders Heading 6 using size='6'.",
           "list": [
             "Keep heading level semantic and choose size independently to match the visual hierarchy."
+          ]
+        },
+        {
+          "key": "display-only",
+          "title": "Display Only",
+          "description": "Applies Heading typography to prominent text without creating a semantic heading.",
+          "list": [
+            "Use level='none' for prominent values or display text that does not introduce a section.",
+            "Use a semantic level from 1 to 6 whenever the text labels the content that follows."
           ]
         },
         {

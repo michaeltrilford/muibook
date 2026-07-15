@@ -35,7 +35,7 @@ class CompDashboard extends HTMLElement {
         container-type: inline-size;
         max-width: 112rem;
         margin: 0 auto;
-        padding: var(--space-400) 0;
+        padding: var(--space-000) var(--space-300) var(--space-000) var(--space-300);
       }
 
       .page-header::part(flex-wrap) {
@@ -115,43 +115,55 @@ class CompDashboard extends HTMLElement {
               <mui-v-stack space="var(--space-300)" alignx="stretch">
                 <mui-grid class="metric-grid" col="repeat(4, minmax(0, 1fr))" space="var(--space-300)" alignx="stretch">
                 <mui-card>
-                  <mui-card-body>
-                    <mui-v-stack space="var(--space-200)" alignx="stretch">
-                      <mui-body size="small" variant="secondary">Monthly revenue</mui-body>
-                      <mui-heading class="metric-value" size="3" level="2">$128.4K</mui-heading>
-                      <mui-badge size="small" variant="positive">+12.8%</mui-badge>
-                      <mui-market-sparkline id="revenueTrend" label="Monthly revenue trend" height="5rem" attribution="none"></mui-market-sparkline>
-                    </mui-v-stack>
+                  <mui-card-body size="none">
+                    <mui-market-sparkline id="revenueTrend" label="Monthly revenue trend" height="5rem" attribution="none">
+                      <mui-v-stack slot="header" space="var(--space-000)" style="padding: var(--space-400);">
+                        <mui-body size="small">Monthly revenue</mui-body>
+                        <mui-h-stack space="var(--space-200)" aligny="center">
+                          <mui-heading class="metric-value" size="3" level="none">$128.4K</mui-heading>
+                          <mui-badge size="small" variant="positive">+12.8%</mui-badge>
+                        </mui-h-stack>
+                      </mui-v-stack>
+                    </mui-market-sparkline>
                   </mui-card-body>
                 </mui-card>
                 <mui-card>
-                  <mui-card-body>
-                    <mui-v-stack space="var(--space-200)" alignx="stretch">
-                      <mui-body size="small" variant="secondary">Active accounts</mui-body>
-                      <mui-heading class="metric-value" size="3" level="2">24,892</mui-heading>
-                      <mui-badge size="small" variant="positive">+4.2%</mui-badge>
-                      <mui-market-sparkline id="accountTrend" label="Active account trend" height="5rem" attribution="none"></mui-market-sparkline>
-                    </mui-v-stack>
+                  <mui-card-body size="none">
+                    <mui-market-sparkline id="accountTrend" label="Active account trend" height="5rem" attribution="none">
+                      <mui-v-stack slot="header" space="var(--space-000)" style="padding: var(--space-400);">
+                        <mui-body size="small">Active accounts</mui-body>
+                        <mui-h-stack space="var(--space-200)" aligny="center">
+                          <mui-heading class="metric-value" size="3" level="none">24,892</mui-heading>
+                          <mui-badge size="small" variant="positive">+4.2%</mui-badge>
+                        </mui-h-stack>
+                      </mui-v-stack>
+                    </mui-market-sparkline>
                   </mui-card-body>
                 </mui-card>
                 <mui-card>
-                  <mui-card-body>
-                    <mui-v-stack space="var(--space-200)" alignx="stretch">
-                      <mui-body size="small" variant="secondary">Trial conversion</mui-body>
-                      <mui-heading class="metric-value" size="3" level="2">8.6%</mui-heading>
-                      <mui-badge size="small" variant="warning">-1.1%</mui-badge>
-                      <mui-market-sparkline id="conversionTrend" label="Trial conversion trend" height="5rem" attribution="none"></mui-market-sparkline>
-                    </mui-v-stack>
+                  <mui-card-body size="none">
+                    <mui-market-sparkline id="conversionTrend" label="Trial conversion trend" height="5rem" attribution="none">
+                      <mui-v-stack slot="header" space="var(--space-000)" style="padding: var(--space-400);">
+                        <mui-body size="small">Trial conversion</mui-body>
+                        <mui-h-stack space="var(--space-200)" aligny="center">
+                          <mui-heading class="metric-value" size="3" level="none">8.6%</mui-heading>
+                          <mui-badge size="small" variant="warning">-1.1%</mui-badge>
+                        </mui-h-stack>
+                      </mui-v-stack>
+                    </mui-market-sparkline>
                   </mui-card-body>
                 </mui-card>
                 <mui-card>
-                  <mui-card-body>
-                    <mui-v-stack space="var(--space-200)" alignx="stretch">
-                      <mui-body size="small" variant="secondary">Platform uptime</mui-body>
-                      <mui-heading class="metric-value" size="3" level="2">99.98%</mui-heading>
-                      <mui-badge size="small" variant="neutral">Stable</mui-badge>
-                      <mui-market-sparkline id="uptimeTrend" label="Platform uptime trend" height="5rem" trend="neutral" attribution="none"></mui-market-sparkline>
-                    </mui-v-stack>
+                  <mui-card-body size="none">
+                    <mui-market-sparkline id="uptimeTrend" label="Platform uptime trend" height="5rem" trend="neutral" attribution="none">
+                      <mui-v-stack slot="header" space="var(--space-000)" style="padding: var(--space-400);">
+                        <mui-body size="small">Platform uptime</mui-body>
+                        <mui-h-stack space="var(--space-200)" aligny="center">
+                          <mui-heading class="metric-value" size="3" level="none">99.98%</mui-heading>
+                          <mui-badge size="small" variant="neutral">Stable</mui-badge>
+                        </mui-h-stack>
+                      </mui-v-stack>
+                    </mui-market-sparkline>
                   </mui-card-body>
                 </mui-card>
                 </mui-grid>
@@ -304,15 +316,47 @@ class CompDashboard extends HTMLElement {
       </story-template>
     `;
 
-    this.shadowRoot.querySelector("#revenueTrend").data = createTrend({ start: 108, drift: 0.7, volatility: 2.8, seed: 4 });
-    this.shadowRoot.querySelector("#accountTrend").data = createTrend({ start: 21800, drift: 105, volatility: 380, seed: 8 });
-    this.shadowRoot.querySelector("#conversionTrend").data = createTrend({ start: 9.4, drift: -0.025, volatility: 0.34, seed: 12 });
-    this.shadowRoot.querySelector("#uptimeTrend").data = createTrend({ start: 99.96, drift: 0.0005, volatility: 0.015, seed: 18 });
+    this.shadowRoot.querySelector("#revenueTrend").data = createTrend({
+      start: 108,
+      drift: 0.7,
+      volatility: 2.8,
+      seed: 4,
+    });
+    this.shadowRoot.querySelector("#accountTrend").data = createTrend({
+      start: 21800,
+      drift: 105,
+      volatility: 380,
+      seed: 8,
+    });
+    this.shadowRoot.querySelector("#conversionTrend").data = createTrend({
+      start: 9.4,
+      drift: -0.025,
+      volatility: 0.34,
+      seed: 12,
+    });
+    this.shadowRoot.querySelector("#uptimeTrend").data = createTrend({
+      start: 99.96,
+      drift: 0.0005,
+      volatility: 0.015,
+      seed: 18,
+    });
 
     this.shadowRoot.querySelector("#activationChart").series = [
-      { id: "adoption", label: "Feature adoption", data: createTrend({ start: 39, drift: 0.22, volatility: 0.8, seed: 22 }) },
-      { id: "retention", label: "30-day retention", data: createTrend({ start: 64, drift: 0.14, volatility: 0.65, seed: 28 }) },
-      { id: "onboarding", label: "Onboarding completion", data: createTrend({ start: 72, drift: 0.32, volatility: 0.9, seed: 34 }) },
+      {
+        id: "adoption",
+        label: "Feature adoption",
+        data: createTrend({ start: 39, drift: 0.22, volatility: 0.8, seed: 22 }),
+      },
+      {
+        id: "retention",
+        label: "30-day retention",
+        data: createTrend({ start: 64, drift: 0.14, volatility: 0.65, seed: 28 }),
+      },
+      {
+        id: "onboarding",
+        label: "Onboarding completion",
+        data: createTrend({ start: 72, drift: 0.32, volatility: 0.9, seed: 34 }),
+      },
     ];
 
     this.shadowRoot.querySelector("#revenueChart").data = Array.from({ length: 12 }, (_, index) => ({

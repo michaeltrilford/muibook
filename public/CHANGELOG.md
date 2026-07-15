@@ -10,6 +10,7 @@ _Status: WIP_
 
 ### Added
 
+- Added `variant="unstyled"` to Button and Link for wrapping structured, non-interactive content such as Card while removing action chrome, sizing, padding, typography, and link decoration without removing native semantics or focus treatment.
 - Added `mui-menu` as the reusable visual surface for Dropdown menus and standalone overlay composition exploration. `mui-dropdown` continues to own portal positioning, focus, and dismissal behaviour.
 - Added `mui-submenu` for composing a hover- and focus-revealed nested Menu from a direct Button trigger. It inherits the parent Menu action context, maintains a forgiving pointer bridge, closes cleanly after nested actions, and synchronizes `aria-haspopup` and `aria-expanded`.
 - `mui-submenu` portals its nested Menu to a body-level overlay while open so focused controls, parent stacking contexts, and overflow containers cannot paint above or clip it. The authored Menu is restored when the Submenu closes or disconnects.
@@ -33,8 +34,13 @@ _Status: WIP_
 - Added `--chip-background-menu` for direct Chip and Chip Input compositions inside Menu. Mui keeps the existing white treatment in light mode and uses `grey-900` in dark mode without changing the global Chip background; JAL, ANA, Sensei, and Paperclip provide matching brand mappings.
 - Added the `content` CSS part to `mui-body`, exposing the internal span that wraps default body text for targeted composed-component styling.
 - Pending Thinking states in `mui-work-log` now use a text-clipped linear-gradient shimmer with reduced-motion support. The theme-aware `--work-log-shimmer-color-primary` and `--work-log-shimmer-color-secondary` tokens are mapped for Mui, JAL, ANA, Sensei, and Paperclip themes.
-- Added `--surface-elevated-50` and `--surface-recessed-50` as theme-aware OKLCH interpolations between the base surface and existing `100` depth. Shared semantic aliases now drive Tab Bar, Carousel, Dialog, Drawer, and financial-chart surfaces without duplicating light and dark mappings.
-- `mui-tab-bar` now supports `usage="surface"` with dedicated `--tab-border-color-surface`, `--tab-background-surface`, and `--tab-background-active-surface` tokens. Card, Card Body, Dialog, Drawer, and Carousel apply the usage automatically through neutral layout wrappers while preserving the nearest nested surface owner.
+- Added `--surface-elevated-50` and `--surface-recessed-50` as light- and dark-specific OKLCH interpolations between the matching grey primitives. Surface token stories now show the complete `50 | 100 | 200 | 300` elevated and recessed scales.
+- Added `--header-min-height-x-small`, `--header-min-height-small`, `--header-min-height-medium`, and `--header-min-height-large`, with `--header-min-height` retaining the medium alias for app headers. Drawer and Dialog now map header height and built-in close action sizing through `close-size`; medium uses a small Button with the medium icon, while large uses a medium Button with the large icon.
+- Added `none | small | medium | large` spacing sizes to `mui-card-body`. Market Sparkline stories use small bodies for compact market summaries and medium or large bodies for more spacious chart compositions.
+- Added `level="none"` to `mui-heading` for prominent display text such as metrics and financial values that should retain Heading typography without entering the semantic document heading outline.
+- Added `--white-opacity-5` to the primitive color scale, matching the existing `--black-opacity-5` token across base and branded token outputs. Base tertiary action hover and focus surfaces now use the matching 5% overlays in light and dark modes.
+- `mui-tab-bar` now supports `usage="surface"` with dedicated `--tab-border-color-surface`, `--tab-background-surface`, and `--tab-background-active-surface` tokens. Card, Card Body, Dialog, Drawer, and Carousel apply the usage automatically through neutral layout wrappers while preserving the nearest nested surface owner. Non-inset Tab Bars use the subtle opacity stroke; surface Tabs with `active-inset` match the stroke to their background through `--tab-border-color-active-inset`.
+- Tab Bars with `stroke="none"` now use visible overflow so focus and shadow treatments are not clipped. The story demonstrates this treatment against `--surface-recessed-50` and documents the surrounding-surface requirement.
 - `mui-code` now supports `usage="surface"` and `--code-background-surface`, defaulting to `--surface-elevated-200`. Code detects Card, Card Body, Dialog, Drawer, and Carousel ancestors automatically, replacing the previous Card-only `card-slot` runtime treatment.
 - Dialog and Drawer backgrounds now map through `--surface-elevated-100`, Carousel uses the same elevated semantic background, and Slide Frame content uses the base `--surface` so composed surfaces retain a consistent depth hierarchy across themes.
 - Input and Textarea now support public `padding-block` and `padding-inline` overrides matching Select; Date Picker, Time Picker, Search Input, and Chip Input forward those values to their internal Input.
@@ -45,6 +51,7 @@ _Status: WIP_
 
 ### Breaking Changes
 
+- Removed the `condensed` boolean from `mui-card-body`. Use `size="none"` for edge-to-edge content; internal Slat composition markers and authored examples now use the size-based contract.
 - Removed the `mui-prompt-message`, `mui-prompt-preview`, and `mui-prompt-toggle` component names and package exports. Use `mui-chat-message`, `mui-preview-chip`, and `mui-action-toggle` respectively.
 - Renamed `mui-body` variants: `optional` to `secondary`, `success` to `positive`, and `error` to `attention`. The old variant values are no longer supported.
 - Renamed semantic text tokens: `--text-color-optional` to `--text-color-secondary`, `--text-color-success` to `--text-color-positive`, and `--text-color-error` to `--text-color-attention`.
@@ -53,6 +60,13 @@ _Status: WIP_
 
 ### Fixed
 
+- Comparison Chart now owns padding for its populated header region, allowing slotted header compositions to omit repeated spacing while preserving series keys and other supporting content.
+- Financial Bar Chart now owns padding for populated header and footer regions. Its stories use edge-to-edge Card Bodies, consistent display typography, and complete code examples matching each rendered composition.
+- Financial Chart, Financial Bar Chart, and Market Sparkline now share consistent neutral grey chart treatments in light and dark modes. Financial Bar Chart and Market Sparkline stories explicitly show neutral, positive, and negative colors for theme review.
+- Comparison Chart automatic series colors now map to the matching Badge background tokens, keeping composed series keys and plotted lines synchronized across base and branded themes.
+- Financial Chart, Financial Bar Chart, and Comparison Chart now draw a component-owned divider below their populated toolbar or header. Use `header-stroke="none"` for an uninterrupted header-to-plot treatment; Market Sparkline remains divider-free.
+- Base secondary actions now use quieter border colours and 5% hover and focus overlays, while primary, secondary, tertiary, overlay, and attention action borders consistently use `--stroke-size-100`.
+- Drawer resize rails now remain beneath Menu and overlay content, preventing the resize affordance from covering open actions without changing Menu's global stacking behavior.
 - `mui-tab-bar` now synchronizes size, variant, position, active state, and highlight when Tab Items are added dynamically. Financial Chart range controls now retain `x-small` sizing, preserve focus during arrow-key navigation, and update the visible dataset without replacing the Tab Bar instance. The required TradingView attribution remains visible and clickable but no longer interrupts sequential keyboard navigation.
 - Financial Chart now remains unframed for flexible composition, uses Card in its framed examples, and applies surface usage to its internal range Tabs when composed inside a recognized surface.
 - Reduced the default active Tab shadow opacity in both light and dark themes while preserving branded theme control through the surface-specific Tab tokens.

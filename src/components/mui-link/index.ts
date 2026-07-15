@@ -311,26 +311,26 @@ class MuiLink extends HTMLElement {
         outline-offset: var(--action-focus-outline-offset);
       }
 
-      :host([size="xx-small"]) a {
+      :host([size="xx-small"]:not([variant="unstyled"])) a {
         font-size: var(--text-font-size-xxs);
         line-height: var(--text-line-height-xxs);
       }
 
-      :host([size="x-small"]) a {
+      :host([size="x-small"]:not([variant="unstyled"])) a {
         font-size: var(--text-font-size-xs);
         line-height: var(--text-line-height-xs);
       }
 
-      :host([size="small"]) a {
+      :host([size="small"]:not([variant="unstyled"])) a {
         font-size: var(--text-font-size-s); 
         line-height: var(--text-line-height-s);
       }
 
-      :host([size="medium"]) a {
+      :host([size="medium"]:not([variant="unstyled"])) a {
         font-size: var(--text-font-size-m);
         line-height: var(--text-line-height-m);
       }
-      :host([size="large"]) a {
+      :host([size="large"]:not([variant="unstyled"])) a {
         font-size: var(--text-font-size-l); 
         line-height: var(--text-line-height-l);
       }
@@ -893,10 +893,10 @@ class MuiLink extends HTMLElement {
       /* Size Variants with Before & After Icon padding adjustments                 */
       /* ========================================================================== */
 
-      :host([size="xx-small"][variant]:not([variant="default"])) a,
-      :host([size="xx-small"][variant]:not([variant="default"])) a:hover,
-      :host([size="xx-small"][variant]:not([variant="default"])) a:focus,
-      :host([size="xx-small"][variant]:not([variant="default"])) a[aria-disabled="true"],
+      :host([size="xx-small"][variant]:not([variant="default"]):not([variant="unstyled"])) a,
+      :host([size="xx-small"][variant]:not([variant="default"]):not([variant="unstyled"])) a:hover,
+      :host([size="xx-small"][variant]:not([variant="default"]):not([variant="unstyled"])) a:focus,
+      :host([size="xx-small"][variant]:not([variant="default"]):not([variant="unstyled"])) a[aria-disabled="true"],
       :host([size="xx-small"][usage="input"]) a,
       :host([size="xx-small"][usage="input"]) a:hover,
       :host([size="xx-small"][usage="input"]) a:focus,
@@ -910,10 +910,10 @@ class MuiLink extends HTMLElement {
         border-radius: var(--input-composed-radius, var(--action-radius-x-small));
       }
 
-      :host([size="x-small"][variant]:not([variant="default"])) a,
-      :host([size="x-small"][variant]:not([variant="default"])) a:hover,
-      :host([size="x-small"][variant]:not([variant="default"])) a:focus,
-      :host([size="x-small"][variant]:not([variant="default"])) a[aria-disabled="true"],
+      :host([size="x-small"][variant]:not([variant="default"]):not([variant="unstyled"])) a,
+      :host([size="x-small"][variant]:not([variant="default"]):not([variant="unstyled"])) a:hover,
+      :host([size="x-small"][variant]:not([variant="default"]):not([variant="unstyled"])) a:focus,
+      :host([size="x-small"][variant]:not([variant="default"]):not([variant="unstyled"])) a[aria-disabled="true"],
       :host([size="x-small"][usage="input"]) a,
       :host([size="x-small"][usage="input"]) a:hover,
       :host([size="x-small"][usage="input"]) a:focus,
@@ -927,7 +927,7 @@ class MuiLink extends HTMLElement {
         border-radius: var(--input-composed-radius, var(--action-radius-x-small));
       }
 
-      :host([size="small"][variant]:not([variant="default"])) a,
+      :host([size="small"][variant]:not([variant="default"]):not([variant="unstyled"])) a,
       :host([size="small"][usage="input"]) a {
         font-size: var(--text-font-size-s);
         line-height: var(--text-line-height-s);
@@ -936,7 +936,7 @@ class MuiLink extends HTMLElement {
         border-radius: var(--input-composed-radius, var(--action-radius-small));
       }
 
-      :host([size="medium"][variant]:not([variant="default"])) a,
+      :host([size="medium"][variant]:not([variant="default"]):not([variant="unstyled"])) a,
       :host([size="medium"][usage="input"]) a {
         font-size: var(--text-font-size-m);
         line-height: var(--text-line-height-m);
@@ -945,7 +945,7 @@ class MuiLink extends HTMLElement {
         border-radius: var(--input-composed-radius, var(--action-radius-medium));
       }
 
-      :host([size="large"][variant]:not([variant="default"])) a,
+      :host([size="large"][variant]:not([variant="default"]):not([variant="unstyled"])) a,
       :host([size="large"][usage="input"]) a {
         font-size: var(--text-font-size-l);
         line-height: var(--text-line-height-l);
@@ -1185,6 +1185,34 @@ class MuiLink extends HTMLElement {
         text-decoration: none;
         box-shadow: none;
         outline-offset: var(--video-thumbnail-action-focus-outline-offset, var(--space-300));
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+
+      :host([variant="unstyled"]) {
+        display: block;
+        width: 100%;
+        text-align: initial;
+      }
+
+      :host([variant="unstyled"]) a,
+      :host([variant="unstyled"]) a:hover,
+      :host([variant="unstyled"]) a:focus,
+      :host([variant="unstyled"]) a:focus-visible,
+      :host([variant="unstyled"]) a[aria-disabled="true"] {
+        display: block;
+        width: 100%;
+        min-height: 0;
+        padding: var(--space-000);
+        border: none;
+        border-radius: var(--radius-000);
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        line-height: inherit;
+        text-align: initial;
+        text-decoration: none;
+        box-shadow: none;
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
       }

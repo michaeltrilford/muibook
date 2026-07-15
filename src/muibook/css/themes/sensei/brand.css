@@ -18,6 +18,7 @@ html[data-brand="sensei"] {
   --black-opacity-100: oklch(0.23 0.02 166.76);
   --white: oklch(0.98 0 0);
   --white-opacity-0: oklch(0.98 0 0 / 0);
+  --white-opacity-5: oklch(0.98 0 0 / 0.05);
   --white-opacity-10: oklch(0.98 0 0 / 0.1);
   --white-opacity-20: oklch(0.98 0 0 / 0.2);
   --white-opacity-30: oklch(0.98 0 0 / 0.3);

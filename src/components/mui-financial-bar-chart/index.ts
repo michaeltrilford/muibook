@@ -11,6 +11,7 @@ import {
   type UTCTimestamp,
 } from "lightweight-charts";
 import "../mui-body";
+import "../mui-work-log";
 
 export type MuiFinancialBarChartVariant = "neutral" | "directional";
 export type MuiFinancialBarChartValueFormat = "decimal" | "percent" | "currency" | "volume";
@@ -23,7 +24,19 @@ export interface MuiFinancialBarChartDatum {
 
 class MuiFinancialBarChart extends HTMLElement {
   static get observedAttributes() {
-    return ["variant", "label", "value-format", "currency", "baseline", "height", "scale", "interactive", "attribution", "loading", "error"];
+    return [
+      "variant",
+      "label",
+      "value-format",
+      "currency",
+      "baseline",
+      "height",
+      "scale",
+      "interactive",
+      "attribution",
+      "loading",
+      "error",
+    ];
   }
 
   private chart: IChartApi | null = null;
@@ -123,6 +136,24 @@ class MuiFinancialBarChart extends HTMLElement {
           min-width: 0;
         }
 
+        .header {
+          padding: var(--space-500);
+          border-bottom: var(--financial-bar-chart-border);
+        }
+
+        :host([header-stroke="none"]) .header {
+          border-bottom: 0;
+        }
+
+        .footer {
+          padding: var(--space-200) var(--space-500) var(--space-500);
+        }
+
+        .header[hidden],
+        .footer[hidden] {
+          display: none;
+        }
+
         .plot {
           position: relative;
           width: 100%;
@@ -168,18 +199,35 @@ class MuiFinancialBarChart extends HTMLElement {
         }
       </style>
       <section class="shell">
-        <slot name="header" part="header"></slot>
+        <div class="header" part="header" hidden>
+          <slot name="header"></slot>
+        </div>
         <div class="plot" part="plot">
           <div class="chart" role="img"></div>
-          <mui-body class="state loading" size="x-small" variant="secondary" role="status" hidden>Loading financial data</mui-body>
+          <div class="state loading" role="status" hidden>
+            <mui-work-log label="Loading financial data" status pending></mui-work-log>
+          </div>
           <mui-body class="state empty" size="x-small" variant="secondary" role="status" hidden>No financial data available</mui-body>
-          <mui-body class="state error" size="x-small" variant="attention" role="alert" hidden></mui-body>
+          <div class="state error" role="alert" hidden>
+            <mui-work-log status variant="error"></mui-work-log>
+          </div>
         </div>
-        <slot name="footer" part="footer"></slot>
+        <div class="footer" part="footer" hidden>
+          <slot name="footer"></slot>
+        </div>
         <p class="sr-only" aria-live="polite"></p>
       </section>
     `;
     this.chartContainer = this.shadowRoot.querySelector(".chart");
+    ["header", "footer"].forEach((name) => {
+      const region = this.shadowRoot?.querySelector<HTMLElement>(`.${name}`);
+      const slot = this.shadowRoot?.querySelector<HTMLSlotElement>(`slot[name="${name}"]`);
+      const syncRegion = () => {
+        if (region && slot) region.hidden = slot.assignedElements({ flatten: true }).length === 0;
+      };
+      slot?.addEventListener("slotchange", syncRegion);
+      syncRegion();
+    });
     this.renderState();
   }
 
@@ -286,7 +334,8 @@ class MuiFinancialBarChart extends HTMLElement {
   }
 
   private formatValue(value: number) {
-    if (this.valueFormat() === "percent") return `${new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(value)}%`;
+    if (this.valueFormat() === "percent")
+      return `${new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(value)}%`;
     if (this.valueFormat() === "currency") {
       return new Intl.NumberFormat(undefined, {
         style: "currency",
@@ -314,7 +363,7 @@ class MuiFinancialBarChart extends HTMLElement {
     if (emptyState) emptyState.hidden = !empty;
     if (errorState) {
       errorState.hidden = !error;
-      errorState.textContent = error;
+      errorState.querySelector("mui-work-log")?.setAttribute("label", error);
     }
     this.updateSummary();
   }

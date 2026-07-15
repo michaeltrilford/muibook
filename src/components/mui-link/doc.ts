@@ -22,6 +22,8 @@ export const muiDocs: MuiDocs = {
         "Keep link text concise and descriptive. Avoid vague labels like 'Click here.'",
         "Use full sentences or phrases that clearly describe the destination.",
         "Prefer inline links within body text unless a more prominent callout is needed.",
+        "Use variant='unstyled' when Link wraps structured, non-interactive content such as Card and that content must own all visible surface, spacing, and typography.",
+        "Do not place links, buttons, or other interactive controls inside an unstyled Link.",
       ],
     },
 

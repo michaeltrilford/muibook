@@ -83,16 +83,16 @@ class MuiSlat extends HTMLElement {
         border-radius: var(--slat-radius);
       }
 
-      :host([variant="row"][card-slot][condensed-slot]) {
+      :host([variant="row"][card-slot][card-body-size-none-slot]) {
         border-radius: 0;
       }
 
-      :host([variant="row"][card-slot][condensed-slot-first]) {
+      :host([variant="row"][card-slot][card-body-size-none-slot-first]) {
         border-top-left-radius: var(--card-radius);
         border-top-right-radius: var(--card-radius);
       }
 
-      :host([variant="row"][card-slot][condensed-slot-last]) {
+      :host([variant="row"][card-slot][card-body-size-none-slot-last]) {
         border-bottom-left-radius: var(--card-radius);
         border-bottom-right-radius: var(--card-radius);
       }
@@ -172,12 +172,12 @@ class MuiSlat extends HTMLElement {
         border-bottom-right-radius: var(--card-radius);
       }
 
-      :host([radius="none"][condensed-slot-first]) .action::part(border-radius) {
+      :host([radius="none"][card-body-size-none-slot-first]) .action::part(border-radius) {
         border-top-left-radius: var(--card-radius);
         border-top-right-radius: var(--card-radius);
       }
 
-      :host([radius="none"][condensed-slot-last]) .action::part(border-radius) {
+      :host([radius="none"][card-body-size-none-slot-last]) .action::part(border-radius) {
         border-bottom-left-radius: var(--card-radius);
         border-bottom-right-radius: var(--card-radius);
       }

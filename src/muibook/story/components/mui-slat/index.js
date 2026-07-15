@@ -18,7 +18,7 @@ class storySlat extends HTMLElement {
       {
         component: "mui-slat",
         parentAttrs: [],
-        childAttrs: ["card-slot", "condensed-slot"],
+        childAttrs: ["card-slot", "card-body-size-none-slot"],
       },
       {
         component: "mui-slat-group",
@@ -354,7 +354,7 @@ class storySlat extends HTMLElement {
             </mui-card>
 
             <mui-card>
-              <mui-card-body condensed>
+              <mui-card-body size="none">
                 <mui-slat variant="header">
                   <mui-heading slot="start" size="6">Today</mui-heading>
                   <mui-h-stack slot="end" alignX="end">
@@ -426,11 +426,11 @@ class storySlat extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-card-body&gt;<br>
             &lt;/mui-card&gt;<br />
             <br />
-            // CONDENSED CARD USE
+            // CARD BODY SIZE NONE
             <br />
             <br />
             &nbsp;&nbsp;&lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br /><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Today&lt;/mui-heading&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="end" alignX="end"&gt;<br />
@@ -1159,14 +1159,14 @@ class storySlat extends HTMLElement {
         </story-card>
 
         <story-card
-          id="card-condensed"
-          title="${storyMeta["card-condensed"].title}"
-          description="${storyMeta["card-condensed"].description}"
-          usage="${storyMeta["card-condensed"].usage}"
+          id="card-size-none"
+          title="${storyMeta["card-size-none"].title}"
+          description="${storyMeta["card-size-none"].description}"
+          usage="${storyMeta["card-size-none"].usage}"
         >
 
           <mui-card slot="body">
-            <mui-card-body condensed>
+            <mui-card-body size="none">
               <mui-slat variant="header">
                 <mui-heading slot="start" size="6">Today</mui-heading>
                 <mui-h-stack slot="end" alignX="end">
@@ -1226,7 +1226,7 @@ class storySlat extends HTMLElement {
 
           <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-slat variant="header"&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading slot="start" size="6"&gt;Today&lt;/mui-heading&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="end" alignX="end"&gt;<br />

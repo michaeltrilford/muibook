@@ -76,6 +76,23 @@ class storyHeading extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="display-only" title="${storyMeta["display-only"].title}" description="${storyMeta["display-only"].description}" usage="${storyMeta["display-only"].usage}">
+        <mui-card slot="body">
+          <mui-card-body size="small">
+            <mui-v-stack space="var(--space-100)">
+              <mui-body size="x-small" variant="secondary">Portfolio value</mui-body>
+              <mui-heading size="3" level="none">$42,680.24</mui-heading>
+              <mui-body size="small" variant="positive">+2.4% today</mui-body>
+            </mui-v-stack>
+          </mui-card-body>
+        </mui-card>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-body size=&quot;x-small&quot; variant=&quot;secondary&quot;&gt;Portfolio value&lt;/mui-body&gt;<br />
+          &lt;mui-heading size=&quot;3&quot; level=&quot;none&quot;&gt;$42,680.24&lt;/mui-heading&gt;<br />
+          &lt;mui-body size=&quot;small&quot; variant=&quot;positive&quot;&gt;+2.4% today&lt;/mui-body&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="overflow" title="${storyMeta["overflow"].title}" description="${storyMeta["overflow"].description}" usage="${storyMeta["overflow"].usage}">
         <div slot="body">
           <mui-v-stack space="var(--space-400)" alignx="start">

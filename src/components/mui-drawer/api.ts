@@ -81,7 +81,7 @@ export const muiApi = {
         name: "close-size",
         type: { text: '"x-small" | "small" | "medium" | "large"' },
         default: "medium",
-        description: "Sets the built-in header close action size.",
+        description: "Sets the built-in header close icon scale and matching header minimum height. Medium uses a small Button; large uses a medium Button.",
       },
       {
         name: "breakpoint",
@@ -102,7 +102,7 @@ export const muiApi = {
         type: { text: "boolean" },
         default: "false",
         description:
-          "Adds opt-in desktop resize rails. Push and persistent drawers get a rail between drawer and page; workspace drawers get independent left and right rails. Dragging updates the relevant width while clamping to a minimum drawer width and preserving page space. Focused rails can be nudged with ArrowLeft/ArrowRight, or Shift plus arrow keys for larger steps; when keyboard resizing reaches the minimum width, the rail shows an ESC affordance for closing.",
+          "Adds opt-in desktop resize rails. Push and persistent drawers get a rail between drawer and page; workspace drawers get independent left and right rails. Dragging updates the relevant width while clamping to a minimum drawer width and preserving page space. Focused rails can be nudged with ArrowLeft/ArrowRight, or Shift plus arrow keys for larger steps; when keyboard resizing reaches the minimum width, the rail shows an ESC affordance for closing. Rails remain below Menu and overlay content in the stacking order.",
       },
       {
         name: "resize-min-drawer-width",
@@ -177,6 +177,11 @@ export const muiApi = {
     ],
     cssProperties: [
       { name: "--drawer-background", description: "Drawer surface and footer background." },
+      { name: "--header-min-height", description: "Shared minimum height applied to the Drawer header." },
+      { name: "--header-min-height-x-small", description: "Drawer header minimum height when close-size is x-small." },
+      { name: "--header-min-height-small", description: "Drawer header minimum height when close-size is small." },
+      { name: "--header-min-height-medium", description: "Drawer header minimum height when close-size is medium." },
+      { name: "--header-min-height-large", description: "Drawer header minimum height when close-size is large." },
       {
         name: "--drawer-height",
         description:

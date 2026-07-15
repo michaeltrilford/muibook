@@ -165,6 +165,7 @@ class tokensBrand extends HTMLElement {
           <spec-card title="Colors / White">
             <story-token-slat slot="body" token="--white" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--white-opacity-0" variant="color"></story-token-slat>
+            <story-token-slat slot="body" token="--white-opacity-5" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--white-opacity-10" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--white-opacity-20" variant="color"></story-token-slat>
             <story-token-slat slot="body" token="--white-opacity-30" variant="color"></story-token-slat>

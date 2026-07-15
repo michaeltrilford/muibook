@@ -75,7 +75,7 @@ class SongPage extends HTMLElement {
               <mui-responsive breakpoint="1200">
                 <mui-grid col="1fr 1fr 1fr" slot="showAbove" alignx="stretch" aligny="stretch" space="var(--space-500)" width="100%">
                   <mui-card>
-                    <mui-card-body condensed>
+                    <mui-card-body size="none">
                       <mui-v-stack space="var(--space-000)">
                         <mui-body size="large" weight="bold">Released</mui-body>
                         <mui-body size="large" variant="secondary">June 2026</mui-body>
@@ -83,7 +83,7 @@ class SongPage extends HTMLElement {
                     </mui-card-body>
                   </mui-card>
                   <mui-card>
-                    <mui-card-body condensed>
+                    <mui-card-body size="none">
                       <mui-v-stack space="var(--space-000)">
                         <mui-body size="large" weight="bold">Format</mui-body>
                         <mui-body size="large" variant="secondary">Single · 2:47</mui-body>
@@ -91,7 +91,7 @@ class SongPage extends HTMLElement {
                     </mui-card-body>
                   </mui-card>
                   <mui-card>
-                    <mui-card-body condensed>
+                    <mui-card-body size="none">
                       <mui-v-stack space="var(--space-000)">
                         <mui-body size="large" weight="bold">Mood</mui-body>
                         <mui-body size="large" variant="secondary">Ambient electronic</mui-body>
@@ -102,7 +102,7 @@ class SongPage extends HTMLElement {
 
                 <mui-grid col="1fr" slot="showBelow" alignx="stretch" space="var(--space-400)">
                   <mui-card>
-                    <mui-card-body condensed>
+                    <mui-card-body size="none">
                       <mui-v-stack space="var(--space-000)">
                         <mui-body size="large" weight="bold">Released</mui-body>
                         <mui-body size="large" variant="secondary">June 2026</mui-body>
@@ -110,7 +110,7 @@ class SongPage extends HTMLElement {
                     </mui-card-body>
                   </mui-card>
                   <mui-card>
-                    <mui-card-body condensed>
+                    <mui-card-body size="none">
                       <mui-v-stack space="var(--space-000)">
                         <mui-body size="large" weight="bold">Format</mui-body>
                         <mui-body size="large" variant="secondary">Single · 2:47</mui-body>
@@ -118,7 +118,7 @@ class SongPage extends HTMLElement {
                     </mui-card-body>
                   </mui-card>
                   <mui-card>
-                    <mui-card-body condensed>
+                    <mui-card-body size="none">
                       <mui-v-stack space="var(--space-000)">
                         <mui-body size="large" weight="bold">Mood</mui-body>
                         <mui-body size="large" variant="secondary">Ambient electronic</mui-body>

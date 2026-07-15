@@ -26,7 +26,7 @@ class storyResponsive extends HTMLElement {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        min-height: 7.7rem;
+        min-height: var(--header-min-height);
         padding: var(--space-400) var(--space-500);
         border-bottom: var(--border-thin);
         box-sizing: border-box;

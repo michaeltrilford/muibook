@@ -27,6 +27,8 @@ export const muiDocs: MuiDocs = {
         "When the button only contains mui-avatar, the button collapses to the avatar footprint while preserving interaction semantics, focus, and disabled behaviour.",
         "Avatar-only buttons work well with Dropdown, Drawer, and Dialog when you want the control to read as identity-first rather than as a standard text button.",
         "Use pending to block repeat activation during async work without applying disabled styling.",
+        "Use variant='unstyled' when Button wraps structured, non-interactive content such as Card and that content must own all visible surface, spacing, and typography.",
+        "Do not place links, buttons, or other interactive controls inside an unstyled Button.",
       ],
     },
 

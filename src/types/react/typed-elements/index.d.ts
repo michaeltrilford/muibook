@@ -148,7 +148,7 @@ declare global {
 
       "mui-card": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
       "mui-card-body": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        condensed?: boolean;
+        size?: "none" | "small" | "medium" | "large";
       };
       "mui-card-footer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
       "mui-card-header": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;

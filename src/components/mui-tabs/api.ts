@@ -17,6 +17,7 @@ export const muiApi = {
     events: [{ name: "tab-change", description: "Dispatched when the active tab changes." }],
     cssProperties: [
       { name: "--tab-border-color-surface", description: "Tab Bar border color used when `usage='surface'` is applied." },
+      { name: "--tab-border-color-active-inset", description: "Tab Bar border color used when `usage='surface'` and `active-inset` are applied together." },
       { name: "--tab-background-surface", description: "Tab Bar background used when `usage='surface'` is applied." },
       { name: "--tab-background-active-surface", description: "Active tab background used when `usage='surface'` is applied." },
       { name: "--tab-shadow-active-color", description: "Default color used to construct the active highlight shadow." },

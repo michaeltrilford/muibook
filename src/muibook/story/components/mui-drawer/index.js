@@ -71,7 +71,7 @@ class storyDrawer extends HTMLElement {
         padding: var(--space-400) var(--space-400) var(--space-400) var(--space-500);
         border-bottom: var(--border-thin);
         box-sizing: border-box;
-        min-height: 7.7rem;
+        min-height: var(--header-min-height);
       }
 
       .canvas-page-header {
@@ -86,7 +86,7 @@ class storyDrawer extends HTMLElement {
         padding: var(--space-400) var(--space-400) var(--space-400) var(--space-400);
         border-bottom: var(--border-thin);
         box-sizing: border-box;
-        min-height: 7.7rem;
+        min-height: var(--header-min-height);
         transition: padding var(--speed-100) ease;
       }
 
@@ -613,7 +613,7 @@ class storyDrawer extends HTMLElement {
             <mui-button slot="action" aria-label="Open Mike profile menu">
               <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
             </mui-button>
-            <mui-menu>
+            <mui-menu width="min(100%, 14rem)">
               <mui-button size="small" variant="tertiary">Profile</mui-button>
               <mui-button size="small" variant="tertiary">Settings</mui-button>
               <mui-button size="small" variant="tertiary">Sign out</mui-button>
@@ -706,8 +706,8 @@ class storyDrawer extends HTMLElement {
               <mui-heading size="4" level="4">Guides</mui-heading>
             </mui-h-stack>
             ${content}
-          <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="primary">Confirm</mui-button>
+          <mui-button slot="actions" variant="secondary" data-close size="small">Cancel</mui-button>
+          <mui-button slot="actions" variant="primary" size="small">Confirm</mui-button>
         </mui-drawer>
 
         <story-code-block slot="footer" scrollable>
@@ -715,8 +715,8 @@ class storyDrawer extends HTMLElement {
           &lt;mui-drawer variant="overlay" data-drawer="hook" width="400px" side="left"&gt;<br>
           &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Overlay Drawer&lt;/mui-heading&gt;<br>
           &nbsp;&nbsp;...<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close size="small"&gt;Cancel&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary" size="small"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-drawer&gt;<br><br>
           this.shadowRoot.querySelectorAll('[data-drawer]').forEach((btn) =&gt; {<br>
           &nbsp;&nbsp;btn.addEventListener('click', () =&gt; {<br>
@@ -742,8 +742,8 @@ class storyDrawer extends HTMLElement {
             <mui-heading size="4" level="4">Guides</mui-heading>
           </mui-h-stack>
           ${content}
-          <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="primary">Confirm</mui-button>
+          <mui-button slot="actions" variant="secondary" data-close size="small">Cancel</mui-button>
+          <mui-button slot="actions" variant="primary" size="small">Confirm</mui-button>
         </mui-drawer>
 
         <story-code-block slot="footer" scrollable>
@@ -751,8 +751,8 @@ class storyDrawer extends HTMLElement {
           &lt;mui-drawer variant="overlay" data-drawer="hook" width="400px" side="right"&gt;<br>
           &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Overlay Drawer&lt;/mui-heading&gt;<br>
           &nbsp;&nbsp;...<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close size="small"&gt;Cancel&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary" size="small"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-drawer&gt;<br><br>
           this.shadowRoot.querySelectorAll('[data-drawer]').forEach((btn) =&gt; {<br>
           &nbsp;&nbsp;btn.addEventListener('click', () =&gt; {<br>
@@ -774,16 +774,16 @@ class storyDrawer extends HTMLElement {
 
         <mui-drawer variant="overlay" data-drawer="overlay-no-header" width="400px" side="left" slot="body">
           ${content}
-          <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="primary">Confirm</mui-button>
+          <mui-button slot="actions" variant="secondary" data-close size="small">Cancel</mui-button>
+          <mui-button slot="actions" variant="primary" size="small">Confirm</mui-button>
         </mui-drawer>
 
         <story-code-block slot="footer" scrollable>
           &lt;mui-button variant="primary" data-drawer="hook"&gt;Open&lt;/mui-button&gt;<br><br>
           &lt;mui-drawer variant="overlay" data-drawer="hook" width="400px" side="left"&gt;<br>
           &nbsp;&nbsp;...<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close size="small"&gt;Cancel&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary" size="small"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-drawer&gt;<br><br>
           this.shadowRoot.querySelectorAll('[data-drawer]').forEach((btn) =&gt; {<br>
           &nbsp;&nbsp;btn.addEventListener('click', () =&gt; {<br>
@@ -808,12 +808,12 @@ class storyDrawer extends HTMLElement {
         <mui-button variant="primary" data-drawer="overlay-custom-footer" slot="body">Open</mui-button>
 
         <mui-drawer variant="overlay" data-drawer="overlay-custom-footer" width="400px" side="right" close-size="small" slot="body">
-          <mui-heading size="4" level="4" slot="title">Review Changes</mui-heading>
+          <mui-heading size="5" level="4" slot="title">Review Changes</mui-heading>
           ${content}
           <mui-v-stack slot="actions" alignx="stretch" space="var(--space-300)" style="width: 100%;">
             <mui-h-stack alignx="end" space="var(--space-300)">
-              <mui-button variant="secondary" data-close>Cancel</mui-button>
-              <mui-button variant="primary">Save changes</mui-button>
+              <mui-button variant="secondary" data-close size="small">Cancel</mui-button>
+              <mui-button variant="primary" size="small">Save changes</mui-button>
             </mui-h-stack>
           </mui-v-stack>
         </mui-drawer>
@@ -823,7 +823,10 @@ class storyDrawer extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Review Changes&lt;/mui-heading&gt;<br>
           &nbsp;&nbsp;...<br>
           &nbsp;&nbsp;&lt;mui-v-stack slot="actions" alignx="stretch" space="var(--space-300)" style="width: 100%;"&gt;<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack alignx="end" space="var(--space-300)"&gt;...&lt;/mui-h-stack&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack alignx="end" space="var(--space-300)"&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="secondary" data-close size="small"&gt;Cancel&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="primary" size="small"&gt;Save changes&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br>
           &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
           &lt;/mui-drawer&gt;
         </story-code-block>
@@ -844,8 +847,6 @@ class storyDrawer extends HTMLElement {
           &lt;mui-button variant="primary" data-drawer="hook"&gt;Open&lt;/mui-button&gt;<br><br>
           &lt;mui-drawer variant="overlay" data-drawer="hook" width="400px" side="left"&gt;<br>
           &nbsp;&nbsp;...<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-drawer&gt;<br><br>
           this.shadowRoot.querySelectorAll('[data-drawer]').forEach((btn) =&gt; {<br>
           &nbsp;&nbsp;btn.addEventListener('click', () =&gt; {<br>
@@ -972,7 +973,7 @@ class storyDrawer extends HTMLElement {
                 ${invoiceHeader}
                 <mui-dropdown position="right" size="medium">
                   <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
-                  <mui-menu>
+                  <mui-menu width="min(100%, 14rem)">
                     <mui-button variant="tertiary" data-drawer="drawer-3">Edit Details</mui-button>
                     <mui-button disabled variant="tertiary">Add line-item</mui-button>
                   </mui-menu>
@@ -993,8 +994,8 @@ class storyDrawer extends HTMLElement {
                 <mui-input label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-input>
               </mui-v-stack>
             </form>
-            <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
-            <mui-button slot="actions" variant="primary">Save</mui-button>
+            <mui-button slot="actions" variant="tertiary" data-close size="small">Cancel</mui-button>
+            <mui-button slot="actions" variant="primary" size="small">Save</mui-button>
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
@@ -1069,7 +1070,7 @@ class storyDrawer extends HTMLElement {
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
                 </mui-button>
-                <mui-menu>
+                <mui-menu width="min(100%, 14rem)">
                   <mui-button size="small" variant="tertiary">Profile</mui-button>
                   <mui-button size="small" variant="tertiary">Settings</mui-button>
                   <mui-button size="small" variant="tertiary">Sign out</mui-button>
@@ -1174,7 +1175,7 @@ class storyDrawer extends HTMLElement {
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
                 </mui-button>
-                <mui-menu>
+                <mui-menu width="min(100%, 14rem)">
                   <mui-button size="small" variant="tertiary">Profile</mui-button>
                   <mui-button size="small" variant="tertiary">Settings</mui-button>
                   <mui-button size="small" variant="tertiary">Sign out</mui-button>
@@ -1252,8 +1253,8 @@ class storyDrawer extends HTMLElement {
                 <mui-input label="Unit price" value="85.50"></mui-input>
               </mui-v-stack>
             </form>
-            <mui-button slot="actions" variant="tertiary">Back</mui-button>
-            <mui-button slot="actions" variant="primary">Next</mui-button>
+            <mui-button slot="actions" variant="tertiary" size="small">Back</mui-button>
+            <mui-button slot="actions" variant="primary" size="small">Next</mui-button>
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
@@ -1276,7 +1277,7 @@ class storyDrawer extends HTMLElement {
                 ${invoiceHeader}
                 <mui-dropdown position="right" size="medium">
                   <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
-                  <mui-menu>
+                  <mui-menu width="min(100%, 14rem)">
                     <mui-button variant="tertiary" data-drawer="drawer-4">Edit Details</mui-button>
                     <mui-button disabled variant="tertiary">Add line-item</mui-button>
                   </mui-menu>
@@ -1297,8 +1298,8 @@ class storyDrawer extends HTMLElement {
                 <mui-input label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-input>
               </mui-v-stack>
             </form>
-            <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
-            <mui-button slot="actions" variant="primary">Save</mui-button>
+            <mui-button slot="actions" variant="tertiary" data-close size="small">Cancel</mui-button>
+            <mui-button slot="actions" variant="primary" size="small">Save</mui-button>
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
@@ -1332,7 +1333,7 @@ class storyDrawer extends HTMLElement {
             side="right">
             <div slot="page" class="page-main resize-page-main workspace-demo-canvas">
               <div class="canvas-page-header">
-                <mui-h-stack space="var(--space-300)" alignY="center">
+                <mui-h-stack space="var(--space-300)" alignY="center" style="padding-left: var(--space-100);">
                   <mui-heading size="4" level="4">Page 1</mui-heading>
                 </mui-h-stack>
                 <mui-button variant="tertiary" size="small" data-drawer-toggle="drawer-resize-right-rail">
@@ -1373,7 +1374,7 @@ class storyDrawer extends HTMLElement {
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
                 </mui-button>
-                <mui-menu>
+                <mui-menu width="min(100%, 14rem)">
                   <mui-button size="small" variant="tertiary">Profile</mui-button>
                   <mui-button size="small" variant="tertiary">Settings</mui-button>
                   <mui-button size="small" variant="tertiary">Sign out</mui-button>
@@ -1436,7 +1437,7 @@ class storyDrawer extends HTMLElement {
             side="right">
             <div slot="page" class="page-main resize-page-main workspace-demo-canvas">
               <div class="canvas-page-header">
-                <mui-h-stack space="var(--space-300)" alignY="center">
+                <mui-h-stack space="var(--space-300)" alignY="center" style="padding-left: var(--space-100);">
                   <mui-heading size="4" level="4">Page 1</mui-heading>
                 </mui-h-stack>
                 <mui-responsive breakpoint="768">
@@ -1479,7 +1480,7 @@ class storyDrawer extends HTMLElement {
                 <mui-button slot="action" aria-label="Open Mike profile menu">
                   <mui-avatar size="small" image="/src/muibook/images/mui/avatar-mike.jpg" label="Mike Trilford"></mui-avatar>
                 </mui-button>
-                <mui-menu>
+                <mui-menu width="min(100%, 14rem)">
                   <mui-button size="small" variant="tertiary">Profile</mui-button>
                   <mui-button size="small" variant="tertiary">Settings</mui-button>
                   <mui-button size="small" variant="tertiary">Sign out</mui-button>
@@ -1555,8 +1556,8 @@ class storyDrawer extends HTMLElement {
                 <mui-input label="Unit price" value="85.50"></mui-input>
               </mui-v-stack>
             </form>
-            <mui-button slot="actions" variant="tertiary">Back</mui-button>
-            <mui-button slot="actions" variant="primary">Next</mui-button>
+            <mui-button slot="actions" variant="tertiary" size="small">Back</mui-button>
+            <mui-button slot="actions" variant="primary" size="small">Next</mui-button>
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>
@@ -1702,7 +1703,7 @@ class storyDrawer extends HTMLElement {
                 ${invoiceHeader}
                 <mui-dropdown position="right" size="medium">
                   <mui-button variant="tertiary" slot="action"><mui-icon-menu size="medium"></mui-icon-menu></mui-button>
-                  <mui-menu>
+                  <mui-menu width="min(100%, 14rem)">
                     <mui-button variant="tertiary" data-drawer="breakpoint">Edit Details</mui-button>
                     <mui-button disabled variant="tertiary">Add line-item</mui-button>
                   </mui-menu>
@@ -1723,8 +1724,8 @@ class storyDrawer extends HTMLElement {
                 <mui-input label="Invoice note" value="Thank you for your business Hank, we hope you enjoy the delicious product - Wendy"></mui-input>
               </mui-v-stack>
             </form>
-            <mui-button slot="actions" variant="tertiary" data-close>Cancel</mui-button>
-            <mui-button slot="actions" variant="primary">Save</mui-button>
+            <mui-button slot="actions" variant="tertiary" data-close size="small">Cancel</mui-button>
+            <mui-button slot="actions" variant="primary" size="small">Save</mui-button>
           </mui-drawer>
         </div>
         <story-code-block slot="footer" scrollable>

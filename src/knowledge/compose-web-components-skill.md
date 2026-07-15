@@ -41,6 +41,17 @@ Build 1D and 2D page layouts strictly using the primitive layout components. Pas
 </mui-container>
 ```
 
+## Heading Semantics
+
+Use `mui-heading` levels `1` through `6` when text introduces a page or section. Visual `size` may differ from the semantic `level` when the composition needs a different scale.
+
+Use `level="none"` only for prominent display text that does not introduce content, such as a financial value or dashboard metric. It retains Heading typography and remains readable to assistive technology without adding an entry to the document heading outline.
+
+```html
+<mui-body size="x-small" variant="secondary">Portfolio value</mui-body>
+<mui-heading size="3" level="none">$42,680.24</mui-heading>
+```
+
 ## Component Combinations (Deep Dive)
 
 Certain components are designed to work together as a single unit. Always follow these structural combinations.
@@ -55,8 +66,8 @@ Cards (`<mui-card>`) frame related content. They are structurally divided into a
     <mui-heading level="2" size="4">Activity</mui-heading>
   </mui-card-header>
   
-  <!-- Use condensed to remove default padding for edge-to-edge content like Slats -->
-  <mui-card-body condensed>
+  <!-- Use size="none" for edge-to-edge content like Slats -->
+  <mui-card-body size="none">
     <mui-slat-group usage="card">
       <mui-slat variant="row">
          <mui-avatar slot="accessory"></mui-avatar>

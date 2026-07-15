@@ -10,6 +10,7 @@ export const muiApi = {
       { name: "scale", values: ["both", "time", "price", "none"], default: "both", description: "Controls visible time and price scales." },
       { name: "interactive", type: "boolean", description: "Enables crosshair, scrolling, and scale gestures." },
       { name: "attribution", values: ["logo", "none"], default: "logo", description: "Controls the TradingView attribution logo. Use none only when the consuming page provides the required attribution." },
+      { name: "header-stroke", values: ["none"], description: "Removes the divider between a populated header and the plot." },
       { name: "loading", type: "boolean", description: "Displays the loading state over the plot." },
       { name: "error", description: "Displays an error message over the plot." },
     ],
@@ -20,12 +21,12 @@ export const muiApi = {
     ],
     events: [{ name: "comparison-chart-crosshair-change", description: "Fires with matching values from every series when an interactive crosshair moves." }],
     slots: [
-      { name: "header", description: "Muibook content rendered before the plot." },
+      { name: "header", description: "Muibook content rendered in the component-padded region before the plot." },
       { name: "legend", description: "Composable series legend rendered before the plot." },
       { name: "footer", description: "Muibook content rendered after the plot." },
     ],
     cssParts: [
-      { name: "header", description: "Header slot." },
+      { name: "header", description: "Component-padded header region." },
       { name: "legend", description: "Legend slot." },
       { name: "plot", description: "Chart and state-overlay region." },
       { name: "footer", description: "Footer slot." },
@@ -41,6 +42,7 @@ export const muiApi = {
       { name: "--comparison-chart-series-4", description: "Fourth automatic series color." },
       { name: "--comparison-chart-series-5", description: "Fifth automatic series color." },
       { name: "--comparison-chart-series-6", description: "Sixth automatic series color." },
+      { name: "--comparison-chart-border", description: "Header divider border shorthand." },
     ],
   },
 };

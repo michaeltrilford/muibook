@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-14T11:06:42.198Z",
+  "generatedAt": "2026-07-15T06:18:49.039Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -308,16 +308,6 @@
         }
       ]
     },
-    "mui-card-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-button-group",
-          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
-        }
-      ]
-    },
     "mui-slat-group": {
       "version": 1,
       "destinationOnly": true,
@@ -325,6 +315,16 @@
         {
           "name": "usage",
           "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+        }
+      ]
+    },
+    "mui-card-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-button-group",
+          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
         }
       ]
     },
@@ -337,16 +337,16 @@
           "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
         },
         {
-          "name": "condensed-slot",
-          "description": "Applied to a slotted child used in condensed composition, allowing the child to reduce spacing and density."
+          "name": "card-body-size-none-slot",
+          "description": "Applied to a slotted child in a Card Body with size none, allowing edge-to-edge spacing."
         },
         {
-          "name": "condensed-slot-first",
-          "description": "Applied to the first slat in condensed card body content, allowing exposed top edge radius to match the card."
+          "name": "card-body-size-none-slot-first",
+          "description": "Applied to the first slat in a Card Body with size none, allowing its exposed top radius to match the card."
         },
         {
-          "name": "condensed-slot-last",
-          "description": "Applied to the last slat in condensed card body content, allowing exposed bottom edge radius to match the card."
+          "name": "card-body-size-none-slot-last",
+          "description": "Applied to the last slat in a Card Body with size none, allowing its exposed bottom radius to match the card."
         }
       ]
     },

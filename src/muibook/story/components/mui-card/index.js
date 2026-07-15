@@ -83,6 +83,37 @@ class storyCards extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="body-sizes" title="${storyMeta["body-sizes"].title}" description="${storyMeta["body-sizes"].description}" usage="${storyMeta["body-sizes"].usage}">
+        <mui-grid slot="body" col="repeat(auto-fit, minmax(14rem, 1fr))" space="var(--space-400)">
+          <mui-card>
+            <mui-card-body size="none">
+              <mui-body>None</mui-body>
+            </mui-card-body>
+          </mui-card>
+          <mui-card>
+            <mui-card-body size="small">
+              <mui-body>Small</mui-body>
+            </mui-card-body>
+          </mui-card>
+          <mui-card>
+            <mui-card-body size="medium">
+              <mui-body>Medium</mui-body>
+            </mui-card-body>
+          </mui-card>
+          <mui-card>
+            <mui-card-body size="large">
+              <mui-body>Large</mui-body>
+            </mui-card-body>
+          </mui-card>
+        </mui-grid>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-card&gt;&lt;mui-card-body size=&quot;none&quot;&gt;...&lt;/mui-card-body&gt;&lt;/mui-card&gt;<br />
+          &lt;mui-card&gt;&lt;mui-card-body size=&quot;small&quot;&gt;...&lt;/mui-card-body&gt;&lt;/mui-card&gt;<br />
+          &lt;mui-card&gt;&lt;mui-card-body size=&quot;medium&quot;&gt;...&lt;/mui-card-body&gt;&lt;/mui-card&gt;<br />
+          &lt;mui-card&gt;&lt;mui-card-body size=&quot;large&quot;&gt;...&lt;/mui-card-body&gt;&lt;/mui-card&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="card-footer" title="${storyMeta["card-footer"].title}" description="${storyMeta["card-footer"].description}" usage="${storyMeta["card-footer"].usage}">
         <div slot="body">
           <mui-card>

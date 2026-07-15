@@ -138,7 +138,7 @@ export const muiDocs: MuiDocs = {
           "description": "Used for interactive controls (e.g. buttons, links) placed within or at the end of a list or repeatable layout.",
           "list": [
             "Use with Row and Header variants where required.",
-            "When used inside a condensed card body, set radius='none' on action slats."
+            "When used inside a Card Body with size none, set radius='none' on action slats."
           ]
         },
         {
@@ -191,11 +191,11 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
-          "key": "card-condensed",
-          "title": "Card: Condensed",
-          "description": "Uses condensed Card Body spacing for edge-to-edge Slat layouts on constrained surfaces.",
+          "key": "card-size-none",
+          "title": "Card Body: Size None",
+          "description": "Uses Card Body size none to create an edge-to-edge Slat layout on a constrained surface.",
           "list": [
-            "Use radius='none' on action slats inside condensed Card Body layouts.",
+            "Use radius='none' on action slats inside Card Body with size none layouts.",
             "Keep content hierarchy clear as the card narrows."
           ]
         }
@@ -304,7 +304,7 @@ export const muiDocs: MuiDocs = {
         "Works well for wallet and account activity feeds where a header slat is followed by action or detail slats.",
         "A strong pattern is a header slat followed by grouped item slats for balances, recent activity, account options, or grouped settings.",
         "Use inside Card when grouped rows need a shared container or section framing.",
-        "When SlatGroup is inside CardBody, do not add condensed to CardBody by default; CardBody detects SlatGroup and applies the correct card spacing automatically.",
+        "When SlatGroup is inside CardBody, leave CardBody size unset by default; CardBody detects SlatGroup and applies the correct card spacing automatically.",
         "Pair with Rule between header and item sets when additional separation is needed.",
         "Use Slat for the individual row content and SlatGroup for the grouped structure.",
       ],
@@ -377,7 +377,7 @@ export const muiDocs: MuiDocs = {
             image: "",
           },
           {
-            description: "Avoid adding condensed to CardBody just because it contains SlatGroup; use condensed only for explicitly tight edge-to-edge card layouts.",
+            description: "Avoid setting CardBody size just because it contains SlatGroup; use size none only for explicitly edge-to-edge card layouts.",
             image: "",
           },
         ],

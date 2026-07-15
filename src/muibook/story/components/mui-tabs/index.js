@@ -89,14 +89,14 @@ class storyTabBar extends HTMLElement {
                 </mui-h-stack>
                 <mui-dialog data-surface-dialog="tabs-surface-dialog" width="min(90vw, 32rem)" aria-labelledby="tabs-surface-dialog-title">
                   <mui-heading slot="title" id="tabs-surface-dialog-title" level="3" size="4">Account settings</mui-heading>
-                  <mui-tab-bar full-width>
+                  <mui-tab-bar full-width active-inset>
                     <mui-tab-item active id="dialog-profile">Profile</mui-tab-item>
                     <mui-tab-item id="dialog-security">Security</mui-tab-item>
                   </mui-tab-bar>
                 </mui-dialog>
                 <mui-drawer data-surface-drawer="tabs-surface-drawer" variant="overlay" side="right" width="min(90vw, 32rem)">
                   <mui-heading slot="title" level="3" size="4">Workspace settings</mui-heading>
-                  <mui-tab-bar full-width>
+                  <mui-tab-bar full-width active-inset>
                     <mui-tab-item active id="drawer-general">General</mui-tab-item>
                     <mui-tab-item id="drawer-members">Members</mui-tab-item>
                   </mui-tab-bar>
@@ -117,16 +117,16 @@ class storyTabBar extends HTMLElement {
             &lt;/mui-card&gt;<br /><br />
             &lt;mui-button data-surface-dialog=&quot;tabs-dialog&quot;&gt;Open Dialog&lt;/mui-button&gt;<br />
             &lt;mui-dialog data-surface-dialog=&quot;tabs-dialog&quot;&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-bar full-width&gt;...&lt;/mui-tab-bar&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-bar full-width active-inset&gt;...&lt;/mui-tab-bar&gt;<br />
             &lt;/mui-dialog&gt;<br /><br />
             &lt;mui-button data-surface-drawer=&quot;tabs-drawer&quot;&gt;Open Drawer&lt;/mui-button&gt;<br />
             &lt;mui-drawer data-surface-drawer=&quot;tabs-drawer&quot; variant=&quot;overlay&quot; side=&quot;right&quot;&gt;<br />
-            &nbsp;&nbsp;&lt;mui-tab-bar full-width&gt;...&lt;/mui-tab-bar&gt;<br />
+            &nbsp;&nbsp;&lt;mui-tab-bar full-width active-inset&gt;...&lt;/mui-tab-bar&gt;<br />
             &lt;/mui-drawer&gt;
           </story-code-block>
         </story-card>
 
-        <story-card canvas-background="var(--surface-elevated-100)" id="stroke-none" title="${storyMeta["stroke-none"].title}" description="${storyMeta["stroke-none"].description}" usage="${storyMeta["stroke-none"].usage}">
+        <story-card canvas-background="var(--surface-recessed-50)" id="stroke-none" title="${storyMeta["stroke-none"].title}" description="${storyMeta["stroke-none"].description}" usage="${storyMeta["stroke-none"].usage}">
           <mui-tab-bar slot="body" stroke="none">
             <mui-tab-item active id="stroke-none-1">Item</mui-tab-item>
             <mui-tab-item id="stroke-none-2">Item</mui-tab-item>

@@ -11,6 +11,7 @@ export const muiApi = {
       { name: "scale", values: ["both", "time", "price", "none"], default: "both", description: "Controls visible time and price scales." },
       { name: "interactive", type: "boolean", description: "Enables crosshair, scrolling, and scale gestures." },
       { name: "attribution", values: ["logo", "none"], default: "logo", description: "Controls the TradingView attribution logo. Use none only when the consuming page provides the required attribution." },
+      { name: "header-stroke", values: ["none"], description: "Removes the divider between a populated header and the plot." },
       { name: "loading", type: "boolean", description: "Displays the loading state over the plot." },
       { name: "error", description: "Displays an error message over the plot." },
     ],
@@ -21,13 +22,13 @@ export const muiApi = {
     ],
     events: [{ name: "financial-bar-chart-crosshair-change", description: "Fires with the matching datum when an interactive crosshair moves." }],
     slots: [
-      { name: "header", description: "Muibook content rendered before the plot." },
-      { name: "footer", description: "Muibook content rendered after the plot." },
+      { name: "header", description: "Muibook content rendered in the component-padded region before the plot." },
+      { name: "footer", description: "Muibook content rendered in the component-padded region after the plot." },
     ],
     cssParts: [
-      { name: "header", description: "Header slot." },
+      { name: "header", description: "Component-padded header region." },
       { name: "plot", description: "Chart and state-overlay region." },
-      { name: "footer", description: "Footer slot." },
+      { name: "footer", description: "Component-padded footer region." },
     ],
     cssProperties: [
       { name: "--financial-bar-chart-background", description: "Canvas and state background." },
@@ -37,6 +38,7 @@ export const muiApi = {
       { name: "--financial-bar-chart-positive-color", description: "Directional bars above the baseline." },
       { name: "--financial-bar-chart-negative-color", description: "Directional bars below the baseline." },
       { name: "--financial-bar-chart-baseline-color", description: "Directional baseline." },
+      { name: "--financial-bar-chart-border", description: "Header divider border shorthand." },
     ],
   },
 };

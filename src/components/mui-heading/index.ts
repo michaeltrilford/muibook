@@ -22,9 +22,12 @@ class MuiHeading extends HTMLElement {
   render() {
     if (!this.shadowRoot) return;
 
-    const size = this.getAttribute("size") || "1";
-    const level = this.getAttribute("level") || size;
-    const tag = `h${level}`;
+    const validSizes = ["1", "2", "3", "4", "5", "6"];
+    const requestedSize = this.getAttribute("size") || "1";
+    const size = validSizes.includes(requestedSize) ? requestedSize : "1";
+    const requestedLevel = this.getAttribute("level") || size;
+    const level = requestedLevel === "none" || validSizes.includes(requestedLevel) ? requestedLevel : size;
+    const tag = level === "none" ? "div" : `h${level}`;
     const lineClamp = this.getLineClamp();
 
     this.shadowRoot.innerHTML = /*html*/ `
@@ -40,7 +43,7 @@ class MuiHeading extends HTMLElement {
           width: 100%;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        .heading {
           margin: var(--space-000);
           font-family: var(--heading-font-family, var(--font-family));
           font-weight: var(--heading-font-weight);
@@ -77,7 +80,7 @@ class MuiHeading extends HTMLElement {
         .size-5 { font-size: var(--heading-font-size-500); line-height: var(--heading-line-height-500); }
         .size-6 { font-size: var(--heading-font-size-600); line-height: var(--heading-line-height-600); }
       </style>
-      <${tag} class="size-${size}">
+      <${tag} class="heading size-${size}">
         <span class="content"><slot></slot></span>
       </${tag}>
     `;

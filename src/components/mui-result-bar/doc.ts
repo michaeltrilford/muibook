@@ -52,7 +52,7 @@ export const muiDocs: MuiDocs = {
     ],
     behaviour: {
       list: [
-        "Result uses a condensed card body and row slat internally.",
+        "Result uses a Card Body with size none and a row slat internally.",
       ],
     },
     writing: {

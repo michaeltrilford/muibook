@@ -152,10 +152,18 @@ class MuiTabBar extends HTMLElement {
           --tab-active-shadow: none;
         }
 
+        :host(:not([usage="surface"]):not([active-inset])) {
+          --tab-border-color: var(--tab-border-color-surface);
+        }
+
         :host([usage="surface"]) {
           --tab-border-color: var(--tab-border-color-surface);
           --tab-background: var(--tab-background-surface);
           --tab-background-active: var(--tab-background-active-surface);
+        }
+
+        :host([usage="surface"][active-inset]) {
+          --tab-border-color: var(--tab-border-color-active-inset);
         }
 
         :host([stroke="none"]) {
@@ -165,6 +173,7 @@ class MuiTabBar extends HTMLElement {
           --tab-item-size-medium: var(--action-size-medium);
           --tab-item-size-large: var(--action-size-large);
           border: none;
+          overflow: visible;
         }
 
         :host([full-width]) {

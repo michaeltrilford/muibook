@@ -9,7 +9,7 @@ import "../mui-stack/vstack";
 
 class MuiWorkLog extends HTMLElement {
   static get observedAttributes() {
-    return ["label", "open", "rule", "nested", "pending", "status"];
+    return ["label", "open", "rule", "nested", "pending", "status", "variant"];
   }
 
   constructor() {
@@ -36,6 +36,7 @@ class MuiWorkLog extends HTMLElement {
     const isNested = this.hasAttribute("nested");
     const isPending = this.hasAttribute("pending");
     const isStatus = this.hasAttribute("status");
+    const isError = this.getAttribute("variant") === "error";
     const shouldShimmer = isStatus && isPending;
     const isHeader = this.getAttribute("slot") === "header";
     const hasSummaryRule = isHeader && !isNested && !isStatus;
@@ -104,14 +105,14 @@ class MuiWorkLog extends HTMLElement {
             ? `<mui-h-stack class="status-summary" alignY="center" space="var(--space-100)">
                 <slot name="before"></slot>
                 <slot name="icon"></slot>
-                <mui-body class="summary-label" size="x-small" ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
+                <mui-body class="summary-label" size="x-small" ${isError ? 'variant="attention"' : ""} ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
                 <slot name="after"></slot>
               </mui-h-stack>`
             : `<mui-accordion-core ${open ? "open" : ""}>
                 <mui-h-stack slot="summary" class="summary" ${hasSummaryRule ? "rule" : ""} alignY="center" space="var(--space-100)">
                   <slot name="before"></slot>
                   <slot name="icon"></slot>
-                  <mui-body class="summary-label" size="x-small" ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
+                  <mui-body class="summary-label" size="x-small" ${isError ? 'variant="attention"' : ""} ${shouldShimmer ? "pending" : ""}>${label}</mui-body>
                   <slot name="after"></slot>
                   <mui-icon-toggle rotate size="xx-small">
                     <mui-icon-right-chevron slot="start"></mui-icon-right-chevron>

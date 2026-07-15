@@ -16,7 +16,12 @@ export const muiApi = {
   "mui-card-body": {
     description: "Displays the main content area of a card and adapts spacing for known layout components.",
     attributes: [
-      { name: "condensed", type: { text: "boolean" }, default: "false", description: "Removes the default body padding." },
+      {
+        name: "size",
+        type: { text: '"none" | "small" | "medium" | "large"' },
+        default: "medium",
+        description: "Controls the Card Body padding. Use none for edge-to-edge content.",
+      },
     ],
     slots: [{ name: "", description: "Main card content, including layouts such as tables, slats, and accordions." }],
   },

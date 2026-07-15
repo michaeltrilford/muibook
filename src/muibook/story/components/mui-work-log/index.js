@@ -155,6 +155,22 @@ class StoryWorkLog extends HTMLElement {
       </story-card>
 
       <story-card
+        id="status"
+        title="${storyMeta["status"].title}"
+        description="${storyMeta["status"].description || ""}"
+        usage="${storyMeta["status"].usage}"
+      >
+        <mui-v-stack slot="body" space="var(--space-500)">
+          <mui-work-log label="Loading financial data" status pending></mui-work-log>
+          <mui-work-log label="Indicator data could not be loaded" status variant="error"></mui-work-log>
+        </mui-v-stack>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-work-log label="Loading financial data" status pending&gt;&lt;/mui-work-log&gt;<br />
+          &lt;mui-work-log label="Indicator data could not be loaded" status variant=&quot;error&quot;&gt;&lt;/mui-work-log&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card
         id="nested"
         title="${storyMeta["nested"].title}"
         description="${storyMeta["nested"].description || ""}"

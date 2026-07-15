@@ -84,7 +84,7 @@ class MuiResultBar extends HTMLElement {
           }
         </style>
         <mui-card ${rule}>
-          <mui-card-body condensed>
+          <mui-card-body size="none">
             <mui-accordion-core ${open}>
               <mui-slat slot="summary" variant="row" col="${col}">
                 ${hasAccessory ? `<slot name="accessory" slot="accessory"></slot>` : ""}
@@ -140,7 +140,7 @@ class MuiResultBar extends HTMLElement {
           }
         </style>
         <mui-card>
-          <mui-card-body condensed>
+          <mui-card-body size="none">
             <mui-slat variant="row" col="${col}">
               ${hasAccessory ? `<slot name="accessory" slot="accessory"></slot>` : ""}
               <mui-v-stack slot="start" space="0">

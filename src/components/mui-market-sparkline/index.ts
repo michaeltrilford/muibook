@@ -14,6 +14,7 @@ import {
   type UTCTimestamp,
 } from "lightweight-charts";
 import "../mui-body";
+import "../mui-work-log";
 
 export type MuiMarketSparklineType = "line" | "area" | "baseline";
 export type MuiMarketSparklineTrend = "auto" | "positive" | "negative" | "neutral";
@@ -169,9 +170,13 @@ class MuiMarketSparkline extends HTMLElement {
         <slot name="header" part="header"></slot>
         <div class="plot" part="plot">
           <div class="chart" role="img"></div>
-          <mui-body class="state loading" size="x-small" variant="secondary" role="status" hidden>Loading market data</mui-body>
+          <div class="state loading" role="status" hidden>
+            <mui-work-log label="Loading market data" status pending></mui-work-log>
+          </div>
           <mui-body class="state empty" size="x-small" variant="secondary" role="status" hidden>No market data available</mui-body>
-          <mui-body class="state error" size="x-small" variant="attention" role="alert" hidden></mui-body>
+          <div class="state error" role="alert" hidden>
+            <mui-work-log status variant="error"></mui-work-log>
+          </div>
         </div>
         <slot name="footer" part="footer"></slot>
         <p class="sr-only" aria-live="polite"></p>
@@ -320,7 +325,7 @@ class MuiMarketSparkline extends HTMLElement {
     if (emptyState) emptyState.hidden = !empty;
     if (errorState) {
       errorState.hidden = !error;
-      errorState.textContent = error;
+      errorState.querySelector("mui-work-log")?.setAttribute("label", error);
     }
     this.updateSummary();
   }

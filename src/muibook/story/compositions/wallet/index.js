@@ -235,7 +235,7 @@ class compWallet extends HTMLElement {
           <mui-heading size="3" level="2">Personalise Card</mui-heading>
 
           <mui-card data-group="card-artwork">
-            <mui-card-body condensed>
+            <mui-card-body size="none">
 
             <mui-slat variant="row" style="grid-template-columns: 2fr auto; background: var(--app-wallet-slat-background, var(--slat-background));">
               <mui-v-stack slot="start" space="0">

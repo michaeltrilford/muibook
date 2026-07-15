@@ -7,16 +7,16 @@
       "description": "Applied to a slotted child used in card composition, allowing the child to style itself for a card context."
     },
     {
-      "name": "condensed-slot",
-      "description": "Applied to a slotted child used in condensed composition, allowing the child to reduce spacing and density."
+      "name": "card-body-size-none-slot",
+      "description": "Applied to a slotted child in a Card Body with size none, allowing edge-to-edge spacing."
     },
     {
-      "name": "condensed-slot-first",
-      "description": "Applied to the first slat in condensed card body content, allowing exposed top edge radius to match the card."
+      "name": "card-body-size-none-slot-first",
+      "description": "Applied to the first slat in a Card Body with size none, allowing its exposed top radius to match the card."
     },
     {
-      "name": "condensed-slot-last",
-      "description": "Applied to the last slat in condensed card body content, allowing exposed bottom edge radius to match the card."
+      "name": "card-body-size-none-slot-last",
+      "description": "Applied to the last slat in a Card Body with size none, allowing its exposed bottom radius to match the card."
     }
   ]
 }

@@ -48,8 +48,8 @@ class storyDialog extends HTMLElement {
         <mui-dialog data-dialog="hook-1" width="400px" slot="body" aria-labelledby="dialog-title-1" aria-describedby="dialog-desc-1">
           <mui-heading size="4" level="4" slot="title" id="dialog-title-1">Dialog Title</mui-heading>
           <mui-body id="dialog-desc-1">This is some dialog content</mui-body>
-          <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="primary">Confirm</mui-button>
+          <mui-button slot="actions" variant="secondary" data-close size="small">Cancel</mui-button>
+          <mui-button slot="actions" variant="primary" size="small">Confirm</mui-button>
         </mui-dialog>
         <story-code-block slot="footer" scrollable>
 
@@ -58,8 +58,8 @@ class storyDialog extends HTMLElement {
           &lt;mui-dialog data-dialog="hook-1" width="400px" aria-labelledby="dialog-title-1" aria-describedby="dialog-desc-1"&gt;<br>
             &nbsp;&nbsp;&lt;mui-heading slot="title" id="dialog-title-1"&gt;Dialog Title&lt;/mui-heading&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body id="dialog-desc-1"&gt;This is some dialog content&lt;/mui-body&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
-            &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close size="small"&gt;Cancel&lt;/mui-button&gt;<br>
+            &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary" size="small"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-dialog&gt;
 
           <br><br>
@@ -95,12 +95,13 @@ class storyDialog extends HTMLElement {
         >
           <mui-heading size="4" level="4" slot="title" id="dialog-title-border">Bordered Surface</mui-heading>
           <mui-body id="dialog-desc-border">Apply a dialog border through the public surface token.</mui-body>
-          <mui-button slot="actions" variant="secondary" data-close>Close</mui-button>
+          <mui-button slot="actions" variant="secondary" data-close size="small">Close</mui-button>
         </mui-dialog>
         <story-code-block slot="footer" scrollable>
           &lt;mui-dialog style="--dialog-border: var(--border-thin);"&gt;<br>
           &nbsp;&nbsp;&lt;mui-heading slot="title"&gt;Bordered Surface&lt;/mui-heading&gt;<br>
           &nbsp;&nbsp;&lt;mui-body&gt;Apply a dialog border through the public surface token.&lt;/mui-body&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close size="small"&gt;Close&lt;/mui-button&gt;<br>
           &lt;/mui-dialog&gt;
         </story-code-block>
       </story-card>
@@ -116,8 +117,8 @@ class storyDialog extends HTMLElement {
           <mui-body id="dialog-desc-headerless">
             This dialog has no title slot, so the header row and built-in close action are not rendered.
           </mui-body>
-          <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="primary">Confirm</mui-button>
+          <mui-button slot="actions" variant="secondary" data-close size="small">Cancel</mui-button>
+          <mui-button slot="actions" variant="primary" size="small">Confirm</mui-button>
         </mui-dialog>
         <story-code-block slot="footer" scrollable>
           &lt;mui-button variant="secondary" data-dialog="hook-headerless"&gt;...&lt;/mui-button&gt;<br><br>
@@ -126,8 +127,8 @@ class storyDialog extends HTMLElement {
           &nbsp;&nbsp;&lt;mui-body id="dialog-desc-headerless"&gt;<br>
           &nbsp;&nbsp;&nbsp;&nbsp;This dialog has no title slot, so the header row and built-in close action are not rendered.<br>
           &nbsp;&nbsp;&lt;/mui-body&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
-          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary"&gt;Confirm&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close size="small"&gt;Cancel&lt;/mui-button&gt;<br>
+          &nbsp;&nbsp;&lt;mui-button slot="actions" variant="primary" size="small"&gt;Confirm&lt;/mui-button&gt;<br>
           &lt;/mui-dialog&gt;
         </story-code-block>
       </story-card>
@@ -138,8 +139,8 @@ class storyDialog extends HTMLElement {
         <mui-dialog data-dialog="hook-2" width="400px" slot="body" aria-labelledby="dialog-title-2" aria-describedby="dialog-desc-2">
           <mui-heading size="4" level="4" slot="title"id="dialog-title-2">Delete repository?</mui-heading>
           <mui-body id="dialog-desc-2">Are you sure you want to delete this item? This action cannot be undone.</mui-body>
-          <mui-button slot="actions" variant="secondary" data-close>Cancel</mui-button>
-          <mui-button slot="actions" variant="attention">Delete</mui-button>
+          <mui-button slot="actions" variant="secondary" data-close size="small">Cancel</mui-button>
+          <mui-button slot="actions" variant="attention" size="small">Delete</mui-button>
         </mui-dialog>
 
         <story-code-block slot="footer" scrollable>
@@ -149,8 +150,8 @@ class storyDialog extends HTMLElement {
           &lt;mui-dialog data-dialog="hook-2" width="400px" aria-labelledby="dialog-title-2" aria-describedby="dialog-desc-2"&gt;<br>
             &nbsp;&nbsp;&lt;mui-heading slot="title" id="dialog-title-2"&gt;Delete repository?&lt;/mui-heading&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body id="dialog-desc-2"&gt;Are you sure you want to delete this item? This action cannot be undone.&lt;/mui-body&gt;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close&gt;Cancel&lt;/mui-button&gt;<br>
-            &nbsp;&nbsp;&lt;mui-button slot="actions" variant="attention"&gt;Delete&lt;/mui-button&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="secondary" data-close size="small"&gt;Cancel&lt;/mui-button&gt;<br>
+            &nbsp;&nbsp;&lt;mui-button slot="actions" variant="attention" size="small"&gt;Delete&lt;/mui-button&gt;<br>
           &lt;/mui-dialog&gt;
 
           <br><br>

@@ -919,6 +919,33 @@ class MuiButton extends HTMLElement {
       backdrop-filter: none;
     }
 
+    :host([variant="unstyled"]) {
+      display: block;
+      width: 100%;
+      text-align: initial;
+    }
+
+    :host([variant="unstyled"]) button,
+    :host([variant="unstyled"]) button:hover,
+    :host([variant="unstyled"]) button:focus,
+    :host([variant="unstyled"]) button:focus-visible,
+    :host([variant="unstyled"]) button:disabled {
+      display: block;
+      width: 100%;
+      min-height: 0;
+      padding: var(--space-000);
+      border: none;
+      border-radius: var(--radius-000);
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+      text-align: initial;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
     :host([focus-ring="outset"]) button:focus-visible {
       outline-offset: var(--action-focus-outline-outset-offset, var(--stroke-size-200));
     }

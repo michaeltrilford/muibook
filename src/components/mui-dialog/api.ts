@@ -10,6 +10,7 @@ export const muiApi = {
       { name: "width", type: { text: "string" }, default: "350px", description: "Dialog width. Accepts any valid CSS width value." },
       { name: "content-max-height", type: { text: '"none" | string' }, description: "Use `none` to disable the default scrollable content maximum height." },
       { name: "content-padding", type: { text: '"none" | string' }, description: "Use `none` to remove default content padding." },
+      { name: "close-size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets the built-in header close icon scale and matching header minimum height. Medium uses a small Button; large uses a medium Button." },
     ],
     contextualAttributes: [
       {
@@ -31,6 +32,11 @@ export const muiApi = {
     ],
     cssProperties: [
       { name: "--dialog-background", description: "Dialog surface background." },
+      { name: "--header-min-height", description: "Shared minimum height applied to the Dialog header." },
+      { name: "--header-min-height-x-small", description: "Dialog header minimum height when close-size is x-small." },
+      { name: "--header-min-height-small", description: "Dialog header minimum height when close-size is small." },
+      { name: "--header-min-height-medium", description: "Dialog header minimum height when close-size is medium." },
+      { name: "--header-min-height-large", description: "Dialog header minimum height when close-size is large." },
       { name: "--dialog-border", description: "Optional dialog border value. Defaults to `none`." },
       { name: "--dialog-radius", description: "Dialog corner radius." },
     ],

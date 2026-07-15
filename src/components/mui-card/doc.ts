@@ -62,6 +62,16 @@ export const muiDocs: MuiDocs = {
           ]
         },
         {
+          "key": "body-sizes",
+          "title": "Card Body Sizes",
+          "description": "Compares the Card Body spacing scale.",
+          "list": [
+            "Use small for compact summaries and dense repeated cards.",
+            "Use medium for standard card content and large for prominent or spacious compositions.",
+            "Use none only when content must reach the Card edges."
+          ]
+        },
+        {
           "key": "card-footer",
           "title": "Card: Footer",
           "description": "Demonstrates the Card: Footer Card treatment.",

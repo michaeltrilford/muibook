@@ -2,7 +2,7 @@ import { applySurfaceUsage } from "../../../utils/surface-usage";
 
 class MuiCardBody extends HTMLElement {
   static get observedAttributes() {
-    return ["condensed"];
+    return ["size"];
   }
 
   constructor() {
@@ -15,8 +15,7 @@ class MuiCardBody extends HTMLElement {
   }
 
   attributeChangedCallback(name: string, _oldValue: string | null, _newValue: string | null): void {
-    if (name === "condensed") {
-      // Re-run the slotted content logic when condensed changes
+    if (name === "size") {
       this.updateSlottedContent();
     }
   }
@@ -34,7 +33,7 @@ class MuiCardBody extends HTMLElement {
       this.removeAttribute("has-accordion-slat-group");
 
       let hasLayoutComponent = false;
-      const condensedSlats: HTMLElement[] = [];
+      const sizeNoneSlats: HTMLElement[] = [];
 
       applySurfaceUsage(this);
 
@@ -65,13 +64,13 @@ class MuiCardBody extends HTMLElement {
             const variant = slat.getAttribute("variant") || "action"; // default for file-diff is action
             if (variant === "action" || variant === "row") {
               slat.setAttribute("card-slot", "");
-              slat.removeAttribute("condensed-slot-first");
-              slat.removeAttribute("condensed-slot-last");
-              if (this.hasAttribute("condensed")) {
-                slat.setAttribute("condensed-slot", "");
-                condensedSlats.push(slat as HTMLElement);
+              slat.removeAttribute("card-body-size-none-slot-first");
+              slat.removeAttribute("card-body-size-none-slot-last");
+              if (this.getAttribute("size") === "none") {
+                slat.setAttribute("card-body-size-none-slot", "");
+                sizeNoneSlats.push(slat as HTMLElement);
               } else {
-                slat.removeAttribute("condensed-slot");
+                slat.removeAttribute("card-body-size-none-slot");
               }
             }
           });
@@ -132,7 +131,7 @@ class MuiCardBody extends HTMLElement {
         }
       });
 
-      if (condensedSlats.length) {
+      if (sizeNoneSlats.length) {
         const allSlats = nodes.flatMap((node) => {
           if (node.nodeType !== Node.ELEMENT_NODE) return [];
           const element = node as HTMLElement;
@@ -146,15 +145,15 @@ class MuiCardBody extends HTMLElement {
         const firstSlat = allSlats[0] as HTMLElement | undefined;
         const lastSlat = allSlats[allSlats.length - 1] as HTMLElement | undefined;
 
-        if (firstSlat?.hasAttribute("condensed-slot")) {
-          firstSlat.setAttribute("condensed-slot-first", "");
+        if (firstSlat?.hasAttribute("card-body-size-none-slot")) {
+          firstSlat.setAttribute("card-body-size-none-slot-first", "");
         }
-        if (lastSlat?.hasAttribute("condensed-slot")) {
-          lastSlat.setAttribute("condensed-slot-last", "");
+        if (lastSlat?.hasAttribute("card-body-size-none-slot")) {
+          lastSlat.setAttribute("card-body-size-none-slot-last", "");
         }
       }
 
-      if (!hasLayoutComponent && !this.hasAttribute("condensed")) {
+      if (!hasLayoutComponent && this.getAttribute("size") !== "none") {
         this.setAttribute("inner-space", "");
       }
     });
@@ -187,11 +186,48 @@ class MuiCardBody extends HTMLElement {
           }
         }
 
-        :host([condensed]),
-        :host([condensed][inner-space]),
-        :host([condensed][has-card-slat-group]),
-        :host([condensed][has-accordion-slat-group]) {
+        :host([size="none"]),
+        :host([size="none"][inner-space]),
+        :host([size="none"][has-card-slat-group]),
+        :host([size="none"][has-accordion-slat-group]) {
           padding: var(--space-000);
+        }
+
+        :host([size="small"]),
+        :host([size="small"][inner-space]),
+        :host([size="small"][has-card-slat-group]),
+        :host([size="small"][has-accordion-slat-group]) {
+          padding: var(--space-300);
+        }
+
+        :host([size="medium"]),
+        :host([size="medium"][inner-space]),
+        :host([size="medium"][has-card-slat-group]),
+        :host([size="medium"][has-accordion-slat-group]) {
+          padding: var(--space-500);
+        }
+
+        :host([size="large"]),
+        :host([size="large"][inner-space]),
+        :host([size="large"][has-card-slat-group]),
+        :host([size="large"][has-accordion-slat-group]) {
+          padding: var(--space-700);
+        }
+
+        @media (min-width: 768px) {
+          :host([size="medium"]),
+          :host([size="medium"][inner-space]),
+          :host([size="medium"][has-card-slat-group]),
+          :host([size="medium"][has-accordion-slat-group]) {
+            padding: var(--space-600);
+          }
+
+          :host([size="large"]),
+          :host([size="large"][inner-space]),
+          :host([size="large"][has-card-slat-group]),
+          :host([size="large"][has-accordion-slat-group]) {
+            padding: var(--space-800);
+          }
         }
         
       </style>

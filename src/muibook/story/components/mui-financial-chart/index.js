@@ -61,7 +61,7 @@ class StoryFinancialChart extends HTMLElement {
 
         <story-card id="candlestick" title="${storyMeta.candlestick.title}" usage="${storyMeta.candlestick.usage}">
           <mui-card slot="body">
-            <mui-card-body condensed>
+            <mui-card-body size="none">
               <mui-financial-chart
                 id="btcCandlestick"
                 symbol="BTC/USD"
@@ -69,12 +69,13 @@ class StoryFinancialChart extends HTMLElement {
                 interval="1D"
                 selected-range="3M"
                 height="34rem"
+                attribution="logo"
               ></mui-financial-chart>
             </mui-card-body>
           </mui-card>
           <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-financial-chart<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id=&quot;btcChart&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symbol=&quot;BTC/USD&quot;<br />
@@ -82,6 +83,7 @@ class StoryFinancialChart extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interval=&quot;1D&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selected-range=&quot;3M&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height=&quot;34rem&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribution=&quot;logo&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-financial-chart&gt;<br />
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
             &lt;/mui-card&gt;<br /><br />
@@ -94,7 +96,7 @@ class StoryFinancialChart extends HTMLElement {
 
         <story-card id="area" title="${storyMeta.area.title}" usage="${storyMeta.area.usage}">
           <mui-card slot="body">
-            <mui-card-body condensed>
+            <mui-card-body size="none">
               <mui-financial-chart
                 id="btcArea"
                 type="area"
@@ -103,56 +105,65 @@ class StoryFinancialChart extends HTMLElement {
                 interval="1D"
                 selected-range="1Y"
                 height="28rem"
+                attribution="none"
+                header-stroke="none"
               ></mui-financial-chart>
             </mui-card-body>
           </mui-card>
           <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-financial-chart<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id=&quot;btcArea&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type=&quot;area&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symbol=&quot;BTC/USD&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currency=&quot;USD&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interval=&quot;1D&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selected-range=&quot;1Y&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height=&quot;28rem&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribution=&quot;none&quot;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header-stroke=&quot;none&quot;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-financial-chart&gt;<br />
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
-            &lt;/mui-card&gt;
+            &lt;/mui-card&gt;<br /><br />
+            &lt;script&gt;<br />
+            &nbsp;&nbsp;document.querySelector(&quot;#btcArea&quot;).data = marketData;<br />
+            &lt;/script&gt;
           </story-code-block>
         </story-card>
 
         <story-card id="states" title="${storyMeta.states.title}" usage="${storyMeta.states.usage}">
           <mui-v-stack slot="body" space="var(--space-400)">
             <mui-card>
-              <mui-card-body condensed>
-                <mui-financial-chart symbol="BTC/USD" loading height="20rem"></mui-financial-chart>
+              <mui-card-body size="none">
+                <mui-financial-chart symbol="BTC/USD" loading height="20rem" attribution="none"></mui-financial-chart>
               </mui-card-body>
             </mui-card>
             <mui-card>
-              <mui-card-body condensed>
-                <mui-financial-chart symbol="ETH/USD" height="20rem"></mui-financial-chart>
+              <mui-card-body size="none">
+                <mui-financial-chart symbol="ETH/USD" height="20rem" attribution="none"></mui-financial-chart>
               </mui-card-body>
             </mui-card>
             <mui-card>
-              <mui-card-body condensed>
-                <mui-financial-chart symbol="SOL/USD" error="Market data could not be loaded" height="20rem"></mui-financial-chart>
+              <mui-card-body size="none">
+                <mui-financial-chart symbol="SOL/USD" error="Market data could not be loaded" height="20rem" attribution="none"></mui-financial-chart>
               </mui-card-body>
             </mui-card>
           </mui-v-stack>
           <story-code-block slot="footer" scrollable>
             &lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-financial-chart symbol=&quot;BTC/USD&quot; loading&gt;&lt;/mui-financial-chart&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-financial-chart symbol=&quot;BTC/USD&quot; loading attribution=&quot;none&quot;&gt;&lt;/mui-financial-chart&gt;<br />
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
             &lt;/mui-card&gt;<br /><br />
             &lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-financial-chart symbol=&quot;ETH/USD&quot;&gt;&lt;/mui-financial-chart&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-financial-chart symbol=&quot;ETH/USD&quot; attribution=&quot;none&quot;&gt;&lt;/mui-financial-chart&gt;<br />
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
             &lt;/mui-card&gt;<br /><br />
             &lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&lt;mui-card-body condensed&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-financial-chart symbol=&quot;SOL/USD&quot; error=&quot;Market data could not be loaded&quot;&gt;&lt;/mui-financial-chart&gt;<br />
+            &nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-financial-chart symbol=&quot;SOL/USD&quot; error=&quot;Market data could not be loaded&quot; attribution=&quot;none&quot;&gt;&lt;/mui-financial-chart&gt;<br />
             &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
             &lt;/mui-card&gt;
           </story-code-block>

@@ -717,7 +717,7 @@ export const compositions = {
                   {
                     type: "CardBody",
                     id: "wallet_artwork_body",
-                    props: { condensed: true },
+                    props: { size: "none" },
                     children: [
                       {
                         type: "Slat",

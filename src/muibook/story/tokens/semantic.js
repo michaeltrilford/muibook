@@ -14,10 +14,12 @@ class tokensSemantic extends HTMLElement {
         margin-left: calc(var(--space-400) * -1);
         margin-right: calc(var(--space-400) * -1);
       }
-      .surface-elevated,
+      .surface-elevated-50,
+      .surface-elevated-100,
       .surface-elevated-200,
       .surface-elevated-300,
-      .surface-recessed,
+      .surface-recessed-50,
+      .surface-recessed-100,
       .surface-recessed-200,
       .surface-recessed-300 {
         padding: var(--space-400);
@@ -26,15 +28,22 @@ class tokensSemantic extends HTMLElement {
         box-sizing: border-box;
       }
 
+      .surface-elevated-100,
       .surface-elevated-200,
       .surface-elevated-300,
+      .surface-recessed-100,
       .surface-recessed-200,
       .surface-recessed-300 {
         height: 100%;
       }
 
-      .surface-elevated,
-      .surface-recessed {
+      .surface-elevated-50,
+      .surface-recessed-50 {
+        border-radius: var(--radius-500);
+      }
+
+      .surface-elevated-100,
+      .surface-recessed-100 {
         border-radius: var(--radius-400);
       }
 
@@ -48,7 +57,7 @@ class tokensSemantic extends HTMLElement {
         border-radius: var(--radius-200);
       }
 
-      .surface-elevated {
+      .surface-elevated-100 {
         background: var(--surface-elevated-100);
       }
 
@@ -64,7 +73,7 @@ class tokensSemantic extends HTMLElement {
         background: var(--surface-elevated-300);
       }
 
-      .surface-recessed {
+      .surface-recessed-100 {
         background: var(--surface-recessed-100);
       }
 
@@ -140,9 +149,11 @@ class tokensSemantic extends HTMLElement {
           <story-card title="Surface: Elevated" description="The Surface tokens are tailored to have a great tone for both light and dark settings">
             <div slot="body">
               <div class="surface">
-                <div class="surface-elevated">
-                  <div class="surface-elevated-200">
-                    <div class="surface-elevated-300"></div>
+                <div class="surface-elevated-50">
+                  <div class="surface-elevated-100">
+                    <div class="surface-elevated-200">
+                      <div class="surface-elevated-300"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -161,7 +172,16 @@ class tokensSemantic extends HTMLElement {
               }
               <br />
               <br />
-              .surface-elevated {
+              .surface-elevated-50 {
+              <br />
+              &nbsp;&nbsp;background: var(--surface-elevated-50);
+              <br />
+              &nbsp;&nbsp;border-radius: var(--radius-500);
+              <br />
+              }
+              <br />
+              <br />
+              .surface-elevated-100 {
               <br />
               &nbsp;&nbsp;background: var(--surface-elevated-100);
               <br />
@@ -192,9 +212,11 @@ class tokensSemantic extends HTMLElement {
           <story-card title="Surface: Recessed" description="The Surface tokens are tailored to have a great tone for both light and dark settings">
             <div slot="body">
               <div class="surface">
-                <div class="surface-recessed">
-                  <div class="surface-recessed-200">
-                    <div class="surface-recessed-300"></div>
+                <div class="surface-recessed-50">
+                  <div class="surface-recessed-100">
+                    <div class="surface-recessed-200">
+                      <div class="surface-recessed-300"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -213,7 +235,16 @@ class tokensSemantic extends HTMLElement {
               }
               <br />
               <br />
-              .surface-recessed {
+              .surface-recessed-50 {
+              <br />
+              &nbsp;&nbsp;background: var(--surface-recessed-50);
+              <br />
+              &nbsp;&nbsp;border-radius: var(--radius-500);
+              <br />
+              }
+              <br />
+              <br />
+              .surface-recessed-100 {
               <br />
               &nbsp;&nbsp;background: var(--surface-recessed-100);
               <br />

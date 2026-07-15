@@ -9,6 +9,8 @@ export const muiApi = {
       { name: "height", default: "32rem", description: "CSS length applied to the interactive chart region." },
       { name: "selected-range", default: "1M", description: "Selected local time range." },
       { name: "ranges", default: "1D,1W,1M,3M,1Y,ALL", description: "Comma-separated range controls." },
+      { name: "attribution", values: ["logo", "none"], default: "logo", description: "Controls the TradingView attribution logo. Use none only when the consuming page provides the required visible attribution." },
+      { name: "header-stroke", values: ["none"], description: "Removes the divider between the toolbar and chart region." },
       { name: "loading", type: "boolean", description: "Displays the loading state over the chart." },
       { name: "error", description: "Displays an error message over the chart." },
     ],
@@ -35,7 +37,7 @@ export const muiApi = {
       { name: "--financial-chart-crosshair-color", description: "Canvas crosshair color." },
       { name: "--financial-chart-positive-color", description: "Positive candles and values." },
       { name: "--financial-chart-negative-color", description: "Negative candles and values." },
-      { name: "--financial-chart-series-color", description: "Area-series line color." },
+      { name: "--financial-chart-series-color", description: "Neutral area-series line color." },
     ],
   },
 };

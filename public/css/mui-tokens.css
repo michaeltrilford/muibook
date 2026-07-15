@@ -166,14 +166,14 @@ html[data-theme="light"] {
   --action-primary-text-color-focus: var(--white);
 
   /* Action - Secondary (Button & Link) */
-  --action-secondary-border-color: var(--grey-800);
-  --action-secondary-border-color-hover: var(--grey-800);
-  --action-secondary-border-color-focus: var(--grey-800);
+  --action-secondary-border-color: var(--grey-300);
+  --action-secondary-border-color-hover: var(--grey-300);
+  --action-secondary-border-color-focus: var(--grey-300);
   --action-secondary-border-color-disabled: var(--grey-400);
   --action-secondary-background: var(--white-opacity-0);
-  --action-secondary-background-hover: var(--grey-50);
-  --action-secondary-background-focus: var(--grey-50);
-  --action-secondary-background-disabled: var(--grey-50);
+  --action-secondary-background-hover: var(--black-opacity-5);
+  --action-secondary-background-focus: var(--black-opacity-5);
+  --action-secondary-background-disabled: var(--grey-200);
   --action-secondary-text-color: var(--grey-900);
   --action-secondary-text-color-hover: var(--grey-1000);
   --action-secondary-text-color-focus: var(--grey-1000);
@@ -181,8 +181,8 @@ html[data-theme="light"] {
 
   /* Action - Tertiary (Button & Link) */
   --action-tertiary-background: var(--white-opacity-0);
-  --action-tertiary-background-hover: var(--black-opacity-10);
-  --action-tertiary-background-focus: var(--black-opacity-10);
+  --action-tertiary-background-hover: var(--black-opacity-5);
+  --action-tertiary-background-focus: var(--black-opacity-5);
   --action-tertiary-background-disabled: var(--grey-50);
   --action-tertiary-text-color: var(--grey-900);
   --action-tertiary-text-color-hover: var(--grey-1000);
@@ -201,9 +201,11 @@ html[data-theme="light"] {
 
   /* Surface */
   --surface: var(--grey-50);
+  --surface-elevated-50: color-mix(in oklch, var(--grey-50) 50%, var(--white));
   --surface-elevated-100: var(--white);
   --surface-elevated-200: var(--grey-50);
   --surface-elevated-300: var(--grey-200);
+  --surface-recessed-50: color-mix(in oklch, var(--grey-50) 50%, var(--grey-300));
   --surface-recessed-100: var(--grey-300);
   --surface-recessed-200: var(--grey-400);
   --surface-recessed-300: var(--grey-500);
@@ -466,53 +468,37 @@ html[data-theme="light"] {
   --financial-chart-text-color-secondary: var(--text-color-secondary);
   --financial-chart-grid-color: var(--black-opacity-10);
   --financial-chart-crosshair-color: var(--black-opacity-50);
-  --financial-chart-positive-color: var(--feedback-positive-border-color);
-  --financial-chart-negative-color: var(--feedback-attention-border-color);
-  --financial-chart-series-color: var(--categorical-blue);
-  --financial-chart-area-top-color: color-mix(in srgb, var(--categorical-blue) 38%, transparent);
-  --financial-chart-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 2%, transparent);
-  --financial-chart-volume-positive-color: color-mix(in srgb, var(--feedback-positive-border-color) 45%, transparent);
-  --financial-chart-volume-negative-color: color-mix(in srgb, var(--feedback-attention-border-color) 45%, transparent);
+  --financial-chart-positive-color: var(--green-600);
+  --financial-chart-negative-color: var(--red-600);
+  --financial-chart-series-color: var(--grey-600);
+  --financial-chart-area-top-color: color-mix(in srgb, var(--grey-600) 38%, transparent);
+  --financial-chart-area-bottom-color: color-mix(in srgb, var(--grey-600) 2%, transparent);
+  --financial-chart-volume-positive-color: color-mix(in srgb, var(--green-600) 45%, transparent);
+  --financial-chart-volume-negative-color: color-mix(in srgb, var(--red-600) 45%, transparent);
   --financial-chart-action-background-hover: var(--action-tertiary-background-hover);
   --financial-chart-action-background-active: var(--action-primary-background);
   --financial-chart-action-text-color-active: var(--action-primary-text-color);
 
   /* Market Sparkline */
   --market-sparkline-text-color: var(--text-color-secondary);
-  --market-sparkline-positive-color: var(--feedback-positive-border-color);
-  --market-sparkline-negative-color: var(--feedback-attention-border-color);
-  --market-sparkline-neutral-color: var(--categorical-blue);
-  --market-sparkline-positive-area-top-color: color-mix(
-    in srgb,
-    var(--feedback-positive-border-color) 32%,
-    transparent
-  );
-  --market-sparkline-positive-area-bottom-color: color-mix(
-    in srgb,
-    var(--feedback-positive-border-color) 2%,
-    transparent
-  );
-  --market-sparkline-negative-area-top-color: color-mix(
-    in srgb,
-    var(--feedback-attention-border-color) 32%,
-    transparent
-  );
-  --market-sparkline-negative-area-bottom-color: color-mix(
-    in srgb,
-    var(--feedback-attention-border-color) 2%,
-    transparent
-  );
-  --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--categorical-blue) 32%, transparent);
-  --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 2%, transparent);
+  --market-sparkline-positive-color: var(--green-600);
+  --market-sparkline-negative-color: var(--red-600);
+  --market-sparkline-neutral-color: var(--grey-600);
+  --market-sparkline-positive-area-top-color: color-mix(in srgb, var(--green-600) 32%, transparent);
+  --market-sparkline-positive-area-bottom-color: color-mix(in srgb, var(--green-600) 2%, transparent);
+  --market-sparkline-negative-area-top-color: color-mix(in srgb, var(--red-600) 32%, transparent);
+  --market-sparkline-negative-area-bottom-color: color-mix(in srgb, var(--red-600) 2%, transparent);
+  --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--grey-600) 32%, transparent);
+  --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--grey-600) 2%, transparent);
 
   /* Financial Bar Chart */
   --financial-bar-chart-text-color: var(--text-color-secondary);
   --financial-bar-chart-border-color: var(--border-color);
   --financial-bar-chart-grid-color: var(--black-opacity-10);
   --financial-bar-chart-crosshair-color: var(--black-opacity-50);
-  --financial-bar-chart-neutral-color: var(--categorical-blue);
-  --financial-bar-chart-positive-color: var(--feedback-positive-border-color);
-  --financial-bar-chart-negative-color: var(--feedback-attention-border-color);
+  --financial-bar-chart-neutral-color: var(--grey-600);
+  --financial-bar-chart-positive-color: var(--green-600);
+  --financial-bar-chart-negative-color: var(--red-600);
   --financial-bar-chart-baseline-color: var(--border-color);
 
   /* Comparison Chart */
@@ -521,12 +507,12 @@ html[data-theme="light"] {
   --comparison-chart-grid-color: var(--black-opacity-10);
   --comparison-chart-crosshair-color: var(--black-opacity-50);
   --comparison-chart-reference-color: var(--border-color);
-  --comparison-chart-series-1: var(--categorical-blue);
-  --comparison-chart-series-2: var(--categorical-green);
-  --comparison-chart-series-3: var(--categorical-magenta);
-  --comparison-chart-series-4: var(--categorical-orange);
-  --comparison-chart-series-5: var(--categorical-cyan);
-  --comparison-chart-series-6: var(--categorical-purple);
+  --comparison-chart-series-1: var(--badge-background-blue);
+  --comparison-chart-series-2: var(--badge-background-green);
+  --comparison-chart-series-3: var(--badge-background-magenta);
+  --comparison-chart-series-4: var(--badge-background-orange);
+  --comparison-chart-series-5: var(--badge-background-cyan);
+  --comparison-chart-series-6: var(--badge-background-purple);
 
   /* Stepper */
   --stepper-color: var(--grey-700);
@@ -625,13 +611,13 @@ html[data-theme="dark"] {
   --action-primary-text-color-focus: var(--grey-900);
 
   /* Action - Secondary (Button & Link) */
-  --action-secondary-border-color: var(--grey-200);
-  --action-secondary-border-color-hover: var(--grey-200);
-  --action-secondary-border-color-focus: var(--grey-200);
+  --action-secondary-border-color: var(--grey-600);
+  --action-secondary-border-color-hover: var(--grey-600);
+  --action-secondary-border-color-focus: var(--grey-600);
   --action-secondary-border-color-disabled: var(--grey-600);
   --action-secondary-background: var(--black-opacity-0);
-  --action-secondary-background-hover: var(--grey-800);
-  --action-secondary-background-focus: var(--grey-800);
+  --action-secondary-background-hover: var(--white-opacity-5);
+  --action-secondary-background-focus: var(--white-opacity-5);
   --action-secondary-background-disabled: var(--grey-900);
   --action-secondary-text-color: var(--grey-50);
   --action-secondary-text-color-hover: var(--grey-50);
@@ -640,8 +626,8 @@ html[data-theme="dark"] {
 
   /* Action - Tertiary (Button & Link) */
   --action-tertiary-background: var(--black-opacity-0);
-  --action-tertiary-background-hover: var(--white-opacity-10);
-  --action-tertiary-background-focus: var(--white-opacity-10);
+  --action-tertiary-background-hover: var(--white-opacity-5);
+  --action-tertiary-background-focus: var(--white-opacity-5);
   --action-tertiary-background-disabled: var(--grey-900);
   --action-tertiary-text-color: var(--grey-50);
   --action-tertiary-text-color-hover: var(--grey-50);
@@ -660,9 +646,11 @@ html[data-theme="dark"] {
 
   /* Surface */
   --surface: var(--grey-900);
+  --surface-elevated-50: color-mix(in oklch, var(--grey-900) 50%, var(--grey-800));
   --surface-elevated-100: var(--grey-800);
   --surface-elevated-200: var(--grey-900);
   --surface-elevated-300: var(--grey-1000);
+  --surface-recessed-50: color-mix(in oklch, var(--grey-900) 50%, var(--grey-1200));
   --surface-recessed-100: var(--grey-1200);
   --surface-recessed-200: var(--grey-1300);
   --surface-recessed-300: var(--grey-1400);
@@ -921,53 +909,37 @@ html[data-theme="dark"] {
   --financial-chart-text-color-secondary: var(--text-color-secondary);
   --financial-chart-grid-color: var(--white-opacity-10);
   --financial-chart-crosshair-color: var(--white-opacity-50);
-  --financial-chart-positive-color: var(--feedback-positive-border-color);
-  --financial-chart-negative-color: var(--feedback-attention-border-color);
-  --financial-chart-series-color: var(--categorical-blue);
-  --financial-chart-area-top-color: color-mix(in srgb, var(--categorical-blue) 42%, transparent);
-  --financial-chart-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 3%, transparent);
-  --financial-chart-volume-positive-color: color-mix(in srgb, var(--feedback-positive-border-color) 50%, transparent);
-  --financial-chart-volume-negative-color: color-mix(in srgb, var(--feedback-attention-border-color) 50%, transparent);
+  --financial-chart-positive-color: var(--green-400);
+  --financial-chart-negative-color: var(--red-400);
+  --financial-chart-series-color: var(--grey-300);
+  --financial-chart-area-top-color: color-mix(in srgb, var(--grey-300) 42%, transparent);
+  --financial-chart-area-bottom-color: color-mix(in srgb, var(--grey-300) 3%, transparent);
+  --financial-chart-volume-positive-color: color-mix(in srgb, var(--green-400) 50%, transparent);
+  --financial-chart-volume-negative-color: color-mix(in srgb, var(--red-400) 50%, transparent);
   --financial-chart-action-background-hover: var(--action-tertiary-background-hover);
   --financial-chart-action-background-active: var(--action-primary-background);
   --financial-chart-action-text-color-active: var(--action-primary-text-color);
 
   /* Market Sparkline */
   --market-sparkline-text-color: var(--text-color-secondary);
-  --market-sparkline-positive-color: var(--feedback-positive-border-color);
-  --market-sparkline-negative-color: var(--feedback-attention-border-color);
-  --market-sparkline-neutral-color: var(--categorical-blue);
-  --market-sparkline-positive-area-top-color: color-mix(
-    in srgb,
-    var(--feedback-positive-border-color) 36%,
-    transparent
-  );
-  --market-sparkline-positive-area-bottom-color: color-mix(
-    in srgb,
-    var(--feedback-positive-border-color) 3%,
-    transparent
-  );
-  --market-sparkline-negative-area-top-color: color-mix(
-    in srgb,
-    var(--feedback-attention-border-color) 36%,
-    transparent
-  );
-  --market-sparkline-negative-area-bottom-color: color-mix(
-    in srgb,
-    var(--feedback-attention-border-color) 3%,
-    transparent
-  );
-  --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--categorical-blue) 36%, transparent);
-  --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--categorical-blue) 3%, transparent);
+  --market-sparkline-positive-color: var(--green-400);
+  --market-sparkline-negative-color: var(--red-400);
+  --market-sparkline-neutral-color: var(--grey-300);
+  --market-sparkline-positive-area-top-color: color-mix(in srgb, var(--green-400) 36%, transparent);
+  --market-sparkline-positive-area-bottom-color: color-mix(in srgb, var(--green-400) 3%, transparent);
+  --market-sparkline-negative-area-top-color: color-mix(in srgb, var(--red-400) 36%, transparent);
+  --market-sparkline-negative-area-bottom-color: color-mix(in srgb, var(--red-400) 3%, transparent);
+  --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--grey-300) 36%, transparent);
+  --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--grey-300) 3%, transparent);
 
   /* Financial Bar Chart */
   --financial-bar-chart-text-color: var(--text-color-secondary);
   --financial-bar-chart-border-color: var(--border-color);
   --financial-bar-chart-grid-color: var(--white-opacity-10);
   --financial-bar-chart-crosshair-color: var(--white-opacity-50);
-  --financial-bar-chart-neutral-color: var(--categorical-blue);
-  --financial-bar-chart-positive-color: var(--feedback-positive-border-color);
-  --financial-bar-chart-negative-color: var(--feedback-attention-border-color);
+  --financial-bar-chart-neutral-color: var(--grey-300);
+  --financial-bar-chart-positive-color: var(--green-400);
+  --financial-bar-chart-negative-color: var(--red-400);
   --financial-bar-chart-baseline-color: var(--border-color);
 
   /* Comparison Chart */
@@ -976,12 +948,12 @@ html[data-theme="dark"] {
   --comparison-chart-grid-color: var(--white-opacity-10);
   --comparison-chart-crosshair-color: var(--white-opacity-50);
   --comparison-chart-reference-color: var(--border-color);
-  --comparison-chart-series-1: var(--categorical-blue);
-  --comparison-chart-series-2: var(--categorical-green);
-  --comparison-chart-series-3: var(--categorical-magenta);
-  --comparison-chart-series-4: var(--categorical-orange);
-  --comparison-chart-series-5: var(--categorical-cyan);
-  --comparison-chart-series-6: var(--categorical-purple);
+  --comparison-chart-series-1: var(--badge-background-blue);
+  --comparison-chart-series-2: var(--badge-background-green);
+  --comparison-chart-series-3: var(--badge-background-magenta);
+  --comparison-chart-series-4: var(--badge-background-orange);
+  --comparison-chart-series-5: var(--badge-background-cyan);
+  --comparison-chart-series-6: var(--badge-background-purple);
 
   /* Stepper */
   --stepper-color: var(--white);
@@ -1003,13 +975,17 @@ html[data-theme="dark"] {
 /* 4. SET THE FOUNDATION                                                                                */
 /* ==================================================================================================== */
 :where(html) {
-  /* Surface */
-  --surface-elevated-50: color-mix(in oklch, var(--surface) 50%, var(--surface-elevated-100));
-  --surface-recessed-50: color-mix(in oklch, var(--surface) 50%, var(--surface-recessed-100));
+  /* Header */
+  --header-min-height-x-small: 6.1rem;
+  --header-min-height-small: 6.9rem;
+  --header-min-height-medium: 7.7rem;
+  --header-min-height-large: 7.7rem;
+  --header-min-height: var(--header-min-height-medium);
 
   /* Tabs */
   --tab-border-color: var(--surface-recessed-50);
-  --tab-border-color-surface: var(--surface);
+  --tab-border-color-surface: var(--black-opacity-5);
+  --tab-border-color-active-inset: var(--tab-background-surface);
   --tab-background: var(--surface-recessed-50);
   --tab-background-surface: var(--surface);
   --tab-background-active: var(--surface);
@@ -1039,6 +1015,8 @@ html[data-theme="dark"] {
 
   /* Financial Chart */
   --financial-chart-border: var(--stroke-size-100) var(--stroke-solid) var(--financial-chart-border-color);
+  --financial-bar-chart-border: var(--stroke-size-100) var(--stroke-solid) var(--financial-bar-chart-border-color);
+  --comparison-chart-border: var(--stroke-size-100) var(--stroke-solid) var(--comparison-chart-border-color);
 
   /* Form */
   --form-default-placeholder-color: var(--grey-500);
@@ -1237,30 +1215,30 @@ html[data-theme="dark"] {
   --feedback-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--feedback-attention-border-color);
 
   /* Action (Button & Link) */
-  --action-primary-border: var(--stroke-size-200) var(--stroke-solid) var(--action-primary-border-color);
-  --action-primary-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-primary-border-color-hover);
-  --action-primary-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-primary-border-color-focus);
-  --action-primary-border-disabled: var(--stroke-size-200) var(--stroke-solid)
+  --action-primary-border: var(--stroke-size-100) var(--stroke-solid) var(--action-primary-border-color);
+  --action-primary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-primary-border-color-hover);
+  --action-primary-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-primary-border-color-focus);
+  --action-primary-border-disabled: var(--stroke-size-100) var(--stroke-solid)
     var(--action-primary-border-color-disabled);
-  --action-secondary-border: var(--stroke-size-200) var(--stroke-solid) var(--action-secondary-border-color);
-  --action-secondary-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-secondary-border-color-hover);
-  --action-secondary-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-secondary-border-color-focus);
-  --action-secondary-border-disabled: var(--stroke-size-200) var(--stroke-solid)
+  --action-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--action-secondary-border-color);
+  --action-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-secondary-border-color-hover);
+  --action-secondary-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-secondary-border-color-focus);
+  --action-secondary-border-disabled: var(--stroke-size-100) var(--stroke-solid)
     var(--action-secondary-border-color-disabled);
-  --action-tertiary-border: var(--stroke-size-200) var(--stroke-solid) var(--action-tertiary-border-color);
-  --action-tertiary-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-tertiary-border-color-hover);
-  --action-tertiary-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-tertiary-border-color-focus);
-  --action-tertiary-border-disabled: var(--stroke-size-200) var(--stroke-solid)
+  --action-tertiary-border: var(--stroke-size-100) var(--stroke-solid) var(--action-tertiary-border-color);
+  --action-tertiary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-tertiary-border-color-hover);
+  --action-tertiary-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-tertiary-border-color-focus);
+  --action-tertiary-border-disabled: var(--stroke-size-100) var(--stroke-solid)
     var(--action-tertiary-border-color-disabled);
   --action-overlay-border: var(--stroke-size-100) var(--stroke-solid) var(--action-overlay-border-color);
   --action-overlay-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-overlay-border-color-hover);
   --action-overlay-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-overlay-border-color-focus);
   --action-overlay-border-disabled: var(--stroke-size-100) var(--stroke-solid)
     var(--action-overlay-border-color-disabled);
-  --action-attention-border: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color);
-  --action-attention-border-hover: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color-hover);
-  --action-attention-border-focus: var(--stroke-size-200) var(--stroke-solid) var(--action-attention-border-color-focus);
-  --action-attention-border-disabled: var(--stroke-size-200) var(--stroke-solid)
+  --action-attention-border: var(--stroke-size-100) var(--stroke-solid) var(--action-attention-border-color);
+  --action-attention-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--action-attention-border-color-hover);
+  --action-attention-border-focus: var(--stroke-size-100) var(--stroke-solid) var(--action-attention-border-color-focus);
+  --action-attention-border-disabled: var(--stroke-size-100) var(--stroke-solid)
     var(--action-attention-border-color-disabled);
   --action-font-size: var(--text-font-size);
   --action-line-height: var(--text-line-height);
