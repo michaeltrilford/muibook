@@ -3,6 +3,7 @@ export const muiApi = {
     description: "Displays responsive candlestick or area market data with volume and time-range controls.",
     attributes: [
       { name: "type", values: ["candlestick", "area"], default: "candlestick", description: "Price-series presentation." },
+      { name: "trend", values: ["positive", "negative", "neutral"], default: "neutral", description: "Semantic line and fill treatment for area charts. Candlestick colors remain data-driven." },
       { name: "symbol", description: "Instrument or market symbol shown in the chart summary." },
       { name: "currency", default: "USD", description: "Currency label shown beside the current price." },
       { name: "interval", default: "1D", description: "Market interval label shown beside the symbol." },
@@ -38,6 +39,12 @@ export const muiApi = {
       { name: "--financial-chart-positive-color", description: "Positive candles and values." },
       { name: "--financial-chart-negative-color", description: "Negative candles and values." },
       { name: "--financial-chart-series-color", description: "Neutral area-series line color." },
+      { name: "--financial-chart-area-top-color", description: "Neutral area fill nearest the line." },
+      { name: "--financial-chart-area-bottom-color", description: "Neutral area fill nearest the baseline." },
+      { name: "--financial-chart-positive-area-top-color", description: "Positive area fill nearest the line." },
+      { name: "--financial-chart-positive-area-bottom-color", description: "Positive area fill nearest the baseline." },
+      { name: "--financial-chart-negative-area-top-color", description: "Negative area fill nearest the line." },
+      { name: "--financial-chart-negative-area-bottom-color", description: "Negative area fill nearest the baseline." },
     ],
   },
 };

@@ -94,41 +94,43 @@ class StoryFinancialChart extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card id="area" title="${storyMeta.area.title}" usage="${storyMeta.area.usage}">
-          <mui-card slot="body">
-            <mui-card-body size="none">
-              <mui-financial-chart
-                id="btcArea"
-                type="area"
-                symbol="BTC/USD"
-                currency="USD"
-                interval="1D"
-                selected-range="1Y"
-                height="28rem"
-                attribution="none"
-                header-stroke="none"
-              ></mui-financial-chart>
-            </mui-card-body>
-          </mui-card>
+        <story-card id="area-compact" title="${storyMeta["area-compact"].title}" usage="${storyMeta["area-compact"].usage}">
+          <mui-grid slot="body" col="repeat(auto-fit, minmax(24rem, 1fr))" space="var(--space-400)">
+            ${this.areaExample("compactPositiveArea", "positive", "BTC/USD", "20rem")}
+            ${this.areaExample("compactNegativeArea", "negative", "ETH/USD", "20rem")}
+            ${this.areaExample("compactNeutralArea", "neutral", "DXY", "20rem")}
+          </mui-grid>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-card&gt;<br />
-            &nbsp;&nbsp;&lt;mui-card-body size=&quot;none&quot;&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-financial-chart<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id=&quot;btcArea&quot;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type=&quot;area&quot;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symbol=&quot;BTC/USD&quot;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currency=&quot;USD&quot;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interval=&quot;1D&quot;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selected-range=&quot;1Y&quot;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height=&quot;28rem&quot;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attribution=&quot;none&quot;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header-stroke=&quot;none&quot;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/mui-financial-chart&gt;<br />
-            &nbsp;&nbsp;&lt;/mui-card-body&gt;<br />
-            &lt;/mui-card&gt;<br /><br />
-            &lt;script&gt;<br />
-            &nbsp;&nbsp;document.querySelector(&quot;#btcArea&quot;).data = marketData;<br />
-            &lt;/script&gt;
+            &lt;mui-grid col=&quot;repeat(auto-fit, minmax(24rem, 1fr))&quot; space=&quot;var(--space-400)&quot;&gt;<br />
+            ${this.areaCodeExample("compactPositiveArea", "positive", "BTC/USD", "20rem")}<br />
+            ${this.areaCodeExample("compactNegativeArea", "negative", "ETH/USD", "20rem")}<br />
+            ${this.areaCodeExample("compactNeutralArea", "neutral", "DXY", "20rem")}<br />
+            &lt;/mui-grid&gt;<br /><br />
+            ${this.areaDataCode(["compactPositiveArea", "compactNegativeArea", "compactNeutralArea"])}
+          </story-code-block>
+        </story-card>
+
+        <story-card id="area-positive" title="${storyMeta["area-positive"].title}" usage="${storyMeta["area-positive"].usage}">
+          ${this.areaExample("positiveArea", "positive", "BTC/USD", "28rem", "body")}
+          <story-code-block slot="footer" scrollable>
+            ${this.areaCodeExample("positiveArea", "positive", "BTC/USD", "28rem")}<br /><br />
+            ${this.areaDataCode(["positiveArea"])}
+          </story-code-block>
+        </story-card>
+
+        <story-card id="area-negative" title="${storyMeta["area-negative"].title}" usage="${storyMeta["area-negative"].usage}">
+          ${this.areaExample("negativeArea", "negative", "ETH/USD", "28rem", "body")}
+          <story-code-block slot="footer" scrollable>
+            ${this.areaCodeExample("negativeArea", "negative", "ETH/USD", "28rem")}<br /><br />
+            ${this.areaDataCode(["negativeArea"])}
+          </story-code-block>
+        </story-card>
+
+        <story-card id="area-neutral" title="${storyMeta["area-neutral"].title}" usage="${storyMeta["area-neutral"].usage}">
+          ${this.areaExample("neutralArea", "neutral", "DXY", "28rem", "body")}
+          <story-code-block slot="footer" scrollable>
+            ${this.areaCodeExample("neutralArea", "neutral", "DXY", "28rem")}<br /><br />
+            ${this.areaDataCode(["neutralArea"])}
           </story-code-block>
         </story-card>
 
@@ -173,7 +175,34 @@ class StoryFinancialChart extends HTMLElement {
 
     const marketData = createMarketData();
     this.shadowRoot.querySelector("#btcCandlestick").data = marketData;
-    this.shadowRoot.querySelector("#btcArea").data = marketData;
+    ["compactPositiveArea", "compactNegativeArea", "compactNeutralArea", "positiveArea", "negativeArea", "neutralArea"].forEach((id) => {
+      this.shadowRoot.querySelector(`#${id}`).data = marketData;
+    });
+  }
+
+  areaExample(id, trend, symbol, height, slot = "") {
+    return `<mui-card${slot ? ` slot="${slot}"` : ""}>
+      <mui-card-body size="none">
+        <mui-financial-chart id="${id}" type="area" trend="${trend}" symbol="${symbol}" currency="USD" interval="1D" selected-range="1Y" height="${height}" attribution="none" header-stroke="none"></mui-financial-chart>
+      </mui-card-body>
+    </mui-card>`;
+  }
+
+  areaCodeExample(id, trend, symbol, height) {
+    return `&lt;mui-card&gt;&lt;mui-card-body size=&quot;none&quot;&gt;<br />
+      &nbsp;&nbsp;&lt;mui-financial-chart id=&quot;${id}&quot; type=&quot;area&quot; trend=&quot;${trend}&quot; symbol=&quot;${symbol}&quot; currency=&quot;USD&quot; interval=&quot;1D&quot; selected-range=&quot;1Y&quot; height=&quot;${height}&quot; attribution=&quot;none&quot; header-stroke=&quot;none&quot;&gt;&lt;/mui-financial-chart&gt;<br />
+      &lt;/mui-card-body&gt;&lt;/mui-card&gt;`;
+  }
+
+  areaDataCode(ids) {
+    return `&lt;script&gt;<br />
+      &nbsp;&nbsp;const marketData = [<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;{ time: &quot;2026-07-01&quot;, open: 104, high: 109, low: 102, close: 108, volume: 18400 },<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;{ time: &quot;2026-07-02&quot;, open: 108, high: 112, low: 106, close: 110, volume: 21600 },<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;{ time: &quot;2026-07-03&quot;, open: 110, high: 115, low: 109, close: 114, volume: 24800 },<br />
+      &nbsp;&nbsp;];<br /><br />
+      ${ids.map((id) => `&nbsp;&nbsp;document.querySelector(&quot;#${id}&quot;).data = marketData;`).join("<br />\n      ")}<br />
+      &lt;/script&gt;`;
   }
 }
 

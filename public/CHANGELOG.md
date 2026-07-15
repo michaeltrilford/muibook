@@ -16,6 +16,7 @@ _Status: WIP_
 - `mui-submenu` portals its nested Menu to a body-level overlay while open so focused controls, parent stacking contexts, and overflow containers cannot paint above or clip it. The authored Menu is restored when the Submenu closes or disconnects.
 - `mui-submenu` provides viewport-aware collision handling: it prefers the inline end, flips to the inline start when constrained, shifts vertically, and overlaps the parent Menu as a final fallback instead of clipping outside the viewport. Position is recalculated during resize, ancestor scrolling, and nested Menu resizing.
 - Added `mui-financial-chart`, powered by pinned `lightweight-charts@5.2.0`, for responsive candlestick and area market charts with a dedicated volume pane, local time-range controls, streaming updates, theme synchronization, and loading, empty, and error states. The component preserves the required TradingView attribution and provides a live accessible summary of the visible data.
+- Financial Chart area mode now supports `trend="positive | negative | neutral"` with matching semantic line and fill tokens. Its compact comparison and dedicated treatment stories show every variant and the OHLCV data-property contract required to render them.
 - Added `mui-market-sparkline` for compact line, area, and baseline financial trends with automatic positive or negative direction, streaming updates, optional interaction, theme-aware fills, loading, empty, and error states, and composable header and footer slots.
 - Added `mui-financial-bar-chart` for time-based economic and financial histograms with neutral or baseline-aware directional bars, decimal, percent, currency, and volume formatting, configurable scales, streaming updates, optional interaction, and composable header and footer slots.
 - Added `mui-comparison-chart` for absolute, indexed, and percentage-change comparisons across multiple financial time series, with local normalization, a six-color theme palette, per-series streaming updates, configurable scales and formatting, and composable header, legend, and footer slots.
@@ -60,6 +61,7 @@ _Status: WIP_
 
 ### Fixed
 
+- Paperclip now maps the complete Financial Chart, Market Sparkline, Financial Bar Chart, and Comparison Chart token sets to its monochrome brand palette. Chart marks use blue in light mode and white in dark mode, including all Comparison Chart series.
 - Comparison Chart now owns padding for its populated header region, allowing slotted header compositions to omit repeated spacing while preserving series keys and other supporting content.
 - Financial Bar Chart now owns padding for populated header and footer regions. Its stories use edge-to-edge Card Bodies, consistent display typography, and complete code examples matching each rendered composition.
 - Financial Chart, Financial Bar Chart, and Market Sparkline now share consistent neutral grey chart treatments in light and dark modes. Financial Bar Chart and Market Sparkline stories explicitly show neutral, positive, and negative colors for theme review.

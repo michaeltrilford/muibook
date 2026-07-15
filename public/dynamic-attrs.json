@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-15T06:18:49.039Z",
+  "generatedAt": "2026-07-15T06:30:23.418Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -290,6 +290,16 @@
         }
       ]
     },
+    "mui-card-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-button-group",
+          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
+        }
+      ]
+    },
     "mui-card-body": {
       "version": 1,
       "destinationOnly": true,
@@ -305,26 +315,6 @@
         {
           "name": "inner-space-top",
           "description": "Set when top inner spacing is needed, allowing the card body to adjust vertical rhythm."
-        }
-      ]
-    },
-    "mui-slat-group": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "usage",
-          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
-        }
-      ]
-    },
-    "mui-card-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-button-group",
-          "description": "Set when a button group is present, allowing the footer layout to adjust action spacing."
         }
       ]
     },
@@ -350,6 +340,30 @@
         }
       ]
     },
+    "mui-slat-group": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "usage",
+          "description": "Set when rendered in a named usage context, allowing the component to switch to usage-specific styling."
+        }
+      ]
+    },
+    "mui-tab-item": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-before",
+          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "has-after",
+          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        }
+      ]
+    },
     "mui-row": {
       "version": 1,
       "destinationOnly": true,
@@ -367,20 +381,6 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
-        }
-      ]
-    },
-    "mui-tab-item": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-before",
-          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
-        },
-        {
-          "name": "has-after",
-          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
         }
       ]
     }

@@ -473,6 +473,10 @@ html[data-theme="light"] {
   --financial-chart-series-color: var(--grey-600);
   --financial-chart-area-top-color: color-mix(in srgb, var(--grey-600) 38%, transparent);
   --financial-chart-area-bottom-color: color-mix(in srgb, var(--grey-600) 2%, transparent);
+  --financial-chart-positive-area-top-color: color-mix(in srgb, var(--green-600) 38%, transparent);
+  --financial-chart-positive-area-bottom-color: color-mix(in srgb, var(--green-600) 2%, transparent);
+  --financial-chart-negative-area-top-color: color-mix(in srgb, var(--red-600) 38%, transparent);
+  --financial-chart-negative-area-bottom-color: color-mix(in srgb, var(--red-600) 2%, transparent);
   --financial-chart-volume-positive-color: color-mix(in srgb, var(--green-600) 45%, transparent);
   --financial-chart-volume-negative-color: color-mix(in srgb, var(--red-600) 45%, transparent);
   --financial-chart-action-background-hover: var(--action-tertiary-background-hover);
@@ -914,6 +918,10 @@ html[data-theme="dark"] {
   --financial-chart-series-color: var(--grey-300);
   --financial-chart-area-top-color: color-mix(in srgb, var(--grey-300) 42%, transparent);
   --financial-chart-area-bottom-color: color-mix(in srgb, var(--grey-300) 3%, transparent);
+  --financial-chart-positive-area-top-color: color-mix(in srgb, var(--green-400) 42%, transparent);
+  --financial-chart-positive-area-bottom-color: color-mix(in srgb, var(--green-400) 3%, transparent);
+  --financial-chart-negative-area-top-color: color-mix(in srgb, var(--red-400) 42%, transparent);
+  --financial-chart-negative-area-bottom-color: color-mix(in srgb, var(--red-400) 3%, transparent);
   --financial-chart-volume-positive-color: color-mix(in srgb, var(--green-400) 50%, transparent);
   --financial-chart-volume-negative-color: color-mix(in srgb, var(--red-400) 50%, transparent);
   --financial-chart-action-background-hover: var(--action-tertiary-background-hover);

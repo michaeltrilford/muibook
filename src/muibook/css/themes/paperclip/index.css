@@ -201,6 +201,63 @@ html[data-brand="paperclip"][data-theme="light"] {
   --preview-chip-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--blue-500);
   --preview-chip-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--blue-600);
 
+  /* Charts */
+  --financial-chart-background: var(--white);
+  --financial-chart-border-color: var(--blue-500);
+  --financial-chart-text-color: var(--blue-500);
+  --financial-chart-text-color-secondary: var(--blue-500);
+  --financial-chart-grid-color: color-mix(in srgb, var(--blue-500) 10%, transparent);
+  --financial-chart-crosshair-color: color-mix(in srgb, var(--blue-500) 50%, transparent);
+  --financial-chart-positive-color: var(--blue-500);
+  --financial-chart-negative-color: var(--blue-500);
+  --financial-chart-series-color: var(--blue-500);
+  --financial-chart-area-top-color: color-mix(in srgb, var(--blue-500) 38%, transparent);
+  --financial-chart-area-bottom-color: color-mix(in srgb, var(--blue-500) 2%, transparent);
+  --financial-chart-positive-area-top-color: color-mix(in srgb, var(--blue-500) 38%, transparent);
+  --financial-chart-positive-area-bottom-color: color-mix(in srgb, var(--blue-500) 2%, transparent);
+  --financial-chart-negative-area-top-color: color-mix(in srgb, var(--blue-500) 38%, transparent);
+  --financial-chart-negative-area-bottom-color: color-mix(in srgb, var(--blue-500) 2%, transparent);
+  --financial-chart-volume-positive-color: color-mix(in srgb, var(--blue-500) 45%, transparent);
+  --financial-chart-volume-negative-color: color-mix(in srgb, var(--blue-500) 45%, transparent);
+  --financial-chart-action-background-hover: var(--blue-100);
+  --financial-chart-action-background-active: var(--blue-500);
+  --financial-chart-action-text-color-active: var(--white);
+
+  --market-sparkline-background: var(--white);
+  --market-sparkline-text-color: var(--blue-500);
+  --market-sparkline-positive-color: var(--blue-500);
+  --market-sparkline-negative-color: var(--blue-500);
+  --market-sparkline-neutral-color: var(--blue-500);
+  --market-sparkline-positive-area-top-color: color-mix(in srgb, var(--blue-500) 32%, transparent);
+  --market-sparkline-positive-area-bottom-color: color-mix(in srgb, var(--blue-500) 2%, transparent);
+  --market-sparkline-negative-area-top-color: color-mix(in srgb, var(--blue-500) 32%, transparent);
+  --market-sparkline-negative-area-bottom-color: color-mix(in srgb, var(--blue-500) 2%, transparent);
+  --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--blue-500) 32%, transparent);
+  --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--blue-500) 2%, transparent);
+
+  --financial-bar-chart-background: var(--white);
+  --financial-bar-chart-text-color: var(--blue-500);
+  --financial-bar-chart-border-color: var(--blue-500);
+  --financial-bar-chart-grid-color: color-mix(in srgb, var(--blue-500) 10%, transparent);
+  --financial-bar-chart-crosshair-color: color-mix(in srgb, var(--blue-500) 50%, transparent);
+  --financial-bar-chart-neutral-color: var(--blue-500);
+  --financial-bar-chart-positive-color: var(--blue-500);
+  --financial-bar-chart-negative-color: var(--blue-500);
+  --financial-bar-chart-baseline-color: var(--blue-500);
+
+  --comparison-chart-background: var(--white);
+  --comparison-chart-text-color: var(--blue-500);
+  --comparison-chart-border-color: var(--blue-500);
+  --comparison-chart-grid-color: color-mix(in srgb, var(--blue-500) 10%, transparent);
+  --comparison-chart-crosshair-color: color-mix(in srgb, var(--blue-500) 50%, transparent);
+  --comparison-chart-reference-color: var(--blue-500);
+  --comparison-chart-series-1: var(--blue-500);
+  --comparison-chart-series-2: var(--blue-500);
+  --comparison-chart-series-3: var(--blue-500);
+  --comparison-chart-series-4: var(--blue-500);
+  --comparison-chart-series-5: var(--blue-500);
+  --comparison-chart-series-6: var(--blue-500);
+
   /* Stroke */
   --outline-color: var(--blue-500);
   --border-color: var(--blue-500);
@@ -678,6 +735,63 @@ html[data-brand="paperclip"][data-theme="dark"] {
   --preview-chip-dismiss-secondary-background-hover: var(--blue-600);
   --preview-chip-dismiss-secondary-border: var(--stroke-size-100) var(--stroke-solid) var(--white);
   --preview-chip-dismiss-secondary-border-hover: var(--stroke-size-100) var(--stroke-solid) var(--white);
+
+  /* Charts */
+  --financial-chart-background: var(--blue-500);
+  --financial-chart-border-color: var(--white);
+  --financial-chart-text-color: var(--white);
+  --financial-chart-text-color-secondary: var(--white);
+  --financial-chart-grid-color: color-mix(in srgb, var(--white) 10%, transparent);
+  --financial-chart-crosshair-color: color-mix(in srgb, var(--white) 50%, transparent);
+  --financial-chart-positive-color: var(--white);
+  --financial-chart-negative-color: var(--white);
+  --financial-chart-series-color: var(--white);
+  --financial-chart-area-top-color: color-mix(in srgb, var(--white) 42%, transparent);
+  --financial-chart-area-bottom-color: color-mix(in srgb, var(--white) 3%, transparent);
+  --financial-chart-positive-area-top-color: color-mix(in srgb, var(--white) 42%, transparent);
+  --financial-chart-positive-area-bottom-color: color-mix(in srgb, var(--white) 3%, transparent);
+  --financial-chart-negative-area-top-color: color-mix(in srgb, var(--white) 42%, transparent);
+  --financial-chart-negative-area-bottom-color: color-mix(in srgb, var(--white) 3%, transparent);
+  --financial-chart-volume-positive-color: color-mix(in srgb, var(--white) 50%, transparent);
+  --financial-chart-volume-negative-color: color-mix(in srgb, var(--white) 50%, transparent);
+  --financial-chart-action-background-hover: var(--blue-600);
+  --financial-chart-action-background-active: var(--white);
+  --financial-chart-action-text-color-active: var(--blue-500);
+
+  --market-sparkline-background: var(--blue-500);
+  --market-sparkline-text-color: var(--white);
+  --market-sparkline-positive-color: var(--white);
+  --market-sparkline-negative-color: var(--white);
+  --market-sparkline-neutral-color: var(--white);
+  --market-sparkline-positive-area-top-color: color-mix(in srgb, var(--white) 36%, transparent);
+  --market-sparkline-positive-area-bottom-color: color-mix(in srgb, var(--white) 3%, transparent);
+  --market-sparkline-negative-area-top-color: color-mix(in srgb, var(--white) 36%, transparent);
+  --market-sparkline-negative-area-bottom-color: color-mix(in srgb, var(--white) 3%, transparent);
+  --market-sparkline-neutral-area-top-color: color-mix(in srgb, var(--white) 36%, transparent);
+  --market-sparkline-neutral-area-bottom-color: color-mix(in srgb, var(--white) 3%, transparent);
+
+  --financial-bar-chart-background: var(--blue-500);
+  --financial-bar-chart-text-color: var(--white);
+  --financial-bar-chart-border-color: var(--white);
+  --financial-bar-chart-grid-color: color-mix(in srgb, var(--white) 10%, transparent);
+  --financial-bar-chart-crosshair-color: color-mix(in srgb, var(--white) 50%, transparent);
+  --financial-bar-chart-neutral-color: var(--white);
+  --financial-bar-chart-positive-color: var(--white);
+  --financial-bar-chart-negative-color: var(--white);
+  --financial-bar-chart-baseline-color: var(--white);
+
+  --comparison-chart-background: var(--blue-500);
+  --comparison-chart-text-color: var(--white);
+  --comparison-chart-border-color: var(--white);
+  --comparison-chart-grid-color: color-mix(in srgb, var(--white) 10%, transparent);
+  --comparison-chart-crosshair-color: color-mix(in srgb, var(--white) 50%, transparent);
+  --comparison-chart-reference-color: var(--white);
+  --comparison-chart-series-1: var(--white);
+  --comparison-chart-series-2: var(--white);
+  --comparison-chart-series-3: var(--white);
+  --comparison-chart-series-4: var(--white);
+  --comparison-chart-series-5: var(--white);
+  --comparison-chart-series-6: var(--white);
 
   /* Stroke */
   --outline-color: var(--white);

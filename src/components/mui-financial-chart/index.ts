@@ -20,6 +20,7 @@ import "../mui-work-log";
 import { hasSurfaceOwner } from "../../utils/surface-usage";
 
 export type MuiFinancialChartType = "candlestick" | "area";
+export type MuiFinancialChartTrend = "positive" | "negative" | "neutral";
 
 export interface MuiFinancialChartDatum {
   time: number | string;
@@ -32,7 +33,7 @@ export interface MuiFinancialChartDatum {
 
 class MuiFinancialChart extends HTMLElement {
   static get observedAttributes() {
-    return ["type", "symbol", "currency", "interval", "height", "selected-range", "ranges", "attribution", "loading", "error"];
+    return ["type", "trend", "symbol", "currency", "interval", "height", "selected-range", "ranges", "attribution", "loading", "error"];
   }
 
   private chart: IChartApi | null = null;
@@ -108,7 +109,7 @@ class MuiFinancialChart extends HTMLElement {
     }
 
     if (name === "attribution") this.chart?.applyOptions(this.chartOptions());
-    if (name === "type") this.rebuildSeries();
+    if (name === "type" || name === "trend") this.rebuildSeries();
   }
 
   update(datum: MuiFinancialChartDatum) {
@@ -126,6 +127,11 @@ class MuiFinancialChart extends HTMLElement {
 
   private get type(): MuiFinancialChartType {
     return this.getAttribute("type") === "area" ? "area" : "candlestick";
+  }
+
+  private get trend(): MuiFinancialChartTrend {
+    const trend = this.getAttribute("trend");
+    return trend === "positive" || trend === "negative" ? trend : "neutral";
   }
 
   private get selectedRange() {
@@ -486,6 +492,24 @@ class MuiFinancialChart extends HTMLElement {
   }
 
   private colors() {
+    const areaSeriesToken =
+      this.trend === "positive"
+        ? "--financial-chart-positive-color"
+        : this.trend === "negative"
+          ? "--financial-chart-negative-color"
+          : "--financial-chart-series-color";
+    const areaTopToken =
+      this.trend === "positive"
+        ? "--financial-chart-positive-area-top-color"
+        : this.trend === "negative"
+          ? "--financial-chart-negative-area-top-color"
+          : "--financial-chart-area-top-color";
+    const areaBottomToken =
+      this.trend === "positive"
+        ? "--financial-chart-positive-area-bottom-color"
+        : this.trend === "negative"
+          ? "--financial-chart-negative-area-bottom-color"
+          : "--financial-chart-area-bottom-color";
     return {
       background: this.resolveColor("--financial-chart-background"),
       text: this.resolveColor("--financial-chart-text-color-secondary"),
@@ -494,9 +518,9 @@ class MuiFinancialChart extends HTMLElement {
       crosshair: this.resolveColor("--financial-chart-crosshair-color"),
       positive: this.resolveColor("--financial-chart-positive-color"),
       negative: this.resolveColor("--financial-chart-negative-color"),
-      series: this.resolveColor("--financial-chart-series-color"),
-      areaTop: this.resolveColor("--financial-chart-area-top-color"),
-      areaBottom: this.resolveColor("--financial-chart-area-bottom-color"),
+      series: this.resolveColor(areaSeriesToken),
+      areaTop: this.resolveColor(areaTopToken),
+      areaBottom: this.resolveColor(areaBottomToken),
       volumePositive: this.resolveColor("--financial-chart-volume-positive-color"),
       volumeNegative: this.resolveColor("--financial-chart-volume-negative-color"),
     };
