@@ -10,6 +10,8 @@ _Status: WIP_
 
 ### Added
 
+- Carousel now owns a Card-like border by default and supports independent `borderless` and `radius="none"` options for flush embedded compositions.
+- Carousel now supports touch, pen, and mouse swipe navigation by default, including horizontal intent detection, edge resistance, direct release-direction navigation, temporary selection suppression, interactive-control protection, and a `swipe="none"` opt-out.
 - Illustration Trash now supports `motion="none | once | loop"` for internal particle choreography. One-shot motion uses a staggered reveal, while loop provides faster floating and fading particles; `play()`, `pause()`, and `restart()` controls and reduced-motion support are included.
 - Added `variant="unstyled"` to Button and Link for wrapping structured, non-interactive content such as Card while removing action chrome, sizing, padding, typography, and link decoration without removing native semantics or focus treatment.
 - Added `mui-menu` as the reusable visual surface for Dropdown menus and standalone overlay composition exploration. `mui-dropdown` continues to own portal positioning, focus, and dismissal behaviour.

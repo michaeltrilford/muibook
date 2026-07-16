@@ -25,6 +25,8 @@ export const muiDocs: MuiDocs = {
         "Avoid using for unrelated content or when vertical scrolling is more appropriate.",
         "When adding custom content, account for the placement of carousel controls and maintain sufficient whitespace for readability and alignment.",
         "Swap out default controls when a different interaction pattern better suits the content or context.",
+        "Carousel owns a framed surface by default. Use borderless, radius='none', or both when composing it flush inside another surface.",
+        "Swipe and pointer dragging are enabled by default. Use swipe='none' when complex panel interaction requires gestures to remain application-owned.",
       ],
     },
 
@@ -40,6 +42,7 @@ export const muiDocs: MuiDocs = {
         "aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.",
         "Each active tab-item can receive focus and shows a focus-visible outline.",
         "tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.",
+        "Pointer gestures ignore interactive panel controls and suppress text selection only after a horizontal drag is confirmed.",
       ],
     },
 
@@ -75,6 +78,8 @@ export const muiDocs: MuiDocs = {
           "list": [
             "Carousel controls are set to bottom-center by default",
             "Carousel automatically applies usage='surface' to its Tab Bar controls so the controls match the elevated Carousel surface.",
+            "Swipe horizontally with touch, pen, or mouse to move between panels; vertical page scrolling remains available.",
+            "Use swipe='none' to turn off gesture navigation while retaining Tabs and keyboard controls.",
             "Internal padding is required",
             "The var(--carousel-tab-offset) is available to help with control spacing - though, not required",
             "You will need knowledge of CSS to add your specific custom content."
@@ -86,6 +91,23 @@ export const muiDocs: MuiDocs = {
           "description": "Demonstrates how to add set-up auto-rotate of the carousel panels.",
           "list": [
             "Use auto rotation only when users can pause it and content remains readable."
+          ]
+        },
+        {
+          "key": "borderless",
+          "title": "Borderless",
+          "description": "Removes the Carousel frame border while retaining its surface and radius.",
+          "list": [
+            "Use borderless when another component already provides the surrounding border."
+          ]
+        },
+        {
+          "key": "no-radius",
+          "title": "No Radius",
+          "description": "Removes the Carousel surface radius while retaining its default border.",
+          "list": [
+            "Use radius='none' when the Carousel must meet adjacent content with square edges.",
+            "Combine radius='none' with borderless only when the Carousel needs to be fully flush."
           ]
         },
         {
@@ -155,7 +177,13 @@ export const muiDocs: MuiDocs = {
     ],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Horizontal swipe and pointer dragging are enabled by default for touch, pen, and mouse input.",
+        "After 4px of horizontal movement confirms drag intent, release moves exactly one panel in the drag direction.",
+        "Vertical gestures retain page scrolling, while gestures beginning on interactive controls remain owned by those controls.",
+        "Cancelled gestures and outward drags at the first or last panel return to the current panel.",
+        "Use swipe='none' to disable gesture navigation without changing Tab or keyboard behavior."
+      ],
     },
 
     writing: {

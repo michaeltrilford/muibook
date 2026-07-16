@@ -4,6 +4,30 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-accordion/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, stories: { items: [ { \"key\": \"accordion-inline\", \"title\": \"Accordion Inline\", \"description\": \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"accordion-group-and-block\", \"title\": \"Accordion Group & Block\", \"description\": \"The block accordion is typically used within a page layout full-width to the parent container.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"accordion-group-and-block-exclusive\", \"title\": \"Accordion Group & Block: Exclusive\", \"description\": \"The block accordion is typically used within a page layout full-width to the parent container.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"tab-behaviour-button\", \"title\": \"Tab Behaviour: Button\", \"description\": \"A demo showcasing how a nested button will be ignored by the tabbing functionality if collapsed.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"tab-behaviour-link\", \"title\": \"Tab Behaviour: Link\", \"description\": \"A demo showcasing how a nested link will be ignored by the tabbing functionality if collapsed.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"detail-space-none\", \"title\": \"Detail Space: None\", \"description\": \"In accordion-block, you are able to turn off the space within the detail section.\", \"list\": [ \"Ideal for using the accordion block to contain navigation items\", \"Support full-bleed content such as images or documents.\" ] }, { \"key\": \"card-w-accordion\", \"title\": \"Card w/ Accordion\", \"description\": \"Demonstrates the Card w/ Accordion Accordion treatment.\", \"list\": [ \"When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding\", \"If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.\" ] }, { \"key\": \"card-header-w-accordion\", \"title\": \"Card Header w/ Accordion\", \"description\": \"You can add in a mui-rule to help add a division between the header and body of the card\", \"list\": [ \"When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding\", \"If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.\" ] }, { \"key\": \"accordion-slat-detection\", \"title\": \"Accordion: Slat Detection\", \"description\": \"Demonstrates the Accordion: Slat Detection Accordion treatment.\", \"list\": [ \"When an accordion is used with mui-slat-group, the attribute of usage='accordion' is applied automatically\", \"Opt-out by not using the mui-slat-group, but you will have to craft your own layout.\" ] }, { \"key\": \"card-slat-detection\", \"title\": \"Card: Slat Detection\", \"description\": \"Demonstrates the Card: Slat Detection Accordion treatment.\", \"list\": [ \"When a card and accordion is used togther with mui-slat-group, the attribute of usage='card' is applied automatically.\", \"Opt-out by not using the mui-slat-group, but you will have to craft your own layout.\" ] }, { \"key\": \"accordion-core\", \"title\": \"Accordion Core\", \"description\": \"Use your imagination and compose your own accordion experience with some overhead in effort. Below is a variety of examples using cards and different techniques to toggle an icon based on the open state.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-accordion/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-action-toggle/doc.ts",
       "declarations": [
         {
@@ -66,30 +90,6 @@
           "declaration": {
             "name": "MuiActionToggle",
             "module": "src/components/mui-action-toggle/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-accordion/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Accordion: { title: \"Accordion\", description: \"A collapsible container used to reveal sections of related content. Useful for progressive disclosure, especially when space is limited or the content is secondary. On smaller viewports, accordions can replace tables to group and reveal related rows of data.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/1TykTEhPNTJlZdyzqAayEH/b5293336f033020bbcef964db811cdd3/Accordion_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8558&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-accordion--docs\"], website: [\"https://muibook.com/accordion\"], guides: [\"https://guides.muibook.com/accordion\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-accordion/index.ts\"], usage: { list: [ \"Use to progressively reveal grouped or secondary content.\", \"Can replace tables on small viewports when content is grouped by row.\", \"Ideal for mobile or narrow layouts where space is constrained.\", \"Stack, slat, or grid layouts can be used inside an accordion for custom structures.\", ], }, accessibility: { designerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], engineerList: [ \"Accordion summary uses role='button' and tabindex='0' for keyboard access.\", \"Supports Enter and Space keys for toggling.\", \"aria-expanded reflects open/closed state.\", \"aria-controls links summary to detail with a unique ID.\", \"mui-heading applies semantic heading with role='heading' and aria-level.\", \"Chevron icon rotates visually and the state is conveyed via aria-expanded.\", ], }, anatomy: { list: [ \"Heading: Provides the accordion with a heading\", \"Icon: A chevron icon that indicates the state of the Accordion\", \"Detail: Define the detail content for the expanded section within the Accordion.\", ], image: \"https://images.ctfassets.net/i5uwscj4pkk2/4JgAhsxwz3YOt28fLTVgDB/b404f3407eb06e2f26a196da04f7d217/Accordion_-_Anatomy.png\", }, variants: { items: [ { key: \"accordion-block\", title: \"Accordion Block\", description: \"The block accordion is typically used within a page layout full-width to the parent container.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1L2XfteVwNBQcFlddTYmfi/c791eb538285e2cfb919342e84228811/accordion-block_-_Variants.png\", }, { key: \"accordion-inline\", title: \"Accordion Inline\", description: \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/RMnvBLRsW3Vvq9V3yaTcW/86afba39ed0b7ffc00d0033b1b1bfd07/accordion_inline_-_Variants.png\", }, ], }, stories: { items: [ { \"key\": \"accordion-inline\", \"title\": \"Accordion Inline\", \"description\": \"The inline accordion is typically used within a block layout as a secondary UI element to a block element.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"accordion-group-and-block\", \"title\": \"Accordion Group & Block\", \"description\": \"The block accordion is typically used within a page layout full-width to the parent container.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"accordion-group-and-block-exclusive\", \"title\": \"Accordion Group & Block: Exclusive\", \"description\": \"The block accordion is typically used within a page layout full-width to the parent container.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"tab-behaviour-button\", \"title\": \"Tab Behaviour: Button\", \"description\": \"A demo showcasing how a nested button will be ignored by the tabbing functionality if collapsed.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"tab-behaviour-link\", \"title\": \"Tab Behaviour: Link\", \"description\": \"A demo showcasing how a nested link will be ignored by the tabbing functionality if collapsed.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] }, { \"key\": \"detail-space-none\", \"title\": \"Detail Space: None\", \"description\": \"In accordion-block, you are able to turn off the space within the detail section.\", \"list\": [ \"Ideal for using the accordion block to contain navigation items\", \"Support full-bleed content such as images or documents.\" ] }, { \"key\": \"card-w-accordion\", \"title\": \"Card w/ Accordion\", \"description\": \"Demonstrates the Card w/ Accordion Accordion treatment.\", \"list\": [ \"When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding\", \"If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.\" ] }, { \"key\": \"card-header-w-accordion\", \"title\": \"Card Header w/ Accordion\", \"description\": \"You can add in a mui-rule to help add a division between the header and body of the card\", \"list\": [ \"When slotted into a Card in the light DOM, accordion-block automatically adds the card-slot class to adjust padding\", \"If it’s nested inside a local component (shadow DOM) and then slotted into a Card, it won’t detect the slot, so you’ll need to add the card-slot class manually.\" ] }, { \"key\": \"accordion-slat-detection\", \"title\": \"Accordion: Slat Detection\", \"description\": \"Demonstrates the Accordion: Slat Detection Accordion treatment.\", \"list\": [ \"When an accordion is used with mui-slat-group, the attribute of usage='accordion' is applied automatically\", \"Opt-out by not using the mui-slat-group, but you will have to craft your own layout.\" ] }, { \"key\": \"card-slat-detection\", \"title\": \"Card: Slat Detection\", \"description\": \"Demonstrates the Card: Slat Detection Accordion treatment.\", \"list\": [ \"When a card and accordion is used togther with mui-slat-group, the attribute of usage='card' is applied automatically.\", \"Opt-out by not using the mui-slat-group, but you will have to craft your own layout.\" ] }, { \"key\": \"accordion-core\", \"title\": \"Accordion Core\", \"description\": \"Use your imagination and compose your own accordion experience with some overhead in effort. Below is a variety of examples using cards and different techniques to toggle an icon based on the open state.\", \"list\": [ \"Use Accordion for progressive disclosure when users benefit from scanning headings before opening detail.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"menu-groups\", name: \"Menu Groups\", description: \"Accordions can be used in menus to collapse and expand groups of related items, helping keep navigation organized and reducing visual clutter.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/zFHrSdH3CYbZXOv8WFKkL/90cad70c32b40fca61a875263d4cc366/accordion_menu_-_composition.png\", }, { key: \"code-snippets\", name: \"Code snippets\", description: \"An accordion in a card footer allows code snippets or supporting details to be revealed on demand, keeping the card compact while still providing access to additional information.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/7FKVgkCxv3UenOQTC9Tr4R/25c357aceea16b169c48775d7363df1d/accordion_card_footer_-_composition.png\", }, { key: \"account-activity\", name: \"Account Activity (Accordion + Card)\", description: \"Accordions can split account activity into segments, such as by year, with the ability to expand each section for detailed transactions. This makes large sets of data easier to scan and navigate.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4PEUUHgxpuDM6nDgdGOotY/bf078e07bc3fbabf07f03b99800e5306/accordion_card_body_-_composition.png\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [ { description: \"\", image: \"\" }, { description: \"\", image: \"\" }, ], dontContent: [{ description: \"\" }, { description: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, related: { items: [ { name: \"Card\", link: \"https://guides.muibook.com/card\" }, { name: \"Slat\", link: \"https://guides.muibook.com/slat\" }, ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-accordion/doc.ts"
           }
         }
       ]
@@ -288,158 +288,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-avatar-chip/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ AvatarChip: { title: \"Avatar Chip\", description: \"Avatar Chip composes an avatar with compact primary and secondary identity text for creator, author, or profile references.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar-chip/index.ts\"], website: [\"https://muibook.com/avatar-chip\"], guides: [\"https://guides.muibook.com/avatar-chip\"], usage: { list: [ \"Use Avatar Chip when an avatar and two compact text lines need to travel as one profile identity pattern.\", \"Use `primary` and `secondary` for simple text labels.\", \"Use `slot='primary'` or `slot='secondary'` when the copy needs custom typography, links, badges, or supporting icons.\", \"When Avatar Chip is slotted into Media Player metadata, Media Player applies `usage='media-player'` automatically.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Provide a meaningful `label` so avatar initials and linked avatar actions have useful accessible names.\"], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"A compact profile identity row with initials fallback.\", \"list\": [ \"Use primary and secondary for simple profile text.\", \"When image is omitted, the internal avatar derives initials from label.\" ] }, { \"key\": \"image\", \"title\": \"Image\", \"description\": \"Profile identity row with an avatar image.\", \"list\": [ \"Use image when the identity benefits from a recognisable avatar.\", \"Keep label meaningful so the avatar remains accessible and initials can be generated if the image fails.\" ] }, { \"key\": \"dropdown\", \"title\": \"Dropdown\", \"description\": \"Avatar Chip can sit inside a dropdown trigger when an identity row opens account or profile actions.\", \"list\": [ \"Wrap Avatar Chip in the dropdown action when the visible trigger should carry avatar and profile copy.\", \"Keep dropdown behavior in the parent composition; Avatar Chip remains responsible for the identity layout only.\", \"Match the Avatar Chip size to the surrounding action size so the trigger density stays consistent.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Avatar Chip supports explicit sizing for different density needs.\", \"list\": [ \"Use size to scale the internal avatar, primary text, and secondary text together.\", \"Keep responsive behavior in the parent composition when the chip needs to change size across breakpoints.\" ] }, { \"key\": \"linked-avatar\", \"title\": \"Linked Avatar\", \"description\": \"Profile identity row where the avatar opens the profile.\", \"list\": [ \"Use href when the avatar is the profile action.\", \"Keep the copy separate when the profile row also includes supporting links or counts.\" ] }, { \"key\": \"custom-secondary\", \"title\": \"Custom Secondary\", \"description\": \"Secondary content can be slotted when it needs richer composition.\", \"list\": [ \"Use slot='secondary' for links, badges, counts, or supporting icons.\", \"Use attributes for simple text so the component stays quick to author.\" ] }, { \"key\": \"media-player-usage\", \"title\": \"Media Player Usage\", \"description\": \"Avatar Chip can be slotted into Media Player metadata.\", \"list\": [ \"Slot Avatar Chip into Media Player metadata when the player needs reusable avatar and profile copy composition.\", \"Media Player applies usage='media-player' automatically, so consumers do not need to set it by hand.\" ] } ], }, related: { items: [ { name: \"Avatar\", link: \"https://guides.muibook.com/avatar\" }, { name: \"Media Player\", link: \"https://guides.muibook.com/media-player\" }, ], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-avatar-chip/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-avatar-chip/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Composes an avatar, primary label, and secondary label into a compact profile identity pattern for media metadata, creator rows, and compact profile references.",
-          "name": "MuiAvatarChip",
-          "attributes": [
-            {
-              "name": "primary",
-              "type": {
-                "text": "string"
-              },
-              "description": "Fallback primary label when slot='primary' is not provided."
-            },
-            {
-              "name": "secondary",
-              "type": {
-                "text": "string"
-              },
-              "description": "Fallback secondary label when slot='secondary' is not provided."
-            },
-            {
-              "name": "image",
-              "type": {
-                "text": "string"
-              },
-              "description": "Avatar image URL. Uses initials from label when omitted."
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible avatar label and initials source."
-            },
-            {
-              "name": "href",
-              "type": {
-                "text": "string"
-              },
-              "description": "Optional profile URL. When provided, the avatar is rendered as a link."
-            },
-            {
-              "name": "target",
-              "type": {
-                "text": "string"
-              },
-              "default": "_self",
-              "description": "Anchor browsing context for the avatar link."
-            },
-            {
-              "name": "usage",
-              "type": {
-                "text": "\"default\" | \"media-player\""
-              },
-              "default": "default",
-              "description": "Media Player applies media-player automatically when the chip is slotted into metadata; set manually only for non-Media Player previews that need the same treatment."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Avatar chip scale. Controls the internal avatar size and primary and secondary text sizes."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-avatar-chip",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "primary",
-              "description": "Optional custom primary content when richer typography or inline composition is needed."
-            },
-            {
-              "name": "secondary",
-              "description": "Optional custom secondary content, such as a link, count, badge, or icon."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--avatar-chip-text-color",
-              "description": "Text color used by primary and secondary labels."
-            },
-            {
-              "name": "--avatar-chip-secondary-color",
-              "description": "Secondary text color used by secondary labels."
-            },
-            {
-              "name": "--avatar-chip-link-color",
-              "description": "Default link color used inside the avatar chip."
-            },
-            {
-              "name": "--avatar-chip-avatar-border",
-              "description": "Border applied to the internal avatar."
-            },
-            {
-              "name": "--avatar-chip-avatar-shadow",
-              "description": "Shadow applied to the internal avatar."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-avatar-chip",
-          "declaration": {
-            "name": "MuiAvatarChip",
-            "module": "src/components/mui-avatar-chip/index.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "MuiAvatarChip",
-          "declaration": {
-            "name": "MuiAvatarChip",
-            "module": "src/components/mui-avatar-chip/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-avatar/doc.ts",
       "declarations": [
         {
@@ -594,6 +442,158 @@
           "declaration": {
             "name": "MuiAvatar",
             "module": "src/components/mui-avatar/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar-chip/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ AvatarChip: { title: \"Avatar Chip\", description: \"Avatar Chip composes an avatar with compact primary and secondary identity text for creator, author, or profile references.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-avatar-chip/index.ts\"], website: [\"https://muibook.com/avatar-chip\"], guides: [\"https://guides.muibook.com/avatar-chip\"], usage: { list: [ \"Use Avatar Chip when an avatar and two compact text lines need to travel as one profile identity pattern.\", \"Use `primary` and `secondary` for simple text labels.\", \"Use `slot='primary'` or `slot='secondary'` when the copy needs custom typography, links, badges, or supporting icons.\", \"When Avatar Chip is slotted into Media Player metadata, Media Player applies `usage='media-player'` automatically.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"Provide a meaningful `label` so avatar initials and linked avatar actions have useful accessible names.\"], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"A compact profile identity row with initials fallback.\", \"list\": [ \"Use primary and secondary for simple profile text.\", \"When image is omitted, the internal avatar derives initials from label.\" ] }, { \"key\": \"image\", \"title\": \"Image\", \"description\": \"Profile identity row with an avatar image.\", \"list\": [ \"Use image when the identity benefits from a recognisable avatar.\", \"Keep label meaningful so the avatar remains accessible and initials can be generated if the image fails.\" ] }, { \"key\": \"dropdown\", \"title\": \"Dropdown\", \"description\": \"Avatar Chip can sit inside a dropdown trigger when an identity row opens account or profile actions.\", \"list\": [ \"Wrap Avatar Chip in the dropdown action when the visible trigger should carry avatar and profile copy.\", \"Keep dropdown behavior in the parent composition; Avatar Chip remains responsible for the identity layout only.\", \"Match the Avatar Chip size to the surrounding action size so the trigger density stays consistent.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Avatar Chip supports explicit sizing for different density needs.\", \"list\": [ \"Use size to scale the internal avatar, primary text, and secondary text together.\", \"Keep responsive behavior in the parent composition when the chip needs to change size across breakpoints.\" ] }, { \"key\": \"linked-avatar\", \"title\": \"Linked Avatar\", \"description\": \"Profile identity row where the avatar opens the profile.\", \"list\": [ \"Use href when the avatar is the profile action.\", \"Keep the copy separate when the profile row also includes supporting links or counts.\" ] }, { \"key\": \"custom-secondary\", \"title\": \"Custom Secondary\", \"description\": \"Secondary content can be slotted when it needs richer composition.\", \"list\": [ \"Use slot='secondary' for links, badges, counts, or supporting icons.\", \"Use attributes for simple text so the component stays quick to author.\" ] }, { \"key\": \"media-player-usage\", \"title\": \"Media Player Usage\", \"description\": \"Avatar Chip can be slotted into Media Player metadata.\", \"list\": [ \"Slot Avatar Chip into Media Player metadata when the player needs reusable avatar and profile copy composition.\", \"Media Player applies usage='media-player' automatically, so consumers do not need to set it by hand.\" ] } ], }, related: { items: [ { name: \"Avatar\", link: \"https://guides.muibook.com/avatar\" }, { name: \"Media Player\", link: \"https://guides.muibook.com/media-player\" }, ], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-avatar-chip/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-avatar-chip/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Composes an avatar, primary label, and secondary label into a compact profile identity pattern for media metadata, creator rows, and compact profile references.",
+          "name": "MuiAvatarChip",
+          "attributes": [
+            {
+              "name": "primary",
+              "type": {
+                "text": "string"
+              },
+              "description": "Fallback primary label when slot='primary' is not provided."
+            },
+            {
+              "name": "secondary",
+              "type": {
+                "text": "string"
+              },
+              "description": "Fallback secondary label when slot='secondary' is not provided."
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "Avatar image URL. Uses initials from label when omitted."
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible avatar label and initials source."
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional profile URL. When provided, the avatar is rendered as a link."
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "default": "_self",
+              "description": "Anchor browsing context for the avatar link."
+            },
+            {
+              "name": "usage",
+              "type": {
+                "text": "\"default\" | \"media-player\""
+              },
+              "default": "default",
+              "description": "Media Player applies media-player automatically when the chip is slotted into metadata; set manually only for non-Media Player previews that need the same treatment."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Avatar chip scale. Controls the internal avatar size and primary and secondary text sizes."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-avatar-chip",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "primary",
+              "description": "Optional custom primary content when richer typography or inline composition is needed."
+            },
+            {
+              "name": "secondary",
+              "description": "Optional custom secondary content, such as a link, count, badge, or icon."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--avatar-chip-text-color",
+              "description": "Text color used by primary and secondary labels."
+            },
+            {
+              "name": "--avatar-chip-secondary-color",
+              "description": "Secondary text color used by secondary labels."
+            },
+            {
+              "name": "--avatar-chip-link-color",
+              "description": "Default link color used inside the avatar chip."
+            },
+            {
+              "name": "--avatar-chip-avatar-border",
+              "description": "Border applied to the internal avatar."
+            },
+            {
+              "name": "--avatar-chip-avatar-shadow",
+              "description": "Shadow applied to the internal avatar."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-avatar-chip",
+          "declaration": {
+            "name": "MuiAvatarChip",
+            "module": "src/components/mui-avatar-chip/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MuiAvatarChip",
+          "declaration": {
+            "name": "MuiAvatarChip",
+            "module": "src/components/mui-avatar-chip/index.ts"
           }
         }
       ]
@@ -1577,7 +1577,7 @@
           "type": {
             "text": "MuiDocs"
           },
-          "default": "{ Carousel: { title: \"Carousel\", description: \"A carousel component with tab-based navigation, enabling users to switch between views or content sections with ease.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/55yS6ecrFIoh0pA08R98VB/07a93872e746c5723b7b4b21f0a9d56a/Carousel_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8697&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-carousel--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-carousel\"], website: [\"https://muibook.com/carousel\"], guides: [\"https://guides.muibook.com/carousel\"], usage: { list: [ \"Use to present grouped content that benefits from both tabbed access and horizontal transitions.\", \"Ideal for feature highlights, onboarding steps, or content previews.\", \"Ensure tab labels are short and clearly indicate the content behind each panel.\", \"Avoid using for unrelated content or when vertical scrolling is more appropriate.\", \"When adding custom content, account for the placement of carousel controls and maintain sufficient whitespace for readability and alignment.\", \"Swap out default controls when a different interaction pattern better suits the content or context.\", ], }, accessibility: { designerList: [ \"Users can navigate between carousel items using the left/right arrow keys, as well as Home and End keys.\", \"The active tab is always keyboard-focusable and shows a visible focus outline for clarity.\", \"Tabs are marked up using semantic roles (like tablist and tab) to help assistive technologies understand the structure.\", \"Behind the scenes, attributes like aria-selected and tabindex update automatically to reflect which tab is active.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between carousel items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/7lrQyuy00XTDGTww5lWXsH/427804b3af03935cc06e8a691a5006a0/Carousel_-_Anatomy.png\", list: [ \"The outer wrapper that defines the structure, sliding behaviour, and background styling of the carousel.\", \"A flexible area where custom content is added. Designers are responsible for setting internal spacing, layout, and composition.\", \"Navigation elements such as tabs, dots, or arrows that float above the content. These controls can be customized or replaced based on the use case.\", ], }, variants: { items: [ { key: \"position\", title: \"Position\", description: \"Carousel controls can be positioned at any side or corner of the container, including top center, right middle, bottom center, left middle, top left, top right, bottom left, and bottom right.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/Yc6eg8YWdiiSiiPzR588D/bdfbad0967d9cc059310bd1406c656c5/position-bottom.png\", }, ], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"A flexible, composable carousel that gives you full control over the content and internal layout.\", \"list\": [ \"Carousel controls are set to bottom-center by default\", \"Carousel automatically applies usage='surface' to its Tab Bar controls so the controls match the elevated Carousel surface.\", \"Internal padding is required\", \"The var(--carousel-tab-offset) is available to help with control spacing - though, not required\", \"You will need knowledge of CSS to add your specific custom content.\" ] }, { \"key\": \"auto-rotate\", \"title\": \"Auto Rotate\", \"description\": \"Demonstrates how to add set-up auto-rotate of the carousel panels.\", \"list\": [ \"Use auto rotation only when users can pause it and content remains readable.\" ] }, { \"key\": \"dots-controls\", \"title\": \"Dots Controls\", \"description\": \"Uses the Tabs dots variant for compact carousel pagination.\", \"list\": [ \"Use dots for a small set of slides where labels are unnecessary.\" ] }, { \"key\": \"custom-layout\", \"title\": \"Custom Layout\", \"description\": \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", \"list\": [ \"Keep each panel structurally consistent and reserve internal layout decisions for panel content.\" ] }, { \"key\": \"map-data\", \"title\": \"Map Data\", \"description\": \"Map dynamic data to generate carousel tabs and panels.\", \"list\": [ \"Use stable values to connect generated tabs and panels.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Tab Bar\", link: \"https://guides.muibook.com/tab-bar\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+          "default": "{ Carousel: { title: \"Carousel\", description: \"A carousel component with tab-based navigation, enabling users to switch between views or content sections with ease.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/55yS6ecrFIoh0pA08R98VB/07a93872e746c5723b7b4b21f0a9d56a/Carousel_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8697&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/visuals-carousel--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-carousel\"], website: [\"https://muibook.com/carousel\"], guides: [\"https://guides.muibook.com/carousel\"], usage: { list: [ \"Use to present grouped content that benefits from both tabbed access and horizontal transitions.\", \"Ideal for feature highlights, onboarding steps, or content previews.\", \"Ensure tab labels are short and clearly indicate the content behind each panel.\", \"Avoid using for unrelated content or when vertical scrolling is more appropriate.\", \"When adding custom content, account for the placement of carousel controls and maintain sufficient whitespace for readability and alignment.\", \"Swap out default controls when a different interaction pattern better suits the content or context.\", \"Carousel owns a framed surface by default. Use borderless, radius='none', or both when composing it flush inside another surface.\", \"Swipe and pointer dragging are enabled by default. Use swipe='none' when complex panel interaction requires gestures to remain application-owned.\", ], }, accessibility: { designerList: [ \"Users can navigate between carousel items using the left/right arrow keys, as well as Home and End keys.\", \"The active tab is always keyboard-focusable and shows a visible focus outline for clarity.\", \"Tabs are marked up using semantic roles (like tablist and tab) to help assistive technologies understand the structure.\", \"Behind the scenes, attributes like aria-selected and tabindex update automatically to reflect which tab is active.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between carousel items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", \"Pointer gestures ignore interactive panel controls and suppress text selection only after a horizontal drag is confirmed.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/7lrQyuy00XTDGTww5lWXsH/427804b3af03935cc06e8a691a5006a0/Carousel_-_Anatomy.png\", list: [ \"The outer wrapper that defines the structure, sliding behaviour, and background styling of the carousel.\", \"A flexible area where custom content is added. Designers are responsible for setting internal spacing, layout, and composition.\", \"Navigation elements such as tabs, dots, or arrows that float above the content. These controls can be customized or replaced based on the use case.\", ], }, variants: { items: [ { key: \"position\", title: \"Position\", description: \"Carousel controls can be positioned at any side or corner of the container, including top center, right middle, bottom center, left middle, top left, top right, bottom left, and bottom right.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/Yc6eg8YWdiiSiiPzR588D/bdfbad0967d9cc059310bd1406c656c5/position-bottom.png\", }, ], }, stories: { items: [ { \"key\": \"default\", \"title\": \"Default\", \"description\": \"A flexible, composable carousel that gives you full control over the content and internal layout.\", \"list\": [ \"Carousel controls are set to bottom-center by default\", \"Carousel automatically applies usage='surface' to its Tab Bar controls so the controls match the elevated Carousel surface.\", \"Swipe horizontally with touch, pen, or mouse to move between panels; vertical page scrolling remains available.\", \"Use swipe='none' to turn off gesture navigation while retaining Tabs and keyboard controls.\", \"Internal padding is required\", \"The var(--carousel-tab-offset) is available to help with control spacing - though, not required\", \"You will need knowledge of CSS to add your specific custom content.\" ] }, { \"key\": \"auto-rotate\", \"title\": \"Auto Rotate\", \"description\": \"Demonstrates how to add set-up auto-rotate of the carousel panels.\", \"list\": [ \"Use auto rotation only when users can pause it and content remains readable.\" ] }, { \"key\": \"borderless\", \"title\": \"Borderless\", \"description\": \"Removes the Carousel frame border while retaining its surface and radius.\", \"list\": [ \"Use borderless when another component already provides the surrounding border.\" ] }, { \"key\": \"no-radius\", \"title\": \"No Radius\", \"description\": \"Removes the Carousel surface radius while retaining its default border.\", \"list\": [ \"Use radius='none' when the Carousel must meet adjacent content with square edges.\", \"Combine radius='none' with borderless only when the Carousel needs to be fully flush.\" ] }, { \"key\": \"dots-controls\", \"title\": \"Dots Controls\", \"description\": \"Uses the Tabs dots variant for compact carousel pagination.\", \"list\": [ \"Use dots for a small set of slides where labels are unnecessary.\" ] }, { \"key\": \"custom-layout\", \"title\": \"Custom Layout\", \"description\": \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", \"list\": [ \"Keep each panel structurally consistent and reserve internal layout decisions for panel content.\" ] }, { \"key\": \"map-data\", \"title\": \"Map Data\", \"description\": \"Map dynamic data to generate carousel tabs and panels.\", \"list\": [ \"Use stable values to connect generated tabs and panels.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Tab Bar\", link: \"https://guides.muibook.com/tab-bar\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [ \"Horizontal swipe and pointer dragging are enabled by default for touch, pen, and mouse input.\", \"After 4px of horizontal movement confirms drag intent, release moves exactly one panel in the drag direction.\", \"Vertical gestures retain page scrolling, while gestures beginning on interactive controls remain owned by those controls.\", \"Cancelled gestures and outward drags at the first or last panel return to the current panel.\", \"Use swipe='none' to disable gesture navigation without changing Tab or keyboard behavior.\" ], }, writing: { list: [\"\"], }, }, }"
         }
       ],
       "exports": [
@@ -4195,6 +4195,199 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-financial-bar-chart/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ FinancialBarChart: { title: \"Financial Bar Chart\", description: \"Financial Bar Chart presents periodic financial or economic values as a time-based histogram.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-financial-bar-chart/index.ts\"], website: [\"https://muibook.com/financial-bar-chart\"], guides: [\"\"], usage: { list: [\"Use for time-based values such as inflation, interest rates, trading volume, revenue, returns, and cash flow.\", \"Use neutral when direction is communicated by magnitude; use directional when values above and below a baseline carry different meaning.\", \"In a chart cluster, use attribution='none' to remove repeated TradingView logos only when the containing experience provides one visible attribution and the required NOTICE information.\", \"Use a Table or List when exact comparison matters more than the pattern over time.\"] }, accessibility: { designerList: [\"Pair the chart with a clear title, unit, and latest value; do not rely on bar color alone.\"], engineerList: [\"Provide label and the appropriate value-format and currency.\", \"Keep TradingView attribution enabled unless the consuming page supplies the required visible attribution and NOTICE information.\"] }, anatomy: { image: \"\", list: [\"Optional header\", \"Histogram plot\", \"Time scale\", \"Price scale\", \"Optional footer\"] }, variants: { items: [] }, stories: { items: [ { key: \"economic-indicator\", title: \"Economic Indicator\", list: [\"Use a neutral histogram for periodic indicators where the height and progression of each period are primary.\", \"Compose the latest value and release context with Muibook components in the header and footer slots.\", \"This lead example keeps attribution='logo'; the remaining page examples use attribution='none' to avoid repetition within the chart cluster.\"] }, { key: \"directional\", title: \"Directional\", list: [\"Use directional bars for returns, profit and loss, or net cash flow around a meaningful baseline.\"] }, { key: \"colour-treatments\", title: \"Colour Treatments\", list: [\"Use neutral when bar direction does not communicate status, and directional when values above or below the baseline represent positive or negative outcomes.\", \"Positive and negative treatments are selected from each value relative to baseline; they are not manually assigned per bar.\", \"Always pair color with values, labels, or surrounding context because color alone must not communicate meaning.\"] }, { key: \"scale\", title: \"Scale Options\", list: [\"Keep both scales for analysis, retain only time for compact trends, or hide both when surrounding UI already communicates units and period.\"] }, { key: \"states\", title: \"States\", list: [\"Use loading while data is requested, error for failed requests, and the automatic empty state when no data is available.\"] }, ] }, compositions: { description: \"\", items: [] }, related: { items: [{ name: \"Market Sparkline\", link: \"https://guides.muibook.com/market-sparkline\" }, { name: \"Financial Chart\", link: \"https://guides.muibook.com/financial-chart\" }] }, rules: [], behaviour: { list: [\"The chart resizes with its host using the chart engine's native auto-size behavior.\", \"A populated header receives a divider by default; use header-stroke='none' to remove it.\", \"Directional bars compare each value with baseline and render the baseline as a price line.\", \"Interactive is opt-in so dashboard charts do not capture scrolling or pointer gestures by default.\"] }, writing: { list: [\"Name the indicator and unit explicitly, and distinguish actual, forecast, and estimated values in surrounding content.\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-financial-bar-chart/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-financial-bar-chart/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays time-based financial or economic values as a responsive histogram.",
+          "name": "MuiFinancialBarChart",
+          "events": [
+            {
+              "name": "financial-bar-chart-crosshair-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires with the matching datum when an interactive crosshair moves."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "values": [
+                "neutral",
+                "directional"
+              ],
+              "default": "neutral",
+              "description": "Uses one neutral color or positive and negative colors around the baseline."
+            },
+            {
+              "name": "label",
+              "description": "Accessible instrument, indicator, or metric label."
+            },
+            {
+              "name": "value-format",
+              "values": [
+                "decimal",
+                "percent",
+                "currency",
+                "volume"
+              ],
+              "default": "decimal",
+              "description": "Formats values on the price scale and accessible summary."
+            },
+            {
+              "name": "currency",
+              "default": "USD",
+              "description": "Currency code used by currency formatting."
+            },
+            {
+              "name": "baseline",
+              "default": "0",
+              "description": "Numeric threshold used by directional coloring and the baseline price line."
+            },
+            {
+              "name": "height",
+              "default": "20rem",
+              "description": "CSS length applied to the plot region."
+            },
+            {
+              "name": "scale",
+              "values": [
+                "both",
+                "time",
+                "price",
+                "none"
+              ],
+              "default": "both",
+              "description": "Controls visible time and price scales."
+            },
+            {
+              "name": "interactive",
+              "type": "boolean",
+              "description": "Enables crosshair, scrolling, and scale gestures."
+            },
+            {
+              "name": "attribution",
+              "values": [
+                "logo",
+                "none"
+              ],
+              "default": "logo",
+              "description": "Controls the TradingView attribution logo. Use none only when the consuming page provides the required attribution."
+            },
+            {
+              "name": "loading",
+              "type": "boolean",
+              "description": "Displays the loading state over the plot."
+            },
+            {
+              "name": "error",
+              "description": "Displays an error message over the plot."
+            },
+            {
+              "name": "header-stroke",
+              "values": [
+                "none"
+              ],
+              "description": "Removes the divider between a populated header and the plot."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-financial-bar-chart",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "header",
+              "description": "Muibook content rendered in the component-padded region before the plot."
+            },
+            {
+              "name": "footer",
+              "description": "Muibook content rendered in the component-padded region after the plot."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--financial-bar-chart-background",
+              "description": "Canvas and state background."
+            },
+            {
+              "name": "--financial-bar-chart-grid-color",
+              "description": "Canvas grid lines."
+            },
+            {
+              "name": "--financial-bar-chart-crosshair-color",
+              "description": "Interactive crosshair."
+            },
+            {
+              "name": "--financial-bar-chart-neutral-color",
+              "description": "Neutral bars."
+            },
+            {
+              "name": "--financial-bar-chart-positive-color",
+              "description": "Directional bars above the baseline."
+            },
+            {
+              "name": "--financial-bar-chart-negative-color",
+              "description": "Directional bars below the baseline."
+            },
+            {
+              "name": "--financial-bar-chart-baseline-color",
+              "description": "Directional baseline."
+            },
+            {
+              "name": "--financial-bar-chart-border",
+              "description": "Header divider border shorthand."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-financial-bar-chart",
+          "declaration": {
+            "name": "MuiFinancialBarChart",
+            "module": "src/components/mui-financial-bar-chart/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MuiFinancialBarChart",
+          "declaration": {
+            "name": "MuiFinancialBarChart",
+            "module": "src/components/mui-financial-bar-chart/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-financial-chart/doc.ts",
       "declarations": [
         {
@@ -4393,199 +4586,6 @@
           "declaration": {
             "name": "MuiFinancialChart",
             "module": "src/components/mui-financial-chart/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-financial-bar-chart/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ FinancialBarChart: { title: \"Financial Bar Chart\", description: \"Financial Bar Chart presents periodic financial or economic values as a time-based histogram.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-financial-bar-chart/index.ts\"], website: [\"https://muibook.com/financial-bar-chart\"], guides: [\"\"], usage: { list: [\"Use for time-based values such as inflation, interest rates, trading volume, revenue, returns, and cash flow.\", \"Use neutral when direction is communicated by magnitude; use directional when values above and below a baseline carry different meaning.\", \"In a chart cluster, use attribution='none' to remove repeated TradingView logos only when the containing experience provides one visible attribution and the required NOTICE information.\", \"Use a Table or List when exact comparison matters more than the pattern over time.\"] }, accessibility: { designerList: [\"Pair the chart with a clear title, unit, and latest value; do not rely on bar color alone.\"], engineerList: [\"Provide label and the appropriate value-format and currency.\", \"Keep TradingView attribution enabled unless the consuming page supplies the required visible attribution and NOTICE information.\"] }, anatomy: { image: \"\", list: [\"Optional header\", \"Histogram plot\", \"Time scale\", \"Price scale\", \"Optional footer\"] }, variants: { items: [] }, stories: { items: [ { key: \"economic-indicator\", title: \"Economic Indicator\", list: [\"Use a neutral histogram for periodic indicators where the height and progression of each period are primary.\", \"Compose the latest value and release context with Muibook components in the header and footer slots.\", \"This lead example keeps attribution='logo'; the remaining page examples use attribution='none' to avoid repetition within the chart cluster.\"] }, { key: \"directional\", title: \"Directional\", list: [\"Use directional bars for returns, profit and loss, or net cash flow around a meaningful baseline.\"] }, { key: \"colour-treatments\", title: \"Colour Treatments\", list: [\"Use neutral when bar direction does not communicate status, and directional when values above or below the baseline represent positive or negative outcomes.\", \"Positive and negative treatments are selected from each value relative to baseline; they are not manually assigned per bar.\", \"Always pair color with values, labels, or surrounding context because color alone must not communicate meaning.\"] }, { key: \"scale\", title: \"Scale Options\", list: [\"Keep both scales for analysis, retain only time for compact trends, or hide both when surrounding UI already communicates units and period.\"] }, { key: \"states\", title: \"States\", list: [\"Use loading while data is requested, error for failed requests, and the automatic empty state when no data is available.\"] }, ] }, compositions: { description: \"\", items: [] }, related: { items: [{ name: \"Market Sparkline\", link: \"https://guides.muibook.com/market-sparkline\" }, { name: \"Financial Chart\", link: \"https://guides.muibook.com/financial-chart\" }] }, rules: [], behaviour: { list: [\"The chart resizes with its host using the chart engine's native auto-size behavior.\", \"A populated header receives a divider by default; use header-stroke='none' to remove it.\", \"Directional bars compare each value with baseline and render the baseline as a price line.\", \"Interactive is opt-in so dashboard charts do not capture scrolling or pointer gestures by default.\"] }, writing: { list: [\"Name the indicator and unit explicitly, and distinguish actual, forecast, and estimated values in surrounding content.\"] }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-financial-bar-chart/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-financial-bar-chart/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays time-based financial or economic values as a responsive histogram.",
-          "name": "MuiFinancialBarChart",
-          "events": [
-            {
-              "name": "financial-bar-chart-crosshair-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fires with the matching datum when an interactive crosshair moves."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "values": [
-                "neutral",
-                "directional"
-              ],
-              "default": "neutral",
-              "description": "Uses one neutral color or positive and negative colors around the baseline."
-            },
-            {
-              "name": "label",
-              "description": "Accessible instrument, indicator, or metric label."
-            },
-            {
-              "name": "value-format",
-              "values": [
-                "decimal",
-                "percent",
-                "currency",
-                "volume"
-              ],
-              "default": "decimal",
-              "description": "Formats values on the price scale and accessible summary."
-            },
-            {
-              "name": "currency",
-              "default": "USD",
-              "description": "Currency code used by currency formatting."
-            },
-            {
-              "name": "baseline",
-              "default": "0",
-              "description": "Numeric threshold used by directional coloring and the baseline price line."
-            },
-            {
-              "name": "height",
-              "default": "20rem",
-              "description": "CSS length applied to the plot region."
-            },
-            {
-              "name": "scale",
-              "values": [
-                "both",
-                "time",
-                "price",
-                "none"
-              ],
-              "default": "both",
-              "description": "Controls visible time and price scales."
-            },
-            {
-              "name": "interactive",
-              "type": "boolean",
-              "description": "Enables crosshair, scrolling, and scale gestures."
-            },
-            {
-              "name": "attribution",
-              "values": [
-                "logo",
-                "none"
-              ],
-              "default": "logo",
-              "description": "Controls the TradingView attribution logo. Use none only when the consuming page provides the required attribution."
-            },
-            {
-              "name": "loading",
-              "type": "boolean",
-              "description": "Displays the loading state over the plot."
-            },
-            {
-              "name": "error",
-              "description": "Displays an error message over the plot."
-            },
-            {
-              "name": "header-stroke",
-              "values": [
-                "none"
-              ],
-              "description": "Removes the divider between a populated header and the plot."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-financial-bar-chart",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "header",
-              "description": "Muibook content rendered in the component-padded region before the plot."
-            },
-            {
-              "name": "footer",
-              "description": "Muibook content rendered in the component-padded region after the plot."
-            }
-          ],
-          "cssProperties": [
-            {
-              "name": "--financial-bar-chart-background",
-              "description": "Canvas and state background."
-            },
-            {
-              "name": "--financial-bar-chart-grid-color",
-              "description": "Canvas grid lines."
-            },
-            {
-              "name": "--financial-bar-chart-crosshair-color",
-              "description": "Interactive crosshair."
-            },
-            {
-              "name": "--financial-bar-chart-neutral-color",
-              "description": "Neutral bars."
-            },
-            {
-              "name": "--financial-bar-chart-positive-color",
-              "description": "Directional bars above the baseline."
-            },
-            {
-              "name": "--financial-bar-chart-negative-color",
-              "description": "Directional bars below the baseline."
-            },
-            {
-              "name": "--financial-bar-chart-baseline-color",
-              "description": "Directional baseline."
-            },
-            {
-              "name": "--financial-bar-chart-border",
-              "description": "Header divider border shorthand."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-financial-bar-chart",
-          "declaration": {
-            "name": "MuiFinancialBarChart",
-            "module": "src/components/mui-financial-bar-chart/index.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "MuiFinancialBarChart",
-          "declaration": {
-            "name": "MuiFinancialBarChart",
-            "module": "src/components/mui-financial-bar-chart/index.ts"
           }
         }
       ]
@@ -8462,6 +8462,145 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-menu/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Menu: { title: \"Menu\", description: \"Menu provides a reusable visual surface for dropdown and anchored overlay content.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-menu/index.ts\"], website: [\"https://muibook.com/menu\"], guides: [\"\"], usage: { list: [\"Use inside mui-dropdown to compose the portalled menu surface.\", \"Use size='x-small|small|medium|large' to scale the surface radius and all direct button or link actions together.\", \"Render independently when reviewing menu layouts and grouped overlay content.\"] }, accessibility: { designerList: [\"Keep menu actions concise and easy to scan.\"], engineerList: [\"Use Dropdown when trigger, focus, dismissal, and positioning behaviour is required.\"] }, anatomy: { image: \"\", list: [\"Surface\", \"Menu content\"] }, variants: { items: [] }, stories: { items: [ { key: \"action-menu\", title: \"Action Menu\", list: [\"Use Menu to provide the visual surface and vertical layout for a related set of actions.\", \"Menu accepts direct Button or Link actions and remains fully composable with system components and their slots.\", \"By default, Menu uses max-content width with a 15rem minimum; set the width attribute when the composition needs an explicit width.\", \"Compose Menu inside Dropdown when the surface needs trigger, portal, positioning, focus, and dismissal behaviour.\"] }, { key: \"submenu\", title: \"Submenu\", description: \"Provides a portalled, viewport-aware nested Menu from a parent Menu action.\", list: [\"Use a direct Button as the Submenu trigger because opening nested actions is disclosure behavior, not navigation or selection.\", \"Hover the trigger or move keyboard focus into the Submenu to reveal its Menu.\", \"The nested Menu is portalled while open so it is not clipped by parent overflow or obscured by adjacent focused controls.\", \"Submenu flips sides when space is constrained and may overlap the parent Menu as a final fallback instead of clipping outside the viewport.\", \"Use a top-slotted Search Input on the parent Menu when its top-level actions benefit from filtering.\", \"The examples cover every Menu size with the Submenu shown in first, middle, and last positions.\"] }, { key: \"searchable-menu\", title: \"Searchable Menu\", list: [\"Place search and filtering controls before a scrollable action set when menus contain many options.\", \"Keep filtering in application state; Menu provides the visual surface and composition boundary.\", \"Use a hidden Body with role=status and aria-live=polite for the empty-state message. Reveal it only when every searchable action is hidden.\"] }, { key: \"inset\", title: \"Inset Content\", list: [\"Use the inset attribute to add padding to the menu's scrollable region, allowing buttons and other nested items to retain their natural border radius instead of spanning edge-to-edge.\"] }, { key: \"sections\", title: \"Sections\", list: [\"Use labelled sections when one Menu contains distinct groups of related files or actions.\", \"Place Search before the section headings when it filters content across the complete Menu.\", \"Use File Icon for file-type recognition and standard system icons for destinations or commands; both inherit sizing from the containing Button.\"] }, { key: \"select-menu\", title: \"Select Menu\", list: [\"Use a direct Select when the chosen option establishes the context for the actions below it.\", \"This example selects a design-system theme before previewing, editing, duplicating, or exporting that theme.\", \"Set size on Menu only; Menu enforces the same size and inset treatment on the Select and direct actions.\"] }, { key: \"date-menu\", title: \"Date Menu\", list: [\"Use a bottom-slotted Date Picker when the selected date applies to the actions grouped above it.\", \"This example supports reviewing the day, creating an event, copying the date, or exporting its schedule.\", \"Menu propagates its size and inset field radius to the Date Picker and its composed calendar action.\"] }, { key: \"input-menu\", title: \"Input Menu\", list: [\"Use a bottom-slotted Input when actions above provide context for the value being entered.\", \"Set size on Menu only; Menu keeps the Input and actions aligned while inset preserves their individual radii.\"] }, { key: \"time-menu\", title: \"Time Menu\", list: [\"Use a bottom-slotted Time Picker when the selected time applies to the actions grouped above it.\", \"The examples cover every Menu size and inherit the same size in the composed Time Picker input.\"] }, { key: \"chip-input-menu\", title: \"Chip Input Menu\", list: [\"Use a top-slotted Chip Input to filter or assign multiple values before acting on the selection.\", \"The examples cover every Menu size and keep the selected chips seamless with the Menu surface.\"] }, { key: \"language-toggles\", title: \"Language Toggles\", list: [\"Use composed rows for independent settings rather than menu commands.\", \"File Icon adds fast language recognition while Switch owns each boolean selection.\"] }, { key: \"range-input-menu\", title: \"Range Input Menu\", list: [\"Use Range Input for an adjustable value within a compact settings or playback menu.\", \"Nested controls are sized explicitly from the same Menu size because only direct Menu children inherit size automatically.\"] }, { key: \"sizes\", title: \"Sizes\", list: [\"Menu supports x-small, small, medium, and large.\", \"The selected size controls the surface radius and is enforced on direct button and link actions.\"] }, { key: \"grouped-content\", title: \"Grouped Content\", list: [\"Use concise headings and rules to separate related groups without turning the menu into a full page layout.\", \"Menu accepts composed content, but interactive actions should remain easy to scan and operate.\", \"Use inset when grouped actions should retain their individual radii and sit inside the Menu edge.\"] }, { key: \"selectable-actions\", title: \"Selectable Actions\", description: \"Adds application-owned single-selection behavior to a composed Menu.\", list: [\"Menu does not select actions automatically; manage the selected value and visual treatment in application state.\", \"Use the primary treatment only when an action represents the current selection, not for ordinary commands or Submenu triggers.\", \"Update aria-pressed with the visual variant so assistive technology receives the same selected state.\", \"The active appearance shown here is the base theme treatment; customize it to suit your product theme.\", \"Disable an action only when it must remain visible but cannot currently be used.\"] }, ], }, compositions: { description: \"\", items: [] }, related: { items: [{ name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }] }, rules: [], behaviour: { list: [\"Menu owns presentation only; Dropdown owns overlay interaction and portal behaviour.\", \"Menu enforces its size and align='start' on direct Button and Link children while leaving rules and custom grouped content independently composed.\", \"A direct Submenu passes the same Menu action context to its direct Button trigger.\", \"Menu radius is capped by the matching form radius so circular action tokens cannot turn the surface into a pill.\", \"Direct Body content receives action padding so headings and labels align with Menu actions.\", \"Top and bottom slots provide compositional regions, apply seamless form-control surfaces, and add a separator only when populated.\", \"Use inset when a Menu includes top or bottom content; keep action-only menus edge-to-edge.\", \"Inset state is passed to direct Button and Link actions so each component applies its own size-specific action padding independently from Menu content padding.\", \"When a direct Body heading precedes the first action, that action remains square at the top because the heading already buffers it from the Menu edge.\"] }, writing: { list: [\"Use short action labels and group related commands together.\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-menu/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-menu/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Provides the visual surface and vertical layout for menu actions and grouped overlay content.",
+          "name": "MuiMenu",
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Sets Menu geometry and enforces the same size on direct body, action, and form-control content."
+            },
+            {
+              "name": "inset",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Applies padding to the Menu content region and prevents direct action and form-control children from stretching to the Menu edge, allowing them to retain their natural border radius."
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the Menu width using any valid CSS width value, such as 100% or min(100%, 28rem)."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-menu",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Menu content. Direct body, action, Submenu, and supported form-control children inherit Menu sizing; rules and custom grouped content remain independently composed."
+            },
+            {
+              "name": "top",
+              "description": "Top content with a bottom separator. Direct form controls merge seamlessly into the Menu surface."
+            },
+            {
+              "name": "bottom",
+              "description": "Bottom content with a top separator. Direct form controls merge seamlessly into the Menu surface."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--menu-background",
+              "description": "Menu surface background."
+            },
+            {
+              "name": "--menu-border-color",
+              "description": "Menu surface border color."
+            },
+            {
+              "name": "--menu-shadow-color",
+              "description": "Menu surface shadow color."
+            },
+            {
+              "name": "--menu-radius",
+              "description": "Menu surface corner radius."
+            },
+            {
+              "name": "--menu-min-width",
+              "description": "Minimum width of the menu surface."
+            },
+            {
+              "name": "--menu-width",
+              "description": "Width of the Menu surface. Defaults to max-content and accepts any valid CSS width."
+            },
+            {
+              "name": "--menu-inset",
+              "description": "Resolved size-based inset shared by the content region and direct Menu actions."
+            },
+            {
+              "name": "--chip-background-menu",
+              "description": "Background applied to direct Chip and Chip Input compositions inside Menu."
+            },
+            {
+              "name": "--menu-inset-padding-block",
+              "description": "Block padding applied to the content region when the inset attribute is used."
+            },
+            {
+              "name": "--menu-inset-padding-inline",
+              "description": "Inline padding applied to the content region when the inset attribute is used."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-menu",
+          "declaration": {
+            "name": "MuiMenu",
+            "module": "src/components/mui-menu/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MuiMenu",
+          "declaration": {
+            "name": "MuiMenu",
+            "module": "src/components/mui-menu/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-media-player/doc.ts",
       "declarations": [
         {
@@ -8779,145 +8918,6 @@
           "declaration": {
             "name": "MuiMediaPlayer",
             "module": "src/components/mui-media-player/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-menu/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Menu: { title: \"Menu\", description: \"Menu provides a reusable visual surface for dropdown and anchored overlay content.\", hero: [\"\"], figma: [\"\"], storybook: [\"\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-menu/index.ts\"], website: [\"https://muibook.com/menu\"], guides: [\"\"], usage: { list: [\"Use inside mui-dropdown to compose the portalled menu surface.\", \"Use size='x-small|small|medium|large' to scale the surface radius and all direct button or link actions together.\", \"Render independently when reviewing menu layouts and grouped overlay content.\"] }, accessibility: { designerList: [\"Keep menu actions concise and easy to scan.\"], engineerList: [\"Use Dropdown when trigger, focus, dismissal, and positioning behaviour is required.\"] }, anatomy: { image: \"\", list: [\"Surface\", \"Menu content\"] }, variants: { items: [] }, stories: { items: [ { key: \"action-menu\", title: \"Action Menu\", list: [\"Use Menu to provide the visual surface and vertical layout for a related set of actions.\", \"Menu accepts direct Button or Link actions and remains fully composable with system components and their slots.\", \"By default, Menu uses max-content width with a 15rem minimum; set the width attribute when the composition needs an explicit width.\", \"Compose Menu inside Dropdown when the surface needs trigger, portal, positioning, focus, and dismissal behaviour.\"] }, { key: \"submenu\", title: \"Submenu\", description: \"Provides a portalled, viewport-aware nested Menu from a parent Menu action.\", list: [\"Use a direct Button as the Submenu trigger because opening nested actions is disclosure behavior, not navigation or selection.\", \"Hover the trigger or move keyboard focus into the Submenu to reveal its Menu.\", \"The nested Menu is portalled while open so it is not clipped by parent overflow or obscured by adjacent focused controls.\", \"Submenu flips sides when space is constrained and may overlap the parent Menu as a final fallback instead of clipping outside the viewport.\", \"Use a top-slotted Search Input on the parent Menu when its top-level actions benefit from filtering.\", \"The examples cover every Menu size with the Submenu shown in first, middle, and last positions.\"] }, { key: \"searchable-menu\", title: \"Searchable Menu\", list: [\"Place search and filtering controls before a scrollable action set when menus contain many options.\", \"Keep filtering in application state; Menu provides the visual surface and composition boundary.\", \"Use a hidden Body with role=status and aria-live=polite for the empty-state message. Reveal it only when every searchable action is hidden.\"] }, { key: \"inset\", title: \"Inset Content\", list: [\"Use the inset attribute to add padding to the menu's scrollable region, allowing buttons and other nested items to retain their natural border radius instead of spanning edge-to-edge.\"] }, { key: \"sections\", title: \"Sections\", list: [\"Use labelled sections when one Menu contains distinct groups of related files or actions.\", \"Place Search before the section headings when it filters content across the complete Menu.\", \"Use File Icon for file-type recognition and standard system icons for destinations or commands; both inherit sizing from the containing Button.\"] }, { key: \"select-menu\", title: \"Select Menu\", list: [\"Use a direct Select when the chosen option establishes the context for the actions below it.\", \"This example selects a design-system theme before previewing, editing, duplicating, or exporting that theme.\", \"Set size on Menu only; Menu enforces the same size and inset treatment on the Select and direct actions.\"] }, { key: \"date-menu\", title: \"Date Menu\", list: [\"Use a bottom-slotted Date Picker when the selected date applies to the actions grouped above it.\", \"This example supports reviewing the day, creating an event, copying the date, or exporting its schedule.\", \"Menu propagates its size and inset field radius to the Date Picker and its composed calendar action.\"] }, { key: \"input-menu\", title: \"Input Menu\", list: [\"Use a bottom-slotted Input when actions above provide context for the value being entered.\", \"Set size on Menu only; Menu keeps the Input and actions aligned while inset preserves their individual radii.\"] }, { key: \"time-menu\", title: \"Time Menu\", list: [\"Use a bottom-slotted Time Picker when the selected time applies to the actions grouped above it.\", \"The examples cover every Menu size and inherit the same size in the composed Time Picker input.\"] }, { key: \"chip-input-menu\", title: \"Chip Input Menu\", list: [\"Use a top-slotted Chip Input to filter or assign multiple values before acting on the selection.\", \"The examples cover every Menu size and keep the selected chips seamless with the Menu surface.\"] }, { key: \"language-toggles\", title: \"Language Toggles\", list: [\"Use composed rows for independent settings rather than menu commands.\", \"File Icon adds fast language recognition while Switch owns each boolean selection.\"] }, { key: \"range-input-menu\", title: \"Range Input Menu\", list: [\"Use Range Input for an adjustable value within a compact settings or playback menu.\", \"Nested controls are sized explicitly from the same Menu size because only direct Menu children inherit size automatically.\"] }, { key: \"sizes\", title: \"Sizes\", list: [\"Menu supports x-small, small, medium, and large.\", \"The selected size controls the surface radius and is enforced on direct button and link actions.\"] }, { key: \"grouped-content\", title: \"Grouped Content\", list: [\"Use concise headings and rules to separate related groups without turning the menu into a full page layout.\", \"Menu accepts composed content, but interactive actions should remain easy to scan and operate.\", \"Use inset when grouped actions should retain their individual radii and sit inside the Menu edge.\"] }, { key: \"selectable-actions\", title: \"Selectable Actions\", description: \"Adds application-owned single-selection behavior to a composed Menu.\", list: [\"Menu does not select actions automatically; manage the selected value and visual treatment in application state.\", \"Use the primary treatment only when an action represents the current selection, not for ordinary commands or Submenu triggers.\", \"Update aria-pressed with the visual variant so assistive technology receives the same selected state.\", \"The active appearance shown here is the base theme treatment; customize it to suit your product theme.\", \"Disable an action only when it must remain visible but cannot currently be used.\"] }, ], }, compositions: { description: \"\", items: [] }, related: { items: [{ name: \"Dropdown\", link: \"https://guides.muibook.com/dropdown\" }] }, rules: [], behaviour: { list: [\"Menu owns presentation only; Dropdown owns overlay interaction and portal behaviour.\", \"Menu enforces its size and align='start' on direct Button and Link children while leaving rules and custom grouped content independently composed.\", \"A direct Submenu passes the same Menu action context to its direct Button trigger.\", \"Menu radius is capped by the matching form radius so circular action tokens cannot turn the surface into a pill.\", \"Direct Body content receives action padding so headings and labels align with Menu actions.\", \"Top and bottom slots provide compositional regions, apply seamless form-control surfaces, and add a separator only when populated.\", \"Use inset when a Menu includes top or bottom content; keep action-only menus edge-to-edge.\", \"Inset state is passed to direct Button and Link actions so each component applies its own size-specific action padding independently from Menu content padding.\", \"When a direct Body heading precedes the first action, that action remains square at the top because the heading already buffers it from the Menu edge.\"] }, writing: { list: [\"Use short action labels and group related commands together.\"] }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-menu/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-menu/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Provides the visual surface and vertical layout for menu actions and grouped overlay content.",
-          "name": "MuiMenu",
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Sets Menu geometry and enforces the same size on direct body, action, and form-control content."
-            },
-            {
-              "name": "inset",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Applies padding to the Menu content region and prevents direct action and form-control children from stretching to the Menu edge, allowing them to retain their natural border radius."
-            },
-            {
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the Menu width using any valid CSS width value, such as 100% or min(100%, 28rem)."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-menu",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Menu content. Direct body, action, Submenu, and supported form-control children inherit Menu sizing; rules and custom grouped content remain independently composed."
-            },
-            {
-              "name": "top",
-              "description": "Top content with a bottom separator. Direct form controls merge seamlessly into the Menu surface."
-            },
-            {
-              "name": "bottom",
-              "description": "Bottom content with a top separator. Direct form controls merge seamlessly into the Menu surface."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--menu-background",
-              "description": "Menu surface background."
-            },
-            {
-              "name": "--menu-border-color",
-              "description": "Menu surface border color."
-            },
-            {
-              "name": "--menu-shadow-color",
-              "description": "Menu surface shadow color."
-            },
-            {
-              "name": "--menu-radius",
-              "description": "Menu surface corner radius."
-            },
-            {
-              "name": "--menu-min-width",
-              "description": "Minimum width of the menu surface."
-            },
-            {
-              "name": "--menu-width",
-              "description": "Width of the Menu surface. Defaults to max-content and accepts any valid CSS width."
-            },
-            {
-              "name": "--menu-inset",
-              "description": "Resolved size-based inset shared by the content region and direct Menu actions."
-            },
-            {
-              "name": "--chip-background-menu",
-              "description": "Background applied to direct Chip and Chip Input compositions inside Menu."
-            },
-            {
-              "name": "--menu-inset-padding-block",
-              "description": "Block padding applied to the content region when the inset attribute is used."
-            },
-            {
-              "name": "--menu-inset-padding-inline",
-              "description": "Inline padding applied to the content region when the inset attribute is used."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-menu",
-          "declaration": {
-            "name": "MuiMenu",
-            "module": "src/components/mui-menu/index.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "MuiMenu",
-          "declaration": {
-            "name": "MuiMenu",
-            "module": "src/components/mui-menu/index.ts"
           }
         }
       ]
@@ -11551,6 +11551,184 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-skeleton/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Skeleton: { title: \"Skeleton\", description: \"Skeleton provides reusable placeholder blocks for loading and wireframe prototyping flows.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17873&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/loading-skeleton--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-skeleton/index.ts\"], website: [\"https://muibook.com/skeleton\"], guides: [\"https://guides.muibook.com/skeleton\"], usage: { list: [ \"Use line skeletons for text placeholders and rect/circle for media/avatar placeholders.\", \"Prefer token, rem, and percentage sizing over fixed pixel values for responsive placeholder design.\", \"Use Muibook layout components (mui-v-stack, mui-h-stack, mui-grid) to compose skeleton structures.\", \"Use duration to slow down shimmer in calmer loading contexts.\", \"Use max-width to constrain placeholder length without inline styles.\", \"Use before/after slots to compose action or avatar placeholders around loading content.\", \"Set loading='false' to reveal real content in the same markup shell.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Skeleton is decorative by default; keep it paired with semantic loading context at section/page level.\", \"Respect prefers-reduced-motion by avoiding mandatory motion-only communication.\", ], }, anatomy: { image: \"\", list: [\"Before slot\", \"Skeleton blocks\", \"After slot\", \"Optional content reveal slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { key: \"multi-line\", title: \"Multi-line\", description: \"Represents several lines of loading copy.\", list: [\"Match line count and approximate width to the loaded content.\", \"Use responsive units and layout tokens rather than fixed pixels.\"] }, { key: \"line\", title: \"Line\", description: \"Represents a single line of loading text.\", list: [\"Use for headings, labels, and isolated text values.\"] }, { key: \"duration\", title: \"Shimmer Duration\", description: \"Adjusts the shimmer animation speed.\", list: [\"Use a consistent duration across placeholders in the same loading region.\"] }, { key: \"shapes\", title: \"Shapes\", description: \"Represents rectangular media and circular avatars.\", list: [\"Match the shape and dimensions of the content that will replace it.\"] }, { key: \"slots\", title: \"Before and After Slots\", description: \"Composes leading and trailing placeholders around content lines.\", list: [\"Use slots when the loaded layout includes avatars, actions, or other accessories.\"] }, { key: \"toggle\", title: \"Loading Toggle\", description: \"Reveals real content in the same layout shell.\", list: [\"Set loading='false' only after the replacement content is ready to display.\"] }, ], }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Loader\", link: \"https://guides.muibook.com/loader\" }, { name: \"Spinner\", link: \"https://guides.muibook.com/loader\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-skeleton/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-skeleton/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Renders placeholder shapes and lines for loading states, with optional before and after slot composition.",
+          "name": "MuiSkeleton",
+          "attributes": [
+            {
+              "name": "shape",
+              "type": {
+                "text": "\"line\" | \"rect\" | \"circle\""
+              },
+              "default": "line",
+              "description": "Sets the placeholder shape."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Controls the base placeholder scale."
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "default": "100%",
+              "description": "Sets the rendered width."
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides the rendered height."
+            },
+            {
+              "name": "radius",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides the placeholder corner radius."
+            },
+            {
+              "name": "animation",
+              "type": {
+                "text": "\"shimmer\" | \"pulsate\" | \"none\""
+              },
+              "description": "Selects the placeholder animation mode."
+            },
+            {
+              "name": "lines",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Sets the number of generated placeholder lines."
+            },
+            {
+              "name": "gap",
+              "type": {
+                "text": "string"
+              },
+              "description": "Controls spacing between generated lines."
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "\"true\" | \"false\""
+              },
+              "default": "true",
+              "description": "Set to `false` to reveal the slotted content instead of placeholders."
+            },
+            {
+              "name": "line-widths",
+              "type": {
+                "text": "string"
+              },
+              "description": "Provides comma-separated widths for generated lines."
+            },
+            {
+              "name": "max-width",
+              "type": {
+                "text": "string"
+              },
+              "description": "Constrains the maximum rendered width."
+            },
+            {
+              "name": "duration",
+              "type": {
+                "text": "string"
+              },
+              "description": "Overrides shimmer or pulsate timing."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-skeleton",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Real content revealed when `loading=\"false\"`."
+            },
+            {
+              "name": "before",
+              "description": "Leading placeholder content, commonly used for avatar or icon blocks."
+            },
+            {
+              "name": "after",
+              "description": "Trailing placeholder content, commonly used for actions or badges."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--skeleton-gap",
+              "description": "Controls the internal spacing between generated lines."
+            },
+            {
+              "name": "--skeleton-animation-speed",
+              "description": "Controls shimmer and pulsate timing."
+            },
+            {
+              "name": "--skeleton-radius",
+              "description": "Controls the default placeholder radius."
+            },
+            {
+              "name": "--skeleton-background",
+              "description": "Controls the skeleton base color."
+            },
+            {
+              "name": "--skeleton-highlight",
+              "description": "Controls the shimmer highlight color."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-skeleton",
+          "declaration": {
+            "name": "MuiSkeleton",
+            "module": "src/components/mui-skeleton/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-slat/doc.ts",
       "declarations": [
         {
@@ -11780,184 +11958,6 @@
           "declaration": {
             "name": "MuiSlideFrame",
             "module": "src/components/mui-slide-frame/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-skeleton/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Skeleton: { title: \"Skeleton\", description: \"Skeleton provides reusable placeholder blocks for loading and wireframe prototyping flows.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17873&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/loading-skeleton--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-skeleton/index.ts\"], website: [\"https://muibook.com/skeleton\"], guides: [\"https://guides.muibook.com/skeleton\"], usage: { list: [ \"Use line skeletons for text placeholders and rect/circle for media/avatar placeholders.\", \"Prefer token, rem, and percentage sizing over fixed pixel values for responsive placeholder design.\", \"Use Muibook layout components (mui-v-stack, mui-h-stack, mui-grid) to compose skeleton structures.\", \"Use duration to slow down shimmer in calmer loading contexts.\", \"Use max-width to constrain placeholder length without inline styles.\", \"Use before/after slots to compose action or avatar placeholders around loading content.\", \"Set loading='false' to reveal real content in the same markup shell.\", ], }, accessibility: { designerList: [\"\"], engineerList: [ \"Skeleton is decorative by default; keep it paired with semantic loading context at section/page level.\", \"Respect prefers-reduced-motion by avoiding mandatory motion-only communication.\", ], }, anatomy: { image: \"\", list: [\"Before slot\", \"Skeleton blocks\", \"After slot\", \"Optional content reveal slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { key: \"multi-line\", title: \"Multi-line\", description: \"Represents several lines of loading copy.\", list: [\"Match line count and approximate width to the loaded content.\", \"Use responsive units and layout tokens rather than fixed pixels.\"] }, { key: \"line\", title: \"Line\", description: \"Represents a single line of loading text.\", list: [\"Use for headings, labels, and isolated text values.\"] }, { key: \"duration\", title: \"Shimmer Duration\", description: \"Adjusts the shimmer animation speed.\", list: [\"Use a consistent duration across placeholders in the same loading region.\"] }, { key: \"shapes\", title: \"Shapes\", description: \"Represents rectangular media and circular avatars.\", list: [\"Match the shape and dimensions of the content that will replace it.\"] }, { key: \"slots\", title: \"Before and After Slots\", description: \"Composes leading and trailing placeholders around content lines.\", list: [\"Use slots when the loaded layout includes avatars, actions, or other accessories.\"] }, { key: \"toggle\", title: \"Loading Toggle\", description: \"Reveals real content in the same layout shell.\", list: [\"Set loading='false' only after the replacement content is ready to display.\"] }, ], }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Loader\", link: \"https://guides.muibook.com/loader\" }, { name: \"Spinner\", link: \"https://guides.muibook.com/loader\" }, ], }, rules: [{ heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }] }], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-skeleton/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-skeleton/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Renders placeholder shapes and lines for loading states, with optional before and after slot composition.",
-          "name": "MuiSkeleton",
-          "attributes": [
-            {
-              "name": "shape",
-              "type": {
-                "text": "\"line\" | \"rect\" | \"circle\""
-              },
-              "default": "line",
-              "description": "Sets the placeholder shape."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Controls the base placeholder scale."
-            },
-            {
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "default": "100%",
-              "description": "Sets the rendered width."
-            },
-            {
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides the rendered height."
-            },
-            {
-              "name": "radius",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides the placeholder corner radius."
-            },
-            {
-              "name": "animation",
-              "type": {
-                "text": "\"shimmer\" | \"pulsate\" | \"none\""
-              },
-              "description": "Selects the placeholder animation mode."
-            },
-            {
-              "name": "lines",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Sets the number of generated placeholder lines."
-            },
-            {
-              "name": "gap",
-              "type": {
-                "text": "string"
-              },
-              "description": "Controls spacing between generated lines."
-            },
-            {
-              "name": "loading",
-              "type": {
-                "text": "\"true\" | \"false\""
-              },
-              "default": "true",
-              "description": "Set to `false` to reveal the slotted content instead of placeholders."
-            },
-            {
-              "name": "line-widths",
-              "type": {
-                "text": "string"
-              },
-              "description": "Provides comma-separated widths for generated lines."
-            },
-            {
-              "name": "max-width",
-              "type": {
-                "text": "string"
-              },
-              "description": "Constrains the maximum rendered width."
-            },
-            {
-              "name": "duration",
-              "type": {
-                "text": "string"
-              },
-              "description": "Overrides shimmer or pulsate timing."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-skeleton",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Real content revealed when `loading=\"false\"`."
-            },
-            {
-              "name": "before",
-              "description": "Leading placeholder content, commonly used for avatar or icon blocks."
-            },
-            {
-              "name": "after",
-              "description": "Trailing placeholder content, commonly used for actions or badges."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--skeleton-gap",
-              "description": "Controls the internal spacing between generated lines."
-            },
-            {
-              "name": "--skeleton-animation-speed",
-              "description": "Controls shimmer and pulsate timing."
-            },
-            {
-              "name": "--skeleton-radius",
-              "description": "Controls the default placeholder radius."
-            },
-            {
-              "name": "--skeleton-background",
-              "description": "Controls the skeleton base color."
-            },
-            {
-              "name": "--skeleton-highlight",
-              "description": "Controls the shimmer highlight color."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-skeleton",
-          "declaration": {
-            "name": "MuiSkeleton",
-            "module": "src/components/mui-skeleton/index.ts"
           }
         }
       ]
@@ -12601,6 +12601,30 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-tabs/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Tabs: { title: \"Tabs\", description: \"Allows users to switch between views or content sections by selecting from a group of tabs. Tabs keep related content within a single surface, reducing the need for navigation and maintaining context.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/5EC8Uj4pMaQGe2UcNntYLX/040eb1feec8def04504dfa3729494b52/Tab_bar_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/navigation-tab-bar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs\"], website: [\"https://muibook.com/tab-bar\"], guides: [\"https://guides.muibook.com/tab-bar\"], usage: { list: [ \"Use to organise related content or views at the same level of hierarchy.\", \"Ideal for toggling between sections without navigating away from the page.\", \"Use the size API (x-small, small, medium, large) to align tabs with adjacent buttons.\", \"Use named slots (before/after) to compose icons and badges in tab items.\", \"Use variant='dots' for compact pagination controls such as carousel navigation.\", \"Use variant='ghost' when you want only active-tab emphasis without outer tab bar chrome.\", \"Keep labels short, clear, and consistently styled.\", \"Avoid using when content is unrelated or exceeds a manageable number of tabs.\", ], }, accessibility: { designerList: [ \"Keyboard users can navigate across tabs using the left/right arrow keys, as well as Home and End keys to jump to the first or last tab.\", \"The active tab always shows a clear focus outline and can be navigated to using the keyboard.\", \"Tabs are grouped in a way that assistive technologies can understand, using standard roles and attributes.\", \"The system keeps track of which tab is active behind the scenes, so screen readers and keyboard users always stay in sync.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/koeu63xbKYOWZgs8i0eev/983e09362714a2dcdcc7262889ba1236/Tabs_-_Anatomy.png\", list: [ \"Active: Indicates the currently selected tab.\", \"Inactive: Indicates a tab that is not selected and is waiting for user interaction.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { key: \"default\", title: \"Default\", description: \"Switches between related views at the same hierarchy level.\", list: [\"Keep labels short and use tabs only for closely related content.\"] }, { key: \"surface-usage\", title: \"Surface Usage\", description: \"Adapts the Tab Bar hierarchy when composed inside a framed surface.\", list: [\"Card, Card Body, Drawer, Dialog, and Carousel automatically apply usage='surface' through neutral layout wrappers while preserving the nearest nested surface owner.\", \"Surface usage applies the base surface to the Tab Bar background and border, with the elevated surface behind the active tab.\"] }, { key: \"stroke-none\", title: \"Stroke: None\", description: \"Removes the outer stroke when a recessed or surrounding surface already defines the Tab Bar area.\", list: [\"Use only when another boundary clearly contains the Tab Bar.\", \"The Tab Bar uses visible overflow in this mode so focus and shadow treatments are not clipped by the parent boundary.\"] }, { key: \"inset\", title: \"Inset Tab\", description: \"Applies a floating inset treatment to the active tab.\", list: [\"Use for compact tool surfaces where a pill treatment suits the surrounding controls.\"] }, { key: \"radius\", title: \"Radius\", description: \"Adjusts the base radius of the Tab Bar and items.\", list: [\"Match the radius to adjacent controls and the containing surface.\"] }, { key: \"controller\", title: \"Tab Controller and Tab Panel\", description: \"Connects tab selection to matching content panels.\", list: [\"Use matching values between each Tab Item and Tab Panel.\", \"Use full-width only when tabs should divide the available width evenly.\"] }, { key: \"speed\", title: \"Animation Speed\", description: \"Customises the active indicator transition duration.\", list: [\"Keep transitions brief and consistent with nearby navigation.\"] }, { key: \"sizes\", title: \"Size Variants\", description: \"Matches Tab Bar density to its layout context.\", list: [\"Use one size consistently within a tab group.\"] }, { key: \"button-parity\", title: \"Size Parity with Button\", description: \"Aligns Tab Bar and Button dimensions in shared toolbars.\", list: [\"Use matching size values for controls that share a row.\"] }, { key: \"slots\", title: \"Before and After Slots\", description: \"Adds icons, badges, or compact accessories to tab labels.\", list: [\"Keep accessories concise and preserve clear tab names.\"] }, { key: \"default-width\", title: \"Default Width\", description: \"Sizes the Tab Bar to its content.\", list: [\"Use content width when tabs do not need to fill their container.\"] }, { key: \"dots\", title: \"Dots Variant\", description: \"Provides compact pagination controls for carousels and similar views.\", list: [\"Use only when position is understandable without text labels.\"] }, { key: \"ghost\", title: \"Ghost Variant\", description: \"Emphasises only the active tab without outer Tab Bar chrome.\", list: [\"Use when the surrounding surface already provides enough structure.\"] }, { key: \"full-width\", title: \"Full Width\", description: \"Distributes tab items evenly across the available width.\", list: [\"Use for a small, stable set of peer views.\", \"Avoid full width when labels vary substantially in length.\"] }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"wallet\", name: \"Wallet\", description: \"This example shows a wallet view featuring a digital card, transaction and statement tabs. It demonstrates how foundational components like tabs, slats, and buttons can be composed to create flexible, real-world layouts.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6RoGBcahh63o16PAcEsgyX/36f5c8d9bf0e8754a574955b32ee6eda/Tab_Bar_-_Composition.png\", }, { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Carousel\", link: \"https://guides.muibook.com/carousel\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-tabs/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-textarea/doc.ts",
       "declarations": [
         {
@@ -12793,30 +12817,6 @@
           "declaration": {
             "name": "MuiTextarea",
             "module": "src/components/mui-textarea/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Tabs: { title: \"Tabs\", description: \"Allows users to switch between views or content sections by selecting from a group of tabs. Tabs keep related content within a single surface, reducing the need for navigation and maintaining context.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/5EC8Uj4pMaQGe2UcNntYLX/040eb1feec8def04504dfa3729494b52/Tab_bar_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/navigation-tab-bar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs\"], website: [\"https://muibook.com/tab-bar\"], guides: [\"https://guides.muibook.com/tab-bar\"], usage: { list: [ \"Use to organise related content or views at the same level of hierarchy.\", \"Ideal for toggling between sections without navigating away from the page.\", \"Use the size API (x-small, small, medium, large) to align tabs with adjacent buttons.\", \"Use named slots (before/after) to compose icons and badges in tab items.\", \"Use variant='dots' for compact pagination controls such as carousel navigation.\", \"Use variant='ghost' when you want only active-tab emphasis without outer tab bar chrome.\", \"Keep labels short, clear, and consistently styled.\", \"Avoid using when content is unrelated or exceeds a manageable number of tabs.\", ], }, accessibility: { designerList: [ \"Keyboard users can navigate across tabs using the left/right arrow keys, as well as Home and End keys to jump to the first or last tab.\", \"The active tab always shows a clear focus outline and can be navigated to using the keyboard.\", \"Tabs are grouped in a way that assistive technologies can understand, using standard roles and attributes.\", \"The system keeps track of which tab is active behind the scenes, so screen readers and keyboard users always stay in sync.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/koeu63xbKYOWZgs8i0eev/983e09362714a2dcdcc7262889ba1236/Tabs_-_Anatomy.png\", list: [ \"Active: Indicates the currently selected tab.\", \"Inactive: Indicates a tab that is not selected and is waiting for user interaction.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { key: \"default\", title: \"Default\", description: \"Switches between related views at the same hierarchy level.\", list: [\"Keep labels short and use tabs only for closely related content.\"] }, { key: \"surface-usage\", title: \"Surface Usage\", description: \"Adapts the Tab Bar hierarchy when composed inside a framed surface.\", list: [\"Card, Card Body, Drawer, Dialog, and Carousel automatically apply usage='surface' through neutral layout wrappers while preserving the nearest nested surface owner.\", \"Surface usage applies the base surface to the Tab Bar background and border, with the elevated surface behind the active tab.\"] }, { key: \"stroke-none\", title: \"Stroke: None\", description: \"Removes the outer stroke when a recessed or surrounding surface already defines the Tab Bar area.\", list: [\"Use only when another boundary clearly contains the Tab Bar.\", \"The Tab Bar uses visible overflow in this mode so focus and shadow treatments are not clipped by the parent boundary.\"] }, { key: \"inset\", title: \"Inset Tab\", description: \"Applies a floating inset treatment to the active tab.\", list: [\"Use for compact tool surfaces where a pill treatment suits the surrounding controls.\"] }, { key: \"radius\", title: \"Radius\", description: \"Adjusts the base radius of the Tab Bar and items.\", list: [\"Match the radius to adjacent controls and the containing surface.\"] }, { key: \"controller\", title: \"Tab Controller and Tab Panel\", description: \"Connects tab selection to matching content panels.\", list: [\"Use matching values between each Tab Item and Tab Panel.\", \"Use full-width only when tabs should divide the available width evenly.\"] }, { key: \"speed\", title: \"Animation Speed\", description: \"Customises the active indicator transition duration.\", list: [\"Keep transitions brief and consistent with nearby navigation.\"] }, { key: \"sizes\", title: \"Size Variants\", description: \"Matches Tab Bar density to its layout context.\", list: [\"Use one size consistently within a tab group.\"] }, { key: \"button-parity\", title: \"Size Parity with Button\", description: \"Aligns Tab Bar and Button dimensions in shared toolbars.\", list: [\"Use matching size values for controls that share a row.\"] }, { key: \"slots\", title: \"Before and After Slots\", description: \"Adds icons, badges, or compact accessories to tab labels.\", list: [\"Keep accessories concise and preserve clear tab names.\"] }, { key: \"default-width\", title: \"Default Width\", description: \"Sizes the Tab Bar to its content.\", list: [\"Use content width when tabs do not need to fill their container.\"] }, { key: \"dots\", title: \"Dots Variant\", description: \"Provides compact pagination controls for carousels and similar views.\", list: [\"Use only when position is understandable without text labels.\"] }, { key: \"ghost\", title: \"Ghost Variant\", description: \"Emphasises only the active tab without outer Tab Bar chrome.\", list: [\"Use when the surrounding surface already provides enough structure.\"] }, { key: \"full-width\", title: \"Full Width\", description: \"Distributes tab items evenly across the available width.\", list: [\"Use for a small, stable set of peer views.\", \"Avoid full width when labels vary substantially in length.\"] }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"wallet\", name: \"Wallet\", description: \"This example shows a wallet view featuring a digital card, transaction and statement tabs. It demonstrates how foundational components like tabs, slats, and buttons can be composed to create flexible, real-world layouts.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6RoGBcahh63o16PAcEsgyX/36f5c8d9bf0e8754a574955b32ee6eda/Tab_Bar_-_Composition.png\", }, { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Carousel\", link: \"https://guides.muibook.com/carousel\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-tabs/doc.ts"
           }
         }
       ]
@@ -13929,6 +13929,28 @@
               },
               "default": "10000",
               "description": "Delay between automatic carousel transitions in milliseconds."
+            },
+            {
+              "name": "borderless",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Removes the Carousel frame border while retaining its surface and radius."
+            },
+            {
+              "name": "radius",
+              "type": {
+                "text": "\"none\""
+              },
+              "description": "Use none to remove the Carousel surface radius while retaining overflow clipping."
+            },
+            {
+              "name": "swipe",
+              "type": {
+                "text": "\"none\""
+              },
+              "description": "Use none to disable the default touch, pen, and mouse swipe navigation."
             }
           ],
           "superclass": {
@@ -14019,50 +14041,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-list/list/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups ordered or unordered list item content.",
-          "name": "MuiList",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-list",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "as",
-              "type": {
-                "text": "\"ul\" | \"ol\""
-              },
-              "default": "ul",
-              "description": "Sets unordered or ordered marker styling for the list."
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-list-item` children."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-list",
-          "declaration": {
-            "name": "MuiList",
-            "module": "src/components/mui-list/list/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-list/item/index.ts",
       "declarations": [
         {
@@ -14117,6 +14095,50 @@
           "declaration": {
             "name": "MuiListItem",
             "module": "src/components/mui-list/item/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-list/list/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups ordered or unordered list item content.",
+          "name": "MuiList",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-list",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "as",
+              "type": {
+                "text": "\"ul\" | \"ol\""
+              },
+              "default": "ul",
+              "description": "Sets unordered or ordered marker styling for the list."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-list-item` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-list",
+          "declaration": {
+            "name": "MuiList",
+            "module": "src/components/mui-list/list/index.ts"
           }
         }
       ]
@@ -14701,6 +14723,66 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-table/cell/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays content inside a table row with optional checkbox or action-column alignment.",
+          "name": "MuiCell",
+          "attributes": [
+            {
+              "name": "align-y",
+              "type": {
+                "text": "string"
+              },
+              "default": "initial",
+              "description": "Sets vertical alignment using any valid CSS `align-self` value."
+            },
+            {
+              "name": "action",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Aligns a final-column action control using the parent row action size."
+            },
+            {
+              "name": "checkbox",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Applies compact alignment for a checkbox column."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-cell",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Cell text or component content."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-cell",
+          "declaration": {
+            "name": "MuiCell",
+            "module": "src/components/mui-table/cell/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-stepper/step/index.ts",
       "declarations": [
         {
@@ -14861,66 +14943,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/cell/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays content inside a table row with optional checkbox or action-column alignment.",
-          "name": "MuiCell",
-          "attributes": [
-            {
-              "name": "align-y",
-              "type": {
-                "text": "string"
-              },
-              "default": "initial",
-              "description": "Sets vertical alignment using any valid CSS `align-self` value."
-            },
-            {
-              "name": "action",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Aligns a final-column action control using the parent row action size."
-            },
-            {
-              "name": "checkbox",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Applies compact alignment for a checkbox column."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-cell",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Cell text or component content."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-cell",
-          "declaration": {
-            "name": "MuiCell",
-            "module": "src/components/mui-table/cell/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-table/row/index.ts",
       "declarations": [
         {
@@ -14988,6 +15010,41 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-tabs/controller/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
+          "name": "MuiTabController",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-controller",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-controller",
+          "declaration": {
+            "name": "MuiTabController",
+            "module": "src/components/mui-tabs/controller/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-table/row-group/index.ts",
       "declarations": [
         {
@@ -15026,6 +15083,81 @@
           "declaration": {
             "name": "MuiRowGroup",
             "module": "src/components/mui-table/row-group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/item/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Interactive tab label controlled by a parent `mui-tab-bar`.",
+          "name": "MuiTabItem",
+          "attributes": [
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Marks the selected tab item."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Tab item size, normally forwarded by `mui-tab-bar`."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"dots\" | \"ghost\""
+              },
+              "default": "default",
+              "description": "Tab item presentation, normally forwarded by `mui-tab-bar`."
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Identifier matched by a related `mui-tab-panel[item]`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-item",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible tab label."
+            },
+            {
+              "name": "before",
+              "description": "Optional leading icon, badge or custom affordance."
+            },
+            {
+              "name": "after",
+              "description": "Optional trailing icon, badge or custom affordance."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-item",
+          "declaration": {
+            "name": "MuiTabItem",
+            "module": "src/components/mui-tabs/item/index.ts"
           }
         }
       ]
@@ -15109,116 +15241,6 @@
           "declaration": {
             "name": "MuiTable",
             "module": "src/components/mui-table/table/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/controller/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
-          "name": "MuiTabController",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-controller",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-controller",
-          "declaration": {
-            "name": "MuiTabController",
-            "module": "src/components/mui-tabs/controller/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/item/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Interactive tab label controlled by a parent `mui-tab-bar`.",
-          "name": "MuiTabItem",
-          "attributes": [
-            {
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Marks the selected tab item."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Tab item size, normally forwarded by `mui-tab-bar`."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"dots\" | \"ghost\""
-              },
-              "default": "default",
-              "description": "Tab item presentation, normally forwarded by `mui-tab-bar`."
-            },
-            {
-              "name": "id",
-              "type": {
-                "text": "string"
-              },
-              "description": "Identifier matched by a related `mui-tab-panel[item]`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-item",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Visible tab label."
-            },
-            {
-              "name": "before",
-              "description": "Optional leading icon, badge or custom affordance."
-            },
-            {
-              "name": "after",
-              "description": "Optional trailing icon, badge or custom affordance."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-item",
-          "declaration": {
-            "name": "MuiTabItem",
-            "module": "src/components/mui-tabs/item/index.ts"
           }
         }
       ]

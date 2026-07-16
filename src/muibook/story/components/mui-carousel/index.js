@@ -213,6 +213,34 @@ class storyCarousel extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="borderless" title="${storyMeta["borderless"].title}" description="${storyMeta["borderless"].description}" usage="${storyMeta["borderless"].usage}">
+        <mui-carousel-controller slot="body" borderless>
+          <mui-tab-bar slot="controls" controlsPosition="bottom-right">
+            ${carouselTabItems}
+          </mui-tab-bar>
+          ${carouselItems}
+        </mui-carousel-controller>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-carousel-controller borderless&gt;<br />
+          &nbsp;&nbsp;...tabs and panels...<br />
+          &lt;/mui-carousel-controller&gt;
+        </story-code-block>
+      </story-card>
+
+      <story-card id="no-radius" title="${storyMeta["no-radius"].title}" description="${storyMeta["no-radius"].description}" usage="${storyMeta["no-radius"].usage}">
+        <mui-carousel-controller slot="body" radius="none">
+          <mui-tab-bar slot="controls" controlsPosition="bottom-right">
+            ${carouselTabItems}
+          </mui-tab-bar>
+          ${carouselItems}
+        </mui-carousel-controller>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-carousel-controller radius="none"&gt;<br />
+          &nbsp;&nbsp;...tabs and panels...<br />
+          &lt;/mui-carousel-controller&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-carousel/index.js" id="auto-rotate" title="${storyMeta["auto-rotate"].title}" description="${storyMeta["auto-rotate"].description}" usage="${storyMeta["auto-rotate"].usage}">
         <mui-carousel-controller slot="body" auto-rotate rotate-interval="10000">
           <mui-tab-bar slot="controls" controlsPosition="bottom-right">
