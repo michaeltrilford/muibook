@@ -93,6 +93,27 @@ body {
   --action-tertiary-text-color-hover: var(--app-floating-menu-color);
 }
 
+app-navbar-toggle:not([hidden]) .floating-menu {
+  animation: app-floating-menu-enter var(--speed-400) cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes app-floating-menu-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(0px - var(--space-300)));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  app-navbar-toggle:not([hidden]) .floating-menu {
+    animation: none;
+  }
+}
+
 .floating-menu::part(border-radius) {
   border-radius: 100%;
   backdrop-filter: blur(var(--space-200));

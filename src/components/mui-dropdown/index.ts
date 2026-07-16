@@ -525,6 +525,9 @@ class MuiDropdown extends HTMLElement {
       .mui-dropdown-portal .inner > mui-menu {
         max-width: 100%;
       }
+      .mui-dropdown-portal .inner > mui-menu:not([width]) {
+        --menu-width-current: min(100%, 18rem);
+      }
       .mui-dropdown-portal mui-button,
       .mui-dropdown-portal mui-link {
         width: 100%;

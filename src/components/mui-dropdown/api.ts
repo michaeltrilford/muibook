@@ -40,7 +40,7 @@ export const muiApi = {
     ],
     slots: [
       { name: "action", description: "Dropdown trigger, typically a `mui-button`." },
-      { name: "", description: "A required `mui-menu` surface containing menu actions and grouped overlay content." },
+      { name: "", description: "A required `mui-menu` surface containing menu actions and grouped overlay content. Menus without an explicit width use min(100%, 18rem) while portaled." },
     ],
     events: [
       { name: "dropdown-toggle", description: "Dispatched when the dropdown opens or closes with `detail.open`." },
