@@ -343,7 +343,7 @@ class StoryTemplate extends HTMLElement {
         <mui-button slot="action" variant="tertiary" icon-only size="small" aria-label="More options">
           <mui-icon-ellipsis size="small"></mui-icon-ellipsis>
         </mui-button>
-        <mui-menu>
+        <mui-menu width="14rem">
           ${links
             .map(
               (link) => /*html*/ `

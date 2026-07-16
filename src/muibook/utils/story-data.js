@@ -69,6 +69,24 @@ export async function getComponentDocs(tagName) {
   return allDocs[tagName];
 }
 
+export function escapeStoryAttribute(value = "") {
+  return String(value).replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+}
+
+export function createStoryMeta(storyItems = []) {
+  return Object.fromEntries(
+    storyItems.map((story) => [
+      story.key,
+      {
+        ...story,
+        title: escapeStoryAttribute(story.title),
+        description: escapeStoryAttribute(story.description),
+        usage: escapeStoryAttribute((story.list || []).join("|||")),
+      },
+    ]),
+  );
+}
+
 export async function getComponentApi(tagName) {
   const manifest = await loadManifest();
 

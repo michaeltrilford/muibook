@@ -1,4 +1,4 @@
-import { getComponentDocs } from "../../../utils/story-data";
+import { createStoryMeta, getComponentDocs } from "../../../utils/story-data";
 
 class storyLink extends HTMLElement {
   constructor() {
@@ -13,7 +13,7 @@ class storyLink extends HTMLElement {
       this.shadowRoot.innerHTML = `<story-metadata-empty component="Link"></story-metadata-empty>`;
       return;
     }
-    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
+    const storyMeta = createStoryMeta(storyItems);
     const attrsReference = JSON.stringify([
       {
         component: "mui-link",

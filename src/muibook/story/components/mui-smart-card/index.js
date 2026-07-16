@@ -31,7 +31,9 @@ class storySmartCard extends HTMLElement {
       this.shadowRoot.innerHTML = `<story-metadata-empty component="Smart Card"></story-metadata-empty>`;
       return;
     }
-    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
 
     const styles = /*css*/ `
       :host { display: block; }
@@ -40,7 +42,7 @@ class storySmartCard extends HTMLElement {
     const stories = /*html*/ `
         <story-api-types tag="mui-smart-card" title="Smart Card"></story-api-types>
 
-        <story-card id="plain" title="${storyMeta["plain"].title}" description="${storyMeta["plain"].description}" usage="${storyMeta["plain"].usage}">
+        <story-card canvas-background="var(--surface-recessed-100)" id="plain" title="${storyMeta["plain"].title}" description="${storyMeta["plain"].description}" usage="${storyMeta["plain"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
           <mui-smart-card
             type="Debit"
@@ -113,7 +115,7 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card id="logo" title="${storyMeta["logo"].title}" description="${storyMeta["logo"].description}" usage="${storyMeta["logo"].usage}">
+        <story-card id="logo" canvas-background="var(--surface-recessed-100)" title="${storyMeta["logo"].title}" description="${storyMeta["logo"].description}" usage="${storyMeta["logo"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"
@@ -146,7 +148,7 @@ class storySmartCard extends HTMLElement {
             </story-code-block>
         </story-card>
 
-        <story-card id="frozen" title="${storyMeta["frozen"].title}" description="${storyMeta["frozen"].description}" usage="${storyMeta["frozen"].usage}">
+        <story-card id="frozen" canvas-background="var(--surface-recessed-100)" title="${storyMeta["frozen"].title}" description="${storyMeta["frozen"].description}" usage="${storyMeta["frozen"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               partner="${VisaBlack}"
@@ -212,7 +214,7 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card id="background-color" title="${storyMeta["background-color"].title}" description="${storyMeta["background-color"].description}" usage="${storyMeta["background-color"].usage}">
+        <story-card id="background-color" canvas-background="var(--surface-recessed-100)" title="${storyMeta["background-color"].title}" description="${storyMeta["background-color"].description}" usage="${storyMeta["background-color"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"
@@ -260,7 +262,7 @@ class storySmartCard extends HTMLElement {
           </story-code-block>
         </story-card>
 
-        <story-card id="payment-networks" title="${storyMeta["payment-networks"].title}" description="${storyMeta["payment-networks"].description}" usage="${storyMeta["payment-networks"].usage}">
+        <story-card id="payment-networks" canvas-background="var(--surface-recessed-100)" title="${storyMeta["payment-networks"].title}" description="${storyMeta["payment-networks"].description}" usage="${storyMeta["payment-networks"].usage}">
           <mui-v-stack alignX="center" slot="body" style="padding-top: var(--space-400); padding-bottom: var(--space-400);">
             <mui-smart-card
               variant="plain"

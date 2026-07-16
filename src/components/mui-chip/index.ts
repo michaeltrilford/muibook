@@ -272,18 +272,18 @@ class MuiChip extends HTMLElement {
       /* Usage: input */
       :host([usage="input"]) .container {
         border-radius: var(--radius-000);
-        border-top-left-radius: calc(var(--chip-radius-top-left, var(--chip-radius-left, 0px)) - (var(--space-025) + var(--stroke-size-100)));
-        border-bottom-left-radius: calc(var(--chip-radius-bottom-left, var(--chip-radius-left, 0px)) - (var(--space-025) + var(--stroke-size-100)));
-        border-top-right-radius: calc(var(--chip-radius-top-right, var(--chip-radius-right, 0px)) - (var(--space-025) + var(--stroke-size-100)));
-        border-bottom-right-radius: calc(var(--chip-radius-bottom-right, var(--chip-radius-right, 0px)) - (var(--space-025) + var(--stroke-size-100)));
+        border-top-left-radius: calc(var(--chip-radius-top-left, var(--chip-radius-left, 0px)) - var(--stroke-size-300));
+        border-bottom-left-radius: calc(var(--chip-radius-bottom-left, var(--chip-radius-left, 0px)) - var(--stroke-size-300));
+        border-top-right-radius: calc(var(--chip-radius-top-right, var(--chip-radius-right, 0px)) - var(--stroke-size-300));
+        border-bottom-right-radius: calc(var(--chip-radius-bottom-right, var(--chip-radius-right, 0px)) - var(--stroke-size-300));
         border: none;
       }
 
       :host([usage="input"][slot="before"]),
       :host([usage="input"][slot="after"]) {
         background: var(--chip-input-background, #333333);
-        padding: var(--chip-input-shell-padding, 2px);
-        border: var(--chip-input-shell-border, 1px solid var(--form-default-border-color));
+        padding: var(--chip-input-shell-padding, var(--stroke-size-000));
+        border: var(--chip-input-shell-border, var(--stroke-size-100) solid var(--form-default-border-color));
         box-sizing: border-box;
       }
 
@@ -294,8 +294,8 @@ class MuiChip extends HTMLElement {
       }
 
       :host([usage="input"][slot="before"]) .container {
-        border-top-left-radius: calc(var(--chip-input-border-radius, var(--form-radius-medium)) - (var(--space-025) + var(--stroke-size-100)));
-        border-bottom-left-radius: calc(var(--chip-input-border-radius, var(--form-radius-medium)) - (var(--space-025) + var(--stroke-size-100)));
+        border-top-left-radius: calc(var(--chip-input-border-radius, var(--form-radius-medium)) - var(--stroke-size-100));
+        border-bottom-left-radius: calc(var(--chip-input-border-radius, var(--form-radius-medium)) - var(--stroke-size-100));
       }
 
       :host([usage="input"][slot="after"]) {
@@ -305,8 +305,8 @@ class MuiChip extends HTMLElement {
       }
 
       :host([usage="input"][slot="after"]) .container {
-        border-top-right-radius: calc(var(--chip-input-border-radius, var(--form-radius-medium)) - (var(--space-025) + var(--stroke-size-100)));
-        border-bottom-right-radius: calc(var(--chip-input-border-radius, var(--form-radius-medium)) - (var(--space-025) + var(--stroke-size-100)));
+        border-top-right-radius: calc(var(--chip-input-border-radius, var(--form-radius-medium)) - var(--stroke-size-100));
+        border-bottom-right-radius: calc(var(--chip-input-border-radius, var(--form-radius-medium)) - var(--stroke-size-100));
       }
 
       /* Hover and focus (natural) */

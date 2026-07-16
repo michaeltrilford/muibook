@@ -171,7 +171,7 @@ class CompDashboard extends HTMLElement {
                 <mui-grid class="main-grid" col="minmax(0, 1.55fr) minmax(26rem, 1fr)" space="var(--space-300)" alignx="stretch">
                 <mui-card>
                   <mui-card-header>
-                    <mui-h-stack alignx="space-between" aligny="center">
+                    <mui-h-stack space="var(--space-200)" alignx="space-between" aligny="center" wrap>
                       <mui-v-stack space="var(--space-000)">
                         <mui-heading size="3" level="2">Activation health</mui-heading>
                         <mui-body size="small" variant="secondary">Performance across the last 30 days.</mui-body>

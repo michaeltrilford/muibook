@@ -13,7 +13,9 @@ class storyTable extends HTMLElement {
       this.shadowRoot.innerHTML = `<story-metadata-empty component="Table"></story-metadata-empty>`;
       return;
     }
-    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
+    const storyMeta = Object.fromEntries(
+      storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]),
+    );
     const attrsReference = JSON.stringify([
       {
         component: "mui-row",
@@ -343,7 +345,7 @@ class storyTable extends HTMLElement {
                     <mui-cell>Whalen</mui-cell>
                     <mui-cell>$1,100.00</mui-cell>
                     <mui-cell action>
-                      <mui-dropdown position="right" size="medium">
+                      <mui-dropdown position="right" size="x-small">
                         <mui-button slot="action" variant="tertiary" size="xx-small" icon-only><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
                         <mui-menu>
                           <mui-button size="xx-small">Edit</mui-button>
@@ -356,7 +358,7 @@ class storyTable extends HTMLElement {
                     <mui-cell>Peters</mui-cell>
                     <mui-cell>$2,350.00</mui-cell>
                     <mui-cell action>
-                      <mui-dropdown position="right" size="medium">
+                      <mui-dropdown position="right" size="x-small">
                         <mui-button slot="action" variant="tertiary" size="xx-small" icon-only><mui-icon-ellipsis size="x-small"></mui-icon-ellipsis></mui-button>
                         <mui-menu>
                           <mui-button size="xx-small">Edit</mui-button>

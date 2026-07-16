@@ -1,4 +1,4 @@
-import { getComponentDocs } from "../../../utils/story-data";
+import { createStoryMeta, getComponentDocs } from "../../../utils/story-data";
 import MikeAvatar from "../../../images/mui/avatar-mike.jpg";
 
 class storyButton extends HTMLElement {
@@ -14,7 +14,7 @@ class storyButton extends HTMLElement {
       this.shadowRoot.innerHTML = `<story-metadata-empty component="Button"></story-metadata-empty>`;
       return;
     }
-    const storyMeta = Object.fromEntries(storyItems.map((story) => [story.key, { ...story, usage: story.list.join("|||") }]));
+    const storyMeta = createStoryMeta(storyItems);
     const attrsReference = JSON.stringify([
       {
         component: "mui-button",

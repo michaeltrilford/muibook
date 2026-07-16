@@ -120,8 +120,7 @@ class MuiSmartCard extends HTMLElement {
           min-width: 247px;
           border-radius: var(--radius-300);
           overflow: hidden;
-          box-shadow: 0 0px 8px rgb(0 0 0 / 12%), 0 2px 16px rgb(0 0 0 / 12%),
-            0 4px 20px rgb(0 0 0 / 12%), 0 12px 28px rgb(0 0 0 / 12%);
+          box-shadow: 0 0px 8px rgb(0 0 0 / 12%);
         }
 
         .card-top {

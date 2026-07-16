@@ -30,7 +30,7 @@ class StoryCodeBlock extends HTMLElement {
           >👨‍💻</span>
           <span style='display: inline-flex; margin-bottom: var(--space-050);'>View Code</span>" 
       >
-        <mui-code slot="detail" scrollable card-slot>
+        <mui-code slot="detail" scrollable usage="surface">
           <slot></slot>
         </mui-code>
       </mui-accordion-block>

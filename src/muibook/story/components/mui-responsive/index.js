@@ -211,7 +211,7 @@ class storyResponsive extends HTMLElement {
               resize-min-drawer-width="320"
               resize-min-page-width="380"
               resize-close-threshold="96"
-              open
+              data-desktop-open
               data-drawer-toggle="responsive-container-drawer"
               side="left">
               <div slot="page" class="container-query-page">
@@ -242,7 +242,7 @@ class storyResponsive extends HTMLElement {
             </mui-drawer>
           </div>
           <story-code-block slot="footer" scrollable>
-            &lt;mui-drawer contained variant="push" resize-rail open data-drawer-toggle="responsive-container-drawer" width="320px" side="left"&gt;
+            &lt;mui-drawer contained variant="push" resize-rail data-desktop-open data-drawer-toggle="responsive-container-drawer" width="320px" side="left"&gt;
             <br />
             &nbsp;&nbsp;&lt;div slot="page" style="min-width: 0; container-type: inline-size;"&gt;
             <br />
@@ -258,7 +258,14 @@ class storyResponsive extends HTMLElement {
             <br />
             &nbsp;&nbsp;&lt;/div&gt;
             <br />
-            &lt;/mui-drawer&gt;
+            &lt;/mui-drawer&gt;<br /><br />
+            &lt;script&gt;<br />
+            &nbsp;&nbsp;const desktopOpenQuery = window.matchMedia(&quot;(min-width: 769px)&quot;);<br />
+            &nbsp;&nbsp;const drawer = document.querySelector(&quot;mui-drawer[data-desktop-open]&quot;);<br />
+            &nbsp;&nbsp;const syncDrawer = () =&gt; drawer.toggleAttribute(&quot;open&quot;, desktopOpenQuery.matches);<br /><br />
+            &nbsp;&nbsp;syncDrawer();<br />
+            &nbsp;&nbsp;desktopOpenQuery.addEventListener(&quot;change&quot;, syncDrawer);<br />
+            &lt;/script&gt;
           </story-code-block>
         </story-card>
 
@@ -443,6 +450,16 @@ class storyResponsive extends HTMLElement {
         }
       });
     });
+
+    const desktopOpenQuery = window.matchMedia("(min-width: 769px)");
+    const syncDesktopOpenDrawers = () => {
+      this.shadowRoot.querySelectorAll("mui-drawer[data-desktop-open]").forEach((drawer) => {
+        drawer.toggleAttribute("open", desktopOpenQuery.matches);
+      });
+    };
+
+    syncDesktopOpenDrawers();
+    desktopOpenQuery.addEventListener("change", syncDesktopOpenDrawers);
   }
 }
 

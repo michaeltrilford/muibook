@@ -34,7 +34,7 @@ class SongPage extends HTMLElement {
             <mui-h-stack alignx="space-between" aligny="center" space="var(--space-300)" width="100%" style="margin-block-end: var(--space-500);">
               <mui-h-stack alignx="start" aligny="center" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000);">
                 <mui-h-stack alignx="start" aligny="center" space="var(--space-200)" style="padding: var(--space-000) var(--space-200) var(--space-000) var(--space-200); border-radius: var(--radius-000);">
-                  <mui-heading level="1" size="3">SoundAmp</mui-heading>
+                  <mui-heading level="1" size="3">Amp</mui-heading>
                   <mui-badge variant="neutral">AU</mui-badge>
                 </mui-h-stack>
               </mui-h-stack>

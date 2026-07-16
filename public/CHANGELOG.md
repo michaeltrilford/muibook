@@ -61,6 +61,7 @@ _Status: WIP_
 
 ### Fixed
 
+- Chips composed with Input and Chip Input now resolve exposed inner corner radii to exactly one pixel below the surrounding form radius at every size, while middle Chips remain square.
 - Paperclip now maps the complete Financial Chart, Market Sparkline, Financial Bar Chart, and Comparison Chart token sets to its monochrome brand palette. Chart marks use blue in light mode and white in dark mode, including all Comparison Chart series.
 - Comparison Chart now owns padding for its populated header region, allowing slotted header compositions to omit repeated spacing while preserving series keys and other supporting content.
 - Financial Bar Chart now owns padding for populated header and footer regions. Its stories use edge-to-edge Card Bodies, consistent display typography, and complete code examples matching each rendered composition.

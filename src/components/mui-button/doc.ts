@@ -302,7 +302,7 @@ export const muiDocs: MuiDocs = {
           "title": "Button-Group: Layout",
           "description": "Use layout to control the group direction.",
           "list": [
-            "Use layout=&quot;row|column&quot; to define the group direction",
+            "Use layout=\"row|column\" to define the group direction",
             "Column layout is intended for full-width stacked actions"
           ]
         },
@@ -311,8 +311,8 @@ export const muiDocs: MuiDocs = {
           "title": "Button-Group: Alignment",
           "description": "Use align to control button-group placement.",
           "list": [
-            "Use align=&quot;left|right&quot; to control placement within row groups",
-            "The legacy right attribute is deprecated; prefer align=&quot;right&quot;"
+            "Use align=\"left|right\" to control placement within row groups",
+            "The legacy right attribute is deprecated; prefer align=\"right\""
           ]
         },
         {
