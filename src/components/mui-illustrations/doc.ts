@@ -20,6 +20,7 @@ export const muiDocs: MuiDocs = {
         "Use color='default' for light contexts and color='inverted' when the illustration needs to sit on dark surfaces.",
         "Use a custom CSS color only when the illustration needs to inherit a specific product accent.",
         "Keep illustration sizing consistent within the same product area.",
+        "Keep motion optional: use once for an entry moment and loop only when subtle ambient movement supports the experience.",
       ],
     },
 
@@ -63,6 +64,17 @@ export const muiDocs: MuiDocs = {
           "description": "Compares the supported Illustration size scale.",
           "list": [
             "Use one illustration size consistently within the same surface or flow."
+          ]
+        },
+        {
+          "key": "motion",
+          "title": "Motion",
+          "description": "Compares static, one-shot, and looping particle treatments.",
+          "list": [
+            "Use motion='once' when particles should reveal and settle as the illustration enters.",
+            "Use motion='loop' sparingly for subtle ambient movement; the illustration subject remains stable.",
+            "Use play(), pause(), and restart() when application state needs to control playback.",
+            "Particle animation is disabled when the user requests reduced motion."
           ]
         },
         {
@@ -114,7 +126,11 @@ export const muiDocs: MuiDocs = {
     ],
 
     behaviour: {
-      list: [""],
+      list: [
+        "Motion is opt-in and defaults to none.",
+        "Once plays a staggered particle reveal, while loop provides slow ambient particle movement.",
+        "Reduced-motion preferences leave all particles visible without animation."
+      ],
     },
 
     writing: {

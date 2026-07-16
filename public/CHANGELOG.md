@@ -10,6 +10,7 @@ _Status: WIP_
 
 ### Added
 
+- Illustration Trash now supports `motion="none | once | loop"` for internal particle choreography. One-shot motion uses a staggered reveal, while loop provides faster floating and fading particles; `play()`, `pause()`, and `restart()` controls and reduced-motion support are included.
 - Added `variant="unstyled"` to Button and Link for wrapping structured, non-interactive content such as Card while removing action chrome, sizing, padding, typography, and link decoration without removing native semantics or focus treatment.
 - Added `mui-menu` as the reusable visual surface for Dropdown menus and standalone overlay composition exploration. `mui-dropdown` continues to own portal positioning, focus, and dismissal behaviour.
 - Added `mui-submenu` for composing a hover- and focus-revealed nested Menu from a direct Button trigger. It inherits the parent Menu action context, maintains a forgiving pointer bridge, closes cleanly after nested actions, and synchronizes `aria-haspopup` and `aria-expanded`.

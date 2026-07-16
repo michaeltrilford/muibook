@@ -1,6 +1,11 @@
 export const muiApi = {
   "mui-illustration-trash": {
     description: "Representative API for Muibook illustration elements.",
+    members: [
+      { kind: "method", name: "play", description: "Starts particle motion. A static illustration switches to one-shot motion." },
+      { kind: "method", name: "pause", description: "Pauses the current particle animation." },
+      { kind: "method", name: "restart", description: "Restarts the current one-shot or looping particle animation." },
+    ],
     attributes: [
       {
         name: "size",
@@ -13,6 +18,12 @@ export const muiApi = {
         type: { text: '"default" | "inverted" | string' },
         default: "default",
         description: "Sets an illustration color preset or accepts any valid CSS color.",
+      },
+      {
+        name: "motion",
+        type: { text: '"none" | "once" | "loop"' },
+        default: "none",
+        description: "Controls optional particle motion without animating the primary illustration subject.",
       },
     ],
     cssProperties: [

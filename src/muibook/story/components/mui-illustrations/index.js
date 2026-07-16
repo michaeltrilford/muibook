@@ -72,6 +72,50 @@ class StoryIllustration extends HTMLElement {
         </story-code-block>
       </story-card>
 
+      <story-card id="motion" title="${storyMeta["motion"].title}" description="${storyMeta["motion"].description}" usage="${storyMeta["motion"].usage}">
+        <mui-grid slot="body" class="swatch-grid" col="repeat(auto-fit, minmax(24rem, 1fr))" space="var(--space-400)">
+          <mui-card>
+            <mui-card-body size="small">
+              <mui-v-stack space="var(--space-300)" alignx="center">
+                <mui-body size="small" variant="secondary">Static</mui-body>
+                <div class="illustration-shell">
+                  <mui-illustration-trash motion="none"></mui-illustration-trash>
+                </div>
+              </mui-v-stack>
+            </mui-card-body>
+          </mui-card>
+          <mui-card>
+            <mui-card-body size="small">
+              <mui-v-stack space="var(--space-300)" alignx="center">
+                <mui-body size="small" variant="secondary">Once</mui-body>
+                <div class="illustration-shell">
+                  <mui-illustration-trash id="trashMotionOnce" motion="once"></mui-illustration-trash>
+                </div>
+                <mui-button data-replay-motion size="small" variant="secondary">Replay</mui-button>
+              </mui-v-stack>
+            </mui-card-body>
+          </mui-card>
+          <mui-card>
+            <mui-card-body size="small">
+              <mui-v-stack space="var(--space-300)" alignx="center">
+                <mui-body size="small" variant="secondary">Loop</mui-body>
+                <div class="illustration-shell">
+                  <mui-illustration-trash motion="loop"></mui-illustration-trash>
+                </div>
+              </mui-v-stack>
+            </mui-card-body>
+          </mui-card>
+        </mui-grid>
+        <story-code-block slot="footer" scrollable>
+          &lt;mui-illustration-trash motion="none"&gt;&lt;/mui-illustration-trash&gt;<br />
+          &lt;mui-illustration-trash id="trashMotionOnce" motion="once"&gt;&lt;/mui-illustration-trash&gt;<br />
+          &lt;mui-illustration-trash motion="loop"&gt;&lt;/mui-illustration-trash&gt;<br /><br />
+          &lt;script&gt;<br />
+          &nbsp;&nbsp;document.querySelector("#trashMotionOnce").restart();<br />
+          &lt;/script&gt;
+        </story-code-block>
+      </story-card>
+
       <story-card id="sizes" title="${storyMeta["sizes"].title}" description="${storyMeta["sizes"].description}" usage="${storyMeta["sizes"].usage}">
         <mui-grid slot="body" class="size-grid" col="repeat(auto-fit, minmax(28rem, 1fr))" space="var(--space-400)">
           <mui-card>
@@ -191,6 +235,10 @@ class StoryIllustration extends HTMLElement {
         ${stories}
       </story-template>
     `;
+
+    this.shadowRoot.querySelector("[data-replay-motion]")?.addEventListener("click", () => {
+      this.shadowRoot.querySelector("#trashMotionOnce")?.restart();
+    });
   }
 }
 
