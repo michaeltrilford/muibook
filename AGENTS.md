@@ -16,7 +16,7 @@ This repo builds the Muibook component library: framework-agnostic, accessible W
 - Generated component metadata: `public/custom-elements.json`
 - Runtime/destination attrs: `public/dynamic-attrs.json`
 - Authored knowledge: `src/knowledge/*`
-- Knowledge export target: sibling repo `../muibook-knowledge`
+- Knowledge export targets: sibling repos `../muibook-knowledge` and `../RedactdCanvas/plugins/assets/muibook-knowledge`
 
 ## Common Commands
 
@@ -29,6 +29,7 @@ This repo builds the Muibook component library: framework-agnostic, accessible W
 - `npm run token-build` — Style Dictionary tokens
 - `npm run cem` — generate `public/custom-elements.json`
 - `npm run copy-knowledge` — copy CEM, dynamic attrs, root docs, and `src/knowledge/*` into `../muibook-knowledge`
+- `npm run copy-knowledge:redactd-canvas` — copy the Redactd-specific CEM, dynamic attrs, design, rules, keywords, and compositions subset into `../RedactdCanvas/plugins/assets/muibook-knowledge`
 
 ## Adding A New Component
 

@@ -223,10 +223,22 @@ The full package build also generates and copies related knowledge files:
 - `public/dynamic-attrs.json` for runtime/destination structural attrs.
 - root `AGENTS.md` and `DESIGN.md`.
 
-`npm run build` runs `npm run copy-knowledge`, which syncs the exported bundle into the sibling `../muibook-knowledge` repo used for [michaeltrilford/muibook-knowledge](https://github.com/michaeltrilford/muibook-knowledge):
+`npm run build` syncs Muibook knowledge to two sibling destinations:
+
+- `npm run copy-knowledge` copies the complete exported bundle into `../muibook-knowledge`, which is published separately as [michaeltrilford/muibook-knowledge](https://github.com/michaeltrilford/muibook-knowledge) for MCP clients and other AI tools.
+- `npm run copy-knowledge:redactd-canvas` copies the Redactd-specific subset into `../RedactdCanvas/plugins/assets/muibook-knowledge` for bundling with the Redactd Canvas plugin. This subset contains `custom-elements.json`, `dynamic-attrs.json`, `DESIGN.md`, `rules.ts`, `compositions.ts`, and `keywords.ts`.
+
+Muibook remains the source of truth for both exports. The destination copies should be regenerated rather than edited independently. Run the complete build to generate and sync both destinations:
 
 ```bash
 npm run build
+```
+
+To refresh only one destination, run its copy command directly:
+
+```bash
+npm run copy-knowledge
+npm run copy-knowledge:redactd-canvas
 ```
 
 Use `includeInAgent: true` in `compositionConfig` only for compact examples that should be bundled into `@muibook/components/agent/prompts`. Keep richer examples in the full knowledge export with `includeInAgent: false`.
