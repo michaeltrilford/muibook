@@ -131,7 +131,7 @@ class PluginsPage extends HTMLElement {
           </mui-v-stack>
 
           <mui-v-stack space="var(--space-400)">
-            <mui-heading level="2" size="3">Knowledge and lightweight access</mui-heading>
+            <mui-heading level="2" size="3">Skills &amp; Knowledge Base</mui-heading>
             <mui-grid class="tool-grid" space="var(--space-600)">
               <div class="tool-card">
                 <mui-card class="skill-card">
