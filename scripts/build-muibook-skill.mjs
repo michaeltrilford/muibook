@@ -4,7 +4,6 @@ import ts from "typescript";
 
 const root = process.cwd();
 const skillDir = path.join(root, "skills/muibook-components");
-const referencesDir = path.join(skillDir, "references");
 
 const readJson = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
 const write = (file, value) => {
@@ -81,6 +80,33 @@ const selectedCompositions = Object.fromEntries(
   compositionModule.agentCompositionKeys.map((key) => [key, compositionModule.compositions[key]]),
 );
 
+const compactText = (value = "") => String(value).replace(/\s+/g, " ").trim();
+const componentReference = components
+  .map((component) => {
+    const attributes = component.attributes.map((attribute) => attribute.name).join(", ") || "none";
+    const slots = component.slots.map((slot) => slot.name).join(", ") || "none";
+    return `- \`${component.tag}\` — ${compactText(component.description || component.name)} Attributes: ${attributes}. Slots: ${slots}.`;
+  })
+  .join("\n");
+
+const wrapList = (items, perLine = 6) => {
+  const lines = [];
+  for (let index = 0; index < items.length; index += perLine) {
+    lines.push(items.slice(index, index + perLine).join(", "));
+  }
+  return lines.join("\n");
+};
+
+const compositionReference = Object.entries(selectedCompositions)
+  .map(
+    ([name, composition]) => `### ${name}
+
+\`\`\`json
+${JSON.stringify(composition)}
+\`\`\``,
+  )
+  .join("\n\n");
+
 const skill = `---
 name: muibook-components
 description: Lightweight, generated knowledge of current Muibook Web Components, public attributes, slots, base and semantic tokens, and selected composition examples. Use when Codex needs to create or review Muibook markup or choose valid Muibook components without requiring the Muibook knowledge MCP.
@@ -88,51 +114,51 @@ description: Lightweight, generated knowledge of current Muibook Web Components,
 
 # Muibook Components
 
-Use the generated references as a compact snapshot of Muibook ${packageJson.version}.
+Use this single-file snapshot of Muibook ${packageJson.version} when the full knowledge MCP is unavailable or unnecessary.
 
 ## Workflow
 
-1. Search [references/components.json](references/components.json) for relevant component names and purposes.
-2. Read the matching component records before writing markup. Use only listed public attributes and slots.
-3. Use [references/tokens.json](references/tokens.json) when base or semantic token names are needed. Prefer semantic tokens for meaningful UI styling.
-4. Read [references/compositions.json](references/compositions.json) when a selected example helps demonstrate how components fit together.
-5. If the Muibook MCP is available, use its \`start_here\` tool for richer or newer guidance. Treat the MCP as authoritative when its version is newer than this snapshot.
+1. Search the component reference below for relevant tag names and purposes.
+2. Use only the listed public attribute and slot names. Use the MCP when exact types, defaults, events, parts, or component tokens are required.
+3. Prefer the listed semantic tokens for meaningful UI styling; use base tokens for foundations.
+4. Adapt the embedded compositions when a selected example matches the requested interface.
+5. If the Muibook MCP is available, use its \`start_here\` tool for richer or newer guidance. Treat a newer MCP version as authoritative.
 
 ## Boundaries
 
 - Do not invent components, attributes, slots, or token names.
 - Do not treat internal state or dynamic destination attributes as public props.
-- Do not expect component-specific tokens, full UX guidance, styling architecture, or the complete composition library in this lightweight skill; use the Muibook MCP for those needs.
+- Do not expect exact attribute types, defaults, events, parts, component-specific tokens, full UX guidance, or the complete composition library in this lightweight skill; use the Muibook MCP for those needs.
 - Keep native custom-element tag names when writing HTML. When another tool maps names such as \`Button\` to \`mui-button\`, follow that tool's schema while preserving the verified public props.
+
+## Component Reference
+
+${componentReference}
+
+## Token Reference
+
+Base token names:
+
+\`\`\`text
+${wrapList(Object.keys(baseTokens))}
+\`\`\`
+
+Semantic token names:
+
+\`\`\`text
+${wrapList(Object.keys(semanticTokens))}
+\`\`\`
+
+## Selected Compositions
+
+These compact JSON trees use Muibook composition names such as \`Button\` and \`Card\`. Preserve their verified props when mapping them to native \`mui-*\` elements or another supported schema.
+
+${compositionReference}
 `;
 
-const openaiYaml = `interface:
-  display_name: "Muibook Components"
-  short_description: "Current Muibook components, props, tokens, and examples"
-  default_prompt: "Use the Muibook component reference to create this interface with valid components and props."
-`;
-
+fs.rmSync(path.join(skillDir, "agents"), { recursive: true, force: true });
+fs.rmSync(path.join(skillDir, "references"), { recursive: true, force: true });
 write(path.join(skillDir, "SKILL.md"), skill);
-write(path.join(skillDir, "agents/openai.yaml"), openaiYaml);
-write(path.join(referencesDir, "components.json"), {
-  generatedFrom: "public/custom-elements.json",
-  packageVersion: packageJson.version,
-  componentCount: components.length,
-  components,
-});
-write(path.join(referencesDir, "tokens.json"), {
-  generatedFrom: ["token-build/tokens/mui.json", "public/css/mui-tokens.css"],
-  packageVersion: packageJson.version,
-  note: "Base tokens are raw foundations. Semantic tokens may list light and dark theme mappings. Component-specific tokens are excluded.",
-  base: baseTokens,
-  semantic: semanticTokens,
-});
-write(path.join(referencesDir, "compositions.json"), {
-  generatedFrom: "src/knowledge/compositions.ts#agentCompositions",
-  packageVersion: packageJson.version,
-  compositionCount: Object.keys(selectedCompositions).length,
-  compositions: selectedCompositions,
-});
 
-console.log(`Generated Muibook component skill: ${path.relative(root, skillDir)}`);
+console.log(`Generated single-file Muibook component skill: ${path.relative(root, path.join(skillDir, "SKILL.md"))}`);
 console.log(`Components: ${components.length}; selected compositions: ${Object.keys(selectedCompositions).length}`);

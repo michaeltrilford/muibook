@@ -9,7 +9,7 @@ const MUIBOOK_CANVAS_SKILL =
 const MUIBOOK_CANVAS_SKILL_RAW =
   "https://raw.githubusercontent.com/michaeltrilford/RedactdCanvas/main/plugins/skills/redactd-canvas-muibook/SKILL.md";
 const MUIBOOK_COMPONENT_SKILL =
-  "https://github.com/michaeltrilford/muibook/tree/main/skills/muibook-components";
+  "https://github.com/michaeltrilford/muibook/blob/main/skills/muibook-components/SKILL.md";
 const MUIBOOK_COMPONENT_SKILL_RAW =
   "https://raw.githubusercontent.com/michaeltrilford/muibook/main/skills/muibook-components/SKILL.md";
 
@@ -177,11 +177,11 @@ class PluginsPage extends HTMLElement {
                         <mui-badge variant="attention">Standalone skill</mui-badge>
                         <mui-heading level="3" size="4">Muibook Components</mui-heading>
                         <mui-body size="medium">
-                          Give Codex a lightweight, versioned snapshot of current Muibook components, public props, slots, base and semantic tokens, and selected examples—without requiring an MCP installation.
+                          Give Codex a lightweight, single-file snapshot of current Muibook components, public props, slots, base and semantic tokens, and selected examples—without requiring an MCP installation.
                         </mui-body>
                       </mui-v-stack>
                       <mui-h-stack wrap="wrap" space="var(--space-200)">
-                        <mui-link href="${MUIBOOK_COMPONENT_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill folder</mui-link>
+                        <mui-link href="${MUIBOOK_COMPONENT_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill on GitHub</mui-link>
                         <mui-link href="${MUIBOOK_COMPONENT_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">Open SKILL.md</mui-link>
                       </mui-h-stack>
                     </mui-v-stack>

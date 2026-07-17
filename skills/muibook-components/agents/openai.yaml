@@ -1,4 +1,0 @@
-interface:
-  display_name: "Muibook Components"
-  short_description: "Current Muibook components, props, tokens, and examples"
-  default_prompt: "Use the Muibook component reference to create this interface with valid components and props."
