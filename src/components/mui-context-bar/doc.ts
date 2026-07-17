@@ -12,7 +12,7 @@ export const muiDocs: MuiDocs = {
     guides: ["https://guides.muibook.com/context-bar"],
     usage: {
       list: [
-        "Use inside the context slot of Prompt when an active task, selected content, steering target, or attachment should stay attached to the composer.",
+        "Use inside the context-above or context-below slot of Prompt when an active task, selected content, steering target, or attachment should stay attached to the composer.",
         "Slot the summary as normal content; the component truncates slotted Body text so long task names stay on one line.",
         "Use the actions slot for controls such as Steer, Remove, or More.",
         "Only render Context Bar when the app has real context to show; Prompt does not create or hide this row for you.",
@@ -36,7 +36,7 @@ export const muiDocs: MuiDocs = {
           list: [
             "Slot Context Bar into Prompt context when app state has an active task.",
             "Omit the component entirely when there is no active context.",
-            "Prompt only positions the slotted context; it does not create context chrome.",
+            "Use slot='context-above' for a leading context row.",
           ],
         },
         {
@@ -45,18 +45,19 @@ export const muiDocs: MuiDocs = {
           description: "",
           list: [
             "Slot Context Bar into Prompt context when app state has an active task.",
+            "Use slot='context-above' when context should lead the composer.",
             "Swap actions to a dropdown menu below 400px container width to ensure the layout remains compact.",
             "Omit the component entirely when there is no active context.",
           ],
         },
         {
-          key: "approval-prompt",
-          title: "Approval Context",
-          description: "",
+          key: "below-prompt",
+          title: "Below Prompt",
+          description: "Combines a trailing Context Bar with related next-step actions below the prompt surface.",
           list: [
-            "Slot Context Bar into Prompt context when app state has an active task.",
-            "Swap actions to a dropdown menu below 400px container width to ensure the layout remains compact.",
-            "Omit the component entirely when there is no active context.",
+            "Use slot='context-below' when project or tool context should follow the composer.",
+            "Wrap Context Bar and related suggestions in a V Stack assigned to the context-below slot.",
+            "Use tertiary actions for optional next steps that should remain quieter than prompt submission.",
           ],
         },
       ],

@@ -74,7 +74,38 @@ class MuiPrompt extends HTMLElement {
   private pendingColorFade = false;
   private lastDebugPayload = '{"event":"idle"}';
   private lightDomObserver: MutationObserver | null = null;
+  private contextSlotEls: HTMLSlotElement[] = [];
+  private managedContextBars = new Set<HTMLElement>();
   private readonly onActionsSlotChange = () => this.updateActionsLayout();
+  private readonly onContextSlotChange = () => this.syncContextBarPositions();
+
+  private clearContextBarPositions() {
+    this.managedContextBars.forEach((contextBar) => {
+      if (contextBar.getAttribute("data-prompt-position") !== "true") return;
+      contextBar.removeAttribute("prompt-position");
+      contextBar.removeAttribute("data-prompt-position");
+    });
+    this.managedContextBars.clear();
+  }
+
+  private syncContextBarPositions() {
+    this.clearContextBarPositions();
+    this.contextSlotEls.forEach((slot) => {
+      const position = slot.name === "context-below" ? "below" : "above";
+      const roots = slot.assignedElements({ flatten: true }) as HTMLElement[];
+      roots.forEach((root) => {
+        const contextBars = [
+          ...(root.tagName.toLowerCase() === "mui-context-bar" ? [root] : []),
+          ...(Array.from(root.querySelectorAll("mui-context-bar")) as HTMLElement[]),
+        ];
+        contextBars.forEach((contextBar) => {
+          contextBar.setAttribute("prompt-position", position);
+          contextBar.setAttribute("data-prompt-position", "true");
+          this.managedContextBars.add(contextBar);
+        });
+      });
+    });
+  }
   private readonly enforceActionVariants = () => {
     if (!this.shadowRoot) return;
     const selector = 'slot[name="actions"], slot[name="actions-right"]';
@@ -836,13 +867,18 @@ class MuiPrompt extends HTMLElement {
     textarea?.addEventListener("focus", this.onTextareaFocus);
     const actionSlot = this.shadowRoot.querySelector('slot[name="actions"]') as HTMLSlotElement | null;
     const actionRightSlot = this.shadowRoot.querySelector('slot[name="actions-right"]') as HTMLSlotElement | null;
+    this.contextSlotEls = Array.from(
+      this.shadowRoot.querySelectorAll('slot[name="context-above"], slot[name="context-below"]'),
+    ) as HTMLSlotElement[];
     const defaultSubmit = this.shadowRoot.querySelector("#promptDefaultSubmitAction") as HTMLElement | null;
     actionSlot?.addEventListener("slotchange", this.onActionsSlotChange);
     actionRightSlot?.addEventListener("slotchange", this.onActionsSlotChange);
+    this.contextSlotEls.forEach((slot) => slot.addEventListener("slotchange", this.onContextSlotChange));
     if (typeof MutationObserver !== "undefined") {
       this.lightDomObserver?.disconnect();
       this.lightDomObserver = new MutationObserver(() => {
         this.updateActionsLayout();
+        this.syncContextBarPositions();
       });
       this.lightDomObserver.observe(this, {
         childList: true,
@@ -856,6 +892,7 @@ class MuiPrompt extends HTMLElement {
     this.addEventListener("click", this.onContextToggleClick);
     this.addEventListener("dismiss", this.onContextChipDismiss as EventListener);
     this.syncErrorVisibility();
+    this.syncContextBarPositions();
     this.bindPreviewOverflow();
     this.bindActionTrigger();
     this.syncLoadingState();
@@ -874,6 +911,9 @@ class MuiPrompt extends HTMLElement {
     defaultSubmit?.removeEventListener("click", this.onDefaultSubmitClick);
     actionSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
     actionRightSlot?.removeEventListener("slotchange", this.onActionsSlotChange);
+    this.contextSlotEls.forEach((slot) => slot.removeEventListener("slotchange", this.onContextSlotChange));
+    this.contextSlotEls = [];
+    this.clearContextBarPositions();
     this.removeEventListener("preview-chip-open", this.onPreviewOpen as EventListener);
     this.removeEventListener("click", this.onContextToggleClick);
     this.removeEventListener("dismiss", this.onContextChipDismiss as EventListener);
@@ -2187,7 +2227,7 @@ class MuiPrompt extends HTMLElement {
         }
       </style>
 
-        <slot name="context" class="context-slot"></slot>
+        <slot name="context-above" class="context-slot"></slot>
         <div class="surface">
           <div class="ring-container">
             <div class="ring-gradient"></div>
@@ -2246,6 +2286,7 @@ class MuiPrompt extends HTMLElement {
      
       </div>
       </div>
+      <slot name="context-below" class="context-slot"></slot>
       <mui-v-stack class="debug-region" space="var(--space-050)" ${this.hasAttribute("debug") ? "" : "hidden"}>
         <mui-body id="promptDebugStatus" size="x-small" variant="secondary" weight="regular">Idle: no submit yet.</mui-body>
         <mui-body class="debug-payload-body" size="x-small" variant="secondary" weight="regular">

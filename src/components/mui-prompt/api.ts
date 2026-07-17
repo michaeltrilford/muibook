@@ -167,7 +167,8 @@ export const muiApi = {
       },
     ],
     slots: [
-      { name: "context", description: "Optional context content displayed above the prompt input, usually `mui-context-bar`." },
+      { name: "context-above", description: "Optional context content displayed above the prompt surface, usually `mui-context-bar` or a composed stack containing it." },
+      { name: "context-below", description: "Optional context content displayed below the prompt surface, usually `mui-context-bar` or a composed stack containing it." },
       { name: "preview", description: "Preview items displayed above the prompt input, typically `mui-preview-chip`." },
       { name: "input", description: "Optional replacement content for the built-in textarea region." },
       { name: "actions", description: "Leading prompt actions such as buttons, icons, toggles, or rules." },

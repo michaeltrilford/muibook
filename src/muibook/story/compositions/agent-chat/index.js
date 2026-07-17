@@ -88,8 +88,8 @@ class CompAgentChat extends HTMLElement {
         ${
           options.context
             ? /*html*/ `
-          <mui-context-bar slot="context">
-            <mui-body size="x-small">
+          <mui-context-bar slot="context-above">
+            <mui-body size="x-small" style="margin-inline-start: var(--space-300);">
               Tighten release notes for prompt context, action bars, and agent chat story before publishing
             </mui-body>
             <mui-button slot="actions" variant="tertiary" size="x-small" onclick="event.stopPropagation()">
@@ -384,7 +384,9 @@ class CompAgentChat extends HTMLElement {
             &nbsp;&nbsp;&lt;mui-chat-message align=&quot;end&quot;&gt;...user request...&lt;/mui-chat-message&gt;<br />
             &nbsp;&nbsp;&lt;mui-chat-message variant=&quot;ghost&quot;&gt;...agent response...&lt;/mui-chat-message&gt;<br />
             &nbsp;&nbsp;&lt;mui-prompt enter-submit context-mode=&quot;icon&quot;&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-context-bar slot=&quot;context&quot;&gt;...active task and actions...&lt;/mui-context-bar&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-context-bar slot=&quot;context-above&quot;&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size=&quot;x-small&quot; style=&quot;margin-inline-start: var(--space-300);&quot;&gt;...active task...&lt;/mui-body&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-action-toggle slot=&quot;actions&quot;&gt;...web context toggle...&lt;/mui-action-toggle&gt;<br />
             &nbsp;&nbsp;&lt;/mui-prompt&gt;<br />
             &lt;/mui-v-stack&gt;

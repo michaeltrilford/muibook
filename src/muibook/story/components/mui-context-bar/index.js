@@ -61,8 +61,8 @@ class StoryContextBar extends HTMLElement {
         ${
           options.context === "informational"
             ? /*html*/ `
-          <mui-context-bar slot="context">
-            <mui-body size="x-small" weight="regular" variant="default">
+          <mui-context-bar slot="context-above">
+            <mui-body size="x-small" weight="regular" variant="default" style="margin-inline-start: var(--space-300);">
               Tighten release notes for prompt context, action bars, and agent chat story before publishing
             </mui-body>
 
@@ -83,8 +83,8 @@ class StoryContextBar extends HTMLElement {
         `
             : options.context === "status"
               ? /*html*/ `
-          <mui-context-bar slot="context">
-            <mui-h-stack aligny="center" space="var(--space-100)">
+          <mui-context-bar slot="context-above">
+            <mui-h-stack aligny="center" space="var(--space-100)" style="margin-inline-start: var(--space-300);">
               <mui-body size="x-small" weight="regular" variant="default">8 files changed</mui-body>
               <mui-body size="x-small" weight="regular" variant="positive">+44</mui-body>
               <mui-body size="x-small" weight="regular" variant="attention">-20</mui-body>
@@ -108,30 +108,40 @@ class StoryContextBar extends HTMLElement {
             </mui-responsive>
           </mui-context-bar>
         `
-              : options.context === "approval"
+              : options.context === "project"
                 ? /*html*/ `
-          <mui-context-bar slot="context">
-            <mui-body size="x-small" weight="regular" variant="default">
-              The agent wants to delete 12 unused files
-            </mui-body>
-            <mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400">
-
-              <mui-h-stack slot="showAbove" aligny="center" space="var(--space-100)">
-                <mui-button variant="tertiary" size="x-small">Deny</mui-button>
-                <mui-button variant="primary" size="x-small">Allow</mui-button>
-              </mui-h-stack>
-
-              <mui-dropdown slot="showBelow" position="right" style="--menu-min-width: 9rem;" size="x-small">
-                <mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More">
-                  <mui-icon-ellipsis size="x-small" class="mui-icon"></mui-icon-ellipsis>
+          <mui-v-stack slot="context-below" width="100%" space="var(--space-300)">
+            <mui-context-bar>
+              <mui-h-stack aligny="center" space="var(--space-100)">
+                <mui-button variant="tertiary" size="x-small">
+                  <mui-icon-text-below-folder slot="before" size="x-small"></mui-icon-text-below-folder>
+                  Choose project
                 </mui-button>
-                <mui-menu>
-                  <mui-button size="x-small">Deny</mui-button>
-                  <mui-button size="x-small">Allow</mui-button>
-                </mui-menu>
-              </mui-dropdown>
-            </mui-responsive>
-          </mui-context-bar>
+                <mui-button variant="tertiary" size="x-small">
+                  <mui-icon-grid slot="before" size="x-small"></mui-icon-grid>
+                  Plugins
+                </mui-button>
+              </mui-h-stack>
+              <mui-button slot="actions" variant="tertiary" size="x-small" icon-only aria-label="Open workspace">
+                <mui-icon-panel size="x-small"></mui-icon-panel>
+              </mui-button>
+            </mui-context-bar>
+
+            <mui-v-stack alignx="stretch" space="var(--space-100)" width="100%" style="padding-inline: var(--space-200); box-sizing: border-box;">
+              <mui-button align="start" variant="tertiary" size="x-small">
+                <mui-icon-ai slot="before" size="x-small"></mui-icon-ai>
+                Create a file or build a site
+              </mui-button>
+              <mui-button align="start" variant="tertiary" size="x-small">
+                <mui-icon-list-and-film slot="before" size="x-small"></mui-icon-list-and-film>
+                Research and plan next steps
+              </mui-button>
+              <mui-button align="start" variant="tertiary" size="x-small">
+                <mui-icon-timer slot="before" size="x-small"></mui-icon-timer>
+                Automate routine and recurring work
+              </mui-button>
+            </mui-v-stack>
+          </mui-v-stack>
         `
                 : ""
         }
@@ -196,8 +206,8 @@ class StoryContextBar extends HTMLElement {
         ${getComposer({ previews: true, context: "informational", simpleActions: true, placeholder: "Paste, click preview, or submit..." })}
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt&gt;<br />
-          &nbsp;&nbsp;&lt;mui-context-bar slot="context"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="regular" variant="default"&gt;Tighten release notes...&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-context-bar slot="context-above"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="regular" variant="default" style="margin-inline-start: var(--space-300);"&gt;Tighten release notes...&lt;/mui-body&gt;<br />
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="actions" aligny="center" space="var(--space-000)"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" size="x-small"&gt;Steer&lt;/mui-button&gt;<br />
@@ -225,11 +235,11 @@ class StoryContextBar extends HTMLElement {
         ${getComposer({ previews: true, context: "status", simpleActions: true, placeholder: "Paste, click preview, or submit..." })}
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt&gt;<br />
-          &nbsp;&nbsp;&lt;mui-context-bar slot="context"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack aligny="center" space="var(--space-100)"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="default"&gt;8 files changed&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="positive"&gt;+44&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" variant="attention"&gt;-20&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;mui-context-bar slot="context-above"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack aligny="center" space="var(--space-100)" style="margin-inline-start: var(--space-300);"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="regular" variant="default"&gt;8 files changed&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="regular" variant="positive"&gt;+44&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="regular" variant="attention"&gt;-20&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="showAbove" aligny="center" space="var(--space-100)"&gt;<br />
@@ -254,33 +264,37 @@ class StoryContextBar extends HTMLElement {
       </story-card>
 
       <story-card
-        id="approval-prompt"
-        title="${storyMeta["approval-prompt"].title}"
-        usage="${storyMeta["approval-prompt"].usage}"
+        id="below-prompt"
+        title="${storyMeta["below-prompt"].title}"
+        description="${storyMeta["below-prompt"].description}"
+        usage="${storyMeta["below-prompt"].usage}"
       >
-        ${getComposer({ previews: true, context: "approval", simpleActions: true, placeholder: "Paste, click preview, or submit..." })}
+        ${getComposer({ context: "project", simpleActions: true, placeholder: "Work with the agent..." })}
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt&gt;<br />
-          &nbsp;&nbsp;&lt;mui-context-bar slot="context"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="regular" variant="default"&gt;The agent wants to delete 12 unused files&lt;/mui-body&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="showAbove" aligny="center" space="var(--space-100)"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" size="x-small"&gt;Deny&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="primary" size="x-small"&gt;Allow&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&lt;mui-v-stack slot="context-below" width="100%" space="var(--space-300)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-context-bar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack aligny="center" space="var(--space-100)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" size="x-small"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-text-below-folder slot="before" size="x-small"&gt;&lt;/mui-icon-text-below-folder&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose project<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" size="x-small"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-grid slot="before" size="x-small"&gt;&lt;/mui-icon-grid&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plugins<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button slot="actions" variant="tertiary" size="x-small" icon-only aria-label="Open workspace"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-panel size="x-small"&gt;&lt;/mui-icon-panel&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;x-small&quot; slot="showBelow" position="right" style="--menu-min-width: 9rem;"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="x-small" class="mui-icon"&gt;&lt;/mui-icon-ellipsis&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br /><br />
-          &nbsp;&nbsp;&lt;mui-menu&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Deny&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button size="x-small"&gt;Allow&lt;/mui-button&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&lt;/mui-menu&gt;<br />
-          &lt;/mui-dropdown&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;<br />
-          &nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack alignx="stretch" space="var(--space-100)" width="100%" style="padding-inline: var(--space-200); box-sizing: border-box;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button align="start" variant="tertiary" size="x-small"&gt;&lt;mui-icon-ai slot="before" size="x-small"&gt;&lt;/mui-icon-ai&gt;Create a file or build a site&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button align="start" variant="tertiary" size="x-small"&gt;&lt;mui-icon-list-and-film slot="before" size="x-small"&gt;&lt;/mui-icon-list-and-film&gt;Research and plan next steps&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button align="start" variant="tertiary" size="x-small"&gt;&lt;mui-icon-timer slot="before" size="x-small"&gt;&lt;/mui-icon-timer&gt;Automate routine and recurring work&lt;/mui-button&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br />
           &lt;/mui-prompt&gt;
         </story-code-block>
       </story-card>

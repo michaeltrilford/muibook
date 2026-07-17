@@ -138,8 +138,8 @@ class StoryPrompt extends HTMLElement {
             enter-submit
             context-mode="icon"
           >
-            <mui-context-bar slot="context">
-              <mui-body size="x-small" weight="regular" variant="default">
+            <mui-context-bar slot="context-above">
+              <mui-body size="x-small" weight="regular" variant="default" style="margin-inline-start: var(--space-300);">
                 Tighten release notes for prompt context, action bars, and agent chat story before publishing
               </mui-body>
               <mui-button slot="actions" variant="tertiary" size="x-small">Steer</mui-button>
@@ -162,7 +162,9 @@ class StoryPrompt extends HTMLElement {
           </mui-prompt>        </mui-v-stack>
         <story-code-block slot="footer" scrollable>
           &lt;mui-prompt&gt;<br />
-          &nbsp;&nbsp;&lt;mui-context-bar slot="context"&gt;...active context...&lt;/mui-context-bar&gt;<br />
+          &nbsp;&nbsp;&lt;mui-context-bar slot="context-above"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" style="margin-inline-start: var(--space-300);"&gt;...active context...&lt;/mui-body&gt;<br />
+          &nbsp;&nbsp;&lt;/mui-context-bar&gt;<br />
           &lt;/mui-prompt&gt;<br />
         </story-code-block>
       </story-card>

@@ -55,6 +55,7 @@ _Status: WIP_
 
 ### Breaking Changes
 
+- Prompt context placement now uses dedicated `context-above` and `context-below` slots. The previous `context` slot is removed; direct and wrapped Context Bars receive the correct attached edge treatment from their assigned slot.
 - Removed the `condensed` boolean from `mui-card-body`. Use `size="none"` for edge-to-edge content; internal Slat composition markers and authored examples now use the size-based contract.
 - Removed the `mui-prompt-message`, `mui-prompt-preview`, and `mui-prompt-toggle` component names and package exports. Use `mui-chat-message`, `mui-preview-chip`, and `mui-action-toggle` respectively.
 - Renamed `mui-body` variants: `optional` to `secondary`, `success` to `positive`, and `error` to `attention`. The old variant values are no longer supported.
@@ -64,6 +65,8 @@ _Status: WIP_
 
 ### Fixed
 
+- Context Bar now receives its attached border and corner treatment from Prompt's `context-above` or `context-below` slot, including when nested inside a composed Stack.
+- Context Bar now uses symmetrical `space-100` inline padding so actions can sit closer to its edges. Context stories apply explicit `space-300` leading alignment to Body and grouped status summaries where required, while the Below Prompt composition remains flush.
 - Dropdown now gives portaled Menu surfaces without an explicit width a stable `min(100%, 18rem)` default, preventing `max-content` and full-width actions from expanding the Menu to the temporary viewport-sized measurement wrapper. Explicit Menu `width` values still take precedence.
 - Chips composed with Input and Chip Input now resolve exposed inner corner radii to exactly one pixel below the surrounding form radius at every size, while middle Chips remain square.
 - Paperclip now maps the complete Financial Chart, Market Sparkline, Financial Bar Chart, and Comparison Chart token sets to its monochrome brand palette. Chart marks use blue in light mode and white in dark mode, including all Comparison Chart series.

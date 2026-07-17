@@ -138,7 +138,7 @@ class MuiContextBar extends HTMLElement {
           width: 100%;
           min-width: 0;
           box-sizing: border-box;
-          padding-inline-start: var(--space-400);
+          padding-inline-start: var(--space-100);
           padding-inline-end: var(--space-100);
           padding-block: var(--space-100);
           border: var(--border-thin);
@@ -146,6 +146,12 @@ class MuiContextBar extends HTMLElement {
           border-color: var(--form-default-border-color);
           border-radius: var(--radius-200) var(--radius-200) 0 0;
           background: var(--surface-elevated-100);
+        }
+        :host([prompt-position="below"]) .context {
+          border-top: 0;
+          border-bottom: var(--border-thin);
+          border-color: var(--form-default-border-color);
+          border-radius: 0 0 var(--radius-200) var(--radius-200);
         }
         .summary {
           display: block;
