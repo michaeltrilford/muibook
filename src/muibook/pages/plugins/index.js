@@ -12,6 +12,10 @@ const MUIBOOK_COMPONENT_SKILL =
   "https://github.com/michaeltrilford/muibook/blob/main/skills/muibook-components/SKILL.md";
 const MUIBOOK_COMPONENT_SKILL_RAW =
   "https://raw.githubusercontent.com/michaeltrilford/muibook/main/skills/muibook-components/SKILL.md";
+const MUIBOOK_CANVAS_SKILL_INSTALL =
+  "https://github.com/michaeltrilford/RedactdCanvas/tree/main/plugins/skills/redactd-canvas-muibook";
+const MUIBOOK_COMPONENT_SKILL_INSTALL =
+  "https://github.com/michaeltrilford/muibook/tree/main/skills/muibook-components";
 
 class PluginsPage extends HTMLElement {
   constructor() {
@@ -130,26 +134,6 @@ class PluginsPage extends HTMLElement {
             <mui-heading level="2" size="3">Knowledge and lightweight access</mui-heading>
             <mui-grid class="tool-grid" space="var(--space-600)">
               <div class="tool-card">
-                <mui-card>
-                  <mui-card-body>
-                    <mui-v-stack space="var(--space-600)">
-                      <mui-v-stack space="var(--space-200)">
-                        <mui-badge variant="positive">MCP</mui-badge>
-                        <mui-heading level="3" size="4">Muibook Knowledge MCP</mui-heading>
-                        <mui-body size="medium">
-                          Give Codex and other compatible agents on-demand access to Muibook component APIs, design rules, dynamic attributes, keywords, and composition examples.
-                        </mui-body>
-                      </mui-v-stack>
-                      <mui-h-stack wrap="wrap" space="var(--space-200)">
-                        <mui-link href="${MUIBOOK_KNOWLEDGE_REPO}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View MCP on GitHub</mui-link>
-                        <mui-link href="/knowledge-overview" variant="secondary" size="small">Read guide</mui-link>
-                      </mui-h-stack>
-                    </mui-v-stack>
-                  </mui-card-body>
-                </mui-card>
-              </div>
-
-              <div class="tool-card">
                 <mui-card class="skill-card">
                   <mui-card-body>
                     <mui-v-stack space="var(--space-600)">
@@ -160,6 +144,8 @@ class PluginsPage extends HTMLElement {
                           Pair this skill with Muibook Components for a lightweight Codex workflow that generates and pastes layouts through an open Redactd canvas—without installing the Redactd Canvas plugin, API backend, or Muibook Knowledge MCP.
                         </mui-body>
                       </mui-v-stack>
+                      <mui-code size="x-small" wrap>Install this skill:
+${MUIBOOK_CANVAS_SKILL_INSTALL}</mui-code>
                       <mui-h-stack wrap="wrap" space="var(--space-200)">
                         <mui-link href="${MUIBOOK_CANVAS_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill on GitHub</mui-link>
                         <mui-link href="${MUIBOOK_CANVAS_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">Open SKILL.md</mui-link>
@@ -180,6 +166,8 @@ class PluginsPage extends HTMLElement {
                           Give Codex the lightweight, single-file component knowledge used alongside Redactd Canvas for Muibook. The full Redactd Canvas plugin and Muibook Knowledge MCP remain optional paths for richer automation and guidance.
                         </mui-body>
                       </mui-v-stack>
+                      <mui-code size="x-small" wrap>Install this skill:
+${MUIBOOK_COMPONENT_SKILL_INSTALL}</mui-code>
                       <mui-h-stack wrap="wrap" space="var(--space-200)">
                         <mui-link href="${MUIBOOK_COMPONENT_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill on GitHub</mui-link>
                         <mui-link href="${MUIBOOK_COMPONENT_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">Open SKILL.md</mui-link>
@@ -188,7 +176,28 @@ class PluginsPage extends HTMLElement {
                   </mui-card-body>
                 </mui-card>
               </div>
+
+              <div class="tool-card">
+                <mui-card>
+                  <mui-card-body>
+                    <mui-v-stack space="var(--space-600)">
+                      <mui-v-stack space="var(--space-200)">
+                        <mui-badge variant="positive">MCP</mui-badge>
+                        <mui-heading level="3" size="4">Muibook Knowledge MCP</mui-heading>
+                        <mui-body size="medium">
+                          Give Codex and other compatible agents on-demand access to Muibook component APIs, design rules, dynamic attributes, keywords, and composition examples.
+                        </mui-body>
+                      </mui-v-stack>
+                      <mui-h-stack wrap="wrap" space="var(--space-200)">
+                        <mui-link href="${MUIBOOK_KNOWLEDGE_REPO}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View MCP on GitHub</mui-link>
+                        <mui-link href="/knowledge-overview" variant="secondary" size="small">Read guide</mui-link>
+                      </mui-h-stack>
+                    </mui-v-stack>
+                  </mui-card-body>
+                </mui-card>
+              </div>
             </mui-grid>
+
           </mui-v-stack>
         </div>
       </story-template>
