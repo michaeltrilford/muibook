@@ -5,7 +5,7 @@ const REDACTD_CANVAS_REPO = "https://github.com/michaeltrilford/RedactdCanvas";
 const REDACTD_DESIGN_LOOP_REPO = "https://github.com/michaeltrilford/RedactdDesignLoop";
 const MUIBOOK_KNOWLEDGE_REPO = "https://github.com/michaeltrilford/muibook-knowledge";
 const MUIBOOK_CANVAS_SKILL =
-  "https://github.com/michaeltrilford/RedactdCanvas/tree/main/plugins/skills/redactd-canvas-muibook";
+  "https://github.com/michaeltrilford/RedactdCanvas/blob/main/plugins/skills/redactd-canvas-muibook/SKILL.md";
 const MUIBOOK_CANVAS_SKILL_RAW =
   "https://raw.githubusercontent.com/michaeltrilford/RedactdCanvas/main/plugins/skills/redactd-canvas-muibook/SKILL.md";
 const MUIBOOK_COMPONENT_SKILL =
@@ -157,11 +157,11 @@ class PluginsPage extends HTMLElement {
                         <mui-badge variant="attention">Standalone skill</mui-badge>
                         <mui-heading level="3" size="4">Redactd Canvas for Muibook</mui-heading>
                         <mui-body size="medium">
-                          Install only the Muibook Canvas skill when you already use the Muibook MCP and want Codex to generate and paste layouts through the open browser—without installing the Redactd API backend.
+                          Pair this skill with Muibook Components for a lightweight Codex workflow that generates and pastes layouts through an open Redactd canvas—without installing the Redactd Canvas plugin, API backend, or Muibook Knowledge MCP.
                         </mui-body>
                       </mui-v-stack>
                       <mui-h-stack wrap="wrap" space="var(--space-200)">
-                        <mui-link href="${MUIBOOK_CANVAS_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill folder</mui-link>
+                        <mui-link href="${MUIBOOK_CANVAS_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill on GitHub</mui-link>
                         <mui-link href="${MUIBOOK_CANVAS_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">Open SKILL.md</mui-link>
                       </mui-h-stack>
                     </mui-v-stack>
@@ -177,7 +177,7 @@ class PluginsPage extends HTMLElement {
                         <mui-badge variant="attention">Standalone skill</mui-badge>
                         <mui-heading level="3" size="4">Muibook Components</mui-heading>
                         <mui-body size="medium">
-                          Give Codex a lightweight, single-file snapshot of current Muibook components, public props, slots, base and semantic tokens, and selected examples—without requiring an MCP installation.
+                          Give Codex the lightweight, single-file component knowledge used alongside Redactd Canvas for Muibook. The full Redactd Canvas plugin and Muibook Knowledge MCP remain optional paths for richer automation and guidance.
                         </mui-body>
                       </mui-v-stack>
                       <mui-h-stack wrap="wrap" space="var(--space-200)">
