@@ -7,13 +7,19 @@ description: Lightweight, generated knowledge of current Muibook Web Components,
 
 Use this single-file snapshot of Muibook 20.2.0 when the full knowledge MCP is unavailable or unnecessary.
 
+This skill provides component knowledge. When paired with `redactd-canvas-muibook`, that skill
+owns the Redactd tree contract, validation, browser transport, and paste workflow.
+
 ## Workflow
 
 1. Search the component reference below for relevant tag names and purposes.
 2. Use only the listed public attribute and slot names. Use the MCP when exact types, defaults, events, parts, or component tokens are required.
 3. Prefer the listed semantic tokens for meaningful UI styling; use base tokens for foundations.
 4. Adapt the embedded compositions when a selected example matches the requested interface.
-5. If the Muibook MCP is available, use its `start_here` tool for richer or newer guidance. Treat a newer MCP version as authoritative.
+5. For Redactd Canvas work, hand the selected components or composition tree to
+   `redactd-canvas-muibook`. The compositions below already use its canonical
+   `{ id, type, props, children }` shape, including slot placement in `props.slot`.
+6. If the Muibook MCP is available, use its `start_here` tool for richer or newer guidance. Treat a newer MCP version as authoritative.
 
 ## Boundaries
 
@@ -21,6 +27,8 @@ Use this single-file snapshot of Muibook 20.2.0 when the full knowledge MCP is u
 - Do not treat internal state or dynamic destination attributes as public props.
 - Do not expect exact attribute types, defaults, events, parts, component-specific tokens, full UX guidance, or the complete composition library in this lightweight skill; use the Muibook MCP for those needs.
 - Keep native custom-element tag names when writing HTML. When another tool maps names such as `Button` to `mui-button`, follow that tool's schema while preserving the verified public props.
+- Do not perform Redactd browser or API transport from this skill. Defer that workflow to
+  `redactd-canvas-muibook`.
 
 ## Component Reference
 
@@ -262,7 +270,9 @@ Semantic token names:
 
 ## Selected Compositions
 
-These compact JSON trees use Muibook composition names such as `Button` and `Card`. Preserve their verified props when mapping them to native `mui-*` elements or another supported schema.
+These compact JSON trees use the Redactd canvas schema and Muibook composition names such as
+`Button` and `Card`. They can be handed directly to `redactd-canvas-muibook` or mapped to native
+`mui-*` elements while preserving their verified props.
 
 ### signupFlow
 
@@ -285,5 +295,5 @@ These compact JSON trees use Muibook composition names such as `Button` and `Car
 ### agentChat
 
 ```json
-{"type":"VStack","id":"agent_chat_root","props":{"space":"var(--space-600)","alignX":"stretch","style":"max-width: 78rem; margin: 0 auto;"},"children":[{"type":"ChatMessage","id":"agent_chat_user_message","props":{"align":"end","width":"medium","footer-position":"outside"},"children":[{"type":"Body","id":"agent_chat_user_copy","props":{"text":"Review this implementation and summarise the changed files.","size":"medium"},"children":[]}]},{"type":"ChatMessage","id":"agent_chat_response","props":{"variant":"ghost","size":"medium"},"children":[{"type":"WorkLog","id":"agent_chat_work_log","slot":"header","props":{"label":"Worked for 4m 10s","rule":true},"children":[{"type":"Body","id":"agent_chat_work_summary","props":{"text":"Reviewed the component APIs, composition, and generated documentation.","size":"x-small"},"children":[]}]},{"type":"Heading","id":"agent_chat_response_title","props":{"text":"Updated the implementation and documentation.","level":"2","size":"6"},"children":[]},{"type":"Body","id":"agent_chat_response_copy","props":{"text":"The response keeps work detail, reviewable output, and follow-up context within one document flow.","size":"small"},"children":[]},{"type":"ResultBar","id":"agent_chat_result","props":{"variant":"accordion","label":"Edited 4 files","rule":true,"open":true},"children":[{"type":"Button","id":"agent_chat_undo","slot":"actions","props":{"text":"Undo","variant":"tertiary","size":"x-small"},"children":[]},{"type":"Button","id":"agent_chat_review","slot":"actions","props":{"text":"Review","variant":"secondary","size":"x-small"},"children":[]}]}]},{"type":"Prompt","id":"agent_chat_prompt","props":{"placeholder":"Ask for follow-up changes...","enter-submit":true,"context-mode":"icon","actions-fan":true},"children":[{"type":"PreviewChip","id":"agent_chat_preview","slot":"preview","props":{"value":"Review the agent chat response","badge":"MD","clickable":true},"children":[]},{"type":"ContextBar","id":"agent_chat_context","slot":"context","props":{},"children":[{"type":"Body","id":"agent_chat_context_copy","props":{"text":"Keep the current implementation scope","size":"x-small"},"children":[]}]},{"type":"ActionToggle","id":"agent_chat_web_toggle","slot":"actions","props":{},"children":[{"type":"Button","id":"agent_chat_web_action","props":{"context-toggle":true,"variant":"tertiary","icon-only":true,"aria-label":"Toggle web context"},"children":[]},{"type":"Chip","id":"agent_chat_web_chip","props":{"context-chip":true,"dismiss":true,"hidden":true,"text":"Web"},"children":[]}]}]}]}
+{"type":"VStack","id":"agent_chat_root","props":{"space":"var(--space-600)","alignX":"stretch","style":"max-width: 78rem; margin: 0 auto;"},"children":[{"type":"ChatMessage","id":"agent_chat_user_message","props":{"align":"end","width":"medium","footer-position":"outside"},"children":[{"type":"Body","id":"agent_chat_user_copy","props":{"text":"Review this implementation and summarise the changed files.","size":"medium"},"children":[]}]},{"type":"ChatMessage","id":"agent_chat_response","props":{"variant":"ghost","size":"medium"},"children":[{"type":"WorkLog","id":"agent_chat_work_log","props":{"label":"Worked for 4m 10s","rule":true,"slot":"header"},"children":[{"type":"Body","id":"agent_chat_work_summary","props":{"text":"Reviewed the component APIs, composition, and generated documentation.","size":"x-small"},"children":[]}]},{"type":"Heading","id":"agent_chat_response_title","props":{"text":"Updated the implementation and documentation.","level":"2","size":"6"},"children":[]},{"type":"Body","id":"agent_chat_response_copy","props":{"text":"The response keeps work detail, reviewable output, and follow-up context within one document flow.","size":"small"},"children":[]},{"type":"ResultBar","id":"agent_chat_result","props":{"variant":"accordion","label":"Edited 4 files","rule":true,"open":true},"children":[{"type":"Button","id":"agent_chat_undo","props":{"text":"Undo","variant":"tertiary","size":"x-small","slot":"actions"},"children":[]},{"type":"Button","id":"agent_chat_review","props":{"text":"Review","variant":"secondary","size":"x-small","slot":"actions"},"children":[]}]}]},{"type":"Prompt","id":"agent_chat_prompt","props":{"placeholder":"Ask for follow-up changes...","enter-submit":true,"context-mode":"icon","actions-fan":true},"children":[{"type":"PreviewChip","id":"agent_chat_preview","props":{"value":"Review the agent chat response","badge":"MD","clickable":true,"slot":"preview"},"children":[]},{"type":"ContextBar","id":"agent_chat_context","props":{"slot":"context"},"children":[{"type":"Body","id":"agent_chat_context_copy","props":{"text":"Keep the current implementation scope","size":"x-small"},"children":[]}]},{"type":"ActionToggle","id":"agent_chat_web_toggle","props":{"slot":"actions"},"children":[{"type":"Button","id":"agent_chat_web_action","props":{"context-toggle":true,"variant":"tertiary","icon-only":true,"aria-label":"Toggle web context"},"children":[]},{"type":"Chip","id":"agent_chat_web_chip","props":{"context-chip":true,"dismiss":true,"hidden":true,"text":"Web"},"children":[]}]}]}]}
 ```

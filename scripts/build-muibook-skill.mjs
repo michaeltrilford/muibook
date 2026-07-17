@@ -76,8 +76,21 @@ const transpiled = ts.transpileModule(compositionsSource, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
 const compositionModule = await import(`data:text/javascript;base64,${Buffer.from(transpiled).toString("base64")}`);
+const normalizeRedactdNode = (node) => {
+  if (!node || typeof node !== "object" || Array.isArray(node)) return node;
+
+  const props = node.props && typeof node.props === "object" && !Array.isArray(node.props) ? { ...node.props } : {};
+  if (typeof node.slot === "string" && node.slot.trim()) props.slot = node.slot.trim();
+
+  return {
+    type: node.type,
+    id: node.id,
+    props,
+    children: Array.isArray(node.children) ? node.children.map(normalizeRedactdNode) : [],
+  };
+};
 const selectedCompositions = Object.fromEntries(
-  compositionModule.agentCompositionKeys.map((key) => [key, compositionModule.compositions[key]]),
+  compositionModule.agentCompositionKeys.map((key) => [key, normalizeRedactdNode(compositionModule.compositions[key])]),
 );
 
 const compactText = (value = "") => String(value).replace(/\s+/g, " ").trim();
@@ -116,13 +129,19 @@ description: Lightweight, generated knowledge of current Muibook Web Components,
 
 Use this single-file snapshot of Muibook ${packageJson.version} when the full knowledge MCP is unavailable or unnecessary.
 
+This skill provides component knowledge. When paired with \`redactd-canvas-muibook\`, that skill
+owns the Redactd tree contract, validation, browser transport, and paste workflow.
+
 ## Workflow
 
 1. Search the component reference below for relevant tag names and purposes.
 2. Use only the listed public attribute and slot names. Use the MCP when exact types, defaults, events, parts, or component tokens are required.
 3. Prefer the listed semantic tokens for meaningful UI styling; use base tokens for foundations.
 4. Adapt the embedded compositions when a selected example matches the requested interface.
-5. If the Muibook MCP is available, use its \`start_here\` tool for richer or newer guidance. Treat a newer MCP version as authoritative.
+5. For Redactd Canvas work, hand the selected components or composition tree to
+   \`redactd-canvas-muibook\`. The compositions below already use its canonical
+   \`{ id, type, props, children }\` shape, including slot placement in \`props.slot\`.
+6. If the Muibook MCP is available, use its \`start_here\` tool for richer or newer guidance. Treat a newer MCP version as authoritative.
 
 ## Boundaries
 
@@ -130,6 +149,8 @@ Use this single-file snapshot of Muibook ${packageJson.version} when the full kn
 - Do not treat internal state or dynamic destination attributes as public props.
 - Do not expect exact attribute types, defaults, events, parts, component-specific tokens, full UX guidance, or the complete composition library in this lightweight skill; use the Muibook MCP for those needs.
 - Keep native custom-element tag names when writing HTML. When another tool maps names such as \`Button\` to \`mui-button\`, follow that tool's schema while preserving the verified public props.
+- Do not perform Redactd browser or API transport from this skill. Defer that workflow to
+  \`redactd-canvas-muibook\`.
 
 ## Component Reference
 
@@ -151,7 +172,9 @@ ${wrapList(Object.keys(semanticTokens))}
 
 ## Selected Compositions
 
-These compact JSON trees use Muibook composition names such as \`Button\` and \`Card\`. Preserve their verified props when mapping them to native \`mui-*\` elements or another supported schema.
+These compact JSON trees use the Redactd canvas schema and Muibook composition names such as
+\`Button\` and \`Card\`. They can be handed directly to \`redactd-canvas-muibook\` or mapped to native
+\`mui-*\` elements while preserving their verified props.
 
 ${compositionReference}
 `;
