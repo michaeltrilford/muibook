@@ -274,7 +274,13 @@ export default defineConfig({
         knowledge: path.resolve(__dirname, "src/knowledge"),
       },
       formats: ["es"],
-      fileName: (_, entryName) => (entryName === "index" ? "index.js" : `${entryName}/index.js`),
+      fileName: (_, entryName) => {
+        const publishedEntryName = entryName.startsWith("node_modules/")
+          ? entryName.replace("node_modules/", "vendor/")
+          : entryName;
+
+        return publishedEntryName === "index" ? "index.js" : `${publishedEntryName}/index.js`;
+      },
     },
     outDir: "dist/esm",
     rollupOptions: {

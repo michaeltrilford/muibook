@@ -1,5 +1,19 @@
 ## Header [Start]
 
+## v21.0.1
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/21.0.1)
+
+## Header [End]
+
+### Fixed
+
+- Package builds now publish Lightweight Charts and Fancy Canvas under `dist/esm/vendor`, allowing financial components to load directly from npm CDNs without missing `dist/esm/node_modules` requests or browser import maps.
+
+---
+
+## Header [Start]
+
 ## v21.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/21.0.0)

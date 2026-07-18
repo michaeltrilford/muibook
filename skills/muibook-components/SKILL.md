@@ -5,7 +5,7 @@ description: Lightweight, generated knowledge of current Muibook Web Components,
 
 # Muibook Components
 
-Use this single-file snapshot of Muibook 21.0.0 when the full knowledge MCP is unavailable or unnecessary.
+Use this single-file snapshot of Muibook 21.0.1 when the full knowledge MCP is unavailable or unnecessary.
 
 This skill provides component knowledge. When paired with `redactd-canvas-muibook`, that skill
 owns the Redactd tree contract, validation, browser transport, and paste workflow.
