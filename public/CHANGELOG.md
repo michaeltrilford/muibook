@@ -2,7 +2,7 @@
 
 ## v22.0.0
 
-_Status: WIP_
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/22.0.0)
 
