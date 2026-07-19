@@ -19,7 +19,7 @@ export const muiApi = {
       {
         name: "breakpoint",
         type: { text: "number | string" },
-        description: "Single pixel breakpoint for switching between `showBelow` and `showAbove` content.",
+        description: "Single pixel breakpoint for switching between `show-below` and `show-above` content.",
       },
       {
         name: "breakpoint-low",
@@ -34,9 +34,9 @@ export const muiApi = {
     ],
     slots: [
       { name: "", description: "Content displayed when no breakpoint switching attributes are provided." },
-      { name: "showBelow", description: "Content displayed at or below the active lower or single breakpoint." },
-      { name: "showMiddle", description: "Content displayed between `breakpoint-low` and `breakpoint-high`." },
-      { name: "showAbove", description: "Content displayed above the active upper or single breakpoint." },
+      { name: "show-below", description: "Content displayed at or below the active lower or single breakpoint." },
+      { name: "show-middle", description: "Content displayed between `breakpoint-low` and `breakpoint-high`." },
+      { name: "show-above", description: "Content displayed above the active upper or single breakpoint." },
     ],
   },
 };

@@ -115,7 +115,7 @@ export const keywords: Record<string, string[]> = {
   stack: ["stack", "v-stack", "h-stack", "vertical", "horizontal", "spacing"],
   grid: ["grid", "columns", "rows", "layout", "container"],
   container: ["container", "wrapper", "layout", "section"],
-  responsive: ["responsive", "breakpoint", "mobile", "desktop", "showAbove", "showBelow"],
+  responsive: ["responsive", "breakpoint", "mobile", "desktop", "show-above", "show-below"],
   rule: ["rule", "divider", "separator", "line", "hr"],
 
   // SURFACES

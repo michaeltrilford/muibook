@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   ModelViewer: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["poster"],
+    },
     title: "Model Viewer",
     description:
       "Model Viewer renders interactive 3D models and enables AR experiences directly in the browser. It progressively enhances native Apple Quick Look (USDZ) and native visionOS model tags with cross-browser support powered by Google's model-viewer custom element.",

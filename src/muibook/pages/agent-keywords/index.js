@@ -95,7 +95,7 @@ class AgentKeywordsPage extends HTMLElement {
               &nbsp;&nbsp;stack: [&quot;stack&quot;, &quot;v-stack&quot;, &quot;h-stack&quot;, &quot;vertical&quot;, &quot;horizontal&quot;, &quot;spacing&quot;],<br>
               &nbsp;&nbsp;grid: [&quot;grid&quot;, &quot;columns&quot;, &quot;rows&quot;, &quot;layout&quot;, &quot;container&quot;],<br>
               &nbsp;&nbsp;container: [&quot;container&quot;, &quot;wrapper&quot;, &quot;layout&quot;, &quot;section&quot;],<br>
-              &nbsp;&nbsp;responsive: [&quot;responsive&quot;, &quot;breakpoint&quot;, &quot;mobile&quot;, &quot;desktop&quot;, &quot;showAbove&quot;, &quot;showBelow&quot;],<br>
+              &nbsp;&nbsp;responsive: [&quot;responsive&quot;, &quot;breakpoint&quot;, &quot;mobile&quot;, &quot;desktop&quot;, &quot;show-above&quot;, &quot;show-below&quot;],<br>
               &nbsp;&nbsp;rule: [&quot;rule&quot;, &quot;divider&quot;, &quot;separator&quot;, &quot;line&quot;, &quot;hr&quot;],<br>
               &nbsp;&nbsp;heading: [&quot;heading&quot;, &quot;title&quot;, &quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;level&quot;],<br>
               &nbsp;&nbsp;body: [&quot;body&quot;, &quot;text&quot;, &quot;paragraph&quot;, &quot;copy&quot;],<br>

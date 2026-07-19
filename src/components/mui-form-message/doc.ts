@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   FormMessage: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["before","after"],
+    },
     title: "Form Message",
     description:
       "Form Message provides supporting text below form controls for guidance, validation, and status messaging.",

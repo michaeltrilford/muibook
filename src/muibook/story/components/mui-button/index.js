@@ -226,7 +226,7 @@ class storyButton extends HTMLElement {
       <story-card id="size-small" title="${storyMeta["size-small"].title}" description="${storyMeta["size-small"].description}" usage="${storyMeta["size-small"].usage}">
         <mui-v-stack slot="body">
           <mui-responsive variant="container" observe="parent" breakpoint="700">
-            <mui-h-stack alignx="space-between" aligny="center" slot="showAbove" style="border-radius: var(--radius-200); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
+            <mui-h-stack alignx="space-between" aligny="center" slot="show-above" style="border-radius: var(--radius-200); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
               <mui-h-stack space="var(--space-300)">
               <mui-input size="small" label="Search" hide-label placeholder="Search by name, email, or ID..." style="min-width: 25rem; max-width: 25rem;"></mui-input>
               <mui-select size="small" label="Status" hide-label
@@ -246,7 +246,7 @@ class storyButton extends HTMLElement {
                 <mui-button size="small" variant="tertiary">Reset Filter</mui-button>
               </mui-h-stack>
             </mui-h-stack>
-            <mui-v-stack alignx="stretch" aligny="center" space="var(--space-300)" slot="showBelow" style="border-radius: var(--radius-100); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
+            <mui-v-stack alignx="stretch" aligny="center" space="var(--space-300)" slot="show-below" style="border-radius: var(--radius-100); background: var(--surface-elevated-100); padding: var(--space-400); padding-right: var(--space-500);">
               <mui-input label="Search" hide-label placeholder="Search by name, email, or ID..."></mui-input>
               <mui-select label="Status" hide-label
                   options='[

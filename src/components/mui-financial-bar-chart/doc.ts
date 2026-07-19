@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   FinancialBarChart: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["header","footer"],
+    },
     title: "Financial Bar Chart",
     description: "Financial Bar Chart presents periodic financial or economic values as a time-based histogram.",
     hero: [""],
@@ -10,7 +14,7 @@ export const muiDocs: MuiDocs = {
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-financial-bar-chart/index.ts"],
     website: ["https://muibook.com/financial-bar-chart"],
     guides: [""],
-    usage: { list: ["Use for time-based values such as inflation, interest rates, trading volume, revenue, returns, and cash flow.", "Use neutral when direction is communicated by magnitude; use directional when values above and below a baseline carry different meaning.", "In a chart cluster, use attribution='none' to remove repeated TradingView logos only when the containing experience provides one visible attribution and the required NOTICE information.", "Use a Table or List when exact comparison matters more than the pattern over time."] },
+    usage: { list: ["Use for time-based values such as inflation, interest rates, trading volume, revenue, returns, and cash flow.", "Provide time/value objects through the data property. When composing Muibook UI in Redactd, populate the structured Data field through props.data; Redactd passes it to the component.", "Use neutral when direction is communicated by magnitude; use directional when values above and below a baseline carry different meaning.", "In a chart cluster, use attribution='none' to remove repeated TradingView logos only when the containing experience provides one visible attribution and the required NOTICE information.", "Use a Table or List when exact comparison matters more than the pattern over time."] },
     accessibility: { designerList: ["Pair the chart with a clear title, unit, and latest value; do not rely on bar color alone."], engineerList: ["Provide label and the appropriate value-format and currency.", "Keep TradingView attribution enabled unless the consuming page supplies the required visible attribution and NOTICE information."] },
     anatomy: { image: "", list: ["Optional header", "Histogram plot", "Time scale", "Price scale", "Optional footer"] },
     variants: { items: [] },

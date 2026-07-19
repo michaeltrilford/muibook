@@ -1,5 +1,5 @@
 ---
-name: style-web-components-skill
+name: style-web-components
 description: Add themes and targeted visual overrides to Web Components using layered CSS variables, parts, classes, and HTML attributes.
 ---
 

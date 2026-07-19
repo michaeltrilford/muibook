@@ -1,5 +1,28 @@
 ## Header [Start]
 
+## v22.0.0
+
+_Status: WIP_
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/22.0.0)
+
+## Header [End]
+
+### Breaking
+
+- Submenu now owns its tertiary, start-aligned Button trigger and fixed size-mapped chevron, preserves size-specific trailing chevron spacing inside non-inset Menus, inherits size from a parent Menu, and has a dedicated storefront page covering standalone composition, first/middle/last action placement, parent-level search, and viewport-aware portal positioning.
+- Migration: Remove authored trigger chevrons and avoid setting Button variant, alignment, weight, or size. Author a label-only direct Button followed by the nested Menu; set size on Submenu when standalone or on its parent Menu when composed.
+
+### Improved
+
+- Installable Muibook skills now use the standard `skills/<name>/SKILL.md` structure across the source repo and Muibook Knowledge package. Muibook Components replaces the retired Compose Web Components guide, while the MCP resolves the legacy compose id as an alias from `skill-index.json`. The former Skills storefront route now redirects to the consolidated Skills & Knowledge Base section on Plugins & MCP.
+- Muibook agent knowledge now standardizes equal Grid tracks with `repeat(N, minmax(0, 1fr))`, requires complete spacing token references such as `var(--space-400)`, prefers container-based responsiveness for reusable compositions, distinguishes Card width from Card Body padding sizes, and treats unsupported Redactd Canvas components as useful registry gaps rather than failed work that must be deleted or rebuilt.
+- Muibook chart knowledge now documents how to populate Redactd's structured Data and Series controls for Financial Chart, Market Sparkline, Financial Bar Chart, and Comparison Chart, including exact schemas, complete tree examples, and coherent illustrative-data generation.
+
+---
+
+## Header [Start]
+
 ## v21.0.1
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/21.0.1)

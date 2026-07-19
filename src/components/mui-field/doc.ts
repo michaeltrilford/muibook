@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Field: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["message"],
+    },
     title: "Field",
     description:
       "A Field allows users to input or select data. It includes a label, an optional required indicator, and supports validation feedback to communicate errors or requirements.",

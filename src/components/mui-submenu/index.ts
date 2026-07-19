@@ -1,3 +1,5 @@
+import "../mui-icons/right-chevron";
+
 class MuiSubmenu extends HTMLElement {
   private static portalStylesInjected = false;
   private trigger: HTMLElement | null = null;
@@ -12,7 +14,12 @@ class MuiSubmenu extends HTMLElement {
   private positionFrameId: number | null = null;
   private isPortaling = false;
 
+  static get observedAttributes() {
+    return ["size"];
+  }
+
   connectedCallback() {
+    this.normalizeSize();
     if (!this.shadowRoot) this.attachShadow({ mode: "open" });
     this.render();
     this.shell = this.shadowRoot?.querySelector(".shell") || null;
@@ -27,6 +34,14 @@ class MuiSubmenu extends HTMLElement {
     this.observer = new MutationObserver(this.syncChildren);
     this.observer.observe(this, { childList: true });
     this.syncChildren();
+  }
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (oldValue === newValue) return;
+    if (name === "size") {
+      this.normalizeSize();
+      this.syncChildren();
+    }
   }
 
   disconnectedCallback() {
@@ -49,8 +64,34 @@ class MuiSubmenu extends HTMLElement {
   private syncChildren = () => {
     this.trigger = this.querySelector(":scope > mui-button");
     if (!this.isPortaling) this.menu = this.querySelector(":scope > mui-menu");
-    this.trigger?.setAttribute("aria-haspopup", "menu");
-    this.trigger?.setAttribute("aria-expanded", this.shell?.classList.contains("open") ? "true" : "false");
+    const size = this.getAttribute("size") || "medium";
+    const iconSizeMap: Record<string, string> = {
+      "x-small": "xx-small",
+      small: "x-small",
+      medium: "small",
+      large: "medium",
+    };
+
+    if (this.trigger) {
+      this.trigger.setAttribute("aria-haspopup", "menu");
+      this.trigger.setAttribute("aria-expanded", this.shell?.classList.contains("open") ? "true" : "false");
+      this.trigger.setAttribute("align", "start");
+      this.trigger.setAttribute("variant", "tertiary");
+      this.trigger.setAttribute("weight", "regular");
+      this.trigger.setAttribute("size", size);
+      this.trigger.setAttribute("submenu-trigger", "");
+
+      let icon = this.trigger.querySelector<HTMLElement>(":scope > mui-icon-right-chevron[slot='after']");
+      if (!icon) {
+        icon = document.createElement("mui-icon-right-chevron");
+        icon.setAttribute("slot", "after");
+        this.trigger.appendChild(icon);
+      }
+      icon.setAttribute("size", iconSizeMap[size] || iconSizeMap.medium);
+      icon.setAttribute("aria-hidden", "true");
+    }
+
+    if (this.menu?.getAttribute("size") !== size) this.menu?.setAttribute("size", size);
 
     this.resizeObserver?.disconnect();
     if (typeof ResizeObserver !== "undefined" && this.menu) {
@@ -58,6 +99,13 @@ class MuiSubmenu extends HTMLElement {
       this.resizeObserver.observe(this.menu);
     }
   };
+
+  private normalizeSize() {
+    const size = this.getAttribute("size");
+    if (!size || !["x-small", "small", "medium", "large"].includes(size)) {
+      this.setAttribute("size", "medium");
+    }
+  }
 
   private handleOpen = () => {
     this.clearCloseTimer();
@@ -305,7 +353,7 @@ class MuiSubmenu extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>
         :host {
-          display: block;
+          display: inline-block;
           position: relative;
           z-index: 0;
         }

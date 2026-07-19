@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Alert: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["action"],
+    },
     title: "Alert",
     description: "Alerts surface meaningful system messages related to the users' current task or action.",
     hero: [

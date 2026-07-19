@@ -169,12 +169,12 @@ class StoryFormSection extends HTMLElement {
         <div slot="body" class="story-form-surface">
           <mui-form-section heading="Commercial Licensing">
             <mui-responsive slot="header" breakpoint="1000">
-              <div slot="showBelow">
+              <div slot="show-below">
                 <mui-v-stack space="var(--space-200)" alignx="start">
                   <mui-heading size="5" level="3">Commercial Licensing</mui-heading>
                 </mui-v-stack>
               </div>
-              <div slot="showAbove">
+              <div slot="show-above">
                 <mui-h-stack alignx="space-between" aligny="center">
                   <mui-heading size="5" level="3">Commercial Licensing</mui-heading>
                   <mui-link size="small" variant="tertiary" href="#" weight="regular">License</mui-link>
@@ -195,13 +195,13 @@ class StoryFormSection extends HTMLElement {
             <mui-form-section-footer slot="footer">
               <mui-rule></mui-rule>
               <mui-responsive breakpoint="1000">
-                <div slot="showBelow">
+                <div slot="show-below">
                   <mui-v-stack alignx="stretch" space="var(--space-200)">
                     <mui-button variant="primary" size="medium">Request now</mui-button>
                     <mui-link variant="tertiary" href="#" weight="regular">License</mui-link>
                   </mui-v-stack>
                 </div>
-                <div slot="showAbove">
+                <div slot="show-above">
                   <mui-h-stack alignx="end" space="var(--space-200)">
                     <mui-link variant="tertiary" href="#" weight="regular">License</mui-link>
                     <mui-button variant="primary" size="medium">Request now</mui-button>
@@ -216,13 +216,13 @@ class StoryFormSection extends HTMLElement {
           <br />
           &nbsp;&nbsp;&lt;mui-responsive slot="header" breakpoint="1000"&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="showBelow"&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="show-below"&gt;
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack&gt;...&lt;/mui-v-stack&gt;
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="showAbove"&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="show-above"&gt;
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack&gt;...&lt;/mui-h-stack&gt;
           <br />
@@ -291,13 +291,13 @@ class StoryFormSection extends HTMLElement {
               <mui-form-section-footer slot="footer">
                 <mui-rule></mui-rule>
                 <mui-responsive breakpoint="1000">
-                  <div slot="showBelow">
+                  <div slot="show-below">
                     <mui-v-stack alignx="stretch" space="var(--space-200)">
                       <mui-button variant="primary" size="medium">Request now</mui-button>
                       <mui-link variant="tertiary" href="#" weight="regular">License</mui-link>
                     </mui-v-stack>
                   </div>
-                  <div slot="showAbove">
+                  <div slot="show-above">
                     <mui-h-stack alignx="end" space="var(--space-200)">
                       <mui-link variant="tertiary" href="#" weight="regular">License</mui-link>
                       <mui-button variant="primary" size="medium">Request now</mui-button>

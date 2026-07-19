@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Chip: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["before","after"],
+    },
     title: "Chip",
     description:
       "A Chip is a compact, interactive element representing an attribute or action. It can include text, icons, avatars, badges, or a dismiss option, and is used for choices, filters, or tags.",

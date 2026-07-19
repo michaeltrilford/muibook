@@ -25,10 +25,13 @@ This helps clients such as Codex, Antigravity, Claude Code, and OpenCode choose 
 - `rules.ts` — global Muibook component-tree generation rules for AI tools.
 - `keywords.ts` — lightweight keyword mappings that help route natural-language intent to Muibook components.
 - `compositions.ts` — curated component-tree examples and composition-story metadata that show realistic Muibook patterns.
-- `create-web-components-skill.md` — public skill guide for building and reviewing native Web Components with this architecture.
-- `compose-web-components-skill.md` — public skill guide for composing Muibook components into complete interfaces.
-- `style-web-components-skill.md` — public skill guide for theming Muibook components with tokens and CSS variables.
-- `create-ux-guidelines-skill.md` — public skill guide for writing and reviewing component UX guidelines.
+- `skills/create-web-components/SKILL.md` — public skill guide for building and reviewing native Web Components with this architecture.
+- `skills/muibook-components/SKILL.md` — generated, installable component reference and composition skill.
+- `skills/create-web-components/SKILL.md` — installable guide for creating native Web Components.
+- `skills/create-ux-guidelines/SKILL.md` — installable guide for authoring component UX guidance.
+- `skills/style-web-components/SKILL.md` — installable guide for styling and theming Web Components.
+- `skills/style-web-components/SKILL.md` — public skill guide for theming Muibook components with tokens and CSS variables.
+- `skills/create-ux-guidelines/SKILL.md` — public skill guide for writing and reviewing component UX guidelines.
 - `AGENTS.md` — operating guidance for coding agents working with Muibook.
 - `DESIGN.md` — Muibook design language, token architecture, and theming guidance.
 - `index.ts` — convenience export for the knowledge files.

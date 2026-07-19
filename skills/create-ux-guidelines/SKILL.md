@@ -1,5 +1,5 @@
 ---
-name: create-ux-guidelines-skill
+name: create-ux-guidelines
 description: Help make your own UX Guidelines for your design system, providing a common structure for developers and designers.
 ---
 
@@ -22,6 +22,9 @@ Ensure all guidelines conform to a strict, predictable schema.
 
 ## Header And Links
 Provide clear, concise explanations of what the component is and what it does. Include URLs pointing to the relevant external resources (e.g., design files, component playgrounds, or code repositories).
+
+## Named Slots
+When a component exposes named slots, list their exact, case-sensitive names before Usage so people can discover the valid values quickly. Source this list from the component API metadata and omit the default slot. Include a short description such as "Use these names on items slotted inside this component."
 
 ## Usage
 Outline when and how to use the component. Reserve this for functional rules (e.g., "Reserve buttons for core actions").

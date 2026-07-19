@@ -190,7 +190,7 @@ class storyTokenSlat extends HTMLElement {
       <style>${styles}</style>
 
       <mui-responsive breakpoint="767">
-        <mui-slat slot="showAbove" style="grid-template-columns: 0.8fr 1.2fr; align-items: center;">
+        <mui-slat slot="show-above" style="grid-template-columns: 0.8fr 1.2fr; align-items: center;">
           <mui-body slot="start" size="x-small">
             <story-code-snippet>${token}</story-code-snippet>
           </mui-body>
@@ -203,7 +203,7 @@ class storyTokenSlat extends HTMLElement {
         </mui-slat>
 
 
-        <mui-h-stack slot="showBelow" space="var(--space-200)" alignX="space-between" alignY="center" >
+        <mui-h-stack slot="show-below" space="var(--space-200)" alignX="space-between" alignY="center" >
           <mui-v-stack space="var(--space-200)">
             <mui-body size="x-small"><story-code-snippet>${token}</story-code-snippet></mui-body>
             <mui-body size="x-small">${output}</mui-body>

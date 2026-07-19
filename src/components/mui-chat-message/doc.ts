@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   ChatMessage: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["avatar","header","footer"],
+    },
     title: "Chat Message",
     description:
       "Chat Message provides a consistent conversation row shell with optional avatar and message content slots.",

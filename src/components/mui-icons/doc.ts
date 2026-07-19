@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Icons: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["start","end"],
+    },
     title: "Icons",
     description:
       "Simple, symbolic visuals used to communicate meaning quickly and support recognition across an interface. Icons enhance usability when used with labels, reinforce actions, and help reduce cognitive load in dense layouts.",

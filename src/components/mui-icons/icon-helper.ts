@@ -58,6 +58,7 @@ export function defineMuiIcon(tagName: string, paths: string, viewBox = "0 0 28 
           }
           svg {
             width: 100%;
+            height: auto;
             display: block;
             fill: inherit;
           }

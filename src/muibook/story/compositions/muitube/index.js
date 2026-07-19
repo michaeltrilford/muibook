@@ -486,10 +486,10 @@ class compMuiTube extends HTMLElement {
         <mui-h-stack style="min-height: var(--header-min-height); padding: var(--space-400); border-radius: var(--radius-000); background: var(--surface-elevated-100); border-bottom: var(--stroke-size-100) solid var(--border-color); box-sizing: border-box;" alignx="space-between" aligny="center">
           <mui-h-stack alignx="start" aligny="center" space="var(--space-000)" style="padding: var(--space-000); border-radius: var(--radius-000);">
             <mui-responsive variant="container" breakpoint="768" observe=".content-container">
-              <mui-button slot="showAbove" variant="tertiary" aria-label="Open menu" size="medium" data-drawer-toggle="video-header-toggle">
+              <mui-button slot="show-above" variant="tertiary" aria-label="Open menu" size="medium" data-drawer-toggle="video-header-toggle">
                 <mui-icon-menu size="medium"></mui-icon-menu>
               </mui-button>
-              <mui-button slot="showBelow" variant="tertiary" aria-label="Open menu" size="medium" data-drawer="video-header-overlay">
+              <mui-button slot="show-below" variant="tertiary" aria-label="Open menu" size="medium" data-drawer="video-header-overlay">
                 <mui-icon-menu size="medium"></mui-icon-menu>
               </mui-button>
             </mui-responsive>
@@ -499,7 +499,7 @@ class compMuiTube extends HTMLElement {
             </mui-h-stack>
           </mui-h-stack>
           <mui-responsive variant="container" breakpoint="768" observe=".content-container" style="max-width: 70rem; width: 100%;">
-            <mui-h-stack slot="showAbove" alignx="center" aligny="center" space="var(--space-300)" style="padding: var(--space-000) var(--space-300) var(--space-000) var(--space-300); width: 100%;">
+            <mui-h-stack slot="show-above" alignx="center" aligny="center" space="var(--space-300)" style="padding: var(--space-000) var(--space-300) var(--space-000) var(--space-300); width: 100%;">
               <mui-input content="placeholder" state="default" variant="default" placeholder="Search">
                 <mui-button variant="secondary" slot="after" aria-label="Search">
                   <mui-icon-search size="medium"></mui-icon-search>
@@ -512,8 +512,8 @@ class compMuiTube extends HTMLElement {
           </mui-responsive>
           <mui-h-stack alignx="start" aligny="center" space="var(--space-300)" style="padding: var(--space-000); border-radius: var(--radius-000);">
             <mui-responsive variant="container" breakpoint="768" observe=".content-container">
-              <mui-button variant="primary" slot="showAbove">Create</mui-button>
-              <mui-button variant="primary" slot="showBelow"><mui-icon-add size="medium"></mui-icon-add></mui-button>
+              <mui-button variant="primary" slot="show-above">Create</mui-button>
+              <mui-button variant="primary" slot="show-below"><mui-icon-add size="medium"></mui-icon-add></mui-button>
             </mui-responsive>
             <mui-button variant="tertiary" aria-label="Notifications">
               <mui-icon-notification size="medium"></mui-icon-notification>
@@ -521,11 +521,11 @@ class compMuiTube extends HTMLElement {
           </mui-h-stack>
         </mui-h-stack>
         <mui-responsive variant="container" breakpoint="768" observe=".content-container">
-          <mui-drawer contained width="240px" variant="push" drawer-space="none" open side="left" slot="showAbove" data-drawer-toggle="video-header-toggle">
+          <mui-drawer contained width="240px" variant="push" drawer-space="none" open side="left" slot="show-above" data-drawer-toggle="video-header-toggle">
             ${videoMenuItems}
             ${videoPageContent}
           </mui-drawer>
-          <div slot="showBelow">
+          <div slot="show-below">
             <mui-drawer
               variant="overlay"
               width="260px"

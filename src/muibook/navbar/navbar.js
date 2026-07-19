@@ -138,7 +138,6 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/knowledge-mcp" title="MCP"></app-navbar-link>
           <app-navbar-link link="/plugins" title="Plugins & MCP"></app-navbar-link>
           <app-navbar-link link="/manifest" title="Manifest"></app-navbar-link>
-          <app-navbar-link link="/skills" title="Skills"></app-navbar-link>
           <app-navbar-link link="/knowledge-compositions" title="Compositions"></app-navbar-link>
           <app-navbar-link link="/knowledge-rules" title="Rules"></app-navbar-link>
           <app-navbar-link link="/knowledge-keywords" title="Keywords"></app-navbar-link>
@@ -204,6 +203,7 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/chip" title="Chip"></app-navbar-link>
           <app-navbar-link link="/dropdown" title="Dropdown"></app-navbar-link>
           <app-navbar-link link="/menu" title="Menu"></app-navbar-link>
+          <app-navbar-link link="/submenu" title="Submenu"></app-navbar-link>
           <app-navbar-link link="/link" title="Link"></app-navbar-link>
         </app-navbar-section>
 

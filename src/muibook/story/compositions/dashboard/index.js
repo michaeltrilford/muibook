@@ -244,7 +244,7 @@ class CompDashboard extends HTMLElement {
                 </mui-card>
 
                 <mui-responsive breakpoint="767">
-                <mui-card class="activity-table" slot="showAbove">
+                <mui-card class="activity-table" slot="show-above">
                   <mui-card-header>
                     <mui-h-stack alignx="space-between" aligny="center">
                       <mui-v-stack space="var(--space-000)">
@@ -283,7 +283,7 @@ class CompDashboard extends HTMLElement {
                   </mui-card-body>
                 </mui-card>
 
-                <mui-card slot="showBelow">
+                <mui-card slot="show-below">
                   <mui-card-header>
                     <mui-heading size="3" level="2">Recent account activity</mui-heading>
                     <mui-body size="small" variant="secondary">Latest billing and onboarding events.</mui-body>

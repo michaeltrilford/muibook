@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Responsive: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["show-below", "show-middle", "show-above"],
+    },
     title: "Responsive",
     description: "Dynamically render UI based on viewport size",
 
@@ -18,6 +22,8 @@ export const muiDocs: MuiDocs = {
 
     usage: {
       list: [
+        "Prefer variant='container' for reusable components and compositions so responsive decisions follow the available parent region.",
+        "Use viewport responsiveness for page-level and app-shell changes that genuinely depend on browser width.",
         "Use to adjust or swap UI components according to screen size for optimal experience.",
         "Ideal for tailoring layouts, navigation, or content density on different devices.",
         "Supports breakpoint-driven rendering to maintain clarity and usability.",

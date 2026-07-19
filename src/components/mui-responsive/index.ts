@@ -4,6 +4,7 @@ class MuiR extends HTMLElement {
   }
 
   private slotEl: HTMLSlotElement | null = null;
+  private legacySlotEl: HTMLSlotElement | null = null;
   private mqlLow: MediaQueryList | null = null;
   private mqlHigh: MediaQueryList | null = null;
   private mqlSingle: MediaQueryList | null = null;
@@ -20,10 +21,11 @@ class MuiR extends HTMLElement {
 
     shadowRoot.innerHTML = `
       <style>${styles}</style>
-      <slot></slot>
+      <slot><slot data-legacy></slot></slot>
     `;
 
-    this.slotEl = shadowRoot.querySelector("slot");
+    this.slotEl = shadowRoot.querySelector("slot:not([data-legacy])");
+    this.legacySlotEl = shadowRoot.querySelector("slot[data-legacy]");
   }
 
   connectedCallback() {
@@ -56,17 +58,31 @@ class MuiR extends HTMLElement {
       const highVal = parseInt(high);
       if (Number.isNaN(lowVal) || Number.isNaN(highVal)) return null;
 
-      return width <= lowVal ? "showBelow" : width >= highVal ? "showAbove" : "showMiddle";
+      return width <= lowVal ? "show-below" : width >= highVal ? "show-above" : "show-middle";
     }
 
     if (breakpoint) {
       const bpVal = parseInt(breakpoint);
       if (Number.isNaN(bpVal)) return null;
 
-      return width <= bpVal ? "showBelow" : "showAbove";
+      return width <= bpVal ? "show-below" : "show-above";
     }
 
     return null;
+  }
+
+  private setSlotName(slotName: string | null) {
+    if (!this.slotEl || !this.legacySlotEl) return;
+
+    if (!slotName) {
+      this.slotEl.removeAttribute("name");
+      this.legacySlotEl.removeAttribute("name");
+      return;
+    }
+
+    const legacySlotName = slotName.replace(/-([a-z])/g, (_, letter: string) => letter.toUpperCase());
+    this.slotEl.setAttribute("name", slotName);
+    this.legacySlotEl.setAttribute("name", legacySlotName);
   }
 
   private getObservedElement(): Element {
@@ -95,9 +111,9 @@ class MuiR extends HTMLElement {
       const updateSlotName = (width: number) => {
         const slotName = this.getSlotName(width, low, high, breakpoint);
         if (slotName) {
-          this.slotEl!.setAttribute("name", slotName);
+          this.setSlotName(slotName);
         } else {
-          this.slotEl!.removeAttribute("name");
+          this.setSlotName(null);
         }
       };
 
@@ -123,9 +139,9 @@ class MuiR extends HTMLElement {
       const updateSlotName = () => {
         const isBelow = this.mqlLow!.matches;
         const isAbove = this.mqlHigh!.matches;
-        const slotName = isBelow ? "showBelow" : isAbove ? "showAbove" : "showMiddle";
+        const slotName = isBelow ? "show-below" : isAbove ? "show-above" : "show-middle";
 
-        this.slotEl!.setAttribute("name", slotName);
+        this.setSlotName(slotName);
       };
 
       updateSlotName();
@@ -143,7 +159,7 @@ class MuiR extends HTMLElement {
       this.mqlSingle = window.matchMedia(`(max-width: ${bpVal}px)`);
 
       const updateSlotName = () => {
-        this.slotEl!.setAttribute("name", this.mqlSingle!.matches ? "showBelow" : "showAbove");
+        this.setSlotName(this.mqlSingle!.matches ? "show-below" : "show-above");
       };
 
       updateSlotName();
@@ -153,7 +169,7 @@ class MuiR extends HTMLElement {
         this.mqlSingle?.removeEventListener("change", updateSlotName);
       };
     } else {
-      this.slotEl.removeAttribute("name");
+      this.setSlotName(null);
     }
   }
 }

@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Switch: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["on-icon","off-icon"],
+    },
     title: "Switch",
     description:
       "A Switch is a UI component used to toggle between two states, typically “on” and “off.” It provides a clear visual indication of an active or inactive setting.",

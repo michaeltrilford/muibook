@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   MediaPlayer: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["meta-before","meta-after"],
+    },
     title: "Media Player",
     description:
       "Media Player renders direct audio/video with native media playback and Muibook controls, plus provider embeds (YouTube, SoundCloud) from a single src input. The metadata slot keeps the player composable for titles, avatars, links, badges, and product actions while the component applies contextual media-player theming where possible.",

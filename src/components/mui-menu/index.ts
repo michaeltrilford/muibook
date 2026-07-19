@@ -106,6 +106,11 @@ class MuiMenu extends HTMLElement {
       large: "calc(var(--space-500) + var(--stroke-size-100))",
     };
     const directChildren = Array.from(this.children) as HTMLElement[];
+    directChildren.forEach((element) => {
+      if (element.tagName.toLowerCase() === "mui-submenu" && element.getAttribute("size") !== size) {
+        element.setAttribute("size", size);
+      }
+    });
     const formControlTags = new Set([
       "mui-input",
       "mui-select",
@@ -351,7 +356,8 @@ class MuiMenu extends HTMLElement {
         }
 
         ::slotted(mui-button),
-        ::slotted(mui-link) {
+        ::slotted(mui-link),
+        ::slotted(mui-submenu) {
           width: 100%;
         }
 

@@ -124,7 +124,7 @@ class StoryApiTypes extends HTMLElement {
             </mui-h-stack>
           </mui-v-stack>
           <mui-responsive breakpoint="560">
-            <mui-table slot="showAbove">
+            <mui-table slot="show-above">
               <mui-row-group heading>
                 <mui-row columns="${dynamicAttributeColumns}" size="small">
                   <mui-cell class="card-slot" heading>Type</mui-cell>
@@ -146,7 +146,7 @@ class StoryApiTypes extends HTMLElement {
                 )
                 .join("")}
             </mui-table>
-            <div class="mobile-api-list" slot="showBelow">
+            <div class="mobile-api-list" slot="show-below">
               ${dynamicAttributes
                 .map(
                   (attr) => {
@@ -230,7 +230,7 @@ class StoryApiTypes extends HTMLElement {
         <section>
           <mui-heading class="section-heading" size="5" level="3">${heading}</mui-heading>
           <mui-responsive breakpoint="560">
-            <mui-table slot="showAbove">
+            <mui-table slot="show-above">
               <mui-row-group heading>
                 <mui-row columns="${attributeColumns}" size="small">
                   <mui-cell class="card-slot" heading>Name</mui-cell>
@@ -241,7 +241,7 @@ class StoryApiTypes extends HTMLElement {
               </mui-row-group>
               ${rows}
             </mui-table>
-            <div class="mobile-api-list" slot="showBelow">
+            <div class="mobile-api-list" slot="show-below">
               ${mobileRows}
             </div>
           </mui-responsive>
@@ -255,7 +255,7 @@ class StoryApiTypes extends HTMLElement {
         <section>
           <mui-heading class="section-heading" size="5" level="3">Slots</mui-heading>
           <mui-responsive breakpoint="560">
-            <mui-table slot="showAbove">
+            <mui-table slot="show-above">
               <mui-row-group heading>
                 <mui-row columns="${slotColumns}" size="small">
                   <mui-cell class="card-slot" heading>Name</mui-cell>
@@ -281,7 +281,7 @@ class StoryApiTypes extends HTMLElement {
                 )
                 .join("")}
             </mui-table>
-            <div class="mobile-api-list" slot="showBelow">
+            <div class="mobile-api-list" slot="show-below">
               ${slots
                 .map(
                   (slot) => /*html*/ `
@@ -310,7 +310,7 @@ class StoryApiTypes extends HTMLElement {
         <section>
           <mui-heading class="section-heading" size="5" level="3">CSS Properties</mui-heading>
           <mui-responsive breakpoint="560">
-            <mui-table slot="showAbove">
+            <mui-table slot="show-above">
               <mui-row-group heading>
                 <mui-row columns="${cssPropertyColumns}" size="small">
                   <mui-cell class="card-slot" heading>Name</mui-cell>
@@ -332,7 +332,7 @@ class StoryApiTypes extends HTMLElement {
                 )
                 .join("")}
             </mui-table>
-            <div class="mobile-api-list" slot="showBelow">
+            <div class="mobile-api-list" slot="show-below">
               ${cssProperties
                 .map(
                   (property) => /*html*/ `

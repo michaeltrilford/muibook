@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   VideoThumbnail: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["image","meta"],
+    },
     title: "Video Thumbnail",
     description:
       "Video Thumbnail displays a video poster image with a consistent frame, optional metadata, and opt-in video affordances.",

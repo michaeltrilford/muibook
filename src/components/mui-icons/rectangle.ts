@@ -58,6 +58,7 @@ class MuiIconRectangle extends HTMLElement {
         }
         svg {
           width: 100%;
+          height: auto;
           display: block;
           fill: inherit; 
         }

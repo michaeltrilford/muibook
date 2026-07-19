@@ -737,10 +737,10 @@ class storyTable extends HTMLElement {
           <story-card github="https://github.com/michaeltrilford/muibook/blob/main/src/muibook/story/components/mui-table/index.js" id="responsive-table" title="${storyMeta["responsive-table"].title}" description="${storyMeta["responsive-table"].description}" usage="${storyMeta["responsive-table"].usage}">
             <div class="canvas" slot="body">
               <mui-responsive breakpoint="1080">
-                <mui-h-stack slot="showAbove" space="16px" alignY="center">
+                <mui-h-stack slot="show-above" space="16px" alignY="center">
                   ${ProgressDesktopView}
                 </mui-h-stack>
-                <div slot="showBelow">
+                <div slot="show-below">
                   ${ProgressMobileView}
                 </div>
               </mui-responsive>
@@ -755,7 +755,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;/////////////////////////////////////
               <br>
               <br>
-              &nbsp;&nbsp;&lt;div slot="showAbove"&gt;
+              &nbsp;&nbsp;&lt;div slot="show-above"&gt;
               <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&#x24;{ProgressDesktopView}
               <br />
@@ -767,7 +767,7 @@ class storyTable extends HTMLElement {
               &nbsp;&nbsp;/////////////////////////////////////
               <br>
               <br>
-              &nbsp;&nbsp;&lt;div slot="showBelow"&gt;
+              &nbsp;&nbsp;&lt;div slot="show-below"&gt;
               <br />
               &nbsp;&nbsp;&nbsp;&nbsp; &#x24;{ProgressMobileView}
               <br />

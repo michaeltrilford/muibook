@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Dropdown: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["action"],
+    },
     title: "Dropdown",
     description:
       "The dropdown has a trigger action and an overlay menu. The action can use any mui-button variant, while menu options follow a predefined style. The menu auto-positions to stay within the viewport.",

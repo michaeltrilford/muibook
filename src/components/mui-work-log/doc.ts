@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   WorkLog: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["icon","before","after"],
+    },
     title: "Work Log",
     description:
       "Work log provides a compact expandable work summary for agent responses.",

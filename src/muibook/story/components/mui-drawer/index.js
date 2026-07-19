@@ -1135,7 +1135,7 @@ class storyDrawer extends HTMLElement {
               <div class="canvas-page-header">
                 <mui-h-stack space="var(--space-050)" alignY="center">
                   <mui-responsive breakpoint="768">
-                    <mui-button slot="showBelow" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-left-rail">
+                    <mui-button slot="show-below" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-left-rail">
                       <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
                     </mui-button>
                   </mui-responsive>
@@ -1229,7 +1229,7 @@ class storyDrawer extends HTMLElement {
               <div class="page-header">
                 <mui-h-stack space="var(--space-050)" alignY="center">
                   <mui-responsive breakpoint="768">
-                    <mui-button slot="showBelow" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-left-demo">
+                    <mui-button slot="show-below" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-left-demo">
                     <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
                     </mui-button>
                   </mui-responsive>
@@ -1441,7 +1441,7 @@ class storyDrawer extends HTMLElement {
                   <mui-heading size="4" level="4">Page 1</mui-heading>
                 </mui-h-stack>
                 <mui-responsive breakpoint="768">
-                  <mui-button slot="showBelow" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-right-rail">
+                  <mui-button slot="show-below" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-right-rail">
                     <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
                   </mui-button>
                 </mui-responsive>
@@ -1534,7 +1534,7 @@ class storyDrawer extends HTMLElement {
               <div class="page-header">
                 <mui-heading size="4" level="4">Smart Bills</mui-heading>
                 <mui-responsive breakpoint="768">
-                  <mui-button slot="showBelow" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-right-demo">
+                  <mui-button slot="show-below" variant="tertiary" size="small" data-drawer-toggle="drawer-persistent-right-demo">
                     <mui-icon-rectangle-left-drawer size="small"></mui-icon-rectangle-left-drawer>
                   </mui-button>
                 </mui-responsive>
@@ -1615,10 +1615,10 @@ class storyDrawer extends HTMLElement {
             <mui-h-stack space="var(--space-300)" alignY="center">
 
               <mui-responsive breakpoint="768">
-                <mui-button slot="showAbove" variant="tertiary" data-drawer-toggle="custom-header-toggle">
+                <mui-button slot="show-above" variant="tertiary" data-drawer-toggle="custom-header-toggle">
                   <mui-icon-menu size="medium"></mui-icon-menu>
                 </mui-button>
-                <mui-button slot="showBelow" variant="tertiary" data-drawer="custom-header-overlay">
+                <mui-button slot="show-below" variant="tertiary" data-drawer="custom-header-overlay">
                   <mui-icon-menu size="medium"></mui-icon-menu>
                 </mui-button>
               </mui-responsive>
@@ -1634,7 +1634,7 @@ class storyDrawer extends HTMLElement {
 
             <mui-drawer
               contained
-              slot="showAbove"
+              slot="show-above"
               variant="push"
               width="260px"
               side="left"
@@ -1651,7 +1651,7 @@ class storyDrawer extends HTMLElement {
 
             </mui-drawer>
 
-            <div slot="showBelow">
+            <div slot="show-below">
               <mui-drawer
                 variant="overlay"
                 width="260px"

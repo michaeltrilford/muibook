@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Body: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["before","after"],
+    },
     title: "Body",
     description:
       "Use the Body component for clear and readable paragraph text across the UI. It’s ideal for longer-form content such as descriptions, explanations, or supporting information. Variant styles are also available for status messages and other contextual needs.",

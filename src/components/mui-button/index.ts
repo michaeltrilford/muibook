@@ -811,6 +811,23 @@ class MuiButton extends HTMLElement {
       padding: var(--action-padding-large);
     }
 
+    /* Submenu owns its fixed after-chevron, so retain the normal trailing slot spacing. */
+    :host([submenu-trigger][menu-slot][size="x-small"][has-after]) button {
+      padding-right: var(--action-after-slot-padding-x-small);
+    }
+
+    :host([submenu-trigger][menu-slot][size="small"][has-after]) button {
+      padding-right: var(--action-after-slot-padding-small);
+    }
+
+    :host([submenu-trigger][menu-slot][size="medium"][has-after]) button {
+      padding-right: var(--action-after-slot-padding);
+    }
+
+    :host([submenu-trigger][menu-slot][size="large"][has-after]) button {
+      padding-right: var(--action-after-slot-padding-large);
+    }
+
     :host([avatar-only]) {
       width: auto;
       display: flex;

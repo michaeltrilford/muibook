@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   Prompt: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["context-above","context-below","preview","input","actions","actions-right"],
+    },
     title: "Prompt",
     description: "Prompt provides a reusable prompt surface with floating actions and Enter-to-submit behavior.",
     hero: [""],

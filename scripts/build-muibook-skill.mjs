@@ -152,6 +152,94 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
 - Do not perform Redactd browser or API transport from this skill. Defer that workflow to
   \`redactd-canvas-muibook\`.
 
+## Composition Rules
+
+- Build layouts with Muibook primitives such as Container, VStack, HStack, and Grid. Do not add generic wrapper elements solely to create layout, spacing, or margins.
+- Put named slot placement on the child through its documented native \`slot\` attribute. In Redactd trees, store that value in \`props.slot\`; never add slot as a top-level node field.
+- Let documented parent-child context do its work. Do not recreate joined corners, inherited sizing, Menu action normalization, Card surface usage, or similar component behavior with local overrides.
+- For equal Grid columns, use \`col: "repeat(N, minmax(0, 1fr))"\`. Do not use numeric counts or repeated bare \`1fr\` tracks.
+- Layout spacing values must use complete CSS token references such as \`var(--space-400)\`; never use \`space-400\`, \`400\`, or another bare scale value. Use \`var(--space-000)\` for zero spacing.
+- Prefer container-based responsiveness for reusable components and compositions. Use viewport responsiveness only for page-level or app-shell decisions that genuinely depend on browser width.
+- Card has no size scale. Its width comes from Grid, Container, the parent layout, or an explicit constrained style. Card Body \`size\` controls internal padding only: medium is the default, small is compact, large is spacious, and none is edge-to-edge. Let Grid size repeated Cards rather than styling each Card width independently.
+- Use Heading levels 1-6 for document structure. Use \`level="none"\` only for prominent display text, such as a metric value, that must not enter the heading outline.
+- Compose forms with Form Section, Form Group, Field, and the appropriate form control. Keep labels, messages, validation, and control behavior in those components instead of rebuilding them from generic text and layout primitives.
+
+## Host State And Framework Boundaries
+
+- Use boolean attributes by presence in native HTML. Do not write \`disabled="false"\`; omit the attribute when false.
+- Use documented string values for enum attributes and use host JavaScript properties for structured values such as chart datasets.
+- Listen to composed host events and read documented \`event.detail\` values. Framework wrappers should attach listeners, pass attributes and properties, and forward refs without recreating shadow-DOM behavior.
+- Set value, checked, disabled, and similar state on the custom-element host. Prefer the host's public \`focus()\` method over reaching into its shadow root.
+
+## Structured Chart Data
+
+When composing Muibook charts in Redactd, populate the structured **Data** field through
+\`props.data\`, or the **Series** field through \`props.series\` for Comparison Chart. Redactd owns
+passing that structured value to the underlying Muibook component. Do not stringify the array or
+generate JavaScript assignment code.
+
+- \`FinancialChart.props.data\`: \`[{ time, open, high, low, close, volume? }]\`
+- \`MarketSparkline.props.data\`: \`[{ time, value }]\`
+- \`FinancialBarChart.props.data\`: \`[{ time, value }]\`
+- \`ComparisonChart.props.series\`: \`[{ id, label, color?, data: [{ time, value }] }]\`
+
+Use ISO \`YYYY-MM-DD\` dates for daily illustrative data unless the user provides another valid time
+format. Keep numeric fields as numbers, sort points chronologically, and generate enough coherent
+illustrative points to make the requested trend visible when the user does not supply data.
+
+Example Financial Chart tree:
+
+\`\`\`json
+{
+  "id": "btc_price_chart",
+  "type": "FinancialChart",
+  "props": {
+    "symbol": "BTC/USD",
+    "currency": "USD",
+    "type": "candlestick",
+    "data": [
+      { "time": "2026-06-01", "open": 102.4, "high": 104.8, "low": 101.7, "close": 103.9, "volume": 18400000 },
+      { "time": "2026-06-02", "open": 103.9, "high": 105.2, "low": 102.8, "close": 104.5, "volume": 16900000 },
+      { "time": "2026-06-03", "open": 104.5, "high": 106.1, "low": 103.6, "close": 105.8, "volume": 21300000 }
+    ]
+  },
+  "children": []
+}
+\`\`\`
+
+For Sparkline and Financial Bar Chart, the Data field uses the simpler time/value shape:
+
+\`\`\`json
+"data": [
+  { "time": "2026-06-01", "value": 101.2 },
+  { "time": "2026-06-02", "value": 103.8 },
+  { "time": "2026-06-03", "value": 102.9 }
+]
+\`\`\`
+
+Comparison Chart uses the Series field:
+
+\`\`\`json
+"series": [
+  {
+    "id": "actual",
+    "label": "Actual",
+    "data": [
+      { "time": "2026-06-01", "value": 101.2 },
+      { "time": "2026-06-02", "value": 103.8 }
+    ]
+  },
+  {
+    "id": "forecast",
+    "label": "Forecast",
+    "data": [
+      { "time": "2026-06-01", "value": 100.8 },
+      { "time": "2026-06-02", "value": 104.1 }
+    ]
+  }
+]
+\`\`\`
+
 ## Component Reference
 
 ${componentReference}
@@ -182,6 +270,7 @@ ${compositionReference}
 fs.rmSync(path.join(skillDir, "agents"), { recursive: true, force: true });
 fs.rmSync(path.join(skillDir, "references"), { recursive: true, force: true });
 write(path.join(skillDir, "SKILL.md"), skill);
+write(path.join(root, "public/skills/muibook-components/SKILL.md"), skill);
 
 console.log(`Generated single-file Muibook component skill: ${path.relative(root, path.join(skillDir, "SKILL.md"))}`);
 console.log(`Components: ${components.length}; selected compositions: ${Object.keys(selectedCompositions).length}`);

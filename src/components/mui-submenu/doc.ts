@@ -8,7 +8,7 @@ export const muiDocs: MuiDocs = {
     figma: [""],
     storybook: [""],
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-submenu/index.ts"],
-    website: ["https://muibook.com/menu"],
+    website: ["https://muibook.com/submenu"],
     guides: [""],
     usage: {
       list: [
@@ -22,7 +22,64 @@ export const muiDocs: MuiDocs = {
     },
     anatomy: { image: "", list: ["Button trigger", "Nested Menu"] },
     variants: { items: [] },
-    stories: { items: [] },
+    stories: {
+      items: [
+        {
+          key: "standalone",
+          title: "Standalone",
+          description: "Applies the complete Submenu trigger treatment without requiring a parent Menu.",
+          list: [
+            "Slot a Button containing only the trigger label, followed by the nested Menu.",
+            "Submenu enforces tertiary treatment, start alignment, regular weight, and the fixed after-chevron.",
+            "Set size on Submenu when it is standalone; a parent Menu automatically passes its size to Submenu.",
+          ],
+        },
+        {
+          key: "composition",
+          title: "Composition",
+          description: "Reveals a related nested Menu from a direct Button trigger.",
+          list: [
+            "Place Submenu directly inside a parent Menu.",
+            "Use a direct Button containing only its label as the trigger and a direct Menu as the nested surface.",
+            "Do not add a chevron, trigger variant, or alignment; Submenu supplies and enforces them.",
+            "Submenu adds disclosure semantics and opens on pointer hover or keyboard focus.",
+          ],
+        },
+        {
+          key: "sizes",
+          title: "Sizes & Placement",
+          description: "Inherits action context from each parent Menu size and works in any action position.",
+          list: [
+            "Set size on the parent Menu; Submenu passes the matching action size, weight, variant, inset, and radius context to its trigger.",
+            "The trigger Button only needs its label; Submenu injects the correctly sized chevron.",
+            "The examples place Submenu first, middle, and last to verify surrounding action radii.",
+            "Keep the nested Menu size aligned with the parent Menu unless the hierarchy needs a deliberate density change.",
+          ],
+        },
+        {
+          key: "search",
+          title: "Parent Search",
+          description: "Keeps filtering at the top level while Submenu owns nested disclosure.",
+          list: [
+            "Slot Search Input into the parent Menu, not the nested Menu, when it filters top-level categories.",
+            "Keep the Submenu trigger Button label-only; the component supplies its chevron and interaction treatment.",
+            "Hide the complete Submenu host when its trigger does not match so the nested Menu is not left as an orphaned action.",
+            "Keep the empty-state message in application state; Submenu only owns disclosure and positioning.",
+          ],
+        },
+        {
+          key: "viewport",
+          title: "Viewport Placement",
+          description: "Ports and repositions the nested Menu when inline space is constrained.",
+          list: [
+            "Submenu prefers the inline end and flips to the inline start when the viewport is tight.",
+            "Author only the trigger label inside Button; the fixed chevron remains owned by Submenu while it repositions.",
+            "If neither side fully fits, the nested Menu overlaps the parent Menu instead of clipping outside the viewport.",
+            "The portalled Menu remains above parent overflow and adjacent focused controls while it is open.",
+          ],
+        },
+      ],
+    },
     compositions: { description: "", items: [] },
     related: { items: [{ name: "Menu", link: "https://guides.muibook.com/menu" }, { name: "Dropdown", link: "https://guides.muibook.com/dropdown" }] },
     rules: [],

@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   FormSection: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["header","footer"],
+    },
     title: "Form Section",
     description:
       "A Form Section groups related form controls under a clear section heading.",

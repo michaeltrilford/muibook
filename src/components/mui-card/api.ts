@@ -1,6 +1,6 @@
 export const muiApi = {
   "mui-card": {
-    description: "Frames related content in a bordered surface and coordinates spacing with its slotted card sections.",
+    description: "Frames related content in a bordered surface and coordinates spacing with its slotted card sections. Card has no size scale; its width comes from the parent layout or an explicit constrained style.",
     attributes: [
       { name: "borderless", type: { text: "boolean" }, default: "false", description: "Removes the card border." },
     ],
@@ -20,7 +20,7 @@ export const muiApi = {
         name: "size",
         type: { text: '"none" | "small" | "medium" | "large"' },
         default: "medium",
-        description: "Controls the Card Body padding. Use none for edge-to-edge content.",
+        description: "Controls internal Card Body padding, not Card width. Medium is the default, small is compact, large is spacious, and none is edge-to-edge.",
       },
     ],
     slots: [{ name: "", description: "Main card content, including layouts such as tables, slats, and accordions." }],

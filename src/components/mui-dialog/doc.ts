@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Dialog: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["title","actions"],
+    },
     title: "Dialog",
     description:
       "A modal window that prompts users to take a specific action or provide additional information without navigating away from the current context.",

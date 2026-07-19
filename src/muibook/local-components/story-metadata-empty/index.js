@@ -44,8 +44,8 @@ class StoryMetadataEmpty extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <mui-v-stack height="100dvh" alignx="center" aligny="center">
         <mui-responsive variant="container" observe="parent" breakpoint="600" style="width: 100%;">
-          ${getCard({ slot: "showAbove", headingSize: "3", textSize: "medium", codeSize: "small" })}
-          ${getCard({ slot: "showBelow", headingSize: "6", textSize: "x-small", codeSize: "xx-small" })}
+          ${getCard({ slot: "show-above", headingSize: "3", textSize: "medium", codeSize: "small" })}
+          ${getCard({ slot: "show-below", headingSize: "6", textSize: "x-small", codeSize: "xx-small" })}
         </mui-responsive>
       </mui-v-stack>
     `;

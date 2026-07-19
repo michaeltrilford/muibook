@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Link: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["before","after"],
+    },
     title: "Link",
     description:
       "Links are used to navigate between pages or external content. They are visually distinct from surrounding text by using underlines — a familiar and accessible pattern that ensures clarity and consistency.",

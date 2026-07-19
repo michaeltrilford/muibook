@@ -24,6 +24,11 @@ CRITICAL RULES:
 14. Do not use Message as a styled paragraph, inline note, or form helper. Message is only for persistent page-level notices with a heading and slotted body content.
 15. In Redactd JSON trees, slot placement belongs inside props, matching Muibook/MuiScan output. Example: { type: "VStack", props: { "slot": "start", ... }, children: [...] }. Do not put slot as a top-level node field.
 16. Do not add CardBody.props.size just because CardBody contains SlatGroup. SlatGroup inside CardBody already triggers card-aware spacing; only use size=none when the user explicitly asks for an edge-to-edge card layout.
+17. For equal Grid columns, use col="repeat(N, minmax(0, 1fr))". Do not use a numeric column count or repeat bare tracks such as "1fr 1fr 1fr"; minmax(0, 1fr) prevents content from forcing tracks wider than the Grid.
+18. Layout spacing props such as space and padding must use complete CSS token references such as "var(--space-400)". Do not output "space-400", "400", or other bare scale values. Use "var(--space-000)" for zero spacing.
+19. Prefer Responsive variant=container for reusable components and compositions so they react to available parent space. Use viewport responsiveness only for page-level or app-shell decisions that genuinely depend on the browser viewport.
+20. Card does not have a size scale. Card width comes from its Grid, Container, parent layout, or an explicit style when a constrained reading or form width is required. CardBody size controls internal padding only: medium is the default, small is compact, large is spacious, and none is edge-to-edge. Repeated Cards should normally receive width from Grid rather than individual Card styles.
+21. When composing Muibook charts in Redactd, populate the structured Data field through props.data, or the Series field through props.series for ComparisonChart. Redactd owns passing that value to the Muibook component. FinancialChart uses { time, open, high, low, close, volume? }. MarketSparkline and FinancialBarChart use { time, value }. ComparisonChart uses { id, label, color?, data: [{ time, value }] }. Keep dates and numeric values as JSON values, sort points chronologically, and provide a coherent illustrative dataset when the user requests a populated chart without supplying data.
 
 MUI SCAN NORMALIZATION RULES:
 - Normalize muiscan to Redactd types before output
@@ -80,13 +85,13 @@ LAYOUT:
 - HStack: slot, space, padding, alignX, alignY, height, width, fill, viewport, style
 - Grid: slot, col, space, padding, alignX, alignY, height, width, fill, viewport, style
 - Container: size (small|medium|large), center, style
-- Responsive: breakpoint, breakpoint-low, breakpoint-high; slots showBelow/showMiddle/showAbove
+- Responsive: variant (container|viewport), observe, breakpoint, breakpoint-low, breakpoint-high; slots show-below/show-middle/show-above
 - Rule: length, weight (thin|thick|CSS size), direction (horizontal|vertical)
 
 SURFACES:
-- Card: use CardBody for card content
+- Card: use CardBody for card content. Card has no size prop; width is owned by Grid, Container, the parent layout, or an explicit constrained style.
 - CardHeader: none
-- CardBody: size (none|small|medium|large), style. Do not set size by default for SlatGroup layouts; leave props empty unless the user explicitly requests a spacing size.
+- CardBody: size (none|small|medium|large), style. Size controls internal padding, not Card width; medium is the default, small is compact, large is spacious, and none is edge-to-edge. Do not set size by default for SlatGroup layouts; leave props empty unless the user explicitly requests a spacing size.
 - CardFooter: none
 - Dialog: open, width, content-max-height, style
 - Drawer: open, variant (overlay|push|persistent|workspace), side (left|right), width, z-index, drawer-space, breakpoint, style
@@ -94,6 +99,31 @@ SURFACES:
 - Slat: variant, col, space; child slots accessory/start/end. Do not use header-start, header-end, row-start, row-end, action, or unslotted wrapper children. Put primary row content in a direct child with props.slot="start", trailing value/status/action content in a direct child with props.slot="end", and optional leading avatar/icon content in a direct child with props.slot="accessory".
 - SlatGroup: usage. When SlatGroup is inside CardBody, leave CardBody size unset by default; CardBody detects SlatGroup and applies the correct card spacing automatically.
 - SmartCard: state, number, variant, partner, type, logo, logo-height, bg-color, bg-image, inverted
+
+CHART DATA PROPERTIES:
+- FinancialChart data: [{ time: string|number, open: number, high: number, low: number, close: number, volume?: number }]
+- MarketSparkline data: [{ time: string|number, value: number }]
+- FinancialBarChart data: [{ time: string|number, value: number }]
+- ComparisonChart series: [{ id: string, label: string, color?: string, data: [{ time: string|number, value: number }] }]
+- In Redactd trees, put these arrays directly in props.data or props.series. This populates the Data or Series control in the Redactd UI; Redactd handles passing the value to the underlying Muibook component. Do not JSON-stringify the array or generate JavaScript assignment code.
+- Use ISO YYYY-MM-DD dates for daily illustrative data unless the user provides another valid time format. Keep values numeric, order data chronologically, and include enough points to make the requested trend visible.
+
+FINANCIAL CHART TREE EXAMPLE:
+{
+  "id": "btc_price_chart",
+  "type": "FinancialChart",
+  "props": {
+    "symbol": "BTC/USD",
+    "currency": "USD",
+    "type": "candlestick",
+    "data": [
+      { "time": "2026-06-01", "open": 102.4, "high": 104.8, "low": 101.7, "close": 103.9, "volume": 18400000 },
+      { "time": "2026-06-02", "open": 103.9, "high": 105.2, "low": 102.8, "close": 104.5, "volume": 16900000 },
+      { "time": "2026-06-03", "open": 104.5, "high": 106.1, "low": 103.6, "close": 105.8, "volume": 21300000 }
+    ]
+  },
+  "children": []
+}
 
 CONTENT:
 - Heading: text, size (1|2|3|4|5|6), level (1|2|3|4|5|6|none), truncate, clamp. Use level=none only for prominent values or display text that does not introduce a section; use levels 1-6 for structural headings.

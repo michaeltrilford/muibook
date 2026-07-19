@@ -16,7 +16,7 @@ export const muiApi = {
       { name: "error", description: "Displays an error message over the chart." },
     ],
     properties: [
-      { name: "data", description: "Array of OHLCV data ordered by time. The component sorts a copied array before rendering." },
+      { name: "data", description: "Array of `{ time: string | number, open: number, high: number, low: number, close: number, volume?: number }` OHLCV objects. When composing in Redactd, populate the Data field with this array through `props.data`; Redactd passes it to the component. The component sorts a copied array before rendering." },
     ],
     methods: [
       { name: "update", description: "Adds or replaces one OHLCV datum for streaming updates." },

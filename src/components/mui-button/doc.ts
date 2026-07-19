@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Button: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["before","after"],
+    },
     title: "Button",
     description:
       "Buttons are essential UI elements that trigger actions when clicked or tapped. They should be easily recognisable, provide clear feedback, and be accessible to all users.",

@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   ContextBar: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["actions"],
+    },
     title: "Context Bar",
     description: "Context Bar provides a compact, slottable context row for prompt composers.",
     hero: [""],

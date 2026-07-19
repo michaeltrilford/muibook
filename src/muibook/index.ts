@@ -204,13 +204,13 @@ import "./local-components/changelog";
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = /*html*/ `
   <app-navbar-toggle id="app-nav-toggle" floating hidden inert>
     <mui-responsive breakpoint-low="960" breakpoint-high="1200">
-      <mui-button slot="showBelow" class="floating-menu" variant="tertiary" stroke="ring" size="medium" aria-label="Open navigation" inert>
+      <mui-button slot="show-below" class="floating-menu" variant="tertiary" stroke="ring" size="medium" aria-label="Open navigation" inert>
         <mui-icon-rectangle-left-drawer size="medium"></mui-icon-rectangle-left-drawer>
       </mui-button>
-      <mui-button slot="showMiddle" class="floating-menu" variant="tertiary" stroke="ring" size="medium" aria-label="Open navigation" inert>
+      <mui-button slot="show-middle" class="floating-menu" variant="tertiary" stroke="ring" size="medium" aria-label="Open navigation" inert>
         <mui-icon-rectangle-left-drawer size="medium"></mui-icon-rectangle-left-drawer>
       </mui-button>
-      <mui-button slot="showAbove" class="floating-menu" variant="tertiary" stroke="ring" size="large" aria-label="Open navigation" inert>
+      <mui-button slot="show-above" class="floating-menu" variant="tertiary" stroke="ring" size="large" aria-label="Open navigation" inert>
         <mui-icon-rectangle-left-drawer size="large"></mui-icon-rectangle-left-drawer>
       </mui-button>
     </mui-responsive>

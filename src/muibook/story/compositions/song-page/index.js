@@ -73,7 +73,7 @@ class SongPage extends HTMLElement {
               </mui-media-player>
 
               <mui-responsive breakpoint="1200">
-                <mui-grid col="1fr 1fr 1fr" slot="showAbove" alignx="stretch" aligny="stretch" space="var(--space-500)" width="100%">
+                <mui-grid col="1fr 1fr 1fr" slot="show-above" alignx="stretch" aligny="stretch" space="var(--space-500)" width="100%">
                   <mui-card>
                     <mui-card-body size="none">
                       <mui-v-stack space="var(--space-000)">
@@ -100,7 +100,7 @@ class SongPage extends HTMLElement {
                   </mui-card>
                 </mui-grid>
 
-                <mui-grid col="1fr" slot="showBelow" alignx="stretch" space="var(--space-400)">
+                <mui-grid col="1fr" slot="show-below" alignx="stretch" space="var(--space-400)">
                   <mui-card>
                     <mui-card-body size="none">
                       <mui-v-stack space="var(--space-000)">

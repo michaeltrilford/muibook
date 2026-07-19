@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   SlideFrame: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["image","header","header-after","header-description","footer","footer-after","notes"],
+    },
     title: "Slide Frame",
     description:
       "Slide Frame is a composable presentation surface for UI-builder workflows. It supports configurable ratio, variants, image composition, and overflow handling.",

@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Input: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["before","after","inside-before","inside-after","hint"],
+    },
     title: "Input",
     description: "An input component for capturing user text, styled for consistency across your UI.",
 

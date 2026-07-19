@@ -23,16 +23,27 @@ const filesToCopy = [
   { src: "src/knowledge/rules.ts", dest: "rules.ts" },
   { src: "src/knowledge/compositions.ts", dest: "compositions.ts" },
   { src: "src/knowledge/keywords.ts", dest: "keywords.ts" },
-  { src: "src/knowledge/create-web-components-skill.md", dest: "create-web-components-skill.md" },
-  { src: "src/knowledge/create-ux-guidelines-skill.md", dest: "create-ux-guidelines-skill.md" },
-  { src: "src/knowledge/compose-web-components-skill.md", dest: "compose-web-components-skill.md" },
-  { src: "src/knowledge/style-web-components-skill.md", dest: "style-web-components-skill.md" },
+  { src: "skills/create-web-components/SKILL.md", dest: "skills/create-web-components/SKILL.md" },
+  { src: "skills/create-ux-guidelines/SKILL.md", dest: "skills/create-ux-guidelines/SKILL.md" },
+  { src: "skills/muibook-components/SKILL.md", dest: "skills/muibook-components/SKILL.md" },
+  { src: "skills/style-web-components/SKILL.md", dest: "skills/style-web-components/SKILL.md" },
+];
+
+const legacySkillFiles = [
+  "create-web-components-skill.md",
+  "create-ux-guidelines-skill.md",
+  "compose-web-components-skill.md",
+  "style-web-components-skill.md",
 ];
 
 console.log(`Copying knowledge files to: ${destDir}`);
 
 if (!fs.existsSync(destDir)) {
   fs.mkdirSync(destDir, { recursive: true });
+}
+
+for (const file of legacySkillFiles) {
+  fs.rmSync(path.join(destDir, file), { force: true });
 }
 
 for (const { src, dest } of filesToCopy) {

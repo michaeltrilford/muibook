@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Status: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["before","after"],
+    },
     title: "Status",
     description:
       "A status is a compact visual indicator used to communicate the state of an object, record, workflow, or system condition. It is non-interactive by default, but can be interactive when composed as a trigger or compact state action.",

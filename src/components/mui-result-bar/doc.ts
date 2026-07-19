@@ -11,6 +11,10 @@ export const muiDocs: MuiDocs = {
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-result-bar/index.ts"],
     website: ["https://muibook.com/result"],
     guides: ["https://guides.muibook.com/prompt"],
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["accessory", "icon", "start", "after-label", "actions", "content"],
+    },
     usage: {
       list: [
         "Use inside Chat Message content when an agent produces a file edit, generated artefact, preview, or reviewable result.",

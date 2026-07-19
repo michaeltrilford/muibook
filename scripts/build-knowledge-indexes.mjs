@@ -26,25 +26,26 @@ const skillIndex = {
   skills: [
     {
       id: "create-web-components",
-      file: "create-web-components-skill.md",
+      file: "skills/create-web-components/SKILL.md",
       title: "Create Web Components",
       useWhen: "Building or reviewing native Web Components with explicit APIs, shadow DOM, slots, tokens, part maps, runtime attrs, wrappers, and knowledge exports.",
     },
     {
-      id: "compose-web-components",
-      file: "compose-web-components-skill.md",
-      title: "Compose Web Components",
-      useWhen: "Composing Web Components into complete interfaces with declarative HTML, layout primitives, slots, and parent-child context.",
+      id: "muibook-components",
+      aliases: ["compose-web-components"],
+      file: "skills/muibook-components/SKILL.md",
+      title: "Muibook Components",
+      useWhen: "Choosing and composing Muibook components into complete interfaces using verified APIs, layout primitives, slots, tokens, and selected examples.",
     },
     {
       id: "style-web-components",
-      file: "style-web-components-skill.md",
+      file: "skills/style-web-components/SKILL.md",
       title: "Style Web Components",
       useWhen: "Applying themes, token layers, surface decisions, CSS variables, parts, and targeted override patterns.",
     },
     {
       id: "create-ux-guidelines",
-      file: "create-ux-guidelines-skill.md",
+      file: "skills/create-ux-guidelines/SKILL.md",
       title: "Create UX Guidelines",
       useWhen: "Writing or reviewing component UX guidelines, anatomy, accessibility, variants, behavior, composition examples, and asset publishing guidance.",
     },

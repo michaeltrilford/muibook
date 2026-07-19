@@ -64,8 +64,8 @@ class HomePage extends HTMLElement {
 
     return {
       desktop: `<${desktopTag} color="var(--app-logo-color)"></${desktopTag}>`,
-      tablet: `<${desktopTag} color="var(--app-logo-color)" slot="showAbove" style="max-width:26rem;"></${desktopTag}>`,
-      phone: `<${phoneTag} color="var(--app-logo-color)" slot="showBelow"></${phoneTag}>`,
+      tablet: `<${desktopTag} color="var(--app-logo-color)" slot="show-above" style="max-width:26rem;"></${desktopTag}>`,
+      phone: `<${phoneTag} color="var(--app-logo-color)" slot="show-below"></${phoneTag}>`,
     };
   }
 
@@ -338,14 +338,14 @@ class HomePage extends HTMLElement {
         <mui-responsive variant="container" breakpoint="719" class="main-content__grid">
 
           <!-- Main content above -->
-          <main slot="showAbove">
+          <main slot="show-above">
 
             <div class="logo-wrapper">
               ${desktop}
             </div>
             <div class="introduction">
               <mui-responsive variant="container" observe=".main-content__grid" breakpoint-high="1460" breakpoint-low="1200">
-                <mui-grid col="1fr auto" aligny="center" slot="showAbove">
+                <mui-grid col="1fr auto" aligny="center" slot="show-above">
                   <mui-body style="max-width: 75ch;" size="large" weight="bold">
                     ${intro}<mui-link size="large" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="large" weight="regular" href='/changelog'>Changelog</mui-link>
                   </mui-body>
@@ -353,7 +353,7 @@ class HomePage extends HTMLElement {
                     ${actions}
                   </mui-h-stack>
                 </mui-grid>
-                <mui-grid slot="showMiddle" col="1fr" aligny="end" alignx="end" space="var(--space-600)">
+                <mui-grid slot="show-middle" col="1fr" aligny="end" alignx="end" space="var(--space-600)">
                   <mui-body size="medium" weight="bold" style="text-align: right; max-width: 70ch;">
                     ${intro}<mui-link size="medium" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="medium" weight="regular" href='/changelog'>Changelog</mui-link>
                   </mui-body>
@@ -361,7 +361,7 @@ class HomePage extends HTMLElement {
                     ${actions}
                   </mui-h-stack>
                 </mui-grid>
-                <mui-grid slot="showBelow" col="1fr" aligny="end" alignx="end" space="var(--space-600)">
+                <mui-grid slot="show-below" col="1fr" aligny="end" alignx="end" space="var(--space-600)">
                   <mui-body size="small" weight="bold" style="text-align: right; max-width: 60ch;">
                     ${intro}<mui-link size="small" weight="regular" href='https://www.npmjs.com/package/@muibook/components/v/${versionText}'>${versionText}</mui-link> • <mui-link size="medium" weight="regular" href='/changelog'>Changelog</mui-link>
                   </mui-body>
@@ -375,7 +375,7 @@ class HomePage extends HTMLElement {
           </main>
 
           <!-- Main content below -->
-          <main slot="showBelow">
+          <main slot="show-below">
             <mui-v-stack space="var(--space-600)" style="text-align: center;" alignX="center">
               <div class="logo-wrapper">
                 <mui-responsive variant="container" observe="parent" breakpoint="420">
@@ -390,10 +390,10 @@ class HomePage extends HTMLElement {
               </mui-v-stack>
 
               <mui-responsive variant="container" observe=".main-content__grid" breakpoint="420">
-              <mui-h-stack slot="showAbove" space="var(--space-300)">
+              <mui-h-stack slot="show-above" space="var(--space-300)">
                 ${actions}
               </mui-h-stack>
-                <mui-v-stack slot="showBelow" space="var(--space-300)">
+                <mui-v-stack slot="show-below" space="var(--space-300)">
                 ${actions}
               </mui-v-stack>
               </mui-responsive>

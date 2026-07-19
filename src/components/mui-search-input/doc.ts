@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   "Search Input": {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["action","after"],
+    },
     title: "Search Input",
     description:
       "A composed search control for filtering local views, revealing into toolbar space when paired with adjacent controls.",

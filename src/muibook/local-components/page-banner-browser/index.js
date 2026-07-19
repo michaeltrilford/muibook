@@ -67,7 +67,7 @@ class pageBannerBrowser extends HTMLElement {
     shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
         <mui-responsive variant="container" breakpoint="960" observe="parent" class="banner">
-          <mui-grid slot="showBelow" space="var(--space-600)" col="1fr">
+          <mui-grid slot="show-below" space="var(--space-600)" col="1fr">
             <mui-v-stack space="var(--space-500)" alignY="start">
               <mui-v-stack  space="var(--space-100)">
                 <mui-h-stack space="var(--space-100)" alignY="center">
@@ -87,7 +87,7 @@ class pageBannerBrowser extends HTMLElement {
             </mui-v-stack>
             <img class="hero" src="${Image}" alt="Hero" />
           </mui-grid>
-          <mui-grid slot="showAbove" col="1fr 440px">
+          <mui-grid slot="show-above" col="1fr 440px">
             <mui-v-stack  space="var(--space-600)"  alignY="start" style="max-width: 44ch; padding-bottom: var(--space-700);">
               <mui-v-stack  space="var(--space-400)">
                 <mui-h-stack space="var(--space-200)" alignY="center">

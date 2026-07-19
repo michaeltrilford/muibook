@@ -13,7 +13,7 @@ export const muiApi = {
       { name: "loading", type: "boolean", description: "Displays the loading state over the plot." },
       { name: "error", description: "Displays an error message over the plot." },
     ],
-    properties: [{ name: "data", description: "Array of time and value data. The component sorts a copied array before rendering." }],
+    properties: [{ name: "data", description: "Array of `{ time: string | number, value: number }` objects. When composing in Redactd, populate the Data field with this array through `props.data`; Redactd passes it to the component. The component sorts a copied array before rendering." }],
     methods: [
       { name: "update", description: "Adds or replaces one datum for streaming updates." },
       { name: "fitContent", description: "Fits all current data into the visible time scale." },

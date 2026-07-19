@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   FileDiff: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["icon"],
+    },
     title: "File Diff",
     description: "File Diff represents a single file and its additions/deletions in a change summary.",
     hero: [""],

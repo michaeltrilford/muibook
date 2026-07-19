@@ -65,7 +65,7 @@ class storyTypeSlat extends HTMLElement {
     this.shadowRoot.innerHTML = /*html*/ `
       <style>${styles}</style>
       <mui-responsive breakpoint="600">
-        <mui-v-stack space="var(--space-000)" slot="showAbove">
+        <mui-v-stack space="var(--space-000)" slot="show-above">
           <mui-slat style="gap: var(--space-600)">
             <div slot="start">
               <mui-v-stack space="var(--space-200)">
@@ -90,7 +90,7 @@ class storyTypeSlat extends HTMLElement {
           </mui-slat>
         </mui-v-stack>
 
-        <mui-v-stack space="var(--space-100)" slot="showBelow">
+        <mui-v-stack space="var(--space-100)" slot="show-below">
           <mui-v-stack space="var(--space-200)">
             <mui-body size="medium">
               <mui-h-stack space="var(--space-050)">

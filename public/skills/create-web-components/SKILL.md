@@ -1,5 +1,5 @@
 ---
-name: create-web-components-skill
+name: create-web-components
 description: Help make your own framework-agnostic, portable web components using native APIs, shadow DOM, and slots.
 ---
 
@@ -159,7 +159,7 @@ Keep human guidance, generated metadata, and runtime/export metadata separate.
 - `DESIGN.md`: portable design direction, token architecture, theme behavior, and component mappings.
 - `AGENTS.md`: coding-agent operating rules for working in the component repo.
 - `rules.ts`, `keywords.ts`, and `compositions.ts`: AI-oriented generation rules, keyword routing, and example component trees.
-- `create-web-components-skill.md`: a compact skill guide for agents and developers that need the architectural pattern without loading every repo file.
+- `skills/create-web-components/SKILL.md`: a compact skill guide for agents and developers that need the architectural pattern without loading every repo file.
 
 Do not put destination/runtime attrs into the CEM as if they are public user API. Keep the CEM for authored component contracts and use `dynamic-attrs.json` for builder, wrapper, and export behavior.
 
@@ -253,7 +253,7 @@ This part vocabulary is intentionally different from element-name parts such as 
 
 Use slots as the primary structure model.
 
-- Prefer named slots that actually exist in the component system: `before`, `after`, `action`, `actions`, `actions-right`, `title`, `detail`, `message`, `hint`, `trigger`, `start`, `end`, `accessory`, `primary`, `secondary`, `showAbove`, `showMiddle`, `showBelow`, `left`, `page`, `right`, `meta-before`, and `meta-after`.
+- Prefer named slots that actually exist in the component system: `before`, `after`, `action`, `actions`, `actions-right`, `title`, `detail`, `message`, `hint`, `trigger`, `start`, `end`, `accessory`, `primary`, `secondary`, `show-above`, `show-middle`, `show-below`, `left`, `page`, `right`, `meta-before`, and `meta-after`.
 - Keep direct slotted content meaningful; avoid unnecessary wrapper elements.
 - If a parent needs to respond to slotted content, inspect assigned nodes and toggle an internal runtime attr such as `has-before`.
 - If a child must adapt to a parent context, have the parent add a context attr or class to the slotted child, such as `card-slot`.

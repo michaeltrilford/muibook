@@ -335,6 +335,8 @@ Geometry-only component tokens—Avatar sizes, Badge/Card/Dialog radius, Alert/M
 
 ### Responsive Behavior
 
+- Prefer container-based responsive decisions for reusable components, cards, panels, and compositions so they respond to their available region rather than the browser viewport.
+- Use viewport breakpoints only for page-level and app-shell changes that genuinely depend on the viewport.
 - Collapse columns into a clear reading order.
 - Let controls wrap before reducing text or target size.
 - Keep primary actions visible and stable.

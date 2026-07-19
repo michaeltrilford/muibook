@@ -230,7 +230,7 @@ class MuiFinancialChart extends HTMLElement {
       <section class="chart-shell">
         <mui-responsive variant="container" observe="parent" breakpoint="608">
           <mui-v-stack
-            slot="showBelow"
+            slot="show-below"
             part="toolbar"
             width="100%"
             space="var(--space-300)"
@@ -241,7 +241,7 @@ class MuiFinancialChart extends HTMLElement {
             <mui-tab-bar${tabUsage} data-range-layout="compact" size="x-small" stroke="none" aria-label="Chart time range" active-inset full-width></mui-tab-bar>
           </mui-v-stack>
           <mui-h-stack
-            slot="showAbove"
+            slot="show-above"
             part="toolbar"
             width="100%"
             space="var(--space-300)"

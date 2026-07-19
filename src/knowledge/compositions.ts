@@ -306,8 +306,8 @@ export const compositions = {
                     type: "Grid",
                     id: "analytics_metrics",
                     props: {
-                      columns: "repeat(3, minmax(0, 1fr))",
-                      gap: "var(--space-300)",
+                      col: "repeat(3, minmax(0, 1fr))",
+                      space: "var(--space-300)",
                     },
                     children: [
                       {
@@ -551,7 +551,7 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "palace_details",
-                                slot: "start", props: { space: "0" },
+                                slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "palace_title", props: { text: "Palace Cinema", size: "medium", weight: "bold" }, children: [] },
                                   { type: "Body", id: "palace_meta", props: { text: "Entertainment", size: "small" }, children: [] },
@@ -560,7 +560,7 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "palace_amount",
-                                slot: "end", props: { space: "0", alignX: "end" },
+                                slot: "end", props: { space: "var(--space-000)", alignX: "end" },
                                 children: [
                                   { type: "Body", id: "palace_status", props: { text: "Pending", size: "small" }, children: [] },
                                   { type: "Body", id: "palace_value", props: { text: "-$8.12", size: "small" }, children: [] },
@@ -582,7 +582,7 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "app_store_details",
-                                slot: "start", props: { space: "0" },
+                                slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "app_store_title", props: { text: "Apple App Store", size: "medium", weight: "bold" }, children: [] },
                                   { type: "Body", id: "app_store_meta", props: { text: "Entertainment", size: "small" }, children: [] },
@@ -591,7 +591,7 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "app_store_amount",
-                                slot: "end", props: { space: "0", alignX: "end" },
+                                slot: "end", props: { space: "var(--space-000)", alignX: "end" },
                                 children: [
                                   { type: "Body", id: "app_store_status", props: { text: "Pending", size: "small" }, children: [] },
                                   { type: "Body", id: "app_store_value", props: { text: "-$4.99", size: "small" }, children: [] },
@@ -622,7 +622,7 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "record_details",
-                                slot: "start", props: { space: "0" },
+                                slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "record_title", props: { text: "Record South Yarra", size: "medium", weight: "bold" }, children: [] },
                                   { type: "Body", id: "record_meta", props: { text: "Entertainment", size: "small" }, children: [] },
@@ -631,7 +631,7 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "record_amount",
-                                slot: "end", props: { space: "0", alignX: "end" },
+                                slot: "end", props: { space: "var(--space-000)", alignX: "end" },
                                 children: [
                                   { type: "Body", id: "record_status", props: { text: "Pending", size: "small" }, children: [] },
                                   { type: "Body", id: "record_value", props: { text: "-$26.89", size: "medium" }, children: [] },
@@ -673,7 +673,7 @@ export const compositions = {
                               {
                                 type: "VStack",
                                 id: "statement_report_copy",
-                                slot: "start", props: { space: "0" },
+                                slot: "start", props: { space: "var(--space-000)" },
                                 children: [
                                   { type: "Body", id: "statement_report_title", props: { text: "Transactions Report", size: "medium", weight: "bold" }, children: [] },
                                   { type: "Body", id: "statement_report_meta", props: { text: "Generate a PDF", size: "small" }, children: [] },
@@ -727,7 +727,7 @@ export const compositions = {
                           {
                             type: "VStack",
                             id: "wallet_artwork_copy",
-                            slot: "start", props: { space: "0" },
+                            slot: "start", props: { space: "var(--space-000)" },
                             children: [
                               { type: "Body", id: "wallet_artwork_title", props: { text: "Artwork", size: "medium", weight: "bold" }, children: [] },
                               { type: "Body", id: "wallet_artwork_preferred_size", props: { text: "Preferred size: 395x248", size: "small", "data-preferred-size": true }, children: [] },
@@ -736,7 +736,7 @@ export const compositions = {
                           {
                             type: "HStack",
                             id: "wallet_artwork_actions",
-                            slot: "end", props: { space: "0", alignX: "end" },
+                            slot: "end", props: { space: "var(--space-000)", alignX: "end" },
                             children: [
                               { type: "Button", id: "wallet_artwork_reset", props: { text: "Reset", variant: "tertiary", "data-background-reset": true, style: "display: none;" }, children: [] },
                               {
@@ -823,13 +823,13 @@ export const compositions = {
                       {
                         type: "Button",
                         id: "muitube_menu_toggle_desktop",
-                        slot: "showAbove", props: { variant: "tertiary", "aria-label": "Toggle menu", size: "medium" },
+                        slot: "show-above", props: { variant: "tertiary", "aria-label": "Toggle menu", size: "medium" },
                         children: [{ type: "_Icon", id: "muitube_menu_icon_desktop", props: { icon: "mui-icon-menu", size: "medium" }, children: [] }],
                       },
                       {
                         type: "Button",
                         id: "muitube_menu_toggle_mobile",
-                        slot: "showBelow", props: { variant: "tertiary", "aria-label": "Open menu", size: "medium" },
+                        slot: "show-below", props: { variant: "tertiary", "aria-label": "Open menu", size: "medium" },
                         children: [{ type: "_Icon", id: "muitube_menu_icon_mobile", props: { icon: "mui-icon-menu", size: "medium" }, children: [] }],
                       },
                     ],
@@ -853,7 +853,7 @@ export const compositions = {
                   {
                     type: "HStack",
                     id: "header_search_desktop",
-                    slot: "showAbove", props: { alignX: "center", alignY: "center", space: "var(--space-300)", width: "100%" },
+                    slot: "show-above", props: { alignX: "center", alignY: "center", space: "var(--space-300)", width: "100%" },
                     children: [
                       {
                         type: "Input",
@@ -888,11 +888,11 @@ export const compositions = {
                     id: "create_action",
                     props: { breakpoint: "768" },
                     children: [
-                      { type: "Button", id: "create_desktop", slot: "showAbove", props: { text: "Create", variant: "primary" }, children: [] },
+                      { type: "Button", id: "create_desktop", slot: "show-above", props: { text: "Create", variant: "primary" }, children: [] },
                       {
                         type: "Button",
                         id: "create_mobile",
-                        slot: "showBelow", props: { variant: "primary", "aria-label": "Create" },
+                        slot: "show-below", props: { variant: "primary", "aria-label": "Create" },
                         children: [{ type: "_Icon", id: "create_mobile_icon", props: { icon: "mui-icon-add", size: "medium" }, children: [] }],
                       },
                     ],
@@ -915,7 +915,7 @@ export const compositions = {
               {
                 type: "Drawer",
                 id: "sidebar_drawer",
-                slot: "showAbove", props: { width: "240px", variant: "push", open: true, side: "left", "drawer-space": "none" },
+                slot: "show-above", props: { width: "240px", variant: "push", open: true, side: "left", "drawer-space": "none" },
                 children: [
                   {
                     type: "VStack",
@@ -1015,7 +1015,7 @@ export const compositions = {
               {
                 type: "VStack",
                 id: "muitube_mobile",
-                slot: "showBelow", props: { alignX: "stretch", space: "var(--space-000)" },
+                slot: "show-below", props: { alignX: "stretch", space: "var(--space-000)" },
                 children: [
                   {
                     type: "Drawer",
@@ -1672,7 +1672,7 @@ export const compositions = {
               {
                 type: "Card",
                 id: "activity_table_card",
-                slot: "showAbove", props: {},
+                slot: "show-above", props: {},
                 children: [
                   {
                     type: "CardHeader",
@@ -1717,7 +1717,7 @@ export const compositions = {
               {
                 type: "Card",
                 id: "activity_slat_card",
-                slot: "showBelow", props: {},
+                slot: "show-below", props: {},
                 children: [
                   {
                     type: "CardBody",

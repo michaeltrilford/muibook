@@ -91,12 +91,12 @@ class StoryContextBar extends HTMLElement {
             </mui-h-stack>
             <mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400">
 
-              <mui-h-stack slot="showAbove" aligny="center" space="var(--space-100)">
+              <mui-h-stack slot="show-above" aligny="center" space="var(--space-100)">
                 <mui-button variant="tertiary" size="x-small">Undo</mui-button>
                 <mui-button variant="tertiary" size="x-small">Review</mui-button>
               </mui-h-stack>
 
-              <mui-dropdown slot="showBelow" position="right" style="--menu-min-width: 9rem;" size="x-small">
+              <mui-dropdown slot="show-below" position="right" style="--menu-min-width: 9rem;" size="x-small">
                 <mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More">
                   <mui-icon-ellipsis size="x-small" class="mui-icon"></mui-icon-ellipsis>
                 </mui-button>
@@ -242,12 +242,12 @@ class StoryContextBar extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-body size="x-small" weight="regular" variant="attention"&gt;-20&lt;/mui-body&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive slot="actions" variant="container" observe="parent" breakpoint="400"&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="showAbove" aligny="center" space="var(--space-100)"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-h-stack slot="show-above" aligny="center" space="var(--space-100)"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" size="x-small"&gt;Undo&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" size="x-small"&gt;Review&lt;/mui-button&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-h-stack&gt;<br />
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;x-small&quot; slot="showBelow" position="right" style="--menu-min-width: 9rem;"&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-dropdown size=&quot;x-small&quot; slot="show-below" position="right" style="--menu-min-width: 9rem;"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-button variant="tertiary" slot="action" size="x-small" icon-only aria-label="More"&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-ellipsis size="x-small" class="mui-icon"&gt;&lt;/mui-icon-ellipsis&gt;<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br /><br />

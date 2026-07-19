@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   AvatarChip: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["primary","secondary"],
+    },
     title: "Avatar Chip",
     description:
       "Avatar Chip composes an avatar with compact primary and secondary identity text for creator, author, or profile references.",

@@ -14,7 +14,7 @@ export const muiApi = {
       { name: "loading", type: "boolean", description: "Displays the loading state over the plot." },
       { name: "error", description: "Displays an error message over the plot." },
     ],
-    properties: [{ name: "series", description: "Array of named series with id, label, optional color, and time/value data." }],
+    properties: [{ name: "series", description: "Array of `{ id: string, label: string, color?: string, data: Array<{ time: string | number, value: number }> }` objects. When composing in Redactd, populate the Series field with this array through `props.series`; Redactd passes it to the component." }],
     methods: [
       { name: "update", description: "Adds or replaces one datum in the identified series." },
       { name: "fitContent", description: "Fits all current series into the visible time scale." },

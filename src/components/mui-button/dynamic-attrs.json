@@ -39,6 +39,10 @@
       "description": "Applied to the last menu action, allowing edge radius and spacing to match the menu surface."
     },
     {
+      "name": "submenu-trigger",
+      "description": "Applied by Submenu to its Button trigger so the fixed after-chevron retains size-specific trailing slot spacing inside a non-inset Menu."
+    },
+    {
       "name": "alert-slot",
       "description": "Applied to alert action content, allowing the action to match the alert layout and tone."
     },

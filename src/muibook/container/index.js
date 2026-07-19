@@ -37,7 +37,11 @@ export class AppContainer extends HTMLElement {
 
   async loadComponent() {
     normalizeLegacyHashRoute();
-    const path = getCurrentRoutePath();
+    let path = getCurrentRoutePath();
+    if (path === "/skills") {
+      window.history.replaceState({}, "", "/plugins#skills-knowledge");
+      path = "/plugins";
+    }
     const routes = {
       "/home": "home-page",
 
@@ -58,7 +62,6 @@ export class AppContainer extends HTMLElement {
       "/knowledge-mcp": "knowledge-mcp-page",
       "/plugins": "plugins-page",
       "/manifest": "manifest-page",
-      "/skills": "skills-page",
       "/typed-elements": "typed-elements",
       "/wrapped-components": "wrapped-components",
       "/react-input-helper": "react-input-helper",
@@ -126,6 +129,7 @@ export class AppContainer extends HTMLElement {
       "/button": "story-button",
       "/dropdown": "story-dropdown",
       "/menu": "story-menu",
+      "/submenu": "story-submenu",
       "/responsive": "story-responsive",
       "/loader": "story-loader",
       "/spinner": "story-spinner",
@@ -186,7 +190,6 @@ export class AppContainer extends HTMLElement {
       "knowledge-mcp-page": () => import("../pages/knowledge/mcp.js"),
       "plugins-page": () => import("../pages/plugins/index.js"),
       "manifest-page": () => import("../pages/manifest/index.js"),
-      "skills-page": () => import("../pages/skills/index.js"),
       "css-setup": () => import("../pages/css-setup/index.js"),
       "base-theme": () => import("../pages/base-theme/index.js"),
       "multi-brand-theme": () => import("../pages/multi-brand-theme/index.js"),
@@ -224,6 +227,7 @@ export class AppContainer extends HTMLElement {
       "story-button": () => import("../story/components/mui-button"),
       "story-dropdown": () => import("../story/components/mui-dropdown"),
       "story-menu": () => import("../story/components/mui-menu"),
+      "story-submenu": () => import("../story/components/mui-submenu"),
       "story-loader": () => import("../story/components/mui-loader"),
       "story-spinner": () => import("../story/components/mui-spinner"),
       "story-skeleton": () => import("../story/components/mui-skeleton"),

@@ -365,19 +365,19 @@ class StoryTemplate extends HTMLElement {
           <mui-v-stack class="introduction" space="var(--space-500)">
             <mui-v-stack class="header-group">
               <mui-responsive ${resourceBreakpoints}>
-                <mui-h-stack slot="showBelow" alignX="space-between" alignY="center">
+                <mui-h-stack slot="show-below" alignX="space-between" alignY="center">
                   <mui-heading size="2" level="1" class="storefront-heading">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">
                     ${linksBelowContent}
                   </mui-h-stack>
                 </mui-h-stack>
-                <mui-h-stack slot="showMiddle" alignX="space-between" alignY="center">
+                <mui-h-stack slot="show-middle" alignX="space-between" alignY="center">
                   <mui-heading size="2" level="1" class="storefront-heading">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">
                     ${linksMiddleContent}
                   </mui-h-stack>
                 </mui-h-stack>
-                <mui-h-stack slot="showAbove" alignX="space-between" alignY="center">
+                <mui-h-stack slot="show-above" alignX="space-between" alignY="center">
                   <mui-heading size="1" level="1" class="storefront-heading">${title}</mui-heading>
                   <mui-h-stack space="var(--space-000)">
                     ${linksAboveContent}

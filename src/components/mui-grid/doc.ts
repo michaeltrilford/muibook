@@ -23,7 +23,8 @@ export const muiDocs: MuiDocs = {
         "Ideal for aligning items consistently across different screen sizes.",
         "Supports responsive design by adjusting column count, gaps, and alignment at breakpoints.",
         "Recognise it as a developer tool for layout control rather than a direct design asset.",
-        "Use the space design token to maintain consistent gap spacing.",
+        "Use complete space token references such as var(--space-400) to maintain consistent gap spacing; do not pass bare scale names or numbers.",
+        "For equal columns, use repeat(N, minmax(0, 1fr)) instead of a numeric count or repeated bare 1fr tracks so intrinsic content cannot force the Grid wider.",
       ],
     },
 

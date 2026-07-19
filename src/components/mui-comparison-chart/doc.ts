@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   ComparisonChart: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["header","legend","footer"],
+    },
     title: "Comparison Chart",
     description: "Comparison Chart aligns multiple financial time series for performance and forecast analysis.",
     hero: [""],
@@ -10,7 +14,7 @@ export const muiDocs: MuiDocs = {
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-comparison-chart/index.ts"],
     website: ["https://muibook.com/comparison-chart"],
     guides: [""],
-    usage: { list: ["Use indexed or percent mode when comparing assets with different units or price levels.", "Use absolute mode for series that share the same unit and scale, such as actual and forecast values.", "Limit simultaneous series so colors, labels, and crossings remain readable.", "In a chart cluster, use attribution='none' to remove repeated TradingView logos only when the containing experience provides one visible attribution and the required NOTICE information."] },
+    usage: { list: ["Use indexed or percent mode when comparing assets with different units or price levels.", "Use absolute mode for series that share the same unit and scale, such as actual and forecast values.", "Provide named series with nested time/value data through the series property. When composing Muibook UI in Redactd, populate the structured Series field through props.series; Redactd passes it to the component.", "Limit simultaneous series so colors, labels, and crossings remain readable.", "In a chart cluster, use attribution='none' to remove repeated TradingView logos only when the containing experience provides one visible attribution and the required NOTICE information."] },
     accessibility: { designerList: ["Pair line colors with persistent text labels in the legend; do not rely on color alone."], engineerList: ["Provide label and compose a legend that names every supplied series.", "Keep TradingView attribution enabled unless the consuming page supplies the required visible attribution and NOTICE information."] },
     anatomy: { image: "", list: ["Optional header", "Composable legend", "Comparison plot", "Time scale", "Price scale", "Optional footer"] },
     variants: { items: [] },

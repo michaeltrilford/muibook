@@ -7,22 +7,29 @@ const sourceDir = path.resolve(__dirname, "..");
 
 const filesToCopy = [
   {
-    src: "src/knowledge/create-web-components-skill.md",
-    dest: "public/create-web-components-skill.md",
+    src: "skills/create-web-components/SKILL.md",
+    dest: "public/skills/create-web-components/SKILL.md",
   },
   {
-    src: "src/knowledge/create-ux-guidelines-skill.md",
-    dest: "public/create-ux-guidelines-skill.md",
+    src: "skills/create-ux-guidelines/SKILL.md",
+    dest: "public/skills/create-ux-guidelines/SKILL.md",
   },
   {
-    src: "src/knowledge/compose-web-components-skill.md",
-    dest: "public/compose-web-components-skill.md",
-  },
-  {
-    src: "src/knowledge/style-web-components-skill.md",
-    dest: "public/style-web-components-skill.md",
+    src: "skills/style-web-components/SKILL.md",
+    dest: "public/skills/style-web-components/SKILL.md",
   },
 ];
+
+const legacyFiles = [
+  "public/create-web-components-skill.md",
+  "public/create-ux-guidelines-skill.md",
+  "public/compose-web-components-skill.md",
+  "public/style-web-components-skill.md",
+];
+
+for (const file of legacyFiles) {
+  fs.rmSync(path.join(sourceDir, file), { force: true });
+}
 
 for (const { src, dest } of filesToCopy) {
   const srcPath = path.join(sourceDir, src);

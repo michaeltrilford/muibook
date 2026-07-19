@@ -31,6 +31,11 @@ export interface ComponentDoc {
   website?: string[];
   description: string;
 
+  namedSlots?: {
+    description?: string;
+    list: string[];
+  };
+
   usage?: {
     list: string[];
   };

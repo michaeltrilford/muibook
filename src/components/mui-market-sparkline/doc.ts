@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   MarketSparkline: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["header","footer"],
+    },
     title: "Market Sparkline",
     description: "Market Sparkline presents a compact financial or economic trend inside composed Muibook interfaces.",
     hero: [""],
@@ -10,7 +14,7 @@ export const muiDocs: MuiDocs = {
     github: ["https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-market-sparkline/index.ts"],
     website: ["https://muibook.com/market-sparkline"],
     guides: [""],
-    usage: { list: ["Use for compact market summaries where direction and shape matter more than exact axis inspection.", "Compose Sparkline inside Card when it needs a framed dashboard surface; the component remains unframed for use within existing panels.", "Compose headings, values, badges, and actions through Muibook components in the header and footer slots.", "In a chart cluster, use attribution='none' to remove repeated TradingView logos only when the containing experience provides one visible attribution and the required NOTICE information.", "Use Financial Chart when users need scales, ranges, OHLC values, or detailed analysis."] },
+    usage: { list: ["Use for compact market summaries where direction and shape matter more than exact axis inspection.", "Compose Sparkline inside Card when it needs a framed dashboard surface; the component remains unframed for use within existing panels.", "Provide time/value objects through the data property. When composing Muibook UI in Redactd, populate the structured Data field through props.data; Redactd passes it to the component.", "Compose headings, values, badges, and actions through Muibook components in the header and footer slots.", "In a chart cluster, use attribution='none' to remove repeated TradingView logos only when the containing experience provides one visible attribution and the required NOTICE information.", "Use Financial Chart when users need scales, ranges, OHLC values, or detailed analysis."] },
     accessibility: { designerList: ["Always pair the visual trend with a textual value or change indicator; color and line direction are supplemental."], engineerList: ["Provide label for the generated chart summary.", "Keep TradingView attribution enabled unless the consuming page supplies the required visible attribution and NOTICE information."] },
     anatomy: { image: "", list: ["Optional header", "Compact plot", "Optional footer"] },
     variants: { items: [] },

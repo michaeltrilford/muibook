@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Drawer: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["title","actions","page","left","right"],
+    },
     title: "Drawer",
     description:
       "A drawer view that prompts users to take a specific action or provide additional information without navigating away from the current context.",

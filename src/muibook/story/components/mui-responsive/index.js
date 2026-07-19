@@ -167,15 +167,15 @@ class storyResponsive extends HTMLElement {
 
         <story-card id="single-breakpoint" title="${storyMeta["single-breakpoint"].title}" description="${storyMeta["single-breakpoint"].description}" usage="${storyMeta["single-breakpoint"].usage}">
           <mui-responsive slot="body" breakpoint="600">
-            <mui-heading slot="showBelow" size="5" level="3">Mobile / Below 600</mui-heading>
-            <mui-heading slot="showAbove" size="3" level="3">Desktop / Above 600</mui-heading>
+            <mui-heading slot="show-below" size="5" level="3">Mobile / Below 600</mui-heading>
+            <mui-heading slot="show-above" size="3" level="3">Desktop / Above 600</mui-heading>
           </mui-responsive>
           <story-code-block slot="footer" scrollable>
             &lt;mui-responsive breakpoint="600"&gt;
             <br />
-            &nbsp;&nbsp;&lt;div slot="showAbove"&gt;...&lt;/div&gt;
+            &nbsp;&nbsp;&lt;div slot="show-above"&gt;...&lt;/div&gt;
             <br />
-            &nbsp;&nbsp;&lt;div slot="showBelow"&gt;...&lt;/div&gt;
+            &nbsp;&nbsp;&lt;div slot="show-below"&gt;...&lt;/div&gt;
             <br />
             &lt;/mui-responsive&gt;
           </story-code-block>
@@ -183,18 +183,18 @@ class storyResponsive extends HTMLElement {
 
         <story-card id="dual-breakpoint" title="${storyMeta["dual-breakpoint"].title}" description="${storyMeta["dual-breakpoint"].description}" usage="${storyMeta["dual-breakpoint"].usage}">
           <mui-responsive slot="body" breakpoint-low="600" breakpoint-high="1024">
-            <mui-heading slot="showBelow" size="5" level="3">Mobile / Below 600</mui-heading>
-            <mui-heading slot="showMiddle" size="4" level="3">Tablet / Between 600-1200</mui-heading>
-            <mui-heading slot="showAbove" size="3" level="3">Desktop / Above 1200</mui-heading>
+            <mui-heading slot="show-below" size="5" level="3">Mobile / Below 600</mui-heading>
+            <mui-heading slot="show-middle" size="4" level="3">Tablet / Between 600-1200</mui-heading>
+            <mui-heading slot="show-above" size="3" level="3">Desktop / Above 1200</mui-heading>
           </mui-responsive>
           <story-code-block slot="footer" scrollable>
             &lt;mui-responsive breakpoint-low="599" breakpoint-high="1024"&gt;
             <br />
-            &nbsp;&nbsp;&lt;div slot="showAbove"&gt;...&lt;/div&gt;
+            &nbsp;&nbsp;&lt;div slot="show-above"&gt;...&lt;/div&gt;
             <br />
-            &nbsp;&nbsp;&lt;div slot="showMiddle"&gt;...&lt;/div&gt;
+            &nbsp;&nbsp;&lt;div slot="show-middle"&gt;...&lt;/div&gt;
             <br />
-            &nbsp;&nbsp;&lt;div slot="showBelow"&gt;...&lt;/div&gt;
+            &nbsp;&nbsp;&lt;div slot="show-below"&gt;...&lt;/div&gt;
             <br />
             &lt;/mui-responsive&gt;
           </story-code-block>
@@ -225,10 +225,10 @@ class storyResponsive extends HTMLElement {
                 </div>
                 <div class="container-query-page-content">
                   <mui-responsive variant="container" observe=".container-query-page" breakpoint="700">
-                    <div slot="showAbove">
+                    <div slot="show-above">
                       ${ProgressDesktopView}
                     </div>
-                    <div slot="showBelow">
+                    <div slot="show-below">
                       ${ProgressMobileView}
                     </div>
                   </mui-responsive>
@@ -250,9 +250,9 @@ class storyResponsive extends HTMLElement {
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-responsive variant="container" observe=".container-query-page" breakpoint="700"&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="showAbove"&gt;&#x24;{ProgressDesktopView}&lt;/div&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="show-above"&gt;&#x24;{ProgressDesktopView}&lt;/div&gt;
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="showBelow"&gt;&#x24;{ProgressMobileView}&lt;/div&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div slot="show-below"&gt;&#x24;{ProgressMobileView}&lt;/div&gt;
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-responsive&gt;
             <br />
@@ -271,7 +271,7 @@ class storyResponsive extends HTMLElement {
 
         <story-card id="slat-to-table" title="${storyMeta["slat-to-table"].title}" description="${storyMeta["slat-to-table"].description}" usage="${storyMeta["slat-to-table"].usage}">
           <mui-responsive slot="body" breakpoint="1080">
-            <mui-table slot="showAbove">
+            <mui-table slot="show-above">
               <mui-row-group heading>
                 <mui-row columns="${Columns}">
                   <mui-cell>Name</mui-cell>
@@ -283,7 +283,7 @@ class storyResponsive extends HTMLElement {
                 ${TableRow}
               </mui-row-group>
             </mui-table>
-            <mui-v-stack space="var(--space-400)" slot="showBelow">
+            <mui-v-stack space="var(--space-400)" slot="show-below">
               ${SlatRow}
             </mui-v-stack>
           </mui-responsive>
@@ -354,7 +354,7 @@ class storyResponsive extends HTMLElement {
             <br><br>
             // RESPONSIVE COMPOSITION<br><br>
             &lt;mui-responsive&nbsp;breakpoint="1080"&gt;<br>
-            &nbsp;&nbsp;&lt;mui-table&nbsp;slot="showAbove"&gt;<br>
+            &nbsp;&nbsp;&lt;mui-table&nbsp;slot="show-above"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row-group&nbsp;heading&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-row&nbsp;columns="&#36;{Columns}"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-cell&gt;Name&lt;/mui-cell&gt;<br>
@@ -366,7 +366,7 @@ class storyResponsive extends HTMLElement {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#36;{TableRow}<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-row-group&gt;<br>
             &nbsp;&nbsp;&lt;/mui-table&gt;<br>
-            &nbsp;&nbsp;&lt;mui-v-stack&nbsp;space="var(--space-400)"&nbsp;slot="showBelow"&gt;<br>
+            &nbsp;&nbsp;&lt;mui-v-stack&nbsp;space="var(--space-400)"&nbsp;slot="show-below"&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&#36;{SlatRow}<br>
             &nbsp;&nbsp;&lt;/mui-v-stack&gt;<br>
             &lt;/mui-responsive&gt;<br>
@@ -378,10 +378,10 @@ class storyResponsive extends HTMLElement {
         <story-card id="table-desktop-to-mobile" title="${storyMeta["table-desktop-to-mobile"].title}" description="${storyMeta["table-desktop-to-mobile"].description}" usage="${storyMeta["table-desktop-to-mobile"].usage}">
 
           <mui-responsive slot="body" breakpoint="1080">
-            <mui-h-stack slot="showAbove" space="16px" alignY="center">
+            <mui-h-stack slot="show-above" space="16px" alignY="center">
               ${ProgressDesktopView}
             </mui-h-stack>
-            <div slot="showBelow">
+            <div slot="show-below">
               ${ProgressMobileView}
             </div>
           </mui-responsive>
@@ -395,7 +395,7 @@ class storyResponsive extends HTMLElement {
             &nbsp;&nbsp;/////////////////////////////////////
             <br>
             <br>
-            &nbsp;&nbsp;&lt;div slot="showAbove"&gt;
+            &nbsp;&nbsp;&lt;div slot="show-above"&gt;
             <br />
               &nbsp;&nbsp;&nbsp;&nbsp;&#x24;{ProgressDesktopView}
             <br />
@@ -407,7 +407,7 @@ class storyResponsive extends HTMLElement {
             &nbsp;&nbsp;/////////////////////////////////////
             <br>
             <br>
-            &nbsp;&nbsp;&lt;div slot="showBelow"&gt;
+            &nbsp;&nbsp;&lt;div slot="show-below"&gt;
             <br />
              &nbsp;&nbsp;&nbsp;&nbsp; &#x24;{ProgressMobileView}
             <br />

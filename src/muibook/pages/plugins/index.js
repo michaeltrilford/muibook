@@ -16,6 +16,24 @@ const MUIBOOK_CANVAS_SKILL_INSTALL =
   "https://github.com/michaeltrilford/RedactdCanvas/tree/main/plugins/skills/redactd-canvas-muibook";
 const MUIBOOK_COMPONENT_SKILL_INSTALL =
   "https://github.com/michaeltrilford/muibook/tree/main/skills/muibook-components";
+const CREATE_WEB_COMPONENTS_SKILL =
+  "https://github.com/michaeltrilford/muibook/blob/main/skills/create-web-components/SKILL.md";
+const CREATE_WEB_COMPONENTS_SKILL_RAW =
+  "https://raw.githubusercontent.com/michaeltrilford/muibook/main/skills/create-web-components/SKILL.md";
+const CREATE_WEB_COMPONENTS_SKILL_INSTALL =
+  "https://github.com/michaeltrilford/muibook/tree/main/skills/create-web-components";
+const CREATE_UX_GUIDELINES_SKILL =
+  "https://github.com/michaeltrilford/muibook/blob/main/skills/create-ux-guidelines/SKILL.md";
+const CREATE_UX_GUIDELINES_SKILL_RAW =
+  "https://raw.githubusercontent.com/michaeltrilford/muibook/main/skills/create-ux-guidelines/SKILL.md";
+const CREATE_UX_GUIDELINES_SKILL_INSTALL =
+  "https://github.com/michaeltrilford/muibook/tree/main/skills/create-ux-guidelines";
+const STYLE_WEB_COMPONENTS_SKILL =
+  "https://github.com/michaeltrilford/muibook/blob/main/skills/style-web-components/SKILL.md";
+const STYLE_WEB_COMPONENTS_SKILL_RAW =
+  "https://raw.githubusercontent.com/michaeltrilford/muibook/main/skills/style-web-components/SKILL.md";
+const STYLE_WEB_COMPONENTS_SKILL_INSTALL =
+  "https://github.com/michaeltrilford/muibook/tree/main/skills/style-web-components";
 
 class PluginsPage extends HTMLElement {
   constructor() {
@@ -130,9 +148,31 @@ class PluginsPage extends HTMLElement {
             </mui-grid>
           </mui-v-stack>
 
-          <mui-v-stack space="var(--space-400)">
+          <mui-v-stack id="skills-knowledge" space="var(--space-400)">
             <mui-heading level="2" size="3">Skills &amp; Knowledge Base</mui-heading>
             <mui-grid class="tool-grid" space="var(--space-600)">
+              <div class="tool-card">
+                <mui-card class="skill-card">
+                  <mui-card-body>
+                    <mui-v-stack space="var(--space-600)">
+                      <mui-v-stack space="var(--space-200)">
+                        <mui-badge variant="attention">Standalone skill</mui-badge>
+                        <mui-heading level="3" size="4">Muibook Components</mui-heading>
+                        <mui-body size="medium">
+                          Give Codex the lightweight, single-file component knowledge used alongside Redactd Canvas for Muibook. The full Redactd Canvas plugin and Muibook Knowledge MCP remain optional paths for richer automation and guidance.
+                        </mui-body>
+                      </mui-v-stack>
+                      <mui-code size="x-small" wrap>Install this skill:
+${MUIBOOK_COMPONENT_SKILL_INSTALL}</mui-code>
+                      <mui-h-stack wrap="wrap" space="var(--space-200)">
+                        <mui-link href="${MUIBOOK_COMPONENT_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill on GitHub</mui-link>
+                        <mui-link href="${MUIBOOK_COMPONENT_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">Open SKILL.md</mui-link>
+                      </mui-h-stack>
+                    </mui-v-stack>
+                  </mui-card-body>
+                </mui-card>
+              </div>
+
               <div class="tool-card">
                 <mui-card class="skill-card">
                   <mui-card-body>
@@ -161,16 +201,60 @@ ${MUIBOOK_CANVAS_SKILL_INSTALL}</mui-code>
                     <mui-v-stack space="var(--space-600)">
                       <mui-v-stack space="var(--space-200)">
                         <mui-badge variant="attention">Standalone skill</mui-badge>
-                        <mui-heading level="3" size="4">Muibook Components</mui-heading>
+                        <mui-heading level="3" size="4">Create Web Components</mui-heading>
                         <mui-body size="medium">
-                          Give Codex the lightweight, single-file component knowledge used alongside Redactd Canvas for Muibook. The full Redactd Canvas plugin and Muibook Knowledge MCP remain optional paths for richer automation and guidance.
+                          Build framework-agnostic native Web Components with explicit APIs, shadow DOM, slots, events, tokens, parts, metadata, and portable knowledge exports.
                         </mui-body>
                       </mui-v-stack>
                       <mui-code size="x-small" wrap>Install this skill:
-${MUIBOOK_COMPONENT_SKILL_INSTALL}</mui-code>
+${CREATE_WEB_COMPONENTS_SKILL_INSTALL}</mui-code>
                       <mui-h-stack wrap="wrap" space="var(--space-200)">
-                        <mui-link href="${MUIBOOK_COMPONENT_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill on GitHub</mui-link>
-                        <mui-link href="${MUIBOOK_COMPONENT_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">Open SKILL.md</mui-link>
+                        <mui-link href="${CREATE_WEB_COMPONENTS_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill on GitHub</mui-link>
+                        <mui-link href="${CREATE_WEB_COMPONENTS_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">Open SKILL.md</mui-link>
+                      </mui-h-stack>
+                    </mui-v-stack>
+                  </mui-card-body>
+                </mui-card>
+              </div>
+
+              <div class="tool-card">
+                <mui-card class="skill-card">
+                  <mui-card-body>
+                    <mui-v-stack space="var(--space-600)">
+                      <mui-v-stack space="var(--space-200)">
+                        <mui-badge variant="attention">Standalone skill</mui-badge>
+                        <mui-heading level="3" size="4">Create UX Guidelines</mui-heading>
+                        <mui-body size="medium">
+                          Write practical component guidance covering usage, accessibility, anatomy, variants, rules, behaviour, writing, compositions, and published assets.
+                        </mui-body>
+                      </mui-v-stack>
+                      <mui-code size="x-small" wrap>Install this skill:
+${CREATE_UX_GUIDELINES_SKILL_INSTALL}</mui-code>
+                      <mui-h-stack wrap="wrap" space="var(--space-200)">
+                        <mui-link href="${CREATE_UX_GUIDELINES_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill on GitHub</mui-link>
+                        <mui-link href="${CREATE_UX_GUIDELINES_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">Open SKILL.md</mui-link>
+                      </mui-h-stack>
+                    </mui-v-stack>
+                  </mui-card-body>
+                </mui-card>
+              </div>
+
+              <div class="tool-card">
+                <mui-card class="skill-card">
+                  <mui-card-body>
+                    <mui-v-stack space="var(--space-600)">
+                      <mui-v-stack space="var(--space-200)">
+                        <mui-badge variant="attention">Standalone skill</mui-badge>
+                        <mui-heading level="3" size="4">Style Web Components</mui-heading>
+                        <mui-body size="medium">
+                          Apply themes and focused visual overrides through token layers, CSS variables, parts, classes, and brand and theme attributes.
+                        </mui-body>
+                      </mui-v-stack>
+                      <mui-code size="x-small" wrap>Install this skill:
+${STYLE_WEB_COMPONENTS_SKILL_INSTALL}</mui-code>
+                      <mui-h-stack wrap="wrap" space="var(--space-200)">
+                        <mui-link href="${STYLE_WEB_COMPONENTS_SKILL}" target="_blank" rel="noopener noreferrer" variant="primary" size="small">View skill on GitHub</mui-link>
+                        <mui-link href="${STYLE_WEB_COMPONENTS_SKILL_RAW}" target="_blank" rel="noopener noreferrer" variant="secondary" size="small">Open SKILL.md</mui-link>
                       </mui-h-stack>
                     </mui-v-stack>
                   </mui-card-body>
@@ -202,6 +286,13 @@ ${MUIBOOK_COMPONENT_SKILL_INSTALL}</mui-code>
         </div>
       </story-template>
     `;
+  }
+
+  connectedCallback() {
+    if (window.location.hash !== "#skills-knowledge") return;
+    requestAnimationFrame(() => {
+      this.shadowRoot?.querySelector("#skills-knowledge")?.scrollIntoView({ block: "start" });
+    });
   }
 }
 

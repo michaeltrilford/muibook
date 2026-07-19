@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   Skeleton: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["before","after"],
+    },
     title: "Skeleton",
     description: "Skeleton provides reusable placeholder blocks for loading and wireframe prototyping flows.",
     hero: [""],

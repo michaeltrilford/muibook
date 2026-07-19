@@ -2,6 +2,10 @@ import type { MuiDocs } from '../../types/guidelines';
 
 export const muiDocs: MuiDocs = {
   Image: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["image","caption"],
+    },
     title: "Image",
     description:
       "Displays an image alongside an optional caption to provide context, explanation, or attribution. Useful for supporting content visually while maintaining clarity through descriptive labelling.",

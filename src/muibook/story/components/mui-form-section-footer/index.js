@@ -36,11 +36,11 @@ class StoryFormSectionFooter extends HTMLElement {
             </mui-field>
             <mui-form-section-footer slot="footer">
               <mui-responsive breakpoint="700">
-                <mui-v-stack slot="showBelow" space="var(--space-200)" alignx="stretch">
+                <mui-v-stack slot="show-below" space="var(--space-200)" alignx="stretch">
                   <mui-link size="medium" variant="tertiary" href="#" weight="regular">License</mui-link>
                   <mui-button variant="primary" size="medium">Request now</mui-button>
                 </mui-v-stack>
-                <mui-h-stack slot="showAbove" space="var(--space-200)" alignx="end" aligny="center">
+                <mui-h-stack slot="show-above" space="var(--space-200)" alignx="end" aligny="center">
                   <mui-link size="medium" variant="tertiary" href="#" weight="regular">License</mui-link>
                   <mui-button variant="primary" size="medium">Request now</mui-button>
                 </mui-h-stack>
@@ -66,11 +66,11 @@ class StoryFormSectionFooter extends HTMLElement {
             <mui-form-section-footer slot="footer">
               <mui-rule></mui-rule>
               <mui-responsive breakpoint="700">
-                <mui-v-stack slot="showBelow" space="var(--space-200)" alignx="stretch">
+                <mui-v-stack slot="show-below" space="var(--space-200)" alignx="stretch">
                   <mui-link size="medium" variant="tertiary" href="#" weight="regular">License</mui-link>
                   <mui-button variant="primary" size="medium">Request now</mui-button>
                 </mui-v-stack>
-                <mui-h-stack slot="showAbove" space="var(--space-200)" alignx="end" aligny="center">
+                <mui-h-stack slot="show-above" space="var(--space-200)" alignx="end" aligny="center">
                   <mui-link size="medium" variant="tertiary" href="#" weight="regular">License</mui-link>
                   <mui-button variant="primary" size="medium">Request now</mui-button>
                 </mui-h-stack>

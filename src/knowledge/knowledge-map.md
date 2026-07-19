@@ -12,7 +12,7 @@ Use this map as the front door for the Muibook knowledge bundle. The bundle is s
 - `compositions.ts`: curated component-tree examples plus reusable composition-page story metadata for realistic layouts and workflows.
 - `resource-index.json`: machine-readable index of the knowledge files and when to use them.
 - `skill-index.json`: machine-readable index of authored skill guides.
-- `*-skill.md`: portable instruction files for creating, composing, styling, and documenting Web Components.
+- `skills/*/SKILL.md`: installable instruction files for creating, composing, styling, and documenting Web Components.
 - `AGENTS.md`: operating guidance for coding agents working in the Muibook source repo.
 
 ## Recommended Agent Flow

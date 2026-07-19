@@ -2,6 +2,10 @@ import type { MuiDocs } from "../../types/guidelines";
 
 export const muiDocs: MuiDocs = {
   Hint: {
+    namedSlots: {
+      description: "Use these names on items slotted inside this component.",
+      list: ["trigger"],
+    },
     title: "Hint",
     description: "Hint provides a trigger + floating tooltip pattern for contextual help.",
     hero: [""],
