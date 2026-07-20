@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-20T03:28:55.265Z",
+  "generatedAt": "2026-07-20T03:48:39.685Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -134,6 +134,16 @@
         }
       ]
     },
+    "mui-form-section-footer": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-rule",
+          "description": "Set when a rule is present, allowing the footer layout to account for the divider."
+        }
+      ]
+    },
     "mui-form-section": {
       "version": 1,
       "destinationOnly": true,
@@ -145,16 +155,6 @@
         {
           "name": "has-footer",
           "description": "Set when footer content exists, allowing the component to adjust internal spacing and structural regions."
-        }
-      ]
-    },
-    "mui-form-section-footer": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-rule",
-          "description": "Set when a rule is present, allowing the footer layout to account for the divider."
         }
       ]
     },
@@ -354,6 +354,20 @@
         }
       ]
     },
+    "mui-tab-item": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-before",
+          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "has-after",
+          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        }
+      ]
+    },
     "mui-row": {
       "version": 1,
       "destinationOnly": true,
@@ -371,20 +385,6 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
-        }
-      ]
-    },
-    "mui-tab-item": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-before",
-          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
-        },
-        {
-          "name": "has-after",
-          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
         }
       ]
     }
