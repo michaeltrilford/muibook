@@ -1,8 +1,22 @@
 ## Header [Start]
 
-## v22.0.0
+## v22.0.1
 
 _Status: Released_
+
+[Package](https://www.npmjs.com/package/@muibook/components/v/22.0.1)
+
+## Header [End]
+
+### Fixed
+
+- `mui-drawer` now updates dynamically when a prop is injected, correctly propagating to the underlying update logic.
+
+---
+
+## Header [Start]
+
+## v22.0.0
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/22.0.0)
 

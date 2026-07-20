@@ -225,6 +225,15 @@ class MuiDrawer extends HTMLElement {
     return `${leftColumn} ${leftRail} minmax(0, 1fr) ${rightRail} ${rightColumn}`;
   }
 
+  private syncDrawerSpace() {
+    if (!this.shadowRoot) return;
+    const noPadding = this.hasAttribute("drawer-space");
+    this.shadowRoot.querySelectorAll<HTMLElement>(".content").forEach((el) => {
+      if (el.closest(".workspace-panel")) return;
+      el.classList.toggle("no-padding", noPadding);
+    });
+  }
+
   private syncWorkspaceState() {
     if ((this.getAttribute("variant") || "overlay") !== "workspace" || !this.shadowRoot) return;
     const shell = this.shadowRoot.querySelector<HTMLElement>(".workspace-shell");
@@ -1289,6 +1298,9 @@ class MuiDrawer extends HTMLElement {
       this.syncOpenState();
       this.syncWorkspaceState();
     }
+    if (name === "z-index") {
+      this.syncOpenState();
+    }
     if (name === "left-open" || name === "right-open" || name === "left-width" || name === "right-width") {
       this.syncWorkspaceState();
     }
@@ -1322,6 +1334,9 @@ class MuiDrawer extends HTMLElement {
       this.syncWorkspaceState();
       return;
     }
+    if (name === "drawer-space") {
+      this.syncDrawerSpace();
+    }
     if (name === "side" || name === "resize-rail") {
       this.render();
       this.cacheEls();
@@ -1341,7 +1356,12 @@ class MuiDrawer extends HTMLElement {
       this.syncOpenState();
       this.syncWorkspaceState();
     }
-    if (name === "resize-min-drawer-width" || name === "resize-min-page-width") {
+    if (
+      name === "resize-min-drawer-width" ||
+      name === "resize-min-left-width" ||
+      name === "resize-min-right-width" ||
+      name === "resize-min-page-width"
+    ) {
       const variant = this.getAttribute("variant") || "overlay";
       if ((variant === "push" || variant === "persistent") && this.hasAttribute("resize-rail")) {
         this.syncResizeRailDrawerWidthBounds();
