@@ -1,5 +1,10 @@
 import { applySurfaceUsage } from "../../../utils/surface-usage";
 
+const CAROUSEL_DRAG_INTENT_THRESHOLD = 4;
+const CAROUSEL_TOUCH_DRAG_INTENT_THRESHOLD = 8;
+const CAROUSEL_VERTICAL_CANCEL_RATIO = 1.25;
+const CAROUSEL_TOUCH_VERTICAL_CANCEL_RATIO = 1.75;
+
 class MuiCarouselController extends HTMLElement {
   private shadow: ShadowRoot;
   private autoRotateInterval?: number;
@@ -188,6 +193,7 @@ class MuiCarouselController extends HTMLElement {
     this.pointerStartX = event.clientX;
     this.pointerStartY = event.clientY;
     this.isDragging = false;
+    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
   }
 
   private handlePointerMove(event: PointerEvent): void {
@@ -195,10 +201,18 @@ class MuiCarouselController extends HTMLElement {
 
     const deltaX = event.clientX - this.pointerStartX;
     const deltaY = event.clientY - this.pointerStartY;
+    const isCoarsePointer = this.pointerType !== "mouse";
+    const intentThreshold = isCoarsePointer ? CAROUSEL_TOUCH_DRAG_INTENT_THRESHOLD : CAROUSEL_DRAG_INTENT_THRESHOLD;
+    const verticalCancelRatio = isCoarsePointer
+      ? CAROUSEL_TOUCH_VERTICAL_CANCEL_RATIO
+      : CAROUSEL_VERTICAL_CANCEL_RATIO;
 
     if (!this.isDragging) {
-      if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 4) return;
-      if (Math.abs(deltaY) > Math.abs(deltaX) * 1.25) {
+      if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < intentThreshold) return;
+      if (Math.abs(deltaY) > Math.abs(deltaX) * verticalCancelRatio) {
+        if ((event.currentTarget as HTMLElement).hasPointerCapture(event.pointerId)) {
+          (event.currentTarget as HTMLElement).releasePointerCapture(event.pointerId);
+        }
         this.resetPointer();
         return;
       }
@@ -206,7 +220,6 @@ class MuiCarouselController extends HTMLElement {
       this.isDragging = true;
       this.setAttribute("dragging", "");
       document.getSelection()?.removeAllRanges();
-      (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
       this.pauseAutoRotate();
     }
 
@@ -242,7 +255,7 @@ class MuiCarouselController extends HTMLElement {
     track.style.removeProperty("transition");
     void track.offsetWidth;
 
-    const shouldAdvance = !cancelled && Math.abs(deltaX) >= 4;
+    const shouldAdvance = !cancelled && Math.abs(deltaX) >= CAROUSEL_DRAG_INTENT_THRESHOLD;
     const direction = deltaX < 0 ? 1 : -1;
     const nextIndex = shouldAdvance
       ? Math.min(Math.max(this.currentIndex + direction, 0), panels.length - 1)

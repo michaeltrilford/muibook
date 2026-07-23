@@ -29,6 +29,7 @@ class MuiSubmenu extends HTMLElement {
     this.addEventListener("focusin", this.handleOpen);
     this.addEventListener("focusout", this.handleFocusOut);
     this.addEventListener("click", this.handleClick);
+    document.addEventListener("pointerdown", this.handleDocumentPointerDown, true);
     window.addEventListener("resize", this.handleViewportChange);
     window.addEventListener("scroll", this.handleViewportChange, true);
     this.observer = new MutationObserver(this.syncChildren);
@@ -50,6 +51,7 @@ class MuiSubmenu extends HTMLElement {
     this.removeEventListener("focusin", this.handleOpen);
     this.removeEventListener("focusout", this.handleFocusOut);
     this.removeEventListener("click", this.handleClick);
+    document.removeEventListener("pointerdown", this.handleDocumentPointerDown, true);
     window.removeEventListener("resize", this.handleViewportChange);
     window.removeEventListener("scroll", this.handleViewportChange, true);
     this.observer?.disconnect();
@@ -167,6 +169,17 @@ class MuiSubmenu extends HTMLElement {
     const action = this.findAction(event);
     if (!action) return;
     if (event.detail > 0) action.blur();
+    this.clearCloseTimer();
+    this.setOpen(false);
+  };
+
+  private handleDocumentPointerDown = (event: PointerEvent) => {
+    if (!this.shell?.classList.contains("open")) return;
+
+    const path = event.composedPath();
+    if (path.includes(this)) return;
+    if (this.portal && path.includes(this.portal)) return;
+
     this.clearCloseTimer();
     this.setOpen(false);
   };

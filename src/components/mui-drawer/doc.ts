@@ -29,6 +29,7 @@ export const muiDocs: MuiDocs = {
         "Use variant='workspace' when a canvas or editor needs independently controlled left and right side panels around a central page.",
         "Set height when push, persistent, or workspace drawers need to match an app shell or contained region, for example 100dvh, 100lvh, or a product-owned CSS custom property shared across shell surfaces. Use 100lvh for full-screen shells that should keep the largest viewport height when iOS Safari or Home Screen web apps initially report a smaller dynamic viewport.",
         "Use contained when a push, persistent, or workspace drawer is rendered inside a bounded story canvas, card, or nested layout.",
+        "Use hide-header when drawer body content provides a custom header composition or custom dismissal controls and the built-in title/header chrome should stay hidden.",
         "Use resize-rail when desktop users need to tune drawer width; on narrow screens the rail is hidden and the drawer behaves like an overlay.",
         "Resize rails can be focused with the keyboard; use ArrowLeft and ArrowRight to nudge width, Shift with arrow keys for larger steps, and Escape to close the focused workspace side.",
         "Resize rails remain beneath Menu and overlay content so resizing affordances do not cover open actions.",
@@ -63,7 +64,7 @@ export const muiDocs: MuiDocs = {
     anatomy: {
       list: [
         "Heading: Text that describes the purpose or contents of the drawer.",
-        "Close: An icon or button that allows users to close the drawer.",
+        "Close: An icon or button that allows users to close the drawer. Hidden with the built-in header when hide-header is present.",
         "Body: Section to slot navigation links, settings, or other relevant information.",
         "Footer: Optional section for additional actions, such as 'Cancel' or 'Save'.",
         "Page: Plain div wrapper assigned to slot='page' for push and persistent layouts; place app layout content inside it.",

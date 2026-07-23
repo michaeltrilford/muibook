@@ -64,6 +64,7 @@ class MuiDrawer extends HTMLElement {
       "right-width",
       "z-index",
       "drawer-space",
+      "hide-header",
       "close-size",
       "breakpoint",
       "mobile-presentation",
@@ -146,10 +147,6 @@ class MuiDrawer extends HTMLElement {
     if (closeSize === "large") return "medium";
     if (closeSize === "medium") return "small";
     return closeSize;
-  }
-
-  private getCloseActionSizeToken(): string {
-    return `var(--action-size-${this.getCloseButtonSize()})`;
   }
 
   private getMobilePresentation(): "overlay" | "stack" {
@@ -247,8 +244,12 @@ class MuiDrawer extends HTMLElement {
     }
     const mobileSide = this.getAttribute("side") === "right" ? "right" : "left";
     const mobileOpen = this.hasAttribute("open");
-    const leftVisible = isMobile ? mobileOpen && mobileSide === "left" : this.hasAttribute("left-open");
-    const rightVisible = isMobile ? mobileOpen && mobileSide === "right" : this.hasAttribute("right-open");
+    const leftOpen = this.hasAttribute("left-open");
+    const rightOpen = this.hasAttribute("right-open");
+    const leftMobileOverlayVisible = mobileOpen && mobileSide === "left";
+    const rightMobileOverlayVisible = mobileOpen && mobileSide === "right";
+    const leftVisible = isMobile ? leftOpen || leftMobileOverlayVisible : leftOpen;
+    const rightVisible = isMobile ? rightOpen || rightMobileOverlayVisible : rightOpen;
     const leftPanel = this.getWorkspacePanel("left");
     const rightPanel = this.getWorkspacePanel("right");
 
@@ -267,8 +268,8 @@ class MuiDrawer extends HTMLElement {
         }
       });
     }
-    leftPanel?.toggleAttribute("inert", !leftVisible);
-    rightPanel?.toggleAttribute("inert", !rightVisible);
+    leftPanel?.toggleAttribute("inert", !leftOpen && !leftMobileOverlayVisible);
+    rightPanel?.toggleAttribute("inert", !rightOpen && !rightMobileOverlayVisible);
     if (leftPanel) leftPanel.hidden = !isMobile && !leftVisible;
     if (rightPanel) rightPanel.hidden = !isMobile && !rightVisible;
     const leftRail = this.shadowRoot.querySelector<HTMLElement>('[data-workspace-resize="left"]');
@@ -332,7 +333,7 @@ class MuiDrawer extends HTMLElement {
             <mui-button class="close" variant="tertiary" size="${closeButtonSize}" aria-label="Close drawer">
               <mui-icon-close size="${closeSize}"></mui-icon-close>
             </mui-button>`
-              : "<span class='spacer'></span>"
+              : ""
           }
         </div>
         <div class="content ${noPadding}"><slot></slot></div>
@@ -447,12 +448,6 @@ class MuiDrawer extends HTMLElement {
       .header[hidden],
       .actions[hidden] {
         display: none !important;
-      }
-      .header .spacer {
-        display: inline-flex;
-        flex: 0 0 auto;
-        width: ${this.getCloseActionSizeToken()};
-        height: ${this.getCloseActionSizeToken()};
       }
     `;
 
@@ -1249,7 +1244,7 @@ class MuiDrawer extends HTMLElement {
 
   private updateFooterVisibility() {
     if (!this.footerEl || !this.actionsSlot) return;
-    const hasActions = this.actionsSlot.assignedElements().length > 0;
+    const hasActions = this.slotHasAssignedContent(this.actionsSlot);
     this.footerEl.hidden = !hasActions;
 
     // 👇 Reflect state on host
@@ -1258,7 +1253,7 @@ class MuiDrawer extends HTMLElement {
 
   private updateHeaderVisibility() {
     if (!this.headerEl || !this.headerSlot || !this.innerEl) return;
-    const hasHeader = this.headerSlot.assignedElements().length > 0;
+    const hasHeader = !this.hasAttribute("hide-header") && this.slotHasAssignedContent(this.headerSlot);
     this.headerEl.hidden = !hasHeader;
 
     // 👇 Reflect state on host
@@ -1269,6 +1264,19 @@ class MuiDrawer extends HTMLElement {
     if (contentEl) {
       contentEl.classList.toggle("no-heading", !hasHeader);
     }
+  }
+
+  private slotHasAssignedContent(slot: HTMLSlotElement): boolean {
+    return slot.assignedNodes({ flatten: true }).some((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        return Boolean(node.textContent?.trim());
+      }
+      if (node.nodeType !== Node.ELEMENT_NODE) {
+        return false;
+      }
+      const element = node as HTMLElement;
+      return !element.hidden && element.getAttribute("aria-hidden") !== "true";
+    });
   }
 
   private clearResizeRailKeyboardHint(rail?: HTMLElement | null) {
@@ -1337,6 +1345,9 @@ class MuiDrawer extends HTMLElement {
     if (name === "drawer-space") {
       this.syncDrawerSpace();
     }
+    if (name === "hide-header") {
+      this.updateHeaderVisibility();
+    }
     if (name === "side" || name === "resize-rail") {
       this.render();
       this.cacheEls();
@@ -1388,7 +1399,10 @@ class MuiDrawer extends HTMLElement {
       this.cacheEls();
       this.syncDrawerWidth();
       this.attachEvents();
+      this.updateFooterVisibility();
+      this.updateHeaderVisibility();
       this.syncOpenState();
+      this.syncWorkspaceState();
     }
   }
 
@@ -1709,6 +1723,8 @@ class MuiDrawer extends HTMLElement {
       this.overlayEl.style.zIndex = overlayZ.toString();
       this.innerEl!.style.zIndex = drawerZ.toString();
       this.inert = !isOpen; // make drawer non-interactive when closed
+    } else {
+      this.inert = false;
     }
 
     // push & persistent layouts

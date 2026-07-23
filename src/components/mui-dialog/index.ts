@@ -10,7 +10,7 @@ class MuiDialog extends HTMLElement {
   private titleSlot!: HTMLSlotElement | null;
 
   static get observedAttributes() {
-    return ["open", "width", "content-max-height", "close-size"];
+    return ["open", "width", "content-max-height", "close-size", "hide-header"];
   }
 
   constructor() {
@@ -159,15 +159,28 @@ class MuiDialog extends HTMLElement {
 
   private updateHeaderVisibility() {
     if (!this.headerEl || !this.titleSlot) return;
-    const hasTitle = this.titleSlot.assignedElements().length > 0;
+    const hasTitle = !this.hasAttribute("hide-header") && this.slotHasAssignedContent(this.titleSlot);
     this.headerEl.hidden = !hasTitle;
     this.toggleAttribute("has-header", hasTitle);
   }
 
   private updateFooterVisibility() {
     if (!this.footerEl || !this.actionsSlot) return;
-    const hasActions = this.actionsSlot.assignedElements().length > 0;
+    const hasActions = this.slotHasAssignedContent(this.actionsSlot);
     this.footerEl.hidden = !hasActions;
+  }
+
+  private slotHasAssignedContent(slot: HTMLSlotElement): boolean {
+    return slot.assignedNodes({ flatten: true }).some((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        return Boolean(node.textContent?.trim());
+      }
+      if (node.nodeType !== Node.ELEMENT_NODE) {
+        return false;
+      }
+      const element = node as HTMLElement;
+      return !element.hidden && element.getAttribute("aria-hidden") !== "true";
+    });
   }
 
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
@@ -181,6 +194,7 @@ class MuiDialog extends HTMLElement {
       this.shadowRoot.querySelector(".close")?.setAttribute("size", this.getCloseButtonSize());
       this.shadowRoot.querySelector("mui-icon-close")?.setAttribute("size", closeSize);
     }
+    if (name === "hide-header") this.updateHeaderVisibility();
   }
 
   private syncOpenState() {

@@ -27,6 +27,7 @@ export const muiDocs: MuiDocs = {
         "Use for focused interactions that require attention and immediate action.",
         "Use content-max-height='none' when dialog content should size naturally (for example, native media players).",
         "When no title slot is provided, the dialog does not render the header row or built-in close action.",
+        "Use hide-header for unified/headerless dialogs such as confirmations, or when custom body content provides the heading and dismissal path.",
       ],
     },
 
@@ -40,7 +41,7 @@ export const muiDocs: MuiDocs = {
         "Uses role='dialog' and aria-modal='true' for screen readers.",
         "Supports aria-labelledby and aria-describedby to provide accessible titles and descriptions.",
         "Focus is managed by the browser’s native dialog behavior when open.",
-        "When a title slot is present, the close button includes aria-label='Close Icon'.",
+        "When a title slot is present and hide-header is not set, the close button includes aria-label='Close Icon'.",
         "Footer is hidden when empty to reduce screen reader noise.",
         "Clicking the backdrop closes the dialog.",
         "When open, consumers must trap focus in the dialog and apply inert/aria-hidden to the background.",
@@ -74,7 +75,7 @@ export const muiDocs: MuiDocs = {
       items: [
         { key: "confirmation", title: "Confirmation Dialog", description: "Requests a focused decision without leaving the current context.", list: ["Use for decisions that require explicit confirmation or cancellation.", "Connect the title and supporting copy with aria-labelledby and aria-describedby."] },
         { key: "bordered", title: "Bordered Dialog", description: "Adds a visible boundary to the Dialog surface.", list: ["Use --dialog-border only when the surrounding surface does not provide enough separation.", "Keep the semantic Dialog structure unchanged when adjusting its visual treatment."] },
-        { key: "headerless", title: "Headerless Dialog", description: "Omits the title slot and built-in close action.", list: ["Use only when the body provides an accessible name or description and the footer offers clear dismissal.", "Do not remove both the header close action and an equivalent cancel path."] },
+        { key: "headerless", title: "Headerless Dialog", description: "Omits the built-in header and close action.", list: ["Omit the title slot, or use hide-header when body content owns the heading for a unified confirmation-style dialog.", "Use only when the body provides an accessible name or description and the footer offers clear dismissal.", "Do not remove both the header close action and an equivalent cancel path."] },
         { key: "delete-confirmation", title: "Delete Confirmation", description: "Confirms an irreversible destructive action.", list: ["State what will be deleted and that the action cannot be undone.", "Keep Cancel visually neutral and label the attention action with the specific destructive verb."] },
         { key: "tip", title: "Tip Dialog", description: "Presents concise reference or guidance content.", list: ["Use for short supporting information that benefits from focused presentation.", "Provide an accessible description even when explanatory copy is visually hidden."] },
         { key: "media", title: "Media Dialog with Close", description: "Presents a larger preview with natural-height content.", list: ["Use content-max-height='none' when media should determine the Dialog body height.", "Keep a title or another clear close action available for preview-only Dialogs."] },

@@ -179,7 +179,7 @@ export const muiDocs: MuiDocs = {
     behaviour: {
       list: [
         "Horizontal swipe and pointer dragging are enabled by default for touch, pen, and mouse input.",
-        "After 4px of horizontal movement confirms drag intent, release moves exactly one panel in the drag direction.",
+        "After a short horizontal movement confirms drag intent, release moves exactly one panel in the drag direction. Touch and pen gestures allow more natural vertical drift than mouse dragging.",
         "Vertical gestures retain page scrolling, while gestures beginning on interactive controls remain owned by those controls.",
         "Cancelled gestures and outward drags at the first or last panel return to the current panel.",
         "Use swipe='none' to disable gesture navigation without changing Tab or keyboard behavior."

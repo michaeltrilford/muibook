@@ -71,6 +71,13 @@ export const muiApi = {
         description: "Removes default padding from the drawer content region when present.",
       },
       {
+        name: "hide-header",
+        type: { text: "boolean" },
+        default: "false",
+        description:
+          "Hides the built-in header even when title slot content is present. Use when drawer body content provides a custom header composition or custom dismissal controls.",
+      },
+      {
         name: "contained",
         type: { text: "boolean" },
         default: "false",
@@ -150,7 +157,7 @@ export const muiApi = {
     ],
     slots: [
       { name: "", description: "Primary scrollable drawer content." },
-      { name: "title", description: "Header title content. Providing it reveals the drawer header." },
+      { name: "title", description: "Header title content. Providing it reveals the drawer header unless hide-header is set." },
       { name: "actions", description: "Footer action content. Providing it reveals the fixed footer region." },
       {
         name: "page",

@@ -1,5 +1,25 @@
 ## Header [Start]
 
+## v23.0.0
+
+_Status: Upcoming_
+
+## Header [End]
+
+### Fixed
+
+- `mui-drawer` now clears stale host-level `inert` when switching out of overlay mode, preventing workspace drawers from becoming unselectable in React-driven editors.
+- `mui-drawer` workspace panels now keep open left and right regions interactive in bounded or narrow canvases, including Redactd Canvas compositions.
+- `mui-drawer` now supports `hide-header` to explicitly suppress built-in header chrome, and no longer renders the legacy spacer used for old header height preservation.
+- `mui-dialog` now supports `hide-header` for consistent built-in header suppression, and its title and actions slots now use stronger assigned-node content detection.
+- `mui-submenu` now closes its portalled nested menu when tapping outside it, fixing mobile dismissal after opening a submenu trigger.
+- `mui-carousel-controller` now uses more forgiving touch and pen swipe detection, improving mobile panel swiping while preserving vertical page scroll.
+- Muibook generation guidance now preserves default `mui-slat` columns unless custom tracks are clearly required, and prefers push drawers for single menu-triggered side panels instead of workspace drawers.
+
+---
+
+## Header [Start]
+
 ## v22.0.1
 
 _Status: Released_
@@ -17,6 +37,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v22.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/22.0.0)
 
@@ -39,6 +61,8 @@ _Status: Released_
 
 ## v21.0.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/21.0.1)
 
 ## Header [End]
@@ -52,6 +76,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v21.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/21.0.0)
 
@@ -155,6 +181,8 @@ _Status: Released_
 
 ## v20.2.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/20.2.0)
 
 ## Header [End]
@@ -190,6 +218,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v20.1.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/20.1.0)
 
@@ -321,6 +351,8 @@ _Status: Released_
 
 ## v20.0.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/20.0.0)
 
 ## Header [End]
@@ -374,6 +406,8 @@ _Status: Released_
 
 ## v19.5.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.5.1)
 
 ## Header [End]
@@ -391,6 +425,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v19.5.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.5.0)
 
@@ -416,6 +452,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v19.4.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.4.0)
 
@@ -444,6 +482,8 @@ _Status: Released_
 
 ## v19.3.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.3.0)
 
 ## Header [End]
@@ -458,6 +498,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v19.2.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.2.0)
 
@@ -483,6 +525,8 @@ _Status: Released_
 
 ## v19.1.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.1.1)
 
 ## Header [End]
@@ -496,6 +540,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v19.1.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.1.0)
 
@@ -521,6 +567,8 @@ _Status: Released_
 
 ## v19.0.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.0.1)
 
 ## Header [End]
@@ -535,6 +583,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v19.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/19.0.0)
 
@@ -565,6 +615,8 @@ _Status: Released_
 
 ## v18.2.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/18.2.0)
 
 ## Header [End]
@@ -587,6 +639,8 @@ _Status: Released_
 
 ## v18.1.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/18.1.1)
 
 ## Header [End]
@@ -601,6 +655,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v18.1.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/18.1.0)
 
@@ -624,6 +680,8 @@ _Status: Released_
 
 ## v17.0.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/17.0.0)
 
 ## Header [End]
@@ -638,6 +696,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v16.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/16.0.0)
 
@@ -669,6 +729,8 @@ _Status: Released_
 
 ## v15.0.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/15.0.1)
 
 ## Header [End]
@@ -692,6 +754,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v15.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/15.0.0)
 
@@ -717,6 +781,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v14.0.2
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/14.0.2)
 
@@ -746,6 +812,8 @@ _Status: Released_
 
 ## v14.0.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/14.0.1)
 
 ## Header [End]
@@ -770,6 +838,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v14.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/14.0.0)
 
@@ -804,6 +874,8 @@ _Status: Released_
 
 ## v13.0.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/13.0.0)
 
 ## Header [End]
@@ -833,6 +905,8 @@ _Status: Released_
 
 ## v12.0.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/12.0.0)
 
 ## Header [End]
@@ -858,6 +932,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v11.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/11.0.0)
 
@@ -926,6 +1002,8 @@ _Status: Released_
 
 ## v10.0.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/10.0.1)
 
 ## Header [End]
@@ -947,6 +1025,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v10.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/10.0.0)
 
@@ -975,6 +1055,8 @@ _Status: Released_
 
 ## v9.1.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/9.1.0)
 
 ## Header [End]
@@ -998,6 +1080,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v9.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/9.0.0)
 
@@ -1028,6 +1112,8 @@ _Status: Released_
 
 ## v8.0.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/8.0.0)
 
 ## Header [End]
@@ -1049,6 +1135,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v8.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/8.0.0)
 
@@ -1091,6 +1179,8 @@ _Status: Released_
 
 ## v7.1.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/7.1.0)
 
 ## Header [End]
@@ -1112,6 +1202,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v7.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/7.0.0)
 
@@ -1143,6 +1235,8 @@ _Status: Released_
 
 ## v6.1.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/6.1.1)
 
 ## Header [End]
@@ -1164,6 +1258,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v6.1.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/6.1.0)
 
@@ -1187,6 +1283,8 @@ _Status: Released_
 
 ## v6.0.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/6.0.0)
 
 ## Header [End]
@@ -1209,6 +1307,8 @@ _Status: Released_
 
 ## v5.2.1
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/5.2.1)
 
 ## Header [End]
@@ -1230,6 +1330,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v5.2.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/5.2.0)
 
@@ -1254,6 +1356,8 @@ _Status: Released_
 
 ## v5.1.0
 
+_Status: Released_
+
 [Package](https://www.npmjs.com/package/@muibook/components/v/5.1.0)
 
 ## Header [End]
@@ -1275,6 +1379,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v5.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/5.0.0)
 
@@ -1303,6 +1409,8 @@ _Status: Released_
 ## Header [Start]
 
 ## v4.0.0
+
+_Status: Released_
 
 [Package](https://www.npmjs.com/package/@muibook/components/v/4.0.0)
 

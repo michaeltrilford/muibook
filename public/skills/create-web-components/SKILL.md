@@ -260,6 +260,8 @@ Use slots as the primary structure model.
 - Let the child style itself for that context with `:host([card-slot])` or `:host(.card-slot)`.
 - Use automatic sizing for slotted icons, avatars, badges, and action controls when the parent size determines the right visual scale.
 - Keep slot behavior resilient to whitespace text nodes.
+- Do not use slot presence as the only source of truth for significant public chrome or layout decisions that React, design canvases, exporters, or generated JSON need to control deterministically. Slots should provide content; public attributes should control explicit chrome/layout modes such as `hide-header`.
+- It is fine to derive internal runtime state from slots for minor affordance and spacing flags such as `has-before`, `has-after`, `has-header`, or `has-footer`, but those attrs must remain dynamic/runtime metadata and be resilient to lifecycle timing.
 
 Slot-state pattern:
 
@@ -349,6 +351,7 @@ Use this checklist when creating or reviewing a component.
 - Styling: Styles are shadow-contained, token-led, and theme-aware.
 - Parts: `part` exposure is intentional and uses the smallest useful part map.
 - Slots: Named slots are documented; slotted content adapts without brittle wrappers.
+- Chrome/layout control: Significant optional chrome is controlled by public attrs rather than inferred only from slot presence.
 - Parent-child context: Parent-derived attrs are intentional, documented, and applied to the destination element.
 - Dynamic attrs: Runtime/destination attrs are documented separately and not confused with public API.
 - Export cleanliness: Exported HTML strips internal attrs and includes only public API attrs.

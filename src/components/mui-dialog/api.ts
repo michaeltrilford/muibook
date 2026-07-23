@@ -11,6 +11,7 @@ export const muiApi = {
       { name: "content-max-height", type: { text: '"none" | string' }, description: "Use `none` to disable the default scrollable content maximum height." },
       { name: "content-padding", type: { text: '"none" | string' }, description: "Use `none` to remove default content padding." },
       { name: "close-size", type: { text: '"x-small" | "small" | "medium" | "large"' }, default: "medium", description: "Sets the built-in header close icon scale and matching header minimum height. Medium uses a small Button; large uses a medium Button." },
+      { name: "hide-header", type: { text: "boolean" }, default: "false", description: "Hides the built-in header even when title slot content is present. Use for unified/headerless dialogs such as confirmations, or when custom body content provides the heading and dismissal path." },
     ],
     contextualAttributes: [
       {
@@ -23,7 +24,7 @@ export const muiApi = {
     ],
     slots: [
       { name: "", description: "Dialog body content." },
-      { name: "title", description: "Optional title content. Providing it displays the header and close action." },
+      { name: "title", description: "Optional title content. Providing it displays the header and close action unless hide-header is set." },
       { name: "actions", description: "Optional footer actions." },
     ],
     events: [
