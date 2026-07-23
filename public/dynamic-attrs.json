@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-23T00:50:05.226Z",
+  "generatedAt": "2026-07-23T05:40:49.181Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -354,6 +354,20 @@
         }
       ]
     },
+    "mui-tab-item": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "has-before",
+          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
+        },
+        {
+          "name": "has-after",
+          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        }
+      ]
+    },
     "mui-row": {
       "version": 1,
       "destinationOnly": true,
@@ -371,20 +385,6 @@
         {
           "name": "card-slot",
           "description": "Applied to a table used in card composition, allowing the table to style itself for a card context."
-        }
-      ]
-    },
-    "mui-tab-item": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "has-before",
-          "description": "Set when before slot content exists, allowing the component to adjust leading spacing, layout columns, and slot-aware styling."
-        },
-        {
-          "name": "has-after",
-          "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
         }
       ]
     }

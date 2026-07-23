@@ -13,6 +13,7 @@ const filesToCopy = [
   { src: "src/knowledge/rules.ts", dest: "rules.ts" },
   { src: "src/knowledge/compositions.ts", dest: "compositions.ts" },
   { src: "src/knowledge/keywords.ts", dest: "keywords.ts" },
+  { src: "skills/muibook-components/SKILL.md", dest: "skills/muibook-components/SKILL.md" },
 ];
 
 console.log(`Copying Redactd Canvas knowledge files to: ${destDir}`);
@@ -26,6 +27,7 @@ for (const { src, dest } of filesToCopy) {
     throw new Error(`Missing knowledge source: ${src}`);
   }
 
+  fs.mkdirSync(path.dirname(destPath), { recursive: true });
   fs.copyFileSync(srcPath, destPath);
   console.log(`Copied: ${src} -> ${dest}`);
 }

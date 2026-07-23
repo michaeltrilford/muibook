@@ -4747,98 +4747,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-form-message/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ FormMessage: { namedSlots: { description: \"Use these names on items slotted inside this component.\", list: [\"before\",\"after\"], }, title: \"Form Message\", description: \"Form Message provides supporting text below form controls for guidance, validation, and status messaging.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17821&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-form-message--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-message/index.ts\"], website: [\"https://muibook.com/form-message\"], guides: [\"https://guides.muibook.com/field\"], usage: { list: [ \"Use for supporting text below form controls.\", \"Use inside mui-field with slot='message' for consistent spacing and placement.\", \"When used in Form Group layouts, attach each Form Message to its specific Field using slot='message'.\", \"Form Message wraps Mui Body with form-oriented defaults.\", \"Form Message renders an info icon by default; provide slot='before' to replace it.\", \"Use variant='info' for lighter informational guidance that should remain less visually impactful than warning, positive, or attention states.\", \"Supporting copy is intentionally knocked back so inputs and selections stay visually primary.\", \"Slot icons in before/after using Mui Body slot behavior.\", \"Style state feedback through slotted icon color and text styling in usage context.\", \"Use size to match nearby body text (x-small, small, medium, large).\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"] }, anatomy: { image: \"\", list: [\"Optional leading slot\", \"Hint text\", \"Optional trailing slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { \"key\": \"message-patterns\", \"title\": \"Message Patterns\", \"description\": \"Icon-led supporting text with semantic color from usage context.\", \"list\": [ \"Use a colored mui-form-message when the static message needs more emphasis.\", \"Use the default greyscale version for lighter supporting copy.\", \"This component does not replace mui-field slot=&quot;message&quot; when the message belongs to a specific field; it is the message content used within that pattern.\" ] }, { \"key\": \"billing-preferences-section\", \"title\": \"Billing Preferences Section\", \"description\": \"Grouped controls with radio choices and inline guidance. Intended for use on a surface background.\", \"list\": [ \"Use Form Message on the owning field for helper and validation copy.\", \"Use horizontal groups for paired follow-up fields.\", \"Default split is 1fr / 20rem and stacks on mobile.\", \"Use a colored mui-form-message for stronger static guidance, or the default greyscale version for lighter supporting copy.\", \"This component does not replace the message functionality on mui-field; when the copy belongs to one field, keep it in that field’s slot=&quot;message&quot;.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Form Message sizing across x-small, small, medium, and large, including all variant options.\", \"list\": [ \"Use Form Message inside Field for helper, validation, or control status copy.\" ] } ], }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Input\", link: \"https://guides.muibook.com/input\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-form-message/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-form-message/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays helper or validation copy for a form control with optional semantic icon content.",
-          "name": "MuiFormMessage",
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "small",
-              "description": "Sets the message text and inferred icon size."
-            },
-            {
-              "name": "weight",
-              "type": {
-                "text": "\"regular\" | \"bold\""
-              },
-              "default": "regular",
-              "description": "Sets the message text weight."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"secondary\" | \"info\" | \"positive\" | \"warning\" | \"attention\""
-              },
-              "default": "secondary",
-              "description": "Sets the semantic message color and default icon treatment."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-form-message",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Message text or supporting inline content."
-            },
-            {
-              "name": "before",
-              "description": "Leading icon; defaults to an information icon."
-            },
-            {
-              "name": "after",
-              "description": "Optional trailing content."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-form-message",
-          "declaration": {
-            "name": "MuiFormMessage",
-            "module": "src/components/mui-form-message/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-form-section/doc.ts",
       "declarations": [
         {
@@ -4932,6 +4840,98 @@
           "declaration": {
             "name": "MuiFormSection",
             "module": "src/components/mui-form-section/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-form-message/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ FormMessage: { namedSlots: { description: \"Use these names on items slotted inside this component.\", list: [\"before\",\"after\"], }, title: \"Form Message\", description: \"Form Message provides supporting text below form controls for guidance, validation, and status messaging.\", hero: [\"\"], figma: [\"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=2133-17821&t=P2Vr2JDCBlI425XD-1\"], storybook: [\"https://stories.muibook.com/?path=/docs/forms-form-message--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-form-message/index.ts\"], website: [\"https://muibook.com/form-message\"], guides: [\"https://guides.muibook.com/field\"], usage: { list: [ \"Use for supporting text below form controls.\", \"Use inside mui-field with slot='message' for consistent spacing and placement.\", \"When used in Form Group layouts, attach each Form Message to its specific Field using slot='message'.\", \"Form Message wraps Mui Body with form-oriented defaults.\", \"Form Message renders an info icon by default; provide slot='before' to replace it.\", \"Use variant='info' for lighter informational guidance that should remain less visually impactful than warning, positive, or attention states.\", \"Supporting copy is intentionally knocked back so inputs and selections stay visually primary.\", \"Slot icons in before/after using Mui Body slot behavior.\", \"Style state feedback through slotted icon color and text styling in usage context.\", \"Use size to match nearby body text (x-small, small, medium, large).\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"] }, anatomy: { image: \"\", list: [\"Optional leading slot\", \"Hint text\", \"Optional trailing slot\"] }, variants: { items: [{ key: \"\", title: \"\", description: \"\", image: \"\" }] }, stories: { items: [ { \"key\": \"message-patterns\", \"title\": \"Message Patterns\", \"description\": \"Icon-led supporting text with semantic color from usage context.\", \"list\": [ \"Use a colored mui-form-message when the static message needs more emphasis.\", \"Use the default greyscale version for lighter supporting copy.\", \"This component does not replace mui-field slot=&quot;message&quot; when the message belongs to a specific field; it is the message content used within that pattern.\" ] }, { \"key\": \"billing-preferences-section\", \"title\": \"Billing Preferences Section\", \"description\": \"Grouped controls with radio choices and inline guidance. Intended for use on a surface background.\", \"list\": [ \"Use Form Message on the owning field for helper and validation copy.\", \"Use horizontal groups for paired follow-up fields.\", \"Default split is 1fr / 20rem and stacks on mobile.\", \"Use a colored mui-form-message for stronger static guidance, or the default greyscale version for lighter supporting copy.\", \"This component does not replace the message functionality on mui-field; when the copy belongs to one field, keep it in that field’s slot=&quot;message&quot;.\" ] }, { \"key\": \"sizes\", \"title\": \"Sizes\", \"description\": \"Form Message sizing across x-small, small, medium, and large, including all variant options.\", \"list\": [ \"Use Form Message inside Field for helper, validation, or control status copy.\" ] } ], }, compositions: { description: \"\", items: [] }, related: { items: [ { name: \"Field\", link: \"https://guides.muibook.com/field\" }, { name: \"Input\", link: \"https://guides.muibook.com/input\" }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"] }, writing: { list: [\"\"] }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-form-message/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-form-message/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays helper or validation copy for a form control with optional semantic icon content.",
+          "name": "MuiFormMessage",
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "small",
+              "description": "Sets the message text and inferred icon size."
+            },
+            {
+              "name": "weight",
+              "type": {
+                "text": "\"regular\" | \"bold\""
+              },
+              "default": "regular",
+              "description": "Sets the message text weight."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"secondary\" | \"info\" | \"positive\" | \"warning\" | \"attention\""
+              },
+              "default": "secondary",
+              "description": "Sets the semantic message color and default icon treatment."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-form-message",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Message text or supporting inline content."
+            },
+            {
+              "name": "before",
+              "description": "Leading icon; defaults to an information icon."
+            },
+            {
+              "name": "after",
+              "description": "Optional trailing content."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-form-message",
+          "declaration": {
+            "name": "MuiFormMessage",
+            "module": "src/components/mui-form-message/index.ts"
           }
         }
       ]
@@ -10546,6 +10546,115 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-responsive/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Responsive: { namedSlots: { description: \"Use these names on items slotted inside this component.\", list: [\"show-below\", \"show-middle\", \"show-above\"], }, title: \"Responsive\", description: \"Dynamically render UI based on viewport size\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/4UgRd1YdJAAZTThk4U97qE/8a322a53f71dc8b288385b5dd16b3469/Responsive_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12704&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/layout-responsive--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts\"], website: [\"https://muibook.com/responsive\"], guides: [\"https://guides.muibook.com/responsive\"], usage: { list: [ \"Prefer variant='container' for reusable components and compositions so responsive decisions follow the available parent region.\", \"Use viewport responsiveness for page-level and app-shell changes that genuinely depend on browser width.\", \"Use to adjust or swap UI components according to screen size for optimal experience.\", \"Ideal for tailoring layouts, navigation, or content density on different devices.\", \"Supports breakpoint-driven rendering to maintain clarity and usability.\", \"Avoid overly complex responsive behaviours that may confuse users or complicate maintenance.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"single-breakpoint\", \"title\": \"Single Breakpoint\", \"description\": \"Demonstrates the Single Breakpoint Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"dual-breakpoint\", \"title\": \"Dual Breakpoint\", \"description\": \"Demonstrates the Dual Breakpoint Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"container-breakpoint\", \"title\": \"Container Breakpoint\", \"description\": \"Switches slotted content based on a resizable page region instead of the viewport.\", \"list\": [ \"Use variant='container' when the responsive decision should follow the parent layout or resizable drawer region.\", \"Use observe to measure a parent or closest ancestor selector when the responsive element is nested inside wrapper elements.\", \"This uses the same desktop-to-mobile composition pattern as the table example, but the breakpoint is measured from the drawer page content.\", \"Drag the drawer rail to change the page width and confirm the content switches without changing the viewport.\" ] }, { \"key\": \"slat-to-table\", \"title\": \"Slat to Table\", \"description\": \"Showcasing how to loop data on to the mui-table and mui-slat within the mui-responsive component.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"table-desktop-to-mobile\", \"title\": \"Table: Desktop to Mobile\", \"description\": \"Demonstrates the Table: Desktop to Mobile Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcomes-roadmap-dashboard\", name: \"Outcomes Roadmap Dashboard\", description: \"Example of the responsive component in the Outcomes Roadmap Dashboard, demonstrating layout, title, and padding adjustments across breakpoints.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3FsXandRr1Z9BAKv33twxT/b0d0e4a8b6237bf7d38660111bceb8ab/responsive-composition.gif\", }, ], }, related: { items: [ { name: \"Stack\", link: \"https://guides.muibook.com/stack\", }, { name: \"Grid\", link: \"https://guides.muibook.com/grid\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-responsive/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-responsive/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Switches between slotted layout alternatives at one or two viewport or container breakpoints.",
+          "name": "MuiR",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"viewport\" | \"container\""
+              },
+              "default": "viewport",
+              "description": "Chooses whether breakpoints respond to the viewport width or the mui-responsive host container width."
+            },
+            {
+              "name": "observe",
+              "type": {
+                "text": "\"self\" | \"parent\" | string"
+              },
+              "default": "self",
+              "description": "Container query target used with `variant='container'`. Use `parent` for the direct parent, or a selector to observe the closest matching ancestor."
+            },
+            {
+              "name": "breakpoint",
+              "type": {
+                "text": "number | string"
+              },
+              "description": "Single pixel breakpoint for switching between `show-below` and `show-above` content."
+            },
+            {
+              "name": "breakpoint-low",
+              "type": {
+                "text": "number | string"
+              },
+              "description": "Lower pixel breakpoint for three-view layouts. Used with `breakpoint-high`."
+            },
+            {
+              "name": "breakpoint-high",
+              "type": {
+                "text": "number | string"
+              },
+              "description": "Upper pixel breakpoint for three-view layouts. Used with `breakpoint-low`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-responsive",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Content displayed when no breakpoint switching attributes are provided."
+            },
+            {
+              "name": "show-below",
+              "description": "Content displayed at or below the active lower or single breakpoint."
+            },
+            {
+              "name": "show-middle",
+              "description": "Content displayed between `breakpoint-low` and `breakpoint-high`."
+            },
+            {
+              "name": "show-above",
+              "description": "Content displayed above the active upper or single breakpoint."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-responsive",
+          "declaration": {
+            "name": "MuiR",
+            "module": "src/components/mui-responsive/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-range-input/doc.ts",
       "declarations": [
         {
@@ -10725,115 +10834,6 @@
           "declaration": {
             "name": "MuiRangeInput",
             "module": "src/components/mui-range-input/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-responsive/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Responsive: { namedSlots: { description: \"Use these names on items slotted inside this component.\", list: [\"show-below\", \"show-middle\", \"show-above\"], }, title: \"Responsive\", description: \"Dynamically render UI based on viewport size\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/4UgRd1YdJAAZTThk4U97qE/8a322a53f71dc8b288385b5dd16b3469/Responsive_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12704&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/layout-responsive--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts\"], website: [\"https://muibook.com/responsive\"], guides: [\"https://guides.muibook.com/responsive\"], usage: { list: [ \"Prefer variant='container' for reusable components and compositions so responsive decisions follow the available parent region.\", \"Use viewport responsiveness for page-level and app-shell changes that genuinely depend on browser width.\", \"Use to adjust or swap UI components according to screen size for optimal experience.\", \"Ideal for tailoring layouts, navigation, or content density on different devices.\", \"Supports breakpoint-driven rendering to maintain clarity and usability.\", \"Avoid overly complex responsive behaviours that may confuse users or complicate maintenance.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"single-breakpoint\", \"title\": \"Single Breakpoint\", \"description\": \"Demonstrates the Single Breakpoint Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"dual-breakpoint\", \"title\": \"Dual Breakpoint\", \"description\": \"Demonstrates the Dual Breakpoint Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"container-breakpoint\", \"title\": \"Container Breakpoint\", \"description\": \"Switches slotted content based on a resizable page region instead of the viewport.\", \"list\": [ \"Use variant='container' when the responsive decision should follow the parent layout or resizable drawer region.\", \"Use observe to measure a parent or closest ancestor selector when the responsive element is nested inside wrapper elements.\", \"This uses the same desktop-to-mobile composition pattern as the table example, but the breakpoint is measured from the drawer page content.\", \"Drag the drawer rail to change the page width and confirm the content switches without changing the viewport.\" ] }, { \"key\": \"slat-to-table\", \"title\": \"Slat to Table\", \"description\": \"Showcasing how to loop data on to the mui-table and mui-slat within the mui-responsive component.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"table-desktop-to-mobile\", \"title\": \"Table: Desktop to Mobile\", \"description\": \"Demonstrates the Table: Desktop to Mobile Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcomes-roadmap-dashboard\", name: \"Outcomes Roadmap Dashboard\", description: \"Example of the responsive component in the Outcomes Roadmap Dashboard, demonstrating layout, title, and padding adjustments across breakpoints.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3FsXandRr1Z9BAKv33twxT/b0d0e4a8b6237bf7d38660111bceb8ab/responsive-composition.gif\", }, ], }, related: { items: [ { name: \"Stack\", link: \"https://guides.muibook.com/stack\", }, { name: \"Grid\", link: \"https://guides.muibook.com/grid\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-responsive/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-responsive/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Switches between slotted layout alternatives at one or two viewport or container breakpoints.",
-          "name": "MuiR",
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"viewport\" | \"container\""
-              },
-              "default": "viewport",
-              "description": "Chooses whether breakpoints respond to the viewport width or the mui-responsive host container width."
-            },
-            {
-              "name": "observe",
-              "type": {
-                "text": "\"self\" | \"parent\" | string"
-              },
-              "default": "self",
-              "description": "Container query target used with `variant='container'`. Use `parent` for the direct parent, or a selector to observe the closest matching ancestor."
-            },
-            {
-              "name": "breakpoint",
-              "type": {
-                "text": "number | string"
-              },
-              "description": "Single pixel breakpoint for switching between `show-below` and `show-above` content."
-            },
-            {
-              "name": "breakpoint-low",
-              "type": {
-                "text": "number | string"
-              },
-              "description": "Lower pixel breakpoint for three-view layouts. Used with `breakpoint-high`."
-            },
-            {
-              "name": "breakpoint-high",
-              "type": {
-                "text": "number | string"
-              },
-              "description": "Upper pixel breakpoint for three-view layouts. Used with `breakpoint-low`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-responsive",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Content displayed when no breakpoint switching attributes are provided."
-            },
-            {
-              "name": "show-below",
-              "description": "Content displayed at or below the active lower or single breakpoint."
-            },
-            {
-              "name": "show-middle",
-              "description": "Content displayed between `breakpoint-low` and `breakpoint-high`."
-            },
-            {
-              "name": "show-above",
-              "description": "Content displayed above the active upper or single breakpoint."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-responsive",
-          "declaration": {
-            "name": "MuiR",
-            "module": "src/components/mui-responsive/index.ts"
           }
         }
       ]
@@ -12229,30 +12229,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-stack/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Stack: { title: \"Stack\", description: \"A layout helper component that arranges its children in a horizontal or vertical flow with consistent spacing.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/37Cyk0jaIIKA8EBj2bp1ep/95d5adc24bccb051c355865d9e14bfa3/Stack_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12708&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/layout-stack--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stack\"], website: [\"https://muibook.com/stack\"], guides: [\"https://guides.muibook.com/stack\"], usage: { list: [ \"Use to organise content or components in a single, consistent direction.\", \"Ideal for managing spacing without manual margin or padding adjustments.\", \"Supports responsive layouts by changing direction or spacing at breakpoints.\", \"Recognise it as a developer layout tool rather than a design asset.\", \"Use the space design token to maintain consistent gap spacing.\", \"Use viewport on a top-level stack that owns the viewport-height region.\", \"Use fill only when the parent provides a clearly bounded width and height.\", \"For nested layouts that share height with headers, drawers, or sibling regions, define the page layout explicitly rather than relying on viewport or fill.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { description: \"While not a Figma component (designers should use auto-layout), it’s useful for designers to understand this pattern as engineers commonly use it to control layout and spacing.\", items: [ { key: \"horizontal\", title: \"Horizontal\", description: \"A layout component that arranges its children in a horizontal flow\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5tHpmQRhIWn0ACqjb1jNBu/d99ca0d9ada0af45cd0f1c2aaa7c995d/stack-horizontal.png\", }, { key: \"vertical\", title: \"Vertical\", description: \"A layout component that arranges its children in a vertical flow\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1w2YeWwXerMc2YGqfGm6KJ/898f3ef195e01f775ae880e0968dbaa6/stack-vertical.png\", }, ], }, stories: { items: [ { \"key\": \"horizontal-default\", \"title\": \"Horizontal: Default\", \"description\": \"Arranges children in a horizontal sequence.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"vertical-default\", \"title\": \"Vertical: Default\", \"description\": \"Arranges children in a vertical sequence.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"horizontal-custom-space\", \"title\": \"Horizontal: Custom Space\", \"description\": \"Applies custom spacing between horizontal children.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"vertical-custom-space\", \"title\": \"Vertical: Custom Space\", \"description\": \"Applies custom spacing between vertical children.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"horizontal-wrap\", \"title\": \"Horizontal: Wrap\", \"description\": \"Use wrap when chips, badges, actions, or metadata rows need to continue onto a new line without switching layout primitives.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"padding\", \"title\": \"Padding\", \"description\": \"Applies internal spacing to the Stack.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"vertical-alignment-in-a-set-height\", \"title\": \"Vertical: Alignment in a Set Height\", \"description\": \"Aligns children within a fixed-height vertical region.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"vertical-viewport-with-nested-stacks\", \"title\": \"Vertical: Viewport With Nested Stacks\", \"description\": \"Use viewport on a stack that owns the viewport region. Nested stacks remain content-sized; shared header or panel layouts should define their height structure explicitly.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcomes-roadmap-dashboard\", name: \"Outcomes Roadmap Dashboard\", description: \"Example of the responsive component in the Outcomes Roadmap Dashboard, demonstrating layout, title, and padding adjustments across breakpoints.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3FsXandRr1Z9BAKv33twxT/b0d0e4a8b6237bf7d38660111bceb8ab/responsive-composition.gif\", }, { key: \"outcomes-roadmap-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, { key: \"smart-card\", name: \"Smart Card\", description: \"The Smart Card composition uses slats to present structured information in a compact format. Slats help organise details such as titles, descriptions, and supporting actions, making the card easy to scan and interact with.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/74knMtil1vp9nHPPWXM1kr/54f8d978b0a82bca2c126e8ab800826f/SmartCard_-_Card_Composition.png\", }, ], }, related: { items: [ { name: \"Grid\", link: \"https://guides.muibook.com/grid\", }, { name: \"Responsive\", link: \"https://guides.muibook.com/responsive\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-stack/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-status/doc.ts",
       "declarations": [
         {
@@ -12345,6 +12321,30 @@
           "declaration": {
             "name": "MuiStatus",
             "module": "src/components/mui-status/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-stack/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Stack: { title: \"Stack\", description: \"A layout helper component that arranges its children in a horizontal or vertical flow with consistent spacing.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/37Cyk0jaIIKA8EBj2bp1ep/95d5adc24bccb051c355865d9e14bfa3/Stack_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12708&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/layout-stack--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-stack\"], website: [\"https://muibook.com/stack\"], guides: [\"https://guides.muibook.com/stack\"], usage: { list: [ \"Use to organise content or components in a single, consistent direction.\", \"Ideal for managing spacing without manual margin or padding adjustments.\", \"Supports responsive layouts by changing direction or spacing at breakpoints.\", \"Recognise it as a developer layout tool rather than a design asset.\", \"Use the space design token to maintain consistent gap spacing.\", \"Use viewport on a top-level stack that owns the viewport-height region.\", \"Use fill only when the parent provides a clearly bounded width and height.\", \"For nested layouts that share height with headers, drawers, or sibling regions, define the page layout explicitly rather than relying on viewport or fill.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { description: \"While not a Figma component (designers should use auto-layout), it’s useful for designers to understand this pattern as engineers commonly use it to control layout and spacing.\", items: [ { key: \"horizontal\", title: \"Horizontal\", description: \"A layout component that arranges its children in a horizontal flow\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5tHpmQRhIWn0ACqjb1jNBu/d99ca0d9ada0af45cd0f1c2aaa7c995d/stack-horizontal.png\", }, { key: \"vertical\", title: \"Vertical\", description: \"A layout component that arranges its children in a vertical flow\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1w2YeWwXerMc2YGqfGm6KJ/898f3ef195e01f775ae880e0968dbaa6/stack-vertical.png\", }, ], }, stories: { items: [ { \"key\": \"horizontal-default\", \"title\": \"Horizontal: Default\", \"description\": \"Arranges children in a horizontal sequence.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"vertical-default\", \"title\": \"Vertical: Default\", \"description\": \"Arranges children in a vertical sequence.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"horizontal-custom-space\", \"title\": \"Horizontal: Custom Space\", \"description\": \"Applies custom spacing between horizontal children.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"vertical-custom-space\", \"title\": \"Vertical: Custom Space\", \"description\": \"Applies custom spacing between vertical children.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"horizontal-wrap\", \"title\": \"Horizontal: Wrap\", \"description\": \"Use wrap when chips, badges, actions, or metadata rows need to continue onto a new line without switching layout primitives.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"padding\", \"title\": \"Padding\", \"description\": \"Applies internal spacing to the Stack.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"vertical-alignment-in-a-set-height\", \"title\": \"Vertical: Alignment in a Set Height\", \"description\": \"Aligns children within a fixed-height vertical region.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] }, { \"key\": \"vertical-viewport-with-nested-stacks\", \"title\": \"Vertical: Viewport With Nested Stacks\", \"description\": \"Use viewport on a stack that owns the viewport region. Nested stacks remain content-sized; shared header or panel layouts should define their height structure explicitly.\", \"list\": [ \"Use Stack for one-dimensional layout and control spacing from the parent composition.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcomes-roadmap-dashboard\", name: \"Outcomes Roadmap Dashboard\", description: \"Example of the responsive component in the Outcomes Roadmap Dashboard, demonstrating layout, title, and padding adjustments across breakpoints.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3FsXandRr1Z9BAKv33twxT/b0d0e4a8b6237bf7d38660111bceb8ab/responsive-composition.gif\", }, { key: \"outcomes-roadmap-roadmap\", name: \"Outcome-Based Roadmap\", description: \"Example of an Outcome-Based Roadmap page showing objectives organised into Upcoming, Doing, and Finished columns. Progress bars indicate the completion status of each task, providing a clear view of overall progress.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3w5htPtfEz7QMCH9alVcwf/de35725fb4542b891bd695b900195291/Outcomes-Progress-Composition.png\", }, { key: \"smart-card\", name: \"Smart Card\", description: \"The Smart Card composition uses slats to present structured information in a compact format. Slats help organise details such as titles, descriptions, and supporting actions, making the card easy to scan and interact with.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/74knMtil1vp9nHPPWXM1kr/54f8d978b0a82bca2c126e8ab800826f/SmartCard_-_Card_Composition.png\", }, ], }, related: { items: [ { name: \"Grid\", link: \"https://guides.muibook.com/grid\", }, { name: \"Responsive\", link: \"https://guides.muibook.com/responsive\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-stack/doc.ts"
           }
         }
       ]
@@ -12604,54 +12604,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Table: { title: \"Table\", description: \"Displays data in a grid layout to support scanability and comparison across rows and columns. Best suited for structured, repeatable content.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/34Yd6uWrfM5Ihv4rdniHYy/9e1698ce2c23d6c74006bf3f2ae93066/Table_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8696&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-table--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table\"], website: [\"https://muibook.com/table\"], guides: [\"https://guides.muibook.com/table\"], usage: { list: [ \"Use for structured content that benefits from a grid format.\", \"Ideal for comparing data across multiple rows and columns.\", \"Supports sorting, filtering, or action buttons if needed.\", \"Use Status for state fields in table cells, such as Paid, Pending, Active, Review, or Unlodged.\", \"Use Badge only for supporting labels, counts, deltas, or presentational metadata inside a table.\", \"Avoid for unstructured, visual, or narrative-based content.\", \"Tables should adapt for smaller viewports by switching to the Slat component.\", \"Prioritise key content and simplify structure when transitioning to mobile views.\", ], }, accessibility: { designerList: [ \"mui-table uses role='table'.\", \"mui-row-group uses role='rowgroup'.\", \"mui-row uses role='row'.\", \"mui-cell uses role='cell'.\", \"Follows table semantics for screen reader support.\", ], engineerList: [ \"mui-table uses role='table'.\", \"mui-row-group uses role='rowgroup'.\", \"mui-row uses role='row'.\", \"mui-cell uses role='cell'.\", \"Follows table semantics for screen reader support.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/2KHxAyGbYW7qwySwCLYrbo/0ffc98c3eef07098afaf64bebc6afd4a/Table_-_Anatomy.png\", list: [ \"Heading: The header row of the table accepts headings and other arrangements as needed.\", \"Data: The row contains standard data as well as other arrangements, such as grouped content.\", \"Actions: The main actions for each table row can be included in a dedicated column or slot.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"table\", \"title\": \"Table\", \"description\": \"Demonstrates the Table Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"hover-row-highlight\", \"title\": \"Hover Row Highlight\", \"description\": \"Demonstrates the Hover Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"select-row-highlight\", \"title\": \"Select Row Highlight\", \"description\": \"Demonstrates the Select Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"index-row-highlight\", \"title\": \"Index Row Highlight\", \"description\": \"Demonstrates the Index Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"xx-small-action-size\", \"title\": \"XX-Small Action Size\", \"description\": \"Demonstrates the XX-Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"x-small-action-size\", \"title\": \"X-Small Action Size\", \"description\": \"Demonstrates the X-Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"small-action-size\", \"title\": \"Small Action Size\", \"description\": \"Demonstrates the Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"medium-action-size\", \"title\": \"Medium Action Size\", \"description\": \"Demonstrates the Medium Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"large-action-size\", \"title\": \"Large Action Size\", \"description\": \"Demonstrates the Large Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"mapping-data\", \"title\": \"Mapping Data\", \"description\": \"Use the .map() method to dynamically inject rows into your table based on your data set.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"responsive-table\", \"title\": \"Responsive Table\", \"description\": \"Demonstrates the Responsive Table Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-with-table\", \"title\": \"Card with Table\", \"description\": \"When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-header-w-table\", \"title\": \"Card Header w/ Table\", \"description\": \"You can add in a mui-rule to help add a division between the header and body of the card\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-hover-row-highlight\", \"title\": \"Card: Hover Row Highlight\", \"description\": \"Demonstrates the Card: Hover Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-select-row-highlight\", \"title\": \"Card: Select Row Highlight\", \"description\": \"Demonstrates the Card: Select Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"prop-types-table\", name: \"Prop Types Table\", description: \"Attached is a standard example demonstrating how to use the table to present general data for component prop types.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1JeUHjbeqVNgTvlVZkeHjw/7f652efbea5cc6aa436449905e2ae48e/table_-_composition.png\", }, { key: \"simple-table-dropdown\", name: \"Simple Table w/ Dropdown\", description: \"Example of a simple table with a dropdown action positioned on the far right, following the content. Demonstrates the table used within a card layout, as it might appear on a page or settings view.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3IIRPg0pdQB66NJniCZvlo/2600a8bee4ad1c79a63dc48d3032ee34/table-composition-design-pricing.png\", }, { key: \"compliance-dashboard-table\", name: \"Compliance Dashboard Table\", description: \"This example shows a desktop view of a table used within an accounting compliance dashboard.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3vUKA5C5iJ3LvjLwf2WiO9/274ffe423dbe828244294f6809172ce1/table-composition-compliance-dashboard.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"Use Status for row state\", description: \"When a table cell communicates record or workflow state, use Status. Reserve Badge for supporting labels, counts, deltas, or presentational metadata.\", doContent: [ { description: \"Use Status for table state values such as Paid, Pending, Active, Review, or Unlodged.\", image: \"\", }, ], dontContent: [ { description: \"Do not use Badge as the main state field in operational table rows.\", image: \"\", }, ], }, { heading: \"Icon-Only Actions\", description: \"\", doContent: [ { description: \"Use a 'medium' size icon when using an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3syzrNBEXbBjp5hGEUvF4M/0471f4b16939d8ee54deaf48997ff455/action-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5V2TE85dY848jz1dP6Y0lC/b8e433c8abad5a4402ff1f86ddb8c848/action-icon-dont.png\", }, ], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-table/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Tabs: { title: \"Tabs\", description: \"Allows users to switch between views or content sections by selecting from a group of tabs. Tabs keep related content within a single surface, reducing the need for navigation and maintaining context.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/5EC8Uj4pMaQGe2UcNntYLX/040eb1feec8def04504dfa3729494b52/Tab_bar_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/navigation-tab-bar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs\"], website: [\"https://muibook.com/tab-bar\"], guides: [\"https://guides.muibook.com/tab-bar\"], usage: { list: [ \"Use to organise related content or views at the same level of hierarchy.\", \"Ideal for toggling between sections without navigating away from the page.\", \"Use the size API (x-small, small, medium, large) to align tabs with adjacent buttons.\", \"Use named slots (before/after) to compose icons and badges in tab items.\", \"Use variant='dots' for compact pagination controls such as carousel navigation.\", \"Use variant='ghost' when you want only active-tab emphasis without outer tab bar chrome.\", \"Keep labels short, clear, and consistently styled.\", \"Avoid using when content is unrelated or exceeds a manageable number of tabs.\", ], }, accessibility: { designerList: [ \"Keyboard users can navigate across tabs using the left/right arrow keys, as well as Home and End keys to jump to the first or last tab.\", \"The active tab always shows a clear focus outline and can be navigated to using the keyboard.\", \"Tabs are grouped in a way that assistive technologies can understand, using standard roles and attributes.\", \"The system keeps track of which tab is active behind the scenes, so screen readers and keyboard users always stay in sync.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/koeu63xbKYOWZgs8i0eev/983e09362714a2dcdcc7262889ba1236/Tabs_-_Anatomy.png\", list: [ \"Active: Indicates the currently selected tab.\", \"Inactive: Indicates a tab that is not selected and is waiting for user interaction.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { key: \"default\", title: \"Default\", description: \"Switches between related views at the same hierarchy level.\", list: [\"Keep labels short and use tabs only for closely related content.\"] }, { key: \"surface-usage\", title: \"Surface Usage\", description: \"Adapts the Tab Bar hierarchy when composed inside a framed surface.\", list: [\"Card, Card Body, Drawer, Dialog, and Carousel automatically apply usage='surface' through neutral layout wrappers while preserving the nearest nested surface owner.\", \"Surface usage applies the base surface to the Tab Bar background and border, with the elevated surface behind the active tab.\"] }, { key: \"stroke-none\", title: \"Stroke: None\", description: \"Removes the outer stroke when a recessed or surrounding surface already defines the Tab Bar area.\", list: [\"Use only when another boundary clearly contains the Tab Bar.\", \"The Tab Bar uses visible overflow in this mode so focus and shadow treatments are not clipped by the parent boundary.\"] }, { key: \"inset\", title: \"Inset Tab\", description: \"Applies a floating inset treatment to the active tab.\", list: [\"Use for compact tool surfaces where a pill treatment suits the surrounding controls.\"] }, { key: \"radius\", title: \"Radius\", description: \"Adjusts the base radius of the Tab Bar and items.\", list: [\"Match the radius to adjacent controls and the containing surface.\"] }, { key: \"controller\", title: \"Tab Controller and Tab Panel\", description: \"Connects tab selection to matching content panels.\", list: [\"Use matching values between each Tab Item and Tab Panel.\", \"Use full-width only when tabs should divide the available width evenly.\"] }, { key: \"speed\", title: \"Animation Speed\", description: \"Customises the active indicator transition duration.\", list: [\"Keep transitions brief and consistent with nearby navigation.\"] }, { key: \"sizes\", title: \"Size Variants\", description: \"Matches Tab Bar density to its layout context.\", list: [\"Use one size consistently within a tab group.\"] }, { key: \"button-parity\", title: \"Size Parity with Button\", description: \"Aligns Tab Bar and Button dimensions in shared toolbars.\", list: [\"Use matching size values for controls that share a row.\"] }, { key: \"slots\", title: \"Before and After Slots\", description: \"Adds icons, badges, or compact accessories to tab labels.\", list: [\"Keep accessories concise and preserve clear tab names.\"] }, { key: \"default-width\", title: \"Default Width\", description: \"Sizes the Tab Bar to its content.\", list: [\"Use content width when tabs do not need to fill their container.\"] }, { key: \"dots\", title: \"Dots Variant\", description: \"Provides compact pagination controls for carousels and similar views.\", list: [\"Use only when position is understandable without text labels.\"] }, { key: \"ghost\", title: \"Ghost Variant\", description: \"Emphasises only the active tab without outer Tab Bar chrome.\", list: [\"Use when the surrounding surface already provides enough structure.\"] }, { key: \"full-width\", title: \"Full Width\", description: \"Distributes tab items evenly across the available width.\", list: [\"Use for a small, stable set of peer views.\", \"Avoid full width when labels vary substantially in length.\"] }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"wallet\", name: \"Wallet\", description: \"This example shows a wallet view featuring a digital card, transaction and statement tabs. It demonstrates how foundational components like tabs, slats, and buttons can be composed to create flexible, real-world layouts.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6RoGBcahh63o16PAcEsgyX/36f5c8d9bf0e8754a574955b32ee6eda/Tab_Bar_-_Composition.png\", }, { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Carousel\", link: \"https://guides.muibook.com/carousel\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-tabs/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-textarea/doc.ts",
       "declarations": [
         {
@@ -12850,6 +12802,30 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-tabs/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Tabs: { title: \"Tabs\", description: \"Allows users to switch between views or content sections by selecting from a group of tabs. Tabs keep related content within a single surface, reducing the need for navigation and maintaining context.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/5EC8Uj4pMaQGe2UcNntYLX/040eb1feec8def04504dfa3729494b52/Tab_bar_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=126-560&t=ZfvVjZFxH7mQ72pi-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/navigation-tab-bar--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-tabs\"], website: [\"https://muibook.com/tab-bar\"], guides: [\"https://guides.muibook.com/tab-bar\"], usage: { list: [ \"Use to organise related content or views at the same level of hierarchy.\", \"Ideal for toggling between sections without navigating away from the page.\", \"Use the size API (x-small, small, medium, large) to align tabs with adjacent buttons.\", \"Use named slots (before/after) to compose icons and badges in tab items.\", \"Use variant='dots' for compact pagination controls such as carousel navigation.\", \"Use variant='ghost' when you want only active-tab emphasis without outer tab bar chrome.\", \"Keep labels short, clear, and consistently styled.\", \"Avoid using when content is unrelated or exceeds a manageable number of tabs.\", ], }, accessibility: { designerList: [ \"Keyboard users can navigate across tabs using the left/right arrow keys, as well as Home and End keys to jump to the first or last tab.\", \"The active tab always shows a clear focus outline and can be navigated to using the keyboard.\", \"Tabs are grouped in a way that assistive technologies can understand, using standard roles and attributes.\", \"The system keeps track of which tab is active behind the scenes, so screen readers and keyboard users always stay in sync.\", ], engineerList: [ \"Left/Right arrows, Home and End keys let keyboard users navigate between tab-items.\", \"aria-selected and tabindex attributes are updated on each tab-item when it becomes active or inactive.\", \"Each active tab-item can receive focus and shows a focus-visible outline.\", \"tab-bar uses role=tablist to group related tab-items and each tab-item uses role=tab within the tab-bar.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/koeu63xbKYOWZgs8i0eev/983e09362714a2dcdcc7262889ba1236/Tabs_-_Anatomy.png\", list: [ \"Active: Indicates the currently selected tab.\", \"Inactive: Indicates a tab that is not selected and is waiting for user interaction.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { key: \"default\", title: \"Default\", description: \"Switches between related views at the same hierarchy level.\", list: [\"Keep labels short and use tabs only for closely related content.\"] }, { key: \"surface-usage\", title: \"Surface Usage\", description: \"Adapts the Tab Bar hierarchy when composed inside a framed surface.\", list: [\"Card, Card Body, Drawer, Dialog, and Carousel automatically apply usage='surface' through neutral layout wrappers while preserving the nearest nested surface owner.\", \"Surface usage applies the base surface to the Tab Bar background and border, with the elevated surface behind the active tab.\"] }, { key: \"stroke-none\", title: \"Stroke: None\", description: \"Removes the outer stroke when a recessed or surrounding surface already defines the Tab Bar area.\", list: [\"Use only when another boundary clearly contains the Tab Bar.\", \"The Tab Bar uses visible overflow in this mode so focus and shadow treatments are not clipped by the parent boundary.\"] }, { key: \"inset\", title: \"Inset Tab\", description: \"Applies a floating inset treatment to the active tab.\", list: [\"Use for compact tool surfaces where a pill treatment suits the surrounding controls.\"] }, { key: \"radius\", title: \"Radius\", description: \"Adjusts the base radius of the Tab Bar and items.\", list: [\"Match the radius to adjacent controls and the containing surface.\"] }, { key: \"controller\", title: \"Tab Controller and Tab Panel\", description: \"Connects tab selection to matching content panels.\", list: [\"Use matching values between each Tab Item and Tab Panel.\", \"Use full-width only when tabs should divide the available width evenly.\"] }, { key: \"speed\", title: \"Animation Speed\", description: \"Customises the active indicator transition duration.\", list: [\"Keep transitions brief and consistent with nearby navigation.\"] }, { key: \"sizes\", title: \"Size Variants\", description: \"Matches Tab Bar density to its layout context.\", list: [\"Use one size consistently within a tab group.\"] }, { key: \"button-parity\", title: \"Size Parity with Button\", description: \"Aligns Tab Bar and Button dimensions in shared toolbars.\", list: [\"Use matching size values for controls that share a row.\"] }, { key: \"slots\", title: \"Before and After Slots\", description: \"Adds icons, badges, or compact accessories to tab labels.\", list: [\"Keep accessories concise and preserve clear tab names.\"] }, { key: \"default-width\", title: \"Default Width\", description: \"Sizes the Tab Bar to its content.\", list: [\"Use content width when tabs do not need to fill their container.\"] }, { key: \"dots\", title: \"Dots Variant\", description: \"Provides compact pagination controls for carousels and similar views.\", list: [\"Use only when position is understandable without text labels.\"] }, { key: \"ghost\", title: \"Ghost Variant\", description: \"Emphasises only the active tab without outer Tab Bar chrome.\", list: [\"Use when the surrounding surface already provides enough structure.\"] }, { key: \"full-width\", title: \"Full Width\", description: \"Distributes tab items evenly across the available width.\", list: [\"Use for a small, stable set of peer views.\", \"Avoid full width when labels vary substantially in length.\"] }, ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"wallet\", name: \"Wallet\", description: \"This example shows a wallet view featuring a digital card, transaction and statement tabs. It demonstrates how foundational components like tabs, slats, and buttons can be composed to create flexible, real-world layouts.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/6RoGBcahh63o16PAcEsgyX/36f5c8d9bf0e8754a574955b32ee6eda/Tab_Bar_-_Composition.png\", }, { key: \"product-carousel\", name: \"Product Carousel\", description: \"Demonstrates how to add custom compositions and layouts within the carousel panels.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/4NRMfGil4AcMUh7FDhYyHz/7c4636822eba6d3ae15e684f50d10fdd/Carousel_-_Composition.png\", }, { key: \"carousel-showcase\", name: \"Carousel Showcase\", description: \"This example from the GuruSuite website demonstrates the carousel used to showcase two of the products on offer.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/2TaRRm351HyujF9mT2w1wH/3958f69e939d20618751742130dc5f06/GuruSuite-Carousel-Composition.png\", }, ], }, related: { items: [ { name: \"Carousel\", link: \"https://guides.muibook.com/carousel\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-tabs/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-time/doc.ts",
       "declarations": [
         {
@@ -12980,6 +12956,30 @@
           "declaration": {
             "name": "MuiTime",
             "module": "src/components/mui-time/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Table: { title: \"Table\", description: \"Displays data in a grid layout to support scanability and comparison across rows and columns. Best suited for structured, repeatable content.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/34Yd6uWrfM5Ihv4rdniHYy/9e1698ce2c23d6c74006bf3f2ae93066/Table_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8696&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-table--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table\"], website: [\"https://muibook.com/table\"], guides: [\"https://guides.muibook.com/table\"], usage: { list: [ \"Use for structured content that benefits from a grid format.\", \"Ideal for comparing data across multiple rows and columns.\", \"Supports sorting, filtering, or action buttons if needed.\", \"Use Status for state fields in table cells, such as Paid, Pending, Active, Review, or Unlodged.\", \"Use Badge only for supporting labels, counts, deltas, or presentational metadata inside a table.\", \"Avoid for unstructured, visual, or narrative-based content.\", \"Tables should adapt for smaller viewports by switching to the Slat component.\", \"Prioritise key content and simplify structure when transitioning to mobile views.\", ], }, accessibility: { designerList: [ \"mui-table uses role='table'.\", \"mui-row-group uses role='rowgroup'.\", \"mui-row uses role='row'.\", \"mui-cell uses role='cell'.\", \"Follows table semantics for screen reader support.\", ], engineerList: [ \"mui-table uses role='table'.\", \"mui-row-group uses role='rowgroup'.\", \"mui-row uses role='row'.\", \"mui-cell uses role='cell'.\", \"Follows table semantics for screen reader support.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/2KHxAyGbYW7qwySwCLYrbo/0ffc98c3eef07098afaf64bebc6afd4a/Table_-_Anatomy.png\", list: [ \"Heading: The header row of the table accepts headings and other arrangements as needed.\", \"Data: The row contains standard data as well as other arrangements, such as grouped content.\", \"Actions: The main actions for each table row can be included in a dedicated column or slot.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"table\", \"title\": \"Table\", \"description\": \"Demonstrates the Table Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"hover-row-highlight\", \"title\": \"Hover Row Highlight\", \"description\": \"Demonstrates the Hover Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"select-row-highlight\", \"title\": \"Select Row Highlight\", \"description\": \"Demonstrates the Select Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"index-row-highlight\", \"title\": \"Index Row Highlight\", \"description\": \"Demonstrates the Index Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"xx-small-action-size\", \"title\": \"XX-Small Action Size\", \"description\": \"Demonstrates the XX-Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"x-small-action-size\", \"title\": \"X-Small Action Size\", \"description\": \"Demonstrates the X-Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"small-action-size\", \"title\": \"Small Action Size\", \"description\": \"Demonstrates the Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"medium-action-size\", \"title\": \"Medium Action Size\", \"description\": \"Demonstrates the Medium Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"large-action-size\", \"title\": \"Large Action Size\", \"description\": \"Demonstrates the Large Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"mapping-data\", \"title\": \"Mapping Data\", \"description\": \"Use the .map() method to dynamically inject rows into your table based on your data set.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"responsive-table\", \"title\": \"Responsive Table\", \"description\": \"Demonstrates the Responsive Table Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-with-table\", \"title\": \"Card with Table\", \"description\": \"When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-header-w-table\", \"title\": \"Card Header w/ Table\", \"description\": \"You can add in a mui-rule to help add a division between the header and body of the card\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-hover-row-highlight\", \"title\": \"Card: Hover Row Highlight\", \"description\": \"Demonstrates the Card: Hover Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-select-row-highlight\", \"title\": \"Card: Select Row Highlight\", \"description\": \"Demonstrates the Card: Select Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"prop-types-table\", name: \"Prop Types Table\", description: \"Attached is a standard example demonstrating how to use the table to present general data for component prop types.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1JeUHjbeqVNgTvlVZkeHjw/7f652efbea5cc6aa436449905e2ae48e/table_-_composition.png\", }, { key: \"simple-table-dropdown\", name: \"Simple Table w/ Dropdown\", description: \"Example of a simple table with a dropdown action positioned on the far right, following the content. Demonstrates the table used within a card layout, as it might appear on a page or settings view.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3IIRPg0pdQB66NJniCZvlo/2600a8bee4ad1c79a63dc48d3032ee34/table-composition-design-pricing.png\", }, { key: \"compliance-dashboard-table\", name: \"Compliance Dashboard Table\", description: \"This example shows a desktop view of a table used within an accounting compliance dashboard.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3vUKA5C5iJ3LvjLwf2WiO9/274ffe423dbe828244294f6809172ce1/table-composition-compliance-dashboard.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"Use Status for row state\", description: \"When a table cell communicates record or workflow state, use Status. Reserve Badge for supporting labels, counts, deltas, or presentational metadata.\", doContent: [ { description: \"Use Status for table state values such as Paid, Pending, Active, Review, or Unlodged.\", image: \"\", }, ], dontContent: [ { description: \"Do not use Badge as the main state field in operational table rows.\", image: \"\", }, ], }, { heading: \"Icon-Only Actions\", description: \"\", doContent: [ { description: \"Use a 'medium' size icon when using an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3syzrNBEXbBjp5hGEUvF4M/0471f4b16939d8ee54deaf48997ff455/action-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5V2TE85dY848jz1dP6Y0lC/b8e433c8abad5a4402ff1f86ddb8c848/action-icon-dont.png\", }, ], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-table/doc.ts"
           }
         }
       ]
@@ -13549,6 +13549,54 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-accordion/core/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Provides disclosure behaviour for custom slotted summary and detail content.",
+          "name": "MuiAccordionCore",
+          "attributes": [
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Displays the slotted detail content."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-accordion-core",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "summary",
+              "description": "Custom interactive summary content."
+            },
+            {
+              "name": "detail",
+              "description": "Content displayed when the accordion is expanded."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-accordion-core",
+          "declaration": {
+            "name": "MuiAccordionCore",
+            "module": "src/components/mui-accordion/core/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-accordion/block/index.ts",
       "declarations": [
         {
@@ -13618,54 +13666,6 @@
           "declaration": {
             "name": "MuiAccordionBlock",
             "module": "src/components/mui-accordion/block/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-accordion/core/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Provides disclosure behaviour for custom slotted summary and detail content.",
-          "name": "MuiAccordionCore",
-          "attributes": [
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Displays the slotted detail content."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-accordion-core",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "summary",
-              "description": "Custom interactive summary content."
-            },
-            {
-              "name": "detail",
-              "description": "Content displayed when the accordion is expanded."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-accordion-core",
-          "declaration": {
-            "name": "MuiAccordionCore",
-            "module": "src/components/mui-accordion/core/index.ts"
           }
         }
       ]
@@ -13864,41 +13864,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-card/footer/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays supporting actions or code content after the main card body.",
-          "name": "MuiCardFooter",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-card-footer",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "Footer actions, links, button groups, or code blocks."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-card-footer",
-          "declaration": {
-            "name": "MuiCardFooter",
-            "module": "src/components/mui-card/footer/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-card/header/index.ts",
       "declarations": [
         {
@@ -13928,6 +13893,41 @@
           "declaration": {
             "name": "MuiCardHeader",
             "module": "src/components/mui-card/header/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-card/footer/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays supporting actions or code content after the main card body.",
+          "name": "MuiCardFooter",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-card-footer",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "Footer actions, links, button groups, or code blocks."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-card-footer",
+          "declaration": {
+            "name": "MuiCardFooter",
+            "module": "src/components/mui-card/footer/index.ts"
           }
         }
       ]
@@ -14128,6 +14128,49 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-slat/group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups related slats and rules with context-aware alignment spacing.",
+          "name": "MuiSlatGroup",
+          "attributes": [
+            {
+              "name": "usage",
+              "type": {
+                "text": "\"card\" | \"accordion\""
+              },
+              "description": "Applies spacing and offsets appropriate to card or accordion contexts."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-slat-group",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-slat` elements and optional `mui-rule` dividers."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-slat-group",
+          "declaration": {
+            "name": "MuiSlatGroup",
+            "module": "src/components/mui-slat/group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-list/list/index.ts",
       "declarations": [
         {
@@ -14166,49 +14209,6 @@
           "declaration": {
             "name": "MuiList",
             "module": "src/components/mui-list/list/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-slat/group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups related slats and rules with context-aware alignment spacing.",
-          "name": "MuiSlatGroup",
-          "attributes": [
-            {
-              "name": "usage",
-              "type": {
-                "text": "\"card\" | \"accordion\""
-              },
-              "description": "Applies spacing and offsets appropriate to card or accordion contexts."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-slat-group",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-slat` elements and optional `mui-rule` dividers."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-slat-group",
-          "declaration": {
-            "name": "MuiSlatGroup",
-            "module": "src/components/mui-slat/group/index.ts"
           }
         }
       ]
@@ -14910,6 +14910,330 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-tabs/controller/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
+          "name": "MuiTabController",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-controller",
+          "customElement": true,
+          "attributes": [],
+          "slots": [
+            {
+              "name": "",
+              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-controller",
+          "declaration": {
+            "name": "MuiTabController",
+            "module": "src/components/mui-tabs/controller/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/item/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Interactive tab label controlled by a parent `mui-tab-bar`.",
+          "name": "MuiTabItem",
+          "attributes": [
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Marks the selected tab item."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Tab item size, normally forwarded by `mui-tab-bar`."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"dots\" | \"ghost\""
+              },
+              "default": "default",
+              "description": "Tab item presentation, normally forwarded by `mui-tab-bar`."
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Identifier matched by a related `mui-tab-panel[item]`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-item",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Visible tab label."
+            },
+            {
+              "name": "before",
+              "description": "Optional leading icon, badge or custom affordance."
+            },
+            {
+              "name": "after",
+              "description": "Optional trailing icon, badge or custom affordance."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-item",
+          "declaration": {
+            "name": "MuiTabItem",
+            "module": "src/components/mui-tabs/item/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/panel/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
+          "name": "MuiTabPanel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "item",
+              "type": {
+                "text": "string | null"
+              },
+              "description": "Gets or sets the matching tab item identifier."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "item",
+              "type": {
+                "text": "string"
+              },
+              "description": "ID of the `mui-tab-item` whose selection displays this panel."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-panel",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Panel content."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--tab-panel-padding",
+              "description": "Inner padding applied to panel content."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-panel",
+          "declaration": {
+            "name": "MuiTabPanel",
+            "module": "src/components/mui-tabs/panel/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-tabs/tab-bar/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups related tab items and renders an active selection highlight.",
+          "name": "MuiTabBar",
+          "events": [
+            {
+              "name": "tab-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when the active tab changes."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Size applied to child tab items."
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"dots\" | \"ghost\""
+              },
+              "default": "default",
+              "description": "Visual treatment for the tab bar and its children."
+            },
+            {
+              "name": "stroke",
+              "type": {
+                "text": "\"border\" | \"none\""
+              },
+              "default": "border",
+              "description": "Controls whether the default tab bar border is rendered. When border is used, child tab item heights are reduced so the total control height stays aligned to action sizing."
+            },
+            {
+              "name": "radius",
+              "type": {
+                "text": "\"000\" | \"100\" | \"150\" | \"200\" | \"300\" | \"400\" | \"500\" | \"600\" | string"
+              },
+              "default": "var(--tab-radius)",
+              "description": "Overrides the tab bar radius. Token values map to `--radius-*`; raw CSS radius values are also accepted."
+            },
+            {
+              "name": "usage",
+              "type": {
+                "text": "\"surface\""
+              },
+              "description": "Applies the contextual treatment used when Tab Bar sits inside a framed surface such as Card, Drawer, Dialog, or Carousel."
+            },
+            {
+              "name": "active-inset",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Uses an inset active shadow recipe for the selected tab surface instead of the default active shadow."
+            },
+            {
+              "name": "orientation",
+              "type": {
+                "text": "\"horizontal\" | \"vertical\""
+              },
+              "default": "horizontal",
+              "description": "ARIA orientation and keyboard navigation axis."
+            },
+            {
+              "name": "speed",
+              "type": {
+                "text": "string"
+              },
+              "default": "200",
+              "description": "Active indicator transition duration in milliseconds."
+            },
+            {
+              "name": "full-width",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Expands the tab bar across the available width."
+            },
+            {
+              "name": "controlsPosition",
+              "type": {
+                "text": "\"top\" | \"right\" | \"bottom\" | \"left\" | \"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\""
+              },
+              "default": "bottom",
+              "description": "Positions tab controls when the tab bar is slotted into a `mui-carousel-controller`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-tab-bar",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Tab items controlled by the tab bar."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--tab-border-color-surface",
+              "description": "Tab Bar border color used when `usage='surface'` is applied."
+            },
+            {
+              "name": "--tab-border-color-active-inset",
+              "description": "Tab Bar border color used when `usage='surface'` and `active-inset` are applied together."
+            },
+            {
+              "name": "--tab-background-surface",
+              "description": "Tab Bar background used when `usage='surface'` is applied."
+            },
+            {
+              "name": "--tab-background-active-surface",
+              "description": "Active tab background used when `usage='surface'` is applied."
+            },
+            {
+              "name": "--tab-shadow-active-color",
+              "description": "Default color used to construct the active highlight shadow."
+            },
+            {
+              "name": "--tab-shadow-active",
+              "description": "Full box-shadow value for the active tab highlight, allowing geometry and color overrides."
+            },
+            {
+              "name": "--tab-active-shadow",
+              "description": "Resolved active tab shadow used by the highlight layer."
+            },
+            {
+              "name": "--tab-active-inset-width",
+              "description": "Inset width used to create the inner active surface when `active-inset` is present."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-tab-bar",
+          "declaration": {
+            "name": "MuiTabBar",
+            "module": "src/components/mui-tabs/tab-bar/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-table/cell/index.ts",
       "declarations": [
         {
@@ -15158,330 +15482,6 @@
           "declaration": {
             "name": "MuiTable",
             "module": "src/components/mui-table/table/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/controller/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
-          "name": "MuiTabController",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-controller",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-controller",
-          "declaration": {
-            "name": "MuiTabController",
-            "module": "src/components/mui-tabs/controller/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/item/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Interactive tab label controlled by a parent `mui-tab-bar`.",
-          "name": "MuiTabItem",
-          "attributes": [
-            {
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Marks the selected tab item."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Tab item size, normally forwarded by `mui-tab-bar`."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"dots\" | \"ghost\""
-              },
-              "default": "default",
-              "description": "Tab item presentation, normally forwarded by `mui-tab-bar`."
-            },
-            {
-              "name": "id",
-              "type": {
-                "text": "string"
-              },
-              "description": "Identifier matched by a related `mui-tab-panel[item]`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-item",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Visible tab label."
-            },
-            {
-              "name": "before",
-              "description": "Optional leading icon, badge or custom affordance."
-            },
-            {
-              "name": "after",
-              "description": "Optional trailing icon, badge or custom affordance."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-item",
-          "declaration": {
-            "name": "MuiTabItem",
-            "module": "src/components/mui-tabs/item/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/tab-bar/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups related tab items and renders an active selection highlight.",
-          "name": "MuiTabBar",
-          "events": [
-            {
-              "name": "tab-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Dispatched when the active tab changes."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "\"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Size applied to child tab items."
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"dots\" | \"ghost\""
-              },
-              "default": "default",
-              "description": "Visual treatment for the tab bar and its children."
-            },
-            {
-              "name": "stroke",
-              "type": {
-                "text": "\"border\" | \"none\""
-              },
-              "default": "border",
-              "description": "Controls whether the default tab bar border is rendered. When border is used, child tab item heights are reduced so the total control height stays aligned to action sizing."
-            },
-            {
-              "name": "radius",
-              "type": {
-                "text": "\"000\" | \"100\" | \"150\" | \"200\" | \"300\" | \"400\" | \"500\" | \"600\" | string"
-              },
-              "default": "var(--tab-radius)",
-              "description": "Overrides the tab bar radius. Token values map to `--radius-*`; raw CSS radius values are also accepted."
-            },
-            {
-              "name": "usage",
-              "type": {
-                "text": "\"surface\""
-              },
-              "description": "Applies the contextual treatment used when Tab Bar sits inside a framed surface such as Card, Drawer, Dialog, or Carousel."
-            },
-            {
-              "name": "active-inset",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Uses an inset active shadow recipe for the selected tab surface instead of the default active shadow."
-            },
-            {
-              "name": "orientation",
-              "type": {
-                "text": "\"horizontal\" | \"vertical\""
-              },
-              "default": "horizontal",
-              "description": "ARIA orientation and keyboard navigation axis."
-            },
-            {
-              "name": "speed",
-              "type": {
-                "text": "string"
-              },
-              "default": "200",
-              "description": "Active indicator transition duration in milliseconds."
-            },
-            {
-              "name": "full-width",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Expands the tab bar across the available width."
-            },
-            {
-              "name": "controlsPosition",
-              "type": {
-                "text": "\"top\" | \"right\" | \"bottom\" | \"left\" | \"top-right\" | \"top-left\" | \"bottom-right\" | \"bottom-left\""
-              },
-              "default": "bottom",
-              "description": "Positions tab controls when the tab bar is slotted into a `mui-carousel-controller`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-bar",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Tab items controlled by the tab bar."
-            }
-          ],
-          "cssProperties": [
-            {
-              "name": "--tab-border-color-surface",
-              "description": "Tab Bar border color used when `usage='surface'` is applied."
-            },
-            {
-              "name": "--tab-border-color-active-inset",
-              "description": "Tab Bar border color used when `usage='surface'` and `active-inset` are applied together."
-            },
-            {
-              "name": "--tab-background-surface",
-              "description": "Tab Bar background used when `usage='surface'` is applied."
-            },
-            {
-              "name": "--tab-background-active-surface",
-              "description": "Active tab background used when `usage='surface'` is applied."
-            },
-            {
-              "name": "--tab-shadow-active-color",
-              "description": "Default color used to construct the active highlight shadow."
-            },
-            {
-              "name": "--tab-shadow-active",
-              "description": "Full box-shadow value for the active tab highlight, allowing geometry and color overrides."
-            },
-            {
-              "name": "--tab-active-shadow",
-              "description": "Resolved active tab shadow used by the highlight layer."
-            },
-            {
-              "name": "--tab-active-inset-width",
-              "description": "Inset width used to create the inner active surface when `active-inset` is present."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-bar",
-          "declaration": {
-            "name": "MuiTabBar",
-            "module": "src/components/mui-tabs/tab-bar/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/panel/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
-          "name": "MuiTabPanel",
-          "members": [
-            {
-              "kind": "field",
-              "name": "item",
-              "type": {
-                "text": "string | null"
-              },
-              "description": "Gets or sets the matching tab item identifier."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "item",
-              "type": {
-                "text": "string"
-              },
-              "description": "ID of the `mui-tab-item` whose selection displays this panel."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-panel",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Panel content."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--tab-panel-padding",
-              "description": "Inner padding applied to panel content."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-panel",
-          "declaration": {
-            "name": "MuiTabPanel",
-            "module": "src/components/mui-tabs/panel/index.ts"
           }
         }
       ]
