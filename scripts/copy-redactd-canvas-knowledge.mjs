@@ -4,7 +4,10 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const sourceDir = path.resolve(__dirname, "..");
-const destDir = path.resolve(sourceDir, "../RedactdCanvas/plugins/assets/muibook-knowledge");
+const destDirs = [
+  path.resolve(sourceDir, "../RedactdCanvas/plugins/assets/muibook-knowledge"),
+  path.resolve(sourceDir, "../RedactdCanvasAnti/plugins/assets/muibook-knowledge")
+];
 
 const filesToCopy = [
   { src: "public/custom-elements.json", dest: "custom-elements.json" },
@@ -16,25 +19,27 @@ const filesToCopy = [
   { src: "skills/muibook-components/SKILL.md", dest: "skills/muibook-components/SKILL.md" },
 ];
 
-console.log(`Copying Redactd Canvas knowledge files to: ${destDir}`);
-fs.mkdirSync(destDir, { recursive: true });
+for (const destDir of destDirs) {
+  console.log(`Copying Redactd Canvas knowledge files to: ${destDir}`);
+  fs.mkdirSync(destDir, { recursive: true });
 
-const legacyFiles = ["rules.ts"];
-for (const file of legacyFiles) {
-  fs.rmSync(path.join(destDir, file), { force: true });
-}
-
-for (const { src, dest } of filesToCopy) {
-  const srcPath = path.join(sourceDir, src);
-  const destPath = path.join(destDir, dest);
-
-  if (!fs.existsSync(srcPath)) {
-    throw new Error(`Missing knowledge source: ${src}`);
+  const legacyFiles = ["rules.ts"];
+  for (const file of legacyFiles) {
+    fs.rmSync(path.join(destDir, file), { force: true });
   }
 
-  fs.mkdirSync(path.dirname(destPath), { recursive: true });
-  fs.copyFileSync(srcPath, destPath);
-  console.log(`Copied: ${src} -> ${dest}`);
+  for (const { src, dest } of filesToCopy) {
+    const srcPath = path.join(sourceDir, src);
+    const destPath = path.join(destDir, dest);
+
+    if (!fs.existsSync(srcPath)) {
+      throw new Error(`Missing knowledge source: ${src}`);
+    }
+
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
+    fs.copyFileSync(srcPath, destPath);
+    console.log(`Copied: ${src} -> ${dest}`);
+  }
 }
 
 console.log("Redactd Canvas knowledge sync complete.");
