@@ -17,6 +17,12 @@ const filesToCopy = [
   { src: "src/knowledge/compositions.ts", dest: "compositions.ts" },
   { src: "src/knowledge/keywords.ts", dest: "keywords.ts" },
   { src: "skills/muibook-components/SKILL.md", dest: "skills/muibook-components/SKILL.md" },
+  { src: "skills/redactd-canvas-muibook/SKILL.md", dest: "skills/redactd-canvas-muibook/SKILL.md" },
+];
+
+const pluginSkillDirs = [
+  path.resolve(sourceDir, "../RedactdCanvas/plugins/skills/redactd-canvas-muibook"),
+  path.resolve(sourceDir, "../RedactdCanvasAnti/plugins/skills/redactd-canvas-muibook")
 ];
 
 for (const destDir of destDirs) {
@@ -40,6 +46,15 @@ for (const destDir of destDirs) {
     fs.copyFileSync(srcPath, destPath);
     console.log(`Copied: ${src} -> ${dest}`);
   }
+}
+
+for (const skillDir of pluginSkillDirs) {
+  console.log(`Copying redactd-canvas-muibook SKILL.md to: ${skillDir}`);
+  fs.mkdirSync(skillDir, { recursive: true });
+  const srcPath = path.join(sourceDir, "skills/redactd-canvas-muibook/SKILL.md");
+  const destPath = path.join(skillDir, "SKILL.md");
+  fs.copyFileSync(srcPath, destPath);
+  console.log(`Copied: skills/redactd-canvas-muibook/SKILL.md -> ${destPath}`);
 }
 
 console.log("Redactd Canvas knowledge sync complete.");

@@ -49,6 +49,12 @@ const skillIndex = {
       title: "Create UX Guidelines",
       useWhen: "Writing or reviewing component UX guidelines, anatomy, accessibility, variants, behavior, composition examples, and asset publishing guidance.",
     },
+    {
+      id: "redactd-canvas-muibook",
+      file: "skills/redactd-canvas-muibook/SKILL.md",
+      title: "Redactd Canvas: Muibook",
+      useWhen: "Creating, adding, sending, or modifying Muibook UI on an active Redactd canvas.",
+    },
   ],
 };
 

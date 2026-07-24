@@ -747,10 +747,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm run sync-skills && npm run build:agent && npm run cem && npm run build:muibook-skill && rm -rf dist && tsc && vite build && npm run copy-cem && npm run copy-knowledge && npm run copy-knowledge:redactd-canvas",
+    "build": "npm run sync-skills && npm run build:agent && npm run cem && npm run build:muibook-skill && npm run build:knowledge-indexes && rm -rf dist && tsc && vite build && npm run copy-cem && npm run copy-knowledge && npm run copy-knowledge:redactd-canvas",
     "build:agent": "node scripts/build-agent-knowledge.mjs",
     "preview": "vite preview",
-    "build:muibook": "npm run sync-skills && npm run cem && npm run build:muibook-skill && vite build --config vite.muibook.config.ts",
+    "build:muibook": "npm run sync-skills && npm run cem && npm run build:muibook-skill && npm run build:knowledge-indexes && vite build --config vite.muibook.config.ts && npm run copy-knowledge:redactd-canvas",
     "build:muibook-skill": "node scripts/build-muibook-skill.mjs",
     "build:knowledge-indexes": "node scripts/build-knowledge-indexes.mjs",
     "preview:muibook": "vite preview --config vite.muibook.config.ts",
