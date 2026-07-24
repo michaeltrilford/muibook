@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-24T01:21:25.385Z",
+  "generatedAt": "2026-07-24T23:55:25.528Z",
   "components": {
     "mui-body": {
       "version": 1,
@@ -354,16 +354,6 @@
         }
       ]
     },
-    "mui-row": {
-      "version": 1,
-      "destinationOnly": true,
-      "attributes": [
-        {
-          "name": "in-card",
-          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
-        }
-      ]
-    },
     "mui-tab-item": {
       "version": 1,
       "destinationOnly": true,
@@ -375,6 +365,16 @@
         {
           "name": "has-after",
           "description": "Set when after slot content exists, allowing the component to adjust trailing spacing, layout columns, and slot-aware styling."
+        }
+      ]
+    },
+    "mui-row": {
+      "version": 1,
+      "destinationOnly": true,
+      "attributes": [
+        {
+          "name": "in-card",
+          "description": "Set when rendered inside a card context, allowing the component to inherit card-aware spacing and divider treatment."
         }
       ]
     },

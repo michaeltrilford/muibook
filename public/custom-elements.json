@@ -10546,6 +10546,115 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-responsive/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Responsive: { namedSlots: { description: \"Use these names on items slotted inside this component.\", list: [\"show-below\", \"show-middle\", \"show-above\"], }, title: \"Responsive\", description: \"Dynamically render UI based on viewport size\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/4UgRd1YdJAAZTThk4U97qE/8a322a53f71dc8b288385b5dd16b3469/Responsive_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12704&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/layout-responsive--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts\"], website: [\"https://muibook.com/responsive\"], guides: [\"https://guides.muibook.com/responsive\"], usage: { list: [ \"Prefer variant='container' for reusable components and compositions so responsive decisions follow the available parent region.\", \"Use viewport responsiveness for page-level and app-shell changes that genuinely depend on browser width.\", \"Use to adjust or swap UI components according to screen size for optimal experience.\", \"Ideal for tailoring layouts, navigation, or content density on different devices.\", \"Supports breakpoint-driven rendering to maintain clarity and usability.\", \"Avoid overly complex responsive behaviours that may confuse users or complicate maintenance.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"single-breakpoint\", \"title\": \"Single Breakpoint\", \"description\": \"Demonstrates the Single Breakpoint Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"dual-breakpoint\", \"title\": \"Dual Breakpoint\", \"description\": \"Demonstrates the Dual Breakpoint Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"container-breakpoint\", \"title\": \"Container Breakpoint\", \"description\": \"Switches slotted content based on a resizable page region instead of the viewport.\", \"list\": [ \"Use variant='container' when the responsive decision should follow the parent layout or resizable drawer region.\", \"Use observe to measure a parent or closest ancestor selector when the responsive element is nested inside wrapper elements.\", \"This uses the same desktop-to-mobile composition pattern as the table example, but the breakpoint is measured from the drawer page content.\", \"Drag the drawer rail to change the page width and confirm the content switches without changing the viewport.\" ] }, { \"key\": \"slat-to-table\", \"title\": \"Slat to Table\", \"description\": \"Showcasing how to loop data on to the mui-table and mui-slat within the mui-responsive component.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"table-desktop-to-mobile\", \"title\": \"Table: Desktop to Mobile\", \"description\": \"Demonstrates the Table: Desktop to Mobile Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcomes-roadmap-dashboard\", name: \"Outcomes Roadmap Dashboard\", description: \"Example of the responsive component in the Outcomes Roadmap Dashboard, demonstrating layout, title, and padding adjustments across breakpoints.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3FsXandRr1Z9BAKv33twxT/b0d0e4a8b6237bf7d38660111bceb8ab/responsive-composition.gif\", }, ], }, related: { items: [ { name: \"Stack\", link: \"https://guides.muibook.com/stack\", }, { name: \"Grid\", link: \"https://guides.muibook.com/grid\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-responsive/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-responsive/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Switches between slotted layout alternatives at one or two viewport or container breakpoints.",
+          "name": "MuiR",
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"viewport\" | \"container\""
+              },
+              "default": "viewport",
+              "description": "Chooses whether breakpoints respond to the viewport width or the mui-responsive host container width."
+            },
+            {
+              "name": "observe",
+              "type": {
+                "text": "\"self\" | \"parent\" | string"
+              },
+              "default": "self",
+              "description": "Container query target used with `variant='container'`. Use `parent` for the direct parent, or a selector to observe the closest matching ancestor."
+            },
+            {
+              "name": "breakpoint",
+              "type": {
+                "text": "number | string"
+              },
+              "description": "Single pixel breakpoint for switching between `show-below` and `show-above` content."
+            },
+            {
+              "name": "breakpoint-low",
+              "type": {
+                "text": "number | string"
+              },
+              "description": "Lower pixel breakpoint for three-view layouts. Used with `breakpoint-high`."
+            },
+            {
+              "name": "breakpoint-high",
+              "type": {
+                "text": "number | string"
+              },
+              "description": "Upper pixel breakpoint for three-view layouts. Used with `breakpoint-low`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-responsive",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Content displayed when no breakpoint switching attributes are provided."
+            },
+            {
+              "name": "show-below",
+              "description": "Content displayed at or below the active lower or single breakpoint."
+            },
+            {
+              "name": "show-middle",
+              "description": "Content displayed between `breakpoint-low` and `breakpoint-high`."
+            },
+            {
+              "name": "show-above",
+              "description": "Content displayed above the active upper or single breakpoint."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-responsive",
+          "declaration": {
+            "name": "MuiR",
+            "module": "src/components/mui-responsive/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-range-input/doc.ts",
       "declarations": [
         {
@@ -10725,115 +10834,6 @@
           "declaration": {
             "name": "MuiRangeInput",
             "module": "src/components/mui-range-input/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-responsive/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Responsive: { namedSlots: { description: \"Use these names on items slotted inside this component.\", list: [\"show-below\", \"show-middle\", \"show-above\"], }, title: \"Responsive\", description: \"Dynamically render UI based on viewport size\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/4UgRd1YdJAAZTThk4U97qE/8a322a53f71dc8b288385b5dd16b3469/Responsive_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=1059-12704&t=BwezUSymTClm00wJ-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/layout-responsive--docs\"], github: [\"https://github.com/michaeltrilford/muibook/blob/main/src/components/mui-responsive/index.ts\"], website: [\"https://muibook.com/responsive\"], guides: [\"https://guides.muibook.com/responsive\"], usage: { list: [ \"Prefer variant='container' for reusable components and compositions so responsive decisions follow the available parent region.\", \"Use viewport responsiveness for page-level and app-shell changes that genuinely depend on browser width.\", \"Use to adjust or swap UI components according to screen size for optimal experience.\", \"Ideal for tailoring layouts, navigation, or content density on different devices.\", \"Supports breakpoint-driven rendering to maintain clarity and usability.\", \"Avoid overly complex responsive behaviours that may confuse users or complicate maintenance.\", ], }, accessibility: { designerList: [\"\"], engineerList: [\"\"], }, anatomy: { image: \"\", list: [\"\"], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"single-breakpoint\", \"title\": \"Single Breakpoint\", \"description\": \"Demonstrates the Single Breakpoint Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"dual-breakpoint\", \"title\": \"Dual Breakpoint\", \"description\": \"Demonstrates the Dual Breakpoint Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"container-breakpoint\", \"title\": \"Container Breakpoint\", \"description\": \"Switches slotted content based on a resizable page region instead of the viewport.\", \"list\": [ \"Use variant='container' when the responsive decision should follow the parent layout or resizable drawer region.\", \"Use observe to measure a parent or closest ancestor selector when the responsive element is nested inside wrapper elements.\", \"This uses the same desktop-to-mobile composition pattern as the table example, but the breakpoint is measured from the drawer page content.\", \"Drag the drawer rail to change the page width and confirm the content switches without changing the viewport.\" ] }, { \"key\": \"slat-to-table\", \"title\": \"Slat to Table\", \"description\": \"Showcasing how to loop data on to the mui-table and mui-slat within the mui-responsive component.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] }, { \"key\": \"table-desktop-to-mobile\", \"title\": \"Table: Desktop to Mobile\", \"description\": \"Demonstrates the Table: Desktop to Mobile Responsive treatment.\", \"list\": [ \"Use Responsive to swap intentionally designed compositions at defined breakpoints.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"outcomes-roadmap-dashboard\", name: \"Outcomes Roadmap Dashboard\", description: \"Example of the responsive component in the Outcomes Roadmap Dashboard, demonstrating layout, title, and padding adjustments across breakpoints.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3FsXandRr1Z9BAKv33twxT/b0d0e4a8b6237bf7d38660111bceb8ab/responsive-composition.gif\", }, ], }, related: { items: [ { name: \"Stack\", link: \"https://guides.muibook.com/stack\", }, { name: \"Grid\", link: \"https://guides.muibook.com/grid\", }, ], }, rules: [ { heading: \"\", description: \"\", doContent: [{ description: \"\", image: \"\" }], dontContent: [{ description: \"\", image: \"\" }], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-responsive/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-responsive/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Switches between slotted layout alternatives at one or two viewport or container breakpoints.",
-          "name": "MuiR",
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"viewport\" | \"container\""
-              },
-              "default": "viewport",
-              "description": "Chooses whether breakpoints respond to the viewport width or the mui-responsive host container width."
-            },
-            {
-              "name": "observe",
-              "type": {
-                "text": "\"self\" | \"parent\" | string"
-              },
-              "default": "self",
-              "description": "Container query target used with `variant='container'`. Use `parent` for the direct parent, or a selector to observe the closest matching ancestor."
-            },
-            {
-              "name": "breakpoint",
-              "type": {
-                "text": "number | string"
-              },
-              "description": "Single pixel breakpoint for switching between `show-below` and `show-above` content."
-            },
-            {
-              "name": "breakpoint-low",
-              "type": {
-                "text": "number | string"
-              },
-              "description": "Lower pixel breakpoint for three-view layouts. Used with `breakpoint-high`."
-            },
-            {
-              "name": "breakpoint-high",
-              "type": {
-                "text": "number | string"
-              },
-              "description": "Upper pixel breakpoint for three-view layouts. Used with `breakpoint-low`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-responsive",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Content displayed when no breakpoint switching attributes are provided."
-            },
-            {
-              "name": "show-below",
-              "description": "Content displayed at or below the active lower or single breakpoint."
-            },
-            {
-              "name": "show-middle",
-              "description": "Content displayed between `breakpoint-low` and `breakpoint-high`."
-            },
-            {
-              "name": "show-above",
-              "description": "Content displayed above the active upper or single breakpoint."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-responsive",
-          "declaration": {
-            "name": "MuiR",
-            "module": "src/components/mui-responsive/index.ts"
           }
         }
       ]
@@ -12604,30 +12604,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/doc.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "muiDocs",
-          "type": {
-            "text": "MuiDocs"
-          },
-          "default": "{ Table: { title: \"Table\", description: \"Displays data in a grid layout to support scanability and comparison across rows and columns. Best suited for structured, repeatable content.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/34Yd6uWrfM5Ihv4rdniHYy/9e1698ce2c23d6c74006bf3f2ae93066/Table_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8696&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-table--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table\"], website: [\"https://muibook.com/table\"], guides: [\"https://guides.muibook.com/table\"], usage: { list: [ \"Use for structured content that benefits from a grid format.\", \"Ideal for comparing data across multiple rows and columns.\", \"Supports sorting, filtering, or action buttons if needed.\", \"Use Status for state fields in table cells, such as Paid, Pending, Active, Review, or Unlodged.\", \"Use Badge only for supporting labels, counts, deltas, or presentational metadata inside a table.\", \"Avoid for unstructured, visual, or narrative-based content.\", \"Tables should adapt for smaller viewports by switching to the Slat component.\", \"Prioritise key content and simplify structure when transitioning to mobile views.\", ], }, accessibility: { designerList: [ \"mui-table uses role='table'.\", \"mui-row-group uses role='rowgroup'.\", \"mui-row uses role='row'.\", \"mui-cell uses role='cell'.\", \"Follows table semantics for screen reader support.\", ], engineerList: [ \"mui-table uses role='table'.\", \"mui-row-group uses role='rowgroup'.\", \"mui-row uses role='row'.\", \"mui-cell uses role='cell'.\", \"Follows table semantics for screen reader support.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/2KHxAyGbYW7qwySwCLYrbo/0ffc98c3eef07098afaf64bebc6afd4a/Table_-_Anatomy.png\", list: [ \"Heading: The header row of the table accepts headings and other arrangements as needed.\", \"Data: The row contains standard data as well as other arrangements, such as grouped content.\", \"Actions: The main actions for each table row can be included in a dedicated column or slot.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"table\", \"title\": \"Table\", \"description\": \"Demonstrates the Table Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"hover-row-highlight\", \"title\": \"Hover Row Highlight\", \"description\": \"Demonstrates the Hover Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"select-row-highlight\", \"title\": \"Select Row Highlight\", \"description\": \"Demonstrates the Select Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"index-row-highlight\", \"title\": \"Index Row Highlight\", \"description\": \"Demonstrates the Index Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"xx-small-action-size\", \"title\": \"XX-Small Action Size\", \"description\": \"Demonstrates the XX-Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"x-small-action-size\", \"title\": \"X-Small Action Size\", \"description\": \"Demonstrates the X-Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"small-action-size\", \"title\": \"Small Action Size\", \"description\": \"Demonstrates the Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"medium-action-size\", \"title\": \"Medium Action Size\", \"description\": \"Demonstrates the Medium Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"large-action-size\", \"title\": \"Large Action Size\", \"description\": \"Demonstrates the Large Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"mapping-data\", \"title\": \"Mapping Data\", \"description\": \"Use the .map() method to dynamically inject rows into your table based on your data set.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"responsive-table\", \"title\": \"Responsive Table\", \"description\": \"Demonstrates the Responsive Table Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-with-table\", \"title\": \"Card with Table\", \"description\": \"When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-header-w-table\", \"title\": \"Card Header w/ Table\", \"description\": \"You can add in a mui-rule to help add a division between the header and body of the card\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-hover-row-highlight\", \"title\": \"Card: Hover Row Highlight\", \"description\": \"Demonstrates the Card: Hover Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-select-row-highlight\", \"title\": \"Card: Select Row Highlight\", \"description\": \"Demonstrates the Card: Select Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"prop-types-table\", name: \"Prop Types Table\", description: \"Attached is a standard example demonstrating how to use the table to present general data for component prop types.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1JeUHjbeqVNgTvlVZkeHjw/7f652efbea5cc6aa436449905e2ae48e/table_-_composition.png\", }, { key: \"simple-table-dropdown\", name: \"Simple Table w/ Dropdown\", description: \"Example of a simple table with a dropdown action positioned on the far right, following the content. Demonstrates the table used within a card layout, as it might appear on a page or settings view.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3IIRPg0pdQB66NJniCZvlo/2600a8bee4ad1c79a63dc48d3032ee34/table-composition-design-pricing.png\", }, { key: \"compliance-dashboard-table\", name: \"Compliance Dashboard Table\", description: \"This example shows a desktop view of a table used within an accounting compliance dashboard.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3vUKA5C5iJ3LvjLwf2WiO9/274ffe423dbe828244294f6809172ce1/table-composition-compliance-dashboard.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"Use Status for row state\", description: \"When a table cell communicates record or workflow state, use Status. Reserve Badge for supporting labels, counts, deltas, or presentational metadata.\", doContent: [ { description: \"Use Status for table state values such as Paid, Pending, Active, Review, or Unlodged.\", image: \"\", }, ], dontContent: [ { description: \"Do not use Badge as the main state field in operational table rows.\", image: \"\", }, ], }, { heading: \"Icon-Only Actions\", description: \"\", doContent: [ { description: \"Use a 'medium' size icon when using an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3syzrNBEXbBjp5hGEUvF4M/0471f4b16939d8ee54deaf48997ff455/action-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5V2TE85dY848jz1dP6Y0lC/b8e433c8abad5a4402ff1f86ddb8c848/action-icon-dont.png\", }, ], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "muiDocs",
-          "declaration": {
-            "name": "muiDocs",
-            "module": "src/components/mui-table/doc.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-tabs/doc.ts",
       "declarations": [
         {
@@ -12646,6 +12622,30 @@
           "declaration": {
             "name": "muiDocs",
             "module": "src/components/mui-tabs/doc.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/doc.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "muiDocs",
+          "type": {
+            "text": "MuiDocs"
+          },
+          "default": "{ Table: { title: \"Table\", description: \"Displays data in a grid layout to support scanability and comparison across rows and columns. Best suited for structured, repeatable content.\", hero: [ \"https://images.ctfassets.net/i5uwscj4pkk2/34Yd6uWrfM5Ihv4rdniHYy/9e1698ce2c23d6c74006bf3f2ae93066/Table_-_Home_Image.png\", ], figma: [ \"https://www.figma.com/design/l0mt1lXu97XoHJCEdnrWLp/Mui-Design-System?node-id=958-8696&t=0ytskb8cxriEmdz2-1\", ], storybook: [\"https://stories.muibook.com/?path=/docs/content-table--docs\"], github: [\"https://github.com/michaeltrilford/muibook/tree/main/src/components/mui-table\"], website: [\"https://muibook.com/table\"], guides: [\"https://guides.muibook.com/table\"], usage: { list: [ \"Use for structured content that benefits from a grid format.\", \"Ideal for comparing data across multiple rows and columns.\", \"Supports sorting, filtering, or action buttons if needed.\", \"Use Status for state fields in table cells, such as Paid, Pending, Active, Review, or Unlodged.\", \"Use Badge only for supporting labels, counts, deltas, or presentational metadata inside a table.\", \"Avoid for unstructured, visual, or narrative-based content.\", \"Tables should adapt for smaller viewports by switching to the Slat component.\", \"Prioritise key content and simplify structure when transitioning to mobile views.\", ], }, accessibility: { designerList: [ \"mui-table uses role='table'.\", \"mui-row-group uses role='rowgroup'.\", \"mui-row uses role='row'.\", \"mui-cell uses role='cell'.\", \"Follows table semantics for screen reader support.\", ], engineerList: [ \"mui-table uses role='table'.\", \"mui-row-group uses role='rowgroup'.\", \"mui-row uses role='row'.\", \"mui-cell uses role='cell'.\", \"Follows table semantics for screen reader support.\", ], }, anatomy: { image: \"https://images.ctfassets.net/i5uwscj4pkk2/2KHxAyGbYW7qwySwCLYrbo/0ffc98c3eef07098afaf64bebc6afd4a/Table_-_Anatomy.png\", list: [ \"Heading: The header row of the table accepts headings and other arrangements as needed.\", \"Data: The row contains standard data as well as other arrangements, such as grouped content.\", \"Actions: The main actions for each table row can be included in a dedicated column or slot.\", ], }, variants: { items: [ { key: \"\", title: \"\", description: \"\", image: \"\", }, ], }, stories: { items: [ { \"key\": \"table\", \"title\": \"Table\", \"description\": \"Demonstrates the Table Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"hover-row-highlight\", \"title\": \"Hover Row Highlight\", \"description\": \"Demonstrates the Hover Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"select-row-highlight\", \"title\": \"Select Row Highlight\", \"description\": \"Demonstrates the Select Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"index-row-highlight\", \"title\": \"Index Row Highlight\", \"description\": \"Demonstrates the Index Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"xx-small-action-size\", \"title\": \"XX-Small Action Size\", \"description\": \"Demonstrates the XX-Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"x-small-action-size\", \"title\": \"X-Small Action Size\", \"description\": \"Demonstrates the X-Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"small-action-size\", \"title\": \"Small Action Size\", \"description\": \"Demonstrates the Small Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"medium-action-size\", \"title\": \"Medium Action Size\", \"description\": \"Demonstrates the Medium Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"large-action-size\", \"title\": \"Large Action Size\", \"description\": \"Demonstrates the Large Action Size Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"mapping-data\", \"title\": \"Mapping Data\", \"description\": \"Use the .map() method to dynamically inject rows into your table based on your data set.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"responsive-table\", \"title\": \"Responsive Table\", \"description\": \"Demonstrates the Responsive Table Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-with-table\", \"title\": \"Card with Table\", \"description\": \"When a table is slotted into a card, it inherits curated left and right spacing to ensure it fits well within the card layout.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-header-w-table\", \"title\": \"Card Header w/ Table\", \"description\": \"You can add in a mui-rule to help add a division between the header and body of the card\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-hover-row-highlight\", \"title\": \"Card: Hover Row Highlight\", \"description\": \"Demonstrates the Card: Hover Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] }, { \"key\": \"card-select-row-highlight\", \"title\": \"Card: Select Row Highlight\", \"description\": \"Demonstrates the Card: Select Row Highlight Table treatment.\", \"list\": [ \"Use Table for comparable structured data and preserve headers when adapting it for smaller screens.\" ] } ], }, compositions: { description: \"Showcases actual use cases, demonstrating how the component fits into real-world UI scenarios.\", items: [ { key: \"prop-types-table\", name: \"Prop Types Table\", description: \"Attached is a standard example demonstrating how to use the table to present general data for component prop types.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/1JeUHjbeqVNgTvlVZkeHjw/7f652efbea5cc6aa436449905e2ae48e/table_-_composition.png\", }, { key: \"simple-table-dropdown\", name: \"Simple Table w/ Dropdown\", description: \"Example of a simple table with a dropdown action positioned on the far right, following the content. Demonstrates the table used within a card layout, as it might appear on a page or settings view.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3IIRPg0pdQB66NJniCZvlo/2600a8bee4ad1c79a63dc48d3032ee34/table-composition-design-pricing.png\", }, { key: \"compliance-dashboard-table\", name: \"Compliance Dashboard Table\", description: \"This example shows a desktop view of a table used within an accounting compliance dashboard.\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3vUKA5C5iJ3LvjLwf2WiO9/274ffe423dbe828244294f6809172ce1/table-composition-compliance-dashboard.png\", }, ], }, related: { items: [ { name: \"\", link: \"\", }, ], }, rules: [ { heading: \"Use Status for row state\", description: \"When a table cell communicates record or workflow state, use Status. Reserve Badge for supporting labels, counts, deltas, or presentational metadata.\", doContent: [ { description: \"Use Status for table state values such as Paid, Pending, Active, Review, or Unlodged.\", image: \"\", }, ], dontContent: [ { description: \"Do not use Badge as the main state field in operational table rows.\", image: \"\", }, ], }, { heading: \"Icon-Only Actions\", description: \"\", doContent: [ { description: \"Use a 'medium' size icon when using an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/3syzrNBEXbBjp5hGEUvF4M/0471f4b16939d8ee54deaf48997ff455/action-icon-do.png\", }, ], dontContent: [ { description: \"Avoid 'x-small', 'medium' or 'large' size icons within an icon-only medium sized action\", image: \"https://images.ctfassets.net/i5uwscj4pkk2/5V2TE85dY848jz1dP6Y0lC/b8e433c8abad5a4402ff1f86ddb8c848/action-icon-dont.png\", }, ], }, ], behaviour: { list: [\"\"], }, writing: { list: [\"\"], }, }, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "muiDocs",
+          "declaration": {
+            "name": "muiDocs",
+            "module": "src/components/mui-table/doc.ts"
           }
         }
       ]
@@ -14302,302 +14302,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-stepper/step/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Defines an individual step inside `mui-stepper` with a title, state, and optional secondary content.",
-          "name": "MuiStep",
-          "attributes": [
-            {
-              "name": "state",
-              "type": {
-                "text": "\"upcoming\" | \"active\" | \"completed\" | \"success\" | \"pending\" | \"error\" | \"disabled\""
-              },
-              "default": "upcoming",
-              "description": "Overrides the visual state for the individual step."
-            },
-            {
-              "name": "title",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the step label text."
-            },
-            {
-              "name": "hide-icon",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hides the step state icon and dot marker."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-step",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "secondary",
-              "description": "Secondary supporting content rendered with the step title."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--stepper-color",
-              "description": "Controls the default step text and connector color."
-            },
-            {
-              "name": "--stepper-success-color",
-              "description": "Controls the success state color."
-            },
-            {
-              "name": "--stepper-error-color",
-              "description": "Controls the error state color."
-            },
-            {
-              "name": "--stepper-title-only",
-              "description": "Controls the vertical title offset when a step has no secondary slot content."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-step",
-          "declaration": {
-            "name": "MuiStep",
-            "module": "src/components/mui-stepper/step/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-stack/vstack/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Arranges slotted content vertically with token-based spacing and alignment controls.",
-          "name": "MuiVStack",
-          "attributes": [
-            {
-              "name": "space",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-500)",
-              "description": "Gap between children. Accepts any valid CSS gap value or design token."
-            },
-            {
-              "name": "alignx",
-              "type": {
-                "text": "string"
-              },
-              "default": "normal",
-              "description": "Horizontal alignment of children, mapped to grid `justify-items`."
-            },
-            {
-              "name": "aligny",
-              "type": {
-                "text": "string"
-              },
-              "default": "normal",
-              "description": "Vertical alignment of children, mapped to grid `align-items`."
-            },
-            {
-              "name": "padding",
-              "type": {
-                "text": "string"
-              },
-              "default": "var(--space-000)",
-              "description": "Padding applied inside the stack. Accepts any valid CSS padding value or design token."
-            },
-            {
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
-            },
-            {
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
-            },
-            {
-              "name": "viewport",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region."
-            },
-            {
-              "name": "fill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Sets width and height to `100%` when the parent supplies a clearly bounded layout region."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-v-stack",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Content arranged vertically inside the stack."
-            }
-          ],
-          "events": [],
-          "cssProperties": [
-            {
-              "name": "--stack-height",
-              "description": "Resolved stack host height. Prefer the `height`, `viewport`, or `fill` attributes for common layouts."
-            },
-            {
-              "name": "--stack-width",
-              "description": "Resolved stack host width. Prefer the `width` or `fill` attributes for common layouts."
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "color"
-            },
-            {
-              "name": "font-family"
-            },
-            {
-              "name": "font-size"
-            },
-            {
-              "name": "font-weight"
-            },
-            {
-              "name": "letter-spacing"
-            },
-            {
-              "name": "line-height"
-            },
-            {
-              "name": "text-transform"
-            },
-            {
-              "name": "text-decoration"
-            },
-            {
-              "name": "text-align"
-            },
-            {
-              "name": "padding"
-            },
-            {
-              "name": "margin"
-            },
-            {
-              "name": "gap"
-            },
-            {
-              "name": "width"
-            },
-            {
-              "name": "height"
-            },
-            {
-              "name": "box-sizing"
-            },
-            {
-              "name": "display"
-            },
-            {
-              "name": "flex"
-            },
-            {
-              "name": "flex-direction"
-            },
-            {
-              "name": "flex-wrap"
-            },
-            {
-              "name": "justify-content"
-            },
-            {
-              "name": "align-items"
-            },
-            {
-              "name": "align-content"
-            },
-            {
-              "name": "align-self"
-            },
-            {
-              "name": "grid-template-columns"
-            },
-            {
-              "name": "grid-template-rows"
-            },
-            {
-              "name": "grid-column"
-            },
-            {
-              "name": "grid-row"
-            },
-            {
-              "name": "place-items"
-            },
-            {
-              "name": "place-content"
-            },
-            {
-              "name": "vertical-align"
-            },
-            {
-              "name": "background"
-            },
-            {
-              "name": "border"
-            },
-            {
-              "name": "border-radius"
-            },
-            {
-              "name": "box-shadow"
-            },
-            {
-              "name": "opacity"
-            },
-            {
-              "name": "transition"
-            },
-            {
-              "name": "outline"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-v-stack",
-          "declaration": {
-            "name": "MuiVStack",
-            "module": "src/components/mui-stack/vstack/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/mui-stack/hstack/index.ts",
       "declarations": [
         {
@@ -14826,6 +14530,302 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/mui-stack/vstack/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Arranges slotted content vertically with token-based spacing and alignment controls.",
+          "name": "MuiVStack",
+          "attributes": [
+            {
+              "name": "space",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-500)",
+              "description": "Gap between children. Accepts any valid CSS gap value or design token."
+            },
+            {
+              "name": "alignx",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Horizontal alignment of children, mapped to grid `justify-items`."
+            },
+            {
+              "name": "aligny",
+              "type": {
+                "text": "string"
+              },
+              "default": "normal",
+              "description": "Vertical alignment of children, mapped to grid `align-items`."
+            },
+            {
+              "name": "padding",
+              "type": {
+                "text": "string"
+              },
+              "default": "var(--space-000)",
+              "description": "Padding applied inside the stack. Accepts any valid CSS padding value or design token."
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host height. Accepts any valid CSS height value, including tokens."
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the host width. Accepts any valid CSS width value, including tokens."
+            },
+            {
+              "name": "viewport",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets stack height to `100dvh`. Intended for a top-level stack that owns the viewport-height region."
+            },
+            {
+              "name": "fill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets width and height to `100%` when the parent supplies a clearly bounded layout region."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-v-stack",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Content arranged vertically inside the stack."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--stack-height",
+              "description": "Resolved stack host height. Prefer the `height`, `viewport`, or `fill` attributes for common layouts."
+            },
+            {
+              "name": "--stack-width",
+              "description": "Resolved stack host width. Prefer the `width` or `fill` attributes for common layouts."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "color"
+            },
+            {
+              "name": "font-family"
+            },
+            {
+              "name": "font-size"
+            },
+            {
+              "name": "font-weight"
+            },
+            {
+              "name": "letter-spacing"
+            },
+            {
+              "name": "line-height"
+            },
+            {
+              "name": "text-transform"
+            },
+            {
+              "name": "text-decoration"
+            },
+            {
+              "name": "text-align"
+            },
+            {
+              "name": "padding"
+            },
+            {
+              "name": "margin"
+            },
+            {
+              "name": "gap"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            },
+            {
+              "name": "box-sizing"
+            },
+            {
+              "name": "display"
+            },
+            {
+              "name": "flex"
+            },
+            {
+              "name": "flex-direction"
+            },
+            {
+              "name": "flex-wrap"
+            },
+            {
+              "name": "justify-content"
+            },
+            {
+              "name": "align-items"
+            },
+            {
+              "name": "align-content"
+            },
+            {
+              "name": "align-self"
+            },
+            {
+              "name": "grid-template-columns"
+            },
+            {
+              "name": "grid-template-rows"
+            },
+            {
+              "name": "grid-column"
+            },
+            {
+              "name": "grid-row"
+            },
+            {
+              "name": "place-items"
+            },
+            {
+              "name": "place-content"
+            },
+            {
+              "name": "vertical-align"
+            },
+            {
+              "name": "background"
+            },
+            {
+              "name": "border"
+            },
+            {
+              "name": "border-radius"
+            },
+            {
+              "name": "box-shadow"
+            },
+            {
+              "name": "opacity"
+            },
+            {
+              "name": "transition"
+            },
+            {
+              "name": "outline"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-v-stack",
+          "declaration": {
+            "name": "MuiVStack",
+            "module": "src/components/mui-stack/vstack/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-stepper/step/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Defines an individual step inside `mui-stepper` with a title, state, and optional secondary content.",
+          "name": "MuiStep",
+          "attributes": [
+            {
+              "name": "state",
+              "type": {
+                "text": "\"upcoming\" | \"active\" | \"completed\" | \"success\" | \"pending\" | \"error\" | \"disabled\""
+              },
+              "default": "upcoming",
+              "description": "Overrides the visual state for the individual step."
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the step label text."
+            },
+            {
+              "name": "hide-icon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hides the step state icon and dot marker."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-step",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "secondary",
+              "description": "Secondary supporting content rendered with the step title."
+            }
+          ],
+          "events": [],
+          "cssProperties": [
+            {
+              "name": "--stepper-color",
+              "description": "Controls the default step text and connector color."
+            },
+            {
+              "name": "--stepper-success-color",
+              "description": "Controls the success state color."
+            },
+            {
+              "name": "--stepper-error-color",
+              "description": "Controls the error state color."
+            },
+            {
+              "name": "--stepper-title-only",
+              "description": "Controls the vertical title offset when a step has no secondary slot content."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-step",
+          "declaration": {
+            "name": "MuiStep",
+            "module": "src/components/mui-stepper/step/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/mui-stepper/stepper/index.ts",
       "declarations": [
         {
@@ -14910,116 +14910,47 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/cell/index.ts",
+      "path": "src/components/mui-tabs/panel/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Displays content inside a table row with optional checkbox or action-column alignment.",
-          "name": "MuiCell",
+          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
+          "name": "MuiTabPanel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "item",
+              "type": {
+                "text": "string | null"
+              },
+              "description": "Gets or sets the matching tab item identifier."
+            }
+          ],
           "attributes": [
             {
-              "name": "align-y",
+              "name": "item",
               "type": {
                 "text": "string"
               },
-              "default": "initial",
-              "description": "Sets vertical alignment using any valid CSS `align-self` value."
-            },
-            {
-              "name": "action",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Aligns a final-column action control using the parent row action size."
-            },
-            {
-              "name": "checkbox",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Applies compact alignment for a checkbox column."
+              "description": "ID of the `mui-tab-item` whose selection displays this panel."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-cell",
+          "tagName": "mui-tab-panel",
           "customElement": true,
           "slots": [
             {
               "name": "",
-              "description": "Cell text or component content."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-cell",
-          "declaration": {
-            "name": "MuiCell",
-            "module": "src/components/mui-table/cell/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-table/row/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Arranges table cells in a configurable column grid.",
-          "name": "MuiRow",
-          "attributes": [
-            {
-              "name": "columns",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets column sizing using any valid `grid-template-columns` value."
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
-              },
-              "default": "medium",
-              "description": "Sets row cell typography and action-column sizing."
-            },
-            {
-              "name": "row-id",
-              "type": {
-                "text": "string"
-              },
-              "description": "Stable row identifier used by parent table features such as `highlight-row`."
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-row",
-          "customElement": true,
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-cell` children."
+              "description": "Panel content."
             }
           ],
           "events": [],
           "cssProperties": [
             {
-              "name": "--row-action-size",
-              "description": "Resolved square action-cell size for the current row."
-            },
-            {
-              "name": "--row-min-height",
-              "description": "Minimum row height."
+              "name": "--tab-panel-padding",
+              "description": "Inner padding applied to panel content."
             }
           ]
         }
@@ -15027,45 +14958,10 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-row",
+          "name": "mui-tab-panel",
           "declaration": {
-            "name": "MuiRow",
-            "module": "src/components/mui-table/row/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-tabs/controller/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
-          "name": "MuiTabController",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-tab-controller",
-          "customElement": true,
-          "attributes": [],
-          "slots": [
-            {
-              "name": "",
-              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
-            }
-          ],
-          "events": [],
-          "cssProperties": []
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-tab-controller",
-          "declaration": {
-            "name": "MuiTabController",
-            "module": "src/components/mui-tabs/controller/index.ts"
+            "name": "MuiTabPanel",
+            "module": "src/components/mui-tabs/panel/index.ts"
           }
         }
       ]
@@ -15147,114 +15043,22 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-table/table/index.ts",
+      "path": "src/components/mui-tabs/controller/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Groups row collections into an accessible table layout.",
-          "name": "MuiTable",
-          "attributes": [
-            {
-              "name": "highlight",
-              "type": {
-                "text": "\"hover\" | \"select\""
-              },
-              "description": "Opts into row-driven highlight behavior. `hover` follows the pointer, `select` updates the highlight when a body row is clicked. Use one mode at a time."
-            },
-            {
-              "name": "highlight-row",
-              "type": {
-                "text": "string"
-              },
-              "description": "Opt-in animated row highlight target matching a child row's `row-id`."
-            },
-            {
-              "name": "highlight-row-index",
-              "type": {
-                "text": "number"
-              },
-              "description": "Opt-in animated row highlight target by zero-based body row index for static tables."
-            }
-          ],
+          "description": "Coordinates a tab bar and related tab panels by matching selected tab IDs to panel item values.",
+          "name": "MuiTabController",
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-table",
+          "tagName": "mui-tab-controller",
           "customElement": true,
+          "attributes": [],
           "slots": [
             {
               "name": "",
-              "description": "Related `mui-row-group` children."
-            }
-          ],
-          "events": [
-            {
-              "name": "row-highlight-change",
-              "description": "Dispatched when `highlight=\"select\"` changes the highlighted row with `detail.row`, `detail.rowId`, `detail.rowIndex`, and `detail.source`."
-            }
-          ],
-          "cssProperties": [
-            {
-              "name": "--table-row-highlight-background",
-              "description": "Background for the animated row highlight layer."
-            },
-            {
-              "name": "--table-row-highlight-radius",
-              "description": "Border radius for the animated row highlight layer."
-            },
-            {
-              "name": "--table-row-highlight-shadow",
-              "description": "Optional shadow for the animated row highlight layer."
-            },
-            {
-              "name": "--table-row-highlight-speed",
-              "description": "Transition speed for row highlight movement and resizing."
-            },
-            {
-              "name": "--table-row-highlight-easing",
-              "description": "Transition easing for row highlight movement and resizing."
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "mui-table",
-          "declaration": {
-            "name": "MuiTable",
-            "module": "src/components/mui-table/table/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/mui-table/row-group/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Groups related table rows and optionally presents them as a heading region.",
-          "name": "MuiRowGroup",
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "mui-row-group",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "heading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Applies header row styling to the contained rows."
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "Related `mui-row` children."
+              "description": "A `mui-tab-bar` followed by related `mui-tab-panel` elements."
             }
           ],
           "events": [],
@@ -15264,10 +15068,10 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-row-group",
+          "name": "mui-tab-controller",
           "declaration": {
-            "name": "MuiRowGroup",
-            "module": "src/components/mui-table/row-group/index.ts"
+            "name": "MuiTabController",
+            "module": "src/components/mui-tabs/controller/index.ts"
           }
         }
       ]
@@ -15430,47 +15234,160 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/mui-tabs/panel/index.ts",
+      "path": "src/components/mui-table/cell/index.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Displays content associated with the selected tab item inside `mui-tab-controller`.",
-          "name": "MuiTabPanel",
-          "members": [
-            {
-              "kind": "field",
-              "name": "item",
-              "type": {
-                "text": "string | null"
-              },
-              "description": "Gets or sets the matching tab item identifier."
-            }
-          ],
+          "description": "Displays content inside a table row with optional checkbox or action-column alignment.",
+          "name": "MuiCell",
           "attributes": [
             {
-              "name": "item",
+              "name": "align-y",
               "type": {
                 "text": "string"
               },
-              "description": "ID of the `mui-tab-item` whose selection displays this panel."
+              "default": "initial",
+              "description": "Sets vertical alignment using any valid CSS `align-self` value."
+            },
+            {
+              "name": "action",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Aligns a final-column action control using the parent row action size."
+            },
+            {
+              "name": "checkbox",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Applies compact alignment for a checkbox column."
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "mui-tab-panel",
+          "tagName": "mui-cell",
           "customElement": true,
           "slots": [
             {
               "name": "",
-              "description": "Panel content."
+              "description": "Cell text or component content."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-cell",
+          "declaration": {
+            "name": "MuiCell",
+            "module": "src/components/mui-table/cell/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/row-group/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups related table rows and optionally presents them as a heading region.",
+          "name": "MuiRowGroup",
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-row-group",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Applies header row styling to the contained rows."
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-row` children."
+            }
+          ],
+          "events": [],
+          "cssProperties": []
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-row-group",
+          "declaration": {
+            "name": "MuiRowGroup",
+            "module": "src/components/mui-table/row-group/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/row/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Arranges table cells in a configurable column grid.",
+          "name": "MuiRow",
+          "attributes": [
+            {
+              "name": "columns",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets column sizing using any valid `grid-template-columns` value."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"xx-small\" | \"x-small\" | \"small\" | \"medium\" | \"large\""
+              },
+              "default": "medium",
+              "description": "Sets row cell typography and action-column sizing."
+            },
+            {
+              "name": "row-id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Stable row identifier used by parent table features such as `highlight-row`."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-row",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-cell` children."
             }
           ],
           "events": [],
           "cssProperties": [
             {
-              "name": "--tab-panel-padding",
-              "description": "Inner padding applied to panel content."
+              "name": "--row-action-size",
+              "description": "Resolved square action-cell size for the current row."
+            },
+            {
+              "name": "--row-min-height",
+              "description": "Minimum row height."
             }
           ]
         }
@@ -15478,10 +15395,93 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "mui-tab-panel",
+          "name": "mui-row",
           "declaration": {
-            "name": "MuiTabPanel",
-            "module": "src/components/mui-tabs/panel/index.ts"
+            "name": "MuiRow",
+            "module": "src/components/mui-table/row/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/mui-table/table/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Groups row collections into an accessible table layout.",
+          "name": "MuiTable",
+          "attributes": [
+            {
+              "name": "highlight",
+              "type": {
+                "text": "\"hover\" | \"select\""
+              },
+              "description": "Opts into row-driven highlight behavior. `hover` follows the pointer, `select` updates the highlight when a body row is clicked. Use one mode at a time."
+            },
+            {
+              "name": "highlight-row",
+              "type": {
+                "text": "string"
+              },
+              "description": "Opt-in animated row highlight target matching a child row's `row-id`."
+            },
+            {
+              "name": "highlight-row-index",
+              "type": {
+                "text": "number"
+              },
+              "description": "Opt-in animated row highlight target by zero-based body row index for static tables."
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mui-table",
+          "customElement": true,
+          "slots": [
+            {
+              "name": "",
+              "description": "Related `mui-row-group` children."
+            }
+          ],
+          "events": [
+            {
+              "name": "row-highlight-change",
+              "description": "Dispatched when `highlight=\"select\"` changes the highlighted row with `detail.row`, `detail.rowId`, `detail.rowIndex`, and `detail.source`."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--table-row-highlight-background",
+              "description": "Background for the animated row highlight layer."
+            },
+            {
+              "name": "--table-row-highlight-radius",
+              "description": "Border radius for the animated row highlight layer."
+            },
+            {
+              "name": "--table-row-highlight-shadow",
+              "description": "Optional shadow for the animated row highlight layer."
+            },
+            {
+              "name": "--table-row-highlight-speed",
+              "description": "Transition speed for row highlight movement and resizing."
+            },
+            {
+              "name": "--table-row-highlight-easing",
+              "description": "Transition easing for row highlight movement and resizing."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "mui-table",
+          "declaration": {
+            "name": "MuiTable",
+            "module": "src/components/mui-table/table/index.ts"
           }
         }
       ]

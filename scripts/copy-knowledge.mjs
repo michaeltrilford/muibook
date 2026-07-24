@@ -27,6 +27,7 @@ const filesToCopy = [
   { src: "skills/create-ux-guidelines/SKILL.md", dest: "skills/create-ux-guidelines/SKILL.md" },
   { src: "skills/muibook-components/SKILL.md", dest: "skills/muibook-components/SKILL.md" },
   { src: "skills/style-web-components/SKILL.md", dest: "skills/style-web-components/SKILL.md" },
+  { src: "skills/redactd-canvas-muibook/SKILL.md", dest: "skills/redactd-canvas-muibook/SKILL.md" },
 ];
 
 const legacyFiles = [
