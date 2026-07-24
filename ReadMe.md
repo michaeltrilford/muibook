@@ -49,7 +49,7 @@ The package also exposes Muibook knowledge for AI tooling and plugins:
 
 ```javascript
 import { knowledge } from "@muibook/components/knowledge";
-import { rules } from "@muibook/components/knowledge/rules";
+import { rules } from "@muibook/components/knowledge/json-rules";
 import { compositions } from "@muibook/components/knowledge/compositions";
 import { keywords } from "@muibook/components/knowledge/keywords";
 ```
@@ -212,7 +212,7 @@ Install [es6-string-html](https://marketplace.visualstudio.com/items?itemName=To
 
 Muibook keeps authored AI knowledge in `src/knowledge`:
 
-- `rules.ts` contains global component-tree generation rules.
+- `json-rules.ts` contains global component-tree generation rules.
 - `keywords.ts` contains full keyword mappings and the curated local-agent keyword subset.
 - `compositions.ts` contains full composition examples, curation metadata, and the generated local-agent composition subset.
 - `index.ts` exports the combined `knowledge` object.
@@ -226,7 +226,7 @@ The full package build also generates and copies related knowledge files:
 `npm run build` syncs Muibook knowledge to two sibling destinations:
 
 - `npm run copy-knowledge` copies the complete exported bundle into `../muibook-knowledge`, which is published separately as [michaeltrilford/muibook-knowledge](https://github.com/michaeltrilford/muibook-knowledge) for MCP clients and other AI tools.
-- `npm run copy-knowledge:redactd-canvas` copies the Redactd-specific subset into `../RedactdCanvas/plugins/assets/muibook-knowledge` for bundling with the Redactd Canvas plugin. This subset contains `custom-elements.json`, `dynamic-attrs.json`, `DESIGN.md`, `rules.ts`, `compositions.ts`, and `keywords.ts`.
+- `npm run copy-knowledge:redactd-canvas` copies the Redactd-specific subset into `../RedactdCanvas/plugins/assets/muibook-knowledge` for bundling with the Redactd Canvas plugin. This subset contains `custom-elements.json`, `dynamic-attrs.json`, `DESIGN.md`, `json-rules.ts`, `compositions.ts`, and `keywords.ts`.
 
 Muibook remains the source of truth for both exports. The destination copies should be regenerated rather than edited independently. Run the complete build to generate and sync both destinations:
 

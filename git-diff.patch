@@ -1,0 +1,111 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 1c7ee2b9..0803fc54 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -56,6 +56,7 @@ When a component uses slots:
+ - When using `mui-code` inside body copy or list text, add the `inline` attr; otherwise it renders as a block code surface.
+ - Keep `AGENTS.md` and `DESIGN.md` at the repo root. They are copied to the knowledge repo for agent/plugin context.
+ - Keep `src/knowledge` for authored knowledge sources: global rules, keyword mappings, composition examples, skill files, and MCP/front-door docs.
++- When updating high-level composition rules (like layout or slot patterns), you must update them in **both** `src/knowledge/rules.ts` (for Redactd JSON tree generation) and the hardcoded `Composition Rules` string template in `scripts/build-muibook-skill.mjs` (for the Markdown skill).
+ - In `public/CHANGELOG.md`, use `_Status: Upcoming_` for the active next version section and `_Status: Released_` for published package sections.
+ - Component API and UX guidance should live in component `api.ts` and `doc.ts` files so the CEM stays current.
+ - Story props panels are often defined locally in the Muibook story page via `propItems` arrays. Do not add or reshape component `doc.ts` files just to populate a props panel unless the user explicitly wants that information added to the docs/CEM layer too.
+diff --git a/public/skills/muibook-components/SKILL.md b/public/skills/muibook-components/SKILL.md
+index 3a6d4bfe..3c8352a3 100644
+--- a/public/skills/muibook-components/SKILL.md
++++ b/public/skills/muibook-components/SKILL.md
+@@ -35,7 +35,9 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
+ - Build layouts with Muibook primitives such as Container, VStack, HStack, and Grid. Do not add generic wrapper elements solely to create layout, spacing, or margins.
+ - Put named slot placement on the child through its documented native `slot` attribute. In Redactd trees, store that value in `props.slot`; never add slot as a top-level node field.
+ - Let documented parent-child context do its work. Do not recreate joined corners, inherited sizing, Menu action normalization, Card surface usage, or similar component behavior with local overrides.
+-- Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put the primary content in `slot="start"` and trailing metadata/action in `slot="end"`.
++- Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put primary content in `slot="start"` and trailing metadata/action in `slot="end"`. Always explicitly set `variant="row"` on standard Slat items unless creating a section header (`variant="header"`), interactive row (`variant="action"`), or custom layout; Slat items inside SlatGroup or CardBody rely on explicit `variant` ("row", "header", or "action") for correct automatic alignment and card/group styles.
++- Use `col="1fr auto"` as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
++- For top-and-bottom positioning inside VStack (such as pushing a footer or action button to the bottom), set `fill` or `height` on VStack and apply `style="align-self: end;"` to the slotted child. Use `fill` when VStack sits inside a bounded parent (e.g. CardBody, Drawer, or Dialog); use `height` when specifying an explicit length (e.g. `height="300px"`).
+ - For Drawer, use `open` plus `side` for overlay, push, and persistent drawers. Do not use `left-open`, `right-open`, `left-width`, `right-width`, or the `left`/`right`/`page` slots unless `variant="workspace"`; those controls are workspace-only.
+ - For equal Grid columns, use `col: "repeat(N, minmax(0, 1fr))"`. Do not use numeric counts or repeated bare `1fr` tracks.
+ - Layout spacing values must use complete CSS token references such as `var(--space-400)`; never use `space-400`, `400`, or another bare scale value. Use `var(--space-000)` for zero spacing.
+diff --git a/scripts/build-muibook-skill.mjs b/scripts/build-muibook-skill.mjs
+index d0b793b8..41ddd73c 100644
+--- a/scripts/build-muibook-skill.mjs
++++ b/scripts/build-muibook-skill.mjs
+@@ -157,7 +157,9 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
+ - Build layouts with Muibook primitives such as Container, VStack, HStack, and Grid. Do not add generic wrapper elements solely to create layout, spacing, or margins.
+ - Put named slot placement on the child through its documented native \`slot\` attribute. In Redactd trees, store that value in \`props.slot\`; never add slot as a top-level node field.
+ - Let documented parent-child context do its work. Do not recreate joined corners, inherited sizing, Menu action normalization, Card surface usage, or similar component behavior with local overrides.
+-- Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put the primary content in \`slot="start"\` and trailing metadata/action in \`slot="end"\`.
++- Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put primary content in \`slot="start"\` and trailing metadata/action in \`slot="end"\`. Always explicitly set \`variant="row"\` on standard Slat items unless creating a section header (\`variant="header"\`), interactive row (\`variant="action"\`), or custom layout; Slat items inside SlatGroup or CardBody rely on explicit \`variant\` ("row", "header", or "action") for correct automatic alignment and card/group styles.
++- Use \`col="1fr auto"\` as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
++- For top-and-bottom positioning inside VStack (such as pushing a footer or action button to the bottom), set \`fill\` or \`height\` on VStack and apply \`style="align-self: end;"\` to the slotted child. Use \`fill\` when VStack sits inside a bounded parent (e.g. CardBody, Drawer, or Dialog); use \`height\` when specifying an explicit length (e.g. \`height="300px"\`).
+ - For Drawer, use \`open\` plus \`side\` for overlay, push, and persistent drawers. Do not use \`left-open\`, \`right-open\`, \`left-width\`, \`right-width\`, or the \`left\`/\`right\`/\`page\` slots unless \`variant="workspace"\`; those controls are workspace-only.
+ - For equal Grid columns, use \`col: "repeat(N, minmax(0, 1fr))"\`. Do not use numeric counts or repeated bare \`1fr\` tracks.
+ - Layout spacing values must use complete CSS token references such as \`var(--space-400)\`; never use \`space-400\`, \`400\`, or another bare scale value. Use \`var(--space-000)\` for zero spacing.
+diff --git a/skills/muibook-components/SKILL.md b/skills/muibook-components/SKILL.md
+index 3a6d4bfe..3c8352a3 100644
+--- a/skills/muibook-components/SKILL.md
++++ b/skills/muibook-components/SKILL.md
+@@ -35,7 +35,9 @@ owns the Redactd tree contract, validation, browser transport, and paste workflo
+ - Build layouts with Muibook primitives such as Container, VStack, HStack, and Grid. Do not add generic wrapper elements solely to create layout, spacing, or margins.
+ - Put named slot placement on the child through its documented native `slot` attribute. In Redactd trees, store that value in `props.slot`; never add slot as a top-level node field.
+ - Let documented parent-child context do its work. Do not recreate joined corners, inherited sizing, Menu action normalization, Card surface usage, or similar component behavior with local overrides.
+-- Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put the primary content in `slot="start"` and trailing metadata/action in `slot="end"`.
++- Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put primary content in `slot="start"` and trailing metadata/action in `slot="end"`. Always explicitly set `variant="row"` on standard Slat items unless creating a section header (`variant="header"`), interactive row (`variant="action"`), or custom layout; Slat items inside SlatGroup or CardBody rely on explicit `variant` ("row", "header", or "action") for correct automatic alignment and card/group styles.
++- Use `col="1fr auto"` as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
++- For top-and-bottom positioning inside VStack (such as pushing a footer or action button to the bottom), set `fill` or `height` on VStack and apply `style="align-self: end;"` to the slotted child. Use `fill` when VStack sits inside a bounded parent (e.g. CardBody, Drawer, or Dialog); use `height` when specifying an explicit length (e.g. `height="300px"`).
+ - For Drawer, use `open` plus `side` for overlay, push, and persistent drawers. Do not use `left-open`, `right-open`, `left-width`, `right-width`, or the `left`/`right`/`page` slots unless `variant="workspace"`; those controls are workspace-only.
+ - For equal Grid columns, use `col: "repeat(N, minmax(0, 1fr))"`. Do not use numeric counts or repeated bare `1fr` tracks.
+ - Layout spacing values must use complete CSS token references such as `var(--space-400)`; never use `space-400`, `400`, or another bare scale value. Use `var(--space-000)` for zero spacing.
+diff --git a/src/components/mui-slat/api.ts b/src/components/mui-slat/api.ts
+index 8d0fe2c9..701fbb9f 100644
+--- a/src/components/mui-slat/api.ts
++++ b/src/components/mui-slat/api.ts
+@@ -2,7 +2,12 @@ export const muiApi = {
+   "mui-slat": {
+     description: "Arranges leading and trailing row content with optional action and accessory treatments.",
+     attributes: [
+-      { name: "variant", type: { text: '"header" | "row" | "action"' }, description: "Sets the slat layout and interactive presentation." },
++      {
++        name: "variant",
++        type: { text: '"header" | "row" | "action"' },
++        description:
++          "Sets the slat layout and interactive presentation. Explicitly set variant='row' for standard row slats unless creating a header (variant='header'), interactive action slat (variant='action'), or custom layout; Slat items inside SlatGroup or CardBody require an explicit variant for automatic layout and card alignment.",
++      },
+       {
+         name: "col",
+         type: { text: "string" },
+diff --git a/src/knowledge/rules.ts b/src/knowledge/rules.ts
+index 90949919..b0ad037e 100644
+--- a/src/knowledge/rules.ts
++++ b/src/knowledge/rules.ts
+@@ -32,10 +32,11 @@ CRITICAL RULES:
+ 22. In Drawer navigation, compose nav items as Button or Link with align="start", variant="tertiary" as the default (non-prominent) emphasis, and a slot="before" _Icon matching the item's meaning. Use mui-icon-rectangle as a generic placeholder icon only when no semantically matching icon exists.
+ 23. When composing Muibook charts in Redactd, populate the structured Data field through props.data, or the Series field through props.series for ComparisonChart. Redactd owns passing that value to the Muibook component. FinancialChart uses { time, open, high, low, close, volume? }. MarketSparkline and FinancialBarChart use { time, value }. ComparisonChart uses { id, label, color?, data: [{ time, value }] }. Keep dates and numeric values as JSON values, sort points chronologically, and provide a coherent illustrative dataset when the user requests a populated chart without supplying data.
+ 24. Use slots for content projection, not as the only control for significant chrome or layout decisions in generated/editor output. When a component exposes an explicit public attr such as hide-header, use that attr instead of relying only on omitted or present slotted content. Runtime attrs such as has-header and has-footer are dynamic metadata, not authored source props.
+-25. Leave Slat col unset by default. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
++25. Use col="1fr auto" as the default col for Slat. Do not invent a custom Slat column string from an image prompt unless the source clearly requires non-default column tracks; the default Slat columns are preferred for accessory/start/end compositions.
+ 26. For a single side drawer opened from a menu or hamburger icon, prefer Drawer variant="push" with open and side. Persistent drawers are for content that stays adjacent/visible and usually do not need a menu trigger. Use workspace only for advanced editor or canvas shells with independent left/right panels around a central page. Do not use left-open, right-open, left-width, right-width, page, left, or right for overlay, push, or persistent drawers; those controls and slots are workspace-only.
+ 27. CSS length props and style values must include valid units or CSS functions. For height, width, max-height, min-height, padding, margin, gap, and similar CSS lengths, output values such as "320px", "20rem", "100%", "100vh", "auto", or "var(--space-500)"; never output bare numeric strings such as "320" or "20" unless the component API explicitly documents a number scale for that prop.
+-28. Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put the primary content in slot="start" and the trailing metadata/action in slot="end".
++28. Prefer Slat over an ad hoc HStack for row-like wireframe items with primary content on the left and secondary metadata, value, status, timestamp, badge, count, or action on the right. Use SlatGroup for repeated rows such as activity feeds, settings rows, account details, notifications, transaction lists, project updates, search results, or compact records. Put primary content in slot="start" and trailing metadata/action in slot="end". Always explicitly set variant="row" on standard Slat items unless creating a section header (variant="header"), interactive row (variant="action"), or custom layout; Slat items inside SlatGroup or CardBody rely on explicit variant ("row", "header", or "action") for correct automatic alignment and card/group styles.
++29. For top-and-bottom positioning inside VStack (such as pushing a footer or action button to the bottom), set fill or height on VStack and apply style="align-self: end;" to the slotted child. Use fill when VStack sits inside a bounded parent (e.g. CardBody, Drawer, or Dialog); use height when specifying an explicit length (e.g. height="300px").
+ 
+ MUI SCAN NORMALIZATION RULES:
+ - Normalize muiscan to Redactd types before output
+@@ -88,7 +89,7 @@ TEXT NODE RULES FOR MUISCAN:
+ Available Components:
+ 
+ LAYOUT:
+-- VStack: slot, space, padding, alignX, alignY, height, width, fill, viewport, style
++- VStack: slot, space, padding, alignX, alignY, height, width, fill, viewport, style. Use fill (100% width/height) inside bounded parents (CardBody, Drawer) or height for explicit lengths (e.g. "300px"). For bottom positioning, set fill/height on VStack and apply style="align-self: end;" to the slotted child.
+ - HStack: slot, space, padding, alignX, alignY, height, width, fill, viewport, style
+ - Grid: slot, col, space, padding, alignX, alignY, height, width, fill, viewport, style
+ - Container: size (small|medium|large), center, style
+@@ -103,7 +104,7 @@ SURFACES:
+ - Dialog: open, width, content-max-height, hide-header, style. Use hide-header for unified/headerless dialogs such as confirmations, or when custom body content provides the heading and dismissal path.
+ - Drawer: open, variant (overlay|push|persistent|workspace), side (left|right), width, z-index, drawer-space, hide-header, breakpoint, style. For overlay, push, and persistent drawers, use open plus side to control visibility and placement; do not use left-open, right-open, left-width, right-width, page, left, or right. Use hide-header when drawer body content provides a custom header composition or custom dismissal controls. For a single side panel opened by a menu icon, prefer variant="push"; do not use workspace unless the UI is an advanced editor/canvas shell with independent side panels.
+ - Drawer workspace: variant=workspace, left-open, right-open, left-width, right-width, resize-rail, resize-min-drawer-width, resize-min-left-width, resize-min-right-width, resize-min-page-width, resize-close-threshold, height; slots left/page/right. Use when an editor/canvas has independent left and right panels around a central page. left-open/right-open and left/right/page slots are workspace-only. Keep direct slot wrappers plain in HTML exports when possible.
+-- Slat: variant, col, space; child slots accessory/start/end. Leave col unset by default; do not invent custom columns from an image prompt unless the source clearly requires non-default column tracks. Do not use header-start, header-end, row-start, row-end, action, or unslotted wrapper children. Put primary row content in a direct child with props.slot="start", trailing value/status/action content in a direct child with props.slot="end", and optional leading avatar/icon content in a direct child with props.slot="accessory".
++- Slat: variant (row|header|action), col, space; child slots accessory/start/end. Always explicitly assign variant="row" for standard row slats unless creating a header (variant="header"), interactive row (variant="action"), or custom layout. When Slat is in SlatGroup or CardBody, variant ("row"|"header"|"action") is required to trigger automatic layout and alignment styles. Use col="1fr auto" by default; do not invent custom columns from an image prompt unless the source clearly requires non-default column tracks. Do not use header-start, header-end, row-start, row-end, action, or unslotted wrapper children. Put primary row content in a direct child with props.slot="start", trailing value/status/action content in a direct child with props.slot="end", and optional leading avatar/icon content in a direct child with props.slot="accessory".
+ - SlatGroup: usage. When SlatGroup is inside CardBody, leave CardBody size unset by default; CardBody detects SlatGroup and applies the correct card spacing automatically.
+ - SmartCard: state, number, variant, partner, type, logo, logo-height, bg-color, bg-image, inverted
+ 

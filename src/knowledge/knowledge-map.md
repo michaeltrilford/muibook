@@ -7,7 +7,7 @@ Use this map as the front door for the Muibook knowledge bundle. The bundle is s
 - `custom-elements.json`: generated Custom Elements Manifest for public component APIs, attributes, properties, methods, events, slots, CSS custom properties, CSS parts, and component UX documentation.
 - `dynamic-attrs.json`: runtime and destination-only structural attributes used by wrappers, builders, canvases, exporters, and integration tools. These attrs are not the public API surface.
 - `DESIGN.md`: design language, token architecture, surface usage, theme layers, typography, spacing, radius, and layout guidance.
-- `rules.ts`: global rules for generating valid Muibook component trees.
+- `json-rules.ts`: global rules for generating valid Muibook component trees.
 - `keywords.ts`: natural-language routing from user intent to likely components.
 - `compositions.ts`: curated component-tree examples plus reusable composition-page story metadata for realistic layouts and workflows.
 - `resource-index.json`: machine-readable index of the knowledge files and when to use them.

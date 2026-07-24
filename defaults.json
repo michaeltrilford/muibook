@@ -1,0 +1,2352 @@
+{
+  "tag": "mui-addon",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-action-toggle",
+  "attributes": [
+    {
+      "name": "mode",
+      "default": "icon"
+    }
+  ]
+}
+{
+  "tag": "mui-alert",
+  "attributes": [
+    {
+      "name": "variant",
+      "default": "positive"
+    },
+    {
+      "name": "hide-label",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-avatar-chip",
+  "attributes": [
+    {
+      "name": "target",
+      "default": "_self"
+    },
+    {
+      "name": "usage",
+      "default": "default"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-avatar",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "background",
+      "default": "neutral"
+    }
+  ]
+}
+{
+  "tag": "mui-avatar-group",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "overlap",
+      "default": "tight"
+    },
+    {
+      "name": "label",
+      "default": "Avatar group"
+    }
+  ]
+}
+{
+  "tag": "mui-badge",
+  "attributes": [
+    {
+      "name": "variant",
+      "default": "neutral"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-body",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "weight",
+      "default": "regular"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "truncate",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-button",
+  "attributes": [
+    {
+      "name": "type",
+      "default": "button"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "pending",
+      "default": "false"
+    },
+    {
+      "name": "variant",
+      "default": "primary"
+    },
+    {
+      "name": "stroke",
+      "default": "border"
+    },
+    {
+      "name": "stroke-ring-size",
+      "default": "100"
+    },
+    {
+      "name": "focus-ring",
+      "default": "default"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-button-group",
+  "attributes": [
+    {
+      "name": "layout",
+      "default": "row"
+    },
+    {
+      "name": "align",
+      "default": "left"
+    },
+    {
+      "name": "right",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-calendar",
+  "attributes": [
+    {
+      "name": "view",
+      "default": "single"
+    }
+  ]
+}
+{
+  "tag": "mui-chat-message",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "align",
+      "default": "start"
+    },
+    {
+      "name": "width",
+      "default": "full"
+    },
+    {
+      "name": "footer-position",
+      "default": "inside"
+    },
+    {
+      "name": "footer-visibility",
+      "default": "hover"
+    }
+  ]
+}
+{
+  "tag": "mui-checkbox",
+  "attributes": [
+    {
+      "name": "checked",
+      "default": "false"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "indeterminate",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-chip",
+  "attributes": [
+    {
+      "name": "active",
+      "default": "false"
+    },
+    {
+      "name": "dismiss",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "variant",
+      "default": "clickable"
+    }
+  ]
+}
+{
+  "tag": "mui-chip-input",
+  "attributes": [
+    {
+      "name": "hide-label",
+      "default": "false"
+    },
+    {
+      "name": "placeholder",
+      "default": "Type to add"
+    },
+    {
+      "name": "options",
+      "default": "[]"
+    },
+    {
+      "name": "value",
+      "default": "[]"
+    },
+    {
+      "name": "allow-custom",
+      "default": "false"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "placement",
+      "default": "before"
+    },
+    {
+      "name": "mobile-stack",
+      "default": "false"
+    },
+    {
+      "name": "surface",
+      "default": "default"
+    }
+  ]
+}
+{
+  "tag": "mui-chip-rail",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "bleed",
+      "default": "none"
+    },
+    {
+      "name": "bleed-inline-size",
+      "default": "none"
+    },
+    {
+      "name": "bleed-block-size",
+      "default": "none"
+    },
+    {
+      "name": "skip-label",
+      "default": "Skip"
+    },
+    {
+      "name": "aria-label",
+      "default": "Chip rail"
+    }
+  ]
+}
+{
+  "tag": "mui-code",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "x-small"
+    },
+    {
+      "name": "scrollable",
+      "default": "false"
+    },
+    {
+      "name": "wrap",
+      "default": "false"
+    },
+    {
+      "name": "inline",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-comparison-chart",
+  "attributes": [
+    {
+      "name": "mode",
+      "default": "indexed"
+    },
+    {
+      "name": "value-format",
+      "default": "decimal"
+    },
+    {
+      "name": "currency",
+      "default": "USD"
+    },
+    {
+      "name": "height",
+      "default": "24rem"
+    },
+    {
+      "name": "scale",
+      "default": "both"
+    },
+    {
+      "name": "attribution",
+      "default": "logo"
+    }
+  ]
+}
+{
+  "tag": "mui-container",
+  "attributes": [
+    {
+      "name": "width",
+      "default": ""
+    },
+    {
+      "name": "center",
+      "default": "false"
+    },
+    {
+      "name": "fluid",
+      "default": "false"
+    },
+    {
+      "name": "small",
+      "default": "false"
+    },
+    {
+      "name": "medium",
+      "default": "false"
+    },
+    {
+      "name": "x-medium",
+      "default": "false"
+    },
+    {
+      "name": "large",
+      "default": "false"
+    },
+    {
+      "name": "x-large",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": ""
+    }
+  ]
+}
+{
+  "tag": "mui-context-bar",
+  "attributes": []
+}
+{
+  "tag": "mui-date-picker-popover",
+  "attributes": []
+}
+{
+  "tag": "mui-date-picker",
+  "attributes": [
+    {
+      "name": "type",
+      "default": "date"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "surface",
+      "default": "default"
+    }
+  ]
+}
+{
+  "tag": "mui-dialog",
+  "attributes": [
+    {
+      "name": "open",
+      "default": "false"
+    },
+    {
+      "name": "width",
+      "default": "350px"
+    },
+    {
+      "name": "close-size",
+      "default": "medium"
+    },
+    {
+      "name": "hide-header",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-drawer",
+  "attributes": [
+    {
+      "name": "open",
+      "default": "false"
+    },
+    {
+      "name": "width",
+      "default": "320px"
+    },
+    {
+      "name": "height",
+      "default": "100dvh"
+    },
+    {
+      "name": "side",
+      "default": "left"
+    },
+    {
+      "name": "variant",
+      "default": "overlay"
+    },
+    {
+      "name": "left-open",
+      "default": "false"
+    },
+    {
+      "name": "right-open",
+      "default": "false"
+    },
+    {
+      "name": "left-width",
+      "default": "28rem"
+    },
+    {
+      "name": "right-width",
+      "default": "32rem"
+    },
+    {
+      "name": "z-index",
+      "default": "10"
+    },
+    {
+      "name": "drawer-space",
+      "default": "false"
+    },
+    {
+      "name": "hide-header",
+      "default": "false"
+    },
+    {
+      "name": "close-size",
+      "default": "medium"
+    },
+    {
+      "name": "breakpoint",
+      "default": "768"
+    },
+    {
+      "name": "mobile-presentation",
+      "default": "overlay"
+    },
+    {
+      "name": "resize-rail",
+      "default": "false"
+    },
+    {
+      "name": "resize-min-drawer-width",
+      "default": "240"
+    },
+    {
+      "name": "resize-min-left-width",
+      "default": "—"
+    },
+    {
+      "name": "resize-min-right-width",
+      "default": "—"
+    },
+    {
+      "name": "resize-min-page-width",
+      "default": "320"
+    },
+    {
+      "name": "resize-close-threshold",
+      "default": "96"
+    },
+    {
+      "name": "contained",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-dropdown",
+  "attributes": [
+    {
+      "name": "zindex",
+      "default": "1"
+    },
+    {
+      "name": "position",
+      "default": "left"
+    },
+    {
+      "name": "vertical-position",
+      "default": "auto"
+    },
+    {
+      "name": "persistent",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-field",
+  "attributes": [
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "hide-label",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "optional",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-file-diff",
+  "attributes": []
+}
+{
+  "tag": "mui-file-upload",
+  "attributes": []
+}
+{
+  "tag": "mui-financial-bar-chart",
+  "attributes": [
+    {
+      "name": "variant",
+      "default": "neutral"
+    },
+    {
+      "name": "value-format",
+      "default": "decimal"
+    },
+    {
+      "name": "currency",
+      "default": "USD"
+    },
+    {
+      "name": "baseline",
+      "default": "0"
+    },
+    {
+      "name": "height",
+      "default": "20rem"
+    },
+    {
+      "name": "scale",
+      "default": "both"
+    },
+    {
+      "name": "attribution",
+      "default": "logo"
+    }
+  ]
+}
+{
+  "tag": "mui-file-icon",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "x-small"
+    },
+    {
+      "name": "decorative",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-financial-chart",
+  "attributes": [
+    {
+      "name": "type",
+      "default": "candlestick"
+    },
+    {
+      "name": "trend",
+      "default": "neutral"
+    },
+    {
+      "name": "currency",
+      "default": "USD"
+    },
+    {
+      "name": "interval",
+      "default": "1D"
+    },
+    {
+      "name": "height",
+      "default": "32rem"
+    },
+    {
+      "name": "selected-range",
+      "default": "1M"
+    },
+    {
+      "name": "ranges",
+      "default": "1D,1W,1M,3M,1Y,ALL"
+    },
+    {
+      "name": "attribution",
+      "default": "logo"
+    }
+  ]
+}
+{
+  "tag": "mui-form-group",
+  "attributes": [
+    {
+      "name": "heading-level",
+      "default": "5"
+    },
+    {
+      "name": "hide-heading",
+      "default": "false"
+    },
+    {
+      "name": "hide-label",
+      "default": "false"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "space",
+      "default": "var(--space-500)"
+    },
+    {
+      "name": "aligny",
+      "default": "start"
+    }
+  ]
+}
+{
+  "tag": "mui-form-message",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "small"
+    },
+    {
+      "name": "weight",
+      "default": "regular"
+    },
+    {
+      "name": "variant",
+      "default": "secondary"
+    }
+  ]
+}
+{
+  "tag": "mui-form-section",
+  "attributes": [
+    {
+      "name": "heading-level",
+      "default": "4"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "borderless",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-form-section-footer",
+  "attributes": []
+}
+{
+  "tag": "mui-grid",
+  "attributes": [
+    {
+      "name": "col",
+      "default": "1fr 1fr"
+    },
+    {
+      "name": "space",
+      "default": "var(--space-000)"
+    },
+    {
+      "name": "alignx",
+      "default": "normal"
+    },
+    {
+      "name": "aligny",
+      "default": "normal"
+    },
+    {
+      "name": "padding",
+      "default": "var(--space-000)"
+    },
+    {
+      "name": "viewport",
+      "default": "false"
+    },
+    {
+      "name": "fill",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-heading",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "1"
+    },
+    {
+      "name": "truncate",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-hint",
+  "attributes": [
+    {
+      "name": "placement",
+      "default": "top"
+    },
+    {
+      "name": "open",
+      "default": "false"
+    },
+    {
+      "name": "delay",
+      "default": "500"
+    },
+    {
+      "name": "initial-delay",
+      "default": "500"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "disable-on-touch",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-illustration-trash",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "color",
+      "default": "default"
+    },
+    {
+      "name": "motion",
+      "default": "none"
+    }
+  ]
+}
+{
+  "tag": "mui-image",
+  "attributes": [
+    {
+      "name": "fit",
+      "default": "contain"
+    },
+    {
+      "name": "crop",
+      "default": "false"
+    },
+    {
+      "name": "position",
+      "default": "center center"
+    },
+    {
+      "name": "zoom",
+      "default": "1"
+    },
+    {
+      "name": "radius",
+      "default": "var(--radius-300)"
+    }
+  ]
+}
+{
+  "tag": "mui-icon-accessibility",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-add",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "small"
+    },
+    {
+      "name": "color",
+      "default": "default"
+    }
+  ]
+}
+{
+  "tag": "mui-icon-ai",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-attention",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-calendar",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-check",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-checkmark",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-close",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-copy",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-down-arrow-circle",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-down-chevron",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-ellipsis",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-exclamationmark",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-game-controller",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-gear",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-globe",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-grid",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-home",
+  "attributes": []
+}
+{
+  "tag": "tagName",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-info",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-left-arrow",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-left-chevron",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-left-sidebar",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-list-and-film",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-menu",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-message",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-moon",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-movie-clapper",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-music-microphone",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-music-quarter-note",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-notification",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-panel",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-pin-slash",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-pin",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-play-rectangle",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-play-stack",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-rectangle-dashed",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-rectangle-left-drawer",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-rectangle-media-text",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-rectangle-right-drawer",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-rectangle",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-right-chevron",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-search",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-spinner",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-stop",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-subtract",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-sun",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-text-below-folder",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-timer",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-toggle",
+  "attributes": [
+    {
+      "name": "toggle",
+      "default": "false"
+    },
+    {
+      "name": "rotate",
+      "default": "false"
+    },
+    {
+      "name": "morph",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-icon-translate",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-up-arrow",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-up-chevron",
+  "attributes": []
+}
+{
+  "tag": "mui-icon-warning",
+  "attributes": []
+}
+{
+  "tag": "mui-input",
+  "attributes": [
+    {
+      "name": "type",
+      "default": "text"
+    },
+    {
+      "name": "value",
+      "default": ""
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "hide-label",
+      "default": "false"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "optional",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "slot-layout",
+      "default": "inline"
+    },
+    {
+      "name": "autofocus",
+      "default": "false"
+    },
+    {
+      "name": "surface",
+      "default": "default"
+    }
+  ]
+}
+{
+  "tag": "mui-link",
+  "attributes": [
+    {
+      "name": "target",
+      "default": "_self"
+    },
+    {
+      "name": "href",
+      "default": "#"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "weight",
+      "default": "regular"
+    },
+    {
+      "name": "stroke",
+      "default": "border"
+    },
+    {
+      "name": "stroke-ring-size",
+      "default": "100"
+    },
+    {
+      "name": "focus-ring",
+      "default": "default"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-loader",
+  "attributes": [
+    {
+      "name": "loading",
+      "default": "false"
+    },
+    {
+      "name": "animation",
+      "default": "fade-in"
+    },
+    {
+      "name": "direction",
+      "default": "up"
+    },
+    {
+      "name": "duration",
+      "default": "1s"
+    }
+  ]
+}
+{
+  "tag": "mui-market-sparkline",
+  "attributes": [
+    {
+      "name": "type",
+      "default": "area"
+    },
+    {
+      "name": "trend",
+      "default": "auto"
+    },
+    {
+      "name": "height",
+      "default": "8rem"
+    },
+    {
+      "name": "attribution",
+      "default": "logo"
+    }
+  ]
+}
+{
+  "tag": "mui-media-player",
+  "attributes": [
+    {
+      "name": "autoplay",
+      "default": "false"
+    },
+    {
+      "name": "muted",
+      "default": "false"
+    },
+    {
+      "name": "loop",
+      "default": "false"
+    },
+    {
+      "name": "center-play",
+      "default": "false"
+    },
+    {
+      "name": "loading",
+      "default": "false"
+    },
+    {
+      "name": "controls",
+      "default": "player"
+    },
+    {
+      "name": "waveform",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-menu",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-message",
+  "attributes": [
+    {
+      "name": "variant",
+      "default": "neutral"
+    },
+    {
+      "name": "heading",
+      "default": "Heading..."
+    },
+    {
+      "name": "size",
+      "default": "large"
+    }
+  ]
+}
+{
+  "tag": "mui-model-viewer",
+  "attributes": [
+    {
+      "name": "controls",
+      "default": "false"
+    },
+    {
+      "name": "camera-controls",
+      "default": "false"
+    },
+    {
+      "name": "auto-rotate",
+      "default": "false"
+    },
+    {
+      "name": "ar",
+      "default": "false"
+    },
+    {
+      "name": "loading",
+      "default": "lazy"
+    }
+  ]
+}
+{
+  "tag": "mui-preview-chip",
+  "attributes": [
+    {
+      "name": "inverted",
+      "default": "false"
+    },
+    {
+      "name": "badge-only",
+      "default": "false"
+    },
+    {
+      "name": "show-text",
+      "default": "false"
+    },
+    {
+      "name": "animated",
+      "default": "false"
+    },
+    {
+      "name": "animation-mode",
+      "default": "loop"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "clickable",
+      "default": "false"
+    },
+    {
+      "name": "loading",
+      "default": "false"
+    },
+    {
+      "name": "loading-label",
+      "default": "Loading preview"
+    }
+  ]
+}
+{
+  "tag": "mui-progress",
+  "attributes": [
+    {
+      "name": "progress",
+      "default": "0"
+    }
+  ]
+}
+{
+  "tag": "mui-progress-ring",
+  "attributes": [
+    {
+      "name": "progress",
+      "default": "0"
+    },
+    {
+      "name": "max",
+      "default": "100"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "display",
+      "default": "auto"
+    },
+    {
+      "name": "tooltip-trigger",
+      "default": "hover"
+    },
+    {
+      "name": "tooltip-placement",
+      "default": "top"
+    }
+  ]
+}
+{
+  "tag": "mui-prompt",
+  "attributes": [
+    {
+      "name": "placeholder",
+      "default": "Reply to Mui..."
+    },
+    {
+      "name": "value",
+      "default": ""
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "rows",
+      "default": "3"
+    },
+    {
+      "name": "enter-submit",
+      "default": "true"
+    },
+    {
+      "name": "actions-fan",
+      "default": "false"
+    },
+    {
+      "name": "fan-open",
+      "default": "false"
+    },
+    {
+      "name": "preview-overflow-to-preview",
+      "default": "true"
+    },
+    {
+      "name": "preview-threshold-chars",
+      "default": "220"
+    },
+    {
+      "name": "preview-auto-clickable",
+      "default": "true"
+    },
+    {
+      "name": "preview-loading-label",
+      "default": "Loading preview"
+    },
+    {
+      "name": "preview-dialog-width",
+      "default": "560px"
+    },
+    {
+      "name": "preview-dialog-title",
+      "default": "Pasted Content"
+    },
+    {
+      "name": "preview-dialog-bordered",
+      "default": "false"
+    },
+    {
+      "name": "context-mode",
+      "default": "icon"
+    },
+    {
+      "name": "effects-off",
+      "default": "false"
+    },
+    {
+      "name": "color-layout",
+      "default": "default"
+    },
+    {
+      "name": "error-message",
+      "default": ""
+    },
+    {
+      "name": "debug",
+      "default": "false"
+    },
+    {
+      "name": "loading",
+      "default": "false"
+    },
+    {
+      "name": "loading-label",
+      "default": "Sending"
+    },
+    {
+      "name": "ring",
+      "default": "false"
+    },
+    {
+      "name": "--preview-chip-dialog-border",
+      "default": "var(--dialog-border), or var(--border-thin) when preview-dialog-bordered is set"
+    }
+  ]
+}
+{
+  "tag": "mui-quote",
+  "attributes": []
+}
+{
+  "tag": "mui-radio",
+  "attributes": [
+    {
+      "name": "checked",
+      "default": "false"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-radio-group",
+  "attributes": [
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "hide-label",
+      "default": "false"
+    },
+    {
+      "name": "optional",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-range-input",
+  "attributes": [
+    {
+      "name": "min",
+      "default": "0"
+    },
+    {
+      "name": "max",
+      "default": "100"
+    },
+    {
+      "name": "value",
+      "default": "0"
+    },
+    {
+      "name": "step",
+      "default": "1"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "bubble",
+      "default": "false"
+    },
+    {
+      "name": "bubble-format",
+      "default": "number"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "label",
+      "default": "Range input"
+    }
+  ]
+}
+{
+  "tag": "mui-responsive",
+  "attributes": [
+    {
+      "name": "variant",
+      "default": "viewport"
+    },
+    {
+      "name": "observe",
+      "default": "self"
+    }
+  ]
+}
+{
+  "tag": "mui-result-bar",
+  "attributes": [
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "col",
+      "default": "1fr auto"
+    }
+  ]
+}
+{
+  "tag": "mui-rule",
+  "attributes": [
+    {
+      "name": "length",
+      "default": "100%"
+    },
+    {
+      "name": "weight",
+      "default": "thin"
+    },
+    {
+      "name": "direction",
+      "default": "horizontal"
+    }
+  ]
+}
+{
+  "tag": "mui-search-input",
+  "attributes": [
+    {
+      "name": "label",
+      "default": "Search"
+    },
+    {
+      "name": "placeholder",
+      "default": "Search..."
+    },
+    {
+      "name": "value",
+      "default": ""
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "open",
+      "default": "false"
+    },
+    {
+      "name": "autofocus",
+      "default": "false"
+    },
+    {
+      "name": "cancel-label",
+      "default": "Cancel"
+    },
+    {
+      "name": "surface",
+      "default": "default"
+    }
+  ]
+}
+{
+  "tag": "mui-select",
+  "attributes": [
+    {
+      "name": "value",
+      "default": ""
+    },
+    {
+      "name": "options",
+      "default": "[]"
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "hide-label",
+      "default": "false"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "optional",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "appearance",
+      "default": "native"
+    },
+    {
+      "name": "selected-content",
+      "default": "rich"
+    },
+    {
+      "name": "col",
+      "default": "1fr"
+    },
+    {
+      "name": "space",
+      "default": "var(--space-100)"
+    },
+    {
+      "name": "surface",
+      "default": "default"
+    }
+  ]
+}
+{
+  "tag": "mui-skeleton",
+  "attributes": [
+    {
+      "name": "shape",
+      "default": "line"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "width",
+      "default": "100%"
+    },
+    {
+      "name": "lines",
+      "default": "1"
+    },
+    {
+      "name": "loading",
+      "default": "true"
+    }
+  ]
+}
+{
+  "tag": "mui-slide-frame",
+  "attributes": [
+    {
+      "name": "ratio",
+      "default": "16:9"
+    },
+    {
+      "name": "present",
+      "default": "false"
+    },
+    {
+      "name": "active-section",
+      "default": "0"
+    },
+    {
+      "name": "padding",
+      "default": "medium"
+    },
+    {
+      "name": "notes-open",
+      "default": "false"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "hide-header",
+      "default": "false"
+    },
+    {
+      "name": "hide-footer",
+      "default": "false"
+    },
+    {
+      "name": "scroll",
+      "default": "false"
+    },
+    {
+      "name": "fullscreen",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-slide-section",
+  "attributes": []
+}
+{
+  "tag": "mui-smart-card",
+  "attributes": [
+    {
+      "name": "state",
+      "default": "default"
+    },
+    {
+      "name": "number",
+      "default": "0000"
+    },
+    {
+      "name": "variant",
+      "default": "plain"
+    },
+    {
+      "name": "inverted",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-spinner",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "color",
+      "default": "var(--icon-color-default)"
+    },
+    {
+      "name": "duration",
+      "default": "0.8s"
+    },
+    {
+      "name": "label",
+      "default": "Loading"
+    }
+  ]
+}
+{
+  "tag": "mui-status",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "action",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-submenu",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-switch",
+  "attributes": [
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "checked",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "large"
+    }
+  ]
+}
+{
+  "tag": "mui-textarea",
+  "attributes": [
+    {
+      "name": "value",
+      "default": ""
+    },
+    {
+      "name": "disabled",
+      "default": "false"
+    },
+    {
+      "name": "hide-label",
+      "default": "false"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "rows",
+      "default": "4"
+    },
+    {
+      "name": "optional",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "surface",
+      "default": "default"
+    }
+  ]
+}
+{
+  "tag": "mui-time",
+  "attributes": [
+    {
+      "name": "format",
+      "default": "12h"
+    },
+    {
+      "name": "step",
+      "default": "1"
+    },
+    {
+      "name": "start",
+      "default": "00:00"
+    },
+    {
+      "name": "end",
+      "default": "23:59"
+    },
+    {
+      "name": "variant",
+      "default": "\"wheels\""
+    }
+  ]
+}
+{
+  "tag": "mui-time-picker-popover",
+  "attributes": []
+}
+{
+  "tag": "mui-time-picker",
+  "attributes": [
+    {
+      "name": "type",
+      "default": "time"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "surface",
+      "default": "default"
+    }
+  ]
+}
+{
+  "tag": "mui-video-thumbnail",
+  "attributes": [
+    {
+      "name": "alt",
+      "default": ""
+    },
+    {
+      "name": "aspect-ratio",
+      "default": "16 / 9"
+    },
+    {
+      "name": "loading",
+      "default": "lazy"
+    },
+    {
+      "name": "decoding",
+      "default": "async"
+    },
+    {
+      "name": "play",
+      "default": "false"
+    },
+    {
+      "name": "overlay",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-work-log",
+  "attributes": [
+    {
+      "name": "label",
+      "default": "Worked"
+    }
+  ]
+}
+{
+  "tag": "mui-accordion-block",
+  "attributes": [
+    {
+      "name": "heading",
+      "default": "Heading..."
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "level",
+      "default": "3"
+    }
+  ]
+}
+{
+  "tag": "mui-accordion-core",
+  "attributes": [
+    {
+      "name": "open",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-accordion-group",
+  "attributes": [
+    {
+      "name": "exclusive",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-accordion-inline",
+  "attributes": [
+    {
+      "name": "heading",
+      "default": "Heading..."
+    },
+    {
+      "name": "level",
+      "default": "3"
+    }
+  ]
+}
+{
+  "tag": "mui-card-body",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-card",
+  "attributes": [
+    {
+      "name": "borderless",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-card-footer",
+  "attributes": []
+}
+{
+  "tag": "mui-card-header",
+  "attributes": []
+}
+{
+  "tag": "mui-carousel-controller",
+  "attributes": [
+    {
+      "name": "auto-rotate",
+      "default": "false"
+    },
+    {
+      "name": "rotate-interval",
+      "default": "10000"
+    },
+    {
+      "name": "borderless",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-carousel-panel",
+  "attributes": []
+}
+{
+  "tag": "mui-list",
+  "attributes": [
+    {
+      "name": "as",
+      "default": "ul"
+    }
+  ]
+}
+{
+  "tag": "mui-list-item",
+  "attributes": [
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "weight",
+      "default": "regular"
+    }
+  ]
+}
+{
+  "tag": "mui-slat-group",
+  "attributes": []
+}
+{
+  "tag": "mui-slat",
+  "attributes": [
+    {
+      "name": "col",
+      "default": "1fr 1fr; action: minmax(0, 1fr) auto"
+    },
+    {
+      "name": "space",
+      "default": "var(--space-500)"
+    }
+  ]
+}
+{
+  "tag": "mui-v-stack",
+  "attributes": [
+    {
+      "name": "space",
+      "default": "var(--space-500)"
+    },
+    {
+      "name": "alignx",
+      "default": "normal"
+    },
+    {
+      "name": "aligny",
+      "default": "normal"
+    },
+    {
+      "name": "padding",
+      "default": "var(--space-000)"
+    },
+    {
+      "name": "viewport",
+      "default": "false"
+    },
+    {
+      "name": "fill",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-h-stack",
+  "attributes": [
+    {
+      "name": "space",
+      "default": "var(--space-500)"
+    },
+    {
+      "name": "aligny",
+      "default": "flex-start"
+    },
+    {
+      "name": "alignx",
+      "default": "flex-start"
+    },
+    {
+      "name": "padding",
+      "default": "var(--space-000)"
+    },
+    {
+      "name": "viewport",
+      "default": "false"
+    },
+    {
+      "name": "fill",
+      "default": "false"
+    },
+    {
+      "name": "wrap",
+      "default": "nowrap"
+    }
+  ]
+}
+{
+  "tag": "mui-step",
+  "attributes": [
+    {
+      "name": "state",
+      "default": "upcoming"
+    },
+    {
+      "name": "hide-icon",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-stepper",
+  "attributes": [
+    {
+      "name": "direction",
+      "default": "horizontal"
+    },
+    {
+      "name": "active-step",
+      "default": "1"
+    },
+    {
+      "name": "linear",
+      "default": "false"
+    },
+    {
+      "name": "interactive",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-cell",
+  "attributes": [
+    {
+      "name": "align-y",
+      "default": "initial"
+    },
+    {
+      "name": "action",
+      "default": "false"
+    },
+    {
+      "name": "checkbox",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-row",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    }
+  ]
+}
+{
+  "tag": "mui-row-group",
+  "attributes": [
+    {
+      "name": "heading",
+      "default": "false"
+    }
+  ]
+}
+{
+  "tag": "mui-table",
+  "attributes": []
+}
+{
+  "tag": "mui-tab-controller",
+  "attributes": []
+}
+{
+  "tag": "mui-tab-item",
+  "attributes": [
+    {
+      "name": "active",
+      "default": "false"
+    },
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    }
+  ]
+}
+{
+  "tag": "mui-tab-bar",
+  "attributes": [
+    {
+      "name": "size",
+      "default": "medium"
+    },
+    {
+      "name": "variant",
+      "default": "default"
+    },
+    {
+      "name": "stroke",
+      "default": "border"
+    },
+    {
+      "name": "radius",
+      "default": "var(--tab-radius)"
+    },
+    {
+      "name": "active-inset",
+      "default": "false"
+    },
+    {
+      "name": "orientation",
+      "default": "horizontal"
+    },
+    {
+      "name": "speed",
+      "default": "200"
+    },
+    {
+      "name": "full-width",
+      "default": "false"
+    },
+    {
+      "name": "controlsPosition",
+      "default": "bottom"
+    }
+  ]
+}
+{
+  "tag": "mui-tab-panel",
+  "attributes": []
+}

@@ -62,7 +62,7 @@ class KnowledgePage extends HTMLElement {
 
             <story-quicklinks
               heading="Knowledge Areas"
-              links="manifest::Manifest|||compositions::Compositions|||rules::Rules|||keywords::Keywords|||knowledge-mcp::MCP|||agent-output::AI Agent Output|||package-paths::Package Paths"
+              links="manifest::Manifest|||compositions::Compositions|||rules::JSON Rules|||fragments::Fragments|||keywords::Keywords|||knowledge-mcp::MCP|||agent-output::AI Agent Output|||package-paths::Package Paths"
             ></story-quicklinks>
 
             <mui-v-stack id="manifest" space="var(--space-300)">
@@ -90,12 +90,19 @@ class KnowledgePage extends HTMLElement {
             </mui-v-stack>
 
             <mui-v-stack id="rules" space="var(--space-300)">
-              <mui-heading level="3" size="5">Rules</mui-heading>
+              <mui-heading level="3" size="5">JSON Rules</mui-heading>
               <mui-body size="medium">
-                Rules are global AI coding rules for generating Muibook component trees. They define output shape, component naming, slot rules, normalization rules, and design-system constraints.
+                JSON Rules are global AI coding rules for generating Muibook component trees. They define output shape, component naming, slot rules, normalization rules, and design-system constraints.
               </mui-body>
               <mui-body size="medium">
                 The same source rules feed the optimised AI Agent prompt export, so local LLM flows get a smaller contract while the full Knowledge package remains available for larger tooling.
+              </mui-body>
+            </mui-v-stack>
+
+            <mui-v-stack id="fragments" space="var(--space-300)">
+              <mui-heading level="3" size="5">Fragments</mui-heading>
+              <mui-body size="medium">
+                Fragments are shared markdown snippets (like chart data formats and design asset lists) that are injected during the build step. They serve as a single source of truth, ensuring that the JSON Rules output and the Muibook HTML Skills remain perfectly in sync.
               </mui-body>
             </mui-v-stack>
 
@@ -139,7 +146,7 @@ class KnowledgePage extends HTMLElement {
                 import dynamicAttrs from &quot;@muibook/components/dynamic-attrs.json&quot;;<br />
                 import { knowledge } from &quot;@muibook/components/knowledge&quot;;<br />
                 import { compositions } from &quot;@muibook/components/knowledge/compositions&quot;;<br />
-                import { rules } from &quot;@muibook/components/knowledge/rules&quot;;<br />
+                import { rules } from &quot;@muibook/components/knowledge/json-rules&quot;;<br />
                 import { keywords } from &quot;@muibook/components/knowledge/keywords&quot;;<br />
                 import { prompts } from &quot;@muibook/components/agent/prompts&quot;;<br />
                 import { keywords as agentKeywords } from &quot;@muibook/components/agent/keywords&quot;;
@@ -153,7 +160,7 @@ class KnowledgePage extends HTMLElement {
                 /dist/esm/dynamic-attrs.json<br />
                 /dist/esm/knowledge/index.js<br />
                 /dist/esm/knowledge/compositions/index.js<br />
-                /dist/esm/knowledge/rules/index.js<br />
+                /dist/esm/knowledge/json-rules/index.js<br />
                 /dist/esm/knowledge/keywords/index.js<br />
                 /dist/esm/agent/prompts/index.js<br />
                 /dist/esm/agent/keywords/index.js

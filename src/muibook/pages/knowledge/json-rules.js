@@ -34,8 +34,8 @@ class KnowledgeRulesPage extends HTMLElement {
       <style>${styles}</style>
 
       <story-template
-        title="Rules"
-        github="https://github.com/michaeltrilford/muibook/blob/main/src/knowledge/rules.ts"
+        title="JSON Rules"
+        github="https://github.com/michaeltrilford/muibook/blob/main/src/knowledge/json-rules.ts"
         x-large
       >
         <div class="content-container resource-page">
@@ -43,7 +43,7 @@ class KnowledgeRulesPage extends HTMLElement {
           <mui-v-stack space="var(--space-600)">
             <mui-v-stack space="var(--space-400)">
               <mui-body size="medium">
-                Rules are the global AI coding contract for generating Muibook component trees. They describe output shape, component normalization, slot behavior, and design-system constraints.
+                JSON Rules are the global AI coding contract for generating Muibook component trees. They describe output shape, component normalization, slot behavior, and design-system constraints.
               </mui-body>
               <mui-body size="medium">
                 They are intentionally separate from component API docs. APIs explain what a component supports; rules explain how an assistant should produce valid Muibook structures.
@@ -73,25 +73,22 @@ class KnowledgeRulesPage extends HTMLElement {
             <mui-v-stack space="var(--space-300)">
               <mui-heading level="3" size="5">Package Imports</mui-heading>
               <mui-code scrollable>
-                import { rules } from &quot;@muibook/components/knowledge/rules&quot;;<br />
-                import { prompts } from &quot;@muibook/components/agent/prompts&quot;;
+                import { rules } from &quot;@muibook/components/knowledge/json-rules&quot;;
               </mui-code>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
               <mui-heading level="3" size="5">Dist Paths</mui-heading>
               <mui-code scrollable>
-                /dist/esm/knowledge/rules/index.js<br />
-                /dist/esm/agent/prompts/index.js<br />
-                /dist/types/knowledge/rules.d.ts
+                /dist/esm/knowledge/json-rules/index.js<br />
+                /dist/types/knowledge/json-rules.d.ts
               </mui-code>
             </mui-v-stack>
 
             <mui-v-stack space="var(--space-300)">
               <mui-heading level="3" size="5">Knowledge Repo</mui-heading>
               <mui-code scrollable>
-                https://github.com/michaeltrilford/muibook-knowledge<br /><br />
-                /rules.ts
+                https://github.com/michaeltrilford/muibook-knowledge/blob/main/json-rules.ts
               </mui-code>
             </mui-v-stack>
           </mui-v-stack>
@@ -102,4 +99,4 @@ class KnowledgeRulesPage extends HTMLElement {
   }
 }
 
-customElements.define("knowledge-rules-page", KnowledgeRulesPage);
+customElements.define("knowledge-json-rules-page", KnowledgeRulesPage);

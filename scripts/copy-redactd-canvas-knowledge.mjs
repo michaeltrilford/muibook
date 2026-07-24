@@ -10,7 +10,7 @@ const filesToCopy = [
   { src: "public/custom-elements.json", dest: "custom-elements.json" },
   { src: "public/dynamic-attrs.json", dest: "dynamic-attrs.json" },
   { src: "DESIGN.md", dest: "DESIGN.md" },
-  { src: "src/knowledge/rules.ts", dest: "rules.ts" },
+  { src: "src/knowledge/json-rules.ts", dest: "json-rules.ts" },
   { src: "src/knowledge/compositions.ts", dest: "compositions.ts" },
   { src: "src/knowledge/keywords.ts", dest: "keywords.ts" },
   { src: "skills/muibook-components/SKILL.md", dest: "skills/muibook-components/SKILL.md" },
@@ -18,6 +18,11 @@ const filesToCopy = [
 
 console.log(`Copying Redactd Canvas knowledge files to: ${destDir}`);
 fs.mkdirSync(destDir, { recursive: true });
+
+const legacyFiles = ["rules.ts"];
+for (const file of legacyFiles) {
+  fs.rmSync(path.join(destDir, file), { force: true });
+}
 
 for (const { src, dest } of filesToCopy) {
   const srcPath = path.join(sourceDir, src);

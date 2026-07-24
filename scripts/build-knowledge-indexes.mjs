@@ -102,7 +102,7 @@ const resourceIndex = {
     },
     {
       id: "rules",
-      file: "rules.ts",
+      file: "json-rules.ts",
       mcpUri: "muibook://rules",
       kind: "generation-rules",
       useWhen: "Generating or reviewing component trees.",

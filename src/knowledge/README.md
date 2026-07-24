@@ -22,7 +22,7 @@ This helps clients such as Codex, Antigravity, Claude Code, and OpenCode choose 
 - `skill-index.json` — machine-readable index of authored skill guides.
 - `knowledge-map.md` — the recommended front door for agents and humans exploring the bundle.
 - `mcp-instructions.md` — short MCP routing instructions for agent clients.
-- `rules.ts` — global Muibook component-tree generation rules for AI tools.
+- `json-rules.ts` — global Muibook component-tree generation rules for AI tools.
 - `keywords.ts` — lightweight keyword mappings that help route natural-language intent to Muibook components.
 - `compositions.ts` — curated component-tree examples and composition-story metadata that show realistic Muibook patterns.
 - `skills/create-web-components/SKILL.md` — public skill guide for building and reviewing native Web Components with this architecture.

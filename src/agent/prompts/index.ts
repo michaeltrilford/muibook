@@ -1,5 +1,5 @@
 import { agentCompositions } from "../../knowledge/compositions";
-import { rules } from "../../knowledge/rules";
+import { rules } from "../../knowledge/json-rules";
 
 export const prompts = [
   {

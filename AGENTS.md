@@ -56,6 +56,7 @@ When a component uses slots:
 - When using `mui-code` inside body copy or list text, add the `inline` attr; otherwise it renders as a block code surface.
 - Keep `AGENTS.md` and `DESIGN.md` at the repo root. They are copied to the knowledge repo for agent/plugin context.
 - Keep `src/knowledge` for authored knowledge sources: global rules, keyword mappings, composition examples, skill files, and MCP/front-door docs.
+- When updating high-level composition rules (like layout or slot patterns), you must update them in **both** `src/knowledge/json-rules.ts` (for Redactd JSON tree generation) and the hardcoded `Composition Rules` string template in `scripts/build-muibook-skill.mjs` (for the Markdown skill).
 - In `public/CHANGELOG.md`, use `_Status: Upcoming_` for the active next version section and `_Status: Released_` for published package sections.
 - Component API and UX guidance should live in component `api.ts` and `doc.ts` files so the CEM stays current.
 - Story props panels are often defined locally in the Muibook story page via `propItems` arrays. Do not add or reshape component `doc.ts` files just to populate a props panel unless the user explicitly wants that information added to the docs/CEM layer too.

@@ -720,9 +720,9 @@
       "import": "./dist/esm/knowledge/index.js",
       "types": "./dist/types/knowledge/index.d.ts"
     },
-    "./knowledge/rules": {
-      "import": "./dist/esm/knowledge/rules/index.js",
-      "types": "./dist/types/knowledge/rules.d.ts"
+    "./knowledge/json-rules": {
+      "import": "./dist/esm/knowledge/json-rules/index.js",
+      "types": "./dist/types/knowledge/json-rules.d.ts"
     },
     "./knowledge/compositions": {
       "import": "./dist/esm/knowledge/compositions/index.js",

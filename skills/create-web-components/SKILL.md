@@ -158,7 +158,7 @@ Keep human guidance, generated metadata, and runtime/export metadata separate.
 - `dynamic-attrs.json`: runtime and destination-only structural attrs that tools may need to preserve, apply, or strip when wrapping/exporting components.
 - `DESIGN.md`: portable design direction, token architecture, theme behavior, and component mappings.
 - `AGENTS.md`: coding-agent operating rules for working in the component repo.
-- `rules.ts`, `keywords.ts`, and `compositions.ts`: AI-oriented generation rules, keyword routing, and example component trees.
+- `json-rules.ts`, `keywords.ts`, and `compositions.ts`: AI-oriented generation rules, keyword routing, and example component trees.
 - `skills/create-web-components/SKILL.md`: a compact skill guide for agents and developers that need the architectural pattern without loading every repo file.
 
 Do not put destination/runtime attrs into the CEM as if they are public user API. Keep the CEM for authored component contracts and use `dynamic-attrs.json` for builder, wrapper, and export behavior.

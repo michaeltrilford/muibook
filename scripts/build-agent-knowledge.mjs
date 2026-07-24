@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-const rulesPath = "src/knowledge/rules.ts";
+const rulesPath = "src/knowledge/json-rules.ts";
 const compositionsPath = "src/knowledge/compositions.ts";
 const keywordsPath = "src/knowledge/keywords.ts";
 
@@ -20,7 +20,7 @@ for (const path of [rulesPath, compositionsPath, keywordsPath]) {
 writeFile(
   agentPromptsPath,
   `import { agentCompositions } from "../../knowledge/compositions";
-import { rules } from "../../knowledge/rules";
+import { rules } from "../../knowledge/json-rules";
 
 export const prompts = [
   {

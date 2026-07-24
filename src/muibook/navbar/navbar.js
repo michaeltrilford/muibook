@@ -139,7 +139,8 @@ class appNavbar extends HTMLElement {
           <app-navbar-link link="/plugins" title="Plugins & MCP"></app-navbar-link>
           <app-navbar-link link="/manifest" title="Manifest"></app-navbar-link>
           <app-navbar-link link="/knowledge-compositions" title="Compositions"></app-navbar-link>
-          <app-navbar-link link="/knowledge-rules" title="Rules"></app-navbar-link>
+          <app-navbar-link link="/json-rules" title="JSON Rules"></app-navbar-link>
+          <app-navbar-link link="/knowledge-fragments" title="Fragments"></app-navbar-link>
           <app-navbar-link link="/knowledge-keywords" title="Keywords"></app-navbar-link>
         </app-navbar-section>
         <app-navbar-section heading="AI Agent">

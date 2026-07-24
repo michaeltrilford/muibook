@@ -2,7 +2,12 @@ export const muiApi = {
   "mui-slat": {
     description: "Arranges leading and trailing row content with optional action and accessory treatments.",
     attributes: [
-      { name: "variant", type: { text: '"header" | "row" | "action"' }, description: "Sets the slat layout and interactive presentation." },
+      {
+        name: "variant",
+        type: { text: '"header" | "row" | "action"' },
+        description:
+          "Sets the slat layout and interactive presentation. Explicitly set variant='row' for standard row slats unless creating a header (variant='header'), interactive action slat (variant='action'), or custom layout; Slat items inside SlatGroup or CardBody require an explicit variant for automatic layout and card alignment.",
+      },
       {
         name: "col",
         type: { text: "string" },

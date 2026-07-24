@@ -20,7 +20,7 @@ const filesToCopy = [
   { src: "src/knowledge/index.ts", dest: "index.ts" },
   { src: "src/knowledge/knowledge-map.md", dest: "knowledge-map.md" },
   { src: "src/knowledge/mcp-instructions.md", dest: "mcp-instructions.md" },
-  { src: "src/knowledge/rules.ts", dest: "rules.ts" },
+  { src: "src/knowledge/json-rules.ts", dest: "json-rules.ts" },
   { src: "src/knowledge/compositions.ts", dest: "compositions.ts" },
   { src: "src/knowledge/keywords.ts", dest: "keywords.ts" },
   { src: "skills/create-web-components/SKILL.md", dest: "skills/create-web-components/SKILL.md" },
@@ -29,11 +29,12 @@ const filesToCopy = [
   { src: "skills/style-web-components/SKILL.md", dest: "skills/style-web-components/SKILL.md" },
 ];
 
-const legacySkillFiles = [
+const legacyFiles = [
   "create-web-components-skill.md",
   "create-ux-guidelines-skill.md",
   "compose-web-components-skill.md",
   "style-web-components-skill.md",
+  "rules.ts"
 ];
 
 console.log(`Copying knowledge files to: ${destDir}`);
@@ -42,7 +43,7 @@ if (!fs.existsSync(destDir)) {
   fs.mkdirSync(destDir, { recursive: true });
 }
 
-for (const file of legacySkillFiles) {
+for (const file of legacyFiles) {
   fs.rmSync(path.join(destDir, file), { force: true });
 }
 

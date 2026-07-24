@@ -6,7 +6,7 @@ These files are intentionally optimized for smaller context windows, such as the
 
 The source content lives in `src/knowledge`:
 
-- `src/knowledge/rules.ts` contains global generation rules.
+- `src/knowledge/json-rules.ts` contains global generation rules.
 - `src/knowledge/compositions.ts` contains composition examples and selects which examples are included in the lightweight agent prompt.
 - `src/knowledge/keywords.ts` contains keyword mappings and selects which keyword groups are included in the lightweight agent keyword export.
 

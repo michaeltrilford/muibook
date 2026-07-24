@@ -1,6 +1,6 @@
 import { agentCompositionKeys, agentCompositions, compositionConfig, compositionStories, compositions } from "./compositions";
 import { agentKeywordKeys, agentKeywords, keywords } from "./keywords";
-import { rules } from "./rules";
+import { rules } from "./json-rules";
 
 export { agentCompositionKeys, agentCompositions, agentKeywordKeys, agentKeywords, compositionConfig, compositionStories, compositions, keywords, rules };
 
