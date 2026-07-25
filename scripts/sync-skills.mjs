@@ -22,6 +22,10 @@ const filesToCopy = [
     src: "skills/redactd-canvas-muibook/SKILL.md",
     dest: "public/skills/redactd-canvas-muibook/SKILL.md",
   },
+  {
+    src: "skills/muibook-json-rules/SKILL.md",
+    dest: "public/skills/muibook-json-rules/SKILL.md",
+  },
 ];
 
 const legacyFiles = [

@@ -18,6 +18,7 @@ const filesToCopy = [
   { src: "src/knowledge/keywords.ts", dest: "keywords.ts" },
   { src: "skills/muibook-components/SKILL.md", dest: "skills/muibook-components/SKILL.md" },
   { src: "skills/redactd-canvas-muibook/SKILL.md", dest: "skills/redactd-canvas-muibook/SKILL.md" },
+  { src: "skills/muibook-json-rules/SKILL.md", dest: "skills/muibook-json-rules/SKILL.md" },
 ];
 
 const pluginSkillDirs = [

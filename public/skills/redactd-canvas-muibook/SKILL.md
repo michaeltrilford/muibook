@@ -38,7 +38,11 @@ For native Muibook components and compositions:
   - The sidebar navigation items belong in `Drawer`'s primary slot (unslotted `VStack` of `Button`/`Link` items with `variant="tertiary"`, **`align="start"`**, and `slot="before"` `_Icon` items). All navigation buttons inside `Drawer` **MUST explicitly set `align: "start"`**.
   - The main page content **MUST** be wrapped in a direct child `Div` with `props: { "slot": "page" }`.
 - **No Hardcoded White/Light Surface Colors:** NEVER output `var(--white)`, `style: "background: white"`, `#ffffff`, or `color: black` based on visual wireframe image backgrounds or drawing artifacts. All component surface and text styling must be driven by Redactd component variants (`variant: "primary"`, `variant: "secondary"`, `variant: "tertiary"`, etc.) and semantic design tokens so layouts adapt seamlessly to both light and dark mode.
-- **Slat vs. HStack Rule:** Prefer `SlatGroup` (`props.usage: "card"`) and `Slat` (`props.variant: "row"`, `props.col: "1fr auto"`) over ad hoc `HStack` for row-like items with primary content on the left (`slot="start"`) and secondary metadata, timestamp, badge, or action on the right (`slot="end"`). Always set `variant="row"` (or `"header"` / `"action"`) explicitly on `Slat`.
+- **Slat vs. HStack Rule:** Prefer `SlatGroup` and `Slat` over ad-hoc `HStack` for row items with primary content on the left (`slot="start"`) and secondary metadata/action on the right (`slot="end"`).
+  - **Variant Selection & Columns:** Always set `variant` explicitly (`"row"`, `"action"`, or `"header"`):
+    - **`variant="action"`**: Use for interactive or clickable rows (e.g. navigation, chevrons, trailing buttons). Automatically defaults columns to `minmax(0, 1fr) auto` to push trailing content to the far end.
+    - **`variant="row"`**: Use for standard informative rows. Defaults columns to `1fr 1fr`. If the trailing end content is small (like a timestamp or status) and shouldn't take up 50% width, set `col: "1fr auto"` or `col: "minmax(0, 1fr) auto"`.
+    - **`variant="header"`**: Use for group section headers.
 
 ## 3. Redactd Tree Contract
 
@@ -167,7 +171,9 @@ When a wireframe image is provided:
 6. Preserve repeated visual patterns as repeated component structures.
 7. Use a generic Muibook layout component when the intended component is ambiguous. Do not invent components or attributes.
 8. **No Hardcoded Canvas Colors or Tokens:** Treat white/light paper drawing canvas colors, outline colors, or sketch backgrounds purely as visual drawing artifacts—**NEVER** convert them to `var(--white)`, `#ffffff`, `white`, `color: black`, or hardcoded inline background styles. Hardcoding static white or light colors breaks Redactd's theme adaptation and dark mode.
-9. **Prefer Slat over Custom HStack:** For row-like wireframe items with primary text/label on the left and secondary metadata, status, timestamp, badge, count, or action button on the right, use `Slat` (or `SlatGroup` for repeated rows) with `slot="start"` and `slot="end"` instead of building an ad-hoc `HStack`. Always explicitly set `variant="row"` (or `"header"` / `"action"`) on `Slat`.
+9. **Prefer Slat over Custom HStack:** For row-like wireframe items with primary content on the left and metadata/status/action on the right, use `Slat` (or `SlatGroup` for repeated rows).
+   - If the wireframe row shows a trailing chevron, arrow, or interactive trigger, use `variant="action"` (which automatically applies `col="minmax(0, 1fr) auto"`).
+   - For non-interactive data rows, use `variant="row"`. Leave `col` unset unless the trailing content requires asymmetric column tracks (e.g. `col="1fr auto"`).
 10. **Use Drawer for Side Navigation & Panels:** When a wireframe or prompt shows a sidebar, side menu, collapsible filter panel, or slide-out overlay, use the `Drawer` component as root (`open: true`, `side: "left"`, `variant: "persistent"`). All navigation `Button` and `Link` items inside `Drawer` **MUST explicitly set `align: "start"`** and `variant: "tertiary"` with `slot="before"` icons.
 11. Produce a reasonable first pass without blocking on minor ambiguity. Ask for clarification only when uncertainty would materially change the workflow or component hierarchy.
 
@@ -184,23 +190,23 @@ Keep datasets as structured JSON arrays. Do not stringify them or generate JavaS
 
 ## 8. Tree Rules
 
-- Use only component types and props from the selected Muibook knowledge source.
-- Never invent Redactd component names, aliases, props, CSS tokens, or Material UI names.
-- **Rule 27 (Mandatory CSS Units)**: All length props (`height`, `width`, `min-height`, `gap`, `padding`, `space`) MUST include valid CSS units (e.g. `"240px"`, `"320px"`, `"100%"`). NEVER output bare numeric strings like `"240"` or `"320"`.
-- **Rule 28 (Slat & SlatGroup Rows)**: Prefer `SlatGroup` (`props.usage: "card"`) and `Slat` (`props.variant: "row"`, `props.col: "1fr auto"`) over ad hoc `HStack` for row-like wireframe items with primary content on the left (`slot="start"`) and secondary metadata, timestamp, badge, or action on the right (`slot="end"`).
-- **Drawer Shell Layout**: When a wireframe or prompt requests a sidebar navigation app shell, use `Drawer` as the root shell (`variant: "persistent"` or `"push"`, `open: true`, `side: "left"`), and wrap all main page content in a `Div` with `props.slot: "page"`.
-- Root additions should usually use `Container` with `center: true` and `size: "medium"` unless the user asks for a fragment or a `Drawer` app shell.
-- Card content must be inside a direct child `CardBody`.
-- Button and Link text belongs on the component props, not inside a child `Body`.
-- Use documented spacing tokens such as `var(--space-300)` rather than raw token numbers.
-- Layout spacing props such as `space` and `padding` must use complete CSS token references such as `var(--space-400)`. Do not use `space-400`, `400`, or another bare scale value; use `var(--space-000)` for zero spacing.
-- For equal Grid columns, use `col: "repeat(N, minmax(0, 1fr))"`. Do not pass a numeric count or repeated bare tracks such as `1fr 1fr 1fr`.
-- Prefer `Responsive` with `variant: "container"` for reusable components and compositions.
-- **No Hardcoded White/Light Surface Colors:** NEVER output `var(--white)`, `style: "background: white"`, `#ffffff`, or `color: black` based on visual wireframe image backgrounds. All component surface and text styling must be driven by Redactd component variants (`variant: "primary"`, `variant: "secondary"`, `variant: "tertiary"`, etc.) and semantic design tokens so layouts adapt seamlessly to both light and dark mode.
-- Avoid `Message` for inline helper text, form help, mid-content notes, or routine status copy. Reserve `Message` for persistent page-level notices.
+When running in the plugin environment, inspect `assets/muibook-knowledge/json-rules.ts`; when using the `muibook-knowledge` MCP, call `get_rules` to read `json-rules`. For standalone use, follow the self-contained summary of core tree construction rules below:
+
+- **Component API Compliance:** Use only component types and props from the selected Muibook knowledge source. Never invent Redactd component names, aliases, props, CSS tokens, or Material UI names.
+- **Slat Column Defaults:** `variant="action"` automatically defaults to `col="minmax(0, 1fr) auto"` so trailing actions stay end-aligned. Standard `variant="row"` defaults to `col="1fr 1fr"`. Only set `props.col` explicitly (e.g. `"1fr auto"`) when a non-action row needs a constrained trailing column.
+- **Mandatory CSS Units:** All length props (`height`, `width`, `min-height`, `gap`, `padding`, `space`) MUST include valid CSS units (e.g. `"240px"`, `"320px"`, `"100%"`). NEVER output bare numeric strings like `"240"` or `"320"`.
+- **Slat & SlatGroup Rows:** Prefer `SlatGroup` and `Slat` over ad-hoc `HStack` for structured row items. Place primary row content in `slot="start"`, trailing metadata/status/action in `slot="end"`, and leading avatar/icon in `slot="accessory"`. Always specify an explicit `variant` (`"row"`, `"action"`, or `"header"`).
+- **Drawer Shell Layout:** When a wireframe or prompt requests a sidebar navigation app shell, use `Drawer` as the root shell (`variant: "persistent"` or `"push"`, `open: true`, `side: "left"`), and wrap all main page content in a `Div` with `props.slot: "page"`.
+- **Root Containers:** Root additions should usually use `Container` with `center: true` and `size: "medium"` unless the user asks for a fragment or a `Drawer` app shell.
+- **Card Hierarchy:** Card content must be inside a direct child `CardBody`.
+- **Action Labels:** Button and Link text belongs on the component props, not inside a child `Body`.
+- **Spacing Tokens:** Layout spacing props such as `space` and `padding` must use complete CSS token references such as `var(--space-400)`. Do not use `space-400`, `400`, or another bare scale value; use `var(--space-000)` for zero spacing.
+- **Grid Column Tracks:** For equal Grid columns, use `col: "repeat(N, minmax(0, 1fr))"`. Do not pass a numeric count or repeated bare tracks such as `1fr 1fr 1fr`.
+- **Responsiveness:** Prefer `Responsive` with `variant: "container"` for reusable components and compositions.
+- **No Hardcoded Surface Colors:** NEVER output `var(--white)`, `style: "background: white"`, `#ffffff`, or `color: black` based on visual wireframe image backgrounds. All surface and text styling must be driven by Redactd component variants and semantic design tokens.
+- **Notice Usage:** Avoid `Message` for inline helper text, form help, mid-content notes, or routine status copy. Reserve `Message` for persistent page-level notices.
 
 ## 9. Response
 
 - API workflow with `ok: true`: summarize what was added and include `canvas_url`.
 - API workflow with `ok: false`: show the returned `error` and `request_id`.
-

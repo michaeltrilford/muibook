@@ -55,6 +55,12 @@ const skillIndex = {
       title: "Redactd Canvas: Muibook",
       useWhen: "Creating, adding, sending, or modifying Muibook UI on an active Redactd canvas.",
     },
+    {
+      id: "muibook-json-rules",
+      file: "skills/muibook-json-rules/SKILL.md",
+      title: "Muibook JSON Rules",
+      useWhen: "Authoritative rules, component mappings, chart data shapes, and MuiScan normalization guidelines for generating valid Muibook JSON trees.",
+    },
   ],
 };
 
