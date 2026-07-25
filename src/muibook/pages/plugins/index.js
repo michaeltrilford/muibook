@@ -114,7 +114,7 @@ class PluginsPage extends HTMLElement {
                         <img slot="image" src="${RedactdCanvasImage}" alt="Redactd Canvas interface for composing Muibook layouts" />
                       </mui-image>
                       <mui-v-stack space="var(--space-200)">
-                        <mui-badge variant="neutral">Plugin</mui-badge>
+                        <mui-badge variant="neutral">Codex Plugin</mui-badge>
                         <mui-heading level="3" size="4">Redactd Canvas</mui-heading>
                         <mui-body size="medium">
                           Prompt complete Muibook layouts from Codex and paste them directly into an active Redactd canvas. The full plugin also includes an API fallback for headless creation.
@@ -137,7 +137,7 @@ class PluginsPage extends HTMLElement {
                         <img slot="image" src="${DesignLoopImage}" alt="Redactd Design Loop showing interface critique and iteration results" />
                       </mui-image>
                       <mui-v-stack space="var(--space-200)">
-                        <mui-badge variant="neutral">Plugin</mui-badge>
+                        <mui-badge variant="neutral">Codex Plugin</mui-badge>
                         <mui-heading level="3" size="4">Redactd Design Loop</mui-heading>
                         <mui-body size="medium">
                           Review a Redactd interface through structured critique, persona feedback, task outcomes, and iteration passes. Viewing the Design Loop documentation requires a Redactd account and sign-in.
