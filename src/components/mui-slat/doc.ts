@@ -207,6 +207,7 @@ export const muiDocs: MuiDocs = {
           "description": "Uses Card size none with x-small Slats to create an edge-to-edge layout on a constrained surface.",
           "list": [
             "Use x-small Slats and radius='none' on action Slats inside Card size none layouts.",
+            "Card size none disables Slat Group's negative alignment offset while retaining the Slat's internal row inset.",
             "Keep content hierarchy clear as the card narrows."
           ]
         }

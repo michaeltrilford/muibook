@@ -191,7 +191,7 @@ class MuiTimePicker extends HTMLElement {
           readonly>
           <mui-button slot="after"><mui-icon-timer></mui-icon-timer></mui-button>
         </mui-input>
-        <mui-menu>
+        <mui-menu width="min(100%, 24rem)" style="overflow: hidden;">
           <mui-time-picker-popover>
           <div class="time-pane">
           <mui-time variant="${timeVariant}" value="${this.selectedTime}" slotted style="--time-picker-radius: var(--stroke-size-200);"></mui-time>

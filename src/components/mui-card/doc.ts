@@ -22,7 +22,7 @@ export const muiDocs: MuiDocs = {
         "Card size controls section padding, not Card width. Let Grid, Container, or the parent layout determine its width; use an explicit width or max-width only for intentionally constrained reading or form layouts.",
         "Set size on Card to apply one spacing density to its direct Header, Body, and Footer. Medium is the default, small is compact, large is spacious, and none is edge-to-edge.",
         "Set size on an individual Card section only when Card itself has no size and the sections intentionally use different spacing densities.",
-        "Card-aware Tables, Accordions, and Slats remain edge-to-edge inside Card Body; their internal content inset follows the Card size.",
+        "Card-aware Tables, Accordions, and Slats remain edge-to-edge inside Card Body; their internal content inset follows the Card size. With size none, Slats retain their standard row inset while Slat Group disables its negative alignment offset.",
         "Treat inherited insets as alignment behavior, not a requirement to match child density to Card size. Choose Table, Accordion, or Slat size from the content, available width, readability, and touch-target needs.",
         "Card Body size-offset stories are diagnostic references, not canonical compositions. Medium is the safe default for complete Slat groups; avoid none or small Cards for them unless the content has been validated. Tables and Accordions can work across Card sizes when their content remains usable.",
         "Use usage=grid for repeated Cards in Grid, or usage=h-stack in an H Stack with aligny=stretch, when their headers and footers should align. Direct children retain document order, Card Body expands to absorb available height, and composed elements such as Rule remain auto-sized.",
@@ -180,7 +180,8 @@ export const muiDocs: MuiDocs = {
           "list": [
             "Use this as an offset and alignment reference, not a recommended composition for every Card size.",
             "Prefer medium or large Cards for complete Slat groups; none and small can be too constrained for this content.",
-            "Set the Slat size explicitly when reviewing how its density interacts with Card spacing."
+            "Set the Slat size explicitly when reviewing how its density interacts with Card spacing.",
+            "Card size none keeps the Slat surface edge-to-edge, disables the negative Slat Group offset, and retains the Slat's standard internal row inset."
           ]
         },
         {

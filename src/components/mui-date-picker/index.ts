@@ -299,7 +299,7 @@ class MuiDatePicker extends HTMLElement {
           readonly>
           ${showDate ? '<mui-button slot="after"><mui-icon-calendar></mui-icon-calendar></mui-button>' : ""}
         </mui-input>
-        <mui-menu>
+        <mui-menu width="max-content">
           <mui-date-picker-popover>
           ${showDate ? `<div class="calendar-pane"><mui-calendar value="${this.selectedDate}" slotted></mui-calendar></div>` : ""}
           ${showDate && showTime ? `<mui-rule direction="vertical" length="auto"></mui-rule>` : ""}

@@ -168,6 +168,7 @@ class MuiCardBody extends HTMLElement {
           box-sizing: border-box;
           --card-layout-inline-space: var(--space-500);
           --card-slat-inline-space: var(--space-400);
+          --card-slat-offset: var(--card-slat-inline-space);
         }
 
         @media (min-width: 768px) {
@@ -196,7 +197,8 @@ class MuiCardBody extends HTMLElement {
 
         :host([size="none"]) {
           --card-layout-inline-space: var(--space-000);
-          --card-slat-inline-space: var(--space-000);
+          --card-slat-inline-space: var(--space-400);
+          --card-slat-offset: var(--space-000);
         }
 
         :host([size="none"][inner-space]),

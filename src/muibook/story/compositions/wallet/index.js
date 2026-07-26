@@ -252,7 +252,7 @@ class compWallet extends HTMLElement {
                       <mui-icon-subtract slot="end"></mui-icon-subtract>
                     </mui-icon-toggle>
                   </mui-button>
-                  <mui-menu>
+                  <mui-menu width="max-content">
                     <mui-v-stack space="var(--space-300)" style="padding: var(--space-300) var(--space-500) var(--space-500) var(--space-500);">
                     <mui-heading size="3" level="2">Preview</mui-heading>
                     <mui-smart-card
@@ -308,7 +308,7 @@ class compWallet extends HTMLElement {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-icon-subtract slot=&quot;end&quot;&gt;&lt;/mui-icon-subtract&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-icon-toggle&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mui-button&gt;<br/><br />
-          &nbsp;&nbsp;&lt;mui-menu&gt;<br /><br>
+          &nbsp;&nbsp;&lt;mui-menu width=&quot;max-content&quot;&gt;<br /><br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-v-stack space=&quot;var(--space-300)&quot; style=&quot;padding: var(--space-300) var(--space-500) var(--space-500) var(--space-500);&quot;&gt;<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mui-heading size=&quot;3&quot; level=&quot;2&quot;&gt;Preview&lt;/mui-heading&gt;<br/>
 

@@ -19,7 +19,7 @@ _Status: Upcoming_
 
 ### Improved
 
-- Tables, Accordions, and Slats composed in Card Body now use Card-size-aware insets, including edge-to-edge `size="none"` treatment.
+- Tables, Accordions, and Slats composed in Card Body now use Card-size-aware insets. Edge-to-edge `size="none"` Slats retain their internal row inset without applying a negative Slat Group offset.
 - Card, Accordion, Table, and Slat stories now include size comparisons for reviewing density and Card offsets.
 - Market Sparkline stories now compare all four scale treatments, and the chart API guidance consistently identifies the bottom time scale and right-side value scale.
 - Structured chart-data knowledge now documents exact JSON contracts, finite numeric values, chronological and unique times, valid OHLC relationships, Financial Bar Chart units and signed values, and raw-series requirements for Comparison Chart modes.
@@ -27,6 +27,8 @@ _Status: Upcoming_
 
 ### Fixed
 
+- Rich-content Dropdown stories and the internal Date and Time Picker menus now declare explicit viewport-safe widths so Calendar, Timeslot, Smart Card, and upload content remain inside the Menu surface.
+- The internal Time Picker Menu now clips its scrolling wheel content to the rounded surface boundary.
 - Badge documentation, JSON rules, and generated skills now use only the supported `neutral | positive | warning | attention | overlay` variants and explicitly reject `secondary`, `default`, and `error`; unsupported runtime values safely fall back to neutral.
 - `mui-avatar-chip` now supports `background` and `background-color`, forwarding named treatments or custom CSS colors to its internal avatar and documenting both options in a dedicated story.
 

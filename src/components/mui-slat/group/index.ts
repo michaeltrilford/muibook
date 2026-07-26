@@ -82,9 +82,9 @@ class MuiSlatGroup extends HTMLElement {
     const isAccordion = this.usage === "accordion";
 
     const SlatOffset = `
-      margin-left: calc(-1 * var(--card-slat-inline-space, var(--space-400)));
-      margin-right: calc(-1 * var(--card-slat-inline-space, var(--space-400)));
-      width: calc(100% + (var(--card-slat-inline-space, var(--space-400)) * 2));
+      margin-left: calc(-1 * var(--card-slat-offset, var(--card-slat-inline-space, var(--space-400))));
+      margin-right: calc(-1 * var(--card-slat-offset, var(--card-slat-inline-space, var(--space-400))));
+      width: calc(100% + (var(--card-slat-offset, var(--card-slat-inline-space, var(--space-400))) * 2));
     `;
 
     const RuleMobileOffset = `

@@ -964,11 +964,11 @@ class storyCards extends HTMLElement {
       </story-card>
 
       <story-card id="body-size-slat-offsets" title="${storyMeta["body-size-slat-offsets"].title}" description="${storyMeta["body-size-slat-offsets"].description}" usage="${storyMeta["body-size-slat-offsets"].usage}">
-        <mui-grid slot="body" col="repeat(2, minmax(0, 1fr))" space="var(--space-400)">
+        <mui-grid slot="body" col="minmax(0, 1fr)" space="var(--space-400)">
           <mui-card usage="grid" size="none">
             <mui-card-header>
-              <mui-heading size="3">Title</mui-heading>
-              <mui-body>Description</mui-body>
+              <mui-heading size="5">Title (Visual Test Only - Avoid)</mui-heading>
+              <mui-body size="small">Description</mui-body>
             </mui-card-header>
             <mui-card-body>
 
@@ -1014,7 +1014,7 @@ class storyCards extends HTMLElement {
           </mui-card>
           <mui-card usage="grid" size="small">
             <mui-card-header>
-              <mui-heading size="3">Title</mui-heading>
+              <mui-heading size="4">Title</mui-heading>
               <mui-body>Description</mui-body>
             </mui-card-header>
             <mui-card-body>
@@ -1108,8 +1108,8 @@ class storyCards extends HTMLElement {
 
           <mui-card usage="grid" size="large">
             <mui-card-header>
-              <mui-heading size="3">Title</mui-heading>
-              <mui-body>Description</mui-body>
+              <mui-heading size="2">Title</mui-heading>
+              <mui-body size="large">Description</mui-body>
             </mui-card-header>
             <mui-card-body>
 
@@ -1166,11 +1166,11 @@ class storyCards extends HTMLElement {
       </story-card>
 
       <story-card id="body-size-accordion-offsets" title="${storyMeta["body-size-accordion-offsets"].title}" description="${storyMeta["body-size-accordion-offsets"].description}" usage="${storyMeta["body-size-accordion-offsets"].usage}">
-        <mui-grid slot="body" col="repeat(2, minmax(0, 1fr))" space="var(--space-400)">
+        <mui-grid slot="body" col="minmax(0, 1fr)" space="var(--space-400)">
           <mui-card usage="grid" size="none">
             <mui-card-header>
-              <mui-heading size="3">None</mui-heading>
-              <mui-body>Accordion</mui-body>
+              <mui-heading size="6">None (Visual Test Only - Avoid)</mui-heading>
+              <mui-body size="x-small">Accordion</mui-body>
             </mui-card-header>
             <mui-rule direction="horizontal"></mui-rule>
             <mui-card-body>
@@ -1187,8 +1187,8 @@ class storyCards extends HTMLElement {
 
           <mui-card usage="grid" size="small">
             <mui-card-header>
-              <mui-heading size="3">Small</mui-heading>
-              <mui-body>Accordion</mui-body>
+              <mui-heading size="4">Small</mui-heading>
+              <mui-body size="small">Accordion</mui-body>
             </mui-card-header>
             <mui-rule direction="horizontal"></mui-rule>
             <mui-card-body>
@@ -1223,8 +1223,8 @@ class storyCards extends HTMLElement {
 
           <mui-card usage="grid" size="large">
             <mui-card-header>
-              <mui-heading size="3">Large</mui-heading>
-              <mui-body>Accordion</mui-body>
+              <mui-heading size="2">Large</mui-heading>
+              <mui-body size="large">Accordion</mui-body>
             </mui-card-header>
             <mui-rule direction="horizontal"></mui-rule>
             <mui-card-body>
@@ -1248,11 +1248,11 @@ class storyCards extends HTMLElement {
       </story-card>
 
       <story-card id="body-size-table-offsets" title="${storyMeta["body-size-table-offsets"].title}" description="${storyMeta["body-size-table-offsets"].description}" usage="${storyMeta["body-size-table-offsets"].usage}">
-        <mui-grid slot="body" col="repeat(2, minmax(0, 1fr))" space="var(--space-400)">
+        <mui-grid slot="body" col="minmax(0, 1fr)" space="var(--space-400)">
           <mui-card usage="grid" size="none">
             <mui-card-header>
-              <mui-heading size="3">None</mui-heading>
-              <mui-body>Table</mui-body>
+              <mui-heading size="6">None (Visual Test Only - Avoid)</mui-heading>
+              <mui-body size="x-small">Table</mui-body>
             </mui-card-header>
             <mui-rule direction="horizontal"></mui-rule>
             <mui-card-body>
@@ -1298,8 +1298,8 @@ class storyCards extends HTMLElement {
 
           <mui-card usage="grid" size="small">
             <mui-card-header>
-              <mui-heading size="3">Small</mui-heading>
-              <mui-body>Table</mui-body>
+              <mui-heading size="4">Small</mui-heading>
+              <mui-body size="small">Table</mui-body>
             </mui-card-header>
             <mui-rule direction="horizontal"></mui-rule>
             <mui-card-body>
@@ -1392,8 +1392,8 @@ class storyCards extends HTMLElement {
 
           <mui-card usage="grid" size="large">
             <mui-card-header>
-              <mui-heading size="3">Large</mui-heading>
-              <mui-body>Table</mui-body>
+              <mui-heading size="2">Large</mui-heading>
+              <mui-body size="large">Table</mui-body>
             </mui-card-header>
             <mui-rule direction="horizontal"></mui-rule>
             <mui-card-body>
